@@ -3,841 +3,1841 @@
   "sourceHash": "af0caa99560518f7",
   "buildVersion": 2,
   "bytes": 61884,
-  "triangles": 2646
+  "triangles": 2646,
+  "lod2": {
+   "sourceHash": "af0caa99560518f7",
+   "buildVersion": 1,
+   "bytes": 8840,
+   "triangles": 311
+  }
+ },
+ "figure-decoupee": {
+  "lod2": {
+   "sourceHash": "5a6de85a03cf46a9",
+   "buildVersion": 1,
+   "bytes": 2588,
+   "triangles": 16
+  }
+ },
+ "joods-verzetsmonument": {
+  "lod2": {
+   "sourceHash": "68b174d90bf04162",
+   "buildVersion": 1,
+   "bytes": 2484,
+   "triangles": 14
+  }
  },
  "centraal-station": {
   "sourceHash": "7e828db6c9d7e0ad",
   "buildVersion": 2,
   "bytes": 219960,
-  "triangles": 16460
+  "triangles": 16460,
+  "lod2": {
+   "sourceHash": "7e828db6c9d7e0ad",
+   "buildVersion": 1,
+   "bytes": 76880,
+   "triangles": 4858
+  }
  },
  "de-beurs-van-berlage": {
   "sourceHash": "ac59800ea37889ed",
   "buildVersion": 2,
   "bytes": 91912,
-  "triangles": 4588
+  "triangles": 4588,
+  "lod2": {
+   "sourceHash": "ac59800ea37889ed",
+   "buildVersion": 1,
+   "bytes": 19144,
+   "triangles": 1039
+  }
  },
  "national-monument-on-the-dam": {
   "sourceHash": "5c6fd1051011658b",
   "buildVersion": 2,
   "bytes": 23712,
-  "triangles": 1012
+  "triangles": 1012,
+  "lod2": {
+   "sourceHash": "5c6fd1051011658b",
+   "buildVersion": 1,
+   "bytes": 4676,
+   "triangles": 120
+  }
  },
  "nemo": {
   "sourceHash": "5cf8026a0b067b36",
   "buildVersion": 2,
   "bytes": 50828,
-  "triangles": 2567
+  "triangles": 2567,
+  "lod2": {
+   "sourceHash": "5cf8026a0b067b36",
+   "buildVersion": 1,
+   "bytes": 39344,
+   "triangles": 1995
+  }
  },
  "oude-kerk": {
   "sourceHash": "e25cd1845b99b169",
   "buildVersion": 2,
   "bytes": 90988,
-  "triangles": 5002
+  "triangles": 5002,
+  "lod2": {
+   "sourceHash": "e25cd1845b99b169",
+   "buildVersion": 1,
+   "bytes": 14356,
+   "triangles": 629
+  }
  },
  "palace-on-the-dam": {
   "sourceHash": "0b3213c7240b8985",
   "buildVersion": 2,
   "bytes": 94660,
-  "triangles": 4749
+  "triangles": 4749,
+  "lod2": {
+   "sourceHash": "0b3213c7240b8985",
+   "buildVersion": 1,
+   "bytes": 15208,
+   "triangles": 583
+  }
  },
  "rijksmuseum": {
   "sourceHash": "4522b3dbb1ecf576",
   "buildVersion": 2,
   "bytes": 123992,
-  "triangles": 6909
+  "triangles": 6909,
+  "lod2": {
+   "sourceHash": "4522b3dbb1ecf576",
+   "buildVersion": 1,
+   "bytes": 109948,
+   "triangles": 6049
+  }
  },
  "spinoza-standbeeld": {
   "sourceHash": "705002e5ff4d04dd",
   "buildVersion": 2,
   "bytes": 25040,
-  "triangles": 1154
+  "triangles": 1154,
+  "lod2": {
+   "sourceHash": "705002e5ff4d04dd",
+   "buildVersion": 1,
+   "bytes": 4636,
+   "triangles": 116
+  }
  },
  "stadhuis": {
   "sourceHash": "a3168550ec318afd",
   "buildVersion": 2,
   "bytes": 84924,
-  "triangles": 4631
+  "triangles": 4631,
+  "lod2": {
+   "sourceHash": "a3168550ec318afd",
+   "buildVersion": 1,
+   "bytes": 11916,
+   "triangles": 592
+  }
  },
  "teun-de-jager": {
   "sourceHash": "e75a89af6d620770",
   "buildVersion": 2,
   "bytes": 24920,
-  "triangles": 1080
+  "triangles": 1080,
+  "lod2": {
+   "sourceHash": "e75a89af6d620770",
+   "buildVersion": 1,
+   "bytes": 4656,
+   "triangles": 110
+  }
  },
  "westerkerk": {
   "sourceHash": "29cc7723458acc71",
   "buildVersion": 2,
   "bytes": 88112,
-  "triangles": 4797
+  "triangles": 4797,
+  "lod2": {
+   "sourceHash": "29cc7723458acc71",
+   "buildVersion": 1,
+   "bytes": 27016,
+   "triangles": 1315
+  }
  },
  "concertgebouw": {
   "sourceHash": "6bbde10baab9fa29",
   "buildVersion": 2,
   "bytes": 119868,
-  "triangles": 7231
+  "triangles": 7231,
+  "lod2": {
+   "sourceHash": "6bbde10baab9fa29",
+   "buildVersion": 1,
+   "bytes": 43384,
+   "triangles": 1943
+  }
  },
  "heineken-experience-amsterdam": {
   "sourceHash": "5faf5b6d479c4a92",
   "buildVersion": 2,
   "bytes": 53644,
-  "triangles": 2770
+  "triangles": 2770,
+  "lod2": {
+   "sourceHash": "5faf5b6d479c4a92",
+   "buildVersion": 1,
+   "bytes": 14892,
+   "triangles": 616
+  }
  },
  "montelbaanstoren-amsterdam": {
   "sourceHash": "1801a0a49bb84609",
   "buildVersion": 2,
   "bytes": 33240,
-  "triangles": 1426
+  "triangles": 1426,
+  "lod2": {
+   "sourceHash": "1801a0a49bb84609",
+   "buildVersion": 1,
+   "bytes": 6932,
+   "triangles": 256
+  }
  },
  "munttoren-amsterdam": {
   "sourceHash": "45c6b9a10742979b",
   "buildVersion": 2,
   "bytes": 43292,
-  "triangles": 1911
+  "triangles": 1911,
+  "lod2": {
+   "sourceHash": "45c6b9a10742979b",
+   "buildVersion": 1,
+   "bytes": 11072,
+   "triangles": 496
+  }
+ },
+ "muziekgebouw-bimhuis": {
+  "lod2": {
+   "sourceHash": "b165abe32c0d0af1",
+   "buildVersion": 1,
+   "bytes": 3736,
+   "triangles": 72
+  }
  },
  "olvg-west": {
   "sourceHash": "464243c07bd2cb6f",
   "buildVersion": 2,
   "bytes": 51684,
-  "triangles": 2763
+  "triangles": 2763,
+  "lod2": {
+   "sourceHash": "464243c07bd2cb6f",
+   "buildVersion": 1,
+   "bytes": 9472,
+   "triangles": 475
+  }
  },
  "olvg-oost": {
   "sourceHash": "844cf40bd35b8f8e",
   "buildVersion": 2,
   "bytes": 71152,
-  "triangles": 3814
+  "triangles": 3814,
+  "lod2": {
+   "sourceHash": "844cf40bd35b8f8e",
+   "buildVersion": 1,
+   "bytes": 11204,
+   "triangles": 564
+  }
+ },
+ "van-gogh-museum": {
+  "lod2": {
+   "sourceHash": "0b663a1c7450e894",
+   "buildVersion": 1,
+   "bytes": 4856,
+   "triangles": 124
+  }
  },
  "stedelijk-museum": {
   "sourceHash": "d593f2e6b70f3b8f",
   "buildVersion": 2,
   "bytes": 83740,
-  "triangles": 4903
+  "triangles": 4903,
+  "lod2": {
+   "sourceHash": "d593f2e6b70f3b8f",
+   "buildVersion": 1,
+   "bytes": 28512,
+   "triangles": 1669
+  }
  },
  "adam-tower": {
   "sourceHash": "f5963924108a152e",
   "buildVersion": 2,
   "bytes": 67572,
-  "triangles": 3298
+  "triangles": 3298,
+  "lod2": {
+   "sourceHash": "f5963924108a152e",
+   "buildVersion": 1,
+   "bytes": 7624,
+   "triangles": 264
+  }
  },
  "pontsteiger": {
   "sourceHash": "1f9f41629833d4c5",
   "buildVersion": 2,
   "bytes": 76092,
-  "triangles": 4244
+  "triangles": 4244,
+  "lod2": {
+   "sourceHash": "1f9f41629833d4c5",
+   "buildVersion": 1,
+   "bytes": 13376,
+   "triangles": 552
+  }
  },
  "oba-oosterdok": {
   "sourceHash": "e17fa33f00b2662b",
   "buildVersion": 2,
   "bytes": 57092,
-  "triangles": 2930
+  "triangles": 2930,
+  "lod2": {
+   "sourceHash": "e17fa33f00b2662b",
+   "buildVersion": 1,
+   "bytes": 9372,
+   "triangles": 356
+  }
  },
  "rem-eiland": {
   "sourceHash": "00b0beaeb4309cbf",
   "buildVersion": 2,
   "bytes": 20272,
-  "triangles": 842
+  "triangles": 842,
+  "lod2": {
+   "sourceHash": "00b0beaeb4309cbf",
+   "buildVersion": 1,
+   "bytes": 4212,
+   "triangles": 94
+  }
  },
  "paradiso": {
   "sourceHash": "5ce89164c61afca0",
   "buildVersion": 2,
   "bytes": 16048,
-  "triangles": 572
+  "triangles": 572,
+  "lod2": {
+   "sourceHash": "5ce89164c61afca0",
+   "buildVersion": 1,
+   "bytes": 3732,
+   "triangles": 70
+  }
+ },
+ "melkweg": {
+  "lod2": {
+   "sourceHash": "c316c1a16e1e79c2",
+   "buildVersion": 1,
+   "bytes": 3584,
+   "triangles": 68
+  }
  },
  "silodam": {
   "sourceHash": "59a513770337b2cb",
   "buildVersion": 2,
   "bytes": 56584,
-  "triangles": 2941
+  "triangles": 2941,
+  "lod2": {
+   "sourceHash": "59a513770337b2cb",
+   "buildVersion": 1,
+   "bytes": 11472,
+   "triangles": 697
+  }
+ },
+ "embassy-free-mind": {
+  "lod2": {
+   "sourceHash": "1f524a90878f8b55",
+   "buildVersion": 1,
+   "bytes": 3536,
+   "triangles": 56
+  }
  },
  "the-movies": {
   "sourceHash": "7f4aae83c2b2ffd3",
   "buildVersion": 2,
   "bytes": 24144,
-  "triangles": 908
+  "triangles": 908,
+  "lod2": {
+   "sourceHash": "7f4aae83c2b2ffd3",
+   "buildVersion": 1,
+   "bytes": 3956,
+   "triangles": 74
+  }
  },
  "delamar": {
   "sourceHash": "5d32162e58b46fa2",
   "buildVersion": 2,
   "bytes": 76704,
-  "triangles": 3263
+  "triangles": 3263,
+  "lod2": {
+   "sourceHash": "5d32162e58b46fa2",
+   "buildVersion": 1,
+   "bytes": 11292,
+   "triangles": 363
+  }
  },
  "magna-plaza": {
   "sourceHash": "01f1b99a123fc64a",
   "buildVersion": 2,
   "bytes": 73452,
-  "triangles": 3896
+  "triangles": 3896,
+  "lod2": {
+   "sourceHash": "01f1b99a123fc64a",
+   "buildVersion": 1,
+   "bytes": 10880,
+   "triangles": 476
+  }
  },
  "felix-meritis": {
   "sourceHash": "d128fa40815d1320",
   "buildVersion": 2,
   "bytes": 18696,
-  "triangles": 708
+  "triangles": 708,
+  "lod2": {
+   "sourceHash": "d128fa40815d1320",
+   "buildVersion": 1,
+   "bytes": 5320,
+   "triangles": 136
+  }
  },
  "kleine-komedie": {
   "sourceHash": "d525f9e9ea4b80ec",
   "buildVersion": 2,
   "bytes": 19744,
-  "triangles": 542
+  "triangles": 542,
+  "lod2": {
+   "sourceHash": "d525f9e9ea4b80ec",
+   "buildVersion": 1,
+   "bytes": 3780,
+   "triangles": 66
+  }
  },
  "de-balie": {
   "sourceHash": "b2304095772064be",
   "buildVersion": 2,
   "bytes": 22720,
-  "triangles": 1268
+  "triangles": 1268,
+  "lod2": {
+   "sourceHash": "b2304095772064be",
+   "buildVersion": 1,
+   "bytes": 3852,
+   "triangles": 72
+  }
+ },
+ "anne-frank-house": {
+  "lod2": {
+   "sourceHash": "d626cc976cdc33bc",
+   "buildVersion": 1,
+   "bytes": 3260,
+   "triangles": 48
+  }
  },
  "rembrandt-house": {
   "sourceHash": "9d89f4040576047a",
   "buildVersion": 2,
   "bytes": 22392,
-  "triangles": 742
+  "triangles": 742,
+  "lod2": {
+   "sourceHash": "9d89f4040576047a",
+   "buildVersion": 1,
+   "bytes": 3648,
+   "triangles": 66
+  }
  },
  "moco-museum": {
   "sourceHash": "e969f768f954c70c",
   "buildVersion": 2,
   "bytes": 18744,
-  "triangles": 652
+  "triangles": 652,
+  "lod2": {
+   "sourceHash": "e969f768f954c70c",
+   "buildVersion": 1,
+   "bytes": 3740,
+   "triangles": 66
+  }
+ },
+ "museum-van-loon": {
+  "lod2": {
+   "sourceHash": "80cffff2239f5b0a",
+   "buildVersion": 1,
+   "bytes": 3328,
+   "triangles": 44
+  }
  },
  "amstelkerk": {
   "sourceHash": "7000cb45aa29d746",
   "buildVersion": 2,
   "bytes": 26332,
-  "triangles": 1216
+  "triangles": 1216,
+  "lod2": {
+   "sourceHash": "7000cb45aa29d746",
+   "buildVersion": 1,
+   "bytes": 4440,
+   "triangles": 100
+  }
  },
  "he-hua-temple": {
   "sourceHash": "a6e7133c8cf673b9",
   "buildVersion": 2,
   "bytes": 27628,
-  "triangles": 1235
+  "triangles": 1235,
+  "lod2": {
+   "sourceHash": "a6e7133c8cf673b9",
+   "buildVersion": 1,
+   "bytes": 5540,
+   "triangles": 153
+  }
  },
  "haarlemmerpoort": {
   "sourceHash": "a18190b20a25c9a5",
   "buildVersion": 2,
   "bytes": 16560,
-  "triangles": 564
+  "triangles": 564,
+  "lod2": {
+   "sourceHash": "a18190b20a25c9a5",
+   "buildVersion": 1,
+   "bytes": 3636,
+   "triangles": 74
+  }
  },
  "scheepvaarthuis": {
   "sourceHash": "cbaf7d141ccf0ad1",
   "buildVersion": 2,
   "bytes": 99988,
-  "triangles": 4974
+  "triangles": 4974,
+  "lod2": {
+   "sourceHash": "cbaf7d141ccf0ad1",
+   "buildVersion": 1,
+   "bytes": 15600,
+   "triangles": 621
+  }
  },
  "het-schip": {
   "sourceHash": "6b781592a63cd5d7",
   "buildVersion": 2,
   "bytes": 88740,
-  "triangles": 4579
+  "triangles": 4579,
+  "lod2": {
+   "sourceHash": "6b781592a63cd5d7",
+   "buildVersion": 1,
+   "bytes": 19040,
+   "triangles": 941
+  }
+ },
+ "rialto": {
+  "lod2": {
+   "sourceHash": "956f5bc48609ca1a",
+   "buildVersion": 1,
+   "bytes": 2768,
+   "triangles": 24
+  }
  },
  "kriterion": {
   "sourceHash": "56065f9d3b58bb67",
   "buildVersion": 2,
   "bytes": 36956,
-  "triangles": 1452
+  "triangles": 1452,
+  "lod2": {
+   "sourceHash": "56065f9d3b58bb67",
+   "buildVersion": 1,
+   "bytes": 9780,
+   "triangles": 463
+  }
  },
  "de-bijenkorf": {
   "sourceHash": "3997d133fbb0e19a",
   "buildVersion": 2,
   "bytes": 78392,
-  "triangles": 4497
+  "triangles": 4497,
+  "lod2": {
+   "sourceHash": "3997d133fbb0e19a",
+   "buildVersion": 1,
+   "bytes": 38692,
+   "triangles": 1485
+  }
  },
  "gashouder": {
   "sourceHash": "297078e45465e2cc",
   "buildVersion": 2,
   "bytes": 25848,
-  "triangles": 1058
+  "triangles": 1058,
+  "lod2": {
+   "sourceHash": "297078e45465e2cc",
+   "buildVersion": 1,
+   "bytes": 6936,
+   "triangles": 235
+  }
  },
  "stadsschouwburg": {
   "sourceHash": "7f98a62276012210",
   "buildVersion": 2,
   "bytes": 30284,
-  "triangles": 1354
+  "triangles": 1354,
+  "lod2": {
+   "sourceHash": "7f98a62276012210",
+   "buildVersion": 1,
+   "bytes": 9872,
+   "triangles": 430
+  }
  },
  "tuschinski": {
   "sourceHash": "65b1a1fc35bd541d",
   "buildVersion": 2,
   "bytes": 22792,
-  "triangles": 948
+  "triangles": 948,
+  "lod2": {
+   "sourceHash": "65b1a1fc35bd541d",
+   "buildVersion": 1,
+   "bytes": 4688,
+   "triangles": 154
+  }
  },
  "pathe-city": {
   "sourceHash": "7722dbfe0633ea77",
   "buildVersion": 2,
   "bytes": 24652,
-  "triangles": 932
+  "triangles": 932,
+  "lod2": {
+   "sourceHash": "7722dbfe0633ea77",
+   "buildVersion": 1,
+   "bytes": 4364,
+   "triangles": 90
+  }
  },
  "nieuwe-kerk": {
   "sourceHash": "5ee4be33beed348c",
   "buildVersion": 2,
   "bytes": 84128,
-  "triangles": 4849
+  "triangles": 4849,
+  "lod2": {
+   "sourceHash": "5ee4be33beed348c",
+   "buildVersion": 1,
+   "bytes": 22744,
+   "triangles": 1158
+  }
  },
  "buiksloterkerk": {
   "sourceHash": "d3f0cb103c5247c4",
   "buildVersion": 2,
   "bytes": 28812,
-  "triangles": 1292
+  "triangles": 1292,
+  "lod2": {
+   "sourceHash": "d3f0cb103c5247c4",
+   "buildVersion": 1,
+   "bytes": 4688,
+   "triangles": 118
+  }
  },
  "english-reformed-church": {
   "sourceHash": "7fe4971edc2a0b5c",
   "buildVersion": 2,
   "bytes": 19768,
-  "triangles": 649
+  "triangles": 649,
+  "lod2": {
+   "sourceHash": "7fe4971edc2a0b5c",
+   "buildVersion": 1,
+   "bytes": 4276,
+   "triangles": 104
+  }
+ },
+ "de-papegaai": {
+  "lod2": {
+   "sourceHash": "819db8b35d2d2ede",
+   "buildVersion": 1,
+   "bytes": 3508,
+   "triangles": 76
+  }
  },
  "de-hallen": {
   "sourceHash": "00dccd677959bdce",
   "buildVersion": 2,
   "bytes": 36728,
-  "triangles": 1661
+  "triangles": 1661,
+  "lod2": {
+   "sourceHash": "00dccd677959bdce",
+   "buildVersion": 1,
+   "bytes": 6892,
+   "triangles": 280
+  }
  },
  "huis-bartolotti": {
   "sourceHash": "22e4977c97d55677",
   "buildVersion": 2,
   "bytes": 28200,
-  "triangles": 1112
+  "triangles": 1112,
+  "lod2": {
+   "sourceHash": "22e4977c97d55677",
+   "buildVersion": 1,
+   "bytes": 4096,
+   "triangles": 116
+  }
  },
  "hart-museum": {
   "sourceHash": "e5b49b2b94517146",
   "buildVersion": 2,
   "bytes": 95280,
-  "triangles": 5398
+  "triangles": 5398,
+  "lod2": {
+   "sourceHash": "e5b49b2b94517146",
+   "buildVersion": 1,
+   "bytes": 14492,
+   "triangles": 680
+  }
  },
  "amsterdam-museum": {
   "sourceHash": "f69b3ebc3dd33061",
   "buildVersion": 2,
   "bytes": 88524,
-  "triangles": 5225
+  "triangles": 5225,
+  "lod2": {
+   "sourceHash": "f69b3ebc3dd33061",
+   "buildVersion": 1,
+   "bytes": 15388,
+   "triangles": 1050
+  }
  },
  "national-holocaust-museum": {
   "sourceHash": "439fb139097329a9",
   "buildVersion": 2,
   "bytes": 47316,
-  "triangles": 2358
+  "triangles": 2358,
+  "lod2": {
+   "sourceHash": "439fb139097329a9",
+   "buildVersion": 1,
+   "bytes": 6528,
+   "triangles": 277
+  }
  },
  "hollandsche-schouwburg": {
   "sourceHash": "8e49862cadb52062",
   "buildVersion": 2,
   "bytes": 21328,
-  "triangles": 818
+  "triangles": 818,
+  "lod2": {
+   "sourceHash": "8e49862cadb52062",
+   "buildVersion": 1,
+   "bytes": 3960,
+   "triangles": 101
+  }
  },
  "jewish-museum": {
   "sourceHash": "5f6794a6b798da4b",
   "buildVersion": 2,
   "bytes": 67712,
-  "triangles": 4123
+  "triangles": 4123,
+  "lod2": {
+   "sourceHash": "5f6794a6b798da4b",
+   "buildVersion": 1,
+   "bytes": 7864,
+   "triangles": 300
+  }
  },
  "portuguese-synagogue": {
   "sourceHash": "77a79d26675ebeba",
   "buildVersion": 2,
   "bytes": 54140,
-  "triangles": 2797
+  "triangles": 2797,
+  "lod2": {
+   "sourceHash": "77a79d26675ebeba",
+   "buildVersion": 1,
+   "bytes": 8728,
+   "triangles": 380
+  }
+ },
+ "homomonument": {
+  "lod2": {
+   "sourceHash": "22389b882ba0f541",
+   "buildVersion": 1,
+   "bytes": 2376,
+   "triangles": 6
+  }
  },
  "micropia-ledenlokalen": {
   "sourceHash": "ca2663737e6c853f",
   "buildVersion": 2,
   "bytes": 40044,
-  "triangles": 1941
+  "triangles": 1941,
+  "lod2": {
+   "sourceHash": "ca2663737e6c853f",
+   "buildVersion": 1,
+   "bytes": 7680,
+   "triangles": 256
+  }
+ },
+ "artis-entrance": {
+  "lod2": {
+   "sourceHash": "b2d6b88f32155935",
+   "buildVersion": 1,
+   "bytes": 2936,
+   "triangles": 36
+  }
  },
  "hortus-greenhouses": {
   "sourceHash": "f35af2e1c1817ee3",
   "buildVersion": 2,
   "bytes": 51800,
-  "triangles": 2645
+  "triangles": 2645,
+  "lod2": {
+   "sourceHash": "f35af2e1c1817ee3",
+   "buildVersion": 1,
+   "bytes": 14404,
+   "triangles": 650
+  }
+ },
+ "arcam": {
+  "lod2": {
+   "sourceHash": "14011d4bd844b10e",
+   "buildVersion": 1,
+   "bytes": 4108,
+   "triangles": 98
+  }
  },
  "brakke-grond": {
   "sourceHash": "c19ff3188928724a",
   "buildVersion": 2,
   "bytes": 26060,
-  "triangles": 1014
+  "triangles": 1014,
+  "lod2": {
+   "sourceHash": "c19ff3188928724a",
+   "buildVersion": 1,
+   "bytes": 4996,
+   "triangles": 185
+  }
  },
  "frascati": {
   "sourceHash": "a19378d527ed6f54",
   "buildVersion": 2,
   "bytes": 26060,
-  "triangles": 990
+  "triangles": 990,
+  "lod2": {
+   "sourceHash": "a19378d527ed6f54",
+   "buildVersion": 1,
+   "bytes": 5524,
+   "triangles": 208
+  }
  },
  "boom-chicago": {
   "sourceHash": "07d521812305b3fa",
   "buildVersion": 2,
   "bytes": 24656,
-  "triangles": 809
+  "triangles": 809,
+  "lod2": {
+   "sourceHash": "07d521812305b3fa",
+   "buildVersion": 1,
+   "bytes": 3992,
+   "triangles": 98
+  }
  },
  "foam": {
   "sourceHash": "bfe1bfae73cf795a",
   "buildVersion": 2,
   "bytes": 85160,
-  "triangles": 5000
+  "triangles": 5000,
+  "lod2": {
+   "sourceHash": "bfe1bfae73cf795a",
+   "buildVersion": 1,
+   "bytes": 10008,
+   "triangles": 487
+  }
  },
  "huis-marseille": {
   "sourceHash": "597d0a5418466dd6",
   "buildVersion": 2,
   "bytes": 51748,
-  "triangles": 2695
+  "triangles": 2695,
+  "lod2": {
+   "sourceHash": "597d0a5418466dd6",
+   "buildVersion": 1,
+   "bytes": 7244,
+   "triangles": 287
+  }
  },
  "ons-lieve-heer-op-solder": {
   "sourceHash": "f225ef38745508da",
   "buildVersion": 2,
   "bytes": 36368,
-  "triangles": 1432
+  "triangles": 1432,
+  "lod2": {
+   "sourceHash": "f225ef38745508da",
+   "buildVersion": 1,
+   "bytes": 5640,
+   "triangles": 149
+  }
+ },
+ "agnietenkapel": {
+  "lod2": {
+   "sourceHash": "0105a37aacfc4f0c",
+   "buildVersion": 1,
+   "bytes": 3516,
+   "triangles": 64
+  }
  },
  "lab111": {
   "sourceHash": "79ac4b5b88e8bc12",
   "buildVersion": 2,
   "bytes": 50580,
-  "triangles": 2836
+  "triangles": 2836,
+  "lod2": {
+   "sourceHash": "79ac4b5b88e8bc12",
+   "buildVersion": 1,
+   "bytes": 5416,
+   "triangles": 200
+  }
+ },
+ "occii": {
+  "lod2": {
+   "sourceHash": "21666dc8bcb61554",
+   "buildVersion": 1,
+   "bytes": 3316,
+   "triangles": 58
+  }
  },
  "ketelhuis": {
   "sourceHash": "912ec931af099c42",
   "buildVersion": 2,
   "bytes": 25440,
-  "triangles": 970
+  "triangles": 970,
+  "lod2": {
+   "sourceHash": "912ec931af099c42",
+   "buildVersion": 1,
+   "bytes": 4032,
+   "triangles": 121
+  }
  },
  "wereldmuseum-amsterdam": {
   "sourceHash": "43ee6f41800cb7a6",
   "buildVersion": 2,
   "bytes": 82488,
-  "triangles": 5223
+  "triangles": 5223,
+  "lod2": {
+   "sourceHash": "43ee6f41800cb7a6",
+   "buildVersion": 1,
+   "bytes": 27600,
+   "triangles": 1986
+  }
  },
  "dutch-resistance-museum": {
   "sourceHash": "65a0b4eb809caef4",
   "buildVersion": 2,
   "bytes": 28836,
-  "triangles": 1283
+  "triangles": 1283,
+  "lod2": {
+   "sourceHash": "65a0b4eb809caef4",
+   "buildVersion": 1,
+   "bytes": 11036,
+   "triangles": 561
+  }
  },
  "allard-pierson": {
   "sourceHash": "31b73111328ad4d2",
   "buildVersion": 2,
   "bytes": 48236,
-  "triangles": 2904
+  "triangles": 2904,
+  "lod2": {
+   "sourceHash": "31b73111328ad4d2",
+   "buildVersion": 1,
+   "bytes": 28980,
+   "triangles": 1998
+  }
  },
  "dominicuskerk": {
   "sourceHash": "9208a4591318d8e9",
   "buildVersion": 2,
   "bytes": 47304,
-  "triangles": 2376
+  "triangles": 2376,
+  "lod2": {
+   "sourceHash": "9208a4591318d8e9",
+   "buildVersion": 1,
+   "bytes": 7196,
+   "triangles": 283
+  }
  },
  "vredeskerk": {
   "sourceHash": "6c13cebf87d7c20d",
   "buildVersion": 2,
   "bytes": 38876,
-  "triangles": 1792
+  "triangles": 1792,
+  "lod2": {
+   "sourceHash": "6c13cebf87d7c20d",
+   "buildVersion": 1,
+   "bytes": 7152,
+   "triangles": 308
+  }
  },
  "badhuistheater": {
   "sourceHash": "357b69f104d17af6",
   "buildVersion": 2,
   "bytes": 32096,
-  "triangles": 1507
+  "triangles": 1507,
+  "lod2": {
+   "sourceHash": "357b69f104d17af6",
+   "buildVersion": 1,
+   "bytes": 5864,
+   "triangles": 176
+  }
  },
  "cinecenter": {
   "sourceHash": "0103e3b35170fd11",
   "buildVersion": 2,
   "bytes": 43024,
-  "triangles": 1770
+  "triangles": 1770,
+  "lod2": {
+   "sourceHash": "0103e3b35170fd11",
+   "buildVersion": 1,
+   "bytes": 5380,
+   "triangles": 168
+  }
  },
  "studiok": {
   "sourceHash": "21128223ebed8fc9",
   "buildVersion": 2,
   "bytes": 57256,
-  "triangles": 2976
+  "triangles": 2976,
+  "lod2": {
+   "sourceHash": "21128223ebed8fc9",
+   "buildVersion": 1,
+   "bytes": 8136,
+   "triangles": 374
+  }
  },
  "groote-museum": {
   "sourceHash": "a9e6b70e1fbd40b6",
   "buildVersion": 2,
   "bytes": 36740,
-  "triangles": 1780
+  "triangles": 1780,
+  "lod2": {
+   "sourceHash": "a9e6b70e1fbd40b6",
+   "buildVersion": 1,
+   "bytes": 6100,
+   "triangles": 246
+  }
  },
  "artis-library": {
   "sourceHash": "67bc70e61cd14505",
   "buildVersion": 2,
   "bytes": 46376,
-  "triangles": 2254
+  "triangles": 2254,
+  "lod2": {
+   "sourceHash": "67bc70e61cd14505",
+   "buildVersion": 1,
+   "bytes": 12708,
+   "triangles": 515
+  }
  },
  "de-dokwerker": {
   "sourceHash": "2358cce2579ce451",
   "buildVersion": 2,
   "bytes": 37888,
-  "triangles": 1808
+  "triangles": 1808,
+  "lod2": {
+   "sourceHash": "2358cce2579ce451",
+   "buildVersion": 1,
+   "bytes": 4380,
+   "triangles": 104
+  }
  },
  "westermoskee": {
   "sourceHash": "443a9ca11112e4fa",
   "buildVersion": 2,
   "bytes": 71164,
-  "triangles": 3348
+  "triangles": 3348,
+  "lod2": {
+   "sourceHash": "443a9ca11112e4fa",
+   "buildVersion": 1,
+   "bytes": 11176,
+   "triangles": 426
+  }
  },
  "willet-holthuysen": {
   "sourceHash": "54cc9ca43ef6acef",
   "buildVersion": 2,
   "bytes": 22776,
-  "triangles": 955
+  "triangles": 955,
+  "lod2": {
+   "sourceHash": "54cc9ca43ef6acef",
+   "buildVersion": 1,
+   "bytes": 6360,
+   "triangles": 211
+  }
  },
  "amsterdam-pipe-museum": {
   "sourceHash": "4983bd1781103ef3",
   "buildVersion": 2,
   "bytes": 37976,
-  "triangles": 1982
+  "triangles": 1982,
+  "lod2": {
+   "sourceHash": "4983bd1781103ef3",
+   "buildVersion": 1,
+   "bytes": 4424,
+   "triangles": 116
+  }
  },
  "athenaeum": {
   "sourceHash": "72395c79c4d485ec",
   "buildVersion": 2,
   "bytes": 30284,
-  "triangles": 1257
+  "triangles": 1257,
+  "lod2": {
+   "sourceHash": "72395c79c4d485ec",
+   "buildVersion": 1,
+   "bytes": 5124,
+   "triangles": 147
+  }
  },
  "scheltema": {
   "sourceHash": "d2af22de8199d63b",
   "buildVersion": 2,
   "bytes": 41340,
-  "triangles": 1774
+  "triangles": 1774,
+  "lod2": {
+   "sourceHash": "d2af22de8199d63b",
+   "buildVersion": 1,
+   "bytes": 5900,
+   "triangles": 194
+  }
  },
  "haarlemmermeerstation": {
   "sourceHash": "97b1826e46a10dff",
   "buildVersion": 2,
   "bytes": 30940,
-  "triangles": 1518
+  "triangles": 1518,
+  "lod2": {
+   "sourceHash": "97b1826e46a10dff",
+   "buildVersion": 1,
+   "bytes": 5236,
+   "triangles": 189
+  }
  },
  "begijnhofkapel": {
   "sourceHash": "4c715175e2b3ccf9",
   "buildVersion": 2,
   "bytes": 35248,
-  "triangles": 1589
+  "triangles": 1589,
+  "lod2": {
+   "sourceHash": "4c715175e2b3ccf9",
+   "buildVersion": 1,
+   "bytes": 5692,
+   "triangles": 232
+  }
  },
  "huis-de-pinto": {
   "sourceHash": "20e04af188516e89",
   "buildVersion": 2,
   "bytes": 34056,
-  "triangles": 1467
+  "triangles": 1467,
+  "lod2": {
+   "sourceHash": "20e04af188516e89",
+   "buildVersion": 1,
+   "bytes": 4792,
+   "triangles": 142
+  }
  },
  "amsterdam-tulip-museum": {
   "sourceHash": "4b8a32381adc6f71",
   "buildVersion": 2,
   "bytes": 38076,
-  "triangles": 1494
+  "triangles": 1494,
+  "lod2": {
+   "sourceHash": "4b8a32381adc6f71",
+   "buildVersion": 1,
+   "bytes": 4052,
+   "triangles": 135
+  }
  },
  "ot301": {
   "sourceHash": "580856d4e9ef91d6",
   "buildVersion": 2,
   "bytes": 46888,
-  "triangles": 2355
+  "triangles": 2355,
+  "lod2": {
+   "sourceHash": "580856d4e9ef91d6",
+   "buildVersion": 1,
+   "bytes": 6756,
+   "triangles": 244
+  }
  },
  "cavia": {
   "sourceHash": "fa6677a2e649764c",
   "buildVersion": 2,
   "bytes": 40892,
-  "triangles": 1936
+  "triangles": 1936,
+  "lod2": {
+   "sourceHash": "fa6677a2e649764c",
+   "buildVersion": 1,
+   "bytes": 5136,
+   "triangles": 204
+  }
  },
  "orgelpark": {
   "sourceHash": "8e9f88f612f12ed9",
   "buildVersion": 2,
   "bytes": 29332,
-  "triangles": 1213
+  "triangles": 1213,
+  "lod2": {
+   "sourceHash": "8e9f88f612f12ed9",
+   "buildVersion": 1,
+   "bytes": 5348,
+   "triangles": 204
+  }
+ },
+ "houten-huys": {
+  "lod2": {
+   "sourceHash": "212ad19e7ab3149f",
+   "buildVersion": 1,
+   "bytes": 3544,
+   "triangles": 48
+  }
+ },
+ "herepoort-bergpoort": {
+  "lod2": {
+   "sourceHash": "04ba05c7a02dbb7d",
+   "buildVersion": 1,
+   "bytes": 3620,
+   "triangles": 58
+  }
  },
  "huis-aan-drie-grachten": {
   "sourceHash": "dc4023c9be22b568",
   "buildVersion": 2,
   "bytes": 22440,
-  "triangles": 804
+  "triangles": 804,
+  "lod2": {
+   "sourceHash": "dc4023c9be22b568",
+   "buildVersion": 1,
+   "bytes": 3720,
+   "triangles": 83
+  }
  },
  "de-dolphijn": {
   "sourceHash": "a6d0c64c28399ea8",
   "buildVersion": 2,
   "bytes": 26988,
-  "triangles": 1216
+  "triangles": 1216,
+  "lod2": {
+   "sourceHash": "a6d0c64c28399ea8",
+   "buildVersion": 1,
+   "bytes": 4304,
+   "triangles": 130
+  }
  },
  "rode-hoed": {
   "sourceHash": "22db86629558b27c",
   "buildVersion": 2,
   "bytes": 32248,
-  "triangles": 1485
+  "triangles": 1485,
+  "lod2": {
+   "sourceHash": "22db86629558b27c",
+   "buildVersion": 1,
+   "bytes": 7560,
+   "triangles": 375
+  }
  },
  "theater-amsterdam": {
   "sourceHash": "34e51859771c7ea5",
   "buildVersion": 2,
   "bytes": 23768,
-  "triangles": 979
+  "triangles": 979,
+  "lod2": {
+   "sourceHash": "34e51859771c7ea5",
+   "buildVersion": 1,
+   "bytes": 4448,
+   "triangles": 125
+  }
+ },
+ "vondelpark-open-air-theater": {
+  "lod2": {
+   "sourceHash": "4f28f482aff2f5a9",
+   "buildVersion": 1,
+   "bytes": 3000,
+   "triangles": 35
+  }
  },
  "vondelpark-bandstand": {
   "sourceHash": "713c0003cd19d9b6",
   "buildVersion": 2,
   "bytes": 47700,
-  "triangles": 2417
+  "triangles": 2417,
+  "lod2": {
+   "sourceHash": "713c0003cd19d9b6",
+   "buildVersion": 1,
+   "bytes": 26372,
+   "triangles": 1262
+  }
  },
  "oost-indisch-huis": {
   "sourceHash": "3ecadad78bbca5ac",
   "buildVersion": 2,
   "bytes": 69988,
-  "triangles": 4000
+  "triangles": 4000,
+  "lod2": {
+   "sourceHash": "3ecadad78bbca5ac",
+   "buildVersion": 1,
+   "bytes": 18440,
+   "triangles": 1097
+  }
  },
  "het-veem": {
   "sourceHash": "59af46ef26fdbe8a",
   "buildVersion": 2,
   "bytes": 71444,
-  "triangles": 4013
+  "triangles": 4013,
+  "lod2": {
+   "sourceHash": "59af46ef26fdbe8a",
+   "buildVersion": 1,
+   "bytes": 12240,
+   "triangles": 524
+  }
  },
  "tobacco-theater": {
   "sourceHash": "fc0b34923f1ff3bc",
   "buildVersion": 2,
   "bytes": 28708,
-  "triangles": 1021
+  "triangles": 1021,
+  "lod2": {
+   "sourceHash": "fc0b34923f1ff3bc",
+   "buildVersion": 1,
+   "bytes": 5624,
+   "triangles": 170
+  }
  },
  "plein-theater": {
   "sourceHash": "c5cf7238f441c3f4",
   "buildVersion": 2,
   "bytes": 27748,
-  "triangles": 1333
+  "triangles": 1333,
+  "lod2": {
+   "sourceHash": "c5cf7238f441c3f4",
+   "buildVersion": 1,
+   "bytes": 5188,
+   "triangles": 154
+  }
  },
  "hash-marihuana-hemp-museum": {
   "sourceHash": "3094990044b797a3",
   "buildVersion": 2,
   "bytes": 31904,
-  "triangles": 1421
+  "triangles": 1421,
+  "lod2": {
+   "sourceHash": "3094990044b797a3",
+   "buildVersion": 1,
+   "bytes": 4632,
+   "triangles": 141
+  }
  },
  "hemp-gallery": {
   "sourceHash": "e4754d6836b8343e",
   "buildVersion": 2,
   "bytes": 42860,
-  "triangles": 2119
+  "triangles": 2119,
+  "lod2": {
+   "sourceHash": "e4754d6836b8343e",
+   "buildVersion": 1,
+   "bytes": 5436,
+   "triangles": 218
+  }
  },
  "madame-tussauds": {
   "sourceHash": "42e701da9501a422",
   "buildVersion": 2,
   "bytes": 48940,
-  "triangles": 2788
+  "triangles": 2788,
+  "lod2": {
+   "sourceHash": "42e701da9501a422",
+   "buildVersion": 1,
+   "bytes": 12428,
+   "triangles": 700
+  }
  },
  "amsterdam-dungeon": {
   "sourceHash": "4ec8ea01240a3ec0",
   "buildVersion": 2,
   "bytes": 54336,
-  "triangles": 3370
+  "triangles": 3370,
+  "lod2": {
+   "sourceHash": "4ec8ea01240a3ec0",
+   "buildVersion": 1,
+   "bytes": 8644,
+   "triangles": 375
+  }
  },
  "sint-jorishof": {
   "sourceHash": "485e6e8f82422129",
   "buildVersion": 2,
   "bytes": 73584,
-  "triangles": 4203
+  "triangles": 4203,
+  "lod2": {
+   "sourceHash": "485e6e8f82422129",
+   "buildVersion": 1,
+   "bytes": 12580,
+   "triangles": 689
+  }
+ },
+ "walloon-church": {
+  "lod2": {
+   "sourceHash": "990963ba8d8f3d92",
+   "buildVersion": 1,
+   "bytes": 6308,
+   "triangles": 228
+  }
  },
  "schreierstoren": {
   "sourceHash": "bdfa675b2af9ea8a",
   "buildVersion": 2,
   "bytes": 19652,
-  "triangles": 595
+  "triangles": 595,
+  "lod2": {
+   "sourceHash": "bdfa675b2af9ea8a",
+   "buildVersion": 1,
+   "bytes": 4384,
+   "triangles": 94
+  }
  },
  "huize-lydia": {
   "sourceHash": "326092fc924b7244",
   "buildVersion": 2,
   "bytes": 51924,
-  "triangles": 2742
+  "triangles": 2742,
+  "lod2": {
+   "sourceHash": "326092fc924b7244",
+   "buildVersion": 1,
+   "bytes": 6708,
+   "triangles": 297
+  }
+ },
+ "eye-filmmuseum": {
+  "lod2": {
+   "sourceHash": "72dc9cb8f009ae4e",
+   "buildVersion": 1,
+   "bytes": 7928,
+   "triangles": 332
+  }
  },
  "royal-theater-carre": {
   "sourceHash": "691987957fc8588b",
   "buildVersion": 2,
   "bytes": 55172,
-  "triangles": 2817
+  "triangles": 2817,
+  "lod2": {
+   "sourceHash": "691987957fc8588b",
+   "buildVersion": 1,
+   "bytes": 15700,
+   "triangles": 715
+  }
  },
  "sint-nicolaas": {
   "sourceHash": "0bd6d198c4c47de7",
   "buildVersion": 2,
   "bytes": 104260,
-  "triangles": 5651
+  "triangles": 5651,
+  "lod2": {
+   "sourceHash": "0bd6d198c4c47de7",
+   "buildVersion": 1,
+   "bytes": 18164,
+   "triangles": 949
+  }
  },
  "sexmuseum-venustempel": {
   "sourceHash": "8799c5dfa9ac10d0",
   "buildVersion": 2,
   "bytes": 23252,
-  "triangles": 906
+  "triangles": 906,
+  "lod2": {
+   "sourceHash": "8799c5dfa9ac10d0",
+   "buildVersion": 1,
+   "bytes": 4040,
+   "triangles": 102
+  }
  },
  "oude-lutherse-kerk": {
   "sourceHash": "35dd3bd53e42e37a",
   "buildVersion": 2,
   "bytes": 45756,
-  "triangles": 2162
+  "triangles": 2162,
+  "lod2": {
+   "sourceHash": "35dd3bd53e42e37a",
+   "buildVersion": 1,
+   "bytes": 6676,
+   "triangles": 260
+  }
  },
  "kattenkabinet": {
   "sourceHash": "869e1a54afec4ce1",
   "buildVersion": 2,
   "bytes": 24872,
-  "triangles": 949
+  "triangles": 949,
+  "lod2": {
+   "sourceHash": "869e1a54afec4ce1",
+   "buildVersion": 1,
+   "bytes": 4436,
+   "triangles": 146
+  }
  },
  "pianola-museum": {
   "sourceHash": "f8e211dedb552b92",
   "buildVersion": 2,
   "bytes": 32460,
-  "triangles": 1302
+  "triangles": 1302,
+  "lod2": {
+   "sourceHash": "f8e211dedb552b92",
+   "buildVersion": 1,
+   "bytes": 4388,
+   "triangles": 136
+  }
  },
  "amsta-de-poort": {
   "sourceHash": "768b267959b06b7d",
   "buildVersion": 2,
   "bytes": 46344,
-  "triangles": 2689
+  "triangles": 2689,
+  "lod2": {
+   "sourceHash": "768b267959b06b7d",
+   "buildVersion": 1,
+   "bytes": 19904,
+   "triangles": 1390
+  }
  },
  "rembrandt-tower": {
   "sourceHash": "b0a531f37b0b06a3",
   "buildVersion": 2,
   "bytes": 48692,
-  "triangles": 2624
+  "triangles": 2624,
+  "lod2": {
+   "sourceHash": "b0a531f37b0b06a3",
+   "buildVersion": 1,
+   "bytes": 8184,
+   "triangles": 348
+  }
  },
  "breitner-tower": {
   "sourceHash": "cbf28700115ee162",
   "buildVersion": 2,
   "bytes": 38832,
-  "triangles": 2066
+  "triangles": 2066,
+  "lod2": {
+   "sourceHash": "cbf28700115ee162",
+   "buildVersion": 1,
+   "bytes": 6084,
+   "triangles": 210
+  }
  },
  "mondriaan-tower": {
   "sourceHash": "cc79a4c11f99876d",
   "buildVersion": 2,
   "bytes": 39308,
-  "triangles": 2186
+  "triangles": 2186,
+  "lod2": {
+   "sourceHash": "cc79a4c11f99876d",
+   "buildVersion": 1,
+   "bytes": 6876,
+   "triangles": 246
+  }
  },
  "de-piramides": {
   "sourceHash": "d023352d83b52aeb",
   "buildVersion": 2,
   "bytes": 93556,
-  "triangles": 4970
+  "triangles": 4970,
+  "lod2": {
+   "sourceHash": "d023352d83b52aeb",
+   "buildVersion": 1,
+   "bytes": 13144,
+   "triangles": 550
+  }
  },
  "zuiveringshal-west": {
   "sourceHash": "0c0b7a3ff1f3840f",
   "buildVersion": 2,
   "bytes": 30568,
-  "triangles": 1668
+  "triangles": 1668,
+  "lod2": {
+   "sourceHash": "0c0b7a3ff1f3840f",
+   "buildVersion": 1,
+   "bytes": 6776,
+   "triangles": 249
+  }
  },
  "amsterdam-in-motion": {
   "sourceHash": "5dc6daa86b9b3de7",
   "buildVersion": 2,
   "bytes": 19820,
-  "triangles": 782
+  "triangles": 782,
+  "lod2": {
+   "sourceHash": "5dc6daa86b9b3de7",
+   "buildVersion": 1,
+   "bytes": 4680,
+   "triangles": 129
+  }
  },
  "de-krakeling": {
   "sourceHash": "aad82236830324a4",
   "buildVersion": 2,
   "bytes": 23128,
-  "triangles": 891
+  "triangles": 891,
+  "lod2": {
+   "sourceHash": "aad82236830324a4",
+   "buildVersion": 1,
+   "bytes": 5364,
+   "triangles": 174
+  }
  },
  "sloterdijk-station": {
   "sourceHash": "3a518469067cf2cd",
   "buildVersion": 2,
   "bytes": 38672,
-  "triangles": 1812
+  "triangles": 1812,
+  "lod2": {
+   "sourceHash": "3a518469067cf2cd",
+   "buildVersion": 1,
+   "bytes": 14636,
+   "triangles": 756
+  }
  },
  "hnk-sloterdijk": {
   "sourceHash": "821f04c93f199c44",
   "buildVersion": 2,
   "bytes": 80468,
-  "triangles": 4112
+  "triangles": 4112,
+  "lod2": {
+   "sourceHash": "821f04c93f199c44",
+   "buildVersion": 1,
+   "bytes": 9648,
+   "triangles": 378
+  }
  },
  "machinegebouw": {
   "sourceHash": "d8c9c8e5dde80167",
   "buildVersion": 2,
   "bytes": 18212,
-  "triangles": 643
+  "triangles": 643,
+  "lod2": {
+   "sourceHash": "d8c9c8e5dde80167",
+   "buildVersion": 1,
+   "bytes": 3780,
+   "triangles": 80
+  }
  },
  "de-wester": {
   "sourceHash": "5ac4f3fd46a8936c",
   "buildVersion": 2,
   "bytes": 18396,
-  "triangles": 753
+  "triangles": 753,
+  "lod2": {
+   "sourceHash": "5ac4f3fd46a8936c",
+   "buildVersion": 1,
+   "bytes": 3872,
+   "triangles": 89
+  }
  },
  "amstel-hotel": {
   "sourceHash": "e41dd9b73159c0b8",
   "buildVersion": 2,
   "bytes": 65952,
-  "triangles": 4149
+  "triangles": 4149,
+  "lod2": {
+   "sourceHash": "e41dd9b73159c0b8",
+   "buildVersion": 1,
+   "bytes": 14228,
+   "triangles": 820
+  }
  },
  "faralda-crane-hotel": {
   "sourceHash": "9f71e96b68a985c7",
   "buildVersion": 2,
   "bytes": 25892,
-  "triangles": 918
+  "triangles": 918,
+  "lod2": {
+   "sourceHash": "9f71e96b68a985c7",
+   "buildVersion": 1,
+   "bytes": 4536,
+   "triangles": 116
+  }
  },
  "ing-house": {
   "sourceHash": "2effacb22193ad48",
   "buildVersion": 2,
   "bytes": 42696,
-  "triangles": 2100
+  "triangles": 2100,
+  "lod2": {
+   "sourceHash": "2effacb22193ad48",
+   "buildVersion": 1,
+   "bytes": 12628,
+   "triangles": 527
+  }
  },
  "muiderpoort": {
   "sourceHash": "54106702988c35bc",
   "buildVersion": 2,
   "bytes": 54360,
-  "triangles": 2443
+  "triangles": 2443,
+  "lod2": {
+   "sourceHash": "54106702988c35bc",
+   "buildVersion": 1,
+   "bytes": 10072,
+   "triangles": 332
+  }
  },
  "idfa-pavilion": {
   "sourceHash": "a90e67ed8e6483ba",
   "buildVersion": 2,
   "bytes": 47232,
-  "triangles": 2552
+  "triangles": 2552,
+  "lod2": {
+   "sourceHash": "a90e67ed8e6483ba",
+   "buildVersion": 1,
+   "bytes": 7784,
+   "triangles": 347
+  }
  },
  "social-history": {
   "sourceHash": "0d97bc6ba8d2a685",
   "buildVersion": 2,
   "bytes": 17072,
-  "triangles": 657
+  "triangles": 657,
+  "lod2": {
+   "sourceHash": "0d97bc6ba8d2a685",
+   "buildVersion": 1,
+   "bytes": 6996,
+   "triangles": 299
+  }
  },
  "dageraad": {
   "sourceHash": "34ae76bf6a6a5cf4",
   "buildVersion": 2,
   "bytes": 20196,
-  "triangles": 788
+  "triangles": 788,
+  "lod2": {
+   "sourceHash": "34ae76bf6a6a5cf4",
+   "buildVersion": 1,
+   "bytes": 5604,
+   "triangles": 187
+  }
  },
  "canals-museum": {
   "sourceHash": "a6eca24167c2892b",
   "buildVersion": 2,
   "bytes": 24720,
-  "triangles": 1041
+  "triangles": 1041,
+  "lod2": {
+   "sourceHash": "a6eca24167c2892b",
+   "buildVersion": 1,
+   "bytes": 4180,
+   "triangles": 130
+  }
  },
  "niod": {
   "sourceHash": "07a4f082790f72a1",
   "buildVersion": 2,
   "bytes": 45904,
-  "triangles": 2395
+  "triangles": 2395,
+  "lod2": {
+   "sourceHash": "07a4f082790f72a1",
+   "buildVersion": 1,
+   "bytes": 7032,
+   "triangles": 287
+  }
  },
  "multatuli": {
   "sourceHash": "027c8dae462ec068",
   "buildVersion": 2,
   "bytes": 23376,
-  "triangles": 757
+  "triangles": 757,
+  "lod2": {
+   "sourceHash": "027c8dae462ec068",
+   "buildVersion": 1,
+   "bytes": 3808,
+   "triangles": 90
+  }
  },
  "singelkerk": {
   "sourceHash": "fdb4667127c0d7fe",
   "buildVersion": 2,
   "bytes": 33588,
-  "triangles": 1348
+  "triangles": 1348,
+  "lod2": {
+   "sourceHash": "fdb4667127c0d7fe",
+   "buildVersion": 1,
+   "bytes": 9948,
+   "triangles": 357
+  }
  },
  "sint-agneskerk": {
   "sourceHash": "9d693c1565161b91",
   "buildVersion": 2,
   "bytes": 63216,
-  "triangles": 3010
+  "triangles": 3010,
+  "lod2": {
+   "sourceHash": "9d693c1565161b91",
+   "buildVersion": 1,
+   "bytes": 9940,
+   "triangles": 397
+  }
  },
  "petruskerk": {
   "sourceHash": "c8f78828c9c8e8b1",
   "buildVersion": 2,
   "bytes": 38392,
-  "triangles": 1734
+  "triangles": 1734,
+  "lod2": {
+   "sourceHash": "c8f78828c9c8e8b1",
+   "buildVersion": 1,
+   "bytes": 5016,
+   "triangles": 142
+  }
  },
  "boomkerk": {
   "sourceHash": "cbc066efa0fc689d",
   "buildVersion": 2,
   "bytes": 53820,
-  "triangles": 2571
+  "triangles": 2571,
+  "lod2": {
+   "sourceHash": "cbc066efa0fc689d",
+   "buildVersion": 1,
+   "bytes": 8752,
+   "triangles": 336
+  }
  },
  "w139": {
   "sourceHash": "5a1c77850473e6e8",
   "buildVersion": 2,
   "bytes": 33684,
-  "triangles": 1197
+  "triangles": 1197,
+  "lod2": {
+   "sourceHash": "5a1c77850473e6e8",
+   "buildVersion": 1,
+   "bytes": 8432,
+   "triangles": 312
+  }
  },
  "conservatorium": {
   "sourceHash": "1ef280694b29e408",
   "buildVersion": 2,
   "bytes": 81120,
-  "triangles": 4430
+  "triangles": 4430,
+  "lod2": {
+   "sourceHash": "1ef280694b29e408",
+   "buildVersion": 1,
+   "bytes": 14792,
+   "triangles": 702
+  }
  },
  "kinderkookkafe": {
   "sourceHash": "e75a8c62bd19e619",
   "buildVersion": 2,
   "bytes": 23992,
-  "triangles": 782
+  "triangles": 782,
+  "lod2": {
+   "sourceHash": "e75a8c62bd19e619",
+   "buildVersion": 1,
+   "bytes": 4596,
+   "triangles": 103
+  }
  },
  "beta-boulders": {
   "sourceHash": "9db01712475e16f6",
   "buildVersion": 2,
   "bytes": 60404,
-  "triangles": 2842
+  "triangles": 2842,
+  "lod2": {
+   "sourceHash": "9db01712475e16f6",
+   "buildVersion": 1,
+   "bytes": 15148,
+   "triangles": 521
+  }
  },
  "beest-boulders": {
   "sourceHash": "706557a1657d97f0",
@@ -845,1582 +1845,3448 @@
   "bytes": 91900,
   "triangles": 4819
  },
+ "klimmuur-centraal": {
+  "lod2": {
+   "sourceHash": "d8a425109051a29f",
+   "buildVersion": 1,
+   "bytes": 3224,
+   "triangles": 40
+  }
+ },
  "mountain-network": {
   "sourceHash": "3c9854b8fa07f8a1",
   "buildVersion": 2,
   "bytes": 125208,
-  "triangles": 6928
+  "triangles": 6928,
+  "lod2": {
+   "sourceHash": "3c9854b8fa07f8a1",
+   "buildVersion": 1,
+   "bytes": 18672,
+   "triangles": 871
+  }
  },
  "keith-haring-mural": {
   "sourceHash": "704dfad29fecf2db",
   "buildVersion": 2,
   "bytes": 25340,
-  "triangles": 877
+  "triangles": 877,
+  "lod2": {
+   "sourceHash": "704dfad29fecf2db",
+   "buildVersion": 1,
+   "bytes": 5296,
+   "triangles": 187
+  }
  },
  "valley": {
   "sourceHash": "b0fd184920c6d816",
   "buildVersion": 2,
   "bytes": 153008,
-  "triangles": 11624
+  "triangles": 11624,
+  "lod2": {
+   "sourceHash": "b0fd184920c6d816",
+   "buildVersion": 1,
+   "bytes": 103120,
+   "triangles": 4931
+  }
  },
  "ndsm-warehouse-complex": {
   "sourceHash": "26713ac3d6ab6d35",
   "buildVersion": 2,
   "bytes": 44960,
-  "triangles": 2383
+  "triangles": 2383,
+  "lod2": {
+   "sourceHash": "26713ac3d6ab6d35",
+   "buildVersion": 1,
+   "bytes": 34676,
+   "triangles": 2000
+  }
  },
  "midwest": {
   "sourceHash": "1bd8d4fddaa797a5",
   "buildVersion": 2,
   "bytes": 45524,
-  "triangles": 1802
+  "triangles": 1802,
+  "lod2": {
+   "sourceHash": "1bd8d4fddaa797a5",
+   "buildVersion": 1,
+   "bytes": 6232,
+   "triangles": 209
+  }
  },
  "nikolaas-myrakerk": {
   "sourceHash": "339327220c42dd6c",
   "buildVersion": 2,
   "bytes": 41100,
-  "triangles": 1662
+  "triangles": 1662,
+  "lod2": {
+   "sourceHash": "339327220c42dd6c",
+   "buildVersion": 1,
+   "bytes": 7148,
+   "triangles": 248
+  }
  },
  "naco-house": {
   "sourceHash": "0a471dbcb07e6bec",
   "buildVersion": 2,
   "bytes": 20028,
-  "triangles": 634
+  "triangles": 634,
+  "lod2": {
+   "sourceHash": "0a471dbcb07e6bec",
+   "buildVersion": 1,
+   "bytes": 3656,
+   "triangles": 68
+  }
  },
  "jeruzalemkerk": {
   "sourceHash": "e38452b4dd1f46f9",
   "buildVersion": 2,
   "bytes": 34844,
-  "triangles": 1354
+  "triangles": 1354,
+  "lod2": {
+   "sourceHash": "e38452b4dd1f46f9",
+   "buildVersion": 1,
+   "bytes": 4908,
+   "triangles": 160
+  }
  },
  "blauwe-theehuis": {
   "sourceHash": "2c76f7ae7905c362",
   "buildVersion": 2,
   "bytes": 34240,
-  "triangles": 1581
+  "triangles": 1581,
+  "lod2": {
+   "sourceHash": "2c76f7ae7905c362",
+   "buildVersion": 1,
+   "bytes": 6056,
+   "triangles": 178
+  }
+ },
+ "groot-melkhuis": {
+  "lod2": {
+   "sourceHash": "4fa0cb401d2478c6",
+   "buildVersion": 1,
+   "bytes": 3416,
+   "triangles": 56
+  }
+ },
+ "beest-het-lab": {
+  "lod2": {
+   "sourceHash": "63dfb1e9227b8af7",
+   "buildVersion": 1,
+   "bytes": 7032,
+   "triangles": 233
+  }
  },
  "kesbeke": {
   "sourceHash": "0ffc69c585380c26",
   "buildVersion": 2,
   "bytes": 69876,
-  "triangles": 5792
+  "triangles": 5792,
+  "lod2": {
+   "sourceHash": "0ffc69c585380c26",
+   "buildVersion": 1,
+   "bytes": 27748,
+   "triangles": 2000
+  }
  },
  "kesbeke-shop": {
   "sourceHash": "2229c9abcaa2505c",
   "buildVersion": 2,
   "bytes": 32240,
-  "triangles": 1250
+  "triangles": 1250,
+  "lod2": {
+   "sourceHash": "2229c9abcaa2505c",
+   "buildVersion": 1,
+   "bytes": 5432,
+   "triangles": 187
+  }
  },
  "ndsm-container-arch": {
   "sourceHash": "9f4a558c30b94695",
   "buildVersion": 2,
   "bytes": 49460,
-  "triangles": 2577
+  "triangles": 2577,
+  "lod2": {
+   "sourceHash": "9f4a558c30b94695",
+   "buildVersion": 1,
+   "bytes": 8980,
+   "triangles": 322
+  }
  },
  "wine-guildhall": {
   "sourceHash": "84ed7c9c40dfa11e",
   "buildVersion": 2,
   "bytes": 34132,
-  "triangles": 1487
+  "triangles": 1487,
+  "lod2": {
+   "sourceHash": "84ed7c9c40dfa11e",
+   "buildVersion": 1,
+   "bytes": 7256,
+   "triangles": 240
+  }
  },
  "the-rock": {
   "sourceHash": "affc853ba557e9c9",
   "buildVersion": 2,
   "bytes": 72028,
-  "triangles": 5430
+  "triangles": 5430,
+  "lod2": {
+   "sourceHash": "affc853ba557e9c9",
+   "buildVersion": 1,
+   "bytes": 42992,
+   "triangles": 1938
+  }
  },
  "rai-amsterdam": {
   "sourceHash": "3b9f218afb3be951",
   "buildVersion": 2,
   "bytes": 82028,
-  "triangles": 5101
+  "triangles": 5101,
+  "lod2": {
+   "sourceHash": "3b9f218afb3be951",
+   "buildVersion": 1,
+   "bytes": 45880,
+   "triangles": 1986
+  }
  },
  "pulitzer-amsterdam": {
   "sourceHash": "a4cfccd473d8830d",
   "buildVersion": 2,
   "bytes": 117768,
-  "triangles": 7093
+  "triangles": 7093,
+  "lod2": {
+   "sourceHash": "a4cfccd473d8830d",
+   "buildVersion": 1,
+   "bytes": 38960,
+   "triangles": 1995
+  }
  },
  "de-gooyer": {
   "sourceHash": "f3dec5518d716788",
   "buildVersion": 2,
   "bytes": 22488,
-  "triangles": 679
+  "triangles": 679,
+  "lod2": {
+   "sourceHash": "f3dec5518d716788",
+   "buildVersion": 1,
+   "bytes": 3788,
+   "triangles": 81
+  }
  },
  "nieuw-dakota": {
   "sourceHash": "c080935a9df679fd",
   "buildVersion": 2,
   "bytes": 21724,
-  "triangles": 728
+  "triangles": 728,
+  "lod2": {
+   "sourceHash": "c080935a9df679fd",
+   "buildVersion": 1,
+   "bytes": 4360,
+   "triangles": 92
+  }
  },
  "treehouse-ndsm": {
   "sourceHash": "b25a90f1046b376a",
   "buildVersion": 2,
   "bytes": 63576,
-  "triangles": 3671
+  "triangles": 3671,
+  "lod2": {
+   "sourceHash": "b25a90f1046b376a",
+   "buildVersion": 1,
+   "bytes": 10588,
+   "triangles": 449
+  }
  },
  "centrale-markthal": {
   "sourceHash": "9ce6b54498760a99",
   "buildVersion": 2,
   "bytes": 67920,
-  "triangles": 4055
+  "triangles": 4055,
+  "lod2": {
+   "sourceHash": "9ce6b54498760a99",
+   "buildVersion": 1,
+   "bytes": 11980,
+   "triangles": 508
+  }
  },
  "rasphuispoort": {
   "sourceHash": "999ec12436855ecc",
   "buildVersion": 2,
   "bytes": 37220,
-  "triangles": 1552
+  "triangles": 1552,
+  "lod2": {
+   "sourceHash": "999ec12436855ecc",
+   "buildVersion": 1,
+   "bytes": 5172,
+   "triangles": 128
+  }
+ },
+ "vondeltuin": {
+  "lod2": {
+   "sourceHash": "28c954de1ae9491b",
+   "buildVersion": 1,
+   "bytes": 3064,
+   "triangles": 46
+  }
  },
  "monk-amsterdam": {
   "sourceHash": "d9da83391c4cdbb3",
   "buildVersion": 2,
   "bytes": 19472,
-  "triangles": 732
+  "triangles": 732,
+  "lod2": {
+   "sourceHash": "d9da83391c4cdbb3",
+   "buildVersion": 1,
+   "bytes": 11832,
+   "triangles": 496
+  }
  },
  "straat-museum": {
   "sourceHash": "6b165e582965dd13",
   "buildVersion": 2,
   "bytes": 35380,
-  "triangles": 1385
+  "triangles": 1385,
+  "lod2": {
+   "sourceHash": "6b165e582965dd13",
+   "buildVersion": 1,
+   "bytes": 5448,
+   "triangles": 174
+  }
  },
  "pllek": {
   "sourceHash": "8f3c171c4624ad43",
   "buildVersion": 2,
   "bytes": 37932,
-  "triangles": 1614
+  "triangles": 1614,
+  "lod2": {
+   "sourceHash": "8f3c171c4624ad43",
+   "buildVersion": 1,
+   "bytes": 8460,
+   "triangles": 357
+  }
+ },
+ "brouwerij-het-ij": {
+  "lod2": {
+   "sourceHash": "1677082daee69e53",
+   "buildVersion": 1,
+   "bytes": 4276,
+   "triangles": 103
+  }
  },
  "vinoly": {
   "sourceHash": "a1bf421212f4b2dd",
   "buildVersion": 2,
   "bytes": 62380,
-  "triangles": 3012
+  "triangles": 3012,
+  "lod2": {
+   "sourceHash": "a1bf421212f4b2dd",
+   "buildVersion": 1,
+   "bytes": 9672,
+   "triangles": 394
+  }
  },
  "el-tawheed": {
   "sourceHash": "5fa5f3ef794687df",
   "buildVersion": 2,
   "bytes": 31400,
-  "triangles": 1132
+  "triangles": 1132,
+  "lod2": {
+   "sourceHash": "5fa5f3ef794687df",
+   "buildVersion": 1,
+   "bytes": 4736,
+   "triangles": 111
+  }
  },
  "haparandaweg-2-4": {
   "sourceHash": "a93042826f85b8a2",
   "buildVersion": 2,
   "bytes": 93792,
-  "triangles": 4501
+  "triangles": 4501,
+  "lod2": {
+   "sourceHash": "a93042826f85b8a2",
+   "buildVersion": 1,
+   "bytes": 14044,
+   "triangles": 523
+  }
  },
  "afrikahuis": {
   "sourceHash": "6290ec8a232cd883",
   "buildVersion": 2,
   "bytes": 84428,
-  "triangles": 4290
+  "triangles": 4290,
+  "lod2": {
+   "sourceHash": "6290ec8a232cd883",
+   "buildVersion": 1,
+   "bytes": 13036,
+   "triangles": 547
+  }
  },
  "haparandaweg-8-338": {
   "sourceHash": "2fe8cb2613c8fecd",
   "buildVersion": 2,
   "bytes": 92368,
-  "triangles": 5829
+  "triangles": 5829,
+  "lod2": {
+   "sourceHash": "2fe8cb2613c8fecd",
+   "buildVersion": 1,
+   "bytes": 21392,
+   "triangles": 1612
+  }
+ },
+ "haparandaweg-9": {
+  "lod2": {
+   "sourceHash": "6f80e976de93a48c",
+   "buildVersion": 1,
+   "bytes": 2988,
+   "triangles": 34
+  }
+ },
+ "haparandaweg-11": {
+  "lod2": {
+   "sourceHash": "d8f40af285400b88",
+   "buildVersion": 1,
+   "bytes": 2792,
+   "triangles": 28
+  }
+ },
+ "haparandaweg-13": {
+  "lod2": {
+   "sourceHash": "33a18013f8346b8a",
+   "buildVersion": 1,
+   "bytes": 2480,
+   "triangles": 14
+  }
  },
  "electric-ladyland": {
   "sourceHash": "2fc0e56c723ffa98",
   "buildVersion": 2,
   "bytes": 44804,
-  "triangles": 2195
+  "triangles": 2195,
+  "lod2": {
+   "sourceHash": "2fc0e56c723ffa98",
+   "buildVersion": 1,
+   "bytes": 7036,
+   "triangles": 277
+  }
  },
  "cafe-kobalt": {
   "sourceHash": "c787ae2afa017062",
   "buildVersion": 2,
   "bytes": 33028,
-  "triangles": 1207
+  "triangles": 1207,
+  "lod2": {
+   "sourceHash": "c787ae2afa017062",
+   "buildVersion": 1,
+   "bytes": 6140,
+   "triangles": 140
+  }
  },
  "podium-mozaiek": {
   "sourceHash": "c759556f16122968",
   "buildVersion": 2,
   "bytes": 59796,
-  "triangles": 3246
+  "triangles": 3246,
+  "lod2": {
+   "sourceHash": "c759556f16122968",
+   "buildVersion": 1,
+   "bytes": 10972,
+   "triangles": 430
+  }
  },
  "dorus-theus-brug": {
   "sourceHash": "e0265562540b159e",
   "buildVersion": 2,
   "bytes": 66228,
-  "triangles": 3527
+  "triangles": 3527,
+  "lod2": {
+   "sourceHash": "e0265562540b159e",
+   "buildVersion": 1,
+   "bytes": 9628,
+   "triangles": 484
+  }
  },
  "collectie-six": {
   "sourceHash": "4d45dee33be6afb2",
   "buildVersion": 2,
   "bytes": 27880,
-  "triangles": 1094
+  "triangles": 1094,
+  "lod2": {
+   "sourceHash": "4d45dee33be6afb2",
+   "buildVersion": 1,
+   "bytes": 8416,
+   "triangles": 309
+  }
  },
  "oosterparkkerk": {
   "sourceHash": "d2b68dced647f5f0",
   "buildVersion": 2,
   "bytes": 46612,
-  "triangles": 2326
+  "triangles": 2326,
+  "lod2": {
+   "sourceHash": "d2b68dced647f5f0",
+   "buildVersion": 1,
+   "bytes": 8540,
+   "triangles": 308
+  }
  },
  "mediamatic": {
   "sourceHash": "fbce7e788ce53c61",
   "buildVersion": 2,
   "bytes": 70320,
-  "triangles": 3542
+  "triangles": 3542,
+  "lod2": {
+   "sourceHash": "fbce7e788ce53c61",
+   "buildVersion": 1,
+   "bytes": 11212,
+   "triangles": 425
+  }
  },
  "fire-station-hendrik": {
   "sourceHash": "6febb35df8243ad4",
   "buildVersion": 2,
   "bytes": 43600,
-  "triangles": 1960
+  "triangles": 1960,
+  "lod2": {
+   "sourceHash": "6febb35df8243ad4",
+   "buildVersion": 1,
+   "bytes": 7072,
+   "triangles": 247
+  }
  },
  "fire-station-dirk": {
   "sourceHash": "93354fbb1b366df0",
   "buildVersion": 2,
   "bytes": 63148,
-  "triangles": 2746
+  "triangles": 2746,
+  "lod2": {
+   "sourceHash": "93354fbb1b366df0",
+   "buildVersion": 1,
+   "bytes": 9204,
+   "triangles": 327
+  }
  },
  "fire-station-nico": {
   "sourceHash": "185184fe7ad68702",
   "buildVersion": 2,
   "bytes": 82480,
-  "triangles": 4432
+  "triangles": 4432,
+  "lod2": {
+   "sourceHash": "185184fe7ad68702",
+   "buildVersion": 1,
+   "bytes": 11172,
+   "triangles": 556
+  }
  },
  "fire-station-osdorp": {
   "sourceHash": "e8ea4dce0c62b898",
   "buildVersion": 2,
   "bytes": 73492,
-  "triangles": 3515
+  "triangles": 3515,
+  "lod2": {
+   "sourceHash": "e8ea4dce0c62b898",
+   "buildVersion": 1,
+   "bytes": 12868,
+   "triangles": 448
+  }
  },
  "fire-station-teunis": {
   "sourceHash": "72f460e59ae4d033",
   "buildVersion": 2,
   "bytes": 28544,
-  "triangles": 986
+  "triangles": 986,
+  "lod2": {
+   "sourceHash": "72f460e59ae4d033",
+   "buildVersion": 1,
+   "bytes": 4628,
+   "triangles": 124
+  }
  },
  "fire-station-victor": {
   "sourceHash": "b273089787690b71",
   "buildVersion": 2,
   "bytes": 68236,
-  "triangles": 3234
+  "triangles": 3234,
+  "lod2": {
+   "sourceHash": "b273089787690b71",
+   "buildVersion": 1,
+   "bytes": 11200,
+   "triangles": 412
+  }
  },
  "fire-station-willem": {
   "sourceHash": "1a9f6587be889f28",
   "buildVersion": 2,
   "bytes": 108736,
-  "triangles": 6286
+  "triangles": 6286,
+  "lod2": {
+   "sourceHash": "1a9f6587be889f28",
+   "buildVersion": 1,
+   "bytes": 23816,
+   "triangles": 1409
+  }
  },
  "fire-station-ijsbrand": {
   "sourceHash": "b96d57b1383f8168",
   "buildVersion": 2,
   "bytes": 34896,
-  "triangles": 1380
+  "triangles": 1380,
+  "lod2": {
+   "sourceHash": "b96d57b1383f8168",
+   "buildVersion": 1,
+   "bytes": 5280,
+   "triangles": 161
+  }
  },
  "fire-station-pieter": {
   "sourceHash": "27ff8cd0b2414a6c",
   "buildVersion": 2,
   "bytes": 31280,
-  "triangles": 1229
+  "triangles": 1229,
+  "lod2": {
+   "sourceHash": "27ff8cd0b2414a6c",
+   "buildVersion": 1,
+   "bytes": 4736,
+   "triangles": 143
+  }
  },
  "fire-station-zebra": {
   "sourceHash": "157de70588496e4b",
   "buildVersion": 2,
   "bytes": 37760,
-  "triangles": 1443
+  "triangles": 1443,
+  "lod2": {
+   "sourceHash": "157de70588496e4b",
+   "buildVersion": 1,
+   "bytes": 5720,
+   "triangles": 173
+  }
  },
  "fire-station-weesp": {
   "sourceHash": "363874599312211d",
   "buildVersion": 2,
   "bytes": 22068,
-  "triangles": 636
+  "triangles": 636,
+  "lod2": {
+   "sourceHash": "363874599312211d",
+   "buildVersion": 1,
+   "bytes": 4640,
+   "triangles": 102
+  }
+ },
+ "fire-station-driemond": {
+  "lod2": {
+   "sourceHash": "20f65b9d9599d75b",
+   "buildVersion": 1,
+   "bytes": 3692,
+   "triangles": 60
+  }
  },
  "fire-station-anton": {
   "sourceHash": "d8e7036396fc4ebb",
   "buildVersion": 2,
   "bytes": 65052,
-  "triangles": 2728
+  "triangles": 2728,
+  "lod2": {
+   "sourceHash": "d8e7036396fc4ebb",
+   "buildVersion": 1,
+   "bytes": 12964,
+   "triangles": 474
+  }
  },
  "this-is-holland": {
   "sourceHash": "ecb2668aa414b89e",
   "buildVersion": 2,
   "bytes": 82700,
-  "triangles": 4005
+  "triangles": 4005,
+  "lod2": {
+   "sourceHash": "ecb2668aa414b89e",
+   "buildVersion": 1,
+   "bytes": 14820,
+   "triangles": 554
+  }
  },
  "luther-museum": {
   "sourceHash": "e2c2dbde73e6c9ad",
   "buildVersion": 2,
   "bytes": 59672,
-  "triangles": 3034
+  "triangles": 3034,
+  "lod2": {
+   "sourceHash": "e2c2dbde73e6c9ad",
+   "buildVersion": 1,
+   "bytes": 20896,
+   "triangles": 1056
+  }
  },
  "huize-frankendael": {
   "sourceHash": "7030412c2dd4963a",
   "buildVersion": 2,
   "bytes": 60856,
-  "triangles": 3034
+  "triangles": 3034,
+  "lod2": {
+   "sourceHash": "7030412c2dd4963a",
+   "buildVersion": 1,
+   "bytes": 9164,
+   "triangles": 376
+  }
  },
  "uilenburger-synagoge": {
   "sourceHash": "6b3bb1b5c5dbafbb",
   "buildVersion": 2,
   "bytes": 48012,
-  "triangles": 1977
+  "triangles": 1977,
+  "lod2": {
+   "sourceHash": "6b3bb1b5c5dbafbb",
+   "buildVersion": 1,
+   "bytes": 8660,
+   "triangles": 254
+  }
  },
  "nieuwendammerkerk": {
   "sourceHash": "c20af42bf2018526",
   "buildVersion": 2,
   "bytes": 44120,
-  "triangles": 1710
+  "triangles": 1710,
+  "lod2": {
+   "sourceHash": "c20af42bf2018526",
+   "buildVersion": 1,
+   "bytes": 7416,
+   "triangles": 243
+  }
  },
  "meerpadkerk": {
   "sourceHash": "4d8cc7071328b2c0",
   "buildVersion": 2,
   "bytes": 27428,
-  "triangles": 1084
+  "triangles": 1084,
+  "lod2": {
+   "sourceHash": "4d8cc7071328b2c0",
+   "buildVersion": 1,
+   "bytes": 5764,
+   "triangles": 141
+  }
  },
  "hannekes-boom": {
   "sourceHash": "a11dbf621df46ba6",
   "buildVersion": 2,
   "bytes": 41044,
-  "triangles": 1396
+  "triangles": 1396,
+  "lod2": {
+   "sourceHash": "a11dbf621df46ba6",
+   "buildVersion": 1,
+   "bytes": 5876,
+   "triangles": 151
+  }
  },
  "posthoornkerk": {
   "sourceHash": "de45836a40f4cc52",
   "buildVersion": 2,
   "bytes": 113672,
-  "triangles": 6021
+  "triangles": 6021,
+  "lod2": {
+   "sourceHash": "de45836a40f4cc52",
+   "buildVersion": 1,
+   "bytes": 16336,
+   "triangles": 782
+  }
  },
  "haparandaweg-57": {
   "sourceHash": "b236ae3c9963f018",
   "buildVersion": 2,
   "bytes": 37536,
-  "triangles": 1518
+  "triangles": 1518,
+  "lod2": {
+   "sourceHash": "b236ae3c9963f018",
+   "buildVersion": 1,
+   "bytes": 5668,
+   "triangles": 188
+  }
  },
  "keizersgrachtkerk": {
   "sourceHash": "bd8bb0b02bd4575d",
   "buildVersion": 2,
   "bytes": 68412,
-  "triangles": 3386
+  "triangles": 3386,
+  "lod2": {
+   "sourceHash": "bd8bb0b02bd4575d",
+   "buildVersion": 1,
+   "bytes": 20456,
+   "triangles": 1015
+  }
  },
  "gerard-dou-synagogue": {
   "sourceHash": "1b5f6d3d4a815cc7",
   "buildVersion": 2,
   "bytes": 25184,
-  "triangles": 810
+  "triangles": 810,
+  "lod2": {
+   "sourceHash": "1b5f6d3d4a815cc7",
+   "buildVersion": 1,
+   "bytes": 4612,
+   "triangles": 104
+  }
  },
  "lekstraat-synagoge": {
   "sourceHash": "8bd7c1f86926776a",
   "buildVersion": 2,
   "bytes": 50248,
-  "triangles": 2255
+  "triangles": 2255,
+  "lod2": {
+   "sourceHash": "8bd7c1f86926776a",
+   "buildVersion": 1,
+   "bytes": 6948,
+   "triangles": 268
+  }
  },
  "petrus-en-paulus-kerk": {
   "sourceHash": "e845396407e19e33",
   "buildVersion": 2,
   "bytes": 51524,
-  "triangles": 2008
+  "triangles": 2008,
+  "lod2": {
+   "sourceHash": "e845396407e19e33",
+   "buildVersion": 1,
+   "bytes": 8528,
+   "triangles": 256
+  }
  },
  "maarten-lutherkerk": {
   "sourceHash": "a5fc6a059de6c2a3",
   "buildVersion": 2,
   "bytes": 29092,
-  "triangles": 938
+  "triangles": 938,
+  "lod2": {
+   "sourceHash": "a5fc6a059de6c2a3",
+   "buildVersion": 1,
+   "bytes": 4628,
+   "triangles": 95
+  }
+ },
+ "museum-amsterdam-noord": {
+  "lod2": {
+   "sourceHash": "efc6d1d52ec7d8b8",
+   "buildVersion": 1,
+   "bytes": 3492,
+   "triangles": 48
+  }
+ },
+ "levend-paardenmuseum": {
+  "lod2": {
+   "sourceHash": "d9e7ab3c0233e393",
+   "buildVersion": 1,
+   "bytes": 6532,
+   "triangles": 177
+  }
  },
  "oudemanhuispoort": {
   "sourceHash": "09f6a8014e1f5323",
   "buildVersion": 2,
   "bytes": 37212,
-  "triangles": 1307
+  "triangles": 1307,
+  "lod2": {
+   "sourceHash": "09f6a8014e1f5323",
+   "buildVersion": 1,
+   "bytes": 5780,
+   "triangles": 143
+  }
+ },
+ "torture-museum": {
+  "lod2": {
+   "sourceHash": "a4f79228351fe998",
+   "buildVersion": 1,
+   "bytes": 3712,
+   "triangles": 59
+  }
+ },
+ "theo-thijssen-museum": {
+  "lod2": {
+   "sourceHash": "aa2f8da43b96f71a",
+   "buildVersion": 1,
+   "bytes": 3100,
+   "triangles": 37
+  }
+ },
+ "houseboat-museum": {
+  "lod2": {
+   "sourceHash": "cf941fb165642276",
+   "buildVersion": 1,
+   "bytes": 2576,
+   "triangles": 13
+  }
+ },
+ "sint-olofskapel": {
+  "lod2": {
+   "sourceHash": "99b0b0daaa02c5f0",
+   "buildVersion": 1,
+   "bytes": 3376,
+   "triangles": 46
+  }
  },
  "koningskerk": {
   "sourceHash": "3cdfd6239660fdd5",
   "buildVersion": 2,
   "bytes": 27872,
-  "triangles": 1047
+  "triangles": 1047,
+  "lod2": {
+   "sourceHash": "3cdfd6239660fdd5",
+   "buildVersion": 1,
+   "bytes": 4344,
+   "triangles": 97
+  }
  },
  "nassaukerk": {
   "sourceHash": "599bf6e57eea78fb",
   "buildVersion": 2,
   "bytes": 36544,
-  "triangles": 1352
+  "triangles": 1352,
+  "lod2": {
+   "sourceHash": "599bf6e57eea78fb",
+   "buildVersion": 1,
+   "bytes": 6444,
+   "triangles": 174
+  }
  },
  "club-panama": {
   "sourceHash": "9ab5eb1919d55020",
   "buildVersion": 2,
   "bytes": 68856,
-  "triangles": 3180
+  "triangles": 3180,
+  "lod2": {
+   "sourceHash": "9ab5eb1919d55020",
+   "buildVersion": 1,
+   "bytes": 11924,
+   "triangles": 401
+  }
  },
  "compagnietheater": {
   "sourceHash": "02ec4851b9ce300a",
   "buildVersion": 2,
   "bytes": 48864,
-  "triangles": 2202
+  "triangles": 2202,
+  "lod2": {
+   "sourceHash": "02ec4851b9ce300a",
+   "buildVersion": 1,
+   "bytes": 9484,
+   "triangles": 270
+  }
  },
  "west-india-house": {
   "sourceHash": "a1394688636adc52",
   "buildVersion": 2,
   "bytes": 60700,
-  "triangles": 2611
+  "triangles": 2611,
+  "lod2": {
+   "sourceHash": "a1394688636adc52",
+   "buildVersion": 1,
+   "bytes": 11872,
+   "triangles": 362
+  }
+ },
+ "haparandaweg-902-950": {
+  "lod2": {
+   "sourceHash": "08bbb5afa02a6771",
+   "buildVersion": 1,
+   "bytes": 6600,
+   "triangles": 252
+  }
  },
  "haparandaweg-650-706": {
   "sourceHash": "0238fd0b70e128ff",
   "buildVersion": 2,
   "bytes": 38000,
-  "triangles": 1875
+  "triangles": 1875,
+  "lod2": {
+   "sourceHash": "0238fd0b70e128ff",
+   "buildVersion": 1,
+   "bytes": 11256,
+   "triangles": 446
+  }
+ },
+ "haparandaweg-708-744": {
+  "lod2": {
+   "sourceHash": "93161a2fea7eaaed",
+   "buildVersion": 1,
+   "bytes": 9164,
+   "triangles": 368
+  }
+ },
+ "haparandaweg-746-786": {
+  "lod2": {
+   "sourceHash": "b5115ab435a0c6b2",
+   "buildVersion": 1,
+   "bytes": 5472,
+   "triangles": 170
+  }
  },
  "haparandaweg-870-900": {
   "sourceHash": "096faadbd3087afa",
   "buildVersion": 2,
   "bytes": 30444,
-  "triangles": 919
+  "triangles": 919,
+  "lod2": {
+   "sourceHash": "096faadbd3087afa",
+   "buildVersion": 1,
+   "bytes": 10012,
+   "triangles": 407
+  }
  },
  "haparandaweg-952-1002": {
   "sourceHash": "2fba735f311e532f",
   "buildVersion": 2,
   "bytes": 25688,
-  "triangles": 1327
+  "triangles": 1327,
+  "lod2": {
+   "sourceHash": "2fba735f311e532f",
+   "buildVersion": 1,
+   "bytes": 9852,
+   "triangles": 618
+  }
+ },
+ "haparandaweg-788-868": {
+  "lod2": {
+   "sourceHash": "8073532d86b175be",
+   "buildVersion": 1,
+   "bytes": 5428,
+   "triangles": 165
+  }
+ },
+ "haparandaweg-65": {
+  "lod2": {
+   "sourceHash": "16ddfc7e38b07b8c",
+   "buildVersion": 1,
+   "bytes": 7908,
+   "triangles": 322
+  }
+ },
+ "thomaskerk": {
+  "lod2": {
+   "sourceHash": "60dc2617b0ee7031",
+   "buildVersion": 1,
+   "bytes": 4856,
+   "triangles": 111
+  }
  },
  "willem-de-zwijgerkerk": {
   "sourceHash": "39d98979ac9edafd",
   "buildVersion": 2,
   "bytes": 29348,
-  "triangles": 917
+  "triangles": 917,
+  "lod2": {
+   "sourceHash": "39d98979ac9edafd",
+   "buildVersion": 1,
+   "bytes": 5036,
+   "triangles": 115
+  }
  },
  "vrijburg": {
   "sourceHash": "880f4901931b5d44",
   "buildVersion": 2,
   "bytes": 28716,
-  "triangles": 967
+  "triangles": 967,
+  "lod2": {
+   "sourceHash": "880f4901931b5d44",
+   "buildVersion": 1,
+   "bytes": 5460,
+   "triangles": 121
+  }
  },
  "van-gendt-hallen": {
   "sourceHash": "cc0ce3528ad1d92d",
   "buildVersion": 2,
   "bytes": 85012,
-  "triangles": 4279
+  "triangles": 4279,
+  "lod2": {
+   "sourceHash": "cc0ce3528ad1d92d",
+   "buildVersion": 1,
+   "bytes": 15832,
+   "triangles": 594
+  }
  },
  "zuiderkerk": {
   "sourceHash": "99c27225164965b1",
   "buildVersion": 2,
   "bytes": 74884,
-  "triangles": 3452
+  "triangles": 3452,
+  "lod2": {
+   "sourceHash": "99c27225164965b1",
+   "buildVersion": 1,
+   "bytes": 11756,
+   "triangles": 408
+  }
  },
  "muiderkerk": {
   "sourceHash": "230f461a8cba42c3",
   "buildVersion": 2,
   "bytes": 64424,
-  "triangles": 2598
+  "triangles": 2598,
+  "lod2": {
+   "sourceHash": "230f461a8cba42c3",
+   "buildVersion": 1,
+   "bytes": 10764,
+   "triangles": 408
+  }
  },
  "aron-schuster-synagoge": {
   "sourceHash": "2750d0136b107ec1",
   "buildVersion": 2,
   "bytes": 26288,
-  "triangles": 821
+  "triangles": 821,
+  "lod2": {
+   "sourceHash": "2750d0136b107ec1",
+   "buildVersion": 1,
+   "bytes": 5920,
+   "triangles": 154
+  }
  },
  "zevenlandenhuizen": {
   "sourceHash": "150229fdc5785de5",
   "buildVersion": 2,
   "bytes": 113664,
-  "triangles": 5470
+  "triangles": 5470,
+  "lod2": {
+   "sourceHash": "150229fdc5785de5",
+   "buildVersion": 1,
+   "bytes": 15484,
+   "triangles": 520
+  }
+ },
+ "klimhal": {
+  "lod2": {
+   "sourceHash": "96fe17b24871faed",
+   "buildVersion": 1,
+   "bytes": 4000,
+   "triangles": 73
+  }
  },
  "symphony": {
   "sourceHash": "29641e783661205c",
   "buildVersion": 2,
   "bytes": 85852,
-  "triangles": 4508
+  "triangles": 4508,
+  "lod2": {
+   "sourceHash": "29641e783661205c",
+   "buildVersion": 1,
+   "bytes": 30380,
+   "triangles": 1366
+  }
  },
  "ij-toren": {
   "sourceHash": "d48b974d8b575c11",
   "buildVersion": 2,
   "bytes": 56040,
-  "triangles": 2682
+  "triangles": 2682,
+  "lod2": {
+   "sourceHash": "d48b974d8b575c11",
+   "buildVersion": 1,
+   "bytes": 18308,
+   "triangles": 733
+  }
  },
  "sea-palace": {
   "sourceHash": "01ec05d62e9fdde5",
   "buildVersion": 2,
   "bytes": 94836,
-  "triangles": 4385
+  "triangles": 4385,
+  "lod2": {
+   "sourceHash": "01ec05d62e9fdde5",
+   "buildVersion": 1,
+   "bytes": 17244,
+   "triangles": 566
+  }
  },
  "de-school": {
   "sourceHash": "17951767e52d0e71",
   "buildVersion": 2,
   "bytes": 44892,
-  "triangles": 1785
+  "triangles": 1785,
+  "lod2": {
+   "sourceHash": "17951767e52d0e71",
+   "buildVersion": 1,
+   "bytes": 7096,
+   "triangles": 226
+  }
  },
  "west-indisch-pakhuis": {
   "sourceHash": "8d2fd63ac1a874b4",
   "buildVersion": 2,
   "bytes": 66768,
-  "triangles": 2850
+  "triangles": 2850,
+  "lod2": {
+   "sourceHash": "8d2fd63ac1a874b4",
+   "buildVersion": 1,
+   "bytes": 10184,
+   "triangles": 314
+  }
  },
  "christ-church-groenburgwal": {
   "sourceHash": "0b73cbdf7d3e629f",
   "buildVersion": 2,
   "bytes": 31928,
-  "triangles": 1045
+  "triangles": 1045,
+  "lod2": {
+   "sourceHash": "0b73cbdf7d3e629f",
+   "buildVersion": 1,
+   "bytes": 4184,
+   "triangles": 71
+  }
  },
  "ljg-synagoge": {
   "sourceHash": "f5b69000082caa49",
   "buildVersion": 2,
   "bytes": 33476,
-  "triangles": 1505
+  "triangles": 1505,
+  "lod2": {
+   "sourceHash": "f5b69000082caa49",
+   "buildVersion": 1,
+   "bytes": 6468,
+   "triangles": 178
+  }
  },
  "vondelkerk": {
   "sourceHash": "555ac8dda9d30fc7",
   "buildVersion": 2,
   "bytes": 62100,
-  "triangles": 2691
+  "triangles": 2691,
+  "lod2": {
+   "sourceHash": "555ac8dda9d30fc7",
+   "buildVersion": 1,
+   "bytes": 8864,
+   "triangles": 287
+  }
  },
  "lloyd-hotel": {
   "sourceHash": "b4bdac787a4d99e2",
   "buildVersion": 2,
   "bytes": 84620,
-  "triangles": 4228
+  "triangles": 4228,
+  "lod2": {
+   "sourceHash": "b4bdac787a4d99e2",
+   "buildVersion": 1,
+   "bytes": 14684,
+   "triangles": 528
+  }
  },
  "ronde-lutherse-kerk": {
   "sourceHash": "f3d12c730bac1273",
   "buildVersion": 2,
   "bytes": 53888,
-  "triangles": 2164
+  "triangles": 2164,
+  "lod2": {
+   "sourceHash": "f3d12c730bac1273",
+   "buildVersion": 1,
+   "bytes": 10404,
+   "triangles": 335
+  }
  },
  "american-hotel": {
   "sourceHash": "7794d31dd20983cf",
   "buildVersion": 2,
   "bytes": 201960,
-  "triangles": 11292
+  "triangles": 11292,
+  "lod2": {
+   "sourceHash": "7794d31dd20983cf",
+   "buildVersion": 1,
+   "bytes": 21268,
+   "triangles": 926
+  }
  },
  "hotel-de-l-europe": {
   "sourceHash": "5a03c36f0be13141",
   "buildVersion": 2,
   "bytes": 128960,
-  "triangles": 6938
+  "triangles": 6938,
+  "lod2": {
+   "sourceHash": "5a03c36f0be13141",
+   "buildVersion": 1,
+   "bytes": 20840,
+   "triangles": 746
+  }
  },
  "trippenhuis": {
   "sourceHash": "a0157f2eb2f44000",
   "buildVersion": 2,
   "bytes": 52476,
-  "triangles": 2338
+  "triangles": 2338,
+  "lod2": {
+   "sourceHash": "a0157f2eb2f44000",
+   "buildVersion": 1,
+   "bytes": 8912,
+   "triangles": 270
+  }
  },
  "hotel-okura": {
   "sourceHash": "16aafc971912faa9",
   "buildVersion": 2,
   "bytes": 95044,
-  "triangles": 4804
+  "triangles": 4804,
+  "lod2": {
+   "sourceHash": "16aafc971912faa9",
+   "buildVersion": 1,
+   "bytes": 14300,
+   "triangles": 550
+  }
  },
  "coymanshuis": {
   "sourceHash": "01eb50d717491f69",
   "buildVersion": 2,
   "bytes": 40344,
-  "triangles": 1583
+  "triangles": 1583,
+  "lod2": {
+   "sourceHash": "01eb50d717491f69",
+   "buildVersion": 1,
+   "bytes": 6876,
+   "triangles": 191
+  }
  },
  "artis-aquarium": {
   "sourceHash": "faa8b522debe6126",
   "buildVersion": 2,
   "bytes": 51220,
-  "triangles": 2145
+  "triangles": 2145,
+  "lod2": {
+   "sourceHash": "faa8b522debe6126",
+   "buildVersion": 1,
+   "bytes": 9488,
+   "triangles": 294
+  }
  },
  "krasnapolsky": {
   "sourceHash": "ae8f0cf664772dbe",
   "buildVersion": 2,
   "bytes": 58960,
-  "triangles": 2847
+  "triangles": 2847,
+  "lod2": {
+   "sourceHash": "ae8f0cf664772dbe",
+   "buildVersion": 1,
+   "bytes": 20188,
+   "triangles": 785
+  }
  },
  "fatih-moskee": {
   "sourceHash": "c4626b9ef776e46b",
   "buildVersion": 2,
   "bytes": 64524,
-  "triangles": 2864
+  "triangles": 2864,
+  "lod2": {
+   "sourceHash": "c4626b9ef776e46b",
+   "buildVersion": 1,
+   "bytes": 9612,
+   "triangles": 328
+  }
  },
  "chassekerk": {
   "sourceHash": "e7545d5ac9e22d85",
   "buildVersion": 2,
   "bytes": 64760,
-  "triangles": 3088
+  "triangles": 3088,
+  "lod2": {
+   "sourceHash": "e7545d5ac9e22d85",
+   "buildVersion": 1,
+   "bytes": 9880,
+   "triangles": 357
+  }
  },
  "pakhuis-de-zwijger": {
   "sourceHash": "4943a8260e5c4e03",
   "buildVersion": 2,
   "bytes": 42444,
-  "triangles": 2194
+  "triangles": 2194,
+  "lod2": {
+   "sourceHash": "4943a8260e5c4e03",
+   "buildVersion": 1,
+   "bytes": 6564,
+   "triangles": 195
+  }
  },
  "victoria-hotel": {
   "sourceHash": "721d98704c685d7f",
   "buildVersion": 2,
   "bytes": 92648,
-  "triangles": 4939
+  "triangles": 4939,
+  "lod2": {
+   "sourceHash": "721d98704c685d7f",
+   "buildVersion": 1,
+   "bytes": 13652,
+   "triangles": 462
+  }
  },
  "woongebouw-wladiwostok": {
   "sourceHash": "9ccfed7fd4c5c988",
   "buildVersion": 2,
   "bytes": 80192,
-  "triangles": 3788
+  "triangles": 3788,
+  "lod2": {
+   "sourceHash": "9ccfed7fd4c5c988",
+   "buildVersion": 1,
+   "bytes": 7752,
+   "triangles": 234
+  }
  },
  "de-nederlandsche-bank": {
   "sourceHash": "5c4dd5b7b9966aed",
   "buildVersion": 2,
   "bytes": 52404,
-  "triangles": 2552
+  "triangles": 2552,
+  "lod2": {
+   "sourceHash": "5c4dd5b7b9966aed",
+   "buildVersion": 1,
+   "bytes": 37940,
+   "triangles": 1544
+  }
  },
  "hotel-jakarta": {
   "sourceHash": "2493b3469d9a3c53",
   "buildVersion": 2,
   "bytes": 113716,
-  "triangles": 6595
+  "triangles": 6595,
+  "lod2": {
+   "sourceHash": "2493b3469d9a3c53",
+   "buildVersion": 1,
+   "bytes": 51960,
+   "triangles": 1999
+  }
  },
  "odessa": {
   "sourceHash": "03302730c1bcb31f",
   "buildVersion": 2,
   "bytes": 23832,
-  "triangles": 808
+  "triangles": 808,
+  "lod2": {
+   "sourceHash": "03302730c1bcb31f",
+   "buildVersion": 1,
+   "bytes": 3680,
+   "triangles": 62
+  }
  },
  "voc-kade-600": {
   "sourceHash": "3cf272c49a1b6e84",
   "buildVersion": 2,
   "bytes": 99436,
-  "triangles": 4885
+  "triangles": 4885,
+  "lod2": {
+   "sourceHash": "3cf272c49a1b6e84",
+   "buildVersion": 1,
+   "bytes": 15068,
+   "triangles": 478
+  }
  },
  "de-bazel": {
   "sourceHash": "4b306c902d74445a",
   "buildVersion": 2,
   "bytes": 108220,
-  "triangles": 5537
+  "triangles": 5537,
+  "lod2": {
+   "sourceHash": "4b306c902d74445a",
+   "buildVersion": 1,
+   "bytes": 16800,
+   "triangles": 692
+  }
  },
  "overtoom-197": {
   "sourceHash": "8d85fc2556b3d741",
   "buildVersion": 2,
   "bytes": 53308,
-  "triangles": 2199
+  "triangles": 2199,
+  "lod2": {
+   "sourceHash": "8d85fc2556b3d741",
+   "buildVersion": 1,
+   "bytes": 7832,
+   "triangles": 226
+  }
  },
  "willem-de-zwijgerlaan-350": {
   "sourceHash": "4e03d468afe8daec",
   "buildVersion": 2,
   "bytes": 51204,
-  "triangles": 2251
+  "triangles": 2251,
+  "lod2": {
+   "sourceHash": "4e03d468afe8daec",
+   "buildVersion": 1,
+   "bytes": 8320,
+   "triangles": 272
+  }
  },
  "grasweg-116": {
   "sourceHash": "962471b9b834d058",
   "buildVersion": 2,
   "bytes": 132564,
-  "triangles": 6202
+  "triangles": 6202,
+  "lod2": {
+   "sourceHash": "962471b9b834d058",
+   "buildVersion": 1,
+   "bytes": 15612,
+   "triangles": 549
+  }
+ },
+ "asterweg-23": {
+  "lod2": {
+   "sourceHash": "2001cd89e4af86b9",
+   "buildVersion": 1,
+   "bytes": 6872,
+   "triangles": 221
+  }
  },
  "oostenburgermiddenstraat-228": {
   "sourceHash": "a0f0d0edbed6f1ea",
   "buildVersion": 2,
   "bytes": 77468,
-  "triangles": 3408
+  "triangles": 3408,
+  "lod2": {
+   "sourceHash": "a0f0d0edbed6f1ea",
+   "buildVersion": 1,
+   "bytes": 13408,
+   "triangles": 402
+  }
  },
  "ceramiquelaan-437": {
   "sourceHash": "f11a9ebfb34eb2e3",
   "buildVersion": 2,
   "bytes": 86836,
-  "triangles": 4049
+  "triangles": 4049,
+  "lod2": {
+   "sourceHash": "f11a9ebfb34eb2e3",
+   "buildVersion": 1,
+   "bytes": 17392,
+   "triangles": 651
+  }
  },
  "haarlemmerweg-333": {
   "sourceHash": "4aaa1714e39647ba",
   "buildVersion": 2,
   "bytes": 55048,
-  "triangles": 2658
+  "triangles": 2658,
+  "lod2": {
+   "sourceHash": "4aaa1714e39647ba",
+   "buildVersion": 1,
+   "bytes": 10168,
+   "triangles": 320
+  }
  },
  "bogortuin-101": {
   "sourceHash": "3520d14a631ffc10",
   "buildVersion": 2,
   "bytes": 79292,
-  "triangles": 4010
+  "triangles": 4010,
+  "lod2": {
+   "sourceHash": "3520d14a631ffc10",
+   "buildVersion": 1,
+   "bytes": 15308,
+   "triangles": 516
+  }
  },
  "blankenstraat-15": {
   "sourceHash": "631eace09fd06d0d",
   "buildVersion": 2,
   "bytes": 65944,
-  "triangles": 3196
+  "triangles": 3196,
+  "lod2": {
+   "sourceHash": "631eace09fd06d0d",
+   "buildVersion": 1,
+   "bytes": 11848,
+   "triangles": 420
+  }
  },
  "hilton-amsterdam": {
   "sourceHash": "d55f337d9d6be801",
   "buildVersion": 2,
   "bytes": 85232,
-  "triangles": 4205
+  "triangles": 4205,
+  "lod2": {
+   "sourceHash": "d55f337d9d6be801",
+   "buildVersion": 1,
+   "bytes": 18228,
+   "triangles": 639
+  }
  },
  "booking-hq": {
   "sourceHash": "074ee3c4b36d1559",
   "buildVersion": 2,
   "bytes": 66740,
-  "triangles": 3690
+  "triangles": 3690,
+  "lod2": {
+   "sourceHash": "074ee3c4b36d1559",
+   "buildVersion": 1,
+   "bytes": 21872,
+   "triangles": 911
+  }
  },
  "shell-technology-centre": {
   "sourceHash": "377117f9a6cd9695",
   "buildVersion": 2,
   "bytes": 89176,
-  "triangles": 4423
+  "triangles": 4423,
+  "lod2": {
+   "sourceHash": "377117f9a6cd9695",
+   "buildVersion": 1,
+   "bytes": 34908,
+   "triangles": 1326
+  }
  },
  "kohnstammhuis": {
   "sourceHash": "ca2d417b6b58b927",
   "buildVersion": 2,
   "bytes": 39772,
-  "triangles": 2155
+  "triangles": 2155,
+  "lod2": {
+   "sourceHash": "ca2d417b6b58b927",
+   "buildVersion": 1,
+   "bytes": 9976,
+   "triangles": 344
+  }
  },
  "hva-wibautstraat-3": {
   "sourceHash": "92671806852d1fa7",
   "buildVersion": 2,
   "bytes": 57832,
-  "triangles": 4833
+  "triangles": 4833,
+  "lod2": {
+   "sourceHash": "92671806852d1fa7",
+   "buildVersion": 1,
+   "bytes": 25720,
+   "triangles": 2000
+  }
  },
  "hva-rhijnspoorplein-2": {
   "sourceHash": "d0267f661bda5af4",
   "buildVersion": 2,
   "bytes": 21540,
-  "triangles": 1271
+  "triangles": 1271,
+  "lod2": {
+   "sourceHash": "d0267f661bda5af4",
+   "buildVersion": 1,
+   "bytes": 13964,
+   "triangles": 880
+  }
  },
  "jacob-bontiusplaats-9": {
   "sourceHash": "3bc844361675f53d",
   "buildVersion": 2,
   "bytes": 27988,
-  "triangles": 1438
+  "triangles": 1438,
+  "lod2": {
+   "sourceHash": "3bc844361675f53d",
+   "buildVersion": 1,
+   "bytes": 26940,
+   "triangles": 2000
+  }
  },
  "bercylaan-801-855": {
   "sourceHash": "da47cd58262034b5",
   "buildVersion": 2,
   "bytes": 64872,
-  "triangles": 6217
+  "triangles": 6217,
+  "lod2": {
+   "sourceHash": "da47cd58262034b5",
+   "buildVersion": 1,
+   "bytes": 9692,
+   "triangles": 566
+  }
  },
  "vriesseveem-9": {
   "sourceHash": "36d804c5803b1713",
   "buildVersion": 2,
   "bytes": 56988,
-  "triangles": 4565
+  "triangles": 4565,
+  "lod2": {
+   "sourceHash": "36d804c5803b1713",
+   "buildVersion": 1,
+   "bytes": 14300,
+   "triangles": 591
+  }
  },
  "scheepvaartmuseum": {
   "sourceHash": "8639fb451a8a015e",
   "buildVersion": 2,
   "bytes": 66992,
-  "triangles": 3182
+  "triangles": 3182,
+  "lod2": {
+   "sourceHash": "8639fb451a8a015e",
+   "buildVersion": 1,
+   "bytes": 11400,
+   "triangles": 372
+  }
  },
  "waag": {
   "sourceHash": "f8af0a673b7fee2e",
   "buildVersion": 2,
   "bytes": 46408,
-  "triangles": 1762
+  "triangles": 1762,
+  "lod2": {
+   "sourceHash": "f8af0a673b7fee2e",
+   "buildVersion": 1,
+   "bytes": 7224,
+   "triangles": 204
+  }
  },
  "oosterkerk": {
   "sourceHash": "35e0014538b7aa5d",
   "buildVersion": 2,
   "bytes": 56916,
-  "triangles": 2567
+  "triangles": 2567,
+  "lod2": {
+   "sourceHash": "35e0014538b7aa5d",
+   "buildVersion": 1,
+   "bytes": 9892,
+   "triangles": 335
+  }
  },
  "mozes-en-aaronkerk": {
   "sourceHash": "577638b6f78be191",
   "buildVersion": 2,
   "bytes": 42548,
-  "triangles": 1384
+  "triangles": 1384,
+  "lod2": {
+   "sourceHash": "577638b6f78be191",
+   "buildVersion": 1,
+   "bytes": 7388,
+   "triangles": 252
+  }
  },
  "de-duif": {
   "sourceHash": "d13aee0a7677b4d9",
   "buildVersion": 2,
   "bytes": 37760,
-  "triangles": 1248
+  "triangles": 1248,
+  "lod2": {
+   "sourceHash": "d13aee0a7677b4d9",
+   "buildVersion": 1,
+   "bytes": 5584,
+   "triangles": 160
+  }
  },
  "obrechtkerk": {
   "sourceHash": "dded32773c81cdcc",
   "buildVersion": 2,
   "bytes": 79564,
-  "triangles": 3543
+  "triangles": 3543,
+  "lod2": {
+   "sourceHash": "dded32773c81cdcc",
+   "buildVersion": 1,
+   "bytes": 12112,
+   "triangles": 483
+  }
  },
  "opstandingskerk": {
   "sourceHash": "176000923ff7a24b",
   "buildVersion": 2,
   "bytes": 29420,
-  "triangles": 1107
+  "triangles": 1107,
+  "lod2": {
+   "sourceHash": "176000923ff7a24b",
+   "buildVersion": 1,
+   "bytes": 5068,
+   "triangles": 157
+  }
  },
  "da-costakade-13": {
   "sourceHash": "da7222a59d7ea6c4",
   "buildVersion": 2,
   "bytes": 44644,
-  "triangles": 1747
+  "triangles": 1747,
+  "lod2": {
+   "sourceHash": "da7222a59d7ea6c4",
+   "buildVersion": 1,
+   "bytes": 7872,
+   "triangles": 215
+  }
  },
  "hoofdbureau-elandsgracht": {
   "sourceHash": "88499b8a887d3aaa",
   "buildVersion": 2,
   "bytes": 150660,
-  "triangles": 9243
+  "triangles": 9243,
+  "lod2": {
+   "sourceHash": "88499b8a887d3aaa",
+   "buildVersion": 1,
+   "bytes": 50300,
+   "triangles": 1993
+  }
  },
  "max-euwe-centrum": {
   "sourceHash": "9ad6641533f310c2",
   "buildVersion": 2,
   "bytes": 92504,
-  "triangles": 5010
+  "triangles": 5010,
+  "lod2": {
+   "sourceHash": "9ad6641533f310c2",
+   "buildVersion": 1,
+   "bytes": 30592,
+   "triangles": 1556
+  }
  },
  "holocaust-namenmonument": {
   "sourceHash": "ddea9d3aa42a5ad8",
   "buildVersion": 2,
   "bytes": 26072,
-  "triangles": 1327
+  "triangles": 1327,
+  "lod2": {
+   "sourceHash": "ddea9d3aa42a5ad8",
+   "buildVersion": 1,
+   "bytes": 4812,
+   "triangles": 164
+  }
  },
  "voormalige-schouwburgpoort": {
   "sourceHash": "8ca58ce3f25edaa3",
   "buildVersion": 2,
   "bytes": 47752,
-  "triangles": 2565
+  "triangles": 2565,
+  "lod2": {
+   "sourceHash": "8ca58ce3f25edaa3",
+   "buildVersion": 1,
+   "bytes": 9384,
+   "triangles": 332
+  }
  },
  "academie-theater-dans": {
   "sourceHash": "d8abfa92db6923d7",
   "buildVersion": 2,
   "bytes": 65032,
-  "triangles": 3386
+  "triangles": 3386,
+  "lod2": {
+   "sourceHash": "d8abfa92db6923d7",
+   "buildVersion": 1,
+   "bytes": 16116,
+   "triangles": 901
+  }
  },
  "jodenbreestraat-11": {
   "sourceHash": "d4bc7ab02f1432d5",
   "buildVersion": 2,
   "bytes": 24344,
-  "triangles": 911
+  "triangles": 911,
+  "lod2": {
+   "sourceHash": "d4bc7ab02f1432d5",
+   "buildVersion": 1,
+   "bytes": 11588,
+   "triangles": 542
+  }
  },
  "maagdenhuis": {
   "sourceHash": "f0b34170920942b6",
   "buildVersion": 2,
   "bytes": 72364,
-  "triangles": 3634
+  "triangles": 3634,
+  "lod2": {
+   "sourceHash": "f0b34170920942b6",
+   "buildVersion": 1,
+   "bytes": 32084,
+   "triangles": 1480
+  }
  },
  "rembrandtmonument": {
   "sourceHash": "25a9f7d133328b2a",
   "buildVersion": 2,
   "bytes": 58820,
-  "triangles": 2855
+  "triangles": 2855,
+  "lod2": {
+   "sourceHash": "25a9f7d133328b2a",
+   "buildVersion": 1,
+   "bytes": 8320,
+   "triangles": 270
+  }
  },
  "vondelmonument": {
   "sourceHash": "5f88f48d99715441",
   "buildVersion": 2,
   "bytes": 78292,
-  "triangles": 4094
+  "triangles": 4094,
+  "lod2": {
+   "sourceHash": "5f88f48d99715441",
+   "buildVersion": 1,
+   "bytes": 8024,
+   "triangles": 258
+  }
  },
  "begijnhof": {
   "sourceHash": "f4572b102b6d517e",
   "buildVersion": 2,
   "bytes": 42680,
-  "triangles": 1788
+  "triangles": 1788,
+  "lod2": {
+   "sourceHash": "f4572b102b6d517e",
+   "buildVersion": 1,
+   "bytes": 12444,
+   "triangles": 482
+  }
  },
  "slavernijmonument": {
   "sourceHash": "876f3d4dfca9523a",
   "buildVersion": 2,
   "bytes": 16868,
-  "triangles": 644
+  "triangles": 644,
+  "lod2": {
+   "sourceHash": "876f3d4dfca9523a",
+   "buildVersion": 1,
+   "bytes": 4160,
+   "triangles": 88
+  }
  },
  "noorderkerk": {
   "sourceHash": "a4227eb4d1476caf",
   "buildVersion": 2,
   "bytes": 64464,
-  "triangles": 2856
+  "triangles": 2856,
+  "lod2": {
+   "sourceHash": "a4227eb4d1476caf",
+   "buildVersion": 1,
+   "bytes": 10920,
+   "triangles": 417
+  }
  },
  "krijtberg": {
   "sourceHash": "0f26022c827780cb",
   "buildVersion": 2,
   "bytes": 32652,
-  "triangles": 1284
+  "triangles": 1284,
+  "lod2": {
+   "sourceHash": "0f26022c827780cb",
+   "buildVersion": 1,
+   "bytes": 9372,
+   "triangles": 354
+  }
  },
  "wilhelmina-ruiterstandbeeld": {
   "sourceHash": "f25096f25e831407",
   "buildVersion": 2,
   "bytes": 34660,
-  "triangles": 1526
+  "triangles": 1526,
+  "lod2": {
+   "sourceHash": "f25096f25e831407",
+   "buildVersion": 1,
+   "bytes": 5796,
+   "triangles": 158
+  }
  },
  "sarphatimonument": {
   "sourceHash": "68d73896c3a5ffb2",
   "buildVersion": 2,
   "bytes": 71200,
-  "triangles": 3783
+  "triangles": 3783,
+  "lod2": {
+   "sourceHash": "68d73896c3a5ffb2",
+   "buildVersion": 1,
+   "bytes": 9648,
+   "triangles": 379
+  }
  },
  "thorbecke-standbeeld": {
   "sourceHash": "099d46093ba4a47d",
   "buildVersion": 2,
   "bytes": 55528,
-  "triangles": 2746
+  "triangles": 2746,
+  "lod2": {
+   "sourceHash": "099d46093ba4a47d",
+   "buildVersion": 1,
+   "bytes": 6480,
+   "triangles": 209
+  }
  },
  "multatuli-standbeeld": {
   "sourceHash": "525e790cde684c79",
   "buildVersion": 2,
   "bytes": 26008,
-  "triangles": 1028
+  "triangles": 1028,
+  "lod2": {
+   "sourceHash": "525e790cde684c79",
+   "buildVersion": 1,
+   "bytes": 5048,
+   "triangles": 125
+  }
  },
  "lieverdje": {
   "sourceHash": "f7a9c22f444051bc",
   "buildVersion": 2,
   "bytes": 22580,
-  "triangles": 942
+  "triangles": 942,
+  "lod2": {
+   "sourceHash": "f7a9c22f444051bc",
+   "buildVersion": 1,
+   "bytes": 4860,
+   "triangles": 120
+  }
  },
  "anne-frank-merwedeplein": {
   "sourceHash": "e8078b785e2c999d",
   "buildVersion": 2,
   "bytes": 35444,
-  "triangles": 1628
+  "triangles": 1628,
+  "lod2": {
+   "sourceHash": "e8078b785e2c999d",
+   "buildVersion": 1,
+   "bytes": 5092,
+   "triangles": 132
+  }
  },
  "walraven-van-hall": {
   "sourceHash": "f8c7dbce34f4cc8e",
   "buildVersion": 2,
   "bytes": 26600,
-  "triangles": 1232
+  "triangles": 1232,
+  "lod2": {
+   "sourceHash": "f8c7dbce34f4cc8e",
+   "buildVersion": 1,
+   "bytes": 6704,
+   "triangles": 218
+  }
+ },
+ "auschwitz-monument": {
+  "lod2": {
+   "sourceHash": "e0f0358e0880e8ba",
+   "buildVersion": 1,
+   "bytes": 2872,
+   "triangles": 28
+  }
  },
  "tropenmuseum": {
   "sourceHash": "62bb1f9ad28b4c9b",
   "buildVersion": 2,
   "bytes": 126200,
-  "triangles": 7337
+  "triangles": 7337,
+  "lod2": {
+   "sourceHash": "62bb1f9ad28b4c9b",
+   "buildVersion": 1,
+   "bytes": 47880,
+   "triangles": 2000
+  }
  },
  "roeterseiland-rec-a": {
   "sourceHash": "0d7b1c43143a48cd",
   "buildVersion": 2,
   "bytes": 102052,
-  "triangles": 6491
+  "triangles": 6491,
+  "lod2": {
+   "sourceHash": "0d7b1c43143a48cd",
+   "buildVersion": 1,
+   "bytes": 38820,
+   "triangles": 1999
+  }
  },
  "johnny-jordaan-groep": {
   "sourceHash": "8a8093a144c3965a",
   "buildVersion": 2,
   "bytes": 99688,
-  "triangles": 5452
+  "triangles": 5452,
+  "lod2": {
+   "sourceHash": "8a8093a144c3965a",
+   "buildVersion": 1,
+   "bytes": 14832,
+   "triangles": 702
+  }
  },
  "theo-thijssen-standbeeld": {
   "sourceHash": "ddac9403630d4828",
   "buildVersion": 2,
   "bytes": 56352,
-  "triangles": 2732
+  "triangles": 2732,
+  "lod2": {
+   "sourceHash": "ddac9403630d4828",
+   "buildVersion": 1,
+   "bytes": 5220,
+   "triangles": 148
+  }
  },
  "carmiggelt-borstbeeld": {
   "sourceHash": "a9f3fbc991ba4591",
   "buildVersion": 2,
   "bytes": 37788,
-  "triangles": 1802
+  "triangles": 1802,
+  "lod2": {
+   "sourceHash": "a9f3fbc991ba4591",
+   "buildVersion": 1,
+   "bytes": 5196,
+   "triangles": 150
+  }
  },
  "winkler-prins-monument": {
   "sourceHash": "dc04963f913b3880",
   "buildVersion": 2,
   "bytes": 16316,
-  "triangles": 720
+  "triangles": 720,
+  "lod2": {
+   "sourceHash": "dc04963f913b3880",
+   "buildVersion": 1,
+   "bytes": 4264,
+   "triangles": 94
+  }
  },
  "kinderbrug-meisje-eekhoorns": {
   "sourceHash": "d37201221a696b1d",
   "buildVersion": 2,
   "bytes": 25424,
-  "triangles": 1164
+  "triangles": 1164,
+  "lod2": {
+   "sourceHash": "d37201221a696b1d",
+   "buildVersion": 1,
+   "bytes": 4788,
+   "triangles": 120
+  }
  },
  "kinderbrug-jongen-konijnen": {
   "sourceHash": "93e98bd5315de9da",
   "buildVersion": 2,
   "bytes": 23204,
-  "triangles": 1040
+  "triangles": 1040,
+  "lod2": {
+   "sourceHash": "93e98bd5315de9da",
+   "buildVersion": 1,
+   "bytes": 4836,
+   "triangles": 120
+  }
  },
  "gandhi-churchill-laan": {
   "sourceHash": "339181a31e96abad",
   "buildVersion": 2,
   "bytes": 40740,
-  "triangles": 1951
+  "triangles": 1951,
+  "lod2": {
+   "sourceHash": "339181a31e96abad",
+   "buildVersion": 1,
+   "bytes": 5744,
+   "triangles": 180
+  }
+ },
+ "de-schreeuw-oosterpark": {
+  "lod2": {
+   "sourceHash": "efd3183658000f29",
+   "buildVersion": 1,
+   "bytes": 2848,
+   "triangles": 26
+  }
  },
  "waterdraagster-bellamyplein": {
   "sourceHash": "9686e52663e2b64e",
   "buildVersion": 2,
   "bytes": 14776,
-  "triangles": 542
+  "triangles": 542,
+  "lod2": {
+   "sourceHash": "9686e52663e2b64e",
+   "buildVersion": 1,
+   "bytes": 3588,
+   "triangles": 58
+  }
  },
  "mama-baranka": {
   "sourceHash": "e2f64d7ee6cbffa6",
   "buildVersion": 2,
   "bytes": 19792,
-  "triangles": 892
+  "triangles": 892,
+  "lod2": {
+   "sourceHash": "e2f64d7ee6cbffa6",
+   "buildVersion": 1,
+   "bytes": 3712,
+   "triangles": 66
+  }
  },
  "spanjemonument": {
   "sourceHash": "cfe7909241c5b93b",
   "buildVersion": 2,
   "bytes": 29824,
-  "triangles": 1203
+  "triangles": 1203,
+  "lod2": {
+   "sourceHash": "cfe7909241c5b93b",
+   "buildVersion": 1,
+   "bytes": 5492,
+   "triangles": 152
+  }
  },
  "motorkade-1": {
   "sourceHash": "ceded78930018e4f",
   "buildVersion": 2,
   "bytes": 91388,
-  "triangles": 4431
+  "triangles": 4431,
+  "lod2": {
+   "sourceHash": "ceded78930018e4f",
+   "buildVersion": 1,
+   "bytes": 13552,
+   "triangles": 452
+  }
  },
  "mercatorplein-noordtoren": {
   "sourceHash": "3a3caa031f218cde",
   "buildVersion": 2,
   "bytes": 65920,
-  "triangles": 3373
+  "triangles": 3373,
+  "lod2": {
+   "sourceHash": "3a3caa031f218cde",
+   "buildVersion": 1,
+   "bytes": 40664,
+   "triangles": 1999
+  }
  },
  "mercatorplein-zuidtoren": {
   "sourceHash": "edbf5280bf75e26d",
   "buildVersion": 2,
   "bytes": 37028,
-  "triangles": 1430
+  "triangles": 1430,
+  "lod2": {
+   "sourceHash": "edbf5280bf75e26d",
+   "buildVersion": 1,
+   "bytes": 18804,
+   "triangles": 813
+  }
  },
  "europarking-marnixstraat": {
   "sourceHash": "d9f5a46f776bf897",
   "buildVersion": 2,
   "bytes": 91840,
-  "triangles": 4580
+  "triangles": 4580,
+  "lod2": {
+   "sourceHash": "d9f5a46f776bf897",
+   "buildVersion": 1,
+   "bytes": 24796,
+   "triangles": 1192
+  }
  },
  "de-bloem": {
   "sourceHash": "a10929b18a805be2",
   "buildVersion": 2,
   "bytes": 26076,
-  "triangles": 646
+  "triangles": 646,
+  "lod2": {
+   "sourceHash": "a10929b18a805be2",
+   "buildVersion": 1,
+   "bytes": 4068,
+   "triangles": 102
+  }
+ },
+ "de-otter": {
+  "lod2": {
+   "sourceHash": "20c9d0dace2174e1",
+   "buildVersion": 1,
+   "bytes": 3520,
+   "triangles": 59
+  }
  },
  "d-admiraal": {
   "sourceHash": "a75d487e29023373",
   "buildVersion": 2,
   "bytes": 35520,
-  "triangles": 984
+  "triangles": 984,
+  "lod2": {
+   "sourceHash": "a75d487e29023373",
+   "buildVersion": 1,
+   "bytes": 4096,
+   "triangles": 99
+  }
  },
  "stationsplein-paviljoens": {
   "sourceHash": "dea9198bc4f7a098",
   "buildVersion": 2,
   "bytes": 38616,
-  "triangles": 1563
+  "triangles": 1563,
+  "lod2": {
+   "sourceHash": "dea9198bc4f7a098",
+   "buildVersion": 1,
+   "bytes": 6844,
+   "triangles": 218
+  }
  },
  "hirschgebouw": {
   "sourceHash": "eb6fd7c5b1488f96",
   "buildVersion": 2,
   "bytes": 108260,
-  "triangles": 5676
+  "triangles": 5676,
+  "lod2": {
+   "sourceHash": "eb6fd7c5b1488f96",
+   "buildVersion": 1,
+   "bytes": 18008,
+   "triangles": 727
+  }
  },
  "kalvertoren": {
   "sourceHash": "2a2010e69de4af5e",
   "buildVersion": 2,
   "bytes": 75072,
-  "triangles": 3500
+  "triangles": 3500,
+  "lod2": {
+   "sourceHash": "2a2010e69de4af5e",
+   "buildVersion": 1,
+   "bytes": 18736,
+   "triangles": 738
+  }
  },
  "huis-met-de-hoofden": {
   "sourceHash": "6d7d0c5dbdfda371",
   "buildVersion": 2,
   "bytes": 54304,
-  "triangles": 2502
+  "triangles": 2502,
+  "lod2": {
+   "sourceHash": "6d7d0c5dbdfda371",
+   "buildVersion": 1,
+   "bytes": 8340,
+   "triangles": 282
+  }
  },
  "lensbomen": {
   "sourceHash": "84573bdb953f314b",
   "buildVersion": 2,
   "bytes": 15204,
-  "triangles": 508
+  "triangles": 508,
+  "lod2": {
+   "sourceHash": "84573bdb953f314b",
+   "buildVersion": 1,
+   "bytes": 3840,
+   "triangles": 70
+  }
  },
  "olympisch-stadion": {
   "sourceHash": "234c41654ea98cca",
   "buildVersion": 2,
   "bytes": 100184,
-  "triangles": 5407
+  "triangles": 5407,
+  "lod2": {
+   "sourceHash": "234c41654ea98cca",
+   "buildVersion": 1,
+   "bytes": 15752,
+   "triangles": 706
+  }
  },
  "het-nieuwe-huis": {
   "sourceHash": "1dabed264c783f80",
   "buildVersion": 2,
   "bytes": 57852,
-  "triangles": 4041
+  "triangles": 4041,
+  "lod2": {
+   "sourceHash": "1dabed264c783f80",
+   "buildVersion": 1,
+   "bytes": 14884,
+   "triangles": 647
+  }
  },
  "academie-van-bouwkunst": {
   "sourceHash": "65954ae0ec76278e",
   "buildVersion": 2,
   "bytes": 83284,
-  "triangles": 4093
+  "triangles": 4093,
+  "lod2": {
+   "sourceHash": "65954ae0ec76278e",
+   "buildVersion": 1,
+   "bytes": 13468,
+   "triangles": 486
+  }
  },
  "hollandsche-manege": {
   "sourceHash": "023c8ea79a32b66b",
   "buildVersion": 2,
   "bytes": 44372,
-  "triangles": 1777
+  "triangles": 1777,
+  "lod2": {
+   "sourceHash": "023c8ea79a32b66b",
+   "buildVersion": 1,
+   "bytes": 7248,
+   "triangles": 219
+  }
  },
  "amstelstation": {
   "sourceHash": "152f5c777a82421c",
   "buildVersion": 2,
   "bytes": 58528,
-  "triangles": 2438
+  "triangles": 2438,
+  "lod2": {
+   "sourceHash": "152f5c777a82421c",
+   "buildVersion": 1,
+   "bytes": 10576,
+   "triangles": 362
+  }
  },
  "droogbak": {
   "sourceHash": "0aeb60175612bc0d",
   "buildVersion": 2,
   "bytes": 104588,
-  "triangles": 5163
+  "triangles": 5163,
+  "lod2": {
+   "sourceHash": "0aeb60175612bc0d",
+   "buildVersion": 1,
+   "bytes": 14132,
+   "triangles": 728
+  }
  },
  "havengebouw": {
   "sourceHash": "dfd315d58de38070",
   "buildVersion": 2,
   "bytes": 63936,
-  "triangles": 2857
+  "triangles": 2857,
+  "lod2": {
+   "sourceHash": "dfd315d58de38070",
+   "buildVersion": 1,
+   "bytes": 7188,
+   "triangles": 204
+  }
  },
  "abn-amro-hoofdkantoor": {
   "sourceHash": "9a2b538531ac83a5",
   "buildVersion": 2,
   "bytes": 100296,
-  "triangles": 6465
+  "triangles": 6465,
+  "lod2": {
+   "sourceHash": "9a2b538531ac83a5",
+   "buildVersion": 1,
+   "bytes": 42760,
+   "triangles": 2460
+  }
  },
  "wolkenkrabber": {
   "sourceHash": "1da18b6e8d540940",
   "buildVersion": 2,
   "bytes": 54100,
-  "triangles": 2285
+  "triangles": 2285,
+  "lod2": {
+   "sourceHash": "1da18b6e8d540940",
+   "buildVersion": 1,
+   "bytes": 5540,
+   "triangles": 156
+  }
  },
  "zuiderbad": {
   "sourceHash": "a7c82c954243af02",
   "buildVersion": 2,
   "bytes": 83392,
-  "triangles": 4389
+  "triangles": 4389,
+  "lod2": {
+   "sourceHash": "a7c82c954243af02",
+   "buildVersion": 1,
+   "bytes": 15820,
+   "triangles": 523
+  }
  },
  "marnixbad": {
   "sourceHash": "109f06ad4434b460",
   "buildVersion": 2,
   "bytes": 35048,
-  "triangles": 1010
+  "triangles": 1010,
+  "lod2": {
+   "sourceHash": "109f06ad4434b460",
+   "buildVersion": 1,
+   "bytes": 4224,
+   "triangles": 96
+  }
  },
  "bungehuis": {
   "sourceHash": "0e987c34023206c1",
   "buildVersion": 2,
   "bytes": 96024,
-  "triangles": 4833
+  "triangles": 4833,
+  "lod2": {
+   "sourceHash": "0e987c34023206c1",
+   "buildVersion": 1,
+   "bytes": 13296,
+   "triangles": 573
+  }
  },
  "cromhouthuizen": {
   "sourceHash": "7bc87d5fa8600fd2",
   "buildVersion": 2,
   "bytes": 65408,
-  "triangles": 3130
+  "triangles": 3130,
+  "lod2": {
+   "sourceHash": "7bc87d5fa8600fd2",
+   "buildVersion": 1,
+   "bytes": 9452,
+   "triangles": 378
+  }
  },
  "waldorf-astoria-herengracht": {
   "sourceHash": "761e8a608fc3a710",
   "buildVersion": 2,
   "bytes": 86320,
-  "triangles": 4325
+  "triangles": 4325,
+  "lod2": {
+   "sourceHash": "761e8a608fc3a710",
+   "buildVersion": 1,
+   "bytes": 12584,
+   "triangles": 535
+  }
  },
  "de-burcht": {
   "sourceHash": "1768ecdf65823a24",
   "buildVersion": 2,
   "bytes": 53620,
-  "triangles": 1985
+  "triangles": 1985,
+  "lod2": {
+   "sourceHash": "1768ecdf65823a24",
+   "buildVersion": 1,
+   "bytes": 5704,
+   "triangles": 176
+  }
  },
  "eerste-openluchtschool": {
   "sourceHash": "8ae0d4a333f2b7e6",
   "buildVersion": 2,
   "bytes": 29304,
-  "triangles": 1221
+  "triangles": 1221,
+  "lod2": {
+   "sourceHash": "8ae0d4a333f2b7e6",
+   "buildVersion": 1,
+   "bytes": 5924,
+   "triangles": 182
+  }
  },
  "blauwbrug": {
   "sourceHash": "5d46d293ff21dc52",
   "buildVersion": 2,
   "bytes": 75900,
-  "triangles": 3910
+  "triangles": 3910,
+  "lod2": {
+   "sourceHash": "5d46d293ff21dc52",
+   "buildVersion": 1,
+   "bytes": 11680,
+   "triangles": 511
+  }
  },
  "magere-brug": {
   "sourceHash": "e8c99d8e2714c970",
   "buildVersion": 2,
   "bytes": 46764,
-  "triangles": 2275
+  "triangles": 2275,
+  "lod2": {
+   "sourceHash": "e8c99d8e2714c970",
+   "buildVersion": 1,
+   "bytes": 7924,
+   "triangles": 300
+  }
+ },
+ "kiosk-dr-falafel": {
+  "lod2": {
+   "sourceHash": "17f2e42d4e64d442",
+   "buildVersion": 1,
+   "bytes": 3196,
+   "triangles": 40
+  }
+ },
+ "kiosk-mr-blou": {
+  "lod2": {
+   "sourceHash": "0ea91558d1c12314",
+   "buildVersion": 1,
+   "bytes": 3104,
+   "triangles": 34
+  }
+ },
+ "kiosk-dumplings-nassauplein": {
+  "lod2": {
+   "sourceHash": "36adbd968bd4343c",
+   "buildVersion": 1,
+   "bytes": 2732,
+   "triangles": 18
+  }
+ },
+ "kiosk-frens-haringhandel": {
+  "lod2": {
+   "sourceHash": "db74db64ab26dd66",
+   "buildVersion": 1,
+   "bytes": 3096,
+   "triangles": 36
+  }
+ },
+ "kiosk-stubbes-haring": {
+  "lod2": {
+   "sourceHash": "cc9757ac107752de",
+   "buildVersion": 1,
+   "bytes": 2544,
+   "triangles": 18
+  }
+ },
+ "kiosk-haringhandel-jonk": {
+  "lod2": {
+   "sourceHash": "b68028f1297758a3",
+   "buildVersion": 1,
+   "bytes": 3092,
+   "triangles": 44
+  }
+ },
+ "kiosk-museumplein": {
+  "lod2": {
+   "sourceHash": "3e9f09f39cf1c3ad",
+   "buildVersion": 1,
+   "bytes": 2448,
+   "triangles": 10
+  }
  },
  "vijzelbank": {
   "sourceHash": "1310fc65cf2a62ae",
   "buildVersion": 2,
   "bytes": 78468,
-  "triangles": 4147
+  "triangles": 4147,
+  "lod2": {
+   "sourceHash": "1310fc65cf2a62ae",
+   "buildVersion": 1,
+   "bytes": 24384,
+   "triangles": 1316
+  }
  },
  "carlton-hotel": {
   "sourceHash": "2085964f78c2f01c",
   "buildVersion": 2,
   "bytes": 52916,
-  "triangles": 2426
+  "triangles": 2426,
+  "lod2": {
+   "sourceHash": "2085964f78c2f01c",
+   "buildVersion": 1,
+   "bytes": 18672,
+   "triangles": 808
+  }
  },
  "citroen-zuid": {
   "sourceHash": "16254d5bcc24e408",
   "buildVersion": 2,
   "bytes": 35736,
-  "triangles": 1459
+  "triangles": 1459,
+  "lod2": {
+   "sourceHash": "16254d5bcc24e408",
+   "buildVersion": 1,
+   "bytes": 13688,
+   "triangles": 518
+  }
  },
  "odeon-singel": {
   "sourceHash": "f45795786dc7c4de",
   "buildVersion": 2,
   "bytes": 32264,
-  "triangles": 1344
+  "triangles": 1344,
+  "lod2": {
+   "sourceHash": "f45795786dc7c4de",
+   "buildVersion": 1,
+   "bytes": 6124,
+   "triangles": 162
+  }
  },
  "doelen-hotel": {
   "sourceHash": "b3224d1258c39c12",
   "buildVersion": 2,
   "bytes": 98032,
-  "triangles": 4405
+  "triangles": 4405,
+  "lod2": {
+   "sourceHash": "b3224d1258c39c12",
+   "buildVersion": 1,
+   "bytes": 14880,
+   "triangles": 528
+  }
  },
  "telefooncentrale-spuistraat": {
   "sourceHash": "a1d6702c7f4cb824",
   "buildVersion": 2,
   "bytes": 82488,
-  "triangles": 3696
+  "triangles": 3696,
+  "lod2": {
+   "sourceHash": "a1d6702c7f4cb824",
+   "buildVersion": 1,
+   "bytes": 27424,
+   "triangles": 950
+  }
  },
  "telegraaf-gebouw": {
   "sourceHash": "ca99fc45b4e0fec0",
   "buildVersion": 2,
   "bytes": 59492,
-  "triangles": 2506
+  "triangles": 2506,
+  "lod2": {
+   "sourceHash": "ca99fc45b4e0fec0",
+   "buildVersion": 1,
+   "bytes": 10576,
+   "triangles": 339
+  }
  },
  "barbizon-palace": {
   "sourceHash": "64ab583f1cbe374b",
   "buildVersion": 2,
   "bytes": 86824,
-  "triangles": 3976
+  "triangles": 3976,
+  "lod2": {
+   "sourceHash": "64ab583f1cbe374b",
+   "buildVersion": 1,
+   "bytes": 13436,
+   "triangles": 488
+  }
  },
  "marinekazerne-kattenburgerstraat": {
   "sourceHash": "e776cce0235357e5",
   "buildVersion": 2,
   "bytes": 81628,
-  "triangles": 3996
+  "triangles": 3996,
+  "lod2": {
+   "sourceHash": "e776cce0235357e5",
+   "buildVersion": 1,
+   "bytes": 12352,
+   "triangles": 511
+  }
  },
  "kraanspoor": {
   "sourceHash": "79a0a5443847149e",
   "buildVersion": 2,
   "bytes": 49232,
-  "triangles": 2443
+  "triangles": 2443,
+  "lod2": {
+   "sourceHash": "79a0a5443847149e",
+   "buildVersion": 1,
+   "bytes": 9696,
+   "triangles": 416
+  }
  },
  "zonnehuis": {
   "sourceHash": "ea88956c3d920fae",
   "buildVersion": 2,
   "bytes": 52708,
-  "triangles": 2230
+  "triangles": 2230,
+  "lod2": {
+   "sourceHash": "ea88956c3d920fae",
+   "buildVersion": 1,
+   "bytes": 7268,
+   "triangles": 218
+  }
  },
  "sportfondsenbad-oost": {
   "sourceHash": "b9a4c1fc5a00a0d5",
   "buildVersion": 2,
   "bytes": 99916,
-  "triangles": 5068
+  "triangles": 5068,
+  "lod2": {
+   "sourceHash": "b9a4c1fc5a00a0d5",
+   "buildVersion": 1,
+   "bytes": 15556,
+   "triangles": 574
+  }
  },
  "artis-planetarium": {
   "sourceHash": "60c250f25986c0ac",
   "buildVersion": 2,
   "bytes": 60908,
-  "triangles": 2618
+  "triangles": 2618,
+  "lod2": {
+   "sourceHash": "60c250f25986c0ac",
+   "buildVersion": 1,
+   "bytes": 11016,
+   "triangles": 350
+  }
  },
  "gebouw-parnas": {
   "sourceHash": "bc0f100cd8b0cea7",
   "buildVersion": 2,
   "bytes": 42128,
-  "triangles": 1704
+  "triangles": 1704,
+  "lod2": {
+   "sourceHash": "bc0f100cd8b0cea7",
+   "buildVersion": 1,
+   "bytes": 7568,
+   "triangles": 272
+  }
  },
  "andaz-prinsengracht": {
   "sourceHash": "a2128c7efc5f9712",
   "buildVersion": 2,
   "bytes": 30004,
-  "triangles": 976
+  "triangles": 976,
+  "lod2": {
+   "sourceHash": "a2128c7efc5f9712",
+   "buildVersion": 1,
+   "bytes": 4348,
+   "triangles": 120
+  }
  },
  "loods-6": {
   "sourceHash": "aac8e27524281277",
   "buildVersion": 2,
   "bytes": 100720,
-  "triangles": 5020
+  "triangles": 5020,
+  "lod2": {
+   "sourceHash": "aac8e27524281277",
+   "buildVersion": 1,
+   "bytes": 21340,
+   "triangles": 813
+  }
  },
  "atlanta-stadhouderskade": {
   "sourceHash": "71e0a14ab60dd9fa",
   "buildVersion": 2,
   "bytes": 118948,
-  "triangles": 5671
+  "triangles": 5671,
+  "lod2": {
+   "sourceHash": "71e0a14ab60dd9fa",
+   "buildVersion": 1,
+   "bytes": 19376,
+   "triangles": 679
+  }
  },
  "ziggo-dome": {
   "sourceHash": "fd54f955d51fde83",
   "buildVersion": 2,
   "bytes": 32720,
-  "triangles": 1182
+  "triangles": 1182,
+  "lod2": {
+   "sourceHash": "fd54f955d51fde83",
+   "buildVersion": 1,
+   "bytes": 8000,
+   "triangles": 354
+  }
  },
  "vu-hoofdgebouw": {
   "sourceHash": "417e542696fdda6d",
   "buildVersion": 2,
   "bytes": 52288,
-  "triangles": 2520
+  "triangles": 2520,
+  "lod2": {
+   "sourceHash": "417e542696fdda6d",
+   "buildVersion": 1,
+   "bytes": 20564,
+   "triangles": 1164
+  }
  },
  "wtc-amsterdam": {
   "sourceHash": "e4b09cd91bd03199",
   "buildVersion": 2,
   "bytes": 92460,
-  "triangles": 5663
+  "triangles": 5663,
+  "lod2": {
+   "sourceHash": "e4b09cd91bd03199",
+   "buildVersion": 1,
+   "bytes": 25052,
+   "triangles": 1374
+  }
+ },
+ "volkshotel": {
+  "lod2": {
+   "sourceHash": "19a4a6dae2dcf93e",
+   "buildVersion": 1,
+   "bytes": 7004,
+   "triangles": 263
+  }
  },
  "oranje-nassau-kazerne": {
   "sourceHash": "88f8d6b71cee5717",
   "buildVersion": 2,
   "bytes": 155800,
-  "triangles": 10698
+  "triangles": 10698,
+  "lod2": {
+   "sourceHash": "88f8d6b71cee5717",
+   "buildVersion": 1,
+   "bytes": 32892,
+   "triangles": 2000
+  }
  },
  "byzantium": {
   "sourceHash": "a822e4ba8235da70",
   "buildVersion": 2,
   "bytes": 81196,
-  "triangles": 3695
+  "triangles": 3695,
+  "lod2": {
+   "sourceHash": "a822e4ba8235da70",
+   "buildVersion": 1,
+   "bytes": 18540,
+   "triangles": 773
+  }
  },
  "burgerweeshuis-van-eyck": {
   "sourceHash": "5ca0f3c89e7623f3",
   "buildVersion": 2,
   "bytes": 102536,
-  "triangles": 5427
+  "triangles": 5427,
+  "lod2": {
+   "sourceHash": "5ca0f3c89e7623f3",
+   "buildVersion": 1,
+   "bytes": 13648,
+   "triangles": 679
+  }
  },
  "autopon": {
   "sourceHash": "9c1cf931b8f43533",
   "buildVersion": 2,
   "bytes": 98448,
-  "triangles": 4808
+  "triangles": 4808,
+  "lod2": {
+   "sourceHash": "9c1cf931b8f43533",
+   "buildVersion": 1,
+   "bytes": 15924,
+   "triangles": 606
+  }
  },
  "joodse-invalide": {
   "sourceHash": "73038bf31ceb930f",
   "buildVersion": 2,
   "bytes": 59080,
-  "triangles": 2668
+  "triangles": 2668,
+  "lod2": {
+   "sourceHash": "73038bf31ceb930f",
+   "buildVersion": 1,
+   "bytes": 15684,
+   "triangles": 599
+  }
  },
  "pakhuis-australie": {
   "sourceHash": "e082cdcf1ffaffb7",
   "buildVersion": 2,
   "bytes": 124576,
-  "triangles": 7255
+  "triangles": 7255,
+  "lod2": {
+   "sourceHash": "e082cdcf1ffaffb7",
+   "buildVersion": 1,
+   "bytes": 26080,
+   "triangles": 1251
+  }
  },
  "de-makroon": {
   "sourceHash": "dec21658543084fe",
   "buildVersion": 2,
   "bytes": 65568,
-  "triangles": 3237
+  "triangles": 3237,
+  "lod2": {
+   "sourceHash": "dec21658543084fe",
+   "buildVersion": 1,
+   "bytes": 44024,
+   "triangles": 1998
+  }
  },
  "tolhuis-paviljoen": {
   "sourceHash": "4d90cd344bc794b3",
   "buildVersion": 2,
   "bytes": 43592,
-  "triangles": 1914
+  "triangles": 1914,
+  "lod2": {
+   "sourceHash": "4d90cd344bc794b3",
+   "buildVersion": 1,
+   "bytes": 13264,
+   "triangles": 609
+  }
  },
  "y-helling": {
   "sourceHash": "985bd1f99ee9da64",
   "buildVersion": 2,
   "bytes": 20336,
-  "triangles": 615
+  "triangles": 615,
+  "lod2": {
+   "sourceHash": "985bd1f99ee9da64",
+   "buildVersion": 1,
+   "bytes": 5292,
+   "triangles": 192
+  }
  },
  "the-edge": {
   "sourceHash": "480562ef9015bc8e",
   "buildVersion": 2,
   "bytes": 44236,
-  "triangles": 2437
+  "triangles": 2437,
+  "lod2": {
+   "sourceHash": "480562ef9015bc8e",
+   "buildVersion": 1,
+   "bytes": 6628,
+   "triangles": 268
+  }
  },
  "akzonobel-center": {
   "sourceHash": "754638560554e56d",
   "buildVersion": 2,
   "bytes": 41528,
-  "triangles": 2230
+  "triangles": 2230,
+  "lod2": {
+   "sourceHash": "754638560554e56d",
+   "buildVersion": 1,
+   "bytes": 4692,
+   "triangles": 171
+  }
  },
  "sarphati-plaza": {
   "sourceHash": "dcdb0a2580365d32",
   "buildVersion": 2,
   "bytes": 86660,
-  "triangles": 5070
+  "triangles": 5070,
+  "lod2": {
+   "sourceHash": "dcdb0a2580365d32",
+   "buildVersion": 1,
+   "bytes": 38712,
+   "triangles": 1539
+  }
  },
  "apollo-hotel": {
   "sourceHash": "35a83b0b7632bef3",
   "buildVersion": 2,
   "bytes": 154452,
-  "triangles": 9970
+  "triangles": 9970,
+  "lod2": {
+   "sourceHash": "35a83b0b7632bef3",
+   "buildVersion": 1,
+   "bytes": 40908,
+   "triangles": 1994
+  }
  },
  "graansilo-korthals-altes": {
   "sourceHash": "62eba8d4912398f1",
   "buildVersion": 2,
   "bytes": 114320,
-  "triangles": 6800
+  "triangles": 6800,
+  "lod2": {
+   "sourceHash": "62eba8d4912398f1",
+   "buildVersion": 1,
+   "bytes": 19120,
+   "triangles": 1039
+  }
  },
  "betonnen-silo-silodam": {
   "sourceHash": "fc808da77c981955",
   "buildVersion": 2,
   "bytes": 94952,
-  "triangles": 5954
+  "triangles": 5954,
+  "lod2": {
+   "sourceHash": "fc808da77c981955",
+   "buildVersion": 1,
+   "bytes": 15700,
+   "triangles": 781
+  }
  },
  "effectenbeurs": {
   "sourceHash": "0a56eba4908e9e33",
   "buildVersion": 2,
   "bytes": 129476,
-  "triangles": 6915
+  "triangles": 6915,
+  "lod2": {
+   "sourceHash": "0a56eba4908e9e33",
+   "buildVersion": 1,
+   "bytes": 39640,
+   "triangles": 2000
+  }
  },
  "het-sieraad": {
   "sourceHash": "3df1476210829363",
   "buildVersion": 2,
   "bytes": 101336,
-  "triangles": 5998
+  "triangles": 5998,
+  "lod2": {
+   "sourceHash": "3df1476210829363",
+   "buildVersion": 1,
+   "bytes": 30512,
+   "triangles": 1521
+  }
  },
  "kpn-teleport": {
   "sourceHash": "4b34d4d29a6fc6d9",
   "buildVersion": 2,
   "bytes": 84256,
-  "triangles": 4646
+  "triangles": 4646,
+  "lod2": {
+   "sourceHash": "4b34d4d29a6fc6d9",
+   "buildVersion": 1,
+   "bytes": 14228,
+   "triangles": 530
+  }
  },
  "nfta-markenplein": {
   "sourceHash": "34f882696606038c",
   "buildVersion": 2,
   "bytes": 50112,
-  "triangles": 2361
+  "triangles": 2361,
+  "lod2": {
+   "sourceHash": "34f882696606038c",
+   "buildVersion": 1,
+   "bytes": 21508,
+   "triangles": 1133
+  }
  },
  "tramremise-lekstraat": {
   "sourceHash": "1c7c560cf9ad253a",
   "buildVersion": 2,
   "bytes": 71356,
-  "triangles": 3417
+  "triangles": 3417,
+  "lod2": {
+   "sourceHash": "1c7c560cf9ad253a",
+   "buildVersion": 1,
+   "bytes": 13928,
+   "triangles": 484
+  }
  },
  "gerrit-rietveld-academie": {
   "sourceHash": "ebf32f1166d5c4d5",
   "buildVersion": 2,
   "bytes": 25692,
-  "triangles": 810
+  "triangles": 810,
+  "lod2": {
+   "sourceHash": "ebf32f1166d5c4d5",
+   "buildVersion": 1,
+   "bytes": 6328,
+   "triangles": 181
+  }
  },
  "heinekenplein-block": {
   "sourceHash": "532e08d38304f1c0",
   "buildVersion": 2,
   "bytes": 73060,
-  "triangles": 4431
+  "triangles": 4431,
+  "lod2": {
+   "sourceHash": "532e08d38304f1c0",
+   "buildVersion": 1,
+   "bytes": 45224,
+   "triangles": 1945
+  }
  },
  "hofkerk": {
   "sourceHash": "40e41ffe3add2dd9",
   "buildVersion": 2,
   "bytes": 59040,
-  "triangles": 3187
+  "triangles": 3187,
+  "lod2": {
+   "sourceHash": "40e41ffe3add2dd9",
+   "buildVersion": 1,
+   "bytes": 14312,
+   "triangles": 1124
+  }
  },
  "watertoren-amstelveenseweg": {
   "sourceHash": "2293803e634b9235",
   "buildVersion": 2,
   "bytes": 17796,
-  "triangles": 740
+  "triangles": 740,
+  "lod2": {
+   "sourceHash": "2293803e634b9235",
+   "buildVersion": 1,
+   "bytes": 4560,
+   "triangles": 132
+  }
  },
  "politie-nieuwezijds-voorburgwal": {
   "sourceHash": "efcc0f64fb7c38b2",
   "buildVersion": 2,
   "bytes": 62660,
-  "triangles": 3366
+  "triangles": 3366,
+  "lod2": {
+   "sourceHash": "efcc0f64fb7c38b2",
+   "buildVersion": 1,
+   "bytes": 21324,
+   "triangles": 1191
+  }
  },
  "politie-lijnbaansgracht": {
   "sourceHash": "b5e3f79e0df15fde",
   "buildVersion": 2,
   "bytes": 40956,
-  "triangles": 2182
+  "triangles": 2182,
+  "lod2": {
+   "sourceHash": "b5e3f79e0df15fde",
+   "buildVersion": 1,
+   "bytes": 8776,
+   "triangles": 392
+  }
  },
  "politie-oost-watergraafsmeer": {
   "sourceHash": "07f9066b0a9b510e",
   "buildVersion": 2,
   "bytes": 70796,
-  "triangles": 4274
+  "triangles": 4274,
+  "lod2": {
+   "sourceHash": "07f9066b0a9b510e",
+   "buildVersion": 1,
+   "bytes": 47176,
+   "triangles": 1817
+  }
  },
  "rietveld-academie-2006": {
   "sourceHash": "799ca908d0e8a9cc",
   "buildVersion": 2,
   "bytes": 40180,
-  "triangles": 1897
+  "triangles": 1897,
+  "lod2": {
+   "sourceHash": "799ca908d0e8a9cc",
+   "buildVersion": 1,
+   "bytes": 7500,
+   "triangles": 276
+  }
  },
  "binnengasthuis-kloveniersburgwal": {
   "sourceHash": "bc577777558233c0",
   "buildVersion": 2,
   "bytes": 87120,
-  "triangles": 4631
+  "triangles": 4631,
+  "lod2": {
+   "sourceHash": "bc577777558233c0",
+   "buildVersion": 1,
+   "bytes": 43780,
+   "triangles": 1998
+  }
  },
  "kinkerstraat-32": {
   "sourceHash": "cd54ba0e04ccc98e",
   "buildVersion": 2,
   "bytes": 104980,
-  "triangles": 6606
+  "triangles": 6606,
+  "lod2": {
+   "sourceHash": "cd54ba0e04ccc98e",
+   "buildVersion": 1,
+   "bytes": 45180,
+   "triangles": 2000
+  }
  },
  "westerdok-748": {
   "sourceHash": "abfc87d232f25322",
   "buildVersion": 2,
   "bytes": 251644,
-  "triangles": 19125
+  "triangles": 19125,
+  "lod2": {
+   "sourceHash": "abfc87d232f25322",
+   "buildVersion": 1,
+   "bytes": 33448,
+   "triangles": 1999
+  }
  },
  "da-costakade-146": {
   "sourceHash": "318f863e529527a0",
   "buildVersion": 2,
   "bytes": 127476,
-  "triangles": 7959
+  "triangles": 7959,
+  "lod2": {
+   "sourceHash": "318f863e529527a0",
+   "buildVersion": 1,
+   "bytes": 48604,
+   "triangles": 2000
+  }
+ },
+ "albert-heijn-museumplein": {
+  "lod2": {
+   "sourceHash": "4682501c32475d6b",
+   "buildVersion": 1,
+   "bytes": 3936,
+   "triangles": 97
+  }
  },
  "bloemenmarkt-stalls": {
   "sourceHash": "4f4e251e73566540",
   "buildVersion": 2,
   "bytes": 84500,
-  "triangles": 3995
+  "triangles": 3995,
+  "lod2": {
+   "sourceHash": "4f4e251e73566540",
+   "buildVersion": 1,
+   "bytes": 12032,
+   "triangles": 528
+  }
  },
  "kiosk-park-bea": {
   "sourceHash": "e9d49b6add3e4da8",
   "buildVersion": 2,
   "bytes": 29616,
-  "triangles": 1134
+  "triangles": 1134,
+  "lod2": {
+   "sourceHash": "e9d49b6add3e4da8",
+   "buildVersion": 1,
+   "bytes": 3664,
+   "triangles": 60
+  }
+ },
+ "kiosk-ramons-coffee": {
+  "lod2": {
+   "sourceHash": "26af490c8ba10e3b",
+   "buildVersion": 1,
+   "bytes": 2640,
+   "triangles": 16
+  }
  },
  "kinkerstraat-89": {
   "sourceHash": "814a26b22f7e11bf",
   "buildVersion": 2,
   "bytes": 102016,
-  "triangles": 6222
+  "triangles": 6222,
+  "lod2": {
+   "sourceHash": "814a26b22f7e11bf",
+   "buildVersion": 1,
+   "bytes": 47416,
+   "triangles": 2000
+  }
  },
  "politiebureau-postjesweg": {
   "sourceHash": "2d3b7b68c13316f9",
   "buildVersion": 2,
   "bytes": 31060,
-  "triangles": 1312
+  "triangles": 1312,
+  "lod2": {
+   "sourceHash": "2d3b7b68c13316f9",
+   "buildVersion": 1,
+   "bytes": 11448,
+   "triangles": 411
+  }
  },
  "ibis-city-west": {
   "sourceHash": "00703acccf1cbad5",
   "buildVersion": 2,
   "bytes": 99688,
-  "triangles": 7189
+  "triangles": 7189,
+  "lod2": {
+   "sourceHash": "00703acccf1cbad5",
+   "buildVersion": 1,
+   "bytes": 45340,
+   "triangles": 2000
+  }
  },
  "winkelcentrum-plein-40-45": {
   "sourceHash": "9c35e2f056b20ba3",
   "buildVersion": 2,
   "bytes": 175636,
-  "triangles": 12138
+  "triangles": 12138,
+  "lod2": {
+   "sourceHash": "9c35e2f056b20ba3",
+   "buildVersion": 1,
+   "bytes": 45956,
+   "triangles": 2000
+  }
  },
  "andreas-ensemble": {
   "sourceHash": "856de356f4f0c5c0",
   "buildVersion": 2,
   "bytes": 165916,
-  "triangles": 12171
+  "triangles": 12171,
+  "lod2": {
+   "sourceHash": "856de356f4f0c5c0",
+   "buildVersion": 1,
+   "bytes": 38088,
+   "triangles": 2000
+  }
  },
  "oude-turfmarkt-139": {
   "sourceHash": "1074d49be4b71118",
   "buildVersion": 2,
   "bytes": 122780,
-  "triangles": 6973
+  "triangles": 6973,
+  "lod2": {
+   "sourceHash": "1074d49be4b71118",
+   "buildVersion": 1,
+   "bytes": 39728,
+   "triangles": 1984
+  }
  },
  "weteringschans-corner-office": {
   "sourceHash": "f610c7dd12f32de1",
   "buildVersion": 2,
   "bytes": 145396,
-  "triangles": 9532
+  "triangles": 9532,
+  "lod2": {
+   "sourceHash": "f610c7dd12f32de1",
+   "buildVersion": 1,
+   "bytes": 39900,
+   "triangles": 1996
+  }
  },
  "barlaeus-gymnasium": {
   "sourceHash": "d7d51ae641ae54b1",
   "buildVersion": 2,
   "bytes": 55708,
-  "triangles": 3017
+  "triangles": 3017,
+  "lod2": {
+   "sourceHash": "d7d51ae641ae54b1",
+   "buildVersion": 1,
+   "bytes": 25572,
+   "triangles": 1038
+  }
  },
  "brand-bij-ca": {
   "sourceHash": "56a468177685e8e9",
   "buildVersion": 2,
   "bytes": 76316,
-  "triangles": 4738
+  "triangles": 4738,
+  "lod2": {
+   "sourceHash": "56a468177685e8e9",
+   "buildVersion": 1,
+   "bytes": 48732,
+   "triangles": 2000
+  }
  },
  "doubletree-centraal": {
   "sourceHash": "82b1b6a4c52e223e",
   "buildVersion": 2,
   "bytes": 192964,
-  "triangles": 14326
+  "triangles": 14326,
+  "lod2": {
+   "sourceHash": "82b1b6a4c52e223e",
+   "buildVersion": 1,
+   "bytes": 38080,
+   "triangles": 1924
+  }
  },
  "belastingdienst-amsterdam": {
   "sourceHash": "1f3cd85962958a6a",
   "buildVersion": 2,
   "bytes": 231976,
-  "triangles": 17737
+  "triangles": 17737,
+  "lod2": {
+   "sourceHash": "1f3cd85962958a6a",
+   "buildVersion": 1,
+   "bytes": 32288,
+   "triangles": 2000
+  }
  },
  "dominicus-savius-school": {
   "sourceHash": "4f1d0252d6a595be",
   "buildVersion": 2,
   "bytes": 62056,
-  "triangles": 3397
+  "triangles": 3397,
+  "lod2": {
+   "sourceHash": "4f1d0252d6a595be",
+   "buildVersion": 1,
+   "bytes": 14796,
+   "triangles": 665
+  }
  },
  "forum-office": {
   "sourceHash": "18aa1e44fd636fda",
   "buildVersion": 2,
   "bytes": 205480,
-  "triangles": 14517
+  "triangles": 14517,
+  "lod2": {
+   "sourceHash": "18aa1e44fd636fda",
+   "buildVersion": 1,
+   "bytes": 22360,
+   "triangles": 1032
+  }
  },
  "de-valerius": {
   "sourceHash": "c665322a6749494c",
   "buildVersion": 2,
   "bytes": 96828,
-  "triangles": 5989
+  "triangles": 5989,
+  "lod2": {
+   "sourceHash": "c665322a6749494c",
+   "buildVersion": 1,
+   "bytes": 17952,
+   "triangles": 747
+  }
  },
  "amsterdams-lyceum": {
   "sourceHash": "5ad480c0ef68051c",
   "buildVersion": 2,
   "bytes": 93180,
-  "triangles": 5756
+  "triangles": 5756,
+  "lod2": {
+   "sourceHash": "5ad480c0ef68051c",
+   "buildVersion": 1,
+   "bytes": 14748,
+   "triangles": 628
+  }
  },
  "atrium-zuidas": {
   "sourceHash": "7fc3bc7fd7679a8d",
   "buildVersion": 2,
   "bytes": 102844,
-  "triangles": 5288
+  "triangles": 5288,
+  "lod2": {
+   "sourceHash": "7fc3bc7fd7679a8d",
+   "buildVersion": 1,
+   "bytes": 33548,
+   "triangles": 1651
+  }
  },
  "xavier-zuidas": {
   "sourceHash": "31a5b4dee14b6083",
   "buildVersion": 2,
   "bytes": 100248,
-  "triangles": 5366
+  "triangles": 5366,
+  "lod2": {
+   "sourceHash": "31a5b4dee14b6083",
+   "buildVersion": 1,
+   "bytes": 16888,
+   "triangles": 630
+  }
  },
  "sint-nicolaaslyceum": {
   "sourceHash": "aa0f42f6838e1b25",
   "buildVersion": 2,
   "bytes": 38724,
-  "triangles": 1852
+  "triangles": 1852,
+  "lod2": {
+   "sourceHash": "aa0f42f6838e1b25",
+   "buildVersion": 1,
+   "bytes": 11292,
+   "triangles": 398
+  }
  }
 }

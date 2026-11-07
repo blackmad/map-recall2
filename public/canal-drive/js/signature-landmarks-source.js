@@ -30,6 +30,11 @@ import { existingWorkerPool } from '../../../src/canalRecall/engine/workerPool.t
 import { onViewChange, worldCameraOf } from '../../../src/canalRecall/engine/worldCameraOf.ts';
 import { canSkipWalk, outsideSlack } from '../../../src/canalRecall/engine/viewSlack.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
+// Landmarks from the air (lane R4-B #244): lod2 stand-ins and one batched draw for them.
+import { chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
+import { LandmarkBatch, mergeLevelByLook } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
+import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
+import { DEPTH_FADE_OPT_OUT } from '../../../src/canalRecall/look/depthFade.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
@@ -42,8 +47,14 @@ const assetUrl = (path, id) => {
   return url.href;
 };
 
-/** URL of one level of a model that has a lod1 sibling. lod1 is versioned by its own fingerprint. */
+/** URL of one level of a model that has a lod1 (or lod2) sibling. Each level is versioned by its own fingerprint. */
 const levelUrl = (spec, level) => {
+  if (level === 'lod2') {
+    const url = new URL(lod2Url(spec.modelUrl), window.location.href);
+    const record = lodApi().MODEL_LODS[spec.id].lod2;
+    url.searchParams.set('asset', `${record.sourceHash}-${record.buildVersion}`);
+    return url.href;
+  }
   if (level !== 'lod1') return assetUrl(spec.modelUrl, spec.id);
   const url = new URL(lodApi().lod1Url(spec.modelUrl), window.location.href);
   url.searchParams.set('asset', lodApi().MODEL_LODS[spec.id].sourceHash);
@@ -56,6 +67,21 @@ const levelUrl = (spec, level) => {
 const HIGHLIGHT_COLOUR = 0xffd21f;
 /** Main-thread milliseconds one slice of the ground re-base pass may take before yielding to a frame (#129). */
 const GROUND_BASE_SLICE_MS = 4;
+
+/** A URL flag: `?name=0` (or `window.__canalRecall<Name>` false) turns a default-on feature off. */
+const flagOn = (name, fallback = true) => {
+  const global = window[`__canalRecall${name[0].toUpperCase()}${name.slice(1)}`];
+  if (typeof global === 'boolean') return global;
+  try {
+    const value = new URLSearchParams(window.location.search).get(name);
+    if (value === '0' || value === 'false') return false;
+    if (value === '1' || value === 'true') return true;
+  } catch { /* no location */ }
+  return fallback;
+};
+const numberFlag = name => {
+  try { const v = Number(new URLSearchParams(window.location.search).get(name)); return Number.isFinite(v) && v > 0 ? v : undefined; } catch { return undefined; }
+};
 
 /**
  * Rotation about the vertical axis, in radians, that points the model's wide
@@ -238,7 +264,7 @@ export class SignatureLandmarks {
     const dropped = (this._entries || []).filter(entry => ids.has(entry.spec.id));
     if (!dropped.length) return;
     this._entries = this._entries.filter(entry => !ids.has(entry.spec.id));
-    for (const entry of dropped) { this.shown.delete(entry.spec.id); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
+    for (const entry of dropped) { this.shown.delete(entry.spec.id); this._batch?.remove(entry.spec.id); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
     this._applySuppression();
     this.map.triggerRepaint();
   }
@@ -267,6 +293,7 @@ export class SignatureLandmarks {
         for (const entry of this._entries) {
           const show = this._nearby(entry.spec, entry.placement.anchor, ctx.bounds()) && this.canShowModel(entry.spec);
           entry.holder.visible = show;
+          if (entry.batched) this._batch.setVisible(entry.spec.id, show);
           // Picking: world-space ray, against matrixWorld (which now includes the frame).
           entry.pickProjection = show ? ctx.clipFromWorld : null;
           if (show) any = true;
@@ -289,6 +316,7 @@ export class SignatureLandmarks {
     this._offView?.(); this._offView = null;
     this._pending.clear();
     for (const entry of this._entries) { entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
+    this._batch?.dispose(); this._batch = null;
     this._entries = [];
     this.shown.clear();
     this._loader = null;
@@ -357,7 +385,10 @@ export class SignatureLandmarks {
       // Same hit as `ray.intersectObject(entry.group, true).find(hit => hit.object.visible)`, through a per-mesh
       // BVH once one is built; the first pick that reaches a model queues its build for idle time.
       const unbuilt = { count: 0 };
-      const hit = nearestVisibleHit(entry.group, ray, unbuilt);
+      // A batched lod2 model's own mesh is hidden (the batch draws it); it is what is on screen, so it is picked.
+      if (entry.batched) entry.batched.visible = true;
+      let hit;
+      try { hit = nearestVisibleHit(entry.group, ray, unbuilt); } finally { if (entry.batched) entry.batched.visible = false; }
       if (unbuilt.count) this._queuePickBvh(entry);
       if (!hit) continue;
       const depth = hit.point.clone().applyMatrix4(entry.pickProjection).z;
@@ -471,7 +502,10 @@ export class SignatureLandmarks {
           material.needsUpdate = true;
         }
       });
+      // A lit landmark leaves the batch (its own lod2 mesh carries the highlight) and climbs to its own level.
+      this._syncBatch(entry);
     }
+    if (this._lod2On()) this._updateLevels();
     this.map.triggerRepaint();
   }
 
@@ -483,9 +517,11 @@ export class SignatureLandmarks {
       if (entry.highlightState === state) continue;
       entry.highlightState = state;
       entry.highlighted = state === 'highlight';
+      this._syncBatch(entry);
       applyMeshHighlight(THREE, entry.group, state, { cityVariant: (m, s) => city ? city.dimmed(m, s === 'dim') : m, up: this.sharedFrame ? LANDMARK_WORLD_UP.shared : LANDMARK_WORLD_UP.legacy });
       // Highlight passes are new children: give them world matrices (legacy scenes no longer auto-update).
     }
+    if (this._lod2On()) this._updateLevels();
     for (const area of Object.values(window.__canalRecallBuildingTypes || {})) area.setHighlighted?.(ids, focus);
     this.map.triggerRepaint();
   }
@@ -518,6 +554,8 @@ export class SignatureLandmarks {
       this.onHostWallOpeningsChanged();
     }
     const bias = this.enabled && this.suppressing && this.depthBiasEnabled ? -1 : 0;
+    this._depthBias = bias;
+    this._batch?.setDepthBias(bias);
     for (const entry of this._entries || []) {
       if (entry.depthBias === bias) continue;
       entry.depthBias = bias;
@@ -744,6 +782,8 @@ export class SignatureLandmarks {
       const level = spec.sceneFactory ? 'full' : this._startLevel(spec);
       const url = spec.sceneFactory ? spec.id : levelUrl(spec, level), loader = this._loader;
       const onLoaded = gltf => {
+        if (level === 'lod2' && gltf.scene) gltf.scene.userData.landmarkLod2 = true;
+        if (level === 'lod1' && gltf.scene) this._mergeLevel(gltf.scene);
         if (this._removed || generation !== this._generation) {
           this._disposeModel(gltf.scene, spec, url);
           return;
@@ -932,6 +972,7 @@ export class SignatureLandmarks {
     entry.groundBase = base;
     entry.holder.matrix.makeTranslation(0, 0, base * entry.units).multiply(entry.transform);
     entry.holder.matrixWorldNeedsUpdate = true;
+    if (entry.batched) this._batch.setMatrix(entry.spec.id, this._batchMatrix(entry, entry.batched));
     return true;
   }
 
@@ -1096,6 +1137,7 @@ export class SignatureLandmarks {
       radiusMetres: Math.hypot(size.x, size.z) / 2 * placement.scale };
     this._entries.push(entry);
     this._releaseVertexData(spec, imported);
+    this._syncBatch(entry);
     this._attachShadowStandIn(entry);
     if (this._groundBase) this._applyGroundBase(entry);
     this.shown.add(spec.id);
@@ -1122,7 +1164,8 @@ export class SignatureLandmarks {
    * in _applyChunkPandBases instead.
    */
   _releaseVertexData(spec, level) {
-    if (!this._releaseOn() || spec.sharedModel || spec.sceneFactory) return;
+    // lod2 keeps its arrays: the batch copies them in whenever the model (re)joins it.
+    if (!this._releaseOn() || spec.sharedModel || spec.sceneFactory || level?.userData?.landmarkLod2) return;
     releaseVertexDataOnUpload(level, geometry => !!geometry.userData?.pandRanges);
   }
 
@@ -1133,37 +1176,165 @@ export class SignatureLandmarks {
     return !spec.sharedModel && api.lod1IsCurrent(api.MODEL_LODS?.[spec.id], api.MODEL_ASSET_VERSIONS?.[spec.id]);
   }
 
+  /**
+   * lod2 in play (lane R4-B #244; `?landmarkLod2=0` restores the lod1/full choice): the shared frame only, landmark
+   * GLBs only (not shared meshes, building types or street chunks), not under the city look (its colours are not the
+   * GLB's), and only a lod2 built from the GLB deployed now.
+   */
+  _lod2On() {
+    if (this._lod2Flag === undefined) this._lod2Flag = !!this.sharedFrame && flagOn('landmarkLod2') && !cityLookEnabled();
+    return this._lod2Flag;
+  }
+
+  _hasLod2(spec) {
+    if (!this._lod2On() || spec.sharedModel || spec.sceneFactory || spec.chunkPands) return false;
+    const api = lodApi();
+    return lod2IsCurrent(api.MODEL_LODS?.[spec.id]?.lod2, api.MODEL_ASSET_VERSIONS?.[spec.id]);
+  }
+
+  /** `?landmarkBatch=0`: lod2 models draw as their own mesh (one draw each) instead of joining the batch. */
+  _batchOn() {
+    if (this._batchFlag === undefined) this._batchFlag = this._lod2On() && flagOn('landmarkBatch');
+    return this._batchFlag;
+  }
+
+  /** The view facts the level choice needs, once per pass: the centre while the view is aerial, else null. */
+  _levelView() {
+    const cam = this.camera, zoom = cam.zoom(), centre = cam.center();
+    const aerial = this._lod2On() && isAerialView(zoom, cam.pitch(), centre.lat);
+    if (this._lod2Px === undefined) { this._lod2Px = numberFlag('landmarkLod2Px'); this._lod2M = numberFlag('landmarkLod2M'); }
+    return { aerialCentre: aerial ? centre : null };
+  }
+
+  _levelInputs(spec, radiusMetres, anchor, view, highlighted = false) {
+    return {
+      radiusPixels: this._radiusPixels(radiusMetres, anchor),
+      hasLod1: this._hasLod(spec), hasLod2: this._hasLod2(spec),
+      aerialDistanceM: view.aerialCentre ? anchorDistanceM(anchor, view.aerialCentre) : null,
+      highlighted, lod2DowngradePx: this._lod2Px, lod2AerialM: this._lod2M,
+    };
+  }
+
   /** Footprint radius of a model in screen pixels at the current zoom. */
   _radiusPixels(radiusMetres, anchor) {
     return lodApi().footprintRadiusPixels(radiusMetres, this.camera.zoom(), anchor[1]);
   }
 
-  /** Level to load first: lod1 for models that are small on screen. Unknown size or no lod1 means full. */
+  /** Level to load first: lod1 for models that are small on screen (lod2 from the air). Unknown size or no lower level means full. */
   _startLevel(spec) {
-    if (!this._hasLod(spec)) return 'full';
+    const lod2 = this._hasLod2(spec);
+    if (!this._hasLod(spec) && !lod2) return 'full';
     const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
     const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
     if (!anchor || !radius) return 'full';
-    return lodApi().initialLevel(this._radiusPixels(radius, anchor));
+    if (!lod2) return lodApi().initialLevel(this._radiusPixels(radius, anchor));
+    const highlighted = !!this.activeLandmarkId && (spec.landmarkId === this.activeLandmarkId || (spec.relatedLandmarkIds || []).includes(this.activeLandmarkId));
+    return initialLandmarkLevel(this._levelInputs(spec, radius, anchor, this._levelView(), highlighted));
   }
 
   /**
    * Swaps drawn models between lod1 and the full GLB as their on-screen size
-   * crosses the (hysteretic) thresholds. The other level is loaded first and
-   * only then swapped in, in one step, so a model is never missing or doubled.
+   * crosses the (hysteretic) thresholds, and to lod2 when tiny or far off from
+   * the air. The other level is loaded first and only then swapped in, in one
+   * step, so a model is never missing or doubled.
    */
   _updateLevels() {
-    if (this._removed || !this.enabled || !this._loader) return;
-    const view = this._viewBounds();
+    if (this._removed || !this.enabled || !this._loader || this._updatingLevels) return;
+    // A swap re-applies the highlight, which asks for levels again: one pass at a time.
+    this._updatingLevels = true;
+    try { this._updateLevelsPass(); } finally { this._updatingLevels = false; }
+  }
+
+  _updateLevelsPass() {
+    const view = this._viewBounds(), levelView = this._lod2On() ? this._levelView() : null;
     for (const entry of this._entries) {
-      if (!this._hasLod(entry.spec) || entry.levelLoading || entry.lodFailed) continue;
+      if (entry.levelLoading || entry.lodFailed) continue;
+      const lod2 = this._hasLod2(entry.spec);
+      if (!lod2 && !this._hasLod(entry.spec)) continue;
       if (!this._nearby(entry.spec, entry.placement.anchor, view)) continue;
-      const wanted = lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
+      const wanted = lod2
+        ? chooseLandmarkLevel(entry.level, this._levelInputs(entry.spec, entry.radiusMetres, entry.placement.anchor, levelView, this._isLit(entry)))
+        : lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
       if (wanted === entry.level) continue;
       if (entry.spare && entry.spareLevel === wanted) { this._swapLevel(entry, entry.spare, wanted); continue; }
       if (this._lodLoads >= 2) continue;
       this._loadLevel(entry, wanted);
     }
+  }
+
+  /** Whether the card's highlight lights this model (it then keeps off lod2 and out of the batch). */
+  _isLit(entry) {
+    return !!entry.highlighted || entry.highlightState === 'highlight'
+      || (!!this.activeLandmarkId && (entry.spec.landmarkId === this.activeLandmarkId || (entry.spec.relatedLandmarkIds || []).includes(this.activeLandmarkId)));
+  }
+
+  /** `?landmarkMergeLod1=1` (prototype, off by default): a lod1's meshes merged into one per look (landmarkBatch.ts mergeLevelByLook). */
+  _mergeLevel(scene) {
+    if (this._mergeLod1Flag === undefined) this._mergeLod1Flag = !!this.sharedFrame && flagOn('landmarkMergeLod1', false) && !cityLookEnabled();
+    if (this._mergeLod1Flag && !scene.userData.recipeLook) mergeLevelByLook(THREE, scene);
+  }
+
+  /** The drawn lod2's one mesh (null at other levels). */
+  _lod2Mesh(entry) {
+    if (entry.level !== 'lod2') return null;
+    let mesh = null;
+    entry.imported.traverse(child => { if (!mesh && child.isMesh && child.geometry && !Array.isArray(child.material)) mesh = child; });
+    return mesh;
+  }
+
+  /** `mesh`'s matrix in the landmark root's (Mercator) space, composed from the frozen local matrices, in float64. */
+  _batchMatrix(entry, mesh) {
+    const m = new THREE.Matrix4();
+    for (let object = mesh; object && object !== this._sharedRoot; object = object.parent) m.premultiply(object.matrix);
+    return m;
+  }
+
+  _landmarkBatch(entry) {
+    if (this._batch) return this._batch;
+    const t = entry.transform.elements, api = lodApi();
+    // Reserve for the aerial resident cap at the mean lod2 size (vertices ~1.6 per triangle after the flat-normal weld).
+    const lod2s = Object.values(api.MODEL_LODS || {}).map(e => e.lod2?.triangles).filter(Boolean);
+    const mean = lod2s.length ? lod2s.reduce((a, b) => a + b, 0) / lod2s.length : 1000;
+    const cap = 128;
+    this._batch = new LandmarkBatch(THREE, {
+      parent: this._sharedRoot,
+      origin: [t[12], t[13], t[14]],
+      initialInstances: cap, initialVertices: Math.ceil(mean * 1.6 * cap), initialIndices: Math.ceil(mean * 3 * cap),
+      material: key => {
+        // The per-model path's material after _shade and _fadeOptOut: Lambert, double-sided GLB faces, colour per vertex.
+        const material = new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide });
+        material.name = `landmark-batch ${key}`;
+        if (key === 'noFade') { material.fog = false; material.userData[DEPTH_FADE_OPT_OUT] = true; }
+        return material;
+      },
+      configure: mesh => {
+        this.sharedFrame.constructor.setShadows(mesh, true, true);
+        this.sharedFrame.compileAsync?.(mesh);
+      },
+    });
+    this._batch.setDepthBias(this._depthBias ?? 0);
+    return this._batch;
+  }
+
+  /**
+   * Puts a model drawn at lod2 into the batch (its own mesh is hidden; inspectAtScreen picks it all the same), or takes it out: another level, a lit landmark, a mirrored placement, or `?landmarkBatch=0`.
+   */
+  _syncBatch(entry) {
+    const mesh = this._lod2Mesh(entry);
+    // A dimmed neighbour (`?highlight=c`) keeps its level but draws its own dimmed mesh.
+    const want = !!mesh && this._batchOn() && !this._isLit(entry) && (!entry.highlightState || entry.highlightState === 'plain') && !entry.placement.mirror;
+    if (want) {
+      const key = mesh.material.fog === false ? 'noFade' : 'fade';
+      if (this._landmarkBatch(entry).add(entry.spec.id, key, mesh.geometry, this._batchMatrix(entry, mesh))) {
+        if (entry.batched && entry.batched !== mesh) entry.batched.visible = true;
+        mesh.visible = false;
+        entry.batched = mesh;
+        this._batch.setVisible(entry.spec.id, entry.holder.visible);
+        return;
+      }
+    }
+    if (entry.batched) { entry.batched.visible = true; entry.batched = null; }
+    this._batch?.remove(entry.spec.id);
   }
 
   _loadLevel(entry, level) {
@@ -1174,6 +1345,8 @@ export class SignatureLandmarks {
     this._loader.load(url, gltf => {
       if (this._removed || generation !== this._generation || !this._entries.includes(entry)) { this._disposeResources(gltf.scene); done(); return; }
       const scene = this._shade(this._dressLevel(gltf, spec)).scene;
+      if (level === 'lod2') scene.userData.landmarkLod2 = true;
+      if (level === 'lod1') this._mergeLevel(scene);
       this._fadeOptOut(spec, scene);
       // As for a first load: its programs compile before the swap, not inside the frame that shows it.
       this._precompile(scene).then(() => {
@@ -1202,6 +1375,8 @@ export class SignatureLandmarks {
     this._releaseVertexData(entry.spec, incoming);
     entry.imported = incoming;
     entry.pickBox = null;
+    // Three levels: a spare that is neither level of this swap would be dropped on the floor; free it.
+    if (entry.spare && entry.spare !== incoming) this._disposeResources(entry.spare);
     entry.spare = outgoing; entry.spareLevel = entry.level;
     entry.level = level;
     // Highlight, depth bias and shadows are per material: reapply to the new level.
@@ -1210,6 +1385,7 @@ export class SignatureLandmarks {
     this._applySuppression();
     if (active) this.setActiveLandmark(this._highlightLandmark || { id: this.activeLandmarkId });
     if (this.sharedFrame) this.sharedFrame.constructor.setShadows(entry.group, true, true);
+    this._syncBatch(entry);
     this._attachShadowStandIn(entry);
     this.map.triggerRepaint();
   }
@@ -1224,6 +1400,8 @@ export class SignatureLandmarks {
   _attachShadowStandIn(entry) {
     if (entry.standIn) { entry.holder.remove(entry.standIn.object); entry.standIn = null; }
     if (!this.sharedFrame || this.sharedFrame.shadowStandIns === false || entry.spec.sharedModel || entry.spec.chunkPands) return;
+    // lod2 is one mesh already (and in the batch, the batch casts): a stand-in would save nothing.
+    if (entry.level === 'lod2') return;
     const imported = entry.imported;
     // Welded in the worker pool: until it arrives the level's meshes cast their own (same) shadow.
     const standIn = shadowStandInFor(THREE, imported, existingWorkerPool(), () => {

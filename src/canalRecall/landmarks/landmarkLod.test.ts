@@ -53,3 +53,44 @@ test('lod1 error: Centraal keeps its east-wing storey bands (0.43 m on a 430 m s
   assert.deepEqual(lod1SimplifyOptions('centraal-station'), {ratio: LOD1_TRIANGLE_RATIO, error: 0.001});
   assert.deepEqual(lod1SimplifyOptions('nassaukerk'), {ratio: LOD1_TRIANGLE_RATIO, error: LOD1_MAX_ERROR});
 });
+
+test('lod2: url, freshness and extent-relative error with tower overrides', async () => {
+  const { lod2Url, lod2IsCurrent, lod2SimplifyOptions, LOD2_BUILD_VERSION, LOD2_MAX_ERROR_M, LOD2_TRIANGLE_RATIO } = await import('./landmarkLod');
+  assert.equal(lod2Url('./models/a.glb?asset=1'), './models/a.lod2.glb?asset=1');
+  const rec = { sourceHash: 'a', buildVersion: LOD2_BUILD_VERSION, bytes: 1, triangles: 1 };
+  assert.ok(lod2IsCurrent(rec, 'a'));
+  assert.ok(!lod2IsCurrent({ ...rec, buildVersion: 0 }, 'a'));
+  assert.ok(!lod2IsCurrent(undefined, 'a'));
+  assert.deepEqual(lod2SimplifyOptions('nassaukerk', 50), { ratio: LOD2_TRIANGLE_RATIO, error: LOD2_MAX_ERROR_M / 50 });
+  assert.ok(lod2SimplifyOptions('westerkerk', 87).error < LOD2_MAX_ERROR_M / 87, 'spire keeps a tighter bound');
+});
+
+test('lod2 level choice: small on screen, and far from the centre only from the air', async () => {
+  const { chooseLandmarkLevel, initialLandmarkLevel, LOD2_DOWNGRADE_RADIUS_PX, LOD2_HYSTERESIS, LOD2_AERIAL_M, LOD2_AERIAL_RETURN } = await import('./landmarkLod');
+  const base = { radiusPixels: 60, hasLod1: true, hasLod2: true, aerialDistanceM: null };
+  // Street view: the aerial rule never applies, whatever the distance; full/lod1 as before.
+  assert.equal(chooseLandmarkLevel('full', base), 'full');
+  assert.equal(initialLandmarkLevel(base), 'full');
+  assert.equal(chooseLandmarkLevel('full', { ...base, radiusPixels: 25 }), 'full');
+  assert.equal(chooseLandmarkLevel('full', { ...base, radiusPixels: 15 }), 'lod1');
+  // Tiny on screen: lod2, with hysteresis on the way back.
+  assert.equal(chooseLandmarkLevel('lod1', { ...base, radiusPixels: LOD2_DOWNGRADE_RADIUS_PX - 1 }), 'lod2');
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, radiusPixels: LOD2_DOWNGRADE_RADIUS_PX * LOD2_HYSTERESIS - 1 }), 'lod2');
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, radiusPixels: LOD2_DOWNGRADE_RADIUS_PX * LOD2_HYSTERESIS + 1 }), 'lod1');
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, radiusPixels: 100 }), 'full');
+  // From the air: beyond LOD2_AERIAL_M, lod2 even when large; back below the return share.
+  assert.equal(chooseLandmarkLevel('full', { ...base, aerialDistanceM: LOD2_AERIAL_M + 1 }), 'lod2');
+  assert.equal(chooseLandmarkLevel('full', { ...base, aerialDistanceM: LOD2_AERIAL_M - 1 }), 'full');
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, aerialDistanceM: LOD2_AERIAL_M * LOD2_AERIAL_RETURN + 1 }), 'lod2');
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, aerialDistanceM: LOD2_AERIAL_M * LOD2_AERIAL_RETURN - 1 }), 'full');
+  assert.equal(initialLandmarkLevel({ ...base, aerialDistanceM: 900 }), 'lod2');
+  assert.equal(chooseLandmarkLevel('full', { ...base, aerialDistanceM: 300, lod2AerialM: 250 }), 'lod2');
+  // Leaving the air drops the aerial rule at once.
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, aerialDistanceM: null }), 'full');
+  // The card's landmark and models without a lod2 never take it.
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, aerialDistanceM: 900, highlighted: true }), 'full');
+  assert.equal(chooseLandmarkLevel('full', { ...base, hasLod2: false, aerialDistanceM: 900 }), 'full');
+  // No lod1 (small models): lod2 or full.
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, hasLod1: false, radiusPixels: 5, aerialDistanceM: null }), 'lod2');
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, hasLod1: false, radiusPixels: 40 }), 'full');
+});
