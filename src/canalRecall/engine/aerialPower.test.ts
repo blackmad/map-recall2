@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { AERIAL_FPS, AERIAL_SCALE, AERIAL_SHADOW_EVERY, AERIAL_SHADOW_MAP, AerialPower, MOVE_HOLD_MS, NEUTRAL, aerialLeversFromQuery, type AerialPose } from './aerialPower';
 
-const ALL = { fps: true, scale: true, shadows: true, mapSize: true, casters: true };
+const ALL = { fps: true, scale: true, shadows: true, mapSize: true };
 const pose = (now: number, over: Partial<AerialPose> = {}): AerialPose => ({ now, aerial: true, detached: true, lng: 4.9, lat: 52.37, zoom: 17.3, pitch: 55, bearing: 110, ...over });
 // 150 m/s east at 60 fps: 2.5 m per frame.
 const east = (now: number, i: number, over: Partial<AerialPose> = {}) => pose(now, { lng: 4.9 + i * 2.5 / (111320 * Math.cos(52.37 * Math.PI / 180)), ...over });
@@ -10,7 +10,7 @@ const east = (now: number, i: number, over: Partial<AerialPose> = {}) => pose(no
 test('aerialPower: levers from the query, each with its own flag; globals win', () => {
   assert.deepEqual(aerialLeversFromQuery(''), ALL);
   assert.deepEqual(aerialLeversFromQuery('?aerialFps=0&aerialScale=0'), { ...ALL, fps: false, scale: false });
-  assert.deepEqual(aerialLeversFromQuery('?aerialShadows=0&aerialShadowMap=0&aerialCasters=0'), { ...ALL, shadows: false, mapSize: false, casters: false });
+  assert.deepEqual(aerialLeversFromQuery('?aerialShadows=0&aerialShadowMap=0'), { ...ALL, shadows: false, mapSize: false });
   assert.deepEqual(aerialLeversFromQuery('?aerialFps=0', { __canalRecallAerialFps: true }), ALL);
   assert.deepEqual(aerialLeversFromQuery('', { __canalRecallAerialShadowMap: false }), { ...ALL, mapSize: false });
 });
@@ -21,7 +21,6 @@ test('aerialPower: a pan from the air paces, scales and throttles; settling rest
   assert.equal(d.moving, false, 'the first frame has nothing to compare');
   assert.equal(d.frameMs, null); assert.equal(d.scale, 1); assert.equal(d.shadowEvery, 1);
   assert.equal(d.shadowMapSize, AERIAL_SHADOW_MAP, 'the aerial map size holds still or moving');
-  assert.equal(d.coarseCasts, false);
   let t = 0;
   for (let i = 1; i <= 30; i++) { t = i * 1000 / 60; d = p.update(east(t, i)); }
   assert.equal(d.moving, true);
@@ -46,7 +45,7 @@ test('aerialPower: street level, an attached camera, or every lever off change n
   assert.equal(d.moving, true);
   assert.equal(d.frameMs, null, 'a ride is never paced'); assert.equal(d.scale, 1); assert.equal(d.shadowEvery, 1);
   assert.equal(d.shadowMapSize, AERIAL_SHADOW_MAP, 'from the air the map is smaller whatever moves it');
-  const off = new AerialPower({ fps: false, scale: false, shadows: false, mapSize: false, casters: false });
+  const off = new AerialPower({ fps: false, scale: false, shadows: false, mapSize: false });
   assert.equal(off.any, false);
   for (let i = 0; i < 20; i++) d = off.update(east(i * 16, i));
   assert.deepEqual({ ...d, aerial: false, moving: false }, { ...NEUTRAL });

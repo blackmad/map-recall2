@@ -5,7 +5,7 @@
  * the view, so the shadow map is redrawn every few frames. Nothing lowered the cost while the camera flew.
  *
  * This is the pure policy: one call per game frame with the view's pose, the answer is what the frame host and the
- * shared frame should do this frame. Five levers, each behind its own `?flag=0` (all off = today's frame, byte for byte):
+ * shared frame should do this frame. Four levers, each behind its own `?flag=0` (all off = today's frame, byte for byte):
  *
  *  - `fps` (`?aerialFps=0`): while the camera is panned off the rider (detached) and moving from the air, the frame host
  *    renders at most AERIAL_FPS times a second; back to every frame as soon as the camera settles (MOVE_HOLD_MS).
@@ -14,14 +14,16 @@
  *    detached and moving (between redraws the box stays where it was drawn).
  *  - `mapSize` (`?aerialShadowMap=0`): the sun's shadow map is AERIAL_SHADOW_MAP² while aerial (moving or not): from the
  *    air one shadow texel of the 2048² map covers a fraction of a pixel.
- *  - `casters` (`?aerialCasters=0`): from the air only the near tiers cast; the coarse tier stops casting (it still
- *    receives). The far and baked tiers never cast.
+ *
+ * Not a lever: "only the near tiers cast from the air" (the plan's c3). Measured on 2026-11-08 the coarse, far and
+ * baked tiers already never cast (threeBuildingsBrowser.ts coarse `castShadow = false`, farShells.ts, bakedCoarse.ts);
+ * the shadow pass from the air is the trees' shadow twin, the near walls, landmarks, furniture and stand-ins.
  *
  * "Moving" is the view's own pose changing (centre, zoom, bearing, pitch), not the input that moved it, so a trackpad
  * pan, a keyboard pan and a scripted fly-to read the same.
  */
 
-export interface AerialLevers { fps: boolean; scale: boolean; shadows: boolean; mapSize: boolean; casters: boolean }
+export interface AerialLevers { fps: boolean; scale: boolean; shadows: boolean; mapSize: boolean }
 
 export const AERIAL_FPS = 30;
 export const AERIAL_SCALE = 0.8;
@@ -55,11 +57,9 @@ export interface AerialDecision {
   shadowEvery: number;
   /** The sun's shadow-map size to use, or null for the tier's own. */
   shadowMapSize: number | null;
-  /** The coarse tier casts shadows. */
-  coarseCasts: boolean;
 }
 
-export const NEUTRAL: Readonly<AerialDecision> = Object.freeze({ aerial: false, moving: false, frameMs: null, scale: 1, shadowEvery: 1, shadowMapSize: null, coarseCasts: true });
+export const NEUTRAL: Readonly<AerialDecision> = Object.freeze({ aerial: false, moving: false, frameMs: null, scale: 1, shadowEvery: 1, shadowMapSize: null });
 
 /** The levers from the query (`?aerialFps=0` …) or the matching window globals (`__canalRecallAerialFps = false`). */
 export function aerialLeversFromQuery(search: string, globals: Record<string, unknown> = {}): AerialLevers {
@@ -75,7 +75,6 @@ export function aerialLeversFromQuery(search: string, globals: Record<string, un
     scale: on('aerialScale', '__canalRecallAerialScale'),
     shadows: on('aerialShadows', '__canalRecallAerialShadows'),
     mapSize: on('aerialShadowMap', '__canalRecallAerialShadowMap'),
-    casters: on('aerialCasters', '__canalRecallAerialCasters'),
   };
 }
 
@@ -89,7 +88,7 @@ export class AerialPower {
   constructor(readonly levers: AerialLevers) {}
 
   /** True when any lever can change a frame (all off: the caller skips every apply). */
-  get any(): boolean { const l = this.levers; return l.fps || l.scale || l.shadows || l.mapSize || l.casters; }
+  get any(): boolean { const l = this.levers; return l.fps || l.scale || l.shadows || l.mapSize; }
 
   update(p: AerialPose): AerialDecision {
     const prev = this.last;
@@ -112,7 +111,6 @@ export class AerialPower {
       scale: l.scale && flying ? AERIAL_SCALE : 1,
       shadowEvery: l.shadows && flying ? AERIAL_SHADOW_EVERY : 1,
       shadowMapSize: l.mapSize && p.aerial ? AERIAL_SHADOW_MAP : null,
-      coarseCasts: !(l.casters && p.aerial),
     };
     return this.decision;
   }

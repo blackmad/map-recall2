@@ -8,7 +8,7 @@
 // A screenshot mid-pan is the moving frame at 1×. Levers are switched at runtime through `vm._aerialPower.levers`
 // (engine/aerialPower.ts) when the build has them; on a build without them only `base` runs.
 //
-//   PORT=4686 node scripts/aerial-power.mjs <out.json> [--configs base,fps,scale,shadows,mapsize,casters,all]
+//   PORT=4686 node scripts/aerial-power.mjs <out.json> [--configs base,fps,scale,shadows,mapsize,shadowall,all]
 //     [--poses fan,nieuwmarkt,singelgracht,sciencepark] [--speed 150] [--panS 8] [--warm 5] [--qs '...'] [--device desktop|iphone]
 // SHOTS=<dir> saves the still and moving frames per pose and config. BUNDLES_DIR as aerial-pan.mjs.
 import { chromium, devices } from 'playwright';
@@ -39,16 +39,15 @@ const POSES = {
 };
 const poseNames = opt('poses', Object.keys(POSES).join(',')).split(',');
 // Lever sets (engine/aerialPower.ts AerialLevers); `base` is every lever off (today's main).
-const OFF = { fps: false, scale: false, shadows: false, mapSize: false, casters: false };
+const OFF = { fps: false, scale: false, shadows: false, mapSize: false };
 const CONFIGS = {
   base: OFF,
   fps: { ...OFF, fps: true },
   scale: { ...OFF, scale: true },
   shadows: { ...OFF, shadows: true },
   mapsize: { ...OFF, mapSize: true },
-  casters: { ...OFF, casters: true },
-  shadowall: { ...OFF, shadows: true, mapSize: true, casters: true },
-  all: { fps: true, scale: true, shadows: true, mapSize: true, casters: true },
+  shadowall: { ...OFF, shadows: true, mapSize: true },
+  all: { fps: true, scale: true, shadows: true, mapSize: true },
 };
 
 const browser = await chromium.launch({
@@ -237,15 +236,22 @@ for (const name of poseNames) {
     await page.waitForTimeout(stillS * 1000);
     await record(false);
     const stillFrames = await drain();
+    // Late still: 8 s after the stop, when arrivals and fades have finished; a still frame should not redraw at all.
+    await page.waitForTimeout(3500);
+    await record(true);
+    await page.waitForTimeout(stillS * 1000);
+    await record(false);
+    const lateFrames = await drain();
+    const hostStats = await page.evaluate(() => ({ ...canalRecallGame.vectorMap.host.stats }));
     await record(true);
     const forcedMs = await page.evaluate(async n => { const host = canalRecallGame.vectorMap.host, t = performance.now(); for (let i = 0; i < n; i++) { await new Promise(r => requestAnimationFrame(r)); host.redraw(); } return performance.now() - t; }, forced);
     await record(false);
     const forcedFrames = await drain();
     const stillShot = shotsDir ? path.join(shotsDir, `${device}-${name}-${cfg}-still.png`) : null;
     if (stillShot) await page.screenshot({ path: stillShot });
-    const row = { pose: name, cfg, at, pan: summarise(panFrames, panSec), stillNatural: summarise(stillFrames, stillS), stillForced: summarise(forcedFrames, forcedMs / 1000), panCasters, gov, movingShot, stillShot };
+    const row = { pose: name, cfg, at, pan: summarise(panFrames, panSec), stillNatural: summarise(stillFrames, stillS), stillLate: summarise(lateFrames, stillS), hostStats, stillForced: summarise(forcedFrames, forcedMs / 1000), panCasters, gov, movingShot, stillShot };
     rows.push(row);
-    console.log(`${name} ${cfg}: pan ${row.pan.fps} fps, GPU ${row.pan.gpuMsPerFrame.p50} ms/f p50 (p90 ${row.pan.gpuMsPerFrame.p90}), ${row.pan.gpuMsPerSecond} ms/s, shadow ${row.pan.shadowMsPerSecond} ms/s (${row.pan.shadowShare}), redraws ${row.pan.shadowRedraws}/${row.pan.frames}, pr ${row.pan.pixelRatio} | still natural ${row.stillNatural.frames} f ${row.stillNatural.gpuMsPerSecond} ms/s | forced ${row.stillForced.gpuMsPerFrame.p50} ms/f shadow ${row.stillForced.shadowShare} | gov ${JSON.stringify(gov)}`);
+    console.log(`${name} ${cfg}: pan ${row.pan.fps} fps, GPU ${row.pan.gpuMsPerFrame.p50} ms/f p50 (p90 ${row.pan.gpuMsPerFrame.p90}), ${row.pan.gpuMsPerSecond} ms/s, shadow ${row.pan.shadowMsPerSecond} ms/s (${row.pan.shadowShare}), redraws ${row.pan.shadowRedraws}/${row.pan.frames}, pr ${row.pan.pixelRatio} | still natural ${row.stillNatural.frames} f ${row.stillNatural.gpuMsPerSecond} ms/s, late ${row.stillLate.frames} f ${row.stillLate.gpuMsPerSecond} ms/s | forced ${row.stillForced.gpuMsPerFrame.p50} ms/f shadow ${row.stillForced.shadowShare} | gov ${JSON.stringify(gov)}`);
     console.log(`  shadow casters per pass: ${JSON.stringify(panCasters)}`);
   }
 }
