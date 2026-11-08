@@ -11,8 +11,8 @@ import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { paletteFor } from './bayTextures.js';
 import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
-import { decodeFurniture, roofSlotHex } from './roofs/roofSlots.js';
-import { FLAT_LID_EXPOSURE, flatRoofPriorHex, flatRoofToneEnabled, mappedTowardPrior, scaleHex } from './roofs/flatRoofTone.js';
+import { decodeFurniture, MIN_CONFIDENCE, roofSlotHex } from './roofs/roofSlots.js';
+import { FLAT_LID_EXPOSURE, flatRoofPriorHex, flatRoofToneEnabled, lowConfidenceReading, mappedTowardPrior, roofStampConfident, scaleHex } from './roofs/flatRoofTone.js';
 import { BOX_MIN_M2, LIP_MIN_M2, flatRoofSurfaceEnabled, flatRoofSurfaceLayer } from './roofs/flatRoofSurface.js';
 import { isRoofSlot } from './roofs/roofFacts.js';
 import { largeTierSystem, plinthHex } from './largeBuildingTier.js';
@@ -54,7 +54,8 @@ const roofHexFor = (look: BuildingLook, plan: RoofPlan) => roofTone(look, plan.m
 
 /** The roof-facts stamp (roofs/roofFacts.ts) as a display colour, texture cell and measured furniture; null without one. */
 function measuredRoofOf(p: Record<string, unknown>, look: BuildingLook): { hex: string; cell: 'tile' | 'slate' | 'flat'; furniture?: MeshBuilding['measuredRoof'] } | null {
-  if (!isRoofSlot(p.roofSlot)) return null;
+  // A low-confidence stamp (sidecar at --min-confidence=0.2) only biases the flat-roof prior (applyFlatRoof).
+  if (!isRoofSlot(p.roofSlot) || !roofStampConfident(p, MIN_CONFIDENCE)) return null;
   const rgb = typeof p.roofMeasured === 'string' && /^#[0-9a-f]{6}$/i.test(p.roofMeasured) ? hexToRgb(p.roofMeasured) : null;
   const base = roofSlotHex(p.roofSlot, rgb), hex = cellSetOf(look) === 'procedural' ? base : lookHex(base, look);
   const encoded = typeof p.roofFurniture === 'string' && p.roofFurniture ? p.roofFurniture.split(',').map(Number) : [];
@@ -71,7 +72,7 @@ function applyFlatRoof(building: MeshBuilding, p: Record<string, unknown>, look:
   if (!building.lid) return;
   if (flatRoofToneEnabled()) {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
-    const prior = flatRoofPriorHex(id, year);
+    const prior = flatRoofPriorHex(id, year, measured ? null : lowConfidenceReading(p, MIN_CONFIDENCE), MIN_CONFIDENCE);
     const priorHex = cells === 'procedural' ? prior : lookHex(prior, look);
     let hex = building.lid.hex;
     if (!measured && !mapped) hex = priorHex;

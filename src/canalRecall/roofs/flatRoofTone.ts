@@ -35,6 +35,25 @@ export const PRIOR_JITTER = 0.06;
 /** Readings below MIN_CONFIDENCE but at or above this bias the prior toward themselves (weight ramps to 1 at MIN). */
 export const LOW_CONFIDENCE_FROM = 0.2;
 
+/**
+ * The roof-facts stamp's reading when it is a low-confidence one (confidence in [LOW_CONFIDENCE_FROM, minConfidence),
+ * a sidecar exported at `--min-confidence=0.2`): it only biases the prior, it is not drawn as measured. Null for a
+ * confident, missing or unreadable stamp. A stamp without a confidence (older callers) counts as confident.
+ */
+export function lowConfidenceReading(p: Record<string, unknown>, minConfidence = 0.35): { rgb: RGB; confidence: number } | null {
+  const confidence = Number(p.roofConfidence);
+  if (p.roofConfidence === undefined || !Number.isFinite(confidence) || confidence >= minConfidence || confidence < LOW_CONFIDENCE_FROM) return null;
+  if (typeof p.roofMeasured !== 'string' || !/^#[0-9a-f]{6}$/i.test(p.roofMeasured)) return null;
+  return { rgb: hexToRgb(p.roofMeasured), confidence };
+}
+
+/** A roof-facts stamp below `minConfidence` is not a measurement (MIN_CONFIDENCE in roofSlots.ts). */
+export const roofStampConfident = (p: Record<string, unknown>, minConfidence = 0.35): boolean => {
+  if (p.roofConfidence === undefined) return true;
+  const confidence = Number(p.roofConfidence);
+  return !Number.isFinite(confidence) || confidence >= minConfidence;
+};
+
 const hash01 = (s: string) => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return (h >>> 0) / 4294967296; };
 
 /**

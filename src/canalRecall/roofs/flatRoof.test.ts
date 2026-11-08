@@ -1,11 +1,11 @@
 // Lane R5-E (#265): flat-roof tone and surface. Run: node --import tsx --test src/canalRecall/roofs/flatRoof.test.ts (joins test:roofs).
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { FLAT_LID_EXPOSURE, FLAT_ROOF_BANDS, PRIOR_JITTER, flatRoofBand, flatRoofPriorHex, flatRoofToneEnabled, mappedTowardPrior, scaleHex } from './flatRoofTone.ts';
+import { FLAT_LID_EXPOSURE, FLAT_ROOF_BANDS, PRIOR_JITTER, flatRoofBand, flatRoofPriorHex, flatRoofToneEnabled, lowConfidenceReading, mappedTowardPrior, roofStampConfident, scaleHex } from './flatRoofTone.ts';
 import { BOX_MIN_M2, FLAT_SURFACE_BUDGET, LIP_H_M, LIP_W_M, SEAM_EVERY_M, LID_CELL_M, SURFACE_MEAN, flatRoofSurfaceEnabled, flatRoofSurfaceLayer, paintFlatRoofSurfaceCell, parapetLipTris, roofBoxTris, stairCorePoint } from './flatRoofSurface.ts';
 import { applyRoofFact } from './roofFacts.ts';
 import { meshBuildingFor, buildFeatureChunk, type Feature } from '../threeBuildingFeatures.ts';
-import { FLAT_ROOF_GREYS, FLAT_ROOF_PERIOD_PRIORS, hexToRgb, lumaOf, type RGB } from '../look/palette.ts';
+import { FLAT_ROOF_GREYS, FLAT_ROOF_PERIOD_PRIORS, hexToRgb, lookHex, lumaOf, type RGB } from '../look/palette.ts';
 import { lookAtlasLayers } from '../look/paintLookAtlas.ts';
 import { SLOT_LAYER_COUNT } from '../look/cityLook.ts';
 import { CELL_PX } from '../facadeCells.ts';
@@ -268,4 +268,23 @@ test('the box is roof class with no thin size (the thin fade dissolved it as tri
   assert.ok(lipTris ? trimVerts(on) > trimVerts(off) : trimVerts(on) === trimVerts(off), 'lips are trim, boxes are not');
   const added = on.indices.length - off.indices.length, boxVerts = on.kinds!['flat-box']! * 10 * 3;
   assert.equal(trimVerts(on) - trimVerts(off), added - boxVerts, 'every added vertex but the boxes is trim');
+});
+
+test('a low-confidence roof stamp (sidecar at 0.2) biases the prior and is not drawn as measured', () => {
+  const reading = { slot: 'bitumen-dark' as const, rgb: [60, 60, 66] as RGB, confidence: 0.3, solarShare: 0, terrace: false, furniture: [] };
+  const p: Record<string, unknown> = {};
+  applyRoofFact(p, reading);
+  assert.equal(roofStampConfident(p), false);
+  assert.deepEqual(lowConfidenceReading(p)?.confidence, 0.3);
+  assert.equal(roofStampConfident({}), true, 'no stamp confidence: as before');
+  assert.equal(lowConfidenceReading({ roofConfidence: 0.9, roofMeasured: '#3c3c42' }), null);
+  assert.equal(lowConfidenceReading({ roofConfidence: 0.1, roofMeasured: '#3c3c42' }), null);
+  const b = meshBuildingFor(feature(p), 'photo')!;
+  const id = 'NL.IMBAG.Pand.0363100012999001', want = flatRoofPriorHex(id, 1978, lowConfidenceReading(p));
+  assert.notEqual(want, flatRoofPriorHex(id, 1978), 'the reading moves the prior');
+  assert.equal(b.lid!.hex, scaleHex(lookHex(want, 'photo'), FLAT_LID_EXPOSURE));
+  assert.equal(b.measuredRoof, undefined);
+  // Flags off: the low-confidence stamp is ignored, as if the sidecar stopped at 0.35.
+  const off = withSearch(OFF, () => meshBuildingFor(feature(p), 'photo')!), bare = withSearch(OFF, () => meshBuildingFor(feature({}), 'photo')!);
+  assert.equal(off.lid!.hex, bare.lid!.hex);
 });
