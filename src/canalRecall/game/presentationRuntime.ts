@@ -67,6 +67,7 @@ import { nearestRouteIndex, RADAR_RADIUS_M, radarLocal, radarRadiusForSpeed, Rad
 import { gameWorldToLngLat, type GameLoaderFrame } from '../ownMap/frame';
 import { revealOnEnter, utilityBlockedByCards, utilityVisibility } from './utilityTuck';
 import { t as tr } from '../../i18n/index.ts';
+import { extendShareTrail } from '../shareCard';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -666,6 +667,8 @@ export class GamePresentationRuntime {
     }
     if (!this.player) return;
     const player = this.player;
+    // The ridden path for the share card (G6, src/canalRecall/shareCard.ts).
+    if (this.state === GameState.RACING) this._shareTrail = extendShareTrail(this._shareTrail, player, player, this._playerDistancePx());
 
     this.hud.setTime(this.raceTime);
     // Only the player's own zoom flashes the badge. The intro flight and the
