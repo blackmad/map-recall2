@@ -106,7 +106,7 @@ test('roadCellProblems: the sample is valid and each schema breach is named', ()
     assert.ok(problems.length > 0 && problems.some(p => expect.test(p)), `${expect}: ${problems.join('; ') || 'no problem found'}`);
     assert.ok(!isRoadCell(c));
   };
-  breach(c => { c.version = 3; }, /version/);
+  breach(c => { c.version = 4; }, /version/);
   breach(c => { c.key = 'abc'; }, /key/);
   breach(c => { c.surfaces[0].k = 'tarmac'; }, /\.k/);
   breach(c => { c.surfaces[0].c = 'other'; }, /\.c/);
@@ -187,7 +187,7 @@ test('roads-v1 extract: every listed cell file is a valid cell within budget, on
 });
 
 test('roads lane R1: version-2 classes are classified from BGT fysiek_voorkomen, grass is the park grass, cells of both versions read', () => {
-  assert.deepEqual(ROAD_CELL_VERSIONS, [1, 2]);
+  assert.deepEqual(ROAD_CELL_VERSIONS, [1, 2, 3]); // 3: R5-C2 slivers merged (roadSlivers.ts)
   // Verkeerseiland and berm: green groundcover, grass, unpaved (not sand) are verges; paved berms and islands are berms and islands.
   assert.equal(ancillaryClass('ondersteunendwegdeel', 'berm', 'onverhard'), 'verge');
   assert.equal(ancillaryClass('ondersteunendwegdeel', 'berm', 'groenvoorziening'), 'verge');

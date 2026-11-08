@@ -24,6 +24,8 @@
 // motor-only tunnel's roof begins a portal: a dark mouth under a concrete headwall.
 
 import { crossSection, type OsmWay } from './osmGround.js';
+import earcut from 'earcut';
+import polygonClipping, { type MultiPolygon, type Polygon } from 'polygon-clipping';
 import { emptyMesh, vertex, type MeshArrays } from './drape.js';
 import type { Vec2 } from './surface.js';
 import { isBicycleRestricted, isBikeRoutingHighway, isMotorOnlyHighway } from '../routing/bikeAccess.js';
@@ -968,4 +970,105 @@ export function cutMeshes(c: Cut, owns: (x: number, y: number) => boolean): CutM
     portals++;
   }
   return { walls, floor, walled, portals };
+}
+
+// ------------------------------------------------------------------ portal clip (engine round 5, R5-C2, issue #263)
+
+/** A ground triangle spanning a wall line by more than this (metres of height) is clipped there. */
+export const PORTAL_CLIP_SPAN_M = 0.3;
+/** A vertex this far (metres) inside or outside a strip's edge counts as on that side; nearer is on the line. */
+const PORTAL_CLIP_EPS_M = 0.05;
+/** Lift kept over the side's level by a clipped piece, clamped (metres). */
+const PORTAL_CLIP_LIFT_MAX_M = 0.5;
+/** Within this of a strip's ends (metres) nothing is clipped: no wall closes the step there (a ramp's top, a portal). */
+const PORTAL_CLIP_END_M = 3;
+
+/** How far (x, y) lies inside the nearest strip among `cuts` (+ inside, − outside; −Infinity beyond every strip's ends) and that strip's floor. */
+export function cutMargin(cuts: readonly Cut[], x: number, y: number): { margin: number; floor: number; walled: boolean } {
+  let best = -Infinity, floor = NaN, walled = false;
+  for (const c of cuts) {
+    const [x0, y0, x1, y1] = c.bbox;
+    if (x < x0 - 30 || x > x1 + 30 || y < y0 - 30 || y > y1 + 30) continue;
+    const h = locateCut(c, x, y);
+    const len = c.s[c.s.length - 1];
+    if (!h || h.s < 0 || h.s > len) continue;
+    const mL = h.left - h.lateral, mR = h.lateral + h.right, m = Math.min(mL, mR);
+    if (m > best) {
+      best = m; floor = h.floor;
+      // The nearer edge stands as a wall there (cutMeshes draws it), away from the strip's open ends.
+      const wall = mL <= mR ? h.wallL >= 0.5 && h.rimL - h.floor >= 0.15 : h.wallR >= 0.5 && h.rimR - h.floor >= 0.15;
+      walled = wall && h.s >= PORTAL_CLIP_END_M && h.s <= len - PORTAL_CLIP_END_M;
+    }
+  }
+  return { margin: best, floor, walled };
+}
+
+export interface PortalClipStats { split: number; pieces: number; dropped: number; failed: number }
+
+/**
+ * Clip a ground mesh at the tunnel cuts' strip edges in vector form (the wall line): a triangle with vertices both
+ * inside a strip and outside it whose height spans more than PORTAL_CLIP_SPAN_M (it hangs from the rim to the floor
+ * across the wall: the pale shards over the IJ-tunnel ramp walls, user shot U3 2026-11-08) is replaced by its pieces
+ * either side, each at its own side's level: inside at the strip's floor, outside at `outside(x, y)` (the land beside,
+ * lifted to the wall top), each with the lift the triangle's own vertices on that side carried. `keepInside` false
+ * drops the inside pieces (layers the land's cut mask discards there anyway: the land and the green fills). Vertical
+ * triangles (kerb faces, no plan area) are left alone. Returns a new mesh when anything changed, else `m` itself.
+ */
+export function clipMeshAtCuts(m: MeshArrays, cuts: readonly Cut[], outside: (x: number, y: number) => number, keepInside: boolean, stats?: PortalClipStats): MeshArrays {
+  if (!cuts.length || !m.indices.length) return m;
+  // The ring's own box (a cut's bbox may be its centreline's: the strip reaches past it).
+  const rings = cuts.map(c => { const r = cutRing(c); return { ring: [r.map(q => [q[0], q[1]] as [number, number])] as Polygon, bbox: [Math.min(...r.map(q => q[0])), Math.min(...r.map(q => q[1])), Math.max(...r.map(q => q[0])), Math.max(...r.map(q => q[1]))] }; });
+  const p = m.positions, keep: number[] = [], added: number[] = [];
+  let out: MeshArrays | null = null;
+  const st = stats ?? { split: 0, pieces: 0, dropped: 0, failed: 0 };
+  for (let t = 0; t < m.indices.length; t += 3) {
+    const v = [m.indices[t], m.indices[t + 1], m.indices[t + 2]];
+    const xs = v.map(i => p[i * 3]), ys = v.map(i => p[i * 3 + 1]), zs = v.map(i => p[i * 3 + 2]);
+    const span = Math.max(...zs) - Math.min(...zs);
+    const area2 = Math.abs((xs[1] - xs[0]) * (ys[2] - ys[0]) - (ys[1] - ys[0]) * (xs[2] - xs[0]));
+    if (span <= PORTAL_CLIP_SPAN_M || area2 < 1e-4) { keep.push(...v); continue; }
+    const side = v.map((_, j) => cutMargin(cuts, xs[j], ys[j]));
+    const ins = side.filter(s => s.margin > PORTAL_CLIP_EPS_M).length, outs = side.filter(s => s.margin < -PORTAL_CLIP_EPS_M).length;
+    // Only across a wall: an open side (a merged neighbour's strip, the ramp's top, a portal) has no face to close the step.
+    if (!ins || !outs || side.some(q => !q.walled && Math.abs(q.margin) < 6)) { keep.push(...v); continue; }
+    const tb = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+    const local = rings.filter(r => !(r.bbox[2] < tb[0] || r.bbox[0] > tb[2] || r.bbox[3] < tb[1] || r.bbox[1] > tb[3])).map(r => r.ring);
+    const tri: Polygon = [[[xs[0], ys[0]], [xs[1], ys[1]], [xs[2], ys[2]], [xs[0], ys[0]]]];
+    let outer: MultiPolygon, inner: MultiPolygon;
+    try { outer = polygonClipping.difference(tri, ...local); inner = keepInside ? polygonClipping.difference(tri, outer) : []; } catch { st.failed++; keep.push(...v); continue; }
+    // The lift each side's own vertices carried over that side's level (a footway's 14 cm, a fill's few mm).
+    const liftOf = (inside: boolean): number => {
+      const l = v.flatMap((_, j) => (inside ? side[j].margin > PORTAL_CLIP_EPS_M : side[j].margin < -PORTAL_CLIP_EPS_M) ? [zs[j] - (inside ? side[j].floor : outside(xs[j], ys[j]))] : []);
+      const mean = l.length ? l.reduce((a, b) => a + b, 0) / l.length : 0;
+      return Math.max(0, Math.min(PORTAL_CLIP_LIFT_MAX_M, mean));
+    };
+    out ??= { positions: m.positions.slice(), uvs: m.uvs.slice(), indices: [], ...(m.colors ? { colors: m.colors.slice() } : {}) };
+    const colour = m.colors ? [m.colors[v[0] * 3], m.colors[v[0] * 3 + 1], m.colors[v[0] * 3 + 2]] as [number, number, number] : undefined;
+    const emit = (pieces: MultiPolygon, z: (x: number, y: number) => number) => {
+      for (const poly of pieces) {
+        const flat: number[] = [], holes: number[] = [];
+        poly.forEach((r, k) => { if (k) holes.push(flat.length / 2); for (let q = 0; q + 1 < r.length; q++) flat.push(r[q][0], r[q][1]); });
+        const tris = earcut(flat, holes.length ? holes : undefined);
+        if (!tris.length) continue;
+        const ids: number[] = [];
+        for (let q = 0; q < flat.length; q += 2) ids.push(vertex(out!, flat[q], flat[q + 1], z(flat[q], flat[q + 1]), colour));
+        // earcut keeps the input winding: the triangle's own (up-facing) winding is restored from its sign.
+        const flip = ((xs[1] - xs[0]) * (ys[2] - ys[0]) - (ys[1] - ys[0]) * (xs[2] - xs[0])) < 0;
+        for (let q = 0; q < tris.length; q += 3) {
+          const a = ids[tris[q]], b = ids[tris[q + 1]], c = ids[tris[q + 2]];
+          const ax = out!.positions[a * 3], ay = out!.positions[a * 3 + 1], cross = (out!.positions[b * 3] - ax) * (out!.positions[c * 3 + 1] - ay) - (out!.positions[b * 3 + 1] - ay) * (out!.positions[c * 3] - ax);
+          if ((cross < 0) === flip) added.push(a, b, c); else added.push(a, c, b);
+        }
+        st.pieces++;
+      }
+    };
+    const liftOut = liftOf(false), liftIn = liftOf(true);
+    emit(outer, (x, y) => outside(x, y) + liftOut);
+    if (keepInside) emit(inner, (x, y) => { const s = cutMargin(cuts, x, y); return (s.floor === s.floor ? s.floor : outside(x, y)) + liftIn; });
+    else st.dropped++;
+    st.split++;
+  }
+  if (!out) return m;
+  out.indices = keep.concat(added);
+  return out;
 }
