@@ -95,3 +95,21 @@ test('the trail samples a step at a time and restarts for a new ride', async () 
   trail = extendShareTrail(trail, {}, { x: 500, y: 500 }, 0);
   assert.deepEqual(trail.points, [{ x: 500, y: 500 }], 'a new vehicle starts a new trail');
 });
+
+test('no two lines overlap, nor a line and the ribbon', async () => {
+  const { approximateMeasure } = await import('./shareCard.ts');
+  for (const destination of ['Westerkerk', 'Portugese Synagoge', 'Stedelijk Museum Amsterdam aan het Museumplein']) {
+    const layout = layoutShareCard({ ...base, destination });
+    const boxes = layout.texts.map(t => {
+      const w = approximateMeasure(t.text, t.font, t.sizePx);
+      const x0 = t.align === 'right' ? t.x - w : t.x;
+      return { t, x0, x1: x0 + w, y0: t.y - t.sizePx * 0.78, y1: t.y + t.sizePx * 0.12 };
+    });
+    const hit = (a: { x0: number; x1: number; y0: number; y1: number }, b: typeof a) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
+    boxes.forEach((a, i) => boxes.slice(i + 1).forEach(b => assert.ok(!hit(a, b), `${destination}: "${a.t.text}" overlaps "${b.t.text}"`)));
+    const r = layout.ribbon!;
+    const site = boxes.find(b => b.t.role === 'site')!;
+    assert.ok(!hit(site, { x0: r.x, x1: r.x + r.w, y0: r.y, y1: r.y + r.h }), 'the site clears the ribbon');
+    assert.ok(boxes.every(b => b.x1 <= SHARE_CARD_W - 40), `${destination}: every line stays inside the border`);
+  }
+});

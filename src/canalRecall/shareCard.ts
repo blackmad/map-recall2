@@ -80,6 +80,8 @@ export interface ShareCardLayout {
   panel: { x: number; y: number; w: number; h: number };
   texts: ShareCardText[];
   ribbon: (ShareCardRibbon & { x: number; y: number; w: number; h: number }) | null;
+  /** The hairline between the destination block and the numbers. */
+  rule: { x0: number; x1: number; y: number };
 }
 
 export type Measure = (text: string, font: string, sizePx: number) => number;
@@ -184,29 +186,37 @@ export function layoutShareCard(input: ShareCardInput, measure: Measure = approx
 
   const colX = 652;
   const colW = W - colX - 52;
-  push({ role: 'kicker', text: labels.arrived, x: colX, y: 98, sizePx: 32, font: FONT_MONO, color: MUTED, align: 'left' });
+  // A fixed vertical rhythm: kicker, up to two destination lines, the mode,
+  // a rule, the two numbers, the ribbon, the site at the foot.
+  push({ role: 'kicker', text: labels.arrived, x: colX, y: 86, sizePx: 32, font: `700 32px ${FONT_MONO}`, color: MUTED, align: 'left' });
 
   const destination = redactHidden(input.destination.trim(), hidden) || labels.fallbackPlace;
-  let size = 84;
+  // The largest size that fits in two lines without an ellipsis; one line is preferred at 64 px and up.
+  let size = 76;
   let lines: string[] = [];
-  for (; size >= SHARE_CARD_PRIMARY_FONT_PX + 8; size -= 4) {
-    const font = `800 ${size}px ${FONT_PLAQUE}`;
-    lines = wrap(destination, colW, 2, t => measure(t, font, size));
-    if (lines.every(l => !l.endsWith('…'))) break;
+  const fit = (px: number, maxLines: number) => wrap(destination, colW, maxLines, t => measure(t, `800 ${px}px ${FONT_PLAQUE}`, px));
+  for (let px = 76; px >= 64; px -= 4) {
+    const one = fit(px, 1);
+    if (!one[0].endsWith('…')) { size = px; lines = one; break; }
   }
-  size = Math.max(size, SHARE_CARD_PRIMARY_FONT_PX + 8);
-  const lead = Math.round(size * 0.98);
-  let y = 98 + 18 + lead;
+  if (!lines.length) {
+    for (size = 76; size > SHARE_CARD_PRIMARY_FONT_PX + 8; size -= 4) {
+      lines = fit(size, 2);
+      if (lines.every(l => !l.endsWith('…'))) break;
+    }
+    if (!lines.length || lines.some(l => l.endsWith('…'))) lines = fit(size, 2);
+  }
+  let y = 86 + 14 + Math.round(size * 0.92);
   for (const line of lines) {
     push({ role: 'destination', text: line, x: colX, y, sizePx: size, font: `800 ${size}px ${FONT_PLAQUE}`, color: INK, align: 'left' });
-    y += lead;
+    y += size;
   }
   if (input.modeLabel) {
-    push({ role: 'mode', text: input.modeLabel, x: colX, y: y - lead + 50, sizePx: 34, font: `600 34px ${FONT_PLAQUE}`, color: MUTED, align: 'left' });
+    push({ role: 'mode', text: input.modeLabel, x: colX, y: y - size + 44, sizePx: 34, font: `600 34px ${FONT_PLAQUE}`, color: MUTED, align: 'left' });
   }
+  const rule = { x0: colX, x1: W - 52, y: 318 };
 
   // Two numbers, side by side, labels over values.
-  const statsY = 400;
   const half = colW / 2;
   const stats = [
     { label: labels.distance, value: formatShareDistance(input.distanceM) },
@@ -214,20 +224,20 @@ export function layoutShareCard(input: ShareCardInput, measure: Measure = approx
   ];
   stats.forEach((stat, index) => {
     const x = colX + index * half;
-    push({ role: 'label', text: stat.label, x, y: statsY, sizePx: 32, font: `700 32px ${FONT_MONO}`, color: MUTED, align: 'left' });
-    push({ role: 'value', text: stat.value, x, y: statsY + 70, sizePx: 72, font: `800 72px ${FONT_PLAQUE}`, color: INK, align: 'left' });
+    push({ role: 'label', text: stat.label, x, y: 368, sizePx: 32, font: `700 32px ${FONT_MONO}`, color: MUTED, align: 'left' });
+    push({ role: 'value', text: stat.value, x, y: 436, sizePx: 72, font: `800 72px ${FONT_PLAQUE}`, color: INK, align: 'left' });
   });
 
   let ribbon: ShareCardLayout['ribbon'] = null;
   if (input.ribbon) {
     const font = `800 48px ${FONT_PLAQUE}`;
-    const w = Math.min(colW * 0.64, 96 + measure(input.ribbon.label, font, 48));
-    ribbon = { ...input.ribbon, x: colX, y: 510, w, h: 70 };
-    push({ role: 'ribbon', text: input.ribbon.label, x: colX + 70, y: 562, sizePx: 48, font, color: input.ribbon.color, align: 'left' });
+    const w = Math.min(colW, 96 + measure(input.ribbon.label, font, 48));
+    ribbon = { ...input.ribbon, x: colX, y: 466, w, h: 66 };
+    push({ role: 'ribbon', text: input.ribbon.label, x: colX + 72, y: 516, sizePx: 48, font, color: input.ribbon.color, align: 'left' });
   }
-  push({ role: 'site', text: labels.site, x: W - 52, y: ribbon ? 560 : 572, sizePx: 36, font: `700 36px ${FONT_MONO}`, color: INK, align: 'right' });
+  push({ role: 'site', text: labels.site, x: W - 52, y: 588, sizePx: 32, font: `700 32px ${FONT_MONO}`, color: INK, align: 'right' });
 
-  return { width: W, height: H, route: fitRoute(input.route, panel), panel, texts, ribbon };
+  return { width: W, height: H, route: fitRoute(input.route, panel), panel, texts, ribbon, rule };
 }
 
 /** The 2D context calls the card uses; a real CanvasRenderingContext2D satisfies it. */
@@ -321,7 +331,7 @@ export function drawShareCard(ctx: ShareCardContext, layout: ShareCardLayout): v
     ctx.fillStyle = r.dim;
     ctx.fillRect(r.x, r.y, r.w, r.h);
     ctx.fillStyle = r.color;
-    ctx.beginPath(); ctx.arc(r.x + 35, r.y + r.h / 2, 22, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(r.x + 38, r.y + r.h / 2, 22, 0, Math.PI * 2); ctx.fill();
     ctx.fillRect(r.x, r.y, 6, r.h);
   }
 
@@ -335,8 +345,7 @@ export function drawShareCard(ctx: ShareCardContext, layout: ShareCardLayout): v
   // A thin rule between the destination block and the numbers.
   ctx.strokeStyle = 'rgba(55,40,25,0.3)';
   ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(652, 340); ctx.lineTo(W - 52, 340); ctx.stroke();
-  void H;
+  ctx.beginPath(); ctx.moveTo(layout.rule.x0, layout.rule.y); ctx.lineTo(layout.rule.x1, layout.rule.y); ctx.stroke();
 }
 
 export interface ShareCanvas {
