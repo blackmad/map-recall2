@@ -30,7 +30,8 @@ import { isWorthACard } from './landmarkData';
 import { decideQuestion, EMPTY_BUDGET, recordAsk } from './questionBudget';
 import { answerHoldMayHide } from './silentPass';
 import { MANUAL_LANDMARKS } from '../landmarks/manualModels';
-import { t } from '../../i18n/index.ts';
+import { language, t } from '../../i18n/index.ts';
+import { landmarkDisplayName } from './landmarkNamesNl.ts';
 import type { LandmarkHost, RecallHost } from './host';
 import type { Landmark } from './worldTypes';
 
@@ -175,7 +176,11 @@ export class GameLandmarkQuestionRuntime {
     this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: answer.hood || '' };
     // Every choice is withheld, not only the answer: a labelled distractor in
     // view would name the lit building by elimination.
-    this.quizWithheldNames = landmarkWithheldNames(chosen.name, choices);
+    // Choices read in the UI language where the catalogue has a Dutch name
+    // (#283); the map may label either, so both spellings are withheld.
+    const lang = language();
+    const shownChoices = choices.map(name => landmarkDisplayName(name, lang));
+    this.quizWithheldNames = landmarkWithheldNames(chosen.name, [...choices, ...shownChoices, landmarkDisplayName(chosen.name, lang)]);
     // The card names the buurt and the side, never the building.
     const heading = this.player.speed < 0 ? this.player.angle + Math.PI : this.player.angle;
     const off = Math.atan2(chosen.y - this.player.y, chosen.x - this.player.x) - heading;
@@ -184,10 +189,10 @@ export class GameLandmarkQuestionRuntime {
     const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t('ride.landmarkQuestion.ahead')
       : bearing < 0 ? t('ride.landmarkQuestion.left') : t('ride.landmarkQuestion.right');
     this._openQuizPrompt({
-      kind: 'landmark', name: chosen.name, subject: 'landmark',
+      kind: 'landmark', name: landmarkDisplayName(chosen.name, lang), subject: 'landmark',
       question: t('ride.landmarkQuestion.heading'),
       context: answer.hood ? `${side} · ${answer.hood}` : side,
-      choices,
+      choices: shownChoices,
     });
     this._dressLandmarkPrompt();
     // The building under question is lit, unnamed, so "this" has a referent.

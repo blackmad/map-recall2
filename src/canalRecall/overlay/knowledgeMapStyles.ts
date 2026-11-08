@@ -36,7 +36,7 @@ export const KNOWLEDGE_MAP_CSS = `
 .stamp canvas { width: 100%; max-width: 104px; aspect-ratio: 1; height: auto; filter: drop-shadow(0 1px 1.5px rgba(31,28,23,.28)); }
 .stamp[data-earned="false"] canvas { filter: grayscale(1) contrast(.7); opacity: .38; }
 .stamp figcaption { display: grid; gap: 1px; width: 100%; text-align: center; }
-.stamp strong { overflow: hidden; color: var(--ink, #1f1c17); font: 700 12px/1.15 system-ui, sans-serif; text-overflow: ellipsis; white-space: nowrap; }
+.stamp strong { color: var(--ink, #1f1c17); font: 700 12px/1.15 system-ui, sans-serif; hyphens: manual; overflow-wrap: anywhere; text-wrap: balance; }
 .stamp span { color: var(--day-ink-muted, #6d655a); font: 500 11px/1.2 var(--font-mono, "JetBrains Mono", monospace); }
 .stamp[data-earned="false"] strong { color: var(--day-ink-muted, #6d655a); font-weight: 600; }
 .stamp[data-fresh="true"] span { color: #8a4d1f; font-weight: 700; }

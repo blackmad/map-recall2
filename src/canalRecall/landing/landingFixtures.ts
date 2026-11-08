@@ -83,7 +83,7 @@ export function landingFixtureEntries(scenario: LandingScenario, now = LANDING_F
     [ROUTE_HISTORY_KEY]: JSON.stringify(rides),
     [PLACE_STREAK_STORAGE_KEY]: JSON.stringify({ days: [daysBack(4), daysBack(2), daysBack(1), today], current: 3, best: 3 }),
     [PASSPORT_STORAGE_KEY]: JSON.stringify({
-      stamped: ['Jordaan', 'Grachtengordel-West', 'De Pijp', 'Plantage'],
+      stamped: ['Jordaan', 'Grachtengordel', 'De Pijp', 'Plantage'],
     }),
   };
 }

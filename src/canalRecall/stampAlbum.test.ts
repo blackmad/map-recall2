@@ -21,8 +21,8 @@ test('corrupt or absent storage reads as an empty album, not an error', () => {
 });
 
 test('album order: earned newest first, undated after, then unearned alphabetically', () => {
-  const album = buildStampAlbum(['Zuidas', 'Jordaan', 'De Pijp', 'Apollobuurt', 'Jordaan'], {
-    stamped: ['Jordaan', 'De Pijp', 'Weesp'],
+  const album = buildStampAlbum(['Zuidas', 'Jordaan', 'De Pijp', 'Apollobuurt', 'Jordaan', 'Weesp'], {
+    stamped: ['Jordaan', 'De Pijp', 'Weesp', 'Portugese Synagoge'],
     dates: { Jordaan: '2026-11-01', Weesp: '2026-11-05' },
   });
   assert.deepEqual(album.stamps.map(s => s.name), ['Weesp', 'Jordaan', 'De Pijp', 'Apollobuurt', 'Zuidas']);

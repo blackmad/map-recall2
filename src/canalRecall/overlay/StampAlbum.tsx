@@ -1,6 +1,7 @@
 // The passport as a stamp album: one stamp per buurt, greyed until earned,
 // the date under each earned one.
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { stampCaption } from '../stampCaption.ts';
 import { buildStampAlbum, stampDateLabel, type AlbumStamp, type StampSources } from '../stampAlbum.ts';
 import { drawPlainStamp } from '../stampAlbumPlain.ts';
 import { loadStampArt, stampArtNow } from '../stampArtLoader.ts';
@@ -75,7 +76,7 @@ export function StampAlbum({
             <figure className="stamp" data-earned={stamp.earned} data-fresh={stamp.name === fresh}>
               <StampCanvas stamp={stamp} art={art} fontReady={fontReady} />
               <figcaption>
-                <strong title={stamp.name}>{stamp.name}</strong>
+                <strong title={stamp.name}>{stampCaption(stamp.name)}</strong>
                 <span>{stamp.earned ? (stamp.name === fresh ? t('stamps.new') : stampDateLabel(stamp.date, lang) || t('stamps.stamped')) : t('stamps.notYet')}</span>
               </figcaption>
             </figure>
