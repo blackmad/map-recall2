@@ -401,8 +401,8 @@ export class OwnGround {
   private focus: Vec2 | null = null;
   private focusCell: string | null = null;
   private readonly focusOn = groundFocusFlag();
-  /** Follow the camera's pose until the game's first update (groundPrefetch.ts, `?groundPrefetch=0` off). */
-  private readonly prefetchOn = groundPrefetchFlag();
+  /** Follow the camera's pose until the game's first update, asking this many cells (groundPrefetch.ts, `?groundPrefetch=0` off). */
+  private readonly prefetchCells = groundPrefetchFlag();
   private gameUpdated = false;
   private prefetchTimer: ReturnType<typeof setInterval> | null = null;
   private prefetchKey: string | null = null;
@@ -583,7 +583,8 @@ export class OwnGround {
 
   /** The rider's position (lng/lat) and the map zoom; call once per camera sync. */
   update(lngLat: LngLat, zoom: number, pitchDeg = 60, focus?: LngLat | null): void {
-    if (!this.gameUpdated) { this.gameUpdated = true; this.stopPrefetch(); }
+    // The first game update plans the whole ring (the hold asked only the first few, groundPrefetch.ts).
+    if (!this.gameUpdated) { this.gameUpdated = true; this.stopPrefetch(); this.residencyAt = null; }
     this.place(lngLat, zoom, pitchDeg, focus);
   }
 
@@ -592,7 +593,7 @@ export class OwnGround {
    * ride is revealed and the camera already sits at the start pose, so the start neighbourhood builds during the hold.
    */
   private startPrefetch(): void {
-    if (!this.prefetchOn || this.gameUpdated || this.prefetchTimer || typeof this.host.startView !== 'function') return;
+    if (!this.prefetchCells || this.gameUpdated || this.prefetchTimer || typeof this.host.startView !== 'function') return;
     const until = performance.now() + PREFETCH_MAX_MS;
     this.prefetchTimer = setInterval(() => {
       if (this.gameUpdated || performance.now() > until) { this.stopPrefetch(); return; }
@@ -764,7 +765,9 @@ export class OwnGround {
   private updateResidency(): void {
     if (!this.centre) return;
     this.residencyAt = [this.centre[0], this.centre[1]];
-    const wanted = this.wantedCells();
+    let wanted = this.wantedCells();
+    // During the hold (groundPrefetch.ts) only the best-ranked few: the hold's own tiers load meanwhile.
+    if (!this.gameUpdated && this.prefetchCells && wanted.length > this.prefetchCells) wanted = wanted.slice(0, this.prefetchCells);
     const keep = new Set(wanted.map(w => w.key));
     if (this.quickOn) this.wantedLod = new Map(wanted.map(w => [w.key, w.lod]));
     this.wantedKeys = keep;
@@ -772,8 +775,9 @@ export class OwnGround {
     for (const key of [...this.pending.keys()]) if (!keep.has(key)) { this.pending.delete(key); this.asks.delete(key); this.discards.unwanted++; this.retries.forget(key); }
     for (let i = this.installQueue.length - 1; i >= 0; i--) if (!keep.has(this.installQueue[i].key)) this.installQueue.splice(i, 1);
     for (const w of wanted) {
-      // Main-thread surface for poses, bases and overlays: relief + decks of every wanted cell.
-      this.prepareMain(w.key);
+      // Main-thread surface for poses, bases and overlays: relief + decks of every wanted cell. Not during the hold
+      // (groundPrefetch.ts): the page is still loading on this thread; the game's first update prepares them.
+      if (this.gameUpdated || !this.prefetchCells) this.prepareMain(w.key);
       const have = this.resident.get(w.key);
       // Quick first paint (groundWorkers.ts groundQuickFlag): a near cell with nothing drawn yet is asked at LOD 1
       // first (~0.8 s against ~2–3 s for LOD 0); its install re-plans and the LOD 0 build follows.

@@ -4,10 +4,11 @@ import { groundPrefetchFlag, prefetchStep } from './groundPrefetch';
 
 const v = (zoom: number) => ({ lngLat: [4.9, 52.37] as [number, number], zoom, pitch: 60 });
 
-test('groundPrefetchFlag: on unless ?groundPrefetch=0', () => {
-  assert.equal(groundPrefetchFlag(''), true);
-  assert.equal(groundPrefetchFlag('?groundPrefetch=0'), false);
-  assert.equal(groundPrefetchFlag('?groundPrefetch=1'), true);
+test('groundPrefetchFlag: the camera cell by default, N cells with ?groundPrefetch=N, none with 0', () => {
+  assert.equal(groundPrefetchFlag(''), 1);
+  assert.equal(groundPrefetchFlag('?groundPrefetch=0'), 0);
+  assert.equal(groundPrefetchFlag('?groundPrefetch=9'), 9);
+  assert.equal(groundPrefetchFlag('?groundPrefetch=x'), 1);
 });
 
 test('prefetchStep uses a pose once its cell held for two polls', () => {

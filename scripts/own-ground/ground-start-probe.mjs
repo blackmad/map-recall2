@@ -4,7 +4,7 @@
 // installed, and where each cell's time went (worker queue wait / data in / build / tiles; main-thread queue / install).
 //
 //   PORT=4680 node scripts/own-ground/ground-start-probe.mjs <out.json> [--runs 3] [--every 500] [--max 60] [--qs 'a=1']
-//     [--chrome] [--headed] [--device desktop|iphone]
+//     [--chrome] [--headed] [--device desktop|iphone] [--throttle 4]
 // BUNDLES_DIR=<dir> serves *.bundle.js (and the ground worker) from a scratch build.
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
@@ -33,6 +33,8 @@ for (let run = 0; run < runs; run++) {
   });
   await context.route(/ingest\.(us\.)?sentry\.io/, route => route.fulfill({ status: 200, body: '{}' }));
   const page = await context.newPage();
+  // --throttle N: CPU slowed N times (the iPhone 13 4x check; the page's own thread, as the perf harnesses do).
+  if (Number(opt('throttle', '0')) > 1) await (await context.newCDPSession(page)).send('Emulation.setCPUThrottlingRate', { rate: Number(opt('throttle', '0')) });
   const errors = [];
   page.on('pageerror', e => errors.push(String(e).slice(0, 200)));
   // Sampled in the page from its first script on, so the poll does not depend on the harness's round trips.

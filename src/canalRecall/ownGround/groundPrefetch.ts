@@ -7,8 +7,10 @@
 // camera's pose: the start cell and its neighbours build during the hold instead of after it.
 //
 // A pose is used once its cell has been the same for two polls (a camera still being placed is not built around), and
-// only at zooms the ground draws at. `?groundPrefetch=0` (or `window.__canalRecallGroundPrefetch = false`) waits for
-// the game's first update, as before.
+// only at zooms the ground draws at. Only the best-ranked `PREFETCH_CELLS` cells (the camera's own cell) are asked:
+// with the whole ring (14 cells) the hold's buildings and baked tiers landed later and the reveal came 1.4–2.4 s later
+// (3 runs each, 2026-11-08). `?groundPrefetch=N` asks N (9: the camera block; 99: the ring); `?groundPrefetch=0` (or
+// `window.__canalRecallGroundPrefetch = false`) waits for the game's first update, as before.
 
 export interface StartView { lngLat: [number, number]; zoom: number; pitch: number }
 
@@ -16,10 +18,17 @@ export const PREFETCH_POLL_MS = 200;
 /** Stop following the camera this long after the workers are ready, if the game never updates the ground. */
 export const PREFETCH_MAX_MS = 30_000;
 
-export function groundPrefetchFlag(search?: string): boolean {
-  const g = globalThis as { __canalRecallGroundPrefetch?: boolean; location?: { search?: string } };
-  if (typeof g.__canalRecallGroundPrefetch === 'boolean') return g.__canalRecallGroundPrefetch;
-  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundPrefetch') !== '0';
+/** Cells asked during the hold by default: the camera's own cell. */
+export const PREFETCH_CELLS = 1;
+
+/** How many of the start's best-ranked cells to ask during the hold (0: none, wait for the game's first update). */
+export function groundPrefetchFlag(search?: string): number {
+  const g = globalThis as { __canalRecallGroundPrefetch?: boolean | number; location?: { search?: string } };
+  if (g.__canalRecallGroundPrefetch === false) return 0;
+  if (typeof g.__canalRecallGroundPrefetch === 'number' && g.__canalRecallGroundPrefetch >= 0) return Math.floor(g.__canalRecallGroundPrefetch);
+  const raw = new URLSearchParams(search ?? g.location?.search ?? '').get('groundPrefetch');
+  const n = Number(raw);
+  return raw != null && raw !== '' && Number.isInteger(n) && n >= 0 ? n : PREFETCH_CELLS;
 }
 
 /**
