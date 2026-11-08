@@ -41,6 +41,10 @@ async function frame(page: Page, baked: boolean) {
 
 test('baked fabric: the houses at da-costakade-user draw with the baked tier on (sync held)', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'the baked tier is a desktop tier');
+  // The CI runner's software GL took over four minutes per frame here (the far tier never settled in 90 s), then the test
+  // timeout and a retry ran it twice and the job hit its 45-minute limit (2026-11-07 night). The pin is a local-gate
+  // spec: check:canal runs it on a Mac with a real GPU, where it takes under a minute.
+  test.skip(!!process.env.CI, 'needs a real GPU: the baked tier uploads ~100 MB and the far tier must settle');
   test.setTimeout(600_000);
   mkdirSync(OUT, { recursive: true });
   const on = await frame(page, true), off = await frame(page, false);
