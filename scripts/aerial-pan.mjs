@@ -626,6 +626,8 @@ for (let t = every; t <= panS; t += every) {
   res.drawKinds = await drawKinds();
   const rss = await processRss();
   const aerial = await page.evaluate(() => ({ routeM: Math.round(window.__aerial.s / (0, eval)('PIXELS_PER_METER')), laps: window.__aerial.laps, km: Math.round((window.__aerial.laps * window.__aerial.totalM + window.__aerial.s / 3) / 100) / 10, poses: window.__aerial.poseChanges.length, leg: window.__aerial.poseChanges.at(-1)?.to }));
+  // SHOT_AT=80,120 (lane R4-E #248): also a frame at these pan seconds (mid-arrival strips).
+  if (shotsDir && (process.env.SHOT_AT ?? '').split(',').map(Number).includes(t)) { fs.mkdirSync(shotsDir, { recursive: true }); const file = path.join(shotsDir, `${device}-t${t}-at.png`); await page.screenshot({ path: file }); shots.push(file); }
   if (shotsDir && aerial.poses !== lastPoseCount) {
     fs.mkdirSync(shotsDir, { recursive: true });
     const file = path.join(shotsDir, `${device}-t${t}-${aerial.leg}.png`);
