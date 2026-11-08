@@ -12,6 +12,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
   // A tapped POI label on a building the register knows nothing about (#258): the place says what it is.
   | 'landmark-card-building-place' | 'landmark-card-building-place-touch'
+  // The same label tap once the pand under the label is found: the place, then its building's year (#258 follow-up).
+  | 'landmark-card-building-label-pand' | 'landmark-card-building-label-pand-touch'
   // A named bridge with no origin: the city's bridge register alone.
   | 'landmark-card-bridge-register' | 'landmark-card-bridge-register-touch'
   // A street's name origin, the most common card while driving.
@@ -325,6 +327,15 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
               detail: 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow that it was only suitable for pedestrians.',
               longDetail: 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow that it was only suitable for pedestrians. '
                 + 'Although this bridge was officially called the Kerkstraatbrug, it soon became known as the Magere Brug.',
+            }
+            : scenario.startsWith('landmark-card-building-label-pand')
+            ? {
+              // The gurdwara's label point lies in pand 0363100012106767 (building-tiles 14/8412/5382); its
+              // building-facts row is [1964, -1, 0] and its tile height 4.79 m.
+              id: 'clicked-own:Shri Guru Nanak Gurdwara Sahib:4.84901', type: 'building',
+              sourceUrl: 'https://www.openstreetmap.org/node/2628741158',
+              ...describeBuilding([1964, -1, 0], 4.79, 'Shri Guru Nanak Gurdwara Sahib',
+                { name: 'Shri Guru Nanak Gurdwara Sahib', kind: 'a Sikh gurdwara', address: 'Schakelstraat 21' }),
             }
             : scenario.startsWith('landmark-card-building-place')
             ? {
@@ -726,6 +737,12 @@ export const PortraitBridgeOriginCard: Story = {
 export const BuildingPlaceCard: Story = { args: { scenario: 'landmark-card-building-place' } };
 export const PortraitBuildingPlaceCard: Story = {
   args: { scenario: 'landmark-card-building-place-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** The tapped label with the pand under it resolved: the place's name and kind, then the building's year (#258 follow-up). */
+export const BuildingLabelPandCard: Story = { args: { scenario: 'landmark-card-building-label-pand' } };
+export const PortraitBuildingLabelPandCard: Story = {
+  args: { scenario: 'landmark-card-building-label-pand-touch' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 export const PortraitBuildingFactsCard: Story = {
