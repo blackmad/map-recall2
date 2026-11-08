@@ -13,6 +13,7 @@
 import { hudSurface } from '../hudTheme';
 import { LABEL_INK, labelInk } from '../look/palette';
 import type { LabelClass } from './labelPlan';
+import { PILL_MAX_PX } from './pillText';
 
 const PLAQUE = '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif';
 const UI = 'system-ui, -apple-system, "Segoe UI", sans-serif';
@@ -77,6 +78,8 @@ export function labelCss(): string {
   rules.push(
     `${pill} .n{font:${PILL_FONT};letter-spacing:0;text-transform:none;color:${hudSurface.ink};text-shadow:none;background:${hudSurface.cardSolid};`
       + `border:1px solid ${hudSurface.border};border-radius:11px;height:22px;box-sizing:border-box;padding:0 9px 0 6px;display:flex;align-items:center;gap:5px;`
+      // The text is already fitted (pillText.ts, #259): the 180 px name cap clipped a flex row with no ellipsis.
+      + `max-width:${PILL_MAX_PX + 40}px;`
       + `box-shadow:0 1px 6px ${hudSurface.shadow}}`,
     `${pill} .n::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:${hudSurface.arrow}}`,
     `${pill} .s{background:${hudSurface.ink};opacity:.55;width:1.5px;height:8px}`,

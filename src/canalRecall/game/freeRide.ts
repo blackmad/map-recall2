@@ -12,6 +12,7 @@
 // off only while a free ride is running and restores it when the ride ends.
 
 import type { WorldPoint } from './worldTypes';
+import { fitPillText, PILL_MAX_CHARS } from '../labels/pillText';
 import { dedupeLabelCandidates } from '../labels/labelDedupe';
 import type { LabelCandidate } from '../labels/labelPlan';
 
@@ -47,8 +48,8 @@ export const FREE_RIDE_REFRESH_SECONDS = 0.4;
  *  pitched camera's own reach is four screens; projecting every anchor in it
  *  each frame would cost what the quiz modes saved (streetLabelCandidates.ts). */
 export const FREE_RIDE_LABEL_REACH_M = 450;
-/** Marker labels are cut to this many characters. */
-export const FREE_RIDE_LABEL_MAX_CHARS = 26;
+/** Marker labels show this many characters at most (the pill cap, labels/pillText.ts; 26 cut "Canal Ring Area of Amsterdam", #259). */
+export const FREE_RIDE_LABEL_MAX_CHARS = PILL_MAX_CHARS;
 
 export type FreeRideKind = 'landmark' | 'bridge';
 
@@ -184,13 +185,9 @@ export function markerAt(placed: readonly PlacedMarker[], x: number, y: number, 
   return null;
 }
 
-/** Cut a long name for a marker label, on a word where one is near. */
-export function markerLabel(name: string, maxChars = FREE_RIDE_LABEL_MAX_CHARS): string {
-  const text = name.trim().replace(/\s+/g, ' ');
-  if (text.length <= maxChars) return text;
-  const cut = text.slice(0, maxChars - 1);
-  const space = cut.lastIndexOf(' ');
-  return `${(space > maxChars * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:–-]+$/, '')}…`;
+/** A marker's label: the whole name up to the pill cap, else whole words and "…" (labels/pillText.ts, #259). */
+export function markerLabel(name: string, maxChars = FREE_RIDE_LABEL_MAX_CHARS, measure?: (text: string) => number): string {
+  return fitPillText(name, { maxChars, measure });
 }
 
 /** The plaque's tally line in Free Ride, in place of the quiz score. */
