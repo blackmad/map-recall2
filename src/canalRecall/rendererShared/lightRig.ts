@@ -180,6 +180,12 @@ export type LightRig = {
   follow(focusAbs: Vec3, zoom: number, toWorld: (abs: Vec3) => Vec3, snapStepM?: number): ShadowFit;
   /** Move the sun (time of day, debugging). Takes effect on the next follow(). */
   setSun(azimuthDeg: number, elevationDeg: number): void;
+  /**
+   * Resize the sun's shadow map (engine/aerialPower.ts `?aerialShadowMap=0`: 1024² from the air). The old map's render
+   * target is released and three allocates the new one at the next shadow redraw; the caller forces that redraw.
+   * Returns whether the size changed.
+   */
+  setShadowMapSize(size: number): boolean;
 };
 
 export function createLightRig(THREE: any, overrides: LightRigOptions = {}, base: Required<LightRigOptions> = activeLightRig()): LightRig {
@@ -224,6 +230,15 @@ export function createLightRig(THREE: any, overrides: LightRigOptions = {}, base
       toSun[0] = next[0]; toSun[1] = next[1]; toSun[2] = next[2];
       options.sunAzimuthDeg = azimuthDeg; options.sunElevationDeg = elevationDeg;
       lastHalf = 0;
+    },
+    setShadowMapSize(size) {
+      if (!(size > 0) || size === options.shadowMapSize) return false;
+      options.shadowMapSize = size;
+      sun.shadow.mapSize.set(size, size);
+      sun.shadow.map?.dispose?.();
+      sun.shadow.map = null;
+      lastHalf = 0;
+      return true;
     },
   };
   return rig;
