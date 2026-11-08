@@ -3,6 +3,53 @@
   "notes": [
     {
       "date": "2026-11-08",
+      "title": "Road numbers once per road, place names in full",
+      "text": "Road numbers appear once per stretch of road, and place names are no longer cut off mid-word. Around Sloterdijk the A10, A5 and S101 badges repeated every few hundred metres along the same road; each road now carries one badge per visible stretch. Long place names such as Canal Ring Area of Amsterdam and Amsterdam Sloterdijk Station are shown in full instead of ending in a cut word.",
+      "where": [
+        4.8371,
+        52.3889
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-08-labels/sloterdijk-before.png",
+          "alt": "Sloterdijk from the air, before: the A10, A5 and S101 badges repeated along each road",
+          "caption": "Sloterdijk, before."
+        },
+        {
+          "src": "ui/2026-11-08-labels/sloterdijk-after.png",
+          "alt": "Sloterdijk from the air, after: one badge per road stretch",
+          "caption": "Sloterdijk, after."
+        },
+        {
+          "src": "ui/2026-11-08-labels/hortus-before.png",
+          "alt": "The Hortus, before: place-name pills cut off mid-word",
+          "caption": "Hortus, before."
+        },
+        {
+          "src": "ui/2026-11-08-labels/hortus-after.png",
+          "alt": "The Hortus, after: place names shown in full",
+          "caption": "Hortus, after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Roofs sit back on their walls",
+      "text": "Roofs sit back on their walls along the Stadhouderskade, the Singelgracht and the Geldersekade. The simplified city shells drawn from the air and at a distance used each roof's full fitted box, so on skewed or irregular blocks the roof stuck out past the walls, sometimes by a whole street's width. Those roofs are now trimmed at the walls, as the close-up buildings always were.",
+      "where": [
+        4.8832,
+        52.3618
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-roofs-offset/singelgracht-before-after-2x.png",
+          "alt": "The block at Stadhouderskade and Hobbemastraat seen across the Singelgracht, before and after: the grey roof slab that hung over the street now sits on the walls",
+          "caption": "Across the Singelgracht toward Hobbemastraat. Before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
       "title": "The Weesperstraat slab no longer shimmers",
       "text": "The tall 1962 slab on Weesperstraat no longer shimmers while you ride past it. On desktop, where a facade's window grid shrinks to a few pixels, the renderer now blends nine samples across each pixel instead of one, which takes the moiré out of the long wall; a little fine detail at that distance is traded for calm. Phones keep the previous behaviour for now.",
       "where": [
