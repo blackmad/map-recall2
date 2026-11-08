@@ -617,6 +617,24 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     if (d.draw && d.low) lowDecks.push({ k, box });
   }
   const lowDeckSet = new Set(lowDecks.map(l => l.k));
+  /** redDedupe: the red fietspad polygons' boxes by level (own and neighbours'), shrunk by RED_OVERLAP_MIN_M. */
+  const redBoxes: { h: number; box: [number, number, number, number] }[] = [];
+  if (redOwn) for (let j = 0; j < index.records.length; j++) {
+    if (index.drawClass(j) !== 'cycle' || index.mesh(j) !== 'cycle') continue;
+    const ring = index.ringsOf(j)[0];
+    if (!ring || ring.length < 3) continue;
+    const b: [number, number, number, number] = [Infinity, Infinity, -Infinity, -Infinity];
+    for (const p of ring) { b[0] = Math.min(b[0], p[0]); b[1] = Math.min(b[1], p[1]); b[2] = Math.max(b[2], p[0]); b[3] = Math.max(b[3], p[1]); }
+    redBoxes.push({ h: index.records[j].h, box: [b[0] + RED_OVERLAP_MIN_M, b[1] + RED_OVERLAP_MIN_M, b[2] - RED_OVERLAP_MIN_M, b[3] - RED_OVERLAP_MIN_M] });
+  }
+  /** The red boxes of level `h` overlapping the polygon's box (`flat` its vertices), shrunk past a shared edge. */
+  const redBoxesOver = (flat: readonly number[], h: number): [number, number, number, number][] => {
+    if (!redBoxes.length) return [];
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (let i = 0; i < flat.length; i += 2) { x0 = Math.min(x0, flat[i]); y0 = Math.min(y0, flat[i + 1]); x1 = Math.max(x1, flat[i]); y1 = Math.max(y1, flat[i + 1]); }
+    x0 += RED_OVERLAP_MIN_M; y0 += RED_OVERLAP_MIN_M; x1 -= RED_OVERLAP_MIN_M; y1 -= RED_OVERLAP_MIN_M;
+    return redBoxes.filter(r => r.h === h && r.box[0] < x1 && r.box[2] > x0 && r.box[1] < y1 && r.box[3] > y0).map(r => r.box);
+  };
   /** Inside a low deck polygon by more than KERB_ON_DECK_EDGE_M from its rings (a ground kerb the deck covers). */
   const insideLowDeck = (x: number, y: number) => lowDecks.length > 0 && index.findAll(x, y).some(j => lowDeckSet.has(j) && ringDistance(index.ringsOf(j), x, y) > KERB_ON_DECK_EDGE_M);
   for (let k = 0; k < index.own; k++) {
@@ -649,16 +667,21 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     // redDedupe: a pavement-level polygon the survey overlaps with a red fietspad of its own level (the Beltbrug's berm
     // over the fietspad, 25 m² of grey on the red) gives way to the red; triangle centroids find the overlap.
     const redCutters: number[] = [];
-    if (redOwn && PAVEMENT_LEVEL.has(index.drawClass(k))) {
+    const nearRed = redOwn && PAVEMENT_LEVEL.has(index.drawClass(k)) ? redBoxesOver(flat, rec.h) : [];
+    if (nearRed.length) {
       const seen = new Set<number>();
       for (let t = 0; t < tris0.length; t += 3) {
         const a = tris0[t] * 2, b = tris0[t + 1] * 2, c = tris0[t + 2] * 2;
+        const tx0 = Math.min(flat[a], flat[b], flat[c]), tx1 = Math.max(flat[a], flat[b], flat[c]), ty0 = Math.min(flat[a + 1], flat[b + 1], flat[c + 1]), ty1 = Math.max(flat[a + 1], flat[b + 1], flat[c + 1]);
+        if (!nearRed.some(r => r[0] < tx1 && r[2] > tx0 && r[1] < ty1 && r[3] > ty0)) continue;
         const cx = (flat[a] + flat[b] + flat[c]) / 3, cy = (flat[a + 1] + flat[b + 1] + flat[c + 1]) / 3;
         // The centroid, the edge midpoints and half-way to each corner (a thin overlap along an edge misses the centroid).
         const probes: Vec2[] = [[cx, cy], [(flat[a] + flat[b]) / 2, (flat[a + 1] + flat[b + 1]) / 2], [(flat[b] + flat[c]) / 2, (flat[b + 1] + flat[c + 1]) / 2], [(flat[c] + flat[a]) / 2, (flat[c + 1] + flat[a + 1]) / 2],
           [(cx + flat[a]) / 2, (cy + flat[a + 1]) / 2], [(cx + flat[b]) / 2, (cy + flat[b + 1]) / 2], [(cx + flat[c]) / 2, (cy + flat[c + 1]) / 2]];
         for (const [px, py] of probes) for (const j of index.findAll(px, py)) {
           if (j === k || seen.has(j) || index.records[j].h !== rec.h || index.drawClass(j) !== 'cycle' || index.mesh(j) !== 'cycle') continue;
+          // On the shared edge of two neighbours (no overlap): not a cutter (the polygon difference would change nothing).
+          if (ringDistance(index.ringsOf(j), px, py) <= RED_OVERLAP_MIN_M || ringDistance(index.ringsOf(k), px, py) <= RED_OVERLAP_MIN_M) continue;
           seen.add(j); redCutters.push(j);
         }
       }
@@ -766,6 +789,8 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   return { layers, stats, skipped, ...(carry ? { lowDeck: (k: number) => lowDeckSet.has(k) } : {}) };
 }
 
+/** redDedupe: a probe this close to either polygon's ring is on their shared edge, not in an overlap. */
+export const RED_OVERLAP_MIN_M = 0.05;
 /** bridgeCarry: a kerb this close to a low deck polygon's ring is on the deck's edge and stays. */
 export const KERB_ON_DECK_EDGE_M = 0.1;
 function ringDistance(rings: readonly (readonly Vec2[])[], x: number, y: number): number {

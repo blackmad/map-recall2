@@ -76,7 +76,7 @@ export function deckDecision(index: CarryIndex, k: number, input: CarryInput, dr
 }
 
 /** Sample spacing (m) over a deck polygon; coarser on large polygons (at most ~CARRY_MAX_SAMPLES points). */
-export const CARRY_SAMPLE_M = 0.5, CARRY_MAX_SAMPLES = 2000;
+export const CARRY_SAMPLE_M = 0.5, CARRY_MAX_SAMPLES = 400;
 
 /**
  * The riding surface's rise over the land at the points of deck polygon `k` that lie over a ground polygon (h = 0), on
