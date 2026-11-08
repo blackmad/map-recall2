@@ -69,6 +69,8 @@ import { BaseRefreshSlicer, lngLatDistanceM, type SliceItem } from './rendererSh
 import { cellDebugMode, windowSdfBandEnabled, windowSdfEnabled, WINDOW_SDF_LOD_BIAS } from './look/windowSdf.js';
 import { arrayMips, arrayRolloffMips, cellLodBiasFlag, cellTierBandFlag, cellTierFromBand, cellMipOptions, cellMipsEnabled, cellRolloffEnabled, cellRolloffOptions, debugLevels, layerDigitRgb, LEVEL_DEBUG_RGB, type CellRolloffOptions, type RolloffArrayLevels } from './look/cellMips.js';
 import { uploadArrayMips, type ArrayMipUploadResult } from './look/arrayMipUpload.js';
+import { AtlasAerialSwitch, atlasAerialEnabled, atlasAerialMeasureOnly, chunkLodEstimate, focalPxOf } from './look/atlasAerial.js';
+import { isAerialView } from './rendererShared/aerialView.js';
 
 /** A query flag's raw value, or null (tolerates a page without URLSearchParams). */
 function pageFlag(name: string): string | null {
@@ -587,6 +589,11 @@ export class ThreeBuildings {
       material = this.lit || this.cityLook ? this.newMaterial() : this.material.clone();
       this.materials.set(look, material);
     }
+    const sw = this.atlasSwitches.get(set) ?? null;
+    if (sw !== this.atlasAerial || (sw && this.atlasHalf !== (sw.bound !== sw.full))) {
+      this.atlasAerial = sw; this.atlasHalf = !!sw && sw.bound !== sw.full;
+      this.refreshCellTier();
+    }
     material.uniforms.cells.value = set.colour;
     material.uniforms.masks.value = set.mask;
     material.uniforms.bands.value = LOOK_VARIANTS[look].shadeBands;
@@ -736,6 +743,7 @@ export class ThreeBuildings {
    */
   private withColourMips<T extends { colour: any; mask?: any }>(set: T, atlas: LookAtlasArrays, sliceMs?: number, look?: 'procedural' | Look): T {
     if (atlas.size & (atlas.size - 1)) return set;
+    this.atlasAerialFor(set, atlas, look);
     if (!cellMipsEnabled()) return cellRolloffEnabled() ? this.withRolloffMips(set, atlas, sliceMs, look) : set;
     const texture = set.colour, colour = atlas.colour, mask = atlas.mask, { size, total } = atlas;
     const options = cellMipOptions(), keep = pageFlag('cellMipsKeep') === '1';
@@ -755,6 +763,69 @@ export class ThreeBuildings {
     })();
     return set;
   }
+  /**
+   * `?atlasAerial=1` (lane R4-J #254, look/atlasAerial.ts): the switch that swaps this pair for a half-size one while
+   * the facade-density floor says no sample reads level 0. Made before the pair's first upload (it keeps level 0 in
+   * Cache Storage for the restore); off with custom mips, the roll-off chain or footprint taps (they need level 0's
+   * own chain or the tier scale they read).
+   */
+  private atlasAerialFor(set: { colour: any; mask?: any }, atlas: LookAtlasArrays, look?: 'procedural' | Look): void {
+    if (!atlasAerialEnabled() || !this.THREE) return;
+    const disabled = atlasAerialMeasureOnly() ? 'measure only' : cellMipsEnabled() || cellRolloffEnabled() ? 'custom mips' : this.tapsFor() ? 'footprint taps' : null;
+    const sw = new AtlasAerialSwitch({
+      THREE: this.THREE,
+      renderer: () => this.renderer,
+      bind: (pair, half) => {
+        set.colour = pair.colour; set.mask = pair.mask;
+        if (this.atlasAerial !== sw) return;
+        this.atlasHalf = half;
+        this.bindLookMaterial(this.look, set as any);
+        this.refreshCellTier();
+      },
+      repaint: () => this.map.triggerRepaint(),
+    }, { colour: set.colour, mask: set.mask }, atlas.size, atlas.total, disabled);
+    this.atlasSwitches.set(set, sw);
+    (globalThis as any).__canalRecallAtlasAerialSwitch = sw;
+    void look;
+  }
+  private atlasSwitches = new WeakMap<object, AtlasAerialSwitch>();
+  private atlasAerial: AtlasAerialSwitch | null = null;
+  /** The half pair is bound: the facade tier's texel rates halve with textureSize (look/atlasAerial.ts). */
+  private atlasHalf = false;
+  private atlasFrame = 0;
+
+  /** Every live material's facade tier band, after the bound pair changed size. */
+  private refreshCellTier(): void {
+    const value = this.cellTierValue();
+    for (const material of new Set([this.material, ...this.materials.values()])) {
+      const u = material?.uniforms?.cellTier;
+      if (u && Array.isArray(u.value) && u.value[0] >= 0) u.value = value;
+    }
+  }
+
+  /** The switch's frame: eye height and focal length from the frame matrices; the nearest chunk for the curve. */
+  private tickAtlasAerial(ctx: any): void {
+    const sw = this.atlasAerial, f = ctx?.frame, gl = this.renderer?.getContext?.();
+    if (!sw || !f?.eye || !gl) return;
+    const eyeM = f.eye[2] / f.unitsPerMetre, focalPx = focalPxOf(f.clipFromWorld, gl.drawingBufferHeight);
+    const lodBias = Number(this.material?.uniforms?.cellLodBias?.value ?? 0) || 0;
+    let chunkLod: number | null = null, aerial = false;
+    if ((this.atlasFrame++ % 6) === 0 && this.THREE) {
+      const eye = new this.THREE.Vector3(f.eye[0], f.eye[1], f.eye[2]).applyMatrix4(ctx.worldFromMercator);
+      let nearest = Infinity;
+      for (const e of [...this.chunks.values(), ...this.bakedEntries.values()] as any[]) {
+        const mesh = e?.mesh;
+        if (!mesh?.visible || !mesh.geometry?.boundingSphere) continue;
+        const sphere = mesh.geometry.boundingSphere.clone().applyMatrix4(mesh.matrixWorld);
+        nearest = Math.min(nearest, Math.max(0, sphere.center.distanceTo(eye) - sphere.radius));
+      }
+      chunkLod = Number.isFinite(nearest) ? chunkLodEstimate(nearest, focalPx, sw.size, lodBias) : null;
+      const m = this.map as any;
+      aerial = isAerialView(ctx.zoom, m.getPitch?.() ?? 0, m.getCenter?.()?.lat ?? 52.37);
+    }
+    sw.frame({ eyeM, focalPx, lodBias, t: performance.now(), aerial, chunkLod });
+  }
+
   private cellMipsKept: { texture: any; levels: Uint8Array[]; size: number; depth: number; colour: Uint8Array; mask: Uint8Array; rolloff?: { maskTexture: any; maskLevels: Uint8Array[] | null; maskChannels: 1 | 2; maskBytes: Uint8Array | null; rects: ((layer: number) => readonly { x0: number; x1: number; y0: number; y1: number }[] | null) | undefined } } | null = null;
 
   /**
@@ -2205,7 +2276,9 @@ export class ThreeBuildings {
   private cellTierRatio: number | null = null;
   private cellTierValue(): [number, number] {
     const band = this.cellTierBand ?? cellTierBandFlag();
-    return band ? cellTierFromBand(band, this.pixelRatio(), this.texturePolicy().tierScale) : facadeTierUniform(this.pixelRatio(), this.texturePolicy().tierScale);
+    // The half pair (look/atlasAerial.ts) reads half the texels per pixel through textureSize: the band follows.
+    const scale = this.texturePolicy().tierScale * (this.atlasHalf ? 0.5 : 1);
+    return band ? cellTierFromBand(band, this.pixelRatio(), scale) : facadeTierUniform(this.pixelRatio(), scale);
   }
   /** Probe override of the tier band (lane R3-E, `?cellTierBand=` in page): set by setCellTierBand. */
   private cellTierBand: [number, number] | null = null;
@@ -2357,6 +2430,7 @@ export class ThreeBuildings {
       revision: () => this.hiddenRevision,
       beforeRender: (ctx: any) => {
         if (!this.prepareFrame()) return false;
+        if (this.atlasAerial) this.tickAtlasAerial(ctx);
         // Picking (inspectAtScreen) raycasts world-space meshes with this projection.
         camera.projectionMatrix.copy(ctx.clipFromWorld);
         return true;

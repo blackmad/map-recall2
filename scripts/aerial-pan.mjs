@@ -427,6 +427,8 @@ const residents = census => page.evaluate(census => {
     draws: (vm._sharedFrame?.stats?.main?.calls ?? 0) + (vm._sharedFrame?.stats?.overlay?.calls ?? 0), drawTriangles: (vm._sharedFrame?.stats?.main?.triangles ?? 0) + (vm._sharedFrame?.stats?.overlay?.triangles ?? 0),
     farRadiusM: ground?.farRadius ?? null, farShells: vm._farShells?.stats?.() ?? null,
     bakedCoarse: vm._bakedCoarse?.stats?.() ?? null, bakedCoarseOff: vm.bakedCoarseOff ?? null,
+    // Lane R4-J (#254): the facade atlas switch (look/atlasAerial.ts, `?atlasAerial=1`): mode, level floor, counters.
+    atlasAerial: (() => { const sw = window.__canalRecallAtlasAerialSwitch; if (!sw) return null; const { curve, ...rest } = sw.stats; return rest; })(),
     coarseChunks: tb?.chunks ? [...tb.chunks.keys()].filter(k => k.startsWith('coarse:')).length : null,
     // Lane R4-A (#243), the coarse rebuild wave: coarse meshes dissolving in now (runtime `coarse:` chunks in the facade
     // layer's fades, plus baked cells), and every coarse dissolve so far (the facade layer's fade map is counted from the
@@ -768,10 +770,21 @@ let ringSeries = null, treeRebuilds = null;
   summary.treeRebuildMaxMs = ms.length ? Math.max(...ms) : null;
   treeRebuilds = trees.map(([t, m, n]) => [Math.round((t - panT0) / 100) / 10, m, n]);
 }
+// Lane R4-J (#254): the atlas switch over the pan: drops, restores, soft frames (must be 0), the slowest slice, and the
+// per-frame level-floor curve ([t ms since the pan's start, eye m, floor, nearest-chunk estimate, mode, aerial]).
+let atlasCurve = null;
+{
+  const st = await page.evaluate(() => { const sw = window.__canalRecallAtlasAerialSwitch; return sw ? sw.stats : null; }).catch(() => null);
+  if (st) {
+    const { curve, ...rest } = st;
+    summary.atlasAerial = rest;
+    atlasCurve = curve.filter(r => r[0] >= panT0).map(([t, ...r]) => [Math.round((t - panT0) / 100) / 10, ...r]);
+  }
+}
 console.log(JSON.stringify(summary));
 // The legs' start times and the pan's start (performance.now): the timeline chart marks the legs against `long[].at`.
 const legStarts = await page.evaluate(() => window.__aerial.poseChanges).catch(() => null);
-const result = { panT0: Math.round(panT0), legStarts, device, qs, panS, every, speed, continuous, dwellS: continuous ? dwellS : null, accelS: continuous ? accelS : null, chrome: useChrome, headed, settleMs, loadS: Math.round((Date.now() - t0) / 1000), bundles: process.env.BUNDLES_DIR ?? null, waypoints: WAYPOINTS, poses: POSES, timeline, ringSeries, treeRebuilds, summary, shots, errors };
+const result = { panT0: Math.round(panT0), legStarts, device, qs, panS, every, speed, continuous, dwellS: continuous ? dwellS : null, accelS: continuous ? accelS : null, chrome: useChrome, headed, settleMs, loadS: Math.round((Date.now() - t0) / 1000), bundles: process.env.BUNDLES_DIR ?? null, waypoints: WAYPOINTS, poses: POSES, timeline, ringSeries, treeRebuilds, atlasCurve, summary, shots, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(result, null, 1));
 await browser.close();
