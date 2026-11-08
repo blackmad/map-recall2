@@ -98,6 +98,27 @@ test('far prisms under released baked cells', async ({ page }) => {
       await setRelease(null); ab.keepEnd = await cap('keep-end');
       report[name].ab = ab;
     }
+    // FAR_RELEASE_SERIES=<metres>: one release and one return at the held pose, frame by frame (no settle between):
+    // the far part must show in the frame the baked mesh goes, and hide only once the returning mesh has dissolved in.
+    if (process.env.FAR_RELEASE_SERIES) {
+      const m = Number(process.env.FAR_RELEASE_SERIES);
+      const setRelease = (v: number | null) => page.evaluate((v) => { const vm = (window as any).canalRecallGame.vectorMap; vm._bakedCoarse.releaseM = v; vm.host?.triggerRepaint?.(); }, v);
+      await setRelease(null); await settleWorld(page, `${name} series keep`);
+      const grab = async (label: string, waitMs: number) => {
+        const u: string = await page.evaluate(async (w) => { const vm = (window as any).canalRecallGame.vectorMap; const t = performance.now(); while (performance.now() - t < w) { vm.host?.triggerRepaint?.(); await new Promise(r => requestAnimationFrame(r)); } return vm.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''); }, waitMs);
+        const st = await page.evaluate(() => { const b = (window as any).canalRecallGame.vectorMap._bakedCoarse.stats(); return { released: b.released, drawn: b.drawn, fading: b.fading, cells: b.cells }; });
+        writeFileSync(`${OUT}/${name}-series-${label}.png`, Buffer.from(u.split(',')[1], 'base64'));
+        return { label, ...st };
+      };
+      const series: any[] = [await grab('00-keep', 0)];
+      await setRelease(m);
+      for (let k = 1; k <= 4; k++) series.push(await grab(`r${k}`, 0));
+      series.push(await grab('r-late', 1500));
+      await setRelease(null);
+      for (let k = 1; k <= 12; k++) series.push(await grab(`b${String(k).padStart(2, '0')}`, 150));
+      series.push(await grab('b-late', 3000));
+      report[name].series = series;
+    }
     report[name].bakedHidden = await page.evaluate(() => {
       const tb = (window as any).canalRecallGame.vectorMap._threeBuildings, out: Record<string, number> = {};
       for (const [k, e] of tb.bakedEntries) { const a = e.mesh.geometry.getAttribute('hidden').array; let h = 0; for (let i = 0; i < a.length; i++) h += a[i] ? 1 : 0; out[k] = +(h / a.length).toFixed(3); }
