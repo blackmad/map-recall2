@@ -60,9 +60,40 @@ test('the shell roof is the detail roof simplified: same rise, material and tone
   assert.equal(low.riseM, plan.riseM);
   assert.equal(low.material, plan.material);
   assert.equal(low.tone, plan.tone);
-  assert.deepEqual([low.dormers, low.chimney, low.accents, low.shutters, low.gable, low.clipToOutline], [false, false, false, false, 'plain', false]);
+  assert.deepEqual([low.dormers, low.chimney, low.accents, low.shutters, low.gable], [false, false, false, false, 'plain']);
+  // The detail's cut at the walls is kept (#257): the shell roof is never wider than the detail's.
+  assert.equal(low.clipToOutline, plan.clipToOutline);
   if (plan.kind === 'mansard') assert.equal(low.kind, 'hipped');
   // The roof colour the shell draws in is the detail's (measured or planned), never a grey flat-lid prior.
   const detail = meshBuildingFor(f, 'photo', false)!;
   assert.ok(detail.roof && /^#[0-9a-f]{6}$/i.test(detail.roof.roofHex));
+});
+
+// #257 (user shots 2026-11-08, Stadhouderskade by the Hobbemastraat and the Geldersekade): a planned roof whose fitted
+// box hangs past the walls (a skewed end wall; an irregular block roofed from its fitted box) is cut at the walls in
+// the detail chunk (roofMesh planBuildingRoof clipToOutline). shellRoofPlan used to drop that cut, so every coarse and
+// baked shell drew the whole box: up to 22 m of roof over the street beside walls that stop at the eaves (one
+// Stadhouderskade school roof hung 1,155 m² past its 2,566 m² footprint).
+test('#257: a shell roof is cut at the walls where the detail roof is, never hanging past the footprint', () => {
+  // A school block whose end wall is skewed 3 m: its fitted box overhangs the short side.
+  const ring: [number, number][] = [[0, 0], [40, 0], [40, 18], [0, 21]];
+  const school: Feature = { type: 'Feature', geometry: { type: 'Polygon', coordinates: [[...ring, ring[0]].map(([x, y]) => ll(x, y))] },
+    properties: { id: 'bag:school', height: 16, minHeight: 0, facade: 'school-priorBrickRed', facadeStyle: 'school', constructionYear: 1890, roofPlanned: true, roofEavesHeightM: 12, roofColour: '#594e48' } };
+  const plan = roofPlanForFeature(school)!;
+  assert.equal(plan.clipToOutline, true, 'the detail cuts this roof at the walls');
+  assert.equal(shellRoofPlan(plan).clipToOutline, true);
+  const inside = (x: number, y: number) => { let r = false; for (let a = 0, b = ring.length - 1; a < ring.length; b = a++) if ((ring[a][1] > y) !== (ring[b][1] > y) && x < (ring[b][0] - ring[a][0]) * (y - ring[a][1]) / (ring[b][1] - ring[a][1]) + ring[a][0]) r = !r; return r; };
+  const toWall = (x: number, y: number) => Math.min(...ring.map((a, i) => { const b = ring[(i + 1) % ring.length], dx = b[0] - a[0], dy = b[1] - a[1], t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (y - a[1]) * dy) / (dx * dx + dy * dy))); return Math.hypot(x - a[0] - t * dx, y - a[1] - t * dy); }));
+  for (const mode of ['coarse', 'shell'] as const) {
+    const c = buildFeatureChunk([school], 'photo', mode, streets, [], [], [], new Map(), { shellRoofs: true });
+    let hang = 0, roofed = 0;
+    for (let k = 0; k < c.positions.length; k += 3) {
+      const x = c.positions[k], y = c.positions[k + 1], z = c.positions[k + 2];
+      if (z > 12 + 1e-3) roofed++;
+      if (z > 4 && !inside(x, y)) hang = Math.max(hang, toWall(x, y));
+    }
+    assert.ok(roofed > 0, `${mode}: the shell carries the roof`);
+    // Before #257 the coarse shell's hipped box stood 3.3 m past the skewed wall.
+    assert.ok(hang <= 0.05, `${mode}: nothing above the ground floor stands ${hang.toFixed(2)} m outside the footprint`);
+  }
 });
