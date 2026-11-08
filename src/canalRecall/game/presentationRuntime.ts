@@ -49,7 +49,7 @@ import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
 import { bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
-import { finishBlurb } from './finishBlurb';
+import { buurtFinishBlurb, finishBlurb } from './finishBlurb';
 import { fitFinishTitle, type FinishTitleLayout } from './finishTitle';
 import { commitShownFact } from '../facts/factStore';
 import { StreetLabelCandidates } from './streetLabelCandidates';
@@ -1541,7 +1541,9 @@ export class GamePresentationRuntime {
     const exploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0
       ? this._explorationSnapshot : null;
     const ribbon = gamey ? this._ribbon : null;
-    const landmark = this._finishLandmark();
+    // A daily-ride buurt finish tells the neighbourhood, not the nearest landmark (#279).
+    const buurt = buurtFinishBlurb(this.routeTo as { name?: string; buurtPlace?: boolean } | null, (this as unknown as { neighborhoods?: Array<{ name: string; wikipediaExtract?: string }> }).neighborhoods);
+    const landmark = buurt ? null : this._finishLandmark();
     const tour = this._tourArrival || null;
     const stamp = this._finishStamp || null;
     const image = landmark ? this._landmarkImages?.get(landmark.id) : undefined;
@@ -1589,12 +1591,12 @@ export class GamePresentationRuntime {
       // The tightest level drops the encyclopedia blurb: the heading already
       // names the place, and scaling the card would shrink the touch targets.
       // A tour stop keeps its sourced "why" line at every level, shortened.
-      if ((landmark && level < 3) || tour) {
+      if (((landmark || buurt?.text) && level < 3) || tour) {
         const photo = hasImage ? (level >= 2 ? 64 : 88) : 0;
         const textX = cardX + padX + (hasImage ? photo + 16 : 0);
         const textW = cardX + cardW - padX - textX;
         ctx.font = '12px system-ui, sans-serif';
-        const blurb = wrapText(ctx, tour ? tour.why : this._finishBlurbText(landmark!), textW,
+        const blurb = wrapText(ctx, tour ? tour.why : buurt ? buurt.text : this._finishBlurbText(landmark!), textW,
           tour ? [4, 3, 3, 3][level] : [hasImage ? 4 : 3, 3, 2, 2][level]);
         const height = Math.max(photo, 20 + blurb.length * 17) + 14;
         blocks.push({ height, draw: (top) => {
@@ -1614,6 +1616,8 @@ export class GamePresentationRuntime {
             const where = `${tour.title.toUpperCase()}  ·  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
             const credit = [tour.sourceHost, tour.checked].filter(Boolean).join('  ·  ');
             ctx.fillText(wrapText(ctx, credit ? `${where}  ·  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
+          } else if (buurt) {
+            ctx.fillText('NEIGHBOURHOOD  ·  W  WIKIPEDIA', textX, top + 10);
           } else {
             const kind = String(landmark!.type || 'landmark').toUpperCase();
             ctx.fillText(landmark!.wikipediaUrl ? `${kind}  ·  W  WIKIPEDIA` : kind, textX, top + 10);

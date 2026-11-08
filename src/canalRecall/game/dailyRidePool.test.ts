@@ -21,6 +21,11 @@ import {
 import { DAILY_RIDE_POOL } from './dailyRidePool';
 import { CANAL_CITIES } from './cities';
 import { loadSnapGraph } from '../../../scripts/daily-ride/snapGraph.ts';
+import { buurtFinishBlurb } from './finishBlurb';
+import { buildRouteShare } from '../shareRoute';
+import { buildLandingModel } from '../landing/landingModel';
+import { landingCardsHtml } from '../landing/landingView';
+import { landingFixtureStorage, LANDING_FIXTURE_NOW } from '../landing/landingFixtures';
 
 const DAYS = 365;
 const dates = Array.from({ length: DAYS }, (_, i) => {
@@ -41,6 +46,8 @@ test(`${DAYS} days from the cutover keep the rules`, () => {
     assert.ok(pair.km >= DAILY_RIDE_MIN_KM && pair.km <= DAILY_RIDE_MAX_KM, `${pair.id} is ${pair.km} km`);
     assert.equal(pair.km, dailyRideKm(pair.from, pair.to));
     for (const end of ends(pair)) assert.ok(byId.get(end.id), `${end.id} is in the pool`);
+    assert.ok(byId.get(pair.from.id)!.startOk, `${pair.id} starts at a place that may not start`);
+    assert.ok(byId.get(pair.to.id)!.finishOk, `${pair.id} ends at a place that may not end`);
     for (let back = 1; back < DAILY_RIDE_NO_REPEAT_DAYS && i - back >= 0; back++) {
       const prior = year[i - back]!;
       assert.notEqual(pairKey(pair), pairKey(prior), `${pair.id} repeats ${prior.id}`);
@@ -78,17 +85,50 @@ test('the card names buurten: "Jordaan → Oosterparkbuurt · about 3.1 km"', ()
 
 test('every pool place is a ride end on the routing graph: unnamed, clear of named streets, routable; no card name is a quiz name', async () => {
   const directory = path.resolve('public/data/extracts/amsterdam');
-  const graph = await loadSnapGraph(directory);
+  const bridges = new Set((JSON.parse(await readFile(path.join(directory, 'bridges.json'), 'utf8')) as Array<{ name?: string }>).flatMap(b => (b.name ? [b.name.toLowerCase()] : [])));
+  const graph = await loadSnapGraph(directory, bridges);
   const names = new Set<string>();
   for (const file of ['water.json', 'bridges.json']) {
     for (const item of JSON.parse(await readFile(path.join(directory, file), 'utf8')) as Array<{ name?: string }>) if (item.name) names.add(item.name.toLowerCase());
   }
   for (const feature of graph.features as Array<{ name?: string }>) if (feature.name) names.add(feature.name.toLowerCase());
   const failures = DAILY_RIDE_POOL.flatMap((place) => {
-    const why = graph.whyNotSnap([place.lat, place.lng]);
+    const why = place.startOk ? graph.whyNotSnap([place.lat, place.lng]) : place.finishOk ? graph.whyNotFinish([place.lat, place.lng]) : 'neither a start nor a finish';
     const named = names.has(place.name.toLowerCase()) ? `card name "${place.name}" is a quiz name` : '';
     return [why, named].filter(Boolean).map(reason => `${place.id}: ${reason}`);
   });
   assert.deepEqual(failures, []);
   assert.ok(DAILY_RIDE_POOL.length >= 50, `pool ${DAILY_RIDE_POOL.length}`);
+});
+
+test('a finish on a named way never prints that way: card, landing, arrival blurb, share, route id (#279 ruling)', async () => {
+  const directory = path.resolve('public/data/extracts/amsterdam');
+  const graph = await loadSnapGraph(directory);
+  const finishOnNamed = DAILY_RIDE_POOL.filter(place => place.finishOk && graph.namesAt([place.lat, place.lng]).length > 0);
+  assert.ok(finishOnNamed.length > 0, 'the pool has finishes on named ways');
+  for (const place of DAILY_RIDE_POOL) {
+    if (!place.startOk) continue;
+    assert.deepEqual(graph.namesAt([place.lat, place.lng]), [], `start ${place.id} is on a named way`);
+  }
+  const start = DAILY_RIDE_POOL.find(place => place.startOk)!;
+  const base = buildLandingModel(landingFixtureStorage('returning'), LANDING_FIXTURE_NOW);
+  for (const place of finishOnNamed) {
+    const wayNames = graph.namesAt([place.lat, place.lng]);
+    const to = { ...place, buurtPlace: true as const };
+    const from = { ...start, buurtPlace: true as const };
+    const pair: DailyRidePair = { date: DAILY_POOL_CUTOVER, id: `${DAILY_POOL_CUTOVER}:${from.id}>${to.id}`, from, to, km: dailyRideKm(from, to) };
+    const html = landingCardsHtml({ ...base, daily: { ...base.daily, pair } }, { ride: './' });
+    const blurb = buurtFinishBlurb(to, [{ name: place.name, wikipediaExtract: '' }]);
+    const share = buildRouteShare({
+      origin: 'https://rideamsterdam.nl', pathname: '/ride', travelMode: 'car',
+      race: { centre: { lat: (from.lat + to.lat) / 2, lng: (from.lng + to.lng) / 2 }, start: { lat: from.lat, lng: from.lng }, finish: { lat: to.lat, lng: to.lng } },
+      from, to,
+    });
+    const exposed = [pair.id, dailyRideLabel(pair), html, blurb?.name ?? '', JSON.stringify(share), to.name].join('\n').toLowerCase();
+    for (const way of wayNames) {
+      assert.ok(!exposed.includes(way.toLowerCase()), `finish ${place.id} prints its way "${way}"`);
+    }
+    assert.equal(blurb?.name, place.name, 'the arrival card is titled by the buurt');
+  }
+  console.log(`# ${finishOnNamed.length} finishes on named ways, none printed`);
 });

@@ -150,8 +150,8 @@ test('Today’s ride launches the pair the landing named', async ({ page }) => {
 
 // The buurt pool (#279): a real ride for three dates starts on the pair the
 // date names, plans a route, and arrives. `?dailyDate=` is the test-only
-// override of "today" in dailyRideDateKey().
-for (const date of ['2026-11-10', '2026-12-24', '2027-03-01']) {
+// override of "today" in dailyRideDateKey(). 2026-11-12 ends at KNSM-eiland, a finish on a named way (finishOk only).
+for (const date of ['2026-11-10', '2026-11-12', '2026-12-24', '2027-03-01']) {
   test(`?ride=daily on ${date} starts the buurt pair and arrives`, async ({ page }, info) => {
     test.skip(info.project.name !== 'desktop', 'one ride per date is enough; the iphone project runs the landing tests');
     test.setTimeout(180_000);

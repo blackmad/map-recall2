@@ -6,7 +6,8 @@ import fs from 'node:fs';
 import {buildFactIndex} from '../facts/factStore.ts';
 import type {FactsFile} from '../facts/factTypes.ts';
 import {emptyRotationState, recordShown} from '../facts/factRotation.ts';
-import {finishBlurb} from './finishBlurb.ts';
+import {buurtFinishBlurb, finishBlurb} from './finishBlurb.ts';
+import {DAILY_POOL_CUTOVER, dailyPoolPair} from './dailyRide.ts';
 
 const facts = buildFactIndex(JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/facts.json', 'utf8')) as FactsFile);
 const BARTOLOTTI = {id: 'extract_landmarks_1450151185', detail: 'Huis Bartolotti is a canal house.', longDetail: 'Huis Bartolotti is a canal house at Herengracht 170-172.'};
@@ -27,4 +28,22 @@ test('the rotation moves on: a committed fact is not told again on the next arri
 test('no facts: the lede, then the fallback, and nothing to commit', () => {
   assert.deepEqual(finishBlurb({id: 'nowhere', longDetail: 'A lede.'}, facts, emptyRotationState(), 'fallback'), {text: 'A lede.', choice: null});
   assert.deepEqual(finishBlurb({id: 'nowhere'}, new Map(), emptyRotationState(), 'fallback'), {text: 'fallback', choice: null});
+});
+
+test('a daily-ride buurt finish tells the neighbourhood postcard text, never a nearby landmark (#279)', () => {
+  const hoods = [
+    { name: 'Jordaan', wikipediaExtract: ' The Jordaan is a neighbourhood of Amsterdam. ' },
+    { name: 'Rijnbuurt', wikipediaExtract: '' },
+  ];
+  assert.deepEqual(buurtFinishBlurb({ name: 'Jordaan', buurtPlace: true }, hoods), { name: 'Jordaan', text: 'The Jordaan is a neighbourhood of Amsterdam.' });
+  // No postcard text: an empty blurb, not the nearest landmark.
+  assert.deepEqual(buurtFinishBlurb({ name: 'Rijnbuurt', buurtPlace: true }, hoods), { name: 'Rijnbuurt', text: '' });
+  // A landmark finish keeps the landmark blurb.
+  assert.equal(buurtFinishBlurb({ name: 'Jordaan' }, hoods), null);
+  assert.equal(buurtFinishBlurb(null, hoods), null);
+});
+
+test('every daily pool place is marked a buurt place', () => {
+  const pair = dailyPoolPair(DAILY_POOL_CUTOVER)!;
+  assert.equal((pair.to as { buurtPlace?: boolean }).buurtPlace, true);
 });
