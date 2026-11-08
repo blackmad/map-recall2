@@ -75,10 +75,13 @@ export const DRAPE_TOL: Record<RoadClass, { sag: number; float: number }> = {
   island: { sag: 0.1, float: 0.03 }, berm: { sag: 0.1, float: 0.03 }, verge: { sag: 0.1, float: 0.03 }, square: { sag: 0.1, float: 0.03 },
 };
 export const DRAPE_MAX_EDGE_M = 24, DRAPE_MIN_EDGE_M = 3;
-/** redDedupe: the fietspad polygon's lift over the carriageway plane (ROAD_LIFT.carriage), and its drape tolerances. */
-export const RED_LIFT_OVER_CARRIAGE_M = 0.06;
-export const RED_CYCLE_LIFT = LIFT.carriageway + RED_LIFT_OVER_CARRIAGE_M;
-export const RED_CYCLE_TOL = { sag: RED_CYCLE_LIFT - 0.008, float: 0.02 } as const;
+/**
+ * redDedupe: the fietspad polygon's drape float bounded like the carriageway's (was free: over a hollow its plane rose
+ * past the zebra paint, ROAD_MARK_LIFT.paint 0.062, that crosses it). Its lift stays ROAD_LIFT.cycle: the brief's +6 cm
+ * over the carriageway put the red over every zebra across a fietspad (measured at the IJ-side bus station, lane R5-C1);
+ * the fietspad meets the asphalt edge to edge, so no plan area of it lies under the grey (probe-bridge-roads).
+ */
+export const RED_CYCLE_TOL = { sag: ROAD_LIFT.cycle - 0.008, float: 0.02 } as const;
 /** On coarse relief a triangle under this many square data steps is not split (drapeAdaptive `minArea`). */
 export const DRAPE_MIN_AREA_STEPS = 0.5;
 /**
@@ -494,9 +497,9 @@ export interface RoadBuildInput {
    */
   bridgeCarry?: boolean;
   /**
-   * redDedupe (lane R5-C1, issue #262): the BGT fietspad on its own plane, RED_LIFT_OVER_CARRIAGE_M over the
-   * carriageway (was 1 cm: shared edges with the asphalt interleaved from the air), its drape float bounded like the
-   * carriageway's. Absent / false: as before (`?redDedupe=0`).
+   * redDedupe (lane R5-C1, issue #262): the BGT fietspad's drape float bounded like the carriageway's (RED_CYCLE_TOL),
+   * and a pavement-level polygon the survey overlaps with a fietspad of its own level cut under it. Absent / false: as
+   * before (`?redDedupe=0`).
    */
   redDedupe?: boolean;
   lod: 0 | 1;
@@ -592,7 +595,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   };
   // bridgeCarry (deckCarry.ts): one decision per deck polygon of the index, the same in every cell that sees it.
   const carry = input.bridgeCarry === true && !far;
-  /** redDedupe: the fietspad's own plane (RED_CYCLE_LIFT). */
+  /** redDedupe: the fietspad's bounded float, the pavement cut under it. */
   const redOwn = input.redDedupe === true;
   const carryIn: CarryInput = { land: landHeight, deck: deckHeight, overWater: input.overWater, carried: (x, y) => !!deckSurface([x, y]) };
   const decisions = new Map<number, { d: DeckDecision; before: readonly number[] | null }>();
@@ -676,9 +679,9 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     }
     const cls = index.drawClass(k);
     const layer = get(surfaceLayer(cls, index.mesh(k)));
-    // redDedupe: the red fietspad on its own plane (RED_CYCLE_LIFT), its float bounded.
+    // redDedupe: the red fietspad's float bounded (RED_CYCLE_TOL).
     const redPlane = redOwn && cls === 'cycle' && index.mesh(k) === 'cycle';
-    const lift = redPlane ? RED_CYCLE_LIFT : ROAD_LIFT[cls];
+    const lift = ROAD_LIFT[cls];
     traceMark(layer, cls === 'carriage' && index.mesh(k) === 'cycle' ? 'fietsstraat' : BGT_SOURCE[cls]);
     if (rec.h >= 1) drapeAdaptive(layer, flat, tris, height, lift, far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
     else if (pieces) {
@@ -747,8 +750,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     // the face (and the dark end) is the ramp's left edge.
     const lowCls = (lowLeft ? left : right)!, lowMesh = index.meshAt(cx - into * nx * KERB_PROBE_M, cy - into * ny * KERB_PROBE_M, bridge) ?? 'asphalt';
     const end = KERB_SHADOW_ENDS[surfaceLayer(lowCls, lowMesh)] ?? KERB_SHADOW_ENDS.asphalt!;
-    const shadowLift = redOwn && lowCls === 'cycle' && lowMesh === 'cycle' ? RED_CYCLE_LIFT + (ROAD_MARK_LIFT.rail - ROAD_LIFT.cycle) : ROAD_MARK_LIFT.rail;
-    ribbon(kerb, line, -into * kerbShadowWidth / 2, kerbShadowWidth, height, shadowLift, { step: Infinity, ramp: into > 0 ? { left: KERB_SHADOW_TINT, right: end } : { left: end, right: KERB_SHADOW_TINT } });
+    ribbon(kerb, line, -into * kerbShadowWidth / 2, kerbShadowWidth, height, ROAD_MARK_LIFT.rail, { step: Infinity, ramp: into > 0 ? { left: KERB_SHADOW_TINT, right: end } : { left: end, right: KERB_SHADOW_TINT } });
     // Posts along the pavement's kerb, not round the planted berms, islands and squares (roads lane R1 doubled the
     // kerbs of -1_-1 with those; the bollards stay at main's count, 25k against 24k triangles).
     const upper = lowLeft ? right : left;

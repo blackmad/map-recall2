@@ -13,8 +13,9 @@
 //   - a deck polygon that sits LOW over the ground polygons it overlaps (the riding surface within CARRY_RISE_M of the
 //     land there) is drawn whole on the riding surface, and the ground polygons under it are cut out of their own
 //     polygons (a polygon difference) with their kerb runs, so one surface shows: the deck's;
-//   - a deck polygon that would be skipped (over no deck, no water, no flat footprint) is still drawn when it lies at
-//     a bridge (water within CARRY_NEAR_WATER_M of it), on the riding surface;
+//   - a deck polygon that would be skipped (every triangle over a ground polygon) is drawn when it is low there;
+//   - only a bridge's deck polygons (part of them on a measured deck, a flat footprint or water): an elevated station
+//     deck with nothing modelled under it (the Centraal IJ-side bus station) stays as it was;
 //   - a deck polygon well above the ground under it (a real overpass) keeps the bridgeGaps rule: the street under it stays.
 // Pure; roadSurfaces.ts calls it per cell, the decisions are the same for a polygon in every cell that sees it.
 import polygonClipping, { type MultiPolygon, type Polygon } from 'polygon-clipping';
@@ -22,8 +23,6 @@ import type { HeightFn, Vec2 } from './surface.js';
 
 /** A deck polygon whose riding surface lies within this of the land under it competes with the ground polygons there. */
 export const CARRY_RISE_M = 1.0;
-/** A deck polygon over no deck, no water and no flat footprint is carried when water lies within this (a bridge's end). */
-export const CARRY_NEAR_WATER_M = 12;
 /** Ground pieces left by the cut smaller than this (m²) are dropped (slivers along the deck's edge). */
 export const CARRY_MIN_PIECE_M2 = 0.05;
 
@@ -57,30 +56,22 @@ export interface DeckDecision {
   carriedOnly: boolean;
 }
 
-/** Is water within `r` of any vertex of the polygon's outer ring (8 directions)? */
-export function nearWater(ring: readonly Vec2[], overWater: (x: number, y: number) => boolean, r = CARRY_NEAR_WATER_M): boolean {
-  const dirs: Vec2[] = [];
-  for (let i = 0; i < 8; i++) dirs.push([Math.cos(i * Math.PI / 4), Math.sin(i * Math.PI / 4)]);
-  for (const p of ring) {
-    if (overWater(p[0], p[1])) return true;
-    for (const f of [r / 2, r]) for (const d of dirs) if (overWater(p[0] + d[0] * f, p[1] + d[1] * f)) return true;
-  }
-  return false;
-}
-
 /**
  * The carry's decision for deck polygon `k` (h >= 1): `drawnBefore` is what the build without the carry decided
  * (drawn, possibly with triangles dropped over ground polygons).
  */
 export function deckDecision(index: CarryIndex, k: number, input: CarryInput, drawnBefore: boolean): DeckDecision {
-  const rises = overlapRises(index, k, input);
+  const { rises, onDeck } = overlapRises(index, k, input);
+  // Only a bridge's deck polygons: part of it on a measured deck, a flat footprint or water. An elevated plaza or a
+  // station deck with no deck modelled under it (the Centraal IJ-side bus station, h = 1 over De Ruijterkade) is left
+  // as it was: drawn at ground level it would cut the streets under it.
+  if (!onDeck) return drawnBefore ? { draw: true, whole: false, low: false, carriedOnly: false } : { draw: false, whole: false, low: false, carriedOnly: false };
   rises.sort((a, b) => a - b);
   // Low: three quarters of the overlap within CARRY_RISE_M of the land (a hump's crown may rise past it).
   const low = rises.length > 0 && rises[Math.floor(0.75 * (rises.length - 1))] < CARRY_RISE_M;
   if (drawnBefore) return { draw: true, whole: low, low, carriedOnly: false };
-  const ring = index.ringsOf(k)[0] ?? [];
-  // Skipped before: carried when it is low over the ground there, or when it lies at a bridge.
-  if (low || (ring.length >= 3 && nearWater(ring, input.overWater))) return { draw: true, whole: true, low, carriedOnly: true };
+  // Skipped before (every triangle over a ground polygon): carried when it is low over the ground there.
+  if (low) return { draw: true, whole: true, low, carriedOnly: true };
   return { draw: false, whole: false, low: false, carriedOnly: false };
 }
 
@@ -92,19 +83,22 @@ export const CARRY_SAMPLE_M = 0.5, CARRY_MAX_SAMPLES = 2000;
  * a grid (earcut's centroids miss the overlap of a long thin polygon: the Kattenburgerbrug's fietspad, 0 of its
  * centroids over the footway its abutment covers).
  */
-export function overlapRises(index: CarryIndex, k: number, input: Pick<CarryInput, 'land' | 'deck'>): number[] {
+export function overlapRises(index: CarryIndex, k: number, input: Pick<CarryInput, 'land' | 'deck' | 'carried'>): { rises: number[]; onDeck: boolean } {
   const ring = index.ringsOf(k)[0] ?? [];
-  if (ring.length < 3) return [];
+  if (ring.length < 3) return { rises: [], onDeck: false };
   let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
   for (const p of ring) { x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); }
   const step = Math.max(CARRY_SAMPLE_M, Math.sqrt((x1 - x0) * (y1 - y0) / CARRY_MAX_SAMPLES));
   const out: number[] = [];
+  let onDeck = false;
   for (let x = x0 + step / 2; x < x1; x += step) for (let y = y0 + step / 2; y < y1; y += step) {
     const all = index.findAll(x, y);
-    if (!all.includes(k) || !all.some(j => index.records[j].h === 0)) continue;
+    if (!all.includes(k)) continue;
+    if (!onDeck && input.carried(x, y)) onDeck = true;
+    if (!all.some(j => index.records[j].h === 0)) continue;
     out.push(input.deck(x, y) - input.land(x, y));
   }
-  return out;
+  return { rises: out, onDeck };
 }
 
 /** Ring list → polygon-clipping polygon (closed rings). */

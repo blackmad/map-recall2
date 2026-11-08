@@ -9,8 +9,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { encodeLine } from './parks';
 import { emptyMesh, type MeshArrays } from './drape';
-import { buildRoadSurfaces, kerbEdges, RoadIndex, RED_CYCLE_LIFT, ROAD_LIFT, SIDEWALK_TOP } from './roadSurfaces';
-import { CARRY_RISE_M, cutUnderDecks, deckDecision, nearWater, runsOutside } from './deckCarry';
+import { buildRoadSurfaces, kerbEdges, RoadIndex, ROAD_LIFT, SIDEWALK_TOP } from './roadSurfaces';
+import { ROAD_MARK_LIFT } from './streets';
+import { CARRY_RISE_M, cutUnderDecks, deckDecision, runsOutside } from './deckCarry';
 import { cycleThrough, fietspadWidthAt, meshCover, THROUGH_WIDTH_M } from './cycleThrough';
 import { prepareWays } from './streets';
 import type { RoadCell, RoadClass, RoadMesh } from './roadCells';
@@ -88,7 +89,7 @@ test('runsOutside: a kerb run is split where it passes under the deck; a run cle
   assert.deepEqual(runsOutside(run, () => false), [run]);
 });
 
-test('deckDecision: low over the ground → whole and low; a real overpass keeps the old rule; skipped → carried at a bridge only', () => {
+test('deckDecision: low over the ground → whole and low; a real overpass and a station deck keep the old rule', () => {
   const index = new RoadIndex([cellOf(BRIDGE)]);
   const deckK = index.records.findIndex(r => r.h === 1);
   const flatIn = { land: zero, deck: zero, overWater: () => false, carried: () => true };
@@ -96,8 +97,11 @@ test('deckDecision: low over the ground → whole and low; a real overpass keeps
   const high = { ...flatIn, deck: () => CARRY_RISE_M + 3 };
   assert.deepEqual(deckDecision(index, deckK, high, true), { draw: true, whole: false, low: false, carriedOnly: false });
   assert.deepEqual(deckDecision(index, deckK, high, false), { draw: false, whole: false, low: false, carriedOnly: false });
-  assert.equal(deckDecision(index, deckK, { ...high, overWater: (x: number) => x > 25 }, false).draw, true, 'water 5 m past the deck: carried');
-  assert.equal(nearWater([[0, 0], [1, 0], [1, 1]], () => false), false);
+  // Not a bridge's deck (no measured deck, footprint or water under any of it: an elevated station deck): as before.
+  const station = { ...flatIn, carried: () => false };
+  assert.deepEqual(deckDecision(index, deckK, station, true), { draw: true, whole: false, low: false, carriedOnly: false });
+  assert.deepEqual(deckDecision(index, deckK, station, false), { draw: false, whole: false, low: false, carriedOnly: false });
+  assert.deepEqual(deckDecision(index, deckK, flatIn, false), { draw: true, whole: true, low: true, carriedOnly: true }, 'skipped, low over the ground: carried');
 });
 
 test('buildRoadSurfaces bridgeCarry: the deck shows over the quay footway, its kerbs go; off: byte-identical to before', () => {
@@ -117,14 +121,16 @@ test('buildRoadSurfaces bridgeCarry: the deck shows over the quay footway, its k
   assert.ok(!centroids(on.layers.kerb).some(([x, y]) => x > 2.3 && x < 5.7 && y > 0.3 && y < 7.7), 'no kerb under the deck');
 });
 
-test('buildRoadSurfaces redDedupe: the fietspad on its own plane over the carriageway; off: as before', () => {
+test('buildRoadSurfaces redDedupe: the fietspad never floats over the zebra plane; off: as before', () => {
   const cell = cellOf(BRIDGE.slice(0, 2));
-  const off = buildRoadSurfaces(cell, new RoadIndex([cell]), deckInput());
-  const on = buildRoadSurfaces(cell, new RoadIndex([cell]), deckInput({ redDedupe: true }));
-  assert.deepEqual(buildRoadSurfaces(cell, new RoadIndex([cell]), deckInput({ redDedupe: false })).layers, off.layers);
-  assert.ok(centroids(off.layers.cycle).every(([, , z]) => Math.abs(z - ROAD_LIFT.cycle) < 1e-9));
-  assert.ok(centroids(on.layers.cycle).every(([, , z]) => Math.abs(z - RED_CYCLE_LIFT) < 1e-9));
-  assert.ok(RED_CYCLE_LIFT - ROAD_LIFT.carriage >= 0.06 - 1e-9, 'red ≥ 6 cm over the carriageway');
+  // A 15 cm hollow along the fietspad (smooth, 20 m): free float left its plane high over the land in the middle.
+  const hollow = (x: number, _y: number) => (x > -20 && x < 0 ? -0.15 * Math.sin(Math.PI * (x + 20) / 20) : 0);
+  const at = (extra: Record<string, unknown>) => buildRoadSurfaces(cell, new RoadIndex([cell]), deckInput({ height: hollow, ...extra }));
+  const off = at({}), on = at({ redDedupe: true });
+  assert.deepEqual(at({ redDedupe: false }).layers, off.layers);
+  const over = (m: MeshArrays | undefined) => Math.max(...[[-10, 7], [-9, 6.5], [-11, 7.5]].map(([x, y]) => zAt(m, x, y)! - hollow(x, y)));
+  assert.ok(over(off.layers.cycle) > ROAD_MARK_LIFT.paint, `before: the red over the paint plane (${over(off.layers.cycle)})`);
+  assert.ok(over(on.layers.cycle) <= ROAD_MARK_LIFT.paint, `after: within the bounded float (${over(on.layers.cycle)})`);
 });
 
 // A two-way fietspad (x < 0 and x > 10, 3.2 m wide at y 0..3.2) crossing a side street's mouth (x 0..10, carriageway),

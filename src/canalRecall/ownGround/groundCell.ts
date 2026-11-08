@@ -132,7 +132,7 @@ export interface CellInput {
   clipDecks?: boolean;
   /** One width per deck side and the survey's deck polygons on every deck drawn (bridgeGaps.ts, issue #178); default on, false: the pre-fix build (`?bridgeGaps=0`). */
   bridgeGaps?: boolean;
-  /** Road surfaces carried across bridges (deckCarry.ts, lane R5-C1 issue #262); default on, false: the build before it (`?bridgeCarry=0`). */
+  /** Road surfaces carried across bridges (deckCarry.ts, lane R5-C1 issue #262); default on (with bridgeGaps: `?bridgeGaps=0` turns both off), false: the build before it (`?bridgeCarry=0`). */
   bridgeCarry?: boolean;
   /** One red owner per junction mouth and the red on its own plane (lane R5-C1 issue #262); default on, false: before (`?redDedupe=0`). */
   redDedupe?: boolean;
@@ -354,7 +354,7 @@ export function buildCell(input: CellInput): BuiltCell {
   let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set(), lowDeck: ((k: number) => boolean) | undefined;
   const canalSide = fine && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
   if (roadIndex && input.roads) {
-    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, ...(input.bridgeGaps !== false && input.flatDecksAround?.length ? { onFlatDeck: flatDeckTest(input.flatDecksAround) } : {}), ...(input.bridgeGaps !== false ? { bridgeGaps: true } : {}), ...(input.bridgeCarry !== false ? { bridgeCarry: true } : {}), ...(input.redDedupe !== false ? { redDedupe: true } : {}), canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
+    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, ...(input.bridgeGaps !== false && input.flatDecksAround?.length ? { onFlatDeck: flatDeckTest(input.flatDecksAround) } : {}), ...(input.bridgeGaps !== false ? { bridgeGaps: true } : {}), ...(input.bridgeGaps !== false && input.bridgeCarry !== false ? { bridgeCarry: true } : {}), ...(input.redDedupe !== false ? { redDedupe: true } : {}), canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'bgtCarriage');
     roadSkipped = built.skipped; lowDeck = built.lowDeck;
     roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, greyFiets, markings: null };
@@ -572,7 +572,7 @@ export function buildCell(input: CellInput): BuiltCell {
   if (roadIndex && lod === 0) {
     const red = emptyMesh();
     // Lane R5-C1 (#262): the red runs on across bridges (bridgeCarry); one red owner per mouth, the fietspad's width (redDedupe).
-    const carryRed = input.bridgeCarry !== false, dedupe = input.redDedupe !== false;
+    const carryRed = input.bridgeGaps !== false && input.bridgeCarry !== false, dedupe = input.redDedupe !== false;
     through = cycleThrough(red, ways, w => own.has(w.id), roadIndex, onLand, { ...(carryRed ? { bridges: true, deckHeight: surface.height } : {}), ...(dedupe ? { bgtWidth: true, ...(surveyRed ? { owned: meshCover(surveyRed) } : {}) } : {}) });
     add('cycle', red, 'cycleThrough');
   }
