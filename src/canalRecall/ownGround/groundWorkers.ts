@@ -80,11 +80,12 @@ export function defaultGroundWorkers(detail: 'full' | 'touch'): number { return 
  * Cells handed to the workers as they free up (lane R5-A #260 step 2). Measured 2026-11-08 (quiet machine, 3 cold
  * desktop starts, workerTrace.ts): sending the whole ring at once, balanced by count, gave one worker two or three of
  * the LOD 0 cells (each ~2–4 s against ~0.5–1 s for LOD 1) while the others went idle, so the ring waited on that one
- * worker (ring 10.0 s, the other two workers done by 5.6 s). Now each worker holds at most `PULL_DEPTH` cells (one
- * building, one queued so far blocks never slip in between) and the next best-ranked cell goes to whichever worker
- * replies first. `?groundPull=0` (or `window.__canalRecallGroundPull = false`) sends the ring at once, as before.
+ * worker (ring 10.0 s, the other two workers done by 5.6 s). Now each worker holds at most `PULL_DEPTH` cells and the
+ * next best-ranked cell goes to whichever worker replies first. Depth 1: with 2 the first deal still gave one worker
+ * two LOD 0 cells (block 7.6 s against ~6 s, 2 of 3 runs). Far blocks (worker 0's queue, after cells) may now run
+ * between two of its cells. `?groundPull=0` (or `window.__canalRecallGroundPull = false`) sends the ring at once, as before.
  */
-export const PULL_DEPTH = 2;
+export const PULL_DEPTH = 1;
 
 export function groundPullFlag(search?: string): boolean {
   const g = globalThis as { __canalRecallGroundPull?: boolean; location?: { search?: string } };

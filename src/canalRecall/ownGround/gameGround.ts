@@ -380,6 +380,8 @@ export class OwnGround {
   private readonly sentTo = new Map<string, number>();
   private wantedOrder: string[] = [];
   private readonly asks = new Map<string, { lod: 0 | 1; detail: CellDetail }>();
+  /** `?groundQueuedInstall=0` off: a built cell waiting to install counts as asked (gameGround updateResidency). */
+  private readonly queuedInstallOn = (() => { try { return new URLSearchParams((globalThis as { location?: { search?: string } }).location?.search ?? '').get('groundQueuedInstall') !== '0'; } catch { return true; } })();
   /** Affinity (groundWorkers.ts sharedNeighbours, `?groundAffinity=0` off): the cells whose data each worker has loaded. */
   private readonly affinityOn = groundAffinityFlag();
   private loadedBy: Set<string>[] = [];
@@ -784,6 +786,9 @@ export class OwnGround {
       const lod = this.quickOn && w.lod === 0 && !have ? 1 : w.lod;
       const want = levelOf(lod, w.detail);
       if ((have && levelOf(have.lod, have.detail) === want) || this.pending.get(w.key) === want) continue;
+      // Built and waiting its frame to install (no longer pending, not yet resident): not asked again (R5-A #260: the
+      // hold's camera cell, arrived just as the game's first update re-planned, was built twice, 1.5 s of a worker).
+      if (this.queuedInstallOn && this.installQueue.some(c => c.key === w.key && levelOf(c.lod, c.detail) === want)) continue;
       // A cell that becomes near again (or that the ring wants at another LOD) rebuilds through this same path: one
       // request, then the install swaps the whole cell, so two levels are never on screen together.
       // The worker already holding this cell's earlier request keeps it (its queue replaces the level); a new request
