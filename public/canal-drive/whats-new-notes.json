@@ -3,6 +3,12 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "The ground around you finishes sooner",
+      "text": "At the start of a ride the ground right around you now finishes building half a second to a second and a half sooner on the same start. The ground builders used to let a tile outside your block jump the queue when it sat next to one they already held; a free builder now only picks among tiles of the same level and the same side of your block.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
       "title": "The IJ-tunnel's west ramp keeps its wall",
       "text": "The IJ-tunnel's west ramp now keeps its wall all the way down: no more street draped into the trench halfway along. The east bank rises nine metres in one run, which the wall scan had read as too wide to be a wall, so the wall stopped for 48 metres and the verge above folded into the cutting.",
       "where": [
