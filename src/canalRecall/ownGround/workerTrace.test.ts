@@ -22,5 +22,5 @@ test('fetchSplit counts the files a job started, its network wall time and gunzi
   t.fetch({ path: 'x', start: 10, fetched: 50, end: 55, bytes: 2048, stallMs: 30 });
   t.fetch({ path: 'y', start: 20, fetched: 80, end: 82, bytes: 1024, stallMs: 0 });
   t.fetch({ path: 'z', start: 200, fetched: 210, end: 211, bytes: 1024, stallMs: 0 });
-  assert.deepEqual(t.fetchSplit(0, 100), { files: 2, kB: 3, netMs: 70, stallMaxMs: 30, gunzipMs: 7, byDir: { x: [1, 2], y: [1, 1] }, paths: ['x', 'y'] });
+  assert.deepEqual(t.fetchSplit(0, 100), { files: 2, kB: 3, netMs: 70, stallMaxMs: 30, gunzipMs: 7, byDir: { x: [1, 2], y: [1, 1] }, paths: ['x', 'y'], shared: 0, sharedKB: 0, savedMs: 0, hostGunzipMs: 0 });
 });

@@ -49,7 +49,7 @@ for (let run = 0; run < runs; run++) {
         const block = key ? (() => { const [x, y] = key.split('_').map(Number); const o = []; for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) o.push(`${x + dx}_${y + dy}`); return o.filter(k => wanted.includes(k)); })() : [];
         const resident = st.cells ?? {};
         S.rows.push({ t: Math.round(performance.now()), state: g?.state, zoom: +(+st.zoom).toFixed(2), visible: st.visible, blend: +(+st.blend).toFixed(2), ready: st.ready, workerReady: st.workerReady,
-          centreKey: key, centreIn: key ? key in resident : false, blockIn: block.filter(k => k in resident).length, block: block.length,
+          centreKey: key, focusCell: st.focusCell ?? null, centreIn: key ? key in resident : false, blockIn: block.filter(k => k in resident).length, block: block.length,
           wanted: wanted.length, resident: Object.keys(resident).length, wantedIn: wanted.filter(k => k in resident).length, pending: Object.keys(st.pending ?? {}).length, queued: st.queued, built: st.built, errors: st.errors?.length ?? 0,
           workerPending: st.workerPending?.map(a => a.length) ?? null, camZoom: (() => { try { return +vm.camera.zoom().toFixed(2); } catch { return null; } })(), camPitch: (() => { try { return Math.round(vm.camera.pitch()); } catch { return null; } })(), farPending: st.far?.pending ?? null, farBuilt: st.far?.built ?? null, reliefTiles: st.reliefTiles });
       }
@@ -91,6 +91,9 @@ for (let run = 0; run < runs; run++) {
   for (const c of summary.cells) for (const [d, [n, kB]] of Object.entries(c.fetch?.byDir ?? {})) { const e = (byDir[d] ??= [0, 0]); e[0] += n; e[1] += kB; }
   summary.inputSplit.distinctFiles = new Set(allPaths).size;
   summary.inputSplit.byDir = byDir;
+  // Lane R5-A #260 step 3 (groundShare.ts): requests served by the share host without a new fetch, their kB, the host's fetch + gunzip they saved.
+  summary.inputSplit.shared = fsum('shared'); summary.inputSplit.sharedKB = fsum('sharedKB'); summary.inputSplit.savedMs = fsum('savedMs'); summary.inputSplit.hostGunzipMs = fsum('hostGunzipMs');
+  summary.inputSplit.networkFetches = summary.inputSplit.files - summary.inputSplit.shared;
   summary.farPendingMax = Math.max(0, ...data.rows.map(r => r.farPending ?? 0));
   results.push({ ...summary, rows: data.rows.map(r => ({ ...r, t: rel(r.t) })), resources: data.resources.map(r => ({ ...r, start: rel(r.start), end: rel(r.end) })), errors });
   console.log(`run ${run}: worker posted ${summary.workerPostedAt} ready ${summary.workerReadyAt} (init ${summary.workerInitMs} ms) first install ${summary.firstInstallAt} | visible ${summary.visibleAt} centre ${summary.centreAt} block ${summary.blockAt} ring ${summary.ringAt} (${summary.wanted} cells) ms after state 4 | medians ${JSON.stringify(summary.medians)}`);
