@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-08",
+      "title": "Flat roofs read as roofs, not bright slabs",
+      "text": "Flat roofs seen from the air are no longer one bright slab. Their tone now matches the aerial photograph (14 of the 15 largest lids around the Nieuwmarkt sit within a shade of it, against 4 before), the surface carries the grain and seams of gravel and membrane, large roofs show a roof box, and a parapet lip appears as you come closer. The city's simplified shells were re-baked with the same roofs.",
+      "where": [
+        4.9005,
+        52.3715
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5e/u1-user-main-lane.jpg",
+          "alt": "Nieuwmarkt from the air: the user's shot with bright flat lids, the same frame on main, and the frame with measured roof tones and roof boxes",
+          "caption": "Nieuwmarkt. User | before | after."
+        },
+        {
+          "src": "engine/2026-11-08-r5e/u1-lid-luma.png",
+          "alt": "Per-lid brightness swatches for the fifteen largest flat roofs: orthophoto, before, after",
+          "caption": "The fifteen largest lids: orthophoto | before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
       "title": "Tapping a named place says what it is",
       "text": "Tapping a named place now tells you what it is (a Sikh gurdwara, a Roman Catholic church, a gift shop), even when the building record itself is blank. The Shri Guru Nanak Gurdwara Sahib used to say it had no name or date; its card now reads \"A Sikh gurdwara at Schakelstraat 21\" with a link to its map source. About 900 places got a clearer description (62 Protestant and 61 Roman Catholic churches, 45 mosques, shop kinds such as \"a gift shop\" instead of \"a gift\"), and 722 public artworks became tappable.",
       "where": [
