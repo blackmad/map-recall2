@@ -3,6 +3,12 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "More roofs take their colour from the photo",
+      "text": "Roofs on about 1,800 newer buildings, mostly small sheds and gap fills, now take their colour from the aerial photo, and about 9,800 hard-to-read flat roofs lean toward their photo colour instead of a generic grey. Low-confidence readings only tilt the flat-roof colour; they are never drawn at full measured weight.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
       "title": "A place's name now tells you about its building",
       "text": "Tapping a place's name on the map now also tells you about the building it is in: when it was built and how tall it is, under the place's name. The tap finds the building whose footprint holds the label's point, or the nearest wall within six metres, and never a building standing in front of the place.",
       "where": [

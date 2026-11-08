@@ -554,7 +554,7 @@
     "check:signature-fallback": "node scripts/check-signature-fallback-refresh.mjs",
     "check:own-ground-belt": "node --import tsx scripts/own-ground/audit-belt.ts --probe",
     "hosting:prune": "node scripts/hosting/prune-versions.mjs",
-    "test:roofs": "node --import tsx --test src/canalRecall/roofs/*.test.ts src/canalRecall/roofTier.test.ts src/canalRecall/gardenSheds.test.ts",
+    "test:roofs": "node --import tsx --test src/canalRecall/roofs/*.test.ts scripts/roofs/compareRoofFacts.test.ts src/canalRecall/roofTier.test.ts src/canalRecall/gardenSheds.test.ts",
     "check:roof-attachment": "node --import tsx scripts/check-roof-attachment.ts",
     "check:garden-sheds": "node --import tsx scripts/check-garden-sheds.ts",
     "audit:landmark-cards": "tsx scripts/audit-landmark-cards.ts",
