@@ -4,7 +4,7 @@
 // installed, and where each cell's time went (worker queue wait / data in / build / tiles; main-thread queue / install).
 //
 //   PORT=4680 node scripts/own-ground/ground-start-probe.mjs <out.json> [--runs 3] [--every 500] [--max 60] [--qs 'a=1']
-//     [--chrome] [--headed] [--device desktop|iphone]
+//     [--chrome] [--headed] [--device desktop|iphone] [--throttle 4]
 // BUNDLES_DIR=<dir> serves *.bundle.js (and the ground worker) from a scratch build.
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
@@ -33,6 +33,8 @@ for (let run = 0; run < runs; run++) {
   });
   await context.route(/ingest\.(us\.)?sentry\.io/, route => route.fulfill({ status: 200, body: '{}' }));
   const page = await context.newPage();
+  // --throttle N: CPU slowed N times (the iPhone 13 4x check; the page's own thread, as the perf harnesses do).
+  if (Number(opt('throttle', '0')) > 1) await (await context.newCDPSession(page)).send('Emulation.setCPUThrottlingRate', { rate: Number(opt('throttle', '0')) });
   const errors = [];
   page.on('pageerror', e => errors.push(String(e).slice(0, 200)));
   // Sampled in the page from its first script on, so the poll does not depend on the harness's round trips.
@@ -48,7 +50,8 @@ for (let run = 0; run < runs; run++) {
         const resident = st.cells ?? {};
         S.rows.push({ t: Math.round(performance.now()), state: g?.state, zoom: +(+st.zoom).toFixed(2), visible: st.visible, blend: +(+st.blend).toFixed(2), ready: st.ready, workerReady: st.workerReady,
           centreKey: key, centreIn: key ? key in resident : false, blockIn: block.filter(k => k in resident).length, block: block.length,
-          wanted: wanted.length, resident: Object.keys(resident).length, wantedIn: wanted.filter(k => k in resident).length, pending: Object.keys(st.pending ?? {}).length, queued: st.queued, built: st.built, errors: st.errors?.length ?? 0 });
+          wanted: wanted.length, resident: Object.keys(resident).length, wantedIn: wanted.filter(k => k in resident).length, pending: Object.keys(st.pending ?? {}).length, queued: st.queued, built: st.built, errors: st.errors?.length ?? 0,
+          workerPending: st.workerPending?.map(a => a.length) ?? null, camZoom: (() => { try { return +vm.camera.zoom().toFixed(2); } catch { return null; } })(), camPitch: (() => { try { return Math.round(vm.camera.pitch()); } catch { return null; } })(), farPending: st.far?.pending ?? null, farBuilt: st.far?.built ?? null, reliefTiles: st.reliefTiles });
       }
       if (performance.now() < maxS * 1000) setTimeout(tick, every);
     };
@@ -69,16 +72,29 @@ for (let run = 0; run < runs; run++) {
   const first = pred => data.rows.find(pred)?.t ?? null;
   const st = data.startup ?? {};
   const summary = {
-    run, state4At: Math.round(s4),
-    loadAt: rel(st.loadAt), storeReadyAt: rel(st.storeReadyAt), workerPostedAt: rel(st.workerPostedAt), workerReadyAt: rel(st.workerReadyAt), workerInitMs: st.workerInitMs ?? null, firstInstallAt: rel(st.firstInstallAt),
+    run, state4At: Math.round(s4), workers: st.workers ?? null, workerReady: (st.workerReady ?? []).map(rel),
+    loadAt: rel(st.loadAt), storeReadyAt: rel(st.storeReadyAt), workerPostedAt: rel(st.workerPostedAt), prefetchAt: rel(st.prefetchAt), prefetchKey: st.prefetchKey ?? null, workerReadyAt: rel(st.workerReadyAt), workerInitMs: st.workerInitMs ?? null, firstInstallAt: rel(st.firstInstallAt),
     visibleAt: rel(first(r => r.visible)), centreAt: rel(first(r => r.centreIn)), blockAt: rel(first(r => r.block > 0 && r.blockIn === r.block)), ringAt: rel(first(r => r.wanted > 0 && r.wantedIn === r.wanted && r.pending === 0)),
     wanted: data.rows.at(-1)?.wanted ?? null,
     cells: (st.cells ?? []).map(c => ({ ...c, installedAt: rel(c.installedAt) })),
   };
   const med = k => { const a = summary.cells.map(c => c[k]).filter(v => v != null).sort((x, y) => x - y); return a.length ? a[a.length >> 1] : null; };
   summary.medians = { waitMs: med('waitMs'), inputMs: med('inputMs'), buildMs: med('buildMs'), tileMs: med('tileMs'), queuedMs: med('queuedMs'), installMs: med('installMs'), latencyMs: med('latencyMs') };
+  // Lane R5-A #260 step 1: the cells each worker built, in order, and the start's wait split over the first ring.
+  summary.byWorker = {};
+  for (const c of summary.cells) (summary.byWorker[c.worker ?? '?'] ??= []).push(`${c.key}@${c.lod}`);
+  const sum = k => summary.cells.reduce((n, c) => n + (c.ahead?.[k] ?? 0), 0);
+  summary.waitSplit = { cells: summary.cells.length, waitMs: summary.cells.reduce((n, c) => n + (c.waitMs ?? 0), 0), behindCellInputMs: sum('cellInputMs'), behindCellBuildMs: sum('cellBuildMs'), behindFarMs: sum('farMs'), behindInitMs: sum('initMs'), idleMs: sum('idleMs') };
+  const fsum = k => summary.cells.reduce((n, c) => n + (c.fetch?.[k] ?? 0), 0);
+  summary.inputSplit = { inputMs: summary.cells.reduce((n, c) => n + (c.inputMs ?? 0), 0), netMs: fsum('netMs'), gunzipMs: fsum('gunzipMs'), files: fsum('files'), kB: fsum('kB'), stallMaxMs: Math.max(0, ...summary.cells.map(c => c.fetch?.stallMaxMs ?? 0)) };
+  const allPaths = summary.cells.flatMap(c => c.fetch?.paths ?? []), byDir = {};
+  for (const c of summary.cells) for (const [d, [n, kB]] of Object.entries(c.fetch?.byDir ?? {})) { const e = (byDir[d] ??= [0, 0]); e[0] += n; e[1] += kB; }
+  summary.inputSplit.distinctFiles = new Set(allPaths).size;
+  summary.inputSplit.byDir = byDir;
+  summary.farPendingMax = Math.max(0, ...data.rows.map(r => r.farPending ?? 0));
   results.push({ ...summary, rows: data.rows.map(r => ({ ...r, t: rel(r.t) })), resources: data.resources.map(r => ({ ...r, start: rel(r.start), end: rel(r.end) })), errors });
   console.log(`run ${run}: worker posted ${summary.workerPostedAt} ready ${summary.workerReadyAt} (init ${summary.workerInitMs} ms) first install ${summary.firstInstallAt} | visible ${summary.visibleAt} centre ${summary.centreAt} block ${summary.blockAt} ring ${summary.ringAt} (${summary.wanted} cells) ms after state 4 | medians ${JSON.stringify(summary.medians)}`);
+  console.log(`  prefetch ${summary.prefetchAt} (${summary.prefetchKey}) workers ${summary.workers} ready ${JSON.stringify(summary.workerReady)} byWorker ${JSON.stringify(summary.byWorker)}\n  waitSplit ${JSON.stringify(summary.waitSplit)}\n  inputSplit ${JSON.stringify(summary.inputSplit)} farPendingMax ${summary.farPendingMax}`);
   await context.close();
 }
 fs.mkdirSync(path.dirname(out), { recursive: true });

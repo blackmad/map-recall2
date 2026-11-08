@@ -683,6 +683,8 @@ export class OwnWorldView implements WorldViewOracles {
       this._ownGround = new api.OwnGround(three.THREE, this._sharedFrame, {
         repaint: () => this.host.triggerRepaint(),
         setBasemapGroundHidden: () => { /* no basemap */ },
+        // The start neighbourhood builds during the hold (ownGround/groundPrefetch.ts, R5-A #260).
+        startView: () => { const c = this.cameraMap.camera; return { lngLat: [c.lng, c.lat], zoom: c.zoom, pitch: c.pitch }; },
       }, { workerUrl: new URL(OWN_GROUND_WORKER, W().location.href).href, ...budget });
       await this._ownGround.load(this.absoluteExtractRoot());
       if (this._threeBuildings?.setWaterLevel) this._threeBuildings.setWaterLevel(this._ownGround.waterLevelM());
