@@ -128,31 +128,33 @@ export function cutUnderDecks(rings: readonly (readonly Vec2[])[], cutters: read
   return out.filter(p => ringArea(p[0]) >= CARRY_MIN_PIECE_M2).map(p => p.map(r => r.slice(0, -1).map(q => [q[0], q[1]] as Vec2)));
 }
 
-/** Split a polyline into the runs whose points lie outside `under` (a kerb under a carried deck is not drawn). */
+/**
+ * Split a polyline into the runs whose points lie outside `under` (a kerb under a carried deck is not drawn). The runs
+ * keep the polyline's own vertices plus one point at each crossing (found every `step` metres), so a kerb is no denser
+ * than before; a run never under is returned as it is.
+ */
 export function runsOutside(run: readonly Vec2[], under: (x: number, y: number) => boolean, step = 0.5): Vec2[][] {
-  if (!run.some((p, i) => under(p[0], p[1]) || (i > 0 && under((p[0] + run[i - 1][0]) / 2, (p[1] + run[i - 1][1]) / 2)))) {
-    // Nothing under a deck at the vertices and midpoints: the run as it is (the same vertices as without the carry).
-    let hit = false;
-    for (let i = 1; i < run.length && !hit; i++) {
-      const q = run[i - 1], p = run[i], n = Math.max(1, Math.ceil(Math.hypot(p[0] - q[0], p[1] - q[1]) / step));
-      for (let s = 1; s < n && !hit; s++) hit = under(q[0] + (p[0] - q[0]) * s / n, q[1] + (p[1] - q[1]) * s / n);
-    }
-    if (!hit) return [run.map(p => [p[0], p[1]] as Vec2)];
-  }
   const out: Vec2[][] = [];
-  let cur: Vec2[] = [];
+  let cur: Vec2[] = [], hit = false;
   const flush = () => { if (cur.length >= 2) out.push(cur); cur = []; };
-  for (let i = 0; i < run.length; i++) {
-    const p = run[i];
-    if (i > 0) {
-      const q = run[i - 1], len = Math.hypot(p[0] - q[0], p[1] - q[1]), n = Math.max(1, Math.ceil(len / step));
-      for (let s = 1; s < n; s++) {
-        const x = q[0] + (p[0] - q[0]) * s / n, y = q[1] + (p[1] - q[1]) * s / n;
-        if (under(x, y)) flush(); else cur.push([x, y]);
-      }
+  let inside = run.length ? under(run[0][0], run[0][1]) : false;
+  if (inside) hit = true; else if (run.length) cur.push([run[0][0], run[0][1]]);
+  for (let i = 1; i < run.length; i++) {
+    const q = run[i - 1], p = run[i], n = Math.max(1, Math.ceil(Math.hypot(p[0] - q[0], p[1] - q[1]) / step));
+    let last: Vec2 = [q[0], q[1]];
+    for (let s = 1; s <= n; s++) {
+      const pt: Vec2 = s === n ? [p[0], p[1]] : [q[0] + (p[0] - q[0]) * s / n, q[1] + (p[1] - q[1]) * s / n];
+      const now = under(pt[0], pt[1]);
+      if (now !== inside) {
+        hit = true;
+        if (now) { cur.push(last); flush(); } else cur.push(pt);
+        inside = now;
+      } else if (!now && s === n) cur.push(pt);
+      last = pt;
     }
-    if (under(p[0], p[1])) flush(); else cur.push([p[0], p[1]]);
   }
   flush();
-  return out;
+  if (!hit) return [run.map(p => [p[0], p[1]] as Vec2)];
+  // A crossing point equal to the vertex before it (a crossing at a vertex) is not a second vertex.
+  return out.map(r => r.filter((p, i) => i === 0 || p[0] !== r[i - 1][0] || p[1] !== r[i - 1][1])).filter(r => r.length >= 2);
 }
