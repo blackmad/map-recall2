@@ -362,6 +362,10 @@ export interface PostcardProps {
   /** City name for the caption; defaults keep Amsterdam cards unchanged. */
   cityName?: string;
   provinceCaption?: string;
+  /** Free Ride's collection (game/freeRideCollection.ts): "3 of 9 places", shown in place of the caption. */
+  checklist?: string;
+  /** The neighbourhood's list was just completed: the heading says so. */
+  stamped?: boolean;
 }
 
 export interface PostcardLayout {
@@ -407,10 +411,12 @@ export function measurePostcard(
     textLeft,
     nameFontSize,
     name: props.name || '',
-    heading: `ENTERING ${String(props.kind || 'NEIGHBORHOOD').toUpperCase()}`,
+    heading: props.stamped ? 'PASSPORT STAMP' : `ENTERING ${String(props.kind || 'NEIGHBORHOOD').toUpperCase()}`,
     // Crediting the photo matters when it was borrowed from the containing
     // district rather than taken in this neighborhood.
-    caption: props.imageArea
+    caption: props.checklist
+      ? `${props.checklist} · ${props.cityName || 'Amsterdam'}`
+      : props.imageArea
       ? `Photo: ${props.imageArea} · ${props.cityName || 'Amsterdam'}`
       : `${props.cityName || 'Amsterdam'}${props.provinceCaption ? ` · ${props.provinceCaption}` : ''}`,
   };

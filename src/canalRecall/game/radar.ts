@@ -111,6 +111,8 @@ export const RADAR_COLORS = {
   rim: 'rgba(251,248,242,0.97)',
   rimLine: 'rgba(31,28,23,0.28)',
   rider: '#1f1c17',
+  /** Free Ride's unopened places: the HUD copper (hudTheme daylight accent). */
+  place: '#b4682c',
 } as const;
 
 /** Stroke widths in CSS px per class index (major, secondary, tertiary, minor, service, cycle). */
@@ -236,6 +238,8 @@ export interface RadarView {
   route: Float32Array | null;
   /** Index of the route point nearest the rider (what lies before it is drawn faint). */
   routeIndex: number;
+  /** Free Ride's collection: places in this neighbourhood not yet opened, local metres. Never named. */
+  places?: readonly Vec2[] | null;
 }
 
 type Canvas = HTMLCanvasElement | OffscreenCanvas;
@@ -458,6 +462,17 @@ export class RadarMap {
       pathOf(split, n);
       ctx.strokeStyle = RADAR_COLORS.routeCasing; ctx.lineWidth = 6.5; ctx.stroke();
       ctx.strokeStyle = RADAR_COLORS.route; ctx.lineWidth = 4; ctx.stroke();
+    }
+    // Unopened places: small copper rings, only where they fall on the radar.
+    if (view.places?.length) {
+      const ringR = diameter < 120 ? 3 : 3.5;
+      for (const place of view.places) {
+        const o = radarOffset([place[0] - view.at[0], place[1] - view.at[1]], view.rotation, scale);
+        if (Math.hypot(o[0], o[1]) > inner - ringR - 1) continue;
+        ctx.beginPath(); ctx.arc(cx + o[0], cy + o[1], ringR, 0, Math.PI * 2);
+        ctx.fillStyle = '#fbf8f2'; ctx.fill();
+        ctx.strokeStyle = RADAR_COLORS.place; ctx.lineWidth = 2; ctx.stroke();
+      }
     }
     ctx.restore();
 

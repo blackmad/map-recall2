@@ -58,6 +58,8 @@ export interface FreeRidePlace extends WorldPoint {
   key: string;
   kind: FreeRideKind;
   name: string;
+  /** A landmark's prominence score: orders a neighbourhood's checklist (freeRideCollection.ts). */
+  prominence?: number;
 }
 
 export interface FreeRideNearby extends FreeRidePlace {

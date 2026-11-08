@@ -170,8 +170,10 @@ export interface LandmarkHost extends GameCoreHost {
   /** What the player has already been told, carried between sessions. */
   _factRotation: RotationState;
 
-  _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;
+  _neighborhoodNotice: { name: string; kind?: string; imageArea?: string; stamped?: boolean } | null;
   _neighborhoodNoticeTimer: number;
+  /** Free Ride's collection (freeRideRuntime.ts): the postcard's "3 of 9 places", '' when there is no list. */
+  _freeRideChecklistCaption?(hood: string): string;
   _neighborhoodCandidate: string;
   _neighborhoodCandidateTimer: number;
   _previousNeighborhood: string;
@@ -351,7 +353,7 @@ export interface RecallHost extends GameCoreHost {
   _setRouteError(message: string): void;
   _showStreetKnowledge(name: string, type?: 'street' | 'water' | 'bridge' | 'line', replaceOpenCard?: boolean): void;
   _clearLandmarkNotice(): void;
-  _neighborhoodNotice: { name: string; kind?: string; imageArea?: string } | null;
+  _neighborhoodNotice: { name: string; kind?: string; imageArea?: string; stamped?: boolean } | null;
   _neighborhoodNoticeTimer: number;
   _explorationSnapshot?: Exploration | null;
   _reclaimKeyboardFocus?(): void;
@@ -361,6 +363,8 @@ export interface RecallHost extends GameCoreHost {
 export interface PresentationHost extends GameCoreHost {
   /** Free Ride (freeRideRuntime.ts): the plaque line, markers, bar and taps. */
   _freeRideTally(): string;
+  /** The current neighbourhood's unopened checklist places, for the radar. */
+  _freeRideRadarPlaces(): WorldPoint[];
   _renderFreeRideMarkers(): void;
   _placeFreeRideBar(): void;
   _freeRideClick(x: number, y: number, clientX: number, clientY: number): boolean;
