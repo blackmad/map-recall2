@@ -118,6 +118,8 @@ export interface FreeRideCollectionState {
   /** The landmark carrying the discovery token, and where it was last drawn. */
   token: (CollectionPlace & { distance: number }) | null;
   tokenScreen: { key: string; x: number; y: number; size: number; alpha: number } | null;
+  /** Why the token was not drawn last frame (for the spec), null when drawn or absent. */
+  tokenHidden: 'offscreen' | 'corridor' | 'hud' | null;
   /** The corridor as last projected, for the spec and the debug overlay. */
   corridor: Corridor | null;
   /** Set when a list was completed: the plaque says so for a few seconds. */
@@ -168,7 +170,7 @@ export class GameFreeRideRuntime {
       const state = readCollection(typeof localStorage === 'undefined' ? null : localStorage);
       this._freeRideCollection = {
         state, opened: new Set(state.opened), lists: null, listsFrom: null, hoodOfKey: new Map(),
-        token: null, tokenScreen: null, corridor: null, stampMoment: null,
+        token: null, tokenScreen: null, tokenHidden: null, corridor: null, stampMoment: null,
       };
     }
     this._showFreeRideBar(true);
@@ -439,6 +441,7 @@ export class GameFreeRideRuntime {
     const collection = this._freeRideCollection;
     if (!collection || !this.player) return;
     collection.tokenScreen = null;
+    collection.tokenHidden = null;
     const vehicle = this.camera.worldToScreen(this.player.x, this.player.y);
     collection.corridor = {
       path: [vehicle, ...corridorAhead(this.player, CORRIDOR_AHEAD_M * PIXELS_PER_METER).slice(1)
@@ -448,13 +451,17 @@ export class GameFreeRideRuntime {
     const token = collection.token;
     if (!token || collection.opened.has(token.key)) return;
     const live = Math.hypot(token.x - this.player.x, token.y - this.player.y) / PIXELS_PER_METER;
-    const size = tokenSizePx(live);
+    // The size cap is in CSS px; the canvas may be drawn larger or smaller than it is shown.
+    const shown = this.canvas.getBoundingClientRect().width;
+    const cssPerCanvas = shown > 0 ? shown / CANVAS_W : 1;
+    const size = tokenSizePx(live) / cssPerCanvas;
     const alpha = distanceAlpha(live);
     const at = this.camera.worldToScreen(token.x, token.y);
     const r = size / 2;
-    if (!Number.isFinite(at.x) || at.x < r || at.y < r || at.x > CANVAS_W - r || at.y > CANVAS_H - r) return;
-    if (overCorridor(at, r, collection.corridor)) return;
-    if (blocked.some(b => at.x + r > b.x && at.x - r < b.x + b.w && at.y + r > b.y && at.y - r < b.y + b.h)) return;
+    if (!Number.isFinite(at.x) || at.x < r || at.y < r || at.x > CANVAS_W - r || at.y > CANVAS_H - r) { collection.tokenHidden = 'offscreen'; return; }
+    if (overCorridor(at, r, collection.corridor)) { collection.tokenHidden = 'corridor'; return; }
+    if (blocked.some(b => at.x + r > b.x && at.x - r < b.x + b.w && at.y + r > b.y && at.y - r < b.y + b.h)) { collection.tokenHidden = 'hud'; return; }
+    collection.tokenHidden = null;
     drawDiscoveryToken(this.ctx, at.x, at.y, size, alpha);
     collection.tokenScreen = { key: token.key, x: at.x, y: at.y, size, alpha };
   }
@@ -589,9 +596,12 @@ export class GameFreeRideRuntime {
         if (store) savePassport(store, stamped.passport);
         bumpSessionCounter('stampsEarned');
         collection.stampMoment = { hood, until: performance.now() + STAMP_MOMENT_SECONDS * 1000 };
-        // The postcard comes back with the stamp on it (desktop; a phone has the plaque line).
-        this._neighborhoodNotice = { ...this.neighborhoods.find(n => n.name === hood), name: hood, stamped: true };
-        this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
+        // The postcard comes back with the stamp on it on a wide screen; a phone
+        // keeps its bottom band for the corridor (teachingSurface), the plaque says it.
+        if (this.viewport?.mode !== 'compact') {
+          this._neighborhoodNotice = { ...this.neighborhoods.find(n => n.name === hood), name: hood, stamped: true };
+          this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
+        }
       }
     }
     saveCollection(store, collection.state);
