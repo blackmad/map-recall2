@@ -408,13 +408,13 @@ const residents = census => page.evaluate(census => {
     zoom: Math.round(vm.camera.zoom() * 10) / 10, pitch: Math.round(vm.camera.pitch()), centre: vm.camera.center ? (c => [+c.lng.toFixed(4), +c.lat.toFixed(4)])(vm.camera.center()) : null,
     tier: vm.qualityTier?.tier ?? null, dpr: vm.host?.getPixelRatio?.() ?? null,
     geometries: info?.memory?.geometries ?? null, textures: info?.memory?.textures ?? null, programs: info?.programs?.length ?? null,
-    gl: (() => { const rep = window.__canalPerf?.gl?.report?.(); return rep ? { residentMB: rep.resident.totalMB, bufferMB: rep.resident.bufferMB, textureMB: rep.resident.textureMB, buffers: rep.resident.buffers, textures: rep.resident.textures, uploadMB: Math.round(rep.sinceWarm.uploadBytes / 1048576), uploads: rep.sinceWarm.uploads, compiles: rep.sinceWarm.compiles } : null; })(),
+    gl: (() => { const rep = window.__canalPerf?.gl?.report?.(); return rep ? { residentMB: rep.resident.totalMB, decodedMB: rep.resident.totalDecodedMB ?? null, bufferMB: rep.resident.bufferMB, textureMB: rep.resident.textureMB, buffers: rep.resident.buffers, textures: rep.resident.textures, uploadMB: Math.round(rep.sinceWarm.uploadBytes / 1048576), uploads: rep.sinceWarm.uploads, compiles: rep.sinceWarm.compiles } : null; })(),
     chunks: size(tb?.chunks), chunkKinds: kinds, fading: size(tb?.fading), detailInstallsTotal: tb?.detailInstalls ?? null, detailTiles: size(tb?.detailTiles),
     // MB of the resident detail (`near:`) and extras chunks (their geometry bytes: the copy uploaded to the GPU).
     detailMB: tb?.chunks ? Math.round([...tb.chunks].filter(([k]) => k.startsWith('near:') || k.startsWith('extras:')).reduce((a, [, c]) => a + (c?.info?.bytes ?? 0), 0) / 1048576 * 10) / 10 : null,
     cityTiles: size(city?.cache?.tiles), cityFeatures: size(city?.cache?.list), cityRing: size(city?.ring), cityRingDeferred: city?.ringPacer?.deferred ?? null, worldInterned: size(city?.world?.interned),
     contextFeatures: size(tb?.contextFeatures), contextChanges: size(tb?.contextChanges), contextCache: size(tb?.contextCache), pendingJobs: size(tb?.pending?.jobs),
-    landmarks: size(sig?._entries), landmarksShown: size(sig?.shown), roofs: size(vm.extras?.roofs?._entries),
+    landmarks: size(sig?._entries), landmarksShown: size(sig?.shown), texCap: sig?.texCapStats?.(true) ?? null, roofs: size(vm.extras?.roofs?._entries),
     trees: size(trees?.tiles), groundCells: size(ground?.resident), groundPrepared: size(ground?.prepared), farRing: size(ground?.far),
     labelsPlaced: size(vm._labels?.placed), labelsByKind: (vm._labels?.placed ?? []).reduce((o, l) => { o[l.kind] = (o[l.kind] ?? 0) + 1; return o; }, {}), labelCandidates: vm._labels?.stats?.candidates ?? null, labelAerial: vm.labelAerial ?? null, occlusionIndexed: size(vm.labelOcclusion?.indexed),
     // Draw calls and triangles of the last main + overlay pass (sharedFrame stats), the own ground's far radius, the far
@@ -691,6 +691,8 @@ const summary = {
   aerialTexturesMax: Math.max(...timeline.map(r => r.textures ?? 0)),
   aerialHeapMaxMB: Math.max(...timeline.map(r => r.heapMB ?? 0)),
   aerialGlMaxMB: Math.max(...timeline.map(r => r.gl?.residentMB ?? 0)),
+  // Lane R4-G (#250): the same peak with each texel at its format's size (R8 masks 1 byte, not 4; glCounters texelBytes).
+  aerialGlDecodedMaxMB: Math.max(...timeline.map(r => r.gl?.decodedMB ?? 0)),
   aerialP99Ms: Math.max(...allFrames.map(f => f.p99)),
   aerialP99MedianWindowMs: pickQ(allFrames.map(f => f.p99), 0.5),
   aerialFramesOver100Ms: allFrames.reduce((a, f) => a + f.over100, 0),

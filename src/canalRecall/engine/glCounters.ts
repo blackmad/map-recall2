@@ -96,8 +96,28 @@ export function bufferBytes(fn: string, args: readonly unknown[]): number {
 
 export interface GlResidentReport {
   buffers: number; bufferMB: number; textures: number; textureMB: number; renderbuffers: number; renderbufferMB: number; totalMB: number;
-  /** With a tagger (`tagWith`): resident MB by who allocated each object, largest first. */
-  byOwner?: { owner: string; MB: number; objects: number }[];
+  /**
+   * Lane R4-G (#250): the same allocations with each texel at its internal format's size (R8 1 byte, RG8 2, RGBA16F 8,
+   * ...; `texelBytes`) instead of 4. `totalMB` keeps the 4-byte figure the budget rows were written against.
+   */
+  textureDecodedMB: number; renderbufferDecodedMB: number; totalDecodedMB: number;
+  /** With a tagger (`tagWith`): resident MB by who allocated each object, largest first (`decodedMB`: at the format's size). */
+  byOwner?: { owner: string; MB: number; decodedMB: number; objects: number }[];
+}
+
+/** Bytes per texel of a sized internal format (WebGL2 enums); unsized or unknown formats count 4, as before. */
+const TEXEL_BYTES: Record<number, number> = {
+  0x8229: 1, 0x8231: 1, 0x8232: 1, 0x8F94: 1, // R8, R8I, R8UI, R8_SNORM
+  0x822B: 2, 0x8237: 2, 0x8238: 2, 0x8F95: 2, 0x822D: 2, 0x8233: 2, 0x8234: 2, 0x81A5: 2, 0x8D62: 2, 0x8056: 2, 0x8057: 2, // RG8, RG8I/UI, RG8_SNORM, R16F, R16I/UI, DEPTH16, RGB565, RGBA4, RGB5_A1
+  0x8051: 4, 0x8C41: 4, 0x8058: 4, 0x8C43: 4, 0x8059: 4, 0x8D8E: 4, 0x8D7C: 4, 0x822F: 4, 0x822E: 4, 0x8235: 4, 0x8236: 4, 0x8C3A: 4, 0x8C3D: 4, // RGB8 (padded), SRGB8, RGBA8, SRGB8_A8, RGB10_A2, RGBA8I/UI, RG16F, R32F, R32I/UI, R11G11B10F, RGB9_E5
+  0x81A6: 4, 0x8CAC: 4, 0x88F0: 4, // DEPTH24, DEPTH32F, DEPTH24_STENCIL8
+  0x881B: 8, 0x881A: 8, 0x8230: 8, 0x8D88: 8, 0x8D76: 8, 0x8CAD: 8, // RGB16F (padded), RGBA16F, RG32F, RGBA16I/UI, DEPTH32F_STENCIL8
+  0x8815: 16, 0x8814: 16, 0x8D82: 16, 0x8D70: 16, // RGB32F (padded), RGBA32F, RGBA32I/UI
+  0x1909: 1, 0x1906: 1, 0x190A: 2, // unsized LUMINANCE, ALPHA, LUMINANCE_ALPHA
+};
+/** Bytes per texel of `internalformat` at its decoded size (4 for RGBA8 and anything unknown). */
+export function texelBytes(internalformat: unknown): number {
+  return typeof internalformat === 'number' ? TEXEL_BYTES[internalformat] ?? 4 : 4;
 }
 
 export type GlObjectKind = 'buffer' | 'texture' | 'renderbuffer';
@@ -115,6 +135,9 @@ export class GlResident {
   private unit = 0;
   private readonly sizes = { buffer: new Map<object, number>(), texture: new Map<object, Map<string, number>>(), renderbuffer: new Map<object, number>() };
   private bytes = { buffer: 0, texture: 0, renderbuffer: 0 };
+  /** Lane R4-G (#250): texture levels and renderbuffers at their format's bytes per texel (`texelBytes`). */
+  private readonly decodedSizes = { texture: new Map<object, Map<string, number>>(), renderbuffer: new Map<object, number>() };
+  private decodedBytes = { texture: 0, renderbuffer: 0 };
   /**
    * Who allocated each object (lane R3-F #241: the aerial pan's GL peak by owner). `tag()` runs at an object's first
    * allocation and may return a cheap token; `name(token)` turns it into an owner at report time.
@@ -141,8 +164,11 @@ export class GlResident {
     this.bytes.buffer += bytes - (this.sizes.buffer.get(b) ?? 0);
     this.sizes.buffer.set(b, bytes);
   }
-  /** A level (or a whole storage chain, `level` 'storage') of the texture bound to `target` on the active unit. */
-  textureLevel(target: number, level: number | 'storage', bytes: number): void {
+  /**
+   * A level (or a whole storage chain, `level` 'storage') of the texture bound to `target` on the active unit; `decoded`
+   * is the same allocation at its internal format's bytes per texel (default: `bytes`).
+   */
+  textureLevel(target: number, level: number | 'storage', bytes: number, decoded = bytes): void {
     const t = this.bound.get(`t${this.unit}:${isCubeFace(target) ? TEXTURE_CUBE_MAP : target}`);
     if (!t) return;
     this.tagObject(t, 'texture');
@@ -151,13 +177,19 @@ export class GlResident {
     this.bytes.texture += bytes - (levels.get(key) ?? 0);
     levels.set(key, bytes);
     this.sizes.texture.set(t, levels);
+    const dec = this.decodedSizes.texture.get(t) ?? new Map<string, number>();
+    this.decodedBytes.texture += decoded - (dec.get(key) ?? 0);
+    dec.set(key, decoded);
+    this.decodedSizes.texture.set(t, dec);
   }
-  renderbufferStorage(bytes: number): void {
+  renderbufferStorage(bytes: number, decoded = bytes): void {
     const r = this.bound.get('r');
     if (!r) return;
     this.tagObject(r, 'renderbuffer');
     this.bytes.renderbuffer += bytes - (this.sizes.renderbuffer.get(r) ?? 0);
     this.sizes.renderbuffer.set(r, bytes);
+    this.decodedBytes.renderbuffer += decoded - (this.decodedSizes.renderbuffer.get(r) ?? 0);
+    this.decodedSizes.renderbuffer.set(r, decoded);
   }
   delete(kind: 'buffer' | 'texture' | 'renderbuffer', obj: object | null): void {
     if (!obj) return;
@@ -166,7 +198,11 @@ export class GlResident {
       const levels = this.sizes.texture.get(obj);
       if (levels) for (const v of levels.values()) this.bytes.texture -= v;
       this.sizes.texture.delete(obj);
+      const dec = this.decodedSizes.texture.get(obj);
+      if (dec) for (const v of dec.values()) this.decodedBytes.texture -= v;
+      this.decodedSizes.texture.delete(obj);
     } else {
+      if (kind === 'renderbuffer') { this.decodedBytes.renderbuffer -= this.decodedSizes.renderbuffer.get(obj) ?? 0; this.decodedSizes.renderbuffer.delete(obj); }
       this.bytes[kind] -= this.sizes[kind].get(obj) ?? 0;
       this.sizes[kind].delete(obj);
     }
@@ -187,15 +223,15 @@ export class GlResident {
     wrap('bindTexture', a => this.bindTexture(a[0], a[1]));
     wrap('bindRenderbuffer', a => this.bindRenderbuffer(a[0], a[1]));
     wrap('bufferData', a => this.bufferData(a[0], bufferBytes('bufferData', a)));
-    wrap('texImage2D', a => this.textureLevel(a[0], a[1], textureBytes(a)));
+    wrap('texImage2D', a => { const b = textureBytes(a); this.textureLevel(a[0], a[1], b, a.some(x => ArrayBuffer.isView(x)) ? b : decodedOf(b, a[2])); });
     wrap('compressedTexImage2D', a => this.textureLevel(a[0], a[1], ArrayBuffer.isView(a[6]) ? a[6].byteLength : (typeof a[6] === 'number' ? a[6] : 0)));
     // texImage3D(target, level, internalformat, width, height, depth, border, format, type, source)
-    wrap('texImage3D', a => this.textureLevel(a[0], a[1], ArrayBuffer.isView(a[9]) ? a[9].byteLength : a[3] * a[4] * a[5] * BYTES_PER_TEXEL));
+    wrap('texImage3D', a => { const b = ArrayBuffer.isView(a[9]) ? a[9].byteLength : a[3] * a[4] * a[5] * BYTES_PER_TEXEL; this.textureLevel(a[0], a[1], b, ArrayBuffer.isView(a[9]) ? b : decodedOf(b, a[2])); });
     // texStorage2D(target, levels, internalformat, width, height): the whole mip chain at once.
-    wrap('texStorage2D', a => this.textureLevel(a[0], 'storage', chainBytes(a[3], a[4], 1, a[1])));
-    wrap('texStorage3D', a => this.textureLevel(a[0], 'storage', chainBytes(a[3], a[4], a[5], a[1])));
-    wrap('renderbufferStorage', a => this.renderbufferStorage(a[2] * a[3] * BYTES_PER_TEXEL));
-    wrap('renderbufferStorageMultisample', a => this.renderbufferStorage(a[3] * a[4] * BYTES_PER_TEXEL * Math.max(1, a[1])));
+    wrap('texStorage2D', a => { const b = chainBytes(a[3], a[4], 1, a[1]); this.textureLevel(a[0], 'storage', b, decodedOf(b, a[2])); });
+    wrap('texStorage3D', a => { const b = chainBytes(a[3], a[4], a[5], a[1]); this.textureLevel(a[0], 'storage', b, decodedOf(b, a[2])); });
+    wrap('renderbufferStorage', a => { const b = a[2] * a[3] * BYTES_PER_TEXEL; this.renderbufferStorage(b, decodedOf(b, a[1])); });
+    wrap('renderbufferStorageMultisample', a => { const b = a[3] * a[4] * BYTES_PER_TEXEL * Math.max(1, a[1]); this.renderbufferStorage(b, decodedOf(b, a[2])); });
     wrap('deleteBuffer', a => this.delete('buffer', a[0]));
     wrap('deleteTexture', a => this.delete('texture', a[0]));
     wrap('deleteRenderbuffer', a => this.delete('renderbuffer', a[0]));
@@ -205,24 +241,29 @@ export class GlResident {
   report(): GlResidentReport {
     const { buffer, texture, renderbuffer } = this.bytes;
     const out: GlResidentReport = { buffers: this.sizes.buffer.size, bufferMB: MB(buffer), textures: this.sizes.texture.size, textureMB: MB(texture),
-      renderbuffers: this.sizes.renderbuffer.size, renderbufferMB: MB(renderbuffer), totalMB: MB(buffer + texture + renderbuffer) };
+      renderbuffers: this.sizes.renderbuffer.size, renderbufferMB: MB(renderbuffer), totalMB: MB(buffer + texture + renderbuffer),
+      textureDecodedMB: MB(this.decodedBytes.texture), renderbufferDecodedMB: MB(this.decodedBytes.renderbuffer), totalDecodedMB: MB(buffer + this.decodedBytes.texture + this.decodedBytes.renderbuffer) };
     if (this.tagger) out.byOwner = this.ownerBytes(this.tagger.name());
     return out;
   }
-  private ownerBytes(name: (token: unknown) => string): { owner: string; MB: number; objects: number }[] {
-    const by = new Map<string, { bytes: number; objects: number }>();
-    const add = (obj: object, kind: string, bytes: number) => {
+  private ownerBytes(name: (token: unknown) => string): { owner: string; MB: number; decodedMB: number; objects: number }[] {
+    const by = new Map<string, { bytes: number; decoded: number; objects: number }>();
+    const add = (obj: object, kind: string, bytes: number, decoded: number) => {
       let owner = '?';
       try { owner = this.tags.has(obj) ? name(this.tags.get(obj)) : 'untagged'; } catch { /* keep '?' */ }
-      const key = `${kind} ${owner}`, o = by.get(key) ?? { bytes: 0, objects: 0 };
-      o.bytes += bytes; o.objects++; by.set(key, o);
+      const key = `${kind} ${owner}`, o = by.get(key) ?? { bytes: 0, decoded: 0, objects: 0 };
+      o.bytes += bytes; o.decoded += decoded; o.objects++; by.set(key, o);
     };
-    for (const [b, bytes] of this.sizes.buffer) add(b, 'buffer', bytes);
-    for (const [t, levels] of this.sizes.texture) { let bytes = 0; for (const v of levels.values()) bytes += v; add(t, 'texture', bytes); }
-    for (const [r, bytes] of this.sizes.renderbuffer) add(r, 'renderbuffer', bytes);
-    return [...by].map(([owner, o]) => ({ owner, MB: MB(o.bytes), objects: o.objects })).sort((a, b) => b.MB - a.MB);
+    const sum = (levels: Map<string, number> | undefined) => { let n = 0; if (levels) for (const v of levels.values()) n += v; return n; };
+    for (const [b, bytes] of this.sizes.buffer) add(b, 'buffer', bytes, bytes);
+    for (const [t, levels] of this.sizes.texture) add(t, 'texture', sum(levels), sum(this.decodedSizes.texture.get(t)));
+    for (const [r, bytes] of this.sizes.renderbuffer) add(r, 'renderbuffer', bytes, this.decodedSizes.renderbuffer.get(r) ?? bytes);
+    return [...by].map(([owner, o]) => ({ owner, MB: MB(o.bytes), decodedMB: MB(o.decoded), objects: o.objects })).sort((a, b) => b.MB - a.MB);
   }
 }
+
+/** A 4-byte-per-texel byte count re-scaled to `internalformat`'s texel size. */
+function decodedOf(bytes: number, internalformat: unknown): number { return bytes / BYTES_PER_TEXEL * texelBytes(internalformat); }
 
 /** Bytes of a `levels`-deep mip chain of a w x h x depth texture (depth not halved: array textures). */
 export function chainBytes(width: number, height: number, depth: number, levels: number): number {

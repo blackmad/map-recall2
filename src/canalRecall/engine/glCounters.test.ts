@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { GlCounters, GlResident, bufferBytes, chainBytes, objectLabel, stackOwner, textureBytes, trianglesOf } from './glCounters';
+import { GlCounters, GlResident, bufferBytes, chainBytes, objectLabel, stackOwner, texelBytes, textureBytes, trianglesOf } from './glCounters';
 
 function fakeGl() {
   const calls: string[] = [];
@@ -140,9 +140,9 @@ test('resident bytes by owner: tagged at first allocation, named at report, drop
   gl.bindBuffer(0x8892, a); gl.bufferData(0x8892, 3 << 20, 0x88e4); // a keeps its first owner
   gl.bindTexture(0x0de1, t); gl.texImage2D(0x0de1, 0, 0x8058, 0x1908, 0x1401, { width: 512, height: 512 });
   assert.deepEqual(r.report().byOwner, [
-    { owner: 'buffer BUFFER:FACADES', MB: 3, objects: 1 },
-    { owner: 'buffer BUFFER:OWN-GROUND', MB: 2, objects: 1 },
-    { owner: 'texture TEXTURE:OWN-GROUND', MB: 1, objects: 1 },
+    { owner: 'buffer BUFFER:FACADES', MB: 3, decodedMB: 3, objects: 1 },
+    { owner: 'buffer BUFFER:OWN-GROUND', MB: 2, decodedMB: 2, objects: 1 },
+    { owner: 'texture TEXTURE:OWN-GROUND', MB: 1, decodedMB: 1, objects: 1 },
   ]);
   gl.deleteBuffer(a);
   assert.deepEqual(r.report().byOwner?.map(o => o.owner), ['buffer BUFFER:OWN-GROUND', 'texture TEXTURE:OWN-GROUND']);
@@ -159,4 +159,29 @@ test('draws by owner in the last closed frame', () => {
   assert.deepEqual(c.report().lastFrameByOwner, { 'facades coarse': 2, landmarks: 1 });
   c.endFrame();
   assert.deepEqual(c.report().lastFrameByOwner, { landmarks: 1 });
+});
+
+test('decoded resident bytes count each texel at its internal format (lane R4-G #250)', () => {
+  const gl: Record<string, any> = {};
+  for (const fn of ['activeTexture', 'bindTexture', 'texImage2D', 'texStorage2D', 'texStorage3D', 'deleteTexture', 'bindRenderbuffer', 'renderbufferStorage']) gl[fn] = () => fn;
+  const r = new GlResident();
+  r.tagWith(kind => kind);
+  r.install(gl);
+  const colour = {}, mask = {}, rg = {}, data = {}, rb = {};
+  // The facade atlas: RGBA8 colour and R8 mask arrays, 256 x 256 x 4 layers, one level each.
+  gl.bindTexture(0x8c1a, colour); gl.texStorage3D(0x8c1a, 1, 0x8058, 256, 256, 4);
+  gl.bindTexture(0x8c1a, mask); gl.texStorage3D(0x8c1a, 1, 0x8229, 256, 256, 4);
+  gl.bindTexture(0x0de1, rg); gl.texStorage2D(0x0de1, 1, 0x822b, 512, 512);
+  // A typed-array upload already carries its true bytes: not rescaled.
+  gl.bindTexture(0x0de1, data); gl.texImage2D(0x0de1, 0, 0x822b, 256, 256, 0, 0x8227, 0x1401, new Uint8Array(256 * 256 * 2));
+  gl.bindRenderbuffer(0x8d41, rb); gl.renderbufferStorage(0x8d41, 0x81a5, 512, 512);
+  const rep = r.report();
+  assert.equal(rep.textureMB, 3.1); // 1 + 1 + 1 + 0.125: the legacy figure: 4 bytes a texel, the typed array its length
+  assert.equal(rep.textureDecodedMB, 1.9); // 1 + 0.25 + 0.5 + 0.125
+  assert.equal(rep.renderbufferMB, 1); assert.equal(rep.renderbufferDecodedMB, 0.5);
+  assert.equal(rep.totalDecodedMB, 2.4);
+  assert.deepEqual(rep.byOwner?.map(o => [o.owner, o.MB, o.decodedMB]), [['texture texture', 3.1, 1.9], ['renderbuffer renderbuffer', 1, 0.5]]);
+  gl.deleteTexture(mask); gl.deleteTexture(rg);
+  assert.equal(r.report().textureDecodedMB, 1.1);
+  assert.deepEqual([texelBytes(0x8058), texelBytes(0x8229), texelBytes(0x822b), texelBytes(0x881a), texelBytes(undefined), texelBytes(0x1234)], [4, 1, 2, 8, 4, 4]);
 });

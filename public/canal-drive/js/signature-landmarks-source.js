@@ -36,6 +36,8 @@ import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import { lowestPandBase } from '../../../src/canalRecall/streetChunks/mergeRanges.ts';
 import { DEPTH_FADE_OPT_OUT } from '../../../src/canalRecall/look/depthFade.ts';
+// Lane R4-G (#250): a textured model's images resident at a capped size while they stay finer than the screen.
+import { cappedSize, landmarkTexCapFlag, nearestPixelsPerMetre, texelDensity, wantsCap } from '../../../src/canalRecall/landmarks/landmarkTexCap.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
 const { SIGNATURE_MODELS, placementFor, basemapBuildingFilter } = window.CanalRecallSignatureLandmarks;
 
@@ -304,6 +306,7 @@ export class SignatureLandmarks {
         }
         // The camera as last drawn: the street chunks' lod2 choice measures their size on screen through it.
         this._clipFromWorld = ctx.clipFromWorld;
+        if (this._texCapSide()) this._updateTexCaps(ctx.clipFromWorld);
         // The frame's world is already east/north/up metres.
         if (any && this._recipeLook) this._recipeLook.enuFromWorld.value.identity();
         return any;
@@ -815,7 +818,7 @@ export class SignatureLandmarks {
         this._fadeOptOut(spec, gltf.scene);
         if (level === 'lod2' && gltf.scene) this._prepareLod2(gltf.scene);
         else if (gltf.scene) this._mergeShared(spec, gltf.scene);
-        this._precompile(gltf.scene).then(() => {
+        (this._texCapSide() ? Promise.all([this._precompile(gltf.scene), this._texCapPrepare(spec, gltf.scene)]) : this._precompile(gltf.scene)).then(() => {
           if (this._removed || generation !== this._generation) { this._disposeModel(gltf.scene, spec, url); return; }
           if (!this.models.includes(spec)) { this._disposeModel(gltf.scene, spec, url); finish(); return; }
           place();
@@ -836,6 +839,106 @@ export class SignatureLandmarks {
           .then(gltf => onLoaded({ scene: gltf.scene.clone(true) }), onError);
       } else loader.load(url, gltf => { const dressing = this._dress(gltf, spec); if (dressing) dressing.then(dressed => onLoaded(this._shade(dressed)), onError); else onLoaded(this._shade(gltf)); }, undefined, onError);
     }
+  }
+
+  /** `?landmarkTexCap=1024|512` (lane R4-G #250): the capped side, shared frame only; null when off. */
+  _texCapSide() {
+    if (this._texCapValue === undefined) this._texCapValue = this.sharedFrame ? landmarkTexCapFlag() : null;
+    return this._texCapValue;
+  }
+
+  /**
+   * Before a decoded model is placed (cap on): each image larger than the cap gets a downscaled ImageBitmap and the
+   * texture's least dense texels per metre over the triangles that sample it (landmarks/landmarkTexCap.ts). Shared
+   * meshes and scene factories are left alone (their textures are shared between instances). Never fails the load.
+   */
+  async _texCapPrepare(spec, scene) {
+    if (!scene || spec.sharedModel || spec.sceneFactory || typeof createImageBitmap !== 'function') return;
+    const cap = this._texCapSide(), uses = new Map();
+    try {
+      scene.updateMatrixWorld(true);
+      scene.traverse(mesh => {
+        if (!mesh.isMesh || !mesh.geometry?.attributes?.position || !mesh.geometry.attributes.uv) return;
+        for (const material of Array.isArray(mesh.material) ? mesh.material : [mesh.material]) {
+          for (const value of Object.values(material || {})) {
+            if (!value?.isTexture || !value.image || value.isDataTexture || value.isCompressedTexture) continue;
+            const size = cappedSize(value.image.width, value.image.height, cap);
+            if (!size) continue;
+            const use = uses.get(value) || { size, meshes: new Set() };
+            use.meshes.add(mesh); uses.set(value, use);
+          }
+        }
+      });
+      const records = [];
+      for (const [texture, { size, meshes }] of uses) {
+        let density = Infinity;
+        for (const mesh of meshes) {
+          const g = mesh.geometry, pos = g.attributes.position, uv = g.attributes.uv, world = new Float32Array(pos.count * 3), v = new THREE.Vector3();
+          for (let i = 0; i < pos.count; i++) { v.fromBufferAttribute(pos, i).applyMatrix4(mesh.matrixWorld); world[i * 3] = v.x; world[i * 3 + 1] = v.y; world[i * 3 + 2] = v.z; }
+          const uvs = new Float32Array(uv.count * 2);
+          for (let i = 0; i < uv.count; i++) { uvs[i * 2] = uv.getX(i); uvs[i * 2 + 1] = uv.getY(i); }
+          const d = texelDensity(world, uvs, g.index ? g.index.array : null, texture.image.width, texture.image.height);
+          if (d != null) density = Math.min(density, d);
+        }
+        if (!Number.isFinite(density)) continue;
+        const small = await createImageBitmap(texture.image, { resizeWidth: size.width, resizeHeight: size.height, resizeQuality: 'high', premultiplyAlpha: 'none', colorSpaceConversion: 'none' });
+        records.push({ texture, full: texture.image, small, factor: size.factor, density, capped: false });
+      }
+      if (records.length) {
+        const anchor = spec.surveyed?.anchor || spec.footprint?.centre, height = spec.heightMetres || 20;
+        const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
+        scene.userData.texCap = { id: spec.id, records, anchor, height, radius: Math.hypot(radius, height / 2), checked: 0 };
+        // Decided now, before the first draw uploads anything: from the air the full images never go up.
+        if (this._clipFromWorld) this._applyTexCap(scene.userData.texCap, this._clipFromWorld);
+      }
+    } catch (error) { console.warn(`Texture cap for ${spec.name} skipped`, error); }
+  }
+
+  /** Every resident capped-capable model, at most every 250 ms (models not yet decided: every frame). */
+  _updateTexCaps(clip) {
+    const now = performance.now(), sweep = now - (this._texCapAt || 0) >= 250;
+    if (sweep) this._texCapAt = now;
+    for (const entry of this._entries) {
+      const state = entry.imported?.userData?.texCap;
+      if (state && (sweep || !state.checked)) this._applyTexCap(state, clip);
+    }
+  }
+
+  /** One model: each texture to its capped or full image as `wantsCap` says (hysteresis), re-uploaded on change. */
+  _applyTexCap(state, clip) {
+    const canvas = this.map?.getCanvas?.();
+    if (!clip || !canvas || !this._sharedRoot || !state.anchor) return;
+    state.checked = performance.now();
+    const m = this.maplibregl.MercatorCoordinate.fromLngLat(state.anchor, state.height / 2);
+    const p = new THREE.Vector3(m.x, m.y, m.z).applyMatrix4(this._sharedRoot.matrixWorld);
+    // Device pixels: the canvas backing store over its CSS size.
+    const ratio = canvas.clientWidth > 0 ? canvas.width / canvas.clientWidth : 1;
+    const cssPpm = nearestPixelsPerMetre(clip.elements, [p.x, p.y, p.z], state.radius, canvas.clientWidth, canvas.clientHeight);
+    const pixelsPerMetre = cssPpm * ratio;
+    state.pixelsPerMetre = pixelsPerMetre;
+    for (const r of state.records) {
+      const want = wantsCap({ density: r.density, pixelsPerMetre, factor: r.factor, capped: r.capped });
+      if (want === r.capped) continue;
+      r.capped = want;
+      r.texture.image = want ? r.small : r.full;
+      // A new size needs new storage: free the old one; the next draw uploads the other image.
+      r.texture.dispose();
+      r.texture.needsUpdate = true;
+      this._texCapSwaps = (this._texCapSwaps || 0) + 1;
+    }
+  }
+
+  /** Probe: textures under the cap now and what they hold (harness / specs). */
+  texCapStats(detail = false) {
+    let textures = 0, capped = 0, fullMB = 0, residentMB = 0;
+    const rows = [];
+    for (const entry of this._entries || []) for (const r of entry.imported?.userData?.texCap?.records || []) {
+      const state = entry.imported.userData.texCap;
+      if (detail) rows.push({ id: state.id, size: `${r.full.width}x${r.full.height}`, factor: r.factor, density: Math.round(r.density * 10) / 10, texelsPerPx: Math.round(r.density / state.pixelsPerMetre * 100) / 100, capped: r.capped });
+      const full = r.full.width * r.full.height * 4 * 4 / 3 / 1048576, small = r.small.width * r.small.height * 4 * 4 / 3 / 1048576;
+      textures++; fullMB += full; if (r.capped) { capped++; residentMB += small; } else residentMB += full;
+    }
+    return { side: this._texCapSide(), textures, capped, fullMB: Math.round(fullMB * 10) / 10, residentMB: Math.round(residentMB * 10) / 10, swaps: this._texCapSwaps || 0, ...(detail ? { rows } : {}) };
   }
 
   /** Shared frame: compile a decoded model's programs (as it will draw: receiving shadows) before it is placed. */
