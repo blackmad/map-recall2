@@ -18,7 +18,7 @@
     "test:building-taxonomy": "node --import tsx --test src/canalRecall/buildingCategory.test.ts src/canalRecall/streetSurveys/classify.test.ts src/canalRecall/landmarks/modelOverlap.test.ts",
     "street-surveys": "node --import tsx scripts/street-surveys/build.ts",
     "block-face:gables": "node --import tsx scripts/block-face/gable-from-photo.ts",
-    "test:landmark-lod": "node --import tsx --test src/canalRecall/landmarks/landmarkLod.test.ts src/canalRecall/landmarks/landmarkBatch.test.ts scripts/landmarks/build-landmark-lods.test.ts src/canalRecall/streetChunks/mergeRanges.test.ts",
+    "test:landmark-lod": "node --import tsx --test src/canalRecall/landmarks/landmarkLod.test.ts src/canalRecall/landmarks/landmarkBatch.test.ts scripts/landmarks/build-landmark-lods.test.ts src/canalRecall/streetChunks/mergeRanges.test.ts src/canalRecall/landmarks/landmarkTexCap.test.ts",
     "test:landmark-release": "node --import tsx --test src/canalRecall/landmarks/releaseVertexData.test.ts",
     "perf:aerial": "node scripts/aerial-pan.mjs",
     "test:landmark-residency": "node --import tsx --test src/canalRecall/landmarks/landmarkResidency.test.ts",
