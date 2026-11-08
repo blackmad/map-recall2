@@ -16,7 +16,9 @@ type AnyMap = any;
 export const BASEMAP_SHIELD_LAYER_IDS = ['highway-shield-non-us'] as const;
 export const ROAD_SHIELD_LAYER_ID = 'cr-road-shields';
 const SOURCE_ID = 'cr-road-shields';
-const PLAN_MS = 250;
+// 1000, not 250 (integrator 2026-11-08): the plan measured 17-38 ms (worst 52) at the user's poses, 62k anchors at the
+// Stadhouderskade; four plans a second stalled the MapLibre frame. Shields keep their hysteresis, so once a second reads the same.
+const PLAN_MS = 1000;
 /** Anchors along each line on screen, CSS px. */
 const SAMPLE_PX = 32;
 
