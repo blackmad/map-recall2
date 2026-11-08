@@ -35,7 +35,8 @@ import type { WorldCamera } from './engine/worldViewApi.js';
 import { introLandingArea } from './game/introFlight.js';
 import { MotionEstimate, boxAround, lookAheadEnabled, lookAheadPoints } from './streamingLookAhead.js';
 import { WorldCellClient, assembleTile, readWorldIndex, worldV1Enabled, type TilePart } from './world/worldCells.js';
-import { rideBox, ringCells, ringFollowEnabled, ringSignature, worldRingEnabled } from './world/worldRing.js';
+import { footprintBox, rideBox, ringCells, ringFollowEnabled, ringFootprintEnabled, ringSignature, worldRingEnabled } from './world/worldRing.js';
+import { isAerialView } from './rendererShared/aerialView.js';
 import { RingPacer, arrivalPaceOption } from './engine/arrivalPace.js';
 import { citywideBuildingGroundPrior, citywideBuildingRoofPrior, citywideBuildingWallPrior, materialWallDisplayPrior } from './look/palette.js';
 
@@ -188,6 +189,8 @@ export class BuildingTileStreamer {
   private readonly ringFollow = ringFollowEnabled();
   /** `?arrivalPace=1|ring` (engine/arrivalPace.ts, lane R4-E #248): a ring jump admits its new cells a few at a time. */
   readonly ringPacer = arrivalPaceOption()?.ring ? new RingPacer() : null;
+  /** `?ringFootprint=1` (world/worldRing.ts, lane R4-F #249): from the air the ring follows the view's near footprint. */
+  private readonly ringFootprint = ringFootprintEnabled();
   /** Per resident tile (key), the cell parts it was cut from: a top-up keeps these objects and adds the new cells'. */
   private readonly worldParts = new Map<string, Map<string, TilePart>>();
   get usingWorldCells(): boolean { return !!this.world; }
@@ -628,11 +631,16 @@ export class BuildingTileStreamer {
   private planRing(full = false): Set<string> {
     const base = this.preloadBounds ?? this.bounds();
     // A landing preload is planned as it is; the camera view only at ride zoom (the intro overview is ~2x wider).
-    const ride = this.preloadBounds ? base : rideBox(base, this.camera.zoom(), this.riderAt ?? (() => { const c = this.camera.center(); return [c.lng, c.lat] as [number, number]; })());
+    const ride = this.preloadBounds ? base : this.ringFootprint && this.aerialNow() ? footprintBox(base, (c => [c.lng, c.lat] as [number, number])(this.camera.center()))
+      : rideBox(base, this.camera.zoom(), this.riderAt ?? (() => { const c = this.camera.center(); return [c.lng, c.lat] as [number, number]; })());
     const cells = ringCells(ride, this.preloadBounds ? [] : this.lookAhead);
     if (full || !this.ringPacer || this.preloadBounds) return cells;
     const c = this.camera.center();
     return this.ringPacer.pace(this.ring, cells, [c.lng, c.lat], performance.now());
+  }
+
+  private aerialNow(): boolean {
+    try { return isAerialView(this.camera.zoom(), this.camera.pitch(), this.camera.center().lat); } catch { return false; }
   }
 
   private ringCellsOf(tile: { x: number; y: number }): string[] {

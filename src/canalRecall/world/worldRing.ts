@@ -51,6 +51,38 @@ export function rideBox(view: RingBounds, zoom: number, rider: readonly [number,
   return grow({ west: rider[0], south: rider[1], east: rider[0], north: rider[1] }, RIDE_HALF_M);
 }
 
+/**
+ * Lane R4-F (#249), `?ringFootprint=1`: from the air the ring follows the view's near footprint instead of the
+ * stand-in. `rideBox` keeps a ride-sized square round the parked rider while the rider is inside the view's bounding
+ * box; a pitched aerial view's box reaches kilometres, so a pan from the air held the ring at 4-25 cells and then, the
+ * frame the rider left that box, read the whole view (132 cells on the west leg, 378-462 on the oost leg; R4-E paced
+ * the jump, it did not remove it). From the air (rendererShared/aerialView.ts isAerialView) the footprint is the view
+ * box cut to a square of FOOTPRINT_HALF_M round the view centre: the ground under the lower half of the screen (the eye
+ * stands ~500 m behind the centre at the S4 pose) and the first 1.5 km beyond the centre, where a 1 km cell still
+ * covers hundreds of pixels. Beyond it the far tier draws the city (engine/farShells.ts). It moves with the camera and
+ * grows by a row at the leading edge; it is never larger than the box. At street level (not aerial) the ring is
+ * `rideBox`'s, unchanged.
+ */
+export const FOOTPRINT_HALF_M = 1500;
+/** Integrator default (off until the lane's A/B; `?ringFootprint=1` / `=0` override). */
+export const RING_FOOTPRINT_DEFAULT = false;
+
+export function ringFootprintEnabled(search: string = typeof location !== 'undefined' ? location.search : '', w: any = typeof window !== 'undefined' ? window : {}): boolean {
+  try {
+    const v = new URLSearchParams(search).get('ringFootprint');
+    if (v !== null) return v === '1' || v === 'on' || v === 'true';
+  } catch { /* no URLSearchParams (the structure gate) */ }
+  if (w?.__canalRecallRingFootprint !== undefined) return !!w.__canalRecallRingFootprint;
+  return RING_FOOTPRINT_DEFAULT;
+}
+
+/** The view box cut to a square of `halfM` round `centre` (the square alone if they do not meet). */
+export function footprintBox(view: RingBounds, centre: readonly [number, number], halfM: number = FOOTPRINT_HALF_M): RingBounds {
+  const sq = grow({ west: centre[0], south: centre[1], east: centre[0], north: centre[1] }, halfM);
+  const out = { west: Math.max(view.west, sq.west), south: Math.max(view.south, sq.south), east: Math.min(view.east, sq.east), north: Math.min(view.north, sq.north) };
+  return out.west <= out.east && out.south <= out.north ? out : sq;
+}
+
 /** The ring's cells: the ride box grown by `marginM`, plus every look-ahead box (as planned, not grown). */
 export function ringCells(ride: RingBounds, ahead: readonly RingBounds[], marginM: number = WORLD_RING_MARGIN_M): Set<string> {
   const out = new Set<string>();

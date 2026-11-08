@@ -3,7 +3,7 @@
 // base change, a repeated rebuild (cache warm) and the allotment-canopy switch.
 //   node --import tsx scripts/check-tree-shape-cache.mjs [git-ref of the uncached source, default 0158e51b7]
 import assert from 'node:assert/strict';import fs from 'node:fs';import zlib from 'node:zlib';import {execFileSync} from 'node:child_process';import {pathToFileURL} from 'node:url';import * as THREE from 'three';
-globalThis.window={CanalRecallThree:{THREE}};
+globalThis.window={CanalRecallThree:{THREE}};globalThis.location??={href:'http://localhost/canal-drive/',search:''};
 const ref=process.argv[2]||'0158e51b7';
 const {InventoryTrees}=await import('../public/canal-drive/js/inventory-trees-source.js');
 const root=pathToFileURL(process.cwd()+'/').href;

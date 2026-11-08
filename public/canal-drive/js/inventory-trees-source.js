@@ -10,6 +10,8 @@ import {InstanceCull,treeCullFlag} from '../../../src/canalRecall/rendererShared
 import {trunkGeometry,treeCapsFlag} from '../../../src/canalRecall/rendererShared/trunkGeometry.ts';
 import {RebuildCoalescer,extrasRebuildSync} from '../../../src/canalRecall/rendererShared/rebuildCoalescer.ts';
 import {treeRebuildGap} from '../../../src/canalRecall/engine/arrivalPace.ts';
+import {isAerialView} from '../../../src/canalRecall/rendererShared/aerialView.ts';
+import {TreeInstanceCache,groupOf,treesIncrementalFlag} from '../../../src/canalRecall/rendererShared/treeInstances.ts';
 const {THREE} = window.CanalRecallThree;
 const MIN_ZOOM = 15.5;
 const BUDGET = 12;
@@ -53,6 +55,10 @@ export class InventoryTrees {
     this.rebuilds=new RebuildCoalescer(()=>{if(this.enabled&&this.ready)this.rebuild();},undefined,extrasRebuildSync(),treeRebuildGap(this.camera));
     // Keep GPU geometry and shaders warm while streamed instance buffers change.
     this.geometries=new Map();this.materials=new Map();
+    // `?treesIncremental=1` (lane R4-F #249, rendererShared/treeInstances.ts): from the air a rebuild assembles per-tile
+    // compiled instance arrays instead of walking every tree (`=all`: everywhere); off, the rebuild below is unchanged.
+    this.incremental=treesIncrementalFlag();this.groundRevision=0;
+    if(this.incremental!=='off'){this.instanceCache=new TreeInstanceCache();this.treeEmit=(tree,push)=>{const shape=this.shapeOf(tree);if(!shape.t)return null;this.appendTree(shape,0,push);return {archetype:shape.t.archetype,authored:tree.source==='allotment-prior'};};}
     // A root in the page's one three.js frame, lit by its rig (no frame: headless checks build instances only).
     this.sharedFrame=options.sharedFrame||null;
     // `?treeCull=0`: every resident instance drawn and casting, as before. `?treeCull=twin` (diagnostic): the shadow
@@ -101,7 +107,7 @@ export class InventoryTrees {
   // Own ground (`?ownGround=1`): trees stand on the relief under the trunk.
   // `fn([lng, lat])` → metres, or undefined while that relief is not resident.
   setGroundBase(fn) {this.groundBase=fn||null;this.refreshGroundBases();}
-  refreshGroundBases() {this.residency.invalidate();if(this.enabled&&this.ready&&(this.meshes.length||this.rebuilds.pending))this.rebuilds.request();this.map.triggerRepaint();}
+  refreshGroundBases() {this.groundRevision++;this.residency.invalidate();if(this.enabled&&this.ready&&(this.meshes.length||this.rebuilds.pending))this.rebuilds.request();this.map.triggerRepaint();}
   setAllotmentCanopyEnabled(value) {this.allotmentCanopyEnabled=!!value;this.residency.invalidate();if(this.enabled&&this.ready)this.rebuilds.request();this.map.triggerRepaint();}
   setEnabled(value) {this.enabled=!!value;if(this.enabled)this.update();else this.clear();this.map.triggerRepaint();}
   setTheme(value) {
@@ -172,66 +178,93 @@ export class InventoryTrees {
     return shapes[variant]={x,south,t,lobeColours,bark:t?new THREE.Color(t.bark):null};
   }
   rebuild() {
+    if(this.incremental!=='off'&&(this.incremental==='all'||this.aerial()))return this.rebuildIncremental();
     this.disposeMeshes();
     const b=this.residency.built(crownBounds(this.camera),this.buildKey()),groups=new Map();let trees=0,authoredTrees=0;
     const archetypes=new Set();
     const append=(key,item)=>{if(!groups.has(key))groups.set(key,[]);groups.get(key).push(item);};
     for(const tile of [...this.tiles.values(),...(this.allotmentCanopyEnabled?[allotmentCanopyTrees]:[])])for(const tree of tile){
       if(!Number.isFinite(tree.lng)||!Number.isFinite(tree.lat)||tree.lng<b.west||tree.lng>b.east||tree.lat<b.south||tree.lat>b.north)continue;
-      const {x,south,t,lobeColours,bark}=this.shapeOf(tree);if(!t)continue;
+      const shape=this.shapeOf(tree),{t}=shape;if(!t)continue;
       trees++;if(tree.source==='allotment-prior')authoredTrees++;archetypes.add(t.archetype);
       // A few centimetres into the relief, so a trunk never shows a gap on a slope.
       const z0=this.groundBase?(this.groundBase([tree.lng,tree.lat])??0)-.05:0;
-      append('wood',{p:[x,-south,z0+t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:bark});
-      const co=Math.cos(t.rotation),si=Math.sin(t.rotation);
-      for(let li=0;li<t.lobes.length;li++){const l=t.lobes[li];
-        const dx=l.offset[0]*co-l.offset[2]*si,dz=l.offset[0]*si+l.offset[2]*co;
-        // The map-to-scene south-axis flip also reverses crown yaw.
-        append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),z0+l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:lobeColours[li]});
-        // A short fork connects each offset crown to the recorded trunk position.
-        // All forks share the trunk draw call; no per-tree meshes or materials.
-        if(t.crownGeometry==='faceted'&&t.archetype!=='fan-palm'&&Math.hypot(dx,dz)>.1){
-          const from=new THREE.Vector3(x,-south,z0+t.trunkHeight*.72);
-          const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),z0+l.offset[1]);
-          const delta=to.clone().sub(from),length=delta.length();
-          append('wood',{p:from.add(to).multiplyScalar(.5).toArray(),s:[t.trunkWidth,t.trunkWidth,length],q:new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),delta.divideScalar(length)),color:bark});
-        }
-      }
+      this.appendTree(shape,z0,append);
     }
     // Mapped rose gardens: every visible bush in one instanced draw.
     let roses=0;
-    if(this.camera.zoom()>=ROSE_MIN_ZOOM)for(const garden of roseGardens.gardens)for(const r of roseBushInstances(garden,b)){
-      const point=this.maplibregl.MercatorCoordinate.fromLngLat([r.lng,r.lat],0);
-      const x=(point.x-this.origin.x)/this.scale,north=-(point.y-this.origin.y)/this.scale;
-      const z0=this.groundBase?(this.groundBase([r.lng,r.lat])??0):0;
-      roses++;
-      // An icosahedron sunk a third into the bed reads as a rounded shrub.
-      append('rose-bush',{p:[x,north,z0+r.height*.3],s:[r.radius,r.radius*.92,r.height*.7],rotation:r.rotation,color:r.bloom});
-    }
+    if(this.camera.zoom()>=ROSE_MIN_ZOOM)for(const garden of roseGardens.gardens)for(const r of roseBushInstances(garden,b)){roses++;append('rose-bush',this.roseItem(r));}
     const dummy=new THREE.Object3D(),scratch=new THREE.Color();
-    for(const [key,items] of groups){
-      const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
-      const geometryKey=wood?'wood':cone?'cone':rose?key:this.camera.zoom()>=18?'faceted-detail':'faceted';
-      if(!this.geometries.has(geometryKey))this.geometries.set(geometryKey,
-        wood?trunkGeometry(THREE,{bottomCap:treeCapsFlag()})
-          :cone?new THREE.ConeGeometry(1,2,8).rotateX(Math.PI/2)
-          :rose?roseBushGeometry()
-          :new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
-      const materialKey=wood?'wood':rose?'rose':'foliage';
-      if(!this.materials.has(materialKey))this.materials.set(materialKey,rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true}));
-      const m=new THREE.InstancedMesh(this.geometries.get(geometryKey),this.materials.get(materialKey),items.length);
-      m.userData.wood=wood;
+    for(const [key,items] of groups)this.addMesh(key,items.length,m=>{
       items.forEach((v,j)=>{
         dummy.position.set(...v.p);dummy.scale.set(...v.s);dummy.quaternion.identity();
         if(v.q)dummy.quaternion.copy(v.q);else if(v.rotation)dummy.rotation.z=v.rotation;
         dummy.updateMatrix();m.setMatrixAt(j,dummy.matrix);m.setColorAt(j,v.color?.isColor?v.color:scratch.set(v.color));
       });
-      m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;
-      if(this.sharedFrame){m.castShadow=true;m.receiveShadow=true;}
-      this.scene.add(m);this.meshes.push(m);
-      if(this.cullOn){const c=new InstanceCull(THREE,m,{castShadow:m.castShadow});if(c.shadow)this.scene.add(c.shadow);this.culls.push(c);}
-    }
+    });
     this.debugRoses=roses;this.debugRoseTriangles=roses*20;
     this.debugTrees=trees;this.debugAuthoredTrees=authoredTrees;this.debugTiles=this.tiles.size;this.debugArchetypes=[...archetypes];this.debugDraws=this.meshes.length;this.setTheme(this.theme);
+  }
+  aerial() {try{const c=this.camera.center();return isAerialView(this.camera.zoom(),this.camera.pitch(),c.lat);}catch(_){return false;}}
+  // One tree's instances (trunk, crown lobes, forks) at ground lift z0, as the rebuild appends them.
+  appendTree({x,south,t,lobeColours,bark},z0,append) {
+    append('wood',{p:[x,-south,z0+t.trunkHeight/2],s:[t.trunkWidth*2,t.trunkWidth*2,t.trunkHeight],color:bark});
+    const co=Math.cos(t.rotation),si=Math.sin(t.rotation);
+    for(let li=0;li<t.lobes.length;li++){const l=t.lobes[li];
+      const dx=l.offset[0]*co-l.offset[2]*si,dz=l.offset[0]*si+l.offset[2]*co;
+      // The map-to-scene south-axis flip also reverses crown yaw.
+      append(`${t.crownGeometry}-${l.tone}`,{p:[x+dx,-(south+dz),z0+l.offset[1]],s:[l.scale[0],l.scale[2],l.scale[1]],rotation:-(t.rotation+(l.rotation??0)),color:lobeColours[li]});
+      // A short fork connects each offset crown to the recorded trunk position.
+      // All forks share the trunk draw call; no per-tree meshes or materials.
+      if(t.crownGeometry==='faceted'&&t.archetype!=='fan-palm'&&Math.hypot(dx,dz)>.1){
+        const from=new THREE.Vector3(x,-south,z0+t.trunkHeight*.72);
+        const to=new THREE.Vector3(x+dx*.75,-(south+dz*.75),z0+l.offset[1]);
+        const delta=to.clone().sub(from),length=delta.length(),seg=[from.x,from.y,from.z,to.x,to.y,to.z];
+        append('wood',{p:from.add(to).multiplyScalar(.5).toArray(),s:[t.trunkWidth,t.trunkWidth,length],q:new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0,0,1),delta.divideScalar(length)),color:bark,seg});
+      }
+    }
+  }
+  // One rose bush's instance (roseBeds.ts roseBushInstances record).
+  roseItem(r) {
+    const point=this.maplibregl.MercatorCoordinate.fromLngLat([r.lng,r.lat],0);
+    const x=(point.x-this.origin.x)/this.scale,north=-(point.y-this.origin.y)/this.scale;
+    const z0=this.groundBase?(this.groundBase([r.lng,r.lat])??0):0;
+    // An icosahedron sunk a third into the bed reads as a rounded shrub.
+    return {p:[x,north,z0+r.height*.3],s:[r.radius,r.radius*.92,r.height*.7],rotation:r.rotation,color:r.bloom};
+  }
+  // The incremental rebuild (`?treesIncremental=1`): the same meshes, from per-tile compiled arrays.
+  rebuildIncremental() {
+    this.disposeMeshes();
+    const b=this.residency.built(crownBounds(this.camera),this.buildKey());
+    const sources=[...this.tiles.values(),...(this.allotmentCanopyEnabled?[allotmentCanopyTrees]:[])];
+    const roseItems=[];
+    if(this.camera.zoom()>=ROSE_MIN_ZOOM)for(const garden of roseGardens.gardens)for(const r of roseBushInstances(garden,b)){const v=this.roseItem(r);v.color=new THREE.Color().set(v.color);roseItems.push(v);}
+    // The lift is cached per tree per ground revision; a new ground function is a new revision too.
+    if(this.groundBase!==this.liftedBy){this.liftedBy=this.groundBase;this.groundRevision++;}
+    const z0=this.groundBase?(lng,lat)=>(this.groundBase([lng,lat])??0)-.05:null;
+    const a=this.instanceCache.assemble(sources,this.allotmentCanopyEnabled?'canopy':'native',this.treeEmit,b,z0,this.groundRevision,roseItems.length?[groupOf('rose-bush',roseItems)]:[]);
+    for(const g of a.groups)this.addMesh(g.key,g.count,m=>{m.instanceMatrix.array.set(g.matrices);m.instanceColor=new THREE.InstancedBufferAttribute(g.colours,3);});
+    this.assembleStats=a.stats;
+    this.debugRoses=roseItems.length;this.debugRoseTriangles=roseItems.length*20;
+    this.debugTrees=a.trees;this.debugAuthoredTrees=a.authoredTrees;this.debugTiles=this.tiles.size;this.debugArchetypes=a.archetypes;this.debugDraws=this.meshes.length;this.setTheme(this.theme);
+  }
+  // One instanced draw for group `key` of `count` instances; `fill(mesh)` writes its matrices and colours.
+  addMesh(key,count,fill) {
+    const wood=key==='wood',cone=key.startsWith('cone-'),rose=key.startsWith('rose-');
+    const geometryKey=wood?'wood':cone?'cone':rose?key:this.camera.zoom()>=18?'faceted-detail':'faceted';
+    if(!this.geometries.has(geometryKey))this.geometries.set(geometryKey,
+      wood?trunkGeometry(THREE,{bottomCap:treeCapsFlag()})
+        :cone?new THREE.ConeGeometry(1,2,8).rotateX(Math.PI/2)
+        :rose?roseBushGeometry()
+        :new THREE.IcosahedronGeometry(1,this.camera.zoom()>=18?1:0));
+    const materialKey=wood?'wood':rose?'rose':'foliage';
+    if(!this.materials.has(materialKey))this.materials.set(materialKey,rose?roseBushMaterial():new THREE.MeshStandardMaterial({color:'#ffffff',roughness:.93,flatShading:true}));
+    const m=new THREE.InstancedMesh(this.geometries.get(geometryKey),this.materials.get(materialKey),count);
+    m.userData.wood=wood;
+    fill(m);
+    m.instanceMatrix.needsUpdate=true;m.instanceColor.needsUpdate=true;m.frustumCulled=false;
+    if(this.sharedFrame){m.castShadow=true;m.receiveShadow=true;}
+    this.scene.add(m);this.meshes.push(m);
+    if(this.cullOn){const c=new InstanceCull(THREE,m,{castShadow:m.castShadow});if(c.shadow)this.scene.add(c.shadow);this.culls.push(c);}
   }
 }
