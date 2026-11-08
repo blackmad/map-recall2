@@ -1,12 +1,12 @@
 // Roads across bridges and the red lanes (lane R5-C1, issue #262; user aerial shots 2026-11-08: "missing continuity at
 // bridges, looks chaotic, grey clipping through red").
 //
-//   npx tsx scripts/own-ground/probe-bridge-roads.ts [--only=id,id] [--json=out.json] [--flags=bridgeCarry=0,redDedupe=0]
+//   npx tsx scripts/own-ground/probe-bridge-roads.ts [--only=id,id] [--json=out.json] [--before]
 //
 // At each roadRegressions ROAD_SPOTS crop, the own ground built as the game builds it (roads-v1, LOD 0) with source
 // tracing on, and counted:
-//   decks        deck polygons (h ≥ 1) whose interior lies in the crop; `skipped`: none of their off-ground sample points
-//                (1 m grid, not over an h = 0 polygon) is covered by a survey (bgt*) or carry triangle
+//   decks        deck polygons (h ≥ 1) whose interior lies in the crop; `skipped` (hidden): their own layer is the topmost
+//                surface at under 10 % of their points (0.5 m grid; skipped, or drawn under another surface); `partial` < 90 %
 //   deckTopM2    area (m²) where the grey deck top is the topmost surface while a deck polygon of a road class lies there
 //   bridgeBandM2 OSM band surface triangles (source `band`) within a bridge way's half-width: bands over the survey's deck
 //   redOverlapM2 area where the survey's cycle-crossing red (`cycleCross`) and the cycleThrough ribbon both draw; `mouths`
@@ -19,7 +19,7 @@ import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, compareHits, type BuiltCell, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
-import { RoadIndex } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
+import { RoadIndex, surfaceLayer } from '../../src/canalRecall/ownGround/roadSurfaces.ts';
 import { ROAD_SPOTS, type RoadSpot } from '../../src/canalRecall/ownGround/roadRegressions.ts';
 import { setSourceTracing, sourceOfCode } from '../../src/canalRecall/ownGround/sourceTrace.ts';
 import { prepareWays, isBridgeWay, type LocalWay } from '../../src/canalRecall/ownGround/streets.ts';
@@ -38,11 +38,11 @@ export interface BridgeRoadCounts {
   skippedInfo: string[];
 }
 
-type Grid = { w: number; x0: number; y0: number; z: Float32Array };
-const newGrid = (x0: number, y0: number, w: number): Grid => ({ w, x0, y0, z: new Float32Array(w * w).fill(-Infinity) });
+type Grid = { w: number; x0: number; y0: number; z: Float32Array; src: Uint8Array };
+const newGrid = (x0: number, y0: number, w: number): Grid => ({ w, x0, y0, z: new Float32Array(w * w).fill(-Infinity), src: new Uint8Array(w * w) });
 
 /** Rasterise the triangles of `m` (those `keep` accepts, by triangle index) into `g` as the highest z per texel. */
-function raster(g: Grid, positions: ArrayLike<number>, indices: ArrayLike<number>, keep: (t: number) => boolean): void {
+function raster(g: Grid, positions: ArrayLike<number>, indices: ArrayLike<number>, keep: (t: number) => boolean, src?: ArrayLike<number>): void {
   const p = positions;
   for (let t = 0; t < indices.length; t += 3) {
     if (!keep(t / 3)) continue;
@@ -59,7 +59,7 @@ function raster(g: Grid, positions: ArrayLike<number>, indices: ArrayLike<number
       const v = ((p[c + 1] - p[a + 1]) * (x - p[c]) + (p[a] - p[c]) * (y - p[c + 1])) / d;
       if (u < -1e-9 || v < -1e-9 || u + v > 1 + 1e-9) continue;
       const z = u * p[a + 2] + v * p[b + 2] + (1 - u - v) * p[c + 2], k = j * g.w + i;
-      if (z > g.z[k]) g.z[k] = z;
+      if (z > g.z[k]) { g.z[k] = z; if (src) g.src[k] = src[t / 3]; }
     }
   }
 }
@@ -100,7 +100,7 @@ export async function probeBridgeRoads(store: GroundStore, s: RoadSpot): Promise
       const m = c.layers[layer];
       if (!m) continue;
       const g = tops.get(layer) ?? (tops.set(layer, newGrid(x0, y0, w)), tops.get(layer)!);
-      raster(g, m.positions, m.indices, () => true);
+      raster(g, m.positions, m.indices, () => true, c.sources?.[layer]);
       const src = c.sources?.[layer];
       if (!src) continue;
       raster(survey, m.positions, m.indices, t => BGT.has(sourceOfCode(src[t]) ?? ''));
@@ -127,41 +127,38 @@ export async function probeBridgeRoads(store: GroundStore, s: RoadSpot): Promise
     }
   }
   const px = RES * RES;
-  // Deck polygons in the crop.
+  // Deck polygons in the crop: shown where the topmost surface at their points (1 m grid, inside the crop) is their own
+  // layer (roadSurfaces surfaceLayer). Hidden (< 10 % shown: skipped, or drawn under another surface) / partial (< 90 %).
   let decks = 0, skipped = 0, partial = 0;
   const skippedInfo: string[] = [];
+  const topAt = (i: number, j: number): GroundLayer | 'none' => {
+    const hs: { layer: GroundLayer; z: number }[] = [];
+    for (const [layer, g] of tops) if (g.z[j * w + i] > -Infinity) hs.push({ layer, z: g.z[j * w + i] });
+    hs.sort(compareHits);
+    return hs[0]?.layer ?? 'none';
+  };
   for (let k = 0; k < index.records.length; k++) {
     if (index.records[k].h < 1) continue;
     const ip = interiorPoint(index.ringsOf(k));
     if (!ip || !inCrop(ip[0], ip[1])) continue;
     decks++;
+    const want = surfaceLayer(index.drawClass(k), index.mesh(k));
     const ring = index.ringsOf(k)[0];
     const bx0 = Math.min(...ring.map(q => q[0])), bx1 = Math.max(...ring.map(q => q[0])), by0 = Math.min(...ring.map(q => q[1])), by1 = Math.max(...ring.map(q => q[1]));
-    let n = 0, cov = 0;
-    for (let qx = bx0 + 0.5; qx < bx1; qx += 1) for (let qy = by0 + 0.5; qy < by1; qy += 1) {
-      const all = index.findAll(qx, qy);
-      if (!all.includes(k) || all.some(j => index.records[j].h === 0)) continue;
-      n++;
+    let n = 0, shown = 0;
+    const seen: Record<string, number> = {};
+    for (let qx = bx0 + 0.25; qx < bx1; qx += 0.5) for (let qy = by0 + 0.25; qy < by1; qy += 0.5) {
+      if (!index.findAll(qx, qy).includes(k)) continue;
       const i = Math.floor((qx - x0) / RES), j = Math.floor((qy - y0) / RES);
-      if (i < 0 || j < 0 || i >= w || j >= w) { cov++; continue; } // outside the crop: not judged here
-      if (survey.z[j * w + i] > -Infinity) cov++;
+      if (i < 0 || j < 0 || i >= w || j >= w) continue;
+      n++;
+      const t = topAt(i, j);
+      if (t === want || (want === 'paving' && t === 'kerb')) shown++;
+      else seen[t] = (seen[t] ?? 0) + 1;
     }
-    if (!n || cov === 0) {
-      skipped++;
-      // What shows there instead (top layer histogram at the polygon's sample points inside the crop).
-      const seen: Record<string, number> = {};
-      for (let qx = bx0 + 0.5; qx < bx1; qx += 1) for (let qy = by0 + 0.5; qy < by1; qy += 1) {
-        if (!index.findAll(qx, qy).includes(k)) continue;
-        const i = Math.floor((qx - x0) / RES), j = Math.floor((qy - y0) / RES);
-        if (i < 0 || j < 0 || i >= w || j >= w) continue;
-        const hs: { layer: GroundLayer; z: number }[] = [];
-        for (const [layer, g] of tops) if (g.z[j * w + i] > -Infinity) hs.push({ layer, z: g.z[j * w + i] });
-        hs.sort(compareHits);
-        const t = hs[0]?.layer ?? 'none';
-        seen[t] = (seen[t] ?? 0) + 1;
-      }
-      skippedInfo.push(`${index.drawClass(k)}/${index.mesh(k)} h${index.records[k].h} ${n}m² at ${ip.map(v => v.toFixed(0))} top ${JSON.stringify(seen)}`);
-    } else if (cov < 0.9 * n) partial++;
+    if (!n) { decks--; continue; }
+    if (shown < 0.1 * n) { skipped++; skippedInfo.push(`hidden ${index.drawClass(k)}/${want} h${index.records[k].h} ${(n / 4).toFixed(0)}m² at ${ip.map(v => v.toFixed(0))} top ${JSON.stringify(seen)}`); }
+    else if (shown < 0.9 * n) { partial++; skippedInfo.push(`partial ${(100 * shown / n).toFixed(0)}% ${index.drawClass(k)}/${want} h${index.records[k].h} ${(n / 4).toFixed(0)}m² top ${JSON.stringify(seen)}`); }
   }
   // Per texel.
   let deckTop = 0, overlap = 0, red = 0, greyIn = 0, near = 0;
@@ -177,7 +174,7 @@ export async function probeBridgeRoads(store: GroundStore, s: RoadSpot): Promise
     const r = hits.find(h => h.layer === 'cycle');
     if (!r) continue;
     red++;
-    if (GREY.includes(hits[0].layer)) greyIn++;
+    if (GREY.includes(hits[0].layer)) { greyIn++; if (process.env.PROBE_SAMPLES && greyIn % 40 === 1) console.error('greyInRed', s.id, qx.toFixed(1), qy.toFixed(1), JSON.stringify(hits.map(h => [h.layer, +h.z.toFixed(3), sourceOfCode(tops.get(h.layer)!.src[k])]))); }
     else if (hits.some(h => GREY.includes(h.layer) && Math.abs(h.z - r.z) < 0.01)) near++;
   }
   return { id: s.id, decks, skipped, partial, deckTopM2: +(deckTop * px).toFixed(1), bridgeBandM2: +bandM2.toFixed(1), bridgeBandWays: [...bandWays], redOverlapM2: +(overlap * px).toFixed(1), mouths: mouths.size, redM2: +(red * px).toFixed(1), greyInRedM2: +(greyIn * px).toFixed(1), nearM2: +(near * px).toFixed(1), skippedInfo };
@@ -188,7 +185,9 @@ async function main(): Promise<void> {
   const bytes = async (path: string) => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); };
   const only = process.argv.find(a => a.startsWith('--only='))?.slice(7).split(',');
   const json = process.argv.find(a => a.startsWith('--json='))?.slice(7);
-  const store = new GroundStore(bytes, { roads: true });
+  // --before: the build without lane R5-C1 (bridgeCarry and redDedupe off, as `?bridgeCarry=0&redDedupe=0`).
+  const before = process.argv.includes('--before');
+  const store = new GroundStore(bytes, { roads: true, ...(before ? { bridgeCarry: false, redDedupe: false } : {}) });
   await store.init();
   const rows: BridgeRoadCounts[] = [];
   for (const s of ROAD_SPOTS) if (!only || only.includes(s.id)) { rows.push(await probeBridgeRoads(store, s)); console.error(JSON.stringify(rows[rows.length - 1])); }

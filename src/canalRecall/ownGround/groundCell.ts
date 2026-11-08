@@ -33,7 +33,7 @@ import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, CLEARANCE_M, CLEARANCE_FAR_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
-import { cycleThrough, type ThroughStats } from './cycleThrough.js';
+import { cycleThrough, meshCover, type ThroughStats } from './cycleThrough.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type SurveyGap, SURVEY_GAP_MIN_R } from './pockets.js';
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
 import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
@@ -132,6 +132,10 @@ export interface CellInput {
   clipDecks?: boolean;
   /** One width per deck side and the survey's deck polygons on every deck drawn (bridgeGaps.ts, issue #178); default on, false: the pre-fix build (`?bridgeGaps=0`). */
   bridgeGaps?: boolean;
+  /** Road surfaces carried across bridges (deckCarry.ts, lane R5-C1 issue #262); default on, false: the build before it (`?bridgeCarry=0`). */
+  bridgeCarry?: boolean;
+  /** One red owner per junction mouth and the red on its own plane (lane R5-C1 issue #262); default on, false: before (`?redDedupe=0`). */
+  redDedupe?: boolean;
   /** Sink a covered deck's top past its span under the survey's ground polygons (decks.ts COVERED_TOP_SINK_M); default on. */
   deckEnds?: boolean;
   /** The cell's surveyed road partition (roads-v1, roadSurfaces.ts), null when it has none or roads are off. */
@@ -347,12 +351,12 @@ export function buildCell(input: CellInput): BuiltCell {
   const crossingStrips = roadIndex && SURVEY_MARKINGS ? roadIndex.crossingStrips(crossingStripPoints(ways, input.marks ?? [])) : 0;
   phase('roadIndex');
   let roads: BuiltCell['stats']['roads'] = null;
-  let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set();
+  let roadCover: SurfaceRaster | null = null, roadSkipped: ReadonlySet<number> = new Set(), lowDeck: ((k: number) => boolean) | undefined;
   const canalSide = fine && mask ? (x: number, y: number) => { const d = maskDistance(mask, x, y); return d > 0 && d < MASK_RANGE_M - 0.2; } : undefined;
   if (roadIndex && input.roads) {
-    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, ...(input.bridgeGaps !== false && input.flatDecksAround?.length ? { onFlatDeck: flatDeckTest(input.flatDecksAround) } : {}), ...(input.bridgeGaps !== false ? { bridgeGaps: true } : {}), canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
+    const built = buildRoadSurfaces(input.roads, roadIndex, { height: onLand, deckHeight: deckLevelHeight(surface, rect), deckWeight: surface.deckWeight, overWater, lod, ...(input.bridgeGaps !== false && input.flatDecksAround?.length ? { onFlatDeck: flatDeckTest(input.flatDecksAround) } : {}), ...(input.bridgeGaps !== false ? { bridgeGaps: true } : {}), ...(input.bridgeCarry !== false ? { bridgeCarry: true } : {}), ...(input.redDedupe !== false ? { redDedupe: true } : {}), canalSide, dataStep: (x, y) => surface.dataStepAt(x, y), ...(touch ? { detail: 'touch' as const } : {}), ...(input.drape ?? {}) });
     for (const [layer, m] of Object.entries(built.layers)) add(layer as GroundLayer, m!, 'bgtCarriage');
-    roadSkipped = built.skipped;
+    roadSkipped = built.skipped; lowDeck = built.lowDeck;
     roads = { ...built.stats, landCulled: 0, coveredWays: input.coverWays?.length ?? 0, decksCovered: 0, parkingIslands, crossingStrips, greyFiets, markings: null };
   }
   // One raster serves the street pass's point lookups (RoadIndex.prepareFast) and the land culling under the own polygons.
@@ -364,7 +368,8 @@ export function buildCell(input: CellInput): BuiltCell {
   // draws them; its deck polygons may have been skipped there, so only h = 0 counts).
   const roadDrawn = roadIndex ? (() => {
     const ok = new Uint8Array(roadIndex.records.length);
-    for (let k = 0; k < ok.length; k++) ok[k] = (k < roadIndex.own ? !roadSkipped.has(k) : roadIndex.records[k].h === 0) ? 1 : 0;
+    // bridgeCarry: a neighbour's deck polygon drawn low over the ground (the ground under it was cut) covers the land too.
+    for (let k = 0; k < ok.length; k++) ok[k] = (k < roadIndex.own ? !roadSkipped.has(k) : roadIndex.records[k].h === 0 || !!lowDeck?.(k)) ? 1 : 0;
     return (k: number) => ok[k] === 1;
   })() : null;
   const underOwnSurface = (x: number, y: number) => {
@@ -554,17 +559,21 @@ export function buildCell(input: CellInput): BuiltCell {
   // roads-v1: markings placed from the mapped crossings and the junction graph, measured on and clipped to the
   // surveyed carriageway polygons (surveyMarkings.ts; the old band paint stays off there, streets.ts PAINT_ON_SURVEY).
   let surveyMarks: SurveyMarkingStats | null = null;
+  let surveyRed: MeshArrays | null = null;
   if (roadIndex && lod === 0 && SURVEY_MARKINGS) {
     const inCell = (p: Vec2) => p[0] >= x0 && p[0] < x1 && p[1] >= y0 && p[1] < y1;
     const mk = buildSurveyMarkings({ ways, ownsWay: w => own.has(w.id), ownsPoint: inCell, marks: input.marks ?? [], box: [rb[0] - 30, rb[1] - 30, rb[2] + 30, rb[3] + 30], index: roadIndex, height: onLand, lift: { paint: ROAD_MARK_LIFT.paint, red: ROAD_MARK_LIFT.lane }, ...(input.evidence ? { evidence: input.evidence } : {}) });
     add('paint', mk.paint, 'nodePaint'); add('cycle', mk.red, 'cycleCross');
+    surveyRed = mk.red;
     surveyMarks = mk.stats;
   }
   // The fietspad's red across the junction mouths the survey calls rijbaan (cycleThrough.ts; look over accuracy).
   let through: ThroughStats | null = null;
   if (roadIndex && lod === 0) {
     const red = emptyMesh();
-    through = cycleThrough(red, ways, w => own.has(w.id), roadIndex, onLand);
+    // Lane R5-C1 (#262): the red runs on across bridges (bridgeCarry); one red owner per mouth, the fietspad's width (redDedupe).
+    const carryRed = input.bridgeCarry !== false, dedupe = input.redDedupe !== false;
+    through = cycleThrough(red, ways, w => own.has(w.id), roadIndex, onLand, { ...(carryRed ? { bridges: true, deckHeight: surface.height } : {}), ...(dedupe ? { bgtWidth: true, ...(surveyRed ? { owned: meshCover(surveyRed) } : {}) } : {}) });
     add('cycle', red, 'cycleThrough');
   }
   phase('surveyMarkings');

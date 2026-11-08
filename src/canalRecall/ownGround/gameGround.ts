@@ -213,6 +213,18 @@ function dryWayDecksFlag(): boolean {
   if (typeof g.__canalRecallDryWayDecks === 'boolean') return g.__canalRecallDryWayDecks;
   return /[?&]dryWayDecks=(1|true|on)\b/.test(g.location?.search ?? '');
 }
+/** Road surfaces carried across bridges (deckCarry.ts, lane R5-C1 issue #262): on by default; `?bridgeCarry=0` or `window.__canalRecallBridgeCarry = false` builds as before. */
+function bridgeCarryFlag(): boolean {
+  const g = globalThis as { __canalRecallBridgeCarry?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallBridgeCarry === 'boolean') return g.__canalRecallBridgeCarry;
+  return !/[?&]bridgeCarry=(0|false|off)\b/.test(g.location?.search ?? '');
+}
+/** One red owner per junction mouth and the red on its own plane (lane R5-C1 issue #262): on by default; `?redDedupe=0` or `window.__canalRecallRedDedupe = false` restores. */
+export function redDedupeFlag(): boolean {
+  const g = globalThis as { __canalRecallRedDedupe?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallRedDedupe === 'boolean') return g.__canalRecallRedDedupe;
+  return !/[?&]redDedupe=(0|false|off)\b/.test(g.location?.search ?? '');
+}
 /** Road surfaces across bridges without gaps (issue #178): on by default; `?bridgeGaps=0` or `window.__canalRecallBridgeGaps = false` builds the decks as before (the A/B). */
 function bridgeGapsFlag(): boolean {
   const g = globalThis as { __canalRecallBridgeGaps?: boolean; location?: { search?: string } };
@@ -322,6 +334,8 @@ const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
 /** Materials that are objects on the ground, not the ground: lit by the rig as is (no FLAT_GROUND_GAIN). */
 const UNGAINED = new Set(['hedge', 'furniture', 'bollard', 'tram', 'track']);
 const OFFSET: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
+/** redDedupe (lane R5-C1, issue #262): the red on its own plane, two offset steps over the asphalt (paint and rails above it); `?redDedupe=0` keeps OFFSET. */
+export const RED_OFFSET: Partial<Record<GroundLayer, number>> = { ...OFFSET, cycle: 4, paint: 5, tram: 6 };
 
 /** three's `onUpload` callback (`this` is the attribute): drop the CPU copy. */
 function releaseArray(this: { array: unknown }): void { this.array = null; }
@@ -445,7 +459,7 @@ export class OwnGround {
     this.startup.storeReadyAt ??= performance.now();
     try {
       const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-      const init = { type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      const init = { type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       for (let i = 0; i < count; i++) {
         const worker = new Worker(this.opts.workerUrl);
         worker.onmessage = event => this.onWorker(event.data);
@@ -956,7 +970,7 @@ export class OwnGround {
       hedge: std({ vertexColors: true, roughness: 1, side: THREE.DoubleSide }),
       furniture: std({ vertexColors: true, roughness: 0.8, side: THREE.DoubleSide }),
     };
-    for (const [layer, k] of Object.entries(OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
+    for (const [layer, k] of Object.entries(redDedupeFlag() ? RED_OFFSET : OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
     // Level sunlit ground draws its palette luminance (groundLight.ts); objects standing on it keep the rig's light as the buildings do.
     for (const [layer, m] of Object.entries(M)) if (!UNGAINED.has(layer)) m.color.multiplyScalar(FLAT_GROUND_GAIN);
     // The overview → city blend: every ground material (not the draped overlays below) is present early and takes its

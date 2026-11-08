@@ -32,6 +32,9 @@ import { bollards, LIFT, ROAD_MARK_LIFT } from './streets.js';
 import { ANCILLARY_CLASSES, KERB_LOW_CLASSES, type RoadCell, type RoadClass, type RoadMesh, type RoadSurface } from './roadCells.js';
 import { GroundSurface, type HeightFn, type Vec2 } from './surface.js';
 import { traceMark, type GroundSource } from './sourceTrace.js';
+import { cutUnderDecks, deckDecision, runsOutside, type CarryInput, type DeckDecision } from './deckCarry.js';
+import earcut from 'earcut';
+import { flatten } from './parks.js';
 import { ROAD_LOOK_OPTIONS, roadLookTones, type RoadLookId, groundPalette, GROUND_LOOK_DEFAULT, type GroundPalette } from './groundLook.js';
 
 /** The trace source of a polygon by class (sourceTrace.ts; a red rijbaan section is 'fietsstraat'). */
@@ -72,6 +75,10 @@ export const DRAPE_TOL: Record<RoadClass, { sag: number; float: number }> = {
   island: { sag: 0.1, float: 0.03 }, berm: { sag: 0.1, float: 0.03 }, verge: { sag: 0.1, float: 0.03 }, square: { sag: 0.1, float: 0.03 },
 };
 export const DRAPE_MAX_EDGE_M = 24, DRAPE_MIN_EDGE_M = 3;
+/** redDedupe: the fietspad polygon's lift over the carriageway plane (ROAD_LIFT.carriage), and its drape tolerances. */
+export const RED_LIFT_OVER_CARRIAGE_M = 0.06;
+export const RED_CYCLE_LIFT = LIFT.carriageway + RED_LIFT_OVER_CARRIAGE_M;
+export const RED_CYCLE_TOL = { sag: RED_CYCLE_LIFT - 0.008, float: 0.02 } as const;
 /** On coarse relief a triangle under this many square data steps is not split (drapeAdaptive `minArea`). */
 export const DRAPE_MIN_AREA_STEPS = 0.5;
 /**
@@ -434,6 +441,13 @@ export interface RoadBuildStats {
   kerbM: number;
   /** Kerb lines whose lower side could not be told (no low class on exactly one side): drawn without a face. */
   kerbUnsided: number;
+  /** bridgeCarry (deckCarry.ts): deck polygons drawn only because of the carry; ground polygons cut under a low deck (of them, wholly under it); kerb runs cut. */
+  carried?: number;
+  groundCut?: number;
+  groundUnder?: number;
+  kerbCut?: number;
+  /** redDedupe: pavement-level polygons cut under a red fietspad of their own level. */
+  redCut?: number;
   bollards: number;
   ms: number;
 }
@@ -473,6 +487,18 @@ export interface RoadBuildInput {
   onFlatDeck?: (x: number, y: number) => boolean;
   /** bridgeGaps (issue #178): a deck polygon whose interior point misses every deck is still drawn when DECK_SHARE_MIN of it lies on one, without its triangles over a ground polygon. */
   bridgeGaps?: boolean;
+  /**
+   * The carry across bridges (deckCarry.ts, lane R5-C1 issue #262): deck polygons low over the ground polygons they
+   * overlap are drawn whole and cut those out from under them; skipped deck polygons at a bridge are drawn on the
+   * riding surface. Absent / false: the build before it (`?bridgeCarry=0`).
+   */
+  bridgeCarry?: boolean;
+  /**
+   * redDedupe (lane R5-C1, issue #262): the BGT fietspad on its own plane, RED_LIFT_OVER_CARRIAGE_M over the
+   * carriageway (was 1 cm: shared edges with the asphalt interleaved from the air), its drape float bounded like the
+   * carriageway's. Absent / false: as before (`?redDedupe=0`).
+   */
+  redDedupe?: boolean;
   lod: 0 | 1;
   /** Ground drape sag / float tolerance overrides for the road classes (measurement scripts); the defaults are DRAPE_TOL. */
   drapeTol?: number;
@@ -540,7 +566,7 @@ export function deckShare(flat: readonly number[], tris: readonly number[], onDe
   return total > 0 && on >= DECK_SHARE_MIN * total && kept.length ? kept : null;
 }
 
-export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadBuildInput): { layers: Partial<Record<RoadLayer, MeshArrays>>; stats: RoadBuildStats; skipped: Set<number> } {
+export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadBuildInput): { layers: Partial<Record<RoadLayer, MeshArrays>>; stats: RoadBuildStats; skipped: Set<number>; /** bridgeCarry: a deck polygon of any cell of the index that is drawn low over the ground (the land under it may go). */ lowDeck?: (k: number) => boolean } {
   const t0 = Date.now();
   const layers: Partial<Record<RoadLayer, MeshArrays>> = {};
   // The kerb mesh carries vertex colours (white: the kerb material's own tone; KERB_SHADOW_TINT: the shadow line).
@@ -557,6 +583,39 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   const landHeight = input.height, deckHeight = memoHeight(input.deckHeight);
   /** The surface a deck polygon (or a kerb on one) drapes on, or null when nothing carries it. */
   const deckSurface = (p: Vec2 | null): HeightFn | null => (p && (input.deckWeight(p[0], p[1]) > 0 || input.overWater(p[0], p[1]) || !!input.onFlatDeck?.(p[0], p[1])) ? deckHeight : null);
+  /** The build without the carry for a deck polygon: drawn on what, with which triangles (null: skipped). */
+  const groundAt = (x: number, y: number) => index.findAll(x, y).some(j => index.records[j].h === 0);
+  const deckBefore = (k: number): readonly number[] | null => {
+    const { flat, tris } = index.flatOf(k);
+    if (deckSurface(interiorPoint(index.ringsOf(k)))) return tris;
+    return input.bridgeGaps ? deckShare(flat, tris, (x, y) => !!deckSurface([x, y]), groundAt) : null;
+  };
+  // bridgeCarry (deckCarry.ts): one decision per deck polygon of the index, the same in every cell that sees it.
+  const carry = input.bridgeCarry === true && !far;
+  /** redDedupe: the fietspad's own plane (RED_CYCLE_LIFT). */
+  const redOwn = input.redDedupe === true;
+  const carryIn: CarryInput = { land: landHeight, deck: deckHeight, overWater: input.overWater, carried: (x, y) => !!deckSurface([x, y]) };
+  const decisions = new Map<number, { d: DeckDecision; before: readonly number[] | null }>();
+  const decide = (k: number) => {
+    let e = decisions.get(k);
+    if (!e) { const before = deckBefore(k); e = { d: deckDecision(index, k, carryIn, !!before), before }; decisions.set(k, e); }
+    return e;
+  };
+  /** Deck polygons (any cell) drawn low over the ground, with their boxes: the ground under them is cut. */
+  const lowDecks: { k: number; box: [number, number, number, number] }[] = [];
+  if (carry) for (let k = 0; k < index.records.length; k++) {
+    if (index.records[k].h < 1) continue;
+    const ring = index.ringsOf(k)[0];
+    if (!ring || ring.length < 3) continue;
+    const box: [number, number, number, number] = [Infinity, Infinity, -Infinity, -Infinity];
+    for (const p of ring) { box[0] = Math.min(box[0], p[0]); box[1] = Math.min(box[1], p[1]); box[2] = Math.max(box[2], p[0]); box[3] = Math.max(box[3], p[1]); }
+    // Only a deck polygon that overlaps a ground polygon can be low; the decision walks its triangles.
+    const d = decide(k).d;
+    if (d.draw && d.low) lowDecks.push({ k, box });
+  }
+  const lowDeckSet = new Set(lowDecks.map(l => l.k));
+  /** Inside a low deck polygon by more than KERB_ON_DECK_EDGE_M from its rings (a ground kerb the deck covers). */
+  const insideLowDeck = (x: number, y: number) => lowDecks.length > 0 && index.findAll(x, y).some(j => lowDeckSet.has(j) && ringDistance(index.ringsOf(j), x, y) > KERB_ON_DECK_EDGE_M);
   for (let k = 0; k < index.own; k++) {
     const rec = index.records[k];
     // The index's own earcut of the polygon (SurfaceIndex flatOf): the raster and the drawn mesh are the same triangles.
@@ -565,7 +624,16 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     if (!tris0.length) { stats.degenerate++; skipped.add(k); continue; }
     let height = landHeight;
     let tris = tris0;
-    if (rec.h >= 1) {
+    let pieces: Vec2[][][] | null = null;
+    if (rec.h >= 1 && carry) {
+      // bridgeCarry: drawn whole when low over the ground (the ground is cut under it), else as before; carried at a bridge.
+      const { d, before } = decide(k);
+      if (!d.draw) { stats.skippedHigh++; skipped.add(k); continue; }
+      tris = d.whole || !before ? tris0 : before;
+      if (d.carriedOnly) stats.carried = (stats.carried ?? 0) + 1;
+      height = deckHeight;
+      stats.onDeck++;
+    } else if (rec.h >= 1) {
       let on = deckSurface(interiorPoint(index.ringsOf(k)));
       if (!on && input.bridgeGaps) {
         const kept = deckShare(flat, tris, (x, y) => !!deckSurface([x, y]), (x, y) => index.findAll(x, y).some(j => index.records[j].h === 0));
@@ -575,26 +643,77 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
       height = on;
       stats.onDeck++;
     }
+    // redDedupe: a pavement-level polygon the survey overlaps with a red fietspad of its own level (the Beltbrug's berm
+    // over the fietspad, 25 m² of grey on the red) gives way to the red; triangle centroids find the overlap.
+    const redCutters: number[] = [];
+    if (redOwn && PAVEMENT_LEVEL.has(index.drawClass(k))) {
+      const seen = new Set<number>();
+      for (let t = 0; t < tris0.length; t += 3) {
+        const a = tris0[t] * 2, b = tris0[t + 1] * 2, c = tris0[t + 2] * 2;
+        const cx = (flat[a] + flat[b] + flat[c]) / 3, cy = (flat[a + 1] + flat[b + 1] + flat[c + 1]) / 3;
+        // The centroid, the edge midpoints and half-way to each corner (a thin overlap along an edge misses the centroid).
+        const probes: Vec2[] = [[cx, cy], [(flat[a] + flat[b]) / 2, (flat[a + 1] + flat[b + 1]) / 2], [(flat[b] + flat[c]) / 2, (flat[b + 1] + flat[c + 1]) / 2], [(flat[c] + flat[a]) / 2, (flat[c + 1] + flat[a + 1]) / 2],
+          [(cx + flat[a]) / 2, (cy + flat[a + 1]) / 2], [(cx + flat[b]) / 2, (cy + flat[b + 1]) / 2], [(cx + flat[c]) / 2, (cy + flat[c + 1]) / 2]];
+        for (const [px, py] of probes) for (const j of index.findAll(px, py)) {
+          if (j === k || seen.has(j) || index.records[j].h !== rec.h || index.drawClass(j) !== 'cycle' || index.mesh(j) !== 'cycle') continue;
+          seen.add(j); redCutters.push(j);
+        }
+      }
+    }
+    if (rec.h === 0 && (lowDecks.length || redCutters.length)) {
+      // bridgeCarry: a ground polygon under a low deck polygon loses the part under it (a polygon difference).
+      const rings = index.ringsOf(k), ring = rings[0];
+      let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      for (const p of ring) { x0 = Math.min(x0, p[0]); y0 = Math.min(y0, p[1]); x1 = Math.max(x1, p[0]); y1 = Math.max(y1, p[1]); }
+      const cutters = [...lowDecks.filter(l => l.box[0] < x1 && l.box[2] > x0 && l.box[1] < y1 && l.box[3] > y0).map(l => index.ringsOf(l.k)), ...redCutters.map(j => index.ringsOf(j))];
+      pieces = cutters.length ? cutUnderDecks(rings, cutters) : null;
+      if (pieces && redCutters.length) stats.redCut = (stats.redCut ?? 0) + 1;
+      if (pieces) {
+        stats.groundCut = (stats.groundCut ?? 0) + 1;
+        // Wholly under the deck: nothing of it is drawn; the deck covers it (not `skipped`: the land under it may go).
+        if (!pieces.length) { stats.groundUnder = (stats.groundUnder ?? 0) + 1; continue; }
+      }
+    }
     const cls = index.drawClass(k);
     const layer = get(surfaceLayer(cls, index.mesh(k)));
+    // redDedupe: the red fietspad on its own plane (RED_CYCLE_LIFT), its float bounded.
+    const redPlane = redOwn && cls === 'cycle' && index.mesh(k) === 'cycle';
+    const lift = redPlane ? RED_CYCLE_LIFT : ROAD_LIFT[cls];
     traceMark(layer, cls === 'carriage' && index.mesh(k) === 'cycle' ? 'fietsstraat' : BGT_SOURCE[cls]);
-    if (rec.h >= 1) drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
-    else {
-      const tol = DRAPE_TOL[cls], low = isLow(cls);
+    if (rec.h >= 1) drapeAdaptive(layer, flat, tris, height, lift, far ? 2 * DECK_DRAPE_MAX_EDGE_M : DECK_DRAPE_MAX_EDGE_M, DECK_DRAPE_TOL_M, 1.5);
+    else if (pieces) {
+      const tol = redPlane ? RED_CYCLE_TOL : DRAPE_TOL[cls], low = isLow(cls);
+      const sagTol = ((low && input.drapeTol) || tol.sag) * tolScale, floatTol = ((low && input.drapeFloatTol) || tol.float) * tolScale;
+      for (const piece of pieces) {
+        const f = flatten(piece);
+        if (f.flat.length < 6) continue;
+        const step = input.dataStep?.(f.flat[0], f.flat[1]) ?? 0, coarse = step > DRAPE_MIN_EDGE_M;
+        drapeAdaptive(layer, f.flat, earcut(f.flat, f.holes), height, lift, DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0);
+      }
+    } else {
+      const tol = redPlane ? RED_CYCLE_TOL : DRAPE_TOL[cls], low = isLow(cls);
       // Where the relief was measured coarser than the drape's own minimum (the 4 m ring), no triangle splits finer
       // than a data sample: not by edge, and not by area, which on a verge strip's slivers is what the edge test misses.
       const step = input.dataStep?.(flat[0], flat[1]) ?? 0, coarse = step > DRAPE_MIN_EDGE_M;
       const sagTol = ((low && input.drapeTol) || tol.sag) * tolScale;
       const floatTol = ((low && input.drapeFloatTol) || tol.float) * tolScale;
-      drapeAdaptive(layer, flat, tris, height, ROAD_LIFT[cls], far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, far ? Infinity : floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0);
+      drapeAdaptive(layer, flat, tris, height, lift, far ? 2 * DRAPE_MAX_EDGE_M : DRAPE_MAX_EDGE_M, sagTol, coarse ? step : minEdgeM, far ? Infinity : floatTol, coarse ? DRAPE_MIN_AREA_STEPS * step * step : 0);
     }
     stats.drawn[cls]++;
   }
   // Kerbs: the face toward the lower side, the granite line on the upper edge, posts along canal-side pavements.
   const kerb = get('kerb');
   traceMark(kerb, 'bgtKerb');
-  for (const e of cell.kerbs) {
+  const kerbRuns = (e: readonly number[]): Vec2[][] => {
     const run = decodeKerb(e, touch ? KERB_SIMPLIFY_M * TOUCH_KERB_SIMPLIFY_SCALE : KERB_SIMPLIFY_M);
+    if (!lowDecks.length || run.length < 2) return [run];
+    // bridgeCarry: a ground-level kerb inside a low deck polygon is not drawn (the ground it divides was cut away). A
+    // kerb on a deck polygon's own edge (the deck's kerbs, or a ground kerb meeting the deck) lies on its ring: kept.
+    const parts = runsOutside(run, insideLowDeck);
+    if (parts.length !== 1 || parts[0].length !== run.length) stats.kerbCut = (stats.kerbCut ?? 0) + 1;
+    return parts;
+  };
+  for (const e of cell.kerbs) for (const run of kerbRuns(e)) {
     if (run.length < 2) continue;
     const st = stations(run), total = st[st.length - 1];
     if (total < 0.3) continue;
@@ -607,7 +726,7 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     if (isLow(left) && isLow(right)) continue;
     const lowLeft = isLow(left) && !isLow(right), lowRight = isLow(right) && !isLow(left);
     let height = landHeight;
-    if (bridge) { const on = deckSurface([cx, cy]); if (!on) continue; height = on; }
+    if (bridge) { const on = deckSurface([cx, cy]) ?? (carry && index.findAll(cx, cy).some(j => index.records[j].h >= 1 && decide(j).d.draw) ? deckHeight : null); if (!on) continue; height = on; }
     // Decks hump within a span (DECK_DRAPE_MAX_EDGE_M); on land, no finer than the relief was measured.
     const line = bridge ? densifyOnRelief(run, height, KERB_RELIEF_TOL_M, 1, DECK_DRAPE_MAX_EDGE_M)
       : densifyOnRelief(run, height, KERB_RELIEF_TOL_M * (touch ? TOUCH_KERB_RELIEF_SCALE : 1), Math.max(KERB_PROBE_STEP_M / 2, input.dataStep?.(cx, cy) ?? 0), DRAPE_MAX_EDGE_M);
@@ -628,7 +747,8 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
     // the face (and the dark end) is the ramp's left edge.
     const lowCls = (lowLeft ? left : right)!, lowMesh = index.meshAt(cx - into * nx * KERB_PROBE_M, cy - into * ny * KERB_PROBE_M, bridge) ?? 'asphalt';
     const end = KERB_SHADOW_ENDS[surfaceLayer(lowCls, lowMesh)] ?? KERB_SHADOW_ENDS.asphalt!;
-    ribbon(kerb, line, -into * kerbShadowWidth / 2, kerbShadowWidth, height, ROAD_MARK_LIFT.rail, { step: Infinity, ramp: into > 0 ? { left: KERB_SHADOW_TINT, right: end } : { left: end, right: KERB_SHADOW_TINT } });
+    const shadowLift = redOwn && lowCls === 'cycle' && lowMesh === 'cycle' ? RED_CYCLE_LIFT + (ROAD_MARK_LIFT.rail - ROAD_LIFT.cycle) : ROAD_MARK_LIFT.rail;
+    ribbon(kerb, line, -into * kerbShadowWidth / 2, kerbShadowWidth, height, shadowLift, { step: Infinity, ramp: into > 0 ? { left: KERB_SHADOW_TINT, right: end } : { left: end, right: KERB_SHADOW_TINT } });
     // Posts along the pavement's kerb, not round the planted berms, islands and squares (roads lane R1 doubled the
     // kerbs of -1_-1 with those; the bollards stay at main's count, 25k against 24k triangles).
     const upper = lowLeft ? right : left;
@@ -641,7 +761,19 @@ export function buildRoadSurfaces(cell: RoadCell, index: RoadIndex, input: RoadB
   }
   for (const l of Object.keys(layers) as RoadLayer[]) if (!layers[l]!.indices.length) delete layers[l];
   stats.ms = Date.now() - t0;
-  return { layers, stats, skipped };
+  return { layers, stats, skipped, ...(carry ? { lowDeck: (k: number) => lowDeckSet.has(k) } : {}) };
+}
+
+/** bridgeCarry: a kerb this close to a low deck polygon's ring is on the deck's edge and stays. */
+export const KERB_ON_DECK_EDGE_M = 0.1;
+function ringDistance(rings: readonly (readonly Vec2[])[], x: number, y: number): number {
+  let best = Infinity;
+  for (const r of rings) for (let i = 0, j = r.length - 1; i < r.length; j = i++) {
+    const ax = r[j][0], ay = r[j][1], dx = r[i][0] - ax, dy = r[i][1] - ay, l2 = dx * dx + dy * dy;
+    const t = l2 ? Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l2)) : 0;
+    best = Math.min(best, Math.hypot(x - ax - t * dx, y - ay - t * dy));
+  }
+  return best;
 }
 
 /** A kerb run as metres (roadCells decodeRoadLine), simplified to `simplifyM` (densifyOnRelief adds the stations). */
