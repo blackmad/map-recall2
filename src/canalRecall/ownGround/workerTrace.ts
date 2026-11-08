@@ -5,7 +5,9 @@
 // far blocks, the worker's own init), and how its data-in split between the network (fetch wall time, the part spent
 // queued for a connection) and the CPU (gunzip, parse, relief and deck planning).
 
-export interface FetchRecord { path: string; start: number; fetched: number; end: number; bytes: number; stallMs: number }
+export interface FetchRecord { path: string; start: number; fetched: number; end: number; bytes: number; stallMs: number;
+  /** Lane R5-A #260 step 3 (groundShare.ts): served by the share host without a new fetch; the host's fetch + gunzip it saved; the host's gunzip of a file it fetched for this worker. */
+  shared?: boolean; savedMs?: number; hostGunzipMs?: number }
 export interface JobRecord { kind: 'cell' | 'far'; key: string; start: number; inputEnd: number; end: number }
 
 export interface AheadSplit {
@@ -31,6 +33,8 @@ export interface FetchSplit {
   byDir: Record<string, [number, number]>;
   /** The paths fetched (for counting the same file fetched by several workers). */
   paths: string[];
+  /** Lane R5-A #260 step 3, with the share host: files served without a new fetch, their kB, the host's fetch + gunzip they saved (ms), the host's gunzip of the rest (ms). */
+  shared: number; sharedKB: number; savedMs: number; hostGunzipMs: number;
 }
 
 const overlap = (a0: number, a1: number, b0: number, b1: number): number => Math.max(0, Math.min(a1, b1) - Math.max(a0, b0));
@@ -84,6 +88,10 @@ export class WorkerTrace {
       gunzipMs: Math.round(mine.reduce((n, f) => n + (f.end - f.fetched), 0)),
       byDir: mine.reduce((o, f) => { const d = f.path.split('/')[0], e = (o[d] ??= [0, 0]); e[0]++; e[1] += Math.round(f.bytes / 1024); return o; }, {} as Record<string, [number, number]>),
       paths: mine.map(f => f.path),
+      shared: mine.filter(f => f.shared).length,
+      sharedKB: Math.round(mine.reduce((n, f) => n + (f.shared ? f.bytes : 0), 0) / 1024),
+      savedMs: Math.round(mine.reduce((n, f) => n + (f.savedMs ?? 0), 0)),
+      hostGunzipMs: Math.round(mine.reduce((n, f) => n + (f.hostGunzipMs ?? 0), 0)),
     };
   }
 }

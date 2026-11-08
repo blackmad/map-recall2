@@ -109,6 +109,19 @@ export function groundAffinityFlag(search?: string): boolean {
   return new URLSearchParams(search ?? g.location?.search ?? '').get('groundAffinity') !== '0';
 }
 
+/**
+ * Affinity within one level (lane R5-A #260 step 3). Measured 2026-11-09 (3 cold desktop starts): at +1.9 s worker 0
+ * was free with `0_-1@0, -2_0@1, …` waiting, and affinity took `-2_0@1` (6 shared neighbours against 4), so the last
+ * LOD 0 cell of the block waited 1.6 s for another worker and set the block (6.6–6.9 s). Now a free worker's affinity
+ * only chooses among waiting cells of the same level as the best-ranked one. `?groundAffinityLod=0` (or
+ * `window.__canalRecallGroundAffinityLod = false`) lets affinity cross levels, as before.
+ */
+export function groundAffinityLodFlag(search?: string): boolean {
+  const g = globalThis as { __canalRecallGroundAffinityLod?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallGroundAffinityLod === 'boolean') return g.__canalRecallGroundAffinityLod;
+  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundAffinityLod') !== '0';
+}
+
 /** Neighbour cells of `key` ("x_y", its 3×3 block) already in `seen` (a worker's loaded neighbourhoods). */
 export function sharedNeighbours(key: string, seen: ReadonlySet<string>): number {
   const [x, y] = key.split('_').map(Number);
@@ -121,9 +134,9 @@ export function sharedNeighbours(key: string, seen: ReadonlySet<string>): number
  * The cells to send now, as [key, worker]: while a worker holds fewer than `depth`, the worker holding the fewest
  * (lowest index on a tie) takes a pending cell not already with a worker, from the first `window` such cells in
  * `order` (best first): the one with the highest `affinity(key, worker)`, ties to the best ranked. With `window` 1
- * (the default) it is simply the next cell in order.
+ * (the default) it is simply the next cell in order. With `lodOf`, only cells of the best-ranked cell's level compete.
  */
-export function nextDispatch(order: readonly string[], pending: { has(key: string): boolean }, sent: { has(key: string): boolean }, held: readonly number[], depth = PULL_DEPTH, window = 1, affinity?: (key: string, worker: number) => number): [string, number][] {
+export function nextDispatch(order: readonly string[], pending: { has(key: string): boolean }, sent: { has(key: string): boolean }, held: readonly number[], depth = PULL_DEPTH, window = 1, affinity?: (key: string, worker: number) => number, lodOf?: (key: string) => number | undefined): [string, number][] {
   const load = [...held], out: [string, number][] = [];
   const waiting = order.filter(key => pending.has(key) && !sent.has(key));
   while (waiting.length) {
@@ -133,7 +146,11 @@ export function nextDispatch(order: readonly string[], pending: { has(key: strin
     let pick = 0;
     if (affinity && window > 1) {
       let best = -Infinity;
-      for (let i = 0; i < Math.min(window, waiting.length); i++) { const a = affinity(waiting[i], w); if (a > best) { best = a; pick = i; } }
+      const level = lodOf?.(waiting[0]);
+      for (let i = 0; i < Math.min(window, waiting.length); i++) {
+        if (lodOf && i > 0 && lodOf(waiting[i]) !== level) continue;
+        const a = affinity(waiting[i], w); if (a > best) { best = a; pick = i; }
+      }
     }
     const [key] = waiting.splice(pick, 1);
     load[w]++;

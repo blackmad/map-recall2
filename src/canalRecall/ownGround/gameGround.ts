@@ -63,7 +63,8 @@ import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { groundPrefetchFlag, prefetchStep, PREFETCH_MAX_MS, PREFETCH_POLL_MS, type StartView } from './groundPrefetch.js';
-import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, groundAffinityFlag, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
+import { groundShareFlag, groundShareMB } from './groundShare.js';
+import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, groundAffinityFlag, groundAffinityLodFlag, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
@@ -378,6 +379,9 @@ export class OwnGround {
   private worker: Worker | null = null;
   /** Every ground worker (`worker` is the first; far blocks go there). Lane R5-A #260. */
   private workers: Worker[] = [];
+  /** Lane R5-A #260 step 3: the share host (groundShare.ts), with more than one worker and `?groundShare` on. */
+  private shareHost: Worker | null = null;
+  private readonly lodAffinityOn = groundAffinityLodFlag();
   /** The worker each requested cell was sent to (groundWorkers.ts pickWorker). */
   private readonly workerOf = new Map<string, number>();
   /** Pull dispatch (groundWorkers.ts nextDispatch, `?groundPull=0` off): the cells each worker holds, the best-first order, what to ask per cell. */
@@ -497,13 +501,23 @@ export class OwnGround {
     try {
       const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
       const init = { type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), roadSlivers: roadSliversFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      // One fetch + gunzip per file for every worker (groundShare.ts): a channel per worker to one more instance of the bundle.
+      const channels = count > 1 && groundShareFlag() ? Array.from({ length: count }, () => new MessageChannel()) : [];
+      if (channels.length) {
+        this.shareHost = new Worker(this.opts.workerUrl);
+        this.shareHost.onerror = event => { this.stats.errors.push(`share host: ${event.message}`); };
+        const ports = channels.map(c => c.port2);
+        this.shareHost.postMessage({ type: 'share-host', root, ports, capMB: groundShareMB() }, ports);
+      }
       for (let i = 0; i < count; i++) {
         const worker = new Worker(this.opts.workerUrl);
         const wi = i;
         worker.onmessage = event => this.onWorker(event.data, wi);
         worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
         // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-        worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin });
+        const sharePort = channels[i]?.port1;
+        if (sharePort) worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin, sharePort }, [sharePort]);
+        else worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin });
         this.workers.push(worker);
         this.held.push(new Set());
         this.loadedBy.push(new Set());
@@ -553,6 +567,8 @@ export class OwnGround {
     this.prepared.clear();
     for (const worker of this.workers) worker.terminate();
     this.workers = [];
+    this.shareHost?.terminate();
+    this.shareHost = null;
     this.workerOf.clear();
     this.held = [];
     this.loadedBy = [];
@@ -836,7 +852,7 @@ export class OwnGround {
   private dispatch(): void {
     if (!this.pullOn || !this.workers.length) return;
     const affinity = this.affinityOn ? (key: string, wi: number) => sharedNeighbours(key, this.loadedBy[wi]) : undefined;
-    for (const [key, wi] of nextDispatch(this.wantedOrder, this.pending, this.sentTo, this.held.map(h => h.size), PULL_DEPTH, affinity ? AFFINITY_WINDOW : 1, affinity)) {
+    for (const [key, wi] of nextDispatch(this.wantedOrder, this.pending, this.sentTo, this.held.map(h => h.size), PULL_DEPTH, affinity ? AFFINITY_WINDOW : 1, affinity, this.lodAffinityOn ? key => this.asks.get(key)?.lod : undefined)) {
       const ask = this.asks.get(key);
       if (!ask) continue;
       this.asks.delete(key);

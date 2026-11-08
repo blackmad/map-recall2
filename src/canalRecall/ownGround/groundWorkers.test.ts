@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { defaultGroundWorkers, groundAffinityFlag, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, sharedNeighbours } from './groundWorkers';
+import { defaultGroundWorkers, groundAffinityFlag, groundAffinityLodFlag, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, sharedNeighbours } from './groundWorkers';
 
 test('groundWorkersFlag reads 1–4 from the query, else the fallback', () => {
   assert.equal(groundWorkersFlag(1, '?groundWorkers=3'), 3);
@@ -78,4 +78,19 @@ test('nextDispatch with a window: a worker takes the nearby cell it shares neigh
   assert.deepEqual(nextDispatch(['9_9', '0_1'], new Set(['9_9', '0_1']), new Set(), [0], 1, 3, () => 0), [['9_9', 0]]);
   assert.equal(groundAffinityFlag('?groundAffinity=0'), false);
   assert.equal(groundAffinityFlag(''), true);
+});
+
+test('nextDispatch with lodOf: affinity never takes a coarser cell ahead of the best-ranked level (R5-A #260 step 3)', () => {
+  // The 2026-11-09 start: worker 0 (holding -1_0's neighbourhood) free, waiting 0_-1@0 then -2_0@1, -2_-1@1.
+  const seen = [new Set(['-2_-1', '-2_0', '-2_1', '-1_-1', '-1_0', '-1_1', '0_-1', '0_0', '0_1'])];
+  const aff = (k: string, w: number) => sharedNeighbours(k, seen[w]);
+  const lod = new Map([['0_-1', 0], ['-2_0', 1], ['-2_-1', 1]]);
+  const order = ['0_-1', '-2_0', '-2_-1'], pending = new Set(order);
+  assert.deepEqual(nextDispatch(order, pending, new Set(), [0], 1, 4, aff), [['-2_0', 0]], 'affinity alone crosses levels');
+  assert.deepEqual(nextDispatch(order, pending, new Set(), [0], 1, 4, aff, k => lod.get(k)), [['0_-1', 0]]);
+  // Among L1 cells affinity still chooses.
+  const l1 = ['-2_-2', '-2_0'], lod1 = () => 1;
+  assert.deepEqual(nextDispatch(l1, new Set(l1), new Set(), [0], 1, 4, aff, lod1), [['-2_0', 0]]);
+  assert.equal(groundAffinityLodFlag('?groundAffinityLod=0'), false);
+  assert.equal(groundAffinityLodFlag(''), true);
 });
