@@ -1136,7 +1136,7 @@ export class OwnWorldView implements WorldViewOracles {
     if (this._ownGround) {
       // Panned off the rider (RE-CENTER showing), the ground's ring follows the view, not the rider (#232: the user's
       // S4 corridor 2.8 km from the rider drew from the far ring, no ballast beds); `?groundView=0` follows the rider.
-      this._ownGround.update(groundCentre(view, this.groundView), view.introFlat > 0 ? 0 : view.zoom, pitch);
+      this._ownGround.update(groundCentre(view, this.groundView), view.introFlat > 0 ? 0 : view.zoom, pitch, view.lngLat);
       lap('ground update: own ground');
       const aerialGround = this.groundBasesAerialOn && view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]);
       this.syncGroundConsumers(phases ? lap : undefined, aerialGround, view.lngLat);

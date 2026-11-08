@@ -406,6 +406,7 @@ const residents = census => page.evaluate(census => {
   const sig = vm._signatureLandmarks, trees = vm._inventoryTrees;
   const pool = window.__canalRecallWorkerPool;
   const r = {
+    eyeAltM: (() => { const e = vm.cameraMap?.camera?.eye?.() ?? vm.camera?.eye?.(); return e?.altitudeM != null ? Math.round(e.altitudeM) : null; })(),
     zoom: Math.round(vm.camera.zoom() * 10) / 10, pitch: Math.round(vm.camera.pitch()), centre: vm.camera.center ? (c => [+c.lng.toFixed(4), +c.lat.toFixed(4)])(vm.camera.center()) : null,
     tier: vm.qualityTier?.tier ?? null, dpr: vm.host?.getPixelRatio?.() ?? null,
     geometries: info?.memory?.geometries ?? null, textures: info?.memory?.textures ?? null, programs: info?.programs?.length ?? null,
@@ -462,6 +463,22 @@ const residents = census => page.evaluate(census => {
     groundBases: vm.groundBaseStats ? { ...vm.groundBaseStats } : null,
     labelStats: vm._labels?.stats ? { full: vm._labels.stats.full, slicedFrames: vm._labels.stats.slicedFrames ?? null, lastFullMs: Math.round(vm._labels.stats.lastFullMs), churn: vm._labels.stats.churn ?? null } : null,
     workers: (pool?.live ?? 0) + (ground?.worker ? 1 : 0),
+    // Lane R5-A (#260): is the own ground drawn here, and is it waiting? `visible` (drawn at this zoom: the blend's
+    // hysteresis), `blend` / `presence` (overviewTransition/blend.ts), resident cells by level, `pending` (asked of the
+    // worker), `queued` (built, waiting for the one-per-frame install), `loadingCells`, the oldest pending request's age,
+    // the far ring's blocks / parts shown, and the overview's covered disc round the rider (m).
+    groundState: (() => {
+      if (!ground?.status) return null;
+      const st = ground.status(), now = performance.now(), ages = Object.entries(st.pending ?? {}).map(([k, l]) => ground.requestedAt?.get?.(`${k}:${l}`)).filter(t => t != null).map(t => now - t);
+      const levels = {}; for (const k of Object.keys(st.cells ?? {})) { const l = `${st.cells[k]}:${st.details?.[k]}`; levels[l] = (levels[l] ?? 0) + 1; }
+      const lat = ground.stats?.latencyMs ?? [], q = f => { const s = [...lat].sort((a, b) => a - b); return s.length ? Math.round(s[Math.min(s.length - 1, Math.floor(f * s.length))]) : null; };
+      return { visible: st.visible, blend: +(+st.blend).toFixed(3), presence: +Math.min(1, st.blend / 0.4).toFixed(3), zoom: +(+st.zoom).toFixed(2), radiusM: st.radiusM,
+        resident: Object.keys(st.cells ?? {}).length, levels, pending: Object.keys(st.pending ?? {}).length, queued: st.queued, loadingCells: ground.loadingCells,
+        oldestPendingMs: ages.length ? Math.round(Math.max(...ages)) : 0, latency: { n: lat.length, p50: q(0.5), p90: q(0.9), max: q(1) },
+        far: { radiusM: st.far?.radiusM, blocks: st.far?.blocks, pending: st.far?.pending, partsShown: st.far?.partsShown },
+        overviewCoveredR: vm._overview?.coveredR ?? null, discards: st.rail?.discards ?? null,
+        pendingKeys: st.pending ?? {}, residentKeys: st.cells ?? {}, errors: st.errors ?? [], loadErrors: st.rail?.loadErrors ?? [], built: st.built, ready: st.ready, enabled: st.enabled, workerReady: st.workerReady };
+    })(),
   };
   if (census) {
     // Every Map/Set/Array (and their sizes) two levels under the big owners: whatever grows is named here.
@@ -483,6 +500,96 @@ const residents = census => page.evaluate(census => {
   }
   return r;
 }, census);
+
+// Lane R5-A (#260): which surface the camera sees, by pixels. Three frames of the canvas (as drawn; all; the overview
+// layer hidden; the own ground's far ring hidden; the whole own ground hidden): a pixel that changes when a layer is
+// hidden was that layer's. `overview` is the flat own-map overview showing (no ground over it), `ground` the own ground
+// (near cells and far ring), `far` the far ring alone. Shares of the canvas, 0–1.
+async function layerShares() {
+  const sharp = (await import('sharp')).default;
+  const canvas = await page.evaluateHandle(() => { const vm = canalRecallGame.vectorMap; return (vm.map ?? vm.cameraMap).getCanvas(); });
+  const frame = async () => { await page.evaluate(() => canalRecallGame.vectorMap.host?.triggerRepaint?.()); await page.waitForTimeout(400); const png = await canvas.screenshot(); return sharp(png).raw().toBuffer({ resolveWithObject: true }); };
+  const set = which => page.evaluate(which => {
+    const vm = canalRecallGame.vectorMap, ground = vm._ownGround;
+    if (vm._overview) vm._overview.root.visible = which !== 'overview';
+    if (ground) { ground.root.visible = which !== 'ground'; for (const f of ground.far?.values?.() ?? []) f.group.visible = which !== 'far'; }
+  }, which);
+  const base = await frame(), out = {};
+  for (const which of ['overview', 'far', 'ground']) {
+    await set(which); const f = await frame(); await set('none');
+    let n = 0; const a = base.data, b = f.data, ch = base.info.channels;
+    for (let i = 0; i < a.length; i += ch) if (Math.abs(a[i] - b[i]) + Math.abs(a[i + 1] - b[i + 1]) + Math.abs(a[i + 2] - b[i + 2]) > 24) n++;
+    out[which] = +(n / (a.length / ch)).toFixed(3);
+  }
+  await frame();
+  return out;
+}
+
+// SPOT_SET=user (lane R5-A #260): the user's four aerial poses of 2026-11-08 (scripts/world/abSpots.ts
+// AERIAL_USER_SPOTS; run under `npx tsx` so the .ts loads), each fitted to its map zoom / pitch / bearing / look-at
+// centre, with the ground's state and the layer shares. The start pose is the Free Ride's own (recorded at boot).
+if (argv.includes('--spots') && process.env.SPOT_SET === 'user') {
+  const { AERIAL_USER_SPOTS } = await import('./world/abSpots.ts');
+  const dir = shotsDir || 'artifacts/perf/aerial-user-spots';
+  fs.mkdirSync(dir, { recursive: true });
+  const rows = [];
+  // The start as the player meets it: the frame and the ground's state right after the game reveals the ride.
+  for (const at of [0, 2000, 5000]) {
+    if (at) await page.waitForTimeout(at - (at === 5000 ? 2000 : 0));
+    const r = await residents(false);
+    const file = path.join(dir, `${device}-start-plus${at / 1000}s.png`); await page.screenshot({ path: file });
+    rows.push({ spot: `start+${at / 1000}s`, file, ...pick(r) });
+    console.log(`${device} start+${at / 1000}s z${r.zoom} p${r.pitch} ground ${JSON.stringify(r.groundState)}`);
+  }
+  await page.evaluate(() => { window.__aerialPause = true; });
+  for (const spot of AERIAL_USER_SPOTS) {
+    if (spot.start) await page.evaluate(async sp => {
+      const g = canalRecallGame, p = window.__chasePose, vm = g.vectorMap; g.camera.detached = false; g.camera.zoom = p.zoom; g.camera.rotation = p.rotation; if (p.tilt != null) { vm.setCameraTilt?.(p.tilt); vm._cameraTilt = p.tilt; }
+      // eyeAltM: the start pose brought down (or up) to this eye height at this pitch.
+      if (sp.eyeAltM) {
+        let tilt = vm._cameraTilt ?? 0;
+        for (let i = 0; i < 8; i++) {
+          await new Promise(r => setTimeout(r, 600));
+          const e = (vm.cameraMap?.camera?.eye?.() ?? vm.camera?.eye?.()), alt = e?.altitudeM;
+          if (alt > 0) g.camera.zoom *= alt / sp.eyeAltM;
+          if (sp.pitch != null) { tilt += sp.pitch - vm.camera.pitch(); vm.setCameraTilt?.(tilt); vm._cameraTilt = tilt; }
+        }
+      }
+    }, spot);
+    else await page.evaluate(async sp => {
+      // Fit: move the detached camera's anchor, zoom, tilt and rotation until the map camera reads the spot's look-at
+      // centre, zoom and pitch (the game camera's zoom / tilt are not the map's; a few rounds converge).
+      const g = canalRecallGame, l = g.osmLoader, ppm = (0, eval)('PIXELS_PER_METER'), cam = g.camera, vm = g.vectorMap;
+      const px = ([lng, lat]) => [l._lastOffsetX + (lng - l._lastCenterLng) * 111320 * Math.cos(l._lastCenterLat * Math.PI / 180) * ppm, l._lastOffsetY - (lat - l._lastCenterLat) * 111320 * ppm];
+      const [x, y] = px(sp.centre);
+      cam.pan(1, 0); cam.detached = true; cam.anchorX = cam.x = x; cam.anchorY = cam.y = y; cam.rotation = sp.bearing * Math.PI / 180;
+      let tilt = vm._cameraTilt ?? 0;
+      const wait = ms => new Promise(r => setTimeout(r, ms));
+      for (let i = 0; i < 8; i++) {
+        await wait(600);
+        const z = vm.camera.zoom(), p = vm.camera.pitch(), c = vm.camera.center();
+        cam.zoom *= 2 ** (sp.zoom - z);
+        tilt += sp.pitch - p; vm.setCameraTilt?.(tilt); vm._cameraTilt = tilt;
+        const [cx, cy] = px([c.lng, c.lat]); cam.anchorX = cam.x = cam.anchorX + (x - cx); cam.anchorY = cam.y = cam.anchorY + (y - cy);
+      }
+    }, spot);
+    await page.waitForTimeout(1500);
+    await page.evaluate(async () => { const cam = canalRecallGame.vectorMap.camera; await Promise.race([cam?.whenIdle?.() ?? Promise.resolve(), new Promise(r => setTimeout(r, 60_000))]); });
+    // Ground state as the camera arrives (+0) and once settled (+SPOT_SETTLE_MS).
+    const arrive = await residents(false);
+    await page.waitForTimeout(Number(process.env.SPOT_SETTLE_MS ?? 6000));
+    const r = await residents(false);
+    const file = path.join(dir, `${device}-spot-${spot.name}.png`); await page.screenshot({ path: file });
+    const shares = await layerShares();
+    rows.push({ spot: spot.name, file, shares, arrive: pick(arrive).groundState, ...pick(r) });
+    console.log(`${device} ${spot.name}: z${r.zoom} p${r.pitch} c${JSON.stringify(r.centre)} shares ${JSON.stringify(shares)} ground ${JSON.stringify({ ...r.groundState, residentKeys: undefined })} arrive pending ${arrive.groundState?.pending} queued ${arrive.groundState?.queued}`);
+  }
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  fs.writeFileSync(out, JSON.stringify({ device, qs, spots: rows, errors }, null, 1));
+  await browser.close();
+  process.exit(0);
+}
+function pick(r) { return { zoom: r.zoom, pitch: r.pitch, centre: r.centre, eyeAltM: r.eyeAltM, gl: r.gl?.residentMB ?? null, geometries: r.geometries, draws: r.draws, groundState: r.groundState }; }
 
 // --spots: still frames at the user's spots (S1 Hoftuin, S4 Zuidas), each after the camera parks and the world settles
 // (whenIdle, then 4 s), into SHOTS; no pan. The before/after strip beside the user's shots.
@@ -666,6 +773,8 @@ for (let t = every; t <= panS; t += every) {
   const heap = await heapSample(cdp);
   const res = await residents(censusOn);
   res.drawKinds = await drawKinds();
+  // LAYER_SHARES=1 (lane R5-A #260): which surface the camera sees at this sample, by pixels (layerShares above).
+  if (process.env.LAYER_SHARES === '1') res.layerShares = await layerShares();
   const rss = await processRss();
   const aerial = await page.evaluate(() => ({ routeM: Math.round(window.__aerial.s / (0, eval)('PIXELS_PER_METER')), laps: window.__aerial.laps, km: Math.round((window.__aerial.laps * window.__aerial.totalM + window.__aerial.s / 3) / 100) / 10, poses: window.__aerial.poseChanges.length, leg: window.__aerial.poseChanges.at(-1)?.to }));
   // SHOT_AT=80,120 (lane R4-E #248): also a frame at these pan seconds (mid-arrival strips).
@@ -685,6 +794,7 @@ for (let t = every; t <= panS; t += every) {
   const row = { t, at: Math.round(a), pauseMs: Math.round(b + 50 - a), ...aerial, heapMB: heap.main.usedMB, bufMB: heap.main.backingMB, workersMB: heap.workersUsedMB, ...rss, ...res, frames, worst, loaf, long };
   for (const f of long) console.log(`${device}   long ${f.ms} ms (cb ${f.cbMs}, outside ${f.outside}) leg ${f.leg} +${f.legS}s resume +${f.sinceResumeS}s v${f.speedMps ?? '-'} gl ${f.glMB} MB ${f.compiles} compiles ${JSON.stringify(f.glOwners)} ${JSON.stringify(f.split)}${f.scripts.length ? ` scripts ${f.scripts.join(' | ')}` : ''}`);
   timeline.push(row);
+  if (res.groundState) console.log(`${device} t${t} ground ${JSON.stringify({ ...res.groundState, latency: undefined, discards: undefined, residentKeys: undefined })}${res.layerShares ? ` shares ${JSON.stringify(res.layerShares)}` : ''}`);
   console.log(`${device} t${t} ${aerial.leg ?? '-'} z${res.zoom} p${res.pitch}: heap ${heap.main.usedMB}+${heap.main.backingMB ?? '?'} MB, wk ${heap.workersUsedMB} MB, rss ${rss.rendererRssMB}/${rss.gpuRssMB}, geo ${res.geometries} tex ${res.textures} gl ${res.gl?.residentMB} MB (+${res.gl?.uploadMB} MB up), chunks ${res.chunks} tiles ${res.cityTiles} feats ${res.cityFeatures} ctxCh ${res.contextChanges} lm ${res.landmarks} trees ${res.trees} ground ${res.groundCells} far ${res.farRing} r${res.farRadiusM} fs ${res.farShells?.cells ?? '-'}/${res.farShells?.partsShown ?? '-'} draws ${res.draws} bc ${res.bakedCoarse ? `${res.bakedCoarse.drawn}/${res.bakedCoarse.cells}` : '-'} cc ${res.coarseChunks} labels ${res.labelsPlaced} wkrs ${res.workers} detail +${res.detailInstalls} (${res.detailTiles} tiles, ${res.detailMB} MB) fading ${res.fading} coarse fading ${res.coarseFading} (+${res.coarseFadeIns}) up +${res.uploadMBDelta} MB; p99 ${frames.p99} >100 ${frames.over100} >250 ${frames.over250} max ${frames.longestMs}${worst?.[0] ? ` worst ${JSON.stringify(worst[0].phases)}` : ''}`);
 }
 
