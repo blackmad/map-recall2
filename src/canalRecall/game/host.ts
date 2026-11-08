@@ -496,6 +496,8 @@ export interface PresentationHost extends GameCoreHost {
   _raceKey: string | null;
   _shareUrl: string | null;
   _copiedTimer: number;
+  /** The ridden path, sampled for the share card (shareCard.ts). */
+  _shareTrail?: import('../shareCard').ShareTrail | null;
   _menuQuote: { text: string; character: string } | null;
   _debugMode: boolean;
   /** Hit targets for the debug overlay's tool links, recomputed as it draws. */
