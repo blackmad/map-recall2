@@ -157,6 +157,11 @@ for (const date of ['2026-11-10', '2026-12-24', '2027-03-01']) {
     test.setTimeout(180_000);
     await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
     await seed(page, 'returning');
+    // The pool's ends sit on streets: ride in street mode (bike). The default travel mode is boat, and
+    // `?ride=daily` does not set street mode yet (integrator: game-route.js _checkShareLink, #279 hand-back).
+    await page.addInitScript(() => {
+      if (!localStorage.getItem('canalRecall.preferences.v1')) localStorage.setItem('canalRecall.preferences.v1', JSON.stringify({ travelMode: 'car' }));
+    });
     const pair = dailyPoolPair(date)!;
     await page.goto(`/canal-drive/index.html?ride=daily&dailyDate=${date}`);
     await expect.poll(async () => (await rideState(page))?.chosen, { timeout: 60_000 }).toBe('daily');
@@ -164,8 +169,8 @@ for (const date of ['2026-11-10', '2026-12-24', '2027-03-01']) {
     expect(`${date}:${ride?.from}>${ride?.to}`).toBe(pair.id);
     // A route was planned between the ends, and the ride is under way.
     await expect.poll(() => page.evaluate(() => {
-      const g = (window as unknown as { canalRecallGame?: { state: number; routePath?: unknown[]; _plannedRouteLengthPx?: number } }).canalRecallGame;
-      return g && g.state === 4 && (g.routePath?.length ?? 0) > 1 && (g._plannedRouteLengthPx ?? 0) > 0;
+      const g = (window as unknown as { canalRecallGame?: { state: number; travelMode?: string; routePath?: unknown[]; _plannedRouteLengthPx?: number } }).canalRecallGame;
+      return g && g.state === 4 && g.travelMode === 'car' && (g.routePath?.length ?? 0) > 1 && (g._plannedRouteLengthPx ?? 0) > 0;
     }), { timeout: 90_000 }).toBe(true);
     const planned = await page.evaluate(() => {
       const g = (window as unknown as { canalRecallGame: { _plannedRouteLengthPx: number; track: { startPoint: { x: number; y: number }; finishPoint: { x: number; y: number } } } }).canalRecallGame;
