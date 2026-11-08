@@ -3,6 +3,12 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "The ground is there when the ride starts",
+      "text": "The ground under the camera now begins building during the loading screen and is in place about a second sooner after the reveal, and the ride is revealed no later than before. The ground builders no longer queue up behind each other: each takes the next most urgent cell as soon as it is free, prefers cells next to ones it already holds, and a finished cell is never built twice.",
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
       "title": "Clean tunnel mouths under the Prins Hendrikkade",
       "text": "The IJ-tunnel's mouths under the Prins Hendrikkade junction are clean: no more pale paving sheets hanging into the mouths, and the street over the tunnel no longer sags beside the ramps' cycle path. The height model had dropped the covered junction by two metres, so the mouth tops sat in a dip and the ground beyond them draped into the trenches; the mouths now rise to the street and the ground is cut at their faces.",
       "where": [
