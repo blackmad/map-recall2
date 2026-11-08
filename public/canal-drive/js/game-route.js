@@ -1368,7 +1368,8 @@ class GameRouteRuntime {
       const session = window.__canalRecallSession = window.__canalRecallSession || {};
       session.landingCardChosen = landingRide;
       const Route = window.CanalRecallRoute;
-      this._overlay.store.patchPrefs({ cityId: 'amsterdam', routePattern: 'surprise', ...(landingRide === 'review' ? { skipMastered: true } : {}) }, this._overlayZoom());
+      // The daily pair is a street ride (buurt to buurt; the default travel mode is boat and the waterways cannot reach a buurt centroid, #279).
+      this._overlay.store.patchPrefs({ cityId: 'amsterdam', routePattern: 'surprise', ...(landingRide === 'review' ? { skipMastered: true } : {}), ...(landingRide === 'daily' ? { travelMode: 'car' } : {}) }, this._overlayZoom());
       this._applyPrefsToRuntime(this._prefs());
       const pair = landingRide === 'daily' && Route && Route.dailyRidePair
         ? Route.dailyRidePair(Route.dailyRideDateKey(), this._curatedRoutePois()) : null;

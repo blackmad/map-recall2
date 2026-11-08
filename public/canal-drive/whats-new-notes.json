@@ -2,6 +2,23 @@
  "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
  "notes": [
   {
+   "date": "2026-11-10",
+   "title": "Today's ride runs buurt to buurt",
+   "text": "Today's ride now runs buurt to buurt: Overhoeks to the Jordaan, the Stadionbuurt to the IJselbuurt, between one and a half and five kilometres. No neighbourhood turns up twice in a week, and the ride starts and ends on a quiet street that gives no answer away. From 10 November; earlier days keep the ride they had.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-daily-pool/story-returning.jpg",
+     "alt": "The returning player's landing with Today's ride named by its two buurten",
+     "caption": "Today's ride, buurt to buurt."
+    },
+    {
+     "src": "ui/2026-11-09-daily-pool/daily-2026-11-10-arrived-desktop.jpg",
+     "alt": "The arrival card at the Jordaan after the 10 November daily ride from Overhoeks",
+     "caption": "Arrived in the Jordaan."
+    }
+   ]
+  },
+  {
    "date": "2026-11-09",
    "title": "The arrival card's keys are buttons too",
    "text": "Point at Next stop, Share this route, Route setup or End run on a desktop and the key darkens, the cursor turns to a hand, and a click does what the key does.",
