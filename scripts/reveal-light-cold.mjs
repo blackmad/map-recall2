@@ -122,7 +122,12 @@ async function run() {
   const revealPop = fr.length ? fr[0].frac : null;
   const maxPop = fr.reduce((m, f) => Math.max(m, f.frac ?? 0), 0);
   const firstPop = fr.find((f, i) => i > 0 && f.frac > 0.02);
-  return { navToRaceMs: navToRace, wallMs: Date.now() - t0, revealPop, maxPopInWindow: maxPop, firstPopMs: firstPop ? firstPop.ms : null, firstPopFrac: firstPop ? firstPop.frac : null,
+  // The reveal window (#267): the frames of the first 250 ms after the reveal frame; the reveal frame itself is judged
+  // against the covered frame, which nobody saw.
+  const max250 = fr.slice(1).filter(f => f.ms <= 250).reduce((m, f) => Math.max(m, f.frac ?? 0), 0);
+  const max500 = fr.slice(1).reduce((m, f) => Math.max(m, f.frac ?? 0), 0);
+  const late = fr.slice(1).filter(f => f.ms > 250 && f.frac > 0.02).map(f => ({ ms: f.ms, frac: f.frac }));
+  return { maxPop250: max250, maxPop500AfterReveal: max500, latePops: late, navToRaceMs: navToRace, wallMs: Date.now() - t0, revealPop, maxPopInWindow: maxPop, firstPopMs: firstPop ? firstPop.ms : null, firstPopFrac: firstPop ? firstPop.frac : null,
     sumFracWindow: +fr.slice(1).reduce((s, f) => s + (f.frac ?? 0), 0).toFixed(4), frameCount: fr.length, covered: R.covered, frames: fr, keep: R.keep, errors: errors.slice(0, 3) };
 }
 
@@ -135,7 +140,7 @@ for (let i = 0; i < runs; i++) {
   }
   r.keep = r.keep.map(k => ({ label: k.label, ms: k.ms }));
   results.push(r);
-  console.log(`${device} run ${i + 1}: nav->racing ${r.navToRaceMs} ms; reveal-vs-covered ${r.revealPop}; first pop ${r.firstPopMs} ms ${r.firstPopFrac}; max ${r.maxPopInWindow}; frames ${r.frameCount}`);
+  console.log(`${device} run ${i + 1}: nav->racing ${r.navToRaceMs} ms; reveal-vs-covered ${r.revealPop}; first pop ${r.firstPopMs} ms ${r.firstPopFrac}; max after reveal 250 ms ${r.maxPop250}, 500 ms ${r.maxPop500AfterReveal}; frames ${r.frameCount}`);
   console.log('   ' + r.frames.slice(0, 16).map(f => `${f.ms}:${f.frac}/r${f.redraws}/i${f.intensity}/${f.hasMap ? 'M' : '-'}/z${f.cam?.[2]}/b${f.bFade},${f.bLeave}/k${f.bakedFade}/f${f.farFade}/g${f.gFade}/e${f.elev}`).join(' '));
 }
 await browser.close();
@@ -144,7 +149,9 @@ const summary = {
   nav_to_racing_ms: med(results.map(r => r.navToRaceMs)),
   reveal_vs_covered_frac: med(results.map(r => r.revealPop)),
   first_pop_ms: med(results.map(r => r.firstPopMs)), first_pop_frac: med(results.map(r => r.firstPopFrac)),
-  max_pop_in_window: med(results.map(r => r.maxPopInWindow)), runs_max_pop_under_3pct: results.filter(r => r.maxPopInWindow < 0.03).length,
+  max_pop_250_ms: med(results.map(r => r.maxPop250)), runs_max_pop_250_under_3pct: results.filter(r => r.maxPop250 < 0.03).length,
+  max_pop_500_after_reveal: med(results.map(r => r.maxPop500AfterReveal)), runs_max_pop_500_under_3pct: results.filter(r => r.maxPop500AfterReveal < 0.03).length,
+  max_pop_250_each: results.map(r => r.maxPop250), late_pops: results.map(r => r.latePops), nav_to_racing_each: results.map(r => r.navToRaceMs),
   sum_frac_window: med(results.map(r => r.sumFracWindow)),
 };
 fs.mkdirSync(path.dirname(out), { recursive: true });
