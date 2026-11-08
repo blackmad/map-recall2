@@ -1001,7 +1001,7 @@ export class OwnWorldView implements WorldViewOracles {
     const buildings = !tb || ((tb.pending?.length ?? 0) === 0 && !tb.cellRolloffPending);
     const fs = this._farShells?.stats?.(), bs = this._bakedCoarse?.stats?.();
     const far = !fs || fs.pending === 0;
-    const baked = !bs || !bs.enabled || (bs.pending === 0 && bs.fading === 0 && bs.cells >= bs.covered);
+    const baked = !bs || !bs.enabled || (bs.pending === 0 && bs.fading === 0 && bs.cells + (bs.released ?? 0) >= bs.covered); // released cells (R4-I) are drawn by the far tier
     return { settled: ground && city && buildings && far && baked, ground, city, buildings, far, baked, detail: { groundFading: fading, city: c && { inFlight: c.inFlight, queued: c.queued, styling: !!c.styling }, buildingsPending: tb?.pending?.length ?? 0, far: fs && { pending: fs.pending }, baked: bs && { covered: bs.covered, cells: bs.cells, drawn: bs.drawn, fading: bs.fading, pending: bs.pending } } };
   }
 
