@@ -226,3 +226,11 @@ test('lid exposure: 1/1.135 on look-cell lids (the U1 render gain); a mapped tag
   const proc = meshBuildingFor(feature({ roofColour: '#3a3a3a', colour: '#aa8866' }), 'procedural')!;
   assert.equal(proc.lid!.hex, mappedTowardPrior('#3a3a3a', flatRoofPriorHex('NL.IMBAG.Pand.0363100012999001', 1978)));
 });
+
+test('stair core: an L-shaped roof whose spine runs outside it still finds a clear point (the grid fallback)', () => {
+  // An L: 40 m x 10 m and 10 m x 40 m arms; its fitted rect's spine crosses the empty quarter.
+  const L: Array<[number, number]> = [[0, 0], [40, 0], [40, 10], [10, 10], [10, 40], [0, 40], [0, 0]];
+  const at = stairCorePoint([L], 1, { cx: 20, cy: 20, ux: 1, uy: 0, len: 40 })!;
+  assert.ok(at, 'a point');
+  assert.ok((at[0] < 10 || at[1] < 10) && at[0] > 0 && at[1] > 0, `${at} on the roof`);
+});

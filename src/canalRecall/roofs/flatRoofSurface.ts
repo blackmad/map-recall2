@@ -214,5 +214,17 @@ export function stairCorePoint(rings: ReadonlyArray<ReadonlyArray<readonly [numb
     const t = (k % 2 ? 1 : -1) * Math.ceil(k / 2) * rect.len / 20, x = rect.cx + rect.ux * t, y = rect.cy + rect.uy * t;
     if (inside(x, y) && clear(x, y, need)) return [x, y];
   }
-  return null;
+  // An L, a U or a courtyard block whose spine runs outside the roof: the clear point nearest the rect's centre on a
+  // STAIR_GRID_M grid over the outer rings (U1: 9 of the 15 largest flat roofs had no spine point).
+  let best: V2 | null = null, bestD = Infinity, minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const r of rings.slice(0, outerCount)) for (const [x, y] of r) { minX = Math.min(minX, x); minY = Math.min(minY, y); maxX = Math.max(maxX, x); maxY = Math.max(maxY, y); }
+  if ((maxX - minX) * (maxY - minY) > STAIR_GRID_MAX_CELLS * STAIR_GRID_M * STAIR_GRID_M) return null;
+  for (let x = minX + need; x <= maxX - need; x += STAIR_GRID_M) for (let y = minY + need; y <= maxY - need; y += STAIR_GRID_M) {
+    const d = Math.hypot(x - rect.cx, y - rect.cy);
+    if (d < bestD && inside(x, y) && clear(x, y, need)) { best = [x, y]; bestD = d; }
+  }
+  return best;
 }
+/** The stair-core fallback grid (m), and the most cells it scans (a 400 m x 400 m block at 2 m). */
+export const STAIR_GRID_M = 2;
+export const STAIR_GRID_MAX_CELLS = 40000;

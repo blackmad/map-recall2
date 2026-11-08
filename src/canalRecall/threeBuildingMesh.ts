@@ -702,9 +702,11 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         candidate.furniture = sink.tris;
       }
       if (b.flatRoof.lip && !b.roof) for (const poly of local) candidate.lip.push(...parapetLipTris(poly, b.heightM, b.wallHex, { exposed }));
-      if (b.flatRoof.box && !b.measuredRoof?.furniture.length && rect) {
-        const at = stairCorePoint(local[0], 1, rect);
-        if (at) candidate.box = roofBoxTris(at[0], at[1], rect.ux, rect.uy, BOX_L_M, BOX_W_M, b.heightM, b.heightM + BOX_H_M, BOX_HEX);
+      // The box's rect has no vertex cap (fitRect's 40 left most large BAG footprints without one).
+      const boxRect = b.flatRoof.box && !b.measuredRoof?.furniture.length ? rect ?? fitRect(outer, Infinity) : null;
+      if (boxRect) {
+        const at = stairCorePoint(local[0], 1, boxRect);
+        if (at) candidate.box = roofBoxTris(at[0], at[1], boxRect.ux, boxRect.uy, BOX_L_M, BOX_W_M, b.heightM, b.heightM + BOX_H_M, BOX_HEX);
       }
       surfaceCandidates.push(candidate);
     }
