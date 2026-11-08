@@ -25,7 +25,8 @@ import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
 import { guardFrameHost } from './frameGuards';
-import { settleChecks } from './settle';
+import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
+import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleGates, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
@@ -357,7 +358,10 @@ export class OwnWorldView implements WorldViewOracles {
     this.host = new FrameHost(THREE, container, {
       render: () => this.renderFrame(),
       // The game's loading screen (GameState.LOADING, presentationRuntime.ts) paints over the world opaquely.
-      coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? COVERED_FRAME_MS : null),
+      // While the cold-start hold is armed (holdRidePose) the covered world renders faster: the ground installs one cell
+      // per rendered frame and the idle checks run on render, so at 1 Hz the start pose's cells were still missing at
+      // the 6 s cap (R5-B2 #261). startSettle.ts startSettleCoveredFrameMs.
+      coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? (this._startPose ? startSettleCoveredFrameMs(isTouchPointer(W())) : COVERED_FRAME_MS) : null),
       ...(toon || smaa ? { post: (renderer: any, width: number, height: number) => {
         if (smaa) (this.smaaPost ??= new SmaaPost(THREE)).apply(renderer, width, height);
         if (toon) (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height);
@@ -456,7 +460,11 @@ export class OwnWorldView implements WorldViewOracles {
     const maxPitch = prefs && Number.isFinite(prefs.MAP_MAX_PITCH) ? Math.max(60, prefs.MAP_MAX_PITCH) : 60;
     this.cameraMap = new CameraMap(this.host, { center: [4.9041, 52.3676], zoom: 17, maxPitch });
     // Settled (WorldCamera.whenIdle, game-route.js _waitForMapSettle) means every loader has caught up with the view.
-    for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, busy);
+    // Once the cold-start hold is armed (holdRidePose), and until the loading screen goes, it owns the ground question: settle.ts's 300 m box, judged at
+    // the racing pose, held 5/5 cold desktop starts to the 6 s cap with no ground cell built (R5-B2 #261).
+    for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, name === 'ownGround' ? () => (this.startHoldOwnsGround() ? false : busy()) : busy);
+    // ?startSettle=0 registers nothing here: the hold is today's settleChecks alone (startSettle.ts).
+    if (this.startSettleOn) this.cameraMap.addIdleCheck('startSettle', () => this.startSettleBusy());
     this.camera = this.cameraMap.api;
     const shadows = flag('shadows', '__canalRecallShadows', settings.shadows);
     this._sharedFrame = new SharedFrame(THREE, this.cameraMap, {
@@ -998,6 +1006,96 @@ export class OwnWorldView implements WorldViewOracles {
     this._ownGround?.update(subject, cam.zoom, cam.pitch);
     this.updateFarShells(subject, this._ownGround?.farRadiusM ?? 0);
     this.host.triggerRepaint();
+  }
+
+  /** Cold-start hold (startSettle.ts): on unless `?startSettle=0`. Off, nothing below runs and the hold is today's. */
+  private readonly startSettleOn: boolean = startSettleEnabled(W().__canalRecallStartSettle ?? new URLSearchParams(W().location?.search ?? '').get('startSettle'));
+  private readonly _startSettle = new StartSettleHold(() => this.startSettleCapMs(), startSettleGates(W().__canalRecallStartSettleGround ?? new URLSearchParams(W().location?.search ?? '').get('startSettleGround')));
+  /** The game camera the ride will open on, handed over before the hold (holdRidePose); null once the hold ends. */
+  private _startPose: { camera: GameCamera & { projector?: unknown }; loader: LoaderFrame; canvas: HTMLCanvasElement } | null = null;
+
+  /** The cold-start hold's cap for this device (startSettle.ts); today's 4 s with `?startSettle=0`. game-route.js passes it to `_waitForMapSettle`. */
+  startSettleCapMs(): number {
+    return this.startSettleOn ? startSettleCapMs(isTouchPointer(W())) : START_SETTLE_LEGACY_CAP_MS;
+  }
+
+  /** The last start-hold decision (for the measurement script), or null before the hold has asked. */
+  startSettleStatus(): StartSettleStep | null { return this._startSettle.last; }
+
+  /** Measurement (scripts/start-settle-cold.mjs, R5-B2 #261): the own camera's pose and the start tiers judged at it. */
+  startSettleProbe(): { lng: number; lat: number; zoom: number; pitch: number; bearing: number; groundReady: boolean; groundCentre: boolean; detailCentre: [number, number] | null; detailTiles: number | null; groundWhy: Record<string, unknown> | null } {
+    const cam = this.cameraMap.camera, g: any = this._ownGround, tb: any = this._threeBuildings;
+    return {
+      lng: cam.lng, lat: cam.lat, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing,
+      groundReady: !!g?.ready, groundCentre: this.groundCentreLanded(),
+      detailCentre: tb?.rider ?? null, detailTiles: tb?.detailTiles?.size ?? null,
+      groundWhy: g ? this.groundCentreWhy() : null,
+    };
+  }
+
+  /** Measurement: why the ground's camera cell does or does not read landed (gameGround.coversRect's conditions). */
+  private groundCentreWhy(): Record<string, unknown> {
+    const cam = this.cameraMap.camera, g: any = this._ownGround;
+    const [x, y] = toLocal(cam.lng, cam.lat), r = SETTLE_GROUND_RADIUS_M, keys = new Set<string>();
+    for (let i = 0; i <= 3; i++) for (let j = 0; j <= 3; j++) keys.add(String(g.store?.cellAt?.(x - r + 2 * r * i / 3, y - r + 2 * r * j / 3)));
+    const k = [...keys];
+    return {
+      visible: g.visibleAtZoom?.(g.zoom), zoom: g.zoom, presence: g.presenceUniform?.value, resident: g.resident?.size, loadingCells: g.loadingCells,
+      workerReady: g.workerReady, workerReadyAt: g.startup?.workerReadyAt != null ? Math.round(g.startup.workerReadyAt) : null, built: g.stats?.cellsBuilt, discards: g.discards ? { ...g.discards } : null, gen: g.gen, workers: g.workers?.length, radiusM: g.radiusM,
+      cells: k, missing: k.filter(c => !g.resident?.has(c)), fading: k.filter(c => g.fading?.has(c)), pending: k.filter(c => g.pending?.has(c)),
+    };
+  }
+
+  /**
+   * The own ground has drawn the cell under the camera centre (true when there is no own ground). The start hold asks
+   * for that one ~1 km cell, not settle.ts's 300 m box: the box spans up to four cells, and on a cold desktop start the
+   * worker had built one cell by 6-8 s (R5-B2 #261), so the box held every start to the cap.
+   */
+  private groundCentreLanded(): boolean {
+    const cam = this.cameraMap.camera, g: any = this._ownGround;
+    if (!g) return true;
+    const [x, y] = toLocal(cam.lng, cam.lat), r = START_SETTLE_GROUND_RADIUS_M;
+    return !!g.ready && (!g.coversRect || !!g.coversRect(x - r, y - r, x + r, y + r));
+  }
+
+
+  /**
+   * The game hands over its camera before the cold-start hold (game-route.js, R5-B2 #261): the held frames then run
+   * this view's own sync with it, so the tiers load and are judged at the pose the first racing frame draws (chase
+   * centre ahead of the rider, the ride's zoom, pitch and bearing, the detail block and city rider), not at the pose
+   * aimAtWorld left. Measured: that pose differed from the racing one, so a hold that settled still popped after the
+   * reveal. Nothing with `?startSettle=0`.
+   */
+  holdRidePose(camera: GameCamera & { projector?: unknown }, loader: LoaderFrame, canvas: HTMLCanvasElement): void {
+    if (!this.startSettleOn || this._startSettle.done) return;
+    this._startPose = { camera, loader, canvas };
+    this._startHeld = true;
+  }
+  private _startHeld = false;
+  /** The cold-start hold was armed and the loading screen is still up: settle.ts's ownGround check stands down. */
+  private startHoldOwnsGround(): boolean { return this._startHeld && W().canalRecallGame?.state === LOADING_STATE; }
+
+  /**
+   * One-shot idle check for the cold start: busy while the buildings, far ring or baked coarse tier (and with
+   * `?startSettleGround=1` the ground's camera cell) is still loading at the start pose; idle until holdRidePose arms it. Each poll first advances the world at the ride's pose (sync with the
+   * handed-over game camera), so the held frames fetch and build (the game's own
+   * sync does not run under the loading screen; checkIdle polls this from the held frames). Ends at settled or the cap.
+   */
+  private startSettleBusy(): boolean {
+    // Armed only by the cold-start hold's holdRidePose: any earlier whenIdle or pendingWork() caller (menu, world prep,
+    // a perf sampler) polled R5-B's always-armed check, started its clock at page load and latched it done before the
+    // hold began, which is why that change measured no difference on desktop.
+    if (!this._startPose) return false;
+    const busy = this._startSettle.poll(performance.now(), () => {
+      const p = this._startPose!;
+      this.sync(p.camera, p.loader, p.canvas);
+      this.host.triggerRepaint();
+    }, () => {
+      const w = this.worldSettled();
+      return { groundCentre: this.groundCentreLanded(), buildings: w.buildings, far: w.far, baked: w.baked };
+    });
+    if (!busy) this._startPose = null;
+    return busy;
   }
 
   /** Every streaming tier landed for the current view: ground, city tiles, facades, far and baked coarse (dissolves included). */
