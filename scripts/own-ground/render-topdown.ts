@@ -68,7 +68,7 @@ async function main(): Promise<void> {
   const [lng, lat] = [Number(args[0]), Number(args[1])], half = Number(args[2] ?? 120), res = Number(args[3] ?? 0.25);
   const outPath = args[4] ?? `artifacts/own-ground-roads/topdown-${lng}-${lat}.png`;
   const ROOT = 'public/data/extracts/amsterdam';
-  const store = new GroundStore(async path => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); }, { ...(process.argv.includes('--roads') ? { roads: true } : {}), ...(process.argv.includes('--no-way-openings') ? { wayOpenings: false } : {}) });
+  const store = new GroundStore(async path => { const b = readFileSync(join(ROOT, path)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); }, { ...(process.argv.includes('--roads') ? { roads: true } : {}), ...(process.argv.includes('--no-way-openings') ? { wayOpenings: false } : {}), ...(process.argv.includes('--r5c1-off') ? { bridgeCarry: false, redDedupe: false } : {}) });
   await store.init();
   const [x, y] = toLocal(lng, lat);
   // Every cell whose ways can reach the view (a way lives in the cell of its midpoint).
