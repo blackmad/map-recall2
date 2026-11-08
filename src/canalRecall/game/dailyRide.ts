@@ -199,6 +199,8 @@ export const DAILY_RIDE_MAX_KM = 5;
 export interface DailyPoolPoi extends RoutePoi {
   /** The repeat key: no buurt starts or ends two rides in the same 7 days. */
   buurt: string;
+  /** Marks a buurt place, so the arrival card tells the neighbourhood (finishBlurb.buurtFinishBlurb). */
+  buurtPlace: true;
 }
 
 /** Estimated ride km, 0.1 km: what the card prints and the bounds test. */
@@ -242,7 +244,7 @@ function drawPoolPair(
 const poolCache = new Map<string, Map<string, [DailyPoolPoi, DailyPoolPoi] | null>>();
 
 function toPoolPoi(place: DailyPoolPlace): DailyPoolPoi {
-  return { id: place.id, name: place.name, lat: place.lat, lng: place.lng, buurt: place.buurt };
+  return { id: place.id, name: place.name, lat: place.lat, lng: place.lng, buurt: place.buurt, buurtPlace: true };
 }
 
 /** Pool pairs by date from the cutover up to `date`, each clear of the 7 days before it. Memoised per pool. */

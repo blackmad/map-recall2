@@ -27,3 +27,20 @@ export function finishBlurb(
   if (chosen?.text.detail) return { text: chosen.text.detail, choice: chosen.choice };
   return { text: lede || fallback, choice: null };
 }
+
+/**
+ * Today's ride ends at a buurt (dailyRidePool.ts, #279), not at a landmark, so
+ * the arrival card tells the neighbourhood's own postcard text (the Wikipedia
+ * extract the neighbourhood postcard shows) instead of the nearest landmark's:
+ * the Jordaan finish used to read as the Hendrik fire station. Null when the
+ * finish is not a buurt place. A buurt without postcard text gets '' (the card
+ * then shows no blurb, never a neighbouring landmark's).
+ */
+export function buurtFinishBlurb(
+  routeTo: { name?: string; buurtPlace?: boolean } | null | undefined,
+  neighborhoods: ReadonlyArray<{ name: string; wikipediaExtract?: string }> | null | undefined,
+): { name: string; text: string } | null {
+  if (!routeTo?.buurtPlace || !routeTo.name || !neighborhoods) return null;
+  const hood = neighborhoods.find(candidate => candidate.name === routeTo.name);
+  return { name: routeTo.name, text: hood?.wikipediaExtract?.trim() || '' };
+}
