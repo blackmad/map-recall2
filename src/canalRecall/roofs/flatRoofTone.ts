@@ -51,3 +51,25 @@ export function flatRoofPriorHex(id: string, year: number | null | undefined, re
   }
   return rgbToHex(c);
 }
+
+/**
+ * The lid's render gain at the U1 pose (#265 step 1): rendered luma / tint luma = 1.13–1.14 on 12 of the 15 largest
+ * flat lids. The tint already matches the orthophoto (measured slots: mean tint 135 vs ortho 136), so the frame read
+ * ~+13 brighter than the photo. With the tone flag on the lid tint is scaled by ~1/1.135 (0.89 fits U1 best: 13/15 predicted within ±10); the shared LID_SHADE /
+ * BAKED_LID_SHADE (also the pitched-roof and shell constant) is left alone.
+ */
+export const FLAT_LID_EXPOSURE = 0.89;
+/** A mapped roof colour (a tag, not a measurement) keeps its hue but moves this far toward the prior's lightness. */
+export const MAPPED_TOWARD_PRIOR = 0.5;
+
+export function scaleHex(hex: string, k: number): string {
+  const [r, g, b] = hexToRgb(hex);
+  return rgbToHex([r * k, g * k, b * k]);
+}
+
+/** `mapped` with its HSL lightness moved `w` of the way to `prior`'s (hue and saturation kept). */
+export function mappedTowardPrior(mapped: string, prior: string, w = MAPPED_TOWARD_PRIOR): string {
+  const [h, s, l] = rgbToHsl(hexToRgb(mapped));
+  const [, , lp] = rgbToHsl(hexToRgb(prior));
+  return rgbToHex(hslToRgb([h, s, l + (lp - l) * w]));
+}

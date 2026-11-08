@@ -12,7 +12,7 @@ import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor 
 import { paletteFor } from './bayTextures.js';
 import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
 import { decodeFurniture, roofSlotHex } from './roofs/roofSlots.js';
-import { flatRoofPriorHex, flatRoofToneEnabled } from './roofs/flatRoofTone.js';
+import { FLAT_LID_EXPOSURE, flatRoofPriorHex, flatRoofToneEnabled, mappedTowardPrior, scaleHex } from './roofs/flatRoofTone.js';
 import { BOX_MIN_M2, LIP_MIN_M2, flatRoofSurfaceEnabled, flatRoofSurfaceLayer } from './roofs/flatRoofSurface.js';
 import { isRoofSlot } from './roofs/roofFacts.js';
 import { largeTierSystem, plinthHex } from './largeBuildingTier.js';
@@ -69,10 +69,16 @@ function measuredRoofOf(p: Record<string, unknown>, look: BuildingLook): { hex: 
  */
 function applyFlatRoof(building: MeshBuilding, p: Record<string, unknown>, look: BuildingLook, id: string, measured: ReturnType<typeof measuredRoofOf>, mapped: boolean, cells: ReturnType<typeof cellSetOf>, areaM2: number): void {
   if (!building.lid) return;
-  if (flatRoofToneEnabled() && !measured && !mapped) {
+  if (flatRoofToneEnabled()) {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const prior = flatRoofPriorHex(id, year);
-    building.lid = { ...building.lid, hex: cells === 'procedural' ? prior : lookHex(prior, look) };
+    const priorHex = cells === 'procedural' ? prior : lookHex(prior, look);
+    let hex = building.lid.hex;
+    if (!measured && !mapped) hex = priorHex;
+    else if (!measured && mapped) hex = mappedTowardPrior(hex, priorHex);
+    // The lid's render gain (1.135 at U1) is a look-cells figure; procedural and cartoon lids keep their tint.
+    if (cells !== 'procedural' && !LOOK_VARIANTS[look].cartoonRoofCells) hex = scaleHex(hex, FLAT_LID_EXPOSURE);
+    building.lid = { ...building.lid, hex };
   }
   if (!flatRoofSurfaceEnabled() || LOOK_VARIANTS[look].cartoonRoofCells) return;
   const surfaceLayer = flatRoofSurfaceLayer(cells);

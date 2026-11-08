@@ -1,7 +1,7 @@
 // Lane R5-E (#265): flat-roof tone and surface. Run: node --import tsx --test src/canalRecall/roofs/flatRoof.test.ts (joins test:roofs).
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { FLAT_ROOF_BANDS, PRIOR_JITTER, flatRoofBand, flatRoofPriorHex, flatRoofToneEnabled } from './flatRoofTone.ts';
+import { FLAT_LID_EXPOSURE, FLAT_ROOF_BANDS, PRIOR_JITTER, flatRoofBand, flatRoofPriorHex, flatRoofToneEnabled, mappedTowardPrior, scaleHex } from './flatRoofTone.ts';
 import { BOX_MIN_M2, FLAT_SURFACE_BUDGET, LIP_H_M, LIP_W_M, SEAM_EVERY_M, LID_CELL_M, SURFACE_MEAN, flatRoofSurfaceEnabled, flatRoofSurfaceLayer, paintFlatRoofSurfaceCell, parapetLipTris, roofBoxTris, stairCorePoint } from './flatRoofSurface.ts';
 import { applyRoofFact } from './roofFacts.ts';
 import { meshBuildingFor, buildFeatureChunk, type Feature } from '../threeBuildingFeatures.ts';
@@ -141,7 +141,7 @@ test('roof box: 10 triangles, closed above the roof; the stair core sits on the 
 
 test('meshBuildingFor: an unmeasured flat roof takes the period prior, its surface layer, a lip and a box; measured and mapped keep theirs', () => {
   const b = meshBuildingFor(feature({}), 'photo')!;
-  const prior = lumaOf(hexToRgb(FLAT_ROOF_PERIOD_PRIORS['1970-1989'])), y = lumaOf(hexToRgb(b.lid!.hex));
+  const prior = lumaOf(hexToRgb(FLAT_ROOF_PERIOD_PRIORS['1970-1989'])) * FLAT_LID_EXPOSURE, y = lumaOf(hexToRgb(b.lid!.hex));
   assert.ok(Math.abs(y - prior) < prior * PRIOR_JITTER + 8, `lid ${b.lid!.hex} ${y} vs prior ${prior}`);
   assert.equal(b.lid!.surfaceLayer, flatRoofSurfaceLayer('photo'));
   assert.deepEqual(b.flatRoof, { lip: true, box: true, areaM2: b.flatRoof!.areaM2 });
@@ -149,12 +149,15 @@ test('meshBuildingFor: an unmeasured flat roof takes the period prior, its surfa
   const small = meshBuildingFor(feature({}, box(8, 10)), 'photo')!;
   assert.deepEqual({ ...small.flatRoof, areaM2: 0 }, { lip: false, box: false, areaM2: 0 });
   const mapped = meshBuildingFor(feature({ roofColour: '#3a3a3a', colour: '#aa8866' }), 'photo')!;
-  assert.equal(mapped.lid!.hex, withSearch(OFF, () => meshBuildingFor(feature({ roofColour: '#3a3a3a', colour: '#aa8866' }), 'photo')!).lid!.hex, 'a mapped roof colour keeps it');
+  const mappedOff = withSearch(OFF, () => meshBuildingFor(feature({ roofColour: '#3a3a3a', colour: '#aa8866' }), 'photo')!);
+  assert.equal(mappedOff.lid!.hex, '#3a3a3a');
+  const priorOf = (r: Record<string, unknown>) => withSearch('?flatRoofSurface=0', () => meshBuildingFor(feature(r), 'photo')!).lid!.hex;
+  assert.equal(mapped.lid!.hex, scaleHex(mappedTowardPrior('#3a3a3a', scaleHex(priorOf({}), 1 / FLAT_LID_EXPOSURE)), FLAT_LID_EXPOSURE), 'a mapped colour (a tag) moves halfway to the prior lightness, then takes the lid exposure');
   const p: Record<string, unknown> = {};
   applyRoofFact(p, { slot: 'gravel', rgb: [140, 135, 120], confidence: 0.9, solarShare: 0, terrace: false, furniture: [{ kind: 'hvac', e: 5, n: 5, w: 1.2, l: 2, yawDeg: 0 }] });
   const measured = meshBuildingFor(feature(p), 'photo')!;
   const off = withSearch(OFF, () => meshBuildingFor(feature(p), 'photo')!);
-  assert.equal(measured.lid!.hex, off.lid!.hex, 'a measured lid keeps its colour');
+  assert.equal(measured.lid!.hex, scaleHex(off.lid!.hex, FLAT_LID_EXPOSURE), 'a measured lid keeps its colour, under the lid exposure');
   assert.deepEqual({ ...measured.flatRoof, areaM2: 0 }, { lip: true, box: false, areaM2: 0 }, 'measured furniture: no generic box');
   // A planned pitched roof is not a flat roof.
   const pitched = meshBuildingFor(feature({ roofPlanned: true, roofShape: 'gable', facadeStyle: 'canal' }), 'photo')!;
@@ -209,4 +212,15 @@ test('the box threshold: no box under BOX_MIN_M2', () => {
   const b = meshBuildingFor(feature({}, box(15, 20)), 'photo')!;
   assert.ok(15 * 20 < BOX_MIN_M2);
   assert.deepEqual({ ...b.flatRoof, areaM2: 0 }, { lip: true, box: false, areaM2: 0 });
+});
+
+test('lid exposure: 1/1.135 on look-cell lids (the U1 render gain); a mapped tag keeps its hue, half its lightness gap', () => {
+  assert.ok(Math.abs(FLAT_LID_EXPOSURE - 1 / 1.135) < 0.01);
+  assert.equal(scaleHex('#808080', 0.5), '#404040');
+  const m = mappedTowardPrior('#a99b84', '#737373');
+  const ym = lumaOf(hexToRgb(m)), ya = lumaOf(hexToRgb('#a99b84')), yp = lumaOf(hexToRgb('#737373'));
+  assert.ok(Math.abs(ym - (ya + yp) / 2) < 6, `${m} ${ym} between ${ya} and ${yp}`);
+  // Procedural lids keep their tint (the gain was measured on look cells).
+  const proc = meshBuildingFor(feature({ roofColour: '#3a3a3a', colour: '#aa8866' }), 'procedural')!;
+  assert.equal(proc.lid!.hex, mappedTowardPrior('#3a3a3a', flatRoofPriorHex('NL.IMBAG.Pand.0363100012999001', 1978)));
 });
