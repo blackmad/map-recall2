@@ -2,6 +2,23 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-08",
+      "title": "Flying over the city hitches less",
+      "text": "Panning across Amsterdam from the air used to stutter each time a new district came into view: the whole district arrived in one go, and the ride spent a second or two handing every building, tree and baked block over at once. The arrivals are now spread out, nearest the middle of the view first, so a desktop flight across the city stays smooth (frames over a tenth of a second on a three-minute flight: 8 to 12, from 38 to 52). Nothing is missing; a far district simply fades in over a moment instead of all at once. Add ?arrivalPace=0 to the ride link to compare. Phones are unchanged until measured.",
+      "images": [
+        {
+          "src": "engine/2026-11-08-r4e/continuous-off-vs-on.png",
+          "alt": "Frame-time timelines of a three-minute desktop flight over Amsterdam, before and after the paced arrivals",
+          "caption": "A continuous flight, before (top) and after (bottom): the spikes at each new district are gone."
+        },
+        {
+          "src": "engine/2026-11-08-r4e/mid-arrival-main-vs-lane.png",
+          "alt": "The city from the air mid-arrival, before and after, at four moments of the flight",
+          "caption": "Mid-arrival at four moments of the flight: nothing missing with the pacing on."
+        }
+      ]
+    },
+    {
       "date": "2026-11-07",
       "title": "The baked city from the air is back on",
       "text": "Earlier this evening the baked city from the air was switched off for a few hours after a test showed the canal houses missing at some chase heights. That turned out to be the test holding the camera still, not the ride: with the game running, the houses were always there. It is on again on desktop, and the fade that brings each baked block in no longer depends on the camera moving. Add ?bakedCoarse=0 to the ride link to compare.",

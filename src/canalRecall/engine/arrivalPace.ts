@@ -12,8 +12,9 @@
  * pan's leading edge (about one cell a second at 120 m/s) never waits. `?arrivalPace=ring` paces the ring only,
  * `?arrivalPace=baked` only the baked coarse installs (bakedCoarse.ts: at most one cell installed per frame, so a
  * cell's upload does not share its frame with another's), `?arrivalPace=features` delivers the resident buildings to
- * the facade layer at most every AERIAL_FEATURES_GAP_MS from the air (PacedDelivery); comma lists combine them. Off by
- * default until measured; with the flag off the ring, the installs and the deliveries are exactly as before.
+ * the facade layer at most every AERIAL_FEATURES_GAP_MS from the air (PacedDelivery); comma lists combine them. Desktop default on
+ * since 2026-11-08 (ARRIVAL_PACE_DESKTOP_DEFAULT), touch off; with the flag off the ring, the installs and the deliveries
+ * are exactly as before.
  * `?arrivalPace=trees` holds the inventory trees to one rebuild a second from the air (treeRebuildGap).
  */
 import { cellBounds, parseCellKey } from '../world/cellGrid.js';
@@ -36,13 +37,27 @@ export const AERIAL_TREE_REBUILD_GAP_MS = 1000;
 export type ArrivalPace = { ring: boolean; baked: boolean; features: boolean; trees: boolean };
 
 /**
- * `?arrivalPace=1|on`: all three; or a comma list of `ring`, `baked`, `features`; absent, `0` or anything else: off
- * (null).
+ * Desktop default on (integrator, 2026-11-08, #248): the lane's continuous 120 m/s pan with all four on met both aerial
+ * gates in both runs (8 / 12 frames > 100 ms, p99 worst window 91.7 / 91.6 ms; off: 38 / 52, 140.8 / 141.6), the
+ * 60 s street ride unchanged. Touch default off: the iPhone pan is not measured with the flag. `?arrivalPace=0` compares.
+ */
+export const ARRIVAL_PACE_DESKTOP_DEFAULT = true;
+export const ARRIVAL_PACE_TOUCH_DEFAULT = false;
+
+/**
+ * `?arrivalPace=1|on`: all four; or a comma list of `ring`, `baked`, `features`, `trees`; `0` or anything else: off
+ * (null). Absent: the device default, ARRIVAL_PACE_DESKTOP_DEFAULT on a fine pointer, ARRIVAL_PACE_TOUCH_DEFAULT on a
+ * coarse one (the iPhone is not measured).
  */
 export function arrivalPaceOption(search: string = typeof location !== 'undefined' ? location.search : '', w: any = typeof window !== 'undefined' ? window : {}): ArrivalPace | null {
   let v: string | null = null;
   try { v = new URLSearchParams(search).get('arrivalPace'); } catch { /* no location */ }
   if (v === null && w?.__canalRecallArrivalPace !== undefined) v = String(w.__canalRecallArrivalPace);
+  if (v === null) {
+    let touch = false;
+    try { touch = !!w?.matchMedia?.('(pointer: coarse)')?.matches; } catch { /* no matchMedia */ }
+    return (touch ? ARRIVAL_PACE_TOUCH_DEFAULT : ARRIVAL_PACE_DESKTOP_DEFAULT) ? { ring: true, baked: true, features: true, trees: true } : null;
+  }
   if (v === '1' || v === 'on' || v === 'true') return { ring: true, baked: true, features: true, trees: true };
   const parts = new Set((v ?? '').split(',').map(x => x.trim()));
   const out = { ring: parts.has('ring'), baked: parts.has('baked'), features: parts.has('features'), trees: parts.has('trees') };

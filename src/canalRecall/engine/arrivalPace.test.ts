@@ -9,9 +9,13 @@ import { cellBounds } from '../world/cellGrid.js';
 const centreOf = (i: number, j: number) => { const [w, s, e, n] = cellBounds(i, j); return [(w + e) / 2, (s + n) / 2] as const; };
 const grid = (r: number, i0 = 0, j0 = 0) => { const out = new Set<string>(); for (let i = -r; i <= r; i++) for (let j = -r; j <= r; j++) out.add(`${i + i0}_${j + j0}`); return out; };
 
-test('flag: off unless ?arrivalPace=1|on|ring|baked|features (or the global)', () => {
-  assert.equal(arrivalPaceOption('', {}), null);
+const touch = { matchMedia: (q: string) => ({ matches: q === '(pointer: coarse)' }) };
+test('flag: desktop default on, touch default off; ?arrivalPace=0 off, 1|on|ring|baked|features|trees (or the global) as named', () => {
+  assert.deepEqual(arrivalPaceOption('', {}), { ring: true, baked: true, features: true, trees: true }, 'desktop default on (2026-11-08, #248: continuous pan 8 / 12 frames > 100 ms against 38 / 52)');
+  assert.equal(arrivalPaceOption('', touch), null, 'touch default off: the iPhone pan is not measured with the flag');
   assert.equal(arrivalPaceOption('?arrivalPace=0', {}), null);
+  assert.equal(arrivalPaceOption('?arrivalPace=0', touch), null);
+  assert.deepEqual(arrivalPaceOption('?arrivalPace=1', touch), { ring: true, baked: true, features: true, trees: true }, 'the query overrides the touch default');
   assert.deepEqual(arrivalPaceOption('?arrivalPace=1', {}), { ring: true, baked: true, features: true, trees: true });
   assert.deepEqual(arrivalPaceOption('?arrivalPace=ring', {}), { ring: true, baked: false, features: false, trees: false });
   assert.deepEqual(arrivalPaceOption('?arrivalPace=baked', {}), { ring: false, baked: true, features: false, trees: false });
@@ -98,8 +102,10 @@ test('PacedDelivery: from the air a burst of tile arrivals is one delivery per g
 test('treeRebuildGap: undefined when off (the coalescer keeps its constant); with trees, 1 s from the air, 120 ms at street level', async () => {
   const { treeRebuildGap, AERIAL_TREE_REBUILD_GAP_MS } = await import('./arrivalPace.js');
   const cam = (zoom: number, pitch: number) => ({ zoom: () => zoom, pitch: () => pitch, center: () => ({ lat: 52.37 }) });
-  assert.equal(treeRebuildGap(cam(17.8, 60), '', {}), undefined);
+  assert.equal(treeRebuildGap(cam(17.8, 60), '?arrivalPace=0', {}), undefined);
+  assert.equal(treeRebuildGap(cam(17.8, 60), '', touch), undefined, 'touch default off');
   assert.equal(treeRebuildGap(cam(17.8, 60), '?arrivalPace=ring', {}), undefined);
+  assert.equal(treeRebuildGap(cam(14.5, 70), '', {})!(), AERIAL_TREE_REBUILD_GAP_MS, 'desktop default on');
   const air = treeRebuildGap(cam(14.5, 70), '?arrivalPace=trees', {})!;
   assert.equal(air(), AERIAL_TREE_REBUILD_GAP_MS);
   assert.equal(treeRebuildGap(cam(19, 60), '?arrivalPace=1', {})!(), 120);
