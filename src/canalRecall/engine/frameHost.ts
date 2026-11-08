@@ -84,6 +84,12 @@ export interface FrameHostOptions {
   createRenderer?: (canvas: HTMLCanvasElement) => any;
 }
 
+/**
+ * A paced frame may come this much early: animation frames arrive on the display's vsync (16.7 ms at 60 Hz, 8.3 ms at
+ * 120 Hz) with jitter, so a 33.3 ms pace taken strictly would often wait one vsync too many (an uneven 20-30 fps).
+ */
+export const PACE_SLACK_MS = 4;
+
 /** Fixed-step accumulator: how many steps to run for a frame of `dtSeconds`, and the leftover fraction. */
 export class StepClock {
   private acc = 0;
@@ -110,8 +116,16 @@ export class FrameHost {
   readonly contextEvents = { lost: 0, restored: 0 };
   readonly clock: StepClock;
   /** Frames drawn, and the last frame's render time (ms, main thread). */
-  readonly stats = { frames: 0, renderMs: 0, ticks: 0, idleFrames: 0, coveredSkips: 0 };
+  readonly stats = { frames: 0, renderMs: 0, ticks: 0, idleFrames: 0, coveredSkips: 0, pacedSkips: 0 };
   private lastRenderAt = -Infinity;
+  /**
+   * Least ms between rendered frames, measured on the animation-frame clock, or null (render every frame something
+   * changed). Set per frame by the world view (engine/aerialPower.ts `?aerialFps=0`: 30 fps while the camera flies from
+   * the air). The simulation still steps every animation frame; a skipped frame stays dirty and draws at the next one
+   * the pace allows, or at once when the pace is lifted.
+   */
+  minFrameMs: number | null = null;
+  private lastPacedAt = -Infinity;
   private readonly hooks: FrameHostHooks;
   private sim: FrameSimulation | null = null;
   private readonly options: FrameHostOptions;
@@ -279,8 +293,10 @@ export class FrameHost {
     // Measured from the end of the last render, so a frame slower than the interval still leaves the interval free.
     const covered = this.hooks.coveredFrameMs?.() ?? null, clock = this.options.now ?? (() => performance.now());
     let rendered = false;
+    const paced = covered == null ? this.minFrameMs : null;
     if (covered != null && clock() - this.lastRenderAt < covered) { if (this.dirty) this.stats.coveredSkips++; else this.stats.idleFrames++; }
-    else if (this.dirty || this.hooks.wantsFrame?.()) { this._render(); this.lastRenderAt = clock(); rendered = true; }
+    else if (paced != null && t - this.lastPacedAt < paced - PACE_SLACK_MS && (this.dirty || this.hooks.wantsFrame?.())) this.stats.pacedSkips++;
+    else if (this.dirty || this.hooks.wantsFrame?.()) { this._render(); this.lastRenderAt = clock(); this.lastPacedAt = t; rendered = true; }
     else this.stats.idleFrames++;
     if (phases && rendered) phases.end(performance.now() - f0);
     this.schedule();

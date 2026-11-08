@@ -41,7 +41,8 @@ import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
 import { BakedCoarse, bakedCoarseEnabled, bakedBytesEnabled, bakedReleaseM } from './bakedCoarse';
 import { PacedDelivery, arrivalPaceOption } from './arrivalPace';
-import { isAerialView } from '../rendererShared/aerialView';
+import { AERIAL_EYE_MIN_M, eyeHeightM, isAerialView } from '../rendererShared/aerialView';
+import { AerialPower, aerialLeversFromQuery } from './aerialPower';
 import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
 import { SmaaPost, smaaFlag } from './postAA';
@@ -147,6 +148,10 @@ export class OwnWorldView implements WorldViewOracles {
   readonly camera: WorldCamera;
   readonly _sharedFrame: SharedFrame;
   _renderGovernor: any = null;
+  /** Power from the air (engine/aerialPower.ts, lane R5-F #266): pacing, scale and shadow levers while the camera flies. */
+  _aerialPower: AerialPower | null = null;
+  /** The pixel ratio before the aerial scale lowered it (restored when the camera settles). */
+  private aerialBaseRatio: number | null = null;
   /** The quality tier chosen at start, its settings and the probe numbers (also on window.__canalPerf). */
   qualityTier: { tier: QualityTier; reasons: string[]; settings: Record<string, unknown>; probe: unknown } | null = null;
   _cameraTilt = 0;
@@ -466,13 +471,15 @@ export class OwnWorldView implements WorldViewOracles {
     const guards = guardFrameHost(this.host, {
       governor: flag('governor', '__canalRecallGovernor', true),
       fixedPixelRatio: new URLSearchParams(W().location?.search ?? '').has('dpr'),
-      active: () => !!W().canalRecallGame && W().canalRecallGame.state === 4,
+      // A paced or scaled aerial flight (aerialPower.ts) is not a slow machine: its frames are not judged.
+      active: () => !!W().canalRecallGame && W().canalRecallGame.state === 4 && !this.aerialFlying(),
       setShadows: shadows ? on => this._sharedFrame.setShadows(on) : undefined,
       restoredOk: () => !!this._sharedFrame.renderer,
       probe: () => this.graphicsProbe(),
       maxPixelRatio: explicitDpr ? undefined : Math.min(dpr, cap, settings.dprCap),
     });
     this._renderGovernor = guards.governor;
+    this._aerialPower = new AerialPower(aerialLeversFromQuery(W().location?.search ?? '', W()));
     // Perf HUD (engine/perfHud.ts, lane R1-C #225): `?perfHud=1` or "Show performance"; `__canalPerf.snapshot()` is the
     // same numbers for the ride heartbeat and the stall report (rideHeartbeat.ts).
     W().__canalPerf = { ...(W().__canalPerf ?? {}), snapshot: (p99Ms: number | null = null) => this.perfSnapshot(p99Ms) };
@@ -1006,6 +1013,33 @@ export class OwnWorldView implements WorldViewOracles {
     return { settled: ground && city && buildings && far && baked, ground, city, buildings, far, baked, detail: { groundFading: fading, city: c && { inFlight: c.inFlight, queued: c.queued, styling: !!c.styling }, buildingsPending: tb?.pending?.length ?? 0, far: fs && { pending: fs.pending }, baked: bs && { covered: bs.covered, cells: bs.cells, drawn: bs.drawn, fading: bs.fading, pending: bs.pending } } };
   }
 
+  /** The aerial levers hold the frame rate or the pixel ratio below native this frame. */
+  private aerialFlying(): boolean {
+    const d = this._aerialPower?.decision;
+    return !!d && (d.frameMs != null || d.scale !== 1);
+  }
+
+  /** Lane R5-F (#266): this frame's aerial power decision, applied to the frame host and the shared frame. */
+  private applyAerialPower(view: { lngLat: [number, number]; zoom: number; bearing: number; detached?: boolean; introFlat: number }, pitch: number): void {
+    const power = this._aerialPower!, before = power.decision;
+    const d = power.update({
+      now: performance.now(), aerial: view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]), detached: !!view.detached,
+      high: view.introFlat === 0 && eyeHeightM(view.zoom, pitch, view.lngLat[1]) >= AERIAL_EYE_MIN_M,
+      lng: view.lngLat[0], lat: view.lngLat[1], zoom: view.zoom, pitch, bearing: view.bearing,
+    });
+    this.host.minFrameMs = d.frameMs;
+    if (d.scale !== before.scale) {
+      // Inside the game frame, before this frame's render: the resized canvas is drawn at once (never shown cleared).
+      if (d.scale !== 1) { this.aerialBaseRatio = this.host.getPixelRatio(); this.host.setPixelRatio(this.aerialBaseRatio * d.scale); }
+      else if (this.aerialBaseRatio != null) { this.host.setPixelRatio(this.aerialBaseRatio); this.aerialBaseRatio = null; }
+    }
+    const frame = this._sharedFrame;
+    if (frame) {
+      frame.shadowEvery = d.shadowEvery;
+      if (d.shadowMapSize !== before.shadowMapSize) frame.setShadowMapSize(d.shadowMapSize);
+    }
+  }
+
   setExtractRoot(path: string): void { if (path) this.extractPath = path.replace(/\/$/, ''); }
   setCameraTilt(degrees: number): void {
     const prefs = W().CanalRecallPreferences;
@@ -1112,6 +1146,7 @@ export class OwnWorldView implements WorldViewOracles {
     lap('far shells');
     this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
     lap('jumpTo and move listeners');
+    if (this._aerialPower?.any) this.applyAerialPower(view, pitch);
     this.lastSubject = view.subject;
     // From the air the detail block keeps its last plan (detailRing.ts detailBlockFrozen, lane R3-G #242): panning at
     // ~150 m no longer builds and dissolves detail tiles at every z16 edge the subject crosses. Not during the intro.
