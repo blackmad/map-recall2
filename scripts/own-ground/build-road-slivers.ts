@@ -1,7 +1,7 @@
 // roads-v1 version-3 cells: junction slivers merged, same-class seams dissolved, kerb stubs dropped (engine round 5,
 // lane R5-C2, issue #263; rules in src/canalRecall/ownGround/roadSlivers.ts dissolveSlivers).
 //
-//   npx tsx scripts/own-ground/build-road-slivers.ts [--from public/data/extracts/amsterdam/roads-v1] [--out artifacts/roads-v1-staging] [--cells a,b] [--no-seams]
+//   npx tsx scripts/own-ground/build-road-slivers.ts [--from public/data/extracts/amsterdam/roads-v1] [--out artifacts/roads-v1-staging] [--cells a,b] [--seams]
 //
 // Reads the published version-2 cells and writes <out>/cells-v3/<key>.json.gz, <out>/cells.json (the published
 // manifest with `v3: true`) and <out>/report.json (polygons before/after per class, sliver area moved by class pair,
@@ -23,7 +23,7 @@ import { decodeRoadCell } from '../../src/canalRecall/ownGround/roadCells.ts';
 const argOf = (n: string) => { const i = process.argv.indexOf(n); return i > 0 ? process.argv[i + 1] : null; };
 const FROM = argOf('--from') ?? 'public/data/extracts/amsterdam/roads-v1';
 const OUT = argOf('--out') ?? 'artifacts/roads-v1-staging';
-const seams = !process.argv.includes('--no-seams');
+const seams = process.argv.includes('--seams');
 const manifest = JSON.parse(readFileSync(`${FROM}/cells.json`, 'utf8')) as RoadsManifest;
 const keys = argOf('--cells')?.split(',') ?? manifest.cells;
 rmSync(`${OUT}/${ROAD_CELLS_V3_DIR}`, { recursive: true, force: true });

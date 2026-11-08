@@ -245,13 +245,15 @@ export interface DissolveStats {
  * two polygons sharing an edge carry identical vertices (topoSimplify.ts), so the shared edges cancel exactly:
  *   1. a ground-level sliver (isSliver) joins the same-level neighbour it shares the longest boundary with and takes
  *      its class and mesh (deck slivers are left to the deck path);
- *   2. ground-level DISSOLVE_CLASSES neighbours of the same class and mesh dissolve (`seams`, default on);
+ *   2. ground-level DISSOLVE_CLASSES neighbours of the same class and mesh dissolve (`seams`, opt-in: see below);
  *   3. kerb segments on an edge that is now inside a polygon, or between classes that no longer kerb, go; a sliver's
  *      outer edge that now kerbs (an in-cell neighbour) gains one; runs shorter than KERB_MIN_M go.
  * Untouched polygons and kerb runs are written back as they were.
  */
 export function dissolveSlivers(cell: RoadCell, opts: { seams?: boolean } = {}): { cell: RoadCell; stats: DissolveStats } {
-  const seams = opts.seams !== false;
+  // Off by default: at the IJ-tunnel ramps the dissolved carriageways lost their trench surfaces (staged shot 2026-11-08);
+  // the seams carry no kerb and draw the same mesh, so dissolving them changes nothing a rider sees.
+  const seams = opts.seams === true;
   const surf = cell.surfaces;
   const rings = surf.map(s => s.r.map(decodeInt));
   const stats: DissolveStats = { polygonsBefore: surf.length, polygonsAfter: 0, slivers: 0, sliversMerged: 0, sliversKept: 0, seamsDissolved: 0, movedM2: {}, byClassBefore: {}, byClassAfter: {}, kerbRunsBefore: cell.kerbs.length, kerbRunsAfter: 0, kerbStubsDropped: 0, kerbSegmentsRemoved: 0, kerbSegmentsAdded: 0, unionFailed: 0 };

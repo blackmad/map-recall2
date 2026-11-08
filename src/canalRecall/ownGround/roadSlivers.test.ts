@@ -59,13 +59,13 @@ test('dissolveSlivers: same-class carriageway neighbours dissolve, footways do n
       surface('foot', 'paving', [[100, 100], [200, 100], [200, 200], [100, 200]]),
     ],
   };
-  const { cell: out, stats } = dissolveSlivers(cell);
+  const { cell: out, stats } = dissolveSlivers(cell, { seams: true });
   assert.equal(stats.seamsDissolved, 1);
   assert.equal(out.surfaces.filter(s => s.c === 'carriage').length, 1);
   assert.equal(out.surfaces.filter(s => s.c === 'foot').length, 2);
   const area = decodeRoadCell(out).surfaces.filter(s => s.c === 'carriage').reduce((a, s) => a + polygonShape(s.rings).area, 0);
   assert.ok(Math.abs(area - 200) < 1e-6, `area ${area}`);
-  assert.equal(dissolveSlivers(cell, { seams: false }).stats.seamsDissolved, 0);
+  assert.equal(dissolveSlivers(cell).stats.seamsDissolved, 0, 'seams are opt-in');
 });
 
 test('dissolveSlivers: a deck sliver is left to the deck path; an untouched cell keeps its polygons', () => {
