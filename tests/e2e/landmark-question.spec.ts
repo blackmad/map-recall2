@@ -44,7 +44,10 @@ async function approachWesterkerk(page: Page, extra: { streetOpen?: boolean } = 
     const mentions: string[] = [];
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     for (let node = walker.nextNode(); node; node = walker.nextNode()) {
-      if (!(node.textContent || '').includes('Westerkerk')) continue;
+      const text = node.textContent || '';
+      // The answer and, while a landmark question is open, every other choice.
+      const names = game.quizPromptKind === 'landmark' ? choices as string[] : ['Westerkerk'];
+      if (!names.some(name => name && text.includes(name))) continue;
       const el = node.parentElement;
       if (!el || el.closest('#canal-choices, script, style')) continue;
       if (!el.checkVisibility({ opacityProperty: true, visibilityProperty: true })) continue;
@@ -63,6 +66,10 @@ async function approachWesterkerk(page: Page, extra: { streetOpen?: boolean } = 
       card: game._landmarkNotice?.name ?? null,
       panelOpen: getComputedStyle(document.getElementById('landmark-panel')!).display !== 'none',
       gateQuizOpen: game._teachingGate().quizOpen,
+      withheld: game.quizWithheldNames ?? [],
+      // The own engine's label policy input, when that engine draws the labels.
+      policyHidden: game.vectorMap?.labelPolicy ? (game.vectorMap.labelPolicy().hiddenNames ?? null) : null,
+      markers: (game._freeRideNearby || []).map((p: any) => p.name),
       session: { ...(window as any).__canalRecallSession },
     };
   }, extra);
@@ -96,6 +103,10 @@ test('a ride past the Westerkerk asks its name, hides it, and stamps it named', 
   expect(open.card).toBeNull();
   expect(open.panelOpen).toBe(false);
   expect(open.gateQuizOpen).toBe(true);
+  // Every choice is withheld, not only the answer: labelled distractors would
+  // name the lit building by elimination (coordinator condition, #273).
+  expect([...open.withheld].sort()).toEqual([...open.choices].sort());
+  if (open.policyHidden) expect([...open.policyHidden].sort()).toEqual([...open.choices].sort());
   expect(open.session.landmarksAsked).toBe(1);
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/desktop-question-open.png` });
 
@@ -184,6 +195,7 @@ test('?landmarkQuestions=0 keeps drive-by cards only', async ({ page }, testInfo
   const off = await approachWesterkerk(page);
   expect(off.kind).toBe('route');
   expect(off.asked).toBe('');
+  expect(off.withheld, 'nothing withheld with the flag off').toEqual([]);
   const action = await page.evaluate(() => {
     const game = (window as any).canalRecallGame;
     const landmark = game.landmarks.find((l: any) => l.name === 'Westerkerk');

@@ -13,6 +13,7 @@ import {
   bumpSessionCounter,
   FILLER_MAX_M,
   hasBeenNamed,
+  landmarkWithheldNames,
   landmarkChoices,
   LANDMARK_QUESTION_RADIUS_M,
   landmarkQuestionsEnabled,
@@ -172,6 +173,9 @@ export class GameLandmarkQuestionRuntime {
 
     this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
     this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: answer.hood || '' };
+    // Every choice is withheld, not only the answer: a labelled distractor in
+    // view would name the lit building by elimination.
+    this.quizWithheldNames = landmarkWithheldNames(chosen.name, choices);
     // The card names the buurt and the side, never the building.
     const heading = this.player.speed < 0 ? this.player.angle + Math.PI : this.player.angle;
     const off = Math.atan2(chosen.y - this.player.y, chosen.x - this.player.x) - heading;
@@ -251,6 +255,7 @@ export class GameLandmarkQuestionRuntime {
     this.quizPromptName = '';
     this.quizPromptSubject = '';
     this._landmarkQuestion = null;
+    this.quizWithheldNames = [];
     this.vectorMap?.setActiveLandmark(null);
     const holdToken = this._answerHoldToken = (this._answerHoldToken || 0) + 1;
     setTimeout(() => {

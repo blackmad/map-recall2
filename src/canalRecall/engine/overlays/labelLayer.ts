@@ -336,7 +336,7 @@ export class LabelLayer {
     const policy = shows ? this.policy() : null;
     lap('policy');
     if (policy) {
-      const key = `${policy.hiddenName}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
+      const key = `${policy.hiddenName}|${(policy.hiddenNames || []).join(',')}|${policy.quizQuiet}|${(policy as { revision?: unknown }).revision ?? ''}|${this.pois.length}|${!!this.data}`;
       if (key !== this.ctxKey) {
         this.ctxKey = key;
         if (!this.lazyPolicy) this.rebuild(policy);

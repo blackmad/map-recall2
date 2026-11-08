@@ -75,6 +75,9 @@ export interface GameCoreHost {
   /** Non-empty while a recall question is open. The HUD must not cover it, and
    *  nothing may reveal a name while it is up. */
   quizPromptName: string;
+  /** While a landmark question is open: all four choice names, withheld from
+   *  every label surface with the asked name (G3, landmarkQuestionRuntime.ts). */
+  quizWithheldNames?: string[];
   /** Subject of the open prompt (`line` / `stop` / `street` / …). Transit uses
    *  this so stop/street questions do not blank the sticky line plaque. */
   quizPromptSubject: string;

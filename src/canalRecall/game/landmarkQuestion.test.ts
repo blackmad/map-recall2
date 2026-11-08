@@ -1,9 +1,11 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  bumpSessionCounter, hasBeenNamed, inViewCone, landmarkChoices, landmarkQuestionsEnabled, mayAskLandmark,
+  bumpSessionCounter, hasBeenNamed, landmarkWithheldNames, inViewCone, landmarkChoices, landmarkQuestionsEnabled, mayAskLandmark,
   noteSighting, pickLandmarkQuestion, readSightings, saveSightings, sightingCredit, type QuestionLandmark,
 } from './landmarkQuestion.ts';
+import { gameLabelContext, poiLabelVisible, streetLabelVisible } from '../ownMap/labelPolicy.ts';
+import { labelAllowed } from '../labels/labelPlan.ts';
 
 const PX = 3; // pixels per metre
 const rider = { x: 0, y: 0, angle: 0, speed: 100 };
@@ -102,4 +104,26 @@ test('session counters live beside other lanes\' keys', () => {
   assert.equal(bumpSessionCounter(win, 'landmarksNamed'), 1);
   assert.equal(bumpSessionCounter(win, 'landmarksNamed'), 2);
   assert.deepEqual(win.__canalRecallSession, { ridesPerSession: 2, landmarksNamed: 2 });
+});
+
+test('an open landmark question withholds all four choice names on every label policy', () => {
+  const choices = landmarkChoices(westerkerk, pool, { sameComplexPx: 40 * PX, fillerMaxPx: 900 * PX })!;
+  const withheld = landmarkWithheldNames('Westerkerk', choices);
+  assert.equal(withheld.length, 4);
+  assert.deepEqual(new Set(withheld), new Set(choices));
+  const base = {
+    mapLabelNames: new Set(choices), knownPlaces: new Map(), knownRadius: 1, spoilerNames: [], quizQuiet: false,
+    toWorld: (x: number, y: number) => ({ x, y }),
+  };
+  const open = gameLabelContext({ ...base, quizPromptName: 'Westerkerk', quizWithheldNames: withheld });
+  assert.equal(open.hiddenNames?.length, 4);
+  for (const name of choices) {
+    assert.equal(poiLabelVisible(open, name), false, name);
+    assert.equal(streetLabelVisible(open, name, 0, 0), false, name);
+    assert.equal(labelAllowed({ ...open, labelsOff: false }, 'landmark', name), false, name);
+  }
+  assert.equal(poiLabelVisible(open, 'Noorderkerk'), true, 'a name off the card still shows');
+  // Answered (or ?landmarkQuestions=0, which never sets the set): everything is back.
+  const closed = gameLabelContext({ ...base, quizPromptName: '', quizWithheldNames: withheld });
+  for (const name of choices) assert.equal(poiLabelVisible(closed, name), true, name);
 });

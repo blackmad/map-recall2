@@ -111,6 +111,7 @@ export interface LabelRules extends LabelContext {
 export function labelAllowed(rules: LabelRules, cls: LabelClass, name: string): boolean {
   if (!name || rules.labelsOff) return false;
   if (rules.hiddenName && containsAskedName(name, rules.hiddenName)) return false;
+  if (rules.hiddenNames?.some(hidden => containsAskedName(name, hidden))) return false;
   if (cls === 'destination') return true;
   return poiLabelVisible(rules, name);
 }

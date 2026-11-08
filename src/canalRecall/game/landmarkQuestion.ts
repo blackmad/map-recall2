@@ -104,6 +104,12 @@ export function landmarkChoices<T extends QuestionLandmark>(
   return options.shuffle ? options.shuffle(choices) : choices;
 }
 
+/** The names withheld on every label surface while a landmark question is
+ *  open: the answer and its three distractors, each once. */
+export function landmarkWithheldNames(answer: string, choices: readonly string[]): string[] {
+  return [...new Set([answer, ...choices].filter(Boolean))];
+}
+
 /** What else owns the one card slot this frame. */
 export interface CardSlot {
   /** A question (street, bridge, landmark) is open, or a name is withheld. */
