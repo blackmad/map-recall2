@@ -1506,10 +1506,10 @@
     date.setUTCDate(date.getUTCDate() + delta);
     return date.toISOString().slice(0, 10);
   }
-  function recompute(days) {
+  function recompute(days, now = Date.now()) {
     const unique = [...new Set(days)].sort();
     if (unique.length === 0) return emptyPlaceStreak();
-    const today = utcDayKey();
+    const today = utcDayKey(now);
     const yesterday = dayOffset(today, -1);
     let current2 = 0;
     let cursor = unique.includes(today) ? today : unique.includes(yesterday) ? yesterday : "";
@@ -1526,21 +1526,21 @@
     }
     return { days: unique.slice(-90), current: current2, best: Math.max(best, current2) };
   }
-  function readPlaceStreak(store) {
+  function readPlaceStreak(store, now = Date.now()) {
     try {
       const raw = store.getItem(PLACE_STREAK_STORAGE_KEY);
       if (!raw) return emptyPlaceStreak();
       const parsed = JSON.parse(raw);
-      return recompute(Array.isArray(parsed.days) ? parsed.days.map(String) : []);
+      return recompute(Array.isArray(parsed.days) ? parsed.days.map(String) : [], now);
     } catch {
       return emptyPlaceStreak();
     }
   }
   function notePlaceDay(store, now = Date.now()) {
     const day = utcDayKey(now);
-    const prior = readPlaceStreak(store);
+    const prior = readPlaceStreak(store, now);
     if (prior.days.includes(day)) return prior;
-    const next = recompute([...prior.days, day]);
+    const next = recompute([...prior.days, day], now);
     try {
       store.setItem(PLACE_STREAK_STORAGE_KEY, JSON.stringify(next));
     } catch {
@@ -3497,6 +3497,42 @@
   var NOTABILITY_TEMPERATURE = 3;
   function notabilityWeight(score, temperature = NOTABILITY_TEMPERATURE) {
     return Math.exp(score / temperature);
+  }
+
+  // src/canalRecall/game/surprisePick.ts
+  var ROUTE_POI_MAX_PAIR_KM = 6;
+  var HOME_MIN_TRIP_KM = 0.2;
+  var SURPRISE_MIN_PAIR_KM = HOME_MIN_TRIP_KM;
+  function kmBetween(a, b) {
+    const latKm = (a.lat - b.lat) * 111.32;
+    const lngKm = (a.lng - b.lng) * 111.32 * Math.cos(a.lat * Math.PI / 180);
+    return Math.hypot(latKm, lngKm);
+  }
+  var randomUnit = () => Math.random();
+  function pickWeighted(entries, chooseUnit) {
+    const positive = entries.filter((entry) => entry.weight > 0);
+    if (positive.length === 0) return null;
+    const total = positive.reduce((sum, entry) => sum + entry.weight, 0);
+    let tick = chooseUnit() * total;
+    for (const entry of positive) {
+      tick -= entry.weight;
+      if (tick <= 0) return entry.item;
+    }
+    return positive[positive.length - 1]?.item ?? null;
+  }
+  function pickDestinationNear(pois, from, chooseUnit = randomUnit, alsoExcludeId = null) {
+    const candidates = pois.filter((poi) => poi.id !== from.id && poi.id !== alsoExcludeId);
+    if (candidates.length === 0) return null;
+    const inRange = candidates.filter((poi) => kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
+    const pool = inRange.length > 0 ? inRange : candidates;
+    const scored = pool.map((poi) => ({
+      item: poi,
+      weight: notabilityWeight(notabilityScore(poi))
+    }));
+    const pick2 = pickWeighted(scored, chooseUnit);
+    if (!pick2 || kmBetween(pick2, from) >= SURPRISE_MIN_PAIR_KM) return pick2;
+    const apart = scored.filter((entry) => kmBetween(entry.item, from) >= SURPRISE_MIN_PAIR_KM);
+    return apart.length ? pickWeighted(apart, chooseUnit) ?? pick2 : pick2;
   }
 
   // src/canalRecall/landmarks/surveyedLandmarks.json
@@ -6743,40 +6779,6 @@
   }
 
   // src/canalRecall/game/routeSelection.ts
-  var ROUTE_POI_MAX_PAIR_KM = 6;
-  var HOME_MIN_TRIP_KM = 0.2;
-  var SURPRISE_MIN_PAIR_KM = HOME_MIN_TRIP_KM;
-  function kmBetween(a, b) {
-    const latKm = (a.lat - b.lat) * 111.32;
-    const lngKm = (a.lng - b.lng) * 111.32 * Math.cos(a.lat * Math.PI / 180);
-    return Math.hypot(latKm, lngKm);
-  }
-  var randomUnit = () => Math.random();
-  function pickWeighted(entries, chooseUnit) {
-    const positive = entries.filter((entry) => entry.weight > 0);
-    if (positive.length === 0) return null;
-    const total = positive.reduce((sum, entry) => sum + entry.weight, 0);
-    let tick = chooseUnit() * total;
-    for (const entry of positive) {
-      tick -= entry.weight;
-      if (tick <= 0) return entry.item;
-    }
-    return positive[positive.length - 1]?.item ?? null;
-  }
-  function pickDestinationNear(pois, from, chooseUnit = randomUnit, alsoExcludeId = null) {
-    const candidates = pois.filter((poi) => poi.id !== from.id && poi.id !== alsoExcludeId);
-    if (candidates.length === 0) return null;
-    const inRange = candidates.filter((poi) => kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
-    const pool = inRange.length > 0 ? inRange : candidates;
-    const scored = pool.map((poi) => ({
-      item: poi,
-      weight: notabilityWeight(notabilityScore(poi))
-    }));
-    const pick2 = pickWeighted(scored, chooseUnit);
-    if (!pick2 || kmBetween(pick2, from) >= SURPRISE_MIN_PAIR_KM) return pick2;
-    const apart = scored.filter((entry) => kmBetween(entry.item, from) >= SURPRISE_MIN_PAIR_KM);
-    return apart.length ? pickWeighted(apart, chooseUnit) ?? pick2 : pick2;
-  }
   function localFamiliarity(point, samples, bandKm = 0.6) {
     const near = samples.filter((sample) => kmBetween(sample, point) <= bandKm);
     if (near.length === 0) return 0;

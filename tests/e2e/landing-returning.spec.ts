@@ -58,7 +58,10 @@ test('a returning player gets three cards from localStorage alone, no network', 
   // The static hero still follows.
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Learn Amsterdam');
   await page.waitForLoadState('networkidle');
-  expect(reads.map(r => `${r.resourceType()} ${r.url()}`)).toEqual([]);
+  // The What's New toast (G7, whats-new-toast.bundle.js) reads the notes and the deployment stamp on
+  // every landing load; the returning player's cards themselves come from localStorage alone.
+  const toastReads = /\/(whats-new-notes|deployment)\.json(\?|$)/;
+  expect(reads.filter(r => !toastReads.test(r.url())).map(r => `${r.resourceType()} ${r.url()}`)).toEqual([]);
   await page.screenshot({ path: `${shots}/landing-returning-${info.project.name}.png` });
   await page.locator('#landing-returning-slot').screenshot({ path: `${shots}/landing-cards-${info.project.name}.png` });
 });

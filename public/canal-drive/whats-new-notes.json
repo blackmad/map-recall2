@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Today's ride, and a landing page that knows you",
+   "text": "Come back and the landing page greets you with your streak and stamps, Today's ride (the same route for everyone on a given day, never a pair from the last seven days), Continue with the names due, and Free Ride. The board under Today's ride marks your fastest time; distances read as estimates (about 1.7 km).",
+   "images": [
+    {
+     "src": "ui/2026-11-09-g2-landing/landing-returning-desktop-v2.jpg",
+     "alt": "The landing page for a returning player on desktop: Welcome back with streak and stamps, Today's ride, Continue and Free Ride cards",
+     "caption": "The returning player's landing on desktop."
+    },
+    {
+     "src": "ui/2026-11-09-g2-landing/landing-returning-iphone-v2.jpg",
+     "alt": "The same landing page on a phone, the three cards stacked",
+     "caption": "On a phone."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Free Ride has a collection",
    "text": "Each neighbourhood lists its places, the postcard and plaque say how many you have opened, and opening them all stamps the neighbourhood in your passport. A small enamel coin marks the nearest place you have not seen; tap it or ride through it. Only one card is up at a time while you collect.",
    "images": [
