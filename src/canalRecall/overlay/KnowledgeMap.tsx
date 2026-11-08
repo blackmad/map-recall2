@@ -7,6 +7,7 @@ import {
   buurtAtPixel,
   drawKnowledgeMap,
   KNOWLEDGE_MAP_COLORS,
+  projectLatLng,
   type KnowledgeMapGeometry,
   type KnowledgeMapModel,
   type MapProjection,
@@ -79,6 +80,10 @@ export function KnowledgeMap({
     if (!ctx) return;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     projectionRef.current = drawKnowledgeMap(ctx, timedModel, { width: cssW, height: cssH, selected: selected?.name ?? null });
+    // Test seam: specs tap a buurt by its coordinates.
+    const projection = projectionRef.current;
+    (canvas as HTMLCanvasElement & { knowledgeMapProject?: (lat: number, lng: number) => [number, number] })
+      .knowledgeMapProject = (lat, lng) => projectLatLng(projection, [lat, lng]);
     const elapsed = performance.now() - started;
     setRenderMs(elapsed);
     noteSession('knowledgeMapRenderMs', Math.round(elapsed * 10) / 10);
