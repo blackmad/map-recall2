@@ -19,6 +19,7 @@ import {
   type RoutePoi,
 } from './routeSelection';
 import { notabilityScore, notabilityWeight } from './poiNotability';
+import { t } from '../../i18n/index.ts';
 
 export const RUN_STORAGE_KEY = 'canalRecall.openRun.v1';
 export const LAST_RUN_STORAGE_KEY = 'canalRecall.lastRun.v1';
@@ -168,10 +169,6 @@ export function nextBonus(run: OpenRun): number {
   return chainBonus(run.stopCount + 1);
 }
 
-function plural(count: number, one: string, many: string): string {
-  return `${count} ${count === 1 ? one : many}`;
-}
-
 export function formatPoints(points: number): string {
   return Math.round(points).toLocaleString('en-US');
 }
@@ -181,25 +178,29 @@ export function formatPoints(points: number): string {
  * Calm mode shows neither points nor the multiplier.
  */
 export function runLine(run: OpenRun, options: { calm: boolean }): string {
-  const bits = [plural(run.stopCount, 'stop', 'stops'), plural(run.names.length, 'name', 'names')];
+  const bits = [countText('count.stops', run.stopCount), countText('count.names', run.names.length)];
   if (!options.calm) {
-    bits.push(`${formatPoints(run.totalPoints)} points`);
+    bits.push(t('count.points', { points: formatPoints(run.totalPoints) }));
     const next = nextBonus(run);
-    if (next > 0) bits.push(`chain +${Math.round(next * 100)} %`);
+    if (next > 0) bits.push(t('run.chain', { percent: Math.round(next * 100) }));
   }
   return bits.join('  ·  ');
 }
 
-const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
+/** "3 stops" / "3 buurten" through the catalogue's `.one` / `.other` keys (#283). */
+function countText(key: 'count.stops' | 'count.names', count: number): string {
+  return t(`${key}.${count === 1 ? 'one' : 'other'}`, { count });
+}
 
 /** One line of story for the run card. */
 export function runStory(run: OpenRun): string {
-  const count = run.stopCount < NUMBER_WORDS.length ? NUMBER_WORDS[run.stopCount] : String(run.stopCount);
+  const words = t('run.numberWords').split(',');
+  const count = run.stopCount < words.length ? words[run.stopCount] : String(run.stopCount);
   const last = run.stops[run.stops.length - 1];
-  const from = run.startName && run.startName !== last?.name ? ` from ${run.startName}` : '';
-  const to = last ? ` to ${last.name}` : '';
-  const names = run.names.length > 0 ? `, ${plural(run.names.length, 'name', 'names')} on the map` : '';
-  return `${count} ${run.stopCount === 1 ? 'stop' : 'stops'}${from}${to}${names}.`;
+  const from = run.startName && run.startName !== last?.name ? t('run.storyFrom', { name: run.startName }) : '';
+  const to = last ? t('run.storyTo', { name: last.name }) : '';
+  const names = run.names.length > 0 ? t('run.storyNames', { names: countText('count.names', run.names.length) }) : '';
+  return t('run.story', { count, stops: t(run.stopCount === 1 ? 'run.storyStop.one' : 'run.storyStop.other'), from, to, names });
 }
 
 export interface RunStorage {

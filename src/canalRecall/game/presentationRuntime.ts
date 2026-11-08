@@ -32,7 +32,7 @@ import {
 } from './neighborhoodPassport';
 import { drawArrivalStamp, ARRIVAL_STAMP_HEIGHT, stampCardEnabled } from '../stampArrival';
 import { loadStampArt } from '../stampArtLoader';
-import { readStampSources } from '../stampAlbum';
+import { stampCount } from '../stampAlbum';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
@@ -1633,17 +1633,17 @@ export class GamePresentationRuntime {
         { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` },
       ] : [];
       stats.push(
-        { label: 'Time', value: this.hud.formatTime(this.raceTime).slice(0, -2) },
-        { label: 'Distance', value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
+        { label: tr('ride.stat.time'), value: this.hud.formatTime(this.raceTime).slice(0, -2) },
+        { label: tr('ride.stat.distance'), value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
       );
-      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: 'Points', value: String(this.quizPoints) });
+      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: tr('ride.stat.points'), value: String(this.quizPoints) });
 
       const footerBits = [
         this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
         profile.label,
         this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()),
       ];
-      if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
+      if (gamey && this.quizBestStreak >= 2) footerBits.push(tr('ride.bestStreak', { count: this.quizBestStreak }));
       // Tighter levels fold the personal best into this line rather than give
       // it a row of its own.
       const bestInFooter = level >= 1 && !!bestText;
@@ -1685,9 +1685,10 @@ export class GamePresentationRuntime {
         const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
           + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
         const totals: string[] = [];
-        if (known > 0) totals.push(`${known} names`);
-        if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
-        if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
+        const count = (key: 'count.names' | 'count.neighborhoods' | 'count.landmarks', n: number): string => tr(`${key}.${n === 1 ? 'one' : 'other'}`, { count: n });
+        if (known > 0) totals.push(count('count.names', known));
+        if (exploration.visitedNeighborhoods.length > 0) totals.push(count('count.neighborhoods', exploration.visitedNeighborhoods.length));
+        if (exploration.seenLandmarks.length > 0) totals.push(count('count.landmarks', exploration.seenLandmarks.length));
         const gain = this._explorationRouteGain;
         const story = finishStory({
           gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
@@ -1701,9 +1702,9 @@ export class GamePresentationRuntime {
         // Prefer live streak label computed at save time.
         if (this._finishPlaceStreakLabel) story.streak = this._finishPlaceStreakLabel;
         const fresh: string[] = [];
-        if (gain && gain.newNames > 0) fresh.push(`${gain.newNames} names`);
-        if (gain && gain.newNeighborhoods > 0) fresh.push(`${gain.newNeighborhoods} neighborhoods`);
-        if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
+        if (gain && gain.newNames > 0) fresh.push(count('count.names', gain.newNames));
+        if (gain && gain.newNeighborhoods > 0) fresh.push(count('count.neighborhoods', gain.newNeighborhoods));
+        if (gain && gain.newLandmarks > 0) fresh.push(count('count.landmarks', gain.newLandmarks));
         const knowledgeStacked = compact;
         // Wrapped to the card: on a phone "You made it to … · 2 new names, 1
         // landmark" ran past the right edge. Tighter levels keep fewer lines.
@@ -1738,7 +1739,7 @@ export class GamePresentationRuntime {
         blocks.push({ height: knowledgeH, rule: true, draw: (top) => {
           ctx.textAlign = 'left';
           ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          ctx.fillText('CITY KNOWLEDGE', cardX + padX, top + 12);
+          ctx.fillText(tr('ride.arrival.cityKnowledge'), cardX + padX, top + 12);
           ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
           if (knowledgeStacked) {
             ctx.fillText(totals.join('  ·  ') || tr('ride.startExploring'), cardX + padX, top + 30);
@@ -1751,7 +1752,7 @@ export class GamePresentationRuntime {
             ctx.textAlign = 'left';
             ctx.fillStyle = ACCENT;
             ctx.font = '11px system-ui, sans-serif';
-            ctx.fillText(`+${fresh.join(', +')} first-time`, cardX + padX, y);
+            ctx.fillText(tr('ride.arrival.firstTime', { bits: fresh.join(', +') }), cardX + padX, y);
             y += 16;
           }
           ctx.textAlign = 'left';
@@ -1763,8 +1764,10 @@ export class GamePresentationRuntime {
           }
         } });
         if (stampCard) {
-          let held = 0;
-          try { held = readStampSources(localStorage).stamped.length; } catch { /* private mode */ }
+          // The one stamp count (stampAlbum.ts stampCount, #283): the landing
+          // and the album read the same number.
+          let held = { earned: 0, total: 0 };
+          try { held = stampCount(localStorage); } catch { /* private mode */ }
           blocks.push({ height: ARRIVAL_STAMP_HEIGHT + 12, rule: true, draw: (top) => {
             drawArrivalStamp(ctx, {
               name: passportFresh[0],
@@ -1774,7 +1777,8 @@ export class GamePresentationRuntime {
               width: innerW,
               fontMono: window.CanalRecallUi.hudSurface.fontMono,
               more: passportFresh.length - 1,
-              held,
+              held: held.earned,
+              total: held.total,
             });
           } });
         }
@@ -1795,8 +1799,9 @@ export class GamePresentationRuntime {
         ctx.textAlign = 'left';
         ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
         ctx.fillStyle = ACCENT;
-        ctx.fillText('RUN', cardX + padX, top + 13);
-        const textX = cardX + padX + ctx.measureText('RUN').width + 12;
+        const runLabel = tr('ride.arrival.run');
+        ctx.fillText(runLabel, cardX + padX, top + 13);
+        const textX = cardX + padX + ctx.measureText(runLabel).width + 12;
         const lineW = cardX + cardW - padX - textX;
         ctx.fillStyle = INK; ctx.font = '700 13px system-ui, sans-serif';
         // A phone fits the whole line a size smaller rather than cut the bonus off.
@@ -1814,9 +1819,11 @@ export class GamePresentationRuntime {
           if (foldRun) drawRun(blockTop - 2);
           const top = foldRun ? blockTop + 14 : blockTop;
           ctx.textAlign = 'left';
+          // A stamp is a buurt (#283): the buurt stamp is drawn above
+          // (drawArrivalStamp); a destination or a tour is a visit, never a stamp.
           const label = stamp.kind === 'tour'
-            ? (stamp.isNew ? 'TOUR STAMP' : 'TOUR STAMP AGAIN')
-            : (stamp.isNew ? 'NEW STAMP' : 'STAMP AGAIN');
+            ? tr(stamp.isNew ? 'ride.arrival.tourDone' : 'ride.arrival.tourAgain')
+            : tr(stamp.isNew ? 'ride.arrival.placeNew' : 'ride.arrival.placeAgain');
           ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           const labelW = ctx.measureText(label).width;
           ctx.fillStyle = ACCENT;
@@ -1825,7 +1832,7 @@ export class GamePresentationRuntime {
           ctx.fill();
           ctx.fillText(label, cardX + padX + 18, top + 13);
           ctx.fillStyle = INK; ctx.font = '700 13px system-ui, sans-serif';
-          const tally = stamp.kind === 'poi' && stamp.total > 0 ? `  ·  ${stamp.earned} of ${stamp.total}` : '';
+          const tally = stamp.kind === 'poi' && stamp.total > 0 ? `  ·  ${tr('ride.arrival.placeTally', { earned: stamp.earned, total: stamp.total })}` : '';
           const textX = cardX + padX + 18 + labelW + 10;
           ctx.fillText(wrapText(ctx, `${stamp.name}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
         } });
@@ -1843,11 +1850,11 @@ export class GamePresentationRuntime {
       ];
       // A run's one extra action. On a phone it shares the primary row, so
       // the card gains no row of buttons.
-      const endRun: FinishAction | null = runText ? { id: 'end', key: 'E', caption: 'End run' } : null;
+      const endRun: FinishAction | null = runText ? { id: 'end', key: 'E', caption: tr('ride.endRun') } : null;
       // Route setup on both layouts: a tap target on the phone, M on desktop,
       // the same key as the pause menu. Escape stays unbound here (user
       // request 2026-09-28); desktop lacked the action (clarity review 14).
-      actions.push({ id: 'route', key: compact ? '' : 'M', caption: 'Route setup' });
+      actions.push({ id: 'route', key: compact ? '' : 'M', caption: tr('ride.routeSetup') });
       if (this._shareUrl) {
         actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? tr('ride.linkCopied') : tr('ride.shareRoute') });
       }

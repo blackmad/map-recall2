@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from 'react';
 import type { KnowledgeItem } from '../knowledgeReview.ts';
 import { readStampSources } from '../stampAlbum.ts';
+import { AMSTERDAM_STAMP_BUURTS } from '../stampCatalogue.ts';
 import { KnowledgeMap, useKnowledgeMapGeometry, type KnowledgeMapSelection } from './KnowledgeMap.tsx';
 import { StampAlbum } from './StampAlbum.tsx';
 import { KNOWLEDGE_MAP_CSS } from './knowledgeMapStyles.ts';
@@ -31,12 +32,13 @@ export function KnowledgeAtlas({
 }) {
   const geometry = useKnowledgeMapGeometry();
   const sources = useMemo(() => readStampSources(storage), [storage]);
-  const buurtNames = useMemo(() => [...new Set(geometry?.buurts.map(buurt => buurt.name) ?? [])], [geometry]);
   return (
     <div className="knowledge-g5">
       <style>{KNOWLEDGE_MAP_CSS}</style>
       <KnowledgeMap items={items} geometry={geometry} selected={selection} onSelect={onSelect} />
-      <StampAlbum sources={sources} buurtNames={buurtNames} />
+      {/* The catalogue, not the loaded geometry: the album's total is the same
+          number the landing and the arrival card count against (#283). */}
+      <StampAlbum sources={sources} buurtNames={AMSTERDAM_STAMP_BUURTS} />
     </div>
   );
 }

@@ -30,6 +30,7 @@ import {
 } from './chainedRun';
 import type { MasterySample, RoutePoi } from './routeSelection';
 import type { Hud } from './collaborators';
+import { t } from '../../i18n/index.ts';
 
 /** Riding refreshes the run's clock at most this often (one localStorage write). */
 const RUN_TOUCH_MS = 15_000;
@@ -285,9 +286,9 @@ export class GameChainedRunRuntime {
     ctx.textAlign = 'left';
     ctx.textBaseline = 'alphabetic';
     ctx.fillStyle = ACCENT; ctx.font = `700 11px ${font}`;
-    ctx.fillText('RUN COMPLETE', cardX + padX, y + 11);
+    ctx.fillText(t('run.complete'), cardX + padX, y + 11);
     ctx.fillStyle = INK; ctx.font = '800 26px system-ui, sans-serif';
-    ctx.fillText(`${run.stopCount} ${run.stopCount === 1 ? 'stop' : 'stops'}`, cardX + padX, y + 42);
+    ctx.fillText(t(run.stopCount === 1 ? 'count.stops.one' : 'count.stops.other', { count: run.stopCount }), cardX + padX, y + 42);
     y += 74;
     ctx.fillStyle = BODY; ctx.font = '13px system-ui, sans-serif';
     story.forEach((line, index) => ctx.fillText(line, cardX + padX, y - 8 + index * 18));
@@ -296,7 +297,7 @@ export class GameChainedRunRuntime {
 
     // The stops, stamped: a numbered copper ring each, the place, its points.
     ctx.fillStyle = MUTED; ctx.font = `700 11px ${font}`;
-    ctx.fillText(hidden > 0 ? `STOPS  ·  LAST ${listRows} OF ${run.stopCount}` : 'STOPS', cardX + padX, y + 4);
+    ctx.fillText(hidden > 0 ? t('run.stopsLast', { shown: listRows, count: run.stopCount }) : t('run.stops'), cardX + padX, y + 4);
     y += 24;
     shown.forEach((stop, index) => {
       const number = run.stopCount - shown.length + index + 1;
@@ -321,11 +322,11 @@ export class GameChainedRunRuntime {
     rule(y); y += 16;
 
     const stats = calm
-      ? [{ label: 'Stops', value: String(run.stopCount) }, { label: 'Names', value: String(run.names.length) }]
+      ? [{ label: t('ride.stat.stops'), value: String(run.stopCount) }, { label: t('ride.stat.names'), value: String(run.names.length) }]
       : [
-        { label: 'Points', value: formatPoints(run.totalPoints) },
-        { label: 'Best streak', value: String(run.bestStreak) },
-        { label: 'Names', value: String(run.names.length) },
+        { label: t('ride.stat.points'), value: formatPoints(run.totalPoints) },
+        { label: t('ride.stat.bestStreak'), value: String(run.bestStreak) },
+        { label: t('ride.stat.names'), value: String(run.names.length) },
       ];
     ctx.textAlign = 'center';
     stats.forEach((stat, index) => {
@@ -339,8 +340,8 @@ export class GameChainedRunRuntime {
     rule(y); y += 24;
 
     const actions: Array<{ id: FinishId; key: string; caption: string }> = [
-      { id: 'again', key: 'ENTER', caption: 'New run' },
-      { id: 'route', key: compact ? '' : 'M', caption: 'Route setup' },
+      { id: 'again', key: 'ENTER', caption: t('ride.newRun') },
+      { id: 'route', key: compact ? '' : 'M', caption: t('ride.routeSetup') },
     ];
     const buttons: Array<Bounds & { id: FinishId }> = [];
     if (compact) {

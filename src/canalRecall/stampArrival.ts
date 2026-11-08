@@ -45,8 +45,10 @@ export interface ArrivalStampInput {
   fontMono: string;
   /** "+2 more" when one arrival stamped several buurts. */
   more?: number;
-  /** Stamps now held, for "3 stamps in the passport"; 0 omits the line. */
+  /** Stamps now held, for "3 of 89 buurt stamps"; 0 omits the line. */
   held?: number;
+  /** The catalogue size (stampAlbum.ts stampCount); without it the line reads "3 stamps in the passport". */
+  total?: number;
 }
 
 /** Draw the stamp row; returns its height. */
@@ -76,7 +78,9 @@ export function drawArrivalStamp(ctx: CanvasRenderingContext2D, input: ArrivalSt
   ctx.fillStyle = '#1f1c17';
   ctx.font = '700 19px "Barlow Condensed", system-ui, sans-serif';
   ctx.fillText(input.name, textX, y + 40, room);
-  const held = input.held ? t(input.held === 1 ? 'stamps.held.one' : 'stamps.held.other', { count: input.held }) : '';
+  const held = !input.held ? ''
+    : input.total ? t('stamps.heldOf', { count: input.held, total: input.total })
+      : t(input.held === 1 ? 'stamps.held.one' : 'stamps.held.other', { count: input.held });
   const foot = [held, input.more ? t('stamps.more', { count: input.more }) : ''].filter(Boolean).join('  ·  ');
   if (foot) {
     ctx.fillStyle = '#6d655a';

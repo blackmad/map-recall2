@@ -8,6 +8,7 @@
 // known date wins.
 
 import { PASSPORT_STORAGE_KEY } from './game/neighborhoodPassport.ts';
+import { AMSTERDAM_STAMP_BUURTS } from './stampCatalogue.ts';
 
 export const FREE_RIDE_COLLECTION_KEY = 'canalRecall.freeRideCollection.v1';
 
@@ -73,13 +74,14 @@ export function readStampSources(store: ReadStore | null | undefined): StampSour
 
 /**
  * The album: earned stamps first, newest first (undated after dated), then the
- * unearned buurts alphabetically. A stamped name that is not in `buurtNames`
- * (another city, a renamed boundary) still gets its page.
+ * unearned buurts alphabetically. Only catalogue buurts are stamps (#283): a
+ * stored name outside `buurtNames` (a destination, another city, a renamed
+ * boundary, junk) neither earns a page nor moves the total, so the total is
+ * the catalogue's size whatever storage holds.
  */
 export function buildStampAlbum(buurtNames: readonly string[], sources: StampSources): StampAlbum {
-  const earnedSet = new Set(sources.stamped);
   const names = new Set<string>(buurtNames);
-  for (const name of earnedSet) names.add(name);
+  const earnedSet = new Set(sources.stamped.filter(name => names.has(name)));
   const stamps = [...names].map((name): AlbumStamp => ({
     name,
     earned: earnedSet.has(name),
@@ -96,6 +98,21 @@ export function buildStampAlbum(buurtNames: readonly string[], sources: StampSou
   });
   const earned = stamps.filter(stamp => stamp.earned).length;
   return { stamps, earned, total: stamps.length };
+}
+
+/**
+ * The one stamp list every surface reads (#283): the landing's "Passport · N
+ * stamps", the arrival card's stamp line and the album. Quiz passport and Free
+ * Ride stamps both count; the total is the buurt catalogue.
+ */
+export function stampList(store: ReadStore | null | undefined, catalogue: readonly string[] = AMSTERDAM_STAMP_BUURTS): StampAlbum {
+  return buildStampAlbum(catalogue, readStampSources(store));
+}
+
+/** The one stamp count: `{ earned, total }` from `stampList`. */
+export function stampCount(store: ReadStore | null | undefined, catalogue: readonly string[] = AMSTERDAM_STAMP_BUURTS): { earned: number; total: number } {
+  const { earned, total } = stampList(store, catalogue);
+  return { earned, total };
 }
 
 /** "8 Nov 2026" (English) or "8 nov 2026" (Dutch); empty for an undated stamp. */

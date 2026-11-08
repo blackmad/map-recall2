@@ -14,7 +14,7 @@ import {
   type DailyRidePair,
 } from '../game/dailyRide';
 import type { RoutePoi } from '../game/surprisePick';
-import { readPassport } from '../game/neighborhoodPassport';
+import { stampCount } from '../stampAlbum';
 import { readPlaceStreak } from '../game/placeStreak';
 import { loadKnowledgeReview } from '../knowledgeReview';
 import { loadRouteHistory } from '../routeHistory';
@@ -100,7 +100,7 @@ export function buildLandingModel(storage: ReadStore, now = Date.now(), cityId =
 
   return {
     returning: isReturningPlayer(storage),
-    header: { streakDays: readPlaceStreak(storage, now).current, stamps: readPassport(storage).stamped.length },
+    header: { streakDays: readPlaceStreak(storage, now).current, stamps: stampCount(storage).earned },
     daily: { pair, today, board },
     due: {
       names: due,
