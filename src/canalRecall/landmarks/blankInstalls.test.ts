@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { BLANK_INSTALLS, BLANK_INSTALL_MAX_GLASS_SHARE, bareFrontsEnabled, installDraws } from './blankInstalls';
+import { BLANK_INSTALLS, BLANK_INSTALL_MAX_GLASS_SHARE, bareFrontsEnabled, forcedBlankInstalls, installDraws } from './blankInstalls';
 import { ORDINARY_BUILDINGS } from './ordinaryModels';
 
 // Lane R5-D (#264): the user's three flat blocks of 2026-11-08 are blank installs that yield to the generic facade.
@@ -27,4 +27,16 @@ test('installDraws drops only listed installs and only with the flag on', () => 
   assert.equal(installDraws(USER_SPOTS[0], true), false);
   assert.equal(installDraws(USER_SPOTS[0], false), true);
   assert.equal(installDraws('ordinary-0363100012170734', true), true);
+});
+
+test('?blankInstall= forces further installs blank only with the flag on; absent it changes nothing', () => {
+  const other = 'ordinary-0363100012170734';
+  assert.equal(forcedBlankInstalls('').size, 0);
+  assert.equal(forcedBlankInstalls().size, 0, 'Node sees no forced ids');
+  const forced = forcedBlankInstalls(`?bareFronts=1&blankInstall=${other},ordinary-x`);
+  assert.deepEqual([...forced], [other, 'ordinary-x']);
+  assert.equal(installDraws(other, true, forced), false);
+  assert.equal(installDraws(other, false, forced), true);
+  assert.equal(installDraws(other, true, new Set()), true);
+  assert.equal(installDraws(USER_SPOTS[0], true, new Set()), false);
 });

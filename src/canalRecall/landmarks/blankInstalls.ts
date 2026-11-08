@@ -35,5 +35,14 @@ export function bareFrontsEnabled(search: string = typeof location !== 'undefine
   return w.__canalRecallBareFronts !== false;
 }
 
-/** Whether the install draws: false for a measured blank install while the flag is on. */
-export const installDraws = (id: string, enabled: boolean = bareFrontsEnabled()): boolean => !(enabled && id in BLANK_INSTALLS);
+/** `?blankInstall=<id>[,<id>...]` forces further catalogue installs blank while the flag is on: the audit lane's hook
+ * (#264, tests/e2e/bare-fronts-shots.spec.ts) for judging an install against the generic facade at the same pose.
+ * Absent, the set is empty and the draw is unchanged. */
+export function forcedBlankInstalls(search: string = typeof location !== 'undefined' ? location.search : ''): ReadonlySet<string> {
+  try { const v = new URLSearchParams(search).get('blankInstall'); if (v) return new Set(v.split(',').map(s => s.trim()).filter(Boolean)); } catch { /* no URLSearchParams */ }
+  return new Set();
+}
+
+/** Whether the install draws: false for a measured (or `?blankInstall=` forced) blank install while the flag is on. */
+export const installDraws = (id: string, enabled: boolean = bareFrontsEnabled(), forced: ReadonlySet<string> = forcedBlankInstalls()): boolean =>
+  !(enabled && (id in BLANK_INSTALLS || forced.has(id)));
