@@ -33,6 +33,8 @@ export interface TunnelSite {
     grassAt?: LngLat[];
     /** Over a covered span past a tunnel mouth the ground lies within 0.5 m of the street: the highest wall top at the mouths within 25 m, not in the DTM's trench under the dropped deck (#269). */
     groundOverCover?: LngLat[];
+    /** Along `line` (the way's direction) a cut holds every 2 m sample with a wall on `side`, and the ground sheets out to `reachM` on that side have no triangle steeper than 45° (span > 1 m, off the wall faces; scripts/own-ground/rampBand.ts) (#270). */
+    wallBand?: { line: LngLat[]; side: 'L' | 'R'; reachM: number };
   };
 }
 
@@ -60,6 +62,12 @@ export const TUNNEL_SITES: readonly TunnelSite[] = [
     label: 'IJ-tunnel under the Prins Hendrikkade junction (Rapenburg user shot 2026-11-08, #269): 10 m past the west ramp\'s mouths, by its red fietspad, the street over the 47 m covered span; the DTM drops the deck and the ground sagged 2-3 m into pale sheets past the 6 m lid',
     at: [4.91085, 52.37155],
     expect: { groundOverCover: [[4.91085, 52.37155], [4.91097, 52.37150]] },
+  },
+  {
+    id: 'ij-tunnel-west-ramp-bank',
+    label: 'IJ-tunnel west ramp (way 7371028, s28-s88, #270): the east bank\'s DTM rise spans 9.0 m where WALL_SPAN_M\'s limit, shrinking with the depth, drops under it, so 24 stations had no wall, the ramp split in two and the street draped into the trench at both run ends (43 steep sheet tris / 9.6 m²)',
+    at: [4.911652, 52.372202],
+    expect: { kind: 'ramp', motor: true, minWallM: 2, wallBand: { line: [[4.91148, 52.372015], [4.911523, 52.372061], [4.911566, 52.372107], [4.911609, 52.372154], [4.911652, 52.372202], [4.911693, 52.372252], [4.911735, 52.372302], [4.911774, 52.372354], [4.911812, 52.372406], [4.911849, 52.372458], [4.911859, 52.372475]], side: 'R', reachM: 12 } },
   },
   {
     id: 'piet-heintunnel-east-south',

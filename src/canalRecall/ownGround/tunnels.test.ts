@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { GroundField, type LocalToRd } from './heightField';
 import { GroundSurface, type Vec2 } from './surface';
-import { MIN_RISE_M, WALL_REACH_MOTOR_M, cutMeshes, cutRelief, mergeNeighbours, insideCut, locateCut, planCuts, scanSide, slotCut, splitAtCrossings, tunnelRuns, findPortals, type Cut, type CutWay } from './tunnels';
+import { BANK_GAP_STATIONS, BANK_SPAN_SCALE, MIN_RISE_M, WALL_REACH_MOTOR_M, bridgeBankGaps, cutMeshes, type SideScan, cutRelief, mergeNeighbours, insideCut, locateCut, planCuts, scanSide, slotCut, splitAtCrossings, tunnelRuns, findPortals, type Cut, type CutWay } from './tunnels';
 import { buildCell } from './groundCell';
 
 const IDENTITY: LocalToRd = { cx: 0, cy: 0, r: 1, a: [0, 1, 0, 0, 0, 0], b: [0, 0, 1, 0, 0, 0] };
@@ -208,4 +208,62 @@ test('buildCell without cuts is unchanged by the tunnel code (no cuts: no mask, 
   assert.equal(b.mask, null);
   assert.deepEqual(Object.keys(a.layers), Object.keys(b.layers));
   assert.deepEqual([...a.layers.land!.positions], [...b.layers.land!.positions]);
+});
+
+test('scanSide spanScale: a bank smeared over 10 m is no wall at the plain span test and a wall at BANK_SPAN_SCALE (#270)', () => {
+  // The IJ-tunnel west ramp's east bank: foot 2.5 m past the edge, 3.3 m up 10 m further (a 9.5 m span; limit 4 + 1.5 * 3.3 = 8.95 m).
+  const g = (t: number) => 3.3 * Math.max(0, Math.min(1, (t - 5.5) / 10));
+  assert.equal(scanSide(g, 0, 3.3, null, MIN_RISE_M, WALL_REACH_MOTOR_M), null, 'no wall at the plain span');
+  const s = scanSide(g, 0, 3.3, null, MIN_RISE_M, WALL_REACH_MOTOR_M, true, BANK_SPAN_SCALE);
+  assert.ok(s?.wall && s.depth > 3, `a wall at the wider span (${JSON.stringify(s)})`);
+});
+
+test('bridgeBankGaps: a long gap between two wall runs takes the re-scans only when every station is a deep wall', () => {
+  const W = (rim: number): SideScan => ({ reach: 6, wall: true, rim, depth: rim + 3 });
+  const make = (gap: number, anchor = 3) => {
+    const sides: [SideScan | null, SideScan | null][] = [];
+    for (let i = 0; i < anchor; i++) sides.push([null, W(0.5)]);
+    for (let i = 0; i < gap; i++) sides.push([null, null]);
+    for (let i = 0; i < anchor; i++) sides.push([null, W(0.4)]);
+    return { sides, floor: sides.map(() => -3) };
+  };
+  // 20 stations, every re-scan a wall: bridged with the re-scans, the other side untouched.
+  let t = make(20);
+  bridgeBankGaps(t.sides, t.floor, (i, k) => (k === 1 ? W(0.2) : null));
+  assert.ok(t.sides.every(sd => sd[1]?.wall) && t.sides.every(sd => sd[0] === null), 'bridged on the right only');
+  assert.equal(t.sides[10][1]!.rim, 0.2, 'the re-scan, not an interpolation');
+  // One station without a rise (a slip road's mouth): left open.
+  t = make(20);
+  bridgeBankGaps(t.sides, t.floor, i => (i === 12 ? null : W(0.2)));
+  assert.equal(t.sides.filter(sd => sd[1]?.wall).length, 6, 'a real opening stays open');
+  // A shallow bank (under MIN_RUN_DEPTH_M): left open.
+  t = make(20);
+  bridgeBankGaps(t.sides, t.floor, () => ({ reach: 6, wall: true, rim: -2.2, depth: 0.8 }));
+  assert.equal(t.sides.filter(sd => sd[1]?.wall).length, 6, 'a shallow bank stays open');
+  // A one-station blip at an end is no anchor.
+  t = make(20, 1);
+  bridgeBankGaps(t.sides, t.floor, () => W(0.2));
+  assert.equal(t.sides.filter(sd => sd[1]?.wall).length, 2, 'blips are no anchors');
+  // Longer than BANK_GAP_STATIONS: left open.
+  t = make(BANK_GAP_STATIONS + 1);
+  bridgeBankGaps(t.sides, t.floor, () => W(0.2));
+  assert.equal(t.sides.filter(sd => sd[1]?.wall).length, 6, 'too long');
+});
+
+test('planCuts rampGaps: a motor ramp whose wall turns into a smeared bank for 40 m stays one cut; off, it splits (#270)', () => {
+  // Floor −3 m left of the centreline and out to the right wall; the right wall steep at 5.5-7 m, except y 80..120
+  // where it is a bank rising over 10 m. Over the tunnel (y > 200) the land is at 0.
+  const relief = (x: number, y: number) => {
+    if (y > 200) return 0;
+    if (x <= 0) return -3;
+    return -3 + 3 * (y > 80 && y < 120 ? Math.max(0, Math.min(1, (x - 5.5) / 10)) : smooth((x - 5.5) / 1.5));
+  };
+  const surface = new GroundSurface(field(relief), IDENTITY, 0);
+  const ways = [way(1, { highway: 'trunk' }, [[0, -20], [0, 200]], 3.3), way(2, { highway: 'trunk', tunnel: 'yes' }, [[0, 200], [0, 300]], 3.3)];
+  const on = planCuts(ways, surface.relief, () => true, new Set(), undefined, { rampGaps: true }).filter(c => c.way === 1);
+  const off = planCuts(ways, surface.relief, () => true).filter(c => c.way === 1);
+  assert.equal(off.length, 2, `off: split at the bank (${off.map(c => c.id).join(' ')})`);
+  assert.equal(on.length, 1, `on: one cut (${on.map(c => c.id).join(' ')})`);
+  const c = on[0], mid = c.y.findIndex(y => y > 100);
+  assert.ok(c.wallR[mid] === 1 && c.rimR[mid] - c.floor[mid] > 2, `walled through the bank (rim ${(c.rimR[mid] - c.floor[mid]).toFixed(2)})`);
 });

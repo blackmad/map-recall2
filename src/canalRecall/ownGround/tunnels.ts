@@ -186,7 +186,7 @@ export interface CutPortal {
 }
 
 /** Planner options. `portalEnds` (#269, default off here; the stores turn it on, `?portalEnds=0` off): a mouth's top is the street's plateau within COVER_LID_MAX_M and its lid runs on to it. */
-export interface PlanOptions { portalEnds?: boolean }
+export interface PlanOptions { portalEnds?: boolean; /** #270 (default off here; the stores turn it on, `?rampGaps=0` off): scanWay bridges a long same-side wall gap where the bank carries on (bridgeBankGaps). */ rampGaps?: boolean }
 
 /** The farthest a mouth's lid runs on past it (a covered span's smear in the DTM), metres. */
 export const COVER_LID_MAX_M = 20;
@@ -280,9 +280,9 @@ export interface SideScan { reach: number; wall: boolean; rim: number; depth: nu
  * Before any rise, a neighbouring road `shared(t)` on the floor (within 0.5 m) ends the side without a wall: the strip
  * runs on into that road's own cut. Null: neither (the side is not a cut).
  */
-export function scanSide(g: (t: number) => number, floor: number, half: number, shared: ((t: number) => boolean) | null, minRise = MIN_RISE_M, wallReach = WALL_REACH_M, skipBumps = true): SideScan | null {
+export function scanSide(g: (t: number) => number, floor: number, half: number, shared: ((t: number) => boolean) | null, minRise = MIN_RISE_M, wallReach = WALL_REACH_M, skipBumps = true, spanScale = 1): SideScan | null {
   let foot = 0, skipped = false;
-  const none = () => (skipped ? scanSide(g, floor, half, shared, minRise, wallReach, false) : null);
+  const none = () => (skipped ? scanSide(g, floor, half, shared, minRise, wallReach, false, spanScale) : null);
   for (let t = SCAN_STEP_M; t <= SCAN_M; t += SCAN_STEP_M) {
     const z = g(t);
     if (z === z && z - floor <= (minRise >= MIN_RISE_M ? 0.25 : minRise * 0.5)) {
@@ -306,7 +306,7 @@ export function scanSide(g: (t: number) => number, floor: number, half: number, 
       while (back < top + 6 && g(back) - floor >= depth * 0.8) back += SCAN_STEP_M;
       foot = back; t = foot - SCAN_STEP_M; skipped = true; continue;
     }
-    if (top - foot > WALL_SPAN_M + WALL_SPAN_PER_M * depth) return none();
+    if (top - foot > (WALL_SPAN_M + WALL_SPAN_PER_M * depth) * spanScale) return none();
     // Half-height crossing between the foot and the plateau.
     const mid = floor + depth / 2;
     let at = foot;
@@ -325,7 +325,8 @@ export interface CutWay { id: number; tags: Record<string, string>; points: Vec2
  * either side kept when at least MIN_RUN_M long and MIN_RUN_DEPTH_M deep somewhere. `others` are the candidate roads
  * around (their centrelines end a side as shared), `ground` the raw relief.
  */
-export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[], motor: boolean, box?: readonly [number, number, number, number], reach?: (p: Vec2) => boolean): Cut[] {
+export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[], motor: boolean, box?: readonly [number, number, number, number], reach?: (p: Vec2) => boolean, opts?: ScanWayOptions): Cut[] {
+  const trace = opts?.trace;
   const inBox = (p: Vec2) => (!box || (p[0] >= box[0] && p[0] <= box[2] && p[1] >= box[1] && p[1] <= box[3])) && (!reach || reach(p));
   const st = stationsAlong(way.points, STATION_M), n = st.p.length;
   const near = others.filter(o => o.id !== way.id);
@@ -337,11 +338,11 @@ export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[]
   for (const o of close) for (let k = 0; k + 1 < o.points.length; k++) segs.push([o.points[k][0], o.points[k][1], o.points[k + 1][0], o.points[k + 1][1]]);
   const R = SCAN_M + 1;
   const floor: number[] = [], sides: [SideScan | null, SideScan | null][] = [];
-  const scanAt = (i: number, minRise: number): [SideScan | null, SideScan | null] => {
+  const scanAt = (i: number, minRise: number, spanScale = 1): [SideScan | null, SideScan | null] => {
     const [cx, cy] = st.p[i], [tx, ty] = st.t[i], nx = -ty, ny = tx, f = floor[i];
     const local = segs.filter(([ax, ay, bx, by]) => Math.max(ax, bx) > cx - R && Math.min(ax, bx) < cx + R && Math.max(ay, by) > cy - R && Math.min(ay, by) < cy + R);
     const onNeighbour = (x: number, y: number) => local.some(([ax, ay, bx, by]) => polylineDistance([[ax, ay], [bx, by]], x, y) < 0.75);
-    const side = (sg: 1 | -1) => scanSide(t => ground(cx + nx * sg * t, cy + ny * sg * t), f, way.half, local.length ? t => onNeighbour(cx + nx * sg * t, cy + ny * sg * t) : null, minRise, motor ? WALL_REACH_MOTOR_M : WALL_REACH_M);
+    const side = (sg: 1 | -1) => scanSide(t => ground(cx + nx * sg * t, cy + ny * sg * t), f, way.half, local.length ? t => onNeighbour(cx + nx * sg * t, cy + ny * sg * t) : null, minRise, motor ? WALL_REACH_MOTOR_M : WALL_REACH_M, true, spanScale);
     return [side(1), side(-1)];
   };
   for (let i = 0; i < n; i++) {
@@ -352,7 +353,12 @@ export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[]
     floor.push(median(fs));
     sides.push(scanAt(i, MIN_RISE_M));
   }
+  trace?.('scanned', st, floor, sides.map(sd => [sd[0] && { ...sd[0] }, sd[1] && { ...sd[1] }]));
   fillWallGaps(sides, floor, GAP_STATIONS);
+  // Then the long gaps between the (filled) wall runs. Motor ramps only: a path at the foot of an embankment has one
+  // long bank and open land (Westerpark), and bridging its gaps made it a cut (#270).
+  if (opts?.rampGaps && motor) bridgeBankGaps(sides, floor, (i, k) => scanAt(i, MIN_RISE_M, BANK_SPAN_SCALE)[k]);
+  trace?.('filled', st, floor, sides);
   // Runs of stations with a wall on at least one side.
   const isCut = (k: number) => inBox(st.p[k]) && !!(sides[k][0]?.wall || sides[k][1]?.wall);
   const runs: [number, number][] = [];
@@ -388,6 +394,43 @@ export function scanWay(way: CutWay, ground: HeightFn, others: readonly CutWay[]
     const idx = Array.from({ length: j - i + 1 }, (_, k) => i + k);
     return buildCut(`ramp:${way.id}:${i}`, 'ramp', motor, idx.map(k => st.p[k]), idx.map(k => st.s[k]), idx.map(k => floor[k]), idx.map(k => sides[k]), way.half);
   });
+}
+
+/** scanWay options. `rampGaps` (#270, default off here; the stores turn it on, `?rampGaps=0` off): bridgeBankGaps. `trace`: the stations' side scans before (`scanned`) and after (`filled`) the gap fills (probes). */
+export interface ScanWayOptions { rampGaps?: boolean; trace?: (stage: 'scanned' | 'filled', st: { p: Vec2[]; s: number[] }, floor: readonly number[], sides: readonly [SideScan | null, SideScan | null][]) => void }
+
+/** A same-side wall gap longer than GAP_STATIONS is re-scanned up to this many stations (60 m; #270's gap is 24). */
+export const BANK_GAP_STATIONS = 30;
+/** Each end of a bridged bank gap is a wall run at least this many stations long. */
+export const BANK_ANCHOR_STATIONS = 3;
+/** The re-scan's span test is this much wider (scanSide `spanScale`): the bank a wall run's own scan just missed. */
+export const BANK_SPAN_SCALE = 1.5;
+
+/**
+ * Bridge a long gap in one side's walls where the bank carries on (issue #270, the IJ-tunnel west ramp: the right
+ * bank's DTM rise spans 9.0 m on both sides of the station where its shrinking WALL_SPAN_M limit drops under it, so
+ * 24 stations fell out and the trench split into two cuts with the land draped over both ends). A gap of more than
+ * GAP_STATIONS and at most `maxGap` stations between two walled stations on the same side is re-scanned (`rescan`,
+ * the side at a wider span); only when both ends are wall runs of BANK_ANCHOR_STATIONS and every gap station then finds a
+ * wall at least MIN_RUN_DEPTH_M deep does the gap take those scans. A real
+ * opening (a junction mouth, a slip road, open land) has no rise at all there and stays open. scanWay runs it on motor
+ * ramps only.
+ */
+export function bridgeBankGaps(sides: [SideScan | null, SideScan | null][], floor: readonly number[], rescan: (i: number, k: 0 | 1) => SideScan | null, maxGap = BANK_GAP_STATIONS): void {
+  for (const k of [0, 1] as const) {
+    let last = -1;
+    for (let i = 0; i < sides.length; i++) {
+      if (!sides[i][k]?.wall) continue;
+      if (last >= 0 && i - last > GAP_STATIONS + 1 && i - last <= maxGap + 1) {
+        const got: (SideScan | null)[] = [];
+        // Both ends anchored by a wall run of BANK_ANCHOR_STATIONS, not a one-station blip.
+        const anchored = (from: number, dir: 1 | -1) => { for (let m = 0; m < BANK_ANCHOR_STATIONS; m++) if (!sides[from + dir * m]?.[k]?.wall) return false; return true; };
+        if (anchored(last, -1) && anchored(i, 1)) for (let j = last + 1; j < i; j++) { if (!(floor[j] === floor[j])) break; const sd = rescan(j, k); if (!sd?.wall || sd.depth < MIN_RUN_DEPTH_M) break; got.push(sd); }
+        if (got.length === i - last - 1) got.forEach((sd, m) => { sides[last + 1 + m][k] = sd; });
+      }
+      last = i;
+    }
+  }
 }
 
 /** Wall gaps up to this many stations between two walled stations on the same side are bridged (a junction mouth, a lamp post, a DTM hole). */
@@ -656,7 +699,7 @@ export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within
       // longest louvred open stretch, Piet Hein east).
       const own = w.tunnel ? portals.filter(p => p.tunnel.id === w.id) : [];
       const reach = w.tunnel ? (q: Vec2) => own.some(p => (q[0] - p.at[0]) ** 2 + (q[1] - p.at[1]) ** 2 <= TUNNEL_SCAN_M * TUNNEL_SCAN_M) : motorAt(w) ? nearPortal : nearPortalRide;
-      const scanned = scanWay(w, ground, ways, motorAt(w) || (w.tunnel && portals.some(p => p.tunnel.id === w.id && p.motor)), box, reach);
+      const scanned = scanWay(w, ground, ways, motorAt(w) || (w.tunnel && portals.some(p => p.tunnel.id === w.id && p.motor)), box, reach, opts?.rampGaps ? { rampGaps: true } : undefined);
       // On a tunnel way only the part the DTM sees open (a louvred roof) continues a ramp: a run that starts at one of
       // its portals, on the floor of the open road just outside (within TUNNEL_FLOOR_TOL_M). Elsewhere the DTM over a
       // tunnel is the ground over it (a quay, a plaza, NEMO's stairs), and stays.
