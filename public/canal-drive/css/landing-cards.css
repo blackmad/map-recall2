@@ -1,0 +1,45 @@
+/* Returning player's landing cards (G2, #272): Today's ride, Continue, Free Ride.
+   Markup: src/canalRecall/landing/landingView.ts. Uses landing.html's tokens
+   (--raised, --ink, --muted, --line, --copper, --display). */
+
+.landing-returning { padding: clamp(16px, 3vw, 32px) 0 0; }
+.landing-returning-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; }
+.landing-returning-head h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+.landing-returning-stats { margin: 0; font: 700 15px/1.2 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: pre-wrap; }
+
+.landing-cards { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1fr); gap: clamp(12px, 1.6vw, 20px); margin-top: 16px; }
+.landing-card { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 18px 20px 20px; border-radius: 8px; border: 1px solid var(--line-strong); background: var(--raised);
+  box-shadow: 0 1px 2px rgba(31,28,23,.06), 0 10px 26px rgba(31,28,23,.08); }
+.landing-card-daily { border-color: var(--copper); }
+.landing-card-kicker { margin: 0; font: 700 13px/1 var(--display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--copper-ink); }
+.landing-card-title { font-size: clamp(1.35rem, 2vw, 1.75rem); line-height: 1.02; overflow-wrap: anywhere; }
+.landing-card-detail { margin: 0; font-size: 15px; color: var(--muted); }
+.landing-card-go { margin-top: auto; align-self: flex-start; min-height: 46px; padding: 11px 20px 10px; font-size: 16px; }
+.landing-card-go.stamp { font-size: 17px; }
+
+/* Your past days: a calm list, no ranks. */
+.landing-board { list-style: none; margin: 4px 0 6px; padding: 0; border-top: 1px solid var(--line); }
+.landing-board li { display: grid; grid-template-columns: 4.2em 3.6em 1fr auto; gap: 10px; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--line);
+  font: 500 14px/1.2 var(--body); font-variant-numeric: tabular-nums; color: var(--muted); }
+.landing-board .d { color: var(--ink); }
+.landing-board .t { color: var(--ink); font-weight: 600; }
+.landing-board .b { font: 700 11px/1 var(--display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper-ink); }
+.landing-board-empty { margin: 2px 0 6px; font-size: 14px; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .landing-cards { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .landing-card-daily { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .landing-cards { gap: 10px; }
+  .landing-card { padding: 14px 16px 16px; }
+  .landing-card-go { align-self: stretch; }
+  .landing-returning-stats { font-size: 13px; }
+  /* Continue and Free Ride side by side and compact: the hero stays near the first screen. */
+  .landing-card-review, .landing-card-free { gap: 6px; padding: 12px 12px 12px; }
+  .landing-card-free .landing-card-detail { display: none; }
+  .landing-card-review .landing-card-detail { font-size: 13px; line-height: 1.3; }
+  .landing-card-review .landing-card-title, .landing-card-free .landing-card-title { font-size: 1.15rem; }
+  .landing-card-review .landing-card-go, .landing-card-free .landing-card-go { min-height: 42px; padding: 9px 10px 8px; font-size: 14px; }
+  .landing-board li:nth-child(n+4) { display: none; }
+}
