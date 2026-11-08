@@ -222,6 +222,16 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
         const game = (frame.contentWindow as typeof frame.contentWindow & { canalRecallGame?: any })?.canalRecallGame;
         if (!game?.ctx || !game?.hud) { window.setTimeout(drawWhenReady, 50); return; }
         game._render = () => undefined;
+        // The stubbed _render never runs the game's utility tuck, so the
+        // cluster sat on the arrival card's Share button and on the question
+        // card's fourth choice and "No idea" in these stories only (G7, #277;
+        // tests/e2e/g7-phone-layout.spec.ts pins the real game). Apply what
+        // the game does: hidden on the arrival card, tucked over a question.
+        const utility = doc.getElementById('utility-buttons');
+        if (utility) {
+          if (scenario.startsWith('finish')) utility.style.display = 'none';
+          else if (scenario === 'touch-prompt') utility.classList.add('tucked', 'tucked-all');
+        }
         const ctx = game.ctx as CanvasRenderingContext2D;
         // Re-measure before drawing: the force-touch flag is set on load, so
         // the game's first _resize may have run in desktop mode.
