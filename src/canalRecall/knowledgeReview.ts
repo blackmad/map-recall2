@@ -18,6 +18,9 @@ export interface KnowledgeItem {
   repetitions: number;
   lapses: number;
   places: number;
+  /** [lat, lng] of the first practised place, for the knowledge map's buurt
+   *  assignment; absent on states saved without a snapshot centre. */
+  center?: [number, number];
 }
 
 export interface KnowledgeCitySummary {
@@ -67,6 +70,11 @@ const dayKey = (time: number): string => {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 };
 
+function validCenter(center: unknown): center is [number, number] {
+  return Array.isArray(center) && center.length >= 2
+    && Number.isFinite(center[0]) && Number.isFinite(center[1]);
+}
+
 function statusFor(mastery: number, due: boolean): KnowledgeStatus {
   if (due) return 'due';
   if (mastery >= 0.75) return 'mastered';
@@ -115,6 +123,7 @@ export function buildKnowledgeReview(
       repetitions: group.reduce((sum, state) => sum + state.repetitions, 0),
       lapses: group.reduce((sum, state) => sum + state.lapses, 0),
       places: group.length,
+      ...(validCenter(first.center) ? { center: [first.center[0], first.center[1]] as [number, number] } : {}),
     };
   }).sort((a, b) => {
     if (a.status === 'due' && b.status !== 'due') return -1;
