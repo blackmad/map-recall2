@@ -128,11 +128,19 @@ export function mayAskLandmark(slot: CardSlot): boolean {
   return !slot.questionOpen && !slot.streetCandidate && !slot.feedbackVisible && !slot.utilityOpen;
 }
 
-/** `?landmarkQuestions=0` restores drive-by cards only. Free Ride asks only
- *  when the rider switched "Quiz me on landmarks" on. */
+/** Whether rides ask landmark questions without a flag. Off in the #281
+ *  hotfix (the question could name a building whose label was just on
+ *  screen); back on with the label-draw ledger and approach withholding. */
+export const LANDMARK_QUESTIONS_DEFAULT_ON = true;
+
+/** `?landmarkQuestions=0|false|off` restores drive-by cards only; when the
+ *  default is off, only `?landmarkQuestions=1|true|on` turns them on. Free
+ *  Ride asks only when the rider switched "Quiz me on landmarks" on. */
 export function landmarkQuestionsEnabled(search: string, mode: { freeRide: boolean; freeRideQuiz: boolean }): boolean {
   const flag = /[?&]landmarkQuestions=([^&]*)/.exec(search || '');
   if (flag && (flag[1] === '0' || flag[1] === 'false' || flag[1] === 'off')) return false;
+  const optedIn = !!flag && (flag[1] === '1' || flag[1] === 'true' || flag[1] === 'on');
+  if (!LANDMARK_QUESTIONS_DEFAULT_ON && !optedIn) return false;
   return mode.freeRide ? mode.freeRideQuiz : true;
 }
 
