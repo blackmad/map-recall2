@@ -59,3 +59,14 @@ export function inFocusBlock(key: string, focus: string | null): boolean {
 
 /** Ranks below every ring rank (metres or the look-ahead's score) for a focus-block cell: its look-at distance first. */
 export const FOCUS_RANK_BASE = -1e9;
+
+/**
+ * Quick first paint (lane R5-A #260): a near (LOD 0) cell with nothing drawn yet is built at LOD 1 first, measured
+ * 0.6–0.9 s against 2–3 s for LOD 0 on the start pose, and rebuilt at LOD 0 once it is drawn. `?groundQuick=0` (or
+ * `window.__canalRecallGroundQuick = false`) asks for LOD 0 at once, as before.
+ */
+export function groundQuickFlag(search?: string): boolean {
+  const g = globalThis as { __canalRecallGroundQuick?: boolean; location?: { search?: string } };
+  if (g.__canalRecallGroundQuick === false) return false;
+  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundQuick') !== '0';
+}

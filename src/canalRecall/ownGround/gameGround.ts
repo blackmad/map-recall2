@@ -62,7 +62,7 @@ import { paintNoise } from './groundNoise.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
-import { FOCUS_RANK_BASE, groundFocusFlag, groundWorkersFlag, inFocusBlock, pickWorker } from './groundWorkers.js';
+import { FOCUS_RANK_BASE, groundFocusFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, pickWorker } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
@@ -363,6 +363,9 @@ export class OwnGround {
   private focus: Vec2 | null = null;
   private focusCell: string | null = null;
   private readonly focusOn = groundFocusFlag();
+  /** Quick first paint (`?groundQuick=0` off) and the LOD the ring wants per cell (a quick install re-plans). */
+  private readonly quickOn = groundQuickFlag();
+  private wantedLod: ReadonlyMap<string, 0 | 1> = new Map();
   /** Meshes under the rider's distance limit (REACH_LAYERS of LOD 0 full-detail cells), by cell key. */
   private readonly reachMeshes = new Map<string, any[]>();
   private readonly reachM = groundReachFlag();
@@ -677,6 +680,7 @@ export class OwnGround {
     this.residencyAt = [this.centre[0], this.centre[1]];
     const wanted = this.wantedCells();
     const keep = new Set(wanted.map(w => w.key));
+    if (this.quickOn) this.wantedLod = new Map(wanted.map(w => [w.key, w.lod]));
     this.wantedKeys = keep;
     for (const key of [...this.resident.keys()]) if (!keep.has(key)) this.drop(key);
     for (const key of [...this.pending.keys()]) if (!keep.has(key)) { this.pending.delete(key); this.discards.unwanted++; this.retries.forget(key); }
@@ -684,7 +688,11 @@ export class OwnGround {
     for (const w of wanted) {
       // Main-thread surface for poses, bases and overlays: relief + decks of every wanted cell.
       this.prepareMain(w.key);
-      const want = levelOf(w.lod, w.detail), have = this.resident.get(w.key);
+      const have = this.resident.get(w.key);
+      // Quick first paint (groundWorkers.ts groundQuickFlag): a near cell with nothing drawn yet is asked at LOD 1
+      // first (~0.8 s against ~2–3 s for LOD 0); its install re-plans and the LOD 0 build follows.
+      const lod = this.quickOn && w.lod === 0 && !have ? 1 : w.lod;
+      const want = levelOf(lod, w.detail);
       if ((have && levelOf(have.lod, have.detail) === want) || this.pending.get(w.key) === want) continue;
       // A cell that becomes near again (or that the ring wants at another LOD) rebuilds through this same path: one
       // request, then the install swaps the whole cell, so two levels are never on screen together.
@@ -695,7 +703,7 @@ export class OwnGround {
       this.requestedAt.set(`${w.key}:${want}`, performance.now());
       const wi = pickWorker(w.key, this.workers.length, this.workerOf, this.pending.keys());
       this.workerOf.set(w.key, wi);
-      this.workers[wi]?.postMessage({ type: 'build', key: w.key, lod: w.lod, detail: w.detail, gen: this.gen });
+      this.workers[wi]?.postMessage({ type: 'build', key: w.key, lod, detail: w.detail, gen: this.gen });
     }
     // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts).
     if (this.lookAheadOn) for (const worker of this.workers) worker.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
@@ -1150,7 +1158,8 @@ export class OwnGround {
   }
 
   private install(cell: BuiltCell): void {
-    if (!this.wantedCells().some(w => w.key === cell.key && w.lod === cell.lod && w.detail === cell.detail)) {
+    const quick = this.quickOn && cell.lod === 1 && !this.resident.has(cell.key);
+    if (!this.wantedCells().some(w => w.key === cell.key && (w.lod === cell.lod || (quick && w.lod === 0)) && w.detail === cell.detail)) {
       this.discards.install++;
       // The ring changed between request and install (a cell crossed NEAR_M, the radius stepped): ask for what it wants
       // now on the next frame, not after the next 60 m move (a stationary rider kept the old LOD or no cell, #232).
@@ -1205,6 +1214,8 @@ export class OwnGround {
     if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${levelOf(cell.lod, cell.detail)}`); }
     const now = performance.now(), arrival = (cell as BuiltCell & { arrival?: { at: number } }).arrival;
     this.startup.firstInstallAt ??= now;
+    // A quick LOD 1 stand-in for a near cell: plan again, so its LOD 0 build is asked for on the next update.
+    if (this.quickOn && cell.lod === 1 && this.wantedLod.get(cell.key) === 0) this.residencyAt = null;
     const { at: arrivedAt, ...timing } = arrival ?? { at: undefined };
     this.startup.cells.push({ key: cell.key, lod: cell.lod, detail: cell.detail, installedAt: Math.round(now), latencyMs: asked === undefined ? null : Math.round(now - asked), ...timing, queuedMs: arrivedAt == null ? null : Math.round(t0 - arrivedAt), installMs: Math.round(now - t0) });
     if (this.startup.cells.length > 200) this.startup.cells.shift();
