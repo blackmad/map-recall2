@@ -293,7 +293,7 @@ export class LabelOverlay {
     const hiddenName = game?.quizPromptName || game?.quizCandidateName || game?._silentPass?.name || '';
     if (hiddenName !== this.hiddenName) { this.hiddenName = hiddenName; this.hiddenIndex = null; }
     return {
-      // Not `_labelsVisible`: the D toggle hides street names but keeps the
+      // Not `_labelsVisible`: the T toggle hides street names but keeps the
       // orientation POIs on purpose (vector-map.js `_hideLabels`).
       labelsOff: false,
       hiddenName,
