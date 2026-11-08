@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PERF_HUD_ID, PERF_HUD_NARROW_STYLE, PERF_HUD_STYLE, perfHudLine } from '../../src/canalRecall/engine/perfHud';
+import { describeBuilding } from '../../src/canalRecall/buildingFacts';
 
 type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'advanced-haze-off' | 'advanced-perf-hud' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
@@ -9,6 +10,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // Cards with no photo that arrive from data rather than Wikipedia: a named
   // bridge's origin (municipal register) and a clicked building's facts.
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
+  // A tapped POI label on a building the register knows nothing about (#258): the place says what it is.
+  | 'landmark-card-building-place' | 'landmark-card-building-place-touch'
   // A named bridge with no origin: the city's bridge register alone.
   | 'landmark-card-bridge-register' | 'landmark-card-bridge-register-touch'
   // A street's name origin, the most common card while driving.
@@ -322,6 +325,13 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
               detail: 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow that it was only suitable for pedestrians.',
               longDetail: 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow that it was only suitable for pedestrians. '
                 + 'Although this bridge was officially called the Kerkstraatbrug, it soon became known as the Magere Brug.',
+            }
+            : scenario.startsWith('landmark-card-building-place')
+            ? {
+              id: 'clicked-own:Shri Guru Nanak Gurdwara Sahib:4.84901', type: 'building',
+              sourceUrl: 'https://www.openstreetmap.org/node/2628741158',
+              ...describeBuilding(null, undefined, 'Shri Guru Nanak Gurdwara Sahib',
+                { name: 'Shri Guru Nanak Gurdwara Sahib', kind: 'a Sikh gurdwara', address: 'Schakelstraat 21' }),
             }
             : {
               id: 'clicked-NL.IMBAG.Pand.0363100012169999', name: 'Built 1665', type: 'building',
@@ -710,6 +720,12 @@ export const PortraitBridgeRegisterCard: Story = {
 };
 export const PortraitBridgeOriginCard: Story = {
   args: { scenario: 'landmark-card-bridge-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** A tapped POI label on a blank building (#258): the title is the place, the body what it is. */
+export const BuildingPlaceCard: Story = { args: { scenario: 'landmark-card-building-place' } };
+export const PortraitBuildingPlaceCard: Story = {
+  args: { scenario: 'landmark-card-building-place-touch' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 export const PortraitBuildingFactsCard: Story = {
