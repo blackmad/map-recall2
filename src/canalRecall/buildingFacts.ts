@@ -8,6 +8,7 @@
 // about the city's growth, so the card says it instead of nothing.
 
 import type { BuildingArticle, BuildingArticleIndex, BuildingArticleTile } from './buildingArticles';
+import { withArticle } from './placeKind';
 
 /** Building values worth naming; anything else (`yes`, `house`, `apartments`)
  *  says nothing a rider cannot see. */
@@ -199,12 +200,12 @@ export function describeBuilding(
   const designed = monument?.a ? `, designed by ${monument.a}` : '';
   if (year) {
     parts.push(type
-      ? `A ${type}, built in ${years}, ${periodOf(year)}${designed}.`
+      ? `${capitalise(withArticle(type))}, built in ${years}, ${periodOf(year)}${designed}.`
       : `Built in ${years}, ${periodOf(year)}${designed}.`);
   } else if (designed) {
     parts.push(`Designed by ${monument!.a}.`);
   } else if (type && shownName && !placeText) {
-    parts.push(`A ${type}.`);
+    parts.push(`${capitalise(withArticle(type))}.`);
   }
   const heritage = row ? HERITAGE_LABELS[row[2]] : '';
   const purpose = monument?.f != null && MONUMENT_FUNCTIONS[monument.f] && monument.f > 0

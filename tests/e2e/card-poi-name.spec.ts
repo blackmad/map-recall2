@@ -5,7 +5,7 @@
 // finds the place's mapped row and says what it is (buildingFacts.ts
 // describeBuilding `place`, clickPoiInfo.ts `named`).
 //
-//   PW_PORT=4673 npx playwright test card-poi-name --project=desktop --workers=1
+//   PW_PORT=4673 npx playwright test tests/e2e/card-poi-name.spec.ts --project=desktop --workers=1
 //   SHOT_DIR=/some/dir … also writes <SHOT_DIR>/card-poi-<state>-<desktop|phone>.png
 import { test, expect, type Page } from '@playwright/test';
 import { openRoute } from './helpers';
@@ -97,18 +97,27 @@ async function shot(page: Page, state: string) {
 
 test('a tapped POI label, a named canal house, a nameless house and a landmark each get a truthful card', async ({ page }) => {
   test.setTimeout(500_000);
+  console.log('boot…');
   await boot(page);
+  console.log('booted');
 
   // 1. The gurdwara's label.
   await lookAt(page, GURDWARA.center, 17.3, 50, 0);
-  const label = await expect.poll(() => page.evaluate((name) => {
-    const l = (window as any).canalRecallGame.vectorMap._labels.placed.find((p: any) => p.text === name && p.x !== undefined);
-    return l ? { x: l.x, y: l.y } : null;
-  }, GURDWARA.name), { timeout: 60_000 }).not.toBeNull().then(() => page.evaluate((name) => {
-    const l = (window as any).canalRecallGame.vectorMap._labels.placed.find((p: any) => p.text === name);
-    return { x: l.x, y: l.y };
-  }, GURDWARA.name));
-  await clickFrame(page, label.x, label.y);
+  // The own engine draws labels on a canvas (labelLayer.ts, frame px); the legacy map as DOM (labelOverlay.ts, CSS px).
+  const findLabel = (name: string) => page.evaluate((name) => {
+    const vm = (window as any).canalRecallGame.vectorMap;
+    const placed = vm._labels?.placed?.find((p: any) => p.text === name && p.x !== undefined);
+    if (placed) return { frame: true, x: placed.x, y: placed.y };
+    for (const el of vm._labelOverlay?.elements?.values?.() ?? []) {
+      if ((el as HTMLElement).textContent?.trim() !== name) continue;
+      const r = (el as HTMLElement).getBoundingClientRect();
+      if (r.width) return { frame: false, x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    }
+    return null;
+  }, name);
+  await expect.poll(() => findLabel(GURDWARA.name), { timeout: 60_000 }).not.toBeNull();
+  const label = (await findLabel(GURDWARA.name))!;
+  if (label.frame) await clickFrame(page, label.x, label.y); else await page.mouse.click(label.x, label.y);
   const gurdwara = await notice(page);
   console.log('gurdwara card', JSON.stringify(gurdwara));
   expect(gurdwara.name).toBe(GURDWARA.name);
