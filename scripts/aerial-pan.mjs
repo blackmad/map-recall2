@@ -427,6 +427,23 @@ const residents = census => page.evaluate(census => {
     draws: (vm._sharedFrame?.stats?.main?.calls ?? 0) + (vm._sharedFrame?.stats?.overlay?.calls ?? 0), drawTriangles: (vm._sharedFrame?.stats?.main?.triangles ?? 0) + (vm._sharedFrame?.stats?.overlay?.triangles ?? 0),
     farRadiusM: ground?.farRadius ?? null, farShells: vm._farShells?.stats?.() ?? null,
     bakedCoarse: vm._bakedCoarse?.stats?.() ?? null, bakedCoarseOff: vm.bakedCoarseOff ?? null,
+    // Lane R4-I (#253): the baked cells' GPU bytes by attribute, and cells / vertices / MB by distance from the camera
+    // eye (nearest cell edge) in bands: < 1, 1–2, 2–3, 3–4, ≥ 4 km.
+    bakedAttr: (() => {
+      const bc = vm._bakedCoarse; if (!bc?.residentDetail) return null;
+      const e = vm.cameraMap?.camera?.eye?.() ?? vm.camera?.eye?.(), at = e ? [e.lng, e.lat] : null;
+      const rows = bc.residentDetail(at), sum = { cells: rows.length, vertices: 0, float32Cells: 0, float32Vertices: 0, index32Cells: 0 }, mb = {};
+      const keys = ['position', 'uv', 'layer', 'tint', 'accent', 'thin', 'hidden', 'swapSlot', 'index'];
+      const bands = [1000, 2000, 3000, 4000, Infinity].map(max => ({ max, cells: 0, vertices: 0, mb: 0 }));
+      for (const r of rows) {
+        sum.vertices += r.vertices; if (r.float32) { sum.float32Cells++; sum.float32Vertices += r.vertices; } if (r.index32) sum.index32Cells++;
+        let bytes = 0; for (const k of keys) { mb[k] = (mb[k] ?? 0) + r[k]; bytes += r[k]; }
+        const b = bands.find(b => (r.distanceM ?? 0) < b.max); b.cells++; b.vertices += r.vertices; b.mb += bytes / 1048576;
+      }
+      for (const k of keys) mb[k] = Math.round((mb[k] ?? 0) / 1048576 * 10) / 10;
+      mb.total = Math.round(keys.reduce((a, k) => a + mb[k], 0) * 10) / 10;
+      return { ...sum, mb, bands: bands.map(b => ({ ...b, max: b.max === Infinity ? null : b.max, mb: Math.round(b.mb * 10) / 10 })), eyeAltM: e?.altitudeM != null ? Math.round(e.altitudeM) : null };
+    })(),
     coarseChunks: tb?.chunks ? [...tb.chunks.keys()].filter(k => k.startsWith('coarse:')).length : null,
     // Lane R4-A (#243), the coarse rebuild wave: coarse meshes dissolving in now (runtime `coarse:` chunks in the facade
     // layer's fades, plus baked cells), and every coarse dissolve so far (the facade layer's fade map is counted from the
@@ -439,7 +456,7 @@ const residents = census => page.evaluate(census => {
     })(),
     // Lane R3-F (#241): the last frame's draws by owner (facade chunks by kind), resident GPU MB by owner (glCounters
     // tagging; absent on older bundles), the held/sliced ground re-base and the budgeted label placements.
-    ...(() => { const rep = window.__canalPerf?.gl?.report?.(); return { drawsByOwner: rep?.lastFrameByOwner ?? null, glOwners: rep?.resident?.byOwner?.slice(0, 40) ?? null }; })(),
+    ...(() => { const rep = window.__canalPerf?.gl?.report?.(); return { drawsByOwner: rep?.lastFrameByOwner ?? null, glOwners: rep?.resident?.byOwner?.slice(0, 40) ?? null, bakedOwnerMB: rep?.resident?.byOwner ? Math.round(rep.resident.byOwner.filter(o => /baked-coarse/.test(o.owner)).reduce((a, o) => a + o.MB, 0) * 10) / 10 : null, bakedOwnerObjects: rep?.resident?.byOwner ? rep.resident.byOwner.filter(o => /baked-coarse/.test(o.owner)).reduce((a, o) => a + o.objects, 0) : null }; })(),
     groundBases: vm.groundBaseStats ? { ...vm.groundBaseStats } : null,
     labelStats: vm._labels?.stats ? { full: vm._labels.stats.full, slicedFrames: vm._labels.stats.slicedFrames ?? null, lastFullMs: Math.round(vm._labels.stats.lastFullMs), churn: vm._labels.stats.churn ?? null } : null,
     workers: (pool?.live ?? 0) + (ground?.worker ? 1 : 0),
@@ -715,6 +732,17 @@ const summary = {
   aerialLongestFrameMs: Math.max(...allFrames.map(f => f.longestMs)),
   km: m3.km,
 };
+// Lane R4-I (#253): the baked cells' bytes by attribute and distance band at the GL peak sample and at the sample where
+// the baked tier itself held the most, plus the baked-coarse owner row's peak (glCounters).
+{
+  const glPeak = timeline.reduce((b, r) => ((r.gl?.residentMB ?? 0) > (b.gl?.residentMB ?? 0) ? r : b), timeline[0]);
+  const bakedPeak = timeline.reduce((b, r) => ((r.bakedAttr?.mb?.total ?? 0) > (b.bakedAttr?.mb?.total ?? 0) ? r : b), timeline[0]);
+  const bakedOwner = r => r.bakedOwnerMB ?? 0;
+  summary.bakedAttrAtGlPeak = glPeak?.bakedAttr ? { t: glPeak.t, leg: glPeak.leg ?? null, ...glPeak.bakedAttr } : null;
+  summary.bakedAttrAtBakedPeak = bakedPeak?.bakedAttr ? { t: bakedPeak.t, leg: bakedPeak.leg ?? null, ...bakedPeak.bakedAttr } : null;
+  summary.bakedOwnerMBAtGlPeak = Math.round(bakedOwner(glPeak) * 10) / 10;
+  summary.bakedOwnerMBMax = Math.round(Math.max(0, ...timeline.map(bakedOwner)) * 10) / 10;
+}
 // Lane R4-E (#248): where the long frames are and what owns them. `outside` dominates when the interval is mostly spent
 // outside the engine's frame callback (loading tasks, GC, GPU back-pressure); `callback` when inside it, then by its
 // largest top-level phase. `nearLegStart`: within 5 s of a leg's start; `nearResume`: within 1 s of a sample's pause.

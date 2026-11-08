@@ -202,6 +202,9 @@ export class FarShells {
     return changed;
   }
 
+  /** Whether a cell's prisms are installed and done dissolving in (the baked tier may release its mesh there, lane R4-I #253). */
+  ready(key: string): boolean { const r = this.residents.get(key); return !!r && !r.fade; }
+
   /** Per frame: the dissolve and the per-tile hand-over to the resident coarse shells. */
   frame(now = performance.now()): void {
     let repaint = false;

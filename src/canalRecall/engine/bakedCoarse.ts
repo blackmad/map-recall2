@@ -63,6 +63,53 @@ export function bakedCoarseEnabled(touch: boolean, search: string = typeof locat
   return touch ? BAKED_COARSE_TOUCH_DEFAULT : BAKED_COARSE_DESKTOP_DEFAULT;
 }
 
+/**
+ * The smaller GPU layout of a baked cell (lane R4-I #253; `?bakedBytes=0` or `window.__canalRecallBakedBytes = false`
+ * restores the R4-A layout exactly): accents as RGB (3 bytes a vertex, not 4; bakedCellArrays `compact`).
+ */
+export function bakedBytesEnabled(search: string = typeof location !== 'undefined' ? location.search : '', w: any = typeof window !== 'undefined' ? window : {}): boolean {
+  let v: string | null = null;
+  try { v = new URLSearchParams(search).get('bakedBytes'); } catch { /* no location */ }
+  if (v === null && w.__canalRecallBakedBytes !== undefined) v = String(w.__canalRecallBakedBytes);
+  return !(v === '0' || v === 'off' || v === 'false');
+}
+
+/**
+ * Release from the air (lane R4-I #253): from the air (not street level), a covered cell whose nearest edge is at least
+ * this far from the camera eye drops its baked mesh while the far tier holds the cell's SHL1 prisms (they un-hide when
+ * the cell is no longer drawn here, FarShellHost.coarseDrawn); the cell stays covered, so no runtime coarse chunk is
+ * built for it. It comes back under `BAKED_RELEASE_M - BAKED_RELEASE_BACK_M` (hysteresis).
+ */
+export const BAKED_RELEASE_M = 3000;
+export const BAKED_RELEASE_BACK_M = 600;
+/** The default: null, release off (see bakedReleaseM). */
+export const BAKED_RELEASE_DEFAULT: number | null = null;
+/** `?bakedRelease=0` off, `=1` on at BAKED_RELEASE_M, `=<metres>` (≥ 500) on at that distance; absent: the default. */
+export function bakedReleaseM(search: string = typeof location !== 'undefined' ? location.search : '', w: any = typeof window !== 'undefined' ? window : {}): number | null {
+  let v: string | null = null;
+  try { v = new URLSearchParams(search).get('bakedRelease'); } catch { /* no location */ }
+  if (v === null && w.__canalRecallBakedRelease !== undefined) v = String(w.__canalRecallBakedRelease);
+  if (v === null) return BAKED_RELEASE_DEFAULT;
+  if (v === '0' || v === 'off' || v === 'false') return null;
+  if (v === '1' || v === 'on' || v === 'true') return BAKED_RELEASE_M;
+  const m = Number(v);
+  return Number.isFinite(m) && m >= 500 ? m : BAKED_RELEASE_DEFAULT;
+}
+
+/**
+ * Which covered cells are released (pure): from the air only, those at least `releaseM` from the eye (nearest edge),
+ * or still `releaseM - backM` for a cell already released, and only where `farReady` (the far tier draws them instead).
+ */
+export function releasedCells(covered: Iterable<string>, eye: [number, number] | null, aerial: boolean, releaseM: number | null, previous: ReadonlySet<string>, farReady: (key: string) => boolean, backM = BAKED_RELEASE_BACK_M): Set<string> {
+  const out = new Set<string>();
+  if (!eye || !aerial || releaseM == null) return out;
+  for (const key of covered) {
+    const d = cellDistanceM(key, eye[0], eye[1]);
+    if ((d >= releaseM || (previous.has(key) && d >= releaseM - backM)) && farReady(key)) out.add(key);
+  }
+  return out;
+}
+
 /** The resident budget: cells and triangles (a touch device holds fewer). */
 export function bakedCoarseBudget(touch: boolean): { cells: number; triangles: number } {
   return touch ? { cells: 24, triangles: 2_000_000 } : { cells: 96, triangles: 3_500_000 };
@@ -150,7 +197,7 @@ export function liftRanges(positions: Float32Array | Int16Array, ranges: Readonl
 }
 
 /** A decoded, regrouped cell (world/worldCells.ts ShellCellData). */
-export type BakedCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; accents: Uint8Array; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number; /** look/thinFade.ts pairs, 2 per vertex (SHEL level 2). */ thin?: Uint8Array };
+export type BakedCellData = { key: string; positions: Float32Array | Int16Array; positionUnit?: number; uvs: Float32Array; layers: Uint8Array; tints: Uint8Array; /** 3 or 4 bytes a vertex (`accentSize`; absent: 4). */ accents: Uint8Array; accentSize?: 3 | 4; indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number; gzBytes: number; /** look/thinFade.ts pairs, 2 per vertex (SHEL level 2). */ thin?: Uint8Array };
 
 /** One drawn cell as the facade layer sees it (ThreeBuildings applyHidden / paintShells read `mesh` and `ranges`). */
 export type BakedEntry = { key: string; mesh: any; ranges: Map<string, { start: number; count: number }> };
@@ -164,10 +211,12 @@ export interface BakedCoarseHost {
   /** Register a drawn cell with the facade layer: it fills `hidden` / `swapSlot` now and on every later change. */
   attach(entry: BakedEntry): void;
   detach(entry: BakedEntry): void;
+  /** Whether the far tier holds this cell's prisms, drawn (a released cell shows them; lane R4-I). Absent: never released. */
+  farReady?(key: string): boolean;
   /** Whether meshes need the `swapSlot` byte (the complementary dissolve is on). */
   swapSlots(): boolean;
   /** `exact`: Float32 metres at the SHEL's own unit (a cell within the lift radius), else Int16 decimetres. */
-  fetchShell(key: string, signal: AbortSignal, exact?: boolean): Promise<BakedCellData>;
+  fetchShell(key: string, signal: AbortSignal, exact?: boolean, compact?: boolean): Promise<BakedCellData>;
   /** Cells with a SHEL (tiles.json `shell`): gzip bytes. */
   available(): ReadonlyMap<string, number>;
   /** The coverage changed outside a plan call (a fetch failed, the tier turned off): regroup the coarse chunks. */
@@ -177,7 +226,10 @@ export interface BakedCoarseHost {
   repaint(): void;
 }
 
-type Resident = BakedEntry & { triangles: number; bytes: number; gzBytes: number; fade?: { start: number; clone: any; source: any }; drawn: boolean;
+/** GPU bytes of one resident cell by attribute (lane R4-I #253, the measure-first table). */
+export type BakedAttrBytes = { vertices: number; position: number; uv: number; layer: number; tint: number; accent: number; thin: number; hidden: number; swapSlot: number; index: number; float32: boolean; index32: boolean };
+
+type Resident = BakedEntry & { triangles: number; bytes: number; gzBytes: number; attrs: BakedAttrBytes; fade?: { start: number; clone: any; source: any }; drawn: boolean;
   /** Street-level lift: the CPU positions kept while buildings wait for their base. */
   lift?: { positions: Float32Array | Int16Array; unit: number; pending: string[]; applied: Map<string, number> }; lifted: boolean; liftable: boolean };
 
@@ -203,8 +255,19 @@ export class BakedCoarse {
    */
   private readonly admit: FrameAdmit | null;
   private ready: { data: BakedCellData; relift: boolean }[] = [];
-  constructor(private readonly host: BakedCoarseHost, options: { touch?: boolean; budget?: { cells: number; triangles: number }; paceInstalls?: boolean } = {}) {
+  /** The R4-I layout (bakedBytesEnabled); false: the R4-A arrays, byte for byte. */
+  private readonly compact: boolean;
+  /** Release from the air (bakedReleaseM): metres from the eye, or null (off). */
+  private readonly releaseM: number | null;
+  private eye: [number, number] | null = null;
+  /** Covered cells released to the far tier (no mesh here, not fetched). */
+  private released = new Set<string>();
+  private lastWant: string[] = [];
+  private releases = 0;
+  constructor(private readonly host: BakedCoarseHost, options: { touch?: boolean; budget?: { cells: number; triangles: number }; paceInstalls?: boolean; compact?: boolean; releaseM?: number | null } = {}) {
     this.budget = options.budget ?? bakedCoarseBudget(!!options.touch);
+    this.compact = options.compact ?? false;
+    this.releaseM = options.releaseM ?? null;
     this.admit = options.paceInstalls ? new FrameAdmit() : null;
   }
 
@@ -253,6 +316,30 @@ export class BakedCoarse {
     this.reliftNear();
   }
 
+  /**
+   * The camera eye (lane R4-I): from the air, covered cells at least the release distance from it give their mesh up
+   * to the far tier's prisms, and come back nearer. Called per frame; acts only on a change of the released set.
+   */
+  setEye(lng: number, lat: number): void {
+    this.eye = [lng, lat];
+    if (this.enabled) this.applyRelease();
+  }
+
+  private applyRelease(): void {
+    const next = releasedCells(this.covered, this.eye, !this.liftOn, this.releaseM, this.released, key => !!this.host.farReady?.(key));
+    if (next.size === this.released.size && [...next].every(k => this.released.has(k))) return;
+    const back = [...this.released].filter(k => !next.has(k));
+    for (const key of next) if (!this.released.has(key)) {
+      this.releases++;
+      if (this.residents.has(key)) this.drop(key);
+      const c = this.inflight.get(key); if (c) { c.abort(); this.inflight.delete(key); }
+    }
+    this.released = next;
+    if (this.ready.length) this.ready = this.ready.filter(r => !next.has(r.data.key));
+    if (back.length) this.pump(this.lastWant);
+    this.host.repaint();
+  }
+
   private liftRadius(): number { return this.liftOn ? BAKED_LIFT_RADIUS_M : BAKED_AIR_LIFT_RADIUS_M; }
 
   /** Re-plan from `wanted` and the anchor; true when the covered set changed. */
@@ -267,7 +354,9 @@ export class BakedCoarse {
     const covered = new Set([...keep].filter(k => !this.failed.has(k)));
     const changed = covered.size !== this.covered.size || [...covered].some(k => !this.covered.has(k));
     this.covered = covered;
+    for (const key of [...this.released]) if (!covered.has(key)) this.released.delete(key);
     this.pump(want);
+    this.applyRelease();
     return changed;
   }
 
@@ -280,10 +369,10 @@ export class BakedCoarse {
 
   private pump(want?: string[]): void {
     const waiting = (k: string) => this.ready.length > 0 && this.ready.some(r => r.data.key === k);
-    if (want) this.queue = want.filter(k => !this.residents.has(k) && !this.failed.has(k) && !waiting(k));
+    if (want) { this.lastWant = want; this.queue = want.filter(k => !this.residents.has(k) && !this.failed.has(k) && !this.released.has(k) && !waiting(k)); }
     while (this.inflight.size < BAKED_INFLIGHT && this.queue.length) {
       const key = this.queue.shift()!;
-      if (this.residents.has(key) || this.inflight.has(key) || waiting(key)) continue;
+      if (this.residents.has(key) || this.inflight.has(key) || this.released.has(key) || waiting(key)) continue;
       this.request(key, false);
     }
   }
@@ -293,10 +382,10 @@ export class BakedCoarse {
     this.inflight.set(key, controller);
     // Within the lift radius the cell is fetched exact: the detail tier swaps over it (bakedCellArrays BAKED_GRID_M).
     const exact = !!this.at && cellDistanceM(key, this.at[0], this.at[1]) <= this.liftRadius();
-    this.host.fetchShell(key, controller.signal, exact).then(data => {
+    this.host.fetchShell(key, controller.signal, exact, this.compact).then(data => {
       if (this.inflight.get(key) !== controller) return;
       this.inflight.delete(key);
-      if (this.enabled && this.covered.has(key)) {
+      if (this.enabled && this.covered.has(key) && !this.released.has(key)) {
         if (this.admit) { this.ready.push({ data, relift }); this.host.repaint(); } else this.install(data, relift);
       }
       this.pump();
@@ -336,7 +425,8 @@ export class BakedCoarse {
     g.setAttribute('uv', release(new THREE.BufferAttribute(data.uvs, 2)));
     g.setAttribute('layer', release(new THREE.BufferAttribute(data.layers, 1, false)));
     g.setAttribute('tint', release(new THREE.BufferAttribute(data.tints, 4, true)));
-    g.setAttribute('accent', release(new THREE.BufferAttribute(data.accents, 4, true)));
+    // RGB under the R4-I layout: the vec4 attribute's w defaults to 1.0, which is every SHEL accent's alpha (255).
+    g.setAttribute('accent', release(new THREE.BufferAttribute(data.accents, data.accentSize ?? 4, true)));
     // The runtime coarse chunk's `thin` (look/thinFade.ts): without it the eaves and cornice strips the chunk fades out
     // under a pixel stayed solid on the baked shell, which differed from the detail chunk there (swap-zfight).
     if (data.thin && data.thin.length === n * 2) g.setAttribute('thin', release(new THREE.BufferAttribute(data.thin, 2, false)));
@@ -357,8 +447,10 @@ export class BakedCoarse {
     mesh.userData.coarse = true;
     mesh.userData.bakedCoarse = data.key;
     const ranges = rangeMap(data.ranges);
-    const r: Resident = { key: data.key, mesh, ranges, triangles: data.triangles, gzBytes: data.gzBytes, drawn: !clone,
-      bytes: positions.byteLength + data.uvs.byteLength + data.layers.byteLength + data.tints.byteLength + data.accents.byteLength + data.indices.byteLength + (data.thin?.byteLength ?? 0) + n * 2,
+    const attrs: BakedAttrBytes = { vertices: n, position: positions.byteLength, uv: data.uvs.byteLength, layer: data.layers.byteLength, tint: data.tints.byteLength, accent: data.accents.byteLength,
+      thin: g.getAttribute('thin') ? data.thin!.byteLength : 0, hidden: n, swapSlot: g.getAttribute('swapSlot') ? n : 0, index: data.indices.byteLength, float32: positions instanceof Float32Array, index32: data.indices instanceof Uint32Array };
+    const r: Resident = { key: data.key, mesh, ranges, triangles: data.triangles, gzBytes: data.gzBytes, drawn: !clone, attrs,
+      bytes: attrs.position + attrs.uv + attrs.layer + attrs.tint + attrs.accent + attrs.thin + attrs.hidden + attrs.swapSlot + attrs.index,
       // A cell widened from the decimetre grid is drawn and lifted now, and fetched again exact (reliftNear).
       lifted: keepPositions, liftable: keepPositions && (data.positionUnit ?? 1) === 1,
       ...(clone ? { fade: { start: performance.now(), clone, source: material } } : {}),
@@ -427,7 +519,7 @@ export class BakedCoarse {
     let repaint = false;
     if (this.admit && this.ready.length) {
       // Nearest the anchor first; a cell no longer covered (re-planned away while it waited) is dropped unread.
-      this.ready = this.ready.filter(r => this.enabled && this.covered.has(r.data.key));
+      this.ready = this.ready.filter(r => this.enabled && this.covered.has(r.data.key) && !this.released.has(r.data.key));
       if (this.at) { const at = this.at; this.ready.sort((a, b) => cellDistanceM(a.data.key, at[0], at[1]) - cellDistanceM(b.data.key, at[0], at[1])); }
       while (this.ready.length && this.admit.admit(now)) { const r = this.ready.shift()!; this.install(r.data, r.relift); }
       if (this.ready.length) repaint = true;
@@ -456,8 +548,13 @@ export class BakedCoarse {
   clear(): void {
     for (const key of [...this.residents.keys()]) this.drop(key);
     for (const c of this.inflight.values()) c.abort();
-    this.inflight.clear(); this.queue = []; this.ready = [];
+    this.inflight.clear(); this.queue = []; this.ready = []; this.released = new Set(); this.lastWant = [];
     this.at = null; this.planAt = null;
+  }
+
+  /** Per resident cell: its GPU bytes by attribute (diagnostics; scripts/aerial-pan.mjs `bakedAttr`). */
+  residentDetail(at?: [number, number]): ({ key: string; drawn: boolean; distanceM: number | null } & BakedAttrBytes)[] {
+    return [...this.residents.values()].map(r => ({ key: r.key, drawn: r.drawn, distanceM: at ? Math.round(cellDistanceM(r.key, at[0], at[1])) : null, ...r.attrs }));
   }
 
   /** The cells drawn now (diagnostics). */
@@ -466,10 +563,10 @@ export class BakedCoarse {
   /** Cells installed with a dissolve in (aerial-pan's coarse rebuild-wave count, against the runtime coarse fades). */
   private fadeIns = 0;
 
-  stats(): { enabled: boolean; wanted: number; cells: number; drawn: number; fading: number; fadeIns: number; covered: number; triangles: number; gpuMB: number; fetchedMB: number; uploadedMB: number; pending: number; failed: number; liftPending: number; cpuMB: number } {
+  stats(): { enabled: boolean; wanted: number; cells: number; drawn: number; fading: number; fadeIns: number; covered: number; triangles: number; gpuMB: number; fetchedMB: number; uploadedMB: number; pending: number; failed: number; liftPending: number; cpuMB: number; released: number; releases: number } {
     let triangles = 0, bytes = 0, drawn = 0, liftPending = 0, cpu = 0, fading = 0;
     for (const r of this.residents.values()) { triangles += r.triangles; bytes += r.bytes; if (r.drawn) drawn++; if (r.fade) fading++; if (r.lift) { liftPending += r.lift.pending.length; cpu += r.lift.positions.byteLength; } }
-    return { enabled: this.enabled, wanted: this.wanted.size, cells: this.residents.size, drawn, fading, fadeIns: this.fadeIns, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length + this.ready.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1) };
+    return { enabled: this.enabled, wanted: this.wanted.size, cells: this.residents.size, drawn, fading, fadeIns: this.fadeIns, covered: this.covered.size, triangles, gpuMB: +(bytes / 1048576).toFixed(1), fetchedMB: +(this.fetchedBytes / 1048576).toFixed(2), uploadedMB: +(this.uploads / 1048576).toFixed(1), pending: this.inflight.size + this.queue.length + this.ready.length, failed: this.failed.size, liftPending, cpuMB: +(cpu / 1048576).toFixed(1), released: this.released.size, releases: this.releases };
   }
 
   dispose(): void { this.clear(); }

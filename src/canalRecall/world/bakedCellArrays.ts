@@ -25,10 +25,15 @@ export type BakedCellArrays = {
   indices: Uint16Array | Uint32Array; ranges: BakedRange[]; triangles: number;
   /** look/thinFade.ts pairs (2 per vertex) when the SHEL carries them (level 2): the runtime coarse chunk's `thin`. */
   thin?: Uint8Array;
+  /**
+   * Bytes per vertex of `accents`: 4 (RGBA, as the SHEL stores it), or 3 (`compact`, lane R4-I #253): every SHEL
+   * accent's alpha is 255 and the chunk shaders read `accent.rgb` only, so the GPU's default w (1.0) draws the same.
+   */
+  accentSize: 3 | 4;
 };
 
 /** `ids[bid]`: the cell's building ids in FOOT order. Vertices of NO_BID (allotment gardens) form one range with id ''. */
-export function bakedCellArrays(shel: ShellMesh, ids: readonly string[], quantised = false): BakedCellArrays {
+export function bakedCellArrays(shel: ShellMesh, ids: readonly string[], quantised = false, compact = false): BakedCellArrays {
   const n = shel.layers.length;
   // Per bid: its order of first use, then a counting sort of the vertices by that order (stable).
   const rank = new Map<number, number>(), order: number[] = [], counts: number[] = [];
@@ -43,7 +48,8 @@ export function bakedCellArrays(shel: ShellMesh, ids: readonly string[], quantis
   for (let r = 0; r < order.length; r++) { starts[r] = at; at += counts[r]; }
   const next = starts.slice(), remap = new Uint32Array(n);
   for (let k = 0; k < n; k++) remap[k] = next[rank.get(shel.bids[k])!]++;
-  const positions = new Float32Array(n * 3), uvs = new Float32Array(n * 2), layers = new Uint8Array(n), tints = new Uint8Array(n * 4), accents = new Uint8Array(n * 4);
+  const as = compact ? 3 : 4;
+  const positions = new Float32Array(n * 3), uvs = new Float32Array(n * 2), layers = new Uint8Array(n), tints = new Uint8Array(n * 4), accents = new Uint8Array(n * as);
   const thin = shel.thin ? new Uint8Array(n * 2) : undefined;
   for (let k = 0; k < n; k++) {
     const v = remap[k];
@@ -51,13 +57,14 @@ export function bakedCellArrays(shel: ShellMesh, ids: readonly string[], quantis
     uvs[v * 2] = shel.uvs[k * 2]; uvs[v * 2 + 1] = shel.uvs[k * 2 + 1];
     layers[v] = shel.layers[k];
     if (thin) { thin[v * 2] = shel.thin![k * 2]; thin[v * 2 + 1] = shel.thin![k * 2 + 1]; }
-    for (let c = 0; c < 4; c++) { tints[v * 4 + c] = shel.tints[k * 4 + c]; accents[v * 4 + c] = shel.accents[k * 4 + c]; }
+    for (let c = 0; c < 4; c++) tints[v * 4 + c] = shel.tints[k * 4 + c];
+    for (let c = 0; c < as; c++) accents[v * as + c] = shel.accents[k * 4 + c];
   }
   const indices = n <= 65536 ? new Uint16Array(shel.indices.length) : new Uint32Array(shel.indices.length);
   for (let k = 0; k < shel.indices.length; k++) indices[k] = remap[shel.indices[k]];
   const ranges: BakedRange[] = order.map((b, r) => ({ id: b === NO_BID ? '' : ids[b] ?? '', start: starts[r], count: counts[r] }));
   const q = quantised ? toGrid(positions) : null;
-  return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, uvs, layers, tints, accents, indices, ranges, triangles: shel.indices.length / 3, ...(thin ? { thin } : {}) };
+  return { positions: q ?? positions, positionUnit: q ? BAKED_GRID_M : 1, uvs, layers, tints, accents, indices, ranges, triangles: shel.indices.length / 3, accentSize: as, ...(thin ? { thin } : {}) };
 }
 
 /** Metres on the SHEL grid as Int16 grid steps; null when a coordinate does not fit (it then stays Float32). */
