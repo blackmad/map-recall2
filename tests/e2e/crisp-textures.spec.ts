@@ -142,6 +142,16 @@ for (const variant of VARIANTS) {
         if ('rolloffMask' in mix.set) ro.mask = !!mix.set.rolloffMask;
         if (Object.keys(ro).length) await page.evaluate((ro) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellRolloffOptions(ro), ro);
         if ('texAniso' in mix.set) await page.evaluate((n) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTextureAnisotropy(n), mix.set.texAniso);
+        // Lane R4-J (#254): `atlasHalf=1|0` pins the facade atlas switch (?atlasAerial=1) to the half or the full pair and
+        // waits until it is bound: the aerial A/B in one page and pose.
+        if ('atlasHalf' in mix.set) {
+          const want = mix.set.atlasHalf ? 'half' : 'full';
+          await page.evaluate((w) => (window as any).__canalRecallAtlasAerialSwitch?.force(w), want);
+          await expect.poll(() => page.evaluate(() => (window as any).__canalRecallAtlasAerialSwitch?.mode), { timeout: 60_000 }).toBe(want);
+        }
+        // `mipDebug=1` (lane R4-J): the level-colour chain (setCellMipDebug: level 0 red, 1 yellow, 2 green..) for the
+        // finest level the GPU reads at the pose; one way, so put it last.
+        if ('mipDebug' in mix.set) await page.evaluate(() => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellMipDebug());
         if ('cellTierBand' in mix.set) await page.evaluate((b) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTierBand(Array.isArray(b) ? b : null), mix.set.cellTierBand);
         await page.evaluate(([v, set]) => {
           const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;
@@ -171,7 +181,9 @@ for (const variant of VARIANTS) {
         const bc = vm._bakedCoarse, kinds: Record<string, number> = {};
         for (const [k, e] of t?.chunks ?? []) { const kind = String(k).split(':')[0]; kinds[kind] = (kinds[kind] ?? 0) + (e.mesh ? 1 : 0); }
         const baked = bc ? { ...bc.stats(), visible: [...(t?.bakedEntries?.values?.() ?? [])].filter((e: any) => e.mesh?.visible && e.mesh?.parent).length, residents: [...bc.residents.values()].map((r: any) => ({ key: r.key, drawn: r.drawn, lifted: r.lifted, pos: [Math.round(r.mesh.position.x), Math.round(r.mesh.position.y)], parent: !!r.mesh.parent, visible: r.mesh.visible, hidden: (() => { const a = r.mesh.geometry.getAttribute('hidden')?.array; if (!a) return null; let h = 0; for (const v of a) if (v) h++; return +(h / a.length).toFixed(3); })() })) } : null;
-        return { baked, chunkKinds: kinds, glErrors, ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null, cellMips: t?.cellMipsInfo ? { buildMs: t.cellMipsInfo.buildMs, upload: t.cellMipsInfo.upload } : null, cellRolloff: t?.cellRolloffInfo ? { buildMs: t.cellRolloffInfo.buildMs, upload: t.cellRolloffInfo.upload, maskUpload: t.cellRolloffInfo.maskUpload, rolled: t.cellRolloffInfo.rolled, options: t.cellRolloffInfo.options } : null };
+        // Lane R4-J (#254): the facade atlas switch at this pose (`?atlasAerial=1|measure`): mode and level floor.
+        const aa = (window as any).__canalRecallAtlasAerialSwitch?.stats, atlasAerial = aa ? { mode: aa.mode, floor: aa.floor, eyeM: aa.eyeM, chunkLod: aa.chunkLod, drops: aa.drops, softFrames: aa.softFrames, disabled: aa.disabled } : null;
+        return { atlasAerial, baked, chunkKinds: kinds, glErrors, ground, tier: perf.tier ?? null, pixelRatio: vm.host?.getPixelRatio?.(), facadeTextureMB: +(t?.stats?.().textureMB ?? 0).toFixed(1), atlas: t?.atlasSource ?? null, textures: i?.memory?.textures ?? null, geometries: i?.memory?.geometries ?? null, cellTier: t?.material?.uniforms?.cellTier?.value ?? null, cellMips: t?.cellMipsInfo ? { buildMs: t.cellMipsInfo.buildMs, upload: t.cellMipsInfo.upload } : null, cellRolloff: t?.cellRolloffInfo ? { buildMs: t.cellRolloffInfo.buildMs, upload: t.cellRolloffInfo.upload, maskUpload: t.cellRolloffInfo.maskUpload, rolled: t.cellRolloffInfo.rolled, options: t.cellRolloffInfo.options } : null };
       });
       const ms = await frameMs(page);
       (results[spot.name] ??= {})[label] = { errors: [...errors.filter(e => /Shader Error|ERROR: /.test(e)).slice(0, 2), ...errors.slice(-3)], query, size: [img.width, img.height], sharpness: { laplacianVar: +s.laplacianVar.toFixed(1), edge: +s.edge.toFixed(2), acutance: +s.acutance.toFixed(1) }, ...state, ...(mix ? { windowSdfMix: mix.value, ...mix.set } : {}), ...ms };
