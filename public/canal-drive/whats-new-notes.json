@@ -3,6 +3,28 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Your city knowledge has a map, and the passport is a stamp album",
+   "text": "The Knowledge screen draws the city as a paper map: every buurt is shaded by how well you know its names, a dashed rim marks names due, and a tap shows just that buurt's names. The passport is a stamp album, one stamp per buurt with the day you earned it, and the arrival card shows a new stamp as a stamp. No street names are drawn, so nothing under question is given away.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-g5-knowledge/knowledge-desktop-after.jpg",
+     "alt": "The Knowledge screen on desktop: the city as a paper map shaded by mastery per buurt, with the legend and the review queue",
+     "caption": "The knowledge map on desktop."
+    },
+    {
+     "src": "ui/2026-11-09-g5-knowledge/knowledge-phone-album-after.jpg",
+     "alt": "The stamp album on a phone: earned buurt stamps with dates, then the unearned ones",
+     "caption": "The stamp album on a phone."
+    },
+    {
+     "src": "ui/2026-11-09-g5-knowledge/arrival-stamp-phone.jpg",
+     "alt": "The arrival card on a phone showing a newly earned passport stamp as a stamp",
+     "caption": "A new stamp on the arrival card."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Today's ride, and a landing page that knows you",
    "text": "Come back and the landing page greets you with your streak and stamps, Today's ride (the same route for everyone on a given day, never a pair from the last seven days), Continue with the names due, and Free Ride. The board under Today's ride marks your fastest time; distances read as estimates (about 1.7 km).",
    "images": [
