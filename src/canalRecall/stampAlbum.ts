@@ -104,5 +104,6 @@ export function stampDateLabel(date: string | null, language: string = 'en'): st
   const [y, m, d] = date.slice(0, 10).split('-').map(Number);
   return new Intl.DateTimeFormat(language === 'nl' ? 'nl-NL' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
     .format(Date.UTC(y, m - 1, d))
-    .replace('.', '');
+    .replace('.', '')
+    .replace('Sept', 'Sep');
 }

@@ -48,5 +48,6 @@ test('a fresh passport stamp records the day it was earned', () => {
 test('date label in plaque voice', () => {
   assert.equal(stampDateLabel('2026-11-09'), '9 Nov 2026');
   assert.equal(stampDateLabel('2026-11-09', 'nl'), '9 nov 2026');
+  assert.equal(stampDateLabel('2026-09-20'), '20 Sep 2026');
   assert.equal(stampDateLabel(null), '');
 });
