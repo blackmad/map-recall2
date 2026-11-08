@@ -38,7 +38,8 @@ async function orthoCell(id: string): Promise<Buffer> {
   return sharp(Buffer.from(rgb), { raw: { width: W, height: H, channels: 3 } }).composite([{ input: Buffer.from(svg) }]).png().toBuffer();
 }
 
-const frame = async (file: string) => fs.existsSync(file) ? sharp(file).resize(W, H, { fit: 'cover' }).png().toBuffer()
+// The pose centres the pand: crop the middle 600 x 347 of the 1260 x 730 frame (0.7x) so window grids stay legible.
+const frame = async (file: string) => fs.existsSync(file) ? sharp(file).extract({ left: 330, top: 191, width: 600, height: 347 }).resize(W, H).png().toBuffer()
   : sharp({ create: { width: W, height: H, channels: 3, background: '#333' } }).png().toBuffer();
 
 fs.mkdirSync(OUT, { recursive: true });

@@ -25,6 +25,12 @@ export const BLANK_INSTALLS: Readonly<Record<string, number>> = {
   // Rijksakademie, Sarphatistraat 470 courtyard ranges between Mauritskade and the barracks: the user's "behind Plantage
   // Muidergracht" flat brown complex (shot 3); 296 m2 of glass on 9,259 m2 of wall.
   'ordinary-0363100012165748': 0.031,
+  // Balboaplein 48, Bos en Lommer (2004 perimeter block): the audit ride (2026-11-09) shows one flat orange-red box with
+  // no window grid from the air, where the generic facade draws its brick grid; 451 m2 of glass on 9,097 m2 of wall.
+  'ordinary-0363100012147097': 0.047,
+  // Revaleiland 437, Java-eiland (courtyard block): the audit ride shows a flat red box, generic draws the brick grid;
+  // 497 m2 of glass on 8,239 m2 of wall.
+  'ordinary-0363100012250186': 0.057,
 };
 
 /** `?bareFronts=0` (or window.__canalRecallBareFronts = false) restores today's draw. Off outside a browser: Node scripts
