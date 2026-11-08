@@ -78,3 +78,44 @@ test('the arrival card keeps the whole destination name and nothing covers its a
   for (const button of await visibleUtilities(page)) expect(overlaps(button, cardBox), `utility button ${JSON.stringify(button)} on the arrival card`).toBe(false);
   await page.screenshot({ path: `artifacts/g7/phone-finish.png` });
 });
+
+// Item 5 (#277): "the phone zoom snaps when a question card closes". Measure:
+// a player-set zoom, a question, an answer, and every frame's zoom (camera
+// zoom, the speed pull-back scale, and the world view's own zoom) around the
+// close; count _applyPrefsToRuntime calls the close triggers.
+test('measure: zoom across a question card closing on a phone', async ({ page }) => {
+  await page.setViewportSize(PHONE);
+  await openRoute(page, { travelMode: 'car' });
+  const trace = await page.evaluate(async () => {
+    const game = (window as any).canalRecallGame;
+    let applies = 0;
+    const apply = game._applyPrefsToRuntime;
+    game._applyPrefsToRuntime = function (...args: unknown[]) { applies++; return apply.apply(this, args); };
+    game.camera.zoom = game.camera.zoom * 1.6; game._zoomTouchedByPlayer = true;
+    const frames: Array<{ t: number; zoom: number; pull: number; world: number | null; open: boolean; speed: number }> = [];
+    const sample = () => frames.push({
+      t: Math.round(performance.now()), zoom: +game.camera.zoom.toFixed(4), pull: +(game.camera.speedZoomScale ?? 1).toFixed(4),
+      world: typeof game.vectorMap?.map?.getZoom === 'function' ? +game.vectorMap.map.getZoom().toFixed(3) : null,
+      open: !!game.quizPromptName, speed: +(game.player?.speed ?? 0).toFixed(1),
+    });
+    const frame = () => new Promise(r => requestAnimationFrame(() => { sample(); r(null); }));
+    // Ride a little first so the pull-back is in play.
+    game.player.speed = game.player.maxSpeed * 0.8;
+    for (let i = 0; i < 40; i++) await frame();
+    game.routeOptions.answerMode = 'multiple';
+    game._openQuizPrompt({ kind: 'route', name: 'Prinsengracht', subject: 'water', question: 'Which canal are you on?', context: '',
+      choices: ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Brouwersgracht'] });
+    for (let i = 0; i < 60; i++) await frame();
+    const appliesBeforeClose = applies;
+    const right = [...document.querySelectorAll<HTMLButtonElement>('.canal-choice')].find(b => b.textContent?.includes('Prinsengracht'));
+    right?.click();
+    const closeAt = frames.length;
+    for (let i = 0; i < 240 && (game.quizPromptName || i < 120); i++) await frame();
+    return { frames, closeAt, applies, appliesBeforeClose, clicked: !!right };
+  });
+  const jumps = trace.frames.slice(1).map((f, i) => ({ i: i + 1, dz: f.zoom / trace.frames[i].zoom, dp: f.pull / trace.frames[i].pull,
+    dw: f.world != null && trace.frames[i].world != null ? f.world - trace.frames[i].world! : 0 }))
+    .filter(j => Math.abs(j.dz - 1) > 0.02 || Math.abs(j.dp - 1) > 0.02 || Math.abs(j.dw) > 0.05);
+  console.log(JSON.stringify({ clicked: trace.clicked, closeAt: trace.closeAt, applies: trace.applies, appliesBeforeClose: trace.appliesBeforeClose,
+    first: trace.frames[0], beforeClose: trace.frames[trace.closeAt - 1], afterClose: trace.frames.slice(trace.closeAt, trace.closeAt + 6), last: trace.frames.at(-1), jumps: jumps.slice(0, 20) }));
+});
