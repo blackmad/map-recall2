@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { unionMs, WorkerTrace } from './workerTrace';
+import { phaseSplit, unionMs, WorkerTrace } from './workerTrace';
 
 test('unionMs merges overlapping spans', () => {
   assert.equal(unionMs([[0, 10], [5, 15], [20, 25]]), 20);
@@ -23,4 +23,11 @@ test('fetchSplit counts the files a job started, its network wall time and gunzi
   t.fetch({ path: 'y', start: 20, fetched: 80, end: 82, bytes: 1024, stallMs: 0 });
   t.fetch({ path: 'z', start: 200, fetched: 210, end: 211, bytes: 1024, stallMs: 0 });
   assert.deepEqual(t.fetchSplit(0, 100), { files: 2, kB: 3, netMs: 70, stallMaxMs: 30, gunzipMs: 7, byDir: { x: [1, 2], y: [1, 1] }, paths: ['x', 'y'], shared: 0, sharedKB: 0, savedMs: 0, hostGunzipMs: 0 });
+});
+
+test('phaseSplit sums a job\'s data-in phases and keeps the keyed events over 1 ms (lane R5-A #260 step 4)', () => {
+  const s = phaseSplit([['parse:osm', '0_0', 12.4], ['parse:osm', '1_0', 7.3], ['cuts:plan', '0_0', 0.4], ['waydecks', '0_0', 80.6]], { roads: 700 });
+  assert.deepEqual(s.input, { 'parse:osm': 20, 'cuts:plan': 0, waydecks: 81 });
+  assert.deepEqual(s.build, { roads: 700 });
+  assert.deepEqual(s.events, ['parse:osm|0_0|12', 'parse:osm|1_0|7', 'waydecks|0_0|81']);
 });
