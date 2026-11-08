@@ -3,6 +3,59 @@
   "notes": [
     {
       "date": "2026-11-08",
+      "title": "A smoother start",
+      "text": "When the loading screen lifts, the view no longer slides down into place over the first quarter second, and the big landmarks next to where your ride begins (the Rijksmuseum at Museumplein, Centraal Station) are already in place instead of popping in a moment later. The first frame you see is the frame the ride starts from. Measured on a Mac the largest change in any frame after the reveal fell from 7-13 % of the picture to under 1 %, at a cost of about a tenth of a second before the ride starts.",
+      "where": [
+        4.8868,
+        52.3596
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-reveal-light/desktop-reveal-before-after.png",
+          "alt": "Museumplein at the reveal and a quarter second later, before (the camera slides down 1.8 m) and after (already in place)",
+          "caption": "The reveal frame and +270 ms. Before row | after row."
+        },
+        {
+          "src": "engine/2026-11-08-reveal-swap/desktop-reveal-swap-before-after.png",
+          "alt": "Museumplein at the reveal and 300 ms later, before (the Rijksmuseum pops from its block shell to the full model) and after (already the full model)",
+          "caption": "The Rijksmuseum at the reveal and +300 ms. Before row | after row."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Bridges keep their road",
+      "text": "The carriageway and the red cycle path now run unbroken across the Kattenburgerbrug and the Prins Hendrikkade bridges instead of breaking into a pale band at each end, and a junction mouth draws one red crossing, not two. At the Beltbrug a grass verge no longer greys the cycle path. The cause was the ground-level footways under each bridge end, drawn at kerb height above the deck.",
+      "where": [
+        4.9165,
+        52.3733
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5c1/strip-ortho-before-after-chase.jpg",
+          "alt": "Six bridges and junctions: the aerial photograph, before and after; the roads now run across the decks and each mouth has one red crossing",
+          "caption": "Orthophoto | before | after at six bridges."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Tunnel ramps and junctions tidied",
+      "text": "The IJ-tunnel ramps no longer have pale paving and grass sheets hanging over their walls: ground that crossed a tunnel wall is now cut at the wall, each side at its own level. Across the city the tiny stray paving specks and kerb stubs at junctions are gone (12,000 slivers merged into their neighbours, 2,300 kerb stubs under 1.5 m removed), visibly at Muntplein and by Arcam on the Prins Hendrikkade. Some pale sheets remain along the ramp sides that have no wall; that is the next fix.",
+      "where": [
+        4.9095,
+        52.3735
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5c2/strip-ortho-before-after.jpg",
+          "alt": "Rapenburg, the IJ-tunnel ramp walls, Muntplein and Prins Hendrikkade: the aerial photograph, before and after",
+          "caption": "Orthophoto | before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
       "title": "Flat roofs read as roofs, not bright slabs",
       "text": "Flat roofs seen from the air are no longer one bright slab. Their tone now matches the aerial photograph (14 of the 15 largest lids around the Nieuwmarkt sit within a shade of it, against 4 before), the surface carries the grain and seams of gravel and membrane, large roofs show a roof box, and a parapet lip appears as you come closer. The city's simplified shells were re-baked with the same roofs.",
       "where": [
