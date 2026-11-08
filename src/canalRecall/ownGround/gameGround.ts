@@ -691,7 +691,13 @@ export class OwnGround {
    * while the ground is hidden at this zoom or a cell has no data.
    */
   /** Cells asked for and not yet installed; 0 when the ground has caught up with the view or is not drawn at this zoom. */
-  get loadingCells(): number { return this.visibleAtZoom(this.zoom) ? this.pending.size + this.installQueue.length : 0; }
+  get loadingCells(): number {
+    // The hold's prefetch (groundPrefetch.ts) is not loading the game waits on: before the game's first update nothing
+    // was asked, and settle.ts's ownGround check then held the loading screen for the prefetched cells (the reveal came
+    // 1.7 s later, 3 of 3 runs, 2026-11-08).
+    if (!this.gameUpdated && this.prefetchCells) return 0;
+    return this.visibleAtZoom(this.zoom) ? this.pending.size + this.installQueue.length : 0;
+  }
 
   coversRect(x0: number, y0: number, x1: number, y1: number): boolean {
     if (!this.ready || !this.visibleAtZoom(this.zoom) || !this.resident.size) return false;
