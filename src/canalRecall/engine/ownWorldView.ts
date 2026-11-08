@@ -460,7 +460,9 @@ export class OwnWorldView implements WorldViewOracles {
     const maxPitch = prefs && Number.isFinite(prefs.MAP_MAX_PITCH) ? Math.max(60, prefs.MAP_MAX_PITCH) : 60;
     this.cameraMap = new CameraMap(this.host, { center: [4.9041, 52.3676], zoom: 17, maxPitch });
     // Settled (WorldCamera.whenIdle, game-route.js _waitForMapSettle) means every loader has caught up with the view.
-    for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, busy);
+    // Once the cold-start hold is armed (holdRidePose), and until the loading screen goes, it owns the ground question: settle.ts's 300 m box, judged at
+    // the racing pose, held 5/5 cold desktop starts to the 6 s cap with no ground cell built (R5-B2 #261).
+    for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, name === 'ownGround' ? () => (this.startHoldOwnsGround() ? false : busy()) : busy);
     // ?startSettle=0 registers nothing here: the hold is today's settleChecks alone (startSettle.ts).
     if (this.startSettleOn) this.cameraMap.addIdleCheck('startSettle', () => this.startSettleBusy());
     this.camera = this.cameraMap.api;
@@ -1067,7 +1069,11 @@ export class OwnWorldView implements WorldViewOracles {
   holdRidePose(camera: GameCamera & { projector?: unknown }, loader: LoaderFrame, canvas: HTMLCanvasElement): void {
     if (!this.startSettleOn || this._startSettle.done) return;
     this._startPose = { camera, loader, canvas };
+    this._startHeld = true;
   }
+  private _startHeld = false;
+  /** The cold-start hold was armed and the loading screen is still up: settle.ts's ownGround check stands down. */
+  private startHoldOwnsGround(): boolean { return this._startHeld && W().canalRecallGame?.state === LOADING_STATE; }
 
   /**
    * One-shot idle check for the cold start: busy while the buildings, far ring or baked coarse tier (and with
