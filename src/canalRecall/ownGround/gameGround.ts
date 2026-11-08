@@ -443,7 +443,7 @@ export class OwnGround {
    * init posted, the worker ready (and its own init ms), the first cell installed. `cells`: each install's split
    * (worker queue wait / data in / build / tiles, the main thread's request → install latency and install ms), last 200.
    */
-  readonly startup: { loadAt?: number; storeReadyAt?: number; workerPostedAt?: number; workerReadyAt?: number; workerInitMs?: number; firstInstallAt?: number; cells: Record<string, unknown>[] } = { cells: [] };
+  readonly startup: { /** Ground workers created; each one's ready time (page ms). */ workers?: number; workerReady?: number[]; loadAt?: number; storeReadyAt?: number; workerPostedAt?: number; workerReadyAt?: number; workerInitMs?: number; firstInstallAt?: number; cells: Record<string, unknown>[] } = { cells: [] };
   readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
@@ -477,11 +477,12 @@ export class OwnGround {
         worker.onmessage = event => this.onWorker(event.data);
         worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
         // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-        worker.postMessage(init);
+        worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin });
         this.workers.push(worker);
       }
       this.worker = this.workers[0] ?? null;
       this.startup.workerPostedAt ??= performance.now();
+      this.startup.workers ??= count;
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -821,7 +822,7 @@ export class OwnGround {
   }
 
   private onWorker(msg: any): void {
-    if (msg.type === 'ready') { this.startup.workerReadyAt ??= performance.now(); if (typeof msg.initMs === 'number') this.startup.workerInitMs ??= msg.initMs; this.workerReady = true; this.workerRailCells = typeof msg.railCells === 'number' ? msg.railCells : null; return; }
+    if (msg.type === 'ready') { this.startup.workerReadyAt ??= performance.now(); (this.startup.workerReady ??= [])[msg.index ?? 0] = Math.round(performance.now()); if (typeof msg.initMs === 'number') this.startup.workerInitMs ??= msg.initMs; this.workerReady = true; this.workerRailCells = typeof msg.railCells === 'number' ? msg.railCells : null; return; }
     if (msg.type === 'error' && msg.far) { this.stats.errors.push(`far ${msg.far}: ${msg.message}`.slice(0, 400)); this.farPending.delete(msg.far); return; }
     if (msg.type === 'far') {
       if (msg.gen !== this.gen || !this.farPending.delete(msg.key)) return;
@@ -1492,7 +1493,9 @@ export class OwnGround {
     const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); return s.length ? +s[s.length >> 1].toFixed(1) : null; };
     return {
       enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false, detail: this.opts.detail, groundNear: this.opts.groundNear, ring: this.opts.ring, aheadM: this.aheadM,
-      cells, details, pending: Object.fromEntries(this.pending), queued: this.installQueue.length, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
+      cells, details, pending: Object.fromEntries(this.pending), queued: this.installQueue.length,
+      // Lane R5-A #260 step 1: the ground workers and the cells pending on each (far blocks all go to worker 0).
+      workers: this.workers.length, workerPending: this.workers.map((_, i) => [...this.pending.keys()].filter(k => this.workerOf.get(k) === i)), triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
       latencyMsMedian: median(this.stats.latencyMs), latencyMsMax: this.stats.latencyMs.length ? Math.round(Math.max(...this.stats.latencyMs)) : null, lastBuild: this.stats.lastBuild,
