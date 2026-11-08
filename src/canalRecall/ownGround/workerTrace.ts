@@ -95,3 +95,23 @@ export class WorkerTrace {
     };
   }
 }
+
+/** Lane R5-A #260 step 4: one data-in phase the store timed (GroundStore.phaseHook): phase, key (cell, relief tile or deck id), CPU ms. */
+export type PhaseEvent = [phase: string, key: string, ms: number];
+
+export interface PhaseSplit {
+  /** Data-in CPU per phase, summed over this job, ms (parse:<extract>, relief:*, decks:*, waydecks, cuts:*, water:openings, assemble). */
+  input: Record<string, number>;
+  /** The build's own phases (groundCell.ts stats.phases), ms. */
+  build: Record<string, number>;
+  /** Every keyed event over 1 ms, `phase|key|ms`: the probe counts the same plan computed on more than one worker. */
+  events: string[];
+}
+
+/** One job's phase events, summed per phase, plus the build's phases. */
+export function phaseSplit(events: readonly PhaseEvent[], build?: Record<string, number>): PhaseSplit {
+  const input: Record<string, number> = {};
+  for (const [phase, , ms] of events) input[phase] = (input[phase] ?? 0) + ms;
+  for (const k of Object.keys(input)) input[k] = Math.round(input[k]);
+  return { input, build: { ...(build ?? {}) }, events: events.filter(e => e[2] >= 1).map(([p, k, ms]) => `${p}|${k}|${Math.round(ms)}`) };
+}

@@ -94,10 +94,29 @@ for (let run = 0; run < runs; run++) {
   // Lane R5-A #260 step 3 (groundShare.ts): requests served by the share host without a new fetch, their kB, the host's fetch + gunzip they saved.
   summary.inputSplit.shared = fsum('shared'); summary.inputSplit.sharedKB = fsum('sharedKB'); summary.inputSplit.savedMs = fsum('savedMs'); summary.inputSplit.hostGunzipMs = fsum('hostGunzipMs');
   summary.inputSplit.networkFetches = summary.inputSplit.files - summary.inputSplit.shared;
+  // Lane R5-A #260 step 4: the data-in CPU per phase (GroundStore.phaseHook) and the build's phases, for the block's LOD 0
+  // cells and over all cells; the same plan (phase|key) computed more than once on this start (on several workers).
+  const blockCentre = data.rows.find(r => r.t >= s4 && r.centreKey)?.centreKey ?? null;
+  const blockKeys = blockCentre ? (() => { const [x, y] = blockCentre.split('_').map(Number), o = []; for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) o.push(`${x + dx}_${y + dy}`); return o; })() : [];
+  const addTo = (o, rec) => { for (const [k, v] of Object.entries(rec ?? {})) o[k] = (o[k] ?? 0) + v; return o; };
+  const blockL0 = summary.cells.filter(c => c.lod === 0 && blockKeys.includes(c.key));
+  summary.phaseSplit = {
+    blockCentre, blockL0: blockL0.length,
+    blockL0Cells: blockL0.map(c => ({ key: c.key, worker: c.worker, inputMs: c.inputMs, buildMs: c.buildMs, input: c.phases?.input ?? null, build: c.phases?.build ?? null })),
+    allInput: summary.cells.reduce((o, c) => addTo(o, c.phases?.input), {}), allBuild: summary.cells.reduce((o, c) => addTo(o, c.phases?.build), {}),
+  };
+  const seenPlan = new Map();
+  for (const c of summary.cells) for (const e of c.phases?.events ?? []) { const [ph, k, ms] = e.split('|'); const id = `${ph}|${k}`; const r = seenPlan.get(id) ?? { n: 0, ms: 0, first: 0, workers: new Set() }; r.n++; r.ms += +ms; if (r.n === 1) r.first = +ms; r.workers.add(c.worker); seenPlan.set(id, r); }
+  const dup = {};
+  for (const [id, r] of seenPlan) { const ph = id.split('|')[0], d = (dup[ph] ??= { plans: 0, computed: 0, ms: 0, repeatedMs: 0 }); d.plans++; d.computed += r.n; d.ms += r.ms; d.repeatedMs += r.ms - r.first; }
+  for (const d of Object.values(dup)) { d.ms = Math.round(d.ms); d.repeatedMs = Math.round(d.repeatedMs); }
+  summary.phaseSplit.repeated = dup;
   summary.farPendingMax = Math.max(0, ...data.rows.map(r => r.farPending ?? 0));
   results.push({ ...summary, rows: data.rows.map(r => ({ ...r, t: rel(r.t) })), resources: data.resources.map(r => ({ ...r, start: rel(r.start), end: rel(r.end) })), errors });
   console.log(`run ${run}: worker posted ${summary.workerPostedAt} ready ${summary.workerReadyAt} (init ${summary.workerInitMs} ms) first install ${summary.firstInstallAt} | visible ${summary.visibleAt} centre ${summary.centreAt} block ${summary.blockAt} ring ${summary.ringAt} (${summary.wanted} cells) ms after state 4 | medians ${JSON.stringify(summary.medians)}`);
   console.log(`  prefetch ${summary.prefetchAt} (${summary.prefetchKey}) workers ${summary.workers} ready ${JSON.stringify(summary.workerReady)} byWorker ${JSON.stringify(summary.byWorker)}\n  waitSplit ${JSON.stringify(summary.waitSplit)}\n  inputSplit ${JSON.stringify(summary.inputSplit)} farPendingMax ${summary.farPendingMax}`);
+  console.log(`  phases block ${summary.phaseSplit.blockCentre} L0 ${JSON.stringify(summary.phaseSplit.blockL0Cells)}\n  repeated ${JSON.stringify(summary.phaseSplit.repeated)}`);
+  if (summary.prefetchAt == null) console.log('  WARNING: prefetchAt is null (stale bundles? groundPrefetch off?)');
   await context.close();
 }
 fs.mkdirSync(path.dirname(out), { recursive: true });
