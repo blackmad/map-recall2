@@ -23,6 +23,8 @@ const OUT = path.resolve(arg('out') ?? 'artifacts/roofs/roof-facts');
 const TILES = path.resolve('public/data/extracts/amsterdam/bag-tiles/14');
 const PUBLISHED = path.resolve('public/data/extracts/amsterdam/roof-facts');
 const LAYER = 'Actueel_ortho25', LEVEL = 14;
+/** Readings kept in the sidecar: `--min-confidence=0.2` stages the low-confidence prior bias (lane R5-E); default MIN_CONFIDENCE. */
+const MIN_CONF = Number(arg('min-confidence') ?? MIN_CONFIDENCE);
 const IMAGERY = `PDOK luchtfotorgb ${LAYER} EPSG:28992 level ${LEVEL} (0.21 m), fetched 2026-10-13`;
 /** Furniture only where it is worth drawing and cheap to detect: roofs up to this area (m²). */
 const FURNITURE_MAX_AREA = 4000;
@@ -96,7 +98,7 @@ async function build() {
       entries.push([p.id, { slot: reading.slot, rgb: reading.rgb, confidence: reading.confidence, solarShare: reading.solarShare, terrace: reading.terrace, furniture }]);
       if (mosaic.size > 2500) mosaic.clear();
     }
-    const encoded = encodeRoofFactTile(entries, LUCHTFOTO_LICENCE, IMAGERY);
+    const encoded = encodeRoofFactTile(entries, LUCHTFOTO_LICENCE, IMAGERY, MIN_CONF);
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, zlib.gzipSync(JSON.stringify(encoded), { level: 9 }));
     console.log(`${done}/${order.length} ${tile}: ${pands.length} pands, ${entries.length} read, ortho ${tiles.length} (${fetched} new, ${missing} missing), ${((Date.now() - t1) / 1000).toFixed(0)} s, total ${((Date.now() - t0) / 60000).toFixed(1)} min`);
