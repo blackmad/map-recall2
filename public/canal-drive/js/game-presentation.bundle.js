@@ -777,6 +777,15 @@
     "ride.routeSetup": "Route setup",
     "ride.shareRoute": "Share this route",
     "ride.linkCopied": "Link copied",
+    "shareCard.destination": "DESTINATION",
+    "shareCard.ride": "RIDE",
+    "shareCard.distance": "DISTANCE",
+    "shareCard.time": "TIME",
+    "shareCard.byBike": "By bike",
+    "shareCard.byBoat": "By boat",
+    "shareCard.byTransit": "By tram and metro",
+    "shareCard.saved": "Picture saved",
+    "shareCard.savedAndCopied": "Picture saved \xB7 link copied",
     "ride.startExploring": "Start exploring",
     "ride.noCycling": "No cycling in real life",
     "ride.wikipediaLink": "Wikipedia \u2197",
@@ -1443,6 +1452,15 @@
     "ride.routeSetup": "Route instellen",
     "ride.shareRoute": "Deel deze route",
     "ride.linkCopied": "Link gekopieerd",
+    "shareCard.destination": "BESTEMMING",
+    "shareCard.ride": "RIT",
+    "shareCard.distance": "AFSTAND",
+    "shareCard.time": "TIJD",
+    "shareCard.byBike": "Per fiets",
+    "shareCard.byBoat": "Per boot",
+    "shareCard.byTransit": "Per tram en metro",
+    "shareCard.saved": "Afbeelding opgeslagen",
+    "shareCard.savedAndCopied": "Afbeelding opgeslagen \xB7 link gekopieerd",
     "ride.startExploring": "Begin met verkennen",
     "ride.noCycling": "Geen fietsen in het echt",
     "ride.wikipediaLink": "Wikipedia \u2197",
@@ -9019,6 +9037,23 @@
     return false;
   }
 
+  // src/canalRecall/shareCard.ts
+  var SHARE_TRAIL_STEP_PX = 45;
+  var SHARE_TRAIL_MAX_POINTS = 4e3;
+  function extendShareTrail(trail, owner, point, distancePx) {
+    if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) return trail ?? { owner, lastDistancePx: distancePx, points: [] };
+    if (!trail || trail.owner !== owner || distancePx < trail.lastDistancePx - 1) {
+      return { owner, lastDistancePx: distancePx, points: [{ x: point.x, y: point.y }] };
+    }
+    const last = trail.points[trail.points.length - 1];
+    if (!last || Math.hypot(point.x - last.x, point.y - last.y) >= SHARE_TRAIL_STEP_PX) {
+      trail.points.push({ x: point.x, y: point.y });
+      if (trail.points.length > SHARE_TRAIL_MAX_POINTS) trail.points = trail.points.filter((_, i) => i % 2 === 0);
+    }
+    trail.lastDistancePx = distancePx;
+    return trail;
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK2 = "#1f1c17";
   var MUTED2 = "#5f584d";
@@ -9538,6 +9573,7 @@
       }
       if (!this.player) return;
       const player = this.player;
+      if (this.state === GameState.RACING) this._shareTrail = extendShareTrail(this._shareTrail, player, player, this._playerDistancePx());
       this.hud.setTime(this.raceTime);
       if (zoomBadgeShouldFlash(this._lastZoomShown, this.camera.zoom, this._playerZoomPending)) this._zoomBadgeTimer = ZOOM_BADGE_DURATION;
       this._lastZoomShown = this.camera.zoom;

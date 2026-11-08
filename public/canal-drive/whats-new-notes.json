@@ -3,6 +3,28 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Share a ride as a picture",
+   "text": "Share this route on the arrival card now offers a picture of the ride: the route's silhouette on postcard paper, with destination, distance, time and ribbon. The link still travels with it, and the name of an open question never appears; a withheld destination reads RIDE over its buurt instead.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-g6-share-card/storybook-card-desktop.jpg",
+     "alt": "The 1200 by 630 share card: the route silhouette on linen paper with destination, distance, time and ribbon",
+     "caption": "The share card."
+    },
+    {
+     "src": "ui/2026-11-09-g6-share-card/storybook-card-quarter-scale.jpg",
+     "alt": "The same card at a quarter of its size, still legible",
+     "caption": "At a quarter of its size."
+    },
+    {
+     "src": "ui/2026-11-09-g6-share-card/storybook-redacted-ride-buurt.jpg",
+     "alt": "A share card whose destination is withheld: it reads RIDE over the buurt name",
+     "caption": "A withheld destination reads RIDE over its buurt."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Your city knowledge has a map, and the passport is a stamp album",
    "text": "The Knowledge screen draws the city as a paper map: every buurt is shaded by how well you know its names, a dashed rim marks names due, and a tap shows just that buurt's names. The passport is a stamp album, one stamp per buurt with the day you earned it, and the arrival card shows a new stamp as a stamp. No street names are drawn, so nothing under question is given away.",
    "images": [
