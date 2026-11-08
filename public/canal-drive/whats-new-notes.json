@@ -3,6 +3,33 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "One passport, one number",
+   "text": "The landing page, the arrival card and the stamp album now count the same buurt stamps out of 89, Free Ride stamps included, and a destination is a first visit rather than a stamp. In Dutch the arrival and run cards are Dutch throughout, and a landmark question asks about the Anne Frank Huis. Album captions no longer cut a name short.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-stamps-dutch/02-arrival-spec-desktop.jpg",
+     "alt": "The arrival card's stamp line reading 3 of 89 buurt stamps, the same count as the landing and the album",
+     "caption": "One count on every surface."
+    },
+    {
+     "src": "ui/2026-11-09-stamps-dutch/03-album-junk-desktop.jpg",
+     "alt": "The stamp album at 8 of 89 with captions that wrap at the name's seam",
+     "caption": "Captions wrap instead of cutting."
+    },
+    {
+     "src": "ui/2026-11-09-stamps-dutch/05-arrival-nl-desktop.jpg",
+     "alt": "The Dutch arrival card with every line in Dutch",
+     "caption": "The arrival card in Dutch."
+    },
+    {
+     "src": "ui/2026-11-09-stamps-dutch/06-run-card-nl-desktop.jpg",
+     "alt": "The Dutch run card",
+     "caption": "The run card in Dutch."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "The landmark question is paused for a day",
    "text": "\"Which building is this?\" is off until it stops asking about a building whose name was just on the map: a ride review caught the Brakke Grond's label on screen five seconds before the question about it, and nothing may be revealed before the answer. Drive-by cards stay. A reload inside a run now picks the run's leg back up instead of restarting Today's ride.",
    "images": [

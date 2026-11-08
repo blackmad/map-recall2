@@ -1065,6 +1065,46 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.routeSetup": "Route setup",
     "ride.shareRoute": "Share this route",
     "ride.linkCopied": "Link copied",
+    // --- Arrival and run cards (#283) ---
+    "stamps.heldOf": "{count} of {total} buurt stamps",
+    "ride.arrival.placeNew": "FIRST VISIT",
+    "ride.arrival.placeAgain": "VISITED AGAIN",
+    "ride.arrival.placeTally": "{earned} of {total} places",
+    "ride.arrival.tourDone": "TOUR COMPLETE",
+    "ride.arrival.tourAgain": "TOUR AGAIN",
+    "ride.arrival.tourStop": "{title}  \xB7  STOP {stop} OF {count}",
+    "ride.arrival.run": "RUN",
+    "ride.arrival.cityKnowledge": "CITY KNOWLEDGE",
+    "ride.arrival.firstTime": "+{bits} first-time",
+    "ride.endRun": "End run",
+    "ride.newRun": "New run",
+    "ride.stat.time": "Time",
+    "ride.stat.distance": "Distance",
+    "ride.stat.points": "Points",
+    "ride.stat.stops": "Stops",
+    "ride.stat.names": "Names",
+    "ride.stat.bestStreak": "Best streak",
+    "ride.bestStreak": "Best streak {count}",
+    "count.names.one": "{count} name",
+    "count.names.other": "{count} names",
+    "count.neighborhoods.one": "{count} neighbourhood",
+    "count.neighborhoods.other": "{count} neighbourhoods",
+    "count.landmarks.one": "{count} landmark",
+    "count.landmarks.other": "{count} landmarks",
+    "count.stops.one": "{count} stop",
+    "count.stops.other": "{count} stops",
+    "count.points": "{points} points",
+    "run.chain": "chain +{percent} %",
+    "run.complete": "RUN COMPLETE",
+    "run.stops": "STOPS",
+    "run.stopsLast": "STOPS  \xB7  LAST {shown} OF {count}",
+    "run.story": "{count} {stops}{from}{to}{names}.",
+    "run.storyFrom": " from {name}",
+    "run.storyTo": " to {name}",
+    "run.storyNames": ", {names} on the map",
+    "run.storyStop.one": "stop",
+    "run.storyStop.other": "stops",
+    "run.numberWords": "No,One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Eleven,Twelve",
     "shareCard.destination": "DESTINATION",
     "shareCard.ride": "RIDE",
     "shareCard.distance": "DISTANCE",
@@ -1740,6 +1780,46 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.routeSetup": "Route instellen",
     "ride.shareRoute": "Deel deze route",
     "ride.linkCopied": "Link gekopieerd",
+    // --- Arrival and run cards (#283) ---
+    "stamps.heldOf": "{count} van {total} buurtstempels",
+    "ride.arrival.placeNew": "EERSTE BEZOEK",
+    "ride.arrival.placeAgain": "WEER BEZOCHT",
+    "ride.arrival.placeTally": "{earned} van {total} plekken",
+    "ride.arrival.tourDone": "TOCHT VOLTOOID",
+    "ride.arrival.tourAgain": "TOCHT OPNIEUW",
+    "ride.arrival.tourStop": "{title}  \xB7  STOP {stop} VAN {count}",
+    "ride.arrival.run": "REEKS",
+    "ride.arrival.cityKnowledge": "KENNIS VAN DE STAD",
+    "ride.arrival.firstTime": "+{bits} voor het eerst",
+    "ride.endRun": "Reeks be\xEBindigen",
+    "ride.newRun": "Nieuwe reeks",
+    "ride.stat.time": "Tijd",
+    "ride.stat.distance": "Afstand",
+    "ride.stat.points": "Punten",
+    "ride.stat.stops": "Stops",
+    "ride.stat.names": "Namen",
+    "ride.stat.bestStreak": "Beste reeks",
+    "ride.bestStreak": "Beste reeks {count}",
+    "count.names.one": "{count} naam",
+    "count.names.other": "{count} namen",
+    "count.neighborhoods.one": "{count} buurt",
+    "count.neighborhoods.other": "{count} buurten",
+    "count.landmarks.one": "{count} bezienswaardigheid",
+    "count.landmarks.other": "{count} bezienswaardigheden",
+    "count.stops.one": "{count} stop",
+    "count.stops.other": "{count} stops",
+    "count.points": "{points} punten",
+    "run.chain": "keten +{percent} %",
+    "run.complete": "REEKS VOLTOOID",
+    "run.stops": "STOPS",
+    "run.stopsLast": "STOPS  \xB7  LAATSTE {shown} VAN {count}",
+    "run.story": "{count} {stops}{from}{to}{names}.",
+    "run.storyFrom": " van {name}",
+    "run.storyTo": " naar {name}",
+    "run.storyNames": ", {names} op de kaart",
+    "run.storyStop.one": "stop",
+    "run.storyStop.other": "stops",
+    "run.numberWords": "Geen,E\xE9n,Twee,Drie,Vier,Vijf,Zes,Zeven,Acht,Negen,Tien,Elf,Twaalf",
     "shareCard.destination": "BESTEMMING",
     "shareCard.ride": "RIT",
     "shareCard.distance": "AFSTAND",
@@ -6420,6 +6500,43 @@ ${register}` : detail,
     return holdIsCurrent && !questionFreezesRide(questionOpen, silent);
   }
 
+  // src/canalRecall/game/landmarkNamesNl.ts
+  var LANDMARK_NAMES_NL = Object.freeze({
+    "Anne Frank House": "Anne Frank Huis",
+    "Auschwitz Memorial": "Auschwitzmonument",
+    "Berlage's Stock Market": "Beurs van Berlage",
+    "Buchenwald Memorial": "Buchenwaldmonument",
+    "Dutch Resistance Museum": "Verzetsmuseum",
+    "English Reformed Church": "Engelse Hervormde Kerk",
+    "Equestrian statue of Queen Wilhelmina": "Ruiterstandbeeld koningin Wilhelmina",
+    "Gerard Dou Synagogue": "Synagoge Gerard Doustraat",
+    "International Institute of Social History": "Internationaal Instituut voor Sociale Geschiedenis",
+    "Jewish Museum": "Joods Museum",
+    "Marseille House": "Huis Marseille",
+    "Mint Tower": "Munttoren",
+    "Museum of the Canals": "Grachtenmuseum",
+    "National Holocaust Museum": "Nationaal Holocaustmuseum",
+    "New Church": "Nieuwe Kerk",
+    "NIOD Institute for War, Holocaust, and Genocide Studies": "NIOD Instituut voor Oorlogs-, Holocaust- en Genocidestudies",
+    "Old Church": "Oude Kerk",
+    "Our Lord in the Attic": "Ons' Lieve Heer op Solder",
+    "Red Light District": "De Wallen",
+    "Rembrandt House": "Rembrandthuis",
+    "Royal Palace": "Paleis op de Dam",
+    "The National Maritime Museum": "Het Scheepvaartmuseum",
+    "The Shipping House": "Scheepvaarthuis",
+    "University of Amsterdam": "Universiteit van Amsterdam",
+    "Vondelpark Open Air Theater": "Vondelpark Openluchttheater",
+    "Walloon Church": "Waalse Kerk",
+    "Weepers' Tower": "Schreierstoren",
+    "West India House": "West-Indisch Huis",
+    "West Indian Warehouse": "West-Indisch Pakhuis",
+    "Zuiderkerk Tower": "Zuiderkerkstoren"
+  });
+  function landmarkDisplayName(name, language2) {
+    return language2 === "nl" ? LANDMARK_NAMES_NL[name] ?? name : name;
+  }
+
   // src/canalRecall/game/landmarkQuestionRuntime.ts
   var AHEAD_HALF_ANGLE = 15 * Math.PI / 180;
   var LANDMARK_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 4l9 6"/><path d="M5 10v9M19 10v9M9.5 19v-5h5v5M3 20h18"/></svg>';
@@ -6519,18 +6636,20 @@ ${register}` : detail,
       if (!choices) return false;
       this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
       this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: answer.hood || "" };
-      this.quizWithheldNames = landmarkWithheldNames(chosen.name, choices);
+      const lang = language();
+      const shownChoices = choices.map((name) => landmarkDisplayName(name, lang));
+      this.quizWithheldNames = landmarkWithheldNames(chosen.name, [...choices, ...shownChoices, landmarkDisplayName(chosen.name, lang)]);
       const heading = this.player.speed < 0 ? this.player.angle + Math.PI : this.player.angle;
       const off = Math.atan2(chosen.y - this.player.y, chosen.x - this.player.x) - heading;
       const bearing = Math.atan2(Math.sin(off), Math.cos(off));
       const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t("ride.landmarkQuestion.ahead") : bearing < 0 ? t("ride.landmarkQuestion.left") : t("ride.landmarkQuestion.right");
       this._openQuizPrompt({
         kind: "landmark",
-        name: chosen.name,
+        name: landmarkDisplayName(chosen.name, lang),
         subject: "landmark",
         question: t("ride.landmarkQuestion.heading"),
         context: answer.hood ? `${side} \xB7 ${answer.hood}` : side,
-        choices
+        choices: shownChoices
       });
       this._dressLandmarkPrompt();
       this.vectorMap?.setActiveLandmark(chosen);

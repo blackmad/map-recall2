@@ -777,6 +777,46 @@
     "ride.routeSetup": "Route setup",
     "ride.shareRoute": "Share this route",
     "ride.linkCopied": "Link copied",
+    // --- Arrival and run cards (#283) ---
+    "stamps.heldOf": "{count} of {total} buurt stamps",
+    "ride.arrival.placeNew": "FIRST VISIT",
+    "ride.arrival.placeAgain": "VISITED AGAIN",
+    "ride.arrival.placeTally": "{earned} of {total} places",
+    "ride.arrival.tourDone": "TOUR COMPLETE",
+    "ride.arrival.tourAgain": "TOUR AGAIN",
+    "ride.arrival.tourStop": "{title}  \xB7  STOP {stop} OF {count}",
+    "ride.arrival.run": "RUN",
+    "ride.arrival.cityKnowledge": "CITY KNOWLEDGE",
+    "ride.arrival.firstTime": "+{bits} first-time",
+    "ride.endRun": "End run",
+    "ride.newRun": "New run",
+    "ride.stat.time": "Time",
+    "ride.stat.distance": "Distance",
+    "ride.stat.points": "Points",
+    "ride.stat.stops": "Stops",
+    "ride.stat.names": "Names",
+    "ride.stat.bestStreak": "Best streak",
+    "ride.bestStreak": "Best streak {count}",
+    "count.names.one": "{count} name",
+    "count.names.other": "{count} names",
+    "count.neighborhoods.one": "{count} neighbourhood",
+    "count.neighborhoods.other": "{count} neighbourhoods",
+    "count.landmarks.one": "{count} landmark",
+    "count.landmarks.other": "{count} landmarks",
+    "count.stops.one": "{count} stop",
+    "count.stops.other": "{count} stops",
+    "count.points": "{points} points",
+    "run.chain": "chain +{percent} %",
+    "run.complete": "RUN COMPLETE",
+    "run.stops": "STOPS",
+    "run.stopsLast": "STOPS  \xB7  LAST {shown} OF {count}",
+    "run.story": "{count} {stops}{from}{to}{names}.",
+    "run.storyFrom": " from {name}",
+    "run.storyTo": " to {name}",
+    "run.storyNames": ", {names} on the map",
+    "run.storyStop.one": "stop",
+    "run.storyStop.other": "stops",
+    "run.numberWords": "No,One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Eleven,Twelve",
     "shareCard.destination": "DESTINATION",
     "shareCard.ride": "RIDE",
     "shareCard.distance": "DISTANCE",
@@ -1452,6 +1492,46 @@
     "ride.routeSetup": "Route instellen",
     "ride.shareRoute": "Deel deze route",
     "ride.linkCopied": "Link gekopieerd",
+    // --- Arrival and run cards (#283) ---
+    "stamps.heldOf": "{count} van {total} buurtstempels",
+    "ride.arrival.placeNew": "EERSTE BEZOEK",
+    "ride.arrival.placeAgain": "WEER BEZOCHT",
+    "ride.arrival.placeTally": "{earned} van {total} plekken",
+    "ride.arrival.tourDone": "TOCHT VOLTOOID",
+    "ride.arrival.tourAgain": "TOCHT OPNIEUW",
+    "ride.arrival.tourStop": "{title}  \xB7  STOP {stop} VAN {count}",
+    "ride.arrival.run": "REEKS",
+    "ride.arrival.cityKnowledge": "KENNIS VAN DE STAD",
+    "ride.arrival.firstTime": "+{bits} voor het eerst",
+    "ride.endRun": "Reeks be\xEBindigen",
+    "ride.newRun": "Nieuwe reeks",
+    "ride.stat.time": "Tijd",
+    "ride.stat.distance": "Afstand",
+    "ride.stat.points": "Punten",
+    "ride.stat.stops": "Stops",
+    "ride.stat.names": "Namen",
+    "ride.stat.bestStreak": "Beste reeks",
+    "ride.bestStreak": "Beste reeks {count}",
+    "count.names.one": "{count} naam",
+    "count.names.other": "{count} namen",
+    "count.neighborhoods.one": "{count} buurt",
+    "count.neighborhoods.other": "{count} buurten",
+    "count.landmarks.one": "{count} bezienswaardigheid",
+    "count.landmarks.other": "{count} bezienswaardigheden",
+    "count.stops.one": "{count} stop",
+    "count.stops.other": "{count} stops",
+    "count.points": "{points} punten",
+    "run.chain": "keten +{percent} %",
+    "run.complete": "REEKS VOLTOOID",
+    "run.stops": "STOPS",
+    "run.stopsLast": "STOPS  \xB7  LAATSTE {shown} VAN {count}",
+    "run.story": "{count} {stops}{from}{to}{names}.",
+    "run.storyFrom": " van {name}",
+    "run.storyTo": " naar {name}",
+    "run.storyNames": ", {names} op de kaart",
+    "run.storyStop.one": "stop",
+    "run.storyStop.other": "stops",
+    "run.numberWords": "Geen,E\xE9n,Twee,Drie,Vier,Vijf,Zes,Zeven,Acht,Negen,Tien,Elf,Twaalf",
     "shareCard.destination": "BESTEMMING",
     "shareCard.ride": "RIT",
     "shareCard.distance": "AFSTAND",
@@ -1802,7 +1882,7 @@
     ctx.fillStyle = "#1f1c17";
     ctx.font = '700 19px "Barlow Condensed", system-ui, sans-serif';
     ctx.fillText(input.name, textX, y + 40, room);
-    const held = input.held ? t(input.held === 1 ? "stamps.held.one" : "stamps.held.other", { count: input.held }) : "";
+    const held = !input.held ? "" : input.total ? t("stamps.heldOf", { count: input.held, total: input.total }) : t(input.held === 1 ? "stamps.held.one" : "stamps.held.other", { count: input.held });
     const foot = [held, input.more ? t("stamps.more", { count: input.more }) : ""].filter(Boolean).join("  \xB7  ");
     if (foot) {
       ctx.fillStyle = "#6d655a";
@@ -1812,6 +1892,99 @@
     ctx.restore();
     return size;
   }
+
+  // src/canalRecall/stampCatalogue.ts
+  var AMSTERDAM_STAMP_BUURTS = Object.freeze([
+    "Apollobuurt",
+    "Betondorp",
+    "Borneo-eiland",
+    "Buitenveldert",
+    "Buitenveldert-West",
+    "Centrum",
+    "Chass\xE9buurt",
+    "Czaar Peterbuurt",
+    "Da Costabuurt",
+    "De Baarsjes",
+    "De Pijp",
+    "Diamantbuurt",
+    "Duivelseiland",
+    "Floradorp",
+    "Frederik Hendrikbuurt",
+    "Funenpark",
+    "Gelderlandpleinbuurt",
+    "Gouden Bocht",
+    "Grachtengordel",
+    "Helmersbuurt",
+    "Hoofddorppleinbuurt",
+    "Hoofdweg e.o.",
+    "Houthaven",
+    "IJburg",
+    "IJselbuurt",
+    "Java-eiland",
+    "Jordaan",
+    "Kadijken",
+    "Karlskrona-eiland",
+    "Kattenburg",
+    "Kinkerbuurt",
+    "KNSM-eiland",
+    "Landlust",
+    "Libau-eiland",
+    "Marineterrein",
+    "Memeleiland",
+    "Molenwijkpark",
+    "Museumkwartier",
+    "Narva-eiland",
+    "Nieuw-West",
+    "Nieuwe Pijp",
+    "Nieuwmarkt/Lastage",
+    "Nieuwmarktbuurt",
+    "Noord",
+    "Oost",
+    "Oostelijk Havengebied",
+    "Oostelijke Eilanden",
+    "Oostenburg",
+    "Oosterdokseiland",
+    "Oud-Zuid",
+    "Oude Pijp",
+    "Overhoeks",
+    "Overtoomse Sluis",
+    "Plantage",
+    "Polder Meerzicht",
+    "Prinses Irenebuurt e.o.",
+    "Rapenburg",
+    "Revaleiland",
+    "Rijnbuurt",
+    "Rivierenbuurt",
+    "Scheldebuurt",
+    "Schinkelbuurt",
+    "Slotervaart",
+    "Sluisbuurt",
+    "Spaarndammerbuurt",
+    "Sporenburg",
+    "Sportheldenbuurt",
+    "Staatsliedenbuurt",
+    "Stadionbuurt",
+    "Stettineiland",
+    "Tuindorp Nieuwendam",
+    "Uilenburg",
+    "Valkenburg",
+    "Van Galenbuurt",
+    "Van Lennepbuurt",
+    "Vivaldi",
+    "Vondelparkbuurt",
+    "VU-kwartier",
+    "Weesp",
+    "Weesperbuurt",
+    "West",
+    "Westindische Buurt",
+    "Westpoort",
+    "Wiborgeiland",
+    "Willemspark",
+    "Wittenburg",
+    "Zuid",
+    "Zuidas",
+    "Zuidoost"
+  ]);
 
   // src/canalRecall/stampAlbum.ts
   var FREE_RIDE_COLLECTION_KEY = "canalRecall.freeRideCollection.v1";
@@ -1848,6 +2021,33 @@
       }
     }
     return { stamped: [...stamped].sort(), dates };
+  }
+  function buildStampAlbum(buurtNames, sources) {
+    const names = new Set(buurtNames);
+    const earnedSet = new Set(sources.stamped.filter((name) => names.has(name)));
+    const stamps = [...names].map((name) => ({
+      name,
+      earned: earnedSet.has(name),
+      date: earnedSet.has(name) ? sources.dates[name] || null : null
+    }));
+    stamps.sort((a, b) => {
+      if (a.earned !== b.earned) return a.earned ? -1 : 1;
+      if (a.earned && a.date !== b.date) {
+        if (!a.date) return 1;
+        if (!b.date) return -1;
+        return a.date < b.date ? 1 : -1;
+      }
+      return a.name.localeCompare(b.name);
+    });
+    const earned = stamps.filter((stamp) => stamp.earned).length;
+    return { stamps, earned, total: stamps.length };
+  }
+  function stampList(store, catalogue = AMSTERDAM_STAMP_BUURTS) {
+    return buildStampAlbum(catalogue, readStampSources(store));
+  }
+  function stampCount(store, catalogue = AMSTERDAM_STAMP_BUURTS) {
+    const { earned, total } = stampList(store, catalogue);
+    return { earned, total };
   }
 
   // src/canalRecall/game/finishStory.ts
@@ -7140,29 +7340,29 @@
   function nextBonus(run) {
     return chainBonus(run.stopCount + 1);
   }
-  function plural(count, one, many) {
-    return `${count} ${count === 1 ? one : many}`;
-  }
   function formatPoints(points) {
     return Math.round(points).toLocaleString("en-US");
   }
   function runLine(run, options) {
-    const bits = [plural(run.stopCount, "stop", "stops"), plural(run.names.length, "name", "names")];
+    const bits = [countText("count.stops", run.stopCount), countText("count.names", run.names.length)];
     if (!options.calm) {
-      bits.push(`${formatPoints(run.totalPoints)} points`);
+      bits.push(t("count.points", { points: formatPoints(run.totalPoints) }));
       const next = nextBonus(run);
-      if (next > 0) bits.push(`chain +${Math.round(next * 100)} %`);
+      if (next > 0) bits.push(t("run.chain", { percent: Math.round(next * 100) }));
     }
     return bits.join("  \xB7  ");
   }
-  var NUMBER_WORDS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve"];
+  function countText(key, count) {
+    return t(`${key}.${count === 1 ? "one" : "other"}`, { count });
+  }
   function runStory(run) {
-    const count = run.stopCount < NUMBER_WORDS.length ? NUMBER_WORDS[run.stopCount] : String(run.stopCount);
+    const words2 = t("run.numberWords").split(",");
+    const count = run.stopCount < words2.length ? words2[run.stopCount] : String(run.stopCount);
     const last = run.stops[run.stops.length - 1];
-    const from = run.startName && run.startName !== last?.name ? ` from ${run.startName}` : "";
-    const to = last ? ` to ${last.name}` : "";
-    const names = run.names.length > 0 ? `, ${plural(run.names.length, "name", "names")} on the map` : "";
-    return `${count} ${run.stopCount === 1 ? "stop" : "stops"}${from}${to}${names}.`;
+    const from = run.startName && run.startName !== last?.name ? t("run.storyFrom", { name: run.startName }) : "";
+    const to = last ? t("run.storyTo", { name: last.name }) : "";
+    const names = run.names.length > 0 ? t("run.storyNames", { names: countText("count.names", run.names.length) }) : "";
+    return t("run.story", { count, stops: t(run.stopCount === 1 ? "run.storyStop.one" : "run.storyStop.other"), from, to, names });
   }
   function parseRun(raw) {
     if (!raw) return null;
@@ -7452,10 +7652,10 @@
       ctx.textBaseline = "alphabetic";
       ctx.fillStyle = ACCENT;
       ctx.font = `700 11px ${font}`;
-      ctx.fillText("RUN COMPLETE", cardX + padX, y + 11);
+      ctx.fillText(t("run.complete"), cardX + padX, y + 11);
       ctx.fillStyle = INK;
       ctx.font = "800 26px system-ui, sans-serif";
-      ctx.fillText(`${run.stopCount} ${run.stopCount === 1 ? "stop" : "stops"}`, cardX + padX, y + 42);
+      ctx.fillText(t(run.stopCount === 1 ? "count.stops.one" : "count.stops.other", { count: run.stopCount }), cardX + padX, y + 42);
       y += 74;
       ctx.fillStyle = BODY;
       ctx.font = "13px system-ui, sans-serif";
@@ -7465,7 +7665,7 @@
       y += 16;
       ctx.fillStyle = MUTED;
       ctx.font = `700 11px ${font}`;
-      ctx.fillText(hidden > 0 ? `STOPS  \xB7  LAST ${listRows} OF ${run.stopCount}` : "STOPS", cardX + padX, y + 4);
+      ctx.fillText(hidden > 0 ? t("run.stopsLast", { shown: listRows, count: run.stopCount }) : t("run.stops"), cardX + padX, y + 4);
       y += 24;
       shown.forEach((stop, index) => {
         const number = run.stopCount - shown.length + index + 1;
@@ -7497,10 +7697,10 @@
       y += listRows * ROW;
       rule(y);
       y += 16;
-      const stats = calm ? [{ label: "Stops", value: String(run.stopCount) }, { label: "Names", value: String(run.names.length) }] : [
-        { label: "Points", value: formatPoints(run.totalPoints) },
-        { label: "Best streak", value: String(run.bestStreak) },
-        { label: "Names", value: String(run.names.length) }
+      const stats = calm ? [{ label: t("ride.stat.stops"), value: String(run.stopCount) }, { label: t("ride.stat.names"), value: String(run.names.length) }] : [
+        { label: t("ride.stat.points"), value: formatPoints(run.totalPoints) },
+        { label: t("ride.stat.bestStreak"), value: String(run.bestStreak) },
+        { label: t("ride.stat.names"), value: String(run.names.length) }
       ];
       ctx.textAlign = "center";
       stats.forEach((stat, index) => {
@@ -7516,8 +7716,8 @@
       rule(y);
       y += 24;
       const actions = [
-        { id: "again", key: "ENTER", caption: "New run" },
-        { id: "route", key: compact ? "" : "M", caption: "Route setup" }
+        { id: "again", key: "ENTER", caption: t("ride.newRun") },
+        { id: "route", key: compact ? "" : "M", caption: t("ride.routeSetup") }
       ];
       const buttons = [];
       if (compact) {
@@ -10409,7 +10609,7 @@
             ctx.fillStyle = MUTED2;
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
             if (tour) {
-              const where = `${tour.title.toUpperCase()}  \xB7  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
+              const where = t("ride.arrival.tourStop", { title: tour.title.toUpperCase(), stop: tour.stopIndex + 1, count: tour.stopCount });
               const credit = [tour.sourceHost, tour.checked].filter(Boolean).join("  \xB7  ");
               ctx.fillText(wrapText(ctx, credit ? `${where}  \xB7  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
             } else if (buurt) {
@@ -10429,16 +10629,19 @@
           { label: recallNoun, value: `${this.quizCorrect}/${this.quizAttempts}` }
         ] : [];
         stats.push(
-          { label: "Time", value: this.hud.formatTime(this.raceTime).slice(0, -2) },
-          { label: "Distance", value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1e3).toFixed(2)} km` }
+          { label: t("ride.stat.time"), value: this.hud.formatTime(this.raceTime).slice(0, -2) },
+          { label: t("ride.stat.distance"), value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1e3).toFixed(2)} km` }
         );
-        if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: "Points", value: String(this.quizPoints) });
+        if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: t("ride.stat.points"), value: String(this.quizPoints) });
+        const difficultyKey = `setup.difficulty.${this.routeDifficulty}`;
+        const viewKey = `setup.view.${String(this.viewMode).replace(/-up$/, "")}`;
+        const known = (key) => key in CATALOGS.en;
         const footerBits = [
-          this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
+          known(difficultyKey) ? t(difficultyKey) : this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
           profile.label,
-          this.viewMode.replace("-", " ").replace(/^./, (c) => c.toUpperCase())
+          known(viewKey) ? t(viewKey) : this.viewMode.replace("-", " ").replace(/^./, (c) => c.toUpperCase())
         ];
-        if (gamey && this.quizBestStreak >= 2) footerBits.push(`Best streak ${this.quizBestStreak}`);
+        if (gamey && this.quizBestStreak >= 2) footerBits.push(t("ride.bestStreak", { count: this.quizBestStreak }));
         const bestInFooter = level2 >= 1 && !!bestText;
         if (bestInFooter) footerBits.unshift(bestText.replace("\u2605  ", "\u2605 "));
         const statsPerRow = compact ? Math.ceil(stats.length / Math.ceil(stats.length / 3)) : stats.length;
@@ -10469,11 +10672,12 @@
           } });
         }
         if (exploration) {
-          const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
+          const known2 = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
           const totals = [];
-          if (known > 0) totals.push(`${known} names`);
-          if (exploration.visitedNeighborhoods.length > 0) totals.push(`${exploration.visitedNeighborhoods.length} neighborhoods`);
-          if (exploration.seenLandmarks.length > 0) totals.push(`${exploration.seenLandmarks.length} landmarks`);
+          const count = (key, n) => t(`${key}.${n === 1 ? "one" : "other"}`, { count: n });
+          if (known2 > 0) totals.push(count("count.names", known2));
+          if (exploration.visitedNeighborhoods.length > 0) totals.push(count("count.neighborhoods", exploration.visitedNeighborhoods.length));
+          if (exploration.seenLandmarks.length > 0) totals.push(count("count.landmarks", exploration.seenLandmarks.length));
           const gain = this._explorationRouteGain;
           const story = finishStory({
             gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
@@ -10486,9 +10690,9 @@
           });
           if (this._finishPlaceStreakLabel) story.streak = this._finishPlaceStreakLabel;
           const fresh = [];
-          if (gain && gain.newNames > 0) fresh.push(`${gain.newNames} names`);
-          if (gain && gain.newNeighborhoods > 0) fresh.push(`${gain.newNeighborhoods} neighborhoods`);
-          if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
+          if (gain && gain.newNames > 0) fresh.push(count("count.names", gain.newNames));
+          if (gain && gain.newNeighborhoods > 0) fresh.push(count("count.neighborhoods", gain.newNeighborhoods));
+          if (gain && gain.newLandmarks > 0) fresh.push(count("count.landmarks", gain.newLandmarks));
           const knowledgeStacked = compact;
           ctx.font = "12px system-ui, sans-serif";
           const lineBudget = [Infinity, 4, 2, runText ? 0 : 1][level2];
@@ -10512,7 +10716,7 @@
             ctx.textAlign = "left";
             ctx.fillStyle = MUTED2;
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-            ctx.fillText("CITY KNOWLEDGE", cardX + padX, top + 12);
+            ctx.fillText(t("ride.arrival.cityKnowledge"), cardX + padX, top + 12);
             ctx.fillStyle = BODY2;
             ctx.font = "12px system-ui, sans-serif";
             if (knowledgeStacked) {
@@ -10526,7 +10730,7 @@
               ctx.textAlign = "left";
               ctx.fillStyle = ACCENT2;
               ctx.font = "11px system-ui, sans-serif";
-              ctx.fillText(`+${fresh.join(", +")} first-time`, cardX + padX, y2);
+              ctx.fillText(t("ride.arrival.firstTime", { bits: fresh.join(", +") }), cardX + padX, y2);
               y2 += 16;
             }
             ctx.textAlign = "left";
@@ -10538,9 +10742,9 @@
             }
           } });
           if (stampCard) {
-            let held = 0;
+            let held = { earned: 0, total: 0 };
             try {
-              held = readStampSources(localStorage).stamped.length;
+              held = stampCount(localStorage);
             } catch {
             }
             blocks2.push({ height: ARRIVAL_STAMP_HEIGHT + 12, rule: true, draw: (top) => {
@@ -10552,7 +10756,8 @@
                 width: innerW,
                 fontMono: window.CanalRecallUi.hudSurface.fontMono,
                 more: passportFresh.length - 1,
-                held
+                held: held.earned,
+                total: held.total
               });
             } });
           }
@@ -10570,8 +10775,9 @@
           ctx.textAlign = "left";
           ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           ctx.fillStyle = ACCENT2;
-          ctx.fillText("RUN", cardX + padX, top + 13);
-          const textX = cardX + padX + ctx.measureText("RUN").width + 12;
+          const runLabel = t("ride.arrival.run");
+          ctx.fillText(runLabel, cardX + padX, top + 13);
+          const textX = cardX + padX + ctx.measureText(runLabel).width + 12;
           const lineW = cardX + cardW - padX - textX;
           ctx.fillStyle = INK2;
           ctx.font = "700 13px system-ui, sans-serif";
@@ -10585,7 +10791,7 @@
             if (foldRun) drawRun(blockTop - 2);
             const top = foldRun ? blockTop + 14 : blockTop;
             ctx.textAlign = "left";
-            const label = stamp.kind === "tour" ? stamp.isNew ? "TOUR STAMP" : "TOUR STAMP AGAIN" : stamp.isNew ? "NEW STAMP" : "STAMP AGAIN";
+            const label = stamp.kind === "tour" ? t(stamp.isNew ? "ride.arrival.tourDone" : "ride.arrival.tourAgain") : t(stamp.isNew ? "ride.arrival.placeNew" : "ride.arrival.placeAgain");
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
             const labelW = ctx.measureText(label).width;
             ctx.fillStyle = ACCENT2;
@@ -10595,7 +10801,7 @@
             ctx.fillText(label, cardX + padX + 18, top + 13);
             ctx.fillStyle = INK2;
             ctx.font = "700 13px system-ui, sans-serif";
-            const tally = stamp.kind === "poi" && stamp.total > 0 ? `  \xB7  ${stamp.earned} of ${stamp.total}` : "";
+            const tally = stamp.kind === "poi" && stamp.total > 0 ? `  \xB7  ${t("ride.arrival.placeTally", { earned: stamp.earned, total: stamp.total })}` : "";
             const textX = cardX + padX + 18 + labelW + 10;
             ctx.fillText(wrapText(ctx, `${stamp.name}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
           } });
@@ -10606,8 +10812,8 @@
           // In a run the next ride is the run's next stop.
           { id: "again", key: "ENTER", caption: tour && !tour.completed || runText ? t("ride.nextStop") : t("ride.nextRoute") }
         ];
-        const endRun2 = runText ? { id: "end", key: "E", caption: "End run" } : null;
-        actions.push({ id: "route", key: compact ? "" : "M", caption: "Route setup" });
+        const endRun2 = runText ? { id: "end", key: "E", caption: t("ride.endRun") } : null;
+        actions.push({ id: "route", key: compact ? "" : "M", caption: t("ride.routeSetup") });
         if (this._shareUrl) {
           actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? t("ride.linkCopied") : t("ride.shareRoute") });
         }
