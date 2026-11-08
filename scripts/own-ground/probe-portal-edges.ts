@@ -16,10 +16,11 @@ import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
-import { buildCell, type BuiltCell, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
+import { buildCell, CUT_CHANNEL, maskChannelAt, type BuiltCell, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
 import { insideCut, locateCut, type Cut } from '../../src/canalRecall/ownGround/tunnels.ts';
 
-const WALL_BAND_M = 3, SPAN_M = 0.3;
+/** Vertices nearer the wall line than ON_LINE_M are on it (a clipped piece's edge vertex belongs to both sides). */
+const WALL_BAND_M = 3, SPAN_M = 0.3, ON_LINE_M = 0.1;
 const pos = process.argv.slice(2).filter(a => !a.startsWith('--'));
 const flag = (k: string) => process.argv.find(a => a.startsWith(`--${k}=`))?.split('=')[1];
 const [lng, lat, radius] = [Number(pos[0] ?? 4.91165), Number(pos[1] ?? 52.37250), Number(pos[2] ?? 120)];
@@ -32,6 +33,8 @@ const [x, y] = toLocal(lng, lat), key = store.cellAt(x, y);
 const keys = new Set<string>([key]);
 for (const dx of [-radius, radius]) for (const dy of [-radius, radius]) keys.add(store.cellAt(x + dx, y + dy));
 const cells: BuiltCell[] = [];
+// Every cut placed first (a cell's input carries the cuts placed so far; the probe reads the surface's full set).
+for (const k of keys) if (store.covers(k)) for (const n of GroundStore.neighbours(k)) if (store.covers(n)) await store.prepareCell(n);
 for (const k of keys) if (store.covers(k)) cells.push(buildCell(await store.cellInput(k, 0)));
 const s = store.surface;
 const cuts = s.cuts.filter((c: Cut) => c.x.some((cx, i) => Math.hypot(cx - x, c.y[i] - y) < radius));
@@ -66,7 +69,7 @@ for (const c of cells) for (const [layer, m] of Object.entries(c.layers) as [Gro
     row.tris++;
     const zs = v.map(a => p[a + 2]);
     const span = Math.max(...zs) - Math.min(...zs);
-    const ins = sides.filter(q => q && q.inside).length, outs = sides.filter(q => q && !q.inside).length;
+    const ins = sides.filter(q => q && q.d < -ON_LINE_M).length, outs = sides.filter(q => q && q.d > ON_LINE_M).length;
     if (ins && outs && span > SPAN_M) {
       row.straddle++;
       const [a, b, k] = v, ux = p[b] - p[a], uy = p[b + 1] - p[a + 1], wx = p[k] - p[a], wy = p[k + 1] - p[a + 1];
@@ -75,14 +78,48 @@ for (const c of cells) for (const [layer, m] of Object.entries(c.layers) as [Gro
     }
     v.forEach((a, j) => {
       const q = sides[j];
-      if (!q) return;
+      if (!q || Math.abs(q.d) <= ON_LINE_M) return;
       const want = q.inside ? q.floor : s.ground(p[a], p[a + 1]);
       const dev = Math.abs(p[a + 2] - want);
       row.devs.push(dev);
-      if (dev > SPAN_M) row.off++;
+      if (dev > SPAN_M) { row.off++; if (process.env.PORTAL_VERBOSE && row.off <= 4) console.log(`  ${layer} off ${dev.toFixed(2)} at ${p[a].toFixed(1)},${p[a + 1].toFixed(1)} d ${q.d.toFixed(2)} z ${p[a + 2].toFixed(2)} want ${want.toFixed(2)} (${q.inside ? 'floor' : 'ground'}) cutFloor ${s.cutFloor(p[a], p[a + 1]).toFixed(2)} span ${(Math.max(...zs) - Math.min(...zs)).toFixed(2)}`); }
     });
   }
 }
+// Holes: points within the band (0.25 m grid) that no drawn triangle of any layer covers (after the mask's discard):
+// the sky or the void shows through. Every layer counts, walls and floors included.
+const HOLE_STEP = 0.25;
+type T = { x: number[]; y: number[]; layer: GroundLayer; cell: BuiltCell };
+const near: T[] = [];
+for (const c of cells) for (const [layer, m] of Object.entries(c.layers) as [GroundLayer, NonNullable<BuiltCell['layers'][GroundLayer]>][]) {
+  if (!m || layer === 'water') continue;
+  const p = m.positions, idx = m.indices;
+  for (let t = 0; t < idx.length; t += 3) {
+    const v = [idx[t] * 3, idx[t + 1] * 3, idx[t + 2] * 3], xs = v.map(a => p[a]), ys = v.map(a => p[a + 1]);
+    if (Math.hypot(xs[0] - x, ys[0] - y) > radius + 20) continue;
+    near.push({ x: xs, y: ys, layer, cell: c });
+  }
+}
+const grid = new Map<string, T[]>();
+for (const t of near) for (let i = Math.floor(Math.min(...t.x) / 4); i <= Math.floor(Math.max(...t.x) / 4); i++) for (let j = Math.floor(Math.min(...t.y) / 4); j <= Math.floor(Math.max(...t.y) / 4); j++) { const k = `${i}:${j}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push(t); }
+const covers = (t: T, px: number, py: number) => {
+  const d = (t.y[1] - t.y[2]) * (t.x[0] - t.x[2]) + (t.x[2] - t.x[1]) * (t.y[0] - t.y[2]);
+  if (Math.abs(d) < 1e-9) return false;
+  const u = ((t.y[1] - t.y[2]) * (px - t.x[2]) + (t.x[2] - t.x[1]) * (py - t.y[2])) / d, w = ((t.y[2] - t.y[0]) * (px - t.x[2]) + (t.x[0] - t.x[2]) * (py - t.y[2])) / d;
+  if (u < -1e-6 || w < -1e-6 || u + w > 1 + 1e-6) return false;
+  const ch = CUT_CHANNEL[t.layer];
+  return !(ch !== undefined && t.cell.mask && maskChannelAt(t.cell.mask, px, py, ch) < 0.5);
+};
+let probes = 0, holes = 0;
+const holeAt: string[] = [];
+for (let px = x - radius; px <= x + radius; px += HOLE_STEP) for (let py = y - radius; py <= y + radius; py += HOLE_STEP) {
+  if (Math.hypot(px - x, py - y) > radius) continue;
+  const q = wallSide(px, py);
+  if (!q) continue;
+  probes++;
+  if (!(grid.get(`${Math.floor(px / 4)}:${Math.floor(py / 4)}`) ?? []).some(t => covers(t, px, py))) { holes++; if (holeAt.length < 6) holeAt.push(`${px.toFixed(2)},${py.toFixed(2)} d ${q.d.toFixed(2)}`); }
+}
+console.log(JSON.stringify({ holeProbes: probes, holes, holeM2: +(holes * HOLE_STEP * HOLE_STEP).toFixed(2), holeAt }));
 const table = Object.entries(rows).filter(([, r]) => r.tris).map(([layer, r]) => {
   const d = [...r.devs].sort((a, b) => a - b);
   return { layer, tris: r.tris, straddle: r.straddle, straddleM2: +r.straddleM2.toFixed(1), reachMaxM: +r.reachMax.toFixed(2), offVerts: r.off, devMean: +(d.reduce((s_, v) => s_ + v, 0) / Math.max(1, d.length)).toFixed(3), devP95: +(d[Math.floor(d.length * 0.95)] ?? 0).toFixed(3) };
