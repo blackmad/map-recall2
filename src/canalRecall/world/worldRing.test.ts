@@ -50,8 +50,12 @@ test('from the air the near footprint grows a row at a time where rideBox jumped
   assert.ok((f.east - f.west) * MLNG <= 2 * FOOTPRINT_HALF_M + 1 && (f.north - f.south) * 111_320 <= 600 + FOOTPRINT_HALF_M + 1);
 });
 
-test('ringFootprintEnabled: off by default; the query and the window switch', () => {
-  assert.equal(ringFootprintEnabled('', {}), false);
+test('ringFootprintEnabled: desktop default on, touch off; the query and the window switch', () => {
+  const touch = { matchMedia: (q: string) => ({ matches: q === '(pointer: coarse)' }) };
+  assert.equal(ringFootprintEnabled('', {}), true, 'desktop default on (2026-11-08, #249)');
+  assert.equal(ringFootprintEnabled('', touch), false, 'touch default off: the iPhone pan is not measured');
+  assert.equal(ringFootprintEnabled('?ringFootprint=1', touch), true);
+  assert.equal(ringFootprintEnabled('?ringFootprint=0', {}), false);
   assert.equal(ringFootprintEnabled('?ringFootprint=1', {}), true);
   assert.equal(ringFootprintEnabled('?ringFootprint=0', { __canalRecallRingFootprint: true }), false);
   assert.equal(ringFootprintEnabled('', { __canalRecallRingFootprint: true }), true);

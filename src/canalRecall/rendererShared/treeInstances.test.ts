@@ -135,8 +135,12 @@ test('compileTreeSource keeps finite, typed trees and their archetypes', () => {
   assert.ok(src.archetypes.every(a => /^a[012]$/.test(a)));
 });
 
-test('treesIncrementalFlag: off by default; 1 is from the air, all is everywhere', () => {
-  assert.equal(treesIncrementalFlag(''), 'off');
+test('treesIncrementalFlag: desktop default air, touch off; 0 is off, 1 is from the air, all is everywhere', () => {
+  const touch = { matchMedia: (q: string) => ({ matches: q === '(pointer: coarse)' }) };
+  assert.equal(treesIncrementalFlag('', {}), 'air', 'desktop default (2026-11-08, #249)');
+  assert.equal(treesIncrementalFlag('', touch), 'off', 'touch default off: the iPhone pan is not measured');
+  assert.equal(treesIncrementalFlag('?treesIncremental=0', {}), 'off');
+  assert.equal(treesIncrementalFlag('?treesIncremental=1', touch), 'air');
   assert.equal(treesIncrementalFlag('?treesIncremental=1'), 'air');
   assert.equal(treesIncrementalFlag('?treesIncremental=all'), 'all');
   assert.equal(treesIncrementalFlag('?treesIncremental=0'), 'off');

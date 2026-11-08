@@ -64,8 +64,14 @@ export function rideBox(view: RingBounds, zoom: number, rider: readonly [number,
  * `rideBox`'s, unchanged.
  */
 export const FOOTPRINT_HALF_M = 1500;
-/** Integrator default (off until the lane's A/B; `?ringFootprint=1` / `=0` override). */
-export const RING_FOOTPRINT_DEFAULT = false;
+/**
+ * Integrator defaults (2026-11-08, #249): desktop on, with the incremental tree rebuild (treeInstances.ts). Together
+ * they met both aerial gates in all four runs (continuous 120 m/s pan 0 / 0 frames > 100 ms, p99 worst window 50.0;
+ * harness 4 / 2, 75.0 / 74.7; off 10 / 9 and 39 / 15), GL peak 798 -> 757 MB, the street ride unchanged; the ring alone
+ * does not pass the A/B rule. Touch off: the iPhone pan is not measured. `?ringFootprint=1` / `=0` override.
+ */
+export const RING_FOOTPRINT_DESKTOP_DEFAULT = true;
+export const RING_FOOTPRINT_TOUCH_DEFAULT = false;
 
 export function ringFootprintEnabled(search: string = typeof location !== 'undefined' ? location.search : '', w: any = typeof window !== 'undefined' ? window : {}): boolean {
   try {
@@ -73,7 +79,9 @@ export function ringFootprintEnabled(search: string = typeof location !== 'undef
     if (v !== null) return v === '1' || v === 'on' || v === 'true';
   } catch { /* no URLSearchParams (the structure gate) */ }
   if (w?.__canalRecallRingFootprint !== undefined) return !!w.__canalRecallRingFootprint;
-  return RING_FOOTPRINT_DEFAULT;
+  let touch = false;
+  try { touch = !!w?.matchMedia?.('(pointer: coarse)')?.matches; } catch { /* no matchMedia */ }
+  return touch ? RING_FOOTPRINT_TOUCH_DEFAULT : RING_FOOTPRINT_DESKTOP_DEFAULT;
 }
 
 /** The view box cut to a square of `halfM` round `centre` (the square alone if they do not meet). */

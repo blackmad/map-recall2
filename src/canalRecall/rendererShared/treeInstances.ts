@@ -258,16 +258,26 @@ export function groupOf(key: string, items: readonly TreeInstanceItem[]): Assemb
  * `?treesIncremental=1` (or `window.__canalRecallTreesIncremental = true`): from the air the inventory trees assemble
  * their instances from per-tile compiled arrays ('air'). At street level the legacy rebuild stays: it walks only the
  * few hundred trees in the view, while a first compile walks a whole tile (measured: 549 trees in view of 12 tiles,
- * legacy 14 ms, first compile 157 ms). `?treesIncremental=all` assembles everywhere (the parity checks). Off (the
- * default): the legacy rebuild, unchanged. Tolerates a non-browser global (the structure gate has no `location`).
+ * legacy 14 ms, first compile 157 ms). `?treesIncremental=all` assembles everywhere (the parity checks). `=0`: the
+ * legacy rebuild, unchanged. Absent: the device default, TREES_INCREMENTAL_DESKTOP_DEFAULT on a fine pointer and
+ * TREES_INCREMENTAL_TOUCH_DEFAULT on a coarse one (integrator 2026-11-08, #249: with the ring footprint
+ * (world/worldRing.ts) both aerial gates met in all four runs, median rebuild from the air 46-50 -> 12-24 ms; the
+ * iPhone pan is not measured). Tolerates a non-browser global (the structure gate has no `location`).
  */
 export type TreesIncremental = 'off' | 'air' | 'all';
-export function treesIncrementalFlag(search?: string): TreesIncremental {
+export const TREES_INCREMENTAL_DESKTOP_DEFAULT: TreesIncremental = 'air';
+export const TREES_INCREMENTAL_TOUCH_DEFAULT: TreesIncremental = 'off';
+export function treesIncrementalFlag(search?: string, w: any = globalThis): TreesIncremental {
   try {
-    const g = globalThis as { __canalRecallTreesIncremental?: boolean | string; location?: { search?: string } };
+    const g = w as { __canalRecallTreesIncremental?: boolean | string; location?: { search?: string }; matchMedia?: (q: string) => { matches: boolean } };
     let v: string | null = null;
     try { v = new URLSearchParams(search ?? g.location?.search ?? '').get('treesIncremental'); } catch { /* no URLSearchParams */ }
     if (v === null && g.__canalRecallTreesIncremental !== undefined) v = String(g.__canalRecallTreesIncremental);
+    if (v === null) {
+      let touch = false;
+      try { touch = !!g.matchMedia?.('(pointer: coarse)')?.matches; } catch { /* no matchMedia */ }
+      return touch ? TREES_INCREMENTAL_TOUCH_DEFAULT : TREES_INCREMENTAL_DESKTOP_DEFAULT;
+    }
     if (v === 'all') return 'all';
     return v === '1' || v === 'on' || v === 'true' || v === 'air' ? 'air' : 'off';
   } catch { return 'off'; }

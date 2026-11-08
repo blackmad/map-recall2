@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-08",
+      "title": "Flying over the city is smooth",
+      "text": "Two more fixes for the flight over Amsterdam on desktop. The map now loads only the ground within about a kilometre and a half of where you are looking, instead of the whole view at once (the far horizon is drawn by the simpler far tier, as before), so a new district no longer arrives as one big parcel. And the trees update about four times faster from the air: each map tile's trees are prepared once and only reassembled when something changes. On a three-minute flight across the city there are now no frames over a tenth of a second (there were 9 to 10 after the last fix, 38 to 52 before it). Nothing looks different up close. Add ?ringFootprint=0 or ?treesIncremental=0 to the ride link to compare. Phones are unchanged until measured.",
+      "images": [
+        {
+          "src": "engine/2026-11-08-r4f/timelines-continuous-off-vs-on.png",
+          "alt": "Frame-time and fetch-ring-size timelines of a three-minute desktop flight, before and after the footprint ring and incremental trees",
+          "caption": "A continuous flight, before (top) and after (bottom): the ring holds a steady 16 to 20 cells and the frame spikes are gone."
+        },
+        {
+          "src": "engine/2026-11-08-r4f/mid-flight-oost-main-vs-lane.jpg",
+          "alt": "The east of the city from the air mid-flight, before and after, at three moments",
+          "caption": "Mid-flight over the east at three moments: trees and near buildings the same; past a kilometre and a half the far tier draws the city."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
       "title": "Flying over the city hitches less",
       "text": "Panning across Amsterdam from the air used to stutter each time a new district came into view: the whole district arrived in one go, and the ride spent a second or two handing every building, tree and baked block over at once. The arrivals are now spread out, nearest the middle of the view first, so a desktop flight across the city stays smooth (frames over a tenth of a second on a three-minute flight: 8 to 12, from 38 to 52). Nothing is missing; a far district simply fades in over a moment instead of all at once. Add ?arrivalPace=0 to the ride link to compare. Phones are unchanged until measured.",
       "images": [
