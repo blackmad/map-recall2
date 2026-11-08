@@ -44,6 +44,7 @@ import type { FactsFile } from '../facts/factTypes';
 import type { FactChoice } from '../facts/factRotation';
 import type { LandmarkHost } from './host';
 import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } from './worldTypes';
+import { factsIdOf } from '../engine/labelPand';
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, streetCardWithRotatedFact, type StreetNameOrigin } from './routeKnowledge';
 import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCard } from './teachingSurface';
 import { isTransit } from './modes';
@@ -239,7 +240,10 @@ export class GameLandmarkRuntime {
     // rather than "no building details".
     // A monument's own name can carry a quiz answer ("Pakhuis Prinsengracht");
     // screen it like every other label before it becomes a title.
-    let row = this._buildingFacts?.lookup(building.id) ?? null;
+    // A tapped POI label stands on a building the view resolved (engine/labelPand.ts): its year and facts are that
+    // pand's, under the place's name (#258 follow-up).
+    const pand = building.poi ? building.pand : undefined;
+    let row = this._buildingFacts?.lookup(factsIdOf(building)) ?? null;
     const monument = row && row.length > 3 ? row[3] : undefined;
     if (row && monument?.n && spoils?.call(this.vectorMap, monument.n)) {
       const { n: _hidden, ...rest } = monument;
@@ -256,7 +260,7 @@ export class GameLandmarkRuntime {
       ? this._clickPoiInfo?.named?.(safeName, building.lngLat) ?? null : null;
     const place = labelRow ? { name: labelRow[1], kind: labelRow[5], address: labelRow[6] }
       : safeName && building.poi ? { name: safeName } : null;
-    const facts = describeBuilding(row, building.height, safeName, place);
+    const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place);
     // Every drawn building answers a click (user report 2026-10-10, "why does
     // this building not let me click on it?" — a post-war tower with only a
     // year and a height). From 2026-10-04 only listed monuments with an
@@ -265,6 +269,8 @@ export class GameLandmarkRuntime {
     // size are what the register knows; `describeBuilding` never invents more.
     if (!row || !article) this._requestBuildingFacts(building);
     const id = `clicked-${building.id || building.lngLat.join('-')}`;
+    // The label's building takes the highlight a tap on its walls would.
+    const featureTarget = building.featureTarget ?? (pand?.featureTarget as BuildingHit['featureTarget'] | undefined) ?? null;
     if (article) {
       // The article names the building and opens the card; the register line
       // follows in the expanded panel. Its title is screened like any label.
@@ -279,7 +285,7 @@ export class GameLandmarkRuntime {
       type: 'building',
       detail: facts.detail,
       lngLat: building.lngLat,
-      featureTarget: building.featureTarget,
+      featureTarget,
       ...(labelRow ? { sourceUrl: osmUrl(labelRow[0]) } : {}),
     };
   }
@@ -317,7 +323,7 @@ export class GameLandmarkRuntime {
     if (inFlight.has(plainId)) return;
     inFlight.add(plainId);
     void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
-      if (!stillOpen() || (!store.lookup(building.id) && !store.article(building.id))) return;
+      if (!stillOpen() || (!store.lookup(factsIdOf(building)) && !store.article(building.id))) return;
       const card = this._cardForClickedBuilding(building);
       const open = this._landmarkNotice;
       if (!card || !open || !cardIds.has(open.id)) return;

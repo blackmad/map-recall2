@@ -61,6 +61,7 @@ import { CityExtras } from './cityExtras';
 import { gameTileEnricher } from '../gameTileEnricher';
 import { LandmarkHighlight } from './landmarkHighlight';
 import { LabelOcclusion } from './labelOcclusion';
+import { withLabelPand } from './labelPand';
 import { SpoilerSources } from './spoilerSources';
 import { groundCentre, groundViewFlag } from '../ownGround/groundResidency';
 
@@ -1395,9 +1396,24 @@ export class OwnWorldView implements WorldViewOracles {
     const x = cssX * vp.width / canvasRect.width, y = cssY * vp.height / canvasRect.height;
     // A drawn POI label wins the click (vector-map.js inspectBuilding: `_labelOverlay.hitTest` before the surface).
     const label = this._labels.hitTest(x, y);
-    if (label) return label;
-    // Landmark models first; the nearer surface wins (vector-map.js inspectBuilding).
+    // The label's text and point carry no pand, so the card had its name but not its building's year (#258): pick the
+    // building under the tap and under the label's own anchor, and keep the one that holds the label's point.
+    if (label) return withLabelPand(label, [this.surfaceAt(x, y), this.surfaceAt(...this.anchorOnScreen(label.lngLat))]);
+    return this.surfaceAt(x, y);
+  }
+  /** Landmark models first; the nearer surface wins (vector-map.js inspectBuilding). Viewport px. */
+  private surfaceAt(x: number, y: number): any {
+    const vp = this.host.viewport();
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
     return this.extras.pick(x, y, vp.width, vp.height, this._threeBuildings?.inspectAtScreen?.(x, y, vp.width, vp.height) ?? null);
+  }
+  /** A ground point on screen, viewport px, lifted with the own ground as `projectWorld` lifts it. */
+  private anchorOnScreen(lngLat: [number, number]): [number, number] {
+    const p = this.camera.project(lngLat);
+    const lift = this._ownGround?.ready ? this._ownGround.screenLift(lngLat) : null;
+    if (!lift) return [p.x, p.y];
+    const vp = this.host.viewport();
+    return [p.x + lift[0] / 2 * vp.width, p.y - lift[1] / 2 * vp.height];
   }
 
   // ---- vehicles ----
