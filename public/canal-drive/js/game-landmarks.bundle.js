@@ -1912,6 +1912,11 @@ Map source: ${osmUrl(places[i][0])}`);
     return next;
   }
 
+  // src/canalRecall/engine/labelPand.ts
+  function factsIdOf(hit) {
+    return hit.poi && hit.pand ? hit.pand.id : hit.id;
+  }
+
   // src/canalRecall/bridgeRegister.ts
   function describeRegisteredBridge(fact) {
     const kind = [fact.movable ? "movable" : "", fact.material].filter(Boolean).join(" ");
@@ -2198,7 +2203,7 @@ Map source: ${osmUrl(places[i][0])}`);
     const purpose = monument?.f != null && MONUMENT_FUNCTIONS[monument.f] && monument.f > 0 ? `Originally built for ${MONUMENT_FUNCTIONS[monument.f][1]}.` : "";
     if (heritage) parts.push(heritage);
     if (purpose) parts.push(purpose);
-    if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, some ${storeys} ${storeys === 1 ? "storey" : "storeys"}.`);
+    if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, ${storeys === 1 ? "one storey" : `some ${storeys} storeys`}.`);
     const nothing = shownName ? place?.name ? NOTHING_KNOWN.place : NOTHING_KNOWN.named : NOTHING_KNOWN.anonymous;
     return { name: title, detail: parts.join(" ") || nothing };
   }
@@ -6111,7 +6116,8 @@ ${register}` : detail,
         if (!article) this._requestBuildingFacts(building);
         return article ? this._poiCardWithArticle(mapped, article) : mapped;
       }
-      let row = this._buildingFacts?.lookup(building.id) ?? null;
+      const pand = building.poi ? building.pand : void 0;
+      let row = this._buildingFacts?.lookup(factsIdOf(building)) ?? null;
       const monument = row && row.length > 3 ? row[3] : void 0;
       if (row && monument?.n && spoils?.call(this.vectorMap, monument.n)) {
         const { n: _hidden, ...rest } = monument;
@@ -6120,9 +6126,10 @@ ${register}` : detail,
       const safeName = buildingName && spoils?.call(this.vectorMap, buildingName) ? "" : buildingName;
       const labelRow = safeName && building.poi && !building.footprint ? this._clickPoiInfo?.named?.(safeName, building.lngLat) ?? null : null;
       const place = labelRow ? { name: labelRow[1], kind: labelRow[5], address: labelRow[6] } : safeName && building.poi ? { name: safeName } : null;
-      const facts = describeBuilding(row, building.height, safeName, place);
+      const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place);
       if (!row || !article) this._requestBuildingFacts(building);
       const id = `clicked-${building.id || building.lngLat.join("-")}`;
+      const featureTarget = building.featureTarget ?? pand?.featureTarget ?? null;
       if (article) {
         return {
           id,
@@ -6138,7 +6145,7 @@ ${register}` : detail,
         type: "building",
         detail: facts.detail,
         lngLat: building.lngLat,
-        featureTarget: building.featureTarget,
+        featureTarget,
         ...labelRow ? { sourceUrl: osmUrl(labelRow[0]) } : {}
       };
     }
@@ -6168,7 +6175,7 @@ ${register}` : detail,
       if (inFlight.has(plainId)) return;
       inFlight.add(plainId);
       void store.ensureAt(building.lngLat[0], building.lngLat[1]).then(() => {
-        if (!stillOpen() || !store.lookup(building.id) && !store.article(building.id)) return;
+        if (!stillOpen() || !store.lookup(factsIdOf(building)) && !store.article(building.id)) return;
         const card = this._cardForClickedBuilding(building);
         const open = this._landmarkNotice;
         if (!card || !open || !cardIds.has(open.id)) return;

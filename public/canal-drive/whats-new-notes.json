@@ -3,6 +3,32 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "A place's name now tells you about its building",
+      "text": "Tapping a place's name on the map now also tells you about the building it is in: when it was built and how tall it is, under the place's name. The tap finds the building whose footprint holds the label's point, or the nearest wall within six metres, and never a building standing in front of the place.",
+      "where": [
+        4.8716,
+        52.3797
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-09-card-label-pand/desktop-before.jpg",
+          "alt": "Before: the card for a tapped place name gives only what the place is and its address",
+          "caption": "Before: the place only."
+        },
+        {
+          "src": "ui/2026-11-09-card-label-pand/desktop.jpg",
+          "alt": "After: the card adds the building's year, period and height under the place's name",
+          "caption": "After, desktop."
+        },
+        {
+          "src": "ui/2026-11-09-card-label-pand/phone.jpg",
+          "alt": "The same card on a phone",
+          "caption": "After, phone."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
       "title": "The ground around you finishes sooner",
       "text": "At the start of a ride the ground right around you now finishes building half a second to a second and a half sooner on the same start. The ground builders used to let a tile outside your block jump the queue when it sat next to one they already held; a free builder now only picks among tiles of the same level and the same side of your block.",
       "images": []
