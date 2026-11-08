@@ -8061,6 +8061,11 @@
     if (chosen?.text.detail) return { text: chosen.text.detail, choice: chosen.choice };
     return { text: lede || fallback, choice: null };
   }
+  function buurtFinishBlurb(routeTo, neighborhoods) {
+    if (!routeTo?.buurtPlace || !routeTo.name || !neighborhoods) return null;
+    const hood = neighborhoods.find((candidate) => candidate.name === routeTo.name);
+    return { name: routeTo.name, text: hood?.wikipediaExtract?.trim() || "" };
+  }
 
   // src/canalRecall/game/finishTitle.ts
   var FINISH_TITLE_SIZES = [26, 24, 22, 20];
@@ -10331,7 +10336,8 @@
       const gamey = this.gameyFeatures;
       const exploration = this._explorationSnapshot && this._explorationSnapshot.totalRoutes > 0 ? this._explorationSnapshot : null;
       const ribbon = gamey ? this._ribbon : null;
-      const landmark = this._finishLandmark();
+      const buurt = buurtFinishBlurb(this.routeTo, this.neighborhoods);
+      const landmark = buurt ? null : this._finishLandmark();
       const tour = this._tourArrival || null;
       const stamp = this._finishStamp || null;
       const image = landmark ? this._landmarkImages?.get(landmark.id) : void 0;
@@ -10367,14 +10373,14 @@
           ctx.font = "13px system-ui, sans-serif";
           ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
         } });
-        if (landmark && level2 < 3 || tour) {
+        if ((landmark || buurt?.text) && level2 < 3 || tour) {
           const photo = hasImage ? level2 >= 2 ? 64 : 88 : 0;
           const textX = cardX + padX + (hasImage ? photo + 16 : 0);
           const textW = cardX + cardW - padX - textX;
           ctx.font = "12px system-ui, sans-serif";
           const blurb = wrapText(
             ctx,
-            tour ? tour.why : this._finishBlurbText(landmark),
+            tour ? tour.why : buurt ? buurt.text : this._finishBlurbText(landmark),
             textW,
             tour ? [4, 3, 3, 3][level2] : [hasImage ? 4 : 3, 3, 2, 2][level2]
           );
@@ -10406,6 +10412,8 @@
               const where = `${tour.title.toUpperCase()}  \xB7  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
               const credit = [tour.sourceHost, tour.checked].filter(Boolean).join("  \xB7  ");
               ctx.fillText(wrapText(ctx, credit ? `${where}  \xB7  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
+            } else if (buurt) {
+              ctx.fillText("NEIGHBOURHOOD  \xB7  W  WIKIPEDIA", textX, top + 10);
             } else {
               const kind = String(landmark.type || "landmark").toUpperCase();
               ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  W  WIKIPEDIA` : kind, textX, top + 10);

@@ -16,7 +16,7 @@
   {
    "date": "2026-11-10",
    "title": "Today's ride runs buurt to buurt",
-   "text": "Today's ride now runs buurt to buurt: Overhoeks to the Jordaan, the Stadionbuurt to the IJselbuurt, between one and a half and five kilometres. No neighbourhood turns up twice in a week, and the ride starts and ends on a quiet street that gives no answer away. From 10 November; earlier days keep the ride they had.",
+   "text": "Today's ride now runs buurt to buurt: Overhoeks to the Helmersbuurt, Sportheldenbuurt to KNSM-eiland, between one and a half and five kilometres. No neighbourhood turns up twice in a week; the ride starts on a quiet unnamed street that gives no answer away, and may end on any street, since nothing is asked after arrival and the card names the buurt. Arriving in a buurt, the card describes the neighbourhood itself. From 10 November; earlier days keep the ride they had.",
    "images": [
     {
      "src": "ui/2026-11-09-daily-pool/story-returning.jpg",
@@ -27,6 +27,11 @@
      "src": "ui/2026-11-09-daily-pool/daily-2026-11-10-arrived-desktop.jpg",
      "alt": "The arrival card at the Jordaan after the 10 November daily ride from Overhoeks",
      "caption": "Arrived in the Jordaan."
+    },
+    {
+     "src": "ui/2026-11-09-daily-pool/jordaan-arrival-neighbourhood-blurb-desktop.jpg",
+     "alt": "The arrival card at the Jordaan describing the neighbourhood itself instead of the nearest landmark",
+     "caption": "A buurt arrival describes the neighbourhood."
     }
    ]
   },

@@ -43,7 +43,10 @@ function reviewState([name, lat, lng]: [string, number, number], dueAt: number, 
 function dailyRide(now: number, daysAgo: number, seconds: number, named: number, asked: number): RideRecord {
   const at = now - daysAgo * DAY;
   const pois = CANAL_CITIES.amsterdam.curatedPois.map(poi => ({ ...poi }));
-  const pair = dailyRidePair(dailyRideDateKey(at), pois)!;
+  // The board dates a ride by when it STARTED (dailyRideBoard), as the game dealt that day's pair at
+  // launch; a fixture ride that ends just after midnight must take the pair of the day it started in,
+  // or the landing spec drops a row for `seconds` after every midnight (seen 2026-11-09 00:10).
+  const pair = dailyRidePair(dailyRideDateKey(at - seconds * 1000), pois)!;
   return createRideRecord({
     id: `fixture-daily-${daysAgo}`,
     startedAt: at - seconds * 1000,
