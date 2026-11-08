@@ -71,7 +71,7 @@ for (let run = 0; run < runs; run++) {
   const st = data.startup ?? {};
   const summary = {
     run, state4At: Math.round(s4), workers: st.workers ?? null, workerReady: (st.workerReady ?? []).map(rel),
-    loadAt: rel(st.loadAt), storeReadyAt: rel(st.storeReadyAt), workerPostedAt: rel(st.workerPostedAt), workerReadyAt: rel(st.workerReadyAt), workerInitMs: st.workerInitMs ?? null, firstInstallAt: rel(st.firstInstallAt),
+    loadAt: rel(st.loadAt), storeReadyAt: rel(st.storeReadyAt), workerPostedAt: rel(st.workerPostedAt), prefetchAt: rel(st.prefetchAt), prefetchKey: st.prefetchKey ?? null, workerReadyAt: rel(st.workerReadyAt), workerInitMs: st.workerInitMs ?? null, firstInstallAt: rel(st.firstInstallAt),
     visibleAt: rel(first(r => r.visible)), centreAt: rel(first(r => r.centreIn)), blockAt: rel(first(r => r.block > 0 && r.blockIn === r.block)), ringAt: rel(first(r => r.wanted > 0 && r.wantedIn === r.wanted && r.pending === 0)),
     wanted: data.rows.at(-1)?.wanted ?? null,
     cells: (st.cells ?? []).map(c => ({ ...c, installedAt: rel(c.installedAt) })),
@@ -92,7 +92,7 @@ for (let run = 0; run < runs; run++) {
   summary.farPendingMax = Math.max(0, ...data.rows.map(r => r.farPending ?? 0));
   results.push({ ...summary, rows: data.rows.map(r => ({ ...r, t: rel(r.t) })), resources: data.resources.map(r => ({ ...r, start: rel(r.start), end: rel(r.end) })), errors });
   console.log(`run ${run}: worker posted ${summary.workerPostedAt} ready ${summary.workerReadyAt} (init ${summary.workerInitMs} ms) first install ${summary.firstInstallAt} | visible ${summary.visibleAt} centre ${summary.centreAt} block ${summary.blockAt} ring ${summary.ringAt} (${summary.wanted} cells) ms after state 4 | medians ${JSON.stringify(summary.medians)}`);
-  console.log(`  workers ${summary.workers} ready ${JSON.stringify(summary.workerReady)} byWorker ${JSON.stringify(summary.byWorker)}\n  waitSplit ${JSON.stringify(summary.waitSplit)}\n  inputSplit ${JSON.stringify(summary.inputSplit)} farPendingMax ${summary.farPendingMax}`);
+  console.log(`  prefetch ${summary.prefetchAt} (${summary.prefetchKey}) workers ${summary.workers} ready ${JSON.stringify(summary.workerReady)} byWorker ${JSON.stringify(summary.byWorker)}\n  waitSplit ${JSON.stringify(summary.waitSplit)}\n  inputSplit ${JSON.stringify(summary.inputSplit)} farPendingMax ${summary.farPendingMax}`);
   await context.close();
 }
 fs.mkdirSync(path.dirname(out), { recursive: true });

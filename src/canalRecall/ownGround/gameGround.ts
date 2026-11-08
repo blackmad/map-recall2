@@ -62,7 +62,8 @@ import { paintNoise } from './groundNoise.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
-import { defaultGroundWorkers, FOCUS_RANK_BASE, groundFocusFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, pickWorker } from './groundWorkers.js';
+import { groundPrefetchFlag, prefetchStep, PREFETCH_MAX_MS, PREFETCH_POLL_MS, type StartView } from './groundPrefetch.js';
+import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, groundAffinityFlag, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
@@ -73,6 +74,8 @@ export interface GroundHost {
   repaint(): void;
   /** Hide (true) or restore (false) the basemap's own ground fills and lines. */
   setBasemapGroundHidden(hidden: boolean): void;
+  /** The camera's pose now (groundPrefetch.ts): followed until the game's first `update`, so the start builds during the hold. */
+  startView?(): StartView | null;
 }
 
 export interface OwnGroundOptions {
@@ -371,6 +374,15 @@ export class OwnGround {
   private workers: Worker[] = [];
   /** The worker each requested cell was sent to (groundWorkers.ts pickWorker). */
   private readonly workerOf = new Map<string, number>();
+  /** Pull dispatch (groundWorkers.ts nextDispatch, `?groundPull=0` off): the cells each worker holds, the best-first order, what to ask per cell. */
+  private readonly pullOn = groundPullFlag();
+  private held: Set<string>[] = [];
+  private readonly sentTo = new Map<string, number>();
+  private wantedOrder: string[] = [];
+  private readonly asks = new Map<string, { lod: 0 | 1; detail: CellDetail }>();
+  /** Affinity (groundWorkers.ts sharedNeighbours, `?groundAffinity=0` off): the cells whose data each worker has loaded. */
+  private readonly affinityOn = groundAffinityFlag();
+  private loadedBy: Set<string>[] = [];
   private workerReady = false;
   private readonly base: Record<string, any> = {};
   private readonly resident = new Map<string, Resident>();
@@ -389,6 +401,11 @@ export class OwnGround {
   private focus: Vec2 | null = null;
   private focusCell: string | null = null;
   private readonly focusOn = groundFocusFlag();
+  /** Follow the camera's pose until the game's first update (groundPrefetch.ts, `?groundPrefetch=0` off). */
+  private readonly prefetchOn = groundPrefetchFlag();
+  private gameUpdated = false;
+  private prefetchTimer: ReturnType<typeof setInterval> | null = null;
+  private prefetchKey: string | null = null;
   /** Quick first paint (opt-in `?groundQuick=1`) and the LOD the ring wants per cell (a quick install re-plans). */
   private readonly quickOn = groundQuickFlag();
   private wantedLod: ReadonlyMap<string, 0 | 1> = new Map();
@@ -443,7 +460,7 @@ export class OwnGround {
    * init posted, the worker ready (and its own init ms), the first cell installed. `cells`: each install's split
    * (worker queue wait / data in / build / tiles, the main thread's request → install latency and install ms), last 200.
    */
-  readonly startup: { /** Ground workers created; each one's ready time (page ms). */ workers?: number; workerReady?: number[]; loadAt?: number; storeReadyAt?: number; workerPostedAt?: number; workerReadyAt?: number; workerInitMs?: number; firstInstallAt?: number; cells: Record<string, unknown>[] } = { cells: [] };
+  readonly startup: { /** Ground workers created; each one's ready time (page ms). */ workers?: number; workerReady?: number[]; /** The hold's first camera-pose residency (groundPrefetch.ts) and its cell. */ prefetchAt?: number; prefetchKey?: string; loadAt?: number; storeReadyAt?: number; workerPostedAt?: number; workerReadyAt?: number; workerInitMs?: number; firstInstallAt?: number; cells: Record<string, unknown>[] } = { cells: [] };
   readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
@@ -474,11 +491,14 @@ export class OwnGround {
       const init = { type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), roadSlivers: roadSliversFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       for (let i = 0; i < count; i++) {
         const worker = new Worker(this.opts.workerUrl);
-        worker.onmessage = event => this.onWorker(event.data);
+        const wi = i;
+        worker.onmessage = event => this.onWorker(event.data, wi);
         worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
         // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
         worker.postMessage({ ...init, index: i, pageOrigin: performance.timeOrigin });
         this.workers.push(worker);
+        this.held.push(new Set());
+        this.loadedBy.push(new Set());
       }
       this.worker = this.workers[0] ?? null;
       this.startup.workerPostedAt ??= performance.now();
@@ -526,10 +546,16 @@ export class OwnGround {
     for (const worker of this.workers) worker.terminate();
     this.workers = [];
     this.workerOf.clear();
+    this.held = [];
+    this.loadedBy = [];
+    this.sentTo.clear();
+    this.asks.clear();
+    this.wantedOrder = [];
     this.worker = null;
     this.relief?.dispose();
     this.relief = null;
     this.workerReady = false;
+    this.stopPrefetch();
     this.gen++;
     if (full) { this.unregister?.(); this.unregister = null; this.setBasemapHidden(false); this.precompiled = false; this.precompileQueue = null; }
   }
@@ -557,6 +583,39 @@ export class OwnGround {
 
   /** The rider's position (lng/lat) and the map zoom; call once per camera sync. */
   update(lngLat: LngLat, zoom: number, pitchDeg = 60, focus?: LngLat | null): void {
+    if (!this.gameUpdated) { this.gameUpdated = true; this.stopPrefetch(); }
+    this.place(lngLat, zoom, pitchDeg, focus);
+  }
+
+  /**
+   * Until the game's first update, follow the camera's pose (groundPrefetch.ts): the workers are ready ~2 s before the
+   * ride is revealed and the camera already sits at the start pose, so the start neighbourhood builds during the hold.
+   */
+  private startPrefetch(): void {
+    if (!this.prefetchOn || this.gameUpdated || this.prefetchTimer || typeof this.host.startView !== 'function') return;
+    const until = performance.now() + PREFETCH_MAX_MS;
+    this.prefetchTimer = setInterval(() => {
+      if (this.gameUpdated || performance.now() > until) { this.stopPrefetch(); return; }
+      if (!this.ready) return;
+      let view: StartView | null = null;
+      try { view = this.host.startView?.() ?? null; } catch { view = null; }
+      const local = view ? toLocal(view.lngLat[0], view.lngLat[1]) : null;
+      const key = local && Number.isFinite(local[0]) && Number.isFinite(local[1]) ? this.store.cellAt(local[0], local[1]) : null;
+      const step = prefetchStep(view, key, this.prefetchKey, this.opts.minZoom);
+      this.prefetchKey = step.nextKey;
+      if (!step.use || !view) return;
+      this.startup.prefetchAt ??= performance.now();
+      this.startup.prefetchKey ??= key ?? undefined;
+      this.place(view.lngLat, view.zoom, view.pitch, view.lngLat);
+    }, PREFETCH_POLL_MS);
+  }
+
+  private stopPrefetch(): void {
+    if (this.prefetchTimer) clearInterval(this.prefetchTimer);
+    this.prefetchTimer = null;
+  }
+
+  private place(lngLat: LngLat, zoom: number, pitchDeg = 60, focus?: LngLat | null): void {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
     if (this.focusOn && focus && this.ready) {
@@ -710,7 +769,7 @@ export class OwnGround {
     if (this.quickOn) this.wantedLod = new Map(wanted.map(w => [w.key, w.lod]));
     this.wantedKeys = keep;
     for (const key of [...this.resident.keys()]) if (!keep.has(key)) this.drop(key);
-    for (const key of [...this.pending.keys()]) if (!keep.has(key)) { this.pending.delete(key); this.discards.unwanted++; this.retries.forget(key); }
+    for (const key of [...this.pending.keys()]) if (!keep.has(key)) { this.pending.delete(key); this.asks.delete(key); this.discards.unwanted++; this.retries.forget(key); }
     for (let i = this.installQueue.length - 1; i >= 0; i--) if (!keep.has(this.installQueue[i].key)) this.installQueue.splice(i, 1);
     for (const w of wanted) {
       // Main-thread surface for poses, bases and overlays: relief + decks of every wanted cell.
@@ -728,12 +787,16 @@ export class OwnGround {
       if (!this.pending.has(w.key)) this.workerOf.delete(w.key);
       this.pending.set(w.key, want);
       this.requestedAt.set(`${w.key}:${want}`, performance.now());
+      // Pull: the cell waits here until a worker has room (dispatch below).
+      if (this.pullOn) { this.asks.set(w.key, { lod, detail: w.detail }); continue; }
       const wi = pickWorker(w.key, this.workers.length, this.workerOf, this.pending.keys());
       this.workerOf.set(w.key, wi);
       this.workers[wi]?.postMessage({ type: 'build', key: w.key, lod, detail: w.detail, gen: this.gen });
     }
-    // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts).
-    if (this.lookAheadOn) for (const worker of this.workers) worker.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
+    if (this.pullOn) { this.wantedOrder = wanted.map(w => w.key); this.dispatch(); }
+    // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts). Not with pull: a
+    // worker holds at most PULL_DEPTH cells, and each one it holds must answer (a dropped job would hold its slot).
+    else if (this.lookAheadOn) for (const worker of this.workers) worker.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
     // Relief far behind is dropped on both sides (decks keep their placed heights).
     const keepM = this.radiusM + 2200;
     const evict = { type: 'evict', x: this.centre[0], y: this.centre[1], keepM, keep: [...keep].flatMap(k => GroundStore.neighbours(k)) };
@@ -741,8 +804,33 @@ export class OwnGround {
     if (this.store.evictRelief(this.centre[0], this.centre[1], keepM)) {
       for (const key of [...this.prepared]) if (!keep.has(key)) this.prepared.delete(key);
     }
-    this.store.forgetCells(new Set([...keep].flatMap(k => GroundStore.neighbours(k))));
+    const around = new Set([...keep].flatMap(k => GroundStore.neighbours(k)));
+    this.store.forgetCells(around);
+    // The workers forget the same cells (the evict message above).
+    for (const loaded of this.loadedBy) for (const k of [...loaded]) if (!around.has(k)) loaded.delete(k);
     this.updateFar(keep);
+  }
+
+  /** Pull (groundWorkers.ts): hand the best-ranked waiting cells to the workers with room. */
+  private dispatch(): void {
+    if (!this.pullOn || !this.workers.length) return;
+    const affinity = this.affinityOn ? (key: string, wi: number) => sharedNeighbours(key, this.loadedBy[wi]) : undefined;
+    for (const [key, wi] of nextDispatch(this.wantedOrder, this.pending, this.sentTo, this.held.map(h => h.size), PULL_DEPTH, affinity ? AFFINITY_WINDOW : 1, affinity)) {
+      const ask = this.asks.get(key);
+      if (!ask) continue;
+      this.asks.delete(key);
+      for (const n of GroundStore.neighbours(key)) this.loadedBy[wi].add(n);
+      this.held[wi].add(key);
+      this.sentTo.set(key, wi);
+      this.workerOf.set(key, wi);
+      this.workers[wi].postMessage({ type: 'build', key, lod: ask.lod, detail: ask.detail, gen: this.gen });
+    }
+  }
+
+  /** A worker answered for `key` (built, or failed): its slot is free. */
+  private release(key: string | undefined, wi: number | undefined): void {
+    if (!this.pullOn || key == null || wi == null) return;
+    if (this.held[wi]?.delete(key) && this.sentTo.get(key) === wi) this.sentTo.delete(key);
   }
 
   /** Far blocks: ask for the ones the far radius reaches that the resident ring does not wholly draw; drop distant ones. */
@@ -821,8 +909,13 @@ export class OwnGround {
     }).catch(error => this.stats.errors.push(`prepare ${key}: ${String(error)}`)).finally(() => this.preparing.delete(key));
   }
 
-  private onWorker(msg: any): void {
-    if (msg.type === 'ready') { this.startup.workerReadyAt ??= performance.now(); (this.startup.workerReady ??= [])[msg.index ?? 0] = Math.round(performance.now()); if (typeof msg.initMs === 'number') this.startup.workerInitMs ??= msg.initMs; this.workerReady = true; this.workerRailCells = typeof msg.railCells === 'number' ? msg.railCells : null; return; }
+  private onWorker(msg: any, wi?: number): void {
+    if (this.pullOn && (msg.type === 'cell' || (msg.type === 'error' && msg.key))) {
+      this.release(msg.type === 'cell' ? msg.cell?.key : msg.key, wi);
+      // After this reply is handled (installed, failed or stale): the freed slot takes the next cell.
+      queueMicrotask(() => this.dispatch());
+    }
+    if (msg.type === 'ready') { this.startup.workerReadyAt ??= performance.now(); (this.startup.workerReady ??= [])[msg.index ?? 0] = Math.round(performance.now()); this.startPrefetch(); if (typeof msg.initMs === 'number') this.startup.workerInitMs ??= msg.initMs; this.workerReady = true; this.workerRailCells = typeof msg.railCells === 'number' ? msg.railCells : null; return; }
     if (msg.type === 'error' && msg.far) { this.stats.errors.push(`far ${msg.far}: ${msg.message}`.slice(0, 400)); this.farPending.delete(msg.far); return; }
     if (msg.type === 'far') {
       if (msg.gen !== this.gen || !this.farPending.delete(msg.key)) return;
@@ -1495,7 +1588,7 @@ export class OwnGround {
       enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false, detail: this.opts.detail, groundNear: this.opts.groundNear, ring: this.opts.ring, aheadM: this.aheadM,
       cells, details, pending: Object.fromEntries(this.pending), queued: this.installQueue.length,
       // Lane R5-A #260 step 1: the ground workers and the cells pending on each (far blocks all go to worker 0).
-      workers: this.workers.length, workerPending: this.workers.map((_, i) => [...this.pending.keys()].filter(k => this.workerOf.get(k) === i)), triangles, geometryMB: +(bytes / 1048576).toFixed(1),
+      workers: this.workers.length, workerPending: this.pullOn ? this.held.map(h => [...h]) : this.workers.map((_, i) => [...this.pending.keys()].filter(k => this.workerOf.get(k) === i)), pull: this.pullOn, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
       latencyMsMedian: median(this.stats.latencyMs), latencyMsMax: this.stats.latencyMs.length ? Math.round(Math.max(...this.stats.latencyMs)) : null, lastBuild: this.stats.lastBuild,
