@@ -36,3 +36,24 @@ export const SWAP_SPOTS = [
   { name: 'westerkerk', rider: [4.8826, 52.3741], face: [4.8843, 52.3746], camera: [4.8826, 52.3741], zoom: 17.8, bearing: 74, pitch: null },
   { name: 'nassaukade', rider: [4.8722, 52.3712], face: [4.8732, 52.3722], camera: [4.8722, 52.3712], zoom: 17.8, bearing: 31, pitch: null },
 ] as const;
+
+/**
+ * The user's aerial poses of 2026-11-08 (lane R5-A, #260; map-recall2-screenshots engine/2026-11-08-user-shots, build
+ * 7cda9af, desktop DPR 2, the game frame ≈ 1288 × 712 CSS px). The rider stayed at the Free Ride start (Nieuwe Vaart,
+ * Marineterrein) in every shot; the camera was panned off it (RE-CENTER showing) except at the start. `centre` is the
+ * view's look-at, `zoom` the map zoom, read off the shots' labels and building scale (fitted by eye beside the shot,
+ * not least-squares). `start: true` = the Free Ride's own start pose, taken as the game opens it.
+ *  - aerial-marineterrein-user (U2): the start frame, Kattenburgerbrug / Nieuwe Vaart / Scheepvaartmuseum.
+ *  - aerial-singelgracht-user (U4): the Singelgracht by the Blue Boat, Stadhouderskade / Weteringschans, looking WNW.
+ *  - aerial-science-park-user (U4): Science Park from over the A10, looking NNE to the Amsterdam-Rijnkanaal.
+ *  - aerial-nieuwmarkt-user (U1): the Pentagon and Zuiderkerkhof blocks, looking W to the Zuiderkerk.
+ */
+export const AERIAL_USER_SPOTS = [
+  { name: 'aerial-marineterrein-user', shot: 'start-marineterrein-unresolved-ground.png', start: true, centre: [4.9105, 52.3722], zoom: 17.6, pitch: 55, bearing: 340 },
+  // U22 (the plan author's amendment, 2026-11-08): the start pose closer in, eye ~70 m, pitch ~60; the ground was
+  // still the smeared raster there. Fitted on the eye's altitude, not a zoom.
+  { name: 'close-marineterrein-user', shot: 'U22 (pending in the screenshots repo)', start: true, eyeAltM: 70, pitch: 60 },
+  { name: 'aerial-singelgracht-user', shot: 'aerial-singelgracht-ground-not-resolved.png', centre: [4.8840, 52.3606], zoom: 17.3, pitch: 55, bearing: 300 },
+  { name: 'aerial-science-park-user', shot: 'aerial-science-park-ground-fuzzy-buildings-crisp.png', centre: [4.9580, 52.3570], zoom: 15.9, pitch: 60, bearing: 20 },
+  { name: 'aerial-nieuwmarkt-user', shot: 'aerial-nieuwmarkt-flat-roofs-bright.png', centre: [4.9024, 52.3705], zoom: 17.4, pitch: 55, bearing: 280 },
+] as const;
