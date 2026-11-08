@@ -660,6 +660,7 @@ export const en = {
   'ride.arrival.placeTally': '{earned} of {total} places',
   'ride.arrival.tourDone': 'TOUR COMPLETE',
   'ride.arrival.tourAgain': 'TOUR AGAIN',
+  'ride.arrival.tourStop': '{title}  ·  STOP {stop} OF {count}',
   'ride.arrival.run': 'RUN',
   'ride.arrival.cityKnowledge': 'CITY KNOWLEDGE',
   'ride.arrival.firstTime': '+{bits} first-time',

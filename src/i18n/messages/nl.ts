@@ -662,6 +662,7 @@ export const nl: Record<MessageKey, string> = {
   'ride.arrival.placeTally': '{earned} van {total} plekken',
   'ride.arrival.tourDone': 'TOCHT VOLTOOID',
   'ride.arrival.tourAgain': 'TOCHT OPNIEUW',
+  'ride.arrival.tourStop': '{title}  ·  STOP {stop} VAN {count}',
   'ride.arrival.run': 'REEKS',
   'ride.arrival.cityKnowledge': 'KENNIS VAN DE STAD',
   'ride.arrival.firstTime': '+{bits} voor het eerst',

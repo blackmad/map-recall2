@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PERF_HUD_ID, PERF_HUD_NARROW_STYLE, PERF_HUD_STYLE, perfHudLine } from '../../src/canalRecall/engine/perfHud';
 import { describeBuilding } from '../../src/canalRecall/buildingFacts';
@@ -779,6 +779,27 @@ export const FinishCardRunPhone: Story = { args: { scenario: 'finish-run-touch' 
 export const RunCard: Story = { args: { scenario: 'finish-run-card' } };
 export const RunCardPhone: Story = { args: { scenario: 'finish-run-card-touch' }, globals: phone };
 /** Calm mode: no points, no chain bonus. */
+/** The Dutch game (#283): the frame shares Storybook's origin, so the language
+ *  pref is set before the frame loads and put back when the story unmounts. */
+function DutchFrame({ scenario }: { scenario: Scenario }) {
+  const KEY = 'canalRecall.language.v1';
+  const [previous] = useState(() => {
+    try {
+      const before = localStorage.getItem(KEY);
+      localStorage.setItem(KEY, 'nl');
+      return before;
+    } catch { return null; }
+  });
+  useEffect(() => () => {
+    try { if (previous === null) localStorage.removeItem(KEY); else localStorage.setItem(KEY, previous); } catch { /* private mode */ }
+  }, [previous]);
+  return <CanalDriveFrame scenario={scenario} />;
+}
+export const FinishCardRunDutch: Story = { args: { scenario: 'finish-run' }, render: () => <DutchFrame scenario="finish-run" /> };
+export const FinishCardRunDutchPhone: Story = { args: { scenario: 'finish-run-touch' }, render: () => <DutchFrame scenario="finish-run-touch" />, globals: phone };
+export const RunCardDutch: Story = { args: { scenario: 'finish-run-card' }, render: () => <DutchFrame scenario="finish-run-card" /> };
+export const RunCardDutchPhone: Story = { args: { scenario: 'finish-run-card-touch' }, render: () => <DutchFrame scenario="finish-run-card-touch" />, globals: phone };
+
 export const RunCardCalm: Story = { args: { scenario: 'finish-run-card-calm' } };
 export const RunCardCalmPhone: Story = { args: { scenario: 'finish-run-card-calm-touch' }, globals: phone };
 export const FinishCardTransitPhone: Story = {

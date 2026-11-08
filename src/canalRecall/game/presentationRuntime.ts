@@ -66,7 +66,7 @@ import { easeSightline, landmarkSightline, relativeTo, NO_SIGHTLINE, type Sightl
 import { nearestRouteIndex, RADAR_RADIUS_M, radarLocal, radarRadiusForSpeed, RadarMap } from './radar';
 import { gameWorldToLngLat, type GameLoaderFrame } from '../ownMap/frame';
 import { revealOnEnter, utilityBlockedByCards, utilityVisibility } from './utilityTuck';
-import { t as tr } from '../../i18n/index.ts';
+import { CATALOGS, t as tr, type MessageKey } from '../../i18n/index.ts';
 import { extendShareTrail } from '../shareCard';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
@@ -1611,7 +1611,7 @@ export class GamePresentationRuntime {
           ctx.textAlign = 'left';
           ctx.fillStyle = MUTED; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           if (tour) {
-            const where = `${tour.title.toUpperCase()}  ·  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
+            const where = tr('ride.arrival.tourStop', { title: tour.title.toUpperCase(), stop: tour.stopIndex + 1, count: tour.stopCount });
             const credit = [tour.sourceHost, tour.checked].filter(Boolean).join('  ·  ');
             ctx.fillText(wrapText(ctx, credit ? `${where}  ·  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
           } else {
@@ -1638,10 +1638,15 @@ export class GamePresentationRuntime {
       );
       if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: tr('ride.stat.points'), value: String(this.quizPoints) });
 
+      // The setup screen's own words for difficulty and view (#283), so the
+      // Dutch card does not read "Medium · Chase".
+      const difficultyKey = `setup.difficulty.${this.routeDifficulty}`;
+      const viewKey = `setup.view.${String(this.viewMode).replace(/-up$/, '')}`;
+      const known = (key: string): key is MessageKey => key in CATALOGS.en;
       const footerBits = [
-        this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
+        known(difficultyKey) ? tr(difficultyKey) : this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
         profile.label,
-        this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()),
+        known(viewKey) ? tr(viewKey) : this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()),
       ];
       if (gamey && this.quizBestStreak >= 2) footerBits.push(tr('ride.bestStreak', { count: this.quizBestStreak }));
       // Tighter levels fold the personal best into this line rather than give
