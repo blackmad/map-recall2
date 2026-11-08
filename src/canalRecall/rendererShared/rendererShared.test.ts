@@ -377,6 +377,37 @@ test('shared frame: two passes, one renderer, participants placed by their own l
   assert.equal(frame.rig.sun.shadow.intensity, 0);
 });
 
+test('shared frame: shadowEvery holds the map for n-1 passes; setShadowMapSize resizes and redraws (lane R5-F #266)', () => {
+  const run = (every: number) => {
+    const map = fakeMap();
+    const frame = new SharedFrame(THREE, map, { shadowMapSize: 2048 });
+    frame.attach();
+    const log: string[] = [];
+    frame.renderer = fakeRenderer(log, frame);
+    const { clip } = amsterdamClip();
+    frame.register('facades', { root: new THREE.Group() }, { order: 0 });
+    frame.shadowEvery = every;
+    const gl = { drawingBufferWidth: 800, drawingBufferHeight: 600 } as any;
+    // A new caster every pass: without the hold every pass redraws.
+    for (let i = 0; i < 8; i++) {
+      frame.scene.getObjectByName('shared-frame/facades')!.children[0].add(new THREE.Mesh());
+      frame.mainLayer.render(gl, { defaultProjectionData: { mainMatrix: clip } });
+    }
+    return { frame, gl, clip, log };
+  };
+  assert.equal(run(1).frame.shadowRedraws, 8, 'shadowEvery 1: today');
+  const { frame, gl, clip, log } = run(4);
+  assert.equal(frame.shadowRedraws, 2, 'passes 1 and 5 of 8');
+  frame.shadowEvery = 1;
+  frame.setShadowMapSize(1024);
+  assert.equal(frame.rig.sun.shadow.mapSize.x, 1024);
+  log.length = 0;
+  frame.mainLayer.render(gl, { defaultProjectionData: { mainMatrix: clip } });
+  assert.ok(log.some(l => l.startsWith('render[shadow]')), 'a resized map is redrawn');
+  frame.setShadowMapSize(null);
+  assert.equal(frame.rig.sun.shadow.mapSize.x, 2048, 'null: the tier size again');
+});
+
 test('shared frame: a context lost mid-compile drops the frame instead of throwing (CANAL-RECALL-5)', () => {
   const live = { isContextLost: () => false } as any;
   const scene = {}, camera = {};

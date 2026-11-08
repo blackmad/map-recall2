@@ -7,12 +7,18 @@
 // Writes artifacts/large-tier/candidates.json and summary.json.
 //
 //   node --import tsx scripts/large-tier/audit.ts [--min-area=150] [--out=artifacts/large-tier]
+//
+// Lane R5-D (#264): `bareByBand` counts every bare building of 100 m2 and more by reason and footprint band, and
+// `plainFromAir` counts the buildings of 100 m2 and more whose walls the aerial tiers (the coarse chunk, which the
+// baked shells freeze) draw in the plain cell over half their area or more: bare boxes, plain-walled kits (their
+// windows are kit geometry, built near the rider only) and rings whose runs are too short for a layout (round
+// towers). Those are the "flat blocks" the user sees from the air whatever the facade string says.
 
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import { gameDecorator, type Feature } from '../../src/canalRecall/galleryPipeline.ts';
-import { meshBuildingFor } from '../../src/canalRecall/threeBuildingFeatures.ts';
+import { buildFeatureChunk, meshBuildingFor } from '../../src/canalRecall/threeBuildingFeatures.ts';
 import { footprintAreaM2 } from '../../src/canalRecall/genericFacades.ts';
 import { shortBuildingId, plausibleYear } from '../../src/canalRecall/buildingFacts.ts';
 import { KIT_HIDE_IDS, KIT_PART_IDS } from '../../src/canalRecall/landmarkKits.ts';
@@ -81,6 +87,29 @@ const inside = (pt: number[], poly: number[][]) => { let c = false; for (let i =
 type Row = { id: string; reason: string; areaM2: number; heightM: number; year: number | null; centroid: [number, number]; wallHex: string; canalBelt: boolean; landmark: boolean; nearestCanal: string | null; canalDistM: number; nearestStreet: string | null; streetDistM: number; mainStreet: boolean; visibility: number; hiddenByKit: boolean; hiddenBySignatureModel: boolean };
 const rows: Row[] = [];
 let total = 0, bareAll = 0, bareArea = 0, facedLarge = 0;
+const BAND_MIN_M2 = 100;
+/** Prisms a kit replaces (tiers, stack hosts, hides); a hall or roof host keeps its walls and is counted. */
+const kitHidden = new Set<string>(KIT_HIDE_IDS);
+const bandOf = (a: number) => a < 150 ? '100-150' : a < 300 ? '150-300' : a < 1000 ? '300-1000' : '1000+';
+const bareByBand: Record<string, Record<string, number>> = {};
+const plainFromAir: Record<string, Record<string, number>> = {};
+const plainRows: Array<{ id: string; why: string; areaM2: number; plainShare: number; ring: number; centroid: [number, number] }> = [];
+const bump = (m: Record<string, Record<string, number>>, k: string, band: string) => { (m[k] ??= {})[band] = (m[k][band] ?? 0) + 1; };
+/** Share of a building's wall area (vertical faces) the coarse chunk draws in its plain cell. */
+function aerialPlainShare(feature: Feature, plainLayer: number | undefined): number {
+  if (plainLayer === undefined) return 1;
+  const c = buildFeatureChunk([feature], 'photo', 'coarse'), P = c.positions;
+  let plain = 0, all = 0;
+  for (let t = 0; t < c.indices.length; t += 3) {
+    const a = c.indices[t], b = c.indices[t + 1], d = c.indices[t + 2];
+    const ux = P[b * 3] - P[a * 3], uy = P[b * 3 + 1] - P[a * 3 + 1], uz = P[b * 3 + 2] - P[a * 3 + 2], vx = P[d * 3] - P[a * 3], vy = P[d * 3 + 1] - P[a * 3 + 1], vz = P[d * 3 + 2] - P[a * 3 + 2];
+    const nx = uy * vz - uz * vy, ny = uz * vx - ux * vz, nz = ux * vy - uy * vx, n = Math.hypot(nx, ny, nz);
+    if (!(n > 0) || Math.abs(nz) >= 0.3 * n) continue;
+    all += n; if (c.layers[a] === plainLayer) plain += n;
+  }
+  return all ? plain / all : 1;
+}
+const ringCount = (g: unknown) => { const x = g as { type: string; coordinates: number[][][] | number[][][][] }; return x.type === 'Polygon' ? (x.coordinates as number[][][])[0].length : (x.coordinates as number[][][][])[0][0].length; };
 const tilesRoot = `${EXTRACT}/building-tiles/14`;
 for (const x of fs.readdirSync(tilesRoot)) for (const file of fs.readdirSync(path.join(tilesRoot, x))) {
   const y = file.replace('.geojson.gz', '');
@@ -98,8 +127,21 @@ for (const x of fs.readdirSync(tilesRoot)) for (const file of fs.readdirSync(pat
     if (!b) continue;
     const area = footprintAreaM2(feature.geometry);
     const reason = !b.bare ? 'faced' : landmarkIds.has(String(feature.properties.id)) && !feature.properties.landmarkBare ? 'landmark-unmodelled' : largeTierReason(feature.properties, feature.geometry);
+    const sid = String(feature.properties.id);
+    if (area >= BAND_MIN_M2 && !feature.properties.gardenShed && !kitHidden.has(sid)) {
+      // What the air sees: the coarse chunk's plain share (bare and plain-walled kits are all plain by construction).
+      const kitPlain = feature.properties.kitWall === 'plain' || feature.properties.kitWall === 'flat';
+      const share = b.bare || kitPlain ? 1 : ringCount(feature.geometry) >= 24 || area >= 1000 ? aerialPlainShare(feature, b.plainLayer) : 0;
+      if (share >= 0.5) {
+        const why = b.bare ? `bare:${reason}` : kitPlain ? `kit-plain${landmarkIds.has(sid) ? ':landmark' : ''}` : 'plain-runs';
+        bump(plainFromAir, why, bandOf(area));
+        const ring0 = (feature.geometry as { type: string; coordinates: number[][][] | number[][][][] }).type === 'Polygon' ? (feature.geometry as { coordinates: number[][][] }).coordinates[0] : (feature.geometry as { coordinates: number[][][][] }).coordinates[0][0];
+        plainRows.push({ id: sid, why, areaM2: Math.round(area), plainShare: +share.toFixed(2), ring: ring0.length, centroid: [+ring0[0][1].toFixed(6), +ring0[0][0].toFixed(6)] });
+      }
+    }
     if (!b.bare || feature.properties.kitWall) { if (area >= MIN_AREA && feature.properties.largeTier) facedLarge++; continue; }
     bareAll++; bareArea += area;
+    if (area >= BAND_MIN_M2 && !kitHidden.has(sid) && !bySignature(sid, [0, 0])) bump(bareByBand, feature.properties.gardenShed ? 'shed' : reason, bandOf(area));
     if (area < MIN_AREA) continue;
     const ring = (feature.geometry as { type: string; coordinates: number[][][] | number[][][][] }).type === 'Polygon' ? (feature.geometry as { coordinates: number[][][] }).coordinates[0] : (feature.geometry as { coordinates: number[][][][] }).coordinates[0][0];
     const c = ring.reduce((s, q) => [s[0] + q[0] / ring.length, s[1] + q[1] / ring.length], [0, 0]) as [number, number];
@@ -123,9 +165,11 @@ const summary = {
   bareLarge: rows.length, bareLargeShown: shown.length, bareLargeAreaM2: shown.reduce((s, r) => s + r.areaM2, 0), bareLargeByReason: byReason(shown),
   canalBelt: { count: belt.length, areaM2: belt.reduce((s, r) => s + r.areaM2, 0), byReason: byReason(belt), onCanal: belt.filter(r => r.canalDistM < 30).length, onMainStreet: belt.filter(r => r.mainStreet).length },
   largeTierFaced: facedLarge,
+  bareByBand, plainFromAir, plainFromAirTotal: plainRows.length,
   top20: shown.slice(0, 20).map(r => `${r.id} ${r.reason} ${r.areaM2} m2 ${r.heightM} m ${r.nearestCanal ?? r.nearestStreet ?? ''}`),
 };
 fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(`${OUT}/candidates.json`, JSON.stringify(rows, null, 1));
+fs.writeFileSync(`${OUT}/plain-from-air.json`, JSON.stringify(plainRows.sort((a, b) => b.areaM2 - a.areaM2), null, 1));
 fs.writeFileSync(`${OUT}/summary.json`, JSON.stringify(summary, null, 2));
 console.log(JSON.stringify(summary, null, 2));

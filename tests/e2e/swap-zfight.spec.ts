@@ -174,6 +174,10 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
   const inner = new Uint8Array(mask.length);
   for (let y = 1; y < shown.height - 1; y++) for (let x = 1; x < shown.width - 1; x++) { const i = y * shown.width + x; if (mask[i] && mask[i - 1] && mask[i + 1] && mask[i - shown.width] && mask[i + shown.width]) inner[i] = 1; }
   const maskPx = inner.reduce((s, v) => s + v, 0), maskShare = maskPx / (shown.width * shown.height);
+  if (process.env.ZFIGHT_FRAMES) {
+    mkdirSync(`${OUT}/frames${LABEL}`, { recursive: true });
+    await sharp(Buffer.from(inner.map(v => v * 255)), { raw: { width: shown.width, height: shown.height, channels: 1 } }).png().toFile(`${OUT}/frames${LABEL}/mask.png`);
+  }
   console.log('slab mask px', maskPx, 'share', maskShare.toFixed(4), 'frame', shown.width, shown.height);
   expect(maskPx, 'the slab is on screen').toBeGreaterThan(500);
   // s3-slab-user: the slab covers what it covers in the user's window (measured 2026-11-06 at DPR 2, see abSpots.ts).
@@ -287,6 +291,11 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
         await sharp(shot.data, { raw: { width: shot.width, height: shot.height, channels: 4 } }).png().toFile(`${OUT}/${info.project.name}${LABEL}${TAG}${capture === grab ? '' : '-ref'}-${swap ? 'swap' : 'still'}-mid1.png`);
       }
       frames.push({ data: shot.data });
+      // ZFIGHT_FRAMES=1 (lane R4-L): every step's frame of the still and swap pans as PNG, for offline diffing.
+      if (process.env.ZFIGHT_FRAMES && capture === grab) {
+        mkdirSync(`${OUT}/frames${LABEL}`, { recursive: true });
+        await sharp(shot.data, { raw: { width: shot.width, height: shot.height, channels: 4 } }).png().toFile(`${OUT}/frames${LABEL}/${swap ? 'swap' : 'still'}-${String(step).padStart(2, '0')}.png`);
+      }
       if (step === Math.round(STEPS / 2)) {
         mkdirSync(OUT, { recursive: true });
         await sharp(shot.data, { raw: { width: shot.width, height: shot.height, channels: 4 } }).png().toFile(`${OUT}/${info.project.name}${LABEL}${TAG}${capture === grab ? '' : '-ref'}-${swap ? 'swap' : 'still'}-mid.png`);
@@ -497,7 +506,38 @@ test('swap z-fight: no moving stripes on the Weesperstraat slab while its detail
     gpu = { runs, median: ok.length ? ok[Math.floor(ok.length / 2)] : null };
     console.log('swap-zfight gpu', JSON.stringify(gpu));
   }
-  const swap = FRAME_MASK || process.env.ZFIGHT_ALIAS_ONLY ? { areas: still.areas.map(() => 0), fadingSteps: STEPS + 1, frames: [] } : await run(true);
+  // ZFIGHT_CONTROL=1 (lane R4-L #256): the second pan is a still pan again (no eviction), so `excess` reads the
+  // run-to-run repeatability of the measurement itself; `repeatPx` counts, per step, the slab pixels whose colour
+  // differs by ΔE > 20 between the first pan's frame and the second's at the same pose.
+  const swap = FRAME_MASK || process.env.ZFIGHT_ALIAS_ONLY ? { areas: still.areas.map(() => 0), fadingSteps: STEPS + 1, frames: [] } : await run(!process.env.ZFIGHT_CONTROL);
+  const repeatPx = swap.frames.length === still.frames.length ? still.frames.map((f, k) => deltaArea(f.data, swap.frames[k].data, inner)) : null;
+  if (repeatPx) console.log('swap-zfight repeat', JSON.stringify({ control: !!process.env.ZFIGHT_CONTROL, repeatPx }));
+  if (repeatPx && process.env.ZFIGHT_DUMP && repeatPx.some(n => n > 0)) {
+    // The repeat map (lane R4-L): red where a swap frame differs from the still frame at the same pose (brighter =
+    // more steps), over the mid still frame, plus a 4x crop of the box round those pixels with both mid frames beside.
+    const W = shown.width, H = shown.height, count = new Uint8Array(inner.length);
+    let x0 = W, y0 = H, x1 = 0, y1 = 0;
+    for (let k = 0; k < still.frames.length; k++) {
+      const a = still.frames[k].data, b = swap.frames[k].data;
+      for (let i = 0; i < inner.length; i++) {
+        if (!inner[i]) continue;
+        const p = i * 4, A = lab(a[p], a[p + 1], a[p + 2]), B = lab(b[p], b[p + 1], b[p + 2]);
+        if (Math.hypot(A[0] - B[0], A[1] - B[1], A[2] - B[2]) <= 20) continue;
+        count[i]++; const x = i % W, y = (i / W) | 0; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
+      }
+    }
+    const mid = Math.round(STEPS / 2), ms = still.frames[mid].data, mw = swap.frames[mid].data, map = Buffer.alloc(W * H * 3);
+    for (let i = 0; i < inner.length; i++) { const p = i * 4, g = Math.round((ms[p] + ms[p + 1] + ms[p + 2]) / 6) + (inner[i] ? 40 : 0); if (count[i]) map.set([Math.min(255, 140 + count[i] * 10), 0, 0], i * 3); else map.set([g, g, g], i * 3); }
+    mkdirSync(OUT, { recursive: true });
+    const base = `${OUT}/${info.project.name}${LABEL}-repeat`;
+    await sharp(map, { raw: { width: W, height: H, channels: 3 } }).png().toFile(`${base}-map.png`);
+    const pad = 12, box = { left: Math.max(0, x0 - pad), top: Math.max(0, y0 - pad), width: Math.min(W, x1 + pad + 1) - Math.max(0, x0 - pad), height: Math.min(H, y1 + pad + 1) - Math.max(0, y0 - pad) };
+    const crop = async (buf: Buffer, ch: 3 | 4) => sharp(buf, { raw: { width: W, height: H, channels: ch } }).extract(box).resize(box.width * 4, box.height * 4, { kernel: 'nearest' }).png().toBuffer();
+    const parts = [await crop(ms, 4), await crop(mw, 4), await crop(map, 3)];
+    await sharp({ create: { width: box.width * 4 * 3 + 16, height: box.height * 4, channels: 3, background: '#000' } })
+      .composite(parts.map((input, j) => ({ input, left: j * (box.width * 4 + 8), top: 0 }))).png().toFile(`${base}-crop.png`);
+    console.log('swap-zfight repeat box', JSON.stringify({ box, px: count.reduce((s, v) => s + (v ? 1 : 0), 0) }));
+  }
   if (process.env.ZFIGHT_OWNER && aliasCount) {
     // The owner view: the same pose with every chunk painted by its owner class, then each alias pixel's class.
     await page.goto(startUrl.replace('#', '&thinDebug=owner#'));

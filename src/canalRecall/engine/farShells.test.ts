@@ -2,7 +2,7 @@
 // Run: node --import tsx --test src/canalRecall/engine/farShells.test.ts
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cellDistanceM, farCellOrigin, farShellBudget, farShellsEnabled, FarShells, planFarCells, type FarCellData, type FarShellHost } from './farShells.js';
+import { cellDistanceM, farCellOrigin, farPartHidden, farShellBudget, farShellsEnabled, FarShells, nearTileCells, planFarCells, tileBounds, type FarCellData, type FarShellHost } from './farShells.js';
 import { CELL_GRID, cellBounds } from '../world/cellGrid.js';
 import { shellOrigin } from '../world/shellMesh.js';
 
@@ -109,4 +109,31 @@ test('FarShells: an AbortError (a dead worker) is retried; another error is not 
   console.warn = warn;
   assert.equal(calls, 3);
   assert.equal(far.stats().failed, 1);
+});
+
+test('farPartHidden (lane R4-K #255): per cell where the baked tier covers it, tile-wide (R2-B) where it does not', () => {
+  const base = { bakedDrawn: false, bakedHolds: false, coarseTile: false, nearTile: false, nearCell: false };
+  assert.equal(farPartHidden(base), false, 'nothing draws the tile: shown');
+  assert.equal(farPartHidden({ ...base, bakedDrawn: true }), true, 'a drawn baked cell hides it');
+  assert.equal(farPartHidden({ ...base, coarseTile: true }), true, 'uncovered: the tile\'s coarse chunk hides it');
+  assert.equal(farPartHidden({ ...base, nearTile: true }), true, 'uncovered: a near chunk anywhere in the tile hides it');
+  // Released (held): the tile's coarse chunk and a near chunk in another cell of the tile draw none of its buildings.
+  assert.equal(farPartHidden({ ...base, bakedHolds: true, coarseTile: true, nearTile: true }), false, 'released: shown under other cells\' chunks');
+  assert.equal(farPartHidden({ ...base, bakedHolds: true, nearTile: true, nearCell: true }), true, 'released: a near chunk inside the cell hides it');
+});
+
+test('nearTileCells: z16 detail keys grouped by z14 tile with the world cells their bounds touch', () => {
+  // The zuidas-rails-high regression (#255): four near chunks in z14 8415/5384 hid that part in six canal-belt cells.
+  const [w, s, e, n] = tileBounds(14, 8415, 5384);
+  assert.ok(w < e && s < n);
+  const z16 = '33660/21536'; // the NW z16 child of 8415/5384
+  const m = nearTileCells([z16, 'junk'], 16, 14);
+  assert.deepEqual([...m.keys()], ['8415/5384']);
+  const cells = m.get('8415/5384')!;
+  const [cw, cs, ce, cn] = tileBounds(16, 33660, 21536);
+  for (const c of cells) { const [i, j] = c.split('_').map(Number); const [bw, bs, be, bn] = cellBounds(i, j); assert.ok(bw < ce && be > cw && bs < cn && bn > cs, `${c} touches the z16 tile`); }
+  assert.ok(cells.size >= 1 && cells.size <= 4, 'a 600 m z16 tile touches at most four 1 km cells');
+  // The z14 tile touches more cells than any one of its z16 children.
+  const all = nearTileCells(['33660/21536', '33663/21539'], 16, 14).get('8415/5384')!;
+  assert.ok(all.size > cells.size);
 });

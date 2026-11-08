@@ -211,7 +211,7 @@ export class GameFreeRideRuntime {
     const requests: Array<MarkerRequest & { label: string; kind: FreeRideNearby['kind'] }> = [];
     for (const place of nearby || []) {
       const at = this.camera.worldToScreen(place.x, place.y);
-      const label = markerLabel(place.name);
+      const label = markerLabel(place.name, undefined, text => ctx.measureText(text).width);
       const width = Math.ceil(ctx.measureText(label).width) + height + 8;
       requests.push({ key: place.key, kind: place.kind, label, anchorX: at.x, anchorY: at.y, width, height });
       last.set(place.key, { x: place.x, y: place.y, label, kind: place.kind, width, height });

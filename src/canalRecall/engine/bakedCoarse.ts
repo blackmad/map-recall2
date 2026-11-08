@@ -291,6 +291,12 @@ export class BakedCoarse {
   covers(cell: string): boolean { return this.enabled && this.covered.has(cell); }
   /** Whether the cell's mesh is installed and done dissolving in (the far tier then hides its part). */
   drawn(cell: string): boolean { const r = this.residents.get(cell); return !!r && r.drawn; }
+  /**
+   * With the release on (lane R4-K #255): the cell is covered but its mesh is not drawn (released to the far tier, or
+   * still arriving / dissolving in after a return), so the far prisms stand in for it until `drawn` (farPartHidden).
+   * Always false with the release off: the far tier's tile-wide hand-over is unchanged there.
+   */
+  holdsFar(cell: string): boolean { return this.enabled && this.releaseM !== null && this.covered.has(cell) && !this.drawn(cell); }
 
   /**
    * The facade layer's resident cells (the cells of its buildings): re-plan when they change. Called from inside its
@@ -336,7 +342,9 @@ export class BakedCoarse {
     }
     this.released = next;
     if (this.ready.length) this.ready = this.ready.filter(r => !next.has(r.data.key));
-    if (back.length) this.pump(this.lastWant);
+    // A cell back from the far tier is fetched again, also one the plan only keeps (hysteresis: released cells count as
+    // held in replan, lane R4-K), which `lastWant` does not list.
+    if (back.length) { const want = new Set(this.lastWant); this.pump([...this.lastWant, ...back.filter(k => this.covered.has(k) && !want.has(k))]); }
     this.host.repaint();
   }
 
@@ -348,7 +356,7 @@ export class BakedCoarse {
     if (!anchor) return false;
     this.planAt = this.at ? [this.at[0], this.at[1]] : null;
     const available = this.host.available();
-    const { want, keep } = planBakedCells(anchor[0], anchor[1], this.wanted, available, this.budget, key => this.knownTriangles.get(key) ?? (available.get(key) ?? 0) * TRIS_PER_GZ_BYTE, this.residents.keys());
+    const { want, keep } = planBakedCells(anchor[0], anchor[1], this.wanted, available, this.budget, key => this.knownTriangles.get(key) ?? (available.get(key) ?? 0) * TRIS_PER_GZ_BYTE, [...this.residents.keys(), ...this.released]);
     for (const key of [...this.residents.keys()]) if (!keep.has(key)) this.drop(key);
     for (const [key, c] of [...this.inflight]) if (!keep.has(key)) { c.abort(); this.inflight.delete(key); }
     const covered = new Set([...keep].filter(k => !this.failed.has(k)));

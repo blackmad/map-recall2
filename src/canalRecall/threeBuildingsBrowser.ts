@@ -4,6 +4,7 @@ import { footprintTone } from './overviewTransition/basemapOverview.js';
 import { ChunkBuildQueue } from './engine/worldStreamer.js';
 import { poolWorkerUrl, sharedWorkerPool, type WorkerPool } from './engine/workerPool.js';
 import { FrameBudget } from './engine/worldStreamer.js';
+import { farPartHidden, nearTileCells } from './engine/farHandover.js';
 import { buildSpecialKits, buildSpecialBoats } from './buildingSpecialChunks.js';
 import {buildTransportedEnvelopeChunk,diagnosticEnvelopeTransport,EMPTY_ENVELOPE_TRANSPORT,type EnvelopeTransport} from './surveyedEnvelopeTransport.js';
 // Browser adapter: facade walls for the streamed city as one three.js custom
@@ -291,13 +292,13 @@ function fadeClone(source: any, value: number, under?: { value: number }): any |
   return clone;
 }
 /** What the far tier reads off the facade layer (ThreeBuildings.farShellHost). `cell`: the far cell asking (a drawn baked coarse cell hides it). */
-export type FarShellHostView = { THREE: any; scene: any; material: any; look: string; fadeMaterial(value: number): any | null; coarseDrawn(tile: string, cell?: string): boolean };
+export type FarShellHostView = { THREE: any; scene: any; material: any; look: string; fadeMaterial(value: number): any | null; coarseDrawn(tile: string, cell?: string): boolean; /** A drawn `near:` detail chunk lies in this world cell (lane R4-K: such a cell is not released to the far tier). */ nearInCell(cell: string): boolean };
 /**
  * The baked coarse tier as the facade layer sees it (engine/bakedCoarse.ts, lane R4-A #243): it is told the resident
  * buildings' cells while grouping (`plan`), answers which cells it covers (their buildings build no runtime `coarse:`
  * chunk) and which it draws (the far tier hides those cells).
  */
-export interface BakedCoarseGate { plan(cells: ReadonlySet<string>): void; covers(cell: string): boolean; drawn(cell: string): boolean; /** The GL context was lost: the meshes' CPU arrays are gone, fetch again. */ contextLost?(): void }
+export interface BakedCoarseGate { plan(cells: ReadonlySet<string>): void; covers(cell: string): boolean; drawn(cell: string): boolean; /** Covered, not drawn, release on (BakedCoarse.holdsFar, lane R4-K). */ holdsFar?(cell: string): boolean; /** The GL context was lost: the meshes' CPU arrays are gone, fetch again. */ contextLost?(): void }
 /** What the baked coarse tier reads off the facade layer (ThreeBuildings.bakedCoarseHost). */
 export type BakedCoarseHostView = { THREE: any; scene: any; material: any; look: string; layerHash: string; fadeMaterial(value: number): any | null; swapSlots(): boolean; attach(entry: BakedEntry & { applied?: Map<string, number> }): void; detach(entry: BakedEntry): void; groundBase(id: string): number | null | undefined; regroup(): void; setGate(gate: BakedCoarseGate | null): void; /** Per drawn frame (the dissolves), from the render, not the game's sync. */ setFrame(fn: (() => void) | null): void };
 const BOAT_PREFIX = 'boats:';
@@ -1342,21 +1343,37 @@ export class ThreeBuildings {
       fadeMaterial: (value: number) => fadeClone(material, value),
       // A resident tile draws its buildings as the coarse shell, or as detailed `near:` chunks of its z16 sub-tiles.
       // Baked coarse (lane R4-A #243): a far cell whose baked shell draws here hides every part of it.
-      coarseDrawn: (tile: string, cell?: string) => { if (cell !== undefined && this.bakedGate?.drawn(cell)) return true; const key = `${COARSE_PREFIX}${tile}`; return (!!this.chunks.get(key)?.mesh && !this.fading.has(key)) || this.nearDrawnIn(tile); },
+      // Lane R4-K (#255): where the baked tier covers a cell it does not draw (released from the air, or arriving after a
+      // return), the hand-over is per cell: the tile's coarse chunk holds none of its buildings, and a near chunk only
+      // its own z16 tile's, so only a near chunk inside this cell keeps the part hidden (farPartHidden).
+      coarseDrawn: (tile: string, cell?: string) => {
+        const gate = this.bakedGate, bakedDrawn = cell !== undefined && !!gate?.drawn(cell);
+        if (bakedDrawn) return true;
+        if (cell !== undefined && gate?.holdsFar?.(cell)) return farPartHidden({ bakedDrawn, bakedHolds: true, coarseTile: false, nearTile: false, nearCell: this.nearDrawnIn(tile, cell) });
+        const key = `${COARSE_PREFIX}${tile}`; return (!!this.chunks.get(key)?.mesh && !this.fading.has(key)) || this.nearDrawnIn(tile);
+      },
+      nearInCell: (cell: string) => { this.nearDrawnIn(''); return this.nearCells.has(cell); },
     };
   }
   private farHost: FarShellHostView | null = null;
   /** z14 tiles with an installed `near:` chunk, re-read at most every 200 ms (the far tier asks per part per frame). */
   private nearTilesAt = -Infinity;
-  private readonly nearTiles = new Set<string>();
-  private nearDrawnIn(tile: string): boolean {
+  private nearTiles = new Map<string, Set<string>>();
+  /** The world cells the drawn near chunks touch (lane R4-K). */
+  private readonly nearCells = new Set<string>();
+  /** A drawn near chunk in z14 tile `tile` (and, given `cell`, inside that world cell: farShells.ts nearTileCells). */
+  private nearDrawnIn(tile: string, cell?: string): boolean {
     const now = performance.now();
     if (now - this.nearTilesAt > 200) {
-      this.nearTilesAt = now; this.nearTiles.clear();
-      const shift = 2 ** (this.detailZoom - TILE_ZOOM);
-      for (const [k, c] of this.chunks) if (k.startsWith('near:') && c?.mesh) { const [x, y] = k.slice(5).split('/').map(Number); this.nearTiles.add(`${Math.floor(x / shift)}/${Math.floor(y / shift)}`); }
+      this.nearTilesAt = now;
+      const keys: string[] = [];
+      for (const [k, c] of this.chunks) if (k.startsWith('near:') && c?.mesh) keys.push(k.slice(5));
+      this.nearTiles = nearTileCells(keys, this.detailZoom, TILE_ZOOM);
+      this.nearCells.clear();
+      for (const cells of this.nearTiles.values()) for (const c of cells) this.nearCells.add(c);
     }
-    return this.nearTiles.has(tile);
+    const cells = this.nearTiles.get(tile);
+    return !!cells && (cell === undefined || cells.has(cell));
   }
 
   /** performance.now() of the first coarse shell installed with geometry, or null. */

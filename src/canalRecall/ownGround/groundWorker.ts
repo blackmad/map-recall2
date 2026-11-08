@@ -47,6 +47,9 @@ let detail: CellDetail = 'full';
 const queue = new GroundBuildQueue();
 const evictions: Array<() => void> = [];
 let running = false;
+/** When each cell's latest build request reached the worker (lane R5-A #260: the queue wait in each cell's timing). */
+const askedAt = new Map<string, number>();
+let initAt = 0;
 
 async function pump(s: GroundStore): Promise<void> {
   if (running) return;
@@ -59,11 +62,17 @@ async function pump(s: GroundStore): Promise<void> {
       if (!job) break;
       if (job.kind === 'cell') {
         try {
+          const t0 = performance.now();
           const input = await s.cellInput(job.key, job.lod, job.detail);
+          const t1 = performance.now();
           const built = buildCell(input), cell = compact ? compactCell(built) : built;
+          const t2 = performance.now();
           // The tiles of the meshes exactly as sent (compact or not): the main thread's install only wraps them.
           if (tiles > 1) cell.tiles = layerTiles(cell.layers, cellTileGrid(tiles, nearTiles, cell.lod, cell.detail), tileMin);
-          ctx.postMessage({ type: 'cell', gen: job.gen, cell, railFetch: s.railOutcomes.get(job.key) ?? 'unasked' }, [...(compact ? cellGpuTransferables(cell) : cellTransferables(cell)), ...tileTransferables(cell.tiles)]);
+          const t3 = performance.now(), asked = askedAt.get(job.key);
+          // Where a cell's time goes (lane R5-A #260): queued in the worker, data in (fetch + decode), build, tiles.
+          const timing = { waitMs: asked == null ? null : Math.round(t0 - asked), inputMs: Math.round(t1 - t0), buildMs: Math.round(t2 - t1), tileMs: Math.round(t3 - t2) };
+          ctx.postMessage({ type: 'cell', gen: job.gen, cell, railFetch: s.railOutcomes.get(job.key) ?? 'unasked', timing }, [...(compact ? cellGpuTransferables(cell) : cellTransferables(cell)), ...tileTransferables(cell.tiles)]);
         } catch (error) {
           ctx.postMessage({ type: 'error', key: job.key, gen: job.gen, message: String((error as Error)?.stack ?? error) });
         }
@@ -92,13 +101,14 @@ ctx.onmessage = event => {
     const look = isRoadLookId(msg.roadLook) ? msg.roadLook : null;
     setKerbShadowRoadLook(look);
     colours = farColours(groundPalette(msg.groundLook || 'default'), look);
-    ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells], railCells: store!.railCells.size }))
+    initAt = performance.now();
+    ready = store.init().then(() => ctx.postMessage({ type: 'ready', cells: [...store!.osmCells], railCells: store!.railCells.size, initMs: Math.round(performance.now() - initAt) }))
       .catch(error => ctx.postMessage({ type: 'error', message: `init: ${String(error?.message ?? error)}` }));
     return;
   }
   if (!store || !ready) return;
   const s = store;
-  if (msg.type === 'build') { queue.build(msg.key, msg.lod, msg.gen, msg.detail ?? detail); void pump(s); return; }
+  if (msg.type === 'build') { askedAt.set(msg.key, performance.now()); queue.build(msg.key, msg.lod, msg.gen, msg.detail ?? detail); void pump(s); return; }
   if (msg.type === 'far') { queue.requestFar(msg.key, msg.gen); void pump(s); return; }
   if (msg.type === 'order') { queue.order(msg.keys); return; }
   if (msg.type === 'evict') {

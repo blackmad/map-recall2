@@ -16,6 +16,8 @@ import { STYLE_DIMS } from '../src/canalRecall/facadeCells.ts';
 import { LARGE_TIER_OVERRIDES, largeTierArchetype, largeTierSystem } from '../src/canalRecall/largeBuildingTier.ts';
 import { BAY_STYLES } from '../src/canalRecall/bayLook.ts';
 import { shortBuildingId } from '../src/canalRecall/buildingFacts.ts';
+import { BLANK_INSTALLS, installDraws } from '../src/canalRecall/landmarks/blankInstalls.ts';
+import { BARE_SPOTS } from './large-tier/bareSpots.ts';
 
 const EXTRACT = 'public/data/extracts/amsterdam';
 const gz = (file: string) => JSON.parse(zlib.gunzipSync(fs.readFileSync(file)).toString());
@@ -85,5 +87,18 @@ for (const [id, o] of Object.entries(LARGE_TIER_OVERRIDES)) {
   assert.ok(o.source.length > 10, `${o.name}: cites its panorama`);
   if (o.style !== undefined) assert.ok(BAY_STYLES[o.archetype ?? 'modern'][o.style], `${o.name}: bay style ${o.style} exists`);
   assert.ok(!o.wallHex || /^#[0-9a-f]{6}$/.test(o.wallHex), `${o.name}: wall hex`);
+}
+// Lane R5-D (#264): the user's three flat blocks (2026-11-08) were blank installed GLBs; with the install yielding,
+// the pand's own generic feature must draw a faced wall (not a bare box) in every look.
+for (const spot of BARE_SPOTS) for (const pand of spot.pands) {
+  const id = `ordinary-${pand}`;
+  assert.ok(id in BLANK_INSTALLS && !installDraws(id, true) && installDraws(id, false), `${spot.name}: ${id} yields only with the flag on`);
+  const f = tileFeatures(spot.camera[0], spot.camera[1]).find(x => x.properties.id === `NL.IMBAG.Pand.${pand}`);
+  const g = f ?? (() => { for (const dx of [-0.01, 0, 0.01]) for (const dy of [-0.005, 0, 0.005]) { const h = tileFeatures(spot.camera[0] + dx, spot.camera[1] + dy).find(x => x.properties.id === `NL.IMBAG.Pand.${pand}`); if (h) return h; } return undefined; })();
+  assert.ok(g, `${spot.name}: pand ${pand} in the extract`);
+  for (const look of ['photo', 'procedural'] as const) {
+    const b = meshBuildingFor(g, look);
+    assert.ok(b && !b.bare, `${spot.name}: ${look} look draws the generic facade under the yielded install`);
+  }
 }
 console.log('large tier: ok');

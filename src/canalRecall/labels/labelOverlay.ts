@@ -20,6 +20,8 @@ import {
 } from './labelPlan';
 import { COVER_POLL_MS, isCoveredState } from './coveredState';
 import { labelCss, labelFont, LABEL_FADE_CSS_MS, LABEL_ROOT_CLASS, PILL_CLASS, PILL_FONT } from './labelStyle';
+import { fitPillText } from './pillText';
+import { RoadShields, roadShieldsEnabled } from './roadShields';
 import { dedupeLabelCandidates, screenDuplicateIds, type MarkedPlace } from './labelDedupe';
 
 /** The MapLibre layers this overlay replaces. */
@@ -153,11 +155,14 @@ export class LabelOverlay {
   duplicates: Array<{ name: string; keptId: string; reason: string }> = [];
   /** Candidate ids the last plan left out as a second label on screen (a marker's place, another spelling). */
   screenDuplicates: string[] = [];
+  /** Road number shields once per ref per stretch (#259; `?roadShields=0` keeps the basemap's). */
+  readonly shields: RoadShields | null;
   /** Last plan's counts, for the e2e and the debug overlay. */
   stats = { candidates: 0, inView: 0, occluded: 0, drawn: 0, budget: 0 };
 
   constructor(private readonly vm: VectorMapLike, private readonly game: () => GameLike) {
     const map: AnyMap = vm.map;
+    this.shields = roadShieldsEnabled() ? new RoadShields(map) : null;
     const container: HTMLElement = map.getContainer();
     const style = document.createElement('style');
     style.textContent = labelCss();
@@ -217,8 +222,9 @@ export class LabelOverlay {
     const map: AnyMap = this.vm.map;
     if (!map || !styleReady(map)) return;
     this.hideReplacedLayers(map);
-    if (this.syncCovered()) return;
     const now = performance.now();
+    this.shields?.frame(now);
+    if (this.syncCovered()) return;
     if (!this.job && now - this.lastPlan >= PLAN_INTERVAL_MS) {
       this.lastPlan = now;
       this.fit(map.getContainer());
@@ -420,7 +426,8 @@ export class LabelOverlay {
     el.style.opacity = '0';
     const name = document.createElement('div');
     name.className = 'n';
-    name.textContent = c.name;
+    // A pill shows whole words and an ellipsis past its cap, never a hard cut (#259).
+    name.textContent = pill ? fitPillText(c.name) : c.name;
     name.style.font = pill ? PILL_FONT : labelFont(c.cls);
     el.append(name, Object.assign(document.createElement('div'), { className: 's' }), Object.assign(document.createElement('div'), { className: 'd' }));
     this.root.appendChild(el);
