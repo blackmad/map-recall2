@@ -59,8 +59,8 @@ export function flatRoofPriorHex(id: string, year: number | null | undefined, re
  * BAKED_LID_SHADE (also the pitched-roof and shell constant) is left alone.
  */
 export const FLAT_LID_EXPOSURE = 0.89;
-/** A mapped roof colour (a tag, not a measurement) keeps its hue but moves this far toward the prior's lightness. */
-export const MAPPED_TOWARD_PRIOR = 0.5;
+/** A mapped roof colour (a tag, not a measurement) keeps its hue but moves this far toward the prior's lightness (U1: the one mapped lid, #a99b84, read +51 over the orthophoto, +14 at 0.5). */
+export const MAPPED_TOWARD_PRIOR = 0.75;
 
 export function scaleHex(hex: string, k: number): string {
   const [r, g, b] = hexToRgb(hex);
