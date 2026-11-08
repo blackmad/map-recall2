@@ -26,7 +26,7 @@ import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
 import { guardFrameHost } from './frameGuards';
 import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
-import { isTouchPointer, START_SETTLE_LEGACY_CAP_MS, startSettleCapMs, startSettleEnabled, startSettleStep, type StartSettleInput, type StartSettleStep } from './startSettle';
+import { isTouchPointer, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
@@ -1005,9 +1005,9 @@ export class OwnWorldView implements WorldViewOracles {
 
   /** Cold-start hold (startSettle.ts): on unless `?startSettle=0`. Off, nothing below runs and the hold is today's. */
   private readonly startSettleOn: boolean = startSettleEnabled(W().__canalRecallStartSettle ?? new URLSearchParams(W().location?.search ?? '').get('startSettle'));
-  private _startSettleStart: number | null = null;
-  private _startSettleDone = false;
-  private _startSettleLast: StartSettleStep | null = null;
+  private readonly _startSettle = new StartSettleHold(() => this.startSettleCapMs());
+  /** The game camera the ride will open on, handed over before the hold (holdRidePose); null once the hold ends. */
+  private _startPose: { camera: GameCamera & { projector?: unknown }; loader: LoaderFrame; canvas: HTMLCanvasElement } | null = null;
 
   /** The cold-start hold's cap for this device (startSettle.ts); today's 4 s with `?startSettle=0`. game-route.js passes it to `_waitForMapSettle`. */
   startSettleCapMs(): number {
@@ -1015,26 +1015,54 @@ export class OwnWorldView implements WorldViewOracles {
   }
 
   /** The last start-hold decision (for the measurement script), or null before the hold has asked. */
-  startSettleStatus(): StartSettleStep | null { return this._startSettleLast; }
+  startSettleStatus(): StartSettleStep | null { return this._startSettle.last; }
+
+  /** Measurement (scripts/start-settle-cold.mjs, R5-B2 #261): the own camera's pose and the start tiers judged at it. */
+  startSettleProbe(): { lng: number; lat: number; zoom: number; pitch: number; bearing: number; groundReady: boolean; groundCentre: boolean; detailCentre: [number, number] | null; detailTiles: number | null } {
+    const cam = this.cameraMap.camera, g: any = this._ownGround, tb: any = this._threeBuildings;
+    return {
+      lng: cam.lng, lat: cam.lat, zoom: cam.zoom, pitch: cam.pitch, bearing: cam.bearing,
+      groundReady: !!g?.ready, groundCentre: this.groundCentreLanded(),
+      detailCentre: tb?.rider ?? null, detailTiles: tb?.detailTiles?.size ?? null,
+    };
+  }
+
+  /** The own ground covers SETTLE_GROUND_RADIUS_M around the camera centre (true when there is no own ground). */
+  private groundCentreLanded(): boolean {
+    const cam = this.cameraMap.camera, g: any = this._ownGround;
+    if (!g) return true;
+    const [x, y] = toLocal(cam.lng, cam.lat), r = SETTLE_GROUND_RADIUS_M;
+    return !!g.ready && (!g.coversRect || !!g.coversRect(x - r, y - r, x + r, y + r));
+  }
+
+  /**
+   * The game hands over its camera before the cold-start hold (game-route.js, R5-B2 #261): the held frames then run
+   * this view's own sync with it, so the tiers load and are judged at the pose the first racing frame draws (chase
+   * centre ahead of the rider, the ride's zoom, pitch and bearing, the detail block and city rider), not at the pose
+   * aimAtWorld left. Measured: that pose differed from the racing one, so a hold that settled still popped after the
+   * reveal. Nothing with `?startSettle=0`.
+   */
+  holdRidePose(camera: GameCamera & { projector?: unknown }, loader: LoaderFrame, canvas: HTMLCanvasElement): void {
+    if (!this.startSettleOn || this._startSettle.done) return;
+    this._startPose = { camera, loader, canvas };
+  }
 
   /**
    * One-shot idle check for the cold start: busy while the camera's ground cell, buildings, far ring or baked coarse
-   * tier is still loading at the start pose. Runs settleTick while busy so the held frames fetch and build (the game's
+   * tier is still loading at the start pose. Each poll first advances the world at the ride's pose (sync with the
+   * handed-over game camera; settleTick when none was handed over), so the held frames fetch and build (the game's own
    * sync does not run under the loading screen; checkIdle polls this from the held frames). Ends at settled or the cap.
    */
   private startSettleBusy(): boolean {
-    if (this._startSettleDone) return false;
-    const now = performance.now();
-    this._startSettleStart ??= now;
-    this.settleTick();
-    const cam = this.cameraMap.camera, w = this.worldSettled(), g: any = this._ownGround;
-    const [x, y] = toLocal(cam.lng, cam.lat), r = SETTLE_GROUND_RADIUS_M;
-    const groundCentre = !g || (!!g.ready && (!g.coversRect || !!g.coversRect(x - r, y - r, x + r, y + r)));
-    const input: StartSettleInput = { groundCentre, buildings: w.buildings, far: w.far, baked: w.baked };
-    const step = startSettleStep(now - this._startSettleStart, input, this.startSettleCapMs());
-    this._startSettleLast = step;
-    if (step.done) this._startSettleDone = true;
-    return !step.done;
+    const busy = this._startSettle.poll(performance.now(), () => {
+      const p = this._startPose;
+      if (p) { this.sync(p.camera, p.loader, p.canvas); this.host.triggerRepaint(); } else this.settleTick();
+    }, () => {
+      const w = this.worldSettled();
+      return { groundCentre: this.groundCentreLanded(), buildings: w.buildings, far: w.far, baked: w.baked };
+    });
+    if (!busy) this._startPose = null;
+    return busy;
   }
 
   /** Every streaming tier landed for the current view: ground, city tiles, facades, far and baked coarse (dissolves included). */

@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   START_SETTLE_CAP_DESKTOP_MS, START_SETTLE_CAP_TOUCH_MS, START_SETTLE_TIERS,
-  isTouchPointer, startSettleCapMs, startSettleEnabled, startSettlePending, startSettleStep,
+  StartSettleHold, isTouchPointer, startSettleCapMs, startSettleEnabled, startSettlePending, startSettleStep,
 } from './startSettle';
 
 const ALL = { groundCentre: true, buildings: true, far: true, baked: true };
@@ -71,4 +71,33 @@ test('the touch cap ends a stuck hold at 4 s, the desktop cap at 6 s', () => {
   assert.equal(startSettleStep(4000, stuck, startSettleCapMs(true)).reason, 'cap');
   assert.equal(startSettleStep(5999, stuck, startSettleCapMs(false)).done, false);
   assert.equal(startSettleStep(6000, stuck, startSettleCapMs(false)).reason, 'cap');
+});
+
+test('the hold advances the world at the ride pose on every poll before judging, and only while waiting', () => {
+  const hold = new StartSettleHold(() => 6000);
+  const calls: string[] = [];
+  let landed = false;
+  const advance = () => { calls.push('advance'); };
+  const judge = () => { calls.push('judge'); return landed ? ALL : { ...ALL, buildings: false }; };
+  assert.equal(hold.poll(1000, advance, judge), true);
+  assert.equal(hold.poll(1100, advance, judge), true);
+  assert.deepEqual(calls, ['advance', 'judge', 'advance', 'judge']);
+  assert.deepEqual(hold.last?.pending, ['buildings']);
+  landed = true;
+  assert.equal(hold.poll(1200, advance, judge), false);
+  assert.equal(hold.last?.reason, 'settled');
+  assert.equal(hold.done, true);
+  // Latched: no more advancing or judging once the hold has ended (the racing frames own the world from here).
+  assert.equal(hold.poll(1300, advance, judge), false);
+  assert.equal(calls.length, 6);
+});
+
+test('the hold ends at the cap, timed from its first poll, whatever is pending', () => {
+  const hold = new StartSettleHold(() => 4000);
+  const pending = () => ({ groundCentre: false });
+  assert.equal(hold.poll(500, () => {}, pending), true);
+  assert.equal(hold.poll(4499, () => {}, pending), true);
+  assert.equal(hold.poll(4500, () => {}, pending), false);
+  assert.equal(hold.last?.reason, 'cap');
+  assert.deepEqual(hold.last?.pending, ['groundCentre', 'buildings', 'far', 'baked']);
 });

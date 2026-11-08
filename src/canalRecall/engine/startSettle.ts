@@ -62,3 +62,26 @@ export function startSettleStep(elapsedMs: number, input: StartSettleInput, capM
   if (elapsedMs >= capMs) return { done: true, reason: 'cap', pending };
   return { done: false, reason: 'waiting', pending };
 }
+
+/**
+ * The hold's poll loop (R5-B2, #261), pure so it is testable: each poll first advances the world at the pose the
+ * ride will use (`advance`: the own view's sync with the game camera once the game has handed it over, else
+ * settleTick at the camera as aimed), then judges the tiers there. Latches once done; later polls do nothing.
+ */
+export class StartSettleHold {
+  private start: number | null = null;
+  private finished = false;
+  last: StartSettleStep | null = null;
+  constructor(private readonly capMs: () => number) {}
+  get done(): boolean { return this.finished; }
+  /** True while the hold should keep the loading screen up. */
+  poll(now: number, advance: () => void, judge: () => StartSettleInput): boolean {
+    if (this.finished) return false;
+    this.start ??= now;
+    advance();
+    const step = startSettleStep(now - this.start, judge(), this.capMs());
+    this.last = step;
+    if (step.done) this.finished = true;
+    return !step.done;
+  }
+}
