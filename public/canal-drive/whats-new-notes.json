@@ -2,6 +2,22 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-09",
+      "title": "Clean tunnel mouths under the Prins Hendrikkade",
+      "text": "The IJ-tunnel's mouths under the Prins Hendrikkade junction are clean: no more pale paving sheets hanging into the mouths, and the street over the tunnel no longer sags beside the ramps' cycle path. The height model had dropped the covered junction by two metres, so the mouth tops sat in a dip and the ground beyond them draped into the trenches; the mouths now rise to the street and the ground is cut at their faces.",
+      "where": [
+        4.9108,
+        52.3722
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-09-ramp-sides/strip-ortho-before-after.jpg",
+          "alt": "The Rapenburg junction, the tunnel mouths and the IJ-ramp walls: the aerial photograph, before and after",
+          "caption": "Orthophoto | before | after at three poses."
+        }
+      ]
+    },
+    {
       "date": "2026-11-08",
       "title": "A smoother start",
       "text": "When the loading screen lifts, the view no longer slides down into place over the first quarter second, and the big landmarks next to where your ride begins (the Rijksmuseum at Museumplein, Centraal Station) are already in place instead of popping in a moment later. The first frame you see is the frame the ride starts from. Measured on a Mac the largest change in any frame after the reveal fell from 7-13 % of the picture to under 1 %, at a cost of about a tenth of a second before the ride starts.",
