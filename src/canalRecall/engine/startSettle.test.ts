@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  START_SETTLE_CAP_DESKTOP_MS, START_SETTLE_CAP_TOUCH_MS, START_SETTLE_TIERS,
+  START_SETTLE_CAP_DESKTOP_MS, START_SETTLE_CAP_TOUCH_MS, START_SETTLE_GATES, START_SETTLE_TIERS, startSettleGates,
   StartSettleHold, isTouchPointer, startSettleCoveredFrameMs, startSettleCapMs, startSettleEnabled, startSettlePending, startSettleStep,
 } from './startSettle';
 
@@ -34,12 +34,19 @@ test('touch comes from (pointer: coarse), and no matchMedia counts as fine', () 
   assert.equal(isTouchPointer({ matchMedia: () => { throw new Error('no'); } }), false);
 });
 
-test('the gating tiers are the camera cell, buildings, far and baked; a missing tier is pending', () => {
+test('the default gates are buildings, far and baked; a missing gated tier is pending; the ground cell gates only when asked', () => {
   assert.deepEqual([...START_SETTLE_TIERS], ['groundCentre', 'buildings', 'far', 'baked']);
+  assert.deepEqual([...START_SETTLE_GATES], ['buildings', 'far', 'baked']);
   assert.deepEqual(startSettlePending(ALL), []);
-  assert.deepEqual(startSettlePending({}), ['groundCentre', 'buildings', 'far', 'baked']);
+  assert.deepEqual(startSettlePending({}), ['buildings', 'far', 'baked']);
   assert.deepEqual(startSettlePending({ ...ALL, far: false }), ['far']);
-  assert.deepEqual(startSettlePending({ ...ALL, groundCentre: false, baked: false }), ['groundCentre', 'baked']);
+  assert.deepEqual(startSettlePending({ ...ALL, groundCentre: false, baked: false }), ['baked']);
+  assert.deepEqual(startSettlePending({ ...ALL, groundCentre: false, baked: false }, START_SETTLE_TIERS), ['groundCentre', 'baked']);
+  assert.deepEqual(startSettleGates(undefined), START_SETTLE_GATES);
+  assert.deepEqual(startSettleGates('0'), START_SETTLE_GATES);
+  assert.deepEqual(startSettleGates('1'), START_SETTLE_TIERS);
+  assert.equal(startSettleStep(100, { ...ALL, groundCentre: false }, 6000).reason, 'settled');
+  assert.equal(startSettleStep(100, { ...ALL, groundCentre: false }, 6000, START_SETTLE_TIERS).reason, 'waiting');
 });
 
 test('settled before the cap ends the hold at once', () => {
@@ -66,7 +73,7 @@ test('settling exactly at the cap is settled, not cap', () => {
 });
 
 test('the touch cap ends a stuck hold at 4 s, the desktop cap at 6 s', () => {
-  const stuck = { groundCentre: false };
+  const stuck = { buildings: false };
   assert.equal(startSettleStep(3999, stuck, startSettleCapMs(true)).done, false);
   assert.equal(startSettleStep(4000, stuck, startSettleCapMs(true)).reason, 'cap');
   assert.equal(startSettleStep(5999, stuck, startSettleCapMs(false)).done, false);
@@ -95,11 +102,12 @@ test('the hold advances the world at the ride pose on every poll before judging,
 test('the hold ends at the cap, timed from its first poll, whatever is pending', () => {
   const hold = new StartSettleHold(() => 4000);
   const pending = () => ({ groundCentre: false });
+  // Nothing reported landed: every default gate is pending.
   assert.equal(hold.poll(500, () => {}, pending), true);
   assert.equal(hold.poll(4499, () => {}, pending), true);
   assert.equal(hold.poll(4500, () => {}, pending), false);
   assert.equal(hold.last?.reason, 'cap');
-  assert.deepEqual(hold.last?.pending, ['groundCentre', 'buildings', 'far', 'baked']);
+  assert.deepEqual(hold.last?.pending, ['buildings', 'far', 'baked']);
 });
 
 test('the held frames render faster than the 1 Hz covered pace while the hold is armed, slower on touch', () => {

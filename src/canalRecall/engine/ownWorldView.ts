@@ -26,7 +26,7 @@ import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
 import { guardFrameHost } from './frameGuards';
 import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
-import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
+import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleGates, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
@@ -1008,7 +1008,7 @@ export class OwnWorldView implements WorldViewOracles {
 
   /** Cold-start hold (startSettle.ts): on unless `?startSettle=0`. Off, nothing below runs and the hold is today's. */
   private readonly startSettleOn: boolean = startSettleEnabled(W().__canalRecallStartSettle ?? new URLSearchParams(W().location?.search ?? '').get('startSettle'));
-  private readonly _startSettle = new StartSettleHold(() => this.startSettleCapMs());
+  private readonly _startSettle = new StartSettleHold(() => this.startSettleCapMs(), startSettleGates(W().__canalRecallStartSettleGround ?? new URLSearchParams(W().location?.search ?? '').get('startSettleGround')));
   /** The game camera the ride will open on, handed over before the hold (holdRidePose); null once the hold ends. */
   private _startPose: { camera: GameCamera & { projector?: unknown }; loader: LoaderFrame; canvas: HTMLCanvasElement } | null = null;
 
@@ -1070,8 +1070,8 @@ export class OwnWorldView implements WorldViewOracles {
   }
 
   /**
-   * One-shot idle check for the cold start: busy while the camera's ground cell, buildings, far ring or baked coarse
-   * tier is still loading at the start pose; idle until holdRidePose arms it. Each poll first advances the world at the ride's pose (sync with the
+   * One-shot idle check for the cold start: busy while the buildings, far ring or baked coarse tier (and with
+   * `?startSettleGround=1` the ground's camera cell) is still loading at the start pose; idle until holdRidePose arms it. Each poll first advances the world at the ride's pose (sync with the
    * handed-over game camera), so the held frames fetch and build (the game's own
    * sync does not run under the loading screen; checkIdle polls this from the held frames). Ends at settled or the cap.
    */

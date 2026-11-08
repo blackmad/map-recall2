@@ -8,7 +8,8 @@
 // block 22 m ahead), so buildings and baked went pending at the reveal. R5-B2: the check is armed only by
 // holdRidePose (an always-armed check was polled by every whenIdle/pendingWork caller from page load and latched done
 // before the hold began), the held frames run the view's sync with the game camera, and the covered world renders at
-// 10 Hz (4 Hz touch) while armed because the ground installs one cell per rendered frame.
+// 10 Hz (4 Hz touch) while armed because the ground installs one cell per rendered frame. The ground's camera cell is
+// reported but not gated by default (START_SETTLE_GATES): its cold build outlasts any cap.
 
 /** Cap on a desktop (pointer: fine) cold start, ms. */
 export const START_SETTLE_CAP_DESKTOP_MS = 6000;
@@ -31,9 +32,21 @@ export const START_SETTLE_LEGACY_CAP_MS = 4000;
 /** The start hold's ground: the cell under the camera centre only (a zero box), not settle.ts's 300 m box. */
 export const START_SETTLE_GROUND_RADIUS_M = 0;
 
-/** The tiers the hold waits on, in the order the pending list reports them. */
+/** The tiers the hold can judge, in the order the pending list reports them. */
 export const START_SETTLE_TIERS = ['groundCentre', 'buildings', 'far', 'baked'] as const;
 export type StartSettleTier = typeof START_SETTLE_TIERS[number];
+
+/**
+ * The tiers the hold waits on by default: buildings, far and baked. Not the ground's camera cell: on a cold desktop
+ * start the ground workers had built no cell by the 6 s cap in 5/5 runs (worker ready at ~3 s, the first cells land
+ * ~1.5 s after the reveal whatever the hold does; R5-B2 #261), so gating on it held every start to the cap and still
+ * revealed without it. `?startSettleGround=1` gates on it too (startSettleGates).
+ */
+export const START_SETTLE_GATES: readonly StartSettleTier[] = ['buildings', 'far', 'baked'];
+/** The gates for `?startSettleGround`: '1' adds the ground's camera cell. */
+export function startSettleGates(askedGround: unknown): readonly StartSettleTier[] {
+  return askedGround === true || askedGround === 1 || askedGround === '1' || askedGround === 'true' || askedGround === 'on' ? START_SETTLE_TIERS : START_SETTLE_GATES;
+}
 
 /** Each tier's state at the start pose: true when that tier has landed for the view. */
 export type StartSettleInput = Partial<Record<StartSettleTier, boolean>>;
@@ -56,9 +69,9 @@ export function isTouchPointer(w: { matchMedia?: (q: string) => { matches: boole
   return touch;
 }
 
-/** Tiers still loading: a tier that is not reported as landed counts as pending. Order follows START_SETTLE_TIERS. */
-export function startSettlePending(input: StartSettleInput): StartSettleTier[] {
-  return START_SETTLE_TIERS.filter(t => input[t] !== true);
+/** Gated tiers still loading: a tier that is not reported as landed counts as pending. Order follows START_SETTLE_TIERS. */
+export function startSettlePending(input: StartSettleInput, gates: readonly StartSettleTier[] = START_SETTLE_GATES): StartSettleTier[] {
+  return START_SETTLE_TIERS.filter(t => gates.includes(t) && input[t] !== true);
 }
 
 export interface StartSettleStep {
@@ -73,8 +86,8 @@ export interface StartSettleStep {
  * One scheduler step: given the time since the hold began, the tiers still pending and the cap, decide whether the
  * hold ends. Settled before the cap ends it at once; at the cap it ends whatever is pending.
  */
-export function startSettleStep(elapsedMs: number, input: StartSettleInput, capMs: number): StartSettleStep {
-  const pending = startSettlePending(input);
+export function startSettleStep(elapsedMs: number, input: StartSettleInput, capMs: number, gates: readonly StartSettleTier[] = START_SETTLE_GATES): StartSettleStep {
+  const pending = startSettlePending(input, gates);
   if (pending.length === 0) return { done: true, reason: 'settled', pending };
   if (elapsedMs >= capMs) return { done: true, reason: 'cap', pending };
   return { done: false, reason: 'waiting', pending };
@@ -89,14 +102,14 @@ export class StartSettleHold {
   private start: number | null = null;
   private finished = false;
   last: StartSettleStep | null = null;
-  constructor(private readonly capMs: () => number) {}
+  constructor(private readonly capMs: () => number, private readonly gates: readonly StartSettleTier[] = START_SETTLE_GATES) {}
   get done(): boolean { return this.finished; }
   /** True while the hold should keep the loading screen up. */
   poll(now: number, advance: () => void, judge: () => StartSettleInput): boolean {
     if (this.finished) return false;
     this.start ??= now;
     advance();
-    const step = startSettleStep(now - this.start, judge(), this.capMs());
+    const step = startSettleStep(now - this.start, judge(), this.capMs(), this.gates);
     this.last = step;
     if (step.done) this.finished = true;
     return !step.done;
