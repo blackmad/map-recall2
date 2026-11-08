@@ -157,3 +157,47 @@ test('bakeChunkLod2: a real chunk at <= 1,500 triangles, every primitive ranged,
   }
   assert.ok(inside / faces.facePands.length > 0.97, `${inside}/${faces.facePands.length} faces inside their pand`);
 });
+
+test('ordinary installs (R4-H): lodTable carries ordinary rows over a landmark rebuild, the manifest wins on a clash', async () => {
+  const { lodTable } = await import('./build-landmark-lods');
+  const row = { sourceHash: 'f'.repeat(64), buildVersion: 1, bytes: 9, triangles: 3, texelsPerMetre: 4, ordinary: true as const };
+  const kept = { 'ordinary-1': row, 'gone-landmark': { sourceHash: 'x', buildVersion: 2, bytes: 1, triangles: 1 }, both: row };
+  const table = lodTable({ models: { both: { lod2: { sourceHash: 'b', buildVersion: LOD2_BUILD_VERSION, bytes: 3, triangles: 1 } } } }, kept);
+  assert.deepEqual(table['ordinary-1'], row);
+  assert.ok(!('gone-landmark' in table), 'only ordinary rows are carried');
+  assert.equal(table.both.sourceHash, undefined, 'a manifest model keeps its own row');
+});
+
+test('ordinary installs (R4-H): area-weighted colour clusters, deterministic, at most k', async () => {
+  const { clusterColours } = await import('./build-landmark-lods');
+  // Two big brick faces, one small white frame, one dark window band.
+  const colours = [0.3, 0.1, 0.05, 0.31, 0.1, 0.05, 0.9, 0.9, 0.9, 0.02, 0.02, 0.03];
+  const areas = [10, 12, 0.5, 3];
+  const a = clusterColours(colours, areas, 3), b = clusterColours(colours, areas, 3);
+  assert.deepEqual(a, b);
+  assert.equal(a.centres.length, 3);
+  assert.equal(a.cluster[0], a.cluster[1], 'the brick faces share a colour');
+  assert.notEqual(a.cluster[2], a.cluster[3]);
+  assert.equal(clusterColours(colours, areas, 1).centres.length, 1);
+  // One colour only: no empty extra clusters.
+  assert.equal(clusterColours([0.5, 0.5, 0.5, 0.5, 0.5, 0.5], [1, 1], 4).centres.length, 1);
+});
+
+test('ordinary installs (R4-H): sparse texel density reads the least detailed 5 % of the textured area', async () => {
+  const { sparseTexelsPerMetre, largestImagePx } = await import('./build-landmark-lods');
+  const doc = new Document(), buffer = doc.createBuffer();
+  // A 1 x 1 PNG header is enough for getSize: build one by hand (IHDR width/height at bytes 16..24).
+  const png = (w: number, h: number) => { const b = new Uint8Array(33); b.set([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 13, 0x49, 0x48, 0x44, 0x52]); new DataView(b.buffer).setUint32(16, w); new DataView(b.buffer).setUint32(20, h); return b; };
+  const texture = doc.createTexture().setImage(png(512, 64)).setMimeType('image/png');
+  const material = doc.createMaterial().setBaseColorTexture(texture);
+  // Quad A: 10 m x 10 m wall mapped to u 0..0.5, v 0..1 -> 256 x 64 texels over 100 m2 -> sqrt(163.84) = 12.8 texels/m.
+  // Quad B: 1 m x 1 m mapped to the other half -> 256 x 64 over 1 m2 -> 128 texels/m (dense, 1 % of the area).
+  const quad = (x0: number, s: number, u0: number) => doc.createPrimitive().setMaterial(material)
+    .setAttribute('POSITION', doc.createAccessor().setType('VEC3').setBuffer(buffer).setArray(new Float32Array([x0, 0, 0, x0 + s, 0, 0, x0 + s, s, 0, x0, s, 0])))
+    .setAttribute('TEXCOORD_0', doc.createAccessor().setType('VEC2').setBuffer(buffer).setArray(new Float32Array([u0, 1, u0 + 0.5, 1, u0 + 0.5, 0, u0, 0])))
+    .setIndices(doc.createAccessor().setType('SCALAR').setBuffer(buffer).setArray(new Uint16Array([0, 1, 2, 0, 2, 3])));
+  doc.createScene().addChild(doc.createNode().setMesh(doc.createMesh().addPrimitive(quad(0, 10, 0)).addPrimitive(quad(20, 1, 0.5))));
+  assert.equal(largestImagePx(doc), 512);
+  assert.ok(Math.abs(sparseTexelsPerMetre(doc)! - 12.8) < 1e-6, `${sparseTexelsPerMetre(doc)}`);
+  assert.equal(sparseTexelsPerMetre(new Document()), null);
+});

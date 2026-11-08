@@ -124,3 +124,38 @@ test('projectedRadiusPx (lane R4-C): perspective size halves with distance, null
   assert.ok(Math.abs(near / far - 2) < 0.02);
   assert.equal(projectedRadiusPx(clip, [0, 0, 500], 20, 1500, 1000), null);
 });
+
+test('ordinary installs (R4-H): lod1 boundary from the atlas density, own build versions, street views full', async () => {
+  const { ORDINARY_LOD1_BUILD_VERSION, ORDINARY_LOD1_TEXELS_PER_DEVICE_PX, ORDINARY_LOD2_BUILD_VERSION, chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, ordinaryLod1DowngradePx } = await import('./landmarkLod');
+  // 20 m radius, 4 texels/m: one texel per 1.5 device px at 2x is 4 / (1.5 * 2) px per metre -> 26.7 px radius.
+  const down = ordinaryLod1DowngradePx(20, 4, 2);
+  assert.ok(Math.abs(down - 20 * 4 / (ORDINARY_LOD1_TEXELS_PER_DEVICE_PX * 2)) < 1e-9);
+  assert.equal(ordinaryLod1DowngradePx(20, 0, 2), 0, 'no density: never lod1');
+  assert.equal(ordinaryLod1DowngradePx(20, 4, 0.5), ordinaryLod1DowngradePx(20, 4, 1), 'dpr under 1 counts as 1');
+  const base = { hasLod1: true, hasLod2: true, aerialDistanceM: null, lod2DowngradePx: 12, lod1DowngradePx: down };
+  assert.equal(chooseLandmarkLevel('full', { ...base, radiusPixels: down + 1 }), 'full');
+  assert.equal(chooseLandmarkLevel('full', { ...base, radiusPixels: down - 1 }), 'lod1');
+  assert.equal(chooseLandmarkLevel('lod1', { ...base, radiusPixels: down * 1.4 }), 'lod1', 'hysteresis up to 1.5x');
+  assert.equal(chooseLandmarkLevel('lod1', { ...base, radiusPixels: down * 1.6 }), 'full');
+  assert.equal(chooseLandmarkLevel('lod1', { ...base, radiusPixels: 8 }), 'lod2');
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, radiusPixels: down * 1.4 }), 'lod1', 'leaving lod2 takes the no-history rule with the ordinary upgrade');
+  assert.equal(chooseLandmarkLevel('lod2', { ...base, radiusPixels: down * 1.6 }), 'full');
+  assert.equal(initialLandmarkLevel({ ...base, radiusPixels: Infinity }), 'full', 'street views pass Infinity');
+  // Without lod1DowngradePx the landmark thresholds hold (curated landmarks unchanged).
+  assert.equal(chooseLandmarkLevel('full', { hasLod1: true, hasLod2: false, aerialDistanceM: null, radiusPixels: LOD_DOWNGRADE_RADIUS_PX - 1 }), 'lod1');
+  assert.equal(chooseLandmarkLevel('lod1', { hasLod1: true, hasLod2: false, aerialDistanceM: null, radiusPixels: LOD_UPGRADE_RADIUS_PX + 1 }), 'full');
+  // Records: the ordinary flag picks the ordinary build version; the hash is the catalogue sha256.
+  const sha = 'f'.repeat(64);
+  assert.ok(lod1IsCurrent({ sourceHash: sha, buildVersion: ORDINARY_LOD1_BUILD_VERSION, bytes: 1, triangles: 1, ordinary: true }, sha));
+  assert.equal(lod1IsCurrent({ sourceHash: sha, buildVersion: ORDINARY_LOD1_BUILD_VERSION + 1, bytes: 1, triangles: 1, ordinary: true }, sha), false);
+  assert.ok(lod2IsCurrent({ sourceHash: sha, buildVersion: ORDINARY_LOD2_BUILD_VERSION, bytes: 1, triangles: 1, ordinary: true }, sha));
+  assert.ok(lod1IsCurrent({ sourceHash: 'a', buildVersion: LOD1_BUILD_VERSION, bytes: 1, triangles: 1 }, 'a'), 'landmark records keep their version');
+});
+
+test('ordinary installs (R4-H): the nearest point of the footprint sphere is larger on screen than its centre', async () => {
+  const { nearestRadiusPx } = await import('./landmarkLod');
+  // r = 20 m at d = 1000 m, f = 1500 px: centre 30 px; nearest point at 980 m: 30.61 px.
+  assert.ok(Math.abs(nearestRadiusPx(30, 1500) - 20 * 1500 / 980) < 1e-9);
+  assert.equal(nearestRadiusPx(1500, 1500), Infinity, 'the sphere reaches the camera');
+  assert.ok(nearestRadiusPx(1, 1500) - 1 < 0.001, 'far off: the same');
+});

@@ -5,19 +5,27 @@
 // keep the lod2 set under LOD2_MAX_TOTAL_BYTES.
 // Street chunks (lane R4-C #245): every chunks.json row's `lod2` must be current for its GLB's sha256, have its file at
 // the recorded size, stay under the triangle cap, and the chunk lod2 set under CHUNK_LOD2_MAX_TOTAL_BYTES.
-// Fix with `npm run build:landmark-lods` (chunks: `-- --chunks`).
+// Ordinary installs (lane R4-H #252): every modelLods.json row marked `ordinary` must be current for its catalogue GLB's
+// sha256 and have its lod1/lod2 files at the recorded sizes, and every drawn own-GLB install whose largest embedded image
+// is over ORDINARY_LOD1_MIN_ATLAS_PX must have one (the image sizes are read from the GLB's PNG headers).
+// Fix with `npm run build:landmark-lods` (chunks: `-- --chunks`, ordinary installs: `-- --ordinary`).
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 
+import catalogue from '../../public/canal-drive/ordinary-buildings-data/catalogue.json';
 import versions from '../../src/canalRecall/landmarks/modelAssetVersions.json';
+import { SHADOWED_BY_LANDMARK } from '../../src/canalRecall/landmarks/ordinaryModels';
 import lods from '../../src/canalRecall/landmarks/modelLods.json';
 import {
+  ORDINARY_LOD1_MIN_ATLAS_PX, lod1Url,
   CHUNK_LOD2_BUILD_VERSION, chunkLod2IsCurrent, LOD2_MAX_TRIANGLES, lod2Url, LOD1_BUILD_VERSION, LOD1_MIN_SOURCE_TRIANGLES, LOD2_BUILD_VERSION, lod1IsCurrent, lod2IsCurrent,
   type LandmarkLodEntry, type LandmarkLodRecord,
 } from '../../src/canalRecall/landmarks/landmarkLod';
 
 /** The brief's budget for every lod2 together (the aerial set is fetched on top of lod1/full). */
 const LOD2_MAX_TOTAL_BYTES = 6e6;
+/** Lane R4-H (#252): the ordinary installs' lod1 + lod2 together (27 models; lod1 at 1024 px). */
+const ORDINARY_LOD_MAX_TOTAL_BYTES = 8e6;
 /** Lane R4-C (#245): the chunk stand-ins together (142 chunks, 5.34 MB at the cap; the full chunks are ~84 MB). */
 const CHUNK_LOD2_MAX_TOTAL_BYTES = 6e6;
 
@@ -25,7 +33,39 @@ const manifest = JSON.parse(fs.readFileSync('public/canal-drive/models/signature
 const table = lods as Record<string, LandmarkLodEntry>, asset = versions as Record<string, string>;
 const problems: string[] = [];
 let lod1Count = 0, lod2Count = 0, lod2Bytes = 0;
+type CatalogueRow = { id: string; modelUrl: string; hash: string; instance?: unknown };
+const ordinaryRows = new Map((catalogue as unknown as { models: CatalogueRow[] }).models.map(m => [m.id, m]));
+/** Longest side of the largest PNG/JPEG-less image embedded in a GLB (PNG IHDR), without decoding the GLB. */
+function largestEmbeddedPng(file: string): number {
+  const glb = fs.readFileSync(file), jsonLength = glb.readUInt32LE(12), json = JSON.parse(glb.subarray(20, 20 + jsonLength).toString('utf8'));
+  const bin = 20 + jsonLength + 8;
+  let best = 0;
+  for (const image of json.images ?? []) {
+    const view = json.bufferViews?.[image.bufferView];
+    if (!view) continue;
+    const at = bin + (view.byteOffset ?? 0);
+    if (glb.readUInt32BE(at) !== 0x89504e47) continue;
+    best = Math.max(best, glb.readUInt32BE(at + 16), glb.readUInt32BE(at + 20));
+  }
+  return best;
+}
+let ordinaryCount = 0, ordinaryBytes = 0;
 for (const [id, entry] of Object.entries(table)) {
+  if (entry.ordinary || entry.lod2?.ordinary) {
+    const row = ordinaryRows.get(id);
+    if (!row) { problems.push(`${id}: ordinary lod row without a catalogue model`); continue; }
+    ordinaryCount++;
+    const file = `public/canal-drive/${row.modelUrl.replace(/^\.\//, '').split('?')[0]}`;
+    for (const [level, record, url] of [['lod1', entry, lod1Url(file)], ['lod2', entry.lod2, lod2Url(file)]] as const) {
+      if (!record?.sourceHash) { problems.push(`${id}: ordinary ${level} record missing`); continue; }
+      ordinaryBytes += record.bytes ?? 0;
+      const current = level === 'lod1' ? lod1IsCurrent(record as LandmarkLodRecord, row.hash) : lod2IsCurrent(record as LandmarkLodRecord, row.hash);
+      if (!current) problems.push(`${id}: ordinary ${level} built from ${record.sourceHash.slice(0, 16)} (v${record.buildVersion}), catalogue GLB is ${row.hash.slice(0, 16)}`);
+      if (!fs.existsSync(url)) problems.push(`${id}: ${url} missing`);
+      else if (fs.statSync(url).size !== record.bytes) problems.push(`${id}: ${url} is ${fs.statSync(url).size} B, record says ${record.bytes}`);
+    }
+    continue;
+  }
   if ('sourceHash' in entry && entry.sourceHash) {
     lod1Count++;
     if (!lod1IsCurrent(entry as LandmarkLodRecord, asset[id])) problems.push(`${id}: lod1 built from ${entry.sourceHash} (v${entry.buildVersion}), GLB is ${asset[id]} (lod build v${LOD1_BUILD_VERSION})`);
@@ -47,6 +87,14 @@ for (const [id, model] of Object.entries(manifest.models)) {
   if (model.lod1 && row?.sourceHash && model.lod1.sourceHash !== row.sourceHash) problems.push(`${id}: manifest lod1 and modelLods.json disagree`);
   if ((model.lod2?.sourceHash ?? null) !== (row?.lod2?.sourceHash ?? null)) problems.push(`${id}: manifest lod2 and modelLods.json disagree`);
 }
+for (const row of ordinaryRows.values()) {
+  if (row.instance || SHADOWED_BY_LANDMARK[row.id]) continue;
+  const file = `public/canal-drive/${row.modelUrl.replace(/^\.\//, '').split('?')[0]}`;
+  if (!fs.existsSync(file)) continue;
+  const atlas = largestEmbeddedPng(file);
+  if (atlas > ORDINARY_LOD1_MIN_ATLAS_PX && !table[row.id]?.ordinary) problems.push(`${row.id}: ${atlas} px atlas but no ordinary lod1 (npm run build:landmark-lods -- --ordinary)`);
+}
+if (ordinaryBytes > ORDINARY_LOD_MAX_TOTAL_BYTES) problems.push(`ordinary lod set is ${(ordinaryBytes / 1e6).toFixed(2)} MB, over the ${ORDINARY_LOD_MAX_TOTAL_BYTES / 1e6} MB budget`);
 const chunks = JSON.parse(fs.readFileSync('public/canal-drive/ordinary-buildings-data/chunks.json', 'utf8')) as { chunks: { id: string; modelUrl: string; sha256: string; lod2?: LandmarkLodRecord }[] };
 let chunkCount = 0, chunkBytes = 0;
 for (const chunk of chunks.chunks) {
@@ -61,4 +109,4 @@ for (const chunk of chunks.chunks) {
 if (chunkBytes > CHUNK_LOD2_MAX_TOTAL_BYTES) problems.push(`chunk lod2 set is ${(chunkBytes / 1e6).toFixed(2)} MB, over the ${CHUNK_LOD2_MAX_TOTAL_BYTES / 1e6} MB budget`);
 if (lod2Bytes > LOD2_MAX_TOTAL_BYTES) problems.push(`lod2 set is ${(lod2Bytes / 1e6).toFixed(2)} MB, over the ${LOD2_MAX_TOTAL_BYTES / 1e6} MB budget`);
 assert.equal(problems.length, 0, `landmark lods out of date (run npm run build:landmark-lods):\n${problems.join('\n')}`);
-console.log(`${lod1Count} landmark lod1 models current; ${lod2Count} lod2 models current, ${(lod2Bytes / 1e6).toFixed(2)} MB; ${chunkCount} street-chunk lod2 current, ${(chunkBytes / 1e6).toFixed(2)} MB.`);
+console.log(`${lod1Count} landmark lod1 models current; ${lod2Count} lod2 models current, ${(lod2Bytes / 1e6).toFixed(2)} MB; ${chunkCount} street-chunk lod2 current, ${(chunkBytes / 1e6).toFixed(2)} MB; ${ordinaryCount} ordinary installs' lod1 + lod2 current, ${(ordinaryBytes / 1e6).toFixed(2)} MB.`);

@@ -52,6 +52,58 @@ export interface LandmarkLodRecord {
   buildVersion: number;
   bytes: number;
   triangles: number;
+  /**
+   * Ordinary installs' lod1 only (lane R4-H #252): texels per metre of the lod1's resized atlas over the sparsest
+   * 5 % of the textured area. Its presence puts the model on the ordinary level rule (ordinaryLod1DowngradePx).
+   */
+  texelsPerMetre?: number;
+  /** An ordinary install's record (lane R4-H): versioned by ORDINARY_LOD1/LOD2_BUILD_VERSION, `sourceHash` is the catalogue sha256. */
+  ordinary?: true;
+}
+
+/**
+ * Ordinary-building installs (lane R4-H #252, catalogue `models/ordinary-buildings/<pand>.glb`): their cost is the
+ * embedded facade atlas (2048 x 256-1792 PNG), not triangles. A model whose largest embedded image is wider than
+ * ORDINARY_LOD1_MIN_ATLAS_PX gets a lod1 with every image shrunk to ORDINARY_LOD1_MAX_TEXTURE_SIZE and every triangle
+ * kept. 1024, not the brief's 512 (lane R4-H measured both): the atlases are coarser than assumed (2-6 texels per metre
+ * over the sparsest 5 % at 512, not ~25), so a 512 lod1 is only as sharp as the screen from ~1 km and the pans' peak
+ * (the camera crossing the canal ring, the installs 300-700 m off) kept 11 of 16 at full (-20 MB); at 1024 the lod1 is
+ * the full atlas's own mip 1, used where the GPU already samples mip 1 or coarser. Triangles kept: the 15 % simplifier
+ * dropped the roof railings and mullion bars visibly in the distance strip, and the triangles cost ~nothing here.
+ */
+export const ORDINARY_LOD1_MAX_TEXTURE_SIZE = 1024;
+export const ORDINARY_LOD1_MIN_ATLAS_PX = 512;
+/** Bump to rebuild every ordinary lod1 / lod2. */
+export const ORDINARY_LOD1_BUILD_VERSION = 2;
+export const ORDINARY_LOD2_BUILD_VERSION = 1;
+/** An ordinary lod2 has no texture: each face takes its atlas region's mean colour, clustered to this many materials. */
+export const ORDINARY_LOD2_MAX_COLOURS = 6;
+/**
+ * The ordinary level rule (lane R4-H): only from the air, sized through the camera at the model itself (the street
+ * chunks' rule, CHUNK_LOD2_DOWNGRADE_PX, not the view centre's scale), and lod1 only while the lod1 atlas still gives
+ * at least this many texels per device pixel at the model's nearest point: one lod1 texel per device pixel is where
+ * the full atlas (twice the density, no anisotropic filtering on GLB images) is already sampled at its mip 1 or
+ * coarser, i.e. the lod1's level 0, so the swap changes no pixel there.
+ */
+export const ORDINARY_LOD1_TEXELS_PER_DEVICE_PX = 1;
+
+/**
+ * The projected radius at the model's nearest point, from the one at its centre (`projectedRadiusPx`, CSS px) and the
+ * camera's focal length in CSS px: distance d = r f / px, nearest point d - r, so px f / (f - px). Infinity when the
+ * sphere reaches the camera.
+ */
+export function nearestRadiusPx(centrePx: number, focalPx: number): number {
+  return centrePx < focalPx ? centrePx * focalPx / (focalPx - centrePx) : Infinity;
+}
+
+/**
+ * Projected footprint radius (CSS px) under which an ordinary install may draw its lod1: the radius at which its
+ * device pixels per metre equal the lod1 atlas's texels per metre / ORDINARY_LOD1_TEXELS_PER_DEVICE_PX.
+ * px * dpr / r <= d / k  ->  px <= r * d / (k * dpr).
+ */
+export function ordinaryLod1DowngradePx(radiusMetres: number, texelsPerMetre: number, devicePixelRatio = 1): number {
+  if (!(radiusMetres > 0) || !(texelsPerMetre > 0)) return 0;
+  return radiusMetres * texelsPerMetre / (ORDINARY_LOD1_TEXELS_PER_DEVICE_PX * Math.max(1, devicePixelRatio));
 }
 
 /**
@@ -110,7 +162,7 @@ export function lod2Url(modelUrl: string): string {
 
 /** Whether a stored lod2 is still the output of this source and the current lod2 parameters. */
 export function lod2IsCurrent(record: LandmarkLodRecord | undefined, sourceHash: string | undefined): boolean {
-  return !!record && !!sourceHash && record.sourceHash === sourceHash && record.buildVersion === LOD2_BUILD_VERSION;
+  return !!record && !!sourceHash && record.sourceHash === sourceHash && record.buildVersion === (record.ordinary ? ORDINARY_LOD2_BUILD_VERSION : LOD2_BUILD_VERSION);
 }
 
 /**
@@ -135,6 +187,8 @@ export interface LevelInputs {
   highlighted?: boolean;
   lod2DowngradePx?: number;
   lod2AerialM?: number;
+  /** The lod1 / full boundary for this model (ordinary installs, ordinaryLod1DowngradePx); upgrade at LOD2_HYSTERESIS x it. */
+  lod1DowngradePx?: number;
 }
 
 function wantsLod2(current: LandmarkLevel | null, i: LevelInputs): boolean {
@@ -153,13 +207,18 @@ function wantsLod2(current: LandmarkLevel | null, i: LevelInputs): boolean {
 export function chooseLandmarkLevel(current: LandmarkLevel, i: LevelInputs): LandmarkLevel {
   if (wantsLod2(current, i)) return 'lod2';
   if (!i.hasLod1) return 'full';
-  return current === 'lod2' ? initialLevel(i.radiusPixels) : chooseLevel(current, i.radiusPixels);
+  const [down, up] = lod1Thresholds(i);
+  return current === 'lod2' ? initialLevel(i.radiusPixels, up) : chooseLevel(current, i.radiusPixels, down, up);
+}
+
+function lod1Thresholds(i: LevelInputs): [number, number] {
+  return i.lod1DowngradePx === undefined ? [LOD_DOWNGRADE_RADIUS_PX, LOD_UPGRADE_RADIUS_PX] : [i.lod1DowngradePx, i.lod1DowngradePx * LOD2_HYSTERESIS];
 }
 
 /** The level to load first with lod2 in play (no history). */
 export function initialLandmarkLevel(i: LevelInputs): LandmarkLevel {
   if (wantsLod2(null, i)) return 'lod2';
-  return i.hasLod1 ? initialLevel(i.radiusPixels) : 'full';
+  return i.hasLod1 ? initialLevel(i.radiusPixels, lod1Thresholds(i)[1]) : 'full';
 }
 
 /** `./models/x.glb` -> `./models/x.lod1.glb`. */
@@ -169,7 +228,7 @@ export function lod1Url(modelUrl: string): string {
 
 /** Whether the stored lod1 is still the output of this source and these parameters. */
 export function lod1IsCurrent(record: LandmarkLodRecord | undefined, sourceHash: string | undefined): boolean {
-  return !!record && !!sourceHash && record.sourceHash === sourceHash && record.buildVersion === LOD1_BUILD_VERSION;
+  return !!record && !!sourceHash && record.sourceHash === sourceHash && record.buildVersion === (record.ordinary ? ORDINARY_LOD1_BUILD_VERSION : LOD1_BUILD_VERSION);
 }
 
 /** Ground metres per CSS pixel at a MapLibre zoom (512 px tiles) and latitude. */
@@ -185,14 +244,14 @@ export function footprintRadiusPixels(radiusMetres: number, zoom: number, latitu
  * The level a model should be drawn at. Between the two thresholds the current
  * level is kept, so a camera hovering near the boundary does not flicker.
  */
-export function chooseLevel(current: LandmarkLevel, radiusPixels: number): LandmarkLevel {
-  if (current === 'lod1') return radiusPixels > LOD_UPGRADE_RADIUS_PX ? 'full' : 'lod1';
-  return radiusPixels < LOD_DOWNGRADE_RADIUS_PX ? 'lod1' : 'full';
+export function chooseLevel(current: LandmarkLevel, radiusPixels: number, downPx = LOD_DOWNGRADE_RADIUS_PX, upPx = LOD_UPGRADE_RADIUS_PX): LandmarkLevel {
+  if (current === 'lod1') return radiusPixels > upPx ? 'full' : 'lod1';
+  return radiusPixels < downPx ? 'lod1' : 'full';
 }
 
 /** The level to start loading at, with no history. */
-export function initialLevel(radiusPixels: number): LandmarkLevel {
-  return radiusPixels > LOD_UPGRADE_RADIUS_PX ? 'full' : 'lod1';
+export function initialLevel(radiusPixels: number, upPx = LOD_UPGRADE_RADIUS_PX): LandmarkLevel {
+  return radiusPixels > upPx ? 'full' : 'lod1';
 }
 
 /**
