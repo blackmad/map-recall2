@@ -64,7 +64,7 @@ import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTrac
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
 import { groundPrefetchFlag, prefetchStep, PREFETCH_MAX_MS, PREFETCH_POLL_MS, type StartView } from './groundPrefetch.js';
 import { groundShareFlag, groundShareMB } from './groundShare.js';
-import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, groundAffinityFlag, groundAffinityLodFlag, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
+import { defaultGroundWorkers, FOCUS_RANK_BASE, AFFINITY_WINDOW, groundAffinityFlag, groundAffinityLodFlag, groundBlockFirstFlag, dispatchTier, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, PULL_DEPTH, sharedNeighbours } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
@@ -382,6 +382,7 @@ export class OwnGround {
   /** Lane R5-A #260 step 3: the share host (groundShare.ts), with more than one worker and `?groundShare` on. */
   private shareHost: Worker | null = null;
   private readonly lodAffinityOn = groundAffinityLodFlag();
+  private readonly blockFirstOn = groundBlockFirstFlag();
   /** The worker each requested cell was sent to (groundWorkers.ts pickWorker). */
   private readonly workerOf = new Map<string, number>();
   /** Pull dispatch (groundWorkers.ts nextDispatch, `?groundPull=0` off): the cells each worker holds, the best-first order, what to ask per cell. */
@@ -852,7 +853,7 @@ export class OwnGround {
   private dispatch(): void {
     if (!this.pullOn || !this.workers.length) return;
     const affinity = this.affinityOn ? (key: string, wi: number) => sharedNeighbours(key, this.loadedBy[wi]) : undefined;
-    for (const [key, wi] of nextDispatch(this.wantedOrder, this.pending, this.sentTo, this.held.map(h => h.size), PULL_DEPTH, affinity ? AFFINITY_WINDOW : 1, affinity, this.lodAffinityOn ? key => this.asks.get(key)?.lod : undefined)) {
+    for (const [key, wi] of nextDispatch(this.wantedOrder, this.pending, this.sentTo, this.held.map(h => h.size), PULL_DEPTH, affinity ? AFFINITY_WINDOW : 1, affinity, this.lodAffinityOn ? key => dispatchTier(key, this.asks.get(key)?.lod, this.blockFirstOn ? this.focusCell : undefined) : undefined)) {
       const ask = this.asks.get(key);
       if (!ask) continue;
       this.asks.delete(key);
@@ -1625,7 +1626,7 @@ export class OwnGround {
       enabled: this.enabled, ready: this.ready, workerReady: this.workerReady, visible: this.visibleAtZoom(this.zoom), transition: this.opts.transition, blend: this.blend.value, basemapHidden: this.basemapHidden, radiusM: this.radiusM, zoom: this.zoom, roads: this.opts.roads ? this.store.roadCells.size : false, detail: this.opts.detail, groundNear: this.opts.groundNear, ring: this.opts.ring, aheadM: this.aheadM,
       cells, details, pending: Object.fromEntries(this.pending), queued: this.installQueue.length,
       // Lane R5-A #260 step 1: the ground workers and the cells pending on each (far blocks all go to worker 0).
-      workers: this.workers.length, workerPending: this.pullOn ? this.held.map(h => [...h]) : this.workers.map((_, i) => [...this.pending.keys()].filter(k => this.workerOf.get(k) === i)), pull: this.pullOn, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
+      workers: this.workers.length, focusCell: this.focusCell, workerPending: this.pullOn ? this.held.map(h => [...h]) : this.workers.map((_, i) => [...this.pending.keys()].filter(k => this.workerOf.get(k) === i)), pull: this.pullOn, triangles, geometryMB: +(bytes / 1048576).toFixed(1),
       reliefTiles: this.store.reliefTileCount, decks: this.ready ? this.store.surface.decks.length : 0, surfaceRevision: this.surfaceRevision,
       built: this.stats.cellsBuilt, buildMsMedian: median(this.stats.buildMs), installMsMedian: median(this.stats.installMs),
       latencyMsMedian: median(this.stats.latencyMs), latencyMsMax: this.stats.latencyMs.length ? Math.round(Math.max(...this.stats.latencyMs)) : null, lastBuild: this.stats.lastBuild,

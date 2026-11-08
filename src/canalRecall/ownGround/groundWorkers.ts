@@ -122,6 +122,24 @@ export function groundAffinityLodFlag(search?: string): boolean {
   return new URLSearchParams(search ?? g.location?.search ?? '').get('groundAffinityLod') !== '0';
 }
 
+/**
+ * Block first (lane R5-A #260 step 3, follow-up). Measured 2026-11-09 (start 0_-1, level-bound affinity on): the
+ * focus block's L1 cell 1_-2 landed at +8.1 s because free workers' affinity, looking 4 cells down the waiting list,
+ * took L1 cells outside the block (-1_1, 0_1) that shared more neighbours with what they held. Now affinity only
+ * chooses among waiting cells in the same tier as the best-ranked one: same level and same side of the focus block.
+ * `?groundBlockFirst=0` (or `window.__canalRecallGroundBlockFirst = false`) lets affinity cross the block edge.
+ */
+export function groundBlockFirstFlag(search?: string): boolean {
+  const g = globalThis as { __canalRecallGroundBlockFirst?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallGroundBlockFirst === 'boolean') return g.__canalRecallGroundBlockFirst;
+  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundBlockFirst') !== '0';
+}
+
+/** A waiting cell's dispatch tier: its level, and with `focus` whether it is in the focus block (inFocusBlock). */
+export function dispatchTier(key: string, lod: number | undefined, focus: string | null | undefined): string {
+  return focus === undefined ? `${lod}` : `${lod}:${inFocusBlock(key, focus) ? 1 : 0}`;
+}
+
 /** Neighbour cells of `key` ("x_y", its 3×3 block) already in `seen` (a worker's loaded neighbourhoods). */
 export function sharedNeighbours(key: string, seen: ReadonlySet<string>): number {
   const [x, y] = key.split('_').map(Number);
@@ -134,9 +152,10 @@ export function sharedNeighbours(key: string, seen: ReadonlySet<string>): number
  * The cells to send now, as [key, worker]: while a worker holds fewer than `depth`, the worker holding the fewest
  * (lowest index on a tie) takes a pending cell not already with a worker, from the first `window` such cells in
  * `order` (best first): the one with the highest `affinity(key, worker)`, ties to the best ranked. With `window` 1
- * (the default) it is simply the next cell in order. With `lodOf`, only cells of the best-ranked cell's level compete.
+ * (the default) it is simply the next cell in order. With `tierOf`, only cells in the best-ranked cell's tier compete
+ * (its level: groundAffinityLodFlag; and its side of the focus block: groundBlockFirstFlag, dispatchTier).
  */
-export function nextDispatch(order: readonly string[], pending: { has(key: string): boolean }, sent: { has(key: string): boolean }, held: readonly number[], depth = PULL_DEPTH, window = 1, affinity?: (key: string, worker: number) => number, lodOf?: (key: string) => number | undefined): [string, number][] {
+export function nextDispatch(order: readonly string[], pending: { has(key: string): boolean }, sent: { has(key: string): boolean }, held: readonly number[], depth = PULL_DEPTH, window = 1, affinity?: (key: string, worker: number) => number, tierOf?: (key: string) => string | number | undefined): [string, number][] {
   const load = [...held], out: [string, number][] = [];
   const waiting = order.filter(key => pending.has(key) && !sent.has(key));
   while (waiting.length) {
@@ -146,9 +165,9 @@ export function nextDispatch(order: readonly string[], pending: { has(key: strin
     let pick = 0;
     if (affinity && window > 1) {
       let best = -Infinity;
-      const level = lodOf?.(waiting[0]);
+      const tier = tierOf?.(waiting[0]);
       for (let i = 0; i < Math.min(window, waiting.length); i++) {
-        if (lodOf && i > 0 && lodOf(waiting[i]) !== level) continue;
+        if (tierOf && i > 0 && tierOf(waiting[i]) !== tier) continue;
         const a = affinity(waiting[i], w); if (a > best) { best = a; pick = i; }
       }
     }

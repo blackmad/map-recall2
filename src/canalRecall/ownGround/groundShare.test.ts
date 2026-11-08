@@ -53,9 +53,10 @@ test('the client and answer() round-trip bytes, hits and errors over a port pair
   await assert.rejects(get('missing/b'), /missing\/b: 404/);
 });
 
-test('flags: groundShare on unless =0, groundShareMB bounded', () => {
-  assert.equal(groundShareFlag(''), true);
+test('flags: groundShare off unless =1, groundShareMB bounded', () => {
+  assert.equal(groundShareFlag(''), false);
   assert.equal(groundShareFlag('?groundShare=0'), false);
+  assert.equal(groundShareFlag('?groundShare=1'), true);
   assert.equal(groundShareMB(''), 64);
   assert.equal(groundShareMB('?groundShareMB=16'), 16);
   assert.equal(groundShareMB('?groundShareMB=9999'), 64);

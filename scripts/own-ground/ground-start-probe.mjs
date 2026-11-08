@@ -49,7 +49,7 @@ for (let run = 0; run < runs; run++) {
         const block = key ? (() => { const [x, y] = key.split('_').map(Number); const o = []; for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) o.push(`${x + dx}_${y + dy}`); return o.filter(k => wanted.includes(k)); })() : [];
         const resident = st.cells ?? {};
         S.rows.push({ t: Math.round(performance.now()), state: g?.state, zoom: +(+st.zoom).toFixed(2), visible: st.visible, blend: +(+st.blend).toFixed(2), ready: st.ready, workerReady: st.workerReady,
-          centreKey: key, centreIn: key ? key in resident : false, blockIn: block.filter(k => k in resident).length, block: block.length,
+          centreKey: key, focusCell: st.focusCell ?? null, centreIn: key ? key in resident : false, blockIn: block.filter(k => k in resident).length, block: block.length,
           wanted: wanted.length, resident: Object.keys(resident).length, wantedIn: wanted.filter(k => k in resident).length, pending: Object.keys(st.pending ?? {}).length, queued: st.queued, built: st.built, errors: st.errors?.length ?? 0,
           workerPending: st.workerPending?.map(a => a.length) ?? null, camZoom: (() => { try { return +vm.camera.zoom().toFixed(2); } catch { return null; } })(), camPitch: (() => { try { return Math.round(vm.camera.pitch()); } catch { return null; } })(), farPending: st.far?.pending ?? null, farBuilt: st.far?.built ?? null, reliefTiles: st.reliefTiles });
       }

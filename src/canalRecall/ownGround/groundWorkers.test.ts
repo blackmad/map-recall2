@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { defaultGroundWorkers, groundAffinityFlag, groundAffinityLodFlag, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, sharedNeighbours } from './groundWorkers';
+import { defaultGroundWorkers, groundAffinityFlag, groundAffinityLodFlag, groundBlockFirstFlag, dispatchTier, groundFocusFlag, groundPullFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, nextDispatch, pickWorker, sharedNeighbours } from './groundWorkers';
 
 test('groundWorkersFlag reads 1–4 from the query, else the fallback', () => {
   assert.equal(groundWorkersFlag(1, '?groundWorkers=3'), 3);
@@ -93,4 +93,18 @@ test('nextDispatch with lodOf: affinity never takes a coarser cell ahead of the 
   assert.deepEqual(nextDispatch(l1, new Set(l1), new Set(), [0], 1, 4, aff, lod1), [['-2_0', 0]]);
   assert.equal(groundAffinityLodFlag('?groundAffinityLod=0'), false);
   assert.equal(groundAffinityLodFlag(''), true);
+});
+
+test('dispatchTier with the focus block: affinity never takes an L1 cell outside the block ahead of one inside (R5-A #260)', () => {
+  // The 2026-11-09 start: focus 0_-1, worker 0 holding -1_0 and 0_-1; waiting 1_-2@1 (block) then -1_1@1, 0_1@1 (outside).
+  const seen = [new Set(['-2_-1', '-2_0', '-2_1', '-1_-1', '-1_0', '-1_1', '0_-1', '0_0', '0_1', '-1_-2', '0_-2', '1_-2', '1_-1', '1_0'])];
+  const aff = (k: string, w: number) => sharedNeighbours(k, seen[w]);
+  const order = ['1_-2', '-1_1', '0_1'], pending = new Set(order);
+  assert.deepEqual(nextDispatch(order, pending, new Set(), [0], 1, 4, aff, k => dispatchTier(k, 1, undefined)), [['-1_1', 0]], 'level only: crosses the block edge');
+  assert.deepEqual(nextDispatch(order, pending, new Set(), [0], 1, 4, aff, k => dispatchTier(k, 1, '0_-1')), [['1_-2', 0]]);
+  assert.equal(dispatchTier('1_-2', 1, '0_-1'), '1:1');
+  assert.equal(dispatchTier('-1_1', 1, '0_-1'), '1:0');
+  assert.equal(dispatchTier('-1_1', 0, undefined), '0');
+  assert.equal(groundBlockFirstFlag('?groundBlockFirst=0'), false);
+  assert.equal(groundBlockFirstFlag(''), true);
 });
