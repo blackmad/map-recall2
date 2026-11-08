@@ -3,6 +3,22 @@
   "notes": [
     {
       "date": "2026-11-08",
+      "title": "The Weesperstraat slab no longer shimmers",
+      "text": "The tall 1962 slab on Weesperstraat no longer shimmers while you ride past it. On desktop, where a facade's window grid shrinks to a few pixels, the renderer now blends nine samples across each pixel instead of one, which takes the moiré out of the long wall; a little fine detail at that distance is traded for calm. Phones keep the previous behaviour for now.",
+      "where": [
+        4.9079,
+        52.3647
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-07-r4d/r4d-s3-user-dpr2.jpg",
+          "alt": "The Weesperstraat slab at the user's pose: the user's shot, main, with footprint taps, and taps with a wider tier band; below, 4x crops of the wall",
+          "caption": "Left to right: your shot, before, with the taps (now the default), and the wider-band variant that was not taken. Bottom rows: 4x crops of the slab wall."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
       "title": "Flying over the city is smooth",
       "text": "Two more fixes for the flight over Amsterdam on desktop. The map now loads only the ground within about a kilometre and a half of where you are looking, instead of the whole view at once (the far horizon is drawn by the simpler far tier, as before), so a new district no longer arrives as one big parcel. And the trees update about four times faster from the air: each map tile's trees are prepared once and only reassembled when something changes. On a three-minute flight across the city there are now no frames over a tenth of a second (there were 9 to 10 after the last fix, 38 to 52 before it). Nothing looks different up close. Add ?ringFootprint=0 or ?treesIncremental=0 to the ride link to compare. Phones are unchanged until measured.",
       "images": [
