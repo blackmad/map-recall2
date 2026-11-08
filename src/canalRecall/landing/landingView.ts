@@ -64,7 +64,7 @@ function boardHtml(model: LandingModel): string {
   const rows = model.daily.board;
   if (!rows.length) return '<p class="landing-board-empty">Your days on this card start today.</p>';
   return `<ol class="landing-board" aria-label="Your past days">${rows.map(day => `
-    <li${day.best ? ' class="best"' : ''}><span class="d">${escapeHtml(boardDayLabel(day.date))}</span><span class="t">${escapeHtml(formatRideTime(day.seconds))}</span><span class="r">${escapeHtml(recallText(day))}</span>${day.best ? '<span class="b">best</span>' : ''}</li>`).join('')}
+    <li${day.fastest ? ' class="fastest"' : ''}><span class="d">${escapeHtml(boardDayLabel(day.date))}</span><span class="t">${escapeHtml(formatRideTime(day.seconds))}</span><span class="r">${escapeHtml(recallText(day))}</span>${day.fastest ? '<span class="b">fastest</span>' : ''}</li>`).join('')}
   </ol>`;
 }
 
@@ -77,7 +77,7 @@ export function landingCardsHtml(model: LandingModel, hrefs: LandingHrefs): stri
   const dailyTitle = pair ? `${pair.from.name} → ${pair.to.name}` : 'Today’s ride';
   const dailyDetail = today
     ? `Ridden today · ${formatRideTime(today.seconds)} · ${recallText(today)}`
-    : pair ? `${pair.km.toFixed(1)} km · the same route for everyone today` : '';
+    : pair ? `about ${pair.km.toFixed(1)} km · the same route for everyone today` : '';
   const daily = card('daily', 'Today’s ride', dailyTitle, dailyDetail, ride('daily'), today ? 'Ride it again' : 'Ride today’s route', boardHtml(model));
   const review = card('review', 'Continue', dueLine(model), dueDetail(model), ride('review'), model.due.names > 0 ? 'Review on a ride' : 'New route');
   const free = card('free', 'Free Ride', 'Anywhere in the city', 'No questions. Tap a marker for its story.', ride('free'), 'Free ride');

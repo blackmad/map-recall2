@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  clearDailyRideCache,
+  DAILY_RIDE_NO_REPEAT_DAYS,
   dailyRideBoard,
   dailyRideDateKey,
   dailyRideLabel,
@@ -39,7 +41,7 @@ test('today’s pair is a pure function of the date and the candidate set, not i
   assert.equal(dailyRideRouteId('2026-11-09', pois), pair.id);
   assert.match(pair.id, /^2026-11-09:[a-z-]+>[a-z-]+$/);
   assert.ok(pair.km > 0.2 && pair.km < 8, `km ${pair.km}`);
-  assert.equal(dailyRideLabel(pair), `${pair.from.name} → ${pair.to.name} · ${pair.km.toFixed(1)} km`);
+  assert.equal(dailyRideLabel(pair), `${pair.from.name} → ${pair.to.name} · about ${pair.km.toFixed(1)} km`);
   // Math.random plays no part.
   const random = Math.random;
   Math.random = () => 0.999;
@@ -53,6 +55,21 @@ test('a month of days does not ride one pair every day', () => {
     ids.add(`${pair.from.id}>${pair.to.id}`);
   }
   assert.ok(ids.size >= 12, `distinct pairs ${ids.size}`);
+});
+
+test('no day repeats a pair from the 7 days before it, over 60 days, the same on a fresh machine', () => {
+  const dates = Array.from({ length: 60 }, (_, i) => new Date(Date.UTC(2026, 10, 9 + i, 12)).toISOString().slice(0, 10));
+  const key = (id: string) => id.split(':')[1]!.split('>').sort().join('|');
+  const forward = dates.map(date => dailyRideRouteId(date, pois)!);
+  forward.forEach((id, i) => {
+    for (let back = 1; back <= DAILY_RIDE_NO_REPEAT_DAYS && i - back >= 0; back++) {
+      assert.notEqual(key(id), key(forward[i - back]!), `${id} repeats ${forward[i - back]}`);
+    }
+  });
+  // Another machine: empty cache, pool listed in another order, days asked newest first.
+  clearDailyRideCache();
+  const backward = [...dates].reverse().map(date => dailyRideRouteId(date, [...pois].reverse())!).reverse();
+  assert.deepEqual(backward, forward);
 });
 
 test('fewer than two candidates have no daily ride', () => {
@@ -78,7 +95,7 @@ function ride(date: string, hourUtc: number, seconds: number, named: number, ask
   });
 }
 
-test('the board keeps the fastest matching ride per day, newest first, and marks the best', () => {
+test('the board keeps the fastest matching ride per day, newest first, and marks the fastest', () => {
   const history = [
     ride('2026-11-06', 10, 600, 3, 4),
     ride('2026-11-07', 10, 540, 4, 5),
@@ -88,7 +105,7 @@ test('the board keeps the fastest matching ride per day, newest first, and marks
     ride('2026-11-08', 15, 300, 5, 5, '2026-11-06'),
   ];
   const board = dailyRideBoard(history, pois);
-  assert.deepEqual(board.map(d => [d.date, d.seconds, d.recall, d.best]), [
+  assert.deepEqual(board.map(d => [d.date, d.seconds, d.recall, d.fastest]), [
     ['2026-11-08', 720, null, false],
     ['2026-11-07', 500, 40, true],
     ['2026-11-06', 600, 75, false],

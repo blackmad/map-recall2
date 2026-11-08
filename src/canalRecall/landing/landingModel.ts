@@ -63,7 +63,7 @@ export interface LandingModel {
   header: { streakDays: number; stamps: number };
   daily: {
     pair: DailyRidePair | null;
-    /** Today's best ride of today's route, if ridden. */
+    /** Today's fastest ride of today's route, if ridden. */
     today: DailyRideDay | null;
     /** Past days, newest first, today excluded. */
     board: DailyRideDay[];
