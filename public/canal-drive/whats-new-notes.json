@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Rides now chain into a run",
+   "text": "After each arrival, Next stop deals a place 1–3 km on that favours streets you have not learned yet, and every further stop adds 5 % to its points, up to 25 %. End run shows the run card: your stops stamped in order, the total, the best streak and the names learned. A reload inside a run picks the dealt leg back up.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-g1-run/storybook-finish-card-run.png",
+     "alt": "The arrival card with the run line and the Next stop and End run actions",
+     "caption": "The arrival card shows the run so far."
+    },
+    {
+     "src": "ui/2026-11-09-g1-run/storybook-run-card-phone.png",
+     "alt": "The run card on a phone: stops stamped in order, total, best streak, names learned",
+     "caption": "The run card."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Phone arrival titles fit, tours are back as cards, What's New says hello once",
    "text": "A long destination now fits the arrival card on a phone instead of ending in '…'. Tours are back as a row of cards under More options, the settings panel shows your account while you ride, and the landing page mentions what is new once per update. The help table no longer lists a sound key that did nothing.",
    "images": [

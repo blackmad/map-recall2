@@ -2690,1034 +2690,9 @@
     }
   }
 
-  // src/canalRecall/hudCopy.ts
-  function zoomBadgeText(zoom) {
-    return t("hud.zoom", { percent: Math.round(zoom * 100) });
-  }
-  function zoomBadgeShouldFlash(lastShown, zoom, playerZoomed) {
-    return playerZoomed && lastShown !== null && lastShown !== zoom;
-  }
-
-  // src/canalRecall/game/travelProfile.ts
-  var PROFILES = {
-    boat: {
-      id: "boat",
-      labelKey: "setup.travel.boat",
-      extractFile: "water",
-      quizRouteSubject: "waterway",
-      quizRouteQuestionKey: "ride.question.waterway",
-      learnedKind: "water",
-      motion: "water",
-      vehicle: "boat",
-      networkNoun: "waterways",
-      networkNounSingular: "waterway",
-      recallNounKey: "ride.noun.canals",
-      exploreNounKey: "ride.noun.canals",
-      usesRoadConstraint: false,
-      usesWaterTest: true
-    },
-    car: {
-      id: "car",
-      labelKey: "setup.travel.bike",
-      extractFile: "streets-routing",
-      quizRouteSubject: "street",
-      quizRouteQuestionKey: "ride.question.street",
-      learnedKind: "street",
-      motion: "road",
-      vehicle: "bike",
-      networkNoun: "streets",
-      networkNounSingular: "street",
-      recallNounKey: "ride.noun.streets",
-      exploreNounKey: "ride.noun.streets",
-      usesRoadConstraint: true,
-      usesWaterTest: false
-    },
-    transit: {
-      id: "transit",
-      labelKey: "setup.travel.transit",
-      extractFile: "transit-network",
-      quizRouteSubject: "line",
-      quizRouteQuestionKey: "ride.question.line",
-      learnedKind: "transit",
-      motion: "corridor",
-      vehicle: "transit",
-      networkNoun: "tram lines",
-      networkNounSingular: "line",
-      recallNounKey: "ride.noun.lines",
-      exploreNounKey: "ride.noun.linesAndStops",
-      usesRoadConstraint: true,
-      usesWaterTest: false
-    }
-  };
-  function travelProfile(mode) {
-    const template = PROFILES[mode] ?? PROFILES.boat;
-    return {
-      ...template,
-      label: t(template.labelKey),
-      quizRouteQuestion: t(template.quizRouteQuestionKey),
-      recallNoun: t(template.recallNounKey),
-      exploreNoun: t(template.exploreNounKey)
-    };
-  }
-
-  // src/canalRecall/game/recallRules.ts
-  var MAX_HEADING_OFF_ROAD = Math.PI / 4;
-  var ROUTE_QUIZ_TURN_RADIANS = Math.PI / 6;
-  function hudWithholdsRouteName(input) {
-    if (input.promptName) return true;
-    if (input.candidateName && input.candidateName !== input.currentName) return true;
-    if (!input.roadName || input.roadName === input.currentName) return false;
-    return !input.revealed && !input.learned;
-  }
-  function routePlaqueName(input) {
-    const answerHidden = hudWithholdsRouteName(input);
-    return { routeName: answerHidden ? "" : input.shownName || input.roadName, answerHidden };
-  }
-
-  // src/canalRecall/bridgeDisplayNames.ts
-  function bridgeLetterKey(name) {
-    return name.trim().replace(/^(de|het|'t)\s+/i, "").replace(/ł/g, "l").replace(/Ł/g, "L").toLocaleLowerCase().normalize("NFD").replace(/[^\p{L}]/gu, "").replace(/(\p{L})\1+/gu, "$1");
-  }
-  function isBridgeSpelling(osmName, displayName) {
-    return !!displayName && displayName !== osmName && bridgeLetterKey(displayName) === bridgeLetterKey(osmName);
-  }
-  function buildBridgeDisplayNames(bridges) {
-    const names = /* @__PURE__ */ new Map();
-    for (const bridge of bridges) {
-      const name = bridge.name?.trim();
-      const shown = bridge.displayName?.trim();
-      if (name && shown && isBridgeSpelling(name, shown)) names.set(name, shown);
-    }
-    return names;
-  }
-  var indexes = /* @__PURE__ */ new WeakMap();
-  function bridgeDisplayNamesOf(bridges) {
-    if (!bridges) return /* @__PURE__ */ new Map();
-    let index = indexes.get(bridges);
-    if (!index) indexes.set(bridges, index = buildBridgeDisplayNames(bridges));
-    return index;
-  }
-  function displayBridgeName(names, name) {
-    return names && names.get(name) || name;
-  }
-
-  // src/canalRecall/facts/factRotation.ts
-  var RECENT_KIND_MEMORY = 3;
-  function factKey(featureId, fact) {
-    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
-    let hash = 2166136261;
-    for (let index = 0; index < normalised.length; index++) {
-      hash ^= normalised.charCodeAt(index);
-      hash = Math.imul(hash, 16777619);
-    }
-    return `${featureId}:${(hash >>> 0).toString(36)}`;
-  }
-  var KIND_APPEAL = {
-    surprise: 5,
-    naming: 4,
-    culture: 3,
-    people: 3,
-    history: 2,
-    design: 1
-  };
-  function chooseFact(featureId, facts, state) {
-    if (!facts.length) return null;
-    const scored = facts.map((fact) => {
-      const key = factKey(featureId, fact);
-      const lastShown = state.history[key];
-      const seen = lastShown !== void 0;
-      const recency = state.recentKinds.indexOf(fact.kind);
-      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
-      return {
-        fact,
-        key,
-        seen,
-        lastShown: lastShown ?? -1,
-        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
-      };
-    });
-    scored.sort((a, b) => (
-      // Unseen first; then among seen, the one shown longest ago; then appeal.
-      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
-    ));
-    const best = scored[0];
-    return { fact: best.fact, key: best.key, repeat: best.seen };
-  }
-  function recordShown(state, choice) {
-    const shown = state.shown + 1;
-    return {
-      history: { ...state.history, [choice.key]: shown },
-      shown,
-      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
-    };
-  }
-  function expandedFacts(facts, shownText, limit = 3) {
-    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
-  }
-  function pruneHistory(state, maxEntries = 4e3) {
-    const entries = Object.entries(state.history);
-    if (entries.length <= maxEntries) return state;
-    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
-    return { ...state, history: Object.fromEntries(kept) };
-  }
-
-  // src/canalRecall/facts/factQuality.ts
-  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
-  var LEDE_RESTATEMENT = new RegExp(
-    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
-    "i"
-  );
-  var FILLER_CLAUSE = new RegExp(
-    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
-    "i"
-  );
-  function words(text) {
-    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
-  }
-  function similarity(a, b) {
-    const left = new Set(words(a));
-    const right = new Set(words(b));
-    if (!left.size || !right.size) return 0;
-    let shared2 = 0;
-    for (const word of left) if (right.has(word)) shared2++;
-    return shared2 / Math.min(left.size, right.size);
-  }
-
-  // src/canalRecall/facts/factTypes.ts
-  var FACT_KIND_LABELS = {
-    naming: "Name",
-    history: "History",
-    people: "People",
-    design: "Design",
-    culture: "Culture",
-    surprise: "Curiosity"
-  };
-  var FACT_KIND_LABELS_NL = {
-    naming: "Naam",
-    history: "Geschiedenis",
-    people: "Mensen",
-    design: "Ontwerp",
-    culture: "Cultuur",
-    surprise: "Weetje"
-  };
-  function factKindLabel(kind) {
-    return language() === "nl" ? FACT_KIND_LABELS_NL[kind] : FACT_KIND_LABELS[kind];
-  }
-  function factText(fact) {
-    return language() === "nl" && fact.textNl ? fact.textNl : fact.text;
-  }
-
-  // src/canalRecall/facts/factStore.ts
-  function openingSentence(text, maxChars = 160) {
-    const trimmed = (text || "").replace(/\s+/g, " ").trim();
-    if (!trimmed) return "";
-    const abbreviations = /* @__PURE__ */ new Set([
-      "st",
-      "sint",
-      "ste",
-      "mr",
-      "mrs",
-      "ms",
-      "dr",
-      "prof",
-      "ir",
-      "ing",
-      "drs",
-      "jr",
-      "sr",
-      "nr",
-      "no",
-      "vs",
-      "ca",
-      "ong",
-      "bijv",
-      "nl",
-      "oa",
-      "dwz",
-      "zgn",
-      "etc",
-      "incl",
-      "excl",
-      "eeuw",
-      "eeuwse"
-    ]);
-    const isSentenceEnd = (index) => {
-      if (trimmed[index] !== ".") return true;
-      const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
-      if (!before) return true;
-      const word = before[1];
-      if (word.length === 1) return false;
-      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
-      return !abbreviations.has(word.toLocaleLowerCase());
-    };
-    let end = -1;
-    for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
-      if (isSentenceEnd(match.index)) {
-        end = match.index + 1;
-        break;
-      }
-    }
-    const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
-    if (sentence.length <= maxChars) return sentence;
-    const window2 = sentence.slice(0, maxChars);
-    let boundary = -1;
-    for (const match of window2.matchAll(/[.!?](?=\s|$)/g)) {
-      if (isSentenceEnd(match.index)) boundary = match.index + 1;
-    }
-    if (boundary > maxChars * 0.5) return window2.slice(0, boundary).trim();
-    const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
-    return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
-  }
-  function composeFactWithOpening(factText2, opening) {
-    const lead = openingSentence(opening);
-    if (!lead) return { detail: factText2 };
-    if (similarity(lead, factText2) >= 0.55) return { detail: factText2 };
-    const leadStem = lead.replace(/[.!?…]+$/, "").toLowerCase();
-    if (leadStem.length >= 24 && factText2.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
-      return { detail: factText2 };
-    }
-    return { detail: `${lead} ${factText2}`, opening: lead };
-  }
-  var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
-  function saveRotationState(storage2, state) {
-    try {
-      storage2?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
-    } catch {
-    }
-  }
-  function factCardText(featureId, index, state, fallbackOpening) {
-    const entry = index.get(featureId);
-    if (!entry?.facts?.length) return null;
-    const choice = chooseFact(featureId, entry.facts, state);
-    if (!choice) return null;
-    const dutch = language() === "nl";
-    const dutchFact = dutch && !!choice.fact.textNl;
-    const factBody = dutchFact ? choice.fact.textNl : choice.fact.text;
-    const composed = composeFactWithOpening(
-      factBody,
-      dutchFact ? entry.openingNl : entry.opening || fallbackOpening
-    );
-    const others = expandedFacts(entry.facts, choice.fact.text);
-    const all = composed.opening ? [composed.opening, factBody, ...others.map((fact) => factText(fact))] : [factBody, ...others.map((fact) => factText(fact))];
-    return {
-      choice,
-      text: {
-        detail: composed.detail,
-        longDetail: all.join(" "),
-        factTexts: all,
-        factKind: factKindLabel(choice.fact.kind)
-      }
-    };
-  }
-  function commitShownFact(storage2, state, choice) {
-    const next = recordShown(state, choice);
-    saveRotationState(storage2, next);
-    return next;
-  }
-
-  // src/canalRecall/game/finishBlurb.ts
-  function finishBlurb(landmark, facts, rotation, fallback) {
-    const lede = landmark.longDetail || landmark.detail || "";
-    const chosen = facts && facts.size ? factCardText(landmark.id, facts, rotation, landmark.detail || landmark.longDetail) : null;
-    if (chosen?.text.detail) return { text: chosen.text.detail, choice: chosen.choice };
-    return { text: lede || fallback, choice: null };
-  }
-
-  // src/canalRecall/game/finishTitle.ts
-  var FINISH_TITLE_SIZES = [26, 24, 22, 20];
-  var fontAt = (size) => `800 ${size}px system-ui, sans-serif`;
-  function wrapWords(measure, text, width, maxLines) {
-    const words2 = text.trim().split(/\s+/).filter(Boolean);
-    const lines = [];
-    let line = "";
-    let index = 0;
-    for (; index < words2.length; index++) {
-      const next = line ? `${line} ${words2[index]}` : words2[index];
-      if (!line || measure(next) <= width) {
-        line = next;
-        continue;
-      }
-      lines.push(line);
-      line = words2[index];
-      if (lines.length === maxLines) break;
-    }
-    if (lines.length < maxLines) {
-      lines.push(line);
-      return lines.map((l) => clip(measure, l, width));
-    }
-    const last = lines.length - 1;
-    lines[last] = clip(measure, `${lines[last]}\u2026`, width, true);
-    return lines;
-  }
-  function clip(measure, text, width, forceEllipsis = false) {
-    if (measure(text) <= width && (!forceEllipsis || text.endsWith("\u2026"))) return text;
-    let base = text.replace(/…$/, "");
-    while (base.length > 1 && measure(`${base}\u2026`) > width) base = base.slice(0, -1);
-    return `${base.trimEnd()}\u2026`;
-  }
-  function fitFinishTitle(ctx, name, width) {
-    const saved = ctx.font;
-    const measure = (text) => ctx.measureText(text).width;
-    try {
-      for (const size2 of FINISH_TITLE_SIZES) {
-        ctx.font = fontAt(size2);
-        if (measure(name) <= width) return { size: size2, lineHeight: Math.round(size2 * 1.15), lines: [name] };
-      }
-      const size = FINISH_TITLE_SIZES[FINISH_TITLE_SIZES.length - 1];
-      ctx.font = fontAt(size);
-      return { size, lineHeight: Math.round(size * 1.15), lines: wrapWords(measure, name, width, 2) };
-    } finally {
-      ctx.font = saved;
-    }
-  }
-
-  // src/canalRecall/labels/sightlineOcclusion.ts
-  var SIGHTLINE_CELL_M = 40;
-  var SIGHTLINE_CLEARANCE_M = 0.75;
-  var ANCHOR_SLACK_M = 2;
-  var M_PER_DEG_LAT = 111320;
-  var ORIGIN_LNG = 4.8936;
-  var ORIGIN_LAT = 52.3731;
-  var M_PER_DEG_LNG = M_PER_DEG_LAT * Math.cos(ORIGIN_LAT * Math.PI / 180);
-  function toLocal(lng, lat) {
-    return [(lng - ORIGIN_LNG) * M_PER_DEG_LNG, (lat - ORIGIN_LAT) * M_PER_DEG_LAT];
-  }
-  function occluderTopM(properties) {
-    const p = properties || {};
-    const height = Number(p.height), eaves = Number(p.roofEavesHeightM);
-    const pitched = typeof p.roofShape === "string" && p.roofShape !== "flat";
-    if (Number.isFinite(height) && Number.isFinite(eaves) && pitched && eaves < height) return (height + eaves) / 2;
-    if (Number.isFinite(height)) return height;
-    if (Number.isFinite(eaves)) return eaves;
-    return 0;
-  }
-  function prepare(feature) {
-    const g = feature.geometry;
-    const polygons = g?.type === "Polygon" ? [g.coordinates] : g?.type === "MultiPolygon" ? g.coordinates : [];
-    const topM = occluderTopM(feature.properties);
-    if (!(topM > 1)) return null;
-    const rings = [];
-    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-    for (const polygon of polygons) {
-      const outer = Array.isArray(polygon) ? polygon[0] : null;
-      if (!Array.isArray(outer) || outer.length < 3) continue;
-      const flat = new Float64Array(outer.length * 2);
-      for (let i = 0; i < outer.length; i++) {
-        const [x, y] = toLocal(outer[i][0], outer[i][1]);
-        flat[i * 2] = x;
-        flat[i * 2 + 1] = y;
-        if (x < minX) minX = x;
-        if (x > maxX) maxX = x;
-        if (y < minY) minY = y;
-        if (y > maxY) maxY = y;
-      }
-      rings.push(flat);
-    }
-    return rings.length ? { rings, minX, minY, maxX, maxY, topM, stamp: 0 } : null;
-  }
-  var cellKey = (ix, iy) => (ix + 32768) * 65536 + (iy + 32768);
-  function pointInRing(x, y, ring) {
-    let inside = false;
-    const n = ring.length / 2;
-    for (let i = 0, j = n - 1; i < n; j = i++) {
-      const xi = ring[i * 2], yi = ring[i * 2 + 1], xj = ring[j * 2], yj = ring[j * 2 + 1];
-      if (yi > y !== yj > y && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
-    }
-    return inside;
-  }
-  var SightlineIndex = class {
-    constructor(cellM = SIGHTLINE_CELL_M) {
-      this.cellM = cellM;
-    }
-    prepared = /* @__PURE__ */ new WeakMap();
-    grid = /* @__PURE__ */ new Map();
-    source = null;
-    pending = null;
-    stamp = 1;
-    stats = { features: 0, cells: 0, buildMs: 0, tests: 0, blocked: 0, testMs: 0 };
-    /** Whether any footprints are indexed. */
-    get ready() {
-      return this.grid.size > 0;
-    }
-    /** Adopt `features` (by identity). Spends at most `budgetMs` per call; returns true when the grid is current. */
-    refresh(features, budgetMs = 2) {
-      if (!features) return this.source === null;
-      if (features === this.source && !this.pending) return true;
-      if (!this.pending || this.pending.list !== features) this.pending = { list: features, next: 0, grid: /* @__PURE__ */ new Map(), ms: 0 };
-      const job = this.pending, start = performance.now(), deadline = start + budgetMs, cell = this.cellM;
-      while (job.next < job.list.length) {
-        const feature = job.list[job.next++];
-        let p = this.prepared.get(feature);
-        if (p === void 0) {
-          p = prepare(feature);
-          this.prepared.set(feature, p);
-        }
-        if (p) {
-          const x0 = Math.floor(p.minX / cell), x1 = Math.floor(p.maxX / cell);
-          const y0 = Math.floor(p.minY / cell), y1 = Math.floor(p.maxY / cell);
-          for (let ix = x0; ix <= x1; ix++) for (let iy = y0; iy <= y1; iy++) {
-            const key = cellKey(ix, iy);
-            const bucket = job.grid.get(key);
-            if (bucket) bucket.push(p);
-            else job.grid.set(key, [p]);
-          }
-        }
-        if ((job.next & 255) === 0 && performance.now() > deadline) break;
-      }
-      job.ms += performance.now() - start;
-      if (job.next < job.list.length) return false;
-      this.grid = job.grid;
-      this.source = features;
-      this.pending = null;
-      this.stats.features = features.length;
-      this.stats.cells = job.grid.size;
-      this.stats.buildMs = Math.round(job.ms * 10) / 10;
-      return true;
-    }
-    /**
-     * True when a building's walls stand above the straight line from the
-     * camera to the anchor. Buildings whose footprint holds the camera (its
-     * back-face-culled walls are invisible) or the anchor are skipped.
-     */
-    blocked(camera, anchor) {
-      const t0 = performance.now();
-      const result = this.test(camera, anchor);
-      this.stats.tests++;
-      if (result) this.stats.blocked++;
-      this.stats.testMs += performance.now() - t0;
-      return result;
-    }
-    /** Zero the per-frame counters. */
-    resetCounters() {
-      this.stats.tests = 0;
-      this.stats.blocked = 0;
-      this.stats.testMs = 0;
-    }
-    test(camera, anchor) {
-      if (!this.grid.size) return false;
-      const [ax, ay] = toLocal(camera.lng, camera.lat), [bx, by] = toLocal(anchor.lng, anchor.lat);
-      const dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy);
-      if (len < ANCHOR_SLACK_M * 2) return false;
-      const tMax = 1 - ANCHOR_SLACK_M / len;
-      const stamp = ++this.stamp, cell = this.cellM;
-      let ix = Math.floor(ax / cell), iy = Math.floor(ay / cell);
-      const ex = Math.floor(bx / cell), ey = Math.floor(by / cell);
-      const sx = Math.sign(dx), sy = Math.sign(dy);
-      const tdx = sx ? cell / Math.abs(dx) : Infinity, tdy = sy ? cell / Math.abs(dy) : Infinity;
-      let tx = sx ? ((sx > 0 ? (ix + 1) * cell : ix * cell) - ax) / dx : Infinity;
-      let ty = sy ? ((sy > 0 ? (iy + 1) * cell : iy * cell) - ay) / dy : Infinity;
-      const visit = (cx, cy) => {
-        const bucket = this.grid.get(cellKey(cx, cy));
-        if (bucket) for (const p of bucket) {
-          if (p.stamp === stamp) continue;
-          p.stamp = stamp;
-          if (this.wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camera.altM, anchor.altM)) return true;
-        }
-        return false;
-      };
-      for (let guard = 0; guard < 4096; guard++) {
-        if (visit(ix, iy)) return true;
-        if (ix === ex && iy === ey) break;
-        if (Math.min(tx, ty) > 1) return visit(ex, ey);
-        if (tx < ty) {
-          ix += sx;
-          tx += tdx;
-        } else {
-          iy += sy;
-          ty += tdy;
-        }
-      }
-      return false;
-    }
-    wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camAlt, anchorAlt) {
-      if (p.maxX < Math.min(ax, bx) || p.minX > Math.max(ax, bx) || p.maxY < Math.min(ay, by) || p.minY > Math.max(ay, by)) return false;
-      if (p.topM < Math.min(camAlt, anchorAlt) + SIGHTLINE_CLEARANCE_M) return false;
-      let above = false;
-      outer: for (const ring of p.rings) {
-        const n = ring.length / 2;
-        for (let i = 0, j = n - 1; i < n; j = i++) {
-          const cx = ring[j * 2], cy = ring[j * 2 + 1];
-          const ex = ring[i * 2] - cx, ey = ring[i * 2 + 1] - cy;
-          const den = dx * ey - dy * ex;
-          if (Math.abs(den) < 1e-12) continue;
-          const t2 = ((cx - ax) * ey - (cy - ay) * ex) / den;
-          if (t2 <= 0 || t2 > tMax) continue;
-          const u = ((cx - ax) * dy - (cy - ay) * dx) / den;
-          if (u < 0 || u > 1) continue;
-          const rayAlt = camAlt + (anchorAlt - camAlt) * t2;
-          if (p.topM > rayAlt + SIGHTLINE_CLEARANCE_M) {
-            above = true;
-            break outer;
-          }
-        }
-      }
-      if (!above) return false;
-      for (const ring of p.rings) {
-        if (pointInRing(ax, ay, ring) || pointInRing(bx, by, ring)) return false;
-      }
-      return true;
-    }
-  };
-
-  // src/canalRecall/labels/streetLabelOcclusion.ts
-  var STREET_LABEL_ALT_M = 1;
-  var HOLD_FRAMES = 2;
-  var RETEST_FRAMES = 8;
-  var BUILD_BUDGET_MS = 2;
-  var OCCLUSION_MIN_PITCH_DEG = 5;
-  function occlusionWanted(pitchedView, mapPitchDeg) {
-    return pitchedView || Number.isFinite(mapPitchDeg) && mapPitchDeg >= OCCLUSION_MIN_PITCH_DEG;
-  }
-  var StreetLabelOcclusion = class {
-    index = new SightlineIndex();
-    verdicts = /* @__PURE__ */ new WeakMap();
-    slots = 0;
-    frameNo = 0;
-    /** Last frame's counts, for the e2e and profiling. */
-    stats = { tested: 0, hidden: 0, ms: 0, features: 0, buildMs: 0 };
-    /** Labels drawn / hidden by occlusion last frame (text only), for the e2e. */
-    lastHidden = [];
-    /**
-     * The per-label test for this frame, or null when there is nothing to test
-     * against (top-down view, no resident buildings yet, no camera).
-     */
-    frame(host, loader, pitched) {
-      this.frameNo++;
-      this.stats.tested = 0;
-      this.stats.hidden = 0;
-      this.stats.ms = 0;
-      this.lastHidden = [];
-      const vm = host;
-      if (!pitched || !(vm?.map || vm?.cameraEye) || !vm.worldToLngLat || !loader) return null;
-      const toLngLat = vm.worldToLngLat.bind(vm);
-      const features = !vm.map && vm._completeCity?.residentFeatures ? vm._completeCity.residentFeatures() : vm._completeCity?.sampleFeatures?.(1e6);
-      this.index.refresh(features, BUILD_BUDGET_MS);
-      this.stats.features = this.index.stats.features;
-      this.stats.buildMs = this.index.stats.buildMs;
-      if (!this.index.ready) return null;
-      let camera;
-      if (vm.map) {
-        const t2 = vm.map.transform;
-        const at = t2?.getCameraLngLat?.(), altM = t2?.getCameraAltitude?.();
-        if (!at || !Number.isFinite(altM)) return null;
-        camera = { lng: at.lng, lat: at.lat, altM };
-      } else {
-        const eye = vm.cameraEye();
-        if (!eye || !Number.isFinite(eye.altitudeM)) return null;
-        camera = { lng: eye.lng, lat: eye.lat, altM: eye.altitudeM };
-      }
-      const blockedAt = (p) => {
-        const ll = toLngLat(p.x, p.y, loader);
-        const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
-        return this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
-      };
-      return (label, ends) => {
-        const t0 = performance.now();
-        let v = this.verdicts.get(label);
-        const fresh = !v || v.frame !== this.frameNo - 1;
-        if (v && !fresh && (this.frameNo + v.slot) % RETEST_FRAMES !== 0) {
-          v.frame = this.frameNo;
-          if (v.hidden) {
-            this.stats.hidden++;
-            if (label.text) this.lastHidden.push(label.text);
-          }
-          this.stats.ms += performance.now() - t0;
-          return v.hidden;
-        }
-        const now = blockedAt(label) || !!ends && ends.some(blockedAt);
-        if (!v || fresh) {
-          v = { hidden: now, votes: HOLD_FRAMES, frame: 0, slot: v?.slot ?? this.slots++ };
-          this.verdicts.set(label, v);
-        }
-        v.frame = this.frameNo;
-        if (now === v.hidden) v.votes = HOLD_FRAMES;
-        else if (--v.votes <= 0) {
-          v.hidden = now;
-          v.votes = HOLD_FRAMES;
-        }
-        this.stats.tested++;
-        if (v.hidden) {
-          this.stats.hidden++;
-          if (label.text) this.lastHidden.push(label.text);
-        }
-        this.stats.ms += performance.now() - t0;
-        return v.hidden;
-      };
-    }
-  };
-
-  // src/canalRecall/game/teachingSurface.ts
-  function canShowMiniMap(enabled, input) {
-    return enabled && !input.utilityOpen;
-  }
-  function canShowPoiLabels(labelsWanted, input) {
-    return labelsWanted && !input.quizOpen && !input.promptVisible;
-  }
-
-  // src/canalRecall/routing/bikeAccess.ts
-  var BICYCLE_DENIED = /* @__PURE__ */ new Set(["no", "dismount", "private", "customers"]);
-  function isBicycleRestricted(tags) {
-    return BICYCLE_DENIED.has(tags.bicycle || "") || tags.bicycleRestricted === "yes";
-  }
-  function bicycleRestrictionNotice(tags) {
-    if (!isBicycleRestricted(tags)) return null;
-    const bicycle = tags.bicycle || "";
-    if (bicycle === "dismount") return "Walk bikes in real life";
-    if (bicycle === "private" || bicycle === "customers") return "Private \u2014 no public cycling";
-    return "No cycling in real life";
-  }
-
-  // src/canalRecall/look/palette.ts
-  var PHOTO_WALL_CELL_MEAN = 225;
-  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
-  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
-  var LOOK_VARIANTS = {
-    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
-    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
-    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
-    // Storybook warms and lifts the natural palette a little, as an illustrator would.
-    storybook: {
-      cells: "storybook",
-      shadeBands: 0,
-      flatColour: false,
-      ...DRAWN_CALM,
-      cartoonRoofCells: false,
-      outline: true,
-      litWallGain: 1,
-      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
-    },
-    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
-    cartoon: {
-      cells: "cartoon",
-      shadeBands: 3,
-      flatColour: false,
-      ...DRAWN_CALM,
-      cartoonRoofCells: true,
-      outline: true,
-      litWallGain: 1,
-      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
-    }
-  };
-  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
-  var ROOF_TONES = {
-    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
-    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
-  };
-  var ROOF_SLOT_TONES = {
-    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
-    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
-    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
-    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
-    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
-    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
-    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
-    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
-    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
-    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
-    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
-    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
-  };
-  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
-  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
-  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
-  var PERIOD_WALLS = {
-    photo: {
-      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
-      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
-      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
-      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
-    },
-    storybook: {
-      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
-      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
-      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
-      modern: null
-    },
-    cartoon: {
-      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
-      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
-      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
-      modern: null
-    }
-  };
-  var PERIOD_PRIORS = {
-    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
-    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
-    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
-    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
-  };
-  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
-  var GLASS_TINT_CELL_W = 32;
-  var GLASS_TINT_CELL_H = 64;
-  var PANE_LUMA = [157.19, 92.83, 69.17];
-  var STREAK_LUMA = 240.95;
-  var STREAK_ALPHA = 0.16;
-  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
-  function glassTintCellValue(x, y) {
-    const t2 = y / (GLASS_TINT_CELL_H - 1);
-    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
-    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
-    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
-  }
-  var GLASS_TINT_CELL_MEAN = (() => {
-    let sum = 0;
-    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
-    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
-  })();
-  var STONE_CELL_MEAN = 228 / 255;
-  var STREET_GROUND = {
-    // Was [72, 74, 78]: under the rig it drew at luma 67 in sun and 59 in shade, "near-black" (user live play
-    // 2026-10-14). Lifted to a sunlit-grey 88 (just under the klinker carriageway's 91, still cooler than it); with
-    // ownGround/groundLight.ts it draws 88 in sun and 78 in cast shadow, above LOOK's road floor of 65–75.
-    asphalt: { base: [86, 88, 93] },
-    cycle: { base: [150, 66, 58] },
-    // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
-    // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
-    klinker: { base: [122, 90, 80], joint: "#4b3d38" },
-    pavement: { base: [174, 162, 152], joint: "#7f756b" },
-    kerb: "#cfcac0",
-    paint: "#f2f0ea",
-    rail: "#6c6e72",
-    bollard: "#5a2a26"
-  };
-  var HIGHLIGHT_CORAL = "#ff8033";
-  var GROUND_TONES = {
-    land: { base: [168, 158, 142], joint: "#857b6d" },
-    paving: { base: [184, 174, 158], joint: "#8f8577" },
-    square: { base: [190, 179, 161], joint: "#958a7c" },
-    // Klinker warm grey-rose, asphalt darker and cooler than it ("so much grey": they shared one band).
-    klinker: { base: [158, 124, 114], joint: "#7a6660" },
-    asphalt: [68, 72, 80],
-    cycle: [156, 76, 66],
-    gravel: [180, 166, 136],
-    park: [96, 140, 70],
-    wood: [70, 112, 58],
-    parking: [102, 102, 105],
-    kerb: "#aaa498",
-    water: "#46707c",
-    // Parks (parks-v1, ownGround/parks.ts, 2026-10-13): mown lawn fresher than the park fill under it, planting beds
-    // as soil with green dabs, shrub planting darker and clumped, bark mulch, play sand, shell/half-paved paths lighter
-    // than street gravel, park asphalt lighter than the road's, ponds the canal tone (a greener one read as a shadow).
-    lawn: [110, 154, 74],
-    bed: { soil: [98, 80, 60], leaf: [84, 122, 58] },
-    shrub: { base: [56, 92, 46], leaf: [76, 116, 56] },
-    bark: [118, 84, 58],
-    sand: [212, 194, 150],
-    parkGravel: [198, 184, 152],
-    parkPath: [110, 110, 112],
-    pond: "#46707c"
-  };
-
-  // src/canalRecall/hudTheme.ts
-  var enamelTheme = {
-    enamel: "#0b3a8c",
-    enamelBright: "#1450b8",
-    enamelDeep: "#072861",
-    night: "#071430",
-    ink: "#ffffff",
-    inkMuted: "rgba(255,255,255,0.72)",
-    inkDim: "rgba(255,255,255,0.86)",
-    line: "rgba(255,255,255,0.28)",
-    /** Rivet / gold accent (plaque corners, selected hairline). */
-    rivet: "#c4a35a",
-    rivetDeep: "#8a7040",
-    /** Copper stamp (Start / Confirm). */
-    copper: "#b87333",
-    copperHi: "#d9a05b",
-    copperDeep: "#8a5524",
-    copperMid: "#c9844a",
-    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
-  };
-  var daylightTheme = {
-    paper: "#f4efe5",
-    paperRaised: "#fbf8f2",
-    paperSunk: "#ebe4d6",
-    ink: "#1f1c17",
-    /** 6.3:1 on paper — secondary copy. */
-    inkMuted: "#5f584d",
-    line: "rgba(31,28,23,0.14)",
-    lineStrong: "rgba(31,28,23,0.26)",
-    fill: "rgba(31,28,23,0.045)",
-    fillHover: "rgba(31,28,23,0.085)",
-    accent: "#b4682c",
-    /** Copper dark enough for text on paper (≈6:1). */
-    accentInk: "#8a4a18",
-    accentSoft: "rgba(180,104,44,0.13)",
-    scrim: "rgba(28,24,18,0.38)",
-    danger: "#a8321f"
-  };
-  var paperTheme = {
-    paper: enamelTheme.enamel,
-    paperRaised: enamelTheme.enamelBright,
-    paperMuted: enamelTheme.enamelDeep,
-    ink: enamelTheme.ink,
-    inkMuted: enamelTheme.inkMuted,
-    line: enamelTheme.line,
-    moss: enamelTheme.enamelBright,
-    mossDark: enamelTheme.enamelDeep,
-    mossSoft: "rgba(20,80,184,0.28)",
-    terracotta: enamelTheme.copper,
-    ochre: enamelTheme.rivet
-  };
-  var hudSurface = {
-    /** Always-on readouts sitting directly on the map. */
-    card: "rgba(251,248,242,0.9)",
-    /** Cards you stop and read: the trivia card, the postcard. */
-    cardSolid: "rgba(251,248,242,0.97)",
-    /** Hairline border. */
-    border: "rgba(31,28,23,0.14)",
-    borderStrong: "rgba(180,104,44,0.6)",
-    /** Drop shadow under a card that floats over the map. */
-    shadow: "rgba(31,28,23,0.22)",
-    /** The thumbstick, which sits over the map and must not hide it. */
-    control: "rgba(251,248,242,0.72)",
-    controlPressed: daylightTheme.accent,
-    controlInk: "rgba(31,28,23,0.62)",
-    /** Thumbstick knob at rest. */
-    controlKnob: "rgba(31,28,23,0.2)",
-    /** Type on the paper plate. */
-    ink: daylightTheme.ink,
-    inkMuted: daylightTheme.inkMuted,
-    accent: daylightTheme.accentInk,
-    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
-     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
-    arrow: HIGHLIGHT_CORAL,
-    fontPlaque: enamelTheme.fontPlaque,
-    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
-     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
-    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
-    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
-  };
-
-  // src/canalRecall/labels/labelStyle.ts
-  var PILL_FONT = `700 12px ${hudSurface.fontUi}`;
-
-  // src/canalRecall/orientationPois.ts
-  var SPOILER_MIN_LENGTH = 5;
-  var SPOILER_MAX_WORDS = 5;
-  var DUTCH_NAME_SUFFIXES = [
-    "dwarsstraat",
-    "burgwal",
-    "gracht",
-    "straat",
-    "kanaal",
-    "sloot",
-    "steeg",
-    "plein",
-    "kade",
-    "brug",
-    "laan",
-    "dijk",
-    "weg",
-    "pad",
-    "hof"
-  ];
-  function normaliseSpoilerName(name) {
-    return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-  }
-  function buildSpoilerIndex(names) {
-    const index = /* @__PURE__ */ new Set();
-    const lowerRaw = /* @__PURE__ */ new Set();
-    const full = /* @__PURE__ */ new Set();
-    for (const raw of names) {
-      if (!raw) continue;
-      const name = normaliseSpoilerName(raw);
-      if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
-      if (name.length < SPOILER_MIN_LENGTH) continue;
-      index.add(name);
-      full.add(name);
-      for (const suffix of DUTCH_NAME_SUFFIXES) {
-        if (!name.endsWith(suffix)) continue;
-        const stem = name.slice(0, -suffix.length).trim();
-        if (stem.length >= SPOILER_MIN_LENGTH) index.add(stem);
-        break;
-      }
-    }
-    return { names: index, lowerRaw, full };
-  }
-  var spoilsMemo = /* @__PURE__ */ new WeakMap();
-  function poiNameSpoils(label, index) {
-    if (!label || !index || index.names.size === 0) return false;
-    let memo = spoilsMemo.get(index);
-    if (!memo) spoilsMemo.set(index, memo = /* @__PURE__ */ new Map());
-    let spoils = memo.get(label);
-    if (spoils === void 0) memo.set(label, spoils = labelSpoils(label, index));
-    return spoils;
-  }
-  var labelGrams = /* @__PURE__ */ new Map();
-  var fullLengths = /* @__PURE__ */ new WeakMap();
-  function labelSpoils(label, index) {
-    let held = labelGrams.get(label);
-    if (!held) {
-      const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean), grams = [];
-      for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++)
-        for (let start = 0; start + size <= words2.length; start++) grams.push(words2.slice(start, start + size).join(" "));
-      labelGrams.set(label, held = { words: words2, grams });
-    }
-    for (const gram of held.grams) if (index.names.has(gram)) return true;
-    if (index.full && index.full.size) {
-      let lengths = fullLengths.get(index.full);
-      if (!lengths) fullLengths.set(index.full, lengths = [...new Set([...index.full].map((n) => n.length))].filter((n) => n >= SPOILER_MIN_LENGTH).sort((a, b) => a - b));
-      for (const word of held.words) {
-        for (const n of lengths) {
-          if (n >= word.length) break;
-          if (index.full.has(word.slice(0, n))) return true;
-        }
-      }
-    }
-    return false;
-  }
-  function maskSpoiledName(label, names, fallback = "your destination") {
-    if (!label) return label;
-    const chars = [];
-    const origin = [];
-    for (let i = 0; i < label.length; i++) {
-      const base = normaliseSpoilerName(label[i]);
-      if (base) {
-        chars.push(base);
-        origin.push(i);
-      } else if (chars.length && chars[chars.length - 1] !== " ") {
-        chars.push(" ");
-        origin.push(i);
-      }
-    }
-    const text = chars.join("");
-    const spans = [];
-    for (const raw of new Set(names)) {
-      const name = raw ? normaliseSpoilerName(raw) : "";
-      if (name.length < SPOILER_MIN_LENGTH) continue;
-      for (let at = text.indexOf(name); at !== -1; at = text.indexOf(name, at + 1)) {
-        if (at > 0 && text[at - 1] !== " ") continue;
-        spans.push([origin[at], origin[at + name.length - 1] + 1]);
-      }
-    }
-    if (!spans.length) return label;
-    spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
-    let out = "";
-    let cursor = 0;
-    for (const [start, end] of spans) {
-      if (end <= cursor) continue;
-      out += label.slice(cursor, Math.max(cursor, start)) + "\u2026";
-      cursor = end;
-    }
-    out += label.slice(cursor);
-    return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
-  }
-  function mapLabelSpoils(raw, printed, asked) {
-    if (!asked || !raw) return false;
-    const index = buildSpoilerIndex([asked]);
-    if (!index.names.size) return normaliseSpoilerName(raw) === normaliseSpoilerName(asked);
-    for (const text of printed && printed !== raw ? [raw, printed] : [raw]) {
-      if (poiNameSpoils(text, index)) return true;
-      if (maskSpoiledName(text, [asked], "") !== text) return true;
-    }
-    return false;
-  }
-
   // src/canalRecall/game/poiNotability.ts
+  var HERITAGE_RIJKSMONUMENT = "Q916333";
+  var HERITAGE_UNESCO = "Q9259";
   var A_LIST = [
     { name: "Rijksmuseum", wikidata: ["Q190804"] },
     { name: "Van Gogh Museum", wikidata: ["Q224124"] },
@@ -3784,6 +2759,73 @@
       A_LIST_BY_NAME.set(normaliseAnswer(name), entry);
     }
     for (const qid of entry.wikidata ?? []) A_LIST_BY_WIKIDATA.set(qid, entry);
+  }
+  function isAList(poi) {
+    if (poi.wikidata && A_LIST_BY_WIKIDATA.has(poi.wikidata)) return true;
+    return A_LIST_BY_NAME.has(normaliseAnswer(poi.name || ""));
+  }
+  var A_LIST_BOOST = 8;
+  var MANUAL_TIEBREAK = 0.05;
+  var HERITAGE_RIJKSMONUMENT_BONUS = 2;
+  var HERITAGE_UNESCO_BONUS = 3;
+  var MUSEUM_QIDS = /* @__PURE__ */ new Set(["Q33506", "Q207694", "Q17431399"]);
+  var ZOO_QIDS = /* @__PURE__ */ new Set(["Q43501"]);
+  var PLACE_OF_WORSHIP_QIDS = /* @__PURE__ */ new Set(["Q16970", "Q1370598", "Q32815", "Q34627"]);
+  var ARTWORK_QIDS = /* @__PURE__ */ new Set(["Q838948", "Q179700", "Q860861"]);
+  var MEMORIAL_QIDS = /* @__PURE__ */ new Set(["Q5003624", "Q4989906"]);
+  var ATTRACTION_QIDS = /* @__PURE__ */ new Set(["Q570116"]);
+  function tagKind(poi) {
+    const tourism = poi.tourism ?? (poi.type === "museum" ? "museum" : void 0);
+    if (tourism) {
+      if (tourism === "museum") return "museum";
+      if (tourism === "attraction") return "attraction";
+      if (tourism === "viewpoint") return "viewpoint";
+      if (tourism === "zoo") return "zoo";
+      if (tourism === "artwork") return "artwork";
+    }
+    if (poi.amenity === "place_of_worship") return "place_of_worship";
+    if (poi.historic === "memorial") return "memorial";
+    const inst = poi.wikidataInstanceOf ?? [];
+    if (inst.some((qid) => MUSEUM_QIDS.has(qid))) return "museum";
+    if (inst.some((qid) => ZOO_QIDS.has(qid))) return "zoo";
+    if (inst.some((qid) => PLACE_OF_WORSHIP_QIDS.has(qid))) return "place_of_worship";
+    if (inst.some((qid) => ARTWORK_QIDS.has(qid))) return "artwork";
+    if (inst.some((qid) => MEMORIAL_QIDS.has(qid))) return "memorial";
+    if (inst.some((qid) => ATTRACTION_QIDS.has(qid))) return "attraction";
+    return null;
+  }
+  function tagWeight(poi) {
+    switch (tagKind(poi)) {
+      case "museum":
+      case "attraction":
+      case "viewpoint":
+      case "zoo":
+        return 1.5;
+      case "artwork":
+      case "memorial":
+        return 0.8;
+      case "place_of_worship": {
+        const notable = isAList(poi) || (poi.heritage?.includes(HERITAGE_RIJKSMONUMENT) ?? false);
+        return notable ? 0 : -1.5;
+      }
+      default:
+        return 0;
+    }
+  }
+  function heritageBonus(heritage) {
+    if (!heritage?.length) return 0;
+    if (heritage.includes(HERITAGE_UNESCO)) return HERITAGE_UNESCO_BONUS;
+    if (heritage.includes(HERITAGE_RIJKSMONUMENT)) return HERITAGE_RIJKSMONUMENT_BONUS;
+    return 0;
+  }
+  function notabilityScore(poi) {
+    const sitelinks = Math.log2((poi.sitelinks ?? 0) + 1);
+    const pageviews = poi.pageviews60d == null ? 0 : Math.log10(poi.pageviews60d + 1);
+    return sitelinks + pageviews + heritageBonus(poi.heritage) + tagWeight(poi) + (isAList(poi) ? A_LIST_BOOST : 0) + (poi.manualPoi ? MANUAL_TIEBREAK : 0);
+  }
+  var NOTABILITY_TEMPERATURE = 3;
+  function notabilityWeight(score, temperature = NOTABILITY_TEMPERATURE) {
+    return Math.exp(score / temperature);
   }
 
   // src/canalRecall/landmarks/surveyedLandmarks.json
@@ -7030,11 +6072,1603 @@
   }
 
   // src/canalRecall/game/routeSelection.ts
+  var ROUTE_POI_MAX_PAIR_KM = 6;
+  var HOME_MIN_TRIP_KM = 0.2;
+  var SURPRISE_MIN_PAIR_KM = HOME_MIN_TRIP_KM;
+  function kmBetween(a, b) {
+    const latKm = (a.lat - b.lat) * 111.32;
+    const lngKm = (a.lng - b.lng) * 111.32 * Math.cos(a.lat * Math.PI / 180);
+    return Math.hypot(latKm, lngKm);
+  }
+  var randomUnit = () => Math.random();
+  function pickWeighted(entries, chooseUnit) {
+    const positive = entries.filter((entry) => entry.weight > 0);
+    if (positive.length === 0) return null;
+    const total = positive.reduce((sum, entry) => sum + entry.weight, 0);
+    let tick = chooseUnit() * total;
+    for (const entry of positive) {
+      tick -= entry.weight;
+      if (tick <= 0) return entry.item;
+    }
+    return positive[positive.length - 1]?.item ?? null;
+  }
+  function pickDestinationNear(pois, from, chooseUnit = randomUnit, alsoExcludeId = null) {
+    const candidates = pois.filter((poi) => poi.id !== from.id && poi.id !== alsoExcludeId);
+    if (candidates.length === 0) return null;
+    const inRange = candidates.filter((poi) => kmBetween(poi, from) <= ROUTE_POI_MAX_PAIR_KM);
+    const pool = inRange.length > 0 ? inRange : candidates;
+    const scored = pool.map((poi) => ({
+      item: poi,
+      weight: notabilityWeight(notabilityScore(poi))
+    }));
+    const pick2 = pickWeighted(scored, chooseUnit);
+    if (!pick2 || kmBetween(pick2, from) >= SURPRISE_MIN_PAIR_KM) return pick2;
+    const apart = scored.filter((entry) => kmBetween(entry.item, from) >= SURPRISE_MIN_PAIR_KM);
+    return apart.length ? pickWeighted(apart, chooseUnit) ?? pick2 : pick2;
+  }
+  function localFamiliarity(point, samples, bandKm = 0.6) {
+    const near = samples.filter((sample) => kmBetween(sample, point) <= bandKm);
+    if (near.length === 0) return 0;
+    return near.reduce((sum, sample) => sum + sample.mastery, 0) / near.length;
+  }
   var REVIEW_STOP_LABEL = "the mystery street";
   function isReviewStop(poi) {
     return !!poi && typeof poi.reviewStop === "string";
   }
   var START_HEADING_SNAP_RAD = Math.PI / 6;
+
+  // src/canalRecall/game/chainedRun.ts
+  var RUN_STORAGE_KEY = "canalRecall.openRun.v1";
+  var LAST_RUN_STORAGE_KEY = "canalRecall.lastRun.v1";
+  var RUN_IDLE_MS = 10 * 60 * 1e3;
+  var CHAIN_STEP = 0.05;
+  var CHAIN_CAP = 0.25;
+  var NEXT_STOP_MIN_KM = 1;
+  var NEXT_STOP_MAX_KM = 3;
+  var RUN_LIST_LIMIT = 12;
+  function chainBonus(stopNumber) {
+    if (!Number.isFinite(stopNumber) || stopNumber <= 1) return 0;
+    return Math.min(CHAIN_CAP, Math.round((stopNumber - 1) * CHAIN_STEP * 100) / 100);
+  }
+  function newRun(now, startName) {
+    return {
+      version: 1,
+      startedAt: now,
+      lastActiveAt: now,
+      startName,
+      stopCount: 0,
+      totalPoints: 0,
+      bestStreak: 0,
+      names: [],
+      stops: []
+    };
+  }
+  function addStop(run, input, now) {
+    const base = run && !isIdle(run, now) ? run : newRun(now, input.fromName);
+    const stopNumber = base.stopCount + 1;
+    const bonus = chainBonus(stopNumber);
+    const basePoints = Math.max(0, Math.round(input.points || 0));
+    const points = Math.round(basePoints * (1 + bonus));
+    const names = [...new Set(input.names.filter(Boolean))];
+    const stop = {
+      id: input.id,
+      name: input.name,
+      basePoints,
+      points,
+      bonus,
+      bestStreak: Math.max(0, input.bestStreak || 0),
+      names,
+      at: now
+    };
+    const known = new Set(base.names);
+    for (const name of names) known.add(name);
+    const stops = [...base.stops, stop].slice(-RUN_LIST_LIMIT);
+    return {
+      stop,
+      run: {
+        ...base,
+        lastActiveAt: now,
+        stopCount: stopNumber,
+        pausedAt: null,
+        nextLeg: null,
+        totalPoints: base.totalPoints + points,
+        bestStreak: Math.max(base.bestStreak, stop.bestStreak),
+        names: [...known],
+        stops
+      }
+    };
+  }
+  function touchRun(run, now) {
+    return { ...run, lastActiveAt: Math.max(run.lastActiveAt, now) };
+  }
+  function isIdle(run, now) {
+    const until = run.pausedAt != null ? Math.min(now, run.pausedAt) : now;
+    return until - run.lastActiveAt >= RUN_IDLE_MS;
+  }
+  function pauseRun(run, now) {
+    return run.pausedAt != null ? run : { ...run, pausedAt: now };
+  }
+  function resumeRun(run, now) {
+    if (run.pausedAt == null) return run;
+    const paused = Math.max(0, now - run.pausedAt);
+    return { ...run, pausedAt: null, lastActiveAt: run.lastActiveAt + paused };
+  }
+  function withNextLeg(run, leg) {
+    return { ...run, nextLeg: leg };
+  }
+  function runTransition(from, to) {
+    if (from === to) return null;
+    if (from === "finished" && to === "menu") return "close";
+    if (to === "paused") return "pause";
+    if (from === "paused") return "resume";
+    return null;
+  }
+  function nextBonus(run) {
+    return chainBonus(run.stopCount + 1);
+  }
+  function plural(count, one, many) {
+    return `${count} ${count === 1 ? one : many}`;
+  }
+  function formatPoints(points) {
+    return Math.round(points).toLocaleString("en-US");
+  }
+  function runLine(run, options) {
+    const bits = [plural(run.stopCount, "stop", "stops"), plural(run.names.length, "name", "names")];
+    if (!options.calm) {
+      bits.push(`${formatPoints(run.totalPoints)} points`);
+      const next = nextBonus(run);
+      if (next > 0) bits.push(`chain +${Math.round(next * 100)} %`);
+    }
+    return bits.join("  \xB7  ");
+  }
+  var NUMBER_WORDS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve"];
+  function runStory(run) {
+    const count = run.stopCount < NUMBER_WORDS.length ? NUMBER_WORDS[run.stopCount] : String(run.stopCount);
+    const last = run.stops[run.stops.length - 1];
+    const from = run.startName && run.startName !== last?.name ? ` from ${run.startName}` : "";
+    const to = last ? ` to ${last.name}` : "";
+    const names = run.names.length > 0 ? `, ${plural(run.names.length, "name", "names")} on the map` : "";
+    return `${count} ${run.stopCount === 1 ? "stop" : "stops"}${from}${to}${names}.`;
+  }
+  function parseRun(raw) {
+    if (!raw) return null;
+    try {
+      const run = JSON.parse(raw);
+      if (!run || run.version !== 1 || !Array.isArray(run.stops) || !Array.isArray(run.names)) return null;
+      if (!Number.isFinite(run.lastActiveAt) || !Number.isFinite(run.stopCount)) return null;
+      return run;
+    } catch {
+      return null;
+    }
+  }
+  function loadRun(storage3, now) {
+    if (!storage3) return { run: null, ended: null };
+    let raw = null;
+    try {
+      raw = storage3.getItem(RUN_STORAGE_KEY);
+    } catch {
+      return { run: null, ended: null };
+    }
+    const run = parseRun(raw);
+    if (!run || run.stopCount <= 0) return { run: null, ended: null };
+    const live = resumeRun(run, now);
+    if (!isIdle(live, now)) return { run: live, ended: null };
+    endRun(storage3, live);
+    return { run: null, ended: live };
+  }
+  function saveRun(storage3, run) {
+    try {
+      storage3?.setItem(RUN_STORAGE_KEY, JSON.stringify(run));
+    } catch {
+    }
+  }
+  function endRun(storage3, run) {
+    try {
+      storage3?.removeItem(RUN_STORAGE_KEY);
+      storage3?.setItem(LAST_RUN_STORAGE_KEY, JSON.stringify(run));
+    } catch {
+    }
+  }
+  function runsEnabled(search) {
+    try {
+      return new URLSearchParams(search).get("run") !== "0";
+    } catch {
+      return true;
+    }
+  }
+  function pickNextStop(pois, from, options = {}) {
+    const {
+      samples = [],
+      excludeIds = [],
+      chooseUnit = randomUnit,
+      minKm = NEXT_STOP_MIN_KM,
+      maxKm = NEXT_STOP_MAX_KM
+    } = options;
+    const skip = /* @__PURE__ */ new Set([from.id, ...excludeIds]);
+    const band = pois.filter((poi) => {
+      if (skip.has(poi.id)) return false;
+      const km = kmBetween(poi, from);
+      return km >= minKm && km <= maxKm;
+    });
+    if (band.length === 0) return pickDestinationNear(pois, from, chooseUnit, excludeIds[excludeIds.length - 1] ?? null);
+    const weighted = band.map((poi) => ({
+      poi,
+      weight: notabilityWeight(notabilityScore(poi)) * (0.35 + 0.65 * (1 - localFamiliarity(poi, samples)))
+    })).filter((entry) => entry.weight > 0);
+    const total = weighted.reduce((sum, entry) => sum + entry.weight, 0);
+    if (total <= 0) return band[0] ?? null;
+    let tick = chooseUnit() * total;
+    for (const entry of weighted) {
+      tick -= entry.weight;
+      if (tick <= 0) return entry.poi;
+    }
+    return weighted[weighted.length - 1]?.poi ?? null;
+  }
+
+  // src/canalRecall/game/chainedRunRuntime.ts
+  var RUN_TOUCH_MS = 15e3;
+  var INK = "#1f1c17";
+  var MUTED = "#5f584d";
+  var BODY = "#2e2a23";
+  var ACCENT = "#8a4a18";
+  var COPPER = "#c9844a";
+  var RULE = "rgba(31,28,23,0.16)";
+  function sessionCounters() {
+    const win = window;
+    win.__canalRecallSession ||= {};
+    const session = win.__canalRecallSession;
+    session.ridesThisSession ??= 0;
+    session.stopsThisRun ??= 0;
+    session.runsEnded ??= 0;
+    session.stopsPerRun ??= [];
+    return session;
+  }
+  function storage2() {
+    try {
+      return typeof localStorage === "undefined" ? null : localStorage;
+    } catch {
+      return null;
+    }
+  }
+  var GameChainedRunRuntime = class {
+    /** Whether this ride takes part in a run: not `?run=0`, not a tour, not Free Ride. */
+    _runEnabled() {
+      return runsEnabled(window.location.search) && !this._runsOff && !this._tour && !this.freeRide;
+    }
+    /** The open run, read from localStorage once per page (a reload continues it). */
+    _openRun() {
+      if (!this._runLoaded) {
+        this._runLoaded = true;
+        const loaded = loadRun(storage2(), Date.now());
+        this._run = loaded.run;
+        sessionCounters().stopsThisRun = loaded.run?.stopCount ?? 0;
+      }
+      return this._run ?? null;
+    }
+    /**
+     * Once per arrival: the stop joins the open run. Called from the arrival
+     * card's first frame, after game.js has saved the ride's exploration.
+     */
+    _recordRunStop() {
+      const to = this.routeTo;
+      if (!to) return;
+      if (this._runRecordedKey) return;
+      this._runRecordedKey = `${this.routeFrom?.id ?? ""}>${to.id}`;
+      this._runCard = null;
+      const session = sessionCounters();
+      session.ridesThisSession = (session.ridesThisSession ?? 0) + 1;
+      if (!this._runEnabled()) return;
+      const { run } = addStop(this._openRun(), {
+        id: to.id,
+        name: to.name,
+        fromName: this.routeFrom?.name ?? "",
+        points: this.quizPoints || 0,
+        bestStreak: this.quizBestStreak || 0,
+        names: this._rideNamedNames || []
+      }, Date.now());
+      this._run = run;
+      this._runTouchedAt = Date.now();
+      saveRun(storage2(), run);
+      session.stopsThisRun = run.stopCount;
+    }
+    /** Per frame: keeps a riding run alive, ends one left idle on the arrival card, and takes E there. */
+    _runTick() {
+      if (this.state !== GameState.FINISHED) this._runRecordedKey = "";
+      if (!runsEnabled(window.location.search)) return;
+      const now = Date.now();
+      const previous = this._runLastState ?? this.state;
+      this._runLastState = this.state;
+      if (previous !== this.state) this._runStateChanged(previous, now);
+      const run = this._openRun();
+      if (this.state === GameState.RACING) {
+        if (this._runCard) this._runCard = null;
+        if (run && this._runEnabled() && now - (this._runTouchedAt ?? 0) >= RUN_TOUCH_MS) {
+          this._runTouchedAt = now;
+          this._run = touchRun(run, now);
+          saveRun(storage2(), this._run);
+        }
+        return;
+      }
+      if (this.state !== GameState.FINISHED) {
+        if (this._runCard) this._runCard = null;
+        return;
+      }
+      if (run && isIdle(run, now)) {
+        this._endRunFromCard();
+        return;
+      }
+      if (run && !this._runCard && this.input.wasPressed("KeyE")) this._endRunFromCard();
+    }
+    /** Route setup from the arrival card closes the run quietly; pause stops its idle clock. */
+    _runStateChanged(previous, now) {
+      const name = (state) => state === GameState.MENU ? "menu" : state === GameState.RACING ? "racing" : state === GameState.FINISHED ? "finished" : state === GameState.PAUSED ? "paused" : "other";
+      const run = this._openRun();
+      if (!run) return;
+      const step = runTransition(name(previous), name(this.state));
+      if (step === "close") {
+        this._closeRun(false);
+        return;
+      }
+      if (step === "pause") this._run = pauseRun(run, now);
+      else if (step === "resume") this._run = resumeRun(run, now);
+      else return;
+      saveRun(storage2(), this._run);
+    }
+    /** Ends the open run into lastRun and the counters; with `card`, the run card shows it. */
+    _closeRun(card) {
+      const run = this._openRun();
+      if (!run) return;
+      endRun(storage2(), run);
+      this._run = null;
+      this._runCard = card ? run : null;
+      const session = sessionCounters();
+      session.runsEnded = (session.runsEnded ?? 0) + 1;
+      session.stopsPerRun = [...session.stopsPerRun ?? [], run.stopCount];
+      session.stopsThisRun = 0;
+    }
+    /**
+     * The dealt leg to ride again after a reload, or null. For the startup hook
+     * in game-route.js `_checkShareLink` (integrator applies it at merge).
+     */
+    _runResumeLeg() {
+      if (!this._runEnabled()) return null;
+      return this._openRun()?.nextLeg ?? null;
+    }
+    /** End run: the run card replaces the arrival card. */
+    _endRunFromCard() {
+      this._closeRun(true);
+    }
+    /** Arrival-card tap targets beyond game.js's three. */
+    _runFinishTap(id) {
+      if (id === "end") this._endRunFromCard();
+      else this._runFinishAction(id);
+    }
+    /**
+     * The next stop for Next stop (game-route.js `_startNextRouteFromArrival`,
+     * after a due review ride): 1–3 km from the arrival, favouring streets the
+     * rider does not know yet, never a stop this run has reached. Null outside
+     * a run (`?run=0`, tours, Free Ride), which keeps the surprise pick.
+     */
+    _pickRunNextStop(from) {
+      this._runCard = null;
+      if (!this._runEnabled()) return null;
+      const run = this._openRun();
+      const samples = this.recall?.homeMasterySamples?.(this.cityId || "amsterdam") ?? [];
+      const excludeIds = [...run?.stops.map((stop) => stop.id) ?? [], this.routeFrom?.id ?? ""].filter(Boolean);
+      const to = pickNextStop(this.routePois, from, { samples, excludeIds });
+      if (this._run) {
+        const point = (p) => ({ id: p.id, name: p.name, lat: p.lat, lng: p.lng });
+        this._run = withNextLeg(touchRun(this._run, Date.now()), to ? { from: point(from), to: point(to) } : null);
+        saveRun(storage2(), this._run);
+      }
+      return to;
+    }
+    /** The arrival card's one run line, or null outside a run. */
+    _runArrivalLine() {
+      if (!this._runEnabled()) return null;
+      const run = this._openRun();
+      return run ? runLine(run, { calm: !this.gameyFeatures }) : null;
+    }
+    /** The run card: stamped stops, total, best streak, names, one line of story. */
+    _renderRunCard(run) {
+      const ctx = this.ctx;
+      const W = this.viewport.width, H = this.viewport.height;
+      ctx.fillStyle = "rgba(28,24,18,.34)";
+      ctx.fillRect(0, 0, W, H);
+      const compact = this.viewport.mode === "compact";
+      const calm = !this.gameyFeatures;
+      const cardW = Math.min(520, W - 24);
+      const padX = compact ? 18 : 30;
+      const cx = W / 2;
+      const cardX = cx - cardW / 2;
+      const innerW = cardW - padX * 2;
+      const font = window.CanalRecallUi.hudSurface.fontMono;
+      ctx.font = "13px system-ui, sans-serif";
+      const story = wrapText(ctx, runStory(run), innerW, 2);
+      const ROW = 30;
+      const MARGIN = 16;
+      const bottomReserve = compact ? 76 : MARGIN;
+      const BUTTON_H = 44;
+      const actionsH = compact ? BUTTON_H * 2 + 8 : 34;
+      const fixedH = 30 + 74 + story.length * 18 + 16 + 24 + 64 + 24 + actionsH + 26;
+      const room = H - MARGIN - bottomReserve;
+      const listRows = Math.max(1, Math.min(run.stops.length, Math.floor((room - fixedH) / ROW)));
+      const hidden = run.stopCount - listRows;
+      const shown = run.stops.slice(-listRows);
+      const cardH = fixedH + listRows * ROW;
+      const scale = Math.min(1, room / cardH);
+      const cardY = scale < 1 ? MARGIN : Math.max(MARGIN, Math.min(Math.round((H - cardH) / 2), H - cardH - bottomReserve));
+      ctx.save();
+      if (scale < 1) {
+        ctx.translate(cx, cardY);
+        ctx.scale(scale, scale);
+        ctx.translate(-cx, -cardY);
+      }
+      this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 16 });
+      const rule = (y2) => {
+        ctx.strokeStyle = RULE;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(cardX + padX, y2 + 0.5);
+        ctx.lineTo(cardX + cardW - padX, y2 + 0.5);
+        ctx.stroke();
+      };
+      let y = cardY + 30;
+      ctx.textAlign = "left";
+      ctx.textBaseline = "alphabetic";
+      ctx.fillStyle = ACCENT;
+      ctx.font = `700 11px ${font}`;
+      ctx.fillText("RUN COMPLETE", cardX + padX, y + 11);
+      ctx.fillStyle = INK;
+      ctx.font = "800 26px system-ui, sans-serif";
+      ctx.fillText(`${run.stopCount} ${run.stopCount === 1 ? "stop" : "stops"}`, cardX + padX, y + 42);
+      y += 74;
+      ctx.fillStyle = BODY;
+      ctx.font = "13px system-ui, sans-serif";
+      story.forEach((line, index) => ctx.fillText(line, cardX + padX, y - 8 + index * 18));
+      y += story.length * 18;
+      rule(y);
+      y += 16;
+      ctx.fillStyle = MUTED;
+      ctx.font = `700 11px ${font}`;
+      ctx.fillText(hidden > 0 ? `STOPS  \xB7  LAST ${listRows} OF ${run.stopCount}` : "STOPS", cardX + padX, y + 4);
+      y += 24;
+      shown.forEach((stop, index) => {
+        const number = run.stopCount - shown.length + index + 1;
+        const sy = y + index * ROW;
+        ctx.strokeStyle = ACCENT;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(cardX + padX + 11, sy + 4, 11, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = ACCENT;
+        ctx.font = `700 11px ${font}`;
+        ctx.textAlign = "center";
+        ctx.fillText(String(number), cardX + padX + 11, sy + 8);
+        ctx.textAlign = "left";
+        const pointsText = calm ? "" : `${formatPoints(stop.points)}${stop.bonus > 0 ? `  +${Math.round(stop.bonus * 100)} %` : ""}`;
+        ctx.font = `12px ${font}`;
+        const pointsW = pointsText ? ctx.measureText(pointsText).width + 12 : 0;
+        ctx.fillStyle = INK;
+        ctx.font = "600 14px system-ui, sans-serif";
+        ctx.fillText(wrapText(ctx, stop.name, innerW - 32 - pointsW, 1)[0] ?? "", cardX + padX + 32, sy + 9);
+        if (pointsText) {
+          ctx.textAlign = "right";
+          ctx.fillStyle = MUTED;
+          ctx.font = `12px ${font}`;
+          ctx.fillText(pointsText, cardX + cardW - padX, sy + 9);
+          ctx.textAlign = "left";
+        }
+      });
+      y += listRows * ROW;
+      rule(y);
+      y += 16;
+      const stats = calm ? [{ label: "Stops", value: String(run.stopCount) }, { label: "Names", value: String(run.names.length) }] : [
+        { label: "Points", value: formatPoints(run.totalPoints) },
+        { label: "Best streak", value: String(run.bestStreak) },
+        { label: "Names", value: String(run.names.length) }
+      ];
+      ctx.textAlign = "center";
+      stats.forEach((stat, index) => {
+        const sx = cardX + padX + innerW / stats.length * (index + 0.5);
+        ctx.fillStyle = INK;
+        ctx.font = `700 ${compact ? 19 : 21}px ${font}`;
+        ctx.fillText(stat.value, sx, y + 24);
+        ctx.fillStyle = MUTED;
+        ctx.font = "11px system-ui, sans-serif";
+        ctx.fillText(stat.label, sx, y + 42);
+      });
+      y += 64;
+      rule(y);
+      y += 24;
+      const actions = [
+        { id: "again", key: "ENTER", caption: "New run" },
+        { id: "route", key: compact ? "" : "M", caption: "Route setup" }
+      ];
+      const buttons = [];
+      if (compact) {
+        actions.forEach((action, index) => {
+          const bounds = { x: cardX + padX, y: y + index * (BUTTON_H + 8), w: innerW, h: BUTTON_H };
+          const primary = index === 0;
+          ctx.fillStyle = primary ? COPPER : "rgba(31,28,23,.05)";
+          roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
+          ctx.fill();
+          if (!primary) {
+            ctx.strokeStyle = RULE;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+          ctx.fillStyle = INK;
+          ctx.font = "700 14px system-ui, sans-serif";
+          ctx.textAlign = "center";
+          ctx.fillText(action.caption, bounds.x + bounds.w / 2, bounds.y + 28);
+          buttons.push({ ...bounds, id: action.id });
+        });
+      } else {
+        ctx.textAlign = "left";
+        let ax = cardX + padX;
+        for (const action of actions) {
+          ctx.font = `700 11px ${font}`;
+          const keyW = ctx.measureText(action.key).width + 14;
+          ctx.fillStyle = "rgba(31,28,23,.08)";
+          roundRect(ctx, ax, y + 4, keyW, 20, 5);
+          ctx.fill();
+          ctx.fillStyle = INK;
+          ctx.fillText(action.key, ax + 7, y + 18);
+          ax += keyW + 8;
+          ctx.fillStyle = MUTED;
+          ctx.font = "12px system-ui, sans-serif";
+          ctx.fillText(action.caption, ax, y + 18);
+          const captionW = ctx.measureText(action.caption).width;
+          buttons.push({ x: ax - keyW - 8, y, w: keyW + 8 + captionW, h: 28, id: action.id });
+          ax += captionW + 22;
+        }
+      }
+      ctx.restore();
+      ctx.textAlign = "center";
+      for (const bounds of buttons) {
+        bounds.x = cx + (bounds.x - cx) * scale;
+        bounds.y = cardY + (bounds.y - cardY) * scale;
+        bounds.w *= scale;
+        bounds.h *= scale;
+      }
+      this._finishButtonBounds = buttons;
+      this._finishCardBounds = { x: cx - cardW / 2 * scale, y: cardY, w: cardW * scale, h: cardH * scale };
+    }
+  };
+  function installChainedRun(target) {
+    for (const name of Object.getOwnPropertyNames(GameChainedRunRuntime.prototype)) {
+      if (name === "constructor") continue;
+      Object.defineProperty(target.prototype, name, Object.getOwnPropertyDescriptor(GameChainedRunRuntime.prototype, name));
+    }
+  }
+
+  // src/canalRecall/hudCopy.ts
+  function zoomBadgeText(zoom) {
+    return t("hud.zoom", { percent: Math.round(zoom * 100) });
+  }
+  function zoomBadgeShouldFlash(lastShown, zoom, playerZoomed) {
+    return playerZoomed && lastShown !== null && lastShown !== zoom;
+  }
+
+  // src/canalRecall/game/travelProfile.ts
+  var PROFILES = {
+    boat: {
+      id: "boat",
+      labelKey: "setup.travel.boat",
+      extractFile: "water",
+      quizRouteSubject: "waterway",
+      quizRouteQuestionKey: "ride.question.waterway",
+      learnedKind: "water",
+      motion: "water",
+      vehicle: "boat",
+      networkNoun: "waterways",
+      networkNounSingular: "waterway",
+      recallNounKey: "ride.noun.canals",
+      exploreNounKey: "ride.noun.canals",
+      usesRoadConstraint: false,
+      usesWaterTest: true
+    },
+    car: {
+      id: "car",
+      labelKey: "setup.travel.bike",
+      extractFile: "streets-routing",
+      quizRouteSubject: "street",
+      quizRouteQuestionKey: "ride.question.street",
+      learnedKind: "street",
+      motion: "road",
+      vehicle: "bike",
+      networkNoun: "streets",
+      networkNounSingular: "street",
+      recallNounKey: "ride.noun.streets",
+      exploreNounKey: "ride.noun.streets",
+      usesRoadConstraint: true,
+      usesWaterTest: false
+    },
+    transit: {
+      id: "transit",
+      labelKey: "setup.travel.transit",
+      extractFile: "transit-network",
+      quizRouteSubject: "line",
+      quizRouteQuestionKey: "ride.question.line",
+      learnedKind: "transit",
+      motion: "corridor",
+      vehicle: "transit",
+      networkNoun: "tram lines",
+      networkNounSingular: "line",
+      recallNounKey: "ride.noun.lines",
+      exploreNounKey: "ride.noun.linesAndStops",
+      usesRoadConstraint: true,
+      usesWaterTest: false
+    }
+  };
+  function travelProfile(mode) {
+    const template = PROFILES[mode] ?? PROFILES.boat;
+    return {
+      ...template,
+      label: t(template.labelKey),
+      quizRouteQuestion: t(template.quizRouteQuestionKey),
+      recallNoun: t(template.recallNounKey),
+      exploreNoun: t(template.exploreNounKey)
+    };
+  }
+
+  // src/canalRecall/game/recallRules.ts
+  var MAX_HEADING_OFF_ROAD = Math.PI / 4;
+  var ROUTE_QUIZ_TURN_RADIANS = Math.PI / 6;
+  function hudWithholdsRouteName(input) {
+    if (input.promptName) return true;
+    if (input.candidateName && input.candidateName !== input.currentName) return true;
+    if (!input.roadName || input.roadName === input.currentName) return false;
+    return !input.revealed && !input.learned;
+  }
+  function routePlaqueName(input) {
+    const answerHidden = hudWithholdsRouteName(input);
+    return { routeName: answerHidden ? "" : input.shownName || input.roadName, answerHidden };
+  }
+
+  // src/canalRecall/bridgeDisplayNames.ts
+  function bridgeLetterKey(name) {
+    return name.trim().replace(/^(de|het|'t)\s+/i, "").replace(/ł/g, "l").replace(/Ł/g, "L").toLocaleLowerCase().normalize("NFD").replace(/[^\p{L}]/gu, "").replace(/(\p{L})\1+/gu, "$1");
+  }
+  function isBridgeSpelling(osmName, displayName) {
+    return !!displayName && displayName !== osmName && bridgeLetterKey(displayName) === bridgeLetterKey(osmName);
+  }
+  function buildBridgeDisplayNames(bridges) {
+    const names = /* @__PURE__ */ new Map();
+    for (const bridge of bridges) {
+      const name = bridge.name?.trim();
+      const shown = bridge.displayName?.trim();
+      if (name && shown && isBridgeSpelling(name, shown)) names.set(name, shown);
+    }
+    return names;
+  }
+  var indexes = /* @__PURE__ */ new WeakMap();
+  function bridgeDisplayNamesOf(bridges) {
+    if (!bridges) return /* @__PURE__ */ new Map();
+    let index = indexes.get(bridges);
+    if (!index) indexes.set(bridges, index = buildBridgeDisplayNames(bridges));
+    return index;
+  }
+  function displayBridgeName(names, name) {
+    return names && names.get(name) || name;
+  }
+
+  // src/canalRecall/facts/factRotation.ts
+  var RECENT_KIND_MEMORY = 3;
+  function factKey(featureId, fact) {
+    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+    let hash = 2166136261;
+    for (let index = 0; index < normalised.length; index++) {
+      hash ^= normalised.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return `${featureId}:${(hash >>> 0).toString(36)}`;
+  }
+  var KIND_APPEAL = {
+    surprise: 5,
+    naming: 4,
+    culture: 3,
+    people: 3,
+    history: 2,
+    design: 1
+  };
+  function chooseFact(featureId, facts, state) {
+    if (!facts.length) return null;
+    const scored = facts.map((fact) => {
+      const key = factKey(featureId, fact);
+      const lastShown = state.history[key];
+      const seen = lastShown !== void 0;
+      const recency = state.recentKinds.indexOf(fact.kind);
+      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
+      return {
+        fact,
+        key,
+        seen,
+        lastShown: lastShown ?? -1,
+        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
+      };
+    });
+    scored.sort((a, b) => (
+      // Unseen first; then among seen, the one shown longest ago; then appeal.
+      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
+    ));
+    const best = scored[0];
+    return { fact: best.fact, key: best.key, repeat: best.seen };
+  }
+  function recordShown(state, choice) {
+    const shown = state.shown + 1;
+    return {
+      history: { ...state.history, [choice.key]: shown },
+      shown,
+      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
+    };
+  }
+  function expandedFacts(facts, shownText, limit = 3) {
+    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
+  }
+  function pruneHistory(state, maxEntries = 4e3) {
+    const entries = Object.entries(state.history);
+    if (entries.length <= maxEntries) return state;
+    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
+    return { ...state, history: Object.fromEntries(kept) };
+  }
+
+  // src/canalRecall/facts/factQuality.ts
+  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
+  var LEDE_RESTATEMENT = new RegExp(
+    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
+    "i"
+  );
+  var FILLER_CLAUSE = new RegExp(
+    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
+    "i"
+  );
+  function words(text) {
+    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function similarity(a, b) {
+    const left = new Set(words(a));
+    const right = new Set(words(b));
+    if (!left.size || !right.size) return 0;
+    let shared2 = 0;
+    for (const word of left) if (right.has(word)) shared2++;
+    return shared2 / Math.min(left.size, right.size);
+  }
+
+  // src/canalRecall/facts/factTypes.ts
+  var FACT_KIND_LABELS = {
+    naming: "Name",
+    history: "History",
+    people: "People",
+    design: "Design",
+    culture: "Culture",
+    surprise: "Curiosity"
+  };
+  var FACT_KIND_LABELS_NL = {
+    naming: "Naam",
+    history: "Geschiedenis",
+    people: "Mensen",
+    design: "Ontwerp",
+    culture: "Cultuur",
+    surprise: "Weetje"
+  };
+  function factKindLabel(kind) {
+    return language() === "nl" ? FACT_KIND_LABELS_NL[kind] : FACT_KIND_LABELS[kind];
+  }
+  function factText(fact) {
+    return language() === "nl" && fact.textNl ? fact.textNl : fact.text;
+  }
+
+  // src/canalRecall/facts/factStore.ts
+  function openingSentence(text, maxChars = 160) {
+    const trimmed = (text || "").replace(/\s+/g, " ").trim();
+    if (!trimmed) return "";
+    const abbreviations = /* @__PURE__ */ new Set([
+      "st",
+      "sint",
+      "ste",
+      "mr",
+      "mrs",
+      "ms",
+      "dr",
+      "prof",
+      "ir",
+      "ing",
+      "drs",
+      "jr",
+      "sr",
+      "nr",
+      "no",
+      "vs",
+      "ca",
+      "ong",
+      "bijv",
+      "nl",
+      "oa",
+      "dwz",
+      "zgn",
+      "etc",
+      "incl",
+      "excl",
+      "eeuw",
+      "eeuwse"
+    ]);
+    const isSentenceEnd = (index) => {
+      if (trimmed[index] !== ".") return true;
+      const before = /([\p{L}]+)$/u.exec(trimmed.slice(0, index));
+      if (!before) return true;
+      const word = before[1];
+      if (word.length === 1) return false;
+      if (/^\p{Lu}\p{L}*sz$/u.test(word)) return false;
+      return !abbreviations.has(word.toLocaleLowerCase());
+    };
+    let end = -1;
+    for (const match of trimmed.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) {
+        end = match.index + 1;
+        break;
+      }
+    }
+    const sentence = (end > 0 ? trimmed.slice(0, end) : trimmed).trim();
+    if (sentence.length <= maxChars) return sentence;
+    const window2 = sentence.slice(0, maxChars);
+    let boundary = -1;
+    for (const match of window2.matchAll(/[.!?](?=\s|$)/g)) {
+      if (isSentenceEnd(match.index)) boundary = match.index + 1;
+    }
+    if (boundary > maxChars * 0.5) return window2.slice(0, boundary).trim();
+    const cut = Math.max(window2.lastIndexOf(", "), window2.lastIndexOf(" "));
+    return `${(cut > maxChars * 0.5 ? window2.slice(0, cut) : window2).trim()}\u2026`;
+  }
+  function composeFactWithOpening(factText2, opening) {
+    const lead = openingSentence(opening);
+    if (!lead) return { detail: factText2 };
+    if (similarity(lead, factText2) >= 0.55) return { detail: factText2 };
+    const leadStem = lead.replace(/[.!?…]+$/, "").toLowerCase();
+    if (leadStem.length >= 24 && factText2.toLowerCase().includes(leadStem.slice(0, Math.min(48, leadStem.length)))) {
+      return { detail: factText2 };
+    }
+    return { detail: `${lead} ${factText2}`, opening: lead };
+  }
+  var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
+  function saveRotationState(storage3, state) {
+    try {
+      storage3?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
+    } catch {
+    }
+  }
+  function factCardText(featureId, index, state, fallbackOpening) {
+    const entry = index.get(featureId);
+    if (!entry?.facts?.length) return null;
+    const choice = chooseFact(featureId, entry.facts, state);
+    if (!choice) return null;
+    const dutch = language() === "nl";
+    const dutchFact = dutch && !!choice.fact.textNl;
+    const factBody = dutchFact ? choice.fact.textNl : choice.fact.text;
+    const composed = composeFactWithOpening(
+      factBody,
+      dutchFact ? entry.openingNl : entry.opening || fallbackOpening
+    );
+    const others = expandedFacts(entry.facts, choice.fact.text);
+    const all = composed.opening ? [composed.opening, factBody, ...others.map((fact) => factText(fact))] : [factBody, ...others.map((fact) => factText(fact))];
+    return {
+      choice,
+      text: {
+        detail: composed.detail,
+        longDetail: all.join(" "),
+        factTexts: all,
+        factKind: factKindLabel(choice.fact.kind)
+      }
+    };
+  }
+  function commitShownFact(storage3, state, choice) {
+    const next = recordShown(state, choice);
+    saveRotationState(storage3, next);
+    return next;
+  }
+
+  // src/canalRecall/game/finishBlurb.ts
+  function finishBlurb(landmark, facts, rotation, fallback) {
+    const lede = landmark.longDetail || landmark.detail || "";
+    const chosen = facts && facts.size ? factCardText(landmark.id, facts, rotation, landmark.detail || landmark.longDetail) : null;
+    if (chosen?.text.detail) return { text: chosen.text.detail, choice: chosen.choice };
+    return { text: lede || fallback, choice: null };
+  }
+
+  // src/canalRecall/game/finishTitle.ts
+  var FINISH_TITLE_SIZES = [26, 24, 22, 20];
+  var fontAt = (size) => `800 ${size}px system-ui, sans-serif`;
+  function wrapWords(measure, text, width, maxLines) {
+    const words2 = text.trim().split(/\s+/).filter(Boolean);
+    const lines = [];
+    let line = "";
+    let index = 0;
+    for (; index < words2.length; index++) {
+      const next = line ? `${line} ${words2[index]}` : words2[index];
+      if (!line || measure(next) <= width) {
+        line = next;
+        continue;
+      }
+      lines.push(line);
+      line = words2[index];
+      if (lines.length === maxLines) break;
+    }
+    if (lines.length < maxLines) {
+      lines.push(line);
+      return lines.map((l) => clip(measure, l, width));
+    }
+    const last = lines.length - 1;
+    lines[last] = clip(measure, `${lines[last]}\u2026`, width, true);
+    return lines;
+  }
+  function clip(measure, text, width, forceEllipsis = false) {
+    if (measure(text) <= width && (!forceEllipsis || text.endsWith("\u2026"))) return text;
+    let base = text.replace(/…$/, "");
+    while (base.length > 1 && measure(`${base}\u2026`) > width) base = base.slice(0, -1);
+    return `${base.trimEnd()}\u2026`;
+  }
+  function fitFinishTitle(ctx, name, width) {
+    const saved = ctx.font;
+    const measure = (text) => ctx.measureText(text).width;
+    try {
+      for (const size2 of FINISH_TITLE_SIZES) {
+        ctx.font = fontAt(size2);
+        if (measure(name) <= width) return { size: size2, lineHeight: Math.round(size2 * 1.15), lines: [name] };
+      }
+      const size = FINISH_TITLE_SIZES[FINISH_TITLE_SIZES.length - 1];
+      ctx.font = fontAt(size);
+      return { size, lineHeight: Math.round(size * 1.15), lines: wrapWords(measure, name, width, 2) };
+    } finally {
+      ctx.font = saved;
+    }
+  }
+
+  // src/canalRecall/labels/sightlineOcclusion.ts
+  var SIGHTLINE_CELL_M = 40;
+  var SIGHTLINE_CLEARANCE_M = 0.75;
+  var ANCHOR_SLACK_M = 2;
+  var M_PER_DEG_LAT = 111320;
+  var ORIGIN_LNG = 4.8936;
+  var ORIGIN_LAT = 52.3731;
+  var M_PER_DEG_LNG = M_PER_DEG_LAT * Math.cos(ORIGIN_LAT * Math.PI / 180);
+  function toLocal(lng, lat) {
+    return [(lng - ORIGIN_LNG) * M_PER_DEG_LNG, (lat - ORIGIN_LAT) * M_PER_DEG_LAT];
+  }
+  function occluderTopM(properties) {
+    const p = properties || {};
+    const height = Number(p.height), eaves = Number(p.roofEavesHeightM);
+    const pitched = typeof p.roofShape === "string" && p.roofShape !== "flat";
+    if (Number.isFinite(height) && Number.isFinite(eaves) && pitched && eaves < height) return (height + eaves) / 2;
+    if (Number.isFinite(height)) return height;
+    if (Number.isFinite(eaves)) return eaves;
+    return 0;
+  }
+  function prepare(feature) {
+    const g = feature.geometry;
+    const polygons = g?.type === "Polygon" ? [g.coordinates] : g?.type === "MultiPolygon" ? g.coordinates : [];
+    const topM = occluderTopM(feature.properties);
+    if (!(topM > 1)) return null;
+    const rings = [];
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const polygon of polygons) {
+      const outer = Array.isArray(polygon) ? polygon[0] : null;
+      if (!Array.isArray(outer) || outer.length < 3) continue;
+      const flat = new Float64Array(outer.length * 2);
+      for (let i = 0; i < outer.length; i++) {
+        const [x, y] = toLocal(outer[i][0], outer[i][1]);
+        flat[i * 2] = x;
+        flat[i * 2 + 1] = y;
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+      }
+      rings.push(flat);
+    }
+    return rings.length ? { rings, minX, minY, maxX, maxY, topM, stamp: 0 } : null;
+  }
+  var cellKey = (ix, iy) => (ix + 32768) * 65536 + (iy + 32768);
+  function pointInRing(x, y, ring) {
+    let inside = false;
+    const n = ring.length / 2;
+    for (let i = 0, j = n - 1; i < n; j = i++) {
+      const xi = ring[i * 2], yi = ring[i * 2 + 1], xj = ring[j * 2], yj = ring[j * 2 + 1];
+      if (yi > y !== yj > y && x < (xj - xi) * (y - yi) / (yj - yi) + xi) inside = !inside;
+    }
+    return inside;
+  }
+  var SightlineIndex = class {
+    constructor(cellM = SIGHTLINE_CELL_M) {
+      this.cellM = cellM;
+    }
+    prepared = /* @__PURE__ */ new WeakMap();
+    grid = /* @__PURE__ */ new Map();
+    source = null;
+    pending = null;
+    stamp = 1;
+    stats = { features: 0, cells: 0, buildMs: 0, tests: 0, blocked: 0, testMs: 0 };
+    /** Whether any footprints are indexed. */
+    get ready() {
+      return this.grid.size > 0;
+    }
+    /** Adopt `features` (by identity). Spends at most `budgetMs` per call; returns true when the grid is current. */
+    refresh(features, budgetMs = 2) {
+      if (!features) return this.source === null;
+      if (features === this.source && !this.pending) return true;
+      if (!this.pending || this.pending.list !== features) this.pending = { list: features, next: 0, grid: /* @__PURE__ */ new Map(), ms: 0 };
+      const job = this.pending, start = performance.now(), deadline = start + budgetMs, cell = this.cellM;
+      while (job.next < job.list.length) {
+        const feature = job.list[job.next++];
+        let p = this.prepared.get(feature);
+        if (p === void 0) {
+          p = prepare(feature);
+          this.prepared.set(feature, p);
+        }
+        if (p) {
+          const x0 = Math.floor(p.minX / cell), x1 = Math.floor(p.maxX / cell);
+          const y0 = Math.floor(p.minY / cell), y1 = Math.floor(p.maxY / cell);
+          for (let ix = x0; ix <= x1; ix++) for (let iy = y0; iy <= y1; iy++) {
+            const key = cellKey(ix, iy);
+            const bucket = job.grid.get(key);
+            if (bucket) bucket.push(p);
+            else job.grid.set(key, [p]);
+          }
+        }
+        if ((job.next & 255) === 0 && performance.now() > deadline) break;
+      }
+      job.ms += performance.now() - start;
+      if (job.next < job.list.length) return false;
+      this.grid = job.grid;
+      this.source = features;
+      this.pending = null;
+      this.stats.features = features.length;
+      this.stats.cells = job.grid.size;
+      this.stats.buildMs = Math.round(job.ms * 10) / 10;
+      return true;
+    }
+    /**
+     * True when a building's walls stand above the straight line from the
+     * camera to the anchor. Buildings whose footprint holds the camera (its
+     * back-face-culled walls are invisible) or the anchor are skipped.
+     */
+    blocked(camera, anchor) {
+      const t0 = performance.now();
+      const result = this.test(camera, anchor);
+      this.stats.tests++;
+      if (result) this.stats.blocked++;
+      this.stats.testMs += performance.now() - t0;
+      return result;
+    }
+    /** Zero the per-frame counters. */
+    resetCounters() {
+      this.stats.tests = 0;
+      this.stats.blocked = 0;
+      this.stats.testMs = 0;
+    }
+    test(camera, anchor) {
+      if (!this.grid.size) return false;
+      const [ax, ay] = toLocal(camera.lng, camera.lat), [bx, by] = toLocal(anchor.lng, anchor.lat);
+      const dx = bx - ax, dy = by - ay, len = Math.hypot(dx, dy);
+      if (len < ANCHOR_SLACK_M * 2) return false;
+      const tMax = 1 - ANCHOR_SLACK_M / len;
+      const stamp = ++this.stamp, cell = this.cellM;
+      let ix = Math.floor(ax / cell), iy = Math.floor(ay / cell);
+      const ex = Math.floor(bx / cell), ey = Math.floor(by / cell);
+      const sx = Math.sign(dx), sy = Math.sign(dy);
+      const tdx = sx ? cell / Math.abs(dx) : Infinity, tdy = sy ? cell / Math.abs(dy) : Infinity;
+      let tx = sx ? ((sx > 0 ? (ix + 1) * cell : ix * cell) - ax) / dx : Infinity;
+      let ty = sy ? ((sy > 0 ? (iy + 1) * cell : iy * cell) - ay) / dy : Infinity;
+      const visit = (cx, cy) => {
+        const bucket = this.grid.get(cellKey(cx, cy));
+        if (bucket) for (const p of bucket) {
+          if (p.stamp === stamp) continue;
+          p.stamp = stamp;
+          if (this.wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camera.altM, anchor.altM)) return true;
+        }
+        return false;
+      };
+      for (let guard = 0; guard < 4096; guard++) {
+        if (visit(ix, iy)) return true;
+        if (ix === ex && iy === ey) break;
+        if (Math.min(tx, ty) > 1) return visit(ex, ey);
+        if (tx < ty) {
+          ix += sx;
+          tx += tdx;
+        } else {
+          iy += sy;
+          ty += tdy;
+        }
+      }
+      return false;
+    }
+    wallAbove(p, ax, ay, dx, dy, bx, by, tMax, camAlt, anchorAlt) {
+      if (p.maxX < Math.min(ax, bx) || p.minX > Math.max(ax, bx) || p.maxY < Math.min(ay, by) || p.minY > Math.max(ay, by)) return false;
+      if (p.topM < Math.min(camAlt, anchorAlt) + SIGHTLINE_CLEARANCE_M) return false;
+      let above = false;
+      outer: for (const ring of p.rings) {
+        const n = ring.length / 2;
+        for (let i = 0, j = n - 1; i < n; j = i++) {
+          const cx = ring[j * 2], cy = ring[j * 2 + 1];
+          const ex = ring[i * 2] - cx, ey = ring[i * 2 + 1] - cy;
+          const den = dx * ey - dy * ex;
+          if (Math.abs(den) < 1e-12) continue;
+          const t2 = ((cx - ax) * ey - (cy - ay) * ex) / den;
+          if (t2 <= 0 || t2 > tMax) continue;
+          const u = ((cx - ax) * dy - (cy - ay) * dx) / den;
+          if (u < 0 || u > 1) continue;
+          const rayAlt = camAlt + (anchorAlt - camAlt) * t2;
+          if (p.topM > rayAlt + SIGHTLINE_CLEARANCE_M) {
+            above = true;
+            break outer;
+          }
+        }
+      }
+      if (!above) return false;
+      for (const ring of p.rings) {
+        if (pointInRing(ax, ay, ring) || pointInRing(bx, by, ring)) return false;
+      }
+      return true;
+    }
+  };
+
+  // src/canalRecall/labels/streetLabelOcclusion.ts
+  var STREET_LABEL_ALT_M = 1;
+  var HOLD_FRAMES = 2;
+  var RETEST_FRAMES = 8;
+  var BUILD_BUDGET_MS = 2;
+  var OCCLUSION_MIN_PITCH_DEG = 5;
+  function occlusionWanted(pitchedView, mapPitchDeg) {
+    return pitchedView || Number.isFinite(mapPitchDeg) && mapPitchDeg >= OCCLUSION_MIN_PITCH_DEG;
+  }
+  var StreetLabelOcclusion = class {
+    index = new SightlineIndex();
+    verdicts = /* @__PURE__ */ new WeakMap();
+    slots = 0;
+    frameNo = 0;
+    /** Last frame's counts, for the e2e and profiling. */
+    stats = { tested: 0, hidden: 0, ms: 0, features: 0, buildMs: 0 };
+    /** Labels drawn / hidden by occlusion last frame (text only), for the e2e. */
+    lastHidden = [];
+    /**
+     * The per-label test for this frame, or null when there is nothing to test
+     * against (top-down view, no resident buildings yet, no camera).
+     */
+    frame(host, loader, pitched) {
+      this.frameNo++;
+      this.stats.tested = 0;
+      this.stats.hidden = 0;
+      this.stats.ms = 0;
+      this.lastHidden = [];
+      const vm = host;
+      if (!pitched || !(vm?.map || vm?.cameraEye) || !vm.worldToLngLat || !loader) return null;
+      const toLngLat = vm.worldToLngLat.bind(vm);
+      const features = !vm.map && vm._completeCity?.residentFeatures ? vm._completeCity.residentFeatures() : vm._completeCity?.sampleFeatures?.(1e6);
+      this.index.refresh(features, BUILD_BUDGET_MS);
+      this.stats.features = this.index.stats.features;
+      this.stats.buildMs = this.index.stats.buildMs;
+      if (!this.index.ready) return null;
+      let camera;
+      if (vm.map) {
+        const t2 = vm.map.transform;
+        const at = t2?.getCameraLngLat?.(), altM = t2?.getCameraAltitude?.();
+        if (!at || !Number.isFinite(altM)) return null;
+        camera = { lng: at.lng, lat: at.lat, altM };
+      } else {
+        const eye = vm.cameraEye();
+        if (!eye || !Number.isFinite(eye.altitudeM)) return null;
+        camera = { lng: eye.lng, lat: eye.lat, altM: eye.altitudeM };
+      }
+      const blockedAt = (p) => {
+        const ll = toLngLat(p.x, p.y, loader);
+        const [lng, lat] = Array.isArray(ll) ? ll : [ll.lng, ll.lat];
+        return this.index.blocked(camera, { lng, lat, altM: STREET_LABEL_ALT_M });
+      };
+      return (label, ends) => {
+        const t0 = performance.now();
+        let v = this.verdicts.get(label);
+        const fresh = !v || v.frame !== this.frameNo - 1;
+        if (v && !fresh && (this.frameNo + v.slot) % RETEST_FRAMES !== 0) {
+          v.frame = this.frameNo;
+          if (v.hidden) {
+            this.stats.hidden++;
+            if (label.text) this.lastHidden.push(label.text);
+          }
+          this.stats.ms += performance.now() - t0;
+          return v.hidden;
+        }
+        const now = blockedAt(label) || !!ends && ends.some(blockedAt);
+        if (!v || fresh) {
+          v = { hidden: now, votes: HOLD_FRAMES, frame: 0, slot: v?.slot ?? this.slots++ };
+          this.verdicts.set(label, v);
+        }
+        v.frame = this.frameNo;
+        if (now === v.hidden) v.votes = HOLD_FRAMES;
+        else if (--v.votes <= 0) {
+          v.hidden = now;
+          v.votes = HOLD_FRAMES;
+        }
+        this.stats.tested++;
+        if (v.hidden) {
+          this.stats.hidden++;
+          if (label.text) this.lastHidden.push(label.text);
+        }
+        this.stats.ms += performance.now() - t0;
+        return v.hidden;
+      };
+    }
+  };
+
+  // src/canalRecall/game/teachingSurface.ts
+  function canShowMiniMap(enabled, input) {
+    return enabled && !input.utilityOpen;
+  }
+  function canShowPoiLabels(labelsWanted, input) {
+    return labelsWanted && !input.quizOpen && !input.promptVisible;
+  }
+
+  // src/canalRecall/routing/bikeAccess.ts
+  var BICYCLE_DENIED = /* @__PURE__ */ new Set(["no", "dismount", "private", "customers"]);
+  function isBicycleRestricted(tags) {
+    return BICYCLE_DENIED.has(tags.bicycle || "") || tags.bicycleRestricted === "yes";
+  }
+  function bicycleRestrictionNotice(tags) {
+    if (!isBicycleRestricted(tags)) return null;
+    const bicycle = tags.bicycle || "";
+    if (bicycle === "dismount") return "Walk bikes in real life";
+    if (bicycle === "private" || bicycle === "customers") return "Private \u2014 no public cycling";
+    return "No cycling in real life";
+  }
+
+  // src/canalRecall/look/palette.ts
+  var PHOTO_WALL_CELL_MEAN = 225;
+  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
+  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
+  var LOOK_VARIANTS = {
+    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
+    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    // Storybook warms and lifts the natural palette a little, as an illustrator would.
+    storybook: {
+      cells: "storybook",
+      shadeBands: 0,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: false,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
+    },
+    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
+    cartoon: {
+      cells: "cartoon",
+      shadeBands: 3,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: true,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
+    }
+  };
+  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
+  var ROOF_TONES = {
+    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
+    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
+  };
+  var ROOF_SLOT_TONES = {
+    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
+    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
+    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
+    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
+    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
+    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
+    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
+    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
+    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
+    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
+    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
+    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
+  };
+  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
+  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
+  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var PERIOD_WALLS = {
+    photo: {
+      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
+      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
+      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
+      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
+    },
+    storybook: {
+      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
+      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
+      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
+      modern: null
+    },
+    cartoon: {
+      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
+      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
+      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
+      modern: null
+    }
+  };
+  var PERIOD_PRIORS = {
+    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
+    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
+    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
+    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
+  };
+  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
+  var GLASS_TINT_CELL_W = 32;
+  var GLASS_TINT_CELL_H = 64;
+  var PANE_LUMA = [157.19, 92.83, 69.17];
+  var STREAK_LUMA = 240.95;
+  var STREAK_ALPHA = 0.16;
+  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
+  function glassTintCellValue(x, y) {
+    const t2 = y / (GLASS_TINT_CELL_H - 1);
+    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
+    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
+    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
+  }
+  var GLASS_TINT_CELL_MEAN = (() => {
+    let sum = 0;
+    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
+    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
+  })();
+  var STONE_CELL_MEAN = 228 / 255;
+  var STREET_GROUND = {
+    // Was [72, 74, 78]: under the rig it drew at luma 67 in sun and 59 in shade, "near-black" (user live play
+    // 2026-10-14). Lifted to a sunlit-grey 88 (just under the klinker carriageway's 91, still cooler than it); with
+    // ownGround/groundLight.ts it draws 88 in sun and 78 in cast shadow, above LOOK's road floor of 65–75.
+    asphalt: { base: [86, 88, 93] },
+    cycle: { base: [150, 66, 58] },
+    // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
+    // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
+    klinker: { base: [122, 90, 80], joint: "#4b3d38" },
+    pavement: { base: [174, 162, 152], joint: "#7f756b" },
+    kerb: "#cfcac0",
+    paint: "#f2f0ea",
+    rail: "#6c6e72",
+    bollard: "#5a2a26"
+  };
+  var HIGHLIGHT_CORAL = "#ff8033";
+  var GROUND_TONES = {
+    land: { base: [168, 158, 142], joint: "#857b6d" },
+    paving: { base: [184, 174, 158], joint: "#8f8577" },
+    square: { base: [190, 179, 161], joint: "#958a7c" },
+    // Klinker warm grey-rose, asphalt darker and cooler than it ("so much grey": they shared one band).
+    klinker: { base: [158, 124, 114], joint: "#7a6660" },
+    asphalt: [68, 72, 80],
+    cycle: [156, 76, 66],
+    gravel: [180, 166, 136],
+    park: [96, 140, 70],
+    wood: [70, 112, 58],
+    parking: [102, 102, 105],
+    kerb: "#aaa498",
+    water: "#46707c",
+    // Parks (parks-v1, ownGround/parks.ts, 2026-10-13): mown lawn fresher than the park fill under it, planting beds
+    // as soil with green dabs, shrub planting darker and clumped, bark mulch, play sand, shell/half-paved paths lighter
+    // than street gravel, park asphalt lighter than the road's, ponds the canal tone (a greener one read as a shadow).
+    lawn: [110, 154, 74],
+    bed: { soil: [98, 80, 60], leaf: [84, 122, 58] },
+    shrub: { base: [56, 92, 46], leaf: [76, 116, 56] },
+    bark: [118, 84, 58],
+    sand: [212, 194, 150],
+    parkGravel: [198, 184, 152],
+    parkPath: [110, 110, 112],
+    pond: "#46707c"
+  };
+
+  // src/canalRecall/hudTheme.ts
+  var enamelTheme = {
+    enamel: "#0b3a8c",
+    enamelBright: "#1450b8",
+    enamelDeep: "#072861",
+    night: "#071430",
+    ink: "#ffffff",
+    inkMuted: "rgba(255,255,255,0.72)",
+    inkDim: "rgba(255,255,255,0.86)",
+    line: "rgba(255,255,255,0.28)",
+    /** Rivet / gold accent (plaque corners, selected hairline). */
+    rivet: "#c4a35a",
+    rivetDeep: "#8a7040",
+    /** Copper stamp (Start / Confirm). */
+    copper: "#b87333",
+    copperHi: "#d9a05b",
+    copperDeep: "#8a5524",
+    copperMid: "#c9844a",
+    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
+  };
+  var daylightTheme = {
+    paper: "#f4efe5",
+    paperRaised: "#fbf8f2",
+    paperSunk: "#ebe4d6",
+    ink: "#1f1c17",
+    /** 6.3:1 on paper — secondary copy. */
+    inkMuted: "#5f584d",
+    line: "rgba(31,28,23,0.14)",
+    lineStrong: "rgba(31,28,23,0.26)",
+    fill: "rgba(31,28,23,0.045)",
+    fillHover: "rgba(31,28,23,0.085)",
+    accent: "#b4682c",
+    /** Copper dark enough for text on paper (≈6:1). */
+    accentInk: "#8a4a18",
+    accentSoft: "rgba(180,104,44,0.13)",
+    scrim: "rgba(28,24,18,0.38)",
+    danger: "#a8321f"
+  };
+  var paperTheme = {
+    paper: enamelTheme.enamel,
+    paperRaised: enamelTheme.enamelBright,
+    paperMuted: enamelTheme.enamelDeep,
+    ink: enamelTheme.ink,
+    inkMuted: enamelTheme.inkMuted,
+    line: enamelTheme.line,
+    moss: enamelTheme.enamelBright,
+    mossDark: enamelTheme.enamelDeep,
+    mossSoft: "rgba(20,80,184,0.28)",
+    terracotta: enamelTheme.copper,
+    ochre: enamelTheme.rivet
+  };
+  var hudSurface = {
+    /** Always-on readouts sitting directly on the map. */
+    card: "rgba(251,248,242,0.9)",
+    /** Cards you stop and read: the trivia card, the postcard. */
+    cardSolid: "rgba(251,248,242,0.97)",
+    /** Hairline border. */
+    border: "rgba(31,28,23,0.14)",
+    borderStrong: "rgba(180,104,44,0.6)",
+    /** Drop shadow under a card that floats over the map. */
+    shadow: "rgba(31,28,23,0.22)",
+    /** The thumbstick, which sits over the map and must not hide it. */
+    control: "rgba(251,248,242,0.72)",
+    controlPressed: daylightTheme.accent,
+    controlInk: "rgba(31,28,23,0.62)",
+    /** Thumbstick knob at rest. */
+    controlKnob: "rgba(31,28,23,0.2)",
+    /** Type on the paper plate. */
+    ink: daylightTheme.ink,
+    inkMuted: daylightTheme.inkMuted,
+    accent: daylightTheme.accentInk,
+    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
+     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
+    arrow: HIGHLIGHT_CORAL,
+    fontPlaque: enamelTheme.fontPlaque,
+    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
+     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
+    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
+    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+  };
+
+  // src/canalRecall/labels/labelStyle.ts
+  var PILL_FONT = `700 12px ${hudSurface.fontUi}`;
+
+  // src/canalRecall/orientationPois.ts
+  var SPOILER_MIN_LENGTH = 5;
+  var SPOILER_MAX_WORDS = 5;
+  var DUTCH_NAME_SUFFIXES = [
+    "dwarsstraat",
+    "burgwal",
+    "gracht",
+    "straat",
+    "kanaal",
+    "sloot",
+    "steeg",
+    "plein",
+    "kade",
+    "brug",
+    "laan",
+    "dijk",
+    "weg",
+    "pad",
+    "hof"
+  ];
+  function normaliseSpoilerName(name) {
+    return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  function buildSpoilerIndex(names) {
+    const index = /* @__PURE__ */ new Set();
+    const lowerRaw = /* @__PURE__ */ new Set();
+    const full = /* @__PURE__ */ new Set();
+    for (const raw of names) {
+      if (!raw) continue;
+      const name = normaliseSpoilerName(raw);
+      if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
+      if (name.length < SPOILER_MIN_LENGTH) continue;
+      index.add(name);
+      full.add(name);
+      for (const suffix of DUTCH_NAME_SUFFIXES) {
+        if (!name.endsWith(suffix)) continue;
+        const stem = name.slice(0, -suffix.length).trim();
+        if (stem.length >= SPOILER_MIN_LENGTH) index.add(stem);
+        break;
+      }
+    }
+    return { names: index, lowerRaw, full };
+  }
+  var spoilsMemo = /* @__PURE__ */ new WeakMap();
+  function poiNameSpoils(label, index) {
+    if (!label || !index || index.names.size === 0) return false;
+    let memo = spoilsMemo.get(index);
+    if (!memo) spoilsMemo.set(index, memo = /* @__PURE__ */ new Map());
+    let spoils = memo.get(label);
+    if (spoils === void 0) memo.set(label, spoils = labelSpoils(label, index));
+    return spoils;
+  }
+  var labelGrams = /* @__PURE__ */ new Map();
+  var fullLengths = /* @__PURE__ */ new WeakMap();
+  function labelSpoils(label, index) {
+    let held = labelGrams.get(label);
+    if (!held) {
+      const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean), grams = [];
+      for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++)
+        for (let start = 0; start + size <= words2.length; start++) grams.push(words2.slice(start, start + size).join(" "));
+      labelGrams.set(label, held = { words: words2, grams });
+    }
+    for (const gram of held.grams) if (index.names.has(gram)) return true;
+    if (index.full && index.full.size) {
+      let lengths = fullLengths.get(index.full);
+      if (!lengths) fullLengths.set(index.full, lengths = [...new Set([...index.full].map((n) => n.length))].filter((n) => n >= SPOILER_MIN_LENGTH).sort((a, b) => a - b));
+      for (const word of held.words) {
+        for (const n of lengths) {
+          if (n >= word.length) break;
+          if (index.full.has(word.slice(0, n))) return true;
+        }
+      }
+    }
+    return false;
+  }
+  function maskSpoiledName(label, names, fallback = "your destination") {
+    if (!label) return label;
+    const chars = [];
+    const origin = [];
+    for (let i = 0; i < label.length; i++) {
+      const base = normaliseSpoilerName(label[i]);
+      if (base) {
+        chars.push(base);
+        origin.push(i);
+      } else if (chars.length && chars[chars.length - 1] !== " ") {
+        chars.push(" ");
+        origin.push(i);
+      }
+    }
+    const text = chars.join("");
+    const spans = [];
+    for (const raw of new Set(names)) {
+      const name = raw ? normaliseSpoilerName(raw) : "";
+      if (name.length < SPOILER_MIN_LENGTH) continue;
+      for (let at = text.indexOf(name); at !== -1; at = text.indexOf(name, at + 1)) {
+        if (at > 0 && text[at - 1] !== " ") continue;
+        spans.push([origin[at], origin[at + name.length - 1] + 1]);
+      }
+    }
+    if (!spans.length) return label;
+    spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+    let out = "";
+    let cursor = 0;
+    for (const [start, end] of spans) {
+      if (end <= cursor) continue;
+      out += label.slice(cursor, Math.max(cursor, start)) + "\u2026";
+      cursor = end;
+    }
+    out += label.slice(cursor);
+    return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+  }
+  function mapLabelSpoils(raw, printed, asked) {
+    if (!asked || !raw) return false;
+    const index = buildSpoilerIndex([asked]);
+    if (!index.names.size) return normaliseSpoilerName(raw) === normaliseSpoilerName(asked);
+    for (const text of printed && printed !== raw ? [raw, printed] : [raw]) {
+      if (poiNameSpoils(text, index)) return true;
+      if (maskSpoiledName(text, [asked], "") !== text) return true;
+    }
+    return false;
+  }
 
   // src/canalRecall/game/trackpadTwist.ts
   var TWIST_DEADZONE_DEG = 6;
@@ -7650,13 +8284,13 @@
   }
 
   // src/canalRecall/game/presentationRuntime.ts
-  var INK = "#1f1c17";
-  var MUTED = "#5f584d";
-  var BODY = "#2e2a23";
-  var ACCENT = "#8a4a18";
+  var INK2 = "#1f1c17";
+  var MUTED2 = "#5f584d";
+  var BODY2 = "#2e2a23";
+  var ACCENT2 = "#8a4a18";
   var GOOD = "#8a4a18";
-  var COPPER = "#c9844a";
-  var RULE = "rgba(31,28,23,0.16)";
+  var COPPER2 = "#c9844a";
+  var RULE2 = "rgba(31,28,23,0.16)";
   var UTILITY_REVEAL_MS = 3e3;
   var FERRY_DOCK_HINT_PX = 150 * 3;
   var RADAR_OVERVIEW_URL = "../data/extracts/amsterdam/own-map-v1/overview.json.gz";
@@ -7991,7 +8625,7 @@
           const hit = (bounds) => x >= bounds.x && x <= bounds.x + bounds.w && y >= bounds.y && y <= bounds.y + bounds.h;
           const finish = this.state === GameState.FINISHED && this._finishButtonBounds?.find(hit);
           const pause = this.state === GameState.PAUSED && this._pauseButtonBounds?.find(hit);
-          if (finish) this._runFinishAction(finish.id);
+          if (finish) this._runFinishTap(finish.id);
           else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
           else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
           else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
@@ -8129,6 +8763,7 @@
       const ctx = this.ctx;
       ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
       this.hud.beginFrame?.();
+      this._runTick();
       const utility = document.getElementById("utility-buttons");
       if (utility) {
         const visibility = utilityVisibility({ state: this.state, utilityOpen: !!this._utilityOpen });
@@ -8822,7 +9457,7 @@
       const cardH = 20 + titleH + actionsH + statsH + 18;
       const cardY = (CANVAS_H - cardH) / 2;
       this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 12 });
-      ctx.fillStyle = INK;
+      ctx.fillStyle = INK2;
       ctx.font = `800 ${compact ? 30 : 36}px ${window.CanalRecallUi.hudSurface.fontPlaque}`;
       ctx.textAlign = "center";
       ctx.fillText("PAUSED", cx, cardY + (compact ? 40 : 46));
@@ -8833,15 +9468,15 @@
         for (const action of actions) {
           const primary = action.id === "resume";
           const bounds = { x: cardX + padX, y, w: cardW - padX * 2, h: BUTTON_H };
-          ctx.fillStyle = primary ? COPPER : "rgba(31,28,23,.05)";
+          ctx.fillStyle = primary ? COPPER2 : "rgba(31,28,23,.05)";
           roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
           ctx.fill();
           if (!primary) {
-            ctx.strokeStyle = RULE;
+            ctx.strokeStyle = RULE2;
             ctx.lineWidth = 1;
             ctx.stroke();
           }
-          ctx.fillStyle = primary ? "#1f1c17" : action.id === "copy" && this._copiedTimer > 0 ? GOOD : INK;
+          ctx.fillStyle = primary ? "#1f1c17" : action.id === "copy" && this._copiedTimer > 0 ? GOOD : INK2;
           ctx.font = "700 14px system-ui, sans-serif";
           ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
           pauseButtons.push({ ...bounds, id: action.id });
@@ -8856,11 +9491,11 @@
           ctx.fillStyle = "rgba(31,28,23,.08)";
           roundRect(ctx, ax, y + 2, keyW, 20, 5);
           ctx.fill();
-          ctx.fillStyle = INK;
+          ctx.fillStyle = INK2;
           ctx.fillText(action.key, ax + 7, y + 16);
           const captionX = ax + keyW + 8;
           ctx.font = "12px system-ui, sans-serif";
-          ctx.fillStyle = action.id === "copy" && this._copiedTimer > 0 ? GOOD : MUTED;
+          ctx.fillStyle = action.id === "copy" && this._copiedTimer > 0 ? GOOD : MUTED2;
           ctx.fillText(action.caption, captionX, y + 16);
           const captionW = ctx.measureText(action.caption).width;
           pauseButtons.push({
@@ -8876,7 +9511,7 @@
       }
       ctx.textAlign = "center";
       ctx.font = `500 12px ${window.CanalRecallUi.hudSurface.fontUi}`;
-      ctx.fillStyle = MUTED;
+      ctx.fillStyle = MUTED2;
       const kilometres = this._playerDistancePx() / PIXELS_PER_METER / 1e3;
       ctx.fillText(
         `${this.hud.formatTime(this.raceTime)}  \xB7  ${kilometres.toFixed(2)} km  \xB7  ${this.quizCorrect} of ${this.quizAttempts} named`,
@@ -8894,6 +9529,12 @@
      * a 38 px stopwatch said it did.
      */
     _renderFinish() {
+      this._recordRunStop();
+      if (this._runCard) {
+        this._renderRunCard(this._runCard);
+        return;
+      }
+      const runText = this._runArrivalLine();
       const ctx = this.ctx;
       ctx.fillStyle = "rgba(28,24,18,.34)";
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
@@ -8912,7 +9553,7 @@
       const image = landmark ? this._landmarkImages?.get(landmark.id) : void 0;
       const hasImage = !!image && image.complete && image.naturalWidth > 0;
       const rule = (y2) => {
-        ctx.strokeStyle = RULE;
+        ctx.strokeStyle = RULE2;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(cardX + padX, y2 + 0.5);
@@ -8932,13 +9573,13 @@
         const titleExtra = (title.lines.length - 1) * title.lineHeight;
         blocks2.push({ height: 74 + titleExtra, draw: (top) => {
           ctx.textAlign = "left";
-          ctx.fillStyle = ACCENT;
+          ctx.fillStyle = ACCENT2;
           ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           ctx.fillText(tour?.completed ? "TOUR COMPLETE" : "ARRIVED", cardX + padX, top + 11);
-          ctx.fillStyle = INK;
+          ctx.fillStyle = INK2;
           ctx.font = `800 ${title.size}px system-ui, sans-serif`;
           title.lines.forEach((line, index) => ctx.fillText(line, cardX + padX, top + 42 + index * title.lineHeight));
-          ctx.fillStyle = MUTED;
+          ctx.fillStyle = MUTED2;
           ctx.font = "13px system-ui, sans-serif";
           ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
         } });
@@ -8975,7 +9616,7 @@
               ctx.restore();
             }
             ctx.textAlign = "left";
-            ctx.fillStyle = MUTED;
+            ctx.fillStyle = MUTED2;
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
             if (tour) {
               const where = `${tour.title.toUpperCase()}  \xB7  STOP ${tour.stopIndex + 1} OF ${tour.stopCount}`;
@@ -8985,7 +9626,7 @@
               const kind = String(landmark.type || "landmark").toUpperCase();
               ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  W  WIKIPEDIA` : kind, textX, top + 10);
             }
-            ctx.fillStyle = BODY;
+            ctx.fillStyle = BODY2;
             ctx.font = "12px system-ui, sans-serif";
             blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
           } });
@@ -9019,14 +9660,14 @@
             const column = innerW / inRow;
             const sx = cardX + padX + column * (index % statsPerRow + 0.5);
             const sy = top + row * ROW_H;
-            ctx.fillStyle = INK;
+            ctx.fillStyle = INK2;
             ctx.font = `700 ${compact ? 19 : 21}px ${window.CanalRecallUi.hudSurface.fontMono}`;
             ctx.fillText(stat.value, sx, sy + 24);
-            ctx.fillStyle = MUTED;
+            ctx.fillStyle = MUTED2;
             ctx.font = "11px system-ui, sans-serif";
             ctx.fillText(stat.label, sx, sy + 42);
           });
-          ctx.fillStyle = MUTED;
+          ctx.fillStyle = MUTED2;
           ctx.font = "11px system-ui, sans-serif";
           ctx.fillText(wrapText(ctx, footerBits.join("  \xB7  "), innerW, 1)[0], cx, top + statRows * ROW_H + 18);
         } });
@@ -9058,7 +9699,7 @@
           if (gain && gain.newLandmarks > 0) fresh.push(`${gain.newLandmarks} landmarks`);
           const knowledgeStacked = compact;
           ctx.font = "12px system-ui, sans-serif";
-          const lineBudget = [Infinity, 4, 2, 1][level2];
+          const lineBudget = [Infinity, 4, 2, runText ? 0 : 1][level2];
           const storyLines = [];
           for (const sentence of [story.headline, story.detail, story.passport, story.streak, story.guestTease]) {
             if (!sentence) continue;
@@ -9075,10 +9716,10 @@
           const knowledgeH = (knowledgeStacked ? 34 : 18) + (fresh.length ? 18 : 0) + storyLines.length * 16 + 10;
           blocks2.push({ height: knowledgeH, rule: true, draw: (top) => {
             ctx.textAlign = "left";
-            ctx.fillStyle = MUTED;
+            ctx.fillStyle = MUTED2;
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
             ctx.fillText("CITY KNOWLEDGE", cardX + padX, top + 12);
-            ctx.fillStyle = BODY;
+            ctx.fillStyle = BODY2;
             ctx.font = "12px system-ui, sans-serif";
             if (knowledgeStacked) {
               ctx.fillText(totals.join("  \xB7  ") || t("ride.startExploring"), cardX + padX, top + 30);
@@ -9089,13 +9730,13 @@
             let y2 = top + (knowledgeStacked ? 48 : 30);
             if (fresh.length) {
               ctx.textAlign = "left";
-              ctx.fillStyle = ACCENT;
+              ctx.fillStyle = ACCENT2;
               ctx.font = "11px system-ui, sans-serif";
               ctx.fillText(`+${fresh.join(", +")} first-time`, cardX + padX, y2);
               y2 += 16;
             }
             ctx.textAlign = "left";
-            ctx.fillStyle = BODY;
+            ctx.fillStyle = BODY2;
             ctx.font = "12px system-ui, sans-serif";
             for (const line of storyLines) {
               ctx.fillText(line, cardX + padX, y2);
@@ -9106,23 +9747,40 @@
         if (bestText && !bestInFooter) {
           blocks2.push({ height: 26, draw: (top) => {
             ctx.textAlign = "left";
-            ctx.fillStyle = bestText.startsWith("\u2605") ? GOOD : MUTED;
+            ctx.fillStyle = bestText.startsWith("\u2605") ? GOOD : MUTED2;
             ctx.font = "bold 13px system-ui, sans-serif";
             ctx.fillText(bestText, cardX + padX, top + 14);
           } });
         }
+        const drawRun = (top) => {
+          if (!runText) return;
+          ctx.textAlign = "left";
+          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+          ctx.fillStyle = ACCENT2;
+          ctx.fillText("RUN", cardX + padX, top + 13);
+          const textX = cardX + padX + ctx.measureText("RUN").width + 12;
+          const lineW = cardX + cardW - padX - textX;
+          ctx.fillStyle = INK2;
+          ctx.font = "700 13px system-ui, sans-serif";
+          if (ctx.measureText(runText).width > lineW) ctx.font = "600 12px system-ui, sans-serif";
+          ctx.fillText(wrapText(ctx, runText, lineW, 1)[0], textX, top + 13);
+        };
+        const foldRun = !!runText && !!stamp && level2 >= 3;
+        if (runText && !foldRun) blocks2.push({ height: 20, rule: level2 < 3, draw: drawRun });
         if (stamp) {
-          blocks2.push({ height: 20, draw: (top) => {
+          blocks2.push({ height: foldRun ? 34 : 20, draw: (blockTop) => {
+            if (foldRun) drawRun(blockTop - 2);
+            const top = foldRun ? blockTop + 14 : blockTop;
             ctx.textAlign = "left";
             const label = stamp.kind === "tour" ? stamp.isNew ? "TOUR STAMP" : "TOUR STAMP AGAIN" : stamp.isNew ? "NEW STAMP" : "STAMP AGAIN";
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
             const labelW = ctx.measureText(label).width;
-            ctx.fillStyle = ACCENT;
+            ctx.fillStyle = ACCENT2;
             ctx.beginPath();
             ctx.arc(cardX + padX + 6, top + 9, 6, 0, Math.PI * 2);
             ctx.fill();
             ctx.fillText(label, cardX + padX + 18, top + 13);
-            ctx.fillStyle = INK;
+            ctx.fillStyle = INK2;
             ctx.font = "700 13px system-ui, sans-serif";
             const tally = stamp.kind === "poi" && stamp.total > 0 ? `  \xB7  ${stamp.earned} of ${stamp.total}` : "";
             const textX = cardX + padX + 18 + labelW + 10;
@@ -9132,12 +9790,15 @@
         const actions = [
           // Say what happens: 'again' deals another route with these settings,
           // 'route' goes back to setup. "Continue" / "Finish" said neither.
-          { id: "again", key: "ENTER", caption: tour && !tour.completed ? t("ride.nextStop") : t("ride.nextRoute") }
+          // In a run the next ride is the run's next stop.
+          { id: "again", key: "ENTER", caption: tour && !tour.completed || runText ? t("ride.nextStop") : t("ride.nextRoute") }
         ];
+        const endRun2 = runText ? { id: "end", key: "E", caption: "End run" } : null;
         actions.push({ id: "route", key: compact ? "" : "M", caption: "Route setup" });
         if (this._shareUrl) {
           actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? t("ride.linkCopied") : t("ride.shareRoute") });
         }
+        if (endRun2 && !compact) actions.push(endRun2);
         const BUTTON_H = 44, BUTTON_GAP = 8;
         const pairSecondary = compact && level2 >= 2 && actions.length === 3;
         const buttonRows = pairSecondary ? 2 : actions.length;
@@ -9154,17 +9815,32 @@
                 const primary = action.id === "again";
                 const paired = pairSecondary && index > 0;
                 const halfW = (fullW - BUTTON_GAP) / 2;
-                const bounds = paired ? { x: cardX + padX + (index - 1) * (halfW + BUTTON_GAP), y: by, w: halfW, h: BUTTON_H } : { x: cardX + padX, y: by, w: fullW, h: BUTTON_H };
-                ctx.fillStyle = primary ? COPPER : "rgba(31,28,23,.05)";
+                const endW = primary && endRun2 ? Math.round(fullW * 0.36) : 0;
+                const bounds = paired ? { x: cardX + padX + (index - 1) * (halfW + BUTTON_GAP), y: by, w: halfW, h: BUTTON_H } : { x: cardX + padX, y: by, w: endW ? fullW - endW - BUTTON_GAP : fullW, h: BUTTON_H };
+                if (endW && endRun2) {
+                  const endBounds = { x: cardX + padX + fullW - endW, y: by, w: endW, h: BUTTON_H };
+                  ctx.fillStyle = "rgba(31,28,23,.05)";
+                  roundRect(ctx, endBounds.x, endBounds.y, endBounds.w, endBounds.h, 12);
+                  ctx.fill();
+                  ctx.strokeStyle = RULE2;
+                  ctx.lineWidth = 1;
+                  ctx.stroke();
+                  ctx.textAlign = "center";
+                  ctx.fillStyle = INK2;
+                  ctx.font = "700 14px system-ui, sans-serif";
+                  ctx.fillText(endRun2.caption, endBounds.x + endBounds.w / 2, by + 28);
+                  finishButtons.push({ ...endBounds, id: endRun2.id });
+                }
+                ctx.fillStyle = primary ? COPPER2 : "rgba(31,28,23,.05)";
                 roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
                 ctx.fill();
                 if (!primary) {
-                  ctx.strokeStyle = RULE;
+                  ctx.strokeStyle = RULE2;
                   ctx.lineWidth = 1;
                   ctx.stroke();
                 }
                 ctx.textAlign = "center";
-                ctx.fillStyle = primary ? "#1f1c17" : action.caption === "Link copied" ? GOOD : INK;
+                ctx.fillStyle = primary ? "#1f1c17" : action.caption === "Link copied" ? GOOD : INK2;
                 ctx.font = "700 14px system-ui, sans-serif";
                 ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
                 finishButtons.push({ ...bounds, id: action.id });
@@ -9181,10 +9857,10 @@
               ctx.fillStyle = "rgba(31,28,23,.08)";
               roundRect(ctx, ax, top + 4, keyW, 20, 5);
               ctx.fill();
-              ctx.fillStyle = INK;
+              ctx.fillStyle = INK2;
               ctx.fillText(action.key, ax + 7, top + 18);
               ax += keyW + 8;
-              ctx.fillStyle = action.caption === "Link copied" ? GOOD : MUTED;
+              ctx.fillStyle = action.caption === "Link copied" ? GOOD : MUTED2;
               ctx.font = "12px system-ui, sans-serif";
               ctx.fillText(action.caption, ax, top + 18);
               const captionW = ctx.measureText(action.caption).width;
@@ -9464,6 +10140,7 @@
   };
   window.CanalRecallRadar = { RadarMap, radarLocal, RADAR_RADIUS_M };
   installFreeRide(GamePresentationRuntime);
+  installChainedRun(GamePresentationRuntime);
   window.CanalRecallGameModules = window.CanalRecallGameModules || [];
   window.CanalRecallGameModules.push(GamePresentationRuntime);
 })();

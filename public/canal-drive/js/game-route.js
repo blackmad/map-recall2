@@ -1371,6 +1371,9 @@ class GameRouteRuntime {
       return;
     }
     const hash = window.location.hash;
+    // A reload inside a run (chainedRunRuntime.ts, G1) resumes the dealt leg instead of opening route setup.
+    const runLeg = !hash.startsWith('#race=') && typeof this._runResumeLeg === 'function' ? this._runResumeLeg() : null;
+    if (runLeg) { this._overlay.store.setSetupOpen(false); this._launchPoiRoute(runLeg.from, runLeg.to, { explicitDestination: true }); return; }
     if (!hash.startsWith('#race=')) return;
     const parts = hash.slice(6).split(',').map(Number);
     if (parts.length !== 6 || parts.some(n => !isFinite(n))) return;
