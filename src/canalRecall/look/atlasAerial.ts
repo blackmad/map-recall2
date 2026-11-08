@@ -401,6 +401,7 @@ export class AtlasAerialSwitch {
     if (this.stats.disabled || mode == null) return;
     if (mode === 'half' && this.state.mode === 'full') { this.state = { mode: 'dropping', calm: 0 }; this.beginDrop(); }
     else if (mode === 'full' && this.state.mode === 'half') { this.state = { mode: 'restoring', calm: 0 }; void this.beginRestore(); }
+    this.host.repaint();
   }
 
   get mode(): AtlasMode { return this.state.mode; }

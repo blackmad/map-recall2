@@ -142,6 +142,16 @@ for (const variant of VARIANTS) {
         if ('rolloffMask' in mix.set) ro.mask = !!mix.set.rolloffMask;
         if (Object.keys(ro).length) await page.evaluate((ro) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellRolloffOptions(ro), ro);
         if ('texAniso' in mix.set) await page.evaluate((n) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTextureAnisotropy(n), mix.set.texAniso);
+        // Lane R4-J (#254): `atlasHalf=1|0` pins the facade atlas switch (?atlasAerial=1) to the half or the full pair and
+        // waits until it is bound: the aerial A/B in one page and pose.
+        if ('atlasHalf' in mix.set) {
+          const want = mix.set.atlasHalf ? 'half' : 'full';
+          await page.evaluate((w) => (window as any).__canalRecallAtlasAerialSwitch?.force(w), want);
+          await expect.poll(() => page.evaluate(() => (window as any).__canalRecallAtlasAerialSwitch?.mode), { timeout: 60_000 }).toBe(want);
+        }
+        // `mipDebug=1` (lane R4-J): the level-colour chain (setCellMipDebug: level 0 red, 1 yellow, 2 green..) for the
+        // finest level the GPU reads at the pose; one way, so put it last.
+        if ('mipDebug' in mix.set) await page.evaluate(() => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellMipDebug());
         if ('cellTierBand' in mix.set) await page.evaluate((b) => (window as any).canalRecallGame.vectorMap._threeBuildings.setCellTierBand(Array.isArray(b) ? b : null), mix.set.cellTierBand);
         await page.evaluate(([v, set]) => {
           const tb = (window as any).canalRecallGame.vectorMap._threeBuildings;
