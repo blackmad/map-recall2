@@ -54,9 +54,11 @@ import { StreetArtIndex, streetArtCard, type StreetArtFile } from '../streetArt'
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
 import type { BridgeRegisterFile } from '../bridgeRegister';
 import { cardCollapsed, foldedCardLine, FOLDED_BODY_LINES } from './teachingPacer';
+import { drawCardAction } from '../noticeCards';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import { t as tr } from '../../i18n/index.ts';
+import { GameLandmarkQuestionRuntime, installLandmarkQuestion } from './landmarkQuestionRuntime';
 import {
   buildCorridorStreetIndex,
   distanceToPath,
@@ -78,7 +80,7 @@ async function readJson<T>(response: Response, fallback: T): Promise<T> {
   }
 }
 
-export interface GameLandmarkRuntime extends LandmarkHost {}
+export interface GameLandmarkRuntime extends LandmarkHost, GameLandmarkQuestionRuntime {}
 
 /** Files the ride start waits for, in the order `_loadLandmarks` reads them. */
 export const START_EXTRACTS = [
@@ -653,6 +655,9 @@ export class GameLandmarkRuntime {
       }
       candidates.push(landmark);
     }
+    // A modelled landmark in view may be asked about before its card opens
+    // (landmarkQuestionRuntime.ts); the question then owns the slot.
+    if (this._tryLandmarkQuestion()) return;
     // Free Ride marks places and opens a card on a tap; nothing pops up by itself.
     if (this.freeRide) return;
     if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
@@ -720,6 +725,7 @@ export class GameLandmarkRuntime {
     // over open map after the card faded out.
     this._landmarkCardBounds = null;
     this._landmarkCloseBounds = null;
+    this._landmarkActionBounds = null;
     if (!lm) return;
     if (!canShowTeachingCard(this._teachingGate())) return;
     const ctx = this.ctx;
@@ -736,6 +742,8 @@ export class GameLandmarkRuntime {
     const hasImage = !!(img && img.complete && img.naturalWidth > 0);
     const cards = window.CanalRecallCards;
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
+    // A drive-by card offers "Noticed" (G3): one tap counts it toward the buurt's passport.
+    const action = this._landmarkCardAction();
     const card = cards.measureLandmarkCard({
       name: lm.name,
       body: collapsed ? foldedCardLine(lm) : lm.longDetail || lm.detail || cards.placeOnlyDetail(
@@ -750,6 +758,7 @@ export class GameLandmarkRuntime {
       articleLabel: lm.wikipediaUrl ? 'W  WIKIPEDIA' : 'W  SOURCE',
       hasImage,
       ...(collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || '').trim() !== foldedCardLine(lm) } : {}),
+      ...(action ? { action: action.label } : {}),
     }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
 
     // Trivia belongs at the bottom of the screen. Across the top it sat exactly
@@ -775,7 +784,10 @@ export class GameLandmarkRuntime {
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
     this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+    if (action && card.action) drawCardAction(ctx, card.action, cardX, cardY, action.label, action.done);
     ctx.restore();
+    this._landmarkActionBounds = action && card.action
+      ? { x: cardX + card.action.x, y: cardY + card.action.y, w: card.action.width, h: card.action.height } : null;
     this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
     this._landmarkCloseBounds = { x: cardX + card.closeHit.x, y: cardY + card.closeHit.y, w: card.closeHit.width, h: card.closeHit.height };
   }
@@ -906,6 +918,8 @@ export class GameLandmarkRuntime {
     ctx.restore();
   }
 }
+
+installLandmarkQuestion(GameLandmarkRuntime);
 
 window.CanalRecallGameModules = window.CanalRecallGameModules || [];
 window.CanalRecallGameModules.push(GameLandmarkRuntime);

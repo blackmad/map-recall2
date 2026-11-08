@@ -39,6 +39,7 @@ import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit, isPitchedView } from './modes';
 // Free Ride's methods ride in this bundle (they draw over this frame).
 import { installFreeRide } from './freeRideRuntime';
+import { readSightings, sightingCredit } from './landmarkQuestion';
 import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
@@ -447,6 +448,7 @@ export class GamePresentationRuntime {
         else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
         else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
         else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
+        else if (this._landmarkActionBounds && hit(this._landmarkActionBounds)) this._noticeLandmark();
         else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
         else if (this.freeRide && this.state === GameState.RACING) this._freeRideClick(x, y, event.clientX, event.clientY);
         else this._inspectBuildingAt(event.clientX, event.clientY);
@@ -2100,6 +2102,9 @@ export class GamePresentationRuntime {
         after,
         this._visitedNeighborhoods,
         readPassport(localStorage),
+        undefined,
+        // Landmarks noticed on a drive-by card or named in a question (G3).
+        sightingCredit(readSightings(localStorage)),
       );
       if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
       this._finishPassportFresh = stamped.fresh;

@@ -210,6 +210,8 @@ export class GameFreeRideRuntime {
     ctx.font = font;
     const requests: Array<MarkerRequest & { label: string; kind: FreeRideNearby['kind'] }> = [];
     for (const place of nearby || []) {
+      // The landmark under a "Which building is this?" question is not named (G3).
+      if (this.quizPromptName && place.name === this.quizPromptName) continue;
       const at = this.camera.worldToScreen(place.x, place.y);
       const label = markerLabel(place.name, undefined, text => ctx.measureText(text).width);
       const width = Math.ceil(ctx.measureText(label).width) + height + 8;

@@ -345,6 +345,8 @@ export interface RecallHost extends GameCoreHost {
   _routeError?: HTMLElement;
   _skipMastered: HTMLInputElement | null;
   _overlay?: import('../overlay/mount.ts').CanalOverlayHandle;
+  /** "Which building is this?" answers land here (landmarkQuestionRuntime.ts). */
+  _submitLandmarkAnswer(selectedAnswer: string | null, noIdea?: boolean): void;
 
   /** Owned by other subsystems. */
   _savePreferences(): void;
@@ -506,6 +508,9 @@ export interface PresentationHost extends GameCoreHost {
   _recenterBtnBounds: LinkBounds | null;
   _landmarkCardBounds: LinkBounds | null;
   _landmarkCloseBounds?: LinkBounds | null;
+  /** The drive-by card's "Noticed" pill (G3); a tap counts the landmark toward its buurt's passport. */
+  _landmarkActionBounds?: LinkBounds | null;
+  _noticeLandmark(): boolean;
   _clearLandmarkNotice(): void;
   _runFinishAction(id: 'again' | 'route' | 'copy'): void;
   _expandLandmarkNotice(): void;

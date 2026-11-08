@@ -200,6 +200,8 @@ export interface CanalPreferences {
   distanceHaze: boolean;
   /** "Show performance" (engine/perfHud.ts): a small line of tier, memory and frame numbers; off by default. */
   perfHud: boolean;
+  /** Free Ride "Quiz me on landmarks" (G3, landmarkQuestion.ts): off by default; routes always ask. */
+  landmarkQuiz: boolean;
   measuredColoursOnly: boolean;
   detailed3d: boolean;
   reducedMotion: boolean;
@@ -262,6 +264,7 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     trees: true,
     distanceHaze: true,
     perfHud: false,
+    landmarkQuiz: false,
     measuredColoursOnly: false,
     detailed3d: false,
     reducedMotion: false,
@@ -356,6 +359,7 @@ function fillPreferences(
     trees: parseBoolean(source.trees, base.trees),
     distanceHaze: parseBoolean(source.distanceHaze, base.distanceHaze),
     perfHud: parseBoolean(source.perfHud, base.perfHud),
+    landmarkQuiz: parseBoolean(source.landmarkQuiz, base.landmarkQuiz),
     measuredColoursOnly: parseBoolean(source.measuredColoursOnly, base.measuredColoursOnly),
     detailed3d: base.detailed3d,
     reducedMotion: parseBoolean(source.reducedMotion, base.reducedMotion),
