@@ -296,6 +296,12 @@ export class GroundStore {
    * relief tiles, decks, way decks, tunnel cuts, the input's assembly). Null (the default): nothing is timed.
    */
   phaseHook: ((phase: string, key: string, ms: number) => void) | null = null;
+  /**
+   * Ground determinism (#260 follow-up, diagnostics only): told which plan placed a shared result. `wayDeck`: an OSM
+   * bridge way given to a way-deck plan (id: the way id), `deck`: a way deck placed (id: its profile id), `cutScan`: a way
+   * scanned for cuts (negative: a tunnel run tried as a slot), `cut`: a cut placed. `plan`: the cell whose plan did it.
+   */
+  planTrace: ((kind: 'wayDeck' | 'deck' | 'cutScan' | 'cut', id: string, plan: string) => void) | null = null;
   private timed<T>(phase: string, key: string, fn: () => T): T {
     const hook = this.phaseHook;
     if (!hook) return fn();
@@ -599,10 +605,12 @@ export class GroundStore {
           const inCell = (q: Vec2) => q[0] >= x0 && q[0] < x1 && q[1] >= y0 && q[1] < y1;
           // A step per way scanned, a task every PACE_BUDGET_MS (one plan was a 60-120 ms task while riding, #129).
           const steps = planCutsSteps(ways, this.surface.relief, inCell, this.cutScanned, box, { portalEnds: this.options.portalEnds !== false, rampGaps: this.options.rampGaps !== false }), pace = pacer(this.options.paceMs);
+          const scannedBefore = this.planTrace ? new Set(this.cutScanned) : null;
           for (let r = steps.next(); ; r = steps.next()) {
-            if (r.done) { for (const c of r.value) this.surface.addCut(c); break; }
+            if (r.done) { for (const c of r.value) { this.surface.addCut(c); this.planTrace?.('cut', c.id, n); } break; }
             await pace();
           }
+          if (scannedBefore) for (const id of this.cutScanned) if (!scannedBefore.has(id)) this.planTrace?.('cutScan', String(id), n);
           this.told('cuts:plan', n, t0);
         });
       })();
@@ -694,7 +702,7 @@ export class GroundStore {
         }
       }
     }
-    for (const w of ways) this.wayDeckIds.add(w.id);
+    for (const w of ways) { this.wayDeckIds.add(w.id); this.planTrace?.('wayDeck', String(w.id), key); }
     // roads-v1: the parapets stand at the road surfaces' outer edges (carriageway, cycle path, footway), not the way's drawn half-width (wayDecks.ts roadEdgeSides).
     if (profiles.length && this.options.roads === true && this.options.wayDeckCarriage !== false) {
       const cells = await this.waited(Promise.all(around.map(k => this.roadCell(k))), wait);
@@ -767,6 +775,7 @@ export class GroundStore {
     for (const profile of profiles) {
       const owner = this.cellAt(profile.x[0], profile.y[0]);
       (this.decksByCell.get(owner) ?? this.decksByCell.set(owner, []).get(owner)!).push(this.surface.addDeck(profile));
+      this.planTrace?.('deck', profile.id, key);
     }
   }
 
