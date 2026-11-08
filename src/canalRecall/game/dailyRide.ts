@@ -201,6 +201,10 @@ export interface DailyPoolPoi extends RoutePoi {
   buurt: string;
   /** Marks a buurt place, so the arrival card tells the neighbourhood (finishBlurb.buurtFinishBlurb). */
   buurtPlace: true;
+  /** May start a ride (an unnamed street clear of named ones: the start street would be the first question). */
+  startOk: boolean;
+  /** May end a ride (any routable street: the cards name the buurt, questions stop at arrival). */
+  finishOk: boolean;
 }
 
 /** Estimated ride km, 0.1 km: what the card prints and the bounds test. */
@@ -232,8 +236,8 @@ function drawPoolPair(
   // The buurt rule first; if it ever leaves nothing (it does not over the shipped pool), only the pair rule.
   for (const blocked of [recentBuurten, new Set<string>()]) {
     const open = pool.filter(place => !blocked.has(place.buurt));
-    const partnersOf = (from: DailyPoolPoi) => open.filter(to => inBounds(from, to) && !recentPairs.has(pairKey(from, to)));
-    const from = pickByBuurt(open.filter(place => partnersOf(place).length > 0), unit);
+    const partnersOf = (from: DailyPoolPoi) => open.filter(to => to.finishOk && inBounds(from, to) && !recentPairs.has(pairKey(from, to)));
+    const from = pickByBuurt(open.filter(place => place.startOk && partnersOf(place).length > 0), unit);
     if (!from) continue;
     const to = pickByBuurt(partnersOf(from), unit);
     if (to) return [from, to];
@@ -244,7 +248,7 @@ function drawPoolPair(
 const poolCache = new Map<string, Map<string, [DailyPoolPoi, DailyPoolPoi] | null>>();
 
 function toPoolPoi(place: DailyPoolPlace): DailyPoolPoi {
-  return { id: place.id, name: place.name, lat: place.lat, lng: place.lng, buurt: place.buurt, buurtPlace: true };
+  return { id: place.id, name: place.name, lat: place.lat, lng: place.lng, buurt: place.buurt, buurtPlace: true, startOk: place.startOk, finishOk: place.finishOk };
 }
 
 /** Pool pairs by date from the cutover up to `date`, each clear of the 7 days before it. Memoised per pool. */

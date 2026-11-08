@@ -39,9 +39,10 @@ const directory = path.resolve('public/data/extracts/amsterdam');
 const args = process.argv.slice(2);
 const outPath = path.resolve(args.includes('--out') ? args[args.indexOf('--out') + 1]! : 'src/canalRecall/game/dailyRidePool.ts');
 
-const graph = await loadSnapGraph(directory);
-const { features, project, unproject, nearestSnap } = graph;
 const readJson = async <T>(file: string): Promise<T> => JSON.parse(await readFile(path.join(directory, file), 'utf8')) as T;
+const bridgeNames = new Set((await readJson<Array<{ name?: string }>>('bridges.json')).flatMap(b => (b.name ? [b.name.toLowerCase()] : [])));
+const graph = await loadSnapGraph(directory, bridgeNames);
+const { features, project, unproject, nearestSnap, nearestFinish } = graph;
 const boundaries = await readJson<Boundary[]>('boundaries.json');
 const tours = (await readJson<{ tours: Array<{ id: string; stops: Array<{ name: string; lngLat: [number, number] }> }> }>('tours.json')).tours;
 const water = await readJson<Array<{ name?: string }>>('water.json');
@@ -91,9 +92,19 @@ function finestAt(point: LatLon): Boundary | null {
 }
 const slug = (text: string) => text.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-type Place = { id: string; name: string; buurt: string; lat: number; lng: number; source: 'buurt' | 'tour'; snapM: number };
+type Place = { id: string; name: string; buurt: string; lat: number; lng: number; source: 'buurt' | 'tour'; snapM: number; startOk: boolean; finishOk: boolean };
 const places: Place[] = [];
 const rejected: Array<{ what: string; why: string }> = [];
+const finishOnly: string[] = [];
+// Ids follow the card name, never the polygon's own name when that is a street name (Funenpark, Rapenburg):
+// the route id is in the landing's markup.
+const usedIds = new Set<string>();
+const placeId = (base: string) => {
+  let id = base;
+  for (let n = 2; usedIds.has(id); n++) id = `${base}-${n}`;
+  usedIds.add(id);
+  return id;
+};
 
 /** Card name and repeat key for a point: the finest buurt, unless its name is a quiz name. */
 function labelFor(point: LatLon, finest: Boundary | null): { name: string; buurt: string } | { why: string } {
@@ -111,12 +122,16 @@ for (const b of buurten.sort((x, y) => (x.name < y.name ? -1 : 1))) {
   const centroid: LatLon = total
     ? [outers.reduce((s, o) => s + o.cy * o.area, 0) / total, outers.reduce((s, o) => s + o.cx * o.area, 0) / total]
     : b.geometry[0]![0]![0]!;
-  const snap = nearestSnap(project(centroid), MAX_SNAP_M, latLon => inBoundary(latLon, b));
-  if (!snap) { rejected.push({ what: `buurt ${b.name}`, why: `no unnamed routable street ≥${NAMED_CLEARANCE_M} m from a named one within ${MAX_SNAP_M} m of the centroid, inside the buurt` }); continue; }
+  // A start needs an unnamed street clear of named ones; a buurt without one still gets a finish (#279 ruling).
+  const inside = (latLon: LatLon) => inBoundary(latLon, b);
+  const start = nearestSnap(project(centroid), MAX_SNAP_M, inside);
+  const snap = start ?? nearestFinish(project(centroid), MAX_SNAP_M, inside);
+  if (!snap) { rejected.push({ what: `buurt ${b.name}`, why: `no routable street within ${MAX_SNAP_M} m of the centroid, inside the buurt` }); continue; }
   const [lat, lng] = unproject(snap.node);
   const label = labelFor([lat, lng], b);
   if ('why' in label) { rejected.push({ what: `buurt ${b.name}`, why: label.why }); continue; }
-  places.push({ id: `buurt-${slug(b.name)}`, ...label, lat, lng, source: 'buurt', snapM: snap.metres });
+  if (!start) finishOnly.push(`${b.name} (${graph.namesAt([lat, lng]).join(', ') || 'unnamed'}, ${snap.metres.toFixed(0)} m)`);
+  places.push({ id: placeId(`buurt-${slug(label.name)}`), ...label, lat, lng, source: 'buurt', snapM: snap.metres, startOk: !!start, finishOk: true });
 }
 for (const tour of tours) {
   tour.stops.forEach((stop, index) => {
@@ -126,7 +141,7 @@ for (const tour of tours) {
     const [lat, lng] = unproject(snap.node);
     const label = labelFor([lat, lng], finestAt([lat, lng]));
     if ('why' in label) { rejected.push({ what: `tour ${tour.id} stop ${index + 1}`, why: label.why }); return; }
-    places.push({ id: `tour-${slug(tour.id)}-${index + 1}`, ...label, lat, lng, source: 'tour', snapM: snap.metres });
+    places.push({ id: `tour-${slug(tour.id)}-${index + 1}`, ...label, lat, lng, source: 'tour', snapM: snap.metres, startOk: true, finishOk: true });
   });
 }
 // Two tours sharing a stop snap to the same node: keep the first id.
@@ -139,7 +154,7 @@ const unique = places.filter((place) => {
 }).sort((a, b) => (a.id < b.id ? -1 : 1));
 
 const round = (v: number) => Math.round(v * 1e6) / 1e6;
-const rows = unique.map(p => `  { id: ${JSON.stringify(p.id)}, name: ${JSON.stringify(p.name)}, buurt: ${JSON.stringify(p.buurt)}, lat: ${round(p.lat)}, lng: ${round(p.lng)}, source: '${p.source}' },`);
+const rows = unique.map(p => `  { id: ${JSON.stringify(p.id)}, name: ${JSON.stringify(p.name)}, buurt: ${JSON.stringify(p.buurt)}, lat: ${round(p.lat)}, lng: ${round(p.lng)}, source: '${p.source}', startOk: ${p.startOk}, finishOk: ${p.finishOk} },`);
 const source = `// GENERATED by scripts/daily-ride/build-pool.ts — do not edit by hand; rerun the script.
 // Today's ride's pool (#279): buurt centroids and tour stops, each snapped to an
 // unnamed street in the largest component of the routing graph, at least
@@ -156,6 +171,10 @@ export interface DailyPoolPlace {
   lat: number;
   lng: number;
   source: 'buurt' | 'tour';
+  /** May start a ride: on an unnamed way ≥ ${NAMED_CLEARANCE_M} m from any named one (the start street would be the first question). */
+  startOk: boolean;
+  /** May end a ride: any routable way, named or not (the card names the buurt; questions stop at arrival). */
+  finishOk: boolean;
 }
 
 export const DAILY_RIDE_POOL: readonly DailyPoolPlace[] = [
@@ -167,6 +186,8 @@ await writeFile(outPath, source);
 const snaps = unique.map(p => p.snapM).sort((a, b) => a - b);
 console.log(`graph: ${graph.nodeCount} nodes, largest component ${graph.mainSize} (${(100 * graph.mainSize / graph.nodeCount).toFixed(1)}%), ${graph.snapCount} qualifying snap nodes`);
 console.log(`pool: ${unique.length} places (${unique.filter(p => p.source === 'buurt').length} buurt, ${unique.filter(p => p.source === 'tour').length} tour), ${new Set(unique.map(p => p.buurt)).size} buurt keys; snap median ${snaps[snaps.length >> 1]?.toFixed(0)} m, max ${snaps[snaps.length - 1]?.toFixed(0)} m`);
+console.log(`startOk ${unique.filter(p => p.startOk).length}, finishOk ${unique.filter(p => p.finishOk).length}, finish only ${unique.filter(p => !p.startOk).length}; ${graph.finishCount} finish nodes`);
+console.log(`finish-only buurten: ${finishOnly.join('; ')}`);
 console.log(`rejected ${rejected.length}:`);
 for (const r of rejected) console.log(`  ${r.what}: ${r.why}`);
 console.log(`wrote ${path.relative(process.cwd(), outPath)}`);

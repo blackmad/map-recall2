@@ -22,7 +22,7 @@ export type LatLon = [number, number];
 type Feature = { id: string; name?: string; path?: LatLon[]; paths?: LatLon[][]; highway?: string };
 type Point = { x: number; y: number };
 
-export async function loadSnapGraph(directory: string) {
+export async function loadSnapGraph(directory: string, bridgeNames: ReadonlySet<string> = new Set()) {
   const features = await loadRoutingFeatures<Feature>(directory);
   // ---- projection, as osm-loader.js ----
   const centreLat = 52.372851, centreLng = 4.8936;
@@ -150,17 +150,30 @@ export async function loadSnapGraph(directory: string) {
     const namedNear = edgesNear(node, clearancePx).some(({ a, b, segment }) => segment.name && perpendicularDist(node, a, b) < clearancePx);
     if (!namedNear) snapNodes.push(node);
   }
-  const snapGrid = new Map<string, Node[]>();
-  for (const node of snapNodes) {
-    const key = `${Math.floor(node.x / CELL)},${Math.floor(node.y / CELL)}`;
-    (snapGrid.get(key) || snapGrid.set(key, []).get(key)!).push(node);
+  // Finish nodes (#279 ruling): any routable node, named ways allowed, avoided highways and bridge decks
+  // excluded. A named finish reveals nothing: the HUD withholds the name under the rider, questions stop
+  // at arrival, and every card names the buurt.
+  const finishNodes: Node[] = [];
+  for (const node of nodes.values()) {
+    if (componentOf.get(node) !== mainComponent) continue;
+    if ([...node.ways].some(way => AVOID_HIGHWAYS.has(way.highway) || (way.name && (bridgeNames.has(way.name.toLowerCase()) || /brug\b/i.test(way.name))))) continue;
+    finishNodes.push(node);
   }
-  function nearestSnap(p: Point, maxM: number, accept: (latLon: LatLon) => boolean = () => true): { node: Node; metres: number } | null {
+  const gridOf = (list: Node[]) => {
+    const grid = new Map<string, Node[]>();
+    for (const node of list) {
+      const key = `${Math.floor(node.x / CELL)},${Math.floor(node.y / CELL)}`;
+      (grid.get(key) || grid.set(key, []).get(key)!).push(node);
+    }
+    return grid;
+  };
+  const snapGrid = gridOf(snapNodes), finishGrid = gridOf(finishNodes);
+  const nearestIn = (grid: Map<string, Node[]>) => (p: Point, maxM: number, accept: (latLon: LatLon) => boolean = () => true): { node: Node; metres: number } | null => {
     const radius = maxM * PIXELS_PER_METER;
     let best: { node: Node; metres: number } | null = null;
     for (let gx = Math.floor((p.x - radius) / CELL); gx <= Math.floor((p.x + radius) / CELL); gx++) {
       for (let gy = Math.floor((p.y - radius) / CELL); gy <= Math.floor((p.y + radius) / CELL); gy++) {
-        for (const node of snapGrid.get(`${gx},${gy}`) || []) {
+        for (const node of grid.get(`${gx},${gy}`) || []) {
           const metres = Math.hypot(node.x - p.x, node.y - p.y) / PIXELS_PER_METER;
           if (metres > maxM || (best && metres >= best.metres) || !accept(unproject(node))) continue;
           best = { node, metres };
@@ -168,8 +181,22 @@ export async function loadSnapGraph(directory: string) {
       }
     }
     return best;
-  }
-
+  };
+  const nearestSnap = nearestIn(snapGrid);
+  const nearestFinish = nearestIn(finishGrid);
+  const finishSet = new Set(finishNodes);
+  /** Names of the ways through a graph node at a point ([] when unnamed or not a node). */
+  const namesAt = (latLon: LatLon): string[] => {
+    const node = nodes.get(nodeKey(project(latLon)));
+    return node ? [...new Set([...node.ways].map(way => way.name).filter(Boolean))] : [];
+  };
+  /** Why a point is not a valid finish ('' when it is). */
+  const whyNotFinish = (latLon: LatLon): string => {
+    const node = nodes.get(nodeKey(project(latLon)));
+    if (!node || Math.hypot(node.x - project(latLon).x, node.y - project(latLon).y) > 1) return 'not a graph node';
+    if (componentOf.get(node) !== mainComponent) return 'not in the largest component';
+    return finishSet.has(node) ? '' : 'an avoided highway or a bridge deck';
+  };
 
   /** Why a point is not a valid ride end, or '' when it is a snap node. */
   const whyNotSnap = (latLon: LatLon): string => {
@@ -183,6 +210,7 @@ export async function loadSnapGraph(directory: string) {
   };
   return {
     features, source: routingSource(), nodeCount: nodes.size, mainSize: sizes[mainComponent]!, snapCount: snapNodes.length,
-    project, unproject, nearestSnap, whyNotSnap,
+    finishCount: finishNodes.length,
+    project, unproject, nearestSnap, nearestFinish, whyNotSnap, whyNotFinish, namesAt,
   };
 }
