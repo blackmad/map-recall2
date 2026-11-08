@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { REVEAL_LANDMARK_BUDGET, isRideAim, poseCamera, revealPose, revealSwapBudget, revealSwapEnabled } from './revealLandmarks';
+import { REVEAL_LANDMARK_BUDGET_DESKTOP, REVEAL_LANDMARK_BUDGET_TOUCH, isRideAim, revealLandmarkBudget, poseCamera, revealPose, revealSwapBudget, revealSwapEnabled } from './revealLandmarks';
 import { GameCameraSolver, type SolveDeps } from './gameCamera';
 import { EngineCamera } from './cameraMap';
 
@@ -19,14 +19,17 @@ test('flag: on unless 0/false/off', () => {
   for (const off of ['0', 'false', 'off', 'OFF', false]) assert.equal(revealSwapEnabled(off), false);
 });
 
-test('budget: default, explicit, invalid', () => {
-  assert.equal(revealSwapBudget(null), REVEAL_LANDMARK_BUDGET);
-  assert.equal(revealSwapBudget(''), REVEAL_LANDMARK_BUDGET);
-  assert.equal(revealSwapBudget('6'), 6);
-  assert.equal(revealSwapBudget('0'), 0);
-  assert.equal(revealSwapBudget('2.7'), 2);
-  assert.equal(revealSwapBudget('-1'), REVEAL_LANDMARK_BUDGET);
-  assert.equal(revealSwapBudget('x'), REVEAL_LANDMARK_BUDGET);
+test('budget: per device, explicit, invalid', () => {
+  assert.equal(revealLandmarkBudget(false), REVEAL_LANDMARK_BUDGET_DESKTOP);
+  assert.equal(revealLandmarkBudget(true), REVEAL_LANDMARK_BUDGET_TOUCH);
+  assert.ok(REVEAL_LANDMARK_BUDGET_TOUCH < REVEAL_LANDMARK_BUDGET_DESKTOP);
+  assert.equal(revealSwapBudget(null, 8), 8);
+  assert.equal(revealSwapBudget('', 8), 8);
+  assert.equal(revealSwapBudget('6', 8), 6);
+  assert.equal(revealSwapBudget('0', 8), 0);
+  assert.equal(revealSwapBudget('2.7', 8), 2);
+  assert.equal(revealSwapBudget('-1', 4), 4);
+  assert.equal(revealSwapBudget('x', 4), 4);
 });
 
 test('ride aim: covered, at the game camera, no flight, not panned off', () => {

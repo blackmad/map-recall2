@@ -5,6 +5,8 @@
 //   PORT=4695 node scripts/reveal-light-cold.mjs <out.json> [--device desktop|iphone] [--runs 5] [--qs '?engine=own&ride=free']
 //     [--chrome] [--headed] [--throttle 4] [--window 500]
 // STILLS_DIR=<dir>: 384 px PNGs of the reveal frame, the +250 ms frame and every frame changing > 2 %.
+// #268: every landmark request / first load / level load / level swap with the pose the picker read (`lod`), the
+// reveal hand-over (`handover`), and with HOLD_BUSY=1 the hold's busy idle checks every 100 ms (`busy`).
 // Built from scripts/start-settle-cold.mjs (R5-B2, #261); same browser setup (cold context per run).
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
@@ -42,7 +44,7 @@ async function run() {
   const errors = [];
   page.on('pageerror', e => errors.push(String(e).slice(0, 300)));
   await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
-  await page.addInitScript(([windowMs, stills]) => {
+  await page.addInitScript(([windowMs, stills, holdBusy]) => {
     const R = window.__reveal = { frames: [], keep: [], covered: null };
     const W = 128, c = document.createElement('canvas');
     let prev = null, raceAt = null, prevUrl = null, hooked = false;
@@ -128,7 +130,17 @@ async function run() {
       });
     };
     const iv = setInterval(() => { hook(); if (hooked && sigHooked) clearInterval(iv); }, 20);
-  }, [windowMs, !!process.env.STILLS_DIR]);
+    // The hold's busy idle checks (cameraMap idleChecks) every 100 ms while loading (#268: does the hand-over hold it?).
+    R.busy = [];
+    // Opt-in (HOLD_BUSY=1): asking the checks hurries the facades and city styling, so timing gates run without it.
+    const ib = holdBusy && setInterval(() => {
+      const g = window.canalRecallGame, checks = g?.vectorMap?.cameraMap?.idleChecks;
+      if (!g || !checks) return;
+      if (g.state === 4) { clearInterval(ib); return; }
+      const busy = []; for (const [name, f] of checks) { try { if (f()) busy.push(name); } catch (_) { busy.push(name + '!'); } }
+      R.busy.push({ t: Math.round(performance.now()), state: g.state, busy: busy.join(',') });
+    }, 100);
+  }, [windowMs, !!process.env.STILLS_DIR, !!process.env.HOLD_BUSY]);
   const t0 = Date.now();
   await page.goto(`${origin}${pagePath}${qs}`, { waitUntil: 'load' });
   const cdp = await context.newCDPSession(page);
@@ -136,7 +148,7 @@ async function run() {
   await page.waitForFunction(() => window.canalRecallGame?.state === 4, null, { timeout: 180_000, polling: 50 });
   const navToRace = await page.evaluate(() => Math.round(performance.now()));
   await page.waitForTimeout(windowMs + 700);
-  const R = await page.evaluate(() => ({ frames: window.__reveal.frames, keep: window.__reveal.keep, covered: window.__reveal.covered, lod: window.__reveal.lod, handover: window.canalRecallGame?.vectorMap?.revealHandover ?? null }));
+  const R = await page.evaluate(() => ({ frames: window.__reveal.frames, keep: window.__reveal.keep, covered: window.__reveal.covered, lod: window.__reveal.lod, busy: window.__reveal.busy, handover: window.canalRecallGame?.vectorMap?.revealHandover ?? null }));
   await context.close();
   const fr = R.frames;
   const revealPop = fr.length ? fr[0].frac : null;
@@ -148,7 +160,7 @@ async function run() {
   const max500 = fr.slice(1).reduce((m, f) => Math.max(m, f.frac ?? 0), 0);
   const late = fr.slice(1).filter(f => f.ms > 250 && f.frac > 0.02).map(f => ({ ms: f.ms, frac: f.frac }));
   return { maxPop250: max250, maxPop500AfterReveal: max500, latePops: late, navToRaceMs: navToRace, wallMs: Date.now() - t0, revealPop, maxPopInWindow: maxPop, firstPopMs: firstPop ? firstPop.ms : null, firstPopFrac: firstPop ? firstPop.frac : null,
-    handover: R.handover, lod: (R.lod || []).map(e => ({ ...e, ms: fr.length ? e.t - fr[0].t : null })), sumFracWindow: +fr.slice(1).reduce((s, f) => s + (f.frac ?? 0), 0).toFixed(4), frameCount: fr.length, covered: R.covered, frames: fr, keep: R.keep, errors: errors.slice(0, 3) };
+    handover: R.handover, busy: (R.busy || []).map(b => ({ ...b, ms: fr.length ? b.t - fr[0].t : null })), lod: (R.lod || []).map(e => ({ ...e, ms: fr.length ? e.t - fr[0].t : null })), sumFracWindow: +fr.slice(1).reduce((s, f) => s + (f.frac ?? 0), 0).toFixed(4), frameCount: fr.length, covered: R.covered, frames: fr, keep: R.keep, errors: errors.slice(0, 3) };
 }
 
 const results = [];

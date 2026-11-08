@@ -13,7 +13,7 @@
  * `_setupRace`, the aim point equal to the game camera's position, no start flight, not panned off), the view solves
  * the first racing frame's pose from the game camera on a scratch solver (zoom with the chase offset, bearing, pitch,
  * the sightline lead) and hands it to the landmark models with a budget: the models nearest that pose's centre and
- * inside its view load now, each at the level that pose picks, at most `budget` of them. The loading-screen hold already
+ * inside its view load now, each at the level that pose picks, at most `budget` of them (8 desktop, 4 touch). The loading-screen hold already
  * waits for landmark requests in flight (settle.ts `landmarks`), so the bounded set lands before the reveal; the rest
  * load after the reveal as today. `?revealSwap=0` (or `window.__canalRecallRevealSwap = false`) hands nothing over:
  * today's start, byte for byte. `?revealSwapN=` sets the budget.
@@ -23,11 +23,17 @@ import type { Viewport } from '../ownMap/mapCamera';
 import { GameCameraSolver, type GameCamera, type LoaderFrame, type SolveDeps, type ViewRequest } from './gameCamera';
 
 /**
- * Models loaded under the loading screen. Two load at a time (signature-landmarks `_pending`), ~250 ms each cold on
- * desktop: four is two rounds, inside the hold. Counted over the nearest models in the first frame's view, so the big
- * ones beside the start come first.
+ * Models loaded under the loading screen. Two load at a time (signature-landmarks `_pending`), ~250-300 ms each cold on
+ * desktop, counted over the nearest models in the first frame's view, so the big ones beside the start come first.
+ * Desktop 8: at the Rembrandt House start the Stopera (stadhuis) is the 5th nearest and popped 3.9 % at +262/+297 ms
+ * with 4; the eight land ~2 s before the hold ends (its own-ground and facade checks stay busy ~1.2 s longer, measured
+ * per 100 ms). Touch 4: four times slower loads under a 4 s hold.
  */
-export const REVEAL_LANDMARK_BUDGET = 4;
+export const REVEAL_LANDMARK_BUDGET_DESKTOP = 8;
+export const REVEAL_LANDMARK_BUDGET_TOUCH = 4;
+export function revealLandmarkBudget(touch: boolean): number {
+  return touch ? REVEAL_LANDMARK_BUDGET_TOUCH : REVEAL_LANDMARK_BUDGET_DESKTOP;
+}
 
 export function revealSwapEnabled(value: unknown): boolean {
   if (value === false) return false;
@@ -36,7 +42,7 @@ export function revealSwapEnabled(value: unknown): boolean {
 }
 
 /** `?revealSwapN=`: a non-negative integer, else the default. */
-export function revealSwapBudget(value: unknown, fallback = REVEAL_LANDMARK_BUDGET): number {
+export function revealSwapBudget(value: unknown, fallback: number): number {
   if (value == null || value === '') return fallback;
   const n = Number(value);
   return Number.isFinite(n) && n >= 0 ? Math.floor(n) : fallback;

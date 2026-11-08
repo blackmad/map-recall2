@@ -27,7 +27,7 @@ import { FrameHost, type FrameSimulation } from './frameHost';
 import { guardFrameHost } from './frameGuards';
 import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
 import { RevealSurface, revealLightEnabled } from './revealSurface';
-import { isRideAim, poseCamera, revealPose, revealSwapBudget, revealSwapEnabled } from './revealLandmarks';
+import { isRideAim, poseCamera, revealLandmarkBudget, revealPose, revealSwapBudget, revealSwapEnabled } from './revealLandmarks';
 import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleGates, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
@@ -1227,7 +1227,7 @@ export class OwnWorldView implements WorldViewOracles {
       pitchForViewMode: m => this.pitchForViewMode(m), zoomOffsetForViewMode: m => this.zoomOffsetForViewMode(m),
       landmarkView: this.landmarkView, displayScale: scale, now: performance.now(),
     }, this.solver.pitchSmoothed);
-    const budget = revealSwapBudget(new URLSearchParams(W().location?.search ?? '').get('revealSwapN'));
+    const budget = revealSwapBudget(new URLSearchParams(W().location?.search ?? '').get('revealSwapN'), revealLandmarkBudget(isTouchPointer(W())));
     this.revealHandover = { lngLat: pose.lngLat, zoom: pose.zoom, bearing: pose.bearing, pitch: pose.pitch, budget };
     signature.setRevealPose(poseCamera(() => this.host.viewport(), pose, 0, this.cameraMap.camera.maxPitch), budget);
   }
