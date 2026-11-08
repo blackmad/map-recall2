@@ -6,7 +6,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { decodeRoadCell, roadCellDir, roadCellProblems, ROAD_CELLS_V3_DIR, type RoadCell, type RoadSurface } from './roadCells';
 import { dissolveSlivers, isSliver, polygonShape, sliverStats, KERB_MIN_M } from './roadSlivers';
-import { clipMeshAtCuts, cutMargin, type Cut } from './tunnels';
+import { acrossPast, clipMeshAtCuts, cutMargin, cutRelief, locateCut, mouthLid, type Cut } from './tunnels';
 import { emptyMesh, vertex } from './drape';
 
 /** A surface from integer-decimetre rings (open), delta-encoded. */
@@ -137,4 +137,71 @@ test('the staged version-3 extract, when present: valid cells, no ground sliver 
     if (!existsSync(f)) continue;
     assert.deepEqual(roadCellProblems(JSON.parse(gunzipSync(readFileSync(f)).toString())), [], key);
   }
+});
+
+// Lane #269: the sheets left at the Rapenburg junction hung across the IJ-tunnel's MOUTHS (the strip's end line under
+// the headwall) and along the walls within 3 m of them, not across the shared ramp sides (#269 step 1).
+/** straightCut with a closed portal (a mouth under a headwall 2 m over the rim) at its far end (x 40). */
+const mouthCut = (): Cut => ({ ...straightCut(), portals: [{ at: 4, dir: [1, 0], top: 0 }] });
+
+test('clipMeshAtCuts ends: a triangle hanging from the lid to the floor across a mouth is cut at the end line', () => {
+  const c = mouthCut();
+  const m = emptyMesh();
+  // Inside on the floor (x 38) to past the mouth (x 42, on the lid at the headwall's top 0), across the end line at x 40.
+  const a = vertex(m, 38, -2, -1.97), b = vertex(m, 38, 2, -1.97), k = vertex(m, 42, 0, -0.6);
+  m.indices.push(a, b, k);
+  // Today's clip (ends off) leaves it: no wall at the strip's end.
+  assert.equal(clipMeshAtCuts(m, [c], () => -1, true), m);
+  const out = clipMeshAtCuts(m, [c], () => -1, true, undefined, { ends: true });
+  assert.notEqual(out, m);
+  const p = out.positions;
+  for (let t = 0; t < out.indices.length; t += 3) {
+    const v = [out.indices[t], out.indices[t + 1], out.indices[t + 2]];
+    const xs = v.map(i => p[i * 3]), zs = v.map(i => p[i * 3 + 2]);
+    assert.ok(!(Math.min(...xs) < 39.95 && Math.max(...xs) > 40.05), 'no piece crosses the end line');
+    const mid = xs.reduce((s, x) => s + x, 0) / 3;
+    // Inside at the floor (+ the vertices' 3 cm), past the mouth at least the lid (the land grid's -1 is lifted to 0).
+    if (mid < 40) assert.ok(zs.every(z => Math.abs(z - -1.97) < 1e-6), `inside piece at ${zs}`);
+    else assert.ok(zs.every(z => Math.abs(z - 0) < 1e-6), `outside piece at ${zs}`);
+  }
+});
+
+test('clipMeshAtCuts ends: the walls clip up to a mouth; a plain end and an open slot stay open; off is byte-identical', () => {
+  const c = mouthCut();
+  // Across the left wall 1.5 m before the mouth (inside PORTAL_CLIP_END_M): clipped only with ends on.
+  const m = emptyMesh();
+  m.indices.push(vertex(m, 37.5, 6, 0.14), vertex(m, 39, 2, -1.86), vertex(m, 38.5, 6, 0.14));
+  assert.equal(clipMeshAtCuts(m, [c], () => 0, true), m);
+  assert.notEqual(clipMeshAtCuts(m, [c], () => 0, true, undefined, { ends: true }), m);
+  // The same triangles at the start (no portal there): left alone either way.
+  const s = emptyMesh();
+  s.indices.push(vertex(s, 1.5, 6, 0.14), vertex(s, 1, 2, -1.86), vertex(s, 2.5, 6, 0.14));
+  s.indices.push(vertex(s, 2, -2, -1.97), vertex(s, 2, 2, -1.97), vertex(s, -2, 0, -0.6));
+  assert.equal(clipMeshAtCuts(s, [c], () => 0, true, undefined, { ends: true }), s);
+  // An open portal (a slot's lintel: the passage runs on under it) is no mouth.
+  const slot: Cut = { ...c, portals: [{ at: 4, dir: [1, 0], top: 0, open: true }] };
+  const e = emptyMesh();
+  e.indices.push(vertex(e, 38, -2, -1.97), vertex(e, 38, 2, -1.97), vertex(e, 42, 0, -0.6));
+  assert.equal(clipMeshAtCuts(e, [slot], () => -1, true, undefined, { ends: true }), e);
+  // cutMargin: ends off is today's answer; on, the mouth bounds the strip.
+  assert.deepEqual(cutMargin([c], 39, 0), cutMargin([c], 39, 0, { ends: false }));
+  assert.equal(cutMargin([c], 39, 0).walled, false);
+  const on = cutMargin([c], 39, 0, { ends: true });
+  assert.ok(on.walled && Math.abs(on.margin - 1) < 1e-9);
+  assert.ok(Math.abs(mouthLid([c], 41, 0) - 0) < 1e-9 && Number.isNaN(mouthLid([c], 41, 9)) && Number.isNaN(mouthLid([c], 30, 0)) && Number.isNaN(mouthLid([c], 47, 0)));
+});
+
+test('a measured lid (#269): cutRelief and mouthLid lift the ground past a mouth over the covered span, across the line', () => {
+  const c: Cut = { ...straightCut(), portals: [{ at: 4, dir: [1, 0], top: 0, lid: 15 }] };
+  // 10 m past the end on the centreline and 3 m off it: the lid; 16 m past: the raw relief.
+  assert.equal(cutRelief(c, locateCut(c, 50, 0)!, -3), 0);
+  assert.equal(cutRelief(c, locateCut(c, 50, 3)!, -3), 0);
+  assert.ok(Number.isNaN(cutRelief(c, locateCut(c, 56, 0)!, -3)));
+  assert.equal(mouthLid([c], 50, 3), 0);
+  assert.ok(Number.isNaN(mouthLid([c], 50, 9)));
+  assert.equal(acrossPast(-10, 0), -10);
+  assert.ok(Math.abs(acrossPast(-5, 3) - -4) < 1e-9);
+  // Without a measured lid, today's LID_M and lateral test.
+  const plain = mouthCut();
+  assert.ok(Number.isNaN(cutRelief(plain, locateCut(plain, 50, 0)!, -3)));
 });

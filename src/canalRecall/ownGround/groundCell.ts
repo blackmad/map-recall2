@@ -138,6 +138,8 @@ export interface CellInput {
   redDedupe?: boolean;
   /** Ground triangles across a tunnel wall line clipped there, each piece at its side's level (tunnels.ts clipMeshAtCuts, R5-C2 #263); default on, false: `?portalClip=0`. */
   portalClip?: boolean;
+  /** The portal clip also across a tunnel mouth's end line and along the walls up to it (tunnels.ts PortalClipOptions.ends, #269); default on, false: `?portalEnds=0`. */
+  portalEnds?: boolean;
   /** Sink a covered deck's top past its span under the survey's ground polygons (decks.ts COVERED_TOP_SINK_M); default on. */
   deckEnds?: boolean;
   /** The cell's surveyed road partition (roads-v1, roadSurfaces.ts), null when it has none or roads are off. */
@@ -702,6 +704,7 @@ export function buildCell(input: CellInput): BuiltCell {
   phase('pockets');
   const clipCuts = lod === 0 && input.portalClip !== false ? cuts : [];
   const portalClip: PortalClipStats = { split: 0, pieces: 0, dropped: 0, failed: 0 };
+  const clipOpts = { ends: input.portalEnds !== false };
   const packed: Partial<Record<GroundLayer, PackedMesh>> = {}, sources: Partial<Record<GroundLayer, Uint8Array>> = {};
   const byLayer: Record<string, number> = {};
   let triangles = 0, bytes = 0;
@@ -711,7 +714,7 @@ export function buildCell(input: CellInput): BuiltCell {
     let m = list.length === 1 ? list[0] : merge(list);
     // Tunnel walls (R5-C2): no ground triangle hangs across a wall line; the land's and the fills' pieces inside the
     // strip go (the cut mask discards them there anyway), the street surfaces' pieces lie on the floor.
-    if (clipCuts.length && !NO_PORTAL_CLIP.has(layer)) m = clipMeshAtCuts(m, clipCuts, landZ, CUT_CHANNEL[layer] !== 0, portalClip);
+    if (clipCuts.length && !NO_PORTAL_CLIP.has(layer)) m = clipMeshAtCuts(m, clipCuts, landZ, CUT_CHANNEL[layer] !== 0, portalClip, clipOpts);
     // The kerb material is vertex-coloured (roadSurfaces KERB_SHADOW_M): a kerb mesh without colours (OSM bands only) is white.
     if (VERTEX_TINTED.has(layer) && !m.colors) m = { ...m, colors: new Array(m.positions.length).fill(1) };
     const p = packMesh(m);

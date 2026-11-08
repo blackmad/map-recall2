@@ -177,7 +177,21 @@ export interface CutPortal {
   top: number;
   /** A slot's portal: the passage runs on open-topped through the embankment, so a headwall spans it with no dark mouth. */
   open?: boolean;
+  /**
+   * How far past the mouth the ground over the tunnel lies at `top`, metres (absent: LID_M). A covered span (#269: the
+   * Prins Hendrikkade junction over the IJ-tunnel, 47 m between facing mouths) is measured by the DTM, which drops
+   * bridges and decks, as a trench that climbs back to the street over 10-18 m: the lid runs on to where it does.
+   */
+  lid?: number;
 }
+
+/** Planner options. `portalEnds` (#269, default off here; the stores turn it on, `?portalEnds=0` off): a mouth's top is the street's plateau within COVER_LID_MAX_M and its lid runs on to it. */
+export interface PlanOptions { portalEnds?: boolean }
+
+/** The farthest a mouth's lid runs on past it (a covered span's smear in the DTM), metres. */
+export const COVER_LID_MAX_M = 20;
+/** A mouth's top is raised to the plateau ahead by at most this, metres (a mound or a building's plinth is no street). */
+const COVER_TOP_RAISE_MAX_M = 3;
 
 /** One cut: a polyline with per-station floor, reach and walls either side (left = counter-clockwise of the direction). */
 export interface Cut {
@@ -428,7 +442,7 @@ function buildCut(id: string, kind: Cut['kind'], motor: boolean, p: Vec2[], s: n
 }
 
 export function cutBox(c: Cut): [number, number, number, number] {
-  const r = Math.max(...c.left, ...c.right) + Math.max(DIP_M + PARAPET_T + LID_M, ...(c.gapL ?? []), ...(c.gapR ?? []));
+  const r = Math.max(...c.left, ...c.right) + Math.max(DIP_M + PARAPET_T + Math.max(LID_M, ...c.portals.map(p => p.lid ?? 0)), ...(c.gapL ?? []), ...(c.gapR ?? []));
   return [Math.min(...c.x) - r, Math.min(...c.y) - r, Math.max(...c.x) + r, Math.max(...c.y) + r];
 }
 
@@ -610,8 +624,8 @@ export function slotCut(run: { ways: CutWay[]; points: Vec2[]; ends: [boolean, b
  * `skip` holds way ids scanned by an earlier plan (each way is scanned once). Slots: rideable tunnel runs (slotCut).
  * Motor-only tunnels get a portal where a ramp cut ends against the tunnel's roof.
  */
-export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number]): Cut[] {
-  const steps = planCutsSteps(ways, ground, within, skip, box);
+export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number], opts?: PlanOptions): Cut[] {
+  const steps = planCutsSteps(ways, ground, within, skip, box, opts);
   for (;;) { const r = steps.next(); if (r.done) return r.value; }
 }
 
@@ -620,7 +634,7 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
  * page can end its task there (groundStore planCutsFor, #129: one plan was a 60-120 ms task while riding). Drained
  * without pausing it is planCuts; the caller keeps `ways`, `ground` and `skip` unchanged until it finishes.
  */
-export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number]): Generator<void, Cut[], void> {
+export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number], opts?: PlanOptions): Generator<void, Cut[], void> {
   const portals = findPortals(ways).filter(p => within(p.at));
   const cuts: Cut[] = [];
   // Only stations within RAMP_REACH_M of one of these portals are scanned: a ramp is never longer, and a long trunk
@@ -692,7 +706,21 @@ export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within
         for (let m = 4; m <= COVER_REACH_M; m += 2) if (ahead(m) - c.floor[at] > 2.5) { top = Math.max(...[0, 2, 4, 6, 8].map(k => ahead(m + k))); break; }
       }
       if (!(top - c.floor[at] > 2.5)) continue;
-      c.portals.push({ at, dir: d, top });
+      // #269: the DTM drops the deck over a covered span, so the relief past the mouth climbs back to the street over
+      // 10-18 m and the top measured 3-6 m ahead sits in that smear (the IJ-tunnel's mouths at Prins Hendrikkade: +2.6 m
+      // where the street stands +4.7 m over the floor). The top is the plateau within COVER_LID_MAX_M (raised at most
+      // COVER_TOP_RAISE_MAX_M) and the lid runs on to where the relief reaches it.
+      let lid: number | undefined;
+      if (opts?.portalEnds && !coverM) {
+        const prof = Array.from({ length: COVER_LID_MAX_M }, (_, k) => ahead(k + 1));
+        const plateau = Math.max(...prof.slice(2).map((_, k) => median(prof.slice(k + 2, k + 5))));
+        if (plateau > top) top = Math.min(plateau, top + COVER_TOP_RAISE_MAX_M);
+        const reach = prof.findIndex(z => z >= top - 0.3);
+        lid = Math.max(LID_M, Math.min(COVER_LID_MAX_M, (reach < 0 ? COVER_LID_MAX_M : reach + 1) + 2));
+      }
+      c.portals.push({ at, dir: d, top, ...(lid !== undefined && lid > LID_M ? { lid } : {}) });
+      // The box reaches over the lid (cutBox): the surface indexes the cut by it.
+      if (lid !== undefined && lid > LID_M) c.bbox = cutBox(c);
       c.motor = true;
     }
     yield;
@@ -791,6 +819,9 @@ export function locateCut(c: Cut, x: number, y: number): CutHit | null {
 /** Is a hit inside the strip (between its edges, within its stations)? */
 export const insideCut = (c: Cut, h: CutHit): boolean => h.s >= 0 && h.s <= c.s[c.s.length - 1] && h.lateral <= h.left && h.lateral >= -h.right;
 
+/** The offset across a cut's line of a point `past` metres beyond its end whose locateCut lateral (the distance to the end point, signed) is `lateral`. */
+export const acrossPast = (lateral: number, past: number): number => (past > 0 ? Math.sign(lateral) * Math.sqrt(Math.max(0, lateral * lateral - past * past)) : lateral);
+
 /**
  * The relief a cut implies at a point, or NaN where it says nothing: inside the strip the wall-top level of the
  * nearer side (the raw relief on a side without a wall); behind a wall, over DIP_M, at least its top; past a portal,
@@ -801,7 +832,10 @@ export function cutRelief(c: Cut, h: CutHit, raw: number): number {
   for (const p of c.portals) {
     if (p.open) continue;
     const past = p.at === 0 ? -h.s : h.s - end;
-    if (past >= 0 && past <= LID_M && h.lateral <= h.left + DIP_M && h.lateral >= -h.right - DIP_M) return Math.max(raw, p.top);
+    // Past the end locateCut's lateral is the distance to the end point; a measured lid (#269) runs on far enough for
+    // that to matter, so it takes the offset across the line instead.
+    const lat = p.lid !== undefined ? acrossPast(h.lateral, past) : h.lateral;
+    if (past >= 0 && past <= (p.lid ?? LID_M) && lat <= h.left + DIP_M && lat >= -h.right - DIP_M) return Math.max(raw, p.top);
   }
   if (h.s < 0 || h.s > end) return NaN;
   // A merged side: the strip's half and the gap to the neighbour lie on the floors (the neighbour's own cut answers
@@ -983,21 +1017,62 @@ const PORTAL_CLIP_LIFT_MAX_M = 0.5;
 /** Within this of a strip's ends (metres) nothing is clipped: no wall closes the step there (a ramp's top, a portal). */
 const PORTAL_CLIP_END_M = 3;
 
+/**
+ * Options of the portal clip. `ends` (lane #269, default on; off: `?portalEnds=0`, R5-C2's clip byte for byte): a
+ * strip's end at a closed portal (a motor tunnel's mouth under its headwall) is a walled boundary like a side wall, and
+ * the side walls clip right up to it. Ends without a mouth (a ramp's top at grade, a gap between two runs of one ramp)
+ * stay open: nothing closes the step there (R5-C2's first try opened sky holes).
+ */
+export interface PortalClipOptions { ends?: boolean }
+
+/** Has the cut a closed portal (a mouth under a headwall: cutMeshes draws it from below the floor to the lid) at station `at`? */
+const mouthAt = (c: Cut, at: number): boolean => c.portals.some(p => p.at === at && !p.open);
+
+/**
+ * The lid past a mouth (#269): the headwall's top when (x, y) lies over a closed portal's tunnel within LID_M past
+ * the end line (from `-on` metres before it, so a clipped piece's vertex on the line counts) and between the strip's
+ * edges, else NaN. cutRelief lifts the ground there to the same top; the land grid smears it across the end line.
+ */
+export function mouthLid(cuts: readonly Cut[], x: number, y: number, on = PORTAL_CLIP_EPS_M): number {
+  let top = NaN;
+  for (const c of cuts) {
+    if (!c.portals.some(p => !p.open)) continue;
+    const [x0, y0, x1, y1] = c.bbox;
+    if (x < x0 - COVER_LID_MAX_M - 30 || x > x1 + COVER_LID_MAX_M + 30 || y < y0 - COVER_LID_MAX_M - 30 || y > y1 + COVER_LID_MAX_M + 30) continue;
+    const h = locateCut(c, x, y);
+    if (!h) continue;
+    const len = c.s[c.s.length - 1];
+    for (const p of c.portals) {
+      if (p.open) continue;
+      const past = p.at === 0 ? -h.s : h.s - len, lat = acrossPast(h.lateral, past);
+      if (lat > h.left + 0.05 || lat < -h.right - 0.05) continue;
+      if (past >= -on && past <= (p.lid ?? LID_M) && !(p.top <= top)) top = p.top;
+    }
+  }
+  return top;
+}
+
 /** How far (x, y) lies inside the nearest strip among `cuts` (+ inside, − outside; −Infinity beyond every strip's ends) and that strip's floor. */
-export function cutMargin(cuts: readonly Cut[], x: number, y: number): { margin: number; floor: number; walled: boolean } {
+export function cutMargin(cuts: readonly Cut[], x: number, y: number, opts?: PortalClipOptions): { margin: number; floor: number; walled: boolean } {
   let best = -Infinity, floor = NaN, walled = false;
+  const ends = opts?.ends === true;
   for (const c of cuts) {
     const [x0, y0, x1, y1] = c.bbox;
     if (x < x0 - 30 || x > x1 + 30 || y < y0 - 30 || y > y1 + 30) continue;
     const h = locateCut(c, x, y);
     const len = c.s[c.s.length - 1];
     if (!h || h.s < 0 || h.s > len) continue;
-    const mL = h.left - h.lateral, mR = h.lateral + h.right, m = Math.min(mL, mR);
+    const mL = h.left - h.lateral, mR = h.lateral + h.right;
+    // A mouth end bounds the strip like a wall (#269): its distance counts toward the margin.
+    const m0 = ends && mouthAt(c, 0) ? h.s : Infinity, m1 = ends && mouthAt(c, c.x.length - 1) ? len - h.s : Infinity;
+    const m = Math.min(mL, mR, m0, m1);
     if (m > best) {
       best = m; floor = h.floor;
-      // The nearer edge stands as a wall there (cutMeshes draws it), away from the strip's open ends.
+      if (m === m0 || m === m1) { walled = true; continue; }
+      // The nearer edge stands as a wall there (cutMeshes draws it), away from the strip's open ends (up to a mouth: the
+      // headwall closes the corner).
       const wall = mL <= mR ? h.wallL >= 0.5 && h.rimL - h.floor >= 0.15 : h.wallR >= 0.5 && h.rimR - h.floor >= 0.15;
-      walled = wall && h.s >= PORTAL_CLIP_END_M && h.s <= len - PORTAL_CLIP_END_M;
+      walled = wall && (h.s >= PORTAL_CLIP_END_M || m0 < Infinity) && (h.s <= len - PORTAL_CLIP_END_M || m1 < Infinity);
     }
   }
   return { margin: best, floor, walled };
@@ -1012,25 +1087,33 @@ export interface PortalClipStats { split: number; pieces: number; dropped: numbe
  * either side, each at its own side's level: inside at the strip's floor, outside at `outside(x, y)` (the land beside,
  * lifted to the wall top), each with the lift the triangle's own vertices on that side carried. `keepInside` false
  * drops the inside pieces (layers the land's cut mask discards there anyway: the land and the green fills). Vertical
- * triangles (kerb faces, no plan area) are left alone. Returns a new mesh when anything changed, else `m` itself.
+ * triangles (kerb faces, no plan area) are left alone. `opts.ends` also clips across a mouth's end line and along the
+ * walls up to it (#269). Returns a new mesh when anything changed, else `m` itself.
  */
-export function clipMeshAtCuts(m: MeshArrays, cuts: readonly Cut[], outside: (x: number, y: number) => number, keepInside: boolean, stats?: PortalClipStats): MeshArrays {
+export function clipMeshAtCuts(m: MeshArrays, cuts: readonly Cut[], outside: (x: number, y: number) => number, keepInside: boolean, stats?: PortalClipStats, opts?: PortalClipOptions): MeshArrays {
   if (!cuts.length || !m.indices.length) return m;
   // The ring's own box (a cut's bbox may be its centreline's: the strip reaches past it).
   const rings = cuts.map(c => { const r = cutRing(c); return { ring: [r.map(q => [q[0], q[1]] as [number, number])] as Polygon, bbox: [Math.min(...r.map(q => q[0])), Math.min(...r.map(q => q[1])), Math.max(...r.map(q => q[0])), Math.max(...r.map(q => q[1]))] }; });
   const p = m.positions, keep: number[] = [], added: number[] = [];
   let out: MeshArrays | null = null;
   const st = stats ?? { split: 0, pieces: 0, dropped: 0, failed: 0 };
+  const ends = opts?.ends === true;
+  // The outside level: the land, and over a mouth's lid at least its top (the land grid smears the step across the end line).
+  const outZ = ends ? (x: number, y: number) => { const z = outside(x, y), top = mouthLid(cuts, x, y); return top === top ? Math.max(z, top) : z; } : outside;
   for (let t = 0; t < m.indices.length; t += 3) {
     const v = [m.indices[t], m.indices[t + 1], m.indices[t + 2]];
     const xs = v.map(i => p[i * 3]), ys = v.map(i => p[i * 3 + 1]), zs = v.map(i => p[i * 3 + 2]);
     const span = Math.max(...zs) - Math.min(...zs);
     const area2 = Math.abs((xs[1] - xs[0]) * (ys[2] - ys[0]) - (ys[1] - ys[0]) * (xs[2] - xs[0]));
     if (span <= PORTAL_CLIP_SPAN_M || area2 < 1e-4) { keep.push(...v); continue; }
-    const side = v.map((_, j) => cutMargin(cuts, xs[j], ys[j]));
+    const side = v.map((_, j) => cutMargin(cuts, xs[j], ys[j], opts));
     const ins = side.filter(s => s.margin > PORTAL_CLIP_EPS_M).length, outs = side.filter(s => s.margin < -PORTAL_CLIP_EPS_M).length;
     // Only across a wall: an open side (a merged neighbour's strip, the ramp's top, a portal) has no face to close the step.
-    if (!ins || !outs || side.some(q => !q.walled && Math.abs(q.margin) < 6)) { keep.push(...v); continue; }
+    // With `ends` (#269): a triangle whose outside vertices all lie over a mouth's lid crosses only the end line (the
+    // headwall closes it), however near an open side its inside vertices are.
+    const lid = ends ? v.map((_, j) => (side[j].margin < -PORTAL_CLIP_EPS_M ? mouthLid(cuts, xs[j], ys[j]) : NaN)) : null;
+    const overLid = !!lid && side.every((q, j) => !(q.margin < -PORTAL_CLIP_EPS_M) || lid[j] === lid[j]);
+    if (!ins || !outs || (!overLid && side.some(q => !q.walled && Math.abs(q.margin) < 6))) { keep.push(...v); continue; }
     const tb = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
     const local = rings.filter(r => !(r.bbox[2] < tb[0] || r.bbox[0] > tb[2] || r.bbox[3] < tb[1] || r.bbox[1] > tb[3])).map(r => r.ring);
     const tri: Polygon = [[[xs[0], ys[0]], [xs[1], ys[1]], [xs[2], ys[2]], [xs[0], ys[0]]]];
@@ -1038,7 +1121,7 @@ export function clipMeshAtCuts(m: MeshArrays, cuts: readonly Cut[], outside: (x:
     try { outer = polygonClipping.difference(tri, ...local); inner = keepInside ? polygonClipping.difference(tri, outer) : []; } catch { st.failed++; keep.push(...v); continue; }
     // The lift each side's own vertices carried over that side's level (a footway's 14 cm, a fill's few mm).
     const liftOf = (inside: boolean): number => {
-      const l = v.flatMap((_, j) => (inside ? side[j].margin > PORTAL_CLIP_EPS_M : side[j].margin < -PORTAL_CLIP_EPS_M) ? [zs[j] - (inside ? side[j].floor : outside(xs[j], ys[j]))] : []);
+      const l = v.flatMap((_, j) => (inside ? side[j].margin > PORTAL_CLIP_EPS_M : side[j].margin < -PORTAL_CLIP_EPS_M) ? [zs[j] - (inside ? side[j].floor : outZ(xs[j], ys[j]))] : []);
       const mean = l.length ? l.reduce((a, b) => a + b, 0) / l.length : 0;
       return Math.max(0, Math.min(PORTAL_CLIP_LIFT_MAX_M, mean));
     };
@@ -1063,8 +1146,11 @@ export function clipMeshAtCuts(m: MeshArrays, cuts: readonly Cut[], outside: (x:
       }
     };
     const liftOut = liftOf(false), liftIn = liftOf(true);
-    emit(outer, (x, y) => outside(x, y) + liftOut);
-    if (keepInside) emit(inner, (x, y) => { const s = cutMargin(cuts, x, y); return (s.floor === s.floor ? s.floor : outside(x, y)) + liftIn; });
+    emit(outer, (x, y) => outZ(x, y) + liftOut);
+    // An inside piece's vertex on the end line can fall just past the strip's last station (the ring's end and the
+    // centreline's projection disagree by centimetres): with `ends` it takes the inside vertices' floor, not the lid.
+    const insideFloor = ends ? side.filter(q => q.margin > PORTAL_CLIP_EPS_M).reduce((a, q, _, l) => a + q.floor / l.length, 0) : NaN;
+    if (keepInside) emit(inner, (x, y) => { const s = cutMargin(cuts, x, y, opts); return (s.floor === s.floor ? s.floor : insideFloor === insideFloor ? insideFloor : outZ(x, y)) + liftIn; });
     else st.dropped++;
     st.split++;
   }
