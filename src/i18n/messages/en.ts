@@ -86,6 +86,7 @@ export const en = {
   'setup.tours': 'Tours',
   'setup.tours.none': 'No tour',
   'setup.tours.stops': '{count} stops by bike, one leg at a time',
+  'setup.tours.cardStops': '{count} stops by bike',
   'setup.tours.checked': ' · {checked}, shops change',
   'setup.tours.brief': 'Ride the {tour} tour stop by stop. Each arrival tells you why it is on the list.',
   'setup.homeAddress': 'Home address',
