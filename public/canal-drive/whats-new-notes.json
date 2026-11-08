@@ -3,6 +3,27 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "The IJ-tunnel's west ramp keeps its wall",
+      "text": "The IJ-tunnel's west ramp now keeps its wall all the way down: no more street draped into the trench halfway along. The east bank rises nine metres in one run, which the wall scan had read as too wide to be a wall, so the wall stopped for 48 metres and the verge above folded into the cutting.",
+      "where": [
+        4.9116,
+        52.372
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-09-ramp-gap/before-ij-ramp-gap-across.png",
+          "alt": "Before: the ramp's east wall ends mid-way and the grass verge folds into the trench",
+          "caption": "Before."
+        },
+        {
+          "src": "engine/2026-11-09-ramp-gap/after-ij-ramp-gap-across.png",
+          "alt": "After: one continuous wall along the ramp with the verge intact above it",
+          "caption": "After."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
       "title": "The ground is there when the ride starts",
       "text": "The ground under the camera now begins building during the loading screen and is in place about a second sooner after the reveal, and the ride is revealed no later than before. The ground builders no longer queue up behind each other: each takes the next most urgent cell as soon as it is free, prefers cells next to ones it already holds, and a finished cell is never built twice.",
       "images": []
