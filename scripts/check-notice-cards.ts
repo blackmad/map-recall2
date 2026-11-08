@@ -170,6 +170,15 @@ const stub = (text: string, font: string) => {
     'the name starts at or past the photo edge, never under it');
 }
 
+// Free Ride's collection (G4): the checklist replaces the caption; a completed list says so in the heading.
+{
+  const card = measurePostcard({ name: 'Marineterrein', imageArea: 'Centrum', checklist: '3 of 9 places' }, stub);
+  assert.equal(card.caption, '3 of 9 places · Amsterdam');
+  assert.equal(card.heading, 'ENTERING NEIGHBORHOOD');
+  assert.equal(measurePostcard({ name: 'Marineterrein', checklist: 'all 9 places', stamped: true }, stub).heading, 'PASSPORT STAMP');
+  assert.equal(measurePostcard({ name: 'Marineterrein', checklist: '' }, stub).caption, 'Amsterdam', 'no list, no change');
+}
+
 // A borrowed photo is credited to the district it was actually taken in.
 {
   assert.equal(measurePostcard({ name: 'X', imageArea: 'Zuid' }, stub).caption,

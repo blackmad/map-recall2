@@ -47,6 +47,7 @@ import type { BuildingHit, Landmark, LandmarkNotice, Neighborhood, WorldPoint } 
 import { factsIdOf } from '../engine/labelPand';
 import { buildRouteKnowledgeIndex, routeKnowledgeFor, shouldOfferStreetKnowledge, streetCardText, streetCardWithRotatedFact, type StreetNameOrigin } from './routeKnowledge';
 import { canShowDriveByCard, canShowMiniMap, canShowPostcard, canShowTeachingCard } from './teachingSurface';
+import { drawPassportStamp } from './freeRideCollectionDraw';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { articleCard, type BuildingArticle } from '../buildingArticles';
@@ -615,7 +616,9 @@ export class GameLandmarkRuntime {
       }
       const priorEntries = recordEntry(typeof localStorage === 'undefined' ? null : localStorage,
         cityId, this._neighborhoodEntries.counts, this.currentNeighborhood);
-      this._postcardPending = postcardOnEntry({
+      // Free Ride's collection: every entry to a neighbourhood with a checklist says how far along it is.
+      const checklistEntry = !!this.freeRide && !!this._freeRideChecklistCaption?.(this.currentNeighborhood);
+      this._postcardPending = checklistEntry || postcardOnEntry({
         now: this.raceTime, priorEntries, lastTriviaAt: this._lastTriviaAt ?? null, lastPostcardAt: this._lastPostcardAt ?? null,
       }) ? this.currentNeighborhood : null;
     } else if (this.currentNeighborhood && !this._postcardPending && postcardForLull({
@@ -624,12 +627,22 @@ export class GameLandmarkRuntime {
     })) {
       this._postcardPending = this.currentNeighborhood;
     }
+    // Free Ride's collection: the postcard is a bottom card under the one-card
+    // rule. A landmark card replaces a postcard that is up; a postcard waits
+    // while a landmark card is open (and is dropped if the rider leaves).
+    const oneCard = !!this._freeRideCollectionOn?.();
+    if (oneCard && this._landmarkNotice && this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) {
+      this._neighborhoodNoticeTimer = 0;
+      this._neighborhoodNotice = null;
+    }
     if (this._postcardPending && this._postcardPending === this.currentNeighborhood
+      && !(oneCard && this._landmarkNotice)
       && this.viewport?.mode !== 'compact' && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
       this._postcardPending = null;
       this._lastPostcardAt = this.raceTime;
       if (hood) this._ensureNeighborhoodImage(hood);
-      this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
+      const stamped = !!this._freeRideTakeStampPostcard?.(this.currentNeighborhood);
+      this._neighborhoodNotice = { ...(hood || { name: this.currentNeighborhood }), stamped };
       this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
     }
 
@@ -895,6 +908,8 @@ export class GameLandmarkRuntime {
         hasImage,
         cityName: city?.name || this._cityDisplayName?.() || 'Amsterdam',
         provinceCaption: city?.provinceCaption || '',
+        checklist: this._freeRideChecklistCaption?.(hood.name) || '',
+        stamped: !!hood.stamped,
       },
       measure,
       window.CanalRecallUi.postcardWidth(this.viewport));
@@ -915,6 +930,10 @@ export class GameLandmarkRuntime {
     ctx.save();
     ctx.globalAlpha = Math.max(0, alpha);
     this.renderer.drawPostcard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+    if (hood.stamped) {
+      drawPassportStamp(ctx, cardX + card.width - 46, cardY + card.height / 2, 34, 'Stamped',
+        Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.25), window.CanalRecallUi.hudSurface.fontPlaque);
+    }
     ctx.restore();
   }
 }

@@ -1100,6 +1100,7 @@ export class GamePresentationRuntime {
       destination: finish && !this.freeRide ? local(finish.x, finish.y) : null,
       route,
       routeIndex: this._radarRouteIndex ?? 0,
+      places: this.freeRide ? this._freeRideRadarPlaces().map(p => local(p.x, p.y)) : null,
     }, range[0]);
   }
 
