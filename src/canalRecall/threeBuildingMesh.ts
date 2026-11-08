@@ -38,7 +38,7 @@ import { ExtraSink, EXTRA_BUDGET, roofExtras, buildingWallExtras, type ExtraCont
 import type { FlatTri } from './facadeExtraCore.js';
 import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 import { measuredRoofFurniture } from './roofs/roofFurniture.js';
-import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
+import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, FLAT_SURFACE_BUDGET, LIP_H_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
 import type { FurnitureItem } from './roofs/roofSlots.js';
 
 export type MeshBuilding = {
@@ -92,7 +92,7 @@ export type MeshBuilding = {
    * A real flat roof's surface (lane R5-E, roofs/flatRoofSurface.ts, `?flatRoofSurface`): `lip` a parapet lip of wall
    * colour around the lid, `box` a generic lift-house box at the stair core (no measured furniture). Absent: neither.
    */
-  flatRoof?: { lip: boolean; box: boolean };
+  flatRoof?: { lip: boolean; box: boolean; /** Roof area (m²): the chunk's surface budget goes to the largest roofs first. */ areaM2?: number; /** The coarse tier (and the baked shell): no measured furniture, the coarse budget. */ coarse?: boolean };
   /** Overrides the per-building rhythm jitter (large tier: civic storeys, one entrance per run). */
   layoutScale?: LayoutScale;
   /** A plain band this tall between the top window row and the wall top (large tier). */
@@ -482,6 +482,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   const corniceTris = new WeakSet<object>(), surveyedRoofTris = new WeakSet<object>();
   type Quad = { kind: string; accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[]; extraTris: number }> = [];
+  type SurfaceCandidate = { entry: number; areaM2: number; coarse: boolean; furniture: SignTri[]; lip: StreetCrownTri[]; box: StreetCrownTri[] };
+  const surfaceCandidates: SurfaceCandidate[] = [];
+  const surfaceStats = { furniture: 0, lip: 0, box: 0, furnitureDropped: 0, lipDropped: 0, boxDropped: 0 };
   let signTotal = 0, extrasTotal = 0, gardenTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
   const kxLocal = mPerDegLng(origin.lat);
@@ -681,19 +684,29 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       sign.push(...extraSink.tris);
     }
     if (walled && lid && b.flatRoof) {
-      // A real flat roof's surface (lane R5-E, roofs/flatRoofSurface.ts): the parapet lip, then the measured furniture
-      // (from the air too, so in this chunk rather than the near-only extras) or the generic lift-house box.
+      // A real flat roof's surface (lane R5-E, roofs/flatRoofSurface.ts): the measured furniture (from the air too, so in
+      // this chunk rather than the near-only extras), the parapet lip and the generic lift-house box, as candidates the
+      // chunk's surface budget (FLAT_SURFACE_BUDGET, after this loop) admits largest roof first.
       const local = b.polygons.map(poly => poly.map(ring => ring.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number])));
-      if (b.flatRoof.lip && !b.roof) for (const poly of local) roof.push(...parapetLipTris(poly, b.heightM, b.wallHex));
-      const outer = local[0]?.[0] ?? [], rect = fitRect(outer, 40);
-      if (b.measuredRoof && outer.length) {
+      // A party wall against a roof as high (or higher) carries no lip: both buildings' edges are in `shared`, one each way.
+      const exposed = (a: [number, number], c: [number, number]) => {
+        const there = shared.get(`${edgeKey(a[0], a[1])}>${edgeKey(c[0], c[1])}`), back = shared.get(`${edgeKey(c[0], c[1])}>${edgeKey(a[0], a[1])}`);
+        if (!there?.length || !back?.length) return true;
+        return Math.min(Math.max(...there.map(o => o.top)), Math.max(...back.map(o => o.top))) < b.heightM - LIP_H_M;
+      };
+      const coarseTier = b.flatRoof.coarse === true, outer = local[0]?.[0] ?? [], rect = fitRect(outer, 40);
+      const candidate: SurfaceCandidate = { entry: quadsByBuilding.length, areaM2: b.flatRoof.areaM2 ?? 0, coarse: coarseTier, furniture: [], lip: [], box: [] };
+      if (b.measuredRoof && outer.length && !coarseTier) {
         const sink = new ExtraSink(400); // the detector stores at most 16 items a roof (12 triangles each with the fit margin), plus a terrace
         measuredRoofFurniture(b.measuredRoof, outer[0], b.heightM, rect, sink);
-        sign.push(...sink.tris); extraTris += sink.tris.length;
-      } else if (b.flatRoof.box && rect) {
-        const at = stairCorePoint(local[0], 1, rect);
-        if (at) roof.push(...roofBoxTris(at[0], at[1], rect.ux, rect.uy, BOX_L_M, BOX_W_M, b.heightM, b.heightM + BOX_H_M, BOX_HEX));
+        candidate.furniture = sink.tris;
       }
+      if (b.flatRoof.lip && !b.roof) for (const poly of local) candidate.lip.push(...parapetLipTris(poly, b.heightM, b.wallHex, { exposed }));
+      if (b.flatRoof.box && !b.measuredRoof && rect) {
+        const at = stairCorePoint(local[0], 1, rect);
+        if (at) candidate.box = roofBoxTris(at[0], at[1], rect.ux, rect.uy, BOX_L_M, BOX_W_M, b.heightM, b.heightM + BOX_H_M, BOX_HEX);
+      }
+      surfaceCandidates.push(candidate);
     }
     if (mode === 'extras') { quads.length = 0; visibleQuads.length = 0; roof = []; }
     signTotal += sign.length;
@@ -701,6 +714,23 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     quadsByBuilding.push({ b, quads: visibleQuads, walls, roof, lid, sign, extraTris });
     quadTotal += visibleQuads.length; wallTotal += walls; roofTotal += roof.length;
     if (lid) { lidVerts += lid.xy.length / 2; lidIndices += lid.index.length; }
+  }
+
+  if (surfaceCandidates.length) {
+    // The flat-roof surface's triangle budget (lane R5-E): a share of what the chunk already draws, spent on measured
+    // furniture, then lips, then generic boxes, each pass largest roof first, all-or-nothing a building.
+    const base = quadTotal * 2 + roofTotal + lidIndices / 3 + signTotal;
+    let room = Math.floor(base * (surfaceCandidates[0].coarse ? FLAT_SURFACE_BUDGET.coarse : FLAT_SURFACE_BUDGET.detail));
+    const byArea = [...surfaceCandidates].sort((a, c) => c.areaM2 - a.areaM2);
+    for (const kind of ['furniture', 'lip', 'box'] as const) for (const c of byArea) {
+      const tris = c[kind];
+      if (!tris.length) continue;
+      if (tris.length > room) { surfaceStats[`${kind}Dropped`]++; continue; }
+      room -= tris.length; surfaceStats[kind]++;
+      const e = quadsByBuilding[c.entry];
+      if (kind === 'furniture') { e.sign.push(...(tris as SignTri[])); e.extraTris += tris.length; signTotal += tris.length; extrasTotal += tris.length; }
+      else { e.roof.push(...(tris as StreetCrownTri[])); roofTotal += tris.length; }
+    }
   }
 
   // Equal-height flat tops can overlap even when neither footprint contains the
@@ -844,6 +874,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   addKind('frontage', signTotal - extrasTotal - gardenTotal);
   addKind('garden-room', gardenTotal);
   addKind('extras', extrasTotal);
+  // Lane R5-E diagnostics: flat roofs whose surface piece the chunk budget admitted / dropped (buildings, not triangles).
+  if (surfaceCandidates.length) for (const [k, n] of Object.entries(surfaceStats)) if (n) kinds[`flat-${k}`] = n;
   const chunk = { positions, uvs, layers, tints, accents, thin, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length, kinds };
   return mode === 'walls' ? applyHostWallOpenings(chunk, origin, hostOpenings) : chunk;
 }

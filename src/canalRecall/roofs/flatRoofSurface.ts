@@ -92,6 +92,12 @@ type V2 = [number, number];
 /** A triangle as the chunk builder's roof list takes it (roofMesh.ts RoofTri, `trim`: flat colour on the flat layer). */
 export type SurfaceTri = { p: [V3, V3, V3]; uv: [V2, V2, V2]; part: 'trim'; n: V3; hex: string };
 
+/**
+ * The surface's triangle budget per chunk, as a share of what the chunk draws without it (the brief: ≤ +4 % a detail
+ * chunk, ≤ +8 % a coarse chunk and baked shell). The chunk builder spends it largest roof first.
+ */
+export const FLAT_SURFACE_BUDGET = { detail: 0.04, coarse: 0.08 } as const;
+
 /** Lip height above the lid and width inward from the wall face (m). */
 export const LIP_H_M = 0.3;
 export const LIP_W_M = 0.25;
@@ -115,31 +121,53 @@ function quad(out: SurfaceTri[], a: V3, b: V3, c: V3, d: V3, n: V3, hex: string)
   out.push({ p: [p0, p1, p2], uv: [uv(p0), uv(p1), uv(p2)], part: 'trim', n, hex }, { p: [p0, p2, p3], uv: [uv(p0), uv(p2), uv(p3)], part: 'trim', n, hex });
 }
 
+/** Consecutive lip edges turning less than this (degrees) are one lip segment (BAG rings carry many near-collinear vertices). */
+export const LIP_MERGE_DEG = 12;
+/** Lip segments shorter than this (m) are left out: a jog in the outline reads as nothing from the air and costs as much as a wall. */
+export const LIP_MIN_EDGE_M = 2.5;
+
 /**
- * A parapet lip around every ring of a flat roof (outer rings and courtyards), in chunk metres: per edge the outer face
- * (the wall carried up `h`), the coping top and the inner face down to the lid at `z`, the inner edge mitred at the
- * corners (miters capped at 3 × `w`). 6 triangles per edge. Rings are closed or open, either winding.
+ * A parapet lip around the rings of one flat roof (the outer ring first, then courtyards), in chunk metres: per edge
+ * the outer face (the wall carried up `h`), the coping top and the inner face down to the lid at `z`, the inner edge
+ * mitred at the corners (miters capped at 3 × `w`). By default 4 triangles an edge, the coping and the inner face: from
+ * the air the far side shows its inner face and the near side its coping over the wall, where the outer face would be
+ * the wall carried up 0.3 m (`outerFace` adds it: 6 triangles an edge). `exposed(a, b)` drops an edge (a party wall against a roof as high); consecutive kept edges that
+ * turn less than LIP_MERGE_DEG are merged first. Rings closed or open, either winding.
  */
-export function parapetLipTris(rings: ReadonlyArray<ReadonlyArray<readonly [number, number]>>, z: number, hex: string, outerCount = 1, h = LIP_H_M, w = LIP_W_M): SurfaceTri[] {
-  const out: SurfaceTri[] = [];
+export function parapetLipTris(rings: ReadonlyArray<ReadonlyArray<readonly [number, number]>>, z: number, hex: string, opts: { outerCount?: number; h?: number; w?: number; exposed?: (a: V2, b: V2) => boolean; outerFace?: boolean; mergeDeg?: number; minEdgeM?: number } = {}): SurfaceTri[] {
+  const { outerCount = 1, h = LIP_H_M, w = LIP_W_M, exposed, outerFace = false, mergeDeg = LIP_MERGE_DEG, minEdgeM = LIP_MIN_EDGE_M } = opts;
+  const out: SurfaceTri[] = [], cosMerge = Math.cos(mergeDeg * Math.PI / 180);
   rings.forEach((raw, ri) => {
     let r = raw.map(p => [p[0], p[1]] as V2);
     if (r.length > 1 && r[0][0] === r[r.length - 1][0] && r[0][1] === r[r.length - 1][1]) r = r.slice(0, -1);
     r = r.filter((p, i) => { const q = r[(i + 1) % r.length]; return Math.hypot(q[0] - p[0], q[1] - p[1]) > 0.05; });
     if (r.length < 3) return;
+    const keep0 = r.map((a, i) => !exposed || exposed(a, r[(i + 1) % r.length]));
+    if (!keep0.some(Boolean)) return;
+    // Merge: drop a vertex between two kept edges that barely turn (the kept flag of the merged edge stays true).
+    const dir = (a: V2, b: V2) => { const l = Math.hypot(b[0] - a[0], b[1] - a[1]); return [(b[0] - a[0]) / l, (b[1] - a[1]) / l]; };
+    const idx: number[] = [];
+    for (let i = 0; i < r.length; i++) {
+      const prev = (i + r.length - 1) % r.length, d0 = dir(r[prev], r[i]), d1 = dir(r[i], r[(i + 1) % r.length]);
+      if (keep0[prev] && keep0[i] && d0[0] * d1[0] + d0[1] * d1[1] > cosMerge) continue;
+      idx.push(i);
+    }
+    if (idx.length < 3) return;
+    const v = idx.map(i => r[i]), keep = idx.map(i => keep0[i]), m = v.length;
     // Toward the roof: the ring's own interior for an outer ring, away from it for a courtyard.
-    const s = (ringArea2(r) > 0 ? 1 : -1) * (ri < outerCount ? 1 : -1);
-    const m = r.length;
-    const normal = (i: number): V2 => { const a = r[i], b = r[(i + 1) % m], l = Math.hypot(b[0] - a[0], b[1] - a[1]); return [-s * (b[1] - a[1]) / l, s * (b[0] - a[0]) / l]; };
-    const inset: V2[] = r.map((p, i) => {
+    const s = (ringArea2(v) > 0 ? 1 : -1) * (ri < outerCount ? 1 : -1);
+    const normal = (i: number): V2 => { const a = v[i], b = v[(i + 1) % m], l = Math.hypot(b[0] - a[0], b[1] - a[1]); return [-s * (b[1] - a[1]) / l, s * (b[0] - a[0]) / l]; };
+    const inset: V2[] = v.map((p, i) => {
       const n1 = normal((i + m - 1) % m), n2 = normal(i), d = 1 + n1[0] * n2[0] + n1[1] * n2[1];
       let mx = d > 0.1 ? (n1[0] + n2[0]) / d : n2[0], my = d > 0.1 ? (n1[1] + n2[1]) / d : n2[1];
       const k = Math.hypot(mx, my); if (k > 3) { mx *= 3 / k; my *= 3 / k; }
       return [p[0] + mx * w, p[1] + my * w];
     });
     for (let i = 0; i < m; i++) {
-      const j = (i + 1) % m, [nx, ny] = normal(i), a = r[i], b = r[j], ai = inset[i], bi = inset[j];
-      quad(out, [a[0], a[1], z], [b[0], b[1], z], [b[0], b[1], z + h], [a[0], a[1], z + h], [-nx, -ny, 0], hex);
+      if (!keep[i]) continue;
+      const j = (i + 1) % m, [nx, ny] = normal(i), a = v[i], b = v[j], ai = inset[i], bi = inset[j];
+      if (Math.hypot(b[0] - a[0], b[1] - a[1]) < minEdgeM) continue;
+      if (outerFace) quad(out, [a[0], a[1], z], [b[0], b[1], z], [b[0], b[1], z + h], [a[0], a[1], z + h], [-nx, -ny, 0], hex);
       quad(out, [a[0], a[1], z + h], [b[0], b[1], z + h], [bi[0], bi[1], z + h], [ai[0], ai[1], z + h], [0, 0, 1], hex);
       quad(out, [ai[0], ai[1], z + h], [bi[0], bi[1], z + h], [bi[0], bi[1], z], [ai[0], ai[1], z], [nx, ny, 0], hex);
     }

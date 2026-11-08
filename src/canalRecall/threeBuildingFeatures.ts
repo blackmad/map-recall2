@@ -77,7 +77,7 @@ function applyFlatRoof(building: MeshBuilding, p: Record<string, unknown>, look:
   if (!flatRoofSurfaceEnabled() || LOOK_VARIANTS[look].cartoonRoofCells) return;
   const surfaceLayer = flatRoofSurfaceLayer(cells);
   if (surfaceLayer !== null) building.lid = { ...building.lid, surfaceLayer };
-  building.flatRoof = { lip: areaM2 >= LIP_MIN_M2, box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length };
+  building.flatRoof = { lip: areaM2 >= LIP_MIN_M2, box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length, areaM2 };
 }
 
 /**
@@ -310,6 +310,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       building.heightM = f.properties.kitRoof ? wallTopHeightM(f.properties) : Number(f.properties.height) || building.heightM;
       building.roof = undefined;
       building.extras = false;
+      if (building.flatRoof) building.flatRoof = { ...building.flatRoof, coarse: true };
       // Continue into local facade context below: coarse LOD drops relief and
       // shaped roofs, while its existing cheap window cells keep the street rhythm.
     }

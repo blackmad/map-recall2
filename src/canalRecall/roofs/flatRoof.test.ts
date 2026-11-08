@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { FLAT_ROOF_BANDS, PRIOR_JITTER, flatRoofBand, flatRoofPriorHex, flatRoofToneEnabled } from './flatRoofTone.ts';
-import { BOX_MIN_M2, LIP_H_M, LIP_W_M, SEAM_EVERY_M, LID_CELL_M, SURFACE_MEAN, flatRoofSurfaceEnabled, flatRoofSurfaceLayer, paintFlatRoofSurfaceCell, parapetLipTris, roofBoxTris, stairCorePoint } from './flatRoofSurface.ts';
+import { BOX_MIN_M2, FLAT_SURFACE_BUDGET, LIP_H_M, LIP_W_M, SEAM_EVERY_M, LID_CELL_M, SURFACE_MEAN, flatRoofSurfaceEnabled, flatRoofSurfaceLayer, paintFlatRoofSurfaceCell, parapetLipTris, roofBoxTris, stairCorePoint } from './flatRoofSurface.ts';
 import { applyRoofFact } from './roofFacts.ts';
 import { meshBuildingFor, buildFeatureChunk, type Feature } from '../threeBuildingFeatures.ts';
 import { FLAT_ROOF_GREYS, FLAT_ROOF_PERIOD_PRIORS, hexToRgb, lumaOf, type RGB } from '../look/palette.ts';
@@ -88,11 +88,12 @@ test('surface layer: after the slot layers, inside the byte range; none for the 
   withSearch(OFF, () => { const { layers, total } = lookAtlasLayers('photo', true); assert.equal(total, layers + SLOT_LAYER_COUNT); });
 });
 
-test('parapet lip: 6 triangles an edge, faces outward/up/inward, the inner edge LIP_W_M in', () => {
+test('parapet lip: coping and inner face (4 triangles an edge; 6 with the outer face), the inner edge LIP_W_M in, mitred', () => {
   const sq: [number, number][] = [[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]];
   for (const ring of [sq, [...sq].reverse()]) {
+    assert.equal(parapetLipTris([ring], 20, '#806050', { outerFace: true }).length, 24);
     const tris = parapetLipTris([ring], 20, '#806050');
-    assert.equal(tris.length, 24);
+    assert.equal(tris.length, 16);
     for (const t of tris) {
       const [a, b, c] = t.p, u = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], v = [c[0] - a[0], c[1] - a[1], c[2] - a[2]];
       const cr = [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]];
@@ -101,20 +102,30 @@ test('parapet lip: 6 triangles an edge, faces outward/up/inward, the inner edge 
     }
     const tops = tris.filter(t => t.n[2] === 1).flatMap(t => t.p);
     assert.ok(tops.some(p => Math.abs(p[0] - LIP_W_M) < 1e-9 && Math.abs(p[1] - LIP_W_M) < 1e-9), 'mitred inner corner');
-    // Outer faces point away from the square's centre.
+    // Inner faces stand LIP_W_M in and face the roof's centre.
     for (const t of tris.filter(t => t.n[2] === 0)) {
       const mx = (t.p[0][0] + t.p[1][0] + t.p[2][0]) / 3 - 5, my = (t.p[0][1] + t.p[1][1] + t.p[2][1]) / 3 - 5;
-      const onWall = Math.max(Math.abs(mx), Math.abs(my)) > 5 - 1e-6;
-      assert.equal(mx * t.n[0] + my * t.n[1] > 0, onWall, 'outer faces out, inner faces in');
+      assert.ok(Math.abs(Math.max(Math.abs(mx), Math.abs(my)) - (5 - LIP_W_M)) < 1e-6);
+      assert.ok(mx * t.n[0] + my * t.n[1] < 0, 'inner faces in');
+    }
+    for (const t of parapetLipTris([ring], 20, '#806050', { outerFace: true }).filter(t => t.n[2] === 0)) {
+      const mx = (t.p[0][0] + t.p[1][0] + t.p[2][0]) / 3 - 5, my = (t.p[0][1] + t.p[1][1] + t.p[2][1]) / 3 - 5;
+      assert.equal(mx * t.n[0] + my * t.n[1] > 0, Math.max(Math.abs(mx), Math.abs(my)) > 5 - 1e-6, 'outer faces out');
     }
   }
-  // A courtyard: its lip faces into the courtyard on the outside, toward the roof on the inside.
-  const court: [number, number][] = [[4, 4], [6, 4], [6, 6], [4, 6]];
+  // A courtyard: its lip stands on the roof side of the courtyard wall and faces the roof.
+  const court: [number, number][] = [[3, 3], [7, 3], [7, 7], [3, 7]];
   const tris = parapetLipTris([sq, court], 0, '#806050');
-  assert.equal(tris.length, 48);
-  const courtOuter = tris.filter(t => t.n[2] === 0 && t.p.every(p => p[0] >= 4 - 1e-9 && p[0] <= 6 + 1e-9 && p[1] >= 4 - 1e-9 && p[1] <= 6 + 1e-9) && t.p.some(p => p[0] === 4 || p[0] === 6) && t.p.every(p => [4, 6].includes(p[0]) || [4, 6].includes(p[1])));
-  assert.ok(courtOuter.length >= 8);
-  for (const t of courtOuter) { const mx = (t.p[0][0] + t.p[1][0] + t.p[2][0]) / 3 - 5, my = (t.p[0][1] + t.p[1][1] + t.p[2][1]) / 3 - 5; assert.ok(mx * t.n[0] + my * t.n[1] < 0, 'courtyard wall faces the courtyard'); }
+  assert.equal(tris.length, 32);
+  const courtInner = tris.filter(t => t.n[2] === 0 && t.p.every(p => Math.max(Math.abs(p[0] - 5), Math.abs(p[1] - 5)) < 2 + LIP_W_M + 1e-6));
+  assert.equal(courtInner.length, 8);
+  for (const t of courtInner) { const mx = (t.p[0][0] + t.p[1][0] + t.p[2][0]) / 3 - 5, my = (t.p[0][1] + t.p[1][1] + t.p[2][1]) / 3 - 5; assert.ok(mx * t.n[0] + my * t.n[1] > 0, 'faces away from the courtyard, toward the roof'); }
+  // Party walls and short jogs carry none; near-collinear edges merge.
+  assert.equal(parapetLipTris([sq], 0, '#806050', { exposed: (a, b) => !(a[0] === 0 && b[0] === 0) && !(a[1] === 10 && b[1] === 10) }).length, 8);
+  const jog: [number, number][] = [[0, 0], [10, 0], [10, 10], [5.5, 10], [5.5, 11], [4.5, 11], [4.5, 10], [0, 10]];
+  assert.equal(parapetLipTris([jog], 0, '#806050').length, 5 * 4, 'the three 1 m sides of the jog are left out, the two 4.5 m runs beside it kept');
+  const wobble: [number, number][] = [[0, 0], [5, 0.2], [10, 0], [10, 10], [0, 10]];
+  assert.equal(parapetLipTris([wobble], 0, '#806050').length, 16, 'a 4.6° kink is one edge');
 });
 
 test('roof box: 10 triangles, closed above the roof; the stair core sits on the spine, clear of the edges', () => {
@@ -133,9 +144,10 @@ test('meshBuildingFor: an unmeasured flat roof takes the period prior, its surfa
   const prior = lumaOf(hexToRgb(FLAT_ROOF_PERIOD_PRIORS['1970-1989'])), y = lumaOf(hexToRgb(b.lid!.hex));
   assert.ok(Math.abs(y - prior) < prior * PRIOR_JITTER + 8, `lid ${b.lid!.hex} ${y} vs prior ${prior}`);
   assert.equal(b.lid!.surfaceLayer, flatRoofSurfaceLayer('photo'));
-  assert.deepEqual(b.flatRoof, { lip: true, box: true });
+  assert.deepEqual(b.flatRoof, { lip: true, box: true, areaM2: b.flatRoof!.areaM2 });
+  assert.ok(Math.abs(b.flatRoof!.areaM2! - 660) < 5);
   const small = meshBuildingFor(feature({}, box(8, 10)), 'photo')!;
-  assert.deepEqual(small.flatRoof, { lip: false, box: false });
+  assert.deepEqual({ ...small.flatRoof, areaM2: 0 }, { lip: false, box: false, areaM2: 0 });
   const mapped = meshBuildingFor(feature({ roofColour: '#3a3a3a', colour: '#aa8866' }), 'photo')!;
   assert.equal(mapped.lid!.hex, withSearch(OFF, () => meshBuildingFor(feature({ roofColour: '#3a3a3a', colour: '#aa8866' }), 'photo')!).lid!.hex, 'a mapped roof colour keeps it');
   const p: Record<string, unknown> = {};
@@ -143,7 +155,7 @@ test('meshBuildingFor: an unmeasured flat roof takes the period prior, its surfa
   const measured = meshBuildingFor(feature(p), 'photo')!;
   const off = withSearch(OFF, () => meshBuildingFor(feature(p), 'photo')!);
   assert.equal(measured.lid!.hex, off.lid!.hex, 'a measured lid keeps its colour');
-  assert.deepEqual(measured.flatRoof, { lip: true, box: false }, 'measured furniture: no generic box');
+  assert.deepEqual({ ...measured.flatRoof, areaM2: 0 }, { lip: true, box: false, areaM2: 0 }, 'measured furniture: no generic box');
   // A planned pitched roof is not a flat roof.
   const pitched = meshBuildingFor(feature({ roofPlanned: true, roofShape: 'gable', facadeStyle: 'canal' }), 'photo')!;
   assert.equal(pitched.flatRoof, undefined);
@@ -159,31 +171,42 @@ test('flags off: the building is as before (no surface layer, no lip or box, the
   });
 });
 
-test('chunks: the lip and box join the walls chunk; measured furniture moves there from the extras chunk', () => {
-  const on = buildFeatureChunk([feature({})], 'photo', 'walls'), off = withSearch(OFF, () => buildFeatureChunk([feature({})], 'photo', 'walls'));
+test('chunks: the surface joins the walls and coarse chunks within the budget, largest roofs first; furniture moves out of the extras chunk', () => {
+  // A street of 24 flat blocks, 30 m x 22 m to 30 m x 8 m, 40 m apart (no party walls).
+  const street = Array.from({ length: 24 }, (_, i) => {
+    const kx = 111320 * Math.cos(52.37 * Math.PI / 180), w = 30 / kx, h = (8 + (i % 8) * 2) / 110540, x = 4.901 + i * 40 / kx, y = 52.37;
+    return feature({ id: `NL.IMBAG.Pand.03631000129990${String(i).padStart(2, '0')}` }, { type: 'Polygon', coordinates: [[[x, y], [x + w, y], [x + w, y + h], [x, y + h], [x, y]]] });
+  });
   const tris = (c: { indices: ArrayLike<number> }) => c.indices.length / 3;
-  assert.equal(tris(on) - tris(off), 4 * 6 + 10, 'a 4-edge lip and one box');
-  assert.equal(on.kinds!['roof-trim'] ?? 0, (off.kinds!['roof-trim'] ?? 0) + 34);
-  const coarseOn = buildFeatureChunk([feature({})], 'photo', 'coarse'), coarseOff = withSearch(OFF, () => buildFeatureChunk([feature({})], 'photo', 'coarse'));
-  assert.equal(tris(coarseOn) - tris(coarseOff), 34, 'the coarse chunk (and the baked shell) too');
-  const shellOn = buildFeatureChunk([feature({})], 'photo', 'shell'), shellOff = withSearch(OFF, () => buildFeatureChunk([feature({})], 'photo', 'shell'));
+  for (const [mode, share] of [['walls', FLAT_SURFACE_BUDGET.detail], ['coarse', FLAT_SURFACE_BUDGET.coarse]] as const) {
+    const on = buildFeatureChunk(street, 'photo', mode), off = withSearch(OFF, () => buildFeatureChunk(street, 'photo', mode));
+    const added = tris(on) - tris(off);
+    assert.ok(added > 0 && added <= tris(off) * share, `${mode}: +${added} of ${tris(off)}`);
+    assert.ok((on.kinds!['flat-lip'] ?? 0) > 0, `${mode}: lips admitted`);
+  }
+  const shellOn = buildFeatureChunk(street, 'photo', 'shell'), shellOff = withSearch(OFF, () => buildFeatureChunk(street, 'photo', 'shell'));
   assert.equal(tris(shellOn), tris(shellOff), 'the touch shell stays one quad a wall and a lid');
-  const p: Record<string, unknown> = {};
+  // One building alone: its chunk is too small to afford a lip.
+  const lone = buildFeatureChunk([feature({})], 'photo', 'walls');
+  assert.equal(lone.kinds!['flat-lip'], undefined);
+  assert.equal(lone.kinds!['flat-lipDropped'], 1);
+  // Measured furniture: drawn in the walls chunk, not again in the extras chunk.
+  const p: Record<string, unknown> = { id: 'NL.IMBAG.Pand.0363100012999050' };
   applyRoofFact(p, { slot: 'gravel', rgb: [140, 135, 120], confidence: 0.9, solarShare: 0, terrace: false, furniture: [{ kind: 'hvac', e: 5, n: 5, w: 1.2, l: 2, yawDeg: 0 }, { kind: 'overrun', e: 12, n: 8, w: 3, l: 3, yawDeg: 0 }] });
-  const wallsOn = buildFeatureChunk([feature(p)], 'photo', 'walls'), wallsOff = withSearch(OFF, () => buildFeatureChunk([feature(p)], 'photo', 'walls'));
-  assert.equal(tris(wallsOn) - tris(wallsOff), 24 + 2 * 10, 'lip + two measured boxes');
+  const withMeasured = [...street.slice(1), feature(p)];
+  const wallsOn = buildFeatureChunk(withMeasured, 'photo', 'walls');
+  assert.equal(wallsOn.kinds!['flat-furniture'], 1);
   const extrasOn = buildFeatureChunk([feature(p)], 'photo', 'extras'), extrasOff = withSearch(OFF, () => buildFeatureChunk([feature(p)], 'photo', 'extras'));
-  // Not drawn twice. (Off, the extras sink drops the last measured item: measuredRoofFurniture widens the budget by 10
-  // triangles an item while ExtraSink.box asks room for 12. Kept as it was with the flag off.)
+  // (Off, the extras sink drops the last measured item: measuredRoofFurniture widens its budget by 10 triangles an item
+  // while ExtraSink.box asks room for 12. Kept as it was with the flag off.)
   assert.ok(tris(extrasOff) - tris(extrasOn) >= 10, 'not drawn twice');
-  assert.equal((extrasOn.kinds!.extras ?? 0) + 20, (extrasOff.kinds!.extras ?? 0) + 20 - (tris(extrasOff) - tris(extrasOn)));
   // The lid samples the surface layer.
-  const surface = flatRoofSurfaceLayer('photo')!;
-  assert.ok([...on.layers].includes(surface) && ![...off.layers].includes(surface));
+  const surface = flatRoofSurfaceLayer('photo')!, off = withSearch(OFF, () => buildFeatureChunk(street, 'photo', 'walls'));
+  assert.ok([...buildFeatureChunk(street, 'photo', 'walls').layers].includes(surface) && ![...off.layers].includes(surface));
 });
 
 test('the box threshold: no box under BOX_MIN_M2', () => {
   const b = meshBuildingFor(feature({}, box(15, 20)), 'photo')!;
   assert.ok(15 * 20 < BOX_MIN_M2);
-  assert.deepEqual(b.flatRoof, { lip: true, box: false });
+  assert.deepEqual({ ...b.flatRoof, areaM2: 0 }, { lip: true, box: false, areaM2: 0 });
 });
