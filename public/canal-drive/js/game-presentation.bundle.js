@@ -313,6 +313,33 @@
     "knowledge.recallRate": "Recall rate",
     "knowledge.reviewsLogged": "Reviews logged",
     "knowledge.mapKey": "Map key",
+    // --- Knowledge map and passport stamps (G5) ---
+    "kmap.title": "Knowledge map",
+    "kmap.tapHint": "Tap a buurt to filter",
+    "kmap.loading": "Map loading",
+    "kmap.legendUnit": "Buurts",
+    "kmap.mastered": "Mastered",
+    "kmap.known": "Known",
+    "kmap.learning": "Learning",
+    "kmap.fog": "Not yet ridden",
+    "kmap.due": "Names due",
+    "kmap.aria": "Map of Amsterdam by buurt: {mastered} mastered, {known} known, {learning} learning",
+    "kmap.filter.one": "{name} \xB7 {count} name",
+    "kmap.filter.other": "{name} \xB7 {count} names",
+    "kmap.wholeCity": "Whole city",
+    "stamps.title": "Passport",
+    "stamps.bodyEarned": "One stamp per buurt, earned by riding and naming it",
+    "stamps.bodyEmpty": "Know eight names, then ride into a buurt to earn its stamp",
+    "stamps.countAria": "{earned} of {total} stamps",
+    "stamps.all": "All {total} buurts",
+    "stamps.new": "New stamp",
+    "stamps.stamped": "Stamped",
+    "stamps.notYet": "Not yet",
+    "stamps.cardLabel": "NEW PASSPORT STAMP",
+    "stamps.cardLabelAgain": "PASSPORT STAMP",
+    "stamps.more": "+{count} more",
+    "stamps.held.one": "{count} stamp in the passport",
+    "stamps.held.other": "{count} stamps in the passport",
     "knowledge.status.due": "Due for review",
     "knowledge.status.learning": "Learning",
     "knowledge.status.known": "Known",
@@ -952,6 +979,33 @@
     "knowledge.recallRate": "Trefferquote",
     "knowledge.reviewsLogged": "Herhalingen gedaan",
     "knowledge.mapKey": "Legenda",
+    // --- Knowledge map and passport stamps (G5) ---
+    "kmap.title": "Kenniskaart",
+    "kmap.tapHint": "Tik op een buurt om te filteren",
+    "kmap.loading": "Kaart laden",
+    "kmap.legendUnit": "Buurten",
+    "kmap.mastered": "Beheerst",
+    "kmap.known": "Bekend",
+    "kmap.learning": "Aan het leren",
+    "kmap.fog": "Nog niet bereden",
+    "kmap.due": "Namen te herhalen",
+    "kmap.aria": "Kaart van Amsterdam per buurt: {mastered} beheerst, {known} bekend, {learning} aan het leren",
+    "kmap.filter.one": "{name} \xB7 {count} naam",
+    "kmap.filter.other": "{name} \xB7 {count} namen",
+    "kmap.wholeCity": "Hele stad",
+    "stamps.title": "Paspoort",
+    "stamps.bodyEarned": "E\xE9n stempel per buurt, verdiend door er te fietsen en de namen te kennen",
+    "stamps.bodyEmpty": "Ken acht namen en fiets dan een buurt in om de stempel te verdienen",
+    "stamps.countAria": "{earned} van {total} stempels",
+    "stamps.all": "Alle {total} buurten",
+    "stamps.new": "Nieuwe stempel",
+    "stamps.stamped": "Gestempeld",
+    "stamps.notYet": "Nog niet",
+    "stamps.cardLabel": "NIEUWE PASPOORTSTEMPEL",
+    "stamps.cardLabelAgain": "PASPOORTSTEMPEL",
+    "stamps.more": "+{count} meer",
+    "stamps.held.one": "{count} stempel in het paspoort",
+    "stamps.held.other": "{count} stempels in het paspoort",
     "knowledge.status.due": "Toe aan herhaling",
     "knowledge.status.learning": "Lerend",
     "knowledge.status.known": "Bekend",
@@ -1556,6 +1610,10 @@
   // src/canalRecall/game/neighborhoodPassport.ts
   var PASSPORT_STORAGE_KEY = "canalRecall.neighborhoodPassport.v1";
   var PASSPORT_MIN_NAMES = 8;
+  function localDay(time = Date.now()) {
+    const date = new Date(time);
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+  }
   function emptyPassport() {
     return { stamped: [] };
   }
@@ -1564,7 +1622,14 @@
       const raw = store.getItem(PASSPORT_STORAGE_KEY);
       if (!raw) return emptyPassport();
       const parsed = JSON.parse(raw);
-      return { stamped: Array.isArray(parsed.stamped) ? parsed.stamped.map(String) : [] };
+      const dates = {};
+      if (parsed.dates && typeof parsed.dates === "object") {
+        for (const [hood, at] of Object.entries(parsed.dates)) if (typeof at === "string") dates[hood] = at;
+      }
+      return {
+        stamped: Array.isArray(parsed.stamped) ? parsed.stamped.map(String) : [],
+        ...Object.keys(dates).length ? { dates } : {}
+      };
     } catch {
       return emptyPassport();
     }
@@ -1575,7 +1640,7 @@
     } catch {
     }
   }
-  function stampNewNeighborhoods(exploration, visitedThisRoute, prior, minNames = PASSPORT_MIN_NAMES, landmarkCredit = 0) {
+  function stampNewNeighborhoods(exploration, visitedThisRoute, prior, minNames = PASSPORT_MIN_NAMES, landmarkCredit = 0, today = localDay()) {
     const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length + Math.max(0, landmarkCredit);
     if (known < minNames) return { passport: prior, fresh: [] };
     const stamped = new Set(prior.stamped);
@@ -1586,7 +1651,185 @@
       stamped.add(hood);
       fresh.push(hood);
     }
-    return { passport: { stamped: [...stamped].sort() }, fresh };
+    if (!fresh.length) return { passport: prior, fresh };
+    const dates = { ...prior.dates || {} };
+    for (const hood of fresh) dates[hood] = today;
+    return { passport: { stamped: [...stamped].sort(), dates }, fresh };
+  }
+
+  // src/canalRecall/stampAlbumPlain.ts
+  var STAMP_PAPER = "#fbf6ea";
+  var STAMP_INK = "#1f1c17";
+  var STAMP_ACCENT = "#b4682c";
+  function punchPerforations(ctx, size) {
+    const radius = Math.max(1.5, size * 0.022);
+    const count = Math.max(6, Math.round(size / (radius * 2.8)));
+    const step = size / count;
+    ctx.save();
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.beginPath();
+    for (let i = 0; i <= count; i += 1) {
+      const at = i * step;
+      for (const [x, y] of [[at, 0], [at, size], [0, at], [size, at]]) {
+        ctx.moveTo(x + radius, y);
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+      }
+    }
+    ctx.fill();
+    ctx.restore();
+  }
+  function drawPlainStamp(ctx, name, size) {
+    const margin = Math.round(size * 0.075);
+    ctx.save();
+    ctx.fillStyle = STAMP_PAPER;
+    ctx.fillRect(0, 0, size, size);
+    ctx.strokeStyle = STAMP_ACCENT;
+    ctx.lineWidth = Math.max(1, size * 0.012);
+    ctx.strokeRect(margin, margin, size - margin * 2, size - margin * 2);
+    ctx.fillStyle = STAMP_INK;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const words2 = name.toUpperCase().split(/\s+/);
+    const lines = words2.length > 1 && name.length > 10 ? [words2.slice(0, Math.ceil(words2.length / 2)).join(" "), words2.slice(Math.ceil(words2.length / 2)).join(" ")] : [name.toUpperCase()];
+    const maxW = size - margin * 3;
+    let px = size * 0.2;
+    ctx.font = `700 ${px}px "Barlow Condensed", system-ui, sans-serif`;
+    while (px > 6 && Math.max(...lines.map((line) => ctx.measureText(line).width)) > maxW) {
+      px -= 1;
+      ctx.font = `700 ${px}px "Barlow Condensed", system-ui, sans-serif`;
+    }
+    lines.forEach((line, index) => ctx.fillText(line, size / 2, size / 2 + (index - (lines.length - 1) / 2) * px * 1.05));
+    ctx.restore();
+    punchPerforations(ctx, size);
+  }
+
+  // src/canalRecall/stampArtLoader.ts
+  var STAMP_ART_BUNDLE = "/canal-drive/js/stamp-art.bundle.js";
+  var pending = null;
+  function stampArtNow() {
+    return typeof window !== "undefined" && window.CanalRecallStampArt || null;
+  }
+  function loadStampArt(src = STAMP_ART_BUNDLE) {
+    const ready = stampArtNow();
+    if (ready) return Promise.resolve(ready);
+    if (pending) return pending;
+    if (typeof document === "undefined") return Promise.resolve(null);
+    pending = new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      script.onload = () => {
+        const art = stampArtNow();
+        if (!art) {
+          resolve(null);
+          return;
+        }
+        art.loadStampFont().then(() => resolve(art), () => resolve(art));
+      };
+      script.onerror = () => {
+        pending = null;
+        resolve(null);
+      };
+      document.head.appendChild(script);
+    });
+    return pending;
+  }
+
+  // src/canalRecall/stampArrival.ts
+  var ARRIVAL_STAMP_HEIGHT = 64;
+  function stampCardEnabled(search) {
+    if (!search) return true;
+    try {
+      return new URLSearchParams(search).get("stampCard") !== "0";
+    } catch {
+      return true;
+    }
+  }
+  var plainCache = /* @__PURE__ */ new Map();
+  function plainStamp(name, size) {
+    if (typeof document === "undefined") return null;
+    const key = `${size}|${name}`;
+    let canvas = plainCache.get(key);
+    if (!canvas) {
+      canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      if (ctx) drawPlainStamp(ctx, name, size);
+      plainCache.set(key, canvas);
+    }
+    return canvas;
+  }
+  function drawArrivalStamp(ctx, input) {
+    const size = ARRIVAL_STAMP_HEIGHT;
+    const { x, y } = input;
+    const art = stampArtNow();
+    const image = art ? art.buurtStampCanvas(input.name) : plainStamp(input.name, size * 3);
+    ctx.save();
+    ctx.translate(x + size / 2, y + size / 2);
+    ctx.rotate(-0.05);
+    ctx.shadowColor = "rgba(31,28,23,0.28)";
+    ctx.shadowBlur = 3;
+    ctx.shadowOffsetY = 1;
+    if (image) ctx.drawImage(image, -size / 2, -size / 2, size, size);
+    ctx.restore();
+    const textX = x + size + 14;
+    const room = Math.max(40, input.x + input.width - textX);
+    ctx.save();
+    ctx.textAlign = "left";
+    ctx.textBaseline = "alphabetic";
+    ctx.fillStyle = "#b4682c";
+    ctx.font = `700 11px ${input.fontMono}`;
+    ctx.fillText(t(input.isNew ? "stamps.cardLabel" : "stamps.cardLabelAgain"), textX, y + 18, room);
+    ctx.fillStyle = "#1f1c17";
+    ctx.font = '700 19px "Barlow Condensed", system-ui, sans-serif';
+    ctx.fillText(input.name, textX, y + 40, room);
+    const held = input.held ? t(input.held === 1 ? "stamps.held.one" : "stamps.held.other", { count: input.held }) : "";
+    const foot = [held, input.more ? t("stamps.more", { count: input.more }) : ""].filter(Boolean).join("  \xB7  ");
+    if (foot) {
+      ctx.fillStyle = "#6d655a";
+      ctx.font = "600 12px system-ui, sans-serif";
+      ctx.fillText(foot, textX, y + 58, room);
+    }
+    ctx.restore();
+    return size;
+  }
+
+  // src/canalRecall/stampAlbum.ts
+  var FREE_RIDE_COLLECTION_KEY = "canalRecall.freeRideCollection.v1";
+  var DAY = /^\d{4}-\d{2}-\d{2}/;
+  function earlier(a, b) {
+    return !a || b < a ? b : a;
+  }
+  function readStampSources(store) {
+    const stamped = /* @__PURE__ */ new Set();
+    const dates = {};
+    const parse = (key) => {
+      try {
+        const raw = store?.getItem(key);
+        return raw ? JSON.parse(raw) : null;
+      } catch {
+        return null;
+      }
+    };
+    const passport = parse(PASSPORT_STORAGE_KEY);
+    if (passport && Array.isArray(passport.stamped)) {
+      for (const name of passport.stamped) if (typeof name === "string" && name) stamped.add(name);
+    }
+    if (passport && passport.dates && typeof passport.dates === "object") {
+      for (const [name, at] of Object.entries(passport.dates)) {
+        if (typeof at === "string" && DAY.test(at)) dates[name] = earlier(dates[name], at.slice(0, 10));
+      }
+    }
+    const collection = parse(FREE_RIDE_COLLECTION_KEY);
+    if (collection && Array.isArray(collection.stamps)) {
+      for (const stamp of collection.stamps) {
+        if (!stamp || typeof stamp.hood !== "string" || !stamp.hood) continue;
+        stamped.add(stamp.hood);
+        if (typeof stamp.at === "string" && DAY.test(stamp.at)) dates[stamp.hood] = earlier(dates[stamp.hood], stamp.at.slice(0, 10));
+      }
+    }
+    return { stamped: [...stamped].sort(), dates };
   }
 
   // src/canalRecall/game/finishStory.ts
@@ -10198,7 +10441,9 @@
           ctx.font = "12px system-ui, sans-serif";
           const lineBudget = [Infinity, 4, 2, runText ? 0 : 1][level2];
           const storyLines = [];
-          for (const sentence of [story.headline, story.detail, story.passport, story.streak, story.guestTease]) {
+          const passportFresh = this._finishPassportFresh || [];
+          const stampCard = passportFresh.length > 0 && stampCardEnabled(typeof location === "undefined" ? "" : location.search);
+          for (const sentence of [story.headline, story.detail, stampCard ? null : story.passport, story.streak, story.guestTease]) {
             if (!sentence) continue;
             const room2 = lineBudget - storyLines.length;
             if (!storyLines.length && wrapText(ctx, sentence, innerW, 2).length > room2 && sentence.includes(" \xB7 ")) {
@@ -10240,6 +10485,25 @@
               y2 += 16;
             }
           } });
+          if (stampCard) {
+            let held = 0;
+            try {
+              held = readStampSources(localStorage).stamped.length;
+            } catch {
+            }
+            blocks2.push({ height: ARRIVAL_STAMP_HEIGHT + 12, rule: true, draw: (top) => {
+              drawArrivalStamp(ctx, {
+                name: passportFresh[0],
+                isNew: true,
+                x: cardX + padX,
+                y: top + 4,
+                width: innerW,
+                fontMono: window.CanalRecallUi.hudSurface.fontMono,
+                more: passportFresh.length - 1,
+                held
+              });
+            } });
+          }
         }
         if (bestText && !bestInFooter) {
           blocks2.push({ height: 26, draw: (top) => {
@@ -10625,7 +10889,10 @@
           // Landmarks noticed on a drive-by card or named in a question (G3).
           sightingCredit(readSightings(localStorage))
         );
-        if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
+        if (stamped.fresh.length) {
+          savePassport(localStorage, stamped.passport);
+          if (stampCardEnabled(typeof location === "undefined" ? "" : location.search)) void loadStampArt();
+        }
         this._finishPassportFresh = stamped.fresh;
         return after;
       } catch (error) {
