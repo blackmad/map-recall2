@@ -58,6 +58,7 @@ import {
   ridesThrough,
   saveCollection,
   stampIfComplete,
+  TOKEN_NEAR_PX as TOKEN_NEAR_PX_CSS,
   TOKEN_RADIUS_M,
   TOKEN_RIDE_THROUGH_M,
   tokenSizePx,
@@ -67,7 +68,7 @@ import {
   type CollectionState,
   type Corridor,
 } from './freeRideCollection';
-import { drawDiscoveryToken } from './freeRideCollectionDraw';
+import { drawCollectedToken, drawDiscoveryToken } from './freeRideCollectionDraw';
 import { readPassport, savePassport } from './neighborhoodPassport';
 import { bumpSessionCounter } from './sessionCounters';
 
@@ -124,7 +125,14 @@ export interface FreeRideCollectionState {
   corridor: Corridor | null;
   /** Set when a list was completed: the plaque says so for a few seconds. */
   stampMoment: { hood: string; until: number } | null;
+  /** A completed list whose stamped postcard waits for the bottom band (one-card rule). */
+  stampPostcard: string | null;
+  /** The coin just collected by riding through it on a phone: it flips, then goes. */
+  collected: { x: number; y: number; at: number } | null;
 }
+
+/** How long the collected coin's flip lasts (ms). */
+const COLLECT_FLIP_MS = 600;
 
 const CHECKLIST_COPY = {
   count: (opened: number, total: number) => tr('freeRide.checklist', { opened, total }),
@@ -170,7 +178,7 @@ export class GameFreeRideRuntime {
       const state = readCollection(typeof localStorage === 'undefined' ? null : localStorage);
       this._freeRideCollection = {
         state, opened: new Set(state.opened), lists: null, listsFrom: null, hoodOfKey: new Map(),
-        token: null, tokenScreen: null, tokenHidden: null, corridor: null, stampMoment: null,
+        token: null, tokenScreen: null, tokenHidden: null, corridor: null, stampMoment: null, stampPostcard: null, collected: null,
       };
     }
     this._showFreeRideBar(true);
@@ -239,10 +247,19 @@ export class GameFreeRideRuntime {
     if (!this.freeRide || !this.player) return;
     const collection = this._freeRideCollection;
     // Riding through the token opens its card (checked every frame: at bike speed 0.4 s is 2 m).
-    if (collection?.token && this.state === GameState.RACING
+    if (collection?.token && this.state === GameState.RACING && !collection.opened.has(collection.token.key)
       && ridesThrough(this.player, collection.token, TOKEN_RIDE_THROUGH_M * PIXELS_PER_METER)
       && this._landmarkNotice?.id !== collection.token.key) {
-      this._openFreeRideLandmark(collection.token.key);
+      if (this.viewport?.mode === 'compact') {
+        // A phone collects the place but opens no card by itself (no auto pop-ups on the phone); a tap opens it.
+        const token = collection.token;
+        collection.collected = { x: token.x, y: token.y, at: performance.now() };
+        this._noteFreeRideOpened(token.key);
+        collection.token = null;
+      } else {
+        this._openFreeRideLandmark(collection.token.key);
+        collection.token = null;
+      }
     }
     this._freeRideRefresh = (this._freeRideRefresh ?? 0) - dt;
     if (this._freeRideRefresh > 0) return;
@@ -308,6 +325,17 @@ export class GameFreeRideRuntime {
     const collection = this._freeRideCollection;
     if (!collection) return null;
     return checklistProgress(this._freeRideChecklist(hood), collection.opened);
+  }
+
+  _freeRideCollectionOn(): boolean {
+    return !!this.freeRide && !!this._freeRideCollection;
+  }
+
+  _freeRideTakeStampPostcard(hood: string): boolean {
+    const collection = this._freeRideCollection;
+    if (!this.freeRide || !collection || collection.stampPostcard !== hood) return false;
+    collection.stampPostcard = null;
+    return true;
   }
 
   /** The postcard's checklist caption for a neighbourhood, or '' (no list, or the collection is off). */
@@ -442,6 +470,16 @@ export class GameFreeRideRuntime {
     if (!collection || !this.player) return;
     collection.tokenScreen = null;
     collection.tokenHidden = null;
+    const collected = collection.collected;
+    if (collected) {
+      const t = (performance.now() - collected.at) / COLLECT_FLIP_MS;
+      if (t >= 1) collection.collected = null;
+      else {
+        const at = this.camera.worldToScreen(collected.x, collected.y);
+        const size = TOKEN_NEAR_PX_CSS / Math.max(0.01, this.canvas.getBoundingClientRect().width / CANVAS_W);
+        drawCollectedToken(this.ctx, at.x, at.y, size, t);
+      }
+    }
     const vehicle = this.camera.worldToScreen(this.player.x, this.player.y);
     collection.corridor = {
       path: [vehicle, ...corridorAhead(this.player, CORRIDOR_AHEAD_M * PIXELS_PER_METER).slice(1)
@@ -596,11 +634,12 @@ export class GameFreeRideRuntime {
         if (store) savePassport(store, stamped.passport);
         bumpSessionCounter('stampsEarned');
         collection.stampMoment = { hood, until: performance.now() + STAMP_MOMENT_SECONDS * 1000 };
-        // The postcard comes back with the stamp on it on a wide screen; a phone
-        // keeps its bottom band for the corridor (teachingSurface), the plaque says it.
+        // The postcard comes back with the stamp on it on a wide screen, once the
+        // landmark card just opened has closed (one-card rule; landmarkRuntime).
+        // A phone keeps its bottom band for the corridor, the plaque says it.
         if (this.viewport?.mode !== 'compact') {
-          this._neighborhoodNotice = { ...this.neighborhoods.find(n => n.name === hood), name: hood, stamped: true };
-          this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
+          collection.stampPostcard = hood;
+          this._postcardPending = hood;
         }
       }
     }

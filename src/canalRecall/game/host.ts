@@ -174,6 +174,10 @@ export interface LandmarkHost extends GameCoreHost {
   _neighborhoodNoticeTimer: number;
   /** Free Ride's collection (freeRideRuntime.ts): the postcard's "3 of 9 places", '' when there is no list. */
   _freeRideChecklistCaption?(hood: string): string;
+  /** True while Free Ride's collection runs: the postcard then obeys the one-card rule. */
+  _freeRideCollectionOn?(): boolean;
+  /** Consumes a pending passport-stamp postcard for this neighbourhood. */
+  _freeRideTakeStampPostcard?(hood: string): boolean;
   _neighborhoodCandidate: string;
   _neighborhoodCandidateTimer: number;
   _previousNeighborhood: string;

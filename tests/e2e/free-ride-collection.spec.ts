@@ -130,8 +130,22 @@ test('collection: checklist on the plaque, token ≤ 24 px off the corridor, all
     for (const key of keys) g._freeRideCollection.opened.delete(key);
   }, list.places.map(p => p.key));
 
+  // One card at a time: from here on, sample every frame for a landmark card and a postcard up together.
+  await page.evaluate(() => {
+    const w = window as any;
+    w.__g4TwoCards = 0;
+    const tick = () => {
+      const g = w.canalRecallGame;
+      if (g._landmarkNotice && g._neighborhoodNotice && g._neighborhoodNoticeTimer > 0) w.__g4TwoCards++;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+  const compact = await page.evaluate(() => (window as any).canalRecallGame.viewport?.mode === 'compact');
+
   // Walk the token round the list: ~60 m beside each place, tap the token if drawn, else ride through it.
   await page.evaluate(() => { (window as any).canalRecallGame._freeRideOpened = new Set(); });
+  let rode = 0;
   let tapped = 0;
   for (const place of list.places) {
     await placeRider(page, { x: place.x, y: place.y + 60 * 3 });
@@ -147,14 +161,35 @@ test('collection: checklist on the plaque, token ≤ 24 px off the corridor, all
       // Ride through it.
       await page.evaluate((p) => {
         const g = (window as any).canalRecallGame;
+        g._clearLandmarkNotice?.();
         g.player.x = p.x; g.player.y = p.y; g.player.speed = 0;
       }, place);
+      rode++;
     }
     await expect.poll(() => page.evaluate((key) => (window as any).canalRecallGame._freeRideCollection.opened.has(key), place.key), { timeout: 10_000 }).toBe(true);
+    if (!(state.token?.key === place.key && state.screen)) {
+      // Desktop: riding through opens the card. Phone: it collects the place, no card pops up.
+      const notice = await page.evaluate(() => (window as any).canalRecallGame._landmarkNotice?.id ?? null);
+      if (compact) expect(notice).toBeNull();
+      else expect(notice).toBe(place.key);
+    }
     await page.evaluate(() => (window as any).canalRecallGame._clearLandmarkNotice?.());
   }
-  console.log('G4 list', list.hood, list.places.length, 'tapped', tapped);
+  console.log('G4 list', list.hood, list.places.length, 'tapped', tapped, 'rode', rode);
   expect(tapped).toBeGreaterThan(0);
+  // Stand on the last place, inside the neighbourhood, card closed: the stamped postcard comes up (wide screen).
+  const last = list.places[list.places.length - 1];
+  await page.evaluate((p) => {
+    const g = (window as any).canalRecallGame;
+    g.player.x = p.x; g.player.y = p.y + 3; g.player.speed = 0;
+  }, last);
+  await page.waitForTimeout(800);
+  await page.evaluate(() => (window as any).canalRecallGame._clearLandmarkNotice?.());
+  if (!compact) {
+    await page.waitForTimeout(300);
+    console.log('G4 stamp state', JSON.stringify(await page.evaluate(() => { const g = (window as any).canalRecallGame; return { hood: g.currentNeighborhood, pending: g._postcardPending, stamp: g._freeRideCollection.stampPostcard, notice: g._neighborhoodNotice?.name, timer: g._neighborhoodNoticeTimer, card: g._landmarkNotice?.name ?? null, compact: g.viewport?.mode }; })));
+    await expect.poll(() => page.evaluate(() => !!(window as any).canalRecallGame._neighborhoodNotice?.stamped), { timeout: 10_000 }).toBe(true);
+  }
   if (SHOTS) { await page.waitForTimeout(400); await page.screenshot({ path: `${SHOTS}/stamped.png` }); }
 
   const done = await page.evaluate((hood) => {
@@ -175,9 +210,10 @@ test('collection: checklist on the plaque, token ≤ 24 px off the corridor, all
   expect(done.session.placesOpened).toBeGreaterThanOrEqual(list.places.length);
   expect(done.tally).toBe('Stamped in your passport');
   // The postcard carries the stamp on a wide screen; the phone keeps its bottom band clear.
-  const compact = await page.evaluate(() => (window as any).canalRecallGame.viewport?.mode === 'compact');
   if (compact) expect(done.postcard?.stamped ?? false).toBe(false);
   else expect(done.postcard?.stamped).toBe(true);
+  // Never a landmark card and a postcard up together.
+  expect(await page.evaluate(() => (window as any).__g4TwoCards)).toBe(0);
 
   // Back in the neighbourhood the plaque reads "all N places".
   await page.evaluate((hood) => {

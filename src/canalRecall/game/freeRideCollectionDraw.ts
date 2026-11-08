@@ -64,3 +64,20 @@ export function drawPassportStamp(
   ctx.fillText(label.toUpperCase(), 0, 1);
   ctx.restore();
 }
+
+/** The coin flipping as it is collected (t: 0..1): it turns edge-on, shows its copper back, and fades. */
+export function drawCollectedToken(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, t: number): void {
+  if (!(t >= 0 && t < 1)) return;
+  const flip = Math.cos(t * Math.PI * 2);
+  ctx.save();
+  ctx.translate(x, y - t * 10);
+  ctx.scale(Math.max(0.08, Math.abs(flip)), 1);
+  if (flip >= 0) drawDiscoveryToken(ctx, 0, 0, size, 1 - t);
+  else {
+    ctx.globalAlpha = 1 - t;
+    ctx.fillStyle = enamelTheme.copperHi;
+    ctx.beginPath(); ctx.arc(0, 0, size / 2, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = enamelTheme.copperDeep; ctx.lineWidth = 1.5; ctx.stroke();
+  }
+  ctx.restore();
+}

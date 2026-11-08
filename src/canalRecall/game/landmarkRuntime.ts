@@ -625,12 +625,22 @@ export class GameLandmarkRuntime {
     })) {
       this._postcardPending = this.currentNeighborhood;
     }
+    // Free Ride's collection: the postcard is a bottom card under the one-card
+    // rule. A landmark card replaces a postcard that is up; a postcard waits
+    // while a landmark card is open (and is dropped if the rider leaves).
+    const oneCard = !!this._freeRideCollectionOn?.();
+    if (oneCard && this._landmarkNotice && this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) {
+      this._neighborhoodNoticeTimer = 0;
+      this._neighborhoodNotice = null;
+    }
     if (this._postcardPending && this._postcardPending === this.currentNeighborhood
+      && !(oneCard && this._landmarkNotice)
       && this.viewport?.mode !== 'compact' && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
       this._postcardPending = null;
       this._lastPostcardAt = this.raceTime;
       if (hood) this._ensureNeighborhoodImage(hood);
-      this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
+      const stamped = !!this._freeRideTakeStampPostcard?.(this.currentNeighborhood);
+      this._neighborhoodNotice = { ...(hood || { name: this.currentNeighborhood }), stamped };
       this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
     }
 
