@@ -226,6 +226,7 @@
     const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
     return polygons.some((rings) => rings.length && inRing(point, rings[0]) && !rings.slice(1).some((hole) => inRing(point, hole)));
   }
+  var normalName = (name) => (name || "").normalize("NFC").toLocaleLowerCase("nl").trim();
   var osmUrl = (id) => `https://www.openstreetmap.org/${{ n: "node", w: "way", r: "relation" }[id[0]]}/${id.slice(1)}`;
   var cell = (lng, lat) => `${Math.floor(lng * 1e3)}/${Math.floor(lat * 1e3)}`;
   var ClickPoiIndex = class {
@@ -254,11 +255,36 @@
       const found = candidates.filter((row) => poiInsideBuilding([row[2], row[3]], geometry)).sort((a, b) => Number(!!b[8]) - Number(!!a[8]) || Number(!!b[7]) - Number(!!a[7]) || a[0].localeCompare(b[0]));
       const seen = /* @__PURE__ */ new Set();
       return found.filter((row) => {
-        const key = row[1].normalize("NFC").toLocaleLowerCase("nl").trim();
+        const key = normalName(row[1]);
         if (seen.has(key)) return false;
         seen.add(key);
         return true;
       });
+    }
+    /**
+     * The mapped place a drawn POI label stands for: the same name, nearest to
+     * the label's point and within `maxMetres`. A tap on a label carries only
+     * its text and point (labelLayer.ts hitTest), no footprint, so `contained`
+     * cannot answer it (user shot 2026-11-08, the Sloterdijk gurdwara).
+     */
+    named(name, lngLat, maxMetres = 60) {
+      const key = normalName(name);
+      if (!key || !lngLat || !Number.isFinite(lngLat[0]) || !Number.isFinite(lngLat[1])) return null;
+      const [lng, lat] = lngLat;
+      const cx = Math.floor(lng * 1e3), cy = Math.floor(lat * 1e3);
+      const mx = 111320 * Math.cos(lat * Math.PI / 180), my = 110540;
+      let best = null, bestM = maxMetres;
+      for (let x = cx - 1; x <= cx + 1; x++) for (let y = cy - 1; y <= cy + 1; y++) {
+        for (const row of this.cells.get(`${x}/${y}`) ?? []) {
+          if (normalName(row[1]) !== key) continue;
+          const metres = Math.hypot((row[2] - lng) * mx, (row[3] - lat) * my);
+          if (metres <= bestM) {
+            best = row;
+            bestM = metres;
+          }
+        }
+      }
+      return best;
     }
     card(building) {
       if (!building.footprint) return null;
@@ -2026,6 +2052,13 @@ Map source: ${osmUrl(places[i][0])}`);
     return mode === "transit";
   }
 
+  // src/canalRecall/placeKind.ts
+  function withArticle(phrase) {
+    const text = phrase.trim();
+    if (!text || /^(a|an|the)\s/i.test(text)) return text;
+    return `${/^[aeiou]/i.test(text) ? "an" : "a"} ${text}`;
+  }
+
   // src/canalRecall/buildingFacts.ts
   var BUILDING_TYPES = [
     "warehouse",
@@ -2127,30 +2160,47 @@ Map source: ${osmUrl(places[i][0])}`);
     if (!heightMetres || !(heightMetres > 2.5)) return null;
     return Math.max(1, Math.round(heightMetres / 3.2));
   }
-  function describeBuilding(row, heightMetres, name = "") {
+  var NOTHING_KNOWN = {
+    anonymous: "This building has no name or date in the map data.",
+    named: "The map data has no date for this building.",
+    place: "A mapped place; the map data has no date for its building."
+  };
+  var NOTHING_KNOWN_SET = new Set(Object.values(NOTHING_KNOWN));
+  var saysNothingKnown = (detail) => NOTHING_KNOWN_SET.has(detail);
+  var sameName = (a, b) => !!a && a.normalize("NFC").toLocaleLowerCase("nl").trim() === b.normalize("NFC").toLocaleLowerCase("nl").trim();
+  function placeSentence(place, title) {
+    if (!place?.name) return "";
+    const kind = (place.kind || "").trim(), at = place.address ? ` at ${place.address}` : "";
+    if (sameName(place.name, title)) return kind ? `${capitalise2(kind)}${at}.` : at ? `A mapped place${at}.` : "";
+    return `${place.name} is ${kind || "a mapped place"}${at}.`;
+  }
+  function describeBuilding(row, heightMetres, name = "", place = null) {
     const storeys = storeysFor(heightMetres);
     const type = row && row[1] >= 0 ? TYPE_LABELS[BUILDING_TYPES[row[1]]] : "";
     const monument = row && row.length > 3 ? row[3] : null;
     const monumentYear = monument?.y ? Number(monument.y.slice(0, 4)) : NaN;
     const year = plausibleYear(monumentYear) ? monumentYear : row && plausibleYear(row[0]) ? row[0] : null;
     const years = plausibleYear(monumentYear) ? monument.y : year ? String(year) : "";
-    const shownName = name || monument?.n || "";
+    const shownName = name || monument?.n || place?.name || "";
     const title = shownName || (year ? `Built ${year}` : type ? capitalise2(type) : "No building details");
     const parts = [];
+    const placeText = placeSentence(place, title);
+    if (placeText) parts.push(placeText);
     const designed = monument?.a ? `, designed by ${monument.a}` : "";
     if (year) {
-      parts.push(type ? `A ${type}, built in ${years}, ${periodOf(year)}${designed}.` : `Built in ${years}, ${periodOf(year)}${designed}.`);
+      parts.push(type ? `${capitalise2(withArticle(type))}, built in ${years}, ${periodOf(year)}${designed}.` : `Built in ${years}, ${periodOf(year)}${designed}.`);
     } else if (designed) {
       parts.push(`Designed by ${monument.a}.`);
-    } else if (type && shownName) {
-      parts.push(`A ${type}.`);
+    } else if (type && shownName && !placeText) {
+      parts.push(`${capitalise2(withArticle(type))}.`);
     }
     const heritage = row ? HERITAGE_LABELS[row[2]] : "";
     const purpose = monument?.f != null && MONUMENT_FUNCTIONS[monument.f] && monument.f > 0 ? `Originally built for ${MONUMENT_FUNCTIONS[monument.f][1]}.` : "";
     if (heritage) parts.push(heritage);
     if (purpose) parts.push(purpose);
     if (storeys) parts.push(`About ${Math.round(heightMetres)} m tall, some ${storeys} ${storeys === 1 ? "storey" : "storeys"}.`);
-    return { name: title, detail: parts.join(" ") || "This building has no name or date in the map data." };
+    const nothing = shownName ? place?.name ? NOTHING_KNOWN.place : NOTHING_KNOWN.named : NOTHING_KNOWN.anonymous;
+    return { name: title, detail: parts.join(" ") || nothing };
   }
   var capitalise2 = (text) => text.charAt(0).toUpperCase() + text.slice(1);
   function factTileOf(lng, lat) {
@@ -2254,7 +2304,7 @@ Map source: ${osmUrl(places[i][0])}`);
 
   // src/canalRecall/buildingArticles.ts
   function registerLineUnderArticle(factDetail) {
-    return /^This building has no /.test(factDetail) ? "" : factDetail;
+    return saysNothingKnown(factDetail) ? "" : factDetail;
   }
   function articleCard(article, facts, titleSpoils = false) {
     const register = registerLineUnderArticle(facts.detail);
@@ -6068,7 +6118,9 @@ ${register}` : detail,
         row = [row[0], row[1], row[2], rest];
       }
       const safeName = buildingName && spoils?.call(this.vectorMap, buildingName) ? "" : buildingName;
-      const facts = describeBuilding(row, building.height, safeName);
+      const labelRow = safeName && building.poi && !building.footprint ? this._clickPoiInfo?.named?.(safeName, building.lngLat) ?? null : null;
+      const place = labelRow ? { name: labelRow[1], kind: labelRow[5], address: labelRow[6] } : safeName && building.poi ? { name: safeName } : null;
+      const facts = describeBuilding(row, building.height, safeName, place);
       if (!row || !article) this._requestBuildingFacts(building);
       const id = `clicked-${building.id || building.lngLat.join("-")}`;
       if (article) {
@@ -6086,7 +6138,8 @@ ${register}` : detail,
         type: "building",
         detail: facts.detail,
         lngLat: building.lngLat,
-        featureTarget: building.featureTarget
+        featureTarget: building.featureTarget,
+        ...labelRow ? { sourceUrl: osmUrl(labelRow[0]) } : {}
       };
     }
     /** A mapped venue whose building also has an article: the lede leads, the

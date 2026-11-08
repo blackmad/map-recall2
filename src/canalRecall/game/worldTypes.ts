@@ -141,6 +141,8 @@ export interface BuildingHit {
   height?: number;
   /** The exact installed mesh owner's plan, including its courtyard holes. */
   footprint?: import('../clickPoiInfo').PolygonGeometry;
+  /** Set when the click hit a drawn POI label: `name` is the label's text, `lngLat` its point. */
+  poi?: boolean;
   lngLat: LngLat;
   geojson?: GeoJsonFeatureCollection;
   featureTarget: FeatureTarget | null;

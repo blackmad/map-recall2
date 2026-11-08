@@ -178,3 +178,6 @@ expectArticle('w749586949', 4.89378, 52.37791, 'Ronde Lutherse Kerk', /Luther|ch
 process.stdout.write(`${publishedIndex.tiles.length} article tiles published\n`);
 
 process.stdout.write('Building fact checks passed\n');
+
+// The card's branches (named pand, place on the building, label taps): node:test cases run on import.
+await import('../src/canalRecall/buildingFacts.test.ts');

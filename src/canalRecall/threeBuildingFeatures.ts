@@ -6,7 +6,7 @@ import type {SurveyedMeshBinding} from './surveyedEnvelopeMeshBinding.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
-import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
+import { roofPlanForFeature, roofTrianglesForOutline, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { paletteFor } from './bayTextures.js';
@@ -275,8 +275,33 @@ function gardenRoomTrisFor(f: Feature, building: MeshBuilding, look: BuildingLoo
  */
 export const shellRoofPlan = (plan: RoofPlan): RoofPlan => ({
   ...plan, kind: SHELL_ROOF_KIND[plan.kind] ?? plan.kind, dormers: false, chimney: false, accents: false, shutters: false, streetRidge: undefined, streetEnds: undefined, sourceCrownFront: undefined,
-  gable: 'plain', clipToOutline: false, pieces: plan.pieces?.map(p => ({ ...p, plan: shellRoofPlan(p.plan) })),
+  gable: 'plain', clipToOutline: plan.clipToOutline, pieces: plan.pieces?.map(p => ({ ...p, plan: shellRoofPlan(p.plan) })),
 });
+/**
+ * #257 (user shots 2026-11-08, the Stadhouderskade by the Hobbemastraat and the Geldersekade): where the detail cuts
+ * a planned roof at the walls (roofMesh planBuildingRoof `clipToOutline`: a fitted box over a skewed wall, or an
+ * irregular block roofed from its fitted box), the shell used to drop the cut and drew the whole box, up to 22 m of
+ * roof beyond walls that stop at the eaves. The cut costs triangles (each slope is cut per outline triangle), and a
+ * third of the planned roofs carry it for an eaves line a few decimetres out, invisible from a shell's distance; so a
+ * shell cuts only where its uncut box stands more than this far past the walls.
+ */
+export const SHELL_ROOF_HANG_CLIP_M = 1;
+const KX_SHELL = 111_320 * Math.cos(ORIGIN.lat * Math.PI / 180), KY_SHELL = 110_540;
+/** How far (m) the roof of `plan` built uncut over `outer` (lng/lat) stands past the outline at most, from above. */
+export function roofHangM(outer: readonly number[][], plan: RoofPlan, dims: RoofDims): number {
+  const ring = outer.map(([lng, lat]) => [(lng - ORIGIN.lng) * KX_SHELL, (lat - ORIGIN.lat) * KY_SHELL]);
+  if (ring.length > 1 && ring[0][0] === ring[ring.length - 1][0] && ring[0][1] === ring[ring.length - 1][1]) ring.pop();
+  const inside = (x: number, y: number) => { let r = false; for (let a = 0, b = ring.length - 1; a < ring.length; b = a++) if ((ring[a][1] > y) !== (ring[b][1] > y) && x < (ring[b][0] - ring[a][0]) * (y - ring[a][1]) / (ring[b][1] - ring[a][1]) + ring[a][0]) r = !r; return r; };
+  const toWall = (x: number, y: number) => { let d = Infinity; for (let a = 0; a < ring.length; a++) { const p = ring[a], q = ring[(a + 1) % ring.length], dx = q[0] - p[0], dy = q[1] - p[1], t = Math.max(0, Math.min(1, ((x - p[0]) * dx + (y - p[1]) * dy) / (dx * dx + dy * dy || 1))); d = Math.min(d, Math.hypot(x - p[0] - t * dx, y - p[1] - t * dy)); } return d; };
+  let hang = 0;
+  for (const t of roofTrianglesForOutline(outer, ORIGIN, { ...plan, clipToOutline: false }, 0, dims, KX_SHELL)) for (const [x, y] of t.p) if (!inside(x, y)) hang = Math.max(hang, toWall(x, y));
+  return hang;
+}
+/** The shell's roof plan for a building: shellRoofPlan, cut at the walls only where the uncut roof hangs past them (#257). */
+export function shellRoofPlanFor(outer: readonly number[][], plan: RoofPlan, dims: RoofDims): RoofPlan {
+  const low = shellRoofPlan(plan);
+  return low.clipToOutline && roofHangM(outer, low, dims) <= SHELL_ROOF_HANG_CLIP_M ? { ...low, clipToOutline: false } : low;
+}
 /** Two-pitch and broken roofs read as a hip from a shell's distance (a mansard's kink is a few pixels); 6–9× fewer triangles. */
 const SHELL_ROOF_KIND: Partial<Record<RoofPlan['kind'], RoofPlan['kind']>> = { mansard: 'hipped', mansardHip: 'hipped', school: 'hipped', halfHipped: 'hipped', sawtooth: 'pitched' };
 /** A parapet roof is flat behind its parapet: the shell's lid at the same height already draws it. */
@@ -306,7 +331,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
     }
     if (building && shellRoof && building.roof && !building.surveyedEnvelope && shellRoofed(building.roof.plan)) {
       // Walls (and their windows) stop at the eaves under the low-poly planned roof, in the detail's roof colour.
-      building.roof = { ...building.roof, plan: shellRoofPlan(building.roof.plan), lowPoly: true };
+      building.roof = { ...building.roof, plan: shellRoofPlanFor(building.polygons[0]?.[0] ?? [], building.roof.plan, building.roof.dims), lowPoly: true };
       building.extras = false;
     } else if (building && (mode === 'coarse' || mode === 'shell')) {
       // Keep textured windows and ground-floor doors at every distance. Simplify
