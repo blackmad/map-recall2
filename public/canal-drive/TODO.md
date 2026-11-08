@@ -1564,6 +1564,8 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
 
 ---
 
+**Gameplay lanes G1–G7 (2026-11-08 plan `docs/handoffs/gameplay-ui-plan-20261108.md`, user: run them now, all opus; judgements via the engine-judgement session).** Merged: G7 UI debts (HISTORY). Open from G7: a tour card starts its tour by loading `?tour=` rather than in place (P3); desktop keycap clicks on the run card (G1, P3). Pending merges in order: G1 chained stops, G3 landmark question, G4 free-ride collection, G2 daily ride + landing (P1 follow-up this week: the bigger daily pool, tour stops + buurt centroids, since 11 landmarks is ~100 ordered pairs), G5 knowledge map + stamp album (P2: fit the map frame to buurts with any known name, min 3.2 km around the Dam; first open fetches 873 kB of extract JSON, HTTP-cached after a ride), G6 after G1.
+
 ## P0 — Red, or actively teaching something false
 
 - **Tier probe thresholds are uncalibrated** (2026-10-31): mid > 8 ms and low SwiftShader at DPR 1 probes 6.8–7.0 ms, under the 8 ms mid threshold, so the fill probe cannot detect a weak GPU limited by triangle count; only the renderer name sends it to low (materials 2026-11-01). M4 pin: auto vs `?tier=high` 0–11 px at westerkerk/nassaukade, rerun with `ENGINE=own WORLD_AB=1 WORLD_AB_STALE=1 AB_CAMERA=fixed AB_NOISE=1 AB_DPR=2 AB_SPOTS=westerkerk,nassaukade AB_QUERY=governor=0 AB_B_QUERY=tier=high npx playwright test world-v1-ab --project=desktop --headed`.
@@ -1710,11 +1712,17 @@ Root `main` was cleaned on 2026-10-09 (see HISTORY). Live work, in order:
   make the refresh reproduce the committed extract from the archive, and
   only then let it move data. Staged outputs from the comparison were under
   the lane session's scratchpad (`regen/`, `stage/`), not kept.
-- **Phone: the camera zoom snaps when a question card closes (2026-10-22).**
-  Seen in the teaser phone shot: the card hides and the view jumps to a
-  different zoom in one frame as the d-pad returns. Ease the zoom/padding
-  change instead of snapping. The start-of-ride overview flight also hitches
-  as it hands over (about 0.4 s frozen, then a jump).
+- **Phone: the camera zoom snaps when a question card closes (2026-10-22;
+  needs a repro, 2026-11-09).** Seen in the teaser phone shot: the card hides
+  and the view jumps to a different zoom in one frame as the d-pad returns.
+  G7 (#277) measured a real iPhone ride (player zoom set, 0.8 of top speed,
+  route question answered, 340 frames sampled): no frame moved camera zoom,
+  speed pull-back or world zoom by more than 2 %, and `_applyPrefsToRuntime`
+  never ran, so the game-route.js lead is out. Not covered: a real pinch and
+  riding off after the answer; next place to look is the pinch handling in
+  `presentationRuntime.ts` (~368, ~401). Needs the user's device, view and
+  whether they pinched. The start-of-ride overview flight hitch (about 0.4 s
+  frozen, then a jump) is still open.
 - **Road rendering: surveyed BGT surfaces replace OSM bands (user, 2026-10-16;
   plan `docs/plans/road-surfaces-roof-rules-20261016.md` Part 1, approved
   2026-10-16, user chose BGT polygons over patching the band model).**

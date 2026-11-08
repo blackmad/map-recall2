@@ -229,6 +229,7 @@
     "setup.tours": "Tours",
     "setup.tours.none": "No tour",
     "setup.tours.stops": "{count} stops by bike, one leg at a time",
+    "setup.tours.cardStops": "{count} stops by bike",
     "setup.tours.checked": " \xB7 {checked}, shops change",
     "setup.tours.brief": "Ride the {tour} tour stop by stop. Each arrival tells you why it is on the list.",
     "setup.homeAddress": "Home address",
@@ -854,6 +855,7 @@
     "setup.tours": "Tours",
     "setup.tours.none": "Geen tour",
     "setup.tours.stops": "{count} stops per fiets, etappe voor etappe",
+    "setup.tours.cardStops": "{count} stops per fiets",
     "setup.tours.checked": " \xB7 {checked}, winkels wisselen",
     "setup.tours.brief": "Rijd de tour {tour} stop voor stop. Bij elke stop zie je waarom die op de lijst staat.",
     "setup.homeAddress": "Thuisadres",
@@ -3019,6 +3021,54 @@
     const chosen = facts && facts.size ? factCardText(landmark.id, facts, rotation, landmark.detail || landmark.longDetail) : null;
     if (chosen?.text.detail) return { text: chosen.text.detail, choice: chosen.choice };
     return { text: lede || fallback, choice: null };
+  }
+
+  // src/canalRecall/game/finishTitle.ts
+  var FINISH_TITLE_SIZES = [26, 24, 22, 20];
+  var fontAt = (size) => `800 ${size}px system-ui, sans-serif`;
+  function wrapWords(measure, text, width, maxLines) {
+    const words2 = text.trim().split(/\s+/).filter(Boolean);
+    const lines = [];
+    let line = "";
+    let index = 0;
+    for (; index < words2.length; index++) {
+      const next = line ? `${line} ${words2[index]}` : words2[index];
+      if (!line || measure(next) <= width) {
+        line = next;
+        continue;
+      }
+      lines.push(line);
+      line = words2[index];
+      if (lines.length === maxLines) break;
+    }
+    if (lines.length < maxLines) {
+      lines.push(line);
+      return lines.map((l) => clip(measure, l, width));
+    }
+    const last = lines.length - 1;
+    lines[last] = clip(measure, `${lines[last]}\u2026`, width, true);
+    return lines;
+  }
+  function clip(measure, text, width, forceEllipsis = false) {
+    if (measure(text) <= width && (!forceEllipsis || text.endsWith("\u2026"))) return text;
+    let base = text.replace(/…$/, "");
+    while (base.length > 1 && measure(`${base}\u2026`) > width) base = base.slice(0, -1);
+    return `${base.trimEnd()}\u2026`;
+  }
+  function fitFinishTitle(ctx, name, width) {
+    const saved = ctx.font;
+    const measure = (text) => ctx.measureText(text).width;
+    try {
+      for (const size2 of FINISH_TITLE_SIZES) {
+        ctx.font = fontAt(size2);
+        if (measure(name) <= width) return { size: size2, lineHeight: Math.round(size2 * 1.15), lines: [name] };
+      }
+      const size = FINISH_TITLE_SIZES[FINISH_TITLE_SIZES.length - 1];
+      ctx.font = fontAt(size);
+      return { size, lineHeight: Math.round(size * 1.15), lines: wrapWords(measure, name, width, 2) };
+    } finally {
+      ctx.font = saved;
+    }
   }
 
   // src/canalRecall/labels/sightlineOcclusion.ts
@@ -8500,6 +8550,8 @@
       }, range[0]);
     }
     _radarAt;
+    /** The arrival title as last laid out (size and lines), read by tests. */
+    _finishTitleLayout;
     /** Only while the player is settling in. It used to sit permanently on top
      *  of the recall panel. */
     _renderControlsHint() {
@@ -8507,7 +8559,7 @@
       const ctx = this.ctx;
       const rect = this._hudRects().controlsHint;
       const surface = window.CanalRecallUi.hudSurface;
-      const text = "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   D  labels   \xB7   B  buildings   \xB7   P  pause";
+      const text = "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   T  labels   \xB7   B  buildings   \xB7   P  pause";
       ctx.save();
       ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
       ctx.font = `600 11px ${surface.fontMono}`;
@@ -8875,17 +8927,20 @@
       }
       const buildBlocks = (level2) => {
         const blocks2 = [];
-        blocks2.push({ height: 74, draw: (top) => {
+        const title = fitFinishTitle(ctx, this.routeTo.name, innerW);
+        this._finishTitleLayout = title;
+        const titleExtra = (title.lines.length - 1) * title.lineHeight;
+        blocks2.push({ height: 74 + titleExtra, draw: (top) => {
           ctx.textAlign = "left";
           ctx.fillStyle = ACCENT;
           ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
           ctx.fillText(tour?.completed ? "TOUR COMPLETE" : "ARRIVED", cardX + padX, top + 11);
           ctx.fillStyle = INK;
-          ctx.font = "800 26px system-ui, sans-serif";
-          ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
+          ctx.font = `800 ${title.size}px system-ui, sans-serif`;
+          title.lines.forEach((line, index) => ctx.fillText(line, cardX + padX, top + 42 + index * title.lineHeight));
           ctx.fillStyle = MUTED;
           ctx.font = "13px system-ui, sans-serif";
-          ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64);
+          ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
         } });
         if (landmark && level2 < 3 || tour) {
           const photo = hasImage ? level2 >= 2 ? 64 : 88 : 0;
