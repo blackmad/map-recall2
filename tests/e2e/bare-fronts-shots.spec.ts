@@ -11,8 +11,11 @@ import { BARE_SPOTS } from '../../scripts/large-tier/bareSpots';
 // BARE_VARIANTS='main=;off=&bareFronts=0' (label=query suffix, default one variant 'main'); BARE_SPOT=vob picks one
 // spot. Output: artifacts/bare-fronts/<spot>-<label>.png and .json.
 const VARIANTS = (process.env.BARE_VARIANTS ?? 'main=').split(';').filter(Boolean).map(v => ({ label: v.slice(0, v.indexOf('=')), qs: v.slice(v.indexOf('=') + 1) }));
-const SPOTS = BARE_SPOTS.filter(s => !process.env.BARE_SPOT || process.env.BARE_SPOT.split(',').includes(s.name));
-const OUT = 'artifacts/bare-fronts';
+// BARE_SPOTS_FILE=artifacts/large-tier/audit-spots.json: the audit's spot list (scripts/large-tier/audit-spots.ts, same
+// shape) in place of the user's three; BARE_OUT moves the output directory.
+const ALL_SPOTS: ReadonlyArray<{ name: string; camera: readonly number[]; zoom: number; bearing: number; pitch: number; pands: readonly string[] }> = process.env.BARE_SPOTS_FILE ? JSON.parse(readFileSync(process.env.BARE_SPOTS_FILE, 'utf8')) : BARE_SPOTS;
+const SPOTS = ALL_SPOTS.filter(s => !process.env.BARE_SPOT || process.env.BARE_SPOT.split(',').includes(s.name));
+const OUT = process.env.BARE_OUT ?? 'artifacts/bare-fronts';
 const RIDER = [4.9152, 52.3727], FACE = [4.9165, 52.3730];
 test.use({ viewport: { width: 1260, height: 730 } });
 
@@ -31,7 +34,7 @@ async function settle(page: Page) {
 }
 
 for (const variant of VARIANTS) test(`bare fronts at the user's spots (${variant.label})`, async ({ page }) => {
-  test.setTimeout(900_000);
+  test.setTimeout(900_000 + SPOTS.length * 90_000);
   await page.addInitScript(() => { let seed = 0x5eed1234; Math.random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 0x100000000; }; });
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   // BUNDLES_DIR: serve the lane's scratch-built bundles in place of the committed ones (never build into the served tree).
