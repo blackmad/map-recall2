@@ -9,6 +9,7 @@
 // Methods are copied onto `Game.prototype` by `game.js`, so `this` is the Game
 // instance. The interface merged into the class below is what types it.
 
+import { noteCardShown, sharedLedger } from './labelDrawLedger';
 import {
   buildBridges,
   type WaterLineFeature,
@@ -148,6 +149,8 @@ export class GameLandmarkRuntime {
     this._landmarkNoticeSource = source;
     this._landmarkNoticeState = openNotice();
     if (source !== 'arrival') this._lastTriviaAt = this.raceTime;
+    // A card that names a landmark keeps it out of the landmark question for a minute (#281).
+    if (source === 'drive-by' && notice.name) noteCardShown(sharedLedger(window as never), notice.name, performance.now());
     // A deliberate request must be readable immediately, even when slow
     // rendering advances the capped simulation clock only a little per frame.
     // Automatic cards retain their normal fade-in.
@@ -679,7 +682,9 @@ export class GameLandmarkRuntime {
       this._landmarkNoticeSource ?? null, this._landmarkNoticeHold, this._landmarkNoticeState.elapsed)) return;
     // Look ahead along where the rider is going, so the card is up before
     // they reach the landmark rather than as they pass it.
-    const nearest = pickDriveBy(candidates, ahead);
+    // The landmark being approached for a question is not named by a card first (#281).
+    const approached = this._landmarkApproach?.landmark.id;
+    const nearest = pickDriveBy(approached ? candidates.filter(landmark => landmark.id !== approached) : candidates, ahead);
     if (nearest && nearest.id !== this._landmarkNotice?.id) {
       this._seenLandmarks.add(nearest.id);
       this._seenLandmarkNames.add(nearest.name);

@@ -92,9 +92,17 @@ function withheldIndex(names: readonly string[]): SpoilerIndex {
 }
 
 /** The names withheld while a question is open: the asked name plus, for a
- *  landmark question, every choice (G3). */
-export function withheldNames(game: { quizPromptName?: string | null; quizWithheldNames?: readonly string[] | null }): string[] {
-  return game.quizPromptName && game.quizWithheldNames?.length ? [...game.quizWithheldNames] : [];
+ *  landmark question, every choice (G3); and, before it opens, the candidate
+ *  landmark's and its distractors' names while the rider approaches it
+ *  (`landmarkApproachWithheld`, #281), so the map never names the building
+ *  it is about to ask about. */
+export function withheldNames(game: {
+  quizPromptName?: string | null; quizWithheldNames?: readonly string[] | null; landmarkApproachWithheld?: readonly string[] | null;
+}): string[] {
+  const asked = game.quizPromptName && game.quizWithheldNames?.length ? game.quizWithheldNames : [];
+  const approach = game.landmarkApproachWithheld?.length ? game.landmarkApproachWithheld : [];
+  if (!approach.length) return [...asked];
+  return [...new Set([...asked, ...approach])];
 }
 
 export function neighbourhoodLabelVisible(ctx: LabelContext): boolean {
@@ -114,6 +122,8 @@ export function gameLabelContext(game: {
   quizCandidateName?: string | null;
   /** Every choice of an open landmark question (G3). */
   quizWithheldNames?: readonly string[] | null;
+  /** The approached candidate's choices, before its question opens (#281). */
+  landmarkApproachWithheld?: readonly string[] | null;
   spoilerNames: Iterable<string>;
   /** A prebuilt index of `spoilerNames` (the caller keeps it while the names are unchanged). */
   spoilerIndex?: SpoilerIndex;

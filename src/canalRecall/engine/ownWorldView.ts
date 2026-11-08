@@ -903,12 +903,12 @@ export class OwnWorldView implements WorldViewOracles {
     const names: ReadonlySet<string> = g._mapLabelNames instanceof Set ? g._mapLabelNames : new Set();
     const known: ReadonlyMap<string, any> = g._knownPlaces instanceof Map ? g._knownPlaces : new Map();
     const spoilers = this.spoilersSuspended ? [] : this.spoilerNames;
-    const key = `${names.size}|${known.size}|${spoilers.length}|${g.quizPromptName || ''}|${g.quizCandidateName || ''}|${(g.quizWithheldNames || []).join(',')}|${this.quizQuiet}|${this._labelsVisible}`;
+    const key = `${names.size}|${known.size}|${spoilers.length}|${g.quizPromptName || ''}|${g.quizCandidateName || ''}|${(g.quizWithheldNames || []).join(',')}|${(g.landmarkApproachWithheld || []).join(',')}|${this.quizQuiet}|${this._labelsVisible}`;
     if (this.policyCache?.key !== key) {
       const loader = this.loader;
       const ctx = gameLabelContext({
         mapLabelNames: names, knownPlaces: known, knownRadius: 600 * 3,
-        quizPromptName: g.quizPromptName, quizCandidateName: g.quizCandidateName, quizWithheldNames: g.quizWithheldNames,
+        quizPromptName: g.quizPromptName, quizCandidateName: g.quizCandidateName, quizWithheldNames: g.quizWithheldNames, landmarkApproachWithheld: g.landmarkApproachWithheld,
         spoilerNames: spoilers, spoilerIndex: this.spoilerIndexFor(spoilers), quizQuiet: this.quizQuiet,
         toWorld: (x, y) => { const [lng, lat] = fromLocal(x, y); return loader && loader._lastCenterLat != null ? lngLatToWorld(lng, lat, loader) : { x: NaN, y: NaN }; },
       });

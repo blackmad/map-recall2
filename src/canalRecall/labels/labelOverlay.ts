@@ -24,6 +24,7 @@ import { labelCss, labelFont, LABEL_FADE_CSS_MS, LABEL_ROOT_CLASS, PILL_CLASS, P
 import { fitPillText } from './pillText';
 import { RoadShields, roadShieldsEnabled } from './roadShields';
 import { dedupeLabelCandidates, screenDuplicateIds, type MarkedPlace } from './labelDedupe';
+import { setDrawn, sharedLedger } from '../game/labelDrawLedger';
 
 /** The MapLibre layers this overlay replaces. */
 export const REPLACED_LAYER_IDS = [
@@ -554,6 +555,8 @@ export class LabelOverlay {
     });
     const previous = this.drawn;
     this.drawn = new Map(plan.map(p => [p.id, p.opacity]));
+    // The label-draw ledger (#281): the landmark question never asks about a name drawn in the last 30 s.
+    setDrawn(sharedLedger(window as never), 'overlay', plan.filter(p => p.opacity > 0.05).map(p => this.byId.get(p.id)?.name ?? ''), performance.now());
     // Elements not drawn go once their fade-out has run its course (the plan
     // interval is shorter than the fade, so "not in the last plan" cut the
     // fade short and the label blinked out at a third strength).
