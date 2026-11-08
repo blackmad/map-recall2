@@ -62,6 +62,7 @@ import { paintNoise } from './groundNoise.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
+import { FOCUS_RANK_BASE, groundFocusFlag, groundWorkersFlag, inFocusBlock, pickWorker } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
@@ -76,6 +77,8 @@ export interface GroundHost {
 
 export interface OwnGroundOptions {
   workerUrl: string;
+  /** Ground workers building cells side by side (groundWorkers.ts; default `?groundWorkers=` else 1). */
+  workers?: number;
   /** Resident radius from the rider to a cell's nearest edge, metres. */
   radiusM?: number;
   /** Largest resident radius from the air (zoomed out), metres: the radius grows from `radiusM` as the view reaches further (residency.ts viewReachM). */
@@ -338,6 +341,10 @@ export class OwnGround {
   private readonly host: GroundHost;
   private readonly opts: Required<OwnGroundOptions>;
   private worker: Worker | null = null;
+  /** Every ground worker (`worker` is the first; far blocks go there). Lane R5-A #260. */
+  private workers: Worker[] = [];
+  /** The worker each requested cell was sent to (groundWorkers.ts pickWorker). */
+  private readonly workerOf = new Map<string, number>();
   private workerReady = false;
   private readonly base: Record<string, any> = {};
   private readonly resident = new Map<string, Resident>();
@@ -352,6 +359,10 @@ export class OwnGround {
   private readonly preparing = new Set<string>();
   private gen = 0;
   private centre: Vec2 | null = null;
+  /** The view's look-at (local metres) and its cell: that cell and its neighbours build first (groundWorkers.ts). */
+  private focus: Vec2 | null = null;
+  private focusCell: string | null = null;
+  private readonly focusOn = groundFocusFlag();
   /** Meshes under the rider's distance limit (REACH_LAYERS of LOD 0 full-detail cells), by cell key. */
   private readonly reachMeshes = new Map<string, any[]>();
   private readonly reachM = groundReachFlag();
@@ -398,13 +409,19 @@ export class OwnGround {
   readonly blend = new OverviewBlend();
   private readonly blendUniform = { value: 1 };
   private readonly presenceUniform = { value: 1 };
+  /**
+   * The ground's start, page-clock ms (lane R5-A #260): `load` called, the main-thread store's indexes in, the worker's
+   * init posted, the worker ready (and its own init ms), the first cell installed. `cells`: each install's split
+   * (worker queue wait / data in / build / tiles, the main thread's request → install latency and install ms), last 200.
+   */
+  readonly startup: { loadAt?: number; storeReadyAt?: number; workerPostedAt?: number; workerReadyAt?: number; workerInitMs?: number; firstInstallAt?: number; cells: Record<string, unknown>[] } = { cells: [] };
   readonly stats = { cellsBuilt: 0, buildMs: [] as number[], installMs: [] as number[], latencyMs: [] as number[], errors: [] as string[], lastBuild: null as null | Record<string, unknown> };
 
   constructor(THREE: any, frame: any, host: GroundHost, options: OwnGroundOptions) {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), nearTiles: groundNearTilesFlag(), precompilePerFrame: precompileBudget(), ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), nearTiles: groundNearTilesFlag(), precompilePerFrame: precompileBudget(), workers: 1, ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -417,16 +434,25 @@ export class OwnGround {
   /** Load the extract indexes (absolute extract root URL) and start the worker. */
   async load(root: string): Promise<void> {
     this.dispose(false);
+    this.startup.loadAt ??= performance.now();
     this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
+    this.startup.storeReadyAt ??= performance.now();
     try {
-      this.worker = new Worker(this.opts.workerUrl);
-      this.worker.onmessage = event => this.onWorker(event.data);
-      this.worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
-      // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
-      this.worker.postMessage({ type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES });
+      const count = groundWorkersFlag(this.opts.workers);
+      const init = { type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      for (let i = 0; i < count; i++) {
+        const worker = new Worker(this.opts.workerUrl);
+        worker.onmessage = event => this.onWorker(event.data);
+        worker.onerror = event => { this.stats.errors.push(`worker: ${event.message}`); };
+        // Compact meshes: the same geometry in ~half the bytes (compactMesh.ts).
+        worker.postMessage(init);
+        this.workers.push(worker);
+      }
+      this.worker = this.workers[0] ?? null;
+      this.startup.workerPostedAt ??= performance.now();
     } catch (error) {
       this.stats.errors.push(`worker unavailable: ${String(error)}`);
     }
@@ -467,7 +493,9 @@ export class OwnGround {
     this.pending.clear();
     this.installQueue.length = 0;
     this.prepared.clear();
-    this.worker?.terminate();
+    for (const worker of this.workers) worker.terminate();
+    this.workers = [];
+    this.workerOf.clear();
     this.worker = null;
     this.relief?.dispose();
     this.relief = null;
@@ -498,9 +526,14 @@ export class OwnGround {
   }
 
   /** The rider's position (lng/lat) and the map zoom; call once per camera sync. */
-  update(lngLat: LngLat, zoom: number, pitchDeg = 60): void {
+  update(lngLat: LngLat, zoom: number, pitchDeg = 60, focus?: LngLat | null): void {
     this.zoom = zoom;
     this.centre = toLocal(lngLat[0], lngLat[1]);
+    if (this.focusOn && focus && this.ready) {
+      this.focus = toLocal(focus[0], focus[1]);
+      const cell = this.store.cellAt(this.focus[0], this.focus[1]);
+      if (cell !== this.focusCell) { this.focusCell = cell; this.residencyAt = null; }
+    }
     if (this.lookAheadOn ??= lookAheadEnabled()) this.motion.update(lngLat[0], lngLat[1], performance.now());
     let reach: number, radius: number;
     if (this.opts.ring === 'view') {
@@ -634,7 +667,7 @@ export class OwnGround {
       if (view ? !inTouchRing(d, d > 1e-6 && direction ? ((near[0] - x) * direction[0] + (near[1] - y) * direction[1]) / d : 0, R, ahead) : d > R) continue;
       const own = dx === 0 && dy === 0, beside = Math.abs(dx) <= 1 && Math.abs(dy) <= 1;
       const fine = this.opts.groundNear === 'all' ? false : own || (this.opts.groundNear === 'block' && beside);
-      out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, detail: this.opts.detail === 'touch' && !fine ? 'touch' : 'full', d, rank: direction ? aheadRankXY(this.centre, near, direction) : d });
+      out.push({ key, lod: d <= this.opts.nearM ? 0 : 1, detail: this.opts.detail === 'touch' && !fine ? 'touch' : 'full', d, rank: this.focus && inFocusBlock(key, this.focusCell) ? FOCUS_RANK_BASE + this.rectDistance(rect, this.focus) : direction ? aheadRankXY(this.centre, near, direction) : d });
     }
     return out.sort((a, b) => a.rank - b.rank || a.d - b.d);
   }
@@ -655,15 +688,21 @@ export class OwnGround {
       if ((have && levelOf(have.lod, have.detail) === want) || this.pending.get(w.key) === want) continue;
       // A cell that becomes near again (or that the ring wants at another LOD) rebuilds through this same path: one
       // request, then the install swaps the whole cell, so two levels are never on screen together.
+      // The worker already holding this cell's earlier request keeps it (its queue replaces the level); a new request
+      // goes to the least busy worker (groundWorkers.ts).
+      if (!this.pending.has(w.key)) this.workerOf.delete(w.key);
       this.pending.set(w.key, want);
       this.requestedAt.set(`${w.key}:${want}`, performance.now());
-      this.worker?.postMessage({ type: 'build', key: w.key, lod: w.lod, detail: w.detail, gen: this.gen });
+      const wi = pickWorker(w.key, this.workers.length, this.workerOf, this.pending.keys());
+      this.workerOf.set(w.key, wi);
+      this.workers[wi]?.postMessage({ type: 'build', key: w.key, lod: w.lod, detail: w.detail, gen: this.gen });
     }
     // The worker builds its queue in this order and drops cells the rider has left (buildQueue.ts).
-    if (this.lookAheadOn) this.worker?.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
+    if (this.lookAheadOn) for (const worker of this.workers) worker.postMessage({ type: 'order', keys: wanted.map(w => w.key) });
     // Relief far behind is dropped on both sides (decks keep their placed heights).
     const keepM = this.radiusM + 2200;
-    this.worker?.postMessage({ type: 'evict', x: this.centre[0], y: this.centre[1], keepM, keep: [...keep].flatMap(k => GroundStore.neighbours(k)) });
+    const evict = { type: 'evict', x: this.centre[0], y: this.centre[1], keepM, keep: [...keep].flatMap(k => GroundStore.neighbours(k)) };
+    for (const worker of this.workers) worker.postMessage(evict);
     if (this.store.evictRelief(this.centre[0], this.centre[1], keepM)) {
       for (const key of [...this.prepared]) if (!keep.has(key)) this.prepared.delete(key);
     }
@@ -748,7 +787,7 @@ export class OwnGround {
   }
 
   private onWorker(msg: any): void {
-    if (msg.type === 'ready') { this.workerReady = true; this.workerRailCells = typeof msg.railCells === 'number' ? msg.railCells : null; return; }
+    if (msg.type === 'ready') { this.startup.workerReadyAt ??= performance.now(); if (typeof msg.initMs === 'number') this.startup.workerInitMs ??= msg.initMs; this.workerReady = true; this.workerRailCells = typeof msg.railCells === 'number' ? msg.railCells : null; return; }
     if (msg.type === 'error' && msg.far) { this.stats.errors.push(`far ${msg.far}: ${msg.message}`.slice(0, 400)); this.farPending.delete(msg.far); return; }
     if (msg.type === 'far') {
       if (msg.gen !== this.gen || !this.farPending.delete(msg.key)) return;
@@ -765,6 +804,7 @@ export class OwnGround {
     this.stats.buildMs.push(cell.stats.buildMs);
     this.stats.lastBuild = { key: cell.key, lod: cell.lod, detail: cell.detail, ...cell.stats };
     this.cellBuilds.set(cell.key, { ...cell.stats, lod: cell.lod, detail: cell.detail, ...(typeof msg.railFetch === 'string' ? { railFetch: msg.railFetch } : {}) });
+    (cell as BuiltCell & { arrival?: unknown }).arrival = { at: performance.now(), ...(msg.timing && typeof msg.timing === 'object' ? msg.timing as object : {}) };
     this.installQueue.push(cell);
     this.host.repaint();
   }
@@ -1163,6 +1203,11 @@ export class OwnGround {
     this.stats.installMs.push(performance.now() - t0);
     const asked = this.requestedAt.get(`${cell.key}:${levelOf(cell.lod, cell.detail)}`);
     if (asked !== undefined) { this.stats.latencyMs.push(performance.now() - asked); this.requestedAt.delete(`${cell.key}:${levelOf(cell.lod, cell.detail)}`); }
+    const now = performance.now(), arrival = (cell as BuiltCell & { arrival?: { at: number } }).arrival;
+    this.startup.firstInstallAt ??= now;
+    const { at: arrivedAt, ...timing } = arrival ?? { at: undefined };
+    this.startup.cells.push({ key: cell.key, lod: cell.lod, detail: cell.detail, installedAt: Math.round(now), latencyMs: asked === undefined ? null : Math.round(now - asked), ...timing, queuedMs: arrivedAt == null ? null : Math.round(t0 - arrivedAt), installMs: Math.round(now - t0) });
+    if (this.startup.cells.length > 200) this.startup.cells.shift();
     this.frame.invalidateShadows?.();
     this.host.repaint();
   }
