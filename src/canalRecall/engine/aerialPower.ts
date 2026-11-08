@@ -7,13 +7,16 @@
  * This is the pure policy: one call per game frame with the view's pose, the answer is what the frame host and the
  * shared frame should do this frame. Four levers, each behind its own `?flag=0` (all off = today's frame, byte for byte):
  *
- *  - `fps` (`?aerialFps=0`): while the camera is panned off the rider (detached) and moving from the air, the frame host
+ *  - `fps` (`?aerialFps=0`): while the camera is panned off the rider (detached) and moving from the air (isAerialView,
+ *    or the eye above AERIAL_EYE_MIN_M: see AerialPose.high), the frame host
  *    renders at most AERIAL_FPS times a second; back to every frame as soon as the camera settles (MOVE_HOLD_MS).
- *  - `scale` (`?aerialScale=0`): the pixel ratio × AERIAL_SCALE while aerial, detached and moving; native on settle.
- *  - `shadows` (`?aerialShadows=0`): the shadow map is redrawn at most every AERIAL_SHADOW_EVERY-th frame while aerial,
- *    detached and moving (between redraws the box stays where it was drawn).
- *  - `mapSize` (`?aerialShadowMap=0`): the sun's shadow map is AERIAL_SHADOW_MAP² while aerial (moving or not): from the
- *    air one shadow texel of the 2048² map covers a fraction of a pixel.
+ *  - `scale` (`?aerialScale=0`): the pixel ratio × AERIAL_SCALE while flying so; native on settle.
+ *  - `shadows` (`?aerialShadows=0`): the shadow map is redrawn at most every AERIAL_SHADOW_EVERY-th frame while flying
+ *    so (between redraws the box stays where it was drawn).
+ *  - `mapSize` (`?aerialShadowMap=1`, OFF by default): the sun's shadow map is AERIAL_SHADOW_MAP² while isAerialView
+ *    (moving or not). Measured on the M4 Pro (2026-11-08, Science Park pose) it saved nothing: the shadow pass is bound by
+ *    its casters' vertices (trees' shadow twin, stand-ins, walls), not by the map's texels; and it softens the still
+ *    frame. Kept as an opt-in for weaker GPUs.
  *
  * Not a lever: "only the near tiers cast from the air" (the plan's c3). Measured on 2026-11-08 the coarse, far and
  * baked tiers already never cast (threeBuildingsBrowser.ts coarse `castShadow = false`, farShells.ts, bakedCoarse.ts);
@@ -41,6 +44,13 @@ export interface AerialPose {
   now: number;
   /** isAerialView for the frame's pose, and not the intro. */
   aerial: boolean;
+  /**
+   * The eye is above AERIAL_EYE_MIN_M (aerialView.ts eyeHeightM), and not the intro. The user's own fan poses
+   * (2026-11-08: zoom 17.3, pitch 55, eye ~100 m, panned off the rider) are not isAerialView, whose horizon-reach test
+   * (≥ 1.5 km) wants a pitched-up view: measured, the levers gated on isAerialView alone never engaged at three of the
+   * four poses. A detached camera this high is flying; the ride's chase camera is never detached.
+   */
+  high?: boolean;
   /** The camera is panned off the rider (game camera `detached`). */
   detached: boolean;
   lng: number; lat: number; zoom: number; pitch: number; bearing: number;
@@ -61,7 +71,7 @@ export interface AerialDecision {
 
 export const NEUTRAL: Readonly<AerialDecision> = Object.freeze({ aerial: false, moving: false, frameMs: null, scale: 1, shadowEvery: 1, shadowMapSize: null });
 
-/** The levers from the query (`?aerialFps=0` …) or the matching window globals (`__canalRecallAerialFps = false`). */
+/** The levers from the query (`?aerialFps=0` …; `?aerialShadowMap=1` opts in) or the matching window globals (`__canalRecallAerialFps = false`). */
 export function aerialLeversFromQuery(search: string, globals: Record<string, unknown> = {}): AerialLevers {
   let params: URLSearchParams | null = null;
   try { params = new URLSearchParams(search); } catch { params = null; }
@@ -74,7 +84,8 @@ export function aerialLeversFromQuery(search: string, globals: Record<string, un
     fps: on('aerialFps', '__canalRecallAerialFps'),
     scale: on('aerialScale', '__canalRecallAerialScale'),
     shadows: on('aerialShadows', '__canalRecallAerialShadows'),
-    mapSize: on('aerialShadowMap', '__canalRecallAerialShadowMap'),
+    // Opt-in (see the header): `?aerialShadowMap=1` or the global true.
+    mapSize: globals.__canalRecallAerialShadowMap === true || (globals.__canalRecallAerialShadowMap !== false && params?.get('aerialShadowMap') === '1'),
   };
 }
 
@@ -93,7 +104,7 @@ export class AerialPower {
   update(p: AerialPose): AerialDecision {
     const prev = this.last;
     this.last = p;
-    if (prev && p.aerial) {
+    if (prev) {
       const dt = Math.max(1e-3, (p.now - prev.now) / 1000);
       const dx = (p.lng - prev.lng) * M_PER_DEG * Math.cos(p.lat * Math.PI / 180), dy = (p.lat - prev.lat) * M_PER_DEG;
       let db = Math.abs(p.bearing - prev.bearing) % 360; if (db > 180) db = 360 - db;
@@ -102,8 +113,8 @@ export class AerialPower {
       if (moved) this.lastMoveAt = p.now;
     }
     const l = this.levers;
-    const moving = p.aerial && p.now - this.lastMoveAt <= MOVE_HOLD_MS;
-    const flying = moving && p.detached;
+    const moving = p.now - this.lastMoveAt <= MOVE_HOLD_MS;
+    const flying = moving && p.detached && (p.aerial || !!p.high);
     this.decision = {
       aerial: p.aerial,
       moving,

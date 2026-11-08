@@ -8,11 +8,13 @@ const pose = (now: number, over: Partial<AerialPose> = {}): AerialPose => ({ now
 const east = (now: number, i: number, over: Partial<AerialPose> = {}) => pose(now, { lng: 4.9 + i * 2.5 / (111320 * Math.cos(52.37 * Math.PI / 180)), ...over });
 
 test('aerialPower: levers from the query, each with its own flag; globals win', () => {
-  assert.deepEqual(aerialLeversFromQuery(''), ALL);
-  assert.deepEqual(aerialLeversFromQuery('?aerialFps=0&aerialScale=0'), { ...ALL, fps: false, scale: false });
-  assert.deepEqual(aerialLeversFromQuery('?aerialShadows=0&aerialShadowMap=0'), { ...ALL, shadows: false, mapSize: false });
-  assert.deepEqual(aerialLeversFromQuery('?aerialFps=0', { __canalRecallAerialFps: true }), ALL);
-  assert.deepEqual(aerialLeversFromQuery('', { __canalRecallAerialShadowMap: false }), { ...ALL, mapSize: false });
+  assert.deepEqual(aerialLeversFromQuery(''), { ...ALL, mapSize: false }, 'the map-size lever is opt-in');
+  assert.deepEqual(aerialLeversFromQuery('?aerialShadowMap=1'), ALL);
+  assert.deepEqual(aerialLeversFromQuery('', { __canalRecallAerialShadowMap: true }), ALL);
+  assert.deepEqual(aerialLeversFromQuery('?aerialFps=0&aerialScale=0&aerialShadowMap=1'), { ...ALL, fps: false, scale: false });
+  assert.deepEqual(aerialLeversFromQuery('?aerialShadows=0'), { ...ALL, shadows: false, mapSize: false });
+  assert.deepEqual(aerialLeversFromQuery('?aerialFps=0&aerialShadowMap=1', { __canalRecallAerialFps: true }), ALL);
+  assert.deepEqual(aerialLeversFromQuery('?aerialShadowMap=1', { __canalRecallAerialShadowMap: false }), { ...ALL, mapSize: false });
 });
 
 test('aerialPower: a pan from the air paces, scales and throttles; settling restores within 300 ms', () => {
@@ -38,7 +40,7 @@ test('aerialPower: a pan from the air paces, scales and throttles; settling rest
 test('aerialPower: street level, an attached camera, or every lever off change nothing', () => {
   const street = new AerialPower({ ...ALL });
   for (let i = 0; i < 20; i++) street.update(east(i * 16, i, { aerial: false }));
-  assert.deepEqual(street.decision, { ...NEUTRAL });
+  assert.deepEqual({ ...street.decision, moving: false }, { ...NEUTRAL }, 'a low camera moving is never paced');
   const attached = new AerialPower({ ...ALL });
   let d = attached.update(east(0, 0, { detached: false }));
   for (let i = 1; i < 20; i++) d = attached.update(east(i * 16, i, { detached: false }));
@@ -49,6 +51,17 @@ test('aerialPower: street level, an attached camera, or every lever off change n
   assert.equal(off.any, false);
   for (let i = 0; i < 20; i++) d = off.update(east(i * 16, i));
   assert.deepEqual({ ...d, aerial: false, moving: false }, { ...NEUTRAL });
+});
+
+test("aerialPower: the user's fan pose (eye ~100 m, not isAerialView) flies when detached; the chase camera never does", () => {
+  const p = new AerialPower({ ...ALL });
+  let d = p.update(east(0, 0, { aerial: false, high: true }));
+  for (let i = 1; i < 10; i++) d = p.update(east(i * 16, i, { aerial: false, high: true }));
+  assert.equal(d.frameMs, 1000 / AERIAL_FPS); assert.equal(d.scale, AERIAL_SCALE); assert.equal(d.shadowEvery, AERIAL_SHADOW_EVERY);
+  assert.equal(d.shadowMapSize, null, 'the map size follows isAerialView only');
+  const chase = new AerialPower({ ...ALL });
+  for (let i = 0; i < 10; i++) d = chase.update(east(i * 16, i, { aerial: false, high: true, detached: false }));
+  assert.equal(d.frameMs, null); assert.equal(d.scale, 1);
 });
 
 test('aerialPower: zoom, rotate and tilt are motion too; slow drift is not', () => {

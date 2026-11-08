@@ -41,7 +41,7 @@ import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
 import { BakedCoarse, bakedCoarseEnabled, bakedBytesEnabled, bakedReleaseM } from './bakedCoarse';
 import { PacedDelivery, arrivalPaceOption } from './arrivalPace';
-import { isAerialView } from '../rendererShared/aerialView';
+import { AERIAL_EYE_MIN_M, eyeHeightM, isAerialView } from '../rendererShared/aerialView';
 import { AerialPower, aerialLeversFromQuery } from './aerialPower';
 import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
@@ -1024,6 +1024,7 @@ export class OwnWorldView implements WorldViewOracles {
     const power = this._aerialPower!, before = power.decision;
     const d = power.update({
       now: performance.now(), aerial: view.introFlat === 0 && isAerialView(view.zoom, pitch, view.lngLat[1]), detached: !!view.detached,
+      high: view.introFlat === 0 && eyeHeightM(view.zoom, pitch, view.lngLat[1]) >= AERIAL_EYE_MIN_M,
       lng: view.lngLat[0], lat: view.lngLat[1], zoom: view.zoom, pitch, bearing: view.bearing,
     });
     this.host.minFrameMs = d.frameMs;

@@ -8,7 +8,7 @@
 // A screenshot mid-pan is the moving frame at 1×. Levers are switched at runtime through `vm._aerialPower.levers`
 // (engine/aerialPower.ts) when the build has them; on a build without them only `base` runs.
 //
-//   PORT=4686 node scripts/aerial-power.mjs <out.json> [--configs base,fps,scale,shadows,mapsize,shadowall,all]
+//   PORT=4686 node scripts/aerial-power.mjs <out.json> [--configs base,fps,scale,shadows,mapsize,fpsshadows,all]
 //     [--poses fan,nieuwmarkt,singelgracht,sciencepark] [--speed 150] [--panS 8] [--warm 5] [--qs '...'] [--device desktop|iphone]
 // SHOTS=<dir> saves the still and moving frames per pose and config. BUNDLES_DIR as aerial-pan.mjs.
 import { chromium, devices } from 'playwright';
@@ -47,7 +47,9 @@ const CONFIGS = {
   shadows: { ...OFF, shadows: true },
   mapsize: { ...OFF, mapSize: true },
   shadowall: { ...OFF, shadows: true, mapSize: true },
-  all: { fps: true, scale: true, shadows: true, mapSize: true },
+  fpsshadows: { ...OFF, fps: true, shadows: true },
+  // The shipped default (the map-size lever is opt-in).
+  all: { fps: true, scale: true, shadows: true, mapSize: false },
 };
 
 const browser = await chromium.launch({
