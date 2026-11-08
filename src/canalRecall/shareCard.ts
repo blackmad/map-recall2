@@ -37,6 +37,8 @@ export interface ShareCardInput {
   ribbon?: ShareCardRibbon | null;
   /** "By bike", "By boat"…; optional. */
   modeLabel?: string;
+  /** The destination's buurt, shown when the destination itself is withheld. */
+  area?: string | null;
   /** Names of questions not yet answered: never drawn, not even inside a longer line. */
   hiddenNames?: readonly (string | null | undefined)[];
   /** Captions; English defaults (plaque voice, nouns). */
@@ -45,6 +47,8 @@ export interface ShareCardInput {
 
 export interface ShareCardLabels {
   arrived: string;
+  /** The eyebrow when the destination is withheld: "RIDE" over its buurt. */
+  ride: string;
   distance: string;
   time: string;
   fallbackPlace: string;
@@ -53,6 +57,7 @@ export interface ShareCardLabels {
 
 export const SHARE_CARD_LABELS_EN: ShareCardLabels = {
   arrived: 'DESTINATION',
+  ride: 'RIDE',
   distance: 'DISTANCE',
   time: 'TIME',
   fallbackPlace: 'Amsterdam',
@@ -167,7 +172,10 @@ function wrap(text: string, width: number, maxLines: number, measure: (t: string
     : lines;
   return kept.map(l => {
     if (measure(l) <= width) return l;
-    let cut = l;
+    // Cut at a word boundary; a single word too long for the line loses letters.
+    const parts = l.split(' ');
+    while (parts.length > 1 && measure(`${parts.join(' ')}…`) > width) parts.pop();
+    let cut = parts.join(' ');
     while (cut.length > 1 && measure(`${cut}…`) > width) cut = cut.slice(0, -1).trimEnd();
     return `${cut}…`;
   });
@@ -188,24 +196,28 @@ export function layoutShareCard(input: ShareCardInput, measure: Measure = approx
   const colW = W - colX - 52;
   // A fixed vertical rhythm: kicker, up to two destination lines, the mode,
   // a rule, the two numbers, the ribbon, the site at the foot.
-  push({ role: 'kicker', text: labels.arrived, x: colX, y: 86, sizePx: 32, font: `700 32px ${FONT_MONO}`, color: MUTED, align: 'left' });
+  // A destination that names an open question is withheld: the card says
+  // "RIDE" over the destination's buurt (never a quiz name), else the city.
+  const named = redactHidden(input.destination.trim(), hidden);
+  const destination = named || redactHidden((input.area ?? '').trim(), hidden) || labels.fallbackPlace;
+  push({ role: 'kicker', text: named ? labels.arrived : labels.ride, x: colX, y: 86, sizePx: 32, font: `700 32px ${FONT_MONO}`, color: MUTED, align: 'left' });
 
-  const destination = redactHidden(input.destination.trim(), hidden) || labels.fallbackPlace;
-  // The largest size that fits in two lines without an ellipsis; one line is preferred at 64 px and up.
-  let size = 76;
-  let lines: string[] = [];
+  // One line from 64 px; else two lines from 76 down to 56 px; else three at
+  // 52 or 48 px; only then the third line is cut at a word with an ellipsis.
   const fit = (px: number, maxLines: number) => wrap(destination, colW, maxLines, t => measure(t, `800 ${px}px ${FONT_PLAQUE}`, px));
-  for (let px = 76; px >= 64; px -= 4) {
-    const one = fit(px, 1);
-    if (!one[0].endsWith('…')) { size = px; lines = one; break; }
+  const clean = (ls: string[]) => ls.every(l => !l.endsWith('…'));
+  const attempts: Array<[number, number]> = [
+    ...[76, 72, 68, 64].map(px => [px, 1] as [number, number]),
+    ...[76, 72, 68, 64, 60, 56].map(px => [px, 2] as [number, number]),
+    [52, 3], [SHARE_CARD_PRIMARY_FONT_PX, 3],
+  ];
+  let size = SHARE_CARD_PRIMARY_FONT_PX;
+  let lines: string[] = [];
+  for (const [px, max] of attempts) {
+    const ls = fit(px, max);
+    if (clean(ls)) { size = px; lines = ls; break; }
   }
-  if (!lines.length) {
-    for (size = 76; size > SHARE_CARD_PRIMARY_FONT_PX + 8; size -= 4) {
-      lines = fit(size, 2);
-      if (lines.every(l => !l.endsWith('…'))) break;
-    }
-    if (!lines.length || lines.some(l => l.endsWith('…'))) lines = fit(size, 2);
-  }
+  if (!lines.length) lines = fit(size, 3);
   let y = 86 + 14 + Math.round(size * 0.92);
   for (const line of lines) {
     push({ role: 'destination', text: line, x: colX, y, sizePx: size, font: `800 ${size}px ${FONT_PLAQUE}`, color: INK, align: 'left' });

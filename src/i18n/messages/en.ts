@@ -620,6 +620,7 @@ export const en = {
   'ride.shareRoute': 'Share this route',
   'ride.linkCopied': 'Link copied',
   'shareCard.destination': 'DESTINATION',
+  'shareCard.ride': 'RIDE',
   'shareCard.distance': 'DISTANCE',
   'shareCard.time': 'TIME',
   'shareCard.byBike': 'By bike',

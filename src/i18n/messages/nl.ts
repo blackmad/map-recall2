@@ -622,6 +622,7 @@ export const nl: Record<MessageKey, string> = {
   'ride.shareRoute': 'Deel deze route',
   'ride.linkCopied': 'Link gekopieerd',
   'shareCard.destination': 'BESTEMMING',
+  'shareCard.ride': 'RIT',
   'shareCard.distance': 'AFSTAND',
   'shareCard.time': 'TIJD',
   'shareCard.byBike': 'Per fiets',

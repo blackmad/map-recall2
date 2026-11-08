@@ -89,16 +89,23 @@ test('the arrival card shares a 1200×630 picture of the ride, never the open qu
     const g = (window as unknown as { canalRecallGame: ShareGame }).canalRecallGame;
     // The open question's answer is the destination itself: the card must not say it.
     g.quizPromptName = g.routeTo?.name ?? null;
+    // Some dealt routes boot without start/finish lat-lngs and get no share
+    // link at all (game-route.js), so the arrival card offers no share; give
+    // this ride a public one so the flow under test is reachable every run.
+    const hadLink = !!g._shareUrl;
+    if (!hadLink) g._shareUrl = `${location.origin}${location.pathname}#race=52.3720,4.9000,52.3740,4.8990,52.3700,4.9050`;
     return {
       destination: g.routeTo?.name ?? '',
       candidate: g.quizCandidateName,
       trail: g._shareTrail?.points.length ?? 0,
       buttons: (g._finishButtonBounds ?? []).map(b => b.id),
       share: g._shareUrl,
+      hadLink,
     };
   });
   expect(arrival.trail, 'the ridden path was sampled').toBeGreaterThan(5);
   expect(arrival.share, 'the link stays').toBeTruthy();
+  if (!arrival.hadLink) testInfo.annotations.push({ type: 'note', description: 'this dealt route had no share link of its own' });
   expect(arrival.destination).not.toBe('');
 
   let bytes: Buffer;
@@ -126,7 +133,7 @@ test('the arrival card shares a 1200×630 picture of the ride, never the open qu
   expect(drawn).not.toContain(arrival.destination);
   if (arrival.candidate) expect(drawn).not.toContain(arrival.candidate);
   expect(drawn).toContain('rideamsterdam.nl');
-  expect(drawn).toContain('Amsterdam');
+  expect(card.texts[0], 'a withheld destination: RIDE over its buurt').toBe('RIDE');
   const session = await page.evaluate(() => (window as unknown as { __canalRecallSession?: Record<string, number> }).__canalRecallSession?.sharePictures);
   expect(session).toBe(1);
   testInfo.annotations.push({ type: 'share-card', description: `${bytes.length} bytes, drawn in ${card.ms.toFixed(1)} ms; ${drawn}` });
@@ -144,7 +151,11 @@ test('?shareCard=0 keeps the link-only share', async ({ page }, testInfo) => {
   await rideToFinish(page);
   let downloaded = false;
   page.on('download', () => { downloaded = true; });
-  await page.evaluate(() => (window as unknown as { canalRecallGame: ShareGame }).canalRecallGame._runFinishAction('copy'));
+  await page.evaluate(() => {
+    const g = (window as unknown as { canalRecallGame: ShareGame }).canalRecallGame;
+    g._shareUrl ||= `${location.origin}${location.pathname}#race=52.3720,4.9000,52.3740,4.8990,52.3700,4.9050`;
+    g._runFinishAction('copy');
+  });
   await expect.poll(() => page.evaluate(() => (window as unknown as { __canalLastShare?: { url: string } }).__canalLastShare?.url ?? '')).toContain('#race=');
   expect(downloaded).toBe(false);
   expect(await page.evaluate(() => (window as unknown as { canalRecallGame: ShareGame }).canalRecallGame._shareCard ?? null)).toBeNull();

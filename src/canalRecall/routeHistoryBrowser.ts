@@ -104,6 +104,8 @@ export interface ShareHost {
   quizCandidateName?: string | null;
   _silentPass?: { name?: string } | null;
   _shareCard?: PreparedCard | null;
+  /** The buurt the rider is in (landmarkRuntime); at arrival, the destination's. */
+  currentNeighborhood?: string | null;
 }
 
 const FINISHED = 5;
@@ -145,6 +147,7 @@ export function shareCardInput(game: ShareHost): ShareCardInput {
   const labels: ShareCardLabels = {
     ...SHARE_CARD_LABELS_EN,
     arrived: say('shareCard.destination', SHARE_CARD_LABELS_EN.arrived),
+    ride: say('shareCard.ride', SHARE_CARD_LABELS_EN.ride),
     distance: say('shareCard.distance', SHARE_CARD_LABELS_EN.distance),
     time: say('shareCard.time', SHARE_CARD_LABELS_EN.time),
   };
@@ -155,6 +158,7 @@ export function shareCardInput(game: ShareHost): ShareCardInput {
     timeS: game.raceTime ?? 0,
     ribbon: game.gameyFeatures && game._ribbon ? game._ribbon : null,
     modeLabel: mode,
+    area: game.currentNeighborhood || null,
     // The open question's answer, as labels/labelOverlay.ts hides it on the map.
     hiddenNames: [game.quizPromptName, game.quizCandidateName, game._silentPass?.name],
     labels,
@@ -172,7 +176,7 @@ function hiddenKey(game: ShareHost): string {
 export function prepareShareCard(game: ShareHost): PreparedCard | null {
   if (!shareCardEnabled() || game.state !== FINISHED || typeof document === 'undefined') return null;
   const input = shareCardInput(game);
-  const key = `${hiddenKey(game)}#${input.destination}#${input.route.length}#${Math.round(input.distanceM)}`;
+  const key = `${hiddenKey(game)}#${input.destination}#${input.area ?? ''}#${input.route.length}#${Math.round(input.distanceM)}`;
   if (game._shareCard && game._shareCard.key === key) return game._shareCard;
   const { canvas, layout, ms } = renderShareCard(input, (w, h) => Object.assign(document.createElement('canvas'), { width: w, height: h }));
   const card: PreparedCard = {

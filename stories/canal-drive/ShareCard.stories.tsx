@@ -80,8 +80,16 @@ export const CalmNoRibbonBoat: Story = { args: { input: { ...BASE, ribbon: null,
 export const HiddenNameDestination: Story = {
   args: { input: { ...BASE, destination: 'Jonas Daniël Meijerplein', hiddenNames: ['Jonas Daniël Meijerplein'] } },
 };
+/** The same, with the destination's buurt known: RIDE over the buurt. */
+export const HiddenNameWithBuurt: Story = {
+  args: { input: { ...BASE, destination: 'Jonas Daniël Meijerplein', area: 'Nieuwmarkt/Lastage', hiddenNames: ['Jonas Daniël Meijerplein'] } },
+};
+export const HiddenNameWithBuurtPhone: Story = {
+  args: { input: { ...BASE, destination: 'Jonas Daniël Meijerplein', area: 'Nieuwmarkt/Lastage', hiddenNames: ['Jonas Daniël Meijerplein'] } },
+  globals: phone,
+};
 export const DutchLabels: Story = {
-  args: { input: { ...BASE, modeLabel: 'Per fiets', labels: { arrived: 'BESTEMMING', distance: 'AFSTAND', time: 'TIJD' } } },
+  args: { input: { ...BASE, modeLabel: 'Per fiets', labels: { arrived: 'BESTEMMING', ride: 'RIT', distance: 'AFSTAND', time: 'TIJD' } } },
 };
 export const ShareAction: Story = { args: { input: BASE, shareAction: true } };
 export const ShareActionPhone: Story = { args: { input: BASE, shareAction: true }, globals: phone };
