@@ -115,14 +115,14 @@ export class WorldCellReader {
    * holds the cell; otherwise read once and not cached, so the streamer's cells keep their places). Not cached: the
    * baked layer holds the meshes.
    */
-  async shell(key: string, shellBase: string, signal?: AbortSignal, exact = false): Promise<ShellCellData> {
+  async shell(key: string, shellBase: string, signal?: AbortSignal, exact = false, compact = false): Promise<ShellCellData> {
     const response = await this.fetcher(`${shellBase.replace(/\/$/, '')}/shells/${key}.bin`, { signal });
     if (!response.ok) throw Error(`world shell ${key}: HTTP ${response.status}`);
     const bytes = new Uint8Array(await response.arrayBuffer());
     const decoded = decodeShellCell(await inflateCell(bytes), `world shell ${key}`);
     if (!decoded.shel) throw Error(`world shell ${key}: no SHEL stream`);
     const cell = await (this.cells.get(key) ?? this.cellUncached(key, signal));
-    return { key, gzBytes: bytes.length, ...bakedCellArrays(decoded.shel, cell.buildings.map(b => b.id), !exact) };
+    return { key, gzBytes: bytes.length, ...bakedCellArrays(decoded.shel, cell.buildings.map(b => b.id), !exact, compact) };
   }
   private async cellUncached(key: string, signal?: AbortSignal): Promise<Cell> {
     const response = await this.fetcher(`${this.baseUrl.replace(/\/$/, '')}/world-v1/cells/${key}.bin`, { signal });
@@ -175,7 +175,8 @@ type EvictRequest = { kind: 'world-evict'; cells: string[] };
 type FarRequest = { kind: 'world-far'; id: number; baseUrl: string; cell: string };
 /** A baked coarse cell (lane R4-A #243): SHEL fetched from `shellBase`, decoded and regrouped in the worker, its buffers transferred. */
 /** `exact`: positions in Float32 metres at the SHEL's own unit (a cell the detail tier swaps over), else Int16 decimetres. */
-type ShellRequest = { kind: 'world-shell'; id: number; baseUrl: string; shellBase: string; cell: string; exact?: boolean };
+/** `compact` (lane R4-I #253): the smaller GPU layout (bakedCellArrays `compact`); absent under `?bakedBytes=0`. */
+type ShellRequest = { kind: 'world-shell'; id: number; baseUrl: string; shellBase: string; cell: string; exact?: boolean; compact?: boolean };
 export type WorldRequest = CellRequest | AbortRequest | EvictRequest | FarRequest | ShellRequest;
 /** A batch of one cell's share of a tile. Runtime cells: `styled[i]` null (the feature is its own styled copy). */
 type Batch = { kind: 'world-batch'; id: number; ordinals: number[]; raw: WorldFeature[]; styled: (Props | null)[] };
@@ -202,12 +203,12 @@ export class WorldCellWorkerHost {
     if (request.kind === 'world-shell') { void this.answerShell(request); return; }
     void this.answer(request);
   }
-  private async answerShell({ id, baseUrl, shellBase, cell, exact }: ShellRequest): Promise<void> {
+  private async answerShell({ id, baseUrl, shellBase, cell, exact, compact }: ShellRequest): Promise<void> {
     const controller = new AbortController();
     this.aborts.set(id, controller);
     try {
       this.reader ??= new WorldCellReader(baseUrl);
-      const shell = await this.reader.shell(cell, shellBase, controller.signal, exact);
+      const shell = await this.reader.shell(cell, shellBase, controller.signal, exact, compact);
       if (controller.signal.aborted) return;
       this.post({ kind: 'world-shell', id, shell }, shellTransfer(shell));
     } catch (error) {
@@ -468,10 +469,10 @@ export class WorldCellClient {
    * base) decoded and regrouped per building in the cell's affinity worker (whose cache usually holds the cell for its
    * building ids), transferred; on the main thread without a pool. Rejects with an AbortError when `signal` aborts first.
    */
-  shell(cell: string, signal?: AbortSignal, shellBase?: string, exact = false): Promise<ShellCellData> {
+  shell(cell: string, signal?: AbortSignal, shellBase?: string, exact = false, compact = false): Promise<ShellCellData> {
     const base = shellBase ?? `${this.absoluteBase().replace(/\/$/, '')}/world-v1`;
     const w = this.pool ? affinity(cell, this.pool.size) : -1;
-    if (!this.pool || !this.pool.alive(w)) return this.reader.shell(cell, base, signal, exact);
+    if (!this.pool || !this.pool.alive(w)) return this.reader.shell(cell, base, signal, exact, compact);
     const id = this.nextId++, pool = this.pool;
     return new Promise<ShellCellData>((resolve, reject) => {
       if (signal?.aborted) { reject(new DOMException('aborted', 'AbortError')); return; }
@@ -481,7 +482,7 @@ export class WorldCellClient {
         pool.post(w, { kind: 'world-abort', id } satisfies WorldRequest);
         reject(new DOMException('aborted', 'AbortError'));
       }, { once: true });
-      pool.post(w, { kind: 'world-shell', id, baseUrl: this.absoluteBase(), shellBase: base, cell, ...(exact ? { exact } : {}) } satisfies WorldRequest);
+      pool.post(w, { kind: 'world-shell', id, baseUrl: this.absoluteBase(), shellBase: base, cell, ...(exact ? { exact } : {}), ...(compact ? { compact } : {}) } satisfies WorldRequest);
     });
   }
   /** Cells with a baked coarse shell (index `shell`: gzip bytes); empty for an index compiled without `--shell`. */

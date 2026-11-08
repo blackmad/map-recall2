@@ -39,7 +39,7 @@ import type { BuildingLookId, JumpOptions, ScreenPoint, WorldCamera, WorldViewOr
 import { BUILDING_LOOK_IDS, urlBuildingLook } from './worldViewApi';
 import { FlatLines, type LngLatLine } from './overlays/flatLines';
 import { FarShells, farCellOrigin, farShellsEnabled } from './farShells';
-import { BakedCoarse, bakedCoarseEnabled } from './bakedCoarse';
+import { BakedCoarse, bakedCoarseEnabled, bakedBytesEnabled, bakedReleaseM } from './bakedCoarse';
 import { PacedDelivery, arrivalPaceOption } from './arrivalPace';
 import { isAerialView } from '../rendererShared/aerialView';
 import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
@@ -731,12 +731,13 @@ export class OwnWorldView implements WorldViewOracles {
         attach: entry => tb.bakedCoarseHost()?.attach(entry),
         detach: entry => tb.bakedCoarseHost()?.detach(entry),
         swapSlots: () => !!tb.bakedCoarseHost()?.swapSlots(),
-        fetchShell: (key: string, signal: AbortSignal, exact?: boolean) => world.shell(key, signal, base, exact),
+        farReady: (key: string) => !!this._farShells?.ready?.(key),
+        fetchShell: (key: string, signal: AbortSignal, exact?: boolean, compact?: boolean) => world.shell(key, signal, base, exact, compact),
         available: () => available,
         coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
         groundBase: (id: string) => tb.bakedCoarseHost()?.groundBase(id),
         repaint: () => this.host.triggerRepaint(),
-      }, { touch: coarse(), paceInstalls: !!arrivalPaceOption()?.baked });
+      }, { touch: coarse(), paceInstalls: !!arrivalPaceOption()?.baked, compact: bakedBytesEnabled(), releaseM: bakedReleaseM() });
       this._bakedCoarse = baked;
       host.setGate({ plan: (cells: ReadonlySet<string>) => baked.plan(cells), covers: (cell: string) => baked.covers(cell), drawn: (cell: string) => baked.drawn(cell), contextLost: () => baked.contextLost() });
       host.setFrame(() => baked.frame());
@@ -749,6 +750,8 @@ export class OwnWorldView implements WorldViewOracles {
     const cam = this.cameraMap.camera;
     const street = !isAerialView(cam.zoom, cam.pitch, cam.lat);
     baked.update(subject[0], subject[1], street);
+    const eye = cam.eye();
+    baked.setEye(eye.lng, eye.lat);
     // Street level: cells within BAKED_LIFT_RADIUS_M; from the air only the detail tier's neighbourhood (bakedCoarse.ts).
     const revision = this._ownGround?.surfaceRevision;
     const restart = revision !== undefined && revision !== this.bakedGroundRevision;

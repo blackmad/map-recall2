@@ -3,7 +3,7 @@
 // Run: node --import tsx --test src/canalRecall/engine/bakedCoarse.test.ts
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { BAKED_FADE_MS, BakedCoarse, bakedCellOrigin, bakedCoarseBudget, bakedCoarseEnabled, cellDistanceM, liftRanges, planBakedCells, rangeMap, type BakedCellData, type BakedCoarseHost, type BakedEntry } from './bakedCoarse.js';
+import { BAKED_FADE_MS, BAKED_RELEASE_M, BakedCoarse, bakedBytesEnabled, bakedReleaseM, releasedCells, bakedCellOrigin, bakedCoarseBudget, bakedCoarseEnabled, cellDistanceM, liftRanges, planBakedCells, rangeMap, type BakedCellData, type BakedCoarseHost, type BakedEntry } from './bakedCoarse.js';
 import { bakedCellArrays } from '../world/bakedCellArrays.js';
 import { NO_BID, shellOrigin, type ShellMesh } from '../world/shellMesh.js';
 import { cellBounds } from '../world/cellGrid.js';
@@ -193,6 +193,78 @@ test('BakedCoarse: covers the planned cells at once, installs one mesh per cell 
   assert.equal(h.added.length, 0);
   assert.equal(baked.covers('5_5'), false);
   assert.equal(h.attached.size, 0);
+});
+
+test('compact layout (lane R4-I #253): accents RGB, everything else byte-identical; ?bakedBytes=0 restores R4-A, the install reads the item size', async () => {
+  assert.equal(bakedBytesEnabled('', {}), true);
+  assert.equal(bakedBytesEnabled('?bakedBytes=0', {}), false);
+  assert.equal(bakedBytesEnabled('', { __canalRecallBakedBytes: false }), false);
+  const m = shel(), full = bakedCellArrays(m, ['a', 'b', 'c'], true), c = bakedCellArrays(m, ['a', 'b', 'c'], true, true);
+  assert.equal(full.accentSize, 4); assert.equal(c.accentSize, 3);
+  assert.equal(c.accents.length, full.accents.length / 4 * 3);
+  for (let v = 0; v < full.layers.length; v++) assert.deepEqual([...c.accents.subarray(v * 3, v * 3 + 3)], [...full.accents.subarray(v * 4, v * 4 + 3)]);
+  for (const k of ['positions', 'uvs', 'layers', 'tints', 'indices'] as const) assert.deepEqual([...c[k]], [...full[k]], k);
+  assert.deepEqual(c.ranges, full.ranges);
+  // Install: the compact host asks for compact cells, and the accent attribute's item size follows the arrays.
+  for (const compact of [false, true]) {
+    const h = harness(['0_0']), asked: (boolean | undefined)[] = [];
+    const fetch = h.host.fetchShell;
+    h.host.fetchShell = (key, signal, exact, comp) => { asked.push(comp); return fetch(key, signal, exact, comp).then(d => ({ ...d, ...bakedCellArrays(shel(), ['a', 'b', 'c'], false, !!comp) })); };
+    const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 }, compact });
+    baked.update(centre[0] + 0.05, centre[1] + 0.05, false);
+    baked.plan(new Set(['0_0']));
+    await settle(); await settle();
+    assert.deepEqual(asked, [compact]);
+    const mesh = h.added[0];
+    assert.equal(mesh.geometry.getAttribute('accent').itemSize, compact ? 3 : 4);
+    assert.equal(baked.residentDetail()[0].accent, mesh.geometry.getAttribute('accent').array.length);
+  }
+});
+
+test('release from the air (lane R4-I #253): the flag, the pure rule with hysteresis, and the tier dropping and refetching a cell', async () => {
+  assert.equal(bakedReleaseM('', {}), null, 'off by default');
+  assert.equal(bakedReleaseM('?bakedRelease=1', {}), BAKED_RELEASE_M);
+  assert.equal(bakedReleaseM('?bakedRelease=2500', {}), 2500);
+  assert.equal(bakedReleaseM('?bakedRelease=0', {}), null);
+  assert.equal(bakedReleaseM('?bakedRelease=12', {}), null, 'nonsense distances keep the default');
+  const eye: [number, number] = [centre[0], centre[1]], d = (k: string) => cellDistanceM(k, eye[0], eye[1]);
+  const keys = grid.filter(k => d(k) < 4500);
+  const yes = () => true;
+  const r = releasedCells(keys, eye, true, 2000, new Set(), yes);
+  for (const k of keys) assert.equal(r.has(k), d(k) >= 2000, k);
+  assert.equal(releasedCells(keys, eye, false, 2000, new Set(), yes).size, 0, 'street level releases nothing');
+  assert.equal(releasedCells(keys, eye, true, null, new Set(), yes).size, 0, 'off');
+  assert.equal(releasedCells(keys, eye, true, 2000, new Set(), () => false).size, 0, 'nothing without the far prisms');
+  // Hysteresis: a released cell between release - back and release stays released; a fresh one there does not.
+  const between = keys.find(k => d(k) >= 1500 && d(k) < 2000)!;
+  assert.ok(between);
+  assert.ok(releasedCells(keys, eye, true, 2000, new Set([between]), yes).has(between));
+  assert.ok(!releasedCells(keys, eye, true, 2000, new Set(), yes).has(between));
+  // The tier: a cell released drops its mesh but stays covered (no runtime coarse), its fetch is not repeated; coming
+  // back nearer fetches and installs it again.
+  const h = harness(['0_0', '3_0']);
+  let farReady = true;
+  h.host.farReady = () => farReady;
+  const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 }, releaseM: 1800 });
+  baked.update(centre[0], centre[1], false);
+  baked.plan(new Set(['0_0', '3_0']));
+  await settle(); await settle();
+  assert.equal(h.added.length, 2);
+  baked.setEye(centre[0], centre[1]);
+  assert.ok(cellDistanceM('3_0', centre[0], centre[1]) >= 1800);
+  assert.deepEqual(h.added.map(m => m.name), ['baked-coarse/0_0']);
+  assert.ok(baked.covers('3_0') && !baked.drawn('3_0'), 'covered, not drawn: the far tier shows it');
+  assert.equal(baked.stats().released, 1);
+  baked.setEye(centre[0], centre[1]);
+  assert.equal(h.fetched.filter(k => k === '3_0').length, 1, 'not fetched again while released');
+  baked.setEye(centre[0] + 0.03, centre[1]);
+  await settle(); await settle();
+  assert.equal(h.fetched.filter(k => k === '3_0').length, 2, 'back within range: fetched again');
+  assert.equal(h.added.length, 2, JSON.stringify({ f: h.fetched, s: baked.stats() }));
+  // Street level never releases.
+  baked.update(centre[0], centre[1], true); baked.setEye(centre[0], centre[1]);
+  assert.equal(baked.stats().released, 0);
+  farReady = false;
 });
 
 test('BakedCoarse: a failed fetch uncovers its cell and asks for a regroup (runtime coarse fallback); an abort is retried', async () => {
