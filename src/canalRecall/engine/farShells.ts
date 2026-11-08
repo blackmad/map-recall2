@@ -13,6 +13,7 @@
  * dissolve in over FAR_SHELL_FADE_MS; the resident set is capped by cell count and triangles (farShellBudget).
  */
 import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
+export { farPartHidden, nearTileCells, tileBounds } from './farHandover.js';
 import { shellOrigin } from '../world/shellMesh.js';
 
 /** A cell's SW corner in chunk metres (the far meshes' position). */
@@ -43,7 +44,7 @@ export interface FarShellHost {
   /** The chunk material, and a clone of it with its own `cityFade` (shares the program), or null. */
   material(): any | null;
   fadeMaterial(value: number): any | null;
-  /** A resident coarse shell is installed and drawn (not still dissolving in) for this z14 tile, or (lane R4-A #243) the baked coarse shell of far cell `cell` draws. */
+  /** Whether the far part of cell `cell` in z14 tile `tile` hides (farPartHidden): a drawn baked coarse cell (R4-A #243), or the tile's drawn coarse / detail chunks (R2-B), per cell where the baked tier covers it (R4-K #255). */
   coarseDrawn(tile: string, cell?: string): boolean;
   /** The cell's SW corner in chunk metres (world/shellMesh.ts shellOrigin). */
   origin(key: string): [number, number];

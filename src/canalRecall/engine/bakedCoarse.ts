@@ -291,6 +291,12 @@ export class BakedCoarse {
   covers(cell: string): boolean { return this.enabled && this.covered.has(cell); }
   /** Whether the cell's mesh is installed and done dissolving in (the far tier then hides its part). */
   drawn(cell: string): boolean { const r = this.residents.get(cell); return !!r && r.drawn; }
+  /**
+   * With the release on (lane R4-K #255): the cell is covered but its mesh is not drawn (released to the far tier, or
+   * still arriving / dissolving in after a return), so the far prisms stand in for it until `drawn` (farPartHidden).
+   * Always false with the release off: the far tier's tile-wide hand-over is unchanged there.
+   */
+  holdsFar(cell: string): boolean { return this.enabled && this.releaseM !== null && this.covered.has(cell) && !this.drawn(cell); }
 
   /**
    * The facade layer's resident cells (the cells of its buildings): re-plan when they change. Called from inside its

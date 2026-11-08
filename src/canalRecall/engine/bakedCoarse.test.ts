@@ -353,3 +353,37 @@ test('BakedCoarse paceInstalls (?arrivalPace, lane R4-E #248): fetched cells wai
   await settle(); await settle();
   assert.equal(h2.added.length, 2);
 });
+
+test('BakedCoarse.holdsFar (lane R4-K #255): the far prisms stand in for a released cell, and on its return until the baked mesh has dissolved in', async () => {
+  const h = harness(['0_0', '3_0']);
+  h.host.farReady = () => true;
+  // Release off: never holds, whatever is drawn (the far tier's R2-B hand-over is unchanged).
+  const off = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 } });
+  off.update(centre[0], centre[1], false);
+  off.plan(new Set(['0_0', '3_0']));
+  assert.ok(!off.holdsFar('0_0') && !off.holdsFar('3_0'), 'off: arriving cells are not held');
+  off.dispose();
+
+  const h2 = harness(['0_0', '3_0']);
+  h2.host.farReady = () => true;
+  const baked = new BakedCoarse(h2.host, { budget: { cells: 10, triangles: 1e6 }, releaseM: 1800 });
+  baked.update(centre[0], centre[1], false);
+  baked.plan(new Set(['0_0', '3_0']));
+  assert.ok(baked.holdsFar('3_0'), 'covered and still arriving: the prisms show');
+  await settle(); await settle();
+  baked.frame(performance.now() + BAKED_FADE_MS + 1);
+  assert.ok(baked.drawn('3_0') && !baked.holdsFar('3_0'), 'drawn: the baked mesh hides the prisms');
+  baked.setEye(centre[0], centre[1]);
+  assert.ok(!baked.drawn('3_0') && baked.holdsFar('3_0'), 'released: the prisms show');
+  assert.ok(!baked.holdsFar('0_0'), 'a drawn near cell is not held');
+  assert.ok(!baked.holdsFar('9_9'), 'an uncovered cell is not held (the tile-wide rule applies)');
+  // Return: fetched again, installed with a dissolve; held (prisms shown) until the dissolve is done, then hidden.
+  baked.setEye(centre[0] + 0.03, centre[1]);
+  await settle(); await settle();
+  const t0 = performance.now();
+  assert.ok(baked.holdsFar('3_0'), 'dissolving in: the prisms stay under it');
+  baked.frame(t0 + BAKED_FADE_MS / 2);
+  assert.ok(baked.holdsFar('3_0'), 'half way: still held');
+  baked.frame(t0 + BAKED_FADE_MS + 1);
+  assert.ok(baked.drawn('3_0') && !baked.holdsFar('3_0'), 'dissolve done: the hand-over back');
+});

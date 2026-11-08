@@ -731,7 +731,8 @@ export class OwnWorldView implements WorldViewOracles {
         attach: entry => tb.bakedCoarseHost()?.attach(entry),
         detach: entry => tb.bakedCoarseHost()?.detach(entry),
         swapSlots: () => !!tb.bakedCoarseHost()?.swapSlots(),
-        farReady: (key: string) => !!this._farShells?.ready?.(key),
+        // Lane R4-K (#255): not where a near detail chunk draws inside the cell (its far part stays hidden there).
+        farReady: (key: string) => !!this._farShells?.ready?.(key) && !tb.farShellHost?.()?.nearInCell?.(key),
         fetchShell: (key: string, signal: AbortSignal, exact?: boolean, compact?: boolean) => world.shell(key, signal, base, exact, compact),
         available: () => available,
         coverageChanged: () => tb.bakedCoarseHost()?.regroup(),
@@ -739,7 +740,7 @@ export class OwnWorldView implements WorldViewOracles {
         repaint: () => this.host.triggerRepaint(),
       }, { touch: coarse(), paceInstalls: !!arrivalPaceOption()?.baked, compact: bakedBytesEnabled(), releaseM: bakedReleaseM() });
       this._bakedCoarse = baked;
-      host.setGate({ plan: (cells: ReadonlySet<string>) => baked.plan(cells), covers: (cell: string) => baked.covers(cell), drawn: (cell: string) => baked.drawn(cell), contextLost: () => baked.contextLost() });
+      host.setGate({ plan: (cells: ReadonlySet<string>) => baked.plan(cells), covers: (cell: string) => baked.covers(cell), drawn: (cell: string) => baked.drawn(cell), holdsFar: (cell: string) => baked.holdsFar(cell), contextLost: () => baked.contextLost() });
       host.setFrame(() => baked.frame());
     }
     const baked = this._bakedCoarse;
