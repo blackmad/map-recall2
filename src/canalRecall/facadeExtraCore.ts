@@ -44,8 +44,8 @@ export function hash01(text: string): number {
   return (h >>> 0) / 4294967296;
 }
 
-/** Triangles a closed box adds (five faces; six with a bottom). */
-export const BOX_TRIS = 10;
+/** Triangles a box adds without its optional bottom or back (front, two sides, top: four faces). */
+export const BOX_TRIS = 8;
 
 /**
  * Collects flat-coloured geometry as triangles within a triangle budget. A box is five faces
@@ -81,7 +81,7 @@ export class ExtraSink {
    * omitted (it is against the wall) unless `back`: a parapet standing above the roof needs it.
    */
   box(f: WallFrame, a0: number, a1: number, o0: number, o1: number, z0: number, z1: number, hex: string, bottom = false, back = false): boolean {
-    if (this.mark?.failed || !this.fits(10 + (bottom ? 2 : 0) + (back ? 2 : 0))) return false;
+    if (this.mark?.failed || !this.fits(BOX_TRIS + (bottom ? 2 : 0) + (back ? 2 : 0))) return false;
     this.boxes++;
     const P = (a: number, o: number, z: number): V3 => [f.x0 + f.ux * a + f.nx * o, f.y0 + f.uy * a + f.ny * o, z];
     const N = (a: number, o: number, z: number): V3 => [f.ux * a + f.nx * o, f.uy * a + f.ny * o, z];
