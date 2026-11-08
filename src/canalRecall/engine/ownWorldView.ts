@@ -912,7 +912,7 @@ export class OwnWorldView implements WorldViewOracles {
         spoilerNames: spoilers, spoilerIndex: this.spoilerIndexFor(spoilers), quizQuiet: this.quizQuiet,
         toWorld: (x, y) => { const [lng, lat] = fromLocal(x, y); return loader && loader._lastCenterLat != null ? lngLatToWorld(lng, lat, loader) : { x: NaN, y: NaN }; },
       });
-      // Street and water names on the map only with the labels toggle on (D), as the basemap's were.
+      // Street and water names on the map only with the labels toggle on (T), as the basemap's were.
       const labelsOn = this._labelsVisible;
       const isLabelled = ctx.isLabelled;
       this.policyCache = { key, ctx: { ...ctx, isLabelled: (t, x, y) => labelsOn && isLabelled(t, x, y), revision: key } as LabelContext };

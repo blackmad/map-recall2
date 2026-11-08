@@ -44,6 +44,7 @@ import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
 import { bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
 import { finishBlurb } from './finishBlurb';
+import { fitFinishTitle, type FinishTitleLayout } from './finishTitle';
 import { commitShownFact } from '../facts/factStore';
 import { StreetLabelCandidates } from './streetLabelCandidates';
 import { occlusionWanted, StreetLabelOcclusion } from '../labels/streetLabelOcclusion';
@@ -1090,6 +1091,8 @@ export class GamePresentationRuntime {
   }
 
   _radarAt?: number;
+  /** The arrival title as last laid out (size and lines), read by tests. */
+  _finishTitleLayout?: FinishTitleLayout;
 
   /** Only while the player is settling in. It used to sit permanently on top
    *  of the recall panel. */
@@ -1100,7 +1103,7 @@ export class GamePresentationRuntime {
     const surface = window.CanalRecallUi.hudSurface;
     // Bare text over the map was unreadable on white streets; this is the same
     // navy plate as every other readout, sized to the line.
-    const text = '?  help   ·   G  settings   ·   M  map   ·   O  north   ·   D  labels   ·   B  buildings   ·   P  pause';
+    const text = '?  help   ·   G  settings   ·   M  map   ·   O  north   ·   T  labels   ·   B  buildings   ·   P  pause';
     ctx.save();
     ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
     ctx.font = `600 11px ${surface.fontMono}`;
@@ -1531,15 +1534,20 @@ export class GamePresentationRuntime {
     const buildBlocks = (level: number): CardBlock[] => {
       const blocks: CardBlock[] = [];
 
-      blocks.push({ height: 74, draw: (top) => {
+      // A long destination was cut to "Vondelpark Open Air…" on a 414-wide
+      // phone (G7, #277): step the size down, then take a second line.
+      const title = fitFinishTitle(ctx, this.routeTo.name, innerW);
+      this._finishTitleLayout = title;
+      const titleExtra = (title.lines.length - 1) * title.lineHeight;
+      blocks.push({ height: 74 + titleExtra, draw: (top) => {
         ctx.textAlign = 'left';
         ctx.fillStyle = ACCENT; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
         ctx.fillText(tour?.completed ? 'TOUR COMPLETE' : 'ARRIVED', cardX + padX, top + 11);
-        ctx.fillStyle = INK; ctx.font = '800 26px system-ui, sans-serif';
-        ctx.fillText(wrapText(ctx, this.routeTo.name, innerW, 1)[0], cardX + padX, top + 42);
+        ctx.fillStyle = INK; ctx.font = `800 ${title.size}px system-ui, sans-serif`;
+        title.lines.forEach((line, index) => ctx.fillText(line, cardX + padX, top + 42 + index * title.lineHeight));
         ctx.fillStyle = MUTED; ctx.font = '13px system-ui, sans-serif';
         // Long tour stop names ran off a phone card.
-        ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  →  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64);
+        ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  →  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
       } });
 
       // The tightest level drops the encyclopedia blurb: the heading already

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { SiteSwitch } from '../../components/SiteSwitch.tsx';
 import { AccountChip } from '../../components/AccountChip.tsx';
+import { TourCards } from './TourCards.tsx';
 import { canalPageLinks } from '../../siteLinks.ts';
 import { ArrowLeft, BookOpenCheck, ChevronDown, Clock3, Search } from 'lucide-react';
 import {
@@ -748,7 +749,6 @@ export function OverlayApp({
     value.startsWith('#') ? t(value.slice(1) as Parameters<Translate>[0], params) : value;
   const accountLabel = accountValue(state.account.label);
   const accountNote = accountValue(state.account.note, { count: state.account.noteCount ?? 0 });
-  const accountButton = accountValue(state.account.buttonLabel);
   const prefs = state.prefs;
   const [knowledgeRefresh, setKnowledgeRefresh] = useState(0);
   const knowledgeNow = useMemo(() => Date.now(), [knowledgeRefresh]);
@@ -983,6 +983,7 @@ export function OverlayApp({
               }}
             >
               <summary>{t('setup.moreOptions')}</summary>
+              <TourCards tours={state.tours} />
               <ChoiceRow
                 label={t('setup.difficulty.harder')}
                 name="difficulty-extra"
@@ -1082,15 +1083,17 @@ export function OverlayApp({
             </div>
             <div className="setup-account-actions">
               <a id="settings-progress-link" className="account-button enamel-quiet" href={siteLinksHere.progress}>{t('settings.progress')}</a>
-              <button
+              {/* The same chip as route setup (G7, #277): the rider's avatar and
+                  name while riding, or Sign in; its menu holds Sign out. */}
+              <AccountChip
                 id="settings-account-button"
-                type="button"
-                className="account-button enamel-quiet"
-                disabled={state.account.busy}
-                onClick={() => callbacks.onAccountClick()}
-              >
-                {accountButton}
-              </button>
+                user={accountSignedIn ? { label: accountLabel, photoURL: state.account.photoURL } : null}
+                available={state.account.available !== false}
+                busy={state.account.busy}
+                onSignIn={() => callbacks.onAccountClick()}
+                onSignOut={() => callbacks.onAccountClick()}
+                progressHref={siteLinksHere.progress}
+              />
             </div>
           </div>
           <div className="enamel-setup-scroll-wrap">

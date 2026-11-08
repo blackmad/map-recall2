@@ -88,6 +88,7 @@ export const nl: Record<MessageKey, string> = {
   'setup.tours': 'Tours',
   'setup.tours.none': 'Geen tour',
   'setup.tours.stops': '{count} stops per fiets, etappe voor etappe',
+  'setup.tours.cardStops': '{count} stops per fiets',
   'setup.tours.checked': ' · {checked}, winkels wisselen',
   'setup.tours.brief': 'Rijd de tour {tour} stop voor stop. Bij elke stop zie je waarom die op de lijst staat.',
   'setup.homeAddress': 'Thuisadres',

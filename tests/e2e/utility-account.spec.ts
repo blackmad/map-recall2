@@ -49,17 +49,22 @@ test('utility controls stay separate and Settings reflects account changes', asy
   await page.evaluate(() => {
     const game = (window as any).canalRecallGame;
     game._feedbackOpen = false;
-    game._overlay.store.setAccount({ label: 'Playing as guest', note: 'Sign in to keep your progress on every device', buttonLabel: 'Sign in', busy: false });
+    // The chip is disabled on a build without sign-in (no Firebase config, as on the dev server); this stubs a configured one.
+    game._overlay.store.setAccount({ label: 'Playing as guest', note: 'Sign in to keep your progress on every device', buttonLabel: 'Sign in', busy: false, available: true });
     game._toggleUtilityPanel('settings');
     game._overlay.callbacks.onAccountClick = () => {
-      game._overlay.store.setAccount({ label: 'Test rider', note: '12 synced', buttonLabel: 'Sign out', busy: false });
+      game._overlay.store.setAccount({ label: 'Test rider', note: '12 synced', buttonLabel: 'Sign out', busy: false, signedIn: true });
     };
   });
   await expect(page.locator('#settings-account-label')).toHaveText('Playing as guest');
   await page.locator('#settings-account-button').click();
   await expect(page.locator('#settings-account-label')).toHaveText('Signed in as Test rider');
-  await expect(page.locator('#settings-account-button')).toHaveText('Sign out');
+  // The settings row carries the account chip (G7, #277): name while
+  // riding, Sign out in its menu.
+  await expect(page.locator('#settings-account-button')).toContainText('Test');
+  await page.locator('#settings-account-button').click();
+  await expect(page.locator('#settings-account-row .account-chip-menu')).toContainText('Sign out');
   await page.screenshot({ path: `artifacts/utility-account/settings-${test.info().project.name}.png` });
-  await page.evaluate(() => (window as any).canalRecallGame._overlay.store.setAccount({ label: 'Playing as guest', buttonLabel: 'Sign in' }));
+  await page.evaluate(() => (window as any).canalRecallGame._overlay.store.setAccount({ label: 'Playing as guest', buttonLabel: 'Sign in', signedIn: false }));
   await expect(page.locator('#settings-account-label')).toHaveText('Playing as guest');
 });
