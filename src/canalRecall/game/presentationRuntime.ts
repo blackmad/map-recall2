@@ -423,6 +423,9 @@ export class GamePresentationRuntime {
       if (Math.hypot(event.clientX - lastMouse.x, event.clientY - lastMouse.y) > 2) revealUtility();
       lastMouse = { x: event.clientX, y: event.clientY };
       this.hud.hoverPoint = this._eventPoint(event);
+      // The arrival and pause cards' keycaps are click targets too (#278): say so with the cursor. game.js's canvas
+      // mousemove has already set the cursor for this event; this window listener runs after it and only adds.
+      if (event.target === this.canvas && this._overCardAction(this.hud.hoverPoint)) this.canvas.style.cursor = 'pointer';
     }, { passive: true });
     window.addEventListener('keydown', event => {
       if (!STEERING_KEYS.has(event.key)) revealUtility();
@@ -462,6 +465,15 @@ export class GamePresentationRuntime {
       }
       dragging = false;
     });
+  }
+
+  /** The arrival or pause card action under a canvas point (logical units, as `_eventPoint` returns), or null. */
+  _overCardAction(point: { x: number; y: number } | null | undefined): string | null {
+    if (!point) return null;
+    const bounds = this.state === GameState.FINISHED ? this._finishButtonBounds
+      : this.state === GameState.PAUSED ? this._pauseButtonBounds : null;
+    const hit = bounds?.find(b => point.x >= b.x && point.x <= b.x + b.w && point.y >= b.y && point.y <= b.y + b.h);
+    return hit ? hit.id : null;
   }
 
   /** True while a DOM overlay owns the screen — quiz, utility, or article. */
@@ -1891,19 +1903,27 @@ export class GamePresentationRuntime {
           }
           ctx.textAlign = 'left';
           let ax = cardX + padX;
+          const mouse = this.hud.hoverPoint;
           for (const action of actions) {
+            ctx.font = '12px system-ui, sans-serif';
+            const captionWidth = ctx.measureText(action.caption).width;
             ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
             const keyW = ctx.measureText(action.key).width + 14;
-            ctx.fillStyle = 'rgba(31,28,23,.08)';
+            // The action under the mouse (#278): its keycap darkens, its caption turns ink and underlines. Unscaled
+            // cards only, where the drawn box is the hit box.
+            const hover = scale === 1 && !!mouse && mouse.x >= ax && mouse.x <= ax + keyW + 8 + captionWidth
+              && mouse.y >= top && mouse.y <= top + 28;
+            ctx.fillStyle = hover ? 'rgba(31,28,23,.18)' : 'rgba(31,28,23,.08)';
             roundRect(ctx, ax, top + 4, keyW, 20, 5);
             ctx.fill();
             ctx.fillStyle = INK;
             ctx.fillText(action.key, ax + 7, top + 18);
             ax += keyW + 8;
-            ctx.fillStyle = action.caption === 'Link copied' ? GOOD : MUTED;
+            ctx.fillStyle = action.caption === 'Link copied' ? GOOD : hover ? INK : MUTED;
             ctx.font = '12px system-ui, sans-serif';
             ctx.fillText(action.caption, ax, top + 18);
             const captionW = ctx.measureText(action.caption).width;
+            if (hover) ctx.fillRect(ax, top + 21, captionW, 1);
             // The keycap and its caption are a click target too.
             finishButtons.push({ x: ax - keyW - 8, y: top, w: keyW + 8 + captionW, h: 28, id: action.id });
             ax += captionW + 22;

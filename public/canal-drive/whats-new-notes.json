@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "The arrival card's keys are buttons too",
+   "text": "Point at Next stop, Share this route, Route setup or End run on a desktop and the key darkens, the cursor turns to a hand, and a click does what the key does.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-finish-keycap-clicks/before-hover.jpg",
+     "alt": "Before: the mouse over Next stop with no cue that it is clickable",
+     "caption": "Before."
+    },
+    {
+     "src": "ui/2026-11-09-finish-keycap-clicks/after-hover.jpg",
+     "alt": "After: the mouse over Share this route, the keycap darkened and its caption underlined",
+     "caption": "After."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Share a ride as a picture",
    "text": "Share this route on the arrival card now offers a picture of the ride: the route's silhouette on postcard paper, with destination, distance, time and ribbon. The link still travels with it, and the name of an open question never appears; a withheld destination reads RIDE over its buurt instead.",
    "images": [

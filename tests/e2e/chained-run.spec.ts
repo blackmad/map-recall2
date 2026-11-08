@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { openRoute } from './helpers';
+import { finishKeycapCentre, openRoute } from './helpers';
 
 // G1 (#271), chained stops: a run is a chain of arrivals. This drives a
 // three-stop run end to end — arrive, Next stop (dealt 1–3 km on), arrive, a
@@ -42,7 +42,11 @@ async function arrive(page: Page) {
   });
 }
 
-/** Desktop: the action's key (the card documents ENTER / E). Phone: a tap where it is drawn (canvas units are CSS pixels). */
+/**
+ * Desktop: the action's key (the card documents ENTER / E). Phone: a tap where it is drawn.
+ * `_finishButtonBounds` are canvas units, not CSS px (on desktop the canvas is scaled to the window);
+ * the on-screen check goes through helpers.ts `finishKeycapCentre`, the one mapping every spec uses (#278).
+ */
 async function tap(page: Page, id: string) {
   if (test.info().project.name === 'desktop') {
     await page.keyboard.press(id === 'end' ? 'KeyE' : 'Enter');
@@ -52,9 +56,11 @@ async function tap(page: Page, id: string) {
   expect(bounds, `${id} button drawn`).toBeTruthy();
   // A real touch target, on screen; then the canvas tap handler's own dispatch (presentationRuntime pointerup →
   // _runFinishTap). Playwright's emulated tap does not reach the canvas's pointer path (no spec taps it).
-  const viewport = await page.evaluate(() => (window as any).canalRecallGame.viewport);
-  expect(bounds!.h).toBeGreaterThanOrEqual(44);
-  expect(bounds!.y + bounds!.h).toBeLessThanOrEqual(viewport.height);
+  const at = await finishKeycapCentre(page, id);
+  const innerHeight = await page.evaluate(() => window.innerHeight);
+  expect(at, `${id} keycap on screen`).toBeTruthy();
+  expect(at!.h).toBeGreaterThanOrEqual(44);
+  expect(at!.y + at!.h / 2).toBeLessThanOrEqual(innerHeight);
   await page.evaluate(want => (window as any).canalRecallGame._runFinishTap(want), id);
 }
 

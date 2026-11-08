@@ -152,3 +152,23 @@ export async function settleWorld(page: Page, where = 'settle', timeoutMs = 90_0
   console.warn(`${where}: world not settled after ${timeoutMs / 1000} s: ${previous}`);
   return last;
 }
+
+/** A finish/pause/run-card action's hit box, in canvas units (presentationRuntime `_finishButtonBounds`). */
+export type CardActionBounds = { x: number; y: number; w: number; h: number; id: string };
+
+/**
+ * Screen (CSS px) centre of an arrival-card action. `_finishButtonBounds` are canvas units
+ * (CANVAS_W × CANVAS_H), not CSS px: on desktop the 1280 × 800 canvas is scaled to the window
+ * (1.125 at 1440 × 900), so a click at the raw bounds lands ~80 px above the row and falls through
+ * to the building inspector (#278: that probe artefact was once read as a dead-click bug). Always
+ * map through the canvas rect; on the phone the scale is 1, so the two agree there.
+ */
+export async function finishKeycapCentre(page: Page, id: string): Promise<{ x: number; y: number; w: number; h: number } | null> {
+  return page.evaluate(want => {
+    const g = (window as any).canalRecallGame;
+    const rect = g.canvas.getBoundingClientRect() as DOMRect;
+    const kx = rect.width / (0, eval)('CANVAS_W'), ky = rect.height / (0, eval)('CANVAS_H');
+    const b = (g._finishButtonBounds as Array<{ x: number; y: number; w: number; h: number; id: string }> | undefined)?.find(bounds => bounds.id === want);
+    return b ? { x: rect.left + (b.x + b.w / 2) * kx, y: rect.top + (b.y + b.h / 2) * ky, w: b.w * kx, h: b.h * ky } : null;
+  }, id);
+}
