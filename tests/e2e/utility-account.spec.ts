@@ -58,7 +58,11 @@ test('utility controls stay separate and Settings reflects account changes', asy
   await expect(page.locator('#settings-account-label')).toHaveText('Playing as guest');
   await page.locator('#settings-account-button').click();
   await expect(page.locator('#settings-account-label')).toHaveText('Signed in as Test rider');
-  await expect(page.locator('#settings-account-button')).toHaveText('Sign out');
+  // The settings row carries the account chip (G7, #277): name while
+  // riding, Sign out in its menu.
+  await expect(page.locator('#settings-account-button')).toContainText('Test');
+  await page.locator('#settings-account-button').click();
+  await expect(page.locator('#settings-account-row .account-chip-menu')).toContainText('Sign out');
   await page.screenshot({ path: `artifacts/utility-account/settings-${test.info().project.name}.png` });
   await page.evaluate(() => (window as any).canalRecallGame._overlay.store.setAccount({ label: 'Playing as guest', buttonLabel: 'Sign in' }));
   await expect(page.locator('#settings-account-label')).toHaveText('Playing as guest');
