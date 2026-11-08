@@ -29,6 +29,7 @@ import {
 } from './enamelIcons.tsx';
 import { useT, type Translate } from '../../i18n/useT.ts';
 import { LanguageSwitch } from '../../components/LanguageSwitch.tsx';
+import { KnowledgeAtlas, useKnowledgeAtlasFilter } from './KnowledgeAtlas.tsx';
 
 /** The ride's own links to the landing page and Map Quest, by where this page is served. */
 const siteLinksHere = canalPageLinks(typeof location === 'undefined' ? '/' : location.pathname);
@@ -501,11 +502,13 @@ function KnowledgeReviewScreen({
   const [query, setQuery] = useState('');
   const t = useT();
   const filters = knowledgeFilters(t);
+  const atlas = useKnowledgeAtlasFilter(() => setFilter('all'));
   const visibleItems = useMemo(() => {
     const term = query.trim().toLocaleLowerCase();
     return review.items.filter(item => (filter === 'all' || item.status === filter)
+      && atlas.includes(item.key)
       && (!term || item.name.toLocaleLowerCase().includes(term) || cityLabel(item.cityId).toLocaleLowerCase().includes(term)));
-  }, [filter, query, review.items]);
+  }, [filter, query, review.items, atlas]);
   const maxActivity = Math.max(1, ...review.activity.map(day => day.reviews));
   // A full-screen view takes focus, and Escape leaves it, like any dialog.
   const backRef = useRef<HTMLButtonElement | null>(null);
@@ -537,6 +540,8 @@ function KnowledgeReviewScreen({
           {review.due ? t('knowledge.plan', { count: review.due }) : t('knowledge.nothingDue')}
         </button>
       </header>
+
+      <KnowledgeAtlas items={review.items} selection={atlas.selection} onSelect={atlas.select} />
 
       {review.tracked === 0 ? (
         <div className="knowledge-empty">
