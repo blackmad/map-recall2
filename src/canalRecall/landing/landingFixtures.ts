@@ -9,8 +9,9 @@ import { REVIEW_STATES_KEY } from '../knowledgeReview';
 import { createRideRecord, ROUTE_HISTORY_KEY, type RideRecord } from '../routeHistory';
 import { RETURNING_PLAYER_KEY } from '../../siteLinks';
 
-/** 10:00 UTC, 9 Nov 2026 (11:00 in Amsterdam). */
-export const LANDING_FIXTURE_NOW = Date.UTC(2026, 10, 9, 10, 0, 0);
+/** 10:00 UTC, 16 Nov 2026 (11:00 in Amsterdam): after the buurt pool's cutover
+ *  (DAILY_POOL_CUTOVER, 10 Nov), board days included, so the cards show buurt names. */
+export const LANDING_FIXTURE_NOW = Date.UTC(2026, 10, 16, 10, 0, 0);
 
 export type LandingScenario = 'first-time' | 'opened-once' | 'returning' | 'nothing-due' | 'ridden-today';
 

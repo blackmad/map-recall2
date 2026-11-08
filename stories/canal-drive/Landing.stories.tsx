@@ -29,9 +29,9 @@ function modelFor(variant: Variant): LandingModel {
       ...model.daily,
       pair: {
         ...model.daily.pair,
-        from: { ...model.daily.pair.from, name: 'Nationaal Monument op de Dam' },
-        to: { ...model.daily.pair.to, name: 'Stedelijk Museum Amsterdam (Museumplein)' },
-        km: 4.1,
+        from: { ...model.daily.pair.from, name: 'Gelderlandpleinbuurt' },
+        to: { ...model.daily.pair.to, name: 'Prinses Irenebuurt e.o.' },
+        km: 4.9,
       },
     },
   };
