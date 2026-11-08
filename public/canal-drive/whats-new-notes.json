@@ -3,6 +3,37 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "Two more flat blocks get their windows back",
+      "text": "The Balboaplein 48 block in Bos en Lommer and the Revaleiland 437 courtyard block on Java-eiland now show brick window grids instead of one flat red wall. Every installed model was ridden past from the air and compared with the city's own facade and the aerial photo; these two were the only remaining flat boxes, 17 more are being looked at closer.",
+      "where": [
+        4.853,
+        52.3785
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-09-blank-installs-audit/i147097-before.jpg",
+          "alt": "Before: the Balboaplein 48 block as a flat orange-red box from the air",
+          "caption": "Balboaplein 48, before."
+        },
+        {
+          "src": "engine/2026-11-09-blank-installs-audit/i147097-after.jpg",
+          "alt": "After: the same block with the city's brick window grid",
+          "caption": "Balboaplein 48, after."
+        },
+        {
+          "src": "engine/2026-11-09-blank-installs-audit/i250186-before.jpg",
+          "alt": "Before: the Revaleiland 437 courtyard block as a flat red box with its courtyard filled in",
+          "caption": "Revaleiland 437, before."
+        },
+        {
+          "src": "engine/2026-11-09-blank-installs-audit/i250186-after.jpg",
+          "alt": "After: the same block with window grids and the courtyard open",
+          "caption": "Revaleiland 437, after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
       "title": "The ground no longer depends on loading order",
       "text": "The ground near bridges and tunnel ramps no longer changes depending on which order the cells around you loaded. Bridge decks and tunnel cuts that span two cells are now planned the same way whichever cell asks first, so a crossing never gets a second deck on top of the first and a ramp wall never moves between rides.",
       "where": [
