@@ -71,12 +71,32 @@ test('far prisms under released baked cells', async ({ page }) => {
       const url2: string = await page.evaluate(async (layer) => {
         const vm = (window as any).canalRecallGame.vectorMap, tb = vm._threeBuildings;
         const meshes = layer === 'far' ? [...vm._farShells.residents.values()].map((r: any) => r.mesh) : [...tb.bakedEntries.values()].map((e: any) => e.mesh);
-        const was = meshes.map((m: any) => m.visible); meshes.forEach((m: any) => { m.visible = false; });
+        const was = meshes.map((m: any) => m.layers.mask); meshes.forEach((m: any) => { m.layers.mask = 0; }); vm.host?.triggerRepaint?.(); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
         const c = await vm.captureFrame(); const u = c?.toDataURL('image/png') ?? '';
-        meshes.forEach((m: any, i: number) => { m.visible = was[i]; });
+        meshes.forEach((m: any, i: number) => { m.layers.mask = was[i]; });
         return u;
       }, layer);
       writeFileSync(`${OUT}/${name}-${QUERY.replace(/[^\w]+/g, '_')}-no-${layer}.png`, Buffer.from(url2.split(',')[1], 'base64'));
+    }
+    // FAR_RELEASE_AB=<metres>: keep | release in the same page and pose (no second load: the same rider, near chunks and
+    // resident sets). The release distance is switched on the live tier; `keep` brings every released cell back.
+    if (process.env.FAR_RELEASE_AB) {
+      const cap = async (label: string) => {
+        await settleWorld(page, `${name} ${label}`);
+        await page.waitForTimeout(1500);
+        await settleWorld(page, `${name} ${label} hold`);
+        const u: string = await page.evaluate(() => (window as any).canalRecallGame.vectorMap.captureFrame().then((c: HTMLCanvasElement | null) => c?.toDataURL('image/png') ?? ''));
+        writeFileSync(`${OUT}/${name}-ab-${label}.png`, Buffer.from(u.split(',')[1], 'base64'));
+        return page.evaluate(() => (window as any).canalRecallGame.vectorMap._bakedCoarse.stats());
+      };
+      const setRelease = (m: number | null) => page.evaluate((m) => { const vm = (window as any).canalRecallGame.vectorMap; vm._bakedCoarse.releaseM = m; vm.host?.triggerRepaint?.(); }, m);
+      const ab: Record<string, any> = {};
+      for (const m of process.env.FAR_RELEASE_AB.split(',').map(Number)) {
+        await setRelease(null); ab[`keep-before-${m}`] = await cap(`keep-${m}`);
+        await setRelease(m); ab[`release-${m}`] = await cap(`release-${m}`);
+      }
+      await setRelease(null); ab.keepEnd = await cap('keep-end');
+      report[name].ab = ab;
     }
     report[name].bakedHidden = await page.evaluate(() => {
       const tb = (window as any).canalRecallGame.vectorMap._threeBuildings, out: Record<string, number> = {};

@@ -387,3 +387,28 @@ test('BakedCoarse.holdsFar (lane R4-K #255): the far prisms stand in for a relea
   baked.frame(t0 + BAKED_FADE_MS + 1);
   assert.ok(baked.drawn('3_0') && !baked.holdsFar('3_0'), 'dissolve done: the hand-over back');
 });
+
+test('BakedCoarse release (lane R4-K): a released cell the plan only keeps stays covered (no runtime coarse), and is fetched again on its return', async () => {
+  const h = harness(['0_0', '1_0', '2_0']);
+  h.host.farReady = () => true;
+  const baked = new BakedCoarse(h.host, { budget: { cells: 10, triangles: 1e6 }, releaseM: 1800 });
+  baked.update(centre[0], centre[1], false);
+  baked.plan(new Set(['0_0', '1_0', '2_0']));
+  await settle(); await settle();
+  baked.frame(performance.now() + BAKED_FADE_MS + 1);
+  assert.equal(baked.stats().drawn, 3);
+  // The eye far to the west: every cell released.
+  const west = centre[0] - 0.08;
+  baked.setEye(west, centre[1]);
+  assert.equal(baked.stats().released, 3);
+  // The facade layer no longer lists 1_0: the plan keeps it only by hysteresis, as it would a resident.
+  baked.plan(new Set(['0_0', '2_0']));
+  assert.ok(baked.covers('1_0'), 'released and kept: still covered, so no runtime coarse chunk is built for it');
+  // Back: every cell is fetched again, the keep-only one too.
+  baked.setEye(centre[0], centre[1]);
+  await settle(); await settle();
+  for (const k of ['0_0', '1_0']) assert.equal(h.fetched.filter(f => f === k).length, 2, `${k} fetched again`);
+  assert.ok(baked.holdsFar('2_0') && h.fetched.filter(f => f === '2_0').length === 1, '2_0 (1,500 m) stays released: hysteresis to 1,200 m');
+  baked.frame(performance.now() + BAKED_FADE_MS + 1);
+  assert.ok(baked.drawn('1_0') && !baked.holdsFar('1_0'));
+});
