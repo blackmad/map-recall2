@@ -13,13 +13,19 @@ import {
   formatPoints,
   isIdle,
   loadRun,
+  pauseRun,
   pickNextStop,
+  resumeRun,
+  runTransition,
+  withNextLeg,
   runLine,
   runsEnabled,
   runStory,
   saveRun,
   touchRun,
   type OpenRun,
+  type RunGameState,
+  type RunLeg,
   type RunSessionCounters,
 } from './chainedRun';
 import type { MasterySample, RoutePoi } from './routeSelection';
@@ -72,6 +78,8 @@ export interface ChainedRunHost {
   _runCard?: OpenRun | null;
   _runRecordedKey?: string;
   _runTouchedAt?: number;
+  /** Game state at the last tick, for run transitions (route setup closes, pause stops the clock). */
+  _runLastState?: number;
 }
 
 type SessionWindow = Window & { __canalRecallSession?: Partial<RunSessionCounters> & Record<string, unknown> };
@@ -138,8 +146,11 @@ export class GameChainedRunRuntime {
   _runTick(this: ChainedRunHost & GameChainedRunRuntime): void {
     if (this.state !== GameState.FINISHED) this._runRecordedKey = '';
     if (!runsEnabled(window.location.search)) return;
-    const run = this._openRun();
     const now = Date.now();
+    const previous = this._runLastState ?? this.state;
+    this._runLastState = this.state;
+    if (previous !== this.state) this._runStateChanged(previous, now);
+    const run = this._openRun();
     if (this.state === GameState.RACING) {
       if (this._runCard) this._runCard = null;
       if (run && this._runEnabled() && now - (this._runTouchedAt ?? 0) >= RUN_TOUCH_MS) {
@@ -158,17 +169,46 @@ export class GameChainedRunRuntime {
     if (run && !this._runCard && this.input.wasPressed('KeyE')) this._endRunFromCard();
   }
 
-  /** End run: the run card replaces the arrival card. */
-  _endRunFromCard(this: ChainedRunHost & GameChainedRunRuntime): void {
+  /** Route setup from the arrival card closes the run quietly; pause stops its idle clock. */
+  _runStateChanged(this: ChainedRunHost & GameChainedRunRuntime, previous: number, now: number): void {
+    const name = (state: number): RunGameState => state === GameState.MENU ? 'menu'
+      : state === GameState.RACING ? 'racing' : state === GameState.FINISHED ? 'finished'
+        : state === GameState.PAUSED ? 'paused' : 'other';
+    const run = this._openRun();
+    if (!run) return;
+    const step = runTransition(name(previous), name(this.state));
+    if (step === 'close') { this._closeRun(false); return; }
+    if (step === 'pause') this._run = pauseRun(run, now);
+    else if (step === 'resume') this._run = resumeRun(run, now);
+    else return;
+    saveRun(storage(), this._run);
+  }
+
+  /** Ends the open run into lastRun and the counters; with `card`, the run card shows it. */
+  _closeRun(this: ChainedRunHost & GameChainedRunRuntime, card: boolean): void {
     const run = this._openRun();
     if (!run) return;
     endRun(storage(), run);
     this._run = null;
-    this._runCard = run;
+    this._runCard = card ? run : null;
     const session = sessionCounters();
     session.runsEnded = (session.runsEnded ?? 0) + 1;
     session.stopsPerRun = [...(session.stopsPerRun ?? []), run.stopCount];
     session.stopsThisRun = 0;
+  }
+
+  /**
+   * The dealt leg to ride again after a reload, or null. For the startup hook
+   * in game-route.js `_checkShareLink` (integrator applies it at merge).
+   */
+  _runResumeLeg(this: ChainedRunHost & GameChainedRunRuntime): RunLeg | null {
+    if (!this._runEnabled()) return null;
+    return this._openRun()?.nextLeg ?? null;
+  }
+
+  /** End run: the run card replaces the arrival card. */
+  _endRunFromCard(this: ChainedRunHost & GameChainedRunRuntime): void {
+    this._closeRun(true);
   }
 
   /** Arrival-card tap targets beyond game.js's three. */
@@ -189,8 +229,13 @@ export class GameChainedRunRuntime {
     const run = this._openRun();
     const samples = this.recall?.homeMasterySamples?.(this.cityId || 'amsterdam') ?? [];
     const excludeIds = [...(run?.stops.map(stop => stop.id) ?? []), this.routeFrom?.id ?? ''].filter(Boolean);
-    if (this._run) { this._run = touchRun(this._run, Date.now()); saveRun(storage(), this._run); }
-    return pickNextStop(this.routePois, from, { samples, excludeIds });
+    const to = pickNextStop(this.routePois, from, { samples, excludeIds });
+    if (this._run) {
+      const point = (p: PoiPoint) => ({ id: p.id, name: p.name, lat: p.lat, lng: p.lng });
+      this._run = withNextLeg(touchRun(this._run, Date.now()), to ? { from: point(from), to: point(to) } : null);
+      saveRun(storage(), this._run);
+    }
+    return to;
   }
 
   /** The arrival card's one run line, or null outside a run. */

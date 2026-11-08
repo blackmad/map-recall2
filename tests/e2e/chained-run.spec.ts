@@ -145,6 +145,28 @@ test('a three-stop run: Next stop, a reload, End run and the run card', async ({
   }));
 });
 
+test('Route setup from the arrival card closes the run, without a run card', async ({ page }) => {
+  test.setTimeout(240_000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  const arrival = await arrive(page);
+  expect(arrival.run?.stopCount).toBe(1);
+  if (test.info().project.name === 'desktop') await page.keyboard.press('KeyM');
+  else await page.evaluate(() => (window as any).canalRecallGame._runFinishTap('route'));
+  await page.waitForFunction(() => (window as any).canalRecallGame.state === 0, null, { timeout: 10_000 });
+  await page.waitForTimeout(300);
+  const after = await page.evaluate(() => ({
+    open: localStorage.getItem('canalRecall.openRun.v1'),
+    last: JSON.parse(localStorage.getItem('canalRecall.lastRun.v1') || 'null'),
+    card: (window as any).canalRecallGame._runCard ?? null,
+    session: { ...(window as any).__canalRecallSession },
+  }));
+  expect(after.open).toBeNull();
+  expect(after.last?.stopCount).toBe(1);
+  expect(after.card).toBeNull();
+  expect(after.session.runsEnded).toBe(1);
+  expect(after.session.stopsPerRun).toEqual([1]);
+});
+
 test('?run=0 keeps the single-ride arrival', async ({ page }) => {
   test.setTimeout(240_000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?run=0' });

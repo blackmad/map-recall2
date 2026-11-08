@@ -46,8 +46,18 @@ export interface RunStop {
   at: number;
 }
 
+/** A dealt leg, kept so a reload can ride it again. */
+export interface RunLeg {
+  from: { id: string; name: string; lat: number; lng: number };
+  to: { id: string; name: string; lat: number; lng: number };
+}
+
 export interface OpenRun {
   version: 1;
+  /** Set while the game is paused: the idle clock stops (coordinator rule, #271). */
+  pausedAt?: number | null;
+  /** The next stop as dealt, until the rider arrives. */
+  nextLeg?: RunLeg | null;
   startedAt: number;
   lastActiveAt: number;
   startName: string;
@@ -102,6 +112,8 @@ export function addStop(run: OpenRun | null, input: ArrivalInput, now: number): 
       ...base,
       lastActiveAt: now,
       stopCount: stopNumber,
+      pausedAt: null,
+      nextLeg: null,
       totalPoints: base.totalPoints + points,
       bestStreak: Math.max(base.bestStreak, stop.bestStreak),
       names: [...known],
@@ -114,8 +126,41 @@ export function touchRun(run: OpenRun, now: number): OpenRun {
   return { ...run, lastActiveAt: Math.max(run.lastActiveAt, now) };
 }
 
+/** Idle time stops while paused: measured to the moment the pause began. */
 export function isIdle(run: OpenRun, now: number): boolean {
-  return now - run.lastActiveAt >= RUN_IDLE_MS;
+  const until = run.pausedAt != null ? Math.min(now, run.pausedAt) : now;
+  return until - run.lastActiveAt >= RUN_IDLE_MS;
+}
+
+export function pauseRun(run: OpenRun, now: number): OpenRun {
+  return run.pausedAt != null ? run : { ...run, pausedAt: now };
+}
+
+/** Ends a pause: the paused span is credited, so it never counts toward idle. */
+export function resumeRun(run: OpenRun, now: number): OpenRun {
+  if (run.pausedAt == null) return run;
+  const paused = Math.max(0, now - run.pausedAt);
+  return { ...run, pausedAt: null, lastActiveAt: run.lastActiveAt + paused };
+}
+
+export function withNextLeg(run: OpenRun, leg: RunLeg | null): OpenRun {
+  return { ...run, nextLeg: leg };
+}
+
+export type RunGameState = 'menu' | 'racing' | 'finished' | 'paused' | 'other';
+export type RunTransition = 'close' | 'pause' | 'resume' | null;
+
+/**
+ * What a change of game state does to the open run. Route setup from the
+ * arrival card (finished → menu) closes the run without a card: a route the
+ * player picks is a new thing, not a dealt stop (coordinator rule, #271).
+ */
+export function runTransition(from: RunGameState, to: RunGameState): RunTransition {
+  if (from === to) return null;
+  if (from === 'finished' && to === 'menu') return 'close';
+  if (to === 'paused') return 'pause';
+  if (from === 'paused') return 'resume';
+  return null;
 }
 
 /** The bonus the next stop will carry, for the arrival line. */
@@ -185,9 +230,11 @@ export function loadRun(storage: RunStorage | null, now: number): { run: OpenRun
   try { raw = storage.getItem(RUN_STORAGE_KEY); } catch { return { run: null, ended: null }; }
   const run = parseRun(raw);
   if (!run || run.stopCount <= 0) return { run: null, ended: null };
-  if (!isIdle(run, now)) return { run, ended: null };
-  endRun(storage, run);
-  return { run: null, ended: run };
+  // A reload ends any pause; the paused span up to now is not idle time.
+  const live = resumeRun(run, now);
+  if (!isIdle(live, now)) return { run: live, ended: null };
+  endRun(storage, live);
+  return { run: null, ended: live };
 }
 
 export function saveRun(storage: RunStorage | null, run: OpenRun): void {

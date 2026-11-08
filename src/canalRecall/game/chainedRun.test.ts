@@ -5,6 +5,10 @@ import {
   chainBonus,
   endRun,
   isIdle,
+  pauseRun,
+  resumeRun,
+  runTransition,
+  withNextLeg,
   LAST_RUN_STORAGE_KEY,
   loadRun,
   newRun,
@@ -87,7 +91,7 @@ test('persistence: a reload within ten minutes continues the run; an idle one is
   const storage = new MemoryStorage();
   const run = addStop(null, arrival('Artis', 100), 1000).run;
   saveRun(storage, run);
-  assert.deepEqual(loadRun(storage, 1000 + 60_000), { run, ended: null });
+  assert.deepEqual(loadRun(storage, 1000 + 60_000), { run: { ...run, pausedAt: null }, ended: null });
   const late = loadRun(storage, 1000 + RUN_IDLE_MS);
   assert.equal(late.run, null);
   assert.equal(late.ended?.stopCount, 1);
@@ -126,4 +130,40 @@ test('next stop: 1–3 km away, not a stop already reached, biased to the unknow
   // Nothing in the band: the surprise picker's range instead.
   const fallback = pickNextStop([at('far', 5)], from, { chooseUnit: () => 0.5 });
   assert.equal(fallback?.id, 'far');
+});
+
+test('route setup from the arrival card closes the run without a card; pause and resume are transitions', () => {
+  assert.equal(runTransition('finished', 'menu'), 'close');
+  assert.equal(runTransition('finished', 'racing'), null);
+  assert.equal(runTransition('racing', 'menu'), null);
+  assert.equal(runTransition('racing', 'paused'), 'pause');
+  assert.equal(runTransition('paused', 'racing'), 'resume');
+  assert.equal(runTransition('paused', 'menu'), 'resume');
+  assert.equal(runTransition('finished', 'finished'), null);
+});
+
+test('pause stops the idle clock; resume credits the paused span', () => {
+  const run = addStop(null, arrival('Artis', 100), 0).run;
+  const paused = pauseRun(run, 60_000);
+  assert.equal(pauseRun(paused, 90_000).pausedAt, 60_000);
+  assert.equal(isIdle(paused, 60_000 + RUN_IDLE_MS * 5), false);
+  const resumed = resumeRun(paused, 60_000 + 3_600_000);
+  assert.equal(resumed.pausedAt, null);
+  assert.equal(resumed.lastActiveAt, 3_600_000);
+  assert.equal(isIdle(resumed, 3_600_000 + RUN_IDLE_MS - 1), false);
+  assert.equal(isIdle(resumed, 3_600_000 + RUN_IDLE_MS), true);
+  assert.equal(resumeRun(run, 5).lastActiveAt, 0);
+  // A run saved mid-pause and reloaded an hour later is still open.
+  const storage = new MemoryStorage();
+  saveRun(storage, paused);
+  assert.equal(loadRun(storage, 60_000 + 3_600_000).run?.stopCount, 1);
+});
+
+test('the dealt leg is kept for a reload and cleared on arrival', () => {
+  const leg = { from: { id: 'a', name: 'Artis', lat: 52.36, lng: 4.91 }, to: { id: 'h', name: 'Hortus', lat: 52.367, lng: 4.908 } };
+  const run = withNextLeg(addStop(null, arrival('Artis', 100), 0).run, leg);
+  const storage = new MemoryStorage();
+  saveRun(storage, run);
+  assert.deepEqual(loadRun(storage, 1000).run?.nextLeg, leg);
+  assert.equal(addStop(run, arrival('Hortus', 100), 2000).run.nextLeg, null);
 });
