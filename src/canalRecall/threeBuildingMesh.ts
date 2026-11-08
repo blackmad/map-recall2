@@ -480,8 +480,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
   // Owner classes for the thin fade (look/thinFade.ts): the projecting cornice strip, and surveyed roofs drawn as `trim`.
   const corniceTris = new WeakSet<object>(), surveyedRoofTris = new WeakSet<object>();
-  // The flat-roof lip and box (lane R5-E): solid roof pieces, not thin trim. As `trim` the thin fade dissolved them from
-  // the air (U1 with ?thinFade=0 showed both; with it, neither), so they own the roof class and no thin size.
+  // The flat-roof box (lane R5-E): a solid 2.2 m roof piece, not thin trim. As `trim` the thin fade dissolved it from the
+  // air (U1 with ?thinFade=0 showed it; with it, not), so it owns the roof class and no thin size. The 0.25 m lip stays
+  // trim: drawn solid it doubled swap-zfight's still alias (s1 383 -> 732, s3 5750 -> 9656) and its excess.
   const flatSurfaceTris = new WeakSet<object>();
   type Quad = { kind: string; accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[]; extraTris: number }> = [];
@@ -735,7 +736,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       room -= tris.length; surfaceStats[kind]++;
       const e = quadsByBuilding[c.entry];
       if (kind === 'furniture') { e.sign.push(...(tris as SignTri[])); e.extraTris += tris.length; signTotal += tris.length; extrasTotal += tris.length; }
-      else { for (const t of tris) flatSurfaceTris.add(t); e.roof.push(...(tris as StreetCrownTri[])); roofTotal += tris.length; }
+      else { if (kind === 'box') for (const t of tris) flatSurfaceTris.add(t); e.roof.push(...(tris as StreetCrownTri[])); roofTotal += tris.length; }
     }
   }
 
