@@ -25,7 +25,8 @@ import { SharedFrame } from '../rendererShared/sharedFrame';
 import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
 import { guardFrameHost } from './frameGuards';
-import { settleChecks } from './settle';
+import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
+import { isTouchPointer, START_SETTLE_LEGACY_CAP_MS, startSettleCapMs, startSettleEnabled, startSettleStep, type StartSettleInput, type StartSettleStep } from './startSettle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
@@ -452,6 +453,8 @@ export class OwnWorldView implements WorldViewOracles {
     this.cameraMap = new CameraMap(this.host, { center: [4.9041, 52.3676], zoom: 17, maxPitch });
     // Settled (WorldCamera.whenIdle, game-route.js _waitForMapSettle) means every loader has caught up with the view.
     for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, busy);
+    // ?startSettle=0 registers nothing here: the hold is today's settleChecks alone (startSettle.ts).
+    if (this.startSettleOn) this.cameraMap.addIdleCheck('startSettle', () => this.startSettleBusy());
     this.camera = this.cameraMap.api;
     const shadows = flag('shadows', '__canalRecallShadows', settings.shadows);
     this._sharedFrame = new SharedFrame(THREE, this.cameraMap, {
@@ -990,6 +993,40 @@ export class OwnWorldView implements WorldViewOracles {
     this._ownGround?.update(subject, cam.zoom, cam.pitch);
     this.updateFarShells(subject, this._ownGround?.farRadiusM ?? 0);
     this.host.triggerRepaint();
+  }
+
+  /** Cold-start hold (startSettle.ts): on unless `?startSettle=0`. Off, nothing below runs and the hold is today's. */
+  private readonly startSettleOn: boolean = startSettleEnabled(W().__canalRecallStartSettle ?? new URLSearchParams(W().location?.search ?? '').get('startSettle'));
+  private _startSettleStart: number | null = null;
+  private _startSettleDone = false;
+  private _startSettleLast: StartSettleStep | null = null;
+
+  /** The cold-start hold's cap for this device (startSettle.ts); today's 4 s with `?startSettle=0`. game-route.js passes it to `_waitForMapSettle`. */
+  startSettleCapMs(): number {
+    return this.startSettleOn ? startSettleCapMs(isTouchPointer(W())) : START_SETTLE_LEGACY_CAP_MS;
+  }
+
+  /** The last start-hold decision (for the measurement script), or null before the hold has asked. */
+  startSettleStatus(): StartSettleStep | null { return this._startSettleLast; }
+
+  /**
+   * One-shot idle check for the cold start: busy while the camera's ground cell, buildings, far ring or baked coarse
+   * tier is still loading at the start pose. Runs settleTick while busy so the held frames fetch and build (the game's
+   * sync does not run under the loading screen; checkIdle polls this from the held frames). Ends at settled or the cap.
+   */
+  private startSettleBusy(): boolean {
+    if (this._startSettleDone) return false;
+    const now = performance.now();
+    this._startSettleStart ??= now;
+    this.settleTick();
+    const cam = this.cameraMap.camera, w = this.worldSettled(), g: any = this._ownGround;
+    const [x, y] = toLocal(cam.lng, cam.lat), r = SETTLE_GROUND_RADIUS_M;
+    const groundCentre = !g || (!!g.ready && (!g.coversRect || !!g.coversRect(x - r, y - r, x + r, y + r)));
+    const input: StartSettleInput = { groundCentre, buildings: w.buildings, far: w.far, baked: w.baked };
+    const step = startSettleStep(now - this._startSettleStart, input, this.startSettleCapMs());
+    this._startSettleLast = step;
+    if (step.done) this._startSettleDone = true;
+    return !step.done;
   }
 
   /** Every streaming tier landed for the current view: ground, city tiles, facades, far and baked coarse (dissolves included). */

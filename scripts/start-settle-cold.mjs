@@ -9,6 +9,7 @@
 // Desktop: 1512x982 at DPR 2 (budgets.json _desktopPerfViewport). iPhone: devices['iPhone 13'] with CPU throttle 4x.
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
+import path from 'node:path';
 
 const argv = process.argv.slice(2);
 const out = argv[0] && !argv[0].startsWith('--') ? argv[0] : 'artifacts/perf/start-settle-cold.json';
@@ -35,6 +36,13 @@ async function run() {
   const context = await browser.newContext(device === 'iphone'
     ? { ...devices['iPhone 13'] }
     : { viewport: { width: vw, height: vh }, deviceScaleFactor: Number(process.env.DPR || 2) });
+  // BUNDLES_DIR=<dir>: serve *.bundle.js from a scratch build (src changes without touching public/).
+  // GAME_ROUTE=<file>: serve game-route.js from a patched copy (the start-hold cap call site, not yet applied).
+  if (process.env.BUNDLES_DIR) await context.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = path.join(process.env.BUNDLES_DIR, /\/([\w-]+\.bundle\.js)/.exec(route.request().url())[1]);
+    return fs.existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+  });
+  if (process.env.GAME_ROUTE) await context.route(/\/canal-drive\/js\/game-route\.js(\?.*)?$/, route => route.fulfill({ path: process.env.GAME_ROUTE, contentType: 'application/javascript' }));
   const page = await context.newPage();
   const errors = [];
   page.on('pageerror', e => errors.push(String(e).slice(0, 300)));
