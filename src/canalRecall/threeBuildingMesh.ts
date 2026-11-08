@@ -18,7 +18,7 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 // Positions are metres east / north / up from a caller-supplied origin.
 
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
-import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2 } from './coplanarSurfaces.js';
+import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
 import { streetWallBuilding, frontageLayoutScale, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
 import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
@@ -486,8 +486,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   const flatSurfaceTris = new WeakSet<object>();
   type Quad = { kind: string; accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[]; extraTris: number }> = [];
-  type SurfaceCandidate = { entry: number; areaM2: number; coarse: boolean; furniture: SignTri[]; lip: StreetCrownTri[]; box: StreetCrownTri[] };
+  type SurfaceCandidate = { entry: number; areaM2: number; coarse: boolean; furniture: SignTri[]; lip: StreetCrownTri[]; box: StreetCrownTri[]; boxAt: [number, number, number] | null };
   const surfaceCandidates: SurfaceCandidate[] = [];
+  let lipWalls: { grid: SegmentGrid; segs: number[]; owners: number[]; bs: MeshBuilding[] } | null = null;
   const surfaceStats = { furniture: 0, lip: 0, box: 0, furnitureDropped: 0, lipDropped: 0, boxDropped: 0 };
   let signTotal = 0, extrasTotal = 0, gardenTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
@@ -693,13 +694,49 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // chunk's surface budget (FLAT_SURFACE_BUDGET, after this loop) admits largest roof first.
       const local = b.polygons.map(poly => poly.map(ring => ring.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number])));
       // A party wall against a roof as high (or higher) carries no lip: both buildings' edges are in `shared`, one each way.
+      // Geometric neighbour test as well (integrator 2026-11-08, near-coplanar wall audit 8415/5383): a taller part's
+      // wall that runs along this edge without sharing its exact vertices (a podium edge split by the tower's corners)
+      // misses the key map above, and the lip's inner face 0.25 m in then stripes against that wall (same facing,
+      // within NEAR_COPLANAR_M). Any wall of another building parallel to the edge within 0.5 m, overlapping it by
+      // 0.5 m or more, and topping out above the lid less LIP_H_M, drops the lip on that edge.
+      if (!lipWalls) {
+        const segs: number[] = [], owners: number[] = [];
+        const all = [...prepared.map(p => ({ b: p.b, edges: p.edges })), ...contextPrepared];
+        all.forEach(({ edges: es }, i) => { for (const e of es) { segs.push(e.x0, e.y0, e.x1, e.y1); owners.push(i); } });
+        lipWalls = { grid: new SegmentGrid(segs, 25, owners), segs, owners, bs: all.map(x => x.b) };
+      }
+      const wallBeside = (a: [number, number], c: [number, number]): boolean => {
+        const { grid, segs, owners, bs } = lipWalls!;
+        const dx = c[0] - a[0], dy = c[1] - a[1], len = Math.hypot(dx, dy); if (len < 1e-6) return false;
+        const ux = dx / len, uy = dy / len, nx = -uy, ny = ux;
+        for (const si of grid.near(Math.min(a[0], c[0]) - 0.6, Math.min(a[1], c[1]) - 0.6, Math.max(a[0], c[0]) + 0.6, Math.max(a[1], c[1]) + 0.6)) {
+          const ob = bs[owners[si]]; if (ob === b || ob.id === b.id) continue;
+          if (ob.heightM < b.heightM - LIP_H_M || ob.minHeightM > b.heightM) continue;
+          const x0 = segs[si * 4], y0 = segs[si * 4 + 1], x1 = segs[si * 4 + 2], y1 = segs[si * 4 + 3];
+          const sx = x1 - x0, sy = y1 - y0, sl = Math.hypot(sx, sy); if (sl < 1e-6) continue;
+          if (Math.abs((sx * ux + sy * uy) / sl) < Math.cos(5 * Math.PI / 180)) continue;
+          const d0 = (x0 - a[0]) * nx + (y0 - a[1]) * ny, d1 = (x1 - a[0]) * nx + (y1 - a[1]) * ny;
+          if (Math.max(Math.abs(d0), Math.abs(d1)) > NEAR_COPLANAR_M) continue;
+          const t0 = (x0 - a[0]) * ux + (y0 - a[1]) * uy, t1 = (x1 - a[0]) * ux + (y1 - a[1]) * uy;
+          if (Math.min(len, Math.max(t0, t1)) - Math.max(0, Math.min(t0, t1)) >= 0.5) return true;
+        }
+        return false;
+      };
       const exposed = (a: [number, number], c: [number, number]) => {
+        if (wallBeside(a, c)) return false;
         const there = shared.get(`${edgeKey(a[0], a[1])}>${edgeKey(c[0], c[1])}`), back = shared.get(`${edgeKey(c[0], c[1])}>${edgeKey(a[0], a[1])}`);
+        // Another ring running this same edge the same way (a flush nested part, a duplicate outline): one lip, not two
+        // coplanar copings (integrator 2026-11-08, coplanar-surfaces audit w1193944788/w896771286). The higher roof
+        // keeps it; within LIP_H_M of each other neither draws it.
+        if (there && there.length > 1) {
+          const tops = there.map(o => o.top).sort((x, y) => y - x);
+          if (tops[0] > b.heightM + 1e-6 || tops[1] >= b.heightM - LIP_H_M) return false;
+        }
         if (!there?.length || !back?.length) return true;
         return Math.min(Math.max(...there.map(o => o.top)), Math.max(...back.map(o => o.top))) < b.heightM - LIP_H_M;
       };
       const coarseTier = b.flatRoof.coarse === true, outer = local[0]?.[0] ?? [], rect = fitRect(outer, 40);
-      const candidate: SurfaceCandidate = { entry: quadsByBuilding.length, areaM2: b.flatRoof.areaM2 ?? 0, coarse: coarseTier, furniture: [], lip: [], box: [] };
+      const candidate: SurfaceCandidate = { entry: quadsByBuilding.length, areaM2: b.flatRoof.areaM2 ?? 0, coarse: coarseTier, furniture: [], lip: [], box: [], boxAt: null };
       if (b.measuredRoof && outer.length && !coarseTier) {
         const sink = new ExtraSink(400); // the detector stores at most 16 items a roof (12 triangles each with the fit margin), plus a terrace
         measuredRoofFurniture(b.measuredRoof, outer[0], b.heightM, rect, sink);
@@ -710,7 +747,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       const boxRect = b.flatRoof.box && !b.measuredRoof?.furniture.length ? rect ?? fitRect(outer, Infinity) : null;
       if (boxRect) {
         const at = stairCorePoint(local[0], 1, boxRect);
-        if (at) candidate.box = roofBoxTris(at[0], at[1], boxRect.ux, boxRect.uy, BOX_L_M, BOX_W_M, b.heightM, b.heightM + BOX_H_M, BOX_HEX);
+        if (at) { candidate.box = roofBoxTris(at[0], at[1], boxRect.ux, boxRect.uy, BOX_L_M, BOX_W_M, b.heightM, b.heightM + BOX_H_M, BOX_HEX); candidate.boxAt = [at[0], at[1], b.heightM]; }
       }
       surfaceCandidates.push(candidate);
     }
@@ -729,9 +766,17 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const base = quadTotal * 2 + roofTotal + lidIndices / 3 + signTotal;
     let room = Math.floor(base * (surfaceCandidates[0].coarse ? FLAT_SURFACE_BUDGET.coarse : FLAT_SURFACE_BUDGET.detail));
     const byArea = [...surfaceCandidates].sort((a, c) => c.areaM2 - a.areaM2);
+    // One box where outlines overlap: a nested or duplicate outline at the same height puts its box on the same spot
+    // (coplanar box tops, coplanar-surfaces audit w1193944788/w896771286, integrator 2026-11-08). The larger roof keeps it.
+    const boxesPlaced: [number, number, number][] = [];
     for (const kind of ['furniture', 'box', 'lip'] as const) for (const c of byArea) {
       const tris = c[kind];
       if (!tris.length) continue;
+      if (kind === 'box' && c.boxAt) {
+        const at = c.boxAt;
+        if (boxesPlaced.some(o => Math.abs(o[2] - at[2]) < BOX_H_M && Math.hypot(o[0] - at[0], o[1] - at[1]) < BOX_L_M)) { surfaceStats.boxDropped++; continue; }
+        boxesPlaced.push(at);
+      }
       if (tris.length > room) { surfaceStats[`${kind}Dropped`]++; continue; }
       room -= tris.length; surfaceStats[kind]++;
       const e = quadsByBuilding[c.entry];

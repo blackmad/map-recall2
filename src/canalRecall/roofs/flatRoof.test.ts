@@ -88,6 +88,27 @@ test('surface layer: after the slot layers, inside the byte range; none for the 
   withSearch(OFF, () => { const { layers, total } = lookAtlasLayers('photo', true); assert.equal(total, layers + SLOT_LAYER_COUNT); });
 });
 
+test('parapet lip: a near-reversal in the ring never twists the coping (every inset end on the roof side of its edge)', () => {
+  // A long roof with a thin spike notch: the edges either side of the spike turn almost 180 degrees, where the vertex
+  // mitre falls back to one edge's normal. Before the per-edge guard the other edge's coping quad was a bow-tie, which
+  // the coplanar-surfaces audit reported at Oosterdokseiland (two 4.4 m2 triangles overlapping by 2.2 m2).
+  const ring: [number, number][] = [[0, 0], [40, 0], [40, 1.0], [20, 1.4], [40, 1.8], [40, 12], [0, 12], [0, 0]];
+  const tris = parapetLipTris([ring], 10, '#806050');
+  const tops = tris.filter(t => t.n[2] === 1);
+  assert.ok(tops.length >= 8, 'coping drawn');
+  for (const t of tops) {
+    // No two coping triangles of one edge may overlap: each triangle's three points keep one winding (no bow-tie).
+    const [a, b, c] = t.p, cr = (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);
+    assert.ok(Math.abs(cr) > 1e-6, 'non-degenerate');
+  }
+  // Pairwise: coping triangles do not overlap in plan (sample their centroids against the other triangles).
+  const inside = (q: [number, number], t: typeof tops[number]) => { const [a, b, c] = t.p; const s1 = (b[0] - a[0]) * (q[1] - a[1]) - (b[1] - a[1]) * (q[0] - a[0]), s2 = (c[0] - b[0]) * (q[1] - b[1]) - (c[1] - b[1]) * (q[0] - b[0]), s3 = (a[0] - c[0]) * (q[1] - c[1]) - (a[1] - c[1]) * (q[0] - c[0]); return (s1 > 1e-6 && s2 > 1e-6 && s3 > 1e-6) || (s1 < -1e-6 && s2 < -1e-6 && s3 < -1e-6); };
+  for (const t of tops) {
+    const c: [number, number] = [(t.p[0][0] + t.p[1][0] + t.p[2][0]) / 3, (t.p[0][1] + t.p[1][1] + t.p[2][1]) / 3];
+    assert.equal(tops.filter(o => o !== t && inside(c, o)).length, 0, `coping triangle centroid ${c} lies inside another coping triangle`);
+  }
+});
+
 test('parapet lip: coping and inner face (4 triangles an edge; 6 with the outer face), the inner edge LIP_W_M in, mitred', () => {
   const sq: [number, number][] = [[0, 0], [10, 0], [10, 10], [0, 10], [0, 0]];
   for (const ring of [sq, [...sq].reverse()]) {

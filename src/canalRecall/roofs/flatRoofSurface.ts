@@ -12,6 +12,7 @@
  * no measured furniture.
  */
 import { CELL_PX } from '../facadeCells.js';
+import { polygonArea, subtractConvex } from '../coplanarSurfaces.js';
 import { BAY_LAYER_COUNT } from '../bayLook.js';
 
 /**
@@ -136,7 +137,7 @@ export const LIP_MIN_EDGE_M = 2.5;
  */
 export function parapetLipTris(rings: ReadonlyArray<ReadonlyArray<readonly [number, number]>>, z: number, hex: string, opts: { outerCount?: number; h?: number; w?: number; exposed?: (a: V2, b: V2) => boolean; outerFace?: boolean; mergeDeg?: number; minEdgeM?: number } = {}): SurfaceTri[] {
   const { outerCount = 1, h = LIP_H_M, w = LIP_W_M, exposed, outerFace = false, mergeDeg = LIP_MERGE_DEG, minEdgeM = LIP_MIN_EDGE_M } = opts;
-  const out: SurfaceTri[] = [], cosMerge = Math.cos(mergeDeg * Math.PI / 180);
+  const out: SurfaceTri[] = [], cosMerge = Math.cos(mergeDeg * Math.PI / 180), copings: V2[][] = [];
   rings.forEach((raw, ri) => {
     let r = raw.map(p => [p[0], p[1]] as V2);
     if (r.length > 1 && r[0][0] === r[r.length - 1][0] && r[0][1] === r[r.length - 1][1]) r = r.slice(0, -1);
@@ -153,7 +154,19 @@ export function parapetLipTris(rings: ReadonlyArray<ReadonlyArray<readonly [numb
       idx.push(i);
     }
     if (idx.length < 3) return;
-    const v = idx.map(i => r[i]), keep = idx.map(i => keep0[i]), m = v.length;
+    let v = idx.map(i => r[i]), keep = idx.map(i => keep0[i]), m = v.length;
+    // Absorb jogs shorter than `minEdgeM` (a 0.1 m step in a BAG outline, a doorway recess): the short edge drew no
+    // coping, but its neighbours were mitred against it and their copings overlapped by a sliver either side of it
+    // (coplanar-surfaces audit 8413/5383, 8415/5383, integrator 2026-11-08). The short edge's end vertex goes, so the
+    // neighbour runs straight to the vertex after it; a kept short edge passes its kept flag on.
+    for (let guard = 0; guard < 64 && m >= 3; guard++) {
+      const short = v.findIndex((a, i) => { const b = v[(i + 1) % m]; return Math.hypot(b[0] - a[0], b[1] - a[1]) < minEdgeM; });
+      if (short < 0) break;
+      const next = (short + 1) % m;
+      keep[short] = keep[short] || keep[next];
+      v = v.filter((_, i) => i !== next); keep = keep.filter((_, i) => i !== next); m = v.length;
+    }
+    if (m < 3) return;
     // Toward the roof: the ring's own interior for an outer ring, away from it for a courtyard.
     const s = (ringArea2(v) > 0 ? 1 : -1) * (ri < outerCount ? 1 : -1);
     const normal = (i: number): V2 => { const a = v[i], b = v[(i + 1) % m], l = Math.hypot(b[0] - a[0], b[1] - a[1]); return [-s * (b[1] - a[1]) / l, s * (b[0] - a[0]) / l]; };
@@ -163,10 +176,31 @@ export function parapetLipTris(rings: ReadonlyArray<ReadonlyArray<readonly [numb
       const k = Math.hypot(mx, my); if (k > 3) { mx *= 3 / k; my *= 3 / k; }
       return [p[0] + mx * w, p[1] + my * w];
     });
+    // Per edge the inset end must lie on the roof side of that edge: at a near-reversal (a spike, a doubled-back
+    // ring, merged edges that turn almost 180°) the vertex mitre falls back to the next edge's normal, which is the
+    // wrong side for the edge that ends there and made the coping quad a bow-tie (two coplanar overlapping triangles;
+    // integrator 2026-11-08, coplanar-surfaces audit at Oosterdokseiland w1487642114/5). Such an end takes the plain
+    // offset along this edge's own normal instead.
+    // A coping end beside an edge that draws no coping (dropped, or a jog under `minEdgeM`) takes the plain offset
+    // too: the mitre there is cut for the missing neighbour and the two copings either side of a skipped jog
+    // overlapped by a sliver (coplanar-surfaces audit, 8413/5383).
+    const edgeLen = (i: number) => { const a = v[i], b = v[(i + 1) % m]; return Math.hypot(b[0] - a[0], b[1] - a[1]); };
+    const drawn = (i: number) => keep[i] && edgeLen(i) >= minEdgeM;
+    const insetFor = (i: number, k: number): V2 => {
+      const [nx, ny] = normal(i), q = inset[k], base = v[k], other = k === i ? (i + m - 1) % m : k;
+      const plain: V2 = [base[0] + nx * w, base[1] + ny * w];
+      if (!drawn(other)) return plain;
+      return (q[0] - base[0]) * nx + (q[1] - base[1]) * ny > 1e-6 ? q : plain;
+    };
     for (let i = 0; i < m; i++) {
       if (!keep[i]) continue;
-      const j = (i + 1) % m, [nx, ny] = normal(i), a = v[i], b = v[j], ai = inset[i], bi = inset[j];
+      const j = (i + 1) % m, [nx, ny] = normal(i), a = v[i], b = v[j], ai = insetFor(i, i), bi = insetFor(i, j);
       if (Math.hypot(b[0] - a[0], b[1] - a[1]) < minEdgeM) continue;
+      // Safety net: a coping whose top would overlap one already placed on this roof is left out (a gap beats two
+      // coplanar faces fighting). Copings are convex trapezoids, so convex subtraction measures the overlap.
+      const top: V2[] = [a, b, bi, ai];
+      if (copings.some(c => polygonArea(top) - subtractConvex(top.map(p => [p[0], p[1]] as V2), c).reduce((acc, q) => acc + polygonArea(q), 0) > 0.005)) continue;
+      copings.push(top);
       if (outerFace) quad(out, [a[0], a[1], z], [b[0], b[1], z], [b[0], b[1], z + h], [a[0], a[1], z + h], [-nx, -ny, 0], hex);
       quad(out, [a[0], a[1], z + h], [b[0], b[1], z + h], [bi[0], bi[1], z + h], [ai[0], ai[1], z + h], [0, 0, 1], hex);
       quad(out, [ai[0], ai[1], z + h], [bi[0], bi[1], z + h], [bi[0], bi[1], z], [ai[0], ai[1], z], [nx, ny, 0], hex);
