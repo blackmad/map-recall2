@@ -3,6 +3,16 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "The ground no longer depends on loading order",
+      "text": "The ground near bridges and tunnel ramps no longer changes depending on which order the cells around you loaded. Bridge decks and tunnel cuts that span two cells are now planned the same way whichever cell asks first, so a crossing never gets a second deck on top of the first and a ramp wall never moves between rides.",
+      "where": [
+        4.9515,
+        52.3655
+      ],
+      "images": []
+    },
+    {
+      "date": "2026-11-09",
       "title": "More roofs take their colour from the photo",
       "text": "Roofs on about 1,800 newer buildings, mostly small sheds and gap fills, now take their colour from the aerial photo, and about 9,800 hard-to-read flat roofs lean toward their photo colour instead of a generic grey. Low-confidence readings only tilt the flat-roof colour; they are never drawn at full measured weight.",
       "images": [
