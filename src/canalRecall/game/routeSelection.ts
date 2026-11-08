@@ -165,7 +165,8 @@ export function homeLearningRadiusKm(
   return radius;
 }
 
-function localFamiliarity(
+/** Mean mastery of the practised names within `bandKm` of `point` (0 = untouched). */
+export function localFamiliarity(
   point: { lat: number; lng: number },
   samples: readonly MasterySample[],
   bandKm = 0.6,

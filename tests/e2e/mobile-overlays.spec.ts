@@ -181,7 +181,8 @@ test('the arrival card offers tappable actions, not keys a phone does not have',
     game._render();
     return game._finishButtonBounds ?? [];
   });
-  expect(buttons.map(button => button.id)).toEqual(['again', 'route', 'copy']);
+  // In a run (G1, chained-run.spec.ts) End run shares the primary row.
+  expect(buttons.map(button => button.id).filter(id => id !== 'end')).toEqual(['again', 'route', 'copy']);
   const viewport = await page.evaluate(() => window.canalRecallGame.viewport);
   for (const button of buttons) {
     expect(button.h, `${button.id} is a real touch target`).toBeGreaterThanOrEqual(44);

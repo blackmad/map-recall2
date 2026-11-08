@@ -1300,7 +1300,9 @@ class GameRouteRuntime {
     const replay = () => { this._setupRace(); this.state = GameState.RACING; this._beginIntro(); };
     if (!from || this.travelMode === 'transit') { replay(); return; }
     this._reviewRoute = this._pickReviewRide(this.routePois, from);
-    const dest = this._reviewRoute ? this._reviewRoute.to : this._pickDestinationNear(from, this.routeFrom ? this.routeFrom.id : null);
+    // In a run (chainedRunRuntime.ts) the next stop is dealt 1–3 km on; null outside one.
+    const runStop = !this._reviewRoute && typeof this._pickRunNextStop === 'function' ? this._pickRunNextStop(from) : null;
+    const dest = this._reviewRoute ? this._reviewRoute.to : runStop || this._pickDestinationNear(from, this.routeFrom ? this.routeFrom.id : null);
     if (!dest) { replay(); return; }
     this._launchPoiRoute(from, dest);
   }

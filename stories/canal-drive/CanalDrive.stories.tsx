@@ -33,6 +33,7 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // Every optional block at once: photo, ribbon, first-time gains, guest
   // tease and a personal best (user report 2026-10-02: ran off the screen).
   | 'finish-full' | 'finish-full-touch'
+  | 'finish-run' | 'finish-run-touch' | 'finish-run-card' | 'finish-run-card-touch' | 'finish-run-card-calm' | 'finish-run-card-calm-touch'
   | 'landmark-panel-touch'
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch' | 'neighborhood-touch'
   // Aboard a cycling IJ ferry: the departure/destination notice under the plaque.
@@ -318,6 +319,32 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
             game._explorationRouteGain = { newNames: 2, newNeighborhoods: 0, newLandmarks: 1 };
             game._raceKey = 'story-full';
             win.localStorage.setItem('satb_bestTimes', JSON.stringify({ 'story-full': { time: 200 } }));
+          }
+          // The single-ride states keep today's card (as `?run=0`); the run states opt in.
+          game._runsOff = !scenario.startsWith('finish-run');
+          if (scenario.startsWith('finish-run')) {
+            // Chained stops (G1): two stops already in the open run, so this
+            // arrival is the third; the run-card states then end the run.
+            const now = Date.now();
+            const stop = (id: string, name: string, points: number, bonus: number, names: string[], at: number) => ({
+              id, name, basePoints: points, points: Math.round(points * (1 + bonus)), bonus, bestStreak: 2, names, at,
+            });
+            const stops = [
+              stop('westerkerk', 'Westerkerk', 240, 0, ['Prinsengracht', 'Bloemgracht'], now - 900_000),
+              stop('rijks', 'Rijksmuseum', 180, 0.05, ['Spiegelgracht', 'Nieuwe Spiegelstraat'], now - 300_000),
+            ];
+            win.localStorage.setItem('canalRecall.openRun.v1', JSON.stringify({
+              version: 1, startedAt: now - 1_200_000, lastActiveAt: now - 60_000, startName: 'Noordermarkt',
+              stopCount: 2, totalPoints: 240 + 189, bestStreak: 2,
+              names: ['Prinsengracht', 'Bloemgracht', 'Spiegelgracht', 'Nieuwe Spiegelstraat'], stops,
+            }));
+            Object.assign(game, { _runLoaded: false, _run: null, _runCard: null, _runRecordedKey: '' });
+            game.routeFrom = { id: 'rijks', name: 'Rijksmuseum' };
+            game._rideNamedNames = ['Vondelstraat'];
+            if (scenario.startsWith('finish-run-card')) {
+              game._recordRunStop();
+              game._endRunFromCard();
+            }
           }
           game.landmarks = [{
             id: 'theater', name: 'Vondelpark Open Air Theater', type: 'landmark',
@@ -697,6 +724,15 @@ export const FinishCardBikePhone: Story = {
   globals: phone,
 };
 export const FinishCardTransit: Story = { args: { scenario: 'finish-transit' } };
+/** Chained stops (G1): the third stop of a run, with the run line and End run. */
+export const FinishCardRun: Story = { args: { scenario: 'finish-run' } };
+export const FinishCardRunPhone: Story = { args: { scenario: 'finish-run-touch' }, globals: phone };
+/** The run card after End run: three stamped stops, total, best streak, names, story. */
+export const RunCard: Story = { args: { scenario: 'finish-run-card' } };
+export const RunCardPhone: Story = { args: { scenario: 'finish-run-card-touch' }, globals: phone };
+/** Calm mode: no points, no chain bonus. */
+export const RunCardCalm: Story = { args: { scenario: 'finish-run-card-calm' } };
+export const RunCardCalmPhone: Story = { args: { scenario: 'finish-run-card-calm-touch' }, globals: phone };
 export const FinishCardTransitPhone: Story = {
   args: { scenario: 'finish-transit-touch' },
   globals: phone,
