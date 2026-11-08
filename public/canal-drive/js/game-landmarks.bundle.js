@@ -6326,9 +6326,11 @@ ${register}` : detail,
   function mayAskLandmark(slot) {
     return !slot.questionOpen && !slot.streetCandidate && !slot.feedbackVisible && !slot.utilityOpen;
   }
+  var LANDMARK_QUESTIONS_DEFAULT_ON = false;
   function landmarkQuestionsEnabled(search2, mode) {
     const flag = /[?&]landmarkQuestions=([^&]*)/.exec(search2 || "");
     if (flag && (flag[1] === "0" || flag[1] === "false" || flag[1] === "off")) return false;
+    if (!LANDMARK_QUESTIONS_DEFAULT_ON && !(flag && (flag[1] === "1" || flag[1] === "true" || flag[1] === "on"))) return false;
     return mode.freeRide ? mode.freeRideQuiz : true;
   }
   var LANDMARK_SIGHTINGS_KEY = "canalRecall.landmarkSightings.v1";

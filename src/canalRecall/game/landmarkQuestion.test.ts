@@ -73,10 +73,14 @@ test('one-card rule: only into an empty slot', () => {
 });
 
 test('flag and Free Ride opt-in', () => {
-  assert.equal(landmarkQuestionsEnabled('', { freeRide: false, freeRideQuiz: false }), true);
+  // Off by default (hotfix #281) until L1 withholds a candidate's label during the approach.
+  assert.equal(landmarkQuestionsEnabled('', { freeRide: false, freeRideQuiz: false }), false);
+  assert.equal(landmarkQuestionsEnabled('', { freeRide: true, freeRideQuiz: true }), false);
+  assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=1', { freeRide: false, freeRideQuiz: false }), true);
+  assert.equal(landmarkQuestionsEnabled('?a=1&landmarkQuestions=1&landmarkQuestions=0', { freeRide: false, freeRideQuiz: false }), true);
   assert.equal(landmarkQuestionsEnabled('?a=1&landmarkQuestions=0', { freeRide: false, freeRideQuiz: false }), false);
-  assert.equal(landmarkQuestionsEnabled('', { freeRide: true, freeRideQuiz: false }), false);
-  assert.equal(landmarkQuestionsEnabled('', { freeRide: true, freeRideQuiz: true }), true);
+  assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=1', { freeRide: true, freeRideQuiz: false }), false);
+  assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=1', { freeRide: true, freeRideQuiz: true }), true);
   assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=0', { freeRide: true, freeRideQuiz: true }), false);
 });
 

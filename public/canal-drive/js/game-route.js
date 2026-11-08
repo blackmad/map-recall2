@@ -1347,6 +1347,16 @@ class GameRouteRuntime {
     history.replaceState(null, '', window.location.pathname);
   }
 
+  /** Remove `?ride=` from the address once the landing card's ride has started, without a navigation. */
+  _dropRideParam() {
+    try {
+      const url = new URL(window.location.href);
+      if (!url.searchParams.has('ride')) return;
+      url.searchParams.delete('ride');
+      window.history.replaceState(window.history.state, '', url.toString());
+    } catch {}
+  }
+
   _checkShareLink() {
     // `?tour=<id>` (the landing page's tour links) picks the tour and starts it.
     const tourParam = new URLSearchParams(window.location.search).get('tour');
@@ -1364,7 +1374,18 @@ class GameRouteRuntime {
     // today's pair (routeSelection.dailyRidePair, the same for everyone on an Amsterdam date) and
     // `?ride=review` is a surprise ride with Plan review on, which passes the names due (pickReviewRoute).
     const landingRide = new URLSearchParams(window.location.search).get('ride');
+    // A reload inside a run resumes the dealt leg before any landing card re-runs (#280: `?ride=daily`
+    // stayed in the URL and restarted Today's ride, counting its stop twice); the param is dropped
+    // once the ride has started, so a later reload is a plain reload.
+    const openRunLeg = landingRide && typeof this._runResumeLeg === 'function' && !window.location.hash.startsWith('#race=') ? this._runResumeLeg() : null;
+    if (openRunLeg) {
+      this._dropRideParam();
+      this._overlay.store.setSetupOpen(false);
+      this._launchPoiRoute(openRunLeg.from, openRunLeg.to, { explicitDestination: true });
+      return;
+    }
     if ((landingRide === 'daily' || landingRide === 'review') && !window.location.hash.startsWith('#race=')) {
+      this._dropRideParam();
       const session = window.__canalRecallSession = window.__canalRecallSession || {};
       session.landingCardChosen = landingRide;
       const Route = window.CanalRecallRoute;

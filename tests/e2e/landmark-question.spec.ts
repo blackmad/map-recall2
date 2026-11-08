@@ -5,7 +5,8 @@ import { openRoute } from './helpers';
 // "Which building is this?" with four names from the same buurt; no HUD
 // surface names it while the question is open; a right answer fires the
 // passport's `named` stamp, which nothing fired before. The drive-by card that
-// follows offers "Noticed". `?landmarkQuestions=0` keeps drive-by cards only.
+// follows offers "Noticed". Off by default since the 2026-11-09 hotfix (#281): the specs opt in with
+// `?landmarkQuestions=1`; `?landmarkQuestions=0` keeps drive-by cards only.
 
 const SHOTS = process.env.G3_SHOTS_DIR || '';
 
@@ -78,7 +79,7 @@ async function approachWesterkerk(page: Page, extra: { streetOpen?: boolean } = 
 test('a ride past the Westerkerk asks its name, hides it, and stamps it named', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop', 'question logic; the phone layout is the Storybook state');
   test.setTimeout(180000);
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?landmarkQuestions=1' });
 
   // One-card rule first: with a street question open nothing new is asked.
   const blocked = await approachWesterkerk(page, { streetOpen: true });
@@ -154,7 +155,7 @@ test('a ride past the Westerkerk asks its name, hides it, and stamps it named', 
 test('a drive-by card offers Noticed, and one tap counts the landmark', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'desktop', 'one project is enough');
   test.setTimeout(180000);
-  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?landmarkQuestions=1' });
   const bounds = await page.evaluate(() => {
     const game = (window as any).canalRecallGame;
     const landmark = game.landmarks.find((l: any) => l.name === 'Westerkerk');
