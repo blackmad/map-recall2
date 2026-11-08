@@ -22,7 +22,7 @@
 //               { type: 'error', key?, gen?, message }
 
 import { GroundStore, maybeGunzip, type FetchBytes } from './groundStore.js';
-import { WorkerTrace } from './workerTrace.js';
+import { WorkerTrace, phaseSplit, type PhaseEvent } from './workerTrace.js';
 import { ShareHost, shareClient, type ShareRequest, type SharePort } from './groundShare.js';
 import { buildCell, cellTransferables, type CellDetail } from './groundCell.js';
 import { buildFarBlock, farColours, farTransferables, type FarColours } from './farRing.js';
@@ -33,7 +33,7 @@ import { cellTileGrid, layerTiles, tileTransferables } from './cellTiles.js';
 import { cellGpuTransferables, compactCell, compactFar, farGpuTransferables } from './compactMesh.js';
 
 type In =
-  | { type: 'init'; root: string; /** Lane R5-A #260 step 1: this worker's index and the page's performance.timeOrigin (the trace's clock). */ index?: number; pageOrigin?: number; /** false: `?portalClip=0` (tunnels.ts clipMeshAtCuts). */ portalClip?: boolean; /** false: `?portalEnds=0` (tunnels.ts PortalClipOptions.ends, #269). */ portalEnds?: boolean; /** false: `?rampGaps=0` (tunnels.ts bridgeBankGaps, #270). */ rampGaps?: boolean; /** false: `?roadSlivers=0` (roads-v1 version-2 cells). */ roadSlivers?: boolean; parks?: boolean; rails?: boolean; /** false: `?railRetry=0` (groundResidency.ts). */ railRetry?: boolean; /** The main thread's rail manifest keys (one source of truth, #232). */ railManifest?: string[]; /** false: no far rail corridors (`?farRail=0`). */ farRails?: boolean; /** false: far rail bands at their bends only (`?farRailDrape=0`, #232). */ farRailDrape?: boolean; roads?: boolean; /** false: the pre-fix bridge decks (gameGround bridgeGapsFlag, issue #178). */ bridgeGaps?: boolean; /** false: `?bridgeCarry=0` / `?redDedupe=0` (lane R5-C1). */ bridgeCarry?: boolean; redDedupe?: boolean; /** true: bridgeGaps step 3, dry way decks (gameGround dryWayDecksFlag). */ dryWayDecks?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; tiles?: number; /** Tiles per side for a LOD 0, full-detail cell (cellTiles.ts cellTileGrid). */ nearTiles?: number; tileMin?: number; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null; /** Lane R5-A #260 step 3: fetch through the share host (groundShare.ts); absent: `?groundShare=0` or one worker. */ sharePort?: MessagePort }
+  | { type: 'init'; root: string; /** Lane R5-A #260 step 1: this worker's index and the page's performance.timeOrigin (the trace's clock). */ index?: number; pageOrigin?: number; /** false: `?portalClip=0` (tunnels.ts clipMeshAtCuts). */ portalClip?: boolean; /** false: `?portalEnds=0` (tunnels.ts PortalClipOptions.ends, #269). */ portalEnds?: boolean; /** false: `?rampGaps=0` (tunnels.ts bridgeBankGaps, #270). */ rampGaps?: boolean; /** false: `?roadSlivers=0` (roads-v1 version-2 cells). */ roadSlivers?: boolean; parks?: boolean; rails?: boolean; /** false: `?railRetry=0` (groundResidency.ts). */ railRetry?: boolean; /** The main thread's rail manifest keys (one source of truth, #232). */ railManifest?: string[]; /** false: no far rail corridors (`?farRail=0`). */ farRails?: boolean; /** false: far rail bands at their bends only (`?farRailDrape=0`, #232). */ farRailDrape?: boolean; roads?: boolean; /** false: the pre-fix bridge decks (gameGround bridgeGapsFlag, issue #178). */ bridgeGaps?: boolean; /** false: `?bridgeCarry=0` / `?redDedupe=0` (lane R5-C1). */ bridgeCarry?: boolean; redDedupe?: boolean; /** true: bridgeGaps step 3, dry way decks (gameGround dryWayDecksFlag). */ dryWayDecks?: boolean; groundLook?: GroundLook; compact?: boolean; detail?: CellDetail; tiles?: number; /** Tiles per side for a LOD 0, full-detail cell (cellTiles.ts cellTileGrid). */ nearTiles?: number; tileMin?: number; /** The road look under review (gameGround roadLookFlag), for the kerb shadows' ramp ends. */ roadLook?: string | null; /** false: `?groundPlanShare=0` (groundStore.ts bandedWaterTest, lane R5-A #260 step 4). */ planShare?: boolean; /** Lane R5-A #260 step 3: fetch through the share host (groundShare.ts); absent: `?groundShare=0` or one worker. */ sharePort?: MessagePort }
   | { type: 'share-host'; root: string; ports: MessagePort[]; capMB?: number }
   | { type: 'build'; key: string; lod: 0 | 1; gen: number; detail?: CellDetail }
   | { type: 'far'; key: string; gen: number }
@@ -60,6 +60,8 @@ let initAt = 0;
 let index = 0, clockOffset = 0;
 let trace = new WorkerTrace();
 const pageNow = (): number => performance.now() + clockOffset;
+/** Lane R5-A #260 step 4: the store's data-in phases since the last job ended (GroundStore.phaseHook), drained per job. */
+const phaseEvents: PhaseEvent[] = [];
 
 /** httpFetchBytes, logged: each file's request → body → gunzipped, and its wait for a connection (resource timing). */
 function tracedFetchBytes(root: string): FetchBytes {
@@ -124,7 +126,7 @@ async function pump(s: GroundStore): Promise<void> {
           trace.job({ kind: 'cell', key: job.key, start: t0 + clockOffset, inputEnd: t1 + clockOffset, end: t3 + clockOffset });
           // Where a cell's time goes (lane R5-A #260): queued in the worker, data in (fetch + decode), build, tiles; step 1
           // adds the worker, its queue, what ran ahead of the cell on it, and the data-in's network/CPU split (workerTrace.ts).
-          const timing = { waitMs: asked == null ? null : Math.round(t0 - asked), inputMs: Math.round(t1 - t0), buildMs: Math.round(t2 - t1), tileMs: Math.round(t3 - t2),
+          const timing = { phases: phaseSplit(phaseEvents.splice(0), built.stats?.phases), waitMs: asked == null ? null : Math.round(t0 - asked), inputMs: Math.round(t1 - t0), buildMs: Math.round(t2 - t1), tileMs: Math.round(t3 - t2),
             worker: index, queuedBehind: queued, askedAt: asked == null ? null : Math.round(asked + clockOffset), startAt: Math.round(t0 + clockOffset),
             ahead: asked == null ? null : trace.ahead(asked + clockOffset, t0 + clockOffset), fetch: trace.fetchSplit(t0 + clockOffset, t1 + clockOffset) };
           ctx.postMessage({ type: 'cell', gen: job.gen, cell, railFetch: s.railOutcomes.get(job.key) ?? 'unasked', timing }, [...(compact ? cellGpuTransferables(cell) : cellTransferables(cell)), ...tileTransferables(cell.tiles)]);
@@ -136,6 +138,7 @@ async function pump(s: GroundStore): Promise<void> {
           const f0 = performance.now();
           const input = await s.farInput(job.key);
           const f1 = performance.now();
+          phaseEvents.length = 0;
           const built = input ? buildFarBlock(input, colours) : null, far = built && compact ? compactFar(built) : built;
           trace.job({ kind: 'far', key: job.key, start: f0 + clockOffset, inputEnd: f1 + clockOffset, end: performance.now() + clockOffset });
           ctx.postMessage({ type: 'far', gen: job.gen, key: job.key, far }, far ? (compact ? farGpuTransferables(far) : farTransferables(far)) : []);
@@ -162,7 +165,8 @@ ctx.onmessage = event => {
     if (typeof msg.pageOrigin === 'number') clockOffset = performance.timeOrigin - msg.pageOrigin;
     initAt = performance.now();
     trace = new WorkerTrace(initAt + clockOffset);
-    store = new GroundStore(msg.sharePort ? sharedFetchBytes(msg.sharePort as unknown as SharePort) : tracedFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true, rails: msg.rails !== false, ...(msg.railRetry === false ? { railRetry: false } : {}), ...(Array.isArray(msg.railManifest) ? { railManifest: msg.railManifest } : {}), ...(msg.farRails === false ? { farRails: false } : {}), ...(msg.farRailDrape === false ? { farRailDrape: false } : {}), ...(msg.bridgeGaps === false ? { bridgeGaps: false } : {}), ...(msg.dryWayDecks === true ? { dryWayDecks: true } : {}) , ...(msg.bridgeCarry === false ? { bridgeCarry: false } : {}), ...(msg.redDedupe === false ? { redDedupe: false } : {}), ...(msg.portalClip === false ? { portalClip: false } : {}), ...(msg.portalEnds === false ? { portalEnds: false } : {}), ...(msg.rampGaps === false ? { rampGaps: false } : {}), ...(msg.roadSlivers === false ? { roadSlivers: false } : {}) });
+    store = new GroundStore(msg.sharePort ? sharedFetchBytes(msg.sharePort as unknown as SharePort) : tracedFetchBytes(msg.root), { parks: msg.parks !== false, roads: msg.roads === true, rails: msg.rails !== false, ...(msg.railRetry === false ? { railRetry: false } : {}), ...(Array.isArray(msg.railManifest) ? { railManifest: msg.railManifest } : {}), ...(msg.farRails === false ? { farRails: false } : {}), ...(msg.farRailDrape === false ? { farRailDrape: false } : {}), ...(msg.bridgeGaps === false ? { bridgeGaps: false } : {}), ...(msg.dryWayDecks === true ? { dryWayDecks: true } : {}) , ...(msg.bridgeCarry === false ? { bridgeCarry: false } : {}), ...(msg.redDedupe === false ? { redDedupe: false } : {}), ...(msg.portalClip === false ? { portalClip: false } : {}), ...(msg.portalEnds === false ? { portalEnds: false } : {}), ...(msg.rampGaps === false ? { rampGaps: false } : {}), ...(msg.roadSlivers === false ? { roadSlivers: false } : {}), ...(msg.planShare === false ? { planShare: false } : {}) });
+    store.phaseHook = (phase, key, ms) => { phaseEvents.push([phase, key, ms]); };
     compact = msg.compact === true;
     detail = msg.detail === 'touch' ? 'touch' : 'full';
     tiles = Math.max(0, Math.floor(msg.tiles ?? 0)); nearTiles = Math.max(0, Math.floor(msg.nearTiles ?? 0)); tileMin = Math.max(0, msg.tileMin ?? 0);
