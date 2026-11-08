@@ -1721,6 +1721,29 @@
     return mode === "boat";
   }
 
+  // src/canalRecall/labels/pillText.ts
+  var PILL_MAX_CHARS = 36;
+  var PILL_MAX_PX = 420;
+  var ELLIPSIS = "\u2026";
+  function fitPillText(name, opts = {}) {
+    const maxChars = opts.maxChars ?? PILL_MAX_CHARS;
+    const maxPx = opts.maxPx ?? PILL_MAX_PX;
+    const fits = (s) => s.length <= maxChars && (!opts.measure || opts.measure(s) <= maxPx);
+    const text = name.trim().replace(/\s+/g, " ");
+    if (fits(text)) return text;
+    const words2 = text.split(" ");
+    let best = "";
+    for (let i = 1; i <= words2.length; i++) {
+      const head = words2.slice(0, i).join(" ").replace(/[\s,;:–—-]+$/, "");
+      if (!fits(head + ELLIPSIS)) break;
+      best = head;
+    }
+    if (best) return best + ELLIPSIS;
+    let cut = text.slice(0, Math.max(1, maxChars - 1));
+    while (cut.length > 1 && !fits(cut + ELLIPSIS)) cut = cut.slice(0, -1);
+    return cut + ELLIPSIS;
+  }
+
   // src/canalRecall/labels/labelDedupe.ts
   var SIMILAR_NAME_NEAR_M = 60;
   var SAME_NAME_NEAR_M = 600;
@@ -1992,7 +2015,7 @@
   var FREE_RIDE_MAX_BRIDGE_MARKERS = 2;
   var FREE_RIDE_REFRESH_SECONDS = 0.4;
   var FREE_RIDE_LABEL_REACH_M = 450;
-  var FREE_RIDE_LABEL_MAX_CHARS = 26;
+  var FREE_RIDE_LABEL_MAX_CHARS = PILL_MAX_CHARS;
   function nearbyPlaces(rider, places, {
     radiusPx,
     bridgeRadiusPx = radiusPx,
@@ -2054,12 +2077,8 @@
     }
     return null;
   }
-  function markerLabel(name, maxChars = FREE_RIDE_LABEL_MAX_CHARS) {
-    const text = name.trim().replace(/\s+/g, " ");
-    if (text.length <= maxChars) return text;
-    const cut = text.slice(0, maxChars - 1);
-    const space = cut.lastIndexOf(" ");
-    return `${(space > maxChars * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,;:–-]+$/, "")}\u2026`;
+  function markerLabel(name, maxChars = FREE_RIDE_LABEL_MAX_CHARS, measure) {
+    return fitPillText(name, { maxChars, measure });
   }
   function freeRideTallyKey(opened) {
     if (opened <= 0) return { key: "freeRide.tallyNone", count: 0 };
@@ -2434,7 +2453,7 @@
       const requests = [];
       for (const place of nearby || []) {
         const at = this.camera.worldToScreen(place.x, place.y);
-        const label = markerLabel(place.name);
+        const label = markerLabel(place.name, void 0, (text) => ctx.measureText(text).width);
         const width = Math.ceil(ctx.measureText(label).width) + height + 8;
         requests.push({ key: place.key, kind: place.kind, label, anchorX: at.x, anchorY: at.y, width, height });
         last.set(place.key, { x: place.x, y: place.y, label, kind: place.kind, width, height });
