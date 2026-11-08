@@ -14,6 +14,7 @@ import {
 } from '../knowledgeMap.ts';
 import { knowledgeMapGeometryNow, loadKnowledgeMapGeometry } from '../knowledgeMapGeometry.ts';
 import { noteSession } from '../stampAlbumSession.ts';
+import { useT } from '../../i18n/useT.ts';
 
 export interface KnowledgeMapSelection {
   name: string;
@@ -36,7 +37,7 @@ export function KnowledgeMap({
   geometry,
   selected,
   onSelect,
-  title = 'Knowledge map',
+  title,
 }: {
   items: readonly KnowledgeItem[];
   geometry: KnowledgeMapGeometry | null;
@@ -44,6 +45,7 @@ export function KnowledgeMap({
   onSelect: (selection: KnowledgeMapSelection | null) => void;
   title?: string;
 }) {
+  const t = useT();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const frameRef = useRef<HTMLDivElement | null>(null);
   const projectionRef = useRef<MapProjection | null>(null);
@@ -102,8 +104,8 @@ export function KnowledgeMap({
   return (
     <section className="kmap-panel" aria-labelledby="kmap-title">
       <div className="kmap-head">
-        <h2 id="kmap-title">{title}</h2>
-        <p>Tap a buurt to filter</p>
+        <h2 id="kmap-title">{title ?? t('kmap.title')}</h2>
+        <p>{t('kmap.tapHint')}</p>
       </div>
       <div
         className="kmap-frame"
@@ -115,22 +117,24 @@ export function KnowledgeMap({
         <canvas
           ref={canvasRef}
           role="img"
-          aria-label={`Map of Amsterdam by buurt: ${counts.mastered} mastered, ${counts.known} known, ${counts.learning} learning`}
+          aria-label={t('kmap.aria', { mastered: counts.mastered, known: counts.known, learning: counts.learning })}
           onClick={onTap}
         />
-        {!geometry && <div className="kmap-loading">Map loading</div>}
+        {!geometry && <div className="kmap-loading">{t('kmap.loading')}</div>}
       </div>
-      <ul className="kmap-legend" aria-label="Map key">
-        <li><i style={{ background: c.mastered }} data-band="mastered" />Mastered <b>{counts.mastered}</b></li>
-        <li><i style={{ background: c.known }} data-band="known" />Known <b>{counts.known}</b></li>
-        <li><i style={{ background: c.learning }} data-band="learning" />Learning <b>{counts.learning}</b></li>
-        <li><i style={{ background: c.fog }} data-band="fog" />Not yet ridden</li>
-        <li><i data-band="due" />Names due <b>{dueBuurts}</b></li>
+      <ul className="kmap-legend" aria-label={t('knowledge.mapKey')}>
+        {/* The bands count buurts, not names: the list below counts names. */}
+        <li className="kmap-legend-unit">{t('kmap.legendUnit')}</li>
+        <li><i style={{ background: c.mastered }} data-band="mastered" />{t('kmap.mastered')} <b>{counts.mastered}</b></li>
+        <li><i style={{ background: c.known }} data-band="known" />{t('kmap.known')} <b>{counts.known}</b></li>
+        <li><i style={{ background: c.learning }} data-band="learning" />{t('kmap.learning')} <b>{counts.learning}</b></li>
+        <li><i style={{ background: c.fog }} data-band="fog" />{t('kmap.fog')}</li>
+        <li><i data-band="due" />{t('kmap.due')} <b>{dueBuurts}</b></li>
       </ul>
       {selected && (
         <div className="kmap-filter" role="status">
-          <span>{selected.name} · {selectedEntry?.tracked ?? 0} {(selectedEntry?.tracked ?? 0) === 1 ? 'name' : 'names'}</span>
-          <button type="button" onClick={() => onSelect(null)}>Whole city</button>
+          <span>{t((selectedEntry?.tracked ?? 0) === 1 ? 'kmap.filter.one' : 'kmap.filter.other', { name: selected.name, count: selectedEntry?.tracked ?? 0 })}</span>
+          <button type="button" onClick={() => onSelect(null)}>{t('kmap.wholeCity')}</button>
         </div>
       )}
     </section>

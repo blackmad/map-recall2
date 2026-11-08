@@ -98,10 +98,11 @@ export function buildStampAlbum(buurtNames: readonly string[], sources: StampSou
   return { stamps, earned, total: stamps.length };
 }
 
-/** "8 Nov 2026" in the plaque voice; empty for an undated stamp. */
-export function stampDateLabel(date: string | null): string {
+/** "8 Nov 2026" (English) or "8 nov 2026" (Dutch); empty for an undated stamp. */
+export function stampDateLabel(date: string | null, language: string = 'en'): string {
   if (!date || !DAY.test(date)) return '';
   const [y, m, d] = date.slice(0, 10).split('-').map(Number);
-  const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][m - 1] || '';
-  return `${d} ${month} ${y}`;
+  return new Intl.DateTimeFormat(language === 'nl' ? 'nl-NL' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+    .format(Date.UTC(y, m - 1, d))
+    .replace('.', '');
 }

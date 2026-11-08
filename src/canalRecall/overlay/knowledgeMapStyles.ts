@@ -21,6 +21,7 @@ export const KNOWLEDGE_MAP_CSS = `
 .kmap-loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--day-ink-muted, #6d655a); font: 600 12px/1 var(--font-mono, "JetBrains Mono", monospace); letter-spacing: .08em; text-transform: uppercase; }
 .kmap-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0; padding: 0; list-style: none; color: var(--ink, #1f1c17); font: 600 12px/1.2 system-ui, sans-serif; }
 .kmap-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.kmap-legend .kmap-legend-unit { color: var(--day-ink-muted, #6d655a); font: 700 12px/1.2 var(--font-plaque, "Barlow Condensed", system-ui, sans-serif); letter-spacing: .08em; text-transform: uppercase; }
 .kmap-legend i { width: 14px; height: 10px; border-radius: 2px; box-shadow: inset 0 0 0 1px rgba(31,28,23,.22); }
 .kmap-legend i[data-band="due"] { box-shadow: none; border: 1.5px dashed #b4682c; background: transparent; }
 .kmap-legend b { font-variant-numeric: tabular-nums; color: var(--day-ink-muted, #6d655a); font-weight: 600; }

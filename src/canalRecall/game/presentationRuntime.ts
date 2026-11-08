@@ -1732,7 +1732,7 @@ export class GamePresentationRuntime {
               width: innerW,
               fontMono: window.CanalRecallUi.hudSurface.fontMono,
               more: passportFresh.length - 1,
-              tally: held ? `${held} ${held === 1 ? 'stamp' : 'stamps'} in the passport` : '',
+              held,
             });
           } });
         }

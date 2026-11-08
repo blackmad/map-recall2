@@ -6,6 +6,7 @@
 
 import { drawPlainStamp } from './stampAlbumPlain.ts';
 import { stampArtNow } from './stampArtLoader.ts';
+import { t } from '../i18n/index.ts';
 
 export const ARRIVAL_STAMP_HEIGHT = 64;
 
@@ -44,8 +45,8 @@ export interface ArrivalStampInput {
   fontMono: string;
   /** "+2 more" when one arrival stamped several buurts. */
   more?: number;
-  /** "4 of 89 stamps", when the album size is known. */
-  tally?: string;
+  /** Stamps now held, for "3 stamps in the passport"; 0 omits the line. */
+  held?: number;
 }
 
 /** Draw the stamp row; returns its height. */
@@ -71,11 +72,12 @@ export function drawArrivalStamp(ctx: CanvasRenderingContext2D, input: ArrivalSt
   ctx.textBaseline = 'alphabetic';
   ctx.fillStyle = '#b4682c';
   ctx.font = `700 11px ${input.fontMono}`;
-  ctx.fillText(input.isNew ? 'NEW PASSPORT STAMP' : 'PASSPORT STAMP', textX, y + 18, room);
+  ctx.fillText(t(input.isNew ? 'stamps.cardLabel' : 'stamps.cardLabelAgain'), textX, y + 18, room);
   ctx.fillStyle = '#1f1c17';
   ctx.font = '700 19px "Barlow Condensed", system-ui, sans-serif';
   ctx.fillText(input.name, textX, y + 40, room);
-  const foot = [input.tally, input.more ? `+${input.more} more` : ''].filter(Boolean).join('  ·  ');
+  const held = input.held ? t(input.held === 1 ? 'stamps.held.one' : 'stamps.held.other', { count: input.held }) : '';
+  const foot = [held, input.more ? t('stamps.more', { count: input.more }) : ''].filter(Boolean).join('  ·  ');
   if (foot) {
     ctx.fillStyle = '#6d655a';
     ctx.font = '600 12px system-ui, sans-serif';
