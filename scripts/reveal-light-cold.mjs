@@ -68,12 +68,32 @@ async function run() {
         gFade: (() => { const g = vm._ownGround; const gg = g?.game ?? g?.ground ?? g?._game ?? g; return gg?.fading?.size ?? null; })(),
       };
     };
+    // Landmark tier decisions (#268): every first load, level load and level swap of the signature landmarks, with the
+    // camera pose the picker read (zoom/pitch/centre) and the game state, timestamped (performance.now()).
+    R.lod = [];
+    let sigHooked = false;
+    const hookSig = vm => {
+      const sig = vm?._signatureLandmarks;
+      if (sigHooked || !sig || typeof sig._swapLevel !== 'function') return;
+      sigHooked = true;
+      const pose = () => { try { const c = sig.camera, ce = c.center(); return [+c.zoom().toFixed(3), +c.pitch().toFixed(1), +ce.lng.toFixed(5), +ce.lat.toFixed(5)]; } catch (_) { return null; } };
+      const st = () => window.canalRecallGame?.state ?? null;
+      const wrap = (name, rec) => { const f = sig[name]; sig[name] = function (...a) { const out = f.apply(this, a); try { const e = rec(a, out); if (e) R.lod.push({ t: Math.round(performance.now()), ev: name, state: st(), pose: pose(), ...e }); } catch (_) { /* */ } return out; }; };
+      wrap('_startLevel', ([spec], level) => ({ id: spec.id, level }));
+      let lastSusp = null;
+      wrap('setSuspended', ([v]) => { if (v === lastSusp) return null; lastSusp = v; return { id: 'suspended', level: String(v) }; });
+      const lr = sig._logRequest; sig._logRequest = function (spec) { R.lod.push({ t: Math.round(performance.now()), ev: 'request', state: st(), pose: pose(), id: spec.id }); return lr.call(this, spec); };
+      wrap('_loadLevel', ([entry, level]) => ({ id: entry.spec.id, from: entry.level, level, r: Math.round(entry.radiusMetres) }));
+      const sw = sig._swapLevel; sig._swapLevel = function (entry, incoming, level) { const from = entry.level; const out = sw.call(this, entry, incoming, level); R.lod.push({ t: Math.round(performance.now()), ev: '_swapLevel', state: st(), pose: pose(), id: entry.spec.id, from, level }); return out; };
+      wrap('_add', ([spec, , , url, level]) => ({ id: spec.id, level: level ?? 'full', url: String(url).split('/').pop() }));
+    };
     const hook = () => {
       const g = window.canalRecallGame, vm = g?.vectorMap;
+      hookSig(vm);
       if (hooked || !vm?.cameraMap || typeof vm.frameCanvas !== 'function') return;
       hooked = true;
       vm.cameraMap.on('render', () => {
-        const gg = window.canalRecallGame; const now = performance.now();
+        hookSig(vm); const gg = window.canalRecallGame; const now = performance.now();
         const src = vm.frameCanvas(); if (!src?.width) return;
         if (!gg || gg.state !== 4) {
           // The last covered frame (the world behind the loading screen): its pixels are the baseline for the reveal.
@@ -107,7 +127,7 @@ async function run() {
         prev = d;
       });
     };
-    const iv = setInterval(() => { hook(); if (hooked) clearInterval(iv); }, 20);
+    const iv = setInterval(() => { hook(); if (hooked && sigHooked) clearInterval(iv); }, 20);
   }, [windowMs, !!process.env.STILLS_DIR]);
   const t0 = Date.now();
   await page.goto(`${origin}${pagePath}${qs}`, { waitUntil: 'load' });
@@ -116,7 +136,7 @@ async function run() {
   await page.waitForFunction(() => window.canalRecallGame?.state === 4, null, { timeout: 180_000, polling: 50 });
   const navToRace = await page.evaluate(() => Math.round(performance.now()));
   await page.waitForTimeout(windowMs + 700);
-  const R = await page.evaluate(() => ({ frames: window.__reveal.frames, keep: window.__reveal.keep, covered: window.__reveal.covered }));
+  const R = await page.evaluate(() => ({ frames: window.__reveal.frames, keep: window.__reveal.keep, covered: window.__reveal.covered, lod: window.__reveal.lod, handover: window.canalRecallGame?.vectorMap?.revealHandover ?? null }));
   await context.close();
   const fr = R.frames;
   const revealPop = fr.length ? fr[0].frac : null;
@@ -128,7 +148,7 @@ async function run() {
   const max500 = fr.slice(1).reduce((m, f) => Math.max(m, f.frac ?? 0), 0);
   const late = fr.slice(1).filter(f => f.ms > 250 && f.frac > 0.02).map(f => ({ ms: f.ms, frac: f.frac }));
   return { maxPop250: max250, maxPop500AfterReveal: max500, latePops: late, navToRaceMs: navToRace, wallMs: Date.now() - t0, revealPop, maxPopInWindow: maxPop, firstPopMs: firstPop ? firstPop.ms : null, firstPopFrac: firstPop ? firstPop.frac : null,
-    sumFracWindow: +fr.slice(1).reduce((s, f) => s + (f.frac ?? 0), 0).toFixed(4), frameCount: fr.length, covered: R.covered, frames: fr, keep: R.keep, errors: errors.slice(0, 3) };
+    handover: R.handover, lod: (R.lod || []).map(e => ({ ...e, ms: fr.length ? e.t - fr[0].t : null })), sumFracWindow: +fr.slice(1).reduce((s, f) => s + (f.frac ?? 0), 0).toFixed(4), frameCount: fr.length, covered: R.covered, frames: fr, keep: R.keep, errors: errors.slice(0, 3) };
 }
 
 const results = [];

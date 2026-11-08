@@ -358,7 +358,27 @@ export class SignatureLandmarks {
   setSuspended(suspended) {
     if (this._suspended === !!suspended) return;
     this._suspended = !!suspended;
+    if (!this._suspended && this._reveal) { this._reveal = null; this._requestIdle = null; }
     if (!this._suspended) this._requestModels();
+  }
+
+  /**
+   * Reveal hand-over (engine/revealLandmarks.ts, #268): while loading is suspended under the loading screen, the models
+   * nearest the first racing frame load at that frame's pose (`camera`, a read-only pose camera) and pick their level
+   * there, at most `budget` of them. Resuming drops it; null clears it. Never called with `?revealSwap=0`.
+   */
+  setRevealPose(camera, budget = 0) {
+    this._reveal = camera && budget > 0 ? { camera, left: budget } : null;
+    this._requestIdle = null;
+    if (this._reveal && this._suspended) this._requestModels();
+  }
+
+  /** Runs `fn` with the reveal pose as the camera (the walk, the level choice and the view bounds read it). */
+  _atRevealPose(fn) {
+    const camera = this.camera;
+    this.camera = this._reveal.camera;
+    this._viewBoundsCache = null;
+    try { return fn(); } finally { this.camera = camera; this._viewBoundsCache = null; }
   }
 
   setEnabled(enabled) {
@@ -755,7 +775,14 @@ export class SignatureLandmarks {
   }
 
   _requestModels() {
-    if (this._removed || !this.enabled || this._suspended || !this._loader || this._pending.size >= 2) return;
+    if (this._suspended && this._reveal) { this._atRevealPose(() => this._requestModelsPass(this._reveal)); return; }
+    this._requestModelsPass(null);
+  }
+
+  /** One request walk; `reveal` (the reveal hand-over) lets it run while suspended, for its remaining budget. */
+  _requestModelsPass(reveal) {
+    if (this._removed || !this.enabled || (this._suspended && !reveal) || !this._loader || this._pending.size >= 2) return;
+    if (reveal && reveal.left <= 0) return;
     if (this.loadVisibleOnly && this.camera.zoom() < this.minLoadZoom) return;
     // One view for the whole list (the camera cannot move inside this loop).
     const view = this.loadVisibleOnly ? this._viewBounds() : null;
@@ -763,7 +790,7 @@ export class SignatureLandmarks {
     // edges have moved less than half the margin of the nearest loadable model outside it, so this walk would find
     // nothing too. A walk ran on every frame that moved the view, ~0.8 s a minute at 4x. `?landmarkGate=0` walks always.
     const idle = this._requestIdle;
-    if (view && idle && this._gateOn() && idle.rev === this._requestRev && idle.models === this.models && idle.generation === this._generation && canSkipWalk(idle.view, view, idle.slack)) {
+    if (view && idle && !reveal && this._gateOn() && idle.rev === this._requestRev && idle.models === this.models && idle.generation === this._generation && canSkipWalk(idle.view, view, idle.slack)) {
       this._gateCheck(view);
       return;
     }
@@ -771,17 +798,18 @@ export class SignatureLandmarks {
     const candidates = this.models.filter(spec => !this.shown.has(spec.id) && !this._pending.has(spec.id) &&
       !this._failed.has(spec.id) && (!this.loadVisibleOnly || (this._nearby(spec, undefined, view)
         && (!reachFrom || withinReach(spec.surveyed?.anchor || spec.footprint?.centre, reachFrom, this.reachM, this._radiusM(spec))))));
-    this._requestIdle = view && !candidates.length ? { rev: this._requestRev, models: this.models, generation: this._generation, view: { ...view }, slack: this._loadableSlack(view) } : null;
+    this._requestIdle = view && !reveal && !candidates.length ? { rev: this._requestRev, models: this.models, generation: this._generation, view: { ...view }, slack: this._loadableSlack(view) } : null;
     const center = this.camera.center();
     const distance = spec => {
       const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
       return anchor ? ((anchor[0] - center.lng) * Math.cos(center.lat * Math.PI / 180)) ** 2 + (anchor[1] - center.lat) ** 2 : Infinity;
     };
     if (this.loadVisibleOnly) candidates.sort((a, b) => distance(a) - distance(b));
-    while (this._pending.size < 2 && candidates.length) {
+    while (this._pending.size < 2 && candidates.length && (!reveal || reveal.left > 0)) {
       const spec = candidates.shift(), generation = this._generation;
       if (this._pending.has(spec.id) || this.shown.has(spec.id)) continue;
       this._pending.set(spec.id, generation);
+      if (reveal) reveal.left--;
       this._logRequest(spec);
       const finish = () => {
         if (this._removed || generation !== this._generation) return;
@@ -1450,7 +1478,8 @@ export class SignatureLandmarks {
     if (this._removed || !this.enabled || !this._loader || this._updatingLevels) return;
     // A swap re-applies the highlight, which asks for levels again: one pass at a time.
     this._updatingLevels = true;
-    try { this._updateLevelsPass(); } finally { this._updatingLevels = false; }
+    // Under the reveal hand-over the levels are judged at the first racing frame's pose, not the hold's (#268).
+    try { if (this._suspended && this._reveal) this._atRevealPose(() => this._updateLevelsPass()); else this._updateLevelsPass(); } finally { this._updatingLevels = false; }
   }
 
   _updateLevelsPass() {
