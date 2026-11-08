@@ -160,6 +160,24 @@ await page.evaluate(() => {
 });
 
 
+// Lane R4-F (#249): the fetch ring's size over time, every 250 ms (the 5 s samples miss a jump's shape): cells held,
+// cells the unpaced ring wants (planRing(true)), and the trees' rebuild times since the last read.
+await page.evaluate(() => {
+  if (window.__ringSeries) return;
+  const s = window.__ringSeries = [], city = () => canalRecallGame.vectorMap._completeCity;
+  setInterval(() => {
+    const c = city(); if (!c) return;
+    let full = null; try { full = c.planRing?.(true)?.size ?? null; } catch { /* no world */ }
+    s.push([Math.round(performance.now()), c.ring?.size ?? null, full]);
+  }, 250);
+  // Every inventory-trees rebuild's time (wrapped here, so any bundle is measured): [at, ms, trees].
+  const trees = canalRecallGame.vectorMap._inventoryTrees, times = window.__treeRebuilds = [];
+  if (trees?.rebuild) {
+    const base = trees.rebuild.bind(trees);
+    trees.rebuild = (...a) => { const t = performance.now(); const r = base(...a); times.push([Math.round(t), +(performance.now() - t).toFixed(1), trees.debugTrees ?? null]); return r; };
+  }
+});
+
 // The chase pose the ride settled at (the --land leg drops back to it).
 await page.evaluate(() => { const g = canalRecallGame; window.__chasePose = { zoom: g.camera.zoom, tilt: g.vectorMap._cameraTilt ?? null, rotation: g.camera.rotation }; });
 
@@ -712,10 +730,39 @@ summary.uploadOwnersMB = await page.evaluate(() => {
   for (const e of rep.largeUploads) { const k = String(e.owner).replace(/:\d+(:\d+)?\)?$/, '').split('/').pop().slice(0, 80); by[k] = (by[k] ?? 0) + e.bytes; }
   return Object.fromEntries(Object.entries(by).sort((a, b) => b[1] - a[1]).slice(0, 12).map(([k, v]) => [k, Math.round(v / 1048576)]));
 }).catch(() => null);
+let ringSeries = null, treeRebuilds = null;
+// Lane R4-F (#249): the ring-size timeline (cells held / wanted every 250 ms from the pan's start) and its steps: the
+// largest rise of the held ring within one second, and how many seconds saw a rise of more than RING_STEP cells.
+{
+  const series = await page.evaluate(() => window.__ringSeries ?? []).catch(() => []);
+  const rows = series.filter(r => r[0] >= panT0).map(([t, held, full]) => [Math.round((t - panT0) / 100) / 10, held, full]);
+  let maxRise = 0, stepSeconds = 0;
+  for (let i = 0, j = 0; i < rows.length; i++) {
+    while (rows[i][0] - rows[j][0] > 1) j++;
+    const rise = (rows[i][1] ?? 0) - Math.min(...rows.slice(j, i + 1).map(r => r[1] ?? 0));
+    maxRise = Math.max(maxRise, rise);
+  }
+  for (let s = 0; s < (rows.at(-1)?.[0] ?? 0); s++) {
+    const w = rows.filter(r => r[0] >= s && r[0] < s + 1).map(r => r[1] ?? 0);
+    if (w.length && Math.max(...w) - Math.min(...w) > 12) stepSeconds++;
+  }
+  summary.ringHeldMax = Math.max(0, ...rows.map(r => r[1] ?? 0));
+  summary.ringWantedMax = Math.max(0, ...rows.map(r => r[2] ?? 0));
+  summary.ringMaxRisePerSecond = maxRise;
+  summary.ringStepSeconds = stepSeconds;
+  ringSeries = rows;
+  const trees = (await page.evaluate(() => window.__treeRebuilds ?? []).catch(() => [])).filter(r => r[0] >= panT0);
+  const ms = trees.map(r => r[1]);
+  summary.treeRebuilds = ms.length;
+  summary.treeRebuildMedianMs = ms.length ? pickQ(ms, 0.5) : null;
+  summary.treeRebuildP90Ms = ms.length ? pickQ(ms, 0.9) : null;
+  summary.treeRebuildMaxMs = ms.length ? Math.max(...ms) : null;
+  treeRebuilds = trees.map(([t, m, n]) => [Math.round((t - panT0) / 100) / 10, m, n]);
+}
 console.log(JSON.stringify(summary));
 // The legs' start times and the pan's start (performance.now): the timeline chart marks the legs against `long[].at`.
 const legStarts = await page.evaluate(() => window.__aerial.poseChanges).catch(() => null);
-const result = { panT0: Math.round(panT0), legStarts, device, qs, panS, every, speed, continuous, dwellS: continuous ? dwellS : null, accelS: continuous ? accelS : null, chrome: useChrome, headed, settleMs, loadS: Math.round((Date.now() - t0) / 1000), bundles: process.env.BUNDLES_DIR ?? null, waypoints: WAYPOINTS, poses: POSES, timeline, summary, shots, errors };
+const result = { panT0: Math.round(panT0), legStarts, device, qs, panS, every, speed, continuous, dwellS: continuous ? dwellS : null, accelS: continuous ? accelS : null, chrome: useChrome, headed, settleMs, loadS: Math.round((Date.now() - t0) / 1000), bundles: process.env.BUNDLES_DIR ?? null, waypoints: WAYPOINTS, poses: POSES, timeline, ringSeries, treeRebuilds, summary, shots, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify(result, null, 1));
 await browser.close();
