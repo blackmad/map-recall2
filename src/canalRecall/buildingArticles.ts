@@ -14,6 +14,8 @@
  * `scripts/audit-wikipedia-building-articles.ts`.
  */
 
+import { saysNothingKnown } from './buildingFacts';
+
 export const BUILDING_ARTICLE_VERSION = 1;
 /** Longest lede a card shows; the builder clips at a sentence end before this. */
 export const ARTICLE_EXTRACT_CHARS = 360;
@@ -97,7 +99,7 @@ export function clipExtract(text: string, max = ARTICLE_EXTRACT_CHARS): string {
 
 /** A register line worth keeping under an article; the "nothing known" fallback is not. */
 export function registerLineUnderArticle(factDetail: string): string {
-  return /^This building has no /.test(factDetail) ? '' : factDetail;
+  return saysNothingKnown(factDetail) ? '' : factDetail;
 }
 
 /**

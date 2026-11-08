@@ -143,11 +143,46 @@ export function storeysFor(heightMetres: number | null | undefined): number | nu
   return Math.max(1, Math.round(heightMetres / 3.2));
 }
 
-/** The card for a clicked building that is no landmark. */
+/** The bodies `describeBuilding` writes when it knows nothing beyond a name. */
+export const NOTHING_KNOWN = {
+  anonymous: 'This building has no name or date in the map data.',
+  named: 'The map data has no date for this building.',
+  place: 'A mapped place; the map data has no date for its building.',
+} as const;
+const NOTHING_KNOWN_SET = new Set<string>(Object.values(NOTHING_KNOWN));
+/** True for a body that only says nothing is known (not worth a line under an article). */
+export const saysNothingKnown = (detail: string) => NOTHING_KNOWN_SET.has(detail);
+
+/** A mapped place (a click-POI row) standing in or on the clicked building. */
+export interface PlaceOnBuilding {
+  /** The place's own name, as mapped ("Shri Guru Nanak Gurdwara Sahib"). */
+  name: string;
+  /** What it is, in plain English with its article ("a Sikh gurdwara"); empty when unmapped. */
+  kind?: string;
+  /** Street and number, when mapped ("Schakelstraat 21"). */
+  address?: string;
+}
+
+const sameName = (a: string, b: string) => !!a && a.normalize('NFC').toLocaleLowerCase('nl').trim() === b.normalize('NFC').toLocaleLowerCase('nl').trim();
+
+/** What the place on the building is, said once: the title already names it
+ *  when the names agree, so the body starts with the kind. */
+function placeSentence(place: PlaceOnBuilding | null | undefined, title: string): string {
+  if (!place?.name) return '';
+  const kind = (place.kind || '').trim(), at = place.address ? ` at ${place.address}` : '';
+  if (sameName(place.name, title)) return kind ? `${capitalise(kind)}${at}.` : at ? `A mapped place${at}.` : '';
+  return `${place.name} is ${kind || 'a mapped place'}${at}.`;
+}
+
+/** The card for a clicked building that is no landmark. `place` is the mapped
+ *  place the click resolved (a POI label, or a POI inside the footprint): its
+ *  name may title the card, and its kind and address then say what it is, so
+ *  a title never sits over "no name" (user shot 2026-11-08). */
 export function describeBuilding(
   row: BuildingFactRow | null | undefined,
   heightMetres: number | null | undefined,
   name = '',
+  place: PlaceOnBuilding | null = null,
 ): { name: string; detail: string } {
   const storeys = storeysFor(heightMetres);
   const type = row && row[1] >= 0 ? TYPE_LABELS[BUILDING_TYPES[row[1]]] : '';
@@ -156,9 +191,11 @@ export function describeBuilding(
   const monumentYear = monument?.y ? Number(monument.y.slice(0, 4)) : NaN;
   const year = plausibleYear(monumentYear) ? monumentYear : row && plausibleYear(row[0]) ? row[0] : null;
   const years = plausibleYear(monumentYear) ? monument!.y! : year ? String(year) : '';
-  const shownName = name || monument?.n || '';
+  const shownName = name || monument?.n || place?.name || '';
   const title = shownName || (year ? `Built ${year}` : type ? capitalise(type) : 'No building details');
   const parts: string[] = [];
+  const placeText = placeSentence(place, title);
+  if (placeText) parts.push(placeText);
   const designed = monument?.a ? `, designed by ${monument.a}` : '';
   if (year) {
     parts.push(type
@@ -166,7 +203,7 @@ export function describeBuilding(
       : `Built in ${years}, ${periodOf(year)}${designed}.`);
   } else if (designed) {
     parts.push(`Designed by ${monument!.a}.`);
-  } else if (type && shownName) {
+  } else if (type && shownName && !placeText) {
     parts.push(`A ${type}.`);
   }
   const heritage = row ? HERITAGE_LABELS[row[2]] : '';
@@ -175,7 +212,9 @@ export function describeBuilding(
   if (heritage) parts.push(heritage);
   if (purpose) parts.push(purpose);
   if (storeys) parts.push(`About ${Math.round(heightMetres!)} m tall, some ${storeys} ${storeys === 1 ? 'storey' : 'storeys'}.`);
-  return { name: title, detail: parts.join(' ') || 'This building has no name or date in the map data.' };
+  // A named building with nothing else known says so without denying its name.
+  const nothing = shownName ? (place?.name ? NOTHING_KNOWN.place : NOTHING_KNOWN.named) : NOTHING_KNOWN.anonymous;
+  return { name: title, detail: parts.join(' ') || nothing };
 }
 
 const capitalise = (text: string) => text.charAt(0).toUpperCase() + text.slice(1);

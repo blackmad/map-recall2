@@ -18,7 +18,7 @@ import {
   neighborhoodAt,
 } from './landmarkData';
 import type { RoadSegment } from './collaborators';
-import { ClickPoiIndex, type ClickPoiFile } from '../clickPoiInfo';
+import { ClickPoiIndex, osmUrl, type ClickPoiFile } from '../clickPoiInfo';
 import type {
   BoundaryFeature,
   BridgeCrossingIndex,
@@ -248,7 +248,15 @@ export class GameLandmarkRuntime {
     // A street-chunk pand reports its address as its name; an address names
     // a street the game may be about to ask for.
     const safeName = buildingName && spoils?.call(this.vectorMap, buildingName) ? '' : buildingName;
-    const facts = describeBuilding(row, building.height, safeName);
+    // A tap on a drawn POI label (labelLayer.ts hitTest) carries the label's
+    // text and point but no footprint, so `card` above cannot place it; its
+    // mapped row says what the place is. The label's text titled the card
+    // over "no name or date" (user shot 2026-11-08, the Sloterdijk gurdwara).
+    const labelRow = safeName && building.poi && !building.footprint
+      ? this._clickPoiInfo?.named?.(safeName, building.lngLat) ?? null : null;
+    const place = labelRow ? { name: labelRow[1], kind: labelRow[5], address: labelRow[6] }
+      : safeName && building.poi ? { name: safeName } : null;
+    const facts = describeBuilding(row, building.height, safeName, place);
     // Every drawn building answers a click (user report 2026-10-10, "why does
     // this building not let me click on it?" — a post-war tower with only a
     // year and a height). From 2026-10-04 only listed monuments with an
@@ -272,6 +280,7 @@ export class GameLandmarkRuntime {
       detail: facts.detail,
       lngLat: building.lngLat,
       featureTarget: building.featureTarget,
+      ...(labelRow ? { sourceUrl: osmUrl(labelRow[0]) } : {}),
     };
   }
 

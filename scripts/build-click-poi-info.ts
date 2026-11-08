@@ -6,6 +6,7 @@ import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import { createInterface } from 'node:readline';
 import { ShapeUtils, Vector2 } from 'three';
 import { classifyPoi } from '../src/canalRecall/poiCatalog';
+import { placeKindLabel } from '../src/canalRecall/placeKind';
 import { poiInsideBuilding, validPoiWebsite, type ClickPoiFile, type ClickPoiRow, type PolygonGeometry } from '../src/canalRecall/clickPoiInfo';
 
 const base = 'public/data/extracts/amsterdam';
@@ -44,16 +45,6 @@ function areaPoint(geometry: PolygonGeometry): [number, number] | null {
   return chosen;
 }
 
-const labels: Record<string, string> = {
-  restaurant: 'a restaurant', cafe: 'a café', pub: 'a pub', bar: 'a bar', fast_food: 'a fast-food restaurant', ice_cream: 'an ice-cream shop',
-  books: 'a bookshop', clothes: 'a clothing shop', shoes: 'a shoe shop', cheese: 'a cheese shop', bakery: 'a bakery',
-  supermarket: 'a supermarket', convenience: 'a convenience store', department_store: 'a department store',
-  bicycle: 'a bicycle shop', bicycle_rental: 'a bicycle rental', place_of_worship: 'a place of worship',
-  museum: 'a museum', gallery: 'a gallery', theatre: 'a theatre', cinema: 'a cinema', arts_centre: 'an arts centre',
-  library: 'a library', hotel: 'a hotel', hostel: 'a hostel', guest_house: 'a guest house', attraction: 'an attraction',
-  university: 'a university', school: 'a school', college: 'a college', kindergarten: 'a kindergarten',
-  clinic: 'a clinic', hospital: 'a hospital', pharmacy: 'a pharmacy', community_centre: 'a community centre',
-};
 const points: ClickPoiRow[] = [];
 const counts = { point: 0, area: 0, website: 0, address: 0, englishDescription: 0 };
 for await (const line of createInterface({ input: createReadStream('.cache/osm-source/derived/amsterdam-places.geojsonseq') })) {
@@ -76,7 +67,7 @@ for await (const line of createInterface({ input: createReadStream('.cache/osm-s
   const street = tags['addr:street'] || '', number = tags['addr:housenumber'] || '';
   const address = [street, number].filter(Boolean).join(' ');
   const description = typeof tags['description:en'] === 'string' ? tags['description:en'].trim().slice(0, 800) : '';
-  points.push([id, tags.name, at[0], at[1], cls.category, labels[kind] || `a ${kind.replaceAll('_', ' ')}`, address, website, description]);
+  points.push([id, tags.name, at[0], at[1], cls.category, placeKindLabel(kind, tags, kindKey), address, website, description]);
   counts[g.type === 'Point' ? 'point' : 'area']++;
   if (website) counts.website++;
   if (address) counts.address++;
@@ -85,5 +76,6 @@ for await (const line of createInterface({ input: createReadStream('.cache/osm-s
 points.sort((a, b) => a[0].localeCompare(b[0]));
 const file: ClickPoiFile = { version: 1, source: '© OpenStreetMap contributors (ODbL); cached Amsterdam extract', points };
 await mkdir(base, { recursive: true });
-await writeFile(`${base}/click-poi-info.json`, JSON.stringify(file));
+const out = process.env.CLICK_POI_OUT || `${base}/click-poi-info.json`;
+await writeFile(out, JSON.stringify(file));
 console.log('Click POI info', JSON.stringify({ places: points.length, ...counts, bytes: JSON.stringify(file).length }));
