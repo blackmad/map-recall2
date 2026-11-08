@@ -20,6 +20,8 @@ function ferryGame(roadName: string): Fake {
   const game: Fake = {
     player: { x: 0, y: 0, angle: 0, ferryOrigin: { pier: 'Centraal' } },
     track: { getRoadName: () => roadName },
+    _routeQuestionRoadName: () => roadName,
+    _shownName: (name: string) => name,
     quizPromptName: 'Papaverweg',
     quizPromptKind: 'route',
     quizFeedback: '',
