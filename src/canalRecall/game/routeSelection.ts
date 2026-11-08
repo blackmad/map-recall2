@@ -774,8 +774,11 @@ export {
 
 // Today's ride (dailyRide.ts): the surprise picker's draws seeded by the date,
 // so the ride can launch the pair the landing page names (`?ride=daily`).
+// From DAILY_POOL_CUTOVER `dailyRidePair` draws from the buurt pool (#279).
 export {
+  DAILY_POOL_CUTOVER,
   DAILY_RIDE_TIME_ZONE,
+  dailyPoolPair,
   dailyRideDateKey,
   dailyRideLabel,
   dailyRidePair,

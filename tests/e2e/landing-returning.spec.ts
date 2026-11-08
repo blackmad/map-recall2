@@ -1,6 +1,6 @@
 import { expect, test, type Page, type Request } from '@playwright/test';
 import { CANAL_CITIES } from '../../src/canalRecall/game/cities';
-import { dailyRideDateKey, dailyRideRouteId } from '../../src/canalRecall/game/dailyRide';
+import { dailyPoolPair, dailyRideDateKey, dailyRideRouteId } from '../../src/canalRecall/game/dailyRide';
 import { landingFixtureEntries, type LandingScenario } from '../../src/canalRecall/landing/landingFixtures';
 
 // G2 (#272): the landing page for a returning player — Today's ride, Continue
@@ -74,8 +74,9 @@ test('?landing=0 keeps the static landing for a returning player', async ({ page
 });
 
 test('today’s route is identical in two browsers on the same date', async ({ browser }) => {
-  // 23:30 UTC on 8 Nov is 9 Nov in Amsterdam: the ride follows Amsterdam's date, not the browser's.
-  const at = Date.UTC(2026, 10, 8, 23, 30);
+  // 23:30 UTC on 11 Nov is 12 Nov in Amsterdam: the ride follows Amsterdam's date, not the browser's.
+  // (A buurt-pool day, after DAILY_POOL_CUTOVER.)
+  const at = Date.UTC(2026, 10, 11, 23, 30);
   const ids: Array<string | null> = [];
   for (const timezoneId of ['Europe/Amsterdam', 'America/Los_Angeles']) {
     const context = await browser.newContext({ timezoneId });
@@ -89,7 +90,8 @@ test('today’s route is identical in two browsers on the same date', async ({ b
   }
   expect(ids[0]).toBeTruthy();
   expect(ids[1]).toBe(ids[0]);
-  expect(ids[0]).toBe(dailyRideRouteId('2026-11-09', pois));
+  expect(ids[0]).toBe(dailyRideRouteId('2026-11-12', pois));
+  expect(ids[0]).toMatch(/^2026-11-12:(buurt|tour)-/);
 });
 
 type RideGame = {
@@ -145,3 +147,46 @@ test('Today’s ride launches the pair the landing named', async ({ page }) => {
   expect(ride?.hasDaily).toBe(true);
   expect(`${dailyRideDateKey(now)}:${ride?.from}>${ride?.to}`).toBe(id);
 });
+
+// The buurt pool (#279): a real ride for three dates starts on the pair the
+// date names, plans a route, and arrives. `?dailyDate=` is the test-only
+// override of "today" in dailyRideDateKey().
+for (const date of ['2026-11-10', '2026-12-24', '2027-03-01']) {
+  test(`?ride=daily on ${date} starts the buurt pair and arrives`, async ({ page }, info) => {
+    test.skip(info.project.name !== 'desktop', 'one ride per date is enough; the iphone project runs the landing tests');
+    test.setTimeout(180_000);
+    await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+    await seed(page, 'returning');
+    // The pool's ends sit on streets: ride in street mode (bike). The default travel mode is boat, and
+    // `?ride=daily` does not set street mode yet (integrator: game-route.js _checkShareLink, #279 hand-back).
+    await page.addInitScript(() => {
+      if (!localStorage.getItem('canalRecall.preferences.v1')) localStorage.setItem('canalRecall.preferences.v1', JSON.stringify({ travelMode: 'car' }));
+    });
+    const pair = dailyPoolPair(date)!;
+    await page.goto(`/canal-drive/index.html?ride=daily&dailyDate=${date}`);
+    await expect.poll(async () => (await rideState(page))?.chosen, { timeout: 60_000 }).toBe('daily');
+    const ride = await rideState(page);
+    expect(`${date}:${ride?.from}>${ride?.to}`).toBe(pair.id);
+    // A route was planned between the ends, and the ride is under way.
+    await expect.poll(() => page.evaluate(() => {
+      const g = (window as unknown as { canalRecallGame?: { state: number; travelMode?: string; routePath?: unknown[]; _plannedRouteLengthPx?: number } }).canalRecallGame;
+      return g && g.state === 4 && g.travelMode === 'car' && (g.routePath?.length ?? 0) > 1 && (g._plannedRouteLengthPx ?? 0) > 0;
+    }), { timeout: 90_000 }).toBe(true);
+    const planned = await page.evaluate(() => {
+      const g = (window as unknown as { canalRecallGame: { _plannedRouteLengthPx: number; track: { startPoint: { x: number; y: number }; finishPoint: { x: number; y: number } } } }).canalRecallGame;
+      return { px: g._plannedRouteLengthPx, crow: Math.hypot(g.track.finishPoint.x - g.track.startPoint.x, g.track.finishPoint.y - g.track.startPoint.y) };
+    });
+    // 3 px = 1 m. The planned route is at least the straight line, and the ends are the pair's (straight line within 25%).
+    expect(planned.px).toBeGreaterThanOrEqual(planned.crow * 0.99);
+    expect(planned.crow / 3 / 1000).toBeGreaterThan((pair.km / 1.3) * 0.75);
+    expect(planned.crow / 3 / 1000).toBeLessThan((pair.km / 1.3) * 1.25);
+    // Arrive: put the rider on the finish.
+    await page.evaluate(() => {
+      const g = (window as unknown as { canalRecallGame: { player: { x: number; y: number; speed: number }; track: { finishPoint: { x: number; y: number } } } }).canalRecallGame;
+      g.player.x = g.track.finishPoint.x; g.player.y = g.track.finishPoint.y; g.player.speed = 0;
+    });
+    await expect.poll(async () => (await rideState(page))?.state, { timeout: 30_000 }).toBe(5);
+    console.log(`${date}: ${pair.from.name} → ${pair.to.name}, ${pair.km} km est., planned ${(planned.px / 3000).toFixed(2)} km`);
+    await page.screenshot({ path: `${shots}/daily-${date}-arrived-${info.project.name}.png` });
+  });
+}
