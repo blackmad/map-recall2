@@ -136,6 +136,10 @@ test('tapping the gurdwara label opens a card that says what it is', async () =>
   assert.equal(GameLandmarkRuntime.prototype._cardForClickedBuilding.call(host, { id: 'P9', name: '', lngLat: [4.9, 52.37], featureTarget: null })!.id, 'hortus');
 });
 
+test('a one-storey building says "one storey", not "some 1 storey" (gurdwara card 2026-11-09)', () => {
+  assert.equal(describeBuilding([1964, -1, 0], 4.79).detail, 'Built in 1964, in the post-war decades. About 5 m tall, one storey.');
+});
+
 test('a type starting with a vowel takes "an" (page check 2026-11-08: "A industrial building")', () => {
   assert.equal(describeBuilding([1965, BUILDING_TYPES.indexOf('industrial'), 0], null).detail, 'An industrial building, built in 1965, in the post-war decades.');
   assert.equal(describeBuilding([0, BUILDING_TYPES.indexOf('office'), 0], null, 'Kantoor').detail, 'An office building.');

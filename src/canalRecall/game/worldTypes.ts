@@ -143,6 +143,8 @@ export interface BuildingHit {
   footprint?: import('../clickPoiInfo').PolygonGeometry;
   /** Set when the click hit a drawn POI label: `name` is the label's text, `lngLat` its point. */
   poi?: boolean;
+  /** For a label hit: the building under the label (engine/labelPand.ts), whose id keys the facts register. */
+  pand?: import('../engine/labelPand').LabelPand;
   lngLat: LngLat;
   geojson?: GeoJsonFeatureCollection;
   featureTarget: FeatureTarget | null;

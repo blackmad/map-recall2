@@ -2416,6 +2416,19 @@ class VectorBasemap {
     return !!(this._playerTransit && this._playerTransit.ready);
   }
 
+  // A tapped label's building (#258 follow-up): the surface under the tap and under the label's drawn anchor, kept when
+  // its footprint holds the label's point (engine/labelPand.ts), so the card adds that pand's year to the place's name.
+  _withLabelPand(label, surface, mapCanvas) {
+    const attach = window.CanalRecallEngine && window.CanalRecallEngine.withLabelPand;
+    const drawn = this._drawn();
+    if (!attach || !drawn || !Array.isArray(label.lngLat)) return label;
+    const at = drawn.project(label.lngLat);
+    const w = mapCanvas.clientWidth, h = mapCanvas.clientHeight;
+    const under = [this._signatureLandmarks, this._threeBuildings, this._tileBuildings]
+      .map(layer => layer && layer.inspectAtScreen ? layer.inspectAtScreen(at.x, at.y, w, h) : null);
+    return attach(label, [surface, ...under]);
+  }
+
   inspectBuilding(cssX, cssY, canvasRect) {
     // After a WebGL context loss MapLibre drops its style; a tap then hit
     // map.getLayer on null (Sentry CANAL-RECALL-H, Chrome Mobile).
@@ -2433,7 +2446,7 @@ class VectorBasemap {
     // Curated POIs must win over the much larger building extrusion under the
     // pointer. The hit box is forgiving because dots are intentionally small.
     let poiResult = this._labelOverlay ? this._labelOverlay.hitTest(pixel.x, pixel.y) : null;
-    if (poiResult) return poiResult;
+    if (poiResult) return this._withLabelPand(poiResult, surface, mapCanvas);
     const poiLayers = ['poi-labels'].filter(id => this.map.getLayer(id));
     // MapLibre's feature query and unproject ignore the deck lift; the tap is on what was drawn (_drawn).
     const queryPixel = this._drawn().queryPixel(pixel);
@@ -2451,7 +2464,7 @@ class VectorBasemap {
   }
     // An explicitly clicked visible POI label selects that venue, including
     // genuine venues sharing one model. Otherwise use the nearest real mesh.
-    if (poiResult) return poiResult;
+    if (poiResult) return this._withLabelPand(poiResult, surface, mapCanvas);
     if (surface) return surface;
     // The hidden basemap cannot stand in for the complete city's actual mesh.
     if (this._completeCityHasBuildings && this._threeBuildings?.ready) return poiResult;

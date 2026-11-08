@@ -129,6 +129,39 @@ assert.equal(picker.inspectAtScreen(px, py, 800, 600), null, 'shader-hidden orig
 (uploaded.getAttribute('hidden').array as Uint8Array).fill(2);
 assert.equal(picker.inspectAtScreen(px, py, 800, 600)?.id, 'released', 'the highlighted (yellow) building stays clickable');
 
+// A tapped POI label (#258 follow-up, 2026-11-09): the label floats over its building, so the tap pixel picks sky;
+// the own engine's inspectBuilding also picks under the label's projected anchor (engine/labelPand.ts), keeps the
+// building whose footprint holds the label's point, and the card names the place with that pand's year.
+(uploaded.getAttribute('hidden').array as Uint8Array).fill(0);
+const { OwnWorldView } = await import('../src/canalRecall/engine/ownWorldView');
+const anchorPx = (centre.x + 1) * 400, anchorPy = (1 - centre.y) * 300;
+const labelHit = { id: 'own:hall', landmarkId: 'own:hall', name: 'Mapped community hall', lngLat: [4.9, 52.37] as [number, number], poi: true as const, featureTarget: null };
+const view: any = Object.create(OwnWorldView.prototype);
+Object.assign(view, { ready: true, host: { viewport: () => ({ width: 800, height: 600 }) }, _labels: { hitTest: () => labelHit },
+  extras: { pick: (_x: number, _y: number, _w: number, _h: number, generic: any) => generic }, _threeBuildings: picker,
+  camera: { project: () => ({ x: anchorPx, y: anchorPy }) }, _ownGround: null });
+assert.equal(picker.inspectAtScreen(400, 5, 800, 600), null, 'the tap on the floating label itself picks sky');
+const tapped = view.inspectBuilding(400, 5, { width: 800, height: 600 });
+assert.equal(tapped?.name, 'Mapped community hall', 'the label still wins the tap');
+assert.equal(tapped?.pand?.id, 'released', 'the label resolves the pand under its anchor');
+assert.equal(tapped?.pand?.featureTarget?.id, 'released');
+view.camera.project = () => ({ x: (centre.x + 1) * 400 + 300, y: (1 - centre.y) * 300 });
+assert.equal(view.inspectBuilding(400, 5, { width: 800, height: 600 })?.pand, undefined, 'no building under the anchor: no pand, the label card as before');
+view.camera.project = () => ({ x: anchorPx, y: anchorPy });
+const far = { ...labelHit, lngLat: [4.903, 52.37] as [number, number] };
+view._labels.hitTest = () => far;
+assert.equal(view.inspectBuilding(400, 5, { width: 800, height: 600 })?.pand, undefined, 'a building in front of a far label is not its pand');
+view._labels.hitTest = () => labelHit;
+host.landmarks = []; host._clickPoiInfo = new ClickPoiIndex({ version: 1, source: 'OSM', points: [
+  ['n9', 'Mapped community hall', 4.9, 52.37, 'amenity', 'a community centre', 'Testplein 1', '', ''],
+] } as any);
+host._buildingFacts = { lookup: (id: unknown) => (id === 'released' ? [1931, -1, 0] : null), article: () => null };
+host.vectorMap.inspectBuilding = (x: number, y: number, rect: any) => view.inspectBuilding(x, y, rect);
+GameLandmarkRuntime.prototype._inspectBuildingAt.call(host, 400, 5);
+assert.equal(shown?.name, 'Mapped community hall', 'the label card keeps the place name');
+assert.match(shown?.detail, /^A community centre at Testplein 1\. Built in 1931, /, 'and adds the pand\'s year');
+assert.equal(active?.featureTarget?.id, 'released', 'the label\'s building is highlighted');
+
 // Execute the shipped JS adapter, including setRoute: misplaced picker
 // guards previously referenced poiResult from an unrelated method.
 const sandbox: any = { window: {}, console, Set, Map };
@@ -139,4 +172,13 @@ Object.assign(v, { _completeCityHasBuildings: true, _threeBuildings: { ready: tr
   getStyle: () => ({ layers: [] }), unproject: () => ({ lng: 4.9, lat: 52.37 }) }, ready: true });
 assert.doesNotThrow(() => v.setRoute(null, {}, false), 'route updates cannot reference picker-local variables');
 assert.equal(v.inspectBuilding(400, 300, { width: 800, height: 600 }), null, 'empty complete-city click has no arbitrary fallback');
-console.log('POI click selection passed: researched owner/card/highlight, own-year card for every building, spoiler-safe addresses, pitched facade prism pick, hidden-mesh and empty-click regressions.');
+// The default (MapLibre) adapter attaches the same pand through window.CanalRecallEngine.withLabelPand.
+const { withLabelPand } = await import('../src/canalRecall/engine/labelPand');
+sandbox.window.CanalRecallEngine = { withLabelPand };
+Object.assign(v, { _labelOverlay: { hitTest: () => labelHit }, _drawnFor: v.map, _drawnProjector: { project: () => ({ x: 400, y: 450 }), unproject: () => ({ lng: 4.9, lat: 52.37 }), queryPixel: (p: any) => p },
+  _threeBuildings: { ready: true, inspectAtScreen: (_x: number, y: number) => (y === 450 ? { id: 'released', footprint: installed.geometry, depth: 0.5, featureTarget: { source: 'osm-building-appearance', id: 'released' } } : null) } });
+v.map.style = {};
+const legacy = v.inspectBuilding(400, 5, { width: 800, height: 600 });
+assert.equal(legacy?.name, 'Mapped community hall', 'MapLibre: the label wins the tap');
+assert.equal(legacy?.pand?.id, 'released', 'MapLibre: the label resolves the pand under its drawn anchor');
+console.log('POI click selection passed: researched owner/card/highlight, own-year card for every building, spoiler-safe addresses, label tap resolves its pand, pitched facade prism pick, hidden-mesh and empty-click regressions.');

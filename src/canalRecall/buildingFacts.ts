@@ -212,7 +212,8 @@ export function describeBuilding(
     ? `Originally built for ${MONUMENT_FUNCTIONS[monument.f][1]}.` : '';
   if (heritage) parts.push(heritage);
   if (purpose) parts.push(purpose);
-  if (storeys) parts.push(`About ${Math.round(heightMetres!)} m tall, some ${storeys} ${storeys === 1 ? 'storey' : 'storeys'}.`);
+  // "some 1 storey" read oddly on the one-storey gurdwara hall (2026-11-09).
+  if (storeys) parts.push(`About ${Math.round(heightMetres!)} m tall, ${storeys === 1 ? 'one storey' : `some ${storeys} storeys`}.`);
   // A named building with nothing else known says so without denying its name.
   const nothing = shownName ? (place?.name ? NOTHING_KNOWN.place : NOTHING_KNOWN.named) : NOTHING_KNOWN.anonymous;
   return { name: title, detail: parts.join(' ') || nothing };
