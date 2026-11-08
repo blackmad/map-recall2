@@ -200,6 +200,8 @@
     "setup.route.hereHint": "Start from where you are now",
     "setup.route.free": "Free ride",
     "setup.route.freeHint": "No route, no questions: ride anywhere and tap what you pass",
+    "setup.freeRideLandmarkQuiz": "Quiz me on landmarks",
+    "setup.freeRideLandmarkQuizHint": "A modelled building in view, four names, one right",
     "freeRide.badge": "Free ride",
     "freeRide.exit": "Exit",
     "freeRide.exitLabel": "Leave free ride and go back to setup",
@@ -473,6 +475,8 @@
     "prompt.placeholder.bridge": "Bridge name",
     "prompt.placeholder.line": "Line name",
     "prompt.placeholder.stop": "Stop name",
+    "prompt.label.landmark": "Landmark",
+    "prompt.placeholder.landmark": "Building name",
     "prompt.waterway": "Waterway",
     "prompt.turn": "You made a turn",
     "prompt.submit": "Submit answer",
@@ -746,6 +750,12 @@
     "ride.startExploring": "Start exploring",
     "ride.noCycling": "No cycling in real life",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Which building is this?",
+    "ride.landmarkQuestion.ahead": "Ahead",
+    "ride.landmarkQuestion.left": "On the left",
+    "ride.landmarkQuestion.right": "On the right",
+    "ride.landmarkNoticed.action": "Noticed",
+    "ride.landmarkNoticed.done": "Noted",
     "ride.researchSource": "Research source \u2197",
     "ride.rules.title": "HOW TO PLAY",
     "ride.rules.bike1": "1. Use WASD or the arrow keys to steer the bike",
@@ -826,6 +836,8 @@
     "setup.route.hereHint": "Start waar je nu bent",
     "setup.route.free": "Vrij rijden",
     "setup.route.freeHint": "Geen route, geen vragen: rijd waar je wilt en tik op wat je ziet",
+    "setup.freeRideLandmarkQuiz": "Overhoor me op gebouwen",
+    "setup.freeRideLandmarkQuizHint": "Een gemodelleerd gebouw in zicht, vier namen, \xE9\xE9n goed",
     "freeRide.badge": "Vrij rijden",
     "freeRide.exit": "Stoppen",
     "freeRide.exitLabel": "Stop met vrij rijden en ga terug naar het startscherm",
@@ -1099,6 +1111,8 @@
     "prompt.placeholder.bridge": "Naam van de brug",
     "prompt.placeholder.line": "Naam van de lijn",
     "prompt.placeholder.stop": "Naam van de halte",
+    "prompt.label.landmark": "Bezienswaardigheid",
+    "prompt.placeholder.landmark": "Naam van het gebouw",
     "prompt.waterway": "Waterweg",
     "prompt.turn": "Je sloeg af",
     "prompt.submit": "Antwoord insturen",
@@ -1372,6 +1386,12 @@
     "ride.startExploring": "Begin met verkennen",
     "ride.noCycling": "Geen fietsen in het echt",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Welk gebouw is dit?",
+    "ride.landmarkQuestion.ahead": "Recht vooruit",
+    "ride.landmarkQuestion.left": "Links",
+    "ride.landmarkQuestion.right": "Rechts",
+    "ride.landmarkNoticed.action": "Gezien",
+    "ride.landmarkNoticed.done": "Genoteerd",
     "ride.researchSource": "Bron \u2197",
     "ride.rules.title": "HOE SPEEL JE",
     "ride.rules.bike1": "1. Stuur de fiets met WASD of de pijltjestoetsen",
@@ -1549,8 +1569,8 @@
     } catch {
     }
   }
-  function stampNewNeighborhoods(exploration, visitedThisRoute, prior, minNames = PASSPORT_MIN_NAMES) {
-    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
+  function stampNewNeighborhoods(exploration, visitedThisRoute, prior, minNames = PASSPORT_MIN_NAMES, landmarkCredit = 0) {
+    const known = exploration.learnedWaterways.length + exploration.learnedStreets.length + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length + Math.max(0, landmarkCredit);
     if (known < minNames) return { passport: prior, fresh: [] };
     const stamped = new Set(prior.stamped);
     const fresh = [];
@@ -2454,6 +2474,7 @@
       ctx.font = font;
       const requests = [];
       for (const place of nearby || []) {
+        if (this.quizPromptName && (place.name === this.quizPromptName || this.quizWithheldNames?.includes(place.name))) continue;
         const at = this.camera.worldToScreen(place.x, place.y);
         const label = markerLabel(place.name, void 0, (text) => ctx.measureText(text).width);
         const width = Math.ceil(ctx.measureText(label).width) + height + 8;
@@ -6643,6 +6664,397 @@
     }
   }
 
+  // src/canalRecall/game/landmarkQuestion.ts
+  var LANDMARK_QUESTION_HALF_CONE = 55 * Math.PI / 180;
+  var LANDMARK_SIGHTINGS_KEY = "canalRecall.landmarkSightings.v1";
+  function readSightings(store) {
+    try {
+      const raw = store?.getItem(LANDMARK_SIGHTINGS_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      const out = {};
+      for (const [id, value] of Object.entries(parsed || {})) {
+        if (!value || value.how !== "noticed" && value.how !== "named") continue;
+        out[id] = { hood: String(value.hood || ""), how: value.how, at: Number(value.at) || 0 };
+      }
+      return out;
+    } catch {
+      return {};
+    }
+  }
+  function sightingCredit(sightings, hood) {
+    return Object.values(sightings).filter((s) => !hood || s.hood === hood).length;
+  }
+
+  // src/canalRecall/look/palette.ts
+  var PHOTO_WALL_CELL_MEAN = 225;
+  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
+  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
+  var LOOK_VARIANTS = {
+    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
+    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    // Storybook warms and lifts the natural palette a little, as an illustrator would.
+    storybook: {
+      cells: "storybook",
+      shadeBands: 0,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: false,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
+    },
+    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
+    cartoon: {
+      cells: "cartoon",
+      shadeBands: 3,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: true,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
+    }
+  };
+  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
+  var ROOF_TONES = {
+    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
+    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
+  };
+  var ROOF_SLOT_TONES = {
+    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
+    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
+    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
+    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
+    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
+    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
+    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
+    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
+    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
+    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
+    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
+    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
+  };
+  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
+  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
+  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var PERIOD_WALLS = {
+    photo: {
+      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
+      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
+      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
+      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
+    },
+    storybook: {
+      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
+      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
+      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
+      modern: null
+    },
+    cartoon: {
+      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
+      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
+      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
+      modern: null
+    }
+  };
+  var PERIOD_PRIORS = {
+    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
+    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
+    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
+    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
+  };
+  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
+  var GLASS_TINT_CELL_W = 32;
+  var GLASS_TINT_CELL_H = 64;
+  var PANE_LUMA = [157.19, 92.83, 69.17];
+  var STREAK_LUMA = 240.95;
+  var STREAK_ALPHA = 0.16;
+  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
+  function glassTintCellValue(x, y) {
+    const t2 = y / (GLASS_TINT_CELL_H - 1);
+    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
+    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
+    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
+  }
+  var GLASS_TINT_CELL_MEAN = (() => {
+    let sum = 0;
+    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
+    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
+  })();
+  var STONE_CELL_MEAN = 228 / 255;
+  var STREET_GROUND = {
+    // Was [72, 74, 78]: under the rig it drew at luma 67 in sun and 59 in shade, "near-black" (user live play
+    // 2026-10-14). Lifted to a sunlit-grey 88 (just under the klinker carriageway's 91, still cooler than it); with
+    // ownGround/groundLight.ts it draws 88 in sun and 78 in cast shadow, above LOOK's road floor of 65–75.
+    asphalt: { base: [86, 88, 93] },
+    cycle: { base: [150, 66, 58] },
+    // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
+    // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
+    klinker: { base: [122, 90, 80], joint: "#4b3d38" },
+    pavement: { base: [174, 162, 152], joint: "#7f756b" },
+    kerb: "#cfcac0",
+    paint: "#f2f0ea",
+    rail: "#6c6e72",
+    bollard: "#5a2a26"
+  };
+  var HIGHLIGHT_CORAL = "#ff8033";
+  var GROUND_TONES = {
+    land: { base: [168, 158, 142], joint: "#857b6d" },
+    paving: { base: [184, 174, 158], joint: "#8f8577" },
+    square: { base: [190, 179, 161], joint: "#958a7c" },
+    // Klinker warm grey-rose, asphalt darker and cooler than it ("so much grey": they shared one band).
+    klinker: { base: [158, 124, 114], joint: "#7a6660" },
+    asphalt: [68, 72, 80],
+    cycle: [156, 76, 66],
+    gravel: [180, 166, 136],
+    park: [96, 140, 70],
+    wood: [70, 112, 58],
+    parking: [102, 102, 105],
+    kerb: "#aaa498",
+    water: "#46707c",
+    // Parks (parks-v1, ownGround/parks.ts, 2026-10-13): mown lawn fresher than the park fill under it, planting beds
+    // as soil with green dabs, shrub planting darker and clumped, bark mulch, play sand, shell/half-paved paths lighter
+    // than street gravel, park asphalt lighter than the road's, ponds the canal tone (a greener one read as a shadow).
+    lawn: [110, 154, 74],
+    bed: { soil: [98, 80, 60], leaf: [84, 122, 58] },
+    shrub: { base: [56, 92, 46], leaf: [76, 116, 56] },
+    bark: [118, 84, 58],
+    sand: [212, 194, 150],
+    parkGravel: [198, 184, 152],
+    parkPath: [110, 110, 112],
+    pond: "#46707c"
+  };
+
+  // src/canalRecall/hudTheme.ts
+  var enamelTheme = {
+    enamel: "#0b3a8c",
+    enamelBright: "#1450b8",
+    enamelDeep: "#072861",
+    night: "#071430",
+    ink: "#ffffff",
+    inkMuted: "rgba(255,255,255,0.72)",
+    inkDim: "rgba(255,255,255,0.86)",
+    line: "rgba(255,255,255,0.28)",
+    /** Rivet / gold accent (plaque corners, selected hairline). */
+    rivet: "#c4a35a",
+    rivetDeep: "#8a7040",
+    /** Copper stamp (Start / Confirm). */
+    copper: "#b87333",
+    copperHi: "#d9a05b",
+    copperDeep: "#8a5524",
+    copperMid: "#c9844a",
+    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
+  };
+  var daylightTheme = {
+    paper: "#f4efe5",
+    paperRaised: "#fbf8f2",
+    paperSunk: "#ebe4d6",
+    ink: "#1f1c17",
+    /** 6.3:1 on paper — secondary copy. */
+    inkMuted: "#5f584d",
+    line: "rgba(31,28,23,0.14)",
+    lineStrong: "rgba(31,28,23,0.26)",
+    fill: "rgba(31,28,23,0.045)",
+    fillHover: "rgba(31,28,23,0.085)",
+    accent: "#b4682c",
+    /** Copper dark enough for text on paper (≈6:1). */
+    accentInk: "#8a4a18",
+    accentSoft: "rgba(180,104,44,0.13)",
+    scrim: "rgba(28,24,18,0.38)",
+    danger: "#a8321f"
+  };
+  var paperTheme = {
+    paper: enamelTheme.enamel,
+    paperRaised: enamelTheme.enamelBright,
+    paperMuted: enamelTheme.enamelDeep,
+    ink: enamelTheme.ink,
+    inkMuted: enamelTheme.inkMuted,
+    line: enamelTheme.line,
+    moss: enamelTheme.enamelBright,
+    mossDark: enamelTheme.enamelDeep,
+    mossSoft: "rgba(20,80,184,0.28)",
+    terracotta: enamelTheme.copper,
+    ochre: enamelTheme.rivet
+  };
+  var hudSurface = {
+    /** Always-on readouts sitting directly on the map. */
+    card: "rgba(251,248,242,0.9)",
+    /** Cards you stop and read: the trivia card, the postcard. */
+    cardSolid: "rgba(251,248,242,0.97)",
+    /** Hairline border. */
+    border: "rgba(31,28,23,0.14)",
+    borderStrong: "rgba(180,104,44,0.6)",
+    /** Drop shadow under a card that floats over the map. */
+    shadow: "rgba(31,28,23,0.22)",
+    /** The thumbstick, which sits over the map and must not hide it. */
+    control: "rgba(251,248,242,0.72)",
+    controlPressed: daylightTheme.accent,
+    controlInk: "rgba(31,28,23,0.62)",
+    /** Thumbstick knob at rest. */
+    controlKnob: "rgba(31,28,23,0.2)",
+    /** Type on the paper plate. */
+    ink: daylightTheme.ink,
+    inkMuted: daylightTheme.inkMuted,
+    accent: daylightTheme.accentInk,
+    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
+     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
+    arrow: HIGHLIGHT_CORAL,
+    fontPlaque: enamelTheme.fontPlaque,
+    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
+     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
+    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
+    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+  };
+
+  // src/canalRecall/labels/labelStyle.ts
+  var PILL_FONT = `700 12px ${hudSurface.fontUi}`;
+
+  // src/canalRecall/orientationPois.ts
+  var SPOILER_MIN_LENGTH = 5;
+  var SPOILER_MAX_WORDS = 5;
+  var DUTCH_NAME_SUFFIXES = [
+    "dwarsstraat",
+    "burgwal",
+    "gracht",
+    "straat",
+    "kanaal",
+    "sloot",
+    "steeg",
+    "plein",
+    "kade",
+    "brug",
+    "laan",
+    "dijk",
+    "weg",
+    "pad",
+    "hof"
+  ];
+  function normaliseSpoilerName(name) {
+    return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  function buildSpoilerIndex(names) {
+    const index = /* @__PURE__ */ new Set();
+    const lowerRaw = /* @__PURE__ */ new Set();
+    const full = /* @__PURE__ */ new Set();
+    for (const raw of names) {
+      if (!raw) continue;
+      const name = normaliseSpoilerName(raw);
+      if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
+      if (name.length < SPOILER_MIN_LENGTH) continue;
+      index.add(name);
+      full.add(name);
+      for (const suffix of DUTCH_NAME_SUFFIXES) {
+        if (!name.endsWith(suffix)) continue;
+        const stem = name.slice(0, -suffix.length).trim();
+        if (stem.length >= SPOILER_MIN_LENGTH) index.add(stem);
+        break;
+      }
+    }
+    return { names: index, lowerRaw, full };
+  }
+  var spoilsMemo = /* @__PURE__ */ new WeakMap();
+  function poiNameSpoils(label, index) {
+    if (!label || !index || index.names.size === 0) return false;
+    let memo = spoilsMemo.get(index);
+    if (!memo) spoilsMemo.set(index, memo = /* @__PURE__ */ new Map());
+    let spoils = memo.get(label);
+    if (spoils === void 0) memo.set(label, spoils = labelSpoils(label, index));
+    return spoils;
+  }
+  var labelGrams = /* @__PURE__ */ new Map();
+  var fullLengths = /* @__PURE__ */ new WeakMap();
+  function labelSpoils(label, index) {
+    let held = labelGrams.get(label);
+    if (!held) {
+      const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean), grams = [];
+      for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++)
+        for (let start = 0; start + size <= words2.length; start++) grams.push(words2.slice(start, start + size).join(" "));
+      labelGrams.set(label, held = { words: words2, grams });
+    }
+    for (const gram of held.grams) if (index.names.has(gram)) return true;
+    if (index.full && index.full.size) {
+      let lengths = fullLengths.get(index.full);
+      if (!lengths) fullLengths.set(index.full, lengths = [...new Set([...index.full].map((n) => n.length))].filter((n) => n >= SPOILER_MIN_LENGTH).sort((a, b) => a - b));
+      for (const word of held.words) {
+        for (const n of lengths) {
+          if (n >= word.length) break;
+          if (index.full.has(word.slice(0, n))) return true;
+        }
+      }
+    }
+    return false;
+  }
+  function maskSpoiledName(label, names, fallback = "your destination") {
+    if (!label) return label;
+    const chars = [];
+    const origin = [];
+    for (let i = 0; i < label.length; i++) {
+      const base = normaliseSpoilerName(label[i]);
+      if (base) {
+        chars.push(base);
+        origin.push(i);
+      } else if (chars.length && chars[chars.length - 1] !== " ") {
+        chars.push(" ");
+        origin.push(i);
+      }
+    }
+    const text = chars.join("");
+    const spans = [];
+    for (const raw of new Set(names)) {
+      const name = raw ? normaliseSpoilerName(raw) : "";
+      if (name.length < SPOILER_MIN_LENGTH) continue;
+      for (let at = text.indexOf(name); at !== -1; at = text.indexOf(name, at + 1)) {
+        if (at > 0 && text[at - 1] !== " ") continue;
+        spans.push([origin[at], origin[at + name.length - 1] + 1]);
+      }
+    }
+    if (!spans.length) return label;
+    spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+    let out = "";
+    let cursor = 0;
+    for (const [start, end] of spans) {
+      if (end <= cursor) continue;
+      out += label.slice(cursor, Math.max(cursor, start)) + "\u2026";
+      cursor = end;
+    }
+    out += label.slice(cursor);
+    return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
+  }
+  function mapLabelSpoils(raw, printed, asked) {
+    if (!asked || !raw) return false;
+    const index = buildSpoilerIndex([asked]);
+    if (!index.names.size) return normaliseSpoilerName(raw) === normaliseSpoilerName(asked);
+    for (const text of printed && printed !== raw ? [raw, printed] : [raw]) {
+      if (poiNameSpoils(text, index)) return true;
+      if (maskSpoiledName(text, [asked], "") !== text) return true;
+    }
+    return false;
+  }
+
+  // src/canalRecall/game/recallRules.ts
+  var MAX_HEADING_OFF_ROAD = Math.PI / 4;
+  var ROUTE_QUIZ_TURN_RADIANS = Math.PI / 6;
+  function hudWithholdsRouteName(input) {
+    if (input.promptName) return true;
+    if (input.candidateName && input.candidateName !== input.currentName) return true;
+    if (!input.roadName || input.roadName === input.currentName) return false;
+    return !input.revealed && !input.learned;
+  }
+  function routePlaqueName(input) {
+    const answerHidden = hudWithholdsRouteName(input);
+    return { routeName: answerHidden ? "" : input.shownName || input.roadName, answerHidden };
+  }
+
+  // src/canalRecall/ownMap/labelPolicy.ts
+  function withheldNames(game) {
+    return game.quizPromptName && game.quizWithheldNames?.length ? [...game.quizWithheldNames] : [];
+  }
+
   // src/canalRecall/hudCopy.ts
   function zoomBadgeText(zoom) {
     return t("hud.zoom", { percent: Math.round(zoom * 100) });
@@ -6711,20 +7123,6 @@
       recallNoun: t(template.recallNounKey),
       exploreNoun: t(template.exploreNounKey)
     };
-  }
-
-  // src/canalRecall/game/recallRules.ts
-  var MAX_HEADING_OFF_ROAD = Math.PI / 4;
-  var ROUTE_QUIZ_TURN_RADIANS = Math.PI / 6;
-  function hudWithholdsRouteName(input) {
-    if (input.promptName) return true;
-    if (input.candidateName && input.candidateName !== input.currentName) return true;
-    if (!input.roadName || input.roadName === input.currentName) return false;
-    return !input.revealed && !input.learned;
-  }
-  function routePlaqueName(input) {
-    const answerHidden = hudWithholdsRouteName(input);
-    return { routeName: answerHidden ? "" : input.shownName || input.roadName, answerHidden };
   }
 
   // src/canalRecall/bridgeDisplayNames.ts
@@ -7318,356 +7716,6 @@
     if (bicycle === "dismount") return "Walk bikes in real life";
     if (bicycle === "private" || bicycle === "customers") return "Private \u2014 no public cycling";
     return "No cycling in real life";
-  }
-
-  // src/canalRecall/look/palette.ts
-  var PHOTO_WALL_CELL_MEAN = 225;
-  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
-  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
-  var LOOK_VARIANTS = {
-    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
-    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
-    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
-    // Storybook warms and lifts the natural palette a little, as an illustrator would.
-    storybook: {
-      cells: "storybook",
-      shadeBands: 0,
-      flatColour: false,
-      ...DRAWN_CALM,
-      cartoonRoofCells: false,
-      outline: true,
-      litWallGain: 1,
-      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
-    },
-    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
-    cartoon: {
-      cells: "cartoon",
-      shadeBands: 3,
-      flatColour: false,
-      ...DRAWN_CALM,
-      cartoonRoofCells: true,
-      outline: true,
-      litWallGain: 1,
-      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
-    }
-  };
-  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
-  var ROOF_TONES = {
-    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
-    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
-  };
-  var ROOF_SLOT_TONES = {
-    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
-    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
-    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
-    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
-    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
-    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
-    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
-    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
-    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
-    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
-    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
-    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
-  };
-  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
-  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
-  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
-  var PERIOD_WALLS = {
-    photo: {
-      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
-      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
-      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
-      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
-    },
-    storybook: {
-      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
-      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
-      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
-      modern: null
-    },
-    cartoon: {
-      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
-      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
-      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
-      modern: null
-    }
-  };
-  var PERIOD_PRIORS = {
-    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
-    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
-    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
-    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
-  };
-  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
-  var GLASS_TINT_CELL_W = 32;
-  var GLASS_TINT_CELL_H = 64;
-  var PANE_LUMA = [157.19, 92.83, 69.17];
-  var STREAK_LUMA = 240.95;
-  var STREAK_ALPHA = 0.16;
-  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
-  function glassTintCellValue(x, y) {
-    const t2 = y / (GLASS_TINT_CELL_H - 1);
-    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
-    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
-    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
-  }
-  var GLASS_TINT_CELL_MEAN = (() => {
-    let sum = 0;
-    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
-    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
-  })();
-  var STONE_CELL_MEAN = 228 / 255;
-  var STREET_GROUND = {
-    // Was [72, 74, 78]: under the rig it drew at luma 67 in sun and 59 in shade, "near-black" (user live play
-    // 2026-10-14). Lifted to a sunlit-grey 88 (just under the klinker carriageway's 91, still cooler than it); with
-    // ownGround/groundLight.ts it draws 88 in sun and 78 in cast shadow, above LOOK's road floor of 65–75.
-    asphalt: { base: [86, 88, 93] },
-    cycle: { base: [150, 66, 58] },
-    // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
-    // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
-    klinker: { base: [122, 90, 80], joint: "#4b3d38" },
-    pavement: { base: [174, 162, 152], joint: "#7f756b" },
-    kerb: "#cfcac0",
-    paint: "#f2f0ea",
-    rail: "#6c6e72",
-    bollard: "#5a2a26"
-  };
-  var HIGHLIGHT_CORAL = "#ff8033";
-  var GROUND_TONES = {
-    land: { base: [168, 158, 142], joint: "#857b6d" },
-    paving: { base: [184, 174, 158], joint: "#8f8577" },
-    square: { base: [190, 179, 161], joint: "#958a7c" },
-    // Klinker warm grey-rose, asphalt darker and cooler than it ("so much grey": they shared one band).
-    klinker: { base: [158, 124, 114], joint: "#7a6660" },
-    asphalt: [68, 72, 80],
-    cycle: [156, 76, 66],
-    gravel: [180, 166, 136],
-    park: [96, 140, 70],
-    wood: [70, 112, 58],
-    parking: [102, 102, 105],
-    kerb: "#aaa498",
-    water: "#46707c",
-    // Parks (parks-v1, ownGround/parks.ts, 2026-10-13): mown lawn fresher than the park fill under it, planting beds
-    // as soil with green dabs, shrub planting darker and clumped, bark mulch, play sand, shell/half-paved paths lighter
-    // than street gravel, park asphalt lighter than the road's, ponds the canal tone (a greener one read as a shadow).
-    lawn: [110, 154, 74],
-    bed: { soil: [98, 80, 60], leaf: [84, 122, 58] },
-    shrub: { base: [56, 92, 46], leaf: [76, 116, 56] },
-    bark: [118, 84, 58],
-    sand: [212, 194, 150],
-    parkGravel: [198, 184, 152],
-    parkPath: [110, 110, 112],
-    pond: "#46707c"
-  };
-
-  // src/canalRecall/hudTheme.ts
-  var enamelTheme = {
-    enamel: "#0b3a8c",
-    enamelBright: "#1450b8",
-    enamelDeep: "#072861",
-    night: "#071430",
-    ink: "#ffffff",
-    inkMuted: "rgba(255,255,255,0.72)",
-    inkDim: "rgba(255,255,255,0.86)",
-    line: "rgba(255,255,255,0.28)",
-    /** Rivet / gold accent (plaque corners, selected hairline). */
-    rivet: "#c4a35a",
-    rivetDeep: "#8a7040",
-    /** Copper stamp (Start / Confirm). */
-    copper: "#b87333",
-    copperHi: "#d9a05b",
-    copperDeep: "#8a5524",
-    copperMid: "#c9844a",
-    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
-  };
-  var daylightTheme = {
-    paper: "#f4efe5",
-    paperRaised: "#fbf8f2",
-    paperSunk: "#ebe4d6",
-    ink: "#1f1c17",
-    /** 6.3:1 on paper — secondary copy. */
-    inkMuted: "#5f584d",
-    line: "rgba(31,28,23,0.14)",
-    lineStrong: "rgba(31,28,23,0.26)",
-    fill: "rgba(31,28,23,0.045)",
-    fillHover: "rgba(31,28,23,0.085)",
-    accent: "#b4682c",
-    /** Copper dark enough for text on paper (≈6:1). */
-    accentInk: "#8a4a18",
-    accentSoft: "rgba(180,104,44,0.13)",
-    scrim: "rgba(28,24,18,0.38)",
-    danger: "#a8321f"
-  };
-  var paperTheme = {
-    paper: enamelTheme.enamel,
-    paperRaised: enamelTheme.enamelBright,
-    paperMuted: enamelTheme.enamelDeep,
-    ink: enamelTheme.ink,
-    inkMuted: enamelTheme.inkMuted,
-    line: enamelTheme.line,
-    moss: enamelTheme.enamelBright,
-    mossDark: enamelTheme.enamelDeep,
-    mossSoft: "rgba(20,80,184,0.28)",
-    terracotta: enamelTheme.copper,
-    ochre: enamelTheme.rivet
-  };
-  var hudSurface = {
-    /** Always-on readouts sitting directly on the map. */
-    card: "rgba(251,248,242,0.9)",
-    /** Cards you stop and read: the trivia card, the postcard. */
-    cardSolid: "rgba(251,248,242,0.97)",
-    /** Hairline border. */
-    border: "rgba(31,28,23,0.14)",
-    borderStrong: "rgba(180,104,44,0.6)",
-    /** Drop shadow under a card that floats over the map. */
-    shadow: "rgba(31,28,23,0.22)",
-    /** The thumbstick, which sits over the map and must not hide it. */
-    control: "rgba(251,248,242,0.72)",
-    controlPressed: daylightTheme.accent,
-    controlInk: "rgba(31,28,23,0.62)",
-    /** Thumbstick knob at rest. */
-    controlKnob: "rgba(31,28,23,0.2)",
-    /** Type on the paper plate. */
-    ink: daylightTheme.ink,
-    inkMuted: daylightTheme.inkMuted,
-    accent: daylightTheme.accentInk,
-    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
-     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
-    arrow: HIGHLIGHT_CORAL,
-    fontPlaque: enamelTheme.fontPlaque,
-    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
-     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
-    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
-    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
-  };
-
-  // src/canalRecall/labels/labelStyle.ts
-  var PILL_FONT = `700 12px ${hudSurface.fontUi}`;
-
-  // src/canalRecall/orientationPois.ts
-  var SPOILER_MIN_LENGTH = 5;
-  var SPOILER_MAX_WORDS = 5;
-  var DUTCH_NAME_SUFFIXES = [
-    "dwarsstraat",
-    "burgwal",
-    "gracht",
-    "straat",
-    "kanaal",
-    "sloot",
-    "steeg",
-    "plein",
-    "kade",
-    "brug",
-    "laan",
-    "dijk",
-    "weg",
-    "pad",
-    "hof"
-  ];
-  function normaliseSpoilerName(name) {
-    return name.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-  }
-  function buildSpoilerIndex(names) {
-    const index = /* @__PURE__ */ new Set();
-    const lowerRaw = /* @__PURE__ */ new Set();
-    const full = /* @__PURE__ */ new Set();
-    for (const raw of names) {
-      if (!raw) continue;
-      const name = normaliseSpoilerName(raw);
-      if (name.length >= SPOILER_MIN_LENGTH) lowerRaw.add(raw.trim().toLowerCase());
-      if (name.length < SPOILER_MIN_LENGTH) continue;
-      index.add(name);
-      full.add(name);
-      for (const suffix of DUTCH_NAME_SUFFIXES) {
-        if (!name.endsWith(suffix)) continue;
-        const stem = name.slice(0, -suffix.length).trim();
-        if (stem.length >= SPOILER_MIN_LENGTH) index.add(stem);
-        break;
-      }
-    }
-    return { names: index, lowerRaw, full };
-  }
-  var spoilsMemo = /* @__PURE__ */ new WeakMap();
-  function poiNameSpoils(label, index) {
-    if (!label || !index || index.names.size === 0) return false;
-    let memo = spoilsMemo.get(index);
-    if (!memo) spoilsMemo.set(index, memo = /* @__PURE__ */ new Map());
-    let spoils = memo.get(label);
-    if (spoils === void 0) memo.set(label, spoils = labelSpoils(label, index));
-    return spoils;
-  }
-  var labelGrams = /* @__PURE__ */ new Map();
-  var fullLengths = /* @__PURE__ */ new WeakMap();
-  function labelSpoils(label, index) {
-    let held = labelGrams.get(label);
-    if (!held) {
-      const words2 = normaliseSpoilerName(label).split(" ").filter(Boolean), grams = [];
-      for (let size = 1; size <= Math.min(SPOILER_MAX_WORDS, words2.length); size++)
-        for (let start = 0; start + size <= words2.length; start++) grams.push(words2.slice(start, start + size).join(" "));
-      labelGrams.set(label, held = { words: words2, grams });
-    }
-    for (const gram of held.grams) if (index.names.has(gram)) return true;
-    if (index.full && index.full.size) {
-      let lengths = fullLengths.get(index.full);
-      if (!lengths) fullLengths.set(index.full, lengths = [...new Set([...index.full].map((n) => n.length))].filter((n) => n >= SPOILER_MIN_LENGTH).sort((a, b) => a - b));
-      for (const word of held.words) {
-        for (const n of lengths) {
-          if (n >= word.length) break;
-          if (index.full.has(word.slice(0, n))) return true;
-        }
-      }
-    }
-    return false;
-  }
-  function maskSpoiledName(label, names, fallback = "your destination") {
-    if (!label) return label;
-    const chars = [];
-    const origin = [];
-    for (let i = 0; i < label.length; i++) {
-      const base = normaliseSpoilerName(label[i]);
-      if (base) {
-        chars.push(base);
-        origin.push(i);
-      } else if (chars.length && chars[chars.length - 1] !== " ") {
-        chars.push(" ");
-        origin.push(i);
-      }
-    }
-    const text = chars.join("");
-    const spans = [];
-    for (const raw of new Set(names)) {
-      const name = raw ? normaliseSpoilerName(raw) : "";
-      if (name.length < SPOILER_MIN_LENGTH) continue;
-      for (let at = text.indexOf(name); at !== -1; at = text.indexOf(name, at + 1)) {
-        if (at > 0 && text[at - 1] !== " ") continue;
-        spans.push([origin[at], origin[at + name.length - 1] + 1]);
-      }
-    }
-    if (!spans.length) return label;
-    spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
-    let out = "";
-    let cursor = 0;
-    for (const [start, end] of spans) {
-      if (end <= cursor) continue;
-      out += label.slice(cursor, Math.max(cursor, start)) + "\u2026";
-      cursor = end;
-    }
-    out += label.slice(cursor);
-    return /[\p{L}\p{N}]/u.test(out) ? out : fallback;
-  }
-  function mapLabelSpoils(raw, printed, asked) {
-    if (!asked || !raw) return false;
-    const index = buildSpoilerIndex([asked]);
-    if (!index.names.size) return normaliseSpoilerName(raw) === normaliseSpoilerName(asked);
-    for (const text of printed && printed !== raw ? [raw, printed] : [raw]) {
-      if (poiNameSpoils(text, index)) return true;
-      if (maskSpoiledName(text, [asked], "") !== text) return true;
-    }
-    return false;
   }
 
   // src/canalRecall/game/trackpadTwist.ts
@@ -8629,6 +8677,7 @@
           else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
           else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
           else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
+          else if (this._landmarkActionBounds && hit(this._landmarkActionBounds)) this._noticeLandmark();
           else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
           else if (this.freeRide && this.state === GameState.RACING) this._freeRideClick(x, y, event.clientX, event.clientY);
           else this._inspectBuildingAt(event.clientX, event.clientY);
@@ -8886,13 +8935,15 @@
       }
       this.track.placeStartTag = (centreX, defaultCentreY, pill) => startTagCentreY(centreX, defaultCentreY, pill, vehicleBox);
       const asked = this.quizPromptName || this.quizCandidateName || "";
+      const withheld = withheldNames(this);
       const shownText = (text) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text);
-      if (!this._labelSpoilCache || this._labelSpoilCache.asked !== asked) this._labelSpoilCache = { asked, spoils: /* @__PURE__ */ new Map() };
+      const spoilKey = withheld.length ? `${asked}\0${withheld.join("\0")}` : asked;
+      if (!this._labelSpoilCache || this._labelSpoilCache.asked !== spoilKey) this._labelSpoilCache = { asked: spoilKey, spoils: /* @__PURE__ */ new Map() };
       const spoilCache = this._labelSpoilCache.spoils;
       const spoils = (text) => {
         let hit = spoilCache.get(text);
         if (hit === void 0) {
-          hit = mapLabelSpoils(text, shownText(text), asked);
+          hit = !!asked && mapLabelSpoils(text, shownText(text), asked) || withheld.some((name) => mapLabelSpoils(text, shownText(text), name));
           spoilCache.set(text, hit);
         }
         return hit;
@@ -8900,7 +8951,7 @@
       const tilted = occlusionWanted(pitched, this.vectorMap?.map?.getPitch?.());
       const hiddenBy = (this._streetLabelOcclusion ||= new StreetLabelOcclusion()).frame(this.vectorMap, this.osmLoader, tilted);
       const placement = this._streetLabelPlacement ||= new StreetLabelPlacement();
-      if (free) this.track.drawLabels(ctx, this.camera, () => true, "", player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
+      if (free) this.track.drawLabels(ctx, this.camera, (text) => !(withheld.length && spoils(text)), "", player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
       else this.track.drawLabels(
         ctx,
         this.camera,
@@ -10123,7 +10174,10 @@
         const stamped = stampNewNeighborhoods(
           after,
           this._visitedNeighborhoods,
-          readPassport(localStorage)
+          readPassport(localStorage),
+          void 0,
+          // Landmarks noticed on a drive-by card or named in a question (G3).
+          sightingCredit(readSightings(localStorage))
         );
         if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
         this._finishPassportFresh = stamped.fresh;

@@ -488,6 +488,8 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.route.hereHint": "Start from where you are now",
     "setup.route.free": "Free ride",
     "setup.route.freeHint": "No route, no questions: ride anywhere and tap what you pass",
+    "setup.freeRideLandmarkQuiz": "Quiz me on landmarks",
+    "setup.freeRideLandmarkQuizHint": "A modelled building in view, four names, one right",
     "freeRide.badge": "Free ride",
     "freeRide.exit": "Exit",
     "freeRide.exitLabel": "Leave free ride and go back to setup",
@@ -761,6 +763,8 @@ Map source: ${osmUrl(places[i][0])}`);
     "prompt.placeholder.bridge": "Bridge name",
     "prompt.placeholder.line": "Line name",
     "prompt.placeholder.stop": "Stop name",
+    "prompt.label.landmark": "Landmark",
+    "prompt.placeholder.landmark": "Building name",
     "prompt.waterway": "Waterway",
     "prompt.turn": "You made a turn",
     "prompt.submit": "Submit answer",
@@ -1034,6 +1038,12 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.startExploring": "Start exploring",
     "ride.noCycling": "No cycling in real life",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Which building is this?",
+    "ride.landmarkQuestion.ahead": "Ahead",
+    "ride.landmarkQuestion.left": "On the left",
+    "ride.landmarkQuestion.right": "On the right",
+    "ride.landmarkNoticed.action": "Noticed",
+    "ride.landmarkNoticed.done": "Noted",
     "ride.researchSource": "Research source \u2197",
     "ride.rules.title": "HOW TO PLAY",
     "ride.rules.bike1": "1. Use WASD or the arrow keys to steer the bike",
@@ -1114,6 +1124,8 @@ Map source: ${osmUrl(places[i][0])}`);
     "setup.route.hereHint": "Start waar je nu bent",
     "setup.route.free": "Vrij rijden",
     "setup.route.freeHint": "Geen route, geen vragen: rijd waar je wilt en tik op wat je ziet",
+    "setup.freeRideLandmarkQuiz": "Overhoor me op gebouwen",
+    "setup.freeRideLandmarkQuizHint": "Een gemodelleerd gebouw in zicht, vier namen, \xE9\xE9n goed",
     "freeRide.badge": "Vrij rijden",
     "freeRide.exit": "Stoppen",
     "freeRide.exitLabel": "Stop met vrij rijden en ga terug naar het startscherm",
@@ -1387,6 +1399,8 @@ Map source: ${osmUrl(places[i][0])}`);
     "prompt.placeholder.bridge": "Naam van de brug",
     "prompt.placeholder.line": "Naam van de lijn",
     "prompt.placeholder.stop": "Naam van de halte",
+    "prompt.label.landmark": "Bezienswaardigheid",
+    "prompt.placeholder.landmark": "Naam van het gebouw",
     "prompt.waterway": "Waterweg",
     "prompt.turn": "Je sloeg af",
     "prompt.submit": "Antwoord insturen",
@@ -1660,6 +1674,12 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.startExploring": "Begin met verkennen",
     "ride.noCycling": "Geen fietsen in het echt",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Welk gebouw is dit?",
+    "ride.landmarkQuestion.ahead": "Recht vooruit",
+    "ride.landmarkQuestion.left": "Links",
+    "ride.landmarkQuestion.right": "Rechts",
+    "ride.landmarkNoticed.action": "Gezien",
+    "ride.landmarkNoticed.done": "Genoteerd",
     "ride.researchSource": "Bron \u2197",
     "ride.rules.title": "HOE SPEEL JE",
     "ride.rules.bike1": "1. Stuur de fiets met WASD of de pijltjestoetsen",
@@ -1864,9 +1884,9 @@ Map source: ${osmUrl(places[i][0])}`);
     return { detail: `${lead} ${factText2}`, opening: lead };
   }
   var ROTATION_STORAGE_KEY = "canalRecall.factRotation.v1";
-  function loadRotationState(storage2) {
+  function loadRotationState(storage3) {
     try {
-      const raw = storage2?.getItem(ROTATION_STORAGE_KEY);
+      const raw = storage3?.getItem(ROTATION_STORAGE_KEY);
       if (!raw) return emptyRotationState();
       const parsed = JSON.parse(raw);
       return {
@@ -1878,9 +1898,9 @@ Map source: ${osmUrl(places[i][0])}`);
       return emptyRotationState();
     }
   }
-  function saveRotationState(storage2, state) {
+  function saveRotationState(storage3, state) {
     try {
-      storage2?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
+      storage3?.setItem(ROTATION_STORAGE_KEY, JSON.stringify(pruneHistory(state)));
     } catch {
     }
   }
@@ -1908,9 +1928,9 @@ Map source: ${osmUrl(places[i][0])}`);
       }
     };
   }
-  function commitShownFact(storage2, state, choice) {
+  function commitShownFact(storage3, state, choice) {
     const next = recordShown(state, choice);
-    saveRotationState(storage2, next);
+    saveRotationState(storage3, next);
     return next;
   }
 
@@ -5747,22 +5767,237 @@ ${register}` : detail,
     return text.trim();
   }
 
+  // src/canalRecall/look/palette.ts
+  var PHOTO_WALL_CELL_MEAN = 225;
+  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
+  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
+  var LOOK_VARIANTS = {
+    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
+    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    // Storybook warms and lifts the natural palette a little, as an illustrator would.
+    storybook: {
+      cells: "storybook",
+      shadeBands: 0,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: false,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
+    },
+    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
+    cartoon: {
+      cells: "cartoon",
+      shadeBands: 3,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: true,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
+    }
+  };
+  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
+  var ROOF_TONES = {
+    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
+    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
+  };
+  var ROOF_SLOT_TONES = {
+    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
+    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
+    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
+    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
+    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
+    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
+    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
+    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
+    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
+    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
+    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
+    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
+  };
+  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
+  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
+  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var PERIOD_WALLS = {
+    photo: {
+      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
+      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
+      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
+      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
+    },
+    storybook: {
+      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
+      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
+      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
+      modern: null
+    },
+    cartoon: {
+      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
+      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
+      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
+      modern: null
+    }
+  };
+  var PERIOD_PRIORS = {
+    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
+    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
+    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
+    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
+  };
+  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
+  var GLASS_TINT_CELL_W = 32;
+  var GLASS_TINT_CELL_H = 64;
+  var PANE_LUMA = [157.19, 92.83, 69.17];
+  var STREAK_LUMA = 240.95;
+  var STREAK_ALPHA = 0.16;
+  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
+  function glassTintCellValue(x, y) {
+    const t2 = y / (GLASS_TINT_CELL_H - 1);
+    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
+    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
+    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
+  }
+  var GLASS_TINT_CELL_MEAN = (() => {
+    let sum = 0;
+    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
+    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
+  })();
+  var STONE_CELL_MEAN = 228 / 255;
+  var HIGHLIGHT_CORAL = "#ff8033";
+
+  // src/canalRecall/hudTheme.ts
+  var enamelTheme = {
+    enamel: "#0b3a8c",
+    enamelBright: "#1450b8",
+    enamelDeep: "#072861",
+    night: "#071430",
+    ink: "#ffffff",
+    inkMuted: "rgba(255,255,255,0.72)",
+    inkDim: "rgba(255,255,255,0.86)",
+    line: "rgba(255,255,255,0.28)",
+    /** Rivet / gold accent (plaque corners, selected hairline). */
+    rivet: "#c4a35a",
+    rivetDeep: "#8a7040",
+    /** Copper stamp (Start / Confirm). */
+    copper: "#b87333",
+    copperHi: "#d9a05b",
+    copperDeep: "#8a5524",
+    copperMid: "#c9844a",
+    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
+  };
+  var daylightTheme = {
+    paper: "#f4efe5",
+    paperRaised: "#fbf8f2",
+    paperSunk: "#ebe4d6",
+    ink: "#1f1c17",
+    /** 6.3:1 on paper — secondary copy. */
+    inkMuted: "#5f584d",
+    line: "rgba(31,28,23,0.14)",
+    lineStrong: "rgba(31,28,23,0.26)",
+    fill: "rgba(31,28,23,0.045)",
+    fillHover: "rgba(31,28,23,0.085)",
+    accent: "#b4682c",
+    /** Copper dark enough for text on paper (≈6:1). */
+    accentInk: "#8a4a18",
+    accentSoft: "rgba(180,104,44,0.13)",
+    scrim: "rgba(28,24,18,0.38)",
+    danger: "#a8321f"
+  };
+  var paperTheme = {
+    paper: enamelTheme.enamel,
+    paperRaised: enamelTheme.enamelBright,
+    paperMuted: enamelTheme.enamelDeep,
+    ink: enamelTheme.ink,
+    inkMuted: enamelTheme.inkMuted,
+    line: enamelTheme.line,
+    moss: enamelTheme.enamelBright,
+    mossDark: enamelTheme.enamelDeep,
+    mossSoft: "rgba(20,80,184,0.28)",
+    terracotta: enamelTheme.copper,
+    ochre: enamelTheme.rivet
+  };
+  var hudSurface = {
+    /** Always-on readouts sitting directly on the map. */
+    card: "rgba(251,248,242,0.9)",
+    /** Cards you stop and read: the trivia card, the postcard. */
+    cardSolid: "rgba(251,248,242,0.97)",
+    /** Hairline border. */
+    border: "rgba(31,28,23,0.14)",
+    borderStrong: "rgba(180,104,44,0.6)",
+    /** Drop shadow under a card that floats over the map. */
+    shadow: "rgba(31,28,23,0.22)",
+    /** The thumbstick, which sits over the map and must not hide it. */
+    control: "rgba(251,248,242,0.72)",
+    controlPressed: daylightTheme.accent,
+    controlInk: "rgba(31,28,23,0.62)",
+    /** Thumbstick knob at rest. */
+    controlKnob: "rgba(31,28,23,0.2)",
+    /** Type on the paper plate. */
+    ink: daylightTheme.ink,
+    inkMuted: daylightTheme.inkMuted,
+    accent: daylightTheme.accentInk,
+    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
+     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
+    arrow: HIGHLIGHT_CORAL,
+    fontPlaque: enamelTheme.fontPlaque,
+    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
+     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
+    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
+    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+  };
+
+  // src/canalRecall/noticeCards.ts
+  var BADGE_FONT = `700 11px ${hudSurface.fontMono}`;
+  var NAME_FONT = `800 16px ${hudSurface.fontPlaque}`;
+  var BODY_FONT = `500 11px ${hudSurface.fontUi}`;
+  var CLOSE_SIZE = 14;
+  var CLOSE_ROOM = CLOSE_SIZE + 10;
+  var ACTION_FONT = `800 11px ${hudSurface.fontMono}`;
+  function drawCardAction(ctx, rect, cardX, cardY, label, done) {
+    const x = cardX + rect.x, y = cardY + rect.y;
+    const r = rect.height / 2;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + rect.width, y, x + rect.width, y + rect.height, r);
+    ctx.arcTo(x + rect.width, y + rect.height, x, y + rect.height, r);
+    ctx.arcTo(x, y + rect.height, x, y, r);
+    ctx.arcTo(x, y, x + rect.width, y, r);
+    ctx.closePath();
+    ctx.fillStyle = done ? "rgba(47,111,71,.12)" : "rgba(180,104,44,.10)";
+    ctx.fill();
+    ctx.lineWidth = 1.25;
+    ctx.strokeStyle = done ? "#2f6f47" : "#8a4a18";
+    ctx.stroke();
+    ctx.font = ACTION_FONT;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = done ? "#2f6f47" : "#8a4a18";
+    ctx.fillText(label.toUpperCase(), x + rect.width / 2, y + rect.height / 2 + 0.5);
+    ctx.restore();
+  }
+
   // src/canalRecall/game/postcardPacing.ts
   var storageKey = (cityId) => `canalRecall.neighborhoodEntries.${cityId}`;
-  function loadEntryCounts(storage2, cityId) {
+  function loadEntryCounts(storage3, cityId) {
     try {
-      const raw = storage2?.getItem(storageKey(cityId));
+      const raw = storage3?.getItem(storageKey(cityId));
       const parsed = raw ? JSON.parse(raw) : {};
       return new Map(Object.entries(parsed).filter((e) => typeof e[1] === "number"));
     } catch {
       return /* @__PURE__ */ new Map();
     }
   }
-  function recordEntry(storage2, cityId, counts, name) {
+  function recordEntry(storage3, cityId, counts, name) {
     const prior = counts.get(name) ?? 0;
     counts.set(name, prior + 1);
     try {
-      storage2?.setItem(storageKey(cityId), JSON.stringify(Object.fromEntries(counts)));
+      storage3?.setItem(storageKey(cityId), JSON.stringify(Object.fromEntries(counts)));
     } catch {
     }
     return prior;
@@ -5927,6 +6162,378 @@ ${register}` : detail,
   }
   function driveByGapElapsed(lastShownAt, now) {
     return sinceEvent(now, lastShownAt) >= DRIVE_BY_MIN_GAP_SECONDS;
+  }
+
+  // src/canalRecall/game/landmarkQuestion.ts
+  var LANDMARK_QUESTION_RADIUS_M = 150;
+  var LANDMARK_QUESTION_HALF_CONE = 55 * Math.PI / 180;
+  var SAME_COMPLEX_M = 40;
+  var LANDMARK_CHOICE_COUNT = 4;
+  var FILLER_MAX_M = 900;
+  function nameKey(name) {
+    return name.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  function inViewCone(rider, point, radiusPx, halfCone = LANDMARK_QUESTION_HALF_CONE) {
+    const dx = point.x - rider.x, dy = point.y - rider.y;
+    const distance = Math.hypot(dx, dy);
+    if (distance > radiusPx) return false;
+    if (distance < 1) return true;
+    const heading = rider.speed < 0 ? rider.angle + Math.PI : rider.angle;
+    let off = Math.atan2(dy, dx) - heading;
+    off = Math.atan2(Math.sin(off), Math.cos(off));
+    return Math.abs(off) <= halfCone;
+  }
+  function pickLandmarkQuestion(rider, candidates, options) {
+    let best = null;
+    let bestDistance = Infinity;
+    for (const candidate of candidates) {
+      if (!candidate.name || options.skip?.has(candidate.id)) continue;
+      if (!inViewCone(rider, candidate, options.radiusPx, options.halfCone)) continue;
+      const distance = Math.hypot(candidate.x - rider.x, candidate.y - rider.y);
+      if (distance < bestDistance) {
+        best = candidate;
+        bestDistance = distance;
+      }
+    }
+    return best;
+  }
+  function landmarkChoices(answer, pool, options) {
+    const count = options.count ?? LANDMARK_CHOICE_COUNT;
+    const taken = /* @__PURE__ */ new Set([nameKey(answer.name)]);
+    const near = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+    const eligible2 = pool.filter((other) => other.id !== answer.id && !!other.name && near(other, answer) > options.sameComplexPx);
+    const byDistance = (a, b) => near(a, answer) - near(b, answer) || a.name.localeCompare(b.name);
+    const sameHood = answer.hood ? eligible2.filter((other) => other.hood === answer.hood).sort(byDistance) : [];
+    const filler = eligible2.filter((other) => !(answer.hood && other.hood === answer.hood) && near(other, answer) <= options.fillerMaxPx).sort(byDistance);
+    const picked = [];
+    for (const other of [...sameHood, ...filler]) {
+      if (picked.length >= count - 1) break;
+      const key = nameKey(other.name);
+      if (!key || taken.has(key)) continue;
+      if ([...taken].some((seen) => seen.includes(key) || key.includes(seen))) continue;
+      taken.add(key);
+      picked.push(other.name);
+    }
+    if (picked.length < count - 1) return null;
+    const choices = [answer.name, ...picked];
+    return options.shuffle ? options.shuffle(choices) : choices;
+  }
+  function landmarkWithheldNames(answer, choices) {
+    return [...new Set([answer, ...choices].filter(Boolean))];
+  }
+  function mayAskLandmark(slot) {
+    return !slot.questionOpen && !slot.streetCandidate && !slot.feedbackVisible && !slot.utilityOpen;
+  }
+  function landmarkQuestionsEnabled(search2, mode) {
+    const flag = /[?&]landmarkQuestions=([^&]*)/.exec(search2 || "");
+    if (flag && (flag[1] === "0" || flag[1] === "false" || flag[1] === "off")) return false;
+    return mode.freeRide ? mode.freeRideQuiz : true;
+  }
+  var LANDMARK_SIGHTINGS_KEY = "canalRecall.landmarkSightings.v1";
+  function readSightings(store) {
+    try {
+      const raw = store?.getItem(LANDMARK_SIGHTINGS_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      const out = {};
+      for (const [id, value] of Object.entries(parsed || {})) {
+        if (!value || value.how !== "noticed" && value.how !== "named") continue;
+        out[id] = { hood: String(value.hood || ""), how: value.how, at: Number(value.at) || 0 };
+      }
+      return out;
+    } catch {
+      return {};
+    }
+  }
+  function saveSightings(store, sightings) {
+    try {
+      store?.setItem(LANDMARK_SIGHTINGS_KEY, JSON.stringify(sightings));
+    } catch {
+    }
+  }
+  function noteSighting(sightings, id, hood, how, at) {
+    const existing = sightings[id];
+    if (existing && (existing.how === "named" || existing.how === how)) return { sightings, isNew: false };
+    return { sightings: { ...sightings, [id]: { hood: hood || existing?.hood || "", how, at } }, isNew: true };
+  }
+  function hasBeenNamed(sightings, id) {
+    return sightings[id]?.how === "named";
+  }
+  function bumpSessionCounter(target, key) {
+    if (!target) return 0;
+    const session = target.__canalRecallSession ||= {};
+    const next = (Number(session[key]) || 0) + 1;
+    session[key] = next;
+    return next;
+  }
+
+  // src/canalRecall/game/questionBudget.ts
+  var DEFAULT_MAX_ASKS_PER_MINUTE = 5;
+  var BUDGET_WINDOW_SECONDS = 60;
+  var EMPTY_BUDGET = { asks: [] };
+  function resolveSettings(settings) {
+    const raw = settings?.maxAsksPerMinute;
+    return { maxAsksPerMinute: raw == null || Number.isNaN(raw) ? DEFAULT_MAX_ASKS_PER_MINUTE : Math.max(0, raw) };
+  }
+  function recentAsks(state, now) {
+    return state.asks.filter((at) => at <= now && now - at < BUDGET_WINDOW_SECONDS);
+  }
+  function minGapSeconds(settings) {
+    const max = settings.maxAsksPerMinute;
+    if (!(max > 0) || !Number.isFinite(max)) return 0;
+    return BUDGET_WINDOW_SECONDS / max / 2;
+  }
+  function priorityOf(event) {
+    if (event.kind === "due-review") return "review";
+    return event.teachingStreet ? "teaching" : "rest";
+  }
+  function decideQuestion(state, event, now, settingsInput) {
+    const settings = resolveSettings(settingsInput);
+    if (event.kind === "known") return { action: "skip", reason: "known" };
+    const unlearned = event.kind === "new-unlearned";
+    const declined = (reason) => unlearned ? { action: "reveal-after-pass", reason } : { action: "skip", reason };
+    const max = settings.maxAsksPerMinute;
+    if (max === 0) return unlearned ? { action: "reveal-after-pass", reason: "budget" } : { action: "skip", reason: "off" };
+    const priority = priorityOf(event);
+    if (!Number.isFinite(max)) return { action: "ask", priority };
+    const recent = recentAsks(state, now);
+    const remaining = max - recent.length;
+    if (remaining < 1) return declined("budget");
+    const last = recent.length ? recent[recent.length - 1] : -Infinity;
+    if (now - last < minGapSeconds(settings)) return declined("spacing");
+    if (priority === "rest" && remaining < 2) return { action: "reveal-after-pass", reason: "reserved" };
+    return { action: "ask", priority };
+  }
+  function recordAsk(state, now) {
+    return { asks: [...recentAsks(state, now), now] };
+  }
+
+  // src/canalRecall/game/silentPass.ts
+  function questionFreezesRide(open, silent) {
+    return open && !silent;
+  }
+  function answerHoldMayHide(holdIsCurrent, questionOpen, silent) {
+    return holdIsCurrent && !questionFreezesRide(questionOpen, silent);
+  }
+
+  // src/canalRecall/game/landmarkQuestionRuntime.ts
+  var AHEAD_HALF_ANGLE = 15 * Math.PI / 180;
+  var LANDMARK_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 4l9 6"/><path d="M5 10v9M19 10v9M9.5 19v-5h5v5M3 20h18"/></svg>';
+  function storage2() {
+    try {
+      return typeof localStorage === "undefined" ? null : localStorage;
+    } catch {
+      return null;
+    }
+  }
+  function search() {
+    try {
+      return typeof location === "undefined" ? "" : location.search || "";
+    } catch {
+      return "";
+    }
+  }
+  function shuffle(items) {
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    return items;
+  }
+  var GameLandmarkQuestionRuntime = class {
+    /** Whether this ride asks landmark questions (flag, Free Ride opt-in). */
+    _landmarkQuestionsOn() {
+      const prefs = (this._overlay ?? window.CanalRecallOverlay?.getOverlay?.())?.store.getState().prefs;
+      return landmarkQuestionsEnabled(search(), { freeRide: !!this.freeRide, freeRideQuiz: !!prefs?.landmarkQuiz });
+    }
+    _landmarkSightings() {
+      return this._landmarkSightingsCache ??= readSightings(storage2());
+    }
+    _noteLandmarkSighting(landmark, how) {
+      const hood = this._neighborhoodAt(landmark.x, landmark.y)?.name || this.currentNeighborhood || "";
+      const step = noteSighting(this._landmarkSightings(), landmark.id, hood, how, Date.now());
+      if (!step.isNew) return false;
+      this._landmarkSightingsCache = step.sightings;
+      saveSightings(storage2(), step.sightings);
+      return true;
+    }
+    /** Landmark ids with a hand-built model (the manual catalogue). */
+    _landmarkIsModelled(id) {
+      if (!this._modelledLandmarkIds) {
+        this._modelledLandmarkIds = /* @__PURE__ */ new Set();
+        for (const spec of MANUAL_LANDMARKS) {
+          const landmarkId = spec.landmarkId;
+          if (landmarkId) this._modelledLandmarkIds.add(landmarkId);
+        }
+      }
+      return this._modelledLandmarkIds.has(id);
+    }
+    /**
+     * Per frame, from `_updateLandmarks` before the drive-by pick: open a
+     * landmark question when a modelled landmark with a card is in view within
+     * 150 m, the slot is free and the question budget has a slot. True when one
+     * opened (the drive-by pick then stands down this frame).
+     */
+    _tryLandmarkQuestion() {
+      if (!this.player || this.player.ferryOrigin) return false;
+      if (!this._landmarkQuestionsOn()) return false;
+      const gate = this._teachingGate();
+      if (!mayAskLandmark({
+        questionOpen: !!this.quizPromptName || !!this._silentPass,
+        streetCandidate: !!this.quizCandidateName,
+        feedbackVisible: !!this.quizFeedback || gate.promptVisible,
+        utilityOpen: gate.utilityOpen
+      })) return false;
+      const asked = this._landmarkAsked ||= /* @__PURE__ */ new Set();
+      const sightings = this._landmarkSightings();
+      const destination = this.routeTo?.landmarkId || (typeof this.routeTo?.id === "string" && this.routeTo.id.startsWith("lm-") ? this.routeTo.id.slice(3) : "");
+      const skip = new Set(asked);
+      if (destination) skip.add(destination);
+      const radiusPx = LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER;
+      const candidates = this.landmarks.filter((landmark) => !skip.has(landmark.id) && !this._seenLandmarks.has(landmark.id) && !hasBeenNamed(sightings, landmark.id) && Math.abs(landmark.x - this.player.x) <= radiusPx && Math.abs(landmark.y - this.player.y) <= radiusPx && isWorthACard(landmark) && this._landmarkIsModelled(landmark.id) && landmark.name !== this.routeTo?.name);
+      const chosen = pickLandmarkQuestion(this.player, candidates, { radiusPx, skip });
+      if (!chosen) return false;
+      const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: "new-unlearned" }, this.raceTime, {
+        maxAsksPerMinute: this._askBudgetPerMinute()
+      });
+      if (budget.action !== "ask") return false;
+      const withHood = (landmark) => ({
+        id: landmark.id,
+        name: landmark.name,
+        x: landmark.x,
+        y: landmark.y,
+        hood: this._neighborhoodAt(landmark.x, landmark.y)?.name ?? null
+      });
+      const answer = withHood(chosen);
+      const pool = this.landmarks.filter((landmark) => isWorthACard(landmark) && Math.hypot(landmark.x - chosen.x, landmark.y - chosen.y) <= FILLER_MAX_M * PIXELS_PER_METER).map(withHood);
+      const choices = landmarkChoices(answer, pool, {
+        sameComplexPx: SAME_COMPLEX_M * PIXELS_PER_METER,
+        fillerMaxPx: FILLER_MAX_M * PIXELS_PER_METER,
+        shuffle
+      });
+      asked.add(chosen.id);
+      if (!choices) return false;
+      this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
+      this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: answer.hood || "" };
+      this.quizWithheldNames = landmarkWithheldNames(chosen.name, choices);
+      const heading = this.player.speed < 0 ? this.player.angle + Math.PI : this.player.angle;
+      const off = Math.atan2(chosen.y - this.player.y, chosen.x - this.player.x) - heading;
+      const bearing = Math.atan2(Math.sin(off), Math.cos(off));
+      const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t("ride.landmarkQuestion.ahead") : bearing < 0 ? t("ride.landmarkQuestion.left") : t("ride.landmarkQuestion.right");
+      this._openQuizPrompt({
+        kind: "landmark",
+        name: chosen.name,
+        subject: "landmark",
+        question: t("ride.landmarkQuestion.heading"),
+        context: answer.hood ? `${side} \xB7 ${answer.hood}` : side,
+        choices
+      });
+      this._dressLandmarkPrompt();
+      this.vectorMap?.setActiveLandmark(chosen);
+      bumpSessionCounter(window, "landmarksAsked");
+      return true;
+    }
+    /** The chip reads "Landmark" with a building icon (the legacy chip table
+     *  has no landmark row; the Storybook state calls this too). */
+    _dressLandmarkPrompt() {
+      this._promptKind.dataset.kind = "landmark";
+      const icon = this._promptKind.firstElementChild;
+      if (icon) icon.innerHTML = LANDMARK_ICON;
+    }
+    /** `_submitCanalAnswer` hands a landmark question here: scored like a
+     *  street, filed as a stamp instead of a street recall row. */
+    _submitLandmarkAnswer(selectedAnswer, noIdea = false) {
+      const asked = this._landmarkQuestion;
+      if (!asked || !this.quizPromptName || !this.player) return;
+      const correctName = this.quizPromptName;
+      const answer = selectedAnswer == null ? this._promptInput?.value ?? "" : selectedAnswer;
+      const result = CanalRecallAnswerPath.submitAnswer({
+        correctName,
+        displayName: correctName,
+        answer,
+        noIdea,
+        score: {
+          attempts: this.quizAttempts,
+          correct: this.quizCorrect,
+          points: this.quizPoints,
+          streak: this.quizStreak,
+          bestStreak: this.quizBestStreak
+        },
+        difficultyMultiplier: DIFFICULTY_SCORE_MULTIPLIERS[this.routeDifficulty] || 0.85,
+        noveltyMultiplier: 1.15,
+        gameyFeatures: this.gameyFeatures,
+        recallFeature: null,
+        recallStore: null,
+        revealName: (name) => this._revealName(name)
+      });
+      const correct = result.wasCorrect;
+      window.CanalRecallAnalytics?.answer(this, correct, noIdea);
+      this.quizAttempts = result.attempts;
+      this.quizCorrect = result.correct;
+      this.quizPoints = result.points;
+      this.quizStreak = result.streak;
+      this.quizBestStreak = result.bestStreak;
+      this.quizFeedback = result.feedback;
+      this._promptFeedback.textContent = result.feedback;
+      this._promptFeedback.style.color = result.feedbackColor;
+      this._markAnsweredChoices(correctName, answer, correct);
+      const landmark = this.landmarks.find((item) => item.id === asked.id) || null;
+      if (correct && landmark) {
+        window.CanalCollection?.record({ id: landmark.id, name: landmark.name, how: "named" });
+        this._noteLandmarkSighting(landmark, "named");
+        bumpSessionCounter(window, "landmarksNamed");
+      }
+      if (landmark) {
+        this._seenLandmarks.add(landmark.id);
+        this._seenLandmarkNames.add(landmark.name);
+      }
+      this.quizPromptKind = "route";
+      this.quizPromptName = "";
+      this.quizPromptSubject = "";
+      this._landmarkQuestion = null;
+      this.quizWithheldNames = [];
+      this.vectorMap?.setActiveLandmark(null);
+      const holdToken = this._answerHoldToken = (this._answerHoldToken || 0) + 1;
+      setTimeout(() => {
+        if (!answerHoldMayHide(holdToken === this._answerHoldToken, !!this.quizPromptName, !!this._silentPass)) return;
+        this._prompt.style.display = "none";
+        document.getElementById("canal-card")?.classList.remove("answered");
+        this.quizFeedback = "";
+        if (typeof this._reclaimKeyboardFocus === "function") this._reclaimKeyboardFocus();
+        else this.canvas.focus();
+        if (landmark) {
+          this._showLandmarkNotice(landmark, { kind: "sticky" }, "drive-by");
+          this.vectorMap?.setActiveLandmark(landmark);
+        }
+      }, correct ? ANSWER_HOLD_CORRECT : ANSWER_HOLD_WRONG);
+    }
+    /** The drive-by card's "Noticed": the landmark counts toward its buurt's
+     *  passport (neighborhoodPassport.ts credit). */
+    _noticeLandmark() {
+      const notice = this._landmarkNotice;
+      if (!notice) return false;
+      const landmark = this.landmarks.find((item) => item.id === notice.id);
+      if (!landmark) return false;
+      const fresh = this._noteLandmarkSighting(landmark, "noticed");
+      if (fresh) bumpSessionCounter(window, "landmarksNoticed");
+      return fresh;
+    }
+    /** Whether the open card offers "Noticed": a drive-by card for a real
+     *  landmark, and "Noted" once it has been tapped. */
+    _landmarkCardAction() {
+      const notice = this._landmarkNotice;
+      if (!notice || this._landmarkNoticeSource !== "drive-by") return null;
+      if (!this.landmarks.some((item) => item.id === notice.id)) return null;
+      if (/[?&]landmarkQuestions=(0|false|off)(&|$)/.test(search())) return null;
+      const done = !!this._landmarkSightings()[notice.id];
+      return { label: done ? t("ride.landmarkNoticed.done") : t("ride.landmarkNoticed.action"), done };
+    }
+  };
+  function installLandmarkQuestion(target) {
+    for (const name of Object.getOwnPropertyNames(GameLandmarkQuestionRuntime.prototype)) {
+      if (name === "constructor") continue;
+      Object.defineProperty(target.prototype, name, Object.getOwnPropertyDescriptor(GameLandmarkQuestionRuntime.prototype, name));
+    }
   }
 
   // src/canalRecall/transit/corridorStreets.ts
@@ -6463,6 +7070,7 @@ ${register}` : detail,
         }
         candidates.push(landmark);
       }
+      if (this._tryLandmarkQuestion()) return;
       if (this.freeRide) return;
       if (!canShowDriveByCard(this.viewport?.mode, this._teachingGate())) return;
       if (!driveByGapElapsed(this._lastDriveByAt, this.raceTime)) return;
@@ -6518,6 +7126,7 @@ ${register}` : detail,
       const lm = this._landmarkNotice;
       this._landmarkCardBounds = null;
       this._landmarkCloseBounds = null;
+      this._landmarkActionBounds = null;
       if (!lm) return;
       if (!canShowTeachingCard(this._teachingGate())) return;
       const ctx = this.ctx;
@@ -6531,6 +7140,7 @@ ${register}` : detail,
         ctx.font = font;
         return ctx.measureText(text).width;
       };
+      const action = this._landmarkCardAction();
       const card = cards.measureLandmarkCard({
         name: lm.name,
         body: collapsed ? foldedCardLine(lm) : lm.longDetail || lm.detail || cards.placeOnlyDetail(
@@ -6544,7 +7154,8 @@ ${register}` : detail,
         hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
         articleLabel: lm.wikipediaUrl ? "W  WIKIPEDIA" : "W  SOURCE",
         hasImage,
-        ...collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || "").trim() !== foldedCardLine(lm) } : {}
+        ...collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || "").trim() !== foldedCardLine(lm) } : {},
+        ...action ? { action: action.label } : {}
       }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
       const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) && canShowTeachingCard(this._teachingGate());
       const bottomLayout = window.CanalRecallUi.hudLayout({
@@ -6564,7 +7175,9 @@ ${register}` : detail,
       ctx.save();
       ctx.globalAlpha = Math.max(0, alpha);
       this.renderer.drawLandmarkCard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+      if (action && card.action) drawCardAction(ctx, card.action, cardX, cardY, action.label, action.done);
       ctx.restore();
+      this._landmarkActionBounds = action && card.action ? { x: cardX + card.action.x, y: cardY + card.action.y, w: card.action.width, h: card.action.height } : null;
       this._landmarkCardBounds = { x: cardX, y: cardY, w: card.width, h: card.height };
       this._landmarkCloseBounds = { x: cardX + card.closeHit.x, y: cardY + card.closeHit.y, w: card.closeHit.width, h: card.closeHit.height };
     }
@@ -6680,6 +7293,7 @@ ${lm.researchDetail}` : originalBody;
       ctx.restore();
     }
   };
+  installLandmarkQuestion(GameLandmarkRuntime);
   window.CanalRecallGameModules = window.CanalRecallGameModules || [];
   window.CanalRecallGameModules.push(GameLandmarkRuntime);
 })();

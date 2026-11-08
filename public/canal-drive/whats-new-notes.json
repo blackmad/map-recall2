@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Which building is this?",
+   "text": "When a hand-built landmark comes into view, the ride may ask you to name it from four buildings in the same neighbourhood; a right answer stamps it in your passport. Drive-by cards now have a Noticed button, and Free Ride can quiz you on landmarks too (Quiz me on landmarks). The four choices are never shown on the map or in the HUD before you answer.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-g3-landmark-question/ride-desktop-question-open.jpg",
+     "alt": "A landmark question card with four building names, the landmark in view ahead",
+     "caption": "The question, with the building in view."
+    },
+    {
+     "src": "ui/2026-11-09-g3-landmark-question/storybook-landmark-card-noticed-phone.jpg",
+     "alt": "A drive-by landmark card on a phone with its Noticed button",
+     "caption": "Drive-by card with Noticed."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Rides now chain into a run",
    "text": "After each arrival, Next stop deals a place 1–3 km on that favours streets you have not learned yet, and every further stop adds 5 % to its points, up to 25 %. End run shows the run card: your stops stamped in order, the total, the best streak and the names learned. A reload inside a run picks the dealt leg back up.",
    "images": [

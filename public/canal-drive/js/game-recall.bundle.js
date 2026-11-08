@@ -49,6 +49,8 @@
     "setup.route.hereHint": "Start from where you are now",
     "setup.route.free": "Free ride",
     "setup.route.freeHint": "No route, no questions: ride anywhere and tap what you pass",
+    "setup.freeRideLandmarkQuiz": "Quiz me on landmarks",
+    "setup.freeRideLandmarkQuizHint": "A modelled building in view, four names, one right",
     "freeRide.badge": "Free ride",
     "freeRide.exit": "Exit",
     "freeRide.exitLabel": "Leave free ride and go back to setup",
@@ -322,6 +324,8 @@
     "prompt.placeholder.bridge": "Bridge name",
     "prompt.placeholder.line": "Line name",
     "prompt.placeholder.stop": "Stop name",
+    "prompt.label.landmark": "Landmark",
+    "prompt.placeholder.landmark": "Building name",
     "prompt.waterway": "Waterway",
     "prompt.turn": "You made a turn",
     "prompt.submit": "Submit answer",
@@ -595,6 +599,12 @@
     "ride.startExploring": "Start exploring",
     "ride.noCycling": "No cycling in real life",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Which building is this?",
+    "ride.landmarkQuestion.ahead": "Ahead",
+    "ride.landmarkQuestion.left": "On the left",
+    "ride.landmarkQuestion.right": "On the right",
+    "ride.landmarkNoticed.action": "Noticed",
+    "ride.landmarkNoticed.done": "Noted",
     "ride.researchSource": "Research source \u2197",
     "ride.rules.title": "HOW TO PLAY",
     "ride.rules.bike1": "1. Use WASD or the arrow keys to steer the bike",
@@ -675,6 +685,8 @@
     "setup.route.hereHint": "Start waar je nu bent",
     "setup.route.free": "Vrij rijden",
     "setup.route.freeHint": "Geen route, geen vragen: rijd waar je wilt en tik op wat je ziet",
+    "setup.freeRideLandmarkQuiz": "Overhoor me op gebouwen",
+    "setup.freeRideLandmarkQuizHint": "Een gemodelleerd gebouw in zicht, vier namen, \xE9\xE9n goed",
     "freeRide.badge": "Vrij rijden",
     "freeRide.exit": "Stoppen",
     "freeRide.exitLabel": "Stop met vrij rijden en ga terug naar het startscherm",
@@ -948,6 +960,8 @@
     "prompt.placeholder.bridge": "Naam van de brug",
     "prompt.placeholder.line": "Naam van de lijn",
     "prompt.placeholder.stop": "Naam van de halte",
+    "prompt.label.landmark": "Bezienswaardigheid",
+    "prompt.placeholder.landmark": "Naam van het gebouw",
     "prompt.waterway": "Waterweg",
     "prompt.turn": "Je sloeg af",
     "prompt.submit": "Antwoord insturen",
@@ -1221,6 +1235,12 @@
     "ride.startExploring": "Begin met verkennen",
     "ride.noCycling": "Geen fietsen in het echt",
     "ride.wikipediaLink": "Wikipedia \u2197",
+    "ride.landmarkQuestion.heading": "Welk gebouw is dit?",
+    "ride.landmarkQuestion.ahead": "Recht vooruit",
+    "ride.landmarkQuestion.left": "Links",
+    "ride.landmarkQuestion.right": "Rechts",
+    "ride.landmarkNoticed.action": "Gezien",
+    "ride.landmarkNoticed.done": "Genoteerd",
     "ride.researchSource": "Bron \u2197",
     "ride.rules.title": "HOE SPEEL JE",
     "ride.rules.bike1": "1. Stuur de fiets met WASD of de pijltjestoetsen",
@@ -1785,6 +1805,7 @@
       trees: true,
       distanceHaze: true,
       perfHud: false,
+      landmarkQuiz: false,
       measuredColoursOnly: false,
       detailed3d: false,
       reducedMotion: false,
@@ -5585,7 +5606,8 @@
     water: { label: "prompt.label.water", placeholder: "prompt.placeholder.water" },
     bridge: { label: "prompt.label.bridge", placeholder: "prompt.placeholder.bridge" },
     line: { label: "prompt.label.line", placeholder: "prompt.placeholder.line" },
-    stop: { label: "prompt.label.stop", placeholder: "prompt.placeholder.stop" }
+    stop: { label: "prompt.label.stop", placeholder: "prompt.placeholder.stop" },
+    landmark: { label: "prompt.label.landmark", placeholder: "prompt.placeholder.landmark" }
   };
   var GameRecallRuntime = class {
     // ---- Store and account row ----
@@ -6644,6 +6666,10 @@ Learned names, exploration collection, personal bests, route settings and the ho
      */
     _submitCanalAnswer(selectedAnswer, noIdea = false) {
       if (!this.quizPromptName || !this.player || this._silentPass) return;
+      if (this.quizPromptKind === "landmark") {
+        this._submitLandmarkAnswer(selectedAnswer, noIdea);
+        return;
+      }
       this._silentPass = null;
       const correctName = this.quizPromptName;
       const answer = selectedAnswer == null ? this._promptInput.value : selectedAnswer;
