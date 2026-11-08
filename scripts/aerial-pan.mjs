@@ -123,6 +123,7 @@ page.on('pageerror', e => errors.push(String(e).slice(0, 300)));
 const cdp = await context.newCDPSession(page);
 const qs = `?ride=free&engine=own&framePhases=1${extraQs ? `&${extraQs.replace(/^\?/, '')}` : ''}`;
 const t0 = Date.now();
+if (process.env.ORDINARY_DEBUG) await page.addInitScript(() => { window.__ordinaryDebug = true; });
 await page.goto(`${origin}${pagePath}${qs}`);
 await page.waitForFunction(() => window.canalRecallGame?.state === 4 && window.canalRecallGame.camera?.introOverview === 0 && window.canalRecallGame.freeRide, null, { timeout: 180_000 });
 // Chase (the Free Ride default on the user's Mac), the rider held still: the camera does the travelling.
@@ -415,6 +416,10 @@ const residents = census => page.evaluate(census => {
     cityTiles: size(city?.cache?.tiles), cityFeatures: size(city?.cache?.list), cityRing: size(city?.ring), cityRingDeferred: city?.ringPacer?.deferred ?? null, worldInterned: size(city?.world?.interned),
     contextFeatures: size(tb?.contextFeatures), contextChanges: size(tb?.contextChanges), contextCache: size(tb?.contextCache), pendingJobs: size(tb?.pending?.jobs),
     landmarks: size(sig?._entries), landmarksShown: size(sig?.shown), texCap: sig?.texCapStats?.(true) ?? null, roofs: size(vm.extras?.roofs?._entries),
+    // Lane R4-H (#252): the ordinary installs with lod rows (modelLods.json `ordinary`) by the level they are drawn at.
+    ordinaryLevels: (() => { const lods = window.CanalRecallSignatureLandmarks?.MODEL_LODS; if (!sig?._entries || !lods) return null; const o = {}; for (const e of sig._entries) { const r = lods[e.spec?.id]; if (r?.ordinary || r?.lod2?.ordinary) o[e.level] = (o[e.level] ?? 0) + 1; } return o; })(),
+    // ...and why (ORDINARY_DEBUG=1): each one's level, on screen, projected radius and lod1 boundary as the runtime sees them.
+    ordinaryDebug: (() => { const lods = window.CanalRecallSignatureLandmarks?.MODEL_LODS; if (!window.__ordinaryDebug || !sig?._entries || !lods) return undefined; const v = sig._lod2On() ? sig._levelView() : null; return sig._entries.filter(e => lods[e.spec?.id]?.ordinary).map(e => { const i = sig._levelInputs(e.spec, e.radiusMetres, e.placement.anchor, v); return [e.spec.id.slice(-8), e.level, sig._nearby(e.spec, e.placement.anchor, sig._viewBounds()) ? 'in' : 'out', Math.round(i.radiusPixels), Math.round(i.lod1DowngradePx ?? -1), e.levelLoading ? 'loading' : '', e.lodFailed ? 'failed' : '']; }); })(),
     trees: size(trees?.tiles), groundCells: size(ground?.resident), groundPrepared: size(ground?.prepared), farRing: size(ground?.far),
     labelsPlaced: size(vm._labels?.placed), labelsByKind: (vm._labels?.placed ?? []).reduce((o, l) => { o[l.kind] = (o[l.kind] ?? 0) + 1; return o; }, {}), labelCandidates: vm._labels?.stats?.candidates ?? null, labelAerial: vm.labelAerial ?? null, occlusionIndexed: size(vm.labelOcclusion?.indexed),
     // Draw calls and triangles of the last main + overlay pass (sharedFrame stats), the own ground's far radius, the far
@@ -693,6 +698,8 @@ const summary = {
   aerialGlMaxMB: Math.max(...timeline.map(r => r.gl?.residentMB ?? 0)),
   // Lane R4-G (#250): the same peak with each texel at its format's size (R8 masks 1 byte, not 4; glCounters texelBytes).
   aerialGlDecodedMaxMB: Math.max(...timeline.map(r => r.gl?.decodedMB ?? 0)),
+  // Lane R4-H (#252): the most ordinary installs drawn at each level in any sample.
+  ordinaryLevelsMax: ['full', 'lod1', 'lod2'].reduce((o, k) => ({ ...o, [k]: Math.max(0, ...timeline.map(r => r.ordinaryLevels?.[k] ?? 0)) }), {}),
   aerialP99Ms: Math.max(...allFrames.map(f => f.p99)),
   aerialP99MedianWindowMs: pickQ(allFrames.map(f => f.p99), 0.5),
   aerialFramesOver100Ms: allFrames.reduce((a, f) => a + f.over100, 0),

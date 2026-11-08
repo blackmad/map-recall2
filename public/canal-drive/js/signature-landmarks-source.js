@@ -31,7 +31,7 @@ import { onViewChange, worldCameraOf } from '../../../src/canalRecall/engine/wor
 import { canSkipWalk, outsideSlack } from '../../../src/canalRecall/engine/viewSlack.ts';
 import { applyMeshHighlight, highlightRecipe, LANDMARK_WORLD_UP } from '../../../src/canalRecall/look/highlight.ts';
 // Landmarks from the air (lane R4-B #244): lod2 stand-ins and one batched draw for them.
-import { CHUNK_LOD2_DOWNGRADE_PX, chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url, projectedRadiusPx } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
+import { CHUNK_LOD2_DOWNGRADE_PX, chooseLandmarkLevel, initialLandmarkLevel, lod2IsCurrent, lod2Url, nearestRadiusPx, ordinaryLod1DowngradePx, projectedRadiusPx } from '../../../src/canalRecall/landmarks/landmarkLod.ts';
 import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial, mergeSiblingsByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import { lowestPandBase } from '../../../src/canalRecall/streetChunks/mergeRanges.ts';
@@ -1317,8 +1317,24 @@ export class SignatureLandmarks {
   /** Whether this spec has a lod1 sibling the loader may use. */
   _hasLod(spec) {
     const api = lodApi();
+    if (this._ordinaryLod(spec) && !this._ordinaryLodOn()) return false;
     // Only a lod1 built from the GLB that is deployed now; a stale one would show old geometry.
     return !spec.sharedModel && api.lod1IsCurrent(api.MODEL_LODS?.[spec.id], api.MODEL_ASSET_VERSIONS?.[spec.id]);
+  }
+
+  /**
+   * An ordinary install with lod records (lane R4-H #252, modelLods.json rows marked `ordinary`): its level follows
+   * the camera at the model itself, from the air only, and lod1 only while its atlas stays finer than the screen
+   * (landmarkLod.ts ordinaryLod1DowngradePx). `?ordinaryLod=0` keeps every install at its full GLB.
+   */
+  _ordinaryLod(spec) {
+    const row = lodApi().MODEL_LODS?.[spec.id];
+    return !!(row?.ordinary || row?.lod2?.ordinary);
+  }
+
+  _ordinaryLodOn() {
+    if (this._ordinaryLodFlag === undefined) this._ordinaryLodFlag = flagOn('ordinaryLod');
+    return this._ordinaryLodFlag;
   }
 
   /**
@@ -1335,6 +1351,7 @@ export class SignatureLandmarks {
     // Street chunks (lane R4-C #245, `?chunkLod2=0` restores): a lod2 built from the GLB drawn now (chunkSpecFor checks the hash).
     if (spec.chunkPands) return this._chunkLod2On() && !!spec.chunkLod2;
     if (!this._lod2On() || spec.sharedModel || spec.sceneFactory) return false;
+    if (this._ordinaryLod(spec) && !this._ordinaryLodOn()) return false;
     const api = lodApi();
     return lod2IsCurrent(api.MODEL_LODS?.[spec.id]?.lod2, api.MODEL_ASSET_VERSIONS?.[spec.id]);
   }
@@ -1369,6 +1386,25 @@ export class SignatureLandmarks {
       if (this._chunkLod2Px === undefined) this._chunkLod2Px = numberFlag('chunkLod2Px') ?? CHUNK_LOD2_DOWNGRADE_PX;
       return { radiusPixels: px, hasLod1: false, hasLod2: this._hasLod2(spec), aerialDistanceM: null, highlighted, lod2DowngradePx: this._chunkLod2Px };
     }
+    // An ordinary install (lane R4-H #252): the same through-the-camera size from the air (street views stay full),
+    // lod2 under the chunks' radius, lod1 while the lod1 atlas gives ORDINARY_LOD1_TEXELS_PER_DEVICE_PX at the model.
+    if (this._ordinaryLod(spec)) {
+      const hasLod1 = this._hasLod(spec), hasLod2 = this._hasLod2(spec);
+      if (!view?.aerialCentre) return { radiusPixels: Infinity, hasLod1, hasLod2: false, aerialDistanceM: null, highlighted };
+      // Before the first frame: stay full rather than guess small. Behind the camera counts as small (as a chunk).
+      if (!this._clipFromWorld || !this._sharedRoot) return { radiusPixels: Infinity, hasLod1, hasLod2: false, aerialDistanceM: null, highlighted };
+      const centrePx = this._chunkRadiusPx(anchor, radiusMetres) ?? 0;
+      if (this._chunkLod2Px === undefined) this._chunkLod2Px = numberFlag('chunkLod2Px') ?? CHUNK_LOD2_DOWNGRADE_PX;
+      const canvas = this.map?.getCanvas?.(), dpr = canvas?.clientWidth ? canvas.width / canvas.clientWidth : (window.devicePixelRatio || 1);
+      const texels = lodApi().MODEL_LODS[spec.id]?.texelsPerMetre ?? 0;
+      // Judged at the model's nearest point (the camera's focal length in CSS px from the projection's y scale).
+      const focal = this._clipFromWorld.elements[5] * (canvas?.clientHeight || 0) / 2;
+      const px = focal > 0 ? nearestRadiusPx(centrePx, focal) : centrePx;
+      return {
+        radiusPixels: px, hasLod1, hasLod2, aerialDistanceM: null, highlighted, lod2DowngradePx: this._chunkLod2Px,
+        lod1DowngradePx: ordinaryLod1DowngradePx(radiusMetres, texels, dpr),
+      };
+    }
     return {
       radiusPixels: this._radiusPixels(radiusMetres, anchor),
       hasLod1: this._hasLod(spec), hasLod2: this._hasLod2(spec),
@@ -1399,9 +1435,9 @@ export class SignatureLandmarks {
     const anchor = spec.surveyed?.anchor || spec.footprint?.centre;
     const radius = Math.hypot(spec.footprint?.lengthMetres || 0, spec.footprint?.widthMetres || 0) / 2;
     if (!anchor || !radius) return 'full';
-    if (!lod2) return lodApi().initialLevel(this._radiusPixels(radius, anchor));
+    if (!lod2 && !this._ordinaryLod(spec)) return lodApi().initialLevel(this._radiusPixels(radius, anchor));
     const highlighted = !!this.activeLandmarkId && (spec.landmarkId === this.activeLandmarkId || (spec.relatedLandmarkIds || []).includes(this.activeLandmarkId));
-    return initialLandmarkLevel(this._levelInputs(spec, radius, anchor, this._levelView(), highlighted));
+    return initialLandmarkLevel(this._levelInputs(spec, radius, anchor, this._lod2On() ? this._levelView() : null, highlighted));
   }
 
   /**
@@ -1424,7 +1460,7 @@ export class SignatureLandmarks {
       const lod2 = this._hasLod2(entry.spec);
       if (!lod2 && !this._hasLod(entry.spec)) continue;
       if (!this._nearby(entry.spec, entry.placement.anchor, view)) continue;
-      const wanted = lod2
+      const wanted = lod2 || this._ordinaryLod(entry.spec)
         ? chooseLandmarkLevel(entry.level, this._levelInputs(entry.spec, entry.radiusMetres, entry.placement.anchor, levelView, this._isLit(entry)))
         : lodApi().chooseLevel(entry.level, this._radiusPixels(entry.radiusMetres, entry.placement.anchor));
       if (wanted === entry.level) continue;
