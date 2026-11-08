@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   START_SETTLE_CAP_DESKTOP_MS, START_SETTLE_CAP_TOUCH_MS, START_SETTLE_TIERS,
-  StartSettleHold, isTouchPointer, startSettleCapMs, startSettleEnabled, startSettlePending, startSettleStep,
+  StartSettleHold, isTouchPointer, startSettleCoveredFrameMs, startSettleCapMs, startSettleEnabled, startSettlePending, startSettleStep,
 } from './startSettle';
 
 const ALL = { groundCentre: true, buildings: true, far: true, baked: true };
@@ -100,4 +100,10 @@ test('the hold ends at the cap, timed from its first poll, whatever is pending',
   assert.equal(hold.poll(4500, () => {}, pending), false);
   assert.equal(hold.last?.reason, 'cap');
   assert.deepEqual(hold.last?.pending, ['groundCentre', 'buildings', 'far', 'baked']);
+});
+
+test('the held frames render faster than the 1 Hz covered pace while the hold is armed, slower on touch', () => {
+  assert.equal(startSettleCoveredFrameMs(false), 100);
+  assert.equal(startSettleCoveredFrameMs(true), 250);
+  assert.ok(startSettleCoveredFrameMs(true) < 1000);
 });

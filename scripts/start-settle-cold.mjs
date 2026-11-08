@@ -62,7 +62,7 @@ async function run() {
         detail: w ? w.detail : null, aerialZoom: vm?.camera?.zoom ?? null,
         groundReady: vm?._ownGround ? !!vm._ownGround.ready : null,
         groundLoadingCells: vm?._ownGround ? (vm._ownGround.loadingCells ?? null) : null,
-        holdPending: g && typeof vm?.pendingWork === 'function' ? (() => { try { return vm.pendingWork(); } catch (_) { return null; } })() : null,
+        // No vm.pendingWork() here: it polls every idle check, the start hold's included (R5-B2).
         // R5-B2: the own camera's pose, the start tiers judged at it, the hold's last decision and the game camera.
         probe: (() => { try { return typeof vm?.startSettleProbe === 'function' ? vm.startSettleProbe() : null; } catch (_) { return null; } })(),
         status: (() => { try { return typeof vm?.startSettleStatus === 'function' ? vm.startSettleStatus() : null; } catch (_) { return null; } })(),
@@ -153,11 +153,13 @@ async function run() {
   const pop = frames.find(f => f.t >= tRace && f.frac > 0.02);
   const popStill = frames.find((f, i) => i > 0 && f.t >= tRace && f.frac > 0.02 && f.cam && frames[i - 1].cam && f.cam.every((v, j) => Math.abs(v - frames[i - 1].cam[j]) < 1e-6));
   const statusAtExit = held?.status ?? null;
+  const groundWhy = { hold: held?.probe?.groundWhy ?? null, racing1500: data.find(s => s.t >= tRace + 1500 && s.probe)?.probe?.groundWhy ?? null };
   const groundCellAtHold = held?.probe ? held.probe.groundCentre : null, groundCellAtRace = race?.probe ? race.probe.groundCentre : null;
   return {
     device, throttle, navToRaceMs: tRace, hold: navSettle, holdTimedOut: navSettle ? navSettle.timedOut : null,
     atRacing: atRace, racingToTierMs: tiers, pendingAtRace: race?.hold?.pending ?? null,
-    pose, goPendingAfterRacing: goPending, pendingAtRaceList, lastPendingMsAfterRacing: landedAfter,
+    groundCellFirstMs: (data.find(s => s.probe?.groundCentre) ?? {}).t ?? null, groundCellTrueShareAfterRacing: (() => { const a = data.filter(s => s.t >= tRace && s.probe); return a.length ? +(a.filter(s => s.probe.groundCentre).length / a.length).toFixed(2) : null; })(),
+    groundWhy, pose, goPendingAfterRacing: goPending, pendingAtRaceList, lastPendingMsAfterRacing: landedAfter,
     firstPopMs: pop ? pop.t - tRace : null, firstPopFrac: pop ? pop.frac : null, firstPopStillCameraMs: popStill ? popStill.t - tRace : null,
     frames: frames.map(f => ({ ms: f.t - tRace, frac: f.frac })), statusAtHoldExit: statusAtExit, groundCellAtHold, groundCellAtRace,
     keep: keep.map(k => ({ ...k, ms: k.t - tRace })),
