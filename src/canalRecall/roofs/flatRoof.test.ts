@@ -185,7 +185,9 @@ test('chunks: the surface joins the walls and coarse chunks within the budget, l
     const on = buildFeatureChunk(street, 'photo', mode), off = withSearch(OFF, () => buildFeatureChunk(street, 'photo', mode));
     const added = tris(on) - tris(off);
     assert.ok(added > 0 && added <= tris(off) * share, `${mode}: +${added} of ${tris(off)}`);
-    assert.ok((on.kinds!['flat-lip'] ?? 0) > 0, `${mode}: lips admitted`);
+    // Boxes (10 triangles, what reads from the air) are admitted before lips.
+    assert.ok((on.kinds!['flat-box'] ?? 0) > 0, `${mode}: boxes admitted first ${JSON.stringify(on.kinds)}`);
+    assert.ok((on.kinds!['flat-box'] ?? 0) + (on.kinds!['flat-lip'] ?? 0) > 0, `${mode}: surface admitted`);
   }
   const shellOn = buildFeatureChunk(street, 'photo', 'shell'), shellOff = withSearch(OFF, () => buildFeatureChunk(street, 'photo', 'shell'));
   assert.equal(tris(shellOn), tris(shellOff), 'the touch shell stays one quad a wall and a lid');

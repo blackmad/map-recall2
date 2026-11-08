@@ -702,7 +702,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         candidate.furniture = sink.tris;
       }
       if (b.flatRoof.lip && !b.roof) for (const poly of local) candidate.lip.push(...parapetLipTris(poly, b.heightM, b.wallHex, { exposed }));
-      if (b.flatRoof.box && !b.measuredRoof && rect) {
+      if (b.flatRoof.box && !b.measuredRoof?.furniture.length && rect) {
         const at = stairCorePoint(local[0], 1, rect);
         if (at) candidate.box = roofBoxTris(at[0], at[1], rect.ux, rect.uy, BOX_L_M, BOX_W_M, b.heightM, b.heightM + BOX_H_M, BOX_HEX);
       }
@@ -718,11 +718,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
 
   if (surfaceCandidates.length) {
     // The flat-roof surface's triangle budget (lane R5-E): a share of what the chunk already draws, spent on measured
-    // furniture, then lips, then generic boxes, each pass largest roof first, all-or-nothing a building.
+    // furniture, then generic boxes (10 triangles, the piece that reads from the air: at U1 lips first left every box
+    // out), then lips, each pass largest roof first, all-or-nothing a building.
     const base = quadTotal * 2 + roofTotal + lidIndices / 3 + signTotal;
     let room = Math.floor(base * (surfaceCandidates[0].coarse ? FLAT_SURFACE_BUDGET.coarse : FLAT_SURFACE_BUDGET.detail));
     const byArea = [...surfaceCandidates].sort((a, c) => c.areaM2 - a.areaM2);
-    for (const kind of ['furniture', 'lip', 'box'] as const) for (const c of byArea) {
+    for (const kind of ['furniture', 'box', 'lip'] as const) for (const c of byArea) {
       const tris = c[kind];
       if (!tris.length) continue;
       if (tris.length > room) { surfaceStats[`${kind}Dropped`]++; continue; }
