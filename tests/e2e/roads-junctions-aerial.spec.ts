@@ -17,6 +17,10 @@ export const JUNCTION_AERIAL_POSES = [
   { name: 'ij-tunnel-ramp-walls', center: [4.91150, 52.37235] as [number, number], zoom: 19.6, pitch: 55, bearing: 20 },
   // Lane #269: the IJ-tunnel's mouths under the Prins Hendrikkade junction from the north-east (the sheets hung across their end lines).
   { name: 'ij-tunnel-mouths-junction', center: [4.91105, 52.37170] as [number, number], zoom: 19.8, pitch: 55, bearing: 225 },
+  // Issue #270: the IJ-tunnel west ramp's east bank, s28-s88 of way 7371028 (the 48 m the walls dropped out), from the
+  // north-west across the trench and from the north-east along it.
+  { name: 'ij-ramp-gap-across', center: [4.91167, 52.37225] as [number, number], zoom: 19.9, pitch: 55, bearing: 125 },
+  { name: 'ij-ramp-gap-along', center: [4.91160, 52.37215] as [number, number], zoom: 19.7, pitch: 60, bearing: 215 },
   { name: 'muntplein', center: [4.89361, 52.36707] as [number, number], zoom: 19.4, pitch: 50, bearing: 0 },
   { name: 'prins-hendrikkade-arcam', center: [4.91290, 52.37095] as [number, number], zoom: 19.4, pitch: 50, bearing: 300 },
 ];
