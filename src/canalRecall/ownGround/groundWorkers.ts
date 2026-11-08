@@ -61,12 +61,17 @@ export function inFocusBlock(key: string, focus: string | null): boolean {
 export const FOCUS_RANK_BASE = -1e9;
 
 /**
- * Quick first paint (lane R5-A #260): a near (LOD 0) cell with nothing drawn yet is built at LOD 1 first, measured
- * 0.6–0.9 s against 2–3 s for LOD 0 on the start pose, and rebuilt at LOD 0 once it is drawn. `?groundQuick=0` (or
- * `window.__canalRecallGroundQuick = false`) asks for LOD 0 at once, as before.
+ * Quick first paint (lane R5-A #260, opt-in `?groundQuick=1` or `window.__canalRecallGroundQuick = true`): a near
+ * (LOD 0) cell with nothing drawn yet is built at LOD 1 first and rebuilt at LOD 0 once drawn. Measured 2026-11-08 on
+ * a loaded machine (load 13 on 14 cores), Free Ride start: the centre cell landed 3.1–3.3 s after the reveal with one
+ * worker (4.2–5.6 s without), but with three workers the extra LOD 0 rebuilds made the ring later (14.6–15.4 s against
+ * 9.6–12.9 s), so it stays off until a quiet-machine run says otherwise.
  */
 export function groundQuickFlag(search?: string): boolean {
   const g = globalThis as { __canalRecallGroundQuick?: boolean; location?: { search?: string } };
-  if (g.__canalRecallGroundQuick === false) return false;
-  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundQuick') !== '0';
+  if (typeof g.__canalRecallGroundQuick === 'boolean') return g.__canalRecallGroundQuick;
+  return new URLSearchParams(search ?? g.location?.search ?? '').get('groundQuick') === '1';
 }
+
+/** Default ground workers: 3 on a desktop (the ring in about half the time, measured), 1 on a touch device (unmeasured). */
+export function defaultGroundWorkers(detail: 'full' | 'touch'): number { return detail === 'touch' ? 1 : 3; }

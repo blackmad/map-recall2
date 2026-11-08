@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { groundFocusFlag, groundWorkersFlag, inFocusBlock, pickWorker } from './groundWorkers';
+import { defaultGroundWorkers, groundFocusFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, pickWorker } from './groundWorkers';
 
 test('groundWorkersFlag reads 1–4 from the query, else the fallback', () => {
   assert.equal(groundWorkersFlag(1, '?groundWorkers=3'), 3);
@@ -36,4 +36,11 @@ test('inFocusBlock: the focus cell and its 8 neighbours', () => {
   assert.equal(inFocusBlock('0_0', null), false);
   assert.equal(groundFocusFlag('?groundFocus=0'), false);
   assert.equal(groundFocusFlag(''), true);
+});
+
+test('defaults: three workers on desktop, one on touch; quick first paint opt-in', () => {
+  assert.equal(defaultGroundWorkers('full'), 3);
+  assert.equal(defaultGroundWorkers('touch'), 1);
+  assert.equal(groundQuickFlag(''), false);
+  assert.equal(groundQuickFlag('?groundQuick=1'), true);
 });

@@ -62,7 +62,7 @@ import { paintNoise } from './groundNoise.js';
 import { FLAT_GROUND_GAIN } from './groundLight.js';
 import { RAIL_STRIPE, RAIL_TONES, railStripes, SLEEPER_TILE_M } from './railTracks.js';
 import { OverviewBlend, presenceOf, transitionOn } from '../overviewTransition/blend.js';
-import { FOCUS_RANK_BASE, groundFocusFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, pickWorker } from './groundWorkers.js';
+import { defaultGroundWorkers, FOCUS_RANK_BASE, groundFocusFlag, groundQuickFlag, groundWorkersFlag, inFocusBlock, pickWorker } from './groundWorkers.js';
 import { cutClone, fadeClone, groundProgram, type GroundMarking } from './groundMaterial.js';
 import { MARKING_FADE_STRENGTH } from '../look/markingFade.js';
 import { flatLayerTones } from '../overviewTiles/layerColours.js';
@@ -77,7 +77,7 @@ export interface GroundHost {
 
 export interface OwnGroundOptions {
   workerUrl: string;
-  /** Ground workers building cells side by side (groundWorkers.ts; default `?groundWorkers=` else 1). */
+  /** Ground workers building cells side by side (groundWorkers.ts; `?groundWorkers=` else 3 on desktop, 1 on touch; 0 = that default). */
   workers?: number;
   /** Resident radius from the rider to a cell's nearest edge, metres. */
   radiusM?: number;
@@ -363,7 +363,7 @@ export class OwnGround {
   private focus: Vec2 | null = null;
   private focusCell: string | null = null;
   private readonly focusOn = groundFocusFlag();
-  /** Quick first paint (`?groundQuick=0` off) and the LOD the ring wants per cell (a quick install re-plans). */
+  /** Quick first paint (opt-in `?groundQuick=1`) and the LOD the ring wants per cell (a quick install re-plans). */
   private readonly quickOn = groundQuickFlag();
   private wantedLod: ReadonlyMap<string, 0 | 1> = new Map();
   /** Meshes under the rider's distance limit (REACH_LAYERS of LOD 0 full-detail cells), by cell key. */
@@ -424,7 +424,7 @@ export class OwnGround {
     this.THREE = THREE;
     this.frame = frame;
     this.host = host;
-    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), nearTiles: groundNearTilesFlag(), precompilePerFrame: precompileBudget(), workers: 1, ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
+    this.opts = { radiusM: RADIUS_M, aerialRadiusM: AERIAL_RADIUS_M, fadeMs: FADE_MS, nearM: NEAR_M, minZoom: 15, parks: parksFlag(), rails: railsFlag(), roads: roadsFlag(), groundLook: GROUND_LOOK_DEFAULT, transition: transitionOn(), far: true, releaseArrays: false, detail: detailFlag(), groundNear: groundNearFlag(), ring: groundRingFlag(), tiles: groundTilesFlag(), nearTiles: groundNearTilesFlag(), precompilePerFrame: precompileBudget(), workers: 0, ...options, tilesOnly: options.tilesOnly ?? !!options.releaseArrays };
     this.radiusM = this.opts.radiusM;
     this.root = new THREE.Group();
     this.root.name = 'own-ground';
@@ -444,7 +444,7 @@ export class OwnGround {
     await this.store.init();
     this.startup.storeReadyAt ??= performance.now();
     try {
-      const count = groundWorkersFlag(this.opts.workers);
+      const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
       const init = { type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       for (let i = 0; i < count; i++) {
         const worker = new Worker(this.opts.workerUrl);
