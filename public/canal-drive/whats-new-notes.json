@@ -3,6 +3,22 @@
   "notes": [
     {
       "date": "2026-11-08",
+      "title": "Tapping a named place says what it is",
+      "text": "Tapping a named place now tells you what it is (a Sikh gurdwara, a Roman Catholic church, a gift shop), even when the building record itself is blank. The Shri Guru Nanak Gurdwara Sahib used to say it had no name or date; its card now reads \"A Sikh gurdwara at Schakelstraat 21\" with a link to its map source. About 900 places got a clearer description (62 Protestant and 61 Roman Catholic churches, 45 mosques, shop kinds such as \"a gift shop\" instead of \"a gift\"), and 722 public artworks became tappable.",
+      "where": [
+        4.8528,
+        52.3815
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-08-card-poi/strip-before-after-gurdwara.png",
+          "alt": "The Gurdwara card before (no name or date in the map data) and after (A Sikh gurdwara at Schakelstraat 21)",
+          "caption": "Before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
       "title": "Flying over the city is easier on your computer",
       "text": "Panning the city from the air no longer runs the fan flat out. While the camera flies it draws at 30 frames a second and redraws the sun's shadows only every few frames; the moment you stop, the view is drawn at full rate and full sharpness again. Measured on an M4 Pro Mac the graphics card went from fully busy to about a third while panning, with the still picture unchanged.",
       "where": [
