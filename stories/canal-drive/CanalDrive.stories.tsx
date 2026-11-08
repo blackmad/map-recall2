@@ -51,6 +51,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'touch-onboarding-ride' | 'touch-onboarding-name' | 'touch-onboarding-score'
   // A home route on a phone: the Feedback / How to play row under Start.
   | 'touch-setup-home'
+  // G7 (#277): tours as cover cards under More options; Settings with the account chip signed in.
+  | 'advanced-tours' | 'touch-advanced-tours' | 'settings-signed-in' | 'touch-settings-signed-in'
 ;
 
 /** A landmark name well past the card's line (63 characters): the string the
@@ -120,7 +122,7 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
     if (win && scenario.includes('touch')) win.canalRecallForceTouch = true;
     const setupStories = new Set([
       'default', 'bike-home', 'bike-here', 'transit', 'advanced', 'advanced-cartoon', 'advanced-questions-off', 'advanced-haze-off', 'advanced-perf-hud', 'knowledge',
-      'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge', 'touch-setup-home',
+      'touch-setup', 'touch-setup-transit', 'touch-setup-here', 'touch-knowledge', 'touch-setup-home', 'advanced-tours', 'touch-advanced-tours',
       ...Object.keys(ONBOARDING_STEP),
     ]);
     if (setupStories.has(scenario)) doc.body.classList.add('storybook-setup');
@@ -153,6 +155,23 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
       });
     }
     if (scenario === 'advanced' && overlay) overlay.store.setAdvancedOpen(true);
+    if ((scenario === 'advanced-tours' || scenario === 'touch-advanced-tours') && overlay) {
+      // The tour catalogue as the ride lists it (no stop names); a 30-character title tests the wrap.
+      overlay.store.setTours([
+        { id: 'jewish-amsterdam', title: 'Jewish Amsterdam', theme: 'history', stopCount: 7, checked: 'checked 2026-10-17' },
+        { id: 'golden-age-canal-ring', title: 'Golden Age canal ring', theme: 'architecture', stopCount: 6, checked: null },
+        { id: 'art-museums', title: 'Art museums', theme: 'art', stopCount: 5, checked: null },
+        { id: 'churches-and-towers', title: 'Churches and towers of the old centre', theme: 'skyline', stopCount: 6, checked: null },
+        { id: 'pizza', title: 'Pizza', theme: 'food', stopCount: 5, checked: 'checked 2026-10-17' },
+      ]);
+      overlay.store.setAdvancedOpen(true);
+    }
+    if ((scenario === 'settings-signed-in' || scenario === 'touch-settings-signed-in') && overlay) {
+      overlay.store.setAccount({ label: 'Annemarie van der Heijden-Vos', note: '214 names synced', buttonLabel: 'Sign out', busy: false, signedIn: true, photoURL: null });
+      overlay.store.setSetupOpen(false);
+      overlay.store.setSettingsOpen?.(true);
+      if (!overlay.store.setSettingsOpen) doc.getElementById('open-settings')?.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    }
     if (scenario === 'advanced-cartoon' && overlay) { patchPrefs({ buildingLook: 'cartoon' }); overlay.store.setAdvancedOpen(true); }
     // The rider's questions-per-minute setting, set to Off, with its row scrolled into view.
     if (scenario === 'advanced-questions-off' && overlay) {
@@ -925,5 +944,18 @@ export const IntroScorePhone: Story = {
 
 export const PortraitKnowledgeReview: Story = {
   args: { scenario: 'touch-knowledge' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+
+/** G7 (#277): tours as cover cards under More options, desktop and phone. */
+export const AdvancedOptionsTours: Story = { args: { scenario: 'advanced-tours' } };
+export const AdvancedOptionsToursPhone: Story = {
+  args: { scenario: 'touch-advanced-tours' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** G7 (#277): the settings panel while riding, with the account chip signed in (long name). */
+export const SettingsSignedIn: Story = { args: { scenario: 'settings-signed-in' } };
+export const PortraitSettingsSignedIn: Story = {
+  args: { scenario: 'touch-settings-signed-in' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
