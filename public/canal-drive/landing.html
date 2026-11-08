@@ -43,6 +43,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
 <link href="css/enamel.css" rel="stylesheet">
+<link href="css/landing-cards.css?v=20261109-g2" rel="stylesheet">
 <link rel="preload" as="image" href="assets/landing/ride-desktop.webp" type="image/webp" media="(min-width: 760px)">
 <link rel="preload" as="image" href="assets/landing/ride-phone.webp" type="image/webp" media="(max-width: 759px)">
 <style>
@@ -222,6 +223,8 @@ video.loop.on { opacity: 1; }
 </header>
 
 <main>
+  <!-- A returning player's cards (G2): filled from localStorage by js/landing.bundle.js; ?landing=0 keeps it empty. -->
+  <div class="wrap" id="landing-returning-slot" hidden></div>
   <div class="wrap hero">
     <div>
       <h1>Learn Amsterdam <em>by&nbsp;name</em></h1>
@@ -371,6 +374,7 @@ video.loop.on { opacity: 1; }
   </div>
 </footer>
 
+<script src="js/landing.bundle.js?v=20261109-g2"></script>
 <script>
 (function () {
   // Dev server and legacy builds: this page is canal-drive/landing.html, the

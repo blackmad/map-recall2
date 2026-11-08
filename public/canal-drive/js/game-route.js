@@ -1358,6 +1358,22 @@ class GameRouteRuntime {
       this._startConfiguredRoute();
       return;
     }
+    // The landing page's cards for a returning player (G2, src/canalRecall/landing/): `?ride=daily` rides
+    // today's pair (routeSelection.dailyRidePair, the same for everyone on an Amsterdam date) and
+    // `?ride=review` is a surprise ride with Plan review on, which passes the names due (pickReviewRoute).
+    const landingRide = new URLSearchParams(window.location.search).get('ride');
+    if ((landingRide === 'daily' || landingRide === 'review') && !window.location.hash.startsWith('#race=')) {
+      const session = window.__canalRecallSession = window.__canalRecallSession || {};
+      session.landingCardChosen = landingRide;
+      const Route = window.CanalRecallRoute;
+      this._overlay.store.patchPrefs({ cityId: 'amsterdam', routePattern: 'surprise', ...(landingRide === 'review' ? { skipMastered: true } : {}) }, this._overlayZoom());
+      this._applyPrefsToRuntime(this._prefs());
+      const pair = landingRide === 'daily' && Route && Route.dailyRidePair
+        ? Route.dailyRidePair(Route.dailyRideDateKey(), this._curatedRoutePois()) : null;
+      if (pair) this._launchPoiRoute(pair.from, pair.to, { explicitDestination: true });
+      else this._startConfiguredRoute();
+      return;
+    }
     if (new URLSearchParams(window.location.search).get('ferry') === 'F3') {
       this._overlay.store.patchPrefs({ cityId: 'amsterdam', travelMode: 'car', viewMode: 'chase' }, this._overlayZoom());
       this._ferryPreviewRef = 'F3';
