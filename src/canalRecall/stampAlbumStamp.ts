@@ -10,6 +10,7 @@ import {
   drawLargeLetterPostcard,
   loadLargeLetterFont,
   measureLargeLetterPostcard,
+  type LargeLetterPostcardLayout,
   type OtFont,
 } from './largeLetterPostcard.ts';
 import { punchPerforations, STAMP_PAPER } from './stampAlbumPlain.ts';
@@ -35,18 +36,32 @@ export function loadStampFont(url = FONT_URL): Promise<OtFont | null> {
  * cream stamp paper, perforated edge, and the postcard (no photographs; a
  * stamp is the card's lettering) inset by the perforation margin.
  */
+export function stampMargin(size: number): number {
+  return Math.round(size * 0.075);
+}
+
+/** The square postcard layout inside a stamp of `size` px (shared with the fit test). */
+export function stampLayout(
+  name: string,
+  size: number,
+  measure: (text: string, font: string) => number,
+  outlineFont: OtFont | null = font,
+): LargeLetterPostcardLayout {
+  const inner = size - stampMargin(size) * 2;
+  return measureLargeLetterPostcard(
+    { name, width: inner, height: inner, greeting: '', cityName: 'Amsterdam', imageCount: 0 },
+    measure,
+    outlineFont ? { font: outlineFont, pathWarp: true } : undefined,
+  );
+}
+
 export function drawBuurtStamp(ctx: CanvasRenderingContext2D, name: string, size = STAMP_ART_SIZE): void {
-  const margin = Math.round(size * 0.075);
-  const inner = size - margin * 2;
+  const margin = stampMargin(size);
   ctx.save();
   ctx.fillStyle = STAMP_PAPER;
   ctx.fillRect(0, 0, size, size);
   const measure = (text: string, spec: string) => { ctx.font = spec; return ctx.measureText(text).width; };
-  const layout = measureLargeLetterPostcard(
-    { name, width: inner, height: inner, greeting: '', cityName: 'Amsterdam', imageCount: 0 },
-    measure,
-    font ? { font, pathWarp: true } : undefined,
-  );
+  const layout = stampLayout(name, size, measure);
   ctx.translate(margin, margin);
   drawLargeLetterPostcard(ctx, layout, [], font ? { font } : undefined);
   ctx.restore();
