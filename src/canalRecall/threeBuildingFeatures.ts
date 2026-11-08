@@ -10,8 +10,10 @@ import { roofPlanForFeature, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { paletteFor } from './bayTextures.js';
-import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
+import { BARE_WALL_HEX, DEFAULT_FACADE_WALL_HEX, DEFAULT_SHOP_SIGN_HEX, FLAT_ROOF_GREYS, LOOK_VARIANTS, ROOF_SLOT_TONES, cellSetOf, hexToRgb, lookHex, roofTone, type BuildingLook } from './look/palette.js';
 import { decodeFurniture, roofSlotHex } from './roofs/roofSlots.js';
+import { flatRoofPriorHex, flatRoofToneEnabled } from './roofs/flatRoofTone.js';
+import { BOX_MIN_M2, LIP_MIN_M2, flatRoofSurfaceEnabled, flatRoofSurfaceLayer } from './roofs/flatRoofSurface.js';
 import { isRoofSlot } from './roofs/roofFacts.js';
 import { largeTierSystem, plinthHex } from './largeBuildingTier.js';
 import type { Look, ShopKind } from './bayTextures.js';
@@ -58,6 +60,24 @@ function measuredRoofOf(p: Record<string, unknown>, look: BuildingLook): { hex: 
   const encoded = typeof p.roofFurniture === 'string' && p.roofFurniture ? p.roofFurniture.split(',').map(Number) : [];
   const furniture = encoded.length || p.roofTerrace ? { furniture: decodeFurniture(encoded), terrace: p.roofTerrace === true } : undefined;
   return { hex, cell: ROOF_SLOT_TONES[p.roofSlot].cell, furniture };
+}
+
+/**
+ * Lane R5-E (#265): an unmeasured, unmapped flat roof takes its build-year band's prior (`?flatRoofTone=0` keeps the
+ * hashed slot base), and a flat lid gets its own surface layer, a parapet lip from LIP_MIN_M2 and a generic roof box
+ * from BOX_MIN_M2 without measured furniture (`?flatRoofSurface=0` keeps the shared flat cell and nothing on top).
+ */
+function applyFlatRoof(building: MeshBuilding, p: Record<string, unknown>, look: BuildingLook, id: string, measured: ReturnType<typeof measuredRoofOf>, mapped: boolean, cells: ReturnType<typeof cellSetOf>, areaM2: number): void {
+  if (!building.lid) return;
+  if (flatRoofToneEnabled() && !measured && !mapped) {
+    const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
+    const prior = flatRoofPriorHex(id, year);
+    building.lid = { ...building.lid, hex: cells === 'procedural' ? prior : lookHex(prior, look) };
+  }
+  if (!flatRoofSurfaceEnabled() || LOOK_VARIANTS[look].cartoonRoofCells) return;
+  const surfaceLayer = flatRoofSurfaceLayer(cells);
+  if (surfaceLayer !== null) building.lid = { ...building.lid, surfaceLayer };
+  building.flatRoof = { lip: areaM2 >= LIP_MIN_M2, box: areaM2 >= BOX_MIN_M2 && !building.measuredRoof?.furniture.length };
 }
 
 /**
@@ -150,6 +170,8 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   const measured = measuredRoofOf(p, look);
   building.lid = { hex: measured?.hex ?? mapped ?? FLAT_ROOF_GREYS[lookVariant(id) % FLAT_ROOF_GREYS.length], flatLayer: roofBase + 3 };
   if (measured?.furniture) building.measuredRoof = measured.furniture;
+  // A real flat roof (no planned pitched roof): lane R5-E's tone and surface (roofs/flatRoofTone.ts, flatRoofSurface.ts).
+  if ((!p.roofPlanned || p.roofShape === 'parapet') && !p.kitRoof && !p.kitWall && look !== 'untextured') applyFlatRoof(building, p, look, id, measured, !!mapped, cellSetOf(look), footprintAreaM2(feature.geometry));
   if (p.gardenShed) {
     // A back-garden shed (gardenSheds.ts): bare walls in a weathered muted colour, a tarred flat lid, nothing else.
     building.bare = true; building.wallHex = shedWallHex(id); building.lid = { hex: SHED_LID_HEX, flatLayer: roofBase + 3 };
