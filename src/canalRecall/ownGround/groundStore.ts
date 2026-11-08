@@ -547,7 +547,7 @@ export class GroundStore {
           const seen = new Set<number>(), ways = around.flat().filter(w => !seen.has(w.id) && !!seen.add(w.id));
           const inCell = (q: Vec2) => q[0] >= x0 && q[0] < x1 && q[1] >= y0 && q[1] < y1;
           // A step per way scanned, a task every PACE_BUDGET_MS (one plan was a 60-120 ms task while riding, #129).
-          const steps = planCutsSteps(ways, this.surface.relief, inCell, this.cutScanned, box), pace = pacer(this.options.paceMs);
+          const steps = planCutsSteps(ways, this.surface.relief, inCell, this.cutScanned, box, { portalEnds: this.options.portalEnds !== false }), pace = pacer(this.options.paceMs);
           for (let r = steps.next(); ; r = steps.next()) {
             if (r.done) { for (const c of r.value) this.surface.addCut(c); break; }
             await pace();

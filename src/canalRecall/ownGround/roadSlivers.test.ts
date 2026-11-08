@@ -6,7 +6,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { decodeRoadCell, roadCellDir, roadCellProblems, ROAD_CELLS_V3_DIR, type RoadCell, type RoadSurface } from './roadCells';
 import { dissolveSlivers, isSliver, polygonShape, sliverStats, KERB_MIN_M } from './roadSlivers';
-import { clipMeshAtCuts, cutMargin, mouthLid, type Cut } from './tunnels';
+import { acrossPast, clipMeshAtCuts, cutMargin, cutRelief, locateCut, mouthLid, type Cut } from './tunnels';
 import { emptyMesh, vertex } from './drape';
 
 /** A surface from integer-decimetre rings (open), delta-encoded. */
@@ -189,4 +189,19 @@ test('clipMeshAtCuts ends: the walls clip up to a mouth; a plain end and an open
   const on = cutMargin([c], 39, 0, { ends: true });
   assert.ok(on.walled && Math.abs(on.margin - 1) < 1e-9);
   assert.ok(Math.abs(mouthLid([c], 41, 0) - 0) < 1e-9 && Number.isNaN(mouthLid([c], 41, 9)) && Number.isNaN(mouthLid([c], 30, 0)) && Number.isNaN(mouthLid([c], 47, 0)));
+});
+
+test('a measured lid (#269): cutRelief and mouthLid lift the ground past a mouth over the covered span, across the line', () => {
+  const c: Cut = { ...straightCut(), portals: [{ at: 4, dir: [1, 0], top: 0, lid: 15 }] };
+  // 10 m past the end on the centreline and 3 m off it: the lid; 16 m past: the raw relief.
+  assert.equal(cutRelief(c, locateCut(c, 50, 0)!, -3), 0);
+  assert.equal(cutRelief(c, locateCut(c, 50, 3)!, -3), 0);
+  assert.ok(Number.isNaN(cutRelief(c, locateCut(c, 56, 0)!, -3)));
+  assert.equal(mouthLid([c], 50, 3), 0);
+  assert.ok(Number.isNaN(mouthLid([c], 50, 9)));
+  assert.equal(acrossPast(-10, 0), -10);
+  assert.ok(Math.abs(acrossPast(-5, 3) - -4) < 1e-9);
+  // Without a measured lid, today's LID_M and lateral test.
+  const plain = mouthCut();
+  assert.ok(Number.isNaN(cutRelief(plain, locateCut(plain, 50, 0)!, -3)));
 });

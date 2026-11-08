@@ -31,6 +31,8 @@ export interface TunnelSite {
     groundAtFloor?: LngLat[];
     /** A cut's median grass (cutMedianQuads) covers these points: the verge between merged carriageways is grass. */
     grassAt?: LngLat[];
+    /** Over a covered span past a tunnel mouth the ground lies within 0.5 m of the street: the highest wall top at the mouths within 25 m, not in the DTM's trench under the dropped deck (#269). */
+    groundOverCover?: LngLat[];
   };
 }
 
@@ -52,6 +54,12 @@ export const TUNNEL_SITES: readonly TunnelSite[] = [
     label: 'IJ-tunnel south ramp: the 12-14 m flat verge where the inner carriageways part toward the portal drew as pale land on the floor (round 4: merges up to 20 m when flat, draws as grass)',
     at: [4.91219, 52.3733],
     expect: { grassAt: [[4.91219, 52.3733], [4.91216, 52.37320]] },
+  },
+  {
+    id: 'ij-tunnel-junction-cover',
+    label: 'IJ-tunnel under the Prins Hendrikkade junction (Rapenburg user shot 2026-11-08, #269): 10 m past the west ramp\'s mouths, by its red fietspad, the street over the 47 m covered span; the DTM drops the deck and the ground sagged 2-3 m into pale sheets past the 6 m lid',
+    at: [4.91085, 52.37155],
+    expect: { groundOverCover: [[4.91085, 52.37155], [4.91097, 52.37150]] },
   },
   {
     id: 'piet-heintunnel-east-south',

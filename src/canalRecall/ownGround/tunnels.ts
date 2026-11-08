@@ -177,7 +177,21 @@ export interface CutPortal {
   top: number;
   /** A slot's portal: the passage runs on open-topped through the embankment, so a headwall spans it with no dark mouth. */
   open?: boolean;
+  /**
+   * How far past the mouth the ground over the tunnel lies at `top`, metres (absent: LID_M). A covered span (#269: the
+   * Prins Hendrikkade junction over the IJ-tunnel, 47 m between facing mouths) is measured by the DTM, which drops
+   * bridges and decks, as a trench that climbs back to the street over 10-18 m: the lid runs on to where it does.
+   */
+  lid?: number;
 }
+
+/** Planner options. `portalEnds` (#269, default off here; the stores turn it on, `?portalEnds=0` off): a mouth's top is the street's plateau within COVER_LID_MAX_M and its lid runs on to it. */
+export interface PlanOptions { portalEnds?: boolean }
+
+/** The farthest a mouth's lid runs on past it (a covered span's smear in the DTM), metres. */
+export const COVER_LID_MAX_M = 20;
+/** A mouth's top is raised to the plateau ahead by at most this, metres (a mound or a building's plinth is no street). */
+const COVER_TOP_RAISE_MAX_M = 3;
 
 /** One cut: a polyline with per-station floor, reach and walls either side (left = counter-clockwise of the direction). */
 export interface Cut {
@@ -428,7 +442,7 @@ function buildCut(id: string, kind: Cut['kind'], motor: boolean, p: Vec2[], s: n
 }
 
 export function cutBox(c: Cut): [number, number, number, number] {
-  const r = Math.max(...c.left, ...c.right) + Math.max(DIP_M + PARAPET_T + LID_M, ...(c.gapL ?? []), ...(c.gapR ?? []));
+  const r = Math.max(...c.left, ...c.right) + Math.max(DIP_M + PARAPET_T + Math.max(LID_M, ...c.portals.map(p => p.lid ?? 0)), ...(c.gapL ?? []), ...(c.gapR ?? []));
   return [Math.min(...c.x) - r, Math.min(...c.y) - r, Math.max(...c.x) + r, Math.max(...c.y) + r];
 }
 
@@ -610,8 +624,8 @@ export function slotCut(run: { ways: CutWay[]; points: Vec2[]; ends: [boolean, b
  * `skip` holds way ids scanned by an earlier plan (each way is scanned once). Slots: rideable tunnel runs (slotCut).
  * Motor-only tunnels get a portal where a ramp cut ends against the tunnel's roof.
  */
-export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number]): Cut[] {
-  const steps = planCutsSteps(ways, ground, within, skip, box);
+export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number], opts?: PlanOptions): Cut[] {
+  const steps = planCutsSteps(ways, ground, within, skip, box, opts);
   for (;;) { const r = steps.next(); if (r.done) return r.value; }
 }
 
@@ -620,7 +634,7 @@ export function planCuts(ways: readonly CutWay[], ground: HeightFn, within: (p: 
  * page can end its task there (groundStore planCutsFor, #129: one plan was a 60-120 ms task while riding). Drained
  * without pausing it is planCuts; the caller keeps `ways`, `ground` and `skip` unchanged until it finishes.
  */
-export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number]): Generator<void, Cut[], void> {
+export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within: (p: Vec2) => boolean, skip: Set<number> = new Set(), box?: readonly [number, number, number, number], opts?: PlanOptions): Generator<void, Cut[], void> {
   const portals = findPortals(ways).filter(p => within(p.at));
   const cuts: Cut[] = [];
   // Only stations within RAMP_REACH_M of one of these portals are scanned: a ramp is never longer, and a long trunk
@@ -692,7 +706,21 @@ export function* planCutsSteps(ways: readonly CutWay[], ground: HeightFn, within
         for (let m = 4; m <= COVER_REACH_M; m += 2) if (ahead(m) - c.floor[at] > 2.5) { top = Math.max(...[0, 2, 4, 6, 8].map(k => ahead(m + k))); break; }
       }
       if (!(top - c.floor[at] > 2.5)) continue;
-      c.portals.push({ at, dir: d, top });
+      // #269: the DTM drops the deck over a covered span, so the relief past the mouth climbs back to the street over
+      // 10-18 m and the top measured 3-6 m ahead sits in that smear (the IJ-tunnel's mouths at Prins Hendrikkade: +2.6 m
+      // where the street stands +4.7 m over the floor). The top is the plateau within COVER_LID_MAX_M (raised at most
+      // COVER_TOP_RAISE_MAX_M) and the lid runs on to where the relief reaches it.
+      let lid: number | undefined;
+      if (opts?.portalEnds && !coverM) {
+        const prof = Array.from({ length: COVER_LID_MAX_M }, (_, k) => ahead(k + 1));
+        const plateau = Math.max(...prof.slice(2).map((_, k) => median(prof.slice(k + 2, k + 5))));
+        if (plateau > top) top = Math.min(plateau, top + COVER_TOP_RAISE_MAX_M);
+        const reach = prof.findIndex(z => z >= top - 0.3);
+        lid = Math.max(LID_M, Math.min(COVER_LID_MAX_M, (reach < 0 ? COVER_LID_MAX_M : reach + 1) + 2));
+      }
+      c.portals.push({ at, dir: d, top, ...(lid !== undefined && lid > LID_M ? { lid } : {}) });
+      // The box reaches over the lid (cutBox): the surface indexes the cut by it.
+      if (lid !== undefined && lid > LID_M) c.bbox = cutBox(c);
       c.motor = true;
     }
     yield;
@@ -791,6 +819,9 @@ export function locateCut(c: Cut, x: number, y: number): CutHit | null {
 /** Is a hit inside the strip (between its edges, within its stations)? */
 export const insideCut = (c: Cut, h: CutHit): boolean => h.s >= 0 && h.s <= c.s[c.s.length - 1] && h.lateral <= h.left && h.lateral >= -h.right;
 
+/** The offset across a cut's line of a point `past` metres beyond its end whose locateCut lateral (the distance to the end point, signed) is `lateral`. */
+export const acrossPast = (lateral: number, past: number): number => (past > 0 ? Math.sign(lateral) * Math.sqrt(Math.max(0, lateral * lateral - past * past)) : lateral);
+
 /**
  * The relief a cut implies at a point, or NaN where it says nothing: inside the strip the wall-top level of the
  * nearer side (the raw relief on a side without a wall); behind a wall, over DIP_M, at least its top; past a portal,
@@ -801,7 +832,10 @@ export function cutRelief(c: Cut, h: CutHit, raw: number): number {
   for (const p of c.portals) {
     if (p.open) continue;
     const past = p.at === 0 ? -h.s : h.s - end;
-    if (past >= 0 && past <= LID_M && h.lateral <= h.left + DIP_M && h.lateral >= -h.right - DIP_M) return Math.max(raw, p.top);
+    // Past the end locateCut's lateral is the distance to the end point; a measured lid (#269) runs on far enough for
+    // that to matter, so it takes the offset across the line instead.
+    const lat = p.lid !== undefined ? acrossPast(h.lateral, past) : h.lateral;
+    if (past >= 0 && past <= (p.lid ?? LID_M) && lat <= h.left + DIP_M && lat >= -h.right - DIP_M) return Math.max(raw, p.top);
   }
   if (h.s < 0 || h.s > end) return NaN;
   // A merged side: the strip's half and the gap to the neighbour lie on the floors (the neighbour's own cut answers
@@ -1004,14 +1038,15 @@ export function mouthLid(cuts: readonly Cut[], x: number, y: number, on = PORTAL
   for (const c of cuts) {
     if (!c.portals.some(p => !p.open)) continue;
     const [x0, y0, x1, y1] = c.bbox;
-    if (x < x0 - LID_M - 30 || x > x1 + LID_M + 30 || y < y0 - LID_M - 30 || y > y1 + LID_M + 30) continue;
+    if (x < x0 - COVER_LID_MAX_M - 30 || x > x1 + COVER_LID_MAX_M + 30 || y < y0 - COVER_LID_MAX_M - 30 || y > y1 + COVER_LID_MAX_M + 30) continue;
     const h = locateCut(c, x, y);
-    if (!h || h.lateral > h.left + 0.05 || h.lateral < -h.right - 0.05) continue;
+    if (!h) continue;
     const len = c.s[c.s.length - 1];
     for (const p of c.portals) {
       if (p.open) continue;
-      const past = p.at === 0 ? -h.s : h.s - len;
-      if (past >= -on && past <= LID_M && !(p.top <= top)) top = p.top;
+      const past = p.at === 0 ? -h.s : h.s - len, lat = acrossPast(h.lateral, past);
+      if (lat > h.left + 0.05 || lat < -h.right - 0.05) continue;
+      if (past >= -on && past <= (p.lid ?? LID_M) && !(p.top <= top)) top = p.top;
     }
   }
   return top;

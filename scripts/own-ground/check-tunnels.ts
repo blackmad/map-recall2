@@ -14,7 +14,7 @@ import { TUNNEL_SITES, type TunnelSite } from '../../src/canalRecall/ownGround/t
 
 const ROOT = 'public/data/extracts/amsterdam';
 const args = process.argv.slice(2), only = args.filter(a => !a.startsWith('--'));
-const store = new GroundStore(async p => { const b = readFileSync(join(ROOT, p)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); });
+const store = new GroundStore(async p => { const b = readFileSync(join(ROOT, p)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); }, args.includes('--portalEnds=0') ? { portalEnds: false } : {});
 await store.init();
 let failed = 0;
 const fail = (site: TunnelSite, msg: string) => { failed++; console.log(`  FAIL ${site.id}: ${msg}`); };
@@ -60,6 +60,14 @@ for (const site of TUNNEL_SITES) {
     for (let a = 0; a < 16; a++) for (const r of [2, 4, 6, 8]) { const v = s.cutFloor(qx + Math.cos(a * Math.PI / 8) * r, qy + Math.sin(a * Math.PI / 8) * r); if (v === v) { lo = Math.min(lo, v); hi = Math.max(hi, v); } }
     console.log(`  ground at ${q.join(',')}: ${g.toFixed(2)}, cut floors around ${lo.toFixed(2)}..${hi.toFixed(2)} (relief ${s.relief(qx, qy).toFixed(2)})`);
     if (!(lo <= hi) || g < lo - 0.1 || g > hi + 0.3) fail(site, `ground at ${q.join(',')} ${g.toFixed(2)} is not on the cut floors ${lo.toFixed(2)}..${hi.toFixed(2)}`);
+  }
+  for (const q of e.groundOverCover ?? []) {
+    // The street beside the mouths: the wall tops at the mouths within 25 m (the land the trench is cut from).
+    const [qx, qy] = toLocal(q[0], q[1]), g = s.ground(qx, qy);
+    const rims = s.cuts.flatMap(c => c.portals.filter(p => !p.open && Math.hypot(c.x[p.at] - qx, c.y[p.at] - qy) <= 25).map(p => Math.max(c.rimL[p.at], c.rimR[p.at])));
+    const street = Math.max(...rims);
+    console.log(`  ground over the cover at ${q.join(',')}: ${g.toFixed(2)}, street (mouth wall tops within 25 m) ${rims.length ? street.toFixed(2) : '-'} (relief ${s.relief(qx, qy).toFixed(2)})`);
+    if (!rims.length || Math.abs(g - street) > 0.5) fail(site, `ground over the cover at ${q.join(',')} ${g.toFixed(2)} is not at the street ${rims.length ? street.toFixed(2) : '-'}`);
   }
   for (const q of e.grassAt ?? []) {
     const [qx, qy] = toLocal(q[0], q[1]);
