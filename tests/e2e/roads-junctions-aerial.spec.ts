@@ -15,6 +15,8 @@ const OUT = process.env.ROADS_SHOTS_OUT || 'artifacts/r5c2/aerial';
 export const JUNCTION_AERIAL_POSES = [
   { name: 'rapenburg-ijtunnel-user', center: [4.9110, 52.3719] as [number, number], zoom: 19.2, pitch: 50, bearing: 300 },
   { name: 'ij-tunnel-ramp-walls', center: [4.91150, 52.37235] as [number, number], zoom: 19.6, pitch: 55, bearing: 20 },
+  // Lane #269: the IJ-tunnel's mouths under the Prins Hendrikkade junction from the north-east (the sheets hung across their end lines).
+  { name: 'ij-tunnel-mouths-junction', center: [4.91105, 52.37170] as [number, number], zoom: 19.8, pitch: 55, bearing: 225 },
   { name: 'muntplein', center: [4.89361, 52.36707] as [number, number], zoom: 19.4, pitch: 50, bearing: 0 },
   { name: 'prins-hendrikkade-arcam', center: [4.91290, 52.37095] as [number, number], zoom: 19.4, pitch: 50, bearing: 300 },
 ];

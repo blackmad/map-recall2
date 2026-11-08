@@ -983,21 +983,61 @@ const PORTAL_CLIP_LIFT_MAX_M = 0.5;
 /** Within this of a strip's ends (metres) nothing is clipped: no wall closes the step there (a ramp's top, a portal). */
 const PORTAL_CLIP_END_M = 3;
 
+/**
+ * Options of the portal clip. `ends` (lane #269, default on; off: `?portalEnds=0`, R5-C2's clip byte for byte): a
+ * strip's end at a closed portal (a motor tunnel's mouth under its headwall) is a walled boundary like a side wall, and
+ * the side walls clip right up to it. Ends without a mouth (a ramp's top at grade, a gap between two runs of one ramp)
+ * stay open: nothing closes the step there (R5-C2's first try opened sky holes).
+ */
+export interface PortalClipOptions { ends?: boolean }
+
+/** Has the cut a closed portal (a mouth under a headwall: cutMeshes draws it from below the floor to the lid) at station `at`? */
+const mouthAt = (c: Cut, at: number): boolean => c.portals.some(p => p.at === at && !p.open);
+
+/**
+ * The lid past a mouth (#269): the headwall's top when (x, y) lies over a closed portal's tunnel within LID_M past
+ * the end line (from `-on` metres before it, so a clipped piece's vertex on the line counts) and between the strip's
+ * edges, else NaN. cutRelief lifts the ground there to the same top; the land grid smears it across the end line.
+ */
+export function mouthLid(cuts: readonly Cut[], x: number, y: number, on = PORTAL_CLIP_EPS_M): number {
+  let top = NaN;
+  for (const c of cuts) {
+    if (!c.portals.some(p => !p.open)) continue;
+    const [x0, y0, x1, y1] = c.bbox;
+    if (x < x0 - LID_M - 30 || x > x1 + LID_M + 30 || y < y0 - LID_M - 30 || y > y1 + LID_M + 30) continue;
+    const h = locateCut(c, x, y);
+    if (!h || h.lateral > h.left + 0.05 || h.lateral < -h.right - 0.05) continue;
+    const len = c.s[c.s.length - 1];
+    for (const p of c.portals) {
+      if (p.open) continue;
+      const past = p.at === 0 ? -h.s : h.s - len;
+      if (past >= -on && past <= LID_M && !(p.top <= top)) top = p.top;
+    }
+  }
+  return top;
+}
+
 /** How far (x, y) lies inside the nearest strip among `cuts` (+ inside, − outside; −Infinity beyond every strip's ends) and that strip's floor. */
-export function cutMargin(cuts: readonly Cut[], x: number, y: number): { margin: number; floor: number; walled: boolean } {
+export function cutMargin(cuts: readonly Cut[], x: number, y: number, opts?: PortalClipOptions): { margin: number; floor: number; walled: boolean } {
   let best = -Infinity, floor = NaN, walled = false;
+  const ends = opts?.ends === true;
   for (const c of cuts) {
     const [x0, y0, x1, y1] = c.bbox;
     if (x < x0 - 30 || x > x1 + 30 || y < y0 - 30 || y > y1 + 30) continue;
     const h = locateCut(c, x, y);
     const len = c.s[c.s.length - 1];
     if (!h || h.s < 0 || h.s > len) continue;
-    const mL = h.left - h.lateral, mR = h.lateral + h.right, m = Math.min(mL, mR);
+    const mL = h.left - h.lateral, mR = h.lateral + h.right;
+    // A mouth end bounds the strip like a wall (#269): its distance counts toward the margin.
+    const m0 = ends && mouthAt(c, 0) ? h.s : Infinity, m1 = ends && mouthAt(c, c.x.length - 1) ? len - h.s : Infinity;
+    const m = Math.min(mL, mR, m0, m1);
     if (m > best) {
       best = m; floor = h.floor;
-      // The nearer edge stands as a wall there (cutMeshes draws it), away from the strip's open ends.
+      if (m === m0 || m === m1) { walled = true; continue; }
+      // The nearer edge stands as a wall there (cutMeshes draws it), away from the strip's open ends (up to a mouth: the
+      // headwall closes the corner).
       const wall = mL <= mR ? h.wallL >= 0.5 && h.rimL - h.floor >= 0.15 : h.wallR >= 0.5 && h.rimR - h.floor >= 0.15;
-      walled = wall && h.s >= PORTAL_CLIP_END_M && h.s <= len - PORTAL_CLIP_END_M;
+      walled = wall && (h.s >= PORTAL_CLIP_END_M || m0 < Infinity) && (h.s <= len - PORTAL_CLIP_END_M || m1 < Infinity);
     }
   }
   return { margin: best, floor, walled };
@@ -1012,25 +1052,33 @@ export interface PortalClipStats { split: number; pieces: number; dropped: numbe
  * either side, each at its own side's level: inside at the strip's floor, outside at `outside(x, y)` (the land beside,
  * lifted to the wall top), each with the lift the triangle's own vertices on that side carried. `keepInside` false
  * drops the inside pieces (layers the land's cut mask discards there anyway: the land and the green fills). Vertical
- * triangles (kerb faces, no plan area) are left alone. Returns a new mesh when anything changed, else `m` itself.
+ * triangles (kerb faces, no plan area) are left alone. `opts.ends` also clips across a mouth's end line and along the
+ * walls up to it (#269). Returns a new mesh when anything changed, else `m` itself.
  */
-export function clipMeshAtCuts(m: MeshArrays, cuts: readonly Cut[], outside: (x: number, y: number) => number, keepInside: boolean, stats?: PortalClipStats): MeshArrays {
+export function clipMeshAtCuts(m: MeshArrays, cuts: readonly Cut[], outside: (x: number, y: number) => number, keepInside: boolean, stats?: PortalClipStats, opts?: PortalClipOptions): MeshArrays {
   if (!cuts.length || !m.indices.length) return m;
   // The ring's own box (a cut's bbox may be its centreline's: the strip reaches past it).
   const rings = cuts.map(c => { const r = cutRing(c); return { ring: [r.map(q => [q[0], q[1]] as [number, number])] as Polygon, bbox: [Math.min(...r.map(q => q[0])), Math.min(...r.map(q => q[1])), Math.max(...r.map(q => q[0])), Math.max(...r.map(q => q[1]))] }; });
   const p = m.positions, keep: number[] = [], added: number[] = [];
   let out: MeshArrays | null = null;
   const st = stats ?? { split: 0, pieces: 0, dropped: 0, failed: 0 };
+  const ends = opts?.ends === true;
+  // The outside level: the land, and over a mouth's lid at least its top (the land grid smears the step across the end line).
+  const outZ = ends ? (x: number, y: number) => { const z = outside(x, y), top = mouthLid(cuts, x, y); return top === top ? Math.max(z, top) : z; } : outside;
   for (let t = 0; t < m.indices.length; t += 3) {
     const v = [m.indices[t], m.indices[t + 1], m.indices[t + 2]];
     const xs = v.map(i => p[i * 3]), ys = v.map(i => p[i * 3 + 1]), zs = v.map(i => p[i * 3 + 2]);
     const span = Math.max(...zs) - Math.min(...zs);
     const area2 = Math.abs((xs[1] - xs[0]) * (ys[2] - ys[0]) - (ys[1] - ys[0]) * (xs[2] - xs[0]));
     if (span <= PORTAL_CLIP_SPAN_M || area2 < 1e-4) { keep.push(...v); continue; }
-    const side = v.map((_, j) => cutMargin(cuts, xs[j], ys[j]));
+    const side = v.map((_, j) => cutMargin(cuts, xs[j], ys[j], opts));
     const ins = side.filter(s => s.margin > PORTAL_CLIP_EPS_M).length, outs = side.filter(s => s.margin < -PORTAL_CLIP_EPS_M).length;
     // Only across a wall: an open side (a merged neighbour's strip, the ramp's top, a portal) has no face to close the step.
-    if (!ins || !outs || side.some(q => !q.walled && Math.abs(q.margin) < 6)) { keep.push(...v); continue; }
+    // With `ends` (#269): a triangle whose outside vertices all lie over a mouth's lid crosses only the end line (the
+    // headwall closes it), however near an open side its inside vertices are.
+    const lid = ends ? v.map((_, j) => (side[j].margin < -PORTAL_CLIP_EPS_M ? mouthLid(cuts, xs[j], ys[j]) : NaN)) : null;
+    const overLid = !!lid && side.every((q, j) => !(q.margin < -PORTAL_CLIP_EPS_M) || lid[j] === lid[j]);
+    if (!ins || !outs || (!overLid && side.some(q => !q.walled && Math.abs(q.margin) < 6))) { keep.push(...v); continue; }
     const tb = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
     const local = rings.filter(r => !(r.bbox[2] < tb[0] || r.bbox[0] > tb[2] || r.bbox[3] < tb[1] || r.bbox[1] > tb[3])).map(r => r.ring);
     const tri: Polygon = [[[xs[0], ys[0]], [xs[1], ys[1]], [xs[2], ys[2]], [xs[0], ys[0]]]];
@@ -1038,7 +1086,7 @@ export function clipMeshAtCuts(m: MeshArrays, cuts: readonly Cut[], outside: (x:
     try { outer = polygonClipping.difference(tri, ...local); inner = keepInside ? polygonClipping.difference(tri, outer) : []; } catch { st.failed++; keep.push(...v); continue; }
     // The lift each side's own vertices carried over that side's level (a footway's 14 cm, a fill's few mm).
     const liftOf = (inside: boolean): number => {
-      const l = v.flatMap((_, j) => (inside ? side[j].margin > PORTAL_CLIP_EPS_M : side[j].margin < -PORTAL_CLIP_EPS_M) ? [zs[j] - (inside ? side[j].floor : outside(xs[j], ys[j]))] : []);
+      const l = v.flatMap((_, j) => (inside ? side[j].margin > PORTAL_CLIP_EPS_M : side[j].margin < -PORTAL_CLIP_EPS_M) ? [zs[j] - (inside ? side[j].floor : outZ(xs[j], ys[j]))] : []);
       const mean = l.length ? l.reduce((a, b) => a + b, 0) / l.length : 0;
       return Math.max(0, Math.min(PORTAL_CLIP_LIFT_MAX_M, mean));
     };
@@ -1063,8 +1111,11 @@ export function clipMeshAtCuts(m: MeshArrays, cuts: readonly Cut[], outside: (x:
       }
     };
     const liftOut = liftOf(false), liftIn = liftOf(true);
-    emit(outer, (x, y) => outside(x, y) + liftOut);
-    if (keepInside) emit(inner, (x, y) => { const s = cutMargin(cuts, x, y); return (s.floor === s.floor ? s.floor : outside(x, y)) + liftIn; });
+    emit(outer, (x, y) => outZ(x, y) + liftOut);
+    // An inside piece's vertex on the end line can fall just past the strip's last station (the ring's end and the
+    // centreline's projection disagree by centimetres): with `ends` it takes the inside vertices' floor, not the lid.
+    const insideFloor = ends ? side.filter(q => q.margin > PORTAL_CLIP_EPS_M).reduce((a, q, _, l) => a + q.floor / l.length, 0) : NaN;
+    if (keepInside) emit(inner, (x, y) => { const s = cutMargin(cuts, x, y, opts); return (s.floor === s.floor ? s.floor : insideFloor === insideFloor ? insideFloor : outZ(x, y)) + liftIn; });
     else st.dropped++;
     st.split++;
   }

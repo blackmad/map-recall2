@@ -231,6 +231,12 @@ function portalClipFlag(): boolean {
   if (typeof g.__canalRecallPortalClip === 'boolean') return g.__canalRecallPortalClip;
   return !/[?&]portalClip=(0|false|off)\b/.test(g.location?.search ?? '');
 }
+/** The portal clip across a tunnel mouth's end line and along the walls up to it (tunnels.ts PortalClipOptions.ends, #269): on by default; `?portalEnds=0` or `window.__canalRecallPortalEnds = false` restores R5-C2's clip. */
+function portalEndsFlag(): boolean {
+  const g = globalThis as { __canalRecallPortalEnds?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallPortalEnds === 'boolean') return g.__canalRecallPortalEnds;
+  return !/[?&]portalEnds=(0|false|off)\b/.test(g.location?.search ?? '');
+}
 /** roads-v1 cells with the junction slivers merged (roadSlivers.ts, cell version 3, R5-C2 #263): on by default where the manifest publishes them; `?roadSlivers=0` or `window.__canalRecallRoadSlivers = false` reads the version-2 cells. */
 function roadSliversFlag(): boolean {
   const g = globalThis as { __canalRecallRoadSlivers?: boolean; location?: { search?: string } };
@@ -471,7 +477,7 @@ export class OwnGround {
     this.startup.storeReadyAt ??= performance.now();
     try {
       const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-      const init = { type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), roadSlivers: roadSliversFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      const init = { type: 'init', root, parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), roadSlivers: roadSliversFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       for (let i = 0; i < count; i++) {
         const worker = new Worker(this.opts.workerUrl);
         worker.onmessage = event => this.onWorker(event.data);

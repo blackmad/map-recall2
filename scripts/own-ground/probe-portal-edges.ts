@@ -17,7 +17,7 @@ import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { GroundStore, toLocal } from '../../src/canalRecall/ownGround/groundStore.ts';
 import { buildCell, CUT_CHANNEL, maskChannelAt, type BuiltCell, type GroundLayer } from '../../src/canalRecall/ownGround/groundCell.ts';
-import { insideCut, locateCut, type Cut } from '../../src/canalRecall/ownGround/tunnels.ts';
+import { cutMargin, insideCut, locateCut, type Cut } from '../../src/canalRecall/ownGround/tunnels.ts';
 
 /** Vertices nearer the wall line than ON_LINE_M are on it (a clipped piece's edge vertex belongs to both sides). */
 const WALL_BAND_M = 3, SPAN_M = 0.3, ON_LINE_M = 0.1;
@@ -27,7 +27,7 @@ const [lng, lat, radius] = [Number(pos[0] ?? 4.91165), Number(pos[1] ?? 52.37250
 const ROOT = 'public/data/extracts/amsterdam';
 const bytes = async (p: string) => { const b = readFileSync(join(ROOT, p)); return new Uint8Array(b[0] === 0x1f && b[1] === 0x8b ? gunzipSync(b) : b); };
 const portalClip = flag('portalClip') !== '0';
-const store = new GroundStore(bytes, { roads: flag('roads') !== '0', ...(portalClip ? {} : { portalClip: false }) } as never);
+const store = new GroundStore(bytes, { roads: flag('roads') !== '0', ...(portalClip ? {} : { portalClip: false }), ...(flag('portalEnds') === '0' ? { portalEnds: false } : {}) } as never);
 await store.init();
 const [x, y] = toLocal(lng, lat), key = store.cellAt(x, y);
 const keys = new Set<string>([key]);
@@ -119,7 +119,23 @@ for (let px = x - radius; px <= x + radius; px += HOLE_STEP) for (let py = y - r
   probes++;
   if (!(grid.get(`${Math.floor(px / 4)}:${Math.floor(py / 4)}`) ?? []).some(t => covers(t, px, py))) { holes++; if (holeAt.length < 6) holeAt.push(`${px.toFixed(2)},${py.toFixed(2)} d ${q.d.toFixed(2)}`); }
 }
-console.log(JSON.stringify({ holeProbes: probes, holes, holeM2: +(holes * HOLE_STEP * HOLE_STEP).toFixed(2), holeAt }));
+// The same at the mouths (#269): points within WALL_BAND_M of a closed portal's end line, between the strip's edges.
+let mProbes = 0, mHoles = 0;
+const mAt: string[] = [];
+for (const c of cuts) for (const pt of c.portals) {
+  if (pt.open) continue;
+  const len = c.s[c.s.length - 1];
+  for (let px = c.x[pt.at] - 30; px <= c.x[pt.at] + 30; px += HOLE_STEP) for (let py = c.y[pt.at] - 30; py <= c.y[pt.at] + 30; py += HOLE_STEP) {
+    if (Math.hypot(px - x, py - y) > radius) continue;
+    const h = locateCut(c, px, py);
+    if (!h || h.lateral > h.left || h.lateral < -h.right) continue;
+    const past = pt.at === 0 ? -h.s : h.s - len;
+    if (Math.abs(past) > WALL_BAND_M) continue;
+    mProbes++;
+    if (!(grid.get(`${Math.floor(px / 4)}:${Math.floor(py / 4)}`) ?? []).some(t => covers(t, px, py))) { mHoles++; if (process.env.MOUTH_HOLES || mAt.length < 6) mAt.push(`${px.toFixed(2)},${py.toFixed(2)} past ${past.toFixed(2)}`); }
+  }
+}
+console.log(JSON.stringify({ holeProbes: probes, holes, holeM2: +(holes * HOLE_STEP * HOLE_STEP).toFixed(2), holeAt, mouthHoleProbes: mProbes, mouthHoles: mHoles, mouthHoleAt: mAt }));
 const table = Object.entries(rows).filter(([, r]) => r.tris).map(([layer, r]) => {
   const d = [...r.devs].sort((a, b) => a - b);
   return { layer, tris: r.tris, straddle: r.straddle, straddleM2: +r.straddleM2.toFixed(1), reachMaxM: +r.reachMax.toFixed(2), offVerts: r.off, devMean: +(d.reduce((s_, v) => s_ + v, 0) / Math.max(1, d.length)).toFixed(3), devP95: +(d[Math.floor(d.length * 0.95)] ?? 0).toFixed(3) };
@@ -285,7 +301,10 @@ if (process.argv.includes('--owners')) {
   const OWN_SPAN = Number(flag('ownSpan') ?? SPAN_M);
   const own: Record<string, { n: number; m2: number; layers: Record<string, number> }> = {};
   const classes: Record<string, { n: number; m2: number }> = {};
-  const inside = (px: number, py: number) => { for (const c of cuts) { const h = locateCut(c, px, py); if (h && insideCut(c, h)) return { c, h }; } return null; };
+  // A vertex within ON_LINE_M of a strip's boundary is on it (a clipped piece's edge vertex belongs to both sides).
+  const within = (c: Cut, h: NonNullable<ReturnType<typeof locateCut>>, tol: number) => h.s >= tol && h.s <= c.s[c.s.length - 1] - tol && h.lateral <= h.left - tol && h.lateral >= -h.right + tol;
+  const inside = (px: number, py: number) => { for (const c of cuts) { const h = locateCut(c, px, py); if (h && within(c, h, ON_LINE_M)) return { c, h }; } return null; };
+  const outsideAll = (px: number, py: number) => cuts.every(c => { const h = locateCut(c, px, py); return !h || !within(c, h, -ON_LINE_M); });
   for (const cell of cells) for (const [layer, m] of Object.entries(cell.layers) as [GroundLayer, NonNullable<BuiltCell['layers'][GroundLayer]>][]) {
     if (!m || SKIP.has(layer) || layer === 'land') continue;
     const p = m.positions, idx = m.indices;
@@ -297,7 +316,7 @@ if (process.argv.includes('--owners')) {
       const area = Math.abs((p[v[1]] - p[v[0]]) * (p[v[2] + 1] - p[v[0] + 1]) - (p[v[1] + 1] - p[v[0] + 1]) * (p[v[2]] - p[v[0]])) / 2;
       if (area < 1e-3) continue;
       const ins = v.map(a => inside(p[a], p[a + 1]));
-      if (!ins.some(Boolean) || ins.every(Boolean)) continue;
+      if (!ins.some(Boolean) || !v.some(a => outsideAll(p[a], p[a + 1]))) continue;
       const { c, h } = ins.find(Boolean)!;
       const len = c.s[c.s.length - 1];
       const cands: [number, string][] = [[h.left - h.lateral, 'L'], [h.lateral + h.right, 'R'], [h.s, 'start'], [len - h.s, 'end']];
@@ -305,11 +324,12 @@ if (process.argv.includes('--owners')) {
       const b = cands[0][1];
       let cls: string;
       if (b === 'start' || b === 'end') { const pt = c.portals.find(q => q.at === (b === 'start' ? 0 : c.x.length - 1)); cls = pt ? `end:${pt.open ? 'open' : 'mouth'}` : 'end:plain'; }
-      else { const w = b === 'L' ? h.wallL : h.wallR; const nearEnd = h.s < 3 || h.s > len - 3; cls = w >= 0.5 ? (nearEnd ? 'side:walled<3mEnd' : 'side:walled') : `side:open${(b === 'L' ? c.gapL : c.gapR)?.[h.i] ? '(merged)' : ''}`; }
+      else { const w = b === 'L' ? h.wallL : h.wallR; const nearEnd = h.s < 3 || h.s > len - 3; const endMouth = c.portals.some(q => !q.open && q.at === (h.s < 3 ? 0 : c.x.length - 1)); cls = w >= 0.5 ? (nearEnd ? `side:walled<3m${endMouth ? 'Mouth' : 'PlainEnd'}` : 'side:walled') : `side:open${(b === 'L' ? c.gapL : c.gapR)?.[h.i] ? '(merged)' : ''}`; }
       const key = `${c.id} ${b === 'start' ? 's0' : b === 'end' ? `s${Math.round(len)}` : b} ${cls}`;
       const o = own[key] ?? (own[key] = { n: 0, m2: 0, layers: {} });
       o.n++; o.m2 += area; o.layers[layer] = (o.layers[layer] ?? 0) + 1;
       const k2 = classes[cls] ?? (classes[cls] = { n: 0, m2: 0 }); k2.n++; k2.m2 += area;
+      if (process.env.OWNERS_DUMP && key.startsWith(process.env.OWNERS_DUMP)) console.log(`  ${layer} ${v.map(a => { const q = locateCut(c, p[a], p[a + 1]); return `[s${q ? (q.s - len).toFixed(2) : '?'} lat${q ? q.lateral.toFixed(1) : '?'} z${p[a + 2].toFixed(2)} in${ins[v.indexOf(a)] ? 1 : 0} ${(() => { const q = cutMargin(cuts, p[a], p[a + 1], { ends: true }); return `m${q.margin.toFixed(2)}${q.walled ? 'W' : ''}`; })()}]`; }).join(' ')}`);
     }
   }
   console.table(Object.entries(own).sort((a, b) => b[1].m2 - a[1].m2).map(([k, o]) => ({ boundary: k, sheets: o.n, m2: +o.m2.toFixed(1), layers: JSON.stringify(o.layers) })));
