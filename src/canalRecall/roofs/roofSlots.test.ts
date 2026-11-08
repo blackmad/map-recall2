@@ -85,7 +85,14 @@ test('the enricher stamps BAG pands from the z14 sidecar and ignores others', as
 const square: Feature['geometry'] = { type: 'Polygon', coordinates: [[[4.87, 52.366], [4.8702, 52.366], [4.8702, 52.3661], [4.87, 52.3661], [4.87, 52.366]]] };
 const feature = (props: Record<string, unknown>): Feature => ({ type: 'Feature', properties: { id: 'NL.IMBAG.Pand.0363100012000001', height: 12, facade: 'x', facadeStyle: 'postwar', ...props }, geometry: square });
 
-test('the generic tier reads the slot: flat lid colour, pitched cell and tint, furniture in the extras chunk', () => {
+/** Run `fn` with the page's query string set to `search` (the flags read `location.search`). */
+function withSearch<T>(search: string, fn: () => T): T {
+  const g = globalThis as { location?: unknown }, had = 'location' in g, before = g.location;
+  g.location = { search };
+  try { return fn(); } finally { if (had) g.location = before; else delete g.location; }
+}
+
+test('the generic tier reads the slot: flat lid colour, pitched cell and tint, furniture in the extras chunk', () => withSearch('?flatRoofTone=0&flatRoofSurface=0', () => {
   const prior = meshBuildingFor(feature({}), 'photo')!;
   assert.ok(FLAT_ROOF_GREYS.includes(prior.lid!.hex), 'no stamp: the grey prior');
   const p: Record<string, unknown> = {};
@@ -107,7 +114,7 @@ test('the generic tier reads the slot: flat lid colour, pitched cell and tint, f
     const [a, b] = ROOF_SLOT_TONES.slate.luma, yy = lumaOf(hexToRgb(pitched.roof.roofHex));
     assert.ok(yy >= a && yy <= b);
   }
-});
+}));
 
 test('furniture units stay within 60 triangles each and the measured set is bounded', () => {
   assert.ok(UNIT_TRIANGLES <= 60);

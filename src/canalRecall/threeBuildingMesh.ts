@@ -38,6 +38,7 @@ import { ExtraSink, EXTRA_BUDGET, roofExtras, buildingWallExtras, type ExtraCont
 import type { FlatTri } from './facadeExtraCore.js';
 import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 import { measuredRoofFurniture } from './roofs/roofFurniture.js';
+import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, FLAT_SURFACE_BUDGET, LIP_H_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
 import type { FurnitureItem } from './roofs/roofSlots.js';
 
 export type MeshBuilding = {
@@ -86,7 +87,12 @@ export type MeshBuilding = {
    * Without it, MapLibre drew band and lid as separate extrusions that hung in
    * mid-air whenever the walls were rebuilt (user report 2026-10-02).
    */
-  lid?: { hex: string; flatLayer: number };
+  lid?: { hex: string; flatLayer: number; /** The lid's own surface layer (roofs/flatRoofSurface.ts, `?flatRoofSurface`); absent: the flat layer. */ surfaceLayer?: number };
+  /**
+   * A real flat roof's surface (lane R5-E, roofs/flatRoofSurface.ts, `?flatRoofSurface`): `lip` a parapet lip of wall
+   * colour around the lid, `box` a generic lift-house box at the stair core (no measured furniture). Absent: neither.
+   */
+  flatRoof?: { lip: boolean; box: boolean; /** Roof area (m²): the chunk's surface budget goes to the largest roofs first. */ areaM2?: number; /** The coarse tier (and the baked shell): no measured furniture, the coarse budget. */ coarse?: boolean };
   /** Overrides the per-building rhythm jitter (large tier: civic storeys, one entrance per run). */
   layoutScale?: LayoutScale;
   /** A plain band this tall between the top window row and the wall top (large tier). */
@@ -474,8 +480,15 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   const CORNICE_STYLES = new Set<string>(['canal', 'c19', 'school']);
   // Owner classes for the thin fade (look/thinFade.ts): the projecting cornice strip, and surveyed roofs drawn as `trim`.
   const corniceTris = new WeakSet<object>(), surveyedRoofTris = new WeakSet<object>();
+  // The flat-roof box (lane R5-E): a solid 2.2 m roof piece, not thin trim. As `trim` the thin fade dissolved it from the
+  // air (U1 with ?thinFade=0 showed it; with it, not), so it owns the roof class and no thin size. The 0.25 m lip stays
+  // trim: drawn solid it doubled swap-zfight's still alias (s1 383 -> 732, s3 5750 -> 9656) and its excess.
+  const flatSurfaceTris = new WeakSet<object>();
   type Quad = { kind: string; accent: [number, number, number]; e: Edge; u0: number; u1: number; v1: number; v0?: number; z1Left?:number;z1Right?:number;v1Left?:number;v1Right?:number;layer: number; z0: number; z1: number; tint: [number, number, number, number]; along0: number; along1: number };
   const quadsByBuilding: Array<{ b: MeshBuilding; quads: Quad[]; walls: number; roof: StreetCrownTri[]; lid: LidMesh | null; sign: SignTri[]; extraTris: number }> = [];
+  type SurfaceCandidate = { entry: number; areaM2: number; coarse: boolean; furniture: SignTri[]; lip: StreetCrownTri[]; box: StreetCrownTri[] };
+  const surfaceCandidates: SurfaceCandidate[] = [];
+  const surfaceStats = { furniture: 0, lip: 0, box: 0, furnitureDropped: 0, lipDropped: 0, boxDropped: 0 };
   let signTotal = 0, extrasTotal = 0, gardenTotal = 0;
   let quadTotal = 0, wallTotal = 0, roofTotal = 0, lidVerts = 0, lidIndices = 0;
   const kxLocal = mPerDegLng(origin.lat);
@@ -666,11 +679,40 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const outer = b.polygons[0]?.[0] ?? [];
         const rect = fitRect(outer.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number]), 40);
         // A roof read from the orthophoto gets what is on it; the guessed set only where nothing was measured.
-        if (b.measuredRoof && outer.length) measuredRoofFurniture(b.measuredRoof, [(outer[0][0] - origin.lng) * kxLocal, (outer[0][1] - origin.lat) * M_PER_DEG_LAT], b.heightM, rect, extraSink);
+        // `flatRoof` (lane R5-E, `?flatRoofSurface`): the measured set and the roof box are in the walls chunk, seen from the air.
+        if (b.measuredRoof && outer.length) { if (!b.flatRoof) measuredRoofFurniture(b.measuredRoof, [(outer[0][0] - origin.lng) * kxLocal, (outer[0][1] - origin.lat) * M_PER_DEG_LAT], b.heightM, rect, extraSink); }
+        else if (b.flatRoof?.box) { /* the generic box is drawn with the walls */ }
         else if (rect && rect.coverage > 0.75 && rect.len > 4 && rect.wid > 4) roofExtras({ id: b.id, style: b.style, rect, z: b.heightM, wallHex: b.wallHex }, extraSink);
       }
       extraTris = extraSink.tris.length;
       sign.push(...extraSink.tris);
+    }
+    if (walled && lid && b.flatRoof) {
+      // A real flat roof's surface (lane R5-E, roofs/flatRoofSurface.ts): the measured furniture (from the air too, so in
+      // this chunk rather than the near-only extras), the parapet lip and the generic lift-house box, as candidates the
+      // chunk's surface budget (FLAT_SURFACE_BUDGET, after this loop) admits largest roof first.
+      const local = b.polygons.map(poly => poly.map(ring => ring.map(([lng, lat]) => [(lng - origin.lng) * kxLocal, (lat - origin.lat) * M_PER_DEG_LAT] as [number, number])));
+      // A party wall against a roof as high (or higher) carries no lip: both buildings' edges are in `shared`, one each way.
+      const exposed = (a: [number, number], c: [number, number]) => {
+        const there = shared.get(`${edgeKey(a[0], a[1])}>${edgeKey(c[0], c[1])}`), back = shared.get(`${edgeKey(c[0], c[1])}>${edgeKey(a[0], a[1])}`);
+        if (!there?.length || !back?.length) return true;
+        return Math.min(Math.max(...there.map(o => o.top)), Math.max(...back.map(o => o.top))) < b.heightM - LIP_H_M;
+      };
+      const coarseTier = b.flatRoof.coarse === true, outer = local[0]?.[0] ?? [], rect = fitRect(outer, 40);
+      const candidate: SurfaceCandidate = { entry: quadsByBuilding.length, areaM2: b.flatRoof.areaM2 ?? 0, coarse: coarseTier, furniture: [], lip: [], box: [] };
+      if (b.measuredRoof && outer.length && !coarseTier) {
+        const sink = new ExtraSink(400); // the detector stores at most 16 items a roof (12 triangles each with the fit margin), plus a terrace
+        measuredRoofFurniture(b.measuredRoof, outer[0], b.heightM, rect, sink);
+        candidate.furniture = sink.tris;
+      }
+      if (b.flatRoof.lip && !b.roof) for (const poly of local) candidate.lip.push(...parapetLipTris(poly, b.heightM, b.wallHex, { exposed }));
+      // The box's rect has no vertex cap (fitRect's 40 left most large BAG footprints without one).
+      const boxRect = b.flatRoof.box && !b.measuredRoof?.furniture.length ? rect ?? fitRect(outer, Infinity) : null;
+      if (boxRect) {
+        const at = stairCorePoint(local[0], 1, boxRect);
+        if (at) candidate.box = roofBoxTris(at[0], at[1], boxRect.ux, boxRect.uy, BOX_L_M, BOX_W_M, b.heightM, b.heightM + BOX_H_M, BOX_HEX);
+      }
+      surfaceCandidates.push(candidate);
     }
     if (mode === 'extras') { quads.length = 0; visibleQuads.length = 0; roof = []; }
     signTotal += sign.length;
@@ -678,6 +720,24 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     quadsByBuilding.push({ b, quads: visibleQuads, walls, roof, lid, sign, extraTris });
     quadTotal += visibleQuads.length; wallTotal += walls; roofTotal += roof.length;
     if (lid) { lidVerts += lid.xy.length / 2; lidIndices += lid.index.length; }
+  }
+
+  if (surfaceCandidates.length) {
+    // The flat-roof surface's triangle budget (lane R5-E): a share of what the chunk already draws, spent on measured
+    // furniture, then generic boxes (10 triangles, the piece that reads from the air: at U1 lips first left every box
+    // out), then lips, each pass largest roof first, all-or-nothing a building.
+    const base = quadTotal * 2 + roofTotal + lidIndices / 3 + signTotal;
+    let room = Math.floor(base * (surfaceCandidates[0].coarse ? FLAT_SURFACE_BUDGET.coarse : FLAT_SURFACE_BUDGET.detail));
+    const byArea = [...surfaceCandidates].sort((a, c) => c.areaM2 - a.areaM2);
+    for (const kind of ['furniture', 'box', 'lip'] as const) for (const c of byArea) {
+      const tris = c[kind];
+      if (!tris.length) continue;
+      if (tris.length > room) { surfaceStats[`${kind}Dropped`]++; continue; }
+      room -= tris.length; surfaceStats[kind]++;
+      const e = quadsByBuilding[c.entry];
+      if (kind === 'furniture') { e.sign.push(...(tris as SignTri[])); e.extraTris += tris.length; signTotal += tris.length; extrasTotal += tris.length; }
+      else { if (kind === 'box') for (const t of tris) flatSurfaceTris.add(t); e.roof.push(...(tris as StreetCrownTri[])); roofTotal += tris.length; }
+    }
   }
 
   // Equal-height flat tops can overlap even when neither footprint contains the
@@ -768,7 +828,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         // Trim and decals (white stone, cornices, shutters) are flat colour on the lid's flat layer.
         const layer = flat ? (b.lid?.flatLayer ?? b.roof?.layers.slope ?? b.lid!.flatLayer) : t.part === 'plate' ? (t.facadeLayer ?? b.plainLayer ?? b.roof?.layers.plain ?? b.plainLayer!) : t.part === 'dormerFace' ? b.roof?.layers.dormer ?? b.plainLayer! : b.roof?.layers.slope ?? b.lid!.flatLayer;
         const tint = t.hex ? parseHex(t.hex) : flat ? white : wall ? t.facadeTint ?? defaultWallTint : [rr, rg, rb];
-        const thinClass = shell ? THIN_CLASS.shell : surveyedRoofTris.has(t) ? THIN_CLASS.roof : corniceTris.has(t) ? THIN_CLASS.cornice : flat ? THIN_CLASS.trim : wall ? THIN_CLASS.wall : THIN_CLASS.roof;
+        const thinClass = shell ? THIN_CLASS.shell : surveyedRoofTris.has(t) || flatSurfaceTris.has(t) ? THIN_CLASS.roof : corniceTris.has(t) ? THIN_CLASS.cornice : flat ? THIN_CLASS.trim : wall ? THIN_CLASS.wall : THIN_CLASS.roof;
         const thinSize = thinClass === THIN_CLASS.cornice || thinClass === THIN_CLASS.trim ? thinCm(t.p[0], t.p[1], t.p[2]) : 0;
         for (let k = 0; k < 3; k++) {
           thin[v * 2] = thinSize; thin[v * 2 + 1] = thinClass;
@@ -788,7 +848,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       for (let k = 0; k < lid.xy.length; k += 2) {
         positions[v * 3] = lid.xy[k]; positions[v * 3 + 1] = lid.xy[k + 1]; positions[v * 3 + 2] = z;
         uvs[v * 2] = lid.xy[k] / 4; uvs[v * 2 + 1] = lid.xy[k + 1] / 4;
-        layers[v] = b.lid!.flatLayer;
+        layers[v] = b.lid!.surfaceLayer ?? b.lid!.flatLayer;
         tints[v * 4] = lr; tints[v * 4 + 1] = lg; tints[v * 4 + 2] = lb; tints[v * 4 + 3] = LID_SHADE * 255;
         accents[v * 4] = accents[v * 4 + 1] = accents[v * 4 + 2] = accents[v * 4 + 3] = 255;
         thin[v * 2 + 1] = shell ? THIN_CLASS.shell : THIN_CLASS.lid;
@@ -821,6 +881,8 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
   addKind('frontage', signTotal - extrasTotal - gardenTotal);
   addKind('garden-room', gardenTotal);
   addKind('extras', extrasTotal);
+  // Lane R5-E diagnostics: flat roofs whose surface piece the chunk budget admitted / dropped (buildings, not triangles).
+  if (surfaceCandidates.length) for (const [k, n] of Object.entries(surfaceStats)) if (n) kinds[`flat-${k}`] = n;
   const chunk = { positions, uvs, layers, tints, accents, thin, indices, ranges, vertexCount, quadCount: quadTotal + Math.ceil(roofTotal / 2), wallCount: wallTotal, buildingCount: ranges.length, kinds };
   return mode === 'walls' ? applyHostWallOpenings(chunk, origin, hostOpenings) : chunk;
 }

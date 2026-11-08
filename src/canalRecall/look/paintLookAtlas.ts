@@ -11,6 +11,7 @@ import { LOOK_VARIANTS, PHOTO_WALL_CELL_MEAN } from './palette.js';
 import { FACADE_STYLES } from '../genericFacades.js';
 import { PROCEDURAL_RECIPE_LAYER_OFFSET } from '../streetFacadeRendering.js';
 import { SLOT_LAYER_COUNT, loadCityBrick, paintSlotLayers } from './cityLook.js';
+import { flatRoofSurfaceEnabled, flatRoofSurfaceLayer, paintFlatRoofSurfaceCell } from '../roofs/flatRoofSurface.js';
 
 export const ROOF_LAYER_COUNT = 4;
 
@@ -25,6 +26,9 @@ export const RESTORE_TEXTURE_SLICE_MS = 32;
 /** Layer counts of a look's arrays: `layers` bay/roof/glass cells, then (city look) the slot layers from `slotBase`. */
 export function lookAtlasLayers(look: 'procedural' | Look, slots: boolean): { layers: number; total: number } {
   const layers = (look === 'procedural' ? PROCEDURAL_RECIPE_LAYER_OFFSET + BAY_LAYER_COUNT : BAY_LAYER_COUNT + ROOF_LAYER_COUNT) + 1;
+  // The flat-roof surface (lane R5-E, roofs/flatRoofSurface.ts) after the slot layers, at a fixed ordinal with or without them.
+  const surface = flatRoofSurfaceEnabled() ? flatRoofSurfaceLayer(look) : null;
+  if (surface !== null) return { layers, total: surface + 1 };
   return { layers, total: layers + (slots ? SLOT_LAYER_COUNT : 0) };
 }
 
@@ -132,6 +136,8 @@ export async function paintLookArrays(look: 'procedural' | Look, size = CELL_PX,
   }
   const roofBase = look === 'procedural' ? CELL_LAYER_COUNT : BAY_LAYER_COUNT;
   copyCell(paintGlassBlockCell(),layers - 1);
+  const surfaceLayer = flatRoofSurfaceEnabled() ? flatRoofSurfaceLayer(look) : null;
+  if (surfaceLayer !== null) copyCell(paintFlatRoofSurfaceCell(), surfaceLayer);
   for (const [i, cell] of paintRoofLayers(LOOK_VARIANTS[look].cartoonRoofCells).entries()) { copyCell(cell, roofBase + i); await yieldBudget(); }
   let brick: CanvasImageSource = document.createElement('canvas');
   if (look === 'photo') {
