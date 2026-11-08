@@ -234,3 +234,14 @@ test('stair core: an L-shaped roof whose spine runs outside it still finds a cle
   assert.ok(at, 'a point');
   assert.ok((at[0] < 10 || at[1] < 10) && at[0] > 0 && at[1] > 0, `${at} on the roof`);
 });
+
+test('the lip and box are roof class with no thin size (the thin fade dissolved them as trim from the air)', () => {
+  const street = Array.from({ length: 24 }, (_, i) => {
+    const kx = 111320 * Math.cos(52.37 * Math.PI / 180), w = 30 / kx, h = 22 / 110540, x = 4.901 + i * 40 / kx, y = 52.37;
+    return feature({ id: `NL.IMBAG.Pand.03631000129991${String(i).padStart(2, '0')}` }, { type: 'Polygon', coordinates: [[[x, y], [x + w, y], [x + w, y + h], [x, y + h], [x, y]]] });
+  });
+  const on = buildFeatureChunk(street, 'photo', 'walls'), off = withSearch(OFF, () => buildFeatureChunk(street, 'photo', 'walls'));
+  const trimVerts = (c: { thin?: ArrayLike<number> }) => { let n = 0; for (let i = 1; i < (c.thin?.length ?? 0); i += 2) if (c.thin![i] === 4) n++; return n; };
+  assert.ok((on.kinds!['flat-box'] ?? 0) > 0);
+  assert.equal(trimVerts(on), trimVerts(off), 'no surface triangle is trim');
+});
