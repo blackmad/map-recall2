@@ -3,6 +3,28 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Free Ride has a collection",
+   "text": "Each neighbourhood lists its places, the postcard and plaque say how many you have opened, and opening them all stamps the neighbourhood in your passport. A small enamel coin marks the nearest place you have not seen; tap it or ride through it. Only one card is up at a time while you collect.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-g4-collection/ride-desktop-entry-one-card-v2.jpg",
+     "alt": "Free Ride on desktop: the neighbourhood checklist card with places opened so far, one card up",
+     "caption": "The neighbourhood's places, one card up."
+    },
+    {
+     "src": "ui/2026-11-09-g4-collection/ride-desktop-stamped-v2.jpg",
+     "alt": "The postcard after the last place opened: the neighbourhood stamped in the passport",
+     "caption": "All opened: the neighbourhood is stamped."
+    },
+    {
+     "src": "ui/2026-11-09-g4-collection/ride-phone-entry-v2.jpg",
+     "alt": "Free Ride on a phone with the enamel coin marking the nearest unseen place",
+     "caption": "On the phone, the coin marks the nearest unseen place."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Which building is this?",
    "text": "When a hand-built landmark comes into view, the ride may ask you to name it from four buildings in the same neighbourhood; a right answer stamps it in your passport. Drive-by cards now have a Noticed button, and Free Ride can quiz you on landmarks too (Quiz me on landmarks). The four choices are never shown on the map or in the HUD before you answer.",
    "images": [

@@ -496,6 +496,9 @@ Map source: ${osmUrl(places[i][0])}`);
     "freeRide.tallyNone": "Tap a marker or a building",
     "freeRide.tallyOne": "1 place opened",
     "freeRide.tallyMany": "{count} places opened",
+    "freeRide.checklist": "{opened} of {total} places",
+    "freeRide.checklistDone": "all {total} places",
+    "freeRide.stamped": "Stamped in your passport",
     "setup.difficulty": "Difficulty",
     "setup.difficulty.easy": "Easy",
     "setup.difficulty.medium": "Medium",
@@ -1132,6 +1135,9 @@ Map source: ${osmUrl(places[i][0])}`);
     "freeRide.tallyNone": "Tik op een markering of een gebouw",
     "freeRide.tallyOne": "1 plek geopend",
     "freeRide.tallyMany": "{count} plekken geopend",
+    "freeRide.checklist": "{opened} van {total} plekken",
+    "freeRide.checklistDone": "alle {total} plekken",
+    "freeRide.stamped": "Gestempeld in je paspoort",
     "setup.difficulty": "Moeilijkheid",
     "setup.difficulty.easy": "Makkelijk",
     "setup.difficulty.medium": "Gemiddeld",
@@ -2072,6 +2078,214 @@ Map source: ${osmUrl(places[i][0])}`);
   }
   function canShowMiniMap(enabled, input) {
     return enabled && !input.utilityOpen;
+  }
+
+  // src/canalRecall/look/palette.ts
+  var PHOTO_WALL_CELL_MEAN = 225;
+  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
+  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
+  var LOOK_VARIANTS = {
+    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
+    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    // Storybook warms and lifts the natural palette a little, as an illustrator would.
+    storybook: {
+      cells: "storybook",
+      shadeBands: 0,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: false,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
+    },
+    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
+    cartoon: {
+      cells: "cartoon",
+      shadeBands: 3,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: true,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
+    }
+  };
+  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
+  var ROOF_TONES = {
+    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
+    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
+  };
+  var ROOF_SLOT_TONES = {
+    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
+    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
+    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
+    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
+    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
+    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
+    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
+    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
+    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
+    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
+    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
+    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
+  };
+  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
+  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
+  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var PERIOD_WALLS = {
+    photo: {
+      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
+      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
+      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
+      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
+    },
+    storybook: {
+      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
+      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
+      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
+      modern: null
+    },
+    cartoon: {
+      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
+      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
+      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
+      modern: null
+    }
+  };
+  var PERIOD_PRIORS = {
+    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
+    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
+    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
+    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
+  };
+  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
+  var GLASS_TINT_CELL_W = 32;
+  var GLASS_TINT_CELL_H = 64;
+  var PANE_LUMA = [157.19, 92.83, 69.17];
+  var STREAK_LUMA = 240.95;
+  var STREAK_ALPHA = 0.16;
+  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
+  function glassTintCellValue(x, y) {
+    const t2 = y / (GLASS_TINT_CELL_H - 1);
+    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
+    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
+    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
+  }
+  var GLASS_TINT_CELL_MEAN = (() => {
+    let sum = 0;
+    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
+    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
+  })();
+  var STONE_CELL_MEAN = 228 / 255;
+  var HIGHLIGHT_CORAL = "#ff8033";
+
+  // src/canalRecall/hudTheme.ts
+  var enamelTheme = {
+    enamel: "#0b3a8c",
+    enamelBright: "#1450b8",
+    enamelDeep: "#072861",
+    night: "#071430",
+    ink: "#ffffff",
+    inkMuted: "rgba(255,255,255,0.72)",
+    inkDim: "rgba(255,255,255,0.86)",
+    line: "rgba(255,255,255,0.28)",
+    /** Rivet / gold accent (plaque corners, selected hairline). */
+    rivet: "#c4a35a",
+    rivetDeep: "#8a7040",
+    /** Copper stamp (Start / Confirm). */
+    copper: "#b87333",
+    copperHi: "#d9a05b",
+    copperDeep: "#8a5524",
+    copperMid: "#c9844a",
+    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
+  };
+  var daylightTheme = {
+    paper: "#f4efe5",
+    paperRaised: "#fbf8f2",
+    paperSunk: "#ebe4d6",
+    ink: "#1f1c17",
+    /** 6.3:1 on paper — secondary copy. */
+    inkMuted: "#5f584d",
+    line: "rgba(31,28,23,0.14)",
+    lineStrong: "rgba(31,28,23,0.26)",
+    fill: "rgba(31,28,23,0.045)",
+    fillHover: "rgba(31,28,23,0.085)",
+    accent: "#b4682c",
+    /** Copper dark enough for text on paper (≈6:1). */
+    accentInk: "#8a4a18",
+    accentSoft: "rgba(180,104,44,0.13)",
+    scrim: "rgba(28,24,18,0.38)",
+    danger: "#a8321f"
+  };
+  var paperTheme = {
+    paper: enamelTheme.enamel,
+    paperRaised: enamelTheme.enamelBright,
+    paperMuted: enamelTheme.enamelDeep,
+    ink: enamelTheme.ink,
+    inkMuted: enamelTheme.inkMuted,
+    line: enamelTheme.line,
+    moss: enamelTheme.enamelBright,
+    mossDark: enamelTheme.enamelDeep,
+    mossSoft: "rgba(20,80,184,0.28)",
+    terracotta: enamelTheme.copper,
+    ochre: enamelTheme.rivet
+  };
+  var hudSurface = {
+    /** Always-on readouts sitting directly on the map. */
+    card: "rgba(251,248,242,0.9)",
+    /** Cards you stop and read: the trivia card, the postcard. */
+    cardSolid: "rgba(251,248,242,0.97)",
+    /** Hairline border. */
+    border: "rgba(31,28,23,0.14)",
+    borderStrong: "rgba(180,104,44,0.6)",
+    /** Drop shadow under a card that floats over the map. */
+    shadow: "rgba(31,28,23,0.22)",
+    /** The thumbstick, which sits over the map and must not hide it. */
+    control: "rgba(251,248,242,0.72)",
+    controlPressed: daylightTheme.accent,
+    controlInk: "rgba(31,28,23,0.62)",
+    /** Thumbstick knob at rest. */
+    controlKnob: "rgba(31,28,23,0.2)",
+    /** Type on the paper plate. */
+    ink: daylightTheme.ink,
+    inkMuted: daylightTheme.inkMuted,
+    accent: daylightTheme.accentInk,
+    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
+     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
+    arrow: HIGHLIGHT_CORAL,
+    fontPlaque: enamelTheme.fontPlaque,
+    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
+     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
+    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
+    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+  };
+
+  // src/canalRecall/game/freeRideCollectionDraw.ts
+  function drawPassportStamp(ctx, x, y, radius, label, alpha, fontFamily) {
+    if (!(alpha > 0)) return;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, alpha) * 0.9;
+    ctx.translate(x, y);
+    ctx.rotate(-0.21);
+    ctx.strokeStyle = daylightTheme.accent;
+    ctx.fillStyle = daylightTheme.accent;
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.arc(0, 0, radius - 5, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = `800 ${Math.round(radius * 0.36)}px ${fontFamily}`;
+    ctx.fillText(label.toUpperCase(), 0, 1);
+    ctx.restore();
   }
 
   // src/canalRecall/game/modes.ts
@@ -5767,190 +5981,6 @@ ${register}` : detail,
     return text.trim();
   }
 
-  // src/canalRecall/look/palette.ts
-  var PHOTO_WALL_CELL_MEAN = 225;
-  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
-  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
-  var LOOK_VARIANTS = {
-    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
-    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
-    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
-    // Storybook warms and lifts the natural palette a little, as an illustrator would.
-    storybook: {
-      cells: "storybook",
-      shadeBands: 0,
-      flatColour: false,
-      ...DRAWN_CALM,
-      cartoonRoofCells: false,
-      outline: true,
-      litWallGain: 1,
-      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
-    },
-    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
-    cartoon: {
-      cells: "cartoon",
-      shadeBands: 3,
-      flatColour: false,
-      ...DRAWN_CALM,
-      cartoonRoofCells: true,
-      outline: true,
-      litWallGain: 1,
-      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
-    }
-  };
-  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
-  var ROOF_TONES = {
-    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
-    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
-  };
-  var ROOF_SLOT_TONES = {
-    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
-    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
-    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
-    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
-    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
-    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
-    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
-    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
-    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
-    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
-    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
-    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
-  };
-  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
-  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
-  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
-  var PERIOD_WALLS = {
-    photo: {
-      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
-      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
-      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
-      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
-    },
-    storybook: {
-      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
-      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
-      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
-      modern: null
-    },
-    cartoon: {
-      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
-      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
-      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
-      modern: null
-    }
-  };
-  var PERIOD_PRIORS = {
-    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
-    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
-    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
-    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
-  };
-  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
-  var GLASS_TINT_CELL_W = 32;
-  var GLASS_TINT_CELL_H = 64;
-  var PANE_LUMA = [157.19, 92.83, 69.17];
-  var STREAK_LUMA = 240.95;
-  var STREAK_ALPHA = 0.16;
-  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
-  function glassTintCellValue(x, y) {
-    const t2 = y / (GLASS_TINT_CELL_H - 1);
-    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
-    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
-    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
-  }
-  var GLASS_TINT_CELL_MEAN = (() => {
-    let sum = 0;
-    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
-    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
-  })();
-  var STONE_CELL_MEAN = 228 / 255;
-  var HIGHLIGHT_CORAL = "#ff8033";
-
-  // src/canalRecall/hudTheme.ts
-  var enamelTheme = {
-    enamel: "#0b3a8c",
-    enamelBright: "#1450b8",
-    enamelDeep: "#072861",
-    night: "#071430",
-    ink: "#ffffff",
-    inkMuted: "rgba(255,255,255,0.72)",
-    inkDim: "rgba(255,255,255,0.86)",
-    line: "rgba(255,255,255,0.28)",
-    /** Rivet / gold accent (plaque corners, selected hairline). */
-    rivet: "#c4a35a",
-    rivetDeep: "#8a7040",
-    /** Copper stamp (Start / Confirm). */
-    copper: "#b87333",
-    copperHi: "#d9a05b",
-    copperDeep: "#8a5524",
-    copperMid: "#c9844a",
-    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
-  };
-  var daylightTheme = {
-    paper: "#f4efe5",
-    paperRaised: "#fbf8f2",
-    paperSunk: "#ebe4d6",
-    ink: "#1f1c17",
-    /** 6.3:1 on paper — secondary copy. */
-    inkMuted: "#5f584d",
-    line: "rgba(31,28,23,0.14)",
-    lineStrong: "rgba(31,28,23,0.26)",
-    fill: "rgba(31,28,23,0.045)",
-    fillHover: "rgba(31,28,23,0.085)",
-    accent: "#b4682c",
-    /** Copper dark enough for text on paper (≈6:1). */
-    accentInk: "#8a4a18",
-    accentSoft: "rgba(180,104,44,0.13)",
-    scrim: "rgba(28,24,18,0.38)",
-    danger: "#a8321f"
-  };
-  var paperTheme = {
-    paper: enamelTheme.enamel,
-    paperRaised: enamelTheme.enamelBright,
-    paperMuted: enamelTheme.enamelDeep,
-    ink: enamelTheme.ink,
-    inkMuted: enamelTheme.inkMuted,
-    line: enamelTheme.line,
-    moss: enamelTheme.enamelBright,
-    mossDark: enamelTheme.enamelDeep,
-    mossSoft: "rgba(20,80,184,0.28)",
-    terracotta: enamelTheme.copper,
-    ochre: enamelTheme.rivet
-  };
-  var hudSurface = {
-    /** Always-on readouts sitting directly on the map. */
-    card: "rgba(251,248,242,0.9)",
-    /** Cards you stop and read: the trivia card, the postcard. */
-    cardSolid: "rgba(251,248,242,0.97)",
-    /** Hairline border. */
-    border: "rgba(31,28,23,0.14)",
-    borderStrong: "rgba(180,104,44,0.6)",
-    /** Drop shadow under a card that floats over the map. */
-    shadow: "rgba(31,28,23,0.22)",
-    /** The thumbstick, which sits over the map and must not hide it. */
-    control: "rgba(251,248,242,0.72)",
-    controlPressed: daylightTheme.accent,
-    controlInk: "rgba(31,28,23,0.62)",
-    /** Thumbstick knob at rest. */
-    controlKnob: "rgba(31,28,23,0.2)",
-    /** Type on the paper plate. */
-    ink: daylightTheme.ink,
-    inkMuted: daylightTheme.inkMuted,
-    accent: daylightTheme.accentInk,
-    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
-     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
-    arrow: HIGHLIGHT_CORAL,
-    fontPlaque: enamelTheme.fontPlaque,
-    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
-     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
-    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
-    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
-  };
-
   // src/canalRecall/noticeCards.ts
   var BADGE_FONT = `700 11px ${hudSurface.fontMono}`;
   var NAME_FONT = `800 16px ${hudSurface.fontPlaque}`;
@@ -7032,7 +7062,8 @@ ${register}` : detail,
           this._neighborhoodEntries.counts,
           this.currentNeighborhood
         );
-        this._postcardPending = postcardOnEntry({
+        const checklistEntry = !!this.freeRide && !!this._freeRideChecklistCaption?.(this.currentNeighborhood);
+        this._postcardPending = checklistEntry || postcardOnEntry({
           now: this.raceTime,
           priorEntries,
           lastTriviaAt: this._lastTriviaAt ?? null,
@@ -7046,11 +7077,17 @@ ${register}` : detail,
       })) {
         this._postcardPending = this.currentNeighborhood;
       }
-      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && this.viewport?.mode !== "compact" && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      const oneCard = !!this._freeRideCollectionOn?.();
+      if (oneCard && this._landmarkNotice && this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) {
+        this._neighborhoodNoticeTimer = 0;
+        this._neighborhoodNotice = null;
+      }
+      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && !(oneCard && this._landmarkNotice) && this.viewport?.mode !== "compact" && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
         this._postcardPending = null;
         this._lastPostcardAt = this.raceTime;
         if (hood) this._ensureNeighborhoodImage(hood);
-        this._neighborhoodNotice = hood || { name: this.currentNeighborhood };
+        const stamped = !!this._freeRideTakeStampPostcard?.(this.currentNeighborhood);
+        this._neighborhoodNotice = { ...hood || { name: this.currentNeighborhood }, stamped };
         this._neighborhoodNoticeTimer = NEIGHBORHOOD_NOTICE_SECONDS;
       }
       const routePath = this.routePath;
@@ -7271,7 +7308,9 @@ ${lm.researchDetail}` : originalBody;
           imageArea: hood.imageArea,
           hasImage,
           cityName: city?.name || this._cityDisplayName?.() || "Amsterdam",
-          provinceCaption: city?.provinceCaption || ""
+          provinceCaption: city?.provinceCaption || "",
+          checklist: this._freeRideChecklistCaption?.(hood.name) || "",
+          stamped: !!hood.stamped
         },
         measure,
         window.CanalRecallUi.postcardWidth(this.viewport)
@@ -7290,6 +7329,17 @@ ${lm.researchDetail}` : originalBody;
       ctx.save();
       ctx.globalAlpha = Math.max(0, alpha);
       this.renderer.drawPostcard(ctx, card, cardX, cardY, hasImage && img ? img : null);
+      if (hood.stamped) {
+        drawPassportStamp(
+          ctx,
+          cardX + card.width - 46,
+          cardY + card.height / 2,
+          34,
+          "Stamped",
+          Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.25),
+          window.CanalRecallUi.hudSurface.fontPlaque
+        );
+      }
       ctx.restore();
     }
   };

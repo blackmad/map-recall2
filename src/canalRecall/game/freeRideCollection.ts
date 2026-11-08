@@ -193,7 +193,7 @@ export function stampIfComplete(
   const stamped = passport.stamped.includes(hood) ? passport.stamped : [...passport.stamped, hood].sort();
   return {
     state: { ...state, stamps: [...state.stamps, { hood, at: today }] },
-    passport: { stamped },
+    passport: { ...passport, stamped },
     fresh: true,
   };
 }

@@ -208,6 +208,9 @@
     "freeRide.tallyNone": "Tap a marker or a building",
     "freeRide.tallyOne": "1 place opened",
     "freeRide.tallyMany": "{count} places opened",
+    "freeRide.checklist": "{opened} of {total} places",
+    "freeRide.checklistDone": "all {total} places",
+    "freeRide.stamped": "Stamped in your passport",
     "setup.difficulty": "Difficulty",
     "setup.difficulty.easy": "Easy",
     "setup.difficulty.medium": "Medium",
@@ -844,6 +847,9 @@
     "freeRide.tallyNone": "Tik op een markering of een gebouw",
     "freeRide.tallyOne": "1 plek geopend",
     "freeRide.tallyMany": "{count} plekken geopend",
+    "freeRide.checklist": "{opened} van {total} plekken",
+    "freeRide.checklistDone": "alle {total} plekken",
+    "freeRide.stamped": "Gestempeld in je paspoort",
     "setup.difficulty": "Moeilijkheid",
     "setup.difficulty.easy": "Makkelijk",
     "setup.difficulty.medium": "Gemiddeld",
@@ -2347,9 +2353,467 @@
     }
   };
 
+  // src/canalRecall/game/freeRideCollection.ts
+  var COLLECTION_STORAGE_KEY = "canalRecall.freeRideCollection.v1";
+  var CHECKLIST_MAX_PLACES = 9;
+  var CHECKLIST_MIN_PLACES = 2;
+  var TOKEN_RADIUS_M = 320;
+  var TOKEN_RIDE_THROUGH_M = 22;
+  var TOKEN_NEAR_PX = 22;
+  var TOKEN_FAR_PX = 12;
+  var TOKEN_MAX_PX = 24;
+  var FADE_NEAR_M = 110;
+  var FADE_FAR_M = 320;
+  var FADE_FLOOR = 0.35;
+  var CORRIDOR_AHEAD_M = 70;
+  var CORRIDOR_HALF_WIDTH_PX = 30;
+  function buildChecklists(places, hoodOf, { max = CHECKLIST_MAX_PLACES, min = CHECKLIST_MIN_PLACES } = {}) {
+    const byHood = /* @__PURE__ */ new Map();
+    const seen = /* @__PURE__ */ new Set();
+    for (const place of places) {
+      if (!place.key || seen.has(place.key)) continue;
+      const hood = hoodOf(place);
+      if (!hood) continue;
+      seen.add(place.key);
+      const list = byHood.get(hood);
+      if (list) list.push(place);
+      else byHood.set(hood, [place]);
+    }
+    const out = /* @__PURE__ */ new Map();
+    for (const [hood, list] of byHood) {
+      if (list.length < min) continue;
+      list.sort((a, b) => (b.prominence ?? 0) - (a.prominence ?? 0) || a.key.localeCompare(b.key));
+      out.set(hood, { hood, places: list.slice(0, max) });
+    }
+    return out;
+  }
+  function checklistProgress(list, opened) {
+    if (!list || !list.places.length) return null;
+    const remaining = list.places.filter((place) => !opened.has(place.key)).map((place) => place.key);
+    const total = list.places.length;
+    return { opened: total - remaining.length, total, done: remaining.length === 0, remaining };
+  }
+  var norm = (text) => text.normalize("NFD").replace(/[̀-ͯ]/g, "").trim().toLowerCase();
+  var ENGLISH = {
+    count: (opened, total) => `${opened} of ${total} places`,
+    done: (total) => `all ${total} places`
+  };
+  function checklistLine(hood, progress, { underQuestion = "", copy = ENGLISH } = {}) {
+    const hidden = !!underQuestion && norm(underQuestion) === norm(hood);
+    const name = hidden ? "" : hood;
+    const count = progress.done ? copy.done(progress.total) : copy.count(progress.opened, progress.total);
+    return { hood: name, count, text: name ? `${name} \xB7 ${count}` : count };
+  }
+  function emptyCollection() {
+    return { opened: [], stamps: [] };
+  }
+  function readCollection(store) {
+    try {
+      const raw = store?.getItem(COLLECTION_STORAGE_KEY);
+      if (!raw) return emptyCollection();
+      const parsed = JSON.parse(raw);
+      return {
+        opened: Array.isArray(parsed.opened) ? parsed.opened.map(String) : [],
+        stamps: Array.isArray(parsed.stamps) ? parsed.stamps.filter((s) => s && typeof s.hood === "string").map((s) => ({ hood: s.hood, at: String(s.at || "") })) : []
+      };
+    } catch {
+      return emptyCollection();
+    }
+  }
+  function saveCollection(store, state) {
+    try {
+      store?.setItem(COLLECTION_STORAGE_KEY, JSON.stringify(state));
+    } catch {
+    }
+  }
+  function noteOpened(state, key) {
+    if (!key || state.opened.includes(key)) return state;
+    return { ...state, opened: [...state.opened, key] };
+  }
+  function stampIfComplete(state, passport, hood, progress, today) {
+    if (!hood || !progress?.done || state.stamps.some((s) => s.hood === hood)) {
+      return { state, passport, fresh: false };
+    }
+    const stamped = passport.stamped.includes(hood) ? passport.stamped : [...passport.stamped, hood].sort();
+    return {
+      state: { ...state, stamps: [...state.stamps, { hood, at: today }] },
+      passport: { ...passport, stamped },
+      fresh: true
+    };
+  }
+  function pickTokenPlace(rider, candidates, opened, { radius, prefer }) {
+    let best = null;
+    let bestScore = Infinity;
+    for (const place of candidates) {
+      if (opened.has(place.key) || !Number.isFinite(place.x) || !Number.isFinite(place.y)) continue;
+      const distance = Math.hypot(place.x - rider.x, place.y - rider.y);
+      if (distance > radius) continue;
+      const score = prefer?.has(place.key) ? distance / 2 : distance;
+      if (score < bestScore || score === bestScore && best && place.key < best.key) {
+        best = { ...place, distance };
+        bestScore = score;
+      }
+    }
+    return best;
+  }
+  function ridesThrough(rider, place, throughPx) {
+    return !!place && Math.hypot(place.x - rider.x, place.y - rider.y) <= throughPx;
+  }
+  var smooth = (t2) => {
+    const c = Math.max(0, Math.min(1, t2));
+    return c * c * (3 - 2 * c);
+  };
+  function farness(distanceM2) {
+    if (!Number.isFinite(distanceM2)) return 1;
+    return smooth((distanceM2 - FADE_NEAR_M) / (FADE_FAR_M - FADE_NEAR_M));
+  }
+  function distanceAlpha(distanceM2) {
+    return 1 - (1 - FADE_FLOOR) * farness(distanceM2);
+  }
+  function tokenSizePx(distanceM2) {
+    const size = TOKEN_NEAR_PX + (TOKEN_FAR_PX - TOKEN_NEAR_PX) * farness(distanceM2);
+    return Math.min(TOKEN_MAX_PX, Math.max(TOKEN_FAR_PX, size));
+  }
+  function segmentDistance(p, a, b) {
+    const dx = b.x - a.x, dy = b.y - a.y;
+    const len2 = dx * dx + dy * dy;
+    const t2 = len2 > 0 ? Math.max(0, Math.min(1, ((p.x - a.x) * dx + (p.y - a.y) * dy) / len2)) : 0;
+    return Math.hypot(p.x - (a.x + dx * t2), p.y - (a.y + dy * t2));
+  }
+  function overCorridor(at, radius, corridor) {
+    if (!corridor || !corridor.path.length) return false;
+    const reach = corridor.halfWidth + radius;
+    if (corridor.path.length === 1) return Math.hypot(at.x - corridor.path[0].x, at.y - corridor.path[0].y) <= reach;
+    for (let i = 1; i < corridor.path.length; i++) {
+      if (segmentDistance(at, corridor.path[i - 1], corridor.path[i]) <= reach) return true;
+    }
+    return false;
+  }
+  function corridorAhead(rider, aheadPx, steps = 4) {
+    const out = [];
+    for (let i = 0; i <= steps; i++) {
+      const d = aheadPx * i / steps;
+      out.push({ x: rider.x + Math.cos(rider.angle) * d, y: rider.y + Math.sin(rider.angle) * d });
+    }
+    return out;
+  }
+  function collectionEnabled(search) {
+    try {
+      return new URLSearchParams(search).get("collection") !== "0";
+    } catch {
+      return !/[?&]collection=0(?:&|$)/.test(search);
+    }
+  }
+
+  // src/canalRecall/look/palette.ts
+  var PHOTO_WALL_CELL_MEAN = 225;
+  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
+  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
+  var LOOK_VARIANTS = {
+    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
+    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
+    // Storybook warms and lifts the natural palette a little, as an illustrator would.
+    storybook: {
+      cells: "storybook",
+      shadeBands: 0,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: false,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
+    },
+    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
+    cartoon: {
+      cells: "cartoon",
+      shadeBands: 3,
+      flatColour: false,
+      ...DRAWN_CALM,
+      cartoonRoofCells: true,
+      outline: true,
+      litWallGain: 1,
+      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
+    }
+  };
+  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
+  var ROOF_TONES = {
+    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
+    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
+    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
+  };
+  var ROOF_SLOT_TONES = {
+    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
+    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
+    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
+    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
+    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
+    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
+    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
+    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
+    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
+    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
+    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
+    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
+  };
+  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
+  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
+  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
+  var PERIOD_WALLS = {
+    photo: {
+      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
+      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
+      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
+      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
+    },
+    storybook: {
+      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
+      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
+      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
+      modern: null
+    },
+    cartoon: {
+      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
+      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
+      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
+      modern: null
+    }
+  };
+  var PERIOD_PRIORS = {
+    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
+    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
+    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
+    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
+  };
+  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
+  var GLASS_TINT_CELL_W = 32;
+  var GLASS_TINT_CELL_H = 64;
+  var PANE_LUMA = [157.19, 92.83, 69.17];
+  var STREAK_LUMA = 240.95;
+  var STREAK_ALPHA = 0.16;
+  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
+  function glassTintCellValue(x, y) {
+    const t2 = y / (GLASS_TINT_CELL_H - 1);
+    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
+    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
+    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
+  }
+  var GLASS_TINT_CELL_MEAN = (() => {
+    let sum = 0;
+    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
+    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
+  })();
+  var STONE_CELL_MEAN = 228 / 255;
+  var STREET_GROUND = {
+    // Was [72, 74, 78]: under the rig it drew at luma 67 in sun and 59 in shade, "near-black" (user live play
+    // 2026-10-14). Lifted to a sunlit-grey 88 (just under the klinker carriageway's 91, still cooler than it); with
+    // ownGround/groundLight.ts it draws 88 in sun and 78 in cast shadow, above LOOK's road floor of 65–75.
+    asphalt: { base: [86, 88, 93] },
+    cycle: { base: [150, 66, 58] },
+    // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
+    // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
+    klinker: { base: [122, 90, 80], joint: "#4b3d38" },
+    pavement: { base: [174, 162, 152], joint: "#7f756b" },
+    kerb: "#cfcac0",
+    paint: "#f2f0ea",
+    rail: "#6c6e72",
+    bollard: "#5a2a26"
+  };
+  var HIGHLIGHT_CORAL = "#ff8033";
+  var GROUND_TONES = {
+    land: { base: [168, 158, 142], joint: "#857b6d" },
+    paving: { base: [184, 174, 158], joint: "#8f8577" },
+    square: { base: [190, 179, 161], joint: "#958a7c" },
+    // Klinker warm grey-rose, asphalt darker and cooler than it ("so much grey": they shared one band).
+    klinker: { base: [158, 124, 114], joint: "#7a6660" },
+    asphalt: [68, 72, 80],
+    cycle: [156, 76, 66],
+    gravel: [180, 166, 136],
+    park: [96, 140, 70],
+    wood: [70, 112, 58],
+    parking: [102, 102, 105],
+    kerb: "#aaa498",
+    water: "#46707c",
+    // Parks (parks-v1, ownGround/parks.ts, 2026-10-13): mown lawn fresher than the park fill under it, planting beds
+    // as soil with green dabs, shrub planting darker and clumped, bark mulch, play sand, shell/half-paved paths lighter
+    // than street gravel, park asphalt lighter than the road's, ponds the canal tone (a greener one read as a shadow).
+    lawn: [110, 154, 74],
+    bed: { soil: [98, 80, 60], leaf: [84, 122, 58] },
+    shrub: { base: [56, 92, 46], leaf: [76, 116, 56] },
+    bark: [118, 84, 58],
+    sand: [212, 194, 150],
+    parkGravel: [198, 184, 152],
+    parkPath: [110, 110, 112],
+    pond: "#46707c"
+  };
+
+  // src/canalRecall/hudTheme.ts
+  var enamelTheme = {
+    enamel: "#0b3a8c",
+    enamelBright: "#1450b8",
+    enamelDeep: "#072861",
+    night: "#071430",
+    ink: "#ffffff",
+    inkMuted: "rgba(255,255,255,0.72)",
+    inkDim: "rgba(255,255,255,0.86)",
+    line: "rgba(255,255,255,0.28)",
+    /** Rivet / gold accent (plaque corners, selected hairline). */
+    rivet: "#c4a35a",
+    rivetDeep: "#8a7040",
+    /** Copper stamp (Start / Confirm). */
+    copper: "#b87333",
+    copperHi: "#d9a05b",
+    copperDeep: "#8a5524",
+    copperMid: "#c9844a",
+    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
+  };
+  var daylightTheme = {
+    paper: "#f4efe5",
+    paperRaised: "#fbf8f2",
+    paperSunk: "#ebe4d6",
+    ink: "#1f1c17",
+    /** 6.3:1 on paper — secondary copy. */
+    inkMuted: "#5f584d",
+    line: "rgba(31,28,23,0.14)",
+    lineStrong: "rgba(31,28,23,0.26)",
+    fill: "rgba(31,28,23,0.045)",
+    fillHover: "rgba(31,28,23,0.085)",
+    accent: "#b4682c",
+    /** Copper dark enough for text on paper (≈6:1). */
+    accentInk: "#8a4a18",
+    accentSoft: "rgba(180,104,44,0.13)",
+    scrim: "rgba(28,24,18,0.38)",
+    danger: "#a8321f"
+  };
+  var paperTheme = {
+    paper: enamelTheme.enamel,
+    paperRaised: enamelTheme.enamelBright,
+    paperMuted: enamelTheme.enamelDeep,
+    ink: enamelTheme.ink,
+    inkMuted: enamelTheme.inkMuted,
+    line: enamelTheme.line,
+    moss: enamelTheme.enamelBright,
+    mossDark: enamelTheme.enamelDeep,
+    mossSoft: "rgba(20,80,184,0.28)",
+    terracotta: enamelTheme.copper,
+    ochre: enamelTheme.rivet
+  };
+  var hudSurface = {
+    /** Always-on readouts sitting directly on the map. */
+    card: "rgba(251,248,242,0.9)",
+    /** Cards you stop and read: the trivia card, the postcard. */
+    cardSolid: "rgba(251,248,242,0.97)",
+    /** Hairline border. */
+    border: "rgba(31,28,23,0.14)",
+    borderStrong: "rgba(180,104,44,0.6)",
+    /** Drop shadow under a card that floats over the map. */
+    shadow: "rgba(31,28,23,0.22)",
+    /** The thumbstick, which sits over the map and must not hide it. */
+    control: "rgba(251,248,242,0.72)",
+    controlPressed: daylightTheme.accent,
+    controlInk: "rgba(31,28,23,0.62)",
+    /** Thumbstick knob at rest. */
+    controlKnob: "rgba(31,28,23,0.2)",
+    /** Type on the paper plate. */
+    ink: daylightTheme.ink,
+    inkMuted: daylightTheme.inkMuted,
+    accent: daylightTheme.accentInk,
+    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
+     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
+    arrow: HIGHLIGHT_CORAL,
+    fontPlaque: enamelTheme.fontPlaque,
+    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
+     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
+    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
+    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
+  };
+
+  // src/canalRecall/game/freeRideCollectionDraw.ts
+  function drawDiscoveryToken(ctx, x, y, size, alpha) {
+    if (!(size > 0) || !(alpha > 0)) return;
+    const r = size / 2;
+    ctx.save();
+    ctx.globalAlpha = Math.min(1, alpha);
+    ctx.shadowColor = "rgba(31,28,23,0.3)";
+    ctx.shadowBlur = 4;
+    ctx.shadowOffsetY = 1;
+    ctx.fillStyle = enamelTheme.copper;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowColor = "transparent";
+    const face = ctx.createRadialGradient(x - r * 0.3, y - r * 0.35, r * 0.1, x, y, r * 0.8);
+    face.addColorStop(0, enamelTheme.enamelBright);
+    face.addColorStop(1, enamelTheme.enamelDeep);
+    ctx.fillStyle = face;
+    ctx.beginPath();
+    ctx.arc(x, y, r * 0.78, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#fbf8f2";
+    const s = r * 0.42;
+    ctx.beginPath();
+    for (let i = 0; i < 8; i++) {
+      const a = i * Math.PI / 4 - Math.PI / 2;
+      const len = i % 2 === 0 ? s : s * 0.38;
+      const px = x + Math.cos(a) * len, py = y + Math.sin(a) * len;
+      if (i === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.strokeStyle = "rgba(255,255,255,0.45)";
+    ctx.lineWidth = Math.max(0.75, r * 0.12);
+    ctx.beginPath();
+    ctx.arc(x, y, r * 0.78, Math.PI * 1.1, Math.PI * 1.55);
+    ctx.stroke();
+    ctx.restore();
+  }
+  function drawCollectedToken(ctx, x, y, size, t2) {
+    if (!(t2 >= 0 && t2 < 1)) return;
+    const flip = Math.cos(t2 * Math.PI * 2);
+    ctx.save();
+    ctx.translate(x, y - t2 * 10);
+    ctx.scale(Math.max(0.08, Math.abs(flip)), 1);
+    if (flip >= 0) drawDiscoveryToken(ctx, 0, 0, size, 1 - t2);
+    else {
+      ctx.globalAlpha = 1 - t2;
+      ctx.fillStyle = enamelTheme.copperHi;
+      ctx.beginPath();
+      ctx.arc(0, 0, size / 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = enamelTheme.copperDeep;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // src/canalRecall/game/sessionCounters.ts
+  function holder() {
+    return typeof globalThis === "undefined" ? null : globalThis;
+  }
+  function sessionCounters() {
+    const h = holder();
+    if (!h) return {};
+    return h.__canalRecallSession ||= {};
+  }
+  function bumpSessionCounter(name, by = 1) {
+    const counters = sessionCounters();
+    counters[name] = (counters[name] || 0) + by;
+    return counters[name];
+  }
+
   // src/canalRecall/game/freeRideRuntime.ts
   var WAY_TAP_SLOP_PX = 15;
   var BRIDGE_COLOUR = "#2f6f9f";
+  var COLLECT_FLIP_MS = 600;
+  var CHECKLIST_COPY = {
+    count: (opened, total) => t("freeRide.checklist", { opened, total }),
+    done: (total) => t("freeRide.checklistDone", { total })
+  };
+  var STAMP_MOMENT_SECONDS = 6;
   var GameFreeRideRuntime = class {
     /** Start or end Free Ride to match the ride just set up. `_setupRace`
      *  calls this last, after the route, labels and spoilers are in place. */
@@ -2376,6 +2840,24 @@
       this._freeRideMarkers = [];
       this._freeRideRefresh = 0;
       this._freeRideOpened = /* @__PURE__ */ new Set();
+      this._freeRideCollection = null;
+      if (collectionEnabled(typeof location === "undefined" ? "" : location.search)) {
+        const state = readCollection(typeof localStorage === "undefined" ? null : localStorage);
+        this._freeRideCollection = {
+          state,
+          opened: new Set(state.opened),
+          lists: null,
+          listsFrom: null,
+          hoodOfKey: /* @__PURE__ */ new Map(),
+          token: null,
+          tokenScreen: null,
+          tokenHidden: null,
+          corridor: null,
+          stampMoment: null,
+          stampPostcard: null,
+          collected: null
+        };
+      }
       this._showFreeRideBar(true);
     }
     /** Back to the quiz rules: spoiler screening and the player's own label
@@ -2386,6 +2868,7 @@
       this.freeRide = false;
       this._freeRideMarkers = [];
       this._freeRideNearby = [];
+      this._freeRideCollection = null;
       const map = this.vectorMap;
       map?.setSpoilersSuspended?.(false);
       if (restore && !restore.labels) map?.setLabelsVisible?.(false);
@@ -2421,7 +2904,7 @@
       const second = secondMarkerIds(worth);
       for (const landmark of worth) {
         if (second.has(String(landmark.id))) continue;
-        places.push({ key: landmark.id, kind: "landmark", name: landmark.name, x: landmark.x, y: landmark.y });
+        places.push({ key: landmark.id, kind: "landmark", name: landmark.name, x: landmark.x, y: landmark.y, prominence: landmark.prominenceScore });
       }
       for (const bridge of this.bridges || []) {
         const name = bridge.displayName || bridge.name;
@@ -2435,22 +2918,99 @@
     }
     _updateFreeRide(dt) {
       if (!this.freeRide || !this.player) return;
+      const collection = this._freeRideCollection;
+      if (collection?.token && this.state === GameState.RACING && !collection.opened.has(collection.token.key) && ridesThrough(this.player, collection.token, TOKEN_RIDE_THROUGH_M * PIXELS_PER_METER) && this._landmarkNotice?.id !== collection.token.key) {
+        if (this.viewport?.mode === "compact") {
+          const token = collection.token;
+          collection.collected = { x: token.x, y: token.y, at: performance.now() };
+          this._noteFreeRideOpened(token.key);
+          collection.token = null;
+        } else {
+          this._openFreeRideLandmark(collection.token.key);
+          collection.token = null;
+        }
+      }
       this._freeRideRefresh = (this._freeRideRefresh ?? 0) - dt;
       if (this._freeRideRefresh > 0) return;
       this._freeRideRefresh = FREE_RIDE_REFRESH_SECONDS;
-      this._freeRideNearby = nearbyPlaces(this.player, this._freeRideCatalog(), {
+      const catalog = this._freeRideCatalog();
+      this._freeRideNearby = nearbyPlaces(this.player, catalog, {
         radiusPx: FREE_RIDE_MARKER_RADIUS_M * PIXELS_PER_METER,
         bridgeRadiusPx: FREE_RIDE_BRIDGE_RADIUS_M * PIXELS_PER_METER
       });
+      if (collection) {
+        const list = this._freeRideChecklist(this.currentNeighborhood);
+        const progress = checklistProgress(list, collection.opened);
+        collection.token = pickTokenPlace(this.player, catalog.filter((place) => place.kind === "landmark"), collection.opened, {
+          radius: TOKEN_RADIUS_M * PIXELS_PER_METER,
+          prefer: new Set(progress?.remaining ?? [])
+        });
+        if (collection.token) this._ensureLandmarkImage(this.landmarks.find((l) => l.id === collection.token.key) ?? null);
+      }
       for (const place of this._freeRideNearby) {
         if (place.kind !== "landmark") continue;
         this._ensureLandmarkImage(this.landmarks.find((landmark) => landmark.id === place.key) ?? null);
       }
     }
-    /** The plaque's line in place of the score. */
+    /** The plaque's line in place of the score: the current neighbourhood's
+     *  checklist when it has one ("3 of 9 places"; the plaque names the
+     *  neighbourhood on the line above), else the places opened this ride. */
     _freeRideTally() {
+      const collection = this._freeRideCollection;
+      if (collection) {
+        const moment = collection.stampMoment;
+        if (moment && moment.until > performance.now()) return t("freeRide.stamped");
+        const progress = this._freeRideChecklistProgress(this.currentNeighborhood);
+        if (progress) return checklistLine(this.currentNeighborhood, progress, { underQuestion: this.quizCurrentName, copy: CHECKLIST_COPY }).count;
+      }
       const { key, count } = freeRideTallyKey(this._freeRideOpened?.size ?? 0);
       return t(key, { count });
+    }
+    /** Every neighbourhood's checklist, built once per catalogue and boundary set. */
+    _freeRideChecklists() {
+      const collection = this._freeRideCollection;
+      if (!collection) return null;
+      const places = this._freeRideCatalog();
+      const from = collection.listsFrom;
+      if (collection.lists && from && from.places === places && from.neighborhoods === this.neighborhoods) return collection.lists;
+      const landmarks = places.filter((place) => place.kind === "landmark");
+      const lists = buildChecklists(landmarks, (place) => this._neighborhoodAt(place.x, place.y)?.name);
+      collection.lists = lists;
+      collection.listsFrom = { places, neighborhoods: this.neighborhoods };
+      collection.hoodOfKey = /* @__PURE__ */ new Map();
+      for (const list of lists.values()) for (const place of list.places) collection.hoodOfKey.set(place.key, list.hood);
+      return lists;
+    }
+    _freeRideChecklist(hood) {
+      if (!hood) return null;
+      return this._freeRideChecklists()?.get(hood) ?? null;
+    }
+    _freeRideChecklistProgress(hood) {
+      const collection = this._freeRideCollection;
+      if (!collection) return null;
+      return checklistProgress(this._freeRideChecklist(hood), collection.opened);
+    }
+    _freeRideCollectionOn() {
+      return !!this.freeRide && !!this._freeRideCollection;
+    }
+    _freeRideTakeStampPostcard(hood) {
+      const collection = this._freeRideCollection;
+      if (!this.freeRide || !collection || collection.stampPostcard !== hood) return false;
+      collection.stampPostcard = null;
+      return true;
+    }
+    /** The postcard's checklist caption for a neighbourhood, or '' (no list, or the collection is off). */
+    _freeRideChecklistCaption(hood) {
+      if (!this.freeRide) return "";
+      const progress = this._freeRideChecklistProgress(hood);
+      return progress ? checklistLine(hood, progress, { underQuestion: this.quizCurrentName, copy: CHECKLIST_COPY }).count : "";
+    }
+    /** The current neighbourhood's unopened places, for the radar. */
+    _freeRideRadarPlaces() {
+      const collection = this._freeRideCollection;
+      if (!this.freeRide || !collection) return [];
+      const list = this._freeRideChecklist(this.currentNeighborhood);
+      return list ? list.places.filter((place) => !collection.opened.has(place.key)) : [];
     }
     /** Draw the markers, nearest first, keeping off the HUD, the open card and
      *  the vehicle. Their boxes are the tap targets until the next frame. */
@@ -2496,7 +3056,11 @@
       ].filter((r) => !!r);
       const placed = layoutMarkers(requests, { width: CANVAS_W, height: CANVAS_H }, blocked);
       const activeId = this._landmarkNotice?.id || "";
-      const draw = (key, kind, label, anchorX, anchorY, box, alpha) => {
+      const collection = this._freeRideCollection;
+      const distanceOf = new Map((nearby || []).map((place) => [place.key, place.distance / PIXELS_PER_METER]));
+      const far = (key) => collection ? distanceAlpha(distanceOf.get(key) ?? Infinity) : 1;
+      const draw = (key, kind, label, anchorX, anchorY, box, rawAlpha) => {
+        const alpha = rawAlpha * (activeId === key ? 1 : far(key));
         const active = activeId === key || kind === "bridge" && this._landmarkNotice?.name === nearby?.find((p) => p.key === key)?.name;
         const dot = kind === "bridge" ? BRIDGE_COLOUR : surface.arrow;
         ctx.strokeStyle = surface.ink;
@@ -2556,6 +3120,54 @@
       }
       ctx.restore();
       this._freeRideMarkers = placed;
+      if (collection) this._renderFreeRideToken(blocked);
+    }
+    /** The discovery token on the landmark that carries it: smaller and
+     *  fainter with distance, never over the corridor ahead or a HUD card. */
+    _renderFreeRideToken(blocked) {
+      const collection = this._freeRideCollection;
+      if (!collection || !this.player) return;
+      collection.tokenScreen = null;
+      collection.tokenHidden = null;
+      const collected = collection.collected;
+      if (collected) {
+        const t2 = (performance.now() - collected.at) / COLLECT_FLIP_MS;
+        if (t2 >= 1) collection.collected = null;
+        else {
+          const at2 = this.camera.worldToScreen(collected.x, collected.y);
+          const size2 = TOKEN_NEAR_PX / Math.max(0.01, this.canvas.getBoundingClientRect().width / CANVAS_W);
+          drawCollectedToken(this.ctx, at2.x, at2.y, size2, t2);
+        }
+      }
+      const vehicle = this.camera.worldToScreen(this.player.x, this.player.y);
+      collection.corridor = {
+        path: [vehicle, ...corridorAhead(this.player, CORRIDOR_AHEAD_M * PIXELS_PER_METER).slice(1).map((point) => this.camera.worldToScreen(point.x, point.y))],
+        halfWidth: CORRIDOR_HALF_WIDTH_PX
+      };
+      const token = collection.token;
+      if (!token || collection.opened.has(token.key)) return;
+      const live = Math.hypot(token.x - this.player.x, token.y - this.player.y) / PIXELS_PER_METER;
+      const shown = this.canvas.getBoundingClientRect().width;
+      const cssPerCanvas = shown > 0 ? shown / CANVAS_W : 1;
+      const size = tokenSizePx(live) / cssPerCanvas;
+      const alpha = distanceAlpha(live);
+      const at = this.camera.worldToScreen(token.x, token.y);
+      const r = size / 2;
+      if (!Number.isFinite(at.x) || at.x < r || at.y < r || at.x > CANVAS_W - r || at.y > CANVAS_H - r) {
+        collection.tokenHidden = "offscreen";
+        return;
+      }
+      if (overCorridor(at, r, collection.corridor)) {
+        collection.tokenHidden = "corridor";
+        return;
+      }
+      if (blocked.some((b) => at.x + r > b.x && at.x - r < b.x + b.w && at.y + r > b.y && at.y - r < b.y + b.h)) {
+        collection.tokenHidden = "hud";
+        return;
+      }
+      collection.tokenHidden = null;
+      drawDiscoveryToken(this.ctx, at.x, at.y, size, alpha);
+      collection.tokenScreen = { key: token.key, x: at.x, y: at.y, size, alpha };
     }
     /** The Free ride · Exit bar in canvas units, so markers keep off it. */
     _freeRideBarRect() {
@@ -2578,6 +3190,8 @@
      * Returns true when something opened.
      */
     _freeRideClick(x, y, clientX, clientY) {
+      const token = this._freeRideCollection?.tokenScreen;
+      if (token && Math.hypot(x - token.x, y - token.y) <= token.size / 2 + 10) return this._openFreeRideLandmark(token.key);
       const marker = this._freeRideMarkerAt(x, y);
       if (marker) return this._openFreeRidePlace(marker.key);
       const before = this._landmarkNotice;
@@ -2587,6 +3201,16 @@
         return true;
       }
       return this._openFreeRideWayAt(clientX, clientY);
+    }
+    /** Open a landmark's card by id (the token's place need not have a marker). */
+    _openFreeRideLandmark(key) {
+      const landmark = this.landmarks.find((l) => l.id === key);
+      if (!landmark) return false;
+      this.quizFeedback = "";
+      this._showLandmarkNotice(landmark, { kind: "sticky" }, "click");
+      this.vectorMap.setActiveLandmark(landmark);
+      this._noteFreeRideOpened(key);
+      return true;
     }
     _openFreeRidePlace(key) {
       const place = this._freeRideNearby?.find((p) => p.key === key);
@@ -2648,7 +3272,33 @@
       return opened;
     }
     _noteFreeRideOpened(id) {
-      (this._freeRideOpened ||= /* @__PURE__ */ new Set()).add(id);
+      const ride = this._freeRideOpened ||= /* @__PURE__ */ new Set();
+      if (!id || ride.has(id)) return;
+      ride.add(id);
+      bumpSessionCounter("placesOpened");
+      const collection = this._freeRideCollection;
+      if (!collection || collection.opened.has(id)) return;
+      collection.opened.add(id);
+      collection.state = noteOpened(collection.state, id);
+      const store = typeof localStorage === "undefined" ? null : localStorage;
+      this._freeRideChecklists();
+      const hood = collection.hoodOfKey.get(id);
+      if (hood) {
+        const progress = this._freeRideChecklistProgress(hood);
+        const today = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+        const stamped = stampIfComplete(collection.state, store ? readPassport(store) : { stamped: [] }, hood, progress, today);
+        if (stamped.fresh) {
+          collection.state = stamped.state;
+          if (store) savePassport(store, stamped.passport);
+          bumpSessionCounter("stampsEarned");
+          collection.stampMoment = { hood, until: performance.now() + STAMP_MOMENT_SECONDS * 1e3 };
+          if (this.viewport?.mode !== "compact") {
+            collection.stampPostcard = hood;
+            this._postcardPending = hood;
+          }
+        }
+      }
+      saveCollection(store, collection.state);
     }
     /** The "Free ride · Exit" bar: where the destination card sits on a wide
      *  screen, under the plaque on a phone. */
@@ -6334,7 +6984,7 @@
   var ACCENT = "#8a4a18";
   var COPPER = "#c9844a";
   var RULE = "rgba(31,28,23,0.16)";
-  function sessionCounters() {
+  function sessionCounters2() {
     const win = window;
     win.__canalRecallSession ||= {};
     const session = win.__canalRecallSession;
@@ -6362,7 +7012,7 @@
         this._runLoaded = true;
         const loaded = loadRun(storage2(), Date.now());
         this._run = loaded.run;
-        sessionCounters().stopsThisRun = loaded.run?.stopCount ?? 0;
+        sessionCounters2().stopsThisRun = loaded.run?.stopCount ?? 0;
       }
       return this._run ?? null;
     }
@@ -6376,7 +7026,7 @@
       if (this._runRecordedKey) return;
       this._runRecordedKey = `${this.routeFrom?.id ?? ""}>${to.id}`;
       this._runCard = null;
-      const session = sessionCounters();
+      const session = sessionCounters2();
       session.ridesThisSession = (session.ridesThisSession ?? 0) + 1;
       if (!this._runEnabled()) return;
       const { run } = addStop(this._openRun(), {
@@ -6442,7 +7092,7 @@
       endRun(storage2(), run);
       this._run = null;
       this._runCard = card ? run : null;
-      const session = sessionCounters();
+      const session = sessionCounters2();
       session.runsEnded = (session.runsEnded ?? 0) + 1;
       session.stopsPerRun = [...session.stopsPerRun ?? [], run.stopCount];
       session.stopsThisRun = 0;
@@ -6685,231 +7335,6 @@
   function sightingCredit(sightings, hood) {
     return Object.values(sightings).filter((s) => !hood || s.hood === hood).length;
   }
-
-  // src/canalRecall/look/palette.ts
-  var PHOTO_WALL_CELL_MEAN = 225;
-  var PHOTO_CALM = { wallPull: 0.7, glassLift: 0.5, liftBrick: true };
-  var DRAWN_CALM = { wallPull: 0.35, glassLift: 0.25, liftBrick: false };
-  var LOOK_VARIANTS = {
-    photo: { cells: "photo", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 255 / PHOTO_WALL_CELL_MEAN },
-    procedural: { cells: "procedural", shadeBands: 0, flatColour: false, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
-    untextured: { cells: "procedural", shadeBands: 0, flatColour: true, ...PHOTO_CALM, cartoonRoofCells: false, outline: false, litWallGain: 1 },
-    // Storybook warms and lifts the natural palette a little, as an illustrator would.
-    storybook: {
-      cells: "storybook",
-      shadeBands: 0,
-      flatColour: false,
-      ...DRAWN_CALM,
-      cartoonRoofCells: false,
-      outline: true,
-      litWallGain: 1,
-      tone: { hueShift: -4, satMul: 1.15, satAdd: 0, keepDarkBelow: 0, lightMul: 1, lightAdd: 0.03, lightMax: 0.9 }
-    },
-    // Cartoon: punchy but not neon; darks (glass, iron) stay dark so windows still read.
-    cartoon: {
-      cells: "cartoon",
-      shadeBands: 3,
-      flatColour: false,
-      ...DRAWN_CALM,
-      cartoonRoofCells: true,
-      outline: true,
-      litWallGain: 1,
-      tone: { hueShift: 0, satMul: 1.7, satAdd: 0.08, keepDarkBelow: 0.35, lightMul: 1.08, lightAdd: 0, lightMax: 0.85 }
-    }
-  };
-  var MEASURED_SLATE = ["#76808f", "#606b79", "#8c939c"];
-  var ROOF_TONES = {
-    procedural: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    untextured: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    photo: { tile: ["#b5543a", "#a8482f", "#c0603f", "#9c4a35"], slate: MEASURED_SLATE },
-    storybook: { tile: ["#b9553a", "#a94a33", "#c46a45"], slate: ["#556070", "#4a5666", "#657282"] },
-    cartoon: { tile: ["#e85a3c", "#f08a2b", "#d94a3a"], slate: ["#3f5f8f", "#2f4a78", "#4f7bb0"] }
-  };
-  var ROOF_SLOT_TONES = {
-    "gravel": { hex: "#9e9281", luma: [112, 156], cell: "flat" },
-    "bitumen-dark": { hex: "#56585e", luma: [62, 96], cell: "flat" },
-    "bitumen-light": { hex: "#a99b84", luma: [150, 182], cell: "flat" },
-    "white-membrane": { hex: "#d9d9d3", luma: [196, 228], cell: "flat" },
-    "pantile-red": { hex: "#b5543a", luma: [84, 124], cell: "tile" },
-    "pantile-dark": { hex: "#6a5248", luma: [64, 98], cell: "tile" },
-    "slate": { hex: "#76808f", luma: [62, 140], cell: "slate" },
-    "zinc": { hex: "#9aa1a6", luma: [138, 176], cell: "slate" },
-    "sedum": { hex: "#7a8350", luma: [96, 132], cell: "flat" },
-    "solar": { hex: "#2e3a52", luma: [44, 70], cell: "flat" },
-    "terrace": { hex: "#a38d74", luma: [124, 162], cell: "flat" },
-    "glass": { hex: "#8fa3ad", luma: [130, 170], cell: "flat" }
-  };
-  var FLAT_ROOF_TONES = { gravel: ROOF_SLOT_TONES.gravel.hex, membrane: ROOF_SLOT_TONES["white-membrane"].hex, bitumen: ROOF_SLOT_TONES["bitumen-dark"].hex, pebble: ROOF_SLOT_TONES["bitumen-light"].hex };
-  var FLAT_ROOF_GREYS = [FLAT_ROOF_TONES.gravel, FLAT_ROOF_TONES.membrane, FLAT_ROOF_TONES.bitumen, FLAT_ROOF_TONES.pebble];
-  var CITY_ROOF = { tile: ROOF_TONES.photo.tile, slate: ROOF_TONES.photo.slate, flat: FLAT_ROOF_GREYS };
-  var PERIOD_WALLS = {
-    photo: {
-      canal: ["#7a3b2c", "#7a3b2c", "#6b3428", "#8c4632", "#9a5846", "#b05a40", "#4a2e26", "#2e2a27", "#3e4a40", "#5d605a", "#e4ddcd"],
-      c19: ["#b05a40", "#b05a40", "#bd6a45", "#a24d38", "#c58b5e", "#d3b184", "#e2d5ba", "#e2d5ba", "#d9c5a4", "#9a5846"],
-      school: ["#8c4a38", "#7a4535", "#9a5240", "#6e3d33", "#a85a3c", "#5e3a32", "#b0603f"],
-      modern: ["#c9b79a", "#b9ad9a", "#a8a49c", "#d3c6ad", "#8f8a82", "#bfb3a0", "#9c7a62", "#b05a40"]
-    },
-    storybook: {
-      canal: ["#b9583f", "#9a4a38", "#7a4a3c", "#4a5048", "#3f4a5a", "#ead9b0", "#c8664a"],
-      c19: ["#c8664a", "#d98b5f", "#e0b36a", "#ead9b0", "#d9b995", "#c9a08c", "#c8664a"],
-      school: ["#a8553f", "#9a5a48", "#b87a5c", "#c8664a", "#8a4e40"],
-      modern: null
-    },
-    cartoon: {
-      canal: ["#d9453d", "#a8433a", "#3b3b4a", "#2a9d8f", "#4672b0", "#fffaf0", "#e8573d"],
-      c19: ["#e8573d", "#ee7f2c", "#f2b92e", "#f3e6c8", "#d96a4d", "#f2b92e"],
-      school: ["#d96a4d", "#e8573d", "#b9583f", "#ee7f2c"],
-      modern: null
-    }
-  };
-  var PERIOD_PRIORS = {
-    canal: { label: "canal-house centre (before 1860)", wall: PERIOD_WALLS.photo.canal[0], roof: ROOF_TONES.photo.tile[0] },
-    c19: { label: "19th-century ring (1860-1914)", wall: PERIOD_WALLS.photo.c19[0], roof: ROOF_TONES.photo.tile[1] },
-    school: { label: "Amsterdamse School (1915-1944)", wall: PERIOD_WALLS.photo.school[0], roof: ROOF_TONES.photo.slate[0] },
-    modern: { label: "post-war and contemporary (1945+)", wall: PERIOD_WALLS.photo.modern[0], roof: FLAT_ROOF_GREYS[0] }
-  };
-  var BRICK_CELL_MEAN = PHOTO_WALL_CELL_MEAN / 255;
-  var GLASS_TINT_CELL_W = 32;
-  var GLASS_TINT_CELL_H = 64;
-  var PANE_LUMA = [157.19, 92.83, 69.17];
-  var STREAK_LUMA = 240.95;
-  var STREAK_ALPHA = 0.16;
-  var PANE_SCALE = 255 / (PANE_LUMA[0] + (STREAK_LUMA - PANE_LUMA[0]) * STREAK_ALPHA);
-  function glassTintCellValue(x, y) {
-    const t2 = y / (GLASS_TINT_CELL_H - 1);
-    const base = t2 < 0.5 ? PANE_LUMA[0] + (PANE_LUMA[1] - PANE_LUMA[0]) * (t2 / 0.5) : PANE_LUMA[1] + (PANE_LUMA[2] - PANE_LUMA[1]) * ((t2 - 0.5) / 0.5);
-    const left = 5 - 15 * y / 35, right = 17 - 15 * y / 35, streak = y < 35 && x + 0.5 >= left && x + 0.5 < right;
-    return Math.min(255, Math.round((streak ? base + (STREAK_LUMA - base) * STREAK_ALPHA : base) * PANE_SCALE));
-  }
-  var GLASS_TINT_CELL_MEAN = (() => {
-    let sum = 0;
-    for (let y = 0; y < GLASS_TINT_CELL_H; y++) for (let x = 0; x < GLASS_TINT_CELL_W; x++) sum += glassTintCellValue(x, y);
-    return sum / (GLASS_TINT_CELL_W * GLASS_TINT_CELL_H);
-  })();
-  var STONE_CELL_MEAN = 228 / 255;
-  var STREET_GROUND = {
-    // Was [72, 74, 78]: under the rig it drew at luma 67 in sun and 59 in shade, "near-black" (user live play
-    // 2026-10-14). Lifted to a sunlit-grey 88 (just under the klinker carriageway's 91, still cooler than it); with
-    // ownGround/groundLight.ts it draws 88 in sun and 78 in cast shadow, above LOOK's road floor of 65–75.
-    asphalt: { base: [86, 88, 93] },
-    cycle: { base: [150, 66, 58] },
-    // Was [128, 82, 66]: as saturated as the cycle red, so a brick quay read as one wide cycle path from the boat
-    // (user 2026-10-14, Houtmankade). Brick-brown, less saturated; herringbone in mixed tones (ownGround/streetTextures.ts).
-    klinker: { base: [122, 90, 80], joint: "#4b3d38" },
-    pavement: { base: [174, 162, 152], joint: "#7f756b" },
-    kerb: "#cfcac0",
-    paint: "#f2f0ea",
-    rail: "#6c6e72",
-    bollard: "#5a2a26"
-  };
-  var HIGHLIGHT_CORAL = "#ff8033";
-  var GROUND_TONES = {
-    land: { base: [168, 158, 142], joint: "#857b6d" },
-    paving: { base: [184, 174, 158], joint: "#8f8577" },
-    square: { base: [190, 179, 161], joint: "#958a7c" },
-    // Klinker warm grey-rose, asphalt darker and cooler than it ("so much grey": they shared one band).
-    klinker: { base: [158, 124, 114], joint: "#7a6660" },
-    asphalt: [68, 72, 80],
-    cycle: [156, 76, 66],
-    gravel: [180, 166, 136],
-    park: [96, 140, 70],
-    wood: [70, 112, 58],
-    parking: [102, 102, 105],
-    kerb: "#aaa498",
-    water: "#46707c",
-    // Parks (parks-v1, ownGround/parks.ts, 2026-10-13): mown lawn fresher than the park fill under it, planting beds
-    // as soil with green dabs, shrub planting darker and clumped, bark mulch, play sand, shell/half-paved paths lighter
-    // than street gravel, park asphalt lighter than the road's, ponds the canal tone (a greener one read as a shadow).
-    lawn: [110, 154, 74],
-    bed: { soil: [98, 80, 60], leaf: [84, 122, 58] },
-    shrub: { base: [56, 92, 46], leaf: [76, 116, 56] },
-    bark: [118, 84, 58],
-    sand: [212, 194, 150],
-    parkGravel: [198, 184, 152],
-    parkPath: [110, 110, 112],
-    pond: "#46707c"
-  };
-
-  // src/canalRecall/hudTheme.ts
-  var enamelTheme = {
-    enamel: "#0b3a8c",
-    enamelBright: "#1450b8",
-    enamelDeep: "#072861",
-    night: "#071430",
-    ink: "#ffffff",
-    inkMuted: "rgba(255,255,255,0.72)",
-    inkDim: "rgba(255,255,255,0.86)",
-    line: "rgba(255,255,255,0.28)",
-    /** Rivet / gold accent (plaque corners, selected hairline). */
-    rivet: "#c4a35a",
-    rivetDeep: "#8a7040",
-    /** Copper stamp (Start / Confirm). */
-    copper: "#b87333",
-    copperHi: "#d9a05b",
-    copperDeep: "#8a5524",
-    copperMid: "#c9844a",
-    fontPlaque: '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif'
-  };
-  var daylightTheme = {
-    paper: "#f4efe5",
-    paperRaised: "#fbf8f2",
-    paperSunk: "#ebe4d6",
-    ink: "#1f1c17",
-    /** 6.3:1 on paper — secondary copy. */
-    inkMuted: "#5f584d",
-    line: "rgba(31,28,23,0.14)",
-    lineStrong: "rgba(31,28,23,0.26)",
-    fill: "rgba(31,28,23,0.045)",
-    fillHover: "rgba(31,28,23,0.085)",
-    accent: "#b4682c",
-    /** Copper dark enough for text on paper (≈6:1). */
-    accentInk: "#8a4a18",
-    accentSoft: "rgba(180,104,44,0.13)",
-    scrim: "rgba(28,24,18,0.38)",
-    danger: "#a8321f"
-  };
-  var paperTheme = {
-    paper: enamelTheme.enamel,
-    paperRaised: enamelTheme.enamelBright,
-    paperMuted: enamelTheme.enamelDeep,
-    ink: enamelTheme.ink,
-    inkMuted: enamelTheme.inkMuted,
-    line: enamelTheme.line,
-    moss: enamelTheme.enamelBright,
-    mossDark: enamelTheme.enamelDeep,
-    mossSoft: "rgba(20,80,184,0.28)",
-    terracotta: enamelTheme.copper,
-    ochre: enamelTheme.rivet
-  };
-  var hudSurface = {
-    /** Always-on readouts sitting directly on the map. */
-    card: "rgba(251,248,242,0.9)",
-    /** Cards you stop and read: the trivia card, the postcard. */
-    cardSolid: "rgba(251,248,242,0.97)",
-    /** Hairline border. */
-    border: "rgba(31,28,23,0.14)",
-    borderStrong: "rgba(180,104,44,0.6)",
-    /** Drop shadow under a card that floats over the map. */
-    shadow: "rgba(31,28,23,0.22)",
-    /** The thumbstick, which sits over the map and must not hide it. */
-    control: "rgba(251,248,242,0.72)",
-    controlPressed: daylightTheme.accent,
-    controlInk: "rgba(31,28,23,0.62)",
-    /** Thumbstick knob at rest. */
-    controlKnob: "rgba(31,28,23,0.2)",
-    /** Type on the paper plate. */
-    ink: daylightTheme.ink,
-    inkMuted: daylightTheme.inkMuted,
-    accent: daylightTheme.accentInk,
-    /** The destination's one accent in the world: the finish arrow and pin wear the landmark highlight's coral
-     *  (look/highlight.ts, LOOK §Highlight), so "go there" on the HUD and the lit building on the map match. */
-    arrow: HIGHLIGHT_CORAL,
-    fontPlaque: enamelTheme.fontPlaque,
-    /** A loaded face first: canvas ignores `ui-monospace`, so HUD numerals fell
-     *  through to Courier/Menlo. index.html loads JetBrains Mono. */
-    fontMono: '"JetBrains Mono", Menlo, Consolas, monospace',
-    fontUi: 'system-ui, -apple-system, "Segoe UI", sans-serif'
-  };
 
   // src/canalRecall/labels/labelStyle.ts
   var PILL_FONT = `700 12px ${hudSurface.fontUi}`;
@@ -7763,15 +8188,15 @@
     ease: 0.04
   };
   var NO_SIGHTLINE = Object.freeze({ pitchDeg: 0, leadM: 0 });
-  var smooth = (t2) => {
+  var smooth2 = (t2) => {
     const c = Math.min(1, Math.max(0, t2));
     return c * c * (3 - 2 * c);
   };
   function sightlineWeight(distanceM2) {
     const s = SIGHTLINE;
     if (!Number.isFinite(distanceM2) || distanceM2 >= s.reachM || distanceM2 <= s.nearZeroM) return 0;
-    if (distanceM2 > s.fullM) return smooth((s.reachM - distanceM2) / (s.reachM - s.fullM));
-    if (distanceM2 < s.nearFullM) return smooth((distanceM2 - s.nearZeroM) / (s.nearFullM - s.nearZeroM));
+    if (distanceM2 > s.fullM) return smooth2((s.reachM - distanceM2) / (s.reachM - s.fullM));
+    if (distanceM2 < s.nearFullM) return smooth2((distanceM2 - s.nearZeroM) / (s.nearFullM - s.nearZeroM));
     return 1;
   }
   function landmarkSightline(target, engaged, enabled = true) {
@@ -7897,7 +8322,9 @@
     routePassed: "rgba(56,189,248,0.38)",
     rim: "rgba(251,248,242,0.97)",
     rimLine: "rgba(31,28,23,0.28)",
-    rider: "#1f1c17"
+    rider: "#1f1c17",
+    /** Free Ride's unopened places: the HUD copper (hudTheme daylight accent). */
+    place: "#b4682c"
   };
   var CLASS_WIDTH = [3.4, 3, 2.5, 1.9, 1.1, 1.1];
   var CLASS_ORDER2 = [5, 4, 3, 2, 1, 0];
@@ -8240,6 +8667,22 @@
         ctx.strokeStyle = RADAR_COLORS.route;
         ctx.lineWidth = 4;
         ctx.stroke();
+      }
+      if (view.places?.length) {
+        const ringR = diameter < 120 ? 3 : 3.5;
+        for (const place of view.places) {
+          const o = radarOffset([place[0] - view.at[0], place[1] - view.at[1]], view.rotation, scale);
+          const placed = clampToRim(o, inner - ringR - 2);
+          ctx.globalAlpha = placed.clamped ? 0.6 : 1;
+          ctx.beginPath();
+          ctx.arc(cx + placed.at[0], cy + placed.at[1], ringR, 0, Math.PI * 2);
+          ctx.fillStyle = "#fbf8f2";
+          ctx.fill();
+          ctx.strokeStyle = RADAR_COLORS.place;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
       }
       ctx.restore();
       ctx.save();
@@ -9232,7 +9675,8 @@
         radiusM: this._radarRadiusM,
         destination: finish && !this.freeRide ? local(finish.x, finish.y) : null,
         route,
-        routeIndex: this._radarRouteIndex ?? 0
+        routeIndex: this._radarRouteIndex ?? 0,
+        places: this.freeRide ? this._freeRideRadarPlaces().map((p) => local(p.x, p.y)) : null
       }, range[0]);
     }
     _radarAt;
