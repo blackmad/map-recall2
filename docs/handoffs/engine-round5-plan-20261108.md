@@ -36,7 +36,7 @@ Shots are in `blackmad/map-recall2-screenshots` under `engine/2026-11-08-user-sh
 
 ## Lanes
 
-### R5-A — ground from the air: land as crisp as the buildings (opus, port 4680, issue #R5A)
+### R5-A — ground from the air: land as crisp as the buildings (opus, port 4680, issue #260)
 
 Worktree `engine-ground-aerial-20261108`, branch `lane/engine-ground-aerial-20261108`. Owns `ownGround/gameGround.ts` ring/zoom gate, `overviewTransition/blend.ts`, `engine/overviewLayer.ts` coverage, `farRing.ts` detail; not `roadSurfaces.ts`/`groundCell.ts` road drawing (R5-C1/C2) and not `game.js` (R5-B goes through the integrator).
 
@@ -46,7 +46,7 @@ Worktree `engine-ground-aerial-20261108`, branch `lane/engine-ground-aerial-2026
 4. **Gate:** at every aerial sample of the pan the ground is drawn (`visible`) or a coarse cell covers the view; at the four poses the after-frame shows streets as drawn surfaces, not the overview raster (ΔE map against the user's shot, and a `roads drawn` count from the ground stats); street-level ride unchanged (`heap-ride.mjs --ride 60` p99, `rider-cover-bump`); iPhone profile pan GL ≤ 400.
 5. **Strips** `engine/2026-11-08-r5a/`: the four poses, user | main | lane; mid-pan frame.
 
-### R5-B — the start waits for the world (haiku, port 4681, issue #R5B; the integrator applies the game.js part)
+### R5-B — the start waits for the world (haiku, port 4681, issue #261; the integrator applies the game.js part)
 
 Worktree `engine-start-settle-20261108`, branch `lane/engine-start-settle-20261108`. Owns a new pure module `engine/startSettle.ts` + test and the `ownWorldView.ts` hook; the one `game.js` call site is handed to the integrator as a patch in the hand-back (hotspot rule).
 
@@ -54,7 +54,7 @@ Worktree `engine-start-settle-20261108`, branch `lane/engine-start-settle-202611
 2. **Rule.** `?startSettle=0` restores today. The loading screen holds until `worldSettled()` reports ground and buildings settled for the start view, with a cap (`START_SETTLE_CAP_MS`, sweep 2500 / 4000; the cap, not the settle, is the common path on a slow network) and a floor of one rendered frame; while held, `settleTick()` runs so the tiers keep landing (it is "not called by the game" today). Pure scheduler with tests: settled early → reveal at once; cap → reveal at cap; the flag off → today's timing.
 3. **Gate:** the first revealed frame at the U2 pose shows drawn streets (the ΔE against the user's U2 shot is large, against the settled frame small); `desktopColdStartOver200Ms` and the ride-start rows unchanged or better (the held frames are covered, `coveredFrameMs` applies); What's New: "The ride opens on a finished city instead of one still loading."
 
-### R5-C1 — roads across bridges and the red lanes (opus, port 4682, issue #R5C1)
+### R5-C1 — roads across bridges and the red lanes (opus, port 4682, issue #262)
 
 Worktree `engine-roads-bridges-20261108`, branch `lane/engine-roads-bridges-20261108`. Owns `roadSurfaces.ts` deck path, `cycleThrough.ts`, `surveyMarkings.ts` red, `groundCell.ts:520-575` (bands on bridges, the two reds), `decks.ts DECK_TOP`. Not the extract (R5-C2), not `tunnels.ts`.
 
@@ -63,7 +63,7 @@ Worktree `engine-roads-bridges-20261108`, branch `lane/engine-roads-bridges-2026
 3. **One red owner per mouth.** `?redDedupe=0` restores. At a junction mouth exactly one of {cycle-crossing red, cycleThrough ribbon} draws; the ribbon's width comes from the adjoining BGT fietspad polygon when there is one (today `THROUGH_WIDTH_M` 2.0 or the OSM tag). Red sits on its own plane: cycle lift ≥ 0.06 m above carriage, cycle drape float bounded like carriage (`roadSurfaces.ts:69-73`), polygonOffset gap ≥ 2 between asphalt and cycle.
 4. **Gate:** at the six spots, orthophoto | before | after strips; deck polygons skipped → carried 100 %; red-with-grey-inside pixels → 0 along the centreline probe; `check-bridge-gaps` 12 pins green; the city carriageway gap (205,858 m², HISTORY #178) reported after; `own-ground-roads.spec.ts` shots; `test:own-ground`. If the Centraal bus-station slivers (the reason step 3 of #178 stayed off) reappear, report them, do not ship over them.
 
-### R5-C2 — junction slivers, kerbs and portal edges (opus, port 4683, issue #R5C2)
+### R5-C2 — junction slivers, kerbs and portal edges (opus, port 4683, issue #263)
 
 Worktree `engine-roads-junctions-20261108`, branch `lane/engine-roads-junctions-20261108`. Owns `scripts/own-ground/build-bgt-roads.ts`, `topoSimplify.ts`, `roadCells.ts` (version bump), the kerb builder in `roadSurfaces.ts:594-631`, `tunnels.ts` + the cut mask in `groundCell.ts:288-307`. Not the deck path or the reds (R5-C1).
 
@@ -72,7 +72,7 @@ Worktree `engine-roads-junctions-20261108`, branch `lane/engine-roads-junctions-
 3. **Portal edges.** `?portalClip=0` restores. The road polygons crossing the tunnel wall line are clipped at the wall in vector form (not by the 1–2 m mask) and the land cut's mask runs at 0.5 m within 10 m of the wall line; the three `tunnelRegressions.ts` pins stay green.
 4. **Gate:** at the user's Rapenburg spot and `muntplein`, `prins-hendrikkade-arcam`: orthophoto | before | after; slivers per cell → 0; kerb edge count down and no kerb lost on a real kerb (sample 20 kerbs against the panorama); `check-tunnels*`; `test:own-ground`; `check:canal`'s road steps.
 
-### R5-D — bare blocks get fronts (opus, port 4684, issue #R5D)
+### R5-D — bare blocks get fronts (opus, port 4684, issue #264)
 
 Worktree `engine-bare-blocks-20261108`, branch `lane/engine-bare-blocks-20261108`. Owns the decorator path that sets `facade`/`facadeStyle` (`galleryPipeline.ts gameDecorator`, `bayLook.ts` post-1945 branch, `largeBuildingTier.ts`), `scripts/large-tier/audit.ts`. Not `threeBuildingFeatures.ts` beyond the bare fallback line, not kits.
 
@@ -80,7 +80,7 @@ Worktree `engine-bare-blocks-20261108`, branch `lane/engine-bare-blocks-20261108
 2. **Fix the reason, not the symptom.** `?bareFronts=0` restores. Every non-shed, non-landmark-part streamed building ≥ 100 m² footprint gets a facade from the generic grammar (post-1945: footprint + `buildingType` → the modern bay look that already exists for the ribbon and curtain fronts; pre-1945 without a style: the period prior by buurt profile). Round or many-vertex rings (the two towers) must not fall out of the bay layout: report what `bayLookFor` does with them and fix the layout to follow the ring. Bare stays only for sheds, landmark parts and buildings whose kit is installed.
 3. **Gate:** bare count by footprint band before/after (target: 0 bare ≥ 100 m² outside sheds/landmark parts/kits); the three user spots as before/after frames beside the user's shots at the same pose; `look-consistency` at bilderdijk/dam/pijp unchanged with the flag off; `test:engine`, `test:large-tier`.
 
-### R5-E — flat roofs: measured tone, texture, parapet and furniture (opus, port 4685, issue #R5E)
+### R5-E — flat roofs: measured tone, texture, parapet and furniture (opus, port 4685, issue #265)
 
 Worktree `engine-flat-roofs-20261108`, branch `lane/engine-flat-roofs-20261108`. Owns `look/palette.ts` flat-roof priors, `threeBuildingFeatures.ts:146-152` lid choice, `threeBuildingMesh.ts lidMesh`, the lid's layer in `look/cityLook.ts`, `roofs/roofSlots.ts` consumers, a new `roofs/flatRoofFurniture.ts`. Not the pitched roofs, not `roofTier.ts` (R4-D's fence).
 
@@ -89,7 +89,7 @@ Worktree `engine-flat-roofs-20261108`, branch `lane/engine-flat-roofs-20261108`.
 3. **Surface.** `?flatRoofSurface=0` restores. The lid gets the flat layer's texture with a low-amplitude gravel/membrane grain and membrane seams every 1.5–2 m (one layer, shared by all lids, mips to the mean), plus a parapet lip (0.3 m high, 0.25 m wide, wall colour) around flat roofs ≥ 100 m², and the measured furniture boxes (`measuredRoof`) as grey blocks at their 0.25 m-quantised positions; a generic HVAC/lift-house box at the stair core for ≥ 400 m² roofs with no measurement. Budget ≤ +8 % triangles per coarse chunk, ≤ +4 % per detail chunk; GL within the aerial row.
 4. **Gate:** at U1 the 15 lids' luma within ±10 of the orthophoto median; before/after beside the user's shot and beside the orthophoto crop; the swap gate (`swap-zfight`) unchanged at s1/s3; `test:roofs`, `test:look`; What's New: "Flat roofs from the air now read as gravel and membrane with their parapets and roof boxes, not as one bright slab."
 
-### R5-F — the fan: power from the air (opus, port 4686, issue #R5F)
+### R5-F — the fan: power from the air (opus, port 4686, issue #266)
 
 Worktree `engine-aerial-power-20261108`, branch `lane/engine-aerial-power-20261108`. Owns `engine/renderGovernor.ts`, `engine/frameHost.ts` frame pacing, the shadow-map update rule in `ownWorldView.ts`. Not the tiers, not the look.
 
