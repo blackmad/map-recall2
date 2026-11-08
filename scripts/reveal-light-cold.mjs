@@ -125,6 +125,7 @@ async function run() {
           if (idx === 0) { if (prevUrl) R.keep.push({ label: 'covered', ms: -1, url: prevUrl }); R.keep.push({ label: 'reveal', ms: 0, url }); }
           else if (frac > 0.02 && R.keep.length < 14) R.keep.push({ label: 'pop', ms: Math.round(now - raceAt), url });
           if (!R.kept250 && now - raceAt >= 250) { R.kept250 = true; R.keep.push({ label: 'plus250', ms: Math.round(now - raceAt), url }); }
+          if (!R.kept300 && now - raceAt >= 300) { R.kept300 = true; R.keep.push({ label: 'plus300', ms: Math.round(now - raceAt), url }); }
         }
         prev = d;
       });
