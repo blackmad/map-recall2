@@ -51,6 +51,9 @@ async function run() {
         ground: w ? w.ground : null, city: w ? w.city : null, buildings: w ? w.buildings : null,
         far: w ? w.far : null, baked: w ? w.baked : null, settled: w ? w.settled : null,
         detail: w ? w.detail : null, aerialZoom: vm?.camera?.zoom ?? null,
+        groundReady: vm?._ownGround ? !!vm._ownGround.ready : null,
+        groundLoadingCells: vm?._ownGround ? (vm._ownGround.loadingCells ?? null) : null,
+        holdPending: g && typeof vm?.pendingWork === 'function' ? (() => { try { return vm.pendingWork(); } catch (_) { return null; } })() : null,
       });
       if (S.samples.length > 3000) S.samples.splice(0, S.samples.length - 3000);
     };
@@ -74,11 +77,13 @@ async function run() {
     const first = data.find(s => s.t >= tRace && s[k] === true);
     tiers[k] = first ? Math.max(0, first.t - tRace) : null;
   }
+  const groundReadyAt = data.find(s => s.groundReady === true);
+  const groundReadyMsAfterRacing = groundReadyAt ? groundReadyAt.t - tRace : null;
   const atRace = race ? Object.fromEntries(TIERS.map(k => [k, race[k]])) : null;
   return {
     device, throttle, navToRaceMs: tRace, hold: navSettle, holdTimedOut: navSettle ? navSettle.timedOut : null,
     atRacing: atRace, racingToTierMs: tiers, pendingAtRace: race?.hold?.pending ?? null,
-    errors: errors.slice(0, 3), sampleCount: data.length, cameraZoomAtRace: race?.aerialZoom ?? null,
+    errors: errors.slice(0, 3), sampleCount: data.length, cameraZoomAtRace: race?.aerialZoom ?? null, groundReadyMsAfterRacing, groundReadyMsAfterNav: groundReadyAt ? groundReadyAt.t : null,
   };
 }
 
