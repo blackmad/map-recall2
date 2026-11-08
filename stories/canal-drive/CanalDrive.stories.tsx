@@ -7,6 +7,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
   | 'landmark-card-folded' | 'landmark-card-folded-touch'
+  // G3 (#273): "Which building is this?", and the drive-by card's "Noticed" pill.
+  | 'question-landmark' | 'touch-question-landmark' | 'landmark-card-noticed' | 'landmark-card-noticed-touch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
   // bridge's origin (municipal register) and a clicked building's facts.
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
@@ -216,7 +218,8 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
       || scenario === 'neighborhood-fallback-touch'
       || scenario.startsWith('finish')
       || scenario.startsWith('landmark') || scenario.startsWith('touch-hud')
-      || scenario === 'touch-prompt' || scenario === 'touch-settings') {
+      || scenario === 'touch-prompt' || scenario === 'touch-settings'
+      || scenario === 'question-landmark' || scenario === 'touch-question-landmark') {
       overlay?.store.setSetupOpen(false);
       const drawWhenReady = () => {
         const game = (frame.contentWindow as typeof frame.contentWindow & { canalRecallGame?: any })?.canalRecallGame;
@@ -385,6 +388,13 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
           };
           game._landmarkNoticeAlpha = 1;
           game.currentNeighborhood = long ? 'Museumkwartier' : 'De Wallen';
+          if (scenario.startsWith('landmark-card-noticed')) {
+            // A fresh drive-by card for a landmark of the ride offers "Noticed" (G3).
+            game.landmarks = [...(game.landmarks || []).filter((l: { id: string }) => l.id !== id), { id, name, x: 0, y: 0 }];
+            game._landmarkSightingsCache = {};
+            game._landmarkNoticeSource = 'drive-by';
+            game._landmarkNoticeState = { ...(game._landmarkNoticeState || {}), elapsed: 1 };
+          }
           if (scenario.startsWith('landmark-card-folded')) {
             // A drive-by card past its fold (teachingPacer.cardCollapsed): no photo, one fact in two lines.
             game._landmarkNoticeSource = 'drive-by';
@@ -443,6 +453,24 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
             hood.src = `data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="#9fc1c7"/><rect y="210" width="600" height="190" fill="#6d8a70"/><path d="M30 250V110h120v140M190 250V70h150v180M380 250V125h180v125" fill="#b95c45"/><path d="M0 290h600v80H0z" fill="#759bb5"/></svg>')}`;
           };
           paint.src = game._landmarkNotice.imageUrl;
+          return;
+        }
+        if (scenario === 'question-landmark' || scenario === 'touch-question-landmark') {
+          game._syncHudLayout();
+          game.routeOptions.answerMode = 'multiple';
+          game.player = game.player || { x: 0, y: 0, angle: 0, speed: 0, vx: 0, vy: 0 };
+          const frameMath = (frame.contentWindow as unknown as { Math: Math }).Math;
+          const random = frameMath.random;
+          frameMath.random = () => 0.42;
+          // The question as landmarkQuestionRuntime opens it; the answer is only on a button.
+          game._openQuizPrompt({
+            kind: 'landmark', name: 'Westerkerk', subject: 'landmark',
+            question: 'Which building is this?',
+            context: 'On the right · Grachtengordel-West',
+            choices: ['Westerkerk', 'Homomonument', 'Anne Frank House', 'Huis Bartolotti'],
+          });
+          game._dressLandmarkPrompt();
+          frameMath.random = random;
           return;
         }
         if (scenario === 'touch-prompt' || scenario === 'touch-settings') {
@@ -689,6 +717,12 @@ export const LandmarkCardFoldedMobile: Story = {
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 /** Landmark card when the extract has no image. */
+/** G3: "Which building is this?" — the landmark question, desktop and phone. */
+export const LandmarkQuestion: Story = { args: { scenario: 'question-landmark' } };
+export const LandmarkQuestionPhone: Story = { args: { scenario: 'touch-question-landmark' }, globals: phone };
+/** G3: a drive-by card with its one-tap "Noticed". */
+export const LandmarkCardNoticed: Story = { args: { scenario: 'landmark-card-noticed' } };
+export const LandmarkCardNoticedPhone: Story = { args: { scenario: 'landmark-card-noticed-touch' }, globals: phone };
 export const LandmarkCardBare: Story = { args: { scenario: 'landmark-card-bare' } };
 /** No photo on a phone either: the card is text alone, and still fits. */
 export const LandmarkCardBarePhone: Story = {
