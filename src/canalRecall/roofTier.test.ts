@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { ROOF_CELL_SD_MAX, paintRoofCell } from './roofCells.ts';
-import { CELL_TAPS, CELL_TAPS_DEFAULT, cellTapPattern, cellTapsEnabled, cellTapsOptions, cellTapsUniform, cellTapsWeight, FACADE_TIER_FROM_TEXELS, FACADE_TIER_GLSL, FACADE_TIER_OFF, FACADE_TIER_TO_TEXELS, FACADE_TIER_UNDER_BAND, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, facadeTierWeights, footprintAxes, ROOF_LAYERS_OFF, ROOF_TIER_FAR_M, ROOF_TIER_GLSL, ROOF_TIER_MID_M, roofTierUniform, roofTierWeights } from './roofTier.ts';
+import { CELL_TAPS, CELL_TAPS_DESKTOP_DEFAULT, CELL_TAPS_TOUCH_DEFAULT, cellTapPattern, cellTapsDefault, cellTapsEnabled, cellTapsOptions, cellTapsUniform, cellTapsWeight, FACADE_TIER_FROM_TEXELS, FACADE_TIER_GLSL, FACADE_TIER_OFF, FACADE_TIER_TO_TEXELS, FACADE_TIER_UNDER_BAND, facadeTierAnisoEnabled, facadeTierAnisoUniform, facadeTierUniform, facadeTierWeights, footprintAxes, ROOF_LAYERS_OFF, ROOF_TIER_FAR_M, ROOF_TIER_GLSL, ROOF_TIER_MID_M, roofTierUniform, roofTierWeights } from './roofTier.ts';
 
 const stats = (data: Uint8ClampedArray) => {
   let n = 0, s = 0, s2 = 0;
@@ -174,11 +174,15 @@ test('cell taps: a 2 x 2 supersample of a grid at the pixel pitch returns its me
   assert.ok(tapsSpread < 0.6 * oneSpread, `taps ${tapsSpread.toFixed(3)} vs one ${oneSpread.toFixed(3)}`);
 });
 
-test('cell taps: off by default; the shader carries them only under CELL_TAPS, and the uniform scales like the tier', () => {
-  assert.equal(CELL_TAPS_DEFAULT, false);
+test('cell taps: desktop on, touch off by default (#247); the shader carries them only under CELL_TAPS, and the uniform scales like the tier', () => {
+  assert.equal(CELL_TAPS_DESKTOP_DEFAULT, true);
+  assert.equal(CELL_TAPS_TOUCH_DEFAULT, false);
+  assert.equal(cellTapsDefault({ matchMedia: () => ({ matches: true }) }), false);
+  assert.equal(cellTapsDefault({ matchMedia: () => ({ matches: false }) }), true);
+  assert.equal(cellTapsDefault({}), true);
   const g = globalThis as Record<string, unknown>;
   try {
-    g.__canalRecallCellTaps = undefined; assert.equal(cellTapsEnabled(), false);
+    g.__canalRecallCellTaps = undefined; assert.equal(cellTapsEnabled(), cellTapsDefault());
     g.__canalRecallCellTaps = '1'; assert.equal(cellTapsEnabled(), true);
     g.__canalRecallCellTaps = '0'; assert.equal(cellTapsEnabled(), false);
   } finally { delete g.__canalRecallCellTaps; }
