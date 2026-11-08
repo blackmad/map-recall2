@@ -247,6 +247,12 @@ export function groundPlanShareFlag(): boolean {
   if (typeof g.__canalRecallGroundPlanShare === 'boolean') return g.__canalRecallGroundPlanShare;
   return !/[?&]groundPlanShare=(0|false|off)\b/.test(g.location?.search ?? '');
 }
+/** Ground determinism (groundStore.ts `deterministic`, #260 follow-up): a cell's mesh does not depend on which cells its store prepared first; on by default; `?groundDeterministic=0` or `window.__canalRecallGroundDeterministic = false` restores first-arrival planning. */
+export function groundDeterministicFlag(): boolean {
+  const g = globalThis as { __canalRecallGroundDeterministic?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallGroundDeterministic === 'boolean') return g.__canalRecallGroundDeterministic;
+  return !/[?&]groundDeterministic=(0|false|off)\b/.test(g.location?.search ?? '');
+}
 /** A long same-side wall gap in a tunnel ramp bridged where the bank carries on (tunnels.ts bridgeBankGaps, #270): on by default; `?rampGaps=0` or `window.__canalRecallRampGaps = false` restores the split ramp. */
 function rampGapsFlag(): boolean {
   const g = globalThis as { __canalRecallRampGaps?: boolean; location?: { search?: string } };
@@ -506,14 +512,14 @@ export class OwnGround {
   async load(root: string): Promise<void> {
     this.dispose(false);
     this.startup.loadAt ??= performance.now();
-    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }) });
+    this.store = new GroundStore(httpFetchBytes(root), { parks: this.opts.parks, rails: this.opts.rails, roads: this.opts.roads, reliefTile: this.reliefLoader(root), prepareOnly: true, ...(groundPlanShareFlag() ? {} : { planShare: false }), ...(groundDeterministicFlag() ? {} : { deterministic: false }), ...(this.railRetryOn ? {} : { railRetry: false }), ...(bridgeGapsFlag() ? {} : { bridgeGaps: false }), ...(dryWayDecksFlag() ? { dryWayDecks: true } : {}), ...(roadSliversFlag() ? {} : { roadSlivers: false }), ...(portalEndsFlag() ? {} : { portalEnds: false }), ...(rampGapsFlag() ? {} : { rampGaps: false }) });
     this.ready = false;
     if (!/\/amsterdam\/?$/.test(root)) return;
     await this.store.init();
     this.startup.storeReadyAt ??= performance.now();
     try {
       const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-      const init = { type: 'init', root, planShare: groundPlanShareFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), roadSlivers: roadSliversFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), roadSlivers: roadSliversFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       // One fetch + gunzip per file for every worker (groundShare.ts): a channel per worker to one more instance of the bundle.
       const channels = count > 1 && groundShareFlag() ? Array.from({ length: count }, () => new MessageChannel()) : [];
       if (channels.length) {
