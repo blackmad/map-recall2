@@ -10,7 +10,9 @@
  *  - `fps` (`?aerialFps=0`): while the camera is panned off the rider (detached) and moving from the air (isAerialView,
  *    or the eye above AERIAL_EYE_MIN_M: see AerialPose.high), the frame host
  *    renders at most AERIAL_FPS times a second; back to every frame as soon as the camera settles (MOVE_HOLD_MS).
- *  - `scale` (`?aerialScale=0`): the pixel ratio × AERIAL_SCALE while flying so; native on settle.
+ *  - `scale` (`?aerialScale=1`, OFF by default): the pixel ratio × AERIAL_SCALE while flying so; native on settle. Opt-in
+ *    (integrator, 2026-11-08): pacing alone cuts the GPU busy share by about 70 % at the user's poses and the scale adds
+ *    5–9 % more for a visibly softer moving frame, so it waits for the user's word (#266).
  *  - `shadows` (`?aerialShadows=0`): the shadow map is redrawn at most every AERIAL_SHADOW_EVERY-th frame while flying
  *    so (between redraws the box stays where it was drawn).
  *  - `mapSize` (`?aerialShadowMap=1`, OFF by default): the sun's shadow map is AERIAL_SHADOW_MAP² while isAerialView
@@ -82,7 +84,8 @@ export function aerialLeversFromQuery(search: string, globals: Record<string, un
   };
   return {
     fps: on('aerialFps', '__canalRecallAerialFps'),
-    scale: on('aerialScale', '__canalRecallAerialScale'),
+    // Opt-in (see the header): `?aerialScale=1` or the global true.
+    scale: globals.__canalRecallAerialScale === true || (globals.__canalRecallAerialScale !== false && params?.get('aerialScale') === '1'),
     shadows: on('aerialShadows', '__canalRecallAerialShadows'),
     // Opt-in (see the header): `?aerialShadowMap=1` or the global true.
     mapSize: globals.__canalRecallAerialShadowMap === true || (globals.__canalRecallAerialShadowMap !== false && params?.get('aerialShadowMap') === '1'),

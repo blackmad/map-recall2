@@ -8,13 +8,13 @@ const pose = (now: number, over: Partial<AerialPose> = {}): AerialPose => ({ now
 const east = (now: number, i: number, over: Partial<AerialPose> = {}) => pose(now, { lng: 4.9 + i * 2.5 / (111320 * Math.cos(52.37 * Math.PI / 180)), ...over });
 
 test('aerialPower: levers from the query, each with its own flag; globals win', () => {
-  assert.deepEqual(aerialLeversFromQuery(''), { ...ALL, mapSize: false }, 'the map-size lever is opt-in');
-  assert.deepEqual(aerialLeversFromQuery('?aerialShadowMap=1'), ALL);
-  assert.deepEqual(aerialLeversFromQuery('', { __canalRecallAerialShadowMap: true }), ALL);
+  assert.deepEqual(aerialLeversFromQuery(''), { ...ALL, scale: false, mapSize: false }, 'the scale and map-size levers are opt-in');
+  assert.deepEqual(aerialLeversFromQuery('?aerialScale=1&aerialShadowMap=1'), ALL);
+  assert.deepEqual(aerialLeversFromQuery('', { __canalRecallAerialScale: true, __canalRecallAerialShadowMap: true }), ALL);
   assert.deepEqual(aerialLeversFromQuery('?aerialFps=0&aerialScale=0&aerialShadowMap=1'), { ...ALL, fps: false, scale: false });
-  assert.deepEqual(aerialLeversFromQuery('?aerialShadows=0'), { ...ALL, shadows: false, mapSize: false });
-  assert.deepEqual(aerialLeversFromQuery('?aerialFps=0&aerialShadowMap=1', { __canalRecallAerialFps: true }), ALL);
-  assert.deepEqual(aerialLeversFromQuery('?aerialShadowMap=1', { __canalRecallAerialShadowMap: false }), { ...ALL, mapSize: false });
+  assert.deepEqual(aerialLeversFromQuery('?aerialShadows=0'), { ...ALL, shadows: false, scale: false, mapSize: false });
+  assert.deepEqual(aerialLeversFromQuery('?aerialFps=0&aerialScale=1&aerialShadowMap=1', { __canalRecallAerialFps: true }), ALL);
+  assert.deepEqual(aerialLeversFromQuery('?aerialScale=1&aerialShadowMap=1', { __canalRecallAerialScale: false, __canalRecallAerialShadowMap: false }), { ...ALL, scale: false, mapSize: false });
 });
 
 test('aerialPower: a pan from the air paces, scales and throttles; settling restores within 300 ms', () => {
