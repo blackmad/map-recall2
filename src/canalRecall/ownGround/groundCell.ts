@@ -565,7 +565,7 @@ export function buildCell(input: CellInput): BuiltCell {
   if (roadIndex && lod === 0) {
     const red = emptyMesh();
     through = cycleThrough(red, ways, w => own.has(w.id), roadIndex, onLand);
-    add('cycle', red, 'cycleCross');
+    add('cycle', red, 'cycleThrough');
   }
   phase('surveyMarkings');
   if (roads) {

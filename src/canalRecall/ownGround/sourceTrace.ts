@@ -31,6 +31,7 @@ export const GROUND_SOURCES = [
   'water', 'quay', 'deck', // water surface, quay walls, deck tops and bodies
   'other',
   'photoPaint', // survey paint the orthophoto backs (photoEvidence.ts: centre dashes on the photo's line); appended, codes stay
+  'cycleThrough', // cycleThrough.ts red across junction mouths (lane R5-C1: told apart from the cycle crossings); appended
 ] as const;
 export type GroundSource = (typeof GROUND_SOURCES)[number];
 export const sourceCode = (s: GroundSource): number => GROUND_SOURCES.indexOf(s) + 1;

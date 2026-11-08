@@ -538,6 +538,14 @@ export const ROAD_SPOTS: RoadSpot[] = [
   { id: 'kinkerbrug-postjesweg', label: 'Kinkerbrug: Postjesweg over the Kostverlorenvaart (Het Sieraad, The Coffee Bridge, looking south-east)', at: [4.86005, 52.36460], bearing: 120, halfM: 40, backM: 30 },
   // User 2026-10-31 (artifacts/bridge-roads/user-otter-bridge.png, by the De Otter mill card): the same fault on the Beltbrug.
   { id: 'beltbrug-jan-van-galenstraat', label: 'Beltbrug: Jan van Galenstraat over the Kostverlorenvaart (De Otter, looking east)', at: [4.86984, 52.37540], bearing: 110, halfM: 40, backM: 30 },
+  // User aerial shots 2026-11-08 (engine round 5, U3; screenshots repo engine/2026-11-08-user-shots/roads-*.png): "the
+  // roads still look like a mess … missing continuity at bridges, looks chaotic, grey clipping through red" (lane R5-C1,
+  // issue #262). The Kattenburgerbrug (BRU0274, a flat movable footprint) over the Nieuwe Vaart, looking north-west at
+  // the Prins Hendrikkade junction; the Prins Hendrikkade × IJtunnel ramps junction (Rapenburg label), looking west-north-west;
+  // the Prins Hendrikkade bridge over the Schippersgracht mouth (BRU0487, red fietspad on the south side), looking west.
+  { id: 'kattenburgerbrug-user', label: 'Kattenburgerbrug: Prins Hendrikkade over the Nieuwe Vaart (Arcam, looking north-west)', at: [4.91420, 52.37092], bearing: 330, halfM: 45, backM: 30 },
+  { id: 'rapenburg-ijtunnel-user', label: 'Prins Hendrikkade × IJtunnel ramps (Rapenburg, looking west-north-west)', at: [4.91080, 52.37180], bearing: 290, halfM: 45, backM: 30 },
+  { id: 'schippersgracht-brug-user', label: 'Prins Hendrikkade bridge over the Schippersgracht mouth (BRU0487, looking west)', at: [4.91279, 52.37102], bearing: 270, halfM: 40, backM: 30 },
   { id: 'nassaukade-rotterdammerbrug', label: 'Nassaukade tram curve by the Singelgracht, Rotterdammerbrug bascule (keeper\'s house, barrier posts)', at: [4.8791, 52.3818], bearing: 30, halfM: 50, backM: 30 },
 ];
 /** Where a rider stands to look at a spot: `backM` behind `at` along the bearing (lng/lat, bearing degrees from north). */
