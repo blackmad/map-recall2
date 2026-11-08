@@ -3,6 +3,38 @@
   "notes": [
     {
       "date": "2026-11-08",
+      "title": "Flying over the city is easier on your computer",
+      "text": "Panning the city from the air no longer runs the fan flat out. While the camera flies it draws at 30 frames a second and redraws the sun's shadows only every few frames; the moment you stop, the view is drawn at full rate and full sharpness again. Measured on an M4 Pro Mac the graphics card went from fully busy to about a third while panning, with the still picture unchanged.",
+      "where": [
+        4.8765,
+        52.3785
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5f/r5f-fan-1x.png",
+          "alt": "Frederik Hendrikbuurt from the air: moving frames before and after, and the still frame, which is identical",
+          "caption": "Frederik Hendrikbuurt. Moving: before | 0.8 scale (opt-in) | after. Still: before | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
+      "title": "Three flat boxes get their windows back",
+      "text": "Three large blocks that drew as flat, windowless boxes from the air now show window grids: Van Oldenbarneveldtstraat 48-56, the Van der Palmkade serpentine block and the Rijksakademie ranges by the Singelgracht. Their installed models had almost no windows (3 % glass or less, where a punched-window block has 15-30 %), so the city's own facade draws there instead.",
+      "where": [
+        4.8745,
+        52.3792
+      ],
+      "images": [
+        {
+          "src": "engine/2026-11-08-r5d/vob-user-off-after.jpg",
+          "alt": "Van Oldenbarneveldtstraat 48-56 from the air: the user's shot of the flat ochre box, the same box with the fix off, and the glazed front after",
+          "caption": "Van Oldenbarneveldtstraat 48-56. User | fix off | after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-08",
       "title": "Road numbers once per road, place names in full",
       "text": "Road numbers appear once per stretch of road, and place names are no longer cut off mid-word. Around Sloterdijk the A10, A5 and S101 badges repeated every few hundred metres along the same road; each road now carries one badge per visible stretch. Long place names such as Canal Ring Area of Amsterdam and Amsterdam Sloterdijk Station are shown in full instead of ending in a cut word.",
       "where": [
