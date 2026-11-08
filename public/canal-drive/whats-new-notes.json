@@ -5,7 +5,13 @@
       "date": "2026-11-09",
       "title": "More roofs take their colour from the photo",
       "text": "Roofs on about 1,800 newer buildings, mostly small sheds and gap fills, now take their colour from the aerial photo, and about 9,800 hard-to-read flat roofs lean toward their photo colour instead of a generic grey. Low-confidence readings only tilt the flat-roof colour; they are never drawn at full measured weight.",
-      "images": []
+      "images": [
+        {
+          "src": "engine/2026-11-09-roof-facts-02/u1-nieuwmarkt-after.png",
+          "alt": "Aerial view over the Nieuwmarkt after the publish: flat roofs at their measured mid-grey with lips and roof boxes, pitched roofs in their photo colours",
+          "caption": "Over the Nieuwmarkt after the publish."
+        }
+      ]
     },
     {
       "date": "2026-11-09",
