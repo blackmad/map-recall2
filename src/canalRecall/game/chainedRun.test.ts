@@ -67,11 +67,11 @@ test('an idle run is replaced by a new one on the next arrival', () => {
 
 test('run line: stops, names, points and the next bonus; calm mode shows neither points nor bonus', () => {
   const one = addStop(null, arrival('Artis', 1240, ['A', 'B']), 0).run;
-  assert.equal(runLine(one, { calm: false }), '1 stop  ·  2 names  ·  1,240 points  ·  next stop +5 %');
+  assert.equal(runLine(one, { calm: false }), '1 stop  ·  2 names  ·  1,240 points  ·  chain +5 %');
   assert.equal(runLine(one, { calm: true }), '1 stop  ·  2 names');
   let run = one;
   for (let i = 0; i < 6; i += 1) run = addStop(run, arrival(`S${i}`, 0), i + 1).run;
-  assert.match(runLine(run, { calm: false }), /next stop \+25 %$/);
+  assert.match(runLine(run, { calm: false }), /chain \+25 %$/);
   for (const line of [runLine(run, { calm: false }), runStory(run)]) assert.doesNotMatch(line, /!/);
 });
 

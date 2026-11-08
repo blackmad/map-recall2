@@ -140,7 +140,7 @@ export function runLine(run: OpenRun, options: { calm: boolean }): string {
   if (!options.calm) {
     bits.push(`${formatPoints(run.totalPoints)} points`);
     const next = nextBonus(run);
-    if (next > 0) bits.push(`next stop +${Math.round(next * 100)} %`);
+    if (next > 0) bits.push(`chain +${Math.round(next * 100)} %`);
   }
   return bits.join('  ·  ');
 }

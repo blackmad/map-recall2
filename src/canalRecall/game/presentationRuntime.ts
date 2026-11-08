@@ -39,6 +39,7 @@ import { COLD_OPEN_ENABLED } from './coldOpenReview';
 import { isCar, isBoat, isTransit, isPitchedView } from './modes';
 // Free Ride's methods ride in this bundle (they draw over this frame).
 import { installFreeRide } from './freeRideRuntime';
+import { installChainedRun } from './chainedRunRuntime';
 import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
@@ -443,7 +444,7 @@ export class GamePresentationRuntime {
         const hit = (bounds: { x: number; y: number; w: number; h: number }) => x >= bounds.x && x <= bounds.x + bounds.w && y >= bounds.y && y <= bounds.y + bounds.h;
         const finish = this.state === GameState.FINISHED && this._finishButtonBounds?.find(hit);
         const pause = this.state === GameState.PAUSED && this._pauseButtonBounds?.find(hit);
-        if (finish) this._runFinishAction(finish.id);
+        if (finish) this._runFinishTap(finish.id);
         else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
         else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
         else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
@@ -600,6 +601,8 @@ export class GamePresentationRuntime {
     const ctx = this.ctx;
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
     this.hud.beginFrame?.();
+    // Chained stops (chainedRunRuntime.ts): the run's clock, idle end, E key.
+    this._runTick();
 
     // The arrival card is a full-screen modal; on a phone the settings and help
     // buttons sat on top of its actions in the bottom-right corner.
@@ -1486,6 +1489,10 @@ export class GamePresentationRuntime {
    * a 38 px stopwatch said it did.
    */
   _renderFinish(): void {
+    // Chained stops: the arrival joins the run once; an ended run shows its card instead.
+    this._recordRunStop();
+    if (this._runCard) { this._renderRunCard(this._runCard); return; }
+    const runText = this._runArrivalLine();
     const ctx = this.ctx;
     ctx.fillStyle = 'rgba(28,24,18,.34)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
@@ -1666,7 +1673,8 @@ export class GamePresentationRuntime {
         ctx.font = '12px system-ui, sans-serif';
         // Whole sentences only: cutting a wrapped one after its first line
         // left "… · 2" hanging.
-        const lineBudget = [Infinity, 4, 2, 1][level];
+        // At the tightest level a run's line takes the story's last line, so the card does not grow.
+        const lineBudget = [Infinity, 4, 2, runText ? 0 : 1][level];
         const storyLines: string[] = [];
         for (const sentence of [story.headline, story.detail, story.passport, story.streak, story.guestTease]) {
           if (!sentence) continue;
@@ -1724,10 +1732,30 @@ export class GamePresentationRuntime {
         } });
       }
 
+      // The run so far (chainedRun.ts): one line, above the stamp and actions.
+      const drawRun = (top: number): void => {
+        if (!runText) return;
+        ctx.textAlign = 'left';
+        ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
+        ctx.fillStyle = ACCENT;
+        ctx.fillText('RUN', cardX + padX, top + 13);
+        const textX = cardX + padX + ctx.measureText('RUN').width + 12;
+        const lineW = cardX + cardW - padX - textX;
+        ctx.fillStyle = INK; ctx.font = '700 13px system-ui, sans-serif';
+        // A phone fits the whole line a size smaller rather than cut the bonus off.
+        if (ctx.measureText(runText).width > lineW) ctx.font = '600 12px system-ui, sans-serif';
+        ctx.fillText(wrapText(ctx, runText, lineW, 1)[0], textX, top + 13);
+      };
+      // At the tightest level the run line and the stamp share one block, 16 px apart.
+      const foldRun = !!runText && !!stamp && level >= 3;
+      if (runText && !foldRun) blocks.push({ height: 20, rule: level < 3, draw: drawRun });
+
       // The stamp this arrival earned: one line just above the actions, so the
       // moment sits low on the card and never covers the road.
       if (stamp) {
-        blocks.push({ height: 20, draw: (top) => {
+        blocks.push({ height: foldRun ? 34 : 20, draw: (blockTop) => {
+          if (foldRun) drawRun(blockTop - 2);
+          const top = foldRun ? blockTop + 14 : blockTop;
           ctx.textAlign = 'left';
           const label = stamp.kind === 'tour'
             ? (stamp.isNew ? 'TOUR STAMP' : 'TOUR STAMP AGAIN')
@@ -1749,12 +1777,16 @@ export class GamePresentationRuntime {
       // A phone has no ENTER, ESC or C, so the keycaps that document the actions
       // on a keyboard are the actions themselves on touch: full-width buttons
       // with 44 px targets, hit-tested against `_finishButtonBounds`.
-      type FinishAction = { id: 'again' | 'route' | 'copy'; key: string; caption: string };
+      type FinishAction = { id: 'again' | 'route' | 'copy' | 'end'; key: string; caption: string };
       const actions: FinishAction[] = [
         // Say what happens: 'again' deals another route with these settings,
         // 'route' goes back to setup. "Continue" / "Finish" said neither.
-        { id: 'again', key: 'ENTER', caption: tour && !tour.completed ? tr('ride.nextStop') : tr('ride.nextRoute') },
+        // In a run the next ride is the run's next stop.
+        { id: 'again', key: 'ENTER', caption: (tour && !tour.completed) || runText ? tr('ride.nextStop') : tr('ride.nextRoute') },
       ];
+      // A run's one extra action. On a phone it shares the primary row, so
+      // the card gains no row of buttons.
+      const endRun: FinishAction | null = runText ? { id: 'end', key: 'E', caption: 'End run' } : null;
       // Route setup on both layouts: a tap target on the phone, M on desktop,
       // the same key as the pause menu. Escape stays unbound here (user
       // request 2026-09-28); desktop lacked the action (clarity review 14).
@@ -1762,6 +1794,7 @@ export class GamePresentationRuntime {
       if (this._shareUrl) {
         actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? tr('ride.linkCopied') : tr('ride.shareRoute') });
       }
+      if (endRun && !compact) actions.push(endRun);
       const BUTTON_H = 44, BUTTON_GAP = 8;
       // A short phone pairs the secondary actions on one row rather than
       // shrinking the whole card, so every target stays 44 px tall.
@@ -1780,9 +1813,21 @@ export class GamePresentationRuntime {
               const primary = action.id === 'again';
               const paired = pairSecondary && index > 0;
               const halfW = (fullW - BUTTON_GAP) / 2;
+              // End run takes the primary row's right third.
+              const endW = primary && endRun ? Math.round(fullW * 0.36) : 0;
               const bounds = paired
                 ? { x: cardX + padX + (index - 1) * (halfW + BUTTON_GAP), y: by, w: halfW, h: BUTTON_H }
-                : { x: cardX + padX, y: by, w: fullW, h: BUTTON_H };
+                : { x: cardX + padX, y: by, w: endW ? fullW - endW - BUTTON_GAP : fullW, h: BUTTON_H };
+              if (endW && endRun) {
+                const endBounds = { x: cardX + padX + fullW - endW, y: by, w: endW, h: BUTTON_H };
+                ctx.fillStyle = 'rgba(31,28,23,.05)';
+                roundRect(ctx, endBounds.x, endBounds.y, endBounds.w, endBounds.h, 12);
+                ctx.fill();
+                ctx.strokeStyle = RULE; ctx.lineWidth = 1; ctx.stroke();
+                ctx.textAlign = 'center'; ctx.fillStyle = INK; ctx.font = '700 14px system-ui, sans-serif';
+                ctx.fillText(endRun.caption, endBounds.x + endBounds.w / 2, by + 28);
+                finishButtons.push({ ...endBounds, id: endRun.id });
+              }
               ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
               roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
               ctx.fill();
@@ -2120,5 +2165,6 @@ export class GamePresentationRuntime {
 (window as unknown as { CanalRecallRadar?: unknown }).CanalRecallRadar = { RadarMap, radarLocal, RADAR_RADIUS_M };
 
 installFreeRide(GamePresentationRuntime);
+installChainedRun(GamePresentationRuntime);
 window.CanalRecallGameModules = window.CanalRecallGameModules || [];
 window.CanalRecallGameModules.push(GamePresentationRuntime);

@@ -101,7 +101,7 @@ export interface GameCoreHost {
   /** Shared gate for quiz / feedback / cards / POI labels (overview stays up). */
   _teachingGate(): import('./teachingSurface.ts').TeachingGateInput;
   /** Tap targets for the arrival card's actions, on touch. */
-  _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' }>;
+  _finishButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'again' | 'route' | 'copy' | 'end' }>;
   /** Where the arrival card was last drawn, in canvas units; e2e checks it fits. */
   _finishCardBounds?: { x: number; y: number; w: number; h: number };
   /** Tap targets for the pause card (resume / new route / copy). */
@@ -359,6 +359,13 @@ export interface RecallHost extends GameCoreHost {
 
 /** Frame composition, the menu, the pause overlay and the finish card. */
 export interface PresentationHost extends GameCoreHost {
+  /** Chained stops (chainedRunRuntime.ts): per-frame clock, arrival record, run line and card. */
+  _runTick(): void;
+  _recordRunStop(): void;
+  _runArrivalLine(): string | null;
+  _runCard?: import('./chainedRun').OpenRun | null;
+  _renderRunCard(run: import('./chainedRun').OpenRun): void;
+  _runFinishTap(id: 'again' | 'route' | 'copy' | 'end'): void;
   /** Free Ride (freeRideRuntime.ts): the plaque line, markers, bar and taps. */
   _freeRideTally(): string;
   _renderFreeRideMarkers(): void;
