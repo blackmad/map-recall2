@@ -34,10 +34,20 @@ assert.equal(validPoiWebsite('example.com/info'),'https://example.com/info');
 (globalThis as any).window = { CanalRecallGameModules: [] };
 const { GameLandmarkRuntime } = await import('../src/canalRecall/game/landmarkRuntime');
 const researched={id:'research',name:'Researched venue',detail:'Existing researched facts.',buildingIds:['actual']};
-const host:any={landmarks:[researched],_clickPoiInfo:index};
+// The fake mirrors the runtime's optional facts store: lookup and article are stubbed, and the
+// requester records whether the POI card asked for the building's article tile to arrive.
+let requested=0, article:any=null;
+const host:any={landmarks:[researched],_clickPoiInfo:index,vectorMap:{},
+  _buildingFacts:{lookup:()=>null,article:()=>article},_requestBuildingFacts:()=>{requested++;},_poiCardWithArticle:GameLandmarkRuntime.prototype._poiCardWithArticle};
 assert.equal(GameLandmarkRuntime.prototype._cardForClickedBuilding.call(host,{id:'actual',lngLat:[0,0],footprint,featureTarget:null})?.id,'research','researched card keeps priority');
 host.landmarks=[{...researched,detail:''}];
 assert.equal(GameLandmarkRuntime.prototype._cardForClickedBuilding.call(host,{id:'actual',lngLat:[0,0],footprint,featureTarget:null})?.id,'clicked-poi-actual','name-only owner cannot block mapped information');
+assert.equal(requested,1,'no article yet: the POI card asks for the building facts tile once');
+article={e:'Lede from the building article.'};
+const withArticle=GameLandmarkRuntime.prototype._cardForClickedBuilding.call(host,{id:'actual',lngLat:[0,0],footprint,featureTarget:null})!;
+assert.equal(requested,1,'article already present: no facts request');
+assert.equal(withArticle.detail,'Lede from the building article.','article lede leads the POI card');
+assert.equal(withArticle.factTexts![0],'Lede from the building article.');
 
 const file=JSON.parse(readFileSync('public/data/extracts/amsterdam/click-poi-info.json','utf8')) as ClickPoiFile;
 assert(file.points.length>1000);assert.equal(new Set(file.points.map(r=>r[0])).size,file.points.length);
