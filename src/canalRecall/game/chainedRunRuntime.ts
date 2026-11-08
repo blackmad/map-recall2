@@ -59,16 +59,9 @@ export interface ChainedRunHost {
   _rideNamedNames?: string[];
   _tour?: unknown;
   _tourArrival?: unknown;
-  _reviewRoute: { to: PoiPoint } | null;
   recall: { homeMasterySamples?(cityId: string): MasterySample[] } | null;
   _finishButtonBounds?: Array<Bounds & { id: FinishId }>;
   _finishCardBounds?: Bounds;
-  _skipNextIntro?: boolean;
-  _setupRace(): void;
-  _beginIntro(): void;
-  _pickReviewRide(choices: RoutePoi[], from: PoiPoint): { to: PoiPoint } | null;
-  _pickDestinationNear(from: PoiPoint, alsoExcludeId?: string | null): PoiPoint | null;
-  _launchPoiRoute(from: PoiPoint, to: PoiPoint, options?: object): void;
   _runFinishAction(id: 'again' | 'route' | 'copy'): void;
 
   /** Storybook's single-ride states: the same as `?run=0`. */
@@ -185,28 +178,19 @@ export class GameChainedRunRuntime {
   }
 
   /**
-   * Enter on the arrival card (game.js `_runFinishAction('again')`): ride on
-   * from where this ride ended. In a run the next stop is 1–3 km away and
-   * favours streets the rider does not know yet; a due review ride still
-   * comes first. `?run=0` keeps the surprise pick of any range.
+   * The next stop for Next stop (game-route.js `_startNextRouteFromArrival`,
+   * after a due review ride): 1–3 km from the arrival, favouring streets the
+   * rider does not know yet, never a stop this run has reached. Null outside
+   * a run (`?run=0`, tours, Free Ride), which keeps the surprise pick.
    */
-  _startNextRouteFromArrival(this: ChainedRunHost & GameChainedRunRuntime): void {
+  _pickRunNextStop(this: ChainedRunHost & GameChainedRunRuntime, from: PoiPoint): PoiPoint | null {
     this._runCard = null;
-    const from = this.routeTo as PoiPoint | null;
-    const replay = () => { this._setupRace(); this.state = GameState.RACING; this._beginIntro(); };
-    if (!from || this.travelMode === 'transit') { replay(); return; }
-    this._reviewRoute = this._pickReviewRide(this.routePois, from);
-    let dest: PoiPoint | null = this._reviewRoute ? this._reviewRoute.to : null;
-    if (!dest && this._runEnabled()) {
-      const run = this._openRun();
-      const samples = this.recall?.homeMasterySamples?.(this.cityId || 'amsterdam') ?? [];
-      const excludeIds = [...(run?.stops.map(stop => stop.id) ?? []), this.routeFrom?.id ?? ''].filter(Boolean);
-      dest = pickNextStop(this.routePois, from, { samples, excludeIds });
-      if (this._run) { this._run = touchRun(this._run, Date.now()); saveRun(storage(), this._run); }
-    }
-    dest ||= this._pickDestinationNear(from, this.routeFrom ? this.routeFrom.id : null);
-    if (!dest) { replay(); return; }
-    this._launchPoiRoute(from, dest);
+    if (!this._runEnabled()) return null;
+    const run = this._openRun();
+    const samples = this.recall?.homeMasterySamples?.(this.cityId || 'amsterdam') ?? [];
+    const excludeIds = [...(run?.stops.map(stop => stop.id) ?? []), this.routeFrom?.id ?? ''].filter(Boolean);
+    if (this._run) { this._run = touchRun(this._run, Date.now()); saveRun(storage(), this._run); }
+    return pickNextStop(this.routePois, from, { samples, excludeIds });
   }
 
   /** The arrival card's one run line, or null outside a run. */
