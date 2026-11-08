@@ -61,9 +61,13 @@ export function stampNewNeighborhoods(
   visitedThisRoute: Iterable<string>,
   prior: NeighborhoodPassport,
   minNames = PASSPORT_MIN_NAMES,
+  /** Landmarks noticed on a drive-by card or named in a question
+   *  (landmarkQuestion.ts sightings): each counts as one known name. */
+  landmarkCredit = 0,
 ): { passport: NeighborhoodPassport; fresh: string[] } {
   const known = exploration.learnedWaterways.length + exploration.learnedStreets.length
-    + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length;
+    + exploration.learnedTransitLines.length + exploration.learnedTransitStops.length
+    + Math.max(0, landmarkCredit);
   if (known < minNames) return { passport: prior, fresh: [] };
 
   const stamped = new Set(prior.stamped);

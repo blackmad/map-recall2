@@ -40,6 +40,8 @@ import { isCar, isBoat, isTransit, isPitchedView } from './modes';
 // Free Ride's methods ride in this bundle (they draw over this frame).
 import { installFreeRide } from './freeRideRuntime';
 import { installChainedRun } from './chainedRunRuntime';
+import { readSightings, sightingCredit } from './landmarkQuestion';
+import { withheldNames } from '../ownMap/labelPolicy';
 import { zoomBadgeShouldFlash, zoomBadgeText } from '../hudCopy';
 import { travelProfile } from './travelProfile';
 import { routePlaqueName } from './recallRules';
@@ -449,6 +451,7 @@ export class GamePresentationRuntime {
         else if (pause && this._runPauseAction) this._runPauseAction(pause.id);
         else if (this._recenterBtnBounds && hit(this._recenterBtnBounds)) this._recenterCamera();
         else if (this._landmarkCloseBounds && hit(this._landmarkCloseBounds)) this._clearLandmarkNotice();
+        else if (this._landmarkActionBounds && hit(this._landmarkActionBounds)) this._noticeLandmark();
         else if (this._landmarkCardBounds && hit(this._landmarkCardBounds)) this._expandLandmarkNotice();
         else if (this.freeRide && this.state === GameState.RACING) this._freeRideClick(x, y, event.clientX, event.clientY);
         else this._inspectBuildingAt(event.clientX, event.clientY);
@@ -766,12 +769,19 @@ export class GamePresentationRuntime {
     // Withheld in every form, not only the exact way name: a compound, a stem
     // or a bridge's printed official name that says it (mapLabelSpoils).
     const asked = this.quizPromptName || this.quizCandidateName || '';
+    // A landmark question withholds every choice, not only the answer (G3).
+    const withheld = withheldNames(this);
     const shownText = (text: string) => displayBridgeName(bridgeDisplayNamesOf(this.bridges), text);
-    if (!this._labelSpoilCache || this._labelSpoilCache.asked !== asked) this._labelSpoilCache = { asked, spoils: new Map() };
+    const spoilKey = withheld.length ? `${asked}\u0000${withheld.join('\u0000')}` : asked;
+    if (!this._labelSpoilCache || this._labelSpoilCache.asked !== spoilKey) this._labelSpoilCache = { asked: spoilKey, spoils: new Map() };
     const spoilCache = this._labelSpoilCache.spoils;
     const spoils = (text: string) => {
       let hit = spoilCache.get(text);
-      if (hit === undefined) { hit = mapLabelSpoils(text, shownText(text), asked); spoilCache.set(text, hit); }
+      if (hit === undefined) {
+        hit = (!!asked && mapLabelSpoils(text, shownText(text), asked))
+          || withheld.some(name => mapLabelSpoils(text, shownText(text), name));
+        spoilCache.set(text, hit);
+      }
       return hit;
     };
     // A name whose street a building hides is not drawn: the canvas paints
@@ -782,7 +792,7 @@ export class GamePresentationRuntime {
     // Free Ride asks nothing, so every street and canal is named.
     // Names fade and follow their street on screen (labels/labelFade.ts, #122).
     const placement = (this._streetLabelPlacement ||= new StreetLabelPlacement());
-    if (free) this.track.drawLabels(ctx, this.camera, () => true, '', player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
+    if (free) this.track.drawLabels(ctx, this.camera, text => !(withheld.length && spoils(text)), '', player, this._freeRideLabelCandidates(), shownText, hiddenBy, placement);
     else this.track.drawLabels(ctx, this.camera,
       (text, x, y) => (this._mapLabelNames.has(text) || this._isPlaceKnown(text, x, y)) && !(asked && spoils(text)),
       asked, player,
@@ -2153,6 +2163,9 @@ export class GamePresentationRuntime {
         after,
         this._visitedNeighborhoods,
         readPassport(localStorage),
+        undefined,
+        // Landmarks noticed on a drive-by card or named in a question (G3).
+        sightingCredit(readSightings(localStorage)),
       );
       if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
       this._finishPassportFresh = stamped.fresh;

@@ -75,6 +75,9 @@ export interface GameCoreHost {
   /** Non-empty while a recall question is open. The HUD must not cover it, and
    *  nothing may reveal a name while it is up. */
   quizPromptName: string;
+  /** While a landmark question is open: all four choice names, withheld from
+   *  every label surface with the asked name (G3, landmarkQuestionRuntime.ts). */
+  quizWithheldNames?: string[];
   /** Subject of the open prompt (`line` / `stop` / `street` / …). Transit uses
    *  this so stop/street questions do not blank the sticky line plaque. */
   quizPromptSubject: string;
@@ -345,6 +348,8 @@ export interface RecallHost extends GameCoreHost {
   _routeError?: HTMLElement;
   _skipMastered: HTMLInputElement | null;
   _overlay?: import('../overlay/mount.ts').CanalOverlayHandle;
+  /** "Which building is this?" answers land here (landmarkQuestionRuntime.ts). */
+  _submitLandmarkAnswer(selectedAnswer: string | null, noIdea?: boolean): void;
 
   /** Owned by other subsystems. */
   _savePreferences(): void;
@@ -513,6 +518,9 @@ export interface PresentationHost extends GameCoreHost {
   _recenterBtnBounds: LinkBounds | null;
   _landmarkCardBounds: LinkBounds | null;
   _landmarkCloseBounds?: LinkBounds | null;
+  /** The drive-by card's "Noticed" pill (G3); a tap counts the landmark toward its buurt's passport. */
+  _landmarkActionBounds?: LinkBounds | null;
+  _noticeLandmark(): boolean;
   _clearLandmarkNotice(): void;
   _runFinishAction(id: 'again' | 'route' | 'copy'): void;
   _expandLandmarkNotice(): void;

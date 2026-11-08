@@ -14,6 +14,7 @@
 
 import { HEIGHT_BAND_METRES, type HeightBand } from '../poiCatalog';
 import { buildSpoilerIndex, POI_ROOF_HEIGHT_METRES, type SpoilerIndex } from '../orientationPois';
+import { withheldNames } from '../ownMap/labelPolicy';
 import {
   categoryClass, distanceFade, labelAllowed, labelBudget, labelPriority, planLabels, VENUE_RADIUS_M,
   type LabelCandidate, type LabelRules, type Rect, type ScreenCandidate,
@@ -297,6 +298,7 @@ export class LabelOverlay {
       // orientation POIs on purpose (vector-map.js `_hideLabels`).
       labelsOff: false,
       hiddenName,
+      hiddenNames: withheldNames(game || {}),
       spoilerIndex: this.vm._spoilerIndex || (hiddenName ? (this.hiddenIndex ??= buildSpoilerIndex([hiddenName])) : null),
       quizQuiet: !!this.vm._quizQuietMap,
       isLabelled: () => false,

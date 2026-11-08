@@ -931,6 +931,11 @@ export function OverlayApp({
               gloss={prefs.routePattern === 'free' ? t('setup.route.freeHint') : undefined}
               keepGloss
             />
+            {/* Free Ride asks nothing unless the rider opts in to landmark questions (G3, landmarkQuestion.ts). */}
+            {prefs.routePattern === 'free' && <ToggleGroup label={t('setup.freeRideLandmarkQuiz')}>
+              <ToggleTile id="free-ride-landmark-quiz" checked={prefs.landmarkQuiz} onChange={landmarkQuiz => patch({ landmarkQuiz })}
+                title={t('setup.freeRideLandmarkQuiz')} hint={t('setup.freeRideLandmarkQuizHint')} />
+            </ToggleGroup>}
             {/* Difficulty grades the questions, and Free Ride asks none. */}
             {prefs.routePattern !== 'free' && <ChoiceRow
               label={t('setup.difficulty')}

@@ -59,13 +59,14 @@ export const HOME_LEGS = ['outbound', 'return'] as const;
 
 /** What a recall question is asking about. Drives the chip at the top of the
  *  prompt card. */
-export const QUIZ_SUBJECT_NAMES = ['street', 'waterway', 'water', 'bridge', 'line', 'stop'] as const;
+export const QUIZ_SUBJECT_NAMES = ['street', 'waterway', 'water', 'bridge', 'line', 'stop', 'landmark'] as const;
 export type QuizSubject = typeof QUIZ_SUBJECT_NAMES[number];
 
 /** Why a recall question was opened. `route` is the way under the vehicle;
  *  the other two belong to a bridge crossing and are filed against the
- *  crossing rather than against wherever the vehicle rolled to a stop. */
-export const QUIZ_PROMPT_KINDS = ['route', 'crossing-water', 'bridge'] as const;
+ *  crossing rather than against wherever the vehicle rolled to a stop.
+ *  `landmark` is "Which building is this?" (landmarkQuestionRuntime.ts). */
+export const QUIZ_PROMPT_KINDS = ['route', 'crossing-water', 'bridge', 'landmark'] as const;
 export type QuizPromptKind = typeof QUIZ_PROMPT_KINDS[number];
 
 /**

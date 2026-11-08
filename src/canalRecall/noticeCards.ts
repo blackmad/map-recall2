@@ -41,6 +41,9 @@ export interface LandmarkCardProps {
   maxBodyLines?: number;
   /** The card holds more than its body: a folded card still opens to the rest. */
   hasMore?: boolean;
+  /** A one-tap action under the body ("Noticed" on a drive-by card, G3).
+   *  Absent, the layout is byte-identical to a card without one. */
+  action?: string;
 }
 
 export interface LandmarkCardLayout {
@@ -76,6 +79,8 @@ export interface LandmarkCardLayout {
    *  (user request 2026-10-03), so every card needs a way to put it away. */
   close: Rect;
   closeHit: Rect;
+  /** The action pill, relative to the card; absent without `action`. */
+  action?: Rect;
 }
 
 const CARD_WIDTH = 480;
@@ -125,6 +130,12 @@ const CLOSE_ROOM = CLOSE_SIZE + 10;
 /** Side of the square corner region a tap on the close takes: a finger is
  *  wider than the glyph. */
 const CLOSE_HIT = 40;
+/** The action pill under the body: a 26 px plate is still a fair thumb target
+ *  once its hit rect is padded by the runtime. */
+const ACTION_FONT = `800 11px ${hudSurface.fontMono}`;
+const ACTION_HEIGHT = 26;
+const ACTION_GAP = 10;
+const ACTION_PAD_X = 12;
 
 /**
  * Badges that fit on one row of the text column. On a 320 px phone
@@ -259,9 +270,13 @@ export function measureLandmarkCard(
   const textBottom = lines.length
     ? bodyBaseline + (lines.length - 1) * LINE_STEP + BODY_DESCENT
     : headerBottom;
+  // The action pill sits under the text column, right-aligned, so the corridor
+  // side of the card (and its photo) keeps its shape.
+  const actionWidth = props.action ? Math.ceil(measure(props.action.toUpperCase(), ACTION_FONT)) + ACTION_PAD_X * 2 : 0;
+  const actionTop = props.action ? Math.round(textBottom + ACTION_GAP) : 0;
   const height = Math.max(
     hasImage ? IMAGE_INSET * 2 + IMAGE_HEIGHT : 0,
-    Math.round(textBottom + PAD_BOTTOM),
+    Math.round((props.action ? actionTop + ACTION_HEIGHT : textBottom) + PAD_BOTTOM),
   );
 
   return {
@@ -283,7 +298,38 @@ export function measureLandmarkCard(
     truncated,
     close: { x: width - PAD_RIGHT - CLOSE_SIZE + 3, y: Math.round(rowCentre - CLOSE_SIZE / 2), width: CLOSE_SIZE, height: CLOSE_SIZE },
     closeHit: { x: width - CLOSE_HIT, y: 0, width: CLOSE_HIT, height: CLOSE_HIT },
+    ...(props.action ? {
+      action: { x: width - PAD_RIGHT - actionWidth, y: height - PAD_BOTTOM - ACTION_HEIGHT, width: actionWidth, height: ACTION_HEIGHT },
+    } : {}),
   };
+}
+
+/** Draw the action pill `measureLandmarkCard` placed: a copper-outlined plate,
+ *  filled once done ("Noted"). Drawn by the runtime after the card itself. */
+export function drawCardAction(
+  ctx: CanvasRenderingContext2D, rect: Rect, cardX: number, cardY: number, label: string, done: boolean,
+): void {
+  const x = cardX + rect.x, y = cardY + rect.y;
+  const r = rect.height / 2;
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.arcTo(x + rect.width, y, x + rect.width, y + rect.height, r);
+  ctx.arcTo(x + rect.width, y + rect.height, x, y + rect.height, r);
+  ctx.arcTo(x, y + rect.height, x, y, r);
+  ctx.arcTo(x, y, x + rect.width, y, r);
+  ctx.closePath();
+  ctx.fillStyle = done ? 'rgba(47,111,71,.12)' : 'rgba(180,104,44,.10)';
+  ctx.fill();
+  ctx.lineWidth = 1.25;
+  ctx.strokeStyle = done ? '#2f6f47' : '#8a4a18';
+  ctx.stroke();
+  ctx.font = ACTION_FONT;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = done ? '#2f6f47' : '#8a4a18';
+  ctx.fillText(label.toUpperCase(), x + rect.width / 2, y + rect.height / 2 + 0.5);
+  ctx.restore();
 }
 
 /**
