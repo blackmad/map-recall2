@@ -34,7 +34,7 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'touch-prompt' | 'touch-settings' | 'finish-touch' | 'finish-calm-bare-touch'
   // Every optional block at once: photo, ribbon, first-time gains, guest
   // tease and a personal best (user report 2026-10-02: ran off the screen).
-  | 'finish-full' | 'finish-full-touch'
+  | 'finish-full' | 'finish-full-touch' | 'finish-stamp' | 'finish-stamp-touch'
   | 'finish-run' | 'finish-run-touch' | 'finish-run-card' | 'finish-run-card-touch' | 'finish-run-card-calm' | 'finish-run-card-calm-touch'
   | 'landmark-panel-touch'
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch' | 'neighborhood-touch'
@@ -317,6 +317,21 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
             axes: [{ label: 'Recall', score: 0.5 }, { label: 'Unaided', score: 0 }, { label: 'Efficiency', score: 1 }],
           };
           game._shareUrl = 'x'; game._copiedTimer = 0; game._raceKey = null;
+          // G5: an arrival that earned a passport stamp shows it as a stamp.
+          if (scenario.startsWith('finish-stamp')) {
+            game.quizCorrect = 4; game.quizAttempts = 5; game.quizPoints = 370; game.quizBestStreak = 3;
+            game._explorationRouteGain = { newNames: 2, newNeighborhoods: 1, newLandmarks: 0 };
+            game._finishPassportFresh = ['Grachtengordel'];
+            win.localStorage.setItem('canalRecall.neighborhoodPassport.v1', JSON.stringify({ stamped: ['Grachtengordel', 'Jordaan', 'Oude Pijp'] }));
+            // The stamp art is its own bundle; the card shows the plain stamp until it lands.
+            const art = doc.createElement('script');
+            art.src = 'js/stamp-art.bundle.js';
+            art.onload = () => {
+              const loaded = (win as unknown as { CanalRecallStampArt?: { loadStampFont: () => Promise<unknown> } }).CanalRecallStampArt;
+              void loaded?.loadStampFont().then(() => renderFinish());
+            };
+            doc.head.appendChild(art);
+          }
           if (scenario.startsWith('finish-full')) {
             game.quizCorrect = 4; game.quizAttempts = 5; game.quizPoints = 370; game.quizBestStreak = 3;
             game._explorationRouteGain = { newNames: 2, newNeighborhoods: 0, newLandmarks: 1 };
@@ -733,6 +748,11 @@ export const LiveHudRadarPhone: Story = {
 export const FinishCard: Story = { args: { scenario: 'finish' } };
 /** Every block at once; the card must still fit a laptop screen. */
 export const FinishCardFull: Story = { args: { scenario: 'finish-full' } };
+export const FinishCardPassportStamp: Story = { args: { scenario: 'finish-stamp' } };
+export const PortraitFinishCardPassportStamp: Story = {
+  args: { scenario: 'finish-stamp-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
+};
 export const FinishCardFullPhone: Story = {
   args: { scenario: 'finish-full-touch' },
   parameters: { viewport: { defaultViewport: 'mobile1' } },

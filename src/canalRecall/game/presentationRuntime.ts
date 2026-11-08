@@ -30,6 +30,9 @@ import {
   savePassport,
   stampNewNeighborhoods,
 } from './neighborhoodPassport';
+import { drawArrivalStamp, ARRIVAL_STAMP_HEIGHT, stampCardEnabled } from '../stampArrival';
+import { loadStampArt } from '../stampArtLoader';
+import { readStampSources } from '../stampAlbum';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
@@ -1695,7 +1698,11 @@ export class GamePresentationRuntime {
         // At the tightest level a run's line takes the story's last line, so the card does not grow.
         const lineBudget = [Infinity, 4, 2, runText ? 0 : 1][level];
         const storyLines: string[] = [];
-        for (const sentence of [story.headline, story.detail, story.passport, story.streak, story.guestTease]) {
+        // G5: the passport stamp is drawn as a stamp (below), not a sentence;
+        // ?stampCard=0 keeps the sentence.
+        const passportFresh = this._finishPassportFresh || [];
+        const stampCard = passportFresh.length > 0 && stampCardEnabled(typeof location === 'undefined' ? '' : location.search);
+        for (const sentence of [story.headline, story.detail, stampCard ? null : story.passport, story.streak, story.guestTease]) {
           if (!sentence) continue;
           const room = lineBudget - storyLines.length;
           // A first sentence too long for the budget keeps its lead clause
@@ -1740,6 +1747,22 @@ export class GamePresentationRuntime {
             y += 16;
           }
         } });
+        if (stampCard) {
+          let held = 0;
+          try { held = readStampSources(localStorage).stamped.length; } catch { /* private mode */ }
+          blocks.push({ height: ARRIVAL_STAMP_HEIGHT + 12, rule: true, draw: (top) => {
+            drawArrivalStamp(ctx, {
+              name: passportFresh[0],
+              isNew: true,
+              x: cardX + padX,
+              y: top + 4,
+              width: innerW,
+              fontMono: window.CanalRecallUi.hudSurface.fontMono,
+              more: passportFresh.length - 1,
+              held,
+            });
+          } });
+        }
       }
 
       if (bestText && !bestInFooter) {
@@ -2168,7 +2191,11 @@ export class GamePresentationRuntime {
         // Landmarks noticed on a drive-by card or named in a question (G3).
         sightingCredit(readSightings(localStorage)),
       );
-      if (stamped.fresh.length) savePassport(localStorage, stamped.passport);
+      if (stamped.fresh.length) {
+        savePassport(localStorage, stamped.passport);
+        // The arrival card draws the stamp; fetch its postcard art now.
+        if (stampCardEnabled(typeof location === 'undefined' ? '' : location.search)) void loadStampArt();
+      }
       this._finishPassportFresh = stamped.fresh;
       return after;
     } catch (error) {
