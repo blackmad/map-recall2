@@ -125,6 +125,22 @@ export class GroundSurface {
       }
   }
 
+  /** Take a placed cut off the surface again (groundStore's deterministic cut plans: a lower-keyed plan's cut replaces it). */
+  removeCut(cut: Cut): void {
+    const i = this.cuts.indexOf(cut);
+    if (i < 0) return;
+    this.cuts.splice(i, 1);
+    const [x0, y0, x1, y1] = cut.bbox;
+    for (let bx = Math.floor(x0 / BUCKET_M); bx <= Math.floor(x1 / BUCKET_M); bx++)
+      for (let by = Math.floor(y0 / BUCKET_M); by <= Math.floor(y1 / BUCKET_M); by++) {
+        const k = bucketKey(bx, by), list = this.cutBuckets.get(k);
+        if (!list) continue;
+        const j = list.indexOf(cut);
+        if (j >= 0) list.splice(j, 1);
+        if (!list.length) this.cutBuckets.delete(k);
+      }
+  }
+
   /** The riding floor of a tunnel cut whose strip holds (x, y), or NaN (the lowest where strips overlap). */
   cutFloor = (x: number, y: number): number => {
     if (!this.cutBuckets.size) return NaN;
@@ -155,24 +171,28 @@ export class GroundSurface {
     return ends[0] + (ends[1] - ends[0]) * u + GroundSurface.at(p, s).h;
   }
 
-  /** Place a measured profile's deck on the relief and index it for `height`. */
-  addDeck(measured: DeckProfile): DeckSurface {
+  /**
+   * Place a measured profile's deck on the relief and index it for `height`. `ground`: what its ends and approaches
+   * stand on (default the relief with the cuts placed so far; groundStore's deterministic mode passes the bare relief,
+   * so a deck does not depend on which cuts were planned before it).
+   */
+  addDeck(measured: DeckProfile, ground: (x: number, y: number) => number = this.ground): DeckSurface {
     const profile: DeckProfile = { ...measured, h: clampDeckGrade(measured.s, measured.h, measured.deck, DECK_MAX_GRADE) };
     const n = profile.x.length;
     const span: [number, number] = [Math.max(profile.s[0], profile.deck[0]), Math.min(profile.s[n - 1], profile.deck[1])];
-    const ends: [number, number] = [this.ground(profile.x[0], profile.y[0]), this.ground(profile.x[n - 1], profile.y[n - 1])];
+    const ends: [number, number] = [ground(profile.x[0], profile.y[0]), ground(profile.x[n - 1], profile.y[n - 1])];
     const z = new Float64Array(n);
     const easeAt = (s: number) => {
-      const p = GroundSurface.at(profile, s), jump = Math.abs(GroundSurface.deckZ(profile, ends, s) - this.ground(p.x, p.y));
+      const p = GroundSurface.at(profile, s), jump = Math.abs(GroundSurface.deckZ(profile, ends, s) - ground(p.x, p.y));
       if (profile.family === 'masonry-arch') return DECK_EASE_M;
       return Math.min(Math.max(DECK_EASE_M, 1.5 * jump / DECK_EASE_MAX_GRADE), DECK_EASE_MAX_M, Math.max(DECK_EASE_M, (span[1] - span[0]) / 2));
     };
     const ease: [number, number] = [easeAt(span[0]), easeAt(span[1])];
     for (let i = 0; i < n; i++) {
       const s = profile.s[i];
-      if (s <= span[0] || s >= span[1]) { z[i] = this.ground(profile.x[i], profile.y[i]); continue; }
+      if (s <= span[0] || s >= span[1]) { z[i] = ground(profile.x[i], profile.y[i]); continue; }
       const w = GroundSurface.easeWeight(s, span, ease);
-      const g = this.ground(profile.x[i], profile.y[i]);
+      const g = ground(profile.x[i], profile.y[i]);
       z[i] = g + w * (GroundSurface.deckZ(profile, ends, s) - g);
     }
     const deck: DeckSurface = { profile, z, ends, span, ease };
