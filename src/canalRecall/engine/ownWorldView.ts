@@ -26,6 +26,8 @@ import { mapLibreSky } from '../look/sunny';
 import { FrameHost, type FrameSimulation } from './frameHost';
 import { guardFrameHost } from './frameGuards';
 import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
+import { RevealSurface, revealLightEnabled } from './revealSurface';
+import { isRideAim, poseCamera, revealLandmarkBudget, revealPose, revealSwapBudget, revealSwapEnabled } from './revealLandmarks';
 import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleGates, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
@@ -777,6 +779,19 @@ export class OwnWorldView implements WorldViewOracles {
   }
 
   private riderSurface(): any { return this._ownGround && this._ownGround.ready ? this._ownGround : null; }
+  /** Reveal prime (revealSurface.ts, #267): `?revealLight=0` or `window.__canalRecallRevealLight = false` turns it off. */
+  private readonly revealSurface = new RevealSurface(revealLightEnabled(W().__canalRecallRevealLight ?? new URLSearchParams(W().location?.search ?? '').get('revealLight')));
+  /** The height the vehicle calls will ease towards (setPlayerBike / setPlayerBoat / setPlayerTransit), at the rider. */
+  private revealSurfaceTarget(surface: any, at: [number, number]): number {
+    const mode = W().canalRecallGame?.travelMode;
+    let h: number | undefined;
+    try {
+      if (mode === 'boat') h = surface.waterLevelAt ? surface.waterLevelAt(at) : surface.waterLevelM?.();
+      else if (mode !== 'transit' && surface.riderPose) h = surface.riderPose(at, this.riderAngle ?? 0, this._playerBike?.surfaceContactOffsets?.())?.heightM;
+      if (!Number.isFinite(h)) h = surface.heightAt(at);
+    } catch (_) { h = undefined; }
+    return Number.isFinite(h) ? h as number : this.riderSurfaceM;
+  }
   private easeRiderSurface(target: number): number {
     const v = Number.isFinite(target) ? target : 0, d = v - this.riderSurfaceM;
     this.riderSurfaceM = Math.abs(d) < 0.01 ? v : this.riderSurfaceM + d * 0.35;
@@ -1187,6 +1202,34 @@ export class OwnWorldView implements WorldViewOracles {
     this.cameraMap.jumpTo({ center: [lng, lat], zoom: Number.isFinite(p.options.zoom) ? p.options.zoom : this.camera.zoom() || 17, bearing: p.options.bearing ?? 0, pitch: p.options.pitch ?? globalNum('TOPDOWN_TILT_DEGREES', 14) });
     this._threeBuildings?.setDetailCentre?.(lng, lat);
     this._completeCity?.followCamera?.();
+    this.handRevealPose(p.worldX, p.worldY, p.loader);
+  }
+
+  /** Reveal landmarks (revealLandmarks.ts, #268): `?revealSwap=0` or `window.__canalRecallRevealSwap = false` hands nothing over. */
+  private readonly revealSwapOn: boolean = revealSwapEnabled(W().__canalRecallRevealSwap ?? new URLSearchParams(W().location?.search ?? '').get('revealSwap'));
+  /** What the last ride aim handed the landmark models (measurement and specs); null when none was handed over. */
+  revealHandover: { lngLat: [number, number]; zoom: number; bearing: number; pitch: number; budget: number } | null = null;
+
+  /**
+   * The game's ride aim under the loading screen (`_setupRace`): the landmark models nearest the first racing frame load
+   * now, at that frame's pose and level, a bounded few, so the nearest one is drawn at the reveal instead of landing
+   * 200-280 ms after it (revealLandmarks.ts). The hold's camera, its tiers and the game are untouched.
+   */
+  private handRevealPose(worldX: number, worldY: number, loader: LoaderFrame): void {
+    const signature = this.extras?.signature;
+    if (!this.revealSwapOn || typeof signature?.setRevealPose !== 'function') return;
+    const game = W().canalRecallGame;
+    if (!isRideAim({ covered: game?.state === LOADING_STATE, worldX, worldY, camera: game?.camera })) return;
+    const canvas: HTMLCanvasElement | undefined = game.canvas;
+    const scale = canvas?.getBoundingClientRect ? canvas.getBoundingClientRect().width / CANVAS_W : 0;
+    if (!(scale > 0)) return;
+    const pose = revealPose(game.camera, loader, {
+      pitchForViewMode: m => this.pitchForViewMode(m), zoomOffsetForViewMode: m => this.zoomOffsetForViewMode(m),
+      landmarkView: this.landmarkView, displayScale: scale, now: performance.now(),
+    }, this.solver.pitchSmoothed);
+    const budget = revealSwapBudget(new URLSearchParams(W().location?.search ?? '').get('revealSwapN'), revealLandmarkBudget(isTouchPointer(W())));
+    this.revealHandover = { lngLat: pose.lngLat, zoom: pose.zoom, bearing: pose.bearing, pitch: pose.pitch, budget };
+    signature.setRevealPose(poseCamera(() => this.host.viewport(), pose, 0, this.cameraMap.camera.maxPitch), budget);
   }
 
   resizeToViewport(): void {
@@ -1211,6 +1254,11 @@ export class OwnWorldView implements WorldViewOracles {
       landmarkView: this.landmarkView, displayScale: canvas.getBoundingClientRect().width / CANVAS_W, now: performance.now(),
     });
     const surface = this.riderSurface();
+    // The first sync after the loading screen lifts draws the camera at the rider's ground height, not at 0 easing
+    // down over ~8 frames (revealSurface.ts, #267). `?revealLight=0`: today's reveal.
+    if (this.revealSurface.shouldPrime({ covered: W().canalRecallGame?.state === LOADING_STATE, introFlat: view.introFlat, detached: view.detached, surfaceReady: !!surface })) {
+      this.riderSurfaceM = this.revealSurfaceTarget(surface, view.subject);
+    }
     const elevation = surface ? (view.detached || view.introFlat > 0 ? 0 : this.riderSurfaceM) : 0;
     if (view.needsClearance && this._completeCity?.sampleFeatures) {
       const result = clearCamera(view.pitch, view.lngLat, view.subject, pitch => {
@@ -1230,6 +1278,8 @@ export class OwnWorldView implements WorldViewOracles {
     }
     // Landmark models and trees hold what the driving view loaded: "visible" at city scale is all of Amsterdam.
     if (view.introFlat > 0) this.extras.setSuspended(true);
+    // A start flight owns the camera until it lands: no reveal hand-over loads at a pose it has not reached (#268).
+    if (view.introFlat > 0 && this.revealHandover) { this.revealHandover = null; this.extras.signature?.setRevealPose?.(null); }
     if (view.introFlat === 0) this.introLanding = false;
     if (this._ownGround) {
       // Panned off the rider (RE-CENTER showing), the ground's ring follows the view, not the rider (#232: the user's
