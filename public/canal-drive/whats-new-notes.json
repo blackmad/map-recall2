@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "The knowledge map holds every buurt you know",
+   "text": "The knowledge map now zooms out to hold every neighbourhood you know, so names learned in Noord, IJburg, Nieuw-West or Zuidoost are no longer cut off at the edge. It also opens from a 58 kB outline file instead of a megabyte of boundaries.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-knowledge-map-fit/outer-desktop.jpg",
+     "alt": "The knowledge map on desktop zoomed out to 24 by 18 km holding Noord, IJburg, Nieuw-West and Zuidoost",
+     "caption": "Outer districts now fit the frame."
+    },
+    {
+     "src": "ui/2026-11-09-knowledge-map-fit/outer-iphone.jpg",
+     "alt": "The same map on a phone",
+     "caption": "And on the phone."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Short phones keep the bike in view",
    "text": "On a short phone the drive-by card is now a single row with the Noticed button, so it no longer covers your bike. The results footer drops its optional items instead of cutting the Dutch line mid-list, and the STAMPED seal sits clear of long neighbourhood names on the postcard.",
    "images": [

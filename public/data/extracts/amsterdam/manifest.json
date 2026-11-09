@@ -49,11 +49,11 @@
     },
     "landmarks": {
       "file": "landmarks.json",
-      "count": 420,
+      "count": 427,
       "availableCount": 1071,
       "bytes": 265282,
       "availableLinkedCount": 358,
-      "linkedCount": 358
+      "linkedCount": 365
     },
     "all": {
       "file": "all.json",
@@ -103,5 +103,11 @@
     "file": "brand-identifiers.json",
     "count": 2,
     "logoCount": 1
+  },
+  "knowledgeMapOutline": {
+    "file": "knowledge-map-outline.json",
+    "buurts": 90,
+    "water": 1497,
+    "source": "scripts/knowledge-map/build-outline.ts from boundaries.json + water.json (#297)"
   }
 }

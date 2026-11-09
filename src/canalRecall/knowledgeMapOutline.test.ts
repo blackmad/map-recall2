@@ -26,8 +26,8 @@ test('outline round-trip keeps names, kinds, bboxes (within tolerance) and frame
   assert.ok(Math.abs(back.frame.minLat - geometry.frame.minLat) < 1e-4);
 });
 
-test('the staged/published outline is slim and covers every ranked buurt', { skip: !existsSync('public/data/extracts/amsterdam/staging/knowledge-map-outline.json') }, () => {
-  const raw = readFileSync('public/data/extracts/amsterdam/staging/knowledge-map-outline.json', 'utf8');
+test('the published outline is slim and covers every ranked buurt', { skip: !existsSync('public/data/extracts/amsterdam/knowledge-map-outline.json') }, () => {
+  const raw = readFileSync('public/data/extracts/amsterdam/knowledge-map-outline.json', 'utf8');
   assert.ok(raw.length < 100_000, `outline ${raw.length} B`);
   const boundaries = JSON.parse(readFileSync('public/data/extracts/amsterdam/boundaries.json', 'utf8'));
   const full = geometryFromExtract(boundaries);
