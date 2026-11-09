@@ -2312,6 +2312,8 @@ class VectorBasemap {
   }
 
   setPlayerBike(player, loader, visible, zoomScale = 1) {
+    // The rider cover's way ahead off the route reads the bike's heading (streetVisibility.ts, lane F4 #320).
+    if (player) { this._coverRiderAngle = Number.isFinite(player.angle) ? player.angle : null; if (loader) this._coverLoader = loader; }
     if (!this._playerBike || !player || !loader) return;
     this._playerBike.zoomScale = zoomScale;
     const lngLat = this.worldToLngLat(player.x, player.y, loader);
@@ -2490,6 +2492,10 @@ class VectorBasemap {
   }
 
   setRoute(routePath, loader, visible) {
+    if (loader && routePath !== this._coverRouteRef) {
+      this._coverRouteRef = routePath;
+      this._coverRoute = routePath && routePath.length > 1 ? routePath.map(point => this.worldToLngLat(point.x, point.y, loader)) : null;
+    }
     if (!this.map || !loader || this._styleGone() || !this.map.getSource('navigation-route')) return;
     // Trees are thinned against the route whether or not its line is drawn.
     if (routePath && routePath.length > 1 && routePath !== this._treeRouteRef) {
@@ -2561,6 +2567,7 @@ class VectorBasemap {
   }
 
   setStreetHighlights(track, loader, learnedNames, activeName, activeSegmentIndex, routePath = null) {
+    if (track && loader) { this._coverTrack = track; this._coverLoader = loader; }
     if (!this.ready || !track || !loader || this._styleGone() || !this.map.getSource('active-street')) return;
     const activeKey = `${activeName || ''}:${activeSegmentIndex}`;
     if (activeKey !== this._activeStreetKey || routePath !== this._activeStreetRoute) {
@@ -3059,7 +3066,12 @@ class VectorBasemap {
           // Without MapLibre's copy of the streamed buildings (phones), the streamer answers.
           const city = this._completeCity;
           if (city && city.isPublishing === false) features.push(...city.featuresAt(rider[0], rider[1]));
-          const cover = helpers.coveringBuilding(features, rider);
+          // Route-aware (streetVisibility.ts streetCoverInWorld, lane F4 #320): a bump into a house front never
+          // covers, only a passage the route or the road underfoot runs through. `?coverRoute=0`: the point rule.
+          const routeAware = typeof helpers.streetCoverInWorld === 'function' && !/[?&]coverRoute=0\b/.test(window.location.search || '');
+          const cover = routeAware
+            ? helpers.streetCoverInWorld(features, { rider, route: this._coverRoute, track: this._coverTrack, loader: this._coverLoader, riderAngle: this._coverRiderAngle })
+            : helpers.coveringBuilding(features, rider);
           coveredNow = !!cover;
           if (cover) this._riderCoverId = String(cover.properties && cover.properties.id != null ? cover.properties.id : cover.id);
         } catch (_) { coveredNow = false; }
@@ -3075,7 +3087,12 @@ class VectorBasemap {
   _applyRiderCover(covered, opacity) {
     // In the three.js looks the three layer is what the rider sees: the building over the rider
     // goes (a faded beige slab over beige ground still hid the corridor), the rest stay solid.
-    if (this._threeBuildings) this._threeBuildings.setHidden('cover', covered && this._threeOwnsTops() && this._riderCoverId ? [this._riderCoverId] : []);
+    // Ghosted (a screen door), never hidden: a building does not vanish at street level (lane F4 #320).
+    const coverIds = covered && this._threeOwnsTops() && this._riderCoverId ? [this._riderCoverId] : [];
+    if (this._threeBuildings) {
+      if (typeof this._threeBuildings.setGhosted === 'function') this._threeBuildings.setGhosted('cover', coverIds);
+      else this._threeBuildings.setHidden('cover', coverIds);
+    }
     if (covered) {
       this._riderCoverOpacity = new Map();
       for (const layer of this.map.getStyle().layers || []) {

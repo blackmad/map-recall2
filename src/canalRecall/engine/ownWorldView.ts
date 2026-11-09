@@ -34,9 +34,10 @@ import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_M
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
+import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
 import { RiderCoverTracker } from './riderCover';
 import { idleScheduler } from './idleBoxGrid';
-import { coverRouteFlag, roadAheadPoints, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
+import { coverRouteFlag, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
 import { awaitWorkerPool } from './workerPool';
@@ -1328,8 +1329,14 @@ export class OwnWorldView implements WorldViewOracles {
       if (result) this.solver.safePitch = result.safePitch;
       (this as any)._lastCameraClearance = result;
     }
-    const pitch = this.solver.applyClearance(view, !!camera.reducedMotion);
+    const eased = this.solver.applyClearance(view, !!camera.reducedMotion);
     lap('camera solve and clearance');
+    // The eye never enters a building (streetVisibility.ts, lane F4 #320): chunks draw FrontSide, so a camera inside a
+    // house drew none of it. Checked every frame; pulled in at once, eased back out. `?eyeClear=0` turns it off.
+    const eye = this.eyeClear && !view.detached && view.introFlat === 0 && eased > 0 ? this.clearEyeFor(view, eased, elevation) : { pitch: eased, zoom: view.zoom };
+    const pitch = eye.pitch;
+    const drawZoom = eye.zoom;
+    lap('eye clearance');
     const city = this._completeCity;
     if (view.introFlat > 0 && city?.setSuspended) {
       city.setSuspended(true);
@@ -1351,7 +1358,7 @@ export class OwnWorldView implements WorldViewOracles {
     lap('ground update');
     this.updateFarShells(view.subject, view.introFlat > 0 ? 0 : (this._ownGround?.farRadiusM ?? 0));
     lap('far shells');
-    this.cameraMap.jumpTo({ center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation });
+    this.cameraMap.jumpTo({ center: view.lngLat, zoom: drawZoom, bearing: view.bearing, pitch, elevation });
     lap('jumpTo and move listeners');
     if (this._aerialPower?.any) this.applyAerialPower(view, pitch);
     this.lastSubject = view.subject;
@@ -1397,6 +1404,38 @@ export class OwnWorldView implements WorldViewOracles {
     else tb?.setHidden?.('cover', ids);
     this.riderCovered = r.covered;
   }
+  private readonly eyeClear = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('eyeClear') !== '0'; } catch { return true; } })();
+  /** The drawn pull-in fraction and pitch cap (null: none), and the building ghosted while the eye cannot get out. */
+  private eyeFraction: number | null = null;
+  private eyePitch: number | null = null;
+  private eyeStuckId: string | null = null;
+  /** Measurement: the last eye clearance (specs read it). */
+  _lastEyeClearance: { insideId: string | null; fraction: number; pitch: number; stuck: boolean } | null = null;
+  private clearEyeFor(view: { lngLat: [number, number]; zoom: number; bearing: number }, pitch: number, elevation: number): { pitch: number; zoom: number } {
+    const city = this._completeCity as { sampleFeatures?(limit: number): any[] } | null;
+    if (!city?.sampleFeatures) return { pitch, zoom: view.zoom };
+    const resident = clearanceResidents(city as { sampleFeatures(limit: number): any[] });
+    const vp = this.host.viewport(), fov = this.cameraMap.camera.fovDeg, aspect = vp.width / Math.max(1, vp.height);
+    const eyeAt = (p: number, f: number): Eye | null => {
+      const e = new EngineCamera(() => vp, { center: view.lngLat, zoom: view.zoom + Math.log2(1 / f), bearing: view.bearing, pitch: p, elevation, maxPitch: this.cameraMap.camera.maxPitch }).eye();
+      return { lngLat: [e.lng, e.lat], altitude: e.altitudeM };
+    };
+    const full = eyeAt(pitch, 1);
+    if (!full) return { pitch, zoom: view.zoom };
+    const kx = 111_320 * Math.cos(view.lngLat[1] * Math.PI / 180);
+    const distance = Math.hypot((full.lngLat[0] - view.lngLat[0]) * kx, (full.lngLat[1] - view.lngLat[1]) * 111_320, full.altitude - elevation);
+    const reach = (f: number) => EYE_WALL_MARGIN_M + nearPlaneReachM(f * distance / 50, fov, aspect);
+    const r = clearEye(pitch, eyeAt, resident, reach);
+    // In at once; out eased, and held where the eased eye would be inside a wall.
+    let fraction = easePullIn(this.eyeFraction, r.fraction), capped = r.pitch < pitch ? r.pitch : Math.min(pitch, easePullIn(this.eyePitch ?? pitch, pitch));
+    if ((fraction > r.fraction || capped > r.pitch) && eyeInsideBuilding(eyeAt(capped, fraction)!, resident, reach(fraction))) { fraction = this.eyeFraction ?? r.fraction; capped = this.eyePitch ?? r.pitch; }
+    this.eyeFraction = fraction >= 1 ? null : fraction;
+    this.eyePitch = capped >= pitch ? null : capped;
+    const stuck = r.stuck ? r.insideId : null;
+    if (stuck !== this.eyeStuckId) { this.eyeStuckId = stuck; this._threeBuildings?.setGhosted?.('eye', stuck ? [stuck] : []); }
+    this._lastEyeClearance = { insideId: r.insideId, fraction, pitch: capped, stuck: r.stuck };
+    return { pitch: capped, zoom: view.zoom + Math.log2(1 / fraction) };
+  }
   private readonly coverRoute = coverRouteFlag();
   private readonly coverDim = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('coverDim') !== '0'; } catch { return true; } })();
   /** The route as lng/lat for the cover rule (kept when the route line is not drawn), and its source array. */
@@ -1407,16 +1446,11 @@ export class OwnWorldView implements WorldViewOracles {
   private coverLoader: LoaderFrame | null = null;
   private riderAngle: number | null = null;
   private coverAhead(rider: CoverLngLat): readonly CoverLngLat[] {
-    const onRoute = routeAheadPoints(this.coverRouteCoords, rider);
-    if (onRoute) return onRoute;
+    // streetVisibility.ts coverAheadPoints: the rule vector-map.js runs too (lane F4 #320).
     const track = this.coverTrack, loader = this.coverLoader;
-    if (!track?.getNearestRoad || !loader || loader._lastCenterLat == null) return [];
-    const w = lngLatToWorld(rider[0], rider[1], loader);
-    const road = track.getNearestRoad(w.x, w.y, this.riderAngle);
-    if (!road || !Number.isFinite(road.angle)) return [];
-    // World x east, y south: a world angle `a` is compass bearing a + π/2. Along the road, the way the bike faces.
-    const forward = this.riderAngle == null || Math.cos(road.angle - this.riderAngle) >= 0 ? road.angle : road.angle + Math.PI;
-    return roadAheadPoints(worldToLngLat(road.x, road.y, loader), forward + Math.PI / 2);
+    const onRoad = !routeAheadPoints(this.coverRouteCoords, rider) && track?.getNearestRoad && loader && loader._lastCenterLat != null
+      ? (() => { const w = lngLatToWorld(rider[0], rider[1], loader); return track.getNearestRoad!(w.x, w.y, this.riderAngle); })() : null;
+    return coverAheadPoints({ rider, route: this.coverRouteCoords, road: onRoad && loader ? { lngLat: worldToLngLat(onRoad.x, onRoad.y, loader), angle: onRoad.angle } : null, riderAngle: this.riderAngle });
   }
 
   projectWorld(worldX: number, worldY: number, loader: LoaderFrame, canvas: HTMLCanvasElement): ScreenPoint {

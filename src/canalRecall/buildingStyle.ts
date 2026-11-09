@@ -181,6 +181,8 @@ export {
   updateCoverState,
   COVERED_BUILDING_OPACITY,
 } from './coveredPassage.js';
+// Both engines' rider cover: route-aware, a bump never counts (engine/streetVisibility.ts, lane F4 #320).
+export { streetCoverInWorld } from './engine/streetVisibility.js';
 
 type AppearanceFeature = {
   type: string;
