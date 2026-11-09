@@ -91,6 +91,9 @@ for (const size of SIZES) {
           };
         });
         await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+        // The leaderboard key is set at the end of route loading, after the player
+        // exists; writing the stored best before it was null (one 390×664 run drew no ★ line).
+        await page.waitForFunction(() => typeof (window as any).canalRecallGame._raceKey === 'string', null, { timeout: 30_000 });
         await page.evaluate(() => {
           const g = (window as any).canalRecallGame;
           if (g.routeTo.reviewStop) g.routeTo = { ...g.routeTo, reviewStop: undefined };

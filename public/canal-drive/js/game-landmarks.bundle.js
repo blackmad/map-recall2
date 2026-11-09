@@ -7632,7 +7632,8 @@ ${register}` : detail,
       const alpha = this._landmarkNoticeAlpha;
       if (alpha <= 0) return;
       const collapsed = cardCollapsed(this._landmarkNoticeSource, this._landmarkNoticeState.elapsed);
-      const img = collapsed ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
+      const shortPhone = this.viewport?.mode === "compact" && (this.viewport?.height ?? Infinity) < 800 && !!this._landmarkCardAction();
+      const img = collapsed || shortPhone ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
       const hasImage = !!(img && img.complete && img.naturalWidth > 0);
       const cards = window.CanalRecallCards;
       const measure = (text, font) => {
@@ -7657,7 +7658,8 @@ ${register}` : detail,
         ...action ? { action: action.label } : {},
         // A finger, not a pointer: the pill is a 44 px tap target on a phone (#286).
         // Three body lines then, so the taller pill does not push the card over the bike (414×896, #286).
-        ...action && (this.viewport?.touch || this.viewport?.mode === "compact") ? { actionHeight: cards.TOUCH_ACTION_HEIGHT, ...collapsed ? {} : { maxBodyLines: 3 } } : {}
+        ...action && (this.viewport?.touch || this.viewport?.mode === "compact") ? { actionHeight: cards.TOUCH_ACTION_HEIGHT, ...collapsed ? {} : { maxBodyLines: 3 } } : {},
+        ...shortPhone ? { inlineAction: true } : {}
       }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
       const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) && canShowTeachingCard(this._teachingGate());
       const bottomLayout = window.CanalRecallUi.hudLayout({
@@ -7776,7 +7778,8 @@ ${lm.researchDetail}` : originalBody;
           cityName: city?.name || this._cityDisplayName?.() || "Amsterdam",
           provinceCaption: city?.provinceCaption || "",
           checklist: this._freeRideChecklistCaption?.(hood.name) || "",
-          stamped: !!hood.stamped
+          stamped: !!hood.stamped,
+          compact: this.viewport?.mode === "compact"
         },
         measure,
         window.CanalRecallUi.postcardWidth(this.viewport)
@@ -7797,11 +7800,12 @@ ${lm.researchDetail}` : originalBody;
       ctx.globalAlpha = Math.max(0, alpha);
       this.renderer.drawPostcard(ctx, card, cardX, cardY, hasImage && img ? img : null);
       if (hood.stamped) {
+        const seal = card.seal ?? { x: card.width - 46, y: card.height / 2, r: 34 };
         drawPassportStamp(
           ctx,
-          cardX + card.width - 46,
-          cardY + card.height / 2,
-          34,
+          cardX + seal.x,
+          cardY + seal.y,
+          seal.r,
           "Stamped",
           Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.25),
           window.CanalRecallUi.hudSurface.fontPlaque

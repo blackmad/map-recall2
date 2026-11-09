@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Short phones keep the bike in view",
+   "text": "On a short phone the drive-by card is now a single row with the Noticed button, so it no longer covers your bike. The results footer drops its optional items instead of cutting the Dutch line mid-list, and the STAMPED seal sits clear of long neighbourhood names on the postcard.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-phone-polish/driveby-390x664-after.jpg",
+     "alt": "A 390×664 phone: the one-row drive-by card with its Noticed button sits below the bike",
+     "caption": "The one-row card on a short phone."
+    },
+    {
+     "src": "ui/2026-11-09-phone-polish/arrival-nl-390x664-after.jpg",
+     "alt": "The Dutch arrival card on a 390×664 phone with its footer line complete",
+     "caption": "The Dutch footer fits."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Share a whole run",
    "text": "After a run, the run card has Share run: one picture of the whole run, every leg as one line, each stop a numbered dot, with the buurt, your stops, points and names. A stop you did not name stays a number.",
    "images": [

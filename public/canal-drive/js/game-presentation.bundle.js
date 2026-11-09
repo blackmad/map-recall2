@@ -9660,6 +9660,21 @@
     return key in CATALOGS.en ? t(key) : text.toUpperCase();
   }
 
+  // src/canalRecall/game/footerFit.ts
+  var FOOTER_SEPARATOR = " \xB7 ";
+  function fitFooterItems(items, maxWidth, measure) {
+    const kept = items.filter((item) => item.text);
+    const join = (list) => list.map((item) => item.text).join(FOOTER_SEPARATOR);
+    while (kept.length > 1 && measure(join(kept)) > maxWidth) {
+      let lowest = 0;
+      kept.forEach((item, index) => {
+        if (item.rank < kept[lowest].rank) lowest = index;
+      });
+      kept.splice(lowest, 1);
+    }
+    return join(kept);
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK2 = "#1f1c17";
   var MUTED2 = "#5f584d";
@@ -11056,13 +11071,13 @@
         const viewKey = `setup.view.${String(this.viewMode).replace(/-up$/, "")}`;
         const known = (key) => key in CATALOGS.en;
         const footerBits = [
-          known(difficultyKey) ? t(difficultyKey) : this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
-          profile.label,
-          known(viewKey) ? t(viewKey) : this.viewMode.replace("-", " ").replace(/^./, (c) => c.toUpperCase())
+          { text: known(difficultyKey) ? t(difficultyKey) : this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1), rank: 1 },
+          { text: profile.label, rank: 3 },
+          { text: known(viewKey) ? t(viewKey) : this.viewMode.replace("-", " ").replace(/^./, (c) => c.toUpperCase()), rank: 0 }
         ];
-        if (gamey && this.quizBestStreak >= 2) footerBits.push(t("ride.bestStreak", { count: this.quizBestStreak }));
+        if (gamey && this.quizBestStreak >= 2) footerBits.push({ text: t("ride.bestStreak", { count: this.quizBestStreak }), rank: 2 });
         const bestInFooter = level2 >= 1 && !!bestText;
-        if (bestInFooter) footerBits.unshift(bestText.replace(/^★  /, "\u2605 "));
+        if (bestInFooter) footerBits.unshift({ text: bestText.replace(/^★  /, "\u2605 "), rank: 9 });
         const statsPerRow = compact ? Math.ceil(stats.length / Math.ceil(stats.length / 3)) : stats.length;
         const statRows = Math.ceil(stats.length / statsPerRow);
         const ROW_H = level2 >= 2 ? 42 : 48;
@@ -11083,7 +11098,7 @@
           });
           ctx.fillStyle = MUTED2;
           ctx.font = "11px system-ui, sans-serif";
-          ctx.fillText(wrapText(ctx, footerBits.join("  \xB7  "), innerW, 1)[0], cx, top + statRows * ROW_H + 18);
+          ctx.fillText(fitFooterItems(footerBits, innerW, (text) => ctx.measureText(text).width), cx, top + statRows * ROW_H + 18);
         } });
         if (ribbon) {
           blocks2.push({ height: 86, rule: true, draw: (top) => {
