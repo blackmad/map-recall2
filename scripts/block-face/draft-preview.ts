@@ -6,15 +6,16 @@
  *        --out=docs/reports/type-draft-20261110 [--runs=2] [--root=<worktree>]
  *
  * Per source face of the draft (richest first) the longest run of consecutive family pands (street order, >= 3) becomes a
- * preview face `scripts/block-face/faces/_draft-<id>-<k>` (untracked; `_` faces are ignored by the buurt survey) with
- * staging/block-face/_draft-<id>-<k>/{strip.jpg,chunk.glb}; writes <out>/<id>-<k>.png (photo over render) and returns.
+ * preview face `scripts/block-face/faces/dr-<id>-<k>` (untracked; a run of its parent, which the buurt survey skips) with
+ * staging/block-face/dr-<id>-<k>/{strip.jpg,chunk.glb}; writes <out>/<id>-<k>.png (photo over render) and returns.
  * Houses are the plain type: no per-pand palette, crown, door or shop (the sheet shows what the family numbers draw).
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
-import {writeRunFace, runIntent} from './auto-place.ts';
+import {writeRunFace} from './auto-place.ts';
+import {runIntent} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import {compileFace} from './compile.ts';
 import {FACES, STAGING} from './intake.ts';
 
@@ -38,7 +39,7 @@ for (const face of faces) {
   for (const m of discovery.members as string[]) { if (fam.has(m)) { cur.push(m); if (cur.length > best.length) best = [...cur]; } else cur = []; }
   if (best.length < 3) { console.log(`${face}: longest family run ${best.length} < 3, skipped`); continue; }
   k++;
-  const runId = `_draft-${id}-${k}`.slice(0, 60), strip = readJson(path.join(dir, 'strip.json')), uses = readJson(path.join(dir, 'uses.json'));
+  const runId = `dr-${id}-${k}`.slice(0, 60), strip = readJson(path.join(dir, 'strip.json')), uses = readJson(path.join(dir, 'uses.json'));
   // the parent's strip image sits in the root worktree's staging; the run crop is written to this checkout's staging
   if (root !== process.cwd()) { fs.mkdirSync(path.join(STAGING, face), {recursive: true}); fs.copyFileSync(path.join(root, STAGING, face, 'strip.jpg'), path.join(STAGING, face, 'strip.jpg')); }
   await writeRunFace(face, runId, best, strip, uses, discovery);
@@ -54,10 +55,10 @@ for (const face of faces) {
   const rs = readJson(path.join(FACES, runId, 'strip.json')), W = rs.width, H = rs.height, x0 = rs.x0M, x1 = rs.x1M, top = rs.heightM;
   const [png] = await renderModels([{file: path.join(STAGING, runId, 'chunk.glb')}], [{eye: [(x0 + x1) / 2, top / 2, 200], target: [(x0 + x1) / 2, top / 2, 0], fov: 30, width: W, height: H, ortho: [-(x1 - x0) / 2, (x1 - x0) / 2, top / 2, -top / 2], background: '#9fb8cf', noGround: true}]);
   const model = await sharp(png).resize(W, H, {fit: 'fill'}).png().toBuffer(), photo = await sharp(rs.image).resize(W, H, {fit: 'fill'}).png().toBuffer();
-  const label = Buffer.from(`<svg width="${W}" height="34" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#222"/><text x="8" y="23" font-family="sans-serif" font-size="20" fill="#fff">${id} DRAFT on ${runId.replace('_draft-', '')} (${best.length} pands of ${face}, strip ${stripDate}) | top: photo, bottom: render | gates ${report.passed ? 'pass' : 'FAIL'}</text></svg>`);
+  const label = Buffer.from(`<svg width="${W}" height="34" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#222"/><text x="8" y="23" font-family="sans-serif" font-size="20" fill="#fff">${id} DRAFT on ${runId} (${best.length} pands of ${face}, strip ${stripDate}) | top: photo, bottom: render | gates ${report.gates.every((g: any) => g.pass) ? 'pass' : 'FAIL'}, audit exit ${report.audit?.exit ?? '?'}</text></svg>`);
   const sheet = await sharp({create: {width: W, height: H * 2 + 34, channels: 3, background: '#fff'}}).composite([{input: label, top: 0, left: 0}, {input: photo, top: 34, left: 0}, {input: model, top: 34 + H, left: 0}]).png().toBuffer();
   const out = path.join(outDir, `${id}-${k}.png`);
   await sharp(sheet).resize({width: Math.min(W, 2400)}).png().toFile(out);
-  console.log(`${out}  (${best.length} pands, gates ${report.passed ? 'pass' : 'FAIL'})`);
+  console.log(`${out}  (${best.length} pands, gates ${report.gates.every((g: any) => g.pass) ? 'pass' : 'FAIL'}, audit exit ${report.audit?.exit ?? '?'})`);
 }
 await closeRenderer();

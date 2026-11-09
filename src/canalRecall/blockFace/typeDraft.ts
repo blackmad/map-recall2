@@ -26,7 +26,15 @@ export const DRAFT = {
   yearBin: 5,
   /** Spread limits (interquartile range) over which a measured line is not a family line. Set from the spreads of the two authored-type self-tests (Kinkerstraat 75 pands, Jan Evertsenstraat 20) before any buurt was drafted. */
   maxColourSpread: 40,
+  /** Soft limits: a line over one is written and flagged `wide` for the review turn. Hard limits (twice the soft ones) omit it. */
   maxIqr: {storeyM: 0.6, groundM: 1.0, windowH: 0.2, headLine: 0.15, eavesM: 1.2, bays: 1},
+  hardFactor: 2,
+  /** Median opening-run width (m) over which the runs are fused lights, not windows. */
+  maxWindowRunM: 2.0,
+  /** Share of the counted pands that must show the modal window-column count. */
+  minBaysMode: 0.4,
+  /** Of the pands whose storey profile was read, the share showing the family's modal window-storey count (a plurality: a tree or an awning makes it 2 or 4). */
+  minProfileAgreement: 0.5,
 } as const;
 
 export interface PandRecord { pandId: string; face: string | null; builtYear: number | null; storeys3dbag: number | null; frontWidthM: number | null; eavesM: number | null }
@@ -83,7 +91,8 @@ export function colourStat(hexes: (string | null | undefined)[]): ColourStat | n
   return {n: v.length, hex: rgbHex(med), spread: round(q(sorted(dist), 0.5), 1), max: round(Math.max(...dist), 1)};
 }
 
-const mode = (v: number[]) => { const c = new Map<number, number>(); v.forEach(x => c.set(x, (c.get(x) ?? 0) + 1)); return [...c].sort((a, b) => b[1] - a[1] || a[0] - b[0])[0]; };
+/** Most frequent value (a tie takes the larger: a miscount loses a window, it does not add one) and its count. */
+const mode = (v: number[]) => { const c = new Map<number, number>(); v.forEach(x => c.set(x, (c.get(x) ?? 0) + 1)); return [...c].sort((a, b) => b[1] - a[1] || b[0] - a[0])[0]; };
 
 /** Frontage width band label (the same bands everywhere: survey listing, clustering, `match.baysByWidth`). */
 export function widthBand(w: number, bands: readonly number[] = DRAFT.widthBands): string {
@@ -124,14 +133,14 @@ export function clusterFamilies(pands: PandRecord[], o: {yearBin?: number; befor
 /**
  * Per-storey reading from an opening mask (`measureFacade` mask: 255 unusable, opening cells per `isOpen`), row 0 at
  * `topM`. The share of opening cells per row is smoothed over 0.3 m; rows above half the way from its 10th to its 90th
- * percentile, between `fromM` (the top of the ground storey, 4.4 m) and `topMarginM` under the eaves, are window rows;
+ * percentile (unsmoothed: a 0.2 m lintel gap is a storey boundary), between `fromM` (3.7 m: the ground storey's top, the strip's ground reads up to 0.3 m off) and `topMarginM` under the eaves, are window rows;
  * runs closer than `mergeM` (a transom) are one window, and a run of at least `minRunM` is one storey's windows. The
  * number of runs is the number of window storeys above the ground storey (the 3DBAG count includes an attic the
  * windows do not show); 2..6 runs or the pand is not read (null). Floor lines sit midway between a head and the sill
  * above; the first floor line is one median half-gap under the lowest sill; the last storey runs to the eaves.
  */
-export function storeyProfile(a: {mask: ArrayLike<number>; cols: number; rows: number; cell: number; topM: number; eavesM: number; isOpen: (v: number) => boolean; fromM?: number; topMarginM?: number; minRunM?: number; mergeM?: number; diag?: {why?: string; runs?: number}}): StoreyProfile | null {
-  const {cols, rows, cell} = a, fromM = a.fromM ?? 4.4, topMargin = a.topMarginM ?? 0.7, minRun = a.minRunM ?? 0.6, merge = a.mergeM ?? 0.4;
+export function storeyProfile(a: {mask: ArrayLike<number>; cols: number; rows: number; cell: number; topM: number; eavesM: number; isOpen: (v: number) => boolean; fromM?: number; topMarginM?: number; minRunM?: number; mergeM?: number; smooth?: number; diag?: {why?: string; runs?: number}}): StoreyProfile | null {
+  const {cols, rows, cell} = a, fromM = a.fromM ?? 3.7, topMargin = a.topMarginM ?? 0.7, minRun = a.minRunM ?? 0.6, merge = a.mergeM ?? 0.3;
   const no = (why: string) => { if (a.diag) a.diag.why = why; return null; };
   if (cols < 4) return no('narrow');
   const c0 = Math.floor(cols * 0.05), c1 = cols - c0, raw: number[] = [], vOf = (j: number) => a.topM - (j + 0.5) * cell;
@@ -140,7 +149,8 @@ export function storeyProfile(a: {mask: ArrayLike<number>; cols: number; rows: n
     for (let i = c0; i < c1; i++) { const m = a.mask[j * cols + i]; if (m === 255) continue; u++; if (a.isOpen(m)) o++; }
     raw.push(u >= (c1 - c0) * 0.4 ? o / u : NaN);
   }
-  const prof = raw.map((_, j) => { let s = 0, n = 0; for (let k = -1; k <= 1; k++) { const v = raw[j + k]; if (v !== undefined && !Number.isNaN(v)) { s += v; n++; } } return n ? s / n : NaN; });
+  const sm = a.smooth ?? 0;
+  const prof = raw.map((_, j) => { let s = 0, n = 0; for (let k = -sm; k <= sm; k++) { const v = raw[j + k]; if (v !== undefined && !Number.isNaN(v)) { s += v; n++; } } return n ? s / n : NaN; });
   const inBody = (j: number) => vOf(j) >= fromM && vOf(j) <= a.eavesM - topMargin;
   const body = prof.filter((v, j) => !Number.isNaN(v) && inBody(j));
   if (body.length < 10) return no('unusable body rows');
@@ -175,7 +185,28 @@ export function storeyProfile(a: {mask: ArrayLike<number>; cols: number; rows: n
   };
 }
 
-export class DraftRefused extends Error { constructor(public reasons: string[]) { super(`draft refused: ${reasons.join('; ')}`); } }
+export class DraftRefused extends Error { constructor(public reasons: string[], public code: 'size' | 'faces' | 'wall' | 'other' = 'other') { super(`draft refused: ${reasons.join('; ')}`); } }
+
+/**
+ * Two wall colours in one family (a row's dark brown and light brick): 2-means on the per-pand wall RGB, seeded with the
+ * darkest and lightest wall, 20 rounds. Returns [dark, light] sample lists; both are drafted as families of their own
+ * (each must still pass the size, face and spread rules), never merged back. null when fewer than 2 colours are measured.
+ */
+export function splitByWall(samples: PandMeasure[]): {dark: PandMeasure[]; light: PandMeasure[]} | null {
+  const withWall = samples.filter(s => s.palette.wall), luma = (h: string) => { const [r, g, b] = hexRgb(h); return 0.3 * r + 0.59 * g + 0.11 * b; };
+  if (withWall.length < 2) return null;
+  const byLuma = [...withWall].sort((a, b) => luma(a.palette.wall!) - luma(b.palette.wall!));
+  let c0: number[] = hexRgb(byLuma[0].palette.wall!), c1: number[] = hexRgb(byLuma[byLuma.length - 1].palette.wall!), a: PandMeasure[] = [], b: PandMeasure[] = [];
+  const d = (x: number[], y: number[]) => Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]);
+  for (let i = 0; i < 20; i++) {
+    a = []; b = [];
+    for (const s of withWall) (d(hexRgb(s.palette.wall!), c0) <= d(hexRgb(s.palette.wall!), c1) ? a : b).push(s);
+    if (!a.length || !b.length) return null;
+    const mean = (l: PandMeasure[]) => [0, 1, 2].map(k => l.reduce((t, s) => t + hexRgb(s.palette.wall!)[k], 0) / l.length);
+    c0 = mean(a); c1 = mean(b);
+  }
+  return {dark: a, light: b};
+}
 
 export interface DraftOptions { id: string; district: string; buurt: string; family: FamilyKey; minSamples?: number; minFaces?: number; minShare?: number; generatedAt?: string }
 export interface DraftBlock {
@@ -200,7 +231,7 @@ export function draftType(samples: PandMeasure[], o: DraftOptions): DraftedType 
   const reasons: string[] = [];
   if (samples.length < minSamples) reasons.push(`${samples.length} measured pands < ${minSamples}`);
   if (Object.keys(faces).length < minFaces) reasons.push(`${Object.keys(faces).length} block faces < ${minFaces} (a median of one or two faces is those faces)`);
-  if (reasons.length) throw new DraftRefused(reasons);
+  if (reasons.length) throw new DraftRefused(reasons, samples.length < minSamples ? 'size' : 'faces');
 
   const N = samples.length, fields: Record<string, Provenance> = {}, omitted: Record<string, string> = {}, observations: Record<string, Provenance> = {};
   const unmeasured = ['body.windows (pane layout)', 'body.windowHead (head kind: flat / segmental / round)', 'body.cornice kind (simple is a placeholder; presence is measured)', 'crowns (kind, dormers, gable: only the skyline rise is measured)', 'grounds (door side, shop; the ground storey is not read)', 'roof.material (3DBAG gives the shape, not the covering)', 'palettes.*.door'];
@@ -228,20 +259,30 @@ export function draftType(samples: PandMeasure[], o: DraftOptions): DraftedType 
   for (const s of samples) if (s.windowCols) { const b = widthBand(s.widthM); (bayBands.get(b) ?? bayBands.set(b, []).get(b)!).push(s.windowCols); }
   const allCols = stat(samples.map(s => s.windowCols)), pitchCols = stat(samples.map(s => s.pitchColumns));
   let bays: number | undefined;
-  if (allCols && allCols.n / N >= minShare) {
-    bays = Math.round(allCols.median);
-    fields['body.bays'] = {source: `window columns counted on the opening mask (${allCols.n} of ${N} pands)`, stat: allCols, note: iqr(allCols) > DRAFT.maxIqr.bays ? 'spread over one bay: the family may be two families (split by width or year)' : undefined};
-  } else omitted['body.bays'] = `window columns read on ${allCols?.n ?? 0} of ${N} pands (< ${minShare * 100} %)`;
+  const colWidth = stat(samples.map(s => s.windowWidthM));
+  // Window columns are runs of opening cells: lights fused by thin frames (a three-light window, a stair window beside a
+  // wide one) read as one wide run. A family whose counts spread by more than one, or whose runs are wider than a
+  // window, is not counted: the bays stay the placeholder (the autocorrelated pitch when most pands gave one) for the review turn.
+  let maskOk = false;
+  const fused = !!colWidth && colWidth.median > DRAFT.maxWindowRunM;
+  const colsMode = allCols ? mode(samples.map(s => s.windowCols).filter((x): x is number => !!x)) : null, modeShare = allCols && colsMode ? colsMode[1] / allCols.n : 0;
+  if (allCols && colsMode && allCols.n / N >= minShare && modeShare >= DRAFT.minBaysMode && !fused) {
+    bays = colsMode[0]; maskOk = true;
+    fields['body.bays'] = {source: `most frequent window-column count on the opening mask (${allCols.n} of ${N} pands; a miscount loses a window, so the mode, not the median)`, stat: allCols, share: round(modeShare), note: `counts ${allCols.p25}/${allCols.median}/${allCols.p75} (quartiles), ${bays} on ${round(modeShare * 100)} % of the counted pands`};
+  } else {
+    omitted['body.bays'] = allCols && allCols.n / N >= minShare ? `window column counts disagree or are fused: modal count ${colsMode?.[0]} on ${round(modeShare * 100)} % (limit ${DRAFT.minBaysMode * 100} %), median run width ${colWidth?.median ?? '-'} m (limit ${DRAFT.maxWindowRunM}), quartiles ${allCols.p25}/${allCols.median}/${allCols.p75}` : `window columns read on ${allCols?.n ?? 0} of ${N} pands (< ${minShare * 100} %)`;
+    if (pitchCols && pitchCols.n / N >= 0.4 && iqr(pitchCols) <= DRAFT.maxIqr.bays) { bays = Math.round(pitchCols.median); fields['body.bays'] = {source: `autocorrelated bay pitch (measureFacade columns), ${pitchCols.n} of ${N} pands; the opening-mask count was not usable`, stat: pitchCols}; }
+  }
   if (pitchCols) observations['autocorrelated bay columns'] = {source: `measureFacade pitch, ${pitchCols.n} pands`, stat: pitchCols};
   const baysByWidth: {maxWidthM: number; bays: number}[] = [];
   // one entry per width band with >= 3 counted pands, ascending; the edge of a band is its upper bound
   const edges = [...DRAFT.widthBands, 99];
   for (const [i, edge] of edges.entries()) {
     const v = bayBands.get(widthBand(i === 0 ? DRAFT.widthBands[0] - 0.01 : edge === 99 ? DRAFT.widthBands[DRAFT.widthBands.length - 1] + 0.01 : edge - 0.01));
-    if (v && v.length >= 3) baysByWidth.push({maxWidthM: edge, bays: Math.round(stat(v)!.median)});
+    if (v && v.length >= 3) baysByWidth.push({maxWidthM: edge, bays: mode(v)[0]});
   }
   // collapse equal neighbours; the last entry must reach 99
-  const bw = baysByWidth.filter((b, i) => i === baysByWidth.length - 1 || baysByWidth[i + 1].bays !== b.bays);
+  const bw = !maskOk ? [] : baysByWidth.filter((b, i) => i === baysByWidth.length - 1 || baysByWidth[i + 1].bays !== b.bays);
   if (bw.length) bw[bw.length - 1] = {...bw[bw.length - 1], maxWidthM: 99};
 
   // --- storey lines and windows ---
@@ -250,27 +291,28 @@ export function draftType(samples: PandMeasure[], o: DraftOptions): DraftedType 
   let storeyHeights: number[] | undefined, windowHeights: number[] | undefined, headLines: number[] | undefined;
   const profiled = samples.filter(s => s.storey).length;
   // read on at least 40 % of the family, and the storey count the windows show agrees on >= minShare of those read
-  if (profiles.length / N >= 0.4 && profiles.length / Math.max(1, profiled) >= minShare) {
+  if (profiles.length / N >= 0.4 && profiles.length / Math.max(1, profiled) >= DRAFT.minProfileAgreement && profiles.length >= 8) {
     const floors = Array.from({length: upper + 1}, (_, i) => stat(profiles.map(p => p.floorM[i]))!);
     const hs = Array.from({length: upper}, (_, i) => stat(profiles.map(p => p.floorM[i + 1] - p.floorM[i]))!);
     const ground = floors[0];
-    const spreadOk = hs.every(h => iqr(h) <= DRAFT.maxIqr.storeyM) && iqr(ground) <= DRAFT.maxIqr.groundM;
+    const hard = DRAFT.hardFactor, spreadOk = hs.every(h => iqr(h) <= DRAFT.maxIqr.storeyM * hard) && iqr(ground) <= DRAFT.maxIqr.groundM * hard;
+    const wideH = hs.some(h => iqr(h) > DRAFT.maxIqr.storeyM) || iqr(ground) > DRAFT.maxIqr.groundM;
     if (spreadOk) {
       storeyHeights = [round(ground.median), ...hs.map(h => round(h.median))];
-      fields['body.storeyHeights'] = {source: `storey profile on the opening mask: ground = first floor line, upper = floor-to-floor, last = to the eaves (${profiles.length} of ${N} pands; ${profiled} read, the rest show another storey count)`, stat: stat(profiles.map(p => p.floorM[1] - p.floorM[0]))!, note: `per storey medians (m): ${storeyHeights.join(', ')}; ground ${ground.median} (IQR ${round(iqr(ground))})`};
-    } else omitted['body.storeyHeights'] = `storey IQR over the limit (${DRAFT.maxIqr.storeyM} m, ground ${DRAFT.maxIqr.groundM} m): ground ${round(iqr(ground))}, upper ${hs.map(h => round(iqr(h))).join('/')}; medians were ${[ground, ...hs].map(h => h.median).join('/')} m`;
+      fields['body.storeyHeights'] = {source: `storey profile on the opening mask: ground = first floor line, upper = floor-to-floor, last = to the eaves (${profiles.length} of ${N} pands; ${profiled} read, the rest show another storey count)`, stat: stat(profiles.map(p => p.floorM[1] - p.floorM[0]))!, note: `per storey medians (m): ${storeyHeights.join(', ')}; IQR ground ${round(iqr(ground))}, upper ${hs.map(h => round(iqr(h))).join('/')}${wideH ? ' - WIDE: over the soft limit, check against the photo' : ''}`};
+    } else omitted['body.storeyHeights'] = `storey IQR over the hard limit (${DRAFT.maxIqr.storeyM * hard} m, ground ${DRAFT.maxIqr.groundM * hard} m): ground ${round(iqr(ground))}, upper ${hs.map(h => round(iqr(h))).join('/')}; medians were ${[ground, ...hs].map(h => h.median).join('/')} m`;
     const ws = Array.from({length: upper}, (_, i) => stat(profiles.map(p => p.windowShare[i]))!), hl = Array.from({length: upper}, (_, i) => stat(profiles.map(p => p.headShare[i]))!);
-    if (ws.every(w => iqr(w) <= DRAFT.maxIqr.windowH)) {
+    if (ws.every(w => iqr(w) <= DRAFT.maxIqr.windowH * hard)) {
       // The ground storey is a shop in these rows and is not read: it repeats the first upper storey (listed as unmeasured).
       windowHeights = [ws[0].median, ...ws.map(w => w.median)];
-      fields['body.windowHeights'] = {source: `window row extent / storey height per storey (${profiles.length} of ${N} pands)`, stat: ws[0], note: `per upper storey medians ${ws.map(w => w.median).join(', ')}; ground entry repeats storey 1`};
+      fields['body.windowHeights'] = {source: `window row extent / storey height per storey (${profiles.length} of ${N} pands)`, stat: ws[0], note: `per upper storey medians ${ws.map(w => w.median).join(', ')}, IQR ${ws.map(w => round(iqr(w))).join('/')}${ws.some(w => iqr(w) > DRAFT.maxIqr.windowH) ? ' - WIDE: over the soft limit' : ''}; ground entry repeats storey 1`};
       unmeasured.push('body.windowHeights[0] (ground storey repeats the first upper storey)');
-    } else omitted['body.windowHeights'] = `window share IQR over ${DRAFT.maxIqr.windowH} (${ws.map(w => round(iqr(w))).join('/')}); medians were ${ws.map(w => w.median).join('/')}`;
-    if (windowHeights && hl.every(h => iqr(h) <= DRAFT.maxIqr.headLine)) {
+    } else omitted['body.windowHeights'] = `window share IQR over the hard limit ${DRAFT.maxIqr.windowH * hard} (${ws.map(w => round(iqr(w))).join('/')}); medians were ${ws.map(w => w.median).join('/')}`;
+    if (windowHeights && hl.every(h => iqr(h) <= DRAFT.maxIqr.headLine * hard)) {
       headLines = [hl[0].median, ...hl.map(h => h.median)];
-      fields['body.headLines'] = {source: `window head height / storey height per storey (${profiles.length} of ${N} pands)`, stat: hl[0], note: `per upper storey medians ${hl.map(h => h.median).join(', ')}; ground entry repeats storey 1`};
-    } else if (windowHeights) omitted['body.headLines'] = `head line IQR over ${DRAFT.maxIqr.headLine} (${hl.map(h => round(iqr(h))).join('/')}); medians were ${hl.map(h => h.median).join('/')}`;
-  } else omitted['body.storeyHeights/windowHeights/headLines'] = `storey profile: ${profiled} of ${N} pands read, ${profiles.length} agree on ${storeys} storeys (needs >= 40 % of the family and >= ${minShare * 100} % of those read)`;
+      fields['body.headLines'] = {source: `window head height / storey height per storey (${profiles.length} of ${N} pands)`, stat: hl[0], note: `per upper storey medians ${hl.map(h => h.median).join(', ')}, IQR ${hl.map(h => round(iqr(h))).join('/')}${hl.some(h => iqr(h) > DRAFT.maxIqr.headLine) ? ' - WIDE: over the soft limit' : ''}; ground entry repeats storey 1`};
+    } else if (windowHeights) omitted['body.headLines'] = `head line IQR over the hard limit ${DRAFT.maxIqr.headLine * hard} (${hl.map(h => round(iqr(h))).join('/')}); medians were ${hl.map(h => h.median).join('/')}`;
+  } else omitted['body.storeyHeights/windowHeights/headLines'] = `storey profile: ${profiled} of ${N} pands read, ${profiles.length} agree on ${storeys} storeys (needs >= 8 pands, >= 40 % of the family and >= ${DRAFT.minProfileAgreement * 100} % of those read)`;
   const ww = stat(samples.map(s => s.windowWidthM));
   if (ww) observations['window width (m)'] = {source: `median width of the opening-column runs, ${ww.n} pands`, stat: ww};
   const gl = stat(samples.map(s => s.glazing));
@@ -302,7 +344,9 @@ export function draftType(samples: PandMeasure[], o: DraftOptions): DraftedType 
   put('frame', frame, 'median per-pand frame colour');
   put('stone', accent ?? band, `median per-pand ${accent ? 'accent' : 'band'} colour`);
   put('cornice', cornice, 'median per-pand cornice colour');
-  if (!palette.brick) throw new DraftRefused([`the wall colour is not a family colour: ${omitted['palettes.measured.brick']}`]);
+  // the frame colour is required by the kit: an unmeasured one is a neutral placeholder, listed for the review turn
+  if (!palette.frame) { palette.frame = '#cfcbbf'; unmeasured.push('palettes.measured.frame (placeholder #cfcbbf: no usable frame colour measured)'); }
+  if (!palette.brick) throw new DraftRefused([`the wall colour is not a family colour: ${omitted['palettes.measured.brick']}`], 'wall');
   if (stuccoShare >= 0.5) observations['stucco'] = {source: 'stripPalette stucco flag', share: round(stuccoShare), note: 'the wall is painted or stuccoed on most pands: check wallMaterial'};
   const corniceShare = samples.filter(s => s.palette.cornice).length / N;
 
@@ -312,7 +356,7 @@ export function draftType(samples: PandMeasure[], o: DraftOptions): DraftedType 
   if (storeyHeights) body.storeyHeights = storeyHeights;
   if (windowHeights) body.windowHeights = windowHeights;
   if (headLines) body.headLines = headLines;
-  if (!bays) unmeasured.push('body.bays (placeholder 3)');
+  if (!bays) unmeasured.push('body.bays (placeholder 3: the window columns were not countable)');
 
   const idShort = `${o.family.yearFrom}-${o.family.yearTo}, ${o.family.storeys} storeys, ${o.family.width} m wide`;
   const type: DraftedType = {
@@ -328,8 +372,17 @@ export function draftType(samples: PandMeasure[], o: DraftOptions): DraftedType 
     body: body as any,
     crowns: {plain: {gable: 'cornice', note: `placeholder: ${crowned.length} of ${N} pands show a skyline crown over the cornice (draft.observations); the crown kind is for the review turn`}} as any,
     palettes: {measured: palette} as any,
-    roof: {material: roofShape && roofShape[0] === 0 ? 'bitumen' : 'black-tile'} as any,
-    rhythm: {bays: bays ? `${bays} window axes (${allCols!.n} of ${N} pands counted)` : 'unread', photoRows: [1, ...Array(upper).fill(bays ?? 3)], photoGroundRows: 1},
+    // Placeholder roof as the authored rows carry it (a low front slope behind the cornice, source "front"): the strip's skyline
+    // shows the cornice and dormers, not a roof face; the 3DBAG ridge is not the front's roof (roofs from the front).
+    roof: {material: roofShape && roofShape[0] === 0 ? 'bitumen' : 'slate', source: 'front', rise: 0.25, pitchDeg: 45, evidence: `draft placeholder: ${N} pands, 3DBAG roof shape ${roofShape ? (roofShape[0] === 0 ? 'horizontal' : 'slanted') : 'unread'}; the covering and pitch are not measured`} as any,
+    rhythm: {
+      bays: bays ? `${bays} window axes (${fields['body.bays'].source})` : 'unread',
+      windowsPerStorey: `ground: not read | upper storeys: ${bays ?? '?'} each`,
+      symmetry: 'not measured (draft)', groundFloor: 'not measured (draft): the ground storey is not read', signage: 'not measured (draft)',
+      roofline: crowned.length ? `${crowned.length} of ${N} pands show a skyline crown over the cornice (kind not measured)` : 'cornice line only (no crown read on the skyline)',
+      citation: `drafted from ${N} pand spans of ${Object.keys(faces).length} strips: ${GENERATOR}`,
+      photoRows: [1, ...Array(upper).fill(bays ?? 3)], photoGroundRows: 1,
+    },
     evidence: Object.entries(faces).map(([face, n]) => ({face, pands: samples.filter(s => s.face === face).map(s => s.pandId.slice(-6)), citation: `drafted from ${n} pand spans of the ${face} strip (draft.fields carry the medians)`})),
     notes: [`Draft, not installed. Medians over ${N} pands; refused below ${minSamples} pands or ${minFaces} faces.`],
     draft: {generator: GENERATOR, generatedAt: o.generatedAt ?? new Date().toISOString().slice(0, 10), buurt: o.buurt, family: familyId(o.family), n: N, faces, pands: samples.map(s => s.pandId), fields, omitted, unmeasured, observations},

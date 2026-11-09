@@ -21,7 +21,7 @@ import sharp from 'sharp';
 import {isOpeningCell, measureFacade, type FacadeImage} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
-import {clusterFamilies, DRAFT, draftType, DraftRefused, inFamily, parseFamilyId, stat, storeyProfile, type PandMeasure, type PandRecord} from '../../src/canalRecall/blockFace/typeDraft.ts';
+import {clusterFamilies, DRAFT, draftType, DraftRefused, inFamily, parseFamilyId, splitByWall, stat, storeyProfile, type PandMeasure, type PandRecord} from '../../src/canalRecall/blockFace/typeDraft.ts';
 import {intake} from './intake.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -177,14 +177,26 @@ async function main() {
     console.log(`${face}: ${ms.length} family pands measured, window columns ${ms.map(m => m.windowCols ?? '-').join(',')}`);
     samples.push(...ms);
   }
-  try {
-    const type = draftType(samples, {id, district, buurt: doc.buurt, family: key});
-    const out = path.join('scripts/block-face/drafts', district, `${id}.json`);
+  const write = (ss: PandMeasure[], tid: string) => {
+    const type = draftType(ss, {id: tid, district, buurt: doc.buurt, family: key});
+    const out = path.join('scripts/block-face/drafts', district, `${tid}.json`);
     fs.mkdirSync(path.dirname(out), {recursive: true});
     fs.writeFileSync(out, JSON.stringify(type, null, 1) + '\n');
+    // the measures behind the draft, so the numbers can be re-drafted without strips
+    fs.writeFileSync(path.join('scripts/block-face/drafts', district, `${tid}.measures.json`), JSON.stringify({family: famId, buurt: slug, measures: ss}) + '\n');
     console.log(`drafted ${out}: ${type.draft.n} pands on ${Object.keys(type.draft.faces).length} faces; omitted ${Object.keys(type.draft.omitted).join(', ') || 'none'}`);
-  } catch (e) {
-    if (e instanceof DraftRefused) { console.log(`REFUSED ${famId}: ${e.reasons.join('; ')}`); process.exitCode = 2; } else throw e;
+  };
+  try { write(samples, id); }
+  catch (e) {
+    if (!(e instanceof DraftRefused)) throw e;
+    console.log(`REFUSED ${famId}: ${e.reasons.join('; ')}`);
+    if (e.code !== 'wall' || has('no-split')) { process.exitCode = 2; return; }
+    // two wall colours in one family: each colour is a family of its own, drafted only if it passes every rule itself
+    const sp = splitByWall(samples);
+    if (!sp) { process.exitCode = 2; return; }
+    for (const [name, part] of [['dark', sp.dark], ['light', sp.light]] as const) {
+      try { write(part, `${id}-${name}`); } catch (e2) { if (e2 instanceof DraftRefused) console.log(`  ${name} wall: ${part.length} pands: REFUSED ${e2.reasons.join('; ')}`); else throw e2; }
+    }
   }
 }
 
