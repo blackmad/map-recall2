@@ -618,7 +618,7 @@ not run it.
 
 **White roof near Nieuwe Westerdokstraat (user asked 2026-11-01, open):** not identified; every wedge pand around Haarlemmerplein and the Westerdok reads slate in roof-facts, no near-white `roof:colour` tag there, the two OSM-only wedges fall to the grey prior. Flat lids go white through the `white-membrane` slot (5,661 pands citywide, `palette.ts` band #d9d9d3, luma to 228) or a near-white tag (667 features); if that is the cause, cap the slot near #c4c4be and pin the pand. Needs the rider's position.
 
-**Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
+**Large-recipe roofs after the tidy step (#87).** `roof.tidy` is merged opt-in (HISTORY 2026-11-09) and too mild for the flagged houses. Open: enable it with evidence on the spike-heavy houses (Westerdok 24 spikes, Hotel Arena 13) after a card review, then fit-golden/large-mesh hashes `--write`, re-export, covers; Van Eeghenstraat 97-101 needs a front-measured pitched roof behind the step gables; Warmoesstraat garage needs a measured deck-level override; slivers stay separate triangles until a plane-merge/re-triangulate step exists.
 
 **Usage pause 2026-10-25 (95 % weekly).** Lanes in flight, their state, the
 next step for each and the integration checklist: `docs/handoffs/inflight-20261025.md`.
