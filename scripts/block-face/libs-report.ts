@@ -38,8 +38,9 @@ if (process.argv[1]?.endsWith('libs-report.ts')) {
   const tot = {faces: 0, pands: 0, vetoed: 0, held: 0, placed: 0, wouldPlace: 0, wouldPlacePands: 0};
   const hist = new Map<string, number>(), lines: string[] = [];
   const seen = new Set<string>();
+  const only = arg('only')?.split(',');
   for (const r of rep.rows as any[]) {
-    if (r.status === 'skipped') continue;
+    if (r.status === 'skipped' || (only && !only.includes(r.face))) continue;
     const apFile = path.join(root, 'scripts/block-face/faces', r.face, 'auto-place.json');
     const ap = fs.existsSync(apFile) ? JSON.parse(fs.readFileSync(apFile, 'utf8')) : null;
     const would = String(r.status).startsWith('passed') || r.status === 'installed';

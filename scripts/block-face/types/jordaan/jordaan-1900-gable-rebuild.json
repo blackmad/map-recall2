@@ -21,8 +21,8 @@
   ],
   "yearSlack": 0,
   "eavesM": [
-   8.5,
-   13.5
+   7.5,
+   9.3
   ],
   "roof": "pitched",
   "stucco": false,
@@ -51,7 +51,7 @@
     ]
    }
   },
-  "note": "Held-pand cluster, Bloemgrachtbuurt batch 2026-10-29 (scripts/block-face/faces/*/auto-place.json, skyline read under clean sky): narrow gable pands built 1871-1910 (16 pands, 11 faces: eaves median 10.9 m, width 4.7 m, crown rise 3.2 m, top 0.5 m) and after 1910 (16 pands, 10 faces: eaves 11.3 m, width 5.2 m, rise 2.8 m, top 0.4 m). They share the neck-gable's body (3.6-6.6 m, 3-4 storeys); only the BAG year kept them out. Bell/point crown only: a neck gable (top 0.9-3.0 m) is not in the cluster. Likeness of the shared body is NOT verified here; the Opus strip review judges it",
+  "note": "Held-pand cluster, Bloemgrachtbuurt batch 2026-10-29 (scripts/block-face/faces/*/auto-place.json, skyline read under clean sky): narrow gable pands built 1871-1910 (16 pands, 11 faces: eaves median 10.9 m, width 4.7 m, crown rise 3.2 m, top 0.5 m) and after 1910 (16 pands, 10 faces: eaves 11.3 m, width 5.2 m, rise 2.8 m, top 0.4 m). They share the neck-gable's body (3.6-6.6 m, 3-4 storeys); only the BAG year kept them out. Bell/point crown only: a neck gable (top 0.9-3.0 m) is not in the cluster. Likeness of the shared body is NOT verified here; the Opus strip review judges it. match.eavesM [7.5, 9.3] only sets the storey pitch (mid / 3 storeys = 2.8 m) so that 3 storeys at 7.6-9.2 m and 4 at 10-11.5 m (pitch 2.6-2.9 m) both score as this type; the cluster eaves run 7.6-13.1 m",
   "mirrorForDoor": "left"
  },
  "body": {
