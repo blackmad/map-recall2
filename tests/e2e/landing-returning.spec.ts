@@ -190,3 +190,34 @@ for (const date of ['2026-11-10', '2026-11-12', '2026-12-24', '2027-03-01']) {
     await page.screenshot({ path: `${shots}/daily-${date}-arrived-${info.project.name}.png` });
   });
 }
+
+// R2-11 (#304): the What's New toast on a phone wraps instead of truncating, its link is a 44 px target,
+// and it covers neither the landing heading nor the returning cards.
+test('the What’s New toast fits a 390x664 phone: wrapped text, 44 px link, covers nothing', async ({ page }, info) => {
+  test.skip(info.project.name !== 'iphone', 'the phone layout');
+  await page.setViewportSize({ width: 390, height: 664 });
+  await seed(page, 'returning');
+  await page.addInitScript(() => { try { localStorage.setItem('canalRecall.returningPlayer.v1', '1'); localStorage.removeItem('canalRecall.whatsNewSeen.v1'); } catch { /* */ } });
+  await page.goto(LANDING);
+  const toast = page.locator('#whats-new-toast');
+  await expect(toast).toBeVisible();
+  await page.waitForTimeout(400);
+  const m = await page.evaluate(() => {
+    const r = (el: Element | null) => { const b = el?.getBoundingClientRect(); return b ? { x: b.x, y: b.y, w: b.width, h: b.height, bottom: b.bottom, right: b.right } : null; };
+    const text = document.querySelector('.whats-new-toast-text') as HTMLElement;
+    const hits = (sel: string) => { const a = r(document.querySelector('#whats-new-toast')); const b = r(document.querySelector(sel)); return !!a && !!b && a.y < b.bottom && a.bottom > b.y && a.x < b.right && a.right > b.x; };
+    return {
+      toast: r(document.querySelector('#whats-new-toast')), link: r(document.querySelector('.whats-new-toast a')), close: r(document.querySelector('.whats-new-toast button')),
+      textClipped: text.scrollWidth > text.clientWidth + 1 || text.scrollHeight > text.clientHeight + 1,
+      overH1: hits('h1'), overCards: hits('#landing-returning-slot'), vw: innerWidth, vh: innerHeight, scrollX: document.documentElement.scrollWidth,
+    };
+  });
+  console.log('R2-11 toast', JSON.stringify(m));
+  if (process.env.R2C_SHOTS) await page.screenshot({ path: `${process.env.R2C_SHOTS}/toast-phone.png` });
+  expect(m.link!.h, 'link height').toBeGreaterThanOrEqual(44);
+  expect(m.close!.h, 'close height').toBeGreaterThanOrEqual(44);
+  expect(m.textClipped, 'title not clipped').toBe(false);
+  expect(m.overH1, 'covers the heading').toBe(false);
+  expect(m.overCards, 'covers the returning cards').toBe(false);
+  expect(m.scrollX).toBeLessThanOrEqual(m.vw);
+});

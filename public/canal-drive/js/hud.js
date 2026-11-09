@@ -414,11 +414,15 @@ class HUD {
     ctx.font = this._font(700, 11, surface.fontMono);
     const tallyWidth = ctx.measureText(tally + streakText).width;
     let destWidth = 0;
-    const destName = destination?.name ? hudText('hud.toDestination', { name: destination.name }) : '';
+    let destName = destination?.name ? hudText('hud.toDestination', { name: destination.name }) : '';
+    // R2-5 (#304): drop whole items, never an ellipsis mid-word. The destination keeps what the score leaves;
+    // the neighbourhood is shown only when it fits whole beside both; a destination that still does not fit
+    // loses its "to" prefix before it is cut.
+    ctx.font = this._font(500, 12, surface.fontUi);
+    const roomForDest = Math.max(60, inner - tallyWidth - 14);
+    if (destName && ctx.measureText(destName).width > roomForDest && ctx.measureText(destination.name).width <= roomForDest) destName = destination.name;
     if (destName) {
-      ctx.font = this._font(500, 12, surface.fontUi);
-      const room = Math.max(60, inner * 0.45);
-      const fitted = this._fit(ctx, destName, room);
+      const fitted = this._fit(ctx, destName, roomForDest);
       destWidth = ctx.measureText(fitted).width + 10;
       ctx.fillStyle = surface.inkMuted;
       ctx.textAlign = 'right';
@@ -429,10 +433,10 @@ class HUD {
     if (neighborhood) {
       ctx.font = this._font(500, 12, surface.fontUi);
       ctx.fillStyle = surface.inkMuted;
-      const hood = this._fit(ctx, neighborhood, Math.max(0, inner - destWidth - tallyWidth - 14));
-      if (hood && hood !== '…') {
-        ctx.fillText(`${hood} · `, x, y);
-        x += ctx.measureText(`${hood} · `).width;
+      const hoodText = `${neighborhood} · `;
+      if (ctx.measureText(hoodText).width <= inner - destWidth - tallyWidth - 14) {
+        ctx.fillText(hoodText, x, y);
+        x += ctx.measureText(hoodText).width;
       }
     }
     ctx.font = this._font(700, 11, surface.fontMono);

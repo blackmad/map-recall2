@@ -66,6 +66,13 @@ const TOAST_CSS = `
 .whats-new-toast a { flex: none; color: #fff; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .whats-new-toast button { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border: 0; border-radius: 50%; background: rgba(255,255,255,.14); color: #fff; font: 700 18px/1 system-ui, sans-serif; cursor: pointer; }
 .whats-new-toast button:hover, .whats-new-toast button:focus-visible { background: rgba(255,255,255,.28); }
+/* A phone (R2-11, #304): an in-flow banner above the page, so it covers nothing; the title wraps; both targets are 44 px. */
+@media (max-width: 600px), (pointer: coarse) {
+  .whats-new-toast { position: relative; left: auto; bottom: auto; transform: none; max-width: none; margin: 8px 16px 0; padding: 4px 4px 4px 14px; border-radius: 14px; }
+  .whats-new-toast-text { overflow: visible; text-overflow: clip; white-space: normal; flex: 1 1 0; padding: 6px 0; }
+  .whats-new-toast a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; }
+  .whats-new-toast button { width: 44px; height: 44px; }
+}
 `;
 
 function store(storage: Storage | undefined, record: SeenRecord): void {
@@ -120,7 +127,8 @@ export async function mountWhatsNewToast(doc: Document = document, win: Window =
   link.addEventListener('click', seen);
   close.addEventListener('click', () => { seen(); toast.remove(); });
   toast.append(text, link, close);
-  doc.body.append(toast);
+  // Before the page on a phone (an in-flow banner), fixed to the bottom edge elsewhere: the CSS decides.
+  doc.body.prepend(toast);
   // Shown counts as seen: the toast appears once per new note, not until clicked.
   seen();
   return toast;

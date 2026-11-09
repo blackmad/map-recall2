@@ -667,6 +667,7 @@ export const en = {
   'ride.arrival.cityKnowledge': 'CITY KNOWLEDGE',
   'ride.arrival.firstTime': '+{bits} first-time',
   'ride.endRun': 'End run',
+  'ride.endRunShort': 'End run',
   'ride.newRun': 'New run',
   'ride.stat.time': 'Time',
   'ride.stat.distance': 'Distance',
