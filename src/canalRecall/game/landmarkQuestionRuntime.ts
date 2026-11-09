@@ -12,7 +12,6 @@
 import {
   bumpSessionCounter,
   FILLER_MAX_M,
-  hasBeenNamed,
   inViewCone,
   landmarkWithheldNames,
   landmarkChoices,
@@ -20,7 +19,6 @@ import {
   landmarkQuestionsEnabled,
   mayAskLandmark,
   noteSighting,
-  pickLandmarkQuestion,
   readSightings,
   SAME_COMPLEX_M,
   saveSightings,
@@ -28,6 +26,7 @@ import {
   type Sightings,
 } from './landmarkQuestion';
 import { isWorthACard } from './landmarkData';
+import { pickAskable, readLandmarkReviews, recordLandmarkOutcome, reviewKind, seedFromSightings, type LandmarkReviews } from './landmarkReview';
 import { approachKept, bumpSkipCounter, LANDMARK_APPROACH_RADIUS_M, landmarkSkipReason, sharedLedger } from './labelDrawLedger';
 import { decideQuestion, EMPTY_BUDGET, recordAsk } from './questionBudget';
 import { answerHoldMayHide } from './silentPass';
@@ -65,6 +64,8 @@ type QuestionHost = LandmarkHost & Pick<RecallHost,
   /** Landmarks asked this ride: one ask each. */
   _landmarkAsked?: Set<string>;
   _landmarkSightingsCache?: Sightings;
+  /** Per-landmark review schedule (landmarkReview.ts), persisted across rides. */
+  _landmarkReviewsCache?: LandmarkReviews;
   _modelledLandmarkIds?: Set<string>;
   /** The landmark being approached, its choices dealt and withheld (#281). */
   _landmarkApproach?: LandmarkApproach | null;
@@ -76,7 +77,11 @@ type QuestionHost = LandmarkHost & Pick<RecallHost,
 };
 
 /** A candidate landmark while the rider approaches it (#281). */
-export interface LandmarkApproach { landmark: Landmark; choices: string[]; hood: string; since: number }
+export interface LandmarkApproach {
+  landmark: Landmark; choices: string[]; hood: string; since: number;
+  /** What it is to the question budget: a due review or never asked (#300). */
+  kind: 'due-review' | 'new-unlearned';
+}
 
 function storage(): Storage | null {
   try { return typeof localStorage === 'undefined' ? null : localStorage; } catch { return null; }
@@ -105,6 +110,11 @@ export class GameLandmarkQuestionRuntime {
 
   _landmarkSightings(): Sightings {
     return (this._landmarkSightingsCache ??= readSightings(storage()));
+  }
+
+  /** The review schedule, with landmarks named before it existed seeded on the first rung (#300). */
+  _landmarkReviews(): LandmarkReviews {
+    return (this._landmarkReviewsCache ??= seedFromSightings(readLandmarkReviews(storage()), this._landmarkSightings()));
   }
 
   _noteLandmarkSighting(landmark: { id: string; x: number; y: number }, how: 'noticed' | 'named'): boolean {
@@ -158,7 +168,7 @@ export class GameLandmarkQuestionRuntime {
     const chosen = approach.landmark;
     if (!inViewCone(player, chosen, LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER)) return false;
 
-    const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: 'new-unlearned' }, this.raceTime, {
+    const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: approach.kind }, this.raceTime, {
       maxAsksPerMinute: this._askBudgetPerMinute(),
     });
     // Free Ride has no route budget of its own; it asks at the same pace.
@@ -216,7 +226,8 @@ export class GameLandmarkQuestionRuntime {
       this._releaseLandmarkApproach();
     }
     const asked = (this._landmarkAsked ||= new Set());
-    const sightings = this._landmarkSightings();
+    const reviews = this._landmarkReviews();
+    const wallNow = Date.now();
     const destination = this.routeTo?.landmarkId
       || (typeof this.routeTo?.id === 'string' && this.routeTo.id.startsWith('lm-') ? this.routeTo.id.slice(3) : '');
     const skip = new Set<string>(asked);
@@ -226,7 +237,8 @@ export class GameLandmarkQuestionRuntime {
     const session = window as unknown as { __canalRecallSession?: Record<string, unknown> };
     const skipped = (this._landmarkSkipsSeen ||= new Set());
     const candidates = this.landmarks.filter(landmark => {
-      if (skip.has(landmark.id) || this._seenLandmarks.has(landmark.id) || hasBeenNamed(sightings, landmark.id)) return false;
+      // Asked this ride, or named and not yet due again (#300).
+      if (skip.has(landmark.id) || this._seenLandmarks.has(landmark.id) || reviewKind(reviews[landmark.id], wallNow) === 'known') return false;
       if (Math.abs(landmark.x - player.x) > bandPx || Math.abs(landmark.y - player.y) > bandPx) return false;
       if (!isWorthACard(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
       // The destination card names the destination; a landmark sharing its
@@ -239,8 +251,13 @@ export class GameLandmarkQuestionRuntime {
       if (reason) { bumpSkipCounter(session, skipped, landmark.id, reason); return false; }
       return true;
     });
-    const chosen = pickLandmarkQuestion(player, candidates, { radiusPx: bandPx, skip });
-    if (!chosen) return null;
+    // Due reviews before never-asked landmarks, nearest first within each (#300).
+    const pick = pickAskable(
+      candidates.map(landmark => ({ id: landmark.id, landmark, distance: Math.hypot(landmark.x - player.x, landmark.y - player.y) })),
+      reviews, wallNow,
+    );
+    if (!pick) return null;
+    const chosen = pick.candidate.landmark;
     const withHood = (landmark: Landmark): QuestionLandmark => ({
       id: landmark.id, name: landmark.name, x: landmark.x, y: landmark.y,
       hood: this._neighborhoodAt(landmark.x, landmark.y)?.name ?? null,
@@ -254,7 +271,7 @@ export class GameLandmarkQuestionRuntime {
     });
     // Too few honest distractors: never a question about this one.
     if (!choices) { asked.add(chosen.id); return null; }
-    this._landmarkApproach = { landmark: chosen, choices, hood: answer.hood || '', since: now };
+    this._landmarkApproach = { landmark: chosen, choices, hood: answer.hood || '', since: now, kind: pick.kind };
     // Both spellings are withheld where the catalogue has a Dutch name (#283): the map may label either.
     const approachLang = language();
     this.landmarkApproachWithheld = landmarkWithheldNames(chosen.name, [...choices, ...choices.map(name => landmarkDisplayName(name, approachLang)), landmarkDisplayName(chosen.name, approachLang)]);
@@ -305,6 +322,9 @@ export class GameLandmarkQuestionRuntime {
     this._markAnsweredChoices(correctName, answer, correct);
 
     const landmark = this.landmarks.find(item => item.id === asked.id) || null;
+    // The schedule: named right climbs 1, 3, 7, 21 days; a miss comes back next ride (#300).
+    this._landmarkReviewsCache = recordLandmarkOutcome(storage(), this._landmarkReviews(), asked.id,
+      correct ? 'right' : noIdea ? 'no-idea' : 'wrong', Date.now());
     if (correct && landmark) {
       // The passport's `named` stamp: defined in poiCollection.ts, never fired before.
       (window as unknown as { CanalCollection?: { record(event: { id: string; name: string; how: 'named' }): unknown } })
