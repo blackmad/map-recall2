@@ -625,10 +625,39 @@ let deadEndSummary = '';
   const freed = simulate(approach, null, 300, true);
   assert.equal(freed.turned, 1, `Javaplantsoen: the bike turns round by itself once (${freed.turned})`);
   assert.ok(freed.lastNet > 10, `Javaplantsoen (2026-11-09): with recovery the bike rides on (${freed.lastNet.toFixed(1)} m in the last 120 frames)`);
+  // Lane D2 (#322): the routing extract now carries the bicycle=yes footway
+  // 1178623879 that leaves the promenade 4.6 m short of the end and runs north
+  // to the Kramatweg junction. A rider at the end who steers for it rides it
+  // to the far end, no turn-round needed. (Against an extract without the
+  // footway the shoulder holds the bike on the promenade: published before D2.)
+  const kramatweg: [number, number] = [52.3632363, 4.9462146];
+  const north = (() => {
+    const k = world.toWorld(...kramatweg);
+    const a = world.toWorld(...end);
+    const heading = Math.atan2(k.y - a.y, k.x - a.x);
+    let closest = Infinity;
+    const bike: CarKinematics = { x: a.x, y: a.y, angle: heading, vx: 0, vy: 0, speed: 0 };
+    let blockedFrames = 0;
+    const excessAt = (x: number, y: number) => { const c = world.guard(x, y, world.plazas, bike.angle); return c ? c.dist - c.width : Infinity; };
+    for (let i = 0; i < 240; i++) {
+      bike.speed = Math.min(260, bike.speed + 120 / 60);
+      bike.vx = Math.cos(bike.angle) * bike.speed;
+      bike.vy = Math.sin(bike.angle) * bike.speed;
+      const previous = { x: bike.x, y: bike.y };
+      bike.x += bike.vx / 60;
+      bike.y += bike.vy / 60;
+      const guard = constrainCarToRoad(bike, previous, world.guard(bike.x, bike.y, world.plazas, bike.angle),
+        world.guard(previous.x, previous.y, world.plazas, bike.angle), { edgeTolerance: 4, blockedFrames, excessAt });
+      blockedFrames = guard === 'rolled-back' ? blockedFrames + 1 : 0;
+      closest = Math.min(closest, Math.hypot(bike.x - k.x, bike.y - k.y) / PIXELS_PER_METER);
+    }
+    return closest;
+  })();
+  assert.ok(north < 5, `Javaplantsoen (D2): steering north at the end rides the bike footway to Kramatweg (closest ${north.toFixed(1)} m)`);
   // Riding along the open promenade never triggers it.
   const cruising = simulate([52.363120, 4.944941], 0, 180, true);
   assert.equal(cruising.turned, 0, 'Javaplantsoen: a bike riding freely is never turned round');
-  deadEndSummary = `; Javaplantsoen dead end: forward ${stuck.lastNet.toFixed(2)} m before (quarter turns ${sideways.map(m => m.toFixed(1)).join('/')} m), turned round and ${freed.lastNet.toFixed(1)} m after`;
+  deadEndSummary = `; Javaplantsoen dead end: forward ${stuck.lastNet.toFixed(2)} m before (quarter turns ${sideways.map(m => m.toFixed(1)).join('/')} m), turned round and ${freed.lastNet.toFixed(1)} m after; north footway closest ${north.toFixed(1)} m`;
 }
 
 let ferrySummary = '';

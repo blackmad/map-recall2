@@ -113,8 +113,6 @@ osmium tags-filter "$city_pbf" \
   w/natural=water r/natural=water w/water=canal,river,basin,moat,pond,lake,reflecting_pool,oxbow \
   r/water=canal,river,basin,moat,pond,lake,reflecting_pool,oxbow w/landuse=basin \
   w/highway=motorway,trunk,primary,secondary,tertiary,motorway_link,trunk_link,primary_link,secondary_link,tertiary_link,living_street,residential,unclassified,service,busway,cycleway,pedestrian \
-  w/highway=footway/bicycle=yes,designated,permissive,official \
-  w/highway=path/bicycle=yes,designated,permissive,official \
   w/bridge=yes w/man_made=bridge nwr/place=square nwr/amenity=marketplace \
   nwr/leisure=park,garden,nature_reserve nwr/tourism=attraction,museum,viewpoint,monument,gallery,zoo \
   nwr/historic nwr/amenity=theatre,arts_centre,community_centre,townhall,place_of_worship \
@@ -123,6 +121,15 @@ osmium tags-filter "$city_pbf" \
   nwr/shop n/natural=tree w/natural=tree_row \
   -o "$work_dir/features.osm.pbf"
 
+# Footways and paths that allow bikes (isRideablePathAdmission, lane D2 #322).
+# osmium has no AND inside one expression: the old `w/highway=footway/bicycle=yes`
+# line matched no way at all, so only bridge footways ever reached the routing
+# graph. Filter twice (highway, then bicycle) and merge.
+osmium tags-filter "$city_pbf" w/highway=footway,path -o "$work_dir/footpaths.osm.pbf"
+osmium tags-filter "$work_dir/footpaths.osm.pbf" w/bicycle=yes,designated,permissive,official \
+  -o "$work_dir/bike-footpaths.osm.pbf"
+osmium merge "$work_dir/features.osm.pbf" "$work_dir/bike-footpaths.osm.pbf" -o "$work_dir/features-merged.osm.pbf"
+mv "$work_dir/features-merged.osm.pbf" "$work_dir/features.osm.pbf"
 osmium export "$work_dir/features.osm.pbf" -o "$work_dir/features.geojson"
 osmium tags-filter "$city_pbf" \
   wr/building:colour wr/building:color wr/building:material \

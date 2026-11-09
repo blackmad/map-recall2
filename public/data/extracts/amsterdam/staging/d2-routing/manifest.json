@@ -1,0 +1,118 @@
+{
+  "cityId": "amsterdam",
+  "source": "OpenStreetMap / BBBike Amsterdam extract",
+  "generatedAt": "2026-08-31T08:04:58.331Z",
+  "center": [
+    52.372851,
+    4.8936
+  ],
+  "partitions": {
+    "water": {
+      "file": "water.json",
+      "count": 300,
+      "availableCount": 357,
+      "bytes": 615079,
+      "availableLinkedCount": 117,
+      "linkedCount": 117
+    },
+    "streets": {
+      "file": "streets.json",
+      "count": 343,
+      "availableCount": 4704,
+      "bytes": 1238354,
+      "availableLinkedCount": 180,
+      "linkedCount": 168
+    },
+    "bridges": {
+      "file": "bridges.json",
+      "count": 415,
+      "availableCount": 1300,
+      "bytes": 553504,
+      "availableLinkedCount": 484,
+      "linkedCount": 393
+    },
+    "squares": {
+      "file": "squares.json",
+      "count": 85,
+      "availableCount": 85,
+      "bytes": 70062,
+      "availableLinkedCount": 26,
+      "linkedCount": 26
+    },
+    "parks": {
+      "file": "parks.json",
+      "count": 241,
+      "availableCount": 241,
+      "bytes": 389274,
+      "availableLinkedCount": 78,
+      "linkedCount": 78
+    },
+    "landmarks": {
+      "file": "landmarks.json",
+      "count": 427,
+      "availableCount": 1071,
+      "bytes": 265282,
+      "availableLinkedCount": 358,
+      "linkedCount": 365
+    },
+    "all": {
+      "file": "all.json",
+      "count": 450,
+      "availableCount": 7758,
+      "bytes": 724956,
+      "availableLinkedCount": 1243,
+      "linkedCount": 399
+    }
+  },
+  "boundaries": {
+    "file": "boundaries.json",
+    "count": 91
+  },
+  "brandedPois": {
+    "file": "branded-pois.json",
+    "count": 2057
+  },
+  "localFoodPois": {
+    "count": 1944
+  },
+  "majorChains": [
+    {
+      "name": "Albert Heijn",
+      "brandWikidata": "Q1653985",
+      "count": 88,
+      "icon": "brand-q1653985",
+      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Albert_Heijn_Logo.svg/330px-Albert_Heijn_Logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    },
+    {
+      "name": "Albert Heijn to go",
+      "brandWikidata": "Q77971185",
+      "count": 24,
+      "icon": "albert-heijn"
+    },
+    {
+      "name": "Albert Heijn",
+      "count": 1,
+      "icon": "albert-heijn"
+    }
+  ],
+  "cityProfile": {
+    "file": "city-profile.json",
+    "wikidata": "Q727"
+  },
+  "brandIdentifiers": {
+    "file": "brand-identifiers.json",
+    "count": 2,
+    "logoCount": 1
+  },
+  "knowledgeMapOutline": {
+    "file": "knowledge-map-outline.json",
+    "buurts": 90,
+    "water": 1497,
+    "source": "scripts/knowledge-map/build-outline.ts from boundaries.json + water.json (#297)"
+  },
+  "routing": {
+    "file": "streets-routing.json",
+    "count": 47532,
+    "graphRevision": 2
+  }
+}
