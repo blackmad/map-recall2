@@ -1,3 +1,5 @@
+import { roofFamilyFlag, snapRoofFamily } from './calmTones';
+import { toonFrontsActive, TOON_ACCENTS, TOON_GROUND_PAINTS, TOON_PERIOD_WALLS, TOON_WALLS } from './toonFronts';
 /**
  * The one palette for Canal Recall's buildings (docs/LOOK.md).
  *
@@ -348,6 +350,16 @@ export const GROUND_PAINTS: Record<TexturedLook, readonly string[]> = {
   storybook: ['#f6f1e4', '#f6f1e4', '#f6f1e4', '#efe2c2', '#efe2c2', '#3a3d3c', '#3f6a52', '#8a3b33', '#3a527a', '#a3a8a4'],
   cartoon: ['#fffaf0', '#fffaf0', '#fffaf0', '#ffe9b8', '#ffe9b8', '#3b3b4a', '#2a9d8f', '#d9453d', '#4672b0', '#f2b92e'],
 };
+
+// Toon look (#161): the candy fronts give way to Amsterdam's own colours (look/toonFronts.ts); nothing changes without it.
+// PALETTES.cartoon shares its object with storybook, so it is replaced, not edited.
+if (toonFrontsActive()) {
+  for (const period of ['canal', 'c19', 'school'] as const) PERIOD_WALLS.cartoon[period] = TOON_PERIOD_WALLS[period];
+  const toonSet = { walls: [...TOON_WALLS], accents: [...TOON_ACCENTS] };
+  PALETTES.cartoon = { canal: toonSet, c19: toonSet, school: toonSet, modern: PALETTES.cartoon.modern };
+  CARTOON_WALLS.splice(0, CARTOON_WALLS.length, ...TOON_WALLS);
+  GROUND_PAINTS.cartoon = TOON_GROUND_PAINTS;
+}
 
 // ---------------------------------------------------------------------------
 // Walls: contextual display priors for the streamed city (unmeasured)
@@ -710,8 +722,9 @@ export function cityTint(slot: MaterialSlot, hex: string, source?: TintSource | 
   if (source === MEASURED_TINT_SOURCE && (slot === 'brick' || slot === 'accent')) return cityMeasuredWallTint(hex);
   if (source === MEASURED_TINT_SOURCE && slot === 'glass') return cityMeasuredGlassTint(hex);
   if (source === MEASURED_TINT_SOURCE && slot === 'stone') return cityMeasuredStoneTint(hex);
-  if (source === MEASURED_TINT_SOURCE && slot === 'bitumen') return cityMeasuredFlatRoofTint(hex);
-  if (source === MEASURED_TINT_SOURCE && (slot === 'slate' || slot === 'roofTile')) return cityMeasuredPitchedRoofTint(hex);
+  // Roof families (#161 lever 5, `?roofFamily=1`): measured roof tints are pulled toward a few recurring tones.
+  if (source === MEASURED_TINT_SOURCE && slot === 'bitumen') return roofFamilyFlag() ? snapRoofFamily(cityMeasuredFlatRoofTint(hex)) : cityMeasuredFlatRoofTint(hex);
+  if (source === MEASURED_TINT_SOURCE && (slot === 'slate' || slot === 'roofTile')) return roofFamilyFlag() ? snapRoofFamily(cityMeasuredPitchedRoofTint(hex)) : cityMeasuredPitchedRoofTint(hex);
   switch (slot) {
     case 'brick': case 'accent': return cityWallTint(hex);
     case 'stucco': return cityStuccoTint(hex);
