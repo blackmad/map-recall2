@@ -76,14 +76,21 @@ export interface FerryPlayer extends Point {
   ferryNearest?: { name: string; distance: number } | null;
   /** The side the hull is turning to while a touch blocks it, kept until it is free again. */
   ferryTurn?: -1 | 1;
+  /** Free Ride: consecutive frames the hull has touched a bank (FREE_LAND_PRESS_FRAMES). */
+  ferryPress?: number;
+  /** Free Ride: frames since the hull last touched a bank. */
+  ferryClear?: number;
   ferryDestinations?: string;
   _bikeMaxSpeed?: number;
   _bikeSize?: { length: number; width: number };
 }
 
+/** What `getNearestRoad` answers (road-network.js): the nearest corridor's point, tangent and distance. */
+export type RoadContact = { segIdx: number; x?: number; y?: number; angle?: number; dist?: number };
+
 export interface FerryTrack {
   segments: readonly Segment[];
-  getNearestRoad(x: number, y: number, angle: number | null): { segIdx: number } | null;
+  getNearestRoad(x: number, y: number, angle: number | null): RoadContact | null;
   getSurface?(x: number, y: number): string;
   /** Street following (streetFollow.ts) reads these; on water there are none. */
   getRoadContacts?(x: number, y: number): unknown[];
@@ -94,6 +101,12 @@ export interface FerryTrack {
 
 export interface FerryGame {
   travelMode: string;
+  /**
+   * Free Ride (freeRideRuntime.ts): the vessel is free on the water. It lands
+   * at any quay with a street beside it (FREE_LAND_REACH), not only at a pier,
+   * and shows no pier banner. Quiz modes keep the ferry a transit element.
+   */
+  freeRide?: boolean;
   player: FerryPlayer;
   track: FerryTrack;
 }
@@ -287,8 +300,61 @@ export function ferryTerminalsOf(links: readonly FerryLink[]): Terminal[] {
 
 /** Back on the bike at the pier's land access (GTFS stops can be offshore). */
 export function disembark(player: FerryPlayer, pier: Terminal): void {
+  leaveVessel(player);
+  const dx = pier.land.x - pier.x, dy = pier.land.y - pier.y;
+  player.x = pier.land.x;
+  player.y = pier.land.y;
+  player.angle = Math.atan2(dy, dx);
+}
+
+/**
+ * Free Ride: a vessel touching the bank lands there when a rideable street
+ * runs this close to the touch (12 m). User 2026-11-09, Free Ride on the IJ
+ * off De Ruijterkade 61 m from the Centraal pier: "ferry still getting stuck,
+ * should let me free ride and not force me along an invisible path". Outside
+ * Free Ride the bank still blocks and only a pier docks.
+ */
+export const FREE_LAND_REACH = 36;
+/**
+ * Touching frames (0.2 s) a bow corner must press on a street-side bank
+ * before a Free Ride vessel lands there. Held into the De Ruijterkade bank
+ * the vessel touches, turns away, is steered back and touches again every
+ * second or two (crawling at about 2.4 m/s), so touches count until the hull
+ * has been clear of every bank for FREE_LAND_PRESS_CLEAR frames.
+ */
+export const FREE_LAND_PRESS_FRAMES = 12;
+export const FREE_LAND_PRESS_CLEAR = 180;
+
+/** The street a Free Ride vessel lands on at this touch, or null (no street beside it, or a ferry line/access). */
+export function freeLanding(game: FerryGame, touches: readonly Point[]): (Point & { angle: number }) | null {
+  const p = game.player;
+  for (const touch of touches) {
+    const road = game.track.getNearestRoad(touch.x, touch.y, p.angle);
+    if (!road || !Number.isFinite(road.x) || !Number.isFinite(road.y)) continue;
+    const type = game.track.segments[road.segIdx]?.type;
+    if (type === 'ferry' || type === 'ferry-access') continue;
+    if (Math.hypot(road.x! - touch.x, road.y! - touch.y) > FREE_LAND_REACH) continue;
+    // Ride on along the street in the direction nearer the vessel's heading.
+    let angle = Number.isFinite(road.angle) ? road.angle! : p.angle;
+    if (Math.cos(angle - p.angle) < 0) angle += Math.PI;
+    return { x: road.x!, y: road.y!, angle: Math.atan2(Math.sin(angle), Math.cos(angle)) };
+  }
+  return null;
+}
+
+/** Back on the bike on the street a Free Ride vessel landed beside. */
+export function landAshore(player: FerryPlayer, at: Point & { angle: number }): void {
+  leaveVessel(player);
+  player.x = at.x;
+  player.y = at.y;
+  player.angle = at.angle;
+}
+
+function leaveVessel(player: FerryPlayer): void {
   player.ferryOrigin = null;
   player.ferryTurn = undefined;
+  player.ferryPress = undefined;
+  player.ferryClear = undefined;
   player.ferryDeparted = false;
   player.ferryUnarmed = undefined;
   player.ferryNearest = null;
@@ -296,10 +362,6 @@ export function disembark(player: FerryPlayer, pier: Terminal): void {
   if (player._bikeMaxSpeed !== undefined) player.maxSpeed = player._bikeMaxSpeed;
   if (player._bikeSize) Object.assign(player, player._bikeSize);
   player.ferryDestinations = '';
-  const dx = pier.land.x - pier.x, dy = pier.land.y - pier.y;
-  player.x = pier.land.x;
-  player.y = pier.land.y;
-  player.angle = Math.atan2(dy, dx);
   player.speed = 0; player.vx = 0; player.vy = 0;
 }
 
@@ -347,7 +409,7 @@ function nearAccess(point: Point, t: Terminal): boolean {
   return Math.hypot(point.x - t.land.x - u * dx, point.y - t.land.y - u * dy) <= ACCESS_CORRIDOR;
 }
 
-export type FerryMoveResult = 'sailing' | 'blocked' | 'docked' | 'ashore';
+export type FerryMoveResult = 'sailing' | 'blocked' | 'docked' | 'landed' | 'ashore';
 
 /**
  * The hull's leading edge in the direction it just moved: the bow centre and
@@ -447,12 +509,30 @@ export function afterFerryMove(game: FerryGame, previous: Point, isWater: WaterT
       return 'docked';
     }
   }
-  if (!touching) { p.ferryTurn = undefined; return 'sailing'; }
+  if (!touching) {
+    p.ferryTurn = undefined;
+    // Free Ride: the press on a bank lasts while touches keep coming.
+    if (p.ferryPress && (p.ferryClear = (p.ferryClear ?? 0) + 1) > FREE_LAND_PRESS_CLEAR) p.ferryPress = p.ferryClear = undefined;
+    return 'sailing';
+  }
   const previousCentreWet = isWater(previous.x, previous.y);
   // Leaving a pier not yet re-armed (launching, turning out): the quay is
   // passable, but the centre does not go ashore from the water.
   const leaving = terminals.some(t => unarmed.has(t.id) && (distance(t) < PIER_APPROACH_RADIUS || nearAccess(p, t)));
   if (leaving && (centreWet || !previousCentreWet)) return 'sailing';
+  // Free Ride: any bank with a street beside it is a landing, once clear of
+  // the pier the vessel left (so a launch never lands straight back). The
+  // bow (or the centre) on it lands at once; a bow corner only once the
+  // rider has held the vessel against it (FREE_LAND_PRESS_FRAMES), so a
+  // glancing touch while sailing along a quay turns away as before.
+  if (game.freeRide && p.ferryDeparted && !leaving) {
+    const pressed = (p.ferryPress ?? 0) >= FREE_LAND_PRESS_FRAMES;
+    const dry = [...(edge ?? []).filter((_, i) => !edgeWet[i] && (i === 0 || pressed)), ...(centreWet ? [] : [{ x: p.x, y: p.y }])];
+    const at = freeLanding(game, dry);
+    if (at) { landAshore(p, at); return 'landed'; }
+    p.ferryPress = (p.ferryPress ?? 0) + 1;
+    p.ferryClear = 0;
+  }
   const forward = (p.x - previous.x) * Math.cos(p.angle) + (p.y - previous.y) * Math.sin(p.angle) >= 0 ? 1 : -1;
   // Getting free: more of the hull on water than before (backing off a
   // bank, turning out of a corner) is always allowed.

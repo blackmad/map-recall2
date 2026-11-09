@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 // Pier-edge geometry runs under `npm run test:ferry` through this import.
 import './pierEdge.test';
 import type { FerryLink, Segment, Terminal } from './network';
-import { afterFerryMove, beginFerryFrame, boardingTerminal, edgeBoarding, FERRY_SIZE, ferryMotionTrack, LAUNCH_REACH, LAUNCH_SWEEP, openWaterHeading, type FerryGame, type FerryPlayer } from './travel';
+import { afterFerryMove, beginFerryFrame, boardingTerminal, edgeBoarding, FERRY_SIZE, FREE_LAND_REACH, freeLanding, ferryMotionTrack, LAUNCH_REACH, LAUNCH_SWEEP, openWaterHeading, type FerryGame, type FerryPlayer, type RoadContact } from './travel';
 
 // Synthetic IJ: land south of y = -5 and north of y = -595; two piers, plus an
 // unrelated third pier on the north bank. Pier A's stop sits on the quay edge
@@ -303,6 +303,65 @@ assert.deepEqual([back.player.x, back.player.y], [A.land.x, A.land.y]);
   const motion = ferryMotionTrack({ ...game({}).track, getRoadContacts: (_x: number, _y: number) => [{ dist: 0 }] });
   assert.deepEqual(motion.getRoadContacts!(0, 0), []);
   assert.equal(motion.getNearestRoad(0, 0, null), null);
+}
+
+// Free Ride (user 2026-11-09, IJ off De Ruijterkade 61 m from the Centraal
+// pier: "ferry still getting stuck, should let me free ride and not force me
+// along an invisible path"): a vessel touching any bank with a street beside
+// it lands there on the bike. Quiz modes keep blocking (above).
+{
+  // The north quay street runs along y = -610 (15 px behind the bank at -595).
+  const quayStreet: Segment = { points: [{ x: -1000, y: -610 }, { x: 1000, y: -610 }], type: 'cycleway', width: 12, name: 'Quay' };
+  const streets = [...segments, quayStreet];
+  const quayIdx = streets.length - 1;
+  const nearest = (x: number, y: number): RoadContact | null => (Math.abs(y + 610) < 60 ? { segIdx: quayIdx, x, y: -610, angle: 0, dist: Math.abs(y + 610) } : null);
+  const freeGame = (freeRide: boolean, road: (x: number, y: number) => RoadContact | null = nearest): FerryGame => {
+    const v = aboard();
+    v.freeRide = freeRide;
+    v.track = { ...v.track, segments: streets, getNearestRoad: road };
+    // The bow (half a 96 px hull ahead) just over the bank.
+    v.player.x = 200; v.player.y = -550; v.player.angle = -Math.PI / 2 + 0.3; v.player.speed = 120;
+    return v;
+  };
+  const PREV = { x: 200, y: -544 };
+  const landing = freeGame(true);
+  assert.equal(afterFerryMove(landing, PREV, water), 'landed', 'Free Ride: lands at a street-side bank');
+  const lp = landing.player;
+  assert.equal(lp.ferryOrigin, null);
+  assert.equal(lp.isBoat, false);
+  assert.equal(lp.y, -610, 'on the quay street');
+  assert.ok(Math.abs(lp.angle) < 1e-9, 'heading along the street, the way nearer the bow');
+  assert.equal(lp.length, 12, 'bike size restored');
+  assert.equal(lp.maxSpeed, 300, 'bike top speed restored');
+
+  const quiz = freeGame(false);
+  assert.equal(afterFerryMove(quiz, PREV, water), 'blocked', 'a quiz ride keeps the ferry a transit element');
+  assert.ok(quiz.player.ferryOrigin);
+
+  const noStreet = freeGame(true, () => null);
+  assert.equal(afterFerryMove(noStreet, PREV, water), 'blocked', 'no street beside the bank: the bank stays a bank');
+
+  const far = freeGame(true, (x: number) => ({ segIdx: quayIdx, x, y: -600 - FREE_LAND_REACH - 20, angle: 0 }));
+  assert.equal(afterFerryMove(far, PREV, water), 'blocked', `a street beyond ${FREE_LAND_REACH / 3} m does not count`);
+
+  // The pier access and the ferry line are not streets to land on.
+  assert.equal(freeLanding({ ...freeGame(true), track: { segments: streets, getNearestRoad: (x, y) => ({ segIdx: 0, x, y, angle: 0 }) } }, [{ x: 0, y: -598 }]), null);
+  assert.equal(freeLanding({ ...freeGame(true), track: { segments: streets, getNearestRoad: (x, y) => ({ segIdx: 2, x, y, angle: 0 }) } }, [{ x: 0, y: -598 }]), null);
+
+  // A launch never lands straight back on its own quay: not before it has
+  // left the pier (DEPART_RADIUS), and the leaving exemption still applies.
+  const launch = game({ x: 0, y: 2 });
+  launch.freeRide = true;
+  launch.track = { ...launch.track, segments: streets, getNearestRoad: (x: number, y: number) => ({ segIdx: quayIdx, x, y: 8, angle: 0 }) };
+  assert.equal(beginFerryFrame(launch, water), true);
+  launch.player.angle = Math.PI / 2; launch.player.x = 60; launch.player.y = -2;
+  assert.notEqual(afterFerryMove(launch, { x: 60, y: -8 }, water), 'landed', 'no landing before the vessel has left its pier');
+  assert.ok(launch.player.ferryOrigin);
+
+  // Open water in Free Ride is plain sailing.
+  const open = freeGame(true);
+  open.player.x = 200; open.player.y = -300;
+  assert.equal(afterFerryMove(open, { x: 200, y: -290 }, water), 'sailing');
 }
 
 console.log('Ferry boarding, water steering and docking passed');
