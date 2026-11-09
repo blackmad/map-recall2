@@ -15,6 +15,11 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Feedback 2026-11-09 follow-ups (session a1)
+
+- **Publish the 1,110 post-2020 pands (feedback C).** Staged at `scripts/data/bag-gaps/new-pands-supplement.geojson`; `publish-bag-gaps.ts` hardcodes `bag-gaps-supplement.geojson` and rewrites `heightSource`: widen the type in bagGaps.ts or add `--supplement=`, dry run, `--write`, then world:compile in the batched compile with feedback B, covers, check:bag-gaps, test:bag-tiles. Replace fallback heights when a newer 3DBAG or AHN6 lands.
+- **Yard fills (`?yardFill=1`).** Publish `scripts/data/yard-fill/{container-stacks,rail-sidings}.json` to `public/data/extracts/amsterdam/yard-fill/`, run `tests/e2e/yard-fill-shots.spec.ts`, judge Hornweg/Zaanstraat beside the orthophoto before defaulting on; other terminals need reviewed anchors in `scripts/build-yard-fill.ts`. Moermanskkade lot: check the panorama.
+
 ## City coverage programme (2026-11-07) — T0 whole city, T1 ride ring, T2 landmarks
 
 Plan `docs/plans/city-coverage-20261107.md` (Fable, user-approved 2026-11-07; explainer
