@@ -92,16 +92,15 @@ export function pickAskable<T extends AskableCandidate>(
   now: number,
   rng: () => number = Math.random,
 ): AskablePick<T> | null {
-  let best: { candidate: T; kind: 'due-review' | 'new-unlearned'; rank: number; distance: number; tie: number } | null = null;
+  let best: { candidate: T; kind: 'due-review' | 'new-unlearned'; rank: number; distance: number } | null = null;
   for (const candidate of candidates) {
     const kind = reviewKind(states[candidate.id], now);
     if (kind === 'known') continue;
     const rank = kind === 'due-review' ? 0 : 1;
     const distance = candidate.distance ?? 0;
-    const tie = rng();
-    if (!best || rank < best.rank || (rank === best.rank && (distance < best.distance || (distance === best.distance && tie < best.tie)))) {
-      best = { candidate, kind, rank, distance, tie };
-    }
+    // `rng` is drawn only on an exact tie, so the ride's seeded random stream is untouched otherwise.
+    const better = !best || rank < best.rank || (rank === best.rank && (distance < best.distance || (distance === best.distance && rng() < 0.5)));
+    if (better) best = { candidate, kind, rank, distance };
   }
   return best && { candidate: best.candidate, kind: best.kind };
 }

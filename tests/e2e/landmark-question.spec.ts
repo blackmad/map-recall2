@@ -225,11 +225,11 @@ test('a named landmark is not asked after a reload until its review is due', asy
   const days = (stored.dueAt - stored.lastAskedAt) / 86_400_000;
   expect(days).toBeCloseTo(1, 5);
 
-  // Reload: a new ride, the same approach. Named today: not asked.
+  // Reload: a new ride, the same approach. Named today: not asked (a
+  // never-asked neighbour such as the Anne Frank House may be asked instead).
   await openRoute(page, opts);
   const reloaded = await approachWesterkerk(page, { keepReview: true });
-  expect(reloaded.kind, JSON.stringify(reloaded)).toBe('route');
-  expect(reloaded.asked).toBe('');
+  expect(reloaded.asked, JSON.stringify(reloaded)).not.toBe('Westerkerk');
 
   // Its review date in the past: due, so the same approach asks it.
   await page.evaluate((id) => {

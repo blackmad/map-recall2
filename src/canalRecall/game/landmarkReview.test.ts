@@ -83,8 +83,12 @@ test('pickAskable: due before new, nearest within each, waiting never', () => {
   // Equal distance: the rng decides.
   const tie = [{ id: 'x', distance: 5 }, { id: 'y', distance: 5 }];
   const seq = (values: number[]) => () => values.shift()!;
-  assert.equal(pickAskable(tie, {}, now, seq([0.9, 0.1]))!.candidate.id, 'y');
-  assert.equal(pickAskable(tie, {}, now, seq([0.1, 0.9]))!.candidate.id, 'x');
+  assert.equal(pickAskable(tie, {}, now, seq([0.1]))!.candidate.id, 'y');
+  assert.equal(pickAskable(tie, {}, now, seq([0.9]))!.candidate.id, 'x');
+  // No tie, no draw.
+  let draws = 0;
+  pickAskable(candidates, states, now, () => { draws++; return 0; });
+  assert.equal(draws, 0);
 });
 
 test('a landmark named before the schedule comes back a day after it was named', () => {
