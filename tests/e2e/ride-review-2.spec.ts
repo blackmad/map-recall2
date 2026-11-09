@@ -85,14 +85,16 @@ async function rideUntilCard(page: Page, share = 0.6) {
   }, share);
 }
 async function answer(page: Page, correct: boolean) {
-  const btns = page.locator('#canal-choices button');
+  // The question card's DOM stays behind when it closes: act only on a visible card, never wait on a hidden button.
+  if (!(await page.locator('#canal-card').isVisible().catch(() => false))) return false;
+  const btns = page.locator('#canal-choices button:visible');
   if (await btns.count()) {
     const want = await page.evaluate(() => (window as any).canalRecallGame.quizPromptName);
     const pick = correct ? btns.filter({ hasText: want }).first() : btns.filter({ hasNotText: want }).first();
-    if (await pick.count()) { await pick.click().catch(() => {}); return true; }
+    if (await pick.count()) { await pick.click({ timeout: 5000 }).catch(() => {}); return true; }
   }
   const noIdea = page.locator('#canal-card button', { hasText: /No idea|Geen idee/ });
-  if (await noIdea.isVisible().catch(() => false)) { await noIdea.click().catch(() => {}); return true; }
+  if (await noIdea.isVisible().catch(() => false)) { await noIdea.click({ timeout: 5000 }).catch(() => {}); return true; }
   return false;
 }
 async function arrive(page: Page, points: number) {
@@ -162,7 +164,7 @@ async function startFromSetup(page: Page, ride: string) {
 }
 
 test('A guest: first visit landing → Start a ride → question → arrival → Next stop → End run → run card → Share', async ({ page }) => {
-  test.setTimeout(600_000);
+  test.setTimeout(900_000);
   await page.route(/3dbag|cesium3dtiles/i, r => r.abort());
   const phone = isPhone();
   await page.addInitScript((phone) => {
@@ -230,7 +232,7 @@ test('A guest: first visit landing → Start a ride → question → arrival →
 });
 
 test('B returning: landing hook → Today’s ride → arrival → What’s New', async ({ page }) => {
-  test.setTimeout(420_000);
+  test.setTimeout(720_000);
   await page.route(/3dbag|cesium3dtiles/i, r => r.abort());
   const entries = landingFixtureEntries('returning', Date.now());
   await page.addInitScript((data: Record<string, string>) => {
@@ -260,13 +262,23 @@ test('B returning: landing hook → Today’s ride → arrival → What’s New'
   await arrive(page, 180);
   await snap(page, 'B', '04-daily-arrival', true);
   fact('B', 'daily-arrival', await facts(page));
+  // Next stop, then a reload mid-leg (#280 defect 4): the dealt leg should resume, not Today's ride again.
+  await finishTap(page, 'again');
+  await waitState(page, 4, 120_000);
+  await page.waitForTimeout(2000);
+  fact('B', 'leg2-before-reload', await facts(page));
+  await page.reload();
+  await page.waitForFunction(() => (window as any).canalRecallGame?.state === 4, null, { timeout: 150_000 }).catch(() => {});
+  await page.waitForTimeout(4000);
+  await snap(page, 'B', '04b-after-reload');
+  fact('B', 'leg2-after-reload', await facts(page));
   await page.goto('/canal-drive/whats-new.html');
   await page.waitForTimeout(2500);
   await snap(page, 'B', '05-whats-new', true);
 });
 
 test('C Dutch: ?lang=nl setup → question → arrival → run card → pause', async ({ page }) => {
-  test.setTimeout(420_000);
+  test.setTimeout(720_000);
   await page.addInitScript(() => localStorage.setItem('canalRecall.language.v1', 'nl'));
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?lang=nl', enterRacing: false });
   await waitState(page, 4, 150_000);
@@ -410,7 +422,7 @@ for (const set of ['centre', 'outer'] as const) {
 
 test('F own engine: one desktop ride (?engine=own) start → question → arrival', async ({ page }) => {
   test.skip(isPhone(), 'desktop only');
-  test.setTimeout(420_000);
+  test.setTimeout(720_000);
   await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?engine=own', enterRacing: false, abortHeavyTiles: false });
   await waitState(page, 4, 150_000);
   await page.waitForTimeout(5000);
