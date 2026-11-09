@@ -9,6 +9,7 @@ import path from 'node:path';
 import {
   clearDailyRideCache,
   DAILY_POOL_CUTOVER,
+  DAILY_POOL_WEIGHTED_FROM,
   DAILY_RIDE_MAX_KM,
   DAILY_RIDE_MIN_KM,
   DAILY_RIDE_NO_REPEAT_DAYS,
@@ -157,4 +158,30 @@ test('every bundled pair has a route length within the bounds, between different
     assert.equal(dailyRouteKm(b.id, a.id), km);
   }
   assert.ok(pairs > 1000, `bundled pairs ${pairs}`);
+});
+
+test('the announced 10-16 Nov pairs are pinned; the weighting starts on 17 Nov (#291)', () => {
+  assert.equal(DAILY_POOL_WEIGHTED_FROM, '2026-11-17');
+  clearDailyRideCache();
+  const pinned = [
+    '2026-11-10:buurt-overhoeks>buurt-helmersbuurt',
+    '2026-11-11:buurt-de-pijp>buurt-schinkelbuurt',
+    '2026-11-12:buurt-sportheldenbuurt>buurt-knsm-eiland',
+    '2026-11-13:buurt-apollobuurt>buurt-vu-kwartier',
+    '2026-11-14:buurt-nieuwmarkt-lastage>buurt-tuindorp-nieuwendam',
+    '2026-11-15:buurt-oud-zuid>buurt-ijselbuurt',
+    '2026-11-16:buurt-spaarndammerbuurt>buurt-kinkerbuurt',
+  ];
+  assert.deepEqual(dates.slice(0, 7).map(date => dailyPoolPair(date)!.id), pinned);
+  assert.equal(dailyPoolPair('2026-11-10')!.km, 4.3);
+});
+
+test('over the year every place that can end a ride ends one, finish-only places included (#291)', () => {
+  clearDailyRideCache();
+  const finishes = new Map<string, number>();
+  for (const date of dates) { const to = dailyPoolPair(date)!.to.id; finishes.set(to, (finishes.get(to) ?? 0) + 1); }
+  const starved = DAILY_RIDE_POOL.filter(place => place.finishOk && !finishes.get(place.id)).map(place => place.id);
+  assert.deepEqual(starved, []);
+  assert.ok(finishes.get('buurt-nieuwmarktbuurt')! >= 1);
+  console.log(`# finish-only: ${DAILY_RIDE_POOL.filter(p => !p.startOk).map(p => `${p.id}=${finishes.get(p.id)}`).join(' ')}`);
 });

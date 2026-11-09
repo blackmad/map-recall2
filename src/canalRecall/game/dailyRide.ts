@@ -194,6 +194,12 @@ export function dailyRidePair(date: string, candidates: readonly RoutePoi[]): Da
 
 /** First day drawn from the buurt pool. */
 export const DAILY_POOL_CUTOVER = '2026-11-10';
+/**
+ * First day the finish place is rotated inside its buurt key (#291). Before it the finish is the plain
+ * uniform pick (the announced 10–16 Nov pairs must not move); from it the least-finished place in the
+ * key wins, so a finish-only place sharing a key (Nieuwmarktbuurt, Duivelseiland) is not starved.
+ */
+export const DAILY_POOL_WEIGHTED_FROM = '2026-11-17';
 /** Estimated ride length (straight line × DAILY_RIDE_ROAD_FACTOR), km. */
 export const DAILY_RIDE_MIN_KM = 1.5;
 export const DAILY_RIDE_MAX_KM = 5;
@@ -249,11 +255,23 @@ function pickByBuurt(places: readonly DailyPoolPoi[], unit: ChooseUnit): DailyPo
   return inBuurt[Math.min(inBuurt.length - 1, Math.floor(unit() * inBuurt.length))] ?? null;
 }
 
+/** Like pickByBuurt, but within the chosen buurt key the place finished least since DAILY_POOL_WEIGHTED_FROM wins (ties by the unit). */
+function pickByBuurtRotating(places: readonly DailyPoolPoi[], unit: ChooseUnit, finishes: ReadonlyMap<string, number>): DailyPoolPoi | null {
+  if (!places.length) return null;
+  const buurten = [...new Set(places.map(place => place.buurt))].sort();
+  const buurt = buurten[Math.min(buurten.length - 1, Math.floor(unit() * buurten.length))];
+  const inBuurt = places.filter(place => place.buurt === buurt);
+  const fewest = Math.min(...inBuurt.map(place => finishes.get(place.id) ?? 0));
+  const least = inBuurt.filter(place => (finishes.get(place.id) ?? 0) === fewest);
+  return least[Math.min(least.length - 1, Math.floor(unit() * least.length))] ?? null;
+}
+
 function drawPoolPair(
   date: string,
   pool: readonly DailyPoolPoi[],
   recentPairs: ReadonlySet<string>,
   recentBuurten: ReadonlySet<string>,
+  finishes: ReadonlyMap<string, number> | null = null,
 ): [DailyPoolPoi, DailyPoolPoi] | null {
   const unit = seededUnit(SEED_PREFIX + date);
   // The buurt rule first; if it ever leaves nothing (it does not over the shipped pool), only the pair rule.
@@ -262,7 +280,7 @@ function drawPoolPair(
     const partnersOf = (from: DailyPoolPoi) => open.filter(to => to.finishOk && inBounds(from, to) && !recentPairs.has(pairKey(from, to)));
     const from = pickByBuurt(open.filter(place => place.startOk && partnersOf(place).length > 0), unit);
     if (!from) continue;
-    const to = pickByBuurt(partnersOf(from), unit);
+    const to = finishes ? pickByBuurtRotating(partnersOf(from), unit, finishes) : pickByBuurt(partnersOf(from), unit);
     if (to) return [from, to];
   }
   return null;
@@ -295,7 +313,15 @@ function poolPairFor(date: string, pool: readonly DailyPoolPoi[]): [DailyPoolPoi
       pairs.add(pairKey(pair[0], pair[1]));
       buurten.add(pair[0].buurt).add(pair[1].buurt);
     }
-    byDate.set(day, drawPoolPair(day, pool, pairs, buurten));
+    let finishes: Map<string, number> | null = null;
+    if (day >= DAILY_POOL_WEIGHTED_FROM) {
+      finishes = new Map();
+      for (let past = DAILY_POOL_WEIGHTED_FROM; past < day; past = shiftDate(past, 1)) {
+        const done = byDate.get(past);
+        if (done) finishes.set(done[1].id, (finishes.get(done[1].id) ?? 0) + 1);
+      }
+    }
+    byDate.set(day, drawPoolPair(day, pool, pairs, buurten, finishes));
   }
   return byDate.get(date) ?? null;
 }
