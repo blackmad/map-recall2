@@ -3,6 +3,28 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Points add up, and every ride can be shared at once",
+   "text": "Each stop's arrival card now counts the chain bonus it earned, and the run line and the run card show the same figures. Every ride you are dealt carries its share link from the moment it starts, so the Share key is always there on arrival.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-run-points/02-arrival2-phone.jpg",
+     "alt": "The second stop's arrival card on a phone showing 252 points with its +5 % chain bonus",
+     "caption": "The arrival card counts this stop's bonus."
+    },
+    {
+     "src": "ui/2026-11-09-run-points/04-run-card-phone.jpg",
+     "alt": "The run card on a phone: 130, 252 +5 %, 99 +10 %, total 481",
+     "caption": "The run card agrees."
+    },
+    {
+     "src": "ui/2026-11-09-run-points/05-share-keycap-at-once.jpg",
+     "alt": "The Torture Museum to Pathé Tuschinski arrival on a phone, now with the Share key",
+     "caption": "Share is there on every arrival."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "The landmark question is back, and it keeps its secret",
    "text": "The landmark quiz no longer asks about a building whose name was just on the map. As you ride up to the building in question, its name and the other three choices quietly fade from the map before the question appears, and a building whose drive-by card you just saw is not asked either.",
    "images": [
@@ -65,7 +87,7 @@
   {
    "date": "2026-11-10",
    "title": "Today's ride runs buurt to buurt",
-   "text": "Today's ride now runs buurt to buurt: Overhoeks to the Helmersbuurt, Sportheldenbuurt to KNSM-eiland, between one and a half and five kilometres. No neighbourhood turns up twice in a week; the ride starts on a quiet unnamed street that gives no answer away, and may end on any street, since nothing is asked after arrival and the card names the buurt. Arriving in a buurt, the card describes the neighbourhood itself. From 10 November; earlier days keep the ride they had.",
+   "text": "Today's ride now runs buurt to buurt: Overhoeks to the Helmersbuurt, Sportheldenbuurt to KNSM-eiland, between one and a half and five kilometres by the real route, and the card shows that distance exactly. No neighbourhood turns up twice in a week; the ride starts on a quiet unnamed street that gives no answer away, and may end on any street, since nothing is asked after arrival and the card names the buurt. Arriving in a buurt, the card describes the neighbourhood itself. From 10 November; earlier days keep the ride they had.",
    "images": [
     {
      "src": "ui/2026-11-09-daily-pool/story-returning.jpg",

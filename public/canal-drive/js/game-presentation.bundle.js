@@ -7265,6 +7265,12 @@
     if (!Number.isFinite(stopNumber) || stopNumber <= 1) return 0;
     return Math.min(CHAIN_CAP, Math.round((stopNumber - 1) * CHAIN_STEP * 100) / 100);
   }
+  function scoreStop(stopNumber, basePoints, previousTotal, options = {}) {
+    const base = Math.max(0, Math.round(Number.isFinite(basePoints) ? basePoints : 0));
+    const bonus = options.calm ? 0 : chainBonus(stopNumber);
+    const points = Math.round(base * (1 + bonus));
+    return { basePoints: base, bonus, points, total: Math.max(0, previousTotal || 0) + points };
+  }
   function newRun(now, startName) {
     return {
       version: 1,
@@ -7281,9 +7287,7 @@
   function addStop(run, input, now) {
     const base = run && !isIdle(run, now) ? run : newRun(now, input.fromName);
     const stopNumber = base.stopCount + 1;
-    const bonus = chainBonus(stopNumber);
-    const basePoints = Math.max(0, Math.round(input.points || 0));
-    const points = Math.round(basePoints * (1 + bonus));
+    const { basePoints, bonus, points, total } = scoreStop(stopNumber, input.points, base.totalPoints, { calm: input.calm });
     const names = [...new Set(input.names.filter(Boolean))];
     const stop = {
       id: input.id,
@@ -7306,7 +7310,7 @@
         stopCount: stopNumber,
         pausedAt: null,
         nextLeg: null,
-        totalPoints: base.totalPoints + points,
+        totalPoints: total,
         bestStreak: Math.max(base.bestStreak, stop.bestStreak),
         names: [...known],
         stops
@@ -7338,8 +7342,8 @@
     if (from === "paused") return "resume";
     return null;
   }
-  function nextBonus(run) {
-    return chainBonus(run.stopCount + 1);
+  function lastStopBonus(run) {
+    return run.stops[run.stops.length - 1]?.bonus ?? 0;
   }
   function formatPoints(points) {
     return Math.round(points).toLocaleString("en-US");
@@ -7348,8 +7352,8 @@
     const bits = [countText("count.stops", run.stopCount), countText("count.names", run.names.length)];
     if (!options.calm) {
       bits.push(t("count.points", { points: formatPoints(run.totalPoints) }));
-      const next = nextBonus(run);
-      if (next > 0) bits.push(t("run.chain", { percent: Math.round(next * 100) }));
+      const earned = lastStopBonus(run);
+      if (earned > 0) bits.push(t("run.chain", { percent: Math.round(earned * 100) }));
     }
     return bits.join("  \xB7  ");
   }
@@ -7499,7 +7503,8 @@
         fromName: this.routeFrom?.name ?? "",
         points: this.quizPoints || 0,
         bestStreak: this.quizBestStreak || 0,
-        names: this._rideNamedNames || []
+        names: this._rideNamedNames || [],
+        calm: !this.gameyFeatures
       }, Date.now());
       this._run = run;
       this._runTouchedAt = Date.now();
@@ -7603,6 +7608,17 @@
       if (!this._runEnabled()) return null;
       const run = this._openRun();
       return run ? runLine(run, { calm: !this.gameyFeatures }) : null;
+    }
+    /**
+     * The arrival card's Points inside a run: this stop's points with the bonus
+     * it earned (chainedRun.ts scoreStop), so they add up to the run line's
+     * total. Null outside a run, where the ride's own score stands.
+     */
+    _runArrivalPoints() {
+      if (!this._runEnabled() || !this._runRecordedKey) return null;
+      const stops = this._openRun()?.stops ?? [];
+      const stop = stops[stops.length - 1];
+      return stop && stop.id === this.routeTo?.id ? stop.points : null;
     }
     /** The run card: stamped stops, total, best streak, names, one line of story. */
     _renderRunCard(run) {
@@ -10639,7 +10655,7 @@
           { label: t("ride.stat.time"), value: this.hud.formatTime(this.raceTime).slice(0, -2) },
           { label: t("ride.stat.distance"), value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1e3).toFixed(2)} km` }
         );
-        if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: t("ride.stat.points"), value: String(this.quizPoints) });
+        if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: t("ride.stat.points"), value: String(this._runArrivalPoints() ?? this.quizPoints) });
         const difficultyKey = `setup.difficulty.${this.routeDifficulty}`;
         const viewKey = `setup.view.${String(this.viewMode).replace(/-up$/, "")}`;
         const known = (key) => key in CATALOGS.en;
