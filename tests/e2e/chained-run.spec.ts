@@ -234,16 +234,19 @@ async function legState(page: Page) {
 }
 
 /** Next stop from the arrival card, then a plain reload in the middle of the dealt leg: the leg resumes. */
-async function nextStopThenReload(page: Page) {
+async function nextStopThenReload(page: Page, label: string) {
   await tap(page, 'again');
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
   await page.waitForTimeout(1500);
   const before = await legState(page);
+  await page.screenshot({ path: shot(`r2-${label}-before-reload`) });
   await page.reload();
   await page.waitForFunction(() => { const g = (window as any).canalRecallGame; return g && (g.state === 4 || g.state === 2 || g.state === 0); }, null, { timeout: 150_000 });
   await page.waitForFunction(() => { const g = (window as any).canalRecallGame; return g.state === 4 || (g.state === 0 && document.querySelector('#route-card')?.checkVisibility?.()); }, null, { timeout: 150_000 }).catch(() => {});
   const after = await legState(page);
-  console.log(JSON.stringify({ project: test.info().project.name, before, after }));
+  await page.waitForTimeout(2500);
+  await page.screenshot({ path: shot(`r2-${label}-after-reload`) });
+  console.log(JSON.stringify({ project: test.info().project.name, label, before, after }));
   expect(before.nextLeg, 'the run stores the leg being ridden').toBe(`${before.from} → ${before.to}`);
   expect(after.state, 'the reload resumes the ride, not route setup').toBe(4);
   expect(after.from).toBe(before.from);
@@ -272,10 +275,11 @@ test('a reload during a dealt review leg of Today\'s ride resumes the leg (R2-1)
   });
   const pillKm = Number(pill.text.match(/([\d.]+) km/)?.[1]);
   console.log(JSON.stringify({ project: test.info().project.name, landingKm, pill }));
+  await page.screenshot({ path: shot('r2-daily-start') });
   expect.soft(Math.abs(pillKm - landingKm), `landing ${landingKm} km vs pill ${pill.text}`).toBeLessThanOrEqual(0.2);
   const first = await arrive(page);
   expect(first.run?.stopCount).toBe(1);
-  await nextStopThenReload(page);
+  await nextStopThenReload(page, 'daily');
 });
 
 test('a reload during a dealt leg of a run begun from Route setup resumes the leg (R2-1)', async ({ page }) => {
@@ -284,7 +288,7 @@ test('a reload during a dealt leg of a run begun from Route setup resumes the le
   await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
   const first = await arrive(page);
   expect(first.run?.stopCount).toBe(1);
-  await nextStopThenReload(page);
+  await nextStopThenReload(page, 'setup');
 });
 
 // R2-9 (#302): a first-time guest's first ride is a bike ride on streets, not a boat on the IJ.
@@ -301,5 +305,7 @@ test('a fresh profile\'s first ride is by bike on streets (R2-9)', async ({ page
     return { travel: g.travelMode as string, stored: JSON.parse(localStorage.getItem('canalRecall.preferences.v1') || 'null')?.travelMode ?? null };
   });
   console.log(JSON.stringify({ project: test.info().project.name, ride }));
+  await page.waitForTimeout(2500);
+  await page.screenshot({ path: shot('r2-fresh-first-ride') });
   expect(ride.travel).toBe('car');
 });
