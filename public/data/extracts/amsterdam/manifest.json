@@ -109,5 +109,10 @@
     "buurts": 90,
     "water": 1497,
     "source": "scripts/knowledge-map/build-outline.ts from boundaries.json + water.json (#297)"
+  },
+  "routing": {
+    "file": "streets-routing.json",
+    "count": 47532,
+    "graphRevision": 2
   }
 }
