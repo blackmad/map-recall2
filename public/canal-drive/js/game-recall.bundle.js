@@ -151,7 +151,7 @@
     "knowledge.plan": "Plan review \xB7 {count} due",
     "knowledge.nothingDue": "Nothing due now",
     "knowledge.emptyTitle": "Your map starts with one answer",
-    "knowledge.emptyBody": "Complete a route and recall a street, canal, bridge, stop, or line. It will appear here with its next review time.",
+    "knowledge.emptyBody": "Complete a route and recall a canal, street, bridge, stop, or line. It will appear here with its next review time.",
     "knowledge.firstRoute": "Choose a first route",
     "knowledge.summary": "Knowledge summary",
     "knowledge.dueNow": "due now",
@@ -177,8 +177,8 @@
     "kmap.filter.other": "{name} \xB7 {count} names",
     "kmap.wholeCity": "Whole city",
     "stamps.title": "Passport",
-    "stamps.bodyEarned": "One stamp per buurt, earned by riding and naming it",
-    "stamps.bodyEmpty": "Know eight names, then ride into a buurt to earn its stamp",
+    "stamps.bodyEarned": "One stamp per buurt, earned on a quiz ride by naming it. Stamps from Free Ride stay",
+    "stamps.bodyEmpty": "Know eight names, then ride into a buurt on a quiz ride to earn its stamp",
     "stamps.countAria": "{earned} of {total} stamps",
     "stamps.all": "All {total} buurts",
     "stamps.new": "New stamp",
@@ -915,7 +915,7 @@
     "knowledge.plan": "Herhaling plannen \xB7 {count} te doen",
     "knowledge.nothingDue": "Nu niets te doen",
     "knowledge.emptyTitle": "Je kaart begint met \xE9\xE9n antwoord",
-    "knowledge.emptyBody": "Rijd een route en noem een straat, gracht, brug, halte of lijn. Die verschijnt hier met het volgende herhaalmoment.",
+    "knowledge.emptyBody": "Rijd een route en noem een gracht, straat, brug, halte of lijn. Die verschijnt hier met het volgende herhaalmoment.",
     "knowledge.firstRoute": "Kies een eerste route",
     "knowledge.summary": "Kennisoverzicht",
     "knowledge.dueNow": "nu te doen",
@@ -941,8 +941,8 @@
     "kmap.filter.other": "{name} \xB7 {count} namen",
     "kmap.wholeCity": "Hele stad",
     "stamps.title": "Paspoort",
-    "stamps.bodyEarned": "E\xE9n stempel per buurt, verdiend door er te fietsen en de namen te kennen",
-    "stamps.bodyEmpty": "Ken acht namen en fiets dan een buurt in om de stempel te verdienen",
+    "stamps.bodyEarned": "E\xE9n stempel per buurt, verdiend in een quizrit door de namen te kennen. Stempels uit Vrij rijden blijven",
+    "stamps.bodyEmpty": "Ken acht namen en fiets dan in een quizrit een buurt in om de stempel te verdienen",
     "stamps.countAria": "{earned} van {total} stempels",
     "stamps.all": "Alle {total} buurten",
     "stamps.new": "Nieuwe stempel",
@@ -2051,8 +2051,9 @@
       ...DIFFICULTY_PRESETS.medium,
       // Boat and Chase are the product start (2026-10-22, user's call; cockpit
       // is retired and the setup View row offers the 2D and 3D views). Ride
-      // review R2-9 (#302) argued for a bike start; that reversal waits on the
-      // user (needs-david), so the boat stays.
+      // review R2-9 (#302) argued for a bike start; the user decided on
+      // 2026-11-09 (#306): "boat is more fun somehow". The boat stays the
+      // first ride; R2-9 is dropped for good.
       travelMode: "boat",
       controlMode: defaultControlMode(),
       viewMode: "chase",

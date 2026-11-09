@@ -302,7 +302,7 @@
     "knowledge.plan": "Plan review \xB7 {count} due",
     "knowledge.nothingDue": "Nothing due now",
     "knowledge.emptyTitle": "Your map starts with one answer",
-    "knowledge.emptyBody": "Complete a route and recall a street, canal, bridge, stop, or line. It will appear here with its next review time.",
+    "knowledge.emptyBody": "Complete a route and recall a canal, street, bridge, stop, or line. It will appear here with its next review time.",
     "knowledge.firstRoute": "Choose a first route",
     "knowledge.summary": "Knowledge summary",
     "knowledge.dueNow": "due now",
@@ -328,8 +328,8 @@
     "kmap.filter.other": "{name} \xB7 {count} names",
     "kmap.wholeCity": "Whole city",
     "stamps.title": "Passport",
-    "stamps.bodyEarned": "One stamp per buurt, earned by riding and naming it",
-    "stamps.bodyEmpty": "Know eight names, then ride into a buurt to earn its stamp",
+    "stamps.bodyEarned": "One stamp per buurt, earned on a quiz ride by naming it. Stamps from Free Ride stay",
+    "stamps.bodyEmpty": "Know eight names, then ride into a buurt on a quiz ride to earn its stamp",
     "stamps.countAria": "{earned} of {total} stamps",
     "stamps.all": "All {total} buurts",
     "stamps.new": "New stamp",
@@ -1066,7 +1066,7 @@
     "knowledge.plan": "Herhaling plannen \xB7 {count} te doen",
     "knowledge.nothingDue": "Nu niets te doen",
     "knowledge.emptyTitle": "Je kaart begint met \xE9\xE9n antwoord",
-    "knowledge.emptyBody": "Rijd een route en noem een straat, gracht, brug, halte of lijn. Die verschijnt hier met het volgende herhaalmoment.",
+    "knowledge.emptyBody": "Rijd een route en noem een gracht, straat, brug, halte of lijn. Die verschijnt hier met het volgende herhaalmoment.",
     "knowledge.firstRoute": "Kies een eerste route",
     "knowledge.summary": "Kennisoverzicht",
     "knowledge.dueNow": "nu te doen",
@@ -1092,8 +1092,8 @@
     "kmap.filter.other": "{name} \xB7 {count} namen",
     "kmap.wholeCity": "Hele stad",
     "stamps.title": "Paspoort",
-    "stamps.bodyEarned": "E\xE9n stempel per buurt, verdiend door er te fietsen en de namen te kennen",
-    "stamps.bodyEmpty": "Ken acht namen en fiets dan een buurt in om de stempel te verdienen",
+    "stamps.bodyEarned": "E\xE9n stempel per buurt, verdiend in een quizrit door de namen te kennen. Stempels uit Vrij rijden blijven",
+    "stamps.bodyEmpty": "Ken acht namen en fiets dan in een quizrit een buurt in om de stempel te verdienen",
     "stamps.countAria": "{earned} van {total} stempels",
     "stamps.all": "Alle {total} buurten",
     "stamps.new": "Nieuwe stempel",
@@ -2923,6 +2923,20 @@
     }
   };
 
+  // src/canalRecall/featureFlags.ts
+  var FREE_RIDE_COLLECTION_DEFAULT = false;
+  function queryFlag(search, name, fallback) {
+    const match = new RegExp(`[?&]${name}=([^&#]*)`).exec(search || "");
+    if (!match) return fallback;
+    const value = match[1].toLowerCase();
+    if (value === "1" || value === "true" || value === "on") return true;
+    if (value === "0" || value === "false" || value === "off") return false;
+    return fallback;
+  }
+  function freeRideCollectionEnabled(search) {
+    return queryFlag(search, "collection", FREE_RIDE_COLLECTION_DEFAULT);
+  }
+
   // src/canalRecall/game/freeRideCollection.ts
   var COLLECTION_STORAGE_KEY = "canalRecall.freeRideCollection.v1";
   var CHECKLIST_MAX_PLACES = 9;
@@ -3068,11 +3082,7 @@
     return out;
   }
   function collectionEnabled(search) {
-    try {
-      return new URLSearchParams(search).get("collection") !== "0";
-    } catch {
-      return !/[?&]collection=0(?:&|$)/.test(search);
-    }
+    return freeRideCollectionEnabled(search);
   }
 
   // src/canalRecall/look/palette.ts
@@ -3423,14 +3433,12 @@
       this._freeRideRefresh = 0;
       this._freeRideOpened = /* @__PURE__ */ new Set();
       this._freeRideCollection = null;
+      if (this._freeRideLists) this._freeRideLists.reach = void 0;
       if (collectionEnabled(typeof location === "undefined" ? "" : location.search)) {
         const state = readCollection(typeof localStorage === "undefined" ? null : localStorage);
         this._freeRideCollection = {
           state,
           opened: new Set(state.opened),
-          lists: null,
-          listsFrom: null,
-          hoodOfKey: /* @__PURE__ */ new Map(),
           token: null,
           tokenScreen: null,
           tokenHidden: null,
@@ -3548,10 +3556,10 @@
       const { key, count } = freeRideTallyKey(this._freeRideOpened?.size ?? 0);
       return t(key, { count });
     }
-    /** Every neighbourhood's checklist, built once per catalogue and boundary set. */
+    /** Every neighbourhood's checklist, built once per catalogue and boundary set
+     *  (with the collection off too: the plaque's place anchors read it). */
     _freeRideChecklists() {
-      const collection = this._freeRideCollection;
-      if (!collection) return null;
+      const collection = this._freeRideLists ||= { lists: null, listsFrom: null, hoodOfKey: /* @__PURE__ */ new Map() };
       const places = this._freeRideCatalog();
       const from = collection.listsFrom;
       if (collection.lists && from && from.places === places && from.neighborhoods === this.neighborhoods) return collection.lists;
@@ -3570,12 +3578,13 @@
     }
     /** The checklist places near a point, as anchors for the plaque's buurt
      *  (placeBuurt.ts): while the rider stands at a place, the plaque names the
-     *  buurt whose checklist holds it. Empty outside Free Ride's collection. */
+     *  buurt whose checklist holds it. Empty outside Free Ride; kept with the
+     *  collection off (F1, #311: the placeBuurt rule stays). */
     _freeRidePlaceAnchors(x, y) {
-      const collection = this._freeRideCollection;
-      if (!this.freeRide || !collection) return [];
+      if (!this.freeRide) return [];
       const lists = this._freeRideChecklists();
-      if (!lists) return [];
+      const collection = this._freeRideLists;
+      if (!lists || !collection) return [];
       const max = PLACE_AT_MAX_M * PIXELS_PER_METER;
       const reaches = collection.reach ||= /* @__PURE__ */ new Map();
       const anchors = [];
@@ -3680,7 +3689,7 @@
       const activeId = this._landmarkNotice?.id || "";
       const collection = this._freeRideCollection;
       const distanceOf = new Map((nearby || []).map((place) => [place.key, place.distance / PIXELS_PER_METER]));
-      const far = (key) => collection ? distanceAlpha(distanceOf.get(key) ?? Infinity) : 1;
+      const far = (key) => distanceAlpha(distanceOf.get(key) ?? Infinity);
       const draw = (key, kind, label, anchorX, anchorY, box, rawAlpha) => {
         const alpha = rawAlpha * (activeId === key ? 1 : far(key));
         const active = activeId === key || kind === "bridge" && this._landmarkNotice?.name === nearby?.find((p) => p.key === key)?.name;
@@ -3904,7 +3913,7 @@
       collection.state = noteOpened(collection.state, id);
       const store = typeof localStorage === "undefined" ? null : localStorage;
       this._freeRideChecklists();
-      const hood = collection.hoodOfKey.get(id);
+      const hood = this._freeRideLists?.hoodOfKey.get(id);
       if (hood) {
         const progress = this._freeRideChecklistProgress(hood);
         const today = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
