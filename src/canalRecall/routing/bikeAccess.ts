@@ -79,6 +79,37 @@ export function isBikeRoutingHighway(tags: Readonly<Record<string, string | unde
   return false;
 }
 
+/**
+ * The rideable footway/path allowlist (lane D2, #322, 2026-11-09).
+ *
+ * A footway or path enters the cycling graph only when OSM says bikes may use
+ * it: `highway=footway|path` with `bicycle=yes|designated|permissive|official`.
+ * Everything else stays out, by name:
+ *  - `highway=steps` (51 dead ends meet steps; the bike does not ride stairs),
+ *  - footways and paths with no bicycle tag or a denied one (kerb-parallel
+ *    sidewalks would double the graph and lead the rider onto pavements),
+ *  - `area=yes` (a plaza outline is not a centreline),
+ *  - `access=no|private` without a bicycle permission that overrides it is
+ *    already excluded by the bicycle value above,
+ *  - `indoor=yes` and `level` other than 0 (station concourses, decks).
+ * `track`, `bridleway` and `corridor` stay out: the measurement found too few
+ * of them at dead ends to justify a new class.
+ *
+ * The extract pipeline used to *mean* this (`refresh-city-extract.sh` had
+ * `w/highway=footway/bicycle=yes,...`), but osmium has no AND in one
+ * expression, so that filter matched no way at all: only footways that were
+ * also `bridge=yes` ever reached the routing graph (8 footways, 5 paths).
+ */
+export const RIDEABLE_PATH_HIGHWAYS: ReadonlySet<string> = new Set(['footway', 'path']);
+
+export function isRideablePathAdmission(tags: Readonly<Record<string, string | undefined>>): boolean {
+  if (!RIDEABLE_PATH_HIGHWAYS.has(tags.highway || '')) return false;
+  if (!BICYCLE_ALLOWED.has(tags.bicycle || '')) return false;
+  if (tags.area === 'yes' || tags.indoor === 'yes') return false;
+  if (tags.level && tags.level !== '0') return false;
+  return true;
+}
+
 type NamedRoutingFeature = {
   name?: string;
   highway?: string;
