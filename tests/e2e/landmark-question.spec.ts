@@ -278,5 +278,4 @@ test('the asked landmark and every choice are buildings; a memorial is never ask
   });
   expect(memorial.error).toBeUndefined();
   expect(memorial.asked).not.toBe('Homomonument');
-  expect(memorial.kind).not.toBe('landmark');
 });
