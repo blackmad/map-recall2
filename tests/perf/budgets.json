@@ -32,19 +32,25 @@
       "value": 250,
       "unit": "MB JS heap at ride start, iPhone profile, scripts/heap-ride.mjs with a forced GC",
       "source": "integrator decision 2026-11-01 (user: use your judgement): the programme's 160 MB assumed MapLibre's duplicate building source and workers were gone, which happens at the P5 flip; 305 MB measured 2026-11-01, the road lane's data cuts and 6 phone tiles continue; 160 is re-evaluated after the flip",
-      "date": "2026-11-01"
+      "date": "2026-11-01",
+      "reportOnly": true,
+      "reportOnlySince": "2026-11-09 (#309: measured by heap-ride/time-to-ride/start-frame collectors, never fails the gate)"
     },
     "iphoneArrayBuffersMB": {
       "value": 67,
       "unit": "MB ArrayBuffers, iPhone profile",
       "source": "docs/handoffs/lane-perf-phones-20261023.md; artifacts/perf/phone-memory-iphone.json",
-      "date": "2026-10-24"
+      "date": "2026-10-24",
+      "reportOnly": true,
+      "reportOnlySince": "2026-11-09 (#309: measured by heap-ride/time-to-ride/start-frame collectors, never fails the gate)"
     },
     "iphoneGlBuffersMB": {
       "value": 140,
       "unit": "MB GL buffers, iPhone profile",
       "source": "docs/handoffs/lane-perf-phones-20261023.md; artifacts/perf/phone-memory-iphone.json",
-      "date": "2026-10-24"
+      "date": "2026-10-24",
+      "reportOnly": true,
+      "reportOnlySince": "2026-11-09 (#309: measured by heap-ride/time-to-ride/start-frame collectors, never fails the gate)"
     },
     "iphoneMapLibreWorkersMB": {
       "value": 94,
@@ -56,7 +62,9 @@
       "value": 7.5,
       "unit": "seconds",
       "source": "docs/performance/2026-10-06/README.md (desktop city-ready 7.5 s)",
-      "date": "2026-10-06"
+      "date": "2026-10-06",
+      "reportOnly": true,
+      "reportOnlySince": "2026-11-09 (#309: measured by heap-ride/time-to-ride/start-frame collectors, never fails the gate)"
     },
     "cameraParityPx": {
       "value": 3.2,
@@ -140,25 +148,33 @@
       "value": 0,
       "unit": "frames over 200 ms in the first 10 s after RACING, iPhone 13 profile at 4x, own engine, any start type (scripts/motion-stutter.mjs --starts default,change,next,free)",
       "source": "lane E5 2026-11-05 (#218): before 1-2 per start (longest 367 ms), after 0 across 2 cold starts, 6 route changes, 4 free rides, 4 next starts; label frame 162 -> <20 ms, ground budget on by default",
-      "date": "2026-11-05"
+      "date": "2026-11-05",
+      "reportOnly": true,
+      "reportOnlySince": "2026-11-09 (#309: measured by heap-ride/time-to-ride/start-frame collectors, never fails the gate)"
     },
     "desktopRideStartOver100MsWarm": {
       "value": 0,
       "unit": "frames over 100 ms in the first 10 s after RACING on a route change, Free Ride or next-from-finish start, desktop perf viewport, own engine",
       "source": "lane E5 2026-11-05 (#218): before 1,1,0,0,0,0 on route changes; after 0 on all; the cold first start stays red at 1 (was 6)",
-      "date": "2026-11-05"
+      "date": "2026-11-05",
+      "reportOnly": true,
+      "reportOnlySince": "2026-11-09 (#309: measured by heap-ride/time-to-ride/start-frame collectors, never fails the gate)"
     },
     "desktopColdStartOver200Ms": {
       "value": 0,
       "unit": "frames over 200 ms in the first 10 s after RACING on the cold first start, desktop perf viewport, own engine, fresh browser (scripts/motion-stutter.mjs --runs cold --seconds 0 --starts default)",
       "source": "lane E6 2026-11-05 (#219): before 1,1,1 (longest 217 ms), after 0,0,0 (longest 133-150 ms, one major GC); over 100 ms still 1 per run, held on the board",
-      "date": "2026-11-05"
+      "date": "2026-11-05",
+      "reportOnly": true,
+      "reportOnlySince": "2026-11-09 (#309: measured by heap-ride/time-to-ride/start-frame collectors, never fails the gate)"
     },
     "iphoneColdStartOver100Ms": {
       "value": 8,
       "unit": "frames over 100 ms in the first 10 s after RACING on the cold first start, iPhone 13 profile at 4x, own engine, fresh browser",
       "source": "lane E6 2026-11-05 (#219): before 17,17,17, after 7,7,8; the line holds the gain, the target (<= 5, 0 over 200 ms) stays on the board: one 233-250 ms major GC per start remains",
-      "date": "2026-11-05"
+      "date": "2026-11-05",
+      "reportOnly": true,
+      "reportOnlySince": "2026-11-09 (#309: measured by heap-ride/time-to-ride/start-frame collectors, never fails the gate)"
     },
     "popInSwapsMid": {
       "value": {
