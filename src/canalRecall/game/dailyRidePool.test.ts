@@ -28,6 +28,7 @@ import { buurtFinishBlurb } from './finishBlurb';
 import { buildRouteShare } from '../shareRoute';
 import { buildLandingModel } from '../landing/landingModel';
 import { landingCardsHtml } from '../landing/landingView';
+import { landingDailyParts } from '../landing/landingDaily';
 import { landingFixtureStorage, LANDING_FIXTURE_NOW } from '../landing/landingFixtures';
 
 const DAYS = 365;
@@ -123,7 +124,8 @@ test('a finish on a named way never prints that way: card, landing, arrival blur
     const to = { ...place, buurtPlace: true as const };
     const from = { ...start, buurtPlace: true as const };
     const pair: DailyRidePair = { date: DAILY_POOL_CUTOVER, id: `${DAILY_POOL_CUTOVER}:${from.id}>${to.id}`, from, to, km: dailyRideKm(from, to) };
-    const html = landingCardsHtml({ ...base, daily: { ...base.daily, pair } }, { ride: './' });
+    const model = { ...base, daily: { today: null, board: [], ...base.daily, pair } };
+    const html = landingCardsHtml(model, { ride: './' }, landingDailyParts(model, { ride: './' }));
     // The real extract: a blurb that names the finish way would print it on the arrival card (#289).
     const blurb = buurtFinishBlurb(to, enriched);
     const share = buildRouteShare({

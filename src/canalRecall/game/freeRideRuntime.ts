@@ -98,8 +98,11 @@ export interface FreeRideHost extends LandmarkHost {
   _freeRideBar?: HTMLElement | null;
   _freeRideBarKey?: string;
   _freeRideLabels?: { labels: unknown; names: Set<string>; index: StreetLabelCandidates<StreetLabelAnchor> } | null;
-  /** The collection (freeRideCollection.ts); null with `?collection=0`. */
+  /** The collection (freeRideCollection.ts); null unless `?collection=1` (off by default, F1 #311). */
   _freeRideCollection?: FreeRideCollectionState | null;
+  /** Every buurt's places list, kept whether or not the collection runs: the
+   *  plaque's place-buurt rule (placeBuurt.ts) needs it in every Free Ride. */
+  _freeRideLists?: FreeRideListsCache | null;
   _neighborhoodAt(x: number, y: number): { name: string } | null;
   _toWorld?(lat: number, lon: number): WorldPoint | null;
 
@@ -111,15 +114,18 @@ export interface FreeRideHost extends LandmarkHost {
   _openRouteSetup?(): void;
 }
 
-export interface FreeRideCollectionState {
-  state: CollectionState;
-  opened: Set<string>;
+export interface FreeRideListsCache {
   lists: Map<string, Checklist> | null;
   listsFrom: { places: unknown; neighborhoods: unknown } | null;
   /** Place key → its neighbourhood's list name. */
   hoodOfKey: Map<string, string>;
   /** Place key → how far it reaches for the plaque (world px; placeBuurt.ts). */
   reach?: Map<string, number>;
+}
+
+export interface FreeRideCollectionState {
+  state: CollectionState;
+  opened: Set<string>;
   /** The landmark carrying the discovery token, and where it was last drawn. */
   token: (CollectionPlace & { distance: number }) | null;
   tokenScreen: { key: string; x: number; y: number; size: number; alpha: number } | null;
@@ -178,10 +184,11 @@ export class GameFreeRideRuntime {
     this._freeRideRefresh = 0;
     this._freeRideOpened = new Set();
     this._freeRideCollection = null;
+    if (this._freeRideLists) this._freeRideLists.reach = undefined;
     if (collectionEnabled(typeof location === 'undefined' ? '' : location.search)) {
       const state = readCollection(typeof localStorage === 'undefined' ? null : localStorage);
       this._freeRideCollection = {
-        state, opened: new Set(state.opened), lists: null, listsFrom: null, hoodOfKey: new Map(),
+        state, opened: new Set(state.opened),
         token: null, tokenScreen: null, tokenHidden: null, corridor: null, stampMoment: null, stampPostcard: null, collected: null,
       };
     }
@@ -304,10 +311,10 @@ export class GameFreeRideRuntime {
     return tr(key, { count });
   }
 
-  /** Every neighbourhood's checklist, built once per catalogue and boundary set. */
+  /** Every neighbourhood's checklist, built once per catalogue and boundary set
+   *  (with the collection off too: the plaque's place anchors read it). */
   _freeRideChecklists(): Map<string, Checklist> | null {
-    const collection = this._freeRideCollection;
-    if (!collection) return null;
+    const collection = (this._freeRideLists ||= { lists: null, listsFrom: null, hoodOfKey: new Map() });
     const places = this._freeRideCatalog();
     const from = collection.listsFrom;
     if (collection.lists && from && from.places === places && from.neighborhoods === this.neighborhoods) return collection.lists;
@@ -329,12 +336,13 @@ export class GameFreeRideRuntime {
 
   /** The checklist places near a point, as anchors for the plaque's buurt
    *  (placeBuurt.ts): while the rider stands at a place, the plaque names the
-   *  buurt whose checklist holds it. Empty outside Free Ride's collection. */
+   *  buurt whose checklist holds it. Empty outside Free Ride; kept with the
+   *  collection off (F1, #311: the placeBuurt rule stays). */
   _freeRidePlaceAnchors(x: number, y: number): PlaceAnchor[] {
-    const collection = this._freeRideCollection;
-    if (!this.freeRide || !collection) return [];
+    if (!this.freeRide) return [];
     const lists = this._freeRideChecklists();
-    if (!lists) return [];
+    const collection = this._freeRideLists;
+    if (!lists || !collection) return [];
     const max = PLACE_AT_MAX_M * PIXELS_PER_METER;
     const reaches = (collection.reach ||= new Map());
     const anchors: PlaceAnchor[] = [];
@@ -446,9 +454,9 @@ export class GameFreeRideRuntime {
     const placed = layoutMarkers(requests, { width: CANVAS_W, height: CANVAS_H }, blocked);
     const activeId = this._landmarkNotice?.id || '';
     const collection = this._freeRideCollection;
-    // Markers fade with distance (user 2026-10-30), with the collection on.
+    // Markers fade with distance (user 2026-10-30), with the collection on or off (F1, #311).
     const distanceOf = new Map((nearby || []).map(place => [place.key, place.distance / PIXELS_PER_METER]));
-    const far = (key: string) => (collection ? distanceAlpha(distanceOf.get(key) ?? Infinity) : 1);
+    const far = (key: string) => distanceAlpha(distanceOf.get(key) ?? Infinity);
     const draw = (key: string, kind: FreeRideNearby['kind'], label: string, anchorX: number, anchorY: number, box: ScreenRect, rawAlpha: number) => {
       const alpha = rawAlpha * (activeId === key ? 1 : far(key));
       const active = activeId === key || (kind === 'bridge' && this._landmarkNotice?.name === nearby?.find(p => p.key === key)?.name);
@@ -675,7 +683,7 @@ export class GameFreeRideRuntime {
     collection.state = noteOpened(collection.state, id);
     const store = typeof localStorage === 'undefined' ? null : localStorage;
     this._freeRideChecklists();
-    const hood = collection.hoodOfKey.get(id);
+    const hood = this._freeRideLists?.hoodOfKey.get(id);
     if (hood) {
       const progress = this._freeRideChecklistProgress(hood);
       const today = new Date().toISOString().slice(0, 10);

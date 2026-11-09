@@ -6,26 +6,30 @@ import landingPage from '../../public/canal-drive/landing.html?raw';
 import { buildLandingModel, type LandingModel } from '../../src/canalRecall/landing/landingModel.ts';
 import { mountWhatsNewToast, RETURNING_KEY } from '../../src/canalRecall/whatsNewToast.ts';
 import { landingCardsHtml } from '../../src/canalRecall/landing/landingView.ts';
+import { buildLandingDaily, landingDailyParts } from '../../src/canalRecall/landing/landingDaily.ts';
+import { DAILY_RIDE_ON_LANDING } from '../../src/canalRecall/featureFlags.ts';
 import {
   LANDING_FIXTURE_NOW,
   landingFixtureStorage,
   type LandingScenario,
 } from '../../src/canalRecall/landing/landingFixtures.ts';
 
-// The landing page for a returning player (G2, #272): Today's ride, Continue
-// and Free Ride over the hero. The page's own <style> is lifted from
+// The landing page for a returning player (G2, #272): Continue and Free Ride
+// over the hero. Today's ride is off since 2026-11-09 (F1 #311,
+// DAILY_RIDE_ON_LANDING); the `daily` arg draws it as the opt-in would. The page's own <style> is lifted from
 // landing.html so the cards sit in the same type and buttons as the page.
 const pageStyle = (/<style>([\s\S]*?)<\/style>/.exec(landingPage)?.[1] ?? '');
 
 type Variant = LandingScenario | 'long-names';
 
-function modelFor(variant: Variant): LandingModel {
-  const model = buildLandingModel(landingFixtureStorage(variant === 'long-names' ? 'returning' : variant), LANDING_FIXTURE_NOW);
-  if (variant !== 'long-names' || !model.daily.pair) return model;
+function modelFor(variant: Variant, withDaily: boolean): LandingModel {
+  const storage = landingFixtureStorage(variant === 'long-names' ? 'returning' : variant);
+  const model = buildLandingModel(storage, LANDING_FIXTURE_NOW, 'amsterdam', withDaily ? buildLandingDaily(storage, LANDING_FIXTURE_NOW) : null);
+  if (variant !== 'long-names') return model;
+  const long = { ...model, header: { streakDays: 112, stamps: 37 }, due: { names: 48, minutes: 30, nextDueDays: null } };
+  if (!model.daily?.pair) return long;
   return {
-    ...model,
-    header: { streakDays: 112, stamps: 37 },
-    due: { names: 48, minutes: 30, nextDueDays: null },
+    ...long,
     daily: {
       ...model.daily,
       pair: {
@@ -54,9 +58,12 @@ function useToast(on: boolean) {
   }, [on]);
 }
 
-function LandingCards({ variant, toast = false }: { variant: Variant; toast?: boolean }) {
+function LandingCards({ variant, toast = false, daily = DAILY_RIDE_ON_LANDING }: { variant: Variant; toast?: boolean; daily?: boolean }) {
   useToast(toast);
-  const html = useMemo(() => landingCardsHtml(modelFor(variant), { ride: '/ride' }), [variant]);
+  const html = useMemo(() => {
+    const model = modelFor(variant, daily);
+    return landingCardsHtml(model, { ride: '/ride' }, daily ? landingDailyParts(model, { ride: '/ride' }) : null);
+  }, [variant, daily]);
   return (
     <div className="landing-story">
       <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -84,6 +91,7 @@ const meta: Meta<typeof LandingCards> = {
   args: { variant: 'returning' },
   argTypes: {
     variant: { control: 'select', options: ['first-time', 'opened-once', 'returning', 'nothing-due', 'ridden-today', 'long-names'] },
+    daily: { control: 'boolean' },
   },
 };
 export default meta;
@@ -104,3 +112,9 @@ export const ReturningPhone: Story = { args: { variant: 'returning' }, parameter
 export const RiddenTodayPhone: Story = { args: { variant: 'ridden-today' }, parameters: phone };
 export const NothingDuePhone: Story = { args: { variant: 'nothing-due' }, parameters: phone };
 export const LongNamesPhone: Story = { args: { variant: 'long-names' }, parameters: phone };
+// F1 (#311): the default since 2026-11-09, named so the strip can point at it.
+export const ReturningNoDaily: Story = { args: { variant: 'returning', daily: false } };
+export const ReturningNoDailyPhone: Story = { args: { variant: 'returning', daily: false }, parameters: phone };
+// The opt-in as it was (G2): Today's ride first, then Continue and Free Ride.
+export const ReturningDailyOptIn: Story = { args: { variant: 'returning', daily: true } };
+export const ReturningDailyOptInPhone: Story = { args: { variant: 'returning', daily: true }, parameters: phone };

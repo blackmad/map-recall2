@@ -200,7 +200,8 @@ export interface CanalPreferences {
   distanceHaze: boolean;
   /** "Show performance" (engine/perfHud.ts): a small line of tier, memory and frame numbers; off by default. */
   perfHud: boolean;
-  /** Free Ride "Quiz me on landmarks" (G3, landmarkQuestion.ts): off by default; routes always ask. */
+  /** Free Ride "Quiz me on landmarks" (G3, landmarkQuestion.ts): off by default; routes always ask.
+   *  Since 2026-11-09 (F1, #311) Free Ride ignores it unless `?freeRideQuiz=1` (featureFlags.ts); kept, never cleared. */
   landmarkQuiz: boolean;
   measuredColoursOnly: boolean;
   detailed3d: boolean;
@@ -254,8 +255,9 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     ...DIFFICULTY_PRESETS.medium,
     // Boat and Chase are the product start (2026-10-22, user's call; cockpit
     // is retired and the setup View row offers the 2D and 3D views). Ride
-    // review R2-9 (#302) argued for a bike start; that reversal waits on the
-    // user (needs-david), so the boat stays.
+    // review R2-9 (#302) argued for a bike start; the user decided on
+    // 2026-11-09 (#306): "boat is more fun somehow". The boat stays the
+    // first ride; R2-9 is dropped for good.
     travelMode: 'boat',
     controlMode: defaultControlMode(),
     viewMode: 'chase',

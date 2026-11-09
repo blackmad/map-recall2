@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 // stand-in map, through the game's own drawing methods, so the layout here is
 // the layout in the ride.
 
-type Scenario = 'idle' | 'card' | 'long' | 'no-image' | 'checklist' | 'stamped' | 'stamped-long' | 'token-far' | 'at-place';
+type Scenario = 'idle' | 'card' | 'long' | 'no-image' | 'checklist' | 'stamped' | 'stamped-long' | 'token-far' | 'at-place' | 'no-checklist';
 
 interface FreeRideStoryArgs {
   scenario: Scenario;
@@ -57,7 +57,9 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
       const long = scenario === 'long';
       const atPlace = scenario === 'at-place';
       const collecting = scenario === 'checklist' || scenario === 'stamped' || scenario === 'stamped-long' || scenario === 'token-far' || atPlace;
-      game.currentNeighborhood = long ? 'Van Lennepbuurt en Kinkerbuurt-Noord' : collecting ? 'Marineterrein' : 'Jordaan';
+      // F1 (#311): the default Free Ride in a buurt that has a list: no checklist line, no coin.
+      const noChecklist = scenario === 'no-checklist';
+      game.currentNeighborhood = long ? 'Van Lennepbuurt en Kinkerbuurt-Noord' : collecting || noChecklist ? 'Marineterrein' : 'Jordaan';
       const landmark = {
         id: long ? 'rijksmuseum' : 'westerkerk', name: long ? LONG_NAME : 'Westerkerk', type: long ? 'museum' : 'church',
         ...at(w * 0.36, h * 0.42), extractLang: 'en',
@@ -90,10 +92,13 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
           : Array.from({ length: 9 }, (_, i) => ({ key: `m${i}`, name: `Place ${i}`, ...at(w * (0.15 + i * 0.08), h * (0.2 + (i % 3) * 0.08)) }));
         if (!atPlace) places[0] = { key: 'anne-frank', name: 'Anne Frank House', ...at(w * 0.7, h * 0.3) };
         const opened = new Set((scenario === 'stamped' || scenario === 'stamped-long') ? places.map(p => p.key) : atPlace ? ['voc-ship'] : ['m1', 'm2', 'm3']);
+        game._freeRideLists = {
+          lists: new Map([['Marineterrein', { hood: 'Marineterrein', places }]]),
+          listsFrom: { places: game._freeRideCatalog(), neighborhoods: game.neighborhoods }, hoodOfKey: new Map(places.map(p => [p.key, 'Marineterrein'])),
+        };
         game._freeRideCollection = {
           state: { opened: [...opened], stamps: (scenario === 'stamped' || scenario === 'stamped-long') ? [{ hood: 'Marineterrein', at: '2026-11-09' }] : [] },
-          opened, lists: new Map([['Marineterrein', { hood: 'Marineterrein', places }]]),
-          listsFrom: { places: game._freeRideCatalog(), neighborhoods: game.neighborhoods }, hoodOfKey: new Map(places.map(p => [p.key, 'Marineterrein'])),
+          opened,
           token: scenario === 'stamped' || scenario === 'stamped-long' || atPlace ? null : { ...places[0], distance: Math.hypot(places[0].x - player.x, places[0].y - player.y) },
           tokenScreen: null, tokenHidden: null, corridor: null,
           stampMoment: (scenario === 'stamped' || scenario === 'stamped-long') ? { hood: 'Marineterrein', until: performance.now() + 600_000 } : null,
@@ -188,6 +193,10 @@ export const TokenFar: Story = { args: { scenario: 'token-far' } };
 /** #284: standing at the National Maritime Museum the plaque keeps Marineterrein's list (1 of 5 places); the ship is "VOC ship Amsterdam". */
 export const ChecklistAtPlace: Story = { args: { scenario: 'at-place' } };
 export const ChecklistAtPlacePhone: Story = { args: { scenario: 'at-place', touch: true }, parameters: phone };
+/** F1 (#311, user 2026-11-09 "no gameplay element in free ride"): the default. In Marineterrein, a buurt with a list,
+ *  the plaque says how many places were opened (or "Tap a marker or a building"); no checklist, no coin, no radar. */
+export const PlaqueWithoutChecklist: Story = { args: { scenario: 'no-checklist' } };
+export const PlaqueWithoutChecklistPhone: Story = { args: { scenario: 'no-checklist', touch: true }, parameters: phone };
 
 export const ChecklistPostcardPhone: Story = { args: { scenario: 'checklist', touch: true }, parameters: phone };
 export const CollectionStampedPhone: Story = { args: { scenario: 'stamped', touch: true }, parameters: phone };

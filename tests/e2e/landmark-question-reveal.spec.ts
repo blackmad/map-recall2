@@ -102,9 +102,8 @@ test('Today’s ride 2026-11-09: the Brakke Grond is not asked after its label, 
     if (sessionStorage.getItem('lq-seeded')) return; sessionStorage.setItem('lq-seeded', '1');
     for (const [k, v] of Object.entries(data)) localStorage.setItem(k, v);
   }, landingFixtureEntries('returning', Date.now()));
-  await page.goto('/canal-drive/landing.html');
-  await page.locator('[data-landing-go="daily"]').click();
-  await page.waitForURL(/ride=daily/);
+  // F1 (#311): no Today's ride card on the landing since 2026-11-09; the hidden opt-in starts the same ride.
+  await page.goto('/canal-drive/?ride=daily');
   await page.evaluate(() => { if (!/landmarkQuestions=/.test(location.search)) history.replaceState(null, '', `${location.pathname}${location.search}&landmarkQuestions=1`); });
   await startSampler(page);
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame?.state ?? -1), { timeout: 150_000 }).toBe(4);

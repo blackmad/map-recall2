@@ -1,19 +1,14 @@
-// The landing page for a returning player (G2, #272): Today's ride, Continue
-// (names due) and Free Ride, with the place streak and passport count above.
+// The landing page for a returning player (G2, #272): Continue (names due)
+// and Free Ride, with the place streak and passport count above. Today's ride
+// is off since 2026-11-09 (user: "no daily ride"; DAILY_RIDE_ON_LANDING in
+// featureFlags.ts): its model half is landingDaily.ts, passed in when on, so
+// the landing bundle carries none of the daily pool.
 //
 // Everything here is read from localStorage the ride already writes; nothing
 // is fetched. A first-time visitor (no ride opened, no history, no names) and
 // `?landing=0` keep the static landing as it was.
 
-import { CANAL_CITIES } from '../game/cities';
-import {
-  dailyRideBoard,
-  dailyRideDateKey,
-  dailyRidePair,
-  type DailyRideDay,
-  type DailyRidePair,
-} from '../game/dailyRide';
-import type { RoutePoi } from '../game/surprisePick';
+import type { DailyRideDay, DailyRidePair } from '../game/dailyRide';
 import { stampCount } from '../stampAlbum';
 import { readPlaceStreak } from '../game/placeStreak';
 import { loadKnowledgeReview } from '../knowledgeReview';
@@ -37,12 +32,6 @@ export const DUE_MINUTES_PER_NAME = 1.7;
 export const DUE_MINUTES_MIN = 5;
 export const DUE_MINUTES_MAX = 30;
 
-/** The curated landmarks today's ride is drawn from: static, so the same everywhere. */
-export function dailyRideCandidates(cityId = 'amsterdam'): RoutePoi[] {
-  const city = CANAL_CITIES[cityId as keyof typeof CANAL_CITIES] ?? CANAL_CITIES.amsterdam;
-  return city.curatedPois.map(poi => ({ ...poi }));
-}
-
 /** Whether `?landing=0` asks for the static landing. */
 export function landingCardsEnabled(search: string): boolean {
   return new URLSearchParams(search).get('landing') !== '0';
@@ -57,17 +46,21 @@ export function dueMinutes(names: number): number {
   return Math.min(DUE_MINUTES_MAX, Math.max(DUE_MINUTES_MIN, Math.round(names * DUE_MINUTES_PER_NAME)));
 }
 
+/** Today's ride card's figures (landingDaily.ts), when DAILY_RIDE_ON_LANDING. */
+export interface LandingDaily {
+  pair: DailyRidePair | null;
+  /** Today's fastest ride of today's route, if ridden. */
+  today: DailyRideDay | null;
+  /** Past days, newest first, today excluded. */
+  board: DailyRideDay[];
+}
+
 export interface LandingModel {
   /** False: show the static landing unchanged. */
   returning: boolean;
   header: { streakDays: number; stamps: number };
-  daily: {
-    pair: DailyRidePair | null;
-    /** Today's fastest ride of today's route, if ridden. */
-    today: DailyRideDay | null;
-    /** Past days, newest first, today excluded. */
-    board: DailyRideDay[];
-  };
+  /** Null: no Today's ride card (the default since 2026-11-09, F1 #311). */
+  daily: LandingDaily | null;
   due: {
     names: number;
     minutes: number;
@@ -83,15 +76,8 @@ export function isReturningPlayer(storage: ReadStore): boolean {
   return loadKnowledgeReview(storage).tracked > 0;
 }
 
-export function buildLandingModel(storage: ReadStore, now = Date.now(), cityId = 'amsterdam'): LandingModel {
-  const candidates = dailyRideCandidates(cityId);
-  const date = dailyRideDateKey(now);
-  const pair = dailyRidePair(date, candidates);
-  const history = loadRouteHistory(storage).filter(ride => ride.cityId === cityId);
-  const days = dailyRideBoard(history, candidates, { limit: 6 });
-  const today = days.find(day => day.date === date) ?? null;
-  const board = days.filter(day => day.date !== date).slice(0, 5);
-
+/** `daily`: Today's ride's figures (buildLandingDaily in landingDaily.ts), or null for no card. */
+export function buildLandingModel(storage: ReadStore, now = Date.now(), cityId = 'amsterdam', daily: LandingDaily | null = null): LandingModel {
   const knowledge = loadKnowledgeReview(storage, now);
   const inCity = knowledge.items.filter(item => item.cityId === cityId && item.type !== 'stop');
   const due = inCity.filter(item => item.status === 'due').length;
@@ -101,7 +87,7 @@ export function buildLandingModel(storage: ReadStore, now = Date.now(), cityId =
   return {
     returning: isReturningPlayer(storage),
     header: { streakDays: readPlaceStreak(storage, now).current, stamps: stampCount(storage).earned },
-    daily: { pair, today, board },
+    daily,
     due: {
       names: due,
       minutes: dueMinutes(due),

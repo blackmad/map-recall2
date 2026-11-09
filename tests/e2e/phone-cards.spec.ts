@@ -115,7 +115,7 @@ test('arrival keycaps are drawn ≥ 44 CSS px on the phone', async ({ page }, te
 
 async function startFreeRide(page: Page) {
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
-  await page.goto('/canal-drive/?ride=free');
+  await page.goto('/canal-drive/?ride=free&collection=1'); // the collection is opt-in since F1 (#311)
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame?.state), { timeout: 120_000 }).toBe(4);
 }
 
