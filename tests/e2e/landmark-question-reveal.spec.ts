@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { landingFixtureEntries } from '../../src/canalRecall/landing/landingFixtures';
+import { useEngine } from './helpers';
 
 // #281 — the landmark question must not ask about a building whose name was
 // just on screen. Ride review #280 defect 1: at the start of Today's ride for
@@ -34,8 +35,12 @@ async function startSampler(page: Page) {
         const o = Number(getComputedStyle(el).opacity);
         if (o > 0.01) labels[(el as HTMLElement).dataset.mapLabel!] = Math.round(o * 100) / 100;
       }
-      // The own engine's canvas labels, when that engine draws them.
-      for (const l of g?.vectorMap?._labels?.placed ?? []) labels[l.text] = 1;
+      // The own engine's canvas labels, when that engine draws them, at their fade's alpha (#288; `placed` before it).
+      const own = g?.vectorMap?._labels;
+      for (const l of own?.drawn ?? own?.placed ?? []) {
+        const o = Math.round((l.alpha ?? 1) * 100) / 100;
+        if (o > 0.01) labels[l.text] = Math.max(labels[l.text] ?? 0, o);
+      }
       frames.push({
         t: Math.round(performance.now()), state: g?.state ?? -1, kind: g?.quizPromptKind ?? '', asked: g?.quizPromptName ?? '',
         withheld: [...(g?.quizWithheldNames ?? [])], approach: [...(g?.landmarkApproachWithheld ?? [])], labels,
@@ -91,6 +96,7 @@ test('Today’s ride 2026-11-09: the Brakke Grond is not asked after its label, 
   test.setTimeout(240_000);
   if (dev() === 'phone') await page.setViewportSize({ width: 414, height: 896 });
   await page.route(/3dbag|cesium3dtiles/i, r => r.abort());
+  await useEngine(page);
   // The review's path: a returning rider taps Today's ride on the landing (Red Light District start).
   await page.addInitScript((data: Record<string, string>) => {
     if (sessionStorage.getItem('lq-seeded')) return; sessionStorage.setItem('lq-seeded', '1');
@@ -123,6 +129,7 @@ test('a label on screen as the rider turns toward its landmark: not asked within
   test.setTimeout(240_000);
   if (dev() === 'phone') await page.setViewportSize({ width: 414, height: 896 });
   await page.route(/3dbag|cesium3dtiles/i, r => r.abort());
+  await useEngine(page);
   await page.goto('/canal-drive/?ride=daily&dailyDate=2026-11-09&landmarkQuestions=1');
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame?.state ?? -1), { timeout: 150_000 }).toBe(4);
   await startSampler(page);

@@ -501,7 +501,11 @@ export class OwnWorldView implements WorldViewOracles {
     this._sharedFrame.register('engine-transit', this._lines.transit, { order: -55 });
     this._sharedFrame.register('engine-cycle', this._lines.cycle, { order: -50 });
     // `?labelLazyPolicy=0`: the eager label rebuild (every named street re-tested in the frame the policy changes).
-    this._labels = new LabelLayer(container, () => this.labelPolicy(), { lazyPolicy: flag('labelLazyPolicy', '__canalRecallLabelLazyPolicy', true) });
+    // `?labelFade=0`: labels pop in and out in one frame, as before #288 (they ease over 300 ms by default).
+    this._labels = new LabelLayer(container, () => this.labelPolicy(), {
+      lazyPolicy: flag('labelLazyPolicy', '__canalRecallLabelLazyPolicy', true), fade: flag('labelFade', '__canalRecallLabelFade', true),
+      repaint: () => this.host?.triggerRepaint(),
+    });
     // Paper over the map (menu, setup, loading) hides the labels without waiting for a repaint: a state change need
     // not move the map, so the check also runs on its own slow clock, as the MapLibre overlay's (labels/labelOverlay.ts).
     const syncCovered = () => { if (this._labels.setCovered(isCoveredState(W().canalRecallGame?.state))) this.host.triggerRepaint(); };
