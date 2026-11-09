@@ -2,7 +2,6 @@ import { existsSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
 import { openRoute } from './helpers';
 import { budget } from './helpers/budget';
-import { OWN } from './worldCam';
 
 // Named regression (user report 2026-11-05, own engine, plan #213 item B): riding into a house front made the house
 // vanish. Under `?engine=own` the cover query is the streamed footprint at the rider's exact point
@@ -95,7 +94,10 @@ async function bumpHouse(page: Page, street: keyof typeof SPOTS): Promise<{ road
 }
 
 test.describe('rider cover', () => {
-  test.skip(!OWN, 'the own engine path (ENGINE=own); MapLibre queries the rendered extrusion and dims every layer');
+  // Both engines since lane F4 (#320, 2026-11-09, "buildings still disappearing when I smash into them"): the default
+  // MapLibre engine kept the point-only rule after E1 and still hid the bumped house; it now runs the same route-aware
+  // rule (engine/streetVisibility.ts streetCoverInWorld). Under MapLibre `_completeCity.featuresAt` is the streamer's
+  // copy too, so the probe below reads the same footprints.
   // BUNDLES_DIR=<dir>: serve *.bundle.js from a lane's scratch build (as engine-own.spec does).
   test.beforeEach(async ({ page }) => {
     const bundles = process.env.BUNDLES_DIR;

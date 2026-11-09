@@ -62,8 +62,10 @@ export function blockingFeature<T extends FootprintFeature>(point: LngLat, altit
 
 /** Resident lists at least this long are walked through a grid (residentIndex); shorter ones linearly. */
 export const RESIDENT_INDEX_MIN = 2000;
-const RESIDENT_GRID_DEG = 0.002;
+export const RESIDENT_GRID_DEG = 0.002;
 const gridKey = (i: number, j: number) => i * 1_000_003 + j;
+/** The resident grid's cell key (streetVisibility.ts footprintsNear walks the same grid). */
+export const residentGridKey = gridKey;
 const RESIDENT_INDEXES = new WeakMap<readonly FootprintFeature[], Map<number, number[]>>();
 /** Each resident's position in the list under every grid cell its box touches. Exported for the idle prewarm (lane E6). */
 export function residentIndex(resident: readonly FootprintFeature[]): Map<number, number[]> {
