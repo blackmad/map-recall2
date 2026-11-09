@@ -1,0 +1,27 @@
+# Lane S3: roofs that hang past their walls on detail-tier buildings (2026-11-09)
+
+Model: opus. Worktree `/Users/blackmad/Code/map-recall2-worktrees/s3-roof-overhang-20261109`, branch `lane/s3-roof-overhang-20261109`, port 4732. Base: main (6a901ba06 or later).
+
+## The user's word (2026-11-09, build ef73a29, Free Ride by bike, Kalverstraat/Spui near Haringhandel Jonk and the Begijnhof): "still seeing some roofs overhang"
+Shots in the screenshots repo: `engine/2026-11-08-user-shots/roofs-overhang-kalverstraat-spui-ef73a29-20261109-{a,b}.png`. In (a) a grey flat slab over the pale block left of centre extends past its walls over the street, and the dark-green building's grey roof hangs past its front; in (b) grey slabs hang over the alley at top right and over the row at centre-left. These are **resident detail-tier buildings at 100–200 m**, not coarse shells, so #257's shell trim (`clipToOutline` for the coarse tier; HISTORY "roofs offset" / lane #257) does not cover them. Memory rules that apply: roofs come from the measured front, not 3DBAG planes above the crown; a same-type same-year row clamps a lone outlier; fix roof artefacts as we go.
+
+## Step 1 — measure
+At the two poses, list every roof mesh whose projected outline extends more than 1 m beyond its pand footprint: roof mesh vs BAG polygon in Node over the resident chunks (the world cells / chunk readers in `src/canalRecall/world/` and `scripts/` have the decoders; `scripts/landmarks/geometry-audit` style). Name the pands and the generator path for each: roofPlan fitted box in the detail path, 3DBAG plane extents on a merged row, lod2 chunk roofs, kit roof mass. Then count the same city-wide over the world cells so we know the size (table by generator path).
+
+## Then — trim at the source for each path
+Roof outline = footprint plus the measured eaves overhang (≤ 0.6 m, row-clamped), never a fitted box; roofs that span several pands split at pand seams. Typed generator changes with unit tests; regenerate only the affected chunks/cells (stage, report coverage/diff, the integrator publishes); goldens: roofs already within tolerance must not change (byte-identical where untouched).
+
+## Gate
+Zero roofs over 1 m past their footprint at the two poses and at the user's earlier Hobbemastraat and Weteringschans shots (HISTORY "roofs offset", #257, lists the poses); the city-wide count before/after in the hand-back (the integrator posts it on #68); no change to roofs already within tolerance (goldens); SHEL/lod2 bytes before/after. Strip `ui/2026-11-09-s3-roof-overhang/` before/after at the two poses, desktop DPR 2. The "1 of 9 places" plaque line in the shot is lane F1's.
+## Lane rules (binding)
+
+- Work only in your worktree and on your branch. Never push to or merge `main`. Never edit `public/canal-drive/game.js`, `game-route.js`, `index.html`, `package.json`, lockfiles, any `*.bundle.js`, `covers.json`, goldens, `TODO.md`, `HISTORY.md`, `whats-new-notes.json`, `tests/perf/budgets.json` or published extracts under `public/data/extracts/` (stage new data under `public/data/extracts/amsterdam/staging/` and say so). The integrator owns those; put what they must do under INTEGRATOR TODO in your hand-back.
+- Git: use `/usr/bin/git` for every git command (the `git` wrapper is broken). Never `git stash`. Commit as you go; end every commit message with `Co-Authored-By: Claude <your model> 5.5 <noreply@anthropic.com>`.
+- Dev server: `echo <port> > .worktree-port` is done; start with `nohup env PORT=<port> npm run dev > /tmp/<lane>-dev.log 2>&1 &`. Stop it by its port's PID (`/usr/sbin/lsof -tiTCP:<port> -sTCP:LISTEN | xargs kill`), never `pkill`.
+- Browser runs: exactly one Playwright run at a time on this machine, through the lock: `PW_PORT=<port> /tmp/canal-pw.sh npx playwright test <spec> --project=<desktop|iphone> --reporter=line`. The lock may hold you for 10–30 minutes while a gate runs; block on it with ONE long wait (timeout 1,800,000 ms), never poll in a loop and never give up on it. Run `npx playwright test` only through the lock.
+- Shell quirk: some shells start with a stripped PATH; use absolute paths (`/usr/bin/python3`, `/usr/bin/wc`, `/opt/homebrew/bin/gh`).
+- Measurement first: before changing anything, measure the thing you are about to change and write the number down; after, measure again. A claim without a number is not a result.
+- Screenshots: clone or `git worktree add` the `blackmad/map-recall2-screenshots` repo (clone at `/Users/blackmad/Code/map-recall2-screenshots`; make your own worktree `/Users/blackmad/Code/map-recall2-screenshots-<lane>` on a branch, merge to its main and push). Put frames under `ui/<YYYY-MM-DD>-<slug>/`, each image ≤ 400 kB (JPEG q≈80, ≤ 1600 px wide), never rewrite a published file. Never add images to the game repo.
+- Storybook: add desktop and phone stories for every new HUD/card state; `npm run build-storybook` must pass.
+- Budget: at most 60 turns. If you run out of road, hand back what you have with honest status rather than guess.
+- Hand back as a comment on your issue with these headings: LANE, MEASURED (before numbers), DID, NUMBERS (after), CHECKS (commands + exit codes), STORYBOOK, SPEC, STRIP (screenshot paths), WHAT'S NEW (a draft note: title, text, image paths), INTEGRATOR TODO (bundles to rebuild, tests to join, data to publish), OPEN. Then return the final commit SHA and a five-line summary as your final message.

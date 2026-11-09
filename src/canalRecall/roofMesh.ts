@@ -30,6 +30,7 @@ import { gableAccents, outlineBand, vergeBoards } from './gableTrim.js';
 import { repeatedTerraceRoofTriangles, type RepeatedTerraceRoof } from './repeatedTerraceRoof.js';
 import { streetGableEnds, type StreetFacing } from './streetGableEnds.js';
 import { turnRidgeToStreet } from './streetRidge.js';
+import { zeroArea } from './roofOverhang.js';
 
 export type RoofKind = 'gable' | 'pitched' | 'mansard' | 'mansardHip' | 'hipped' | 'halfHipped' | 'school' | 'sawtooth' | 'parapet';
 export type GableShape = 'step' | 'neck' | 'bell' | 'spout' | 'plain' | 'clock' | 'raisedNeck' | 'cornice';
@@ -316,7 +317,14 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
       // A cut corner on a 19th-century block: a small turret with a spire.
       if (style === 'c19' && plan.kind !== 'gable' && plan.kind !== 'sawtooth' && rect!.len * rect!.wid >= 90 && hash01(`${id}:turret`) < 0.6) {
         const ch = findChamfer(pts, rect!);
-        if (ch) out.turret = { x: ch.x, y: ch.y, r: Math.max(1.1, Math.min(1.9, ch.len * 0.42)) };
+        // The drum stands over the cut corner, bulging past the chamfer by the eave overhang at most (lane S3, #315: a
+        // drum centred on the chamfer hung its radius, 1.1–1.9 m, over the street).
+        // A drum that still does not fit (a skewed end wall on a narrow wedge read as a chamfer) is left off.
+        if (ch) {
+          const r = Math.max(1.1, Math.min(1.9, ch.len * 0.42)), back = r - ROOF_CLIP_OVERHANG_M, x = ch.x - ch.dx * back, y = ch.y - ch.dy * back;
+          const drum = Array.from({ length: 8 }, (_, i) => { const a = ((i + 0.5) / 8) * Math.PI * 2; return [x + r * Math.cos(a), y + r * Math.sin(a)]; });
+          if (pointsHangM(drum, pts) <= ROOF_OUTLINE_HANG_M) out.turret = { x, y, r };
+        }
       }
       return out;
     }
@@ -768,6 +776,41 @@ function pointInOutline(x:number,y:number,ring:readonly Vec2[]):boolean{
   return inside;
 }
 
+/** A non-slope roof part (trim, plate, dormer) may stand this far past the kept outline before it is cut (lane S3, #315). */
+export const ROOF_PART_HANG_M = 0.6;
+
+function outlineDistance(x:number,y:number,ring:readonly Vec2[]):number{
+  let d=Infinity;
+  for(let i=0;i<ring.length;i++){const a=ring[i],b=ring[(i+1)%ring.length],dx=b[0]-a[0],dy=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/(dx*dx+dy*dy||1)));d=Math.min(d,Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy));}
+  return d;
+}
+
+/** The pieces of one roof triangle (any orientation, a vertical one included) that stand over `ring`, seen from above:
+ *  clipped by every triangle of the ring's triangulation, winding, normal, part and colour kept. */
+function clipTriToRing(t:RoofTri,ring:readonly Vec2[],indices:readonly number[]):RoofTri[]{
+  type Vertex={p:V3;uv:V2};
+  const cross=(a:Vec2,b:Vec2,p:readonly number[])=>(b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]),out:RoofTri[]=[];
+  for(let k=0;k<indices.length;k+=3){
+    const cut=[ring[indices[k]],ring[indices[k+1]],ring[indices[k+2]]],sign=cross(cut[0],cut[1],cut[2])>=0?1:-1;
+    let polygon:Vertex[]=t.p.map((p,i)=>({p,uv:t.uv[i]}));
+    for(let e=0;e<3&&polygon.length;e++){
+      const a=cut[e],b=cut[(e+1)%3],next:Vertex[]=[];
+      for(let i=0;i<polygon.length;i++){
+        const v=polygon[i],w=polygon[(i+1)%polygon.length],dv=cross(a,b,v.p)*sign,dw=cross(a,b,w.p)*sign;
+        if(dv>=-1e-8)next.push(v);
+        if((dv>=0)!==(dw>=0)){const f=dv/(dv-dw);next.push({p:v.p.map((x,j)=>x+(w.p[j]-x)*f) as V3,uv:v.uv.map((x,j)=>x+(w.uv[j]-x)*f) as V2});}
+      }
+      polygon=next;
+    }
+    for(let i=1;i<polygon.length-1;i++){
+      const p=[polygon[0].p,polygon[i].p,polygon[i+1].p] as RoofTri['p'],ab=p[1].map((v,j)=>v-p[0][j]),ac=p[2].map((v,j)=>v-p[0][j]);
+      if(Math.hypot(ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0])<1e-8)continue;
+      out.push({...t,p,uv:[polygon[0].uv,polygon[i].uv,polygon[i+1].uv]});
+    }
+  }
+  return out;
+}
+
 /** Clip admitted generated slopes to the actual surveyed footprint.
  * Approximate rectangular end closures can stick through a trapezoid's street wall;
  * native boundary closures replace them, while the source frontage owns its crown. */
@@ -776,6 +819,7 @@ function sourceRoofWithinOutline(triangles:RoofTri[],outline:Vec2[],h0:number,di
   // Roof trim, dormers and gable plates that stand inside the cut outline stay; a gable plate that already closes a
   // wall edge makes a second closure there redundant.
   const closed=new Set<number>();
+  let keepIndices:number[]|undefined;
   type Vertex={p:V3;uv:V2};
   const half=(poly:Vertex[],a:Vec2,b:Vec2,sign:number):Vertex[]=>{
     const side=(p:V3)=>((b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]))*sign,next:Vertex[]=[];
@@ -800,13 +844,21 @@ function sourceRoofWithinOutline(triangles:RoofTri[],outline:Vec2[],h0:number,di
         for(let i=1;i<poly.length-1;i++){
           const p=[poly[0].p,poly[i].p,poly[i+1].p] as RoofTri['p'],ab=p[1].map((v,k)=>v-p[0][k]),ac=p[2].map((v,k)=>v-p[0][k]);
           if(Math.hypot(ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0])<1e-8)continue;
-          result.push({...t,p,uv:[poly[0].uv,poly[i].uv,poly[i+1].uv]});
+          const piece:RoofTri={...t,p,uv:[poly[0].uv,poly[i].uv,poly[i+1].uv]};
+          // A plate matched to a short or kinked edge can still run past the walls along it (lane S3): cut it too.
+          if(pointsHangM(p,keepOthers)>ROOF_PART_HANG_M)result.push(...clipTriToRing(piece,keepOthers,keepIndices??=earcut(keepOthers.flat())));
+          else result.push(piece);
         }
         if(t.part==='plate'&&Math.max(...t.p.map(q=>q[2]))>h0+.2)closed.add(wall);
         continue;
       }
       const [cx,cy]=[(t.p[0][0]+t.p[1][0]+t.p[2][0])/3,(t.p[0][1]+t.p[1][1]+t.p[2][1])/3];
-      if(pointInOutline(cx,cy,keepOthers))result.push(t);
+      if(!pointInOutline(cx,cy,keepOthers))continue;
+      // Lane S3 (#315): a long trim run, firewall or dormer cheek centred inside can still reach metres past the walls
+      // (a mansard's cross slabs over a notched block, 9.5 m into the street at the Spui). Cut those at the walls; parts
+      // within ROOF_PART_HANG_M of the keep ring stay exactly as they were.
+      if(pointsHangM(t.p,keepOthers)<=ROOF_PART_HANG_M){result.push(t);continue;}
+      result.push(...clipTriToRing(t,keepOthers,keepIndices??=earcut(keepOthers.flat())));
     }
   }
   const cross=(a:Vec2,b:Vec2,p:V3)=>(b[0]-a[0])*(p[1]-a[1])-(b[1]-a[1])*(p[0]-a[0]);
@@ -834,6 +886,9 @@ function sourceRoofWithinOutline(triangles:RoofTri[],outline:Vec2[],h0:number,di
       const a=polygon[i].p,b=polygon[(i+1)%polygon.length].p,l=Math.hypot(b[0]-a[0],b[1]-a[1]);if(l<1e-5)continue;
       const edge=ring.findIndex((v,j)=>Math.abs(cross(v,ring[(j+1)%ring.length],a))<1e-6&&Math.abs(cross(v,ring[(j+1)%ring.length],b))<1e-6);
       if(edge<0||Math.max(a[2],b[2])<=h0+1e-6||closed.has(edge))continue;
+      // A closure stands on a wall. One matched by a repeated vertex (a zero-length edge every line passes) or by a wall's
+      // line beyond its end closed 2.2 m out over the street (lane S3, #315): left off.
+      if(pointsHangM([a,b],ring)>ROOF_PART_HANG_M)continue;
       const r0=ring[edge],r1=ring[(edge+1)%ring.length],dx=r1[0]-r0[0],dy=r1[1]-r0[1],el=Math.hypot(dx,dy),n:V3=ccw?[dy/el,-dx/el,0]:[-dy/el,dx/el,0];
       const aTop:V3=[a[0],a[1],Math.max(h0,a[2])],bTop:V3=[b[0],b[1],Math.max(h0,b[2])];
       let p:RoofTri['p']=[[a[0],a[1],h0],[b[0],b[1],h0],bTop],q:RoofTri['p']=[[a[0],a[1],h0],bTop,aTop];
@@ -889,6 +944,33 @@ function gablePieceOnNativeWalls(triangles:RoofTri[],rect:Rect,outline:Vec2[],pl
  * `localOuterRing` (metres about the ring's first vertex) and are carried over.
  */
 export function roofTrianglesForOutline(outer: readonly number[][], origin: { lng: number; lat: number }, plan: RoofPlan, h0: number, dims: RoofDims, kx: number, facing?: StreetFacing): RoofTri[] {
+  return outlineRoof(outer, origin, plan, h0, dims, kx, facing, true);
+}
+
+/** The roof as its plan draws it, without the measured cut at the walls (audits: how far would it hang). */
+export function roofTrianglesForOutlineUncut(outer: readonly number[][], origin: { lng: number; lat: number }, plan: RoofPlan, h0: number, dims: RoofDims, kx: number, facing?: StreetFacing): RoofTri[] {
+  return outlineRoof(outer, origin, { ...plan, clipToOutline: false }, h0, dims, kx, facing, false);
+}
+
+/** Lane S3 (#315): no roof stands more than this far past its walls, seen from above; the generated eave is 0.3 m. */
+export const ROOF_OUTLINE_HANG_M = 0.6;
+
+/** The farthest any vertex of `tris` stands outside `ring` (mesh metres), from above; 0 when all stand over it. */
+export function trianglesHangM(tris: readonly RoofTri[], ring: readonly Vec2[]): number {
+  let hang = 0;
+  for (const t of tris) if (!zeroArea(t)) hang = Math.max(hang, pointsHangM(t.p, ring));
+  return hang;
+}
+
+
+/** The farthest any of `points` (x, y first) stands outside `ring`, metres; 0 when all stand over it. */
+export function pointsHangM(points: readonly (readonly number[])[], ring: readonly Vec2[]): number {
+  let hang = 0;
+  for (const q of points) if (!pointInOutline(q[0], q[1], ring)) hang = Math.max(hang, outlineDistance(q[0], q[1], ring));
+  return hang;
+}
+
+function outlineRoof(outer: readonly number[][], origin: { lng: number; lat: number }, plan: RoofPlan, h0: number, dims: RoofDims, kx: number, facing: StreetFacing | undefined, measuredCut: boolean): RoofTri[] {
   if (outer.length < 4) return [];
   if(plan.repeatedTerrace)return repeatedTerraceRoofTriangles(outer,origin,plan.repeatedTerrace,h0,plan.riseM,dims,kx);
   const toMesh = ([lng, lat]: readonly number[]): Vec2 => [(lng - origin.lng) * kx, (lat - origin.lat) * M_PER_DEG_LAT];
@@ -943,7 +1025,11 @@ export function roofTrianglesForOutline(outer: readonly number[][], origin: { ln
     const scale=envelope/top;
     out.push(...sink.out.map(t=>{const nz=t.n[2]/scale,l=Math.hypot(t.n[0],t.n[1],nz);return {...t,p:t.p.map(([x,y,z])=>[x,y,h0+(z-h0)*scale]) as RoofTri['p'],n:[t.n[0]/l,t.n[1]/l,nz/l] as V3,sourceCrownShape:front.shape,sourceCrownPairedOculi:front.pairedOculi};}));
   }
-  if (plan.clipToOutline && !plan.sourceCrownFront) {
+  // A plan that was not marked for the cut but still stands past its walls (a gable box or a measured monument gable
+  // over a notched or skewed block: 4.2 m over the street at the Leidsegracht, lane S3) takes the same cut. Roofs within
+  // ROOF_OUTLINE_HANG_M are untouched, byte for byte.
+  const cut = plan.clipToOutline || (measuredCut && !plan.sourceCrownFront && trianglesHangM(out, openRing(mesh)) > ROOF_OUTLINE_HANG_M);
+  if (cut && !plan.sourceCrownFront) {
     // Cut the fitted box at the walls, so every eave stands on a wall top and the cut faces are closed. Fascia boards and
     // end plates that stood on the old box edge outside the walls are dropped; those on the walls stay (0.05 m of slack).
     const wallRing = openRing(mesh), keepRing = insetRing(wallRing, -0.05) ?? wallRing;
