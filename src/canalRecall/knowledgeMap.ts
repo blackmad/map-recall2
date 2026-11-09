@@ -40,6 +40,9 @@ export interface BuurtShape {
   /** Outer rings, [lat, lng]. */
   rings: LatLng[][];
   bbox: { minLat: number; minLng: number; maxLat: number; maxLng: number };
+  /** Summed ring area (square degrees): of two same-rank buurts holding a
+   *  point, the smaller wins, as on the ride's plaque (#284). */
+  area?: number;
 }
 
 export interface KnowledgeMapGeometry {
@@ -104,7 +107,13 @@ export function geometryFromExtract(
       if (lng < minLng) minLng = lng;
       if (lng > maxLng) maxLng = lng;
     }
-    buurts.push({ name: boundary.name, kind: boundary.kind || '', rank, rings, bbox: { minLat, minLng, maxLat, maxLng } });
+    let area = 0;
+    for (const ring of rings) {
+      let twice = 0;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) twice += ring[j][1] * ring[i][0] - ring[i][1] * ring[j][0];
+      area += Math.abs(twice) / 2;
+    }
+    buurts.push({ name: boundary.name, kind: boundary.kind || '', rank, rings, bbox: { minLat, minLng, maxLat, maxLng }, area });
   }
   buurts.sort((a, b) => a.rank - b.rank || a.name.localeCompare(b.name));
   const lines: LatLng[][] = [];
@@ -154,7 +163,7 @@ export function buurtAt(geometry: KnowledgeMapGeometry, point: LatLng | null | u
   const [lat, lng] = point;
   let best: BuurtShape | null = null;
   for (const buurt of geometry.buurts) {
-    if (best && buurt.rank <= best.rank) continue;
+    if (best && (buurt.rank < best.rank || (buurt.rank === best.rank && (buurt.area ?? 0) >= (best.area ?? 0)))) continue;
     const box = buurt.bbox;
     if (lat < box.minLat || lat > box.maxLat || lng < box.minLng || lng > box.maxLng) continue;
     if (buurt.rings.some(ring => inRing(lat, lng, ring))) best = buurt;

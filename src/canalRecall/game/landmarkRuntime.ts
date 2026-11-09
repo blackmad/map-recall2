@@ -54,6 +54,8 @@ import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { articleCard, type BuildingArticle } from '../buildingArticles';
 import { StreetArtIndex, streetArtCard, type StreetArtFile } from '../streetArt';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
+import { withDisplayNames } from './placeNames';
+import { plaqueBuurtAt } from './placeBuurt';
 import type { BridgeRegisterFile } from '../bridgeRegister';
 import { cardCollapsed, foldedCardLine, FOLDED_BODY_LINES } from './teachingPacer';
 import { drawCardAction } from '../noticeCards';
@@ -144,6 +146,11 @@ export class GameLandmarkRuntime {
    *  sentence as told. */
   _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold, source: NoticeSource = 'click', streetEntry?: StreetKnowledgeEntry): void {
     if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
+    // One bottom card: the landmark card takes the slot from a postcard.
+    if (this._neighborhoodNotice) {
+      this._neighborhoodNotice = null;
+      this._neighborhoodNoticeTimer = 0;
+    }
     this._landmarkNotice = this._withRotatedFact(notice, streetEntry);
     this._landmarkNoticeHold = hold;
     this._landmarkNoticeSource = source;
@@ -448,7 +455,8 @@ export class GameLandmarkRuntime {
           readJson<StreetKnowledgeEntry[]>(streetResponse, []),
           readJson<StreetKnowledgeEntry[]>(waterResponse, []),
         ]);
-      const features = mergeManualPoiFeatures(rawFeatures, this.cityId || 'amsterdam');
+      // One spelling per place (#284): every surface below reads the display name.
+      const features = withDisplayNames(mergeManualPoiFeatures(rawFeatures, this.cityId || 'amsterdam'));
       const streetKnowledge: StreetKnowledgeEntry[] = [];
 
       this._facts = buildFactIndex(null);
@@ -590,7 +598,11 @@ export class GameLandmarkRuntime {
     }
     if (!this.player) return;
 
-    const detectedHood = this._neighborhoodAt(this.player.x, this.player.y);
+    // The plaque's rule (placeBuurt.ts): the finest buurt holding the rider,
+    // or, standing at a Free Ride checklist place, the buurt of its list.
+    const plaqueHood = plaqueBuurtAt(this.neighborhoods, this.player.x, this.player.y,
+      this._freeRidePlaceAnchors?.(this.player.x, this.player.y) ?? []);
+    const detectedHood = plaqueHood ? this.neighborhoods.find(area => area.name === plaqueHood) ?? null : null;
     const transition = CanalRecallNeighborhood.advanceNeighborhood({
       current: this.currentNeighborhood,
       candidate: this._neighborhoodCandidate,
@@ -630,16 +642,16 @@ export class GameLandmarkRuntime {
     })) {
       this._postcardPending = this.currentNeighborhood;
     }
-    // Free Ride's collection: the postcard is a bottom card under the one-card
-    // rule. A landmark card replaces a postcard that is up; a postcard waits
-    // while a landmark card is open (and is dropped if the rider leaves).
-    const oneCard = !!this._freeRideCollectionOn?.();
-    if (oneCard && this._landmarkNotice && this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) {
+    // One bottom card at a time, in every mode (G4's rule, #284): a landmark
+    // card closes a postcard that is up (`_showLandmarkNotice`); a postcard
+    // waits while a landmark card is open (and is dropped if the rider
+    // leaves). A postcard whose time is up is no longer active.
+    if (this._neighborhoodNotice && (this._neighborhoodNoticeTimer <= 0 || this._landmarkNotice)) {
       this._neighborhoodNoticeTimer = 0;
       this._neighborhoodNotice = null;
     }
     if (this._postcardPending && this._postcardPending === this.currentNeighborhood
-      && !(oneCard && this._landmarkNotice)
+      && !this._landmarkNotice
       && this.viewport?.mode !== 'compact' && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
       this._postcardPending = null;
       this._lastPostcardAt = this.raceTime;
