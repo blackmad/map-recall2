@@ -80,7 +80,7 @@ async function instrument(page: Page) {
     // mapRender is the MapLibre implementation's own render cost (main-thread ms; DESKTOP_BUDGET
     // is written in those units). Under the own engine there is no map; the frame host's render
     // owner replaces this when `?engine=own` lands (programme P1).
-    if (map) wrap(map, '_render', 'mapRender');
+    if (typeof map?._render === 'function') wrap(map, '_render', 'mapRender');
     // The HUD frame and, inside it, the minimap (the riding radar since 2026-10-16, the city sheet before).
     const game = w.canalRecallGame;
     wrap(game, '_render', 'gameRender');
@@ -88,6 +88,8 @@ async function instrument(page: Page) {
     else wrap(game.hud, 'drawCityOverview', 'minimap');
     // The POI label overlay's per-frame handler (plan, occlusion picks, placement).
     if (vm._labelOverlay?.frame) wrap(vm._labelOverlay, 'frame', 'labelFrame');
+    // Under `?engine=own` the canvas label layer's draw (placement, occlusion, fade, paint) is the label row.
+    else if (vm._labels?.draw) wrap(vm._labels, 'draw', 'labelFrame');
     const layer = vm._signatureLandmarks?.layer;
     if (layer?.render && !vm._sharedFrame) wrap(layer, 'render', 'landmarkRender');
     // All of our three.js drawing, either as the legacy per-feature layers or
@@ -95,14 +97,16 @@ async function instrument(page: Page) {
     const own = vm._sharedFrame ? [vm._sharedFrame.mainLayer, vm._sharedFrame.overlayLayer]
       : [vm._threeBuildings?.layer, vm._signatureLandmarks?.layer, vm._inventoryTrees?.layer, vm._artisAnimals?.layer, vm._pyramidalRoofs?.layer,
         vm._playerBike?.layer, vm._playerFerry?.layer, vm._playerBoat?.layer, vm._playerTransit?.layer];
-    for (const l of own) if (l?.render && map.getLayer(l.id)) wrap(l, 'render', 'threeLayers');
-    const fire = map.fire.bind(map);
-    map.fire = (event: any, ...rest: unknown[]) => {
-      const type = typeof event === 'string' ? event : event?.type;
-      if (type !== 'moveend' && type !== 'move') return fire(event, ...rest);
-      const s = performance.now();
-      try { return fire(event, ...rest); } finally { t[type].push(performance.now() - s); }
-    };
+    for (const l of own) if (l?.render && (typeof map?.getLayer !== 'function' || map.getLayer(l.id))) wrap(l, 'render', 'threeLayers');
+    if (typeof map?.fire === 'function') {
+      const fire = map.fire.bind(map);
+      map.fire = (event: any, ...rest: unknown[]) => {
+        const type = typeof event === 'string' ? event : event?.type;
+        if (type !== 'moveend' && type !== 'move') return fire(event, ...rest);
+        const s = performance.now();
+        try { return fire(event, ...rest); } finally { t[type].push(performance.now() - s); }
+      };
+    }
     let last = performance.now();
     const tick = (now: number) => { t.frame.push(now - last); last = now; if (!w.__stopFrames) requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
