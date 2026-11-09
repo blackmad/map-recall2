@@ -1640,7 +1640,8 @@ export class GamePresentationRuntime {
         { label: tr('ride.stat.time'), value: this.hud.formatTime(this.raceTime).slice(0, -2) },
         { label: tr('ride.stat.distance'), value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
       );
-      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: tr('ride.stat.points'), value: String(this.quizPoints) });
+      // The run's scoring rule (chainedRun.ts scoreStop, #282): the bonus this stop earned is in its Points.
+      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: tr('ride.stat.points'), value: String(this._runArrivalPoints() ?? this.quizPoints) });
 
       // The setup screen's own words for difficulty and view (#283), so the
       // Dutch card does not read "Medium · Chase".

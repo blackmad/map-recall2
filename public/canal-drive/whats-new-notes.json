@@ -3,6 +3,28 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "The landmark question is back, and it keeps its secret",
+   "text": "The landmark quiz no longer asks about a building whose name was just on the map. As you ride up to the building in question, its name and the other three choices quietly fade from the map before the question appears, and a building whose drive-by card you just saw is not asked either.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-landmark-reveal/01-before-label-at-start-desktop.jpg",
+     "alt": "Before: the Brakke Grond label on screen at the start of the ride that then asked about it",
+     "caption": "Before: the label that gave the answer away."
+    },
+    {
+     "src": "ui/2026-11-09-landmark-reveal/02-approach-withheld-desktop.jpg",
+     "alt": "Riding toward the candidate building with its label and the three other choices withheld from the map",
+     "caption": "The approach, with the four names withheld."
+    },
+    {
+     "src": "ui/2026-11-09-landmark-reveal/03-question-desktop.jpg",
+     "alt": "The question open over the lit building, no choice named on the map",
+     "caption": "The question."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "One passport, one number",
    "text": "The landing page, the arrival card and the stamp album now count the same buurt stamps out of 89, Free Ride stamps included, and a destination is a first visit rather than a stamp. In Dutch the arrival and run cards are Dutch throughout, and a landmark question asks about the Anne Frank Huis. Album captions no longer cut a name short.",
    "images": [

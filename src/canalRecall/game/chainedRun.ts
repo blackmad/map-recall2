@@ -77,12 +77,45 @@ export interface ArrivalInput {
   points: number;
   bestStreak: number;
   names: readonly string[];
+  /** Calm mode (no gamey features): no chain bonus. */
+  calm?: boolean;
 }
 
 /** The chain bonus for the n-th stop of a run (1-based): 0, +5 %, +10 % … capped. */
 export function chainBonus(stopNumber: number): number {
   if (!Number.isFinite(stopNumber) || stopNumber <= 1) return 0;
   return Math.min(CHAIN_CAP, Math.round((stopNumber - 1) * CHAIN_STEP * 100) / 100);
+}
+
+export interface StopScore {
+  /** Points as scored on the ride. */
+  basePoints: number;
+  /** The chain bonus this stop earned and carries: stop 1 none, stop 2 +5 % … capped. */
+  bonus: number;
+  /** basePoints with this stop's bonus: what the arrival card, run line and run card show. */
+  points: number;
+  /** The run's total through this stop. */
+  total: number;
+}
+
+/**
+ * The one scoring rule for a run (#282): the n-th stop's base points, the
+ * bonus that stop earns (applied to that stop, never the next), its points
+ * and the running total. The arrival card's Points, the run line and the run
+ * card all read what this returns; calm mode carries no bonus.
+ */
+export function scoreStop(stopNumber: number, basePoints: number, previousTotal: number, options: { calm?: boolean } = {}): StopScore {
+  const base = Math.max(0, Math.round(Number.isFinite(basePoints) ? basePoints : 0));
+  const bonus = options.calm ? 0 : chainBonus(stopNumber);
+  const points = Math.round(base * (1 + bonus));
+  return { basePoints: base, bonus, points, total: Math.max(0, previousTotal || 0) + points };
+}
+
+/** scoreStop over a whole sequence of ride scores, in order. */
+export function scoreRun(basePoints: readonly number[], options: { calm?: boolean } = {}): StopScore[] {
+  const scores: StopScore[] = [];
+  for (const base of basePoints) scores.push(scoreStop(scores.length + 1, base, scores[scores.length - 1]?.total ?? 0, options));
+  return scores;
 }
 
 export function newRun(now: number, startName: string): OpenRun {
@@ -96,9 +129,7 @@ export function newRun(now: number, startName: string): OpenRun {
 export function addStop(run: OpenRun | null, input: ArrivalInput, now: number): { run: OpenRun; stop: RunStop } {
   const base = run && !isIdle(run, now) ? run : newRun(now, input.fromName);
   const stopNumber = base.stopCount + 1;
-  const bonus = chainBonus(stopNumber);
-  const basePoints = Math.max(0, Math.round(input.points || 0));
-  const points = Math.round(basePoints * (1 + bonus));
+  const { basePoints, bonus, points, total } = scoreStop(stopNumber, input.points, base.totalPoints, { calm: input.calm });
   const names = [...new Set(input.names.filter(Boolean))];
   const stop: RunStop = {
     id: input.id, name: input.name, basePoints, points, bonus,
@@ -115,7 +146,7 @@ export function addStop(run: OpenRun | null, input: ArrivalInput, now: number): 
       stopCount: stopNumber,
       pausedAt: null,
       nextLeg: null,
-      totalPoints: base.totalPoints + points,
+      totalPoints: total,
       bestStreak: Math.max(base.bestStreak, stop.bestStreak),
       names: [...known],
       stops,
@@ -164,9 +195,14 @@ export function runTransition(from: RunGameState, to: RunGameState): RunTransiti
   return null;
 }
 
-/** The bonus the next stop will carry, for the arrival line. */
+/** The bonus the next stop will carry (the first-stop arrival can promise it). */
 export function nextBonus(run: OpenRun): number {
   return chainBonus(run.stopCount + 1);
+}
+
+/** The bonus the run's latest stop earned: what the arrival line names. */
+export function lastStopBonus(run: OpenRun): number {
+  return run.stops[run.stops.length - 1]?.bonus ?? 0;
 }
 
 export function formatPoints(points: number): string {
@@ -181,8 +217,9 @@ export function runLine(run: OpenRun, options: { calm: boolean }): string {
   const bits = [countText('count.stops', run.stopCount), countText('count.names', run.names.length)];
   if (!options.calm) {
     bits.push(t('count.points', { points: formatPoints(run.totalPoints) }));
-    const next = nextBonus(run);
-    if (next > 0) bits.push(t('run.chain', { percent: Math.round(next * 100) }));
+    // This stop's bonus, the one already in the points above (#282), not the next stop's.
+    const earned = lastStopBonus(run);
+    if (earned > 0) bits.push(t('run.chain', { percent: Math.round(earned * 100) }));
   }
   return bits.join('  ·  ');
 }

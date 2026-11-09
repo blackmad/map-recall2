@@ -376,6 +376,7 @@ export interface PresentationHost extends GameCoreHost {
   _runTick(): void;
   _recordRunStop(): void;
   _runArrivalLine(): string | null;
+  _runArrivalPoints(): number | null;
   _runCard?: import('./chainedRun').OpenRun | null;
   _renderRunCard(run: import('./chainedRun').OpenRun): void;
   _runFinishTap(id: 'again' | 'route' | 'copy' | 'end'): void;

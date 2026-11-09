@@ -2122,6 +2122,19 @@ class GameRouteRuntime {
       this.trackMode = TRACK_MODE_POINT_TO_POINT;
       this.renderer.preRenderTrack(this.track);
 
+      // Generate shareable URL with the route, before the race is set up: written after the
+      // up-to-4 s map-settle hold, an arrival inside it found no link and no Share keycap (#282).
+      if (startLL && finishLL) {
+        const raceHash = `#race=${keyCenter.lat.toFixed(4)},${keyCenter.lng.toFixed(4)},${startLL.lat.toFixed(4)},${startLL.lng.toFixed(4)},${finishLL.lat.toFixed(4)},${finishLL.lng.toFixed(4)}`;
+        // Only the copy/share action gets the route. Writing it into the
+        // address bar made every reload, restored tab and autocompleted URL
+        // replay the last route and skip the destination picker (user,
+        // 2026-10-09: "the same destination EVERY time I start the game").
+        this._shareUrl = `${window.location.origin}${window.location.pathname}${raceHash}`;
+      } else {
+        this._shareUrl = null;
+      }
+
       // Step 5: Setup race
       this.loadingMessage = routeText('ride.load.settling');
       this.loadingProgress = 0.92;
@@ -2144,18 +2157,6 @@ class GameRouteRuntime {
       this._raceKey = (startLL && finishLL)
         ? `${keyCenter.lat.toFixed(3)},${keyCenter.lng.toFixed(3)}_${startLL.lat.toFixed(3)},${startLL.lng.toFixed(3)}_${finishLL.lat.toFixed(3)},${finishLL.lng.toFixed(3)}`
         : null;
-
-      // Generate shareable URL
-      if (startLL && finishLL) {
-        const raceHash = `#race=${keyCenter.lat.toFixed(4)},${keyCenter.lng.toFixed(4)},${startLL.lat.toFixed(4)},${startLL.lng.toFixed(4)},${finishLL.lat.toFixed(4)},${finishLL.lng.toFixed(4)}`;
-        // Only the copy/share action gets the route. Writing it into the
-        // address bar made every reload, restored tab and autocompleted URL
-        // replay the last route and skip the destination picker (user,
-        // 2026-10-09: "the same destination EVERY time I start the game").
-        this._shareUrl = `${window.location.origin}${window.location.pathname}${raceHash}`;
-      } else {
-        this._shareUrl = null;
-      }
 
       // Riding on there is no loading screen to hide the overview tiles
       // behind; the flight starts at once and they stream in under it.
