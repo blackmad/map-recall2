@@ -110,21 +110,49 @@ export interface LabelRules extends LabelContext {
  */
 export function labelAllowed(rules: LabelRules, cls: LabelClass, name: string): boolean {
   if (!name || rules.labelsOff) return false;
-  if (rules.hiddenName && containsAskedName(name, rules.hiddenName)) return false;
-  if (rules.hiddenNames?.some(hidden => containsAskedName(name, hidden))) return false;
+  if (!rules.hiddenName && !rules.hiddenNames?.length) return cls === 'destination' || poiLabelVisible(rules, name);
+  // The plan screens every candidate several times a second: the label is
+  // normalised once (memoised), the asked names once per withheld set (#287).
+  const words = normalisedLabel(name);
+  if (rules.hiddenName && wordsContainAsked(words, askedName(rules.hiddenName))) return false;
+  if (rules.hiddenNames?.length && askedNames(rules.hiddenNames).some(asked => wordsContainAsked(words, asked))) return false;
   if (cls === 'destination') return true;
   return poiLabelVisible(rules, name);
 }
 
-/** True when any word of the label is, or starts with, the asked name (normalised, ≥ 4 letters). */
-export function containsAskedName(label: string, asked: string): boolean {
+interface AskedName { a: string; joined: string }
+function askedName(asked: string): AskedName {
   const a = normaliseSpoilerName(asked);
-  if (a.length < 4) return normaliseSpoilerName(label) === a && a.length > 0;
-  const words = normaliseSpoilerName(label);
+  return { a, joined: a.replace(/ /g, '') };
+}
+/** Per withheld array (withheldNames keeps one array while its inputs hold). */
+const askedOf = new WeakMap<readonly string[], AskedName[]>();
+function askedNames(names: readonly string[]): AskedName[] {
+  let out = askedOf.get(names);
+  if (!out) askedOf.set(names, out = names.map(askedName));
+  return out;
+}
+/** Candidate names are a fixed few thousand; cleared if a long session grows it. */
+const normalisedLabels = new Map<string, string>();
+function normalisedLabel(label: string): string {
+  let words = normalisedLabels.get(label);
+  if (words === undefined) {
+    if (normalisedLabels.size > 20_000) normalisedLabels.clear();
+    normalisedLabels.set(label, words = normaliseSpoilerName(label));
+  }
+  return words;
+}
+
+function wordsContainAsked(words: string, { a, joined }: AskedName): boolean {
+  if (a.length < 4) return words === a && a.length > 0;
   if (words === a || words.includes(` ${a}`) || words.startsWith(a)) return true;
   // A multi-word name joined into one compound ("Prins Hendrikkade" → "prinshendrikkade…").
-  const joined = a.replace(/ /g, '');
   return words.split(' ').some(word => word.startsWith(joined));
+}
+
+/** True when any word of the label is, or starts with, the asked name (normalised, ≥ 4 letters). */
+export function containsAskedName(label: string, asked: string): boolean {
+  return wordsContainAsked(normaliseSpoilerName(label), askedName(asked));
 }
 
 export function rectsOverlap(a: Rect, b: Rect, gap = 0): boolean {

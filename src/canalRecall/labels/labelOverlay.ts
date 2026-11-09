@@ -24,7 +24,8 @@ import { labelCss, labelFont, LABEL_FADE_CSS_MS, LABEL_ROOT_CLASS, PILL_CLASS, P
 import { fitPillText } from './pillText';
 import { RoadShields, roadShieldsEnabled } from './roadShields';
 import { dedupeLabelCandidates, screenDuplicateIds, type MarkedPlace } from './labelDedupe';
-import { setDrawn, sharedLedger } from '../game/labelDrawLedger';
+import { setDrawnKeys, sharedLedger } from '../game/labelDrawLedger';
+import { nameKey } from '../game/landmarkQuestion';
 
 /** The MapLibre layers this overlay replaces. */
 export const REPLACED_LAYER_IDS = [
@@ -137,6 +138,11 @@ export class LabelOverlay {
   private readonly sizes = new Map<string, { width: number; height: number }>();
   private candidates: LabelCandidate[] = [];
   private byId = new Map<string, LabelCandidate>();
+  /** `nameKey` per candidate, for the label-draw ledger. */
+  private nameKeys = new WeakMap<LabelCandidate, string>();
+  /** `labelAllowed` per candidate under `allowedKey` (see `allowed`). */
+  private allowedOf = new WeakMap<LabelCandidate, boolean>();
+  private allowedKey: Pick<LabelRules, 'hiddenName' | 'hiddenNames' | 'spoilerIndex' | 'quizQuiet' | 'labelsOff'> = { hiddenName: '\u0000', spoilerIndex: null, quizQuiet: false, labelsOff: false };
   /** Landmark footprints (lng/lat), so a hit on the landmark's own walls is not an occluder. */
   private footprints = new Map<string, unknown>();
   private ownReach = new Map<string, number>();
@@ -304,6 +310,24 @@ export class LabelOverlay {
       quizQuiet: !!this.vm._quizQuietMap,
       isLabelled: () => false,
     };
+  }
+
+  /**
+   * `labelAllowed`, remembered per candidate while the rules' inputs hold (the
+   * asked name, the withheld array, the spoiler index, the quiet map): the plan
+   * screens ~5,700 candidates four times a second, and the withheld screen made
+   * that 13 ms a plan on merged main (#287).
+   */
+  private allowed(rules: LabelRules, c: LabelCandidate): boolean {
+    const key = this.allowedKey;
+    if (key.hiddenName !== rules.hiddenName || key.hiddenNames !== rules.hiddenNames || key.spoilerIndex !== rules.spoilerIndex
+      || key.quizQuiet !== rules.quizQuiet || key.labelsOff !== rules.labelsOff) {
+      this.allowedKey = { hiddenName: rules.hiddenName, hiddenNames: rules.hiddenNames, spoilerIndex: rules.spoilerIndex, quizQuiet: rules.quizQuiet, labelsOff: rules.labelsOff };
+      this.allowedOf = new WeakMap();
+    }
+    let ok = this.allowedOf.get(c);
+    if (ok === undefined) this.allowedOf.set(c, ok = labelAllowed(rules, c.cls, c.name));
+    return ok;
   }
 
   /** Clip-space projection of a point `heightM` above the ground. */
@@ -499,7 +523,7 @@ export class LabelOverlay {
     for (const c of this.candidates) {
       const riderDistM = rider ? Math.hypot((c.lng - rider[0]) * mPerLng, (c.lat - rider[1]) * 111320) : Infinity;
       if (c.cls === 'venue' && riderDistM > VENUE_RADIUS_M) continue;
-      if (!labelAllowed(rules, c.cls, c.name)) continue;
+      if (!this.allowed(rules, c)) continue;
       const p = project(c.lng, c.lat, c.heightM);
       if (p.behind || p.x < 0 || p.y < 0 || p.x > width || p.y > height || p.ndcZ > 1) continue;
       // Beyond the fade range: never drawn, so never worth a ray pick.
@@ -556,7 +580,17 @@ export class LabelOverlay {
     const previous = this.drawn;
     this.drawn = new Map(plan.map(p => [p.id, p.opacity]));
     // The label-draw ledger (#281): the landmark question never asks about a name drawn in the last 30 s.
-    setDrawn(sharedLedger(window as never), 'overlay', plan.filter(p => p.opacity > 0.05).map(p => this.byId.get(p.id)?.name ?? ''), performance.now());
+    // Keys cached per candidate; the ledger writes only when the drawn set changes (#287).
+    const keys = new Set<string>();
+    for (const p of plan) {
+      if (p.opacity <= 0.05) continue;
+      const c = this.byId.get(p.id);
+      if (!c) continue;
+      let key = this.nameKeys.get(c);
+      if (key === undefined) this.nameKeys.set(c, key = nameKey(c.name || ''));
+      if (key) keys.add(key);
+    }
+    setDrawnKeys(sharedLedger(window as never), 'overlay', keys, performance.now());
     // Elements not drawn go once their fade-out has run its course (the plan
     // interval is shorter than the fade, so "not in the last plan" cut the
     // fade short and the label blinked out at a third strength).
