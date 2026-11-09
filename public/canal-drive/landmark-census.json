@@ -1,14 +1,14 @@
 {
  "version": 1,
- "generatedAt": "2026-10-30T08:37:57.610Z",
+ "generatedAt": "2026-11-09T22:30:06.953Z",
  "definition": "named POI or ride-visible dominant building, model passes audit:glb hard gates, photo-likeness review recorded (user, 2026-10-23)",
  "target": 1000,
- "headline": 496,
- "strict": 168,
+ "headline": 599,
+ "strict": 167,
  "byTier": {
   "bespoke": {
-   "models": 323,
-   "counts": 316,
+   "models": 428,
+   "counts": 420,
    "strict": 0,
    "unreviewed": 0
   },
@@ -25,17 +25,23 @@
    "unreviewed": 14
   },
   "landmarkKit": {
-   "models": 420,
-   "counts": 110,
-   "strict": 110,
-   "unreviewed": 310
+   "models": 413,
+   "counts": 109,
+   "strict": 109,
+   "unreviewed": 304
+  },
+  "streetFurniture": {
+   "models": 11,
+   "counts": 0,
+   "strict": 0,
+   "unreviewed": 11
   }
  },
  "byReview": {
-  "legacy-gallery": 393,
-  "likeness-gate": 100,
-  "none": 324,
-  "strip-review": 115
+  "legacy-gallery": 498,
+  "likeness-gate": 105,
+  "none": 329,
+  "strip-review": 109
  },
  "rows": [
   {
@@ -78,7 +84,27 @@
    "key": "model:stedelijk-museum",
    "name": "Stedelijk Museum",
    "tier": "bespoke",
-   "pands": [],
+   "pands": [
+    "0363100012077791",
+    "0363100012251804",
+    "0363100012251805"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:albert-heijn-museumplein",
+   "name": "Albert Heijn Museumplein",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012082824",
+    "0363100012225637",
+    "0363100012225636"
+   ],
    "namedPoi": true,
    "rideVisible": false,
    "held": false,
@@ -174,9 +200,9 @@
    ],
    "namedPoi": true,
    "rideVisible": false,
-   "held": false,
+   "held": true,
    "review": "legacy-gallery",
-   "counts": true,
+   "counts": false,
    "countsStrict": false
   },
   {
@@ -4981,6 +5007,1495 @@
    "countsStrict": false
   },
   {
+   "key": "model:de-roos",
+   "name": "De Roos (P.C. Hooftstraat 183)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012236970"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:hirschgebouw",
+   "name": "Hirschgebouw",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165488"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kalvertoren",
+   "name": "Kalvertoren (Kalverpassage)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165086"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:huis-met-de-hoofden",
+   "name": "Huis met de Hoofden",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012177213"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:lensbomen",
+   "name": "3 bomen, 6 lenzen (Lens Trees)",
+   "tier": "bespoke",
+   "pands": [],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:olympisch-stadion",
+   "name": "Olympisch Stadion",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012076088",
+    "0363100012250984"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:het-nieuwe-huis",
+   "name": "Het Nieuwe Huis",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012148010"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:academie-van-bouwkunst",
+   "name": "Academie van Bouwkunst",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012171994"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:hollandsche-manege",
+   "name": "Hollandsche Manege",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012074454"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:amstelstation",
+   "name": "Amstelstation",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012145715"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:droogbak",
+   "name": "Droogbak (former HIJSM head office)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012171155"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:havengebouw",
+   "name": "Havengebouw",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012179689",
+    "0363100012179691"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:abn-amro-hoofdkantoor",
+   "name": "ABN AMRO hoofdkantoor",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012146659"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:wolkenkrabber",
+   "name": "De Wolkenkrabber (12-verdiepingenhuis)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012127007"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:zuiderbad",
+   "name": "Zuiderbad",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012233523"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:marnixbad",
+   "name": "Zwembad Het Marnix",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012169393"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:bungehuis",
+   "name": "Bungehuis",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012167624"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:cromhouthuizen",
+   "name": "Cromhouthuizen",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012176599",
+    "0363100012169510",
+    "0363100012176534"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:waldorf-astoria-herengracht",
+   "name": "Waldorf Astoria Amsterdam",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012171090",
+    "0363100012178774",
+    "0363100012253806"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:de-burcht",
+   "name": "De Burcht (Burcht van Berlage)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012170603"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:eerste-openluchtschool",
+   "name": "Eerste Openluchtschool voor het Gezonde Kind",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012090993",
+    "0363100012098627"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:blauwbrug",
+   "name": "Blauwbrug",
+   "tier": "bespoke",
+   "pands": [],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:magere-brug",
+   "name": "Magere Brug",
+   "tier": "bespoke",
+   "pands": [],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kiosk-dr-falafel",
+   "name": "Dr. Falafel kiosk",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012243757"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kiosk-mr-blou",
+   "name": "Mr Blou I Love You kiosk",
+   "tier": "bespoke",
+   "pands": [],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kiosk-dumplings-nassauplein",
+   "name": "Dumplings kiosk, Nassauplein",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012243758"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kiosk-frens-haringhandel",
+   "name": "Frens Haringhandel",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012176251"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kiosk-stubbes-haring",
+   "name": "Stubbe's Haring",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012179484"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kiosk-haringhandel-jonk",
+   "name": "Haringhandel Jonk",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012247454"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kiosk-museumplein",
+   "name": "Kiosk Rembrandt Van Gogh",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012151388"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:vijzelbank",
+   "name": "Prins en Keizer (Vijzelbank)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165685"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:carlton-hotel",
+   "name": "Carlton Hotel",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012168111"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:citroen-zuid",
+   "name": "Citroën garage (Jan Wils, 1931)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012080490"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:odeon-singel",
+   "name": "Odeon",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012171740"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:doelen-hotel",
+   "name": "Doelen Hotel",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012180410"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:telefooncentrale-spuistraat",
+   "name": "Former telephone exchange (W Amsterdam)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165118"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:telegraaf-gebouw",
+   "name": "Former Telegraaf building",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012253832",
+    "0363100012167525"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:barbizon-palace",
+   "name": "NH Collection Barbizon Palace",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165693",
+    "0363100012171455",
+    "0363100012182718",
+    "0363100012182720",
+    "0363100012182719",
+    "0363100012182721",
+    "0363100012249789"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:marinekazerne-kattenburgerstraat",
+   "name": "Marinekazerne ('s Lands Werf, Kattenburgerstraat)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165822"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kraanspoor",
+   "name": "Kraanspoor (NDSM crane track office)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012115127"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:zonnehuis",
+   "name": "Het Zonnehuis (Tuindorp Oostzaan)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012092742",
+    "0363100012132683"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:sportfondsenbad-oost",
+   "name": "Sportfondsenbad Oost",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012236677",
+    "0363100012236879"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:artis-planetarium",
+   "name": "ARTIS Planetarium",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012164980"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:gebouw-parnas",
+   "name": "Parnassustoren (Gebouw Parnas)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012110783"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:andaz-prinsengracht",
+   "name": "Andaz Amsterdam Prinsengracht (former Openbare Bibliotheek)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012253957",
+    "0363100012168555"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:loods-6",
+   "name": "Loods 6",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012142095"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:atlanta-stadhouderskade",
+   "name": "Atlanta",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012080492"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ziggo-dome",
+   "name": "Ziggo Dome",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012238052"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:vu-hoofdgebouw",
+   "name": "Hoofdgebouw Vrije Universiteit",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012136232"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:wtc-amsterdam",
+   "name": "World Trade Center Amsterdam",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012096613"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:volkshotel",
+   "name": "Volkshotel",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012149232"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:oranje-nassau-kazerne",
+   "name": "Oranje-Nassau Kazerne",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012180523",
+    "0363100012180524",
+    "0363100012180521",
+    "0363100012169164",
+    "0363100012170400",
+    "0363100012170399",
+    "0363100012169165",
+    "0363100012181498",
+    "0363100012181499",
+    "0363100012181497",
+    "0363100012170462",
+    "0363100012170463",
+    "0363100012170464",
+    "0363100012181501",
+    "0363100012181500",
+    "0363100012170524"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:byzantium",
+   "name": "Byzantium",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012135250",
+    "0363100012236811",
+    "0363100012073194",
+    "0363100012233595"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:burgerweeshuis-van-eyck",
+   "name": "Burgerweeshuis (Aldo van Eyck)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012080770"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:autopon",
+   "name": "Autopon (Ben Ingwersen, 1961)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012236735"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:joodse-invalide",
+   "name": "De Joodsche Invalide (J.F. Staal, 1937)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012170299",
+    "0363100012253824"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:pakhuis-australie",
+   "name": "Pakhuis Australië",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012139498"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:de-makroon",
+   "name": "De Makroon",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012242951"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:tolhuis-paviljoen",
+   "name": "Paviljoen Tolhuistuin",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012119827"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:y-helling",
+   "name": "Y-Helling",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012238702"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:the-edge",
+   "name": "The Edge",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012239633"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:akzonobel-center",
+   "name": "AkzoNobel Center",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012240149"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:sarphati-plaza",
+   "name": "Sarphati Plaza",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012182840"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:apollo-hotel",
+   "name": "Apollo Hotel",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012148632"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:graansilo-korthals-altes",
+   "name": "Graansilo Korthals Altes",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012233585"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:betonnen-silo-silodam",
+   "name": "Betonnen Silo (Silodam)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012237143"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:effectenbeurs",
+   "name": "Effectenbeurs (Beursplein 5)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165051"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:het-sieraad",
+   "name": "Het Sieraad (Postjesweg 1)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012154874"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kpn-teleport",
+   "name": "KPN Teleport",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165158"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:nfta-markenplein",
+   "name": "Nederlandse Filmacademie",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012170259"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:tramremise-lekstraat",
+   "name": "Tramremise Lekstraat",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012106929"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:gerrit-rietveld-academie",
+   "name": "Gerrit Rietveld Academie",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012077325"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:heinekenplein-block",
+   "name": "Heinekenplein block (Stadhouderskade 79)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012130580",
+    "0363100012232488",
+    "0363100012080460",
+    "0363100012139518"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:hofkerk",
+   "name": "Hofkerk (H.H. Martelaren van Gorcum)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012123068"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:watertoren-amstelveenseweg",
+   "name": "Watertoren Amstelveenseweg",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012216977"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:politie-nieuwezijds-voorburgwal",
+   "name": "Politiebureau Nieuwezijds Voorburgwal",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012171032"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:politie-lijnbaansgracht",
+   "name": "Politiebureau Lijnbaansgracht",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012169471"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:politie-oost-watergraafsmeer",
+   "name": "Politiebureau Oost (Linnaeusstraat 111)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012131469"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:rietveld-academie-2006",
+   "name": "Gerrit Rietveld Academie, Benthem Crouwel building and Fedlev wing",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012091838"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:binnengasthuis-kloveniersburgwal",
+   "name": "Oudemanhuispoort, north and west wings (Rusland, Kloveniersburgwal, Oudezijds Achterburgwal)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012171179"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kinkerstraat-32",
+   "name": "Kinkerstraat 32-54 (Vomar block, 1999)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012137280"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:westerdok-748",
+   "name": "Westerdok 748 courtyard block",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012186003"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:da-costakade-146",
+   "name": "Tetterode complex (former type foundry), Da Costakade",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012236799"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:bloemenmarkt-stalls",
+   "name": "Bloemenmarkt",
+   "tier": "bespoke",
+   "pands": [],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kiosk-park-bea",
+   "name": "Park Kiosk BEA",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012241046"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kiosk-ramons-coffee",
+   "name": "Ramon's Coffee Kiosk",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012246428"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:kinkerstraat-89",
+   "name": "Kinkerstraat 89-105 (balcony block, 1987)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012092013"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:politiebureau-postjesweg",
+   "name": "Politiebureau Postjesweg (2004)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012092810"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:ibis-city-west",
+   "name": "Quarter Plaza (2003)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012063603"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:winkelcentrum-plein-40-45",
+   "name": "Winkelcentrum Plein '40-'45 (2000)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012112179"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:andreas-ensemble",
+   "name": "Andreas Ensemble block with the WestCord Fashion Hotel (2009)",
+   "tier": "bespoke",
+   "pands": [],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:oude-turfmarkt-139",
+   "name": "Oude Turfmarkt 127-149: Allard Pierson (former Nederlandsche Bank), University front, St. Bernardus and five canal houses",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012168172"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:barlaeus-gymnasium",
+   "name": "Barlaeus Gymnasium (1885), Weteringschans 29",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012169565"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:brand-bij-ca",
+   "name": "Damrak 70-79 and the Beurspassage (former C&A)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012165746"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:doubletree-centraal",
+   "name": "DoubleTree by Hilton Amsterdam Centraal Station",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012237484"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:weteringschans-corner-office",
+   "name": "Het Noortse Bosch (AFM office), Vijzelgracht 46-58",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012184747"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:belastingdienst-amsterdam",
+   "name": "Het Boekhuis (Belastingdienst Amsterdam), Kingsfordweg 1",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012107557",
+    "0363100012204651"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:dominicus-savius-school",
+   "name": "Vliegbasis De Huygens (former RK Technische School Dominicus Savius), Jan Evertsenstraat 717-781",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012113136"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:forum-office",
+   "name": "EDGE Stadium (former Forum office building), Fred. Roeskestraat 100",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012125840"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:de-valerius",
+   "name": "Valerius, Valeriusplein 9 / Lassusstraat (on the site of the former Valeriuskliniek)",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012251533"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:amsterdams-lyceum",
+   "name": "Het Amsterdams Lyceum, Valeriusplein 15",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012149878"
+   ],
+   "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:atrium-zuidas",
+   "name": "Atrium",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012244160",
+    "0363100012074056",
+    "0363100012246583",
+    "0363100012246582",
+    "0363100012246549"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:xavier-zuidas",
+   "name": "Xavier",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012246555",
+    "0363100012246554"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
+   "key": "model:sint-nicolaaslyceum",
+   "name": "Sint-Nicolaaslyceum",
+   "tier": "bespoke",
+   "pands": [
+    "0363100012239853"
+   ],
+   "namedPoi": true,
+   "rideVisible": true,
+   "held": false,
+   "review": "legacy-gallery",
+   "counts": true,
+   "countsStrict": false
+  },
+  {
    "key": "model:olvg-west",
    "name": "OLVG West",
    "tier": "bespoke",
@@ -5617,7 +7132,7 @@
   },
   {
    "key": "model:ordinary-0363100012171032",
-   "name": "Politiebureau Nieuwezijds Voorburgwal, Nieuwezijds Voorburgwal 35, Amsterdam (Spui-Nieuwezijds corner, 1996)",
+   "name": "Politiebureau Nieuwezijds Voorburgwal, Nieuwezijds Voorburgwal 35, Amsterdam (Nieuwezijds Kolk corner, 1996)",
    "tier": "largeRecipe",
    "pands": [
     "0363100012171032"
@@ -6829,8 +8344,7 @@
    "namedPoi": false,
    "rideVisible": false,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
+   "review": "likeness-gate",
    "counts": false,
    "countsStrict": false
   },
@@ -6844,8 +8358,7 @@
    "namedPoi": false,
    "rideVisible": true,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
+   "review": "likeness-gate",
    "counts": true,
    "countsStrict": true
   },
@@ -7167,8 +8680,7 @@
    "namedPoi": false,
    "rideVisible": true,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-29",
+   "review": "likeness-gate",
    "counts": true,
    "countsStrict": true
   },
@@ -7182,8 +8694,7 @@
    "namedPoi": false,
    "rideVisible": true,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-29",
+   "review": "likeness-gate",
    "counts": true,
    "countsStrict": true
   },
@@ -7197,8 +8708,7 @@
    "namedPoi": false,
    "rideVisible": true,
    "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-30",
+   "review": "likeness-gate",
    "counts": true,
    "countsStrict": true
   },
@@ -7225,31 +8735,6 @@
    "review": "none",
    "counts": false,
    "countsStrict": false
-  },
-  {
-   "key": "kit:Stedelijk",
-   "name": "Stedelijk",
-   "tier": "landmarkKit",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
-  },
-  {
-   "key": "kit:Hofkerk",
-   "name": "Hofkerk",
-   "tier": "landmarkKit",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "strip-review",
-   "reviewDate": "2026-10-24",
-   "counts": true,
-   "countsStrict": true
   },
   {
    "key": "kit:Gerardus Majellakerk",
@@ -9475,18 +10960,6 @@
    "countsStrict": true
   },
   {
-   "key": "kit:Generic school NL.IMBAG.Pand.0363100012090993",
-   "name": "Generic school NL.IMBAG.Pand.0363100012090993",
-   "tier": "landmarkKit",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
-  },
-  {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012091041",
    "name": "Generic school NL.IMBAG.Pand.0363100012091041",
    "tier": "landmarkKit",
@@ -9527,18 +11000,6 @@
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012091856",
    "name": "Generic school NL.IMBAG.Pand.0363100012091856",
-   "tier": "landmarkKit",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
-  },
-  {
-   "key": "kit:Generic school NL.IMBAG.Pand.0363100012092742",
-   "name": "Generic school NL.IMBAG.Pand.0363100012092742",
    "tier": "landmarkKit",
    "pands": [],
    "namedPoi": true,
@@ -10674,18 +12135,6 @@
    "countsStrict": true
   },
   {
-   "key": "kit:Generic school NL.IMBAG.Pand.0363100012149878",
-   "name": "Generic school NL.IMBAG.Pand.0363100012149878",
-   "tier": "landmarkKit",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
-  },
-  {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012150241",
    "name": "Generic school NL.IMBAG.Pand.0363100012150241",
    "tier": "landmarkKit",
@@ -11107,18 +12556,6 @@
    "countsStrict": true
   },
   {
-   "key": "kit:Generic school NL.IMBAG.Pand.0363100012169565",
-   "name": "Generic school NL.IMBAG.Pand.0363100012169565",
-   "tier": "landmarkKit",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
-  },
-  {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012169888",
    "name": "Generic school NL.IMBAG.Pand.0363100012169888",
    "tier": "landmarkKit",
@@ -11142,18 +12579,6 @@
    "reviewDate": "2026-10-24",
    "counts": true,
    "countsStrict": true
-  },
-  {
-   "key": "kit:Generic cinema NL.IMBAG.Pand.0363100012170259",
-   "name": "Generic cinema NL.IMBAG.Pand.0363100012170259",
-   "tier": "landmarkKit",
-   "pands": [],
-   "namedPoi": true,
-   "rideVisible": false,
-   "held": false,
-   "review": "none",
-   "counts": false,
-   "countsStrict": false
   },
   {
    "key": "kit:Generic school NL.IMBAG.Pand.0363100012170328",
@@ -12346,6 +13771,138 @@
    "tier": "landmarkKit",
    "pands": [],
    "namedPoi": true,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:container",
+   "name": "Underground container top (rest drum)",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:container-rest",
+   "name": "Underground container top (rest flap)",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:container-bg",
+   "name": "Above-ground container (BG box)",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:container-glas",
+   "name": "Underground container top (glass)",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:container-papier",
+   "name": "Underground container top (paper)",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:lamp-lantern",
+   "name": "Canal lantern",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:lamp-pole",
+   "name": "Hooked lamp pole",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:bin",
+   "name": "Litter bin",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:bike-rack",
+   "name": "Bike hoop (nietje)",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:abri",
+   "name": "Tram and bus shelter (abri)",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
+   "rideVisible": false,
+   "held": false,
+   "review": "none",
+   "counts": false,
+   "countsStrict": false
+  },
+  {
+   "key": "furniture:ad-column",
+   "name": "Advertising column (reclamezuil)",
+   "tier": "streetFurniture",
+   "pands": [],
+   "namedPoi": false,
    "rideVisible": false,
    "held": false,
    "review": "none",
