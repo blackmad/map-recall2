@@ -3,7 +3,7 @@
  *
  * Staging rows hold `name`, `wikipediaExtract`, `sources` (URLs read) and, for
  * facts taken from Dutch pages, `original` (the Dutch sentences). The merge is
- * idempotent and never overwrites a non-blank `wikipediaExtract`; a name with
+ * idempotent and never overwrites a non-blank `wikipediaExtract` unless the row sets `replace: true`; a name with
  * no entry yet is appended.
  *
  * Usage: node --import tsx scripts/content/apply-buurt-extracts.ts <staging.json> [--check]
@@ -18,6 +18,8 @@ export interface Hood {
   wikipediaExtract?: string;
   sources?: string[];
   original?: string[];
+  /** Staging only: overwrite a non-blank extract with this row. */
+  replace?: boolean;
   [key: string]: unknown;
 }
 
@@ -39,13 +41,15 @@ export function mergeBuurtExtracts(published: readonly Hood[], staged: readonly 
     if (blank(row.wikipediaExtract) || !row.sources?.length) { skipped.push(row.name); continue; }
     const targets = merged.filter(hood => hood.name === row.name);
     if (!targets.length) {
-      merged.push({ ...row });
+      const { replace: _replace, ...fresh } = row;
+      merged.push(fresh);
       added.push(row.name);
       continue;
     }
     let touched = false;
     for (const hood of targets) {
-      if (!blank(hood.wikipediaExtract)) continue;
+      if (!blank(hood.wikipediaExtract) && !row.replace) continue;
+      if (hood.wikipediaExtract === row.wikipediaExtract) continue;
       hood.wikipediaExtract = row.wikipediaExtract;
       hood.sources = row.sources;
       if (row.original) hood.original = row.original;
