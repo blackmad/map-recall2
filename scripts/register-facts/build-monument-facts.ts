@@ -11,7 +11,7 @@ import { parseRegisterFacts, type RegisterFacts } from '../../src/canalRecall/fa
 
 const STAGING = 'public/data/extracts/amsterdam/staging/monument-facts.json';
 const REPORT = 'public/data/extracts/amsterdam/staging/monument-facts.coverage.json';
-const EXTRACT = 'public/data/extracts/amsterdam/monument-facts.json';
+const EXTRACT = process.env.REGISTER_FACTS_PUBLISH_TO ?? 'public/data/extracts/amsterdam/monument-facts.json';
 export const RIDE_PRIORITY_GEBIEDEN = new Set(['Centrum-West', 'Centrum-Oost', 'Oud-West, De Baarsjes', 'Westerpark', 'Oud-Zuid', 'De Pijp, Rivierenbuurt', 'Oud-Oost']);
 
 type Ring = number[][];
@@ -63,4 +63,9 @@ mkdirSync(path.dirname(STAGING), { recursive: true });
 writeFileSync(STAGING, JSON.stringify(out));
 writeFileSync(REPORT, JSON.stringify(report, null, 1));
 console.log(JSON.stringify({ ...report, byBuurt: Object.fromEntries(Object.entries(report.byBuurt).slice(0, 12)) }, null, 1));
-if (process.argv.includes('--publish')) { writeFileSync(EXTRACT, JSON.stringify(out)); console.log(`published ${EXTRACT}`); }
+// The published extract drops `sourceText` (provenance and the review text stay in staging; the game reads parsed fields only).
+if (process.argv.includes('--publish')) {
+  const published = { ...out, buildings: Object.fromEntries(Object.entries(buildings).map(([id, rec]) => { const { sourceText, ...rest } = rec as Record<string, unknown>; void sourceText; return [id, rest]; })) };
+  writeFileSync(EXTRACT, JSON.stringify(published));
+  console.log(`published ${EXTRACT} without sourceText: ${(JSON.stringify(published).length / 1e6).toFixed(2)} MB (staging ${(JSON.stringify(out).length / 1e6).toFixed(2)} MB)`);
+}

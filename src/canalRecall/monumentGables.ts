@@ -12,23 +12,29 @@ import type { GableShape } from './roofMesh.js';
 const WORDS: Array<[RegExp, GableShape]> = [
   [/verhoogde\s+halsgevel/i, 'raisedNeck'],
   [/trapgevel|trappengevel|trapgeveltje|trapvormige\s+top|getrapte\s+top/i, 'step'],
-  [/halsgevel|halsvormige\s+top/i, 'neck'],
-  [/klokgevel|klokvormige\s+top|klokvormig\s+beëindigd/i, 'bell'],
-  [/tuitgevel|tuitvormige\s+top/i, 'spout'],
+  [/halsgevel|halsvormige\s+\w*top|halstop|ingezwenkte\s+hals\b/i, 'neck'],
+  [/klokgevel|klokvormige\s+\w*top|klokvormig\s+beëindigd/i, 'bell'],
+  [/tuitgevel|tuitvormige\s+(?:voor)?gevel|tuitvormige\s+top/i, 'spout'],
   // "onder rechte lijst", "rechte klossenlijst", "lijstgevel", "kroonlijst", "attiek": a flat cornice front.
-  [/lijstgevel|rechte\s+\w*lijst|kroonlijst|klossenlijst|attiek/i, 'cornice'],
-  [/puntgevel|topgevel/i, 'plain'],
+  // "gevel onder verhoogde lijst met consoles", "onder rechte gesneden lijst", "onder triglyfenlijst": the same front.
+  [/lijstgevel|rechte\s+\w*lijst|kroonlijst|klossenlijst|triglyfenlijst|attiek|onder\s+(?:rechte|verhoogde|gesneden|gebogen|geprofileerde|zandstenen|houten|gebeeldhouwde|versierde|omlopende)(?:\s+\w+){0,2}\s+\w*lijst/i, 'cornice'],
+  [/puntgevel|topgevel|punttop/i, 'plain'],
 ];
 
-/** The gable shape a register description names first, or null. */
-export function classifyGable(text: string): GableShape | null {
-  let best: { at: number; shape: GableShape } | null = null;
+/** The first gable word a register description names: its shape and where it sits in the text, or null. */
+export function classifyGableAt(text: string): { shape: GableShape; at: number; end: number } | null {
+  let best: { at: number; end: number; shape: GableShape } | null = null;
   for (const [re, shape] of WORDS) {
     const m = re.exec(text);
     // Ties (one phrase inside another) go to the earlier, longer entry in WORDS.
-    if (m && (!best || m.index < best.at)) best = { at: m.index, shape };
+    if (m && (!best || m.index < best.at)) best = { at: m.index, end: m.index + m[0].length, shape };
   }
-  return best ? best.shape : null;
+  return best;
+}
+
+/** The gable shape a register description names first, or null. */
+export function classifyGable(text: string): GableShape | null {
+  return classifyGableAt(text)?.shape ?? null;
 }
 
 /** The register's gables by building id (the `monument-gables.json` extract). */
