@@ -175,14 +175,17 @@ export function layoutMarkers(
   return placed;
 }
 
-/** The marker under a tap, generous by a few pixels and including the stem
- *  down to the anchor dot. Topmost (last drawn) wins. */
+/** The marker under a tap: its label plate, generous by a few pixels, and its
+ *  stem down to the anchor dot, only a finger wide around the stem. The stem
+ *  band used to be the plate's full width, a strip of open canal under every
+ *  bridge pill that opened its card (lane S2, #314). Topmost (last drawn) wins. */
+export const MARKER_STEM_HALF_WIDTH = 8;
 export function markerAt(placed: readonly PlacedMarker[], x: number, y: number, slop = 6): PlacedMarker | null {
   for (let i = placed.length - 1; i >= 0; i--) {
-    const { box, anchorY } = placed[i];
-    if (x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= Math.max(box.y + box.h, anchorY) + slop) {
-      return placed[i];
-    }
+    const { box, anchorX, anchorY } = placed[i];
+    const onPlate = x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= box.y + box.h + slop;
+    const onStem = Math.abs(x - anchorX) <= MARKER_STEM_HALF_WIDTH && y >= box.y + box.h && y <= anchorY + slop;
+    if (onPlate || onStem) return placed[i];
   }
   return null;
 }

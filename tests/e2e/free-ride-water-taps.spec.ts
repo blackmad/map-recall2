@@ -79,7 +79,12 @@ async function candidates(page: Page): Promise<{ water: Candidate[]; land: Candi
       const css = { x: x * scale, y: y * scale };
       const world = g.vectorMap.screenToWorld?.(css.x, css.y, rect, g.osmLoader);
       if (!world) continue;
-      const isWater = !!g.vectorMap.isWater?.(world.x, world.y, g.osmLoader);
+      // Visible water: the ground under the pixel is water and no building or model surface stands in front of it
+      // (a facade over a canal behind it is a building tap, not a water tap).
+      const groundWater = !!g.vectorMap.isWater?.(world.x, world.y, g.osmLoader);
+      const hit = groundWater ? g.vectorMap.inspectBuilding(css.x, css.y, rect) : null;
+      if (hit?.poi) continue; // a POI label covers it: neither open water nor plain ground
+      const isWater = groundWater && !hit;
       const anchorDist = anchors.reduce((d, a) => Math.min(d, Math.hypot(a.x - x, a.y - y)), Infinity);
       (isWater ? water : land).push({ cx: x, cy: y, px: rect.left + css.x, py: rect.top + css.y, water: isWater, anchorDist });
     }
@@ -96,7 +101,10 @@ async function candidates(page: Page): Promise<{ water: Candidate[]; land: Candi
     const markers = (g._freeRideMarkers || []).map((m: any) => {
       const place = (g._freeRideNearby || []).find((p: any) => p.key === m.key);
       return { key: m.key, kind: place?.kind, name: place?.name, anchorX: m.anchorX, anchorY: m.anchorY,
-        anchorWater: place ? !!g.vectorMap.isWater?.(place.x, place.y, g.osmLoader) : null };
+        anchorWater: (() => { // the drawn anchor dot, unprojected to the ground
+          const w = g.vectorMap.screenToWorld?.(m.anchorX * scale, m.anchorY * scale, rect, g.osmLoader);
+          return w ? !!g.vectorMap.isWater?.(w.x, w.y, g.osmLoader) : null;
+        })() };
     });
     return { water: spread(water), land: spread(land), markers };
   }, TAPS);
