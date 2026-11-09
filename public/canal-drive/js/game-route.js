@@ -2146,7 +2146,8 @@ class GameRouteRuntime {
       // 4 s (was 2.8): under ?engine=own the facades check holds until the look's atlas is bound (#129: never race
       // without facades); in the chase-and-submit probe flow the 2.8 s cut that short (atlas unbound at racing).
       if (!world) {
-        await this._waitForMapSettle(4000);
+        // Lane S1 (#313): one 10 s cap over this hold and the intro's, the city in the first frame (startHold.ts).
+        await (this._startHoldWait ? this._startHoldWait('ride') : this._waitForMapSettle(4000));
         if (stale()) return;
       }
 
@@ -2169,7 +2170,7 @@ class GameRouteRuntime {
       // still up; see _prepareIntro.
       if (!world && this._prepareIntro()) {
         this.loadingMessage = routeText('ride.load.findingWay');
-        await this._waitForMapSettle(1800);
+        await (this._startHoldWait ? this._startHoldWait('intro') : this._waitForMapSettle(1800));
         if (stale()) return;
       }
 
