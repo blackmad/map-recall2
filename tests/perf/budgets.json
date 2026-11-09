@@ -8,10 +8,15 @@
       "date": "2026-10-24"
     },
     "programs": {
-      "value": 32,
-      "unit": "GL programs",
-      "source": "HISTORY 'Own ground compiles half the shaders' (68 -> 32); slop plan §6",
-      "date": "2026-10-26"
+      "value": 40,
+      "measured": [
+        37,
+        37,
+        37
+      ],
+      "unit": "GL programs after the perf-gate 70 s own-engine landmark ride (DPR 2); engine-own.spec's 6 s ride stays far below",
+      "source": "lane perf-findings #299 2026-11-09: 33 compiled before RACING, +1-4 by route; new since the 32 line (2026-10-26, MapLibre phone ride): engine overview ShaderMaterials x3 (10-30), container furniture (11-05), landmark batch city-look+depth USE_BATCHING x3 and lod2 raw-Lambert stand-ins x3-4 (R4-B #244 11-07), baked-coarse depth (11-07); fold candidates in #299 (lod2 through city-look, one shadowSide, defer boat/transit compile) would take this back to 36",
+      "date": "2026-11-09"
     },
     "motionBudget": {
       "value": [
@@ -98,9 +103,14 @@
     },
     "desktopMotionP99Ms": {
       "value": 33,
-      "unit": "ms p99 frame time over a 60 s own-engine desktop ride in motion (heap-ride.mjs timeline)",
-      "source": "lane E2 2026-11-05: 10.4 ms headed at 120 Hz, 16.8 ms headless; 0 frames > 100 ms in motion; ride start still has 2-3 frames > 100 ms (first draw 35-84 ms, labels 42-49 ms)",
-      "date": "2026-11-05"
+      "unit": "ms p99 frame time over the perf-gate 60 s own-engine motion ride (motion-stutter, DPR 2, headless 60 Hz: quantised to 16.7/33.3, measure at 1-min load < 8)",
+      "source": "lane E2 2026-11-05: 10.4 ms headed at 120 Hz, 16.8 ms headless; 0 frames > 100 ms in motion; ride start still has 2-3 frames > 100 ms (first draw 35-84 ms, labels 42-49 ms); #299 2026-11-09: three gate runs 16.8 at load 3.6/10.9/17.0 — the 33.3 reading of 11-09 was load noise; a frames-over-20-ms count would be a steadier row",
+      "date": "2026-11-05",
+      "measured": [
+        16.8,
+        16.8,
+        16.8
+      ]
     },
     "iphoneMotionP99Ms": {
       "value": 50,
