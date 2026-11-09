@@ -5,8 +5,10 @@
  * disambiguator. Spoiler screening needs them: asking "Nieuwmarkt" while the
  * square is labelled "New Market" gives the answer away.
  */
-export function placeAliases(item: { name?: string; wikipedia?: string }): string[] {
+export function placeAliases(item: { name?: string; wikipedia?: string; sourceName?: string }): string[] {
   const m = /^nl:(.+)$/.exec(item.wikipedia || '');
   const nl = m ? m[1].replace(/\s*\([^)]*\)\s*$/, '').trim() : '';
-  return nl && nl !== item.name ? [nl] : [];
+  // A place the Dutch game labels in Dutch keeps its catalogue name as an alias (#307).
+  const source = item.sourceName && item.sourceName !== item.name ? [item.sourceName] : [];
+  return [...source, ...(nl && nl !== item.name && nl !== item.sourceName ? [nl] : [])];
 }
