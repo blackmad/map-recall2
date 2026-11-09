@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PERF_HUD_ID, PERF_HUD_NARROW_STYLE, PERF_HUD_STYLE, perfHudLine } from '../../src/canalRecall/engine/perfHud';
 import { describeBuilding } from '../../src/canalRecall/buildingFacts';
+import { landmarkLede, splitDetail } from '../../src/canalRecall/game/landmarkData';
 
 type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'advanced-haze-off' | 'advanced-perf-hud' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
   | 'stacked-notices' | 'finish' | 'finish-calm' | 'finish-calm-bare' | 'finish-bike' | 'finish-transit'
@@ -39,6 +40,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   // Every optional block at once: photo, ribbon, first-time gains, guest
   // tease and a personal best (user report 2026-10-02: ran off the screen).
   | 'finish-full' | 'finish-full-touch' | 'finish-stamp' | 'finish-stamp-touch'
+  // R2-4 (#307): the Dutch arrival at a landmark whose nl article lede the extract kept (De Dokwerker).
+  | 'finish-dutch-lede' | 'finish-dutch-lede-touch'
   | 'finish-run' | 'finish-run-touch' | 'finish-run-card' | 'finish-run-card-touch' | 'finish-run-card-calm' | 'finish-run-card-calm-touch'
   | 'landmark-panel-touch'
   | 'stacked-notices-touch' | 'neighborhood-fallback-touch' | 'neighborhood-touch'
@@ -376,6 +379,19 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
             longDetail: 'The Vondelpark Open Air Theatre in Amsterdam has staged free performances every summer since 1865, when the park itself was still new, and it remains one of the oldest open-air stages in the Netherlands.',
             wikipediaUrl: 'https://en.wikipedia.org/wiki/Vondelpark_Open_Air_Theatre',
           }];
+          if (scenario.startsWith('finish-dutch-lede')) {
+            // landmarks.json's De Dokwerker row (extract_landmarks_1098130181), through the game's own lede rule.
+            const dokwerker = {
+              wikipediaExtract: 'De Dokwerker is a statue and monument on Jonas Daniël Meijerplein in Amsterdam in memory of the February Strike of 1941.',
+              wikipediaExtractOriginal: 'De Dokwerker is een beeld en monument op het Jonas Daniël Meijerplein in Amsterdam ter nagedachtenis aan de Februaristaking van 1941.\nHet standbeeld is in opdracht van het Amsterdamse gemeentebestuur ontworpen en gemaakt door de beeldhouwer Mari Andriessen.\nDe Haarlemse timmerman/aannemer Willem Termetz, die Andriessen al voor de oorlog kende, heeft in 1951 ',
+              wikipediaExtractOriginalLang: 'nl',
+            };
+            const lede = landmarkLede(dokwerker, 'nl');
+            game.routeTo = { id: 'theater', name: 'De Dokwerker' };
+            game.landmarks = [{ id: 'theater', name: 'De Dokwerker', type: 'landmark', ...splitDetail(lede.text), extractLang: lede.lang, wikipediaUrl: 'https://nl.wikipedia.org/wiki/De_Dokwerker' }];
+            game._facts = new Map();
+            game._finishBlurb = null;
+          }
           if (bare) {
             game._landmarkImages = new Map();
             renderFinish();
@@ -822,6 +838,9 @@ function DutchFrame({ scenario }: { scenario: Scenario }) {
 export const FinishCardRunDutch: Story = { args: { scenario: 'finish-run' }, render: () => <DutchFrame scenario="finish-run" /> };
 export const FinishCardRunDutchPhone: Story = { args: { scenario: 'finish-run-touch' }, render: () => <DutchFrame scenario="finish-run-touch" />, globals: phone };
 /** #292: the Dutch arrival footer on a phone keeps whole items (the view and difficulty go first) instead of a mid-list cut. */
+/** R2-4 (#307): the Dutch arrival prints the nl article's own lede where the extract kept it (De Dokwerker). */
+export const FinishDutchLede: Story = { args: { scenario: 'finish-dutch-lede' }, render: () => <DutchFrame scenario="finish-dutch-lede" /> };
+export const FinishDutchLedePhone: Story = { args: { scenario: 'finish-dutch-lede-touch' }, render: () => <DutchFrame scenario="finish-dutch-lede-touch" />, globals: phone };
 export const FinishFullDutchPhone: Story = { args: { scenario: 'finish-full-touch' }, render: () => <DutchFrame scenario="finish-full-touch" />, globals: phone };
 export const RunCardDutch: Story = { args: { scenario: 'finish-run-card' }, render: () => <DutchFrame scenario="finish-run-card" /> };
 export const RunCardDutchPhone: Story = { args: { scenario: 'finish-run-card-touch' }, render: () => <DutchFrame scenario="finish-run-card-touch" />, globals: phone };
