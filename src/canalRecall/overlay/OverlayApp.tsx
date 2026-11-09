@@ -3,6 +3,7 @@ import { SiteSwitch } from '../../components/SiteSwitch.tsx';
 import { AccountChip } from '../../components/AccountChip.tsx';
 import { TourCards } from './TourCards.tsx';
 import { canalPageLinks } from '../../siteLinks.ts';
+import { freeRideLandmarkQuizEnabled } from '../featureFlags.ts';
 import { ArrowLeft, BookOpenCheck, ChevronDown, Clock3, Search } from 'lucide-react';
 import {
   ASK_BUDGETS,
@@ -936,8 +937,8 @@ export function OverlayApp({
               gloss={prefs.routePattern === 'free' ? t('setup.route.freeHint') : undefined}
               keepGloss
             />
-            {/* Free Ride asks nothing unless the rider opts in to landmark questions (G3, landmarkQuestion.ts). */}
-            {prefs.routePattern === 'free' && <ToggleGroup label={t('setup.freeRideLandmarkQuiz')}>
+            {/* Free Ride asks nothing (user 2026-11-09, F1 #311): the G3 opt-in toggle shows only with `?freeRideQuiz=1` (featureFlags.ts). */}
+            {prefs.routePattern === 'free' && freeRideLandmarkQuizEnabled(typeof location === 'undefined' ? '' : location.search) && <ToggleGroup label={t('setup.freeRideLandmarkQuiz')}>
               <ToggleTile id="free-ride-landmark-quiz" checked={prefs.landmarkQuiz} onChange={landmarkQuiz => patch({ landmarkQuiz })}
                 title={t('setup.freeRideLandmarkQuiz')} hint={t('setup.freeRideLandmarkQuizHint')} />
             </ToggleGroup>}

@@ -13,10 +13,13 @@
 // sits on it. No canvas, DOM or Game instance; tested in
 // `freeRideCollection.test.ts`. The browser half is `freeRideRuntime.ts`.
 //
-// `?collection=0` turns all of it off and restores the Free Ride of before.
+// Off by default since 2026-11-09 (user: "no gameplay element in free ride";
+// featureFlags.ts, F1 #311): `?collection=1` opts in, and without it Free
+// Ride is the Free Ride of before. Stamps earned here earlier stay.
 
 import type { WorldPoint } from './worldTypes';
 import type { NeighborhoodPassport } from './neighborhoodPassport';
+import { freeRideCollectionEnabled } from '../featureFlags';
 
 export const COLLECTION_STORAGE_KEY = 'canalRecall.freeRideCollection.v1';
 
@@ -293,7 +296,7 @@ export function corridorAhead(rider: WorldPoint & { angle: number }, aheadPx: nu
   return out;
 }
 
-/** On unless the page says `?collection=0`. */
+/** Off unless the page says `?collection=1` (FREE_RIDE_COLLECTION_DEFAULT, featureFlags.ts). */
 export function collectionEnabled(search: string): boolean {
-  try { return new URLSearchParams(search).get('collection') !== '0'; } catch { return !/[?&]collection=0(?:&|$)/.test(search); }
+  return freeRideCollectionEnabled(search);
 }

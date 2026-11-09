@@ -291,9 +291,9 @@ test('a reload during a dealt leg of a run begun from Route setup resumes the le
   await nextStopThenReload(page, 'setup');
 });
 
-// R2-9 (#302): a first-time guest's first ride is a bike ride on streets, not a boat on the IJ.
-// Held at merge: the boat start is the user's 2026-10-22 call; the bike default waits on needs-david.
-test.skip('a fresh profile\'s first ride is by bike on streets (R2-9)', async ({ page }) => {
+// #306 (user, 2026-11-09: "boat is more fun somehow"): a first-time guest's first ride is the boat.
+// R2-9 (#302) proposed a bike start; it is dropped for good.
+test('a fresh profile\'s first ride is by boat (#306)', async ({ page }) => {
   test.setTimeout(240_000);
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   await useBundlesDir(page);
@@ -307,6 +307,7 @@ test.skip('a fresh profile\'s first ride is by bike on streets (R2-9)', async ({
   });
   console.log(JSON.stringify({ project: test.info().project.name, ride }));
   await page.waitForTimeout(2500);
-  await page.screenshot({ path: shot('r2-fresh-first-ride') });
-  expect(ride.travel).toBe('car');
+  await page.screenshot({ path: shot('fresh-first-ride-boat') });
+  expect(ride.travel).toBe('boat');
+  expect(ride.stored === null || ride.stored === 'boat').toBe(true);
 });

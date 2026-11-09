@@ -9,6 +9,7 @@
 // buurt's passport. The browser half is landmarkQuestionRuntime.ts.
 
 import type { WorldPoint } from './worldTypes';
+import { freeRideLandmarkQuizEnabled } from '../featureFlags';
 
 /** Metres: how close a landmark must be to be asked about. */
 export const LANDMARK_QUESTION_RADIUS_M = 150;
@@ -135,13 +136,14 @@ export const LANDMARK_QUESTIONS_DEFAULT_ON = true;
 
 /** `?landmarkQuestions=0|false|off` restores drive-by cards only; when the
  *  default is off, only `?landmarkQuestions=1|true|on` turns them on. Free
- *  Ride asks only when the rider switched "Quiz me on landmarks" on. */
+ *  Ride never asks by default (user 2026-11-09, F1 #311): only with
+ *  `?freeRideQuiz=1` (featureFlags.ts) and "Quiz me on landmarks" on. */
 export function landmarkQuestionsEnabled(search: string, mode: { freeRide: boolean; freeRideQuiz: boolean }): boolean {
   const flag = /[?&]landmarkQuestions=([^&]*)/.exec(search || '');
   if (flag && (flag[1] === '0' || flag[1] === 'false' || flag[1] === 'off')) return false;
   const optedIn = !!flag && (flag[1] === '1' || flag[1] === 'true' || flag[1] === 'on');
   if (!LANDMARK_QUESTIONS_DEFAULT_ON && !optedIn) return false;
-  return mode.freeRide ? mode.freeRideQuiz : true;
+  return mode.freeRide ? mode.freeRideQuiz && freeRideLandmarkQuizEnabled(search) : true;
 }
 
 // ---- Sightings: noticed and named landmarks, per buurt ----

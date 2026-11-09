@@ -78,11 +78,16 @@ test('flag and Free Ride opt-in', () => {
   // the 2026-11-09 hotfix had it off. The flag still works both ways.
   assert.equal(landmarkQuestionsEnabled('', { freeRide: false, freeRideQuiz: false }), true);
   assert.equal(landmarkQuestionsEnabled('', { freeRide: true, freeRideQuiz: false }), false);
-  assert.equal(landmarkQuestionsEnabled('', { freeRide: true, freeRideQuiz: true }), true);
+  // Free Ride never asks by default (F1, user 2026-11-09), even with the stored toggle on;
+  // `?freeRideQuiz=1` restores the opt-in toggle.
+  assert.equal(landmarkQuestionsEnabled('', { freeRide: true, freeRideQuiz: true }), false);
+  assert.equal(landmarkQuestionsEnabled('?freeRideQuiz=1', { freeRide: true, freeRideQuiz: true }), true);
+  assert.equal(landmarkQuestionsEnabled('?freeRideQuiz=1', { freeRide: true, freeRideQuiz: false }), false);
+  assert.equal(landmarkQuestionsEnabled('?freeRideQuiz=1', { freeRide: false, freeRideQuiz: false }), true);
   assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=1', { freeRide: false, freeRideQuiz: false }), true);
   assert.equal(landmarkQuestionsEnabled('?a=1&landmarkQuestions=0', { freeRide: false, freeRideQuiz: false }), false);
   assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=1', { freeRide: true, freeRideQuiz: false }), false);
-  assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=0', { freeRide: true, freeRideQuiz: true }), false);
+  assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=0&freeRideQuiz=1', { freeRide: true, freeRideQuiz: true }), false);
 });
 
 test('sightings: noticed then named, named never demoted, credit per buurt, storage round trip', () => {

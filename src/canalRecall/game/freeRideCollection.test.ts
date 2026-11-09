@@ -108,8 +108,10 @@ test('the corridor: a coin on the road ahead is over it, one beside it is not', 
   assert.deepEqual(ahead[4], { x: 100, y: 0 });
 });
 
-test('?collection=0 turns the collection off', () => {
-  assert.equal(collectionEnabled(''), true);
-  assert.equal(collectionEnabled('?ride=free'), true);
+test('the collection is off by default; ?collection=1 opts in (F1, user 2026-11-09)', () => {
+  assert.equal(collectionEnabled(''), false);
+  assert.equal(collectionEnabled('?ride=free'), false);
   assert.equal(collectionEnabled('?ride=free&collection=0'), false);
+  assert.equal(collectionEnabled('?ride=free&collection=1'), true);
+  assert.equal(collectionEnabled('?collection=on&ride=free'), true);
 });

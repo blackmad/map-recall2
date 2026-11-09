@@ -8,6 +8,8 @@
 .landing-returning-stats { margin: 0; font: 700 15px/1.2 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: pre-wrap; }
 
 .landing-cards { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1fr); gap: clamp(12px, 1.6vw, 20px); margin-top: 16px; }
+/* Two cards (Continue, Free Ride) since Today's ride went off (F1 #311): equal halves, not a gap where it stood. */
+.landing-cards-two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 .landing-card { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 18px 20px 20px; border-radius: 8px; border: 1px solid var(--line-strong); background: var(--raised);
   box-shadow: 0 1px 2px rgba(31,28,23,.06), 0 10px 26px rgba(31,28,23,.08); }
 .landing-card-daily { border-color: var(--copper); }
