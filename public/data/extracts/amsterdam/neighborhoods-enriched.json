@@ -16,13 +16,44 @@
   {
     "name": "Rijnbuurt",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Amsterdam_-_Borssenburgstraat_5.JPG/500px-Amsterdam_-_Borssenburgstraat_5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Amsterdam - Borssenburgstraat 5.JPG (A. Bakker, CC BY 3.0)"
+    "imageAttribution": "Wikimedia Commons: Amsterdam - Borssenburgstraat 5.JPG (A. Bakker, CC BY 3.0)",
+    "wikipediaExtract": "The Rijnbuurt takes its name from the Rijnstraat, one of the rivers-named streets of the Rivierenbuurt in Amsterdam-Zuid. The street was named after the river Rhine by a council decision of 22 March 1922, on land that Nieuwer Amstel had annexed in 1896. It is about a kilometre long and lined with mid-rise pre-war housing.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Rijnstraat_(Amsterdam)",
+      "https://nl.wikipedia.org/wiki/Rivierenbuurt_(Amsterdam)"
+    ],
+    "original": [
+      "bij een raadsbesluit van 22 maart 1922 vernoemd naar de rivier de Rijn",
+      "het vooroorlogse Amsterdam",
+      "De overige straatnamen in de buurt werden vernoemd naar Nederlandse rivieren."
+    ]
   },
   {
-    "name": "Scheldebuurt"
+    "name": "Scheldebuurt",
+    "wikipediaExtract": "The Scheldebuurt is named after the Scheldestraat in the Rivierenbuurt of Amsterdam-Zuid, which received its name from the river Scheldt in 1922. The street continues across the Amstelkanaal and runs to the Europaplein. Its first trams ran in 1929, and the North-South metro line has run in twin tunnels beneath it since 2011 and 2012.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Scheldestraat_(Amsterdam)",
+      "https://nl.wikipedia.org/wiki/Rivierenbuurt_(Amsterdam)"
+    ],
+    "original": [
+      "Deze straat kreeg zijn naam in 1922",
+      "In 1929 verschenen de eerste trams in de Scheldestraat",
+      "De overige straatnamen in de buurt werden vernoemd naar Nederlandse rivieren."
+    ]
   },
   {
-    "name": "Westindische Buurt"
+    "name": "Westindische Buurt",
+    "wikipediaExtract": "The Westindische Buurt, today better known as the Postjesbuurt, got its first name because the municipality gave its streets and square the names of places in Suriname and the former Netherlands Antilles. The Surinameplein was named in 1922 on land of the former municipality of Sloten, annexed in 1921, and most of the neighbourhood was built in the 1920s and 1930s. The alternative name Postjesbuurt comes from the Postjeswetering and Postjeskade.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Surinameplein",
+      "https://nl.wikipedia.org/wiki/Postjesbuurt"
+    ],
+    "original": [
+      "De buurt werd daarom door de gemeente de Westindische buurt genoemd",
+      "Het plein is in 1922 vernoemd naar de sinds 1975 onafhankelijke Nederlandse kolonie Suriname",
+      "Het grootste deel van de buurt werd gebouwd in de jaren twintig en dertig.",
+      "De benaming Postjesbuurt is ontleend aan de Postjeswetering en de Postjeskade."
+    ]
   },
   {
     "name": "Betondorp",
@@ -117,7 +148,16 @@
   {
     "name": "Van Galenbuurt",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Van_Galenbuurt%2C_1056_Amsterdam%2C_Netherlands_-_panoramio.jpg/500px-Van_Galenbuurt%2C_1056_Amsterdam%2C_Netherlands_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Van Galenbuurt, 1056 Amsterdam, Netherlands - panoramio.jpg (Han Jongeneel, CC BY 3.0)"
+    "imageAttribution": "Wikimedia Commons: Van Galenbuurt, 1056 Amsterdam, Netherlands - panoramio.jpg (Han Jongeneel, CC BY 3.0)",
+    "wikipediaExtract": "The Van Galenbuurt in Amsterdam-West is named after the Jan van Galenstraat, which in 1925 was named after the Dutch fleet commander Jan van Galen (1604-1653), who died in the battle near Livorno against the English. The street was extended past the Vierwindstrekenbrug (1932) to the Hoofdweg in 1935, and tram line 13 has run on it since 1989.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Jan_van_Galenstraat_(Amsterdam)",
+      "https://nl.wikipedia.org/wiki/Houtvaartkwartier"
+    ],
+    "original": [
+      "Het is een vernoeming naar de Nederlandse vlootvoogd Jan van Galen (1604-1653).",
+      "In 1935 werd de straat voorbij de Vierwindstrekenbrug (uit 1932) doorgetrokken tot de Hoofdweg."
+    ]
   },
   {
     "name": "Apollobuurt",
@@ -155,7 +195,16 @@
   {
     "name": "Molenwijkpark",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Amsterdam_-_Molenwijk.JPG/500px-Amsterdam_-_Molenwijk.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "imageAttribution": "Wikimedia Commons: Amsterdam - Molenwijk.JPG (A. Bakker, CC BY 3.0)"
+    "imageAttribution": "Wikimedia Commons: Amsterdam - Molenwijk.JPG (A. Bakker, CC BY 3.0)",
+    "wikipediaExtract": "Molenwijk is a residential area in Amsterdam-Noord, built on a polder that was once used to deposit silt from the Noordzeekanaal. Its plan by Klaas Geerts is entirely high-rise, built from prefabricated Indeco-Coignet elements, and the first homes were delivered on 1 April 1968. From above the blocks look like windmill sails around central parking garages, which gave the area its name, and the ground level between them is a car-free, park-like domain.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Molenwijk_(Amsterdam)"
+    ],
+    "original": [
+      "bestaat voor 100% uit hoogbouw",
+      "Zo is de naam Molenwijk ontstaan.",
+      "De rest van het maaiveld is ingericht als autovrij en parkachtig domein."
+    ]
   },
   {
     "name": "Stettineiland"
@@ -205,15 +254,16 @@
     "name": "Nieuwmarktbuurt",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Bewoners_ontruimen_pand_in_de_Sint_Antoniesbreestraat_in_Amsterdam%2C_Nieuwmarktbuurt_%2C_Bestanddeelnr_927-7864.jpg/500px-Bewoners_ontruimen_pand_in_de_Sint_Antoniesbreestraat_in_Amsterdam%2C_Nieuwmarktbuurt_%2C_Bestanddeelnr_927-7864.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "imageAttribution": "Wikimedia Commons: Bewoners ontruimen pand in de Sint Antoniesbreestraat in Amsterdam, Nieuwmarktbuurt , Bestanddeelnr 927-7864.jpg (Bert Verhoeff / Anefo, CC0)",
-    "wikipediaExtract": "Nieuwmarkt is a square in the centre of Amsterdam between the Geldersekade and the Kloveniersburgwal, bordering the Zeedijk to the north and the Sint Antoniesbreestraat to the south. It came into being in 1614, when the water around the Sint Anthoniespoort was covered over, and it became a market square. At its centre stands the Waag, originally a 15th-century city gate. The Lastage, the area between the Geldersekade and Oudeschans next to it, lost many houses in 1975 to a metro tunnel, which sparked the Nieuwmarkt riots.",
+    "wikipediaExtract": "Nieuwmarkt is a square in the centre of Amsterdam, created in 1614 when the water around the Sint Anthoniespoort was covered over; the gate, built in 1481-1494 as part of the medieval wall, later became the Waag, or weigh house. East of it the Lastage, between the Geldersekade and the Oudeschans, began in the 15th century as a ballast-loading site and by the 16th century was an industrial harbour zone with rope-walks, mast-makers and shipyards. Its building moved the city boundary out to the Montelbaanstoren and the Oudeschans, which was dug to protect it. In 1975 houses in the Lastage were demolished for the metro tunnel, sparking the Nieuwmarkt riots under the motto \"Geen buizen maar huizen\".",
     "sources": [
+      "https://nl.wikipedia.org/wiki/Lastage",
       "https://nl.wikipedia.org/wiki/Nieuwmarkt_(Amsterdam)"
     ],
     "original": [
-      "een plein in het centrum van Amsterdam, tussen de Geldersekade en de Kloveniersburgwal",
-      "Het plein ontstond in 1614 toen het water rondom de Sint Anthoniespoort overkluisd werd.",
-      "Centraal staat de Waag, oorspronkelijk een 15e-eeuwse stadspoort.",
-      "De Nieuwmarkt grenst aan de Wallen, Chinatown en de Lastage."
+      "Halverwege de 16e eeuw waren op de Lastage vijf lijnbanen gevestigd",
+      "hiertoe werd de Oudeschans gegraven",
+      "werd gebouwd als onderdeel van de middeleeuwse stadsommuring in de jaren 1481-1494",
+      "Geen buizen maar huizen"
     ]
   },
   {
@@ -314,15 +364,16 @@
     "name": "Nieuwmarkt/Lastage",
     "imageUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Amsterdam_-_Oude_Schans.jpg/500px-Amsterdam_-_Oude_Schans.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
     "imageAttribution": "Wikimedia Commons: Amsterdam - Oude Schans.jpg (Unknown authorUnknown author, Public domain)",
-    "wikipediaExtract": "Nieuwmarkt is a square in the centre of Amsterdam between the Geldersekade and the Kloveniersburgwal, bordering the Zeedijk to the north and the Sint Antoniesbreestraat to the south. It came into being in 1614, when the water around the Sint Anthoniespoort was covered over, and it became a market square. At its centre stands the Waag, originally a 15th-century city gate. The Lastage, the area between the Geldersekade and Oudeschans next to it, lost many houses in 1975 to a metro tunnel, which sparked the Nieuwmarkt riots.",
+    "wikipediaExtract": "Nieuwmarkt is a square in the centre of Amsterdam, created in 1614 when the water around the Sint Anthoniespoort was covered over; the gate, built in 1481-1494 as part of the medieval wall, later became the Waag, or weigh house. East of it the Lastage, between the Geldersekade and the Oudeschans, began in the 15th century as a ballast-loading site and by the 16th century was an industrial harbour zone with rope-walks, mast-makers and shipyards. Its building moved the city boundary out to the Montelbaanstoren and the Oudeschans, which was dug to protect it. In 1975 houses in the Lastage were demolished for the metro tunnel, sparking the Nieuwmarkt riots under the motto \"Geen buizen maar huizen\".",
     "sources": [
+      "https://nl.wikipedia.org/wiki/Lastage",
       "https://nl.wikipedia.org/wiki/Nieuwmarkt_(Amsterdam)"
     ],
     "original": [
-      "een plein in het centrum van Amsterdam, tussen de Geldersekade en de Kloveniersburgwal",
-      "Het plein ontstond in 1614 toen het water rondom de Sint Anthoniespoort overkluisd werd.",
-      "Centraal staat de Waag, oorspronkelijk een 15e-eeuwse stadspoort.",
-      "De Nieuwmarkt grenst aan de Wallen, Chinatown en de Lastage."
+      "Halverwege de 16e eeuw waren op de Lastage vijf lijnbanen gevestigd",
+      "hiertoe werd de Oudeschans gegraven",
+      "werd gebouwd als onderdeel van de middeleeuwse stadsommuring in de jaren 1481-1494",
+      "Geen buizen maar huizen"
     ]
   },
   {
@@ -430,7 +481,15 @@
     ]
   },
   {
-    "name": "Gelderlandpleinbuurt"
+    "name": "Gelderlandpleinbuurt",
+    "wikipediaExtract": "The Gelderlandpleinbuurt is named after the Gelderlandplein, which the council named on 30 November 1966 after the province of Gelderland. The square's shopping centre opened in 1968 as a neighbourhood facility for the new garden suburb of Buitenveldert, and the plan concentrated shops and local services at a few central places. It was covered and extended in 1997 and rebuilt by Rijnboutt between 2013 and 2016.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Gelderlandplein"
+    ],
+    "original": [
+      "Het plein kreeg bij gemeenteraadsbesluit van 30 november 1966 de naam Gelderlandplein, naar de provincie Gelderland.",
+      "winkels en andere wijkvoorzieningen op een aantal centrale plaatsen"
+    ]
   },
   {
     "name": "Schinkelbuurt",
@@ -470,7 +529,16 @@
     "wikipediaExtract": "The Zuidas (literally South Axis in Dutch) is a business district and residential neighbourhood in Amsterdam, Netherlands, in the borough of Amsterdam-Zuid. Also known as the \"Financial Mile,\" it lies along the southern sector of the A10 ring road, between Oud-Zuid and the Rivierenbuurt to the north and the garden suburb of Buitenveldert to the south.\nThe name..."
   },
   {
-    "name": "Buitenveldert-West"
+    "name": "Buitenveldert-West",
+    "wikipediaExtract": "Buitenveldert-West is the western part of Buitenveldert, the garden city laid out south of Amsterdam on the polder of the former hamlet of Buitenveldert. It follows the General Extension Plan of 1934, led by Cornelis van Eesteren with an important role for the planner Jakoba Mulder. The polder was made ready for building from 1955, the first stone was laid on 2 June 1958, and the first residents arrived less than a year later. The Amsterdamse Bos neighbourhood lies within Buitenveldert-West, and the area was largely finished by the mid-1970s.",
+    "sources": [
+      "https://nl.wikipedia.org/wiki/Buitenveldert_(tuinstad)"
+    ],
+    "original": [
+      "Het Algemeen Uitbreidingsplan (AUP) van 1934",
+      "De eerste steen werd gelegd op 2 juni 1958",
+      "was halverwege de jaren zeventig grotendeels voltooid"
+    ]
   },
   {
     "name": "Van Lennepbuurt",

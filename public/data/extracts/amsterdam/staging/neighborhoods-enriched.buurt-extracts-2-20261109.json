@@ -41,7 +41,7 @@
   },
   {
     "name": "Van Galenbuurt",
-    "wikipediaExtract": "The Van Galenbuurt in Amsterdam-West is named after the Jan van Galenstraat, which in 1925 was named after the Dutch fleet commander Jan van Galen (1604-1653), who died in the battle near Livorno against the English. The street was extended past the Vierwindstrekenbrug (1932) to the Hoofdweg in 1935, and tram line 13 has run on it since 1989. No source I could fetch describes the buurt itself in more detail.",
+    "wikipediaExtract": "The Van Galenbuurt in Amsterdam-West is named after the Jan van Galenstraat, which in 1925 was named after the Dutch fleet commander Jan van Galen (1604-1653), who died in the battle near Livorno against the English. The street was extended past the Vierwindstrekenbrug (1932) to the Hoofdweg in 1935, and tram line 13 has run on it since 1989.",
     "sources": [
       "https://nl.wikipedia.org/wiki/Jan_van_Galenstraat_(Amsterdam)",
       "https://nl.wikipedia.org/wiki/Houtvaartkwartier"
@@ -49,7 +49,8 @@
     "original": [
       "Het is een vernoeming naar de Nederlandse vlootvoogd Jan van Galen (1604-1653).",
       "In 1935 werd de straat voorbij de Vierwindstrekenbrug (uit 1932) doorgetrokken tot de Hoofdweg."
-    ]
+    ],
+    "notes": "Street-name origin and extensions only; no fetched source describes the buurt itself (lane #293)."
   },
   {
     "name": "Buitenveldert-West",
