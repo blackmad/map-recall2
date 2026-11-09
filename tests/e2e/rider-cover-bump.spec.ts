@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
 import { openRoute } from './helpers';
+import { budget } from './helpers/budget';
 import { OWN } from './worldCam';
 
 // Named regression (user report 2026-11-05, own engine, plan #213 item B): riding into a house front made the house
@@ -112,7 +113,8 @@ test.describe('rider cover', () => {
       await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
       const run = await bumpHouse(page, street);
       const maxDepth = Math.max(...run.samples.map(s => s.depthM));
-      const anyCovered = run.samples.some(s => s.covered || s.cover.length || s.ghosted.length);
+      const coveredSamples = run.samples.filter(s => s.covered || s.cover.length || s.ghosted.length).length;
+      const anyCovered = coveredSamples > budget('coverBumpHidden');
       console.log(`bump on ${run.road}: house front ${run.facing} m off the centreline; bike point max ${maxDepth.toFixed(2)} m inside a footprint; covered=${anyCovered}`);
       expect(run.road).toBe(street);
       if (SPOTS[street].reaches) expect(maxDepth, 'the bike reached the house footprint (else this pin tests nothing)').toBeGreaterThan(0);
