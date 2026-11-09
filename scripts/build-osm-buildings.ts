@@ -20,7 +20,8 @@ import { mkdir, stat } from 'node:fs/promises';
 import { once } from 'node:events';
 import path from 'node:path';
 import { isUndergroundOsm } from '../src/canalRecall/undergroundBuildings.ts';
-import { osmMinHeightM } from '../src/canalRecall/osmMinHeight.ts';
+import { osmHeightM, osmMinHeightM } from '../src/canalRecall/osmMinHeight.ts';
+import { footprintAreaM2 } from '../src/canalRecall/genericFacades.ts';
 
 type Geometry = { type: 'Polygon' | 'MultiPolygon'; coordinates: unknown };
 type SourceFeature = {
@@ -69,8 +70,8 @@ function toOutputFeature(feature: SourceFeature): object | null {
   if (!isBuilding(tags)) return null;
   // Metro stations and car parks would stand in the road (Weesperplein, 2026-10-30).
   if (isUndergroundOsm(tags)) return null;
-  const levels = numeric(tags['building:levels']);
-  const height = numeric(tags.height) ?? (levels ? levels * 3 : 9);
+  // An untagged roof outline is a canopy about one storey up, not a 9 m block (osmHeightM, feedback 2c486751).
+  const height = osmHeightM(tags, footprintAreaM2(feature.geometry));
   const minHeight = osmMinHeightM(tags, height);
   const isPart = tags['building:part'] != null && tags['building:part'] !== '' && tags['building:part'] !== 'no';
   return {

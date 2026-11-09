@@ -11,18 +11,24 @@
  *
  * The expected starts are kept in scripts/data/osm-min-levels.json, so --check
  * runs without the OSM cache.
+ *
+ * Untagged roof outlines (no height, levels or min_height) also take their canopy height (`osmHeightM`): they were
+ * published at the 9 m default, a slab at 8-9 m across a facade (feedback 2c486751, Danzigerkade w848883149). Their
+ * expected tops are kept in scripts/data/osm-roof-canopies.json; the height is fixed first, then the start from it.
  */
 import { createReadStream, existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createInterface } from 'node:readline';
 import path from 'node:path';
 import { gunzipSync, gzipSync } from 'node:zlib';
-import { osmMinHeightM } from '../src/canalRecall/osmMinHeight.ts';
+import { OSM_DEFAULT_HEIGHT_M, osmHeightM, osmMinHeightM } from '../src/canalRecall/osmMinHeight.ts';
+import { footprintAreaM2 } from '../src/canalRecall/genericFacades.ts';
 
 const publish = process.argv.includes('--publish');
 const check = process.argv.includes('--check');
 const ROOT = path.join('public', 'data', 'extracts', 'amsterdam');
 const OSM_SEQ = path.join('.cache', 'osm-source', 'derived', 'amsterdam-buildings.geojsonseq');
 const STORE = path.join('scripts', 'data', 'osm-min-levels.json');
+const TOP_STORE = path.join('scripts', 'data', 'osm-roof-canopies.json');
 
 // OSM ids tagged building:min_level, or roof outlines, without min_height, with their tags.
 const tagged = new Map<string, Record<string, unknown>>();
@@ -37,7 +43,10 @@ if (existsSync(OSM_SEQ)) {
 }
 const stored = existsSync(STORE) ? JSON.parse(readFileSync(STORE, 'utf8')) as Record<string, number> : {};
 const expected: Record<string, number> = { ...stored };
+const expectedTop: Record<string, number> = existsSync(TOP_STORE) ? JSON.parse(readFileSync(TOP_STORE, 'utf8')) as Record<string, number> : {};
 const changed: { id: string; tile: string; from: unknown; to: number }[] = [];
+const lowered: { id: string; tile: string; from: unknown; to: number }[] = [];
+const untaggedRoof = (t: Record<string, unknown>) => (t.building === 'roof' || t['building:part'] === 'roof') && t.height === undefined && t['building:levels'] === undefined;
 let rewritten = 0;
 
 for (const tileSet of ['bag-tiles', 'building-tiles']) {
@@ -49,6 +58,16 @@ for (const tileSet of ['bag-tiles', 'building-tiles']) {
     for (const feature of collection.features) {
       const id = String(feature.properties.id ?? '');
       const tags = tagged.get(id);
+      // A canopy at the building default: its own top first (the AHN-measured or tagged ones are left alone).
+      if (tags && untaggedRoof(tags) && feature.properties.height === OSM_DEFAULT_HEIGHT_M && feature.properties.heightSource === undefined) {
+        const top = osmHeightM(tags, footprintAreaM2((feature as unknown as { geometry: unknown }).geometry));
+        if (top !== OSM_DEFAULT_HEIGHT_M) expectedTop[id] = top;
+      }
+      if (id in expectedTop && feature.properties.height !== expectedTop[id]) {
+        lowered.push({ id, tile: `${tileSet}/${x}/${file}`, from: feature.properties.height, to: expectedTop[id] });
+        feature.properties.height = expectedTop[id];
+        dirty = true;
+      }
       if (tags) expected[id] = Math.round(osmMinHeightM(tags, typeof feature.properties.height === 'number' ? feature.properties.height : null) * 100) / 100;
       if (!(id in expected) || feature.properties.minHeight === expected[id]) continue;
       changed.push({ id, tile: `${tileSet}/${x}/${file}`, from: feature.properties.minHeight, to: expected[id] });
@@ -61,7 +80,12 @@ for (const tileSet of ['bag-tiles', 'building-tiles']) {
     }
   }
 }
-if (tagged.size) writeFileSync(STORE, `${JSON.stringify(Object.fromEntries(Object.entries(expected).sort()), null, 0)}\n`);
+if (tagged.size) {
+  writeFileSync(STORE, `${JSON.stringify(Object.fromEntries(Object.entries(expected).sort()), null, 0)}\n`);
+  writeFileSync(TOP_STORE, `${JSON.stringify(Object.fromEntries(Object.entries(expectedTop).sort()), null, 0)}\n`);
+}
+process.stdout.write(`roof canopies: ${Object.keys(expectedTop).length} known, ${lowered.length} ${publish ? 'lowered' : 'at the 9 m default'}\n`);
+for (const c of lowered.slice(0, 6)) process.stdout.write(`  ${c.id} top ${c.from} -> ${c.to} m (${c.tile})\n`);
 process.stdout.write(`min_level parts: ${Object.keys(expected).length} known, ${changed.length} ${publish ? 'fixed' : 'off the rule'}${publish ? ` (${rewritten} tiles)` : ''}\n`);
 for (const c of changed.slice(0, 12)) process.stdout.write(`  ${c.id} ${c.from} -> ${c.to} m (${c.tile})\n`);
-if (check && changed.length && !publish) process.exit(1);
+if (check && (changed.length || lowered.length) && !publish) process.exit(1);
