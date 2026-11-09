@@ -61,3 +61,11 @@ test('blocked storage reads as a first-time visitor', () => {
   const blocked = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); } };
   assert.equal(buildLandingModel(blocked, LANDING_FIXTURE_NOW).returning, false);
 });
+
+test('the daily card prints the route length without "about" on a buurt-pool day (#279)', () => {
+  const model = buildLandingModel(landingFixtureStorage('returning'), LANDING_FIXTURE_NOW);
+  assert.ok(model.daily.pair?.routed, 'a pool day after the cutover');
+  const html = landingCardsHtml(model, { ride: './' });
+  assert.match(html, new RegExp(`${model.daily.pair!.km.toFixed(1).replace('.', '\\.')} km · the same route for everyone today`));
+  assert.doesNotMatch(html, /about \d/);
+});

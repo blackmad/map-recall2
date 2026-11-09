@@ -150,7 +150,7 @@ test('Today’s ride launches the pair the landing named', async ({ page }) => {
 
 // The buurt pool (#279): a real ride for three dates starts on the pair the
 // date names, plans a route, and arrives. `?dailyDate=` is the test-only
-// override of "today" in dailyRideDateKey(). 2026-11-12 ends at KNSM-eiland, a finish on a named way (finishOk only).
+// override of "today" in dailyRideDateKey(). 2026-11-12 (KNSM-eiland) and 2026-12-24 (Westindische Buurt) end at finish-only places on named ways.
 for (const date of ['2026-11-10', '2026-11-12', '2026-12-24', '2027-03-01']) {
   test(`?ride=daily on ${date} starts the buurt pair and arrives`, async ({ page }, info) => {
     test.skip(info.project.name !== 'desktop', 'one ride per date is enough; the iphone project runs the landing tests');
@@ -176,17 +176,17 @@ for (const date of ['2026-11-10', '2026-11-12', '2026-12-24', '2027-03-01']) {
       const g = (window as unknown as { canalRecallGame: { _plannedRouteLengthPx: number; track: { startPoint: { x: number; y: number }; finishPoint: { x: number; y: number } } } }).canalRecallGame;
       return { px: g._plannedRouteLengthPx, crow: Math.hypot(g.track.finishPoint.x - g.track.startPoint.x, g.track.finishPoint.y - g.track.startPoint.y) };
     });
-    // 3 px = 1 m. The planned route is at least the straight line, and the ends are the pair's (straight line within 25%).
+    // 3 px = 1 m. The card's km is the route's real length (#279): the planned route must be within 5 % of it.
     expect(planned.px).toBeGreaterThanOrEqual(planned.crow * 0.99);
-    expect(planned.crow / 3 / 1000).toBeGreaterThan((pair.km / 1.3) * 0.75);
-    expect(planned.crow / 3 / 1000).toBeLessThan((pair.km / 1.3) * 1.25);
+    const plannedKm = planned.px / 3000;
+    expect(Math.abs(plannedKm - pair.km) / pair.km, `planned ${plannedKm.toFixed(2)} km vs card ${pair.km} km`).toBeLessThanOrEqual(0.05);
     // Arrive: put the rider on the finish.
     await page.evaluate(() => {
       const g = (window as unknown as { canalRecallGame: { player: { x: number; y: number; speed: number }; track: { finishPoint: { x: number; y: number } } } }).canalRecallGame;
       g.player.x = g.track.finishPoint.x; g.player.y = g.track.finishPoint.y; g.player.speed = 0;
     });
     await expect.poll(async () => (await rideState(page))?.state, { timeout: 30_000 }).toBe(5);
-    console.log(`${date}: ${pair.from.name} → ${pair.to.name}, ${pair.km} km est., planned ${(planned.px / 3000).toFixed(2)} km`);
+    console.log(`${date}: ${pair.from.name} → ${pair.to.name}, card ${pair.km} km, planned ${(planned.px / 3000).toFixed(2)} km`);
     await page.screenshot({ path: `${shots}/daily-${date}-arrived-${info.project.name}.png` });
   });
 }
