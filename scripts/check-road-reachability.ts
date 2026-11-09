@@ -278,6 +278,10 @@ console.log(`\nunsimplified reference: ${unsimplified.groups.length} components`
     // Feedback 3e7f0aa4: the cycle bridge Brug 228 by the Odebrug, reached over
     // the paved link at its west landing (pavedLinks.ts), leads on to the city.
     ['Brug 228 by the Odebrug', 52.3770640, 4.9034365],
+    // User report 2026-11-09 ("I'm stuck here"): the Javaplantsoen promenade's
+    // east end is a cul-de-sac at the steps to Insulindeweg, but the promenade
+    // itself leads back to the city (the bike turns round: check-canal-car.ts).
+    ['Javaplantsoen promenade east end', 52.362966, 4.946304],
   ];
   const centre = componentOf.get(nearest(places[0][1], places[0][2]));
   console.log(`\nmotor-only ways dropped for cycling: ${motorOnly}`);

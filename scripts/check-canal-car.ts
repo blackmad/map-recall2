@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { constrainCarToRoad, trackEdgeStall, type CarKinematics, type RoadContact } from '../src/canalRecall/carRoadGuard';
+import { constrainCarToRoad, trackDeadEnd, trackEdgeStall, type CarKinematics, type RoadContact, type RoadGuardResult } from '../src/canalRecall/carRoadGuard';
+import { turnAroundHeading } from '../src/canalRecall/touchControls';
 import { ROUTE_QUIZ_SETTLE_METRES, routePlaqueName } from '../src/canalRecall/game/recallRules';
 import { bridgeNameAskable } from '../src/canalRecall/game/notableBridges';
 import { coveringBuilding, initialCoverState, updateCoverState } from '../src/canalRecall/coveredPassage';
@@ -356,10 +357,10 @@ const plazaWorld = (centre: [number, number], radiusMetres = 700) => {
   };
   const index = buildRoadSpatialIndex(built.segments, 100);
   const plazas = buildPlazaIndex(squares, toWorld, PIXELS_PER_METER);
-  const guard = (x: number, y: number, withPlazas: PlazaIndex | null) => {
-    let best = pickGuardContact(contactsAt(roadsNear(index, x, y, 2), x, y), null, { x, y });
+  const guard = (x: number, y: number, withPlazas: PlazaIndex | null, preferredAngle: number | null = null) => {
+    let best = pickGuardContact(contactsAt(roadsNear(index, x, y, 2), x, y), preferredAngle, { x, y });
     if (withPlazas) {
-      if (!best && plazaAt(withPlazas, x, y)) best = pickGuardContact(contactsAt(roadsNear(index, x, y, 4), x, y), null, { x, y });
+      if (!best && plazaAt(withPlazas, x, y)) best = pickGuardContact(contactsAt(roadsNear(index, x, y, 4), x, y), preferredAngle, { x, y });
       best = plazaGuardContact(best, withPlazas, x, y);
     }
     return best;
@@ -384,7 +385,7 @@ const plazaWorld = (centre: [number, number], radiusMetres = 700) => {
     const corridor = nearest ? classifySurface(nearest.dist, nearest.width) : 'grass';
     return plazaSurface(corridor, withPlazas, x, y);
   };
-  return { plazas, toWorld, blocked, ride, surface };
+  return { plazas, toWorld, blocked, ride, surface, guard };
 };
 let plazaSummary = '';
 {
@@ -524,6 +525,112 @@ let plazaSummary = '';
   plazaSummary = `; squares: Dam crossing ${after.steps} m, Leidseplein ${offCorridor.length} m² opened, 4 exits, both report positions free, Odebrug Brug 228 reached in ${odeAfter.steps} m, Frederiksplein and Piet Heinkade ring blocked`;
 }
 
+{
+  // trackDeadEnd (user report 2026-11-09, Javaplantsoen): forward held with no
+  // net movement turns the bike round after DEAD_END_TURN_FRAMES, once; a
+  // stall that starts on the asphalt, a rider turning the bike, no throttle
+  // or a turn-round in progress never do.
+  const fresh = () => ({ frames: 0, anchorX: 0, anchorY: 0, anchorAngle: 0 });
+  const push = (state: ReturnType<typeof fresh>, frames: number, at: (i: number) => { guard: RoadGuardResult; x: number; y: number; angle: number; wantsForward?: boolean; turning?: boolean }) => {
+    let fired = 0;
+    for (let i = 0; i < frames; i++) { const f = at(i); if (trackDeadEnd(state, { wantsForward: f.wantsForward ?? true, ...f })) fired++; }
+    return fired;
+  };
+  const shuffle = (i: number) => ({ guard: (i % 3 === 2 ? 'on-road' : 'soft-edge') as RoadGuardResult, x: 100 + (i % 2) * 0.9, y: 50 - (i % 3) * 0.6, angle: 0.1 });
+  assert.equal(push(fresh(), 89, shuffle), 0, 'no turn-round before 1.5 s');
+  assert.equal(push(fresh(), 90, shuffle), 1, 'stalled at a dead end for 1.5 s, the bike turns round');
+  assert.equal(push(fresh(), 179, shuffle), 1, 'it fires once per stall, then starts counting again');
+  assert.equal(push(fresh(), 200, i => ({ ...shuffle(i), guard: 'on-road' })), 0, 'never from a stall that never left the asphalt');
+  assert.equal(push(fresh(), 200, i => ({ ...shuffle(i), angle: 0.1 + i * 0.02 })), 0, 'a rider turning the bike is handling it');
+  assert.equal(push(fresh(), 200, i => ({ ...shuffle(i), wantsForward: false })), 0, 'no throttle, no turn-round');
+  assert.equal(push(fresh(), 200, i => ({ ...shuffle(i), turning: true })), 0, 'not while a turn-round is under way');
+  assert.equal(push(fresh(), 200, i => ({ ...shuffle(i), x: 100 + i * 2 })), 0, 'a bike that moves is not stalled');
+}
+
+let deadEndSummary = '';
+{
+  // Named regression (user report 2026-11-09, build ef73a29, Free Ride by
+  // bike, "I'm stuck here"): the east end of the Javaplantsoen promenade
+  // (OSM 318344977 + 4726770, routing_28 paths 5 and 0) ends at the steps
+  // (172392374) down to Insulindeweg. Its real exits are the steps and the
+  // bicycle=yes footways 1178623879 / 4726772, which the routing extract
+  // leaves out (unnamed footways), so the end node 52.362966,4.946304 is a
+  // cul-de-sac. Pushing forward there, the shoulder guard takes back every
+  // step and the bike stands, throttle open. After DEAD_END_TURN_FRAMES of
+  // that it turns round on the spot (trackDeadEnd) and rides back west.
+  const end: [number, number] = [52.362966, 4.946304];
+  const approach: [number, number] = [52.363027, 4.946010]; // 21 m west on the promenade
+  const world = plazaWorld(end, 400);
+  type Ride = { net: number; lastNet: number; turned: number; result: Record<string, number> };
+  const simulate = (from: [number, number], heading: number | null, frames: number, recovery: boolean): Ride => {
+    const a = world.toWorld(...from), b = world.toWorld(...end);
+    const bike: CarKinematics = { x: a.x, y: a.y, angle: heading ?? Math.atan2(b.y - a.y, b.x - a.x), vx: 0, vy: 0, speed: 0 };
+    const stall = { frames: 0, anchorX: 0, anchorY: 0 };
+    const dead = { frames: 0, anchorX: 0, anchorY: 0, anchorAngle: 0 };
+    let blockedFrames = 0, edgeFrames = 0, uTurn: number | null = null, turned = 0;
+    const trail: Array<{ x: number; y: number }> = [];
+    const result: Record<string, number> = {};
+    const excessAt = (x: number, y: number) => { const c = world.guard(x, y, world.plazas, bike.angle); return c ? c.dist - c.width : Infinity; };
+    const dt = 1 / 60;
+    for (let i = 0; i < frames; i++) {
+      if (uTurn != null) {
+        const delta = Math.atan2(Math.sin(uTurn - bike.angle), Math.cos(uTurn - bike.angle));
+        bike.angle += Math.sign(delta) * Math.min(Math.abs(delta), 5.5 * dt); // TURN_AROUND_RATE
+        bike.speed = 0;
+        if (Math.abs(delta) < 1e-3) uTurn = null;
+      } else {
+        bike.speed = Math.min(260, bike.speed + 120 * dt); // CAR_MAX_SPEED, CAR_ACCEL, throttle held
+      }
+      bike.vx = Math.cos(bike.angle) * bike.speed;
+      bike.vy = Math.sin(bike.angle) * bike.speed;
+      const previous = { x: bike.x, y: bike.y };
+      bike.x += bike.vx * dt;
+      bike.y += bike.vy * dt;
+      const guard: RoadGuardResult = constrainCarToRoad(
+        bike, previous, world.guard(bike.x, bike.y, world.plazas, bike.angle), world.guard(previous.x, previous.y, world.plazas, bike.angle),
+        { edgeTolerance: 4, blockedFrames, excessAt, holdHeading: uTurn != null || edgeFrames > 12 },
+      );
+      result[guard] = (result[guard] ?? 0) + 1;
+      blockedFrames = guard === 'rolled-back' ? blockedFrames + 1 : 0;
+      edgeFrames = trackEdgeStall(stall, guard, 0, bike.x, bike.y);
+      if (recovery && trackDeadEnd(dead, { wantsForward: true, guard, x: bike.x, y: bike.y, angle: bike.angle, turning: uTurn != null })) {
+        const road = world.guard(bike.x, bike.y, world.plazas, bike.angle);
+        uTurn = turnAroundHeading(bike.angle, road ? road.angle : null);
+        turned++;
+      }
+      trail.push({ x: bike.x, y: bike.y });
+    }
+    const first = trail[0], last = trail[trail.length - 1], before = trail[trail.length - 121];
+    return {
+      net: Math.hypot(last.x - first.x, last.y - first.y) / PIXELS_PER_METER,
+      lastNet: Math.hypot(last.x - before.x, last.y - before.y) / PIXELS_PER_METER,
+      turned, result,
+    };
+  };
+  const endWorld = world.toWorld(...end);
+  const endContact = world.guard(endWorld.x, endWorld.y, world.plazas);
+  assert.ok(endContact && endContact.dist <= endContact.width, 'Javaplantsoen: the promenade end is on the corridor');
+  // Before: forward held into the end for 5 s, the last 2 s go nowhere.
+  const stuck = simulate(approach, null, 300, false);
+  assert.ok(stuck.lastNet < 0.5, `Javaplantsoen (2026-11-09): without recovery the bike stands at the end, forward held (${stuck.lastNet.toFixed(2)} m in the last 120 frames)`);
+  // A quarter turn either way off the end, forward held, no steering: the
+  // shoulder's heading ease swings the bike back along the promenade, so
+  // these are measured, not pinned (2026-11-09: north 72.8 m, south 1.9 m).
+  const east = Math.atan2(endWorld.y - world.toWorld(...approach).y, endWorld.x - world.toWorld(...approach).x);
+  const sideways = [east - Math.PI / 2, east + Math.PI / 2].map(h => simulate(end, h, 180, false).lastNet);
+  // The rider's own turn-round (heading reversed) rides back west.
+  const back = simulate(end, east + Math.PI, 180, false);
+  assert.ok(back.lastNet > 10, `Javaplantsoen: the turn-round rides away from the end (${back.lastNet.toFixed(1)} m)`);
+  // After: the recovery turns the bike round once and it rides off.
+  const freed = simulate(approach, null, 300, true);
+  assert.equal(freed.turned, 1, `Javaplantsoen: the bike turns round by itself once (${freed.turned})`);
+  assert.ok(freed.lastNet > 10, `Javaplantsoen (2026-11-09): with recovery the bike rides on (${freed.lastNet.toFixed(1)} m in the last 120 frames)`);
+  // Riding along the open promenade never triggers it.
+  const cruising = simulate([52.363120, 4.944941], 0, 180, true);
+  assert.equal(cruising.turned, 0, 'Javaplantsoen: a bike riding freely is never turned round');
+  deadEndSummary = `; Javaplantsoen dead end: forward ${stuck.lastNet.toFixed(2)} m before (quarter turns ${sideways.map(m => m.toFixed(1)).join('/')} m), turned round and ${freed.lastNet.toFixed(1)} m after`;
+}
+
 let ferrySummary = '';
 {
   // Ferry docking and hull on the real western IJ: terminals and links from
@@ -609,4 +716,4 @@ let ferrySummary = '';
   ferrySummary = `, ferry: NDSM quay 24.7 m and Buiksloterweg 15 m reports dock, ${farQuay} NDSM bank touches blocked, f80d47da hull afloat, ${crossings.length} IJ crossings dock`;
 }
 
-process.stdout.write(`Canal Recall car checks passed (roads: ${routingSource()}; 6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}${ferrySummary}).\n`);
+process.stdout.write(`Canal Recall car checks passed (roads: ${routingSource()}; 6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}${deadEndSummary}${ferrySummary}).\n`);
