@@ -776,6 +776,7 @@
     "ride.nextStop": "Next stop",
     "ride.routeSetup": "Route setup",
     "ride.shareRoute": "Share this route",
+    "ride.distance.about": "about",
     "ride.shareRun": "Share run",
     "ride.linkCopied": "Link copied",
     // --- Arrival and run cards (#283) ---
@@ -1527,6 +1528,7 @@
     "ride.nextStop": "Volgende stop",
     "ride.routeSetup": "Route instellen",
     "ride.shareRoute": "Deel deze route",
+    "ride.distance.about": "ongeveer",
     "ride.shareRun": "Deel reeks",
     "ride.linkCopied": "Link gekopieerd",
     // --- Arrival and run cards (#283) ---
@@ -7372,6 +7374,15 @@
     }
   }
 
+  // src/canalRecall/game/rideDistance.ts
+  function formatRideDistance(km, options = {}) {
+    const safe = Number.isFinite(km) && km > 0 ? km : 0;
+    const tenths = Math.round(safe * 10) / 10;
+    const text = tenths >= 10 ? String(Math.round(safe)) : tenths.toFixed(1);
+    const prefix = options.routed ? "" : `${options.aboutWord ?? "about"} `;
+    return `${prefix}${text} km`;
+  }
+
   // src/canalRecall/game/routeSelection.ts
   function localFamiliarity(point, samples, bandKm = 0.6) {
     const near = samples.filter((sample) => kmBetween(sample, point) <= bandKm);
@@ -7772,6 +7783,32 @@
     ];
   }
 
+  // src/canalRecall/game/keycapAction.ts
+  var KEYCAP_ROW_H = 28;
+  var GAP = 8;
+  function keycapHover(mouse, box) {
+    return !!mouse && mouse.x >= box.x && mouse.x <= box.x + box.w && mouse.y >= box.y && mouse.y <= box.y + box.h;
+  }
+  function drawKeycapAction(ctx, roundRect2, at, action, style, mouse) {
+    ctx.font = "12px system-ui, sans-serif";
+    const captionW = ctx.measureText(action.caption).width;
+    ctx.font = `700 11px ${style.fontMono}`;
+    const keyW = ctx.measureText(action.key).width + 14;
+    const bounds = { x: at.x, y: at.top, w: keyW + GAP + captionW, h: KEYCAP_ROW_H };
+    const hover = keycapHover(mouse, bounds);
+    ctx.fillStyle = hover ? "rgba(31,28,23,.18)" : "rgba(31,28,23,.08)";
+    roundRect2(ctx, at.x, at.top + 4, keyW, 20, 5);
+    ctx.fill();
+    ctx.fillStyle = style.ink;
+    ctx.fillText(action.key, at.x + 7, at.top + 18);
+    const captionX = at.x + keyW + GAP;
+    ctx.fillStyle = style.captionColour ?? (hover ? style.ink : style.muted);
+    ctx.font = "12px system-ui, sans-serif";
+    ctx.fillText(action.caption, captionX, at.top + 18);
+    if (hover) ctx.fillRect(captionX, at.top + 21, captionW, 1);
+    return { bounds, endX: captionX + captionW };
+  }
+
   // src/canalRecall/game/chainedRunRuntime.ts
   var RUN_TOUCH_MS = 15e3;
   var INK = "#1f1c17";
@@ -8146,20 +8183,13 @@
         ctx.textAlign = "left";
         let ax = cardX + padX;
         for (const action of actions) {
-          ctx.font = `700 11px ${font}`;
-          const keyW = ctx.measureText(action.key).width + 14;
-          ctx.fillStyle = "rgba(31,28,23,.08)";
-          roundRect(ctx, ax, y + 4, keyW, 20, 5);
-          ctx.fill();
-          ctx.fillStyle = INK;
-          ctx.fillText(action.key, ax + 7, y + 18);
-          ax += keyW + 8;
-          ctx.fillStyle = MUTED;
-          ctx.font = "12px system-ui, sans-serif";
-          ctx.fillText(action.caption, ax, y + 18);
-          const captionW = ctx.measureText(action.caption).width;
-          buttons.push({ x: ax - keyW - 8, y, w: keyW + 8 + captionW, h: 28, id: action.id });
-          ax += captionW + 22;
+          const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y }, action, {
+            ink: INK,
+            muted: MUTED,
+            fontMono: font
+          }, scale === 1 ? this.hud.hoverPoint : null);
+          buttons.push({ ...drawn.bounds, id: action.id });
+          ax = drawn.endX + 22;
         }
       }
       ctx.restore();
@@ -10461,7 +10491,7 @@
           }) || t("ride.noCycling");
         }
       }
-      const homeLearningNote = this.routePattern === "home" && this.viewport.mode === "compact" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ~${this._homeLearningRadiusKm.toFixed(1)} km` : "";
+      const homeLearningNote = this.routePattern === "home" && this.viewport.mode === "compact" && Number.isFinite(this._homeLearningRadiusKm) && this._homeLearningRadiusKm > 0 ? `Learning near home \xB7 ${formatRideDistance(this._homeLearningRadiusKm, { aboutWord: t("ride.distance.about") })}` : "";
       return { feedback: this.quizFeedback || homeLearningNote, restrictionNote };
     }
     /** Place the whole HUD for this frame. One call, so every card agrees about
@@ -10908,26 +10938,14 @@
         ctx.textAlign = "left";
         let ax = cardX + padX;
         for (const action of actions) {
-          ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          const keyW = ctx.measureText(action.key).width + 14;
-          ctx.fillStyle = "rgba(31,28,23,.08)";
-          roundRect(ctx, ax, y + 2, keyW, 20, 5);
-          ctx.fill();
-          ctx.fillStyle = INK2;
-          ctx.fillText(action.key, ax + 7, y + 16);
-          const captionX = ax + keyW + 8;
-          ctx.font = "12px system-ui, sans-serif";
-          ctx.fillStyle = action.id === "copy" && this._copiedTimer > 0 ? GOOD : MUTED2;
-          ctx.fillText(action.caption, captionX, y + 16);
-          const captionW = ctx.measureText(action.caption).width;
-          pauseButtons.push({
-            x: ax,
-            y: y - 4,
-            w: keyW + 8 + captionW + 8,
-            h: 28,
-            id: action.id
-          });
-          ax = captionX + captionW + 22;
+          const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y - 2 }, action, {
+            ink: INK2,
+            muted: MUTED2,
+            fontMono: window.CanalRecallUi.hudSurface.fontMono,
+            captionColour: action.id === "copy" && this._copiedTimer > 0 ? GOOD : void 0
+          }, this.hud.hoverPoint);
+          pauseButtons.push({ ...drawn.bounds, id: action.id });
+          ax = drawn.endX + 22;
         }
         y += 28;
       }
@@ -11306,24 +11324,14 @@
             let ax = cardX + padX;
             const mouse = this.hud.hoverPoint;
             for (const action of actions) {
-              ctx.font = "12px system-ui, sans-serif";
-              const captionWidth = ctx.measureText(action.caption).width;
-              ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-              const keyW = ctx.measureText(action.key).width + 14;
-              const hover = scale === 1 && !!mouse && mouse.x >= ax && mouse.x <= ax + keyW + 8 + captionWidth && mouse.y >= top && mouse.y <= top + 28;
-              ctx.fillStyle = hover ? "rgba(31,28,23,.18)" : "rgba(31,28,23,.08)";
-              roundRect(ctx, ax, top + 4, keyW, 20, 5);
-              ctx.fill();
-              ctx.fillStyle = INK2;
-              ctx.fillText(action.key, ax + 7, top + 18);
-              ax += keyW + 8;
-              ctx.fillStyle = action.caption === "Link copied" ? GOOD : hover ? INK2 : MUTED2;
-              ctx.font = "12px system-ui, sans-serif";
-              ctx.fillText(action.caption, ax, top + 18);
-              const captionW = ctx.measureText(action.caption).width;
-              if (hover) ctx.fillRect(ax, top + 21, captionW, 1);
-              finishButtons.push({ x: ax - keyW - 8, y: top, w: keyW + 8 + captionW, h: 28, id: action.id });
-              ax += captionW + 22;
+              const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top }, action, {
+                ink: INK2,
+                muted: MUTED2,
+                fontMono: window.CanalRecallUi.hudSurface.fontMono,
+                captionColour: action.caption === "Link copied" ? GOOD : void 0
+              }, scale === 1 ? mouse : null);
+              finishButtons.push({ ...drawn.bounds, id: action.id });
+              ax = drawn.endX + 22;
             }
           }
         });
@@ -11340,10 +11348,10 @@
       let level = 0;
       let blocks = buildBlocks(0);
       const measureCard = (lv, list) => {
-        const { GAP: GAP2, PAD_TOP: PAD_TOP2, PAD_BOTTOM } = spacing(lv);
+        const { GAP: GAP3, PAD_TOP: PAD_TOP2, PAD_BOTTOM } = spacing(lv);
         let height = PAD_TOP2 + PAD_BOTTOM;
         list.forEach((block, index) => {
-          height += (index === 0 ? 0 : block.rule ? GAP2 * 2 : GAP2) + block.height;
+          height += (index === 0 ? 0 : block.rule ? GAP3 * 2 : GAP3) + block.height;
         });
         return height;
       };
@@ -11353,8 +11361,8 @@
         blocks = buildBlocks(level);
         cardH = measureCard(level, blocks);
       }
-      const { GAP, PAD_TOP } = spacing(level);
-      const leadFor = (block, index) => index === 0 ? 0 : block.rule ? GAP * 2 : GAP;
+      const { GAP: GAP2, PAD_TOP } = spacing(level);
+      const leadFor = (block, index) => index === 0 ? 0 : block.rule ? GAP2 * 2 : GAP2;
       let scale = Math.min(1, room / cardH);
       for (let pass = 0; compact && scale < 1 && touchButtonH * scale < 44 && pass < 4; pass++) {
         touchButtonH = Math.ceil(44 / scale * 4) / 4;

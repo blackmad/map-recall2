@@ -1219,6 +1219,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.nextStop": "Next stop",
     "ride.routeSetup": "Route setup",
     "ride.shareRoute": "Share this route",
+    "ride.distance.about": "about",
     "ride.shareRun": "Share run",
     "ride.linkCopied": "Link copied",
     // --- Arrival and run cards (#283) ---
@@ -1970,6 +1971,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.nextStop": "Volgende stop",
     "ride.routeSetup": "Route instellen",
     "ride.shareRoute": "Deel deze route",
+    "ride.distance.about": "ongeveer",
     "ride.shareRun": "Deel reeks",
     "ride.linkCopied": "Link gekopieerd",
     // --- Arrival and run cards (#283) ---
