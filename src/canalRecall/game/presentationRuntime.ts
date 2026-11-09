@@ -1636,7 +1636,7 @@ export class GamePresentationRuntime {
         { label: 'Time', value: this.hud.formatTime(this.raceTime).slice(0, -2) },
         { label: 'Distance', value: `${(this._playerDistancePx() / PIXELS_PER_METER / 1000).toFixed(2)} km` },
       );
-      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: 'Points', value: String(this.quizPoints) });
+      if (gamey && this.quizAttempts > 0) stats.splice(1, 0, { label: 'Points', value: String(this._runArrivalPoints() ?? this.quizPoints) });
 
       const footerBits = [
         this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),

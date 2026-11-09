@@ -16,10 +16,8 @@ async function arrive(page: Page) {
   await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
     if (g.routeTo.reviewStop) g.routeTo = { ...g.routeTo, reviewStop: undefined };
-    // A dealt route whose ends lack lat-lngs gets no share link (game-route.js), and then the card
-    // offers no Share keycap at all (G6 finding, TODO P2); give this ride a public link so every
-    // keycap is drawn and the flow under test is reachable every run (share-card.spec does the same).
-    g._shareUrl ||= `${location.origin}${location.pathname}#race=52.3720,4.9000,52.3740,4.8990,52.3700,4.9050`;
+    // Every dealt route has its share link from the moment it is dealt (#282), so Share is drawn
+    // without seeding; arrival asserts it below.
     g.player.x = g.track.finishPoint.x;
     g.player.y = g.track.finishPoint.y;
     g.player.speed = 0;
@@ -27,6 +25,8 @@ async function arrive(page: Page) {
   await page.waitForFunction(() => (window as any).canalRecallGame.state === 5, null, { timeout: 60_000 });
   await page.waitForFunction(() => !!(window as any).canalRecallGame._finishButtonBounds?.length, null, { timeout: 10_000 });
   await page.waitForTimeout(400);
+  const link = await page.evaluate(() => (window as any).canalRecallGame._shareUrl as string | null);
+  expect(link, 'the dealt route carries its own share link (#282)').toMatch(/#race=/);
 }
 
 /** The shared mapping (helpers.ts finishKeycapCentre): canvas units → CSS px through the canvas rect. */

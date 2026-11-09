@@ -89,23 +89,18 @@ test('the arrival card shares a 1200×630 picture of the ride, never the open qu
     const g = (window as unknown as { canalRecallGame: ShareGame }).canalRecallGame;
     // The open question's answer is the destination itself: the card must not say it.
     g.quizPromptName = g.routeTo?.name ?? null;
-    // Some dealt routes boot without start/finish lat-lngs and get no share
-    // link at all (game-route.js), so the arrival card offers no share; give
-    // this ride a public one so the flow under test is reachable every run.
-    const hadLink = !!g._shareUrl;
-    if (!hadLink) g._shareUrl = `${location.origin}${location.pathname}#race=52.3720,4.9000,52.3740,4.8990,52.3700,4.9050`;
+    // Every dealt route carries its own share link from the moment it is dealt (#282): no seeding.
     return {
       destination: g.routeTo?.name ?? '',
       candidate: g.quizCandidateName,
       trail: g._shareTrail?.points.length ?? 0,
       buttons: (g._finishButtonBounds ?? []).map(b => b.id),
       share: g._shareUrl,
-      hadLink,
     };
   });
   expect(arrival.trail, 'the ridden path was sampled').toBeGreaterThan(5);
-  expect(arrival.share, 'the link stays').toBeTruthy();
-  if (!arrival.hadLink) testInfo.annotations.push({ type: 'note', description: 'this dealt route had no share link of its own' });
+  expect(arrival.share, 'the dealt route has its own share link').toMatch(/#race=/);
+  expect(arrival.buttons, 'and the card offers Share').toContain('copy');
   expect(arrival.destination).not.toBe('');
 
   let bytes: Buffer;
@@ -153,7 +148,7 @@ test('?shareCard=0 keeps the link-only share', async ({ page }, testInfo) => {
   page.on('download', () => { downloaded = true; });
   await page.evaluate(() => {
     const g = (window as unknown as { canalRecallGame: ShareGame }).canalRecallGame;
-    g._shareUrl ||= `${location.origin}${location.pathname}#race=52.3720,4.9000,52.3740,4.8990,52.3700,4.9050`;
+    if (!g._shareUrl) throw new Error('the dealt route has no share link (#282)');
     g._runFinishAction('copy');
   });
   await expect.poll(() => page.evaluate(() => (window as unknown as { __canalLastShare?: { url: string } }).__canalLastShare?.url ?? '')).toContain('#race=');

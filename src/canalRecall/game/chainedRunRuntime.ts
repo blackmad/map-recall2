@@ -134,7 +134,7 @@ export class GameChainedRunRuntime {
     const { run } = addStop(this._openRun(), {
       id: to.id, name: to.name, fromName: this.routeFrom?.name ?? '',
       points: this.quizPoints || 0, bestStreak: this.quizBestStreak || 0,
-      names: this._rideNamedNames || [],
+      names: this._rideNamedNames || [], calm: !this.gameyFeatures,
     }, Date.now());
     this._run = run;
     this._runTouchedAt = Date.now();
@@ -243,6 +243,18 @@ export class GameChainedRunRuntime {
     if (!this._runEnabled()) return null;
     const run = this._openRun();
     return run ? runLine(run, { calm: !this.gameyFeatures }) : null;
+  }
+
+  /**
+   * The arrival card's Points inside a run: this stop's points with the bonus
+   * it earned (chainedRun.ts scoreStop), so they add up to the run line's
+   * total. Null outside a run, where the ride's own score stands.
+   */
+  _runArrivalPoints(this: ChainedRunHost & GameChainedRunRuntime): number | null {
+    if (!this._runEnabled() || !this._runRecordedKey) return null;
+    const stops = this._openRun()?.stops ?? [];
+    const stop = stops[stops.length - 1];
+    return stop && stop.id === this.routeTo?.id ? stop.points : null;
   }
 
   /** The run card: stamped stops, total, best streak, names, one line of story. */

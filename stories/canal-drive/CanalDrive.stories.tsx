@@ -347,13 +347,16 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
             const stop = (id: string, name: string, points: number, bonus: number, names: string[], at: number) => ({
               id, name, basePoints: points, points: Math.round(points * (1 + bonus)), bonus, bestStreak: 2, names, at,
             });
+            // Ride review #280's seeding (#282): rides of 130 / 240 / 90, so the card reads
+            // 99 points (+10 %), the run line 481, and the run card 130 · 252 +5 % · 99 +10 %.
             const stops = [
-              stop('westerkerk', 'Westerkerk', 240, 0, ['Prinsengracht', 'Bloemgracht'], now - 900_000),
-              stop('rijks', 'Rijksmuseum', 180, 0.05, ['Spiegelgracht', 'Nieuwe Spiegelstraat'], now - 300_000),
+              stop('westerkerk', 'Westerkerk', 130, 0, ['Prinsengracht', 'Bloemgracht'], now - 900_000),
+              stop('rijks', 'Rijksmuseum', 240, 0.05, ['Spiegelgracht', 'Nieuwe Spiegelstraat'], now - 300_000),
             ];
+            game.quizPoints = 90;
             win.localStorage.setItem('canalRecall.openRun.v1', JSON.stringify({
               version: 1, startedAt: now - 1_200_000, lastActiveAt: now - 60_000, startName: 'Noordermarkt',
-              stopCount: 2, totalPoints: 240 + 189, bestStreak: 2,
+              stopCount: 2, totalPoints: 130 + 252, bestStreak: 2,
               names: ['Prinsengracht', 'Bloemgracht', 'Spiegelgracht', 'Nieuwe Spiegelstraat'], stops,
             }));
             Object.assign(game, { _runLoaded: false, _run: null, _runCard: null, _runRecordedKey: '' });

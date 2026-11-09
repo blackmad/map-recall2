@@ -14,6 +14,10 @@ const shot = (name: string) => `artifacts/g1/${name}-${test.info().project.name}
 
 /** Puts the rider on the finish point and waits for the arrival card. */
 async function arrive(page: Page) {
+  // An open landmark question stops the bike short of the finish: answer "No idea", ask no more (#282).
+  const noIdea = page.locator('#canal-card button', { hasText: /No idea|Geen idee/ });
+  if (await noIdea.isVisible().catch(() => false)) { await noIdea.click().catch(() => {}); await page.waitForTimeout(3500); }
+  await page.evaluate(() => { (window as any).canalRecallGame.maxAsksPerMinute = 0; });
   await page.evaluate(() => {
     const g = (window as any).canalRecallGame;
     if (g.routeTo.reviewStop) g.routeTo = { ...g.routeTo, reviewStop: undefined };
@@ -80,7 +84,8 @@ test('a three-stop run: Next stop, a reload, End run and the run card', async ({
   // Stop 1: the arrival card gains the run line and End run.
   const first = await arrive(page);
   expect(first.run?.stopCount).toBe(1);
-  expect(first.line).toMatch(/^1 stop {2}· {2}1 name {2}· {2}200 points {2}· {2}chain \+5 %$/);
+  // Stop 1 earns no chain bonus, so its line names none (#282).
+  expect(first.line).toMatch(/^1 stop {2}· {2}1 name {2}· {2}200 points$/);
   expect(first.buttons).toContain('end');
   expect(first.buttons).toContain('again');
   expect(first.card.y + first.card.h).toBeLessThanOrEqual(first.viewport.h);
@@ -102,7 +107,9 @@ test('a three-stop run: Next stop, a reload, End run and the run card', async ({
   // 200 points + 5 % chain bonus at the second stop.
   expect(second.run?.totalPoints).toBe(200 + 210);
   expect(second.line).toContain('2 stops');
-  expect(second.line).toContain('chain +10 %');
+  // The line names the bonus this stop earned and its points already hold (#282), not the next stop's.
+  expect(second.line).toContain('410 points');
+  expect(second.line).toContain('chain +5 %');
   expect(second.session.stopsThisRun).toBe(2);
 
   // A reload continues the open run: the next arrival is stop 3.
@@ -111,6 +118,7 @@ test('a three-stop run: Next stop, a reload, End run and the run card', async ({
   expect(third.run?.stopCount).toBe(3);
   expect(third.run?.totalPoints).toBe(200 + 210 + 220);
   expect(third.line).toContain('3 stops');
+  expect(third.line).toContain('chain +10 %');
   await page.screenshot({ path: shot('stop3-arrival') });
 
   // End run: the run card replaces the arrival card.

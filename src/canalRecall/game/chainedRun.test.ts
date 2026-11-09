@@ -18,6 +18,8 @@ import {
   runLine,
   runsEnabled,
   runStory,
+  scoreRun,
+  scoreStop,
   saveRun,
   touchRun,
   type ArrivalInput,
@@ -69,14 +71,49 @@ test('an idle run is replaced by a new one on the next arrival', () => {
   assert.equal(touchRun(touchRun(run, 50), 10).lastActiveAt, 50);
 });
 
-test('run line: stops, names, points and the next bonus; calm mode shows neither points nor bonus', () => {
+test('run line: stops, names, points and this stop\'s bonus; calm mode shows neither points nor bonus', () => {
   const one = addStop(null, arrival('Artis', 1240, ['A', 'B']), 0).run;
-  assert.equal(runLine(one, { calm: false }), '1 stop  ·  2 names  ·  1,240 points  ·  chain +5 %');
+  // Stop 1 earns no bonus, so the line promises none (#282: it used to show the next stop's +5 %).
+  assert.equal(runLine(one, { calm: false }), '1 stop  ·  2 names  ·  1,240 points');
   assert.equal(runLine(one, { calm: true }), '1 stop  ·  2 names');
   let run = one;
   for (let i = 0; i < 6; i += 1) run = addStop(run, arrival(`S${i}`, 0), i + 1).run;
   assert.match(runLine(run, { calm: false }), /chain \+25 %$/);
   for (const line of [runLine(run, { calm: false }), runStory(run)]) assert.doesNotMatch(line, /!/);
+});
+
+test('scoring (#282): the review\'s seeded 130 / 240 / 90 — each stop carries the bonus it earned', () => {
+  assert.deepEqual(scoreRun([130, 240, 90]), [
+    { basePoints: 130, bonus: 0, points: 130, total: 130 },
+    { basePoints: 240, bonus: 0.05, points: 252, total: 382 },
+    { basePoints: 90, bonus: 0.1, points: 99, total: 481 },
+  ]);
+  // The run the runtime builds is the same numbers: stops, total and the run line at each arrival.
+  const lines: string[] = [];
+  let run = null as ReturnType<typeof addStop>['run'] | null;
+  for (const [i, pts] of [130, 240, 90].entries()) {
+    run = addStop(run, arrival(`S${i}`, pts, [`N${i}`]), i).run;
+    lines.push(runLine(run, { calm: false }));
+  }
+  assert.deepEqual(run!.stops.map(s => [s.basePoints, s.bonus, s.points]), [[130, 0, 130], [240, 0.05, 252], [90, 0.1, 99]]);
+  assert.equal(run!.totalPoints, 481);
+  assert.deepEqual(lines, [
+    '1 stop  ·  1 name  ·  130 points',
+    '2 stops  ·  2 names  ·  382 points  ·  chain +5 %',
+    '3 stops  ·  3 names  ·  481 points  ·  chain +10 %',
+  ]);
+});
+
+test('scoring: the bonus caps at +25 % from stop 6; calm mode carries none; bad input scores 0', () => {
+  const scores = scoreRun(Array(8).fill(100));
+  assert.deepEqual(scores.map(s => s.bonus), [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.25, 0.25]);
+  assert.deepEqual(scores.map(s => s.points), [100, 105, 110, 115, 120, 125, 125, 125]);
+  assert.equal(scores[7].total, 925);
+  assert.deepEqual(scoreRun([130, 240, 90], { calm: true }).map(s => [s.bonus, s.points, s.total]), [[0, 130, 130], [0, 240, 370], [0, 90, 460]]);
+  const calm = addStop(addStop(null, { ...arrival('A', 130), calm: true }, 0).run, { ...arrival('B', 240), calm: true }, 1).run;
+  assert.equal(calm.totalPoints, 370);
+  assert.deepEqual(scoreStop(2, Number.NaN, 10), { basePoints: 0, bonus: 0.05, points: 0, total: 10 });
+  assert.equal(scoreStop(3, -5, 0).points, 0);
 });
 
 test('run story: one sentence, from the first start to the last stop', () => {
