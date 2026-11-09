@@ -363,6 +363,18 @@ export function planBuildingRoof(id: string, style: string, heightM: number, min
       }
     }
   }
+  // A front the monuments register names (lane #316 step 0, Nieuwmarkt 14 and 18: bell gables on 9- and 11-vertex
+  // plans) was a flat lid or a parapet when neither the fitted rectangle nor the inscribed ones took the plan: 719 of
+  // the 4,314 register-gable pands. Roof the fitted box instead, cut at the walls, with the register's crown.
+  if (measured && !tagged) {
+    const frame = fitRect(pts, 40);
+    if (frame && frame.coverage >= 0.5) {
+      // planRoof takes a box (coverage 1), as the bare-deck branch above hands it; the cut restores the outline.
+      const box: Rect = { ...frame, coverage: 1, maxDev: 0 };
+      const plan = planRoof(id, style, heightM, minHeightM, box, undefined, year, measured);
+      if (plan && plan.kind !== 'sawtooth' && plan.kind !== 'parapet') return { ...plan, pieces: [{ rect: box, plan }], clipToOutline: true };
+    }
+  }
   return finishFlat(id, style, heightM, pts, tagged);
 }
 
