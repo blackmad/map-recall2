@@ -5,6 +5,7 @@
 // the same afternoon looked different on a tree, a landmark and the bike.
 // Now there is one sky, one sun and one shadow map in an east/north/up world.
 
+import { lightHierarchyFlag, withLightHierarchy } from './lightHierarchy';
 import type { Vec3 } from './frameMath.js';
 import { fitShadowCamera, shadowHalfSizeForZoom, type ShadowFit } from './shadowFit.js';
 import { SUNNY_LIGHT, sceneLookFrom, type SceneLook } from '../look/sunny.js';
@@ -67,7 +68,10 @@ export const SUNNY_LIGHT_RIG: Required<LightRigOptions> = { ...DEFAULT_LIGHT_RIG
 export const lightRigFor = (look: SceneLook): Required<LightRigOptions> => (look === 'sunny' ? SUNNY_LIGHT_RIG : LEGACY_LIGHT_RIG);
 
 /** The rig the page draws with (`?look=`, default sunny). */
-export const activeLightRig = (search?: string): Required<LightRigOptions> => lightRigFor(sceneLookFrom(search));
+export const activeLightRig = (search?: string): Required<LightRigOptions> => {
+  const rig = lightRigFor(sceneLookFrom(search));
+  return lightHierarchyFlag(search) ? withLightHierarchy(rig) : rig;
+};
 
 /** Unit vector toward the sun in ENU. */
 export function sunDirection(azimuthDeg: number, elevationDeg: number): Vec3 {
