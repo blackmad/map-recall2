@@ -12,6 +12,8 @@
 // the part worth testing; the paint pass is just `ctx` calls in order.
 
 import { hudSurface } from './hudTheme.ts';
+import { t } from '../i18n/index.ts';
+import { kindLabel } from './cardKindLabel.ts';
 
 export interface TextMeasurer {
   (text: string, font: string): number;
@@ -126,7 +128,7 @@ const NAME_GAP = 10;
 const MORE_GAP = 16;
 /** "More" is the action that opens the panel, so it reads as a link with an
  *  arrow rather than as one more chip beside the category. */
-const MORE_LABEL = 'MORE ›';
+const moreLabel = (): string => t('card.more');
 /** The close glyph's box, and the header room it reserves beside "more". */
 const CLOSE_SIZE = 14;
 const CLOSE_ROOM = CLOSE_SIZE + 10;
@@ -215,10 +217,10 @@ export function measureLandmarkCard(
   if (props.extractLang && props.extractLang !== 'en' && props.body) {
     pushBadge(props.extractLang.toUpperCase(), 'lang');
   }
-  if (props.hasArticle) pushBadge(props.articleLabel || 'W  WIKIPEDIA', 'article');
+  if (props.hasArticle) pushBadge(props.articleLabel || t('card.wikipedia'), 'article');
   // Nothing else on a canvas card says it can be clicked, so the cut body has
   // to advertise the panel that holds the rest of it.
-  if (truncated || props.hasMore) pushBadge(MORE_LABEL, 'more');
+  if (truncated || props.hasMore) pushBadge(moreLabel(), 'more');
   // The header row shares its right end with the close "×".
   const headerColumn = columnWidth - CLOSE_ROOM;
   badges = fitBadges(badges, headerColumn, measure);
@@ -465,13 +467,13 @@ export function measurePostcard(
     textLeft,
     nameFontSize,
     name: props.name || '',
-    heading: props.stamped ? 'PASSPORT STAMP' : `ENTERING ${String(props.kind || 'NEIGHBORHOOD').toUpperCase()}`,
+    heading: props.stamped ? t('postcard.stamp') : props.kind ? t('postcard.entering', { kind: kindLabel(props.kind) }) : t('postcard.enteringNeighborhood'),
     // Crediting the photo matters when it was borrowed from the containing
     // district rather than taken in this neighborhood.
     caption: props.checklist
       ? `${props.checklist} · ${props.cityName || 'Amsterdam'}`
       : props.imageArea
-      ? `Photo: ${props.imageArea} · ${props.cityName || 'Amsterdam'}`
+      ? t('postcard.photo', { area: props.imageArea, city: props.cityName || 'Amsterdam' })
       : `${props.cityName || 'Amsterdam'}${props.provinceCaption ? ` · ${props.provinceCaption}` : ''}`,
   };
 }

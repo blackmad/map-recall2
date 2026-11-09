@@ -62,6 +62,7 @@ import { drawCardAction } from '../noticeCards';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import { t as tr } from '../../i18n/index.ts';
+import { kindLabel } from '../cardKindLabel.ts';
 import { GameLandmarkQuestionRuntime, installLandmarkQuestion } from './landmarkQuestionRuntime';
 import {
   buildCorridorStreetIndex,
@@ -784,11 +785,11 @@ export class GameLandmarkRuntime {
         this.currentNeighborhood,
         this._cityDisplayName(),
       ),
-      category: lm.type ? lm.type.toUpperCase() : '',
+      category: lm.type ? kindLabel(lm.type) : '',
       factKind: lm.factKind,
       extractLang: lm.extractLang,
       hasArticle: !!(lm.wikipediaUrl || lm.sourceUrl),
-      articleLabel: lm.wikipediaUrl ? 'W  WIKIPEDIA' : 'W  SOURCE',
+      articleLabel: lm.wikipediaUrl ? tr('card.wikipedia') : tr('card.source'),
       hasImage,
       ...(collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || '').trim() !== foldedCardLine(lm) } : {}),
       ...(action ? { action: action.label } : {}),
