@@ -88,6 +88,9 @@
     session[key] = next;
     return next;
   }
+  function questionContext(side, buurt) {
+    return buurt ? `${side} \xB7 ${buurt}` : side;
+  }
 
   // src/canalRecall/game/labelDrawLedger.ts
   var LABEL_RECENT_MS = 3e4;
@@ -6636,6 +6639,51 @@ ${register}` : detail,
     return sinceEvent(now, lastShownAt) >= DRIVE_BY_MIN_GAP_SECONDS;
   }
 
+  // src/canalRecall/game/landmarkKind.ts
+  var MEMORIAL_CLASSES = /* @__PURE__ */ new Set([
+    "Q179700",
+    // statue
+    "Q860861",
+    // sculpture
+    "Q575759",
+    // memorial / war memorial
+    "Q5003624",
+    // memorial
+    "Q4989906",
+    // monument
+    "Q20011797"
+    // memorial (names)
+  ]);
+  var BUILDING_CLASSES = /* @__PURE__ */ new Set([
+    "Q33506",
+    "Q207694",
+    "Q2087181",
+    "Q16970",
+    "Q108325",
+    "Q34627",
+    "Q24354",
+    "Q41253",
+    "Q3947",
+    "Q41176",
+    "Q12518",
+    "Q82117",
+    "Q31855",
+    "Q28564",
+    "Q811979",
+    "Q1060829",
+    "Q2772772",
+    "Q1329623"
+  ]);
+  var MEMORIAL_NAME = /\b(monument|memorial|statue|standbeeld|bust|beeld)\b|monument\b/i;
+  function landmarkKind(landmark) {
+    const classes = landmark.wikidataInstanceOf ?? [];
+    if (classes.some((id) => BUILDING_CLASSES.has(id))) return "building";
+    if (classes.some((id) => MEMORIAL_CLASSES.has(id))) return "memorial";
+    if (landmark.type && landmark.type !== "landmark") return "building";
+    return MEMORIAL_NAME.test(landmark.name) ? "memorial" : "building";
+  }
+  var isBuildingLandmark = (landmark) => landmarkKind(landmark) === "building";
+
   // src/canalRecall/recallExposure.ts
   var EXPOSURE_FIRST_INTERVAL_MS = 30 * 60 * 1e3;
   var EXPOSURE_MAX_INTERVAL_MS = 24 * 60 * 60 * 1e3;
@@ -6924,7 +6972,8 @@ ${register}` : detail,
         name: landmarkDisplayName2(chosen.name, lang),
         subject: "landmark",
         question: t("ride.landmarkQuestion.heading"),
-        context: approach.hood ? `${side} \xB7 ${approach.hood}` : side,
+        // The plaque's buurt (placeBuurt.ts, L5), so the card and the plaque name one buurt (R2-8).
+        context: questionContext(side, this.currentNeighborhood || approach.hood),
         choices: shownChoices
       });
       this._dressLandmarkPrompt();
@@ -6962,7 +7011,7 @@ ${register}` : detail,
       const candidates = this.landmarks.filter((landmark) => {
         if (skip.has(landmark.id) || this._seenLandmarks.has(landmark.id) || reviewKind(reviews[landmark.id], wallNow) === "known") return false;
         if (Math.abs(landmark.x - player.x) > bandPx || Math.abs(landmark.y - player.y) > bandPx) return false;
-        if (!isWorthACard(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
+        if (!isWorthACard(landmark) || !isBuildingLandmark(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
         if (landmark.name === this.routeTo?.name) return false;
         if (!inViewCone(player, landmark, bandPx)) return false;
         const reason = landmarkSkipReason(ledger, landmark.name, now);
@@ -6987,7 +7036,7 @@ ${register}` : detail,
         hood: this._neighborhoodAt(landmark.x, landmark.y)?.name ?? null
       });
       const answer = withHood(chosen);
-      const pool = this.landmarks.filter((landmark) => isWorthACard(landmark) && Math.hypot(landmark.x - chosen.x, landmark.y - chosen.y) <= FILLER_MAX_M * PIXELS_PER_METER).map(withHood);
+      const pool = this.landmarks.filter((landmark) => isWorthACard(landmark) && isBuildingLandmark(landmark) && Math.hypot(landmark.x - chosen.x, landmark.y - chosen.y) <= FILLER_MAX_M * PIXELS_PER_METER).map(withHood);
       const choices = landmarkChoices(answer, pool, {
         sameComplexPx: SAME_COMPLEX_M * PIXELS_PER_METER,
         fillerMaxPx: FILLER_MAX_M * PIXELS_PER_METER,
