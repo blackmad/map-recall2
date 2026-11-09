@@ -11,8 +11,8 @@ import { openRoute } from './helpers';
 const SHOTS = process.env.G3_SHOTS_DIR || '';
 
 /** Put the bike 110 m west of the Westerkerk, facing it, with the slot empty. */
-async function approachWesterkerk(page: Page, extra: { streetOpen?: boolean } = {}) {
-  return page.evaluate(({ streetOpen }) => {
+async function approachWesterkerk(page: Page, extra: { streetOpen?: boolean; keepReview?: boolean } = {}) {
+  return page.evaluate(({ streetOpen, keepReview }) => {
     const game = (window as any).canalRecallGame;
     const landmark = game.landmarks.find((l: any) => l.name === 'Westerkerk');
     if (!landmark) return { error: 'no Westerkerk in the landmark list' };
@@ -27,6 +27,9 @@ async function approachWesterkerk(page: Page, extra: { streetOpen?: boolean } = 
     game._seenLandmarks = new Set();
     game._landmarkSightingsCache = {};
     try { localStorage.removeItem('canalRecall.landmarkSightings.v1'); } catch { /* */ }
+    // The review schedule (#300) decides whether a landmark asked on an earlier ride is due.
+    game._landmarkReviewsCache = undefined;
+    if (!keepReview) try { localStorage.removeItem('canalRecall.landmarkReview.v1'); } catch { /* */ }
     game._clearLandmarkNotice();
     game._prompt.style.display = 'none';
     game.quizPromptName = '';
@@ -204,4 +207,39 @@ test('?landmarkQuestions=0 keeps drive-by cards only', async ({ page }, testInfo
     return game._landmarkCardAction();
   });
   expect(action, 'no Noticed pill with the flag off').toBeNull();
+});
+
+// Spaced review (#300): a landmark named right comes back after 1 day, then 3,
+// 7, 21; one missed comes back next ride. Across a reload only localStorage
+// carries over, so this is the real persistence path.
+test('a named landmark is not asked after a reload until its review is due', async ({ page }) => {
+  test.setTimeout(240000);
+  const opts = { travelMode: 'car' as const, viewMode: 'chase' as const, query: '?landmarkQuestions=1' };
+  await openRoute(page, opts);
+  const open = await approachWesterkerk(page);
+  expect(open.kind, JSON.stringify(open)).toBe('landmark');
+  await page.locator('#canal-choices button[data-name="Westerkerk"]').click();
+  const stored = await page.evaluate((id) => JSON.parse(localStorage.getItem('canalRecall.landmarkReview.v1') || '{}')[id] ?? null, open.id);
+  expect(stored, 'the answer is scheduled').not.toBeNull();
+  expect(stored.step).toBe(1);
+  const days = (stored.dueAt - stored.lastAskedAt) / 86_400_000;
+  expect(days).toBeCloseTo(1, 5);
+
+  // Reload: a new ride, the same approach. Named today: not asked.
+  await openRoute(page, opts);
+  const reloaded = await approachWesterkerk(page, { keepReview: true });
+  expect(reloaded.kind, JSON.stringify(reloaded)).toBe('route');
+  expect(reloaded.asked).toBe('');
+
+  // Its review date in the past: due, so the same approach asks it.
+  await page.evaluate((id) => {
+    const all = JSON.parse(localStorage.getItem('canalRecall.landmarkReview.v1') || '{}');
+    all[id].dueAt = Date.now() - 1000;
+    localStorage.setItem('canalRecall.landmarkReview.v1', JSON.stringify(all));
+  }, open.id);
+  await openRoute(page, opts);
+  const due = await approachWesterkerk(page, { keepReview: true });
+  expect(due.kind, JSON.stringify(due)).toBe('landmark');
+  expect(due.asked).toBe('Westerkerk');
+  expect(due.domMentions, 'still never named before the answer').toEqual([]);
 });

@@ -98,6 +98,7 @@ let clock = Date.UTC(2026, 10, 9, 9, 0, 0);
 Date.now = () => clock;
 const MIN = 60_000;
 const DAY = 86_400_000;
+const HOUR = 3_600_000;
 
 /** Asked / not asked through a sequence of sessions. */
 function run(outcome: 'right' | 'wrong'): string[] {
@@ -131,6 +132,31 @@ test('a missed landmark: once this ride, parked past the ride, back on the next 
   const log = run('wrong');
   console.log('wrong:', log.join(' '));
   assert.deepEqual(log, ['s1:asked', 's1-again:not', 'reload+5min:not', 'reload+45min:asked', 'reload+2days:asked']);
+});
+
+test('a landmark named before the schedule (sighting only) comes back once it is a day old', () => {
+  storage.data.clear();
+  clock = Date.UTC(2026, 10, 9, 9, 0, 0);
+  storage.setItem('canalRecall.landmarkSightings.v1', JSON.stringify({ [modelledId]: { hood: 'Testbuurt', how: 'named', at: clock - 2 * HOUR } }));
+  assert.equal(approach(newSession()), false, 'named two hours ago: not yet');
+  clock += DAY;
+  assert.equal(approach(newSession()), true, 'a day later: due');
+});
+
+test('the last slot of the minute goes to a due landmark, not a new one (the budget decides)', () => {
+  const lastSlot = (host: Record<string, any>) => {
+    host.raceTime += 120;
+    // Four asks in the last minute, the latest 10 s ago: one slot left, reserved for priority.
+    host._questionBudget = { asks: [host.raceTime - 40, host.raceTime - 30, host.raceTime - 20, host.raceTime - 10] };
+    host._tryLandmarkQuestion();
+    host._tryLandmarkQuestion();
+    return host.quizPromptKind === 'landmark';
+  };
+  storage.data.clear();
+  clock = Date.UTC(2026, 10, 9, 9, 0, 0);
+  assert.equal(lastSlot(newSession()), false, 'never asked: the reserved slot is not spent on it');
+  storage.setItem('canalRecall.landmarkReview.v1', JSON.stringify({ [modelledId]: { step: 1, dueAt: clock - 1, lastAskedAt: clock - DAY, rights: 1, misses: 0 } }));
+  assert.equal(lastSlot(newSession()), true, 'due: it takes the slot');
 });
 
 test('the ride set does not survive a reload: only localStorage does', () => {
