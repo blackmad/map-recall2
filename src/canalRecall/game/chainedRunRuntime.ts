@@ -29,6 +29,9 @@ import {
   type RunSessionCounters,
 } from './chainedRun';
 import type { MasterySample, RoutePoi } from './routeSelection';
+import { cityById } from './cities';
+import { worldToLatLng, type RunShareInput } from '../runShareCard';
+import type { ShareTrail } from '../shareCard';
 import type { Hud } from './collaborators';
 import { t } from '../../i18n/index.ts';
 
@@ -67,6 +70,17 @@ export interface ChainedRunHost {
   _tour?: unknown;
   _tourArrival?: unknown;
   recall: { homeMasterySamples?(cityId: string): MasterySample[] } | null;
+  /** For the run's share picture (#295): the leg as ridden, in this ride's projection. */
+  player?: { x: number; y: number } | null;
+  routePath?: Array<{ x: number; y: number }> | null;
+  _shareTrail?: ShareTrail | null;
+  osmLoader?: { _lastCenterLat?: number; _lastCenterLng?: number; _lastOffsetX?: number; _lastOffsetY?: number } | null;
+  currentNeighborhood?: string | null;
+  _shareUrl?: string | null;
+  _copiedTimer?: number;
+  quizPromptName?: string | null;
+  quizCandidateName?: string | null;
+  _silentPass?: { name?: string } | null;
   _finishButtonBounds?: Array<Bounds & { id: FinishId }>;
   _finishCardBounds?: Bounds;
   _runFinishAction(id: 'again' | 'route' | 'copy'): void;
@@ -136,11 +150,27 @@ export class GameChainedRunRuntime {
       id: to.id, name: to.name, fromName: this.routeFrom?.name ?? '',
       points: this.quizPoints || 0, bestStreak: this.quizBestStreak || 0,
       names: this._rideNamedNames || [], calm: !this.gameyFeatures,
+      lat: to.lat, lng: to.lng, area: this.currentNeighborhood || null, path: this._runLegPath(),
     }, Date.now());
     this._run = run;
     this._runTouchedAt = Date.now();
     saveRun(storage(), run);
     session.stopsThisRun = run.stopCount;
+  }
+
+  /**
+   * The leg just ridden as [lat, lng] for the run's share picture (#295): the
+   * share trail (shareCard.ts, sampled while riding), else the planned path,
+   * unprojected with this ride's road build (osm-loader.js `latLngToWorld`).
+   */
+  _runLegPath(this: ChainedRunHost & GameChainedRunRuntime): Array<[number, number]> {
+    const loader = this.osmLoader;
+    if (!loader || !Number.isFinite(loader._lastCenterLat) || !Number.isFinite(loader._lastCenterLng)) return [];
+    const projection = { centerLat: loader._lastCenterLat!, centerLng: loader._lastCenterLng!, offsetX: loader._lastOffsetX ?? 0, offsetY: loader._lastOffsetY ?? 0 };
+    const trail = this._shareTrail && this._shareTrail.owner === this.player ? this._shareTrail.points : [];
+    const world = trail.length >= 2 ? [...trail] : [...(this.routePath ?? [])];
+    if (world.length >= 2 && this.player && Number.isFinite(this.player.x)) world.push({ x: this.player.x, y: this.player.y });
+    return world.map(p => worldToLatLng(p, projection)).filter((p): p is [number, number] => !!p);
   }
 
   /** Per frame: keeps a riding run alive, ends one left idle on the arrival card, and takes E there. */
@@ -192,6 +222,11 @@ export class GameChainedRunRuntime {
     endRun(storage(), run);
     this._run = null;
     this._runCard = card ? run : null;
+    // Ready the run's share picture while the card draws, so the Share tap keeps its activation (iOS).
+    if (card) {
+      const history = (window as Window & { CanalRouteHistory?: { prepareShareCard?(game: unknown): unknown } }).CanalRouteHistory;
+      setTimeout(() => { try { history?.prepareShareCard?.(this); } catch (reason) { console.warn('Run share card:', reason); } }, 0);
+    }
     const session = sessionCounters();
     session.runsEnded = (session.runsEnded ?? 0) + 1;
     session.stopsPerRun = [...(session.stopsPerRun ?? []), run.stopCount];
@@ -258,6 +293,31 @@ export class GameChainedRunRuntime {
     return stop && stop.id === this.routeTo?.id ? stop.points : null;
   }
 
+  /**
+   * What the run's share picture shows (#295, runShareCard.ts): the shown
+   * run's stops with their legs, the run line without the last stop's chain
+   * bonus, and the names the map is withholding (labelOverlay's sources).
+   */
+  _runShareInput(this: ChainedRunHost & GameChainedRunRuntime): RunShareInput | null {
+    const run = this._runCard;
+    if (!run) return null;
+    const first = run.stopCount - run.stops.length + 1;
+    return {
+      stops: run.stops.map((stop, index) => ({
+        number: first + index, name: stop.name, lat: stop.lat, lng: stop.lng, area: stop.area ?? null, path: stop.path ?? null,
+      })),
+      summary: runLine(run, { calm: !this.gameyFeatures, chain: false }),
+      city: cityById(this.cityId).name,
+      hiddenNames: [this.quizPromptName, this.quizCandidateName, this._silentPass?.name],
+      labels: {
+        run: t('ride.arrival.run'),
+        stop: t('shareCard.runStop', { n: '{n}' }),
+        earlier: t('shareCard.runEarlier', { count: '{count}' }),
+        fallbackPlace: cityById(this.cityId).name,
+      },
+    };
+  }
+
   /** The run card: stamped stops, total, best streak, names, one line of story. */
   _renderRunCard(this: ChainedRunHost & GameChainedRunRuntime, run: OpenRun): void {
     const ctx = this.ctx;
@@ -278,7 +338,9 @@ export class GameChainedRunRuntime {
     const MARGIN = 16;
     const bottomReserve = compact ? 76 : MARGIN;
     const BUTTON_H = 44;
-    const actionsH = compact ? BUTTON_H * 2 + 8 : 34;
+    // Share run (#295) when there is a link to share: game.js `_runFinishAction('copy')` needs one.
+    const canShare = !!this._shareUrl;
+    const actionsH = compact ? BUTTON_H * (canShare ? 3 : 2) + 8 * (canShare ? 2 : 1) : 34;
     const fixedH = 30 + 74 + story.length * 18 + 16 + 24 + 64 + 24 + actionsH + 26;
     const room = H - MARGIN - bottomReserve;
     const listRows = Math.max(1, Math.min(run.stops.length, Math.floor((room - fixedH) / ROW)));
@@ -355,6 +417,7 @@ export class GameChainedRunRuntime {
       { id: 'again', key: 'ENTER', caption: t('ride.newRun') },
       { id: 'route', key: compact ? '' : 'M', caption: t('ride.routeSetup') },
     ];
+    if (canShare) actions.push({ id: 'copy', key: compact ? '' : 'C', caption: (this._copiedTimer ?? 0) > 0 ? t('ride.linkCopied') : t('ride.shareRun') });
     const buttons: Array<Bounds & { id: FinishId }> = [];
     if (compact) {
       actions.forEach((action, index) => {

@@ -654,6 +654,7 @@ export const nl: Record<MessageKey, string> = {
   'ride.nextStop': 'Volgende stop',
   'ride.routeSetup': 'Route instellen',
   'ride.shareRoute': 'Deel deze route',
+  'ride.shareRun': 'Deel reeks',
   'ride.linkCopied': 'Link gekopieerd',
   // --- Arrival and run cards (#283) ---
   'stamps.heldOf': '{count} van {total} buurtstempels',
@@ -704,6 +705,8 @@ export const nl: Record<MessageKey, string> = {
   'shareCard.byTransit': 'Per tram en metro',
   'shareCard.saved': 'Afbeelding opgeslagen',
   'shareCard.savedAndCopied': 'Afbeelding opgeslagen · link gekopieerd',
+  'shareCard.runStop': 'Stop {n}',
+  'shareCard.runEarlier': '+{count} eerder',
   'ride.startExploring': 'Begin met verkennen',
   'ride.noCycling': 'Geen fietsen in het echt',
   'ride.wikipediaLink': 'Wikipedia ↗',

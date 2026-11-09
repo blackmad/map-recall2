@@ -652,6 +652,7 @@ export const en = {
   'ride.nextStop': 'Next stop',
   'ride.routeSetup': 'Route setup',
   'ride.shareRoute': 'Share this route',
+  'ride.shareRun': 'Share run',
   'ride.linkCopied': 'Link copied',
   // --- Arrival and run cards (#283) ---
   'stamps.heldOf': '{count} of {total} buurt stamps',
@@ -702,6 +703,8 @@ export const en = {
   'shareCard.byTransit': 'By tram and metro',
   'shareCard.saved': 'Picture saved',
   'shareCard.savedAndCopied': 'Picture saved · link copied',
+  'shareCard.runStop': 'Stop {n}',
+  'shareCard.runEarlier': '+{count} earlier',
   'ride.startExploring': 'Start exploring',
   'ride.noCycling': 'No cycling in real life',
   'ride.wikipediaLink': 'Wikipedia ↗',

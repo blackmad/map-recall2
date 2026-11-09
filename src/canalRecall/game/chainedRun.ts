@@ -45,6 +45,13 @@ export interface RunStop {
   /** Names answered correctly on the way to this stop. */
   names: string[];
   at: number;
+  /** Where the stop is, for the run's share picture (#295); absent on runs saved before it. */
+  lat?: number;
+  lng?: number;
+  /** The stop's buurt at arrival, when known. */
+  area?: string;
+  /** The leg ridden to this stop, [lat, lng] at 5 decimals, at most RUN_PATH_POINTS. */
+  path?: Array<[number, number]>;
 }
 
 /** A dealt leg, kept so a reload can ride it again. */
@@ -79,6 +86,29 @@ export interface ArrivalInput {
   names: readonly string[];
   /** Calm mode (no gamey features): no chain bonus. */
   calm?: boolean;
+  lat?: number;
+  lng?: number;
+  area?: string | null;
+  /** The leg as ridden, [lat, lng]; thinned by {@link thinLegPath} before it is kept. */
+  path?: ReadonlyArray<readonly [number, number]>;
+}
+
+/** Points a stop keeps of its leg: enough for a silhouette, small in localStorage (~1 kB a stop). */
+export const RUN_PATH_POINTS = 48;
+
+/** Finite points, consecutive duplicates dropped, thinned to `max` keeping both ends, 5 decimals (~1 m). */
+export function thinLegPath(path: ReadonlyArray<readonly [number, number]> | null | undefined, max = RUN_PATH_POINTS): Array<[number, number]> {
+  const round = (v: number) => Math.round(v * 1e5) / 1e5;
+  const clean: Array<[number, number]> = [];
+  for (const p of path ?? []) {
+    if (!p || !Number.isFinite(p[0]) || !Number.isFinite(p[1])) continue;
+    const q: [number, number] = [round(p[0]), round(p[1])];
+    const last = clean[clean.length - 1];
+    if (!last || last[0] !== q[0] || last[1] !== q[1]) clean.push(q);
+  }
+  if (clean.length <= max) return clean;
+  const step = (clean.length - 1) / (max - 1);
+  return Array.from({ length: max }, (_, i) => clean[Math.round(i * step)]);
 }
 
 /** The chain bonus for the n-th stop of a run (1-based): 0, +5 %, +10 % … capped. */
@@ -135,6 +165,10 @@ export function addStop(run: OpenRun | null, input: ArrivalInput, now: number): 
     id: input.id, name: input.name, basePoints, points, bonus,
     bestStreak: Math.max(0, input.bestStreak || 0), names, at: now,
   };
+  if (Number.isFinite(input.lat) && Number.isFinite(input.lng)) { stop.lat = input.lat; stop.lng = input.lng; }
+  if (input.area) stop.area = input.area;
+  const path = thinLegPath(input.path);
+  if (path.length >= 2) stop.path = path;
   const known = new Set(base.names);
   for (const name of names) known.add(name);
   const stops = [...base.stops, stop].slice(-RUN_LIST_LIMIT);
@@ -213,12 +247,13 @@ export function formatPoints(points: number): string {
  * The arrival card's one run line. Plaque voice: nouns, no exclamation marks.
  * Calm mode shows neither points nor the multiplier.
  */
-export function runLine(run: OpenRun, options: { calm: boolean }): string {
+export function runLine(run: OpenRun, options: { calm: boolean; chain?: boolean }): string {
   const bits = [countText('count.stops', run.stopCount), countText('count.names', run.names.length)];
   if (!options.calm) {
     bits.push(t('count.points', { points: formatPoints(run.totalPoints) }));
     // This stop's bonus, the one already in the points above (#282), not the next stop's.
-    const earned = lastStopBonus(run);
+    // The run's share picture leaves it out (`chain: false`): it is the last stop's, not the run's.
+    const earned = options.chain === false ? 0 : lastStopBonus(run);
     if (earned > 0) bits.push(t('run.chain', { percent: Math.round(earned * 100) }));
   }
   return bits.join('  ·  ');
