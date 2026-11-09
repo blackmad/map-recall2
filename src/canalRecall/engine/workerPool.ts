@@ -74,7 +74,7 @@ export function withWorkerFlags(url: string, search: string = typeof location !=
   let flags: string[] = [];
   try {
     const q = new URLSearchParams(search);
-    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
+    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface', 'industrialKit'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
   } catch { /* no location */ }
   return flags.length ? `${url}${url.includes('?') ? '&' : '?'}${flags.join('&')}` : url;
 }

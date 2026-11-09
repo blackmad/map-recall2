@@ -5,6 +5,7 @@
 // paths cannot drift: world-v1 cells baked without the rail table drew the viaducts as houses on the default world.
 // The facts library is passed in: the browser reads it from the facades bundle's global, the compiler imports it.
 import { composeTileEnrichers, railInfraEnricher } from './railInfraBuildings.js';
+import { industrialEnricher } from './industrial/industrialTable.js';
 
 type Tile = { z: number; x: number; y: number };
 type Enricher = (tile: Tile, signal: AbortSignal) => Promise<((features: any[]) => void) | undefined | void>;
@@ -24,12 +25,12 @@ export interface GameTileEnricherOptions {
   search?: string;
 }
 
-/** Years, then roof facts, then the rail infrastructure table, for tiles under `extractPath`. */
+/** Years, then roof facts, then the rail infrastructure table, then the industrial table (industrial/industrialTable.ts), for tiles under `extractPath`. */
 export function gameTileEnricher(lib: TileFactsLib, extractPath: string, options: GameTileEnricherOptions = {}): Enricher {
   const { fetch: fetchImpl } = options;
   const years = lib.constructionYearEnricher(extractPath, fetchImpl) as Enricher;
   const roofs = lib.composeEnrichers && lib.roofFactsEnricher && (lib.roofFactsEnabled ? lib.roofFactsEnabled(options.search) : true);
   const facts = roofs ? lib.composeEnrichers!(years, lib.roofFactsEnricher!(extractPath, fetchImpl)) as Enricher : years;
   const json = fetchImpl ? (url: string) => fetchImpl(url).then(r => (r.ok ? r.json() : null)) : undefined;
-  return composeTileEnrichers(facts as any, railInfraEnricher(extractPath, json)) as Enricher;
+  return composeTileEnrichers(composeTileEnrichers(facts as any, railInfraEnricher(extractPath, json)), industrialEnricher(extractPath, json) as any) as Enricher;
 }
