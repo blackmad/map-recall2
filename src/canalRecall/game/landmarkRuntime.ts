@@ -62,6 +62,7 @@ import { drawCardAction } from '../noticeCards';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
 import { t as tr } from '../../i18n/index.ts';
+import { placeName } from './landmarkNamesNl.ts';
 import { kindLabel } from '../cardKindLabel.ts';
 import { GameLandmarkQuestionRuntime, installLandmarkQuestion } from './landmarkQuestionRuntime';
 import {
@@ -782,7 +783,7 @@ export class GameLandmarkRuntime {
     // A drive-by card offers "Noticed" (G3): one tap counts it toward the buurt's passport.
     const action = this._landmarkCardAction();
     const card = cards.measureLandmarkCard({
-      name: lm.name,
+      name: placeName(lm.name || ''),
       body: collapsed ? foldedCardLine(lm) : lm.longDetail || lm.detail || cards.placeOnlyDetail(
         lm.type,
         this.currentNeighborhood,
@@ -874,13 +875,13 @@ export class GameLandmarkRuntime {
       pushBadge(`${lm.extractLang.toUpperCase()} — NOT TRANSLATED YET`, 'lang');
     }
 
-    (panel.querySelector('#landmark-panel-title') as HTMLElement).textContent = lm.name || '';
+    (panel.querySelector('#landmark-panel-title') as HTMLElement).textContent = placeName(lm.name || '');
     (panel.querySelector('#landmark-panel-body') as HTMLElement).textContent = body;
 
     const image = panel.querySelector('#landmark-panel-image') as HTMLImageElement;
     if (lm.imageUrl) {
       image.src = lm.imageUrl;
-      image.alt = lm.name || '';
+      image.alt = placeName(lm.name || '');
       image.hidden = false;
     } else {
       image.removeAttribute('src');

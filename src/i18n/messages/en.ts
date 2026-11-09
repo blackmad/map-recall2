@@ -415,6 +415,17 @@ export const en = {
   'mission.warmUp': 'Warm up with one overdue name',
   'mission.arrive': 'Arrive knowing more of {city}',
   // --- Map Quest quiz ------------------------------------------------------
+  // Answer feedback (R2-2, #303): answerPath.ts composes these.
+  'answer.passed': 'Passed — that was {name}',
+  'answer.silentPass': 'That was {name}',
+  'answer.reveal': 'This is {name}',
+  'answer.wrong': 'Not quite — this is {name}',
+  'answer.correct': 'Correct — {name}',
+  'answer.correctPoints': 'Correct — {name}  (+{points} pts)',
+  'answer.correctNewCycle': 'Correct — {name}  (+{points} pts · new name + cycle track bonus)',
+  'answer.correctNew': 'Correct — {name}  (+{points} pts · new name bonus)',
+  'answer.correctCycle': 'Correct — {name}  (+{points} pts · cycle track bonus)',
+  'answer.correctStreak': 'Correct — {name}  (+{points} pts · {streak} in a row)',
   'quiz.pinpoint': 'Pinpoint',
   'quiz.pinpointHint': 'Place the named feature on the map',
   'quiz.guessName': 'Guess Name',
