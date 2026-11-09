@@ -1236,6 +1236,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.nextStop": "Next stop",
     "ride.routeSetup": "Route setup",
     "ride.shareRoute": "Share this route",
+    "ride.shareRun": "Share run",
     "ride.linkCopied": "Link copied",
     // --- Arrival and run cards (#283) ---
     "stamps.heldOf": "{count} of {total} buurt stamps",
@@ -1286,6 +1287,8 @@ Map source: ${osmUrl(places[i][0])}`);
     "shareCard.byTransit": "By tram and metro",
     "shareCard.saved": "Picture saved",
     "shareCard.savedAndCopied": "Picture saved \xB7 link copied",
+    "shareCard.runStop": "Stop {n}",
+    "shareCard.runEarlier": "+{count} earlier",
     "ride.startExploring": "Start exploring",
     "ride.noCycling": "No cycling in real life",
     "ride.wikipediaLink": "Wikipedia \u2197",
@@ -1984,6 +1987,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.nextStop": "Volgende stop",
     "ride.routeSetup": "Route instellen",
     "ride.shareRoute": "Deel deze route",
+    "ride.shareRun": "Deel reeks",
     "ride.linkCopied": "Link gekopieerd",
     // --- Arrival and run cards (#283) ---
     "stamps.heldOf": "{count} van {total} buurtstempels",
@@ -2034,6 +2038,8 @@ Map source: ${osmUrl(places[i][0])}`);
     "shareCard.byTransit": "Per tram en metro",
     "shareCard.saved": "Afbeelding opgeslagen",
     "shareCard.savedAndCopied": "Afbeelding opgeslagen \xB7 link gekopieerd",
+    "shareCard.runStop": "Stop {n}",
+    "shareCard.runEarlier": "+{count} eerder",
     "ride.startExploring": "Begin met verkennen",
     "ride.noCycling": "Geen fietsen in het echt",
     "ride.wikipediaLink": "Wikipedia \u2197",

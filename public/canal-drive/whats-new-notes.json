@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Share a whole run",
+   "text": "After a run, the run card has Share run: one picture of the whole run, every leg as one line, each stop a numbered dot, with the buurt, your stops, points and names. A stop you did not name stays a number.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-run-card-share/02-run-card-share-keycap-phone.jpg",
+     "alt": "The run card on a phone after three stops, with New run, Route setup and Share run buttons",
+     "caption": "Share run on the run card."
+    },
+    {
+     "src": "ui/2026-11-09-run-card-share/03-run-picture-from-ride-phone.jpg",
+     "alt": "The shared picture: the legs as one line with three numbered dots, RUN · Centrum · 3 stops · 2 names · 602 points, the stops listed",
+     "caption": "The run as one picture."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Labels fade instead of popping",
    "text": "Map labels in the new engine now fade in and out over a third of a second instead of popping, so a name hidden ahead of a landmark question leaves like any other label. Add ?labelFade=0 to the address to see the old behaviour.",
    "images": [

@@ -776,6 +776,7 @@
     "ride.nextStop": "Next stop",
     "ride.routeSetup": "Route setup",
     "ride.shareRoute": "Share this route",
+    "ride.shareRun": "Share run",
     "ride.linkCopied": "Link copied",
     // --- Arrival and run cards (#283) ---
     "stamps.heldOf": "{count} of {total} buurt stamps",
@@ -826,6 +827,8 @@
     "shareCard.byTransit": "By tram and metro",
     "shareCard.saved": "Picture saved",
     "shareCard.savedAndCopied": "Picture saved \xB7 link copied",
+    "shareCard.runStop": "Stop {n}",
+    "shareCard.runEarlier": "+{count} earlier",
     "ride.startExploring": "Start exploring",
     "ride.noCycling": "No cycling in real life",
     "ride.wikipediaLink": "Wikipedia \u2197",
@@ -1524,6 +1527,7 @@
     "ride.nextStop": "Volgende stop",
     "ride.routeSetup": "Route instellen",
     "ride.shareRoute": "Deel deze route",
+    "ride.shareRun": "Deel reeks",
     "ride.linkCopied": "Link gekopieerd",
     // --- Arrival and run cards (#283) ---
     "stamps.heldOf": "{count} van {total} buurtstempels",
@@ -1574,6 +1578,8 @@
     "shareCard.byTransit": "Per tram en metro",
     "shareCard.saved": "Afbeelding opgeslagen",
     "shareCard.savedAndCopied": "Afbeelding opgeslagen \xB7 link gekopieerd",
+    "shareCard.runStop": "Stop {n}",
+    "shareCard.runEarlier": "+{count} eerder",
     "ride.startExploring": "Begin met verkennen",
     "ride.noCycling": "Geen fietsen in het echt",
     "ride.wikipediaLink": "Wikipedia \u2197",
@@ -7387,6 +7393,20 @@
   var NEXT_STOP_MIN_KM = 1;
   var NEXT_STOP_MAX_KM = 3;
   var RUN_LIST_LIMIT = 12;
+  var RUN_PATH_POINTS = 48;
+  function thinLegPath(path, max = RUN_PATH_POINTS) {
+    const round = (v) => Math.round(v * 1e5) / 1e5;
+    const clean = [];
+    for (const p of path ?? []) {
+      if (!p || !Number.isFinite(p[0]) || !Number.isFinite(p[1])) continue;
+      const q = [round(p[0]), round(p[1])];
+      const last = clean[clean.length - 1];
+      if (!last || last[0] !== q[0] || last[1] !== q[1]) clean.push(q);
+    }
+    if (clean.length <= max) return clean;
+    const step = (clean.length - 1) / (max - 1);
+    return Array.from({ length: max }, (_, i) => clean[Math.round(i * step)]);
+  }
   function chainBonus(stopNumber) {
     if (!Number.isFinite(stopNumber) || stopNumber <= 1) return 0;
     return Math.min(CHAIN_CAP, Math.round((stopNumber - 1) * CHAIN_STEP * 100) / 100);
@@ -7425,6 +7445,13 @@
       names,
       at: now
     };
+    if (Number.isFinite(input.lat) && Number.isFinite(input.lng)) {
+      stop.lat = input.lat;
+      stop.lng = input.lng;
+    }
+    if (input.area) stop.area = input.area;
+    const path = thinLegPath(input.path);
+    if (path.length >= 2) stop.path = path;
     const known = new Set(base.names);
     for (const name of names) known.add(name);
     const stops = [...base.stops, stop].slice(-RUN_LIST_LIMIT);
@@ -7478,7 +7505,7 @@
     const bits = [countText("count.stops", run.stopCount), countText("count.names", run.names.length)];
     if (!options.calm) {
       bits.push(t("count.points", { points: formatPoints(run.totalPoints) }));
-      const earned = lastStopBonus(run);
+      const earned = options.chain === false ? 0 : lastStopBonus(run);
       if (earned > 0) bits.push(t("run.chain", { percent: Math.round(earned * 100) }));
     }
     return bits.join("  \xB7  ");
@@ -7570,6 +7597,181 @@
     return weighted[weighted.length - 1]?.poi ?? null;
   }
 
+  // src/canalRecall/game/cities.ts
+  var CANAL_CITY_IDS = ["amsterdam", "utrecht", "rotterdam", "den-haag"];
+  var AMSTERDAM_POIS = [
+    { id: "central", name: "Central Station", lat: 52.3784943, lng: 4.899843 },
+    { id: "anne-frank", name: "Anne Frank House", lat: 52.3753446, lng: 4.8840669 },
+    { id: "rijksmuseum", name: "Rijksmuseum", lat: 52.3598672, lng: 4.8864162 },
+    { id: "maritime", name: "National Maritime Museum", lat: 52.371493, lng: 4.9151332 },
+    { id: "nemo", name: "NEMO Science Museum", lat: 52.3738532, lng: 4.9121113 },
+    { id: "palace", name: "Royal Palace", lat: 52.373258, lng: 4.8918222 },
+    { id: "red-light", name: "Red Light District", lat: 52.3719371, lng: 4.8956406 },
+    { id: "rembrandt", name: "Rembrandt House", lat: 52.3693692, lng: 4.9012497 },
+    { id: "hart", name: "H\u2019ART Museum", lat: 52.3656522, lng: 4.9022137 },
+    { id: "westerkerk", name: "Westerkerk", lat: 52.3743736, lng: 4.8837289 },
+    { id: "mint", name: "Mint Tower", lat: 52.3670418, lng: 4.8932804 }
+  ];
+  function viewboxAround(center, pad = 0.18) {
+    return [
+      center.lng - pad,
+      center.lat + pad,
+      center.lng + pad,
+      center.lat - pad
+    ];
+  }
+  var CANAL_CITIES = {
+    amsterdam: {
+      id: "amsterdam",
+      name: "Amsterdam",
+      productName: "Ride Amsterdam",
+      center: { lat: 52.372851, lng: 4.8936 },
+      extractPath: "../data/extracts/amsterdam",
+      geocodeSuffix: ", Amsterdam",
+      // Includes Weesp, whose installed administrative outline reaches 5.1077°E.
+      // The same window bounds live GPS origins and home-address searches.
+      geocodeViewbox: [4.72, 52.43, 5.12, 52.27],
+      provinceCaption: "Noord-Holland",
+      playable: true,
+      curatedPois: AMSTERDAM_POIS
+    },
+    utrecht: {
+      id: "utrecht",
+      name: "Utrecht",
+      productName: "Ride Utrecht",
+      center: { lat: 52.0907374, lng: 5.1214201 },
+      extractPath: "../data/extracts/utrecht",
+      geocodeSuffix: ", Utrecht",
+      geocodeViewbox: viewboxAround({ lat: 52.0907374, lng: 5.1214201 }),
+      provinceCaption: "Utrecht",
+      playable: true,
+      // Historic-core anchors — prominence ranking alone prefers universities
+      // and Science Park over Dom / Oudegracht destinations.
+      curatedPois: [
+        { id: "dom-tower", name: "Dom tower", lat: 52.090764, lng: 5.121398 },
+        { id: "centraal-museum", name: "Centraal Museum", lat: 52.083445, lng: 5.126395 },
+        { id: "museum-speelklok", name: "Museum Speelklok", lat: 52.0907282, lng: 5.1194134 },
+        { id: "buurkerk", name: "Buurkerk", lat: 52.090738, lng: 5.119781 },
+        { id: "jacobikerk", name: "Jacobikerk", lat: 52.094895, lng: 5.115757 },
+        { id: "catharijneconvent", name: "Museum Catharijneconvent", lat: 52.087646, lng: 5.124579 },
+        { id: "academiegebouw", name: "Academiegebouw", lat: 52.0902439, lng: 5.1223339 },
+        { id: "inktpot", name: "De Inktpot", lat: 52.087099, lng: 5.115846 },
+        { id: "pieterskerk", name: "Pieterskerk", lat: 52.091397, lng: 5.124743 },
+        { id: "rietveld", name: "Rietveld-Schr\xF6derhuis", lat: 52.085297, lng: 5.147607 }
+      ]
+    },
+    rotterdam: {
+      id: "rotterdam",
+      name: "Rotterdam",
+      productName: "Ride Rotterdam",
+      center: { lat: 51.9225, lng: 4.47917 },
+      extractPath: "../data/extracts/rotterdam",
+      geocodeSuffix: ", Rotterdam",
+      geocodeViewbox: viewboxAround({ lat: 51.9225, lng: 4.47917 }, 0.22),
+      provinceCaption: "Zuid-Holland",
+      playable: true,
+      curatedPois: [
+        { id: "euromast", name: "Euromast", lat: 51.905356, lng: 4.466785 },
+        { id: "laurenskerk", name: "Grote of Sint-Laurenskerk", lat: 51.921706, lng: 4.486122 },
+        { id: "doelen", name: "de Doelen", lat: 51.9220495, lng: 4.4726898 },
+        { id: "bibliotheek", name: "Centrale Bibliotheek", lat: 51.9223535, lng: 4.4871283 },
+        { id: "depot-boijmans", name: "Depot Boijmans Van Beuningen", lat: 51.9139529, lng: 4.471132 },
+        { id: "zoo", name: "Rotterdam Zoo", lat: 51.924954, lng: 4.450176 }
+      ]
+    },
+    "den-haag": {
+      id: "den-haag",
+      name: "Den Haag",
+      productName: "Ride Den Haag",
+      center: { lat: 52.0705, lng: 4.3007 },
+      extractPath: "../data/extracts/den-haag",
+      geocodeSuffix: ", Den Haag",
+      geocodeViewbox: viewboxAround({ lat: 52.0705, lng: 4.3007 }),
+      provinceCaption: "Zuid-Holland",
+      playable: true,
+      curatedPois: [
+        { id: "binnenhof", name: "Binnenhof", lat: 52.079334, lng: 4.312407 },
+        { id: "huis-ten-bosch", name: "Huis ten Bosch", lat: 52.093169, lng: 4.343465 },
+        { id: "amare", name: "Amare", lat: 52.078015, lng: 4.318695 },
+        { id: "catshuis", name: "Catshuis", lat: 52.090293, lng: 4.284739 },
+        { id: "kb", name: "KB, nationale bibliotheek", lat: 52.0815311, lng: 4.3275274 }
+      ]
+    }
+  };
+  var DEFAULT_CITY_ID = "amsterdam";
+  function parseCityId(raw, fallback = DEFAULT_CITY_ID) {
+    if (typeof raw !== "string") return fallback;
+    return CANAL_CITY_IDS.includes(raw) ? raw : fallback;
+  }
+  function cityById(id) {
+    return CANAL_CITIES[parseCityId(id)];
+  }
+
+  // src/canalRecall/shareCard.ts
+  var SHARE_CARD_SITE = "rideamsterdam.nl";
+  var SHARE_CARD_LABELS_EN = {
+    arrived: "DESTINATION",
+    ride: "RIDE",
+    distance: "DISTANCE",
+    time: "TIME",
+    fallbackPlace: "Amsterdam",
+    site: SHARE_CARD_SITE
+  };
+  var SHARE_TRAIL_STEP_PX = 45;
+  var SHARE_TRAIL_MAX_POINTS = 4e3;
+  function extendShareTrail(trail, owner, point, distancePx) {
+    if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) return trail ?? { owner, lastDistancePx: distancePx, points: [] };
+    if (!trail || trail.owner !== owner || distancePx < trail.lastDistancePx - 1) {
+      return { owner, lastDistancePx: distancePx, points: [{ x: point.x, y: point.y }] };
+    }
+    const last = trail.points[trail.points.length - 1];
+    if (!last || Math.hypot(point.x - last.x, point.y - last.y) >= SHARE_TRAIL_STEP_PX) {
+      trail.points.push({ x: point.x, y: point.y });
+      if (trail.points.length > SHARE_TRAIL_MAX_POINTS) trail.points = trail.points.filter((_, i) => i % 2 === 0);
+    }
+    trail.lastDistancePx = distancePx;
+    return trail;
+  }
+
+  // src/canalRecall/routing/bikeAccess.ts
+  var BICYCLE_DENIED = /* @__PURE__ */ new Set(["no", "dismount", "private", "customers"]);
+  function isBicycleRestricted(tags) {
+    return BICYCLE_DENIED.has(tags.bicycle || "") || tags.bicycleRestricted === "yes";
+  }
+  function bicycleRestrictionNotice(tags) {
+    if (!isBicycleRestricted(tags)) return null;
+    const bicycle = tags.bicycle || "";
+    if (bicycle === "dismount") return "Walk bikes in real life";
+    if (bicycle === "private" || bicycle === "customers") return "Private \u2014 no public cycling";
+    return "No cycling in real life";
+  }
+
+  // src/canalRecall/osm/roadProjection.ts
+  var PIXELS_PER_METER2 = 3;
+  var METRES_PER_DEGREE_LAT = 111320;
+  function metresPerDegreeLng(latitude) {
+    return METRES_PER_DEGREE_LAT * Math.cos(latitude * Math.PI / 180);
+  }
+
+  // src/canalRecall/runShareCard.ts
+  var RUN_SHARE_LABELS_EN = {
+    run: "RUN",
+    stop: "Stop {n}",
+    earlier: "+{count} earlier",
+    fallbackPlace: SHARE_CARD_LABELS_EN.fallbackPlace,
+    site: SHARE_CARD_LABELS_EN.site
+  };
+  function worldToLatLng(point, projection) {
+    const { centerLat, centerLng } = projection;
+    if (![point.x, point.y, centerLat, centerLng].every(Number.isFinite)) return null;
+    const x = point.x - (projection.offsetX ?? 0);
+    const y = point.y - (projection.offsetY ?? 0);
+    return [
+      centerLat - y / (METRES_PER_DEGREE_LAT * PIXELS_PER_METER2),
+      centerLng + x / (metresPerDegreeLng(centerLat) * PIXELS_PER_METER2)
+    ];
+  }
+
   // src/canalRecall/game/chainedRunRuntime.ts
   var RUN_TOUCH_MS = 15e3;
   var INK = "#1f1c17";
@@ -7630,12 +7832,30 @@
         points: this.quizPoints || 0,
         bestStreak: this.quizBestStreak || 0,
         names: this._rideNamedNames || [],
-        calm: !this.gameyFeatures
+        calm: !this.gameyFeatures,
+        lat: to.lat,
+        lng: to.lng,
+        area: this.currentNeighborhood || null,
+        path: this._runLegPath()
       }, Date.now());
       this._run = run;
       this._runTouchedAt = Date.now();
       saveRun(storage2(), run);
       session.stopsThisRun = run.stopCount;
+    }
+    /**
+     * The leg just ridden as [lat, lng] for the run's share picture (#295): the
+     * share trail (shareCard.ts, sampled while riding), else the planned path,
+     * unprojected with this ride's road build (osm-loader.js `latLngToWorld`).
+     */
+    _runLegPath() {
+      const loader = this.osmLoader;
+      if (!loader || !Number.isFinite(loader._lastCenterLat) || !Number.isFinite(loader._lastCenterLng)) return [];
+      const projection = { centerLat: loader._lastCenterLat, centerLng: loader._lastCenterLng, offsetX: loader._lastOffsetX ?? 0, offsetY: loader._lastOffsetY ?? 0 };
+      const trail = this._shareTrail && this._shareTrail.owner === this.player ? this._shareTrail.points : [];
+      const world = trail.length >= 2 ? [...trail] : [...this.routePath ?? []];
+      if (world.length >= 2 && this.player && Number.isFinite(this.player.x)) world.push({ x: this.player.x, y: this.player.y });
+      return world.map((p) => worldToLatLng(p, projection)).filter((p) => !!p);
     }
     /** Per frame: keeps a riding run alive, ends one left idle on the arrival card, and takes E there. */
     _runTick() {
@@ -7687,6 +7907,16 @@
       endRun(storage2(), run);
       this._run = null;
       this._runCard = card ? run : null;
+      if (card) {
+        const history = window.CanalRouteHistory;
+        setTimeout(() => {
+          try {
+            history?.prepareShareCard?.(this);
+          } catch (reason) {
+            console.warn("Run share card:", reason);
+          }
+        }, 0);
+      }
       const session = sessionCounters2();
       session.runsEnded = (session.runsEnded ?? 0) + 1;
       session.stopsPerRun = [...session.stopsPerRun ?? [], run.stopCount];
@@ -7746,6 +7976,35 @@
       const stop = stops[stops.length - 1];
       return stop && stop.id === this.routeTo?.id ? stop.points : null;
     }
+    /**
+     * What the run's share picture shows (#295, runShareCard.ts): the shown
+     * run's stops with their legs, the run line without the last stop's chain
+     * bonus, and the names the map is withholding (labelOverlay's sources).
+     */
+    _runShareInput() {
+      const run = this._runCard;
+      if (!run) return null;
+      const first = run.stopCount - run.stops.length + 1;
+      return {
+        stops: run.stops.map((stop, index) => ({
+          number: first + index,
+          name: stop.name,
+          lat: stop.lat,
+          lng: stop.lng,
+          area: stop.area ?? null,
+          path: stop.path ?? null
+        })),
+        summary: runLine(run, { calm: !this.gameyFeatures, chain: false }),
+        city: cityById(this.cityId).name,
+        hiddenNames: [this.quizPromptName, this.quizCandidateName, this._silentPass?.name],
+        labels: {
+          run: t("ride.arrival.run"),
+          stop: t("shareCard.runStop", { n: "{n}" }),
+          earlier: t("shareCard.runEarlier", { count: "{count}" }),
+          fallbackPlace: cityById(this.cityId).name
+        }
+      };
+    }
     /** The run card: stamped stops, total, best streak, names, one line of story. */
     _renderRunCard(run) {
       const ctx = this.ctx;
@@ -7766,7 +8025,8 @@
       const MARGIN = 16;
       const bottomReserve = compact ? 76 : MARGIN;
       const BUTTON_H = 44;
-      const actionsH = compact ? BUTTON_H * 2 + 8 : 34;
+      const canShare = !!this._shareUrl;
+      const actionsH = compact ? BUTTON_H * (canShare ? 3 : 2) + 8 * (canShare ? 2 : 1) : 34;
       const fixedH = 30 + 74 + story.length * 18 + 16 + 24 + 64 + 24 + actionsH + 26;
       const room = H - MARGIN - bottomReserve;
       const listRows = Math.max(1, Math.min(run.stops.length, Math.floor((room - fixedH) / ROW)));
@@ -7862,6 +8122,7 @@
         { id: "again", key: "ENTER", caption: t("ride.newRun") },
         { id: "route", key: compact ? "" : "M", caption: t("ride.routeSetup") }
       ];
+      if (canShare) actions.push({ id: "copy", key: compact ? "" : "C", caption: (this._copiedTimer ?? 0) > 0 ? t("ride.linkCopied") : t("ride.shareRun") });
       const buttons = [];
       if (compact) {
         actions.forEach((action, index) => {
@@ -8757,19 +9018,6 @@
     return labelsWanted && !input.quizOpen && !input.promptVisible;
   }
 
-  // src/canalRecall/routing/bikeAccess.ts
-  var BICYCLE_DENIED = /* @__PURE__ */ new Set(["no", "dismount", "private", "customers"]);
-  function isBicycleRestricted(tags) {
-    return BICYCLE_DENIED.has(tags.bicycle || "") || tags.bicycleRestricted === "yes";
-  }
-  function bicycleRestrictionNotice(tags) {
-    if (!isBicycleRestricted(tags)) return null;
-    const bicycle = tags.bicycle || "";
-    if (bicycle === "dismount") return "Walk bikes in real life";
-    if (bicycle === "private" || bicycle === "customers") return "Private \u2014 no public cycling";
-    return "No cycling in real life";
-  }
-
   // src/canalRecall/game/trackpadTwist.ts
   var TWIST_DEADZONE_DEG = 6;
   var WHEEL_TWIST_DEG_PER_PX = 0.25;
@@ -9410,23 +9658,6 @@
     if (!text) return "";
     const key = `kind.${camel(text)}`;
     return key in CATALOGS.en ? t(key) : text.toUpperCase();
-  }
-
-  // src/canalRecall/shareCard.ts
-  var SHARE_TRAIL_STEP_PX = 45;
-  var SHARE_TRAIL_MAX_POINTS = 4e3;
-  function extendShareTrail(trail, owner, point, distancePx) {
-    if (!Number.isFinite(point.x) || !Number.isFinite(point.y)) return trail ?? { owner, lastDistancePx: distancePx, points: [] };
-    if (!trail || trail.owner !== owner || distancePx < trail.lastDistancePx - 1) {
-      return { owner, lastDistancePx: distancePx, points: [{ x: point.x, y: point.y }] };
-    }
-    const last = trail.points[trail.points.length - 1];
-    if (!last || Math.hypot(point.x - last.x, point.y - last.y) >= SHARE_TRAIL_STEP_PX) {
-      trail.points.push({ x: point.x, y: point.y });
-      if (trail.points.length > SHARE_TRAIL_MAX_POINTS) trail.points = trail.points.filter((_, i) => i % 2 === 0);
-    }
-    trail.lastDistancePx = distancePx;
-    return trail;
   }
 
   // src/canalRecall/game/presentationRuntime.ts
