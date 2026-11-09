@@ -3,6 +3,52 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Phone buttons, stamp line and the pause card fit",
+   "text": "\"Reeks beëindigen\" shortens to \"Stop reeks\" when the long form would touch its button edges; the stamp line and the plaque drop their tally and step down a size before any ellipsis, so \"naar Pathé Tuschinski Cinema\" reads whole. The pause card's keycaps wrap to two rows instead of running past the card. On phones the What's New notice is a banner above the page with 44 px targets, not a toast over the heading.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-r2-phone-fit/pause-card-desktop-after.jpg",
+     "alt": "The pause card with its keycaps on two rows",
+     "caption": "Pause card keycaps on two rows."
+    },
+    {
+     "src": "ui/2026-11-09-r2-phone-fit/landing-toast-phone-after.jpg",
+     "alt": "The What's New banner above the landing page on a phone",
+     "caption": "The notice no longer covers the heading."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "title": "A reload in the middle of a run keeps your leg",
+   "text": "Reloading the page during the second or later stop of a run used to drop you on the route setup card with a different destination while the run was still open. The leg is now saved whenever it is loading, riding or paused, so a reload keeps you riding to the same stop. The destination readout now shows the route left (1.4 km) instead of the straight line (1.1 km), so it agrees with the landing's \"about 1.5 km\".",
+   "images": [
+    {
+     "src": "ui/2026-11-09-r2-run-start/B-04b-after-reload-desktop-after.jpg",
+     "alt": "After a reload the same leg keeps riding",
+     "caption": "Same leg after a reload."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "title": "Het spel spreekt Nederlands",
+   "text": "In the Dutch game the answer feedback is now Dutch (\"Goed — Munttoren (+86 pnt · bonus nieuwe naam)\") and place names are Dutch on every card: the destination pill says NIEUWE KERK, the landmark card MUNTTOREN, the arrival Koninklijk Theater Tuschinski. Twenty-one Dutch names were added from the landmarks' own Dutch Wikipedia titles and Wikidata labels; nothing was machine-translated. The share picture stays English for now.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-r2-dutch/C-01-ride-start-desktop-after.jpg",
+     "alt": "The Dutch ride start with the pill reading NIEUWE KERK",
+     "caption": "The destination pill in Dutch."
+    },
+    {
+     "src": "ui/2026-11-09-r2-dutch/C-q1-after-phone-after.jpg",
+     "alt": "The phone landmark card reading MUNTTOREN · Genoteerd",
+     "caption": "Munttoren asked, Munttoren shown."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "The landmark question sticks to buildings",
    "text": "\"Which building is this?\" is no longer asked about a bust or a statue, and its four choices are all buildings. Only 18 of the 193 askable landmarks are statues or memorials, too few for fair four-name questions, so they keep their drive-by card instead. The question's neighbourhood now matches the plaque.",
    "images": []

@@ -680,6 +680,7 @@ export const nl: Record<MessageKey, string> = {
   'ride.arrival.cityKnowledge': 'KENNIS VAN DE STAD',
   'ride.arrival.firstTime': '+{bits} voor het eerst',
   'ride.endRun': 'Reeks beëindigen',
+  'ride.endRunShort': 'Stop reeks',
   'ride.newRun': 'Nieuwe reeks',
   'ride.stat.time': 'Tijd',
   'ride.stat.distance': 'Afstand',

@@ -398,6 +398,17 @@
     "mission.warmUp": "Warm up with one overdue name",
     "mission.arrive": "Arrive knowing more of {city}",
     // --- Map Quest quiz ------------------------------------------------------
+    // Answer feedback (R2-2, #303): answerPath.ts composes these.
+    "answer.passed": "Passed \u2014 that was {name}",
+    "answer.silentPass": "That was {name}",
+    "answer.reveal": "This is {name}",
+    "answer.wrong": "Not quite \u2014 this is {name}",
+    "answer.correct": "Correct \u2014 {name}",
+    "answer.correctPoints": "Correct \u2014 {name}  (+{points} pts)",
+    "answer.correctNewCycle": "Correct \u2014 {name}  (+{points} pts \xB7 new name + cycle track bonus)",
+    "answer.correctNew": "Correct \u2014 {name}  (+{points} pts \xB7 new name bonus)",
+    "answer.correctCycle": "Correct \u2014 {name}  (+{points} pts \xB7 cycle track bonus)",
+    "answer.correctStreak": "Correct \u2014 {name}  (+{points} pts \xB7 {streak} in a row)",
     "quiz.pinpoint": "Pinpoint",
     "quiz.pinpointHint": "Place the named feature on the map",
     "quiz.guessName": "Guess Name",
@@ -640,6 +651,7 @@
     "ride.arrival.cityKnowledge": "CITY KNOWLEDGE",
     "ride.arrival.firstTime": "+{bits} first-time",
     "ride.endRun": "End run",
+    "ride.endRunShort": "End run",
     "ride.newRun": "New run",
     "ride.stat.time": "Time",
     "ride.stat.distance": "Distance",
@@ -1150,6 +1162,17 @@
     "mission.warmUp": "Warm op met \xE9\xE9n naam die te laat is",
     "mission.arrive": "Kom aan met meer kennis van {city}",
     // --- Map Quest-quiz ------------------------------------------------------
+    // Antwoordfeedback (R2-2, #303).
+    "answer.passed": "Voorbij \u2014 dat was {name}",
+    "answer.silentPass": "Dat was {name}",
+    "answer.reveal": "Dit is {name}",
+    "answer.wrong": "Niet helemaal \u2014 dit is {name}",
+    "answer.correct": "Goed \u2014 {name}",
+    "answer.correctPoints": "Goed \u2014 {name}  (+{points} pnt)",
+    "answer.correctNewCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam + fietspad)",
+    "answer.correctNew": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam)",
+    "answer.correctCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 fietspadbonus)",
+    "answer.correctStreak": "Goed \u2014 {name}  (+{points} pnt \xB7 {streak} op rij)",
     "quiz.pinpoint": "Aanwijzen",
     "quiz.pinpointHint": "Zet de genoemde plek op de kaart",
     "quiz.guessName": "Naam raden",
@@ -1392,6 +1415,7 @@
     "ride.arrival.cityKnowledge": "KENNIS VAN DE STAD",
     "ride.arrival.firstTime": "+{bits} voor het eerst",
     "ride.endRun": "Reeks be\xEBindigen",
+    "ride.endRunShort": "Stop reeks",
     "ride.newRun": "Nieuwe reeks",
     "ride.stat.time": "Tijd",
     "ride.stat.distance": "Afstand",
@@ -2026,7 +2050,9 @@
       difficulty: "medium",
       ...DIFFICULTY_PRESETS.medium,
       // Boat and Chase are the product start (2026-10-22, user's call; cockpit
-      // is retired and the setup View row offers the 2D and 3D views).
+      // is retired and the setup View row offers the 2D and 3D views). Ride
+      // review R2-9 (#302) argued for a bike start; that reversal waits on the
+      // user (needs-david), so the boat stays.
       travelMode: "boat",
       controlMode: defaultControlMode(),
       viewMode: "chase",
@@ -6692,10 +6718,11 @@ Learned names, exploration collection, personal bests, route settings and the ho
         gameyFeatures: this.gameyFeatures,
         recallFeature,
         recallStore: this.recall,
-        revealName: (revealed) => this._revealName(revealed)
+        revealName: (revealed) => this._revealName(revealed),
+        say: t
       });
       void result;
-      this.quizFeedback = `That was ${this._shownName(name)}`;
+      this.quizFeedback = t("answer.silentPass", { name: this._shownName(name) });
       this._silentPass = null;
       this.quizCurrentName = name;
       this.quizCandidateName = "";
@@ -6956,6 +6983,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
         // A bridge is asked under its official spelling and typed either way.
         displayName: this._shownName(correctName),
         acceptedAnswers: acceptedBridgeAnswers(bridgeDisplayNamesOf(this.bridges), correctName),
+        say: t,
         answer,
         noIdea,
         score: {

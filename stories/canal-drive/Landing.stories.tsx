@@ -1,9 +1,10 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import '../../public/canal-drive/css/enamel.css';
 import '../../public/canal-drive/css/landing-cards.css';
 import landingPage from '../../public/canal-drive/landing.html?raw';
 import { buildLandingModel, type LandingModel } from '../../src/canalRecall/landing/landingModel.ts';
+import { mountWhatsNewToast, RETURNING_KEY } from '../../src/canalRecall/whatsNewToast.ts';
 import { landingCardsHtml } from '../../src/canalRecall/landing/landingView.ts';
 import {
   LANDING_FIXTURE_NOW,
@@ -37,7 +38,24 @@ function modelFor(variant: Variant): LandingModel {
   };
 }
 
-function LandingCards({ variant }: { variant: Variant }) {
+/** R2-11 (#304): the real toast, mounted against a stub window so it reads a fixed note and a returning flag. */
+function useToast(on: boolean) {
+  useEffect(() => {
+    if (!on) return undefined;
+    const store: Record<string, string> = { [RETURNING_KEY]: '1' };
+    const fakeWin = {
+      localStorage: { getItem: (k: string) => store[k] ?? null, setItem: (k: string, v: string) => { store[k] = v; } },
+      fetch: async (url: URL) => ({ ok: /notes/.test(String(url)), json: async () => ({ notes: [{ date: '2026-11-09', title: "Today's ride runs buurt to buurt; Continue names the streets you are due" }] }) }),
+      location: window.location,
+    } as unknown as Window;
+    let toast: HTMLElement | null = null;
+    void mountWhatsNewToast(document, fakeWin).then(el => { toast = el; });
+    return () => { toast?.remove(); };
+  }, [on]);
+}
+
+function LandingCards({ variant, toast = false }: { variant: Variant; toast?: boolean }) {
+  useToast(toast);
   const html = useMemo(() => landingCardsHtml(modelFor(variant), { ride: '/ride' }), [variant]);
   return (
     <div className="landing-story">
@@ -79,6 +97,8 @@ export const RiddenToday: Story = { args: { variant: 'ridden-today' } };
 export const NothingDue: Story = { args: { variant: 'nothing-due' } };
 export const OpenedOnce: Story = { args: { variant: 'opened-once' } };
 export const LongNames: Story = { args: { variant: 'long-names' } };
+export const ReturningToast: Story = { args: { variant: 'returning', toast: true } };
+export const ReturningToastPhone: Story = { args: { variant: 'returning', toast: true }, parameters: phone };
 export const FirstTimePhone: Story = { args: { variant: 'first-time' }, parameters: phone };
 export const ReturningPhone: Story = { args: { variant: 'returning' }, parameters: phone };
 export const RiddenTodayPhone: Story = { args: { variant: 'ridden-today' }, parameters: phone };

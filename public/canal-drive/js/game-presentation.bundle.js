@@ -549,6 +549,17 @@
     "mission.warmUp": "Warm up with one overdue name",
     "mission.arrive": "Arrive knowing more of {city}",
     // --- Map Quest quiz ------------------------------------------------------
+    // Answer feedback (R2-2, #303): answerPath.ts composes these.
+    "answer.passed": "Passed \u2014 that was {name}",
+    "answer.silentPass": "That was {name}",
+    "answer.reveal": "This is {name}",
+    "answer.wrong": "Not quite \u2014 this is {name}",
+    "answer.correct": "Correct \u2014 {name}",
+    "answer.correctPoints": "Correct \u2014 {name}  (+{points} pts)",
+    "answer.correctNewCycle": "Correct \u2014 {name}  (+{points} pts \xB7 new name + cycle track bonus)",
+    "answer.correctNew": "Correct \u2014 {name}  (+{points} pts \xB7 new name bonus)",
+    "answer.correctCycle": "Correct \u2014 {name}  (+{points} pts \xB7 cycle track bonus)",
+    "answer.correctStreak": "Correct \u2014 {name}  (+{points} pts \xB7 {streak} in a row)",
     "quiz.pinpoint": "Pinpoint",
     "quiz.pinpointHint": "Place the named feature on the map",
     "quiz.guessName": "Guess Name",
@@ -791,6 +802,7 @@
     "ride.arrival.cityKnowledge": "CITY KNOWLEDGE",
     "ride.arrival.firstTime": "+{bits} first-time",
     "ride.endRun": "End run",
+    "ride.endRunShort": "End run",
     "ride.newRun": "New run",
     "ride.stat.time": "Time",
     "ride.stat.distance": "Distance",
@@ -1301,6 +1313,17 @@
     "mission.warmUp": "Warm op met \xE9\xE9n naam die te laat is",
     "mission.arrive": "Kom aan met meer kennis van {city}",
     // --- Map Quest-quiz ------------------------------------------------------
+    // Antwoordfeedback (R2-2, #303).
+    "answer.passed": "Voorbij \u2014 dat was {name}",
+    "answer.silentPass": "Dat was {name}",
+    "answer.reveal": "Dit is {name}",
+    "answer.wrong": "Niet helemaal \u2014 dit is {name}",
+    "answer.correct": "Goed \u2014 {name}",
+    "answer.correctPoints": "Goed \u2014 {name}  (+{points} pnt)",
+    "answer.correctNewCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam + fietspad)",
+    "answer.correctNew": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam)",
+    "answer.correctCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 fietspadbonus)",
+    "answer.correctStreak": "Goed \u2014 {name}  (+{points} pnt \xB7 {streak} op rij)",
     "quiz.pinpoint": "Aanwijzen",
     "quiz.pinpointHint": "Zet de genoemde plek op de kaart",
     "quiz.guessName": "Naam raden",
@@ -1543,6 +1566,7 @@
     "ride.arrival.cityKnowledge": "KENNIS VAN DE STAD",
     "ride.arrival.firstTime": "+{bits} voor het eerst",
     "ride.endRun": "Reeks be\xEBindigen",
+    "ride.endRunShort": "Stop reeks",
     "ride.newRun": "Nieuwe reeks",
     "ride.stat.time": "Tijd",
     "ride.stat.distance": "Afstand",
@@ -7395,6 +7419,102 @@
   }
   var START_HEADING_SNAP_RAD = Math.PI / 6;
 
+  // src/canalRecall/game/placeNames.ts
+  var BY_NAME = {
+    "The National Maritime Museum": "National Maritime Museum",
+    Nemo: "NEMO Science Museum",
+    "H'ART Museum": "H\u2019ART Museum"
+  };
+
+  // src/canalRecall/game/landmarkNamesNl.ts
+  var LANDMARK_NAMES_NL = Object.freeze({
+    "Anne Frank House": "Anne Frank Huis",
+    "Auschwitz Memorial": "Auschwitzmonument",
+    "Berlage's Stock Market": "Beurs van Berlage",
+    "Buchenwald Memorial": "Buchenwaldmonument",
+    "Dutch Resistance Museum": "Verzetsmuseum",
+    "English Reformed Church": "Engelse Hervormde Kerk",
+    "Equestrian statue of Queen Wilhelmina": "Ruiterstandbeeld koningin Wilhelmina",
+    "Gerard Dou Synagogue": "Synagoge Gerard Doustraat",
+    "International Institute of Social History": "Internationaal Instituut voor Sociale Geschiedenis",
+    "Jewish Museum": "Joods Museum",
+    "Marseille House": "Huis Marseille",
+    "Mint Tower": "Munttoren",
+    "Museum of the Canals": "Grachtenmuseum",
+    "National Holocaust Museum": "Nationaal Holocaustmuseum",
+    "New Church": "Nieuwe Kerk",
+    "NIOD Institute for War, Holocaust, and Genocide Studies": "NIOD Instituut voor Oorlogs-, Holocaust- en Genocidestudies",
+    "Old Church": "Oude Kerk",
+    "Our Lord in the Attic": "Ons' Lieve Heer op Solder",
+    "Red Light District": "De Wallen",
+    "Rembrandt House": "Rembrandthuis",
+    "Royal Palace": "Paleis op de Dam",
+    "The National Maritime Museum": "Het Scheepvaartmuseum",
+    "The Shipping House": "Scheepvaarthuis",
+    "University of Amsterdam": "Universiteit van Amsterdam",
+    "Vondelpark Open Air Theater": "Vondelpark Openluchttheater",
+    "Walloon Church": "Waalse Kerk",
+    "Weepers' Tower": "Schreierstoren",
+    "West India House": "West-Indisch Huis",
+    "West Indian Warehouse": "West-Indisch Pakhuis",
+    "Zuiderkerk Tower": "Zuiderkerkstoren",
+    // R2-3 (#303): the landmarks' own nl Wikipedia titles (landmarks.json
+    // `wikipedia`), disambiguators dropped; where Wikidata's nl label is the
+    // shorter usual form it is used instead (cited per row).
+    "Central Station": "Amsterdam Centraal",
+    // nl:Station Amsterdam Centraal; Wikidata Q50719 nl label
+    "Canal Ring Area of Amsterdam": "Grachtengordel",
+    // nl:Grachtengordel (Amsterdam)
+    "Path\xE9 Tuschinski Cinema": "Koninklijk Theater Tuschinski",
+    // nl:Koninklijk Theater Tuschinski
+    "Royal Theater Carr\xE9": "Koninklijk Theater Carr\xE9",
+    // nl:Koninklijk Theater Carré
+    "Dutch National Opera & Ballet": "Nationale Opera & Ballet",
+    // nl:Nationale Opera en Ballet; Wikidata Q1325514 nl label
+    "National Monument": "Nationaal Monument op de Dam",
+    // nl:Nationaal Monument op de Dam
+    "Cat Cabinet": "KattenKabinet",
+    // nl:KattenKabinet
+    "Dutch East Indian Company": "Oost-Indisch Huis",
+    // nl:Oost-Indisch Huis (Amsterdam)
+    "Wine buyers' guildhall": "Wijnkopersgildehuis",
+    // nl:Wijnkopersgildehuis
+    "Funerary museum": "Museum Tot Zover",
+    // nl:Museum Tot Zover (sitelink of Q2383603)
+    "Ravensbr\xFCck memorial": "Vrouwen van Ravensbr\xFCck",
+    // nl:Vrouwen van Ravensbrück 1940-1945; Wikidata Q42171765 nl label
+    "Amsterdam Memorial to the Canadian Liberators": "Amsterdam dankt zijn Canadezen",
+    // nl:Amsterdam dankt zijn Canadezen
+    "Shadow quay": "De Schaduwkade",
+    // nl:De Schaduwkade
+    "Jewish WW2 resistance memorial": "Joods Verzetsmonument",
+    // nl:Joods Verzetsmonument
+    "Royal Tropical Institute": "KIT-gebouw"
+    // nl:KIT-gebouw
+  });
+  var LANDMARK_NAMES_NL_WIKIDATA = Object.freeze({
+    "Houseboat Museum": { nl: "Woonbootmuseum", wikidata: "Q14544962" },
+    "Museum of Bags and Purses": { nl: "Tassenmuseum Hendrikje", wikidata: "Q2077489" },
+    "Diamond Museum Amsterdam": { nl: "Diamantmuseum", wikidata: "Q1208561" },
+    "Olympic Stadium": { nl: "Olympisch Stadion", wikidata: "Q503319" },
+    "Walen Gate": { nl: "Walenpoortje", wikidata: "Q17288856" },
+    "Spinhuis Gate": { nl: "Spinhuispoort", wikidata: "Q17306709" }
+  });
+  var EXTRACT_NAME_OF = new Map(
+    Object.entries(BY_NAME).map(([extract, shown]) => [shown, extract])
+  );
+  function dutchName(name) {
+    return LANDMARK_NAMES_NL[name] ?? LANDMARK_NAMES_NL_WIKIDATA[name]?.nl;
+  }
+  function landmarkDisplayName(name, language2) {
+    if (language2 !== "nl" || !name) return name;
+    const extract = EXTRACT_NAME_OF.get(name);
+    return dutchName(name) ?? (extract ? dutchName(extract) : void 0) ?? name;
+  }
+  function placeName(name) {
+    return landmarkDisplayName(name, language());
+  }
+
   // src/canalRecall/game/chainedRun.ts
   var RUN_STORAGE_KEY = "canalRecall.openRun.v1";
   var LAST_RUN_STORAGE_KEY = "canalRecall.lastRun.v1";
@@ -7499,6 +7619,14 @@
   function withNextLeg(run, leg) {
     return { ...run, nextLeg: leg };
   }
+  function rideLeg(from, to) {
+    const end = (p) => p && p.id && !p.sharedEndpoint && Number.isFinite(p.lat) && Number.isFinite(p.lng) ? { id: p.id, name: p.name, lat: p.lat, lng: p.lng } : null;
+    const a = end(from), b = end(to);
+    return a && b && a.id !== b.id ? { from: a, to: b } : null;
+  }
+  function sameLeg(a, b) {
+    return !!a && !!b && a.from.id === b.from.id && a.to.id === b.to.id;
+  }
   function runTransition(from, to) {
     if (from === to) return null;
     if (from === "finished" && to === "menu") return "close";
@@ -7528,8 +7656,8 @@
     const words2 = t("run.numberWords").split(",");
     const count = run.stopCount < words2.length ? words2[run.stopCount] : String(run.stopCount);
     const last = run.stops[run.stops.length - 1];
-    const from = run.startName && run.startName !== last?.name ? t("run.storyFrom", { name: run.startName }) : "";
-    const to = last ? t("run.storyTo", { name: last.name }) : "";
+    const from = run.startName && run.startName !== last?.name ? t("run.storyFrom", { name: placeName(run.startName) }) : "";
+    const to = last ? t("run.storyTo", { name: placeName(last.name) }) : "";
     const names = run.names.length > 0 ? t("run.storyNames", { names: countText("count.names", run.names.length) }) : "";
     return t("run.story", { count, stops: t(run.stopCount === 1 ? "run.storyStop.one" : "run.storyStop.other"), from, to, names });
   }
@@ -7808,6 +7936,27 @@
     if (hover) ctx.fillRect(captionX, at.top + 21, captionW, 1);
     return { bounds, endX: captionX + captionW };
   }
+  function measureKeycapAction(ctx, action, fontMono) {
+    ctx.font = "12px system-ui, sans-serif";
+    const captionW = ctx.measureText(action.caption).width;
+    ctx.font = `700 11px ${fontMono}`;
+    return ctx.measureText(action.key).width + 14 + GAP + captionW;
+  }
+  function wrapKeycapRows(widths, maxW, gap) {
+    const rows = [];
+    let used = 0;
+    widths.forEach((width, index) => {
+      const row = rows[rows.length - 1];
+      if (row && used + gap + width <= maxW) {
+        row.push(index);
+        used += gap + width;
+      } else {
+        rows.push([index]);
+        used = width;
+      }
+    });
+    return rows;
+  }
 
   // src/canalRecall/game/chainedRunRuntime.ts
   var RUN_TOUCH_MS = 15e3;
@@ -7903,6 +8052,9 @@
       this._runLastState = this.state;
       if (previous !== this.state) this._runStateChanged(previous, now);
       const run = this._openRun();
+      if (run && this._runEnabled() && (this.state === GameState.LOADING || this.state === GameState.RACING || this.state === GameState.PAUSED)) {
+        this._runNoteLeg(run);
+      }
       if (this.state === GameState.RACING) {
         if (this._runCard) this._runCard = null;
         if (run && this._runEnabled() && now - (this._runTouchedAt ?? 0) >= RUN_TOUCH_MS) {
@@ -7921,6 +8073,19 @@
         return;
       }
       if (run && !this._runCard && this.input.wasPressed("KeyE")) this._endRunFromCard();
+    }
+    /**
+     * The leg being ridden inside a run is the one a reload resumes (R2-1, #302). Next stop stores it when
+     * the run deals the stop (_pickRunNextStop), but a review ride (Plan review with names due, which the
+     * returning player usually has) or the surprise fallback took the leg without it, so the run kept
+     * `nextLeg: null` and a reload fell through to route setup with a new destination. Whatever launched the
+     * leg, it is written here once, while it loads or rides.
+     */
+    _runNoteLeg(run) {
+      const leg = rideLeg(this.routeFrom, this.routeTo);
+      if (!leg || sameLeg(run.nextLeg ?? null, leg)) return;
+      this._run = withNextLeg(run, leg);
+      saveRun(storage2(), this._run);
     }
     /** Route setup from the arrival card closes the run quietly; pause stops its idle clock. */
     _runStateChanged(previous, now) {
@@ -8125,7 +8290,7 @@
         const pointsW = pointsText ? ctx.measureText(pointsText).width + 12 : 0;
         ctx.fillStyle = INK;
         ctx.font = "600 14px system-ui, sans-serif";
-        ctx.fillText(wrapText(ctx, stop.name, innerW - 32 - pointsW, 1)[0] ?? "", cardX + padX + 32, sy + 9);
+        ctx.fillText(wrapText(ctx, placeName(stop.name), innerW - 32 - pointsW, 1)[0] ?? "", cardX + padX + 32, sy + 9);
         if (pointsText) {
           ctx.textAlign = "right";
           ctx.fillStyle = MUTED;
@@ -9705,6 +9870,37 @@
     return join(kept);
   }
 
+  // src/canalRecall/game/routeRemaining.ts
+  function routeSuffixLengths(path) {
+    const suffix = new Float64Array(path.length);
+    for (let i = path.length - 2; i >= 0; i--) {
+      suffix[i] = suffix[i + 1] + Math.hypot(path[i + 1].x - path[i].x, path[i + 1].y - path[i].y);
+    }
+    return suffix;
+  }
+  function remainingRouteDistance(path, player, finish, cache) {
+    const straight = Math.hypot(finish.x - player.x, finish.y - player.y);
+    if (!path || path.length < 2 || !Number.isFinite(player.x) || !Number.isFinite(player.y)) return { distance: straight, cache: null };
+    const memo = cache && cache.path === path ? cache : { path, suffix: routeSuffixLengths(path) };
+    let best = Infinity;
+    let bestRemaining = straight;
+    for (let i = 0; i + 1 < path.length; i++) {
+      const a = path[i], b = path[i + 1];
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const len2 = dx * dx + dy * dy;
+      const t2 = len2 > 0 ? Math.max(0, Math.min(1, ((player.x - a.x) * dx + (player.y - a.y) * dy) / len2)) : 0;
+      const px = a.x + dx * t2, py = a.y + dy * t2;
+      const offset = Math.hypot(player.x - px, player.y - py);
+      if (offset < best) {
+        best = offset;
+        bestRemaining = offset + Math.sqrt(len2) * (1 - t2) + memo.suffix[i + 1];
+      }
+    }
+    const last = path[path.length - 1];
+    const distance = bestRemaining + Math.hypot(finish.x - last.x, finish.y - last.y);
+    return { distance: Math.max(straight, distance), cache: memo };
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK2 = "#1f1c17";
   var MUTED2 = "#5f584d";
@@ -10114,9 +10310,22 @@
     /** The destination as the ride may show it: with any street or water name
      *  from this track hidden, so "Keizersgrachtkerk" cannot answer the
      *  Keizersgracht question. The arrival card still shows the real name. */
+    /**
+     * What the destination readout says is left (R2-10, #302): the planned route from the rider to the finish
+     * (routeRemaining.ts), so the start says the route's length, as the landing's Today's ride card does, and not
+     * the straight line. With no planned path, the straight line as before.
+     */
+    _hudDistanceToFinishPx() {
+      if (this.hud && !this.hud.formatKm) this.hud.formatKm = (km) => formatRideDistance(km, { routed: true });
+      const player = this.player;
+      if (!player) return 0;
+      const { distance, cache } = remainingRouteDistance(this.routePath, player, this.track.finishPoint, this._routeRemainingCache);
+      this._routeRemainingCache = cache;
+      return distance;
+    }
     _destinationLabel() {
       if (isReviewStop(this.routeTo) && !this.routeTo.name) return REVIEW_STOP_LABEL;
-      const name = this.routeTo?.name || "";
+      const name = placeName(this.routeTo?.name || "");
       const asking = this.quizPromptName || "";
       const key = `${name}|${asking}`;
       if (this._destinationLabelKey !== key) {
@@ -10402,7 +10611,7 @@
         this.camera
       ) : null;
       const destinationLabel = this._destinationLabel();
-      const distanceToFinish = this.track.getDistanceToFinish(player.x, player.y);
+      const distanceToFinish = this._hudDistanceToFinishPx();
       const merged = this._hudRects().destinationInRecall;
       this.hud.drawPlaque(ctx, {
         routeName: visibleRouteName,
@@ -10905,7 +11114,13 @@
       const BUTTON_GAP = 8;
       const titleH = compact ? 56 : 64;
       const statsH = 28;
-      const actionsH = compact ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP : 28;
+      const KEY_GAP = 22;
+      const keyRows = compact ? [] : wrapKeycapRows(
+        actions.map((action) => measureKeycapAction(ctx, action, window.CanalRecallUi.hudSurface.fontMono)),
+        cardW - padX * 2,
+        KEY_GAP
+      );
+      const actionsH = compact ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP : keyRows.length * KEYCAP_ROW_H + (keyRows.length - 1) * 4;
       const cardH = 20 + titleH + actionsH + statsH + 18;
       const cardY = (CANVAS_H - cardH) / 2;
       this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 12 });
@@ -10936,18 +11151,21 @@
         }
       } else {
         ctx.textAlign = "left";
-        let ax = cardX + padX;
-        for (const action of actions) {
-          const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y - 2 }, action, {
-            ink: INK2,
-            muted: MUTED2,
-            fontMono: window.CanalRecallUi.hudSurface.fontMono,
-            captionColour: action.id === "copy" && this._copiedTimer > 0 ? GOOD : void 0
-          }, this.hud.hoverPoint);
-          pauseButtons.push({ ...drawn.bounds, id: action.id });
-          ax = drawn.endX + 22;
-        }
-        y += 28;
+        keyRows.forEach((row, rowIndex) => {
+          let ax = cardX + padX;
+          for (const index of row) {
+            const action = actions[index];
+            const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y - 2 + rowIndex * (KEYCAP_ROW_H + 4) }, action, {
+              ink: INK2,
+              muted: MUTED2,
+              fontMono: window.CanalRecallUi.hudSurface.fontMono,
+              captionColour: action.id === "copy" && this._copiedTimer > 0 ? GOOD : void 0
+            }, this.hud.hoverPoint);
+            pauseButtons.push({ ...drawn.bounds, id: action.id });
+            ax = drawn.endX + KEY_GAP;
+          }
+        });
+        y += actionsH;
       }
       ctx.textAlign = "center";
       ctx.font = `500 12px ${window.CanalRecallUi.hudSurface.fontUi}`;
@@ -11010,7 +11228,7 @@
       let touchButtonH = 44;
       const buildBlocks = (level2) => {
         const blocks2 = [];
-        const title = fitFinishTitle(ctx, this.routeTo.name, innerW);
+        const title = fitFinishTitle(ctx, placeName(this.routeTo.name), innerW);
         this._finishTitleLayout = title;
         const titleExtra = (title.lines.length - 1) * title.lineHeight;
         blocks2.push({ height: 74 + titleExtra, draw: (top) => {
@@ -11023,7 +11241,7 @@
           title.lines.forEach((line, index) => ctx.fillText(line, cardX + padX, top + 42 + index * title.lineHeight));
           ctx.fillStyle = MUTED2;
           ctx.font = "13px system-ui, sans-serif";
-          ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  \u2192  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
+          ctx.fillText(wrapText(ctx, `${placeName(this.routeFrom.name)}  \u2192  ${placeName(this.routeTo.name)}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
         } });
         if ((landmark || buurt?.text) && level2 < 3 || tour) {
           const photo = hasImage ? level2 >= 2 ? 64 : 88 : 0;
@@ -11133,7 +11351,7 @@
           const gain = this._explorationRouteGain;
           const story = finishStory({
             gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
-            destinationName: this.routeTo?.name || "",
+            destinationName: placeName(this.routeTo?.name || ""),
             cityName: this._cityDisplayName(),
             newPassportStamps: this._finishPassportFresh || [],
             placeStreak: { days: [], current: 0, best: 0 },
@@ -11255,7 +11473,12 @@
             ctx.font = "700 13px system-ui, sans-serif";
             const tally = stamp.kind === "poi" && stamp.total > 0 ? `  \xB7  ${t("ride.arrival.placeTally", { earned: stamp.earned, total: stamp.total })}` : "";
             const textX = cardX + padX + 18 + labelW + 10;
-            ctx.fillText(wrapText(ctx, `${stamp.name}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
+            const lineRoom = cardX + cardW - padX - textX;
+            const stampName = placeName(stamp.name);
+            let lineText = `${stampName}${tally}`;
+            if (ctx.measureText(lineText).width > lineRoom) lineText = stampName;
+            if (ctx.measureText(lineText).width > lineRoom) ctx.font = "700 12px system-ui, sans-serif";
+            ctx.fillText(wrapText(ctx, lineText, lineRoom, 1)[0], textX, top + 13);
           } });
         }
         const actions = [
@@ -11299,7 +11522,8 @@
                   ctx.textAlign = "center";
                   ctx.fillStyle = INK2;
                   ctx.font = "700 14px system-ui, sans-serif";
-                  ctx.fillText(endRun2.caption, endBounds.x + endBounds.w / 2, by + BUTTON_H / 2 + 6);
+                  const endCaption = ctx.measureText(endRun2.caption).width + 16 <= endBounds.w ? endRun2.caption : t("ride.endRunShort");
+                  ctx.fillText(endCaption, endBounds.x + endBounds.w / 2, by + BUTTON_H / 2 + 6);
                   finishButtons.push({ ...endBounds, id: endRun2.id });
                 }
                 ctx.fillStyle = primary ? COPPER2 : "rgba(31,28,23,.05)";

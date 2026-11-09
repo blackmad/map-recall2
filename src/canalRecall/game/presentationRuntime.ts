@@ -71,7 +71,7 @@ import { placeName } from './landmarkNamesNl.ts';
 import { kindLabel } from '../cardKindLabel.ts';
 import { extendShareTrail } from '../shareCard';
 import { fitFooterItems, type FooterItem } from './footerFit';
-import { drawKeycapAction } from './keycapAction';
+import { drawKeycapAction, KEYCAP_ROW_H, measureKeycapAction, wrapKeycapRows } from './keycapAction';
 import { formatRideDistance } from './rideDistance';
 import { remainingRouteDistance } from './routeRemaining';
 
@@ -1474,9 +1474,13 @@ export class GamePresentationRuntime {
     const BUTTON_GAP = 8;
     const titleH = compact ? 56 : 64;
     const statsH = 28;
+    // R2-6 (#304): the desktop keycap row wraps to a second line rather than run past the card's edge.
+    const KEY_GAP = 22;
+    const keyRows = compact ? [] : wrapKeycapRows(
+      actions.map(action => measureKeycapAction(ctx, action, window.CanalRecallUi.hudSurface.fontMono)), cardW - padX * 2, KEY_GAP);
     const actionsH = compact
       ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP
-      : 28;
+      : keyRows.length * KEYCAP_ROW_H + (keyRows.length - 1) * 4;
     const cardH = 20 + titleH + actionsH + statsH + 18;
     const cardY = (CANVAS_H - cardH) / 2;
 
@@ -1514,16 +1518,19 @@ export class GamePresentationRuntime {
       }
     } else {
       ctx.textAlign = 'left';
-      let ax = cardX + padX;
-      for (const action of actions) {
-        const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y - 2 }, action, {
-          ink: INK, muted: MUTED, fontMono: window.CanalRecallUi.hudSurface.fontMono,
-          captionColour: action.id === 'copy' && this._copiedTimer > 0 ? GOOD : undefined,
-        }, this.hud.hoverPoint);
-        pauseButtons.push({ ...drawn.bounds, id: action.id });
-        ax = drawn.endX + 22;
-      }
-      y += 28;
+      keyRows.forEach((row, rowIndex) => {
+        let ax = cardX + padX;
+        for (const index of row) {
+          const action = actions[index];
+          const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y - 2 + rowIndex * (KEYCAP_ROW_H + 4) }, action, {
+            ink: INK, muted: MUTED, fontMono: window.CanalRecallUi.hudSurface.fontMono,
+            captionColour: action.id === 'copy' && this._copiedTimer > 0 ? GOOD : undefined,
+          }, this.hud.hoverPoint);
+          pauseButtons.push({ ...drawn.bounds, id: action.id });
+          ax = drawn.endX + KEY_GAP;
+        }
+      });
+      y += actionsH;
     }
 
     ctx.textAlign = 'center';
@@ -1880,7 +1887,15 @@ export class GamePresentationRuntime {
           ctx.fillStyle = INK; ctx.font = '700 13px system-ui, sans-serif';
           const tally = stamp.kind === 'poi' && stamp.total > 0 ? `  ·  ${tr('ride.arrival.placeTally', { earned: stamp.earned, total: stamp.total })}` : '';
           const textX = cardX + padX + 18 + labelW + 10;
-          ctx.fillText(wrapText(ctx, `${placeName(stamp.name)}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
+          const lineRoom = cardX + cardW - padX - textX;
+          // R2-5 (#304): drop whole items rather than cut one mid-word. The tally goes first, then the name
+          // steps down a size; only a name that still overflows is ellipsised. The name is the display
+          // name for the language (#303).
+          const stampName = placeName(stamp.name);
+          let lineText = `${stampName}${tally}`;
+          if (ctx.measureText(lineText).width > lineRoom) lineText = stampName;
+          if (ctx.measureText(lineText).width > lineRoom) ctx.font = '700 12px system-ui, sans-serif';
+          ctx.fillText(wrapText(ctx, lineText, lineRoom, 1)[0], textX, top + 13);
         } });
       }
 
@@ -1935,7 +1950,9 @@ export class GamePresentationRuntime {
                 ctx.fill();
                 ctx.strokeStyle = RULE; ctx.lineWidth = 1; ctx.stroke();
                 ctx.textAlign = 'center'; ctx.fillStyle = INK; ctx.font = '700 14px system-ui, sans-serif';
-                ctx.fillText(endRun.caption, endBounds.x + endBounds.w / 2, by + BUTTON_H / 2 + 6);
+                // R2-5 (#304): a caption keeps 8 px each side; when the long one does not, the short form is used.
+                const endCaption = ctx.measureText(endRun.caption).width + 16 <= endBounds.w ? endRun.caption : tr('ride.endRunShort');
+                ctx.fillText(endCaption, endBounds.x + endBounds.w / 2, by + BUTTON_H / 2 + 6);
                 finishButtons.push({ ...endBounds, id: endRun.id });
               }
               ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';

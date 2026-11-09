@@ -154,3 +154,100 @@ test('desktop: postcard and landmark card layouts equal the pre-#292 ones', asyn
   }
   expect(r.same, 'landmark card layout unchanged').toBe(true);
 });
+
+// R2-5 / R2-6 (#304): measured fit. R2C_BEFORE=1 serves the pre-lane hud.js and game-presentation bundle
+// (from R2C_ORIG, default /tmp/r2c-orig) so the same spec prints the before numbers.
+async function serveOriginals(page: Page) {
+  if (!process.env.R2C_BEFORE) return;
+  const dir = process.env.R2C_ORIG || '/tmp/r2c-orig';
+  const { readFileSync } = await import('node:fs');
+  await page.route(/\/js\/hud\.js/, route => route.fulfill({ contentType: 'text/javascript', body: readFileSync(`${dir}/hud.js`) }));
+  await page.route(/\/js\/game-presentation\.bundle\.js/, route => route.fulfill({ contentType: 'text/javascript', body: readFileSync(`${dir}/game-presentation.bundle.js`) }));
+}
+const recordText = () => {
+  const rec: Array<{ t: string; f: string; w: number }> = ((window as any).__r2 = []);
+  const fillText = CanvasRenderingContext2D.prototype.fillText;
+  CanvasRenderingContext2D.prototype.fillText = function (text: string, ...rest: any[]) {
+    if (rec.length > 4000) rec.splice(0, 2000);
+    rec.push({ t: String(text), f: this.font, w: this.measureText(String(text)).width });
+    return (fillText as any).call(this, text, ...rest);
+  };
+};
+
+test.describe('R2-5 phone 390x664, Dutch run arrival and plaque', () => {
+  test.use({ viewport: { width: 390, height: 664 } });
+  test('end-run button keeps padding, stamp line and plaque are never cut mid-word', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'iphone', 'the phone layout');
+    test.setTimeout(240_000);
+    await setLanguage(page, 'nl');
+    await serveOriginals(page);
+    await page.addInitScript(recordText);
+    await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+    await page.waitForFunction(() => typeof (window as any).canalRecallGame._raceKey === 'string', null, { timeout: 30_000 });
+    // The plaque: a long destination and a buurt, in the HUD's second row.
+    await page.evaluate(() => {
+      const g = (window as any).canalRecallGame;
+      g.routeTo = { ...g.routeTo, name: 'Pathé Tuschinski Cinema', reviewStop: undefined };
+      g.currentNeighborhood = 'Centrum';
+    });
+    await page.waitForTimeout(1500);
+    const plaque = await page.evaluate(() => ((window as any).__r2 as any[]).filter(x => /^naar |Pathé|Centrum/.test(x.t) && !/·\s*$/.test(x.t) || /Centrum ·/.test(x.t)).slice(-6));
+    console.log('R2-5 plaque', JSON.stringify(plaque));
+    if (SHOTS) await page.screenshot({ path: `${SHOTS}/r2-5-plaque-${process.env.R2C_BEFORE ? 'before' : 'after'}.png` });
+    expect(plaque.some((x: any) => /\S…/.test(x.t)), 'no word cut by an ellipsis on the plaque').toBe(false);
+    // The arrival, in a run.
+    await page.evaluate(() => {
+      const g = (window as any).canalRecallGame;
+      Object.assign(g, { quizCorrect: 2, quizAttempts: 3, quizPoints: 200, quizBestStreak: 2 });
+      g._rideNamedNames = [`Street ${g.routeTo.id}`];
+      g.player.x = g.track.finishPoint.x; g.player.y = g.track.finishPoint.y; g.player.speed = 0;
+    });
+    await page.waitForFunction(() => (window as any).canalRecallGame.state === 5, null, { timeout: 30_000 });
+    await page.waitForFunction(() => !!(window as any).canalRecallGame._finishButtonBounds?.length, null, { timeout: 10_000 });
+    await page.evaluate(() => { (window as any).canalRecallGame._finishStamp = { kind: 'poi', name: 'Pathé Tuschinski Cinema', isNew: true, earned: 24, total: 120 }; (window as any).__r2.length = 0; });
+    await page.waitForTimeout(900);
+    const m = await page.evaluate(() => {
+      const g = (window as any).canalRecallGame;
+      const texts = (window as any).__r2 as Array<{ t: string; f: string; w: number }>;
+      const end = (g._finishButtonBounds as any[]).find(b => b.id === 'end');
+      const cap = texts.filter(x => /^(Reeks|Stop reeks|End run)/.test(x.t)).at(-1);
+      const stamp = texts.filter(x => /Tuschinski/.test(x.t)).at(-1);
+      return { end: end ? { w: end.w, h: end.h } : null, cap, pad: end && cap ? (end.w - cap.w) / 2 : null, stamp, runLine: g._runArrivalLine?.() ?? null };
+    });
+    console.log('R2-5 arrival', JSON.stringify(m));
+    if (SHOTS) await page.screenshot({ path: `${SHOTS}/r2-5-arrival-${process.env.R2C_BEFORE ? 'before' : 'after'}.png` });
+    expect(m.end, 'the run arrival draws an end-run button').toBeTruthy();
+    expect(m.pad, 'end-run caption keeps at least 8 px each side').toBeGreaterThanOrEqual(8);
+    expect(m.stamp, 'the stamp line was drawn').toBeTruthy();
+    expect(/\S…/.test(m.stamp!.t), `stamp line cut: ${m.stamp?.t}`).toBe(false);
+  });
+});
+
+test.describe('R2-6 desktop pause card', () => {
+  for (const language of ['en', 'nl']) {
+    test(`keycap rows fit the card (${language})`, async ({ page }, testInfo) => {
+      test.skip(testInfo.project.name !== 'desktop', 'desktop keycap rows');
+      test.setTimeout(180_000);
+      await setLanguage(page, language);
+      await serveOriginals(page);
+      await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+      await page.waitForFunction(() => typeof (window as any).canalRecallGame._raceKey === 'string', null, { timeout: 30_000 });
+      await page.evaluate(() => { (window as any).canalRecallGame._shareUrl = 'https://example.invalid/r'; });
+      await page.keyboard.press('KeyP');
+      await page.waitForTimeout(900);
+      const m = await page.evaluate(() => {
+        const g = (window as any).canalRecallGame;
+        const b = g._pauseButtonBounds as Array<{ id: string; x: number; y: number; w: number }>;
+        const left = Math.min(...b.map(x => x.x)), right = Math.max(...b.map(x => x.x + x.w));
+        const cardW = Math.min(400, g.viewport.width - 24);
+        const cx = g.viewport.width / 2;
+        return { state: g.state, buttons: b.map(x => ({ id: x.id, x: Math.round(x.x), y: Math.round(x.y), w: Math.round(x.w) })), rowLeft: left, rowRight: right, cardLeft: cx - cardW / 2 + 28, cardRight: cx + cardW / 2 - 28, cardW };
+      });
+      console.log('R2-6 pause', language, JSON.stringify(m));
+      if (SHOTS) await page.screenshot({ path: `${SHOTS}/r2-6-pause-${language}-${process.env.R2C_BEFORE ? 'before' : 'after'}.png` });
+      expect(m.buttons.length, 'the pause card drew its actions').toBe(3);
+      expect(m.rowRight, 'every keycap action ends inside the card padding').toBeLessThanOrEqual(m.cardRight + 0.5);
+      expect(m.rowLeft).toBeGreaterThanOrEqual(m.cardLeft - 0.5);
+    });
+  }
+});

@@ -292,7 +292,8 @@ test('a reload during a dealt leg of a run begun from Route setup resumes the le
 });
 
 // R2-9 (#302): a first-time guest's first ride is a bike ride on streets, not a boat on the IJ.
-test('a fresh profile\'s first ride is by bike on streets (R2-9)', async ({ page }) => {
+// Held at merge: the boat start is the user's 2026-10-22 call; the bike default waits on needs-david.
+test.skip('a fresh profile\'s first ride is by bike on streets (R2-9)', async ({ page }) => {
   test.setTimeout(240_000);
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   await useBundlesDir(page);

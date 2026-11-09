@@ -252,12 +252,11 @@ export function defaultPreferences(zoom: ZoomClamp): CanalPreferences {
     cityId: DEFAULT_CITY_ID,
     difficulty: 'medium',
     ...DIFFICULTY_PRESETS.medium,
-    // A fresh profile rides a bike on streets (R2-9, #302): Amsterdam street
-    // mode is cycling, and the landing promises "every canal and street you
-    // pass". The boat start (2026-10-22) put a first-time guest on the IJ with
-    // a typed waterway question; the boat stays one tap away in setup. Chase
-    // stays the view (cockpit is retired; setup offers the 2D and 3D views).
-    travelMode: 'car',
+    // Boat and Chase are the product start (2026-10-22, user's call; cockpit
+    // is retired and the setup View row offers the 2D and 3D views). Ride
+    // review R2-9 (#302) argued for a bike start; that reversal waits on the
+    // user (needs-david), so the boat stays.
+    travelMode: 'boat',
     controlMode: defaultControlMode(),
     viewMode: 'chase',
     themeMode: 'clean',

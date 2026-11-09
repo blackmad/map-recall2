@@ -149,454 +149,6 @@
     return inViewCone(rider, point, bandPx * APPROACH_KEEP_FACTOR, halfCone + APPROACH_KEEP_EXTRA_CONE);
   }
 
-  // src/canalRecall/answerPath.ts
-  function normaliseAnswer(value) {
-    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-  }
-
-  // src/canalRecall/game/landmarkData.ts
-  var GENERIC_BRIDGE_NAME_PATTERN = /^\s*(brug\s*)?\d+\s*$/i;
-  var NEIGHBORHOOD_KIND_RANKS = {
-    city_block: 5,
-    neighbourhood: 4,
-    neighborhood: 4,
-    quarter: 3,
-    locality: 2,
-    suburb: 1
-  };
-  function sentences(text) {
-    return text.split(/(?<=[.!?])\s/);
-  }
-  function sentencesUpTo(parts, max) {
-    let out = "";
-    for (const part of parts) {
-      const next = out ? `${out} ${part}` : part;
-      if (next.length > max) break;
-      out = next;
-    }
-    if (out || !parts.length) return out;
-    const cut = parts[0].slice(0, max - 1);
-    const space = cut.lastIndexOf(" ");
-    return `${(space > max / 2 ? cut.slice(0, space) : cut).trimEnd()}\u2026`;
-  }
-  function splitDetail(text) {
-    const parts = sentences((text || "").trim()).filter(Boolean);
-    return {
-      detail: sentencesUpTo(parts.slice(0, 1), 150),
-      longDetail: sentencesUpTo(parts.slice(0, 3), 280)
-    };
-  }
-  function pointInPolygon(x, y, ring) {
-    let inside = false;
-    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-      const a = ring[i], b = ring[j];
-      if (a.y > y !== b.y > y && x < (b.x - a.x) * (y - a.y) / (b.y - a.y) + a.x) inside = !inside;
-    }
-    return inside;
-  }
-  function ringsArea(rings) {
-    let area = 0;
-    for (const ring of rings) {
-      let twice = 0;
-      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) twice += ring[j].x * ring[i].y - ring[i].x * ring[j].y;
-      area += Math.abs(twice) / 2;
-    }
-    return area;
-  }
-  function neighborhoodAt(neighborhoods, x, y) {
-    return neighborhoods.find((hood) => hood.rings.some((ring) => pointInPolygon(x, y, ring))) || null;
-  }
-  function displayGeometry(feature, center) {
-    const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
-    const geometryFeatures = sourcePaths.filter((path) => path && path.length > 1).map((path) => {
-      const coordinates = path.map(([lat, lng]) => [lng, lat]);
-      const first = coordinates[0], last = coordinates[coordinates.length - 1];
-      const closed = coordinates.length > 3 && first[0] === last[0] && first[1] === last[1];
-      return {
-        type: "Feature",
-        properties: {},
-        geometry: closed ? { type: "Polygon", coordinates: [coordinates] } : { type: "LineString", coordinates }
-      };
-    });
-    if (!geometryFeatures.length) {
-      geometryFeatures.push({
-        type: "Feature",
-        properties: {},
-        geometry: { type: "Point", coordinates: [center[1], center[0]] }
-      });
-    }
-    return geometryFeatures;
-  }
-  function buildLandmarks(features, project) {
-    const landmarks = [];
-    for (const feature of features) {
-      const center = feature.center || feature.path && feature.path[0];
-      if (!center) continue;
-      const point = project(center[0], center[1], feature);
-      if (!point) continue;
-      const { detail, longDetail } = splitDetail(feature.funFact || feature.wikipediaExtract || "");
-      landmarks.push({
-        id: feature.id,
-        name: feature.name,
-        type: feature.type || "",
-        imageUrl: feature.wikipediaImageUrl || "",
-        x: point.x,
-        y: point.y,
-        lngLat: [center[1], center[0]],
-        detail,
-        longDetail,
-        prominenceScore: feature.prominenceScore || 0,
-        wikipediaUrl: feature.wikipediaUrl || "",
-        sourceUrl: feature.sourceUrl,
-        researchSourceUrl: feature.researchSourceUrl,
-        researchDetail: feature.researchDetail,
-        buildingIds: feature.buildingIds,
-        wikidata: feature.wikidata || "",
-        wikipedia: feature.wikipedia || "",
-        extractLang: feature.wikipediaExtractLang || "en",
-        wikipediaPageviews60d: feature.wikipediaPageviews60d,
-        wikidataSitelinks: feature.wikidataSitelinks,
-        heritage: feature.heritage,
-        wikidataInstanceOf: feature.wikidataInstanceOf,
-        geojson: { type: "FeatureCollection", features: displayGeometry(feature, center) }
-      });
-    }
-    return landmarks;
-  }
-  function isLocatorMapImage(url) {
-    if (!url) return false;
-    return /Map[_-]NL[_-]|Map_-_NL[_-]|\/Map_NL_|locator.?map|_kaart\./i.test(url);
-  }
-  function buildNeighborhoods(boundaries, enrichments, toWorld) {
-    const enrichmentByName = new Map(enrichments.map((entry) => [entry.name, entry]));
-    const neighborhoods = boundaries.filter((boundary) => boundary.geometry && NEIGHBORHOOD_KIND_RANKS[boundary.kind]).map((boundary) => {
-      const enriched = enrichmentByName.get(boundary.name);
-      const rawUrl = enriched?.imageUrl || "";
-      return {
-        name: boundary.name,
-        kind: boundary.kind,
-        rank: NEIGHBORHOOD_KIND_RANKS[boundary.kind],
-        rings: (boundary.geometry || []).map((polygon) => (polygon[0] || []).map(toWorld)).filter((ring) => ring.length > 2),
-        wikipediaExtract: enriched?.wikipediaExtract || "",
-        imageUrl: isLocatorMapImage(rawUrl) ? "" : rawUrl,
-        imageAttribution: isLocatorMapImage(rawUrl) ? "" : enriched?.imageAttribution || ""
-      };
-    }).filter((hood) => hood.rings.length).map((hood) => ({ hood, area: ringsArea(hood.rings) })).sort((a, b) => b.hood.rank - a.hood.rank || a.area - b.area).map(({ hood }) => hood);
-    for (const hood of neighborhoods) {
-      if (hood.imageUrl) continue;
-      const sample = hood.rings[0] && hood.rings[0][0];
-      if (!sample) continue;
-      const parent = neighborhoods.find((candidate) => candidate.rank < hood.rank && candidate.imageUrl && candidate.rings.some((ring) => pointInPolygon(sample.x, sample.y, ring)));
-      if (parent) {
-        hood.imageUrl = parent.imageUrl;
-        hood.imageAttribution = parent.imageAttribution;
-        hood.imageArea = parent.name;
-      }
-    }
-    return neighborhoods;
-  }
-  var CROSSING_WATER_LINE_METERS = 90;
-  function crossingWaterLines(waters, waterway, center, toWorld, radiusMeters = CROSSING_WATER_LINE_METERS) {
-    const lines = [];
-    const mLat = 111320;
-    const mLng = 111320 * Math.cos(center[0] * Math.PI / 180);
-    const local = ([lat, lng]) => ({ x: (lng - center[1]) * mLng, y: (lat - center[0]) * mLat });
-    for (const water of waters) {
-      if (water.name !== waterway) continue;
-      for (const path of water.paths || (water.path ? [water.path] : [])) {
-        for (let i = 1; i < (path || []).length; i++) {
-          const a = local(path[i - 1]), b = local(path[i]);
-          const dx = b.x - a.x, dy = b.y - a.y;
-          const len2 = dx * dx + dy * dy;
-          const t2 = len2 ? Math.max(0, Math.min(1, -(a.x * dx + a.y * dy) / len2)) : 0;
-          if (Math.hypot(a.x + dx * t2, a.y + dy * t2) > radiusMeters) continue;
-          lines.push([toWorld(path[i - 1]), toWorld(path[i])]);
-        }
-      }
-    }
-    return lines;
-  }
-  function buildBridges(features, crossingIndex, toWorld, waters = []) {
-    const bridges = [];
-    for (const feature of features) {
-      const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
-      const lines = sourcePaths.map((path) => (path || []).map(toWorld)).filter((line) => line.length > 1);
-      if (!feature.name || lines.length === 0 || GENERIC_BRIDGE_NAME_PATTERN.test(feature.name)) continue;
-      if (feature.carriesRailway && !feature.carriesRoad) continue;
-      const published = (crossingIndex.bridges || {})[feature.id];
-      let source;
-      if (published && published.length) {
-        source = published;
-      } else if (feature.center) {
-        source = [{
-          index: 0,
-          center: feature.center,
-          waterway: null,
-          waterwayType: null,
-          waterDistractors: [],
-          spans: lines.length
-        }];
-      } else {
-        continue;
-      }
-      bridges.push({
-        id: feature.id,
-        name: feature.name,
-        ...feature.displayName ? { displayName: feature.displayName } : {},
-        lines,
-        crossings: source.map((crossing) => {
-          const waterLines = crossing.waterway && waters.length ? crossingWaterLines(waters, crossing.waterway, crossing.center, toWorld) : [];
-          return { ...crossing, ...toWorld(crossing.center), ...waterLines.length ? { waterLines } : {} };
-        }),
-        distractors: (feature.distractors || []).filter((name) => !GENERIC_BRIDGE_NAME_PATTERN.test(name)),
-        wikipediaUrl: feature.wikipediaUrl || "",
-        detail: splitDetail(feature.wikipediaExtract).detail
-      });
-    }
-    return bridges;
-  }
-  function isWorthACard(landmark) {
-    return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
-  }
-
-  // src/canalRecall/clickPoiInfo.ts
-  function validPoiWebsite(value) {
-    if (typeof value !== "string" || !value.trim()) return "";
-    try {
-      const url = new URL(/^[a-z]+:/i.test(value.trim()) ? value.trim() : `https://${value.trim()}`);
-      return /^(https?:)$/.test(url.protocol) && url.hostname.includes(".") && !url.username && !url.password ? url.href : "";
-    } catch {
-      return "";
-    }
-  }
-  function inRing(point, ring) {
-    let inside = false;
-    const [x, y] = point;
-    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-      const [ax, ay] = ring[j], [bx, by] = ring[i];
-      const cross = (x - ax) * (by - ay) - (y - ay) * (bx - ax);
-      if (Math.abs(cross) < 1e-14 && x >= Math.min(ax, bx) && x <= Math.max(ax, bx) && y >= Math.min(ay, by) && y <= Math.max(ay, by)) return true;
-      if (ay > y !== by > y && x < (bx - ax) * (y - ay) / (by - ay) + ax) inside = !inside;
-    }
-    return inside;
-  }
-  function poiInsideBuilding(point, geometry) {
-    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
-    return polygons.some((rings) => rings.length && inRing(point, rings[0]) && !rings.slice(1).some((hole) => inRing(point, hole)));
-  }
-  var normalName = (name) => (name || "").normalize("NFC").toLocaleLowerCase("nl").trim();
-  var osmUrl = (id) => `https://www.openstreetmap.org/${{ n: "node", w: "way", r: "relation" }[id[0]]}/${id.slice(1)}`;
-  var cell = (lng, lat) => `${Math.floor(lng * 1e3)}/${Math.floor(lat * 1e3)}`;
-  var ClickPoiIndex = class {
-    cells = /* @__PURE__ */ new Map();
-    rows = [];
-    constructor(file) {
-      if (file?.version !== 1 || !Array.isArray(file.points)) return;
-      for (const row of file.points) {
-        if (!Array.isArray(row) || !/^[nwr]\d+$/.test(row[0]) || !row[1] || !Number.isFinite(row[2]) || !Number.isFinite(row[3])) continue;
-        this.rows.push(row);
-        const key = cell(row[2], row[3]);
-        const group = this.cells.get(key) ?? [];
-        group.push(row);
-        this.cells.set(key, group);
-      }
-    }
-    contained(geometry) {
-      const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
-      const outer = polygons.flatMap((rings) => rings[0] ?? []);
-      if (!outer.length) return [];
-      const xs = outer.map((p) => Math.floor(p[0] * 1e3)), ys = outer.map((p) => Math.floor(p[1] * 1e3));
-      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
-      const candidates = [];
-      if ((maxX - minX + 1) * (maxY - minY + 1) > 2e3) candidates.push(...this.rows);
-      else for (let x = minX; x <= maxX; x++) for (let y = minY; y <= maxY; y++) candidates.push(...this.cells.get(`${x}/${y}`) ?? []);
-      const found = candidates.filter((row) => poiInsideBuilding([row[2], row[3]], geometry)).sort((a, b) => Number(!!b[8]) - Number(!!a[8]) || Number(!!b[7]) - Number(!!a[7]) || a[0].localeCompare(b[0]));
-      const seen = /* @__PURE__ */ new Set();
-      return found.filter((row) => {
-        const key = normalName(row[1]);
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      });
-    }
-    /**
-     * The mapped place a drawn POI label stands for: the same name, nearest to
-     * the label's point and within `maxMetres`. A tap on a label carries only
-     * its text and point (labelLayer.ts hitTest), no footprint, so `contained`
-     * cannot answer it (user shot 2026-11-08, the Sloterdijk gurdwara).
-     */
-    named(name, lngLat, maxMetres = 60) {
-      const key = normalName(name);
-      if (!key || !lngLat || !Number.isFinite(lngLat[0]) || !Number.isFinite(lngLat[1])) return null;
-      const [lng, lat] = lngLat;
-      const cx = Math.floor(lng * 1e3), cy = Math.floor(lat * 1e3);
-      const mx = 111320 * Math.cos(lat * Math.PI / 180), my = 110540;
-      let best = null, bestM = maxMetres;
-      for (let x = cx - 1; x <= cx + 1; x++) for (let y = cy - 1; y <= cy + 1; y++) {
-        for (const row of this.cells.get(`${x}/${y}`) ?? []) {
-          if (normalName(row[1]) !== key) continue;
-          const metres = Math.hypot((row[2] - lng) * mx, (row[3] - lat) * my);
-          if (metres <= bestM) {
-            best = row;
-            bestM = metres;
-          }
-        }
-      }
-      return best;
-    }
-    card(building) {
-      if (!building.footprint) return null;
-      const places = this.contained(building.footprint);
-      if (!places.length) return null;
-      const title = places.findIndex((row) => row[1] === building.name || row[5] === "a mall");
-      if (title > 0) places.unshift(...places.splice(title, 1));
-      const summaries = places.slice(0, 8).map((row) => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ""}.` + (row[8] ? ` ${row[8]}` : ""));
-      const paragraphs = summaries.map((summary, i) => summary + (validPoiWebsite(places[i][7]) ? `
-Website: ${validPoiWebsite(places[i][7])}` : "") + `
-Map source: ${osmUrl(places[i][0])}`);
-      const first = places[0];
-      return {
-        id: `clicked-poi-${building.id}`,
-        name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
-        type: first[4],
-        detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ""}.`,
-        longDetail: summaries.join("\n\n"),
-        factTexts: paragraphs,
-        sourceUrl: osmUrl(first[0]),
-        lngLat: [first[2], first[3]],
-        featureTarget: building.featureTarget
-      };
-    }
-  };
-
-  // src/canalRecall/game/landmarkNotice.ts
-  var DEFAULT_NOTICE_CONFIG = {
-    exitRadius: 480,
-    minSeconds: 6,
-    fadeSeconds: 0.8
-  };
-  function openNotice() {
-    return { elapsed: 0, fadeRemaining: null };
-  }
-  function clamp01(value) {
-    return value < 0 ? 0 : value > 1 ? 1 : value;
-  }
-  function advanceNotice(state, hold, playerPosition, dt, config = DEFAULT_NOTICE_CONFIG) {
-    const elapsed = state.elapsed + dt;
-    let held;
-    switch (hold.kind) {
-      case "sticky":
-        held = true;
-        break;
-      case "timed":
-        held = elapsed < hold.seconds;
-        break;
-      case "proximity": {
-        if (!playerPosition) {
-          held = true;
-          break;
-        }
-        const distance = Math.hypot(hold.anchor.x - playerPosition.x, hold.anchor.y - playerPosition.y);
-        held = distance <= config.exitRadius || elapsed < config.minSeconds;
-        break;
-      }
-    }
-    const fadeRemaining = held ? null : (state.fadeRemaining === null ? config.fadeSeconds : state.fadeRemaining) - dt;
-    const next = { elapsed, fadeRemaining };
-    const fadeIn = clamp01(elapsed / config.fadeSeconds);
-    const fadeOut = fadeRemaining === null ? 1 : clamp01(fadeRemaining / config.fadeSeconds);
-    return {
-      state: next,
-      alpha: Math.min(fadeIn, fadeOut),
-      visible: fadeRemaining === null || fadeRemaining > 0
-    };
-  }
-
-  // src/canalRecall/facts/factRotation.ts
-  function emptyRotationState() {
-    return { history: {}, shown: 0, recentKinds: [] };
-  }
-  var RECENT_KIND_MEMORY = 3;
-  function factKey(featureId, fact) {
-    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
-    let hash = 2166136261;
-    for (let index = 0; index < normalised.length; index++) {
-      hash ^= normalised.charCodeAt(index);
-      hash = Math.imul(hash, 16777619);
-    }
-    return `${featureId}:${(hash >>> 0).toString(36)}`;
-  }
-  var KIND_APPEAL = {
-    surprise: 5,
-    naming: 4,
-    culture: 3,
-    people: 3,
-    history: 2,
-    design: 1
-  };
-  function chooseFact(featureId, facts, state) {
-    if (!facts.length) return null;
-    const scored = facts.map((fact) => {
-      const key = factKey(featureId, fact);
-      const lastShown = state.history[key];
-      const seen = lastShown !== void 0;
-      const recency = state.recentKinds.indexOf(fact.kind);
-      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
-      return {
-        fact,
-        key,
-        seen,
-        lastShown: lastShown ?? -1,
-        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
-      };
-    });
-    scored.sort((a, b) => (
-      // Unseen first; then among seen, the one shown longest ago; then appeal.
-      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
-    ));
-    const best = scored[0];
-    return { fact: best.fact, key: best.key, repeat: best.seen };
-  }
-  function recordShown(state, choice) {
-    const shown = state.shown + 1;
-    return {
-      history: { ...state.history, [choice.key]: shown },
-      shown,
-      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
-    };
-  }
-  function expandedFacts(facts, shownText, limit = 3) {
-    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
-  }
-  function pruneHistory(state, maxEntries = 4e3) {
-    const entries = Object.entries(state.history);
-    if (entries.length <= maxEntries) return state;
-    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
-    return { ...state, history: Object.fromEntries(kept) };
-  }
-
-  // src/canalRecall/facts/factQuality.ts
-  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
-  var LEDE_RESTATEMENT = new RegExp(
-    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
-    "i"
-  );
-  var FILLER_CLAUSE = new RegExp(
-    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
-    "i"
-  );
-  function words(text) {
-    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
-  }
-  function similarity(a, b) {
-    const left = new Set(words(a));
-    const right = new Set(words(b));
-    if (!left.size || !right.size) return 0;
-    let shared2 = 0;
-    for (const word of left) if (right.has(word)) shared2++;
-    return shared2 / Math.min(left.size, right.size);
-  }
-
   // src/i18n/messages/en.ts
   var en = {
     // --- Language switch ------------------------------------------------------
@@ -995,6 +547,17 @@ Map source: ${osmUrl(places[i][0])}`);
     "mission.warmUp": "Warm up with one overdue name",
     "mission.arrive": "Arrive knowing more of {city}",
     // --- Map Quest quiz ------------------------------------------------------
+    // Answer feedback (R2-2, #303): answerPath.ts composes these.
+    "answer.passed": "Passed \u2014 that was {name}",
+    "answer.silentPass": "That was {name}",
+    "answer.reveal": "This is {name}",
+    "answer.wrong": "Not quite \u2014 this is {name}",
+    "answer.correct": "Correct \u2014 {name}",
+    "answer.correctPoints": "Correct \u2014 {name}  (+{points} pts)",
+    "answer.correctNewCycle": "Correct \u2014 {name}  (+{points} pts \xB7 new name + cycle track bonus)",
+    "answer.correctNew": "Correct \u2014 {name}  (+{points} pts \xB7 new name bonus)",
+    "answer.correctCycle": "Correct \u2014 {name}  (+{points} pts \xB7 cycle track bonus)",
+    "answer.correctStreak": "Correct \u2014 {name}  (+{points} pts \xB7 {streak} in a row)",
     "quiz.pinpoint": "Pinpoint",
     "quiz.pinpointHint": "Place the named feature on the map",
     "quiz.guessName": "Guess Name",
@@ -1237,6 +800,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.arrival.cityKnowledge": "CITY KNOWLEDGE",
     "ride.arrival.firstTime": "+{bits} first-time",
     "ride.endRun": "End run",
+    "ride.endRunShort": "End run",
     "ride.newRun": "New run",
     "ride.stat.time": "Time",
     "ride.stat.distance": "Distance",
@@ -1747,6 +1311,17 @@ Map source: ${osmUrl(places[i][0])}`);
     "mission.warmUp": "Warm op met \xE9\xE9n naam die te laat is",
     "mission.arrive": "Kom aan met meer kennis van {city}",
     // --- Map Quest-quiz ------------------------------------------------------
+    // Antwoordfeedback (R2-2, #303).
+    "answer.passed": "Voorbij \u2014 dat was {name}",
+    "answer.silentPass": "Dat was {name}",
+    "answer.reveal": "Dit is {name}",
+    "answer.wrong": "Niet helemaal \u2014 dit is {name}",
+    "answer.correct": "Goed \u2014 {name}",
+    "answer.correctPoints": "Goed \u2014 {name}  (+{points} pnt)",
+    "answer.correctNewCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam + fietspad)",
+    "answer.correctNew": "Goed \u2014 {name}  (+{points} pnt \xB7 bonus nieuwe naam)",
+    "answer.correctCycle": "Goed \u2014 {name}  (+{points} pnt \xB7 fietspadbonus)",
+    "answer.correctStreak": "Goed \u2014 {name}  (+{points} pnt \xB7 {streak} op rij)",
     "quiz.pinpoint": "Aanwijzen",
     "quiz.pinpointHint": "Zet de genoemde plek op de kaart",
     "quiz.guessName": "Naam raden",
@@ -1989,6 +1564,7 @@ Map source: ${osmUrl(places[i][0])}`);
     "ride.arrival.cityKnowledge": "KENNIS VAN DE STAD",
     "ride.arrival.firstTime": "+{bits} voor het eerst",
     "ride.endRun": "Reeks be\xEBindigen",
+    "ride.endRunShort": "Stop reeks",
     "ride.newRun": "Nieuwe reeks",
     "ride.stat.time": "Tijd",
     "ride.stat.distance": "Afstand",
@@ -2163,6 +1739,454 @@ Map source: ${osmUrl(places[i][0])}`);
       return String(key);
     }
     return fill(template, params);
+  }
+
+  // src/canalRecall/answerPath.ts
+  function normaliseAnswer(value) {
+    return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+
+  // src/canalRecall/game/landmarkData.ts
+  var GENERIC_BRIDGE_NAME_PATTERN = /^\s*(brug\s*)?\d+\s*$/i;
+  var NEIGHBORHOOD_KIND_RANKS = {
+    city_block: 5,
+    neighbourhood: 4,
+    neighborhood: 4,
+    quarter: 3,
+    locality: 2,
+    suburb: 1
+  };
+  function sentences(text) {
+    return text.split(/(?<=[.!?])\s/);
+  }
+  function sentencesUpTo(parts, max) {
+    let out = "";
+    for (const part of parts) {
+      const next = out ? `${out} ${part}` : part;
+      if (next.length > max) break;
+      out = next;
+    }
+    if (out || !parts.length) return out;
+    const cut = parts[0].slice(0, max - 1);
+    const space = cut.lastIndexOf(" ");
+    return `${(space > max / 2 ? cut.slice(0, space) : cut).trimEnd()}\u2026`;
+  }
+  function splitDetail(text) {
+    const parts = sentences((text || "").trim()).filter(Boolean);
+    return {
+      detail: sentencesUpTo(parts.slice(0, 1), 150),
+      longDetail: sentencesUpTo(parts.slice(0, 3), 280)
+    };
+  }
+  function pointInPolygon(x, y, ring) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const a = ring[i], b = ring[j];
+      if (a.y > y !== b.y > y && x < (b.x - a.x) * (y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+    }
+    return inside;
+  }
+  function ringsArea(rings) {
+    let area = 0;
+    for (const ring of rings) {
+      let twice = 0;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) twice += ring[j].x * ring[i].y - ring[i].x * ring[j].y;
+      area += Math.abs(twice) / 2;
+    }
+    return area;
+  }
+  function neighborhoodAt(neighborhoods, x, y) {
+    return neighborhoods.find((hood) => hood.rings.some((ring) => pointInPolygon(x, y, ring))) || null;
+  }
+  function displayGeometry(feature, center) {
+    const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
+    const geometryFeatures = sourcePaths.filter((path) => path && path.length > 1).map((path) => {
+      const coordinates = path.map(([lat, lng]) => [lng, lat]);
+      const first = coordinates[0], last = coordinates[coordinates.length - 1];
+      const closed = coordinates.length > 3 && first[0] === last[0] && first[1] === last[1];
+      return {
+        type: "Feature",
+        properties: {},
+        geometry: closed ? { type: "Polygon", coordinates: [coordinates] } : { type: "LineString", coordinates }
+      };
+    });
+    if (!geometryFeatures.length) {
+      geometryFeatures.push({
+        type: "Feature",
+        properties: {},
+        geometry: { type: "Point", coordinates: [center[1], center[0]] }
+      });
+    }
+    return geometryFeatures;
+  }
+  function buildLandmarks(features, project) {
+    const landmarks = [];
+    for (const feature of features) {
+      const center = feature.center || feature.path && feature.path[0];
+      if (!center) continue;
+      const point = project(center[0], center[1], feature);
+      if (!point) continue;
+      const { detail, longDetail } = splitDetail(feature.funFact || feature.wikipediaExtract || "");
+      landmarks.push({
+        id: feature.id,
+        name: feature.name,
+        type: feature.type || "",
+        imageUrl: feature.wikipediaImageUrl || "",
+        x: point.x,
+        y: point.y,
+        lngLat: [center[1], center[0]],
+        detail,
+        longDetail,
+        prominenceScore: feature.prominenceScore || 0,
+        wikipediaUrl: feature.wikipediaUrl || "",
+        sourceUrl: feature.sourceUrl,
+        researchSourceUrl: feature.researchSourceUrl,
+        researchDetail: feature.researchDetail,
+        buildingIds: feature.buildingIds,
+        wikidata: feature.wikidata || "",
+        wikipedia: feature.wikipedia || "",
+        extractLang: feature.wikipediaExtractLang || "en",
+        wikipediaPageviews60d: feature.wikipediaPageviews60d,
+        wikidataSitelinks: feature.wikidataSitelinks,
+        heritage: feature.heritage,
+        wikidataInstanceOf: feature.wikidataInstanceOf,
+        geojson: { type: "FeatureCollection", features: displayGeometry(feature, center) }
+      });
+    }
+    return landmarks;
+  }
+  function isLocatorMapImage(url) {
+    if (!url) return false;
+    return /Map[_-]NL[_-]|Map_-_NL[_-]|\/Map_NL_|locator.?map|_kaart\./i.test(url);
+  }
+  function buildNeighborhoods(boundaries, enrichments, toWorld) {
+    const enrichmentByName = new Map(enrichments.map((entry) => [entry.name, entry]));
+    const neighborhoods = boundaries.filter((boundary) => boundary.geometry && NEIGHBORHOOD_KIND_RANKS[boundary.kind]).map((boundary) => {
+      const enriched = enrichmentByName.get(boundary.name);
+      const rawUrl = enriched?.imageUrl || "";
+      return {
+        name: boundary.name,
+        kind: boundary.kind,
+        rank: NEIGHBORHOOD_KIND_RANKS[boundary.kind],
+        rings: (boundary.geometry || []).map((polygon) => (polygon[0] || []).map(toWorld)).filter((ring) => ring.length > 2),
+        wikipediaExtract: enriched?.wikipediaExtract || "",
+        imageUrl: isLocatorMapImage(rawUrl) ? "" : rawUrl,
+        imageAttribution: isLocatorMapImage(rawUrl) ? "" : enriched?.imageAttribution || ""
+      };
+    }).filter((hood) => hood.rings.length).map((hood) => ({ hood, area: ringsArea(hood.rings) })).sort((a, b) => b.hood.rank - a.hood.rank || a.area - b.area).map(({ hood }) => hood);
+    for (const hood of neighborhoods) {
+      if (hood.imageUrl) continue;
+      const sample = hood.rings[0] && hood.rings[0][0];
+      if (!sample) continue;
+      const parent = neighborhoods.find((candidate) => candidate.rank < hood.rank && candidate.imageUrl && candidate.rings.some((ring) => pointInPolygon(sample.x, sample.y, ring)));
+      if (parent) {
+        hood.imageUrl = parent.imageUrl;
+        hood.imageAttribution = parent.imageAttribution;
+        hood.imageArea = parent.name;
+      }
+    }
+    return neighborhoods;
+  }
+  var CROSSING_WATER_LINE_METERS = 90;
+  function crossingWaterLines(waters, waterway, center, toWorld, radiusMeters = CROSSING_WATER_LINE_METERS) {
+    const lines = [];
+    const mLat = 111320;
+    const mLng = 111320 * Math.cos(center[0] * Math.PI / 180);
+    const local = ([lat, lng]) => ({ x: (lng - center[1]) * mLng, y: (lat - center[0]) * mLat });
+    for (const water of waters) {
+      if (water.name !== waterway) continue;
+      for (const path of water.paths || (water.path ? [water.path] : [])) {
+        for (let i = 1; i < (path || []).length; i++) {
+          const a = local(path[i - 1]), b = local(path[i]);
+          const dx = b.x - a.x, dy = b.y - a.y;
+          const len2 = dx * dx + dy * dy;
+          const t2 = len2 ? Math.max(0, Math.min(1, -(a.x * dx + a.y * dy) / len2)) : 0;
+          if (Math.hypot(a.x + dx * t2, a.y + dy * t2) > radiusMeters) continue;
+          lines.push([toWorld(path[i - 1]), toWorld(path[i])]);
+        }
+      }
+    }
+    return lines;
+  }
+  function buildBridges(features, crossingIndex, toWorld, waters = []) {
+    const bridges = [];
+    for (const feature of features) {
+      const sourcePaths = feature.paths || (feature.path ? [feature.path] : []);
+      const lines = sourcePaths.map((path) => (path || []).map(toWorld)).filter((line) => line.length > 1);
+      if (!feature.name || lines.length === 0 || GENERIC_BRIDGE_NAME_PATTERN.test(feature.name)) continue;
+      if (feature.carriesRailway && !feature.carriesRoad) continue;
+      const published = (crossingIndex.bridges || {})[feature.id];
+      let source;
+      if (published && published.length) {
+        source = published;
+      } else if (feature.center) {
+        source = [{
+          index: 0,
+          center: feature.center,
+          waterway: null,
+          waterwayType: null,
+          waterDistractors: [],
+          spans: lines.length
+        }];
+      } else {
+        continue;
+      }
+      bridges.push({
+        id: feature.id,
+        name: feature.name,
+        ...feature.displayName ? { displayName: feature.displayName } : {},
+        lines,
+        crossings: source.map((crossing) => {
+          const waterLines = crossing.waterway && waters.length ? crossingWaterLines(waters, crossing.waterway, crossing.center, toWorld) : [];
+          return { ...crossing, ...toWorld(crossing.center), ...waterLines.length ? { waterLines } : {} };
+        }),
+        distractors: (feature.distractors || []).filter((name) => !GENERIC_BRIDGE_NAME_PATTERN.test(name)),
+        wikipediaUrl: feature.wikipediaUrl || "",
+        detail: splitDetail(feature.wikipediaExtract).detail
+      });
+    }
+    return bridges;
+  }
+  function isWorthACard(landmark) {
+    return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
+  }
+
+  // src/canalRecall/clickPoiInfo.ts
+  function validPoiWebsite(value) {
+    if (typeof value !== "string" || !value.trim()) return "";
+    try {
+      const url = new URL(/^[a-z]+:/i.test(value.trim()) ? value.trim() : `https://${value.trim()}`);
+      return /^(https?:)$/.test(url.protocol) && url.hostname.includes(".") && !url.username && !url.password ? url.href : "";
+    } catch {
+      return "";
+    }
+  }
+  function inRing(point, ring) {
+    let inside = false;
+    const [x, y] = point;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [ax, ay] = ring[j], [bx, by] = ring[i];
+      const cross = (x - ax) * (by - ay) - (y - ay) * (bx - ax);
+      if (Math.abs(cross) < 1e-14 && x >= Math.min(ax, bx) && x <= Math.max(ax, bx) && y >= Math.min(ay, by) && y <= Math.max(ay, by)) return true;
+      if (ay > y !== by > y && x < (bx - ax) * (y - ay) / (by - ay) + ax) inside = !inside;
+    }
+    return inside;
+  }
+  function poiInsideBuilding(point, geometry) {
+    const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+    return polygons.some((rings) => rings.length && inRing(point, rings[0]) && !rings.slice(1).some((hole) => inRing(point, hole)));
+  }
+  var normalName = (name) => (name || "").normalize("NFC").toLocaleLowerCase("nl").trim();
+  var osmUrl = (id) => `https://www.openstreetmap.org/${{ n: "node", w: "way", r: "relation" }[id[0]]}/${id.slice(1)}`;
+  var cell = (lng, lat) => `${Math.floor(lng * 1e3)}/${Math.floor(lat * 1e3)}`;
+  var ClickPoiIndex = class {
+    cells = /* @__PURE__ */ new Map();
+    rows = [];
+    constructor(file) {
+      if (file?.version !== 1 || !Array.isArray(file.points)) return;
+      for (const row of file.points) {
+        if (!Array.isArray(row) || !/^[nwr]\d+$/.test(row[0]) || !row[1] || !Number.isFinite(row[2]) || !Number.isFinite(row[3])) continue;
+        this.rows.push(row);
+        const key = cell(row[2], row[3]);
+        const group = this.cells.get(key) ?? [];
+        group.push(row);
+        this.cells.set(key, group);
+      }
+    }
+    contained(geometry) {
+      const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+      const outer = polygons.flatMap((rings) => rings[0] ?? []);
+      if (!outer.length) return [];
+      const xs = outer.map((p) => Math.floor(p[0] * 1e3)), ys = outer.map((p) => Math.floor(p[1] * 1e3));
+      const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+      const candidates = [];
+      if ((maxX - minX + 1) * (maxY - minY + 1) > 2e3) candidates.push(...this.rows);
+      else for (let x = minX; x <= maxX; x++) for (let y = minY; y <= maxY; y++) candidates.push(...this.cells.get(`${x}/${y}`) ?? []);
+      const found = candidates.filter((row) => poiInsideBuilding([row[2], row[3]], geometry)).sort((a, b) => Number(!!b[8]) - Number(!!a[8]) || Number(!!b[7]) - Number(!!a[7]) || a[0].localeCompare(b[0]));
+      const seen = /* @__PURE__ */ new Set();
+      return found.filter((row) => {
+        const key = normalName(row[1]);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+    /**
+     * The mapped place a drawn POI label stands for: the same name, nearest to
+     * the label's point and within `maxMetres`. A tap on a label carries only
+     * its text and point (labelLayer.ts hitTest), no footprint, so `contained`
+     * cannot answer it (user shot 2026-11-08, the Sloterdijk gurdwara).
+     */
+    named(name, lngLat, maxMetres = 60) {
+      const key = normalName(name);
+      if (!key || !lngLat || !Number.isFinite(lngLat[0]) || !Number.isFinite(lngLat[1])) return null;
+      const [lng, lat] = lngLat;
+      const cx = Math.floor(lng * 1e3), cy = Math.floor(lat * 1e3);
+      const mx = 111320 * Math.cos(lat * Math.PI / 180), my = 110540;
+      let best = null, bestM = maxMetres;
+      for (let x = cx - 1; x <= cx + 1; x++) for (let y = cy - 1; y <= cy + 1; y++) {
+        for (const row of this.cells.get(`${x}/${y}`) ?? []) {
+          if (normalName(row[1]) !== key) continue;
+          const metres = Math.hypot((row[2] - lng) * mx, (row[3] - lat) * my);
+          if (metres <= bestM) {
+            best = row;
+            bestM = metres;
+          }
+        }
+      }
+      return best;
+    }
+    card(building) {
+      if (!building.footprint) return null;
+      const places = this.contained(building.footprint);
+      if (!places.length) return null;
+      const title = places.findIndex((row) => row[1] === building.name || row[5] === "a mall");
+      if (title > 0) places.unshift(...places.splice(title, 1));
+      const summaries = places.slice(0, 8).map((row) => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ""}.` + (row[8] ? ` ${row[8]}` : ""));
+      const paragraphs = summaries.map((summary, i) => summary + (validPoiWebsite(places[i][7]) ? `
+Website: ${validPoiWebsite(places[i][7])}` : "") + `
+Map source: ${osmUrl(places[i][0])}`);
+      const first = places[0];
+      return {
+        id: `clicked-poi-${building.id}`,
+        name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
+        type: first[4],
+        detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ""}.`,
+        longDetail: summaries.join("\n\n"),
+        factTexts: paragraphs,
+        sourceUrl: osmUrl(first[0]),
+        lngLat: [first[2], first[3]],
+        featureTarget: building.featureTarget
+      };
+    }
+  };
+
+  // src/canalRecall/game/landmarkNotice.ts
+  var DEFAULT_NOTICE_CONFIG = {
+    exitRadius: 480,
+    minSeconds: 6,
+    fadeSeconds: 0.8
+  };
+  function openNotice() {
+    return { elapsed: 0, fadeRemaining: null };
+  }
+  function clamp01(value) {
+    return value < 0 ? 0 : value > 1 ? 1 : value;
+  }
+  function advanceNotice(state, hold, playerPosition, dt, config = DEFAULT_NOTICE_CONFIG) {
+    const elapsed = state.elapsed + dt;
+    let held;
+    switch (hold.kind) {
+      case "sticky":
+        held = true;
+        break;
+      case "timed":
+        held = elapsed < hold.seconds;
+        break;
+      case "proximity": {
+        if (!playerPosition) {
+          held = true;
+          break;
+        }
+        const distance = Math.hypot(hold.anchor.x - playerPosition.x, hold.anchor.y - playerPosition.y);
+        held = distance <= config.exitRadius || elapsed < config.minSeconds;
+        break;
+      }
+    }
+    const fadeRemaining = held ? null : (state.fadeRemaining === null ? config.fadeSeconds : state.fadeRemaining) - dt;
+    const next = { elapsed, fadeRemaining };
+    const fadeIn = clamp01(elapsed / config.fadeSeconds);
+    const fadeOut = fadeRemaining === null ? 1 : clamp01(fadeRemaining / config.fadeSeconds);
+    return {
+      state: next,
+      alpha: Math.min(fadeIn, fadeOut),
+      visible: fadeRemaining === null || fadeRemaining > 0
+    };
+  }
+
+  // src/canalRecall/facts/factRotation.ts
+  function emptyRotationState() {
+    return { history: {}, shown: 0, recentKinds: [] };
+  }
+  var RECENT_KIND_MEMORY = 3;
+  function factKey(featureId, fact) {
+    const normalised = fact.text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "");
+    let hash = 2166136261;
+    for (let index = 0; index < normalised.length; index++) {
+      hash ^= normalised.charCodeAt(index);
+      hash = Math.imul(hash, 16777619);
+    }
+    return `${featureId}:${(hash >>> 0).toString(36)}`;
+  }
+  var KIND_APPEAL = {
+    surprise: 5,
+    naming: 4,
+    culture: 3,
+    people: 3,
+    history: 2,
+    design: 1
+  };
+  function chooseFact(featureId, facts, state) {
+    if (!facts.length) return null;
+    const scored = facts.map((fact) => {
+      const key = factKey(featureId, fact);
+      const lastShown = state.history[key];
+      const seen = lastShown !== void 0;
+      const recency = state.recentKinds.indexOf(fact.kind);
+      const kindPenalty = recency < 0 ? 0 : (RECENT_KIND_MEMORY - recency) * 2;
+      return {
+        fact,
+        key,
+        seen,
+        lastShown: lastShown ?? -1,
+        score: (seen ? 0 : 100) + KIND_APPEAL[fact.kind] - kindPenalty
+      };
+    });
+    scored.sort((a, b) => (
+      // Unseen first; then among seen, the one shown longest ago; then appeal.
+      Number(b.score > 0 && !b.seen) - Number(a.score > 0 && !a.seen) || (a.seen && b.seen ? a.lastShown - b.lastShown : 0) || b.score - a.score
+    ));
+    const best = scored[0];
+    return { fact: best.fact, key: best.key, repeat: best.seen };
+  }
+  function recordShown(state, choice) {
+    const shown = state.shown + 1;
+    return {
+      history: { ...state.history, [choice.key]: shown },
+      shown,
+      recentKinds: [choice.fact.kind, ...state.recentKinds].slice(0, RECENT_KIND_MEMORY)
+    };
+  }
+  function expandedFacts(facts, shownText, limit = 3) {
+    return facts.filter((fact) => fact.text !== shownText).slice().sort((a, b) => KIND_APPEAL[b.kind] - KIND_APPEAL[a.kind]).slice(0, limit);
+  }
+  function pruneHistory(state, maxEntries = 4e3) {
+    const entries = Object.entries(state.history);
+    if (entries.length <= maxEntries) return state;
+    const kept = entries.sort((a, b) => b[1] - a[1]).slice(0, maxEntries);
+    return { ...state, history: Object.fromEntries(kept) };
+  }
+
+  // src/canalRecall/facts/factQuality.ts
+  var CATEGORY_WORDS = "bridge|street|canal|park|square|church|museum|building|monument|neighbourhood|neighborhood|district|area|tower|gate|house|hotel|theatre|theater|station|market|island|quay|harbour|harbor|cemetery|garden|school|university|synagogue|mosque|windmill|lock|sluice|library|hall|palace|mill|club|stadium|arena|prison|hospital|brewery|factory|chapel|gallery|zoo|dock|street|lane|road|avenue|tunnel|fountain|statue";
+  var LEDE_RESTATEMENT = new RegExp(
+    `^\\s*(the\\s+)?[^.]{2,60}?\\s+(is|was)\\s+(a|an|the)\\s+(\\w+[- ]){0,3}(${CATEGORY_WORDS})\\b[^.]{0,40}\\b(in|of|on|near|at|situated at|located at)\\s+(the\\s+)?[A-Z0-9][^.]{0,40}\\.?\\s*$`,
+    "i"
+  );
+  var FILLER_CLAUSE = new RegExp(
+    "\\s*,\\s+(?:(?:marking|showcasing|highlighting|demonstrating|reflecting|contributing|offering|underscoring|emphasi[sz]ing|solidifying|cementing|symboli[sz]ing|illustrating|making it|cementing its)\\b[^,]*|(?:a|an|the)\\s+(?:\\w+\\s+){0,2}(?:striking|significant|notable|remarkable|hidden|unique|key|major|important|impressive|beloved|popular)\\s+(?:\\w+\\s+){0,2}(?:feature|milestone|achievement|aspect|element|landmark|detail|addition|space|example|part|symbol|sight)[^,]*)\\s*\\.?\\s*$",
+    "i"
+  );
+  function words(text) {
+    return text.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+  }
+  function similarity(a, b) {
+    const left = new Set(words(a));
+    const right = new Set(words(b));
+    if (!left.size || !right.size) return 0;
+    let shared2 = 0;
+    for (const word of left) if (right.has(word)) shared2++;
+    return shared2 / Math.min(left.size, right.size);
   }
 
   // src/canalRecall/facts/factTypes.ts
@@ -6639,6 +6663,95 @@ ${register}` : detail,
     return sinceEvent(now, lastShownAt) >= DRIVE_BY_MIN_GAP_SECONDS;
   }
 
+  // src/canalRecall/game/landmarkNamesNl.ts
+  var LANDMARK_NAMES_NL = Object.freeze({
+    "Anne Frank House": "Anne Frank Huis",
+    "Auschwitz Memorial": "Auschwitzmonument",
+    "Berlage's Stock Market": "Beurs van Berlage",
+    "Buchenwald Memorial": "Buchenwaldmonument",
+    "Dutch Resistance Museum": "Verzetsmuseum",
+    "English Reformed Church": "Engelse Hervormde Kerk",
+    "Equestrian statue of Queen Wilhelmina": "Ruiterstandbeeld koningin Wilhelmina",
+    "Gerard Dou Synagogue": "Synagoge Gerard Doustraat",
+    "International Institute of Social History": "Internationaal Instituut voor Sociale Geschiedenis",
+    "Jewish Museum": "Joods Museum",
+    "Marseille House": "Huis Marseille",
+    "Mint Tower": "Munttoren",
+    "Museum of the Canals": "Grachtenmuseum",
+    "National Holocaust Museum": "Nationaal Holocaustmuseum",
+    "New Church": "Nieuwe Kerk",
+    "NIOD Institute for War, Holocaust, and Genocide Studies": "NIOD Instituut voor Oorlogs-, Holocaust- en Genocidestudies",
+    "Old Church": "Oude Kerk",
+    "Our Lord in the Attic": "Ons' Lieve Heer op Solder",
+    "Red Light District": "De Wallen",
+    "Rembrandt House": "Rembrandthuis",
+    "Royal Palace": "Paleis op de Dam",
+    "The National Maritime Museum": "Het Scheepvaartmuseum",
+    "The Shipping House": "Scheepvaarthuis",
+    "University of Amsterdam": "Universiteit van Amsterdam",
+    "Vondelpark Open Air Theater": "Vondelpark Openluchttheater",
+    "Walloon Church": "Waalse Kerk",
+    "Weepers' Tower": "Schreierstoren",
+    "West India House": "West-Indisch Huis",
+    "West Indian Warehouse": "West-Indisch Pakhuis",
+    "Zuiderkerk Tower": "Zuiderkerkstoren",
+    // R2-3 (#303): the landmarks' own nl Wikipedia titles (landmarks.json
+    // `wikipedia`), disambiguators dropped; where Wikidata's nl label is the
+    // shorter usual form it is used instead (cited per row).
+    "Central Station": "Amsterdam Centraal",
+    // nl:Station Amsterdam Centraal; Wikidata Q50719 nl label
+    "Canal Ring Area of Amsterdam": "Grachtengordel",
+    // nl:Grachtengordel (Amsterdam)
+    "Path\xE9 Tuschinski Cinema": "Koninklijk Theater Tuschinski",
+    // nl:Koninklijk Theater Tuschinski
+    "Royal Theater Carr\xE9": "Koninklijk Theater Carr\xE9",
+    // nl:Koninklijk Theater Carré
+    "Dutch National Opera & Ballet": "Nationale Opera & Ballet",
+    // nl:Nationale Opera en Ballet; Wikidata Q1325514 nl label
+    "National Monument": "Nationaal Monument op de Dam",
+    // nl:Nationaal Monument op de Dam
+    "Cat Cabinet": "KattenKabinet",
+    // nl:KattenKabinet
+    "Dutch East Indian Company": "Oost-Indisch Huis",
+    // nl:Oost-Indisch Huis (Amsterdam)
+    "Wine buyers' guildhall": "Wijnkopersgildehuis",
+    // nl:Wijnkopersgildehuis
+    "Funerary museum": "Museum Tot Zover",
+    // nl:Museum Tot Zover (sitelink of Q2383603)
+    "Ravensbr\xFCck memorial": "Vrouwen van Ravensbr\xFCck",
+    // nl:Vrouwen van Ravensbrück 1940-1945; Wikidata Q42171765 nl label
+    "Amsterdam Memorial to the Canadian Liberators": "Amsterdam dankt zijn Canadezen",
+    // nl:Amsterdam dankt zijn Canadezen
+    "Shadow quay": "De Schaduwkade",
+    // nl:De Schaduwkade
+    "Jewish WW2 resistance memorial": "Joods Verzetsmonument",
+    // nl:Joods Verzetsmonument
+    "Royal Tropical Institute": "KIT-gebouw"
+    // nl:KIT-gebouw
+  });
+  var LANDMARK_NAMES_NL_WIKIDATA = Object.freeze({
+    "Houseboat Museum": { nl: "Woonbootmuseum", wikidata: "Q14544962" },
+    "Museum of Bags and Purses": { nl: "Tassenmuseum Hendrikje", wikidata: "Q2077489" },
+    "Diamond Museum Amsterdam": { nl: "Diamantmuseum", wikidata: "Q1208561" },
+    "Olympic Stadium": { nl: "Olympisch Stadion", wikidata: "Q503319" },
+    "Walen Gate": { nl: "Walenpoortje", wikidata: "Q17288856" },
+    "Spinhuis Gate": { nl: "Spinhuispoort", wikidata: "Q17306709" }
+  });
+  var EXTRACT_NAME_OF = new Map(
+    Object.entries(BY_NAME).map(([extract, shown]) => [shown, extract])
+  );
+  function dutchName(name) {
+    return LANDMARK_NAMES_NL[name] ?? LANDMARK_NAMES_NL_WIKIDATA[name]?.nl;
+  }
+  function landmarkDisplayName2(name, language2) {
+    if (language2 !== "nl" || !name) return name;
+    const extract = EXTRACT_NAME_OF.get(name);
+    return dutchName(name) ?? (extract ? dutchName(extract) : void 0) ?? name;
+  }
+  function placeName(name) {
+    return landmarkDisplayName2(name, language());
+  }
+
   // src/canalRecall/game/landmarkKind.ts
   var MEMORIAL_CLASSES = /* @__PURE__ */ new Set([
     "Q179700",
@@ -6824,43 +6937,6 @@ ${register}` : detail,
   }
   function answerHoldMayHide(holdIsCurrent, questionOpen, silent) {
     return holdIsCurrent && !questionFreezesRide(questionOpen, silent);
-  }
-
-  // src/canalRecall/game/landmarkNamesNl.ts
-  var LANDMARK_NAMES_NL = Object.freeze({
-    "Anne Frank House": "Anne Frank Huis",
-    "Auschwitz Memorial": "Auschwitzmonument",
-    "Berlage's Stock Market": "Beurs van Berlage",
-    "Buchenwald Memorial": "Buchenwaldmonument",
-    "Dutch Resistance Museum": "Verzetsmuseum",
-    "English Reformed Church": "Engelse Hervormde Kerk",
-    "Equestrian statue of Queen Wilhelmina": "Ruiterstandbeeld koningin Wilhelmina",
-    "Gerard Dou Synagogue": "Synagoge Gerard Doustraat",
-    "International Institute of Social History": "Internationaal Instituut voor Sociale Geschiedenis",
-    "Jewish Museum": "Joods Museum",
-    "Marseille House": "Huis Marseille",
-    "Mint Tower": "Munttoren",
-    "Museum of the Canals": "Grachtenmuseum",
-    "National Holocaust Museum": "Nationaal Holocaustmuseum",
-    "New Church": "Nieuwe Kerk",
-    "NIOD Institute for War, Holocaust, and Genocide Studies": "NIOD Instituut voor Oorlogs-, Holocaust- en Genocidestudies",
-    "Old Church": "Oude Kerk",
-    "Our Lord in the Attic": "Ons' Lieve Heer op Solder",
-    "Red Light District": "De Wallen",
-    "Rembrandt House": "Rembrandthuis",
-    "Royal Palace": "Paleis op de Dam",
-    "The National Maritime Museum": "Het Scheepvaartmuseum",
-    "The Shipping House": "Scheepvaarthuis",
-    "University of Amsterdam": "Universiteit van Amsterdam",
-    "Vondelpark Open Air Theater": "Vondelpark Openluchttheater",
-    "Walloon Church": "Waalse Kerk",
-    "Weepers' Tower": "Schreierstoren",
-    "West India House": "West-Indisch Huis",
-    "West Indian Warehouse": "West-Indisch Pakhuis",
-    "Zuiderkerk Tower": "Zuiderkerkstoren"
-  });
-  function landmarkDisplayName2(name, language2) {
-    return language2 === "nl" ? LANDMARK_NAMES_NL[name] ?? name : name;
   }
 
   // src/canalRecall/game/landmarkQuestionRuntime.ts
@@ -7068,6 +7144,7 @@ ${register}` : detail,
       const result = CanalRecallAnswerPath.submitAnswer({
         correctName,
         displayName: correctName,
+        say: t,
         answer,
         noIdea,
         score: {
@@ -7786,7 +7863,7 @@ ${register}` : detail,
       };
       const action = this._landmarkCardAction();
       const card = cards.measureLandmarkCard({
-        name: lm.name,
+        name: placeName(lm.name || ""),
         body: collapsed ? foldedCardLine(lm) : lm.longDetail || lm.detail || cards.placeOnlyDetail(
           lm.type,
           this.currentNeighborhood,
@@ -7860,12 +7937,12 @@ ${lm.researchDetail}` : originalBody;
       if (lm.extractLang && lm.extractLang !== "en") {
         pushBadge(`${lm.extractLang.toUpperCase()} \u2014 NOT TRANSLATED YET`, "lang");
       }
-      panel.querySelector("#landmark-panel-title").textContent = lm.name || "";
+      panel.querySelector("#landmark-panel-title").textContent = placeName(lm.name || "");
       panel.querySelector("#landmark-panel-body").textContent = body;
       const image = panel.querySelector("#landmark-panel-image");
       if (lm.imageUrl) {
         image.src = lm.imageUrl;
-        image.alt = lm.name || "";
+        image.alt = placeName(lm.name || "");
         image.hidden = false;
       } else {
         image.removeAttribute("src");

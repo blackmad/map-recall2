@@ -54,3 +54,30 @@ export function drawKeycapAction(
   if (hover) ctx.fillRect(captionX, at.top + 21, captionW, 1);
   return { bounds, endX: captionX + captionW };
 }
+
+/** The width `drawKeycapAction` will give an action (keycap + gap + caption), without drawing. */
+export function measureKeycapAction(
+  ctx: CanvasRenderingContext2D,
+  action: { key: string; caption: string },
+  fontMono: string,
+): number {
+  ctx.font = '12px system-ui, sans-serif';
+  const captionW = ctx.measureText(action.caption).width;
+  ctx.font = `700 11px ${fontMono}`;
+  return ctx.measureText(action.key).width + 14 + GAP + captionW;
+}
+
+/**
+ * Greedy rows of action indices whose widths plus `gap` between them stay within `maxW` (R2-6, #304: the
+ * pause card's three keycaps were wider than the card). An action wider than `maxW` still gets a row of its own.
+ */
+export function wrapKeycapRows(widths: readonly number[], maxW: number, gap: number): number[][] {
+  const rows: number[][] = [];
+  let used = 0;
+  widths.forEach((width, index) => {
+    const row = rows[rows.length - 1];
+    if (row && used + gap + width <= maxW) { row.push(index); used += gap + width; }
+    else { rows.push([index]); used = width; }
+  });
+  return rows;
+}

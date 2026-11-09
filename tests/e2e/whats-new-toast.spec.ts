@@ -26,7 +26,9 @@ test('a returning rider sees the toast once, can dismiss it, and it links to Wha
   await expect(toast.getByRole('link', { name: "What's New" })).toHaveAttribute('href', 'whats-new.html');
   const box = (await toast.boundingBox())!;
   const viewport = page.viewportSize()!;
-  expect(box.height, 'one line').toBeLessThan(56);
+  // R2-11 (#304): the phone banner wraps and carries 44 px targets, so it is taller than the desktop pill.
+  const phone = viewport.width <= 600;
+  expect(box.height, phone ? 'a phone banner of at most three lines' : 'one line').toBeLessThan(phone ? 112 : 56);
   expect(box.x).toBeGreaterThanOrEqual(0);
   expect(box.x + box.width).toBeLessThanOrEqual(viewport.width);
   await page.screenshot({ path: `artifacts/g7/whats-new-toast-${test.info().project.name}.png` });
