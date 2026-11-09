@@ -65,8 +65,14 @@ async function measurePause(page: Page) {
     }
     // The last frame's centred texts inside the card (title, subtitle, stats).
     const rec = (window as any).__p319 as Array<{ t: string; f: string; x: number; y: number; w: number; align: string }>;
+    // Only the last pause card's own draw: from its heading to its km line (a frame drawn before the
+    // pause can still be in the record, e.g. the phone's touch hint).
+    let start = -1;
+    for (let i = rec.length - 1; i >= 0; i--) if (/^(PAUSED|PAUZE)$/.test(rec[i].t)) { start = i; break; }
+    let end = rec.length;
+    for (let i = start + 1; i < rec.length; i++) if (/km/.test(rec[i].t)) { end = i + 1; break; }
     const seen = new Map<string, { t: string; left: number; right: number; y: number }>();
-    for (const r of rec) {
+    for (const r of rec.slice(Math.max(0, start), end)) {
       if (r.align !== 'center' || r.x < card.x || r.x > card.x + card.w) continue;
       if (L && (r.y < L.card.y || r.y > L.card.y + L.card.h)) continue;
       seen.set(r.t, { t: r.t, left: r.x - r.w / 2, right: r.x + r.w / 2, y: r.y });
