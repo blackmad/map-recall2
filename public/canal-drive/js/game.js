@@ -575,6 +575,18 @@ class Game {
       this._edgeStallFrames = CanalRecallCar.trackEdgeStall(
         this._edgeStall, guard, this.player.steerInput, this.player.x, this.player.y,
       );
+      // A cul-de-sac whose real exit is steps or a footway (Javaplantsoen,
+      // 2026-11-09, #317): forward held and going nowhere, turn round after 1.5 s.
+      if (this.travelMode === 'car' && CanalRecallCar.trackDeadEnd) {
+        if (!this._deadEnd) this._deadEnd = { frames: 0, anchorX: 0, anchorY: 0, anchorAngle: 0 };
+        if (CanalRecallCar.trackDeadEnd(this._deadEnd, {
+          wantsForward: this.player.throttle > 0,
+          guard, x: this.player.x, y: this.player.y, angle: this.player.angle,
+          turning: this.player._uTurnHeading != null,
+        })) {
+          this.player._uTurnHeading = window.CanalRecallUi.turnAroundHeading(this.player.angle, road ? road.angle : null);
+        }
+      }
     } else if (this.travelMode === 'boat' && !this._boatFitsRenderedWater(this.player)) {
       this._blockedBoatFrames++;
       // Do not let a fast frame step carry the boat across a quay. The old

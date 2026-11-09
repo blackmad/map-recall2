@@ -8863,6 +8863,9 @@
       }
     };
   }
+  function keepDutchLede(fact, ledeLang) {
+    return language() === "nl" && ledeLang === "nl" && !fact.textNl;
+  }
   function commitShownFact(storage3, state, choice) {
     const next = recordShown(state, choice);
     saveRotationState(storage3, next);
@@ -8873,6 +8876,7 @@
   function finishBlurb(landmark, facts, rotation, fallback) {
     const lede = landmark.longDetail || landmark.detail || "";
     const chosen = facts && facts.size ? factCardText(landmark.id, facts, rotation, landmark.detail || landmark.longDetail) : null;
+    if (chosen && lede && keepDutchLede(chosen.choice.fact, landmark.extractLang)) return { text: lede, choice: null };
     if (chosen?.text.detail) return { text: chosen.text.detail, choice: chosen.choice };
     return { text: lede || fallback, choice: null };
   }

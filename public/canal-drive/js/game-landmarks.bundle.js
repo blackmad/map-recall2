@@ -1778,6 +1778,11 @@
       longDetail: sentencesUpTo(parts.slice(0, 3), 280)
     };
   }
+  function landmarkLede(feature, lang) {
+    const original = feature.wikipediaExtractOriginal?.trim();
+    if (lang === "nl" && original && feature.wikipediaExtractOriginalLang === "nl") return { text: original, lang: "nl" };
+    return { text: feature.funFact || feature.wikipediaExtract || "", lang: feature.wikipediaExtractLang || "en" };
+  }
   function pointInPolygon(x, y, ring) {
     let inside = false;
     for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
@@ -1819,14 +1824,15 @@
     }
     return geometryFeatures;
   }
-  function buildLandmarks(features, project) {
+  function buildLandmarks(features, project, lang = language()) {
     const landmarks = [];
     for (const feature of features) {
       const center = feature.center || feature.path && feature.path[0];
       if (!center) continue;
       const point = project(center[0], center[1], feature);
       if (!point) continue;
-      const { detail, longDetail } = splitDetail(feature.funFact || feature.wikipediaExtract || "");
+      const lede = landmarkLede(feature, lang);
+      const { detail, longDetail } = splitDetail(lede.text);
       landmarks.push({
         id: feature.id,
         name: feature.name,
@@ -1845,7 +1851,7 @@
         buildingIds: feature.buildingIds,
         wikidata: feature.wikidata || "",
         wikipedia: feature.wikipedia || "",
-        extractLang: feature.wikipediaExtractLang || "en",
+        extractLang: lede.lang,
         wikipediaPageviews60d: feature.wikipediaPageviews60d,
         wikidataSitelinks: feature.wikidataSitelinks,
         heritage: feature.heritage,
@@ -2341,6 +2347,9 @@ Map source: ${osmUrl(places[i][0])}`);
         factKind: factKindLabel(choice.fact.kind)
       }
     };
+  }
+  function keepDutchLede(fact, ledeLang) {
+    return language() === "nl" && ledeLang === "nl" && !fact.textNl;
   }
   function commitShownFact(storage3, state, choice) {
     const next = recordShown(state, choice);
@@ -6751,6 +6760,12 @@ ${register}` : detail,
   function placeName(name) {
     return landmarkDisplayName2(name, language());
   }
+  function localisedPlaces(places, display = placeName) {
+    return places.map((place) => {
+      const shown = place.name ? display(place.name) : place.name;
+      return shown === place.name ? place : { ...place, name: shown, sourceName: place.name };
+    });
+  }
 
   // src/canalRecall/game/landmarkKind.ts
   var MEMORIAL_CLASSES = /* @__PURE__ */ new Set([
@@ -7090,7 +7105,8 @@ ${register}` : detail,
         if (!isWorthACard(landmark) || !isBuildingLandmark(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
         if (landmark.name === this.routeTo?.name) return false;
         if (!inViewCone(player, landmark, bandPx)) return false;
-        const reason = landmarkSkipReason(ledger, landmark.name, now);
+        const shown = landmarkDisplayName2(landmark.name, language());
+        const reason = landmarkSkipReason(ledger, landmark.name, now) ?? (shown !== landmark.name ? landmarkSkipReason(ledger, shown, now) : null);
         if (reason) {
           bumpSkipCounter(session, skipped, landmark.id, reason);
           return false;
@@ -7386,6 +7402,7 @@ ${register}` : detail,
         notice.detail || notice.longDetail
       );
       if (!chosen) return notice;
+      if (!streetEntry && keepDutchLede(chosen.choice.fact, notice.extractLang)) return notice;
       this._commitFact(chosen.choice);
       const text = streetEntry ? streetCardWithRotatedFact(streetEntry, chosen.text) : chosen.text;
       return { ...notice, ...text };
@@ -7659,7 +7676,7 @@ ${register}` : detail,
           // A bridge's official spelling is an answer too.
           ...bridgeFeatures.map((bridge) => ({ name: bridge.displayName }))
         ].map((item) => item.name || "").filter(Boolean));
-        this.vectorMap.setPlaces(features, boundaries);
+        this.vectorMap.setPlaces(localisedPlaces(features), boundaries);
         const metersPerDegreeLat = 111320;
         const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
         const toWorld = ([lat, lng]) => ({
@@ -7934,7 +7951,7 @@ ${lm.researchDetail}` : originalBody;
       };
       if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, " "), "category");
       if (lm.factKind) pushBadge(lm.factKind.toUpperCase(), "fact");
-      if (lm.extractLang && lm.extractLang !== "en") {
+      if (lm.extractLang && lm.extractLang !== "en" && lm.extractLang !== language()) {
         pushBadge(`${lm.extractLang.toUpperCase()} \u2014 NOT TRANSLATED YET`, "lang");
       }
       panel.querySelector("#landmark-panel-title").textContent = placeName(lm.name || "");
