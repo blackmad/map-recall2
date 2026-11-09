@@ -2,11 +2,15 @@ import { expect, test, type Page, type Request } from '@playwright/test';
 import { CANAL_CITIES } from '../../src/canalRecall/game/cities';
 import { dailyPoolPair, dailyRideDateKey, dailyRideRouteId } from '../../src/canalRecall/game/dailyRide';
 import { landingFixtureEntries, type LandingScenario } from '../../src/canalRecall/landing/landingFixtures';
+import { DAILY_RIDE_ON_LANDING } from '../../src/canalRecall/featureFlags';
 
-// G2 (#272): the landing page for a returning player — Today's ride, Continue
-// (names due) and Free Ride — drawn from localStorage alone; the daily route
-// is the same in every browser on a date; Continue starts a review ride.
+// G2 (#272): the landing page for a returning player — Continue (names due)
+// and Free Ride — drawn from localStorage alone; Continue starts a review ride.
+// Today's ride is off on the landing since 2026-11-09 (user: "no daily ride";
+// DAILY_RIDE_ON_LANDING, F1 #311): its landing cases skip while the flag is
+// off and come back with it; `?ride=daily` still starts the ride (below).
 // Needs js/landing.bundle.js and the rebuilt route-selection bundle.
+const DAILY_OFF = 'Today’s ride is off on the landing (DAILY_RIDE_ON_LANDING, F1 #311)';
 
 const LANDING = '/canal-drive/landing.html';
 const shots = process.env.G2_SHOTS || 'artifacts/g2-landing';
@@ -41,20 +45,30 @@ test('a first-time visitor keeps the static landing', async ({ page }) => {
   await expect(page.locator('[data-landing-card]')).toHaveCount(0);
 });
 
-test('a returning player gets three cards from localStorage alone, no network', async ({ page }, info) => {
+test('a returning player gets Continue and Free Ride from localStorage alone, no network', async ({ page }, info) => {
   const now = Date.now();
   await seed(page, 'returning', now);
   const reads = networkReads(page);
   await page.goto(LANDING);
   const slot = page.locator('#landing-returning-slot');
   await expect(slot).toBeVisible();
-  await expect(page.locator('[data-landing-card]')).toHaveCount(3);
+  await expect(page.locator('[data-landing-card]')).toHaveCount(DAILY_RIDE_ON_LANDING ? 3 : 2);
   await expect(page.locator('[data-landing-card="review"] .landing-card-title')).toHaveText('7 names due · 12 min');
+  await expect(page.locator('[data-landing-card="free"]')).toBeVisible();
   await expect(page.locator('[data-landing-stats]')).toContainText('Streak · 3 days');
   await expect(page.locator('[data-landing-stats]')).toContainText('Passport · 4 stamps');
-  await expect(page.locator('.landing-board li')).toHaveCount(3);
-  const route = await page.locator('.landing-returning').getAttribute('data-daily-route');
-  expect(route).toBe(dailyRideRouteId(dailyRideDateKey(now), pois));
+  if (DAILY_RIDE_ON_LANDING) {
+    await expect(page.locator('.landing-board li')).toHaveCount(3);
+    const route = await page.locator('.landing-returning').getAttribute('data-daily-route');
+    expect(route).toBe(dailyRideRouteId(dailyRideDateKey(now), pois));
+  } else {
+    await expect(page.locator('[data-landing-card="daily"], [data-landing-go="daily"], .landing-board')).toHaveCount(0);
+    expect(await page.locator('.landing-returning').getAttribute('data-daily-route')).toBeNull();
+    // The two cards share the row: neither is wider than half of it, both on one line on desktop and phone.
+    const boxes = await page.locator('[data-landing-card]').evaluateAll(els => els.map(e => { const r = e.getBoundingClientRect(); return { y: Math.round(r.y), w: Math.round(r.width) }; }));
+    expect(boxes[0].y).toBe(boxes[1].y);
+    expect(Math.abs(boxes[0].w - boxes[1].w)).toBeLessThanOrEqual(2);
+  }
   // The static hero still follows.
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Learn Amsterdam');
   await page.waitForLoadState('networkidle');
@@ -74,6 +88,7 @@ test('?landing=0 keeps the static landing for a returning player', async ({ page
 });
 
 test('today’s route is identical in two browsers on the same date', async ({ browser }) => {
+  test.skip(!DAILY_RIDE_ON_LANDING, DAILY_OFF);
   // 23:30 UTC on 11 Nov is 12 Nov in Amsterdam: the ride follows Amsterdam's date, not the browser's.
   // (A buurt-pool day, after DAILY_POOL_CUTOVER.)
   const at = Date.UTC(2026, 10, 11, 23, 30);
@@ -134,6 +149,7 @@ test('Continue starts a review ride past the names due', async ({ page }) => {
 });
 
 test('Today’s ride launches the pair the landing named', async ({ page }) => {
+  test.skip(!DAILY_RIDE_ON_LANDING, DAILY_OFF);
   test.setTimeout(150_000);
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   const now = Date.now();

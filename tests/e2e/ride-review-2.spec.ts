@@ -250,7 +250,8 @@ test('B returning: landing hook → Today’s ride → arrival → What’s New'
     toast: await page.locator('#whats-new-toast').innerText().catch(() => null),
     taps: await page.locator('[data-landing-go], #whats-new-toast a, #whats-new-toast button').evaluateAll(els => els.map(e => { const r = e.getBoundingClientRect(); return { t: (e.textContent || '').trim(), w: Math.round(r.width), h: Math.round(r.height) }; })),
   });
-  await page.locator('[data-landing-go="daily"]').click();
+  // F1 (#311): the landing has no Today's ride card since 2026-11-09; the hidden opt-in starts the same ride.
+  await page.goto('/canal-drive/?ride=daily');
   await page.waitForFunction(() => { const g = (window as any).canalRecallGame; return g && (!!g._intro || g.state === 4); }, null, { timeout: 150_000 }).catch(() => {});
   await page.waitForTimeout(1000);
   await snap(page, 'B', '02-daily-flight');
@@ -309,7 +310,7 @@ test('C Dutch: ?lang=nl setup → question → arrival → run card → pause', 
 test('D Free Ride collection: two places, checklist, token, stamp', async ({ page }) => {
   test.setTimeout(480_000);
   await page.route(/3dbag|cesium3dtiles/i, r => r.abort());
-  await page.goto('/canal-drive/?ride=free');
+  await page.goto('/canal-drive/?ride=free&collection=1'); // the collection is opt-in since F1 (#311)
   await waitState(page, 4, 150_000);
   await page.waitForTimeout(3000);
   await snap(page, 'D', '01-free-ride', true);

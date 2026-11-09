@@ -3,8 +3,10 @@ import { expect, type Page, test } from '@playwright/test';
 // Free Ride's collection (G4, #274; src/canalRecall/game/freeRideCollection.ts):
 // a neighbourhood's checklist on the plaque, the discovery token on the
 // nearest unopened landmark (≤ 24 px, never over the corridor), opening every
-// place stamps the neighbourhood in the passport, and ?collection=0 restores
-// the Free Ride of before.
+// place stamps the neighbourhood in the passport. Since 2026-11-09 (user: "no
+// gameplay element in free ride"; F1 #311, featureFlags.ts) all of it is
+// opt-in with ?collection=1, and the default is the Free Ride of before:
+// markers (fading with distance) and stories, no checklist, coin or stamps.
 
 type Pt = { x: number; y: number };
 /** Set G4_SHOTS=<dir> to save the strip's frames. */
@@ -64,11 +66,11 @@ const tokenState = (page: Page) => page.evaluate(() => {
   };
 });
 
-test('collection: checklist on the plaque, token ≤ 24 px off the corridor, all places opened stamps the neighbourhood', async ({ page }) => {
+test('collection (?collection=1 opt-in): checklist on the plaque, token ≤ 24 px off the corridor, all places opened stamps the neighbourhood', async ({ page }) => {
   test.setTimeout(240_000);
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(String(error)));
-  await startFreeRide(page);
+  await startFreeRide(page, '&collection=1');
 
   const list = await pickList(page);
   expect(list.lists).toBeGreaterThan(10);
@@ -224,7 +226,49 @@ test('collection: checklist on the plaque, token ≤ 24 px off the corridor, all
   expect(errors).toEqual([]);
 });
 
-test('?collection=0 restores the Free Ride of before: no token, the places-opened tally, no stamps', async ({ page }) => {
+test('by default Free Ride has no gameplay: no token, the places-opened tally, no stamps, no quiz toggle (F1)', async ({ page }) => {
+  test.setTimeout(180_000);
+  const passportBefore = { stamped: ['Jordaan'], dates: { Jordaan: '2026-11-01' } };
+  await page.addInitScript((passport) => {
+    if (sessionStorage.getItem('f1-seeded')) return; sessionStorage.setItem('f1-seeded', '1');
+    localStorage.setItem('canalRecall.neighborhoodPassport.v1', JSON.stringify(passport));
+    // A rider who had switched "Quiz me on landmarks" on keeps the preference; Free Ride ignores it.
+    const prefs = JSON.parse(localStorage.getItem('canalRecall.preferences.v1') || '{}');
+    localStorage.setItem('canalRecall.preferences.v1', JSON.stringify({ ...prefs, landmarkQuiz: true }));
+  }, passportBefore);
+  await startFreeRide(page);
+  const list = await pickList(page);
+  // Stand at a list's place and open every place on it: nothing is stamped.
+  await placeRider(page, list.places[0]);
+  await page.waitForTimeout(800);
+  const state = await page.evaluate((keys) => {
+    const g = (window as any).canalRecallGame;
+    for (const key of keys) g._noteFreeRideOpened(key);
+    return {
+      collection: g._freeRideCollection, tally: g._freeRideTally(), radar: g._freeRideRadarPlaces().length,
+      caption: g._freeRideChecklistCaption(g.currentNeighborhood || ''),
+      anchors: g._freeRidePlaceAnchors(g.player.x, g.player.y).length,
+      questions: g._landmarkQuestionsOn(),
+      passport: localStorage.getItem('canalRecall.neighborhoodPassport.v1'),
+      prefs: JSON.parse(localStorage.getItem('canalRecall.preferences.v1') || '{}').landmarkQuiz,
+    };
+  }, list.places.map(p => p.key));
+  expect(state.collection).toBeNull();
+  expect(state.tally).toBe(list.places.length === 1 ? '1 place opened' : `${list.places.length} places opened`);
+  expect(state.radar).toBe(0);
+  expect(state.caption).toBe('');
+  // The placeBuurt rule for the plaque stays (#284): the list's places still anchor the buurt.
+  expect(state.anchors).toBeGreaterThan(0);
+  expect(state.questions).toBe(false);
+  expect(state.prefs).toBe(true);
+  // Stamps earned before stay; none is added.
+  expect(JSON.parse(state.passport!)).toEqual(passportBefore);
+  // Route setup does not offer "Quiz me on landmarks".
+  expect(await page.locator('#free-ride-landmark-quiz').count()).toBe(0);
+  if (SHOTS) await page.screenshot({ path: `${SHOTS}/default-no-collection.png` });
+});
+
+test('?collection=0 still forces the collection off', async ({ page }) => {
   await startFreeRide(page, '&collection=0');
   const state = await page.evaluate(() => {
     const g = (window as any).canalRecallGame;

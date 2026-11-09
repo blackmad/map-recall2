@@ -1,5 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { finishKeycapCentre, openRoute, useBundlesDir } from './helpers';
+import { CANAL_CITIES } from '../../src/canalRecall/game/cities';
+import { dailyRideDateKey, dailyRidePair } from '../../src/canalRecall/game/dailyRide';
 import { landingFixtureEntries } from '../../src/canalRecall/landing/landingFixtures';
 
 // G1 (#271), chained stops: a run is a chain of arrivals. This drives a
@@ -256,15 +258,15 @@ async function nextStopThenReload(page: Page, label: string) {
 
 // R2-1 (#302): ride review 2 reloaded during leg 2 of a run begun as Today's ride and landed on route setup with a
 // new destination. The leg was a review ride (the returning player has names due), which never stored nextLeg.
-test('a reload during a dealt review leg of Today\'s ride resumes the leg (R2-1)', async ({ page }) => {
+// F1 (#311): the landing has no Today's ride card since 2026-11-09; the run starts from the hidden `?ride=daily`
+// opt-in, and the pill is checked against the km the card would have printed (dailyRidePair).
+test('a reload during a dealt review leg of Today\'s ride (?ride=daily opt-in) resumes the leg (R2-1)', async ({ page }) => {
   test.setTimeout(420_000);
   await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
   await useBundlesDir(page);
   await seedReturning(page);
-  await page.goto('/canal-drive/landing.html');
-  await expect(page.locator('[data-landing-card]').first()).toBeVisible({ timeout: 20_000 });
-  const landingKm = Number((await page.locator('[data-landing-card]').first().innerText()).match(/([\d.]+) km/)?.[1]);
-  await page.locator('[data-landing-go="daily"]').click();
+  const landingKm = dailyRidePair(dailyRideDateKey(Date.now()), CANAL_CITIES.amsterdam.curatedPois.map(poi => ({ ...poi })))!.km;
+  await page.goto('/canal-drive/?ride=daily');
   await page.waitForFunction(() => (window as any).canalRecallGame?.state === 4, null, { timeout: 150_000 });
   await page.waitForTimeout(1500);
   // R2-10: the destination pill at the start says the same km as the landing card.
