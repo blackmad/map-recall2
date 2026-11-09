@@ -8086,10 +8086,20 @@
 
   // src/canalRecall/ownMap/labelPolicy.ts
   function withheldNames(game) {
-    const asked = game.quizPromptName && game.quizWithheldNames?.length ? game.quizWithheldNames : [];
-    const approach = game.landmarkApproachWithheld?.length ? game.landmarkApproachWithheld : [];
-    if (!approach.length) return [...asked];
-    return [.../* @__PURE__ */ new Set([...asked, ...approach])];
+    const asked = game.quizPromptName && game.quizWithheldNames?.length ? game.quizWithheldNames : NO_NAMES;
+    const approach = game.landmarkApproachWithheld?.length ? game.landmarkApproachWithheld : NO_NAMES;
+    const last = lastWithheld;
+    if (last && last.asked === asked && last.approach === approach && sameNames(last.askedCopy, asked) && sameNames(last.approachCopy, approach)) return last.out;
+    const out = Object.freeze(approach.length ? [.../* @__PURE__ */ new Set([...asked, ...approach])] : [...asked]);
+    lastWithheld = { asked, approach, askedCopy: [...asked], approachCopy: [...approach], out };
+    return out;
+  }
+  var NO_NAMES = Object.freeze([]);
+  var lastWithheld = null;
+  function sameNames(a, b) {
+    if (a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+    return true;
   }
 
   // src/canalRecall/hudCopy.ts

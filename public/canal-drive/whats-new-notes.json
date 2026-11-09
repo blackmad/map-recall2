@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Labels fade instead of popping",
+   "text": "Map labels in the new engine now fade in and out over a third of a second instead of popping, so a name hidden ahead of a landmark question leaves like any other label. Add ?labelFade=0 to the address to see the old behaviour.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-own-label-fade/before-withhold-strip.jpg",
+     "alt": "Before: six frames in which a withheld label disappears between one frame and the next",
+     "caption": "Before: gone in one frame."
+    },
+    {
+     "src": "ui/2026-11-09-own-label-fade/after-withhold-strip.jpg",
+     "alt": "After: the same label thinning over six frames",
+     "caption": "After: a 300 ms fade."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "The Dutch game speaks Dutch on arrival",
    "text": "In Dutch, the arrival card, the pause card, the ride HUD, the neighbourhood plaque and the landmark card now read Dutch throughout: BRONZEN LINT, Zonder hulp, Nieuw persoonlijk record, AANGEKOMEN, BESTEMMING. Place names and encyclopaedia text stay as their sources give them.",
    "images": [
