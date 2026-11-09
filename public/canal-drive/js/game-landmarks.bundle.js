@@ -19,20 +19,6 @@
     off = Math.atan2(Math.sin(off), Math.cos(off));
     return Math.abs(off) <= halfCone;
   }
-  function pickLandmarkQuestion(rider, candidates, options) {
-    let best = null;
-    let bestDistance = Infinity;
-    for (const candidate of candidates) {
-      if (!candidate.name || options.skip?.has(candidate.id)) continue;
-      if (!inViewCone(rider, candidate, options.radiusPx, options.halfCone)) continue;
-      const distance = Math.hypot(candidate.x - rider.x, candidate.y - rider.y);
-      if (distance < bestDistance) {
-        best = candidate;
-        bestDistance = distance;
-      }
-    }
-    return best;
-  }
   function landmarkChoices(answer, pool, options) {
     const count = options.count ?? LANDMARK_CHOICE_COUNT;
     const taken = /* @__PURE__ */ new Set([nameKey(answer.name)]);
@@ -94,9 +80,6 @@
     const existing = sightings[id];
     if (existing && (existing.how === "named" || existing.how === how)) return { sightings, isNew: false };
     return { sightings: { ...sightings, [id]: { hood: hood || existing?.hood || "", how, at } }, isNew: true };
-  }
-  function hasBeenNamed(sightings, id) {
-    return sightings[id]?.how === "named";
   }
   function bumpSessionCounter(target, key) {
     if (!target) return 0;
@@ -6651,6 +6634,99 @@ ${register}` : detail,
     return sinceEvent(now, lastShownAt) >= DRIVE_BY_MIN_GAP_SECONDS;
   }
 
+  // src/canalRecall/recallExposure.ts
+  var EXPOSURE_FIRST_INTERVAL_MS = 30 * 60 * 1e3;
+  var EXPOSURE_MAX_INTERVAL_MS = 24 * 60 * 60 * 1e3;
+
+  // src/canalRecall/game/landmarkReview.ts
+  var LANDMARK_REVIEW_STORAGE_KEY = "canalRecall.landmarkReview.v1";
+  var LANDMARK_REVIEW_DAYS = [1, 3, 7, 21];
+  var LANDMARK_MISSED_INTERVAL_MS = EXPOSURE_FIRST_INTERVAL_MS;
+  var LANDMARK_REVIEW_MAX_ENTRIES = 200;
+  var DAY_MS = 864e5;
+  function reviewIntervalMs(step) {
+    const days = LANDMARK_REVIEW_DAYS[Math.min(LANDMARK_REVIEW_DAYS.length, Math.max(1, step)) - 1];
+    return days * DAY_MS;
+  }
+  function nextDue(state, outcome, now) {
+    const rights = state?.rights ?? 0;
+    const misses = state?.misses ?? 0;
+    if (outcome === "right") {
+      const step = (state?.step ?? 0) + 1;
+      return { step, dueAt: now + reviewIntervalMs(step), lastAskedAt: now, rights: rights + 1, misses };
+    }
+    return { step: 0, dueAt: now + LANDMARK_MISSED_INTERVAL_MS, lastAskedAt: now, rights, misses: misses + 1 };
+  }
+  function isDue(state, now) {
+    return !!state && now >= state.dueAt;
+  }
+  function reviewKind(state, now) {
+    if (!state) return "new-unlearned";
+    return isDue(state, now) ? "due-review" : "known";
+  }
+  function pickAskable(candidates, states, now, rng = Math.random) {
+    let best = null;
+    for (const candidate of candidates) {
+      const kind = reviewKind(states[candidate.id], now);
+      if (kind === "known") continue;
+      const rank = kind === "due-review" ? 0 : 1;
+      const distance = candidate.distance ?? 0;
+      const better = !best || rank < best.rank || rank === best.rank && (distance < best.distance || distance === best.distance && rng() < 0.5);
+      if (better) best = { candidate, kind, rank, distance };
+    }
+    return best && { candidate: best.candidate, kind: best.kind };
+  }
+  function seedFromSightings(states, sightings) {
+    let out = states;
+    for (const [id, sighting] of Object.entries(sightings)) {
+      if (sighting.how !== "named" || out[id]) continue;
+      if (out === states) out = { ...states };
+      const at = sighting.at || 0;
+      out[id] = { step: 1, dueAt: at + reviewIntervalMs(1), lastAskedAt: at, rights: 1, misses: 0 };
+    }
+    return out;
+  }
+  function capReviews(states, max = LANDMARK_REVIEW_MAX_ENTRIES) {
+    const ids = Object.keys(states);
+    if (ids.length <= max) return states;
+    ids.sort((a, b) => states[b].lastAskedAt - states[a].lastAskedAt || a.localeCompare(b));
+    const out = {};
+    for (const id of ids.slice(0, max)) out[id] = states[id];
+    return out;
+  }
+  function readLandmarkReviews(store) {
+    try {
+      const raw = store?.getItem(LANDMARK_REVIEW_STORAGE_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      const out = {};
+      for (const [id, value] of Object.entries(parsed || {})) {
+        if (!value || !Number.isFinite(value.dueAt)) continue;
+        out[id] = {
+          step: Math.max(0, Math.floor(Number(value.step) || 0)),
+          dueAt: Number(value.dueAt),
+          lastAskedAt: Number(value.lastAskedAt) || 0,
+          rights: Math.max(0, Number(value.rights) || 0),
+          misses: Math.max(0, Number(value.misses) || 0)
+        };
+      }
+      return out;
+    } catch {
+      return {};
+    }
+  }
+  function saveLandmarkReviews(store, states) {
+    try {
+      store?.setItem(LANDMARK_REVIEW_STORAGE_KEY, JSON.stringify(capReviews(states)));
+    } catch {
+    }
+  }
+  function recordLandmarkOutcome(store, states, id, outcome, now) {
+    const next = capReviews({ ...states, [id]: nextDue(states[id], outcome, now) });
+    saveLandmarkReviews(store, next);
+    return next;
+  }
+
   // src/canalRecall/game/questionBudget.ts
   var DEFAULT_MAX_ASKS_PER_MINUTE = 5;
   var BUDGET_WINDOW_SECONDS = 60;
@@ -6770,6 +6846,10 @@ ${register}` : detail,
     _landmarkSightings() {
       return this._landmarkSightingsCache ??= readSightings(storage2());
     }
+    /** The review schedule, with landmarks named before it existed seeded on the first rung (#300). */
+    _landmarkReviews() {
+      return this._landmarkReviewsCache ??= seedFromSightings(readLandmarkReviews(storage2()), this._landmarkSightings());
+    }
     _noteLandmarkSighting(landmark, how) {
       const hood = this._neighborhoodAt(landmark.x, landmark.y)?.name || this.currentNeighborhood || "";
       const step = noteSighting(this._landmarkSightings(), landmark.id, hood, how, Date.now());
@@ -6821,7 +6901,7 @@ ${register}` : detail,
       })) return false;
       const chosen = approach.landmark;
       if (!inViewCone(player, chosen, LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER)) return false;
-      const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: "new-unlearned" }, this.raceTime, {
+      const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: approach.kind }, this.raceTime, {
         maxAsksPerMinute: this._askBudgetPerMinute()
       });
       if (budget.action !== "ask") return false;
@@ -6868,7 +6948,8 @@ ${register}` : detail,
         this._releaseLandmarkApproach();
       }
       const asked = this._landmarkAsked ||= /* @__PURE__ */ new Set();
-      const sightings = this._landmarkSightings();
+      const reviews = this._landmarkReviews();
+      const wallNow = Date.now();
       const destination = this.routeTo?.landmarkId || (typeof this.routeTo?.id === "string" && this.routeTo.id.startsWith("lm-") ? this.routeTo.id.slice(3) : "");
       const skip = new Set(asked);
       if (destination) skip.add(destination);
@@ -6877,7 +6958,7 @@ ${register}` : detail,
       const session = window;
       const skipped = this._landmarkSkipsSeen ||= /* @__PURE__ */ new Set();
       const candidates = this.landmarks.filter((landmark) => {
-        if (skip.has(landmark.id) || this._seenLandmarks.has(landmark.id) || hasBeenNamed(sightings, landmark.id)) return false;
+        if (skip.has(landmark.id) || this._seenLandmarks.has(landmark.id) || reviewKind(reviews[landmark.id], wallNow) === "known") return false;
         if (Math.abs(landmark.x - player.x) > bandPx || Math.abs(landmark.y - player.y) > bandPx) return false;
         if (!isWorthACard(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
         if (landmark.name === this.routeTo?.name) return false;
@@ -6889,8 +6970,13 @@ ${register}` : detail,
         }
         return true;
       });
-      const chosen = pickLandmarkQuestion(player, candidates, { radiusPx: bandPx, skip });
-      if (!chosen) return null;
+      const pick = pickAskable(
+        candidates.map((landmark) => ({ id: landmark.id, landmark, distance: Math.hypot(landmark.x - player.x, landmark.y - player.y) })),
+        reviews,
+        wallNow
+      );
+      if (!pick) return null;
+      const chosen = pick.candidate.landmark;
       const withHood = (landmark) => ({
         id: landmark.id,
         name: landmark.name,
@@ -6909,7 +6995,7 @@ ${register}` : detail,
         asked.add(chosen.id);
         return null;
       }
-      this._landmarkApproach = { landmark: chosen, choices, hood: answer.hood || "", since: now };
+      this._landmarkApproach = { landmark: chosen, choices, hood: answer.hood || "", since: now, kind: pick.kind };
       const approachLang = language();
       this.landmarkApproachWithheld = landmarkWithheldNames(chosen.name, [...choices, ...choices.map((name) => landmarkDisplayName2(name, approachLang)), landmarkDisplayName2(chosen.name, approachLang)]);
       return this._landmarkApproach;
@@ -6959,6 +7045,13 @@ ${register}` : detail,
       this._promptFeedback.style.color = result.feedbackColor;
       this._markAnsweredChoices(correctName, answer, correct);
       const landmark = this.landmarks.find((item) => item.id === asked.id) || null;
+      this._landmarkReviewsCache = recordLandmarkOutcome(
+        storage2(),
+        this._landmarkReviews(),
+        asked.id,
+        correct ? "right" : noIdea ? "no-idea" : "wrong",
+        Date.now()
+      );
       if (correct && landmark) {
         window.CanalCollection?.record({ id: landmark.id, name: landmark.name, how: "named" });
         this._noteLandmarkSighting(landmark, "named");

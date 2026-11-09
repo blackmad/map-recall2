@@ -5822,6 +5822,20 @@
     return shown ? [shown, name] : [name];
   }
 
+  // src/canalRecall/recallExposure.ts
+  var EXPOSURE_FIRST_INTERVAL_MS = 30 * 60 * 1e3;
+  var EXPOSURE_MAX_INTERVAL_MS = 24 * 60 * 60 * 1e3;
+
+  // src/canalRecall/game/landmarkReview.ts
+  var LANDMARK_REVIEW_STORAGE_KEY = "canalRecall.landmarkReview.v1";
+  function clearLandmarkReviews(store) {
+    try {
+      if (store.removeItem) store.removeItem(LANDMARK_REVIEW_STORAGE_KEY);
+      else store.setItem(LANDMARK_REVIEW_STORAGE_KEY, "");
+    } catch {
+    }
+  }
+
   // src/canalRecall/game/recallRuntime.ts
   var BRIDGE_END_TOUCH_METRES = 3;
   var DISTRACTOR_COUNT = 3;
@@ -5924,6 +5938,7 @@ Learned names, exploration collection, personal bests, route settings and the ho
             clearHomeGeocodeCache(localStorage);
             clearPlaceStreak(localStorage);
             clearPassport(localStorage);
+            clearLandmarkReviews(localStorage);
             try {
               localStorage.removeItem(ROTATION_STORAGE_KEY);
             } catch {

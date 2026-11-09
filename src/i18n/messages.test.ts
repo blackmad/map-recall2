@@ -46,6 +46,8 @@ test('only deliberate cognates remain identical in Dutch', () => {
     // The arrival and card badges (#290): the same word in both languages.
     'W  WIKIPEDIA', 'MUSEUM',
     'Stops', 'STOPS', 'stop', 'stops', '{count} stop', '{count} stops', '{count} {stops}{from}{to}{names}.',
+    // The share picture (#295): a run's stop is "stop" in Dutch as well.
+    'Stop {n}',
   ]);
   const suspicious = untranslatedKeys().filter((key) => !allowed.has(en[key]));
   assert.deepEqual(suspicious, []);

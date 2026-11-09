@@ -62,6 +62,7 @@ import { bridgeNameAskable } from './notableBridges';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from './bridgeStreetName';
 import { nearestRouteIndex } from './routeSelection';
 import { acceptedBridgeAnswers, bridgeDisplayNamesOf, displayBridgeName } from '../bridgeDisplayNames';
+import { clearLandmarkReviews } from './landmarkReview';
 
 /** Metres: how close another way must come to a deck end to continue it. */
 const BRIDGE_END_TOUCH_METRES = 3;
@@ -176,6 +177,7 @@ export class GameRecallRuntime {
           clearHomeGeocodeCache(localStorage);
           clearPlaceStreak(localStorage);
           clearPassport(localStorage);
+          clearLandmarkReviews(localStorage);
           try { localStorage.removeItem(ROTATION_STORAGE_KEY); } catch { /* private mode */ }
           this._factRotation = { history: {}, shown: 0, recentKinds: [] };
           this._explorationSnapshot = emptyExploration();
