@@ -28,7 +28,22 @@ async function arrive(page: Page) {
     g.player.y = g.track.finishPoint.y;
     g.player.speed = 0;
   });
-  await page.waitForFunction(() => (window as any).canalRecallGame.state === 5, null, { timeout: 30_000 });
+  // The teleport can land within 300 m of a landmark, and the question that opens on that frame holds the
+  // arrival (an open landmark question stops the bike short of the finish, by design): answer it and settle again.
+  const deadline = Date.now() + 30_000;
+  for (;;) {
+    if (await page.evaluate(() => (window as any).canalRecallGame.state === 5)) break;
+    if (await noIdea.isVisible().catch(() => false)) {
+      await noIdea.click().catch(() => {});
+      await page.waitForTimeout(3500);
+      await page.evaluate(() => {
+        const g = (window as any).canalRecallGame;
+        g.player.x = g.track.finishPoint.x; g.player.y = g.track.finishPoint.y; g.player.speed = 0;
+      });
+    }
+    if (Date.now() > deadline) throw new Error('no arrival within 30 s (state ' + (await page.evaluate(() => (window as any).canalRecallGame.state)) + ')');
+    await page.waitForTimeout(250);
+  }
   // The card records the stop on its first frame.
   await page.waitForFunction(() => !!(window as any).canalRecallGame._finishButtonBounds?.length, null, { timeout: 10_000 });
   await page.waitForTimeout(400);
