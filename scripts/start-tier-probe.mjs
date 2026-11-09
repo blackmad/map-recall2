@@ -1,7 +1,7 @@
 // Lane S1 (#313): what tier draws the city in the first frame the player sees, and how long until no runtime coarse
 // shell is left within 600 m of the view centre.
 //   PORT=4730 node scripts/start-tier-probe.mjs <out.json> [--device desktop|iphone] [--runs 1] [--qs '?engine=own&ride=free']
-//     [--hash '#race=…'] [--watch 15000] [--stills <dir>] [--label name]
+//     [--hash '#race=…'] [--watch 15000] [--stills <dir>] [--label name] [--warm: a second start in the same context]
 // Each run is a fresh context (cold HTTP cache). From racing, every 500 ms (and at the first racing frame) the page
 // samples the world canvas on a 32 × 24 grid, unprojects each point to the ground, and asks which building tier owns
 // that ground: `facade` (an installed `near:` detail chunk for its detail tile), `baked` (a drawn baked coarse cell,
@@ -23,6 +23,7 @@ const label = opt('label', 'start');
 const watchMs = Number(opt('watch', '15000'));
 const throttle = Number(opt('throttle', device === 'iphone' ? '4' : '1'));
 const stills = opt('stills', null);
+const warm = argv.includes('--warm');
 const origin = process.env.ORIGIN || `http://127.0.0.1:${process.env.PORT || 4730}`;
 
 const browser = await chromium.launch({ headless: true, args: ['--enable-precise-memory-info'] });
@@ -98,38 +99,45 @@ async function run(i) {
     };
     setInterval(tick, 50);
   });
+  const passes = [];
+  for (const pass of warm ? ['cold', 'warm'] : ['cold']) {
+  const tag = `${label}-${device}-run${i + 1}-${pass}`;
   const t0 = Date.now();
-  await page.goto(`${origin}/canal-drive/${qs}${hash}`, { waitUntil: 'load' });
+  // warm: the same context navigates again (HTTP cache, service worker and storage kept), a returning player's start.
+  // A same-URL goto with a hash is only a hash change (the page is not reloaded): the warm pass reloads.
+  if (pass === 'warm') await page.reload({ waitUntil: 'load' }); else await page.goto(`${origin}/canal-drive/${qs}${hash}`, { waitUntil: 'load' });
   if (throttle > 1) { const cdp = await context.newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: throttle }); }
   await page.waitForFunction(() => window.canalRecallGame?.state === 4, null, { timeout: 180_000 });
   await page.waitForTimeout(watchMs);
   // The settled frame at the end of the watch, for the strip (same pose unless the ride moved).
   const late = await page.evaluate(() => { const src = window.canalRecallGame?.vectorMap?.frameCanvas?.(); if (!src) return null; const big = document.createElement('canvas'); big.width = Math.min(1280, src.width); big.height = Math.round(big.width * src.height / src.width); big.getContext('2d').drawImage(src, 0, 0, big.width, big.height); return big.toDataURL('image/jpeg', 0.8); }).catch(() => null);
   const S = await page.evaluate(() => window.__tierProbe);
-  if (stills && late) { fs.mkdirSync(stills, { recursive: true }); fs.writeFileSync(path.join(stills, `${label}-${device}-run${i + 1}-late-${watchMs}ms.jpg`), Buffer.from(late.split(',')[1], 'base64')); }
-  await context.close();
-  if (stills && S.still && S.still.startsWith('data:')) {
-    fs.mkdirSync(stills, { recursive: true });
-    fs.writeFileSync(path.join(stills, `${label}-${device}-run${i + 1}-first-frame.jpg`), Buffer.from(S.still.split(',')[1], 'base64'));
-  }
+  if (stills) fs.mkdirSync(stills, { recursive: true });
+  if (stills && late) fs.writeFileSync(path.join(stills, `${tag}-late-${watchMs}ms.jpg`), Buffer.from(late.split(',')[1], 'base64'));
+  if (stills && S.still && S.still.startsWith('data:')) fs.writeFileSync(path.join(stills, `${tag}-first-frame.jpg`), Buffer.from(S.still.split(',')[1], 'base64'));
   const first = S.samples.find(s => s.first) ?? S.samples[0];
   const coarse600 = s => (s?.points?.[600]?.coarse ?? 0) + (s?.points?.[600]?.farPending ?? 0);
   const clear = S.samples.filter(s => !s.first).find(s => coarse600(s) === 0);
-  return {
-    label, device, navToRaceMs: S.raceAt, wallToRaceMs: null, hold: S.hold, startHold: S.startHold, first,
+  passes.push({
+    label, device, pass, navToRaceMs: S.raceAt, hold: S.hold, startHold: S.startHold, first,
+    standIns600: first ? coarse600(first) : null,
     msUntilNoCoarseWithin600: clear ? clear.ms : null,
-    timeline: S.samples.filter(s => !s.first).map(s => ({ ms: s.ms, p300: s.points[300], p600: s.points[600], p1000: s.points[1000], t600: s.tiles[600], near: s.nearChunks, coarse: s.coarseChunks, baked: s.baked })),
+    timeline: S.samples.filter(s => !s.first).map(s => ({ ms: s.ms, p300: s.points[300], p600: s.points[600], p1000: s.points[1000], band: s.band600to1200, t600: s.tiles[600], near: s.nearChunks, coarse: s.coarseChunks, baked: s.baked })),
     errors: errors.slice(0, 3), err: S.err ?? null, wallMs: Date.now() - t0,
-  };
+  });
+  }
+  await context.close();
+  return passes;
 }
 
 const results = [];
 for (let i = 0; i < runs; i++) {
-  const r = await run(i);
+  for (const r of await run(i)) {
   results.push(r);
   const f = r.first;
-  console.log(`${label} ${device} run ${i + 1}: nav->racing ${r.navToRaceMs} ms, hold ${JSON.stringify(r.hold && { ms: r.hold.ms, timedOut: r.hold.timedOut, pending: r.hold.pending })}`);
+  console.log(`${label} ${device} run ${i + 1} ${r.pass}: nav->racing ${r.navToRaceMs} ms, hold ${JSON.stringify(r.hold && { ms: r.hold.ms, timedOut: r.hold.timedOut, pending: r.hold.pending })}`);
   console.log(`  first frame centre ${f?.centre} z${f?.zoom} p${f?.pitch} b${f?.bearing}; pts300 ${JSON.stringify(f?.points?.[300])} pts600 ${JSON.stringify(f?.points?.[600])} pts1000 ${JSON.stringify(f?.points?.[1000])}; band600-1200 ${JSON.stringify(f?.band600to1200)}; startHold ${JSON.stringify(r.startHold)}; tiles600 ${JSON.stringify(f?.tiles?.[600])}; baked ${JSON.stringify(f?.baked)}; no coarse/farPending <=600 m after ${r.msUntilNoCoarseWithin600 ?? 'never'} ms`);
+  }
 }
 await browser.close();
 fs.mkdirSync(path.dirname(out), { recursive: true });

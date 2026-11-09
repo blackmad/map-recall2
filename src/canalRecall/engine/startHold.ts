@@ -30,6 +30,8 @@ export const REVEAL_DISSOLVE_MS = 600;
  */
 export const START_HOLD_TICK_MS_DESKTOP = 100;
 export const START_HOLD_TICK_MS_TOUCH = 250;
+/** Whether the loading frame ticks the held world: not on touch, where the baked tier is off and nothing it advances shows (#313 iPhone profile). */
+export function startHoldTicks(touch: boolean): boolean { return !touch; }
 export function startHoldTickDue(now: number, last: number | null | undefined, touch: boolean): boolean {
   return last == null || !Number.isFinite(last) || now - last >= (touch ? START_HOLD_TICK_MS_TOUCH : START_HOLD_TICK_MS_DESKTOP) || now < last;
 }
@@ -59,10 +61,15 @@ export function introHoldCapMs(spentMs: number, capMs = START_HOLD_CAP_MS): numb
   return Math.max(START_HOLD_INTRO_MIN_MS, Math.round(capMs - Math.max(0, spentMs)));
 }
 
-/** A sample that holds the loading screen: a stand-in inside the ring. */
-export function isStandIn(s: StartTierSample, ringM = START_HOLD_SHELL_RING_M): boolean {
+/**
+ * A sample that holds the loading screen: a stand-in inside the ring. `touch`: only far prisms hold. Measured on the
+ * iPhone profile (#313, 2026-11-09): with the baked tier off the frame beyond the detail block is runtime shells
+ * whatever the hold does, and waiting on the detail block's own coarse tiles added 3.5-5.3 s to the start with the
+ * first frame's tiers unchanged.
+ */
+export function isStandIn(s: StartTierSample, ringM = START_HOLD_SHELL_RING_M, touch = false): boolean {
   if (!(s.distanceM <= ringM)) return false;
-  return s.owner === 'farPending' || (s.owner === 'coarse' && s.wanted !== false);
+  return s.owner === 'farPending' || (!touch && s.owner === 'coarse' && s.wanted !== false);
 }
 
 export interface StartTierCensus {
@@ -74,14 +81,14 @@ export interface StartTierCensus {
   band600to1200: Partial<Record<StartTierOwner, number>>;
 }
 
-export function startTierCensus(samples: Iterable<StartTierSample>, ringM = START_HOLD_SHELL_RING_M): StartTierCensus {
+export function startTierCensus(samples: Iterable<StartTierSample>, ringM = START_HOLD_SHELL_RING_M, touch = false): StartTierCensus {
   const within: StartTierCensus['within'] = { 300: {}, 600: {}, 1000: {}, 1200: {} };
   let standIns = 0;
   const band600to1200: StartTierCensus['band600to1200'] = {};
   for (const s of samples) {
     if (s.distanceM > 600 && s.distanceM <= 1200) band600to1200[s.owner] = (band600to1200[s.owner] ?? 0) + 1;
     for (const r of [300, 600, 1000, 1200] as const) if (s.distanceM <= r) within[r][s.owner] = (within[r][s.owner] ?? 0) + 1;
-    if (isStandIn(s, ringM)) standIns++;
+    if (isStandIn(s, ringM, touch)) standIns++;
   }
   return { within, standIns, band600to1200 };
 }

@@ -1065,7 +1065,7 @@ export class OwnWorldView implements WorldViewOracles {
       }
       samples.push({ distanceM, owner: t.owner, wanted: t.wanted });
     }
-    return startTierCensus(samples);
+    return startTierCensus(samples, undefined, isTouchPointer(W()));
   }
 
   /**

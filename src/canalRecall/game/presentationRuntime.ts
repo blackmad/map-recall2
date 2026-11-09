@@ -36,7 +36,7 @@ import { stampCount } from '../stampAlbum';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
-import { introHoldCapMs, revealDissolveAlpha, startHoldCapMs, startHoldEnabled, startHoldMessageKey, startHoldTickDue } from '../engine/startHold';
+import { introHoldCapMs, revealDissolveAlpha, startHoldCapMs, startHoldEnabled, startHoldMessageKey, startHoldTickDue, startHoldTicks } from '../engine/startHold';
 import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } from './vehicleZoomScale';
 import { glyphBox, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
@@ -252,7 +252,7 @@ export class GamePresentationRuntime {
     const now = performance.now();
     let touch = false;
     try { touch = !!window.matchMedia?.('(pointer: coarse)')?.matches; } catch { /* fine pointer */ }
-    if (!startHoldTickDue(now, this._startHoldTickAt, touch)) return;
+    if (!startHoldTicks(touch) || !startHoldTickDue(now, this._startHoldTickAt, touch)) return;
     this._startHoldTickAt = now;
     try { view.settleTick(); } catch (error) { console.warn('start hold tick', error); this._startHoldTicking = false; }
   }

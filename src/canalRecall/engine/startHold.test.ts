@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   REVEAL_DISSOLVE_MS, START_HOLD_CAP_MS, START_HOLD_INTRO_MIN_MS, START_HOLD_MESSAGE_AFTER_MS, censusGrid, introHoldCapMs, isStandIn,
-  revealDissolveAlpha, startHoldCapMs, startHoldTickDue, START_HOLD_TICK_MS_DESKTOP, START_HOLD_TICK_MS_TOUCH, startHoldEnabled, startHoldMessageKey, startTierCensus,
+  revealDissolveAlpha, startHoldCapMs, startHoldTickDue, startHoldTicks, START_HOLD_TICK_MS_DESKTOP, START_HOLD_TICK_MS_TOUCH, startHoldEnabled, startHoldMessageKey, startTierCensus,
 } from './startHold';
 
 test('the flag is on unless asked off', () => {
@@ -75,4 +75,12 @@ test('the held world is ticked at 10 Hz on desktop, 4 Hz on touch', () => {
   assert.equal(startHoldTickDue(START_HOLD_TICK_MS_DESKTOP, 0, true), false);
   assert.equal(startHoldTickDue(START_HOLD_TICK_MS_TOUCH, 0, true), true);
   assert.equal(startHoldTickDue(10, 500, false), true); // clock went back: tick
+});
+
+test('on touch only far prisms hold, and the held world is not ticked', () => {
+  assert.equal(isStandIn({ distanceM: 400, owner: 'coarse' }, 600, true), false);
+  assert.equal(isStandIn({ distanceM: 400, owner: 'farPending' }, 600, true), true);
+  assert.equal(startTierCensus([{ distanceM: 100, owner: 'coarse' }], 600, true).standIns, 0);
+  assert.equal(startHoldTicks(true), false);
+  assert.equal(startHoldTicks(false), true);
 });
