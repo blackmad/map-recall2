@@ -126,9 +126,12 @@ test('a label on screen as the rider turns toward its landmark: not asked within
   await page.goto('/canal-drive/?ride=daily&dailyDate=2026-11-09&landmarkQuestions=1');
   await expect.poll(() => page.evaluate(() => (window as any).canalRecallGame?.state ?? -1), { timeout: 150_000 }).toBe(4);
   await startSampler(page);
-  // Stand 60 m short of the Brakke Grond, side-on (its label in the frame, the
-  // building outside the question's cone), with an empty slot and budget.
-  const place = (angleOffset: number, metres: number) => page.evaluate(([offset, m]) => {
+  // Stand 60 m east of the Brakke Grond facing east: the building is behind
+  // the rider (outside the question's cone) and the chase camera, which sits
+  // behind the bike, has its label in the frame. Probed 2026-11-09: at this
+  // pose the overlay draws "Vlaams Cultuurhuis de Brakke Grond"; side-on at
+  // 120 m (70° off) it is occluded and not drawn.
+  const place = (heading: number, metres: number) => page.evaluate(([h, m]) => {
     const game = (window as any).canalRecallGame;
     const lm = game.landmarks.find((l: any) => /brakke grond/i.test(l.name));
     if (!lm) return null;
@@ -136,25 +139,26 @@ test('a label on screen as the rider turns toward its landmark: not asked within
     game.quizFeedback = ''; game.quizCandidateName = ''; game._silentPass = null; game._questionBudget = { asks: [] };
     game._landmarkAsked = new Set(); game._seenLandmarks = new Set(); game._landmarkSightingsCache = {};
     game._clearLandmarkNotice?.();
-    // Facing east along the Nes, the building `offset` radians off the heading.
-    const heading = 0;
-    const bearing = heading + offset;
-    Object.assign(game.player, { x: lm.x - Math.cos(bearing) * m * 3, y: lm.y - Math.sin(bearing) * m * 3, angle: heading, speed: 0, vx: 0, vy: 0 });
+    // The rider stands `m` metres due east of the landmark, facing `h`.
+    Object.assign(game.player, { x: lm.x + (m as number) * 3, y: lm.y, angle: h, speed: 0, vx: 0, vy: 0 });
     return lm.name;
-  }, [angleOffset, metres] as [number, number]);
-  const name = await place((70 * Math.PI) / 180, 120);
+  }, [heading, metres] as [number, number]);
+  const name = await place(0, 60);
   test.skip(!name, 'no Brakke Grond in this extract');
   // Its label on screen (a few label plans).
   await expect.poll(async () => (await frames(page)).slice(-5).some(f => shown(f, BRAKKE).length), { timeout: 15_000 }).toBe(true);
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/label-on-screen-${dev()}.png` });
-  // Turn toward it: inside the cone and 110 m.
-  await place(0, 110);
+  // Turn round toward it: 60 m ahead, inside the cone and the question radius.
+  await place(Math.PI, 60);
   await page.waitForTimeout(5000);
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/turned-${dev()}.png` });
   const log = await frames(page);
   checkInvariants(log);
   expect(log.some(f => f.kind === 'landmark' && BRAKKE.test(f.asked)), 'asked about the Brakke Grond with its label just drawn').toBe(false);
-  expect(log.some(f => f.approach.some(n => BRAKKE.test(n))), 'it became the candidate with its label just drawn').toBe(false);
+  // The candidate is the first withheld name (landmarkWithheldNames puts the
+  // answer first); as another candidate's distractor it is rightly withheld.
+  expect(log.filter(f => BRAKKE.test(f.approach[0] ?? '')).map(f => f.approach), 'it became the candidate with its label just drawn').toEqual([]);
   const skips = await page.evaluate(() => (window as any).__canalRecallSession?.landmarkSkips ?? null);
+  test.info().annotations.push({ type: 'reveal', description: JSON.stringify({ skips }) });
   expect(skips?.labelRecent ?? 0).toBeGreaterThanOrEqual(1);
 });
