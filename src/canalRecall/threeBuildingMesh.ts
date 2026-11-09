@@ -107,6 +107,8 @@ export type MeshBuilding = {
   measuredRoof?: { furniture: readonly FurnitureItem[]; terrace: boolean };
   /** A garden room's glass front, joints and overhanging lid (gardenRooms.ts): flat colour, walls chunk only. */
   gardenRoom?: { tris: readonly FlatTri[] };
+  /** The contemporary family steps this building's top storey back (contemporaryFamily.ts; threeBuildingFeatures.ts withSetbackCrown). */
+  setbackCrown?: boolean;
 };
 
 export type Origin = { lng: number; lat: number };
