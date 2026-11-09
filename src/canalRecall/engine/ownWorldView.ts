@@ -28,6 +28,8 @@ import { guardFrameHost } from './frameGuards';
 import { SETTLE_GROUND_RADIUS_M, settleChecks } from './settle';
 import { RevealSurface, revealLightEnabled } from './revealSurface';
 import { isRideAim, poseCamera, revealLandmarkBudget, revealPose, revealSwapBudget, revealSwapEnabled } from './revealLandmarks';
+import { censusGrid, startHoldEnabled, startTierCensus, type StartTierCensus, type StartTierSample } from './startHold';
+import { cellKeyOf, cellOf } from '../world/cellGrid';
 import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_MS, StartSettleHold, startSettleCoveredFrameMs, startSettleGates, startSettleCapMs, startSettleEnabled, type StartSettleStep } from './startSettle';
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
@@ -364,7 +366,7 @@ export class OwnWorldView implements WorldViewOracles {
       // While the cold-start hold is armed (holdRidePose) the covered world renders faster: the ground installs one cell
       // per rendered frame and the idle checks run on render, so at 1 Hz the start pose's cells were still missing at
       // the 6 s cap (R5-B2 #261). startSettle.ts startSettleCoveredFrameMs.
-      coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? (this._startPose ? startSettleCoveredFrameMs(isTouchPointer(W())) : COVERED_FRAME_MS) : null),
+      coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? (this._startPose || this._startShellsBusy ? startSettleCoveredFrameMs(isTouchPointer(W())) : COVERED_FRAME_MS) : null),
       ...(toon || smaa ? { post: (renderer: any, width: number, height: number) => {
         if (smaa) (this.smaaPost ??= new SmaaPost(THREE)).apply(renderer, width, height);
         if (toon) (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height);
@@ -468,6 +470,9 @@ export class OwnWorldView implements WorldViewOracles {
     for (const [name, busy] of settleChecks(this)) this.cameraMap.addIdleCheck(name, name === 'ownGround' ? () => (this.startHoldOwnsGround() ? false : busy()) : busy);
     // ?startSettle=0 registers nothing here: the hold is today's settleChecks alone (startSettle.ts).
     if (this.startSettleOn) this.cameraMap.addIdleCheck('startSettle', () => this.startSettleBusy());
+    // Lane S1 (#313): under the loading screen, no stand-in (far prisms where a baked cell is still coming, a runtime
+    // shell where a detail chunk is still coming) within 600 m in the frame the player will see (startHold.ts).
+    if (this.startHoldOn) this.cameraMap.addIdleCheck('startShells', () => this.startShellsBusy());
     this.camera = this.cameraMap.api;
     const shadows = flag('shadows', '__canalRecallShadows', settings.shadows);
     this._sharedFrame = new SharedFrame(THREE, this.cameraMap, {
@@ -1028,6 +1033,53 @@ export class OwnWorldView implements WorldViewOracles {
     this._ownGround?.update(subject, cam.zoom, cam.pitch);
     this.updateFarShells(subject, this._ownGround?.farRadiusM ?? 0);
     this.host.triggerRepaint();
+  }
+
+  /** Lane S1 (#313): the start hold's census check; `?startHold=0` (or `__canalRecallStartHold = false`) restores today's hold. */
+  private readonly startHoldOn: boolean = startHoldEnabled(W().__canalRecallStartHold ?? new URLSearchParams(W().location?.search ?? '').get('startHold'));
+  /** The last census the start hold judged (probes read it), and whether it was still holding. */
+  lastStartCensus: (StartTierCensus & { at: number }) | null = null;
+  private _startShellsBusy = false;
+
+  /**
+   * Which tier owns the ground under each point of a 24 × 16 grid over the view, within 1 km of the view centre
+   * (startHold.ts): the facade layer's detail chunk, a drawn baked coarse cell, a runtime coarse shell, far prisms
+   * standing in for a baked cell not drawn yet (`farPending`), or nothing.
+   */
+  startTierCensus(): StartTierCensus | null {
+    const cam = this.camera, canvas = this.host.canvas;
+    if (!cam || !canvas) return null;
+    const c = cam.center(), kx = 111_320 * Math.cos(c.lat * Math.PI / 180), ky = 110_574;
+    const tb = this._threeBuildings, bc = this._bakedCoarse;
+    const samples: StartTierSample[] = [];
+    for (const p of censusGrid(canvas.clientWidth || canvas.width, canvas.clientHeight || canvas.height)) {
+      const ll = cam.unproject(p);
+      if (!ll) continue;
+      const distanceM = Math.hypot((ll.lng - c.lng) * kx, (ll.lat - c.lat) * ky);
+      if (!(distanceM <= 1000)) continue;
+      const t: { owner: StartTierSample['owner']; wanted: boolean } = tb?.tierAt?.(ll.lng, ll.lat) ?? { owner: 'none', wanted: false };
+      if (t.owner !== 'facade' && bc) {
+        const cell = cellKeyOf(...cellOf(ll.lng, ll.lat));
+        if (bc.drawn(cell)) t.owner = 'baked';
+        else if (t.owner === 'none' && bc.covers(cell)) t.owner = 'farPending';
+      }
+      samples.push({ distanceM, owner: t.owner, wanted: t.wanted });
+    }
+    return startTierCensus(samples);
+  }
+
+  /**
+   * Busy while the loading screen is up and the census finds a stand-in within 600 m. Each poll first runs the far and
+   * baked tiers at the held camera (settleTick): they only advance from sync, which the game does not run under the
+   * loading screen, so a baked cell planned at the aim stayed undrawn (far prisms, grey lids) until the reveal.
+   */
+  private startShellsBusy(): boolean {
+    if (W().canalRecallGame?.state !== LOADING_STATE) { this._startShellsBusy = false; return false; }
+    this.settleTick();
+    const census = this.startTierCensus();
+    this.lastStartCensus = census && { ...census, at: Math.round(performance.now()) };
+    this._startShellsBusy = !!census && census.standIns > 0;
+    return this._startShellsBusy;
   }
 
   /** Cold-start hold (startSettle.ts): on unless `?startSettle=0`. Off, nothing below runs and the hold is today's. */

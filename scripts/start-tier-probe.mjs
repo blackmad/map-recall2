@@ -58,7 +58,7 @@ async function run(i) {
         if (!ll) continue;
         const d = Math.hypot((ll.lng - c.lng) * kx, (ll.lat - c.lat) * ky);
         const [nx, ny] = tile(ll.lng, ll.lat, dz), [cx, cy] = tile(ll.lng, ll.lat, 14);
-        const tier = has(`near:${nx}/${ny}`) || has(`near:${dz}/${nx}/${ny}`) ? 'facade' : baked.has(cellOf(ll.lng, ll.lat)) ? 'baked' : has(`coarse:${cx}/${cy}`) || has(`coarse:14/${cx}/${cy}`) ? 'coarse' : 'none';
+        const tier = has(`near:${nx}/${ny}`) || has(`near:${dz}/${nx}/${ny}`) ? 'facade' : baked.has(cellOf(ll.lng, ll.lat)) ? 'baked' : has(`coarse:${cx}/${cy}`) || has(`coarse:14/${cx}/${cy}`) ? 'coarse' : bc?.covers?.(cellOf(ll.lng, ll.lat)) ? 'farPending' : 'none';
         for (const r of [300, 600, 1000]) if (d <= r) {
           buckets[r][tier] = (buckets[r][tier] ?? 0) + 1;
           (tiles[r][tier] ??= new Set()).add(`${nx}/${ny}`);
@@ -82,7 +82,7 @@ async function run(i) {
       const now = performance.now();
       if (raceAt == null) {
         raceAt = now; S.raceAt = Math.round(now); S.hold = g._lastMapSettle ? { ...g._lastMapSettle } : null;
-        S.startHold = typeof g._startHoldReport === 'object' ? g._startHoldReport : null;
+        S.startHold = g._startHold ? JSON.parse(JSON.stringify(g._startHold)) : null;
         // The first racing frame: census and a still, from the frame right after the reveal.
         vm.cameraMap.on('render', function first() {
           if (S.still) return;
@@ -102,14 +102,17 @@ async function run(i) {
   if (throttle > 1) { const cdp = await context.newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: throttle }); }
   await page.waitForFunction(() => window.canalRecallGame?.state === 4, null, { timeout: 180_000 });
   await page.waitForTimeout(watchMs);
+  // The settled frame at the end of the watch, for the strip (same pose unless the ride moved).
+  const late = await page.evaluate(() => { const src = window.canalRecallGame?.vectorMap?.frameCanvas?.(); if (!src) return null; const big = document.createElement('canvas'); big.width = Math.min(1280, src.width); big.height = Math.round(big.width * src.height / src.width); big.getContext('2d').drawImage(src, 0, 0, big.width, big.height); return big.toDataURL('image/jpeg', 0.8); }).catch(() => null);
   const S = await page.evaluate(() => window.__tierProbe);
+  if (stills && late) { fs.mkdirSync(stills, { recursive: true }); fs.writeFileSync(path.join(stills, `${label}-${device}-run${i + 1}-late-${watchMs}ms.jpg`), Buffer.from(late.split(',')[1], 'base64')); }
   await context.close();
   if (stills && S.still && S.still.startsWith('data:')) {
     fs.mkdirSync(stills, { recursive: true });
     fs.writeFileSync(path.join(stills, `${label}-${device}-run${i + 1}-first-frame.jpg`), Buffer.from(S.still.split(',')[1], 'base64'));
   }
   const first = S.samples.find(s => s.first) ?? S.samples[0];
-  const coarse600 = s => (s?.points?.[600]?.coarse ?? 0) + (s?.points?.[600]?.none ?? 0);
+  const coarse600 = s => (s?.points?.[600]?.coarse ?? 0) + (s?.points?.[600]?.farPending ?? 0);
   const clear = S.samples.filter(s => !s.first).find(s => coarse600(s) === 0);
   return {
     label, device, navToRaceMs: S.raceAt, wallToRaceMs: null, hold: S.hold, startHold: S.startHold, first,
@@ -125,7 +128,7 @@ for (let i = 0; i < runs; i++) {
   results.push(r);
   const f = r.first;
   console.log(`${label} ${device} run ${i + 1}: nav->racing ${r.navToRaceMs} ms, hold ${JSON.stringify(r.hold && { ms: r.hold.ms, timedOut: r.hold.timedOut, pending: r.hold.pending })}`);
-  console.log(`  first frame centre ${f?.centre} z${f?.zoom} p${f?.pitch} b${f?.bearing}; pts300 ${JSON.stringify(f?.points?.[300])} pts600 ${JSON.stringify(f?.points?.[600])} pts1000 ${JSON.stringify(f?.points?.[1000])}; tiles600 ${JSON.stringify(f?.tiles?.[600])}; baked ${JSON.stringify(f?.baked)}; no coarse/none <=600 m after ${r.msUntilNoCoarseWithin600 ?? 'never'} ms`);
+  console.log(`  first frame centre ${f?.centre} z${f?.zoom} p${f?.pitch} b${f?.bearing}; pts300 ${JSON.stringify(f?.points?.[300])} pts600 ${JSON.stringify(f?.points?.[600])} pts1000 ${JSON.stringify(f?.points?.[1000])}; tiles600 ${JSON.stringify(f?.tiles?.[600])}; baked ${JSON.stringify(f?.baked)}; no coarse/farPending <=600 m after ${r.msUntilNoCoarseWithin600 ?? 'never'} ms`);
 }
 await browser.close();
 fs.mkdirSync(path.dirname(out), { recursive: true });

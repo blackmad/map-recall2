@@ -2481,6 +2481,19 @@ export class ThreeBuildings {
     return n;
   }
 
+  /**
+   * Which of this layer's tiers owns the ground at lng/lat (lane S1 #313, engine/startHold.ts census): `facade` when
+   * the detail tile's `near:` chunk is installed, `coarse` when only the z14 runtime shell is, else `none`. `wanted`:
+   * the detail tile is in the current detail block, so a coarse shell there will still be replaced.
+   */
+  tierAt(lng: number, lat: number): { owner: 'facade' | 'coarse' | 'none'; wanted: boolean } {
+    const one = [[[[lng, lat]]]] as number[][][][];
+    const near = tileKeyAt(one, this.detailZoom);
+    if (this.chunks.get(`near:${near}`)?.mesh) return { owner: 'facade', wanted: true };
+    const wanted = this.detailTiles.has(near);
+    return { owner: this.chunks.get(COARSE_PREFIX + tileKeyAt(one, TILE_ZOOM))?.mesh ? 'coarse' : 'none', wanted };
+  }
+
   /** Whether this layer draws through the shared frame. */
   get inSharedFrame(): boolean { return !!this.sharedFrame; }
 }
