@@ -21,7 +21,24 @@ export const ROWS = {
     over: (m, b) => m[0] > b[0] || m[1] > b[1] || m[2] > b[2],
   },
   desktopMotionP99Ms: { collector: 'motion', get: c => num(first(c.motion?.results)?.motion?.frames?.p99) },
+  // ThreeBuildings stats().textureMB at the end of the DPR 2 own-engine motion ride (crisp-textures.spec.ts reads the same).
+  desktopTextureMB: { collector: 'motion', get: c => num(first(c.motion?.results)?.gl?.facadeTextureMB) },
+  // Published world-v1 cells on disk (each cell file is already gzip): worldCellsGzipBytes() below, in MB of 1e6 bytes.
+  worldCellsCityMB: { collector: 'files', get: c => { const b = num(c.files?.worldCellsGzipBytes); return b === undefined ? undefined : Math.round(b / 1e4) / 100; } },
 };
+
+/** Sum of public/data/extracts/amsterdam/world-v1/cells/*.bin, gzipping any cell that is not already gzip. */
+export async function worldCellsGzipBytes(dir = 'public/data/extracts/amsterdam/world-v1/cells') {
+  const fs = await import('node:fs'), zlib = await import('node:zlib');
+  if (!fs.existsSync(dir)) return null;
+  let bytes = 0;
+  for (const f of fs.readdirSync(dir)) {
+    if (!f.endsWith('.bin')) continue;
+    const b = fs.readFileSync(`${dir}/${f}`);
+    bytes += b[0] === 0x1f && b[1] === 0x8b ? b.length : zlib.gzipSync(b).length;
+  }
+  return bytes;
+}
 
 const E2E = (spec, env = '') => `${env}npx playwright test ${spec}`;
 export const EXTERNAL = {
@@ -31,7 +48,6 @@ export const EXTERNAL = {
   iphoneGlBuffersMB: 'node scripts/heap-ride.mjs --device iphone --gl',
   iphoneMapLibreWorkersMB: 'node scripts/heap-ride.mjs --device iphone',
   cameraParityPx: E2E('tests/e2e/engine-own.spec.ts', 'parity test: '),
-  worldCellsCityMB: 'node scripts/check-world-cells (gzip sum of world-v1/cells)',
   roadGraphMB: 'node scripts/heap-ride.mjs (claimed owners)',
   iphoneTextureMB: E2E('tests/e2e/city-startup-lod.spec.ts', '--project=iphone: '),
   worldRideDownloadMB: 'node scripts/pop-in.mjs / ride with ?world=v1 (gzip fetched)',
@@ -45,7 +61,6 @@ export const EXTERNAL = {
   desktopColdStartOver200Ms: 'node scripts/motion-stutter.mjs --runs cold --seconds 0 --starts default',
   iphoneColdStartOver100Ms: 'node scripts/motion-stutter.mjs --device iphone --throttle 4 --runs cold --starts default',
   popInSwapsMid: E2E('tests/e2e/swap-gate.spec.ts', 'PERF_SWAPS=1 SWAP_GATE_MID=1 '),
-  desktopTextureMB: 'node scripts/aerial-pan.mjs (ThreeBuildings stats().textureMB)',
 };
 // Everything else in budgets.json that is not an aerial-pan row is unknown; aerial rows come from one script.
 const AERIAL = /^(aerial|farShell)/;

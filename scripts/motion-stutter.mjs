@@ -420,7 +420,7 @@ async function run(browser, kind, throttle, context) {
   const sync1 = profiling ? await sync('sync1') : null;
   const gl = glCounters ? await page.evaluate(() => {
     const perf = window.__canalPerf, vm = window.canalRecallGame?.vectorMap;
-    return perf?.gl ? { ...perf.gl.report(), tier: perf.tier ?? null, pitch: vm?.camera?.pitch?.() ?? null, pixelRatio: vm?.host?.getPixelRatio?.() ?? null, programCount: vm?.host?.renderer?.info?.programs?.length ?? null } : null;
+    return perf?.gl ? { ...perf.gl.report(), tier: perf.tier ?? null, pitch: vm?.camera?.pitch?.() ?? null, pixelRatio: vm?.host?.getPixelRatio?.() ?? null, programCount: vm?.host?.renderer?.info?.programs?.length ?? null, facadeTextureMB: vm?._threeBuildings?.stats?.()?.textureMB ?? null } : null;
   }).catch(e => ({ error: String(e) })) : undefined;
   const dump = process.env.DUMP_JS ? await page.evaluate(expr => (0, eval)(expr), process.env.DUMP_JS).catch(e => ({ error: String(e) })) : undefined;
   const raw = await page.evaluate(() => {

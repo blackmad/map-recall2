@@ -38,3 +38,18 @@ test('every key in tests/perf/budgets.json is registered', async () => {
   assert.deepEqual(v.rows.filter(r => r.why).map(r => r.key), []);
   assert.ok(Object.keys(ROWS).every(k => k in real) && Object.keys(EXTERNAL).every(k => k in real));
 });
+test('in-process rows: facade texture from the motion ride, world cells from the checkout', async () => {
+  const { worldCellsGzipBytes } = await import('../../scripts/perf-gate-lib.mjs');
+  const b = { desktopTextureMB: { value: 90 }, worldCellsCityMB: { value: 10 } };
+  const c = structuredClone(good); c.motion.results[0].gl.facadeTextureMB = 86.7; c.files = { worldCellsGzipBytes: 10_500_000 };
+  const v = evaluate(b, c);
+  assert.deepEqual(v.rows.map(r => [r.key, r.status, r.measured, r.over]), [['desktopTextureMB', 'measured', 86.7, false], ['worldCellsCityMB', 'measured', 10.5, true]]);
+  assert.deepEqual(evaluate(b, good).naKeys, ['desktopTextureMB', 'worldCellsCityMB']);
+  assert.equal(await worldCellsGzipBytes('no/such/dir'), null);
+  const fs = await import('node:fs'), os = await import('node:os'), zlib = await import('node:zlib');
+  const dir = fs.mkdtempSync(`${os.tmpdir()}/cells-`);
+  fs.writeFileSync(`${dir}/a.bin`, zlib.gzipSync(Buffer.alloc(1000)));
+  fs.writeFileSync(`${dir}/b.bin`, Buffer.alloc(1000, 7));
+  fs.writeFileSync(`${dir}/index.json`, '{}');
+  assert.equal(await worldCellsGzipBytes(dir), zlib.gzipSync(Buffer.alloc(1000)).length + zlib.gzipSync(Buffer.alloc(1000, 7)).length);
+});
