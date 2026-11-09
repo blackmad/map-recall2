@@ -18,6 +18,7 @@ import {
   LANDMARK_QUESTION_RADIUS_M,
   landmarkQuestionsEnabled,
   mayAskLandmark,
+  questionContext,
   noteSighting,
   readSightings,
   SAME_COMPLEX_M,
@@ -26,6 +27,7 @@ import {
   type Sightings,
 } from './landmarkQuestion';
 import { isWorthACard } from './landmarkData';
+import { isBuildingLandmark } from './landmarkKind';
 import { pickAskable, readLandmarkReviews, recordLandmarkOutcome, reviewKind, seedFromSightings, type LandmarkReviews } from './landmarkReview';
 import { approachKept, bumpSkipCounter, LANDMARK_APPROACH_RADIUS_M, landmarkSkipReason, sharedLedger } from './labelDrawLedger';
 import { decideQuestion, EMPTY_BUDGET, recordAsk } from './questionBudget';
@@ -197,7 +199,8 @@ export class GameLandmarkQuestionRuntime {
     this._openQuizPrompt({
       kind: 'landmark', name: landmarkDisplayName(chosen.name, lang), subject: 'landmark',
       question: t('ride.landmarkQuestion.heading'),
-      context: approach.hood ? `${side} · ${approach.hood}` : side,
+      // The plaque's buurt (placeBuurt.ts, L5), so the card and the plaque name one buurt (R2-8).
+      context: questionContext(side, this.currentNeighborhood || approach.hood),
       choices: shownChoices,
     });
     this._dressLandmarkPrompt();
@@ -240,7 +243,8 @@ export class GameLandmarkQuestionRuntime {
       // Asked this ride, or named and not yet due again (#300).
       if (skip.has(landmark.id) || this._seenLandmarks.has(landmark.id) || reviewKind(reviews[landmark.id], wallNow) === 'known') return false;
       if (Math.abs(landmark.x - player.x) > bandPx || Math.abs(landmark.y - player.y) > bandPx) return false;
-      if (!isWorthACard(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
+      // "Which building is this?": statues and memorials keep their drive-by card (R2-7).
+      if (!isWorthACard(landmark) || !isBuildingLandmark(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
       // The destination card names the destination; a landmark sharing its
       // name would be answered by the HUD.
       if (landmark.name === this.routeTo?.name) return false;
@@ -264,7 +268,7 @@ export class GameLandmarkQuestionRuntime {
     });
     const answer = withHood(chosen);
     const pool = this.landmarks
-      .filter(landmark => isWorthACard(landmark) && Math.hypot(landmark.x - chosen.x, landmark.y - chosen.y) <= FILLER_MAX_M * PIXELS_PER_METER)
+      .filter(landmark => isWorthACard(landmark) && isBuildingLandmark(landmark) && Math.hypot(landmark.x - chosen.x, landmark.y - chosen.y) <= FILLER_MAX_M * PIXELS_PER_METER)
       .map(withHood);
     const choices = landmarkChoices(answer, pool, {
       sameComplexPx: SAME_COMPLEX_M * PIXELS_PER_METER, fillerMaxPx: FILLER_MAX_M * PIXELS_PER_METER, shuffle,

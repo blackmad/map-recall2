@@ -2,8 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   bumpSessionCounter, hasBeenNamed, landmarkWithheldNames, inViewCone, landmarkChoices, landmarkQuestionsEnabled, mayAskLandmark,
-  noteSighting, pickLandmarkQuestion, readSightings, saveSightings, sightingCredit, type QuestionLandmark,
+  noteSighting, pickLandmarkQuestion, questionContext, readSightings, saveSightings, sightingCredit, type QuestionLandmark,
 } from './landmarkQuestion.ts';
+import { isBuildingLandmark, landmarkKind } from './landmarkKind.ts';
 import { gameLabelContext, poiLabelVisible, streetLabelVisible } from '../ownMap/labelPolicy.ts';
 import { labelAllowed } from '../labels/labelPlan.ts';
 
@@ -130,4 +131,34 @@ test('an open landmark question withholds all four choice names on every label p
   // Answered (or ?landmarkQuestions=0, which never sets the set): everything is back.
   const closed = gameLabelContext({ ...base, quizPromptName: '', quizWithheldNames: withheld });
   for (const name of choices) assert.equal(poiLabelVisible(closed, name), true, name);
+});
+
+test('kind: statues, sculptures and memorials are not buildings; a memorial museum is', () => {
+  const k = (name: string, type: string, ids: string[] = []) => landmarkKind({ name, type, wikidataInstanceOf: ids });
+  assert.equal(k('Equestrian statue of Queen Wilhelmina', 'landmark', ['Q179700']), 'memorial');
+  assert.equal(k('Waterdraagster', 'landmark', ['Q860861']), 'memorial');
+  assert.equal(k('Homomonument', 'landmark', ['Q575759']), 'memorial');
+  assert.equal(k('Spanjemonument', 'landmark'), 'memorial', 'no Wikidata: the name decides');
+  assert.equal(k('Anne Frank House', 'museum', ['Q2087181', 'Q575759']), 'building');
+  assert.equal(k('Hollandsche Schouwburg', 'museum', ['Q24354', 'Q33506', 'Q575759']), 'building');
+  assert.equal(k('Museum of the Canals', 'museum'), 'building');
+  assert.equal(k('Church of England', 'landmark'), 'building');
+  assert.equal(isBuildingLandmark({ name: 'Paradiso', type: 'landmark', wikidataInstanceOf: ['Q24354'] }), true);
+});
+
+test('distractors: a pool filtered to buildings never offers a memorial, and short pools ask nothing', () => {
+  const kinds: Record<string, string[]> = { hm: ['Q575759'] };
+  const buildings = pool.filter(l => isBuildingLandmark({ name: l.name, type: 'landmark', wikidataInstanceOf: kinds[l.id] }));
+  assert.equal(buildings.some(l => l.id === 'hm'), false);
+  const choices = landmarkChoices(westerkerk, buildings, { sameComplexPx: 40 * PX, fillerMaxPx: 900 * PX })!;
+  assert.equal(choices.includes('Homomonument'), false);
+  assert.equal(choices.length, 4);
+  // Without the memorial only three honest names remain around a distant answer.
+  assert.equal(landmarkChoices(westerkerk, buildings.filter(l => l.id !== 'nk' && l.id !== 'bh'), { sameComplexPx: 40 * PX, fillerMaxPx: 900 * PX }), null);
+});
+
+test('question context names the plaque buurt, not a second rule', () => {
+  assert.equal(questionContext('On the right', 'Museumkwartier'), 'On the right · Museumkwartier');
+  assert.equal(questionContext('Ahead', ''), 'Ahead');
+  assert.equal(questionContext('Ahead', null), 'Ahead');
 });

@@ -6,6 +6,7 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { isWorthACard } from '../../src/canalRecall/game/landmarkData.ts';
+import { landmarkKind } from '../../src/canalRecall/game/landmarkKind.ts';
 import { DAILY_RIDE_POOL } from '../../src/canalRecall/game/dailyRidePool.ts';
 import { MANUAL_LANDMARKS } from '../../src/canalRecall/landmarks/manualModels.ts';
 
@@ -41,6 +42,9 @@ const containing = (p: LatLon) => boundaries.filter(b => inside(p, b)).sort((a, 
 
 const counts = new Map<string, { card: number; askable: number; names: string[] }>();
 let card = 0, askable = 0;
+// By kind (R2-7): the question asks about buildings; memorials keep the drive-by card.
+const kinds = { card: { building: 0, memorial: 0 }, askable: { building: 0, memorial: 0 } };
+const memorials: string[] = [];
 for (const f of features) {
   const center = (f.center || f.path?.[0]) as LatLon | undefined;
   if (!center) continue;
@@ -49,8 +53,10 @@ for (const f of features) {
   });
   if (!worth) continue;
   card++;
+  const kind = landmarkKind({ name: f.name, type: f.type, wikidataInstanceOf: f.wikidataInstanceOf });
+  kinds.card[kind]++;
   const isAskable = modelled.has(f.id);
-  if (isAskable) askable++;
+  if (isAskable) { askable++; kinds.askable[kind]++; if (kind === 'memorial') memorials.push(f.name); }
   for (const key of new Set(containing(center).map(b => slug(b.name)))) {
     const row = counts.get(key) ?? { card: 0, askable: 0, names: [] };
     row.card++;
@@ -62,9 +68,10 @@ for (const f of features) {
 const poolKeys = [...new Set(DAILY_RIDE_POOL.map(p => p.buurt))].sort();
 const rows = poolKeys.map(key => ({ buurt: key, ...(counts.get(key) ?? { card: 0, askable: 0, names: [] }) }));
 if (process.argv.includes('--json')) {
-  console.log(JSON.stringify({ landmarks: features.length, worthACard: card, askable, rows }, null, 2));
+  console.log(JSON.stringify({ landmarks: features.length, worthACard: card, askable, kinds, memorials, rows }, null, 2));
 } else {
   console.log(`landmarks.json ${features.length}; worth a card ${card}; askable (card + modelled) ${askable}`);
+  console.log(`by kind: card ${JSON.stringify(kinds.card)}; askable ${JSON.stringify(kinds.askable)}; askable memorials: ${memorials.join('; ')}`);
   console.log(`daily-ride buurt keys ${poolKeys.length}; with ≥1 askable ${rows.filter(r => r.askable).length}; askable in pool buurten (sum) ${rows.reduce((s, r) => s + r.askable, 0)}`);
   for (const r of rows.sort((a, b) => b.askable - a.askable || a.buurt.localeCompare(b.buurt))) {
     console.log(`${r.buurt.padEnd(32)} card ${String(r.card).padStart(3)}  askable ${String(r.askable).padStart(2)}  ${r.names.slice(0, 6).join('; ')}`);

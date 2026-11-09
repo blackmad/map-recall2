@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 import { openRoute } from './helpers';
+import { landmarkKind } from '../../src/canalRecall/game/landmarkKind';
 
 // G3 — Landmarks you can name (#273). A scripted ride past the Westerkerk asks
 // "Which building is this?" with four names from the same buurt; no HUD
@@ -242,4 +243,40 @@ test('a named landmark is not asked after a reload until its review is due', asy
   expect(due.kind, JSON.stringify(due)).toBe('landmark');
   expect(due.asked).toBe('Westerkerk');
   expect(due.domMentions, 'still never named before the answer').toEqual([]);
+});
+
+test('the asked landmark and every choice are buildings; a memorial is never asked, and the context names the plaque buurt', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop' && testInfo.project.name !== 'iphone', 'both layouts');
+  test.setTimeout(180000);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase', query: '?landmarkQuestions=1' });
+  const open = await approachWesterkerk(page);
+  expect(open.kind, JSON.stringify(open)).toBe('landmark');
+  const records = await page.evaluate((names) => {
+    const game = (window as any).canalRecallGame;
+    return names.map((name: string) => {
+      const l = game.landmarks.find((x: any) => x.name === name);
+      return { name, type: l?.type, wikidataInstanceOf: l?.wikidataInstanceOf };
+    });
+  }, open.choices as string[]);
+  for (const record of records) expect(landmarkKind(record), `${record.name} is not a building`).toBe('building');
+  // One buurt rule on screen: the card's context ends with the plaque's buurt.
+  const plaque = await page.evaluate(() => (window as any).canalRecallGame.currentNeighborhood as string);
+  if (plaque) expect(open.context).toBe(`${(open.context as string).split(' · ')[0]} · ${plaque}`);
+
+  // A memorial beside the rider is not asked about.
+  const memorial = await page.evaluate(() => {
+    const game = (window as any).canalRecallGame;
+    const m = game.landmarks.find((l: any) => l.name === 'Homomonument');
+    if (!m) return { error: 'no Homomonument' };
+    game.quizPromptName = ''; game.quizPromptKind = 'route'; game._prompt.style.display = 'none';
+    game._questionBudget = { asks: [] }; game._landmarkAsked = new Set(); game._seenLandmarks = new Set();
+    game._landmarkReviewsCache = undefined; game._clearLandmarkNotice();
+    game._landmarkIsModelled = () => true;
+    Object.assign(game.player, { x: m.x - 110 * 3, y: m.y, angle: 0, speed: 0, vx: 0, vy: 0 });
+    game._updateLandmarks(1 / 60);
+    return { kind: game.quizPromptKind, asked: game.quizPromptName };
+  });
+  expect(memorial.error).toBeUndefined();
+  expect(memorial.asked).not.toBe('Homomonument');
+  expect(memorial.kind).not.toBe('landmark');
 });
