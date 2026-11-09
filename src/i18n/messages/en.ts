@@ -299,6 +299,7 @@ export const en = {
   'ride.load.renderingTrams': 'Rendering tram lines…',
   'ride.load.renderingWaterways': 'Rendering waterways…',
   'ride.load.settling': 'Settling the map…',
+  'ride.load.buildingCity': 'Building the city…',
   'ride.load.ready': 'Ready!',
   'ride.load.findingWay': 'Finding your way…',
   'ride.error.noStartPoint': 'No reachable starting point is available for this destination.',

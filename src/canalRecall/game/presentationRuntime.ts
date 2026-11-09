@@ -36,6 +36,7 @@ import { stampCount } from '../stampAlbum';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
+import { introHoldCapMs, revealDissolveAlpha, startHoldCapMs, startHoldEnabled, startHoldMessageKey, startHoldTickDue, startHoldTicks } from '../engine/startHold';
 import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } from './vehicleZoomScale';
 import { glyphBox, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
@@ -204,6 +205,71 @@ export class GamePresentationRuntime {
     this.vectorMap.sync(this.camera, this.osmLoader, this.canvas);
     this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
     return true;
+  }
+
+  /**
+   * The start's loading holds (lane S1 #313): the ride-pose hold and the intro hold share one cap (10 s,
+   * `?startHoldCap=` for the sweep; the intro keeps at least 1.8 s); after 1.5 s the loading line says the city is
+   * being built; a hold that ends on its cap arms the reveal's dissolve. `?startHold=0` is today's 4 s / 1.8 s.
+   * game-route.js calls it in place of `_waitForMapSettle(4000)` and `_waitForMapSettle(1800)`.
+   */
+  async _startHoldWait(kind: 'ride' | 'intro'): Promise<void> {
+    if (!this._waitForMapSettle) return;
+    const search = new URLSearchParams(window.location.search);
+    const w = window as unknown as { __canalRecallStartHold?: unknown };
+    if (!startHoldEnabled(w.__canalRecallStartHold ?? search.get('startHold'))) { await this._waitForMapSettle(kind === 'ride' ? 4000 : 1800); return; }
+    if (kind === 'ride' || !this._startHold) this._startHold = { spentMs: 0, capped: false, holds: [] };
+    const hold = this._startHold;
+    const cap = startHoldCapMs(search.get('startHoldCap'));
+    const capMs = kind === 'ride' ? cap : introHoldCapMs(hold.spentMs, cap);
+    const base = kind === 'ride' ? 'ride.load.settling' : 'ride.load.findingWay';
+    const started = performance.now();
+    const timer = setInterval(() => {
+      if (this.state !== GameState.LOADING) return;
+      const key = startHoldMessageKey(performance.now() - started, base);
+      if (key !== base) this.loadingMessage = tr(key as MessageKey);
+    }, 250);
+    // While this hold waits, the loading frame ticks the world (_tickHeldWorld): the hold ends when the city is built.
+    this._startHoldTicking = true;
+    try { await this._waitForMapSettle(capMs); } finally { clearInterval(timer); this._startHoldTicking = false; }
+    const out = this._lastMapSettle;
+    const ms = out?.ms ?? Math.round(performance.now() - started);
+    hold.spentMs += ms;
+    hold.capped = !!out?.timedOut;
+    hold.holds.push({ kind, ms, capMs, timedOut: !!out?.timedOut, pending: out?.pending ?? [] });
+    // The dissolve follows the last hold before racing: armed when it ended on its cap.
+    this._revealDissolve = hold.capped ? { at: -1, capped: true } : null;
+  }
+
+  /**
+   * Under the loading screen, while a start hold waits (lane S1 #313): run the world's settle tick (ground, far and
+   * baked tiers at the held camera) at 10 Hz desktop / 4 Hz touch. The game never synced the world while loading, so
+   * the baked cells the aim planned stayed undrawn and far prisms stood in for them until the reveal.
+   */
+  _tickHeldWorld(): void {
+    if (!this._startHoldTicking) return;
+    const view = this.vectorMap as unknown as { settleTick?(): void } | null;
+    if (!view?.settleTick) return;
+    const now = performance.now();
+    let touch = false;
+    try { touch = !!window.matchMedia?.('(pointer: coarse)')?.matches; } catch { /* fine pointer */ }
+    if (!startHoldTicks(touch) || !startHoldTickDue(now, this._startHoldTickAt, touch)) return;
+    this._startHoldTickAt = now;
+    try { view.settleTick(); } catch (error) { console.warn('start hold tick', error); this._startHoldTicking = false; }
+  }
+
+  /** Paint the loading screen over the first ~600 ms of the ride after a capped hold (startHold.ts revealDissolveAlpha). */
+  _drawRevealDissolve(ctx: CanvasRenderingContext2D): void {
+    const d = this._revealDissolve;
+    if (!d || this.state === GameState.LOADING) return;
+    const now = performance.now();
+    if (d.at < 0) d.at = now;
+    const alpha = revealDissolveAlpha(now - d.at, d.capped);
+    if (alpha <= 0) { this._revealDissolve = null; return; }
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    this.loadingScreen.draw(ctx, this.loadingMessage, 1);
+    ctx.restore();
   }
 
   /** The zoom to save as the player's: the flight's landing zoom while one owns the camera (introFlight.ts playerZoom). */
@@ -638,6 +704,12 @@ export class GamePresentationRuntime {
   // ---- The frame ----
 
   _render(): void {
+    this._renderFrame();
+    // Lane S1 (#313): after a capped start hold the loading screen dissolves over the ride's first ~600 ms.
+    if (this._revealDissolve) this._drawRevealDissolve(this.ctx);
+  }
+
+  _renderFrame(): void {
     this._syncViewportSize();
     const ctx = this.ctx;
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
@@ -706,6 +778,7 @@ export class GamePresentationRuntime {
     }
     if (this.state === GameState.LOADING) {
       this.loadingScreen.draw(ctx, this.loadingMessage, this.loadingProgress);
+      this._tickHeldWorld();
       return;
     }
     if (!this.player) return;

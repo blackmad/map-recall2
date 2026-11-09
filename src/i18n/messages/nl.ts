@@ -301,6 +301,7 @@ export const nl: Record<MessageKey, string> = {
   'ride.load.renderingTrams': 'Tramlijnen tekenen…',
   'ride.load.renderingWaterways': 'Waterwegen tekenen…',
   'ride.load.settling': 'De kaart wordt bijgewerkt…',
+  'ride.load.buildingCity': 'De stad wordt opgebouwd…',
   'ride.load.ready': 'Klaar!',
   'ride.load.findingWay': 'Je route wordt gezocht…',
   'ride.error.noStartPoint': 'Er is geen bereikbaar startpunt voor deze bestemming.',
