@@ -659,6 +659,16 @@ export class GamePresentationRuntime {
         const buttons = [...utility.children].map(child => child.getBoundingClientRect());
         if (card && utilityBlockedByCards(buttons, [card.getBoundingClientRect()])) revealed = false;
       }
+      // The same for the canvas's bottom card (a drive-by or tapped place card):
+      // on a phone "Report a problem" and settings crowded its edge (#286).
+      if (revealed && riding && this._landmarkCardBounds) {
+        const b = this._landmarkCardBounds;
+        const canvas = this.canvas.getBoundingClientRect();
+        const kx = canvas.width / CANVAS_W, ky = canvas.height / CANVAS_H;
+        const card = { left: canvas.left + b.x * kx, top: canvas.top + b.y * ky, right: canvas.left + (b.x + b.w) * kx, bottom: canvas.top + (b.y + b.h) * ky };
+        const buttons = [...utility.children].map(child => child.getBoundingClientRect());
+        if (utilityBlockedByCards(buttons, [card])) revealed = false;
+      }
       // The whole cluster tucks (feedback, build stamp too). A phone used to
       // keep Feedback up, and it sat on a quiz answer ("Plantage Kerklaan",
       // 390×844 frame 2026-10-16); a tap on the map brings it back.
@@ -940,13 +950,26 @@ export class GamePresentationRuntime {
       } else {
         this.hud.drawStick(ctx, this.input.stickView);
       }
-      // Parked at the start of a street-follow ride, the hint stays up: it is
-      // the only thing saying a press sets off.
-      const parked = this.controlMode === 'street' && !!this.player?.streetFollowView?.parked;
-      if (this.input.showTouchHint || parked) this.hud.drawTouchHint(ctx, this.controlMode);
+      if (this._touchHintShowing()) this.hud.drawTouchHint(ctx, this.controlMode);
     }
     if (this.state === GameState.PAUSED) this._renderPaused();
     if (this.state === GameState.FINISHED) this._renderFinish();
+  }
+
+  /** Whether the touch hint strip is drawn over the d-pad. Parked at the
+   *  start of a street-follow ride it stays up: it is the only thing saying a
+   *  press sets off. The phone's bottom cards stack above it (#286). */
+  _touchHintShowing(): boolean {
+    if (!this._hudRects().dpad || this.state !== GameState.RACING || this._overlayOpen() || this._intro) return false;
+    // A bottom card up on the phone takes the hint's place for as long as it
+    // is open: the strip ran over the card's Noticed pill, and stacking the
+    // card above it pushed the card over the bike (#286). The pad's arrows
+    // still pulse while parked.
+    const cards = this as unknown as { _landmarkNotice?: unknown; _landmarkNoticeAlpha?: number; _neighborhoodNotice?: unknown; _neighborhoodNoticeTimer?: number };
+    if (this.viewport?.mode === 'compact' && ((cards._landmarkNotice && (cards._landmarkNoticeAlpha ?? 0) > 0)
+      || (cards._neighborhoodNotice && (cards._neighborhoodNoticeTimer ?? 0) > 0))) return false;
+    const parked = this.controlMode === 'street' && !!this.player?.streetFollowView?.parked;
+    return !!this.input.showTouchHint || parked;
   }
 
   /** The plaque's optional lines: quiz feedback (or the home-ring note) and a
@@ -1569,6 +1592,11 @@ export class GamePresentationRuntime {
     // the actions ran off the bottom). It is built at the roomiest density
     // first; each further level tightens spacing and shortens the prose, and
     // only if the tightest still overflows is the whole card scaled down.
+    // The phone buttons' drawn height in card units. A card that still overflows
+    // at the tightest spacing is shrunk whole (below), which drew the 44 px
+    // buttons at 42.8 CSS px on a 390×664 phone (#286); they grow by the inverse
+    // of that shrink so the drawn target stays ≥ 44 px.
+    let touchButtonH = 44;
     const buildBlocks = (level: number): CardBlock[] => {
       const blocks: CardBlock[] = [];
 
@@ -1868,7 +1896,7 @@ export class GamePresentationRuntime {
         actions.push({ id: 'copy', key: 'C', caption: this._copiedTimer > 0 ? tr('ride.linkCopied') : tr('ride.shareRoute') });
       }
       if (endRun && !compact) actions.push(endRun);
-      const BUTTON_H = 44, BUTTON_GAP = 8;
+      const BUTTON_H = touchButtonH, BUTTON_GAP = 8;
       // A short phone pairs the secondary actions on one row rather than
       // shrinking the whole card, so every target stays 44 px tall.
       const pairSecondary = compact && level >= 2 && actions.length === 3;
@@ -1898,7 +1926,7 @@ export class GamePresentationRuntime {
                 ctx.fill();
                 ctx.strokeStyle = RULE; ctx.lineWidth = 1; ctx.stroke();
                 ctx.textAlign = 'center'; ctx.fillStyle = INK; ctx.font = '700 14px system-ui, sans-serif';
-                ctx.fillText(endRun.caption, endBounds.x + endBounds.w / 2, by + 28);
+                ctx.fillText(endRun.caption, endBounds.x + endBounds.w / 2, by + BUTTON_H / 2 + 6);
                 finishButtons.push({ ...endBounds, id: endRun.id });
               }
               ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
@@ -1910,7 +1938,7 @@ export class GamePresentationRuntime {
               ctx.textAlign = 'center';
               ctx.fillStyle = primary ? '#1f1c17' : (action.caption === 'Link copied' ? GOOD : INK);
               ctx.font = '700 14px system-ui, sans-serif';
-              ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
+              ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + BUTTON_H / 2 + 6);
               finishButtons.push({ ...bounds, id: action.id });
               if (!paired || index === actions.length - 1) by += BUTTON_H + BUTTON_GAP;
             });
@@ -1979,7 +2007,13 @@ export class GamePresentationRuntime {
       (index === 0 ? 0 : block.rule ? GAP * 2 : GAP);
     // Last resort: shrink the whole card about its top centre. The touch
     // buttons' hit boxes are mapped through the same transform below.
-    const scale = Math.min(1, room / cardH);
+    let scale = Math.min(1, room / cardH);
+    for (let pass = 0; compact && scale < 1 && touchButtonH * scale < 44 && pass < 4; pass++) {
+      touchButtonH = Math.ceil((44 / scale) * 4) / 4;
+      blocks = buildBlocks(level);
+      cardH = measureCard(level, blocks);
+      scale = Math.min(1, room / cardH);
+    }
     const cardY = scale < 1 ? MARGIN : Math.max(MARGIN, Math.min(
       Math.round((CANVAS_H - cardH) / 2), CANVAS_H - cardH - bottomReserve));
     ctx.save();

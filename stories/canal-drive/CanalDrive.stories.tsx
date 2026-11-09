@@ -8,7 +8,7 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'landmark-card' | 'landmark-card-bare' | 'landmark-card-touch' | 'landmark-panel' | 'landmark-panel-dutch'
   | 'landmark-card-folded' | 'landmark-card-folded-touch'
   // G3 (#273): "Which building is this?", and the drive-by card's "Noticed" pill.
-  | 'question-landmark' | 'touch-question-landmark' | 'landmark-card-noticed' | 'landmark-card-noticed-touch'
+  | 'question-landmark' | 'touch-question-landmark' | 'landmark-card-noticed' | 'landmark-card-noticed-touch' | 'landmark-card-noticed-touch-hint'
   // #281: approaching the candidate, before its question opens: its name and the distractors' are withheld from the map.
   | 'landmark-approach' | 'landmark-approach-touch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
@@ -467,6 +467,8 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
             game._landmarkSightingsCache = {};
             game._landmarkNoticeSource = 'drive-by';
             game._landmarkNoticeState = { ...(game._landmarkNoticeState || {}), elapsed: 1 };
+            // With the touch hint up, the card stacks above the strip (#286).
+            if (scenario.endsWith('-hint')) game._touchHintShowing = () => true;
           }
           if (scenario.startsWith('landmark-card-folded')) {
             // A drive-by card past its fold (teachingPacer.cardCollapsed): no photo, one fact in two lines.
@@ -483,6 +485,11 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
           paint.onload = () => {
             game._landmarkImages.set(id, paint);
             game._renderLandmarkNotice();
+            if (scenario.endsWith('-hint')) {
+              game._syncHudLayout?.();
+              game.hud.drawStreetPad(game.ctx, null);
+              game.hud.drawTouchHint(game.ctx, 'street');
+            }
             if (!scenario.startsWith('landmark-card')) game._expandLandmarkNotice();
           };
           paint.src = game._landmarkNotice.imageUrl;
@@ -844,6 +851,8 @@ export const LandmarkQuestionPhone: Story = { args: { scenario: 'touch-question-
 /** G3: a drive-by card with its one-tap "Noticed". */
 export const LandmarkCardNoticed: Story = { args: { scenario: 'landmark-card-noticed' } };
 export const LandmarkCardNoticedPhone: Story = { args: { scenario: 'landmark-card-noticed-touch' }, globals: phone };
+/** #286: the phone's Noticed pill at 44 px, the card above the touch hint strip and the street pad. */
+export const LandmarkCardNoticedHintPhone: Story = { args: { scenario: 'landmark-card-noticed-touch-hint' }, globals: phone };
 export const LandmarkCardBare: Story = { args: { scenario: 'landmark-card-bare' } };
 /** No photo on a phone either: the card is text alone, and still fits. */
 export const LandmarkCardBarePhone: Story = {
