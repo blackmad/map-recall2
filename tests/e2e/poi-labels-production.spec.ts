@@ -11,12 +11,17 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 const OUT = process.env.POI_OUT || 'artifacts/poi-labels';
 const PROD_BASE = process.env.POI_PROD_BASE || 'https://rideamsterdam.nl';
 const SECONDS = Number(process.env.RIDE_SECONDS || 90);
+// POI_ANSWER=1: answer an open question after ANSWER_READ_MS (default 3 s) with its first choice, as a rider reading it would;
+// without it the first question stays open for the whole run and the map stays quiet (teachingSurface.canShowPoiLabels).
+const ANSWER = !!process.env.POI_ANSWER;
+const ANSWER_READ_MS = Number(process.env.ANSWER_READ_MS || 3000);
 
 test('poi labels on a normal surprise ride', async ({ page, baseURL }, info) => {
   test.skip(!process.env.PROD, 'set PROD=1 to measure (POI_TARGET=prod|local, POI_ENGINE=own|maplibre)');
   test.setTimeout(SECONDS * 1000 + 360_000);
   const target = process.env.POI_TARGET === 'local' ? 'local' : 'prod';
   const engine = process.env.POI_ENGINE === 'own' ? 'own' : 'default';
+  const tag = `${target}-${engine}${ANSWER ? '-answering' : ''}-${info.project.name}`;
   const query = engine === 'own' ? '?engine=own' : '';
   const url = target === 'prod' ? `${PROD_BASE}/ride${query}` : `${baseURL}/canal-drive/${query}`;
   const consoleErrors: string[] = [];
@@ -56,7 +61,7 @@ test('poi labels on a normal surprise ride', async ({ page, baseURL }, info) => 
       out.street = by('street').length + by('water').length; out.hood = by('hood').length;
       out.candidates = layer.stats.candidates;
     }
-    out.state = g.state; out.speed = g.player?.speed; out.pos = [Math.round(g.player?.x), Math.round(g.player?.y)];
+    out.question = !!g.quizPromptName; out.state = g.state; out.speed = g.player?.speed; out.pos = [Math.round(g.player?.x), Math.round(g.player?.y)];
     out.labelsOff = vm?._labelsVisible === false; out.quizQuiet = !!vm?._quizQuietMap;
     out.hiddenName = g.quizPromptName || g.quizCandidateName || ''; out.approach = (g.landmarkApproachWithheld || []).length;
     return out;
@@ -65,25 +70,32 @@ test('poi labels on a normal surprise ride', async ({ page, baseURL }, info) => 
   const samples: any[] = [];
   const start = Date.now();
   let shot = false;
+  let questionSince: number | null = null;
+  let answered = 0;
   await page.keyboard.down('ArrowUp');
   while (Date.now() - start < SECONDS * 1000) {
     await page.waitForTimeout(500);
     const s = await probe();
     s.t = Math.round((Date.now() - start) / 100) / 10;
     samples.push(s);
+    if (s.question) { questionSince ??= Date.now(); } else questionSince = null;
+    if (ANSWER && questionSince && Date.now() - questionSince > ANSWER_READ_MS) {
+      questionSince = null; answered++;
+      await page.evaluate(() => { const g = (window as any).canalRecallGame; const c = (g._choiceOrder || [])[0]; if (g.quizPromptName && c) g._submitCanalAnswer(c); });
+    }
     // Stuck on a wall or a quiz card: nudge left.
     if (samples.length % 10 === 0 && (s.speed ?? 0) < 1) { await page.keyboard.down('ArrowLeft'); await page.waitForTimeout(300); await page.keyboard.up('ArrowLeft'); }
     if (!shot && s.t > SECONDS / 2) {
       shot = true;
       mkdirSync(OUT, { recursive: true });
-      await page.screenshot({ path: `${OUT}/${target}-${engine}-${info.project.name}.jpg`, type: 'jpeg', quality: 78 });
+      await page.screenshot({ path: `${OUT}/${tag}.jpg`, type: 'jpeg', quality: 78 });
     }
   }
   await page.keyboard.up('ArrowUp');
 
   const max = (f: (s: any) => number) => Math.max(0, ...samples.map(f));
   const summary = {
-    target, engine, project: info.project.name, deployed, setup, seconds: SECONDS, samples: samples.length,
+    target, engine, project: info.project.name, deployed, setup, answering: ANSWER, answered, questionSamples: samples.filter(s => s.question).length, seconds: SECONDS, samples: samples.length,
     poiMaxPerFrame: max(s => s.poi), poiSamplesWithAtLeast1: samples.filter(s => s.poi >= 1).length,
     streetMax: max(s => s.street), streetSamplesWithAtLeast1: samples.filter(s => s.street >= 1).length,
     hoodMax: max(s => s.hood), candidatesMax: max(s => s.candidates), inViewMax: max(s => s.inView), planDrawnMax: max(s => s.planDrawn),
@@ -94,6 +106,6 @@ test('poi labels on a normal surprise ride', async ({ page, baseURL }, info) => 
     consoleErrors: consoleErrors.slice(0, 5),
   };
   mkdirSync(OUT, { recursive: true });
-  writeFileSync(`${OUT}/${target}-${engine}-${info.project.name}.json`, JSON.stringify({ summary, samples }, null, 1));
+  writeFileSync(`${OUT}/${tag}.json`, JSON.stringify({ summary, samples }, null, 1));
   console.log('POI_LABELS ' + JSON.stringify(summary));
 });
