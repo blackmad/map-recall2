@@ -9,7 +9,7 @@
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import { evaluate, format } from './perf-gate-lib.mjs';
+import { evaluate, format, worldCellsGzipBytes } from './perf-gate-lib.mjs';
 
 const variant = process.argv[2] ?? '';
 const date = new Date().toISOString().slice(0, 10);
@@ -47,6 +47,8 @@ else {
     popInStatus: popin.status, popIn: readJson(popOut),
   };
 }
+// In-process rows (no browser): measured from the checkout, also when a fixture lacks them.
+collected.files ??= { worldCellsGzipBytes: await worldCellsGzipBytes() };
 const outFile = path.join(dir, `gate-${tag}-${date}.json`);
 fs.writeFileSync(outFile, JSON.stringify(collected, null, 1));
 
