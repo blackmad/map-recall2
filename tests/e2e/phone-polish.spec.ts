@@ -251,3 +251,64 @@ test.describe('R2-6 desktop pause card', () => {
     });
   }
 });
+
+// R3-B (#308, R2-12): on a short phone the question card keeps the vehicle visible. Measured in CSS px
+// on the iphone project: card top >= vehicle y + 24 and every choice >= 44 px tall, landmark and street cards.
+for (const size of [{ width: 390, height: 664 }, { width: 390, height: 844 }, { width: 414, height: 896 }]) {
+  for (const kind of ['landmark', 'street'] as const) {
+    test.describe(`R3-B ${kind} question ${size.width}x${size.height}`, () => {
+      test.use({ viewport: size });
+      test('question card clears the vehicle and keeps 44 px choices', async ({ page }, testInfo) => {
+        test.skip(testInfo.project.name !== 'iphone', 'the phone layout');
+        test.setTimeout(180_000);
+        await openRoute(page, { travelMode: 'car', query: '?landmarkQuestions=1', controlMode: 'street' });
+        await page.evaluate((k) => {
+          const g = (window as any).canalRecallGame;
+          g.routeOptions.answerMode = 'multiple';
+          g.quizFeedback = ''; g.quizCandidateName = ''; g._silentPass = null;
+          g._questionBudget = { asks: [] }; g._landmarkAsked = new Set(); g._seenLandmarks = new Set(); g._landmarkSightingsCache = {};
+          g._landmarkReviewsCache = undefined;
+          try { localStorage.removeItem('canalRecall.landmarkSightings.v1'); localStorage.removeItem('canalRecall.landmarkReview.v1'); } catch { /* */ }
+          g._clearLandmarkNotice();
+          if (k === 'landmark') {
+            const landmark = g.landmarks.find((l: any) => l.name === 'Westerkerk');
+            g.routePath = null; g.routeTo = { id: 'lm-elsewhere', name: 'Elsewhere' };
+            g.quizPromptName = ''; g.quizPromptKind = 'route';
+            Object.assign(g.player, { x: landmark.x - 110 * 3, y: landmark.y, angle: 0, speed: 0, vx: 0, vy: 0 });
+            g._updateLandmarks(1 / 60);
+          }
+        }, kind);
+        if (kind === 'street') {
+          // Open the street card the way the game does: a multiple-choice prompt with four names.
+          await page.evaluate(() => {
+            const g = (window as any).canalRecallGame;
+            const names = ['Prinsengracht', 'Keizersgracht', 'Herengracht', 'Singel'];
+            g.quizPromptName = 'Prinsengracht'; g.quizPromptSubject = 'water'; g.quizPromptKind = 'route';
+            const card = document.getElementById('canal-choices')!;
+            card.innerHTML = '';
+            for (const n of names) { const b = document.createElement('button'); b.type = 'button'; b.className = 'canal-choice'; b.dataset.name = n; b.textContent = n; card.appendChild(b); }
+            card.style.display = 'grid';
+            (document.getElementById('canal-answer') as HTMLElement).style.display = 'none';
+            (document.getElementById('canal-submit') as HTMLElement).style.display = 'none'; // as recallRuntime does in multiple-choice mode
+            g._prompt.style.display = 'flex';
+          });
+        }
+        await page.waitForTimeout(800);
+        const m = await page.evaluate(() => {
+          const g = (window as any).canalRecallGame;
+          const rect = g.canvas.getBoundingClientRect();
+          const k = rect.height / g.viewport.height;
+          const v = g.camera.worldToScreen(g.player.x, g.player.y);
+          const card = document.getElementById('canal-card')!.getBoundingClientRect();
+          const choices = [...document.querySelectorAll('#canal-choices button')].map(b => Math.round((b as HTMLElement).getBoundingClientRect().height * 10) / 10);
+          return { kind: g.quizPromptKind, cardTop: Math.round(card.top * 10) / 10, cardH: Math.round(card.height), vehicleY: Math.round((rect.top + v.y * k) * 10) / 10, choices, vh: window.innerHeight };
+        });
+        console.log('R3B', kind, size.width, size.height, JSON.stringify(m));
+        if (process.env.PHONE_POLISH_SHOTS) await page.screenshot({ path: `${process.env.PHONE_POLISH_SHOTS}/question-${kind}-${size.width}x${size.height}.png` });
+        expect(m.choices.length).toBe(4);
+        for (const h of m.choices) expect(h, 'every choice is a 44 px target').toBeGreaterThanOrEqual(44);
+        expect(m.cardTop, 'the card leaves the vehicle 24 px clear').toBeGreaterThanOrEqual(m.vehicleY + 24);
+      });
+    });
+  }
+}
