@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 // The routing graph Today's ride snaps its pool to (#279), built exactly as
 // the browser builds it (scripts/check-road-reachability.ts): the street
 // extract the game loads, motor-only roads dropped, ways Douglas-Peucker
@@ -9,6 +11,16 @@
 // Shared by build-pool.ts and dailyRidePool.test.ts.
 import { isMotorOnlyHighway, motorOnlyNames } from '../../src/canalRecall/routing/bikeAccess.ts';
 import { loadRoutingFeatures, routingSource } from '../lib/routingFeatures.ts';
+import { buildRoadGraph, nearestRoadGraphNode, shortestRoadPaths } from '../../src/canalRecall/routing/roadGraph.ts';
+import { connectFerryGraph, ferrySegments, type Segment as FerrySegment } from '../../src/canalRecall/ferry/network.ts';
+import type { TransitNetwork } from '../../src/canalRecall/transit/network.ts';
+
+/** Playable half-widths, px (constants.js ROAD_WIDTHS), as the runtime hands them to the graph builder. */
+const ROAD_WIDTHS: Record<string, number> = {
+  motorway: 55, motorway_link: 45, trunk: 50, trunk_link: 40, primary: 30, primary_link: 24, secondary: 26, secondary_link: 22,
+  tertiary: 21, tertiary_link: 18, residential: 18, unclassified: 17, living_street: 16, service: 13, busway: 18,
+  cycleway: 9, pedestrian: 14, footway: 7, path: 8, ferry: 34,
+};
 
 const PIXELS_PER_METER = 3;
 const SIMPLIFICATION_TOLERANCE = 0.00003;
@@ -190,6 +202,37 @@ export async function loadSnapGraph(directory: string, bridgeNames: ReadonlySet<
     const node = nodes.get(nodeKey(project(latLon)));
     return node ? [...new Set([...node.ways].map(way => way.name).filter(Boolean))] : [];
   };
+  /**
+   * Shortest ride in metres from one place to each target over this graph (Dijkstra on edge length).
+   * The game's planner allows a small learning detour on top (maxDetourRatio 0.12), so this is the
+   * floor of the planned route; Today's ride uses it for its card distance and length bounds (#279).
+   */
+  // Route lengths come from the game's own graph code (#279), so the card matches the planned ride:
+  // the same segments, plus the IJ ferries and their terminal accesses (ferry/network.ts
+  // ferrySegments), through routing/roadGraph.ts buildRoadGraph with the runtime's merge (18 px) and
+  // junction stitch (10 px), then connectFerryGraph — road-network.js `_routingGraph`.
+  type GameSegment = FerrySegment;
+  const land: GameSegment[] = segments.map(seg => ({ points: seg.points, width: ROAD_WIDTHS[seg.highway] ?? 32, type: seg.highway || 'road', name: seg.name }));
+  let withFerries: GameSegment[] = land;
+  try {
+    const network = JSON.parse(readFileSync(path.join(directory, 'transit-network.json'), 'utf8')) as TransitNetwork;
+    withFerries = [...land, ...ferrySegments(network, land, (lat, lng) => project([lat, lng]))];
+  } catch { /* no transit extract: streets only */ }
+  const ferryLegs = withFerries.filter(seg => seg.type === 'ferry').length;
+  const gameGraph = connectFerryGraph(buildRoadGraph(
+    withFerries.map(seg => ({ points: seg.type === 'ferry' ? [] : seg.points, width: seg.width, metadata: null })),
+    { mergeSize: MERGE_SIZE, junctionStitchRadius: STITCH_RADIUS },
+  ), withFerries);
+  /** Shortest ride, metres, from one place to each target over the game's routing graph (plain length cost). */
+  const routeMetres = (from: LatLon, targets: readonly LatLon[]): Array<number | null> => {
+    const tree = shortestRoadPaths(gameGraph, project(from));
+    if (!tree) return targets.map(() => null);
+    return targets.map((t) => {
+      const node = nearestRoadGraphNode(gameGraph, project(t));
+      const d = node ? tree.dist[node.index] : undefined;
+      return d === undefined || !Number.isFinite(d) ? null : d / PIXELS_PER_METER;
+    });
+  };
   /** Why a point is not a valid finish ('' when it is). */
   const whyNotFinish = (latLon: LatLon): string => {
     const node = nodes.get(nodeKey(project(latLon)));
@@ -210,7 +253,7 @@ export async function loadSnapGraph(directory: string, bridgeNames: ReadonlySet<
   };
   return {
     features, source: routingSource(), nodeCount: nodes.size, mainSize: sizes[mainComponent]!, snapCount: snapNodes.length,
-    finishCount: finishNodes.length,
-    project, unproject, nearestSnap, nearestFinish, whyNotSnap, whyNotFinish, namesAt,
+    finishCount: finishNodes.length, ferryLegs,
+    project, unproject, nearestSnap, nearestFinish, whyNotSnap, whyNotFinish, namesAt, routeMetres,
   };
 }

@@ -6,7 +6,7 @@
 // ride names only landmarks (start and finish), never a street, so nothing
 // here can answer a question the ride will ask.
 
-import { dailyRideLabel, formatRideTime, type DailyRideDay } from '../game/dailyRide';
+import { dailyRideDistance, dailyRideLabel, formatRideTime, type DailyRideDay } from '../game/dailyRide';
 import { LANDING_RIDE_QUERY, type LandingModel } from './landingModel';
 
 const escapeHtml = (text: string): string => text
@@ -77,7 +77,7 @@ export function landingCardsHtml(model: LandingModel, hrefs: LandingHrefs): stri
   const dailyTitle = pair ? `${pair.from.name} → ${pair.to.name}` : 'Today’s ride';
   const dailyDetail = today
     ? `Ridden today · ${formatRideTime(today.seconds)} · ${recallText(today)}`
-    : pair ? `about ${pair.km.toFixed(1)} km · the same route for everyone today` : '';
+    : pair ? `${dailyRideDistance(pair)} · the same route for everyone today` : '';
   const daily = card('daily', 'Today’s ride', dailyTitle, dailyDetail, ride('daily'), today ? 'Ride it again' : 'Ride today’s route', boardHtml(model));
   const review = card('review', 'Continue', dueLine(model), dueDetail(model), ride('review'), model.due.names > 0 ? 'Review on a ride' : 'New route');
   const free = card('free', 'Free Ride', 'Anywhere in the city', 'No questions. Tap a marker for its story.', ride('free'), 'Free ride');

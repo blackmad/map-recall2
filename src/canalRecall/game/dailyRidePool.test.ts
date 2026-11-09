@@ -13,12 +13,13 @@ import {
   DAILY_RIDE_NO_REPEAT_DAYS,
   dailyPoolPair,
   dailyRideKm,
+  dailyRouteKm,
   dailyRideLabel,
   dailyRidePair,
   type DailyPoolPoi,
   type DailyRidePair,
 } from './dailyRide';
-import { DAILY_RIDE_POOL } from './dailyRidePool';
+import { DAILY_RIDE_PAIRS, DAILY_RIDE_POOL } from './dailyRidePool';
 import { CANAL_CITIES } from './cities';
 import { loadSnapGraph } from '../../../scripts/daily-ride/snapGraph.ts';
 import { buurtFinishBlurb } from './finishBlurb';
@@ -44,7 +45,8 @@ test(`${DAYS} days from the cutover keep the rules`, () => {
   year.forEach((pair, i) => {
     assert.ok(pair, `${dates[i]} has a pair`);
     assert.ok(pair.km >= DAILY_RIDE_MIN_KM && pair.km <= DAILY_RIDE_MAX_KM, `${pair.id} is ${pair.km} km`);
-    assert.equal(pair.km, dailyRideKm(pair.from, pair.to));
+    assert.equal(pair.km, dailyRouteKm(pair.from.id, pair.to.id), `${pair.id} km is the bundled route length`);
+    assert.equal(pair.routed, true);
     for (const end of ends(pair)) assert.ok(byId.get(end.id), `${end.id} is in the pool`);
     assert.ok(byId.get(pair.from.id)!.startOk, `${pair.id} starts at a place that may not start`);
     assert.ok(byId.get(pair.to.id)!.finishOk, `${pair.id} ends at a place that may not end`);
@@ -77,10 +79,11 @@ test('from the cutover the ride hook (curated candidates) and the pool draw agre
   assert.equal(dailyPoolPair('2026-11-09'), null);
 });
 
-test('the card names buurten: "Jordaan → Oosterparkbuurt · about 3.1 km"', () => {
+test('the card names buurten and the route length without "about": "Jordaan → Oosterparkbuurt · 3.1 km"', () => {
   const pair = dailyPoolPair(DAILY_POOL_CUTOVER)!;
   assert.match(pair.id, new RegExp(`^${DAILY_POOL_CUTOVER}:(buurt|tour)-[a-z0-9-]+>(buurt|tour)-[a-z0-9-]+$`));
-  assert.equal(dailyRideLabel(pair), `${pair.from.name} → ${pair.to.name} · about ${pair.km.toFixed(1)} km`);
+  assert.equal(dailyRideLabel(pair), `${pair.from.name} → ${pair.to.name} · ${pair.km.toFixed(1)} km`);
+  assert.doesNotMatch(dailyRideLabel(pair), /about/);
 });
 
 test('every pool place is a ride end on the routing graph: unnamed, clear of named streets, routable; no card name is a quiz name', async () => {
@@ -131,4 +134,24 @@ test('a finish on a named way never prints that way: card, landing, arrival blur
     assert.equal(blurb?.name, place.name, 'the arrival card is titled by the buurt');
   }
   console.log(`# ${finishOnNamed.length} finishes on named ways, none printed`);
+});
+
+test('every bundled pair has a route length within the bounds, between different buurten, rideable one way', async () => {
+  assert.equal(DAILY_RIDE_PAIRS.length % 6, 0);
+  const lengths = JSON.parse(await readFile(path.resolve('scripts/daily-ride/route-lengths.json'), 'utf8')) as Record<string, number>;
+  const key = (p: { id: string; lat: number; lng: number }) => `${p.id}@${p.lat},${p.lng}`;
+  let pairs = 0;
+  for (let k = 0; k < DAILY_RIDE_PAIRS.length; k += 6, pairs++) {
+    const a = DAILY_RIDE_POOL[parseInt(DAILY_RIDE_PAIRS.slice(k, k + 2), 36)]!;
+    const b = DAILY_RIDE_POOL[parseInt(DAILY_RIDE_PAIRS.slice(k + 2, k + 4), 36)]!;
+    const km = parseInt(DAILY_RIDE_PAIRS.slice(k + 4, k + 6), 36) / 10;
+    assert.ok(km >= DAILY_RIDE_MIN_KM && km <= DAILY_RIDE_MAX_KM, `${a.id}–${b.id} ${km} km`);
+    assert.notEqual(a.buurt, b.buurt);
+    assert.ok((a.startOk && b.finishOk) || (b.startOk && a.finishOk), `${a.id}–${b.id} is rideable`);
+    const metres = lengths[[key(a), key(b)].sort().join('>')];
+    assert.ok(metres !== undefined, `${a.id}–${b.id} has a cached length`);
+    assert.equal(km, Math.round(metres! / 100) / 10);
+    assert.equal(dailyRouteKm(b.id, a.id), km);
+  }
+  assert.ok(pairs > 1000, `bundled pairs ${pairs}`);
 });

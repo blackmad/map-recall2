@@ -16,7 +16,7 @@
 
 import { kmBetween, pickDestinationNear, type ChooseUnit, type RoutePoi } from './surprisePick';
 import type { RideRecord } from '../routeHistory';
-import { DAILY_RIDE_POOL, type DailyPoolPlace } from './dailyRidePool';
+import { DAILY_RIDE_PAIRS, DAILY_RIDE_POOL, type DailyPoolPlace } from './dailyRidePool';
 
 export const DAILY_RIDE_TIME_ZONE = 'Europe/Amsterdam';
 /** Straight line to street distance. The canal belt's grid is not a grid: a
@@ -87,8 +87,10 @@ export interface DailyRidePair {
   id: string;
   from: RoutePoi;
   to: RoutePoi;
-  /** Estimated ride length, 0.1 km. */
+  /** Ride length, 0.1 km: the real route length for a buurt-pool day, else the straight-line estimate. */
   km: number;
+  /** True when `km` is the route's real length (buurt pool, #279): the card drops "about". */
+  routed?: boolean;
 }
 
 /** No pair (either direction) repeats within this many days before it. */
@@ -212,9 +214,30 @@ export function dailyRideKm(a: { lat: number; lng: number }, b: { lat: number; l
   return Math.round(kmBetween(a, b) * DAILY_RIDE_ROAD_FACTOR * 10) / 10;
 }
 
+let routeKmById: Map<string, number> | null = null;
+const idPair = (a: string, b: string) => (a < b ? `${a}|${b}` : `${b}|${a}`);
+
+/**
+ * The real route length, km, between two pool places (DAILY_RIDE_PAIRS, generated with the pool from
+ * the shortest ride over the routing graph, IJ ferries included), or null when the pair is not
+ * bundled: outside DAILY_RIDE_MIN_KM–DAILY_RIDE_MAX_KM, the same buurt, or not rideable either way.
+ */
+export function dailyRouteKm(aId: string, bId: string): number | null {
+  if (!routeKmById) {
+    routeKmById = new Map();
+    for (let k = 0; k + 6 <= DAILY_RIDE_PAIRS.length; k += 6) {
+      const a = DAILY_RIDE_POOL[parseInt(DAILY_RIDE_PAIRS.slice(k, k + 2), 36)];
+      const b = DAILY_RIDE_POOL[parseInt(DAILY_RIDE_PAIRS.slice(k + 2, k + 4), 36)];
+      if (a && b) routeKmById.set(idPair(a.id, b.id), parseInt(DAILY_RIDE_PAIRS.slice(k + 4, k + 6), 36) / 10);
+    }
+  }
+  return routeKmById.get(idPair(aId, bId)) ?? null;
+}
+
+/** The bounds are on the real route length (the straight line is only the generator's prefilter). */
 const inBounds = (a: DailyPoolPoi, b: DailyPoolPoi) => {
-  const km = dailyRideKm(a, b);
-  return a.buurt !== b.buurt && km >= DAILY_RIDE_MIN_KM && km <= DAILY_RIDE_MAX_KM;
+  const km = dailyRouteKm(a.id, b.id);
+  return a.buurt !== b.buurt && km !== null && km >= DAILY_RIDE_MIN_KM && km <= DAILY_RIDE_MAX_KM;
 };
 
 /** Pick uniformly by buurt first, then by place within it, so a buurt with many tour stops is not favoured. */
@@ -291,7 +314,7 @@ export function dailyPoolPair(date: string, places: readonly DailyPoolPlace[] = 
   const pair = poolPairFor(date, pool);
   if (!pair) return null;
   const [from, to] = pair;
-  return { date, id: `${date}:${from.id}>${to.id}`, from, to, km: dailyRideKm(from, to) };
+  return { date, id: `${date}:${from.id}>${to.id}`, from, to, km: dailyRouteKm(from.id, to.id) ?? dailyRideKm(from, to), routed: true };
 }
 
 /** The route id alone, for comparing browsers. */
@@ -299,9 +322,14 @@ export function dailyRideRouteId(date: string, candidates: readonly RoutePoi[]):
   return dailyRidePair(date, candidates)?.id ?? null;
 }
 
-/** "Jordaan → Oosterparkbuurt · about 3.1 km" (the distance is an estimate). */
-export function dailyRideLabel(pair: Pick<DailyRidePair, 'from' | 'to' | 'km'>): string {
-  return `${pair.from.name} → ${pair.to.name} · about ${pair.km.toFixed(1)} km`;
+/** "Jordaan → Oosterparkbuurt · 3.1 km" for a routed pair; "· about 2.1 km" for an estimate. */
+export function dailyRideLabel(pair: Pick<DailyRidePair, 'from' | 'to' | 'km' | 'routed'>): string {
+  return `${pair.from.name} → ${pair.to.name} · ${dailyRideDistance(pair)}`;
+}
+
+/** "3.1 km" when the length is the route's, "about 2.1 km" when it is the straight-line estimate. */
+export function dailyRideDistance(pair: Pick<DailyRidePair, 'km' | 'routed'>): string {
+  return `${pair.routed ? '' : 'about '}${pair.km.toFixed(1)} km`;
 }
 
 export interface DailyRideDay {
