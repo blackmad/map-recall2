@@ -863,7 +863,40 @@
     "finish.passport": "Passport: {stamps}",
     "finish.youKnow": "You know {name}",
     "finish.streakFirst": "First new place today",
-    "finish.streakDays": "{count}-day place streak"
+    "finish.streakDays": "{count}-day place streak",
+    // --- Arrival ribbon, pause card, pins and cards (#290) ---------------------
+    "ribbon.gold": "GOLD RIBBON",
+    "ribbon.silver": "SILVER RIBBON",
+    "ribbon.bronze": "BRONZE RIBBON",
+    "ribbon.none": "ROUTE COMPLETE",
+    "ribbon.axis.recall": "Recall",
+    "ribbon.axis.aids": "Unaided",
+    "ribbon.axis.efficiency": "Efficiency",
+    "ride.arrival.header": "ARRIVED",
+    "ride.personalBest.new": "\u2605  New personal best",
+    "ride.personalBest.old": "Personal best  {time}",
+    "ride.arrival.neighborhoodWiki": "NEIGHBOURHOOD  \xB7  W  WIKIPEDIA",
+    "ride.paused": "PAUSED",
+    "ride.resume": "Resume",
+    "ride.pauseSummary": "{time}  \xB7  {km} km  \xB7  {correct} of {attempts} named",
+    "ride.controlsHint": "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   T  labels   \xB7   B  buildings   \xB7   P  pause",
+    "hud.destination": "DESTINATION",
+    "card.wikipedia": "W  WIKIPEDIA",
+    "card.source": "W  SOURCE",
+    "card.more": "MORE \u203A",
+    "postcard.stamp": "PASSPORT STAMP",
+    "postcard.enteringNeighborhood": "ENTERING NEIGHBORHOOD",
+    "postcard.entering": "ENTERING {kind}",
+    "postcard.photo": "Photo: {area} \xB7 {city}",
+    "kind.landmark": "LANDMARK",
+    "kind.museum": "MUSEUM",
+    "kind.library": "LIBRARY",
+    "kind.university": "UNIVERSITY",
+    "kind.cinema": "CINEMA",
+    "kind.musicVenue": "MUSIC VENUE",
+    "kind.bridge": "BRIDGE",
+    "kind.church": "CHURCH",
+    "kind.neighborhood": "NEIGHBORHOOD"
   };
 
   // src/i18n/messages/nl.ts
@@ -1569,8 +1602,8 @@
     "finish.newNames.other": "{count} nieuwe namen",
     "finish.newNeighborhoods.one": "{count} nieuwe buurt",
     "finish.newNeighborhoods.other": "{count} nieuwe buurten",
-    "finish.newLandmarks.one": "{count} landmark",
-    "finish.newLandmarks.other": "{count} landmarks",
+    "finish.newLandmarks.one": "{count} bezienswaardigheid",
+    "finish.newLandmarks.other": "{count} bezienswaardigheden",
     "finish.arrivedWith": "Je bent bij {destination} \xB7 {bits}",
     "finish.arrived": "Aangekomen bij {destination}",
     "finish.sticks": "Die kennis blijft hangen op je kaart van {city}.",
@@ -1578,7 +1611,40 @@
     "finish.passport": "Paspoort: {stamps}",
     "finish.youKnow": "Je kent {name}",
     "finish.streakFirst": "Eerste nieuwe plek vandaag",
-    "finish.streakDays": "{count} dagen op rij nieuwe plekken"
+    "finish.streakDays": "{count} dagen op rij nieuwe plekken",
+    // --- Arrival ribbon, pause card, pins and cards (#290) ---------------------
+    "ribbon.gold": "GOUDEN LINT",
+    "ribbon.silver": "ZILVEREN LINT",
+    "ribbon.bronze": "BRONZEN LINT",
+    "ribbon.none": "ROUTE VOLTOOID",
+    "ribbon.axis.recall": "Herinnering",
+    "ribbon.axis.aids": "Zonder hulp",
+    "ribbon.axis.efficiency": "Effici\xEBntie",
+    "ride.arrival.header": "AANGEKOMEN",
+    "ride.personalBest.new": "\u2605  Nieuw persoonlijk record",
+    "ride.personalBest.old": "Persoonlijk record  {time}",
+    "ride.arrival.neighborhoodWiki": "BUURT  \xB7  W  WIKIPEDIA",
+    "ride.paused": "PAUZE",
+    "ride.resume": "Hervatten",
+    "ride.pauseSummary": "{time}  \xB7  {km} km  \xB7  {correct} van {attempts} benoemd",
+    "ride.controlsHint": "?  help   \xB7   G  instellingen   \xB7   M  kaart   \xB7   O  noord   \xB7   T  labels   \xB7   B  gebouwen   \xB7   P  pauze",
+    "hud.destination": "BESTEMMING",
+    "card.wikipedia": "W  WIKIPEDIA",
+    "card.source": "W  BRON",
+    "card.more": "MEER \u203A",
+    "postcard.stamp": "PASPOORTSTEMPEL",
+    "postcard.enteringNeighborhood": "JE BETREEDT DE BUURT",
+    "postcard.entering": "JE BETREEDT: {kind}",
+    "postcard.photo": "Foto: {area} \xB7 {city}",
+    "kind.landmark": "BEZIENSWAARDIGHEID",
+    "kind.museum": "MUSEUM",
+    "kind.library": "BIBLIOTHEEK",
+    "kind.university": "UNIVERSITEIT",
+    "kind.cinema": "BIOSCOOP",
+    "kind.musicVenue": "MUZIEKPODIUM",
+    "kind.bridge": "BRUG",
+    "kind.church": "KERK",
+    "kind.neighborhood": "BUURT"
   };
 
   // src/i18n/language.ts
@@ -9325,6 +9391,17 @@
     return false;
   }
 
+  // src/canalRecall/cardKindLabel.ts
+  function camel(raw) {
+    return raw.trim().toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).map((part, index) => index === 0 ? part : part[0].toUpperCase() + part.slice(1)).join("");
+  }
+  function kindLabel(raw) {
+    const text = String(raw || "").trim();
+    if (!text) return "";
+    const key = `kind.${camel(text)}`;
+    return key in CATALOGS.en ? t(key) : text.toUpperCase();
+  }
+
   // src/canalRecall/shareCard.ts
   var SHARE_TRAIL_STEP_PX = 45;
   var SHARE_TRAIL_MAX_POINTS = 4e3;
@@ -10283,7 +10360,7 @@
       const ctx = this.ctx;
       const rect = this._hudRects().controlsHint;
       const surface = window.CanalRecallUi.hudSurface;
-      const text = "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   T  labels   \xB7   B  buildings   \xB7   P  pause";
+      const text = t("ride.controlsHint");
       ctx.save();
       ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
       ctx.font = `600 11px ${surface.fontMono}`;
@@ -10528,8 +10605,8 @@
       ctx.fillStyle = "rgba(28,24,18,0.34)";
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       const actions = [
-        { id: "resume", key: "P / ESC", caption: "Resume" },
-        { id: "route", key: "M", caption: "Route setup" }
+        { id: "resume", key: "P / ESC", caption: t("ride.resume") },
+        { id: "route", key: "M", caption: t("ride.routeSetup") }
       ];
       if (this._shareUrl) {
         actions.push({
@@ -10549,7 +10626,7 @@
       ctx.fillStyle = INK2;
       ctx.font = `800 ${compact ? 30 : 36}px ${window.CanalRecallUi.hudSurface.fontPlaque}`;
       ctx.textAlign = "center";
-      ctx.fillText("PAUSED", cx, cardY + (compact ? 40 : 46));
+      ctx.fillText(t("ride.paused"), cx, cardY + (compact ? 40 : 46));
       const pauseButtons = [];
       this._pauseButtonBounds = pauseButtons;
       let y = cardY + titleH;
@@ -10603,7 +10680,7 @@
       ctx.fillStyle = MUTED2;
       const kilometres = this._playerDistancePx() / PIXELS_PER_METER / 1e3;
       ctx.fillText(
-        `${this.hud.formatTime(this.raceTime)}  \xB7  ${kilometres.toFixed(2)} km  \xB7  ${this.quizCorrect} of ${this.quizAttempts} named`,
+        t("ride.pauseSummary", { time: this.hud.formatTime(this.raceTime), km: kilometres.toFixed(2), correct: this.quizCorrect, attempts: this.quizAttempts }),
         cx,
         y + 18
       );
@@ -10653,8 +10730,8 @@
       let bestText = "";
       if (this._raceKey) {
         const stored = getBestTime(localStorage, this._raceKey);
-        if (stored && this.raceTime <= stored.time) bestText = "\u2605  New personal best";
-        else if (stored) bestText = `Personal best  ${this.hud.formatTime(stored.time)}`;
+        if (stored && this.raceTime <= stored.time) bestText = t("ride.personalBest.new");
+        else if (stored) bestText = t("ride.personalBest.old", { time: this.hud.formatTime(stored.time) });
       }
       let touchButtonH = 44;
       const buildBlocks = (level2) => {
@@ -10666,7 +10743,7 @@
           ctx.textAlign = "left";
           ctx.fillStyle = ACCENT2;
           ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          ctx.fillText(tour?.completed ? "TOUR COMPLETE" : "ARRIVED", cardX + padX, top + 11);
+          ctx.fillText(tour?.completed ? t("ride.arrival.tourDone") : t("ride.arrival.header"), cardX + padX, top + 11);
           ctx.fillStyle = INK2;
           ctx.font = `800 ${title.size}px system-ui, sans-serif`;
           title.lines.forEach((line, index) => ctx.fillText(line, cardX + padX, top + 42 + index * title.lineHeight));
@@ -10714,10 +10791,10 @@
               const credit = [tour.sourceHost, tour.checked].filter(Boolean).join("  \xB7  ");
               ctx.fillText(wrapText(ctx, credit ? `${where}  \xB7  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
             } else if (buurt) {
-              ctx.fillText("NEIGHBOURHOOD  \xB7  W  WIKIPEDIA", textX, top + 10);
+              ctx.fillText(t("ride.arrival.neighborhoodWiki"), textX, top + 10);
             } else {
-              const kind = String(landmark.type || "landmark").toUpperCase();
-              ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  W  WIKIPEDIA` : kind, textX, top + 10);
+              const kind = kindLabel(String(landmark.type || "landmark"));
+              ctx.fillText(landmark.wikipediaUrl ? `${kind}  \xB7  ${t("card.wikipedia")}` : kind, textX, top + 10);
             }
             ctx.fillStyle = BODY2;
             ctx.font = "12px system-ui, sans-serif";
@@ -10744,7 +10821,7 @@
         ];
         if (gamey && this.quizBestStreak >= 2) footerBits.push(t("ride.bestStreak", { count: this.quizBestStreak }));
         const bestInFooter = level2 >= 1 && !!bestText;
-        if (bestInFooter) footerBits.unshift(bestText.replace("\u2605  ", "\u2605 "));
+        if (bestInFooter) footerBits.unshift(bestText.replace(/^★  /, "\u2605 "));
         const statsPerRow = compact ? Math.ceil(stats.length / Math.ceil(stats.length / 3)) : stats.length;
         const statRows = Math.ceil(stats.length / statsPerRow);
         const ROW_H = level2 >= 2 ? 42 : 48;
@@ -11115,6 +11192,7 @@
       ctx.globalAlpha = 0.45;
       ctx.stroke();
       ctx.globalAlpha = 1;
+      const ribbonLabel = t(`ribbon.${ribbon.id}`);
       const medalX = boxX + 42, medalY = boxY + 32, medalR = 20;
       ctx.fillStyle = ribbon.color;
       ctx.globalAlpha = 0.75;
@@ -11140,14 +11218,14 @@
       ctx.font = `700 18px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText(ribbon.id === "none" ? "\xB7" : ribbon.label[0], medalX, medalY + 1);
+      ctx.fillText(ribbon.id === "none" ? "\xB7" : ribbonLabel[0], medalX, medalY + 1);
       ctx.textBaseline = "alphabetic";
       const textX = boxX + 76;
       ctx.textAlign = "left";
       ctx.fillStyle = ribbon.color;
       ctx.font = `700 19px ${window.CanalRecallUi.hudSurface.fontMono}`;
-      ctx.fillText(ribbon.label, textX, boxY + 26);
-      const labelWidth = ctx.measureText(ribbon.label).width;
+      ctx.fillText(ribbonLabel, textX, boxY + 26);
+      const labelWidth = ctx.measureText(ribbonLabel).width;
       ctx.fillStyle = "#94A3B8";
       ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       ctx.fillText(`${Math.round(ribbon.score * 100)}%`, textX + labelWidth + 12, boxY + 26);
@@ -11158,10 +11236,11 @@
         const w = trackW - 14;
         ctx.fillStyle = "#94A3B8";
         ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        let axisText = `${axis.label} ${Math.round(axis.score * 100)}%`;
+        const axisLabel = t(`ribbon.axis.${axis.id}`);
+        let axisText = `${axisLabel} ${Math.round(axis.score * 100)}%`;
         if (ctx.measureText(axisText).width > w) {
           ctx.font = `10px ${window.CanalRecallUi.hudSurface.fontMono}`;
-          axisText = axis.label;
+          axisText = axisLabel;
         }
         ctx.fillText(axisText, x, boxY + 45);
         ctx.fillStyle = "rgba(148,163,184,.25)";

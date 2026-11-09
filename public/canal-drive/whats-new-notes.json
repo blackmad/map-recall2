@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "The Dutch game speaks Dutch on arrival",
+   "text": "In Dutch, the arrival card, the pause card, the ride HUD, the neighbourhood plaque and the landmark card now read Dutch throughout: BRONZEN LINT, Zonder hulp, Nieuw persoonlijk record, AANGEKOMEN, BESTEMMING. Place names and encyclopaedia text stay as their sources give them.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-dutch-strings/before-04-arrival-iphone.jpg",
+     "alt": "Before: the Dutch arrival card on a phone with ARRIVED, BRONZE RIBBON, Recall and Unaided in English",
+     "caption": "Before: English labels in the Dutch game."
+    },
+    {
+     "src": "ui/2026-11-09-dutch-strings/after-04-arrival-iphone.jpg",
+     "alt": "After: the same card reading AANGEKOMEN, BRONZEN LINT, Herinnering and Zonder hulp",
+     "caption": "After: Dutch throughout."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "From 17 November, every finish buurt takes its turn",
    "text": "Some buurten share a key in the daily draw, and the same place in them won every time while another never finished a ride all year. From 17 November the daily ride rotates the finish within such a buurt, so every place sees at least one arrival a year. The rides already announced for 10 to 16 November are unchanged.",
    "images": []
