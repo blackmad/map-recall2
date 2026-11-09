@@ -417,6 +417,17 @@ export const nl: Record<MessageKey, string> = {
   'mission.warmUp': 'Warm op met één naam die te laat is',
   'mission.arrive': 'Kom aan met meer kennis van {city}',
   // --- Map Quest-quiz ------------------------------------------------------
+  // Antwoordfeedback (R2-2, #303).
+  'answer.passed': 'Voorbij — dat was {name}',
+  'answer.silentPass': 'Dat was {name}',
+  'answer.reveal': 'Dit is {name}',
+  'answer.wrong': 'Niet helemaal — dit is {name}',
+  'answer.correct': 'Goed — {name}',
+  'answer.correctPoints': 'Goed — {name}  (+{points} pnt)',
+  'answer.correctNewCycle': 'Goed — {name}  (+{points} pnt · bonus nieuwe naam + fietspad)',
+  'answer.correctNew': 'Goed — {name}  (+{points} pnt · bonus nieuwe naam)',
+  'answer.correctCycle': 'Goed — {name}  (+{points} pnt · fietspadbonus)',
+  'answer.correctStreak': 'Goed — {name}  (+{points} pnt · {streak} op rij)',
   'quiz.pinpoint': 'Aanwijzen',
   'quiz.pinpointHint': 'Zet de genoemde plek op de kaart',
   'quiz.guessName': 'Naam raden',

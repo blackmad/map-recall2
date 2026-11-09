@@ -13,7 +13,7 @@ const BY_WIKIDATA: Readonly<Record<string, string>> = {
 };
 
 /** Extract spelling → the curated destination's spelling (cities.ts). */
-const BY_NAME: Readonly<Record<string, string>> = {
+export const BY_NAME: Readonly<Record<string, string>> = {
   'The National Maritime Museum': 'National Maritime Museum',
   Nemo: 'NEMO Science Museum',
   "H'ART Museum": 'H’ART Museum',

@@ -1053,9 +1053,10 @@ export class GameRecallRuntime {
       recallFeature,
       recallStore: this.recall,
       revealName: (revealed: string) => this._revealName(revealed),
+      say: t,
     });
     void result;
-    this.quizFeedback = `That was ${this._shownName(name)}`;
+    this.quizFeedback = t('answer.silentPass', { name: this._shownName(name) });
     this._silentPass = null;
     this.quizCurrentName = name;
     this.quizCandidateName = '';
@@ -1343,6 +1344,7 @@ export class GameRecallRuntime {
       // A bridge is asked under its official spelling and typed either way.
       displayName: this._shownName(correctName),
       acceptedAnswers: acceptedBridgeAnswers(bridgeDisplayNamesOf(this.bridges), correctName),
+      say: t,
       answer,
       noIdea,
       score: {

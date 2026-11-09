@@ -9,6 +9,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'landmark-card-folded' | 'landmark-card-folded-touch'
   // G3 (#273): "Which building is this?", and the drive-by card's "Noticed" pill.
   | 'question-landmark' | 'touch-question-landmark' | 'landmark-card-noticed' | 'landmark-card-noticed-touch' | 'landmark-card-noticed-touch-hint'
+  // R2-3 (#303): ride C's Mint Tower card in the Dutch game reads "Munttoren", as its question did.
+  | 'landmark-card-noticed-mint' | 'landmark-card-noticed-mint-touch'
   // #281: approaching the candidate, before its question opens: its name and the distractors' are withheld from the map.
   | 'landmark-approach' | 'landmark-approach-touch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
@@ -437,7 +439,7 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
           const dutch = scenario.startsWith('landmark-panel-dutch');
           const bare = scenario.startsWith('landmark-card-bare');
           const long = scenario.startsWith('landmark-card-long');
-          const name = long ? LONG_LANDMARK_NAME : 'Oude Kerk';
+          const name = long ? LONG_LANDMARK_NAME : scenario.startsWith('landmark-card-noticed-mint') ? 'Mint Tower' : 'Oude Kerk';
           // The photo is keyed by the notice's id when it arrives; the long-name
           // card is the same stand-in painting under its own name.
           const id = long ? 'rijksmuseum' : 'oude-kerk';
@@ -858,6 +860,9 @@ export const LandmarkCardNoticed: Story = { args: { scenario: 'landmark-card-not
 export const LandmarkCardNoticedPhone: Story = { args: { scenario: 'landmark-card-noticed-touch' }, globals: phone };
 /** #286: the phone's Noticed pill at 44 px, the card above the touch hint strip and the street pad. */
 export const LandmarkCardNoticedHintPhone: Story = { args: { scenario: 'landmark-card-noticed-touch-hint' }, globals: phone };
+/** R2-3 (#303): the drive-by card after a Dutch landmark answer names the place as the question did (Munttoren, not MINT TOWER). */
+export const LandmarkCardNoticedDutch: Story = { args: { scenario: 'landmark-card-noticed-mint' }, render: () => <DutchFrame scenario="landmark-card-noticed-mint" /> };
+export const LandmarkCardNoticedDutchPhone: Story = { args: { scenario: 'landmark-card-noticed-mint-touch' }, render: () => <DutchFrame scenario="landmark-card-noticed-mint-touch" />, globals: phone };
 export const LandmarkCardBare: Story = { args: { scenario: 'landmark-card-bare' } };
 /** No photo on a phone either: the card is text alone, and still fits. */
 export const LandmarkCardBarePhone: Story = {

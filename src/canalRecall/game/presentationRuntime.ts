@@ -67,6 +67,7 @@ import { nearestRouteIndex, RADAR_RADIUS_M, radarLocal, radarRadiusForSpeed, Rad
 import { gameWorldToLngLat, type GameLoaderFrame } from '../ownMap/frame';
 import { revealOnEnter, utilityBlockedByCards, utilityVisibility } from './utilityTuck';
 import { CATALOGS, t as tr, type MessageKey } from '../../i18n/index.ts';
+import { placeName } from './landmarkNamesNl.ts';
 import { kindLabel } from '../cardKindLabel.ts';
 import { extendShareTrail } from '../shareCard';
 import { fitFooterItems, type FooterItem } from './footerFit';
@@ -537,7 +538,7 @@ export class GamePresentationRuntime {
   _destinationLabel(): string {
     // A review stop's name is the answer; it shows only on arrival.
     if (isReviewStop(this.routeTo) && !this.routeTo.name) return REVIEW_STOP_LABEL;
-    const name = this.routeTo?.name || '';
+    const name = placeName(this.routeTo?.name || '');
     // Mask only the answer of the question open right now. Masking every
     // street in the ride cut most destinations to "…kerk" for the whole ride
     // (user report 2026-09-28, "this should not cut off my destination");
@@ -1592,7 +1593,7 @@ export class GamePresentationRuntime {
 
       // A long destination was cut to "Vondelpark Open Air…" on a 414-wide
       // phone (G7, #277): step the size down, then take a second line.
-      const title = fitFinishTitle(ctx, this.routeTo.name, innerW);
+      const title = fitFinishTitle(ctx, placeName(this.routeTo.name), innerW);
       this._finishTitleLayout = title;
       const titleExtra = (title.lines.length - 1) * title.lineHeight;
       blocks.push({ height: 74 + titleExtra, draw: (top) => {
@@ -1603,7 +1604,7 @@ export class GamePresentationRuntime {
         title.lines.forEach((line, index) => ctx.fillText(line, cardX + padX, top + 42 + index * title.lineHeight));
         ctx.fillStyle = MUTED; ctx.font = '13px system-ui, sans-serif';
         // Long tour stop names ran off a phone card.
-        ctx.fillText(wrapText(ctx, `${this.routeFrom.name}  →  ${this.routeTo.name}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
+        ctx.fillText(wrapText(ctx, `${placeName(this.routeFrom.name)}  →  ${placeName(this.routeTo.name)}`, innerW, 1)[0], cardX + padX, top + 64 + titleExtra);
       } });
 
       // The tightest level drops the encyclopedia blurb: the heading already
@@ -1722,7 +1723,7 @@ export class GamePresentationRuntime {
         const gain = this._explorationRouteGain;
         const story = finishStory({
           gain: gain || { newNames: 0, newNeighborhoods: 0, newLandmarks: 0 },
-          destinationName: this.routeTo?.name || '',
+          destinationName: placeName(this.routeTo?.name || ''),
           cityName: this._cityDisplayName(),
           newPassportStamps: this._finishPassportFresh || [],
           placeStreak: { days: [], current: 0, best: 0 },
@@ -1864,7 +1865,7 @@ export class GamePresentationRuntime {
           ctx.fillStyle = INK; ctx.font = '700 13px system-ui, sans-serif';
           const tally = stamp.kind === 'poi' && stamp.total > 0 ? `  ·  ${tr('ride.arrival.placeTally', { earned: stamp.earned, total: stamp.total })}` : '';
           const textX = cardX + padX + 18 + labelW + 10;
-          ctx.fillText(wrapText(ctx, `${stamp.name}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
+          ctx.fillText(wrapText(ctx, `${placeName(stamp.name)}${tally}`, cardX + cardW - padX - textX, 1)[0], textX, top + 13);
         } });
       }
 

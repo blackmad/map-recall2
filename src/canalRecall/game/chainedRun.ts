@@ -20,6 +20,7 @@ import {
 } from './routeSelection';
 import { notabilityScore, notabilityWeight } from './poiNotability';
 import { t } from '../../i18n/index.ts';
+import { placeName } from './landmarkNamesNl.ts';
 
 export const RUN_STORAGE_KEY = 'canalRecall.openRun.v1';
 export const LAST_RUN_STORAGE_KEY = 'canalRecall.lastRun.v1';
@@ -269,8 +270,8 @@ export function runStory(run: OpenRun): string {
   const words = t('run.numberWords').split(',');
   const count = run.stopCount < words.length ? words[run.stopCount] : String(run.stopCount);
   const last = run.stops[run.stops.length - 1];
-  const from = run.startName && run.startName !== last?.name ? t('run.storyFrom', { name: run.startName }) : '';
-  const to = last ? t('run.storyTo', { name: last.name }) : '';
+  const from = run.startName && run.startName !== last?.name ? t('run.storyFrom', { name: placeName(run.startName) }) : '';
+  const to = last ? t('run.storyTo', { name: placeName(last.name) }) : '';
   const names = run.names.length > 0 ? t('run.storyNames', { names: countText('count.names', run.names.length) }) : '';
   return t('run.story', { count, stops: t(run.stopCount === 1 ? 'run.storyStop.one' : 'run.storyStop.other'), from, to, names });
 }

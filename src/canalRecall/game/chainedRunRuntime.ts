@@ -34,6 +34,7 @@ import { worldToLatLng, type RunShareInput } from '../runShareCard';
 import type { ShareTrail } from '../shareCard';
 import type { Hud } from './collaborators';
 import { t } from '../../i18n/index.ts';
+import { placeName } from './landmarkNamesNl.ts';
 import { drawKeycapAction } from './keycapAction';
 
 /** Riding refreshes the run's clock at most this often (one localStorage write). */
@@ -386,7 +387,7 @@ export class GameChainedRunRuntime {
       ctx.font = `12px ${font}`;
       const pointsW = pointsText ? ctx.measureText(pointsText).width + 12 : 0;
       ctx.fillStyle = INK; ctx.font = '600 14px system-ui, sans-serif';
-      ctx.fillText(wrapText(ctx, stop.name, innerW - 32 - pointsW, 1)[0] ?? '', cardX + padX + 32, sy + 9);
+      ctx.fillText(wrapText(ctx, placeName(stop.name), innerW - 32 - pointsW, 1)[0] ?? '', cardX + padX + 32, sy + 9);
       if (pointsText) {
         ctx.textAlign = 'right'; ctx.fillStyle = MUTED; ctx.font = `12px ${font}`;
         ctx.fillText(pointsText, cardX + cardW - padX, sy + 9);

@@ -300,6 +300,7 @@ export class GameLandmarkQuestionRuntime {
     const result = CanalRecallAnswerPath.submitAnswer({
       correctName,
       displayName: correctName,
+      say: t,
       answer,
       noIdea,
       score: {
