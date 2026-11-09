@@ -772,7 +772,10 @@ export class GameLandmarkRuntime {
     // keeps its full text for the expanded panel, and a card the rider
     // clicked open never folds (see teachingPacer.cardCollapsed).
     const collapsed = cardCollapsed(this._landmarkNoticeSource, this._landmarkNoticeState.elapsed);
-    const img = collapsed ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
+    // A short phone has no room under the bike for a photo and a body: the card is one row with the
+    // Noticed pill beside the name (390×664, #292). Taller phones and desktop keep the full card.
+    const shortPhone = this.viewport?.mode === 'compact' && (this.viewport?.height ?? Infinity) < 800 && !!this._landmarkCardAction();
+    const img = collapsed || shortPhone ? null : this._landmarkImages && this._landmarkImages.get(lm.id);
     const hasImage = !!(img && img.complete && img.naturalWidth > 0);
     const cards = window.CanalRecallCards;
     const measure = (text: string, font: string): number => { ctx.font = font; return ctx.measureText(text).width; };
@@ -797,6 +800,7 @@ export class GameLandmarkRuntime {
       // Three body lines then, so the taller pill does not push the card over the bike (414×896, #286).
       ...(action && (this.viewport?.touch || this.viewport?.mode === 'compact')
         ? { actionHeight: cards.TOUCH_ACTION_HEIGHT, ...(collapsed ? {} : { maxBodyLines: 3 }) } : {}),
+      ...(shortPhone ? { inlineAction: true } : {}),
     }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
 
     // Trivia belongs at the bottom of the screen. Across the top it sat exactly
@@ -936,6 +940,7 @@ export class GameLandmarkRuntime {
         provinceCaption: city?.provinceCaption || '',
         checklist: this._freeRideChecklistCaption?.(hood.name) || '',
         stamped: !!hood.stamped,
+        compact: this.viewport?.mode === 'compact',
       },
       measure,
       window.CanalRecallUi.postcardWidth(this.viewport));
@@ -958,7 +963,9 @@ export class GameLandmarkRuntime {
     ctx.globalAlpha = Math.max(0, alpha);
     this.renderer.drawPostcard(ctx, card, cardX, cardY, hasImage && img ? img : null);
     if (hood.stamped) {
-      drawPassportStamp(ctx, cardX + card.width - 46, cardY + card.height / 2, 34, 'Stamped',
+      // The phone card carries its own seal box (below the name's column); desktop keeps the original.
+      const seal = card.seal ?? { x: card.width - 46, y: card.height / 2, r: 34 };
+      drawPassportStamp(ctx, cardX + seal.x, cardY + seal.y, seal.r, 'Stamped',
         Math.min(1, (duration - this._neighborhoodNoticeTimer) / 0.25), window.CanalRecallUi.hudSurface.fontPlaque);
     }
     ctx.restore();

@@ -495,10 +495,10 @@ class Renderer {
     ctx.fillText(card.heading.toUpperCase(), textX, y + 27);
     ctx.fillStyle = surface.ink;
     ctx.font = `800 ${card.nameFontSize}px ${surface.fontPlaque}`;
-    ctx.fillText(card.name.toUpperCase(), textX, y + 58);
+    ctx.fillText(card.name.toUpperCase(), textX, y + (card.nameBaseline ?? 58));
     ctx.fillStyle = surface.inkMuted;
     ctx.font = `500 12px ${surface.fontUi}`;
-    ctx.fillText(card.caption, textX, y + 80);
+    ctx.fillText(card.caption, textX, y + (card.captionBaseline ?? 80));
     ctx.restore();
 
     ctx.strokeStyle = surface.border;
