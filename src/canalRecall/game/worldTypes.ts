@@ -41,6 +41,8 @@ export interface LandmarkNotice {
   id: string;
   name: string;
   type?: string;
+  /** Chip words shown instead of `type` (already translated): ARTWORK, CAFÉ, never BUILDING for a mapped node. */
+  typeLabel?: string;
   detail?: string;
   longDetail?: string;
   /** Set when `detail` includes a generated fact rather than only the article
