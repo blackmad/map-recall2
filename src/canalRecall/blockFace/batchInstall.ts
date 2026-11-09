@@ -61,6 +61,9 @@ export interface VerdictInput {
   likeness: readonly {pandId: string; ncc: number | null}[];
   stripOverDrawn: number | null;
   brickPands: number;
+  /** The strip evidence gate over the finished run (evidence-gate.ts runEvidence, #120): authored intents bypass the
+   * auto-place hold, so the batch asks again before install. Absent (not measured) = no change. */
+  evidence?: {pass: boolean; reasons: readonly string[]} | null;
 }
 
 /** Install only when everything passes; otherwise the stable reason codes (the report groups by the part before ':'). */
@@ -75,6 +78,7 @@ export function installVerdict(v: VerdictInput): {install: boolean; reasons: str
     if (low.length) reasons.push(`likeness: ${low.length} pand(s) under NCC ${BATCH_GATES.minNcc} (${low.map(l => `${l.pandId.slice(-6)} ${l.ncc}`).join(', ')})`);
     const evidence = v.likeness.filter(l => l.ncc !== null).length;
     if (!v.likeness.length || evidence / v.likeness.length < BATCH_GATES.minEvidenceShare) reasons.push(`likeness-no-evidence: ${evidence}/${v.likeness.length} pands scored`);
+    if (v.evidence && !v.evidence.pass) reasons.push(`no-front: ${v.evidence.reasons.slice(0, 3).join('; ')}`);
     const [lo, hi] = BATCH_GATES.stripOverDrawn;
     if (v.brickPands > 0) {
       if (v.stripOverDrawn === null) reasons.push('strip-over-drawn: unmeasured');

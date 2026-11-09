@@ -27,6 +27,8 @@
   "roof": "pitched",
   "stucco": false,
   "crownMatch": true,
+  "crownStrict": true,
+  "materialVeto": true,
   "baysByWidth": [
    {
     "maxWidthM": 4.6,

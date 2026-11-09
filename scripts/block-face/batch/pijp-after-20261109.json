@@ -1,0 +1,250 @@
+{
+ "name": "pijp-after-20261109",
+ "buurt": "frans-halsbuurt",
+ "library": "de-pijp",
+ "generatedAt": "2026-11-09T22:53:47.227Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 9,
+  "runs": 9,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 8,
+  "byReason": {
+   "no-type": 5,
+   "compile-gates": 2,
+   "already-installed": 1,
+   "intake-failed": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "stalpert-2-36",
+   "street": "Daniël Stalpertstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.189,
+   "nccMedian": 0.273,
+   "stripOverDrawn": 0.885,
+   "wallFits": 5,
+   "droppedCorners": [],
+   "triangles": 25417,
+   "sheet": "staging/block-face/stalpert-2-36-r1/review/strip-sheet.png",
+   "stripDate": "2022-01-26",
+   "run": "stalpert-2-36-r1",
+   "pands": 13,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 160596/storey-height; 164898/storey-height; 166489/storey-height; 154148/storey-height"
+   ],
+   "seconds": 39.6
+  },
+  {
+   "face": "campen-2-34",
+   "street": "Eerste Jacob van Campenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "campen-2-34",
+   "pands": 15,
+   "mode": "authored",
+   "stripDate": null,
+   "status": "skipped",
+   "reasons": [
+    "already-installed"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "hals-2-26",
+   "street": "Frans Halsstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "hals-2-26",
+   "pands": 12,
+   "mode": "auto-place",
+   "stripDate": "2022-03-21",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/12 placed (4x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne; 1x match: best pijp-#-shop-dormer scores # < # (#DBAG eaves # m = # storeys of #)"
+   ],
+   "seconds": 106.3
+  },
+  {
+   "face": "hals-28-40",
+   "street": "Frans Halsstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "hals-28-40",
+   "pands": 7,
+   "mode": "auto-place",
+   "stripDate": "2023-01-03",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/7 placed (3x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x match: era guard: the strip reads ribbon windows; pijp-#-shop-dormer is a pun)"
+   ],
+   "seconds": 49.3
+  },
+  {
+   "face": "dou-1-7",
+   "street": "Gerard Doustraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "dou-1-7",
+   "pands": 11,
+   "mode": "auto-place",
+   "stripDate": "2023-01-03",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/11 placed (5x match: era guard: Gerard Doustraat # (same # row) reads ribbon windows; pijp-; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x match: era guard: the strip reads ribbon windows; pijp-#-bracketed-hood is a )"
+   ],
+   "seconds": 50.3
+  },
+  {
+   "face": "dou-9-39",
+   "street": "Gerard Doustraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "dou-9-39",
+   "pands": 17,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "intake-failed: Houses of one chunk must front the same direction (frontages differ by more than ~11 degrees)"
+   ],
+   "seconds": 39.8
+  },
+  {
+   "face": "quellijn-32-56",
+   "street": "Quellijnstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "quellijn-32-56",
+   "pands": 9,
+   "mode": "auto-place",
+   "stripDate": "2019-01-30",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/9 placed (4x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 82
+  },
+  {
+   "face": "ruysdaelkade-15-55",
+   "street": "Ruysdaelkade",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "ruysdaelkade-15-55",
+   "pands": 21,
+   "mode": "auto-place",
+   "stripDate": "2022-03-21",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/14 placed (8x match: every type vetoed (best pijp-#-shop-dormer: built #, type #-#); 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 2x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 105.3
+  },
+  {
+   "face": "saenredam-2-22",
+   "street": "Saenredamstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.183,
+   "nccMedian": 0.216,
+   "stripOverDrawn": 0.923,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 11842,
+   "sheet": "staging/block-face/saenredam-2-22-r1/review/strip-sheet.png",
+   "stripDate": "2022-01-10",
+   "run": "saenredam-2-22-r1",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 166578/storey-height; 155728/storey-height; 162009/storey-height; 164404/storey-height"
+   ],
+   "seconds": 7.5
+  }
+ ]
+}
