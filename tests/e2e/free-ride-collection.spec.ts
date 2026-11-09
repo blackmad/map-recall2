@@ -278,3 +278,65 @@ test('?collection=0 still forces the collection off', async ({ page }) => {
   expect(state.tally).toBe('Tap a marker or a building');
   expect(state.radar).toBe(0);
 });
+
+// F1 (#311), integrator's acceptance cases (desktop and iphone): a Free Ride start shows no checklist line, no
+// postcard count, no coin and no quiz toggle; the album keeps a stamp earned earlier in Free Ride and says
+// stamps are now earned on quiz rides.
+test('F1: a Free Ride start has no checklist line, postcard count, coin or quiz toggle', async ({ page }) => {
+  test.setTimeout(180_000);
+  await page.addInitScript(() => {
+    if (sessionStorage.getItem('f1-start')) return; sessionStorage.setItem('f1-start', '1');
+    const prefs = JSON.parse(localStorage.getItem('canalRecall.preferences.v1') || '{}');
+    localStorage.setItem('canalRecall.preferences.v1', JSON.stringify({ ...prefs, routePattern: 'free', landmarkQuiz: true }));
+  });
+  // Route setup with Free Ride chosen: no "Quiz me on landmarks".
+  await page.goto('/canal-drive/');
+  await expect(page.locator('#route-card')).toBeVisible({ timeout: 90_000 });
+  await expect(page.locator('#free-ride-landmark-quiz')).toHaveCount(0);
+  if (SHOTS) await page.screenshot({ path: `${SHOTS}/f1-setup-free-${test.info().project.name}.png` });
+
+  await startFreeRide(page);
+  const list = await pickList(page);
+  // Ride into a buurt that has a list: its postcard comes up, with no count on it.
+  await placeRider(page, list.places[0]);
+  await page.evaluate((hood) => { (window as any).canalRecallGame.currentNeighborhood = hood; }, list.hood);
+  await page.waitForTimeout(1500);
+  const state = await page.evaluate((hood) => {
+    const g = (window as any).canalRecallGame;
+    return {
+      tally: g._freeRideTally() as string,
+      caption: g._freeRideChecklistCaption(hood) as string,
+      collection: g._freeRideCollection,
+      radar: g._freeRideRadarPlaces().length,
+      notice: g._neighborhoodNotice ? { name: g._neighborhoodNotice.name, checklist: g._neighborhoodNotice.checklist ?? '' } : null,
+    };
+  }, list.hood);
+  console.log('F1 start', JSON.stringify(state));
+  if (SHOTS) await page.screenshot({ path: `${SHOTS}/f1-free-ride-start-${test.info().project.name}.png` });
+  expect(state.tally).not.toMatch(/\bof \d+ places\b|all \d+ places/);
+  expect(state.caption).toBe('');
+  expect(state.notice?.checklist ?? '').toBe('');
+  expect(state.collection).toBeNull();
+  expect(state.radar).toBe(0);
+});
+
+test('F1: the album keeps a stamp earned earlier in Free Ride, with the quiz-ride copy', async ({ page }) => {
+  test.setTimeout(120_000);
+  await page.addInitScript(() => {
+    if (sessionStorage.getItem('f1-album')) return; sessionStorage.setItem('f1-album', '1');
+    localStorage.setItem('canalRecall.returningPlayer.v1', '1');
+    localStorage.setItem('canalRecall.freeRideCollection.v1', JSON.stringify({ opened: ['x'], stamps: [{ hood: 'Marineterrein', at: '2026-11-08' }] }));
+  });
+  await page.goto('/canal-drive/');
+  await expect(page.locator('#knowledge-button')).toBeVisible({ timeout: 60_000 });
+  await page.locator('#knowledge-button').click();
+  const album = page.getByTestId('stamp-album');
+  await expect(album).toBeVisible();
+  await expect(album).toContainText('earned on a quiz ride');
+  await expect(album).toContainText('Stamps from Free Ride stay');
+  await album.locator('.stamp-album-more').click().catch(() => {});
+  const stamp = album.locator('.stamp', { has: page.locator('strong[title="Marineterrein"]') });
+  await expect(stamp).toHaveAttribute('data-earned', 'true');
+  expect(Number(await album.getAttribute('data-earned'))).toBeGreaterThanOrEqual(1);
+  if (SHOTS) await album.screenshot({ path: `${SHOTS}/f1-album-${test.info().project.name}.png` });
+});
