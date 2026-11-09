@@ -33,7 +33,7 @@ import {
 } from './freeRide';
 import { isWorthACard } from './landmarkData';
 import { isBoat } from './modes';
-import { bridgeMarkerAnchor, landAnchor, tapOnOpenWater, type IsWater } from './freeRideWater';
+import { bridgeMarkerAnchor, freeRideWayTapAllowed, landAnchor, tapOnOpenWater, type IsWater } from './freeRideWater';
 import type { LandmarkHost } from './host';
 import type { Hud, Track } from './collaborators';
 import { DEFAULT_NOTICE_CONFIG, type NoticeHold } from './landmarkNotice';
@@ -605,7 +605,8 @@ export class GameFreeRideRuntime {
     const marker = this._freeRideMarkerAt(x, y);
     if (marker) return this._openFreeRidePlace(marker.key);
     // Open water answers only through a pill (lane S2, #314): no statue on the quay, no landmark, no street beside
-    // it. A boat's tap still names the water it is on.
+    // it. A boat's tap on its water names that canal (ruling 2026-11-09): the water's own card, from a deliberate tap
+    // on the water body only, through the one bottom card like any other.
     const onWater = this._freeRideTapOnWater(clientX, clientY);
     const before = this._landmarkNotice;
     if (!onWater) this._inspectBuildingAt(clientX, clientY);
@@ -613,7 +614,7 @@ export class GameFreeRideRuntime {
       this._noteFreeRideOpened(this._landmarkNotice.id);
       return true;
     }
-    if (onWater && !isBoat(this.travelMode)) return false;
+    if (!freeRideWayTapAllowed(onWater, isBoat(this.travelMode))) return false;
     return this._openFreeRideWayAt(clientX, clientY);
   }
 

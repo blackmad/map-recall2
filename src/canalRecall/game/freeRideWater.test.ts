@@ -44,3 +44,11 @@ test('a tap is on open water only when nothing stands over the water point', asy
   assert.equal(tapOnOpenWater({ id: 'facade' }, true), false);
   assert.equal(tapOnOpenWater(null, false), false);
 });
+
+test('a boat names its canal only from a tap on the water; a bike names a street only off it', async () => {
+  const { freeRideWayTapAllowed } = await import('./freeRideWater.ts');
+  assert.equal(freeRideWayTapAllowed(true, true), true);
+  assert.equal(freeRideWayTapAllowed(false, true), false, 'a quay tap does not name the canal beside it');
+  assert.equal(freeRideWayTapAllowed(true, false), false, 'a water tap does not name the quay street');
+  assert.equal(freeRideWayTapAllowed(false, false), true);
+});

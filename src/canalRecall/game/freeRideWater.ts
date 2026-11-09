@@ -95,3 +95,12 @@ export function landAnchor(point: WorldPoint, isWater: IsWater | null, maxPx = L
 export function tapOnOpenWater(surfaceHit: unknown, groundWater: boolean): boolean {
   return !surfaceHit && groundWater;
 }
+
+/**
+ * Whether a Free Ride tap that hit no pill, building or label may name the way under it (ruling 2026-11-09 on
+ * #314): a boat names its canal only from a tap on open water, the water's own story card, never from a quay or a
+ * facade beside it; a bike names a street only from a tap off the water.
+ */
+export function freeRideWayTapAllowed(onWater: boolean, boat: boolean): boolean {
+  return boat ? onWater : !onWater;
+}

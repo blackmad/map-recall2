@@ -135,7 +135,7 @@ async function tapAndRead(page: Page, c: Candidate, phone: boolean): Promise<any
       : id.startsWith('free-way:') || n.type === 'water' || n.type === 'waterway' || n.type === 'street' ? `way:${n.type}`
       : (g.landmarks || []).some((l: any) => l.id === id) ? 'landmark'
       : n.type ? `other:${n.type}` : 'other';
-    return { id, name: n.name, kind };
+    return { id, name: n.name, kind, alongside: !!g._neighborhoodNotice };
   });
   return { ...c, ...before, opened: after };
 }
@@ -172,6 +172,25 @@ for (const mode of ['boat', 'car'] as const) {
     }
     if (out) writeFileSync(join(out, `${info.project.name}-${mode === 'car' ? 'bike' : 'boat'}.json`), JSON.stringify({ summary, rows }, null, 1));
     if (process.env.S2_GATE) {
+      // Ruling 2026-11-09 (#314): a boat's tap on its water names that canal, and only that: never from a quay tap,
+      // never a street; a bike's water tap opens nothing; every opened card is the one bottom card.
+      const waterNames = new Set(await page.evaluate(async () =>
+        (await (await fetch('/data/extracts/amsterdam/water.json')).json()).map((w: any) => w.name)));
+      const boat = mode === 'boat';
+      for (const r of rows) {
+        if (!r.opened) continue;
+        expect(r.opened.alongside, `${r.pose}: one card at a time (${r.opened.name})`).toBe(false);
+        const way = String(r.opened.kind).startsWith('way:');
+        if (r.water && !r.onPill) {
+          if (boat) {
+            expect(way, `${r.pose}: a boat's water tap opens only the water's card, got ${r.opened.kind} ${r.opened.name}`).toBe(true);
+            expect(waterNames.has(r.opened.name) || waterNames.has(r.opened.name.replace(/^free-way:/, '')), `${r.pose}: ${r.opened.name} is a water`).toBe(true);
+          } else {
+            expect(r.opened, `${r.pose}: a bike's water tap opens nothing (${r.opened.kind} ${r.opened.name})`).toBeNull();
+          }
+        }
+        if (!r.water && boat) expect(way, `${r.pose}: a boat's quay/land tap names no canal (${r.opened.name})`).toBe(false);
+      }
       for (const line of summary) {
         expect(line.waterTaps, `${line.pose}: enough water taps`).toBeGreaterThanOrEqual(10);
         expect(line.waterOffPillPinCards, `${line.pose}: water taps opening a landmark/bridge/building card off a pill`).toBe(0);
