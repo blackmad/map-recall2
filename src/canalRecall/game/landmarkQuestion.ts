@@ -214,3 +214,8 @@ export function bumpSessionCounter(target: { __canalRecallSession?: Record<strin
   session[key] = next;
   return next;
 }
+
+/** "On the right · Museumkwartier": the side, then the buurt the plaque shows (R2-8). */
+export function questionContext(side: string, buurt: string | null | undefined): string {
+  return buurt ? `${side} · ${buurt}` : side;
+}
