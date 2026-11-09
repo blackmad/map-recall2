@@ -104,10 +104,13 @@ async function run(i) {
   const tag = `${label}-${device}-run${i + 1}-${pass}`;
   const t0 = Date.now();
   // warm: the same context navigates again (HTTP cache, service worker and storage kept), a returning player's start.
-  // A same-URL goto with a hash is only a hash change (the page is not reloaded): the warm pass reloads.
-  if (pass === 'warm') await page.reload({ waitUntil: 'load' }); else await page.goto(`${origin}/canal-drive/${qs}${hash}`, { waitUntil: 'load' });
+  // A same-URL goto with a hash is only a hash change, and a reload lands on the menu (the game drops the hash):
+  // the warm pass leaves for about:blank and opens the start URL again in the same context.
+  if (pass === 'warm') await page.goto('about:blank');
+  await page.goto(`${origin}/canal-drive/${qs}${hash}`, { waitUntil: 'load' });
   if (throttle > 1) { const cdp = await context.newCDPSession(page); await cdp.send('Emulation.setCPUThrottlingRate', { rate: throttle }); }
-  await page.waitForFunction(() => window.canalRecallGame?.state === 4, null, { timeout: 180_000 });
+  try { await page.waitForFunction(() => window.canalRecallGame?.state === 4, null, { timeout: 180_000 }); }
+  catch (e) { passes.push({ label, device, pass, failed: String(e).slice(0, 200), state: await page.evaluate(() => window.canalRecallGame?.state ?? null).catch(() => null), first: null, startHold: null, hold: null, errors }); continue; }
   await page.waitForTimeout(watchMs);
   // The settled frame at the end of the watch, for the strip (same pose unless the ride moved).
   const late = await page.evaluate(() => { const src = window.canalRecallGame?.vectorMap?.frameCanvas?.(); if (!src) return null; const big = document.createElement('canvas'); big.width = Math.min(1280, src.width); big.height = Math.round(big.width * src.height / src.width); big.getContext('2d').drawImage(src, 0, 0, big.width, big.height); return big.toDataURL('image/jpeg', 0.8); }).catch(() => null);
