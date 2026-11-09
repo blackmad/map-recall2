@@ -1,0 +1,55 @@
+// Label budget (#161 lever 3, `?labelCalm=1`, default off): a calmer chase-cam frame carries few names. After the
+// placement has chosen its winners, POI labels are thinned to a budget; street, water and neighbourhood names (the
+// geography the player is learning, already screened by labelPolicy.ts) are never touched. Nothing is added, so a name
+// that labelPolicy withheld cannot come back through here.
+//
+//  - at most CALM_POI_MAX POI labels on screen, the ones nearest the corridor first (a screen-space proxy: the chase
+//    camera looks along the rider's street, so the corridor is the centre column and the lower half);
+//  - none in the top third of the frame (they sit on the far skyline);
+//  - a shop or venue name only within CALM_SHOP_M of the eye; a signature landmark (`landmark`) keeps its long reach.
+
+import type { PlacedLabel } from './labels';
+
+export const CALM_POI_MAX = 6;
+export const CALM_SHOP_M = 150;
+export const CALM_TOP_SHARE = 1 / 3;
+
+export interface CalmLabelInput {
+  width: number;
+  height: number;
+  /** Eye-space distance to the label's anchor, metres; null when unknown (kept). */
+  depthOf: (label: PlacedLabel) => number | null;
+  /** Signature landmarks (reachable from far away). */
+  isLandmark: (label: PlacedLabel) => boolean;
+  /** The game's own point labels (the answered street, ferry landings): never thinned. */
+  isGamePoint?: (label: PlacedLabel) => boolean;
+  max?: number;
+  shopM?: number;
+}
+
+/** 0 on the corridor axis (centre column, bottom of the frame) rising toward the top corners. Lower wins. */
+export function corridorDistance(x: number, y: number, width: number, height: number): number {
+  return Math.abs(x - width / 2) / (width / 2) + 0.6 * (1 - y / height);
+}
+
+export function calmLabels(placed: readonly PlacedLabel[], input: CalmLabelInput): PlacedLabel[] {
+  const max = input.max ?? CALM_POI_MAX, shopM = input.shopM ?? CALM_SHOP_M;
+  const keep = new Set<PlacedLabel>();
+  const pois: PlacedLabel[] = [];
+  for (const l of placed) {
+    if (l.kind !== 'poi' || l.x === undefined || l.y === undefined || input.isGamePoint?.(l)) { keep.add(l); continue; }
+    if (l.y < input.height * CALM_TOP_SHARE) continue;
+    const depth = input.depthOf(l);
+    if (depth !== null && depth > shopM && !input.isLandmark(l)) continue;
+    pois.push(l);
+  }
+  pois.sort((a, b) => corridorDistance(a.x!, a.y!, input.width, input.height) - corridorDistance(b.x!, b.y!, input.width, input.height) || (a.id < b.id ? -1 : 1));
+  for (const l of pois.slice(0, max)) keep.add(l);
+  return placed.filter(l => keep.has(l));
+}
+
+export function labelCalmFlag(): boolean {
+  const g = globalThis as { __canalRecallLabelCalm?: boolean | string; location?: { search?: string } };
+  const asked = g.__canalRecallLabelCalm ?? new URLSearchParams(g.location?.search ?? '').get('labelCalm');
+  return asked === true || asked === '1' || asked === 'true' || asked === 'on';
+}
