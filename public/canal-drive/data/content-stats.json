@@ -89,8 +89,8 @@
       ]
     },
     "streetsAndCanals": {
-      "count": 5523,
-      "note": "Names you can be asked: 5223 streets on rideable ways (bridge decks are counted under named bridges) and 300 canals and waters.",
+      "count": 5537,
+      "note": "Names you can be asked: 5237 streets on rideable ways (bridge decks are counted under named bridges) and 300 canals and waters.",
       "sources": [
         "public/data/extracts/amsterdam/streets-routing.json",
         "public/data/extracts/amsterdam/water.json"
