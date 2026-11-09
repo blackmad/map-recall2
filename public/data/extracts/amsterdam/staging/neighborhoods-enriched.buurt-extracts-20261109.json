@@ -153,7 +153,7 @@
   },
   {
     "name": "Gouden Bocht",
-    "wikipediaExtract": "The Gouden Bocht is the most prestigious stretch of the Herengracht in Amsterdam, between the Leidsestraat and the Vijzelstraat, part of the Vierde Uitleg, the last extension of the canal belt. At the Nieuwe Spiegelstraat the Herengracht takes a bend and the canals lie further apart, making the plots deeper; the mayors encouraged the purchase of double plots, where the city's richest residents built grand houses. Huis de Neufville (1731, Herengracht 475) is often called the finest house on the bend, and today the offices of banks and insurers share it with the Goethe-Institut and the Kattenkabinet.",
+    "wikipediaExtract": "The Gouden Bocht is the most prestigious stretch of the grandest canal of the ring, between the Leidsestraat and the Vijzelstraat, part of the Vierde Uitleg, the last extension of the canal belt. At the Nieuwe Spiegelstraat the canal takes a bend and the canals lie further apart, making the plots deeper; the mayors encouraged the purchase of double plots, where the city's richest residents built grand houses. Huis de Neufville (1731, at number 475) is often called the finest house on the bend, and today the offices of banks and insurers share it with the Goethe-Institut and the Kattenkabinet.",
     "sources": [
       "https://nl.wikipedia.org/wiki/Gouden_Bocht"
     ],
@@ -161,6 +161,7 @@
       "het meest prestigieuze deel van de Herengracht in Amsterdam, tussen de Leidsestraat en de Vijzelstraat",
       "Ter hoogte van de Nieuwe Spiegelstraat kreeg de Herengracht een knik.",
       "De burgemeesters bevorderden de aankoop van dubbele kavels."
-    ]
+    ],
+    "notes": "The canal's own name is left out on purpose: a daily ride may finish here and the arrival card must not print the finish way (#279 ruling, dailyRidePool.test)."
   }
 ]

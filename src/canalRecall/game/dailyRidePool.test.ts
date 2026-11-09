@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 // Today's ride from the buurt pool (#279): a year from the cutover keeps every
 // rule, and every place in the pool is a valid ride end on the graph the game
 // routes on (rebuilt here from the extract, as scripts/daily-ride/snapGraph.ts).
@@ -107,6 +108,7 @@ test('every pool place is a ride end on the routing graph: unnamed, clear of nam
 test('a finish on a named way never prints that way: card, landing, arrival blurb, share, route id (#279 ruling)', async () => {
   const directory = path.resolve('public/data/extracts/amsterdam');
   const graph = await loadSnapGraph(directory);
+  const enriched = JSON.parse(readFileSync(path.join(directory, 'neighborhoods-enriched.json'), 'utf8')) as Array<{ name: string; wikipediaExtract?: string }>;
   const finishOnNamed = DAILY_RIDE_POOL.filter(place => place.finishOk && graph.namesAt([place.lat, place.lng]).length > 0);
   assert.ok(finishOnNamed.length > 0, 'the pool has finishes on named ways');
   for (const place of DAILY_RIDE_POOL) {
@@ -121,13 +123,14 @@ test('a finish on a named way never prints that way: card, landing, arrival blur
     const from = { ...start, buurtPlace: true as const };
     const pair: DailyRidePair = { date: DAILY_POOL_CUTOVER, id: `${DAILY_POOL_CUTOVER}:${from.id}>${to.id}`, from, to, km: dailyRideKm(from, to) };
     const html = landingCardsHtml({ ...base, daily: { ...base.daily, pair } }, { ride: './' });
-    const blurb = buurtFinishBlurb(to, [{ name: place.name, wikipediaExtract: '' }]);
+    // The real extract: a blurb that names the finish way would print it on the arrival card (#289).
+    const blurb = buurtFinishBlurb(to, enriched);
     const share = buildRouteShare({
       origin: 'https://rideamsterdam.nl', pathname: '/ride', travelMode: 'car',
       race: { centre: { lat: (from.lat + to.lat) / 2, lng: (from.lng + to.lng) / 2 }, start: { lat: from.lat, lng: from.lng }, finish: { lat: to.lat, lng: to.lng } },
       from, to,
     });
-    const exposed = [pair.id, dailyRideLabel(pair), html, blurb?.name ?? '', JSON.stringify(share), to.name].join('\n').toLowerCase();
+    const exposed = [pair.id, dailyRideLabel(pair), html, blurb?.name ?? '', blurb?.text ?? '', JSON.stringify(share), to.name].join('\n').toLowerCase();
     for (const way of wayNames) {
       assert.ok(!exposed.includes(way.toLowerCase()), `finish ${place.id} prints its way "${way}"`);
     }
