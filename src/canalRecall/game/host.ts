@@ -454,6 +454,8 @@ export interface PresentationHost extends GameCoreHost {
   routeTo: { id: string; name: string; reviewStop?: string; landmarkId?: string; tourStop?: boolean; tourRevealName?: string };
   routePath: WorldPoint[] | null;
   _liveRoutePath: WorldPoint[] | null;
+  /** routeRemaining.ts suffix sums for the destination readout, per routePath. */
+  _routeRemainingCache?: import('./routeRemaining.ts').RemainingCache | null;
   /** Length of the route planned at the start — the efficiency reference,
    *  because the live line is consumed as the player advances. */
   _plannedRouteLengthPx: number;

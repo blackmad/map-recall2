@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  rideLeg,
+  sameLeg,
   addStop,
   chainBonus,
   endRun,
@@ -227,4 +229,18 @@ test('runLine with chain: false leaves the last stop\'s bonus out (the run share
   assert.match(runLine(run, { calm: false }), /chain/);
   assert.doesNotMatch(runLine(run, { calm: false, chain: false }), /chain/);
   assert.match(runLine(run, { calm: false, chain: false }), /205 points/);
+});
+
+test('rideLeg: the leg being ridden, whatever dealt it (R2-1: a review ride stored no leg)', () => {
+  const anne = { id: 'anne-frank', name: 'Anne Frank House', lat: 52.3753, lng: 4.8841 };
+  const vondel = { id: 'vondelmonument', name: 'Vondelmonument', lat: 52.36, lng: 4.8741, reviewStop: true };
+  const leg = rideLeg(anne, vondel);
+  assert.deepEqual(leg, { from: { id: 'anne-frank', name: 'Anne Frank House', lat: 52.3753, lng: 4.8841 }, to: { id: 'vondelmonument', name: 'Vondelmonument', lat: 52.36, lng: 4.8741 } });
+  assert.equal(rideLeg({ id: 'shared-start', name: 'Shared start', lat: 52.3, lng: 4.9, sharedEndpoint: true }, vondel), null, 'a share link is not resumed as a run leg');
+  assert.equal(rideLeg(anne, { id: 'x', name: 'X' }), null, 'no coordinates, nothing to launch');
+  assert.equal(rideLeg(anne, anne), null);
+  assert.equal(rideLeg(null, vondel), null);
+  assert.ok(sameLeg(leg, rideLeg(anne, vondel)));
+  assert.ok(!sameLeg(leg, rideLeg(vondel, anne)));
+  assert.ok(!sameLeg(null, leg));
 });

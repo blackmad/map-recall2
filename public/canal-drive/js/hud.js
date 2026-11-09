@@ -245,6 +245,8 @@ class HUD {
 
   _destinationDistance(distancePx) {
     const meters = Math.max(0, distancePx / PIXELS_PER_METER);
+    // One km format with the landing (rideDistance.ts formatRideDistance, set as formatKm by the presentation runtime).
+    if (meters >= 1000 && this.formatKm) return this.formatKm(meters / 1000);
     return meters >= 1000 ? `${(meters / 1000).toFixed(1)} km` : `${Math.round(meters)} m`;
   }
 

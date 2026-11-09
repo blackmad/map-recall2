@@ -214,6 +214,8 @@ export interface Hud {
     /** Replaces the score line (Free Ride has no score). */
     tally?: string | null;
   }): void;
+  /** km → text for the destination readout (rideDistance.ts formatRideDistance, set by the presentation runtime). */
+  formatKm?: (km: number) => string;
   /** Destination card; the finish arrow draws inside it when `arrowAngle` is set. */
   drawDestination(
     ctx: CanvasRenderingContext2D, name: string, distancePx: number,
