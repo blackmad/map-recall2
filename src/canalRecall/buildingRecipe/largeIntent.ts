@@ -92,7 +92,11 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
   if (intent?.roof !== undefined) {
     const r = intent.roof;
     oneOf(r?.material, ROOF_MATERIALS, 'roof.material');
-    for (const k of Object.keys(r ?? {})) if (!['material', 'flat', 'surfaces', 'flatHex', 'pitchedHex', 'levelRooftop'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat, surfaces, flatHex, pitchedHex, levelRooftop)`);
+    for (const k of Object.keys(r ?? {})) if (!['material', 'flat', 'surfaces', 'flatHex', 'pitchedHex', 'levelRooftop', 'tidy'].includes(k)) problems.push(`roof.${k}: unknown field (material, flat, surfaces, flatHex, pitchedHex, levelRooftop, tidy)`);
+    if (r?.tidy !== undefined) {
+      for (const k of Object.keys(r.tidy ?? {})) if (k !== 'evidence') problems.push(`roof.tidy.${k}: unknown field (evidence)`);
+      if (typeof r.tidy?.evidence !== 'string' || !r.tidy.evidence.trim()) problems.push('roof.tidy.evidence: say why the 3DBAG roof planes are noise here (photo ids, user note)');
+    }
     if (r?.levelRooftop !== undefined) {
       for (const k of Object.keys(r.levelRooftop ?? {})) if (k !== 'evidence') problems.push(`roof.levelRooftop.${k}: unknown field (evidence)`);
       if (typeof r.levelRooftop?.evidence !== 'string' || !r.levelRooftop.evidence.trim()) problems.push('roof.levelRooftop.evidence: say what shows the rooftop is not the 3DBAG plane field (photo ids, user note)');
