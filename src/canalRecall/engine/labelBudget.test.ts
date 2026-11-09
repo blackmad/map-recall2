@@ -177,6 +177,12 @@ test('a budgeted full placement cut at its budget finishes while the camera hold
   const plain = layer(null);
   plain.draw(frame, view, 16, 1, project, pose);
   assert.deepEqual(ids(l), ids(plain));
+  // The labels' fade-in (#288) redraws a still camera until it settles (~300 ms of frames).
+  const perf = performance as { now: () => number }, real = perf.now;
+  let t = real.call(performance);
+  perf.now = () => (t += 20);
+  try { for (let k = 0; k < 50 && l.fade?.active; k++) l.draw(frame, view, 16, 1, project, pose); } finally { perf.now = real; }
+  assert.equal(l.fade?.active, false, 'the fade settles');
   const skipped = l.stats.skipped;
   l.draw(frame, view, 16, 1, project, pose);
   assert.equal(l.stats.skipped, skipped + 1, 'done: a still camera skips again');
