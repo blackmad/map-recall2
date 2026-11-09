@@ -2,6 +2,12 @@
   "note": "Visible changes to the ride, newest first. One entry per shipped fix the player can see; models themselves are listed by the feed. Fields: date (YYYY-MM-DD, the day it reached main), title, text, where [lng, lat] optional, images optional: [{src, alt, caption?}] where src is a path in github.com/blackmad/map-recall2-screenshots (whats-new/YYYY-MM-DD-slug.jpg, before/after pairs welcome) or a full https URL. Link a screenshot whenever the change can be seen; keep the pictures out of this repository.",
   "notes": [
     {
+      "date": "2026-11-10",
+      "title": "More Dutch on Dutch cards",
+      "text": "In the Dutch game, 56 more landmarks now tell their facts in Dutch, each sentence taken word for word from the Dutch Wikipedia article and linked to it. Where the Dutch article does not say the same thing, the card stays in English rather than guess.",
+      "images": []
+    },
+    {
       "date": "2026-11-09",
       "title": "Bike paths through parks",
       "text": "Park and garden paths where bikes are allowed are now on the bike map, so paths like the one off the Javaplantsoen promenade lead on instead of stopping short.",
