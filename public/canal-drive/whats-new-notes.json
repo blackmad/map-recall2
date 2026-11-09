@@ -3,6 +3,40 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "Free Ride: step off the ferry at any quay",
+      "text": "In Free Ride the ferry no longer has to reach a pier: steer it into any quay with a street beside it and you are back on your bike.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-f3-ferry-free-ride/desktop-before-aboard-at-quay.jpg",
+          "alt": "Before: the ferry vessel pressed against the quay with the Ferry from banner, unable to land",
+          "caption": "Before: stuck against De Ruijterkade, 61 m from the pier."
+        },
+        {
+          "src": "ui/2026-11-09-f3-ferry-free-ride/desktop-after-landed-on-quay.jpg",
+          "alt": "After: the bike back on the quay street",
+          "caption": "After: landed on the quay street in about a second."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "title": "The ride opens on a finished city",
+      "text": "The loading screen now waits, up to ten seconds, for the part of the city you will see first to be built, so the first frame no longer shows grey stand-ins in the distance. If it runs out of time it says \"Building the city…\" and fades into the ride. Starts on a desktop take a few seconds longer.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-s1-start-settle/westermarkt-desktop-warm-first-frame-main-vs-lane.jpg",
+          "alt": "Westermarkt first frame before and after: grey stand-ins on the left, built baked cells on the right",
+          "caption": "Westermarkt, first frame, before (left) and after (right)."
+        },
+        {
+          "src": "ui/2026-11-09-s1-start-settle/marineterrein-desktop-warm-first-frame-main-vs-lane.jpg",
+          "alt": "Marineterrein first frame before and after",
+          "caption": "Marineterrein, first frame, before and after; the ground now lands under the loading screen too."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
       "title": "A tidier pause card",
       "text": "The pause card now fits its contents, centres every line, says where you are heading, and no longer shows a quiz score in Free Ride.",
       "images": [

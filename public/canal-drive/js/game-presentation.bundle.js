@@ -436,6 +436,7 @@
     "ride.load.renderingTrams": "Rendering tram lines\u2026",
     "ride.load.renderingWaterways": "Rendering waterways\u2026",
     "ride.load.settling": "Settling the map\u2026",
+    "ride.load.buildingCity": "Building the city\u2026",
     "ride.load.ready": "Ready!",
     "ride.load.findingWay": "Finding your way\u2026",
     "ride.error.noStartPoint": "No reachable starting point is available for this destination.",
@@ -1215,6 +1216,7 @@
     "ride.load.renderingTrams": "Tramlijnen tekenen\u2026",
     "ride.load.renderingWaterways": "Waterwegen tekenen\u2026",
     "ride.load.settling": "De kaart wordt bijgewerkt\u2026",
+    "ride.load.buildingCity": "De stad wordt opgebouwd\u2026",
     "ride.load.ready": "Klaar!",
     "ride.load.findingWay": "Je route wordt gezocht\u2026",
     "ride.error.noStartPoint": "Er is geen bereikbaar startpunt voor deze bestemming.",
@@ -2288,6 +2290,38 @@
   function playerZoom(cameraZoom, intro, prepared) {
     const flight = intro ?? prepared;
     return flight && Number.isFinite(flight.playZoom) && flight.playZoom > 0 ? flight.playZoom : cameraZoom;
+  }
+
+  // src/canalRecall/engine/startHold.ts
+  var START_HOLD_CAP_MS = 1e4;
+  var START_HOLD_INTRO_MIN_MS = 1800;
+  var START_HOLD_MESSAGE_AFTER_MS = 1500;
+  var REVEAL_DISSOLVE_MS = 600;
+  var START_HOLD_TICK_MS_DESKTOP = 100;
+  var START_HOLD_TICK_MS_TOUCH = 250;
+  function startHoldTicks(touch) {
+    return !touch;
+  }
+  function startHoldTickDue(now, last, touch) {
+    return last == null || !Number.isFinite(last) || now - last >= (touch ? START_HOLD_TICK_MS_TOUCH : START_HOLD_TICK_MS_DESKTOP) || now < last;
+  }
+  function startHoldEnabled(asked) {
+    return !(asked === false || asked === 0 || asked === "0" || asked === "false" || asked === "off");
+  }
+  function startHoldCapMs(asked) {
+    const n = Number(asked);
+    return asked != null && asked !== "" && Number.isFinite(n) && n >= 2e3 && n <= 2e4 ? Math.round(n) : START_HOLD_CAP_MS;
+  }
+  function introHoldCapMs(spentMs, capMs = START_HOLD_CAP_MS) {
+    return Math.max(START_HOLD_INTRO_MIN_MS, Math.round(capMs - Math.max(0, spentMs)));
+  }
+  function startHoldMessageKey(elapsedMs, base = "ride.load.settling") {
+    return elapsedMs >= START_HOLD_MESSAGE_AFTER_MS ? "ride.load.buildingCity" : base;
+  }
+  function revealDissolveAlpha(sinceRevealMs, capped, durationMs = REVEAL_DISSOLVE_MS) {
+    if (!capped || !(durationMs > 0) || sinceRevealMs >= durationMs) return 0;
+    const t2 = Math.max(0, sinceRevealMs) / durationMs;
+    return (1 - t2) * (1 - t2);
   }
 
   // src/canalRecall/game/vehicleZoomScale.ts
@@ -10230,6 +10264,85 @@
       this.vectorMap.setFerryTerminals?.(this.track, this.osmLoader);
       return true;
     }
+    /**
+     * The start's loading holds (lane S1 #313): the ride-pose hold and the intro hold share one cap (10 s,
+     * `?startHoldCap=` for the sweep; the intro keeps at least 1.8 s); after 1.5 s the loading line says the city is
+     * being built; a hold that ends on its cap arms the reveal's dissolve. `?startHold=0` is today's 4 s / 1.8 s.
+     * game-route.js calls it in place of `_waitForMapSettle(4000)` and `_waitForMapSettle(1800)`.
+     */
+    async _startHoldWait(kind) {
+      if (!this._waitForMapSettle) return;
+      const search = new URLSearchParams(window.location.search);
+      const w = window;
+      if (!startHoldEnabled(w.__canalRecallStartHold ?? search.get("startHold"))) {
+        await this._waitForMapSettle(kind === "ride" ? 4e3 : 1800);
+        return;
+      }
+      if (kind === "ride" || !this._startHold) this._startHold = { spentMs: 0, capped: false, holds: [] };
+      const hold = this._startHold;
+      const cap = startHoldCapMs(search.get("startHoldCap"));
+      const capMs = kind === "ride" ? cap : introHoldCapMs(hold.spentMs, cap);
+      const base = kind === "ride" ? "ride.load.settling" : "ride.load.findingWay";
+      const started = performance.now();
+      const timer = setInterval(() => {
+        if (this.state !== GameState.LOADING) return;
+        const key = startHoldMessageKey(performance.now() - started, base);
+        if (key !== base) this.loadingMessage = t(key);
+      }, 250);
+      this._startHoldTicking = true;
+      try {
+        await this._waitForMapSettle(capMs);
+      } finally {
+        clearInterval(timer);
+        this._startHoldTicking = false;
+      }
+      const out = this._lastMapSettle;
+      const ms = out?.ms ?? Math.round(performance.now() - started);
+      hold.spentMs += ms;
+      hold.capped = !!out?.timedOut;
+      hold.holds.push({ kind, ms, capMs, timedOut: !!out?.timedOut, pending: out?.pending ?? [] });
+      this._revealDissolve = hold.capped ? { at: -1, capped: true } : null;
+    }
+    /**
+     * Under the loading screen, while a start hold waits (lane S1 #313): run the world's settle tick (ground, far and
+     * baked tiers at the held camera) at 10 Hz desktop / 4 Hz touch. The game never synced the world while loading, so
+     * the baked cells the aim planned stayed undrawn and far prisms stood in for them until the reveal.
+     */
+    _tickHeldWorld() {
+      if (!this._startHoldTicking) return;
+      const view = this.vectorMap;
+      if (!view?.settleTick) return;
+      const now = performance.now();
+      let touch = false;
+      try {
+        touch = !!window.matchMedia?.("(pointer: coarse)")?.matches;
+      } catch {
+      }
+      if (!startHoldTicks(touch) || !startHoldTickDue(now, this._startHoldTickAt, touch)) return;
+      this._startHoldTickAt = now;
+      try {
+        view.settleTick();
+      } catch (error) {
+        console.warn("start hold tick", error);
+        this._startHoldTicking = false;
+      }
+    }
+    /** Paint the loading screen over the first ~600 ms of the ride after a capped hold (startHold.ts revealDissolveAlpha). */
+    _drawRevealDissolve(ctx) {
+      const d = this._revealDissolve;
+      if (!d || this.state === GameState.LOADING) return;
+      const now = performance.now();
+      if (d.at < 0) d.at = now;
+      const alpha = revealDissolveAlpha(now - d.at, d.capped);
+      if (alpha <= 0) {
+        this._revealDissolve = null;
+        return;
+      }
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      this.loadingScreen.draw(ctx, this.loadingMessage, 1);
+      ctx.restore();
+    }
     /** The zoom to save as the player's: the flight's landing zoom while one owns the camera (introFlight.ts playerZoom). */
     _playerZoom() {
       return playerZoom(this.camera.zoom, this._intro, this.state === GameState.LOADING ? this._introPrepared : null);
@@ -10579,7 +10692,7 @@
      * sits below the plaque and minimap; on desktop between the top cards.
      */
     _renderFerryNotice(player, showMiniMap) {
-      if (!player.ferryOrigin) return;
+      if (!player.ferryOrigin || this.freeRide) return;
       const ctx = this.ctx;
       const layout = this._hudRects();
       const top = layout.mode === "compact" ? Math.max(layout.recall.y + layout.recall.height, showMiniMap ? layout.minimap.y + layout.minimap.height : 0) + 10 : 72;
@@ -10629,6 +10742,10 @@
     _sightlineEngaged;
     // ---- The frame ----
     _render() {
+      this._renderFrame();
+      if (this._revealDissolve) this._drawRevealDissolve(this.ctx);
+    }
+    _renderFrame() {
       this._syncViewportSize();
       const ctx = this.ctx;
       ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
@@ -10675,6 +10792,7 @@
       }
       if (this.state === GameState.LOADING) {
         this.loadingScreen.draw(ctx, this.loadingMessage, this.loadingProgress);
+        this._tickHeldWorld();
         return;
       }
       if (!this.player) return;
