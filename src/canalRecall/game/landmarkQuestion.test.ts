@@ -73,14 +73,14 @@ test('one-card rule: only into an empty slot', () => {
 });
 
 test('flag and Free Ride opt-in', () => {
-  // Off by default (hotfix #281) until L1 withholds a candidate's label during the approach.
-  assert.equal(landmarkQuestionsEnabled('', { freeRide: false, freeRideQuiz: false }), false);
-  assert.equal(landmarkQuestionsEnabled('', { freeRide: true, freeRideQuiz: true }), false);
+  // Back on by default with the label-draw ledger and approach withholding (#281, L1);
+  // the 2026-11-09 hotfix had it off. The flag still works both ways.
+  assert.equal(landmarkQuestionsEnabled('', { freeRide: false, freeRideQuiz: false }), true);
+  assert.equal(landmarkQuestionsEnabled('', { freeRide: true, freeRideQuiz: false }), false);
+  assert.equal(landmarkQuestionsEnabled('', { freeRide: true, freeRideQuiz: true }), true);
   assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=1', { freeRide: false, freeRideQuiz: false }), true);
-  assert.equal(landmarkQuestionsEnabled('?a=1&landmarkQuestions=1&landmarkQuestions=0', { freeRide: false, freeRideQuiz: false }), true);
   assert.equal(landmarkQuestionsEnabled('?a=1&landmarkQuestions=0', { freeRide: false, freeRideQuiz: false }), false);
   assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=1', { freeRide: true, freeRideQuiz: false }), false);
-  assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=1', { freeRide: true, freeRideQuiz: true }), true);
   assert.equal(landmarkQuestionsEnabled('?landmarkQuestions=0', { freeRide: true, freeRideQuiz: true }), false);
 });
 

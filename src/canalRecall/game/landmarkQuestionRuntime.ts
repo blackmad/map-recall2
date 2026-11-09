@@ -13,6 +13,7 @@ import {
   bumpSessionCounter,
   FILLER_MAX_M,
   hasBeenNamed,
+  inViewCone,
   landmarkWithheldNames,
   landmarkChoices,
   LANDMARK_QUESTION_RADIUS_M,
@@ -27,6 +28,7 @@ import {
   type Sightings,
 } from './landmarkQuestion';
 import { isWorthACard } from './landmarkData';
+import { approachKept, bumpSkipCounter, LANDMARK_APPROACH_RADIUS_M, landmarkSkipReason, sharedLedger } from './labelDrawLedger';
 import { decideQuestion, EMPTY_BUDGET, recordAsk } from './questionBudget';
 import { answerHoldMayHide } from './silentPass';
 import { MANUAL_LANDMARKS } from '../landmarks/manualModels';
@@ -64,9 +66,17 @@ type QuestionHost = LandmarkHost & Pick<RecallHost,
   _landmarkAsked?: Set<string>;
   _landmarkSightingsCache?: Sightings;
   _modelledLandmarkIds?: Set<string>;
+  /** The landmark being approached, its choices dealt and withheld (#281). */
+  _landmarkApproach?: LandmarkApproach | null;
+  landmarkApproachWithheld?: string[];
+  /** `id:reason` of candidates already counted as skipped this ride. */
+  _landmarkSkipsSeen?: Set<string>;
   /** Tap target of the drive-by card's "Noticed" action. */
   _landmarkActionBounds?: { x: number; y: number; w: number; h: number } | null;
 };
+
+/** A candidate landmark while the rider approaches it (#281). */
+export interface LandmarkApproach { landmark: Landmark; choices: string[]; hood: string; since: number }
 
 function storage(): Storage | null {
   try { return typeof localStorage === 'undefined' ? null : localStorage; } catch { return null; }
@@ -119,14 +129,25 @@ export class GameLandmarkQuestionRuntime {
   }
 
   /**
-   * Per frame, from `_updateLandmarks` before the drive-by pick: open a
-   * landmark question when a modelled landmark with a card is in view within
-   * 150 m, the slot is free and the question budget has a slot. True when one
-   * opened (the drive-by pick then stands down this frame).
+   * Per frame, from `_updateLandmarks` before the drive-by pick. Two steps (#281):
+   *
+   * 1. The candidate. A modelled landmark with a card, in view inside the
+   *    approach band (LANDMARK_APPROACH_RADIUS_M), whose name no label layer has
+   *    drawn in the last 30 s and whose drive-by card has not shown in the last
+   *    60 s (labelDrawLedger.ts), becomes the candidate: its four choices are
+   *    dealt now and every one of them is withheld from the map
+   *    (`landmarkApproachWithheld`), so the labels leave at the label budget's
+   *    own fade before the question can open. Kept, with hysteresis, while the
+   *    rider still approaches it; released (the labels fade back) when not.
+   * 2. The question. Within 150 m and the cone, the slot free and the budget
+   *    with a slot: the question opens with the dealt choices. True when one
+   *    opened (the drive-by pick then stands down this frame).
    */
   _tryLandmarkQuestion(): boolean {
-    if (!this.player || this.player.ferryOrigin) return false;
-    if (!this._landmarkQuestionsOn()) return false;
+    if (!this.player || this.player.ferryOrigin || !this._landmarkQuestionsOn()) { this._releaseLandmarkApproach(); return false; }
+    const player = this.player;
+    const approach = this._landmarkApproachCandidate();
+    if (!approach) return false;
     const gate = this._teachingGate();
     if (!mayAskLandmark({
       questionOpen: !!this.quizPromptName || !!this._silentPass,
@@ -134,23 +155,8 @@ export class GameLandmarkQuestionRuntime {
       feedbackVisible: !!this.quizFeedback || gate.promptVisible,
       utilityOpen: gate.utilityOpen,
     })) return false;
-    const asked = (this._landmarkAsked ||= new Set());
-    const sightings = this._landmarkSightings();
-    const destination = this.routeTo?.landmarkId
-      || (typeof this.routeTo?.id === 'string' && this.routeTo.id.startsWith('lm-') ? this.routeTo.id.slice(3) : '');
-    const skip = new Set<string>(asked);
-    if (destination) skip.add(destination);
-    const radiusPx = LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER;
-    const candidates = this.landmarks.filter(landmark => !skip.has(landmark.id)
-      && !this._seenLandmarks.has(landmark.id)
-      && !hasBeenNamed(sightings, landmark.id)
-      && Math.abs(landmark.x - this.player!.x) <= radiusPx && Math.abs(landmark.y - this.player!.y) <= radiusPx
-      && isWorthACard(landmark) && this._landmarkIsModelled(landmark.id)
-      // The destination card names the destination; a landmark sharing its
-      // name would be answered by the HUD.
-      && landmark.name !== this.routeTo?.name);
-    const chosen = pickLandmarkQuestion(this.player, candidates, { radiusPx, skip });
-    if (!chosen) return false;
+    const chosen = approach.landmark;
+    if (!inViewCone(player, chosen, LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER)) return false;
 
     const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: 'new-unlearned' }, this.raceTime, {
       maxAsksPerMinute: this._askBudgetPerMinute(),
@@ -158,6 +164,83 @@ export class GameLandmarkQuestionRuntime {
     // Free Ride has no route budget of its own; it asks at the same pace.
     if (budget.action !== 'ask') return false;
 
+    (this._landmarkAsked ||= new Set()).add(chosen.id);
+    this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
+    this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: approach.hood };
+    // Every choice is withheld, not only the answer: a labelled distractor in
+    // view would name the lit building by elimination. The approach already
+    // withheld the same names, so nothing on the map changes as it opens.
+    // Choices read in the UI language where the catalogue has a Dutch name
+    // (#283); the map may label either, so both spellings are withheld.
+    const lang = language();
+    const shownChoices = approach.choices.map(name => landmarkDisplayName(name, lang));
+    this.quizWithheldNames = landmarkWithheldNames(chosen.name, [...approach.choices, ...shownChoices, landmarkDisplayName(chosen.name, lang)]);
+    this._landmarkApproach = null;
+    this.landmarkApproachWithheld = [];
+    // The card names the buurt and the side, never the building.
+    const heading = player.speed < 0 ? player.angle + Math.PI : player.angle;
+    const off = Math.atan2(chosen.y - player.y, chosen.x - player.x) - heading;
+    const bearing = Math.atan2(Math.sin(off), Math.cos(off));
+    // World y points down the screen, so a positive bearing is to the right.
+    const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t('ride.landmarkQuestion.ahead')
+      : bearing < 0 ? t('ride.landmarkQuestion.left') : t('ride.landmarkQuestion.right');
+    this._openQuizPrompt({
+      kind: 'landmark', name: landmarkDisplayName(chosen.name, lang), subject: 'landmark',
+      question: t('ride.landmarkQuestion.heading'),
+      context: approach.hood ? `${side} · ${approach.hood}` : side,
+      choices: shownChoices,
+    });
+    this._dressLandmarkPrompt();
+    // The building under question is lit, unnamed, so "this" has a referent.
+    this.vectorMap?.setActiveLandmark(chosen);
+    bumpSessionCounter(window as unknown as { __canalRecallSession?: Record<string, unknown> }, 'landmarksAsked');
+    return true;
+  }
+
+  /** Drop the approached candidate; its labels fade back in (#281). */
+  _releaseLandmarkApproach(): void {
+    if (!this._landmarkApproach && !this.landmarkApproachWithheld?.length) return;
+    this._landmarkApproach = null;
+    this.landmarkApproachWithheld = [];
+  }
+
+  /** The landmark being approached (step 1 of `_tryLandmarkQuestion`): kept
+   *  while still approached, else the nearest eligible one in the band. */
+  _landmarkApproachCandidate(): LandmarkApproach | null {
+    const player = this.player!;
+    const bandPx = LANDMARK_APPROACH_RADIUS_M * PIXELS_PER_METER;
+    const held = this._landmarkApproach;
+    if (held) {
+      const live = this.landmarks.find(landmark => landmark.id === held.landmark.id);
+      if (live && !this._seenLandmarks.has(live.id) && approachKept(player, live, bandPx)) return held;
+      this._releaseLandmarkApproach();
+    }
+    const asked = (this._landmarkAsked ||= new Set());
+    const sightings = this._landmarkSightings();
+    const destination = this.routeTo?.landmarkId
+      || (typeof this.routeTo?.id === 'string' && this.routeTo.id.startsWith('lm-') ? this.routeTo.id.slice(3) : '');
+    const skip = new Set<string>(asked);
+    if (destination) skip.add(destination);
+    const ledger = sharedLedger(window as never);
+    const now = performance.now();
+    const session = window as unknown as { __canalRecallSession?: Record<string, unknown> };
+    const skipped = (this._landmarkSkipsSeen ||= new Set());
+    const candidates = this.landmarks.filter(landmark => {
+      if (skip.has(landmark.id) || this._seenLandmarks.has(landmark.id) || hasBeenNamed(sightings, landmark.id)) return false;
+      if (Math.abs(landmark.x - player.x) > bandPx || Math.abs(landmark.y - player.y) > bandPx) return false;
+      if (!isWorthACard(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
+      // The destination card names the destination; a landmark sharing its
+      // name would be answered by the HUD.
+      if (landmark.name === this.routeTo?.name) return false;
+      if (!inViewCone(player, landmark, bandPx)) return false;
+      // The map named it moments ago, or a card did: asking now tests the
+      // last few seconds, not the city (#281).
+      const reason = landmarkSkipReason(ledger, landmark.name, now);
+      if (reason) { bumpSkipCounter(session, skipped, landmark.id, reason); return false; }
+      return true;
+    });
+    const chosen = pickLandmarkQuestion(player, candidates, { radiusPx: bandPx, skip });
+    if (!chosen) return null;
     const withHood = (landmark: Landmark): QuestionLandmark => ({
       id: landmark.id, name: landmark.name, x: landmark.x, y: landmark.y,
       hood: this._neighborhoodAt(landmark.x, landmark.y)?.name ?? null,
@@ -169,36 +252,13 @@ export class GameLandmarkQuestionRuntime {
     const choices = landmarkChoices(answer, pool, {
       sameComplexPx: SAME_COMPLEX_M * PIXELS_PER_METER, fillerMaxPx: FILLER_MAX_M * PIXELS_PER_METER, shuffle,
     });
-    asked.add(chosen.id);
-    if (!choices) return false;
-
-    this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
-    this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: answer.hood || '' };
-    // Every choice is withheld, not only the answer: a labelled distractor in
-    // view would name the lit building by elimination.
-    // Choices read in the UI language where the catalogue has a Dutch name
-    // (#283); the map may label either, so both spellings are withheld.
-    const lang = language();
-    const shownChoices = choices.map(name => landmarkDisplayName(name, lang));
-    this.quizWithheldNames = landmarkWithheldNames(chosen.name, [...choices, ...shownChoices, landmarkDisplayName(chosen.name, lang)]);
-    // The card names the buurt and the side, never the building.
-    const heading = this.player.speed < 0 ? this.player.angle + Math.PI : this.player.angle;
-    const off = Math.atan2(chosen.y - this.player.y, chosen.x - this.player.x) - heading;
-    const bearing = Math.atan2(Math.sin(off), Math.cos(off));
-    // World y points down the screen, so a positive bearing is to the right.
-    const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t('ride.landmarkQuestion.ahead')
-      : bearing < 0 ? t('ride.landmarkQuestion.left') : t('ride.landmarkQuestion.right');
-    this._openQuizPrompt({
-      kind: 'landmark', name: landmarkDisplayName(chosen.name, lang), subject: 'landmark',
-      question: t('ride.landmarkQuestion.heading'),
-      context: answer.hood ? `${side} · ${answer.hood}` : side,
-      choices: shownChoices,
-    });
-    this._dressLandmarkPrompt();
-    // The building under question is lit, unnamed, so "this" has a referent.
-    this.vectorMap?.setActiveLandmark(chosen);
-    bumpSessionCounter(window as unknown as { __canalRecallSession?: Record<string, unknown> }, 'landmarksAsked');
-    return true;
+    // Too few honest distractors: never a question about this one.
+    if (!choices) { asked.add(chosen.id); return null; }
+    this._landmarkApproach = { landmark: chosen, choices, hood: answer.hood || '', since: now };
+    // Both spellings are withheld where the catalogue has a Dutch name (#283): the map may label either.
+    const approachLang = language();
+    this.landmarkApproachWithheld = landmarkWithheldNames(chosen.name, [...choices, ...choices.map(name => landmarkDisplayName(name, approachLang)), landmarkDisplayName(chosen.name, approachLang)]);
+    return this._landmarkApproach;
   }
 
   /** The chip reads "Landmark" with a building icon (the legacy chip table

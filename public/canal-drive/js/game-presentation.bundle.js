@@ -3496,6 +3496,7 @@
       const requests = [];
       for (const place of nearby || []) {
         if (this.quizPromptName && (place.name === this.quizPromptName || this.quizWithheldNames?.includes(place.name))) continue;
+        if (this.landmarkApproachWithheld?.includes(place.name)) continue;
         const at = this.camera.worldToScreen(place.x, place.y);
         const label = markerLabel(place.name, void 0, (text) => ctx.measureText(text).width);
         const width = Math.ceil(ctx.measureText(label).width) + height + 8;
@@ -7802,6 +7803,9 @@
   // src/canalRecall/labels/labelStyle.ts
   var PILL_FONT = `700 12px ${hudSurface.fontUi}`;
 
+  // src/canalRecall/game/labelDrawLedger.ts
+  var APPROACH_KEEP_EXTRA_CONE = 20 * Math.PI / 180;
+
   // src/canalRecall/orientationPois.ts
   var SPOILER_MIN_LENGTH = 5;
   var SPOILER_MAX_WORDS = 5;
@@ -7940,7 +7944,10 @@
 
   // src/canalRecall/ownMap/labelPolicy.ts
   function withheldNames(game) {
-    return game.quizPromptName && game.quizWithheldNames?.length ? [...game.quizWithheldNames] : [];
+    const asked = game.quizPromptName && game.quizWithheldNames?.length ? game.quizWithheldNames : [];
+    const approach = game.landmarkApproachWithheld?.length ? game.landmarkApproachWithheld : [];
+    if (!approach.length) return [...asked];
+    return [.../* @__PURE__ */ new Set([...asked, ...approach])];
   }
 
   // src/canalRecall/hudCopy.ts

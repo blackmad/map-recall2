@@ -9,6 +9,8 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'landmark-card-folded' | 'landmark-card-folded-touch'
   // G3 (#273): "Which building is this?", and the drive-by card's "Noticed" pill.
   | 'question-landmark' | 'touch-question-landmark' | 'landmark-card-noticed' | 'landmark-card-noticed-touch'
+  // #281: approaching the candidate, before its question opens: its name and the distractors' are withheld from the map.
+  | 'landmark-approach' | 'landmark-approach-touch'
   // Cards with no photo that arrive from data rather than Wikipedia: a named
   // bridge's origin (municipal register) and a clicked building's facts.
   | 'landmark-card-bridge' | 'landmark-card-building' | 'landmark-card-bridge-touch' | 'landmark-card-building-touch'
@@ -526,6 +528,16 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
           paint.src = game._landmarkNotice.imageUrl;
           return;
         }
+        if (scenario === 'landmark-approach' || scenario === 'landmark-approach-touch') {
+          // No card yet and no name on the map: the four choices the question
+          // will offer are withheld from every label layer (labelPolicy
+          // withheldNames), so the overlay drops them at its own fade.
+          game._syncHudLayout();
+          game.player = game.player || { x: 0, y: 0, angle: 0, speed: 0, vx: 0, vy: 0 };
+          game.landmarkApproachWithheld = ['Westerkerk', 'Homomonument', 'Anne Frank House', 'Huis Bartolotti'];
+          game._clearLandmarkNotice?.();
+          return;
+        }
         if (scenario === 'question-landmark' || scenario === 'touch-question-landmark') {
           game._syncHudLayout();
           game.routeOptions.answerMode = 'multiple';
@@ -825,6 +837,9 @@ export const LandmarkCardFoldedMobile: Story = {
 /** Landmark card when the extract has no image. */
 /** G3: "Which building is this?" — the landmark question, desktop and phone. */
 export const LandmarkQuestion: Story = { args: { scenario: 'question-landmark' } };
+/** #281: riding up to the landmark the question will ask about; its name and the three distractors' are off the map. */
+export const LandmarkApproachWithheld: Story = { args: { scenario: 'landmark-approach' } };
+export const LandmarkApproachWithheldPhone: Story = { args: { scenario: 'landmark-approach-touch' }, globals: phone };
 export const LandmarkQuestionPhone: Story = { args: { scenario: 'touch-question-landmark' }, globals: phone };
 /** G3: a drive-by card with its one-tap "Noticed". */
 export const LandmarkCardNoticed: Story = { args: { scenario: 'landmark-card-noticed' } };

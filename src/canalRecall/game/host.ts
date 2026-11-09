@@ -78,6 +78,8 @@ export interface GameCoreHost {
   /** While a landmark question is open: all four choice names, withheld from
    *  every label surface with the asked name (G3, landmarkQuestionRuntime.ts). */
   quizWithheldNames?: string[];
+  /** The approached landmark candidate's choices, withheld before its question opens (#281). */
+  landmarkApproachWithheld?: string[];
   /** Subject of the open prompt (`line` / `stop` / `street` / …). Transit uses
    *  this so stop/street questions do not blank the sticky line plaque. */
   quizPromptSubject: string;

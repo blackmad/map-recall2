@@ -374,6 +374,7 @@ export class GameFreeRideRuntime {
     for (const place of nearby || []) {
       // No choice of a "Which building is this?" question is named while it is open (G3).
       if (this.quizPromptName && (place.name === this.quizPromptName || this.quizWithheldNames?.includes(place.name))) continue;
+      if (this.landmarkApproachWithheld?.includes(place.name)) continue;
       const at = this.camera.worldToScreen(place.x, place.y);
       const label = markerLabel(place.name, undefined, text => ctx.measureText(text).width);
       const width = Math.ceil(ctx.measureText(label).width) + height + 8;

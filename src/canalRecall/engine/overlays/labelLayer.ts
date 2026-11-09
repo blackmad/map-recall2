@@ -9,6 +9,7 @@
 // Plus the game's own point labels: the just-answered street name (drawn on
 // the road ahead, as answeredStreetNameLayer did) and the ferry landings.
 
+import { setDrawn, sharedLedger } from '../../game/labelDrawLedger';
 import { framePhases } from '../framePhases';
 import { LABEL_ROOT_CLASS } from '../../labels/labelStyle';
 import { placeLabels, drawPlacedLabels, LabelPlacement, type LabelCandidate, type LabelKind, type LabelPaint, type PlacedLabel } from '../../ownMap/labels';
@@ -357,7 +358,7 @@ export class LabelLayer {
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.clearRect(0, 0, w, h);
     this.placed = [];
-    if (!shows) return;
+    if (!shows) { setDrawn(sharedLedger(globalThis as never), 'engine', [], performance.now()); return; }
     // Which labels win only changes when the camera has moved enough (or every 400 ms while it creeps); in between
     // the last winners are re-placed at the new projection (cheap: a handful of labels, not every candidate).
     const now = performance.now();
@@ -517,6 +518,8 @@ export class LabelLayer {
     } else this.stats.winnersOnly++;
     this.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
     drawPlacedLabels(this.ctx, this.placed, LABEL_PAINT);
+    // The label-draw ledger (#281): the landmark question never asks about a name drawn in the last 30 s.
+    setDrawn(sharedLedger(globalThis as never), 'engine', this.placed.map(l => l.text), performance.now());
     lap('paint');
   }
 }

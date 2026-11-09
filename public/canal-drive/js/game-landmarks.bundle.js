@@ -1,5 +1,168 @@
 "use strict";
 (() => {
+  // src/canalRecall/game/landmarkQuestion.ts
+  var LANDMARK_QUESTION_RADIUS_M = 150;
+  var LANDMARK_QUESTION_HALF_CONE = 55 * Math.PI / 180;
+  var SAME_COMPLEX_M = 40;
+  var LANDMARK_CHOICE_COUNT = 4;
+  var FILLER_MAX_M = 900;
+  function nameKey(name) {
+    return name.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  }
+  function inViewCone(rider, point, radiusPx, halfCone = LANDMARK_QUESTION_HALF_CONE) {
+    const dx = point.x - rider.x, dy = point.y - rider.y;
+    const distance = Math.hypot(dx, dy);
+    if (distance > radiusPx) return false;
+    if (distance < 1) return true;
+    const heading = rider.speed < 0 ? rider.angle + Math.PI : rider.angle;
+    let off = Math.atan2(dy, dx) - heading;
+    off = Math.atan2(Math.sin(off), Math.cos(off));
+    return Math.abs(off) <= halfCone;
+  }
+  function pickLandmarkQuestion(rider, candidates, options) {
+    let best = null;
+    let bestDistance = Infinity;
+    for (const candidate of candidates) {
+      if (!candidate.name || options.skip?.has(candidate.id)) continue;
+      if (!inViewCone(rider, candidate, options.radiusPx, options.halfCone)) continue;
+      const distance = Math.hypot(candidate.x - rider.x, candidate.y - rider.y);
+      if (distance < bestDistance) {
+        best = candidate;
+        bestDistance = distance;
+      }
+    }
+    return best;
+  }
+  function landmarkChoices(answer, pool, options) {
+    const count = options.count ?? LANDMARK_CHOICE_COUNT;
+    const taken = /* @__PURE__ */ new Set([nameKey(answer.name)]);
+    const near = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+    const eligible2 = pool.filter((other) => other.id !== answer.id && !!other.name && near(other, answer) > options.sameComplexPx);
+    const byDistance = (a, b) => near(a, answer) - near(b, answer) || a.name.localeCompare(b.name);
+    const sameHood = answer.hood ? eligible2.filter((other) => other.hood === answer.hood).sort(byDistance) : [];
+    const filler = eligible2.filter((other) => !(answer.hood && other.hood === answer.hood) && near(other, answer) <= options.fillerMaxPx).sort(byDistance);
+    const picked = [];
+    for (const other of [...sameHood, ...filler]) {
+      if (picked.length >= count - 1) break;
+      const key = nameKey(other.name);
+      if (!key || taken.has(key)) continue;
+      if ([...taken].some((seen) => seen.includes(key) || key.includes(seen))) continue;
+      taken.add(key);
+      picked.push(other.name);
+    }
+    if (picked.length < count - 1) return null;
+    const choices = [answer.name, ...picked];
+    return options.shuffle ? options.shuffle(choices) : choices;
+  }
+  function landmarkWithheldNames(answer, choices) {
+    return [...new Set([answer, ...choices].filter(Boolean))];
+  }
+  function mayAskLandmark(slot) {
+    return !slot.questionOpen && !slot.streetCandidate && !slot.feedbackVisible && !slot.utilityOpen;
+  }
+  var LANDMARK_QUESTIONS_DEFAULT_ON = true;
+  function landmarkQuestionsEnabled(search2, mode) {
+    const flag = /[?&]landmarkQuestions=([^&]*)/.exec(search2 || "");
+    if (flag && (flag[1] === "0" || flag[1] === "false" || flag[1] === "off")) return false;
+    const optedIn = !!flag && (flag[1] === "1" || flag[1] === "true" || flag[1] === "on");
+    if (!LANDMARK_QUESTIONS_DEFAULT_ON && !optedIn) return false;
+    return mode.freeRide ? mode.freeRideQuiz : true;
+  }
+  var LANDMARK_SIGHTINGS_KEY = "canalRecall.landmarkSightings.v1";
+  function readSightings(store) {
+    try {
+      const raw = store?.getItem(LANDMARK_SIGHTINGS_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      const out = {};
+      for (const [id, value] of Object.entries(parsed || {})) {
+        if (!value || value.how !== "noticed" && value.how !== "named") continue;
+        out[id] = { hood: String(value.hood || ""), how: value.how, at: Number(value.at) || 0 };
+      }
+      return out;
+    } catch {
+      return {};
+    }
+  }
+  function saveSightings(store, sightings) {
+    try {
+      store?.setItem(LANDMARK_SIGHTINGS_KEY, JSON.stringify(sightings));
+    } catch {
+    }
+  }
+  function noteSighting(sightings, id, hood, how, at) {
+    const existing = sightings[id];
+    if (existing && (existing.how === "named" || existing.how === how)) return { sightings, isNew: false };
+    return { sightings: { ...sightings, [id]: { hood: hood || existing?.hood || "", how, at } }, isNew: true };
+  }
+  function hasBeenNamed(sightings, id) {
+    return sightings[id]?.how === "named";
+  }
+  function bumpSessionCounter(target, key) {
+    if (!target) return 0;
+    const session = target.__canalRecallSession ||= {};
+    const next = (Number(session[key]) || 0) + 1;
+    session[key] = next;
+    return next;
+  }
+
+  // src/canalRecall/game/labelDrawLedger.ts
+  var LABEL_RECENT_MS = 3e4;
+  var CARD_RECENT_MS = 6e4;
+  var LANDMARK_APPROACH_RADIUS_M = 300;
+  var APPROACH_KEEP_FACTOR = 1.25;
+  var APPROACH_KEEP_EXTRA_CONE = 20 * Math.PI / 180;
+  var MIN_MATCH_KEY = 4;
+  function createLedger() {
+    return { current: /* @__PURE__ */ new Map(), lastDrawn: /* @__PURE__ */ new Map(), cards: /* @__PURE__ */ new Map() };
+  }
+  function noteCardShown(ledger, name, at) {
+    const key = nameKey(name || "");
+    if (key) ledger.cards.set(key, at);
+  }
+  function namesMatch(labelKey, landmarkKey) {
+    if (!labelKey || !landmarkKey) return false;
+    if (labelKey === landmarkKey) return true;
+    const [short, long] = labelKey.length < landmarkKey.length ? [labelKey, landmarkKey] : [landmarkKey, labelKey];
+    return short.length >= MIN_MATCH_KEY && ` ${long} `.includes(` ${short} `);
+  }
+  function lastMatch(map, key) {
+    let best = null;
+    for (const [other, time] of map) if (namesMatch(other, key) && (best === null || time > best)) best = time;
+    return best;
+  }
+  function lastLabelDrawn(ledger, name, now) {
+    const key = nameKey(name || "");
+    if (!key) return null;
+    for (const drawn of ledger.current.values()) for (const other of drawn) if (namesMatch(other, key)) return now;
+    return lastMatch(ledger.lastDrawn, key);
+  }
+  function lastCardShown(ledger, name) {
+    return lastMatch(ledger.cards, nameKey(name || ""));
+  }
+  function landmarkSkipReason(ledger, name, now) {
+    const drawn = lastLabelDrawn(ledger, name, now);
+    if (drawn !== null && now - drawn < LABEL_RECENT_MS) return "labelRecent";
+    const card = lastCardShown(ledger, name);
+    if (card !== null && now - card < CARD_RECENT_MS) return "cardRecent";
+    return null;
+  }
+  function sharedLedger(target = globalThis) {
+    if (!target) return createLedger();
+    return target.__canalRecallLabelLedger ||= createLedger();
+  }
+  function bumpSkipCounter(target, seen, id, reason) {
+    if (!target || seen.has(`${id}:${reason}`)) return false;
+    seen.add(`${id}:${reason}`);
+    const session = target.__canalRecallSession ||= {};
+    const skips = session.landmarkSkips ||= { labelRecent: 0, cardRecent: 0 };
+    skips[reason] = (Number(skips[reason]) || 0) + 1;
+    return true;
+  }
+  function approachKept(rider, point, bandPx, halfCone = LANDMARK_QUESTION_HALF_CONE) {
+    return inViewCone(rider, point, bandPx * APPROACH_KEEP_FACTOR, halfCone + APPROACH_KEEP_EXTRA_CONE);
+  }
+
   // src/canalRecall/answerPath.ts
   function normaliseAnswer(value) {
     return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
@@ -6346,111 +6509,6 @@ ${register}` : detail,
     return sinceEvent(now, lastShownAt) >= DRIVE_BY_MIN_GAP_SECONDS;
   }
 
-  // src/canalRecall/game/landmarkQuestion.ts
-  var LANDMARK_QUESTION_RADIUS_M = 150;
-  var LANDMARK_QUESTION_HALF_CONE = 55 * Math.PI / 180;
-  var SAME_COMPLEX_M = 40;
-  var LANDMARK_CHOICE_COUNT = 4;
-  var FILLER_MAX_M = 900;
-  function nameKey(name) {
-    return name.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-  }
-  function inViewCone(rider, point, radiusPx, halfCone = LANDMARK_QUESTION_HALF_CONE) {
-    const dx = point.x - rider.x, dy = point.y - rider.y;
-    const distance = Math.hypot(dx, dy);
-    if (distance > radiusPx) return false;
-    if (distance < 1) return true;
-    const heading = rider.speed < 0 ? rider.angle + Math.PI : rider.angle;
-    let off = Math.atan2(dy, dx) - heading;
-    off = Math.atan2(Math.sin(off), Math.cos(off));
-    return Math.abs(off) <= halfCone;
-  }
-  function pickLandmarkQuestion(rider, candidates, options) {
-    let best = null;
-    let bestDistance = Infinity;
-    for (const candidate of candidates) {
-      if (!candidate.name || options.skip?.has(candidate.id)) continue;
-      if (!inViewCone(rider, candidate, options.radiusPx, options.halfCone)) continue;
-      const distance = Math.hypot(candidate.x - rider.x, candidate.y - rider.y);
-      if (distance < bestDistance) {
-        best = candidate;
-        bestDistance = distance;
-      }
-    }
-    return best;
-  }
-  function landmarkChoices(answer, pool, options) {
-    const count = options.count ?? LANDMARK_CHOICE_COUNT;
-    const taken = /* @__PURE__ */ new Set([nameKey(answer.name)]);
-    const near = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
-    const eligible2 = pool.filter((other) => other.id !== answer.id && !!other.name && near(other, answer) > options.sameComplexPx);
-    const byDistance = (a, b) => near(a, answer) - near(b, answer) || a.name.localeCompare(b.name);
-    const sameHood = answer.hood ? eligible2.filter((other) => other.hood === answer.hood).sort(byDistance) : [];
-    const filler = eligible2.filter((other) => !(answer.hood && other.hood === answer.hood) && near(other, answer) <= options.fillerMaxPx).sort(byDistance);
-    const picked = [];
-    for (const other of [...sameHood, ...filler]) {
-      if (picked.length >= count - 1) break;
-      const key = nameKey(other.name);
-      if (!key || taken.has(key)) continue;
-      if ([...taken].some((seen) => seen.includes(key) || key.includes(seen))) continue;
-      taken.add(key);
-      picked.push(other.name);
-    }
-    if (picked.length < count - 1) return null;
-    const choices = [answer.name, ...picked];
-    return options.shuffle ? options.shuffle(choices) : choices;
-  }
-  function landmarkWithheldNames(answer, choices) {
-    return [...new Set([answer, ...choices].filter(Boolean))];
-  }
-  function mayAskLandmark(slot) {
-    return !slot.questionOpen && !slot.streetCandidate && !slot.feedbackVisible && !slot.utilityOpen;
-  }
-  var LANDMARK_QUESTIONS_DEFAULT_ON = false;
-  function landmarkQuestionsEnabled(search2, mode) {
-    const flag = /[?&]landmarkQuestions=([^&]*)/.exec(search2 || "");
-    if (flag && (flag[1] === "0" || flag[1] === "false" || flag[1] === "off")) return false;
-    if (!LANDMARK_QUESTIONS_DEFAULT_ON && !(flag && (flag[1] === "1" || flag[1] === "true" || flag[1] === "on"))) return false;
-    return mode.freeRide ? mode.freeRideQuiz : true;
-  }
-  var LANDMARK_SIGHTINGS_KEY = "canalRecall.landmarkSightings.v1";
-  function readSightings(store) {
-    try {
-      const raw = store?.getItem(LANDMARK_SIGHTINGS_KEY);
-      if (!raw) return {};
-      const parsed = JSON.parse(raw);
-      const out = {};
-      for (const [id, value] of Object.entries(parsed || {})) {
-        if (!value || value.how !== "noticed" && value.how !== "named") continue;
-        out[id] = { hood: String(value.hood || ""), how: value.how, at: Number(value.at) || 0 };
-      }
-      return out;
-    } catch {
-      return {};
-    }
-  }
-  function saveSightings(store, sightings) {
-    try {
-      store?.setItem(LANDMARK_SIGHTINGS_KEY, JSON.stringify(sightings));
-    } catch {
-    }
-  }
-  function noteSighting(sightings, id, hood, how, at) {
-    const existing = sightings[id];
-    if (existing && (existing.how === "named" || existing.how === how)) return { sightings, isNew: false };
-    return { sightings: { ...sightings, [id]: { hood: hood || existing?.hood || "", how, at } }, isNew: true };
-  }
-  function hasBeenNamed(sightings, id) {
-    return sightings[id]?.how === "named";
-  }
-  function bumpSessionCounter(target, key) {
-    if (!target) return 0;
-    const session = target.__canalRecallSession ||= {};
-    const next = (Number(session[key]) || 0) + 1;
-    session[key] = next;
-    return next;
-  }
-
   // src/canalRecall/game/questionBudget.ts
   var DEFAULT_MAX_ASKS_PER_MINUTE = 5;
   var BUDGET_WINDOW_SECONDS = 60;
@@ -6590,14 +6648,28 @@ ${register}` : detail,
       return this._modelledLandmarkIds.has(id);
     }
     /**
-     * Per frame, from `_updateLandmarks` before the drive-by pick: open a
-     * landmark question when a modelled landmark with a card is in view within
-     * 150 m, the slot is free and the question budget has a slot. True when one
-     * opened (the drive-by pick then stands down this frame).
+     * Per frame, from `_updateLandmarks` before the drive-by pick. Two steps (#281):
+     *
+     * 1. The candidate. A modelled landmark with a card, in view inside the
+     *    approach band (LANDMARK_APPROACH_RADIUS_M), whose name no label layer has
+     *    drawn in the last 30 s and whose drive-by card has not shown in the last
+     *    60 s (labelDrawLedger.ts), becomes the candidate: its four choices are
+     *    dealt now and every one of them is withheld from the map
+     *    (`landmarkApproachWithheld`), so the labels leave at the label budget's
+     *    own fade before the question can open. Kept, with hysteresis, while the
+     *    rider still approaches it; released (the labels fade back) when not.
+     * 2. The question. Within 150 m and the cone, the slot free and the budget
+     *    with a slot: the question opens with the dealt choices. True when one
+     *    opened (the drive-by pick then stands down this frame).
      */
     _tryLandmarkQuestion() {
-      if (!this.player || this.player.ferryOrigin) return false;
-      if (!this._landmarkQuestionsOn()) return false;
+      if (!this.player || this.player.ferryOrigin || !this._landmarkQuestionsOn()) {
+        this._releaseLandmarkApproach();
+        return false;
+      }
+      const player = this.player;
+      const approach = this._landmarkApproachCandidate();
+      if (!approach) return false;
       const gate = this._teachingGate();
       if (!mayAskLandmark({
         questionOpen: !!this.quizPromptName || !!this._silentPass,
@@ -6605,19 +6677,78 @@ ${register}` : detail,
         feedbackVisible: !!this.quizFeedback || gate.promptVisible,
         utilityOpen: gate.utilityOpen
       })) return false;
+      const chosen = approach.landmark;
+      if (!inViewCone(player, chosen, LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER)) return false;
+      const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: "new-unlearned" }, this.raceTime, {
+        maxAsksPerMinute: this._askBudgetPerMinute()
+      });
+      if (budget.action !== "ask") return false;
+      (this._landmarkAsked ||= /* @__PURE__ */ new Set()).add(chosen.id);
+      this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
+      this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: approach.hood };
+      const lang = language();
+      const shownChoices = approach.choices.map((name) => landmarkDisplayName(name, lang));
+      this.quizWithheldNames = landmarkWithheldNames(chosen.name, [...approach.choices, ...shownChoices, landmarkDisplayName(chosen.name, lang)]);
+      this._landmarkApproach = null;
+      this.landmarkApproachWithheld = [];
+      const heading = player.speed < 0 ? player.angle + Math.PI : player.angle;
+      const off = Math.atan2(chosen.y - player.y, chosen.x - player.x) - heading;
+      const bearing = Math.atan2(Math.sin(off), Math.cos(off));
+      const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t("ride.landmarkQuestion.ahead") : bearing < 0 ? t("ride.landmarkQuestion.left") : t("ride.landmarkQuestion.right");
+      this._openQuizPrompt({
+        kind: "landmark",
+        name: landmarkDisplayName(chosen.name, lang),
+        subject: "landmark",
+        question: t("ride.landmarkQuestion.heading"),
+        context: approach.hood ? `${side} \xB7 ${approach.hood}` : side,
+        choices: shownChoices
+      });
+      this._dressLandmarkPrompt();
+      this.vectorMap?.setActiveLandmark(chosen);
+      bumpSessionCounter(window, "landmarksAsked");
+      return true;
+    }
+    /** Drop the approached candidate; its labels fade back in (#281). */
+    _releaseLandmarkApproach() {
+      if (!this._landmarkApproach && !this.landmarkApproachWithheld?.length) return;
+      this._landmarkApproach = null;
+      this.landmarkApproachWithheld = [];
+    }
+    /** The landmark being approached (step 1 of `_tryLandmarkQuestion`): kept
+     *  while still approached, else the nearest eligible one in the band. */
+    _landmarkApproachCandidate() {
+      const player = this.player;
+      const bandPx = LANDMARK_APPROACH_RADIUS_M * PIXELS_PER_METER;
+      const held = this._landmarkApproach;
+      if (held) {
+        const live = this.landmarks.find((landmark) => landmark.id === held.landmark.id);
+        if (live && !this._seenLandmarks.has(live.id) && approachKept(player, live, bandPx)) return held;
+        this._releaseLandmarkApproach();
+      }
       const asked = this._landmarkAsked ||= /* @__PURE__ */ new Set();
       const sightings = this._landmarkSightings();
       const destination = this.routeTo?.landmarkId || (typeof this.routeTo?.id === "string" && this.routeTo.id.startsWith("lm-") ? this.routeTo.id.slice(3) : "");
       const skip = new Set(asked);
       if (destination) skip.add(destination);
-      const radiusPx = LANDMARK_QUESTION_RADIUS_M * PIXELS_PER_METER;
-      const candidates = this.landmarks.filter((landmark) => !skip.has(landmark.id) && !this._seenLandmarks.has(landmark.id) && !hasBeenNamed(sightings, landmark.id) && Math.abs(landmark.x - this.player.x) <= radiusPx && Math.abs(landmark.y - this.player.y) <= radiusPx && isWorthACard(landmark) && this._landmarkIsModelled(landmark.id) && landmark.name !== this.routeTo?.name);
-      const chosen = pickLandmarkQuestion(this.player, candidates, { radiusPx, skip });
-      if (!chosen) return false;
-      const budget = decideQuestion(this._questionBudget || EMPTY_BUDGET, { name: chosen.name, kind: "new-unlearned" }, this.raceTime, {
-        maxAsksPerMinute: this._askBudgetPerMinute()
+      const ledger = sharedLedger(window);
+      const now = performance.now();
+      const session = window;
+      const skipped = this._landmarkSkipsSeen ||= /* @__PURE__ */ new Set();
+      const candidates = this.landmarks.filter((landmark) => {
+        if (skip.has(landmark.id) || this._seenLandmarks.has(landmark.id) || hasBeenNamed(sightings, landmark.id)) return false;
+        if (Math.abs(landmark.x - player.x) > bandPx || Math.abs(landmark.y - player.y) > bandPx) return false;
+        if (!isWorthACard(landmark) || !this._landmarkIsModelled(landmark.id)) return false;
+        if (landmark.name === this.routeTo?.name) return false;
+        if (!inViewCone(player, landmark, bandPx)) return false;
+        const reason = landmarkSkipReason(ledger, landmark.name, now);
+        if (reason) {
+          bumpSkipCounter(session, skipped, landmark.id, reason);
+          return false;
+        }
+        return true;
       });
-      if (budget.action !== "ask") return false;
+      const chosen = pickLandmarkQuestion(player, candidates, { radiusPx: bandPx, skip });
+      if (!chosen) return null;
       const withHood = (landmark) => ({
         id: landmark.id,
         name: landmark.name,
@@ -6632,29 +6763,14 @@ ${register}` : detail,
         fillerMaxPx: FILLER_MAX_M * PIXELS_PER_METER,
         shuffle
       });
-      asked.add(chosen.id);
-      if (!choices) return false;
-      this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
-      this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: answer.hood || "" };
-      const lang = language();
-      const shownChoices = choices.map((name) => landmarkDisplayName(name, lang));
-      this.quizWithheldNames = landmarkWithheldNames(chosen.name, [...choices, ...shownChoices, landmarkDisplayName(chosen.name, lang)]);
-      const heading = this.player.speed < 0 ? this.player.angle + Math.PI : this.player.angle;
-      const off = Math.atan2(chosen.y - this.player.y, chosen.x - this.player.x) - heading;
-      const bearing = Math.atan2(Math.sin(off), Math.cos(off));
-      const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t("ride.landmarkQuestion.ahead") : bearing < 0 ? t("ride.landmarkQuestion.left") : t("ride.landmarkQuestion.right");
-      this._openQuizPrompt({
-        kind: "landmark",
-        name: landmarkDisplayName(chosen.name, lang),
-        subject: "landmark",
-        question: t("ride.landmarkQuestion.heading"),
-        context: answer.hood ? `${side} \xB7 ${answer.hood}` : side,
-        choices: shownChoices
-      });
-      this._dressLandmarkPrompt();
-      this.vectorMap?.setActiveLandmark(chosen);
-      bumpSessionCounter(window, "landmarksAsked");
-      return true;
+      if (!choices) {
+        asked.add(chosen.id);
+        return null;
+      }
+      this._landmarkApproach = { landmark: chosen, choices, hood: answer.hood || "", since: now };
+      const approachLang = language();
+      this.landmarkApproachWithheld = landmarkWithheldNames(chosen.name, [...choices, ...choices.map((name) => landmarkDisplayName(name, approachLang)), landmarkDisplayName(chosen.name, approachLang)]);
+      return this._landmarkApproach;
     }
     /** The chip reads "Landmark" with a building icon (the legacy chip table
      *  has no landmark row; the Storybook state calls this too). */
@@ -6880,6 +6996,7 @@ ${register}` : detail,
       this._landmarkNoticeSource = source;
       this._landmarkNoticeState = openNotice();
       if (source !== "arrival") this._lastTriviaAt = this.raceTime;
+      if (source === "drive-by" && notice.name) noteCardShown(sharedLedger(window), notice.name, performance.now());
       if (source === "click") this._landmarkNoticeState.elapsed = DEFAULT_NOTICE_CONFIG.fadeSeconds;
       this._landmarkNoticeAlpha = source === "click" ? 1 : 0;
       this._ensureLandmarkImage(this._landmarkNotice);
@@ -7309,7 +7426,8 @@ ${register}` : detail,
         this._landmarkNoticeHold,
         this._landmarkNoticeState.elapsed
       )) return;
-      const nearest = pickDriveBy(candidates, ahead);
+      const approached = this._landmarkApproach?.landmark.id;
+      const nearest = pickDriveBy(approached ? candidates.filter((landmark) => landmark.id !== approached) : candidates, ahead);
       if (nearest && nearest.id !== this._landmarkNotice?.id) {
         this._seenLandmarks.add(nearest.id);
         this._seenLandmarkNames.add(nearest.name);
