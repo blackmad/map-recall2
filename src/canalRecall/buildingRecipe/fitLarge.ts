@@ -36,6 +36,7 @@ import type {StoneDressings} from '../blockBuilding/dressings.ts';
 import {roofHeightAt} from './facts.ts';
 import {prepareShell, strictMergeClasses, type ShellRepairReport} from './shellRepair.ts';
 import {levelRoofAbove, rooftopLevel, type RoofLevelReport} from './roofLevel.ts';
+import {tidyRoof, type RoofTidyReport} from './roofTidy.ts';
 import {houseCuts, rowCoherence, spanEaves, spanTop} from './rowSplit.ts';
 
 /** The kit's dark glass, when the intent has no (measured) `palette.glass`. */
@@ -161,6 +162,8 @@ export interface LargeFitReport {
   shellRepair?: ShellRepairReport;
   /** only with `roof.levelRooftop` (roofLevel.ts) */
   roofLevel?: RoofLevelReport;
+  /** only with `roof.tidy` (roofTidy.ts) */
+  roofTidy?: RoofTidyReport;
 }
 
 /**
@@ -335,17 +338,25 @@ export function shellOfWalls(walls: readonly {surface?: number}[]): number[] {
 }
 
 /** The facts the fit works on: the shell-repaired facts when the intent opts in (shellRepair.ts), else the input. */
-export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport} {
+export function largeShellFacts(intent: LargeBuildingIntent, facts: BuildingFacts): {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport; roofTidy?: RoofTidyReport} {
   const shelled: {facts: BuildingFacts; shell?: ShellRepairReport} = !intent.shellRepair && (intent.footprint ?? 'lod22') === 'lod22' ? {facts}
     : (r => ({facts: r.facts, shell: r.report}))(prepareShell(facts, {repair: !!intent.shellRepair, footprint: intent.footprint ?? 'lod22'}));
-  if (!intent.roof?.levelRooftop) return shelled;
-  // roof.levelRooftop (roofLevel.ts): the rooftop above the photographed fronts becomes one flat level, after any shell repair
-  const levelled = levelRoofAbove(shelled.facts, rooftopLevel(shelled.facts, intent.walls.flatMap(w => w.wallSurfaces)));
-  return {...shelled, facts: levelled.facts, roofLevel: levelled.report};
+  let out: {facts: BuildingFacts; shell?: ShellRepairReport; roofLevel?: RoofLevelReport; roofTidy?: RoofTidyReport} = shelled;
+  if (intent.roof?.levelRooftop) {
+    // roof.levelRooftop (roofLevel.ts): the rooftop above the photographed fronts becomes one flat level, after any shell repair
+    const levelled = levelRoofAbove(shelled.facts, rooftopLevel(shelled.facts, intent.walls.flatMap(w => w.wallSurfaces)));
+    out = {...shelled, facts: levelled.facts, roofLevel: levelled.report};
+  }
+  if (intent.roof?.tidy) {
+    // roof.tidy (roofTidy.ts): level merge, sliver fold and spike clamp away from the photographed fronts
+    const tidy = tidyRoof(out.facts, {frontSurfaces: intent.walls.flatMap(w => w.wallSurfaces)});
+    out = {...out, facts: tidy.facts, roofTidy: tidy.report};
+  }
+  return out;
 }
 
 export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts): {recipe: LargeBuildingRecipe; report: LargeFitReport; facts: BuildingFacts} {
-  const {facts, shell, roofLevel} = largeShellFacts(intent, inputFacts);
+  const {facts, shell, roofLevel, roofTidy} = largeShellFacts(intent, inputFacts);
   const warnings: string[] = [];
   const {set, anchorRD} = largeSurfaceSet(facts, intent.groundClamp ? {groundClamp: true} : {});
   const known = new Set(set.walls.map(w => w.surface!));
@@ -621,7 +632,7 @@ export function fitLarge(intent: LargeBuildingIntent, inputFacts: BuildingFacts)
   const report: LargeFitReport = {
     groups: groups.map(g => ({index: g.index, system: g.system, panels: g.panels.length, surfaces: g.surfaces.length, widthM: g.widthM, eavesM: g.eavesM, storeys: g.storeys, storeyHeightsM: g.storeyHeightsM, bays: g.bays, pitchM: g.pitchM, entrance: !!g.entrance, garageDoors: g.garage?.bays.length ?? 0})),
     panels: panels.map(p => ({index: p.index, group: panelGroup[p.index], system: panelGroup[p.index] >= 0 ? groups[panelGroup[p.index]].system : otherName, widthM: r3(p.uMax - p.uMin), heightM: r3(p.vMax), bearingDeg: Math.round(bearingOfNormal(p.n)), surfaces: p.walls.map(wi => set.walls[wi].surface!)})),
-    unlistedSurfaces, warnings, ...(shell ? {shellRepair: shell} : {}), ...(roofLevel ? {roofLevel} : {}),
+    unlistedSurfaces, warnings, ...(shell ? {shellRepair: shell} : {}), ...(roofLevel ? {roofLevel} : {}), ...(roofTidy ? {roofTidy} : {}),
   };
   return {recipe, report, facts};
 }

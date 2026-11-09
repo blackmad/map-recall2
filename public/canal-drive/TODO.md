@@ -24,12 +24,7 @@ colour, scripts only); **T1** the ride ring's repeated rows drawn from measured 
 placed by script; **T2** the census (≈600 → ~700). Model routing moved: `LANE-RULES.md`
 §Models now allows sonnet for bounded authoring from existing numbers; lanes ≤ 60 turns;
 content lanes stop at 75 % of the weekly cap, the rest is the fix reserve.
-Week 1 briefs, not yet spawned: `lane-census-refresh-20261107.md` (haiku: coverage-v1,
-census, queue, ride-ring buurt ranking), `lane-chunks-meshopt-20261107.md` (haiku: the
-143 uncompressed chunk GLBs + 177 per-house GLBs), `lane-profiles-citywide-20261107.md`
-(haiku + 1 opus turn: 518/518 buurten, new grammar knobs), `lane-palette-level-20261107.md`
-(haiku + 1 opus turn: level rendered saturation/lightness to the 3,649 measured fronts,
-user strip). Decisions still open: #125 (tower triangle budget), #112 (inferred
+Week 1 (spawned 2026-11-09 by session map-recall2-a1, worktree `integrator-a1`): census-refresh **done** (HISTORY); chunks-meshopt (haiku, port 4747), profiles-citywide and palette-level (haiku + one opus verdict turn) running. Ride-ring ranking `docs/reports/ride-ring-buurten-20261107.md`: top 40 buurten are 97 % generic and only 3 have a block-face library; route metres favour low-density polder buurten (Schellingwoude-Oost #1), so week 2 orders by route metres per pand as well. Open data questions: the 1,829-pand gap between build:coverage's 336,444 base pands and the tier sum 338,273; `build:coverage -- --publish` deletes the tracked `coverage-v1/look/*.jpg` thumbnails (restore, or run `scripts/coverage/build-look-thumbs.ts`). Decisions still open: #125 (tower triangle budget), #112 (inferred
 installs). Weeks 2–4 (vision-measure spike, auto-drafted types, buurt lanes, recipe
 tiles on, kit gaps, bespoke round 6, SHEL step 3, slot layers, windowSdf flip) are in
 the plan §C2–C4 and get briefs when week 1 hands back.
@@ -623,7 +618,7 @@ not run it.
 
 **White roof near Nieuwe Westerdokstraat (user asked 2026-11-01, open):** not identified; every wedge pand around Haarlemmerplein and the Westerdok reads slate in roof-facts, no near-white `roof:colour` tag there, the two OSM-only wedges fall to the grey prior. Flat lids go white through the `white-membrane` slot (5,661 pands citywide, `palette.ts` band #d9d9d3, luma to 228) or a near-white tag (667 features); if that is the cause, cap the slot near #c4c4be and pin the pand. Needs the rider's position.
 
-**Next lane: large-recipe roof clean-up (#87, user yes 2026-10-26).** 3DBAG slivers and stray flat levels on the large models' roofs: 20 installed houses have many slivers and 77 have 6 or more flat levels. Warmoesstraat 157-163 and Van Eeghenstraat 97-101 were flagged. The plan is in the issue.
+**Large-recipe roofs after the tidy step (#87).** `roof.tidy` is merged opt-in (HISTORY 2026-11-09) and too mild for the flagged houses. Open: enable it with evidence on the spike-heavy houses (Westerdok 24 spikes, Hotel Arena 13) after a card review, then fit-golden/large-mesh hashes `--write`, re-export, covers; Van Eeghenstraat 97-101 needs a front-measured pitched roof behind the step gables; Warmoesstraat garage needs a measured deck-level override; slivers stay separate triangles until a plane-merge/re-triangulate step exists.
 
 **Usage pause 2026-10-25 (95 % weekly).** Lanes in flight, their state, the
 next step for each and the integration checklist: `docs/handoffs/inflight-20261025.md`.
