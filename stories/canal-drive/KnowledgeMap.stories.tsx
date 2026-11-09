@@ -44,8 +44,20 @@ const NAMES: Array<[string, string, [number, number], number, number]> = [
   ['Wittenburgergracht', 'canal', [52.3720, 4.9200], 0, -1],
 ];
 
-function reviewStates(): ReviewState[] {
-  return NAMES.map(([name, type, center, repetitions, dueDays], index) => ({
+/** Names in the outer districts (#297): Noord, IJburg, Nieuw-West, Zuidoost. */
+const OUTER_NAMES: typeof NAMES = [
+  ['Buikslotermeerplein', 'street', [52.3935, 4.9390], 3, 4],
+  ['Mosplein', 'street', [52.3870, 4.9150], 2, 2],
+  ['IJburglaan', 'street', [52.3560, 5.0050], 3, 6],
+  ['Pampuslaan', 'street', [52.3610, 4.9990], 1, 1],
+  ['Burgemeester Röellstraat', 'street', [52.3790, 4.8000], 3, 5],
+  ['Sloterplas', 'street', [52.3500, 4.8300], 2, 3],
+  ['Bijlmerdreef', 'street', [52.3150, 4.9700], 3, 7],
+];
+const SEEDS = { centre: NAMES, outer: OUTER_NAMES, everything: [...NAMES, ...OUTER_NAMES] };
+
+function reviewStates(seed: keyof typeof SEEDS = 'centre'): ReviewState[] {
+  return SEEDS[seed].map(([name, type, center, repetitions, dueDays], index) => ({
     featureKey: `sb-${index}`, mode: 'guess_name', dueAt: NOW + dueDays * DAY, intervalDays: 4, ease: 2.3,
     repetitions, lapses: 0, lastReviewedAt: NOW - DAY, lastEventId: `e${index}`, schedulerVersion: 1,
     featureSnapshot: { name, type, cityId: 'amsterdam', center },
@@ -72,8 +84,8 @@ function storage(stamps: number): Pick<Storage, 'getItem'> {
   return { getItem: key => entries[key] ?? null };
 }
 
-function AtlasStory({ stamps, names }: { stamps: number; names: boolean }) {
-  const review = useMemo(() => buildKnowledgeReview(names ? reviewStates() : [], [], NOW), [names]);
+function AtlasStory({ stamps, names, seed = 'centre' }: { stamps: number; names: boolean; seed?: keyof typeof SEEDS }) {
+  const review = useMemo(() => buildKnowledgeReview(names ? reviewStates(seed) : [], [], NOW), [names, seed]);
   const atlas = useKnowledgeAtlasFilter();
   const store = useMemo(() => storage(stamps), [stamps]);
   const shown = review.items.filter(item => atlas.includes(item.key));
@@ -123,6 +135,13 @@ const phoneFrame = (story: () => JSX.Element) => <div style={{ width: 390, margi
 
 export const KnowledgeMapDesktop: Story = { render: () => <AtlasStory stamps={3} names /> };
 export const KnowledgeMapPhone: Story = { render: () => <AtlasStory stamps={3} names />, parameters: phone, decorators: [phoneFrame] };
+// #297: the frame fits every buurt with a known name (centre only keeps the 3.2 km map).
+export const KnowledgeMapCentreDesktop: Story = { render: () => <AtlasStory stamps={3} names seed="centre" /> };
+export const KnowledgeMapCentrePhone: Story = { render: () => <AtlasStory stamps={3} names seed="centre" />, parameters: phone, decorators: [phoneFrame] };
+export const KnowledgeMapOuterDesktop: Story = { render: () => <AtlasStory stamps={3} names seed="outer" /> };
+export const KnowledgeMapOuterPhone: Story = { render: () => <AtlasStory stamps={3} names seed="outer" />, parameters: phone, decorators: [phoneFrame] };
+export const KnowledgeMapEverythingDesktop: Story = { render: () => <AtlasStory stamps={3} names seed="everything" /> };
+export const KnowledgeMapEverythingPhone: Story = { render: () => <AtlasStory stamps={3} names seed="everything" />, parameters: phone, decorators: [phoneFrame] };
 export const StampAlbumZeroDesktop: Story = { render: () => <AtlasStory stamps={0} names={false} /> };
 export const StampAlbumZeroPhone: Story = { render: () => <AtlasStory stamps={0} names={false} />, parameters: phone, decorators: [phoneFrame] };
 export const StampAlbumThreeDesktop: Story = { render: () => <AtlasStory stamps={3} names /> };

@@ -53,6 +53,89 @@ export interface KnowledgeMapGeometry {
   frame: { minLat: number; minLng: number; maxLat: number; maxLng: number };
 }
 
+export type Bounds = { minLat: number; minLng: number; maxLat: number; maxLng: number };
+
+/**
+ * The default (beginner) frame: the quarters and finer within FRAME_RADIUS_KM
+ * of the Dam (the ring, the 19th-century belt and the harbour islands, where
+ * riding happens). A map with nothing known shows exactly this; knownFrame()
+ * grows it to hold the places a player has learned.
+ */
+export function buurtFrame(buurts: readonly BuurtShape[]): Bounds {
+  const nearDam = (buurt: BuurtShape): boolean => {
+    const lat = (buurt.bbox.minLat + buurt.bbox.maxLat) / 2;
+    const lng = (buurt.bbox.minLng + buurt.bbox.maxLng) / 2;
+    const dy = (lat - DAM[0]) * 111.32;
+    const dx = (lng - DAM[1]) * 111.32 * Math.cos((DAM[0] * Math.PI) / 180);
+    return Math.hypot(dx, dy) <= FRAME_RADIUS_KM;
+  };
+  const framing = buurts.filter(buurt => buurt.rank >= 3 && nearDam(buurt));
+  const source = framing.length ? framing : buurts;
+  const frame = { minLat: Infinity, minLng: Infinity, maxLat: -Infinity, maxLng: -Infinity };
+  for (const buurt of source) {
+    frame.minLat = Math.min(frame.minLat, buurt.bbox.minLat);
+    frame.minLng = Math.min(frame.minLng, buurt.bbox.minLng);
+    frame.maxLat = Math.max(frame.maxLat, buurt.bbox.maxLat);
+    frame.maxLng = Math.max(frame.maxLng, buurt.bbox.maxLng);
+  }
+  if (!Number.isFinite(frame.minLat)) Object.assign(frame, { minLat: 52.35, minLng: 4.85, maxLat: 52.39, maxLng: 4.94 });
+  return frame;
+}
+
+/** Share of the frame's span added on every side around the known buurts (#297). */
+export const KNOWN_FRAME_PADDING = 0.04;
+
+/**
+ * The frame the map is fitted to: the default frame (so a beginner's map is
+ * never a dot), grown to the bounding box of every buurt with any known name
+ * and every tracked name's place, plus padding. Fog buurts beyond it are cut
+ * off; known ones never are.
+ */
+export function knownFrame(
+  geometry: KnowledgeMapGeometry,
+  mastery: ReadonlyMap<string, BuurtMastery>,
+  items: readonly KnowledgeMapItem[] = [],
+  padding = KNOWN_FRAME_PADDING,
+): Bounds {
+  const frame = { ...geometry.frame };
+  const grow = (minLat: number, minLng: number, maxLat: number, maxLng: number): void => {
+    frame.minLat = Math.min(frame.minLat, minLat);
+    frame.minLng = Math.min(frame.minLng, minLng);
+    frame.maxLat = Math.max(frame.maxLat, maxLat);
+    frame.maxLng = Math.max(frame.maxLng, maxLng);
+  };
+  let grew = false;
+  for (const buurt of geometry.buurts) {
+    if (!mastery.get(buurt.name)?.tracked) continue;
+    grow(buurt.bbox.minLat, buurt.bbox.minLng, buurt.bbox.maxLat, buurt.bbox.maxLng);
+    grew = true;
+  }
+  for (const item of items) {
+    if (item.center) { grow(item.center[0], item.center[1], item.center[0], item.center[1]); grew = true; }
+  }
+  if (!grew) return frame;
+  const padLat = (frame.maxLat - frame.minLat) * padding;
+  const padLng = (frame.maxLng - frame.minLng) * padding;
+  return { minLat: frame.minLat - padLat, maxLat: frame.maxLat + padLat, minLng: frame.minLng - padLng, maxLng: frame.maxLng + padLng };
+}
+
+/**
+ * Widen a frame to a panel's aspect (centre kept), so the frame is the area
+ * the canvas actually shows, on a wide desktop panel and a phone alike.
+ */
+export function frameToAspect(frame: Bounds, width: number, height: number): Bounds {
+  const lngFactor = Math.cos((((frame.minLat + frame.maxLat) / 2) * Math.PI) / 180);
+  const spanX = (frame.maxLng - frame.minLng) * lngFactor;
+  const spanY = frame.maxLat - frame.minLat;
+  const aspect = width / height;
+  const centreLat = (frame.minLat + frame.maxLat) / 2;
+  const centreLng = (frame.minLng + frame.maxLng) / 2;
+  let halfX = spanX / 2;
+  let halfY = spanY / 2;
+  if (halfX / halfY < aspect) halfX = halfY * aspect; else halfY = halfX / aspect;
+  return { minLat: centreLat - halfY, maxLat: centreLat + halfY, minLng: centreLng - halfX / lngFactor, maxLng: centreLng + halfX / lngFactor };
+}
+
 export interface BoundaryInput {
   name?: string;
   kind?: string;
@@ -124,27 +207,7 @@ export function geometryFromExtract(
       if (line.length > 1) lines.push(line);
     }
   }
-  // Framed on the quarters and finer within FRAME_RADIUS_KM of the Dam: the
-  // ring, the 19th-century belt and the harbour islands, where riding happens.
-  // The outer districts are still drawn; they run off the edge.
-  const nearDam = (buurt: BuurtShape): boolean => {
-    const lat = (buurt.bbox.minLat + buurt.bbox.maxLat) / 2;
-    const lng = (buurt.bbox.minLng + buurt.bbox.maxLng) / 2;
-    const dy = (lat - DAM[0]) * 111.32;
-    const dx = (lng - DAM[1]) * 111.32 * Math.cos((DAM[0] * Math.PI) / 180);
-    return Math.hypot(dx, dy) <= FRAME_RADIUS_KM;
-  };
-  const framing = buurts.filter(buurt => buurt.rank >= 3 && nearDam(buurt));
-  const source = framing.length ? framing : buurts;
-  const frame = { minLat: Infinity, minLng: Infinity, maxLat: -Infinity, maxLng: -Infinity };
-  for (const buurt of source) {
-    frame.minLat = Math.min(frame.minLat, buurt.bbox.minLat);
-    frame.minLng = Math.min(frame.minLng, buurt.bbox.minLng);
-    frame.maxLat = Math.max(frame.maxLat, buurt.bbox.maxLat);
-    frame.maxLng = Math.max(frame.maxLng, buurt.bbox.maxLng);
-  }
-  if (!Number.isFinite(frame.minLat)) Object.assign(frame, { minLat: 52.35, minLng: 4.85, maxLat: 52.39, maxLng: 4.94 });
-  return { buurts, water: lines, frame };
+  return { buurts, water: lines, frame: buurtFrame(buurts) };
 }
 
 function inRing(lat: number, lng: number, ring: readonly LatLng[]): boolean {
@@ -320,7 +383,7 @@ export interface DrawKnowledgeMapOptions {
 /** Draw the whole map in CSS pixels (the caller scales for devicePixelRatio). */
 export function drawKnowledgeMap(ctx: Ctx2D, model: KnowledgeMapModel, options: DrawKnowledgeMapOptions): MapProjection {
   const { width, height, selected = null } = options;
-  const p = options.projection || fitMap(model.geometry.frame, width, height);
+  const p = options.projection || fitMap(knownFrame(model.geometry, model.mastery, model.items), width, height);
   const c = KNOWLEDGE_MAP_COLORS;
   ctx.save();
   ctx.fillStyle = c.paper;
