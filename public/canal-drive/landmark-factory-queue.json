@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-06T22:17:09.182Z",
+ "generatedAt": "2026-11-09T22:30:36.897Z",
  "method": "factory-queue.ts: landmark-backlog pending building|review (by queueRank), then dominant-building-backlog by rideVisibility.score; pands drawn by covers.json, the ordinary catalogue, manualCatalogue suppress ids or building-type instances left out; authored recipes keep their house",
  "items": [
   {
@@ -1525,36 +1525,6 @@
    }
   },
   {
-   "id": "0363100012149878",
-   "pand": "0363100012149878",
-   "name": "Amsterdams Lyceum",
-   "source": "poi",
-   "poiId": "school-amsterdams-lyceum",
-   "rideVisibility": null,
-   "center": [
-    4.8648434,
-    52.3513403
-   ],
-   "status": "no-evidence",
-   "house": "amsterdams-lyceum",
-   "notes": [
-    "authored recipe houses/amsterdams-lyceum exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-24T05:58 draft: hand-authored intent kept",
-    "2026-10-24T05:58 measure wrote nothing (no group matched a crop): amsterdams-lyceum |   walls[0] panel 47: no matched photo |   walls[1] panel 110: no matched photo |   walls[0] no photo: no archived crop within 0.5 m / 5 deg / 60 % of panel 47 |   walls[1] no photo"
-   ],
-   "owner": "factory-1",
-   "claimedAt": "2026-10-24T05:58:39.491Z",
-   "updatedAt": "2026-10-24T05:58:40.798Z",
-   "triage": {
-    "verdict": "not-in-tiles",
-    "reasons": [
-     "pand not in the building tiles: crops and facts cannot run"
-    ],
-    "gaps": [],
-    "date": "2026-11-06"
-   }
-  },
-  {
    "id": "poi:school-berlage-lyceum-tijdelijke-locatie-bovenbouw",
    "pand": "",
    "name": "Berlage Lyceum (tijdelijke locatie bovenbouw)",
@@ -2401,40 +2371,6 @@
    }
   },
   {
-   "id": "0363100012244160",
-   "pand": "0363100012244160",
-   "name": "Atrium Parkeergarage",
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 887928,
-    "rank": 23
-   },
-   "footprintM2": 6681,
-   "heightM": 67.4,
-   "center": [
-    4.8696885000000005,
-    52.340113
-   ],
-   "status": "crops",
-   "house": "pand-244160",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:00:40.294Z",
-   "notes": [
-    "2026-10-23T21:01 crops: 12 usable walls in 31 s"
-   ],
-   "updatedAt": "2026-10-23T21:01:11.234Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w05 (Strawinskylaan, 22 m) reads curtain without floor bands"
-    ],
-    "gaps": [
-     "curtain"
-    ],
-    "date": "2026-11-06"
-   }
-  },
-  {
    "id": "0363100012079326",
    "pand": "0363100012079326",
    "name": null,
@@ -3044,41 +2980,6 @@
    }
   },
   {
-   "id": "0363100012239853",
-   "pand": "0363100012239853",
-   "name": "Sint-Nicolaaslyceum",
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 418806,
-    "rank": 68
-   },
-   "footprintM2": 3154,
-   "heightM": 22.4,
-   "center": [
-    4.877822,
-    52.341357
-   ],
-   "status": "crops",
-   "house": "pand-239853",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:09:15.385Z",
-   "notes": [
-    "2026-10-23T21:09 crops: 9 usable walls in 21 s"
-   ],
-   "updatedAt": "2026-10-23T21:09:36.628Z",
-   "triage": {
-    "verdict": "no-evidence",
-    "reasons": [
-     "wall family unresolved but a measured tint on w01 (paint), w02 (paint): the kit draws it (walls[].wallFamily)",
-     "4 of 6 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w03 (Beethovenplein, 42 m): washed out 50 % > 30 %",
-     "w06 (Beethovenplein, 11 m): usable 12 % < 40 %"
-    ],
-    "gaps": [],
-    "date": "2026-11-06"
-   }
-  },
-  {
    "id": "0363100012186290",
    "pand": "0363100012186290",
    "name": null,
@@ -3374,46 +3275,6 @@
    }
   },
   {
-   "id": "0363100012251533",
-   "pand": "0363100012251533",
-   "name": "De Valerius",
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 377313,
-    "rank": 81
-   },
-   "footprintM2": 3426,
-   "heightM": 19.3,
-   "center": [
-    4.8649215,
-    52.352657
-   ],
-   "status": "crops",
-   "house": "pand-251533",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:11:30.889Z",
-   "notes": [
-    "2026-10-23T21:12 crops: 16 usable walls in 38 s"
-   ],
-   "updatedAt": "2026-10-23T21:12:09.236Z",
-   "triage": {
-    "verdict": "no-evidence",
-    "reasons": [
-     "0 of 8 street walls judgeable (need 2, and every street wall >= 15 m)",
-     "w01 (Lassusstraat, 69 m): foliage 38 % > 25 %; crop 2020 predates the 2023 building",
-     "w02 (Valeriusstraat, 42 m): washed out 74 % > 30 %; crop 2019 predates the 2023 building",
-     "w04 (Valeriusstraat, 31 m): crop 2022 predates the 2023 building",
-     "w06 (Valeriusplein, 20 m): foliage 28 % > 25 %; washed out 43 % > 30 %; crop 2020 predates the 2023 building",
-     "w07 (Valeriusplein, 20 m): washed out 62 % > 30 %; crop 2017 predates the 2023 building",
-     "w09 (Valeriusstraat, 14 m): washed out 78 % > 30 %; crop 2019 predates the 2023 building",
-     "w10 (Valeriusplein, 13 m): crop 2023 predates the 2023 building",
-     "w11 (Valeriusplein, 10 m): foliage 27 % > 25 %"
-    ],
-    "gaps": [],
-    "date": "2026-11-06"
-   }
-  },
-  {
    "id": "0363100012169731",
    "pand": "0363100012169731",
    "name": null,
@@ -3666,40 +3527,6 @@
    }
   },
   {
-   "id": "0363100012125840",
-   "pand": "0363100012125840",
-   "name": "Forum",
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 298673,
-    "rank": 99
-   },
-   "footprintM2": 5660,
-   "heightM": 29.9,
-   "center": [
-    4.85868,
-    52.3416215
-   ],
-   "status": "crops",
-   "house": "pand-125840",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:16:10.817Z",
-   "notes": [
-    "2026-10-23T21:16 crops: 8 usable walls in 21 s"
-   ],
-   "updatedAt": "2026-10-23T21:16:31.344Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w05 (Fred. Roeskestraat, 16 m) reads blank"
-    ],
-    "gaps": [
-     "blank-front"
-    ],
-    "date": "2026-11-06"
-   }
-  },
-  {
    "id": "0363100012153698",
    "pand": "0363100012153698",
    "name": "Gebouw Parnas",
@@ -3909,81 +3736,6 @@
     "verdict": "bespoke",
     "reasons": [
      "built 1890 (< 1915): ornamented historic front"
-    ],
-    "gaps": [],
-    "date": "2026-11-06"
-   }
-  },
-  {
-   "id": "0363100012165746",
-   "pand": "0363100012165746",
-   "name": "Brand bij C&A",
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 231267,
-    "rank": 121
-   },
-   "footprintM2": 2868,
-   "heightM": 32.2,
-   "center": [
-    4.8942435,
-    52.3745945
-   ],
-   "status": "held",
-   "house": "damrak-77-165746",
-   "notes": [
-    "authored recipe houses/damrak-77-165746 exists and is not installed: the factory keeps its intent, measures and compiles it",
-    "2026-10-24T06:52 draft: hand-authored intent kept",
-    "2026-10-24T06:52 measured read-only (hand-authored intent): artifacts/building-recipes/damrak-77-165746/measured.json",
-    "2026-10-24T06:52 compiled: 3266 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL",
-    "2026-10-24T20:17 compiled: 7718 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL",
-    "2026-10-24T20:21 compiled: 7718 tris, gates pass, likeness g0:NO EVIDENCE g1:FAIL"
-   ],
-   "owner": "factory-2",
-   "claimedAt": "2026-10-24T06:52:09.299Z",
-   "updatedAt": "2026-10-24T20:21:34.839Z",
-   "report": {
-    "triangles": 7718,
-    "bytes": 573408,
-    "gatesFailing": [],
-    "passed": true,
-    "likeness": [
-     {
-      "group": 0,
-      "verdict": "NO EVIDENCE",
-      "reasons": [
-       "foliage 27 % > 25 %"
-      ]
-     },
-     {
-      "group": 1,
-      "verdict": "FAIL",
-      "reasons": [
-       "wall dL +0.15",
-       "glazing  mean 0.23 vs photo 0.34",
-       "wall family unresolved (#3e2a1a is dark and neutral, brick courses not resolved): lightness and hue judged only"
-      ]
-     }
-    ],
-    "compiledAt": "2026-10-24T20:21"
-   },
-   "sheets": [
-    "artifacts/building-recipes/damrak-77-165746/contact-walls-0.png",
-    "artifacts/building-recipes/damrak-77-165746/contact-aerial.png"
-   ],
-   "verdict": {
-    "outcome": "hold",
-    "note": "brick now darker (#57291f) but still reads red after tint; one arch over several bays (Beurspassage) and the offset bay grid missing; large blank flank",
-    "sheet": "artifacts/strips/accept-r1",
-    "date": "2026-10-24",
-    "model": "opus",
-    "round": 3,
-    "lane": "factory-acceptance-20261024"
-   },
-   "triage": {
-    "verdict": "bespoke",
-    "reasons": [
-     "built 1893 (< 1915): ornamented historic front"
     ],
     "gaps": [],
     "date": "2026-11-06"
@@ -4916,39 +4668,6 @@
    }
   },
   {
-   "id": "0363100012113136",
-   "pand": "0363100012113136",
-   "name": "vm RK Technische School Dominicus Savius, nu Vliegbasis De Huygens",
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 169335,
-    "rank": 168
-   },
-   "footprintM2": 2717,
-   "heightM": 17.2,
-   "center": [
-    4.835585999999999,
-    52.3694975
-   ],
-   "status": "crops",
-   "house": "pand-113136",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:31:49.049Z",
-   "updatedAt": "2026-10-23T21:31:49.051Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w02 (no street, 58 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)",
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w02 (no street, 58 m), 82 % of 70 m of street wall (w02): painted or clad"
-    ],
-    "gaps": [
-     "band",
-     "painted-or-clad"
-    ],
-    "date": "2026-11-06"
-   }
-  },
-  {
    "id": "0363100012093150",
    "pand": "0363100012093150",
    "name": "Stellingwegflat",
@@ -5250,75 +4969,6 @@
     "verdict": "kit-gap",
     "reasons": [
      "wall family unresolved (dark, neutral, brick courses not resolved) on 64 % of 76 m of street wall (w04, w05): painted or clad"
-    ],
-    "gaps": [
-     "painted-or-clad"
-    ],
-    "date": "2026-11-06"
-   }
-  },
-  {
-   "id": "0363100012246555",
-   "pand": "0363100012246555",
-   "name": "Xavier",
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 126922,
-    "rank": 196
-   },
-   "footprintM2": 1624,
-   "heightM": 74.3,
-   "center": [
-    4.8754915,
-    52.336314
-   ],
-   "status": "crops",
-   "house": "pand-246555",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:36:24.492Z",
-   "notes": [
-    "2026-10-23T21:36 crops: 2 usable walls in 6 s"
-   ],
-   "updatedAt": "2026-10-23T21:36:29.997Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "height 74.3 m: the tallest judgeable street crop reaches 32 m (< 80 %), the upper storeys have no evidence"
-    ],
-    "gaps": [
-     "tower"
-    ],
-    "date": "2026-11-06"
-   }
-  },
-  {
-   "id": "0363100012112179",
-   "pand": "0363100012112179",
-   "name": "Winkelcentrum Plein '40-'45",
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 125089,
-    "rank": 197
-   },
-   "footprintM2": 17927,
-   "heightM": 11,
-   "center": [
-    4.8229735,
-    52.380234
-   ],
-   "status": "crops",
-   "house": "pand-112179",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T21:36:29.997Z",
-   "notes": [
-    "2026-10-23T21:37 crops: 19 usable walls in 47 s"
-   ],
-   "updatedAt": "2026-10-23T21:37:16.748Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "wall family unresolved but a measured tint on w06 (paint), w10 (paint): the kit draws it (walls[].wallFamily)",
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (Willem Kraanstraat, 128 m), 27 % of 480 m of street wall (w01): painted or clad"
     ],
     "gaps": [
      "painted-or-clad"
@@ -8646,38 +8296,6 @@
    }
   },
   {
-   "id": "0363100012246583",
-   "pand": "0363100012246583",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 38293,
-    "rank": 342
-   },
-   "footprintM2": 1736,
-   "heightM": 66.3,
-   "center": [
-    4.8692340000000005,
-    52.33985
-   ],
-   "status": "crops",
-   "house": "pand-246583",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:06:17.317Z",
-   "notes": [
-    "2026-10-23T22:06 crops: 1 usable walls in 5 s"
-   ],
-   "updatedAt": "2026-10-23T22:06:21.971Z",
-   "triage": {
-    "verdict": "no-evidence",
-    "reasons": [
-     "1 of 1 street walls judgeable (need 2, and every street wall >= 15 m)"
-    ],
-    "gaps": [],
-    "date": "2026-11-06"
-   }
-  },
-  {
    "id": "0363100012242134",
    "pand": "0363100012242134",
    "name": null,
@@ -10501,40 +10119,6 @@
     "model": "fable",
     "lane": "landmark-lane-r2",
     "round": 1
-   }
-  },
-  {
-   "id": "0363100012063603",
-   "pand": "0363100012063603",
-   "name": "Ibis Amsterdam City West",
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 20476,
-    "rank": 403
-   },
-   "footprintM2": 9766,
-   "heightM": 31.8,
-   "center": [
-    4.848681,
-    52.392539
-   ],
-   "status": "crops",
-   "house": "pand-063603",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:20:20.410Z",
-   "notes": [
-    "2026-10-23T22:20 crops: 14 usable walls in 35 s"
-   ],
-   "updatedAt": "2026-10-23T22:20:54.968Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "w06 (Kabelweg, 17 m) reads punched with a ribbon on storey 1: the kit draws windows under it (bands, balconies, a shopfront strip)"
-    ],
-    "gaps": [
-     "band"
-    ],
-    "date": "2026-11-06"
    }
   },
   {
@@ -13179,40 +12763,6 @@
     ],
     "gaps": [
      "tower"
-    ],
-    "date": "2026-11-06"
-   }
-  },
-  {
-   "id": "0363100012246549",
-   "pand": "0363100012246549",
-   "name": null,
-   "source": "dominant",
-   "rideVisibility": {
-    "score": 3402,
-    "rank": 516
-   },
-   "footprintM2": 1090,
-   "heightM": 43.6,
-   "center": [
-    4.870302000000001,
-    52.340465
-   ],
-   "status": "crops",
-   "house": "pand-246549",
-   "owner": "crops-20261023",
-   "claimedAt": "2026-10-23T22:37:35.269Z",
-   "notes": [
-    "2026-10-23T22:37 crops: 2 usable walls in 8 s"
-   ],
-   "updatedAt": "2026-10-23T22:37:43.057Z",
-   "triage": {
-    "verdict": "kit-gap",
-    "reasons": [
-     "wall family unresolved (dark, neutral, brick courses not resolved) on the main front w01 (no street, 14 m)100 % of 14 m of street wall (w01): painted or clad"
-    ],
-    "gaps": [
-     "painted-or-clad"
     ],
     "date": "2026-11-06"
    }
