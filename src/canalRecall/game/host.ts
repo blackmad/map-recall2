@@ -518,6 +518,8 @@ export interface PresentationHost extends GameCoreHost {
   _assistUsage: Partial<Record<RibbonAid, boolean>>;
 
   _raceKey: string | null;
+  /** Set by `_saveBestTime`: this ride's time was written as the route's best. */
+  _bestJustSet?: boolean;
   _shareUrl: string | null;
   _copiedTimer: number;
   /** The ridden path, sampled for the share card (shareCard.ts). */

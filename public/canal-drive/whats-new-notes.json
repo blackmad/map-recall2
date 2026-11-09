@@ -3,6 +3,12 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "A new personal best says so",
+   "text": "When you set a personal best, the arrival card could still read \"Personal best 00:03.899\" as if an older record stood: the ride timer ticked a few frames past the moment the best was saved, so your own time looked slower than itself. The card now trusts the save and shows \"★ New personal best\".",
+   "images": []
+  },
+  {
+   "date": "2026-11-09",
    "title": "Phone buttons, stamp line and the pause card fit",
    "text": "\"Reeks beëindigen\" shortens to \"Stop reeks\" when the long form would touch its button edges; the stamp line and the plaque drop their tally and step down a size before any ellipsis, so \"naar Pathé Tuschinski Cinema\" reads whole. The pause card's keycaps wrap to two rows instead of running past the card. On phones the What's New notice is a banner above the page with 44 px targets, not a toast over the heading.",
    "images": [

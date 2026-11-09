@@ -1597,7 +1597,9 @@ export class GamePresentationRuntime {
     let bestText = '';
     if (this._raceKey) {
       const stored = getBestTime(localStorage, this._raceKey);
-      if (stored && this.raceTime <= stored.time) bestText = tr('ride.personalBest.new');
+      // The timer ticks a few frames past the save (measured +0.05 s on 2026-11-09),
+      // so a best set this ride read as an old one; the save records whether it wrote.
+      if (stored && (this._bestJustSet || this.raceTime <= stored.time)) bestText = tr('ride.personalBest.new');
       else if (stored) bestText = tr('ride.personalBest.old', { time: this.hud.formatTime(stored.time) });
     }
 
@@ -2207,7 +2209,7 @@ export class GamePresentationRuntime {
 
   _saveBestTime(): void {
     try {
-      recordBestTime(localStorage, this._raceKey, {
+      this._bestJustSet = recordBestTime(localStorage, this._raceKey, {
         time: this.raceTime,
         date: new Date().toISOString(),
         distance: pixelsToMiles(this._playerDistancePx(), PIXELS_PER_METER),

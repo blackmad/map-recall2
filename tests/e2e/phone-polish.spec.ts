@@ -111,7 +111,8 @@ for (const size of SIZES) {
         if (SHOTS) await page.screenshot({ path: `${SHOTS}/arrival-${language}-${size.width}x${size.height}.png` });
         const best = footers.filter((x: any) => /★|Personal best|Persoonlijk record/.test(x.text));
         expect(best.length, 'a personal-best line was drawn').toBeGreaterThan(0);
-        const f = footers.filter((x: any) => /(Medium|Gemiddeld).*·|★.*·/.test(x.text)).at(-1);
+        // The fit may drop the difficulty item on a narrow card; the line still carries the vehicle or the best.
+        const f = footers.filter((x: any) => /(Medium|Gemiddeld|Bike|Fiets|Personal best|Persoonlijk record).*·|★.*·/.test(x.text)).at(-1);
         expect(f, 'the footer line was drawn').toBeTruthy();
         expect(f.text.includes('…'), `footer cut: ${f.text}`).toBe(false);
         expect(/[·\s]$/.test(f.text), `footer ends mid-list: ${f.text}`).toBe(false);

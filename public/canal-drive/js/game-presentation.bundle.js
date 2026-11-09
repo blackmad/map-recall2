@@ -11222,7 +11222,7 @@
       let bestText = "";
       if (this._raceKey) {
         const stored = getBestTime(localStorage, this._raceKey);
-        if (stored && this.raceTime <= stored.time) bestText = t("ride.personalBest.new");
+        if (stored && (this._bestJustSet || this.raceTime <= stored.time)) bestText = t("ride.personalBest.new");
         else if (stored) bestText = t("ride.personalBest.old", { time: this.hud.formatTime(stored.time) });
       }
       let touchButtonH = 44;
@@ -11764,7 +11764,7 @@
     }
     _saveBestTime() {
       try {
-        recordBestTime(localStorage, this._raceKey, {
+        this._bestJustSet = recordBestTime(localStorage, this._raceKey, {
           time: this.raceTime,
           date: (/* @__PURE__ */ new Date()).toISOString(),
           distance: pixelsToMiles(this._playerDistancePx(), PIXELS_PER_METER)
