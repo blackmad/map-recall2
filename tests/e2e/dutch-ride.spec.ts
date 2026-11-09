@@ -1,6 +1,8 @@
 import { expect, test, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 import { openRoute } from './helpers';
+import { LANDMARK_NAMES_NL, LANDMARK_NAMES_NL_WIKIDATA } from '../../src/canalRecall/game/landmarkNamesNl';
+import { nameKey } from '../../src/canalRecall/game/landmarkQuestion';
 
 // R2-2/R2-3 (#303): ride C of ride review 2 in one deterministic pass. The Dutch game answers in Dutch
 // and names a place one way on every surface: the destination pill, the landmark question, the
@@ -120,4 +122,64 @@ test('Dutch ride C: answer feedback and place names', async ({ page }) => {
   expect.soft(surfaces.card).toMatch(/munttoren/i);
   expect.soft(surfaces.arrival).toContain('Koninklijk Theater Tuschinski');
   expect.soft(englishDrawn).toEqual([]);
+});
+
+// R3-A (#307): the map/3D place label and the arrival paragraph. The label ledger
+// (labelDrawLedger: every layer's drawn names, both engines) and a fillText hook
+// say which landmark names the map drew near the Munttoren; none may be a catalogue
+// English name the Dutch game renames. Then an arrival at De Dokwerker, whose nl
+// article lede the extract kept, prints that Dutch lede; ride C's Portugese
+// Synagoge has no Dutch text and stays English (no machine translation).
+const RENAMED: Array<[string, string]> = [
+  ...Object.entries(LANDMARK_NAMES_NL),
+  ...Object.entries(LANDMARK_NAMES_NL_WIKIDATA).map(([en, row]) => [en, row.nl] as [string, string]),
+];
+
+test('Dutch ride C: map labels and the arrival paragraph speak Dutch (#307)', async ({ page }) => {
+  test.setTimeout(300_000);
+  await seed(page);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  await page.waitForTimeout(1500);
+  // Stand at the Munttoren facing it; let the label layers re-plan.
+  await page.evaluate(() => {
+    const g = (window as any).canalRecallGame;
+    const mint = g.landmarks.find((l: any) => l.name === 'Mint Tower');
+    g.player.x = mint.x - Math.cos(g.player.angle) * 120; g.player.y = mint.y - Math.sin(g.player.angle) * 120; g.player.speed = 0;
+  });
+  await page.waitForTimeout(6000);
+  const seen = await page.evaluate(() => {
+    const ledger = (window as any).__canalRecallLabelLedger;
+    const keys = new Set<string>();
+    for (const set of ledger?.current?.values?.() ?? []) for (const key of set) keys.add(key);
+    for (const key of ledger?.lastDrawn?.keys?.() ?? []) keys.add(key);
+    return { keys: [...keys], drawn: [...new Set((window as any).__drawn as string[])] };
+  });
+  const drawnKeys = new Set([...seen.keys, ...seen.drawn.map(nameKey)]);
+  const english = RENAMED.filter(([en]) => drawnKeys.has(nameKey(en))).map(([en]) => en);
+  const dutch = RENAMED.filter(([, nl]) => drawnKeys.has(nameKey(nl))).map(([, nl]) => nl);
+  await shot(page, 'r3a-01-label');
+  console.log(`[${test.info().project.name}] R3A LABELS english=${JSON.stringify(english)} dutch=${JSON.stringify(dutch)} ledgerKeys=${seen.keys.length}`);
+
+  // The arrival at a landmark whose Dutch lede the extract kept.
+  const arrive = async (id: string) => {
+    await page.evaluate((landmarkId: string) => {
+      const g = (window as any).canalRecallGame;
+      const lm = g.landmarks.find((l: any) => l.id === landmarkId);
+      g._landmarkNotice = null;
+      g.routeTo = { ...g.routeTo, landmarkId: lm.id, name: lm.name, reviewStop: undefined };
+      g._finishBlurb = null;
+      g.player.x = g.track.finishPoint.x; g.player.y = g.track.finishPoint.y; g.player.speed = 0;
+    }, id);
+    await page.waitForFunction(() => (window as any).canalRecallGame.state === 5, null, { timeout: 90_000 });
+    await page.waitForTimeout(800);
+    return page.evaluate(() => (window as any).canalRecallGame._finishBlurb?.text || '');
+  };
+  const dokwerker = await arrive('extract_landmarks_1098130181');
+  await shot(page, 'r3a-02-arrival-dokwerker');
+  console.log(`[${test.info().project.name}] R3A ARRIVAL ${JSON.stringify(dokwerker.slice(0, 120))}`);
+
+  expect.soft(english).toEqual([]);
+  // Which renamed landmarks are on screen depends on the view (and on the spoiler screen:
+  // "Paleis op de Dam" holds the square's name), so the Dutch list is logged, not asserted.
+  expect.soft(dokwerker).toMatch(/^De Dokwerker is een beeld/);
 });

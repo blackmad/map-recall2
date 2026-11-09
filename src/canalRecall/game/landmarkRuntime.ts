@@ -39,6 +39,7 @@ import {
   buildFactIndex,
   commitShownFact,
   factCardText,
+  keepDutchLede,
   loadRotationState,
 } from '../facts/factStore';
 import type { FactsFile } from '../facts/factTypes';
@@ -61,8 +62,8 @@ import { cardCollapsed, foldedCardLine, FOLDED_BODY_LINES } from './teachingPace
 import { drawCardAction } from '../noticeCards';
 import { loadEntryCounts, postcardForLull, postcardOnEntry, recordEntry } from './postcardPacing';
 import { DRIVE_BY_RADIUS, driveByGapElapsed, mayReplaceNotice, pathAhead, pickDriveBy, type NoticeSource, type Rider } from './driveByTrigger';
-import { t as tr } from '../../i18n/index.ts';
-import { placeName } from './landmarkNamesNl.ts';
+import { language, t as tr } from '../../i18n/index.ts';
+import { localisedPlaces, placeName } from './landmarkNamesNl.ts';
 import { kindLabel } from '../cardKindLabel.ts';
 import { GameLandmarkQuestionRuntime, installLandmarkQuestion } from './landmarkQuestionRuntime';
 import {
@@ -190,6 +191,8 @@ export class GameLandmarkRuntime {
       notice.detail || notice.longDetail,
     );
     if (!chosen) return notice;
+    // The Dutch game keeps a Dutch lede over a fact with no Dutch text (#307).
+    if (!streetEntry && keepDutchLede(chosen.choice.fact, notice.extractLang)) return notice;
     this._commitFact(chosen.choice);
     // A street/bridge card keeps its name origin first and its register line.
     const text = streetEntry ? streetCardWithRotatedFact(streetEntry, chosen.text) : chosen.text;
@@ -519,7 +522,8 @@ export class GameLandmarkRuntime {
         // A bridge's official spelling is an answer too.
         ...bridgeFeatures.map(bridge => ({ name: bridge.displayName })),
       ].map(item => (item as { name?: string }).name || '').filter(Boolean));
-      this.vectorMap.setPlaces(features, boundaries);
+      // Map and 3D labels name a landmark as every card does (placeName, #307).
+      this.vectorMap.setPlaces(localisedPlaces(features), boundaries);
 
       const metersPerDegreeLat = 111320;
       const metersPerDegreeLng = 111320 * Math.cos(centerLat * Math.PI / 180);
@@ -869,7 +873,7 @@ export class GameLandmarkRuntime {
     };
     if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, ' '), 'category');
     if (lm.factKind) pushBadge(lm.factKind.toUpperCase(), 'fact');
-    if (lm.extractLang && lm.extractLang !== 'en') {
+    if (lm.extractLang && lm.extractLang !== 'en' && lm.extractLang !== language()) {
       // Say plainly that this is not the English article rather than leaving
       // the reader to work out why the text is Dutch.
       pushBadge(`${lm.extractLang.toUpperCase()} — NOT TRANSLATED YET`, 'lang');

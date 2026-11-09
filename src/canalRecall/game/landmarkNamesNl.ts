@@ -105,3 +105,21 @@ export function landmarkDisplayName(name: string, language: string): string {
 export function placeName(name: string): string {
   return landmarkDisplayName(name, language());
 }
+
+/**
+ * The places handed to the map's labels (`setPlaces`, both engines), each
+ * named as the cards name it: "Munttoren" over the 3D tower in the Dutch game,
+ * not "MINT TOWER" (#307). A renamed place keeps its catalogue name as
+ * `sourceName`, which the spoiler screens read as an alias; the question
+ * already withholds both spellings (#283). Unchanged places are passed through
+ * as the same objects, so the English game hands the map exactly what it did.
+ */
+export function localisedPlaces<T extends { name?: string }>(
+  places: readonly T[],
+  display: (name: string) => string = placeName,
+): Array<T & { sourceName?: string }> {
+  return places.map(place => {
+    const shown = place.name ? display(place.name) : place.name;
+    return shown === place.name ? place : { ...place, name: shown, sourceName: place.name };
+  });
+}

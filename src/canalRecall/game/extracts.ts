@@ -23,6 +23,10 @@ export interface LandmarkFeature {
   wikipediaUrl?: string;
   wikipediaExtract?: string;
   wikipediaExtractLang?: string;
+  /** The article's own lede when `wikipediaExtract` was translated from it
+   *  (the Dutch game prints it, #307); `wikipediaUrl` is that article. */
+  wikipediaExtractOriginal?: string;
+  wikipediaExtractOriginalLang?: string;
   wikipediaImageUrl?: string;
   sourceUrl?: string;
   researchSourceUrl?: string;

@@ -52,3 +52,23 @@ test('ride C names read Dutch in the Dutch game (R2-3, #303)', () => {
   assert.equal(placeName('Mint Tower'), 'Mint Tower');
   resetLanguageForTests();
 });
+
+test('map places are named as the cards name them; the English game gets the same objects (#307)', async () => {
+  const { localisedPlaces } = await import('./landmarkNamesNl.ts');
+  const { placeAliases } = await import('../engine/placeNames.ts');
+  const places = [{ id: 'm', name: 'Mint Tower', wikipedia: 'nl:Munttoren (Amsterdam)' }, { id: 'p', name: 'Portugese Synagoge' }];
+  resetLanguageForTests();
+  setLanguage('en', { persist: false });
+  const en = localisedPlaces(places);
+  assert.ok(en.every((place, i) => place === places[i]), 'English: unchanged objects');
+  setLanguage('nl', { persist: false });
+  const nl = localisedPlaces(places);
+  assert.deepEqual(nl.map(place => place.name), ['Munttoren', 'Portugese Synagoge']);
+  assert.equal(nl[0].sourceName, 'Mint Tower');
+  assert.equal(nl[1], places[1]);
+  // The catalogue name stays an alias, so a label screened for "Mint Tower" is still withheld.
+  assert.deepEqual(placeAliases(nl[0]), ['Mint Tower']);
+  assert.deepEqual(placeAliases(places[0]), ['Munttoren']);
+  setLanguage('en', { persist: false });
+  resetLanguageForTests();
+});

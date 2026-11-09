@@ -251,7 +251,10 @@ export class GameLandmarkQuestionRuntime {
       if (!inViewCone(player, landmark, bandPx)) return false;
       // The map named it moments ago, or a card did: asking now tests the
       // last few seconds, not the city (#281).
-      const reason = landmarkSkipReason(ledger, landmark.name, now);
+      // The map labels it in the interface's language (#307): either spelling counts.
+      const shown = landmarkDisplayName(landmark.name, language());
+      const reason = landmarkSkipReason(ledger, landmark.name, now)
+        ?? (shown !== landmark.name ? landmarkSkipReason(ledger, shown, now) : null);
       if (reason) { bumpSkipCounter(session, skipped, landmark.id, reason); return false; }
       return true;
     });

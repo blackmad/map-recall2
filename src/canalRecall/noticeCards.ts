@@ -12,7 +12,7 @@
 // the part worth testing; the paint pass is just `ctx` calls in order.
 
 import { hudSurface } from './hudTheme.ts';
-import { t } from '../i18n/index.ts';
+import { language, t } from '../i18n/index.ts';
 import { kindLabel } from './cardKindLabel.ts';
 
 export interface TextMeasurer {
@@ -218,7 +218,8 @@ export function measureLandmarkCard(
   if (props.factKind && props.body) pushBadge(props.factKind.toUpperCase(), 'fact');
   // The language chip is a claim about the body text, so it only makes sense
   // when there is body text to be in that language.
-  if (props.extractLang && props.extractLang !== 'en' && props.body) {
+  // A Dutch lede in the Dutch game needs no chip (#307).
+  if (props.extractLang && props.extractLang !== 'en' && props.extractLang !== language() && props.body) {
     pushBadge(props.extractLang.toUpperCase(), 'lang');
   }
   if (props.hasArticle) pushBadge(props.articleLabel || t('card.wikipedia'), 'article');
