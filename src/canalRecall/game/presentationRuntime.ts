@@ -650,7 +650,10 @@ export class GamePresentationRuntime {
    * sits below the plaque and minimap; on desktop between the top cards.
    */
   _renderFerryNotice(player: Pick<Vehicle, 'ferryOrigin' | 'ferryDestinations' | 'ferryNearest'>, showMiniMap: boolean): void {
-    if (!player.ferryOrigin) return;
+    // Free Ride: the vessel is free on the water and lands at any street-side
+    // quay (ferry/travel.ts freeLanding), so there is no pier to steer for
+    // (user 2026-11-09, "not force me along an invisible path").
+    if (!player.ferryOrigin || this.freeRide) return;
     const ctx = this.ctx;
     const layout = this._hudRects();
     const top = layout.mode === 'compact'

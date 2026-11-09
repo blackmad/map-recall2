@@ -11,7 +11,7 @@ import { buildRoadSegments, projectToWorld, PIXELS_PER_METER, type OsmWay } from
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from '../src/canalRecall/game/bridgeStreetName';
 import { afterFerryMove, beginFerryFrame, leadingEdge, nearestWater, type FerryGame } from '../src/canalRecall/ferry/travel';
 import type { Terminal } from '../src/canalRecall/ferry/network';
-import { ijFerryWorld, ijWaterTest, sail, toLatLon as ijToLatLon, toWorld as ijToWorld } from './lib/ferryIjWorld';
+import { helm, ijFerryWorld, ijWaterTest, nearestRoadOf, sail, toLatLon as ijToLatLon, toWorld as ijToWorld } from './lib/ferryIjWorld';
 import { loadRoutingFeatures, routingSource } from './lib/routingFeatures';
 
 const options = { edgeTolerance: 12 };
@@ -713,7 +713,53 @@ let ferrySummary = '';
     }
   }
   assert.ok(Math.hypot(centraalF3.x - centraalF4.x, centraalF3.y - centraalF4.y) < 150, 'Centraal F3 and F4 share a quay inside the re-arm radius');
-  ferrySummary = `, ferry: NDSM quay 24.7 m and Buiksloterweg 15 m reports dock, ${farQuay} NDSM bank touches blocked, f80d47da hull afloat, ${crossings.length} IJ crossings dock`;
+
+  // Free Ride (#318). User 2026-11-09, build ef73a29, ?ride=free: the vessel
+  // on the IJ off De Ruijterkade, 61 m from the Centraal F4 pier, "ferry
+  // still getting stuck, should let me free ride and not force me along an
+  // invisible path". Held towards the quay, a quiz-ride vessel crawls along
+  // it (2.4 m/s, touching every second or two); a Free Ride vessel lands on
+  // the quay street. Steering any way for 60 s it never stands still.
+  const streets = [...world.segments, ...world.land], road = nearestRoadOf(streets);
+  const userPose = ijToWorld(52.381133, 4.898421);
+  assert.equal(water(userPose.x, userPose.y), true, '#318: the user pose is afloat');
+  assert.ok(Math.abs(Math.hypot(userPose.x - centraalF4.x, userPose.y - centraalF4.y) / 3 - 61) < 1, '#318: 61 m from the Centraal pier, as the banner said');
+  const freeVessel = (freeRide: boolean): FerryGame => ({ travelMode: 'car', freeRide,
+    track: { segments: streets, getNearestRoad: (x, y) => road(x, y) },
+    player: { ...userPose, angle: -3 * Math.PI / 4, speed: 0, vx: 0, vy: 0, maxSpeed: 180, length: 96, width: 27,
+      isBoat: true, ferryOrigin: centraalF4, ferryDeparted: true, ferryUnarmed: [] } });
+  const towardsQuay = Math.PI / 2;
+  const quizRide = helm({ afterFerryMove }, freeVessel(false), water, towardsQuay, 10);
+  assert.equal(quizRide.result, 'sailing', '#318: a quiz ride keeps the ferry a transit element (still aboard at the quay)');
+  const free = freeVessel(true);
+  const freeRide = helm({ afterFerryMove }, free, water, towardsQuay, 10);
+  assert.equal(freeRide.result, 'landed', '#318: Free Ride lands on the De Ruijterkade quay');
+  assert.ok(freeRide.seconds < 3, `#318: within 3 s (${freeRide.seconds.toFixed(1)} s)`);
+  assert.ok(free.player.ferryOrigin === null && !free.player.isBoat, '#318: back on the bike');
+  const landedOn = road(free.player.x, free.player.y);
+  assert.ok(landedOn && landedOn.dist < 1 && !/^ferry/.test(streets[landedOn.segIdx].type), '#318: on a street, not the ferry access');
+  let freeLandings = 0, leastWindow = Infinity;
+  for (let k = 0; k < 16; k++) {
+    const h = helm({ afterFerryMove }, freeVessel(true), water, k * Math.PI / 8 - Math.PI, 60);
+    if (h.result !== 'sailing') freeLandings++;
+    leastWindow = Math.min(leastWindow, h.minWindowMetres);
+  }
+  assert.ok(leastWindow > 1, `#318: steering any way for 60 s, the Free Ride vessel moves > 1 m in every 5 s (least ${leastWindow.toFixed(1)} m)`);
+  // The earlier report (2026-10-31, "ferries get stuck ~50 m out"): from
+  // every western IJ pier the launch gets 100 m clear within 12 s, in a
+  // quiz ride and in Free Ride (where it may also land on the far bank).
+  let launches = 0;
+  for (const freeRide of [false, true]) for (const t of world.terminals.values()) {
+    const g: FerryGame = { travelMode: 'car', freeRide, track: { segments: streets, getNearestRoad: (x, y) => road(x, y) },
+      player: { x: t.x, y: t.y, angle: 0, speed: 20, vx: 0, vy: 0, maxSpeed: 260, length: 6, width: 2 } };
+    g.player.angle = nearestWater(t, water)?.angle ?? Math.atan2(t.y - t.land.y, t.x - t.land.x);
+    assert.equal(beginFerryFrame(g, water), true, `${t.name} ${t.id} boards`);
+    const h = helm({ afterFerryMove }, g, water, g.player.angle, 12);
+    const clear = Math.hypot(h.end.x - t.x, h.end.y - t.y) / 3;
+    assert.ok(clear >= 100, `${freeRide ? 'Free Ride' : 'quiz'}: the ${t.name} ${t.id} launch gets 100 m clear in 12 s (${clear.toFixed(0)} m, ${h.result})`);
+    launches++;
+  }
+  ferrySummary = `, ferry: NDSM quay 24.7 m and Buiksloterweg 15 m reports dock, ${farQuay} NDSM bank touches blocked, f80d47da hull afloat, ${crossings.length} IJ crossings dock, #318 Free Ride lands at De Ruijterkade in ${freeRide.seconds.toFixed(1)} s (${freeLandings}/16 headings land, least 5 s window ${leastWindow.toFixed(1)} m), ${launches} launches clear`;
 }
 
 process.stdout.write(`Canal Recall car checks passed (roads: ${routingSource()}; 6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}${deadEndSummary}${ferrySummary}).\n`);
