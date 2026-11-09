@@ -24,12 +24,7 @@ colour, scripts only); **T1** the ride ring's repeated rows drawn from measured 
 placed by script; **T2** the census (≈600 → ~700). Model routing moved: `LANE-RULES.md`
 §Models now allows sonnet for bounded authoring from existing numbers; lanes ≤ 60 turns;
 content lanes stop at 75 % of the weekly cap, the rest is the fix reserve.
-Week 1 briefs, not yet spawned: `lane-census-refresh-20261107.md` (haiku: coverage-v1,
-census, queue, ride-ring buurt ranking), `lane-chunks-meshopt-20261107.md` (haiku: the
-143 uncompressed chunk GLBs + 177 per-house GLBs), `lane-profiles-citywide-20261107.md`
-(haiku + 1 opus turn: 518/518 buurten, new grammar knobs), `lane-palette-level-20261107.md`
-(haiku + 1 opus turn: level rendered saturation/lightness to the 3,649 measured fronts,
-user strip). Decisions still open: #125 (tower triangle budget), #112 (inferred
+Week 1 (spawned 2026-11-09 by session map-recall2-a1, worktree `integrator-a1`): census-refresh **done** (HISTORY); chunks-meshopt (haiku, port 4747), profiles-citywide and palette-level (haiku + one opus verdict turn) running. Ride-ring ranking `docs/reports/ride-ring-buurten-20261107.md`: top 40 buurten are 97 % generic and only 3 have a block-face library; route metres favour low-density polder buurten (Schellingwoude-Oost #1), so week 2 orders by route metres per pand as well. Open data questions: the 1,829-pand gap between build:coverage's 336,444 base pands and the tier sum 338,273; `build:coverage -- --publish` deletes the tracked `coverage-v1/look/*.jpg` thumbnails (restore, or run `scripts/coverage/build-look-thumbs.ts`). Decisions still open: #125 (tower triangle budget), #112 (inferred
 installs). Weeks 2–4 (vision-measure spike, auto-drafted types, buurt lanes, recipe
 tiles on, kit gaps, bespoke round 6, SHEL step 3, slot layers, windowSdf flip) are in
 the plan §C2–C4 and get briefs when week 1 hands back.
