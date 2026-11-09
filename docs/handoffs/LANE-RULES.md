@@ -56,9 +56,19 @@ is a number the programme tracks weekly.
 - **opus**: judgement: the review turn (strip → verdict table), authoring a
   type or kit component from a strip, re-levelling a look, diagnosing a
   rendering defect, merging.
-- Never fable. Never sonnet unless a Haiku lane failed the same step twice;
-  then say so in the report.
-- Set the model on every spawn.
+- **sonnet** (since 2026-11-07, plan `docs/plans/city-coverage-20261107.md`):
+  bounded authoring from numbers that already exist: applying a spelled-out
+  `fix`, writing a type JSON from a measured median or a detector's numbers,
+  implementing a perf or data step whose brief carries a numeric acceptance,
+  writing briefs and reports. Never a likeness verdict, never a kit component
+  from a strip; those stay opus.
+- Never fable.
+- Set the model on every spawn. A lane is at most 60 turns; a batch that
+  needs more re-spawns fresh from the queue or placement record (cache reads
+  grow with turns x context, and ~95 % of November's lane cost was re-read
+  context). All 55 November lanes ran on opus although this table assigns
+  their surveys, batches and installs to haiku; the hand-back's `MODEL:` line
+  is checked against the transcript.
 
 ## Acceptance
 
