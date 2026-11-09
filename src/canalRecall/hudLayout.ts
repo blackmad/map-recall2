@@ -89,10 +89,16 @@ export type HudLayoutInput = {
   /** Extra plaque lines under the two fixed rows (a feedback line, a cycling
    *  restriction). Only the merged portrait plaque sizes from this. */
   plaqueExtraLines?: number;
+  /** The touch hint strip is up over the d-pad (hud.js drawTouchHint). On a
+   *  portrait phone the bottom cards then stack above it, not under it (#286). */
+  touchHintVisible?: boolean;
 };
 
 const MARGIN = 12;
 const GAP = 8;
+/** Room the touch hint strip takes over the d-pad: hud.js drawTouchHint draws
+ *  it 22 px tall, its top 30 px above the pad. */
+export const TOUCH_HINT_ROOM = 30;
 
 // Compact row heights, measured against the type sizes hud.js draws.
 const COMPACT_RECALL_H = 40;
@@ -182,6 +188,7 @@ export function hudLayout({
   minimapVisible = true,
   minimapShape = 'radar',
   plaqueExtraLines = feedbackVisible ? 1 : 0,
+  touchHintVisible = false,
 }: HudLayoutInput): HudLayout {
   const band = hudBand(viewport);
   const width = band.width;
@@ -191,9 +198,13 @@ export function hudLayout({
   const radar = minimapShape !== 'city';
   if (viewport.mode === 'compact') {
     const dpad = dpadLayout(viewport, band);
-    const controlsTop = dpad ? dpad.bounds.y : height - viewport.safeBottom;
+    const padTop = dpad ? dpad.bounds.y : height - viewport.safeBottom;
 
     if (viewport.orientation === 'portrait') {
+      // The hint strip is centred over the pad at the full row width, so on a
+      // portrait phone it ran across the card's bottom edge and its action
+      // pill (ride review #280, defect 7).
+      const controlsTop = dpad && touchHintVisible ? padTop - TOUCH_HINT_ROOM : padTop;
       const rowWidth = width - MARGIN * 2;
       // One plaque, not three stacked rows. The street/score card and the
       // destination bar together used to reach a quarter of the way down a

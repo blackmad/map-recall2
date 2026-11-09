@@ -375,6 +375,10 @@ export class GameFreeRideRuntime {
     return true;
   }
 
+  _freeRideStampWaiting(hood: string | null | undefined): boolean {
+    return !!hood && !!this.freeRide && this._freeRideCollection?.stampPostcard === hood;
+  }
+
   /** The postcard's checklist caption for a neighbourhood, or '' (no list, or the collection is off). */
   _freeRideChecklistCaption(hood: string): string {
     if (!this.freeRide) return '';
@@ -382,12 +386,19 @@ export class GameFreeRideRuntime {
     return progress ? checklistLine(hood, progress, { underQuestion: this.quizCurrentName, copy: CHECKLIST_COPY }).count : '';
   }
 
-  /** The current neighbourhood's unopened places, for the radar. */
+  /** The current neighbourhood's unopened places, for the radar, and the
+   *  coin's place whenever the coin is not drawn in frame: off screen, over
+   *  the corridor or under the HUD, the radar carries its bearing (#286; on a
+   *  phone the coin was off screen at 6 of 7 stops, ride review #280). */
   _freeRideRadarPlaces(): WorldPoint[] {
     const collection = this._freeRideCollection;
     if (!this.freeRide || !collection) return [];
     const list = this._freeRideChecklist(this.currentNeighborhood);
-    return list ? list.places.filter(place => !collection.opened.has(place.key)) : [];
+    const places: WorldPoint[] = list ? list.places.filter(place => !collection.opened.has(place.key)) : [];
+    const token = collection.token;
+    if (token && !collection.tokenScreen && !collection.opened.has(token.key)
+      && !places.some(place => Math.hypot(place.x - token.x, place.y - token.y) < 1)) places.push({ x: token.x, y: token.y });
+    return places;
   }
 
   /** Draw the markers, nearest first, keeping off the HUD, the open card and
@@ -674,13 +685,12 @@ export class GameFreeRideRuntime {
         if (store) savePassport(store, stamped.passport);
         bumpSessionCounter('stampsEarned');
         collection.stampMoment = { hood, until: performance.now() + STAMP_MOMENT_SECONDS * 1000 };
-        // The postcard comes back with the stamp on it on a wide screen, once the
-        // landmark card just opened has closed (one-card rule; landmarkRuntime).
-        // A phone keeps its bottom band for the corridor, the plaque says it.
-        if (this.viewport?.mode !== 'compact') {
-          collection.stampPostcard = hood;
-          this._postcardPending = hood;
-        }
+        // The postcard comes back with the stamp on it, once the landmark card
+        // just opened has closed (one-card rule; landmarkRuntime). On a phone
+        // too: it is the once-per-buurt reward, not a per-place pop-up, and a
+        // plaque line alone read as no payoff (ride review #280, defect 10).
+        collection.stampPostcard = hood;
+        this._postcardPending = hood;
       }
     }
     saveCollection(store, collection.state);

@@ -177,7 +177,7 @@ test('collection: checklist on the plaque, token ≤ 24 px off the corridor, all
   }
   console.log('G4 list', list.hood, list.places.length, 'tapped', tapped, 'rode', rode);
   expect(tapped).toBeGreaterThan(0);
-  // Stand on the last place, inside the neighbourhood, card closed: the stamped postcard comes up (wide screen).
+  // Stand on the last place, inside the neighbourhood, card closed: the stamped postcard comes up (phone too, #286).
   const last = list.places[list.places.length - 1];
   await page.evaluate((p) => {
     const g = (window as any).canalRecallGame;
@@ -185,7 +185,7 @@ test('collection: checklist on the plaque, token ≤ 24 px off the corridor, all
   }, last);
   await page.waitForTimeout(800);
   await page.evaluate(() => (window as any).canalRecallGame._clearLandmarkNotice?.());
-  if (!compact) {
+  {
     await page.waitForTimeout(300);
     console.log('G4 stamp state', JSON.stringify(await page.evaluate(() => { const g = (window as any).canalRecallGame; return { hood: g.currentNeighborhood, pending: g._postcardPending, stamp: g._freeRideCollection.stampPostcard, notice: g._neighborhoodNotice?.name, timer: g._neighborhoodNoticeTimer, card: g._landmarkNotice?.name ?? null, compact: g.viewport?.mode }; })));
     await expect.poll(() => page.evaluate(() => !!(window as any).canalRecallGame._neighborhoodNotice?.stamped), { timeout: 10_000 }).toBe(true);
@@ -209,9 +209,8 @@ test('collection: checklist on the plaque, token ≤ 24 px off the corridor, all
   expect(done.session.stampsEarned).toBe(1);
   expect(done.session.placesOpened).toBeGreaterThanOrEqual(list.places.length);
   expect(done.tally).toBe('Stamped in your passport');
-  // The postcard carries the stamp on a wide screen; the phone keeps its bottom band clear.
-  if (compact) expect(done.postcard?.stamped ?? false).toBe(false);
-  else expect(done.postcard?.stamped).toBe(true);
+  // The postcard carries the stamp on every screen: on a phone it is the once-per-buurt reward (#286).
+  expect(done.postcard?.stamped).toBe(true);
   // Never a landmark card and a postcard up together.
   expect(await page.evaluate(() => (window as any).__g4TwoCards)).toBe(0);
 

@@ -185,6 +185,10 @@ export interface LandmarkHost extends GameCoreHost {
   _freeRideCollectionOn?(): boolean;
   /** Consumes a pending passport-stamp postcard for this neighbourhood. */
   _freeRideTakeStampPostcard?(hood: string): boolean;
+  /** Whether this neighbourhood's stamped postcard waits: it shows on a phone too (#286). */
+  _freeRideStampWaiting?(hood: string | null | undefined): boolean;
+  /** The touch hint strip is drawn this frame (presentationRuntime), so phone cards stack above it (#286). */
+  _touchHintShowing?(): boolean;
   _neighborhoodCandidate: string;
   _neighborhoodCandidateTimer: number;
   _previousNeighborhood: string;

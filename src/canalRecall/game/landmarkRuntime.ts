@@ -652,7 +652,10 @@ export class GameLandmarkRuntime {
     }
     if (this._postcardPending && this._postcardPending === this.currentNeighborhood
       && !this._landmarkNotice
-      && this.viewport?.mode !== 'compact' && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      // A phone keeps entry postcards off its bottom band, but not the stamp:
+      // finishing a buurt's checklist is the once-per-buurt reward (#286).
+      && (this.viewport?.mode !== 'compact' || !!this._freeRideStampWaiting?.(this._postcardPending))
+      && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
       this._postcardPending = null;
       this._lastPostcardAt = this.raceTime;
       if (hood) this._ensureNeighborhoodImage(hood);
@@ -789,6 +792,10 @@ export class GameLandmarkRuntime {
       hasImage,
       ...(collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || '').trim() !== foldedCardLine(lm) } : {}),
       ...(action ? { action: action.label } : {}),
+      // A finger, not a pointer: the pill is a 44 px tap target on a phone (#286).
+      // Three body lines then, so the taller pill does not push the card over the bike (414×896, #286).
+      ...(action && (this.viewport?.touch || this.viewport?.mode === 'compact')
+        ? { actionHeight: cards.TOUCH_ACTION_HEIGHT, ...(collapsed ? {} : { maxBodyLines: 3 }) } : {}),
     }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
 
     // Trivia belongs at the bottom of the screen. Across the top it sat exactly
@@ -805,6 +812,7 @@ export class GameLandmarkRuntime {
       minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
       zoomVisible: this._zoomBadgeTimer > 0,
       controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
+      touchHintVisible: !!this._touchHintShowing?.(),
     });
     // On a phone the card spans the width it is given rather than its measured
     // desktop width, so a 480 px card cannot hang off a 390 px screen.
@@ -936,6 +944,7 @@ export class GameLandmarkRuntime {
       postcardHeight: card.height,
       neighborhoodVisible: !!this.currentNeighborhood,
       minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
+      touchHintVisible: !!this._touchHintShowing?.(),
     });
     const cardX = bottomLayout.postcard.x;
     const baseCardY = bottomLayout.postcard.y;

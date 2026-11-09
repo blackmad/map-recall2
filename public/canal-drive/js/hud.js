@@ -758,6 +758,8 @@ class HUD {
     // hint centred on it started at x = -62.
     const x = Math.max(8, Math.min(pad.cx - width / 2, CANVAS_W - width - 8));
     const rect = { x, y: pad.bounds.y - 30, width, height: 22 };
+    // Where it was drawn, for the phone-cards spec (#286): nothing may sit under it.
+    this._touchHintDrawn = { x: rect.x, y: rect.y, w: rect.width, h: rect.height, at: performance.now() };
     this.paperCard(ctx, rect, { radius: 9 });
     ctx.fillStyle = theme.inkMuted;
     ctx.fillText(text, x + width / 2, rect.y + rect.height / 2);

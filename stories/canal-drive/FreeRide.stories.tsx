@@ -123,8 +123,9 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
         }
         game._renderFreeRideMarkers();
         if (open) game._renderLandmarkNotice();
-        // The postcard comes up on entry on a wide screen; a phone has the plaque line only (landmarkRuntime).
-        if (game._neighborhoodNotice && !touch) game._renderNeighborhoodNotice();
+        // The postcard comes up on entry on a wide screen; a phone has the plaque line only (landmarkRuntime),
+        // except for the stamped postcard: the once-per-buurt reward shows on the phone too (#286).
+        if (game._neighborhoodNotice && (!touch || game._neighborhoodNotice.stamped)) game._renderNeighborhoodNotice();
         game.hud.drawStick(ctx, null);
         game.state = 4;
         game._showFreeRideBar(true);

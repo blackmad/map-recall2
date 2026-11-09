@@ -13,7 +13,7 @@
 
 import assert from 'node:assert/strict';
 import { resolveViewport, DESIGN_WIDTH, DESIGN_HEIGHT, type Viewport } from '../src/canalRecall/viewport.ts';
-import { hudLayout, hudBand, rectsIntersect, type Rect } from '../src/canalRecall/hudLayout.ts';
+import { hudLayout, hudBand, rectsIntersect, TOUCH_HINT_ROOM, type Rect } from '../src/canalRecall/hudLayout.ts';
 import {
   dpadLayout, isInsideDpad, noKeys, stickRadius, stickVector, relativeCommand, absoluteCommand,
   keysScreenAngle, assistedHeading, turnToward, cruiseThrottle, normalizeAngle, STICK_CRUISE_FRACTION,
@@ -382,6 +382,22 @@ const near = (a: number, b: number, eps = 1e-9) => Math.abs(normalizeAngle(a - b
   constrainCarToRoad(held, { x: 0, y: 8 }, road, road, { edgeTolerance: 4, holdHeading: true });
   ok(eased.angle < 1.2, 'without a hard steer the guard eases the heading along the street');
   ok(held.angle === 1.2 && held.y === 8, 'with one it keeps the heading and still blocks the step off the road');
+}
+
+// The touch hint strip over the d-pad (hud.js drawTouchHint: 22 px tall, its
+// top TOUCH_HINT_ROOM above the pad) ran across the drive-by card and its
+// Noticed pill on a 414×896 phone (ride review #280, defect 7; #286). With the
+// hint up, the card and the postcard stack above it.
+for (const [w, h] of [[414, 896], [390, 664], [390, 844]] as const) {
+  const viewport = resolveViewport({ windowWidth: w, windowHeight: h, devicePixelRatio: 3, touch: true });
+  const pad = dpadLayout(viewport, hudBand(viewport))!;
+  const hint = { x: 0, y: pad.bounds.y - TOUCH_HINT_ROOM, width: w, height: 22 };
+  const shown = hudLayout({ viewport, tripWidth: 180, landmarkHeight: 150, postcardHeight: 120, touchHintVisible: true });
+  const hidden = hudLayout({ viewport, tripWidth: 180, landmarkHeight: 150, postcardHeight: 120 });
+  ok(!rectsIntersect(shown.landmark, hint), `${w}x${h}: the card clears the hint strip`);
+  ok(!rectsIntersect(shown.postcard, hint), `${w}x${h}: the postcard clears the hint strip`);
+  ok(shown.landmark.y + shown.landmark.height <= pad.bounds.y, `${w}x${h}: the card clears the pad`);
+  ok(hidden.landmark.y - shown.landmark.y === TOUCH_HINT_ROOM, `${w}x${h}: without the hint the card keeps its old place`);
 }
 
 process.stdout.write(`Mobile HUD checks passed (${scenarios} layout scenarios, ${checks} assertions).\n`);

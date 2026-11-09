@@ -44,6 +44,9 @@ export interface LandmarkCardProps {
   /** A one-tap action under the body ("Noticed" on a drive-by card, G3).
    *  Absent, the layout is byte-identical to a card without one. */
   action?: string;
+  /** The pill's height: 26 on desktop; a touch screen asks for
+   *  TOUCH_ACTION_HEIGHT, the 44 px tap-target floor (#286). */
+  actionHeight?: number;
 }
 
 export interface LandmarkCardLayout {
@@ -130,10 +133,12 @@ const CLOSE_ROOM = CLOSE_SIZE + 10;
 /** Side of the square corner region a tap on the close takes: a finger is
  *  wider than the glyph. */
 const CLOSE_HIT = 40;
-/** The action pill under the body: a 26 px plate is still a fair thumb target
- *  once its hit rect is padded by the runtime. */
-const ACTION_FONT = `800 11px ${hudSurface.fontMono}`;
+/** The action pill under the body: 26 px on desktop, where it is clicked. On a
+ *  phone it is drawn at the 44 px tap-target floor, with a larger label: the
+ *  ride review (#280, defect 7) measured the 26 px plate as a thumb target. */
 const ACTION_HEIGHT = 26;
+export const TOUCH_ACTION_HEIGHT = 44;
+const actionFont = (height: number): string => `800 ${height >= TOUCH_ACTION_HEIGHT ? 13 : 11}px ${hudSurface.fontMono}`;
 const ACTION_GAP = 10;
 const ACTION_PAD_X = 12;
 
@@ -272,11 +277,14 @@ export function measureLandmarkCard(
     : headerBottom;
   // The action pill sits under the text column, right-aligned, so the corridor
   // side of the card (and its photo) keeps its shape.
-  const actionWidth = props.action ? Math.ceil(measure(props.action.toUpperCase(), ACTION_FONT)) + ACTION_PAD_X * 2 : 0;
+  const actionHeight = props.actionHeight ?? ACTION_HEIGHT;
+  // A tall pill gets wider padding too, so it reads as a button, not a bar.
+  const actionPadX = actionHeight >= TOUCH_ACTION_HEIGHT ? ACTION_PAD_X + 6 : ACTION_PAD_X;
+  const actionWidth = props.action ? Math.ceil(measure(props.action.toUpperCase(), actionFont(actionHeight))) + actionPadX * 2 : 0;
   const actionTop = props.action ? Math.round(textBottom + ACTION_GAP) : 0;
   const height = Math.max(
     hasImage ? IMAGE_INSET * 2 + IMAGE_HEIGHT : 0,
-    Math.round((props.action ? actionTop + ACTION_HEIGHT : textBottom) + PAD_BOTTOM),
+    Math.round((props.action ? actionTop + actionHeight : textBottom) + PAD_BOTTOM),
   );
 
   return {
@@ -299,7 +307,7 @@ export function measureLandmarkCard(
     close: { x: width - PAD_RIGHT - CLOSE_SIZE + 3, y: Math.round(rowCentre - CLOSE_SIZE / 2), width: CLOSE_SIZE, height: CLOSE_SIZE },
     closeHit: { x: width - CLOSE_HIT, y: 0, width: CLOSE_HIT, height: CLOSE_HIT },
     ...(props.action ? {
-      action: { x: width - PAD_RIGHT - actionWidth, y: height - PAD_BOTTOM - ACTION_HEIGHT, width: actionWidth, height: ACTION_HEIGHT },
+      action: { x: width - PAD_RIGHT - actionWidth, y: height - PAD_BOTTOM - actionHeight, width: actionWidth, height: actionHeight },
     } : {}),
   };
 }
@@ -324,7 +332,7 @@ export function drawCardAction(
   ctx.lineWidth = 1.25;
   ctx.strokeStyle = done ? '#2f6f47' : '#8a4a18';
   ctx.stroke();
-  ctx.font = ACTION_FONT;
+  ctx.font = actionFont(rect.height);
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = done ? '#2f6f47' : '#8a4a18';
