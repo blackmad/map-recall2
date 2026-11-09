@@ -10,6 +10,7 @@
  * labels the OSM-mapped ones at ground level (category `art`).
  */
 import type { LandmarkNotice } from './game/worldTypes';
+import { t } from '../i18n/index.ts';
 
 export const STREET_ART_VERSION = 1;
 /** How far from a point a ground click still means it: a statue's plinth and a little. */
@@ -34,6 +35,11 @@ export interface StreetArtPoint {
   l?: string;
   i?: string;
   q?: string;
+  /** Series this piece belongs to ("Beeldenroute Brettensuite"), its place in it, and the series size. When set
+   *  and `t` is absent, `e`/`u`/`i` are the series' own text, not the piece's. */
+  s?: string;
+  n?: number;
+  m?: number;
 }
 
 export interface StreetArtFile {
@@ -67,6 +73,7 @@ const cellOf = (lng: number, lat: number) => `${Math.floor(lng * 2000)}:${Math.f
 /** The points on a ~50 m grid, for a click's nearest-within-radius lookup. */
 export class StreetArtIndex {
   private readonly cells = new Map<string, StreetArtPoint[]>();
+  private readonly ids = new Map<string, StreetArtPoint>();
   readonly size: number;
   constructor(file: StreetArtFile | null | undefined) {
     let n = 0;
@@ -74,10 +81,14 @@ export class StreetArtIndex {
       if (!point || typeof point.name !== 'string' || !Number.isFinite(point.lng) || !Number.isFinite(point.lat)) continue;
       const key = cellOf(point.lng, point.lat);
       (this.cells.get(key) ?? this.cells.set(key, []).get(key)!).push(point);
+      if (point.id) this.ids.set(point.id, point);
       n++;
     }
     this.size = n;
   }
+
+  /** The record for one OSM or Wikidata id: how a mapped artwork node finds its text. */
+  byId(id: string | null | undefined): StreetArtPoint | null { return (id && this.ids.get(id)) || null; }
 
   nearest(lng: number, lat: number, radiusMetres = STREET_ART_CLICK_METRES): StreetArtPoint | null {
     const cx = Math.floor(lng * 2000), cy = Math.floor(lat * 4000);
@@ -99,17 +110,24 @@ const KIND_LABEL: Record<StreetArtKind, string> = {
   monument: 'A monument', relief: 'A relief', installation: 'An art installation', artwork: 'An artwork',
 };
 
+/** "a statue", "a mural": the street-art kind as a phrase, for the line under a place's name. */
+export const streetArtKindPhrase = (k: StreetArtKind): string => (KIND_LABEL[k] ?? 'An artwork').toLowerCase();
+
 /** What the register knows when there is no article: kind, artist, year. */
 export function streetArtFallbackDetail(point: Pick<StreetArtPoint, 'k' | 'a' | 'y'>): string {
   const by = point.a ? ` by ${point.a}` : '';
   const year = point.y ? ` (${point.y})` : '';
+  // "An artwork by X" is the placeholder the user rejected (2026-11-09): an untyped piece leads with the facts.
+  if (point.k === 'artwork') return point.a ? `By ${point.a}${year}.` : point.y ? `From ${point.y}.` : 'Mapped as public art.';
   return `${KIND_LABEL[point.k] ?? 'An artwork'}${by}${year}, mapped here.`;
 }
 
 /** The card for a clicked piece of street art; `titleSpoils` keeps a name
  *  that answers an open question off the card (it names the kind instead). */
 export function streetArtCard(point: StreetArtPoint, titleSpoils = false): LandmarkNotice {
-  const detail = point.e || streetArtFallbackDetail(point);
+  // A series piece with no article of its own says where it stands in the series, then the series text.
+  const part = point.s && point.n && point.m ? t('poi.seriesPart', { n: point.n, m: point.m, series: point.s }) : '';
+  const detail = part ? [part, point.e].filter(Boolean).join(' ') : point.e || streetArtFallbackDetail(point);
   const register = point.e && (point.a || point.y) ? streetArtFallbackDetail(point) : '';
   return {
     id: `street-art-${point.id}`,

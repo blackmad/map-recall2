@@ -1,4 +1,6 @@
 /** Mapped information for the actual building selected by the mesh picker. */
+import { isLabelOnly, poiChipEnglish, poiChipKey } from './poiCardPolicy';
+import { language, t } from '../i18n/index.ts';
 import type { BuildingHit, GeoJsonFeature, LandmarkNotice } from './game/worldTypes';
 
 export type PolygonGeometry = Extract<GeoJsonFeature['geometry'], { type: 'Polygon' | 'MultiPolygon' }>;
@@ -36,6 +38,10 @@ export function poiInsideBuilding(point: readonly number[], geometry: PolygonGeo
   return polygons.some(rings => rings.length && inRing(point, rings[0])
     && !rings.slice(1).some(hole => inRing(point, hole)));
 }
+
+/** The chip for a mapped place: its kind in English (CAFÉ), its category in Dutch. */
+export const poiChipLabel = (row: Readonly<ClickPoiRow>): string =>
+  language() === 'en' ? poiChipEnglish(row) : t(poiChipKey(row[4]) as Parameters<typeof t>[0]).toUpperCase();
 
 const normalName = (name: string | null | undefined) => (name || '').normalize('NFC').toLocaleLowerCase('nl').trim();
 export const osmUrl = (id: string) => `https://www.openstreetmap.org/${({ n: 'node', w: 'way', r: 'relation' } as Record<string, string>)[id[0]]}/${id.slice(1)}`;
@@ -101,7 +107,8 @@ export class ClickPoiIndex {
 
   card(building: BuildingHit): LandmarkNotice | null {
     if (!building.footprint) return null;
-    const places = this.contained(building.footprint);
+    // A place with nothing beyond its kind ("X is mapped as an artwork") is a label, not a card: the building answers.
+    const places = this.contained(building.footprint).filter(row => !isLabelOnly(row));
     if (!places.length) return null;
     // A mapped mall describes the physical complex; its tenant shops belong
     // in the remaining information rather than naming the entire building.
@@ -115,7 +122,7 @@ export class ClickPoiIndex {
     const first = places[0];
     return {
       id: `clicked-poi-${building.id}`, name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
-      type: first[4], detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ''}.`,
+      type: first[4], typeLabel: poiChipLabel(first), detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ''}.`,
       longDetail: summaries.join('\n\n'), factTexts: paragraphs,
       sourceUrl: osmUrl(first[0]), lngLat: [first[2], first[3]], featureTarget: building.featureTarget,
     };

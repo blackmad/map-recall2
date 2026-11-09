@@ -19,7 +19,9 @@ import {
   neighborhoodAt,
 } from './landmarkData';
 import type { RoadSegment } from './collaborators';
-import { ClickPoiIndex, osmUrl, type ClickPoiFile } from '../clickPoiInfo';
+import { ClickPoiIndex, osmUrl, poiChipLabel, type ClickPoiFile } from '../clickPoiInfo';
+import { artHasSubstance, hasCardSubstance } from '../poiCardPolicy';
+import type { ClickPoiRow } from '../clickPoiInfo';
 import type {
   BoundaryFeature,
   BridgeCrossingIndex,
@@ -52,7 +54,7 @@ import { drawPassportStamp } from './freeRideCollectionDraw';
 import { isTransit } from './modes';
 import { BuildingFactStore, describeBuilding } from '../buildingFacts';
 import { articleCard, type BuildingArticle } from '../buildingArticles';
-import { StreetArtIndex, streetArtCard, type StreetArtFile } from '../streetArt';
+import { StreetArtIndex, streetArtCard, streetArtKindPhrase, type StreetArtFile } from '../streetArt';
 import { manualPoiBuildingIds, mergeManualPoiFeatures } from './manualPoiCatalog';
 import { withDisplayNames } from './placeNames';
 import { plaqueBuurtAt } from './placeBuurt';
@@ -93,6 +95,11 @@ export const START_EXTRACTS = [
   'landmarks.json', 'boundaries.json', 'neighborhoods-enriched.json',
   'bridges.json', 'bridge-crossings.json', 'streets.json', 'water.json',
 ] as const;
+
+/** The mapped row a tapped POI label stands for, from its text and point. */
+function safeLabelRow(host: { _clickPoiInfo?: ClickPoiIndex | null }, name: string, building: BuildingHit): ClickPoiRow | null {
+  return name ? host._clickPoiInfo?.named?.(name, building.lngLat) ?? null : null;
+}
 
 export class GameLandmarkRuntime {
   // ---- Clicking a building ----
@@ -257,6 +264,21 @@ export class GameLandmarkRuntime {
     // screen it like every other label before it becomes a title.
     // A tapped POI label stands on a building the view resolved (engine/labelPand.ts): its year and facts are that
     // pand's, under the place's name (#258 follow-up).
+    // A POI label that has nothing to say beyond its kind (an artwork named only
+    // "Brettensuite 11/20") is not a card: street art for the same OSM id speaks
+    // for it, else the tap lands on the building under the label, else nothing
+    // (lane D1, user 2026-11-09 "why are so many things an artwork?").
+    if (building.poi && !building.footprint) {
+      const labelled = safeLabelRow(this, buildingName, building);
+      if (labelled && !hasCardSubstance(labelled, this._streetArt?.byId(labelled[0]))) {
+        const under = building.pand;
+        if (!under) return null;
+        return this._cardForClickedBuilding({ id: under.id, lngLat: building.lngLat, footprint: under.footprint as BuildingHit['footprint'],
+          height: under.height, featureTarget: under.featureTarget as BuildingHit['featureTarget'] ?? null });
+      }
+      const art = labelled && labelled[4] === 'art' ? this._streetArt?.byId(labelled[0]) : null;
+      if (art && artHasSubstance(art)) return { ...streetArtCard(art, !!spoils?.call(this.vectorMap, art.name)), featureTarget: building.featureTarget ?? null };
+    }
     const pand = building.poi ? building.pand : undefined;
     let row = this._buildingFacts?.lookup(factsIdOf(building)) ?? null;
     const monument = row && row.length > 3 ? row[3] : undefined;
@@ -273,7 +295,8 @@ export class GameLandmarkRuntime {
     // over "no name or date" (user shot 2026-11-08, the Sloterdijk gurdwara).
     const labelRow = safeName && building.poi && !building.footprint
       ? this._clickPoiInfo?.named?.(safeName, building.lngLat) ?? null : null;
-    const place = labelRow ? { name: labelRow[1], kind: labelRow[5], address: labelRow[6] }
+    const labelArt = labelRow && labelRow[4] === 'art' ? this._streetArt?.byId(labelRow[0]) : null;
+    const place = labelRow ? { name: labelRow[1], kind: labelArt && labelArt.k !== 'artwork' ? streetArtKindPhrase(labelArt.k) : labelRow[5], address: labelRow[6] }
       : safeName && building.poi ? { name: safeName } : null;
     const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place);
     // Every drawn building answers a click (user report 2026-10-10, "why does
@@ -297,7 +320,8 @@ export class GameLandmarkRuntime {
     return {
       id,
       name: facts.name,
-      type: 'building',
+      type: labelRow ? labelRow[4] : 'building',
+      ...(labelRow ? { typeLabel: poiChipLabel(labelRow) } : {}),
       detail: facts.detail,
       lngLat: building.lngLat,
       featureTarget,
@@ -867,7 +891,8 @@ export class GameLandmarkRuntime {
       chip.textContent = label;
       badges.appendChild(chip);
     };
-    if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, ' '), 'category');
+    if (lm.typeLabel) pushBadge(lm.typeLabel, 'category');
+    else if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, ' '), 'category');
     if (lm.factKind) pushBadge(lm.factKind.toUpperCase(), 'fact');
     if (lm.extractLang && lm.extractLang !== 'en') {
       // Say plainly that this is not the English article rather than leaving
