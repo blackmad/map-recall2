@@ -1,0 +1,19 @@
+[
+  {
+    "name": "IJselbuurt",
+    "wikipediaExtract": "The IJselbuurt is the north-western corner of the Rivierenbuurt in Amsterdam-Zuid, laid out under H.P. Berlage's Plan Zuid and built in the 1920s and 1930s as a mainly middle-class district, much of it in the Amsterdam School style. Like its neighbours it takes its name from a street named after a Dutch river: the IJssel, a branch of the Rhine that runs from Westervoort to the IJsselmeer.",
+    "sources": [
+      "https://api.data.amsterdam.nl/v1/bag/openbareruimtes/?naam=IJselstraat",
+      "https://nl.wikipedia.org/wiki/Rivierenbuurt_(Amsterdam)",
+      "https://en.wikipedia.org/wiki/Rivierenbuurt"
+    ],
+    "original": [
+      "De rivier de IJssel, tak van de Rijn, loopt van Westervoort naar het IJsselmeer.",
+      "De Rivierenbuurt in Amsterdam-Zuid maakt deel uit van Plan Zuid van H.P. Berlage.",
+      "De Rivierenbuurt is gebouwd in de jaren twintig en dertig van de 20e eeuw.",
+      "In de Rivierenbuurt is veel bebouwing te vinden in de stijl van de Amsterdamse School.",
+      "De overige straatnamen in de buurt werden vernoemd naar Nederlandse rivieren."
+    ],
+    "notes": "Integrator 2026-11-09: the street's own nl.wikipedia page does not exist (404 for IJselstraat and IJsselstraat); the river explanation is the BAG beschrijvingNaam. The street is not named in the text so a finish on it stays unrevealed."
+  }
+]
