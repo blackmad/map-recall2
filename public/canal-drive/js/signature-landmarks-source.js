@@ -20,7 +20,8 @@ import { cityLookEnabled } from '../../../src/canalRecall/look/cityLook.ts';
 import { INFERRED_SLOT_SOURCE } from '../../../src/canalRecall/look/materialSlotInference.ts';
 import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlightLandmarks.ts';
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
-import { anchorDistanceM, landmarkReachM, landmarkResidencyBudget, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
+import { anchorDistanceM, keepReachM, landmarkReachM, landmarkResidencyBudget, pastMinDwell, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
+import { popFadeFlag } from '../../../src/canalRecall/engine/popFade.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { hasReleasedVertexData, releaseGeometryOnUpload, releaseVertexDataOnUpload } from '../../../src/canalRecall/landmarks/releaseVertexData.ts';
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
@@ -714,15 +715,17 @@ export class SignatureLandmarks {
     this._lastEvictCheck = now;
     const center = this.camera.center(), cos = Math.cos(center.lat * Math.PI / 180);
     const view = this._viewBounds();
+    // Lane P2 (#325, `?popFade`): kept while within 1.25 x the reach, and never given back in its first 10 s.
+    const hysteresis = this._popFade ??= popFadeFlag(), keepReach = keepReachM(this.reachM, hysteresis);
     const models = this._entries.map(entry => {
       const anchor = entry.placement?.anchor || entry.spec.surveyed?.anchor || entry.spec.footprint?.centre;
       const highlighted = entry.highlighted || (this.activeLandmarkId && entry.spec.landmarkId === this.activeLandmarkId);
       return {
         id: entry.spec.id,
         distanceSq: anchor ? ((anchor[0] - center.lng) * cos) ** 2 + (anchor[1] - center.lat) ** 2 : 0,
-        inView: !anchor || (this._nearby(entry.spec, anchor, view) && withinReach(anchor, center, this.reachM, this._radiusM(entry.spec))),
+        inView: !anchor || (this._nearby(entry.spec, anchor, view) && withinReach(anchor, center, keepReach, this._radiusM(entry.spec))),
         // Procedural building types rebuild a whole instanced scene; a level swap in flight owns its entry.
-        evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted,
+        evictable: !!anchor && !entry.spec.sceneFactory && !entry.levelLoading && !highlighted && pastMinDwell(this._arrivedAt?.get(entry.spec.id), now, hysteresis),
       };
     });
     const ids = new Set(pickEvictions(models, { budget: this.residencyBudget }));
@@ -1237,6 +1240,7 @@ export class SignatureLandmarks {
    *  Buildings do not move, so the matrix is computed once here rather than
    *  every frame. */
   _add(spec, imported, map, url, level = 'full') {
+    (this._arrivedAt ??= new Map()).set(spec.id, performance.now());
     const bounds = new THREE.Box3().setFromObject(imported);
     const min = bounds.min;
     const max = bounds.max;

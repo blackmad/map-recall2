@@ -25,6 +25,8 @@
 // look review. The player's "Distance haze" switch (preferences `distanceHaze`) turns it off at runtime without a
 // recompile: the fog range moves out of reach (`distanceHazeOn`).
 
+import { DRAW_LIMIT_GENTLE_FAR_GLSL, drawLimitFlag, drawLimitFogFragment } from '../engine/drawLimit';
+
 export const DEPTH_FADE_DEFAULT = true;
 /** The fade starts at this multiple of the eye-to-centre distance... */
 export const DEPTH_FADE_NEAR = 0.8;
@@ -160,7 +162,11 @@ export const DEPTH_FADE_DETAIL_PARS = /* glsl */`
 #endif
 `;
 /** GLSL (inside `#ifdef USE_FOG`, after DEPTH_FADE_DETAIL_PARS): the detail weight at `dist` metres. */
-export const DEPTH_FADE_DETAIL_GLSL = (dist: string, strength = depthFadeStrength()): string => `${g(Math.min(1, strength))} * smoothstep(max(${g(DEPTH_FADE_DETAIL_FROM_M)}, fogNear), max(max(${g(DEPTH_FADE_DETAIL_FULL_M)}, fogNear + (fogFar - fogNear) * ${g(DEPTH_FADE_DETAIL_SPAN)}), max(${g(DEPTH_FADE_DETAIL_FROM_M)}, fogNear) + 1.0), ${dist})`;
+export const DEPTH_FADE_DETAIL_GLSL = (dist: string, strength = depthFadeStrength(), limit = drawLimitFlag()): string => {
+  // With the draw limit (engine/drawLimit.ts) fogFar is packed: the gentle fade's far edge is unpacked from it.
+  const far = limit ? DRAW_LIMIT_GENTLE_FAR_GLSL : 'fogFar';
+  return `${g(Math.min(1, strength))} * smoothstep(max(${g(DEPTH_FADE_DETAIL_FROM_M)}, fogNear), max(max(${g(DEPTH_FADE_DETAIL_FULL_M)}, fogNear + (${far} - fogNear) * ${g(DEPTH_FADE_DETAIL_SPAN)}), max(${g(DEPTH_FADE_DETAIL_FROM_M)}, fogNear) + 1.0), ${dist})`;
+};
 
 const installed = new WeakSet<object>();
 /** Swap three's fog chunks (once per three copy). Call before the first program compiles. */
@@ -168,7 +174,9 @@ export function installDepthFade(THREE: { ShaderChunk: Record<string, string> })
   if (installed.has(THREE.ShaderChunk)) return;
   installed.add(THREE.ShaderChunk);
   THREE.ShaderChunk.fog_vertex = DEPTH_FADE_FOG_VERTEX;
-  THREE.ShaderChunk.fog_fragment = depthFadeFogFragment();
+  // `?drawLimit` (engine/drawLimit.ts, lane P2 #325): the same fade, then opaque haze at the draw limit.
+  if (drawLimitFlag()) { const strength = depthFadeStrength(); THREE.ShaderChunk.fog_fragment = drawLimitFogFragment(DEPTH_FADE_DESATURATE * strength, DEPTH_FADE_HAZE * strength); }
+  else THREE.ShaderChunk.fog_fragment = depthFadeFogFragment();
   THREE.ShaderChunk.fog_pars_fragment = DEPTH_FADE_FOG_PARS_FRAGMENT;
 }
 

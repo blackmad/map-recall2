@@ -24,6 +24,8 @@ import { frameMatrices, mercatorOfLngLat, mercatorUnitsPerMetre, worldOfMercator
 import { createLightRig, type LightRig, type LightRigOptions } from './lightRig.js';
 import { mapLibreSky, SKY } from '../look/sunny.js';
 import { DEPTH_FADE_OFF_RANGE, depthFadeFlag, depthFadeMultiples, depthFadeRange, distanceHazeOn, installDepthFade } from '../look/depthFade.js';
+import { drawLimitFlag, drawLimitFogRange, drawLimitM, publishDrawLimit } from '../engine/drawLimit.js';
+import { isAerialView } from './aerialView.js';
 import { markingFadeFlag, markingFadeRange, markingFadeUniforms, type MarkingFadeUniforms } from '../look/markingFade.js';
 import { LayerRegistry, type FramePass } from './layerRegistry.js';
 import { plainBounds, type LngLatBounds } from '../engine/worldStreamer.js';
@@ -390,6 +392,8 @@ export class SharedFrame {
   }
 
   private fadeMultiples: [number, number] | null = null;
+  /** `?drawLimit` (engine/drawLimit.ts): read once, with the fog chunks. */
+  private readonly drawLimitOn = depthFadeFlag() && drawLimitFlag();
   /** `?markingFade=1` (look/markingFade.ts): the ground's marking-fade range, set per frame like the fog's. */
   private readonly markingFade: MarkingFadeUniforms | null = markingFadeFlag() ? markingFadeUniforms() : null;
   /** The last frame's eye-to-centre distance, metres, while the depth or marking fade is on (diagnostics). */
@@ -401,7 +405,15 @@ export class SharedFrame {
     this.fadeEyeToCentreM = d;
     if (this.scene.fog) {
       // The player's "Distance haze" switch off: the range out of reach, the same programs (no recompile).
-      const r = distanceHazeOn() ? depthFadeRange(d, multiples) : DEPTH_FADE_OFF_RANGE;
+      let r = distanceHazeOn() ? depthFadeRange(d, multiples) : DEPTH_FADE_OFF_RANGE;
+      // `?drawLimit` (engine/drawLimit.ts, lane P2 #325): opaque haze at the draw limit, packed into fogFar. The limit
+      // stays when the player's "Distance haze" is off (the gentle fade goes, the horizon stays: nothing past it draws).
+      if (this.drawLimitOn) {
+        const aerial = isAerialView(view.zoom, (this.worldCamera as { pitch?: () => number }).pitch?.() ?? 0, view.center().lat);
+        const limit = drawLimitM(aerial, d);
+        r = drawLimitFogRange(distanceHazeOn() ? r : { near: limit * 0.44, far: limit * 0.44 * 1.01 }, limit, aerial);
+        publishDrawLimit({ from: Math.round(limit * 0.45), to: limit, aerial, eyeToCentreM: Math.round(d) });
+      }
       this.scene.fog.near = r.near;
       this.scene.fog.far = r.far;
     }

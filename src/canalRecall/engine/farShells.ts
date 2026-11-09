@@ -15,6 +15,7 @@
 import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
 export { farPartHidden, nearTileCells, tileBounds } from './farHandover.js';
 import { shellOrigin } from '../world/shellMesh.js';
+import { LeavingFades, popFadeFlag } from './popFade.js';
 
 /** A cell's SW corner in chunk metres (the far meshes' position). */
 export function farCellOrigin(key: string): [number, number] { const [i, j] = parseCellKey(key); return shellOrigin(i, j); }
@@ -97,6 +98,8 @@ export class FarShells {
   private fetchedBytes = 0;
   private enabled = true;
   private readonly budget: { cells: number; triangles: number };
+  /** `?popFade` (lane P2 #325): dropped cells dissolve out instead of vanishing. */
+  private readonly leaving: LeavingFades | null = popFadeFlag() ? new LeavingFades() : null;
   constructor(private readonly host: FarShellHost, options: { touch?: boolean; budget?: { cells: number; triangles: number } } = {}) {
     this.budget = options.budget ?? farShellBudget(!!options.touch);
   }
@@ -218,22 +221,30 @@ export class FarShells {
       } else if (material && r.mesh.material !== material) r.mesh.material = material; // a new look's material
       if (this.applyHidden(r)) repaint = true;
     }
+    if (this.leaving?.step(now, material?.uniforms?.cityFade?.value ?? 1)) repaint = true;
     if (repaint) this.host.repaint();
   }
 
-  private drop(key: string): void {
+  private drop(key: string, now = false): void {
     const r = this.residents.get(key);
     if (!r) return;
     this.residents.delete(key);
-    r.mesh.parent?.remove(r.mesh);
-    // Detach the shared pair first: three frees the GL buffers of the attributes a disposed geometry holds.
-    r.mesh.geometry.deleteAttribute?.('accent'); r.mesh.geometry.deleteAttribute?.('uv');
-    r.mesh.geometry.dispose();
+    const release = () => {
+      r.mesh.parent?.remove(r.mesh);
+      // Detach the shared pair first: three frees the GL buffers of the attributes a disposed geometry holds.
+      r.mesh.geometry.deleteAttribute?.('accent'); r.mesh.geometry.deleteAttribute?.('uv');
+      r.mesh.geometry.dispose();
+    };
+    // A drawn cell dissolves out (from wherever its own arrival dissolve had got to).
+    const from = r.fade ? r.fade.clone.uniforms.cityFade.value : 1;
     r.fade?.clone.dispose?.();
+    if (!now && this.leaving && r.mesh.visible && from > 0.05 && this.leaving.leave(r.mesh, this.host.fadeMaterial(from), release)) { this.host.repaint(); return; }
+    release();
   }
 
   clear(): void {
-    for (const key of [...this.residents.keys()]) this.drop(key);
+    this.leaving?.flush();
+    for (const key of [...this.residents.keys()]) this.drop(key, true);
     for (const c of this.inflight.values()) c.abort();
     this.inflight.clear(); this.queue = [];
     this.at = null; this.radiusM = 0;
