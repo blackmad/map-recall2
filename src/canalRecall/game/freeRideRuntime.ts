@@ -70,6 +70,7 @@ import {
 } from './freeRideCollection';
 import { drawCollectedToken, drawDiscoveryToken } from './freeRideCollectionDraw';
 import { readPassport, savePassport } from './neighborhoodPassport';
+import { buurtAt, PLACE_AT_MAX_M, placeReach, type PlaceAnchor } from './placeBuurt';
 import { bumpSessionCounter } from './sessionCounters';
 
 /** A tap within this many world px of a way's edge names it (~5 m). */
@@ -100,6 +101,7 @@ export interface FreeRideHost extends LandmarkHost {
   /** The collection (freeRideCollection.ts); null with `?collection=0`. */
   _freeRideCollection?: FreeRideCollectionState | null;
   _neighborhoodAt(x: number, y: number): { name: string } | null;
+  _toWorld?(lat: number, lon: number): WorldPoint | null;
 
   _showLandmarkNotice(notice: LandmarkNotice, hold: NoticeHold, source?: NoticeSource): void;
   _showStreetKnowledge(name: string, type?: 'street' | 'water' | 'bridge' | 'line', replaceOpenCard?: boolean): void;
@@ -116,6 +118,8 @@ export interface FreeRideCollectionState {
   listsFrom: { places: unknown; neighborhoods: unknown } | null;
   /** Place key → its neighbourhood's list name. */
   hoodOfKey: Map<string, string>;
+  /** Place key → how far it reaches for the plaque (world px; placeBuurt.ts). */
+  reach?: Map<string, number>;
   /** The landmark carrying the discovery token, and where it was last drawn. */
   token: (CollectionPlace & { distance: number }) | null;
   tokenScreen: { key: string; x: number; y: number; size: number; alpha: number } | null;
@@ -308,12 +312,45 @@ export class GameFreeRideRuntime {
     const from = collection.listsFrom;
     if (collection.lists && from && from.places === places && from.neighborhoods === this.neighborhoods) return collection.lists;
     const landmarks = places.filter(place => place.kind === 'landmark');
-    const lists = buildChecklists(landmarks, place => this._neighborhoodAt(place.x, place.y)?.name);
+    // A place's buurt is the buurt of its own centre (#284): the game point is
+    // snapped onto the nearest way and can sit across a boundary.
+    const byId = new Map((this.landmarks || []).map(landmark => [String(landmark.id), landmark]));
+    const lists = buildChecklists(landmarks, place => {
+      const lngLat = byId.get(String(place.key))?.lngLat;
+      const centre = lngLat ? this._toWorld?.(lngLat[1], lngLat[0]) : null;
+      return buurtAt(this.neighborhoods || [], centre?.x ?? place.x, centre?.y ?? place.y);
+    });
     collection.lists = lists;
     collection.listsFrom = { places, neighborhoods: this.neighborhoods };
     collection.hoodOfKey = new Map();
     for (const list of lists.values()) for (const place of list.places) collection.hoodOfKey.set(place.key, list.hood);
     return lists;
+  }
+
+  /** The checklist places near a point, as anchors for the plaque's buurt
+   *  (placeBuurt.ts): while the rider stands at a place, the plaque names the
+   *  buurt whose checklist holds it. Empty outside Free Ride's collection. */
+  _freeRidePlaceAnchors(x: number, y: number): PlaceAnchor[] {
+    const collection = this._freeRideCollection;
+    if (!this.freeRide || !collection) return [];
+    const lists = this._freeRideChecklists();
+    if (!lists) return [];
+    const max = PLACE_AT_MAX_M * PIXELS_PER_METER;
+    const reaches = (collection.reach ||= new Map());
+    const anchors: PlaceAnchor[] = [];
+    for (const list of lists.values()) {
+      for (const place of list.places) {
+        if (Math.abs(place.x - x) > max || Math.abs(place.y - y) > max) continue;
+        let reach = reaches.get(place.key);
+        if (reach === undefined) {
+          const road = this.track?.getNearestRoad?.(place.x, place.y);
+          reach = placeReach(road?.dist ?? null, PIXELS_PER_METER);
+          if (road) reaches.set(place.key, reach);
+        }
+        anchors.push({ x: place.x, y: place.y, hood: list.hood, reach });
+      }
+    }
+    return anchors;
   }
 
   _freeRideChecklist(hood: string | null | undefined): Checklist | null {

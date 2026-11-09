@@ -122,6 +122,17 @@ export function pointInPolygon(x: number, y: number, ring: readonly WorldPoint[]
   return inside;
 }
 
+/** Summed absolute area of world rings (square world px). */
+export function ringsArea(rings: readonly (readonly WorldPoint[])[]): number {
+  let area = 0;
+  for (const ring of rings) {
+    let twice = 0;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) twice += ring[j].x * ring[i].y - ring[i].x * ring[j].y;
+    area += Math.abs(twice) / 2;
+  }
+  return area;
+}
+
 /** Finest first: a point inside De Pijp is in De Pijp, not in Zuid. Relies on
  *  `buildNeighborhoods` having sorted by rank. */
 export function neighborhoodAt(
@@ -249,7 +260,11 @@ export function buildNeighborhoods(
       };
     })
     .filter(hood => hood.rings.length)
-    .sort((a, b) => b.rank - a.rank);
+    // Finest first; of two same-rank areas that overlap (the Oud-Zuid and
+    // Schinkelbuurt quarters), the smaller is the finer (#284, as knowledgeMap.buurtAt).
+    .map(hood => ({ hood, area: ringsArea(hood.rings) }))
+    .sort((a, b) => b.hood.rank - a.hood.rank || a.area - b.area)
+    .map(({ hood }) => hood);
 
   for (const hood of neighborhoods) {
     if (hood.imageUrl) continue;

@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 // stand-in map, through the game's own drawing methods, so the layout here is
 // the layout in the ride.
 
-type Scenario = 'idle' | 'card' | 'long' | 'no-image' | 'checklist' | 'stamped' | 'token-far';
+type Scenario = 'idle' | 'card' | 'long' | 'no-image' | 'checklist' | 'stamped' | 'token-far' | 'at-place';
 
 interface FreeRideStoryArgs {
   scenario: Scenario;
@@ -55,7 +55,8 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
       game.showMiniMap = false;
       game.quizFeedback = '';
       const long = scenario === 'long';
-      const collecting = scenario === 'checklist' || scenario === 'stamped' || scenario === 'token-far';
+      const atPlace = scenario === 'at-place';
+      const collecting = scenario === 'checklist' || scenario === 'stamped' || scenario === 'token-far' || atPlace;
       game.currentNeighborhood = long ? 'Van Lennepbuurt en Kinkerbuurt-Noord' : collecting ? 'Marineterrein' : 'Jordaan';
       const landmark = {
         id: long ? 'rijksmuseum' : 'westerkerk', name: long ? LONG_NAME : 'Westerkerk', type: long ? 'museum' : 'church',
@@ -65,7 +66,11 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
         detail: long ? LONG_DETAIL : WESTERKERK, longDetail: long ? LONG_DETAIL : WESTERKERK,
       };
       game.landmarks = [landmark];
-      const nearby = [
+      const nearby = atPlace ? [
+        // At the museum (#284): the plaque names its buurt and its list, whichever side of the line the kerb is.
+        { key: 'maritime', kind: 'landmark', name: 'National Maritime Museum', ...at(w * 0.42, h * 0.5) },
+        { key: 'voc-ship', kind: 'landmark', name: 'VOC ship Amsterdam', ...at(w * 0.24, h * 0.36) },
+      ] : [
         { key: landmark.id, kind: 'landmark', name: landmark.name, ...at(w * 0.36, h * 0.42) },
         { key: 'bridge:bloemgrachtbrug', kind: 'bridge', name: 'Bloemgrachtbrug', ...at(w * 0.62, h * 0.48) },
         { key: 'anne-frank', kind: 'landmark', name: 'Anne Frank House', ...at(w * 0.7, h * 0.3) },
@@ -78,18 +83,22 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
       game._freeRideCollection = null;
       if (collecting) {
         // Marineterrein's list: nine places, three opened (all nine once stamped).
-        const places = Array.from({ length: 9 }, (_, i) => ({ key: `m${i}`, name: `Place ${i}`, ...at(w * (0.15 + i * 0.08), h * (0.2 + (i % 3) * 0.08)) }));
-        places[0] = { key: 'anne-frank', name: 'Anne Frank House', ...at(w * 0.7, h * 0.3) };
-        const opened = new Set(scenario === 'stamped' ? places.map(p => p.key) : ['m1', 'm2', 'm3']);
+        const places = atPlace
+          // Marineterrein's real list after #284: one spelling per place, the ship by its full name.
+          ? [['voc-ship', 'VOC ship Amsterdam'], ['maritime', 'National Maritime Museum'], ['mediamatic', 'Mediamatic Biotoop Dijkspark'],
+            ['hannekes', 'Hannekes Boom'], ['klimmuur', 'Klimmuur Centraal']].map(([key, name], i) => ({ key, name, ...at(w * (0.24 + i * 0.12), h * (0.36 + (i % 2) * 0.14)) }))
+          : Array.from({ length: 9 }, (_, i) => ({ key: `m${i}`, name: `Place ${i}`, ...at(w * (0.15 + i * 0.08), h * (0.2 + (i % 3) * 0.08)) }));
+        if (!atPlace) places[0] = { key: 'anne-frank', name: 'Anne Frank House', ...at(w * 0.7, h * 0.3) };
+        const opened = new Set(scenario === 'stamped' ? places.map(p => p.key) : atPlace ? ['voc-ship'] : ['m1', 'm2', 'm3']);
         game._freeRideCollection = {
           state: { opened: [...opened], stamps: scenario === 'stamped' ? [{ hood: 'Marineterrein', at: '2026-11-09' }] : [] },
           opened, lists: new Map([['Marineterrein', { hood: 'Marineterrein', places }]]),
           listsFrom: { places: game._freeRideCatalog(), neighborhoods: game.neighborhoods }, hoodOfKey: new Map(places.map(p => [p.key, 'Marineterrein'])),
-          token: scenario === 'stamped' ? null : { ...places[0], distance: Math.hypot(places[0].x - player.x, places[0].y - player.y) },
+          token: scenario === 'stamped' || atPlace ? null : { ...places[0], distance: Math.hypot(places[0].x - player.x, places[0].y - player.y) },
           tokenScreen: null, tokenHidden: null, corridor: null,
           stampMoment: scenario === 'stamped' ? { hood: 'Marineterrein', until: performance.now() + 600_000 } : null,
         };
-        game._neighborhoodNotice = scenario === 'token-far' ? null : { name: 'Marineterrein', kind: 'neighbourhood', stamped: scenario === 'stamped' };
+        game._neighborhoodNotice = scenario === 'token-far' || atPlace ? null : { name: 'Marineterrein', kind: 'neighbourhood', stamped: scenario === 'stamped' };
         game._neighborhoodNoticeTimer = 2.5;
       }
       game._landmarkNotice = null;
@@ -175,6 +184,9 @@ export const ChecklistPostcard: Story = { args: { scenario: 'checklist' } };
 export const CollectionStamped: Story = { args: { scenario: 'stamped' } };
 /** Collection: the token ~250 m away, smaller (≤ 24 px) and fainter; the markers fade with distance too. */
 export const TokenFar: Story = { args: { scenario: 'token-far' } };
+/** #284: standing at the National Maritime Museum the plaque keeps Marineterrein's list (1 of 5 places); the ship is "VOC ship Amsterdam". */
+export const ChecklistAtPlace: Story = { args: { scenario: 'at-place' } };
+export const ChecklistAtPlacePhone: Story = { args: { scenario: 'at-place', touch: true }, parameters: phone };
 
 export const ChecklistPostcardPhone: Story = { args: { scenario: 'checklist', touch: true }, parameters: phone };
 export const CollectionStampedPhone: Story = { args: { scenario: 'stamped', touch: true }, parameters: phone };
