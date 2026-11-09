@@ -70,6 +70,8 @@ import { CATALOGS, t as tr, type MessageKey } from '../../i18n/index.ts';
 import { kindLabel } from '../cardKindLabel.ts';
 import { extendShareTrail } from '../shareCard';
 import { fitFooterItems, type FooterItem } from './footerFit';
+import { drawKeycapAction } from './keycapAction';
+import { formatRideDistance } from './rideDistance';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -998,7 +1000,7 @@ export class GamePresentationRuntime {
       && this.viewport.mode === 'compact'
       && Number.isFinite(this._homeLearningRadiusKm)
       && this._homeLearningRadiusKm > 0
-      ? `Learning near home · ~${this._homeLearningRadiusKm.toFixed(1)} km`
+      ? `Learning near home · ${formatRideDistance(this._homeLearningRadiusKm, { aboutWord: tr('ride.distance.about') })}`
       : '';
     return { feedback: this.quizFeedback || homeLearningNote, restrictionNote };
   }
@@ -1498,26 +1500,12 @@ export class GamePresentationRuntime {
       ctx.textAlign = 'left';
       let ax = cardX + padX;
       for (const action of actions) {
-        ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        const keyW = ctx.measureText(action.key).width + 14;
-        ctx.fillStyle = 'rgba(31,28,23,.08)';
-        roundRect(ctx, ax, y + 2, keyW, 20, 5);
-        ctx.fill();
-        ctx.fillStyle = INK;
-        ctx.fillText(action.key, ax + 7, y + 16);
-        const captionX = ax + keyW + 8;
-        ctx.font = '12px system-ui, sans-serif';
-        ctx.fillStyle = action.id === 'copy' && this._copiedTimer > 0 ? GOOD : MUTED;
-        ctx.fillText(action.caption, captionX, y + 16);
-        const captionW = ctx.measureText(action.caption).width;
-        pauseButtons.push({
-          x: ax,
-          y: y - 4,
-          w: keyW + 8 + captionW + 8,
-          h: 28,
-          id: action.id,
-        });
-        ax = captionX + captionW + 22;
+        const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y - 2 }, action, {
+          ink: INK, muted: MUTED, fontMono: window.CanalRecallUi.hudSurface.fontMono,
+          captionColour: action.id === 'copy' && this._copiedTimer > 0 ? GOOD : undefined,
+        }, this.hud.hoverPoint);
+        pauseButtons.push({ ...drawn.bounds, id: action.id });
+        ax = drawn.endX + 22;
       }
       y += 28;
     }
@@ -1954,28 +1942,13 @@ export class GamePresentationRuntime {
           let ax = cardX + padX;
           const mouse = this.hud.hoverPoint;
           for (const action of actions) {
-            ctx.font = '12px system-ui, sans-serif';
-            const captionWidth = ctx.measureText(action.caption).width;
-            ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-            const keyW = ctx.measureText(action.key).width + 14;
-            // The action under the mouse (#278): its keycap darkens, its caption turns ink and underlines. Unscaled
-            // cards only, where the drawn box is the hit box.
-            const hover = scale === 1 && !!mouse && mouse.x >= ax && mouse.x <= ax + keyW + 8 + captionWidth
-              && mouse.y >= top && mouse.y <= top + 28;
-            ctx.fillStyle = hover ? 'rgba(31,28,23,.18)' : 'rgba(31,28,23,.08)';
-            roundRect(ctx, ax, top + 4, keyW, 20, 5);
-            ctx.fill();
-            ctx.fillStyle = INK;
-            ctx.fillText(action.key, ax + 7, top + 18);
-            ax += keyW + 8;
-            ctx.fillStyle = action.caption === 'Link copied' ? GOOD : hover ? INK : MUTED;
-            ctx.font = '12px system-ui, sans-serif';
-            ctx.fillText(action.caption, ax, top + 18);
-            const captionW = ctx.measureText(action.caption).width;
-            if (hover) ctx.fillRect(ax, top + 21, captionW, 1);
-            // The keycap and its caption are a click target too.
-            finishButtons.push({ x: ax - keyW - 8, y: top, w: keyW + 8 + captionW, h: 28, id: action.id });
-            ax += captionW + 22;
+            // The action under the mouse (#278): unscaled cards only, where the drawn box is the hit box.
+            const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top }, action, {
+              ink: INK, muted: MUTED, fontMono: window.CanalRecallUi.hudSurface.fontMono,
+              captionColour: action.caption === 'Link copied' ? GOOD : undefined,
+            }, scale === 1 ? mouse : null);
+            finishButtons.push({ ...drawn.bounds, id: action.id });
+            ax = drawn.endX + 22;
           }
         },
       });

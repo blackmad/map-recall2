@@ -652,6 +652,7 @@ export const en = {
   'ride.nextStop': 'Next stop',
   'ride.routeSetup': 'Route setup',
   'ride.shareRoute': 'Share this route',
+  'ride.distance.about': 'about',
   'ride.shareRun': 'Share run',
   'ride.linkCopied': 'Link copied',
   // --- Arrival and run cards (#283) ---

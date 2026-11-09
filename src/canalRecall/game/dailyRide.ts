@@ -16,6 +16,7 @@
 
 import { kmBetween, pickDestinationNear, type ChooseUnit, type RoutePoi } from './surprisePick';
 import type { RideRecord } from '../routeHistory';
+import { formatRideDistance } from './rideDistance';
 import { DAILY_RIDE_PAIRS, DAILY_RIDE_POOL, type DailyPoolPlace } from './dailyRidePool';
 
 export const DAILY_RIDE_TIME_ZONE = 'Europe/Amsterdam';
@@ -355,7 +356,7 @@ export function dailyRideLabel(pair: Pick<DailyRidePair, 'from' | 'to' | 'km' | 
 
 /** "3.1 km" when the length is the route's, "about 2.1 km" when it is the straight-line estimate. */
 export function dailyRideDistance(pair: Pick<DailyRidePair, 'km' | 'routed'>): string {
-  return `${pair.routed ? '' : 'about '}${pair.km.toFixed(1)} km`;
+  return formatRideDistance(pair.km, { routed: pair.routed });
 }
 
 export interface DailyRideDay {
