@@ -10,6 +10,8 @@ import {
   buurtMastery,
   drawKnowledgeMap,
   fitMap,
+  frameToAspect,
+  knownFrame,
   geometryFromExtract,
   projectLatLng,
   unprojectPixel,
@@ -121,4 +123,74 @@ test('the real Amsterdam extract: famous points land in their buurt', () => {
   assert.ok(geometry.buurts.length >= 80);
   assert.equal(buurtAt(geometry, [52.3545, 4.8925])?.name, 'Oude Pijp');
   assert.equal(buurtAt(geometry, [52.3745, 4.884])?.name, 'Grachtengordel');
+});
+
+// ---- #297: the frame fits every buurt with a known name ----
+
+const wide = geometryFromExtract([
+  square('Jordaan', 'quarter', 52.37, 4.88, 0.01),
+  square('De Pijp', 'quarter', 52.35, 4.89, 0.01),
+  square('Buiksloterham', 'neighbourhood', 52.405, 4.91, 0.01),
+  square('Geuzenveld', 'neighbourhood', 52.38, 4.80, 0.01),
+  square('IJburg Zuid', 'neighbourhood', 52.355, 5.00, 0.01),
+  square('Bijlmer', 'neighbourhood', 52.31, 4.97, 0.01),
+]);
+const inside = (frame: ReturnType<typeof knownFrame>, bbox: { minLat: number; minLng: number; maxLat: number; maxLng: number }) =>
+  bbox.minLat >= frame.minLat && bbox.maxLat <= frame.maxLat && bbox.minLng >= frame.minLng && bbox.maxLng <= frame.maxLng;
+
+test('knownFrame: nothing known keeps the default frame; known outer buurts grow it', () => {
+  const none = buurtMastery(wide, []);
+  assert.deepEqual(knownFrame(wide, none), wide.frame);
+  const outer = buurtMastery(wide, [
+    item('a', [52.41, 4.915], 0.6, 'known'),
+    item('b', [52.36, 5.005], 0.5, 'learning'),
+    item('c', [52.385, 4.805], 0.4, 'learning'),
+  ]);
+  const frame = knownFrame(wide, outer);
+  for (const name of ['Buiksloterham', 'IJburg Zuid', 'Geuzenveld']) {
+    assert.ok(inside(frame, wide.buurts.find(b => b.name === name)!.bbox), `${name} inside`);
+  }
+  assert.ok(inside(frame, wide.frame), 'the default frame stays inside');
+  assert.ok(frame.maxLng - frame.minLng > wide.frame.maxLng - wide.frame.minLng);
+  // A buurt nobody has a name in is not forced in.
+  assert.ok(!inside(frame, wide.buurts.find(b => b.name === 'Bijlmer')!.bbox));
+});
+
+test('knownFrame: a centre-only seed is the default frame (the beginner map is never a dot)', () => {
+  const centre = buurtMastery(wide, [item('a', [52.375, 4.885], 0.6, 'known'), item('b', [52.355, 4.895], 0.6, 'known')]);
+  assert.ok(inside(knownFrame(wide, centre), wide.frame));
+  const km = (knownFrame(wide, centre).maxLat - knownFrame(wide, centre).minLat) * 111.32;
+  assert.ok(km > 1, 'spans more than a kilometre');
+});
+
+test('frameToAspect: the widened frame has the panel aspect, keeps its centre and contains the input', () => {
+  const frame = knownFrame(wide, buurtMastery(wide, [item('a', [52.41, 4.915], 0.6, 'known'), item('b', [52.36, 5.005], 0.5, 'learning')]));
+  for (const [w, h] of [[760, 420], [350, 420], [350, 220]] as const) {
+    const fitted = frameToAspect(frame, w, h);
+    assert.ok(inside(fitted, { minLat: frame.minLat + 1e-9, maxLat: frame.maxLat - 1e-9, minLng: frame.minLng + 1e-9, maxLng: frame.maxLng - 1e-9 }));
+    const lngFactor = Math.cos((((fitted.minLat + fitted.maxLat) / 2) * Math.PI) / 180);
+    const aspect = ((fitted.maxLng - fitted.minLng) * lngFactor) / (fitted.maxLat - fitted.minLat);
+    assert.ok(Math.abs(aspect - w / h) < 1e-6, `${w}x${h}`);
+    assert.ok(Math.abs((fitted.minLat + fitted.maxLat) / 2 - (frame.minLat + frame.maxLat) / 2) < 1e-9);
+  }
+});
+
+test('drawKnowledgeMap: every known buurt lands inside the canvas on desktop and phone panels', () => {
+  const model = buildKnowledgeMapModel(wide, [
+    item('a', [52.41, 4.915], 0.6, 'known'), item('b', [52.36, 5.005], 0.5, 'learning'), item('c', [52.385, 4.805], 0.4, 'learning'),
+    item('d', [52.375, 4.885], 0.8, 'mastered'),
+  ]);
+  const noop = () => {};
+  const ctx = { save: noop, restore: noop, beginPath: noop, moveTo: noop, lineTo: noop, closePath: noop, fill: noop, stroke: noop, arc: noop, fillRect: noop, setLineDash: noop,
+    fillStyle: '', strokeStyle: '', lineWidth: 1, lineJoin: 'round', lineCap: 'round', globalAlpha: 1 } as unknown as Parameters<typeof drawKnowledgeMap>[0];
+  for (const [w, h] of [[760, 420], [350, 260]] as const) {
+    const p = drawKnowledgeMap(ctx, model, { width: w, height: h });
+    for (const entry of model.mastery.values()) {
+      const box = wide.buurts.find(b => b.name === entry.name)!.bbox;
+      for (const corner of [[box.minLat, box.minLng], [box.maxLat, box.maxLng]] as const) {
+        const [x, y] = projectLatLng(p, corner);
+        assert.ok(x >= 0 && x <= w && y >= 0 && y <= h, `${entry.name} ${w}x${h}: ${x.toFixed(0)},${y.toFixed(0)}`);
+      }
+    }
+  }
 });

@@ -7,6 +7,8 @@ import {
   buurtAtPixel,
   drawKnowledgeMap,
   KNOWLEDGE_MAP_COLORS,
+  fitMap,
+  knownFrame,
   projectLatLng,
   type KnowledgeMapGeometry,
   type KnowledgeMapModel,
@@ -86,6 +88,31 @@ export function KnowledgeMap({
     const projection = projectionRef.current;
     (canvas as HTMLCanvasElement & { knowledgeMapProject?: (lat: number, lng: number) => [number, number] })
       .knowledgeMapProject = (lat, lng) => projectLatLng(projection, [lat, lng]);
+    // Seam for the frame-fit spec (#297): where every known buurt's bounding
+    // box lands on the canvas, and the frame the projection was fitted to.
+    (canvas as HTMLCanvasElement & { knowledgeMapReport?: () => unknown }).knowledgeMapReport = () => ({
+      width: cssW,
+      height: cssH,
+      frame: knownFrame(timedModel.geometry, timedModel.mastery, timedModel.items),
+      defaultFrame: timedModel.geometry.frame,
+      outsideDefault: [...timedModel.mastery.values()].filter(entry => {
+        const shape = timedModel.geometry.buurts.find(buurt => buurt.name === entry.name);
+        if (!shape) return false;
+        const old = fitMap(timedModel.geometry.frame, cssW, cssH);
+        const { minLat, minLng, maxLat, maxLng } = shape.bbox;
+        const [x0, y1] = projectLatLng(old, [minLat, minLng]);
+        const [x1, y0] = projectLatLng(old, [maxLat, maxLng]);
+        return x0 < 0 || y0 < 0 || x1 > cssW || y1 > cssH;
+      }).map(entry => entry.name),
+      known: [...timedModel.mastery.values()].map(entry => {
+        const shape = timedModel.geometry.buurts.find(buurt => buurt.name === entry.name);
+        if (!shape) return null;
+        const { minLat, minLng, maxLat, maxLng } = shape.bbox;
+        const [x0, y1] = projectLatLng(projection, [minLat, minLng]);
+        const [x1, y0] = projectLatLng(projection, [maxLat, maxLng]);
+        return { name: entry.name, tracked: entry.tracked, x0, y0, x1, y1 };
+      }).filter(Boolean),
+    });
     const elapsed = performance.now() - started;
     setRenderMs(elapsed);
     noteSession('knowledgeMapRenderMs', Math.round(elapsed * 10) / 10);
