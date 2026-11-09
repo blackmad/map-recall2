@@ -909,6 +909,7 @@
     "ride.paused": "PAUSED",
     "ride.resume": "Resume",
     "ride.pauseSummary": "{time}  \xB7  {km} km  \xB7  {correct} of {attempts} named",
+    "ride.pauseStats": "{time}  \xB7  {km} km",
     "ride.controlsHint": "?  help   \xB7   G  settings   \xB7   M  map   \xB7   O  north   \xB7   T  labels   \xB7   B  buildings   \xB7   P  pause",
     "hud.destination": "DESTINATION",
     "card.wikipedia": "W  WIKIPEDIA",
@@ -1687,6 +1688,7 @@
     "ride.paused": "PAUZE",
     "ride.resume": "Hervatten",
     "ride.pauseSummary": "{time}  \xB7  {km} km  \xB7  {correct} van {attempts} benoemd",
+    "ride.pauseStats": "{time}  \xB7  {km} km",
     "ride.controlsHint": "?  help   \xB7   G  instellingen   \xB7   M  kaart   \xB7   O  noord   \xB7   T  labels   \xB7   B  gebouwen   \xB7   P  pauze",
     "hud.destination": "BESTEMMING",
     "card.wikipedia": "W  WIKIPEDIA",
@@ -7973,11 +7975,10 @@
     if (hover) ctx.fillRect(captionX, at.top + 21, captionW, 1);
     return { bounds, endX: captionX + captionW };
   }
-  function measureKeycapAction(ctx, action, fontMono) {
-    ctx.font = "12px system-ui, sans-serif";
-    const captionW = ctx.measureText(action.caption).width;
-    ctx.font = `700 11px ${fontMono}`;
-    return ctx.measureText(action.key).width + 14 + GAP + captionW;
+  var KEYCAP_CAPTION_FONT = "12px system-ui, sans-serif";
+  var keycapKeyFont = (fontMono) => `700 11px ${fontMono}`;
+  function keycapActionWidth(measure, action, fontMono) {
+    return measure(action.key, keycapKeyFont(fontMono)) + 14 + GAP + measure(action.caption, KEYCAP_CAPTION_FONT);
   }
   function wrapKeycapRows(widths, maxW, gap) {
     const rows = [];
@@ -9942,6 +9943,194 @@
     return { distance: Math.max(straight, distance), cache: memo };
   }
 
+  // src/canalRecall/game/pauseCard.ts
+  var PAUSE_DESKTOP = {
+    padX: 32,
+    padTop: 22,
+    padBottom: 20,
+    maxCardW: 520,
+    minInnerW: 240,
+    titleSize: 30,
+    subtitleSize: 13,
+    statsSize: 12,
+    keyGap: 22,
+    rowGap: 6
+  };
+  var PAUSE_PHONE = {
+    padX: 18,
+    padTop: 18,
+    padBottom: 16,
+    maxCardW: 360,
+    minInnerW: 260,
+    titleSize: 26,
+    subtitleSize: 13,
+    statsSize: 12,
+    buttonH: 44,
+    rowGap: 8,
+    buttonPadX: 24
+  };
+  var EDGE = 12;
+  var ELLIPSIS2 = "\u2026";
+  function pauseFonts(fonts, compact) {
+    const spec = compact ? PAUSE_PHONE : PAUSE_DESKTOP;
+    return {
+      title: `800 ${spec.titleSize}px ${fonts.plaque}`,
+      subtitle: `500 ${spec.subtitleSize}px ${fonts.ui}`,
+      stats: `500 ${spec.statsSize}px ${fonts.ui}`,
+      button: "700 14px system-ui, sans-serif"
+    };
+  }
+  function fitLine(measure, text, font, maxW) {
+    if (!text || measure(text, font) <= maxW) return text;
+    let cut = text;
+    while (cut.length > 1) {
+      const space = cut.lastIndexOf(" ", cut.length - 2);
+      cut = space > 0 && measure(cut.slice(0, space) + ELLIPSIS2, font) <= maxW ? cut.slice(0, space) : cut.slice(0, -1);
+      if (measure(cut.trimEnd() + ELLIPSIS2, font) <= maxW) return cut.trimEnd() + ELLIPSIS2;
+    }
+    return ELLIPSIS2;
+  }
+  function pauseCardLayout(measure, strings, viewport, fonts) {
+    const compact = viewport.compact;
+    const spec = compact ? PAUSE_PHONE : PAUSE_DESKTOP;
+    const font = pauseFonts(fonts, compact);
+    const maxCardW = Math.max(160, Math.min(spec.maxCardW, viewport.width - EDGE * 2));
+    const maxInner = maxCardW - spec.padX * 2;
+    let actionRows;
+    let rowH;
+    if (compact) {
+      rowH = PAUSE_PHONE.buttonH;
+      actionRows = strings.actions.map((action, index) => ({
+        indices: [index],
+        w: Math.min(maxInner, measure(action.caption, font.button) + PAUSE_PHONE.buttonPadX * 2)
+      }));
+    } else {
+      rowH = KEYCAP_ROW_H;
+      const widths = strings.actions.map((action) => keycapActionWidth(measure, action, fonts.mono));
+      actionRows = wrapKeycapRows(widths, maxInner, PAUSE_DESKTOP.keyGap).map((indices) => ({
+        indices,
+        w: indices.reduce((sum, i) => sum + widths[i], 0) + (indices.length - 1) * PAUSE_DESKTOP.keyGap
+      }));
+    }
+    const titleText = fitLine(measure, strings.title, font.title, maxInner);
+    const statsText = fitLine(measure, strings.stats, font.stats, maxInner);
+    const subtitleText = fitLine(measure, strings.subtitle, font.subtitle, maxInner);
+    const titleW = measure(titleText, font.title);
+    const statsW = statsText ? measure(statsText, font.stats) : 0;
+    const subtitleW = subtitleText ? measure(subtitleText, font.subtitle) : 0;
+    const innerW = Math.min(maxInner, Math.max(spec.minInnerW, titleW, statsW, subtitleW, ...actionRows.map((row) => row.w)));
+    const cardW = Math.ceil(innerW + spec.padX * 2);
+    let y = spec.padTop;
+    const titleBaseline = y + Math.round(spec.titleSize * 0.8);
+    y += spec.titleSize;
+    let subtitleBaseline = 0;
+    if (subtitleText) {
+      y += 6;
+      subtitleBaseline = y + Math.round(spec.subtitleSize * 0.85);
+      y += spec.subtitleSize + 3;
+    }
+    y += compact ? 14 : 16;
+    const actionsTop = y;
+    y += actionRows.length * rowH + Math.max(0, actionRows.length - 1) * spec.rowGap;
+    let statsBaseline = 0;
+    if (statsText) {
+      y += compact ? 12 : 14;
+      statsBaseline = y + Math.round(spec.statsSize * 0.85);
+      y += spec.statsSize + 3;
+    }
+    y += spec.padBottom;
+    const cardH = Math.round(y);
+    const cardX = Math.round((viewport.width - cardW) / 2);
+    const cardY = Math.round((viewport.height - cardH) / 2);
+    const cx = cardX + cardW / 2;
+    const line = (text, f, width, baseline) => ({ text, font: f, x: cx, baseline: cardY + baseline, width });
+    const rows = actionRows.map((row, r) => {
+      const w = compact ? innerW : row.w;
+      const x = cx - w / 2;
+      const top = cardY + actionsTop + r * (rowH + spec.rowGap);
+      let ax = x;
+      const items = row.indices.map((index) => {
+        const iw = compact ? w : keycapActionWidth(measure, strings.actions[index], fonts.mono);
+        const item = { index, x: ax, w: iw };
+        ax += iw + (compact ? 0 : PAUSE_DESKTOP.keyGap);
+        return item;
+      });
+      return { x, top, w, h: rowH, items };
+    });
+    return {
+      compact,
+      card: { x: cardX, y: cardY, w: cardW, h: cardH },
+      inner: { left: cardX + spec.padX, right: cardX + cardW - spec.padX },
+      cx,
+      title: line(titleText, font.title, titleW, titleBaseline),
+      subtitle: subtitleText ? line(subtitleText, font.subtitle, subtitleW, subtitleBaseline) : null,
+      rows,
+      stats: statsText ? line(statsText, font.stats, statsW, statsBaseline) : null
+    };
+  }
+  function formatPauseTime(seconds) {
+    const s = Math.max(0, Math.floor(Number.isFinite(seconds) ? seconds : 0));
+    const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
+    const two = (n) => String(n).padStart(2, "0");
+    return h ? `${h}:${two(m)}:${two(sec)}` : `${two(m)}:${two(sec)}`;
+  }
+  function pauseStatsText(t2, ride) {
+    const vars = { time: formatPauseTime(ride.timeS), km: formatRideDistance(ride.km, { routed: true }).replace(/ km$/, "") };
+    return !ride.freeRide && ride.attempts > 0 ? t2("ride.pauseSummary", { ...vars, correct: ride.correct, attempts: ride.attempts }) : t2("ride.pauseStats", vars);
+  }
+  function drawPauseCard(ctx, layout, actions, paint) {
+    paint.paper(layout.card);
+    ctx.textAlign = "center";
+    ctx.fillStyle = paint.ink;
+    ctx.font = layout.title.font;
+    ctx.fillText(layout.title.text, layout.cx, layout.title.baseline);
+    if (layout.subtitle) {
+      ctx.fillStyle = paint.muted;
+      ctx.font = layout.subtitle.font;
+      ctx.fillText(layout.subtitle.text, layout.cx, layout.subtitle.baseline);
+    }
+    const bounds = [];
+    for (const row of layout.rows) {
+      for (const item of row.items) {
+        const action = actions[item.index];
+        const done = paint.doneId === action.id;
+        if (layout.compact) {
+          const primary = action.id === "resume";
+          const box = { x: item.x, y: row.top, w: item.w, h: row.h };
+          ctx.fillStyle = primary ? paint.copper : "rgba(31,28,23,.05)";
+          paint.roundRect(ctx, box.x, box.y, box.w, box.h, 12);
+          ctx.fill();
+          if (!primary) {
+            ctx.strokeStyle = paint.rule;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+          ctx.textAlign = "center";
+          ctx.fillStyle = primary ? "#1f1c17" : done ? paint.good : paint.ink;
+          ctx.font = "700 14px system-ui, sans-serif";
+          ctx.fillText(action.caption, box.x + box.w / 2, box.y + 28);
+          bounds.push({ ...box, id: action.id });
+        } else {
+          ctx.textAlign = "left";
+          const drawn = drawKeycapAction(ctx, paint.roundRect, { x: item.x, top: row.top }, action, {
+            ink: paint.ink,
+            muted: paint.muted,
+            fontMono: paint.fontMono,
+            captionColour: done ? paint.good : void 0
+          }, paint.mouse);
+          bounds.push({ ...drawn.bounds, id: action.id });
+        }
+      }
+    }
+    if (layout.stats) {
+      ctx.textAlign = "center";
+      ctx.fillStyle = paint.muted;
+      ctx.font = layout.stats.font;
+      ctx.fillText(layout.stats.text, layout.cx, layout.stats.baseline);
+    }
+    return bounds;
+  }
+
   // src/canalRecall/game/presentationRuntime.ts
   var INK2 = "#1f1c17";
   var MUTED2 = "#5f584d";
@@ -11133,90 +11322,45 @@
     // ---- Pause ----
     _renderPaused() {
       const ctx = this.ctx;
-      const cx = CANVAS_W / 2;
       const compact = this.viewport.mode === "compact";
-      const cardW = Math.min(400, CANVAS_W - 24);
-      const padX = compact ? 18 : 28;
-      const cardX = cx - cardW / 2;
       ctx.fillStyle = "rgba(28,24,18,0.34)";
       ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
       const actions = [
         { id: "resume", key: "P / ESC", caption: t("ride.resume") },
         { id: "route", key: "M", caption: t("ride.routeSetup") }
       ];
-      if (this._shareUrl) {
-        actions.push({
-          id: "copy",
-          key: "C",
-          caption: this._copiedTimer > 0 ? t("ride.linkCopied") : t("ride.shareRoute")
-        });
-      }
-      const BUTTON_H = 44;
-      const BUTTON_GAP = 8;
-      const titleH = compact ? 56 : 64;
-      const statsH = 28;
-      const KEY_GAP = 22;
-      const keyRows = compact ? [] : wrapKeycapRows(
-        actions.map((action) => measureKeycapAction(ctx, action, window.CanalRecallUi.hudSurface.fontMono)),
-        cardW - padX * 2,
-        KEY_GAP
-      );
-      const actionsH = compact ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP : keyRows.length * KEYCAP_ROW_H + (keyRows.length - 1) * 4;
-      const cardH = 20 + titleH + actionsH + statsH + 18;
-      const cardY = (CANVAS_H - cardH) / 2;
-      this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 12 });
-      ctx.fillStyle = INK2;
-      ctx.font = `800 ${compact ? 30 : 36}px ${window.CanalRecallUi.hudSurface.fontPlaque}`;
-      ctx.textAlign = "center";
-      ctx.fillText(t("ride.paused"), cx, cardY + (compact ? 40 : 46));
-      const pauseButtons = [];
-      this._pauseButtonBounds = pauseButtons;
-      let y = cardY + titleH;
-      if (compact) {
-        for (const action of actions) {
-          const primary = action.id === "resume";
-          const bounds = { x: cardX + padX, y, w: cardW - padX * 2, h: BUTTON_H };
-          ctx.fillStyle = primary ? COPPER2 : "rgba(31,28,23,.05)";
-          roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
-          ctx.fill();
-          if (!primary) {
-            ctx.strokeStyle = RULE2;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-          ctx.fillStyle = primary ? "#1f1c17" : action.id === "copy" && this._copiedTimer > 0 ? GOOD : INK2;
-          ctx.font = "700 14px system-ui, sans-serif";
-          ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
-          pauseButtons.push({ ...bounds, id: action.id });
-          y += BUTTON_H + BUTTON_GAP;
-        }
-      } else {
-        ctx.textAlign = "left";
-        keyRows.forEach((row, rowIndex) => {
-          let ax = cardX + padX;
-          for (const index of row) {
-            const action = actions[index];
-            const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y - 2 + rowIndex * (KEYCAP_ROW_H + 4) }, action, {
-              ink: INK2,
-              muted: MUTED2,
-              fontMono: window.CanalRecallUi.hudSurface.fontMono,
-              captionColour: action.id === "copy" && this._copiedTimer > 0 ? GOOD : void 0
-            }, this.hud.hoverPoint);
-            pauseButtons.push({ ...drawn.bounds, id: action.id });
-            ax = drawn.endX + KEY_GAP;
-          }
-        });
-        y += actionsH;
-      }
-      ctx.textAlign = "center";
-      ctx.font = `500 12px ${window.CanalRecallUi.hudSurface.fontUi}`;
-      ctx.fillStyle = MUTED2;
-      const kilometres = this._playerDistancePx() / PIXELS_PER_METER / 1e3;
-      ctx.fillText(
-        t("ride.pauseSummary", { time: this.hud.formatTime(this.raceTime), km: kilometres.toFixed(2), correct: this.quizCorrect, attempts: this.quizAttempts }),
-        cx,
-        y + 18
-      );
+      const copied = this._copiedTimer > 0;
+      if (this._shareUrl) actions.push({ id: "copy", key: "C", caption: copied ? t("ride.linkCopied") : t("ride.shareRoute") });
+      const free = !!this.freeRide;
+      const destination = free ? "" : this._destinationLabel();
+      const subtitle = free ? [t("freeRide.badge"), this.currentNeighborhood].filter(Boolean).join("  \xB7  ") : destination ? t("hud.toDestination", { name: destination }) : "";
+      const stats = pauseStatsText((key, vars) => t(key, vars), {
+        timeS: this.raceTime,
+        km: this._playerDistancePx() / PIXELS_PER_METER / 1e3,
+        correct: this.quizCorrect,
+        attempts: this.quizAttempts,
+        freeRide: free
+      });
+      const surface = window.CanalRecallUi.hudSurface;
+      const fonts = { plaque: surface.fontPlaque, ui: surface.fontUi, mono: surface.fontMono };
+      const measure = (text, font) => {
+        ctx.font = font;
+        return ctx.measureText(text).width;
+      };
+      const layout = pauseCardLayout(measure, { title: t("ride.paused"), subtitle, stats, actions }, { width: CANVAS_W, height: CANVAS_H, compact }, fonts);
+      this._pauseCardLayout = layout;
+      this._pauseButtonBounds = drawPauseCard(ctx, layout, actions, {
+        ink: INK2,
+        muted: MUTED2,
+        copper: COPPER2,
+        rule: RULE2,
+        good: GOOD,
+        fontMono: surface.fontMono,
+        paper: (rect) => this.hud.paperCard(ctx, { x: rect.x, y: rect.y, width: rect.w, height: rect.h }, { solid: true, radius: 12 }),
+        roundRect,
+        doneId: copied ? "copy" : null,
+        mouse: compact ? null : this.hud.hoverPoint
+      });
     }
     // ---- The arrival card ----
     /**

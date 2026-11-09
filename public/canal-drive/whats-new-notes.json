@@ -3,6 +3,23 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "A tidier pause card",
+      "text": "The pause card now fits its contents, centres every line, says where you are heading, and no longer shows a quiz score in Free Ride.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-p1-pause-card/pause-desktop-1280x720-en-free-before.jpg",
+          "alt": "The old pause card: keycaps running off to the right and a 0 of 0 named tally",
+          "caption": "Before: keycaps off centre, \"0 of 0 named\" on a free ride."
+        },
+        {
+          "src": "ui/2026-11-09-p1-pause-card/pause-desktop-1280x720-en-free-after.jpg",
+          "alt": "The new pause card: centred heading, subtitle, keycaps on one centred row",
+          "caption": "After: centred, with the ride context."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
       "title": "No more \"An artwork.\" cards",
       "text": "Tapping a thin map label (a sculpture with nothing but its name) opened a BUILDING card that said only \"An artwork.\" It now opens the building under the label, or the sculpture's real story: the Brettensuite pieces along the Brettenpad show their route, artist and Wikipedia link.",
       "images": [
