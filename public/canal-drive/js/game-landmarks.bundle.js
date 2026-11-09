@@ -6360,7 +6360,8 @@ ${register}` : detail,
   var BODY_FONT = `500 11px ${hudSurface.fontUi}`;
   var CLOSE_SIZE = 14;
   var CLOSE_ROOM = CLOSE_SIZE + 10;
-  var ACTION_FONT = `800 11px ${hudSurface.fontMono}`;
+  var TOUCH_ACTION_HEIGHT = 44;
+  var actionFont = (height) => `800 ${height >= TOUCH_ACTION_HEIGHT ? 13 : 11}px ${hudSurface.fontMono}`;
   function drawCardAction(ctx, rect, cardX, cardY, label, done) {
     const x = cardX + rect.x, y = cardY + rect.y;
     const r = rect.height / 2;
@@ -6377,7 +6378,7 @@ ${register}` : detail,
     ctx.lineWidth = 1.25;
     ctx.strokeStyle = done ? "#2f6f47" : "#8a4a18";
     ctx.stroke();
-    ctx.font = ACTION_FONT;
+    ctx.font = actionFont(rect.height);
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = done ? "#2f6f47" : "#8a4a18";
@@ -7459,7 +7460,7 @@ ${register}` : detail,
         this._neighborhoodNoticeTimer = 0;
         this._neighborhoodNotice = null;
       }
-      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && !this._landmarkNotice && this.viewport?.mode !== "compact" && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && !this._landmarkNotice && (this.viewport?.mode !== "compact" || !!this._freeRideStampWaiting?.(this._postcardPending)) && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
         this._postcardPending = null;
         this._lastPostcardAt = this.raceTime;
         if (hood) this._ensureNeighborhoodImage(hood);
@@ -7570,7 +7571,10 @@ ${register}` : detail,
         articleLabel: lm.wikipediaUrl ? "W  WIKIPEDIA" : "W  SOURCE",
         hasImage,
         ...collapsed ? { maxBodyLines: FOLDED_BODY_LINES, hasMore: (lm.longDetail || lm.detail || "").trim() !== foldedCardLine(lm) } : {},
-        ...action ? { action: action.label } : {}
+        ...action ? { action: action.label } : {},
+        // A finger, not a pointer: the pill is a 44 px tap target on a phone (#286).
+        // Three body lines then, so the taller pill does not push the card over the bike (414×896, #286).
+        ...action && (this.viewport?.touch || this.viewport?.mode === "compact") ? { actionHeight: cards.TOUCH_ACTION_HEIGHT, ...collapsed ? {} : { maxBodyLines: 3 } } : {}
       }, measure, window.CanalRecallUi.landmarkCardWidth(this.viewport));
       const postcardShowing = !!(this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) && canShowTeachingCard(this._teachingGate());
       const bottomLayout = window.CanalRecallUi.hudLayout({
@@ -7583,7 +7587,8 @@ ${register}` : detail,
         neighborhoodVisible: !!this.currentNeighborhood,
         minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
         zoomVisible: this._zoomBadgeTimer > 0,
-        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION
+        controlsVisible: !this.input.isMobile && this.raceTime < CONTROLS_HINT_DURATION,
+        touchHintVisible: !!this._touchHintShowing?.()
       });
       const cardX = bottomLayout.landmark.x;
       const cardY = bottomLayout.landmark.y;
@@ -7698,7 +7703,8 @@ ${lm.researchDetail}` : originalBody;
         tripWidth: 180,
         postcardHeight: card.height,
         neighborhoodVisible: !!this.currentNeighborhood,
-        minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate())
+        minimapVisible: canShowMiniMap(this.showMiniMap, this._teachingGate()),
+        touchHintVisible: !!this._touchHintShowing?.()
       });
       const cardX = bottomLayout.postcard.x;
       const baseCardY = bottomLayout.postcard.y;

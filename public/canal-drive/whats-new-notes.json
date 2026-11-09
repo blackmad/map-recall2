@@ -3,6 +3,28 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Thumb-sized buttons on the phone",
+   "text": "On the phone the Noticed button is now a full thumb-sized button, and the tips line under the card steps aside while a card is open. The arrival card's keys stay thumb-sized even when the card has to shrink. Collecting every place in a neighbourhood now shows its stamped postcard on the phone too, and when the coin is out of view the radar points to it.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-phone-cards/driveby-noticed-phone-before.jpg",
+     "alt": "Before: a drive-by card on a phone with a small Noticed pill and the tips line overlapping its bottom",
+     "caption": "Before: the tips line covered the pill."
+    },
+    {
+     "src": "ui/2026-11-09-phone-cards/driveby-noticed-phone-after.jpg",
+     "alt": "After: the Noticed pill is 44 px tall and the tips line is gone while the card is up",
+     "caption": "After: a full-height button, nothing over it."
+    },
+    {
+     "src": "ui/2026-11-09-phone-cards/stamp-postcard-phone-after.jpg",
+     "alt": "The Marineterrein stamped postcard shown on a phone",
+     "caption": "The stamped postcard, now on the phone too."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Every checklist keeps to its own buurt",
    "text": "Each Free Ride checklist now holds only the places in its buurt, and the plaque keeps that list's name while you stand at one of them. The replica ship is now called VOC ship Amsterdam, and the Maritime Museum has one name everywhere. A landmark card and a postcard no longer stack: the postcard waits its turn.",
    "images": [

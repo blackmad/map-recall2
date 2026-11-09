@@ -3513,18 +3513,27 @@
       collection.stampPostcard = null;
       return true;
     }
+    _freeRideStampWaiting(hood) {
+      return !!hood && !!this.freeRide && this._freeRideCollection?.stampPostcard === hood;
+    }
     /** The postcard's checklist caption for a neighbourhood, or '' (no list, or the collection is off). */
     _freeRideChecklistCaption(hood) {
       if (!this.freeRide) return "";
       const progress = this._freeRideChecklistProgress(hood);
       return progress ? checklistLine(hood, progress, { underQuestion: this.quizCurrentName, copy: CHECKLIST_COPY }).count : "";
     }
-    /** The current neighbourhood's unopened places, for the radar. */
+    /** The current neighbourhood's unopened places, for the radar, and the
+     *  coin's place whenever the coin is not drawn in frame: off screen, over
+     *  the corridor or under the HUD, the radar carries its bearing (#286; on a
+     *  phone the coin was off screen at 6 of 7 stops, ride review #280). */
     _freeRideRadarPlaces() {
       const collection = this._freeRideCollection;
       if (!this.freeRide || !collection) return [];
       const list = this._freeRideChecklist(this.currentNeighborhood);
-      return list ? list.places.filter((place) => !collection.opened.has(place.key)) : [];
+      const places = list ? list.places.filter((place) => !collection.opened.has(place.key)) : [];
+      const token = collection.token;
+      if (token && !collection.tokenScreen && !collection.opened.has(token.key) && !places.some((place) => Math.hypot(place.x - token.x, place.y - token.y) < 1)) places.push({ x: token.x, y: token.y });
+      return places;
     }
     /** Draw the markers, nearest first, keeping off the HUD, the open card and
      *  the vehicle. Their boxes are the tap targets until the next frame. */
@@ -3807,10 +3816,8 @@
           if (store) savePassport(store, stamped.passport);
           bumpSessionCounter("stampsEarned");
           collection.stampMoment = { hood, until: performance.now() + STAMP_MOMENT_SECONDS * 1e3 };
-          if (this.viewport?.mode !== "compact") {
-            collection.stampPostcard = hood;
-            this._postcardPending = hood;
-          }
+          collection.stampPostcard = hood;
+          this._postcardPending = hood;
         }
       }
       saveCollection(store, collection.state);
@@ -9844,6 +9851,14 @@
           const buttons = [...utility.children].map((child) => child.getBoundingClientRect());
           if (card && utilityBlockedByCards(buttons, [card.getBoundingClientRect()])) revealed = false;
         }
+        if (revealed && riding && this._landmarkCardBounds) {
+          const b = this._landmarkCardBounds;
+          const canvas = this.canvas.getBoundingClientRect();
+          const kx = canvas.width / CANVAS_W, ky = canvas.height / CANVAS_H;
+          const card = { left: canvas.left + b.x * kx, top: canvas.top + b.y * ky, right: canvas.left + (b.x + b.w) * kx, bottom: canvas.top + (b.y + b.h) * ky };
+          const buttons = [...utility.children].map((child) => child.getBoundingClientRect());
+          if (utilityBlockedByCards(buttons, [card])) revealed = false;
+        }
         utility.classList.toggle("tucked-all", true);
         utility.classList.toggle("tucked", !revealed);
       }
@@ -10082,11 +10097,20 @@
         } else {
           this.hud.drawStick(ctx, this.input.stickView);
         }
-        const parked = this.controlMode === "street" && !!this.player?.streetFollowView?.parked;
-        if (this.input.showTouchHint || parked) this.hud.drawTouchHint(ctx, this.controlMode);
+        if (this._touchHintShowing()) this.hud.drawTouchHint(ctx, this.controlMode);
       }
       if (this.state === GameState.PAUSED) this._renderPaused();
       if (this.state === GameState.FINISHED) this._renderFinish();
+    }
+    /** Whether the touch hint strip is drawn over the d-pad. Parked at the
+     *  start of a street-follow ride it stays up: it is the only thing saying a
+     *  press sets off. The phone's bottom cards stack above it (#286). */
+    _touchHintShowing() {
+      if (!this._hudRects().dpad || this.state !== GameState.RACING || this._overlayOpen() || this._intro) return false;
+      const cards = this;
+      if (this.viewport?.mode === "compact" && (cards._landmarkNotice && (cards._landmarkNoticeAlpha ?? 0) > 0 || cards._neighborhoodNotice && (cards._neighborhoodNoticeTimer ?? 0) > 0)) return false;
+      const parked = this.controlMode === "street" && !!this.player?.streetFollowView?.parked;
+      return !!this.input.showTouchHint || parked;
     }
     /** The plaque's optional lines: quiz feedback (or the home-ring note) and a
      *  real-world cycling ban on this corridor — which never names the street,
@@ -10632,6 +10656,7 @@
         if (stored && this.raceTime <= stored.time) bestText = "\u2605  New personal best";
         else if (stored) bestText = `Personal best  ${this.hud.formatTime(stored.time)}`;
       }
+      let touchButtonH = 44;
       const buildBlocks = (level2) => {
         const blocks2 = [];
         const title = fitFinishTitle(ctx, this.routeTo.name, innerW);
@@ -10894,7 +10919,7 @@
           actions.push({ id: "copy", key: "C", caption: this._copiedTimer > 0 ? t("ride.linkCopied") : t("ride.shareRoute") });
         }
         if (endRun2 && !compact) actions.push(endRun2);
-        const BUTTON_H = 44, BUTTON_GAP = 8;
+        const BUTTON_H = touchButtonH, BUTTON_GAP = 8;
         const pairSecondary = compact && level2 >= 2 && actions.length === 3;
         const buttonRows = pairSecondary ? 2 : actions.length;
         const finishButtons = [];
@@ -10923,7 +10948,7 @@
                   ctx.textAlign = "center";
                   ctx.fillStyle = INK2;
                   ctx.font = "700 14px system-ui, sans-serif";
-                  ctx.fillText(endRun2.caption, endBounds.x + endBounds.w / 2, by + 28);
+                  ctx.fillText(endRun2.caption, endBounds.x + endBounds.w / 2, by + BUTTON_H / 2 + 6);
                   finishButtons.push({ ...endBounds, id: endRun2.id });
                 }
                 ctx.fillStyle = primary ? COPPER2 : "rgba(31,28,23,.05)";
@@ -10937,7 +10962,7 @@
                 ctx.textAlign = "center";
                 ctx.fillStyle = primary ? "#1f1c17" : action.caption === "Link copied" ? GOOD : INK2;
                 ctx.font = "700 14px system-ui, sans-serif";
-                ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + 28);
+                ctx.fillText(action.caption, bounds.x + bounds.w / 2, by + BUTTON_H / 2 + 6);
                 finishButtons.push({ ...bounds, id: action.id });
                 if (!paired || index === actions.length - 1) by += BUTTON_H + BUTTON_GAP;
               });
@@ -10997,7 +11022,13 @@
       }
       const { GAP, PAD_TOP } = spacing(level);
       const leadFor = (block, index) => index === 0 ? 0 : block.rule ? GAP * 2 : GAP;
-      const scale = Math.min(1, room / cardH);
+      let scale = Math.min(1, room / cardH);
+      for (let pass = 0; compact && scale < 1 && touchButtonH * scale < 44 && pass < 4; pass++) {
+        touchButtonH = Math.ceil(44 / scale * 4) / 4;
+        blocks = buildBlocks(level);
+        cardH = measureCard(level, blocks);
+        scale = Math.min(1, room / cardH);
+      }
       const cardY = scale < 1 ? MARGIN : Math.max(MARGIN, Math.min(
         Math.round((CANVAS_H - cardH) / 2),
         CANVAS_H - cardH - bottomReserve
