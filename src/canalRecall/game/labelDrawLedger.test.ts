@@ -2,8 +2,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   approachKept, bumpSkipCounter, CARD_RECENT_MS, createLedger, LABEL_RECENT_MS, landmarkSkipReason, lastCardShown,
-  lastLabelDrawn, namesMatch, noteCardShown, setDrawn, sharedLedger,
+  lastLabelDrawn, namesMatch, noteCardShown, setDrawn, setDrawnKeys, sharedLedger,
 } from './labelDrawLedger.ts';
+import { containsAskedName, labelAllowed, type LabelRules } from '../labels/labelPlan.ts';
 import { nameKey } from './landmarkQuestion.ts';
 import { withheldNames } from '../ownMap/labelPolicy.ts';
 
@@ -75,4 +76,42 @@ test('withheldNames: the approach withholds before the question opens, then both
   assert.deepEqual(withheldNames({ quizPromptName: 'A', quizWithheldNames: ['A', 'B'], landmarkApproachWithheld: ['B', 'C'] }), ['A', 'B', 'C']);
   assert.deepEqual(withheldNames({ quizPromptName: '', quizWithheldNames: ['A'] }), []);
   assert.deepEqual(withheldNames({ quizPromptName: 'A', quizWithheldNames: ['A', 'B'] }), ['A', 'B']);
+});
+
+test('ledger (#287): an unchanged drawn set writes nothing, and the rules read the same', () => {
+  const ledger = createLedger();
+  setDrawnKeys(ledger, 'overlay', new Set([nameKey(BRAKKE)]), 1000);
+  const before = ledger.current.get('overlay');
+  setDrawnKeys(ledger, 'overlay', new Set([nameKey(BRAKKE)]), 9000);
+  assert.equal(ledger.current.get('overlay'), before, 'same set kept, not rebuilt');
+  assert.equal(lastLabelDrawn(ledger, 'De Brakke Grond', 20_000), 20_000, 'still "now" while drawn');
+  setDrawnKeys(ledger, 'overlay', new Set(), 25_000);
+  assert.equal(lastLabelDrawn(ledger, 'De Brakke Grond', 30_000), 25_000, 'stamped when it leaves');
+  assert.equal(landmarkSkipReason(ledger, 'De Brakke Grond', 25_000 + LABEL_RECENT_MS - 1), 'labelRecent');
+  assert.equal(landmarkSkipReason(ledger, 'De Brakke Grond', 25_000 + LABEL_RECENT_MS + 1), null);
+});
+
+test('withheldNames (#287): one array per withheld set, a new one when the names change', () => {
+  const game = { quizPromptName: 'Westerkerk', quizWithheldNames: ['Westerkerk', 'Zuiderkerk'], landmarkApproachWithheld: null as string[] | null };
+  const first = withheldNames(game);
+  assert.equal(withheldNames(game), first);
+  assert.deepEqual([...first], ['Westerkerk', 'Zuiderkerk']);
+  game.quizWithheldNames[1] = 'Noorderkerk';
+  assert.deepEqual([...withheldNames(game)], ['Westerkerk', 'Noorderkerk'], 'an array refilled in place is noticed');
+  game.landmarkApproachWithheld = ['Noorderkerk', 'Oude Kerk'];
+  assert.deepEqual([...withheldNames(game)], ['Westerkerk', 'Noorderkerk', 'Oude Kerk']);
+  assert.deepEqual([...withheldNames({ quizPromptName: null, quizWithheldNames: ['Westerkerk'] })], []);
+});
+
+test('labelAllowed (#287): the memoised screen agrees with containsAskedName', () => {
+  const hidden = ['Prins Hendrikkade', 'De Brakke Grond', 'Ij', 'Westerkerk'];
+  const rules: LabelRules = { labelsOff: false, hiddenName: '', hiddenNames: hidden, spoilerIndex: null, quizQuiet: false, isLabelled: () => false };
+  const labels = ['Prinshendrikkadebrug', 'Hotel Prins Hendrikkade', 'Vlaams Cultuurhuis De Brakke Grond', 'IJ', 'Ijsbaan', 'Westerkerktoren', 'Oude Kerk', 'Café Westerkerk'];
+  for (const label of labels) {
+    const expected = !hidden.some(h => containsAskedName(label, h));
+    assert.equal(labelAllowed(rules, 'landmark', label), expected, label);
+    assert.equal(labelAllowed(rules, 'landmark', label), expected, `${label} (memoised)`);
+  }
+  assert.equal(labelAllowed({ ...rules, hiddenNames: [], hiddenName: 'Westerkerk' }, 'landmark', 'Westerkerktoren'), false);
+  assert.equal(labelAllowed({ ...rules, hiddenNames: [] }, 'destination', 'Westerkerk'), true);
 });

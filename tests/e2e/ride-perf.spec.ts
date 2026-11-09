@@ -9,6 +9,8 @@ import { openRoute, useEngine } from './helpers';
 //   PERF_RIDE=1 PW_PORT=4388 npx playwright test ride-perf --project=iphone
 // Optional: PERF_PROFILE=1 adds a CDP CPU profile aggregated by self time
 // (ignore the ~1.7 s Profiler.start stall; see the perf memory note).
+// Optional: PERF_LABEL_SPLIT=1 times the label overlay's steps (startPlan, stepPlan,
+// finishPlan, place, ...) as `labelSplit` and adds its `labelStats` (#287).
 //
 // Each variant rides the same seeded route in chase view for 12 s with the CPU
 // throttled 4x on the iphone project, and records rAF deltas plus wrapper
@@ -88,6 +90,15 @@ async function instrument(page: Page) {
     else wrap(game.hud, 'drawCityOverview', 'minimap');
     // The POI label overlay's per-frame handler (plan, occlusion picks, placement).
     if (vm._labelOverlay?.frame) wrap(vm._labelOverlay, 'frame', 'labelFrame');
+    // PERF_LABEL_SPLIT=1: the overlay's steps, each in its own bucket (labelSplit in the JSON).
+    if (w.__perfLabelSplit && vm._labelOverlay) {
+      const o = vm._labelOverlay;
+      for (const key of ['startPlan', 'stepPlan', 'finishPlan', 'place', 'rebuildCandidates', 'rules', 'pick', 'syncPills', 'hudRects', 'size', 'hideReplacedLayers', 'syncCovered', 'fit']) {
+        if (typeof o[key] !== 'function') continue;
+        t[`label.${key}`] = []; wrap(o, key, `label.${key}`);
+      }
+      if (o.shields?.frame) { t['label.shields'] = []; wrap(o.shields, 'frame', 'label.shields'); }
+    }
     const layer = vm._signatureLandmarks?.layer;
     if (layer?.render && !vm._sharedFrame) wrap(layer, 'render', 'landmarkRender');
     // All of our three.js drawing, either as the legacy per-feature layers or
@@ -122,6 +133,7 @@ for (const variant of variants) {
     // OWN_GROUND=1|0 and RECIPE_TILES=1|0 force the own ground and the recipe-tile near tier (both imply the shared frame).
     if (process.env.OWN_GROUND) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOwnGround = on; }, process.env.OWN_GROUND === '1');
     if (process.env.OVERVIEW_TILES) await page.addInitScript((on: boolean) => { (window as any).__canalRecallOverviewTiles = on; }, process.env.OVERVIEW_TILES === '1');
+    if (process.env.PERF_LABEL_SPLIT) await page.addInitScript(() => { (window as any).__perfLabelSplit = true; });
     if (process.env.POPIN_FLAGS) await page.addInitScript(flags => Object.assign(window, flags), popInFlags());
     if (process.env.RECIPE_TILES) await page.addInitScript((on: boolean) => { (window as any).__canalRecallRecipeTiles = on; }, process.env.RECIPE_TILES === '1');
     const bundles = process.env.BUNDLES_DIR;
@@ -159,7 +171,7 @@ for (const variant of variants) {
       const l = w.canalRecallGame.vectorMap._signatureLandmarks;
       const three = w.canalRecallGame.vectorMap._threeBuildings?.stats?.();
       const mem = (performance as any).memory;
-      return { t: w.__perf, shown: l?.shown?.size ?? 0, entries: l?._entries?.length ?? 0, three, heapMB: mem ? Math.round(mem.usedJSHeapSize / 1048576) : null };
+      return { labelStats: w.__perfLabelSplit ? w.canalRecallGame.vectorMap._labelOverlay?.stats ?? null : null, t: w.__perf, shown: l?.shown?.size ?? 0, entries: l?._entries?.length ?? 0, three, heapMB: mem ? Math.round(mem.usedJSHeapSize / 1048576) : null };
     });
     let hot: Array<{ fn: string; selfMs: number }> = [];
     if (profiling) {
@@ -183,6 +195,7 @@ for (const variant of variants) {
       moveend: summary(raw.t.moveend), move: summary(raw.t.move),
       minimap: { ...summary(raw.t.minimap), p99: +pick(raw.t.minimap, 0.99).toFixed(2), maxMs: +Math.max(0, ...raw.t.minimap).toFixed(1) },
       gameRender: summary(raw.t.gameRender),
+      ...(process.env.PERF_LABEL_SPLIT ? { labelStats: raw.labelStats, labelSplit: Object.fromEntries(Object.keys(raw.t).filter(k => k.startsWith('label.')).map(k => [k.slice(6), { ...summary(raw.t[k]), maxMs: +Math.max(0, ...raw.t[k]).toFixed(1) }])) } : {}),
       landmarksShown: raw.shown, heapMB: raw.heapMB, threeBuildings: raw.three, hot,
       // Machine load (1-min average) around the measured ride; numbers taken above ~20 are not comparable.
       load: { before: +loadBefore.toFixed(1), after: +loadavg()[0].toFixed(1) },

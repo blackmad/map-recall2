@@ -98,11 +98,24 @@ function withheldIndex(names: readonly string[]): SpoilerIndex {
  *  it is about to ask about. */
 export function withheldNames(game: {
   quizPromptName?: string | null; quizWithheldNames?: readonly string[] | null; landmarkApproachWithheld?: readonly string[] | null;
-}): string[] {
-  const asked = game.quizPromptName && game.quizWithheldNames?.length ? game.quizWithheldNames : [];
-  const approach = game.landmarkApproachWithheld?.length ? game.landmarkApproachWithheld : [];
-  if (!approach.length) return [...asked];
-  return [...new Set([...asked, ...approach])];
+}): readonly string[] {
+  const asked = game.quizPromptName && game.quizWithheldNames?.length ? game.quizWithheldNames : NO_NAMES;
+  const approach = game.landmarkApproachWithheld?.length ? game.landmarkApproachWithheld : NO_NAMES;
+  // The label overlay asks every plan (#287): the same inputs hand back the
+  // same array, so callers can cache per withheld set by identity.
+  const last = lastWithheld;
+  if (last && last.asked === asked && last.approach === approach && sameNames(last.askedCopy, asked) && sameNames(last.approachCopy, approach)) return last.out;
+  const out = Object.freeze(approach.length ? [...new Set([...asked, ...approach])] : [...asked]);
+  lastWithheld = { asked, approach, askedCopy: [...asked], approachCopy: [...approach], out };
+  return out;
+}
+const NO_NAMES: readonly string[] = Object.freeze([]);
+let lastWithheld: { asked: readonly string[]; approach: readonly string[]; askedCopy: string[]; approachCopy: string[]; out: readonly string[] } | null = null;
+/** The game may refill an array in place; compare its contents too. */
+function sameNames(a: readonly string[], b: readonly string[]): boolean {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+  return true;
 }
 
 export function neighbourhoodLabelVisible(ctx: LabelContext): boolean {

@@ -50,10 +50,22 @@ export function createLedger(): LabelDrawLedger {
 export function setDrawn(ledger: LabelDrawLedger, layer: string, names: Iterable<string>, at: number): void {
   const next = new Set<string>();
   for (const name of names) { const key = nameKey(name || ''); if (key) next.add(key); }
+  setDrawnKeys(ledger, layer, next, at);
+}
+
+/** setDrawn with the name keys already made (`nameKey`, cached by the caller).
+ *  An unchanged set writes nothing: a name on screen reads as `now` from
+ *  `current`, and its lastDrawn is stamped when it leaves (#287). */
+export function setDrawnKeys(ledger: LabelDrawLedger, layer: string, next: ReadonlySet<string>, at: number): void {
   const prior = ledger.current.get(layer);
+  if (prior && prior.size === next.size) {
+    let same = true;
+    for (const key of next) if (!prior.has(key)) { same = false; break; }
+    if (same) return;
+  }
   if (prior) for (const key of prior) if (!next.has(key)) ledger.lastDrawn.set(key, at);
   for (const key of next) ledger.lastDrawn.set(key, at);
-  ledger.current.set(layer, next);
+  ledger.current.set(layer, new Set(next));
   // Forget what can no longer veto anything.
   if (ledger.lastDrawn.size > 2000) {
     for (const [key, time] of ledger.lastDrawn) if (at - time > LABEL_RECENT_MS * 2) ledger.lastDrawn.delete(key);
