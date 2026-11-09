@@ -204,3 +204,27 @@ test('the dealt leg is kept for a reload and cleared on arrival', () => {
   assert.deepEqual(loadRun(storage, 1000).run?.nextLeg, leg);
   assert.equal(addStop(run, arrival('Hortus', 100), 2000).run.nextLeg, null);
 });
+
+test('a stop keeps its position, buurt and a thinned leg for the run share picture (#295)', async () => {
+  const { thinLegPath, RUN_PATH_POINTS } = await import('./chainedRun.ts');
+  const long = Array.from({ length: 500 }, (_, i) => [52.37 + i * 1e-5, 4.89 + i * 2e-5] as [number, number]);
+  const thin = thinLegPath(long);
+  assert.equal(thin.length, RUN_PATH_POINTS);
+  assert.deepEqual(thin[0], [52.37, 4.89]);
+  assert.deepEqual(thin[thin.length - 1], [Math.round((52.37 + 499e-5) * 1e5) / 1e5, Math.round((4.89 + 998e-5) * 1e5) / 1e5]);
+  assert.deepEqual(thinLegPath([[1, 2], [1, 2], [NaN, 3], [1.000001, 2]]), [[1, 2]]);
+  const { stop } = addStop(null, { id: 'a', name: 'A', fromName: 'S', points: 10, bestStreak: 0, names: [], lat: 52.37, lng: 4.89, area: 'Jordaan', path: long }, 1000);
+  assert.equal(stop.lat, 52.37);
+  assert.equal(stop.area, 'Jordaan');
+  assert.equal(stop.path?.length, RUN_PATH_POINTS);
+  const bare = addStop(null, { id: 'a', name: 'A', fromName: 'S', points: 10, bestStreak: 0, names: [] }, 1000).stop;
+  assert.ok(!('lat' in bare) && !('path' in bare) && !('area' in bare), 'no geometry, no keys');
+});
+
+test('runLine with chain: false leaves the last stop\'s bonus out (the run share picture)', () => {
+  let run = addStop(null, { id: 'a', name: 'A', fromName: 'S', points: 100, bestStreak: 0, names: ['x'] }, 1000).run;
+  run = addStop(run, { id: 'b', name: 'B', fromName: 'A', points: 100, bestStreak: 0, names: ['y'] }, 2000).run;
+  assert.match(runLine(run, { calm: false }), /chain/);
+  assert.doesNotMatch(runLine(run, { calm: false, chain: false }), /chain/);
+  assert.match(runLine(run, { calm: false, chain: false }), /205 points/);
+});

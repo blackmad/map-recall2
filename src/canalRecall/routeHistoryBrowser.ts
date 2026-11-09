@@ -19,6 +19,7 @@ import {
   renderShareCard, shareCardFileName, SHARE_CARD_LABELS_EN,
   type ShareCardInput, type ShareCardLabels, type ShareCardPoint, type ShareCardRibbon, type ShareTrail,
 } from './shareCard';
+import { renderRunShareCard, runPlace, runShareFileName, RUN_SHARE_LABELS_EN, type RunShareInput } from './runShareCard';
 
 interface Poi { id?: string; name?: string; lat?: number; lng?: number }
 
@@ -106,6 +107,9 @@ export interface ShareHost {
   _shareCard?: PreparedCard | null;
   /** The buurt the rider is in (landmarkRuntime); at arrival, the destination's. */
   currentNeighborhood?: string | null;
+  /** The run card on show (chainedRunRuntime.ts): its share is the run's picture (#295). */
+  _runCard?: { stopCount: number } | null;
+  _runShareInput?(): RunShareInput | null;
 }
 
 const FINISHED = 5;
@@ -175,12 +179,31 @@ function hiddenKey(game: ShareHost): string {
  */
 export function prepareShareCard(game: ShareHost): PreparedCard | null {
   if (!shareCardEnabled() || game.state !== FINISHED || typeof document === 'undefined') return null;
+  if (game._runCard) return prepareRunShareCard(game);
   const input = shareCardInput(game);
   const key = `${hiddenKey(game)}#${input.destination}#${input.area ?? ''}#${input.route.length}#${Math.round(input.distanceM)}`;
   if (game._shareCard && game._shareCard.key === key) return game._shareCard;
   const { canvas, layout, ms } = renderShareCard(input, (w, h) => Object.assign(document.createElement('canvas'), { width: w, height: h }));
   const card: PreparedCard = {
     key, blob: null, fileName: shareCardFileName(input.destination), ms,
+    width: canvas.width, height: canvas.height, texts: layout.texts.map(t => t.text),
+  };
+  game._shareCard = card;
+  (window as unknown as { __canalShareCard?: { canvas: HTMLCanvasElement; card: PreparedCard } }).__canalShareCard = { canvas, card };
+  canvas.toBlob(blob => { card.blob = blob; }, 'image/png');
+  return card;
+}
+
+/** The run card's picture (#295): every leg, the stops numbered, RUN over the buurt or city. */
+function prepareRunShareCard(game: ShareHost): PreparedCard | null {
+  const input = game._runShareInput?.();
+  if (!input || !input.stops.length) return null;
+  const key = `run#${hiddenKey(game)}#${input.stops.map(s => `${s.number}:${s.name}:${s.path?.length ?? 0}`).join(',')}#${input.summary}`;
+  if (game._shareCard && game._shareCard.key === key) return game._shareCard;
+  const { canvas, layout, ms } = renderRunShareCard(input, (w, h) => Object.assign(document.createElement('canvas'), { width: w, height: h }));
+  const place = runPlace(input, { ...RUN_SHARE_LABELS_EN, ...input.labels });
+  const card: PreparedCard = {
+    key, blob: null, fileName: runShareFileName(game._runCard?.stopCount ?? input.stops.length, place), ms,
     width: canvas.width, height: canvas.height, texts: layout.texts.map(t => t.text),
   };
   game._shareCard = card;

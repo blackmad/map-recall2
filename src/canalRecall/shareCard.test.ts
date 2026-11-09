@@ -140,3 +140,111 @@ test('no two lines overlap, nor a line and the ribbon', async () => {
     assert.ok(boxes.every(b => b.x1 <= SHARE_CARD_W - 40), `${destination}: every line stays inside the border`);
   }
 });
+
+// --- The run's share picture (#295): runShareCard.ts, the same paper and type as the card above. ---
+import {
+  layoutRunShareCard, renderRunShareCard, runLegs, runPlace, runShareFileName, worldToLatLng, RUN_SHARE_LABELS_EN,
+  type RunShareInput, type RunShareStop,
+} from './runShareCard.ts';
+import { projectToWorld } from './osm/roadProjection.ts';
+
+/** Six stops round the centre, each leg a dog-leg of three points. */
+function runStops(count: number): RunShareStop[] {
+  const places: Array<[string, number, number]> = [
+    ['Westerkerk', 52.3746, 4.8840], ['Rijksmuseum', 52.3600, 4.8852], ['Heineken Experience', 52.3579, 4.8918],
+    ['Hortus Botanicus', 52.3667, 4.9080], ['Scheepvaartmuseum', 52.3717, 4.9152], ['Centraal Station', 52.3791, 4.9003],
+  ];
+  let prev: [number, number] = [52.3780, 4.8830];
+  return places.slice(0, count).map(([name, lat, lng], i) => {
+    const path: Array<[number, number]> = [prev, [prev[0], lng], [lat, lng]];
+    prev = [lat, lng];
+    return { number: i + 1, name, lat, lng, area: 'Centrum', path };
+  });
+}
+const runInput = (count: number, extra: Partial<RunShareInput> = {}): RunShareInput => ({
+  stops: runStops(count), summary: `${count} stops  ·  ${count + 2} names  ·  ${count * 210} points`, city: 'Amsterdam', ...extra,
+});
+const boxesOf = (texts: Array<{ text: string; font: string; sizePx: number; x: number; y: number; align: string; role: string }>, measure = (s: string, f: string, px: number) => s.length * px * (/Condensed|Narrow/.test(f) ? 0.46 : 0.6)) =>
+  texts.map(t => {
+    const w = measure(t.text, t.font, t.sizePx);
+    const x0 = t.align === 'right' ? t.x - w : t.align === 'center' ? t.x - w / 2 : t.x;
+    return { t, x0, x1: x0 + w, y0: t.y - t.sizePx * 0.78, y1: t.y + t.sizePx * 0.12 };
+  });
+
+test('run share: 1200×630, RUN over the shared buurt, the run line, every stop numbered, the site', () => {
+  const { canvas, layout } = renderRunShareCard(runInput(3), fakeCanvas);
+  assert.equal(canvas.width, 1200);
+  assert.equal(canvas.height, 630);
+  assert.deepEqual(canvas.drawn, layout.texts.map(t => t.text));
+  assert.ok(canvas.drawn.some(text => text.replace(/\s+/g, ' ') === '3 stops · 5 names · 630 points'), 'the run line, on one line');
+  for (const want of ['RUN', 'Centrum', 'Westerkerk', 'Rijksmuseum', 'Heineken Experience', 'rideamsterdam.nl']) {
+    assert.ok(canvas.drawn.includes(want), `${want} is on the card`);
+  }
+  assert.deepEqual(layout.dots.map(d => d.number), [1, 2, 3]);
+  assert.deepEqual(layout.dots.map(d => d.last), [false, false, true]);
+  assert.equal(layout.legs.length, 3);
+  assert.ok(layout.start, 'the run start is ringed');
+  for (const dot of layout.dots) {
+    assert.ok(dot.x - dot.r >= layout.panel.x && dot.x + dot.r <= layout.panel.x + layout.panel.w, 'dots stay on the plate');
+    assert.ok(dot.y - dot.r >= layout.panel.y && dot.y + dot.r <= layout.panel.y + layout.panel.h, 'dots stay on the plate');
+  }
+  assert.ok(layout.texts.every(t => t.sizePx >= SHARE_CARD_MIN_FONT_PX), 'legible at 25 %');
+});
+
+test('run share: stops in different buurten read the city; a withheld buurt reads the city', () => {
+  const mixed = runStops(3).map((s, i) => ({ ...s, area: ['Jordaan', 'Museumkwartier', 'De Pijp'][i] }));
+  assert.equal(runPlace({ ...runInput(3), stops: mixed }, RUN_SHARE_LABELS_EN), 'Amsterdam');
+  assert.equal(runPlace(runInput(3, { hiddenNames: ['Centrum'] }), RUN_SHARE_LABELS_EN), 'Amsterdam');
+  assert.equal(runPlace(runInput(3, { city: null, hiddenNames: ['Centrum'] }), RUN_SHARE_LABELS_EN), 'Amsterdam');
+});
+
+test('run share: a withheld stop name reads "Stop N" and is drawn nowhere', () => {
+  const { canvas } = renderRunShareCard(runInput(3, { hiddenNames: ['Rijksmuseum', null, ''] }), fakeCanvas);
+  assert.ok(canvas.drawn.includes('Stop 2'));
+  assert.ok(canvas.drawn.every(text => !/rijksmuseum/i.test(text)), canvas.drawn.join(' | '));
+});
+
+test('run share: 1, 3, 6 and 12 stops and a long buurt never overlap and stay inside the border', () => {
+  const long = 'Burgwallen-Oude Zijde en de Nieuwmarkt rond de Waag';
+  for (const [count, area] of [[1, 'Centrum'], [3, 'Centrum'], [6, 'Centrum'], [6, long], [12, long]] as Array<[number, string]>) {
+    const stops = Array.from({ length: count }, (_, i) => ({ ...runStops(6)[i % 6], number: i + 1, area, name: i === 2 ? 'Stedelijk Museum Amsterdam aan het Museumplein' : runStops(6)[i % 6].name }));
+    const layout = layoutRunShareCard({ ...runInput(count), stops });
+    const boxes = boxesOf(layout.texts).filter(b => b.t.role !== 'dot');
+    const hit = (a: { x0: number; x1: number; y0: number; y1: number }, b: typeof a) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1;
+    boxes.forEach((a, i) => boxes.slice(i + 1).forEach(b => {
+      if (a.t.role === 'stopNumber' || b.t.role === 'stopNumber') return; // numbers sit inside their discs
+      assert.ok(!hit(a, b), `${count}/${area}: "${a.t.text}" overlaps "${b.t.text}"`);
+    }));
+    assert.ok(boxes.every(b => b.x1 <= SHARE_CARD_W - 40 && b.y1 <= SHARE_CARD_H - 30), `${count}: inside the border`);
+    const rows = layout.texts.filter(t => t.role === 'stop').length;
+    const earlier = layout.texts.find(t => t.role === 'earlier');
+    assert.equal(rows + (earlier ? Number(/\d+/.exec(earlier.text)![0]) : 0), count, `${count}: every stop listed or counted`);
+    if (count <= 6 && area === 'Centrum') assert.equal(earlier, undefined, `${count} stops all listed`);
+    assert.equal(layout.dots.length, count);
+    assert.ok(layout.texts.every(t => t.sizePx >= SHARE_CARD_MIN_FONT_PX));
+  }
+});
+
+test('run share: legs fall back to straight lines from the previous stop, then from the start', () => {
+  const stops = runStops(3).map(({ path: _path, ...s }) => s);
+  const legs = runLegs({ stops, start: { lat: 52.378, lng: 4.883 } });
+  assert.equal(legs.length, 3);
+  assert.deepEqual(legs[0], [[52.378, 4.883], [52.3746, 4.884]]);
+  assert.deepEqual(legs[1][0], [52.3746, 4.884]);
+  // An old run saved before #295 (no geometry at all) still draws its numbered list.
+  const layout = layoutRunShareCard({ ...runInput(2), stops: runStops(2).map(({ number, name }) => ({ number, name })) });
+  assert.equal(layout.legs.length, 0);
+  assert.equal(layout.texts.filter(t => t.role === 'stop').length, 2);
+});
+
+test('run share: worldToLatLng inverts the road projection with its offset', () => {
+  const centre = { lat: 52.37, lon: 4.89 };
+  const p = projectToWorld({ lat: 52.3746, lon: 4.884 }, centre);
+  const [lat, lng] = worldToLatLng({ x: p.x + 120, y: p.y - 40 }, { centerLat: 52.37, centerLng: 4.89, offsetX: 120, offsetY: -40 })!;
+  assert.ok(Math.abs(lat - 52.3746) < 1e-9 && Math.abs(lng - 4.884) < 1e-9);
+  assert.equal(worldToLatLng({ x: 1, y: 1 }, { centerLat: NaN, centerLng: 4.9 }), null);
+});
+
+test('run share: file name', () => {
+  assert.equal(runShareFileName(3, 'De Pijp'), 'ride-amsterdam-run-3-stops-de-pijp.png');
+});

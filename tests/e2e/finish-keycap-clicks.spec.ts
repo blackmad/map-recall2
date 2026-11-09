@@ -82,7 +82,11 @@ test('desktop: every arrival-card keycap answers a mouse click', async ({ page }
   await page.waitForFunction(() => !!(window as any).canalRecallGame._runCard, null, { timeout: 5_000 });
   await page.waitForTimeout(300);
   await page.screenshot({ path: shot('after-end-run') });
-  expect(await page.evaluate(() => (window as any).canalRecallGame._finishButtonBounds.map((b: Bounds) => b.id))).toEqual(['again', 'route']);
+  expect(await page.evaluate(() => (window as any).canalRecallGame._finishButtonBounds.map((b: Bounds) => b.id))).toEqual(['again', 'route', 'copy']);
+  // Share run (#295): a mouse click on its keycap shares, and the run card stays.
+  await clickKeycap(page, 'copy');
+  await expect.poll(() => page.evaluate(() => (window as any).__shared)).toBe(2);
+  expect(await page.evaluate(() => !!(window as any).canalRecallGame._runCard)).toBe(true);
 
   // New run from the run card, then Route setup from the next arrival card.
   await clickKeycap(page, 'again');

@@ -153,7 +153,8 @@ test('a three-stop run: Next stop, a reload, End run and the run card', async ({
   expect(card.run?.stopCount).toBe(3);
   expect(card.open).toBeNull();
   expect(card.last?.stopCount).toBe(3);
-  expect(card.buttons).toEqual(['again', 'route']);
+  // Share run (#295) joins when the last leg has its link, as every dealt route does (#282).
+  expect(card.buttons).toEqual(['again', 'route', 'copy']);
   expect(card.card.y + card.card.h).toBeLessThanOrEqual(card.viewport.h);
   expect(card.session.stopsPerRun).toEqual([3]);
   expect(card.session.runsEnded).toBe(1);

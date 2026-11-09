@@ -97,12 +97,16 @@ export const approximateMeasure: Measure = (text, font, sizePx) =>
 
 export const FONT_PLAQUE = '"Barlow Condensed", "Arial Narrow", "Helvetica Neue Condensed", sans-serif';
 export const FONT_MONO = '"JetBrains Mono", Menlo, Consolas, monospace';
-const INK = '#1f1c17';
-const MUTED = '#6b5f4f';
-const ROUTE_INK = '#24405f';
-const FINISH = '#b4532a';
+export const SHARE_INK = '#1f1c17';
+export const SHARE_MUTED = '#6b5f4f';
+export const SHARE_ROUTE_INK = '#24405f';
+export const SHARE_FINISH = '#b4532a';
+const INK = SHARE_INK;
+const MUTED = SHARE_MUTED;
+const ROUTE_INK = SHARE_ROUTE_INK;
+const FINISH = SHARE_FINISH;
 
-function normalise(text: string): string {
+export function normalise(text: string): string {
   return text.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
 
@@ -142,10 +146,11 @@ export function thinRoute(route: readonly ShareCardPoint[], max = 600): ShareCar
   return Array.from({ length: max }, (_, i) => clean[Math.round(i * step)]);
 }
 
-/** Fits the route into the panel, preserving its aspect and north-up orientation. */
-export function fitRoute(route: readonly ShareCardPoint[], panel: { x: number; y: number; w: number; h: number }, inset = 36): Array<[number, number]> {
-  const pts = thinRoute(route);
-  if (pts.length < 2) return [];
+export interface FitTransform { minX: number; minY: number; scale: number; ox: number; oy: number }
+
+/** The north-up, aspect-preserving transform that fits `pts` into the panel (null for fewer than two points). */
+export function fitTransform(pts: readonly ShareCardPoint[], panel: { x: number; y: number; w: number; h: number }, inset = 36): FitTransform | null {
+  if (pts.length < 2) return null;
   let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
   for (const p of pts) { minX = Math.min(minX, p.x); maxX = Math.max(maxX, p.x); minY = Math.min(minY, p.y); maxY = Math.max(maxY, p.y); }
   const spanX = Math.max(maxX - minX, 1e-6), spanY = Math.max(maxY - minY, 1e-6);
@@ -153,11 +158,23 @@ export function fitRoute(route: readonly ShareCardPoint[], panel: { x: number; y
   const scale = Math.min(boxW / spanX, boxH / spanY);
   const ox = panel.x + inset + (boxW - spanX * scale) / 2;
   const oy = panel.y + inset + (boxH - spanY * scale) / 2;
-  return pts.map(p => [Math.round((ox + (p.x - minX) * scale) * 10) / 10, Math.round((oy + (p.y - minY) * scale) * 10) / 10]);
+  return { minX, minY, scale, ox, oy };
+}
+
+/** A point through a {@link fitTransform}, rounded to 0.1 card px. */
+export function applyFit(f: FitTransform, p: ShareCardPoint): [number, number] {
+  return [Math.round((f.ox + (p.x - f.minX) * f.scale) * 10) / 10, Math.round((f.oy + (p.y - f.minY) * f.scale) * 10) / 10];
+}
+
+/** Fits the route into the panel, preserving its aspect and north-up orientation. */
+export function fitRoute(route: readonly ShareCardPoint[], panel: { x: number; y: number; w: number; h: number }, inset = 36): Array<[number, number]> {
+  const pts = thinRoute(route);
+  const f = fitTransform(pts, panel, inset);
+  return f ? pts.map(p => applyFit(f, p)) : [];
 }
 
 /** Splits `text` into at most `maxLines` lines no wider than `width`; the last line is ellipsised. */
-function wrap(text: string, width: number, maxLines: number, measure: (t: string) => number): string[] {
+export function wrapLines(text: string, width: number, maxLines: number, measure: (t: string) => number): string[] {
   const words = text.split(/\s+/).filter(Boolean);
   const lines: string[] = [];
   let line = '';
@@ -204,7 +221,7 @@ export function layoutShareCard(input: ShareCardInput, measure: Measure = approx
 
   // One line from 64 px; else two lines from 76 down to 56 px; else three at
   // 52 or 48 px; only then the third line is cut at a word with an ellipsis.
-  const fit = (px: number, maxLines: number) => wrap(destination, colW, maxLines, t => measure(t, `800 ${px}px ${FONT_PLAQUE}`, px));
+  const fit = (px: number, maxLines: number) => wrapLines(destination, colW, maxLines, t => measure(t, `800 ${px}px ${FONT_PLAQUE}`, px));
   const clean = (ls: string[]) => ls.every(l => !l.endsWith('…'));
   const attempts: Array<[number, number]> = [
     ...[76, 72, 68, 64].map(px => [px, 1] as [number, number]),
@@ -278,7 +295,8 @@ export interface ShareCardContext {
   measureText?(text: string): { width: number };
 }
 
-function paper(ctx: ShareCardContext, W: number, H: number): void {
+/** The postcard paper: linen wash, hatch and the inner border. */
+export function drawSharePaper(ctx: ShareCardContext, W: number, H: number): void {
   const style = LINEN_ARCH;
   const wash = ctx.createLinearGradient(0, 0, 0, H);
   wash.addColorStop(0, style.paperTop);
@@ -301,7 +319,7 @@ function paper(ctx: ShareCardContext, W: number, H: number): void {
   ctx.strokeRect(18, 18, W - 36, H - 36);
 }
 
-function polyline(ctx: ShareCardContext, pts: Array<[number, number]>): void {
+export function polyline(ctx: ShareCardContext, pts: Array<[number, number]>): void {
   ctx.beginPath();
   pts.forEach(([x, y], i) => (i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)));
   ctx.stroke();
@@ -309,7 +327,7 @@ function polyline(ctx: ShareCardContext, pts: Array<[number, number]>): void {
 
 export function drawShareCard(ctx: ShareCardContext, layout: ShareCardLayout): void {
   const { width: W, height: H, panel, route } = layout;
-  paper(ctx, W, H);
+  drawSharePaper(ctx, W, H);
 
   // The silhouette panel: a faint plate, then the route as a thick ink line.
   ctx.fillStyle = 'rgba(255,252,244,0.55)';
