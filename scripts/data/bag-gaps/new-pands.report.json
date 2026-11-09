@@ -1,0 +1,173 @@
+{
+  "generatedAt": "2026-11-09",
+  "source": "https://service.pdok.nl/lv/bag/wfs/v2_0 (BAG pand, bouwjaar >= 2020, live)",
+  "livePands2020plus": 17764,
+  "undrawnInTiles": 1110,
+  "totalM2": 294406,
+  "byYear": {
+    "2020": {
+      "n": 34,
+      "m2": 4427
+    },
+    "2021": {
+      "n": 25,
+      "m2": 4993
+    },
+    "2022": {
+      "n": 51,
+      "m2": 8684
+    },
+    "2023": {
+      "n": 140,
+      "m2": 21620
+    },
+    "2024": {
+      "n": 70,
+      "m2": 29031
+    },
+    "2025": {
+      "n": 428,
+      "m2": 93841
+    },
+    "2026": {
+      "n": 362,
+      "m2": 131810
+    }
+  },
+  "bySource": {
+    "neighbour-median": {
+      "n": 453,
+      "m2": 248585
+    },
+    "area-default": {
+      "n": 657,
+      "m2": 45821
+    }
+  },
+  "byBuurt": {
+    "(outside boundaries)": {
+      "n": 933,
+      "m2": 171593
+    },
+    "Nieuw-West": {
+      "n": 42,
+      "m2": 31270
+    },
+    "Overhoeks": {
+      "n": 5,
+      "m2": 20726
+    },
+    "Centrum": {
+      "n": 5,
+      "m2": 17337
+    },
+    "Noord": {
+      "n": 27,
+      "m2": 15524
+    },
+    "Frederik Hendrikbuurt": {
+      "n": 1,
+      "m2": 11933
+    },
+    "Zuidoost": {
+      "n": 17,
+      "m2": 10514
+    },
+    "Oost": {
+      "n": 17,
+      "m2": 4260
+    },
+    "Westpoort": {
+      "n": 5,
+      "m2": 2582
+    },
+    "IJburg": {
+      "n": 10,
+      "m2": 2027
+    },
+    "Zuid": {
+      "n": 1,
+      "m2": 1649
+    },
+    "Weesp": {
+      "n": 19,
+      "m2": 1171
+    },
+    "Karlskrona-eiland": {
+      "n": 1,
+      "m2": 1129
+    },
+    "Oostenburg": {
+      "n": 1,
+      "m2": 708
+    },
+    "Slotervaart": {
+      "n": 1,
+      "m2": 530
+    },
+    "Marineterrein": {
+      "n": 3,
+      "m2": 346
+    },
+    "Museumkwartier": {
+      "n": 2,
+      "m2": 300
+    },
+    "Zuidas": {
+      "n": 2,
+      "m2": 202
+    },
+    "Willemspark": {
+      "n": 3,
+      "m2": 156
+    },
+    "Grachtengordel": {
+      "n": 2,
+      "m2": 73
+    },
+    "Buitenveldert": {
+      "n": 1,
+      "m2": 67
+    },
+    "Kinkerbuurt": {
+      "n": 1,
+      "m2": 64
+    },
+    "Westindische Buurt": {
+      "n": 3,
+      "m2": 59
+    },
+    "Apollobuurt": {
+      "n": 1,
+      "m2": 39
+    },
+    "Hoofddorppleinbuurt": {
+      "n": 1,
+      "m2": 29
+    },
+    "Landlust": {
+      "n": 1,
+      "m2": 28
+    },
+    "Overtoomse Sluis": {
+      "n": 1,
+      "m2": 28
+    },
+    "Weesperbuurt": {
+      "n": 1,
+      "m2": 19
+    },
+    "Oude Pijp": {
+      "n": 1,
+      "m2": 18
+    },
+    "Nieuwe Pijp": {
+      "n": 1,
+      "m2": 13
+    },
+    "Vivaldi": {
+      "n": 1,
+      "m2": 12
+    }
+  }
+}
