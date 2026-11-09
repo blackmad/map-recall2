@@ -864,6 +864,20 @@
     "ride.landmarkNoticed.action": "Noticed",
     "ride.landmarkNoticed.done": "Noted",
     "ride.researchSource": "Research source \u2197",
+    "poi.chip.art": "Artwork",
+    "poi.chip.food": "Food and drink",
+    "poi.chip.shop": "Shop",
+    "poi.chip.lodging": "Lodging",
+    "poi.chip.culture": "Culture",
+    "poi.chip.education": "Education",
+    "poi.chip.civic": "Public service",
+    "poi.chip.bike": "Cycling",
+    "poi.chip.worship": "Place of worship",
+    "poi.chip.leisure": "Leisure",
+    "poi.chip.health": "Health",
+    "poi.chip.market": "Market",
+    "poi.chip.place": "Place",
+    "poi.seriesPart": "Part {n} of {m} of {series}.",
     "ride.rules.title": "HOW TO PLAY",
     "ride.rules.bike1": "1. Use WASD or the arrow keys to steer the bike",
     "ride.rules.bike2": "2. Stay on mapped streets; the road guard keeps you on the network",
@@ -1628,6 +1642,20 @@
     "ride.landmarkNoticed.action": "Gezien",
     "ride.landmarkNoticed.done": "Genoteerd",
     "ride.researchSource": "Bron \u2197",
+    "poi.chip.art": "Kunstwerk",
+    "poi.chip.food": "Eten en drinken",
+    "poi.chip.shop": "Winkel",
+    "poi.chip.lodging": "Overnachting",
+    "poi.chip.culture": "Cultuur",
+    "poi.chip.education": "Onderwijs",
+    "poi.chip.civic": "Publieke dienst",
+    "poi.chip.bike": "Fietsen",
+    "poi.chip.worship": "Gebedshuis",
+    "poi.chip.leisure": "Vrije tijd",
+    "poi.chip.health": "Gezondheid",
+    "poi.chip.market": "Markt",
+    "poi.chip.place": "Plek",
+    "poi.seriesPart": "Deel {n} van {m} van {series}.",
     "ride.rules.title": "HOE SPEEL JE",
     "ride.rules.bike1": "1. Stuur de fiets met WASD of de pijltjestoetsen",
     "ride.rules.bike2": "2. Blijf op gemapte straten; de wegbeveiliging houdt je op het netwerk",
@@ -1971,6 +1999,30 @@
     return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
   }
 
+  // src/canalRecall/poiCardPolicy.ts
+  var isLabelOnly = (row) => !row[6] && !row[7] && !row[8];
+  var artHasSubstance = (art) => !!art && !!(art.e || art.a || art.y || art.s);
+  var hasCardSubstance = (row, art) => !isLabelOnly(row) || row[4] === "art" && artHasSubstance(art);
+  var CATEGORY_CHIP = {
+    art: "artwork",
+    food: "food and drink",
+    shop: "shop",
+    lodging: "lodging",
+    culture: "culture",
+    education: "education",
+    civic: "public service",
+    bike: "cycling",
+    worship: "place of worship",
+    leisure: "leisure",
+    health: "health",
+    market: "market"
+  };
+  var poiChipKey = (category) => `poi.chip.${CATEGORY_CHIP[category] ? category : "place"}`;
+  function poiChipEnglish(row) {
+    const phrase = (row[5] || "").replace(/^(a|an|the)\s+/i, "").trim();
+    return (phrase || CATEGORY_CHIP[row[4]] || "place").toUpperCase();
+  }
+
   // src/canalRecall/clickPoiInfo.ts
   function validPoiWebsite(value) {
     if (typeof value !== "string" || !value.trim()) return "";
@@ -1996,6 +2048,7 @@
     const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
     return polygons.some((rings) => rings.length && inRing(point, rings[0]) && !rings.slice(1).some((hole) => inRing(point, hole)));
   }
+  var poiChipLabel = (row) => language() === "en" ? poiChipEnglish(row) : t(poiChipKey(row[4])).toUpperCase();
   var normalName = (name) => (name || "").normalize("NFC").toLocaleLowerCase("nl").trim();
   var osmUrl = (id) => `https://www.openstreetmap.org/${{ n: "node", w: "way", r: "relation" }[id[0]]}/${id.slice(1)}`;
   var cell = (lng, lat) => `${Math.floor(lng * 1e3)}/${Math.floor(lat * 1e3)}`;
@@ -2058,7 +2111,7 @@
     }
     card(building) {
       if (!building.footprint) return null;
-      const places = this.contained(building.footprint);
+      const places = this.contained(building.footprint).filter((row) => !isLabelOnly(row));
       if (!places.length) return null;
       const title = places.findIndex((row) => row[1] === building.name || row[5] === "a mall");
       if (title > 0) places.unshift(...places.splice(title, 1));
@@ -2071,6 +2124,7 @@ Map source: ${osmUrl(places[i][0])}`);
         id: `clicked-poi-${building.id}`,
         name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
         type: first[4],
+        typeLabel: poiChipLabel(first),
         detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ""}.`,
         longDetail: summaries.join("\n\n"),
         factTexts: paragraphs,
@@ -3002,6 +3056,7 @@ ${register}` : article.e,
   var cellOf = (lng, lat) => `${Math.floor(lng * 2e3)}:${Math.floor(lat * 4e3)}`;
   var StreetArtIndex = class {
     cells = /* @__PURE__ */ new Map();
+    ids = /* @__PURE__ */ new Map();
     size;
     constructor(file) {
       let n = 0;
@@ -3009,9 +3064,14 @@ ${register}` : article.e,
         if (!point || typeof point.name !== "string" || !Number.isFinite(point.lng) || !Number.isFinite(point.lat)) continue;
         const key = cellOf(point.lng, point.lat);
         (this.cells.get(key) ?? this.cells.set(key, []).get(key)).push(point);
+        if (point.id) this.ids.set(point.id, point);
         n++;
       }
       this.size = n;
+    }
+    /** The record for one OSM or Wikidata id: how a mapped artwork node finds its text. */
+    byId(id) {
+      return id && this.ids.get(id) || null;
     }
     nearest(lng, lat, radiusMetres = STREET_ART_CLICK_METRES) {
       const cx = Math.floor(lng * 2e3), cy = Math.floor(lat * 4e3);
@@ -3040,13 +3100,16 @@ ${register}` : article.e,
     installation: "An art installation",
     artwork: "An artwork"
   };
+  var streetArtKindPhrase = (k) => (KIND_LABEL[k] ?? "An artwork").toLowerCase();
   function streetArtFallbackDetail(point) {
     const by = point.a ? ` by ${point.a}` : "";
     const year = point.y ? ` (${point.y})` : "";
+    if (point.k === "artwork") return point.a ? `By ${point.a}${year}.` : point.y ? `From ${point.y}.` : "Mapped as public art.";
     return `${KIND_LABEL[point.k] ?? "An artwork"}${by}${year}, mapped here.`;
   }
   function streetArtCard(point, titleSpoils = false) {
-    const detail = point.e || streetArtFallbackDetail(point);
+    const part = point.s && point.n && point.m ? t("poi.seriesPart", { n: point.n, m: point.m, series: point.s }) : "";
+    const detail = part ? [part, point.e].filter(Boolean).join(" ") : point.e || streetArtFallbackDetail(point);
     const register = point.e && (point.a || point.y) ? streetArtFallbackDetail(point) : "";
     return {
       id: `street-art-${point.id}`,
@@ -7346,6 +7409,9 @@ ${register}` : detail,
     "streets.json",
     "water.json"
   ];
+  function safeLabelRow(host, name, building) {
+    return name ? host._clickPoiInfo?.named?.(name, building.lngLat) ?? null : null;
+  }
   var GameLandmarkRuntime = class {
     // ---- Clicking a building ----
     _inspectBuildingAt(clientX, clientY) {
@@ -7463,6 +7529,22 @@ ${register}` : detail,
         if (!article) this._requestBuildingFacts(building);
         return article ? this._poiCardWithArticle(mapped, article) : mapped;
       }
+      if (building.poi && !building.footprint) {
+        const labelled = safeLabelRow(this, buildingName, building);
+        if (labelled && !hasCardSubstance(labelled, this._streetArt?.byId(labelled[0]))) {
+          const under = building.pand;
+          if (!under) return null;
+          return this._cardForClickedBuilding({
+            id: under.id,
+            lngLat: building.lngLat,
+            footprint: under.footprint,
+            height: under.height,
+            featureTarget: under.featureTarget ?? null
+          });
+        }
+        const art = labelled && labelled[4] === "art" ? this._streetArt?.byId(labelled[0]) : null;
+        if (art && artHasSubstance(art)) return { ...streetArtCard(art, !!spoils?.call(this.vectorMap, art.name)), featureTarget: building.featureTarget ?? null };
+      }
       const pand = building.poi ? building.pand : void 0;
       let row = this._buildingFacts?.lookup(factsIdOf(building)) ?? null;
       const monument = row && row.length > 3 ? row[3] : void 0;
@@ -7472,7 +7554,8 @@ ${register}` : detail,
       }
       const safeName = buildingName && spoils?.call(this.vectorMap, buildingName) ? "" : buildingName;
       const labelRow = safeName && building.poi && !building.footprint ? this._clickPoiInfo?.named?.(safeName, building.lngLat) ?? null : null;
-      const place = labelRow ? { name: labelRow[1], kind: labelRow[5], address: labelRow[6] } : safeName && building.poi ? { name: safeName } : null;
+      const labelArt = labelRow && labelRow[4] === "art" ? this._streetArt?.byId(labelRow[0]) : null;
+      const place = labelRow ? { name: labelRow[1], kind: labelArt && labelArt.k !== "artwork" ? streetArtKindPhrase(labelArt.k) : labelRow[5], address: labelRow[6] } : safeName && building.poi ? { name: safeName } : null;
       const facts = describeBuilding(row, building.height ?? pand?.height, safeName, place);
       if (!row || !article) this._requestBuildingFacts(building);
       const id = `clicked-${building.id || building.lngLat.join("-")}`;
@@ -7489,7 +7572,8 @@ ${register}` : detail,
       return {
         id,
         name: facts.name,
-        type: "building",
+        type: labelRow ? labelRow[4] : "building",
+        ...labelRow ? { typeLabel: poiChipLabel(labelRow) } : {},
         detail: facts.detail,
         lngLat: building.lngLat,
         featureTarget,
@@ -7963,7 +8047,8 @@ ${lm.researchDetail}` : originalBody;
         chip.textContent = label;
         badges.appendChild(chip);
       };
-      if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, " "), "category");
+      if (lm.typeLabel) pushBadge(lm.typeLabel, "category");
+      else if (lm.type) pushBadge(lm.type.toUpperCase().replace(/_/g, " "), "category");
       if (lm.factKind) pushBadge(lm.factKind.toUpperCase(), "fact");
       if (lm.extractLang && lm.extractLang !== "en" && lm.extractLang !== language()) {
         pushBadge(`${lm.extractLang.toUpperCase()} \u2014 NOT TRANSLATED YET`, "lang");

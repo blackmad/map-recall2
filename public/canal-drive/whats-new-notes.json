@@ -3,6 +3,18 @@
   "notes": [
     {
       "date": "2026-11-09",
+      "title": "No more \"An artwork.\" cards",
+      "text": "Tapping a thin map label (a sculpture with nothing but its name) opened a BUILDING card that said only \"An artwork.\" It now opens the building under the label, or the sculpture's real story: the Brettensuite pieces along the Brettenpad show their route, artist and Wikipedia link.",
+      "images": [
+        {
+          "src": "ui/2026-11-09-d1-artwork-placeholders/iphone-brettensuite-before-after.jpg",
+          "alt": "Before: a BUILDING card reading An artwork. After: a SCULPTURE card with the Brettensuite series text and a Wikipedia link",
+          "caption": "Brettensuite 11/20, before and after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
       "title": "A dead end turns you round",
       "text": "Riding into the end of a park path whose real exit is a flight of steps (Javaplantsoen, from a player's screenshot) left the bike standing with the throttle open. After a second and a half of pushing forward without moving, the bike now turns itself round so you can ride on. The paths themselves are being added to the bike map next.",
       "images": []
