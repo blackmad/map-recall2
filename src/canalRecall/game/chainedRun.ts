@@ -213,6 +213,20 @@ export function withNextLeg(run: OpenRun, leg: RunLeg | null): OpenRun {
   return { ...run, nextLeg: leg };
 }
 
+export type LegEnd = { id: string; name: string; lat?: number; lng?: number; sharedEndpoint?: boolean } | null | undefined;
+
+/** The leg a reload can launch again: both ends real places with coordinates (not a share link's points). */
+export function rideLeg(from: LegEnd, to: LegEnd): RunLeg | null {
+  const end = (p: LegEnd) => (p && p.id && !p.sharedEndpoint && Number.isFinite(p.lat) && Number.isFinite(p.lng)
+    ? { id: p.id, name: p.name, lat: p.lat as number, lng: p.lng as number } : null);
+  const a = end(from), b = end(to);
+  return a && b && a.id !== b.id ? { from: a, to: b } : null;
+}
+
+export function sameLeg(a: RunLeg | null, b: RunLeg | null): boolean {
+  return !!a && !!b && a.from.id === b.from.id && a.to.id === b.to.id;
+}
+
 export type RunGameState = 'menu' | 'racing' | 'finished' | 'paused' | 'other';
 export type RunTransition = 'close' | 'pause' | 'resume' | null;
 

@@ -72,6 +72,7 @@ import { extendShareTrail } from '../shareCard';
 import { fitFooterItems, type FooterItem } from './footerFit';
 import { drawKeycapAction } from './keycapAction';
 import { formatRideDistance } from './rideDistance';
+import { remainingRouteDistance } from './routeRemaining';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -534,6 +535,20 @@ export class GamePresentationRuntime {
   /** The destination as the ride may show it: with any street or water name
    *  from this track hidden, so "Keizersgrachtkerk" cannot answer the
    *  Keizersgracht question. The arrival card still shows the real name. */
+  /**
+   * What the destination readout says is left (R2-10, #302): the planned route from the rider to the finish
+   * (routeRemaining.ts), so the start says the route's length, as the landing's Today's ride card does, and not
+   * the straight line. With no planned path, the straight line as before.
+   */
+  _hudDistanceToFinishPx(): number {
+    if (this.hud && !this.hud.formatKm) this.hud.formatKm = km => formatRideDistance(km, { routed: true });
+    const player = this.player;
+    if (!player) return 0;
+    const { distance, cache } = remainingRouteDistance(this.routePath, player, this.track.finishPoint, this._routeRemainingCache);
+    this._routeRemainingCache = cache;
+    return distance;
+  }
+
   _destinationLabel(): string {
     // A review stop's name is the answer; it shows only on arrival.
     if (isReviewStop(this.routeTo) && !this.routeTo.name) return REVIEW_STOP_LABEL;
@@ -894,7 +909,7 @@ export class GamePresentationRuntime {
         this.track.finishPoint.x, this.track.finishPoint.y, this.camera)
       : null;
     const destinationLabel = this._destinationLabel();
-    const distanceToFinish = this.track.getDistanceToFinish(player.x, player.y);
+    const distanceToFinish = this._hudDistanceToFinishPx();
     const merged = this._hudRects().destinationInRecall;
     this.hud.drawPlaque(ctx, {
       routeName: visibleRouteName,

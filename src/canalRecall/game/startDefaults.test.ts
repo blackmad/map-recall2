@@ -4,9 +4,11 @@ import { coercePreferences, defaultControlMode, defaultPreferences, parsePrefere
 
 const zoom = { min: 0.1, max: 1.3, defaultZoom: 0.6 };
 
-test('a fresh player starts on the boat, in chase', () => {
+test('a fresh player starts on a bike on streets, in chase (R2-9)', () => {
   const prefs = defaultPreferences(zoom);
-  assert.equal(prefs.travelMode, 'boat');
+  assert.equal(prefs.travelMode, 'car', 'street mode, presented as cycling');
+  assert.equal(parsePreferences(null, zoom).travelMode, 'car', 'empty storage resolves to the bike');
+  assert.equal(parsePreferences({ travelMode: 'boat' }, zoom).travelMode, 'boat', 'a chosen boat is kept');
   assert.equal(prefs.viewMode, 'chase');
 });
 

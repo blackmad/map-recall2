@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
-import { finishKeycapCentre, openRoute } from './helpers';
+import { finishKeycapCentre, openRoute, useBundlesDir } from './helpers';
+import { landingFixtureEntries } from '../../src/canalRecall/landing/landingFixtures';
 
 // G1 (#271), chained stops: a run is a chain of arrivals. This drives a
 // three-stop run end to end — arrive, Next stop (dealt 1–3 km on), arrive, a
@@ -208,4 +209,97 @@ test('?run=0 keeps the single-ride arrival', async ({ page }) => {
   await page.waitForTimeout(200);
   expect(await page.evaluate(() => (window as any).canalRecallGame._runCard ?? null)).toBeNull();
   console.log(JSON.stringify({ project: test.info().project.name, run0CardH: arrival.card.h }));
+});
+
+/** The returning player's storage (G2 fixture, 7 names due), seeded once per tab so a reload keeps the run. */
+async function seedReturning(page: Page) {
+  const entries = landingFixtureEntries('returning', Date.now());
+  await page.addInitScript((data: Record<string, string>) => {
+    if (sessionStorage.getItem('r2-seeded')) return;
+    sessionStorage.setItem('r2-seeded', '1');
+    for (const [key, value] of Object.entries(data)) localStorage.setItem(key, value);
+  }, entries);
+}
+
+/** The leg being ridden and the run's stored next leg. */
+async function legState(page: Page) {
+  return page.evaluate(() => {
+    const g = (window as any).canalRecallGame;
+    const run = JSON.parse(localStorage.getItem('canalRecall.openRun.v1') || 'null');
+    return {
+      state: g.state as number, from: g.routeFrom?.name as string, to: g.routeTo?.name as string,
+      review: !!g._reviewRoute, stops: run?.stopCount ?? null, nextLeg: run?.nextLeg ? `${run.nextLeg.from.name} → ${run.nextLeg.to.name}` : null,
+    };
+  });
+}
+
+/** Next stop from the arrival card, then a plain reload in the middle of the dealt leg: the leg resumes. */
+async function nextStopThenReload(page: Page) {
+  await tap(page, 'again');
+  await page.waitForFunction(() => (window as any).canalRecallGame.state === 4, null, { timeout: 120_000 });
+  await page.waitForTimeout(1500);
+  const before = await legState(page);
+  await page.reload();
+  await page.waitForFunction(() => { const g = (window as any).canalRecallGame; return g && (g.state === 4 || g.state === 2 || g.state === 0); }, null, { timeout: 150_000 });
+  await page.waitForFunction(() => { const g = (window as any).canalRecallGame; return g.state === 4 || (g.state === 0 && document.querySelector('#route-card')?.checkVisibility?.()); }, null, { timeout: 150_000 }).catch(() => {});
+  const after = await legState(page);
+  console.log(JSON.stringify({ project: test.info().project.name, before, after }));
+  expect(before.nextLeg, 'the run stores the leg being ridden').toBe(`${before.from} → ${before.to}`);
+  expect(after.state, 'the reload resumes the ride, not route setup').toBe(4);
+  expect(after.from).toBe(before.from);
+  expect(after.to).toBe(before.to);
+  expect(after.stops).toBe(1);
+}
+
+// R2-1 (#302): ride review 2 reloaded during leg 2 of a run begun as Today's ride and landed on route setup with a
+// new destination. The leg was a review ride (the returning player has names due), which never stored nextLeg.
+test('a reload during a dealt review leg of Today\'s ride resumes the leg (R2-1)', async ({ page }) => {
+  test.setTimeout(420_000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await useBundlesDir(page);
+  await seedReturning(page);
+  await page.goto('/canal-drive/landing.html');
+  await expect(page.locator('[data-landing-card]').first()).toBeVisible({ timeout: 20_000 });
+  const landingKm = Number((await page.locator('[data-landing-card]').first().innerText()).match(/([\d.]+) km/)?.[1]);
+  await page.locator('[data-landing-go="daily"]').click();
+  await page.waitForFunction(() => (window as any).canalRecallGame?.state === 4, null, { timeout: 150_000 });
+  await page.waitForTimeout(1500);
+  // R2-10: the destination pill at the start says the same km as the landing card.
+  const pill = await page.evaluate(() => {
+    const g = (window as any).canalRecallGame;
+    const px = typeof g._hudDistanceToFinishPx === 'function' ? g._hudDistanceToFinishPx() : g.track.getDistanceToFinish(g.player.x, g.player.y);
+    return { text: g.hud._destinationDistance(px) as string, straight: g.hud._destinationDistance(g.track.getDistanceToFinish(g.player.x, g.player.y)) as string };
+  });
+  const pillKm = Number(pill.text.match(/([\d.]+) km/)?.[1]);
+  console.log(JSON.stringify({ project: test.info().project.name, landingKm, pill }));
+  expect.soft(Math.abs(pillKm - landingKm), `landing ${landingKm} km vs pill ${pill.text}`).toBeLessThanOrEqual(0.2);
+  const first = await arrive(page);
+  expect(first.run?.stopCount).toBe(1);
+  await nextStopThenReload(page);
+});
+
+test('a reload during a dealt leg of a run begun from Route setup resumes the leg (R2-1)', async ({ page }) => {
+  test.setTimeout(420_000);
+  await seedReturning(page);
+  await openRoute(page, { travelMode: 'car', viewMode: 'chase' });
+  const first = await arrive(page);
+  expect(first.run?.stopCount).toBe(1);
+  await nextStopThenReload(page);
+});
+
+// R2-9 (#302): a first-time guest's first ride is a bike ride on streets, not a boat on the IJ.
+test('a fresh profile\'s first ride is by bike on streets (R2-9)', async ({ page }) => {
+  test.setTimeout(240_000);
+  await page.route(/3dbag|cesium3dtiles/i, route => route.abort());
+  await useBundlesDir(page);
+  await page.goto('/canal-drive/');
+  await expect(page.locator('#route-card')).toBeVisible({ timeout: 90_000 });
+  await page.locator('#route-card').evaluate((form: HTMLFormElement) => form.requestSubmit());
+  await page.waitForFunction(() => (window as any).canalRecallGame?.state === 4, null, { timeout: 150_000 });
+  const ride = await page.evaluate(() => {
+    const g = (window as any).canalRecallGame;
+    return { travel: g.travelMode as string, stored: JSON.parse(localStorage.getItem('canalRecall.preferences.v1') || 'null')?.travelMode ?? null };
+  });
+  console.log(JSON.stringify({ project: test.info().project.name, ride }));
+  expect(ride.travel).toBe('car');
 });

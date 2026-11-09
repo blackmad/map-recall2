@@ -18,6 +18,8 @@ import {
   resumeRun,
   runTransition,
   withNextLeg,
+  rideLeg,
+  sameLeg,
   runLine,
   runsEnabled,
   runStory,
@@ -61,8 +63,8 @@ export interface ChainedRunHost {
   freeRide?: boolean;
   travelMode: string;
   cityId: string;
-  routeFrom: { id: string; name: string } | null;
-  routeTo: ({ id: string; name: string; tourStop?: boolean } & Partial<PoiPoint>) | null;
+  routeFrom: ({ id: string; name: string; sharedEndpoint?: boolean } & Partial<PoiPoint>) | null;
+  routeTo: ({ id: string; name: string; tourStop?: boolean; sharedEndpoint?: boolean } & Partial<PoiPoint>) | null;
   routePois: RoutePoi[];
   raceTime: number;
   quizPoints: number;
@@ -183,6 +185,9 @@ export class GameChainedRunRuntime {
     this._runLastState = this.state;
     if (previous !== this.state) this._runStateChanged(previous, now);
     const run = this._openRun();
+    if (run && this._runEnabled() && (this.state === GameState.LOADING || this.state === GameState.RACING || this.state === GameState.PAUSED)) {
+      this._runNoteLeg(run);
+    }
     if (this.state === GameState.RACING) {
       if (this._runCard) this._runCard = null;
       if (run && this._runEnabled() && now - (this._runTouchedAt ?? 0) >= RUN_TOUCH_MS) {
@@ -199,6 +204,20 @@ export class GameChainedRunRuntime {
     if (run && isIdle(run, now)) { this._endRunFromCard(); return; }
     // game.js reads Enter/M/C on the arrival card; E (End run) is this lane's.
     if (run && !this._runCard && this.input.wasPressed('KeyE')) this._endRunFromCard();
+  }
+
+  /**
+   * The leg being ridden inside a run is the one a reload resumes (R2-1, #302). Next stop stores it when
+   * the run deals the stop (_pickRunNextStop), but a review ride (Plan review with names due, which the
+   * returning player usually has) or the surprise fallback took the leg without it, so the run kept
+   * `nextLeg: null` and a reload fell through to route setup with a new destination. Whatever launched the
+   * leg, it is written here once, while it loads or rides.
+   */
+  _runNoteLeg(this: ChainedRunHost & GameChainedRunRuntime, run: OpenRun): void {
+    const leg = rideLeg(this.routeFrom, this.routeTo);
+    if (!leg || sameLeg(run.nextLeg ?? null, leg)) return;
+    this._run = withNextLeg(run, leg);
+    saveRun(storage(), this._run);
   }
 
   /** Route setup from the arrival card closes the run quietly; pause stops its idle clock. */
