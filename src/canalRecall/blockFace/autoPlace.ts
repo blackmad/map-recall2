@@ -24,6 +24,7 @@ import type {StripStructure} from './stripStructure.ts';
 import {rgbToLab, type FrontClass, type Rgb} from '../buildingRecipe/measureFacade.ts';
 import type {FrontBump} from './bayOutline.ts';
 import type {ShopfrontIntent} from '../buildingRecipe/intent.ts';
+import {materialVetoes, stripWallMaterial} from './wallMaterial.ts';
 
 /** How a library type is recognised (`match` in scripts/block-face/types/<district>/<id>.json). */
 export interface TypeMatchRule {
@@ -101,6 +102,19 @@ export interface TypeMatchRule {
    * Absent = no criterion, byte-identical.
    */
   crownMatch?: true;
+  /**
+   * With `crownMatch`: a skyline read under clean sky that is sky-bounded (`skylineBounded`) and fits none of `crowns`
+   * VETOES the type instead of only scoring 0 (Jordaan, #113 round 2: a neck-gable skyline scored a cornice house 0 on
+   * one criterion of seven and still placed it). Unread or unbounded skylines veto nothing. Absent = byte-identical.
+   */
+  crownStrict?: true;
+  /**
+   * The strip's wall material vetoes (wallMaterial.ts): grey render over a type without `stucco: true`, near-black paint
+   * over a type without `blackPaint: true`. Absent = byte-identical (`stucco` stays a weighted criterion).
+   */
+  materialVeto?: true;
+  /** The type is drawn painted black (the black-paint wall material does not veto it). */
+  blackPaint?: true;
   /**
    * The crown a pand of this type takes when its strip skyline is no evidence (2026-11-01, #152): unread, matching no
    * variant, or not sky-bounded (`skylineBounded`: it stands over the pand's 3DBAG roof max, ends on foliage, or is a
@@ -333,6 +347,12 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
     const sky = usable ? s!.skyline : null, read = !!sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE, hit = read ? crownRuleFor(t, sky!.crown) : null;
     criteria.push({key: 'crown', weight: 3, score: read ? (hit ? 1 : 0) : null, note: read ? `skyline ${sky!.crown ? `crown rise ${sky!.crown.riseM} m, top ${sky!.crown.topWidthM} m` : 'no crown'} ${hit ? `fits ${hit}` : 'fits no crown of the type'}` : 'skyline unread'});
   }
+  if (m.crownStrict && m.crowns && usable) {
+    const sky = s!.skyline;
+    if (sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE && skylineBounded(sky, s!.skyBound, ev.roofMaxM).ok && !crownRuleFor(t, sky.crown))
+      veto.push(`skyline ${sky.crown ? `crown rise ${sky.crown.riseM} m, top ${sky.crown.topWidthM} m` : 'no crown'} fits no crown of the type`);
+  }
+  if (m.materialVeto && usable) veto.push(...materialVetoes(m, stripWallMaterial({stucco: s!.palette.stucco, wall: s!.wall})));
   const want = baysFor(t, ev.widthM);
   if (usable && s!.columns !== null) criteria.push({key: 'columns', weight: W.columns, score: s!.columns === want ? 1 : Math.abs(s!.columns - want) === 1 ? 0.4 : 0, note: `strip columns ${s!.columns} vs ${want} bays`});
   const scored = criteria.filter(c => c.score !== null), wsum = scored.reduce((a, c) => a + c.weight, 0);
