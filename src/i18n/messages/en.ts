@@ -789,6 +789,7 @@ export const en = {
   'ride.paused': 'PAUSED',
   'ride.resume': 'Resume',
   'ride.pauseSummary': '{time}  ·  {km} km  ·  {correct} of {attempts} named',
+  'ride.pauseStats': '{time}  ·  {km} km',
   'ride.controlsHint': '?  help   ·   G  settings   ·   M  map   ·   O  north   ·   T  labels   ·   B  buildings   ·   P  pause',
   'hud.destination': 'DESTINATION',
   'card.wikipedia': 'W  WIKIPEDIA',

@@ -330,12 +330,18 @@ test('the phone HUD lays out for the real screen, and pause is a paper card', as
   expect(sizes.viewportCss, 'the HUD is laid out for the settled window width').toBe(sizes.inner);
 
   const centre = await page.evaluate(() => {
-    const game = window.canalRecallGame as unknown as { state: number; canvas: HTMLCanvasElement; _render(): void };
+    const game = window.canalRecallGame as unknown as { state: number; canvas: HTMLCanvasElement; _render(): void; viewport: { width: number }; _pauseCardLayout?: { card: { x: number; y: number; h: number } } };
     game.state = (window as unknown as { GameState?: { PAUSED: number } }).GameState?.PAUSED
       ?? (0, eval)('GameState.PAUSED');
     game._render();
     const ctx = game.canvas.getContext('2d')!;
-    const [r, g, b] = ctx.getImageData(Math.round(game.canvas.width / 2), Math.round(game.canvas.height / 2) - 20, 1, 1).data;
+    // #319: the card hugs its content, so its middle can be the copper Resume button; sample the
+    // paper in the card's side padding (8 units in from its left edge, at its vertical middle).
+    const card = game._pauseCardLayout?.card;
+    const k = game.canvas.width / game.viewport.width;
+    const px = card ? Math.round((card.x + 8) * k) : Math.round(game.canvas.width / 2);
+    const py = card ? Math.round((card.y + card.h / 2) * k) : Math.round(game.canvas.height / 2) - 20;
+    const [r, g, b] = ctx.getImageData(px, py, 1, 1).data;
     return (r + g + b) / 3;
   });
   expect(centre, 'the pause card is light paper, not a black plate').toBeGreaterThan(200);

@@ -240,9 +240,12 @@ test.describe('R2-6 desktop pause card', () => {
         const g = (window as any).canalRecallGame;
         const b = g._pauseButtonBounds as Array<{ id: string; x: number; y: number; w: number }>;
         const left = Math.min(...b.map(x => x.x)), right = Math.max(...b.map(x => x.x + x.w));
-        const cardW = Math.min(400, g.viewport.width - 24);
+        // #319: the card hugs its content; its inner box is the layout's (the old fixed 400 px card before).
+        const L = g._pauseCardLayout;
+        const cardW = L ? L.card.w : Math.min(400, g.viewport.width - 24);
         const cx = g.viewport.width / 2;
-        return { state: g.state, buttons: b.map(x => ({ id: x.id, x: Math.round(x.x), y: Math.round(x.y), w: Math.round(x.w) })), rowLeft: left, rowRight: right, cardLeft: cx - cardW / 2 + 28, cardRight: cx + cardW / 2 - 28, cardW };
+        const cardLeft = L ? L.inner.left : cx - cardW / 2 + 28, cardRight = L ? L.inner.right : cx + cardW / 2 - 28;
+        return { state: g.state, buttons: b.map(x => ({ id: x.id, x: Math.round(x.x), y: Math.round(x.y), w: Math.round(x.w) })), rowLeft: left, rowRight: right, cardLeft, cardRight, cardW };
       });
       console.log('R2-6 pause', language, JSON.stringify(m));
       if (SHOTS) await page.screenshot({ path: `${SHOTS}/r2-6-pause-${language}-${process.env.R2C_BEFORE ? 'before' : 'after'}.png` });
