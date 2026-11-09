@@ -1,6 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 import { createRequire } from 'node:module';
 import { openRoute } from './helpers';
+import { budget } from './helpers/budget';
 
 // The sky must not flicker (#216, lane E3). Under ?engine=own the frame host clears the canvas with three's
 // `renderer.clear()`, which uses whatever gl.clearColor the context holds; between frames a precompile
@@ -95,7 +96,8 @@ for (const engine of ['own', 'maplibre'] as const) {
     expect(frames.length, 'the screencast saw the ride').toBeGreaterThan(60);
     if (clears) {
       expect(clears.clears, 'the host cleared the canvas').toBeGreaterThan(60);
-      expect(clears, 'every canvas clear is opaque sky with a full colour mask').toMatchObject({ transparent: 0, masked: 0 });
+      expect(clears.transparent, 'canvas clears with alpha < 1 (budget skyTransparentClears)').toBeLessThanOrEqual(budget('skyTransparentClears'));
+      expect(clears.masked, 'canvas clears with a masked colour channel (budget skyTransparentClears)').toBeLessThanOrEqual(budget('skyTransparentClears'));
     }
     expect(badFrames, 'riding: the sky band is sky in every composited frame').toBe(0);
   });

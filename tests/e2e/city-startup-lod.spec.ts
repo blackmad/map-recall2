@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { openRoute } from './helpers';
+import { budget } from './helpers/budget';
 
 test('mobile city shells remain until detailed buildings install', async ({ page }, testInfo) => {
   const errors: string[] = [];
@@ -39,8 +40,8 @@ test('mobile city shells remain until detailed buildings install', async ({ page
   if (status.touch) {
     expect(status.detailZoom).toBe(17);
     expect(status.pixelRatio).toBeLessThanOrEqual(1.5);
-    // 22 MB: R8 mask, 21.67 MB measured 2026-11-01 (208 layers at 128 px, the accent in the colour alpha, look/maskPacking.ts).
-    expect(status.stats.textureMB).toBeLessThanOrEqual(22);
+    // Budget iphoneTextureMB (tests/perf/budgets.json, 22 MB): R8 mask, 21.67 MB measured 2026-11-01 (208 layers at 128 px, the accent in the colour alpha, look/maskPacking.ts).
+    expect(status.stats.textureMB).toBeLessThanOrEqual(budget('iphoneTextureMB'));
   }
   await page.screenshot({ path: testInfo.outputPath('city-lod.png') });
   console.log('city LOD:', JSON.stringify(status));
