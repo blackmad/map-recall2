@@ -3,6 +3,23 @@
  "notes": [
   {
    "date": "2026-11-09",
+   "title": "Every checklist keeps to its own buurt",
+   "text": "Each Free Ride checklist now holds only the places in its buurt, and the plaque keeps that list's name while you stand at one of them. The replica ship is now called VOC ship Amsterdam, and the Maritime Museum has one name everywhere. A landmark card and a postcard no longer stack: the postcard waits its turn.",
+   "images": [
+    {
+     "src": "ui/2026-11-09-collection-rule/entry-desktop.jpg",
+     "alt": "Entering Marineterrein on the desktop: the plaque names the buurt and its checklist counts 2 of 5 places",
+     "caption": "The plaque and the checklist agree on the buurt."
+    },
+    {
+     "src": "ui/2026-11-09-collection-rule/3-postcard-desktop.jpg",
+     "alt": "The Jordaan postcard rising after the Westerkerk card closed",
+     "caption": "The postcard waited for the card to close."
+    }
+   ]
+  },
+  {
+   "date": "2026-11-09",
    "title": "Points add up, and every ride can be shared at once",
    "text": "Each stop's arrival card now counts the chain bonus it earned, and the run line and the run card show the same figures. Every ride you are dealt carries its share link from the moment it starts, so the Share key is always there on arrival.",
    "images": [

@@ -2599,6 +2599,17 @@
   }
 
   // src/canalRecall/game/landmarkData.ts
+  function pointInPolygon(x, y, ring) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const a = ring[i], b = ring[j];
+      if (a.y > y !== b.y > y && x < (b.x - a.x) * (y - a.y) / (b.y - a.y) + a.x) inside = !inside;
+    }
+    return inside;
+  }
+  function neighborhoodAt(neighborhoods, x, y) {
+    return neighborhoods.find((hood) => hood.rings.some((ring) => pointInPolygon(x, y, ring))) || null;
+  }
   function isWorthACard(landmark) {
     return !!(landmark.detail || landmark.longDetail || landmark.imageUrl || landmark.wikipediaUrl);
   }
@@ -3251,6 +3262,18 @@
     ctx.restore();
   }
 
+  // src/canalRecall/game/placeBuurt.ts
+  var PLACE_AT_SLACK_M = 30;
+  var PLACE_AT_MAX_M = 120;
+  function buurtAt(hoods, x, y) {
+    return neighborhoodAt(hoods, x, y)?.name ?? null;
+  }
+  function placeReach(roadDistance, pxPerMeter) {
+    const max = PLACE_AT_MAX_M * pxPerMeter;
+    if (roadDistance == null || !Number.isFinite(roadDistance)) return max;
+    return Math.min(max, roadDistance + PLACE_AT_SLACK_M * pxPerMeter);
+  }
+
   // src/canalRecall/game/sessionCounters.ts
   function holder() {
     return typeof globalThis === "undefined" ? null : globalThis;
@@ -3435,12 +3458,42 @@
       const from = collection.listsFrom;
       if (collection.lists && from && from.places === places && from.neighborhoods === this.neighborhoods) return collection.lists;
       const landmarks = places.filter((place) => place.kind === "landmark");
-      const lists = buildChecklists(landmarks, (place) => this._neighborhoodAt(place.x, place.y)?.name);
+      const byId = new Map((this.landmarks || []).map((landmark) => [String(landmark.id), landmark]));
+      const lists = buildChecklists(landmarks, (place) => {
+        const lngLat = byId.get(String(place.key))?.lngLat;
+        const centre = lngLat ? this._toWorld?.(lngLat[1], lngLat[0]) : null;
+        return buurtAt(this.neighborhoods || [], centre?.x ?? place.x, centre?.y ?? place.y);
+      });
       collection.lists = lists;
       collection.listsFrom = { places, neighborhoods: this.neighborhoods };
       collection.hoodOfKey = /* @__PURE__ */ new Map();
       for (const list of lists.values()) for (const place of list.places) collection.hoodOfKey.set(place.key, list.hood);
       return lists;
+    }
+    /** The checklist places near a point, as anchors for the plaque's buurt
+     *  (placeBuurt.ts): while the rider stands at a place, the plaque names the
+     *  buurt whose checklist holds it. Empty outside Free Ride's collection. */
+    _freeRidePlaceAnchors(x, y) {
+      const collection = this._freeRideCollection;
+      if (!this.freeRide || !collection) return [];
+      const lists = this._freeRideChecklists();
+      if (!lists) return [];
+      const max = PLACE_AT_MAX_M * PIXELS_PER_METER;
+      const reaches = collection.reach ||= /* @__PURE__ */ new Map();
+      const anchors = [];
+      for (const list of lists.values()) {
+        for (const place of list.places) {
+          if (Math.abs(place.x - x) > max || Math.abs(place.y - y) > max) continue;
+          let reach = reaches.get(place.key);
+          if (reach === void 0) {
+            const road = this.track?.getNearestRoad?.(place.x, place.y);
+            reach = placeReach(road?.dist ?? null, PIXELS_PER_METER);
+            if (road) reaches.set(place.key, reach);
+          }
+          anchors.push({ x: place.x, y: place.y, hood: list.hood, reach });
+        }
+      }
+      return anchors;
     }
     _freeRideChecklist(hood) {
       if (!hood) return null;

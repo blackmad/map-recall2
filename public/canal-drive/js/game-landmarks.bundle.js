@@ -208,6 +208,15 @@
     }
     return inside;
   }
+  function ringsArea(rings) {
+    let area = 0;
+    for (const ring of rings) {
+      let twice = 0;
+      for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) twice += ring[j].x * ring[i].y - ring[i].x * ring[j].y;
+      area += Math.abs(twice) / 2;
+    }
+    return area;
+  }
   function neighborhoodAt(neighborhoods, x, y) {
     return neighborhoods.find((hood) => hood.rings.some((ring) => pointInPolygon(x, y, ring))) || null;
   }
@@ -286,7 +295,7 @@
         imageUrl: isLocatorMapImage(rawUrl) ? "" : rawUrl,
         imageAttribution: isLocatorMapImage(rawUrl) ? "" : enriched?.imageAttribution || ""
       };
-    }).filter((hood) => hood.rings.length).sort((a, b) => b.rank - a.rank);
+    }).filter((hood) => hood.rings.length).map((hood) => ({ hood, area: ringsArea(hood.rings) })).sort((a, b) => b.hood.rank - a.hood.rank || a.area - b.area).map(({ hood }) => hood);
     for (const hood of neighborhoods) {
       if (hood.imageUrl) continue;
       const sample = hood.rings[0] && hood.rings[0][0];
@@ -6253,6 +6262,55 @@ ${register}` : detail,
     return [...merged.values()];
   }
 
+  // src/canalRecall/game/placeNames.ts
+  var BY_WIKIDATA = {
+    // nl:Amsterdam (schip, 1990), the replica East Indiaman moored at the museum.
+    Q478353: "VOC ship Amsterdam"
+  };
+  var BY_NAME = {
+    "The National Maritime Museum": "National Maritime Museum",
+    Nemo: "NEMO Science Museum",
+    "H'ART Museum": "H\u2019ART Museum"
+  };
+  function landmarkDisplayName(feature) {
+    const byId = feature.wikidata ? BY_WIKIDATA[feature.wikidata] : void 0;
+    if (byId) return byId;
+    return BY_NAME[feature.name] ?? feature.name;
+  }
+  function withDisplayNames(features) {
+    const renamed = /* @__PURE__ */ new Map();
+    for (const feature of features) {
+      const shown = landmarkDisplayName(feature);
+      if (shown !== feature.name) renamed.set(feature.name, shown);
+    }
+    if (!renamed.size) return [...features];
+    return features.map((feature) => {
+      const name = landmarkDisplayName(feature);
+      const distractors = feature.distractors?.some((d) => renamed.has(d) || d in BY_NAME) ? feature.distractors.map((d) => renamed.get(d) ?? BY_NAME[d] ?? d) : feature.distractors;
+      return name === feature.name && distractors === feature.distractors ? feature : { ...feature, name, distractors };
+    });
+  }
+
+  // src/canalRecall/game/placeBuurt.ts
+  function buurtAt(hoods, x, y) {
+    return neighborhoodAt(hoods, x, y)?.name ?? null;
+  }
+  function anchorAt(anchors, x, y) {
+    let best = null;
+    let bestDistance = Infinity;
+    for (const anchor of anchors) {
+      const distance = Math.hypot(anchor.x - x, anchor.y - y);
+      if (distance <= anchor.reach && distance < bestDistance) {
+        best = anchor;
+        bestDistance = distance;
+      }
+    }
+    return best;
+  }
+  function plaqueBuurtAt(hoods, x, y, anchors = []) {
+    return anchorAt(anchors, x, y)?.hood ?? buurtAt(hoods, x, y);
+  }
+
   // src/canalRecall/game/teachingPacer.ts
   var PREEMPT_AFTER_SECONDS = 6;
   var CLICK_PREEMPT_AFTER_SECONDS = 20;
@@ -6591,7 +6649,7 @@ ${register}` : detail,
     "West Indian Warehouse": "West-Indisch Pakhuis",
     "Zuiderkerk Tower": "Zuiderkerkstoren"
   });
-  function landmarkDisplayName(name, language2) {
+  function landmarkDisplayName2(name, language2) {
     return language2 === "nl" ? LANDMARK_NAMES_NL[name] ?? name : name;
   }
 
@@ -6687,8 +6745,8 @@ ${register}` : detail,
       this._questionBudget = recordAsk(this._questionBudget || EMPTY_BUDGET, this.raceTime);
       this._landmarkQuestion = { id: chosen.id, name: chosen.name, hood: approach.hood };
       const lang = language();
-      const shownChoices = approach.choices.map((name) => landmarkDisplayName(name, lang));
-      this.quizWithheldNames = landmarkWithheldNames(chosen.name, [...approach.choices, ...shownChoices, landmarkDisplayName(chosen.name, lang)]);
+      const shownChoices = approach.choices.map((name) => landmarkDisplayName2(name, lang));
+      this.quizWithheldNames = landmarkWithheldNames(chosen.name, [...approach.choices, ...shownChoices, landmarkDisplayName2(chosen.name, lang)]);
       this._landmarkApproach = null;
       this.landmarkApproachWithheld = [];
       const heading = player.speed < 0 ? player.angle + Math.PI : player.angle;
@@ -6697,7 +6755,7 @@ ${register}` : detail,
       const side = Math.abs(bearing) < AHEAD_HALF_ANGLE ? t("ride.landmarkQuestion.ahead") : bearing < 0 ? t("ride.landmarkQuestion.left") : t("ride.landmarkQuestion.right");
       this._openQuizPrompt({
         kind: "landmark",
-        name: landmarkDisplayName(chosen.name, lang),
+        name: landmarkDisplayName2(chosen.name, lang),
         subject: "landmark",
         question: t("ride.landmarkQuestion.heading"),
         context: approach.hood ? `${side} \xB7 ${approach.hood}` : side,
@@ -6769,7 +6827,7 @@ ${register}` : detail,
       }
       this._landmarkApproach = { landmark: chosen, choices, hood: answer.hood || "", since: now };
       const approachLang = language();
-      this.landmarkApproachWithheld = landmarkWithheldNames(chosen.name, [...choices, ...choices.map((name) => landmarkDisplayName(name, approachLang)), landmarkDisplayName(chosen.name, approachLang)]);
+      this.landmarkApproachWithheld = landmarkWithheldNames(chosen.name, [...choices, ...choices.map((name) => landmarkDisplayName2(name, approachLang)), landmarkDisplayName2(chosen.name, approachLang)]);
       return this._landmarkApproach;
     }
     /** The chip reads "Landmark" with a building icon (the legacy chip table
@@ -6991,6 +7049,10 @@ ${register}` : detail,
      *  sentence as told. */
     _showLandmarkNotice(notice, hold, source = "click", streetEntry) {
       if (this._landmarkNotice) this.vectorMap?.setActiveLandmark(null);
+      if (this._neighborhoodNotice) {
+        this._neighborhoodNotice = null;
+        this._neighborhoodNoticeTimer = 0;
+      }
       this._landmarkNotice = this._withRotatedFact(notice, streetEntry);
       this._landmarkNoticeHold = hold;
       this._landmarkNoticeSource = source;
@@ -7240,7 +7302,7 @@ ${register}` : detail,
           readJson(streetResponse, []),
           readJson(waterResponse, [])
         ]);
-        const features = mergeManualPoiFeatures(rawFeatures, this.cityId || "amsterdam");
+        const features = withDisplayNames(mergeManualPoiFeatures(rawFeatures, this.cityId || "amsterdam"));
         const streetKnowledge = [];
         this._facts = buildFactIndex(null);
         this._factRotation = loadRotationState(
@@ -7348,7 +7410,13 @@ ${register}` : detail,
         }
       }
       if (!this.player) return;
-      const detectedHood = this._neighborhoodAt(this.player.x, this.player.y);
+      const plaqueHood = plaqueBuurtAt(
+        this.neighborhoods,
+        this.player.x,
+        this.player.y,
+        this._freeRidePlaceAnchors?.(this.player.x, this.player.y) ?? []
+      );
+      const detectedHood = plaqueHood ? this.neighborhoods.find((area) => area.name === plaqueHood) ?? null : null;
       const transition = CanalRecallNeighborhood.advanceNeighborhood({
         current: this.currentNeighborhood,
         candidate: this._neighborhoodCandidate,
@@ -7387,12 +7455,11 @@ ${register}` : detail,
       })) {
         this._postcardPending = this.currentNeighborhood;
       }
-      const oneCard = !!this._freeRideCollectionOn?.();
-      if (oneCard && this._landmarkNotice && this._neighborhoodNotice && this._neighborhoodNoticeTimer > 0) {
+      if (this._neighborhoodNotice && (this._neighborhoodNoticeTimer <= 0 || this._landmarkNotice)) {
         this._neighborhoodNoticeTimer = 0;
         this._neighborhoodNotice = null;
       }
-      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && !(oneCard && this._landmarkNotice) && this.viewport?.mode !== "compact" && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
+      if (this._postcardPending && this._postcardPending === this.currentNeighborhood && !this._landmarkNotice && this.viewport?.mode !== "compact" && canShowPostcard(this.viewport?.mode, this._teachingGate()) && this.raceTime > NEIGHBORHOOD_NOTICE_GRACE) {
         this._postcardPending = null;
         this._lastPostcardAt = this.raceTime;
         if (hood) this._ensureNeighborhoodImage(hood);
