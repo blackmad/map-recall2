@@ -819,6 +819,8 @@ function DutchFrame({ scenario }: { scenario: Scenario }) {
 }
 export const FinishCardRunDutch: Story = { args: { scenario: 'finish-run' }, render: () => <DutchFrame scenario="finish-run" /> };
 export const FinishCardRunDutchPhone: Story = { args: { scenario: 'finish-run-touch' }, render: () => <DutchFrame scenario="finish-run-touch" />, globals: phone };
+/** #292: the Dutch arrival footer on a phone keeps whole items (the view and difficulty go first) instead of a mid-list cut. */
+export const FinishFullDutchPhone: Story = { args: { scenario: 'finish-full-touch' }, render: () => <DutchFrame scenario="finish-full-touch" />, globals: phone };
 export const RunCardDutch: Story = { args: { scenario: 'finish-run-card' }, render: () => <DutchFrame scenario="finish-run-card" /> };
 export const RunCardDutchPhone: Story = { args: { scenario: 'finish-run-card-touch' }, render: () => <DutchFrame scenario="finish-run-card-touch" />, globals: phone };
 

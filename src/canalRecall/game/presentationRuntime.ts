@@ -69,6 +69,7 @@ import { revealOnEnter, utilityBlockedByCards, utilityVisibility } from './utili
 import { CATALOGS, t as tr, type MessageKey } from '../../i18n/index.ts';
 import { kindLabel } from '../cardKindLabel.ts';
 import { extendShareTrail } from '../shareCard';
+import { fitFooterItems, type FooterItem } from './footerFit';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -1677,16 +1678,18 @@ export class GamePresentationRuntime {
       const difficultyKey = `setup.difficulty.${this.routeDifficulty}`;
       const viewKey = `setup.view.${String(this.viewMode).replace(/-up$/, '')}`;
       const known = (key: string): key is MessageKey => key in CATALOGS.en;
-      const footerBits = [
-        known(difficultyKey) ? tr(difficultyKey) : this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1),
-        profile.label,
-        known(viewKey) ? tr(viewKey) : this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()),
+      // Ranks decide what goes first when the line is wider than the card
+      // (footerFit.ts): the view, then the difficulty, then the streak.
+      const footerBits: FooterItem[] = [
+        { text: known(difficultyKey) ? tr(difficultyKey) : this.routeDifficulty.charAt(0).toUpperCase() + this.routeDifficulty.slice(1), rank: 1 },
+        { text: profile.label, rank: 3 },
+        { text: known(viewKey) ? tr(viewKey) : this.viewMode.replace('-', ' ').replace(/^./, c => c.toUpperCase()), rank: 0 },
       ];
-      if (gamey && this.quizBestStreak >= 2) footerBits.push(tr('ride.bestStreak', { count: this.quizBestStreak }));
+      if (gamey && this.quizBestStreak >= 2) footerBits.push({ text: tr('ride.bestStreak', { count: this.quizBestStreak }), rank: 2 });
       // Tighter levels fold the personal best into this line rather than give
       // it a row of its own.
       const bestInFooter = level >= 1 && !!bestText;
-      if (bestInFooter) footerBits.unshift(bestText.replace(/^★  /, '★ '));
+      if (bestInFooter) footerBits.unshift({ text: bestText.replace(/^★  /, '★ '), rank: 9 });
 
       // Five stats across a 600 px card is four columns of comfortable space; the
       // same five across a 366 px phone card ran "420", "03:33" and "0.00 km"
@@ -1711,7 +1714,7 @@ export class GamePresentationRuntime {
           ctx.fillText(stat.label, sx, sy + 42);
         });
         ctx.fillStyle = MUTED; ctx.font = '11px system-ui, sans-serif';
-        ctx.fillText(wrapText(ctx, footerBits.join('  ·  '), innerW, 1)[0], cx, top + statRows * ROW_H + 18);
+        ctx.fillText(fitFooterItems(footerBits, innerW, text => ctx.measureText(text).width), cx, top + statRows * ROW_H + 18);
       } });
 
       if (ribbon) {

@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 // stand-in map, through the game's own drawing methods, so the layout here is
 // the layout in the ride.
 
-type Scenario = 'idle' | 'card' | 'long' | 'no-image' | 'checklist' | 'stamped' | 'token-far' | 'at-place';
+type Scenario = 'idle' | 'card' | 'long' | 'no-image' | 'checklist' | 'stamped' | 'stamped-long' | 'token-far' | 'at-place';
 
 interface FreeRideStoryArgs {
   scenario: Scenario;
@@ -56,7 +56,7 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
       game.quizFeedback = '';
       const long = scenario === 'long';
       const atPlace = scenario === 'at-place';
-      const collecting = scenario === 'checklist' || scenario === 'stamped' || scenario === 'token-far' || atPlace;
+      const collecting = scenario === 'checklist' || scenario === 'stamped' || scenario === 'stamped-long' || scenario === 'token-far' || atPlace;
       game.currentNeighborhood = long ? 'Van Lennepbuurt en Kinkerbuurt-Noord' : collecting ? 'Marineterrein' : 'Jordaan';
       const landmark = {
         id: long ? 'rijksmuseum' : 'westerkerk', name: long ? LONG_NAME : 'Westerkerk', type: long ? 'museum' : 'church',
@@ -89,16 +89,16 @@ function FreeRideFrame({ scenario, touch = false }: FreeRideStoryArgs) {
             ['hannekes', 'Hannekes Boom'], ['klimmuur', 'Klimmuur Centraal']].map(([key, name], i) => ({ key, name, ...at(w * (0.24 + i * 0.12), h * (0.36 + (i % 2) * 0.14)) }))
           : Array.from({ length: 9 }, (_, i) => ({ key: `m${i}`, name: `Place ${i}`, ...at(w * (0.15 + i * 0.08), h * (0.2 + (i % 3) * 0.08)) }));
         if (!atPlace) places[0] = { key: 'anne-frank', name: 'Anne Frank House', ...at(w * 0.7, h * 0.3) };
-        const opened = new Set(scenario === 'stamped' ? places.map(p => p.key) : atPlace ? ['voc-ship'] : ['m1', 'm2', 'm3']);
+        const opened = new Set((scenario === 'stamped' || scenario === 'stamped-long') ? places.map(p => p.key) : atPlace ? ['voc-ship'] : ['m1', 'm2', 'm3']);
         game._freeRideCollection = {
-          state: { opened: [...opened], stamps: scenario === 'stamped' ? [{ hood: 'Marineterrein', at: '2026-11-09' }] : [] },
+          state: { opened: [...opened], stamps: (scenario === 'stamped' || scenario === 'stamped-long') ? [{ hood: 'Marineterrein', at: '2026-11-09' }] : [] },
           opened, lists: new Map([['Marineterrein', { hood: 'Marineterrein', places }]]),
           listsFrom: { places: game._freeRideCatalog(), neighborhoods: game.neighborhoods }, hoodOfKey: new Map(places.map(p => [p.key, 'Marineterrein'])),
-          token: scenario === 'stamped' || atPlace ? null : { ...places[0], distance: Math.hypot(places[0].x - player.x, places[0].y - player.y) },
+          token: scenario === 'stamped' || scenario === 'stamped-long' || atPlace ? null : { ...places[0], distance: Math.hypot(places[0].x - player.x, places[0].y - player.y) },
           tokenScreen: null, tokenHidden: null, corridor: null,
-          stampMoment: scenario === 'stamped' ? { hood: 'Marineterrein', until: performance.now() + 600_000 } : null,
+          stampMoment: (scenario === 'stamped' || scenario === 'stamped-long') ? { hood: 'Marineterrein', until: performance.now() + 600_000 } : null,
         };
-        game._neighborhoodNotice = scenario === 'token-far' || atPlace ? null : { name: 'Marineterrein', kind: 'neighbourhood', stamped: scenario === 'stamped' };
+        game._neighborhoodNotice = scenario === 'token-far' || atPlace ? null : { name: scenario === 'stamped-long' ? 'Prinses Irenebuurt e.o.' : 'Marineterrein', kind: 'neighbourhood', stamped: scenario === 'stamped' || scenario === 'stamped-long' };
         game._neighborhoodNoticeTimer = 2.5;
       }
       game._landmarkNotice = null;
@@ -191,6 +191,8 @@ export const ChecklistAtPlacePhone: Story = { args: { scenario: 'at-place', touc
 
 export const ChecklistPostcardPhone: Story = { args: { scenario: 'checklist', touch: true }, parameters: phone };
 export const CollectionStampedPhone: Story = { args: { scenario: 'stamped', touch: true }, parameters: phone };
+/** #292: the longest buurt name in the pool on the narrow stamp postcard: the seal sits in the corner, the name below it. */
+export const CollectionStampedLongNamePhone: Story = { args: { scenario: 'stamped-long', touch: true }, parameters: phone };
 export const TokenFarPhone: Story = { args: { scenario: 'token-far', touch: true }, parameters: phone };
 
 export const IdlePhone: Story = { args: { scenario: 'idle', touch: true }, parameters: phone };

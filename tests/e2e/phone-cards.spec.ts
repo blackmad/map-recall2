@@ -84,9 +84,9 @@ for (const size of [{ width: 414, height: 896 }, { width: 390, height: 664 }]) {
       expect(overlap(m.card, m.hint), 'hint strip over the card').toBe(0);
       for (const r of m.padRects) expect(overlap(m.card, r), 'd-pad under the card').toBe(0);
       for (const chip of m.chips) expect(overlap(m.card, chip), `${chip.id} over the card`).toBe(0);
-      // The corridor stays visible: the card starts below the bike. Not on a 664 px phone, where any
-      // card with a photo already covered it before #286 (OPEN on the issue).
-      if (size.height >= 800) expect(m.card!.y, 'the card clears the vehicle').toBeGreaterThan(m.vehicle.y + 20);
+      // The corridor stays visible: the card starts below the bike, on a 664 px phone too
+      // (#292: a short phone gets a one-row card without the photo).
+      expect(m.card!.y, 'the card clears the vehicle').toBeGreaterThan(m.vehicle.y + 20);
     });
   });
 }
