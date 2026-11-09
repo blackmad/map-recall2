@@ -13,6 +13,7 @@
 //         path=1 (fixed camera path, for timing), near=0, mini=0, hud=0, dpr.
 
 import * as THREE from 'three';
+import { t as tr } from '../../i18n/index.ts';
 import { fromLocal, toLocal, type Vec2 } from './frame';
 import { decodeOverview, type OverviewData, type OverviewFile, STREET_CLASSES, type StreetClass } from './overviewFormat';
 import { cameraFrame, cameraForPoints, easeCamera, project, unproject, visibleBounds, type CameraState, type Viewport } from './mapCamera';
@@ -353,7 +354,7 @@ function drawPin(x: number, y: number, colour: string, label: string): void {
 function drawOverlay(frame: ReturnType<typeof cameraFrame>): void {
   if (routeLocal.length > 1) {
     const a = project(frame, routeLocal[0]), b = project(frame, routeLocal[routeLocal.length - 1]);
-    if (b.depth > 0) drawPin(b.x, b.y, '#E11D48', 'DESTINATION');
+    if (b.depth > 0) drawPin(b.x, b.y, '#E11D48', tr('hud.destination'));
     if (a.depth > 0 && cam.zoom < 16) drawPin(a.x, a.y, '#16A34A', 'START');
   }
   const r = project(frame, rider.at);

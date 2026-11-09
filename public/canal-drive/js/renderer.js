@@ -174,10 +174,11 @@ class Renderer {
     // Centre the ink in the pill by its measured bounds. A fixed alphabetic
     // baseline at y 32 sat the caps on the pill's bottom edge (user 2026-10-16).
     ctx.textBaseline = 'alphabetic';
-    const ink = ctx.measureText('DESTINATION');
+    const pinLabel = window.CanalI18n ? window.CanalI18n.t('hud.destination') : 'DESTINATION';
+    const ink = ctx.measureText(pinLabel);
     const ascent = ink.actualBoundingBoxAscent || 7;
     const descent = ink.actualBoundingBoxDescent || 0;
-    ctx.fillText('DESTINATION', 0, 28 + (ascent - descent) / 2);
+    ctx.fillText(pinLabel, 0, 28 + (ascent - descent) / 2);
     ctx.fillStyle = surface.arrow;
     ctx.strokeStyle = surface.ink;
     ctx.lineWidth = 2;

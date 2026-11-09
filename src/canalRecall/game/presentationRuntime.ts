@@ -67,6 +67,7 @@ import { nearestRouteIndex, RADAR_RADIUS_M, radarLocal, radarRadiusForSpeed, Rad
 import { gameWorldToLngLat, type GameLoaderFrame } from '../ownMap/frame';
 import { revealOnEnter, utilityBlockedByCards, utilityVisibility } from './utilityTuck';
 import { CATALOGS, t as tr, type MessageKey } from '../../i18n/index.ts';
+import { kindLabel } from '../cardKindLabel.ts';
 import { extendShareTrail } from '../shareCard';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
@@ -1158,7 +1159,7 @@ export class GamePresentationRuntime {
     const surface = window.CanalRecallUi.hudSurface;
     // Bare text over the map was unreadable on white streets; this is the same
     // navy plate as every other readout, sized to the line.
-    const text = '?  help   ·   G  settings   ·   M  map   ·   O  north   ·   T  labels   ·   B  buildings   ·   P  pause';
+    const text = tr('ride.controlsHint');
     ctx.save();
     ctx.globalAlpha = Math.min(1, CONTROLS_HINT_DURATION - this.raceTime);
     ctx.font = `600 11px ${surface.fontMono}`;
@@ -1439,8 +1440,8 @@ export class GamePresentationRuntime {
 
     type PauseAction = { id: 'resume' | 'route' | 'copy'; key: string; caption: string };
     const actions: PauseAction[] = [
-      { id: 'resume', key: 'P / ESC', caption: 'Resume' },
-      { id: 'route', key: 'M', caption: 'Route setup' },
+      { id: 'resume', key: 'P / ESC', caption: tr('ride.resume') },
+      { id: 'route', key: 'M', caption: tr('ride.routeSetup') },
     ];
     if (this._shareUrl) {
       actions.push({
@@ -1468,7 +1469,7 @@ export class GamePresentationRuntime {
     ctx.fillStyle = INK;
     ctx.font = `800 ${compact ? 30 : 36}px ${window.CanalRecallUi.hudSurface.fontPlaque}`;
     ctx.textAlign = 'center';
-    ctx.fillText('PAUSED', cx, cardY + (compact ? 40 : 46));
+    ctx.fillText(tr('ride.paused'), cx, cardY + (compact ? 40 : 46));
 
     const pauseButtons: NonNullable<typeof this._pauseButtonBounds> = [];
     this._pauseButtonBounds = pauseButtons;
@@ -1527,7 +1528,7 @@ export class GamePresentationRuntime {
     // unlabelled percentage: what you learned is the progress.
     const kilometres = this._playerDistancePx() / PIXELS_PER_METER / 1000;
     ctx.fillText(
-      `${this.hud.formatTime(this.raceTime)}  ·  ${kilometres.toFixed(2)} km  ·  ${this.quizCorrect} of ${this.quizAttempts} named`,
+      tr('ride.pauseSummary', { time: this.hud.formatTime(this.raceTime), km: kilometres.toFixed(2), correct: this.quizCorrect, attempts: this.quizAttempts }),
       cx,
       y + 18,
     );
@@ -1584,8 +1585,8 @@ export class GamePresentationRuntime {
     let bestText = '';
     if (this._raceKey) {
       const stored = getBestTime(localStorage, this._raceKey);
-      if (stored && this.raceTime <= stored.time) bestText = '★  New personal best';
-      else if (stored) bestText = `Personal best  ${this.hud.formatTime(stored.time)}`;
+      if (stored && this.raceTime <= stored.time) bestText = tr('ride.personalBest.new');
+      else if (stored) bestText = tr('ride.personalBest.old', { time: this.hud.formatTime(stored.time) });
     }
 
     // The card has to fit the screen (user report 2026-10-02: on a laptop
@@ -1608,7 +1609,7 @@ export class GamePresentationRuntime {
       blocks.push({ height: 74 + titleExtra, draw: (top) => {
         ctx.textAlign = 'left';
         ctx.fillStyle = ACCENT; ctx.font = `700 11px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        ctx.fillText(tour?.completed ? 'TOUR COMPLETE' : 'ARRIVED', cardX + padX, top + 11);
+        ctx.fillText(tour?.completed ? tr('ride.arrival.tourDone') : tr('ride.arrival.header'), cardX + padX, top + 11);
         ctx.fillStyle = INK; ctx.font = `800 ${title.size}px system-ui, sans-serif`;
         title.lines.forEach((line, index) => ctx.fillText(line, cardX + padX, top + 42 + index * title.lineHeight));
         ctx.fillStyle = MUTED; ctx.font = '13px system-ui, sans-serif';
@@ -1645,10 +1646,10 @@ export class GamePresentationRuntime {
             const credit = [tour.sourceHost, tour.checked].filter(Boolean).join('  ·  ');
             ctx.fillText(wrapText(ctx, credit ? `${where}  ·  ${credit.toUpperCase()}` : where, textW, 1)[0], textX, top + 10);
           } else if (buurt) {
-            ctx.fillText('NEIGHBOURHOOD  ·  W  WIKIPEDIA', textX, top + 10);
+            ctx.fillText(tr('ride.arrival.neighborhoodWiki'), textX, top + 10);
           } else {
-            const kind = String(landmark!.type || 'landmark').toUpperCase();
-            ctx.fillText(landmark!.wikipediaUrl ? `${kind}  ·  W  WIKIPEDIA` : kind, textX, top + 10);
+            const kind = kindLabel(String(landmark!.type || 'landmark'));
+            ctx.fillText(landmark!.wikipediaUrl ? `${kind}  ·  ${tr('card.wikipedia')}` : kind, textX, top + 10);
           }
           ctx.fillStyle = BODY; ctx.font = '12px system-ui, sans-serif';
           blurb.forEach((line, index) => ctx.fillText(line, textX, top + 30 + index * 17));
@@ -1685,7 +1686,7 @@ export class GamePresentationRuntime {
       // Tighter levels fold the personal best into this line rather than give
       // it a row of its own.
       const bestInFooter = level >= 1 && !!bestText;
-      if (bestInFooter) footerBits.unshift(bestText.replace('★  ', '★ '));
+      if (bestInFooter) footerBits.unshift(bestText.replace(/^★  /, '★ '));
 
       // Five stats across a 600 px card is four columns of comfortable space; the
       // same five across a 366 px phone card ran "420", "03:33" and "0.00 km"
@@ -2104,6 +2105,7 @@ export class GamePresentationRuntime {
     ctx.globalAlpha = 1;
 
     // Rosette: two tails under a struck medal.
+    const ribbonLabel = tr(`ribbon.${ribbon.id}` as MessageKey);
     const medalX = boxX + 42, medalY = boxY + 32, medalR = 20;
     ctx.fillStyle = ribbon.color;
     ctx.globalAlpha = 0.75;
@@ -2129,15 +2131,15 @@ export class GamePresentationRuntime {
     ctx.font = `700 18px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(ribbon.id === 'none' ? '·' : ribbon.label[0], medalX, medalY + 1);
+    ctx.fillText(ribbon.id === 'none' ? '·' : ribbonLabel[0], medalX, medalY + 1);
     ctx.textBaseline = 'alphabetic';
 
     const textX = boxX + 76;
     ctx.textAlign = 'left';
     ctx.fillStyle = ribbon.color;
     ctx.font = `700 19px ${window.CanalRecallUi.hudSurface.fontMono}`;
-    ctx.fillText(ribbon.label, textX, boxY + 26);
-    const labelWidth = ctx.measureText(ribbon.label).width;
+    ctx.fillText(ribbonLabel, textX, boxY + 26);
+    const labelWidth = ctx.measureText(ribbonLabel).width;
     ctx.fillStyle = '#94A3B8';
     ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
     ctx.fillText(`${Math.round(ribbon.score * 100)}%`, textX + labelWidth + 12, boxY + 26);
@@ -2151,10 +2153,11 @@ export class GamePresentationRuntime {
       ctx.font = `11px ${window.CanalRecallUi.hudSurface.fontMono}`;
       // On a phone "Efficiency 100%" ran past the box; the bar already shows
       // the share, so a narrow column keeps the name and drops the number.
-      let axisText = `${axis.label} ${Math.round(axis.score * 100)}%`;
+      const axisLabel = tr(`ribbon.axis.${axis.id}` as MessageKey);
+      let axisText = `${axisLabel} ${Math.round(axis.score * 100)}%`;
       if (ctx.measureText(axisText).width > w) {
         ctx.font = `10px ${window.CanalRecallUi.hudSurface.fontMono}`;
-        axisText = axis.label;
+        axisText = axisLabel;
       }
       ctx.fillText(axisText, x, boxY + 45);
       ctx.fillStyle = 'rgba(148,163,184,.25)';
