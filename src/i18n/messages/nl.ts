@@ -654,6 +654,7 @@ export const nl: Record<MessageKey, string> = {
   'ride.nextStop': 'Volgende stop',
   'ride.routeSetup': 'Route instellen',
   'ride.shareRoute': 'Deel deze route',
+  'ride.distance.about': 'ongeveer',
   'ride.shareRun': 'Deel reeks',
   'ride.linkCopied': 'Link gekopieerd',
   // --- Arrival and run cards (#283) ---

@@ -34,6 +34,7 @@ import { worldToLatLng, type RunShareInput } from '../runShareCard';
 import type { ShareTrail } from '../shareCard';
 import type { Hud } from './collaborators';
 import { t } from '../../i18n/index.ts';
+import { drawKeycapAction } from './keycapAction';
 
 /** Riding refreshes the run's clock at most this often (one localStorage write). */
 const RUN_TOUCH_MS = 15_000;
@@ -434,17 +435,11 @@ export class GameChainedRunRuntime {
       ctx.textAlign = 'left';
       let ax = cardX + padX;
       for (const action of actions) {
-        ctx.font = `700 11px ${font}`;
-        const keyW = ctx.measureText(action.key).width + 14;
-        ctx.fillStyle = 'rgba(31,28,23,.08)';
-        roundRect(ctx, ax, y + 4, keyW, 20, 5); ctx.fill();
-        ctx.fillStyle = INK; ctx.fillText(action.key, ax + 7, y + 18);
-        ax += keyW + 8;
-        ctx.fillStyle = MUTED; ctx.font = '12px system-ui, sans-serif';
-        ctx.fillText(action.caption, ax, y + 18);
-        const captionW = ctx.measureText(action.caption).width;
-        buttons.push({ x: ax - keyW - 8, y, w: keyW + 8 + captionW, h: 28, id: action.id });
-        ax += captionW + 22;
+        const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y }, action, {
+          ink: INK, muted: MUTED, fontMono: font,
+        }, scale === 1 ? this.hud.hoverPoint : null);
+        buttons.push({ ...drawn.bounds, id: action.id });
+        ax = drawn.endX + 22;
       }
     }
     ctx.restore();
