@@ -36,7 +36,7 @@ import { stampCount } from '../stampAlbum';
 import { finishStory } from './finishStory';
 import { missionBrief } from './missionBrief';
 import { introFrame, introOverview, introPlan, playerZoom } from './introFlight';
-import { introHoldCapMs, revealDissolveAlpha, startHoldCapMs, startHoldEnabled, startHoldMessageKey } from '../engine/startHold';
+import { introHoldCapMs, revealDissolveAlpha, startHoldCapMs, startHoldEnabled, startHoldMessageKey, startHoldTickDue } from '../engine/startHold';
 import { boatZoomScale, ferryZoomScale, transitZoomScale, vehicleZoomScale } from './vehicleZoomScale';
 import { glyphBox, startTagCentreY, type ScreenBox } from './vehicleScreenBox';
 import { COLD_OPEN_ENABLED } from './coldOpenReview';
@@ -228,7 +228,9 @@ export class GamePresentationRuntime {
       const key = startHoldMessageKey(performance.now() - started, base);
       if (key !== base) this.loadingMessage = tr(key as MessageKey);
     }, 250);
-    try { await this._waitForMapSettle(capMs); } finally { clearInterval(timer); }
+    // While this hold waits, the loading frame ticks the world (_tickHeldWorld): the hold ends when the city is built.
+    this._startHoldTicking = true;
+    try { await this._waitForMapSettle(capMs); } finally { clearInterval(timer); this._startHoldTicking = false; }
     const out = this._lastMapSettle;
     const ms = out?.ms ?? Math.round(performance.now() - started);
     hold.spentMs += ms;
@@ -236,6 +238,23 @@ export class GamePresentationRuntime {
     hold.holds.push({ kind, ms, capMs, timedOut: !!out?.timedOut, pending: out?.pending ?? [] });
     // The dissolve follows the last hold before racing: armed when it ended on its cap.
     this._revealDissolve = hold.capped ? { at: -1, capped: true } : null;
+  }
+
+  /**
+   * Under the loading screen, while a start hold waits (lane S1 #313): run the world's settle tick (ground, far and
+   * baked tiers at the held camera) at 10 Hz desktop / 4 Hz touch. The game never synced the world while loading, so
+   * the baked cells the aim planned stayed undrawn and far prisms stood in for them until the reveal.
+   */
+  _tickHeldWorld(): void {
+    if (!this._startHoldTicking) return;
+    const view = this.vectorMap as unknown as { settleTick?(): void } | null;
+    if (!view?.settleTick) return;
+    const now = performance.now();
+    let touch = false;
+    try { touch = !!window.matchMedia?.('(pointer: coarse)')?.matches; } catch { /* fine pointer */ }
+    if (!startHoldTickDue(now, this._startHoldTickAt, touch)) return;
+    this._startHoldTickAt = now;
+    try { view.settleTick(); } catch (error) { console.warn('start hold tick', error); this._startHoldTicking = false; }
   }
 
   /** Paint the loading screen over the first ~600 ms of the ride after a capped hold (startHold.ts revealDissolveAlpha). */
@@ -758,6 +777,7 @@ export class GamePresentationRuntime {
     }
     if (this.state === GameState.LOADING) {
       this.loadingScreen.draw(ctx, this.loadingMessage, this.loadingProgress);
+      this._tickHeldWorld();
       return;
     }
     if (!this.player) return;

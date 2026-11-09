@@ -23,6 +23,17 @@ export const START_HOLD_INTRO_MIN_MS = 1800;
 export const START_HOLD_MESSAGE_AFTER_MS = 1500;
 /** A capped hold dissolves the loading screen into the ride over this long, so the residual pop sits behind it. */
 export const REVEAL_DISSOLVE_MS = 600;
+/**
+ * While a start hold waits, the game ticks the world (ownWorldView.settleTick: ground, far and baked tiers at the held
+ * camera) at most this often, ms. Those tiers only advanced from sync(), which the game never ran under the loading
+ * screen, so the baked cells the aim planned stayed undrawn (far prisms) until the reveal (#313).
+ */
+export const START_HOLD_TICK_MS_DESKTOP = 100;
+export const START_HOLD_TICK_MS_TOUCH = 250;
+export function startHoldTickDue(now: number, last: number | null | undefined, touch: boolean): boolean {
+  return last == null || !Number.isFinite(last) || now - last >= (touch ? START_HOLD_TICK_MS_TOUCH : START_HOLD_TICK_MS_DESKTOP) || now < last;
+}
+
 /** Grid the census samples the view on (columns × rows). */
 export const START_HOLD_GRID: readonly [number, number] = [24, 16];
 
@@ -55,20 +66,24 @@ export function isStandIn(s: StartTierSample, ringM = START_HOLD_SHELL_RING_M): 
 }
 
 export interface StartTierCensus {
-  /** Samples per owner within 300 / 600 / 1000 m (for the probes). */
-  within: Record<300 | 600 | 1000, Partial<Record<StartTierOwner, number>>>;
+  /** Samples per owner within 300 / 600 / 1000 / 1200 m (for the probes). */
+  within: Record<300 | 600 | 1000 | 1200, Partial<Record<StartTierOwner, number>>>;
   /** Stand-in samples inside the hold ring: > 0 holds the loading screen. */
   standIns: number;
+  /** Samples per owner in the 600-1,200 m band (what shows past the ring: coloured baked shells or grey prisms). */
+  band600to1200: Partial<Record<StartTierOwner, number>>;
 }
 
 export function startTierCensus(samples: Iterable<StartTierSample>, ringM = START_HOLD_SHELL_RING_M): StartTierCensus {
-  const within: StartTierCensus['within'] = { 300: {}, 600: {}, 1000: {} };
+  const within: StartTierCensus['within'] = { 300: {}, 600: {}, 1000: {}, 1200: {} };
   let standIns = 0;
+  const band600to1200: StartTierCensus['band600to1200'] = {};
   for (const s of samples) {
-    for (const r of [300, 600, 1000] as const) if (s.distanceM <= r) within[r][s.owner] = (within[r][s.owner] ?? 0) + 1;
+    if (s.distanceM > 600 && s.distanceM <= 1200) band600to1200[s.owner] = (band600to1200[s.owner] ?? 0) + 1;
+    for (const r of [300, 600, 1000, 1200] as const) if (s.distanceM <= r) within[r][s.owner] = (within[r][s.owner] ?? 0) + 1;
     if (isStandIn(s, ringM)) standIns++;
   }
-  return { within, standIns };
+  return { within, standIns, band600to1200 };
 }
 
 /** Screen points of the census grid, CSS px, cell centres. */

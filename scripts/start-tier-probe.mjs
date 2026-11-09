@@ -52,24 +52,25 @@ async function run(i) {
       const dz = tb?.detailZoom ?? 16;
       const baked = new Set(bc?.drawnCells?.() ?? []);
       const cellOf = (lng, lat) => `${Math.floor((lng - 4.9) * 67967.53053174692 / 1000)}_${Math.floor((lat - 52.37) * 111320 / 1000)}`;
-      const buckets = { 300: {}, 600: {}, 1000: {} }, tiles = { 300: {}, 600: {}, 1000: {} };
+      const buckets = { 300: {}, 600: {}, 1000: {}, 1200: {} }, tiles = { 300: {}, 600: {}, 1000: {}, 1200: {} }, band = {};
       for (let gy = 0; gy < 24; gy++) for (let gx = 0; gx < 32; gx++) {
         const ll = cam.unproject([(gx + 0.5) / 32 * W, (gy + 0.5) / 24 * H]);
         if (!ll) continue;
         const d = Math.hypot((ll.lng - c.lng) * kx, (ll.lat - c.lat) * ky);
         const [nx, ny] = tile(ll.lng, ll.lat, dz), [cx, cy] = tile(ll.lng, ll.lat, 14);
         const tier = has(`near:${nx}/${ny}`) || has(`near:${dz}/${nx}/${ny}`) ? 'facade' : baked.has(cellOf(ll.lng, ll.lat)) ? 'baked' : has(`coarse:${cx}/${cy}`) || has(`coarse:14/${cx}/${cy}`) ? 'coarse' : bc?.covers?.(cellOf(ll.lng, ll.lat)) ? 'farPending' : 'none';
-        for (const r of [300, 600, 1000]) if (d <= r) {
+        if (d > 600 && d <= 1200) band[tier] = (band[tier] ?? 0) + 1;
+        for (const r of [300, 600, 1000, 1200]) if (d <= r) {
           buckets[r][tier] = (buckets[r][tier] ?? 0) + 1;
           (tiles[r][tier] ??= new Set()).add(`${nx}/${ny}`);
         }
       }
       const t = {};
-      for (const r of [300, 600, 1000]) t[r] = Object.fromEntries(Object.entries(tiles[r]).map(([k, v]) => [k, v.size]));
+      for (const r of [300, 600, 1000, 1200]) t[r] = Object.fromEntries(Object.entries(tiles[r]).map(([k, v]) => [k, v.size]));
       const bs = bc?.stats?.();
       return {
         centre: [+c.lng.toFixed(5), +c.lat.toFixed(5)], zoom: +cam.zoom().toFixed(2), pitch: +cam.pitch().toFixed(1), bearing: +cam.bearing().toFixed(1),
-        points: buckets, tiles: t, nearChunks: [...chunks.keys()].filter(k => k.startsWith('near:') && has(k)).length,
+        points: buckets, band600to1200: band, tiles: t, engineCensus: vm.lastStartCensus ?? null, nearChunks: [...chunks.keys()].filter(k => k.startsWith('near:') && has(k)).length,
         coarseChunks: [...chunks.keys()].filter(k => k.startsWith('coarse:') && has(k)).length,
         baked: bs ? { enabled: bs.enabled, covered: bs.covered, cells: bs.cells, drawn: bs.drawn, pending: bs.pending, released: bs.released } : null,
         tbPending: tb?.pending?.length ?? null, atlasReady: tb ? !!tb.ready : null,
@@ -128,7 +129,7 @@ for (let i = 0; i < runs; i++) {
   results.push(r);
   const f = r.first;
   console.log(`${label} ${device} run ${i + 1}: nav->racing ${r.navToRaceMs} ms, hold ${JSON.stringify(r.hold && { ms: r.hold.ms, timedOut: r.hold.timedOut, pending: r.hold.pending })}`);
-  console.log(`  first frame centre ${f?.centre} z${f?.zoom} p${f?.pitch} b${f?.bearing}; pts300 ${JSON.stringify(f?.points?.[300])} pts600 ${JSON.stringify(f?.points?.[600])} pts1000 ${JSON.stringify(f?.points?.[1000])}; tiles600 ${JSON.stringify(f?.tiles?.[600])}; baked ${JSON.stringify(f?.baked)}; no coarse/farPending <=600 m after ${r.msUntilNoCoarseWithin600 ?? 'never'} ms`);
+  console.log(`  first frame centre ${f?.centre} z${f?.zoom} p${f?.pitch} b${f?.bearing}; pts300 ${JSON.stringify(f?.points?.[300])} pts600 ${JSON.stringify(f?.points?.[600])} pts1000 ${JSON.stringify(f?.points?.[1000])}; band600-1200 ${JSON.stringify(f?.band600to1200)}; startHold ${JSON.stringify(r.startHold)}; tiles600 ${JSON.stringify(f?.tiles?.[600])}; baked ${JSON.stringify(f?.baked)}; no coarse/farPending <=600 m after ${r.msUntilNoCoarseWithin600 ?? 'never'} ms`);
 }
 await browser.close();
 fs.mkdirSync(path.dirname(out), { recursive: true });

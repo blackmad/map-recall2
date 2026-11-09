@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   REVEAL_DISSOLVE_MS, START_HOLD_CAP_MS, START_HOLD_INTRO_MIN_MS, START_HOLD_MESSAGE_AFTER_MS, censusGrid, introHoldCapMs, isStandIn,
-  revealDissolveAlpha, startHoldCapMs, startHoldEnabled, startHoldMessageKey, startTierCensus,
+  revealDissolveAlpha, startHoldCapMs, startHoldTickDue, START_HOLD_TICK_MS_DESKTOP, START_HOLD_TICK_MS_TOUCH, startHoldEnabled, startHoldMessageKey, startTierCensus,
 } from './startHold';
 
 test('the flag is on unless asked off', () => {
@@ -42,6 +42,8 @@ test('the census buckets by distance and counts the stand-ins', () => {
   assert.deepEqual(c.within[300], { facade: 2 });
   assert.deepEqual(c.within[600], { facade: 2, farPending: 1, coarse: 1 });
   assert.deepEqual(c.within[1000], { facade: 2, farPending: 2, coarse: 1 });
+  assert.deepEqual(c.within[1200], { facade: 2, farPending: 2, coarse: 1 });
+  assert.deepEqual(c.band600to1200, { farPending: 1 });
   assert.equal(c.standIns, 1);
 });
 
@@ -64,4 +66,13 @@ test('a capped hold dissolves over 600 ms; a settled one cuts', () => {
   assert.equal(revealDissolveAlpha(REVEAL_DISSOLVE_MS, true), 0);
   let prev = 1;
   for (let t = 0; t <= REVEAL_DISSOLVE_MS; t += 50) { const a = revealDissolveAlpha(t, true); assert.ok(a <= prev); prev = a; }
+});
+
+test('the held world is ticked at 10 Hz on desktop, 4 Hz on touch', () => {
+  assert.equal(startHoldTickDue(0, null, false), true);
+  assert.equal(startHoldTickDue(50, 0, false), false);
+  assert.equal(startHoldTickDue(START_HOLD_TICK_MS_DESKTOP, 0, false), true);
+  assert.equal(startHoldTickDue(START_HOLD_TICK_MS_DESKTOP, 0, true), false);
+  assert.equal(startHoldTickDue(START_HOLD_TICK_MS_TOUCH, 0, true), true);
+  assert.equal(startHoldTickDue(10, 500, false), true); // clock went back: tick
 });

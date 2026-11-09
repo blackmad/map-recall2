@@ -1069,13 +1069,13 @@ export class OwnWorldView implements WorldViewOracles {
   }
 
   /**
-   * Busy while the loading screen is up and the census finds a stand-in within 600 m. Each poll first runs the far and
-   * baked tiers at the held camera (settleTick): they only advance from sync, which the game does not run under the
-   * loading screen, so a baked cell planned at the aim stayed undrawn (far prisms, grey lids) until the reveal.
+   * Busy while the loading screen is up and the census finds a stand-in within 600 m. The tiers advance because the
+   * game's loading frame runs settleTick() while a start hold waits (presentationRuntime._tickHeldWorld): they only
+   * advanced from sync, which the game does not run under the loading screen, so a baked cell planned at the aim
+   * stayed undrawn (far prisms, grey lids) until the reveal.
    */
   private startShellsBusy(): boolean {
     if (W().canalRecallGame?.state !== LOADING_STATE) { this._startShellsBusy = false; return false; }
-    this.settleTick();
     const census = this.startTierCensus();
     this.lastStartCensus = census && { ...census, at: Math.round(performance.now()) };
     this._startShellsBusy = !!census && census.standIns > 0;
