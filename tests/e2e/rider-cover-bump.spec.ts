@@ -25,9 +25,9 @@ const SPOTS = {
   Bloemgracht: { at: [52.3747, 4.8800], reaches: true },
 } as const satisfies Record<string, { at: readonly [number, number]; reaches: boolean }>; // lat, lng
 
-type Probe = { covered: boolean; cover: string[]; ghosted: string[]; depthM: number; id: string | null };
+type Probe = { covered: boolean; cover: string[]; ghosted: string[]; depthM: number; id: string | null; hiddenNear: string[]; eyeInside: string | null };
 
-async function bumpHouse(page: Page, street: keyof typeof SPOTS): Promise<{ road: string; facing: number; samples: Probe[] }> {
+async function bumpHouse(page: Page, street: keyof typeof SPOTS, variant = 0): Promise<{ road: string; facing: number; samples: Probe[] }> {
   const [lat, lng] = SPOTS[street].at;
   const setup = await page.evaluate(([lat, lng, street]) => {
     const game = (window as any).canalRecallGame;
@@ -53,19 +53,19 @@ async function bumpHouse(page: Page, street: keyof typeof SPOTS): Promise<{ road
     return { x: road.x, y: road.y, angle: road.angle, name: game.track.getRoadName(road.x, road.y) };
   }, [lat, lng, street] as const);
   // Face the nearer house front (perpendicular to the street), once the streamed footprints there have arrived.
-  const scan = () => page.evaluate(({ x, y, angle }) => {
+  const scan = () => page.evaluate(({ x, y, angle, variant }) => {
     const game = (window as any).canalRecallGame, vm = game.vectorMap, city = vm._completeCity;
     let best = { angle, d: Infinity };
     if (!city?.featuresAt) return best;
-    for (const side of [-Math.PI / 2, Math.PI / 2]) {
+    for (const side of (variant % 2 ? [Math.PI / 2, -Math.PI / 2] : [-Math.PI / 2, Math.PI / 2])) {
       const a = angle + side;
       for (let m = 1; m <= 15; m += 0.5) {
         const [lo, la] = vm.worldToLngLat(x + Math.cos(a) * m * 3, y + Math.sin(a) * m * 3, game.osmLoader);
-        if (city.featuresAt(lo, la).some((f: any) => !(Number(f.properties?.min_height) > 2.5))) { if (m < best.d) best = { angle: a, d: m }; break; }
+        if (city.featuresAt(lo, la).some((f: any) => !(Number(f.properties?.min_height) > 2.5))) { if (m < best.d || (variant % 2 && best.d === Infinity)) best = { angle: a, d: m }; break; }
       }
     }
     return best;
-  }, setup);
+  }, { ...setup, variant });
   await expect.poll(async () => (await scan()).d, { timeout: 90_000 }).toBeLessThan(15);
   const facing = await scan();
   await page.evaluate(({ x, y, angle }) => {
@@ -83,11 +83,28 @@ async function bumpHouse(page: Page, street: keyof typeof SPOTS): Promise<{ road
       if (d > depthM) { depthM = d; id = String(f.properties?.id); }
     }
     const tb = vm._threeBuildings;
-    return { covered: !!vm.riderCovered, cover: [...(tb?.hiddenBy?.get('cover') ?? [])], ghosted: tb?.ghostedIds?.() ?? [], depthM, id };
+    // F4 (#320): the paths that draw a building with zero pixels: hidden for any reason other than a model swap,
+    // and the chase eye inside a footprint below its top (chunks draw FrontSide).
+    const hiddenNear: string[] = [];
+    for (const [reason, ids] of tb?.hiddenBy ?? []) if (reason !== 'signature' && reason !== 'recipe-tiles') for (const h of ids) hiddenNear.push(`${reason}:${h}`);
+    let eyeInside: string | null = null;
+    const tr = vm.map?.transform, eye = tr?.getCameraLngLat?.(), alt = tr?.getCameraAltitude?.();
+    if (eye && Number.isFinite(alt)) for (const f of vm._completeCity.featuresAt(eye.lng, eye.lat)) {
+      const p = f.properties || {}, top = Math.max(...[p.height, p.roofEavesHeightM, p.render_height].map(Number).filter(Number.isFinite), 5);
+      if (alt < top + 0.75) { eyeInside = String(p.id); break; }
+    }
+    return { covered: !!vm.riderCovered, cover: [...(tb?.hiddenBy?.get('cover') ?? [])], ghosted: tb?.ghostedIds?.() ?? [], depthM, id, hiddenNear, eyeInside };
   });
   await page.keyboard.down('ArrowUp');
   for (let i = 0; i < 40; i++) { samples.push(await probe()); await page.waitForTimeout(100); }
   await page.keyboard.up('ArrowUp');
+  if (variant >= 2) {
+    // Turn away from the wall: the chase camera swings over the struck house.
+    const key = variant % 2 ? 'ArrowLeft' : 'ArrowRight';
+    await page.keyboard.down(key);
+    for (let i = 0; i < 20; i++) { samples.push(await probe()); await page.waitForTimeout(100); }
+    await page.keyboard.up(key);
+  }
   await page.waitForTimeout(800);
   samples.push(await probe());
   return { road: setup.name, facing: facing.d, samples };
@@ -136,4 +153,38 @@ test.describe('rider cover', () => {
     const covered = run.samples.filter(s => s.covered).length;
     console.log(`old rule at ${run.road}: max ${maxDepth.toFixed(2)} m inside; covered in ${covered}/${run.samples.length} samples; ghosted ${JSON.stringify([...new Set(run.samples.flatMap(s => s.ghosted))])}`);
   });
+});
+
+// F4 gate (#320): 30 collisions over five spots (6 each: both house fronts, straight in, then turned away from the wall
+// so the chase camera swings over the struck house). Counts samples where a zero-pixel path is active for the struck
+// building or any building: hidden (not a model swap) or the eye inside a footprint. `F4_GATE=1`.
+const GATE_SPOTS: Record<string, readonly [number, number]> = {
+  'Nieuwe Leliestraat': [52.3752, 4.8798], Bloemgracht: [52.3747, 4.8800], Damrak: [52.3747, 4.8960],
+  Prinsengracht: [52.3745, 4.8840], Leidsestraat: [52.3645, 4.8855],
+};
+test.describe('F4 collision gate', () => {
+  test.beforeEach(async ({ page }) => {
+    const bundles = process.env.BUNDLES_DIR;
+    if (bundles) await page.route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+      const file = `${bundles}/${/\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]}`;
+      return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+    });
+  });
+  for (const street of Object.keys(GATE_SPOTS)) {
+    test(`F4 gate: collisions at ${street}`, async ({ page }, testInfo) => {
+      test.skip(!process.env.F4_GATE, 'F4_GATE=1');
+      test.skip(testInfo.project.name === 'iphone' && !['Nieuwe Leliestraat', 'Damrak'].includes(street), 'two spots on iPhone');
+      test.setTimeout(600_000);
+      await openRoute(page, { travelMode: 'car', viewMode: 'chase', abortHeavyTiles: false });
+      (SPOTS as any)[street] ??= { at: GATE_SPOTS[street], reaches: false };
+      let bad = 0, total = 0, eye = 0, hid = 0, maxDepth = 0;
+      for (let k = 0; k < 6; k++) {
+        const run = await bumpHouse(page, street as keyof typeof SPOTS, k);
+        for (const s of run.samples) { total++; maxDepth = Math.max(maxDepth, s.depthM); if (s.eyeInside) eye++; if (s.hiddenNear.length) hid++; if (s.eyeInside || s.hiddenNear.length) bad++; }
+      }
+      console.log(`F4 ${testInfo.project.name} ${street}: samples ${total}, zero-pixel-path ${bad} (eye inside ${eye}, hidden ${hid}), max depth ${maxDepth.toFixed(2)} m`);
+      await page.screenshot({ path: testInfo.outputPath(`f4-${street.replace(/ /g, '-')}.jpg`), type: 'jpeg', quality: 80 });
+      expect(bad, 'no frame where a building near the rider is hidden or the eye is inside one').toBe(0);
+    });
+  }
 });
