@@ -71,9 +71,10 @@ import { placeName } from './landmarkNamesNl.ts';
 import { kindLabel } from '../cardKindLabel.ts';
 import { extendShareTrail } from '../shareCard';
 import { fitFooterItems, type FooterItem } from './footerFit';
-import { drawKeycapAction, KEYCAP_ROW_H, measureKeycapAction, wrapKeycapRows } from './keycapAction';
+import { drawKeycapAction } from './keycapAction';
 import { formatRideDistance } from './rideDistance';
 import { remainingRouteDistance } from './routeRemaining';
+import { drawPauseCard, pauseCardLayout, pauseStatsText, type PauseAction } from './pauseCard';
 
 /** Safari's trackpad / multi-touch gesture event (not in lib.dom). */
 interface SafariGestureEvent extends UIEvent { rotation: number; scale: number }
@@ -1448,102 +1449,41 @@ export class GamePresentationRuntime {
 
   _renderPaused(): void {
     const ctx = this.ctx;
-    const cx = CANVAS_W / 2;
     const compact = this.viewport.mode === 'compact';
-    const cardW = Math.min(400, CANVAS_W - 24);
-    const padX = compact ? 18 : 28;
-    const cardX = cx - cardW / 2;
-
     ctx.fillStyle = 'rgba(28,24,18,0.34)';
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
-    type PauseAction = { id: 'resume' | 'route' | 'copy'; key: string; caption: string };
+    // #319: the card hugs its content and centres every line (pauseCard.ts).
     const actions: PauseAction[] = [
       { id: 'resume', key: 'P / ESC', caption: tr('ride.resume') },
       { id: 'route', key: 'M', caption: tr('ride.routeSetup') },
     ];
-    if (this._shareUrl) {
-      actions.push({
-        id: 'copy',
-        key: 'C',
-        caption: this._copiedTimer > 0 ? tr('ride.linkCopied') : tr('ride.shareRoute'),
-      });
-    }
-
-    const BUTTON_H = 44;
-    const BUTTON_GAP = 8;
-    const titleH = compact ? 56 : 64;
-    const statsH = 28;
-    // R2-6 (#304): the desktop keycap row wraps to a second line rather than run past the card's edge.
-    const KEY_GAP = 22;
-    const keyRows = compact ? [] : wrapKeycapRows(
-      actions.map(action => measureKeycapAction(ctx, action, window.CanalRecallUi.hudSurface.fontMono)), cardW - padX * 2, KEY_GAP);
-    const actionsH = compact
-      ? actions.length * BUTTON_H + (actions.length - 1) * BUTTON_GAP
-      : keyRows.length * KEYCAP_ROW_H + (keyRows.length - 1) * 4;
-    const cardH = 20 + titleH + actionsH + statsH + 18;
-    const cardY = (CANVAS_H - cardH) / 2;
-
-    // The same paper plate as the arrival card. This was the last surface of
-    // the old arcade skin: 78% black, yellow Courier, and ink captions that
-    // vanished on it ("New route" was invisible on a phone).
-    this.hud.paperCard(ctx, { x: cardX, y: cardY, width: cardW, height: cardH }, { solid: true, radius: 12 });
-
-    ctx.fillStyle = INK;
-    ctx.font = `800 ${compact ? 30 : 36}px ${window.CanalRecallUi.hudSurface.fontPlaque}`;
-    ctx.textAlign = 'center';
-    ctx.fillText(tr('ride.paused'), cx, cardY + (compact ? 40 : 46));
-
-    const pauseButtons: NonNullable<typeof this._pauseButtonBounds> = [];
-    this._pauseButtonBounds = pauseButtons;
-    let y = cardY + titleH;
-
-    if (compact) {
-      for (const action of actions) {
-        const primary = action.id === 'resume';
-        const bounds = { x: cardX + padX, y, w: cardW - padX * 2, h: BUTTON_H };
-        ctx.fillStyle = primary ? COPPER : 'rgba(31,28,23,.05)';
-        roundRect(ctx, bounds.x, bounds.y, bounds.w, bounds.h, 12);
-        ctx.fill();
-        if (!primary) {
-          ctx.strokeStyle = RULE;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-        ctx.fillStyle = primary ? '#1f1c17' : (action.id === 'copy' && this._copiedTimer > 0 ? GOOD : INK);
-        ctx.font = '700 14px system-ui, sans-serif';
-        ctx.fillText(action.caption, bounds.x + bounds.w / 2, y + 28);
-        pauseButtons.push({ ...bounds, id: action.id });
-        y += BUTTON_H + BUTTON_GAP;
-      }
-    } else {
-      ctx.textAlign = 'left';
-      keyRows.forEach((row, rowIndex) => {
-        let ax = cardX + padX;
-        for (const index of row) {
-          const action = actions[index];
-          const drawn = drawKeycapAction(ctx, roundRect, { x: ax, top: y - 2 + rowIndex * (KEYCAP_ROW_H + 4) }, action, {
-            ink: INK, muted: MUTED, fontMono: window.CanalRecallUi.hudSurface.fontMono,
-            captionColour: action.id === 'copy' && this._copiedTimer > 0 ? GOOD : undefined,
-          }, this.hud.hoverPoint);
-          pauseButtons.push({ ...drawn.bounds, id: action.id });
-          ax = drawn.endX + KEY_GAP;
-        }
-      });
-      y += actionsH;
-    }
-
-    ctx.textAlign = 'center';
-    ctx.font = `500 12px ${window.CanalRecallUi.hudSurface.fontUi}`;
-    ctx.fillStyle = MUTED;
-    // Kilometres, like every other readout, and names rather than an
-    // unlabelled percentage: what you learned is the progress.
-    const kilometres = this._playerDistancePx() / PIXELS_PER_METER / 1000;
-    ctx.fillText(
-      tr('ride.pauseSummary', { time: this.hud.formatTime(this.raceTime), km: kilometres.toFixed(2), correct: this.quizCorrect, attempts: this.quizAttempts }),
-      cx,
-      y + 18,
-    );
+    const copied = this._copiedTimer > 0;
+    if (this._shareUrl) actions.push({ id: 'copy', key: 'C', caption: copied ? tr('ride.linkCopied') : tr('ride.shareRoute') });
+    const free = !!this.freeRide;
+    const destination = free ? '' : this._destinationLabel();
+    const subtitle = free
+      ? [tr('freeRide.badge'), this.currentNeighborhood].filter(Boolean).join('  ·  ')
+      : destination ? tr('hud.toDestination', { name: destination }) : '';
+    const stats = pauseStatsText((key, vars) => tr(key, vars), {
+      timeS: this.raceTime,
+      km: this._playerDistancePx() / PIXELS_PER_METER / 1000,
+      correct: this.quizCorrect,
+      attempts: this.quizAttempts,
+      freeRide: free,
+    });
+    const surface = window.CanalRecallUi.hudSurface;
+    const fonts = { plaque: surface.fontPlaque, ui: surface.fontUi, mono: surface.fontMono };
+    const measure = (text: string, font: string) => { ctx.font = font; return ctx.measureText(text).width; };
+    const layout = pauseCardLayout(measure, { title: tr('ride.paused'), subtitle, stats, actions }, { width: CANVAS_W, height: CANVAS_H, compact }, fonts);
+    this._pauseCardLayout = layout;
+    this._pauseButtonBounds = drawPauseCard(ctx, layout, actions, {
+      ink: INK, muted: MUTED, copper: COPPER, rule: RULE, good: GOOD, fontMono: surface.fontMono,
+      paper: rect => this.hud.paperCard(ctx, { x: rect.x, y: rect.y, width: rect.w, height: rect.h }, { solid: true, radius: 12 }),
+      roundRect,
+      doneId: copied ? 'copy' : null,
+      mouse: compact ? null : this.hud.hoverPoint,
+    });
   }
 
   // ---- The arrival card ----

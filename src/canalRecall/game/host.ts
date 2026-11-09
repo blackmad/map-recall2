@@ -111,6 +111,8 @@ export interface GameCoreHost {
   _finishCardBounds?: { x: number; y: number; w: number; h: number };
   /** Tap targets for the pause card (resume / new route / copy). */
   _pauseButtonBounds?: Array<{ x: number; y: number; w: number; h: number; id: 'resume' | 'route' | 'copy' }>;
+  /** The last drawn pause card's layout (#319), read by the pause-card spec. */
+  _pauseCardLayout?: import('./pauseCard').PauseCardLayout;
   _runPauseAction?(id: 'resume' | 'route' | 'copy'): void;
   _openRouteSetup?(): void;
 

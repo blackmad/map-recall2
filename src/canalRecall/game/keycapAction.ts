@@ -61,10 +61,20 @@ export function measureKeycapAction(
   action: { key: string; caption: string },
   fontMono: string,
 ): number {
-  ctx.font = '12px system-ui, sans-serif';
-  const captionW = ctx.measureText(action.caption).width;
-  ctx.font = `700 11px ${fontMono}`;
-  return ctx.measureText(action.key).width + 14 + GAP + captionW;
+  return keycapActionWidth((text, font) => { ctx.font = font; return ctx.measureText(text).width; }, action, fontMono);
+}
+
+/** The fonts `drawKeycapAction` uses, for callers that measure without a context. */
+export const KEYCAP_CAPTION_FONT = '12px system-ui, sans-serif';
+export const keycapKeyFont = (fontMono: string): string => `700 11px ${fontMono}`;
+
+/** `measureKeycapAction` through a pure `measure(text, font)` (the pause card's layout, #319). */
+export function keycapActionWidth(
+  measure: (text: string, font: string) => number,
+  action: { key: string; caption: string },
+  fontMono: string,
+): number {
+  return measure(action.key, keycapKeyFont(fontMono)) + 14 + GAP + measure(action.caption, KEYCAP_CAPTION_FONT);
 }
 
 /**

@@ -777,6 +777,7 @@ export const nl: Record<MessageKey, string> = {
   'ride.paused': 'PAUZE',
   'ride.resume': 'Hervatten',
   'ride.pauseSummary': '{time}  ·  {km} km  ·  {correct} van {attempts} benoemd',
+  'ride.pauseStats': '{time}  ·  {km} km',
   'ride.controlsHint': '?  help   ·   G  instellingen   ·   M  kaart   ·   O  noord   ·   T  labels   ·   B  gebouwen   ·   P  pauze',
   'hud.destination': 'BESTEMMING',
   'card.wikipedia': 'W  WIKIPEDIA',
