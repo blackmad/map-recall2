@@ -101,6 +101,8 @@ export function resolveOpeningSplit(v: boolean | Partial<OpeningSplit> | undefin
   if (typeof v === 'boolean') return v ? OPENING_SPLIT_ALL : {groups: false, core: false, solidBody: false, clusterWall: false};
   return {...{groups: false, core: false, solidBody: false, clusterWall: false}, ...v};
 }
+/** `clusterWall`: a rival body cluster competes for the wall colour only when this solid (thin trim clusters never do), and a paler group wins only with this share of the wall-set cells (H2e) */
+export const CLUSTER_RIVAL_SOLID = 0.35, CLUSTER_PALE_SHARE = 0.6;
 export const CELL_M = 0.1;
 /** floor-zone enrichment of an undecided cluster (between clearly glazing and clearly wall), see `altMask` */
 export const UNDECIDED_ENRICH = [0.6, 0.9] as const;
@@ -691,7 +693,19 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const wallInner = inner0.filter(k => dE76(centres[fullLabel[k]], centres[domC]) < 12), wallCells = wallInner.length >= Math.max(30, wallAll.length * 0.3) ? wallInner : wallAll;
   // H2d: the median over the picked wall cluster's own cells (the cluster `wallVsTrim` settled on, with the wall-set clusters within dE 12 of it: one brick in two lightnesses), whatever the opening pass made of them, not over whichever body
   // cluster has the most interior cells: that count moved with a 10 cm box change and swapped a slate wall for its lintels
-  const inGroup = (c: number) => c >= 0 && (c === wallC || (wallSet[c] && !glassy(c) && dE76(centres[c], centres[wallC]) < 12));
+  const inGroupOf = (root: number) => (c: number) => c >= 0 && (c === root || (wallSet[c] && !glassy(c) && dE76(centres[c], centres[root]) < 12));
+  const upperWallSetN = allUsable.filter(k => isUpper(Math.floor(k / cols)) && cellOf[k] >= 0 && wallSet[cellOf[k]]).length;
+  // H2e: two wall materials (the picked cluster and a solid body cluster more than dE 12 away) take the larger area; the paler one
+  // only when its group covers at least 60 % of the wall-set cells. Montessori van Ostade walls[0]: the picked lit-brick cluster
+  // was paler than the dark body that held most of the wall, and the median read #b4856a for a #615549 wall.
+  const groupN = (root: number) => allUsable.filter(k => isUpper(Math.floor(k / cols)) && inGroupOf(root)(cellOf[k])).length;
+  const rival = domC !== wallC && wallSet[domC] && !glassy(domC) && solid[domC] >= CLUSTER_RIVAL_SOLID && dE76(centres[domC], centres[wallC]) >= 12;
+  const rivalWins = osplit.clusterWall && rival && (() => {
+    const areaD = byC.get(domC) ?? 0, areaW = byC.get(wallC) ?? 0, domPaler = centres[domC][0] > centres[wallC][0];
+    const paleRoot = domPaler ? domC : wallC, paleOk = groupN(paleRoot) >= CLUSTER_PALE_SHARE * upperWallSetN;
+    return domPaler ? areaD > areaW && paleOk : areaD > areaW || !paleOk;
+  })();
+  const inGroup = inGroupOf(rivalWins ? domC : wallC);
   const clusterCells = osplit.clusterWall ? allUsable.filter(k => isUpper(Math.floor(k / cols)) && inGroup(cellOf[k])) : [];
   const wallCluster = clusterCells.length >= Math.max(30, wallAll.length * 0.3) ? clusterCells : null;
   const wallRaw = medRgb((wallCluster ?? (wallCells.length ? wallCells : allUsable.filter(k => mask[k] === MASK.wall))).map(k => mean[k]));
