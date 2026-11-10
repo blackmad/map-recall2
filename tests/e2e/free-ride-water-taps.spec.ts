@@ -148,7 +148,11 @@ async function tapAndRead(page: Page, c: Candidate, phone: boolean): Promise<any
       : n.type ? `other:${n.type}` : 'other';
     return { id, name: n.name, kind, alongside: !!g._neighborhoodNotice };
   });
-  return { ...c, ...before, opened: after };
+  // The runtime's own open-water verdict at tap time decides what may open; when the world changed between sampling
+  // and tapping (a facade extruded over the water, water arriving under a "land" point) the row is reclassified to
+  // the runtime's verdict and counted in the summary's `reclassified`, never silently dropped.
+  const water = before.runtimeWater === null ? c.water : before.runtimeWater;
+  return { ...c, ...before, sampledWater: c.water, water, opened: after };
 }
 
 for (const mode of ['boat', 'car'] as const) {
@@ -164,7 +168,18 @@ for (const mode of ['boat', 'car'] as const) {
       const at = phone && mode === 'car' && pose.phoneBikeLngLat ? pose.phoneBikeLngLat : pose.lngLat;
       expect(await placeAt(page, at), `placed at ${pose.name}`).toBe(true);
       await page.waitForTimeout(4000);
-      const { water, land, markers } = await candidates(page);
+      // The default (MapLibre) engine has no worldSettled(): its water and extrusions can still be arriving after
+      // 4 s (S2b default-engine gate 2026-11-10: 0 water candidates at Westermarkt, then water under the taps).
+      // Resample until two passes 1.5 s apart agree on the water count, up to 20 s.
+      let sample = await candidates(page);
+      for (let k = 0; k < 13; k++) {
+        await page.waitForTimeout(1500);
+        const next = await candidates(page);
+        const same = next.water.length === sample.water.length && next.land.length === sample.land.length;
+        sample = next;
+        if (same && sample.water.length > 0) break;
+      }
+      const { water, land, markers } = sample;
       if (out) await page.screenshot({ path: join(out, `${info.project.name}-${mode === 'car' ? 'bike' : 'boat'}-${pose.name}.png`) });
       const results: any[] = [];
       for (const c of [...water, ...land]) results.push({ pose: pose.name, ...(await tapAndRead(page, c, phone)) });
@@ -178,6 +193,7 @@ for (const mode of ['boat', 'car'] as const) {
         waterKinds: off(w).map(r => `${r.opened.kind}:${r.opened.name}`),
         waterPinPaths: pinCards(w).map(r => `${r.opened.name}<-${r.onToken ? 'token' : r.markerPart ? `marker-${r.markerPart}` : r.runtimeWater === false ? 'not-water-at-runtime' : 'other'}`),
         landTaps: l.length, landOffPillCards: off(l).length, landKinds: off(l).map(r => r.opened.kind),
+        reclassified: results.filter(r => r.sampledWater !== r.water).length,
         markers: markers.length, markersOnWater: markers.filter(m => m.anchorWater).map(m => m.name),
       };
       summary.push(line);
@@ -206,6 +222,7 @@ for (const mode of ['boat', 'car'] as const) {
       }
       for (const line of summary) {
         expect(line.waterTaps, `${line.pose}: enough water taps`).toBeGreaterThanOrEqual(10);
+        expect(line.reclassified, `${line.pose}: taps whose water verdict changed between sampling and tapping`).toBeLessThanOrEqual(5);
         expect(line.waterOffPillPinCards, `${line.pose}: water taps opening a landmark/bridge/building card off a pill`).toBe(0);
         expect(line.markersOnWater, `${line.pose}: marker anchors on open water`).toEqual([]);
       }
