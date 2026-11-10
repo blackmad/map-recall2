@@ -337,6 +337,16 @@ Singel 457 walls[1]), each read against its photo on the v2 sheet (screenshots r
 (Montessori van Ostade walls[0]: `clusterWall` takes the paler brick cluster, wall dL -0.20; open). Six groups newly FAIL (all street-facing, listed in
 `houseline-new-fails.json`).
 
+4. *`clusterWall` takes the larger-area wall material* (round 2): when the picked wall cluster and the largest solid body cluster
+   (interior area, solid >= 0.35) differ by more than dE 12, the larger area wins; the paler one only when its group covers >= 60 % of
+   the wall-set cells (`CLUSTER_RIVAL_SOLID`, `CLUSTER_PALE_SHARE`). A rival darker than L 30 with chroma under 10 (shade, a trunk,
+   glass; `CLUSTER_RIVAL_DARK_L`, `CLUSTER_RIVAL_NEUTRAL_C`) never competes. Montessori van Ostade walls[0] reads `#695a4e` (was `#b4856a`;
+   installGate `#615549`); Nieuwmarkt 182857 reads the brick body `#c0b1a9` (was near-white `#f2f8f7`; the photo is 67 % washed out).
+   **Known regression, pinned as a todo test:** Kloveniersburgwal 72 walls[3] (beige concrete beside brown brick) PASS -> FAIL
+   (`wall dL +0.13`): area cannot tell two plausible wall materials apart, the larger brown group wins, `#796250` against the model's
+   `#9a8a6f`. **Known case, not this fix:** the 182848 render measures a pale wall (`#b3aca6`) although drawn dark brick: the dark body is
+   read as openings, so there is no rival to rank (also a todo test).
+
 Fixtures: `src/canalRecall/buildingRecipe/fixtures/houseline/{hotel-arena-236788.g0,pand-070306.g5}.{json,bin}` (dumped likeness groups:
 `likeness-replay.ts --dump`), tested by `houseLineFixtures.test.ts` (run `node --import tsx --test src/canalRecall/buildingRecipe/houseLineFixtures.test.ts`; the integrator joins it to `test:house-spec`). Rule for the flip: a new FAIL on an
 already-installed house goes on a review list (`artifacts/house-line/houseline-new-fails.json`, built by

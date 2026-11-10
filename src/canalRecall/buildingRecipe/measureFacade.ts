@@ -103,6 +103,8 @@ export function resolveOpeningSplit(v: boolean | Partial<OpeningSplit> | undefin
 }
 /** `clusterWall`: a rival body cluster competes for the wall colour only when this solid (thin trim clusters never do), and a paler group wins only with this share of the wall-set cells (H2e) */
 export const CLUSTER_RIVAL_SOLID = 0.35, CLUSTER_PALE_SHARE = 0.6;
+/** a rival this dark and this neutral (Lab L, chroma) is shade, a trunk or glass, never the wall: it does not compete (Hotel Arena walls[1], Koninginneweg 1 walls[3]) */
+export const CLUSTER_RIVAL_DARK_L = 30, CLUSTER_RIVAL_NEUTRAL_C = 10;
 export const CELL_M = 0.1;
 /** floor-zone enrichment of an undecided cluster (between clearly glazing and clearly wall), see `altMask` */
 export const UNDECIDED_ENRICH = [0.6, 0.9] as const;
@@ -699,7 +701,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   // only when its group covers at least 60 % of the wall-set cells. Montessori van Ostade walls[0]: the picked lit-brick cluster
   // was paler than the dark body that held most of the wall, and the median read #b4856a for a #615549 wall.
   const groupN = (root: number) => allUsable.filter(k => isUpper(Math.floor(k / cols)) && inGroupOf(root)(cellOf[k])).length;
-  const rival = domC !== wallC && wallSet[domC] && !glassy(domC) && solid[domC] >= CLUSTER_RIVAL_SOLID && dE76(centres[domC], centres[wallC]) >= 12;
+  const rival = domC !== wallC && wallSet[domC] && !glassy(domC) && solid[domC] >= CLUSTER_RIVAL_SOLID && !(centres[domC][0] < CLUSTER_RIVAL_DARK_L && Math.hypot(centres[domC][1], centres[domC][2]) < CLUSTER_RIVAL_NEUTRAL_C) && dE76(centres[domC], centres[wallC]) >= 12;
   const rivalWins = osplit.clusterWall && rival && (() => {
     const areaD = byC.get(domC) ?? 0, areaW = byC.get(wallC) ?? 0, domPaler = centres[domC][0] > centres[wallC][0];
     const paleRoot = domPaler ? domC : wallC, paleOk = groupN(paleRoot) >= CLUSTER_PALE_SHARE * upperWallSetN;
