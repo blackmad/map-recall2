@@ -498,7 +498,7 @@ export class BakedCoarse {
    */
   refreshShellBases(budget: { ms: number; restart?: boolean; done?: boolean }): number {
     if (!this.enabled) { budget.done = true; return 0; }
-    const deadline = performance.now() + budget.ms;
+    const deadline = this.now() + budget.ms;
     let lifted = 0, remaining = false;
     const order = orderByDistance([...this.residents.values()].filter(r => r.lift).map(r => ({ key: r, distance: this.at ? cellDistanceM(r.key, this.at[0], this.at[1]) : 0 })));
     for (const r of order) {
@@ -507,8 +507,8 @@ export class BakedCoarse {
       if (this.at && cellDistanceM(r.key, this.at[0], this.at[1]) > this.liftRadius() + BAKED_KEEP_M) { this.settle(r, attribute); continue; }
       if (budget.restart) lift.pending = [...r.ranges.keys()];
       if (!lift.pending.length) continue;
-      if (performance.now() > deadline) { remaining = true; continue; }
-      const out = liftRanges(lift.positions, r.ranges, lift.pending, lift.applied, id => this.host.groundBase(id), deadline, undefined, lift.unit);
+      if (this.now() > deadline) { remaining = true; continue; }
+      const out = liftRanges(lift.positions, r.ranges, lift.pending, lift.applied, id => this.host.groundBase(id), deadline, this.now, lift.unit);
       if (out.lifted) { attribute.needsUpdate = true; lifted += out.lifted; }
       if (lift.pending.length) remaining = true;
     }
