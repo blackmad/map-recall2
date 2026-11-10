@@ -3,7 +3,7 @@
  "street": "Javastraat",
  "library": "indische-buurt",
  "stripDate": "2023-01-02",
- "seconds": 8.32,
+ "seconds": 17.95,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -15,24 +15,18 @@
  },
  "runs": [
   {
-   "face": "java-93-149-r3",
-   "pands": [
-    "0363100012132949",
-    "0363100012138717"
-   ],
-   "passed": false,
-   "triangles": 6102
-  },
-  {
    "face": "java-93-149-r1",
    "pands": [
+    "0363100012132949",
+    "0363100012138717",
     "0363100012120527",
     "0363100012081977",
     "0363100012133860",
     "0363100012098497",
     "0363100012126147"
    ],
-   "installed": true
+   "passed": true,
+   "triangles": 20165
   },
   {
    "face": "java-93-149-r2",
@@ -291,36 +285,36 @@
    ],
    "likeness": {
     "pandId": "0363100012132949",
-    "ncc": 0.336,
-    "nccRaw": 0.336,
+    "ncc": 0.335,
+    "nccRaw": 0.335,
     "shiftM": [
      0.4,
-     -0.2
+     -0.3
     ],
     "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.38 mean 0.45 vs photo 0.21"
+     "glazing storey band off by 0.39 mean 0.45 vs photo 0.23"
     ],
     "wall": {
-     "photo": "#7f6a5f",
+     "photo": "#7a675d",
      "model": "#8b7560",
-     "dL": 0.025
+     "dL": 0.039
     },
     "glazing": {
-     "photo": 0.21,
+     "photo": 0.23,
      "model": 0.45
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.373
+    "iou": 0.41
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches~m": 0.336,
-    "indisch-1912-java-mansard-arches": 0.288
+    "indisch-1912-java-mansard-arches~m": 0.335,
+    "indisch-1912-java-mansard-arches": 0.278
    }
   },
   {
@@ -404,8 +398,8 @@
    ],
    "likeness": {
     "pandId": "0363100012138717",
-    "ncc": 0.364,
-    "nccRaw": 0.364,
+    "ncc": 0.298,
+    "nccRaw": 0.298,
     "shiftM": [
      0.1,
      -0.4
@@ -414,26 +408,26 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.31 mean 0.45 vs photo 0.27"
+     "glazing storey band off by 0.30 mean 0.45 vs photo 0.25"
     ],
     "wall": {
-     "photo": "#7c6455",
+     "photo": "#866c5e",
      "model": "#8b7560",
-     "dL": 0.051
+     "dL": 0.014
     },
     "glazing": {
-     "photo": 0.27,
+     "photo": 0.25,
      "model": 0.45
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.484
+    "iou": 0.439
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.364,
-    "indisch-1912-java-mansard-arches~m": 0.346
+    "indisch-1912-java-mansard-arches": 0.298,
+    "indisch-1912-java-mansard-arches~m": 0.282
    }
   },
   {
@@ -529,38 +523,37 @@
    ],
    "likeness": {
     "pandId": "0363100012120527",
-    "ncc": 0.221,
-    "nccRaw": 0.221,
+    "ncc": 0.223,
+    "nccRaw": 0.223,
     "shiftM": [
      0.35,
      0.15
     ],
     "usable": 0.92,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "glazing storey band off by 0.40 mean 0.44 vs photo 0.18"
+     "mask IoU 0.389 < 0.45"
     ],
     "wall": {
-     "photo": "#745d54",
+     "photo": "#7c645c",
      "model": "#8a6e62",
-     "dL": 0.071
+     "dL": 0.039
     },
     "glazing": {
-     "photo": 0.18,
+     "photo": 0.44,
      "model": 0.44
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.357
+    "iou": 0.389
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches~m": 0.221,
-    "indisch-1912-java-mansard-arches": 0.199
-   },
-   "installed": "java-93-149-r1"
+    "indisch-1912-java-mansard-arches~m": 0.223,
+    "indisch-1912-java-mansard-arches": 0.196
+   }
   },
   {
    "pandId": "0363100012081977",
@@ -639,8 +632,8 @@
    ],
    "likeness": {
     "pandId": "0363100012081977",
-    "ncc": 0.299,
-    "nccRaw": 0.299,
+    "ncc": 0.303,
+    "nccRaw": 0.303,
     "shiftM": [
      0.1,
      -0.4
@@ -649,7 +642,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.35 mean 0.45 vs photo 0.23"
+     "glazing storey band off by 0.35 mean 0.43 vs photo 0.23"
     ],
     "wall": {
      "photo": "#6f5b4f",
@@ -658,19 +651,18 @@
     },
     "glazing": {
      "photo": 0.23,
-     "model": 0.45
+     "model": 0.43
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.382
+    "iou": 0.387
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.299,
-    "indisch-1912-java-mansard-arches~m": 0.273
-   },
-   "installed": "java-93-149-r1"
+    "indisch-1912-java-mansard-arches": 0.303,
+    "indisch-1912-java-mansard-arches~m": 0.264
+   }
   },
   {
    "pandId": "0363100012133860",
@@ -755,36 +747,37 @@
    ],
    "likeness": {
     "pandId": "0363100012133860",
-    "ncc": 0.295,
-    "nccRaw": 0.295,
+    "ncc": 0.3,
+    "nccRaw": 0.3,
     "shiftM": [
      0.4,
      -0.4
     ],
-    "usable": 0.92,
+    "usable": 0.93,
     "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape tall vs photo square"
+    ],
     "wall": {
-     "photo": "#715d51",
+     "photo": "#715e51",
      "model": "#877162",
      "dL": 0.076
     },
     "glazing": {
-     "photo": 0.44,
+     "photo": 0.47,
      "model": 0.43
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.603
+    "iou": 0.604
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches~m": 0.295,
-    "indisch-1912-java-mansard-arches": 0.271
-   },
-   "installed": "java-93-149-r1"
+    "indisch-1912-java-mansard-arches~m": 0.3,
+    "indisch-1912-java-mansard-arches": 0.277
+   }
   },
   {
    "pandId": "0363100012098497",
@@ -863,36 +856,35 @@
    ],
    "likeness": {
     "pandId": "0363100012098497",
-    "ncc": 0.3,
-    "nccRaw": 0.3,
+    "ncc": 0.301,
+    "nccRaw": 0.301,
     "shiftM": [
      0.1,
      -0.4
     ],
-    "usable": 0.91,
+    "usable": 0.9,
     "abstain": null,
     "verdict": "PASS",
     "reasons": [],
     "wall": {
-     "photo": "#715e51",
+     "photo": "#725f52",
      "model": "#887a6f",
-     "dL": 0.104
+     "dL": 0.1
     },
     "glazing": {
-     "photo": 0.38,
+     "photo": 0.39,
      "model": 0.43
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.606
+    "iou": 0.584
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches": 0.3,
-    "indisch-1912-java-mansard-arches~m": 0.254
-   },
-   "installed": "java-93-149-r1"
+    "indisch-1912-java-mansard-arches": 0.301,
+    "indisch-1912-java-mansard-arches~m": 0.259
+   }
   },
   {
    "pandId": "0363100012126147",
@@ -978,39 +970,38 @@
    ],
    "likeness": {
     "pandId": "0363100012126147",
-    "ncc": 0.194,
-    "nccRaw": 0.194,
+    "ncc": 0.184,
+    "nccRaw": 0.184,
     "shiftM": [
      0.4,
      0.2
     ],
-    "usable": 0.9,
+    "usable": 0.89,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.35",
-     "columns 3 vs photo 5"
+     "glazing storey band off by 0.49 mean 0.43 vs photo 0.59",
+     "columns 3 vs photo 7"
     ],
     "wall": {
-     "photo": "#6a5a50",
+     "photo": "#67564e",
      "model": "#897264",
-     "dL": 0.1
+     "dL": 0.11
     },
     "glazing": {
-     "photo": 0.52,
+     "photo": 0.59,
      "model": 0.43
     },
     "columns": {
-     "photo": 5,
+     "photo": 7,
      "model": 3
     },
-    "iou": 0.348
+    "iou": 0.367
    },
    "challengers": {
-    "indisch-1912-java-mansard-arches~m": 0.194,
-    "indisch-1912-java-mansard-arches": 0.192
-   },
-   "installed": "java-93-149-r1"
+    "indisch-1912-java-mansard-arches~m": 0.184,
+    "indisch-1912-java-mansard-arches": 0.189
+   }
   },
   {
    "pandId": "0363100012120784",

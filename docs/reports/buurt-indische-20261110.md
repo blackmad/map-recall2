@@ -327,3 +327,14 @@ Soenda renders within +0.00 of the photo on all nine (wall check ok). Java 97/99
 the 7-pand r1 of round 4). To install 97/99 they need re-placing together with 101-109 (`--replace=java-93-149-r1`).
 Javastraat 119 (mirror false) and 121 (mirror true) are pinned and held: 119 has a dark brick hooded dormer, 121 a tall stepped
 dormer-gable; both are kit gaps (hooded brick dormer; stepped dormer-gable).
+
+## Round 6 (2026-11-10): Soenda and Javastraat 97/99 installed
+
+- Soendastraat 28-18 (r1, 6) and 14-10 (r2, 3) installed with `batch.ts --install` (wall fits 0, stripOverDrawn 0.97/0.96);
+  `build-chunk-wall-exposure.ts --write` run by hand because the batch leaves it to the integrator.
+- Javastraat 97 and 99 re-placed with 101-109 (`auto-place --replace=java-93-149-r1`, a 7-pand run, all gates pass, 99 at
+  2896 triangles) and installed with `compile.ts --install` (the batch skips a face that already has chunks).
+  `roof-golden.ts` reported 2 reclassed (Javastraat 101 and 109: their front+row hash moved because the row now has 97/99
+  as members) and 1 intent change; I wrote it (`--write`). 101 and 109 are visibly the same house; the row line they clamp to moved.
+- Sheets of what shipped: java-93-149-r1, java-93-149-r2, soenda-2-36-r1 and -r2 in the archive.
+- Installed in this lane: Djambistraat 9-21 (7), Javastraat 97-109 (7) and 113-117 (3), Lampongstraat 2-10 (5), Soendastraat 28-18 and 14-10 (9) = 31.

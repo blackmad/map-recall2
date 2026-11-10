@@ -5046,16 +5046,24 @@
   },
   "java-93-149-r1": {
    "120527": {
-    "hash": "a7f008862b2b2fe9",
+    "hash": "fc13743e26c051ae",
     "class": "front+row"
    },
    "126147": {
-    "hash": "9d931dc59280edd0",
+    "hash": "399ab4e572c2da5d",
+    "class": "front+row"
+   },
+   "132949": {
+    "hash": "464124dfa0106f24",
     "class": "front+row"
    },
    "133860": {
     "hash": "264a31790acd0f0e",
     "class": "front"
+   },
+   "138717": {
+    "hash": "abb08defc0a1704c",
+    "class": "front+row"
    },
    "081977": {
     "hash": "20b65b6af8099d01",
@@ -5099,6 +5107,46 @@
    },
    "064007": {
     "hash": "7b9aaa9f807b1b58",
+    "class": "recipe"
+   }
+  },
+  "soenda-2-36-r1": {
+   "107809": {
+    "hash": "3a67d828f04280c1",
+    "class": "recipe"
+   },
+   "111204": {
+    "hash": "d9523ecaf2476f42",
+    "class": "recipe"
+   },
+   "150368": {
+    "hash": "82cfda0d1cd70670",
+    "class": "recipe"
+   },
+   "069113": {
+    "hash": "8a5ea3d6d1f82e29",
+    "class": "recipe"
+   },
+   "062527": {
+    "hash": "b08e94fb5b54b9cd",
+    "class": "recipe"
+   },
+   "081321": {
+    "hash": "dfdddcb275ddaf61",
+    "class": "recipe"
+   }
+  },
+  "soenda-2-36-r2": {
+   "136122": {
+    "hash": "ee3adc12fab6abb5",
+    "class": "recipe"
+   },
+   "068591": {
+    "hash": "e11f4ac30029760c",
+    "class": "recipe"
+   },
+   "092864": {
+    "hash": "bc019be4abf4863a",
     "class": "recipe"
    }
   }
@@ -5334,8 +5382,10 @@
   "wouwerman-2-44-r1": "1b119d1a763e6659",
   "maes-31-71-r1": "09a6b1241a6593f7",
   "djambi-1-29-r1": "45dbf8cfca7ae83a",
-  "java-93-149-r1": "9e2ef0c43282a47c",
+  "java-93-149-r1": "07a07a058f9cec20",
   "java-93-149-r2": "5704908fbcefd2fa",
-  "lampong-2-20-r1": "6d8c7d7d451ecd4d"
+  "lampong-2-20-r1": "6d8c7d7d451ecd4d",
+  "soenda-2-36-r1": "c3353dc56ae6c24b",
+  "soenda-2-36-r2": "01e457db56dd9f6b"
  }
 }

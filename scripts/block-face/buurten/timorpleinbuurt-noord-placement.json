@@ -1,8 +1,8 @@
 {
  "buurt": "timorpleinbuurt-noord",
  "library": "indische-buurt",
- "generatedAt": "2026-11-10T02:14:56.454Z",
- "seconds": 8.33,
+ "generatedAt": "2026-11-10T02:19:15.033Z",
+ "seconds": 17.96,
  "totals": {
   "faces": 26,
   "pands": 266,
@@ -356,24 +356,18 @@
    "held": 5,
    "runs": [
     {
-     "face": "java-93-149-r3",
-     "pands": [
-      "0363100012132949",
-      "0363100012138717"
-     ],
-     "passed": false,
-     "triangles": 6102
-    },
-    {
      "face": "java-93-149-r1",
      "pands": [
+      "0363100012132949",
+      "0363100012138717",
       "0363100012120527",
       "0363100012081977",
       "0363100012133860",
       "0363100012098497",
       "0363100012126147"
      ],
-     "installed": true
+     "passed": true,
+     "triangles": 20165
     },
     {
      "face": "java-93-149-r2",
@@ -385,11 +379,11 @@
      "installed": true
     }
    ],
-   "seconds": 8.32,
+   "seconds": 17.95,
    "byType": {
     "indisch-1912-java-mansard-arches": 10
    },
-   "installed": 8,
+   "installed": 3,
    "holds": {
     "evidence": 0,
     "match": 2,
@@ -610,7 +604,7 @@
      "triangles": 4844
     }
    ],
-   "seconds": 24.75,
+   "seconds": 21.79,
    "byType": {
     "indisch-1913-arched-pair-dormer": 9
    },
