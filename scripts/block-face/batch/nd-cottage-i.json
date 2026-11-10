@@ -1,0 +1,41 @@
+{
+ "name": "nd-cottage-i",
+ "buurt": "nieuwendammerdijk-west",
+ "library": "nieuwendammerdijk",
+ "generatedAt": "2026-11-10T07:49:24.245Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 1,
+  "runs": 1,
+  "installed": 1,
+  "installedPands": 6,
+  "failed": 0,
+  "byReason": {}
+ },
+ "rows": [
+  {
+   "face": "nieuwendammerdijk-135-163",
+   "street": "Nieuwendammerdijk",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.195,
+   "nccMedian": 0.42,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 3066,
+   "sheet": "staging/block-face/nieuwendammerdijk-135-163-r1/review/strip-sheet.png",
+   "stripDate": "2022-05-09",
+   "run": "nieuwendammerdijk-135-163-r1",
+   "pands": 6,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 8.2
+  }
+ ]
+}

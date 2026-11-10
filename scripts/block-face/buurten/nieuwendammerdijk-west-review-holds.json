@@ -1,0 +1,51 @@
+{
+ "note": "Pands held after reading the strip sheets.",
+ "reviewed": "2026-11-10 (lane)",
+ "holds": [
+  {
+   "pandId": "0363100012158100",
+   "address": "Nieuwendammerdijk 135",
+   "reason": "strip 2022-05-09: a 1930s black-painted ornamental front, not the brick cottage"
+  },
+  {
+   "pandId": "0363100012156100",
+   "address": "Nieuwendammerdijk 137",
+   "reason": "strip 2022-05-09: a cream-painted front with a different dormer, not the brick cottage"
+  },
+  {
+   "pandId": "0363100012166857",
+   "address": "Nieuwendammerdijk 139",
+   "reason": "strip 2022-05-09: a black-painted front with white bands and balustrade, not the brick cottage"
+  },
+  {
+   "pandId": "0363100012163241",
+   "address": "Nieuwendammerdijk 141",
+   "reason": "strip 2022-05-09: a black-painted front with white bands and balustrade, not the brick cottage"
+  },
+  {
+   "pandId": "0363100012157616",
+   "address": "Nieuwendammerdijk 155",
+   "reason": "strip 2022-05-09: a taller front with a brick parapet and a different window layout"
+  },
+  {
+   "pandId": "0363100012163237",
+   "address": "Nieuwendammerdijk 157",
+   "reason": "strip 2022-05-09: a painted front with white bands and a balustrade, not the brick cottage"
+  },
+  {
+   "pandId": "0363100012165331",
+   "address": "Nieuwendammerdijk 159",
+   "reason": "strip 2022-05-09: a black-brick front with a white band and a different dormer"
+  },
+  {
+   "pandId": "0363100012162714",
+   "address": "Nieuwendammerdijk 161",
+   "reason": "strip 2022-05-09: a black-brick front with white bands, not the brick cottage"
+  },
+  {
+   "pandId": "0363100012163693",
+   "address": "Nieuwendammerdijk 163",
+   "reason": "strip 2022-05-09: a white painted villa front with a bay and a different roof"
+  }
+ ]
+}

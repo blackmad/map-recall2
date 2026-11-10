@@ -1,0 +1,588 @@
+{
+ "street": "Nieuwendammerdijk",
+ "seed": "0363100012158100",
+ "members": [
+  "0363100012158100",
+  "0363100012156100",
+  "0363100012166857",
+  "0363100012163241",
+  "0363100012163617",
+  "0363100012167049",
+  "0363100012167155",
+  "0363100012156422",
+  "0363100012166543",
+  "0363100012162650",
+  "0363100012157616",
+  "0363100012163237",
+  "0363100012165331",
+  "0363100012162714",
+  "0363100012163693"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012095648 5.9 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012163693 (face continues: 218012)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063499",
+   "reason": "frontage 97.3 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012068625",
+   "reason": "frontage 79.5 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012071099",
+   "reason": "frontage 75.1 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012072119",
+   "reason": "frontage 101.5 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012074486",
+   "reason": "frontage 76.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012075651",
+   "reason": "frontage 96.5 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012081160",
+   "reason": "frontage 75.5 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012082436",
+   "reason": "frontage 43.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012086535",
+   "reason": "frontage 34.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012088072",
+   "reason": "frontage 77.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012091016",
+   "reason": "frontage 77.1 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012091823",
+   "reason": "frontage 95.5 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012092452",
+   "reason": "frontage 37.8 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012094758",
+   "reason": "frontage 90.1 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012096524",
+   "reason": "frontage 100.8 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012097817",
+   "reason": "frontage 43.4 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012099259",
+   "reason": "frontage 75.8 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012104014",
+   "reason": "frontage 87.5 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012104644",
+   "reason": "frontage 76.9 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012106038",
+   "reason": "frontage 91.9 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012109607",
+   "reason": "frontage 42.3 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012111730",
+   "reason": "frontage 34.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012111820",
+   "reason": "frontage 97.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012111883",
+   "reason": "frontage 75.3 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012119939",
+   "reason": "frontage 92.9 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012123221",
+   "reason": "frontage 71.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012124627",
+   "reason": "frontage 43.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012127990",
+   "reason": "frontage 91.1 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012133717",
+   "reason": "frontage 106.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012137047",
+   "reason": "frontage 77.4 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012137622",
+   "reason": "frontage 76.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012137846",
+   "reason": "frontage 75.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012142943",
+   "reason": "frontage 92.5 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012147398",
+   "reason": "frontage 38.1 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012151316",
+   "reason": "frontage 77.2 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012189734",
+   "reason": "sightline to Nieuwendammerdijk crosses 0363100012126844"
+  },
+  {
+   "pandId": "0363100012195341",
+   "reason": "sightline to Nieuwendammerdijk crosses 0363100012163527"
+  },
+  {
+   "pandId": "0363100012196878",
+   "reason": "frontage 88.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012196879",
+   "reason": "frontage 88.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012196957",
+   "reason": "frontage 96.1 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012196958",
+   "reason": "frontage 97.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012196966",
+   "reason": "frontage 88.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012196967",
+   "reason": "frontage 88.8 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012196972",
+   "reason": "frontage 88.3 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012196973",
+   "reason": "frontage 88.4 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012196974",
+   "reason": "frontage 96.4 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012203487",
+   "reason": "frontage 89.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205218",
+   "reason": "frontage 34.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205219",
+   "reason": "frontage 34.8 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205220",
+   "reason": "frontage 33.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205221",
+   "reason": "frontage 35.2 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205222",
+   "reason": "frontage 35.3 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205223",
+   "reason": "frontage 35.6 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205224",
+   "reason": "frontage 35.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205225",
+   "reason": "frontage 36.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205226",
+   "reason": "frontage 36.1 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205227",
+   "reason": "frontage 30.3 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205228",
+   "reason": "frontage 30.4 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205229",
+   "reason": "frontage 30.3 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012205230",
+   "reason": "frontage 31.4 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227368",
+   "reason": "frontage 96.1 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227472",
+   "reason": "frontage 86.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227473",
+   "reason": "frontage 86.7 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227474",
+   "reason": "frontage 86.3 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227475",
+   "reason": "frontage 86.4 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227476",
+   "reason": "frontage 87.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227477",
+   "reason": "frontage 87.0 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227489",
+   "reason": "frontage 94.4 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227490",
+   "reason": "frontage 94.6 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012227491",
+   "reason": "frontage 95.9 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012229442",
+   "reason": "sightline to Nieuwendammerdijk crosses 0363100012159310"
+  },
+  {
+   "pandId": "0363100012231179",
+   "reason": "frontage 59.5 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012235786",
+   "reason": "sightline to Nieuwendammerdijk crosses 0363100012094314"
+  },
+  {
+   "pandId": "0363100012235787",
+   "reason": "sightline to Nieuwendammerdijk crosses 0363100012094314"
+  },
+  {
+   "pandId": "0363100012253425",
+   "reason": "frontage 76.4 m from Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012570131",
+   "reason": "sightline to Nieuwendammerdijk crosses 0363100012153476"
+  },
+  {
+   "pandId": "0363100012126844",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153167",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153476",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154159",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155462",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155529",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156545",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158775",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159142",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159310",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159775",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160460",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160878",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161147",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161844",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162237",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164010",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165381",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165465",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166112",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166444",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166611",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167302",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012158100",
+   "alongM": 0,
+   "widthM": 4.74,
+   "eavesM": 7.79,
+   "roofMaxM": 9.85,
+   "storeys3dbag": 3,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156100",
+   "alongM": 4.74,
+   "widthM": 4.74,
+   "eavesM": 7.79,
+   "roofMaxM": 9.74,
+   "storeys3dbag": 3,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166857",
+   "alongM": 9.46,
+   "widthM": 4.71,
+   "eavesM": 6.9,
+   "roofMaxM": 9.31,
+   "storeys3dbag": 3,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163241",
+   "alongM": 14.21,
+   "widthM": 4.73,
+   "eavesM": 7.2,
+   "roofMaxM": 9.15,
+   "storeys3dbag": 3,
+   "builtYear": 1935,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163617",
+   "alongM": 18.94,
+   "widthM": 4.74,
+   "eavesM": 6.36,
+   "roofMaxM": 9.62,
+   "storeys3dbag": 3,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012167049",
+   "alongM": 23.68,
+   "widthM": 4.74,
+   "eavesM": 7.13,
+   "roofMaxM": 9.63,
+   "storeys3dbag": 3,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167155",
+   "alongM": 28.42,
+   "widthM": 4.74,
+   "eavesM": 7.12,
+   "roofMaxM": 9.52,
+   "storeys3dbag": 3,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156422",
+   "alongM": 33.15,
+   "widthM": 4.74,
+   "eavesM": 7.01,
+   "roofMaxM": 9.52,
+   "storeys3dbag": 3,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166543",
+   "alongM": 37.89,
+   "widthM": 4.73,
+   "eavesM": 6.88,
+   "roofMaxM": 9.49,
+   "storeys3dbag": 3,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162650",
+   "alongM": 42.62,
+   "widthM": 4.74,
+   "eavesM": 6.99,
+   "roofMaxM": 9.5,
+   "storeys3dbag": 3,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157616",
+   "alongM": 47.36,
+   "widthM": 4.74,
+   "eavesM": 6.24,
+   "roofMaxM": 9.44,
+   "storeys3dbag": 3,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163237",
+   "alongM": 52.1,
+   "widthM": 4.74,
+   "eavesM": 7.18,
+   "roofMaxM": 9.78,
+   "storeys3dbag": 3,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165331",
+   "alongM": 56.83,
+   "widthM": 4.74,
+   "eavesM": 6.96,
+   "roofMaxM": 9.68,
+   "storeys3dbag": 3,
+   "builtYear": 1960,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162714",
+   "alongM": 61.57,
+   "widthM": 4.73,
+   "eavesM": 7.51,
+   "roofMaxM": 9.67,
+   "storeys3dbag": 3,
+   "builtYear": 1960,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163693",
+   "alongM": 66.3,
+   "widthM": 4.74,
+   "eavesM": 8.38,
+   "roofMaxM": 9.96,
+   "storeys3dbag": 3,
+   "builtYear": 1960,
+   "uncertainty": []
+  }
+ ]
+}

@@ -38,6 +38,7 @@ import {FACES, STAGING, intake} from './intake.ts';
 import {compileFace, installFace} from './compile.ts';
 import {reviewFace} from './review.ts';
 import {runLikeness, writeRunFace} from './auto-place.ts';
+import {pinnedEaves, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
 import {fitWallBrick} from './fit-wall-palette.ts';
 import {faceWallExposure} from '../look/face-wall-exposure.ts';
 import {runEvidence} from './evidence-gate.ts';
@@ -73,10 +74,14 @@ async function measureStrip(face: string): Promise<StripQualityVerdict | null> {
   if (!existsSync(jpg)) return null;
   const {data, info} = await sharp(jpg).removeAlpha().raw().toBuffer({resolveWithObject: true});
   const ppm = strip.pixelsPerMetre, H = info.height;
+  // A reviewer's eaves pin (reviewEaves.ts) puts the facade box under the measured gutter: a one-storey dike cottage's
+  // facade box from 3.8 m up to the 3DBAG roof max is sky. No pin = as before.
+  const buurtArg = process.argv.find(a => a.startsWith('--buurt='))?.slice(8), pinFile = buurtArg ? path.join('scripts/block-face/buurten', `${buurtArg}-review-eaves.json`) : '';
+  const pinEaves = pinFile && existsSync(pinFile) ? pinnedEaves((await readJson(pinFile)).pins as EavesPin[], face) : null;
   const spans = await Promise.all(strip.spans.map(async (s: any) => {
     const f = path.join(dir, 'pands', s.pandId, 'facts.json'), h = existsSync(f) ? (await readJson(f)).heights : null;
-    const top = h?.roofMaxM ?? h?.eavesM ?? 12;
-    return {widthPx: s.px[1] - s.px[0], quality: spanQuality(data, info.width, {x0: s.px[0] + 8, x1: s.px[1] - 8, y0: Math.max(0, Math.round(H - top * ppm)), y1: Math.round(H - 3.8 * ppm)})};
+    const top = pinEaves ?? h?.roofMaxM ?? h?.eavesM ?? 12, floorM = pinEaves !== null ? Math.min(3.8, pinEaves * 0.3) : 3.8;
+    return {widthPx: s.px[1] - s.px[0], quality: spanQuality(data, info.width, {x0: s.px[0] + 8, x1: s.px[1] - 8, y0: Math.max(0, Math.round(H - top * ppm)), y1: Math.round(H - floorM * ppm)})};
   }));
   return stripQuality(spans);
 }

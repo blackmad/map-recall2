@@ -1,0 +1,4219 @@
+{
+ "buurt": "Nieuwendammerdijk-Oost",
+ "code": "NF04",
+ "identificatie": "03630980000427",
+ "slug": "nieuwendammerdijk-oost",
+ "sources": {
+  "outline": "api.data.amsterdam.nl gebieden/buurten (CC0)",
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (CC0)",
+  "threeDBag": "3DBAG api.3dbag.nl (CC BY 4.0)"
+ },
+ "surveyedAt": "2026-11-10",
+ "outlineRD": [
+  [
+   124638.62,
+   489355.672
+  ],
+  [
+   124671.438,
+   489345.646
+  ],
+  [
+   124680.565,
+   489341.14
+  ],
+  [
+   124688.455,
+   489335.705
+  ],
+  [
+   124705.36,
+   489319.409
+  ],
+  [
+   124750.832,
+   489264.467
+  ],
+  [
+   124794.661,
+   489232.182
+  ],
+  [
+   124809.861,
+   489219.833
+  ],
+  [
+   124836.629,
+   489196.654
+  ],
+  [
+   124853.79,
+   489180.604
+  ],
+  [
+   124861.28,
+   489171.25
+  ],
+  [
+   124879.232,
+   489142.249
+  ],
+  [
+   124894.603,
+   489128.66
+  ],
+  [
+   124899.129,
+   489112.009
+  ],
+  [
+   124957.66,
+   489035.715
+  ],
+  [
+   124985.597,
+   488996.023
+  ],
+  [
+   124997.506,
+   488981.025
+  ],
+  [
+   125068.55,
+   488898.025
+  ],
+  [
+   125072.341,
+   488896.375
+  ],
+  [
+   125080.952,
+   488895.765
+  ],
+  [
+   125094.407,
+   488888.683
+  ],
+  [
+   125087.027,
+   488880.93
+  ],
+  [
+   125095.507,
+   488870.732
+  ],
+  [
+   125105.995,
+   488865.814
+  ],
+  [
+   125105.279,
+   488864.78
+  ],
+  [
+   125120.985,
+   488859.271
+  ],
+  [
+   125184.048,
+   488853.508
+  ],
+  [
+   125222.417,
+   488841.546
+  ],
+  [
+   125376.477,
+   488848.32
+  ],
+  [
+   125400.787,
+   488851.394
+  ],
+  [
+   125400.509,
+   488805.555
+  ],
+  [
+   125319.413,
+   488766.834
+  ],
+  [
+   125307.23,
+   488762.111
+  ],
+  [
+   125294.114,
+   488758.473
+  ],
+  [
+   125277.99,
+   488755.884
+  ],
+  [
+   125232.925,
+   488752.496
+  ],
+  [
+   125212.988,
+   488752.356
+  ],
+  [
+   125170.223,
+   488753.976
+  ],
+  [
+   125024.96,
+   488918.721
+  ],
+  [
+   124972.533,
+   488980.933
+  ],
+  [
+   124901.39,
+   489059.979
+  ],
+  [
+   124887.792,
+   489077.018
+  ],
+  [
+   124834.739,
+   489148.702
+  ],
+  [
+   124825.821,
+   489159.333
+  ],
+  [
+   124813.709,
+   489172.431
+  ],
+  [
+   124800.415,
+   489185.297
+  ],
+  [
+   124771.314,
+   489209.147
+  ],
+  [
+   124758.026,
+   489194.629
+  ],
+  [
+   124745.733,
+   489185.028
+  ],
+  [
+   124580.749,
+   489092.74
+  ],
+  [
+   124570.933,
+   489075.467
+  ],
+  [
+   124485.086,
+   489026.415
+  ],
+  [
+   124531.64,
+   489215.432
+  ],
+  [
+   124587.855,
+   489243.749
+  ],
+  [
+   124608.611,
+   489308.648
+  ],
+  [
+   124613.786,
+   489327.812
+  ],
+  [
+   124627.886,
+   489359.874
+  ],
+  [
+   124638.62,
+   489355.672
+  ]
+ ],
+ "facesRule": "blockFace/buurtFaces.ts proposeFaces: per street and side, pands with a frontage on their address street joined by shared BAG party walls (>= 1 m, front normals within 0.8 dot); faces already authored are kept, not proposed",
+ "faces": [
+  {
+   "id": "beemster-6-8",
+   "street": "Beemsterstraat",
+   "side": "even",
+   "seed": "0363100012163564",
+   "members": [
+    "0363100012163564"
+   ],
+   "numbers": [
+    6,
+    8
+   ],
+   "lengthM": 11.2
+  },
+  {
+   "id": "nieuwendammerdijk-278-278",
+   "street": "Nieuwendammerdijk",
+   "side": "even",
+   "seed": "0363100012163511",
+   "members": [
+    "0363100012163511"
+   ],
+   "numbers": [
+    278,
+    278
+   ],
+   "lengthM": 9.8
+  },
+  {
+   "id": "nieuwendammerdijk-284-284",
+   "street": "Nieuwendammerdijk",
+   "side": "even",
+   "seed": "0363100012134822",
+   "members": [
+    "0363100012134822"
+   ],
+   "numbers": [
+    284,
+    284
+   ],
+   "lengthM": 8.1
+  },
+  {
+   "id": "nieuwendammerdijk-288-290",
+   "street": "Nieuwendammerdijk",
+   "side": "even",
+   "seed": "0363100012154258",
+   "members": [
+    "0363100012165874",
+    "0363100012154258"
+   ],
+   "numbers": [
+    288,
+    290
+   ],
+   "lengthM": 17.7
+  },
+  {
+   "id": "nieuwendammerdijk-292-292",
+   "street": "Nieuwendammerdijk",
+   "side": "even",
+   "seed": "0363100012167353",
+   "members": [
+    "0363100012167353"
+   ],
+   "numbers": [
+    292,
+    292
+   ],
+   "lengthM": 14.1
+  },
+  {
+   "id": "nieuwendammerdijk-300-308",
+   "street": "Nieuwendammerdijk",
+   "side": "even",
+   "seed": "0363100012153207",
+   "members": [
+    "0363100012075876",
+    "0363100012152822",
+    "0363100012160505",
+    "0363100012154157",
+    "0363100012153207"
+   ],
+   "numbers": [
+    300,
+    308
+   ],
+   "lengthM": 50.6
+  },
+  {
+   "id": "nieuwendammerdijk-343-345",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012166943",
+   "members": [
+    "0363100012166943"
+   ],
+   "numbers": [
+    343,
+    345
+   ],
+   "lengthM": 14.5
+  },
+  {
+   "id": "nieuwendammerdijk-349-349",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012165968",
+   "members": [
+    "0363100012165968"
+   ],
+   "numbers": [
+    349,
+    349
+   ],
+   "lengthM": 5.7
+  },
+  {
+   "id": "nieuwendammerdijk-351-355",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012109514",
+   "members": [
+    "0363100012138726",
+    "0363100012109514",
+    "0363100012121928",
+    "0363100012107327",
+    "0363100012094972"
+   ],
+   "numbers": [
+    351,
+    355
+   ],
+   "lengthM": 23.2
+  },
+  {
+   "id": "nieuwendammerdijk-357-357",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012072726",
+   "members": [
+    "0363100012072726"
+   ],
+   "numbers": [
+    357,
+    357
+   ],
+   "lengthM": 7.5
+  },
+  {
+   "id": "nieuwendammerdijk-359-359",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012163574",
+   "members": [
+    "0363100012163574"
+   ],
+   "numbers": [
+    359,
+    359
+   ],
+   "lengthM": 6.3
+  },
+  {
+   "id": "nieuwendammerdijk-365-365",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012158659",
+   "members": [
+    "0363100012158659"
+   ],
+   "numbers": [
+    365,
+    365
+   ],
+   "lengthM": 6.3
+  },
+  {
+   "id": "nieuwendammerdijk-367-369",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012163346",
+   "members": [
+    "0363100012163346",
+    "0363100012163347"
+   ],
+   "numbers": [
+    367,
+    369
+   ],
+   "lengthM": 10
+  },
+  {
+   "id": "nieuwendammerdijk-373-375",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012097331",
+   "members": [
+    "0363100012097331",
+    "0363100012113596"
+   ],
+   "numbers": [
+    373,
+    375
+   ],
+   "lengthM": 14.5
+  },
+  {
+   "id": "nieuwendammerdijk-377-377",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012166432",
+   "members": [
+    "0363100012166432"
+   ],
+   "numbers": [
+    377,
+    377
+   ],
+   "lengthM": 5.9
+  },
+  {
+   "id": "nieuwendammerdijk-379-379",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012162494",
+   "members": [
+    "0363100012162494"
+   ],
+   "numbers": [
+    379,
+    379
+   ],
+   "lengthM": 7.5
+  },
+  {
+   "id": "nieuwendammerdijk-381-383",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012153027",
+   "members": [
+    "0363100012153027",
+    "0363100012155506"
+   ],
+   "numbers": [
+    381,
+    383
+   ],
+   "lengthM": 12.1
+  },
+  {
+   "id": "nieuwendammerdijk-385-385",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012152687",
+   "members": [
+    "0363100012152687"
+   ],
+   "numbers": [
+    385,
+    385
+   ],
+   "lengthM": 5.4
+  },
+  {
+   "id": "nieuwendammerdijk-387-395",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012161604",
+   "members": [
+    "0363100012161604",
+    "0363100012087457",
+    "0363100012114278",
+    "0363100012084727"
+   ],
+   "numbers": [
+    387,
+    395
+   ],
+   "lengthM": 28.8
+  },
+  {
+   "id": "nieuwendammerdijk-397-399",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012161516",
+   "members": [
+    "0363100012161516",
+    "0363100012166913"
+   ],
+   "numbers": [
+    397,
+    399
+   ],
+   "lengthM": 9.1
+  },
+  {
+   "id": "nieuwendammerdijk-399-399",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012085116",
+   "members": [
+    "0363100012085116"
+   ],
+   "numbers": [
+    399,
+    399
+   ],
+   "lengthM": 4.1
+  },
+  {
+   "id": "nieuwendammerdijk-399-399-163787",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012163787",
+   "members": [
+    "0363100012163787"
+   ],
+   "numbers": [
+    399,
+    399
+   ],
+   "lengthM": 5.8
+  },
+  {
+   "id": "nieuwendammerdijk-401-401",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012167224",
+   "members": [
+    "0363100012167224"
+   ],
+   "numbers": [
+    401,
+    401
+   ],
+   "lengthM": 6.8
+  },
+  {
+   "id": "nieuwendammerdijk-403-405",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012103951",
+   "members": [
+    "0363100012103951",
+    "0363100012153221"
+   ],
+   "numbers": [
+    403,
+    405
+   ],
+   "lengthM": 10.3
+  },
+  {
+   "id": "nieuwendammerdijk-407-407",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012068486",
+   "members": [
+    "0363100012068486"
+   ],
+   "numbers": [
+    407,
+    407
+   ],
+   "lengthM": 4.5
+  },
+  {
+   "id": "nieuwendammerdijk-409-409",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012153723",
+   "members": [
+    "0363100012153723"
+   ],
+   "numbers": [
+    409,
+    409
+   ],
+   "lengthM": 6.9
+  },
+  {
+   "id": "nieuwendammerdijk-413-413",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012161686",
+   "members": [
+    "0363100012161686"
+   ],
+   "numbers": [
+    413,
+    413
+   ],
+   "lengthM": 7.4
+  },
+  {
+   "id": "nieuwendammerdijk-415-421",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012162492",
+   "members": [
+    "0363100012162492",
+    "0363100012152287",
+    "0363100012167381"
+   ],
+   "numbers": [
+    415,
+    421
+   ],
+   "lengthM": 20.6
+  },
+  {
+   "id": "nieuwendammerdijk-425-425",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012138158",
+   "members": [
+    "0363100012138158"
+   ],
+   "numbers": [
+    425,
+    425
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "nieuwendammerdijk-427-427",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012152644",
+   "members": [
+    "0363100012152644"
+   ],
+   "numbers": [
+    427,
+    427
+   ],
+   "lengthM": 5.3
+  },
+  {
+   "id": "nieuwendammerdijk-429-429",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012156900",
+   "members": [
+    "0363100012156900"
+   ],
+   "numbers": [
+    429,
+    429
+   ],
+   "lengthM": 5.4
+  },
+  {
+   "id": "nieuwendammerdijk-431-431",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012160645",
+   "members": [
+    "0363100012160645"
+   ],
+   "numbers": [
+    431,
+    431
+   ],
+   "lengthM": 6
+  },
+  {
+   "id": "nieuwendammerdijk-435-435",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012082454",
+   "members": [
+    "0363100012082454"
+   ],
+   "numbers": [
+    435,
+    435
+   ],
+   "lengthM": 10.3
+  },
+  {
+   "id": "nieuwendammerdijk-437-437",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012208081",
+   "members": [
+    "0363100012208081"
+   ],
+   "numbers": [
+    437,
+    437
+   ],
+   "lengthM": 10.9
+  },
+  {
+   "id": "nieuwendammerdijk-443-443",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012167256",
+   "members": [
+    "0363100012167256"
+   ],
+   "numbers": [
+    443,
+    443
+   ],
+   "lengthM": 10.1
+  },
+  {
+   "id": "nieuwendammerdijk-447-447",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012159401",
+   "members": [
+    "0363100012159401"
+   ],
+   "numbers": [
+    447,
+    447
+   ],
+   "lengthM": 5.8
+  },
+  {
+   "id": "nieuwendammerdijk-451-451",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012248854",
+   "members": [
+    "0363100012248854"
+   ],
+   "numbers": [
+    451,
+    451
+   ],
+   "lengthM": 14.1
+  },
+  {
+   "id": "nieuwendammerdijk-453-453",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012157304",
+   "members": [
+    "0363100012157304"
+   ],
+   "numbers": [
+    453,
+    453
+   ],
+   "lengthM": 8.2
+  },
+  {
+   "id": "nieuwendammerdijk-455-455",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012120166",
+   "members": [
+    "0363100012120166"
+   ],
+   "numbers": [
+    455,
+    455
+   ],
+   "lengthM": 7.5
+  },
+  {
+   "id": "nieuwendammerdijk-457-457",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012101486",
+   "members": [
+    "0363100012101486"
+   ],
+   "numbers": [
+    457,
+    457
+   ],
+   "lengthM": 3
+  },
+  {
+   "id": "nieuwendammerdijk-461-461",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012242472",
+   "members": [
+    "0363100012242472"
+   ],
+   "numbers": [
+    461,
+    461
+   ],
+   "lengthM": 10.1
+  },
+  {
+   "id": "nieuwendammerdijk-465-465",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012161565",
+   "members": [
+    "0363100012161565"
+   ],
+   "numbers": [
+    465,
+    465
+   ],
+   "lengthM": 10.9
+  },
+  {
+   "id": "nieuwendammerdijk-467-473",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012109727",
+   "members": [
+    "0363100012109727",
+    "0363100012133288",
+    "0363100012118007",
+    "0363100012142453"
+   ],
+   "numbers": [
+    467,
+    473
+   ],
+   "lengthM": 22.4
+  },
+  {
+   "id": "nieuwendammerdijk-475-475",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012066485",
+   "members": [
+    "0363100012066485"
+   ],
+   "numbers": [
+    475,
+    475
+   ],
+   "lengthM": 6
+  },
+  {
+   "id": "nieuwendammerdijk-477-479",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012099285",
+   "members": [
+    "0363100012099285",
+    "0363100012097327"
+   ],
+   "numbers": [
+    477,
+    479
+   ],
+   "lengthM": 11.5
+  },
+  {
+   "id": "nieuwendammerdijk-481-481",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012152858",
+   "members": [
+    "0363100012152858"
+   ],
+   "numbers": [
+    481,
+    481
+   ],
+   "lengthM": 9.8
+  },
+  {
+   "id": "nieuwendammerdijk-485-487",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012240373",
+   "members": [
+    "0363100012240373",
+    "0363100012240899"
+   ],
+   "numbers": [
+    485,
+    487
+   ],
+   "lengthM": 11.6
+  },
+  {
+   "id": "nieuwendammerdijk-489-491",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012163075",
+   "members": [
+    "0363100012163075",
+    "0363100012159312"
+   ],
+   "numbers": [
+    489,
+    491
+   ],
+   "lengthM": 10.1
+  },
+  {
+   "id": "nieuwendammerdijk-495-495",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012080673",
+   "members": [
+    "0363100012080673"
+   ],
+   "numbers": [
+    495,
+    495
+   ],
+   "lengthM": 10.1
+  },
+  {
+   "id": "nieuwendammerdijk-497-499",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012160564",
+   "members": [
+    "0363100012160564",
+    "0363100012157034"
+   ],
+   "numbers": [
+    497,
+    499
+   ],
+   "lengthM": 10.2
+  },
+  {
+   "id": "nieuwendammerdijk-501-503",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012160496",
+   "members": [
+    "0363100012160496",
+    "0363100012162734"
+   ],
+   "numbers": [
+    501,
+    503
+   ],
+   "lengthM": 12
+  },
+  {
+   "id": "nieuwendammerdijk-505-507",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012156216",
+   "members": [
+    "0363100012156216",
+    "0363100012160271"
+   ],
+   "numbers": [
+    505,
+    507
+   ],
+   "lengthM": 12.2
+  },
+  {
+   "id": "nieuwendammerdijk-509-511",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012090537",
+   "members": [
+    "0363100012090537",
+    "0363100012087674"
+   ],
+   "numbers": [
+    509,
+    511
+   ],
+   "lengthM": 11.4
+  },
+  {
+   "id": "nieuwendammerdijk-513-513",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012101964",
+   "members": [
+    "0363100012101964"
+   ],
+   "numbers": [
+    513,
+    513
+   ],
+   "lengthM": 6.3
+  },
+  {
+   "id": "nieuwendammerdijk-515-515",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012061461",
+   "members": [
+    "0363100012061461"
+   ],
+   "numbers": [
+    515,
+    515
+   ],
+   "lengthM": 5.8
+  },
+  {
+   "id": "nieuwendammerdijk-517-519",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012153752",
+   "members": [
+    "0363100012153752",
+    "0363100012161944"
+   ],
+   "numbers": [
+    517,
+    519
+   ],
+   "lengthM": 11
+  },
+  {
+   "id": "nieuwendammerdijk-521-521",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012129177",
+   "members": [
+    "0363100012129177"
+   ],
+   "numbers": [
+    521,
+    521
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "nieuwendammerdijk-523-525",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012104232",
+   "members": [
+    "0363100012104232",
+    "0363100012100347"
+   ],
+   "numbers": [
+    523,
+    525
+   ],
+   "lengthM": 12.4
+  },
+  {
+   "id": "nieuwendammerdijk-527-527",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012068868",
+   "members": [
+    "0363100012068868",
+    "0363100012095239"
+   ],
+   "numbers": [
+    527,
+    527
+   ],
+   "lengthM": 12.6
+  },
+  {
+   "id": "nieuwendammerdijk-529-531",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012156715",
+   "members": [
+    "0363100012156715",
+    "0363100012164001"
+   ],
+   "numbers": [
+    529,
+    531
+   ],
+   "lengthM": 11
+  },
+  {
+   "id": "nieuwendammerdijk-533-535",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012152285",
+   "members": [
+    "0363100012152285",
+    "0363100012155432"
+   ],
+   "numbers": [
+    533,
+    535
+   ],
+   "lengthM": 11.6
+  },
+  {
+   "id": "nieuwendammerdijk-537-557",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012092650",
+   "members": [
+    "0363100012092650",
+    "0363100012151706",
+    "0363100012107627",
+    "0363100012106053",
+    "0363100012061296",
+    "0363100012136885",
+    "0363100012080442",
+    "0363100012102591",
+    "0363100012096027",
+    "0363100012154880",
+    "0363100012149020"
+   ],
+   "numbers": [
+    537,
+    557
+   ],
+   "lengthM": 64.1
+  },
+  {
+   "id": "nieuwendammerdijk-559-567",
+   "street": "Nieuwendammerdijk",
+   "side": "odd",
+   "seed": "0363100012152157",
+   "members": [
+    "0363100012152157",
+    "0363100012064574",
+    "0363100012073548",
+    "0363100012134032",
+    "0363100012087492"
+   ],
+   "numbers": [
+    559,
+    567
+   ],
+   "lengthM": 27.9
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012163564",
+   "street": "Beemsterstraat",
+   "numbers": [
+    6,
+    8
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1931,
+   "storeys3dbag": 2,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.2,
+   "eavesM": 3.3,
+   "ridgeM": 7.3,
+   "roofMaxM": 7.3,
+   "normal": [
+    -0.619,
+    0.785
+   ],
+   "frontMidRD": [
+    124894.07,
+    489100.34
+   ]
+  },
+  {
+   "pandId": "0363100012163511",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    278
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1982,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.8,
+   "eavesM": 5.8,
+   "ridgeM": 8.1,
+   "roofMaxM": 8.8,
+   "normal": [
+    0.396,
+    0.918
+   ],
+   "frontMidRD": [
+    124620.31,
+    489320.05
+   ]
+  },
+  {
+   "pandId": "0363100012134822",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    284
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1981,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 8.1,
+   "eavesM": 2.7,
+   "ridgeM": 3.6,
+   "roofMaxM": 3.6,
+   "normal": [
+    0.269,
+    0.963
+   ],
+   "frontMidRD": [
+    124614.77,
+    489213.22
+   ]
+  },
+  {
+   "pandId": "0363100012154258",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    288
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1965,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.5,
+   "eavesM": 3.2,
+   "ridgeM": 6.9,
+   "roofMaxM": 7.1,
+   "normal": [
+    0.569,
+    0.822
+   ],
+   "frontMidRD": [
+    124653.27,
+    489282.62
+   ]
+  },
+  {
+   "pandId": "0363100012165874",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    290
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1965,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.2,
+   "eavesM": 3.7,
+   "ridgeM": 7.2,
+   "roofMaxM": 7.3,
+   "normal": [
+    0.569,
+    0.822
+   ],
+   "frontMidRD": [
+    124660.77,
+    489277.96
+   ]
+  },
+  {
+   "pandId": "0363100012167353",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    292
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1981,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.1,
+   "eavesM": 4,
+   "ridgeM": 13.6,
+   "roofMaxM": 13.6,
+   "normal": [
+    0.364,
+    0.931
+   ],
+   "frontMidRD": [
+    124677.41,
+    489242.85
+   ]
+  },
+  {
+   "pandId": "0363100012153207",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    300
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1955,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.5,
+   "eavesM": 8.8,
+   "ridgeM": 11.1,
+   "roofMaxM": 11.1,
+   "normal": [
+    0.639,
+    0.769
+   ],
+   "frontMidRD": [
+    124717.98,
+    489231.5
+   ]
+  },
+  {
+   "pandId": "0363100012154157",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    302
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1955,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.4,
+   "eavesM": 9,
+   "ridgeM": 11.1,
+   "roofMaxM": 11.1,
+   "normal": [
+    0.639,
+    0.769
+   ],
+   "frontMidRD": [
+    124725.33,
+    489225.11
+   ]
+  },
+  {
+   "pandId": "0363100012160505",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    304
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1955,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.7,
+   "eavesM": 8.7,
+   "ridgeM": 11,
+   "roofMaxM": 11,
+   "normal": [
+    0.64,
+    0.769
+   ],
+   "frontMidRD": [
+    124733.53,
+    489218.86
+   ]
+  },
+  {
+   "pandId": "0363100012152822",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    306
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1955,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.4,
+   "eavesM": 8.7,
+   "ridgeM": 10.7,
+   "roofMaxM": 10.8,
+   "normal": [
+    0.64,
+    0.769
+   ],
+   "frontMidRD": [
+    124741.2,
+    489211.92
+   ]
+  },
+  {
+   "pandId": "0363100012075876",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    308
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1955,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.6,
+   "eavesM": 7.5,
+   "ridgeM": 10.6,
+   "roofMaxM": 10.6,
+   "normal": [
+    0.64,
+    0.768
+   ],
+   "frontMidRD": [
+    124748.82,
+    489205.89
+   ]
+  },
+  {
+   "pandId": "0363100012066514",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    340
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": null,
+   "storeys3dbag": null,
+   "units": 10,
+   "groundUses": [
+    "industriefunctie",
+    "overige gebruiksfunctie"
+   ],
+   "factsError": "No footprint edge faces Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012155400",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    340
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": null,
+   "storeys3dbag": null,
+   "units": 4,
+   "groundUses": [],
+   "factsError": "No footprint edge faces Nieuwendammerdijk"
+  },
+  {
+   "pandId": "0363100012166943",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    343,
+    345
+   ],
+   "otherStreets": {
+    "Nieuwendammerstraat": [
+     2
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1958,
+   "storeys3dbag": 4,
+   "units": 12,
+   "groundUses": [
+    "woonfunctie",
+    "industriefunctie"
+   ],
+   "frontWidthM": 14.5,
+   "eavesM": 10.6,
+   "ridgeM": 13.9,
+   "roofMaxM": 14,
+   "normal": [
+    -0.407,
+    -0.913
+   ],
+   "frontMidRD": [
+    124629.47,
+    489330.02
+   ]
+  },
+  {
+   "pandId": "0363100012165968",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    349
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2003,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 9.6,
+   "ridgeM": 10.8,
+   "roofMaxM": 11.2,
+   "normal": [
+    -0.491,
+    -0.871
+   ],
+   "frontMidRD": [
+    124650.54,
+    489328.03
+   ]
+  },
+  {
+   "pandId": "0363100012109514",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    351
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1939,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 5.4,
+   "ridgeM": 9.2,
+   "roofMaxM": 9.1,
+   "normal": [
+    -0.488,
+    -0.873
+   ],
+   "frontMidRD": [
+    124657.27,
+    489313.99
+   ]
+  },
+  {
+   "pandId": "0363100012138726",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    351
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1939,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 2.5,
+   "eavesM": 3,
+   "ridgeM": 9.7,
+   "roofMaxM": 9.6,
+   "normal": [
+    -0.488,
+    -0.873
+   ],
+   "frontMidRD": [
+    124651.72,
+    489316.45
+   ]
+  },
+  {
+   "pandId": "0363100012107327",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    353
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1939,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.4,
+   "eavesM": 4.4,
+   "ridgeM": 11.1,
+   "roofMaxM": 11,
+   "normal": [
+    -0.489,
+    -0.872
+   ],
+   "frontMidRD": [
+    124665.62,
+    489309
+   ]
+  },
+  {
+   "pandId": "0363100012121928",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    353
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1939,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 8.1,
+   "ridgeM": 11.8,
+   "roofMaxM": 12.6,
+   "normal": [
+    -0.488,
+    -0.873
+   ],
+   "frontMidRD": [
+    124661.98,
+    489311.37
+   ]
+  },
+  {
+   "pandId": "0363100012094972",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    355
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 8,
+   "ridgeM": 12.8,
+   "roofMaxM": 12.9,
+   "normal": [
+    -0.475,
+    -0.88
+   ],
+   "frontMidRD": [
+    124671.89,
+    489304.74
+   ]
+  },
+  {
+   "pandId": "0363100012072726",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    357
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1965,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 8.5,
+   "ridgeM": 12.9,
+   "roofMaxM": 12.9,
+   "normal": [
+    -0.477,
+    -0.879
+   ],
+   "frontMidRD": [
+    124681.02,
+    489299.21
+   ]
+  },
+  {
+   "pandId": "0363100012163574",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    359
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1965,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 6.1,
+   "ridgeM": 9.9,
+   "roofMaxM": 9.9,
+   "normal": [
+    -0.489,
+    -0.873
+   ],
+   "frontMidRD": [
+    124687.51,
+    489295.08
+   ]
+  },
+  {
+   "pandId": "0363100012158659",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    365
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2007,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 6.4,
+   "ridgeM": 9.1,
+   "roofMaxM": 9.1,
+   "normal": [
+    -0.789,
+    -0.615
+   ],
+   "frontMidRD": [
+    124701.04,
+    489280.97
+   ]
+  },
+  {
+   "pandId": "0363100012163346",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    367
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2007,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 6.4,
+   "ridgeM": 10.2,
+   "roofMaxM": 10.2,
+   "normal": [
+    -0.782,
+    -0.623
+   ],
+   "frontMidRD": [
+    124705.42,
+    489276.06
+   ]
+  },
+  {
+   "pandId": "0363100012163347",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    369
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2007,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 6.4,
+   "ridgeM": 10.2,
+   "roofMaxM": 10.2,
+   "normal": [
+    -0.731,
+    -0.682
+   ],
+   "frontMidRD": [
+    124708.72,
+    489272.27
+   ]
+  },
+  {
+   "pandId": "0363100012097331",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    373
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1960,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 9.6,
+   "ridgeM": 13.9,
+   "roofMaxM": 13.9,
+   "normal": [
+    -0.73,
+    -0.683
+   ],
+   "frontMidRD": [
+    124714.88,
+    489265.54
+   ]
+  },
+  {
+   "pandId": "0363100012113596",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    375
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 10.1,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.3,
+   "normal": [
+    -0.738,
+    -0.675
+   ],
+   "frontMidRD": [
+    124719.55,
+    489260.03
+   ]
+  },
+  {
+   "pandId": "0363100012166432",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    377
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 6.1,
+   "ridgeM": 9.4,
+   "roofMaxM": 9.5,
+   "normal": [
+    -0.709,
+    -0.705
+   ],
+   "frontMidRD": [
+    124724.24,
+    489255.12
+   ]
+  },
+  {
+   "pandId": "0363100012162494",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    379
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 5.1,
+   "ridgeM": 8.6,
+   "roofMaxM": 9.7,
+   "normal": [
+    -0.794,
+    -0.608
+   ],
+   "frontMidRD": [
+    124729.47,
+    489248.49
+   ]
+  },
+  {
+   "pandId": "0363100012153027",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    381
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 6.4,
+   "ridgeM": 10,
+   "roofMaxM": 10.3,
+   "normal": [
+    -0.676,
+    -0.736
+   ],
+   "frontMidRD": [
+    124734.63,
+    489242.6
+   ]
+  },
+  {
+   "pandId": "0363100012155506",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    383
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 5,
+   "ridgeM": 8.3,
+   "roofMaxM": 8.4,
+   "normal": [
+    -0.621,
+    -0.784
+   ],
+   "frontMidRD": [
+    124745.38,
+    489245.72
+   ]
+  },
+  {
+   "pandId": "0363100012152687",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    385
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1937,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 5.3,
+   "ridgeM": 7.8,
+   "roofMaxM": 7.8,
+   "normal": [
+    -0.628,
+    -0.778
+   ],
+   "frontMidRD": [
+    124747.06,
+    489235.1
+   ]
+  },
+  {
+   "pandId": "0363100012161604",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    387
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1800,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.6,
+   "eavesM": 4.5,
+   "ridgeM": 9.7,
+   "roofMaxM": 9.8,
+   "normal": [
+    -0.663,
+    -0.748
+   ],
+   "frontMidRD": [
+    124758.81,
+    489226.43
+   ]
+  },
+  {
+   "pandId": "0363100012087457",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    391
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1937,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 8.3,
+   "ridgeM": 11.1,
+   "roofMaxM": 10.7,
+   "normal": [
+    -0.594,
+    -0.805
+   ],
+   "frontMidRD": [
+    124765.19,
+    489220.15
+   ]
+  },
+  {
+   "pandId": "0363100012114278",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    393
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1936,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 8.4,
+   "ridgeM": 11.2,
+   "roofMaxM": 10.9,
+   "normal": [
+    -0.594,
+    -0.805
+   ],
+   "frontMidRD": [
+    124770.04,
+    489216.57
+   ]
+  },
+  {
+   "pandId": "0363100012084727",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    395
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1937,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 8.4,
+   "ridgeM": 11.2,
+   "roofMaxM": 11.5,
+   "normal": [
+    -0.594,
+    -0.804
+   ],
+   "frontMidRD": [
+    124774.9,
+    489212.98
+   ]
+  },
+  {
+   "pandId": "0363100012161516",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    397
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2001,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.6,
+   "eavesM": 5.4,
+   "ridgeM": 8.2,
+   "roofMaxM": 9.2,
+   "normal": [
+    -0.612,
+    -0.791
+   ],
+   "frontMidRD": [
+    124779.65,
+    489208.46
+   ]
+  },
+  {
+   "pandId": "0363100012085116",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    399
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1937,
+   "storeys3dbag": 1,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 2.5,
+   "ridgeM": 2.7,
+   "roofMaxM": 2.7,
+   "normal": [
+    -0.613,
+    -0.79
+   ],
+   "frontMidRD": [
+    124788.79,
+    489221.54
+   ]
+  },
+  {
+   "pandId": "0363100012163787",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    399
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1937,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 2.8,
+   "ridgeM": 7.4,
+   "roofMaxM": 7.4,
+   "normal": [
+    -0.637,
+    -0.77
+   ],
+   "frontMidRD": [
+    124796.99,
+    489213.73
+   ]
+  },
+  {
+   "pandId": "0363100012166913",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    399
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2001,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.5,
+   "eavesM": 5.5,
+   "ridgeM": 8.6,
+   "roofMaxM": 9.7,
+   "normal": [
+    -0.613,
+    -0.79
+   ],
+   "frontMidRD": [
+    124783.24,
+    489205.68
+   ]
+  },
+  {
+   "pandId": "0363100012167224",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    401
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2001,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.8,
+   "eavesM": 5.7,
+   "ridgeM": 8.5,
+   "roofMaxM": 8.5,
+   "normal": [
+    -0.645,
+    -0.764
+   ],
+   "frontMidRD": [
+    124788.34,
+    489201.47
+   ]
+  },
+  {
+   "pandId": "0363100012103951",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    403
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2001,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 5.8,
+   "ridgeM": 9.8,
+   "roofMaxM": 9.8,
+   "normal": [
+    -0.657,
+    -0.754
+   ],
+   "frontMidRD": [
+    124793.4,
+    489197.22
+   ]
+  },
+  {
+   "pandId": "0363100012153221",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    405
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 4.9,
+   "ridgeM": 8.3,
+   "roofMaxM": 8.3,
+   "normal": [
+    -0.634,
+    -0.774
+   ],
+   "frontMidRD": [
+    124798.13,
+    489194.54
+   ]
+  },
+  {
+   "pandId": "0363100012068486",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    407
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.5,
+   "eavesM": 7,
+   "ridgeM": 12.8,
+   "roofMaxM": 12.8,
+   "normal": [
+    -0.66,
+    -0.751
+   ],
+   "frontMidRD": [
+    124804.82,
+    489191.5
+   ]
+  },
+  {
+   "pandId": "0363100012153723",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    409
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.9,
+   "eavesM": 4.4,
+   "ridgeM": 7.1,
+   "roofMaxM": 7,
+   "normal": [
+    -0.706,
+    -0.708
+   ],
+   "frontMidRD": [
+    124811.05,
+    489182.96
+   ]
+  },
+  {
+   "pandId": "0363100012161686",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    413
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie,woonfunctie"
+   ],
+   "frontWidthM": 7.4,
+   "eavesM": 6.6,
+   "ridgeM": 8.8,
+   "roofMaxM": 9.1,
+   "normal": [
+    -0.717,
+    -0.697
+   ],
+   "frontMidRD": [
+    124818.6,
+    489175.46
+   ]
+  },
+  {
+   "pandId": "0363100012162492",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    415
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 5.8,
+   "ridgeM": 8.5,
+   "roofMaxM": 8.4,
+   "normal": [
+    -0.734,
+    -0.679
+   ],
+   "frontMidRD": [
+    124823.32,
+    489170.47
+   ]
+  },
+  {
+   "pandId": "0363100012152287",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    417
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 5.1,
+   "ridgeM": 8.1,
+   "roofMaxM": 8,
+   "normal": [
+    -0.734,
+    -0.679
+   ],
+   "frontMidRD": [
+    124826.8,
+    489166.71
+   ]
+  },
+  {
+   "pandId": "0363100012167381",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    421
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.4,
+   "eavesM": 5,
+   "ridgeM": 9,
+   "roofMaxM": 9.2,
+   "normal": [
+    -0.756,
+    -0.655
+   ],
+   "frontMidRD": [
+    124832.42,
+    489160.22
+   ]
+  },
+  {
+   "pandId": "0363100012138158",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    425
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 8.2,
+   "ridgeM": 10.3,
+   "roofMaxM": 10.3,
+   "normal": [
+    -0.799,
+    -0.602
+   ],
+   "frontMidRD": [
+    124842.45,
+    489151.99
+   ]
+  },
+  {
+   "pandId": "0363100012152644",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    427
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.3,
+   "eavesM": 5.2,
+   "ridgeM": 7.8,
+   "roofMaxM": 7.8,
+   "normal": [
+    -0.787,
+    -0.616
+   ],
+   "frontMidRD": [
+    124845.35,
+    489144.86
+   ]
+  },
+  {
+   "pandId": "0363100012156900",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    429
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 5.5,
+   "ridgeM": 8.9,
+   "roofMaxM": 8.9,
+   "normal": [
+    -0.746,
+    -0.666
+   ],
+   "frontMidRD": [
+    124849.36,
+    489138.45
+   ]
+  },
+  {
+   "pandId": "0363100012160645",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    431
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1921,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 4.4,
+   "ridgeM": 7.7,
+   "roofMaxM": 7.8,
+   "normal": [
+    -0.791,
+    -0.612
+   ],
+   "frontMidRD": [
+    124853.2,
+    489133.14
+   ]
+  },
+  {
+   "pandId": "0363100012082454",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    435
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1921,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.3,
+   "eavesM": 6.3,
+   "ridgeM": 10.3,
+   "roofMaxM": 10.4,
+   "normal": [
+    -0.79,
+    -0.613
+   ],
+   "frontMidRD": [
+    124861.95,
+    489124.75
+   ]
+  },
+  {
+   "pandId": "0363100012208081",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    437
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1921,
+   "storeys3dbag": 3,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 10.9,
+   "eavesM": 8.6,
+   "ridgeM": 17.8,
+   "roofMaxM": 21,
+   "normal": [
+    -0.789,
+    -0.614
+   ],
+   "frontMidRD": [
+    124869.39,
+    489115.87
+   ]
+  },
+  {
+   "pandId": "0363100012167256",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    443
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.1,
+   "eavesM": 6,
+   "ridgeM": 9.6,
+   "roofMaxM": 9.6,
+   "normal": [
+    -0.803,
+    -0.596
+   ],
+   "frontMidRD": [
+    124884.64,
+    489090.2
+   ]
+  },
+  {
+   "pandId": "0363100012159401",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    447
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 5.8,
+   "ridgeM": 10.4,
+   "roofMaxM": 10.4,
+   "normal": [
+    -0.795,
+    -0.606
+   ],
+   "frontMidRD": [
+    124889.4,
+    489080.92
+   ]
+  },
+  {
+   "pandId": "0363100012248854",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    451
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2017,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.1,
+   "eavesM": 5.7,
+   "ridgeM": 9,
+   "roofMaxM": 9,
+   "normal": [
+    -0.765,
+    -0.644
+   ],
+   "frontMidRD": [
+    124897.26,
+    489071.94
+   ]
+  },
+  {
+   "pandId": "0363100012157304",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    453
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2005,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.2,
+   "eavesM": 4.4,
+   "ridgeM": 7.4,
+   "roofMaxM": 7.4,
+   "normal": [
+    -0.782,
+    -0.623
+   ],
+   "frontMidRD": [
+    124905.63,
+    489062.21
+   ]
+  },
+  {
+   "pandId": "0363100012120166",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    455
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2005,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 8.7,
+   "ridgeM": 10.5,
+   "roofMaxM": 10.4,
+   "normal": [
+    -0.78,
+    -0.626
+   ],
+   "frontMidRD": [
+    124911.07,
+    489055.66
+   ]
+  },
+  {
+   "pandId": "0363100012101486",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    457
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1930,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3,
+   "eavesM": 6.1,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.4,
+   "normal": [
+    -0.78,
+    -0.626
+   ],
+   "frontMidRD": [
+    124918.71,
+    489049.76
+   ]
+  },
+  {
+   "pandId": "0363100012242472",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    461
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2015,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.1,
+   "eavesM": 6.4,
+   "ridgeM": 9.5,
+   "roofMaxM": 9.4,
+   "normal": [
+    -0.782,
+    -0.623
+   ],
+   "frontMidRD": [
+    124925.77,
+    489039.65
+   ]
+  },
+  {
+   "pandId": "0363100012161565",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    465
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "frontWidthM": 10.9,
+   "eavesM": 5.2,
+   "ridgeM": 9.2,
+   "roofMaxM": 9.2,
+   "normal": [
+    -0.787,
+    -0.617
+   ],
+   "frontMidRD": [
+    124935.74,
+    489027.66
+   ]
+  },
+  {
+   "pandId": "0363100012109727",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    467
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 3,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 7.4,
+   "ridgeM": 11,
+   "roofMaxM": 11,
+   "normal": [
+    -0.757,
+    -0.653
+   ],
+   "frontMidRD": [
+    124944.51,
+    489020.97
+   ]
+  },
+  {
+   "pandId": "0363100012133288",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    469
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 7.4,
+   "ridgeM": 11,
+   "roofMaxM": 11,
+   "normal": [
+    -0.757,
+    -0.653
+   ],
+   "frontMidRD": [
+    124948.14,
+    489016.77
+   ]
+  },
+  {
+   "pandId": "0363100012118007",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    471
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 7.4,
+   "ridgeM": 11,
+   "roofMaxM": 11,
+   "normal": [
+    -0.758,
+    -0.653
+   ],
+   "frontMidRD": [
+    124951.73,
+    489012.59
+   ]
+  },
+  {
+   "pandId": "0363100012142453",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    473
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1932,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 7.4,
+   "ridgeM": 11,
+   "roofMaxM": 11,
+   "normal": [
+    -0.758,
+    -0.653
+   ],
+   "frontMidRD": [
+    124955.41,
+    489008.32
+   ]
+  },
+  {
+   "pandId": "0363100012066485",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    475
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2009,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 8,
+   "ridgeM": 10.6,
+   "roofMaxM": 10.6,
+   "normal": [
+    -0.782,
+    -0.624
+   ],
+   "frontMidRD": [
+    124960.7,
+    489001.54
+   ]
+  },
+  {
+   "pandId": "0363100012099285",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    477
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 8,
+   "ridgeM": 11.7,
+   "roofMaxM": 11.8,
+   "normal": [
+    -0.788,
+    -0.616
+   ],
+   "frontMidRD": [
+    124965.6,
+    488995.38
+   ]
+  },
+  {
+   "pandId": "0363100012097327",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    479
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 8.1,
+   "ridgeM": 11.8,
+   "roofMaxM": 11.8,
+   "normal": [
+    -0.789,
+    -0.615
+   ],
+   "frontMidRD": [
+    124969.14,
+    488990.84
+   ]
+  },
+  {
+   "pandId": "0363100012152858",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    481
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.8,
+   "eavesM": 5.8,
+   "ridgeM": 8.4,
+   "roofMaxM": 8.4,
+   "normal": [
+    -0.777,
+    -0.629
+   ],
+   "frontMidRD": [
+    124975.35,
+    488983.17
+   ]
+  },
+  {
+   "pandId": "0363100012240373",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    485
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2011,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 8.4,
+   "ridgeM": 11.2,
+   "roofMaxM": 11.2,
+   "normal": [
+    -0.766,
+    -0.643
+   ],
+   "frontMidRD": [
+    124982.27,
+    488974.88
+   ]
+  },
+  {
+   "pandId": "0363100012240899",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    487
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2011,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 9,
+   "ridgeM": 11.2,
+   "roofMaxM": 11.2,
+   "normal": [
+    -0.766,
+    -0.643
+   ],
+   "frontMidRD": [
+    124986,
+    488970.44
+   ]
+  },
+  {
+   "pandId": "0363100012163075",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    489
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1988,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 5.9,
+   "ridgeM": 8.9,
+   "roofMaxM": 8.9,
+   "normal": [
+    -0.78,
+    -0.626
+   ],
+   "frontMidRD": [
+    124990.62,
+    488964.73
+   ]
+  },
+  {
+   "pandId": "0363100012159312",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    491
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1988,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 5.8,
+   "ridgeM": 8.9,
+   "roofMaxM": 8.9,
+   "normal": [
+    -0.781,
+    -0.625
+   ],
+   "frontMidRD": [
+    124993.77,
+    488960.79
+   ]
+  },
+  {
+   "pandId": "0363100012080673",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    495
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1988,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.1,
+   "eavesM": 6.1,
+   "ridgeM": 9.2,
+   "roofMaxM": 9.2,
+   "normal": [
+    -0.781,
+    -0.624
+   ],
+   "frontMidRD": [
+    124999.75,
+    488953.39
+   ]
+  },
+  {
+   "pandId": "0363100012160564",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    497
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 6,
+   "ridgeM": 9.1,
+   "roofMaxM": 9.1,
+   "normal": [
+    -0.775,
+    -0.632
+   ],
+   "frontMidRD": [
+    125005.63,
+    488946.07
+   ]
+  },
+  {
+   "pandId": "0363100012157034",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    499
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 6.3,
+   "ridgeM": 9.3,
+   "roofMaxM": 9.3,
+   "normal": [
+    -0.775,
+    -0.632
+   ],
+   "frontMidRD": [
+    125008.82,
+    488942.15
+   ]
+  },
+  {
+   "pandId": "0363100012160496",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    501
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 6.5,
+   "ridgeM": 9.6,
+   "roofMaxM": 9.6,
+   "normal": [
+    -0.752,
+    -0.659
+   ],
+   "frontMidRD": [
+    125013.86,
+    488936.28
+   ]
+  },
+  {
+   "pandId": "0363100012162734",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    503
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 6.7,
+   "ridgeM": 9.9,
+   "roofMaxM": 9.9,
+   "normal": [
+    -0.753,
+    -0.658
+   ],
+   "frontMidRD": [
+    125017.83,
+    488931.73
+   ]
+  },
+  {
+   "pandId": "0363100012156216",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    505
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1931,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 6.9,
+   "ridgeM": 10.2,
+   "roofMaxM": 10.2,
+   "normal": [
+    -0.748,
+    -0.664
+   ],
+   "frontMidRD": [
+    125023.32,
+    488925.68
+   ]
+  },
+  {
+   "pandId": "0363100012160271",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    507
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 6.8,
+   "ridgeM": 10.1,
+   "roofMaxM": 10.1,
+   "normal": [
+    -0.748,
+    -0.663
+   ],
+   "frontMidRD": [
+    125027.35,
+    488921.13
+   ]
+  },
+  {
+   "pandId": "0363100012090537",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    509
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 9.1,
+   "ridgeM": 12.6,
+   "roofMaxM": 12.6,
+   "normal": [
+    -0.751,
+    -0.661
+   ],
+   "frontMidRD": [
+    125031.99,
+    488915.89
+   ]
+  },
+  {
+   "pandId": "0363100012087674",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    511
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 8.9,
+   "ridgeM": 12.5,
+   "roofMaxM": 12.5,
+   "normal": [
+    -0.751,
+    -0.66
+   ],
+   "frontMidRD": [
+    125035.77,
+    488911.59
+   ]
+  },
+  {
+   "pandId": "0363100012101964",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    513
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1924,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 7.3,
+   "ridgeM": 9.7,
+   "roofMaxM": 9.9,
+   "normal": [
+    -0.738,
+    -0.675
+   ],
+   "frontMidRD": [
+    125041.01,
+    488906.81
+   ]
+  },
+  {
+   "pandId": "0363100012061461",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    515
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 8.8,
+   "ridgeM": 11.2,
+   "roofMaxM": 11.2,
+   "normal": [
+    -0.755,
+    -0.656
+   ],
+   "frontMidRD": [
+    125044.64,
+    488901.6
+   ]
+  },
+  {
+   "pandId": "0363100012153752",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    517
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 5.9,
+   "ridgeM": 9.5,
+   "roofMaxM": 9.5,
+   "normal": [
+    -0.744,
+    -0.668
+   ],
+   "frontMidRD": [
+    125049.17,
+    488896.67
+   ]
+  },
+  {
+   "pandId": "0363100012161944",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    519
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 5.9,
+   "ridgeM": 9.4,
+   "roofMaxM": 9.5,
+   "normal": [
+    -0.744,
+    -0.668
+   ],
+   "frontMidRD": [
+    125052.87,
+    488892.55
+   ]
+  },
+  {
+   "pandId": "0363100012129177",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    521
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 2,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 8.5,
+   "ridgeM": 11.5,
+   "roofMaxM": 11.5,
+   "normal": [
+    -0.747,
+    -0.664
+   ],
+   "frontMidRD": [
+    125057.45,
+    488887.22
+   ]
+  },
+  {
+   "pandId": "0363100012104232",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    523
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1956,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 8.3,
+   "ridgeM": 11.4,
+   "roofMaxM": 11.5,
+   "normal": [
+    -0.743,
+    -0.669
+   ],
+   "frontMidRD": [
+    125064.3,
+    488883.36
+   ]
+  },
+  {
+   "pandId": "0363100012100347",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    525
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1956,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 7.4,
+   "ridgeM": 10.7,
+   "roofMaxM": 10.7,
+   "normal": [
+    -0.744,
+    -0.668
+   ],
+   "frontMidRD": [
+    125068.46,
+    488878.72
+   ]
+  },
+  {
+   "pandId": "0363100012068868",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    527
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1956,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 7.6,
+   "ridgeM": 10.8,
+   "roofMaxM": 10.8,
+   "normal": [
+    -0.742,
+    -0.67
+   ],
+   "frontMidRD": [
+    125082.44,
+    488863.14
+   ]
+  },
+  {
+   "pandId": "0363100012095239",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    527
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1956,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 7.8,
+   "ridgeM": 11,
+   "roofMaxM": 11,
+   "normal": [
+    -0.742,
+    -0.67
+   ],
+   "frontMidRD": [
+    125086.63,
+    488858.5
+   ]
+  },
+  {
+   "pandId": "0363100012156715",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    529
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1956,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 6.6,
+   "ridgeM": 9.7,
+   "roofMaxM": 9.8,
+   "normal": [
+    -0.553,
+    -0.833
+   ],
+   "frontMidRD": [
+    125092.46,
+    488850.88
+   ]
+  },
+  {
+   "pandId": "0363100012164001",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    531
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1956,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 6.5,
+   "ridgeM": 9.7,
+   "roofMaxM": 9.7,
+   "normal": [
+    -0.554,
+    -0.833
+   ],
+   "frontMidRD": [
+    125097.07,
+    488847.81
+   ]
+  },
+  {
+   "pandId": "0363100012152285",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    533
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1933,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 6.4,
+   "ridgeM": 9.5,
+   "roofMaxM": 9.5,
+   "normal": [
+    -0.353,
+    -0.936
+   ],
+   "frontMidRD": [
+    125104.24,
+    488844.4
+   ]
+  },
+  {
+   "pandId": "0363100012155432",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    535
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1933,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 6.4,
+   "ridgeM": 9.5,
+   "roofMaxM": 9.6,
+   "normal": [
+    -0.354,
+    -0.935
+   ],
+   "frontMidRD": [
+    125109.64,
+    488842.36
+   ]
+  },
+  {
+   "pandId": "0363100012092650",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    537
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1933,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9,
+   "eavesM": 6.2,
+   "ridgeM": 12.1,
+   "roofMaxM": 12.1,
+   "normal": [
+    -0.092,
+    -0.996
+   ],
+   "frontMidRD": [
+    125118.48,
+    488842.46
+   ]
+  },
+  {
+   "pandId": "0363100012151706",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    539
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1933,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.4,
+   "ridgeM": 11.9,
+   "roofMaxM": 11.9,
+   "normal": [
+    -0.085,
+    -0.996
+   ],
+   "frontMidRD": [
+    125125.72,
+    488841.81
+   ]
+  },
+  {
+   "pandId": "0363100012107627",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    541
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1933,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.4,
+   "ridgeM": 12,
+   "roofMaxM": 12,
+   "normal": [
+    -0.085,
+    -0.996
+   ],
+   "frontMidRD": [
+    125131.2,
+    488841.34
+   ]
+  },
+  {
+   "pandId": "0363100012106053",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    543
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1933,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.6,
+   "ridgeM": 12.1,
+   "roofMaxM": 12.1,
+   "normal": [
+    -0.085,
+    -0.996
+   ],
+   "frontMidRD": [
+    125136.68,
+    488840.88
+   ]
+  },
+  {
+   "pandId": "0363100012061296",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    545
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1933,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.5,
+   "ridgeM": 12,
+   "roofMaxM": 12,
+   "normal": [
+    -0.084,
+    -0.996
+   ],
+   "frontMidRD": [
+    125142.16,
+    488840.41
+   ]
+  },
+  {
+   "pandId": "0363100012136885",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    547
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.5,
+   "ridgeM": 11.9,
+   "roofMaxM": 11.7,
+   "normal": [
+    -0.084,
+    -0.996
+   ],
+   "frontMidRD": [
+    125147.64,
+    488839.95
+   ]
+  },
+  {
+   "pandId": "0363100012080442",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    549
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.5,
+   "ridgeM": 11.9,
+   "roofMaxM": 11.9,
+   "normal": [
+    -0.085,
+    -0.996
+   ],
+   "frontMidRD": [
+    125153.12,
+    488839.48
+   ]
+  },
+  {
+   "pandId": "0363100012102591",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    551
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.5,
+   "ridgeM": 12,
+   "roofMaxM": 12,
+   "normal": [
+    -0.085,
+    -0.996
+   ],
+   "frontMidRD": [
+    125158.6,
+    488839.02
+   ]
+  },
+  {
+   "pandId": "0363100012096027",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    553
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.5,
+   "ridgeM": 12,
+   "roofMaxM": 12,
+   "normal": [
+    -0.085,
+    -0.996
+   ],
+   "frontMidRD": [
+    125164.08,
+    488838.55
+   ]
+  },
+  {
+   "pandId": "0363100012154880",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    555
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.5,
+   "ridgeM": 11.9,
+   "roofMaxM": 11.9,
+   "normal": [
+    -0.085,
+    -0.996
+   ],
+   "frontMidRD": [
+    125169.56,
+    488838.08
+   ]
+  },
+  {
+   "pandId": "0363100012149020",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    557
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.6,
+   "eavesM": 8.4,
+   "ridgeM": 11.9,
+   "roofMaxM": 12,
+   "normal": [
+    -0.085,
+    -0.996
+   ],
+   "frontMidRD": [
+    125175.12,
+    488837.61
+   ]
+  },
+  {
+   "pandId": "0363100012152157",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    559
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 8.3,
+   "ridgeM": 11.7,
+   "roofMaxM": 12,
+   "normal": [
+    -0.305,
+    -0.952
+   ],
+   "frontMidRD": [
+    125183.14,
+    488836.38
+   ]
+  },
+  {
+   "pandId": "0363100012064574",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    561
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.4,
+   "ridgeM": 11.7,
+   "roofMaxM": 12,
+   "normal": [
+    -0.305,
+    -0.952
+   ],
+   "frontMidRD": [
+    125188.46,
+    488834.68
+   ]
+  },
+  {
+   "pandId": "0363100012073548",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    563
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.5,
+   "ridgeM": 11.9,
+   "roofMaxM": 12,
+   "normal": [
+    -0.305,
+    -0.952
+   ],
+   "frontMidRD": [
+    125193.7,
+    488833
+   ]
+  },
+  {
+   "pandId": "0363100012134032",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    565
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 8.6,
+   "ridgeM": 11.9,
+   "roofMaxM": 12.1,
+   "normal": [
+    -0.304,
+    -0.953
+   ],
+   "frontMidRD": [
+    125198.93,
+    488831.33
+   ]
+  },
+  {
+   "pandId": "0363100012087492",
+   "street": "Nieuwendammerdijk",
+   "numbers": [
+    567
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1934,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 8.4,
+   "ridgeM": 11.8,
+   "roofMaxM": 11.8,
+   "normal": [
+    -0.306,
+    -0.952
+   ],
+   "frontMidRD": [
+    125204.24,
+    488829.62
+   ]
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "note": "Pands held after reading the strip sheets.",
+ "reviewed": "2026-11-10 (lane)",
+ "holds": [
+  {
+   "pandId": "0363100012153207",
+   "address": "Nieuwendammerdijk 300",
+   "reason": "strip 2019-12-12: the ground floor is one wide glazed shopfront and the upper windows pair up differently (3 + 1), not the five regular axes"
+  },
+  {
+   "pandId": "0363100012152822",
+   "address": "Nieuwendammerdijk 306",
+   "reason": "strip 2019-12-12: matches the five-axis row by eye but tree and creeper branches make the column read 10 vs 5 (score 0.57 < 0.7); held until a columns override exists"
+  },
+  {
+   "pandId": "0363100012075876",
+   "address": "Nieuwendammerdijk 308",
+   "reason": "strip 2019-12-12: different front (low, stucco ground floor), tree over the strip, 3 columns"
+  }
+ ]
+}

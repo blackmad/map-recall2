@@ -1,0 +1,105 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:10:53.696Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012137179",
+   "addresses": [
+    "Nieuwendammerdijk 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 22",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000751587"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086090",
+   "addresses": [
+    "Nieuwendammerdijk 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 20",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000751585"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092212",
+   "addresses": [
+    "Nieuwendammerdijk 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 18",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000751583"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067355",
+   "addresses": [
+    "Nieuwendammerdijk 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 16",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000751581"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108068",
+   "addresses": [
+    "Nieuwendammerdijk 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 14",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000751579"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114947",
+   "addresses": [
+    "Nieuwendammerdijk 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 12",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000751577"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}
