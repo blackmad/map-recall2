@@ -40,6 +40,12 @@ export const OPEN_GROUND_SPOTS: readonly OpenGroundSpot[] = [
   { name: 'sloterdijkerweg', feedback: '28ae61fb', lng: 4.84600, lat: 52.38744, cell: '-4_1', frame: { lng: 4.84600, lat: 52.38744, bearing: 300 }, probes: [
     { what: 'the woodland west of the road, by the rail yard (BGT groenvoorziening under trees)', lng: 4.845117, lat: 52.387440, expect: 'meadow' },
   ] },
+  // check:bridge-gaps nauernaseweg-way-deck (integrator 2026-11-10): the level-0 BGT grass under the raised (h 1) road
+  // polygons of the way deck's approach drew over the carriageway (+63 m² off the road). Raised roads-v1 surfaces are cut out.
+  { name: 'nauernaseweg', lng: 4.75045, lat: 52.43245, cell: '-11_6', frame: { lng: 4.75045, lat: 52.43245, bearing: 60 }, probes: [
+    { what: 'the carriageway of the way-deck approach, west end (BGT grass at level 0 under the h 1 road)', lng: 4.750259, lat: 52.432385, expect: null },
+    { what: 'the carriageway of the way-deck approach, east of the deck', lng: 4.750643, lat: 52.432510, expect: null },
+  ] },
   { name: 'nieuwmarkt', lng: 4.90040, lat: 52.37270, cell: '0_0', frame: { lng: 4.90040, lat: 52.37195, bearing: 0 }, probes: [
     { what: 'the paved square south of the Waag: a plein stays paving', lng: 4.90040, lat: 52.37225, expect: null },
   ] },
