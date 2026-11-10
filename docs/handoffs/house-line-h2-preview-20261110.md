@@ -22,7 +22,7 @@ Verify on origin/main with line numbers:
 - Recipe-route houses (an installed GLB): compile with the existing recipe compiler, `renderElevation`, same `measureFacade` comparison, so one command covers both routes.
 
 ## Gate
-- Nassaukade 506 (`0363100012168052`, memory `nassaukade-506-benchmark`) and two Grachtengordel canal houses: `front.png` beside the `render.ts` frame of the same pand; `measureFacade` of both within the likeness tolerances (ΔL ≤ 0.12, hue ≤ 12°, glazing ±0.15, columns ±20 %). Where they differ, say which is right against the photo.
+- Nassaukade 152–145 (block face `nassau-145-152`, e.g. pand `0363100012164843`; memory `nassaukade-506-benchmark`: 506 is the houseboat the photo was taken from) and two Grachtengordel canal houses: `front.png` beside the `render.ts` frame of the same pand; `measureFacade` of both within the likeness tolerances (ΔL ≤ 0.12, hue ≤ 12°, glazing ±0.15, columns ±20 %). Where they differ, say which is right against the photo.
 - `assertImageLoaded('Bricks057')` fails loudly when the shim breaks.
 - Times on the user's Mac: cold with cache, warm in `--watch`; targets 3 s and 0.5 s; report the measured numbers whatever they are.
 - `npm run lint`; no browser global referenced in `src/` outside the existing browser modules (grep `document.` in the new `src/` files = 0).

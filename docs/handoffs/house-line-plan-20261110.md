@@ -101,7 +101,7 @@ Held as a result of this plan: needs-david #336 (crop pilot) is folded into H4. 
 
 - **Byte-identical off**: `house-specs` flag off and `?registerFacts=0` reproduce today's world (`world:verify` 0 differing on a full compile once, before H1 merges).
 - **The Nieuwmarkt test**: the user's 2026-11-09 photo vs game pair; after H1 the row shows neck/bell/step gables in a ride frame (`tests/e2e/demo-shots.spec.ts` gains a `nieuwmarkt-row` spot, desktop DPR 2 and phone) beside the panorama.
-- **Preview speed**: `time npm run house:preview -- 0363100012168052` (Nassaukade 506) < 3 s warm on the user's Mac; likeness verdict equals the `render.ts` path's.
+- **Preview speed**: `time npm run house:preview -- 0363100012164843` (Nassaukade 152–145, face `nassau-145-152`) < 3 s warm on the user's Mac; likeness verdict equals the `render.ts` path's.
 - **Publish batch**: a 50-spec staged batch → `house:publish` under 15 min wall; `world:compile --changed` rebuilds only the touched cells (report lists them); goldens CHANGED ⊆ allowlist; `check:canal` once.
 - **Describe quality**: on the pilot buurt, writer-vs-hand agreement table per field; Jev spend printed per run and capped by flag.
 - **Lane time**: H7 records wall time per house from crop to staged spec; the target is ≤ 10 min of lane time, and the number goes in HISTORY.
