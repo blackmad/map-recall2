@@ -1,0 +1,207 @@
+{
+ "version": 1,
+ "pandId": "0363100012174659",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "front.jpg",
+  "year": 2024,
+  "quality": 0.536,
+  "panoIds": [
+   "b_20241217_0841_Track25_Sphere_00014"
+  ],
+  "date": "2024-12-17",
+  "reasons": [
+   "washed-out"
+  ],
+  "ppm": 50
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174659",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 4
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012174659",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012174659",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1989
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174659",
+   "design": {
+    "palette": {
+     "brick": "#e6aa8b"
+    },
+    "fronts": [
+     {
+      "bays": 6
+     }
+    ]
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.35,
+     "ref": "source-data://pand-crops/0363100012174659/front.jpg#good",
+     "at": "2024-12-17"
+    },
+    "fronts/0/bays": {
+     "source": "streetlevel-measured",
+     "confidence": 0.3,
+     "ref": "source-data://pand-crops/0363100012174659/front.jpg#good",
+     "at": "2024-12-17"
+    }
+   }
+  },
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174659",
+   "design": {
+    "fronts": [
+     {
+      "bays": 2
+     }
+    ],
+    "palette": {
+     "wallMaterial": "brick"
+    }
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.55,
+     "ref": "source-data://pand-crops/0363100012174659/front.jpg",
+     "at": "2024-12-17"
+    },
+    "facts/pui": {
+     "source": "vision-judge",
+     "confidence": 0.95,
+     "ref": "source-data://pand-crops/0363100012174659/front.jpg",
+     "at": "2024-12-17"
+    },
+    "palette/wallMaterial": {
+     "source": "vision-judge",
+     "confidence": 1,
+     "ref": "source-data://pand-crops/0363100012174659/front.jpg",
+     "at": "2024-12-17"
+    }
+   },
+   "facts": {
+    "pui": "residential"
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012174659",
+  "design": {
+   "fronts": [
+    {
+     "bays": 6,
+     "storeys": 4
+    }
+   ],
+   "palette": {
+    "brick": "#e6aa8b",
+    "wallMaterial": "brick"
+   },
+   "notes": [
+    "describe: fronts/0/bays disagrees: pixel 6 (streetlevel-measured 0.3) vs jev 2 (vision-judge 0.55); pixel wins"
+   ]
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "streetlevel-measured",
+    "confidence": 0.3,
+    "ref": "source-data://pand-crops/0363100012174659/front.jpg#good",
+    "at": "2024-12-17"
+   },
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012174659",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.35,
+    "ref": "source-data://pand-crops/0363100012174659/front.jpg#good",
+    "at": "2024-12-17"
+   },
+   "palette/wallMaterial": {
+    "source": "vision-judge",
+    "confidence": 1,
+    "ref": "source-data://pand-crops/0363100012174659/front.jpg",
+    "at": "2024-12-17"
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012174659",
+    "at": null
+   },
+   "facts/pui": {
+    "source": "vision-judge",
+    "confidence": 0.95,
+    "ref": "source-data://pand-crops/0363100012174659/front.jpg",
+    "at": "2024-12-17"
+   },
+   "notes": {
+    "source": "default",
+    "confidence": 0,
+    "ref": "house:describe",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1989,
+   "pui": "residential"
+  }
+ },
+ "disagreements": [
+  {
+   "path": "fronts/0/bays",
+   "values": [
+    {
+     "writer": "pixel",
+     "value": 6,
+     "source": "streetlevel-measured",
+     "confidence": 0.3
+    },
+    {
+     "writer": "jev",
+     "value": 2,
+     "source": "vision-judge",
+     "confidence": 0.55
+    }
+   ],
+   "picked": "pixel"
+  }
+ ],
+ "jev": {
+  "cached": true,
+  "hash": "357e9720863e5029537fc30fad62789d",
+  "usd": 0
+ }
+}

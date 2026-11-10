@@ -1,0 +1,164 @@
+{
+ "version": 1,
+ "pandId": "0363100012168701",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "front.jpg",
+  "year": 2024,
+  "quality": 0.019,
+  "panoIds": [
+   "b_20241216_0911_Track26_Sphere_00061"
+  ],
+  "date": "2024-12-16",
+  "reasons": [],
+  "ppm": 50
+ },
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168701",
+   "design": {
+    "fronts": [
+     {
+      "gable": "neck",
+      "hoist": true
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/gable": {
+     "source": "monument-text",
+     "confidence": 0.8,
+     "ref": "rce:517",
+     "at": null
+    },
+    "fronts/0/hoist": {
+     "source": "monument-text",
+     "confidence": 0.6,
+     "ref": "rce:517",
+     "at": null
+    },
+    "facts/elements": {
+     "source": "monument-text",
+     "confidence": 0.6,
+     "ref": "rce:517",
+     "at": null
+    }
+   },
+   "facts": {
+    "elements": [
+     "door-surround",
+     "hoist-beam"
+    ]
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168701",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 4
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012168701",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012168701",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1905
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168701",
+   "design": {
+    "palette": {
+     "brick": "#8d7b67"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.35,
+     "ref": "source-data://pand-crops/0363100012168701/front.jpg#fallback",
+     "at": "2024-12-16"
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012168701",
+  "design": {
+   "fronts": [
+    {
+     "gable": "neck",
+     "hoist": true,
+     "storeys": 4
+    }
+   ],
+   "palette": {
+    "brick": "#8d7b67"
+   }
+  },
+  "provenance": {
+   "fronts/0/gable": {
+    "source": "monument-text",
+    "confidence": 0.8,
+    "ref": "rce:517",
+    "at": null
+   },
+   "fronts/0/hoist": {
+    "source": "monument-text",
+    "confidence": 0.6,
+    "ref": "rce:517",
+    "at": null
+   },
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012168701",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.35,
+    "ref": "source-data://pand-crops/0363100012168701/front.jpg#fallback",
+    "at": "2024-12-16"
+   },
+   "facts/elements": {
+    "source": "monument-text",
+    "confidence": 0.6,
+    "ref": "rce:517",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012168701",
+    "at": null
+   }
+  },
+  "facts": {
+   "elements": [
+    "door-surround",
+    "hoist-beam"
+   ],
+   "facadeYear": 1905
+  }
+ },
+ "disagreements": []
+}

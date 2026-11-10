@@ -625,11 +625,12 @@
   "by": "Claude judging session, blind sheet (H4b)"
  },
  "0363100012168440": {
-  "label": "good",
+  "label": "marginal",
   "panoIds": [
    "TMX7316010203-002862_pano_0001_000020"
   ],
-  "by": "Claude judging session, blind sheet (H4b)"
+  "by": "Claude judging session, blind sheet (H4b)",
+  "note": "two buildings (corrected 2026-11-10, H4c verdict #339)"
  },
  "0363100012168010": {
   "label": "marginal",
@@ -817,11 +818,12 @@
   "by": "Claude judging session, blind sheet (H4b)"
  },
  "0363100012169899": {
-  "label": "good",
+  "label": "marginal",
   "panoIds": [
    "b_20241217_0841_Track18_Sphere_00008"
   ],
-  "by": "Claude judging session, blind sheet (H4b)"
+  "by": "Claude judging session, blind sheet (H4b)",
+  "note": "two buildings (corrected 2026-11-10, H4c verdict #339)"
  },
  "0363100012167955": {
   "label": "bad",
@@ -1011,11 +1013,12 @@
   "by": "Claude judging session, blind sheet (H4b)"
  },
  "0363100012172859": {
-  "label": "good",
+  "label": "bad",
   "panoIds": [
    "b_20241216_0911_Track08_Sphere_00034"
   ],
-  "by": "Claude judging session, blind sheet (H4b)"
+  "by": "Claude judging session, blind sheet (H4b)",
+  "note": "close-up (corrected 2026-11-10, H4c verdict #339)"
  },
  "0363100012174694": {
   "label": "bad",
@@ -1025,27 +1028,30 @@
   "by": "Claude judging session, blind sheet (H4b)"
  },
  "0363100012168013": {
-  "label": "bad",
+  "label": "good",
   "panoIds": [
    "recording_2025-07-03_08-35-58_00885"
   ],
-  "by": "Claude judging session, blind sheet (H4b)"
+  "by": "Claude judging session, blind sheet (H4b)",
+  "note": "a full front; the H4b label was wrong (corrected 2026-11-10, H4c verdict #339)"
  },
  "0363100012170216": {
-  "label": "good",
+  "label": "bad",
   "panoIds": [
    "TMX7316010203-002044_pano_0000_001673"
   ],
-  "by": "Claude judging session, blind sheet (H4b)"
+  "by": "Claude judging session, blind sheet (H4b)",
+  "note": "close-up (corrected 2026-11-10, H4c verdict #339)"
  },
  "0363100012168604": {
-  "label": "good",
+  "label": "marginal",
   "panoIds": [
    "TMX7316010203-002862_pano_0001_000072",
    "TMX7316010203-002862_pano_0001_000071",
    "TMX7316010203-002862_pano_0001_000073"
   ],
-  "by": "Claude judging session, blind sheet (H4b)"
+  "by": "Claude judging session, blind sheet (H4b)",
+  "note": "H4c verdict (corrected 2026-11-10, H4c verdict #339)"
  },
  "0363100012168646": {
   "label": "bad",
@@ -1062,18 +1068,20 @@
   "by": "Claude judging session, blind sheet (H4b)"
  },
  "0363100012173350": {
-  "label": "good",
+  "label": "marginal",
   "panoIds": [
    "TMX7316010203-002445_pano_0008_000220",
    "TMX7316010203-002445_pano_0008_000221"
   ],
-  "by": "Claude judging session, blind sheet (H4b)"
+  "by": "Claude judging session, blind sheet (H4b)",
+  "note": "H4c verdict (corrected 2026-11-10, H4c verdict #339)"
  },
  "0363100012174042": {
-  "label": "good",
+  "label": "bad",
   "panoIds": [
    "TMX7316010203-002044_pano_0000_001667"
   ],
-  "by": "Claude judging session, blind sheet (H4b)"
+  "by": "Claude judging session, blind sheet (H4b)",
+  "note": "close-up (corrected 2026-11-10, H4c verdict #339)"
  }
 }

@@ -9,7 +9,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { manifestPath, type Manifest } from './manifest.ts';
 import { labelsPath, type Label } from './evaluate.ts';
-import { judgePath, quality, type JudgeRecord } from './judge.ts';
+import { judgePath, quality, type JudgeRecord, type PromptVersion } from './judge.ts';
+const arg = (n: string) => { const i = process.argv.indexOf(`--${n}`); return i >= 0 ? process.argv[i + 1] : undefined; };
 import { usability, hardPass, JUDGE_GOOD } from './flags.ts';
 
 export type Row = { id: string; label: Label['label']; good: boolean; score: number; hard: boolean; usable: boolean };
@@ -41,7 +42,7 @@ const f = (v: number) => (Number.isFinite(v) ? v.toFixed(3) : 'n/a');
 
 if (process.argv[1]?.endsWith('house-crops/evaluate-judge.ts')) {
   const code = process.argv[process.argv.indexOf('--buurt') + 1];
-  const m: Manifest = JSON.parse(await fs.readFile(manifestPath(code), 'utf8')), labels = JSON.parse(await fs.readFile(labelsPath(code), 'utf8')), judge = JSON.parse(await fs.readFile(judgePath(code), 'utf8'));
+  const m: Manifest = JSON.parse(await fs.readFile(manifestPath(code), 'utf8')), labels = JSON.parse(await fs.readFile(labelsPath(code), 'utf8')), judge = JSON.parse(await fs.readFile(judgePath(code, (arg('prompt') ?? 'v1') as PromptVersion), 'utf8'));
   const rows = rowsFrom(m, labels, judge), good = rows.filter(r => r.good).length;
   console.log(`labelled and judged: ${rows.length} (good ${good}); AUC of the judge score for good: ${f(auc(rows))}; AUC among hard-flag survivors: ${f(auc(rows.filter(r => r.hard)))}`);
   console.log(`baseline usable flag: ${JSON.stringify(stats(rows, r => r.usable))}; hard flags alone: ${JSON.stringify(stats(rows, r => r.hard))}`);

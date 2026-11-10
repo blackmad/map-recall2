@@ -1,0 +1,66 @@
+{
+ "version": 1,
+ "pandId": "0363100012174084",
+ "buurt": "AB07",
+ "crop": null,
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174084",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 1
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012174084",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012174084",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1705
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012174084",
+  "design": {
+   "fronts": [
+    {
+     "storeys": 1
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012174084",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012174084",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1705
+  }
+ },
+ "disagreements": []
+}

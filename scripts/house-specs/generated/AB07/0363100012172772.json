@@ -1,0 +1,103 @@
+{
+ "version": 1,
+ "pandId": "0363100012172772",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "years/2019.jpg",
+  "year": 2019,
+  "quality": 0.367,
+  "panoIds": [
+   "TMX7316010203-001551_pano_0000_001037"
+  ],
+  "date": null,
+  "reasons": [],
+  "ppm": 50
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172772",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 4
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012172772",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012172772",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1846
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172772",
+   "design": {
+    "palette": {
+     "brick": "#554d49"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.45,
+     "ref": "source-data://pand-crops/0363100012172772/years/2019.jpg#fallback",
+     "at": null
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012172772",
+  "design": {
+   "fronts": [
+    {
+     "storeys": 4
+    }
+   ],
+   "palette": {
+    "brick": "#554d49"
+   }
+  },
+  "provenance": {
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012172772",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.45,
+    "ref": "source-data://pand-crops/0363100012172772/years/2019.jpg#fallback",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012172772",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1846
+  }
+ },
+ "disagreements": []
+}

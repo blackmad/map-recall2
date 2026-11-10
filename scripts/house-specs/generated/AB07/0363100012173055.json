@@ -1,0 +1,148 @@
+{
+ "version": 1,
+ "pandId": "0363100012173055",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "front.jpg",
+  "year": 2021,
+  "quality": 0.237,
+  "panoIds": [
+   "TMX7316010203-002043_pano_0000_003085",
+   "TMX7316010203-002043_pano_0000_003084",
+   "TMX7316010203-002043_pano_0000_003086"
+  ],
+  "date": "2021-03-17",
+  "reasons": [],
+  "ppm": 40
+ },
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012173055",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.5,
+     "ref": "rce:556",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1650
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012173055",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 4
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012173055",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012173055",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1884
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012173055",
+   "design": {
+    "palette": {
+     "brick": "#78675a"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.35,
+     "ref": "source-data://pand-crops/0363100012173055/front.jpg#fallback",
+     "at": "2021-03-17"
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012173055",
+  "design": {
+   "fronts": [
+    {
+     "storeys": 4
+    }
+   ],
+   "palette": {
+    "brick": "#78675a"
+   },
+   "notes": [
+    "describe: facts/facadeYear disagrees: register 1650 (monument-text 0.5) vs bag 1884 (bag 0.5); register wins"
+   ]
+  },
+  "provenance": {
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012173055",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.35,
+    "ref": "source-data://pand-crops/0363100012173055/front.jpg#fallback",
+    "at": "2021-03-17"
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.5,
+    "ref": "rce:556",
+    "at": null
+   },
+   "notes": {
+    "source": "default",
+    "confidence": 0,
+    "ref": "house:describe",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1650
+  }
+ },
+ "disagreements": [
+  {
+   "path": "facts/facadeYear",
+   "values": [
+    {
+     "writer": "register",
+     "value": 1650,
+     "source": "monument-text",
+     "confidence": 0.5
+    },
+    {
+     "writer": "bag",
+     "value": 1884,
+     "source": "bag",
+     "confidence": 0.5
+    }
+   ],
+   "picked": "register"
+  }
+ ]
+}

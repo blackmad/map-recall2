@@ -14,7 +14,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §1 The record (HouseSpec) and the generic path | H1 | landed (this section) |
 | §2 Preview in Node | H2 | stub |
 | §3 Stage and publish | H3 | stub |
-| §4 Describe at scale (crops → facts → spec) | H4, H5 | stub |
+| §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b) | landed on the AB07 pilot |
 | §5 The kit-gap queue | H6 | stub |
 
 ## §1 The record: HouseSpec
@@ -497,7 +497,7 @@ Stub (lane H3): `house:stage`, `house:publish`, per-tile covers, golden allowlis
 
 ## §4 Describe at scale
 
-Stub (lanes H4, H5): `house:crops`, `house:describe`, the writers in trust order.
+`house:crops` (§4a, H4) cuts one quality-flagged crop per pand; `house:describe` (§4b, H5) reads it, the register and BAG through four writers in trust order.
 
 ### §4a Crops: `npm run house:crops`
 
@@ -669,6 +669,156 @@ route, verdict and flags (green frame usable, red rejected).
 5. Pick buurten by where players ride (centre and inner ring, `RIDE_PRIORITY_GEBIEDEN`), then by the number of staged hand intents (they let H5 score writer-versus-hand agreement).
 
 Tests: `node --import tsx --test scripts/house-crops/flags.test.ts` (thresholds, clipping, hard flags, judge parsing and sizing, disk gate, threshold choice, span cut, face grouping).
+
+### §4b Describe: `npm run house:describe`
+
+Station "describe at scale", second half (lane H5, #346): fill a spec from the sources in trust order and stop where the evidence
+stops. Four writers, one per source, each returning a partial `HouseSpec` with a receipt per field; `resolveSpecs` merges them
+(strongest source, then confidence, then the newer date), so a writer never overwrites a stronger source and a field nobody states
+stays absent. Nothing is invented.
+
+```text
+house:describe: fill a HouseSpec from the sources in trust order, and stop where the evidence stops.
+
+  npm run house:describe -- <pandId>                       one pand (16 digits, with or without NL.IMBAG.Pand.)
+  npm run house:describe -- --buurt <code> [flags]         every pand of a CBS buurt (4-letter code, CBS code or name)
+
+  --writers register,bag,pixel,jev   which writers run (default: all four). Order does not matter: fields merge by the evidence
+                                     ladder (facade/evidence.ts SOURCE_STRENGTH), then confidence, then the newer date.
+  --jev-budget-usd <n>               hard cap on Jev spend for THIS run (default 2). No Jev call is made without it being printed.
+  --jev-buurt-budget-usd <n>         hard cap on the buurt's cumulative describe spend, read from <archive>/jev-cache/ledger.json (default 3)
+  --archive <dir>                    source-data checkout holding pand-crops/<id>/front.jpg and, for Jev, jev-cache/ (default env
+                                     HOUSE_CROPS_ARCHIVE, else ~/Code/map-recall2-source-data-h5)
+  --good-threshold <q>               judge quality for the good crop tier (default 0.5, JUDGE_GOOD in scripts/house-crops/flags.ts)
+  --dry-run                          no network, no writes: crop tiers, the writers that would run, Jev calls to make, cached, estimated USD
+  --stage                            after writing, run the staging extract (npm run house:specs). npm run house:stage (H3) has not landed:
+                                     when it exists --stage names it in the output but does not call it
+  --out <dir>                        output root (default scripts/house-specs/generated)
+  --help                             this text
+
+Writers (src/canalRecall/houseSpec/writers/), what each may write, source and rank:
+  register  monument-text   gable, facade year, finish, hoist beam, stoop, elements (no crop needed)
+  bag       bag / 3dbag     facts/facadeYear (0.5), fronts/0/storeys (0.4, eaves at 3 m a storey)
+  pixel     streetlevel-measured   wall colour + brick material + rhythmic window columns (bays) + measured storeys; measureFacade
+                                   'houseLine' profile; fallback-tier crops write only colour and storeys, at lower confidence
+  jev       vision-judge    bays (p>=0.55), a confident gable (p>=0.75), finish (p>=0.9), shop/residential (p>=0.875); good-tier crops only
+Jev answers are cached by crop hash in <archive>/jev-cache/, so a re-run costs nothing. The key is read only from TYPESAFE_API_KEY
+(run the command through zsh -lic); it is never printed, logged or cached, and a 401/403 stops the run.
+Output: scripts/house-specs/generated/<buurt>/<pandId>.json = {crop, writers, spec (merged, full provenance), disagreements}.
+build-house-specs.ts reads the merged specs; scripts/house-specs/agreement.ts compares the writers with the hand intents.
+```
+
+#### Writers (`src/canalRecall/houseSpec/writers/`)
+
+| Writer | Needs a crop | Source | May write |
+|---|---|---|---|
+| `register.ts` | no | `monument-text` | gable 0.8, facade year 0.7 (a period 0.5), finish 0.7, hoist beam, stoop, elements 0.6 (`fromRegisterFacts`) |
+| `bag.ts` | no | `bag` / `3dbag` | `facts/facadeYear` 0.5 (the building's year, not the front's), `fronts/0/storeys` 0.4 (eaves at 3 m a storey, `bag-facts` descriptor) |
+| `pixel.ts` | good or fallback | `streetlevel-measured` | `palette/brick` (wall colour, 0.55 good / 0.45 fallback, `houseLine` profile, not when L > 0.95), `palette/wallMaterial` brick when course lines resolve, `fronts/0/bays` only on a good crop with a resolved column pitch (`pitchScore >= 0.6`, `columns == windowColumns`), `fronts/0/storeys` **off** (`PIXEL_WRITES_STOREYS`) |
+| `jev.ts` | good only | `vision-judge` | bays (word form, p >= 0.55), gable (p >= 0.75 and only `step`/`plain`), finish brick / painted-brick / stucco (p >= 0.9), shop / residential (answer p >= 0.875) |
+
+Glazing is printed by the sheets, never written, never part of a confidence (H2d verdict). The Jev prompt, schema, model, header
+name and accept thresholds are in `src/canalRecall/houseSpec/writers/fixtures/jev-questions.json` (a change bumps `version`, which
+is part of every cache key); a recorded response is `fixtures/jev-response.json`. Stone bands, basement and dormer are not asked
+(below baseline in the J1 spike). Bays use the word form only: the picture form needs five reference images and about five times
+the tokens, and the word form was within +-1 on every front.
+
+#### Crop tiers
+
+`usable` is a pre-filter, not a quality verdict (§4a). `scripts/house-specs/tier.ts`:
+
+| Tier | Rule | Who may read it |
+|---|---|---|
+| good | hard flags pass and judge quality >= `--good-threshold` (default `JUDGE_GOOD` 0.5) | every writer |
+| fallback | hard flags pass, judge below the threshold or unscored | pixel only: wall colour at 0.45, no bays, no material; Jev skips it |
+| none | a hard flag fails (void, oblique 55, distance, blocked, narrow, short, blank) | nobody |
+
+A pand's crop is the best of its candidates (the manifest crop and the best-of-years crops of `judge/<code>-picks.json`): highest
+tier, then judge quality, then the newer year. The tier is in every pixel field's `ref` (`...front.jpg#good`) and in the envelope's `crop`.
+
+#### Budget and cache (Jev)
+
+`--jev-budget-usd` (default 2) caps one run; `--jev-buurt-budget-usd` (default 3) caps the buurt's cumulative describe spend, kept in
+`<archive>/jev-cache/ledger.json`. Both are hard: when either is reached the remaining crops are skipped and counted. Answers are
+cached by the sha256 of the image that is sent plus the question version (`<archive>/jev-cache/<hash>.json`: parsed answers, token
+count, pand, date; no headers, no key), so a re-run, or a resumed one, costs nothing; `--dry-run` prints the calls it would make and
+the estimate. Spend is `tokens x $0.042 / 1M`, input and output priced alike (can only overstate). A crop too narrow for Jev's 280 px
+rule is padded with mid-grey at both sides (the house stays in the middle); one that still cannot be sent is skipped and counted.
+The key is read only from `TYPESAFE_API_KEY` in the environment, so run through `zsh -lic '<command>'`; it is never printed, logged or
+cached, and a 401/403 stops the run (exit 3). The archive is a `map-recall2-source-data` worktree (`jev-cache/` beside `pand-crops/`,
+see §4a "Running the next buurt"); the integrator commits and pushes it.
+
+#### Output, staging and `house:stage`
+
+`scripts/house-specs/generated/<buurt>/<pandId>.json`: `{crop, writers: {register, bag, pixel, jev}, spec, disagreements, jev}`. `spec` is the
+merge with full provenance; when two writers state a field with different values both are recorded in `disagreements` (path, each
+writer's value, source and confidence, who won) and as a `describe:` line in `design.notes`. `build-house-specs.ts` reads `spec`
+from every generated file (counted as `generated specs` in its report) and stages the extract; a hand source on the same pand
+outranks the writers by the ladder. `--stage` runs that staging (`npm run house:specs`). `npm run house:stage` (H3) has not landed,
+so the per-pand H2 receipt step is not wired: when the script exists `--stage` names it and does not call it.
+
+#### How to add a writer
+
+1. A pure function in `src/canalRecall/houseSpec/writers/<name>.ts` returning a partial `HouseSpec` (set only what the source states, a
+   receipt per field, `validateSpec` in its test); if the source is new evidence place it on `SOURCE_STRENGTH` first (§1).
+2. Tests on a recorded fixture, no network (`writers.test.ts`).
+3. Add the name to `WRITERS` in `describe.ts` and one branch in `main()` that builds its input and pushes `{writer, spec}` onto `parts`;
+   `agreement.ts` reads `envelope.writers[name]`, so it gets a column for free (add the name to `names` in `tabulate`).
+4. Run `describe --dry-run`, then a real run, then `agreement.ts`; the new writer ships only with its agreement numbers.
+
+#### Agreement report
+
+`node --import tsx scripts/house-specs/agreement.ts --buurt <code> [--out file.json]` compares every writer and the merged spec with
+the hand intents of the buurt (block-face intents, authored and auto-placed, and canal-house recipe intents), per field: how many pands
+have a hand value, how many the writer stated, how many agree, precision (agree / stated) and recall (agree / hand); wall colour agrees
+within HSL lightness 0.12. It also prints the register as a reference for the listed pands (which is how Jev's gable was checked) and
+the worst disagreements; `worst-sheet.ts` draws them as contact sheets (crop, preview render of the merged spec, both values).
+**The hand set is thin and mostly not a photo reading**: on AB07, 33 of its 39 pands are auto-placed block-face intents (a type
+library's gable, bays and colour), 6 are authored recipes, none states a finish.
+
+#### Measured on AB07 (2026-11-10, Bloemgrachtbuurt, 662 pands)
+
+Crops: good 120, fallback 433, hard-flag fail 99, no crop 10. Coverage, pands with the field per writer: gable register 174, Jev 6;
+bays Jev 112, pixel 31; wall colour pixel 495; wall material Jev 72, register 3; pui Jev 42; facade year bag 637, register 183;
+storeys bag 657. Disagreements between writers: facade year 171 (BAG's building year against the register's front year, expected),
+bays 2. Jev: 120 calls, $0.0104 (cap $2 per run, $3 per buurt); this lane's total with the judge passes $0.07 of $3.
+
+Against the 39 hand pands (all-pands table; the authored subset is 6 pands, the good-tier subset 5):
+
+| field | hand | merged stated / agree | precision / recall | note |
+|---|---|---|---|---|
+| bays | 39 | 4 / 3 | 0.75 / 0.08 | Jev 3 of 4; pixel 1 of 1. Jev wrote bays on 112 pands, only 4 of them hand pands (hand pands mostly lack a good crop) |
+| gable | 39 | 14 / 9 | 0.64 / 0.23 | register only; the 5 misses are a hand `cornice` or `bell` auto-placed on a front whose crop shows the register's neck gable |
+| finish | 0 | | | no hand intent states a finish |
+| storeys | 39 | 39 / 19 | 0.49 / 0.49 | 3DBAG count; it overcounts by one on 16 of 39 (tall ground storey) |
+| pui | 30 | 0 / 0 | | Jev answered none of the hand pands (they have no good crop) |
+| wall colour | 39 | 35 / 15 | 0.43 / 0.39, median dL 0.147 | against type-library swatches and measured strip colours; pixel reads dark on overcast crops |
+
+**The gate (merged agreement >= 0.85 for bays, gable, finish) is not assessable and not met on this hand set**: n is 4, 14 and 0 for
+the fields it names. Jev's gable was checked against the register on the 14 pands both name instead: 8 agree, and its `cornice`
+contradicted the register's bell or neck 5 times of 8 (3 at p >= 0.96), so the writer now writes only step and plain
+(`fixtures/jev-questions.json gableClasses`). Pixel storeys (7/16 where the BAG count was 7/16 on the same pands) and pixel bays without a
+resolved pitch (11/22) were measured and gated off. A visible Jev miss at p 0.74: 0363100012173345 reads 3 bays where the front has 2.
+
+#### Step 0b: the judge recall pass (2026-11-10)
+
+Labels corrected in `scripts/house-crops/labels/AB07.json` (150: good 64 -> 58, marginal 43 -> 47, bad 43 -> 45): 12168013 good;
+12172859, 12174042, 12170216 bad; 12169899, 12168440, 12168604, 12173350 marginal. `judge.ts`/`pick.ts` take `--prompt v1|v2` (own
+store per version); `recall-pass.ts` compares them. v2 says dark painted brick, narrow canal fronts and sky glare are normal and asks
+"one building, straight on, whole" apart from obstruction.
+
+| score (150 corrected labels) | AUC | lowest t with precision >= 0.9, in sample | A->B held out | B->A held out |
+|---|---|---|---|---|
+| v1 (H4c prompt) | 0.950 | 0.297: 44 picks, p 0.909, r 0.690 | t 0.223: p 0.767, r 0.920 | t 0.367: p 0.952, r 0.606 |
+| v2 | 0.926 | 0.644: 44 picks, p 0.909, r 0.690 | t 0.599: p 0.818, r 0.720 | t 0.684: p 0.955, r 0.636 |
+| mean of both | 0.946 | 0.460: p 0.911, r 0.707 | t 0.408: p 0.833, r 0.800 | t 0.480: p 0.957, r 0.667 |
+
+v2 does what it was written for (the 11 rejected full fronts rise from 0.08-0.24 to 0.32-0.74) but lifts the negatives as much, so the AUC falls.
+On the pool of 228 labelled crops (the 150 plus the 78 labelled year picks) v1 gives precision 0.886 / recall 0.608 at 0.4 and
+0.958 / 0.451 at 0.5; v2 at 0.7 gives 0.873 / 0.608. **Target (recall >= 0.6 at precision >= 0.9, held out) not met**: the in-sample
+threshold reaches it, one half-split fails on precision, and the pool stays under 0.9 at recall 0.6. `JUDGE_GOOD` stays 0.5 and v1 stays
+the default (a judgement call: 0.4 costs about 0.07 precision for 0.16 recall); `--good-threshold 0.4` on `house:describe` is the
+switch. No re-pick was run: `pick.ts --prompt v2` re-judges the existing candidates (279 year crops, no panorama request).
 
 ## §5 The kit-gap queue
 

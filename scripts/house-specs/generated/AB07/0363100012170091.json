@@ -1,0 +1,212 @@
+{
+ "version": 1,
+ "pandId": "0363100012170091",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "front.jpg",
+  "year": 2022,
+  "quality": 0.614,
+  "panoIds": [
+   "TMX7316010203-002862_pano_0001_000069"
+  ],
+  "date": "2022-12-15",
+  "reasons": [],
+  "ppm": 50
+ },
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012170091",
+   "design": {
+    "fronts": [
+     {
+      "gable": "bell"
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/gable": {
+     "source": "monument-text",
+     "confidence": 0.8,
+     "ref": "rce:5078",
+     "at": null
+    },
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.5,
+     "ref": "rce:5078",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1650
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012170091",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 5
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012170091",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012170091",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1994
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012170091",
+   "design": {
+    "palette": {
+     "brick": "#958771"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.55,
+     "ref": "source-data://pand-crops/0363100012170091/front.jpg#good",
+     "at": "2022-12-15"
+    }
+   }
+  },
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012170091",
+   "design": {
+    "fronts": [
+     {
+      "bays": 4
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.78,
+     "ref": "source-data://pand-crops/0363100012170091/front.jpg",
+     "at": "2022-12-15"
+    },
+    "facts/pui": {
+     "source": "vision-judge",
+     "confidence": 0.98,
+     "ref": "source-data://pand-crops/0363100012170091/front.jpg",
+     "at": "2022-12-15"
+    }
+   },
+   "facts": {
+    "pui": "shop"
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012170091",
+  "design": {
+   "fronts": [
+    {
+     "bays": 4,
+     "gable": "bell",
+     "storeys": 5
+    }
+   ],
+   "palette": {
+    "brick": "#958771"
+   },
+   "notes": [
+    "describe: facts/facadeYear disagrees: register 1650 (monument-text 0.5) vs bag 1994 (bag 0.5); register wins"
+   ]
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "vision-judge",
+    "confidence": 0.78,
+    "ref": "source-data://pand-crops/0363100012170091/front.jpg",
+    "at": "2022-12-15"
+   },
+   "fronts/0/gable": {
+    "source": "monument-text",
+    "confidence": 0.8,
+    "ref": "rce:5078",
+    "at": null
+   },
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012170091",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.55,
+    "ref": "source-data://pand-crops/0363100012170091/front.jpg#good",
+    "at": "2022-12-15"
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.5,
+    "ref": "rce:5078",
+    "at": null
+   },
+   "facts/pui": {
+    "source": "vision-judge",
+    "confidence": 0.98,
+    "ref": "source-data://pand-crops/0363100012170091/front.jpg",
+    "at": "2022-12-15"
+   },
+   "notes": {
+    "source": "default",
+    "confidence": 0,
+    "ref": "house:describe",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1650,
+   "pui": "shop"
+  }
+ },
+ "disagreements": [
+  {
+   "path": "facts/facadeYear",
+   "values": [
+    {
+     "writer": "register",
+     "value": 1650,
+     "source": "monument-text",
+     "confidence": 0.5
+    },
+    {
+     "writer": "bag",
+     "value": 1994,
+     "source": "bag",
+     "confidence": 0.5
+    }
+   ],
+   "picked": "register"
+  }
+ ],
+ "jev": {
+  "cached": true,
+  "hash": "b9d0fc05c7f736bea217d4aa620918ab",
+  "usd": 0
+ }
+}
