@@ -22,6 +22,8 @@ import { landmarkHighlightStates } from '../../../src/canalRecall/look/highlight
 import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landmarks/pickBvh.ts';
 import { anchorDistanceM, keepReachM, landmarkReachM, landmarkResidencyBudget, pastMinDwell, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { popFadeFlag } from '../../../src/canalRecall/engine/popFade.ts';
+// Lane P3 (#328, `?landmarkDissolve`): a level swap dissolves (screen-door, complementary) instead of switching in one frame.
+import { DissolveWarmth, LevelDissolves, landmarkDissolveFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { hasReleasedVertexData, releaseGeometryOnUpload, releaseVertexDataOnUpload } from '../../../src/canalRecall/landmarks/releaseVertexData.ts';
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
@@ -36,7 +38,7 @@ import { CHUNK_LOD2_DOWNGRADE_PX, chooseLandmarkLevel, initialLandmarkLevel, lod
 import { LandmarkBatch, batchingMaterial, mergeLevelByLook, mergeLevelByMaterial, mergeSiblingsByMaterial } from '../../../src/canalRecall/landmarks/landmarkBatch.ts';
 import { isAerialView } from '../../../src/canalRecall/rendererShared/aerialView.ts';
 import { lowestPandBase } from '../../../src/canalRecall/streetChunks/mergeRanges.ts';
-import { DEPTH_FADE_OPT_OUT } from '../../../src/canalRecall/look/depthFade.ts';
+import { isDepthFadeOptOut, optOutFog } from '../../../src/canalRecall/look/depthFade.ts';
 // Lane R4-G (#250): a textured model's images resident at a capped size while they stay finer than the screen.
 import { cappedSize, landmarkTexCapFlag, nearestPixelsPerMetre, texelDensity, wantsCap } from '../../../src/canalRecall/landmarks/landmarkTexCap.ts';
 const { THREE, GLTFLoader, MeshoptDecoder } = window.CanalRecallThree;
@@ -271,7 +273,7 @@ export class SignatureLandmarks {
     const dropped = (this._entries || []).filter(entry => ids.has(entry.spec.id));
     if (!dropped.length) return;
     this._entries = this._entries.filter(entry => !ids.has(entry.spec.id));
-    for (const entry of dropped) { this.shown.delete(entry.spec.id); this._unbatch(entry); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
+    for (const entry of dropped) { this._levelFades?.finish(entry); this.shown.delete(entry.spec.id); this._unbatch(entry); entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
     this._applySuppression();
     this.map.triggerRepaint();
   }
@@ -307,6 +309,8 @@ export class SignatureLandmarks {
         }
         // The camera as last drawn: the street chunks' lod2 choice measures their size on screen through it.
         this._clipFromWorld = ctx.clipFromWorld;
+        // Level dissolves (lane P3): advance; keep frames coming while one runs.
+        if (this._levelFades?.size && this._levelFades.step()) this.map.triggerRepaint();
         if (this._texCapSide()) this._updateTexCaps(ctx.clipFromWorld);
         // The frame's world is already east/north/up metres.
         if (any && this._recipeLook) this._recipeLook.enuFromWorld.value.identity();
@@ -325,6 +329,7 @@ export class SignatureLandmarks {
     this.onHostWallOpeningsChanged();
     this._offView?.(); this._offView = null;
     this._pending.clear();
+    this._levelFades?.flush();
     for (const entry of this._entries) { entry.holder?.parent?.remove(entry.holder); this._disposeModel(entry.group, entry.spec, entry.url); this._disposeSpare(entry); }
     this._batch?.dispose(); this._batch = null;
     this._entries = [];
@@ -1580,7 +1585,7 @@ export class SignatureLandmarks {
       return key;
     }
     if (!material.vertexColors || material.type !== 'MeshLambertMaterial' || material.map) return null;
-    return material.fog === false ? 'noFade' : 'fade';
+    return isDepthFadeOptOut(material) ? 'noFade' : 'fade';
   }
 
   _landmarkBatch(entry) {
@@ -1600,7 +1605,7 @@ export class SignatureLandmarks {
         // The per-model path's material after _shade, _fadeOptOut and the merge: Lambert, double-sided GLB faces, colour per vertex.
         const material = new THREE.MeshLambertMaterial({ vertexColors: true, side: THREE.DoubleSide });
         material.name = `landmark-batch ${key}`;
-        if (key === 'noFade') { material.fog = false; material.userData[DEPTH_FADE_OPT_OUT] = true; }
+        if (key === 'noFade') optOutFog(material);
         return material;
       },
       configure: mesh => {
@@ -1617,6 +1622,8 @@ export class SignatureLandmarks {
    * picks them all the same), or takes it out: another level, a lit landmark, a mirrored placement, or `?landmarkBatch=0`.
    */
   _syncBatch(entry) {
+    // Mid-dissolve both levels draw their own meshes (the batch has no dissolve); the batch takes it at the end.
+    if (this._levelFades?.has(entry)) { this._unbatch(entry); return; }
     const meshes = this._lod2Meshes(entry);
     // A dimmed neighbour (`?highlight=c`) keeps its level but draws its own dimmed meshes.
     const want = meshes.length > 0 && this._batchOn() && !this._isLit(entry) && (!entry.highlightState || entry.highlightState === 'plain') && !entry.placement.mirror;
@@ -1674,6 +1681,8 @@ export class SignatureLandmarks {
 
   /** Puts `incoming` (already loaded) in place of the drawn level in one step, aligned with it. */
   _swapLevel(entry, incoming, level) {
+    // A dissolve still running on this model ends first (its outgoing level leaves now).
+    this._levelFades?.finish(entry);
     const outgoing = entry.imported;
     // Same normalisation as the first level, so the two overlay exactly.
     incoming.position.copy(outgoing.position);
@@ -1681,7 +1690,9 @@ export class SignatureLandmarks {
     incoming.updateMatrix();
     freezeStaticMatrices(incoming);
     entry.group.add(incoming);
-    entry.group.remove(outgoing);
+    // Lane P3 (#328): on screen, the two levels dissolve into each other (the outgoing leaves at the end).
+    const dissolving = this._startLevelDissolve(entry, incoming, outgoing);
+    if (!dissolving) entry.group.remove(outgoing);
     this._releaseVertexData(entry.spec, incoming);
     entry.imported = incoming;
     entry.pickBox = null;
@@ -1700,6 +1711,35 @@ export class SignatureLandmarks {
     this._syncBatch(entry);
     this._attachShadowStandIn(entry);
     this.map.triggerRepaint();
+  }
+
+  /**
+   * Lane P3 (#328, `?landmarkDissolve=0` restores the one-step swap): a swap of a model on screen dissolves, the
+   * incoming level drawing where the screen-door hash < t and the outgoing where it is >= t (engine/levelDissolve.ts),
+   * over LEVEL_DISSOLVE_MS. A swap whose dissolve programs are not compiled yet goes in one step and has them compiled
+   * off the frame, so no swap links a program inside a frame. False: the caller removes the outgoing level now.
+   */
+  _startLevelDissolve(entry, incoming, outgoing) {
+    if (!this.sharedFrame || !outgoing || !entry.holder?.visible) return false;
+    if (this._dissolveOn === undefined) this._dissolveOn = landmarkDissolveFlag();
+    if (!this._dissolveOn) return false;
+    this._levelFades ||= new LevelDissolves();
+    this._dissolveWarmth ||= new DissolveWarmth();
+    const cold = this._dissolveWarmth.cold([incoming, outgoing]);
+    if (cold.size) {
+      const frame = this.sharedFrame;
+      this._dissolveWarmth.warmUp(cold, items => {
+        const group = new THREE.Group();
+        for (const item of items) { const mesh = new THREE.Mesh(item.geometry, item.material); mesh.receiveShadow = item.receiveShadow; group.add(mesh); }
+        return group;
+      }, group => frame.compileAsync ? frame.compileAsync(group) : Promise.resolve());
+      return false;
+    }
+    this._levelFades.start(entry, incoming, outgoing, () => {
+      entry.group.remove(outgoing);
+      if (this._entries?.includes(entry)) { this._syncBatch(entry); this.map.triggerRepaint(); }
+    });
+    return true;
   }
 
   /**

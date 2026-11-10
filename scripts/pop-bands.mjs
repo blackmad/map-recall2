@@ -156,7 +156,7 @@ const setup = await page.evaluate(workerSrc => {
     farHandover: wrap(fs, 'applyHidden', function (base, a) { const res = a[0]; if (a[1]) return base.apply(this, a); const r = base.apply(this, a); if (r && !res.fade) log('far-handover', 'swap', !!res.handFade, res.mesh, res.key); return r; }),
     landmarkAdd: wrap(sl, '_add', function (base, a) { const r = base.apply(this, a); log('landmark', 'arrive', false, null, a[0]?.id, anchorOf(a[0])); return r; }),
     landmarkDrop: wrap(sl, '_dropEntries', function (base, a) { const objs = (this._entries || []).filter(e => a[0]?.has?.(e.spec.id)).map(e => [e.spec.id, anchorOf(e.spec, e)]); const r = base.apply(this, a); for (const [id, an] of objs) log('landmark', 'leave', false, null, id, an); return r; }),
-    landmarkLevel: wrap(sl, '_swapLevel', function (base, a) { const r = base.apply(this, a); log('landmark', 'swap', false, null, `${a[0]?.spec?.id}:${a[2]}`, anchorOf(a[0]?.spec, a[0])); return r; }),
+    landmarkLevel: wrap(sl, '_swapLevel', function (base, a) { const r = base.apply(this, a); log('landmark', 'swap', !!this._levelFades?.has?.(a[0]), null, `${a[0]?.spec?.id}:${a[2]}`, anchorOf(a[0]?.spec, a[0])); return r; }),
     trees: wrap(tr, 'rebuild', function (base, a) { const r = base.apply(this, a); log('trees', 'rebuild', false, null, ''); return r; }),
     ground: wrap(og, 'install', function (base, a) { const before = this.resident?.get?.(a[0]?.key)?.group; const r = base.apply(this, a); const now = this.resident?.get?.(a[0]?.key)?.group; if (now && now !== before) log('ground', before ? 'swap' : 'arrive', false, now, a[0]?.key); return r; }),
   };
@@ -205,6 +205,30 @@ const raw = await page.evaluate(() => {
     gl: (() => { try { const c = window.__canalPerf?.gl; const t = c?.resident?.totals?.() ?? c?.counters?.totals?.() ?? null; return t; } catch { return null; } })(),
     stats: { far: vm._farShells?.stats?.() ?? null, baked: vm._bakedCoarse?.stats?.() ?? null, groundFar: vm._ownGround?.farRadiusM ?? null } };
 });
+// Heap after a forced GC (lane P3 #328): the end-of-run usedJSHeapSize includes garbage not yet collected, so a
+// single reading cannot tell retained memory from churn. `heapMB.endGC` is what survives a full collection.
+let heapGC = null, heapByCtor = null;
+try {
+  const cdp = await context.newCDPSession(page);
+  await cdp.send('HeapProfiler.enable');
+  for (let k = 0; k < 2; k++) await cdp.send('HeapProfiler.collectGarbage');
+  heapGC = await page.evaluate(() => performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null);
+  // --heap-ctors: retained JS objects of the suspects by constructor, counted through queryObjects (no snapshot).
+  if (argv.includes('--heap-ctors')) {
+    heapByCtor = {};
+    const { result: ev } = await cdp.send('Runtime.evaluate', { expression: 'canalRecallGame.vectorMap._sharedFrame.THREE', returnByValue: false });
+    for (const name of ['BufferGeometry', 'BufferAttribute', 'InterleavedBufferAttribute', 'Mesh', 'ShaderMaterial', 'MeshLambertMaterial', 'Texture', 'DataArrayTexture', 'Group', 'Object3D']) {
+      const { result: proto } = await cdp.send('Runtime.callFunctionOn', { objectId: ev.objectId, functionDeclaration: `function () { return this[${JSON.stringify(name)}]?.prototype; }`, returnByValue: false });
+      if (!proto?.objectId) continue;
+      const { objects } = await cdp.send('Runtime.queryObjects', { prototypeObjectId: proto.objectId });
+      const { result: n } = await cdp.send('Runtime.callFunctionOn', { objectId: objects.objectId, functionDeclaration: 'function () { return this.length; }', returnByValue: true });
+      // Typed-array bytes still held on the CPU by the attributes (an uploaded attribute's array is released to null).
+      let bytes = null;
+      if (name === 'BufferAttribute') { const { result: b } = await cdp.send('Runtime.callFunctionOn', { objectId: objects.objectId, functionDeclaration: 'function () { let s = 0; for (const a of this) s += a.array?.byteLength ?? 0; return s; }', returnByValue: true }); bytes = Math.round(b.value / 1048576); }
+      heapByCtor[name] = bytes === null ? n.value : { n: n.value, cpuMB: bytes };
+    }
+  }
+} catch (e) { errors.push(`heap gc: ${String(e).slice(0, 120)}`); }
 const dump = framesDir ? await page.evaluate(() => window.__pb.dump.slice(0, 8).map(k => {
   const W = 640, H = 400, cv = document.createElement('canvas'); cv.width = W * 2 + 4; cv.height = H;
   const g = cv.getContext('2d');
@@ -238,11 +262,12 @@ for (const [i] of raw.captures) {
 }
 for (const t of Object.values(tiers)) for (const c of Object.values(t)) c.diffPx = Math.round(c.diffPx);
 const secs = (raw.captures.at(-1)[1] - raw.captures[0][1]) / 1000;
-const summary = { renderMs: raw.renderMs, gaps: raw.gaps, info: raw.info, gl: raw.gl, stats: raw.stats, mode, device, qs, seconds: +secs.toFixed(1), frames: raw.captures.length, fog: raw.fog, limit: raw.limit, heapMB: { start: heap0, end: raw.heapMB }, diffPxTotal: total, diffPxUnexplained: unexplained, tiers, hooked: setup.hooked, rails: setup.rails, errors };
+const summary = { renderMs: raw.renderMs, gaps: raw.gaps, info: raw.info, gl: raw.gl, stats: raw.stats, mode, device, qs, seconds: +secs.toFixed(1), frames: raw.captures.length, fog: raw.fog, limit: raw.limit, heapMB: { start: heap0, end: raw.heapMB, endGC: heapGC }, heapByCtor, diffPxTotal: total, diffPxUnexplained: unexplained, tiers, hooked: setup.hooked, rails: setup.rails, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify({ summary, events: raw.events }, null, 1));
 if (framesDir) { fs.mkdirSync(framesDir, { recursive: true }); dump.forEach((k, j) => fs.writeFileSync(path.join(framesDir, `${mode}-${device}-${j}-f${k.i}-${k.area}px.jpg`), Buffer.from(k.jpg.split(',')[1], 'base64'))); }
-console.log(`${mode} ${device} ${qs}: ${summary.seconds}s ${summary.frames} frames; fog ${JSON.stringify(raw.fog)} limit ${JSON.stringify(raw.limit)}; diff px ${total} (unexplained ${unexplained}); heap ${heap0}->${raw.heapMB} MB`);
+console.log(`${mode} ${device} ${qs}: ${summary.seconds}s ${summary.frames} frames; fog ${JSON.stringify(raw.fog)} limit ${JSON.stringify(raw.limit)}; diff px ${total} (unexplained ${unexplained}); heap ${heap0}->${raw.heapMB} MB (after GC ${heapGC})`);
+if (heapByCtor) console.log('heap by constructor', JSON.stringify(heapByCtor));
 console.log(`render ms ${JSON.stringify(raw.renderMs)} gaps ${JSON.stringify(raw.gaps)} info ${JSON.stringify(raw.info)} far ${JSON.stringify(raw.stats.far)} groundFar ${raw.stats.groundFar}`);
 console.log('tier          band       events onScreen faded POPS (visible) diffPx diffFrames');
 for (const [t, bands] of Object.entries(tiers)) for (const b of ['0-250', '250-600', '600-1200', '>1200', 'unplaced']) { const c = bands[b]; if (c) console.log(`${t.padEnd(13)} ${b.padEnd(10)} ${String(c.events).padStart(6)} ${String(c.onScreen).padStart(8)} ${String(c.faded).padStart(5)} ${String(c.pops).padStart(4)} (${c.popsVisible}) ${String(c.diffPx).padStart(7)} ${c.diffFrames}`); }

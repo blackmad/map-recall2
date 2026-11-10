@@ -99,13 +99,33 @@ const g = (x: number) => (Number.isInteger(x) ? `${x}.0` : `${x}`);
 export const DRAW_LIMIT_GENTLE_FAR_GLSL = `(fogNear * (1.0 + fract(fogFar) * ${g(DRAW_LIMIT_RATIO_SPAN)}))`;
 /** fog_fragment with the limit: `desaturate` and `haze` the depth fade's shares (strength applied). */
 export const drawLimitFogFragment = (desaturate: number, haze: number): string => /* glsl */`#ifdef USE_FOG
+#ifndef DEPTH_FADE_LIMIT_ONLY
 	float fogFactor = smoothstep( fogNear, ${DRAW_LIMIT_GENTLE_FAR_GLSL}, vFogDepth );
 	float fadeLuma = dot( gl_FragColor.rgb, vec3( 0.2126, 0.7152, 0.0722 ) );
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, vec3( fadeLuma ), fogFactor * ${g(desaturate)} );
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor * ${g(haze)} );
+#endif
 	float limitFar = floor( fogFar );
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, smoothstep( limitFar * ${g(DRAW_LIMIT_RAMP_FROM)}, limitFar, vFogDepth ) );
 #endif`;
+
+/**
+ * Landmarks under the limit (lane P3, #328): a landmark's materials opt out of the depth fade (look/depthFade.ts, #161:
+ * the towers players steer by stay crisp), so a landmark kept resident past the limit (residency hysteresis, out to
+ * 1.25 x the 2 km reach) drew crisp in opaque haze. With this on, the opt-out keeps fog with `DEPTH_FADE_LIMIT_ONLY`
+ * defined: no gentle fade (still crisp up to DRAW_LIMIT_RAMP_FROM x the limit), but the opaque ramp to the limit.
+ * `?landmarkHaze=0` restores fog-free landmarks; off with the limit off.
+ */
+export const LANDMARK_HAZE_DEFAULT = true;
+export function landmarkHazeFlag(): boolean {
+  if (!drawLimitFlag()) return false;
+  const asked = (globalThis as { __canalRecallLandmarkHaze?: boolean | string }).__canalRecallLandmarkHaze ?? param('landmarkHaze');
+  if (asked === true || asked === '1' || asked === 'true' || asked === 'on') return true;
+  if (asked === false || asked === '0' || asked === 'false' || asked === 'off') return false;
+  return LANDMARK_HAZE_DEFAULT;
+}
+/** The define that makes a material take only the limit's opaque ramp (see landmarkHazeFlag). */
+export const DEPTH_FADE_LIMIT_ONLY = 'DEPTH_FADE_LIMIT_ONLY';
 
 /**
  * The limit in force this frame, for the other bundles (far ring, far shells, landmark reach, probes): set by the shared

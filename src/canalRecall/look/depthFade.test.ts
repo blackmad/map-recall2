@@ -71,6 +71,9 @@ test('installDepthFade swaps both fog chunks, once', () => {
 });
 
 test('a landmark fragment at the full fade range keeps its unfaded colour', async () => {
+  // The fog-free path (`?landmarkHaze=0`; the limit-only haze of lane P3 is pinned in engine/levelDissolve.test.ts).
+  (globalThis as { __canalRecallLandmarkHaze?: boolean }).__canalRecallLandmarkHaze = false;
+  try {
   const THREE = await import('three');
   const { depthFadeOptOut, DEPTH_FADE_OPT_OUT, DEPTH_FADE_FAR, depthFadeColour: fade } = await import('./depthFade.ts');
   const hook = () => {};
@@ -95,6 +98,24 @@ test('a landmark fragment at the full fade range keeps its unfaded colour', asyn
   const drawn = (m: { fog?: boolean }) => (m.fog === false ? rgb : fade(rgb, haze, dist, range));
   assert.deepEqual(drawn(twin), rgb);
   assert.notDeepEqual(drawn(wall), rgb);
+  } finally { delete (globalThis as { __canalRecallLandmarkHaze?: boolean }).__canalRecallLandmarkHaze; }
+});
+
+test('with the draw limit on, a landmark twin keeps fog for the limit ramp only (lane P3, `?landmarkHaze`)', async () => {
+  const THREE = await import('three');
+  const { depthFadeOptOut, DEPTH_FADE_OPT_OUT } = await import('./depthFade.ts');
+  const { DEPTH_FADE_LIMIT_ONLY } = await import('../engine/drawLimit.ts');
+  const wall = new THREE.MeshLambertMaterial();
+  wall.defines = { CITY_LOOK: '' };
+  const spire = new THREE.Mesh(new THREE.BufferGeometry(), wall), tower = new THREE.Group();
+  tower.add(spire);
+  assert.equal(depthFadeOptOut(tower), 1);
+  const twin = spire.material as InstanceType<typeof THREE.MeshLambertMaterial>;
+  assert.equal(twin.fog, true);
+  assert.deepEqual(twin.defines, { CITY_LOOK: '', [DEPTH_FADE_LIMIT_ONLY]: '' });
+  assert.deepEqual(wall.defines, { CITY_LOOK: '' }, 'the source keeps its defines');
+  assert.equal(twin.userData[DEPTH_FADE_OPT_OUT], true);
+  assert.equal(depthFadeOptOut(tower), 0, 'idempotent');
 });
 
 test('city-look landmark materials move to their noFade variant, which the highlight swaps keep', async () => {
@@ -115,6 +136,11 @@ test('city-look landmark materials move to their noFade variant, which the highl
   const uniforms = createCityUniforms(THREE);
   assert.equal(createCityLookMaterial(THREE, v, uniforms).fog, true);
   const crisp = createCityLookMaterial(THREE, { ...v, noFade: true }, uniforms);
-  assert.equal(crisp.fog, false);
+  // Lane P3 (#328): with the draw limit on, noFade keeps fog for the limit's ramp only (`?landmarkHaze=0`: fog off).
+  assert.equal(crisp.fog, true);
+  assert.equal(crisp.defines?.DEPTH_FADE_LIMIT_ONLY, '');
+  (globalThis as { __canalRecallLandmarkHaze?: boolean }).__canalRecallLandmarkHaze = false;
+  try { assert.equal(createCityLookMaterial(THREE, { ...v, noFade: true, side: 1 }, uniforms).fog, false); }
+  finally { delete (globalThis as { __canalRecallLandmarkHaze?: boolean }).__canalRecallLandmarkHaze; }
   assert.equal(crisp.userData.cityVariant.noFade, true, 'highlighted()/dimmed() rebuild from the variant, keeping noFade');
 });

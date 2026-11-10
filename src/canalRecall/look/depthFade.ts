@@ -25,7 +25,7 @@
 // look review. The player's "Distance haze" switch (preferences `distanceHaze`) turns it off at runtime without a
 // recompile: the fog range moves out of reach (`distanceHazeOn`).
 
-import { DRAW_LIMIT_GENTLE_FAR_GLSL, drawLimitFlag, drawLimitFogFragment } from '../engine/drawLimit';
+import { DEPTH_FADE_LIMIT_ONLY, DRAW_LIMIT_GENTLE_FAR_GLSL, drawLimitFlag, drawLimitFogFragment, landmarkHazeFlag } from '../engine/drawLimit';
 
 export const DEPTH_FADE_DEFAULT = true;
 /** The fade starts at this multiple of the eye-to-centre distance... */
@@ -183,6 +183,22 @@ export function installDepthFade(THREE: { ShaderChunk: Record<string, string> })
 /** Material marker for a landmark's fog-free copy. */
 export const DEPTH_FADE_OPT_OUT = 'canalRecallDepthFadeOptOut';
 
+/** A landmark opt-out material: fog off, or (draw limit + landmarkHaze, lane P3 #328) the limit's ramp only. */
+export function isDepthFadeOptOut(material: { fog?: boolean; userData?: Record<string, unknown> } | null | undefined): boolean {
+  return !!material && (material.fog === false || !!material.userData?.[DEPTH_FADE_OPT_OUT]);
+}
+
+/**
+ * Make `material` a landmark opt-out in place: fog off, or with `landmarkHaze` (engine/drawLimit.ts) its fog kept and
+ * DEPTH_FADE_LIMIT_ONLY defined (a fresh defines object: a ShaderMaterial's may be shared with its source).
+ */
+export function optOutFog(material: { fog?: boolean; defines?: Record<string, unknown>; userData?: Record<string, unknown> }, limitHaze = landmarkHazeFlag()): void {
+  // A material that never took fog (an unlit ShaderMaterial has no fog uniforms) stays fog-free.
+  if (limitHaze && material.fog !== false) { material.defines = { ...(material.defines ?? {}), [DEPTH_FADE_LIMIT_ONLY]: '' }; }
+  else material.fog = false;
+  material.userData = { ...(material.userData ?? {}), [DEPTH_FADE_OPT_OUT]: true };
+}
+
 type FadeMaterial = {
   fog?: boolean; isShaderMaterial?: boolean; uniforms?: unknown; defines?: unknown; userData?: Record<string, unknown>;
   onBeforeCompile?: unknown; customProgramCacheKey?: unknown; clone(): FadeMaterial;
@@ -195,16 +211,16 @@ const optOutCopies = new WeakMap<object, FadeMaterial>();
  * uniform still drives it. A material that already skips fog comes back as it is.
  */
 export function depthFadeOptOutMaterial(material: FadeMaterial): FadeMaterial {
-  if (!material || material.fog === false) return material;
+  if (!material || isDepthFadeOptOut(material)) return material;
   let copy = optOutCopies.get(material);
   if (!copy) {
     copy = material.clone();
-    copy.fog = false;
     if (material.isShaderMaterial) copy.uniforms = material.uniforms;
     if (material.defines) copy.defines = material.defines;
     if (material.onBeforeCompile) copy.onBeforeCompile = material.onBeforeCompile;
     if (material.customProgramCacheKey) copy.customProgramCacheKey = material.customProgramCacheKey;
-    copy.userData = { ...material.userData, [DEPTH_FADE_OPT_OUT]: true };
+    copy.userData = { ...material.userData };
+    optOutFog(copy as Parameters<typeof optOutFog>[0]);
     optOutCopies.set(material, copy);
   }
   return copy;
@@ -217,7 +233,7 @@ export function depthFadeOptOutMaterial(material: FadeMaterial): FadeMaterial {
  */
 export function depthFadeOptOut(root: { traverse(fn: (o: any) => void): void }, variantOf?: (material: any) => any): number {
   const twin = (m: FadeMaterial): FadeMaterial => {
-    if (m?.fog === false) return m;
+    if (isDepthFadeOptOut(m)) return m;
     const v = variantOf && m?.userData?.cityLook ? variantOf(m) : null;
     return v ?? depthFadeOptOutMaterial(m);
   };
