@@ -112,8 +112,8 @@ design field is listed under overrides.notApplied in measure.json (the generic p
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
-its game colours flat). When those matter, fall back to scripts/building-recipes/render.ts (headless
-Chromium) or a ride frame.`;
+its game colours flat). When those matter, use scripts/building-recipes/render.ts (its sheets draw the slot cells
+in Node since lane H12, docs/house-line.md §8; --browser for headless Chromium) or a ride frame.`;
 
 // ---------------------------------------------------------------------------------------------------------------
 // Arguments
