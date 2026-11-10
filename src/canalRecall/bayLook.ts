@@ -191,7 +191,7 @@ export function bayLookFor(id: string, year: number | null, heightM: number, loo
   const h = hashSeed(id), style = vocab ? vocab.styleIndex : traits && (traits.pale !== null || traits.dark !== null || traits.arch !== null || traits.tall !== null) ? bayStyleForTraits(id, archetype, traits) : bayStyleForRecipe(id, archetype, recipe);
   // Without the extract: a third of buildings (or the buurt's measured share), picking among the original four shopfronts.
   const shop = (recipe?.facadeAssembly || recipe?.entranceAssembly || recipe?.openingGroup) && !shopfront ? false : shopfront ? shopfront !== 'quiet'
-    : buurt?.shopShare !== undefined ? unitDraw(id, 'shop') < buurt.shopShare : (h >>> 13) % 3 === 0;
+    : (buurt?.shopfrontShare ?? buurt?.shopShare) !== undefined ? unitDraw(id, 'shop') < (buurt!.shopfrontShare ?? buurt!.shopShare!) : (h >>> 13) % 3 === 0;
   const shopKind = shopfront && shopfront !== 'quiet' ? shopfront : SHOP_KINDS[(h >>> 17) % 4];
   const palette = paletteFor(id, archetype, look);
   const walls = PERIOD_WALLS[look][archetype];
