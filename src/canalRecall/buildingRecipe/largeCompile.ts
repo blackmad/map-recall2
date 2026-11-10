@@ -23,7 +23,7 @@ import type {BuildingFacts} from './facts.ts';
 import type {LargeBuildingIntent, RoofMaterial} from './intent.ts';
 import {ROOF_COLOURS} from './fit.ts';
 import {FLAT_ROOF_TONES} from '../look/palette.ts';
-import {fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
+import {WINDOW_GRID_WALL_SLOT, fitLarge, panelEaves, type LargeBuildingRecipe, type LargeFitReport, type LargeGroupFit, type LargeRoofFit} from './fitLarge.ts';
 import {applyCrownCantilever, type CrownReport} from './crownCantilever.ts';
 
 export interface LargeComponentCounts { claddingLines?: number; signBoards?: number; falseFronts?: number; brickStoreys?: number; arcades?: number; glazedHalls?: number; glassColumns?: number; arcadePiers?: number; windowBoxes?: number; galleries?: number; boxBalconies?: number; balconyBands?: number; stackedBlocks?: number; stackedBalconies?: number; mansards?: number; curtainGrids?: number; spandrels?: number; floorBands?: number; meshScreens?: number; plinths?: number; screens?: number; portals?: number; nameBands?: number; stoneStoreys?: number; pilasters?: number; lanterns?: number; dressings?: number; crowns?: number; nameBoards: number; entrances: number; halls: number; canopies: number; garageDoors: number; letters: number; cornices: number; fascias: number; policeStripes: number; lamps: number; roofPlant: number }
@@ -397,6 +397,8 @@ export function largeMeshToGroup(mesh: MeshBuilder, recipe: LargeBuildingRecipe)
     m.name = name; m.userData = {surface, materialSlot, component: name.split('/')[0], pandId: recipe.pandId};
     // measured wall colour (export-glb writes `tintSource: 'measured'`; the look then keeps it instead of clamping it)
     if (measuredTint || (slot && measured.has(slot))) m.material.userData = {tintSource: 'measured'};
+    // `otherWalls: 'window-grid'`: the exporter writes `windowGrid` and the city look paints windows on this wall
+    if (slot === WINDOW_GRID_WALL_SLOT) m.material.userData = {...m.material.userData, windowGrid: true};
     group.add(m);
   };
   for (const [slot, s] of [...mesh.slots].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
@@ -489,7 +491,7 @@ export function compileLargeBuilding(intent: LargeBuildingIntent, inputFacts: Bu
     // row split: the houses of a group's main panel, each with its own system (only when a group has `houses`)
     ...(recipe.groups.some(g => g.houses) ? {segmentsFor: (p: Panel) => { const h = groupOf(p.index)?.houses; return h?.panel === p.index ? h.segs.map(x => ({system: x.system, u0: x.u0, u1: x.u1, top: x.topM, bayOffset: x.bayOffset, bays: h.segs.reduce((a, y) => a + y.bays, 0)})) : null; }} : {}),
     // layered kit: a curtain wall's (and a glazed hall's) 3DBAG wall is its glass skin (the grid and the hall's brick base are drawn on it)
-    wallSlotFor: p => { const g = groupOf(p.index); return !g ? 'wall' : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.system === 'glazed-hall' && intent.layeredKit !== false ? g.slots.glass : g.slots.wall; },
+    wallSlotFor: p => { const g = groupOf(p.index); return !g ? (recipe.other.windowGrid ? WINDOW_GRID_WALL_SLOT : 'wall') : g.system === 'curtain-wall' ? (intent.layeredKit !== false ? g.slots.glass : g.slots.curtain) : g.system === 'glazed-hall' && intent.layeredKit !== false ? g.slots.glass : g.slots.wall; },
     skipCell: (p, floor, bay, bays) => {
       const g = groupOf(p.index);
       if (hooks.skipCell?.(p, floor, bay, bays, g)) return true;

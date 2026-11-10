@@ -301,3 +301,16 @@ test('re-level 2026-10-30: level faces of an inferred slate roof are a flat roof
   city.dress(tagged, { lit: true });
   assert.deepEqual(layers(tagged), new Set([slotLayerOf('slate')]));
 });
+
+test('window grid: the flag rides on wall slot ordinals only, and absent changes nothing (lane newbuild-kit-20261110)', async () => {
+  const { slotLayerOf, slotForMaterial, WINDOW_GRID_LAYER_FLAG, SLOT_LAYER_COUNT } = await import('./cityLook.ts');
+  assert.ok(WINDOW_GRID_LAYER_FLAG >= SLOT_LAYER_COUNT && WINDOW_GRID_LAYER_FLAG * 2 <= 256, 'flag clear of the ordinals and inside a byte');
+  for (const slot of ['brick', 'stucco', 'stone', 'accent'] as const) {
+    assert.equal(slotLayerOf(slot, { windowGrid: true }), slotLayerOf(slot) + WINDOW_GRID_LAYER_FLAG, slot);
+    assert.equal(slotLayerOf(slot, { windowGrid: true, year: 2018 }), slotLayerOf(slot, { year: 2018 }) + WINDOW_GRID_LAYER_FLAG, slot);
+  }
+  for (const slot of ['glass', 'door', 'frame', 'roofTile', 'slate', 'bitumen', 'paint'] as const) assert.equal(slotLayerOf(slot, { windowGrid: true }), slotLayerOf(slot), slot);
+  // The GLB extra reaches the hints; a material without it is read as before.
+  assert.deepEqual(slotForMaterial({ userData: { materialSlot: 'brick', tint: '#884433', windowGrid: true } }, false), { slot: 'brick', tint: '#884433', inferred: false, windowGrid: true });
+  assert.deepEqual(slotForMaterial({ userData: { materialSlot: 'brick', tint: '#884433' } }, false), { slot: 'brick', tint: '#884433', inferred: false });
+});

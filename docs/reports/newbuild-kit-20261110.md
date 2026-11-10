@@ -161,14 +161,142 @@ creates the pool with its own bundled copy of `withWorkerFlags`. So a new worker
 after **that** bundle is rebuilt too, not just `three-buildings`. The first two after-runs showed no change for this
 reason. The spec now routes bundles and tiles at the context level, so the routes also reach the worker.
 
+## 5. Round 2 (coordinator review of all.jpg)
+
+The coordinator's verdict on round 1:
+
+- houthaven-2018 drew orange against a dark purple-brown photo;
+- Zeeburgereiland 2016 drew dark brown against a white-banded photo;
+- the area draw overruled the photo on single blocks.
+
+### (a) Per-pand walls
+
+`contemporaryFamily.ts` now resolves the wall in this order, and `ContemporaryLook.wallSource` says which one won:
+
+1. **The pand's own measured front.** This is T0 `buurtProfiles/modernPandWalls.ts`: 5,079 calibrated rows from the
+   panorama-thumbnail pipeline (HISTORY "measured own colour").
+2. **The lane's own 94 panorama samples.** These are in `contemporary-walls.json` `pands`, coded like the T0 rows (`b`/`p` + hex).
+3. The area draw.
+4. The pooled draw.
+
+Fronts the colour alone cannot carry are tagged by eye from the measuring panorama in `scripts/newbuild/front-tags.json`:
+
+- `bands`: four pands take the new **`BALCONY_BAND`** preset (`modern#10`, `facadeAssembly: 'balcony-band'` in
+  `bayTextures.ts`), a pale balcony band with a dark top line and a mid bottom line across every upper storey.
+- `tall`: houthaven-2018 takes `modern#9`, the tall French-balcony windows.
+
+Tests in `contemporaryFamilyOn.test.ts` cover three cases:
+
+- houthaven-2018 (0363100012247676) resolves to `own` #666761 (L < 45), drawn `tall`;
+- Zeeburgereiland (0363100012244416) resolves to `own` #4b302c, drawn `band`;
+- an unmeasured id falls back to `area`.
+
+Flag off, nothing changes: `modern` stays at 191 layers, and `bayLookFor` deep-equals the old output.
+
+The round-1 strip spots for the six pand strips framed the neighbours (the longest-edge pose). They now stand where the
+measuring panorama stood (`make-spots.mjs` `PANO_POSE`: the panorama position plus the sample heading), and the
+panorama column is that same thumbnail.
+
+### (b) A texture-only window grid for large-recipe blank walls
+
+`otherWalls: 'window-grid'` (`buildingRecipe/intent.ts` `OTHER_WINDOW_GRID`) keeps the unlisted walls as the same
+blank geometry but gives them their own slot, `wall@grid` (`fitLarge.ts` `WINDOW_GRID_WALL_SLOT`). The pieces:
+
+- **Exporter:** writes the material extra `windowGrid: true`.
+- **City look:** `cityLook.ts` adds `WINDOW_GRID_LAYER_FLAG = 64` to the slot ordinal of brick, stucco and stone
+  cells. The vertex shader strips the flag, and the slot fragment paints `cityWindowGrid` over the cell:
+  - 3.0 m bays by 3.2 m storeys, windows at 44 % by 50 % of the cell, a pale frame and dark sky-graded glass;
+  - antialiased with `fwidth` and faded out once a cell drops under a few pixels.
+- **Cost:** no triangle and no draw call. Houthavenkade 26 stays at 11,984 triangles, inside the 12k gate.
+- **Absent:** nothing carries the slot or the flag (`windowGrid.test.ts`, `cityLook.test.ts`).
+
+Houthavenkade 26 opts in. The staged GLB (`install-large.ts` without `--install`) is in
+`artifacts/building-recipes/houthavenkade-26-247232/`. About 9,000 m² of its wall carry the grid: the courtyard, the
+east wing and the east end.
+
+**Shown in the game.** Three spots are in `artifacts/newbuild/spot-hk26.json`: the user's spot plus two close ones, on
+the west end and on the courtyard and south side. The pairs are in the screenshots directory:
+
+- `r2-hk26-window-grid-*.png`: before (the committed bundles and the public GLB) against after (the lane bundles and the
+  staged GLB). The west and south walls go from blank brick to a regular window grid.
+- `r2-hk26-grid-only-*.png`: the same lane bundles, public GLB against staged GLB. This isolates the grid. The glazed
+  set-back top floor appears in both halves, so it comes from current main's bundles, not from this change.
+
+At the user's own spot (110 m off, bearing 200) the grid shows on the far west end and the back wing. The tall blank
+slab in that frame's foreground is another pand: it appears in both halves and comes and goes between runs.
+
+**Debugging note for the integrator.** A landmark's `layer`, `normal` and `uv` arrays are released after upload
+(`landmarks/releaseVertexData.ts`), so an in-page probe reads them as empty. Check the grid with a magenta shader
+build instead. The lane did this, and the grid lit exactly the unlisted walls.
+
+### (c) Years for OSM gap fills
+
+`scripts/newbuild/gap-fill-years.ts` reads the gap-fill Overpass answer (the `fill-new-build-gaps` query, open OSM data)
+and publishes `[year, -1, 0]` rows into `building-facts` for gap-fill outlines with a `start_date`:
+
+- 3,595 rows in 163 tiles;
+- rows that already exist are untouched.
+
+Undated gap fills in the strip areas went down:
+
+| area | undated before | undated after |
+|---|---:|---:|
+| Houthaven | 7 | 5 |
+| IJburg | 40 | 24 |
+| Zeeburgereiland | 9 | 2 |
+| Sluisbuurt | 10 | 5 |
+| Overhoeks | 18 | 9 |
+
+Note: once dated, these outlines draw as their era, **with the flag off too**. That is the intended fix (they drew as
+1860-1914 houses), but it changes the baked shells, so the world needs a recompile.
+
+### (d) Census r2 (flag on, Storybook, generic 2000+ pands)
+
+| area | dark | mid | light | pale |
+|---|---:|---:|---:|---:|
+| city | 11,250 | 7,598 | 6,380 | 8,769 |
+| Houthaven | 75 | 34 | 44 | 8 |
+| IJburg | 309 | 553 | 246 | 525 |
+| Zeeburgereiland | 107 | 45 | 18 | 41 |
+
+City-wide pale is flat against round 1 (8,783 to 8,769, 26 %), and dark plus mid goes from 18,644 to 18,848. Own
+measurements move single blocks both ways: they keep the fronts that really are pale pale, and darken the ones the
+area draw had lightened. Output: `artifacts/newbuild/census-after-r2.json`.
+
+### (e) Strips r2
+
+Same setup as round 1, with two changes: the before tiles are `artifacts/newbuild/old-data2` (origin/main's slab tiles
+plus the pre-gap-fill facts), and the after bundles are `artifacts/newbuild/bundles4`, which now include
+`signature-placement`. The six pand spots now stand at their measuring panorama's pose (§5a).
+
+| spot | verdict | after frame |
+|---|---|---|
+| Narva-eiland (1c694c0d) | PASS | Orange-red and dark brick blocks, as in round 1. |
+| Danzigerkade Ydek (2c486751) | PASS | The canopy is at ground-floor height; the office is dark brick. |
+| Houthavenkade 26 (75242f30) | PASS (at the close spots) | Window grid on the unlisted walls (§5b). The user's spot is far, so the grid is small there. |
+| houthaven-2021-orange | PASS | Orange brick on the left; the corner block is rose-red brick, a little muted against the photo's orange. |
+| houthaven-2018-dark | **PASS (was WARN)** | Dark grey cladding (own wall #666761) with tall French windows and rails. Reads like the photo's dark panels; the photo's panels are glossier and nearer black. |
+| ijburg-2021 | PASS | The block is red-brown brick, as in the photo. The photo's white upper band is not drawn. |
+| ijburg-2009 | PASS | Dark grey with dark frames; a neighbour turns from pale grey to beige. |
+| sluisbuurt-2025 | WARN | The framed block is w1185360235, a gap fill now dated 2025 (§5c). It changes from orange to dark red-brown, closer to the photo's brown. It has no band tag, so its balcony bands are not drawn. |
+| zeeburgereiland-2016 | **PASS (was WARN)** | Dark brick under pale balcony bands on every upper storey, as in the photo. The brick is warmer than the photo's charcoal. |
+
+Net: 8 PASS and 1 WARN, and no strip is worse than round 1.
+
+**Flip recommendation: yes.** Turn on `newbuildFamily` with the shell-hash recompile. It now puts each pand's own measured front
+ahead of the area draw. The worst remaining case (Sluisbuurt) is still better than the orange it replaces. The
+gap-fill years and the Houthavenkade 26 GLB are independent of the flag and can land first.
+
 ## Kit cannot yet express
 
-- **A texture-only window grid for a large recipe's unlisted walls.** Geometry windows break the 12k triangle budget,
-  so 142 large recipes keep blank rear and courtyard walls.
+- **Window grids that follow the wall.** The shader grid (§5b) is one fixed 3.0 x 3.2 m cell. It does not read the
+  storey count, the bay width or the ground floor, so a glazed ground or a tall plinth gets the same grid. 141 other
+  large recipes could opt in, but each needs a look.
 - **Varied parapet heights across one block.** 3DBAG LoD1.2 gives one height per pand. LoD1.3 faces exist in the
   cached CityJSON (`towerPodium.ts` already reads them) but do not reach the runtime tiles.
 - **Recessed loggias** as geometry, and glass balcony slabs on generic chunks. Only the gallery preset paints open
   balconies.
 - **Set-backs from evidence.** The family's set-back is a weighted draw (35 % of blocks of 14 m and up). The real
   ones are in the 3DBAG LoD1.3 roof faces.
-- **Years for OSM gap fills.** These are the undated outlines in the table in §1(a), drawn as 1860-1914 houses.
+- **Years for OSM gap fills without `start_date`.** 3,595 are now dated (§5c); the rest are still drawn as 1860-1914 houses.
+- **Balcony bands found automatically.** The `bands` and `tall` tags are hand tags from the panorama sheet (5 pands).

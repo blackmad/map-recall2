@@ -213,7 +213,7 @@
    ]
   }
  ],
- "otherWalls": "blank",
+ "otherWalls": "window-grid",
  "roof": {
   "material": "slate",
   "flatHex": "#6e767a",

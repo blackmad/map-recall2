@@ -40,6 +40,12 @@ test('newbuild strip', async ({ page }, info) => {
     const file = `${bundles}/${/\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]}`;
     return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
   });
+  // NB_MODELS_DIR=<dir>: serve model files found there (<dir>/ordinary-buildings/<file>.glb) instead: a staged GLB.
+  const modelsDir = process.env.NB_MODELS_DIR;
+  if (modelsDir) await page.context().route(/\/canal-drive\/models\/([\w/.-]+?\.glb)(\?.*)?$/, route => {
+    const file = `${modelsDir}/${/\/models\/([\w/.-]+?\.glb)/.exec(route.request().url())![1]}`;
+    return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: 'model/gltf-binary' }) : route.continue();
+  });
   // NB_DATA_DIR=<dir>: serve extract files found there instead (the "before" tiles of a data fix).
   const dataDir = process.env.NB_DATA_DIR;
   if (dataDir) await page.context().route(/\/data\/extracts\/amsterdam\/([\w/.-]+?)(\?.*)?$/, route => {

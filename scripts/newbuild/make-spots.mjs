@@ -8,6 +8,17 @@ const USER = [
   { slug: 'user-westpoort-slab', name: 'Danzigerkade Ydek canopy (feedback 2c486751)', lng: 4.87207, lat: 52.39879, bearing: 60, distM: 70, eyeM: 14 },
   { slug: 'user-houthavenkade-26', name: 'Houthavenkade 26 / 4e Gymnasium (feedback 75242f30)', lng: 4.876389, lat: 52.394353, bearing: 200, distM: 110, eyeM: 18 },
 ];
+// Round 2: the longest-edge pose framed neighbours (houthaven-2018, the Sluisbuurt) and the strip panorama was another
+// capture: every pand spot now stands on its measuring panorama's line (staging/newbuild/pano-samples.json, coordinates
+// from the panorama API): target = panorama + heading x the sample distance, the camera 8 m behind the panorama, 9 m up.
+const PANO_POSE = {
+  'houthaven-2021-orange': { pano: [4.877983159040919, 52.39346907337885], heading: 232, toPandM: 21.1 },
+  'houthaven-2018-dark': { pano: [4.879390692851977, 52.39478613988842], heading: 130, toPandM: 5.7 },
+  'ijburg-2021': { pano: [5.011661540794086, 52.35193312925725], heading: 62, toPandM: 11.4 },
+  'ijburg-2009': { pano: [4.981513843394572, 52.36021072645887], heading: 155, toPandM: 15.3 },
+  'sluisbuurt-2025': { pano: [4.961110713873835, 52.37590808067818], heading: 344, toPandM: 11.7 },
+  'zeeburgereiland-2016': { pano: [4.965624832886519, 52.375200092143714], heading: 217, toPandM: 8.4 },
+};
 const root = 'public/data/extracts/amsterdam/bag-tiles/14', want = new Set(Object.values(PANDS)), found = {};
 for (const x of fs.readdirSync(root)) for (const f of fs.readdirSync(path.join(root, x))) for (const ft of JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(root, x, f)))).features) {
   const id = String(ft.properties.id).replace('NL.IMBAG.Pand.', ''); if (want.has(id) && ft.geometry.type === 'Polygon') found[id] = ft;
@@ -23,6 +34,12 @@ for (const [slug, id] of Object.entries(PANDS)) {
   let n = [best.dy / best.len, -best.dx / best.len]; // outward candidate
   if ((m[0] - c[0]) * KX * n[0] + (m[1] - c[1]) * KY * n[1] < 0) n = [-n[0], -n[1]];
   const bearing = (Math.atan2(-n[0], -n[1]) * 180 / Math.PI + 360) % 360; // looking inward
+  const pose = PANO_POSE[slug];
+  if (pose) {
+    const h = pose.heading * Math.PI / 180, t = [pose.pano[0] + Math.sin(h) * pose.toPandM / KX, pose.pano[1] + Math.cos(h) * pose.toPandM / KY];
+    out.push({ slug, name: `${slug} (pand ${id}, ${ft.properties.year})`, pand: id, lng: +t[0].toFixed(6), lat: +t[1].toFixed(6), bearing: pose.heading, distM: pose.toPandM + 8, eyeM: 9, targetM: Math.min(12, ft.properties.height / 2) });
+    continue;
+  }
   out.push({ slug, name: `${slug} (pand ${id}, ${ft.properties.year})`, pand: id, lng: +m[0].toFixed(6), lat: +m[1].toFixed(6), bearing: Math.round(bearing), distM: 55, eyeM: 10, targetM: Math.min(12, ft.properties.height / 2) });
 }
 console.log(JSON.stringify(out, null, 1));

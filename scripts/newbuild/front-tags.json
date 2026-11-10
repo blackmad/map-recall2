@@ -1,0 +1,12 @@
+{
+ "note": "Pands whose measuring panorama (staging/newbuild/pano-samples.jpg and the 1000 px thumbnails at the sample's heading; lane newbuild-kit-20261110 round 2) shows a front the area draw cannot guess, tagged by eye. bands: a pale or brick balcony band across every upper storey (BAY_STYLES.modern[10]); tall: tall French windows to the floor (BAY_STYLES.modern[9]).",
+ "bands": {
+  "0363100012238842": "Overhoeks 2014: brick balcony bands round a curved block",
+  "0363100012252988": "Overhoeks 2024: wave balcony bands",
+  "0363100012570345": "Sluisbuurt 2025: curved balcony bands",
+  "0363100012244416": "Zeeburgereiland 2016: pale perforated balcony bands over dark brick (strip spot zeeburgereiland-2016)"
+ },
+ "tall": {
+  "0363100012247676": "Houthaven 2018: tall French windows with glass balustrades in dark glossy panel cladding (strip spot houthaven-2018-dark)"
+ }
+}

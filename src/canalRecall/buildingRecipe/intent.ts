@@ -39,6 +39,8 @@ import type {SignBoardIntent} from '../blockBuilding/signBoards.ts';
  * rise plumb from the eaves for `shouldered.shoulder` before a shallow rake climbs `rise` to a point (or a flat top
  * `flatTop` wide). Needs `shouldered`.
  */
+/** `otherWalls` value: blank walls painted with the city look's shader window grid (look/cityLook.ts WINDOW_GRID_LAYER). */
+export const OTHER_WINDOW_GRID = 'window-grid' as const;
 export const GABLES = ['spout', 'neck', 'raised-neck', 'bell', 'step', 'point', 'cornice', 'flat', 'shouldered'] as const;
 export type GableIntent = typeof GABLES[number];
 /** `frieze`: a tall (1.6 m) plain attic frieze with its cornice, in the cornice colour (18th-c. fronts; oculi in it are not drawn). */
@@ -1409,8 +1411,12 @@ export interface LargeBuildingIntent {
   id: string; pandId: string; address: string;
   sources: IntentSource[];
   walls: LargeWallIntent[];
-  /** System for wall surfaces no group lists (default `blank`). */
-  otherWalls?: LargeSystemName;
+  /**
+   * System for wall surfaces no group lists (default `blank`). `window-grid`: blank geometry (no added triangles) whose
+   * wall material carries `windowGrid`, so the city look paints a window grid on it in the shader (rear and courtyard
+   * walls no photo shows: lane newbuild-kit-20261110, feedback 75242f30 "why no windows").
+   */
+  otherWalls?: LargeSystemName | typeof OTHER_WINDOW_GRID;
   /**
    * A crown block that overhangs the shell on the named bearings (Salt, Haarlemmerweg 940: the top six storeys
    * cantilever over the canal corner above a recessed glazed base). The crown keeps the dominant front's bay pattern

@@ -13,7 +13,7 @@ import {signBoardsProblems} from '../blockBuilding/signBoards.ts';
 import {claddingProblems} from './claddingIntent.ts';
 import {wallFamilyProblems} from './wallFamily.ts';
 import {FLOOR_BAND_LIMITS} from '../blockBuilding/components.ts';
-import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
+import {GROUP_WALL_MATERIALS, LARGE_HOUSE_CROWNS, OTHER_WINDOW_GRID, ROOF_MATERIALS, SOURCE_KINDS, SWATCHES, WALL_MATERIALS, validateIntent, type BuildingIntent, type LargeBuildingIntent} from './intent.ts';
 import {LARGE_GROUNDS, LARGE_SYSTEMS, LARGE_WINDOWS} from '../blockBuilding/systems.ts';
 import {ARCH_KINDS} from '../blockBuilding/arch.ts';
 import {stoneDressingsProblems} from './stoneDressingsIntent.ts';
@@ -65,7 +65,7 @@ export function validateLargeIntent(input: unknown): LargeBuildingIntent {
     for (const k of Object.keys(m ?? {})) if (!['date', 'groups', 'otherWalls'].includes(k)) problems.push(`measured.${k}: unknown field (date, groups, otherWalls)`);
   }
   if (intent?.draftedBy !== undefined) oneOf(intent.draftedBy, ['factory'], 'draftedBy');
-  if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, LARGE_SYSTEMS, 'otherWalls');
+  if (intent?.otherWalls !== undefined) oneOf(intent.otherWalls, [...LARGE_SYSTEMS, OTHER_WINDOW_GRID], 'otherWalls');
   bool(intent?.roofPlant, 'roofPlant'); bool(intent?.closedBands, 'closedBands'); bool(intent?.layeredKit, 'layeredKit'); bool(intent?.shellRepair, 'shellRepair');
   if (intent?.footprint !== undefined) oneOf(intent.footprint, ['lod22', 'bag', 'core'], 'footprint');
   if (intent?.groundClamp !== undefined && typeof intent.groundClamp !== 'boolean') problems.push('groundClamp: boolean');

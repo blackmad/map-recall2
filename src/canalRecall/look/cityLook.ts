@@ -163,13 +163,52 @@ export type SlotVariantHints = {
   whitePoint?: string | null;
   /** The model's walls were matched to a photo under this exposure (street chunks, look/chunkWallExposure.ts). */
   exposure?: WallExposure | null;
+  /** The material's `windowGrid` extra: the wall takes the shader window grid (WINDOW_GRID_LAYER_FLAG). */
+  windowGrid?: boolean;
 };
+
+/**
+ * The shader window grid (`otherWalls: 'window-grid'`, lane newbuild-kit-20261110; feedback 75242f30 "why no windows"):
+ * a large house's unlisted walls stay one blank quad per panel in the GLB (no triangles added: the 12k gate), and the
+ * slot ordinal carries this flag so the slot shader paints a window per bay and storey from the metre UVs. A pale frame
+ * round dark glass, untinted; the wall between keeps its cell and tint. Every other slot mesh is unchanged.
+ */
+export const WINDOW_GRID_LAYER_FLAG = 64;
+/** Grid pitch (m): a civic bay and storey, the window centred in each cell. */
+export const WINDOW_GRID_BAY_M = 3.0;
+export const WINDOW_GRID_STOREY_M = 3.2;
+/** Window box in the cell (fractions): left/right, sill/head, and the frame width. */
+export const WINDOW_GRID_BOX = { x0: 0.28, x1: 0.72, y0: 0.3, y1: 0.8, frame: 0.035 } as const;
+const glslF = (v: number) => (Number.isInteger(v) ? v.toFixed(1) : String(v));
+const WINDOW_GRID_GLSL = /* glsl */ `
+void cityWindowGrid(vec2 m, inout vec3 c, inout vec2 mk) {
+  vec2 cell = fract(m / vec2(${glslF(WINDOW_GRID_BAY_M)}, ${glslF(WINDOW_GRID_STOREY_M)}));
+  vec2 lo = vec2(${glslF(WINDOW_GRID_BOX.x0)}, ${glslF(WINDOW_GRID_BOX.y0)}), hi = vec2(${glslF(WINDOW_GRID_BOX.x1)}, ${glslF(WINDOW_GRID_BOX.y1)});
+  vec2 aa = max(fwidth(cell), vec2(1e-4));
+  vec2 inO = smoothstep(lo - aa, lo + aa, cell) * (1.0 - smoothstep(hi - aa, hi + aa, cell));
+  vec2 lg = lo + ${glslF(WINDOW_GRID_BOX.frame)}, hg = hi - ${glslF(WINDOW_GRID_BOX.frame)};
+  vec2 inG = smoothstep(lg - aa, lg + aa, cell) * (1.0 - smoothstep(hg - aa, hg + aa, cell));
+  float outer = inO.x * inO.y, glass = inG.x * inG.y;
+  // far away the cells shrink under a pixel: fade the grid to the wall rather than shimmer
+  float fade = 1.0 - smoothstep(0.08, 0.2, max(aa.x, aa.y));
+  vec3 win = mix(vec3(0.86, 0.85, 0.82), mix(vec3(0.17, 0.21, 0.25), vec3(0.33, 0.39, 0.44), cell.y), glass);
+  float k = outer * fade;
+  c = mix(c, win, k);
+  mk.r *= 1.0 - k;
+  mk.g *= 1.0 - k;
+}`;
 
 /** Brick from this year on samples the 20th-century brick (docs/LOOK.md "One era scheme"). */
 export const BRICK20_FROM = PERIOD_FROM.school;
 
 /** The slot layer (ordinal after the bay cells) a material slot samples. Frame and paint read plain white. */
 export function slotLayerOf(slot: MaterialSlot, hints: SlotVariantHints = {}): number {
+  const base = slotBaseLayerOf(slot, hints);
+  return hints.windowGrid && WINDOW_GRID_CELLS.has(SLOT_CELL[slot]) ? base + WINDOW_GRID_LAYER_FLAG : base;
+}
+/** Wall cells the window grid paints on (glass, doors, frames and roofs never take it). */
+const WINDOW_GRID_CELLS: ReadonlySet<string> = new Set(['brick', 'stucco', 'stone']);
+function slotBaseLayerOf(slot: MaterialSlot, hints: SlotVariantHints): number {
   const cell = SLOT_CELL[slot], measured = hints.source === 'measured';
   if (cell === 'glass' && measured) return CELL_ORDINAL.glassTint;
   if (cell === 'brick' && !measured && typeof hints.year === 'number' && hints.year >= BRICK20_FROM) return CELL_ORDINAL.brick20;
@@ -462,6 +501,7 @@ uniform vec4 slotParams[CITY_SLOT_COUNT];
 varying vec2 vFacUv;
 flat varying float vLayer;
 flat varying vec4 vSlot;
+flat varying float vGrid;
 varying vec3 vTint;
 varying vec3 vAccent;
 flat varying float vHighlight;
@@ -491,8 +531,11 @@ vHighlight = 1.0;
 #ifdef CITY_DIM
 vHighlight = 2.0;
 #endif
+vGrid = 0.0;
 #ifdef CITY_SLOT
-  int cityS = int(clamp(layer + 0.5, 0.0, float(CITY_SLOT_COUNT - 1)));
+  // WINDOW_GRID_LAYER_FLAG on the slot ordinal: a blank wall painted with the shader window grid (cityWindowGrid).
+  vGrid = step(${WINDOW_GRID_LAYER_FLAG - 0.5}, layer);
+  int cityS = int(clamp(layer - ${WINDOW_GRID_LAYER_FLAG}.0 * vGrid + 0.5, 0.0, float(CITY_SLOT_COUNT - 1)));
   vSlot = slotParams[cityS];
   vLayer = slotBase + float(cityS);
   #if defined(CITY_VARIANT_UNIFORMS)
@@ -537,9 +580,11 @@ ${ROOF_TIER_GLSL}
 ${FACADE_TIER_GLSL}
 ${CELL_DEBUG_GLSL}
 ${WINDOW_SDF_GLSL}
+${WINDOW_GRID_GLSL}
 varying vec2 vFacUv;
 flat varying float vLayer;
 flat varying vec4 vSlot;
+flat varying float vGrid;
 varying vec3 vTint;
 varying vec3 vAccent;
 flat varying float vHighlight;
@@ -569,6 +614,7 @@ vec3 cityC; vec2 cityM;
 #ifdef CITY_SLOT
 vec4 cityCC = texture(cells, cityP); vec2 cityMM = texture(masks, cityP).rg;
 cityC = cityCC.rgb; cityM = vec2(cityMM.r, ${accentGlsl('cityMM', 'cityCC')});
+if (vGrid > 0.5) cityWindowGrid(vFacUv / vSlot.x, cityC, cityM);
 #else
 cellTierSample(cityP, vFacDist, cityC, cityM);
 #ifdef CITY_WINDOW_SDF
@@ -775,12 +821,12 @@ export function slotIneligible(material: any): string | null {
 }
 
 /** Slot + tint a material declares, or (when `infer`) what its name and colour say. Null = leave it. */
-export function slotForMaterial(material: any, infer: boolean): { slot: MaterialSlot; tint: string; inferred: boolean; source?: TintSource; white?: string } | null {
+export function slotForMaterial(material: any, infer: boolean): { slot: MaterialSlot; tint: string; inferred: boolean; source?: TintSource; white?: string; windowGrid?: true } | null {
   const ud = material?.userData ?? {};
   if (isMaterialSlot(ud.materialSlot) && typeof ud.tint === 'string') {
     // Inferred extras written into a GLB only take part under the flag (they are, here).
     const measured = ud.tintSource === 'measured';
-    return { slot: ud.materialSlot, tint: ud.tint, inferred: ud.materialSlotSource === INFERRED_SLOT_SOURCE, ...(measured ? { source: 'measured' as const } : {}), ...(measured && typeof ud.tintWhitePoint === 'string' ? { white: ud.tintWhitePoint } : {}) };
+    return { slot: ud.materialSlot, tint: ud.tint, inferred: ud.materialSlotSource === INFERRED_SLOT_SOURCE, ...(measured ? { source: 'measured' as const } : {}), ...(measured && typeof ud.tintWhitePoint === 'string' ? { white: ud.tintWhitePoint } : {}), ...(ud.windowGrid === true ? { windowGrid: true as const } : {}) };
   }
   if (!infer || slotIneligible(material) || !material.color) return null;
   const tint = '#' + material.color.getHexString();
@@ -923,7 +969,7 @@ export function createCityLook(THREE: any, options: CityLookOptions = {}): CityL
         if (!hasUv && !geometry.getAttribute('normal')) geometry.computeVertexNormals();
         // Variants: the BAG year picks the brick; an inferred white material takes the smooth render.
         const hints: SlotVariantHints = { year, white: found.inferred && isWhiteWord(o.material.name), source: found.source,
-          ...(found.white ? { whitePoint: found.white } : {}), ...(wallExposure ? { exposure: wallExposure } : {}) };
+          ...(found.white ? { whitePoint: found.white } : {}), ...(wallExposure ? { exposure: wallExposure } : {}), ...(found.windowGrid ? { windowGrid: true } : {}) };
         if (!setSlotAttributes(THREE, geometry, found.slot, found.tint, hints)) {
           // A geometry shared with another material: give this mesh its own attributes.
           geometry = o.geometry = geometry.clone();
