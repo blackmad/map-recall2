@@ -1141,7 +1141,13 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           }
         }
       }
-      for(const x of [railLeft,railLeft+railWidth-rail.barWidthM])box(x,y+rail.heightM-rail.barWidthM,rail.barWidthM,rail.barWidthM,rail.depthM,z-rail.depthM/2,'door',`balcony/${rail.id}/return`);
+      // Side rails back to the wall. On a projecting platform they are its stone coping, run along the centre of its stone
+      // piers (lane H7 r3, #354): a 0.6 m bar in the door (rail) slot is judged by the glb audit like a loose sill (its
+      // handrail exemption starts at 2 m) and failed as an opening outside its wall (clercq-236681, six slivers, 0.04 m2).
+      // Without a platform: door-slot returns at the rail's ends, as before.
+      const pier=rail.projection?.pierWidthM,platformLeft=rail.projection?opening.leftM+(opening.widthM-rail.projection.widthM)/2:0;
+      const returnXs=rail.projection&&pier!>rail.barWidthM?[platformLeft+(pier!-rail.barWidthM)/2,platformLeft+rail.projection.widthM-(pier!+rail.barWidthM)/2]:[railLeft,railLeft+railWidth-rail.barWidthM];
+      for(const x of returnXs)box(x,y+rail.heightM-rail.barWidthM,rail.barWidthM,rail.barWidthM,rail.depthM,z-rail.depthM/2,rail.projection&&pier!>rail.barWidthM?'stone':'door',`balcony/${rail.id}/return`);
     }
     if(elevation.entrance){
       const s=read(elevation.entrance,`${elevation.id}/entrance`);positive(s.widthM,s.riseM,s.runM);finite(s.leftM);

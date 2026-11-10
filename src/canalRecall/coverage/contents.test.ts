@@ -77,7 +77,7 @@ test('published catalogue: every thumbnail ships under public/ and every link na
   }
 });
 
-test('published regressions: Da Costabuurt-Noord has faces and types, a Nieuw-West buurt has designs, Terrasdorp has nothing', { skip: !published }, () => {
+test('published regressions: Da Costabuurt-Noord has faces and types, a Nieuw-West buurt has designs, Terrasdorp has building-type designs only, Paramariboplein e.o. has nothing', { skip: !published }, () => {
   const { feats, items } = load();
   const by = (code: string) => feats.find(f => f.properties.code === code)!.properties;
   const daCosta = by('EQ01');
@@ -87,6 +87,11 @@ test('published regressions: Da Costabuurt-Noord has faces and types, a Nieuw-We
   const nw = by('FK05');
   assert.equal(nw.stadsdeel, 'Nieuw-West');
   assert.ok(nw.content.designs.length >= 3 && nw.content.designs.every(([id]) => items.designs[id].links.length));
-  assert.equal(by('NC03').name, 'Terrasdorp');
-  assert.equal(hasContent(by('NC03').content), false);
+  // Terrasdorp gained building-type designs (12 of them, 2026-11); no faces, types, models or kits.
+  const terras = by('NC03');
+  assert.equal(terras.name, 'Terrasdorp');
+  assert.ok(terras.content.designs.length >= 1 && terras.content.designs.every(([id]) => items.designs[id].links.length));
+  assert.deepEqual([terras.content.faces.length, terras.content.types.length, terras.content.models.length, terras.content.kits.length], [0, 0, 0, 0]);
+  assert.equal(by('ER02').name, 'Paramariboplein e.o.');
+  assert.equal(hasContent(by('ER02').content), false);
 });

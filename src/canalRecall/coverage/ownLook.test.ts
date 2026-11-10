@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { test } from 'node:test';
 import type { ContentItems } from './contents.js';
-import { LOOK_LEGEND, chunkRide, lookBin, noLook, ownLookOf, pandRide, rideHref, type OwnLook } from './ownLook.js';
+import { LOOK_LEGEND, chunkRide, lookBin, lookPublishPlan, noLook, ownLookOf, pandRide, rideHref, type OwnLook } from './ownLook.js';
 
 const ROOT = path.resolve(import.meta.dirname, '../../..');
 const PAGE = path.join(ROOT, 'public/canal-drive');
@@ -88,7 +88,7 @@ test('extract own look: counts agree with the tiers; every thumbnail ships with 
   for (const t of Object.values(look.types)) for (const l of t.links) assert.ok(fs.existsSync(path.join(PAGE, l.href.split(/[?#]/)[0])), l.href);
 });
 
-test('extract own look regressions: Nieuw-West and Bellamy buurten have their own look, Cornelis Schuytbuurt (KD02) does not', { skip: !hasLook && 'extract predates the own-look tier' }, () => {
+test('extract own look regressions: Nieuw-West and Bellamy buurten have their own look, Cornelis Schuytbuurt (KD02) barely does, Driehoekbuurt (AB02) does not', { skip: !hasLook && 'extract predates the own-look tier' }, () => {
   const { feats, items } = load();
   const by = (code: string) => feats.find(f => f.code === code)!;
   const osdorp = by('FK05').look!;
@@ -99,5 +99,22 @@ test('extract own look regressions: Nieuw-West and Bellamy buurten have their ow
   assert.ok(bellamy.length >= 1, 'a buurt drawn by Bellamy house types');
   const kd02 = by('KD02');
   assert.equal(kd02.name, 'Cornelis Schuytbuurt');
-  assert.equal(kd02.look!.status, 'none');
+  // KD02 gained one museum-quarter house type (4 of 743 pands, 2026-11); it is drawn but a sliver.
+  assert.equal(kd02.look!.status, 'drawn');
+  assert.deepEqual(kd02.look!.types.map(([id]) => id), ['museum-cs-1900-gable-balcony']);
+  assert.ok(kd02.look!.share < 0.01, 'a sliver, not a look');
+  const ab02 = by('AB02');
+  assert.equal(ab02.name, 'Driehoekbuurt');
+  assert.equal(ab02.look!.status, 'none');
+});
+
+test('lookPublishPlan (#359): a missing manifest or a smaller set keeps the published thumbnails', () => {
+  const published = ['a.jpg', 'b.jpg', 'c.jpg'];
+  assert.equal(lookPublishPlan({ manifestPresent: false, published, next: [] }).replace, false);
+  assert.match(lookPublishPlan({ manifestPresent: false, published, next: [] }).reason!, /manifest is missing/);
+  assert.equal(lookPublishPlan({ manifestPresent: true, published, next: [] }).replace, false, 'empty manifest');
+  assert.equal(lookPublishPlan({ manifestPresent: true, published, next: ['a.jpg', 'b.jpg'] }).replace, false, 'fewer than published');
+  assert.equal(lookPublishPlan({ manifestPresent: true, published, next: ['a.jpg', 'b.jpg'], allowShrink: true }).replace, true);
+  assert.equal(lookPublishPlan({ manifestPresent: true, published, next: [...published, 'd.jpg'] }).replace, true);
+  assert.equal(lookPublishPlan({ manifestPresent: true, published: [], next: [] }).replace, true, 'first publish');
 });

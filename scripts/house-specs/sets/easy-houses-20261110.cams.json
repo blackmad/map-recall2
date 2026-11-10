@@ -1,0 +1,580 @@
+[
+ {
+  "slug": "langestraat-175320",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012175320"
+  ],
+  "eye": [
+   4.89259125298302,
+   52.3777949473626
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.8924189969306715,
+   52.37774600238779
+  ],
+  "targetAlt": 3.5484033129069132,
+  "vfov": 60,
+  "heading": 245,
+  "pitch": 5,
+  "distM": 13,
+  "pano": {
+   "id": "TMX7316010203-001544_pano_0000_000187",
+   "lng": 4.89259125298302,
+   "lat": 52.3777949473626,
+   "date": "2020-01-08",
+   "distM": 12.9,
+   "obliquityDeg": 59,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001544_pano_0000_000187/?width=1280&aspect=1.60&fov=85&heading=245&pitch=5"
+ },
+ {
+  "slug": "langestraat-175318",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012175318"
+  ],
+  "eye": [
+   4.89250986039905,
+   52.3777199904262
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.892513996928186,
+   52.377832502389566
+  ],
+  "targetAlt": 3.5627256825275886,
+  "vfov": 60,
+  "heading": 2,
+  "pitch": 5,
+  "distM": 13,
+  "pano": {
+   "id": "TMX7316010203-001544_pano_0000_000189",
+   "lng": 4.89250986039905,
+   "lat": 52.3777199904262,
+   "date": "2020-01-08",
+   "distM": 12.5,
+   "obliquityDeg": 57,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001544_pano_0000_000189/?width=1280&aspect=1.60&fov=85&heading=2&pitch=5"
+ },
+ {
+  "slug": "langestraat-168136",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012168136"
+  ],
+  "eye": [
+   4.89066544228266,
+   52.3796727030466
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.890485996925328,
+   52.37933350241002
+  ],
+  "targetAlt": 2.6146935967990905,
+  "vfov": 60,
+  "heading": 198,
+  "pitch": 0,
+  "distM": 40,
+  "pano": {
+   "id": "TMX7316010203-002980_pano_0007_000008",
+   "lng": 4.89066544228266,
+   "lat": 52.3796727030466,
+   "date": "2023-02-20",
+   "distM": 39.7,
+   "obliquityDeg": 0,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002980_pano_0007_000008/?width=1280&aspect=1.60&fov=85&heading=198&pitch=0"
+ },
+ {
+  "slug": "nieuwmarkt-182857",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012182857"
+  ],
+  "eye": [
+   4.90006054484821,
+   52.3725124451061
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.899715496977619,
+   52.37260450233954
+  ],
+  "targetAlt": 3.1048582611781907,
+  "vfov": 60,
+  "heading": 294,
+  "pitch": 1,
+  "distM": 26,
+  "pano": {
+   "id": "TMX7316010203-001660_pano_0000_002079",
+   "lng": 4.90006054484821,
+   "lat": 52.3725124451061,
+   "date": "2020-04-21",
+   "distM": 25.6,
+   "obliquityDeg": 1,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001660_pano_0000_002079/?width=1280&aspect=1.60&fov=85&heading=294&pitch=1"
+ },
+ {
+  "slug": "nieuwmarkt-182857-b",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012182857"
+  ],
+  "eye": [
+   4.89999047255115,
+   52.3724360223933
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.899715496977619,
+   52.37260450233954
+  ],
+  "targetAlt": 3.0747104851452915,
+  "vfov": 60,
+  "heading": 315,
+  "pitch": 1,
+  "distM": 26,
+  "pano": {
+   "id": "TMX7316010203-001660_pano_0000_002077",
+   "lng": 4.89999047255115,
+   "lat": 52.3724360223933,
+   "date": "2020-04-21",
+   "distM": 26.5,
+   "obliquityDeg": 21,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001660_pano_0000_002077/?width=1280&aspect=1.60&fov=85&heading=315&pitch=1"
+ },
+ {
+  "slug": "nieuwmarkt-row",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012182849",
+   "NL.IMBAG.Pand.0363100012171851",
+   "NL.IMBAG.Pand.0363100012171854",
+   "NL.IMBAG.Pand.0363100012182848",
+   "NL.IMBAG.Pand.0363100012182857"
+  ],
+  "eye": [
+   4.90007667279062,
+   52.3728777588451
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.8999019970087705,
+   52.372856502338614
+  ],
+  "targetAlt": 3.576468265235291,
+  "vfov": 60,
+  "heading": 259,
+  "pitch": 5,
+  "distM": 12,
+  "pano": {
+   "id": "TMX7316010203-001051_pano_0002_001075",
+   "lng": 4.90007667279062,
+   "lat": 52.3728777588451,
+   "date": "2019-01-14",
+   "distM": 12.1,
+   "obliquityDeg": 34,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001051_pano_0002_001075/?width=1280&aspect=1.60&fov=85&heading=259&pitch=5"
+ },
+ {
+  "slug": "nieuwmarkt-row-b",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012182849",
+   "NL.IMBAG.Pand.0363100012171851",
+   "NL.IMBAG.Pand.0363100012171854",
+   "NL.IMBAG.Pand.0363100012182848",
+   "NL.IMBAG.Pand.0363100012182857"
+  ],
+  "eye": [
+   4.89998449318907,
+   52.3727592286021
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.8999019970087705,
+   52.372856502338614
+  ],
+  "targetAlt": 3.5741604633939623,
+  "vfov": 60,
+  "heading": 333,
+  "pitch": 5,
+  "distM": 12,
+  "pano": {
+   "id": "TMX7316010203-001051_pano_0002_001031",
+   "lng": 4.89998449318907,
+   "lat": 52.3727592286021,
+   "date": "2019-01-14",
+   "distM": 12.2,
+   "obliquityDeg": 40,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001051_pano_0002_001031/?width=1280&aspect=1.60&fov=85&heading=333&pitch=5"
+ },
+ {
+  "slug": "felix-176312",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012176312"
+  ],
+  "eye": [
+   4.88694590187812,
+   52.3732262687604
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.887499497026324,
+   52.373202002303536
+  ],
+  "targetAlt": 2.680119827660624,
+  "vfov": 60,
+  "heading": 94,
+  "pitch": 0,
+  "distM": 38,
+  "pano": {
+   "id": "TMX7316010203-002990_pano_0002_000032",
+   "lng": 4.88694590187812,
+   "lat": 52.3732262687604,
+   "date": "2023-03-06",
+   "distM": 37.8,
+   "obliquityDeg": 0,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002990_pano_0002_000032/?width=1280&aspect=1.60&fov=85&heading=94&pitch=0"
+ },
+ {
+  "slug": "felix-176312-b",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012176312"
+  ],
+  "eye": [
+   4.887160466139448,
+   52.373347502356935
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.887499497026324,
+   52.373202002303536
+  ],
+  "targetAlt": 3.015293579019821,
+  "vfov": 60,
+  "heading": 125,
+  "pitch": 1,
+  "distM": 28,
+  "pano": {
+   "id": "b_20241216_0911_Track30_Sphere_00041",
+   "lng": 4.887160466139448,
+   "lat": 52.373347502356935,
+   "date": "2024-12-16",
+   "distM": 28.2,
+   "obliquityDeg": 31,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241216_0911_Track30_Sphere_00041/?width=1280&aspect=1.60&fov=85&heading=125&pitch=1"
+ },
+ {
+  "slug": "felix-176346",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012176346"
+  ],
+  "eye": [
+   4.88608760743575,
+   52.3736945229642
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.885936997042692,
+   52.373594502307796
+  ],
+  "targetAlt": 3.471498616016242,
+  "vfov": 60,
+  "heading": 223,
+  "pitch": 4,
+  "distM": 15,
+  "pano": {
+   "id": "TMX7316010203-001178_pano_0001_000679",
+   "lng": 4.88608760743575,
+   "lat": 52.3736945229642,
+   "date": "2019-05-13",
+   "distM": 15.1,
+   "obliquityDeg": 0,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001178_pano_0001_000679/?width=1280&aspect=1.60&fov=85&heading=223&pitch=4"
+ },
+ {
+  "slug": "felix-176346-b",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012176346"
+  ],
+  "eye": [
+   4.886146296470296,
+   52.37367269559336
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.885936997042692,
+   52.373594502307796
+  ],
+  "targetAlt": 3.416868300490882,
+  "vfov": 60,
+  "heading": 239,
+  "pitch": 3,
+  "distM": 17,
+  "pano": {
+   "id": "b_20241216_0911_Track31_Sphere_00067",
+   "lng": 4.886146296470296,
+   "lat": 52.37367269559336,
+   "date": "2024-12-16",
+   "distM": 16.7,
+   "obliquityDeg": 16,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/b_20241216_0911_Track31_Sphere_00067/?width=1280&aspect=1.60&fov=85&heading=239&pitch=3"
+ },
+ {
+  "slug": "felix-169116",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012169116"
+  ],
+  "eye": [
+   4.8850032520608,
+   52.3711126182913
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.8851374970738055,
+   52.371201002266474
+  ],
+  "targetAlt": 3.531104760704966,
+  "vfov": 60,
+  "heading": 43,
+  "pitch": 4,
+  "distM": 13,
+  "pano": {
+   "id": "TMX7316060226-000022_pano_0003_000110",
+   "lng": 4.8850032520608,
+   "lat": 52.3711126182913,
+   "date": "2016-08-16",
+   "distM": 13.4,
+   "obliquityDeg": 50,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316060226-000022_pano_0003_000110/?width=1280&aspect=1.60&fov=85&heading=43&pitch=4"
+ },
+ {
+  "slug": "felix-169116-b",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012169116"
+  ],
+  "eye": [
+   4.88503421808072,
+   52.3713069310334
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.8851374970738055,
+   52.371201002266474
+  ],
+  "targetAlt": 3.5206979349423033,
+  "vfov": 60,
+  "heading": 150,
+  "pitch": 4,
+  "distM": 14,
+  "pano": {
+   "id": "TMX7316060226-000022_pano_0003_000114",
+   "lng": 4.88503421808072,
+   "lat": 52.3713069310334,
+   "date": "2016-08-16",
+   "distM": 13.7,
+   "obliquityDeg": 56,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316060226-000022_pano_0003_000114/?width=1280&aspect=1.60&fov=85&heading=150&pitch=4"
+ },
+ {
+  "slug": "felix-168578",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012168578"
+  ],
+  "eye": [
+   4.88440447649399,
+   52.3705441073922
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.884183997107558,
+   52.37034050233966
+  ],
+  "targetAlt": 3.0508980884732644,
+  "vfov": 60,
+  "heading": 214,
+  "pitch": 1,
+  "distM": 27,
+  "pano": {
+   "id": "TMX7316010203-001178_pano_0001_000778",
+   "lng": 4.88440447649399,
+   "lat": 52.3705441073922,
+   "date": "2019-05-13",
+   "distM": 27.2,
+   "obliquityDeg": 31,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001178_pano_0001_000778/?width=1280&aspect=1.60&fov=85&heading=214&pitch=1"
+ },
+ {
+  "slug": "vijzelstraat-180181",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012180181"
+  ],
+  "eye": [
+   4.89242442272205,
+   52.3621341914179
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.89250049722206,
+   52.36227800217079
+  ],
+  "targetAlt": 3.4126559442480398,
+  "vfov": 60,
+  "heading": 18,
+  "pitch": 3,
+  "distM": 17,
+  "pano": {
+   "id": "TMX7316010203-002952_pano_0003_000787",
+   "lng": 4.89242442272205,
+   "lat": 52.3621341914179,
+   "date": "2023-01-30",
+   "distM": 16.8,
+   "obliquityDeg": 6,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002952_pano_0003_000787/?width=1280&aspect=1.60&fov=85&heading=18&pitch=3"
+ },
+ {
+  "slug": "vijzelstraat-180181-b",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012180181"
+  ],
+  "eye": [
+   4.89256260507874,
+   52.36211439276
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.89250049722206,
+   52.36227800217079
+  ],
+  "targetAlt": 3.3473588569690653,
+  "vfov": 60,
+  "heading": 347,
+  "pitch": 3,
+  "distM": 19,
+  "pano": {
+   "id": "TMX7316010203-002952_pano_0003_000789",
+   "lng": 4.89256260507874,
+   "lat": 52.36211439276,
+   "date": "2023-01-30",
+   "distM": 18.7,
+   "obliquityDeg": 25,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-002952_pano_0003_000789/?width=1280&aspect=1.60&fov=85&heading=347&pitch=3"
+ },
+ {
+  "slug": "vijzelstraat-167483",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012167483"
+  ],
+  "eye": [
+   4.89457190914361,
+   52.3633955132203
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.894402497200904,
+   52.363355002195526
+  ],
+  "targetAlt": 3.5673798989804624,
+  "vfov": 60,
+  "heading": 249,
+  "pitch": 5,
+  "distM": 12,
+  "pano": {
+   "id": "TMX7316010203-001900_pano_0005_000138",
+   "lng": 4.89457190914361,
+   "lat": 52.3633955132203,
+   "date": "2020-08-31",
+   "distM": 12.4,
+   "obliquityDeg": 57,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001900_pano_0005_000138/?width=1280&aspect=1.60&fov=85&heading=249&pitch=5"
+ },
+ {
+  "slug": "vijzelstraat-171023",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012171023"
+  ],
+  "eye": [
+   4.89541169472786,
+   52.3632845100317
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.895561497197316,
+   52.363198002192114
+  ],
+  "targetAlt": 3.5101554110359503,
+  "vfov": 60,
+  "heading": 134,
+  "pitch": 4,
+  "distM": 14,
+  "pano": {
+   "id": "TMX7316010203-001900_pano_0005_000150",
+   "lng": 4.89541169472786,
+   "lat": 52.3632845100317,
+   "date": "2020-08-31",
+   "distM": 14,
+   "obliquityDeg": 58,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001900_pano_0005_000150/?width=1280&aspect=1.60&fov=85&heading=134&pitch=4"
+ },
+ {
+  "slug": "vijzelstraat-171023-b",
+  "ids": [
+   "NL.IMBAG.Pand.0363100012171023"
+  ],
+  "eye": [
+   4.89575981979939,
+   52.363239868857
+  ],
+  "eyeAlt": 4,
+  "target": [
+   4.895561497197316,
+   52.363198002192114
+  ],
+  "targetAlt": 3.501001717750049,
+  "vfov": 60,
+  "heading": 251,
+  "pitch": 4,
+  "distM": 14,
+  "pano": {
+   "id": "TMX7316010203-001900_pano_0005_000155",
+   "lng": 4.89575981979939,
+   "lat": 52.363239868857,
+   "date": "2020-08-31",
+   "distM": 14.3,
+   "obliquityDeg": 60,
+   "surface": "L"
+  },
+  "photoUrl": "https://api.data.amsterdam.nl/panorama/thumbnail/TMX7316010203-001900_pano_0005_000155/?width=1280&aspect=1.60&fov=85&heading=251&pitch=4"
+ }
+]

@@ -1,0 +1,271 @@
+[
+ {
+  "pandId": "0363100012116526",
+  "key": "v-116526-nassaukade",
+  "case": "116526 Nassaukade corner (blank wall, ?houseSpecs=0)",
+  "bearing": 80
+ },
+ {
+  "pandId": "0363100012182850",
+  "key": "v-nieuwmarkt-182850",
+  "case": "Nieuwmarkt 4-22 row",
+  "bearing": 115
+ },
+ {
+  "pandId": "0363100012182851",
+  "key": "v-nieuwmarkt-182851",
+  "case": "Nieuwmarkt 4-22 row",
+  "bearing": 115
+ },
+ {
+  "pandId": "0363100012182852",
+  "key": "v-nieuwmarkt-182852",
+  "case": "Nieuwmarkt 4-22 row",
+  "bearing": 115
+ },
+ {
+  "pandId": "0363100012182853",
+  "key": "v-nieuwmarkt-182853",
+  "case": "Nieuwmarkt 4-22 row",
+  "bearing": 115
+ },
+ {
+  "pandId": "0363100012182854",
+  "key": "v-nieuwmarkt-182854",
+  "case": "Nieuwmarkt 4-22 row",
+  "bearing": 115
+ },
+ {
+  "pandId": "0363100012182855",
+  "key": "v-nieuwmarkt-182855",
+  "case": "Nieuwmarkt 4-22 row",
+  "bearing": 115
+ },
+ {
+  "pandId": "0363100012182856",
+  "key": "v-nieuwmarkt-182856",
+  "case": "Nieuwmarkt 4-22 row",
+  "bearing": 115
+ },
+ {
+  "pandId": "0363100012182857",
+  "key": "v-nieuwmarkt-182857",
+  "case": "Nieuwmarkt 4-22 row",
+  "bearing": 115
+ },
+ {
+  "pandId": "0363100012182858",
+  "key": "v-nieuwmarkt-182858",
+  "case": "Nieuwmarkt 4-22 row",
+  "bearing": 115
+ },
+ {
+  "pandId": "0363100012164843",
+  "key": "v-nassau145-164843",
+  "case": "Nassaukade 145-152 (H7 row)",
+  "bearing": 85
+ },
+ {
+  "pandId": "0363100012161422",
+  "key": "v-nassau145-161422",
+  "case": "Nassaukade 145-152 (H7 row)",
+  "bearing": 85
+ },
+ {
+  "pandId": "0363100012157426",
+  "key": "v-nassau145-157426",
+  "case": "Nassaukade 145-152 (H7 row)",
+  "bearing": 85
+ },
+ {
+  "pandId": "0363100012160273",
+  "key": "v-nassau145-160273",
+  "case": "Nassaukade 145-152 (H7 row)",
+  "bearing": 85
+ },
+ {
+  "pandId": "0363100012160704",
+  "key": "v-nassau145-160704",
+  "case": "Nassaukade 145-152 (H7 row)",
+  "bearing": 85
+ },
+ {
+  "pandId": "0363100012159694",
+  "key": "v-nassau145-159694",
+  "case": "Nassaukade 145-152 (H7 row)",
+  "bearing": 85
+ },
+ {
+  "pandId": "0363100012169916",
+  "key": "v-169916",
+  "case": "169916 H1c three windows",
+  "bearing": 160
+ },
+ {
+  "pandId": "0363100012247232",
+  "key": "v-houthavenkade-26",
+  "case": "Houthavenkade 26 large recipe"
+ },
+ {
+  "pandId": "0363100012233471",
+  "key": "v-roof-stadhouderskade-233471",
+  "case": "roof offset 2026-11-08 Weteringschans/Stadhouderskade (#257)",
+  "bearing": 246
+ },
+ {
+  "pandId": "0363100012178053",
+  "key": "v-roof-geldersekade-178053",
+  "case": "roof offset 2026-11-08 Geldersekade (#257)",
+  "bearing": 50
+ },
+ {
+  "pandId": "0363100012186003",
+  "key": "a341-top-186003-e15",
+  "case": "#341 audit top",
+  "bearing": 274,
+  "at": [
+   4.891812,
+   52.3860703
+  ]
+ },
+ {
+  "pandId": "0363100012063603",
+  "key": "a341-top-063603-e19",
+  "case": "#341 audit top",
+  "bearing": 179,
+  "at": [
+   4.8491275,
+   52.3922765
+  ]
+ },
+ {
+  "pandId": "0363100012184743",
+  "key": "a341-top-184743-e26",
+  "case": "#341 audit top",
+  "bearing": 359,
+  "at": [
+   4.930919,
+   52.3677885
+  ]
+ },
+ {
+  "pandId": "0363100012129127",
+  "key": "a341-top-129127-e17",
+  "case": "#341 audit top",
+  "bearing": 250,
+  "at": [
+   4.9103075,
+   52.3555555
+  ]
+ },
+ {
+  "pandId": "0363100012184743",
+  "key": "a341-top-184743-e36",
+  "case": "#341 audit top",
+  "bearing": 359,
+  "at": [
+   4.9291305,
+   52.3677605
+  ]
+ },
+ {
+  "pandId": "0363100012184743",
+  "key": "a341-rand-184743-e34",
+  "case": "#341 audit rand",
+  "bearing": 357,
+  "at": [
+   4.929536,
+   52.367712
+  ]
+ },
+ {
+  "pandId": "0363100012151240",
+  "key": "a341-rand-151240-e1",
+  "case": "#341 audit rand",
+  "bearing": 223,
+  "at": [
+   4.860265,
+   52.3811255
+  ]
+ },
+ {
+  "pandId": "0363100012184743",
+  "key": "a341-rand-184743-e29",
+  "case": "#341 audit rand",
+  "bearing": 359,
+  "at": [
+   4.930345,
+   52.3677245
+  ]
+ },
+ {
+  "pandId": "0363100012104378",
+  "key": "a341-rand-104378-e5",
+  "case": "#341 audit rand",
+  "bearing": 217,
+  "at": [
+   4.9331395,
+   52.4013025
+  ]
+ },
+ {
+  "pandId": "0363100012088589",
+  "key": "a341-rand-088589-e16",
+  "case": "#341 audit rand",
+  "bearing": 89,
+  "at": [
+   4.8436815,
+   52.3487845
+  ]
+ },
+ {
+  "pandId": "0363100012244160",
+  "key": "a341-worst-244160-e13",
+  "case": "#341 audit worst",
+  "bearing": 357,
+  "at": [
+   4.8698895,
+   52.340565
+  ]
+ },
+ {
+  "pandId": "0363100012244160",
+  "key": "a341-worst-244160-e0",
+  "case": "#341 audit worst",
+  "bearing": 267,
+  "at": [
+   4.8687265,
+   52.3400705
+  ]
+ },
+ {
+  "pandId": "0363100012237838",
+  "key": "a341-worst-237838-e8",
+  "case": "#341 audit worst",
+  "bearing": 185,
+  "at": [
+   4.9009085,
+   52.384138
+  ]
+ },
+ {
+  "pandId": "0363100012239853",
+  "key": "a341-worst-239853-e35",
+  "case": "#341 audit worst",
+  "bearing": 191,
+  "at": [
+   4.877706,
+   52.341109
+  ]
+ },
+ {
+  "pandId": "0363100012237838",
+  "key": "a341-worst-237838-e2",
+  "case": "#341 audit worst",
+  "bearing": 51,
+  "at": [
+   4.900743,
+   52.384658
+  ]
+ }
+]

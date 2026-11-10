@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167885",
+ "address": "Bloemgracht",
+ "design": {
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h5 pand-crops/0363100012167885 (2024-12-17): dark brown brick; the generic path drew white stucco (dL 0.44)",
+   "at": "2026-11-10"
+  }
+ }
+}

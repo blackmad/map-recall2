@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T09:28:04.009Z",
+ "generatedAt": "2026-11-10T19:50:14.406Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -7009,946 +7009,6 @@
     "buildVersion": 4,
     "bytes": 31752,
     "triangles": 1496
-   }
-  },
-  {
-   "id": "chunk-face-clercq-236681",
-   "category": "street-survey",
-   "name": "face-clercq-236681",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-clercq-236681.glb?asset=60beede73a3572ff",
-   "sha256": "60beede73a3572ff3c0b46b3ea2ad70b015c241ffcf767f26ffe682934806cb1",
-   "bytes": 547020,
-   "triangles": 24975,
-   "primitives": 24,
-   "instance": {
-    "anchor": [
-     4.873450301959339,
-     52.37176734875895
-    ],
-    "northOffsetDegrees": 338.9669,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -48.539,
-     0,
-     -24.095
-    ],
-    "max": [
-     33.807,
-     17.655,
-     1.236
-    ]
-   },
-   "height": 17.655,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012153066",
-    "NL.IMBAG.Pand.0363100012236262",
-    "NL.IMBAG.Pand.0363100012158603",
-    "NL.IMBAG.Pand.0363100012159182",
-    "NL.IMBAG.Pand.0363100012236681",
-    "NL.IMBAG.Pand.0363100012157618",
-    "NL.IMBAG.Pand.0363100012156454",
-    "NL.IMBAG.Pand.0363100012156960",
-    "NL.IMBAG.Pand.0363100012116526"
-   ],
-   "replaces": [
-    "ordinary-0363100012153066",
-    "ordinary-0363100012236262",
-    "ordinary-0363100012158603",
-    "ordinary-0363100012159182",
-    "ordinary-0363100012236681",
-    "ordinary-0363100012157618",
-    "ordinary-0363100012156454",
-    "ordinary-0363100012156960",
-    "ordinary-0363100012116526"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8729634,
-        52.3717275
-       ],
-       [
-        4.8729321,
-        52.3717457
-       ],
-       [
-        4.8728295,
-        52.3717703
-       ],
-       [
-        4.8727542,
-        52.3716524
-       ],
-       [
-        4.8728067,
-        52.3716206
-       ],
-       [
-        4.8729177,
-        52.3716466
-       ],
-       [
-        4.8729192,
-        52.3716454
-       ],
-       [
-        4.8730017,
-        52.3716643
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8731818,
-        52.3718302
-       ],
-       [
-        4.8731299,
-        52.3718183
-       ],
-       [
-        4.873123,
-        52.3718298
-       ],
-       [
-        4.8730927,
-        52.3718228
-       ],
-       [
-        4.8731279,
-        52.3717651
-       ],
-       [
-        4.8729634,
-        52.3717275
-       ],
-       [
-        4.8730017,
-        52.3716643
-       ],
-       [
-        4.8732482,
-        52.3717207
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8732589,
-        52.3718575
-       ],
-       [
-        4.8731767,
-        52.3718387
-       ],
-       [
-        4.8732482,
-        52.3717207
-       ],
-       [
-        4.8733304,
-        52.3717395
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8733066,
-        52.3719379
-       ],
-       [
-        4.8732357,
-        52.3718956
-       ],
-       [
-        4.8733304,
-        52.3717395
-       ],
-       [
-        4.8734151,
-        52.3717588
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8733047,
-        52.3719404
-       ],
-       [
-        4.8733066,
-        52.3719379
-       ],
-       [
-        4.8734151,
-        52.3717588
-       ],
-       [
-        4.8735777,
-        52.371796
-       ],
-       [
-        4.8735,
-        52.371927
-       ],
-       [
-        4.8734173,
-        52.3719081
-       ],
-       [
-        4.873373,
-        52.3719811
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8735859,
-        52.3719226
-       ],
-       [
-        4.8735125,
-        52.3719059
-       ],
-       [
-        4.8735777,
-        52.371796
-       ],
-       [
-        4.8736522,
-        52.3718131
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8736618,
-        52.37194
-       ],
-       [
-        4.8735859,
-        52.3719226
-       ],
-       [
-        4.8736522,
-        52.3718131
-       ],
-       [
-        4.8737282,
-        52.3718304
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8737398,
-        52.3719542
-       ],
-       [
-        4.8736638,
-        52.3719368
-       ],
-       [
-        4.8737282,
-        52.3718304
-       ],
-       [
-        4.8738042,
-        52.3718478
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.873842,
-        52.3719907
-       ],
-       [
-        4.8737218,
-        52.3719839
-       ],
-       [
-        4.8738042,
-        52.3718478
-       ],
-       [
-        4.8738624,
-        52.3718611
-       ],
-       [
-        4.873864,
-        52.3718606
-       ],
-       [
-        4.8738783,
-        52.3718767
-       ],
-       [
-        4.8738768,
-        52.3718772
-       ],
-       [
-        4.8738538,
-        52.3719438
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "clercq-153066",
-     "pandId": "0363100012153066",
-     "buildingId": "NL.IMBAG.Pand.0363100012153066",
-     "address": "De Clercqstraat 22",
-     "frontage": {
-      "x0": -46.774,
-      "x1": -38.101,
-      "widthM": 8.673
-     },
-     "bounds": {
-      "min": [
-       -48.539,
-       0,
-       -15.447
-      ],
-      "max": [
-       -32.548,
-       16.303,
-       0.871
-      ]
-     },
-     "triangles": 1044,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 87
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 192
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 436
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 20
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 0,
-       "triangleCount": 172
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 0,
-       "triangleCount": 96
-      },
-      {
-       "primitive": 19,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 21,
-       "firstTriangle": 0,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 22,
-       "firstTriangle": 0,
-       "triangleCount": 13
-      }
-     ]
-    },
-    {
-     "recipeId": "clercq-236262",
-     "pandId": "0363100012236262",
-     "buildingId": "NL.IMBAG.Pand.0363100012236262",
-     "address": "De Clercqstraat 18",
-     "frontage": {
-      "x0": -32.632,
-      "x1": -14.709,
-      "widthM": 17.924
-     },
-     "bounds": {
-      "min": [
-       -32.635,
-       0,
-       -14.522
-      ],
-      "max": [
-       -14.565,
-       16.398,
-       0.547
-      ]
-     },
-     "triangles": 6636,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 176
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 192,
-       "triangleCount": 1404
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 2704
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 1404
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 12,
-       "triangleCount": 56
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 96,
-       "triangleCount": 814
-      },
-      {
-       "primitive": 21,
-       "firstTriangle": 4,
-       "triangleCount": 62
-      },
-      {
-       "primitive": 22,
-       "firstTriangle": 13,
-       "triangleCount": 16
-      }
-     ]
-    },
-    {
-     "recipeId": "clercq-158603",
-     "pandId": "0363100012158603",
-     "buildingId": "NL.IMBAG.Pand.0363100012158603",
-     "address": "De Clercqstraat 14",
-     "frontage": {
-      "x0": -14.709,
-      "x1": -8.732,
-      "widthM": 5.976
-     },
-     "bounds": {
-      "min": [
-       -14.711,
-       0,
-       -14.117
-      ],
-      "max": [
-       -8.577,
-       16.375,
-       0.6
-      ]
-     },
-     "triangles": 2513,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 176,
-       "triangleCount": 59
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 1596,
-       "triangleCount": 492
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 2704,
-       "triangleCount": 1012
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 1404,
-       "triangleCount": 432
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 172,
-       "triangleCount": 128
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 68,
-       "triangleCount": 80
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 910,
-       "triangleCount": 264
-      },
-      {
-       "primitive": 21,
-       "firstTriangle": 66,
-       "triangleCount": 18
-      },
-      {
-       "primitive": 22,
-       "firstTriangle": 29,
-       "triangleCount": 4
-      }
-     ]
-    },
-    {
-     "recipeId": "clercq-159182",
-     "pandId": "0363100012159182",
-     "buildingId": "NL.IMBAG.Pand.0363100012159182",
-     "address": "De Clercqstraat 12",
-     "frontage": {
-      "x0": -8.732,
-      "x1": -2.578,
-      "widthM": 6.154
-     },
-     "bounds": {
-      "min": [
-       -8.735,
-       0,
-       -21.226
-      ],
-      "max": [
-       -2.34,
-       16.393,
-       0.652
-      ]
-     },
-     "triangles": 2319,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 235,
-       "triangleCount": 79
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 2088,
-       "triangleCount": 480
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 3716,
-       "triangleCount": 864
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 1836,
-       "triangleCount": 432
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 148,
-       "triangleCount": 192
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 1174,
-       "triangleCount": 234
-      },
-      {
-       "primitive": 21,
-       "firstTriangle": 84,
-       "triangleCount": 18
-      },
-      {
-       "primitive": 22,
-       "firstTriangle": 33,
-       "triangleCount": 8
-      }
-     ]
-    },
-    {
-     "recipeId": "clercq-236681",
-     "pandId": "0363100012236681",
-     "buildingId": "NL.IMBAG.Pand.0363100012236681",
-     "address": "De Clercqstraat 10",
-     "frontage": {
-      "x0": -2.578,
-      "x1": 9.245,
-      "widthM": 11.823
-     },
-     "bounds": {
-      "min": [
-       -2.581,
-       0,
-       -24.095
-      ],
-      "max": [
-       9.519,
-       16.986,
-       0.754
-      ]
-     },
-     "triangles": 4944,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 314,
-       "triangleCount": 256
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 2568,
-       "triangleCount": 936
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 4580,
-       "triangleCount": 2080
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 2268,
-       "triangleCount": 576
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 328
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 0,
-       "triangleCount": 190
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 1408,
-       "triangleCount": 528
-      },
-      {
-       "primitive": 21,
-       "firstTriangle": 102,
-       "triangleCount": 21
-      },
-      {
-       "primitive": 22,
-       "firstTriangle": 41,
-       "triangleCount": 29
-      }
-     ]
-    },
-    {
-     "recipeId": "clercq-157618",
-     "pandId": "0363100012157618",
-     "buildingId": "NL.IMBAG.Pand.0363100012157618",
-     "address": "De Clercqstraat 6",
-     "frontage": {
-      "x0": 9.245,
-      "x1": 14.661,
-      "widthM": 5.416
-     },
-     "bounds": {
-      "min": [
-       9.241,
-       0,
-       -12.908
-      ],
-      "max": [
-       14.806,
-       17.632,
-       0.802
-      ]
-     },
-     "triangles": 2043,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 25
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 240
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 436,
-       "triangleCount": 1004
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 300,
-       "triangleCount": 560
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 1936,
-       "triangleCount": 184
-      },
-      {
-       "primitive": 20,
-       "firstTriangle": 0,
-       "triangleCount": 26
-      },
-      {
-       "primitive": 23,
-       "firstTriangle": 0,
-       "triangleCount": 4
-      }
-     ]
-    },
-    {
-     "recipeId": "clercq-156454",
-     "pandId": "0363100012156454",
-     "buildingId": "NL.IMBAG.Pand.0363100012156454",
-     "address": "De Clercqstraat 4",
-     "frontage": {
-      "x0": 14.661,
-      "x1": 20.184,
-      "widthM": 5.523
-     },
-     "bounds": {
-      "min": [
-       14.657,
-       0,
-       -12.862
-      ],
-      "max": [
-       20.331,
-       17.655,
-       0.851
-      ]
-     },
-     "triangles": 2137,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 25,
-       "triangleCount": 37
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 240,
-       "triangleCount": 264
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 1440,
-       "triangleCount": 1004
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 860,
-       "triangleCount": 604
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 2120,
-       "triangleCount": 184
-      },
-      {
-       "primitive": 18,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 20,
-       "firstTriangle": 26,
-       "triangleCount": 27
-      },
-      {
-       "primitive": 23,
-       "firstTriangle": 4,
-       "triangleCount": 5
-      }
-     ]
-    },
-    {
-     "recipeId": "clercq-156960",
-     "pandId": "0363100012156960",
-     "buildingId": "NL.IMBAG.Pand.0363100012156960",
-     "address": "De Clercqstraat 2",
-     "frontage": {
-      "x0": 20.184,
-      "x1": 25.712,
-      "widthM": 5.527
-     },
-     "bounds": {
-      "min": [
-       20.181,
-       0,
-       -12.436
-      ],
-      "max": [
-       25.853,
-       17.572,
-       1.236
-      ]
-     },
-     "triangles": 2126,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 62,
-       "triangleCount": 18
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 504,
-       "triangleCount": 240
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 2444,
-       "triangleCount": 1004
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 2844,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 20
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 0,
-       "triangleCount": 60
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 1464,
-       "triangleCount": 432
-      },
-      {
-       "primitive": 16,
-       "firstTriangle": 340,
-       "triangleCount": 128
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 2304,
-       "triangleCount": 184
-      },
-      {
-       "primitive": 20,
-       "firstTriangle": 53,
-       "triangleCount": 26
-      },
-      {
-       "primitive": 23,
-       "firstTriangle": 9,
-       "triangleCount": 2
-      }
-     ]
-    },
-    {
-     "recipeId": "clercq-116526",
-     "pandId": "0363100012116526",
-     "buildingId": "NL.IMBAG.Pand.0363100012116526",
-     "address": "Nassaukade 152",
-     "frontage": {
-      "x0": 25.712,
-      "x1": 29.942,
-      "widthM": 4.231
-     },
-     "bounds": {
-      "min": [
-       25.708,
-       0,
-       -15.88
-      ],
-      "max": [
-       33.807,
-       17.655,
-       0.707
-      ]
-     },
-     "triangles": 1213,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 80,
-       "triangleCount": 60
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 744,
-       "triangleCount": 108
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 3448,
-       "triangleCount": 712
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 2856,
-       "triangleCount": 148
-      },
-      {
-       "primitive": 17,
-       "firstTriangle": 2488,
-       "triangleCount": 152
-      },
-      {
-       "primitive": 20,
-       "firstTriangle": 79,
-       "triangleCount": 23
-      },
-      {
-       "primitive": 23,
-       "firstTriangle": 11,
-       "triangleCount": 10
-      }
-     ]
-    }
-   ],
-   "lod2": {
-    "sourceHash": "60beede73a3572ff",
-    "buildVersion": 4,
-    "bytes": 43100,
-    "triangles": 1483
    }
   },
   {
@@ -107873,6 +106933,1576 @@
     "bytes": 35208,
     "triangles": 1475
    }
+  },
+  {
+   "id": "chunk-face-nassau-145-152",
+   "category": "street-survey",
+   "name": "face-nassau-145-152",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-nassau-145-152.glb?asset=2643153a1d410f2f",
+   "sha256": "2643153a1d410f2f5ab2d1144506e15cb357b6aebd7c790d7b7a633358bc8d21",
+   "bytes": 403792,
+   "triangles": 16761,
+   "primitives": 20,
+   "instance": {
+    "anchor": [
+     4.873830980603322,
+     52.3721577044105
+    ],
+    "northOffsetDegrees": 270.2956,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -19.927,
+     0,
+     -15.494
+    ],
+    "max": [
+     21.062,
+     18.34,
+     2.195
+    ]
+   },
+   "height": 18.34,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012164843",
+    "NL.IMBAG.Pand.0363100012161422",
+    "NL.IMBAG.Pand.0363100012157426",
+    "NL.IMBAG.Pand.0363100012160273",
+    "NL.IMBAG.Pand.0363100012160704",
+    "NL.IMBAG.Pand.0363100012159694"
+   ],
+   "replaces": [
+    "ordinary-0363100012164843",
+    "ordinary-0363100012161422",
+    "ordinary-0363100012157426",
+    "ordinary-0363100012160273",
+    "ordinary-0363100012160704",
+    "ordinary-0363100012159694"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.873834,
+        52.3720438
+       ],
+       [
+        4.8736288,
+        52.3720324
+       ],
+       [
+        4.8736373,
+        52.3719792
+       ],
+       [
+        4.873842,
+        52.3719907
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8738244,
+        52.3720984
+       ],
+       [
+        4.8736335,
+        52.3720919
+       ],
+       [
+        4.8736439,
+        52.3720332
+       ],
+       [
+        4.873834,
+        52.3720438
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8738243,
+        52.3721532
+       ],
+       [
+        4.8736305,
+        52.3721544
+       ],
+       [
+        4.8736335,
+        52.3720919
+       ],
+       [
+        4.8738244,
+        52.3720984
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8738254,
+        52.3722184
+       ],
+       [
+        4.8736318,
+        52.3722304
+       ],
+       [
+        4.8736305,
+        52.3721544
+       ],
+       [
+        4.8738243,
+        52.3721532
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8738337,
+        52.3722702
+       ],
+       [
+        4.8738342,
+        52.3722736
+       ],
+       [
+        4.8736098,
+        52.3722907
+       ],
+       [
+        4.8736044,
+        52.3722567
+       ],
+       [
+        4.8736373,
+        52.3722547
+       ],
+       [
+        4.8736318,
+        52.3722304
+       ],
+       [
+        4.8738254,
+        52.3722184
+       ],
+       [
+        4.8738292,
+        52.3722422
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8738451,
+        52.372327
+       ],
+       [
+        4.8736569,
+        52.3723476
+       ],
+       [
+        4.8736448,
+        52.372288
+       ],
+       [
+        4.8738342,
+        52.3722736
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "nassau-164843",
+     "pandId": "0363100012164843",
+     "buildingId": "NL.IMBAG.Pand.0363100012164843",
+     "address": "Nassaukade 150",
+     "frontage": {
+      "x0": -18.581,
+      "x1": -12.667,
+      "widthM": 5.913
+     },
+     "bounds": {
+      "min": [
+       -19.927,
+       0,
+       -13.7
+      ],
+      "max": [
+       -12.659,
+       18.34,
+       2.195
+      ]
+     },
+     "triangles": 2977,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 828
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 73
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 576
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 1172
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 210
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-161422",
+     "pandId": "0363100012161422",
+     "buildingId": "NL.IMBAG.Pand.0363100012161422",
+     "address": "Nassaukade 149",
+     "frontage": {
+      "x0": -12.667,
+      "x1": -6.602,
+      "widthM": 6.065
+     },
+     "bounds": {
+      "min": [
+       -13.917,
+       0,
+       -13.408
+      ],
+      "max": [
+       -6.578,
+       18.249,
+       0.726
+      ]
+     },
+     "triangles": 2765,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 828,
+       "triangleCount": 792
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 1092
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1172,
+       "triangleCount": 700
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 210,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 8,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 2,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-157426",
+     "pandId": "0363100012157426",
+     "buildingId": "NL.IMBAG.Pand.0363100012157426",
+     "address": "Nassaukade 148",
+     "frontage": {
+      "x0": -6.602,
+      "x1": -0.505,
+      "widthM": 6.097
+     },
+     "bounds": {
+      "min": [
+       -7.389,
+       0,
+       -13.677
+      ],
+      "max": [
+       -0.434,
+       18.26,
+       0.322
+      ]
+     },
+     "triangles": 2764,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1620,
+       "triangleCount": 48
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 26
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 1284
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 1872,
+       "triangleCount": 924
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 24,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 342,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 17,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 6,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-160273",
+     "pandId": "0363100012160273",
+     "buildingId": "NL.IMBAG.Pand.0363100012160273",
+     "address": "Nassaukade 147",
+     "frontage": {
+      "x0": -0.505,
+      "x1": 6.75,
+      "widthM": 7.255
+     },
+     "bounds": {
+      "min": [
+       -0.506,
+       0,
+       -13.688
+      ],
+      "max": [
+       8.015,
+       17.883,
+       0.334
+      ]
+     },
+     "triangles": 2820,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 156,
+       "triangleCount": 516
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 1668,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1284,
+       "triangleCount": 732
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 2796,
+       "triangleCount": 956
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 156,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 522,
+       "triangleCount": 188
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 27,
+       "triangleCount": 15
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-160704",
+     "pandId": "0363100012160704",
+     "buildingId": "NL.IMBAG.Pand.0363100012160704",
+     "address": "Nassaukade 146",
+     "frontage": {
+      "x0": 6.75,
+      "x1": 12.893,
+      "widthM": 6.143
+     },
+     "bounds": {
+      "min": [
+       6.713,
+       0,
+       -15.494
+      ],
+      "max": [
+       14.721,
+       18.31,
+       0.749
+      ]
+     },
+     "triangles": 2750,
+     "ranges": [
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 2016,
+       "triangleCount": 1212
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 3752,
+       "triangleCount": 1136
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 288,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 710,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 42,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 4,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 12,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "nassau-159694",
+     "pandId": "0363100012159694",
+     "buildingId": "NL.IMBAG.Pand.0363100012159694",
+     "address": "Nassaukade 145",
+     "frontage": {
+      "x0": 12.893,
+      "x1": 18.846,
+      "widthM": 5.953
+     },
+     "bounds": {
+      "min": [
+       12.846,
+       0,
+       -12.755
+      ],
+      "max": [
+       21.062,
+       18.275,
+       1.563
+      ]
+     },
+     "triangles": 2685,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 1812,
+       "triangleCount": 792
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 38
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1092,
+       "triangleCount": 996
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 4888,
+       "triangleCount": 700
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 902,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 51,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 10,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 19,
+       "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-clercq-236681",
+   "category": "street-survey",
+   "name": "face-clercq-236681",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-clercq-236681.glb?asset=169cb93eadced4bd",
+   "sha256": "169cb93eadced4bd6511ec928f8d401da25cd37b75a56b71c5032492e768cb00",
+   "bytes": 628300,
+   "triangles": 28853,
+   "primitives": 28,
+   "instance": {
+    "anchor": [
+     4.873450301959339,
+     52.37176734875895
+    ],
+    "northOffsetDegrees": 338.9669,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -48.539,
+     0,
+     -24.095
+    ],
+    "max": [
+     34.073,
+     17.655,
+     1.236
+    ]
+   },
+   "height": 17.655,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012153066",
+    "NL.IMBAG.Pand.0363100012236262",
+    "NL.IMBAG.Pand.0363100012158603",
+    "NL.IMBAG.Pand.0363100012159182",
+    "NL.IMBAG.Pand.0363100012236681",
+    "NL.IMBAG.Pand.0363100012157618",
+    "NL.IMBAG.Pand.0363100012156454",
+    "NL.IMBAG.Pand.0363100012156960",
+    "NL.IMBAG.Pand.0363100012116526"
+   ],
+   "replaces": [
+    "ordinary-0363100012153066",
+    "ordinary-0363100012236262",
+    "ordinary-0363100012158603",
+    "ordinary-0363100012159182",
+    "ordinary-0363100012236681",
+    "ordinary-0363100012157618",
+    "ordinary-0363100012156454",
+    "ordinary-0363100012156960",
+    "ordinary-0363100012116526"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8729634,
+        52.3717275
+       ],
+       [
+        4.8729321,
+        52.3717457
+       ],
+       [
+        4.8728295,
+        52.3717703
+       ],
+       [
+        4.8727542,
+        52.3716524
+       ],
+       [
+        4.8728067,
+        52.3716206
+       ],
+       [
+        4.8729177,
+        52.3716466
+       ],
+       [
+        4.8729192,
+        52.3716454
+       ],
+       [
+        4.8730017,
+        52.3716643
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8731818,
+        52.3718302
+       ],
+       [
+        4.8731299,
+        52.3718183
+       ],
+       [
+        4.873123,
+        52.3718298
+       ],
+       [
+        4.8730927,
+        52.3718228
+       ],
+       [
+        4.8731279,
+        52.3717651
+       ],
+       [
+        4.8729634,
+        52.3717275
+       ],
+       [
+        4.8730017,
+        52.3716643
+       ],
+       [
+        4.8732482,
+        52.3717207
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8732589,
+        52.3718575
+       ],
+       [
+        4.8731767,
+        52.3718387
+       ],
+       [
+        4.8732482,
+        52.3717207
+       ],
+       [
+        4.8733304,
+        52.3717395
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8733066,
+        52.3719379
+       ],
+       [
+        4.8732357,
+        52.3718956
+       ],
+       [
+        4.8733304,
+        52.3717395
+       ],
+       [
+        4.8734151,
+        52.3717588
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8733047,
+        52.3719404
+       ],
+       [
+        4.8733066,
+        52.3719379
+       ],
+       [
+        4.8734151,
+        52.3717588
+       ],
+       [
+        4.8735777,
+        52.371796
+       ],
+       [
+        4.8735,
+        52.371927
+       ],
+       [
+        4.8734173,
+        52.3719081
+       ],
+       [
+        4.873373,
+        52.3719811
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8735859,
+        52.3719226
+       ],
+       [
+        4.8735125,
+        52.3719059
+       ],
+       [
+        4.8735777,
+        52.371796
+       ],
+       [
+        4.8736522,
+        52.3718131
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8736618,
+        52.37194
+       ],
+       [
+        4.8735859,
+        52.3719226
+       ],
+       [
+        4.8736522,
+        52.3718131
+       ],
+       [
+        4.8737282,
+        52.3718304
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8737398,
+        52.3719542
+       ],
+       [
+        4.8736638,
+        52.3719368
+       ],
+       [
+        4.8737282,
+        52.3718304
+       ],
+       [
+        4.8738042,
+        52.3718478
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.873842,
+        52.3719907
+       ],
+       [
+        4.8737218,
+        52.3719839
+       ],
+       [
+        4.8738042,
+        52.3718478
+       ],
+       [
+        4.8738624,
+        52.3718611
+       ],
+       [
+        4.873864,
+        52.3718606
+       ],
+       [
+        4.8738783,
+        52.3718767
+       ],
+       [
+        4.8738768,
+        52.3718772
+       ],
+       [
+        4.8738538,
+        52.3719438
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "clercq-153066",
+     "pandId": "0363100012153066",
+     "buildingId": "NL.IMBAG.Pand.0363100012153066",
+     "address": "De Clercqstraat 22",
+     "frontage": {
+      "x0": -46.774,
+      "x1": -38.101,
+      "widthM": 8.673
+     },
+     "bounds": {
+      "min": [
+       -48.539,
+       0,
+       -15.447
+      ],
+      "max": [
+       -32.548,
+       16.303,
+       0.871
+      ]
+     },
+     "triangles": 1044,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 87
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 436
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-236262",
+     "pandId": "0363100012236262",
+     "buildingId": "NL.IMBAG.Pand.0363100012236262",
+     "address": "De Clercqstraat 18",
+     "frontage": {
+      "x0": -32.632,
+      "x1": -14.709,
+      "widthM": 17.924
+     },
+     "bounds": {
+      "min": [
+       -32.635,
+       0,
+       -14.522
+      ],
+      "max": [
+       -14.565,
+       16.398,
+       0.547
+      ]
+     },
+     "triangles": 6636,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 192,
+       "triangleCount": 1548
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 2704
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 1260
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 12,
+       "triangleCount": 56
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 96,
+       "triangleCount": 814
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 4,
+       "triangleCount": 62
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 13,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-158603",
+     "pandId": "0363100012158603",
+     "buildingId": "NL.IMBAG.Pand.0363100012158603",
+     "address": "De Clercqstraat 14",
+     "frontage": {
+      "x0": -14.709,
+      "x1": -8.732,
+      "widthM": 5.976
+     },
+     "bounds": {
+      "min": [
+       -14.711,
+       0,
+       -14.117
+      ],
+      "max": [
+       -8.577,
+       16.375,
+       0.6
+      ]
+     },
+     "triangles": 2513,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 176,
+       "triangleCount": 59
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1740,
+       "triangleCount": 564
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2704,
+       "triangleCount": 1012
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1260,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 172,
+       "triangleCount": 128
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 68,
+       "triangleCount": 80
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 910,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 66,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 29,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-159182",
+     "pandId": "0363100012159182",
+     "buildingId": "NL.IMBAG.Pand.0363100012159182",
+     "address": "De Clercqstraat 12",
+     "frontage": {
+      "x0": -8.732,
+      "x1": -2.578,
+      "widthM": 6.154
+     },
+     "bounds": {
+      "min": [
+       -8.735,
+       0,
+       -21.226
+      ],
+      "max": [
+       -2.34,
+       16.393,
+       0.652
+      ]
+     },
+     "triangles": 2319,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 235,
+       "triangleCount": 79
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2304,
+       "triangleCount": 552
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 3716,
+       "triangleCount": 864
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1620,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 148,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 1174,
+       "triangleCount": 234
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 84,
+       "triangleCount": 18
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 33,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-236681",
+     "pandId": "0363100012236681",
+     "buildingId": "NL.IMBAG.Pand.0363100012236681",
+     "address": "De Clercqstraat 10",
+     "frontage": {
+      "x0": -2.578,
+      "x1": 9.245,
+      "widthM": 11.823
+     },
+     "bounds": {
+      "min": [
+       -2.581,
+       0,
+       -24.095
+      ],
+      "max": [
+       9.519,
+       16.986,
+       0.754
+      ]
+     },
+     "triangles": 4944,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 314,
+       "triangleCount": 256
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2856,
+       "triangleCount": 1032
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 4580,
+       "triangleCount": 2080
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 1980,
+       "triangleCount": 480
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 328
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 190
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 1408,
+       "triangleCount": 528
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 102,
+       "triangleCount": 21
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 41,
+       "triangleCount": 29
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-157618",
+     "pandId": "0363100012157618",
+     "buildingId": "NL.IMBAG.Pand.0363100012157618",
+     "address": "De Clercqstraat 6",
+     "frontage": {
+      "x0": 9.245,
+      "x1": 14.661,
+      "widthM": 5.416
+     },
+     "bounds": {
+      "min": [
+       9.241,
+       0,
+       -12.908
+      ],
+      "max": [
+       14.806,
+       17.632,
+       0.802
+      ]
+     },
+     "triangles": 2149,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 27
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 576
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 436,
+       "triangleCount": 848
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 300,
+       "triangleCount": 488
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 1936,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-156454",
+     "pandId": "0363100012156454",
+     "buildingId": "NL.IMBAG.Pand.0363100012156454",
+     "address": "De Clercqstraat 4",
+     "frontage": {
+      "x0": 14.661,
+      "x1": 20.184,
+      "widthM": 5.523
+     },
+     "bounds": {
+      "min": [
+       14.657,
+       0,
+       -12.862
+      ],
+      "max": [
+       20.331,
+       17.655,
+       0.851
+      ]
+     },
+     "triangles": 2243,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 27,
+       "triangleCount": 39
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 576,
+       "triangleCount": 600
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1284,
+       "triangleCount": 848
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 788,
+       "triangleCount": 532
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 2120,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 22,
+       "triangleCount": 23
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 4,
+       "triangleCount": 5
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-156960",
+     "pandId": "0363100012156960",
+     "buildingId": "NL.IMBAG.Pand.0363100012156960",
+     "address": "De Clercqstraat 2",
+     "frontage": {
+      "x0": 20.184,
+      "x1": 25.712,
+      "widthM": 5.527
+     },
+     "bounds": {
+      "min": [
+       20.181,
+       0,
+       -12.436
+      ],
+      "max": [
+       25.853,
+       17.572,
+       1.236
+      ]
+     },
+     "triangles": 2232,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 66,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1176,
+       "triangleCount": 576
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2132,
+       "triangleCount": 848
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2460,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 1320,
+       "triangleCount": 360
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 340,
+       "triangleCount": 128
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 2304,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 45,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 9,
+       "triangleCount": 2
+      }
+     ]
+    },
+    {
+     "recipeId": "clercq-116526",
+     "pandId": "0363100012116526",
+     "buildingId": "NL.IMBAG.Pand.0363100012116526",
+     "address": "Nassaukade 152",
+     "frontage": {
+      "x0": 25.712,
+      "x1": 29.942,
+      "widthM": 4.231
+     },
+     "bounds": {
+      "min": [
+       25.708,
+       0,
+       -15.88
+      ],
+      "max": [
+       34.073,
+       17.655,
+       0.707
+      ]
+     },
+     "triangles": 4773,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 143
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1752,
+       "triangleCount": 1552
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 2980,
+       "triangleCount": 2188
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 36
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 2472,
+       "triangleCount": 284
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 2488,
+       "triangleCount": 464
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 67,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 11,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
   }
  ]
 }

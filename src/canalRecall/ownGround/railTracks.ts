@@ -29,6 +29,7 @@
 import earcut from 'earcut';
 import { emptyMesh, vertex, vertexNormals, type MeshArrays } from './drape.js';
 import { levelAt, type WayLevel } from './railProfile.js';
+import { inSpan, type RailSpan } from './railSpans.js';
 import { railBridgeMesh, type RailBridgeStats, type RailDeckStation, type UnderKind } from './railBridge.js';
 import type { HeightFn, Vec2 } from './surface.js';
 
@@ -207,7 +208,7 @@ export function yardReach(gap: number): number | null {
 }
 
 export interface RailMeshes { ballast: MeshArrays; track: MeshArrays; slab: MeshArrays; /** Piers, girders and railings under and beside the bridge decks (railBridge.ts; empty without `under`). */ structure: MeshArrays; stats: RailBuildStats }
-export interface RailBuildStats { ways: number; metres: number; bridgeMetres: number; levelCrossingMetres: number; byKind: Record<string, number>; /** Bridge metres drawn on the relief without a slab (railProfile.ts `plain`: no approach places the deck). */ plainBridgeMetres?: number; /** Metres on a slab off a bridge (the envelope lifted the track over RAISED_M). */ raisedMetres?: number; /** railProfile.ts stats. */ profile?: import('./railProfile.js').RailProfileStats; /** platformMeshes stats. */ platforms?: PlatformBuildStats; /** railBridge.ts stats, summed over the runs. */ structure?: RailBridgeStats }
+export interface RailBuildStats { ways: number; metres: number; bridgeMetres: number; levelCrossingMetres: number; byKind: Record<string, number>; /** Bridge metres drawn on the relief without a slab (railProfile.ts `plain`: no approach places the deck). */ plainBridgeMetres?: number; /** Metres on a slab off a bridge (the envelope lifted the track over RAISED_M). */ raisedMetres?: number; /** railProfile.ts stats. */ profile?: import('./railProfile.js').RailProfileStats; /** platformMeshes stats. */ platforms?: PlatformBuildStats; /** railBridge.ts stats, summed over the runs. */ structure?: RailBridgeStats; /** railSpans.ts: deck spans over streets on tracks off the bridges, their own metres. */ spans?: number; spanMetres?: number; /** groundCell.ts: the deck spans whose street crossing is the cell's own: where, the street's clearance under the floor, the span's length. */ spanList?: { at: Vec2; clear: number; length: number }[] }
 
 export interface RailBuildInput {
   ways: readonly RailWay[];
@@ -233,6 +234,10 @@ export interface RailBuildInput {
   onPlatform?: (x: number, y: number) => boolean;
   /** What lies under a bridge deck (railBridge.ts underTest): with it, the decks get piers, girders and railings. */
   under?: (x: number, y: number) => UnderKind;
+  /** Deck spans of tracks off the bridges where a street passes under the bed (railSpans.ts underpassSpans): drawn as a bridge there. */
+  spans?: ReadonlyMap<RailWay, readonly RailSpan[]>;
+  /** The `under` test for the spans' structure (the promoted tracks themselves left out of its tracks at grade); default `under`. */
+  spanUnder?: (x: number, y: number) => UnderKind;
 }
 
 /** Split every segment into equal pieces of at most `step` metres (deterministic per way, so neighbour cells meet). */
@@ -279,16 +284,24 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     // Where the level bends inside a piece (a deck meeting its approach, a ramp's foot), the piece takes the level's
     // own stations, so the bed follows it and two ways meeting there meet at one height.
     const level = input.levels?.get(way);
+    // A deck span's ends are stations of their own (the slab starts and ends there, railSpans.ts).
+    const spans = way.bridge ? undefined : input.spans?.get(way);
     const pts: Vec2[] = [coarse[0]], own: boolean[] = [];
     for (let i = 0, s0 = 0; i + 1 < coarse.length; i++) {
       const a = coarse[i], b = coarse[i + 1], len = Math.hypot(b[0] - a[0], b[1] - a[1]), s1 = s0 + len;
+      const cuts: number[] = [];
       if (level) {
         const inner = level.s.map((s, j) => j).filter(j => level.s[j] > s0 + 0.05 && level.s[j] < s1 - 0.05);
         const za = levelAt(level, s0), zb = levelAt(level, s1);
         if (inner.some(j => Math.abs(level.z[j] - (za + (zb - za) * (level.s[j] - s0) / (len || 1))) > (input.far ? LEVEL_TOL_M.far : LEVEL_TOL_M.fine))) {
-          for (const j of inner) { const f = (level.s[j] - s0) / (len || 1); pts.push([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]); own.push(coarseOwn[i]); }
+          for (const j of inner) cuts.push(level.s[j]);
         }
       }
+      if (spans?.length) {
+        for (const r of spans) for (const e of [r.s0, r.s1]) if (e > s0 + 0.05 && e < s1 - 0.05 && !cuts.some(c => Math.abs(c - e) < 0.05)) cuts.push(e);
+        cuts.sort((p, q) => p - q);
+      }
+      for (const c of cuts) { const f = (c - s0) / (len || 1); pts.push([a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]); own.push(coarseOwn[i]); }
       pts.push(b); own.push(coarseOwn[i]);
       s0 = s1;
     }
@@ -301,9 +314,13 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     // between its ends' heights, never under the surface it crosses).
     const ground = pts.map(p => input.height(p[0], p[1]));
     const bridge = way.bridge && !level?.plain;
+    // A station on a deck: the bridge way's, or one inside a deck span over a street (railSpans.ts).
+    const onSpan = spans?.length ? along.map(s => inSpan(spans, s)) : null;
+    const decked = (i: number) => bridge || (!!onSpan && onSpan[i]);
     const z = level ? along.map(s => levelAt(level, s)) : way.bridge ? ground.map((g, i) => Math.max(g, ground[0] + (ground[n - 1] - ground[0]) * (total > 0 ? along[i] / total : 0))) : ground;
     const flat = pts.map(() => false);
-    if (!way.bridge && input.atGrade) for (let i = 0; i + 1 < n; i++) if ((own[i] || (i > 0 && own[i - 1]) || (i + 2 < n && own[i + 1])) && input.atGrade(pts[i], pts[i + 1])) flat[i] = flat[i + 1] = true;
+    if (!way.bridge && input.atGrade) for (let i = 0; i + 1 < n; i++) if (!(onSpan && onSpan[i] && onSpan[i + 1]) && (own[i] || (i > 0 && own[i - 1]) || (i + 2 < n && own[i + 1])) && input.atGrade(pts[i], pts[i + 1])) flat[i] = flat[i + 1] = true;
+    if (onSpan) for (let i = 0; i < n; i++) if (onSpan[i]) flat[i] = false;
     // Never under the ground: each piece's chord (centre and both top edges) stays over the land sampled along it,
     // both its stations raised by the piece's worst deficit; each toe over the highest land along its edge.
     const needed = (i: number) => (i > 0 && own[i - 1]) || (i < n - 1 && own[i]);
@@ -332,7 +349,7 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     const top = (i: number) => base(i) + (flat[i] ? S.flatLift : S.topLift - (way.service ? S.serviceDrop : 0));
     // On a slab: a bridge, or a track lifted clear of the land across its bed (an approach over the fill's dip).
     const across = (i: number) => { const [nx, ny, k] = normals[i]; return Math.max(ground[i], input.height(pts[i][0] + nx * S.topHalf * k, pts[i][1] + ny * S.topHalf * k), input.height(pts[i][0] - nx * S.topHalf * k, pts[i][1] - ny * S.topHalf * k)); };
-    const slabbed = (i: number) => bridge || (!flat[i] && z[i] - across(i) > RAISED_M);
+    const slabbed = (i: number) => decked(i) || (!flat[i] && z[i] - across(i) > RAISED_M);
     const at = (i: number, off: number): Vec2 => { const [nx, ny, k] = normals[i]; return [pts[i][0] + nx * off * k, pts[i][1] + ny * off * k]; };
     // Yard beds: the top runs on to the midpoint where a neighbouring track lies within RAIL_MERGE.maxM (not at a level crossing).
     const reach = (i: number, side: 1 | -1): number | null => {
@@ -382,7 +399,7 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
         // A yard of bridge tracks shares one deck: the slab runs on under the bed's yard run (no water between tracks).
         // A bridge's slab is slabDepth deep; a raised track's reaches down into the ground beside it.
         const sl = at(i, lr == null ? S.slabHalf : lr + RAIL_MERGE.overlap), sr = at(i, -(rr == null ? S.slabHalf : rr + RAIL_MERGE.overlap)), st = t - S.topLift;
-        const sb = bridge ? st - S.slabDepth : Math.min(st - S.slabDepth, input.height(sl[0], sl[1]), input.height(sr[0], sr[1])) - 0.2;
+        const sb = decked(i) ? st - S.slabDepth : Math.min(st - S.slabDepth, input.height(sl[0], sl[1]), input.height(sr[0], sr[1])) - 0.2;
         slabIdx.push([
           v(slab, sl[0], sl[1], st, 0, vv, RAIL_COLOURS.slab), v(slab, sl[0], sl[1], sb, 0, vv, RAIL_COLOURS.slab),
           v(slab, sr[0], sr[1], st, 0, vv, RAIL_COLOURS.slab), v(slab, sr[0], sr[1], sb, 0, vv, RAIL_COLOURS.slab),
@@ -392,18 +409,37 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
         ]);
       } else slabIdx.push([]);
     }
-    // The deck's structure (railBridge.ts): the whole way's stations, so neighbouring cells place the same piers.
-    if (bridge && input.under && own.some(Boolean)) {
+    // The deck's structure (railBridge.ts): the whole way's stations, so neighbouring cells place the same piers; a deck
+    // span's (railSpans.ts) from its first station to its last.
+    const structureRun = (from: number, to: number, under: (x: number, y: number) => UnderKind) => {
+      const runOwn = own.slice(from, to);
+      if (!runOwn.some(Boolean)) return;
       const deck: RailDeckStation[] = [];
-      for (let i = 0; i < n; i++) {
+      for (let i = from; i <= to; i++) {
         const [nx, ny, k] = normals[i], st = top(i) - S.topLift, lr = needed(i) ? bedReach[i][0] : reach(i, 1), rr = needed(i) ? bedReach[i][1] : reach(i, -1);
         deck.push({ p: pts[i], n: [nx, ny], k, s: along[i], top: st, soffit: st - S.slabDepth, left: lr == null ? S.slabHalf : lr + RAIL_MERGE.overlap, right: rr == null ? S.slabHalf : rr + RAIL_MERGE.overlap, sharedL: lr != null, sharedR: rr != null });
       }
-      const b = railBridgeMesh({ stations: deck, own, ground: input.height, under: input.under, far: !!input.far });
+      const b = railBridgeMesh({ stations: deck, own: runOwn, ground: input.height, under, far: !!input.far });
       if (b.stats.runs) {
         appendMesh(structure, b.mesh);
         const t = stats.structure ??= { runs: 0, piers: 0, girderMetres: 0, viaductMetres: 0, railingMetres: 0, triangles: 0 };
         for (const key of Object.keys(t) as (keyof RailBridgeStats)[]) t[key] += b.stats[key];
+      }
+    };
+    if (bridge && input.under) structureRun(0, n - 1, input.under);
+    else if (onSpan) {
+      const under = input.spanUnder ?? input.under;
+      for (let i = 0; i < n; i++) {
+        if (!onSpan[i]) continue;
+        let j = i;
+        while (j + 1 < n && onSpan[j + 1]) j++;
+        if (j > i) {
+          if (under) structureRun(i, j, under);
+          let m = 0;
+          for (let q = i; q < j; q++) if (own[q]) m += along[q + 1] - along[q];
+          if (m > 0) { stats.spans = (stats.spans ?? 0) + 1; stats.spanMetres = (stats.spanMetres ?? 0) + m; }
+        }
+        i = j;
       }
     }
     for (let i = 0; i + 1 < n; i++) {

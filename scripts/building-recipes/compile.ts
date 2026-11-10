@@ -34,7 +34,7 @@ export function slotFor(intent: CanalHouseIntent) {
   return (mesh: T.Mesh) => {
     const surface = mesh.userData.surface as string;
     if (surface === 'roof') return (mesh.material as T.MeshStandardMaterial).color.getHSL({h: 0, s: 0, l: 0}).l > 0.36 ? 'bitumen' : roofSlot;
-    return ({wall: wallSlot, accent: 'accent', stone: 'stone', trim: 'frame', joinery: 'frame', door: 'door', shop: 'door', awning: 'door', sign: 'door', glass: 'glass'} as Record<string, string>)[surface] ?? 'brick';
+    return ({wall: wallSlot, accent: 'accent', stone: 'stone', trim: 'frame', joinery: 'frame', paint: 'paint', door: 'door', shop: 'door', awning: 'door', sign: 'door', glass: 'glass'} as Record<string, string>)[surface] ?? 'brick';
   };
 }
 

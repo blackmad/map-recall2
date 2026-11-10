@@ -5,6 +5,7 @@
  *   PORT=4401 npm run dev                      # only for the in-game shot (skip with --no-game)
  *   node --import tsx scripts/landmarks/review-sheet.ts --id=nassaukerk [--bag=0363100012237328] [--glb=...]
  *        [--out=artifacts/review/<id>] [--port=4401] [--walls=6] [--no-game] [--inventory] [--ring=<n> for a MultiPolygon footprint]
+ *        [--browser: the GLB tiles in Chromium as before lane H12; default Node, docs/house-line.md §8]
  *
  * For every exposed wall of the BAG footprint (party walls are dropped by the pand-reference selector) the nearest
  * Gemeente Amsterdam panorama (5-35 m from the wall, obliquity <= 55 deg) is aimed at the wall centre through the public
@@ -21,6 +22,8 @@
  * Model placement: surveyed models are native east/south metres from `surveyed.anchor` (x east, z south), north-up.
  * Everything geographic reuses scripts/pand-reference (cached in .cache/pand-reference). Panoramas are CC BY 4.0, Gemeente Amsterdam.
  */
+import {renderModelsNode} from '../../src/canalRecall/glbRaster/render.ts';
+import {rigOf} from '../../src/canalRecall/glbRaster/look.ts';
 import fs from 'node:fs';
 import path from 'node:path';
 import {createRequire} from 'node:module';
@@ -100,7 +103,24 @@ const wallTag = (w: Wall, all: Wall[]) => {
 
 type Cam = {pos: [number, number, number]; headingDeg: number; pitchDeg: number; fovDeg: number};
 
+/**
+ * The GLB renders: in Node by default (lane H12, docs/house-line.md §8: src/canalRecall/glbRaster, the page's own
+ * lights, ground and DoubleSide below as data), the Chromium page with --browser.
+ */
 async function renderer() {
+  if (!process.argv.includes('--browser')) {
+    const light = rigOf({sky: 0xdfe8f0, ground: 0x6b6458, hemi: 1.7, sun: 0xfff1dd, sunIntensity: 2.2, sunAt: [-30, 40, 25]});
+    const model = {file: glb, rotationY: -northOffsetRad};
+    return {
+      close: async () => {},
+      shot: async (c: Cam): Promise<Buffer> => {
+        const h = c.headingDeg * Math.PI / 180, p = c.pitchDeg * Math.PI / 180;
+        const target = [c.pos[0] + Math.sin(h) * Math.cos(p), c.pos[1] + Math.sin(p), c.pos[2] - Math.cos(h) * Math.cos(p)];
+        const [png] = await renderModelsNode([model], [{eye: c.pos, target, fov: c.fovDeg, width: TILE, height: TILE, near: 0.1, far: 2000}], {look: 'gallery', light, forceDoubleSided: true, background: '#c9d6e0', ground: {y: -0.03, half: 450, color: '#8f8478', lambert: true}});
+        return png;
+      },
+    };
+  }
   const br = await chromium.launch({args: ['--use-gl=swiftshader', '--enable-webgl', '--ignore-gpu-blocklist']});
   const page = await br.newPage({viewport: {width: TILE, height: TILE}});
   page.on('pageerror', e => console.log('pageerror', e.message));

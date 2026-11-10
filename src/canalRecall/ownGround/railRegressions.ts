@@ -41,7 +41,7 @@ export const RAIL_SPOTS: readonly RailSpot[] = [
 ];
 
 /** Ground fills that must never draw over a bed. */
-export const RAIL_COVERS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['land', 'park', 'wood', 'square', 'parking', 'lawn', 'garden', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'hedge', 'pond']);
+export const RAIL_COVERS: ReadonlySet<GroundLayer> = new Set<GroundLayer>(['land', 'park', 'wood', 'square', 'parking', 'lawn', 'garden', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'bare', 'parkPath', 'hedge', 'pond']);
 
 const RES = 0.25;
 

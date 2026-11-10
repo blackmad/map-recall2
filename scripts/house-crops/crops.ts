@@ -7,7 +7,7 @@ import path from 'node:path';
 import jpeg from 'jpeg-js';
 import sharp from 'sharp';
 import { http, neighbourhood, CACHE_DIR, panoTracker, purgeFiles, type Footprint } from '../pand-reference/core.ts';
-import { listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
+import { listPanos, pickWall, rankPanos, options as selectOptions, type PanoPick, type Wall } from '../pand-reference/select.ts';
 import { loadPano, rectifyWall, wallHeight } from '../pand-reference/rectify.ts';
 import { lensFor } from '../da-costa-block/neighbourhood-core.ts';
 import { AMSTERDAM_WORLD_ALIGNED, rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
@@ -21,7 +21,7 @@ import { DISK_FLOOR_BYTES, diskGate, THRESHOLDS, usability, penalty, rayBlocked,
 export const HELP = `house:crops - rectified, quality-flagged facade crops for one buurt (house line station 4a)
 
   npm run house:crops -- --buurt <code|cbs|name> [--pand <id>] [--resume] [--dry-run] [--rate-ms 500]
-                         [--archive <dir>] [--limit <n>] [--years <n>] [--all-years] [--offline] [--keep-panoramas] [--restart] [--report] [--help]
+                         [--archive <dir>] [--limit <n>] [--years <n>] [--all-years] [--offline] [--keep-panoramas] [--restart] [--report] [--prefer-bearing <deg>] [--help]
 
   --buurt <key>     CBS buurt: 4-letter code (AB07), CBS code (BU0363AB07) or name (Bloemgrachtbuurt). Required.
   --pand <id,id>   process only these pands (16-digit BAG ids, with or without NL.IMBAG.Pand.); they must lie in the buurt.
@@ -40,6 +40,9 @@ export const HELP = `house:crops - rectified, quality-flagged facade crops for o
   --offline         a panorama or list that is not in the cache is skipped, never downloaded (re-rectification costs no requests).
   --limit <n>       stop after n pands (smoke runs); the manifest stays resumable.
   --report          print the coverage table and write the contact sheet (artifacts/house-crops/<code>-sheet.png), no crops.
+  --prefer-bearing <deg>  pick the street wall whose outward normal is within 50 deg of this bearing (pand-reference/select.ts
+                    options.preferBearingDeg, as pand-reference/run.ts): a row on a square, whose front the road rule misses, e.g. 293 for
+                    Nieuwmarkt 6-22 (lane H7); use it with --pand, it applies to every pand of the run.
 
 Per pand: the street-facing BAG wall (pand-reference/select.ts pickWall) is rectified from the best panorama
 (rankPanos, rectifyWall, 50 px/m); a wall under ${THRESHOLDS.narrowWallM} m, or a best view over 35 deg oblique, uses the block-face
@@ -217,6 +220,7 @@ async function main() {
   const buurt: Buurt = await loadBuurt(key);
   if (has('report')) { const { report } = await import('./report.ts'); await report(buurt.code, arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE); return; }
   options.maxYears = Number(arg('years') ?? options.maxYears);
+  if (arg('prefer-bearing') !== undefined) selectOptions.preferBearingDeg = Number(arg('prefer-bearing'));
   options.allYears = has('all-years'); options.offline = has('offline'); http.offline = options.offline;
   const archiveRoot = arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE;
   if (has('rejudge')) {

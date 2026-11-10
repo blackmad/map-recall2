@@ -146,12 +146,16 @@ test('merge: the stronger source wins, both values are logged, and a field one w
   setSpecField(jev, 'fronts/0/bays', 3); jev.provenance['fronts/0/bays'] = { source: 'vision-judge', confidence: 0.7, ref: 'crop', at: '2024-01-01' };
   const px = emptySpec('0363100012164995'); setSpecField(px, 'fronts/0/bays', 4); px.provenance['fronts/0/bays'] = { source: 'streetlevel-measured', confidence: 0.5, ref: 'crop#good', at: null };
   const m = mergeWriters([{ writer: 'register', spec: reg }, { writer: 'jev', spec: jev }, { writer: 'pixel', spec: px }])!;
-  assert.equal(specField(m.spec, 'fronts/0/gable'), 'neck', 'monument-text outranks vision-judge');
+  assert.equal(specField(m.spec, 'fronts/0/gable'), 'step', 'the crown: a photo reading (vision-judge) outranks the register text (H5h round 4)');
   assert.equal(specField(m.spec, 'fronts/0/bays'), 4, 'the ladder puts a measured street photo above a judge');
-  assert.deepEqual(m.disagreements.map(d => [d.path, d.picked]), [['fronts/0/bays', 'pixel'], ['fronts/0/gable', 'register']]);
+  assert.deepEqual(m.disagreements.map(d => [d.path, d.picked]), [['fronts/0/bays', 'pixel'], ['fronts/0/gable', 'jev']]);
   assert.equal(m.disagreements[0].values.length, 2);
   assert.ok((m.spec.design.notes ?? []).some(n => /fronts\/0\/gable disagrees/.test(n)));
   validateSpec(m.spec);
+  // only the crown changes order: on any other field monument-text still outranks vision-judge
+  const regY = emptySpec('0363100012164995'); setSpecField(regY, 'palette/wallMaterial', 'brick'); regY.provenance['palette/wallMaterial'] = { source: 'monument-text', confidence: 0.7, ref: 'rce:1', at: null };
+  const jevY = emptySpec('0363100012164995'); setSpecField(jevY, 'palette/wallMaterial', 'stucco'); jevY.provenance['palette/wallMaterial'] = { source: 'vision-judge', confidence: 0.95, ref: 'crop', at: '2024-01-01' };
+  assert.equal(specField(mergeWriters([{ writer: 'register', spec: regY }, { writer: 'jev', spec: jevY }])!.spec, 'palette/wallMaterial'), 'brick');
   assert.equal(mergeWriters([{ writer: 'bag', spec: emptySpec('0363100012164995') }]), null, 'no fields, no spec');
   const same = mergeWriters([{ writer: 'a', spec: jev }, { writer: 'b', spec: jev }])!;
   assert.equal(same.disagreements.length, 0);

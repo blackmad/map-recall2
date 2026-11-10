@@ -1,0 +1,26 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012160704",
+ "address": "Nassaukade 146",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of block-face strip nassau-145-152-w2019 2019-01-09: three axes over the two-storey erker on storeys 1-2, the door in the left axis; the face's bay-outline chord carries the erker",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "facade",
+   "what": "the timber erker's glazed side cheeks and its balcony on top are drawn as the kit's plain bay window"
+  }
+ ]
+}

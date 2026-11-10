@@ -844,4 +844,10 @@ export const GROUND_TONES = {
   parkGravel: [198, 184, 152] as RGB,
   parkPath: [110, 110, 112] as RGB,
   pond: '#46707c',
+  // Bare unpaved ground (open-ground-v1, lane open-ground-look 2026-11-10): BGT onverhard / half verhard earth. The PDOK
+  // 8 cm orthophoto's dehazed sunlit medians (scripts/own-ground/measure-open-ground-tones.ts) are 136,124,115 (luma 126)
+  // at the lane's spots and 192,185,170 (luma 185, the early-spring flight's dry raised lots in -11_5 / 10_-6) where most
+  // of it lies: as light as the paving-grey land. Drawn at the warm hue between them and luma ~147, with grit dabs at the
+  // land's tone, so it reads as earth, not as rideable paving, beside the courtyard-green meadow (luma 124).
+  bare: { base: [160, 144, 122] as RGB, grit: [186, 174, 156] as RGB },
 } as const;

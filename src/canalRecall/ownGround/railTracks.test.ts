@@ -5,6 +5,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 // railBridge.ts's tests run with these (test:own-ground lists this file).
 import './railBridge.test.ts';
+import './railSpans.test.ts';
 import '../railInfraBuildings.test.ts';
 import { RAIL_MERGE, RAIL_SECTION, RAIL_STRIPE, railMeshes, railSegIndex, railStripes, sideGap, yardReach, type RailWay } from './railTracks.ts';
 

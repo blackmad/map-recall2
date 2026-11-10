@@ -13,11 +13,14 @@ import sharp from 'sharp';
 import { gameChain, loadTile, EXTRACT, type Chain, type Feature, type Row } from '../world/pipeline.ts';
 import { shellProfiles, shellStreets } from '../world/shellBake.ts';
 import { buildFeatureChunk, asPolygons } from '../../src/canalRecall/threeBuildingFeatures.ts';
-import { wallTopHeightM, type Chunk } from '../../src/canalRecall/threeBuildingMesh.ts';
+import { wallTopHeightM, layoutProbe, type Chunk } from '../../src/canalRecall/threeBuildingMesh.ts';
 import { chunkMetres } from '../../src/canalRecall/world/shellMesh.ts';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.ts';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.ts';
 import { GABLE_SHAPES } from '../../src/canalRecall/roofMesh.ts';
+import { specView } from '../../src/canalRecall/houseSpec/view.ts';
+import { specDesignOn, type HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
+import type { HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
 import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
 import { rasterise, type RasterAtlas, type RasterImage, type RasterMesh, type LitShading, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
 import { previewVerdict, storeyLines, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
@@ -55,8 +58,17 @@ Flags
   --intent <path>     apply a CanalHouseIntent (scripts/building-recipes/houses/<id>/intent.json or a block-face
                       house intent) the same way; its pandId names the pand when no pand id is given
   --photo             add the reference photo: staging/pand-reference/<pand>/front.jpg, else the block-face strip
-                      crop of the pand's wall (scripts/block-face/faces/*/strip.json); writes compare.png and prints
-                      the likeness verdict (wall dL/hue, glazing, columns, window shape) of render vs photo
+                      crop of the pand's wall (scripts/block-face/faces/*/strip.json), else the house:crops crop
+                      (--crops); writes compare.png and prints the likeness verdict (wall dL/hue, glazing, columns,
+                      window shape) of render vs photo
+  --crops <dir>       the house:crops archive (a map-recall2-source-data checkout holding pand-crops/<pand>/front.jpg;
+                      default env HOUSE_CROPS_ARCHIVE); the describe envelope's best-of-years pick is used when present
+  --prefer-crop       take the house:crops crop before the block-face strip
+  --strip <dir>       take this strip first (a directory holding strip.json + strip.jpg, e.g. a leaf-off capture day
+                      from scripts/block-face/intake.ts --date, staged under staging/block-face/<face>-w<year>)
+  --chunk <face>      render the block face compiled by scripts/block-face/compile.ts --face=<face> and not installed
+                      (staging/block-face/<face>/chunk.glb, placed by its manifest-entry.json) instead of the route the
+                      game draws today: the after frame of a chunk change before the integrator installs it
   --threeq            add a three-quarter perspective view (threeq.png): 20 degree field of view, flat ground at
                       the median ground height of the drawn buildings
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
@@ -74,7 +86,11 @@ Flags
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
-                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall
+                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall;
+                      "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker)
+  --set <set.json>    render every pand of a house-line set (scripts/house-specs/sets/*.json, e.g. the standing
+                      easy-houses-20261110 acceptance set) in one session, each into <out>/<pand> (default
+                      artifacts/house-preview/sets/<set name>/<pand>), other flags applied to each
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -93,22 +109,28 @@ overrides, measurements, verdict). The sheet header names the route and the look
 by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas cache:
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
 
-Overrides (until the HouseSpec resolver of lane H1 lands): fronts[0].gable -> monumentGable, palette.wall (or
-palette.brick) hex -> facadeMappedColour; every other design field is listed under overrides.notApplied in
-measure.json (the generic path has no property for it yet).
+Overrides: fronts[0].gable -> monumentGable, palette.wall (or palette.brick) hex -> facadeMappedColour, the bays,
+fronts[0].basement stoop (with its stoop fields) -> specStoop, and through the game's own decorator (houseSpec/view.ts
+specView -> withHouseSpec) the storeys (lane H9, with lane H11's storeyHeights[0] and nearest-count storey fit) and,
+held until released (decorate.ts SPEC_DESIGN_HELD; in Node HOUSE_SPEC_DESIGN=1 releases all, =look only that, =0 holds
+storeys too), lane H11's window look (windowSurround, speklagen, windowHead, windows, windowProportion, palette.frame)
+and shopfront. Every other
+design field is listed under overrides.notApplied in measure.json (the generic path has no property for it yet).
+measure.json \`layout\` is the pand's street-run grid as the mesher laid it: drawn storeys (ground included), upper
+storey pitch, window columns.
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
-its game colours flat). When those matter, fall back to scripts/building-recipes/render.ts (headless
-Chromium) or a ride frame.`;
+its game colours flat). When those matter, use scripts/building-recipes/render.ts (its sheets draw the slot cells
+in Node since lane H12, docs/house-line.md §8; --browser for headless Chromium) or a ride frame.`;
 
 // ---------------------------------------------------------------------------------------------------------------
 // Arguments
 // ---------------------------------------------------------------------------------------------------------------
 export type Route = 'generic' | 'spec' | 'installed' | 'recipe';
-type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; help: boolean };
+type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; crops?: string; preferCrop: boolean; chunk?: string; strip?: string; set?: string; help: boolean };
 export function parseArgs(argv: string[]): Args {
-  const a: Args = { unlit: false, glbLit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, help: false };
+  const a: Args = { unlit: false, glbLit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, preferCrop: false, help: false };
   for (let i = 0; i < argv.length; i++) {
     const [flag, inline] = argv[i].split(/=(.*)/s, 2);
     const value = () => inline ?? argv[++i];
@@ -133,6 +155,11 @@ export function parseArgs(argv: string[]): Args {
       case '--look': a.look = value(); break;
       case '--ppm': a.ppm = Number(value()); break;
       case '--out': a.out = value(); break;
+      case '--crops': a.crops = value(); break;
+      case '--prefer-crop': a.preferCrop = true; break;
+      case '--chunk': a.chunk = value(); break;
+      case '--strip': a.strip = value(); break;
+      case '--set': a.set = value(); break;
       default:
         if (flag.startsWith('--')) throw new Error(`unknown flag ${flag} (see --help)`);
         if (a.target) throw new Error(`two targets: ${a.target} and ${flag}`);
@@ -172,12 +199,36 @@ export function overridePatch(o: Override): { patch: Record<string, unknown>; ap
   // mesher fits the street run to them (whole cells, or half-cell axis units for an odd count, H1c #350).
   const bays = Number.isInteger(front.axisGrid) ? front.axisGrid as number : Number.isInteger(front.bays) ? front.bays as number : undefined;
   if (bays && bays > 0) { patch.specRecipe = { bays }; applied.push(`fronts[0].${Number.isInteger(front.axisGrid) ? 'axisGrid' : 'bays'} -> specRecipe.bays=${bays}`); }
-  for (const k of Object.keys(front)) if (k !== 'gable' && k !== 'id' && !(bays && (k === 'bays' || k === 'axisGrid'))) notApplied.push(`fronts[0].${k}`);
+  // Lane H11 (#361): storeys, window look and shopfront reach the generic path as the game's decorator reads them: the
+  // runtime view (houseSpec/view.ts specView, as build-house-specs writes it, source `author`) goes on as `p.houseSpec`
+  // and the chain's withHouseSpec writes specRecipe / specShop. Gable and wall keep the direct writes above and below.
+  const view = specView({ schemaVersion: 1, pandId: o.pandId ?? '0000000000000000', design: o.design as HouseSpec['design'], provenance: { '': { source: 'author', confidence: 1, ref: o.source, at: null } } });
+  const designView: HouseSpecView = { src: {} };
+  const used = new Set<string>(['gable', 'id']);
+  if (bays) { designView.bays = bays; designView.src.bays = 'author'; used.add('bays').add('axisGrid'); }
+  if (view.storeys) { designView.storeys = view.storeys; designView.src.storeys = 'author'; used.add('storeys'); applied.push(`fronts[0].storeys -> specRecipe.storeys=${view.storeys}`); }
+  const held = (f: 'storeys' | 'look' | 'shop') => specDesignOn(f) ? '' : ' (held: SPEC_DESIGN_HELD)';
+  if (view.groundM) { designView.groundM = view.groundM; used.add('storeyHeights'); applied.push(`fronts[0].storeyHeights[0] -> specRecipe.groundM=${view.groundM}${held('storeys')}`); }
+  if (view.look) {
+    designView.look = view.look; designView.src.look = 'author';
+    for (const k of ['windowSurround', 'speklagen', 'windowHead', 'windows', 'windowProportion']) if (front[k] !== undefined) used.add(k);
+    applied.push(`window look -> specRecipe.look=${JSON.stringify(view.look)}${held('look')}`);
+  }
+  if (view.shop !== undefined) {
+    designView.shop = view.shop; designView.src.shop = 'author'; if (view.shopHex) designView.shopHex = view.shopHex;
+    if (front.shopfront !== undefined) used.add('shopfront');
+    applied.push(`ground storey -> specShop=${view.shop}${view.shopHex ? ` shopHex=${view.shopHex}` : ''}${held('shop')}`);
+  }
+  if (Object.keys(designView.src).length) patch.houseSpec = designView;
+  // A stoop (K-stoep #360), as the decorator writes it (houseSpec/decorate.ts specStoop): the measured fields, or {}.
+  const stooped = front.basement === 'stoop' || front.basement === 'stoop-and-windows';
+  if (stooped) { patch.specStoop = (front.stoop ?? {}) as Record<string, unknown>; applied.push(`fronts[0].basement${front.stoop ? '+stoop' : ''} -> specStoop`); used.add('basement').add('stoop'); }
+  for (const k of Object.keys(front)) if (!used.has(k)) notApplied.push(`fronts[0].${k}`);
   // The wall colour: threeBuildingFeatures meshBuildingFor takes `facadeMappedColour` as the sourced wall in the photo look.
   const palette = (o.design.palette ?? {}) as Record<string, unknown>;
   const wallKey = ['wall', 'brick'].find(k => typeof palette[k] === 'string' && /^#[0-9a-f]{6}$/i.test(palette[k] as string));
   if (wallKey) { patch.facadeMappedColour = palette[wallKey]; applied.push(`palette.${wallKey} -> facadeMappedColour=${palette[wallKey]}`); }
-  for (const k of Object.keys(palette)) if (k !== wallKey) notApplied.push(`palette.${k}`);
+  for (const k of Object.keys(palette)) if (k !== wallKey && !(k === 'frame' && view.look?.dark !== undefined)) notApplied.push(`palette.${k}`);
   for (const k of Object.keys(o.design)) if (k !== 'fronts' && k !== 'palette') notApplied.push(k);
   if ((o.design.fronts?.length ?? 0) > 1) notApplied.push(`fronts[1..${o.design.fronts!.length - 1}]`);
   return { patch, applied, notApplied };
@@ -242,6 +293,23 @@ type LngLat = [number, number];
 export type FrontWall = { a: LngLat; b: LngLat; lengthM: number; source: string; reference?: string };
 
 async function frontWall(pandId: string, own: Feature, neighbours: Feature[], wallSpec?: string): Promise<FrontWall> {
+  if (wallSpec === 'face') {
+    // --wall face (lane H7 round 2): the street frontage of the block face that lists the pand (its facts.json fronts[0]
+    // endpoints: the chord over a BAG erker, Nassaukade 146), not one footprint edge of it.
+    const faces = path.join(REPO_ROOT, 'scripts/block-face/faces');
+    for (const face of fs.existsSync(faces) ? fs.readdirSync(faces).sort() : []) {
+      const f = path.join(faces, face, 'pands', bare(pandId), 'facts.json');
+      if (!fs.existsSync(f)) continue;
+      const fr = readJson(f).fronts?.[0];
+      if (!fr?.endpointsRD) continue;
+      let [a, b] = fr.endpointsRD as [number, number][];
+      // wallFrame's outward normal is (right.y, -right.x): order a -> b so it agrees with the face's outward normal.
+      const n = fr.outwardNormalRD as [number, number] | undefined, r = [b[0] - a[0], b[1] - a[1]];
+      if (n && r[1] * n[0] - r[0] * n[1] < 0) [a, b] = [b, a];
+      return { a: rdToLngLat({ x: a[0], y: a[1] }), b: rdToLngLat({ x: b[0], y: b[1] }), lengthM: Math.hypot(b[0] - a[0], b[1] - a[1]), source: `--wall face: ${face} frontage (${fr.street ?? ''})` };
+    }
+    throw new Error(`${pandId}: --wall face: no block face lists the pand`);
+  }
   if (wallSpec) {
     // --wall: the framed wall is a footprint edge (index or bearing), not the reference's or pickWall's choice.
     const outer = (asPolygons(own.geometry)[0]?.[0] ?? []) as LngLat[];
@@ -296,7 +364,7 @@ const facadeImage = (img: { width: number; height: number; rgba: Uint8ClampedArr
 
 type Photo = { image: FacadeImage; file: string; kind: string; png: Buffer };
 /** The reference photo on the wall's axis at `ppm`: the pand-reference crop, else the block-face strip crop. */
-async function referencePhoto(pandId: string, wall: FrontWall, ppm: number): Promise<Photo | null> {
+async function referencePhoto(pandId: string, wall: FrontWall, ppm: number, opts: { crops?: string; preferCrop?: boolean; strip?: string } = {}): Promise<Photo | null> {
   const toImage = async (buf: Buffer, topM: number, file: string, kind: string, extract?: { left: number; width: number }, scale = 1): Promise<Photo> => {
     let s = sharp(buf);
     if (extract) { const meta = await sharp(buf).metadata(); s = sharp(await s.extract({ left: extract.left, top: 0, width: extract.width, height: meta.height! }).toBuffer()); }
@@ -311,7 +379,46 @@ async function referencePhoto(pandId: string, wall: FrontWall, ppm: number): Pro
     const r = readJson(path.join(dir, 'reference.json')), crop = r.primary?.crop;
     if (crop) return toImage(fs.readFileSync(path.join(dir, 'front.jpg')), crop.wallHeightM, path.join(dir, 'front.jpg'), `pand-reference ${r.primary.timestamp?.slice(0, 10) ?? ''} (${crop.pixelsPerMetre} px/m)`, undefined, ppm / crop.pixelsPerMetre);
   }
+  // house:crops (lane H7): <archive>/pand-crops/<pand>/front.jpg, rectified by the same pickWall + rectifyWall as the
+  // pand-reference crop (x along the wall seen from the street, 50 px/m, or 40 px/m on the strip route). The best-of-years
+  // pick named by the describe envelope (scripts/house-specs/generated/<buurt>/<pand>.json crop.file) wins when it exists.
+  const cropPhoto = async (): Promise<Photo | null> => {
+    if (!opts.crops) return null;
+    const cdir = path.join(opts.crops, 'pand-crops', bare(pandId)), fj = path.join(cdir, 'front.json');
+    if (!fs.existsSync(fj)) return null;
+    const j = readJson(fj), crop = j.crop;
+    if (!crop?.pixelsPerMetre || !crop?.wallHeightM) return null;
+    // The crop's wall must be the preview's wall (both pickWall): endpoints within 1 m, either order.
+    const pa = lngLatToRd(wall.a), pb = lngLatToRd(wall.b), d = (p: { x: number; y: number }, q: number[]) => Math.hypot(p.x - q[0], p.y - q[1]);
+    if (j.wall?.a && Math.min(Math.max(d(pa, j.wall.a), d(pb, j.wall.b)), Math.max(d(pa, j.wall.b), d(pb, j.wall.a))) > 1) return null;
+    let file = path.join(cdir, 'front.jpg');
+    const gen = path.join(REPO_ROOT, 'scripts/house-specs/generated');
+    for (const b of fs.existsSync(gen) ? fs.readdirSync(gen) : []) {
+      const env = path.join(gen, b, `${bare(pandId)}.json`);
+      if (fs.existsSync(env)) { const cf = readJson(env).crop?.file; if (cf && fs.existsSync(path.join(cdir, cf))) file = path.join(cdir, cf); break; }
+    }
+    if (!fs.existsSync(file)) return null;
+    return toImage(fs.readFileSync(file), crop.wallHeightM, file, `house:crops ${j.method ?? 'wall'} ${j.missionDate ?? ''} (${crop.pixelsPerMetre} px/m)`, undefined, ppm / crop.pixelsPerMetre);
+  };
+  if (opts.preferCrop) { const c = await cropPhoto(); if (c) return c; }
   // Block-face strips: the face whose spans list the pand; crop the wall's [a, b] along the strip's u axis.
+  const fromStrip = (s: { frame: { midRD: number[]; uRD: number[] }; x0M: number; pixelsPerMetre: number; width: number; heightM: number; date?: string }, img: string, label: string): Photo | null => {
+    const along = (ll: LngLat) => { const p = lngLatToRd(ll); return (p.x - s.frame.midRD[0]) * s.frame.uRD[0] + (p.y - s.frame.midRD[1]) * s.frame.uRD[1]; };
+    let x0 = along(wall.a), x1 = along(wall.b);
+    if (x1 < x0) [x0, x1] = [x1, x0];
+    const left = Math.max(0, Math.round((x0 - s.x0M) * s.pixelsPerMetre)), right = Math.min(s.width, Math.round((x1 - s.x0M) * s.pixelsPerMetre));
+    if (right - left < 10) return null;
+    return toImage(fs.readFileSync(img), s.heightM, img, `block-face strip ${label} ${s.date ?? ''} (${s.pixelsPerMetre} px/m)`, { left, width: right - left }, ppm / s.pixelsPerMetre);
+  };
+  // `--strip <dir>` (lane H7 round 2): an explicit strip (strip.json + strip.jpg in one directory, e.g. a leaf-off capture
+  // day from intake.ts --date) before the face strips.
+  if (opts.strip) {
+    const sj = path.join(opts.strip, 'strip.json'), img = path.join(opts.strip, 'strip.jpg');
+    if (fs.existsSync(sj) && fs.existsSync(img)) {
+      const text = fs.readFileSync(sj, 'utf8');
+      if (text.includes(bare(pandId))) { const got = fromStrip(JSON.parse(text), img, path.basename(opts.strip)); if (got) return got; }
+    }
+  }
   const faces = path.join(REPO_ROOT, 'scripts/block-face/faces');
   for (const face of fs.existsSync(faces) ? fs.readdirSync(faces) : []) {
     const sj = path.join(faces, face, 'strip.json');
@@ -322,14 +429,10 @@ async function referencePhoto(pandId: string, wall: FrontWall, ppm: number): Pro
     const candidates = [path.join(REPO_ROOT, s.image), process.env.MAP_RECALL_SOURCE_DATA && path.join(process.env.MAP_RECALL_SOURCE_DATA, 'block-face-strips', face, 'strip.jpg'), path.join(REPO_ROOT, '../../map-recall2-source-data/block-face-strips', face, 'strip.jpg'), path.join(path.dirname(REPO_ROOT), '../map-recall2-source-data/block-face-strips', face, 'strip.jpg')].filter(Boolean) as string[];
     const img = candidates.find(f => fs.existsSync(f));
     if (!img) continue;
-    const along = (ll: LngLat) => { const p = lngLatToRd(ll); return (p.x - s.frame.midRD[0]) * s.frame.uRD[0] + (p.y - s.frame.midRD[1]) * s.frame.uRD[1]; };
-    let x0 = along(wall.a), x1 = along(wall.b);
-    if (x1 < x0) [x0, x1] = [x1, x0];
-    const left = Math.max(0, Math.round((x0 - s.x0M) * s.pixelsPerMetre)), right = Math.min(s.width, Math.round((x1 - s.x0M) * s.pixelsPerMetre));
-    if (right - left < 10) continue;
-    return toImage(fs.readFileSync(img), s.heightM, img, `block-face strip ${face} ${s.date ?? ''} (${s.pixelsPerMetre} px/m)`, { left, width: right - left }, ppm / s.pixelsPerMetre);
+    const got = fromStrip(s, img, face);
+    if (got) return got;
   }
-  return null;
+  return opts.preferCrop ? null : cropPhoto();
 }
 
 export type PreviewResult = { pandId: string; out: string; files: string[]; timings: Record<string, number>; measure: Record<string, unknown> };
@@ -389,6 +492,13 @@ export function placementOf(cover: Cover): Placement {
     return { key: cover.key, glb: glbOf(e.modelUrl), anchor: e.instance?.anchor ?? e.anchor, northOffsetDegrees: e.instance?.northOffsetDegrees ?? 0, mirror: !!e.instance?.mirror, source: 'ordinary-buildings-data/catalogue.json' };
   }
   throw new Error(`${cover.key}: landmarks are not rendered by the preview`);
+}
+
+/** A block face compiled by scripts/block-face/compile.ts --face=<face> and not installed: its chunk.glb placed by the
+ *  manifest-entry.json the install would write into chunks.json (lane H7: the before|after of a chunk extension). */
+export function stagedChunkPlacement(face: string): Placement {
+  const dir = path.join(REPO_ROOT, 'staging/block-face', face), e = readJson(path.join(dir, 'manifest-entry.json'));
+  return { key: e.id, glb: path.join(dir, 'chunk.glb'), anchor: e.instance.anchor, northOffsetDegrees: e.instance.northOffsetDegrees ?? 0, mirror: !!e.instance.mirror, source: `staging/block-face/${face}/manifest-entry.json` };
 }
 
 /**
@@ -455,8 +565,8 @@ async function finish(f: Finish): Promise<PreviewResult> {
   const renderM = measureBlurred(facadeImage(front, args.ppm, top), mbox, lines);
   const measure: Record<string, unknown> = { profile: profileUsed(), pandId: bare(f.pandId), route: f.route, routeWhy: f.why, shader: f.shader ?? (args.unlit ? 'unlit' : 'lit'), preBlurPx: PRE_BLUR_PX, ...f.measure, heights: { topM: +top.toFixed(2), eavesM: +eaves.toFixed(2), lines }, render: summary(renderM) };
   if (args.photo) {
-    const photo = await referencePhoto(f.pandId, wall, args.ppm);
-    if (!photo) measure.photo = { missing: `no staging/pand-reference/${bare(f.pandId)}/front.jpg and no block-face strip lists the pand (run scripts/pand-reference/run.ts --ids=${bare(f.pandId)})` };
+    const photo = await referencePhoto(f.pandId, wall, args.ppm, { crops: args.crops ?? process.env.HOUSE_CROPS_ARCHIVE, preferCrop: args.preferCrop, strip: args.strip });
+    if (!photo) measure.photo = { missing: `no staging/pand-reference/${bare(f.pandId)}/front.jpg, no block-face strip lists the pand and no house:crops crop (--crops <archive>/pand-crops/${bare(f.pandId)}/front.jpg; run npm run house:crops -- --buurt <code> --pand ${bare(f.pandId)})` };
     else {
       const photoM = measureBlurred(photo.image, { ...mbox, v1: Math.min(mbox.v1, photo.image.topM) }, lines.filter(l => l <= photo.image.topM));
       const verdict = previewVerdict(renderM, photoM);
@@ -476,6 +586,7 @@ async function finish(f: Finish): Promise<PreviewResult> {
 
 /** One render of one pand by the route the game draws it (see resolveRoute): front.png (+ threeq.png, compare.png) and measure.json in `out`. */
 export async function renderPand(session: PreviewSession, pandId: string, args: Args, override?: Override): Promise<PreviewResult> {
+  if (args.chunk) return renderInstalled(session, pandId, stagedChunkPlacement(args.chunk), args, `--chunk ${args.chunk}: the compiled, not installed staging/block-face chunk`);
   const cover = coverOf(pandId), { route, why } = resolveRoute(args.route, !!override, cover);
   if (route === 'installed') return renderInstalled(session, pandId, placementOf(cover!), args, why);
   return renderGeneric(session, pandId, args, route === 'spec' ? override : undefined, route, why);
@@ -497,7 +608,10 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   tm.mark('tiles');
   // The override goes onto the source properties, then the chain decorates as it does for every building.
   const ov = override ? overridePatch(override) : null;
-  const own = ov && Object.keys(ov.patch).length ? session.chain.decorate({ ...raw.raw, properties: { ...raw.raw.properties, ...ov.patch } }) : raw.styled;
+  // The override's view keys go over the pand's own extract view (its crownRiseM still gates a register gable).
+  const base = raw.raw.properties.houseSpec as HouseSpecView | undefined, mine = ov?.patch.houseSpec as HouseSpecView | undefined;
+  const merged = mine ? { houseSpec: { ...(base ?? {}), ...mine, src: { ...(base?.src ?? {}), ...mine.src } } } : {};
+  const own = ov && Object.keys(ov.patch).length ? session.chain.decorate({ ...raw.raw, properties: { ...raw.raw.properties, ...ov.patch, ...merged } }) : raw.styled;
   const styled = all.map(r => r === raw ? own : r.styled);
   const kitHide = new Set(KIT_HIDE_IDS);
   const ctx = new BuildingContextIndex(styled, boxOf);
@@ -514,7 +628,13 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
   const streets = shellStreets(REPO_ROOT, features as never), profiles = shellProfiles(REPO_ROOT);
   tm.mark('context');
   const look = session.look as 'photo';
-  const walls = buildFeatureChunk(features as never, look, 'walls', streets, profiles, context as never);
+  // The own pand's street-run grid as the mesher laid it (threeBuildingMesh layoutProbe): drawn storeys and window columns.
+  const runs: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number }[] = [];
+  layoutProbe.sink = (id, r) => { if (id === own.properties.id) runs.push(r); };
+  let walls: ReturnType<typeof buildFeatureChunk>;
+  try { walls = buildFeatureChunk(features as never, look, 'walls', streets, profiles, context as never); } finally { layoutProbe.sink = undefined; }
+  const streetRun = runs.filter(r => r.street && r.base < 0.5).sort((a, b) => b.lengthM - a.lengthM)[0];
+  const drawn = streetRun ? { storeys: streetRun.storeys + 1, upperStoreys: streetRun.storeys, groundM: +streetRun.groundM.toFixed(2), storeyM: +streetRun.storeyM.toFixed(2), columns: streetRun.bays, runM: +streetRun.lengthM.toFixed(2) } : null;
   const extras = buildFeatureChunk(features as never, look, 'extras', streets, profiles, context as never);
   const mesh = concatChunks([walls, extras]);
   const ownRanges = mesh.ranges.filter(r => r.id === own.properties.id);
@@ -554,6 +674,7 @@ export async function renderGeneric(session: PreviewSession, pandId: string, arg
     label: route === 'spec' ? 'preview (spec route: generic path + overrides)' : 'preview (generic path)',
     measure: {
       tile, look: session.look, ppm: args.ppm, wall: { ...wall, lengthM: +frame.len.toFixed(2) }, groundZ: +groundZ.toFixed(2),
+      layout: drawn,
       chunk: { buildings: features.length, contextNeighbours: context.length, vertices: mesh.layers.length, ownVertices: ownRanges.reduce((s, r) => s + r.count, 0), triangles: mesh.indices.length / 3, wholeTile: args.wholeTile },
       atlas: { file: path.relative(REPO_ROOT, session.atlas!.file), painted: session.atlas!.painted },
       properties: p, overrides: ov ? { source: override!.source, applied: ov.applied, notApplied: ov.notApplied } : null,
@@ -702,7 +823,19 @@ function report(r: PreviewResult, ms: number) {
 async function main() {
   const t0 = performance.now();
   const args = parseArgs(process.argv.slice(2));
-  if (args.help || (!args.target && !args.spec && !args.intent)) { console.log(HELP); return; }
+  if (args.help || (!args.target && !args.spec && !args.intent && !args.set)) { console.log(HELP); return; }
+  if (args.set) {
+    // A house-line set (lane H9): every pand in one session, the same flags.
+    const set = readJson(args.set) as { name: string; pands: { pandId: string }[] };
+    const root = args.out ?? path.join(ATLAS_DIR, 'sets', set.name);
+    const session = new PreviewSession(args.look);
+    for (const { pandId } of set.pands) {
+      const t1 = performance.now();
+      report(await renderPand(session, pandId, { ...args, out: path.join(root, bare(pandId)) }), performance.now() - t1);
+    }
+    console.log(`  ${set.pands.length} pands, total ${Math.round(performance.now() - t0)} ms`);
+    return;
+  }
   const overrideFile = args.spec ?? args.intent;
   const readOv = () => overrideFile ? readOverride(overrideFile, args.spec ? 'spec' : 'intent') : undefined;
   let ov = readOv();

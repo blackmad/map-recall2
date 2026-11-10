@@ -110,3 +110,51 @@ pins above are the evidence. No Westpoort frame: the gate changes nothing there.
    (and add it to `check:canal`).
 3. To refresh later: `npx tsx scripts/build-shopfronts.ts --publish`; it now needs `.cache/industrial/bag-uses.json`
    (`npx tsx scripts/industrial/fetch-bag-uses.ts`) and carries stale shops only when BAG allows them.
+
+## Round 2 (2026-11-10, branch lane/storefront-gate-2-20261110)
+
+Brief: for a pand whose BAG use has no winkel or bijeenkomst, require the OSM POI to lie inside the footprint (or within 1-2 m
+of it) instead of within 8 m.
+
+Finding that changes the premise: only 136 of 11,626 POI nodes snap to a footprint they do not lie in (the "within 8 m"
+path). The ~2,100 non-shop pands that still carry a shopfront are overwhelmingly POIs **inside** the footprint: 3,205 of 3,238
+POIs hosted on a pand BAG does not list as shop/horeca lie inside it. By name they are real businesses (Gall & Gall, De
+Commelin Bakkerij, Brouwerij 't IJ, Gamma, hairdressers, restaurants): BAG gebruiksdoel is not up to date for them, or a
+shop sits in a pand registered for industry or housing. An inside-the-footprint POI is the strongest evidence we have, so
+it is kept.
+
+Changes (`shopGate.ts`, `build-shopfronts.ts`):
+- `hostForPoi`: inside a footprint wins; a pavement node snaps up to 8 m to a pand BAG lists as shop/horeca (and prefers
+  that pand over a nearer non-shop one), but only up to `PAVEMENT_NODE_M` = 2 m to any other pand. Affects 57 pands.
+- `isTradeBusiness`: `shop=car_repair|car_parts|tyres|wholesale|trade|storage_rental|...` on a pand with no BAG shop/horeca
+  use draws no shopfront (145 POIs). These were the garages and wholesalers in industrial units.
+- `--no-snap-gate` rebuilds the previous behaviour for before/after comparisons; the build also writes `hosted.json`
+  (every POI's host, inside or snapped, tag) and `snapped.json` next to the extract.
+
+Census, same fresh Overpass pull, before = main's rule (busy-stretch gate only), after = round 2:
+
+| | before | after |
+| --- | --- | --- |
+| pands drawn with a shop, city-wide | 10,177 | 10,021 (-156) |
+| POI-sourced on industriefunctie | 354 | 296 |
+| POI-sourced on kantoorfunctie | 189 | 182 |
+| POI-sourced on woonfunctie/none | 1,580 | 1,501 |
+| POI-sourced on other uses | 240 | 230 |
+| POI-sourced on winkel / bijeenkomst | 4,035 / 2,101 | 4,037 / 2,101 |
+| of which on a pand the industrial kit stamps | 319 | 233 |
+| Centrum | 4,018 | 4,000 |
+
+Pins (`shopGate.test.ts`, node):
+- loses: Joris van den Bergweg 109, Pand 0363100012162643 (industriefunctie 1982; its POI node is 3.9 m off the footprint).
+- loses: Langsom 8, Pand 0363100012098752, and Lindengracht 227, Pand 0363100012172704 (industriefunctie; shop=car_repair).
+- keeps: Albert Cuypstraat 271, Pand 0363100012236030, and Beethovenstraat 42, Pand 0363100012109960 (winkelfunctie; nodes 5.0 m
+  off the footprint on the pavement).
+
+What remains: about 1,500 housing/none pands and ~300 industrie/kantoor pands carry a shopfront from a POI inside the footprint.
+Further narrowing needs a signal other than BAG use (OSM `level`, a dated panorama check, or the Hoofdbureau-style facade
+strip) and is a judgement call per business, not a rule.
+
+Frames (round 2, tilt 76, near eye height; `/Users/blackmad/Code/map-recall2-screenshots/buildings/2026-11-10-storefront-gate/`, the screenshots-a1 clone no longer exists):
+`eye-lindengracht-garage-pakhuis-{e,w}-{before,after}.jpg` (Lindengracht 227 industrial/garage pand: in the w frame the red shopfront strip
+at the far left of the canyon is gone after) and `eye-albert-cuypstraat-shops-{n,s}-{before,after}.jpg` (the tram street keeps its shopfronts
+and signs, e.g. Kikiboba). The round-1 frames from the same folder (Brouwersgracht, Pazzanistraat, Haarlemmerdijk) were moved here with it.

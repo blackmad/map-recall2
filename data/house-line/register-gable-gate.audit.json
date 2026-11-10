@@ -1,0 +1,874 @@
+{
+ "registerPands": 4634,
+ "liveRegisterPands": 4634,
+ "changedGated": 125,
+ "changedHint": 4077,
+ "heldGated": 148,
+ "gatedTransitions": {
+  "neck -> flat": 21,
+  "bell -> flat": 18,
+  "neck -> mansard": 12,
+  "point -> flat": 11,
+  "bell -> hipped": 7,
+  "bell -> pitched": 6,
+  "point -> pitched": 5,
+  "neck -> bell": 4,
+  "neck -> hipped": 4,
+  "point -> mansard": 4,
+  "neck -> pitched": 4,
+  "neck -> mansardHip": 4
+ },
+ "hintTransitions": {
+  "cornice -> pitched": 609,
+  "cornice -> flat": 503,
+  "neck -> pitched": 401,
+  "bell -> pitched": 277,
+  "cornice -> mansard": 242,
+  "neck -> flat": 227,
+  "bell -> flat": 154,
+  "point -> pitched": 128,
+  "cornice -> bell": 104,
+  "point -> flat": 101,
+  "neck -> mansard": 99,
+  "cornice -> hipped": 79
+ },
+ "handSet": {
+  "rows": 60,
+  "score": {
+   "drawn": {
+    "agree": 38,
+    "n": 60
+   },
+   "gated": {
+    "agree": 44,
+    "n": 60
+   },
+   "hint": {
+    "agree": 28,
+    "n": 60
+   }
+  },
+  "byHandRaised": {
+   "drawn": {
+    "raisedHandAgree": 22,
+    "raisedHand": 29,
+    "flatHandAgree": 16,
+    "flatHand": 31
+   },
+   "gated": {
+    "raisedHandAgree": 22,
+    "raisedHand": 29,
+    "flatHandAgree": 22,
+    "flatHand": 31
+   },
+   "hint": {
+    "raisedHandAgree": 1,
+    "raisedHand": 29,
+    "flatHandAgree": 27,
+    "flatHand": 31
+   }
+  },
+  "changedGated": [
+   {
+    "id": "0363100012167955",
+    "hand": "flat",
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   {
+    "id": "0363100012170091",
+    "hand": "flat",
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   {
+    "id": "0363100012173134",
+    "hand": "flat",
+    "drawn": "bell",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   {
+    "id": "0363100012174187",
+    "hand": "cornice",
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   {
+    "id": "0363100012174911",
+    "hand": "cornice",
+    "drawn": "point",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   {
+    "id": "0363100012172776",
+    "hand": "flat",
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   }
+  ]
+ },
+ "changedRows": [
+  {
+   "id": "0363100012236796",
+   "register": "spout",
+   "drawn": "spout",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012137523",
+   "register": "spout",
+   "drawn": "spout",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012087391",
+   "register": "point",
+   "drawn": "point",
+   "gated": "parapet"
+  },
+  {
+   "id": "0363100012088423",
+   "register": "point",
+   "drawn": "point",
+   "gated": "parapet"
+  },
+  {
+   "id": "0363100012172867",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012172870",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012172885",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "bell"
+  },
+  {
+   "id": "0363100012172926",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012169492",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012172664",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012176439",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012177249",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012177494",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012167807",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012176912",
+   "register": "point",
+   "drawn": "point",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012175117",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012175286",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012178248",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012179590",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012179961",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012248815",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012253925",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012175369",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012176105",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012179411",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012179615",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "cornice"
+  },
+  {
+   "id": "0363100012179649",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012179660",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012179729",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012179735",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012571599",
+   "register": "step",
+   "drawn": "step",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012173071",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "bell"
+  },
+  {
+   "id": "w266597866",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "w749871272",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012169308",
+   "register": "point",
+   "drawn": "point",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012168924",
+   "register": "point",
+   "drawn": "point",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012169026",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012169405",
+   "register": "point",
+   "drawn": "point",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012169944",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012169955",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012174530",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012167955",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat",
+   "hand": "flat"
+  },
+  {
+   "id": "0363100012168702",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012170091",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat",
+   "hand": "flat"
+  },
+  {
+   "id": "0363100012173134",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "hipped",
+   "hand": "flat"
+  },
+  {
+   "id": "0363100012174187",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard",
+   "hand": "cornice"
+  },
+  {
+   "id": "0363100012174425",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012174911",
+   "register": "point",
+   "drawn": "point",
+   "gated": "pitched",
+   "hand": "cornice"
+  },
+  {
+   "id": "0363100012177276",
+   "register": "point",
+   "drawn": "point",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012169103",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012169245",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012169646",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012173792",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012177381",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012177382",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012167626",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012173926",
+   "register": "point",
+   "drawn": "point",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012173979",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "mansardHip"
+  },
+  {
+   "id": "0363100012175752",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012176332",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012177452",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012177481",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012241755",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012172776",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat",
+   "hand": "flat"
+  },
+  {
+   "id": "0363100012176004",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "spout"
+  },
+  {
+   "id": "0363100012177017",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012171050",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012178681",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012168181",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012168331",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012168476",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "bell"
+  },
+  {
+   "id": "0363100012168536",
+   "register": "step",
+   "drawn": "step",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012178859",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012179391",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012179468",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012180407",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012571491",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012175262",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012175491",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "point"
+  },
+  {
+   "id": "0363100012175842",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012175963",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "bell"
+  },
+  {
+   "id": "0363100012243264",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012175825",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "cornice"
+  },
+  {
+   "id": "0363100012179279",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012180357",
+   "register": "step",
+   "drawn": "step",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012571550",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012178611",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012178852",
+   "register": "step",
+   "drawn": "step",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012171637",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012178149",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012178532",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012182579",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012172009",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012177917",
+   "register": "point",
+   "drawn": "point",
+   "gated": "bell"
+  },
+  {
+   "id": "0363100012169052",
+   "register": "point",
+   "drawn": "point",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012175007",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "63100012171600:0",
+   "register": "point",
+   "drawn": "point",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012172728",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012177108",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012178551",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansardHip"
+  },
+  {
+   "id": "0363100012178562",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansardHip"
+  },
+  {
+   "id": "0363100012179996",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012180000",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "parapet"
+  },
+  {
+   "id": "0363100012102466",
+   "register": "point",
+   "drawn": "point",
+   "gated": "school"
+  },
+  {
+   "id": "0363100012132188",
+   "register": "point",
+   "drawn": "point",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012182674",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012177883",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "w266944034",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012171612",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012182462",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012182867",
+   "register": "point",
+   "drawn": "point",
+   "gated": "neck"
+  },
+  {
+   "id": "0363100012182907",
+   "register": "step",
+   "drawn": "step",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012182912",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012165698",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansardHip"
+  },
+  {
+   "id": "0363100012172002",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012177995",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansardHip"
+  },
+  {
+   "id": "0363100012181789",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "pitched"
+  },
+  {
+   "id": "0363100012169733",
+   "register": "point",
+   "drawn": "point",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012169734",
+   "register": "point",
+   "drawn": "point",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012182183",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012169746",
+   "register": "bell",
+   "drawn": "bell",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012181105",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "flat"
+  },
+  {
+   "id": "0363100012170543",
+   "register": "point",
+   "drawn": "point",
+   "gated": "hipped"
+  },
+  {
+   "id": "0363100012183042",
+   "register": "neck",
+   "drawn": "neck",
+   "gated": "mansard"
+  },
+  {
+   "id": "0363100012062842",
+   "register": "point",
+   "drawn": "point",
+   "gated": "school"
+  }
+ ]
+}

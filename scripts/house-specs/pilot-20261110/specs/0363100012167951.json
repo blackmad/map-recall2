@@ -1,0 +1,35 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012167951",
+ "address": "Bloemgracht 123",
+ "design": {
+  "fronts": [
+   {
+    "bays": 3
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h5 pand-crops/0363100012167951 (good tier): three axes, agrees with Jev (held)",
+   "at": "2026-11-10"
+  },
+  "facts/pui": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h5 pand-crops/0363100012167951 (good tier): garage/shop front (GARAGE BAKKER) on the ground storey",
+   "at": "2026-11-10"
+  }
+ },
+ "facts": {
+  "pui": "shop"
+ },
+ "schemaLimits": [
+  {
+   "component": "palette",
+   "what": "dark grey painted brick (as 121)"
+  }
+ ]
+}

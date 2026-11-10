@@ -1,0 +1,33 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171854",
+ "address": "Nieuwmarkt 8",
+ "design": {
+  "fronts": [
+   {
+    "gable": "cornice",
+    "bays": 3
+   }
+  ]
+ },
+ "provenance": {
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012171854/front.jpg (--prefer-bearing 114): straight white cornice on the photo; the register's bell for no. 8 does not match this BAG wall (address-to-pand link suspect)",
+   "at": "2026-11-10"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012171854/front.jpg (--prefer-bearing 114): three axes (held)",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "palette",
+   "what": "dark grey painted brick: palette/wallMaterial painted-brick maps to the generic 'light' finish (decorate.ts), the wrong way for a dark painted front; not stated"
+  }
+ ]
+}

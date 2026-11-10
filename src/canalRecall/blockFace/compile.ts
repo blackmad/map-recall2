@@ -664,6 +664,8 @@ function facePlanner(face: BlockFaceIntent, factsByPand: Map<string, BuildingFac
    * Roofs per pand: `survey` keeps 3DBAG; `recipe` and `front` fit once on the 3DBAG facts for the front eaves and
    * storeys, then replace the roof (blockFace/recipeRoof.ts); `front` bands take the form the street front implies.
    */
+  /** A gap this long between a corner pand's street fronts is a chamfer the roof falls to as well (sideFronts). */
+  const CHAMFER_MIN_M = 0.3, CHAMFER_MAX_M = 6;
   const withRoofs = (plan: FaceGroundPlan): FaceGroundPlan => {
     const sources = plan.facts.map((f, i) => roofSourceFor(intents[i], f, roofSource, keepSurvey));
     if (sources.every(s => s === 'survey')) return plan;
@@ -676,7 +678,23 @@ function facePlanner(face: BlockFaceIntent, factsByPand: Map<string, BuildingFac
       const same = intents[i].fronts.filter(fr => fr.street === street), ff = fit.facts.fronts.find(x => x.street === street);
       const ends = same.length > 1 && ff ? splitChain(ff, (() => { const sh = same.map(fr => fr.share ?? 1 / same.length), t = sh.reduce((a, b) => a + b, 0); return sh.map(x => x / t); })()).pairs : null;
       const fronts = ends ? same.map((fr, k) => ({id: fr.id, eavesM: fit.report.fronts.find(r => r.id === fr.id)!.eavesM, endpointsRD: ends[k], ...(fr.stepBody ? {body: true} : {}), ...(fr.dormers ? {dormers: true} : {})})) : undefined;
-      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street, ridgeCapM, fronts, ...(forms ? {forms, frontId: intents[i].fronts[0].id} : {}), ...(intents[i].roof.squareSaddle ? {squareSaddle: true} : {}),
+      // A corner pand's fronts on other streets: the roof falls to them too (recipeRoof `sideFronts`).
+      const sideFronts = intents[i].fronts.filter(fr => fr.street && fr.street !== street).flatMap(fr => {
+        const sf = fit.facts.fronts.find(x => x.street === fr.street), rf = fit.report.fronts.find(r => r.id === fr.id);
+        if (!sf || !rf) return [];
+        const side = {id: fr.id, eavesM: rf.eavesM, endpointsRD: sf.endpointsRD, outwardNormalRD: sf.outwardNormalRD};
+        // A chamfered corner (Nassaukade 152: 2.3 m of footprint between the two fronts) falls too, at the lower eaves:
+        // without it the two hips met over the chamfer and its closure rose as a 2 m brick gable at the corner.
+        const pairs = ff ? ff.endpointsRD.flatMap(p => sf.endpointsRD.map(q => [p, q])) : [];
+        const [p, q] = pairs.sort((x, y) => Math.hypot(x[0][0] - x[1][0], x[0][1] - x[1][1]) - Math.hypot(y[0][0] - y[1][0], y[0][1] - y[1][1]))[0] ?? [];
+        const gap = p && q ? Math.hypot(q[0] - p[0], q[1] - p[1]) : 0;
+        if (!ff || gap < CHAMFER_MIN_M || gap > CHAMFER_MAX_M) return [side];
+        const sum = [ff.outwardNormalRD[0] + sf.outwardNormalRD[0], ff.outwardNormalRD[1] + sf.outwardNormalRD[1]];
+        let n = [-(q[1] - p[1]) / gap, (q[0] - p[0]) / gap];
+        if (n[0] * sum[0] + n[1] * sum[1] < 0) n = [-n[0], -n[1]];
+        return [side, {id: `${fr.id}-chamfer`, eavesM: Math.min(rf.eavesM, f0.eavesM), endpointsRD: [p, q], outwardNormalRD: n}];
+      });
+      return recipeRoofFacts(fit.facts, {eavesM: f0.eavesM, storeyHeightsM: f0.storeyHeightsM, street, ridgeCapM, fronts, ...(forms ? {forms, frontId: intents[i].fronts[0].id} : {}), ...(intents[i].roof.squareSaddle ? {squareSaddle: true} : {}), ...(sideFronts.length ? {sideFronts} : {}),
         // Dormers stand 0.35 m behind the frontage (fit.ts): the attic face starts behind them, not through them. Cross gables
         // start behind their crown walls (CROSS_GABLE_BEHIND_M): the attic face rises from the same gutter line, so the
         // outline's millimetre wander about the frontage stays flat (a steep face rising from it closed in mm slivers).

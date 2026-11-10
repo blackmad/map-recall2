@@ -23,7 +23,7 @@ const COLOURS: Record<GroundLayer, [number, number, number]> = {
   land: [150, 142, 130], park: [92, 122, 66], wood: [70, 96, 52], square: [176, 166, 150], parking: [92, 92, 96],
   asphalt: [72, 74, 78], klinker: [128, 82, 66], brick: [168, 156, 146], cycle: [160, 70, 62], paving: [190, 182, 170], gravel: [170, 156, 128],
   kerb: [235, 230, 220], paint: [255, 255, 255], water: [48, 75, 77], quay: [110, 100, 90], deckBody: [120, 110, 100], deckTop: [140, 130, 120],
-  tram: [30, 30, 34], bollard: [120, 40, 30],
+  tram: [30, 30, 34], bollard: [120, 40, 30], bare: [160, 144, 122], garden: [113, 132, 92],
   // Park surfaces (parks-v1), a shade apart from the OSM park fill so a review can tell survey from fill.
   lawn: [110, 150, 80], bed: [130, 110, 80], shrub: [70, 110, 60], bark: [110, 80, 60], sand: [210, 195, 150], parkGravel: [180, 170, 140], parkPath: [120, 120, 120], pond: [60, 95, 100], hedge: [50, 90, 45], furniture: [80, 80, 80],
 } as Record<GroundLayer, [number, number, number]>;

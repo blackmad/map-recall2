@@ -6,6 +6,7 @@ import { validateBlockFace } from '../blockFace/intent.ts';
 import { defaulted, measured } from '../facade/evidence.ts';
 import { unobservedHouse } from '../facade/houseRecord.ts';
 import { registerFactsFromExtract } from '../facade/registerRecipe.ts';
+import { specProblems } from './spec.ts';
 import { asLimit, autoPlaceColumnsScore, fromBlockFace, fromHouseRecord, fromJev, fromRecipeIntent, fromRegisterFacts, jevBays, registerBays } from './adapters.ts';
 import { fieldSources } from './resolve.ts';
 import { validateSpec } from './spec.ts';
@@ -66,6 +67,10 @@ test('fromRegisterFacts: the Nieuwmarkt 20-22 register entry (RCE 3856)', () => 
   assert.equal(spec.facts?.facadeYear, 1605);
   assert.equal(spec.provenance['fronts/0/gable'].source, 'monument-text');
   assert.equal(spec.provenance['fronts/0/gable'].ref, 'rce:3856');
+  // the register text is also kept as a historic fact with its register number (H5h round 4)
+  assert.equal(spec.facts?.historicGable, 'step');
+  assert.equal(spec.provenance['facts/historicGable'].ref, 'rce:3856');
+  assert.match(specProblems({ ...spec, facts: { historicGable: 'dome' } } as any).join(), /facts\/historicGable/);
   // A stone front cannot be said by palette.wallMaterial: a schema limit, not the nearest option.
   const stone = fromRegisterFacts({ finish: 'stone', gable: 'cornice' }, '1', id);
   assert.equal(stone.design.palette, undefined);

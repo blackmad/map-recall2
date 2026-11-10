@@ -38,7 +38,8 @@
    "gable": "cornice",
    "roofFront": "mansard",
    "dormers": 2,
-   "dormerStyle": "pediment"
+   "dormerStyle": "pediment",
+   "dormerBody": "timber"
   }
  },
  "palettes": {

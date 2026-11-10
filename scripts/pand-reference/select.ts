@@ -61,6 +61,13 @@ export async function pickWall(fp: Footprint, others: Footprint[]): Promise<{ wa
     w.facing = (vx * w.nx + vy * w.ny) / vl;
   }
   const facing = walls.filter(w => w.facing > 0.5 && w.roadDistM < 45);
+  // --prefer-bearing on a square (lane H7, Nieuwmarkt 6-22): when no road-facing wall is within 50 deg of the bearing, the
+  // front faces open space the road rule cannot see; take the longest exposed wall within 50 deg of the bearing instead.
+  const off = (w: Wall) => Math.abs(((((Math.atan2(w.nx, w.ny) * 180 / Math.PI + 360) % 360) - options.preferBearingDeg! + 540) % 360) - 180);
+  if (options.preferBearingDeg !== undefined && !facing.some(w => off(w) < 50)) {
+    const byBearing = walls.filter(w => off(w) < 50).sort((p, q) => q.len - p.len);
+    if (byBearing.length) return { wall: byBearing[0], note: `preferred bearing ${options.preferBearingDeg}: longest exposed wall within 50 deg (no road-facing wall there)`, others: walls };
+  }
   if (facing.length) {
     // Front and rear walls both "face a road"; the front is the one on the nearer road. Bucket road distance in 6 m steps, then longest wins.
     // --prefer-bearing=B (+-50 deg) restricts to walls facing roughly B (e.g. the canal side of a row, or a corner house's address front).

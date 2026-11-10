@@ -7,6 +7,7 @@ import { bridgeNameAskable } from '../src/canalRecall/game/notableBridges';
 import { coveringBuilding, initialCoverState, updateCoverState } from '../src/canalRecall/coveredPassage';
 import { buildRoadSpatialIndex, classifySurface, contactsAt, pickGuardContact, roadsNear, type RoadPoint } from '../src/canalRecall/routing/roadSurface';
 import { buildPlazaIndex, plazaAt, plazaGuardContact, plazaSurface, type PlazaFeature, type PlazaIndex } from '../src/canalRecall/routing/pedestrianAreas';
+import { BGT_PLAZAS_EXTRACT, type BgtPlazaExtract } from '../src/canalRecall/routing/bgtPlazas';
 import { buildRoadSegments, projectToWorld, PIXELS_PER_METER, type OsmWay } from '../src/canalRecall/osm/roadProjection';
 import { bridgeWayNetwork, carriedStreetName, isBridgeWayName, routeQuestionRoadName } from '../src/canalRecall/game/bridgeStreetName';
 import { afterFerryMove, beginFerryFrame, leadingEdge, nearestWater, type FerryGame } from '../src/canalRecall/ferry/travel';
@@ -340,10 +341,12 @@ const PLAZA_ROAD_WIDTHS: Record<string, number> = {
   service: 13, busway: 18, cycleway: 9, pedestrian: 14, footway: 7, path: 8,
 };
 const squares = JSON.parse(await readFile('public/data/extracts/amsterdam/squares.json', 'utf8')) as PlazaFeature[];
-const plazaWorld = (centre: [number, number], radiusMetres = 700) => {
+// BGT paved plazas (bgtPlazas.ts, `?bgtPlazas=1`): the published extract, ridden on top of the squares.
+const bgtPlazas = (JSON.parse(await readFile(`public/data/extracts/amsterdam/${BGT_PLAZAS_EXTRACT}`, 'utf8')) as BgtPlazaExtract).features;
+const plazaWorld = (centre: [number, number], radiusMetres = 700, skipStreet?: (streetIndex: number) => boolean) => {
   const ways: OsmWay[] = [];
   routing.forEach((street, streetIndex) => (street.paths ?? (street.path ? [street.path] : [])).forEach((p, pathIndex) => {
-    if (p.length < 2) return;
+    if (p.length < 2 || skipStreet?.(streetIndex)) return;
     if (p.length > 3 && p[0][0] === p.at(-1)![0] && p[0][1] === p.at(-1)![1]) return;
     if (!p.some(q => metersBetween(q, centre) < radiusMetres)) return;
     const highway = street.highway || 'residential';
@@ -357,6 +360,8 @@ const plazaWorld = (centre: [number, number], radiusMetres = 700) => {
   };
   const index = buildRoadSpatialIndex(built.segments, 100);
   const plazas = buildPlazaIndex(squares, toWorld, PIXELS_PER_METER);
+  const nearCentre = (f: PlazaFeature) => (f.polygons ?? []).some(polygon => polygon[0].some(q => metersBetween(q, centre) < radiusMetres));
+  const bgt = buildPlazaIndex([...squares, ...bgtPlazas.filter(nearCentre)], toWorld, PIXELS_PER_METER);
   const guard = (x: number, y: number, withPlazas: PlazaIndex | null, preferredAngle: number | null = null) => {
     let best = pickGuardContact(contactsAt(roadsNear(index, x, y, 2), x, y), preferredAngle, { x, y });
     if (withPlazas) {
@@ -385,9 +390,64 @@ const plazaWorld = (centre: [number, number], radiusMetres = 700) => {
     const corridor = nearest ? classifySurface(nearest.dist, nearest.width) : 'grass';
     return plazaSurface(corridor, withPlazas, x, y);
   };
-  return { plazas, toWorld, blocked, ride, surface, guard };
+  /** Metres of a 1 m flood over rideable ground from `from` until `to` is reached (null: not within `box` m). */
+  const reachable = (from: [number, number], to: [number, number], withPlazas: PlazaIndex | null, box = 150) => {
+    const a = toWorld(...from), b = toWorld(...to);
+    const n = 2 * box + 1, step = PIXELS_PER_METER;
+    const ox = (a.x + b.x) / 2 - box * step, oy = (a.y + b.y) / 2 - box * step;
+    const cellOf = (x: number, y: number) => Math.round((y - oy) / step) * n + Math.round((x - ox) / step);
+    const seen = new Int32Array(n * n).fill(-1);
+    const start = cellOf(a.x, a.y), goal = cellOf(b.x, b.y);
+    seen[start] = 0;
+    const queue = [start];
+    for (let head = 0; head < queue.length; head++) {
+      const c = queue[head];
+      if (c === goal) return seen[c];
+      const i = c % n, j = (c - i) / n;
+      for (const [di, dj] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const ni = i + di, nj = j + dj;
+        if (ni < 0 || nj < 0 || ni >= n || nj >= n) continue;
+        const k = nj * n + ni;
+        if (seen[k] >= 0 || blocked(ox + ni * step, oy + nj * step, withPlazas)) continue;
+        seen[k] = seen[c] + 1;
+        queue.push(k);
+      }
+    }
+    return null;
+  };
+  return { plazas, bgt, toWorld, blocked, ride, reachable, surface, guard };
 };
 let plazaSummary = '';
+let bgtSummary = '';
+const WATERLOO_PLEIN: [number, number] = [52.368690, 4.900812];
+const MUSEUMPLEIN_LAWN: [number, number] = [52.35770, 4.88150];
+const frederiksLawn = (): [number, number] => {
+  const ring = (squares.find(square => square.name === 'Frederiksplein')!.paths ?? [squares.find(square => square.name === 'Frederiksplein')!.path!])[0];
+  return [ring.reduce((t, q) => t + q[0], 0) / ring.length, ring.reduce((t, q) => t + q[1], 0) / ring.length];
+};
+/** The point of a polygon (outer + holes, [lat, lon]) farthest from its edges, on a 2 m grid. */
+const deepestPoint = (polygon: Array<Array<[number, number]>>): [number, number] => {
+  const ky = 111_320, kx = 111_320 * Math.cos(polygon[0][0][0] * Math.PI / 180);
+  const xy = polygon.map(ring => ring.map(([lat, lon]) => [lon * kx, lat * ky] as [number, number]));
+  const inside = (x: number, y: number) => xy.reduce((n, ring) => {
+    let c = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) if ((ring[i][1] > y) !== (ring[j][1] > y) && x < (ring[j][0] - ring[i][0]) * (y - ring[i][1]) / (ring[j][1] - ring[i][1]) + ring[i][0]) c = !c;
+    return n + (c ? 1 : 0);
+  }, 0) % 2 === 1;
+  const edge = (x: number, y: number) => Math.min(...xy.flatMap(ring => ring.slice(1).map((b, i) => {
+    const a = ring[i], vx = b[0] - a[0], vy = b[1] - a[1], l2 = vx * vx + vy * vy;
+    const t = l2 ? Math.max(0, Math.min(1, ((x - a[0]) * vx + (y - a[1]) * vy) / l2)) : 0;
+    return Math.hypot(x - a[0] - t * vx, y - a[1] - t * vy);
+  })));
+  const xs = xy[0].map(p => p[0]), ys = xy[0].map(p => p[1]);
+  let best: [number, number] = [0, 0], bestD = -1;
+  for (let x = Math.min(...xs); x <= Math.max(...xs); x += 2) for (let y = Math.min(...ys); y <= Math.max(...ys); y += 2) {
+    if (!inside(x, y)) continue;
+    const d = edge(x, y);
+    if (d > bestD) { bestD = d; best = [y / ky, x / kx]; }
+  }
+  return best;
+};
 {
   // Named regression (feedback 636a57f4, 2026-10-25, "I should be able to bike
   // across this square"): the Dam, from in front of the Royal Palace to the
@@ -488,6 +548,87 @@ let plazaSummary = '';
     const w = ode.toWorld(at[0], at[1]);
     assert.equal(plazaAt(ode.plazas, w.x, w.y), null, `${label} is not paved link`);
   }
+  // Feedback triage 2026-11-10 (build 6a901ba, desktop Free Ride; scripts/feedback/*, docs/reports/feedback-triage-20261110.md).
+  // The report positions are the notes' context.player minus the camera offset applied to mapCenter.
+  // 6d9d7ddd "I should probably be able to bike through here": the Oosterpark path east of the Tropenmuseum
+  // (bicycle=yes footways w376383016 and neighbours). The extract dropped it until D2 (graphRevision 2, #322) appended
+  // 273 features (index >= 47259 in streets-routing); without them the whole path is off every corridor.
+  const D2_FIRST_FEATURE = 47_259;
+  const tropenReport: [number, number] = [52.362209, 4.922503];
+  const tropenPath: Array<[number, number]> = [[52.362326, 4.922363], [52.362275, 4.922058], [52.362201, 4.921765], [52.361954, 4.921029]];
+  const rideAlong = (world: ReturnType<typeof plazaWorld>, from: [number, number], via: Array<[number, number]>) => {
+    let steps = 0, stops = 0, at = from;
+    for (const next of via) { const leg = world.ride(at, next, world.plazas); steps += leg.steps; stops += leg.stops; at = next; }
+    return { steps, stops };
+  };
+  const tropenBefore = rideAlong(plazaWorld(tropenReport, 700, index => index >= D2_FIRST_FEATURE), tropenReport, tropenPath);
+  const tropenAfter = rideAlong(plazaWorld(tropenReport), tropenReport, tropenPath);
+  assert.ok(tropenBefore.stops > 20, `Oosterpark path: without the D2 footways the path is off every corridor (${tropenBefore.stops}/${tropenBefore.steps} m blocked)`);
+  assert.equal(tropenAfter.stops, 0, `Oosterpark path by the Tropenmuseum (6d9d7ddd): rideable from the report position west along the path (${tropenAfter.stops}/${tropenAfter.steps} m blocked)`);
+  // 637f346b "should be able to ride here" (ASC SDW forecourt, Heathrowstraat) and 4f47f105 (the Radarweg office
+  // courtyard off Barajasweg): the bike stands on the corridor edge and open paving lies beside it. OSM has no rideable way
+  // there (only unmarked paving_stones footways w1444682609, w1425820505-7: foot access, not bicycle=yes) and no pedestrian
+  // area, so this stays off-road BY DESIGN until a paved link or a look that tells rideable paving from walking space
+  // lands. The pin keeps the gap measured: flip these to rideable when it does.
+  for (const [label, at] of [['ASC SDW forecourt (637f346b)', [52.385970, 4.832498]], ['Radarweg office courtyard (4f47f105)', [52.387448, 4.833459]]] as const) {
+    const world = plazaWorld(at);
+    const w = world.toWorld(at[0], at[1]);
+    assert.equal(world.blocked(w.x, w.y, world.plazas), false, `${label}: the reported bike position is on a corridor`);
+    let beyond = 0;
+    for (let angle = 0; angle < 360; angle += 15) {
+      const probe = world.toWorld(at[0] + Math.sin(angle * Math.PI / 180) * 12 / 111_320, at[1] + Math.cos(angle * Math.PI / 180) * 12 / (111_320 * Math.cos(at[0] * Math.PI / 180)));
+      if (world.blocked(probe.x, probe.y, world.plazas)) beyond++;
+    }
+    assert.ok(beyond >= 8, `${label}: open paving within 12 m is off every corridor (${beyond}/24 directions blocked)`);
+    // BGT plazas (lane bgt-plazas-20261110) leave both blocked by rule: the forecourt and the courtyard are BGT
+    // onbegroeidterreindeel `erf`, terrain belonging to the pand (the club's and the office's own ground), not public
+    // paving. Flip only if a later rule admits such erf (docs/reports/bgt-plazas-20261110.md, needs a user ruling).
+    let beyondBgt = 0;
+    for (let angle = 0; angle < 360; angle += 15) {
+      const probe = world.toWorld(at[0] + Math.sin(angle * Math.PI / 180) * 12 / 111_320, at[1] + Math.cos(angle * Math.PI / 180) * 12 / (111_320 * Math.cos(at[0] * Math.PI / 180)));
+      if (world.blocked(probe.x, probe.y, world.bgt)) beyondBgt++;
+    }
+    assert.ok(beyondBgt >= 8, `${label}: with the BGT plazas the erf around it stays blocked (${beyondBgt}/24 directions)`);
+  }
+  // BGT paved plazas (lane bgt-plazas-20261110; bgtPlazas.ts, flag `?bgtPlazas=1`, extract bgt-plazas-v1.json): BGT
+  // pedestrian paving at least 8 m across (voetgangersgebied, plein, woonerf, voetpad) that a corridor reaches.
+  // Centrum plein: the Waterlooplein paving north of the Stopera, which neither a corridor nor squares.json covers.
+  const waterloo: [number, number] = WATERLOO_PLEIN;
+  const wlw = plazaWorld(waterloo);
+  const wp = wlw.toWorld(...waterloo);
+  assert.ok(wlw.blocked(wp.x, wp.y, wlw.plazas), 'Waterlooplein: without the BGT plazas the paving is off every corridor and square');
+  assert.equal(wlw.blocked(wp.x, wp.y, wlw.bgt), false, 'Waterlooplein: with the BGT plazas the paving rides');
+  // From the Waterlooplein street corridor (north-east) the bike gets there over rideable ground; without the BGT
+  // plazas it cannot.
+  const wlStreet: [number, number] = [52.368798, 4.901371];
+  const wsw = wlw.toWorld(...wlStreet);
+  assert.equal(wlw.blocked(wsw.x, wsw.y, null), false, 'Waterlooplein: the start is on the street corridor');
+  const wlRide = { steps: wlw.reachable(wlStreet, waterloo, wlw.bgt) };
+  assert.ok(wlRide.steps !== null && wlRide.steps < 120, `Waterlooplein: reached from the street over the plein (${wlRide.steps} m flood path)`);
+  assert.equal(wlw.reachable(wlStreet, waterloo, wlw.plazas), null, 'Waterlooplein: not reachable without the BGT plazas');
+  const wlSurface = wlw.surface(wp.x, wp.y, wlw.bgt);
+  assert.equal(wlSurface, 'asphalt', 'Waterlooplein: the BGT plaza reads as paving to the physics');
+  // Negatives that must stay blocked with the BGT plazas on: a lawn (Museumplein's centre, BGT begroeid), the
+  // Frederiksplein lawn, and a private courtyard (the Radarweg office's own inner court, BGT erf, 4f47f105).
+  for (const [label, at] of [
+    ['the Museumplein lawn', MUSEUMPLEIN_LAWN],
+    ['the Frederiksplein lawn', frederiksLawn()],
+    ['the Radarweg office inner courtyard (erf)', [52.387592, 4.833165]],
+  ] as const) {
+    const world = plazaWorld(at as [number, number]);
+    const w = world.toWorld(at[0], at[1]);
+    assert.equal(plazaAt(world.bgt, w.x, w.y), null, `${label} is not a BGT plaza`);
+    assert.ok(world.blocked(w.x, w.y, world.bgt), `${label} stays off-road with the BGT plazas`);
+  }
+  // The largest shipped pieces ride at their deepest point: the guard's plaza branch finds a corridor contact
+  // within roadsNear(…, 4) of every plaza point.
+  for (const feature of [...bgtPlazas].sort((a, b) => b.plazaArea - a.plazaArea).slice(0, 3)) {
+    const at = deepestPoint(feature.polygons[0]);
+    const world = plazaWorld(at, 400);
+    const w = world.toWorld(...at);
+    assert.equal(world.blocked(w.x, w.y, world.bgt), false, `${feature.id} (${feature.plazaArea} m²): its deepest point ${at.map(v => v.toFixed(6)).join(',')} rides`);
+  }
+  bgtSummary = `; BGT plazas: ${bgtPlazas.length} pieces, Waterlooplein reached in ${wlRide.steps} m, lawns and an erf courtyard blocked`;
   // Negatives: closed rings that stay blocked. Frederiksplein is a park
   // (lawn around the fountain); the Piet Heinkade ring (routing_4258 path 6,
   // 10,159 m², the largest closed street ring in the centre) loops around a
@@ -791,4 +932,4 @@ let ferrySummary = '';
   ferrySummary = `, ferry: NDSM quay 24.7 m and Buiksloterweg 15 m reports dock, ${farQuay} NDSM bank touches blocked, f80d47da hull afloat, ${crossings.length} IJ crossings dock, #318 Free Ride lands at De Ruijterkade in ${freeRide.seconds.toFixed(1)} s (${freeLandings}/16 headings land, least 5 s window ${leastWindow.toFixed(1)} m), ${launches} launches clear`;
 }
 
-process.stdout.write(`Canal Recall car checks passed (roads: ${routingSource()}; 6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}${deadEndSummary}${ferrySummary}).\n`);
+process.stdout.write(`Canal Recall car checks passed (roads: ${routingSource()}; 6 simulations, including Keizersgracht canal edge; 4 Da Costakade approaches, Stirumstraat roundabout, ${bridgeSegments.length} bridge segments, routing-class coverage${bridgeWaySummary}${plazaSummary}${bgtSummary}${deadEndSummary}${ferrySummary}).\n`);

@@ -20,6 +20,7 @@ import { quality, type JudgeRecord } from '../../house-crops/judge.ts';
 import { JUDGE_GOOD } from '../../house-crops/flags.ts';
 import { loadBag, type Envelope } from '../describe.ts';
 import { bagStoreys } from '../../../src/canalRecall/houseSpec/writers/bag.ts';
+import { crownInGeometry } from '../../../src/canalRecall/houseSpec/decorate.ts';
 
 export const HELP = `hand-set score: reader ceiling, writer gates, BAG storeys, old hand truth, H9 review and judge recall against hand set v1.
 
@@ -128,6 +129,23 @@ export function scoreHandSet(o: { out?: string; min?: keyof typeof RANK } = {}) 
   const regV = verdict(main.agree + rb.k, main.stated + rb.n, gates.gable, MIN_N.gable), regVc = verdict(main.agree + rc.k, main.stated + rc.n, gates.gable, MIN_N.gable);
   console.log(`\nregister gable-type writer (gate ${gates.gable}, n >= ${MIN_N.gable}): hand set ${main.agree}/${main.stated} + gable rows (B2) ${rb.k}/${rb.n} = ${main.agree + rb.k}/${main.stated + rb.n} = ${((main.agree + rb.k) / (main.stated + rb.n)).toFixed(2)} [${regV.lo}, ${regV.hi}] **${regV.verdict}**; with C2 as the row truth ${main.agree + rc.k}/${main.stated + rc.n} [${regVc.lo}, ${regVc.hi}] ${regVc.verdict}`);
   console.log(`register gable misses on the gable rows (B2): ${rb.miss.join('; ')}`);
+  // round 4: the gated register gable (houseSpec/decorate.ts crownInGeometry): a raised register gable states the crown only
+  // over a 3DBAG crown (ridge - eaves >= 2 m); a cornice always. With no ridge in the tile the runtime asks the roof planner,
+  // which needs the footprint: counted here as held (not stated) and reported apart.
+  const bagG = loadBag(); const geo = (id: string) => { const d = bagG.get(`NL.IMBAG.Pand.${id}`) ?? bagG.get(id); return d ? crownInGeometry({ eaves: d.eavesM ?? undefined, ridge: d.ridgeM ?? undefined }) : null; };
+  const gatedRows = [...ab.map(p => ({ id: p.pandId, hand: handValues(p, min).gable as string | undefined })), ...(B2?.rows ?? []).map(r => ({ id: r.pandId, hand: gv(r) }))];
+  let gk2 = 0, gn2 = 0, heldN = 0, nullN = 0, heldRight = 0; const gMiss: string[] = []; const byType: Record<string, { stated: number; agree: number }> = {};
+  for (const r of gatedRows) {
+    const w = regGable(r.id); if (r.hand === undefined || w === undefined) continue;
+    const g = w === 'cornice' ? true : geo(r.id);
+    if (g !== true) { heldN++; if (g === null) nullN++; if (r.hand !== w) heldRight++; continue; }
+    gn2++; const t = (byType[w] ??= { stated: 0, agree: 0 }); t.stated++; if (r.hand === w) { gk2++; t.agree++; } else gMiss.push(`${r.id.slice(-6)} register ${w} / read ${r.hand}`);
+  }
+  const gV = verdict(gk2, gn2, gates.gable, MIN_N.gable);
+  console.log(`gated register gable (round 4): states ${gn2} of ${gn2 + heldN}; ${gk2}/${gn2} = ${(gk2 / gn2).toFixed(2)} [${gV.lo}, ${gV.hi}] **${gV.verdict}** against gate ${gates.gable} (>= ${gates.gable} would make it the fallback writer); held ${heldN} (${nullN} with no ridge), of which the hand reading differs from the register on ${heldRight}`);
+  console.log(`gated register gable misses: ${gMiss.join('; ')}`);
+  console.log(`gated register gable by register type: ${Object.entries(byType).map(([k, v]) => `${k} ${v.agree}/${v.stated}`).join(', ')}`);
+  (out as any).registerGableGated = { agree: gk2, stated: gn2, held: heldN, heldNoRidge: nullN, heldWhereRegisterWrong: heldRight, verdict: gV, byType, misses: gMiss };
   // Jev storeys (measurement only, jev-storeys.ts)
   const js = fs.existsSync(path.join(D, 'hand-set-v1.jev-storeys.json')) ? JSON.parse(fs.readFileSync(path.join(D, 'hand-set-v1.jev-storeys.json'), 'utf8')) : null;
   const jsV = (c: any) => (c ? { ...c, ...verdict(c.agree, c.stated, gates.storeys) } : null);

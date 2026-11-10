@@ -18,8 +18,17 @@ const asMeasured = (prov: Prov): Measured<Prov> => ({
   confidence: prov.confidence, observationId: prov.ref, measuredAt: prov.at,
 });
 
-/** The winning receipt of two for one field (exported for tests and the describe writers). */
-export function strongerProv(a: Prov, b: Prov): Prov {
+/** The crown (`fronts/N/gable`): a photo reading outranks the register's gable words (H5h round 4 ruling on #351: the register
+ *  type agreed with the street front 36 of 60). Only this pair changes order; the rest of the ladder is SOURCE_STRENGTH. */
+export const isGablePath = (path: string | undefined) => !!path && /^fronts\/\d+\/gable$/.test(path);
+export const PHOTO_SOURCES: ReadonlySet<string> = new Set(['vision-judge', 'streetlevel-measured', 'reviewed', 'author']);
+
+/** The winning receipt of two for one field (exported for tests and the describe writers); `path` applies the crown order. */
+export function strongerProv(a: Prov, b: Prov, path?: string): Prov {
+  if (isGablePath(path)) {
+    if (a.source === 'monument-text' && PHOTO_SOURCES.has(b.source)) return b;
+    if (b.source === 'monument-text' && PHOTO_SOURCES.has(a.source)) return a;
+  }
   // resolveField breaks a full tie towards `a` only when b's date is not newer; equal strength + confidence + date keeps a.
   return resolveField(asMeasured(a), asMeasured(b)).value;
 }
@@ -35,7 +44,7 @@ export function resolveSpecs(parts: readonly HouseSpec[]): HouseSpec {
     const prov = provenanceOf(part, path);
     if (!prov) continue; // an unreceipted field is not evidence (validateSpec rejects it on the way in)
     const incumbent = winners.get(path);
-    if (!incumbent || strongerProv(incumbent.prov, prov) !== incumbent.prov) winners.set(path, { value, prov });
+    if (!incumbent || strongerProv(incumbent.prov, prov, path) !== incumbent.prov) winners.set(path, { value, prov });
   }
   // Stable output order: fronts by index, then sections, as specFields orders them.
   for (const path of [...winners.keys()].sort(fieldOrder)) {

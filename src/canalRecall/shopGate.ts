@@ -70,3 +70,49 @@ export function inferBusyStretch<K extends string>(
   }
   return { given, refused };
 }
+
+export interface HostCandidate { id: string; ring: [number, number][] }
+
+/** Squared-free helpers kept local so the module stays dependency-free. */
+const insideRing = (ring: [number, number][], x: number, y: number) => {
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside; }
+  return inside;
+};
+const edgeDist = (ring: [number, number][], x: number, y: number) => {
+  let best = Infinity;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [ax, ay] = ring[j], [bx, by] = ring[i], dx = bx - ax, dy = by - ay, l = dx * dx + dy * dy || 1, t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l)); best = Math.min(best, Math.hypot(x - ax - t * dx, y - ay - t * dy)); }
+  return best;
+};
+
+/** A POI drawn on the pavement in front of its shop sits this close to the footprint edge at most (m), for a pand BAG does not list as a shop. */
+export const PAVEMENT_NODE_M = 2;
+/** The old snap distance, still used for a pand BAG lists as retail or horeca. */
+export const SNAP_M = 8;
+
+export interface HostResult { id: string; inside: boolean; distanceM: number }
+
+/**
+ * The building an OSM business node belongs to. Inside a footprint wins (a BAG-listed shop among several containing
+ * footprints is preferred). Otherwise the nearest footprint edge within SNAP_M that BAG lists as shop or horeca, else the
+ * nearest within PAVEMENT_NODE_M whatever BAG says: a node 3-8 m off a warehouse is not the warehouse's shop.
+ */
+export function hostForPoi(candidates: readonly HostCandidate[], x: number, y: number, uses: (id: string) => PandUses | undefined, gate = true): HostResult | null {
+  const containing = candidates.filter(b => insideRing(b.ring, x, y));
+  if (containing.length) { const pick = containing.find(b => bagAllowsShop(uses(b.id))) ?? containing[0]; return { id: pick.id, inside: true, distanceM: 0 }; }
+  let best: HostResult | null = null;
+  for (const b of candidates) {
+    const d = edgeDist(b.ring, x, y);
+    const limit = !gate || bagAllowsShop(uses(b.id)) ? SNAP_M : PAVEMENT_NODE_M;
+    if (d < limit && (!best || d < best.distanceM)) best = { id: b.id, inside: false, distanceM: d };
+  }
+  return best;
+}
+
+/**
+ * OSM `shop=` values that mean a trade, workshop or storage business rather than a street shopfront. On a pand BAG does not
+ * list as shop or horeca (a garage in an industrial unit, a wholesaler on a trading estate) they draw no shopfront; where
+ * BAG lists retail the node counts as before.
+ */
+export const TRADE_SHOPS: ReadonlySet<string> = new Set(['car_repair', 'car_parts', 'tyres', 'wholesale', 'trade', 'storage_rental', 'industrial', 'machine_hire', 'truck', 'agrarian', 'repair']);
+export const isTradeBusiness = (tags: Record<string, string>): boolean => !!tags.shop && TRADE_SHOPS.has(tags.shop);

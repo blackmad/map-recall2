@@ -381,6 +381,58 @@
    ]
   }
  },
+ "registerGableGated": {
+  "agree": 36,
+  "stated": 52,
+  "held": 8,
+  "heldNoRidge": 6,
+  "heldWhereRegisterWrong": 8,
+  "verdict": {
+   "lo": 0.557,
+   "hi": 0.801,
+   "verdict": "open"
+  },
+  "byType": {
+   "neck": {
+    "stated": 9,
+    "agree": 7
+   },
+   "bell": {
+    "stated": 14,
+    "agree": 7
+   },
+   "point": {
+    "stated": 7,
+    "agree": 4
+   },
+   "cornice": {
+    "stated": 18,
+    "agree": 15
+   },
+   "step": {
+    "stated": 4,
+    "agree": 3
+   }
+  },
+  "misses": [
+   "173345 register neck / read bell",
+   "173341 register bell / read neck",
+   "169981 register bell / read cornice",
+   "172576 register bell / read neck",
+   "168159 register cornice / read point",
+   "174177 register cornice / read point",
+   "174168 register step / read cornice",
+   "167957 register point / read cornice",
+   "169904 register bell / read cornice",
+   "172603 register bell / read cornice",
+   "172888 register bell / read spout",
+   "172890 register cornice / read neck",
+   "174014 register bell / read cornice",
+   "174411 register point / read cornice",
+   "174427 register neck / read cornice",
+   "571486 register point / read spout"
+  ]
+ },
  "writers": {
   "pands": 60,
   "scored": 51,

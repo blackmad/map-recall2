@@ -33,14 +33,16 @@ import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, CLEARANCE_M, CLEARANCE_FAR_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
+import { OPEN_GROUND_COVERS, OPEN_GROUND_DRAPE, OPEN_GROUND_LAYER, OPEN_GROUND_LIFT, type OpenGroundCell } from './groundSurface.js';
 import { cycleThrough, meshCover, type ThroughStats } from './cycleThrough.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type SurveyGap, SURVEY_GAP_MIN_R } from './pockets.js';
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
 import { ANCILLARY_CLASSES, type RoadCell } from './roadCells.js';
 import type { RoadMark } from './roadMarks.js';
 import { AT_GRADE_HIGHWAYS, crossingTest, onStreetTest, platformMeshes, railMeshes, type RailBuildStats, type RailPlatform, type RailWay, type StreetStrip } from './railTracks.js';
-import { PLATFORM_EDGE_M, platformTest, PROFILE_PAD_M, railLevels } from './railProfile.js';
+import { levelAt as railLevelAt, PLATFORM_EDGE_M, platformTest, PROFILE_PAD_M, railLevels, railWayKey } from './railProfile.js';
 import { streetHalfWidth, underTest } from './railBridge.js';
+import { underpassSpans, type RailSpan } from './railSpans.js';
 import type { PhotoEvidence } from './photoEvidence.js';
 import { buildSurveyMarkings, crossingStripPoints, SURVEY_MARKINGS, type SurveyMarkingStats } from './surveyMarkings.js';
 import type { DeckSurface, GroundSurface, Vec2 } from './surface.js';
@@ -58,9 +60,11 @@ export type GroundLayer =
   /** Courtyard green (lane road-look-continuity 2026-10-29): an OSM green fill that meets no road polygon. Appended: layer ids stay. */
   | 'garden'
   /** Railway tracks (railTracks.ts, issue #124). Appended: layer ids stay. */
-  | 'ballast' | 'track';
+  | 'ballast' | 'track'
+  /** Bare unpaved ground (open-ground-v1, groundSurface.ts; lane open-ground-look 2026-11-10). Appended: layer ids stay. */
+  | 'bare';
 
-export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture', 'asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'bollard', 'water', 'quay', 'deckBody', 'deckTop', 'garden', 'ballast', 'track'];
+export const GROUND_LAYERS: readonly GroundLayer[] = ['land', 'park', 'wood', 'square', 'parking', 'lawn', 'bed', 'shrub', 'bark', 'sand', 'parkGravel', 'parkPath', 'pond', 'hedge', 'furniture', 'asphalt', 'klinker', 'brick', 'cycle', 'paving', 'gravel', 'kerb', 'paint', 'tram', 'bollard', 'water', 'quay', 'deckBody', 'deckTop', 'garden', 'ballast', 'track', 'bare'];
 
 /** Transferable mesh arrays. Colours are sRGB 0..1 when present. */
 export interface PackedMesh { positions: Float32Array; normals: Float32Array; uvs: Float32Array; indices: Uint32Array; colors?: Float32Array }
@@ -88,7 +92,7 @@ export interface BuiltCell {
   tiles?: Partial<Record<GroundLayer, import('./cellTiles.js').CellTile[] | null>>;
   /** Source code per triangle per layer (sourceTrace.ts), only when tracing is on (diagnostics). */
   sources?: Partial<Record<GroundLayer, Uint8Array>>;
-  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ /** Rail viaducts over streets (railViaducts.ts) the cell drew: deck, wall and floor heights. */ viaducts?: ViaductBuild[]; /** OSM green fills drawn as courtyard `garden`. */ courtyardGreens?: number; roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** Fietsstraat sections drawn grey on the photo's evidence. */ greyFiets?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null; /** cycleThrough.ts: red bands across junction mouths. */ through?: ThroughStats | null }) | null; courtyards?: number; /** railTracks.ts: what the cell's railway tracks drew. */ rails?: RailBuildStats; /** tunnels.ts clipMeshAtCuts: triangles split at the tunnel wall lines (R5-C2). */ portalClip?: PortalClipStats };
+  stats: { triangles: number; byLayer: Record<string, number>; ways: number; areas: number; decks: number; flatDecks: number; buildMs: number; bytes: number; bridges: BridgeStats; parks: (ParkBuildStats & { ms: number; fillCulled?: number; landCulled?: number }) | null; pockets?: PocketStats | null; greenLandCulled?: number; /** OSM green rings cut out of the paved area fills (areas + holes). */ greenCut?: number; /** Build time per phase, ms (diagnostics). */ phases?: Record<string, number>; /** roads-v1 (roadSurfaces.ts): what the surveyed partition drew, the land quads culled under it, the street pass's clips. */ /** Rail viaducts over streets (railViaducts.ts) the cell drew: deck, wall and floor heights. */ viaducts?: ViaductBuild[]; /** OSM green fills drawn as courtyard `garden`. */ courtyardGreens?: number; roads?: (RoadBuildStats & { landCulled: number; coveredWays: number; clipped?: Record<string, number>; decksCovered: number; /** Footway islands between parking bays drawn as street. */ parkingIslands?: number; /** Footway strips across the road at a crossing drawn as carriageway. */ crossingStrips?: number; /** Fietsstraat sections drawn grey on the photo's evidence. */ greyFiets?: number; /** surveyMarkings.ts: what the survey-aware markings drew. */ markings?: SurveyMarkingStats | null; /** cycleThrough.ts: red bands across junction mouths. */ through?: ThroughStats | null }) | null; courtyards?: number; /** open-ground-v1 areas the cell drew (groundSurface.ts). */ openGround?: number; /** railTracks.ts: what the cell's railway tracks drew. */ rails?: RailBuildStats; /** tunnels.ts clipMeshAtCuts: triangles split at the tunnel wall lines (R5-C2). */ portalClip?: PortalClipStats };
 }
 
 /** What the cell's bridges drew: deck tops, railing posts, piers, arches, abutments, movable frames (lane report, named regressions). */
@@ -162,6 +166,8 @@ export interface CellInput {
   railLegacy?: boolean;
   /** Rails flat on the street they lie on or cross within the bed's reach (railTracks.ts onStreetTest; default on, false: the centreline-crossing test only, for measuring). */
   railOnStreet?: boolean;
+  /** Deck spans where a street passes under a track off the bridges (railSpans.ts; default on, false: the build before lane rails-classb, for measuring). */
+  railSpans?: boolean;
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
   /** What the orthophoto backs of the tag-driven paint (photoEvidence.ts): lane ribbons, centre dashes, grey fietsstraat sections. */
@@ -174,6 +180,10 @@ export interface CellInput {
   courtyards?: CourtyardsCell | null;
   /** Courtyards of the 3×3 neighbourhood (their outer rings hide this cell's land quads too). */
   courtyardsAround?: readonly (CourtyardsCell | null)[];
+  /** The cell's BGT open ground (open-ground-v1, groundSurface.ts), null when it has none or it is off. */
+  openGround?: OpenGroundCell | null;
+  /** Open ground of the 3×3 neighbourhood (its outer rings hide this cell's land quads too). */
+  openGroundAround?: readonly (OpenGroundCell | null)[];
   project: (lngLat: [number, number]) => Vec2;
 }
 
@@ -402,7 +412,10 @@ export function buildCell(input: CellInput): BuiltCell {
   // not tested (same result, fewer tests: a Jordaan cell holds over a thousand courtyard rings).
   const courtyardRings = [input.courtyards, ...(input.courtyardsAround ?? [])].filter((c, i, all): c is CourtyardsCell => !!c && all.indexOf(c) === i)
     .flatMap(c => c.areas.map(a => { const r = a.r.map(decodeLine); return { pts: r[0], holes: r.slice(1) }; }));
-  const greenRings = [...greenAreas.filter(a => areaLayer[a.kind] === 'park').flatMap(a => a.rings.map(r => ({ pts: r.slice(0, -1).map(input.project), holes: [] as Vec2[][] }))), ...courtyardRings]
+  // Open ground (open-ground-v1) likewise: drawn with its holes, so the land under it goes too.
+  const openRings = [input.openGround, ...(input.openGroundAround ?? [])].filter((c, i, all): c is OpenGroundCell => !!c && all.indexOf(c) === i)
+    .flatMap(c => c.areas.map(a => { const r = a.r.map(decodeLine); return { pts: r[0], holes: r.slice(1) }; }));
+  const greenRings = [...greenAreas.filter(a => areaLayer[a.kind] === 'park').flatMap(a => a.rings.map(r => ({ pts: r.slice(0, -1).map(input.project), holes: [] as Vec2[][] }))), ...courtyardRings, ...openRings]
     .filter(r => r.pts.length >= 3).map(({ pts, holes }) => ({ pts, holes, bb: [Math.min(...pts.map(p => p[0])), Math.min(...pts.map(p => p[1])), Math.max(...pts.map(p => p[0])), Math.max(...pts.map(p => p[1]))] }))
     .filter(g => g.bb[2] > x0 && g.bb[0] < x1 && g.bb[3] > y0 && g.bb[1] < y1 && g.bb[2] - g.bb[0] >= step + 0.5 && g.bb[3] - g.bb[1] >= step + 0.5);
   let greenCulled = 0;
@@ -528,6 +541,20 @@ export function buildCell(input: CellInput): BuiltCell {
     courtyards++;
   }
 
+  // Open ground (open-ground-v1, groundSurface.ts; lane open-ground-look 2026-11-10): the BGT lawns, rough lots, shrubs,
+  // bare earth and sand no other extract draws, which drew as the paving-grey land. The extract cut them free of the
+  // OSM fills, and BGT's partition keeps them off the road polygons, so they lie on the land alone.
+  let openGround = 0;
+  for (const a of input.openGround?.areas ?? []) {
+    if (!OPEN_GROUND_COVERS.includes(a.k)) continue;
+    const { flat, holes } = flatten(a.r.map(decodeLine));
+    if (flat.length < 6) continue;
+    const m = emptyMesh();
+    drapeBisect(m, flat, earcut(flat, holes), onLand, OPEN_GROUND_LIFT[a.k], fine ? OPEN_GROUND_DRAPE.near.edge : OPEN_GROUND_DRAPE.far.edge, fine ? OPEN_GROUND_DRAPE.near.clearance : OPEN_GROUND_DRAPE.far.clearance, fine ? OPEN_GROUND_DRAPE.near.minEdge : OPEN_GROUND_DRAPE.far.minEdge, step);
+    add(OPEN_GROUND_LAYER[a.k], m, 'park');
+    openGround++;
+  }
+
   // Streets: bridge ways sampled finer (decks hump over metres).
   const only = (bridge: boolean) => (w: LocalWay) => own.has(w.id) && isBridgeWay(w) === bridge;
   // Canal-side pavements (kerb within 3.8 m of water; the mask saturates at MASK_RANGE_M) get Amsterdammertjes, near ring only.
@@ -556,11 +583,25 @@ export function buildCell(input: CellInput): BuiltCell {
     // Under the bridge decks (railBridge.ts): water, the streets and the tracks at grade, where no pier may stand.
     const streetsUnder = ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands) }));
     const under = input.railBridges === false ? undefined : underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge).map(w => w.points));
-    const r = railMeshes({ ways: input.rails, inCell, height: onLand, atGrade: onStreet ? (a: Vec2, b: Vec2) => crossing(a, b) || onStreet(a, b) : crossing, far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
+    // Untagged viaducts (railSpans.ts): a track off the bridges is a deck where a street passes under its bed.
+    const spans = new Map<RailWay, RailSpan[]>();
+    const spanStreets = profile && input.railSpans !== false ? ways.filter(w => w.tags.highway && !isBridgeWay(w) && !(w.tags.tunnel && w.tags.tunnel !== 'no')).map(w => ({ points: w.points, half: streetHalfWidth(w.section.bands), ...(w.tags.embedded_rails ? { embedded: true } : {}) })) : [];
+    if (profile && input.railSpans !== false) for (const w of input.rails) {
+      const level = profile.levels.get(w);
+      if (w.bridge || !level) continue;
+      const found = underpassSpans(w, s => railLevelAt(level, s), spanStreets, onLand, measured);
+      if (found.length) spans.set(w, found);
+    }
+    const promoted = new Set([...spans.keys()].map(railWayKey));
+    const spanUnder = spans.size && under ? underTest(overWater, streetsUnder, (input.railsAround ?? input.rails).filter(w => !w.bridge && !promoted.has(railWayKey(w))).map(w => w.points)) : undefined;
+    const r = railMeshes({ ways: input.rails, inCell, height: onLand, ...(spans.size ? { spans, ...(spanUnder ? { spanUnder } : {}) } : {}), atGrade: onStreet ? (a: Vec2, b: Vec2) => crossing(a, b) || onStreet(a, b) : crossing, far: lod === 1, ...(under && profile ? { under } : {}), ...(profile ? { levels: profile.levels, ...(measured ? { measured } : {}), ...(input.railPlatforms?.length ? { onPlatform: platformTest(input.railPlatforms, PLATFORM_EDGE_M) } : {}) } : { floor: false }), ...(input.railLegacy ? { legacy: true } : {}) });
     add('ballast', r.ballast); add('track', r.track); add('deckBody', r.slab); add('deckBody', r.structure);
     // Platforms beside heavy-rail track, at the rails' level (railTracks.ts platformMeshes).
     if (profile && input.railPlatforms?.length) { const pm = platformMeshes(input.railPlatforms, input.rails, profile.levels, onLand, inCell); add('deckBody', pm.mesh); r.stats.platforms = pm.stats; }
     railStats = profile ? { ...r.stats, profile: profile.stats } : r.stats;
+    // The deck spans' triggers, the cell's own (diagnostics: probe-rails-class.ts, check-rail-street.ts).
+    const spanList = [...spans.values()].flat().filter(sp => inCell(sp.at[0], sp.at[1])).map(sp => ({ at: sp.at, clear: sp.clear, length: +(sp.s1 - sp.s0).toFixed(1) }));
+    if (spanList.length) railStats.spanList = spanList;
   }
   phase('rails');
   // roads-v1: markings placed from the mapped crossings and the junction graph, measured on and clipped to the
@@ -733,7 +774,7 @@ export function buildCell(input: CellInput): BuiltCell {
   phase('pack');
   return {
     key, lod, detail, rect, layers: packed, mask: maskOut, ...(tracing ? { sources } : {}),
-    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, courtyardGreens, roads, phases, courtyards, ...(viaducts.length ? { viaducts } : {}), ...(railStats ? { rails: railStats } : {}), ...(portalClip.split ? { portalClip } : {}) },
+    stats: { triangles, byLayer, ways: [...own].length, areas: areas.length, decks: input.decks.length, flatDecks: input.flatDecks.length, buildMs: Date.now() - t0, bytes, bridges, parks: parkStats ? { ...parkStats, fillCulled: parkFillCulled, landCulled } : null, pockets, greenLandCulled: greenCulled, greenCut, courtyardGreens, roads, phases, courtyards, ...(openGround ? { openGround } : {}), ...(viaducts.length ? { viaducts } : {}), ...(railStats ? { rails: railStats } : {}), ...(portalClip.split ? { portalClip } : {}) },
   };
 }
 
@@ -754,13 +795,13 @@ type PocketSurface = 'asphalt' | 'klinker' | 'paving';
 const POCKET_VOTE: Partial<Record<GroundLayer, PocketSurface>> = { asphalt: 'asphalt', klinker: 'klinker', brick: 'klinker', paving: 'paving', cycle: 'paving', square: 'paving', gravel: 'paving' };
 
 /** Park surfaces rank between the OSM areas (1) and the street bands (2+), as their lifts do (parks.ts PARK_LIFT). */
-export const PARK_RANK: Partial<Record<GroundLayer, number>> = { lawn: 1.2, garden: 1.2, bed: 1.4, shrub: 1.4, bark: 1.4, sand: 1.5, pond: 1.5, parkGravel: 1.7, parkPath: 1.7 };
+export const PARK_RANK: Partial<Record<GroundLayer, number>> = { lawn: 1.2, garden: 1.2, bed: 1.4, shrub: 1.4, bark: 1.4, sand: 1.5, pond: 1.5, parkGravel: 1.7, parkPath: 1.7, bare: 1.3 };
 /** Polygon-offset rank of coplanar layers (gameGround.ts OFFSET): later wins a tie. */
 /** An OSM green fill with no road polygon within this of its outline is a courtyard (drawn as `garden`). */
 export const COURTYARD_ROAD_M = 3;
 export const DRAW_RANK: Partial<Record<GroundLayer, number>> = { deckTop: 1, park: 1, wood: 1, square: 1, parking: 1, ...PARK_RANK, klinker: 2, brick: 2, asphalt: 2, gravel: 3, cycle: 3, paving: 3, paint: 4, tram: 5 };
 /** Mask channel that cuts a layer (gameGround.ts CUT): 0 = R (water), 1 = G (water minus decks). */
-export const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, garden: 0, wood: 0, square: 0, parking: 0, lawn: 0, bed: 0, shrub: 0, bark: 0, sand: 0, parkGravel: 0, parkPath: 0, pond: 0, asphalt: 1, klinker: 1, brick: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1, bollard: 1 };
+export const CUT_CHANNEL: Partial<Record<GroundLayer, 0 | 1>> = { land: 0, park: 0, garden: 0, wood: 0, square: 0, parking: 0, lawn: 0, bed: 0, shrub: 0, bark: 0, sand: 0, parkGravel: 0, parkPath: 0, pond: 0, bare: 0, asphalt: 1, klinker: 1, brick: 1, cycle: 1, paving: 1, gravel: 1, kerb: 1, paint: 1, tram: 1, bollard: 1 };
 
 /** Topmost first; within 2 cm the higher draw rank wins, as the polygon offsets make it on screen. */
 export function compareHits(p: { layer: GroundLayer; z: number }, q: { layer: GroundLayer; z: number }): number {

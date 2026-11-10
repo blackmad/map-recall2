@@ -136,5 +136,11 @@ The disk is shared by every lane and has hit 99 % full. Rules:
 - `house:publish` is the integrator's; lanes stop at `npm run house:stage -- <spec|pandId>`
   (validates, attaches the preview receipt, writes `artifacts/house-specs/staging/`).
   The integrator publishes the whole staged batch once (`docs/house-line.md` section 3).
+- First passes are Node; browsers are for in-game frames (`house:frames`), rides and
+  timing. `render.ts` sheets, `landmark-views.mjs` and review-sheet GLB tiles draw in
+  Node (`src/canalRecall/glbRaster`, `docs/house-line.md` §8); `--browser` keeps Chromium.
 - What the kit cannot say goes in `schemaLimits` as `{component, what}`, never
   the nearest option. `?houseSpecs=0` / `HOUSE_SPECS=0` turns the line off.
+- Builders are accepted on `npm run house:frames` pairs (the game's first-person
+  frame beside the panorama cut to the same pose, `docs/house-line.md` §7), read by
+  opus or a human; the elevation verdict is a pre-filter. Sonnet does not accept its own pairs.

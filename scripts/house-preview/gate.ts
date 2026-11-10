@@ -17,13 +17,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import sharp from 'sharp';
-import { renderModels, closeRenderer } from '../building-recipes/render.ts';
+import { renderModels, closeRenderer, useBrowserRenderer } from '../building-recipes/render.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { measureFacade, type FacadeImage } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { previewVerdict, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
 import { PreviewSession, parseArgs, renderPand, renderRecipe, compareSheet, houseLineSplit, profileUsed, type PreviewResult } from './preview.ts';
 import { REPO_ROOT } from './nodeDom.ts';
 
+// This gate is the Node preview against the Chromium frame: keep render.ts on Chromium (lane H12 made Node its default).
+useBrowserRenderer();
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
 const out = path.resolve(arg('out') ?? 'artifacts/house-preview/gate');
 const PPM = 50;

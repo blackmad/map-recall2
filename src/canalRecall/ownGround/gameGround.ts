@@ -218,6 +218,12 @@ function dryWayDecksFlag(): boolean {
   if (typeof g.__canalRecallDryWayDecks === 'boolean') return g.__canalRecallDryWayDecks;
   return /[?&]dryWayDecks=(1|true|on)\b/.test(g.location?.search ?? '');
 }
+/** BGT open ground (open-ground-v1, groundSurface.ts; lane open-ground-look 2026-11-10): on by default; `?openGround=0` or `window.__canalRecallOpenGround = false` draws it as the land again (the before). */
+export function openGroundFlag(): boolean {
+  const g = globalThis as { __canalRecallOpenGround?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallOpenGround === 'boolean') return g.__canalRecallOpenGround;
+  return !/[?&]openGround=(0|false|off)\b/.test(g.location?.search ?? '');
+}
 /** Road surfaces carried across bridges (deckCarry.ts, lane R5-C1 issue #262): on by default; `?bridgeCarry=0` or `window.__canalRecallBridgeCarry = false` builds as before. */
 function bridgeCarryFlag(): boolean {
   const g = globalThis as { __canalRecallBridgeCarry?: boolean; location?: { search?: string } };
@@ -368,7 +374,7 @@ const RESIDENCY_STEP_M = 60;
 /** Which mask channel cuts a layer: R = water (land, parks), G = water minus decks (street bands). */
 const CUT: Partial<Record<GroundLayer, 'r' | 'g'>> = {
   land: 'r', park: 'r', garden: 'r', wood: 'r', square: 'r', parking: 'r',
-  lawn: 'r', bed: 'r', shrub: 'r', bark: 'r', sand: 'r', parkGravel: 'r', parkPath: 'r', pond: 'r',
+  lawn: 'r', bed: 'r', shrub: 'r', bark: 'r', sand: 'r', parkGravel: 'r', parkPath: 'r', pond: 'r', bare: 'r',
   asphalt: 'g', klinker: 'g', brick: 'g', cycle: 'g', paving: 'g', gravel: 'g', kerb: 'g', paint: 'g', tram: 'g', bollard: 'g',
 };
 /** Polygon-offset rank of coplanar ground layers (later wins), as the prototype. */
@@ -520,7 +526,7 @@ export class OwnGround {
     this.startup.storeReadyAt ??= performance.now();
     try {
       const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), roadSlivers: roadSliversFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       // One fetch + gunzip per file for every worker (groundShare.ts): a channel per worker to one more instance of the bundle.
       const channels = count > 1 && groundShareFlag() ? Array.from({ length: count }, () => new MessageChannel()) : [];
       if (channels.length) {
@@ -1135,6 +1141,9 @@ export class OwnGround {
       pond: std({ color: G.pond, roughness: 0.6, envMapIntensity: 0.5 }),
       hedge: std({ vertexColors: true, roughness: 1, side: THREE.DoubleSide }),
       furniture: std({ vertexColors: true, roughness: 0.8, side: THREE.DoubleSide }),
+      // Bare unpaved ground (open-ground-v1, groundSurface.ts): earth and grit, painted last so every texture before it
+      // keeps its random stream.
+      bare: std({ map: this.canvasTexture(256, 4, (g, s) => { noise(g, s, G.bare.base, 26, 2); dabs(g, s, G.bare.grit, 220, 1, 3); }), roughness: 1 }),
     };
     for (const [layer, k] of Object.entries(redDedupeFlag() ? RED_OFFSET : OFFSET)) Object.assign(M[layer], { polygonOffset: true, polygonOffsetFactor: -k!, polygonOffsetUnits: -2 * k! });
     // Level sunlit ground draws its palette luminance (groundLight.ts); objects standing on it keep the rig's light as the buildings do.

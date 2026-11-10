@@ -33,7 +33,7 @@ export function mergeWriters(parts: readonly WriterPart[]): { spec: HouseSpec; d
     // the winner is whichever entry carries the merged field's value and receipt (resolveSpecs kept it)
     const win = provenanceOf(spec, path)!;
     let picked = list[0];
-    for (const x of list) if (strongerProv(picked.prov, x.prov) !== picked.prov) picked = x;
+    for (const x of list) if (strongerProv(picked.prov, x.prov, path) !== picked.prov) picked = x;
     if (picked.prov.source !== win.source || picked.prov.confidence !== win.confidence) picked = list.find(x => x.prov.source === win.source && x.prov.confidence === win.confidence) ?? picked;
     disagreements.push({ path, values: list.map(x => ({ writer: x.writer, value: x.value, source: x.prov.source, confidence: x.prov.confidence })), picked: picked.writer });
   }

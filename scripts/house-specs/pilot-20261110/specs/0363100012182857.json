@@ -1,0 +1,46 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182857",
+ "address": "Nieuwmarkt 20-22",
+ "design": {
+  "fronts": [
+   {
+    "gable": "step",
+    "bays": 5
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012182857/front.jpg (2025-01-08): step gables, confirms the register",
+   "at": "2026-11-10"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012182857/front.jpg (2025-01-08): five axes over the shop storey (2 + 1 + 2; held)",
+   "at": "2026-11-10"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012182857/front.jpg (2025-01-08): brick with white bands",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable",
+   "what": "twin step gables on one pand (1605): one front draws one crown"
+  },
+  {
+   "component": "palette",
+   "what": "speklagen and white relieving-arch blocks over every window (Hendrick de Keyser style)"
+  }
+ ]
+}

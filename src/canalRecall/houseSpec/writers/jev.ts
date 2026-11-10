@@ -28,6 +28,8 @@ export type JevAnswers = {
   finish?: { choice: string; probabilities: Record<string, number> };
   shopfront?: { noul: number };
   bays?: { choice: string; probabilities: Record<string, number> };
+  /** Yes/no "is there a stoop" (lane J2's question; K-stoep #360 reads it when the fixture asks it). */
+  stoop?: { noul: number };
 };
 export type JevParsed = { answers: JevAnswers; tokens: number; model: string };
 
@@ -45,6 +47,7 @@ export function parseResponse(res: any): JevParsed {
   if (!a || typeof a !== 'object') throw new Error('malformed Jev response: no answers');
   const choice = (x: any) => (x && x.type === 'choice' && typeof x.choice === 'string' && x.probabilities && typeof x.probabilities === 'object' ? { choice: x.choice as string, probabilities: x.probabilities as Record<string, number> } : undefined);
   const out: JevAnswers = { gable: choice(a.gable), finish: choice(a.finish), bays: choice(a.bays), shopfront: typeof a.shopfront?.noul === 'number' ? { noul: a.shopfront.noul } : undefined };
+  if (typeof a.stoop?.noul === 'number') out.stoop = { noul: a.stoop.noul };
   if (!out.gable && !out.finish && !out.bays && !out.shopfront) throw new Error('malformed Jev response: no answer parsed');
   return { answers: out, tokens: (res.usage?.input_tokens ?? 0) + (res.usage?.output_tokens ?? 0), model: String(res.model ?? JEV.model) };
 }
@@ -74,8 +77,15 @@ export function judgementOf(pandId: string, crop: string, capturedAt: string | n
     const yes = answers.shopfront.noul >= 0.5, p = yes ? answers.shopfront.noul : 1 - answers.shopfront.noul;
     if (p >= t.pui) j.pui = { value: yes ? 'shop' : 'residential', p };
   }
+  // Stoop yes/no (K-stoep #360): only a confident yes is written (a no says nothing the register does not).
+  if (answers.stoop) {
+    const yes = answers.stoop.noul >= 0.5, p = yes ? answers.stoop.noul : 1 - answers.stoop.noul;
+    if (yes && p >= ((t as Record<string, number>).stoop ?? JEV_STOOP_P)) j.stoop = { value: true, p };
+  }
   return j;
 }
+/** Accept rule for a stoop yes when the fixture names none: J2 read stoop right 94 % of the time on its labels. */
+export const JEV_STOOP_P = 0.875;
 
 export const jevSpec = (pandId: string, crop: string, capturedAt: string | null, answers: JevAnswers): HouseSpec => fromJev(judgementOf(pandId, crop, capturedAt, answers));
 

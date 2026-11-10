@@ -9,7 +9,7 @@
  *  - painted brick (measured tint through the chunk buckets): 164843 (150), 161422 (149), 160273 (147); not 157426;
  *  - round blind relieving arches with a dark tympanum, white springers and a keystone on storey 3: 164843 (150), 160273 (147);
  *  - window heads on the measured head lines: 157426 (148), 161422 (149), 160273 (147), 164843 (150);
- *  - painted white stone dressings as a measured tint: 157426, 161422, 160273, 116526; not 164843 (granite plinth).
+ *  - painted white stone dressings as a measured tint: 157426, 161422, 160273; not 164843 (granite plinth).
  *   node --import tsx --test src/canalRecall/blockFace/oudWest.test.ts
  */
 import {test} from 'node:test';
@@ -129,7 +129,8 @@ test('heads land on the measured head lines: 148 (three-axis), 149 (two-axis), 1
 });
 
 test('painted stone: the white dressings of the Oud-West types export a measured tint; 150 keeps its granite stone unmeasured', () => {
-  for (const [pand, painted] of [['157426', true], ['161422', true], ['160273', true], ['116526', true], ['164843', false]] as const) {
+  // The corner 116526 left this face for chunk-face-clercq-236681 (lane H7 r3, #354: two chunks suppressing one pand).
+  for (const [pand, painted] of [['157426', true], ['161422', true], ['160273', true], ['164843', false]] as const) {
     const {intent, b} = house(pand), buckets = groupToBuckets(b.group, new T.Matrix4(), recipeSlotFor(intent));
     const stone = [...buckets.values()].filter(x => x.slot === 'stone');
     assert.ok(stone.length, pand);
@@ -148,7 +149,8 @@ test('Nassaukade 149 and 145: timber balconies with turned balusters on storeys 
     for (const [k, x] of tb.entries()) assert.ok(Math.abs(x.floorM - floors[k + 1]) < 0.02, `${pand} floor ${x.floorM} vs ${floors[k + 1]}`);
     assert.equal(meshes(b.group, /^timber-balcony\/timber-s1\/(platform|guard)$/).length, 2);
     assert.ok(!b.recipe.elevations[0].balconies, 'no library rails on the timber storeys');
-    for (const m of meshes(b.group, /^timber-balcony\//)) assert.equal(m.userData.surface, 'trim');
+    // The paint slot (H7 r3): reads white like trim, outside the opening slots the GLB audit holds to a wall.
+    for (const m of meshes(b.group, /^timber-balcony\//)) assert.equal(m.userData.surface, 'paint');
   }
 });
 
@@ -156,7 +158,7 @@ test('Nassaukade 148 and 147: iron grille on a bracketed platform under library 
   const a = house('157426').b, fa = a.fit.fronts[0];
   assert.deepEqual(fa.timberBalconies!.map(x => [x.id, x.rail]), [['timber-s1', 'iron']]);
   assert.deepEqual(a.recipe.elevations[0].balconies!.value.map(r => r.id), ['rail-s3-b1']);
-  assert.equal(meshes(a.group, /timber-s1\/guard$/)[0].userData.surface, 'door');
+  assert.equal(meshes(a.group, /timber-s1\/guard$/)[0].userData.surface, 'paint');
   const c = house('160273').b, fc = c.fit.fronts[0];
   assert.deepEqual(fc.timberBalconies!.map(x => x.id), ['timber-s1', 'timber-s2']);
   const s1 = c.recipe.elevations[0].openings.value.filter(o => /^s1-b\d$/.test(o.id)), t1 = fc.timberBalconies![0];

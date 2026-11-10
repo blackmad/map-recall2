@@ -1,4 +1,6 @@
 import {envelopeFootprintFingerprint} from './surveyedBuildingEnvelope.js';
+import type { StoopIntent } from './buildingRecipe/stoop.ts';
+import { GENERIC_STOOP } from './stoopExtra.js';
 import { BAKED_LID_SHADE, bakedFaceShade, bakedWallShade } from './rendererShared/lightRig.js';
 import type {SurveyedMeshBinding,SurveyedMeshWallEdge} from './surveyedEnvelopeMeshBinding.js';
 import { planCompoundFrontage, type CompoundFrontagePlan } from './compoundFrontageLayout.js';
@@ -41,14 +43,17 @@ import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type Ro
 import { measuredRoofFurniture } from './roofs/roofFurniture.js';
 import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, FLAT_SURFACE_BUDGET, LIP_H_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
 import type { FurnitureItem } from './roofs/roofSlots.js';
+/** Door walls this much further from the street than the nearest still count as on the nearest road (stoop wall choice). */
+const STOOP_ROAD_SLACK_M = 4;
 
 export type MeshBuilding = {
   /** Diagnostic-only, already validated exact native parent/envelope binding. */
   surveyedEnvelope?: SurveyedMeshBinding;
   streetAppearance?: StreetFacadeContext;
   recipe?: ArchitecturalRecipe;
-  /** A HouseSpec's reads for the generic mesher (houseSpec/decorate.ts `specRecipe`): street-run bay count, crown, period, wall. */
-  specRecipe?: Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>>;
+  /** A HouseSpec's reads for the generic mesher (houseSpec/decorate.ts `specRecipe`): street-run bay count, crown, period,
+   *  wall, storeys (H9), and (H11) the storey fit, window look and shop paint. */
+  specRecipe?: import('./houseSpec/decorate.js').SpecRecipe;
   /** Exact opening positions of the active texture, shared with 3D entrance details. */
   openings?: Openings;
   id: string;
@@ -61,6 +66,8 @@ export type MeshBuilding = {
   period?: FacadeStyle;
   /** Wall-extra ids the monuments register states for this pand (registerRecipe.ts); absent for pands without facts. */
   registerForce?: readonly string[];
+  /** The house spec's stoop (threeBuildingFeatures from `specStoop`): facadeExtras draws it typed on the street wall. */
+  stoop?: StoopIntent;
   wallHex: string;
   /** A bay look's own layers and accent colour; absent means the procedural cells. */
   layers?: { upper: number; ground: number; door: number };
@@ -183,6 +190,11 @@ export function wallTopHeightM(p: Record<string, unknown>): number {
 }
 
 /** Which of a style's looks a building wears (shared with the roof plan so gable faces match the walls). */
+/**
+ * A measuring hook (house:preview's measure.json `layout`, lane H11): when set, each laid-out wall run reports its
+ * storey grid (upper storeys over the ground storey) and drawn window columns. Unset in the game: no cost.
+ */
+export const layoutProbe: { sink?: (id: string, run: { storeys: number; groundM: number; storeyM: number; bays: number; street: boolean; lengthM: number; base: number }) => void } = {};
 export const lookVariant = (id: string) => Math.floor(hash01(`${id}:look`) * CELL_VARIANTS);
 
 function hash01(text: string): number {
@@ -522,6 +534,22 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const cornice: StreetCrownTri[] = [];
     let extraTris = 0;
     const doorAllowed = doorWalls(bi);
+    // The pavement in front of a wall, for a spec stoop (stoopExtra.ts): wall to street centreline less half a carriageway.
+    // A spec stoop goes on one wall: the door wall nearest its street (a house can have a door wall on a back street
+    // too). It is forced first there and nowhere else, so no dice stoop lands on the other door walls. Like the photo
+    // pipeline's pickWall (the longest wall on the nearest road), the longest door wall within STOOP_ROAD_SLACK_M of the
+    // nearest: a 3 m return at a Keizersgracht corner sat 1 m nearer the centreline than the 9 m front (0363100012169111).
+    const wallStreetM = (e: Edge) => streetGrid ? streetDistance(e, streetGrid, null, bi, FALLBACK_REACH_M) : Infinity;
+    const stoopCands = b.stoop ? [...doorAllowed].filter(e => e.len >= 2.5).map(e => ({ e, d: wallStreetM(e) })) : [];
+    const nearestM = Math.min(...stoopCands.map(c => c.d));
+    const stoopWall = stoopCands.filter(c => !(c.d > nearestM + STOOP_ROAD_SLACK_M)).sort((p, q) => q.e.len - p.e.len)[0]?.e ?? null;
+    const stoopFor = (e: Edge): Partial<ExtraContext> => {
+      if (!b.stoop) return {};
+      const others = (b.registerForce ?? []).filter(id => id !== 'stoop');
+      if (e !== stoopWall) return { registerForce: others };
+      const d = wallStreetM(e);
+      return { stoop: b.stoop, registerForce: [...others, 'stoop'], ...(Number.isFinite(d) ? { stoopReachM: Math.max(0, d - GENERIC_STOOP.carriageHalfM) } : {}) };
+    };
     let groundSeen = Infinity;
     const streetEdges = [...doorAllowed];
     const streetCorner = !!streetGrid && streetEdges.some((a, i) => streetEdges.slice(i + 1).some(c => a.nx * c.nx + a.ny * c.ny < .5));
@@ -543,10 +571,17 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if(candidate.recipe?.shopCanopy)b=candidate;
       }
       // A HouseSpec's bay count fits the street run's grid (houseSpec/decorate.ts); a street-appearance recipe keeps its own.
-      const specBays = !b.recipe && b.specRecipe?.bays && run.some(({ e }) => doorAllowed.has(e)) ? { bays: b.specRecipe.bays, axesPerCell: b.openings?.upper?.axes.length ?? 1 } : undefined;
+      const parapetSpec = b.parapetM && !b.bare && top - b.parapetM - base >= 5 ? b.parapetM : 0;
+      // The storey count fits street runs (H9); with H11's fit released (`storeysFit`) every ground-level run, to the nearest
+      // count the clamp allows, with the stated ground height (streetFacadeRendering.ts specStoreyFit).
+      const streetRun = run.some(({ e }) => doorAllowed.has(e)), fitAll = !!b.specRecipe?.storeysFit && base < 0.5;
+      const specBays = !b.recipe && ((streetRun && (b.specRecipe?.bays || b.specRecipe?.storeys)) || (fitAll && b.specRecipe?.storeys))
+        ? { ...(streetRun && b.specRecipe!.bays ? { bays: b.specRecipe!.bays } : {}), axesPerCell: b.openings?.upper?.axes.length ?? 1, ...(b.specRecipe!.storeys ? { storeys: b.specRecipe!.storeys, exposedM: top - parapetSpec - base, ...(b.specRecipe!.storeysFit ? { fit: 'nearest' as const, ...(b.specRecipe!.groundM ? { groundM: b.specRecipe!.groundM } : {}) } : {}) } : {}) } : undefined;
       // An odd stated count on a two-window cell: half-cell axis units (streetFacadeRendering.ts axisUnitPlan, H1c #350).
-      const units = specBays ? axisUnitPlan(specBays, b.openings, b.style, run.reduce((sum,r)=>sum+r.e.len,0), scale) : null;
-      const runScale = units ? units.scale : frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
+      const units = specBays?.bays ? axisUnitPlan(specBays, b.openings, b.style, run.reduce((sum,r)=>sum+r.e.len,0), scale) : null;
+      const fitted = frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
+      // Axis units keep the spec's storey pitch (lane H9 storeys) and ground (H11) as whole cells do.
+      const runScale = units ? { ...units.scale, storey: fitted.storey, ground: fitted.ground } : fitted;
       const cellU = units ? AXIS_UNIT_U : 1;
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
@@ -574,6 +609,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         continue;
       }
       const layout = b.bare ? null : layoutRun(b.style, run.map(r => r.e.len), facadeTop - base, hash01(`${b.id}:${edgeKey(first.x0, first.y0)}`), base < 0.5, runScale, run.map(r => doorAllowed.has(r.e)));
+      if (layoutProbe.sink && layout) layoutProbe.sink(b.id, { storeys: layout.storeys, groundM: layout.groundM, storeyM: layout.storeyM, bays: units ? layout.bays : layout.bays * (b.openings?.upper?.axes.length ?? 1), street: run.some(({ e }) => doorAllowed.has(e)), lengthM: layout.lengthM, base });
       if(layout&&b.recipe?.facadeAssembly==='stacked-open-balcony'&&base<.5){
         const center=(layout.bays-1)/2;
         const eligible=Array.from({length:layout.bays},(_,i)=>i).filter(i=>{
@@ -630,7 +666,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), ...stoopFor(e), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;

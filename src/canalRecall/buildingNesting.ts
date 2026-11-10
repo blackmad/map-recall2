@@ -99,10 +99,14 @@ export const PARTS_COVER_SHARE = 0.5;
  *   in height. The lower is dropped (a tie keeps the smaller id).
  * - Outlines: a footprint that contains parts overlapping it in height, which
  *   together cover at least half of it. The outline is dropped.
+ * - Slender parts: a footprint under SLENDER_THICKNESS_M thick, without a colour of
+ *   its own, standing against a bigger host whose height range covers it
+ *   (`isSlenderAgainstHost`). The slender part is dropped (`options.slender:
+ *   false` keeps it, for audits that compare).
  * A small part on a big building is left alone: its walls are inside the big
  * one except where it rises above it.
  */
-export function dropNestedDuplicates(features: readonly BuildingFeature[]): BuildingFeature[] {
+export function dropNestedDuplicates(features: readonly BuildingFeature[], options: { slender?: boolean } = {}): BuildingFeature[] {
   const entries: Array<(Entry & { area: number; id: string }) | null> = features.map(feature => {
     const rings = outerRings(feature.geometry).filter(ring => ring.length >= 4);
     if (!rings.length) return null;
@@ -161,5 +165,88 @@ export function dropNestedDuplicates(features: readonly BuildingFeature[]): Buil
   for (const [index, area] of partsArea) {
     if (area >= PARTS_COVER_SHARE * entries[index]!.area) dropped.add(index);
   }
+  // Slender parts standing against a host (feedback fc427560, IJdok 2026-11-09): see `isSlenderAgainstHost`.
+  if (options.slender !== false) entries.forEach((part, index) => {
+    if (!part || dropped.has(index) || !slenderCandidate(part)) return;
+    const [x0, y0, x1, y1] = part.box, pad = SLENDER_PROUD_M / METRES_PER_DEGREE * 2;
+    const seen = new Set<number>();
+    let host = false, touching = 0;
+    for (let gx = Math.floor((x0 - pad) / cell); gx <= Math.floor((x1 + pad) / cell); gx++) {
+      for (let gy = Math.floor((y0 - pad) / cell); gy <= Math.floor((y1 + pad) / cell); gy++) {
+        for (const other of grid.get(`${gx},${gy}`) ?? []) {
+          if (other === index || seen.has(other) || dropped.has(other)) continue;
+          seen.add(other);
+          const neighbour = entries[other]!;
+          if (Math.min(part.top, neighbour.top) - Math.max(part.base, neighbour.base) <= SLENDER_HEIGHT_TOLERANCE_M) continue;
+          if (!touchesWithin(part, neighbour, SLENDER_TOUCH_M)) continue;
+          touching++;
+          if (isSlenderAgainstHost(part, neighbour)) host = true;
+        }
+      }
+    }
+    // Touching a second building at the same height, it closes a gap (an infill between two houses): kept.
+    if (host && touching === 1) dropped.add(index);
+  });
   return dropped.size ? features.filter((_, index) => !dropped.has(index)) : features.slice();
+}
+
+/** Mean thickness 2A/P at or under which a footprint is a fin, a pier or a shallow oriel, not a building. */
+export const SLENDER_THICKNESS_M = 1;
+/** A slender part's vertices lie at most this far outside its host's footprint. */
+export const SLENDER_PROUD_M = 1.5;
+/** ... and at least one touches it (within this). */
+export const SLENDER_TOUCH_M = 0.6;
+/** The host's height range covers the slender part's within this. */
+export const SLENDER_HEIGHT_TOLERANCE_M = 0.5;
+
+function ringPerimeterMetres(ring: Ring): number {
+  const kx = METRES_PER_DEGREE * Math.cos((ring[0]?.[1] ?? 52) * Math.PI / 180);
+  let length = 0;
+  for (let i = 1; i < ring.length; i++) length += Math.hypot((ring[i][0] - ring[i - 1][0]) * kx, (ring[i][1] - ring[i - 1][1]) * METRES_PER_DEGREE);
+  return length;
+}
+
+/**
+ * Candidates: a source footprint (OSM way/relation or BAG pand, not a piece the pipeline cut: those ids carry a
+ * `:`), with no colour of its own, whose mean thickness is at most SLENDER_THICKNESS_M.
+ */
+function slenderCandidate(part: Entry & { area: number; id: string }): boolean {
+  if (!part.id || part.id.includes(':')) return false;
+  if (typeof part.feature.properties?.colour === 'string') return false;
+  const perimeter = part.rings.reduce((sum, ring) => sum + ringPerimeterMetres(ring), 0);
+  return perimeter > 0 && 2 * part.area / perimeter <= SLENDER_THICKNESS_M;
+}
+
+/**
+ * A slender part (a fin, a pier, a shallow oriel under 1 m thick) beside a bigger host whose height range covers its
+ * own, no more than SLENDER_PROUD_M proud of the host's footprint: the mesh draws it as one windowless slab in its
+ * own look colour on the host's windowed facade, a stripe that reads as a rendering fault (the maroon strip at
+ * IJdok, w1088847358: 4.8 x 0.46 m, 8-24 m, against w1088847356 0-24 m). It is dropped and the host's facade shows.
+ * A part with a colour of its own (a mapper's glass oriel or bridge) is kept, and so is one that touches a second
+ * building at the same height (it closes a gap in a row; dropping it would open a slot).
+ */
+function metresFrom(x: number, y: number, kx: number, other: Entry): number {
+  return other.rings.some(o => pointInRing(x, y, o)) ? 0 : Math.min(...other.rings.map(o => metresToRing(x, y, o, kx)));
+}
+
+function touchesWithin(part: Entry, other: Entry, metres: number): boolean {
+  return part.rings.some(ring => {
+    const kx = METRES_PER_DEGREE * Math.cos((ring[0]?.[1] ?? 52) * Math.PI / 180);
+    return ring.some(([x, y]) => metresFrom(x, y, kx, other) <= metres);
+  });
+}
+
+function isSlenderAgainstHost(part: Entry & { area: number }, host: (Entry & { area: number }) | null): boolean {
+  if (!host || host.area <= 2 * part.area) return false;
+  if (host.base > part.base + SLENDER_HEIGHT_TOLERANCE_M || host.top < part.top - SLENDER_HEIGHT_TOLERANCE_M) return false;
+  let touches = false;
+  for (const ring of part.rings) {
+    const kx = METRES_PER_DEGREE * Math.cos((ring[0]?.[1] ?? 52) * Math.PI / 180);
+    for (const [x, y] of ring) {
+      const metres = metresFrom(x, y, kx, host);
+      if (metres > SLENDER_PROUD_M) return false;
+      if (metres <= SLENDER_TOUCH_M) touches = true;
+    }
+  }
+  return touches;
 }

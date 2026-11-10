@@ -1,5 +1,90 @@
 # Canal Recall — what is built
 
+**Spec holds pinned (2026-11-10, integrator).**
+- **What happened:** H9 r1 (cd6129a19) set `SPEC_WALLS_HELD = false`, and the H9 merge carried it into the local batch, so the earlier "merged with walls held" was wrong in local commits 312f0e92a..046e3ef0d. Nothing was pushed with walls released; origin/main kept `true`.
+- **The fix:**
+  - `SPEC_WALLS_HELD = true` again.
+  - New `houseSpec/holds.test.ts` pins every `*_HELD` constant. A deliberate flip edits the test in the same commit.
+  - `?specWalls=1` / `SPEC_WALLS=1` (`specWallsForcedOn`) draws the rule while it is held, for the before/after frame read and the rule's own tests.
+- **The walls-released build was used:** it gave the "after" house:frames for kinker-244-332, the easy-houses set and random24, and the "before" frames reuse its poses.
+
+**H7 r4 corner shopfront; house:frames round 2 (2026-11-10, #354, #358).**
+- **H7 r4 (c1592ee67, sonnet): the corner shopfront.** The judgement session accepted H7 r3 on the house:frames after frames. Corner 116526's ground floor (the photo's café) now draws:
+  - a pale fascia, a dark dutch awning and three display bays with transoms;
+  - a right-hand entrance and a stallriser.
+  - The chunk is reinstalled.
+  - Not yet right: the door sits in a brick gap beside the glazing, and the awning is wider than the photo's.
+  - Still not drawn: the round corner board and the small-pane transom row.
+  - `chamfer-corner` is now in the kit-gap queue: 2,167 pands, 1,148 in ride-priority gebieden, 56 % of the ride-weighted 1850–1940 share.
+- **house:frames r2 (5f1dcc5b9):**
+  - The wall-colour flag is relative to the two neighbours in the same image, firing when |ln(game/photo ratio)| > 0.35. It gives 0 of 15 false positives on the accepted H7 set and fires on 5 of the 10 readable validation walls, all of which look wrong.
+  - Glare and washed-out panoramas are rejected even in winter.
+  - Opening counts are advisory only: they match the H5h hand axes on 14 of 33.
+  - List entries take a `chord` / `at` for stepped fronts, which is how 146 is now posed from Nassaukade.
+
+**H10 `house:frames` and H11 design fields on the generic path (2026-11-10, #358, #361).**
+- **H10 (4371ef8a8, opus): `npm run house:frames`.**
+  - It puts the own engine's first-person camera at a street panorama's pose and pairs the game frame with the panorama cut to the same heading, pitch and FOV.
+  - The BAG wall outline is drawn on both halves; flags (blank wall, missing building, roof offset, wall colour) are advisory.
+  - Alignment over 35 walls: median edge offset 1.18 %, p90 4.0 %. The one pose over 5 % is 104378: its 2018 panorama predates the building. Throughput 12.7 pairs/min.
+  - Builders are accepted on these pairs read by opus or a human, never on their own sonnet read (docs/house-line.md §7).
+  - It read the #341 blank-wall audit as 64 % false positives (7 of 11). The 4 real ones are Funenpark 184743, whose front floats above the ground.
+- **H11 (7a8452f2d, opus): spec storeys, window look and shopfront reach the generic path.**
+  - One storey path: `specStoreyFit` with an exact mode (H9) and a nearest mode (ground storey shrinks first).
+  - `SPEC_DESIGN_HELD = { storeys: false, look: true, shop: true }`.
+  - 19-pair design gate, shipped default against all held: storeys 19/19 (from 15), window shape 8/19 (from 6), PASS 8 (from 6).
+  - Releasing look and shop as well makes it slightly worse (shape 7, PASS 6), so they wait for the frame pairs.
+  - `HOUSE_SPEC_DESIGN=0` is byte-identical to H9's path.
+- **The register-gable note now explains "only 125".**
+  - Of 2,587 matched raised register gables, 91 are on installed models. Of the 2,496 on the generic path, 2,343 keep their gable, 7 take a photo gable and 147 are held.
+  - 125 drawn crowns change in all: 54 to flat, the rest to the roof the 3D data shows.
+
+**H9 wall rule, K-stoep stoops, H7 round 3 installed (2026-11-10, #345, #360, #354).**
+- **H9 r3 (ccd9dfad4, opus): the wall-colour rule, merged with `SPEC_WALLS_HELD = true`.**
+  - Darks keep below red brick: lift k 0.2 ramped over OKLab L 0.30–0.50, darks get 35 % of the chroma gain, pale readings keep their own chroma, and the hue pull starts at 40°.
+  - Gate: spec reading vs render wall-mode Spearman 0.885; 9/10 photo-dark below the render median.
+  - Judgement ruling "darkness wins": Kinkerstraat C 0.045 is accepted. The ≥ 0.058 floor came from the period palette, not the photo. The photo-vs-render Spearman (0.29) moves to the H10 pairs, where photo and game share a pose. 236219 is a known measurement case.
+  - Un-hold order: H10 lands → frames on Kinkerstraat 26, the easy-houses set and random24 with walls before/after → judgement read → flip.
+  - H9 storeys are live: 411 generic pands draw the street source's storey count.
+  - Merge with H5h r4: a photo reading of a flat front drops the register gable to `historicGable`. Only an `author` flat front over a register gable takes the `cornice` crown (the Raadhuisstraat arcade).
+- **K-stoep (88da5d47d, opus): typed stoops (`buildingRecipe/stoop.ts`)**, with flights, steps, landing, iron railings and the opening under the landing.
+  - Generic path: `stoopExtra.ts` on the longest door wall on the nearest road, inside the building triangle budget.
+  - 461 spec stoops, 332 drawn typed and 49 with no room; +0.02 % triangles per tile at most.
+  - Against 2023 panoramas on 5 belt houses: direction 5/5, steps ±1 5/5, black iron 5/5. `SPEC_STOOPS_HELD = false`.
+- **H7 r3 (6104ee6d0, opus): both chunks installed.**
+  - The round-2 audit failures mostly predated H7: 36 opening parts came from main's own intents. H7's own were the tight pairs.
+  - Fixes at the source: tower and rosette stone at the 9 cm relief step, one palette per house, a `paint` slot for painted timber, stone balcony returns, shell-material mansard ends, and stone/timber-fronted dormers 0.14 m back.
+  - A corner attic now hips to its other street fronts and to the chamfer between them (`recipeRoof` `sideFronts`).
+  - One owner per pand: two chunks that suppress one pand replace each other on install. Corner 116526 belongs to clercq-236681, and nassau-145-152 is 6 pands.
+  - Roof golden re-recorded (incl. `_demo-school` 116526/153066 reclassed by the hips). The shared-kit changes reach other faces only when those reinstall.
+- **H2e** is adding a dark-neutral-rival guard (Kloveniersburgwal 72 accepted as a pinned regression if net agreement rises; 182848 white-trim case pinned) before the houseLine default flip.
+- **H11** (#361) is re-merging onto this base with look and shop held.
+- `build-covers.ts` reads the published bag-tiles when `artifacts/` has been swept.
+
+**BGT plazas rideable behind a flag (2026-11-10, a1 lane, `docs/reports/bgt-plazas-20261110.md`).** Amsterdam's BGT has no `plein`; the Dam, Spui, Nieuwmarkt and Stationsplein are `voetpad`. Rule (`routing/bgtPlazas.ts`): voetgangersgebied/woonerf/voetpad paving, ground level, ≥ 8 m across, reaching 3 m into the adjoining road, cut by BGT `scheiding`, shipped only when a corridor reaches it and it opens ≥ 20 m². Rejected with evidence: onbegroeid (Westpoort aprons, closed courtyards), erf (private yards), parkeervlak, inrit. 4,937 pieces, 0.96 km² newly rideable (Centrum 78k m²), extract `bgt-plazas-v1.json` 1.07 MB gz, on by default for desktop, off on touch until the extract is split per cell (`bgtPlazasDefault`, user approved 2026-11-10); `?bgtPlazas=0|1` overrides. Pins in `test:canal-car` (Waterlooplein rides; Museumplein and Frederiksplein lawns and the Radarweg courtyard stay blocked) and `test:bgt-plazas` in `check:canal`. Feedback 637f346b (ASC) and 4f47f105 (Radarweg) stand on erf and stay blocked pending a ruling.
+
+**Open ground and rail deck spans (2026-11-10, a1 lanes).**
+- **Open-ground look** (`docs/reports/open-ground-look-20261110.md`): unclassified open ground drew in the paving grey. BGT begroeid/onbegroeid terreindeel now draws as meadow, shrub, sand or a new `bare` earth layer; `erf` and bare classes are judged by the 2025 PDOK CIR aerial (≥ 50 % / ≥ 30 % vegetated → grass). New extract `open-ground-v1/` (291 cells, 7.3 MB gz), classifier `ownGround/groundSurface.ts`, off with `?openGround=0`. City grey grass 3,703 ha → 2.7 ha; paved and unknown erf stay grey. Pins in `openGroundRegressions.ts` (Heathrowstraat, Barajasweg, Moermanskkade, Sloterdijkerweg, Nieuwmarkt). Cost: +14–19 % ground triangles in Nieuw-West cells, +0.5–2.4 % in Centrum; world-v1 unchanged. Source archived in map-recall2-source-data `datasets/bgt-open-ground-20261110/`.
+- **Rails class b** (`docs/reports/rails-classb-20261110.md`): the premise mostly failed. Only 3 untagged rail viaducts over a street exist; they are now deck spans (`ownGround/railSpans.ts`, 140 m: Piet Kranenbergpad, Arlandabrug west-approach trams). None of the feedback spots (Sloterdijk, Kimpoweg, Radarweg) was class b: Sloterdijk is a tram bed lifted over its own embedded street by the station podium. Pins in `check-rail-street.ts` (zuid-path-underpass, frans-de-wollant-tram).
+
+**a1 batch: street-appearance back in the gate, slender parts, ride pins (2026-11-10).**
+- **test:street-appearance** failed on main and was not gated. A bisect (`docs/reports/street-appearance-bisect-20261110.md`) found two stale references, no regressions: b712de6b5 (#123 changed `signature-landmarks.json`, so the frontage survey hashes moved; re-recorded, every profile byte-identical) and 836fb00ef (R5-E flat-roof tone and parapet lip changed the flat twin the coarse test compares against; the reference is now built with `flatRoofTone=0&flatRoofSurface=0`). The suite (103 tests, ~3.5 s) now runs in `check:canal`.
+- **Part overlap at IJdok (feedback fc427560).** The flicker was not interpenetration but a slender fin plus glass parts drawn as solid boxes. `dropNestedDuplicates` gained a slender-part rule (191 parts dropped city-wide; IJdok, NDSM and Overhoeks pinned in `test:building-nesting`, now in `check:canal`). The glass boxes remain (TODO).
+- **Storefront gate round 2** (`docs/reports/storefront-gate-20261110.md`): shopfronts.json rebuilt with the tightened gate.
+- **Feedback triage** pins and probes in `test:canal-car` for the rideability notes (`docs/reports/feedback-triage-20261110.md`); the plaza ratchets flip when the BGT plaza lane lands.
+**Register gables gated by today's roof; H7 round 2 code (2026-11-10, #351 r4, #354).**
+- **Register gables (H5h r4, 7f8a80296).** In the trust order for `fronts/N/gable`, photo writers (Jev, hand) come first, then the register.
+  - With no photo reading, a register gable draws only when the crown rise is at least 2 m. `house:specs` bakes `crownRiseM` from bag-facts; where it is missing, a gable draws when planRoof plans a pitched roof.
+  - Otherwise the register shape is kept as `historicGable`, with its rce: provenance, for cards.
+  - Modes are `?registerGable=drawn|gated|hint`; the default is `gated`. Against the photo on 60 gable rows, drawn crowns agree on 44 (today 38, hint 28). The writer itself scores 0.69 [0.56, 0.80] and stays open.
+  - 125 live crowns change and 148 gables are held.
+- **The r5 ridge rule is held.** It changes 273 houses for +1 agreement, and one wide multi-gable pand goes wrong. Only its data, `data/house-line/ridge-facts-v1.json`, is merged.
+- **H7 round 2 (66572dd81) adds code:**
+  - `blockFace/wallFit.ts`: the dominant cluster wins unless the paler covers ≥ 60 %, painted walls at L* ≤ 40 stay neutral, and chroma travels with the lift. Painted-black Nassaukade fronts reach ΔE 0, and brick holds its hue within 1°.
+  - Kit components `FrontIntent.towers[]` and `rosettes[]`.
+  - A pand on a block face compiles from that face's frontage facts.
+- **Its two chunks are NOT installed yet.** Their GLB audits fail on opening-outside, zfight-tight on the corner (6.9 m², stone 2–3 cm off brick) and geometry-regression. That is H7 round 3.
+
 **Odd-bay cells; spec bays released (2026-11-10, H1c #350, 7c4c72fe3, opus).**
 - **Audit:** the 169901 over-count (5 for a photo 3) came from recipe intent bloemgracht-90. Auto-placed type bays that the strip did not confirm are now a `default` source and never written, so view bays went from 1,348 to 919.
 - **Odd bays:** a 3- or 1-bay front on a two-window canal/c19 cell draws as half-cell axis units (`axisUnitPlan`, streetFacadeRendering.ts). They reuse the cell's own sills, heads, frames and keystones; no atlas layer was added.
