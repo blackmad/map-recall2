@@ -11,7 +11,8 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 /** label, [lat, lon] of the bike, heading in compass degrees (0 north, 90 east), seconds of forward. */
 export const RIDE_FRAME_PLACES: ReadonlyArray<readonly [string, [number, number], number, number]> = [
   ['asc-sdw-637f346b', [52.385970, 4.832498], 270, 3],
-  ['radarweg-4f47f105', [52.387448, 4.833459], 0, 3],
+  // The service road ends at the office apron; the exception opens it, so ride east (the apron) and west (back).
+  ['radarweg-4f47f105', [52.387448, 4.833459], 90, 3],
   // Centrum plein: from the Waterlooplein street corridor south-west onto the market square (check-canal-car.ts pin).
   ['waterlooplein', [52.368798, 4.901371], 252, 4],
   // On the market square itself (the check-canal-car.ts pin point), riding west across the open paving.
@@ -31,7 +32,7 @@ for (const [label, [lat, lon], heading, seconds] of places) {
     const errors: string[] = [];
     page.on('pageerror', e => errors.push(e.message));
     await page.addInitScript(() => { let s = 0x5eed1234; Math.random = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 2 ** 32; }; });
-    const qs = `?travel=car${flag === 'on' ? '&bgtPlazas=1' : ''}`;
+    const qs = `?travel=car&bgtPlazas=${flag === 'on' ? 1 : 0}`; // desktop defaults ON since 2026-11-10, so off is explicit
     const finish = [lat + 0.004, lon + 0.004];
     await page.goto(`http://127.0.0.1:${port}/canal-drive/${qs}#race=${lat},${lon},${lat},${lon},${finish[0]},${finish[1]}`);
     await page.waitForFunction(() => (window as any).canalRecallGame?.player?.x && (window as any).canalRecallGame.state === 4 && (window as any).canalRecallGame.camera.introOverview === 0, null, { timeout: 240_000 });

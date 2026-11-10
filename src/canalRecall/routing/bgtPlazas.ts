@@ -24,6 +24,45 @@
  * planting).
  */
 
+/**
+ * Named, reviewed exceptions to the erf rule (integrator ruling 2026-11-10: erf is NOT admitted city-wide, because it
+ * is also every private garden and school yard). Each entry is one BGT onbegroeidterreindeel `erf` polygon that the
+ * orthophoto shows as an open paved forecourt with a public approach, reported by a player as "should be able to ride
+ * here". It joins the plaza build as a plaza source exempt from the 8 m opening (the polygon is the reviewed area) and
+ * keeps every other cut: BGT walls and fences, holes for pand and planters, a corridor that reaches it, 40 m² of paving,
+ * 20 m² of newly opened ground. Add an entry only with the orthophoto in hand and a feedback id; the polygon's
+ * geometry lives in scripts/routing/bgt-erf-exceptions.json (fetch-bgt-erf-exceptions.ts).
+ */
+export interface ErfException {
+  /** BGT lokaal_id of the erf polygon. */
+  id: string;
+  feedback: string;
+  /** Where the player stood, [lat, lon]; the fetch script's query centre. */
+  at: [number, number];
+  reason: string;
+  /** A reviewed box [minLat, minLon, maxLat, maxLon] cut out of the polygon (ground that is not paving on the ortho). */
+  exclude?: [number, number, number, number];
+}
+
+export const ERF_EXCEPTIONS: readonly ErfException[] = [
+  { id: 'G0363.c73ba53f3e7a407991ccb79c82622ea5', feedback: '637f346b', at: [52.38597, 4.83250],
+    reason: 'ASC / Sportpark SDW forecourt off Heathrowstraat: open paved forecourt and car-park approach (zebra markings, a parked car on the 2025 ortho), no fence; BGT maps it as erf of the club pand. The south-west corner, which lies on the club building roof terrace on the ortho, is cut out',
+    exclude: [52.3857, 4.8310, 52.38594, 4.83222] },
+  { id: 'G0363.9ad22f404d4b4199b03dc4ee80208d45', feedback: '4f47f105', at: [52.38745, 4.83346],
+    reason: 'Radarweg office forecourt off Barajasweg: paved access apron with a zebra crossing joining the car park; the INNER courtyard (separate erf polygons, gravel and planting) stays blocked' },
+];
+
+const ERF_EXCEPTION_IDS: ReadonlySet<string> = new Set(ERF_EXCEPTIONS.map(e => e.id));
+
+/** The feedback id when this BGT polygon is a reviewed erf exception, else null. */
+export function erfExceptionFor(id: string): ErfException | null {
+  return ERF_EXCEPTIONS.find(e => e.id === id) ?? null;
+}
+
+export function erfExceptionFeedback(id: string): string | null {
+  return ERF_EXCEPTION_IDS.has(id) ? ERF_EXCEPTIONS.find(e => e.id === id)!.feedback : null;
+}
+
 /** The BGT collection a source polygon came from. */
 export type BgtPlazaCollection = 'wegdeel' | 'onbegroeidterreindeel';
 
@@ -185,6 +224,8 @@ export interface BgtPlazaFeature {
   polygons: Array<Array<Array<[number, number]>>>;
   /** Area of the BGT plaza polygons in the piece, m² (before the reach). */
   plazaArea: number;
+  /** Feedback id when the piece contains a reviewed erf exception (ERF_EXCEPTIONS). */
+  exception?: string;
   /** Area by source class (`wegdeel/voetgangersgebied`, `onbegroeidterreindeel`), m². */
   classes: Record<string, number>;
 }
