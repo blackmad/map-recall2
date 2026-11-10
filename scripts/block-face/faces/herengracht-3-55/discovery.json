@@ -1,0 +1,733 @@
+{
+ "street": "Nieuwe Herengracht",
+ "seed": "0363100012171828",
+ "members": [
+  "0363100012171828",
+  "0363100012182267",
+  "0363100012182268",
+  "0363100012182269",
+  "0363100012182352",
+  "0363100012182348",
+  "0363100012182349",
+  "0363100012182350",
+  "0363100012571655",
+  "0363100012182344",
+  "0363100012182345",
+  "0363100012182346",
+  "0363100012182347",
+  "0363100012171832",
+  "0363100012181767",
+  "0363100012181765",
+  "0363100012181764",
+  "0363100012171831"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012171828 (face continues: 171688)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012171831 (face continues: 171838 181978 181979 571674 571673 181980 182036)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165493",
+   "reason": "frontage 112.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171370",
+   "reason": "frontage 168.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171411",
+   "reason": "frontage 167.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171414",
+   "reason": "frontage 170.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171506",
+   "reason": "frontage 122.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171508",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171509",
+   "reason": "frontage 126.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171564",
+   "reason": "frontage 149.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171566",
+   "reason": "frontage 164.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171567",
+   "reason": "frontage 154.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171568",
+   "reason": "frontage 170.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171569",
+   "reason": "frontage 110.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171570",
+   "reason": "frontage 128.8 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171572",
+   "reason": "frontage 185.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171574",
+   "reason": "frontage 118.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171575",
+   "reason": "frontage 108.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171576",
+   "reason": "frontage 134.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171689",
+   "reason": "frontage 39.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171690",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012171688"
+  },
+  {
+   "pandId": "0363100012171691",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012171694"
+  },
+  {
+   "pandId": "0363100012171692",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012171691"
+  },
+  {
+   "pandId": "0363100012171693",
+   "reason": "frontage 35.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171694",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012182267"
+  },
+  {
+   "pandId": "0363100012171695",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012171694"
+  },
+  {
+   "pandId": "0363100012171830",
+   "reason": "frontage 46.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171833",
+   "reason": "frontage 35.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171834",
+   "reason": "frontage 46.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171835",
+   "reason": "frontage 51.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171836",
+   "reason": "frontage 51.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171839",
+   "reason": "frontage 72.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171840",
+   "reason": "frontage 36.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171841",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012171994",
+   "reason": "frontage 102.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012178163",
+   "reason": "frontage 202.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012178165",
+   "reason": "frontage 188.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012178166",
+   "reason": "frontage 184.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012180909",
+   "reason": "frontage 157.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012180910",
+   "reason": "frontage 157.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012180912",
+   "reason": "frontage 157.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012165558",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012182036"
+  },
+  {
+   "pandId": "0363100012170253",
+   "reason": "frontage 73.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181763",
+   "reason": "frontage 49.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181766",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012181765"
+  },
+  {
+   "pandId": "0363100012181768",
+   "reason": "frontage 46.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181962",
+   "reason": "frontage 157.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181974",
+   "reason": "frontage 157.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182037",
+   "reason": "frontage 49.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182038",
+   "reason": "frontage 90.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182039",
+   "reason": "frontage 36.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182221",
+   "reason": "frontage 180.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182222",
+   "reason": "frontage 175.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182223",
+   "reason": "frontage 184.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182226",
+   "reason": "frontage 177.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182229",
+   "reason": "frontage 212.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182230",
+   "reason": "frontage 207.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182266",
+   "reason": "frontage 43.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182270",
+   "reason": "frontage 43.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182351",
+   "reason": "frontage 38.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182353",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182354",
+   "reason": "frontage 61.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182355",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012180916",
+   "reason": "frontage 156.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012180917",
+   "reason": "frontage 156.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012180918",
+   "reason": "frontage 156.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012180919",
+   "reason": "frontage 156.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012180920",
+   "reason": "frontage 156.8 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012180922",
+   "reason": "frontage 156.8 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181961",
+   "reason": "frontage 156.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181975",
+   "reason": "frontage 68.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181976",
+   "reason": "frontage 92.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181977",
+   "reason": "frontage 93.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182040",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012165558"
+  },
+  {
+   "pandId": "0363100012182356",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182357",
+   "reason": "frontage 76.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182358",
+   "reason": "frontage 74.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182359",
+   "reason": "frontage 72.8 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182360",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182424",
+   "reason": "frontage 188.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182425",
+   "reason": "frontage 180.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182427",
+   "reason": "frontage 149.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182428",
+   "reason": "frontage 152.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182429",
+   "reason": "frontage 129.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182430",
+   "reason": "frontage 123.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182431",
+   "reason": "frontage 135.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182451",
+   "reason": "frontage 57.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182492",
+   "reason": "frontage 112.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182493",
+   "reason": "frontage 137.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182494",
+   "reason": "frontage 175.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182495",
+   "reason": "frontage 170.8 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182496",
+   "reason": "frontage 163.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182497",
+   "reason": "frontage 134.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182498",
+   "reason": "frontage 140.6 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182499",
+   "reason": "frontage 156.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182500",
+   "reason": "frontage 166.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182501",
+   "reason": "frontage 161.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182502",
+   "reason": "frontage 125.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182512",
+   "reason": "frontage 82.8 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182678",
+   "reason": "frontage 128.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182680",
+   "reason": "frontage 171.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182681",
+   "reason": "frontage 148.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182682",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182754",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182755",
+   "reason": "frontage 130.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182756",
+   "reason": "frontage 113.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182757",
+   "reason": "frontage 115.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182758",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182759",
+   "reason": "frontage 109.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182815",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182816",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182817",
+   "reason": "frontage 161.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182818",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182819",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182896",
+   "reason": "no frontage on Nieuwe Herengracht: No footprint edge faces Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182897",
+   "reason": "frontage 130.8 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182898",
+   "reason": "frontage 43.0 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182899",
+   "reason": "frontage 47.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012185998",
+   "reason": "frontage 117.9 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012186092",
+   "reason": "frontage 111.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012571333",
+   "reason": "frontage 108.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012571493",
+   "reason": "frontage 170.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012571494",
+   "reason": "frontage 173.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012571495",
+   "reason": "frontage 170.1 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012165553",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171687",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171827",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171837",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181981",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012171828",
+   "alongM": 0,
+   "widthM": 5.5,
+   "eavesM": 14.82,
+   "roofMaxM": 16.58,
+   "storeys3dbag": 5,
+   "builtYear": 1792,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012182267",
+   "alongM": 5.49,
+   "widthM": 5.47,
+   "eavesM": 15.59,
+   "roofMaxM": 15.64,
+   "storeys3dbag": 5,
+   "builtYear": 1859,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182268",
+   "alongM": 10.96,
+   "widthM": 5.47,
+   "eavesM": 16.75,
+   "roofMaxM": 18.71,
+   "storeys3dbag": 4,
+   "builtYear": 1685,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182269",
+   "alongM": 16.44,
+   "widthM": 5.5,
+   "eavesM": 11.34,
+   "roofMaxM": 11.36,
+   "storeys3dbag": 4,
+   "builtYear": 1954,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182352",
+   "alongM": 22.91,
+   "widthM": 7.44,
+   "eavesM": 17.03,
+   "roofMaxM": 19.95,
+   "storeys3dbag": 0,
+   "builtYear": 1757,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012182348",
+   "alongM": 29.01,
+   "widthM": 4.76,
+   "eavesM": 14.1,
+   "roofMaxM": 14.16,
+   "storeys3dbag": 5,
+   "builtYear": 1952,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182349",
+   "alongM": 34.08,
+   "widthM": 5.38,
+   "eavesM": 11.63,
+   "roofMaxM": 15.78,
+   "storeys3dbag": 4,
+   "builtYear": 1773,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182350",
+   "alongM": 39.13,
+   "widthM": 4.72,
+   "eavesM": 15.15,
+   "roofMaxM": 15.73,
+   "storeys3dbag": 5,
+   "builtYear": 1968,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012571655",
+   "alongM": 44.3,
+   "widthM": 5.62,
+   "eavesM": 15.4,
+   "roofMaxM": 17.01,
+   "storeys3dbag": 4,
+   "builtYear": 1820,
+   "uncertainty": [
+    "Other ground polygons were not joined; disconnected or separately surveyed frontage may remain."
+   ]
+  },
+  {
+   "pandId": "0363100012182344",
+   "alongM": 49.92,
+   "widthM": 5.62,
+   "eavesM": 16.4,
+   "roofMaxM": 19.9,
+   "storeys3dbag": 5,
+   "builtYear": 1802,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182345",
+   "alongM": 55.52,
+   "widthM": 5.59,
+   "eavesM": 15.44,
+   "roofMaxM": 15.48,
+   "storeys3dbag": 5,
+   "builtYear": 1955,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182346",
+   "alongM": 61.14,
+   "widthM": 5.64,
+   "eavesM": 11.64,
+   "roofMaxM": 15.76,
+   "storeys3dbag": 5,
+   "builtYear": 1775,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182347",
+   "alongM": 67.66,
+   "widthM": 7.38,
+   "eavesM": 14.73,
+   "roofMaxM": 15.26,
+   "storeys3dbag": 5,
+   "builtYear": 1763,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171832",
+   "alongM": 75.05,
+   "widthM": 7.4,
+   "eavesM": 18,
+   "roofMaxM": 22.62,
+   "storeys3dbag": 5,
+   "builtYear": 1725,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181767",
+   "alongM": 82.49,
+   "widthM": 7.5,
+   "eavesM": 11.8,
+   "roofMaxM": 17.13,
+   "storeys3dbag": 4,
+   "builtYear": 1706,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181765",
+   "alongM": 88.49,
+   "widthM": 4.51,
+   "eavesM": 14.71,
+   "roofMaxM": 18.29,
+   "storeys3dbag": 5,
+   "builtYear": 1756,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181764",
+   "alongM": 93.7,
+   "widthM": 5.9,
+   "eavesM": 17.13,
+   "roofMaxM": 18.01,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171831",
+   "alongM": 98.94,
+   "widthM": 4.59,
+   "eavesM": 14.81,
+   "roofMaxM": 14.85,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

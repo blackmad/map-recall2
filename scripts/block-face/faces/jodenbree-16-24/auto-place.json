@@ -1,0 +1,320 @@
+{
+ "face": "jodenbree-16-24",
+ "street": "Jodenbreestraat",
+ "library": "nieuwmarkt",
+ "stripDate": "2025-01-08",
+ "seconds": 1.86,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012165556",
+   "address": "Jodenbreestraat 24",
+   "builtYear": 1742,
+   "widthM": 6.76,
+   "eavesM": 12.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#402f32",
+    "wallRaw": "#423033",
+    "skyline": {
+     "eavesM": 17.7,
+     "eavesRow": 63,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 1.57,
+      "topWidthM": 0.35,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.63,
+       "widthM": 1,
+       "centre": 0.1
+      },
+      {
+       "atM": 5.15,
+       "widthM": 0.85,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best lastage-cornice-house scores 0.65 < 0.7 (skyline crown rise 1.57 m, top 0.35 m fits no crown of the type)",
+   "best": {
+    "type": "lastage-cornice-house",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.88 m = 4 storeys of 3.22 m vs the type's 3.5 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.57 m, top 0.35 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012182905",
+   "address": "Jodenbreestraat 20",
+   "builtYear": 1983,
+   "widthM": 15.52,
+   "eavesM": 14.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2c2822",
+    "wallRaw": "#60525d",
+    "skyline": {
+     "eavesM": 17.52,
+     "eavesRow": 70,
+     "confidence": 0.34,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 1.75,
+      "topWidthM": 0.55,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 3.15,
+     "bayCentre": 0.11,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.52 (light 0.17): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.52,
+       "light": 0.17
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.71,
+       "light": 0.04
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.85,
+       "light": 0.45
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.93,
+       "widthM": 1.73,
+       "centre": 0.58
+      },
+      {
+       "atM": 8.9,
+       "widthM": 0.95,
+       "centre": 0.84
+      },
+      {
+       "atM": 7.85,
+       "widthM": 1.35,
+       "centre": 0.41
+      },
+      {
+       "atM": 5.9,
+       "widthM": 1.27,
+       "centre": 0.85
+      },
+      {
+       "atM": 4.77,
+       "widthM": 1.13,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: built 1983, type 1600-1925; frontage 15.52 m, type 3.6-7 m)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "built 1983, type 1600-1925",
+     "frontage 15.52 m, type 3.6-7 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.3 m = 5 storeys of 2.86 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.53 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012182904",
+   "address": "Jodenbreestraat 16A",
+   "builtYear": 2001,
+   "widthM": 5.93,
+   "eavesM": 17.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#292026",
+    "wallRaw": "#382f38",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 771,
+     "confidence": 0.24,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.47,
+       "widthM": 1.07,
+       "centre": 0.33
+      },
+      {
+       "atM": 5.1,
+       "widthM": 0.95,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: built 2001, type 1600-1925)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "built 2001, type 1600-1925"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.24 m = 5 storeys of 3.45 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

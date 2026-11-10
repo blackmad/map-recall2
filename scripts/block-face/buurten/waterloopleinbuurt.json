@@ -333,7 +333,8 @@
     2,
     32
    ],
-   "lengthM": 72.6
+   "lengthM": 72.6,
+   "intakeError": "Seed 0363100012170254 has no frontage on Muiderstraat: frontage 32.3 m from Muiderstraat"
   },
   {
    "id": "amstel-8-8",
@@ -432,7 +433,15 @@
     3,
     55
    ],
-   "lengthM": 162.3
+   "lengthM": 162.3,
+   "dropped": [
+    "0363100012171838",
+    "0363100012181978",
+    "0363100012181979",
+    "0363100012571674",
+    "0363100012571673",
+    "0363100012181980"
+   ]
   },
   {
    "id": "herengracht-57-69",

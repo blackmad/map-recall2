@@ -1,0 +1,99 @@
+{
+ "street": "Krom Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182693",
+   "addresses": [
+    "Krom Boomssloot 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 49-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000713575"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571645",
+   "addresses": [
+    "Krom Boomssloot 51A",
+    "Krom Boomssloot 51B",
+    "Krom Boomssloot 51C",
+    "Krom Boomssloot 51D",
+    "Krom Boomssloot 51E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 51A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 7,
+     "bagId": "0363010000713583"
+    },
+    {
+     "address": "Krom Boomssloot 51B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000713584"
+    },
+    {
+     "address": "Krom Boomssloot 51C",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000713585"
+    },
+    {
+     "address": "Krom Boomssloot 51D",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000713586"
+    },
+    {
+     "address": "Krom Boomssloot 51E",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000713587"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571630",
+   "addresses": [
+    "Krom Boomssloot 53A",
+    "Krom Boomssloot 53B",
+    "Krom Boomssloot 53C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 53A",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000713588"
+    },
+    {
+     "address": "Krom Boomssloot 53B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010003720955"
+    },
+    {
+     "address": "Krom Boomssloot 53C",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010003720956"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,86 @@
+{
+ "street": "Krom Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012183060",
+   "addresses": [
+    "Krom Boomssloot 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 73-1A",
+     "use": "industriefunctie",
+     "areaM2": 41,
+     "bagId": "0363010000949167"
+    },
+    {
+     "address": "Krom Boomssloot 73-2",
+     "use": "industriefunctie",
+     "areaM2": 115,
+     "bagId": "0363010000949168"
+    },
+    {
+     "address": "Krom Boomssloot 73",
+     "use": "industriefunctie",
+     "areaM2": 66,
+     "bagId": "0363010012595054"
+    },
+    {
+     "address": "Korte Dijkstraat 2",
+     "use": "industriefunctie",
+     "areaM2": 44,
+     "bagId": "0363010012595055"
+    },
+    {
+     "address": "Krom Boomssloot 73-H",
+     "use": "industriefunctie",
+     "areaM2": 116,
+     "bagId": "0363010003696195"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183053",
+   "addresses": [
+    "Krom Boomssloot 75A",
+    "Krom Boomssloot 75B",
+    "Krom Boomssloot 75C",
+    "Krom Boomssloot 75D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 75A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000713602"
+    },
+    {
+     "address": "Krom Boomssloot 75B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000713603"
+    },
+    {
+     "address": "Krom Boomssloot 75C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000713604"
+    },
+    {
+     "address": "Krom Boomssloot 75D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000713614"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

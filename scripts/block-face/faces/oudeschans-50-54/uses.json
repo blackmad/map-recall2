@@ -1,0 +1,71 @@
+{
+ "street": "Oudeschans",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182612",
+   "addresses": [
+    "Oudeschans 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 54-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000767728"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182613",
+   "addresses": [
+    "Oudeschans 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 52",
+     "use": "woonfunctie",
+     "areaM2": 251,
+     "bagId": "0363010000990927"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171314",
+   "addresses": [
+    "Oudeschans 50C",
+    "Oudeschans 50B",
+    "Oudeschans 50A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 50C",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000555216"
+    },
+    {
+     "address": "Oudeschans 50B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000939266"
+    },
+    {
+     "address": "Oudeschans 50A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000939265"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

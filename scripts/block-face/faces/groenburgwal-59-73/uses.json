@@ -1,0 +1,220 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:47:17.294Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178626",
+   "addresses": [
+    "Groenburgwal 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 59",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000651600"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12118877097,
+     "lngLat": [
+      4.8978869,
+      52.3681628
+     ],
+     "tags": {
+      "check_date": "2024-08-18",
+      "name": "Child Press",
+      "office": "company",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:47:17.294Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178372",
+   "addresses": [
+    "Groenburgwal 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 61-H",
+     "use": "woonfunctie",
+     "areaM2": 179,
+     "bagId": "0363010000548835"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178371",
+   "addresses": [
+    "Groenburgwal 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 63-H",
+     "use": "industriefunctie",
+     "areaM2": 90,
+     "bagId": "0363010000651604"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178370",
+   "addresses": [
+    "Groenburgwal 65B",
+    "Groenburgwal 65D",
+    "Groenburgwal 65A",
+    "Groenburgwal 65C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 65B",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000953392"
+    },
+    {
+     "address": "Groenburgwal 65D",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000954135"
+    },
+    {
+     "address": "Groenburgwal 65A",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010001009065"
+    },
+    {
+     "address": "Groenburgwal 65C",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000953393"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178369",
+   "addresses": [
+    "Groenburgwal 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 67-H",
+     "use": "industriefunctie",
+     "areaM2": 59,
+     "bagId": "0363010000651608"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178639",
+   "addresses": [
+    "Groenburgwal 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 69-H",
+     "use": "woonfunctie",
+     "areaM2": 220,
+     "bagId": "0363010000651612"
+    },
+    {
+     "address": "Groenburgwal 69-H",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010012156822"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178711",
+   "addresses": [
+    "Groenburgwal 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 71",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000651615"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171164",
+   "addresses": [
+    "Groenburgwal 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 73-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000651620"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2212804908,
+     "lngLat": [
+      4.8974006,
+      52.3677162
+     ],
+     "tags": {
+      "amenity": "bench",
+      "armrest": "no",
+      "backrest": "yes",
+      "material": "wood",
+      "seats": "4"
+     },
+     "fetchedAt": "2026-11-10T08:47:17.294Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    },
+    {
+     "type": "node",
+     "id": 2410006769,
+     "lngLat": [
+      4.8976078,
+      52.3677676
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:street": "Staalkade",
+      "name": "Amstel Canal Guest House",
+      "tourism": "hotel",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:47:17.294Z",
+     "match": "frontage",
+     "distanceM": 7.8
+    }
+   ]
+  }
+ ]
+}

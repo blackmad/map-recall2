@@ -1,0 +1,938 @@
+{
+ "street": "Sint Antoniesbreestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:44:15.500Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171712",
+   "addresses": [
+    "Sint Antoniesbreestraat 11",
+    "Sint Antoniesbreestraat 13A",
+    "Sint Antoniesbreestraat 13B",
+    "Sint Antoniesbreestraat 13C",
+    "Sint Antoniesbreestraat 13D",
+    "Sint Antoniesbreestraat 13E",
+    "Sint Antoniesbreestraat 13F",
+    "Sint Antoniesbreestraat 13G",
+    "Sint Antoniesbreestraat 13H",
+    "Sint Antoniesbreestraat 13K",
+    "Sint Antoniesbreestraat 15A",
+    "Sint Antoniesbreestraat 15B",
+    "Sint Antoniesbreestraat 17A",
+    "Sint Antoniesbreestraat 17B",
+    "Sint Antoniesbreestraat 17C",
+    "Sint Antoniesbreestraat 17D",
+    "Sint Antoniesbreestraat 17E",
+    "Sint Antoniesbreestraat 17F",
+    "Sint Antoniesbreestraat 17G",
+    "Sint Antoniesbreestraat 17H",
+    "Sint Antoniesbreestraat 17K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sint Antoniesbreestraat 11",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000817403"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 13A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000817407"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000817408"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000817409"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000817410"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 13E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000817411"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 13F",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000817412"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 13G",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000817413"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 13H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000817414"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 13K",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000817415"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 15A",
+     "use": "winkelfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000817417"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 15B",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000817418"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000817420"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000817421"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000817422"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000817423"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 17E",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000817424"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 17F",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000817425"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 17G",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000817426"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 17H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000817427"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 17K",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000817428"
+    }
+   ],
+   "units": 21,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4089901004,
+     "lngLat": [
+      4.90063,
+      52.371295
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:street": "Sint Antoniesbreestraat",
+      "name": "Cannabis Seed Bank",
+      "shop": "marihuana"
+     },
+     "fetchedAt": "2026-11-10T09:44:15.500Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012183059",
+   "addresses": [
+    "Sint Antoniesbreestraat 19A",
+    "Sint Antoniesbreestraat 19B",
+    "Sint Antoniesbreestraat 19C",
+    "Sint Antoniesbreestraat 19D",
+    "Sint Antoniesbreestraat 19E",
+    "Sint Antoniesbreestraat 19F",
+    "Sint Antoniesbreestraat 19G",
+    "Sint Antoniesbreestraat 19H",
+    "Sint Antoniesbreestraat 21A",
+    "Sint Antoniesbreestraat 21B",
+    "Sint Antoniesbreestraat 21C",
+    "Sint Antoniesbreestraat 21D",
+    "Sint Antoniesbreestraat 21E",
+    "Sint Antoniesbreestraat 21F",
+    "Sint Antoniesbreestraat 21G",
+    "Sint Antoniesbreestraat 21H",
+    "Sint Antoniesbreestraat 21K",
+    "Sint Antoniesbreestraat 21L",
+    "Sint Antoniesbreestraat 23A",
+    "Sint Antoniesbreestraat 23B",
+    "Sint Antoniesbreestraat 23C",
+    "Sint Antoniesbreestraat 25A",
+    "Sint Antoniesbreestraat 25B",
+    "Sint Antoniesbreestraat 25C",
+    "Sint Antoniesbreestraat 25D",
+    "Sint Antoniesbreestraat 27A",
+    "Sint Antoniesbreestraat 27B",
+    "Sint Antoniesbreestraat 27C",
+    "Sint Antoniesbreestraat 27D",
+    "Sint Antoniesbreestraat 27E",
+    "Sint Antoniesbreestraat 27F",
+    "Sint Antoniesbreestraat 27G",
+    "Sint Antoniesbreestraat 27H",
+    "Sint Antoniesbreestraat 27K",
+    "Sint Antoniesbreestraat 27L",
+    "Sint Antoniesbreestraat 29A",
+    "Sint Antoniesbreestraat 29B",
+    "Sint Antoniesbreestraat 29C",
+    "Sint Antoniesbreestraat 29D",
+    "Sint Antoniesbreestraat 29E",
+    "Sint Antoniesbreestraat 29F",
+    "Sint Antoniesbreestraat 29G",
+    "Sint Antoniesbreestraat 29H",
+    "Sint Antoniesbreestraat 29K",
+    "Sint Antoniesbreestraat 29L",
+    "Sint Antoniesbreestraat 31A",
+    "Sint Antoniesbreestraat 31B",
+    "Sint Antoniesbreestraat 31C",
+    "Sint Antoniesbreestraat 31D",
+    "Sint Antoniesbreestraat 31E",
+    "Sint Antoniesbreestraat 31F",
+    "Sint Antoniesbreestraat 31G",
+    "Sint Antoniesbreestraat 31H",
+    "Sint Antoniesbreestraat 31K",
+    "Sint Antoniesbreestraat 31L",
+    "Sint Antoniesbreestraat 33A",
+    "Sint Antoniesbreestraat 33B",
+    "Sint Antoniesbreestraat 33C",
+    "Sint Antoniesbreestraat 33D",
+    "Sint Antoniesbreestraat 33E",
+    "Sint Antoniesbreestraat 33F",
+    "Sint Antoniesbreestraat 33G",
+    "Sint Antoniesbreestraat 33H",
+    "Sint Antoniesbreestraat 33K",
+    "Sint Antoniesbreestraat 33L",
+    "Sint Antoniesbreestraat 33M",
+    "Sint Antoniesbreestraat 33N",
+    "Sint Antoniesbreestraat 35A",
+    "Sint Antoniesbreestraat 35B",
+    "Sint Antoniesbreestraat 35C",
+    "Sint Antoniesbreestraat 35D",
+    "Sint Antoniesbreestraat 35E",
+    "Sint Antoniesbreestraat 35F",
+    "Sint Antoniesbreestraat 35G",
+    "Sint Antoniesbreestraat 35H",
+    "Sint Antoniesbreestraat 35K",
+    "Sint Antoniesbreestraat 35L",
+    "Sint Antoniesbreestraat 35M",
+    "Sint Antoniesbreestraat 35N",
+    "Sint Antoniesbreestraat 35P",
+    "Sint Antoniesbreestraat 35R",
+    "Sint Antoniesbreestraat 37A",
+    "Sint Antoniesbreestraat 37B",
+    "Sint Antoniesbreestraat 37C",
+    "Sint Antoniesbreestraat 37D",
+    "Sint Antoniesbreestraat 37E",
+    "Sint Antoniesbreestraat 37F",
+    "Sint Antoniesbreestraat 37G",
+    "Sint Antoniesbreestraat 37H",
+    "Sint Antoniesbreestraat 37K",
+    "Sint Antoniesbreestraat 37L"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sint Antoniesbreestraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000817429"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000817430"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000817431"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000817432"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 19E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000817433"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 19F",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000817434"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 19G",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817435"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 19H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817436"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000817437"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000817438"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21C",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000817439"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817440"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817441"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21F",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000817442"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21G",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000817443"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21H",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000817444"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21K",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817445"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 21L",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817446"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000817447"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000817448"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000817449"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 25A",
+     "use": "winkelfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000817450"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 25B",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000817451"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 25C",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817452"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 25D",
+     "use": "winkelfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000817453"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000817454"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817455"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817456"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817457"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27E",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000817458"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27F",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000817459"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27G",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000817460"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817461"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27K",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817462"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 27L",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817463"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000817464"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817465"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817466"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817467"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29E",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000817468"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29F",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000817469"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29G",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000817470"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817471"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29K",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817472"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 29L",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817473"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000817481"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817482"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817483"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817484"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31E",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000817485"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31F",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000817486"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31G",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000817487"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817488"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31K",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817489"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 31L",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817490"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000817492"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817493"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817494"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817495"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33E",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000817496"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33F",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000817497"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33G",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000817498"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817499"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33K",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817500"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33L",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817501"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33M",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817502"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 33N",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817503"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000817505"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817506"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817507"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817508"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35E",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000817509"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35F",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000817510"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35G",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000817511"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000817512"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35K",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000817513"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35L",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000817514"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35M",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000817515"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35N",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000817516"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35P",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000817517"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 35R",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000817518"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000817520"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000817521"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37C",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000817522"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000817523"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37E",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000817524"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37F",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000817525"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37G",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000817526"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000817527"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37K",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000817528"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 37L",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000817529"
+    },
+    {
+     "address": "Snoekjessteeg 1",
+     "use": "winkelfunctie",
+     "areaM2": 184,
+     "bagId": "0363010000812980"
+    },
+    {
+     "address": "Snoekjessteeg 3",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000812981"
+    },
+    {
+     "address": "Snoekjessteeg 5",
+     "use": "winkelfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000812982"
+    }
+   ],
+   "units": 94,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725749659,
+     "lngLat": [
+      4.9007183,
+      52.3709578
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25A",
+      "addr:postcode": "1011HB",
+      "addr:street": "Sint Antoniesbreestraat",
+      "check_date": "2025-02-19",
+      "check_date:opening_hours": "2021-08-17",
+      "clothes": "men;women",
+      "name": "Bis",
+      "opening_hours": "Mo 12:00-18:00; Tu-Sa 11:00-18:00; Su 13:00-17:00",
+      "second_hand": "only",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T09:44:15.500Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2725749679,
+     "lngLat": [
+      4.9007385,
+      52.3708959
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25C",
+      "addr:postcode": "1011HB",
+      "addr:street": "Sint Antoniesbreestraat",
+      "amenity": "fast_food",
+      "check_date": "2025-02-19",
+      "name": "Stars Burgers",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T09:44:15.500Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2725749684,
+     "lngLat": [
+      4.9007289,
+      52.3707384
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25D",
+      "addr:postcode": "1011HB",
+      "addr:street": "Sint Antoniesbreestraat",
+      "name": "Bis!",
+      "second_hand": "only",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:44:15.500Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11097046781,
+     "lngLat": [
+      4.9007592,
+      52.3705682
+     ],
+     "tags": {
+      "amenity": "bar",
+      "check_date": "2025-06-06",
+      "indoor_seating": "yes",
+      "name": "Lagom",
+      "outdoor_seating": "yes",
+      "toilets": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:44:15.500Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

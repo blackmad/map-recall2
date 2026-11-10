@@ -1,0 +1,371 @@
+{
+ "street": "Oudeschans",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182610",
+   "addresses": [
+    "Oudeschans 108",
+    "Oudeschans 110",
+    "Oudeschans 112",
+    "Oudeschans 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 108",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000767805"
+    },
+    {
+     "address": "Oudeschans 110",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000767806"
+    },
+    {
+     "address": "Oudeschans 112",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000767807"
+    },
+    {
+     "address": "Oudeschans 114",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000767808"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182611",
+   "addresses": [
+    "Oudeschans 92",
+    "Oudeschans 94",
+    "Oudeschans 98",
+    "Oudeschans 100",
+    "Oudeschans 102",
+    "Oudeschans 104",
+    "Oudeschans 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 92",
+     "use": "woonfunctie",
+     "areaM2": 174,
+     "bagId": "0363010000767797"
+    },
+    {
+     "address": "Oudeschans 94",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000767798"
+    },
+    {
+     "address": "Oudeschans 98",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000767800"
+    },
+    {
+     "address": "Oudeschans 100",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000767801"
+    },
+    {
+     "address": "Oudeschans 102",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000767802"
+    },
+    {
+     "address": "Oudeschans 106",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000767804"
+    },
+    {
+     "address": "Oudeschans 104",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001993888"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571631",
+   "addresses": [
+    "Oudeschans 72A",
+    "Oudeschans 72B",
+    "Oudeschans 72C",
+    "Oudeschans 72D",
+    "Oudeschans 72E",
+    "Oudeschans 72F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 72B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001040736"
+    },
+    {
+     "address": "Oudeschans 72C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001040737"
+    },
+    {
+     "address": "Oudeschans 72D",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001040738"
+    },
+    {
+     "address": "Oudeschans 72E",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001040739"
+    },
+    {
+     "address": "Oudeschans 72F",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010001040740"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571633",
+   "addresses": [
+    "Oudeschans 70A",
+    "Oudeschans 70B",
+    "Oudeschans 70D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 70A",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010001040732"
+    },
+    {
+     "address": "Oudeschans 70B",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001040733"
+    },
+    {
+     "address": "Oudeschans 70D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010001040734"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571634",
+   "addresses": [
+    "Oudeschans 68A",
+    "Oudeschans 68B",
+    "Oudeschans 68C",
+    "Oudeschans 68D",
+    "Oudeschans 68E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 68A",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000767775"
+    },
+    {
+     "address": "Oudeschans 68B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000767776"
+    },
+    {
+     "address": "Oudeschans 68C",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000767777"
+    },
+    {
+     "address": "Oudeschans 68D",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000767778"
+    },
+    {
+     "address": "Oudeschans 68E",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000767779"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571635",
+   "addresses": [
+    "Oudeschans 66A",
+    "Oudeschans 66B",
+    "Oudeschans 66C",
+    "Oudeschans 66D",
+    "Oudeschans 66E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 66A",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000767764"
+    },
+    {
+     "address": "Oudeschans 66B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000767765"
+    },
+    {
+     "address": "Oudeschans 66C",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000767766"
+    },
+    {
+     "address": "Oudeschans 66D",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000767767"
+    },
+    {
+     "address": "Oudeschans 66E",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000767768"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171317",
+   "addresses": [
+    "Oudeschans 62A",
+    "Oudeschans 62B",
+    "Oudeschans 62C",
+    "Oudeschans 62D",
+    "Oudeschans 62E",
+    "Oudeschans 62F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 62A",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000767756"
+    },
+    {
+     "address": "Oudeschans 62B",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000767757"
+    },
+    {
+     "address": "Oudeschans 62C",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000767758"
+    },
+    {
+     "address": "Oudeschans 62D",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000767759"
+    },
+    {
+     "address": "Oudeschans 62E",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000767760"
+    },
+    {
+     "address": "Oudeschans 62F",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000767761"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182605",
+   "addresses": [
+    "Oudeschans 60A",
+    "Oudeschans 60B",
+    "Oudeschans 60C",
+    "Oudeschans 60D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 60A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000767736"
+    },
+    {
+     "address": "Oudeschans 60B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000767737"
+    },
+    {
+     "address": "Oudeschans 60C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000767738"
+    },
+    {
+     "address": "Oudeschans 60D",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000767739"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182606",
+   "addresses": [
+    "Oudeschans 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 58-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000767732"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

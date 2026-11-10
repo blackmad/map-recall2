@@ -1,0 +1,379 @@
+{
+ "face": "boomssloot-2-8",
+ "street": "Krom Boomssloot",
+ "library": "nieuwmarkt",
+ "stripDate": "2025-01-08",
+ "seconds": 8.06,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012182958",
+   "address": "Krom Boomssloot 8",
+   "builtYear": 1705,
+   "widthM": 6.75,
+   "eavesM": 15.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a692a8",
+    "wallRaw": "#746372",
+    "skyline": {
+     "eavesM": 20.85,
+     "eavesRow": 114,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.85,
+      "topWidthM": 0.6,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.285,
+    "structure": {
+     "bayWidthM": 0.53,
+     "bayCentre": 0.04,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.65,
+       "widthM": 0.97,
+       "centre": 0.34
+      },
+      {
+       "atM": 13.13,
+       "widthM": 1.1,
+       "centre": 0.68
+      },
+      {
+       "atM": 11.7,
+       "widthM": 0.8,
+       "centre": 0.94
+      },
+      {
+       "atM": 9.82,
+       "widthM": 0.97,
+       "centre": 0.34
+      },
+      {
+       "atM": 8.63,
+       "widthM": 1.3,
+       "centre": 0.65
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.15,
+       "centre": 0.66
+      },
+      {
+       "atM": 5.25,
+       "widthM": 1.2,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.106 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.53 mean 0.51 vs photo 0.80)",
+   "likeness": {
+    "pandId": "0363100012182958",
+    "ncc": 0.106,
+    "nccRaw": 0.106,
+    "shiftM": [
+     0.4,
+     -0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.53 mean 0.51 vs photo 0.80"
+    ],
+    "wall": {
+     "photo": "#ac96ab",
+     "model": "#a28ea4",
+     "dL": -0.031
+    },
+    "glazing": {
+     "photo": 0.8,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.479
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012182959",
+   "address": "Krom Boomssloot 6",
+   "builtYear": 1740,
+   "widthM": 4.98,
+   "eavesM": 14.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4448",
+    "wallRaw": "#634e55",
+    "skyline": {
+     "eavesM": 22.93,
+     "eavesRow": 31,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 0.77,
+      "topWidthM": 0.72,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0.68,
+     "bayCentre": 0.07,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.75,
+       "widthM": 0.8,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012182959",
+    "ncc": 0.181,
+    "nccRaw": 0.181,
+    "shiftM": [
+     0.35,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28",
+     "window shape tall vs photo square",
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#594247",
+     "model": "#75575d",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.306
+   },
+   "challengers": {
+    "lastage-cornice-house": 0.053
+   }
+  },
+  {
+   "pandId": "0363100012182875",
+   "address": "Krom Boomssloot 4A",
+   "builtYear": 1912,
+   "widthM": 5.22,
+   "eavesM": 17.06,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4e2927",
+    "wallRaw": "#5b3b3b",
+    "skyline": {
+     "eavesM": 20.4,
+     "eavesRow": 132,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 2.5,
+      "topWidthM": 0.55,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best lastage-bell-house scores 0.69 < 0.7 (3DBAG eaves 17.06 m = 5 storeys of 3.41 m vs the type's 2.81 m; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.06 m = 5 storeys of 3.41 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.63 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 2.5 m, top 0.55 m fits bell"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012182876",
+   "address": "Krom Boomssloot 2",
+   "builtYear": 1782,
+   "widthM": 4.99,
+   "eavesM": 12.86,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#312b2d",
+    "wallRaw": "#4b424f",
+    "skyline": {
+     "eavesM": 22.4,
+     "eavesRow": 52,
+     "confidence": 0.35,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.8,
+       "widthM": 0.93,
+       "centre": 0.83
+      },
+      {
+       "atM": 8.8,
+       "widthM": 0.95,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best lastage-cornice-house scores 0.65 < 0.7 (3DBAG eaves 12.86 m = 4 storeys of 3.21 m vs the type's 3.5 m; strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "lastage-cornice-house",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.86 m = 4 storeys of 3.21 m vs the type's 3.5 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

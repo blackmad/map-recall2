@@ -1,0 +1,198 @@
+{
+ "street": "Nieuwe Herengracht",
+ "seed": "0363100012181870",
+ "members": [
+  "0363100012181870",
+  "0363100012571662",
+  "0363100012181868",
+  "0363100012181869",
+  "0363100012164941",
+  "0363100012170261",
+  "0363100012182569"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012182569 (face continues: 170260)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164942",
+   "reason": "frontage 43.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012170253",
+   "reason": "frontage 73.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012170254",
+   "reason": "frontage 68.5 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012170255",
+   "reason": "frontage 52.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012170256",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012170260"
+  },
+  {
+   "pandId": "0363100012170258",
+   "reason": "frontage 74.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181859",
+   "reason": "frontage 47.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181862",
+   "reason": "frontage 44.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181863",
+   "reason": "frontage 40.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181864",
+   "reason": "frontage 49.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181865",
+   "reason": "frontage 54.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181866",
+   "reason": "frontage 34.3 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181871",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012164941"
+  },
+  {
+   "pandId": "0363100012181872",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012170260"
+  },
+  {
+   "pandId": "0363100012181873",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012181868"
+  },
+  {
+   "pandId": "0363100012181874",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012181870"
+  },
+  {
+   "pandId": "0363100012181875",
+   "reason": "frontage 32.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181876",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012181870"
+  },
+  {
+   "pandId": "0363100012181877",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012181870"
+  },
+  {
+   "pandId": "0363100012181878",
+   "reason": "sightline to Nieuwe Herengracht crosses 0363100012181870"
+  },
+  {
+   "pandId": "0363100012181880",
+   "reason": "frontage 40.4 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181881",
+   "reason": "frontage 35.2 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012181882",
+   "reason": "frontage 55.8 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182570",
+   "reason": "frontage 40.7 m from Nieuwe Herengracht"
+  },
+  {
+   "pandId": "0363100012182571",
+   "reason": "frontage 33.3 m from Nieuwe Herengracht"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012181870",
+   "alongM": 0,
+   "widthM": 4.39,
+   "eavesM": 13.42,
+   "roofMaxM": 15.29,
+   "storeys3dbag": 5,
+   "builtYear": 1775,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012571662",
+   "alongM": 4.92,
+   "widthM": 5.46,
+   "eavesM": 9.89,
+   "roofMaxM": 10.22,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181868",
+   "alongM": 10.46,
+   "widthM": 5.61,
+   "eavesM": 8.32,
+   "roofMaxM": 12.19,
+   "storeys3dbag": 0,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181869",
+   "alongM": 16.05,
+   "widthM": 5.57,
+   "eavesM": 13.55,
+   "roofMaxM": 16.43,
+   "storeys3dbag": 5,
+   "builtYear": 1938,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164941",
+   "alongM": 21.68,
+   "widthM": 5.69,
+   "eavesM": 14.51,
+   "roofMaxM": 18.26,
+   "storeys3dbag": 4,
+   "builtYear": 1772,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170261",
+   "alongM": 27.37,
+   "widthM": 5.69,
+   "eavesM": 12.8,
+   "roofMaxM": 12.86,
+   "storeys3dbag": 4,
+   "builtYear": 1820,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182569",
+   "alongM": 32.3,
+   "widthM": 4.16,
+   "eavesM": 10.61,
+   "roofMaxM": 13.85,
+   "storeys3dbag": 4,
+   "builtYear": 1857,
+   "uncertainty": []
+  }
+ ]
+}

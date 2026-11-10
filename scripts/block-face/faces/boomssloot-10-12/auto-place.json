@@ -1,0 +1,150 @@
+{
+ "face": "boomssloot-10-12",
+ "street": "Krom Boomssloot",
+ "library": "nieuwmarkt",
+ "stripDate": "2025-01-08",
+ "seconds": 0.68,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012182967",
+   "address": "Krom Boomssloot 12",
+   "builtYear": 1996,
+   "widthM": 5.1,
+   "eavesM": 15.53,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#80666d",
+    "wallRaw": "#7a5f67",
+    "skyline": {
+     "eavesM": 18.77,
+     "eavesRow": 52,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 0.9,
+      "topWidthM": 0.72,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: built 1996, type 1600-1925)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "built 1996, type 1600-1925"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.53 m = 5 storeys of 3.11 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.55 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.072 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 0.9 m, top 0.72 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012182969",
+   "address": "Krom Boomssloot 10",
+   "builtYear": 1905,
+   "widthM": 5.91,
+   "eavesM": 12.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#55444b",
+    "skyline": {
+     "eavesM": 17.88,
+     "eavesRow": 88,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 2.2,
+      "topWidthM": 1.13,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

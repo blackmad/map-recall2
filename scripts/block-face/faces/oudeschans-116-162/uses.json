@@ -1,0 +1,129 @@
+{
+ "street": "Oudeschans",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182988",
+   "addresses": [
+    "Oudeschans 134",
+    "Oudeschans 136",
+    "Oudeschans 138",
+    "Oudeschans 140",
+    "Oudeschans 142",
+    "Oudeschans 144",
+    "Oudeschans 146",
+    "Oudeschans 148",
+    "Oudeschans 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 144",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000767821"
+    },
+    {
+     "address": "Oudeschans 140",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000767819"
+    },
+    {
+     "address": "Oudeschans 150",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000767824"
+    },
+    {
+     "address": "Oudeschans 136",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000767814"
+    },
+    {
+     "address": "Oudeschans 134",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000767813"
+    },
+    {
+     "address": "Oudeschans 146",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000767822"
+    },
+    {
+     "address": "Oudeschans 148",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000767823"
+    },
+    {
+     "address": "Oudeschans 142",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000767820"
+    },
+    {
+     "address": "Oudeschans 138",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000767818"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171995",
+   "addresses": [
+    "Oudeschans 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 128",
+     "use": "woonfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000569245"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171996",
+   "addresses": [
+    "Oudeschans 120",
+    "Oudeschans 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 122",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000767811"
+    },
+    {
+     "address": "Oudeschans 120",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000767810"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170899",
+   "addresses": [
+    "Oudeschans 116"
+   ],
+   "groundUnits": [],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

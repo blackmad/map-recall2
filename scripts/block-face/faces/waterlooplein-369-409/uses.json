@@ -1,0 +1,235 @@
+{
+ "street": "Waterlooplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:14:57.307Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171833",
+   "addresses": [
+    "Waterlooplein 369",
+    "Waterlooplein 371",
+    "Waterlooplein 373",
+    "Waterlooplein 375",
+    "Waterlooplein 377",
+    "Waterlooplein 379",
+    "Waterlooplein 381",
+    "Waterlooplein 383",
+    "Waterlooplein 385",
+    "Waterlooplein 387",
+    "Waterlooplein 389",
+    "Waterlooplein 391",
+    "Waterlooplein 393",
+    "Waterlooplein 395",
+    "Waterlooplein 399",
+    "Waterlooplein 403"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 399",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000650374"
+    },
+    {
+     "address": "Waterlooplein 369",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000863045"
+    },
+    {
+     "address": "Waterlooplein 371",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000863046"
+    },
+    {
+     "address": "Waterlooplein 373",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000863047"
+    },
+    {
+     "address": "Waterlooplein 375",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000863048"
+    },
+    {
+     "address": "Waterlooplein 377",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000863049"
+    },
+    {
+     "address": "Waterlooplein 379",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000863050"
+    },
+    {
+     "address": "Waterlooplein 381",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000863051"
+    },
+    {
+     "address": "Waterlooplein 383",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000863052"
+    },
+    {
+     "address": "Waterlooplein 385",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000863053"
+    },
+    {
+     "address": "Waterlooplein 387",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000863054"
+    },
+    {
+     "address": "Waterlooplein 389",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000863055"
+    },
+    {
+     "address": "Waterlooplein 391",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000863056"
+    },
+    {
+     "address": "Waterlooplein 393",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000863057"
+    },
+    {
+     "address": "Waterlooplein 395",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000863058"
+    },
+    {
+     "address": "Waterlooplein 403",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 267,
+     "bagId": "0363010000863059"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741083427,
+     "lngLat": [
+      4.9020593,
+      52.3666038
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "369",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "amenity": "restaurant",
+      "cuisine": "mediterranean",
+      "name": "Citria Restaurant",
+      "phone": "+31 20 626 6064",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.citriarestaurantamsterdam.nl/"
+     },
+     "fetchedAt": "2026-11-10T09:14:57.307Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2741083480,
+     "lngLat": [
+      4.9019084,
+      52.3665993
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "403",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "amenity": "restaurant",
+      "name": "Eetcafé Blauwbrug",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://eetcafe-blauwbrug.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:14:57.307Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182899",
+   "addresses": [
+    "Waterlooplein 405",
+    "Waterlooplein 407",
+    "Waterlooplein 409"
+   ],
+   "groundUnits": [
+    {
+     "address": "Amstel 31",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000995575"
+    },
+    {
+     "address": "Waterlooplein 405",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000995576"
+    },
+    {
+     "address": "Waterlooplein 407",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000995577"
+    },
+    {
+     "address": "Waterlooplein 409",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000995578"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4997831356,
+     "lngLat": [
+      4.9017535,
+      52.3665178
+     ],
+     "tags": {
+      "air_conditioning": "yes",
+      "amenity": "pub",
+      "brewery": "Heineken;Corona;de konick;Hoegaarden;kriek;duvel;la trappe",
+      "name": "Café 't Hooischip",
+      "opening_hours": "Mo-Su 10:00-20:00",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T09:14:57.307Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

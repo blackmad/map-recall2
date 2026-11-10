@@ -1,0 +1,220 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:38:52.324Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178893",
+   "addresses": [
+    "Groenburgwal 41",
+    "Groenburgwal 43A",
+    "Groenburgwal 43B",
+    "Groenburgwal 43C",
+    "Groenburgwal 43D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 41",
+     "use": "woonfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000651559"
+    },
+    {
+     "address": "Groenburgwal 43A",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000651562"
+    },
+    {
+     "address": "Groenburgwal 43B",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000651563"
+    },
+    {
+     "address": "Groenburgwal 43C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000651564"
+    },
+    {
+     "address": "Groenburgwal 43D",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000651565"
+    },
+    {
+     "address": "Verversstraat 30",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000853337"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169340",
+   "addresses": [
+    "Groenburgwal 45A",
+    "Groenburgwal 45B",
+    "Groenburgwal 45C",
+    "Groenburgwal 45D",
+    "Groenburgwal 45E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 45B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000952435"
+    },
+    {
+     "address": "Groenburgwal 45C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000952436"
+    },
+    {
+     "address": "Groenburgwal 45D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000952437"
+    },
+    {
+     "address": "Groenburgwal 45E",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000952438"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169336",
+   "addresses": [
+    "Groenburgwal 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 47-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000651569"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169335",
+   "addresses": [
+    "Groenburgwal 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 49-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010011214918"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178635",
+   "addresses": [
+    "Groenburgwal 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 51",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000651579"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178362",
+   "addresses": [
+    "Groenburgwal 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 53",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000556513"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178637",
+   "addresses": [
+    "Groenburgwal 55A",
+    "Groenburgwal 55B",
+    "Groenburgwal 55C",
+    "Groenburgwal 55D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 55A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001964218"
+    },
+    {
+     "address": "Groenburgwal 55B",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010001964219"
+    },
+    {
+     "address": "Groenburgwal 55C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001964220"
+    },
+    {
+     "address": "Groenburgwal 55D",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010001964221"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178446",
+   "addresses": [
+    "Groenburgwal 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 57-H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000651595"
+    },
+    {
+     "address": "Groenburgwal 57-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000651596"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

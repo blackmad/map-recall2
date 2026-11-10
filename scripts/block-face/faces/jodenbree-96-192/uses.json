@@ -1,0 +1,907 @@
+{
+ "street": "Jodenbreestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:27:38.775Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171989",
+   "addresses": [
+    "Jodenbreestraat 164",
+    "Jodenbreestraat 166",
+    "Jodenbreestraat 168",
+    "Jodenbreestraat 170",
+    "Jodenbreestraat 172",
+    "Jodenbreestraat 174",
+    "Jodenbreestraat 176",
+    "Jodenbreestraat 178",
+    "Jodenbreestraat 180",
+    "Jodenbreestraat 182",
+    "Jodenbreestraat 184",
+    "Jodenbreestraat 186",
+    "Jodenbreestraat 188",
+    "Jodenbreestraat 190",
+    "Jodenbreestraat 192"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 205",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1,
+     "bagId": "0363010012051896"
+    },
+    {
+     "address": "Waterlooplein 205",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 828,
+     "bagId": "0363010012075406"
+    },
+    {
+     "address": "Jodenbreestraat 184",
+     "use": "woonfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012075413"
+    },
+    {
+     "address": "Jodenbreestraat 182",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012075414"
+    },
+    {
+     "address": "Jodenbreestraat 180",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012075415"
+    },
+    {
+     "address": "Jodenbreestraat 186",
+     "use": "woonfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012075416"
+    },
+    {
+     "address": "Jodenbreestraat 192",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012075417"
+    },
+    {
+     "address": "Jodenbreestraat 190",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010012075418"
+    },
+    {
+     "address": "Jodenbreestraat 188",
+     "use": "woonfunctie",
+     "areaM2": 16,
+     "bagId": "0363010012075419"
+    },
+    {
+     "address": "Jodenbreestraat 170",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012075420"
+    },
+    {
+     "address": "Jodenbreestraat 168",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012075421"
+    },
+    {
+     "address": "Jodenbreestraat 166",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012075422"
+    },
+    {
+     "address": "Jodenbreestraat 172",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012075423"
+    },
+    {
+     "address": "Jodenbreestraat 178",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012075424"
+    },
+    {
+     "address": "Jodenbreestraat 176",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012075425"
+    },
+    {
+     "address": "Jodenbreestraat 174",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012075426"
+    },
+    {
+     "address": "Jodenbreestraat 164",
+     "use": "kantoorfunctie",
+     "areaM2": 9,
+     "bagId": "0363010012076436"
+    }
+   ],
+   "units": 17,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4648619087,
+     "lngLat": [
+      4.9030648,
+      52.3683775
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "205",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "amenity": "place_of_worship",
+      "denomination": "roman_catholic",
+      "name": "Huis van Sant'Egidio",
+      "name:nl": "Huis van Sant'Egidio",
+      "old_name": "Mozeshuis",
+      "religion": "christian",
+      "website": "https://www.santegidio.nl/amsterdam",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171992",
+   "addresses": [
+    "Jodenbreestraat 158",
+    "Jodenbreestraat 160",
+    "Jodenbreestraat 162"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jodenbreestraat 158",
+     "use": "sportfunctie",
+     "areaM2": 364,
+     "bagId": "0363010000691543"
+    },
+    {
+     "address": "Jodenbreestraat 160",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000691544"
+    },
+    {
+     "address": "Jodenbreestraat 162",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000691545"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11486642469,
+     "lngLat": [
+      4.903061,
+      52.3686161
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "158",
+      "addr:postcode": "1011",
+      "addr:street": "Jodenbreestraat",
+      "check_date": "2025-02-12",
+      "clothes": "women;men;unisex",
+      "level": "0",
+      "name": "KiloStore",
+      "opening_hours": "Mo-Sa 11:00-19:00; Su 11:00-18:00",
+      "operator": "Entreprise Kiloshop",
+      "second_hand": "only",
+      "shop": "clothes",
+      "toilets:wheelchair": "no",
+      "website": "https://kilostore.nl/waterlooplein/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171993",
+   "addresses": [
+    "Jodenbreestraat 152",
+    "Jodenbreestraat 154"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jodenbreestraat 152",
+     "use": "kantoorfunctie",
+     "areaM2": 509,
+     "bagId": "0363010000691541"
+    },
+    {
+     "address": "Jodenbreestraat 154",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000691542"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182518",
+   "addresses": [
+    "Jodenbreestraat 144",
+    "Jodenbreestraat 146A",
+    "Jodenbreestraat 146B",
+    "Jodenbreestraat 146C",
+    "Jodenbreestraat 146D",
+    "Jodenbreestraat 146E",
+    "Jodenbreestraat 146F",
+    "Jodenbreestraat 146G",
+    "Jodenbreestraat 146H",
+    "Jodenbreestraat 146K",
+    "Jodenbreestraat 146L",
+    "Jodenbreestraat 148"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jodenbreestraat 144",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 247,
+     "bagId": "0363010001011876"
+    },
+    {
+     "address": "Jodenbreestraat 146A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011878"
+    },
+    {
+     "address": "Jodenbreestraat 146B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011879"
+    },
+    {
+     "address": "Jodenbreestraat 146C",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011880"
+    },
+    {
+     "address": "Jodenbreestraat 146D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011881"
+    },
+    {
+     "address": "Jodenbreestraat 146E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011882"
+    },
+    {
+     "address": "Jodenbreestraat 146F",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011883"
+    },
+    {
+     "address": "Jodenbreestraat 146G",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011884"
+    },
+    {
+     "address": "Jodenbreestraat 146H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011885"
+    },
+    {
+     "address": "Jodenbreestraat 146K",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011887"
+    },
+    {
+     "address": "Jodenbreestraat 146L",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001011888"
+    },
+    {
+     "address": "Jodenbreestraat 148",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010001011889"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741065352,
+     "lngLat": [
+      4.9027985,
+      52.3687268
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "146H",
+      "addr:postcode": "1011NS",
+      "addr:street": "Jodenbreestraat",
+      "amenity": "restaurant",
+      "branch": "City Center",
+      "check_date": "2025-02-16",
+      "contact:instagram": "https://www.instagram.com/moakpancakes",
+      "indoor_seating": "yes",
+      "level": "0",
+      "name": "MOAK",
+      "name:suffix": "Pancakes",
+      "old_name": "Mook Pancakes",
+      "opening_hours": "08:30-15:30",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://www.moakpancakes.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171991",
+   "addresses": [
+    "Jodenbreestraat 96A",
+    "Jodenbreestraat 96B",
+    "Jodenbreestraat 96",
+    "Jodenbreestraat 98",
+    "Jodenbreestraat 100",
+    "Jodenbreestraat 102",
+    "Jodenbreestraat 104",
+    "Jodenbreestraat 106",
+    "Jodenbreestraat 108",
+    "Jodenbreestraat 110",
+    "Jodenbreestraat 112",
+    "Jodenbreestraat 112B",
+    "Jodenbreestraat 112A",
+    "Jodenbreestraat 114",
+    "Jodenbreestraat 116",
+    "Jodenbreestraat 118",
+    "Jodenbreestraat 120",
+    "Jodenbreestraat 122",
+    "Jodenbreestraat 124",
+    "Jodenbreestraat 126",
+    "Jodenbreestraat 128",
+    "Jodenbreestraat 130",
+    "Jodenbreestraat 132",
+    "Jodenbreestraat 134",
+    "Jodenbreestraat 136",
+    "Jodenbreestraat 138A",
+    "Jodenbreestraat 138B",
+    "Jodenbreestraat 138C",
+    "Jodenbreestraat 138D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Houtkopersdwarsstraat 1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000673502"
+    },
+    {
+     "address": "Jodenbreestraat 98",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000691516"
+    },
+    {
+     "address": "Jodenbreestraat 100",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000691517"
+    },
+    {
+     "address": "Jodenbreestraat 104",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000691518"
+    },
+    {
+     "address": "Jodenbreestraat 106",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000691519"
+    },
+    {
+     "address": "Jodenbreestraat 108",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000691520"
+    },
+    {
+     "address": "Jodenbreestraat 110",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000691521"
+    },
+    {
+     "address": "Jodenbreestraat 112",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000691522"
+    },
+    {
+     "address": "Jodenbreestraat 114",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000691523"
+    },
+    {
+     "address": "Jodenbreestraat 116",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000691524"
+    },
+    {
+     "address": "Jodenbreestraat 118",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000691525"
+    },
+    {
+     "address": "Jodenbreestraat 120",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000691526"
+    },
+    {
+     "address": "Jodenbreestraat 122",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000691527"
+    },
+    {
+     "address": "Jodenbreestraat 124",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000691528"
+    },
+    {
+     "address": "Jodenbreestraat 126",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000691529"
+    },
+    {
+     "address": "Jodenbreestraat 128",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000691530"
+    },
+    {
+     "address": "Jodenbreestraat 130",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010000691531"
+    },
+    {
+     "address": "Jodenbreestraat 132",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000691532"
+    },
+    {
+     "address": "Jodenbreestraat 134",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000691533"
+    },
+    {
+     "address": "Jodenbreestraat 136",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000691534"
+    },
+    {
+     "address": "Waterlooplein 165A",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000740118"
+    },
+    {
+     "address": "Waterlooplein 165B",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000740119"
+    },
+    {
+     "address": "Waterlooplein 165C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000740120"
+    },
+    {
+     "address": "Waterlooplein 129",
+     "use": "winkelfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000862943"
+    },
+    {
+     "address": "Waterlooplein 131",
+     "use": "winkelfunctie",
+     "areaM2": 768,
+     "bagId": "0363010000862944"
+    },
+    {
+     "address": "Waterlooplein 133",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000862945"
+    },
+    {
+     "address": "Waterlooplein 135",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000862946"
+    },
+    {
+     "address": "Waterlooplein 137",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000862947"
+    },
+    {
+     "address": "Waterlooplein 139",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000862948"
+    },
+    {
+     "address": "Waterlooplein 141",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000862949"
+    },
+    {
+     "address": "Waterlooplein 143",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000862950"
+    },
+    {
+     "address": "Waterlooplein 145",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000862951"
+    },
+    {
+     "address": "Waterlooplein 147",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000862952"
+    },
+    {
+     "address": "Waterlooplein 149",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000862953"
+    },
+    {
+     "address": "Waterlooplein 151",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000862954"
+    },
+    {
+     "address": "Waterlooplein 153",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000862955"
+    },
+    {
+     "address": "Waterlooplein 155",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000862956"
+    },
+    {
+     "address": "Waterlooplein 157",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000862957"
+    },
+    {
+     "address": "Waterlooplein 159",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000862958"
+    },
+    {
+     "address": "Waterlooplein 161",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000862959"
+    },
+    {
+     "address": "Waterlooplein 163",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000862960"
+    },
+    {
+     "address": "Jodenbreestraat 138A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000955079"
+    },
+    {
+     "address": "Jodenbreestraat 138B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000955080"
+    },
+    {
+     "address": "Jodenbreestraat 138C",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000955081"
+    },
+    {
+     "address": "Jodenbreestraat 138D",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000955082"
+    },
+    {
+     "address": "Jodenbreestraat 96A",
+     "use": "winkelfunctie",
+     "areaM2": 176,
+     "bagId": "0363010001019087"
+    },
+    {
+     "address": "Jodenbreestraat 96B",
+     "use": "winkelfunctie",
+     "areaM2": 296,
+     "bagId": "0363010001019088"
+    },
+    {
+     "address": "Houtkopersdwarsstraat 3",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 442,
+     "bagId": "0363010001019089"
+    },
+    {
+     "address": "Jodenbreestraat 102",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001021554"
+    },
+    {
+     "address": "Jodenbreestraat 96",
+     "use": "winkelfunctie",
+     "areaM2": 540,
+     "bagId": "0363010012581339"
+    },
+    {
+     "address": "Jodenbreestraat 112B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010012609264"
+    },
+    {
+     "address": "Jodenbreestraat 112A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012609263"
+    }
+   ],
+   "units": 52,
+   "osm": [
+    {
+     "type": "node",
+     "id": 60893354,
+     "lngLat": [
+      4.9024029,
+      52.3689098
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "96",
+      "addr:postcode": "1011NS",
+      "addr:street": "Jodenbreestraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "cash_in": "yes",
+      "check_date": "2025-08-18",
+      "indoor": "no",
+      "name": "Geldmaat",
+      "operator": "Geldmaat",
+      "operator:wikidata": "Q74051230",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "frontage",
+     "distanceM": 0.1
+    },
+    {
+     "type": "node",
+     "id": 1310911731,
+     "lngLat": [
+      4.9023015,
+      52.3685515
+     ],
+     "tags": {
+      "brand": "Ekoplaza",
+      "brand:wikidata": "Q47017915",
+      "brand:wikipedia": "nl:Ekoplaza",
+      "check_date": "2024-08-18",
+      "name": "Ekoplaza",
+      "opening_hours": "Mo-Sa 08:30-20:00; Su 10:00-20:00",
+      "organic": "only",
+      "shop": "supermarket",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1310911737,
+     "lngLat": [
+      4.9021455,
+      52.3686023
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "129",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "amenity": "cafe",
+      "brand": "Coffee Company",
+      "brand:wikidata": "Q108927063",
+      "check_date": "2025-07-28",
+      "cuisine": "coffee_shop",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "Screaming Beans",
+      "opening_hours": "Mo-Sa 08:00-18:00; Su 09:00-18:00",
+      "takeaway": "yes",
+      "toilets": "yes",
+      "toilets:access": "customers",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2741068049,
+     "lngLat": [
+      4.9025484,
+      52.3688262
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "96B",
+      "addr:postcode": "1011NS",
+      "addr:street": "Jodenbreestraat",
+      "brand": "Kruidvat",
+      "brand:website": "https://www.kruidvat.nl",
+      "brand:wikidata": "Q2226366",
+      "brand:wikipedia": "nl:Kruidvat",
+      "check_date": "2025-02-12",
+      "check_date:opening_hours": "2024-02-20",
+      "name": "Kruidvat",
+      "opening_hours": "Mo-Fr 09:00-21:00; Sa 09:00-20:00; Su 11:00-20:00; PH off",
+      "operator": "AS Watson Health & Beauty Benelux",
+      "ref": "7206",
+      "shop": "chemist",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.kruidvat.nl/store/drogisterij-kruidvat-7206",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 7835815656,
+     "lngLat": [
+      4.9024797,
+      52.3689464
+     ],
+     "tags": {
+      "amenity": "post_box",
+      "collection_times": "Mo-Fr 09:00",
+      "operator": "PostNL",
+      "operator:wikidata": "Q5921598",
+      "operator:wikipedia": "nl:PostNL"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "frontage",
+     "distanceM": 6.3
+    },
+    {
+     "type": "node",
+     "id": 10867284760,
+     "lngLat": [
+      4.9023941,
+      52.3689133
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "96",
+      "addr:postcode": "1011NS",
+      "addr:street": "Jodenbreestraat",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:ABN AMRO Bank N.V.",
+      "cash_in": "no",
+      "check_date": "2024-02-16",
+      "indoor": "no",
+      "operator": "Geldmaat",
+      "operator:wikidata": "Q74051230",
+      "operator:wikipedia": "nl:ABN AMRO Bank N.V.",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "frontage",
+     "distanceM": 0.1
+    },
+    {
+     "type": "node",
+     "id": 13081433744,
+     "lngLat": [
+      4.9024464,
+      52.3688958
+     ],
+     "tags": {
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "cash_in:coins": "no",
+      "cash_in:notes": "no",
+      "cash_in:sealbags": "yes",
+      "cash_out": "no",
+      "description": "Acceps only sealbags with notes.",
+      "indoor": "no",
+      "opening_hours": "07:00-23:00",
+      "operator": "Geldmaat",
+      "operator:wikidata": "Q74051230",
+      "source": "survey"
+     },
+     "fetchedAt": "2026-11-10T08:27:38.775Z",
+     "match": "frontage",
+     "distanceM": 0.4
+    }
+   ]
+  }
+ ]
+}

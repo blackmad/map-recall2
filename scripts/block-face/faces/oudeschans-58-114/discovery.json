@@ -1,0 +1,576 @@
+{
+ "street": "Oudeschans",
+ "seed": "0363100012182606",
+ "members": [
+  "0363100012182610",
+  "0363100012182611",
+  "0363100012571631",
+  "0363100012571633",
+  "0363100012571634",
+  "0363100012571635",
+  "0363100012171317",
+  "0363100012182605",
+  "0363100012182606"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012182610 (face continues: 165622)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012182606 (face continues: 182604)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012182071",
+   "reason": "sightline to Oudeschans crosses 0363100012182056"
+  },
+  {
+   "pandId": "0363100012182079",
+   "reason": "sightline to Oudeschans crosses 0363100012182103"
+  },
+  {
+   "pandId": "0363100012182081",
+   "reason": "sightline to Oudeschans crosses 0363100012182079"
+  },
+  {
+   "pandId": "0363100012165623",
+   "reason": "frontage 31.9 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012170912",
+   "reason": "frontage 75.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012170913",
+   "reason": "frontage 32.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012170914",
+   "reason": "frontage 70.2 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171308",
+   "reason": "frontage 79.3 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171309",
+   "reason": "frontage 122.8 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171310",
+   "reason": "frontage 104.2 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171311",
+   "reason": "frontage 97.3 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171312",
+   "reason": "frontage 72.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171313",
+   "reason": "frontage 74.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171315",
+   "reason": "sightline to Oudeschans crosses 0363100012182612"
+  },
+  {
+   "pandId": "0363100012171316",
+   "reason": "frontage 34.8 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171318",
+   "reason": "frontage 30.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171319",
+   "reason": "frontage 30.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171320",
+   "reason": "frontage 77.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171321",
+   "reason": "frontage 80.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171323",
+   "reason": "frontage 31.4 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171387",
+   "reason": "frontage 50.3 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171391",
+   "reason": "sightline to Oudeschans crosses 0363100012171315"
+  },
+  {
+   "pandId": "0363100012171393",
+   "reason": "frontage 39.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171404",
+   "reason": "frontage 50.2 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171405",
+   "reason": "sightline to Oudeschans crosses 0363100012171406"
+  },
+  {
+   "pandId": "0363100012171407",
+   "reason": "frontage 40.2 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171472",
+   "reason": "frontage 51.9 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012171997",
+   "reason": "sightline to Oudeschans crosses 0363100012170899"
+  },
+  {
+   "pandId": "0363100012181801",
+   "reason": "frontage 84.9 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012181802",
+   "reason": "frontage 88.9 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012181803",
+   "reason": "frontage 95.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012181805",
+   "reason": "frontage 108.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182044",
+   "reason": "frontage 32.8 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182080",
+   "reason": "sightline to Oudeschans crosses 0363100012182085"
+  },
+  {
+   "pandId": "0363100012182089",
+   "reason": "sightline to Oudeschans crosses 0363100012182087"
+  },
+  {
+   "pandId": "0363100012182090",
+   "reason": "sightline to Oudeschans crosses 0363100012182087"
+  },
+  {
+   "pandId": "0363100012182092",
+   "reason": "frontage 33.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182093",
+   "reason": "frontage 39.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182094",
+   "reason": "frontage 41.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182095",
+   "reason": "frontage 30.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182096",
+   "reason": "frontage 35.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182097",
+   "reason": "frontage 36.3 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182098",
+   "reason": "frontage 32.2 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182099",
+   "reason": "frontage 34.0 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182607",
+   "reason": "sightline to Oudeschans crosses 0363100012182605"
+  },
+  {
+   "pandId": "0363100012182608",
+   "reason": "sightline to Oudeschans crosses 0363100012182604"
+  },
+  {
+   "pandId": "0363100012182609",
+   "reason": "frontage 31.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182614",
+   "reason": "sightline to Oudeschans crosses 0363100012182612"
+  },
+  {
+   "pandId": "0363100012182615",
+   "reason": "frontage 48.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182616",
+   "reason": "frontage 48.1 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182683",
+   "reason": "frontage 47.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182684",
+   "reason": "frontage 76.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182685",
+   "reason": "frontage 78.2 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182686",
+   "reason": "frontage 83.1 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182687",
+   "reason": "frontage 44.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182688",
+   "reason": "frontage 31.3 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182689",
+   "reason": "frontage 37.0 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182690",
+   "reason": "frontage 61.0 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182691",
+   "reason": "frontage 69.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182692",
+   "reason": "frontage 94.3 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182693",
+   "reason": "frontage 49.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182694",
+   "reason": "frontage 82.8 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182695",
+   "reason": "frontage 90.9 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182696",
+   "reason": "no frontage on Oudeschans: No footprint edge faces Oudeschans"
+  },
+  {
+   "pandId": "0363100012182700",
+   "reason": "frontage 31.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182701",
+   "reason": "frontage 31.0 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182702",
+   "reason": "frontage 54.2 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182703",
+   "reason": "frontage 68.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182704",
+   "reason": "frontage 74.0 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182705",
+   "reason": "frontage 70.2 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182779",
+   "reason": "frontage 87.9 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182781",
+   "reason": "frontage 49.4 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182782",
+   "reason": "frontage 53.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182783",
+   "reason": "frontage 57.1 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182784",
+   "reason": "frontage 77.4 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182785",
+   "reason": "frontage 49.0 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182786",
+   "reason": "frontage 30.4 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182787",
+   "reason": "frontage 34.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182788",
+   "reason": "frontage 87.4 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182789",
+   "reason": "frontage 82.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182790",
+   "reason": "frontage 78.8 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182791",
+   "reason": "frontage 94.9 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182793",
+   "reason": "frontage 72.2 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182794",
+   "reason": "frontage 65.4 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182795",
+   "reason": "frontage 86.3 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182796",
+   "reason": "frontage 48.3 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182797",
+   "reason": "frontage 48.8 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182990",
+   "reason": "sightline to Oudeschans crosses 0363100012171996"
+  },
+  {
+   "pandId": "0363100012182992",
+   "reason": "frontage 38.4 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012183051",
+   "reason": "sightline to Oudeschans crosses 0363100012182988"
+  },
+  {
+   "pandId": "0363100012183052",
+   "reason": "sightline to Oudeschans crosses 0363100012171996"
+  },
+  {
+   "pandId": "0363100012183053",
+   "reason": "frontage 33.6 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012183054",
+   "reason": "sightline to Oudeschans crosses 0363100012171996"
+  },
+  {
+   "pandId": "0363100012183055",
+   "reason": "frontage 33.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012183057",
+   "reason": "frontage 70.0 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012183058",
+   "reason": "sightline to Oudeschans crosses 0363100012182988"
+  },
+  {
+   "pandId": "0363100012183060",
+   "reason": "frontage 30.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012183061",
+   "reason": "frontage 89.7 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012183064",
+   "reason": "frontage 116.0 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012247577",
+   "reason": "frontage 63.0 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012571628",
+   "reason": "frontage 34.1 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012571629",
+   "reason": "frontage 35.4 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012571630",
+   "reason": "frontage 37.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012571632",
+   "reason": "frontage 30.8 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012571645",
+   "reason": "frontage 32.5 m from Oudeschans"
+  },
+  {
+   "pandId": "0363100012182056",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165625",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170897",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170900",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170901",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170911",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182100",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182524",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571642",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182610",
+   "alongM": -57.89,
+   "widthM": 6.63,
+   "eavesM": 14.61,
+   "roofMaxM": 16.72,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182611",
+   "alongM": -48.85,
+   "widthM": 11.37,
+   "eavesM": 18.57,
+   "roofMaxM": 21.49,
+   "storeys3dbag": 0,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012571631",
+   "alongM": -39.96,
+   "widthM": 6.43,
+   "eavesM": 16.65,
+   "roofMaxM": 16.88,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012571633",
+   "alongM": -33.76,
+   "widthM": 5.98,
+   "eavesM": 15.92,
+   "roofMaxM": 17.19,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012571634",
+   "alongM": -26.53,
+   "widthM": 2.62,
+   "eavesM": 20.55,
+   "roofMaxM": 22.26,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012571635",
+   "alongM": -24.36,
+   "widthM": 1.72,
+   "eavesM": 20.56,
+   "roofMaxM": 21.62,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171317",
+   "alongM": -14.56,
+   "widthM": 10.93,
+   "eavesM": 20.07,
+   "roofMaxM": 25.21,
+   "storeys3dbag": 0,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182605",
+   "alongM": -5.94,
+   "widthM": 6.31,
+   "eavesM": 16.9,
+   "roofMaxM": 16.93,
+   "storeys3dbag": 0,
+   "builtYear": 1983,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182606",
+   "alongM": 0,
+   "widthM": 5.58,
+   "eavesM": 14.71,
+   "roofMaxM": 17.85,
+   "storeys3dbag": 5,
+   "builtYear": 1827,
+   "uncertainty": []
+  }
+ ]
+}

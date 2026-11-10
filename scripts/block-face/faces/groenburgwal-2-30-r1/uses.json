@@ -1,0 +1,47 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:17:05.578Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012186088",
+   "addresses": [
+    "Groenburgwal 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Raamgracht 10-H",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000787507"
+    },
+    {
+     "address": "Groenburgwal 4-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000980680"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171386",
+   "addresses": [
+    "Groenburgwal 2A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 2A",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000651446"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

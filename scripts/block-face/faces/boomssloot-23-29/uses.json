@@ -1,0 +1,76 @@
+{
+ "street": "Krom Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:37:26.777Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182792",
+   "addresses": [
+    "Krom Boomssloot 23",
+    "Krom Boomssloot 25",
+    "Krom Boomssloot 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 23",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000661816"
+    },
+    {
+     "address": "Krom Boomssloot 25",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000661817"
+    },
+    {
+     "address": "Krom Boomssloot 27",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000661818"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182798",
+   "addresses": [
+    "Krom Boomssloot 29A",
+    "Krom Boomssloot 29B",
+    "Krom Boomssloot 29C",
+    "Krom Boomssloot 29D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 29A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000713533"
+    },
+    {
+     "address": "Krom Boomssloot 29B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000713534"
+    },
+    {
+     "address": "Krom Boomssloot 29C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000713535"
+    },
+    {
+     "address": "Krom Boomssloot 29D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000713536"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

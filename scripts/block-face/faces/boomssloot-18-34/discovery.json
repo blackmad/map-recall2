@@ -1,0 +1,535 @@
+{
+ "street": "Recht Boomssloot",
+ "seed": "0363100012182799",
+ "members": [
+  "0363100012182956",
+  "0363100012182874",
+  "0363100012182962",
+  "0363100012182970",
+  "0363100012182976",
+  "0363100012182799"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012182977 31.3 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012182799 (face continues: 171480)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012181781",
+   "reason": "frontage 53.0 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012165619",
+   "reason": "frontage 34.7 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012165620",
+   "reason": "frontage 53.8 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012165621",
+   "reason": "frontage 81.4 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171307",
+   "reason": "frontage 85.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171309",
+   "reason": "frontage 92.2 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171394",
+   "reason": "frontage 53.9 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171395",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012171396"
+  },
+  {
+   "pandId": "0363100012171396",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012171400"
+  },
+  {
+   "pandId": "0363100012171397",
+   "reason": "frontage 54.0 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171398",
+   "reason": "frontage 54.4 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171399",
+   "reason": "frontage 32.0 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171400",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182972"
+  },
+  {
+   "pandId": "0363100012171401",
+   "reason": "frontage 54.3 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171403",
+   "reason": "frontage 54.1 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171479",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012171485"
+  },
+  {
+   "pandId": "0363100012171698",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182867"
+  },
+  {
+   "pandId": "0363100012171713",
+   "reason": "frontage 105.3 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171751",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012171699"
+  },
+  {
+   "pandId": "0363100012171752",
+   "reason": "frontage 61.7 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171753",
+   "reason": "frontage 61.7 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171843",
+   "reason": "frontage 61.8 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181791",
+   "reason": "frontage 62.1 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181792",
+   "reason": "frontage 61.8 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181793",
+   "reason": "frontage 33.2 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181794",
+   "reason": "frontage 32.7 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181805",
+   "reason": "frontage 104.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181806",
+   "reason": "frontage 68.9 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181807",
+   "reason": "frontage 41.5 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181808",
+   "reason": "frontage 92.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181810",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012181809"
+  },
+  {
+   "pandId": "0363100012181811",
+   "reason": "frontage 36.0 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181812",
+   "reason": "frontage 30.1 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181814",
+   "reason": "frontage 35.8 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182409",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182473"
+  },
+  {
+   "pandId": "0363100012182410",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182409"
+  },
+  {
+   "pandId": "0363100012181815",
+   "reason": "frontage 35.9 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181816",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012181809"
+  },
+  {
+   "pandId": "0363100012181817",
+   "reason": "frontage 71.8 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181818",
+   "reason": "frontage 83.5 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181819",
+   "reason": "frontage 68.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012181820",
+   "reason": "frontage 65.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182296",
+   "reason": "frontage 60.2 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182297",
+   "reason": "frontage 53.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182298",
+   "reason": "frontage 53.7 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182299",
+   "reason": "frontage 53.7 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182300",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012171480"
+  },
+  {
+   "pandId": "0363100012182301",
+   "reason": "frontage 92.5 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182302",
+   "reason": "frontage 86.3 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182303",
+   "reason": "frontage 78.3 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182403",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182401"
+  },
+  {
+   "pandId": "0363100012182696",
+   "reason": "no frontage on Recht Boomssloot: No footprint edge faces Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182697",
+   "reason": "frontage 68.1 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182698",
+   "reason": "no frontage on Recht Boomssloot: No footprint edge faces Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182699",
+   "reason": "frontage 54.0 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182780",
+   "reason": "frontage 32.7 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182788",
+   "reason": "frontage 32.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182789",
+   "reason": "frontage 32.5 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182790",
+   "reason": "frontage 32.4 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182792",
+   "reason": "frontage 33.0 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182798",
+   "reason": "frontage 40.1 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182875",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182876"
+  },
+  {
+   "pandId": "0363100012182876",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182956"
+  },
+  {
+   "pandId": "0363100012182957",
+   "reason": "frontage 33.1 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182958",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182875"
+  },
+  {
+   "pandId": "0363100012182959",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182875"
+  },
+  {
+   "pandId": "0363100012182960",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182874"
+  },
+  {
+   "pandId": "0363100012182978",
+   "reason": "frontage 53.0 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012183030",
+   "reason": "frontage 62.7 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012183031",
+   "reason": "frontage 60.4 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012183033",
+   "reason": "frontage 32.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012238836",
+   "reason": "frontage 32.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012571664",
+   "reason": "frontage 53.0 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012571665",
+   "reason": "frontage 53.0 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012571667",
+   "reason": "frontage 60.1 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012571668",
+   "reason": "frontage 60.1 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182961",
+   "reason": "frontage 35.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182963",
+   "reason": "frontage 34.4 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182964",
+   "reason": "frontage 34.6 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182965",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182976"
+  },
+  {
+   "pandId": "0363100012182966",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182970"
+  },
+  {
+   "pandId": "0363100012182967",
+   "reason": "frontage 37.1 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182968",
+   "reason": "frontage 32.4 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182969",
+   "reason": "frontage 31.8 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012182973",
+   "reason": "frontage 33.4 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012183029",
+   "reason": "frontage 61.7 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012183062",
+   "reason": "frontage 126.5 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012241718",
+   "reason": "sightline to Recht Boomssloot crosses 0363100012182974"
+  },
+  {
+   "pandId": "0363100012571659",
+   "reason": "frontage 35.9 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012571660",
+   "reason": "frontage 35.9 m from Recht Boomssloot"
+  },
+  {
+   "pandId": "0363100012171482",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165624",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171402",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171473",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171477",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171483",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171699",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171760",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182406",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182408",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182473",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182800",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182801",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182867",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182868",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182869",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182870",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182871",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182872",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182873",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182974",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012254544",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182956",
+   "alongM": -47.27,
+   "widthM": 3.47,
+   "eavesM": 13.31,
+   "roofMaxM": 14.87,
+   "storeys3dbag": 5,
+   "builtYear": 1985,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182874",
+   "alongM": -42.91,
+   "widthM": 5.26,
+   "eavesM": 16.96,
+   "roofMaxM": 18.13,
+   "storeys3dbag": 5,
+   "builtYear": 1751,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182962",
+   "alongM": -37.74,
+   "widthM": 5.08,
+   "eavesM": 16.98,
+   "roofMaxM": 18.21,
+   "storeys3dbag": 0,
+   "builtYear": 1750,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182970",
+   "alongM": -30.21,
+   "widthM": 9.98,
+   "eavesM": 16.81,
+   "roofMaxM": 17.71,
+   "storeys3dbag": 5,
+   "builtYear": 1861,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182976",
+   "alongM": -21.27,
+   "widthM": 7.82,
+   "eavesM": 2.2,
+   "roofMaxM": 15.26,
+   "storeys3dbag": 5,
+   "builtYear": 1985,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182799",
+   "alongM": 0,
+   "widthM": 7.95,
+   "eavesM": 13.89,
+   "roofMaxM": 13.9,
+   "storeys3dbag": 5,
+   "builtYear": 1985,
+   "uncertainty": []
+  }
+ ]
+}

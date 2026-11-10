@@ -1,0 +1,215 @@
+{
+ "street": "Oudeschans",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:06:51.482Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182087",
+   "addresses": [
+    "Oudeschans 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 38-H",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000767706"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182088",
+   "addresses": [
+    "Oudeschans 36L",
+    "Oudeschans 36M",
+    "Oudeschans 36H",
+    "Oudeschans 36G",
+    "Oudeschans 36K",
+    "Oudeschans 36N",
+    "Oudeschans 36F",
+    "Oudeschans 36P",
+    "Oudeschans 36A",
+    "Oudeschans 36D",
+    "Oudeschans 36E",
+    "Oudeschans 36R",
+    "Oudeschans 36C",
+    "Oudeschans 36B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 36L",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000767701"
+    },
+    {
+     "address": "Oudeschans 36M",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000767702"
+    },
+    {
+     "address": "Oudeschans 36H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000767699"
+    },
+    {
+     "address": "Oudeschans 36G",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000767698"
+    },
+    {
+     "address": "Oudeschans 36K",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000767700"
+    },
+    {
+     "address": "Oudeschans 36N",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000767703"
+    },
+    {
+     "address": "Oudeschans 36F",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000767697"
+    },
+    {
+     "address": "Oudeschans 36P",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000767704"
+    },
+    {
+     "address": "Oudeschans 36A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000767679"
+    },
+    {
+     "address": "Oudeschans 36D",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000767695"
+    },
+    {
+     "address": "Oudeschans 36E",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000767696"
+    },
+    {
+     "address": "Oudeschans 36R",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000767705"
+    },
+    {
+     "address": "Oudeschans 36C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000767694"
+    },
+    {
+     "address": "Oudeschans 36B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000767680"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182083",
+   "addresses": [
+    "Oudeschans 30",
+    "Oudeschans 30B",
+    "Oudeschans 30A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 30B",
+     "use": "woonfunctie",
+     "areaM2": 200,
+     "bagId": "0363010012164993"
+    },
+    {
+     "address": "Oudeschans 30A",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010012164992"
+    },
+    {
+     "address": "Oudeschans 30-H",
+     "use": "sportfunctie",
+     "areaM2": 279,
+     "bagId": "0363010000767663"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182084",
+   "addresses": [
+    "Oudeschans 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 28-H",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000767610"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182085",
+   "addresses": [
+    "Oudeschans 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 26-H",
+     "use": "winkelfunctie",
+     "areaM2": 173,
+     "bagId": "0363010000767606"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12880532301,
+     "lngLat": [
+      4.9041711,
+      52.371547
+     ],
+     "tags": {
+      "addr:housenumber": "26",
+      "addr:postcode": "1011LB",
+      "addr:street": "Oudeschans",
+      "name": "Analogue",
+      "opening_hours": "Mo-Sa 10:00-17:00",
+      "shop": "camera",
+      "website": "https://analogue-amsterdam.com/"
+     },
+     "fetchedAt": "2026-11-10T09:06:51.482Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

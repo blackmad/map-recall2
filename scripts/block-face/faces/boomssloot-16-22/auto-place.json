@@ -1,0 +1,293 @@
+{
+ "face": "boomssloot-16-22",
+ "street": "Krom Boomssloot",
+ "library": "nieuwmarkt",
+ "stripDate": "2025-01-08",
+ "seconds": 2.2,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012182791",
+   "address": "Krom Boomssloot 22",
+   "builtYear": 1714,
+   "widthM": 25.28,
+   "eavesM": 16.52,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#583e43",
+    "wallRaw": "#6b555a",
+    "skyline": {
+     "eavesM": 18.35,
+     "eavesRow": 148,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.32,
+      "topWidthM": 2.17,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 13,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.065,
+    "structure": {
+     "bayWidthM": 1.93,
+     "bayCentre": 0.87,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 0.95 m @ 0.66, 1.07 m @ 0.73), 1 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.86,
+       "light": 0.66
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.98,
+       "light": 0.73
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.92,
+       "widthM": 1.48,
+       "centre": 0.27
+      },
+      {
+       "atM": 11.05,
+       "widthM": 0.8,
+       "centre": 0.16
+      },
+      {
+       "atM": 9.77,
+       "widthM": 0.9,
+       "centre": 0.02
+      },
+      {
+       "atM": 7.82,
+       "widthM": 1.02,
+       "centre": 0.16
+      },
+      {
+       "atM": 7.3,
+       "widthM": 0.95,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: frontage 25.28 m, type 3.6-7 m; skyline crown rise 1.32 m, top 2.17 m fits no crown of the type)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "frontage 25.28 m, type 3.6-7 m",
+     "skyline crown rise 1.32 m, top 2.17 m fits no crown of the type"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.52 m = 5 storeys of 3.3 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.54 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.047 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.32 m, top 2.17 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 13 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012182696",
+   "address": "Krom Boomssloot 20",
+   "builtYear": 1636,
+   "widthM": 7.37,
+   "eavesM": 7.62,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#514735",
+    "wallRaw": "#4a3e39",
+    "skyline": {
+     "eavesM": 21.65,
+     "eavesRow": 16,
+     "confidence": 0.34,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.32,
+     "bayCentre": 0.73,
+     "balconies": true,
+     "why": "dark open axis 2.75 m at 0.8 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.75,
+       "centre": 0.8,
+       "light": 0.3
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012182697",
+   "address": "Krom Boomssloot 18",
+   "builtYear": 1636,
+   "widthM": 7.35,
+   "eavesM": 7.63,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#443927",
+    "wallRaw": "#4e463b",
+    "skyline": {
+     "eavesM": 21.13,
+     "eavesRow": 37,
+     "confidence": 0.32,
+     "crown": {
+      "widthM": 0.7,
+      "riseM": 0.93,
+      "topWidthM": 0.38,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.85,
+     "bayCentre": 0.58,
+     "balconies": true,
+     "why": "dark open axis 1.43 m at 0.58 (light 0.36): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.43,
+       "centre": 0.58,
+       "light": 0.36
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 48 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012182698",
+   "address": "Krom Boomssloot 16L",
+   "builtYear": 1754,
+   "widthM": 6.88,
+   "eavesM": 15.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#32282e",
+    "wallRaw": "#3c2f38",
+    "skyline": {
+     "eavesM": 21.15,
+     "eavesRow": 36,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 0.9,
+      "topWidthM": 0.4,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 9,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.92,
+       "widthM": 0.8,
+       "centre": 0.79
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

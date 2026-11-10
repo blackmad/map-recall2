@@ -1,0 +1,393 @@
+{
+ "street": "Recht Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:37:19.254Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171472",
+   "addresses": [
+    "Recht Boomssloot 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 52",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1688,
+     "bagId": "0363010000788755"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725753311,
+     "lngLat": [
+      4.9034827,
+      52.3719578
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "52",
+      "addr:postcode": "1011EC",
+      "addr:street": "Recht Boomssloot",
+      "amenity": "community_centre",
+      "name": "De Boomspijker",
+      "phone": "+31 20 626 4002",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T09:37:19.254Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171322",
+   "addresses": [
+    "Recht Boomssloot 50A",
+    "Recht Boomssloot 50B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 50A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000788750"
+    },
+    {
+     "address": "Recht Boomssloot 50B",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000788751"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571647",
+   "addresses": [
+    "Recht Boomssloot 48A",
+    "Recht Boomssloot 48B",
+    "Recht Boomssloot 48C",
+    "Recht Boomssloot 48D",
+    "Recht Boomssloot 48G",
+    "Recht Boomssloot 48H",
+    "Recht Boomssloot 48K",
+    "Recht Boomssloot 48E",
+    "Recht Boomssloot 48F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 48A",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000614798"
+    },
+    {
+     "address": "Recht Boomssloot 48B",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000614827"
+    },
+    {
+     "address": "Recht Boomssloot 48C",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000614829"
+    },
+    {
+     "address": "Recht Boomssloot 48D",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000614830"
+    },
+    {
+     "address": "Recht Boomssloot 48G",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000722862"
+    },
+    {
+     "address": "Recht Boomssloot 48H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000767098"
+    },
+    {
+     "address": "Recht Boomssloot 48K",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000767100"
+    },
+    {
+     "address": "Recht Boomssloot 48E",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000700882"
+    },
+    {
+     "address": "Recht Boomssloot 48F",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000700883"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571646",
+   "addresses": [
+    "Recht Boomssloot 46A",
+    "Recht Boomssloot 46B",
+    "Recht Boomssloot 46E",
+    "Recht Boomssloot 46C",
+    "Recht Boomssloot 46D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 46A",
+     "use": "woonfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000614797"
+    },
+    {
+     "address": "Recht Boomssloot 46B",
+     "use": "woonfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000614828"
+    },
+    {
+     "address": "Recht Boomssloot 46E",
+     "use": "woonfunctie",
+     "areaM2": 243,
+     "bagId": "0363010000767099"
+    },
+    {
+     "address": "Recht Boomssloot 46C",
+     "use": "woonfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000700881"
+    },
+    {
+     "address": "Recht Boomssloot 46D",
+     "use": "woonfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000700884"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171392",
+   "addresses": [
+    "Recht Boomssloot 44F",
+    "Recht Boomssloot 44G",
+    "Recht Boomssloot 44H",
+    "Recht Boomssloot 44K",
+    "Recht Boomssloot 44E",
+    "Recht Boomssloot 44A",
+    "Recht Boomssloot 44B",
+    "Recht Boomssloot 44C",
+    "Recht Boomssloot 44D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 44F",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000606398"
+    },
+    {
+     "address": "Recht Boomssloot 44G",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000606399"
+    },
+    {
+     "address": "Recht Boomssloot 44H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000606400"
+    },
+    {
+     "address": "Recht Boomssloot 44K",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000606401"
+    },
+    {
+     "address": "Recht Boomssloot 44E",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000606215"
+    },
+    {
+     "address": "Recht Boomssloot 44A",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000597850"
+    },
+    {
+     "address": "Recht Boomssloot 44B",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000597910"
+    },
+    {
+     "address": "Recht Boomssloot 44C",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000597911"
+    },
+    {
+     "address": "Recht Boomssloot 44D",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000597912"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182975",
+   "addresses": [
+    "Recht Boomssloot 42D",
+    "Recht Boomssloot 42B",
+    "Recht Boomssloot 42C",
+    "Recht Boomssloot 42A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 42D",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000978609"
+    },
+    {
+     "address": "Recht Boomssloot 42B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000970320"
+    },
+    {
+     "address": "Recht Boomssloot 42C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000970321"
+    },
+    {
+     "address": "Recht Boomssloot 42A",
+     "use": "industriefunctie",
+     "areaM2": 54,
+     "bagId": "0363010000964314"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182972",
+   "addresses": [
+    "Recht Boomssloot 40A",
+    "Recht Boomssloot 40B",
+    "Recht Boomssloot 40C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 40A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000788729"
+    },
+    {
+     "address": "Recht Boomssloot 40B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000788730"
+    },
+    {
+     "address": "Recht Boomssloot 40C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000788731"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182971",
+   "addresses": [
+    "Recht Boomssloot 38A",
+    "Recht Boomssloot 38B",
+    "Recht Boomssloot 38C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 38A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000788722"
+    },
+    {
+     "address": "Recht Boomssloot 38B",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000788723"
+    },
+    {
+     "address": "Recht Boomssloot 38C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000788724"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182977",
+   "addresses": [
+    "Recht Boomssloot 36A",
+    "Recht Boomssloot 36B",
+    "Recht Boomssloot 36C",
+    "Recht Boomssloot 36D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 36A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000788716"
+    },
+    {
+     "address": "Recht Boomssloot 36B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000788717"
+    },
+    {
+     "address": "Recht Boomssloot 36C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000788718"
+    },
+    {
+     "address": "Recht Boomssloot 36D",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000788719"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

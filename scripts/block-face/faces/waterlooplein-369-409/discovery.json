@@ -1,0 +1,245 @@
+{
+ "street": "Waterlooplein",
+ "seed": "0363100012171833",
+ "members": [
+  "0363100012171833",
+  "0363100012182899"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012182351 28.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165553",
+   "reason": "frontage 102.7 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171687",
+   "reason": "frontage 85.9 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171688",
+   "reason": "frontage 40.8 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171689",
+   "reason": "sightline to Waterlooplein crosses 0363100012182898"
+  },
+  {
+   "pandId": "0363100012171690",
+   "reason": "frontage 35.3 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171691",
+   "reason": "frontage 30.4 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171692",
+   "reason": "sightline to Waterlooplein crosses 0363100012171689"
+  },
+  {
+   "pandId": "0363100012171693",
+   "reason": "sightline to Waterlooplein crosses 0363100012171689"
+  },
+  {
+   "pandId": "0363100012171694",
+   "reason": "frontage 32.5 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171695",
+   "reason": "sightline to Waterlooplein crosses 0363100012171689"
+  },
+  {
+   "pandId": "0363100012171827",
+   "reason": "frontage 112.0 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171828",
+   "reason": "frontage 36.7 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171830",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171832",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171834",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171835",
+   "reason": "frontage 64.3 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012171836",
+   "reason": "frontage 36.7 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012181764",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012181765",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012181766",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012181767",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012181768",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182266",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182267",
+   "reason": "frontage 40.3 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182268",
+   "reason": "frontage 42.4 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182269",
+   "reason": "frontage 46.4 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182270",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182344",
+   "reason": "frontage 43.5 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182345",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182346",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182347",
+   "reason": "frontage 54.3 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182348",
+   "reason": "frontage 44.6 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182349",
+   "reason": "frontage 44.1 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182350",
+   "reason": "frontage 32.2 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182352",
+   "reason": "sightline to Waterlooplein crosses 0363100012181768"
+  },
+  {
+   "pandId": "0363100012182353",
+   "reason": "no frontage on Waterlooplein: No footprint edge faces Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182354",
+   "reason": "frontage 50.4 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182357",
+   "reason": "sightline to Waterlooplein crosses 0363100012182358"
+  },
+  {
+   "pandId": "0363100012182358",
+   "reason": "sightline to Waterlooplein crosses 0363100012182359"
+  },
+  {
+   "pandId": "0363100012182451",
+   "reason": "frontage 43.3 m from Waterlooplein"
+  },
+  {
+   "pandId": "0363100012182898",
+   "reason": "sightline to Waterlooplein crosses 0363100012182899"
+  },
+  {
+   "pandId": "0363100012571655",
+   "reason": "sightline to Waterlooplein crosses 0363100012171830"
+  },
+  {
+   "pandId": "0363100012171841",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171994",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182355",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182356",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182359",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182360",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182512",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012186092",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012171833",
+   "alongM": 0,
+   "widthM": 8.65,
+   "eavesM": 3.08,
+   "roofMaxM": 16.76,
+   "storeys3dbag": 5,
+   "builtYear": 1959,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182899",
+   "alongM": 9.83,
+   "widthM": 10.74,
+   "eavesM": 15.02,
+   "roofMaxM": 21.48,
+   "storeys3dbag": 5,
+   "builtYear": 1821,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

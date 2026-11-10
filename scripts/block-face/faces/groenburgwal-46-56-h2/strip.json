@@ -1,0 +1,136 @@
+{
+ "face": "groenburgwal-46-56-h2",
+ "image": "staging/block-face/groenburgwal-46-56-h2/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 449,
+ "height": 812,
+ "groundNAP": 0.55,
+ "heightM": 20.29,
+ "frame": {
+  "midRD": [
+   121634.983875,
+   486800.44649999996
+  ],
+  "uRD": [
+   0.5004634128583048,
+   0.8657576868790816
+  ],
+  "nRD": [
+   0.8657576868790816,
+   -0.5004634128583048
+  ]
+ },
+ "x0M": -5.55,
+ "x1M": 5.67,
+ "date": "2025-01-08",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012177817",
+   "x0M": -5.55,
+   "x1M": -0.08,
+   "px": [
+    0,
+    219
+   ],
+   "date": "2025-01-08",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20250108_1041_Track20_Sphere_00080",
+     "timestamp": "2025-01-08T11:18:10Z",
+     "distanceM": 22.7,
+     "obliquityDeg": 5.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1041_Track20_Sphere_00079",
+     "timestamp": "2025-01-08T11:18:08Z",
+     "distanceM": 22.9,
+     "obliquityDeg": 6.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1041_Track20_Sphere_00081",
+     "timestamp": "2025-01-08T11:18:11Z",
+     "distanceM": 23.6,
+     "obliquityDeg": 17.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177777",
+   "x0M": -0.08,
+   "x1M": 5.67,
+   "px": [
+    219,
+    449
+   ],
+   "date": "2025-01-08",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20250108_1041_Track20_Sphere_00081",
+     "timestamp": "2025-01-08T11:18:11Z",
+     "distanceM": 22.6,
+     "obliquityDeg": 2.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1041_Track20_Sphere_00080",
+     "timestamp": "2025-01-08T11:18:10Z",
+     "distanceM": 22.9,
+     "obliquityDeg": 10.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1041_Track20_Sphere_00082",
+     "timestamp": "2025-01-08T11:18:13Z",
+     "distanceM": 23.4,
+     "obliquityDeg": 15.1,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2021-09-15": 0,
+  "2025-01-08": 6,
+  "2020-04-21": 6,
+  "2023-02-20": 6,
+  "2018-05-07": 6,
+  "2023-02-06": 6,
+  "2023-03-27": 6,
+  "2023-02-13": 6,
+  "2023-03-20": 6,
+  "2021-03-08": 6,
+  "2025-07-03": 6,
+  "2023-02-27": 6,
+  "2021-12-30": 0,
+  "2019-05-10": 0,
+  "2023-03-06": 6,
+  "2019-01-14": 6,
+  "2023-01-11": 6,
+  "2022-10-07": 0,
+  "2023-03-13": 6,
+  "2018-05-14": 6,
+  "2017-03-23": 6,
+  "2017-07-06": 6,
+  "2016-06-09": 6,
+  "2019-05-16": 6,
+  "2022-04-26": 6,
+  "2023-01-13": 6,
+  "2021-01-25": 1,
+  "2022-01-27": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "groenburgwal-46-56",
+  "px": [
+   710,
+   1159
+  ]
+ }
+}

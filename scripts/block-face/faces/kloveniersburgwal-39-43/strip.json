@@ -1,0 +1,171 @@
+{
+ "face": "kloveniersburgwal-39-43",
+ "image": "staging/block-face/kloveniersburgwal-39-43/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 690,
+ "height": 792,
+ "groundNAP": 0.921,
+ "heightM": 19.81,
+ "frame": {
+  "midRD": [
+   121747.446625,
+   487104.91075000004
+  ],
+  "uRD": [
+   -0.4973902433683069,
+   -0.867526913589438
+  ],
+  "nRD": [
+   -0.867526913589438,
+   0.4973902433683069
+  ]
+ },
+ "x0M": -8.04,
+ "x1M": 9.21,
+ "date": "2021-01-22",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012171637",
+   "x0M": -8.04,
+   "x1M": -3.42,
+   "px": [
+    0,
+    185
+   ],
+   "date": "2021-01-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_001214",
+     "timestamp": "2021-01-22T12:34:51.555530Z",
+     "distanceM": 22.4,
+     "obliquityDeg": 10.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_001238",
+     "timestamp": "2021-01-22T12:38:30.788670Z",
+     "distanceM": 22.7,
+     "obliquityDeg": 16.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_001213",
+     "timestamp": "2021-01-22T12:34:43.535600Z",
+     "distanceM": 25.8,
+     "obliquityDeg": 32.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165017",
+   "x0M": -3.42,
+   "x1M": -1.45,
+   "px": [
+    185,
+    264
+   ],
+   "date": "2021-01-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_001214",
+     "timestamp": "2021-01-22T12:34:51.555530Z",
+     "distanceM": 20.8,
+     "obliquityDeg": 1.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_001238",
+     "timestamp": "2021-01-22T12:38:30.788670Z",
+     "distanceM": 22.7,
+     "obliquityDeg": 25.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_001213",
+     "timestamp": "2021-01-22T12:34:43.535600Z",
+     "distanceM": 23.1,
+     "obliquityDeg": 27.5,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165016",
+   "x0M": 7.1,
+   "x1M": 9.21,
+   "px": [
+    606,
+    690
+   ],
+   "date": "2021-01-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_001213",
+     "timestamp": "2021-01-22T12:34:43.535600Z",
+     "distanceM": 20.5,
+     "obliquityDeg": 0.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_001240",
+     "timestamp": "2021-01-22T12:38:51.143530Z",
+     "distanceM": 21.3,
+     "obliquityDeg": 7.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001975_pano_0000_001239",
+     "timestamp": "2021-01-22T12:38:43.024010Z",
+     "distanceM": 22.1,
+     "obliquityDeg": 21.9,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2018-05-08": 0,
+  "2016-08-17": 0,
+  "2020-04-21": 2,
+  "2022-09-05": 2,
+  "2020-01-30": 0,
+  "2025-07-03": 2,
+  "2021-03-08": 2,
+  "2025-01-08": 2,
+  "2023-02-20": 1,
+  "2023-03-06": 0,
+  "2019-05-16": 0,
+  "2023-01-11": 0,
+  "2019-05-13": 2,
+  "2023-02-13": 0,
+  "2018-05-07": 2,
+  "2019-01-14": 2,
+  "2023-01-13": 1,
+  "2016-06-09": 3,
+  "2023-02-27": 1,
+  "2017-03-23": 0,
+  "2023-02-06": 1,
+  "2023-03-13": 0,
+  "2022-06-27": 0,
+  "2017-03-27": 1,
+  "2022-04-26": 0,
+  "2020-01-10": 2,
+  "2017-03-29": 2,
+  "2025-01-14": 0,
+  "2019-05-10": 1,
+  "2019-01-15": 2,
+  "2017-07-06": 3,
+  "2021-01-22": 3,
+  "2022-12-15": 2,
+  "2023-03-20": 0,
+  "2017-11-17": 2,
+  "2021-12-27": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

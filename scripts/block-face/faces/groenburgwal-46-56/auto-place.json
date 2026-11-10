@@ -1,0 +1,382 @@
+{
+ "face": "groenburgwal-46-56",
+ "street": "Groenburgwal",
+ "library": "nieuwmarkt",
+ "stripDate": "2025-01-08",
+ "seconds": 0.95,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012177815",
+   "address": "Groenburgwal 56",
+   "builtYear": 1664,
+   "widthM": 5.74,
+   "eavesM": 13.93,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#967042",
+    "wallRaw": "#856c44",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 812,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.047,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.13,
+       "widthM": 0.93,
+       "centre": 0.75
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 70 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012253757",
+   "address": "Groenburgwal 54",
+   "builtYear": 1882,
+   "widthM": 6.1,
+   "eavesM": 8.75,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#966b41",
+    "wallRaw": "#b58854",
+    "skyline": {
+     "eavesM": 19.02,
+     "eavesRow": 51,
+     "confidence": 0.65,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 1.18,
+      "topWidthM": 0.33,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best lastage-bell-house scores 0.53 < 0.7 (skyline crown rise 1.18 m, top 0.33 m fits no crown of the type; strip columns 7 vs 3 bays)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0.53,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 8.75 m = 3 storeys of 2.92 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.17 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.019 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.18 m, top 0.33 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177816",
+   "address": "Groenburgwal 52",
+   "builtYear": 1738,
+   "widthM": 5.91,
+   "eavesM": 13.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#957548",
+    "wallRaw": "#836b41",
+    "skyline": {
+     "eavesM": 18.6,
+     "eavesRow": 68,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 1.7,
+      "topWidthM": 0.17,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best lastage-bell-house scores 0.53 < 0.7 (skyline crown rise 1.7 m, top 0.17 m fits no crown of the type; strip columns 7 vs 3 bays)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0.53,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.21 m = 5 storeys of 2.64 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.08 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.007 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.7 m, top 0.17 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177817",
+   "address": "Groenburgwal 50B",
+   "builtYear": 1905,
+   "widthM": 5.48,
+   "eavesM": 14.29,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#f9e28b",
+    "wallRaw": "#ecd083",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 215,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 4.18,
+      "topWidthM": 0.1,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.47 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.47,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177777",
+   "address": "Groenburgwal 48",
+   "builtYear": 1746,
+   "widthM": 5.76,
+   "eavesM": 8.55,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#daa261",
+    "wallRaw": "#cfa063",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 113,
+     "confidence": 0.51,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 2.72,
+      "topWidthM": 0.05,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.86,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.47 (light 0.12): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.47,
+       "light": 0.12
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.87,
+       "light": 0.44
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 67 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177820",
+   "address": "Groenburgwal 46",
+   "builtYear": 1812,
+   "widthM": 3.23,
+   "eavesM": 7.24,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c1b081",
+    "wallRaw": "#a5986c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 812,
+     "confidence": 0.2,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.045,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.29
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 9 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

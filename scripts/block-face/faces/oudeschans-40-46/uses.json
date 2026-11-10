@@ -1,0 +1,162 @@
+{
+ "street": "Oudeschans",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171389",
+   "addresses": [
+    "Oudeschans 46A",
+    "Oudeschans 46B",
+    "Oudeschans 46C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 46A",
+     "use": "industriefunctie",
+     "areaM2": 289,
+     "bagId": "0363010000661826"
+    },
+    {
+     "address": "Oudeschans 46B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000661827"
+    },
+    {
+     "address": "Oudeschans 46C",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000661828"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171390",
+   "addresses": [
+    "Oudeschans 44B",
+    "Oudeschans 44C",
+    "Oudeschans 44A",
+    "Oudeschans 44D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 44B",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000939262"
+    },
+    {
+     "address": "Oudeschans 44C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000939263"
+    },
+    {
+     "address": "Oudeschans 44A",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000939261"
+    },
+    {
+     "address": "Oudeschans 44D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000939264"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171406",
+   "addresses": [
+    "Oudeschans 42E",
+    "Oudeschans 42G",
+    "Oudeschans 42A",
+    "Oudeschans 42B",
+    "Oudeschans 42C",
+    "Oudeschans 42D",
+    "Oudeschans 42F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 42E",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010010914379"
+    },
+    {
+     "address": "Oudeschans 42G",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010010914380"
+    },
+    {
+     "address": "Oudeschans 42A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010010914381"
+    },
+    {
+     "address": "Oudeschans 42B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010010914382"
+    },
+    {
+     "address": "Oudeschans 42C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010010914383"
+    },
+    {
+     "address": "Oudeschans 42D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010010914384"
+    },
+    {
+     "address": "Oudeschans 42F",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010010914385"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182091",
+   "addresses": [
+    "Oudeschans 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudeschans 40-H",
+     "use": "industriefunctie",
+     "areaM2": 62,
+     "bagId": "0363010000767710"
+    },
+    {
+     "address": "Oudeschans 40-H",
+     "use": "industriefunctie",
+     "areaM2": 112,
+     "bagId": "0363010012146820"
+    },
+    {
+     "address": "Korte Koningsstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012146821"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,102 @@
+{
+ "face": "groenburgwal-46-56-h1",
+ "image": "staging/block-face/groenburgwal-46-56-h1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 230,
+ "height": 812,
+ "groundNAP": 0.55,
+ "heightM": 20.29,
+ "frame": {
+  "midRD": [
+   121625.12387499999,
+   486782.55374999996
+  ],
+  "uRD": [
+   0.4690152005639691,
+   0.8831900937170548
+  ],
+  "nRD": [
+   0.8831900937170548,
+   -0.4690152005639691
+  ]
+ },
+ "x0M": -2.87,
+ "x1M": 2.88,
+ "date": "2025-01-08",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012177815",
+   "x0M": -2.87,
+   "x1M": 2.88,
+   "px": [
+    0,
+    230
+   ],
+   "date": "2025-01-08",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20250108_1041_Track20_Sphere_00076",
+     "timestamp": "2025-01-08T11:18:03Z",
+     "distanceM": 22.4,
+     "obliquityDeg": 2.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1041_Track20_Sphere_00077",
+     "timestamp": "2025-01-08T11:18:05Z",
+     "distanceM": 22.8,
+     "obliquityDeg": 9.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20250108_1041_Track20_Sphere_00075",
+     "timestamp": "2025-01-08T11:18:01Z",
+     "distanceM": 23.6,
+     "obliquityDeg": 13.4,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2021-09-15": 0,
+  "2025-01-08": 6,
+  "2020-04-21": 6,
+  "2023-02-20": 6,
+  "2018-05-07": 6,
+  "2023-02-06": 6,
+  "2023-03-27": 6,
+  "2023-02-13": 6,
+  "2023-03-20": 6,
+  "2021-03-08": 6,
+  "2025-07-03": 6,
+  "2023-02-27": 6,
+  "2021-12-30": 0,
+  "2019-05-10": 0,
+  "2023-03-06": 6,
+  "2019-01-14": 6,
+  "2023-01-11": 6,
+  "2022-10-07": 0,
+  "2023-03-13": 6,
+  "2018-05-14": 6,
+  "2017-03-23": 6,
+  "2017-07-06": 6,
+  "2016-06-09": 6,
+  "2019-05-16": 6,
+  "2022-04-26": 6,
+  "2023-01-13": 6,
+  "2021-01-25": 1,
+  "2022-01-27": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "groenburgwal-46-56",
+  "px": [
+   0,
+   230
+  ]
+ }
+}

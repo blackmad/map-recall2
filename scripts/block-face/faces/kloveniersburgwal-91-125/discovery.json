@@ -1,0 +1,1578 @@
+{
+ "street": "Kloveniersburgwal",
+ "seed": "0363100012171188",
+ "members": [
+  "0363100012171188",
+  "0363100012171187",
+  "0363100012169339",
+  "0363100012169338",
+  "0363100012169334",
+  "0363100012169333",
+  "0363100012171163",
+  "0363100012177826",
+  "0363100012177858",
+  "0363100012177857",
+  "0363100012177856",
+  "0363100012171161",
+  "0363100012171160",
+  "0363100012171159",
+  "0363100012177824",
+  "0363100012177823",
+  "0363100012177822",
+  "0363100012177745"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012171188 (face continues: 178217 178218 171199 571643 571644 171186 171185 171184)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012177773 17.5 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012169335",
+   "reason": "frontage 85.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012169336",
+   "reason": "frontage 85.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012169340",
+   "reason": "frontage 85.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171157",
+   "reason": "frontage 34.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171158",
+   "reason": "frontage 55.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171164",
+   "reason": "frontage 87.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171165",
+   "reason": "frontage 33.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012165291",
+   "reason": "frontage 127.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012165292",
+   "reason": "frontage 128.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012168525",
+   "reason": "frontage 148.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171166",
+   "reason": "frontage 81.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171167",
+   "reason": "frontage 83.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171168",
+   "reason": "frontage 83.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171169",
+   "reason": "frontage 39.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171170",
+   "reason": "frontage 90.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171174",
+   "reason": "frontage 86.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171181",
+   "reason": "frontage 92.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012168239",
+   "reason": "frontage 71.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012169331",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012180411"
+  },
+  {
+   "pandId": "0363100012165371",
+   "reason": "frontage 33.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012165560",
+   "reason": "frontage 69.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012169337",
+   "reason": "frontage 100.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012169341",
+   "reason": "frontage 39.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171171",
+   "reason": "frontage 49.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171180",
+   "reason": "frontage 30.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171182",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012171200"
+  },
+  {
+   "pandId": "0363100012171183",
+   "reason": "frontage 30.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171374",
+   "reason": "frontage 110.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171375",
+   "reason": "frontage 99.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171376",
+   "reason": "frontage 113.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171377",
+   "reason": "frontage 111.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171378",
+   "reason": "frontage 120.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171379",
+   "reason": "frontage 121.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171381",
+   "reason": "frontage 114.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177717",
+   "reason": "frontage 49.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177746",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177745"
+  },
+  {
+   "pandId": "0363100012177747",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012171159"
+  },
+  {
+   "pandId": "0363100012177774",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177773"
+  },
+  {
+   "pandId": "0363100012171382",
+   "reason": "frontage 84.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171383",
+   "reason": "frontage 30.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171384",
+   "reason": "frontage 37.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171385",
+   "reason": "frontage 47.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171386",
+   "reason": "frontage 52.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171543",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012171451"
+  },
+  {
+   "pandId": "0363100012171544",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012178226"
+  },
+  {
+   "pandId": "0363100012171545",
+   "reason": "frontage 120.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171546",
+   "reason": "frontage 100.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171547",
+   "reason": "frontage 84.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171548",
+   "reason": "frontage 84.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171549",
+   "reason": "frontage 84.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171550",
+   "reason": "frontage 35.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171551",
+   "reason": "frontage 39.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171552",
+   "reason": "frontage 44.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171553",
+   "reason": "frontage 52.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171554",
+   "reason": "frontage 46.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171555",
+   "reason": "frontage 52.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171556",
+   "reason": "frontage 95.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171557",
+   "reason": "frontage 108.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171558",
+   "reason": "frontage 84.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171559",
+   "reason": "frontage 65.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171560",
+   "reason": "frontage 40.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012171628",
+   "reason": "frontage 125.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177719",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177718"
+  },
+  {
+   "pandId": "0363100012177721",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177718"
+  },
+  {
+   "pandId": "0363100012177722",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177718"
+  },
+  {
+   "pandId": "0363100012177775",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177773"
+  },
+  {
+   "pandId": "0363100012177776",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177773"
+  },
+  {
+   "pandId": "0363100012177777",
+   "reason": "frontage 50.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177778",
+   "reason": "frontage 43.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177779",
+   "reason": "frontage 47.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177780",
+   "reason": "frontage 31.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177781",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177747"
+  },
+  {
+   "pandId": "0363100012177782",
+   "reason": "frontage 32.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177783",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177775"
+  },
+  {
+   "pandId": "0363100012177791",
+   "reason": "frontage 38.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177792",
+   "reason": "frontage 41.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177814",
+   "reason": "frontage 53.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177815",
+   "reason": "frontage 45.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177816",
+   "reason": "no frontage on Kloveniersburgwal: No footprint edge faces Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177817",
+   "reason": "frontage 46.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177820",
+   "reason": "frontage 55.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177821",
+   "reason": "frontage 53.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177828",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177827"
+  },
+  {
+   "pandId": "0363100012177829",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177827"
+  },
+  {
+   "pandId": "0363100012177831",
+   "reason": "frontage 34.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177832",
+   "reason": "frontage 31.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177855",
+   "reason": "frontage 37.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177859",
+   "reason": "frontage 54.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177861",
+   "reason": "frontage 52.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177862",
+   "reason": "frontage 58.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177863",
+   "reason": "frontage 66.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177864",
+   "reason": "frontage 64.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177867",
+   "reason": "frontage 70.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177868",
+   "reason": "frontage 78.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177784",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177788"
+  },
+  {
+   "pandId": "0363100012177785",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177790"
+  },
+  {
+   "pandId": "0363100012177786",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177787"
+  },
+  {
+   "pandId": "0363100012177825",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177819"
+  },
+  {
+   "pandId": "0363100012177860",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177872"
+  },
+  {
+   "pandId": "0363100012178191",
+   "reason": "frontage 108.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178192",
+   "reason": "frontage 109.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177869",
+   "reason": "frontage 72.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177870",
+   "reason": "frontage 68.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177871",
+   "reason": "frontage 62.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012177872",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012178571"
+  },
+  {
+   "pandId": "0363100012177874",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012171175"
+  },
+  {
+   "pandId": "0363100012177875",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012171175"
+  },
+  {
+   "pandId": "0363100012177876",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012177872"
+  },
+  {
+   "pandId": "0363100012178095",
+   "reason": "frontage 124.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178096",
+   "reason": "frontage 128.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178097",
+   "reason": "frontage 128.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178098",
+   "reason": "frontage 119.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178099",
+   "reason": "frontage 129.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178100",
+   "reason": "frontage 127.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178101",
+   "reason": "frontage 117.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178102",
+   "reason": "frontage 116.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178107",
+   "reason": "frontage 118.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178108",
+   "reason": "frontage 118.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178109",
+   "reason": "frontage 121.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178110",
+   "reason": "frontage 97.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178111",
+   "reason": "frontage 81.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178112",
+   "reason": "frontage 85.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178113",
+   "reason": "frontage 89.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178114",
+   "reason": "frontage 93.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178115",
+   "reason": "frontage 46.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178116",
+   "reason": "frontage 65.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178117",
+   "reason": "frontage 66.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178142",
+   "reason": "frontage 76.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178143",
+   "reason": "frontage 72.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178144",
+   "reason": "frontage 82.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178145",
+   "reason": "frontage 91.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178146",
+   "reason": "frontage 98.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178147",
+   "reason": "frontage 84.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178148",
+   "reason": "frontage 65.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178149",
+   "reason": "frontage 65.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178150",
+   "reason": "frontage 84.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178151",
+   "reason": "frontage 49.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178152",
+   "reason": "frontage 65.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178153",
+   "reason": "frontage 122.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178154",
+   "reason": "frontage 102.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178155",
+   "reason": "frontage 97.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178157",
+   "reason": "frontage 78.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178158",
+   "reason": "frontage 73.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178359",
+   "reason": "frontage 110.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178360",
+   "reason": "frontage 91.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178361",
+   "reason": "frontage 97.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178362",
+   "reason": "frontage 85.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178363",
+   "reason": "frontage 103.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178364",
+   "reason": "frontage 106.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178365",
+   "reason": "frontage 112.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178366",
+   "reason": "frontage 111.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178367",
+   "reason": "frontage 94.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178368",
+   "reason": "frontage 94.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178369",
+   "reason": "frontage 86.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178370",
+   "reason": "frontage 86.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178371",
+   "reason": "frontage 86.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178372",
+   "reason": "frontage 86.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178373",
+   "reason": "frontage 104.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178374",
+   "reason": "frontage 103.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178445",
+   "reason": "frontage 85.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178446",
+   "reason": "frontage 85.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178447",
+   "reason": "frontage 116.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178448",
+   "reason": "frontage 110.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178449",
+   "reason": "frontage 94.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178624",
+   "reason": "frontage 121.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178625",
+   "reason": "frontage 109.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178626",
+   "reason": "frontage 85.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178627",
+   "reason": "frontage 97.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178628",
+   "reason": "frontage 107.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178629",
+   "reason": "frontage 110.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178630",
+   "reason": "frontage 113.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178631",
+   "reason": "frontage 119.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178632",
+   "reason": "frontage 117.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178633",
+   "reason": "frontage 121.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178634",
+   "reason": "frontage 98.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178635",
+   "reason": "frontage 85.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178636",
+   "reason": "frontage 121.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178637",
+   "reason": "frontage 85.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178638",
+   "reason": "frontage 121.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178639",
+   "reason": "frontage 85.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178646",
+   "reason": "frontage 91.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178219",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012178215"
+  },
+  {
+   "pandId": "0363100012178220",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012178216"
+  },
+  {
+   "pandId": "0363100012178221",
+   "reason": "frontage 30.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178222",
+   "reason": "frontage 52.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178223",
+   "reason": "frontage 36.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178224",
+   "reason": "frontage 41.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178225",
+   "reason": "frontage 52.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178711",
+   "reason": "frontage 87.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178714",
+   "reason": "frontage 42.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178715",
+   "reason": "frontage 46.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178893",
+   "reason": "frontage 85.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178902",
+   "reason": "frontage 85.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178906",
+   "reason": "frontage 85.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178907",
+   "reason": "frontage 85.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178908",
+   "reason": "frontage 102.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178985",
+   "reason": "frontage 111.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178986",
+   "reason": "frontage 85.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178987",
+   "reason": "frontage 112.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178988",
+   "reason": "frontage 85.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178989",
+   "reason": "frontage 84.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178648",
+   "reason": "frontage 91.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178649",
+   "reason": "frontage 90.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178653",
+   "reason": "frontage 73.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178654",
+   "reason": "frontage 95.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178655",
+   "reason": "frontage 96.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179779",
+   "reason": "frontage 126.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179780",
+   "reason": "frontage 126.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179781",
+   "reason": "frontage 127.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179782",
+   "reason": "frontage 127.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179783",
+   "reason": "frontage 85.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179784",
+   "reason": "frontage 124.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179785",
+   "reason": "frontage 125.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179786",
+   "reason": "frontage 90.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179787",
+   "reason": "frontage 91.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179788",
+   "reason": "frontage 90.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179852",
+   "reason": "frontage 90.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179853",
+   "reason": "frontage 85.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179854",
+   "reason": "frontage 91.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179855",
+   "reason": "frontage 91.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179856",
+   "reason": "frontage 123.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178647",
+   "reason": "frontage 83.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178650",
+   "reason": "frontage 61.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178651",
+   "reason": "frontage 53.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178652",
+   "reason": "frontage 41.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178712",
+   "reason": "frontage 84.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178713",
+   "reason": "frontage 84.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178895",
+   "reason": "frontage 47.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178896",
+   "reason": "frontage 52.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178897",
+   "reason": "frontage 52.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178898",
+   "reason": "frontage 48.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178899",
+   "reason": "frontage 40.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178900",
+   "reason": "frontage 37.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178901",
+   "reason": "frontage 33.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178903",
+   "reason": "frontage 85.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178904",
+   "reason": "frontage 84.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178905",
+   "reason": "frontage 38.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012178909",
+   "reason": "frontage 48.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179857",
+   "reason": "frontage 123.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179858",
+   "reason": "frontage 124.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179860",
+   "reason": "frontage 123.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179861",
+   "reason": "frontage 123.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179862",
+   "reason": "frontage 90.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179863",
+   "reason": "frontage 126.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179951",
+   "reason": "frontage 139.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179952",
+   "reason": "frontage 93.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179953",
+   "reason": "frontage 146.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179954",
+   "reason": "frontage 134.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179955",
+   "reason": "frontage 135.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012179956",
+   "reason": "frontage 149.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180195",
+   "reason": "frontage 88.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180196",
+   "reason": "frontage 34.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180197",
+   "reason": "frontage 88.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180198",
+   "reason": "frontage 59.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180199",
+   "reason": "frontage 56.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180200",
+   "reason": "frontage 54.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180201",
+   "reason": "frontage 51.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180202",
+   "reason": "frontage 48.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180203",
+   "reason": "frontage 45.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180204",
+   "reason": "frontage 42.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180205",
+   "reason": "frontage 89.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180206",
+   "reason": "frontage 91.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180207",
+   "reason": "frontage 62.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180208",
+   "reason": "frontage 65.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180209",
+   "reason": "frontage 67.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180210",
+   "reason": "frontage 145.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180211",
+   "reason": "frontage 125.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180278",
+   "reason": "frontage 93.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180411",
+   "reason": "no frontage on Kloveniersburgwal: No footprint edge faces Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180412",
+   "reason": "no frontage on Kloveniersburgwal: No footprint edge faces Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180413",
+   "reason": "no frontage on Kloveniersburgwal: No footprint edge faces Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012180414",
+   "reason": "no frontage on Kloveniersburgwal: No footprint edge faces Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182241",
+   "reason": "frontage 66.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182242",
+   "reason": "frontage 62.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182243",
+   "reason": "frontage 72.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182244",
+   "reason": "frontage 87.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182245",
+   "reason": "frontage 66.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182246",
+   "reason": "frontage 68.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182247",
+   "reason": "frontage 40.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182319",
+   "reason": "frontage 43.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182320",
+   "reason": "frontage 53.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182321",
+   "reason": "frontage 38.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182322",
+   "reason": "frontage 32.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182323",
+   "reason": "frontage 32.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182324",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012165017"
+  },
+  {
+   "pandId": "0363100012182325",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012165017"
+  },
+  {
+   "pandId": "0363100012182326",
+   "reason": "frontage 92.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182768",
+   "reason": "frontage 115.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012186092",
+   "reason": "frontage 199.6 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012253757",
+   "reason": "frontage 41.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012253758",
+   "reason": "frontage 41.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012254463",
+   "reason": "frontage 188.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012254464",
+   "reason": "frontage 188.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012254465",
+   "reason": "frontage 187.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012254466",
+   "reason": "frontage 187.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012254467",
+   "reason": "frontage 186.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012254468",
+   "reason": "frontage 186.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012571650",
+   "reason": "frontage 34.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012571652",
+   "reason": "frontage 119.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012186196",
+   "reason": "frontage 147.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012250981",
+   "reason": "frontage 131.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012250982",
+   "reason": "frontage 129.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012250983",
+   "reason": "frontage 165.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012571560",
+   "reason": "frontage 91.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012571562",
+   "reason": "frontage 90.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182327",
+   "reason": "frontage 88.0 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182328",
+   "reason": "frontage 83.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182330",
+   "reason": "frontage 35.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182331",
+   "reason": "frontage 41.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182332",
+   "reason": "frontage 47.2 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182503",
+   "reason": "sightline to Kloveniersburgwal crosses 0363100012165017"
+  },
+  {
+   "pandId": "0363100012182504",
+   "reason": "frontage 52.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182506",
+   "reason": "frontage 57.3 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182579",
+   "reason": "frontage 37.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182766",
+   "reason": "frontage 122.7 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012182767",
+   "reason": "frontage 101.9 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012186088",
+   "reason": "frontage 45.1 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012571557",
+   "reason": "frontage 48.8 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012571558",
+   "reason": "frontage 52.4 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012571559",
+   "reason": "frontage 47.5 m from Kloveniersburgwal"
+  },
+  {
+   "pandId": "0363100012169332",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171179",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171136",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171156",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171162",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165008",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171172",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171173",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171175",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171200",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177827",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177830",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177866",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177877",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177878",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178571",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180410",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012171188",
+   "alongM": 0,
+   "widthM": 1.9,
+   "eavesM": 1.09,
+   "roofMaxM": 16.83,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171187",
+   "alongM": 3.84,
+   "widthM": 5.73,
+   "eavesM": 12.75,
+   "roofMaxM": 14.5,
+   "storeys3dbag": 4,
+   "builtYear": 1825,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012169339",
+   "alongM": 14.04,
+   "widthM": 14.69,
+   "eavesM": 12.9,
+   "roofMaxM": 20.26,
+   "storeys3dbag": 0,
+   "builtYear": 1642,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012169338",
+   "alongM": 25.57,
+   "widthM": 8.36,
+   "eavesM": 16.26,
+   "roofMaxM": 16.49,
+   "storeys3dbag": 0,
+   "builtYear": 1730,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169334",
+   "alongM": 34.49,
+   "widthM": 2.15,
+   "eavesM": 19.32,
+   "roofMaxM": 19.97,
+   "storeys3dbag": 5,
+   "builtYear": 1740,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012169333",
+   "alongM": 36.61,
+   "widthM": 2.1,
+   "eavesM": 17.36,
+   "roofMaxM": 18.36,
+   "storeys3dbag": 5,
+   "builtYear": 1740,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171163",
+   "alongM": 42.39,
+   "widthM": 2.4,
+   "eavesM": 11.94,
+   "roofMaxM": 17.95,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177826",
+   "alongM": 53.92,
+   "widthM": 8.07,
+   "eavesM": 12.73,
+   "roofMaxM": 14.5,
+   "storeys3dbag": 4,
+   "builtYear": 1690,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177858",
+   "alongM": 62.31,
+   "widthM": 8.7,
+   "eavesM": 11.29,
+   "roofMaxM": 13.69,
+   "storeys3dbag": 4,
+   "builtYear": 1698,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177857",
+   "alongM": 69.73,
+   "widthM": 6.16,
+   "eavesM": 11.48,
+   "roofMaxM": 15.6,
+   "storeys3dbag": 4,
+   "builtYear": 1706,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012177856",
+   "alongM": 75.78,
+   "widthM": 5.93,
+   "eavesM": 3.11,
+   "roofMaxM": 18.77,
+   "storeys3dbag": 5,
+   "builtYear": 1861,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171161",
+   "alongM": 81.56,
+   "widthM": 5.62,
+   "eavesM": 15.31,
+   "roofMaxM": 18.4,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012171160",
+   "alongM": 86.95,
+   "widthM": 5.17,
+   "eavesM": 15.75,
+   "roofMaxM": 16.75,
+   "storeys3dbag": 5,
+   "builtYear": 1745,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171159",
+   "alongM": 90.22,
+   "widthM": 1.52,
+   "eavesM": 14.62,
+   "roofMaxM": 18,
+   "storeys3dbag": 5,
+   "builtYear": 1817,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177824",
+   "alongM": 96.56,
+   "widthM": 3.98,
+   "eavesM": 13.65,
+   "roofMaxM": 13.83,
+   "storeys3dbag": 4,
+   "builtYear": 1795,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177823",
+   "alongM": 100.44,
+   "widthM": 3.77,
+   "eavesM": 11.81,
+   "roofMaxM": 13.71,
+   "storeys3dbag": 5,
+   "builtYear": 1998,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177822",
+   "alongM": 104.09,
+   "widthM": 3.52,
+   "eavesM": 13.38,
+   "roofMaxM": 16.18,
+   "storeys3dbag": 5,
+   "builtYear": 1756,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177745",
+   "alongM": 109.95,
+   "widthM": 8.19,
+   "eavesM": 17.79,
+   "roofMaxM": 17.82,
+   "storeys3dbag": 5,
+   "builtYear": 1748,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

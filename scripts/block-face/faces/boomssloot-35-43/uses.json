@@ -1,0 +1,141 @@
+{
+ "street": "Krom Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:39:14.703Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182684",
+   "addresses": [
+    "Krom Boomssloot 35B",
+    "Krom Boomssloot 35C",
+    "Krom Boomssloot 35D",
+    "Krom Boomssloot 35A",
+    "Krom Boomssloot 35E",
+    "Krom Boomssloot 35F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 35B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000713553"
+    },
+    {
+     "address": "Krom Boomssloot 35C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000713554"
+    },
+    {
+     "address": "Krom Boomssloot 35D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000713555"
+    },
+    {
+     "address": "Krom Boomssloot 35A",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000713552"
+    },
+    {
+     "address": "Krom Boomssloot 35E",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000713556"
+    },
+    {
+     "address": "Krom Boomssloot 35F",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000713557"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182691",
+   "addresses": [
+    "Krom Boomssloot 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 37-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000713558"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182690",
+   "addresses": [
+    "Krom Boomssloot 39A",
+    "Krom Boomssloot 39B",
+    "Krom Boomssloot 39C",
+    "Krom Boomssloot 39D",
+    "Krom Boomssloot 41B",
+    "Krom Boomssloot 41A",
+    "Krom Boomssloot 43B",
+    "Krom Boomssloot 43A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 39A",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000713562"
+    },
+    {
+     "address": "Krom Boomssloot 39B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000713563"
+    },
+    {
+     "address": "Krom Boomssloot 39C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000713564"
+    },
+    {
+     "address": "Krom Boomssloot 43B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000713569"
+    },
+    {
+     "address": "Krom Boomssloot 39D",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000713565"
+    },
+    {
+     "address": "Krom Boomssloot 41B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000713567"
+    },
+    {
+     "address": "Krom Boomssloot 41A",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000713566"
+    },
+    {
+     "address": "Krom Boomssloot 43A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000713568"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,247 @@
+{
+ "street": "Sint Antoniesbreestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:44:47.261Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171626",
+   "addresses": [
+    "Sint Antoniesbreestraat 39",
+    "Sint Antoniesbreestraat 41",
+    "Sint Antoniesbreestraat 43",
+    "Sint Antoniesbreestraat 45",
+    "Sint Antoniesbreestraat 47",
+    "Sint Antoniesbreestraat 49",
+    "Sint Antoniesbreestraat 51",
+    "Sint Antoniesbreestraat 51A",
+    "Sint Antoniesbreestraat 53",
+    "Sint Antoniesbreestraat 55",
+    "Sint Antoniesbreestraat 57",
+    "Sint Antoniesbreestraat 59",
+    "Sint Antoniesbreestraat 61",
+    "Sint Antoniesbreestraat 63",
+    "Sint Antoniesbreestraat 65",
+    "Sint Antoniesbreestraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sint Antoniesbreestraat 39",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000817531"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 41",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000817533"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 45",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000817537"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 47",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000817539"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 49",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000817541"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 51",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000817543"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 53",
+     "use": "winkelfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000817545"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 55",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000817547"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 65",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000817557"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 67",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000817559"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 51A",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001045046"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 63",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000817555"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 59",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000817551"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 43",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000817535"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 57",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000817549"
+    },
+    {
+     "address": "Sint Antoniesbreestraat 61",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000817553"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725753266,
+     "lngLat": [
+      4.9007973,
+      52.3704403
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "51A",
+      "addr:postcode": "1011HB",
+      "addr:street": "Sint Antoniesbreestraat",
+      "check_date:opening_hours": "2021-08-17",
+      "name": "Knuffels",
+      "opening_hours": "Mo-Su 11:00-17:00",
+      "shop": "toys",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://knuffels.nl/wordpress"
+     },
+     "fetchedAt": "2026-11-10T09:44:47.261Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2725753379,
+     "lngLat": [
+      4.9008281,
+      52.3703201
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "53",
+      "addr:postcode": "1011HB",
+      "addr:street": "Sint Antoniesbreestraat",
+      "shop": "florist",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T09:44:47.261Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182911",
+   "addresses": [
+    "Sint Antoniesbreestraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sint Antoniesbreestraat 69",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 615,
+     "bagId": "0363010000817561"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6287228658,
+     "lngLat": [
+      4.9008572,
+      52.3700964
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "69",
+      "addr:postcode": "1011HB",
+      "addr:street": "Sint Antoniesbreestraat",
+      "amenity": "arts_centre",
+      "name": "Huis De Pinto",
+      "opening_hours": "Mo-Fr 10:30-17:30, Sa 13:00-17:00",
+      "phone": "+31 20 370 0210",
+      "toilets:wheelchair": "no",
+      "website": "https://www.huisdepinto.nl",
+      "wheelchair": "limited",
+      "wikidata": "Q2009396",
+      "wikimedia_commons": "Category:Huis de Pinto",
+      "wikipedia": "nl:Huis De Pinto"
+     },
+     "fetchedAt": "2026-11-10T09:44:47.261Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "way",
+     "id": 175846919,
+     "lngLat": [
+      4.9009434,
+      52.3701258
+     ],
+     "tags": {
+      "building": "yes",
+      "height": "15.9",
+      "name": "Huis De Pinto",
+      "name:es": "Casa de Pinto",
+      "name:nl": "Huis De Pinto",
+      "ref:bag": "0363100012182911",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1680",
+      "tourism": "yes",
+      "wikidata": "Q2009396",
+      "wikimedia_commons": "Category:Huis de Pinto",
+      "wikipedia": "nl:Huis De Pinto"
+     },
+     "fetchedAt": "2026-11-10T09:44:47.261Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

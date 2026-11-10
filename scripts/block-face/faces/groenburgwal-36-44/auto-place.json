@@ -1,0 +1,458 @@
+{
+ "face": "groenburgwal-36-44",
+ "street": "Groenburgwal",
+ "library": "nieuwmarkt",
+ "stripDate": "2025-01-08",
+ "seconds": 1.29,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012171157",
+   "address": "Groenburgwal 44",
+   "builtYear": 1650,
+   "widthM": 17.23,
+   "eavesM": 8.69,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#97927c",
+    "wallRaw": "#8f8b71",
+    "skyline": {
+     "eavesM": 11.18,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 3.55,
+      "topWidthM": 0.4,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.247,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.95 m at 0.2 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.95,
+       "centre": 0.2,
+       "light": 0
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.5,
+       "light": 0.14
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.65,
+       "light": 0.18
+      },
+      {
+       "widthM": 1,
+       "centre": 0.79,
+       "light": 0.14
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.93,
+       "light": 0.26
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.02,
+       "widthM": 1.07,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.46
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: frontage 17.23 m, type 3.6-7 m)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "frontage 17.23 m, type 3.6-7 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 8.69 m = 3 storeys of 2.9 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.19 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171165",
+   "address": "Groenburgwal 42",
+   "builtYear": 1829,
+   "widthM": 4.21,
+   "eavesM": 7.48,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 1,
+    "toM": 4.2,
+    "depthM": 0.25,
+    "centre": 0.619,
+    "lineRD": [
+     [
+      121666.53975,
+      486855.01525
+     ],
+     [
+      121668.34975000001,
+      486858.06725
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#d48b4a",
+    "wallRaw": "#b47e46",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 39,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 0.97,
+      "topWidthM": 0.72,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.92,
+     "balconies": true,
+     "why": "dark open axis 1.5 m at 0.56 (light 0.04): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.5,
+       "centre": 0.56,
+       "light": 0.04
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.92,
+       "light": 0.69
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012177717",
+   "address": "Groenburgwal 40",
+   "builtYear": 1822,
+   "widthM": 13.21,
+   "eavesM": 6.44,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2e291d",
+    "wallRaw": "#5f5b45",
+    "skyline": {
+     "eavesM": 14.07,
+     "eavesRow": 108,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 2.53,
+      "topWidthM": 0.1,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 14,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 2.15,
+     "bayCentre": 0.09,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.26 (light 0.08): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.52,
+       "centre": 0.1,
+       "light": 0.75
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.26,
+       "light": 0.08
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.4,
+       "light": 0.49
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.46,
+       "light": 0.48
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.93,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.32,
+       "widthM": 0.9,
+       "centre": 0.93
+      }
+     ]
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: frontage 13.21 m, type 3.6-7 m)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "frontage 13.21 m, type 3.6-7 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.44 m = 3 storeys of 2.15 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 8.32 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.016 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 2.53 m, top 0.1 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 14 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012178715",
+   "address": "Groenburgwal 38B",
+   "builtYear": 1800,
+   "widthM": 4.73,
+   "eavesM": 11.1,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0.43,
+    "depthM": 0.38,
+    "centre": 0.046,
+    "lineRD": [
+     [
+      121676.56275,
+      486872.40825
+     ],
+     [
+      121677.86675,
+      486874.24825
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7e6745",
+    "wallRaw": "#7c6a48",
+    "skyline": {
+     "eavesM": 15.07,
+     "eavesRow": 68,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 1.7,
+      "topWidthM": 0.28,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.078,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.7,
+       "widthM": 1.15,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best lastage-bell-house scores 0.63 < 0.7 (skyline crown rise 1.7 m, top 0.28 m fits no crown of the type)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0.63,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 11.1 m = 4 storeys of 2.77 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.68 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.055 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.7 m, top 0.28 m fits no crown of the type"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012178714",
+   "address": "Groenburgwal 36",
+   "builtYear": 1773,
+   "widthM": 4.25,
+   "eavesM": 12.06,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b462e",
+    "wallRaw": "#a38655",
+    "skyline": {
+     "eavesM": 16.13,
+     "eavesRow": 26,
+     "confidence": 0.52,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.029,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

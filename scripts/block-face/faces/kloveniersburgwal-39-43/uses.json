@@ -1,0 +1,91 @@
+{
+ "street": "Kloveniersburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:09:01.317Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171637",
+   "addresses": [
+    "Kloveniersburgwal 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 39-H",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000708202"
+    },
+    {
+     "address": "Nieuwe Hoogstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000755792"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165017",
+   "addresses": [
+    "Kloveniersburgwal 41",
+    "Kloveniersburgwal 41A",
+    "Kloveniersburgwal 41B",
+    "Kloveniersburgwal 41C",
+    "Kloveniersburgwal 41D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 41",
+     "use": "woonfunctie",
+     "areaM2": 326,
+     "bagId": "0363010000708209"
+    },
+    {
+     "address": "Kloveniersburgwal 41A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010012102731"
+    },
+    {
+     "address": "Kloveniersburgwal 41B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012102732"
+    },
+    {
+     "address": "Kloveniersburgwal 41C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012102733"
+    },
+    {
+     "address": "Kloveniersburgwal 41D",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010012102734"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165016",
+   "addresses": [
+    "Kloveniersburgwal 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 43",
+     "use": "kantoorfunctie",
+     "areaM2": 362,
+     "bagId": "0363010000708210"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

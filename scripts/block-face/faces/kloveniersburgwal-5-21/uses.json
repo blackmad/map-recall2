@@ -1,0 +1,472 @@
+{
+ "street": "Kloveniersburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:54:13.601Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182586",
+   "addresses": [
+    "Kloveniersburgwal 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 5-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000708136"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725753101,
+     "lngLat": [
+      4.9000321,
+      52.3719346
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5",
+      "addr:postcode": "1011JT",
+      "addr:street": "Kloveniersburgwal",
+      "amenity": "restaurant",
+      "cuisine": "italian;polish",
+      "name": "Cafe Piazza",
+      "opening_hours": "Su-Th 15:00-23:00; Fr-Sa 15:00-23:30",
+      "phone": "+31 20 423 0164",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://cafepiazza.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:54:13.601Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182585",
+   "addresses": [
+    "Kloveniersburgwal 7",
+    "Kloveniersburgwal 7A",
+    "Kloveniersburgwal 7B",
+    "Kloveniersburgwal 7C",
+    "Kloveniersburgwal 7D",
+    "Kloveniersburgwal 7E",
+    "Kloveniersburgwal 7F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 7",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 387,
+     "bagId": "0363010000708141"
+    },
+    {
+     "address": "Kloveniersburgwal 7",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 148,
+     "bagId": "0363010012098827"
+    },
+    {
+     "address": "Kloveniersburgwal 7A",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010012098828"
+    },
+    {
+     "address": "Kloveniersburgwal 7B",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012108248"
+    },
+    {
+     "address": "Kloveniersburgwal 7C",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010012108249"
+    },
+    {
+     "address": "Kloveniersburgwal 7D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012108250"
+    },
+    {
+     "address": "Kloveniersburgwal 7E",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012108251"
+    },
+    {
+     "address": "Kloveniersburgwal 7F",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012108252"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13277540101,
+     "lngLat": [
+      4.9000207,
+      52.371892
+     ],
+     "tags": {
+      "addr:housenumber": "7",
+      "addr:postcode": "1011JT",
+      "addr:street": "Kloveniersburgwal",
+      "amenity": "restaurant",
+      "cuisine": "italian",
+      "name": "Ristorante Papa Carlo",
+      "opening_hours": "Mo-Su 12:30-22:30",
+      "outdoor_seating": "no",
+      "phone": "+31 20 363 6293",
+      "self_service": "no",
+      "website": "https://www.ristorantepapacarlo.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:54:13.601Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182584",
+   "addresses": [
+    "Kloveniersburgwal 9E",
+    "Kloveniersburgwal 9D",
+    "Kloveniersburgwal 9A",
+    "Kloveniersburgwal 9B",
+    "Kloveniersburgwal 9C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 9E",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000708143"
+    },
+    {
+     "address": "Kloveniersburgwal 9D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000708144"
+    },
+    {
+     "address": "Kloveniersburgwal 9A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000708145"
+    },
+    {
+     "address": "Kloveniersburgwal 9B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000708146"
+    },
+    {
+     "address": "Kloveniersburgwal 9C",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000708147"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182778",
+   "addresses": [
+    "Kloveniersburgwal 11A",
+    "Kloveniersburgwal 11B",
+    "Kloveniersburgwal 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 11A",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000708151"
+    },
+    {
+     "address": "Kloveniersburgwal 11B",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000708152"
+    },
+    {
+     "address": "Kloveniersburgwal 13",
+     "use": "winkelfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000708154"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3920949629,
+     "lngLat": [
+      4.8999347,
+      52.3718201
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11-13",
+      "addr:postcode": "1011JT",
+      "addr:street": "Kloveniersburgwal",
+      "name": "Tel",
+      "phone": "+31 20 625 5776",
+      "shop": "seafood",
+      "source": "survey",
+      "website": "https://vishandeltel.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:54:13.601Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182777",
+   "addresses": [
+    "Kloveniersburgwal 15A",
+    "Kloveniersburgwal 15B",
+    "Kloveniersburgwal 15C",
+    "Kloveniersburgwal 15D",
+    "Kloveniersburgwal 15E",
+    "Kloveniersburgwal 15G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 15A",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000708159"
+    },
+    {
+     "address": "Kloveniersburgwal 15B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990274"
+    },
+    {
+     "address": "Kloveniersburgwal 15C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990275"
+    },
+    {
+     "address": "Kloveniersburgwal 15D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990276"
+    },
+    {
+     "address": "Kloveniersburgwal 15E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990277"
+    },
+    {
+     "address": "Kloveniersburgwal 15G",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990279"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571679",
+   "addresses": [
+    "Kloveniersburgwal 17A",
+    "Kloveniersburgwal 17B",
+    "Kloveniersburgwal 17C",
+    "Kloveniersburgwal 17D",
+    "Kloveniersburgwal 17E",
+    "Kloveniersburgwal 17F",
+    "Kloveniersburgwal 17G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 17A",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990280"
+    },
+    {
+     "address": "Kloveniersburgwal 17B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990281"
+    },
+    {
+     "address": "Kloveniersburgwal 17C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990282"
+    },
+    {
+     "address": "Kloveniersburgwal 17D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990283"
+    },
+    {
+     "address": "Kloveniersburgwal 17E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990284"
+    },
+    {
+     "address": "Kloveniersburgwal 17F",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990285"
+    },
+    {
+     "address": "Kloveniersburgwal 17G",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990286"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571680",
+   "addresses": [
+    "Kloveniersburgwal 19A",
+    "Kloveniersburgwal 19B",
+    "Kloveniersburgwal 19D",
+    "Kloveniersburgwal 19E",
+    "Kloveniersburgwal 19F",
+    "Kloveniersburgwal 19C",
+    "Kloveniersburgwal 19G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 19A",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990287"
+    },
+    {
+     "address": "Kloveniersburgwal 19B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990288"
+    },
+    {
+     "address": "Kloveniersburgwal 19D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990289"
+    },
+    {
+     "address": "Kloveniersburgwal 19E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990290"
+    },
+    {
+     "address": "Kloveniersburgwal 19F",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990291"
+    },
+    {
+     "address": "Kloveniersburgwal 19C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990292"
+    },
+    {
+     "address": "Kloveniersburgwal 19G",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990293"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182776",
+   "addresses": [
+    "Kloveniersburgwal 21D",
+    "Kloveniersburgwal 21E",
+    "Kloveniersburgwal 21F",
+    "Kloveniersburgwal 21G",
+    "Kloveniersburgwal 21H",
+    "Kloveniersburgwal 21K",
+    "Kloveniersburgwal 21L",
+    "Kloveniersburgwal 21A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 21D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000708171"
+    },
+    {
+     "address": "Kloveniersburgwal 21E",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000708172"
+    },
+    {
+     "address": "Kloveniersburgwal 21F",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000708173"
+    },
+    {
+     "address": "Kloveniersburgwal 21G",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000708174"
+    },
+    {
+     "address": "Kloveniersburgwal 21H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000708175"
+    },
+    {
+     "address": "Kloveniersburgwal 21K",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000708176"
+    },
+    {
+     "address": "Kloveniersburgwal 21L",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000708177"
+    },
+    {
+     "address": "Kloveniersburgwal 21A",
+     "use": "woonfunctie",
+     "areaM2": 641,
+     "bagId": "0363010001020654"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

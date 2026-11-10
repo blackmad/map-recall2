@@ -1,0 +1,479 @@
+{
+ "street": "Sint Antoniesbreestraat",
+ "seed": "0363100012171712",
+ "members": [
+  "0363100012171712",
+  "0363100012183059"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012171712 (face continues: 181804 183063)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012171626 64.2 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165561",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012171626"
+  },
+  {
+   "pandId": "0363100012165622",
+   "reason": "frontage 93.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012165623",
+   "reason": "frontage 102.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012170899",
+   "reason": "frontage 88.7 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012170912",
+   "reason": "frontage 68.9 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012170913",
+   "reason": "frontage 85.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012170914",
+   "reason": "frontage 79.9 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171306",
+   "reason": "frontage 46.8 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171307",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171308",
+   "reason": "frontage 67.5 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171309",
+   "reason": "frontage 87.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171310",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171311",
+   "reason": "frontage 82.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171312",
+   "reason": "frontage 90.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171313",
+   "reason": "frontage 87.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171318",
+   "reason": "frontage 88.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171319",
+   "reason": "frontage 92.8 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171320",
+   "reason": "frontage 86.8 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171321",
+   "reason": "frontage 93.4 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171559",
+   "reason": "frontage 40.5 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171560",
+   "reason": "frontage 93.8 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171636",
+   "reason": "frontage 58.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171638",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012171700"
+  },
+  {
+   "pandId": "0363100012171995",
+   "reason": "frontage 77.1 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171996",
+   "reason": "frontage 84.1 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012171997",
+   "reason": "frontage 84.9 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012178155",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012178156"
+  },
+  {
+   "pandId": "0363100012178156",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012171627"
+  },
+  {
+   "pandId": "0363100012178157",
+   "reason": "frontage 40.1 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012178158",
+   "reason": "frontage 45.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012181801",
+   "reason": "frontage 66.0 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012181802",
+   "reason": "frontage 85.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012181803",
+   "reason": "frontage 84.1 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012181805",
+   "reason": "frontage 53.0 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182241",
+   "reason": "frontage 42.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182242",
+   "reason": "frontage 35.5 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182243",
+   "reason": "frontage 31.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182244",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182245",
+   "reason": "frontage 49.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182246",
+   "reason": "frontage 38.4 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182247",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182319",
+   "reason": "frontage 74.9 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182320",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182323",
+   "reason": "frontage 80.8 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182326",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012171627"
+  },
+  {
+   "pandId": "0363100012182327",
+   "reason": "frontage 32.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182328",
+   "reason": "frontage 36.7 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182329",
+   "reason": "frontage 70.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182330",
+   "reason": "frontage 64.9 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182331",
+   "reason": "frontage 59.4 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182332",
+   "reason": "frontage 53.1 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182333",
+   "reason": "frontage 66.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182504",
+   "reason": "frontage 50.8 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182505",
+   "reason": "frontage 46.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182506",
+   "reason": "frontage 40.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182508",
+   "reason": "frontage 66.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182509",
+   "reason": "frontage 80.0 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182511",
+   "reason": "frontage 75.5 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182579",
+   "reason": "frontage 67.0 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182584",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012182772"
+  },
+  {
+   "pandId": "0363100012182585",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012182774"
+  },
+  {
+   "pandId": "0363100012182586",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012182775"
+  },
+  {
+   "pandId": "0363100012182609",
+   "reason": "frontage 97.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182692",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182694",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182695",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182696",
+   "reason": "frontage 101.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182697",
+   "reason": "frontage 100.5 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182698",
+   "reason": "frontage 104.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182776",
+   "reason": "frontage 30.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182777",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012182772"
+  },
+  {
+   "pandId": "0363100012182778",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012182584"
+  },
+  {
+   "pandId": "0363100012182791",
+   "reason": "frontage 100.9 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182795",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182988",
+   "reason": "frontage 61.7 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182989",
+   "reason": "frontage 41.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182990",
+   "reason": "frontage 73.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182991",
+   "reason": "frontage 52.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012182992",
+   "reason": "frontage 81.5 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183051",
+   "reason": "frontage 55.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183052",
+   "reason": "frontage 76.4 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183053",
+   "reason": "frontage 57.9 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183054",
+   "reason": "frontage 70.9 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183055",
+   "reason": "frontage 67.1 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183056",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012171626"
+  },
+  {
+   "pandId": "0363100012183057",
+   "reason": "frontage 70.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183058",
+   "reason": "frontage 58.5 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183060",
+   "reason": "frontage 62.8 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183061",
+   "reason": "frontage 62.2 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012183062",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012181804"
+  },
+  {
+   "pandId": "0363100012183064",
+   "reason": "frontage 57.7 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012186295",
+   "reason": "frontage 31.3 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012249775",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012171700"
+  },
+  {
+   "pandId": "0363100012249776",
+   "reason": "frontage 30.1 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012251338",
+   "reason": "frontage 47.8 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012571557",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012571558",
+   "reason": "no frontage on Sint Antoniesbreestraat: No footprint edge faces Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012571559",
+   "reason": "frontage 76.6 m from Sint Antoniesbreestraat"
+  },
+  {
+   "pandId": "0363100012571679",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012249774"
+  },
+  {
+   "pandId": "0363100012571680",
+   "reason": "sightline to Sint Antoniesbreestraat crosses 0363100012249774"
+  },
+  {
+   "pandId": "0363100012165560",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171627",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171700",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182587",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182772",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182773",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182774",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182775",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012249774",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012171712",
+   "alongM": 0,
+   "widthM": 23.17,
+   "eavesM": 10.94,
+   "roofMaxM": 17.4,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012183059",
+   "alongM": 38.19,
+   "widthM": 38.44,
+   "eavesM": 16.61,
+   "roofMaxM": 24.02,
+   "storeys3dbag": 0,
+   "builtYear": 1988,
+   "uncertainty": []
+  }
+ ]
+}

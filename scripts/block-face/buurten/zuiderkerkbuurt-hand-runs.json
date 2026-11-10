@@ -115,6 +115,225 @@
      "why": "Groenburgwal 57: three axes, a ground storey with doors and windows to 3.9 m, windows 4.3-6.2 / 7.1-8.9 / 9.8-11.7 m, a white cornice 12.3-13.2 m and a pediment dormer over the middle"
     }
    ]
+  },
+  {
+   "id": "groenburgwal-46-56-h1",
+   "face": "groenburgwal-46-56",
+   "reason": "Groenburgwal 56 (strip 2025-01-08): a neck gable with white carved claws; 54 (a pointed spout gable over a warehouse door: no spout crown in the kit) and 52 (behind a tree) are held",
+   "houses": [
+    {
+     "pand": "177815",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "neck",
+     "storeys": 4,
+     "mirror": true,
+     "eavesM": 14.3,
+     "why": "Groenburgwal 56: three axes of many-paned sashes, door on the right in a tall ground storey (windows 3.0-5.8 m), storeys 6.7-9.0 / 10.0-11.6 / 12.4-13.8 m, a neck gable with white claws and a cartouche from 14.3 m to about 18.5 m with one window"
+    }
+   ]
+  },
+  {
+   "id": "groenburgwal-46-56-h2",
+   "face": "groenburgwal-46-56",
+   "reason": "Groenburgwal 50B-48 (strip 2025-01-08): two light-brick cornice houses over white puis (46, a white front behind a tree, is held)",
+   "houses": [
+    {
+     "pand": "177817",
+     "type": "lastage-cornice-house",
+     "crown": "dormer",
+     "storeys": 4,
+     "eavesM": 14.0,
+     "overrides": {
+      "entablature": null
+     },
+     "why": "Groenburgwal 50B: yellow-brown brick, a white pui ground to 3.8 m, three axes in three storeys (4.6-6.6 / 7.6-9.6 / 10.5-12.0 m), a white cornice at 14 m with a small raised white top over the middle"
+    },
+    {
+     "pand": "177777",
+     "type": "lastage-cornice-house",
+     "crown": "none",
+     "storeys": 3,
+     "eavesM": 11.5,
+     "overrides": {
+      "entablature": {
+       "rise": 1.4,
+       "cap": 0.35,
+       "frieze": "trim"
+      }
+     },
+     "why": "Groenburgwal 48: a white shop pui ground to 4 m, three axes in two storeys (4.9-6.6 / 7.4-9.5 m), a white frieze and cornice 10.1-11.5 m"
+    }
+   ]
+  },
+  {
+   "id": "groenburgwal-1-37-h1",
+   "face": "groenburgwal-1-37",
+   "reason": "Groenburgwal 15A (strip 2025-01-08): an orange-red brick cornice house with a gabled dormer; its neighbours 11A (a 1980s block) and 17 (behind a tree) are not in this run",
+   "houses": [
+    {
+     "pand": "171548",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer",
+     "storeys": 4,
+     "eavesM": 13.4,
+     "why": "Groenburgwal 15A: three axes, shop ground with red doors to 3.8 m, three storeys of windows, a white cornice at 13.4 m and a gabled brick dormer over the middle to about 16 m"
+    }
+   ]
+  },
+  {
+   "id": "groenburgwal-1-37-h2",
+   "face": "groenburgwal-1-37",
+   "reason": "Groenburgwal 27 (strip 2025-01-08): a cornice house with a mansard and a dormer; 25 (a pointed spout gable: no spout crown in the kit) and 29A (under scaffolding) are held",
+   "houses": [
+    {
+     "pand": "178903",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer",
+     "storeys": 4,
+     "eavesM": 11.0,
+     "why": "Groenburgwal 27: three axes, ground storey with door and windows, three storeys of windows with white frames, a white cornice 10.4-11 m and a slate mansard with one dormer"
+    }
+   ]
+  },
+  {
+   "id": "groenburgwal-1-37-h3",
+   "face": "groenburgwal-1-37",
+   "reason": "Groenburgwal 31A-33 (strip 2025-01-08): a neck gable and a cornice house with a dormer; 35 (a bell gable) is held: its surveyed frontage is not one straight wall (compile: grouped frontage is not a straight surveyed wall)",
+   "houses": [
+    {
+     "pand": "178907",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "neck",
+     "storeys": 3,
+     "eavesM": 9.7,
+     "why": "Groenburgwal 31A: three axes, a light ground storey (behind a van) to 3.8 m, windows 4.0-6.0 / 6.7-8.4 m, a neck gable with white scrolls from 9.7 m to about 13 m with one window"
+    },
+    {
+     "pand": "178906",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer",
+     "storeys": 3,
+     "eavesM": 9.9,
+     "why": "Groenburgwal 33: three axes, door left, windows 3.7-5.3 / 6.3-8.2 m, a white cornice at 9.9 m under a tile roof with one white dormer"
+    }
+   ]
+  },
+  {
+   "id": "groenburgwal-1-37-h4",
+   "face": "groenburgwal-1-37",
+   "reason": "Groenburgwal 37A (strip 2025-01-08): a five-storey cornice house at the corner, after the held 35",
+   "houses": [
+    {
+     "pand": "178989",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "none",
+     "storeys": 5,
+     "eavesM": 13.3,
+     "why": "Groenburgwal 37A: three axes, a raised ground storey to 3.9 m, four rows of windows to 12.6 m, a white cornice at about 13.3 m with a dormer (top under bare branches) (the dormer is not drawn: the kit dormer escapes the corner pand's surveyed footprint) (brick fitted with fitWallBrick to the photo wall #473a2b)",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#231d17"
+     }
+    }
+   ]
+  }
+ ],
+ "status": {
+  "installed": [
+   "kloveniersburgwal-5-21-h1",
+   "kloveniersburgwal-5-21-h2",
+   "groenburgwal-41-57-h1",
+   "groenburgwal-46-56-h1",
+   "groenburgwal-46-56-h2",
+   "groenburgwal-1-37-h2",
+   "groenburgwal-1-37-h3",
+   "groenburgwal-1-37-h4"
+  ],
+  "staged, not installed": {
+   "groenburgwal-1-37-h1": "Groenburgwal 15A: compiled and reviewed (gates pass, wall ok) but the install refused it (GLB audit exit 1, 4 loose loops) and installs stopped 2026-11-10 (house assembly line)"
+  },
+  "note": "installs stopped 2026-11-10 on the integrator's order; the rest of the belt waits for the HouseSpec assembly line"
+ },
+ "holds": [
+  {
+   "pand": "182778",
+   "address": "Kloveniersburgwal 11A",
+   "reason": "a tall step gable over a fish shop: no step crown in the nieuwmarkt/jordaan/gg-zuid types"
+  },
+  {
+   "pand": "182776",
+   "address": "Kloveniersburgwal 21D",
+   "reason": "irregular front: a wide arched centre window stack between narrow side lights, a pointed gable; the kit's equal bays cannot draw it"
+  },
+  {
+   "pand": "169335",
+   "address": "Groenburgwal 49",
+   "reason": "its wide ribbon window row 4.0-5.8 m is not in the kit (edge NCC 0.05 with three sashes)"
+  },
+  {
+   "pand": "253757",
+   "address": "Groenburgwal 54",
+   "reason": "a pointed spout gable over a warehouse door: no spout crown in the kit"
+  },
+  {
+   "pand": "177816",
+   "address": "Groenburgwal 52",
+   "reason": "warehouse front behind a tree on the 2025-01-08 strip"
+  },
+  {
+   "pand": "177820",
+   "address": "Groenburgwal 46",
+   "reason": "white front behind a tree"
+  },
+  {
+   "pand": "178988",
+   "address": "Groenburgwal 35",
+   "reason": "bell gable read cleanly, but compile refuses: its surveyed frontage is not one straight wall"
+  },
+  {
+   "pand": "178904",
+   "address": "Groenburgwal 25",
+   "reason": "a pointed spout gable with a central warehouse window column: no spout crown"
+  },
+  {
+   "pand": "178902",
+   "address": "Groenburgwal 29A",
+   "reason": "under scaffolding on the strip"
+  },
+  {
+   "pand": "171382",
+   "address": "Groenburgwal 17",
+   "reason": "behind a tree"
+  },
+  {
+   "pand": "178713",
+   "address": "Groenburgwal 21A",
+   "reason": "behind a tree, ghosted crown"
+  },
+  {
+   "pand": "178712",
+   "address": "Groenburgwal 23A",
+   "reason": "white front behind a tree"
+  },
+  {
+   "pand": "171547",
+   "address": "Groenburgwal 7-9 (1980s block)",
+   "reason": "one wide renewal block (11 m), not a canal-house front"
+  },
+  {
+   "pand": "171549",
+   "address": "Groenburgwal 11A (1980s block)",
+   "reason": "one wide renewal block, not a canal-house front"
+  },
+  {
+   "pand": "178893",
+   "address": "Groenburgwal 41",
+   "reason": "a wide block front (10 m) behind a tree"
+  },
+  {
+   "pand": "169340",
+   "address": "Groenburgwal 45A-47",
+   "reason": "a double front under one pediment across two pands: not one house per pand"
   }
  ]
 }

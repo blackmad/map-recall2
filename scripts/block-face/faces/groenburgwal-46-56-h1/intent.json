@@ -1,0 +1,72 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "groenburgwal-46-56-h1",
+ "street": "Groenburgwal",
+ "sources": [
+  {
+   "id": "strip-2025-01-08",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "image": "staging/block-face/groenburgwal-46-56-h1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Groenburgwal 56 (strip 2025-01-08): a neck gable with white carved claws; 54 (a pointed spout gable over a warehouse door: no spout crown in the kit) and 52 (behind a tree) are held; spec scripts/block-face/buurten/zuiderkerkbuurt-hand-runs.json"
+ },
+ "types": [
+  "jordaan-1750-neck-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012177815",
+   "slug": "groenburgwal-177815",
+   "address": "Groenburgwal 56",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "storeys": 4,
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#967042",
+     "evidence": "strip 2025-01-08 span 0-230: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Groenburgwal 56: three axes of many-paned sashes, door on the right in a tall ground storey (windows 3.0-5.8 m), storeys 6.7-9.0 / 10.0-11.6 / 12.4-13.8 m, a neck gable with white claws and a cartouche from 14.3 m to about 18.5 m with one window; strip 2025-01-08"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "lonePand": {
+   "evidence": "hand placement, a one-off front between held neighbours: Groenburgwal 56 (strip 2025-01-08): a neck gable with white carved claws; 54 (a pointed spout gable over a warehouse door: no spout crown in the kit) and 52 (behind a tree) are held"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012177815",
+    "stripRow": 240,
+    "evidence": "hand placement: cornice top read at 14.3 m on the strip 2025-01-08"
+   }
+  ]
+ }
+}

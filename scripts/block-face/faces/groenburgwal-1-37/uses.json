@@ -1,0 +1,698 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:34:07.849Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178147",
+   "addresses": [
+    "Groenburgwal 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 1",
+     "use": "woonfunctie",
+     "areaM2": 193,
+     "bagId": "0363010000651444"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6299168150,
+     "lngLat": [
+      4.8991714,
+      52.3696698
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "check_date": "2023-04-16",
+      "operator": "Gemeente Amsterdam",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "payment:maestro": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-11-10T08:34:07.849Z",
+     "match": "frontage",
+     "distanceM": 7.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178150",
+   "addresses": [
+    "Groenburgwal 3A",
+    "Groenburgwal 3B",
+    "Groenburgwal 3C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 3A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000651447"
+    },
+    {
+     "address": "Groenburgwal 3B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000651448"
+    },
+    {
+     "address": "Groenburgwal 3C",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000651449"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171558",
+   "addresses": [
+    "Groenburgwal 5A",
+    "Groenburgwal 5B",
+    "Groenburgwal 5C",
+    "Groenburgwal 5D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 5A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000651453"
+    },
+    {
+     "address": "Groenburgwal 5B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000651454"
+    },
+    {
+     "address": "Groenburgwal 5C",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000651455"
+    },
+    {
+     "address": "Groenburgwal 5D",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000651456"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171547",
+   "addresses": [
+    "Groenburgwal 7A",
+    "Groenburgwal 7B",
+    "Groenburgwal 7C",
+    "Groenburgwal 7D",
+    "Groenburgwal 7E",
+    "Groenburgwal 9A",
+    "Groenburgwal 9B",
+    "Groenburgwal 9C",
+    "Groenburgwal 9D",
+    "Groenburgwal 9E",
+    "Groenburgwal 9F",
+    "Groenburgwal 9G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 7A",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000651457"
+    },
+    {
+     "address": "Groenburgwal 7B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000651458"
+    },
+    {
+     "address": "Groenburgwal 7C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000651459"
+    },
+    {
+     "address": "Groenburgwal 7D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000651460"
+    },
+    {
+     "address": "Groenburgwal 7E",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000651461"
+    },
+    {
+     "address": "Groenburgwal 9A",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000651462"
+    },
+    {
+     "address": "Groenburgwal 9B",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000651465"
+    },
+    {
+     "address": "Groenburgwal 9C",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000651466"
+    },
+    {
+     "address": "Groenburgwal 9D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000651467"
+    },
+    {
+     "address": "Groenburgwal 9E",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000651468"
+    },
+    {
+     "address": "Groenburgwal 9F",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000651469"
+    },
+    {
+     "address": "Groenburgwal 9G",
+     "use": "industriefunctie",
+     "areaM2": 72,
+     "bagId": "0363010000651470"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171549",
+   "addresses": [
+    "Groenburgwal 11A",
+    "Groenburgwal 11B",
+    "Groenburgwal 11C",
+    "Groenburgwal 11D",
+    "Groenburgwal 11E",
+    "Groenburgwal 13A",
+    "Groenburgwal 13B",
+    "Groenburgwal 13C",
+    "Groenburgwal 13D",
+    "Groenburgwal 13E",
+    "Groenburgwal 13F",
+    "Groenburgwal 13G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 11A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000651471"
+    },
+    {
+     "address": "Groenburgwal 11B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000651472"
+    },
+    {
+     "address": "Groenburgwal 11C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000651473"
+    },
+    {
+     "address": "Groenburgwal 11D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000651474"
+    },
+    {
+     "address": "Groenburgwal 11E",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000651475"
+    },
+    {
+     "address": "Groenburgwal 13A",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000651476"
+    },
+    {
+     "address": "Groenburgwal 13B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000651477"
+    },
+    {
+     "address": "Groenburgwal 13C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000651478"
+    },
+    {
+     "address": "Groenburgwal 13D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000651479"
+    },
+    {
+     "address": "Groenburgwal 13E",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000651480"
+    },
+    {
+     "address": "Groenburgwal 13F",
+     "use": "industriefunctie",
+     "areaM2": 67,
+     "bagId": "0363010000651481"
+    },
+    {
+     "address": "Groenburgwal 13G",
+     "use": "industriefunctie",
+     "areaM2": 75,
+     "bagId": "0363010000651482"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171548",
+   "addresses": [
+    "Groenburgwal 15A",
+    "Groenburgwal 15B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 15A",
+     "use": "woonfunctie",
+     "areaM2": 170,
+     "bagId": "0363010000651488"
+    },
+    {
+     "address": "Groenburgwal 15B",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000651489"
+    },
+    {
+     "address": "Verversstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000853322"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171382",
+   "addresses": [
+    "Groenburgwal 17A",
+    "Groenburgwal 17D",
+    "Groenburgwal 17H",
+    "Groenburgwal 17N",
+    "Groenburgwal 17B",
+    "Groenburgwal 17C",
+    "Groenburgwal 17E",
+    "Groenburgwal 17F",
+    "Groenburgwal 17G",
+    "Groenburgwal 17K",
+    "Groenburgwal 17L",
+    "Groenburgwal 17M",
+    "Groenburgwal 17P",
+    "Groenburgwal 17R",
+    "Groenburgwal 19B",
+    "Groenburgwal 19A",
+    "Groenburgwal 19C",
+    "Groenburgwal 19D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 17H",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000651497"
+    },
+    {
+     "address": "Groenburgwal 17N",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000651498"
+    },
+    {
+     "address": "Groenburgwal 19B",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010000651504"
+    },
+    {
+     "address": "Groenburgwal 17E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990004"
+    },
+    {
+     "address": "Groenburgwal 17F",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990005"
+    },
+    {
+     "address": "Groenburgwal 17G",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990006"
+    },
+    {
+     "address": "Groenburgwal 17K",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990007"
+    },
+    {
+     "address": "Groenburgwal 17L",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990008"
+    },
+    {
+     "address": "Groenburgwal 17M",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990009"
+    },
+    {
+     "address": "Groenburgwal 17P",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990010"
+    },
+    {
+     "address": "Groenburgwal 17R",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000990011"
+    },
+    {
+     "address": "Groenburgwal 19A",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000651503"
+    },
+    {
+     "address": "Groenburgwal 19C",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000651505"
+    },
+    {
+     "address": "Groenburgwal 19D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000651506"
+    }
+   ],
+   "units": 22,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178713",
+   "addresses": [
+    "Groenburgwal 21A",
+    "Groenburgwal 21B",
+    "Groenburgwal 21C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 21A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000651509"
+    },
+    {
+     "address": "Groenburgwal 21B",
+     "use": "industriefunctie",
+     "areaM2": 20,
+     "bagId": "0363010000651510"
+    },
+    {
+     "address": "Groenburgwal 21C",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000651511"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178712",
+   "addresses": [
+    "Groenburgwal 23A",
+    "Groenburgwal 23B",
+    "Groenburgwal 23C",
+    "Groenburgwal 23D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 23A",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000651513"
+    },
+    {
+     "address": "Groenburgwal 23B",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000651514"
+    },
+    {
+     "address": "Groenburgwal 23C",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000651515"
+    },
+    {
+     "address": "Groenburgwal 23D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000651516"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178904",
+   "addresses": [
+    "Groenburgwal 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 25",
+     "use": "woonfunctie",
+     "areaM2": 420,
+     "bagId": "0363010003761572"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178903",
+   "addresses": [
+    "Groenburgwal 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 27",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 601,
+     "bagId": "0363010000651528"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 496436641,
+     "lngLat": [
+      4.8986256,
+      52.3689809
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27",
+      "addr:postcode": "1011HR",
+      "addr:street": "Groenburgwal",
+      "name": "Rembrandtplein Hotel",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "hotel",
+      "website": "https://rembrandtpleinhotel.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:34:07.849Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178902",
+   "addresses": [
+    "Groenburgwal 29A",
+    "Groenburgwal 29C",
+    "Groenburgwal 29B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 29A",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000651534"
+    },
+    {
+     "address": "Groenburgwal 29C",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000651536"
+    },
+    {
+     "address": "Groenburgwal 29B",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000651535"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178907",
+   "addresses": [
+    "Groenburgwal 31A",
+    "Groenburgwal 31B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 31A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000651537"
+    },
+    {
+     "address": "Groenburgwal 31B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000651538"
+    },
+    {
+     "address": "Verversstraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000853326"
+    },
+    {
+     "address": "Verversstraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000853325"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178906",
+   "addresses": [
+    "Groenburgwal 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 33-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000651540"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178988",
+   "addresses": [
+    "Groenburgwal 35",
+    "Groenburgwal 35A",
+    "Groenburgwal 35B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 35",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000651543"
+    },
+    {
+     "address": "Groenburgwal 35A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012135623"
+    },
+    {
+     "address": "Groenburgwal 35B",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010012135624"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178989",
+   "addresses": [
+    "Groenburgwal 37A",
+    "Groenburgwal 37B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 37A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000768964"
+    },
+    {
+     "address": "Groenburgwal 37B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000769026"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,223 @@
+{
+ "street": "Jodenbreestraat",
+ "seed": "0363100012171991",
+ "members": [
+  "0363100012171989",
+  "0363100012171992",
+  "0363100012171993",
+  "0363100012182518",
+  "0363100012171991"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012171989 (face continues: 253765)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012182519 38.9 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012171990",
+   "reason": "sightline to Jodenbreestraat crosses 0363100012171993"
+  },
+  {
+   "pandId": "0363100012182513",
+   "reason": "frontage 73.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182514",
+   "reason": "sightline to Jodenbreestraat crosses 0363100012171989"
+  },
+  {
+   "pandId": "0363100012182515",
+   "reason": "frontage 39.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182516",
+   "reason": "sightline to Jodenbreestraat crosses 0363100012171992"
+  },
+  {
+   "pandId": "0363100012182517",
+   "reason": "frontage 34.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012186092",
+   "reason": "frontage 105.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254435",
+   "reason": "frontage 72.4 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254436",
+   "reason": "frontage 73.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254437",
+   "reason": "frontage 75.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254438",
+   "reason": "frontage 77.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254439",
+   "reason": "frontage 75.1 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254440",
+   "reason": "frontage 76.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254441",
+   "reason": "frontage 78.2 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254442",
+   "reason": "frontage 80.3 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254443",
+   "reason": "frontage 90.3 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254444",
+   "reason": "frontage 91.4 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254445",
+   "reason": "frontage 92.8 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254446",
+   "reason": "frontage 94.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254447",
+   "reason": "frontage 93.0 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254448",
+   "reason": "frontage 94.1 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254449",
+   "reason": "frontage 95.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254450",
+   "reason": "frontage 97.2 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254451",
+   "reason": "frontage 77.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254452",
+   "reason": "frontage 77.5 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254453",
+   "reason": "frontage 77.4 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254454",
+   "reason": "frontage 80.3 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012254455",
+   "reason": "frontage 80.2 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012253888",
+   "reason": "frontage 77.3 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012170898",
+   "reason": "frontage 74.7 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182525",
+   "reason": "frontage 74.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182903",
+   "reason": "frontage 30.6 m from Jodenbreestraat"
+  },
+  {
+   "pandId": "0363100012182520",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012185418",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012185844",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012171989",
+   "alongM": -50.07,
+   "widthM": 11.45,
+   "eavesM": 13.86,
+   "roofMaxM": 20.83,
+   "storeys3dbag": 4,
+   "builtYear": 1969,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171992",
+   "alongM": -40.74,
+   "widthM": 7.2,
+   "eavesM": 12.18,
+   "roofMaxM": 15.59,
+   "storeys3dbag": 5,
+   "builtYear": 1695,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012171993",
+   "alongM": -33.46,
+   "widthM": 7.37,
+   "eavesM": 15.89,
+   "roofMaxM": 20.99,
+   "storeys3dbag": 0,
+   "builtYear": 1974,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182518",
+   "alongM": -22.63,
+   "widthM": 14.29,
+   "eavesM": 17.65,
+   "roofMaxM": 21.82,
+   "storeys3dbag": 0,
+   "builtYear": 2002,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012171991",
+   "alongM": 0,
+   "widthM": 30.97,
+   "eavesM": 17.1,
+   "roofMaxM": 23.83,
+   "storeys3dbag": 0,
+   "builtYear": 1966,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

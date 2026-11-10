@@ -1,0 +1,175 @@
+{
+ "street": "Kloveniersburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:29:00.208Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178215",
+   "addresses": [
+    "Kloveniersburgwal 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 59-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 232,
+     "bagId": "0363010000708243"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 858208357,
+     "lngLat": [
+      4.8984411,
+      52.3702265
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "59-H",
+      "addr:postcode": "1011JZ",
+      "addr:street": "Kloveniersburgwal",
+      "amenity": "pub",
+      "contact:facebook": "https://www.facebook.com/cafedeengelbewaarder",
+      "contact:instagram": "cafedeengelbewaarder",
+      "food": "yes",
+      "name": "De Engelbewaarder",
+      "opening_hours": "Su-Th 12:00-01:00; Fr-Sa 12:00-02:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 625 3772",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.cafedeengelbewaarder.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:29:00.208Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178214",
+   "addresses": [
+    "Kloveniersburgwal 61A",
+    "Kloveniersburgwal 61B",
+    "Kloveniersburgwal 61C",
+    "Kloveniersburgwal 61D",
+    "Kloveniersburgwal 61E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 61A",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000955402"
+    },
+    {
+     "address": "Kloveniersburgwal 61B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000955403"
+    },
+    {
+     "address": "Kloveniersburgwal 61C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000955404"
+    },
+    {
+     "address": "Kloveniersburgwal 61D",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000955405"
+    },
+    {
+     "address": "Kloveniersburgwal 61E",
+     "use": "kantoorfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000955475"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178213",
+   "addresses": [
+    "Kloveniersburgwal 63E",
+    "Kloveniersburgwal 63A",
+    "Kloveniersburgwal 63D",
+    "Kloveniersburgwal 63C",
+    "Kloveniersburgwal 63B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 63E",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000708260"
+    },
+    {
+     "address": "Kloveniersburgwal 63A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000708261"
+    },
+    {
+     "address": "Kloveniersburgwal 63D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000946332"
+    },
+    {
+     "address": "Kloveniersburgwal 63C",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000946331"
+    },
+    {
+     "address": "Kloveniersburgwal 63B",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000708262"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177720",
+   "addresses": [
+    "Kloveniersburgwal 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 65",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000708264"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177718",
+   "addresses": [
+    "Kloveniersburgwal 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Kloveniersburgwal 67",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010002005737"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

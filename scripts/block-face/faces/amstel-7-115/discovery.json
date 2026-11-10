@@ -1,0 +1,300 @@
+{
+ "street": "Nieuwe Amstelstraat",
+ "seed": "0363100012182354",
+ "members": [
+  "0363100012182354",
+  "0363100012182451",
+  "0363100012171836",
+  "0363100012171834",
+  "0363100012171830"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012171839 28.0 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012171830 (face continues: 181763 182351)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012171688",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171689",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171690",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171691",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171692",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171693",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171694",
+   "reason": "frontage 51.1 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171695",
+   "reason": "frontage 44.9 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171828",
+   "reason": "frontage 62.0 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171831",
+   "reason": "frontage 57.8 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171832",
+   "reason": "sightline to Nieuwe Amstelstraat crosses 0363100012171834"
+  },
+  {
+   "pandId": "0363100012171835",
+   "reason": "sightline to Nieuwe Amstelstraat crosses 0363100012182354"
+  },
+  {
+   "pandId": "0363100012171838",
+   "reason": "frontage 62.8 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171840",
+   "reason": "frontage 37.0 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171841",
+   "reason": "frontage 63.3 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181764",
+   "reason": "frontage 53.8 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181765",
+   "reason": "frontage 59.0 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181766",
+   "reason": "frontage 50.6 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181767",
+   "reason": "frontage 44.6 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181768",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181978",
+   "reason": "frontage 64.3 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181979",
+   "reason": "frontage 72.0 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182039",
+   "reason": "frontage 52.9 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182266",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182267",
+   "reason": "frontage 55.7 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182268",
+   "reason": "frontage 53.8 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182269",
+   "reason": "frontage 50.7 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182270",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182344",
+   "reason": "frontage 42.7 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182345",
+   "reason": "frontage 31.9 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182346",
+   "reason": "sightline to Nieuwe Amstelstraat crosses 0363100012171834"
+  },
+  {
+   "pandId": "0363100012182347",
+   "reason": "frontage 50.0 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182348",
+   "reason": "frontage 44.6 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182349",
+   "reason": "frontage 44.1 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182350",
+   "reason": "frontage 32.0 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182352",
+   "reason": "sightline to Nieuwe Amstelstraat crosses 0363100012181768"
+  },
+  {
+   "pandId": "0363100012165558",
+   "reason": "frontage 73.1 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012181980",
+   "reason": "frontage 78.9 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182036",
+   "reason": "frontage 91.5 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182040",
+   "reason": "frontage 57.3 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182353",
+   "reason": "no frontage on Nieuwe Amstelstraat: No footprint edge faces Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182356",
+   "reason": "sightline to Nieuwe Amstelstraat crosses 0363100012182357"
+  },
+  {
+   "pandId": "0363100012182360",
+   "reason": "sightline to Nieuwe Amstelstraat crosses 0363100012182358"
+  },
+  {
+   "pandId": "0363100012182898",
+   "reason": "frontage 39.7 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012182899",
+   "reason": "frontage 37.6 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012186092",
+   "reason": "frontage 59.7 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012571655",
+   "reason": "sightline to Nieuwe Amstelstraat crosses 0363100012171830"
+  },
+  {
+   "pandId": "0363100012571673",
+   "reason": "frontage 73.3 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012571674",
+   "reason": "frontage 72.9 m from Nieuwe Amstelstraat"
+  },
+  {
+   "pandId": "0363100012171833",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171994",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182355",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182357",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182358",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182359",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182512",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182354",
+   "alongM": 0,
+   "widthM": 7.15,
+   "eavesM": 14.34,
+   "roofMaxM": 14.37,
+   "storeys3dbag": 5,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182451",
+   "alongM": 9.49,
+   "widthM": 11.83,
+   "eavesM": 11.58,
+   "roofMaxM": 14.43,
+   "storeys3dbag": 5,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171836",
+   "alongM": 19.22,
+   "widthM": 7.63,
+   "eavesM": 14.6,
+   "roofMaxM": 16.28,
+   "storeys3dbag": 5,
+   "builtYear": 1956,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171834",
+   "alongM": 34.79,
+   "widthM": 23.52,
+   "eavesM": 11.63,
+   "roofMaxM": 14.36,
+   "storeys3dbag": 5,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171830",
+   "alongM": 50.35,
+   "widthM": 7.58,
+   "eavesM": 14.23,
+   "roofMaxM": 18.31,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

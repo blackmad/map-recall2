@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T09:49:01.749Z",
+ "generatedAt": "2026-11-10T09:56:56.684Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -103904,6 +103904,978 @@
        "primitive": 10,
        "firstTriangle": 8,
        "triangleCount": 4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-groenburgwal-46-56-h1",
+   "category": "street-survey",
+   "name": "face-groenburgwal-46-56-h1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-groenburgwal-46-56-h1.glb?asset=0b3d1995908b2476",
+   "sha256": "0b3d1995908b247612c250e6778edc7ad7b8027a3fa559ac0927df0fae24fdce",
+   "bytes": 55780,
+   "triangles": 2042,
+   "primitives": 7,
+   "instance": {
+    "anchor": [
+     4.897170918667086,
+     52.36791029952416
+    ],
+    "northOffsetDegrees": 297.5241,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -2.872,
+     0,
+     -15.923
+    ],
+    "max": [
+     3.648,
+     18.917,
+     1.1
+    ]
+   },
+   "height": 18.917,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012177815"
+   ],
+   "replaces": [
+    "ordinary-0363100012177815"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.896987,
+        52.3679491
+       ],
+       [
+        4.8970117,
+        52.3679727
+       ],
+       [
+        4.8970618,
+        52.3679539
+       ],
+       [
+        4.8970379,
+        52.36793
+       ],
+       [
+        4.8971514,
+        52.3678874
+       ],
+       [
+        4.8971904,
+        52.3679332
+       ],
+       [
+        4.8969905,
+        52.368005
+       ],
+       [
+        4.896952,
+        52.3679622
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "groenburgwal-177815",
+     "pandId": "0363100012177815",
+     "buildingId": "NL.IMBAG.Pand.0363100012177815",
+     "address": "Groenburgwal 56",
+     "frontage": {
+      "x0": -2.872,
+      "x1": 2.872,
+      "widthM": 5.744
+     },
+     "bounds": {
+      "min": [
+       -2.872,
+       0,
+       -15.923
+      ],
+      "max": [
+       3.648,
+       18.917,
+       1.1
+      ]
+     },
+     "triangles": 2042,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 182
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 1484
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-groenburgwal-46-56-h2",
+   "category": "street-survey",
+   "name": "face-groenburgwal-46-56-h2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-groenburgwal-46-56-h2.glb?asset=9185ee03227065af",
+   "sha256": "9185ee03227065af9cac4c4a775fecf505564bac7294514683030734addc8d51",
+   "bytes": 91812,
+   "triangles": 3210,
+   "primitives": 11,
+   "instance": {
+    "anchor": [
+     4.897313909270984,
+     52.36807170619392
+    ],
+    "northOffsetDegrees": 299.257,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.523,
+     0,
+     -15.131
+    ],
+    "max": [
+     5.69,
+     16.216,
+     0.456
+    ]
+   },
+   "height": 16.216,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012177817",
+    "NL.IMBAG.Pand.0363100012177777"
+   ],
+   "replaces": [
+    "ordinary-0363100012177817",
+    "ordinary-0363100012177777"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.897184,
+        52.3681142
+       ],
+       [
+        4.8971624,
+        52.3680919
+       ],
+       [
+        4.8970971,
+        52.3681131
+       ],
+       [
+        4.8970881,
+        52.3680821
+       ],
+       [
+        4.8971253,
+        52.3680701
+       ],
+       [
+        4.8971316,
+        52.3680755
+       ],
+       [
+        4.8972733,
+        52.3680285
+       ],
+       [
+        4.8973139,
+        52.3680704
+       ],
+       [
+        4.8973133,
+        52.3680706
+       ],
+       [
+        4.8973137,
+        52.3680711
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.897274,
+        52.368142
+       ],
+       [
+        4.897271,
+        52.368132
+       ],
+       [
+        4.8971902,
+        52.3681429
+       ],
+       [
+        4.8971839,
+        52.3681203
+       ],
+       [
+        4.897184,
+        52.3681142
+       ],
+       [
+        4.8973137,
+        52.3680711
+       ],
+       [
+        4.8973549,
+        52.3681162
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "groenburgwal-177817",
+     "pandId": "0363100012177817",
+     "buildingId": "NL.IMBAG.Pand.0363100012177817",
+     "address": "Groenburgwal 50B",
+     "frontage": {
+      "x0": -5.548,
+      "x1": -0.069,
+      "widthM": 5.479
+     },
+     "bounds": {
+      "min": [
+       -6.523,
+       0,
+       -15.131
+      ],
+      "max": [
+       -0.069,
+       16.216,
+       0.239
+      ]
+     },
+     "triangles": 1906,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 137
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 544
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 624
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 168
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "groenburgwal-177777",
+     "pandId": "0363100012177777",
+     "buildingId": "NL.IMBAG.Pand.0363100012177777",
+     "address": "Groenburgwal 48",
+     "frontage": {
+      "x0": -0.069,
+      "x1": 5.686,
+      "widthM": 5.755
+     },
+     "bounds": {
+      "min": [
+       -0.214,
+       0,
+       -11.224
+      ],
+      "max": [
+       5.69,
+       11.54,
+       0.456
+      ]
+     },
+     "triangles": 1304,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 60
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 544,
+       "triangleCount": 348
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 624,
+       "triangleCount": 364
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 352,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 168,
+       "triangleCount": 112
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 19,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 19,
+       "triangleCount": 5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-groenburgwal-1-37-h2",
+   "category": "street-survey",
+   "name": "face-groenburgwal-1-37-h2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-groenburgwal-1-37-h2.glb?asset=111be06dea55a0b9",
+   "sha256": "111be06dea55a0b97ae6a9fbe234c043bd2a5743b824da6d0a0a53b1c8c60a25",
+   "bytes": 50052,
+   "triangles": 1510,
+   "primitives": 11,
+   "instance": {
+    "anchor": [
+     4.898590590933008,
+     52.36899231969784
+    ],
+    "northOffsetDegrees": 119.6426,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -2.838,
+     0,
+     -24.145
+    ],
+    "max": [
+     2.876,
+     13.41,
+     0.176
+    ]
+   },
+   "height": 13.41,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012178903"
+   ],
+   "replaces": [
+    "ordinary-0363100012178903"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8986111,
+        52.3690144
+       ],
+       [
+        4.89857,
+        52.3689703
+       ],
+       [
+        4.8987338,
+        52.3689126
+       ],
+       [
+        4.8988711,
+        52.3688646
+       ],
+       [
+        4.8989191,
+        52.368907
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "groenburgwal-178903",
+     "pandId": "0363100012178903",
+     "buildingId": "NL.IMBAG.Pand.0363100012178903",
+     "address": "Groenburgwal 27",
+     "frontage": {
+      "x0": -2.825,
+      "x1": 2.825,
+      "widthM": 5.651
+     },
+     "bounds": {
+      "min": [
+       -2.838,
+       0,
+       -24.145
+      ],
+      "max": [
+       2.876,
+       13.41,
+       0.176
+      ]
+     },
+     "triangles": 1510,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 82
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 748
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 180
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-groenburgwal-1-37-h3",
+   "category": "street-survey",
+   "name": "face-groenburgwal-1-37-h3",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-groenburgwal-1-37-h3.glb?asset=78292a35c22faa1e",
+   "sha256": "78292a35c22faa1e62ace646aac3c002d9025e1c7445524426bccbd25449ac2e",
+   "bytes": 80504,
+   "triangles": 2787,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.89848642120141,
+     52.36888133191193
+    ],
+    "northOffsetDegrees": 119.6745,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.722,
+     0,
+     -23.382
+    ],
+    "max": [
+     5.94,
+     13.827,
+     1.12
+    ]
+   },
+   "height": 13.827,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012178907",
+    "NL.IMBAG.Pand.0363100012178906"
+   ],
+   "replaces": [
+    "ordinary-0363100012178907",
+    "ordinary-0363100012178906"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8986427,
+        52.3688857
+       ],
+       [
+        4.8985273,
+        52.3689257
+       ],
+       [
+        4.8985266,
+        52.3689252
+       ],
+       [
+        4.8984866,
+        52.368881
+       ],
+       [
+        4.8987768,
+        52.3687776
+       ],
+       [
+        4.8988262,
+        52.3688217
+       ],
+       [
+        4.8987001,
+        52.3688657
+       ],
+       [
+        4.898682,
+        52.3688462
+       ],
+       [
+        4.8986245,
+        52.3688662
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8984866,
+        52.368881
+       ],
+       [
+        4.8984452,
+        52.3688376
+       ],
+       [
+        4.8986014,
+        52.3687806
+       ],
+       [
+        4.8986209,
+        52.3688003
+       ],
+       [
+        4.8986421,
+        52.368792
+       ],
+       [
+        4.8986223,
+        52.368773
+       ],
+       [
+        4.8986663,
+        52.368757
+       ],
+       [
+        4.8987129,
+        52.3688003
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "groenburgwal-178907",
+     "pandId": "0363100012178907",
+     "buildingId": "NL.IMBAG.Pand.0363100012178907",
+     "address": "Groenburgwal 31A",
+     "frontage": {
+      "x0": -5.666,
+      "x1": 0.023,
+      "widthM": 5.689
+     },
+     "bounds": {
+      "min": [
+       -5.722,
+       0,
+       -23.382
+      ],
+      "max": [
+       0.218,
+       13.827,
+       1.12
+      ]
+     },
+     "triangles": 1663,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 1192
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "groenburgwal-178906",
+     "pandId": "0363100012178906",
+     "buildingId": "NL.IMBAG.Pand.0363100012178906",
+     "address": "Groenburgwal 33",
+     "frontage": {
+      "x0": 0.023,
+      "x1": 5.62,
+      "widthM": 5.596
+     },
+     "bounds": {
+      "min": [
+       0.022,
+       0,
+       -17.883
+      ],
+      "max": [
+       5.94,
+       12.647,
+       0.201
+      ]
+     },
+     "triangles": 1124,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 89
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 120,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 1192,
+       "triangleCount": 668
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 132,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 4,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 15,
+       "triangleCount": 15
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-groenburgwal-1-37-h4",
+   "category": "street-survey",
+   "name": "face-groenburgwal-1-37-h4",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-groenburgwal-1-37-h4.glb?asset=a782578b79044dc8",
+   "sha256": "a782578b79044dc87152d46d8c052eec1452034599938c86052d7e5129ba0d14",
+   "bytes": 47476,
+   "triangles": 1507,
+   "primitives": 9,
+   "instance": {
+    "anchor": [
+     4.898376282067979,
+     52.36877245396683
+    ],
+    "northOffsetDegrees": 109.27,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -2.919,
+     0,
+     -10.443
+    ],
+    "max": [
+     5.035,
+     15.69,
+     0.481
+    ]
+   },
+   "height": 15.69,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012178989"
+   ],
+   "replaces": [
+    "ordinary-0363100012178989"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8985169,
+        52.3687491
+       ],
+       [
+        4.8984032,
+        52.3687916
+       ],
+       [
+        4.8984041,
+        52.3687926
+       ],
+       [
+        4.8983905,
+        52.3687972
+       ],
+       [
+        4.8983764,
+        52.368781
+       ],
+       [
+        4.8983883,
+        52.368777
+       ],
+       [
+        4.8983621,
+        52.3687477
+       ],
+       [
+        4.8984884,
+        52.3687004
+       ],
+       [
+        4.8985089,
+        52.3687203
+       ],
+       [
+        4.8984934,
+        52.3687263
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "groenburgwal-178989",
+     "pandId": "0363100012178989",
+     "buildingId": "NL.IMBAG.Pand.0363100012178989",
+     "address": "Groenburgwal 37A",
+     "frontage": {
+      "x0": -2.919,
+      "x1": 2.919,
+      "widthM": 5.838
+     },
+     "bounds": {
+      "min": [
+       -2.919,
+       0,
+       -10.443
+      ],
+      "max": [
+       5.035,
+       15.69,
+       0.481
+      ]
+     },
+     "triangles": 1507,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 138
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 936
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 6
       }
      ]
     }

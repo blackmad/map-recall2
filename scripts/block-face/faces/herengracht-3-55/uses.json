@@ -1,0 +1,471 @@
+{
+ "street": "Nieuwe Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:58:08.952Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171828",
+   "addresses": [
+    "Nieuwe Herengracht 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 3-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000755504"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182267",
+   "addresses": [
+    "Nieuwe Herengracht 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 5-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000755506"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182268",
+   "addresses": [
+    "Nieuwe Herengracht 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 7",
+     "use": "woonfunctie",
+     "areaM2": 284,
+     "bagId": "0363010000755511"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182269",
+   "addresses": [
+    "Nieuwe Herengracht 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 9-H",
+     "use": "industriefunctie",
+     "areaM2": 77,
+     "bagId": "0363010000755512"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182352",
+   "addresses": [
+    "Nieuwe Herengracht 11A",
+    "Nieuwe Herengracht 11B",
+    "Nieuwe Herengracht 11C",
+    "Nieuwe Herengracht 11D",
+    "Nieuwe Herengracht 11E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 11A",
+     "use": "kantoorfunctie",
+     "areaM2": 200,
+     "bagId": "0363010000755514"
+    },
+    {
+     "address": "Nieuwe Herengracht 11B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000755515"
+    },
+    {
+     "address": "Nieuwe Herengracht 11C",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000755516"
+    },
+    {
+     "address": "Nieuwe Herengracht 11D",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000755517"
+    },
+    {
+     "address": "Nieuwe Herengracht 11E",
+     "use": "woonfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000755518"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11915827663,
+     "lngLat": [
+      4.9023715,
+      52.3662392
+     ],
+     "tags": {
+      "addr:housenumber": "11A",
+      "addr:street": "Nieuwe Herengracht",
+      "check_date": "2024-05-18",
+      "name": "Enter Enter",
+      "shop": "books"
+     },
+     "fetchedAt": "2026-11-10T08:58:08.952Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182348",
+   "addresses": [
+    "Nieuwe Herengracht 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 13-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000755519"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182349",
+   "addresses": [
+    "Nieuwe Herengracht 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 15-H",
+     "use": "industriefunctie",
+     "areaM2": 60,
+     "bagId": "0363010000755523"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182350",
+   "addresses": [
+    "Nieuwe Herengracht 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 17-H",
+     "use": "industriefunctie",
+     "areaM2": 65,
+     "bagId": "0363010000755526"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571655",
+   "addresses": [
+    "Nieuwe Herengracht 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 19-H",
+     "use": "woonfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000755550"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182344",
+   "addresses": [
+    "Nieuwe Herengracht 21C",
+    "Nieuwe Herengracht 21D",
+    "Nieuwe Herengracht 21A",
+    "Nieuwe Herengracht 21B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 21C",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000755557"
+    },
+    {
+     "address": "Nieuwe Herengracht 21D",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000755558"
+    },
+    {
+     "address": "Nieuwe Herengracht 21A",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000980155"
+    },
+    {
+     "address": "Nieuwe Herengracht 21B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000980152"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182345",
+   "addresses": [
+    "Nieuwe Herengracht 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 23-H",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000755559"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182346",
+   "addresses": [
+    "Nieuwe Herengracht 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 25-H",
+     "use": "woonfunctie",
+     "areaM2": 398,
+     "bagId": "0363010000755564"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182347",
+   "addresses": [
+    "Nieuwe Herengracht 29",
+    "Nieuwe Herengracht 29C",
+    "Nieuwe Herengracht 29D",
+    "Nieuwe Herengracht 29A",
+    "Nieuwe Herengracht 29B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 29",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000755570"
+    },
+    {
+     "address": "Nieuwe Herengracht 29C",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012064442"
+    },
+    {
+     "address": "Nieuwe Herengracht 29D",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012064443"
+    },
+    {
+     "address": "Nieuwe Herengracht 29A",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010012064444"
+    },
+    {
+     "address": "Nieuwe Herengracht 29B",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010012064445"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171832",
+   "addresses": [
+    "Nieuwe Herengracht 31A",
+    "Nieuwe Herengracht 31B",
+    "Nieuwe Herengracht 31C",
+    "Nieuwe Herengracht 31D",
+    "Nieuwe Herengracht 31E",
+    "Nieuwe Herengracht 31F",
+    "Nieuwe Herengracht 31G",
+    "Nieuwe Herengracht 31K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 31B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001166058"
+    },
+    {
+     "address": "Nieuwe Herengracht 31C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001166061"
+    },
+    {
+     "address": "Nieuwe Herengracht 31D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001166063"
+    },
+    {
+     "address": "Nieuwe Herengracht 31E",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001166065"
+    },
+    {
+     "address": "Nieuwe Herengracht 31F",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001166066"
+    },
+    {
+     "address": "Nieuwe Herengracht 31G",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001166067"
+    },
+    {
+     "address": "Nieuwe Herengracht 31K",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010001166068"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181767",
+   "addresses": [
+    "Nieuwe Herengracht 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 33",
+     "use": "woonfunctie",
+     "areaM2": 639,
+     "bagId": "0363010000755572"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181765",
+   "addresses": [
+    "Nieuwe Herengracht 35",
+    "Nieuwe Herengracht 35A",
+    "Nieuwe Herengracht 35B",
+    "Nieuwe Herengracht 35C",
+    "Nieuwe Herengracht 35D",
+    "Nieuwe Herengracht 35E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 35",
+     "use": "woonfunctie",
+     "areaM2": 302,
+     "bagId": "0363010000755573"
+    },
+    {
+     "address": "Nieuwe Herengracht 35A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010012133823"
+    },
+    {
+     "address": "Nieuwe Herengracht 35B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012133824"
+    },
+    {
+     "address": "Nieuwe Herengracht 35C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012133825"
+    },
+    {
+     "address": "Nieuwe Herengracht 35D",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012133826"
+    },
+    {
+     "address": "Nieuwe Herengracht 35E",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012133827"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181764",
+   "addresses": [
+    "Nieuwe Herengracht 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 37",
+     "use": "woonfunctie",
+     "areaM2": 359,
+     "bagId": "0363010000944767"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171831",
+   "addresses": [
+    "Nieuwe Herengracht 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 39-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000755574"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

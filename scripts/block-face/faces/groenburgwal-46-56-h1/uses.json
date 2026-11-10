@@ -1,0 +1,25 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:27:28.040Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177815",
+   "addresses": [
+    "Groenburgwal 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 56",
+     "use": "woonfunctie",
+     "areaM2": 216,
+     "bagId": "0363010000651594"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

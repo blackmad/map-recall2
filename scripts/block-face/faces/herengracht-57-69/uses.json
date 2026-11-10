@@ -1,0 +1,145 @@
+{
+ "street": "Nieuwe Herengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:03:11.688Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181870",
+   "addresses": [
+    "Nieuwe Herengracht 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 57",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000989244"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 27",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000989246"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012571662",
+   "addresses": [
+    "Nieuwe Herengracht 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 59-H",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010001993905"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181868",
+   "addresses": [
+    "Nieuwe Herengracht 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 61",
+     "use": "kantoorfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000755592"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181869",
+   "addresses": [
+    "Nieuwe Herengracht 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 63-H",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000755593"
+    },
+    {
+     "address": "Nieuwe Herengracht 63-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010012061541"
+    },
+    {
+     "address": "Nieuwe Herengracht 63-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010012083404"
+    },
+    {
+     "address": "Nieuwe Herengracht 63-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010012611681"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164941",
+   "addresses": [
+    "Nieuwe Herengracht 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 65-H",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010000755595"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170261",
+   "addresses": [
+    "Nieuwe Herengracht 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 67",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000755597"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182569",
+   "addresses": [
+    "Nieuwe Herengracht 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Herengracht 69",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000755598"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

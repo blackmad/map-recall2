@@ -1,0 +1,592 @@
+{
+ "street": "Nieuwmarkt",
+ "seed": "0363100012182299",
+ "members": [
+  "0363100012182299",
+  "0363100012182296",
+  "0363100012181820",
+  "0363100012181817",
+  "0363100012182303",
+  "0363100012181818",
+  "0363100012182302",
+  "0363100012181808"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012181807 15.5 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012170933",
+   "reason": "frontage 38.6 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012170934",
+   "reason": "frontage 43.0 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171482",
+   "reason": "frontage 74.1 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171912",
+   "reason": "frontage 103.1 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012172000",
+   "reason": "frontage 51.4 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012172001",
+   "reason": "frontage 54.8 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177906",
+   "reason": "frontage 41.0 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177908",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177925",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177926",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177930",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177938",
+   "reason": "frontage 47.8 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012165619",
+   "reason": "frontage 63.7 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012165620",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012182296"
+  },
+  {
+   "pandId": "0363100012165621",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012181808"
+  },
+  {
+   "pandId": "0363100012170932",
+   "reason": "frontage 33.4 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171307",
+   "reason": "frontage 69.0 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171394",
+   "reason": "frontage 103.9 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171397",
+   "reason": "frontage 99.9 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171398",
+   "reason": "frontage 93.1 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171399",
+   "reason": "frontage 113.6 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171401",
+   "reason": "frontage 87.3 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171403",
+   "reason": "frontage 83.8 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171478",
+   "reason": "frontage 46.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171479",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012181807"
+  },
+  {
+   "pandId": "0363100012171480",
+   "reason": "frontage 57.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171483",
+   "reason": "frontage 75.1 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171484",
+   "reason": "frontage 45.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171485",
+   "reason": "frontage 30.2 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171486",
+   "reason": "frontage 44.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171699",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171713",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171760",
+   "reason": "frontage 80.8 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012171860",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012171851"
+  },
+  {
+   "pandId": "0363100012172005",
+   "reason": "frontage 37.4 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012172008",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012171858"
+  },
+  {
+   "pandId": "0363100012177902",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177909",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012177902"
+  },
+  {
+   "pandId": "0363100012177929",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012177902"
+  },
+  {
+   "pandId": "0363100012177931",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177932",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012177902"
+  },
+  {
+   "pandId": "0363100012177933",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012177902"
+  },
+  {
+   "pandId": "0363100012177934",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012177902"
+  },
+  {
+   "pandId": "0363100012177935",
+   "reason": "frontage 31.2 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177936",
+   "reason": "frontage 36.1 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177939",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012171858"
+  },
+  {
+   "pandId": "0363100012177941",
+   "reason": "frontage 43.0 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177957",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181781",
+   "reason": "frontage 125.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181796",
+   "reason": "frontage 124.6 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182308",
+   "reason": "frontage 46.1 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182309",
+   "reason": "frontage 50.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182399",
+   "reason": "frontage 55.0 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182406",
+   "reason": "frontage 74.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182408",
+   "reason": "frontage 74.3 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182409",
+   "reason": "frontage 81.8 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182410",
+   "reason": "frontage 87.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182473",
+   "reason": "frontage 75.6 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177940",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012177944",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012177902"
+  },
+  {
+   "pandId": "0363100012177959",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012177902"
+  },
+  {
+   "pandId": "0363100012181793",
+   "reason": "frontage 109.2 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181794",
+   "reason": "frontage 106.8 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181805",
+   "reason": "frontage 57.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181806",
+   "reason": "frontage 34.0 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181809",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181810",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181811",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012181807"
+  },
+  {
+   "pandId": "0363100012181812",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012181807"
+  },
+  {
+   "pandId": "0363100012181814",
+   "reason": "frontage 32.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181815",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012181807"
+  },
+  {
+   "pandId": "0363100012181816",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012181819",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012181817"
+  },
+  {
+   "pandId": "0363100012182297",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012182296"
+  },
+  {
+   "pandId": "0363100012182298",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012182296"
+  },
+  {
+   "pandId": "0363100012182300",
+   "reason": "frontage 43.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182301",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012181808"
+  },
+  {
+   "pandId": "0363100012182401",
+   "reason": "frontage 44.6 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182403",
+   "reason": "frontage 40.0 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182404",
+   "reason": "frontage 44.2 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182585",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012182586"
+  },
+  {
+   "pandId": "0363100012182586",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012182587"
+  },
+  {
+   "pandId": "0363100012182696",
+   "reason": "frontage 100.2 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182697",
+   "reason": "frontage 98.3 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182698",
+   "reason": "frontage 100.4 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182699",
+   "reason": "frontage 98.7 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012183033",
+   "reason": "frontage 104.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012238836",
+   "reason": "frontage 103.0 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182799",
+   "reason": "frontage 73.0 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182874",
+   "reason": "frontage 109.3 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182875",
+   "reason": "frontage 111.3 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182957",
+   "reason": "frontage 102.9 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182958",
+   "reason": "frontage 107.4 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182959",
+   "reason": "frontage 109.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182960",
+   "reason": "frontage 98.4 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182961",
+   "reason": "frontage 95.4 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182962",
+   "reason": "frontage 104.7 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182963",
+   "reason": "frontage 88.4 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182964",
+   "reason": "frontage 83.7 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182965",
+   "reason": "frontage 83.7 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182966",
+   "reason": "frontage 89.4 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182967",
+   "reason": "frontage 117.3 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182968",
+   "reason": "frontage 106.5 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182969",
+   "reason": "frontage 118.9 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182970",
+   "reason": "frontage 94.7 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182973",
+   "reason": "frontage 99.3 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012182976",
+   "reason": "frontage 84.8 m from Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012183062",
+   "reason": "no frontage on Nieuwmarkt: No footprint edge faces Nieuwmarkt"
+  },
+  {
+   "pandId": "0363100012571659",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012181807"
+  },
+  {
+   "pandId": "0363100012571660",
+   "reason": "sightline to Nieuwmarkt crosses 0363100012181807"
+  },
+  {
+   "pandId": "0363100012171851",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171854",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171858",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181804",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182587",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182847",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182848",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182849",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182858",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182299",
+   "alongM": 0,
+   "widthM": 4.51,
+   "eavesM": 17.74,
+   "roofMaxM": 18.35,
+   "storeys3dbag": 5,
+   "builtYear": 1727,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182296",
+   "alongM": 5.54,
+   "widthM": 5.95,
+   "eavesM": 12.41,
+   "roofMaxM": 13.11,
+   "storeys3dbag": 4,
+   "builtYear": 1742,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012181820",
+   "alongM": 10.5,
+   "widthM": 3.98,
+   "eavesM": 11.49,
+   "roofMaxM": 11.94,
+   "storeys3dbag": 4,
+   "builtYear": 1702,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012181817",
+   "alongM": 15.72,
+   "widthM": 6.49,
+   "eavesM": 14.13,
+   "roofMaxM": 16.46,
+   "storeys3dbag": 5,
+   "builtYear": 1670,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182303",
+   "alongM": 22.38,
+   "widthM": 6.68,
+   "eavesM": 13.51,
+   "roofMaxM": 17.14,
+   "storeys3dbag": 5,
+   "builtYear": 1686,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012181818",
+   "alongM": 28.7,
+   "widthM": 6.03,
+   "eavesM": 13.69,
+   "roofMaxM": 15.1,
+   "storeys3dbag": 5,
+   "builtYear": 1745,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182302",
+   "alongM": 34.63,
+   "widthM": 5.87,
+   "eavesM": 12.48,
+   "roofMaxM": 15.76,
+   "storeys3dbag": 5,
+   "builtYear": 1762,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181808",
+   "alongM": 40.4,
+   "widthM": 5.75,
+   "eavesM": 13.29,
+   "roofMaxM": 17.12,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

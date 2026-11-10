@@ -1,0 +1,1469 @@
+{
+ "street": "Groenburgwal",
+ "seed": "0363100012178147",
+ "members": [
+  "0363100012171548"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of groenburgwal-1-37: 171549 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of groenburgwal-1-37: 171382 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165554",
+   "reason": "frontage 179.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171159",
+   "reason": "frontage 40.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171160",
+   "reason": "frontage 33.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171161",
+   "reason": "sightline to Groenburgwal crosses 0363100012171157"
+  },
+  {
+   "pandId": "0363100012171163",
+   "reason": "sightline to Groenburgwal crosses 0363100012177717"
+  },
+  {
+   "pandId": "0363100012171179",
+   "reason": "frontage 105.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012165008",
+   "reason": "frontage 125.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012165010",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012165016",
+   "reason": "frontage 114.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012165017",
+   "reason": "frontage 119.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012165371",
+   "reason": "frontage 137.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012165555",
+   "reason": "frontage 133.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012165556",
+   "reason": "frontage 189.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012165560",
+   "reason": "frontage 134.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012165561",
+   "reason": "frontage 149.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012169333",
+   "reason": "frontage 33.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012169334",
+   "reason": "sightline to Groenburgwal crosses 0363100012178714"
+  },
+  {
+   "pandId": "0363100012169337",
+   "reason": "sightline to Groenburgwal crosses 0363100012171382"
+  },
+  {
+   "pandId": "0363100012169339",
+   "reason": "sightline to Groenburgwal crosses 0363100012178905"
+  },
+  {
+   "pandId": "0363100012170912",
+   "reason": "frontage 237.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012170913",
+   "reason": "frontage 227.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012170914",
+   "reason": "frontage 247.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171171",
+   "reason": "frontage 148.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171172",
+   "reason": "frontage 103.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171173",
+   "reason": "frontage 103.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171175",
+   "reason": "frontage 103.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171180",
+   "reason": "frontage 129.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171182",
+   "reason": "frontage 127.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171183",
+   "reason": "frontage 129.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171185",
+   "reason": "frontage 35.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171186",
+   "reason": "frontage 40.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171187",
+   "reason": "sightline to Groenburgwal crosses 0363100012178895"
+  },
+  {
+   "pandId": "0363100012171188",
+   "reason": "frontage 38.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171199",
+   "reason": "sightline to Groenburgwal crosses 0363100012169341"
+  },
+  {
+   "pandId": "0363100012171200",
+   "reason": "frontage 106.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171204",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171205",
+   "reason": "frontage 204.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171206",
+   "reason": "frontage 160.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171210",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171248",
+   "reason": "frontage 183.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171306",
+   "reason": "frontage 225.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171374",
+   "reason": "sightline to Groenburgwal crosses 0363100012178893"
+  },
+  {
+   "pandId": "0363100012171375",
+   "reason": "sightline to Groenburgwal crosses 0363100012169340"
+  },
+  {
+   "pandId": "0363100012171376",
+   "reason": "frontage 32.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171377",
+   "reason": "sightline to Groenburgwal crosses 0363100012178986"
+  },
+  {
+   "pandId": "0363100012171378",
+   "reason": "frontage 38.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171379",
+   "reason": "frontage 40.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171381",
+   "reason": "frontage 32.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171318",
+   "reason": "frontage 233.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171383",
+   "reason": "frontage 65.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171384",
+   "reason": "frontage 47.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171451",
+   "reason": "frontage 73.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171452",
+   "reason": "frontage 82.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171543",
+   "reason": "frontage 67.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171544",
+   "reason": "frontage 71.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171545",
+   "reason": "frontage 38.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171546",
+   "reason": "sightline to Groenburgwal crosses 0363100012171547"
+  },
+  {
+   "pandId": "0363100012171550",
+   "reason": "frontage 63.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171551",
+   "reason": "frontage 63.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171552",
+   "reason": "frontage 62.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171553",
+   "reason": "frontage 69.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171554",
+   "reason": "frontage 40.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171556",
+   "reason": "sightline to Groenburgwal crosses 0363100012178147"
+  },
+  {
+   "pandId": "0363100012171557",
+   "reason": "sightline to Groenburgwal crosses 0363100012171556"
+  },
+  {
+   "pandId": "0363100012171559",
+   "reason": "frontage 63.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171560",
+   "reason": "frontage 69.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171561",
+   "reason": "frontage 86.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171625",
+   "reason": "frontage 107.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171626",
+   "reason": "frontage 132.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171627",
+   "reason": "frontage 115.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171628",
+   "reason": "frontage 79.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171629",
+   "reason": "frontage 169.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171636",
+   "reason": "frontage 164.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171637",
+   "reason": "frontage 126.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171638",
+   "reason": "frontage 166.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171700",
+   "reason": "frontage 181.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171712",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171995",
+   "reason": "frontage 210.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171996",
+   "reason": "frontage 213.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177718",
+   "reason": "frontage 49.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177719",
+   "reason": "frontage 45.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177720",
+   "reason": "frontage 43.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177745",
+   "reason": "frontage 47.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177746",
+   "reason": "frontage 40.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177747",
+   "reason": "frontage 36.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177772",
+   "reason": "frontage 33.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177775",
+   "reason": "frontage 42.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177776",
+   "reason": "frontage 35.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177778",
+   "reason": "sightline to Groenburgwal crosses 0363100012177779"
+  },
+  {
+   "pandId": "0363100012177779",
+   "reason": "sightline to Groenburgwal crosses 0363100012177821"
+  },
+  {
+   "pandId": "0363100012177780",
+   "reason": "sightline to Groenburgwal crosses 0363100012171157"
+  },
+  {
+   "pandId": "0363100012177781",
+   "reason": "frontage 31.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177782",
+   "reason": "sightline to Groenburgwal crosses 0363100012177777"
+  },
+  {
+   "pandId": "0363100012177783",
+   "reason": "frontage 32.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177791",
+   "reason": "sightline to Groenburgwal crosses 0363100012177792"
+  },
+  {
+   "pandId": "0363100012177792",
+   "reason": "sightline to Groenburgwal crosses 0363100012177814"
+  },
+  {
+   "pandId": "0363100012177818",
+   "reason": "sightline to Groenburgwal crosses 0363100012177815"
+  },
+  {
+   "pandId": "0363100012177822",
+   "reason": "frontage 40.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177823",
+   "reason": "frontage 40.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177824",
+   "reason": "frontage 40.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177826",
+   "reason": "frontage 41.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177856",
+   "reason": "sightline to Groenburgwal crosses 0363100012171157"
+  },
+  {
+   "pandId": "0363100012177857",
+   "reason": "frontage 41.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177858",
+   "reason": "frontage 41.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177827",
+   "reason": "frontage 106.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177871",
+   "reason": "frontage 162.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177773",
+   "reason": "frontage 47.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177774",
+   "reason": "frontage 47.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177785",
+   "reason": "frontage 30.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177790",
+   "reason": "frontage 37.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177819",
+   "reason": "frontage 42.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177825",
+   "reason": "sightline to Groenburgwal crosses 0363100012177791"
+  },
+  {
+   "pandId": "0363100012177721",
+   "reason": "frontage 41.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177722",
+   "reason": "frontage 38.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177860",
+   "reason": "frontage 127.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177866",
+   "reason": "frontage 104.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177872",
+   "reason": "frontage 116.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177874",
+   "reason": "frontage 125.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177875",
+   "reason": "frontage 120.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177876",
+   "reason": "frontage 122.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177877",
+   "reason": "frontage 104.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177878",
+   "reason": "frontage 103.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178095",
+   "reason": "frontage 42.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178096",
+   "reason": "frontage 47.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178097",
+   "reason": "frontage 47.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178191",
+   "reason": "sightline to Groenburgwal crosses 0363100012178449"
+  },
+  {
+   "pandId": "0363100012178192",
+   "reason": "sightline to Groenburgwal crosses 0363100012169335"
+  },
+  {
+   "pandId": "0363100012178098",
+   "reason": "frontage 37.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178099",
+   "reason": "frontage 48.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178100",
+   "reason": "frontage 46.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178101",
+   "reason": "frontage 35.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178102",
+   "reason": "frontage 34.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178107",
+   "reason": "frontage 37.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178108",
+   "reason": "frontage 37.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178109",
+   "reason": "frontage 40.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178110",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178114",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178115",
+   "reason": "frontage 52.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178116",
+   "reason": "frontage 43.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178117",
+   "reason": "frontage 39.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178144",
+   "reason": "frontage 45.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178145",
+   "reason": "frontage 49.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178146",
+   "reason": "frontage 49.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178149",
+   "reason": "frontage 34.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178151",
+   "reason": "frontage 62.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178152",
+   "reason": "frontage 43.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178153",
+   "reason": "frontage 55.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178154",
+   "reason": "frontage 37.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178155",
+   "reason": "frontage 114.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178156",
+   "reason": "frontage 117.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178157",
+   "reason": "frontage 110.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178158",
+   "reason": "frontage 110.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178213",
+   "reason": "frontage 47.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178214",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178215",
+   "reason": "frontage 59.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178216",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178217",
+   "reason": "sightline to Groenburgwal crosses 0363100012178225"
+  },
+  {
+   "pandId": "0363100012178218",
+   "reason": "frontage 36.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178219",
+   "reason": "frontage 42.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178220",
+   "reason": "frontage 59.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178221",
+   "reason": "frontage 37.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178223",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178226",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178304",
+   "reason": "frontage 91.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178359",
+   "reason": "sightline to Groenburgwal crosses 0363100012178372"
+  },
+  {
+   "pandId": "0363100012178364",
+   "reason": "sightline to Groenburgwal crosses 0363100012178639"
+  },
+  {
+   "pandId": "0363100012178367",
+   "reason": "sightline to Groenburgwal crosses 0363100012178362"
+  },
+  {
+   "pandId": "0363100012178368",
+   "reason": "sightline to Groenburgwal crosses 0363100012178635"
+  },
+  {
+   "pandId": "0363100012178373",
+   "reason": "sightline to Groenburgwal crosses 0363100012178371"
+  },
+  {
+   "pandId": "0363100012178374",
+   "reason": "sightline to Groenburgwal crosses 0363100012178626"
+  },
+  {
+   "pandId": "0363100012178447",
+   "reason": "frontage 34.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178448",
+   "reason": "sightline to Groenburgwal crosses 0363100012169340"
+  },
+  {
+   "pandId": "0363100012178449",
+   "reason": "sightline to Groenburgwal crosses 0363100012178445"
+  },
+  {
+   "pandId": "0363100012178624",
+   "reason": "frontage 39.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178625",
+   "reason": "sightline to Groenburgwal crosses 0363100012169336"
+  },
+  {
+   "pandId": "0363100012178627",
+   "reason": "sightline to Groenburgwal crosses 0363100012178626"
+  },
+  {
+   "pandId": "0363100012178628",
+   "reason": "sightline to Groenburgwal crosses 0363100012178374"
+  },
+  {
+   "pandId": "0363100012178629",
+   "reason": "sightline to Groenburgwal crosses 0363100012178374"
+  },
+  {
+   "pandId": "0363100012178630",
+   "reason": "frontage 30.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178631",
+   "reason": "frontage 36.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178632",
+   "reason": "frontage 34.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178633",
+   "reason": "frontage 38.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178634",
+   "reason": "sightline to Groenburgwal crosses 0363100012169336"
+  },
+  {
+   "pandId": "0363100012178636",
+   "reason": "frontage 39.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178646",
+   "reason": "frontage 192.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178648",
+   "reason": "frontage 190.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178649",
+   "reason": "frontage 191.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178653",
+   "reason": "frontage 172.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178657",
+   "reason": "frontage 188.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178305",
+   "reason": "frontage 161.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178306",
+   "reason": "frontage 164.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178307",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178571",
+   "reason": "frontage 104.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178640",
+   "reason": "frontage 197.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178641",
+   "reason": "frontage 193.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178643",
+   "reason": "frontage 202.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178644",
+   "reason": "frontage 204.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178645",
+   "reason": "frontage 206.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178647",
+   "reason": "frontage 185.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178650",
+   "reason": "frontage 159.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178651",
+   "reason": "frontage 152.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178652",
+   "reason": "frontage 140.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178656",
+   "reason": "frontage 169.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178908",
+   "reason": "sightline to Groenburgwal crosses 0363100012178906"
+  },
+  {
+   "pandId": "0363100012178985",
+   "reason": "sightline to Groenburgwal crosses 0363100012178893"
+  },
+  {
+   "pandId": "0363100012178987",
+   "reason": "frontage 30.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178658",
+   "reason": "frontage 190.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178900",
+   "reason": "sightline to Groenburgwal crosses 0363100012178899"
+  },
+  {
+   "pandId": "0363100012178901",
+   "reason": "sightline to Groenburgwal crosses 0363100012178899"
+  },
+  {
+   "pandId": "0363100012178905",
+   "reason": "sightline to Groenburgwal crosses 0363100012178909"
+  },
+  {
+   "pandId": "0363100012182241",
+   "reason": "frontage 107.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182242",
+   "reason": "frontage 132.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182243",
+   "reason": "frontage 132.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182244",
+   "reason": "frontage 107.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182245",
+   "reason": "frontage 113.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182246",
+   "reason": "frontage 132.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182247",
+   "reason": "frontage 87.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182319",
+   "reason": "frontage 93.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182320",
+   "reason": "frontage 112.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182321",
+   "reason": "frontage 94.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182322",
+   "reason": "frontage 103.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182323",
+   "reason": "frontage 109.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182324",
+   "reason": "frontage 110.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182325",
+   "reason": "frontage 113.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182326",
+   "reason": "frontage 113.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182327",
+   "reason": "frontage 112.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182328",
+   "reason": "frontage 111.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182329",
+   "reason": "frontage 135.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182330",
+   "reason": "frontage 134.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182331",
+   "reason": "frontage 133.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182332",
+   "reason": "frontage 132.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182333",
+   "reason": "frontage 156.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182503",
+   "reason": "frontage 112.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182504",
+   "reason": "frontage 132.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182768",
+   "reason": "frontage 33.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012186092",
+   "reason": "frontage 117.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012253758",
+   "reason": "sightline to Groenburgwal crosses 0363100012177814"
+  },
+  {
+   "pandId": "0363100012182505",
+   "reason": "frontage 152.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182506",
+   "reason": "frontage 132.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182507",
+   "reason": "frontage 145.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182508",
+   "reason": "frontage 149.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182509",
+   "reason": "frontage 137.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182510",
+   "reason": "frontage 149.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182511",
+   "reason": "frontage 136.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182578",
+   "reason": "frontage 138.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182579",
+   "reason": "frontage 102.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182766",
+   "reason": "frontage 41.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182767",
+   "reason": "sightline to Groenburgwal crosses 0363100012171549"
+  },
+  {
+   "pandId": "0363100012182903",
+   "reason": "frontage 128.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182904",
+   "reason": "frontage 170.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182905",
+   "reason": "frontage 177.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182906",
+   "reason": "frontage 137.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182907",
+   "reason": "frontage 140.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182908",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182909",
+   "reason": "frontage 154.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182910",
+   "reason": "frontage 145.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182911",
+   "reason": "frontage 123.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182912",
+   "reason": "frontage 158.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182913",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182983",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182984",
+   "reason": "frontage 150.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182985",
+   "reason": "frontage 148.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182986",
+   "reason": "frontage 123.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182987",
+   "reason": "frontage 122.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182988",
+   "reason": "frontage 187.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182989",
+   "reason": "frontage 203.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182990",
+   "reason": "frontage 208.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182991",
+   "reason": "frontage 191.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182992",
+   "reason": "frontage 227.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183051",
+   "reason": "frontage 189.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183052",
+   "reason": "frontage 209.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183053",
+   "reason": "frontage 197.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183054",
+   "reason": "frontage 208.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183055",
+   "reason": "frontage 208.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183056",
+   "reason": "frontage 152.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183057",
+   "reason": "frontage 235.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183058",
+   "reason": "frontage 188.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183059",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012183060",
+   "reason": "frontage 202.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012185844",
+   "reason": "no frontage on Groenburgwal: No footprint edge faces Groenburgwal"
+  },
+  {
+   "pandId": "0363100012251237",
+   "reason": "frontage 149.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012251338",
+   "reason": "frontage 150.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254435",
+   "reason": "frontage 203.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254436",
+   "reason": "frontage 197.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254437",
+   "reason": "frontage 192.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254438",
+   "reason": "frontage 186.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254439",
+   "reason": "frontage 203.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254440",
+   "reason": "frontage 197.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254441",
+   "reason": "frontage 191.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254442",
+   "reason": "frontage 185.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254443",
+   "reason": "frontage 202.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254444",
+   "reason": "frontage 196.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254445",
+   "reason": "frontage 190.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254446",
+   "reason": "frontage 184.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254447",
+   "reason": "frontage 201.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254448",
+   "reason": "frontage 196.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254449",
+   "reason": "frontage 190.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254450",
+   "reason": "frontage 184.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254451",
+   "reason": "frontage 169.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254452",
+   "reason": "frontage 163.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254453",
+   "reason": "frontage 157.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254454",
+   "reason": "frontage 168.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254455",
+   "reason": "frontage 163.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254456",
+   "reason": "frontage 157.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254457",
+   "reason": "frontage 167.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254458",
+   "reason": "frontage 161.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254459",
+   "reason": "frontage 156.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254460",
+   "reason": "frontage 167.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254461",
+   "reason": "frontage 161.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254462",
+   "reason": "frontage 155.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254463",
+   "reason": "frontage 107.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254464",
+   "reason": "frontage 106.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254465",
+   "reason": "frontage 106.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254466",
+   "reason": "frontage 105.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254467",
+   "reason": "frontage 104.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012254468",
+   "reason": "frontage 104.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012571650",
+   "reason": "sightline to Groenburgwal crosses 0363100012177817"
+  },
+  {
+   "pandId": "0363100012571557",
+   "reason": "frontage 104.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012571558",
+   "reason": "frontage 100.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012571559",
+   "reason": "frontage 101.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012571643",
+   "reason": "frontage 33.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012571644",
+   "reason": "sightline to Groenburgwal crosses 0363100012178899"
+  },
+  {
+   "pandId": "0363100012571675",
+   "reason": "frontage 153.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171157",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171158",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171165",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169338",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169341",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171184",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177717",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171385",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171386",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171555",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177777",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177814",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177815",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177816",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177817",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177820",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177821",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178111",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178112",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178113",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178142",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178143",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178148",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178222",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178224",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178225",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178714",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178715",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178895",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178896",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178897",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178899",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178909",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253757",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012186088",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012171548",
+   "alongM": 40.67,
+   "widthM": 5.57,
+   "eavesM": 13.43,
+   "roofMaxM": 15.58,
+   "storeys3dbag": 4,
+   "builtYear": 1766,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "groenburgwal-1-37"
+}

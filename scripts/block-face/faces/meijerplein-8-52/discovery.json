@@ -1,0 +1,184 @@
+{
+ "street": "Jonas Daniël Meijerplein",
+ "seed": "0363100012182040",
+ "members": [
+  "0363100012182036",
+  "0363100012165558",
+  "0363100012182040"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012182037 24.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012171831",
+   "reason": "frontage 81.9 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012171832",
+   "reason": "frontage 103.4 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012171835",
+   "reason": "frontage 67.5 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012171836",
+   "reason": "frontage 102.9 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012171837",
+   "reason": "frontage 66.2 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012171838",
+   "reason": "frontage 77.0 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012171839",
+   "reason": "frontage 54.0 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012171840",
+   "reason": "frontage 53.7 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012181764",
+   "reason": "frontage 81.5 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012181765",
+   "reason": "frontage 92.7 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012181766",
+   "reason": "frontage 92.2 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012181767",
+   "reason": "frontage 96.7 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012181978",
+   "reason": "frontage 72.3 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012181979",
+   "reason": "frontage 67.3 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012182039",
+   "reason": "sightline to Jonas Daniël Meijerplein crosses 0363100012182040"
+  },
+  {
+   "pandId": "0363100012182345",
+   "reason": "frontage 124.7 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012182346",
+   "reason": "frontage 111.1 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012182347",
+   "reason": "frontage 112.0 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012182354",
+   "reason": "frontage 72.7 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012182451",
+   "reason": "frontage 91.5 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012182512",
+   "reason": "frontage 71.4 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012571673",
+   "reason": "frontage 37.2 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012571674",
+   "reason": "frontage 52.3 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012169740",
+   "reason": "frontage 55.0 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012170255",
+   "reason": "sightline to Jonas Daniël Meijerplein crosses 0363100012181882"
+  },
+  {
+   "pandId": "0363100012170258",
+   "reason": "frontage 44.0 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012181859",
+   "reason": "frontage 44.3 m from Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012181980",
+   "reason": "sightline to Jonas Daniël Meijerplein crosses 0363100012182036"
+  },
+  {
+   "pandId": "0363100012181981",
+   "reason": "no frontage on Jonas Daniël Meijerplein: No footprint edge faces Jonas Daniël Meijerplein"
+  },
+  {
+   "pandId": "0363100012170253",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181880",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181882",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182036",
+   "alongM": -25.15,
+   "widthM": 5.1,
+   "eavesM": 13.09,
+   "roofMaxM": 17.09,
+   "storeys3dbag": 0,
+   "builtYear": 1905,
+   "uncertainty": [
+    "Possible partial selected frontage: a near-parallel outward facade lies beyond a rejected native jog of at most 1m. Inspect sources and explicitly review a bounded jog-limit override."
+   ]
+  },
+  {
+   "pandId": "0363100012165558",
+   "alongM": -18.13,
+   "widthM": 8.93,
+   "eavesM": 15.76,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 5,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182040",
+   "alongM": 0,
+   "widthM": 7.1,
+   "eavesM": 12.79,
+   "roofMaxM": 15.7,
+   "storeys3dbag": 5,
+   "builtYear": 1984,
+   "uncertainty": []
+  }
+ ]
+}

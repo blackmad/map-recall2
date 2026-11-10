@@ -1,0 +1,708 @@
+{
+ "street": "Geldersekade",
+ "seed": "0363100012182401",
+ "members": [
+  "0363100012182401",
+  "0363100012182403",
+  "0363100012171485",
+  "0363100012171479",
+  "0363100012181812",
+  "0363100012181811",
+  "0363100012181807"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012182473 34.0 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012170935",
+   "reason": "sightline to Geldersekade crosses 0363100012170938"
+  },
+  {
+   "pandId": "0363100012170936",
+   "reason": "sightline to Geldersekade crosses 0363100012171324"
+  },
+  {
+   "pandId": "0363100012171481",
+   "reason": "sightline to Geldersekade crosses 0363100012571648"
+  },
+  {
+   "pandId": "0363100012171482",
+   "reason": "frontage 30.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171487",
+   "reason": "sightline to Geldersekade crosses 0363100012171490"
+  },
+  {
+   "pandId": "0363100012171488",
+   "reason": "sightline to Geldersekade crosses 0363100012171487"
+  },
+  {
+   "pandId": "0363100012171489",
+   "reason": "sightline to Geldersekade crosses 0363100012171487"
+  },
+  {
+   "pandId": "0363100012171754",
+   "reason": "frontage 57.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171755",
+   "reason": "frontage 52.9 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171756",
+   "reason": "sightline to Geldersekade crosses 0363100012171488"
+  },
+  {
+   "pandId": "0363100012171757",
+   "reason": "sightline to Geldersekade crosses 0363100012171487"
+  },
+  {
+   "pandId": "0363100012171758",
+   "reason": "frontage 65.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171759",
+   "reason": "frontage 66.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171763",
+   "reason": "frontage 40.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171764",
+   "reason": "frontage 36.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171765",
+   "reason": "frontage 47.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171912",
+   "reason": "frontage 34.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012172000",
+   "reason": "sightline to Geldersekade crosses 0363100012182308"
+  },
+  {
+   "pandId": "0363100012172001",
+   "reason": "sightline to Geldersekade crosses 0363100012182309"
+  },
+  {
+   "pandId": "0363100012172002",
+   "reason": "sightline to Geldersekade crosses 0363100012182307"
+  },
+  {
+   "pandId": "0363100012172003",
+   "reason": "sightline to Geldersekade crosses 0363100012182304"
+  },
+  {
+   "pandId": "0363100012172004",
+   "reason": "sightline to Geldersekade crosses 0363100012182306"
+  },
+  {
+   "pandId": "0363100012172009",
+   "reason": "frontage 52.9 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012172012",
+   "reason": "frontage 40.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012172014",
+   "reason": "sightline to Geldersekade crosses 0363100012182472"
+  },
+  {
+   "pandId": "0363100012165619",
+   "reason": "frontage 64.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012165620",
+   "reason": "frontage 33.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171478",
+   "reason": "frontage 38.0 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171480",
+   "reason": "frontage 51.2 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171483",
+   "reason": "frontage 42.0 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171484",
+   "reason": "frontage 34.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171486",
+   "reason": "frontage 30.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171699",
+   "reason": "frontage 82.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012171760",
+   "reason": "frontage 49.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012172005",
+   "reason": "sightline to Geldersekade crosses 0363100012170932"
+  },
+  {
+   "pandId": "0363100012177906",
+   "reason": "sightline to Geldersekade crosses 0363100012170932"
+  },
+  {
+   "pandId": "0363100012177921",
+   "reason": "frontage 34.0 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012177925",
+   "reason": "frontage 31.4 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012177926",
+   "reason": "frontage 38.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012177927",
+   "reason": "frontage 44.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012177938",
+   "reason": "sightline to Geldersekade crosses 0363100012170934"
+  },
+  {
+   "pandId": "0363100012177941",
+   "reason": "sightline to Geldersekade crosses 0363100012170933"
+  },
+  {
+   "pandId": "0363100012177962",
+   "reason": "frontage 41.0 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012177963",
+   "reason": "frontage 51.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012177995",
+   "reason": "frontage 40.6 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012178007",
+   "reason": "frontage 51.6 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181774",
+   "reason": "frontage 67.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181775",
+   "reason": "frontage 62.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181776",
+   "reason": "frontage 45.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181777",
+   "reason": "frontage 60.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181778",
+   "reason": "frontage 67.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181779",
+   "reason": "frontage 64.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181780",
+   "reason": "frontage 60.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181781",
+   "reason": "frontage 73.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181782",
+   "reason": "frontage 71.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181783",
+   "reason": "frontage 38.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181784",
+   "reason": "frontage 42.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181785",
+   "reason": "frontage 35.9 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181786",
+   "reason": "frontage 41.0 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181787",
+   "reason": "frontage 78.2 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181788",
+   "reason": "frontage 74.9 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181790",
+   "reason": "frontage 83.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181796",
+   "reason": "frontage 69.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181797",
+   "reason": "frontage 64.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012177909",
+   "reason": "sightline to Geldersekade crosses 0363100012171858"
+  },
+  {
+   "pandId": "0363100012177931",
+   "reason": "sightline to Geldersekade crosses 0363100012177902"
+  },
+  {
+   "pandId": "0363100012177934",
+   "reason": "sightline to Geldersekade crosses 0363100012171858"
+  },
+  {
+   "pandId": "0363100012177935",
+   "reason": "sightline to Geldersekade crosses 0363100012172008"
+  },
+  {
+   "pandId": "0363100012177936",
+   "reason": "sightline to Geldersekade crosses 0363100012172008"
+  },
+  {
+   "pandId": "0363100012177939",
+   "reason": "sightline to Geldersekade crosses 0363100012172008"
+  },
+  {
+   "pandId": "0363100012177940",
+   "reason": "sightline to Geldersekade crosses 0363100012172008"
+  },
+  {
+   "pandId": "0363100012177959",
+   "reason": "frontage 32.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181793",
+   "reason": "frontage 75.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181794",
+   "reason": "frontage 66.6 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181806",
+   "reason": "frontage 46.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181808",
+   "reason": "no frontage on Geldersekade: No footprint edge faces Geldersekade"
+  },
+  {
+   "pandId": "0363100012181809",
+   "reason": "frontage 42.0 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181810",
+   "reason": "frontage 32.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181814",
+   "reason": "frontage 32.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181815",
+   "reason": "sightline to Geldersekade crosses 0363100012181807"
+  },
+  {
+   "pandId": "0363100012182406",
+   "reason": "sightline to Geldersekade crosses 0363100012182473"
+  },
+  {
+   "pandId": "0363100012182408",
+   "reason": "sightline to Geldersekade crosses 0363100012182409"
+  },
+  {
+   "pandId": "0363100012182978",
+   "reason": "frontage 85.6 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182979",
+   "reason": "frontage 45.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181816",
+   "reason": "frontage 37.2 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181817",
+   "reason": "no frontage on Geldersekade: No footprint edge faces Geldersekade"
+  },
+  {
+   "pandId": "0363100012181818",
+   "reason": "no frontage on Geldersekade: No footprint edge faces Geldersekade"
+  },
+  {
+   "pandId": "0363100012181819",
+   "reason": "frontage 40.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012181820",
+   "reason": "no frontage on Geldersekade: No footprint edge faces Geldersekade"
+  },
+  {
+   "pandId": "0363100012182296",
+   "reason": "no frontage on Geldersekade: No footprint edge faces Geldersekade"
+  },
+  {
+   "pandId": "0363100012182297",
+   "reason": "sightline to Geldersekade crosses 0363100012182298"
+  },
+  {
+   "pandId": "0363100012182298",
+   "reason": "sightline to Geldersekade crosses 0363100012182299"
+  },
+  {
+   "pandId": "0363100012182300",
+   "reason": "frontage 43.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182302",
+   "reason": "frontage 51.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182303",
+   "reason": "no frontage on Geldersekade: No footprint edge faces Geldersekade"
+  },
+  {
+   "pandId": "0363100012182404",
+   "reason": "sightline to Geldersekade crosses 0363100012182401"
+  },
+  {
+   "pandId": "0363100012182799",
+   "reason": "frontage 68.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182800",
+   "reason": "frontage 110.6 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182872",
+   "reason": "frontage 98.0 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182874",
+   "reason": "frontage 109.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182875",
+   "reason": "frontage 111.4 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182876",
+   "reason": "frontage 113.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182956",
+   "reason": "frontage 115.2 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182958",
+   "reason": "frontage 108.2 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182959",
+   "reason": "frontage 109.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182960",
+   "reason": "frontage 98.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182962",
+   "reason": "frontage 104.6 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182963",
+   "reason": "frontage 90.9 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182964",
+   "reason": "frontage 85.9 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182965",
+   "reason": "frontage 83.7 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182966",
+   "reason": "frontage 89.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182970",
+   "reason": "frontage 94.6 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182974",
+   "reason": "frontage 103.5 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182976",
+   "reason": "frontage 84.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012182980",
+   "reason": "frontage 73.0 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012183033",
+   "reason": "frontage 59.9 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012183105",
+   "reason": "frontage 55.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012183108",
+   "reason": "frontage 30.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012238836",
+   "reason": "frontage 42.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012571543",
+   "reason": "sightline to Geldersekade crosses 0363100012172015"
+  },
+  {
+   "pandId": "0363100012571545",
+   "reason": "sightline to Geldersekade crosses 0363100012182305"
+  },
+  {
+   "pandId": "0363100012571664",
+   "reason": "frontage 77.4 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012571665",
+   "reason": "frontage 81.1 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012571666",
+   "reason": "frontage 76.0 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012571667",
+   "reason": "frontage 80.3 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012571668",
+   "reason": "frontage 85.8 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012241718",
+   "reason": "frontage 106.6 m from Geldersekade"
+  },
+  {
+   "pandId": "0363100012571659",
+   "reason": "sightline to Geldersekade crosses 0363100012181807"
+  },
+  {
+   "pandId": "0363100012571660",
+   "reason": "sightline to Geldersekade crosses 0363100012181807"
+  },
+  {
+   "pandId": "0363100012170933",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170934",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170938",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171324",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172015",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170932",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171850",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171851",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171858",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172008",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177902",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177932",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012177933",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182304",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182305",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182306",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182307",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182308",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182309",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182399",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182400",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182472",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182299",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182401",
+   "alongM": 0,
+   "widthM": 6.04,
+   "eavesM": 16.22,
+   "roofMaxM": 18,
+   "storeys3dbag": 5,
+   "builtYear": 1751,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182403",
+   "alongM": 5.35,
+   "widthM": 4.67,
+   "eavesM": 16.23,
+   "roofMaxM": 16.43,
+   "storeys3dbag": 0,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171485",
+   "alongM": 13.85,
+   "widthM": 12.32,
+   "eavesM": 16.29,
+   "roofMaxM": 19.98,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171479",
+   "alongM": 22.91,
+   "widthM": 5.61,
+   "eavesM": 15.07,
+   "roofMaxM": 15.1,
+   "storeys3dbag": 3,
+   "builtYear": 1637,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181812",
+   "alongM": 28.94,
+   "widthM": 6.45,
+   "eavesM": 16.22,
+   "roofMaxM": 21.15,
+   "storeys3dbag": 5,
+   "builtYear": 1615,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181811",
+   "alongM": 35.25,
+   "widthM": 6.17,
+   "eavesM": 12.5,
+   "roofMaxM": 15.72,
+   "storeys3dbag": 5,
+   "builtYear": 1712,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181807",
+   "alongM": 41.29,
+   "widthM": 5.84,
+   "eavesM": 12.1,
+   "roofMaxM": 14.54,
+   "storeys3dbag": 5,
+   "builtYear": 1728,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

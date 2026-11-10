@@ -1,0 +1,32 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:34:07.849Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178989",
+   "addresses": [
+    "Groenburgwal 37A",
+    "Groenburgwal 37B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 37A",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000768964"
+    },
+    {
+     "address": "Groenburgwal 37B",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000769026"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

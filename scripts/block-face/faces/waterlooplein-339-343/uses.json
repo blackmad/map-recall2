@@ -1,0 +1,146 @@
+{
+ "street": "Waterlooplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:09:24.642Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181763",
+   "addresses": [
+    "Waterlooplein 339",
+    "Waterlooplein 341"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 339",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000863031"
+    },
+    {
+     "address": "Waterlooplein 341",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010000863032"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4997831351,
+     "lngLat": [
+      4.902371,
+      52.3667071
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Gastronomia di Gianni"
+     },
+     "fetchedAt": "2026-11-10T09:09:24.642Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182351",
+   "addresses": [
+    "Waterlooplein 343D",
+    "Waterlooplein 343A",
+    "Waterlooplein 343B",
+    "Waterlooplein 343C",
+    "Waterlooplein 343E",
+    "Waterlooplein 343F",
+    "Waterlooplein 343G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 343D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010011118391"
+    },
+    {
+     "address": "Waterlooplein 343A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001172458"
+    },
+    {
+     "address": "Waterlooplein 343B",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001172459"
+    },
+    {
+     "address": "Waterlooplein 343C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001172460"
+    },
+    {
+     "address": "Waterlooplein 343E",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010001172462"
+    },
+    {
+     "address": "Waterlooplein 343F",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001172463"
+    },
+    {
+     "address": "Waterlooplein 343G",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010001172464"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741083409,
+     "lngLat": [
+      4.9022485,
+      52.36665
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "345",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "amenity": "cafe",
+      "name": "Green House Namaste",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "yes",
+      "website": "https://www.greenhouse.org/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:09:24.642Z",
+     "match": "frontage",
+     "distanceM": 3.7
+    },
+    {
+     "type": "node",
+     "id": 4997831350,
+     "lngLat": [
+      4.9022271,
+      52.3666625
+     ],
+     "tags": {
+      "amenity": "cannabis",
+      "name": "Green House"
+     },
+     "fetchedAt": "2026-11-10T09:09:24.642Z",
+     "match": "frontage",
+     "distanceM": 2.7
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+{
+ "street": "Recht Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:27:47.625Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181809",
+   "addresses": [
+    "Recht Boomssloot 14A",
+    "Recht Boomssloot 14B",
+    "Recht Boomssloot 14C",
+    "Recht Boomssloot 14D",
+    "Recht Boomssloot 14E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 14A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000788651"
+    },
+    {
+     "address": "Recht Boomssloot 14B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000788652"
+    },
+    {
+     "address": "Recht Boomssloot 14C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000788653"
+    },
+    {
+     "address": "Recht Boomssloot 14D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000788654"
+    },
+    {
+     "address": "Recht Boomssloot 14E",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000788655"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171478",
+   "addresses": [
+    "Recht Boomssloot 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 12-H",
+     "use": "industriefunctie",
+     "areaM2": 39,
+     "bagId": "0363010000788646"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171484",
+   "addresses": [
+    "Recht Boomssloot 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 10",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010001015078"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171486",
+   "addresses": [
+    "Recht Boomssloot 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 8-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000788630"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

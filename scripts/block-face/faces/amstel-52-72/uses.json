@@ -1,0 +1,105 @@
+{
+ "street": "Nieuwe Amstelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:42:04.370Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182359",
+   "addresses": [
+    "Nieuwe Amstelstraat 68",
+    "Nieuwe Amstelstraat 70",
+    "Nieuwe Amstelstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Amstelstraat 68",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000755364"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 70",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000755366"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 72",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000755368"
+    },
+    {
+     "address": "Waterlooplein 337",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001994104"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182358",
+   "addresses": [
+    "Nieuwe Amstelstraat 60",
+    "Nieuwe Amstelstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Amstelstraat 62",
+     "use": "industriefunctie",
+     "areaM2": 25,
+     "bagId": "0363010000755362"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 60",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001015028"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182357",
+   "addresses": [
+    "Nieuwe Amstelstraat 52",
+    "Nieuwe Amstelstraat 54",
+    "Nieuwe Amstelstraat 56",
+    "Nieuwe Amstelstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Amstelstraat 52",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000755349"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 54",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000755351"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 56",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000755353"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 58",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000755355"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

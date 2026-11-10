@@ -1,0 +1,624 @@
+{
+ "street": "Waterlooplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:08:42.838Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182512",
+   "addresses": [
+    "Waterlooplein 239",
+    "Waterlooplein 241",
+    "Waterlooplein 243",
+    "Waterlooplein 245",
+    "Waterlooplein 247",
+    "Waterlooplein 249",
+    "Waterlooplein 251",
+    "Waterlooplein 253",
+    "Waterlooplein 255",
+    "Waterlooplein 257",
+    "Waterlooplein 259",
+    "Waterlooplein 261",
+    "Waterlooplein 263",
+    "Waterlooplein 265",
+    "Waterlooplein 267",
+    "Waterlooplein 269",
+    "Waterlooplein 271",
+    "Waterlooplein 273",
+    "Waterlooplein 275",
+    "Waterlooplein 277",
+    "Waterlooplein 279",
+    "Waterlooplein 281",
+    "Waterlooplein 283",
+    "Waterlooplein 285",
+    "Waterlooplein 287",
+    "Waterlooplein 289",
+    "Waterlooplein 291",
+    "Waterlooplein 293",
+    "Waterlooplein 295",
+    "Waterlooplein 297",
+    "Waterlooplein 299",
+    "Waterlooplein 301",
+    "Waterlooplein 303",
+    "Waterlooplein 305",
+    "Waterlooplein 307",
+    "Waterlooplein 309A",
+    "Waterlooplein 309B",
+    "Waterlooplein 309C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Amstelstraat 14",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 262,
+     "bagId": "0363010000755317"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000755318"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000755319"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000755320"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000755322"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000755324"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 25",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000755325"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000755327"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000755329"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000755331"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000755335"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000755337"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 38",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000755339"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 40",
+     "use": "industriefunctie",
+     "areaM2": 51,
+     "bagId": "0363010000755341"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 42",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000755343"
+    },
+    {
+     "address": "Turfsteeg 4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000832309"
+    },
+    {
+     "address": "Waterlooplein 239",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000862982"
+    },
+    {
+     "address": "Waterlooplein 241",
+     "use": "winkelfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000862983"
+    },
+    {
+     "address": "Waterlooplein 243",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000862984"
+    },
+    {
+     "address": "Waterlooplein 245",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000862985"
+    },
+    {
+     "address": "Waterlooplein 247",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000862986"
+    },
+    {
+     "address": "Waterlooplein 249",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000862987"
+    },
+    {
+     "address": "Waterlooplein 251",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000862988"
+    },
+    {
+     "address": "Waterlooplein 253",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000862989"
+    },
+    {
+     "address": "Waterlooplein 255",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000862990"
+    },
+    {
+     "address": "Waterlooplein 257",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000862991"
+    },
+    {
+     "address": "Waterlooplein 259",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000862992"
+    },
+    {
+     "address": "Waterlooplein 261",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000862993"
+    },
+    {
+     "address": "Waterlooplein 263",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000862994"
+    },
+    {
+     "address": "Waterlooplein 265",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000862995"
+    },
+    {
+     "address": "Waterlooplein 267",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000862996"
+    },
+    {
+     "address": "Waterlooplein 269",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000862997"
+    },
+    {
+     "address": "Waterlooplein 271",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000862998"
+    },
+    {
+     "address": "Waterlooplein 273",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000862999"
+    },
+    {
+     "address": "Waterlooplein 275",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000863000"
+    },
+    {
+     "address": "Waterlooplein 277",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000863001"
+    },
+    {
+     "address": "Waterlooplein 279",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000863002"
+    },
+    {
+     "address": "Waterlooplein 281",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000863003"
+    },
+    {
+     "address": "Waterlooplein 283",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000863004"
+    },
+    {
+     "address": "Waterlooplein 285",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000863005"
+    },
+    {
+     "address": "Waterlooplein 287",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000863006"
+    },
+    {
+     "address": "Waterlooplein 291",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000863007"
+    },
+    {
+     "address": "Waterlooplein 293",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000863008"
+    },
+    {
+     "address": "Waterlooplein 295",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000863009"
+    },
+    {
+     "address": "Waterlooplein 297",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000863010"
+    },
+    {
+     "address": "Waterlooplein 299",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000863011"
+    },
+    {
+     "address": "Waterlooplein 301",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000863012"
+    },
+    {
+     "address": "Waterlooplein 303",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000863013"
+    },
+    {
+     "address": "Waterlooplein 305",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000863014"
+    },
+    {
+     "address": "Waterlooplein 307",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000863015"
+    },
+    {
+     "address": "Waterlooplein 309A",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000863016"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000944070"
+    },
+    {
+     "address": "Waterlooplein 309B",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000989564"
+    },
+    {
+     "address": "Waterlooplein 309C",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000989565"
+    },
+    {
+     "address": "Waterlooplein 289",
+     "use": "industriefunctie",
+     "areaM2": 363,
+     "bagId": "0363010012067301"
+    }
+   ],
+   "units": 55,
+   "osm": [
+    {
+     "type": "node",
+     "id": 60868596,
+     "lngLat": [
+      4.9024542,
+      52.3670614
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "289",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "amenity": "bicycle_rental",
+      "name": "MacBike",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://www.macbike.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:08:42.838Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4997831353,
+     "lngLat": [
+      4.9027263,
+      52.3672545
+     ],
+     "tags": {
+      "name": "Sterk",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-11-10T09:08:42.838Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 4997831354,
+     "lngLat": [
+      4.9028429,
+      52.3673574
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "San Giovanni",
+      "toilets:wheelchair": "no",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:08:42.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182355",
+   "addresses": [
+    "Waterlooplein 311",
+    "Waterlooplein 313",
+    "Waterlooplein 315",
+    "Waterlooplein 317"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 315",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000863019"
+    },
+    {
+     "address": "Waterlooplein 317",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000863020"
+    },
+    {
+     "address": "Waterlooplein 311",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000863017"
+    },
+    {
+     "address": "Waterlooplein 313",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000863018"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741066816,
+     "lngLat": [
+      4.9023882,
+      52.3670132
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "317",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "name": "Mini Bazaar",
+      "shop": "convenience",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:08:42.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182356",
+   "addresses": [
+    "Waterlooplein 319",
+    "Waterlooplein 321",
+    "Waterlooplein 323",
+    "Waterlooplein 325"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 319",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000863021"
+    },
+    {
+     "address": "Waterlooplein 321",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000863022"
+    },
+    {
+     "address": "Waterlooplein 323",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000863023"
+    },
+    {
+     "address": "Waterlooplein 325",
+     "use": "winkelfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000863024"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741066899,
+     "lngLat": [
+      4.9023339,
+      52.3669711
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "325",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "name": "Billy Fame",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:08:42.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182360",
+   "addresses": [
+    "Waterlooplein 327",
+    "Waterlooplein 329",
+    "Waterlooplein 331",
+    "Waterlooplein 333"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 329",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000863026"
+    },
+    {
+     "address": "Waterlooplein 331",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010000863027"
+    },
+    {
+     "address": "Waterlooplein 333",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000863028"
+    },
+    {
+     "address": "Waterlooplein 327",
+     "use": "winkelfunctie",
+     "areaM2": 35,
+     "bagId": "0363010001016457"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741066908,
+     "lngLat": [
+      4.9022837,
+      52.3669259
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "327",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "amenity": "fast_food",
+      "name": "Tokoman",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T09:08:42.838Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "groenburgwal-1-37-h1",
+ "street": "Groenburgwal",
+ "sources": [
+  {
+   "id": "strip-2025-01-08",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "image": "staging/block-face/groenburgwal-1-37-h1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Groenburgwal 15A (strip 2025-01-08): an orange-red brick cornice house with a gabled dormer; its neighbours 11A (a 1980s block) and 17 (behind a tree) are not in this run; spec scripts/block-face/buurten/zuiderkerkbuurt-hand-runs.json"
+ },
+ "types": [
+  "jordaan-1850-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012171548",
+   "slug": "groenburgwal-171548",
+   "address": "Groenburgwal 15A",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "crown": "dormer",
+    "measuredPalette": {
+     "brick": "#694229",
+     "evidence": "strip 2025-01-08 span 1635-1858: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Groenburgwal 15A: three axes, shop ground with red doors to 3.8 m, three storeys of windows, a white cornice at 13.4 m and a gabled brick dormer over the middle to about 16 m; strip 2025-01-08"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "lonePand": {
+   "evidence": "hand placement, a one-off front between held neighbours: Groenburgwal 15A (strip 2025-01-08): an orange-red brick cornice house with a gabled dormer; its neighbours 11A (a 1980s block) and 17 (behind a tree) are not in this run"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012171548",
+    "stripRow": 505,
+    "evidence": "hand placement: cornice top read at 13.4 m on the strip 2025-01-08"
+   }
+  ]
+ }
+}

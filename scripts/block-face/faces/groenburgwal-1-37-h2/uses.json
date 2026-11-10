@@ -1,0 +1,49 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:34:07.849Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178903",
+   "addresses": [
+    "Groenburgwal 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 27",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 601,
+     "bagId": "0363010000651528"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 496436641,
+     "lngLat": [
+      4.8986256,
+      52.3689809
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27",
+      "addr:postcode": "1011HR",
+      "addr:street": "Groenburgwal",
+      "name": "Rembrandtplein Hotel",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "hotel",
+      "website": "https://rembrandtpleinhotel.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:34:07.849Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

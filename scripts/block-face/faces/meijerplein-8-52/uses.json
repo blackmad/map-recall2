@@ -1,0 +1,271 @@
+{
+ "street": "Jonas Daniël Meijerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:30:45.091Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182036",
+   "addresses": [
+    "Jonas Daniël Meijerplein 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 52",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 96,
+     "bagId": "0363010003714280"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165558",
+   "addresses": [
+    "Jonas Daniël Meijerplein 30",
+    "Jonas Daniël Meijerplein 32",
+    "Jonas Daniël Meijerplein 34",
+    "Jonas Daniël Meijerplein 36",
+    "Jonas Daniël Meijerplein 38",
+    "Jonas Daniël Meijerplein 40",
+    "Jonas Daniël Meijerplein 42",
+    "Jonas Daniël Meijerplein 44",
+    "Jonas Daniël Meijerplein 46",
+    "Jonas Daniël Meijerplein 48",
+    "Jonas Daniël Meijerplein 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 30",
+     "use": "kantoorfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000695026"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 32",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000695027"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 34",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000695030"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 36",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000695031"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 38",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000695032"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 40",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000695033"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 42",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000695034"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 44",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000695035"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 46",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000695036"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 48",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000695037"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 50",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000695038"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741083286,
+     "lngLat": [
+      4.9042738,
+      52.3667302
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "30",
+      "addr:postcode": "1011RH",
+      "addr:street": "Jonas Daniël Meijerplein",
+      "amenity": "social_facility",
+      "check_date": "2024-10-25",
+      "name": "MDHG",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-10T08:30:45.091Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182040",
+   "addresses": [
+    "Jonas Daniël Meijerplein 8",
+    "Jonas Daniël Meijerplein 10",
+    "Jonas Daniël Meijerplein 12",
+    "Jonas Daniël Meijerplein 14",
+    "Jonas Daniël Meijerplein 16",
+    "Jonas Daniël Meijerplein 18",
+    "Jonas Daniël Meijerplein 20",
+    "Jonas Daniël Meijerplein 22",
+    "Jonas Daniël Meijerplein 24",
+    "Jonas Daniël Meijerplein 26",
+    "Jonas Daniël Meijerplein 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 8",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000694987"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 10",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000694989"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 12",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000694994"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 14",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000694998"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 16",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000695001"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 18",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000695006"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 20",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000695012"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 22",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000695014"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 24",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000695019"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 26",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000695023"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 28",
+     "use": "kantoorfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000695024"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741083256,
+     "lngLat": [
+      4.9041555,
+      52.3668016
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28",
+      "addr:postcode": "1011RH",
+      "addr:street": "Jonas Daniël Meijerplein",
+      "name": "Unlimited Scooter Service",
+      "shop": "repair",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-10T08:30:45.091Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2741083792,
+     "lngLat": [
+      4.904228,
+      52.3668917
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8",
+      "addr:postcode": "1011RH",
+      "addr:street": "Jonas Daniël Meijerplein",
+      "air_conditioning": "yes",
+      "amenity": "restaurant",
+      "brewery": "hertog;grolsh;budels;ma suwa;gezana;mongozo",
+      "changing_table": "no",
+      "cuisine": "ethiopian;eritrean",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Eetkunst Asmara",
+      "outdoor_seating": "no",
+      "phone": "+31 20 627 1002",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-10T08:30:45.091Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

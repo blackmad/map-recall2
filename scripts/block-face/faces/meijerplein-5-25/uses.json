@@ -1,0 +1,201 @@
+{
+ "street": "Jonas Daniël Meijerplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:41:03.943Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170253",
+   "addresses": [
+    "Jonas Daniël Meijerplein 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 5",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 792,
+     "bagId": "0363010000694985"
+    },
+    {
+     "address": "Mr. Visserplein 1",
+     "use": "winkelfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000746687"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181882",
+   "addresses": [
+    "Jonas Daniël Meijerplein 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 7",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000694986"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181880",
+   "addresses": [
+    "Jonas Daniël Meijerplein 9",
+    "Jonas Daniël Meijerplein 11",
+    "Jonas Daniël Meijerplein 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 9",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000694988"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 11-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000694990"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181881",
+   "addresses": [
+    "Jonas Daniël Meijerplein 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 15-H",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000779464"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181875",
+   "addresses": [
+    "Jonas Daniël Meijerplein 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 17-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000695002"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181874",
+   "addresses": [
+    "Jonas Daniël Meijerplein 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 19-H",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000695007"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181876",
+   "addresses": [
+    "Jonas Daniël Meijerplein 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 21-O",
+     "use": "kantoorfunctie",
+     "areaM2": 44,
+     "bagId": "0363010001988432"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 21-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010001988434"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181877",
+   "addresses": [
+    "Jonas Daniël Meijerplein 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 23-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000695015"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 23-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000695016"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181878",
+   "addresses": [
+    "Jonas Daniël Meijerplein 25",
+    "Jonas Daniël Meijerplein 25C",
+    "Jonas Daniël Meijerplein 25B",
+    "Jonas Daniël Meijerplein 25A",
+    "Jonas Daniël Meijerplein 25D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jonas Daniël Meijerplein 25",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000987364"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 25B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001170160"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 25A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001170162"
+    },
+    {
+     "address": "Jonas Daniël Meijerplein 25D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001170161"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

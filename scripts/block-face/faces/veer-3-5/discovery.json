@@ -1,0 +1,291 @@
+{
+ "street": "'s-Gravelandse Veer",
+ "seed": "0363100012177784",
+ "members": [
+  "0363100012177784",
+  "0363100012177785"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012177784 (face continues: 177787 177786 177788)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012177785 (face continues: 177825 177791 177792 253758 177814)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012171157",
+   "reason": "frontage 61.7 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012171158",
+   "reason": "frontage 64.6 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012171159",
+   "reason": "frontage 77.7 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012171160",
+   "reason": "frontage 83.1 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012171161",
+   "reason": "frontage 86.0 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012171165",
+   "reason": "frontage 94.4 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177717",
+   "reason": "frontage 105.6 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177745",
+   "reason": "frontage 67.1 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177746",
+   "reason": "frontage 65.1 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177747",
+   "reason": "frontage 63.4 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177772",
+   "reason": "frontage 44.3 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177775",
+   "reason": "frontage 47.2 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177776",
+   "reason": "no frontage on 's-Gravelandse Veer: No footprint edge faces 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177777",
+   "reason": "frontage 38.8 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177778",
+   "reason": "frontage 39.1 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177779",
+   "reason": "frontage 43.3 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177780",
+   "reason": "frontage 61.9 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177781",
+   "reason": "frontage 62.5 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177782",
+   "reason": "frontage 43.1 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177783",
+   "reason": "no frontage on 's-Gravelandse Veer: No footprint edge faces 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177815",
+   "reason": "sightline to 's-Gravelandse Veer crosses 0363100012177814"
+  },
+  {
+   "pandId": "0363100012177816",
+   "reason": "sightline to 's-Gravelandse Veer crosses 0363100012177814"
+  },
+  {
+   "pandId": "0363100012177817",
+   "reason": "frontage 33.6 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177818",
+   "reason": "sightline to 's-Gravelandse Veer crosses 0363100012177791"
+  },
+  {
+   "pandId": "0363100012177820",
+   "reason": "frontage 43.9 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177821",
+   "reason": "frontage 44.4 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177822",
+   "reason": "frontage 72.2 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177823",
+   "reason": "frontage 71.1 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177824",
+   "reason": "frontage 77.7 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177856",
+   "reason": "frontage 91.0 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178360",
+   "reason": "frontage 34.2 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178361",
+   "reason": "frontage 38.8 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178363",
+   "reason": "frontage 45.4 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012169331",
+   "reason": "frontage 70.3 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012171099",
+   "reason": "frontage 64.9 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012171136",
+   "reason": "no frontage on 's-Gravelandse Veer: No footprint edge faces 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177773",
+   "reason": "frontage 52.4 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177774",
+   "reason": "frontage 54.7 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012177789",
+   "reason": "sightline to 's-Gravelandse Veer crosses 0363100012177784"
+  },
+  {
+   "pandId": "0363100012177790",
+   "reason": "sightline to 's-Gravelandse Veer crosses 0363100012177784"
+  },
+  {
+   "pandId": "0363100012177819",
+   "reason": "frontage 31.1 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178369",
+   "reason": "frontage 46.9 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178370",
+   "reason": "frontage 52.5 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178371",
+   "reason": "frontage 58.4 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178372",
+   "reason": "frontage 62.5 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178639",
+   "reason": "frontage 43.2 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178711",
+   "reason": "no frontage on 's-Gravelandse Veer: No footprint edge faces 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178949",
+   "reason": "frontage 82.5 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178950",
+   "reason": "frontage 82.6 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178951",
+   "reason": "frontage 83.3 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178953",
+   "reason": "frontage 82.5 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178954",
+   "reason": "frontage 82.5 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012178955",
+   "reason": "frontage 84.4 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012253757",
+   "reason": "sightline to 's-Gravelandse Veer crosses 0363100012177814"
+  },
+  {
+   "pandId": "0363100012571650",
+   "reason": "frontage 35.2 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012180410",
+   "reason": "frontage 38.5 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012180411",
+   "reason": "frontage 74.0 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012180412",
+   "reason": "frontage 56.0 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012180413",
+   "reason": "frontage 37.5 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012180414",
+   "reason": "frontage 67.6 m from 's-Gravelandse Veer"
+  },
+  {
+   "pandId": "0363100012171164",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012177784",
+   "alongM": 0,
+   "widthM": 11.74,
+   "eavesM": 11.74,
+   "roofMaxM": 17.2,
+   "storeys3dbag": 0,
+   "builtYear": 1732,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012177785",
+   "alongM": 8.71,
+   "widthM": 5.68,
+   "eavesM": 16.5,
+   "roofMaxM": 17.95,
+   "storeys3dbag": 5,
+   "builtYear": 1770,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

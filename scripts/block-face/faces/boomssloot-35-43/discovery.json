@@ -1,0 +1,756 @@
+{
+ "street": "Krom Boomssloot",
+ "seed": "0363100012182684",
+ "members": [
+  "0363100012182684",
+  "0363100012182691",
+  "0363100012182690"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012182684 (face continues: 182779)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012182690 (face continues: 182683)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165627",
+   "reason": "frontage 86.5 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012165619",
+   "reason": "frontage 40.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012165620",
+   "reason": "frontage 41.8 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012165621",
+   "reason": "frontage 68.0 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012165626",
+   "reason": "frontage 82.2 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012170912",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012183057"
+  },
+  {
+   "pandId": "0363100012171306",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182989"
+  },
+  {
+   "pandId": "0363100012171307",
+   "reason": "frontage 38.7 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171308",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012170912"
+  },
+  {
+   "pandId": "0363100012171309",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182791"
+  },
+  {
+   "pandId": "0363100012171310",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171311"
+  },
+  {
+   "pandId": "0363100012171311",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182692"
+  },
+  {
+   "pandId": "0363100012171314",
+   "reason": "frontage 56.5 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171315",
+   "reason": "frontage 46.4 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171316",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171393"
+  },
+  {
+   "pandId": "0363100012171317",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012571629"
+  },
+  {
+   "pandId": "0363100012171322",
+   "reason": "frontage 37.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171323",
+   "reason": "frontage 59.4 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171387",
+   "reason": "frontage 51.5 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171388",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171389",
+   "reason": "frontage 56.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171390",
+   "reason": "frontage 57.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171391",
+   "reason": "frontage 41.4 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171392",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171396"
+  },
+  {
+   "pandId": "0363100012171393",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182687"
+  },
+  {
+   "pandId": "0363100012171394",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171397",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171394"
+  },
+  {
+   "pandId": "0363100012171398",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171394"
+  },
+  {
+   "pandId": "0363100012171401",
+   "reason": "frontage 31.7 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171402",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171403",
+   "reason": "frontage 35.8 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171404",
+   "reason": "frontage 53.4 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171405",
+   "reason": "frontage 63.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171406",
+   "reason": "frontage 60.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171407",
+   "reason": "frontage 60.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171472",
+   "reason": "frontage 42.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171473",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182085",
+   "reason": "frontage 96.9 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182110",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182116",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171474",
+   "reason": "frontage 77.0 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171475",
+   "reason": "frontage 69.1 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171476",
+   "reason": "frontage 73.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012171477",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012181801",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012170912"
+  },
+  {
+   "pandId": "0363100012181802",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171320"
+  },
+  {
+   "pandId": "0363100012181803",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171320"
+  },
+  {
+   "pandId": "0363100012181805",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171310"
+  },
+  {
+   "pandId": "0363100012181806",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182080",
+   "reason": "frontage 90.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182083",
+   "reason": "frontage 87.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182084",
+   "reason": "frontage 94.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182087",
+   "reason": "frontage 83.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182088",
+   "reason": "frontage 86.8 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182089",
+   "reason": "frontage 76.8 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182090",
+   "reason": "frontage 72.5 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182091",
+   "reason": "frontage 74.8 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182092",
+   "reason": "frontage 83.7 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182093",
+   "reason": "frontage 75.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182094",
+   "reason": "frontage 80.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182095",
+   "reason": "frontage 69.4 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182096",
+   "reason": "frontage 64.7 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182097",
+   "reason": "frontage 65.0 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182098",
+   "reason": "frontage 68.5 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182099",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182100",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182144",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182145",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182146",
+   "reason": "frontage 68.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182147",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182148",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182149",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182150",
+   "reason": "frontage 55.1 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182151",
+   "reason": "frontage 59.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182152",
+   "reason": "frontage 64.4 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182153",
+   "reason": "frontage 48.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182157",
+   "reason": "frontage 45.1 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182296",
+   "reason": "frontage 88.3 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182300",
+   "reason": "frontage 60.0 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182604",
+   "reason": "frontage 37.5 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182605",
+   "reason": "frontage 41.4 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182606",
+   "reason": "frontage 39.2 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182607",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171316"
+  },
+  {
+   "pandId": "0363100012182608",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171316"
+  },
+  {
+   "pandId": "0363100012182612",
+   "reason": "frontage 55.1 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182613",
+   "reason": "frontage 52.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182614",
+   "reason": "frontage 50.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182615",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182690"
+  },
+  {
+   "pandId": "0363100012182616",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182683"
+  },
+  {
+   "pandId": "0363100012182685",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182684"
+  },
+  {
+   "pandId": "0363100012182686",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182684"
+  },
+  {
+   "pandId": "0363100012182687",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182693"
+  },
+  {
+   "pandId": "0363100012182688",
+   "reason": "frontage 35.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182689",
+   "reason": "frontage 30.8 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182692",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182695"
+  },
+  {
+   "pandId": "0363100012182695",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182795"
+  },
+  {
+   "pandId": "0363100012182699",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182700",
+   "reason": "frontage 44.9 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182701",
+   "reason": "frontage 50.7 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182702",
+   "reason": "frontage 39.0 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182703",
+   "reason": "frontage 35.1 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182704",
+   "reason": "frontage 31.5 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182705",
+   "reason": "frontage 39.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182780",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182798"
+  },
+  {
+   "pandId": "0363100012182781",
+   "reason": "frontage 42.1 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182782",
+   "reason": "frontage 38.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182783",
+   "reason": "frontage 30.6 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182784",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182788"
+  },
+  {
+   "pandId": "0363100012182785",
+   "reason": "frontage 35.4 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182786",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182787",
+   "reason": "frontage 34.0 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182788",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182780"
+  },
+  {
+   "pandId": "0363100012182789",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182780"
+  },
+  {
+   "pandId": "0363100012182790",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182780"
+  },
+  {
+   "pandId": "0363100012182793",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182684"
+  },
+  {
+   "pandId": "0363100012182794",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182684"
+  },
+  {
+   "pandId": "0363100012182796",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182683"
+  },
+  {
+   "pandId": "0363100012182797",
+   "reason": "frontage 31.2 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182874",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182876"
+  },
+  {
+   "pandId": "0363100012182957",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171399"
+  },
+  {
+   "pandId": "0363100012182960",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182958"
+  },
+  {
+   "pandId": "0363100012182961",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171399"
+  },
+  {
+   "pandId": "0363100012182962",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182874"
+  },
+  {
+   "pandId": "0363100012182963",
+   "reason": "frontage 31.2 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182964",
+   "reason": "frontage 35.7 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182965",
+   "reason": "frontage 34.0 m from Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012182966",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182875"
+  },
+  {
+   "pandId": "0363100012182968",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171399"
+  },
+  {
+   "pandId": "0363100012182970",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182874"
+  },
+  {
+   "pandId": "0363100012182971",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182977"
+  },
+  {
+   "pandId": "0363100012182972",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182971"
+  },
+  {
+   "pandId": "0363100012182973",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171399"
+  },
+  {
+   "pandId": "0363100012182975",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171400"
+  },
+  {
+   "pandId": "0363100012183061",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012170914"
+  },
+  {
+   "pandId": "0363100012183064",
+   "reason": "no frontage on Krom Boomssloot: No footprint edge faces Krom Boomssloot"
+  },
+  {
+   "pandId": "0363100012247577",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012182690"
+  },
+  {
+   "pandId": "0363100012571631",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012571632"
+  },
+  {
+   "pandId": "0363100012571633",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012571628"
+  },
+  {
+   "pandId": "0363100012571634",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012571629"
+  },
+  {
+   "pandId": "0363100012571635",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012571629"
+  },
+  {
+   "pandId": "0363100012571646",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171392"
+  },
+  {
+   "pandId": "0363100012571647",
+   "reason": "sightline to Krom Boomssloot crosses 0363100012171392"
+  },
+  {
+   "pandId": "0363100012165623",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165624",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170914",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171312",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171313",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171318",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171319",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171320",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171321",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171399",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182609",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182694",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182696",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182697",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182698",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182791",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182795",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182869",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182871",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182873",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182875",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182876",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182956",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182958",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182959",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182967",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182969",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182989",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182992",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012183057",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571628",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571629",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571632",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012182684",
+   "alongM": 0,
+   "widthM": 13.17,
+   "eavesM": 13.19,
+   "roofMaxM": 16.81,
+   "storeys3dbag": 5,
+   "builtYear": 1983,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012182691",
+   "alongM": 9.16,
+   "widthM": 5.14,
+   "eavesM": 13.66,
+   "roofMaxM": 18.9,
+   "storeys3dbag": 5,
+   "builtYear": 1927,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012182690",
+   "alongM": 18.05,
+   "widthM": 12.65,
+   "eavesM": 14.59,
+   "roofMaxM": 17.42,
+   "storeys3dbag": 5,
+   "builtYear": 1983,
+   "uncertainty": []
+  }
+ ]
+}

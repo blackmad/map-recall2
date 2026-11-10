@@ -1,0 +1,166 @@
+{
+ "street": "Recht Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:38:43.090Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182103",
+   "addresses": [
+    "Recht Boomssloot 96",
+    "Recht Boomssloot 98",
+    "Recht Boomssloot 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 98",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000938940"
+    },
+    {
+     "address": "Recht Boomssloot 100",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000938941"
+    },
+    {
+     "address": "Recht Boomssloot 96",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000938939"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13972313434,
+     "lngLat": [
+      4.9042714,
+      52.3716694
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes",
+      "material": "wood",
+      "seats": "3",
+      "survey:date": "2026-06-28"
+     },
+     "fetchedAt": "2026-11-10T09:38:43.090Z",
+     "match": "frontage",
+     "distanceM": 5.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182079",
+   "addresses": [
+    "Recht Boomssloot 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 94",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000938938"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182081",
+   "addresses": [
+    "Recht Boomssloot 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 92",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001975858"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182080",
+   "addresses": [
+    "Recht Boomssloot 82",
+    "Recht Boomssloot 84",
+    "Recht Boomssloot 86",
+    "Recht Boomssloot 88",
+    "Recht Boomssloot 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 82",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000938933"
+    },
+    {
+     "address": "Recht Boomssloot 88",
+     "use": "kantoorfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000938936"
+    },
+    {
+     "address": "Recht Boomssloot 90",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000938937"
+    },
+    {
+     "address": "Recht Boomssloot 86",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000938935"
+    },
+    {
+     "address": "Recht Boomssloot 84",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000938934"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182092",
+   "addresses": [
+    "Recht Boomssloot 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 80-H",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000788802"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182094",
+   "addresses": [
+    "Recht Boomssloot 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Recht Boomssloot 78",
+     "use": "woonfunctie",
+     "areaM2": 189,
+     "bagId": "0363010001171350"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

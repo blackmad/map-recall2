@@ -56,7 +56,7 @@ async function main() {
       if (h.roof) placement.roof = h.roof;
       if (h.wall !== false && s?.wall && !s.palette.stucco) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: trim-normalised wall (buildingRecipe/measureFacade.ts)`};
       const slug = `${run.face.split('-')[0]}-${ev.pandId.slice(-6)}`;
-      return {pandId: ev.pandId, typeId: t.id, score: 1, notes: [`hand: ${h.why}`],
+      return {pandId: ev.pandId, typeId: t.id, score: 1, notes: [`hand: ${h.why}`, ...(run.houses.length === 1 ? [`lone pand: hand placement, a one-off front between held neighbours: ${run.reason}`] : [])],
         house: {pandId: ev.pandId, slug, address: ev.address, type: placement, groundFloor: use, rhythm: {citation: `hand placement (${buurt}-hand-runs.json): ${h.why}; strip ${strip.date}`} as any}};
     });
     const ids = placed.map(p => p.pandId);

@@ -1,0 +1,60 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:34:07.849Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178907",
+   "addresses": [
+    "Groenburgwal 31A",
+    "Groenburgwal 31B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 31A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000651537"
+    },
+    {
+     "address": "Groenburgwal 31B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000651538"
+    },
+    {
+     "address": "Verversstraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000853326"
+    },
+    {
+     "address": "Verversstraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000853325"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178906",
+   "addresses": [
+    "Groenburgwal 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 33-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000651540"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

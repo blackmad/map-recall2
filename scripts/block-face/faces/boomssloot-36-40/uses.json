@@ -1,0 +1,60 @@
+{
+ "street": "Krom Boomssloot",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012183057",
+   "addresses": [
+    "Krom Boomssloot 38",
+    "Krom Boomssloot 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dijkstraat 49-H",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000623161"
+    },
+    {
+     "address": "Krom Boomssloot 38",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010012092511"
+    },
+    {
+     "address": "Krom Boomssloot 40",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012092512"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170914",
+   "addresses": [
+    "Krom Boomssloot 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Krom Boomssloot 36",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000990273"
+    },
+    {
+     "address": "Kleersloot 4",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000706885"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

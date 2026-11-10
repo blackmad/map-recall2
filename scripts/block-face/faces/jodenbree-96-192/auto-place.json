@@ -1,0 +1,472 @@
+{
+ "face": "jodenbree-96-192",
+ "street": "Jodenbreestraat",
+ "library": "nieuwmarkt",
+ "stripDate": "2025-01-08",
+ "seconds": 4.37,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012171989",
+   "address": "Jodenbreestraat 164",
+   "builtYear": 1969,
+   "widthM": 11.45,
+   "eavesM": 13.86,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#252218",
+    "wallRaw": "#3d3729",
+    "skyline": {
+     "eavesM": 24.05,
+     "eavesRow": 71,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 1.77,
+      "topWidthM": 0.72,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: built 1969, type 1600-1925; frontage 11.45 m, type 3.6-7 m)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "built 1969, type 1600-1925",
+     "frontage 11.45 m, type 3.6-7 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.86 m = 5 storeys of 2.77 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 6.97 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 1.77 m, top 0.72 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171992",
+   "address": "Jodenbreestraat 158",
+   "builtYear": 1695,
+   "widthM": 7.2,
+   "eavesM": 12.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#29281d",
+    "wallRaw": "#605c4d",
+    "skyline": {
+     "eavesM": 21.48,
+     "eavesRow": 174,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 4,
+      "topWidthM": 0.28,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0.53,
+     "bayCentre": 0.32,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.63,
+       "widthM": 1.13,
+       "centre": 0.79
+      },
+      {
+       "atM": 7.75,
+       "widthM": 0.88,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171993",
+   "address": "Jodenbreestraat 152",
+   "builtYear": 1974,
+   "widthM": 7.37,
+   "eavesM": 15.89,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#514a3b",
+    "wallRaw": "#4e4738",
+    "skyline": {
+     "eavesM": 19.45,
+     "eavesRow": 255,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 3.48,
+      "riseM": 6.38,
+      "topWidthM": 0.4,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.92,
+       "widthM": 1.48,
+       "centre": 0.87
+      },
+      {
+       "atM": 12.15,
+       "widthM": 1.55,
+       "centre": 0.62
+      },
+      {
+       "atM": 6.67,
+       "widthM": 2.95,
+       "centre": 0.48
+      },
+      {
+       "atM": 5.1,
+       "widthM": 0.9,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: built 1974, type 1600-1925)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "built 1974, type 1600-1925"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.89 m = 5 storeys of 3.18 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.1 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.002 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 0,
+      "note": "skyline crown rise 6.38 m, top 0.4 m fits no crown of the type"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012182518",
+   "address": "Jodenbreestraat 144",
+   "builtYear": 2002,
+   "widthM": 14.29,
+   "eavesM": 17.65,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2d241c",
+    "wallRaw": "#3f3a2e",
+    "skyline": {
+     "eavesM": 24.5,
+     "eavesRow": 53,
+     "confidence": 0.57,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 1.32,
+      "topWidthM": 0.6,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.27,
+       "widthM": 1.1,
+       "centre": 0.4
+      },
+      {
+       "atM": 8.43,
+       "widthM": 0.88,
+       "centre": 0.63
+      },
+      {
+       "atM": 6.1,
+       "widthM": 2.73,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: built 2002, type 1600-1925; frontage 14.29 m, type 3.6-7 m)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "built 2002, type 1600-1925",
+     "frontage 14.29 m, type 3.6-7 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.65 m = 5 storeys of 3.53 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.17 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012171991",
+   "address": "Jodenbreestraat 96A",
+   "builtYear": 1966,
+   "widthM": 30.97,
+   "eavesM": 17.1,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 17.91,
+    "toM": 28.76,
+    "depthM": 0.37,
+    "centre": 0.753
+   },
+   "strip": {
+    "wall": "#78533e",
+    "wallRaw": "#4d3b2d",
+    "skyline": {
+     "eavesM": 23.25,
+     "eavesRow": 103,
+     "confidence": 0.71,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 2.57,
+      "topWidthM": 1.4,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 13,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.5 m at 0.25 (light 0.38): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.5,
+       "centre": 0.25,
+       "light": 0.38
+      },
+      {
+       "widthM": 3.25,
+       "centre": 0.4,
+       "light": 0.38
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: built 1966, type 1600-1925; frontage 30.97 m, type 3.6-7 m)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "built 1966, type 1600-1925",
+     "frontage 30.97 m, type 3.6-7 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.1 m = 5 storeys of 3.42 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 6.73 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.005 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 2.57 m, top 1.4 m fits neck"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 13 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

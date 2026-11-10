@@ -1,0 +1,447 @@
+{
+ "street": "Nieuwe Amstelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:56:32.886Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182354",
+   "addresses": [
+    "Nieuwe Amstelstraat 7",
+    "Nieuwe Amstelstraat 9",
+    "Nieuwe Amstelstraat 11",
+    "Nieuwe Amstelstraat 13",
+    "Nieuwe Amstelstraat 15",
+    "Nieuwe Amstelstraat 17",
+    "Nieuwe Amstelstraat 19",
+    "Nieuwe Amstelstraat 21",
+    "Nieuwe Amstelstraat 23",
+    "Nieuwe Amstelstraat 27",
+    "Nieuwe Amstelstraat 29",
+    "Nieuwe Amstelstraat 31",
+    "Nieuwe Amstelstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Amstelstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000755312"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000755314"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000755315"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000755316"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000755321"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 23",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000755323"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000755326"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 29",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000755328"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000755330"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000755332"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000989247"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 17",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000989248"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 19",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000989249"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182451",
+   "addresses": [
+    "Nieuwe Amstelstraat 35",
+    "Nieuwe Amstelstraat 37",
+    "Nieuwe Amstelstraat 39",
+    "Nieuwe Amstelstraat 41",
+    "Nieuwe Amstelstraat 43",
+    "Nieuwe Amstelstraat 45",
+    "Nieuwe Amstelstraat 47",
+    "Nieuwe Amstelstraat 49",
+    "Nieuwe Amstelstraat 51",
+    "Nieuwe Amstelstraat 53",
+    "Nieuwe Amstelstraat 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Amstelstraat 35",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000755336"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 37",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000755338"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 39",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000755340"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 41",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000755342"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 43",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000755344"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 45",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000755345"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 47",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000755346"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 49",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000755347"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 51",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000755348"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 53",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000755350"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 55",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000755352"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171836",
+   "addresses": [
+    "Nieuwe Amstelstraat 57",
+    "Nieuwe Amstelstraat 59",
+    "Nieuwe Amstelstraat 61",
+    "Nieuwe Amstelstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Amstelstraat 57",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000755354"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 59",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000755356"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 61",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000755358"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 63",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000755360"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171834",
+   "addresses": [
+    "Nieuwe Amstelstraat 65",
+    "Nieuwe Amstelstraat 67",
+    "Nieuwe Amstelstraat 69",
+    "Nieuwe Amstelstraat 71",
+    "Nieuwe Amstelstraat 73",
+    "Nieuwe Amstelstraat 75",
+    "Nieuwe Amstelstraat 77",
+    "Nieuwe Amstelstraat 79",
+    "Nieuwe Amstelstraat 81",
+    "Nieuwe Amstelstraat 83",
+    "Nieuwe Amstelstraat 85",
+    "Nieuwe Amstelstraat 87",
+    "Nieuwe Amstelstraat 89",
+    "Nieuwe Amstelstraat 91",
+    "Nieuwe Amstelstraat 93",
+    "Nieuwe Amstelstraat 95",
+    "Nieuwe Amstelstraat 97",
+    "Nieuwe Amstelstraat 99",
+    "Nieuwe Amstelstraat 101",
+    "Nieuwe Amstelstraat 103",
+    "Nieuwe Amstelstraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Amstelstraat 67",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000755363"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 69",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000755365"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 71",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000755367"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 73",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000755369"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 77",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000755372"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 79",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000755373"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 83",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000755374"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 85",
+     "use": "winkelfunctie",
+     "areaM2": 26,
+     "bagId": "0363010000755375"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 91",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000755378"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 93",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000755379"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 95",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000755380"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 101",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000755383"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 81",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000989250"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 103",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000989251"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 89",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000755377"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 75",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000755371"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 99",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000755382"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 87",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000755376"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 105",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000755384"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 97",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000755381"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 65",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000755361"
+    }
+   ],
+   "units": 21,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171830",
+   "addresses": [
+    "Nieuwe Amstelstraat 107",
+    "Nieuwe Amstelstraat 109",
+    "Nieuwe Amstelstraat 111",
+    "Nieuwe Amstelstraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwe Amstelstraat 107",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000755385"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 109",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000755386"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 111",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000755387"
+    },
+    {
+     "address": "Nieuwe Amstelstraat 115",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000755388"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741082502,
+     "lngLat": [
+      4.9024834,
+      52.3666509
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "115",
+      "addr:postcode": "1011PL",
+      "addr:street": "Nieuwe Amstelstraat",
+      "shop": "alcohol",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:56:32.886Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

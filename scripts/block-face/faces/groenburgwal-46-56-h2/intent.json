@@ -1,0 +1,109 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "groenburgwal-46-56-h2",
+ "street": "Groenburgwal",
+ "sources": [
+  {
+   "id": "strip-2025-01-08",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "image": "staging/block-face/groenburgwal-46-56-h2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Groenburgwal 50B-48 (strip 2025-01-08): two light-brick cornice houses over white puis (46, a white front behind a tree, is held); spec scripts/block-face/buurten/zuiderkerkbuurt-hand-runs.json"
+ },
+ "types": [
+  "lastage-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012177817",
+   "slug": "groenburgwal-177817",
+   "address": "Groenburgwal 50B",
+   "type": {
+    "type": "lastage-cornice-house",
+    "crown": "dormer",
+    "overrides": {
+     "entablature": null
+    },
+    "measuredPalette": {
+     "brick": "#f9e28b",
+     "evidence": "strip 2025-01-08 span 710-929: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Groenburgwal 50B: yellow-brown brick, a white pui ground to 3.8 m, three axes in three storeys (4.6-6.6 / 7.6-9.6 / 10.5-12.0 m), a white cornice at 14 m with a small raised white top over the middle; strip 2025-01-08"
+   }
+  },
+  {
+   "pandId": "0363100012177777",
+   "slug": "groenburgwal-177777",
+   "address": "Groenburgwal 48",
+   "type": {
+    "type": "lastage-cornice-house",
+    "storeys": 3,
+    "crown": "none",
+    "overrides": {
+     "entablature": {
+      "rise": 1.4,
+      "cap": 0.35,
+      "frieze": "trim"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#daa261",
+     "evidence": "strip 2025-01-08 span 929-1159: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (zuiderkerkbuurt-hand-runs.json): Groenburgwal 48: a white shop pui ground to 4 m, three axes in two storeys (4.9-6.6 / 7.4-9.5 m), a white frieze and cornice 10.1-11.5 m; strip 2025-01-08"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012177817",
+    "stripRow": 252,
+    "evidence": "hand placement: cornice top read at 14 m on the strip 2025-01-08"
+   },
+   {
+    "pand": "0363100012177777",
+    "stripRow": 352,
+    "evidence": "hand placement: cornice top read at 11.5 m on the strip 2025-01-08"
+   }
+  ]
+ }
+}

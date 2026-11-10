@@ -1,0 +1,351 @@
+{
+ "street": "Waterlooplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:06:18.446Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182515",
+   "addresses": [
+    "Waterlooplein 169",
+    "Waterlooplein 171",
+    "Waterlooplein 173",
+    "Waterlooplein 175"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 169",
+     "use": "winkelfunctie",
+     "areaM2": 37,
+     "bagId": "0363010001011890"
+    },
+    {
+     "address": "Waterlooplein 171",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001011891"
+    },
+    {
+     "address": "Waterlooplein 173",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001011892"
+    },
+    {
+     "address": "Waterlooplein 175",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001011893"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741065562,
+     "lngLat": [
+      4.9024344,
+      52.3684483
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "169",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "brand": "Primera",
+      "brand:website": "https://www.primera.nl",
+      "brand:wikidata": "Q2176149",
+      "brand:wikipedia": "nl:Primera (winkelketen)",
+      "check_date": "2024-08-18",
+      "name": "Primera",
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-17:00",
+      "phone": "+31 20 330 6222",
+      "shop": "newsagent",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.primera.nl/primera-waterlooplein"
+     },
+     "fetchedAt": "2026-11-10T09:06:18.446Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13081433742,
+     "lngLat": [
+      4.9024504,
+      52.368432
+     ],
+     "tags": {
+      "amenity": "atm",
+      "brand": "Euronet",
+      "brand:wikidata": "Q5412010",
+      "cash_in": "no",
+      "description": "Inside Primera",
+      "indoor": "yes",
+      "operator": "Euronet",
+      "operator:wikidata": "Q5412010",
+      "source": "survey"
+     },
+     "fetchedAt": "2026-11-10T09:06:18.446Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171990",
+   "addresses": [
+    "Waterlooplein 177A",
+    "Waterlooplein 177B",
+    "Waterlooplein 177C",
+    "Waterlooplein 177D",
+    "Waterlooplein 177E",
+    "Waterlooplein 179"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 177A",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001020721"
+    },
+    {
+     "address": "Waterlooplein 177B",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010001020722"
+    },
+    {
+     "address": "Waterlooplein 177C",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001020723"
+    },
+    {
+     "address": "Waterlooplein 177D",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010001020724"
+    },
+    {
+     "address": "Waterlooplein 177E",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010001020725"
+    },
+    {
+     "address": "Waterlooplein 179",
+     "use": "winkelfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001020726"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12118891417,
+     "lngLat": [
+      4.9025631,
+      52.3683999
+     ],
+     "tags": {
+      "check_date": "2024-08-18",
+      "name": "4 Cats",
+      "shop": "pet"
+     },
+     "fetchedAt": "2026-11-10T09:06:18.446Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182517",
+   "addresses": [
+    "Waterlooplein 181",
+    "Waterlooplein 183",
+    "Waterlooplein 185",
+    "Waterlooplein 187",
+    "Waterlooplein 189"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 181",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000862968"
+    },
+    {
+     "address": "Waterlooplein 185",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000862969"
+    },
+    {
+     "address": "Waterlooplein 187",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000862970"
+    },
+    {
+     "address": "Waterlooplein 189",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000862971"
+    },
+    {
+     "address": "Waterlooplein 183",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000952904"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741065837,
+     "lngLat": [
+      4.9026509,
+      52.3683641
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "181",
+      "addr:postcode": "1011PG",
+      "addr:street": "Waterlooplein",
+      "amenity": "restaurant",
+      "check_date": "2025-05-02",
+      "check_date:diet:vegetarian": "2025-05-02",
+      "diet:vegetarian": "yes",
+      "name": "Lunchcafé Waterloo",
+      "opening_hours": "Mo-Sa 07:00-20:30; Su 09:00-18:00",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "toilets:wheelchair": "no",
+      "website": "https://www.cafewaterloo.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:06:18.446Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182516",
+   "addresses": [
+    "Waterlooplein 191",
+    "Waterlooplein 193",
+    "Waterlooplein 195",
+    "Waterlooplein 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 191",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000862972"
+    },
+    {
+     "address": "Waterlooplein 193",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000862973"
+    },
+    {
+     "address": "Waterlooplein 195",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000862974"
+    },
+    {
+     "address": "Waterlooplein 197",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000862975"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12118891416,
+     "lngLat": [
+      4.9027508,
+      52.3683363
+     ],
+     "tags": {
+      "check_date": "2024-08-18",
+      "contact:instagram": "kilostorevintage",
+      "name": "Kilo Store",
+      "opening_hours": "Mo-Sa 11:00-19:00; Su 11:00-18:00",
+      "shop": "second_hand"
+     },
+     "fetchedAt": "2026-11-10T09:06:18.446Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182514",
+   "addresses": [
+    "Waterlooplein 199",
+    "Waterlooplein 201",
+    "Waterlooplein 203",
+    "Waterlooplein 203A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Waterlooplein 199",
+     "use": "sportfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000862976"
+    },
+    {
+     "address": "Waterlooplein 201",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000862977"
+    },
+    {
+     "address": "Waterlooplein 203",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000862978"
+    },
+    {
+     "address": "Waterlooplein 203A",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000862979"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10814306700,
+     "lngLat": [
+      4.902812,
+      52.368298
+     ],
+     "tags": {
+      "check_date": "2024-08-18",
+      "name": "Candy Store",
+      "shop": "second_hand"
+     },
+     "fetchedAt": "2026-11-10T09:06:18.446Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
