@@ -1,0 +1,8 @@
+face,run,street,pands,mode,ride,stripDate,restriped,status,reasons,nccMin,nccMedian,stripOverDrawn,wallFits,droppedCorners,triangles,seconds
+hendrik-134-154,hendrik-134-154-r1,Frederik Hendrikstraat,2,auto-place,,2022-04-29,,installed,,0.182,0.219,1.045,1,,4752,17
+hendrik-134-154,hendrik-134-154-r2,Frederik Hendrikstraat,2,auto-place,,2022-04-29,,installed,,0.206,0.225,0.95,1,,4848,16.6
+houweningen-2-38,houweningen-2-38-r1,Van Houweningenstraat,16,auto-place,,2021-02-22,,failed,glb-audit: failed (see report.json audit),0.169,0.39,0.86,1,,37421,60.2
+houweningen-1-31,houweningen-1-31-r1,Van Houweningenstraat,2,auto-place,,2021-02-22,,failed,glb-audit: failed (see report.json audit),0.256,0.302,1.151,0,,4661,4.9
+houweningen-1-31,houweningen-1-31-r2,Van Houweningenstraat,2,auto-place,,2021-02-22,,installed,,0.243,0.347,0.942,1,,4914,7.6
+houweningen-1-31,houweningen-1-31-r3,Van Houweningenstraat,3,auto-place,,2021-02-22,,installed,,0.278,0.309,0.989,0,,7311,9.6
+houweningen-1-31,houweningen-1-31-r4,Van Houweningenstraat,3,auto-place,,2021-02-22,,failed,likeness: 1 pand(s) under NCC 0.15 (159954 0.139),0.139,0.201,1.008,4,,6957,45.3

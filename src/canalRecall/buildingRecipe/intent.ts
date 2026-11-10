@@ -115,7 +115,7 @@ export const ROOF_MATERIALS = ['slate', 'black-tile', 'red-tile', 'bitumen', 'zi
  * `eared-keystone` (Nassaukade 145-150): a painted stucco head over each window, the head band running 0.12 m past both
  * jambs, with raised ear blocks at both ends and keystone blocks between them (one per ~0.45 m of window width).
  */
-export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone', 'sill', 'eared-keystone'] as const;
+export const WINDOW_SURROUNDS = ['none', 'stone-lintel', 'full-frame', 'keystone', 'sill', 'eared-keystone', 'dentil-lintel'] as const;
 /**
  * `consoles`: a painted sill slab under each surround-storey window, carried on two small console blocks. A separate key
  * from `windowSurround` so it combines with a head surround (`eared-keystone`); a sill alone is the canal-windows lane's
@@ -421,6 +421,17 @@ export interface FrontIntent {
    * centred in it. Absent = one door.
    */
   doorPairs?: boolean;
+  /**
+   * With `doorPairs`: the two doors of a pair stand under ONE transom light spanning both (Frederik Hendrikbuurt 1885-90: a pair
+   * of red doors under a shared fanlight), instead of one transom per door. Absent = a transom per door.
+   */
+  pairTransom?: boolean;
+  /**
+   * The ground storey's windows over axes `from`..`to` (0-based, inclusive, `from` < `to`) are one wide casement spanning them
+   * (Frederik Hendrikbuurt: a two-light ground window beside the door pair). Needs a `doorBay` outside the span. Absent = one
+   * window per axis.
+   */
+  wideGround?: {from: number; to: number};
   /**
    * A row of identical house doors side by side across a span of the front (Landlust slot blocks 1933-1937: four doors of
    * 0.75 m in a run about 4.7 m wide under one continuous `groundCanopy` slab). `from`..`to` are fractions of the front's
@@ -1622,6 +1633,11 @@ export function validateIntent(input: unknown): CanalHouseIntent {
       const r = f.doorRow as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
       if (!r || typeof r !== 'object' || Object.keys(r).some(k => !['from', 'to', 'count', 'leaf'].includes(k)) || !n(r.from, 0, 1) || !n(r.to, 0, 1) || (r.to as number) - (r.from as number) < 0.1 || !Number.isInteger(r.count) || !n(r.count, 2, 6) || !n(r.leaf, 0.6, 1.6)) problems.push(`${at}.doorRow: {from, to (fractions of the front, span >= 0.1), count 2..6, leaf 0.6..1.6 m}`);
       if (f.doorBay === null || f.doorArch || f.shopfront || f.groundFront || f.extraDoorBays || f.doorPairs) problems.push(`${at}.doorRow: needs a doorBay and no doorArch, shopfront, groundFront, extraDoorBays or doorPairs`);
+    }
+    if (f.pairTransom !== undefined && (typeof f.pairTransom !== 'boolean' || !f.doorPairs)) problems.push(`${at}.pairTransom: true, with doorPairs`);
+    if (f.wideGround !== undefined) {
+      const w = f.wideGround as {from?: number; to?: number};
+      if (!w || !Number.isInteger(w.from) || !Number.isInteger(w.to) || w.from! < 0 || w.to! <= w.from! || w.to! > 8 || f.doorBay === null || f.doorBay === undefined || (f.doorBay >= w.from! && f.doorBay <= w.to!) || f.groundFront || f.shopfront) problems.push(`${at}.wideGround: {from, to} integer axes (from < to) with a doorBay outside the span, no groundFront or shopfront`);
     }
     if (f.doorPairs !== undefined && (typeof f.doorPairs !== 'boolean' || f.doorBay === null || f.doorArch)) problems.push(`${at}.doorPairs: true, with a doorBay and no doorArch`);
     if (f.doorArch !== undefined) {

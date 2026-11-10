@@ -2,8 +2,8 @@
  "face": "houweningen-2-38",
  "street": "Van Houweningenstraat",
  "library": "frederik-hendrikbuurt",
- "stripDate": "2021-03-22",
- "seconds": 10.47,
+ "stripDate": "2021-02-22",
+ "seconds": 48.16,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,31 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "houweningen-2-38-r1",
+   "pands": [
+    "0363100012161605",
+    "0363100012156521",
+    "0363100012153807",
+    "0363100012158366",
+    "0363100012162380",
+    "0363100012163315",
+    "0363100012159933",
+    "0363100012167020",
+    "0363100012156096",
+    "0363100012159242",
+    "0363100012163814",
+    "0363100012167267",
+    "0363100012165393",
+    "0363100012159135",
+    "0363100012163222",
+    "0363100012162506"
+   ],
+   "passed": false,
+   "triangles": 36989
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012161605",
@@ -24,21 +48,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#4b3f37",
-    "wallRaw": "#554a41",
+    "wall": "#735d4e",
+    "wallRaw": "#66564c",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0.07,
-     "crown": null
+     "eavesM": 17.4,
+     "eavesRow": 92,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 2.3,
+      "topWidthM": 0.57,
+      "centre": 0.14
+     }
     },
     "stucco": false,
-    "bands": 0,
-    "columns": null,
-    "frontClass": "punched",
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.01,
+    "accentSide": null,
+    "accentShare": 0.118,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -48,42 +77,55 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.084 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.30)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#735d4e",
+     "evidence": "strip 2021-02-22 span 0-184: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
    "likeness": {
     "pandId": "0363100012161605",
-    "ncc": 0.084,
-    "nccRaw": 0.084,
+    "ncc": 0.449,
+    "nccRaw": 0.449,
     "shiftM": [
-     0.4,
-     0.3
+     0.2,
+     0.4
     ],
-    "usable": 0.96,
+    "usable": 0.91,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.30"
+     "glazing storey band off by 0.27 mean 0.40 vs photo 0.58"
     ],
     "wall": {
-     "photo": "#4b3f36",
-     "model": "#67564b",
-     "dL": 0.096
+     "photo": "#766152",
+     "model": "#8c715f",
+     "dL": 0.069
     },
     "glazing": {
-     "photo": 0.44,
-     "model": 0.41
+     "photo": 0.58,
+     "model": 0.4
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.36,
-    "footOffsetM": 0.65
+    "iou": 0.505
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.449
+   }
   },
   {
    "pandId": "0363100012156521",
@@ -94,21 +136,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#775f51",
-    "wallRaw": "#55483e",
+    "wall": "#796252",
+    "wallRaw": "#615146",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0,
-     "crown": null
+     "eavesM": 18.52,
+     "eavesRow": 47,
+     "confidence": 0.44,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 1.1,
+      "topWidthM": 0.15,
+      "centre": 0.62
+     }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 2,
-    "frontClass": "punched",
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.028,
+    "accentSide": "right",
+    "accentShare": 0.06,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -118,42 +165,53 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.048 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.29)",
+   "status": "placed",
+   "type": "fh-1887-arched-gable",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-arched-gable",
+    "measuredPalette": {
+     "brick": "#796252",
+     "evidence": "strip 2021-02-22 span 184-378: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown point-gable: reviewer pin (houweningen-2-38: pointed gable (2021-02-22 / 2025-06-18 strip))"
+   ],
    "likeness": {
     "pandId": "0363100012156521",
-    "ncc": 0.048,
-    "nccRaw": 0.048,
+    "ncc": 0.193,
+    "nccRaw": 0.193,
     "shiftM": [
-     0.1,
-     -0.4
+     0.25,
+     0.4
     ],
-    "usable": 0.96,
+    "usable": 0.94,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "glazing storey band off by 0.29"
+     "mask IoU 0.404 < 0.45"
     ],
     "wall": {
-     "photo": "#786658",
-     "model": "#907362",
-     "dL": 0.067
+     "photo": "#705c4d",
+     "model": "#917663",
+     "dL": 0.108
     },
     "glazing": {
-     "photo": 0.45,
-     "model": 0.4
+     "photo": 0.32,
+     "model": 0.41
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.264,
-    "footOffsetM": 0.65
+    "iou": 0.404
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-arched-gable": 0.193
+   }
   },
   {
    "pandId": "0363100012153807",
@@ -164,21 +222,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#766458",
-    "wallRaw": "#594f47",
+    "wall": "#6e5a49",
+    "wallRaw": "#635548",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0,
-     "crown": null
+     "eavesM": 17.65,
+     "eavesRow": 82,
+     "confidence": 0.52,
+     "crown": {
+      "widthM": 0.53,
+      "riseM": 1.68,
+      "topWidthM": 0.1,
+      "centre": 0.19
+     }
     },
     "stucco": false,
-    "bands": 0,
-    "columns": 2,
-    "frontClass": "punched",
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.033,
+    "accentSide": null,
+    "accentShare": 0.132,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -188,42 +251,53 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.062 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.64 mean 0.40 vs photo 0.69)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6e5a49",
+     "evidence": "strip 2021-02-22 span 379-567: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
    "likeness": {
     "pandId": "0363100012153807",
-    "ncc": 0.062,
-    "nccRaw": 0.062,
+    "ncc": 0.588,
+    "nccRaw": 0.588,
     "shiftM": [
-     -0.4,
-     -0.35
+     0.2,
+     0.4
     ],
-    "usable": 0.97,
+    "usable": 0.91,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.64 mean 0.40 vs photo 0.69"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
-     "photo": "#7d6b61",
-     "model": "#8d7869",
-     "dL": 0.047
+     "photo": "#725d4d",
+     "model": "#886f5a",
+     "dL": 0.069
     },
     "glazing": {
-     "photo": 0.69,
-     "model": 0.4
+     "photo": 0.3,
+     "model": 0.39
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.33,
-    "footOffsetM": 0.65
+    "iou": 0.638
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.588
+   }
   },
   {
    "pandId": "0363100012158366",
@@ -234,21 +308,21 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#7c6a60",
-    "wallRaw": "#594a42",
+    "wall": "#725d4d",
+    "wallRaw": "#5f5145",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0,
+     "eavesM": 18.77,
+     "eavesRow": 37,
+     "confidence": 0.36,
      "crown": null
     },
     "stucco": false,
-    "bands": 0,
-    "columns": null,
-    "frontClass": "punched",
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.03,
+    "accentSide": null,
+    "accentShare": 0.1,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -258,42 +332,51 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0
+    "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC -0.032 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.64 mean 0.38 vs photo 0.76)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#725d4d",
+     "evidence": "strip 2021-02-22 span 567-751: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
    "likeness": {
     "pandId": "0363100012158366",
-    "ncc": -0.032,
-    "nccRaw": -0.032,
+    "ncc": 0.39,
+    "nccRaw": 0.39,
     "shiftM": [
-     0.15,
-     -0.4
+     0.3,
+     0.35
     ],
-    "usable": 0.98,
+    "usable": 0.92,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.64 mean 0.38 vs photo 0.76"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
-     "photo": "#816e62",
-     "model": "#927d72",
-     "dL": 0.065
+     "photo": "#6d5849",
+     "model": "#8b715e",
+     "dL": 0.1
     },
     "glazing": {
-     "photo": 0.76,
+     "photo": 0.34,
      "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.34,
-    "footOffsetM": 0.65
+    "iou": 0.617
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.39
+   }
   },
   {
    "pandId": "0363100012162380",
@@ -304,72 +387,77 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#6e5f54",
-    "wallRaw": "#5c4f46",
+    "wall": "#765f4f",
+    "wallRaw": "#68584c",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0,
+     "eavesM": 19.4,
+     "eavesRow": 12,
+     "confidence": 0.38,
      "crown": null
     },
     "stucco": false,
-    "bands": 0,
-    "columns": 6,
-    "frontClass": "punched",
-    "doorSide": "left",
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.077,
+    "accentShare": 0.146,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 6.75,
-       "widthM": 0.8,
-       "centre": 0.1
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.097 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.65 mean 0.39 vs photo 0.78)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#765f4f",
+     "evidence": "strip 2021-02-22 span 750-943: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
    "likeness": {
     "pandId": "0363100012162380",
-    "ncc": 0.097,
-    "nccRaw": 0.097,
+    "ncc": 0.39,
+    "nccRaw": 0.39,
     "shiftM": [
-     0.1,
-     -0.4
+     0.25,
+     0.3
     ],
-    "usable": 0.97,
+    "usable": 0.93,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.65 mean 0.39 vs photo 0.78"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
-     "photo": "#746358",
-     "model": "#867366",
-     "dL": 0.063
+     "photo": "#745f4f",
+     "model": "#8f7360",
+     "dL": 0.086
     },
     "glazing": {
-     "photo": 0.78,
-     "model": 0.39
+     "photo": 0.31,
+     "model": 0.38
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.348,
-    "footOffsetM": 0.65
+    "iou": 0.57
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.39
+   }
   },
   {
    "pandId": "0363100012163315",
@@ -380,77 +468,80 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#7b6b61",
-    "wallRaw": "#605248",
+    "wall": "#776251",
+    "wallRaw": "#6b5a4e",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0,
-     "crown": null
+     "eavesM": 14.13,
+     "eavesRow": 223,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 5.57,
+      "topWidthM": 0.1,
+      "centre": 0.36
+     }
     },
     "stucco": false,
-    "bands": 3,
+    "bands": 5,
     "columns": 3,
-    "frontClass": "punched",
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.121,
+    "accentSide": "right",
+    "accentShare": 0.207,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 6.75,
-       "widthM": 0.82,
-       "centre": 0.9
-      },
-      {
-       "atM": 4.8,
-       "widthM": 1.07,
-       "centre": 0.64
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.02 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#776251",
+     "evidence": "strip 2021-02-22 span 943-1131: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
    "likeness": {
     "pandId": "0363100012163315",
-    "ncc": 0.02,
-    "nccRaw": 0.02,
+    "ncc": 0.604,
+    "nccRaw": 0.604,
     "shiftM": [
-     0,
-     -0.4
+     0.15,
+     0.4
     ],
-    "usable": 0.96,
+    "usable": 0.93,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.28"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
-     "photo": "#74645a",
-     "model": "#907e73",
-     "dL": 0.104
+     "photo": "#776252",
+     "model": "#907662",
+     "dL": 0.08
     },
     "glazing": {
-     "photo": 0.33,
-     "model": 0.4
+     "photo": 0.36,
+     "model": 0.39
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.261,
-    "footOffsetM": 0.65
+    "iou": 0.596
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.604
+   }
   },
   {
    "pandId": "0363100012159933",
@@ -461,21 +552,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#78665c",
-    "wallRaw": "#61554c",
+    "wall": "#715d4f",
+    "wallRaw": "#695a4e",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0.01,
-     "crown": null
+     "eavesM": 16.35,
+     "eavesRow": 134,
+     "confidence": 0.95,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 1.77,
+      "topWidthM": 0.75,
+      "centre": 0.74
+     }
     },
     "stucco": false,
-    "bands": 1,
-    "columns": 5,
-    "frontClass": "curtain",
+    "bands": 7,
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.091,
+    "accentSide": null,
+    "accentShare": 0.218,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -485,42 +581,53 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0
+    "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.004 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.65 mean 0.37 vs photo 0.83)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#715d4f",
+     "evidence": "strip 2021-02-22 span 1131-1310: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
    "likeness": {
     "pandId": "0363100012159933",
-    "ncc": 0.004,
-    "nccRaw": 0.004,
+    "ncc": 0.359,
+    "nccRaw": 0.359,
     "shiftM": [
-     0.25,
-     -0.4
+     0.3,
+     0.35
     ],
-    "usable": 0.98,
+    "usable": 0.92,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.65 mean 0.37 vs photo 0.83"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
-     "photo": "#7a685e",
-     "model": "#8f796d",
-     "dL": 0.071
+     "photo": "#6e5a4c",
+     "model": "#8a7160",
+     "dL": 0.094
     },
     "glazing": {
-     "photo": 0.83,
+     "photo": 0.34,
      "model": 0.37
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.345,
-    "footOffsetM": 0.65
+    "iou": 0.513
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.359
+   }
   },
   {
    "pandId": "0363100012167020",
@@ -531,43 +638,82 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#7f6c61",
-    "wallRaw": "#64544a",
+    "wall": "#7c6554",
+    "wallRaw": "#69594c",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0,
-     "crown": null
+     "eavesM": 18.6,
+     "eavesRow": 44,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 1.1,
+      "topWidthM": 0.6,
+      "centre": 0.35
+     }
     },
     "stucco": false,
-    "bands": 0,
+    "bands": 4,
     "columns": 3,
-    "frontClass": "punched",
+    "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.065,
+    "accentShare": 0.161,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 4.88,
-       "widthM": 0.85,
-       "centre": 0.91
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0
+    "foliageShare": 0.04
    },
-   "status": "held",
-   "stage": "evidence",
-   "reason": "no front on the strip: sky over the roof in 68 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#7c6554",
+     "evidence": "strip 2021-02-22 span 1310-1506: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012167020",
+    "ncc": 0.396,
+    "nccRaw": 0.396,
+    "shiftM": [
+     0.25,
+     0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.39 vs photo 0.28"
+    ],
+    "wall": {
+     "photo": "#9a8c7c",
+     "model": "#947964",
+     "dL": -0.059
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.47
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.396
+   }
   },
   {
    "pandId": "0363100012156096",
@@ -578,21 +724,21 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#72655a",
-    "wallRaw": "#6e6055",
+    "wall": "#796454",
+    "wallRaw": "#6a5a4f",
     "skyline": {
      "eavesM": 0,
      "eavesRow": 788,
-     "confidence": 0.12,
+     "confidence": 0.26,
      "crown": null
     },
     "stucco": false,
     "bands": 5,
-    "columns": null,
-    "frontClass": "curtain",
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.164,
+    "accentShare": 0.182,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -602,13 +748,55 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "evidence",
-   "reason": "no front on the strip: sky over the roof in 57 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#796454",
+     "evidence": "strip 2021-02-22 span 1507-1695: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
+   "likeness": {
+    "pandId": "0363100012156096",
+    "ncc": 0.475,
+    "nccRaw": 0.475,
+    "shiftM": [
+     0.2,
+     0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20"
+    ],
+    "wall": {
+     "photo": "#75604f",
+     "model": "#917865",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.601
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.475
+   }
   },
   {
    "pandId": "0363100012159242",
@@ -619,21 +807,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#7f6c5c",
-    "wallRaw": "#6c5d52",
+    "wall": "#756459",
+    "wallRaw": "#726155",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0.12,
-     "crown": null
+     "eavesM": 15.28,
+     "eavesRow": 177,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.05,
+      "topWidthM": 0.82,
+      "centre": 0.56
+     }
     },
     "stucco": false,
-    "bands": 1,
+    "bands": 8,
     "columns": 3,
-    "frontClass": "curtain",
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.102,
+    "accentSide": "right",
+    "accentShare": 0.226,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -642,48 +835,60 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 4.95,
-       "widthM": 1.18,
-       "centre": 0.86
+       "atM": 5.92,
+       "widthM": 0.88,
+       "centre": 0.54
       }
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC -0.016 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.62 mean 0.40 vs photo 0.93)",
+   "status": "placed",
+   "type": "fh-1887-arched-gable",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-arched-gable",
+    "measuredPalette": {
+     "brick": "#756459",
+     "evidence": "strip 2021-02-22 span 1695-1883: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown point-gable: reviewer pin (houweningen-2-38: pointed gable (2021-02-22 / 2025-06-18 strip))"
+   ],
    "likeness": {
     "pandId": "0363100012159242",
-    "ncc": -0.016,
-    "nccRaw": -0.016,
+    "ncc": 0.178,
+    "nccRaw": 0.178,
     "shiftM": [
-     0.4,
-     -0.25
+     0.15,
+     0.4
     ],
-    "usable": 0.95,
+    "usable": 0.94,
     "abstain": null,
-    "verdict": "FAIL",
+    "verdict": "WARN",
     "reasons": [
-     "glazing storey band off by 0.62 mean 0.40 vs photo 0.93"
+     "mask IoU 0.44 < 0.45"
     ],
     "wall": {
-     "photo": "#847163",
-     "model": "#957f6d",
-     "dL": 0.053
+     "photo": "#6f5e54",
+     "model": "#8c786b",
+     "dL": 0.102
     },
     "glazing": {
-     "photo": 0.93,
+     "photo": 0.42,
      "model": 0.4
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.411
+    "iou": 0.44
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-arched-gable": 0.178
+   }
   },
   {
    "pandId": "0363100012163814",
@@ -699,65 +904,82 @@
     "centre": 0.71
    },
    "strip": {
-    "wall": "#6e5b51",
-    "wallRaw": "#6b5b52",
+    "wall": "#766455",
+    "wallRaw": "#776558",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0.02,
-     "crown": null
+     "eavesM": 16.02,
+     "eavesRow": 147,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.68,
+      "topWidthM": 0.38,
+      "centre": 0.86
+     }
     },
     "stucco": false,
-    "bands": 3,
-    "columns": 2,
-    "frontClass": "curtain",
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.196,
+    "accentShare": 0.223,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 0.55,
+     "bayCentre": 0.2,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.124 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.63 mean 0.39 vs photo 0.73)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#766455",
+     "evidence": "strip 2021-02-22 span 1883-2071: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
    "likeness": {
     "pandId": "0363100012163814",
-    "ncc": 0.124,
-    "nccRaw": 0.124,
+    "ncc": 0.537,
+    "nccRaw": 0.537,
     "shiftM": [
-     0.05,
+     0.25,
      0.4
     ],
-    "usable": 0.97,
+    "usable": 0.92,
     "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.63 mean 0.39 vs photo 0.73"
-    ],
+    "verdict": "PASS",
+    "reasons": [],
     "wall": {
-     "photo": "#776559",
-     "model": "#866f63",
-     "dL": 0.049
+     "photo": "#766355",
+     "model": "#8e7866",
+     "dL": 0.08
     },
     "glazing": {
-     "photo": 0.73,
+     "photo": 0.36,
      "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.346
+    "iou": 0.606
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.537
+   }
   },
   {
    "pandId": "0363100012167267",
@@ -768,71 +990,83 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#6a5f55",
-    "wallRaw": "#67584f",
+    "wall": "#726052",
+    "wallRaw": "#7a6a5c",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0,
-     "crown": null
+     "eavesM": 15.82,
+     "eavesRow": 155,
+     "confidence": 0.62,
+     "crown": {
+      "widthM": 2.35,
+      "riseM": 3.88,
+      "topWidthM": 1.15,
+      "centre": 0.28
+     }
     },
     "stucco": false,
-    "bands": 1,
-    "columns": 6,
-    "frontClass": "curtain",
+    "bands": 8,
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.167,
+    "accentShare": 0.245,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 5.05,
-       "widthM": 0.88,
-       "centre": 0.67
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.05
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.015 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#726052",
+     "evidence": "strip 2021-02-22 span 2071-2255: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
    "likeness": {
     "pandId": "0363100012167267",
-    "ncc": 0.015,
-    "nccRaw": 0.015,
+    "ncc": 0.385,
+    "nccRaw": 0.385,
     "shiftM": [
-     0.1,
+     0.25,
      0.4
     ],
-    "usable": 0.98,
+    "usable": 0.86,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.25"
+     "wall dL +0.13",
+     "glazing storey band off by 0.62 mean 0.39 vs photo 0.73"
     ],
     "wall": {
-     "photo": "#64594d",
-     "model": "#817468",
-     "dL": 0.11
+     "photo": "#665547",
+     "model": "#8a7463",
+     "dL": 0.125
     },
     "glazing": {
-     "photo": 0.43,
-     "model": 0.41
+     "photo": 0.73,
+     "model": 0.39
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.298
+    "iou": 0.495
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.385
+   }
   },
   {
    "pandId": "0363100012165393",
@@ -843,43 +1077,84 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#7d6a5e",
-    "wallRaw": "#605249",
+    "wall": "#776355",
+    "wallRaw": "#7e6c5d",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0,
-     "crown": null
+     "eavesM": 14.13,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 3.2,
+      "topWidthM": 0.28,
+      "centre": 0.59
+     }
     },
     "stucco": false,
-    "bands": 1,
-    "columns": null,
-    "frontClass": "curtain",
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.066,
+    "accentSide": null,
+    "accentShare": 0.28,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 0.5,
+     "bayCentre": 0.2,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 5.02,
-       "widthM": 0.88,
-       "centre": 0.12
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0
+    "foliageShare": 0.05
    },
-   "status": "held",
-   "stage": "evidence",
-   "reason": "no front on the strip: sky over the roof in 67 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#776355",
+     "evidence": "strip 2021-02-22 span 2255-2448: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
+   "likeness": {
+    "pandId": "0363100012165393",
+    "ncc": 0.365,
+    "nccRaw": 0.365,
+    "shiftM": [
+     0.2,
+     0.4
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#756355",
+     "model": "#8f7766",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.524
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.365
+   }
   },
   {
    "pandId": "0363100012159135",
@@ -890,43 +1165,78 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#7a6a61",
-    "wallRaw": "#5e5148",
+    "wall": "#776354",
+    "wallRaw": "#796759",
     "skyline": {
      "eavesM": 0,
      "eavesRow": 788,
-     "confidence": 0.05,
+     "confidence": 0.24,
      "crown": null
     },
     "stucco": false,
-    "bands": 0,
+    "bands": 10,
     "columns": 3,
-    "frontClass": "punched",
+    "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.075,
+    "accentShare": 0.206,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
-     "why": "no dark open axis, 1 wide slab(s)",
+     "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 5.1,
-       "widthM": 1.65,
-       "centre": 0.67
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0
+    "foliageShare": 0.05
    },
-   "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#776354",
+     "evidence": "strip 2021-02-22 span 2448-2636: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012159135",
+    "ncc": 0.502,
+    "nccRaw": 0.502,
+    "shiftM": [
+     0.15,
+     0.4
+    ],
+    "usable": 0.83,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.39 vs photo 0.54",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#7a6657",
+     "model": "#8f7765",
+     "dL": 0.069
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.473
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.502
+   }
   },
   {
    "pandId": "0363100012163222",
@@ -937,48 +1247,77 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#6b5b51",
-    "wallRaw": "#64584f",
+    "wall": "#715e4e",
+    "wallRaw": "#6d5e52",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0.01,
+     "eavesM": 19.05,
+     "eavesRow": 26,
+     "confidence": 0.38,
      "crown": null
     },
     "stucco": false,
-    "bands": 4,
-    "columns": null,
-    "frontClass": "punched",
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.149,
+    "accentShare": 0.195,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 7,
-       "widthM": 1,
-       "centre": 0.12
-      },
-      {
-       "atM": 5.13,
-       "widthM": 1.02,
-       "centre": 0.12
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.04
    },
-   "status": "held",
-   "stage": "evidence",
-   "reason": "no front on the strip: sky over the roof in 73 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#715e4e",
+     "evidence": "strip 2021-02-22 span 2637-2825: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (red door pair right of centre on the strip (red-pixel centroid of the ground band, x/width > 0.5; Reigersbergenstraat (cast strip) by the alternation anchored on the measured 164833))"
+   ],
+   "likeness": {
+    "pandId": "0363100012163222",
+    "ncc": 0.388,
+    "nccRaw": 0.388,
+    "shiftM": [
+     0.15,
+     0.4
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6f5e50",
+     "model": "#8a735f",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.516
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.388
+   }
   },
   {
    "pandId": "0363100012162506",
@@ -989,21 +1328,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#6b594c",
-    "wallRaw": "#73645a",
+    "wall": "#6f5f55",
+    "wallRaw": "#6e5f54",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0.06,
-     "crown": null
+     "eavesM": 16.02,
+     "eavesRow": 147,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 3.63,
+      "topWidthM": 0.1,
+      "centre": 0.41
+     }
     },
     "stucco": false,
-    "bands": 6,
-    "columns": 2,
-    "frontClass": "columns",
-    "doorSide": "left",
-    "accentSide": null,
-    "accentShare": 0.285,
+    "bands": 7,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.241,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -1013,41 +1357,53 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.02
+    "foliageShare": 0.04
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC -0.055 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.62 mean 0.40 vs photo 0.53)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6f5f55",
+     "evidence": "strip 2021-02-22 span 2824-3012: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
    "likeness": {
     "pandId": "0363100012162506",
-    "ncc": -0.055,
-    "nccRaw": -0.055,
+    "ncc": 0.355,
+    "nccRaw": 0.355,
     "shiftM": [
-     0,
+     0.15,
      0.4
     ],
-    "usable": 0.93,
+    "usable": 0.87,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.62 mean 0.40 vs photo 0.53"
+     "glazing storey band off by 0.48 mean 0.39 vs photo 0.64"
     ],
     "wall": {
-     "photo": "#746356",
-     "model": "#846e5e",
-     "dL": 0.047
+     "photo": "#6d5f54",
+     "model": "#877367",
+     "dL": 0.088
     },
     "glazing": {
-     "photo": 0.53,
-     "model": 0.4
+     "photo": 0.64,
+     "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.268
+    "iou": 0.417
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.355
+   }
   },
   {
    "pandId": "0363100012158704",
@@ -1058,21 +1414,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#78685f",
-    "wallRaw": "#66584f",
+    "wall": "#6c584d",
+    "wallRaw": "#75665a",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0.05,
-     "crown": null
+     "eavesM": 14.1,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.8,
+      "topWidthM": 0.55,
+      "centre": 0.49
+     }
     },
     "stucco": false,
-    "bands": 1,
+    "bands": 6,
     "columns": 3,
-    "frontClass": "curtain",
+    "frontClass": "ribbon",
     "doorSide": null,
-    "accentSide": "right",
-    "accentShare": 0.117,
+    "accentSide": null,
+    "accentShare": 0.242,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -1082,40 +1443,12 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": {
-    "pandId": "0363100012158704",
-    "ncc": 0.161,
-    "nccRaw": 0.161,
-    "shiftM": [
-     0,
-     -0.4
-    ],
-    "usable": 0.95,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.64 mean 0.39 vs photo 0.81"
-    ],
-    "wall": {
-     "photo": "#7d6c63",
-     "model": "#8e7b71",
-     "dL": 0.061
-    },
-    "glazing": {
-     "photo": 0.81,
-     "model": 0.39
-    },
-    "columns": {
-     "photo": 3,
-     "model": 3
-    },
-    "iou": 0.368
-   },
+   "stage": "match",
+   "reason": "era guard: the strip reads ribbon windows; fh-1887-dentil-pediment is a punched-window type",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -1127,64 +1460,47 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#61584f",
-    "wallRaw": "#5c5047",
+    "wall": "#78675c",
+    "wallRaw": "#77685c",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 788,
-     "confidence": 0.05,
-     "crown": null
+     "eavesM": 18.35,
+     "eavesRow": 54,
+     "confidence": 0.45,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 1.35,
+      "topWidthM": 0.2,
+      "centre": 0.4
+     }
     },
     "stucco": false,
-    "bands": 0,
-    "columns": 5,
+    "bands": 5,
+    "columns": 3,
     "frontClass": "punched",
     "doorSide": null,
-    "accentSide": "right",
-    "accentShare": 0.012,
+    "accentSide": null,
+    "accentShare": 0.189,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 0.88,
+       "centre": 0.21
+      }
+     ]
     },
     "voidShare": 0,
-    "foliageShare": 0.02
+    "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.117 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17)",
-   "likeness": {
-    "pandId": "0363100012153786",
-    "ncc": 0.117,
-    "nccRaw": 0.117,
-    "shiftM": [
-     -0.05,
-     -0.2
-    ],
-    "usable": 0.96,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.17"
-    ],
-    "wall": {
-     "photo": "#5f5146",
-     "model": "#796e63",
-     "dL": 0.108
-    },
-    "glazing": {
-     "photo": 0.45,
-     "model": 0.4
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.331
-   },
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
    "challengers": {}
   },
   {
@@ -1196,26 +1512,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#6c5c55",
-    "wallRaw": "#61554c",
+    "wall": "#766356",
+    "wallRaw": "#807164",
     "skyline": {
-     "eavesM": 15.7,
-     "eavesRow": 160,
-     "confidence": 0.49,
+     "eavesM": 15.85,
+     "eavesRow": 154,
+     "confidence": 0.97,
      "crown": {
-      "widthM": 0.88,
-      "riseM": 3.75,
-      "topWidthM": 0.05,
-      "centre": 0.64
+      "widthM": 2.7,
+      "riseM": 3.85,
+      "topWidthM": 0.72,
+      "centre": 0.28
      }
     },
     "stucco": false,
-    "bands": 0,
-    "columns": 2,
-    "frontClass": "columns",
-    "doorSide": null,
-    "accentSide": "right",
-    "accentShare": 0.025,
+    "bands": 5,
+    "columns": 6,
+    "frontClass": "ribbon",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.273,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -1224,47 +1540,19 @@
      "openAxes": [],
      "slabs": [
       {
-       "atM": 4.75,
-       "widthM": 0.82,
-       "centre": 0.91
+       "atM": 9.25,
+       "widthM": 0.93,
+       "centre": 0.22
       }
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.02
+    "foliageShare": 0.04
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.107 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.58 mean 0.44 vs photo 0.83)",
-   "likeness": {
-    "pandId": "0363100012163630",
-    "ncc": 0.107,
-    "nccRaw": 0.107,
-    "shiftM": [
-     0,
-     -0.3
-    ],
-    "usable": 0.94,
-    "abstain": null,
-    "verdict": "FAIL",
-    "reasons": [
-     "glazing storey band off by 0.58 mean 0.44 vs photo 0.83"
-    ],
-    "wall": {
-     "photo": "#6d5c55",
-     "model": "#837067",
-     "dL": 0.078
-    },
-    "glazing": {
-     "photo": 0.83,
-     "model": 0.44
-    },
-    "columns": {
-     "photo": null,
-     "model": 3
-    },
-    "iou": 0.425
-   },
+   "stage": "match",
+   "reason": "era guard: the strip reads ribbon windows; fh-1887-dentil-pediment is a punched-window type",
+   "likeness": null,
    "challengers": {}
   }
  ]

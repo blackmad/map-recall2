@@ -1,0 +1,103 @@
+{
+ "name": "fh6-20261110",
+ "buurt": "frederik-hendrikbuurt-zuidoost",
+ "library": "frederik-hendrikbuurt",
+ "generatedAt": "2026-11-10T09:31:34.283Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 2,
+  "runs": 3,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 3,
+  "byReason": {
+   "glb-audit": 2,
+   "strip-quality": 2
+  }
+ },
+ "rows": [
+  {
+   "face": "houweningen-2-38",
+   "street": "Van Houweningenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.169,
+   "nccMedian": 0.39,
+   "stripOverDrawn": 0.86,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 36989,
+   "sheet": "staging/block-face/houweningen-2-38-r1/review/strip-sheet.png",
+   "stripDate": "2021-02-22",
+   "run": "houweningen-2-38-r1",
+   "pands": 16,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 25.5
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "street": "Van Reigersbergenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.15,
+   "nccMedian": 0.315,
+   "stripOverDrawn": 1.021,
+   "wallFits": 11,
+   "droppedCorners": [],
+   "triangles": 24137,
+   "sheet": "staging/block-face/reigersbergen-1-37-r1/review/strip-sheet.png",
+   "stripDate": "2024-09-11",
+   "run": "reigersbergen-1-37-r1",
+   "pands": 11,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-quality: cold cast rb"
+   ],
+   "seconds": 17.1
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "street": "Van Reigersbergenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.192,
+   "nccMedian": 0.417,
+   "stripOverDrawn": 0.982,
+   "wallFits": 7,
+   "droppedCorners": [],
+   "triangles": 15896,
+   "sheet": "staging/block-face/reigersbergen-1-37-r2/review/strip-sheet.png",
+   "stripDate": "2024-09-11",
+   "run": "reigersbergen-1-37-r2",
+   "pands": 7,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-quality: cold cast rb",
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 11.3
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+ "name": "fh5-20261110",
+ "buurt": "frederik-hendrikbuurt-zuidoost",
+ "library": "frederik-hendrikbuurt",
+ "generatedAt": "2026-11-10T09:16:52.246Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 1,
+  "runs": 1,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 1,
+  "byReason": {
+   "glb-audit": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "houweningen-2-38",
+   "street": "Van Houweningenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.169,
+   "nccMedian": 0.39,
+   "stripOverDrawn": 0.86,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 37421,
+   "sheet": "staging/block-face/houweningen-2-38-r1/review/strip-sheet.png",
+   "stripDate": "2021-02-22",
+   "run": "houweningen-2-38-r1",
+   "pands": 16,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 55
+  }
+ ]
+}

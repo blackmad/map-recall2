@@ -58,7 +58,7 @@
   "bandHeights": {
    "head": 0.08
   },
-  "windowSurround": "stone-lintel"
+  "windowSurround": "dentil-lintel"
  },
  "crowns": {
   "pediment-dormer": {
@@ -207,15 +207,19 @@
   }
  ],
  "schemaLimits": [
-  "dentil lintels (drawn as a flat white head band)",
-  "paired double doors with a transom (one door drawn)",
-  "arched ground heads on some pands",
-  "wall roundels / iron anchors"
+  "iron wall anchors and brick roundels",
+  "arched ground heads on some pands (see fh-1887-arched-gable)"
  ],
  "grounds": {
   "door-left": {
    "doorBay": 0,
-   "note": "house door (a pair of red doors under a transom) on the left axis beside a wide two-light window; mirrored when the strip reads it on the right"
+   "doorPairs": true,
+   "pairTransom": true,
+   "wideGround": {
+    "from": 1,
+    "to": 2
+   },
+   "note": "a pair of red doors under one transom on the left axis beside a wide two-light casement; mirrored when the strip reads it on the right"
   }
  }
 }

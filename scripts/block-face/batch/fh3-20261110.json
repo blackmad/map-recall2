@@ -1,0 +1,151 @@
+{
+ "name": "fh3-20261110",
+ "buurt": "frederik-hendrikbuurt-zuidoost",
+ "library": "frederik-hendrikbuurt",
+ "generatedAt": "2026-11-10T08:26:38.917Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 4,
+  "runs": 5,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 3,
+  "byReason": {
+   "already-installed": 2,
+   "strip-quality": 2,
+   "glb-audit": 1,
+   "likeness": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "hendrik-134-154",
+   "street": "Frederik Hendrikstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "hendrik-134-154",
+   "pands": 12,
+   "mode": "authored",
+   "stripDate": null,
+   "status": "skipped",
+   "reasons": [
+    "already-installed"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "houweningen-2-38",
+   "street": "Van Houweningenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.169,
+   "nccMedian": 0.39,
+   "stripOverDrawn": 0.86,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 37421,
+   "sheet": "staging/block-face/houweningen-2-38-r1/review/strip-sheet.png",
+   "stripDate": "2021-02-22",
+   "run": "houweningen-2-38-r1",
+   "pands": 16,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 32.2
+  },
+  {
+   "face": "houweningen-1-31",
+   "street": "Van Houweningenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "houweningen-1-31",
+   "pands": 17,
+   "mode": "authored",
+   "stripDate": null,
+   "status": "skipped",
+   "reasons": [
+    "already-installed"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "street": "Van Reigersbergenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.146,
+   "nccMedian": 0.389,
+   "stripOverDrawn": 0.864,
+   "wallFits": 14,
+   "droppedCorners": [],
+   "triangles": 24569,
+   "sheet": "staging/block-face/reigersbergen-1-37-r1/review/strip-sheet.png",
+   "stripDate": "2025-06-18",
+   "run": "reigersbergen-1-37-r1",
+   "pands": 11,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-quality: cold cast rb",
+    "likeness: 1 pand(s) under NCC 0.15 (156678 0.146)"
+   ],
+   "seconds": 21
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "street": "Van Reigersbergenstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.153,
+   "nccMedian": 0.274,
+   "stripOverDrawn": 1.187,
+   "wallFits": 5,
+   "droppedCorners": [],
+   "triangles": 11750,
+   "sheet": "staging/block-face/reigersbergen-1-37-r2/review/strip-sheet.png",
+   "stripDate": "2025-06-18",
+   "run": "reigersbergen-1-37-r2",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-quality: cold cast rb"
+   ],
+   "seconds": 8
+  }
+ ]
+}

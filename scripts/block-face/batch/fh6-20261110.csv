@@ -1,0 +1,4 @@
+face,run,street,pands,mode,ride,stripDate,restriped,status,reasons,nccMin,nccMedian,stripOverDrawn,wallFits,droppedCorners,triangles,seconds
+houweningen-2-38,houweningen-2-38-r1,Van Houweningenstraat,16,auto-place,,2021-02-22,,failed,glb-audit: failed (see report.json audit),0.169,0.39,0.86,1,,36989,25.5
+reigersbergen-1-37,reigersbergen-1-37-r1,Van Reigersbergenstraat,11,auto-place,,2024-09-11,,failed,strip-quality: cold cast rb,0.15,0.315,1.021,11,,24137,17.1
+reigersbergen-1-37,reigersbergen-1-37-r2,Van Reigersbergenstraat,7,auto-place,,2024-09-11,,failed,strip-quality: cold cast rb | glb-audit: failed (see report.json audit),0.192,0.417,0.982,7,,15896,11.3

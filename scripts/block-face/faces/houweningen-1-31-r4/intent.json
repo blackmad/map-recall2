@@ -18,6 +18,7 @@
   "note": "auto-placed from the frederik-hendrikbuurt library (buurt Frederik Hendrikbuurt-Zuidoost); scores and holds in scripts/block-face/faces/houweningen-1-31/auto-place.json"
  },
  "types": [
+  "fh-1887-arched-gable",
   "fh-1887-dentil-pediment"
  ],
  "houses": [
@@ -50,12 +51,11 @@
    "slug": "houweningen-159954",
    "address": "Van Houweningenstraat 31",
    "type": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-arched-gable",
     "measuredPalette": {
      "brick": "#766057",
      "evidence": "strip 2021-02-22 span 3208-3396: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "point-gable",
     "mirror": true
    },
    "groundFloor": {
@@ -68,7 +68,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2021-02-22 span 3208-3396"
+    "citation": "auto-place: fh-1887-arched-gable scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2021-02-22 span 3208-3396"
    }
   },
   {

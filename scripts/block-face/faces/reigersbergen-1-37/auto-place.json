@@ -2,8 +2,8 @@
  "face": "reigersbergen-1-37",
  "street": "Van Reigersbergenstraat",
  "library": "frederik-hendrikbuurt",
- "stripDate": "2021-03-22",
- "seconds": 7.22,
+ "stripDate": "2024-09-11",
+ "seconds": 41.72,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -17,11 +17,34 @@
   {
    "face": "reigersbergen-1-37-r1",
    "pands": [
+    "0363100012161489",
+    "0363100012156678",
+    "0363100012155831",
+    "0363100012156059",
+    "0363100012153678",
+    "0363100012152999",
+    "0363100012163303",
+    "0363100012163395",
+    "0363100012157676",
+    "0363100012155474",
+    "0363100012153212"
+   ],
+   "passed": true,
+   "triangles": 24137
+  },
+  {
+   "face": "reigersbergen-1-37-r2",
+   "pands": [
+    "0363100012153758",
+    "0363100012164833",
+    "0363100012156927",
+    "0363100012153810",
+    "0363100012162778",
     "0363100012156249",
     "0363100012160664"
    ],
-   "passed": true,
-   "triangles": 2646
+   "passed": false,
+   "triangles": 15896
   }
  ],
  "pands": [
@@ -34,17 +57,17 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#574a42",
-    "wallRaw": "#60534d",
+    "wall": "#71665e",
+    "wallRaw": "#62635e",
     "skyline": {
-     "eavesM": 15.97,
-     "eavesRow": 151,
+     "eavesM": 14.45,
+     "eavesRow": 212,
      "confidence": 1,
      "crown": {
-      "widthM": 1.4,
-      "riseM": 3,
-      "topWidthM": 0.42,
-      "centre": 0.84
+      "widthM": 2.4,
+      "riseM": 2.1,
+      "topWidthM": 0.5,
+      "centre": 0.5
      }
     },
     "stucco": false,
@@ -52,24 +75,76 @@
     "columns": 3,
     "frontClass": "curtain",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.301,
+    "accentSide": "right",
+    "accentShare": 0,
     "structure": {
-     "bayWidthM": 1.57,
-     "bayCentre": 0.18,
+     "bayWidthM": 0,
+     "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.19,
-    "foliageShare": 0.01
+    "voidShare": 0,
+    "foliageShare": 0
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "ground": {
+     "shopfront": {
+      "colour": "#5c5d59",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2024-09-11 span 0-191"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#71665e",
+     "evidence": "strip 2024-09-11 span 0-191: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
+   "likeness": {
+    "pandId": "0363100012161489",
+    "ncc": 0.395,
+    "nccRaw": 0.395,
+    "shiftM": [
+     0.05,
+     0.25
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#72665d",
+     "model": "#8c6c5b",
+     "dL": 0.047
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.576
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.395
+   }
   },
   {
    "pandId": "0363100012156678",
@@ -80,26 +155,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#5d4f43",
-    "wallRaw": "#60544b",
+    "wall": "#656863",
+    "wallRaw": "#686b66",
     "skyline": {
-     "eavesM": 16.4,
-     "eavesRow": 134,
+     "eavesM": 15.28,
+     "eavesRow": 179,
      "confidence": 1,
      "crown": {
-      "widthM": 2.15,
-      "riseM": 2.4,
-      "topWidthM": 0.65,
-      "centre": 0.75
+      "widthM": 2.38,
+      "riseM": 2.08,
+      "topWidthM": 0.33,
+      "centre": 0.51
      }
     },
     "stucco": false,
     "bands": 0,
     "columns": 3,
-    "frontClass": "punched",
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "right",
-    "accentShare": 0.035,
+    "accentSide": null,
+    "accentShare": 0,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -109,13 +184,59 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0
+    "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-arched-gable",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-arched-gable",
+    "measuredPalette": {
+     "brick": "#656863",
+     "evidence": "strip 2024-09-11 span 191-382: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown point-gable: reviewer pin (reigersbergen-1-37: pointed gable (2021-02-22 / 2025-06-18 strip))",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
+   ],
+   "likeness": {
+    "pandId": "0363100012156678",
+    "ncc": 0.152,
+    "nccRaw": 0.152,
+    "shiftM": [
+     0.1,
+     0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.424 < 0.45"
+    ],
+    "wall": {
+     "photo": "#786e65",
+     "model": "#8c6c5b",
+     "dL": 0.02
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.424
+   },
+   "challengers": {
+    "fh-1887-arched-gable~m": 0.109
+   }
   },
   {
    "pandId": "0363100012155831",
@@ -126,48 +247,84 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#5f5045",
-    "wallRaw": "#5f544a",
+    "wall": "#6b5f56",
+    "wallRaw": "#676862",
     "skyline": {
-     "eavesM": 16.18,
-     "eavesRow": 143,
+     "eavesM": 14.38,
+     "eavesRow": 215,
      "confidence": 1,
      "crown": {
-      "widthM": 1.65,
-      "riseM": 2.13,
-      "topWidthM": 0.45,
-      "centre": 0.81
+      "widthM": 1.63,
+      "riseM": 1.63,
+      "topWidthM": 0.93,
+      "centre": 0.51
      }
     },
     "stucco": false,
     "bands": 0,
     "columns": 3,
     "frontClass": "columns",
-    "doorSide": null,
-    "accentSide": "right",
-    "accentShare": 0.053,
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.001,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 0.72,
+     "bayCentre": 0.82,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 5.2,
-       "widthM": 0.8,
-       "centre": 0.54
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0
+    "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6b5f56",
+     "evidence": "strip 2024-09-11 span 382-573: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
+   "likeness": {
+    "pandId": "0363100012155831",
+    "ncc": 0.403,
+    "nccRaw": 0.403,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#73685e",
+     "model": "#8c6c5b",
+     "dL": 0.043
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.547
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.403
+   }
   },
   {
    "pandId": "0363100012156059",
@@ -178,42 +335,96 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#7e6c60",
-    "wallRaw": "#655950",
+    "wall": "#6d6258",
+    "wallRaw": "#62645f",
     "skyline": {
-     "eavesM": 16.15,
-     "eavesRow": 144,
+     "eavesM": 14.45,
+     "eavesRow": 212,
      "confidence": 1,
      "crown": {
-      "widthM": 1.82,
-      "riseM": 2.43,
-      "topWidthM": 0.65,
-      "centre": 0.78
+      "widthM": 1.18,
+      "riseM": 1.55,
+      "topWidthM": 0.5,
+      "centre": 0.6
      }
     },
     "stucco": false,
-    "bands": 1,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "curtain",
+    "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0.105,
+    "accentShare": 0,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
-     "openAxes": [],
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.52 (light 0.4): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.52,
+       "light": 0.4
+      }
+     ],
      "slabs": []
     },
-    "voidShare": 0.01,
+    "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 0.77,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6d6258",
+     "evidence": "strip 2024-09-11 span 573-752: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
+   ],
+   "likeness": {
+    "pandId": "0363100012156059",
+    "ncc": 0.202,
+    "nccRaw": 0.202,
+    "shiftM": [
+     0.05,
+     0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.35 mean 0.38 vs photo 0.50",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#6e655b",
+     "model": "#8c6c5b",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.5,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.347
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.202
+   }
   },
   {
    "pandId": "0363100012153678",
@@ -224,48 +435,86 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#7e6c60",
-    "wallRaw": "#66594f",
+    "wall": "#655c53",
+    "wallRaw": "#5d605c",
     "skyline": {
-     "eavesM": 16.1,
-     "eavesRow": 146,
+     "eavesM": 14.47,
+     "eavesRow": 211,
      "confidence": 1,
      "crown": {
-      "widthM": 1.9,
-      "riseM": 2.47,
-      "topWidthM": 0.42,
-      "centre": 0.79
+      "widthM": 1.98,
+      "riseM": 1.67,
+      "topWidthM": 0.35,
+      "centre": 0.53
      }
     },
     "stucco": false,
-    "bands": 1,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "right",
     "accentSide": null,
-    "accentShare": 0.123,
+    "accentShare": 0,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 0.8,
+     "bayCentre": 0.51,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 5.05,
-       "widthM": 0.82,
-       "centre": 0.68
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#655c53",
+     "evidence": "strip 2024-09-11 span 752-948: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
+   "likeness": {
+    "pandId": "0363100012153678",
+    "ncc": 0.263,
+    "nccRaw": 0.263,
+    "shiftM": [
+     0.05,
+     0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32"
+    ],
+    "wall": {
+     "photo": "#675e55",
+     "model": "#8c6c5b",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.433
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.263
+   }
   },
   {
    "pandId": "0363100012152999",
@@ -276,53 +525,87 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#806c62",
-    "wallRaw": "#675b52",
+    "wall": "#695f57",
+    "wallRaw": "#555754",
     "skyline": {
-     "eavesM": 15.78,
-     "eavesRow": 159,
+     "eavesM": 14.55,
+     "eavesRow": 208,
      "confidence": 1,
      "crown": {
-      "widthM": 1.82,
-      "riseM": 2.8,
-      "topWidthM": 0.38,
-      "centre": 0.78
+      "widthM": 1.98,
+      "riseM": 1.6,
+      "topWidthM": 0.45,
+      "centre": 0.53
      }
     },
     "stucco": false,
-    "bands": 1,
-    "columns": 2,
-    "frontClass": "curtain",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.146,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
-     "balconies": true,
-     "why": "balcony slabs stacked at 8.05 m (1.32 m wide), 5.42 m (1.35 m wide)",
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 8.05,
-       "widthM": 1.32,
-       "centre": 0.54
-      },
-      {
-       "atM": 5.42,
-       "widthM": 1.35,
-       "centre": 0.59
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.01
+    "foliageShare": 0
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#695f57",
+     "evidence": "strip 2024-09-11 span 949-1137: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
+   ],
+   "likeness": {
+    "pandId": "0363100012152999",
+    "ncc": 0.409,
+    "nccRaw": 0.409,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6c625a",
+     "model": "#8c6c5b",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.538
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.409
+   }
   },
   {
    "pandId": "0363100012163303",
@@ -333,26 +616,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#73675e",
-    "wallRaw": "#675c54",
+    "wall": "#5f5752",
+    "wallRaw": "#575956",
     "skyline": {
-     "eavesM": 15.78,
-     "eavesRow": 159,
+     "eavesM": 14.55,
+     "eavesRow": 208,
      "confidence": 1,
      "crown": {
-      "widthM": 1.2,
-      "riseM": 2.62,
-      "topWidthM": 0.38,
-      "centre": 0.75
+      "widthM": 2.15,
+      "riseM": 4,
+      "topWidthM": 0.3,
+      "centre": 0.54
      }
     },
     "stucco": false,
-    "bands": 2,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
-    "accentSide": "right",
-    "accentShare": 0.143,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -362,13 +645,57 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.02
+    "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#5f5752",
+     "evidence": "strip 2024-09-11 span 1137-1321: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
+   "likeness": {
+    "pandId": "0363100012163303",
+    "ncc": 0.3,
+    "nccRaw": 0.3,
+    "shiftM": [
+     0,
+     0.25
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.38 vs photo 0.27"
+    ],
+    "wall": {
+     "photo": "#645b55",
+     "model": "#8c6c5b",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.399
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.3
+   }
   },
   {
    "pandId": "0363100012163395",
@@ -379,48 +706,89 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#6e6157",
-    "wallRaw": "#6a6058",
+    "wall": "#675d56",
+    "wallRaw": "#575a56",
     "skyline": {
-     "eavesM": 15.65,
-     "eavesRow": 164,
-     "confidence": 1,
+     "eavesM": 14.45,
+     "eavesRow": 212,
+     "confidence": 0.99,
      "crown": {
-      "widthM": 2.02,
-      "riseM": 3,
-      "topWidthM": 0.68,
-      "centre": 0.77
+      "widthM": 1.98,
+      "riseM": 1.9,
+      "topWidthM": 0.6,
+      "centre": 0.49
      }
     },
     "stucco": false,
-    "bands": 2,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.165,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.001,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": [
-      {
-       "atM": 4.9,
-       "widthM": 0.95,
-       "centre": 0.89
-      }
-     ]
+     "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.03
+    "foliageShare": 0
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#675d56",
+     "evidence": "strip 2024-09-11 span 1321-1513: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
+   ],
+   "likeness": {
+    "pandId": "0363100012163395",
+    "ncc": 0.283,
+    "nccRaw": 0.283,
+    "shiftM": [
+     0,
+     0.3
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.52 mean 0.39 vs photo 0.51"
+    ],
+    "wall": {
+     "photo": "#685f58",
+     "model": "#8c6c5b",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.418
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.283
+   }
   },
   {
    "pandId": "0363100012157676",
@@ -431,26 +799,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#736459",
-    "wallRaw": "#645d57",
+    "wall": "#72665e",
+    "wallRaw": "#5c5d58",
     "skyline": {
-     "eavesM": 15.75,
-     "eavesRow": 160,
-     "confidence": 0.76,
+     "eavesM": 16.52,
+     "eavesRow": 129,
+     "confidence": 0.73,
      "crown": {
-      "widthM": 0.78,
-      "riseM": 1.23,
-      "topWidthM": 0.72,
-      "centre": 0.64
+      "widthM": 1.15,
+      "riseM": 3.23,
+      "topWidthM": 0.1,
+      "centre": 0.13
      }
     },
     "stucco": false,
     "bands": 0,
     "columns": 3,
     "frontClass": "columns",
-    "doorSide": null,
+    "doorSide": "right",
     "accentSide": null,
-    "accentShare": 0.152,
+    "accentShare": 0,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -459,14 +827,56 @@
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.01,
-    "foliageShare": 0.04
+    "voidShare": 0,
+    "foliageShare": 0
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#72665e",
+     "evidence": "strip 2024-09-11 span 1513-1701: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
+   "likeness": {
+    "pandId": "0363100012157676",
+    "ncc": 0.509,
+    "nccRaw": 0.509,
+    "shiftM": [
+     0.05,
+     0.15
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6a5f57",
+     "model": "#8c6c5b",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.52
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.509
+   }
   },
   {
    "pandId": "0363100012155474",
@@ -477,13 +887,18 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#5f5349",
-    "wallRaw": "#69625e",
+    "wall": "#736961",
+    "wallRaw": "#5a5c58",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 790,
-     "confidence": 0,
-     "crown": null
+     "eavesM": 16.8,
+     "eavesRow": 118,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.95,
+      "topWidthM": 0.7,
+      "centre": 0.48
+     }
     },
     "stucco": false,
     "bands": 0,
@@ -491,7 +906,7 @@
     "frontClass": "columns",
     "doorSide": null,
     "accentSide": "left",
-    "accentShare": 0.174,
+    "accentShare": 0.001,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -500,14 +915,60 @@
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.07,
-    "foliageShare": 0.02
+    "voidShare": 0,
+    "foliageShare": 0
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-arched-gable",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-arched-gable",
+    "measuredPalette": {
+     "brick": "#736961",
+     "evidence": "strip 2024-09-11 span 1701-1889: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown point-gable: reviewer pin (reigersbergen-1-37: pointed gable (2021-02-22 / 2025-06-18 strip))",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
+   ],
+   "likeness": {
+    "pandId": "0363100012155474",
+    "ncc": 0.21,
+    "nccRaw": 0.21,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#6f645c",
+     "model": "#8c6c5b",
+     "dL": 0.055
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.515
+   },
+   "challengers": {
+    "fh-1887-arched-gable~m": 0.211
+   }
   },
   {
    "pandId": "0363100012153212",
@@ -518,26 +979,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#796860",
-    "wallRaw": "#5f544c",
+    "wall": "#70645d",
+    "wallRaw": "#595a55",
     "skyline": {
-     "eavesM": 12.55,
-     "eavesRow": 288,
-     "confidence": 1,
+     "eavesM": 16,
+     "eavesRow": 150,
+     "confidence": 0.7,
      "crown": {
-      "widthM": 1.75,
-      "riseM": 1.22,
-      "topWidthM": 0.68,
-      "centre": 0.8
+      "widthM": 0.53,
+      "riseM": 3.38,
+      "topWidthM": 0.42,
+      "centre": 0.91
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 4,
+    "columns": 3,
     "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.14,
+    "accentShare": 0,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -546,14 +1007,56 @@
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0.03,
-    "foliageShare": 0.04
+    "voidShare": 0,
+    "foliageShare": 0
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#70645d",
+     "evidence": "strip 2024-09-11 span 1890-2078: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
+   "likeness": {
+    "pandId": "0363100012153212",
+    "ncc": 0.578,
+    "nccRaw": 0.578,
+    "shiftM": [
+     0.05,
+     0.15
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6e625b",
+     "model": "#8c6c5b",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.59
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.578
+   }
   },
   {
    "pandId": "0363100012166918",
@@ -564,26 +1067,21 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#786758",
-    "wallRaw": "#635952",
+    "wall": "#72665f",
+    "wallRaw": "#5c5f58",
     "skyline": {
-     "eavesM": 12.9,
-     "eavesRow": 274,
-     "confidence": 1,
-     "crown": {
-      "widthM": 2.48,
-      "riseM": 1.28,
-      "topWidthM": 0.95,
-      "centre": 0.71
-     }
+     "eavesM": 0,
+     "eavesRow": 790,
+     "confidence": 0.01,
+     "crown": null
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
-    "frontClass": "punched",
+    "columns": 3,
+    "frontClass": "columns",
     "doorSide": null,
-    "accentSide": "left",
-    "accentShare": 0.105,
+    "accentSide": "right",
+    "accentShare": 0.015,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -593,11 +1091,11 @@
      "slabs": []
     },
     "voidShare": 0,
-    "foliageShare": 0.03
+    "foliageShare": 0.14
    },
    "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
+   "stage": "review",
+   "reason": "review: the run does not compile: 'Roof partition must preserve surveyed footprint and courtyard area' (a BAG micro-jog in this pand's front leaves roof slivers over the 0.001 m2 tolerance; TODO 'Recipe roof partition vs BAG micro-jogs'). Held until the partition snaps jogs under 5 cm.",
    "likeness": null,
    "challengers": {}
   },
@@ -610,26 +1108,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#5b4d43",
-    "wallRaw": "#60564e",
+    "wall": "#6e6562",
+    "wallRaw": "#777b77",
     "skyline": {
-     "eavesM": 15.35,
-     "eavesRow": 176,
-     "confidence": 0.6,
+     "eavesM": 14.75,
+     "eavesRow": 200,
+     "confidence": 1,
      "crown": {
-      "widthM": 0.57,
-      "riseM": 4.2,
-      "topWidthM": 0.38,
-      "centre": 0.66
+      "widthM": 2.77,
+      "riseM": 3.43,
+      "topWidthM": 0.23,
+      "centre": 0.5
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
-    "accentSide": "right",
-    "accentShare": 0.052,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.101,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -638,14 +1136,58 @@
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0,
-    "foliageShare": 0.02
+    "voidShare": 0.03,
+    "foliageShare": 0.04
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6e6562",
+     "evidence": "strip 2024-09-11 span 2266-2454: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
+   "likeness": {
+    "pandId": "0363100012153758",
+    "ncc": 0.444,
+    "nccRaw": 0.444,
+    "shiftM": [
+     -0.05,
+     0.15
+    ],
+    "usable": 0.85,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28 mean 0.39 vs photo 0.57"
+    ],
+    "wall": {
+     "photo": "#6e6561",
+     "model": "#8c6c5b",
+     "dL": 0.047
+    },
+    "glazing": {
+     "photo": 0.57,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.463
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.444
+   }
   },
   {
    "pandId": "0363100012164833",
@@ -656,42 +1198,100 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#6a5c53",
-    "wallRaw": "#61554d",
+    "wall": "#6c6463",
+    "wallRaw": "#747774",
     "skyline": {
-     "eavesM": 15.38,
-     "eavesRow": 175,
+     "eavesM": 14.55,
+     "eavesRow": 208,
      "confidence": 1,
      "crown": {
-      "widthM": 1.9,
-      "riseM": 2.77,
-      "topWidthM": 0.3,
-      "centre": 0.78
+      "widthM": 2.77,
+      "riseM": 3.6,
+      "topWidthM": 0.75,
+      "centre": 0.51
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0.082,
+    "accentShare": 0.057,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
+     "why": "no dark open axis, 2 wide slab(s)",
      "openAxes": [],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 6.25,
+       "widthM": 1.3,
+       "centre": 0.85
+      },
+      {
+       "atM": 5.95,
+       "widthM": 1.32,
+       "centre": 0.56
+      }
+     ]
     },
-    "voidShare": 0,
-    "foliageShare": 0.01
+    "voidShare": 0.01,
+    "foliageShare": 0.02
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "run did not compile",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#6c6463",
+     "evidence": "strip 2024-09-11 span 2455-2644: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
+   ],
+   "likeness": {
+    "pandId": "0363100012164833",
+    "ncc": 0.487,
+    "nccRaw": 0.487,
+    "shiftM": [
+     0,
+     0.15
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.39 vs photo 0.17"
+    ],
+    "wall": {
+     "photo": "#6f6867",
+     "model": "#8c6c5b",
+     "dL": 0.033
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.321
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.487
+   }
   },
   {
    "pandId": "0363100012156927",
@@ -702,42 +1302,92 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#75655a",
-    "wallRaw": "#645851",
+    "wall": "#857d79",
+    "wallRaw": "#7a7f7b",
     "skyline": {
-     "eavesM": 15.35,
-     "eavesRow": 176,
+     "eavesM": 14.47,
+     "eavesRow": 211,
      "confidence": 1,
      "crown": {
-      "widthM": 1.7,
-      "riseM": 2.42,
+      "widthM": 2.38,
+      "riseM": 2.1,
       "topWidthM": 0.7,
-      "centre": 0.8
+      "centre": 0.5
      }
     },
     "stucco": false,
     "bands": 0,
-    "columns": null,
-    "frontClass": "ribbon",
-    "doorSide": null,
-    "accentSide": "right",
-    "accentShare": 0.111,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.23,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
-     "balconies": false,
-     "why": "no dark open axis, 0 wide slab(s)",
-     "openAxes": [],
+     "balconies": true,
+     "why": "dark open axis 0.68 m at 0.16 (light 0.39): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.68,
+       "centre": 0.16,
+       "light": 0.39
+      }
+     ],
      "slabs": []
     },
-    "voidShare": 0,
-    "foliageShare": 0
+    "voidShare": 0.11,
+    "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "era guard: the strip reads ribbon windows; fh-1887-dentil-pediment is a punched-window type",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#857d79",
+     "evidence": "strip 2024-09-11 span 2643-2827: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
+   "likeness": {
+    "pandId": "0363100012156927",
+    "ncc": 0.321,
+    "nccRaw": 0.321,
+    "shiftM": [
+     0,
+     0.2
+    ],
+    "usable": 0.77,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "washed out 30 % > 30 %"
+    ],
+    "wall": {
+     "photo": "#78716e",
+     "model": "#8c6c5b",
+     "dL": 0.002
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.408
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.321
+   }
   },
   {
    "pandId": "0363100012153810",
@@ -748,26 +1398,26 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#736257",
-    "wallRaw": "#685b53",
+    "wall": "#766e6b",
+    "wallRaw": "#757975",
     "skyline": {
-     "eavesM": 14.95,
-     "eavesRow": 192,
+     "eavesM": 14.07,
+     "eavesRow": 227,
      "confidence": 1,
      "crown": {
-      "widthM": 2.1,
-      "riseM": 2.8,
-      "topWidthM": 0.68,
-      "centre": 0.76
+      "widthM": 2.4,
+      "riseM": 2.48,
+      "topWidthM": 0.3,
+      "centre": 0.52
      }
     },
     "stucco": false,
-    "bands": 3,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
     "accentSide": null,
-    "accentShare": 0.194,
+    "accentShare": 0.105,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
@@ -776,43 +1426,62 @@
      "openAxes": [],
      "slabs": []
     },
-    "voidShare": 0,
+    "voidShare": 0.05,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.07 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24; window shape tall vs photo square)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#766e6b",
+     "evidence": "strip 2024-09-11 span 2827-3020: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
+   ],
    "likeness": {
     "pandId": "0363100012153810",
-    "ncc": 0.07,
-    "nccRaw": 0.07,
+    "ncc": 0.295,
+    "nccRaw": 0.295,
     "shiftM": [
-     -0.05,
-     0.35
+     0.05,
+     0.2
     ],
-    "usable": 0.96,
+    "usable": 0.86,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24",
-     "window shape tall vs photo square"
+     "glazing storey band off by 0.34 mean 0.39 vs photo 0.58",
+     "wall family unresolved (#89918f is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#746459",
-     "model": "#8a7669",
-     "dL": 0.075
+     "photo": "#89918f",
+     "model": "#8c6c5b",
+     "dL": -0.1
     },
     "glazing": {
-     "photo": 0.39,
-     "model": 0.4
+     "photo": 0.58,
+     "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.307
+    "iou": 0.417
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.295
+   }
   },
   {
    "pandId": "0363100012162778",
@@ -823,71 +1492,92 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#75655c",
-    "wallRaw": "#685c55",
+    "wall": "#67615f",
+    "wallRaw": "#767a77",
     "skyline": {
-     "eavesM": 14.57,
-     "eavesRow": 207,
+     "eavesM": 14.45,
+     "eavesRow": 212,
      "confidence": 1,
      "crown": {
-      "widthM": 2,
-      "riseM": 3.18,
-      "topWidthM": 0.42,
-      "centre": 0.77
+      "widthM": 2.4,
+      "riseM": 2.1,
+      "topWidthM": 0.6,
+      "centre": 0.44
      }
     },
     "stucco": false,
-    "bands": 1,
-    "columns": null,
-    "frontClass": "punched",
-    "doorSide": null,
-    "accentSide": null,
-    "accentShare": 0.118,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.133,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 0.82,
+     "bayCentre": 0.49,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 6,
+       "widthM": 0.97,
+       "centre": 0.49
+      }
+     ]
     },
-    "voidShare": 0,
+    "voidShare": 0.06,
     "foliageShare": 0
    },
-   "status": "held",
-   "stage": "likeness",
-   "reason": "edge NCC 0.088 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.35; columns 3 vs photo 5)",
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#67615f",
+     "evidence": "strip 2024-09-11 span 3020-3208: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
+   ],
    "likeness": {
     "pandId": "0363100012162778",
-    "ncc": 0.088,
-    "nccRaw": 0.088,
+    "ncc": 0.442,
+    "nccRaw": 0.442,
     "shiftM": [
-     0.1,
-     -0.4
+     0,
+     0.4
     ],
-    "usable": 0.98,
+    "usable": 0.89,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.35",
-     "columns 3 vs photo 5"
+     "glazing storey band off by 0.18 mean 0.39 vs photo 0.28"
     ],
     "wall": {
-     "photo": "#76665d",
-     "model": "#8c786e",
-     "dL": 0.076
+     "photo": "#706b69",
+     "model": "#8c6c5b",
+     "dL": 0.027
     },
     "glazing": {
-     "photo": 0.31,
-     "model": 0.4
+     "photo": 0.28,
+     "model": 0.39
     },
     "columns": {
-     "photo": 5,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.213
+    "iou": 0.541
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.442
+   }
   },
   {
    "pandId": "0363100012156249",
@@ -898,91 +1588,101 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#6e5b50",
-    "wallRaw": "#6a5e58",
+    "wall": "#696361",
+    "wallRaw": "#727774",
     "skyline": {
-     "eavesM": 14.88,
-     "eavesRow": 195,
-     "confidence": 0.99,
+     "eavesM": 14.95,
+     "eavesRow": 192,
+     "confidence": 0.97,
      "crown": {
-      "widthM": 2.2,
-      "riseM": 4.75,
-      "topWidthM": 0.05,
-      "centre": 0.76
+      "widthM": 2.63,
+      "riseM": 2.43,
+      "topWidthM": 0.65,
+      "centre": 0.46
      }
     },
     "stucco": false,
-    "bands": 2,
-    "columns": 4,
+    "bands": 0,
+    "columns": 3,
     "frontClass": "columns",
-    "doorSide": null,
-    "accentSide": "right",
-    "accentShare": 0.136,
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.082,
     "structure": {
-     "bayWidthM": 0,
-     "bayCentre": null,
+     "bayWidthM": 0.78,
+     "bayCentre": 0.46,
      "balconies": false,
      "why": "no dark open axis, 1 wide slab(s)",
      "openAxes": [],
      "slabs": [
       {
-       "atM": 7.3,
-       "widthM": 1.85,
-       "centre": 0.39
+       "atM": 9.02,
+       "widthM": 0.93,
+       "centre": 0.15
       },
       {
-       "atM": 4.75,
-       "widthM": 1.52,
-       "centre": 0.57
+       "atM": 6.1,
+       "widthM": 1.27,
+       "centre": 0.18
       }
      ]
     },
-    "voidShare": 0,
+    "voidShare": 0.04,
     "foliageShare": 0
    },
    "status": "placed",
-   "type": "fh-1887-dentil-pediment",
-   "score": 0.86,
+   "type": "fh-1887-arched-gable",
+   "score": 1,
    "placement": {
-    "type": "fh-1887-dentil-pediment",
+    "type": "fh-1887-arched-gable",
+    "ground": "door-left",
     "measuredPalette": {
-     "brick": "#6e5b50",
-     "evidence": "strip 2021-03-22 span 3207-3407: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+     "brick": "#696361",
+     "evidence": "strip 2024-09-11 span 3207-3407: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
+    },
+    "mirror": true
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown point-gable: reviewer pin (reigersbergen-1-37: pointed gable (2021-02-22 / 2025-06-18 strip))",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design",
+    "door reviewer pin: mirrored (red door pair right of centre (red centroid of the ground band, 2024-09-11 strip))"
    ],
    "likeness": {
     "pandId": "0363100012156249",
-    "ncc": 0.196,
-    "nccRaw": 0.196,
+    "ncc": 0.213,
+    "nccRaw": 0.213,
     "shiftM": [
-     0.4,
-     -0.35
+     -0.15,
+     0.4
     ],
-    "usable": 0.97,
+    "usable": 0.9,
     "abstain": null,
-    "verdict": "WARN",
+    "verdict": "FAIL",
     "reasons": [
-     "mask IoU 0.39 < 0.45"
+     "glazing storey band off by 0.29 mean 0.40 vs photo 0.23",
+     "wall family unresolved (#736f6e is dark and neutral, brick courses not resolved): lightness and hue judged only"
     ],
     "wall": {
-     "photo": "#6d5c51",
-     "model": "#866f62",
-     "dL": 0.082
+     "photo": "#736f6e",
+     "model": "#8c6c5b",
+     "dL": 0.012
     },
     "glazing": {
-     "photo": 0.33,
-     "model": 0.39
+     "photo": 0.23,
+     "model": 0.4
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": 3
     },
-    "iou": 0.39
+    "iou": 0.423
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-arched-gable~m": 0.213
+   }
   },
   {
    "pandId": "0363100012160664",
@@ -993,13 +1693,18 @@
    "storeys3dbag": 5,
    "bagBay": null,
    "strip": {
-    "wall": "#5e5249",
-    "wallRaw": "#5d5249",
+    "wall": "#635854",
+    "wallRaw": "#606361",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 790,
-     "confidence": 0.16,
-     "crown": null
+     "eavesM": 14.57,
+     "eavesRow": 207,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 4.63,
+      "topWidthM": 0.35,
+      "centre": 0.45
+     }
     },
     "stucco": false,
     "bands": 0,
@@ -1007,17 +1712,23 @@
     "frontClass": "columns",
     "doorSide": null,
     "accentSide": null,
-    "accentShare": 0.037,
+    "accentShare": 0.002,
     "structure": {
      "bayWidthM": 0,
      "bayCentre": null,
      "balconies": false,
      "why": "no dark open axis, 0 wide slab(s)",
      "openAxes": [],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 6.07,
+       "widthM": 1.07,
+       "centre": 0.81
+      }
+     ]
     },
     "voidShare": 0,
-    "foliageShare": 0.02
+    "foliageShare": 0.01
    },
    "status": "placed",
    "type": "fh-1887-dentil-pediment",
@@ -1025,43 +1736,49 @@
    "placement": {
     "type": "fh-1887-dentil-pediment",
     "measuredPalette": {
-     "brick": "#5e5249",
-     "evidence": "strip 2021-03-22 span 3407-3606: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+     "brick": "#635854",
+     "evidence": "strip 2024-09-11 span 3407-3606: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72584a"
     }
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "palette pinned: Reigersbergenstraat strip 2024-09-11 (blue-cast on the right third; the 2025-06-18 strip was rejected for a cold cast): one red-brown row tone, as on the 2021-02-22 Houweningenstraat strips of the same design"
    ],
    "likeness": {
     "pandId": "0363100012160664",
-    "ncc": 0.237,
-    "nccRaw": 0.237,
+    "ncc": 0.449,
+    "nccRaw": 0.449,
     "shiftM": [
-     -0.25,
-     0.05
+     -0.2,
+     0.35
     ],
-    "usable": 0.92,
+    "usable": 0.98,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.46 mean 0.41 vs photo 0.71"
+     "glazing  mean 0.39 vs photo 0.28"
     ],
     "wall": {
-     "photo": "#696057",
-     "model": "#77685c",
-     "dL": 0.037
+     "photo": "#615855",
+     "model": "#8c6c5b",
+     "dL": 0.096
     },
     "glazing": {
-     "photo": 0.71,
-     "model": 0.41
+     "photo": 0.28,
+     "model": 0.39
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.44
+    "iou": 0.467
    },
-   "challengers": {}
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.449
+   }
   }
  ]
 }

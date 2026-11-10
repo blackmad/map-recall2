@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T02:19:28.895Z",
+ "generatedAt": "2026-11-10T09:05:36.749Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -99452,10 +99452,10 @@
    "id": "chunk-face-hendrik-134-154-r1",
    "category": "street-survey",
    "name": "face-hendrik-134-154-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hendrik-134-154-r1.glb?asset=e18f210ce2ad1883",
-   "sha256": "e18f210ce2ad18831d6dd3f564dacabb01dde6ccae4904013dc52151b2dbec2d",
-   "bytes": 83304,
-   "triangles": 3144,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hendrik-134-154-r1.glb?asset=e571524eea81defa",
+   "sha256": "e571524eea81defa76f5257fcc71699af7fc2ce5b0bb63a334cee41f7ee63396",
+   "bytes": 118312,
+   "triangles": 4752,
    "primitives": 9,
    "instance": {
     "anchor": [
@@ -99570,7 +99570,7 @@
        0.404
       ]
      },
-     "triangles": 1618,
+     "triangles": 2422,
      "ranges": [
       {
        "primitive": 1,
@@ -99580,7 +99580,7 @@
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 544
+       "triangleCount": 1336
       },
       {
        "primitive": 3,
@@ -99590,17 +99590,17 @@
       {
        "primitive": 4,
        "firstTriangle": 0,
-       "triangleCount": 796
+       "triangleCount": 808
       },
       {
        "primitive": 5,
        "firstTriangle": 0,
-       "triangleCount": 12
+       "triangleCount": 24
       },
       {
        "primitive": 6,
        "firstTriangle": 0,
-       "triangleCount": 164
+       "triangleCount": 152
       },
       {
        "primitive": 7,
@@ -99636,7 +99636,7 @@
        0.404
       ]
      },
-     "triangles": 1526,
+     "triangles": 2330,
      "ranges": [
       {
        "primitive": 0,
@@ -99645,8 +99645,8 @@
       },
       {
        "primitive": 2,
-       "firstTriangle": 544,
-       "triangleCount": 472
+       "firstTriangle": 1336,
+       "triangleCount": 1264
       },
       {
        "primitive": 3,
@@ -99655,18 +99655,18 @@
       },
       {
        "primitive": 4,
-       "firstTriangle": 796,
-       "triangleCount": 796
+       "firstTriangle": 808,
+       "triangleCount": 808
       },
       {
        "primitive": 5,
-       "firstTriangle": 12,
-       "triangleCount": 12
+       "firstTriangle": 24,
+       "triangleCount": 24
       },
       {
        "primitive": 6,
-       "firstTriangle": 164,
-       "triangleCount": 164
+       "firstTriangle": 152,
+       "triangleCount": 152
       },
       {
        "primitive": 7,
@@ -99686,10 +99686,10 @@
    "id": "chunk-face-hendrik-134-154-r2",
    "category": "street-survey",
    "name": "face-hendrik-134-154-r2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hendrik-134-154-r2.glb?asset=431c362ff56d8777",
-   "sha256": "431c362ff56d8777b9fc9c0d470188800aaab2675ac8e32d4f5d2780e2213856",
-   "bytes": 85528,
-   "triangles": 3264,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-hendrik-134-154-r2.glb?asset=088f6895f5f2a417",
+   "sha256": "088f6895f5f2a4176bfc2e34461e812c9a08ed7144e245d197c051534f68c70a",
+   "bytes": 120648,
+   "triangles": 4848,
    "primitives": 9,
    "instance": {
     "anchor": [
@@ -99808,7 +99808,7 @@
        0.404
       ]
      },
-     "triangles": 1609,
+     "triangles": 2413,
      "ranges": [
       {
        "primitive": 1,
@@ -99818,7 +99818,7 @@
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 544
+       "triangleCount": 1336
       },
       {
        "primitive": 3,
@@ -99828,17 +99828,17 @@
       {
        "primitive": 4,
        "firstTriangle": 0,
-       "triangleCount": 796
+       "triangleCount": 808
       },
       {
        "primitive": 5,
        "firstTriangle": 0,
-       "triangleCount": 12
+       "triangleCount": 24
       },
       {
        "primitive": 6,
        "firstTriangle": 0,
-       "triangleCount": 164
+       "triangleCount": 152
       },
       {
        "primitive": 7,
@@ -99874,7 +99874,7 @@
        0.404
       ]
      },
-     "triangles": 1655,
+     "triangles": 2435,
      "ranges": [
       {
        "primitive": 0,
@@ -99883,8 +99883,8 @@
       },
       {
        "primitive": 2,
-       "firstTriangle": 544,
-       "triangleCount": 592
+       "firstTriangle": 1336,
+       "triangleCount": 1360
       },
       {
        "primitive": 3,
@@ -99893,18 +99893,18 @@
       },
       {
        "primitive": 4,
-       "firstTriangle": 796,
-       "triangleCount": 796
+       "firstTriangle": 808,
+       "triangleCount": 808
       },
       {
        "primitive": 5,
-       "firstTriangle": 12,
-       "triangleCount": 12
+       "firstTriangle": 24,
+       "triangleCount": 24
       },
       {
        "primitive": 6,
-       "firstTriangle": 164,
-       "triangleCount": 164
+       "firstTriangle": 152,
+       "triangleCount": 152
       },
       {
        "primitive": 7,
@@ -99924,10 +99924,10 @@
    "id": "chunk-face-houweningen-1-31-r2",
    "category": "street-survey",
    "name": "face-houweningen-1-31-r2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-houweningen-1-31-r2.glb?asset=257c1b46e9a70fb3",
-   "sha256": "257c1b46e9a70fb36860adf36ed8a32fc99e39124a9b12ef74a7a026b2acecd2",
-   "bytes": 86436,
-   "triangles": 3330,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-houweningen-1-31-r2.glb?asset=5d39699b55869ffc",
+   "sha256": "5d39699b55869ffc2f20f4e5735429fded3e7be5ac3d88165bab042b17a39e16",
+   "bytes": 121672,
+   "triangles": 4914,
    "primitives": 9,
    "instance": {
     "anchor": [
@@ -100042,7 +100042,7 @@
        0.404
       ]
      },
-     "triangles": 1733,
+     "triangles": 2513,
      "ranges": [
       {
        "primitive": 1,
@@ -100052,7 +100052,7 @@
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 664
+       "triangleCount": 1432
       },
       {
        "primitive": 3,
@@ -100062,17 +100062,17 @@
       {
        "primitive": 4,
        "firstTriangle": 0,
-       "triangleCount": 796
+       "triangleCount": 808
       },
       {
        "primitive": 5,
        "firstTriangle": 0,
-       "triangleCount": 12
+       "triangleCount": 24
       },
       {
        "primitive": 6,
        "firstTriangle": 0,
-       "triangleCount": 164
+       "triangleCount": 152
       },
       {
        "primitive": 7,
@@ -100108,7 +100108,7 @@
        0.404
       ]
      },
-     "triangles": 1597,
+     "triangles": 2401,
      "ranges": [
       {
        "primitive": 0,
@@ -100117,8 +100117,8 @@
       },
       {
        "primitive": 2,
-       "firstTriangle": 664,
-       "triangleCount": 544
+       "firstTriangle": 1432,
+       "triangleCount": 1336
       },
       {
        "primitive": 3,
@@ -100127,18 +100127,18 @@
       },
       {
        "primitive": 4,
-       "firstTriangle": 796,
-       "triangleCount": 796
+       "firstTriangle": 808,
+       "triangleCount": 808
       },
       {
        "primitive": 5,
-       "firstTriangle": 12,
-       "triangleCount": 12
+       "firstTriangle": 24,
+       "triangleCount": 24
       },
       {
        "primitive": 6,
-       "firstTriangle": 164,
-       "triangleCount": 164
+       "firstTriangle": 152,
+       "triangleCount": 152
       },
       {
        "primitive": 7,
@@ -100158,10 +100158,10 @@
    "id": "chunk-face-houweningen-1-31-r3",
    "category": "street-survey",
    "name": "face-houweningen-1-31-r3",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-houweningen-1-31-r3.glb?asset=04f7549c1929955a",
-   "sha256": "04f7549c1929955aa4949e97b1e6abd0ea0fbce4dbe228fda830d4d10fe8829c",
-   "bytes": 124572,
-   "triangles": 4947,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-houweningen-1-31-r3.glb?asset=5a4f85b12c648450",
+   "sha256": "5a4f85b12c6484506576822df8980b452f3f7b8cace6cd8b2b42c867c191e80a",
+   "bytes": 177704,
+   "triangles": 7311,
    "primitives": 10,
    "instance": {
     "anchor": [
@@ -100306,7 +100306,7 @@
        0.421
       ]
      },
-     "triangles": 1598,
+     "triangles": 2402,
      "ranges": [
       {
        "primitive": 1,
@@ -100316,7 +100316,7 @@
       {
        "primitive": 3,
        "firstTriangle": 0,
-       "triangleCount": 544
+       "triangleCount": 1336
       },
       {
        "primitive": 4,
@@ -100326,17 +100326,17 @@
       {
        "primitive": 5,
        "firstTriangle": 0,
-       "triangleCount": 796
+       "triangleCount": 808
       },
       {
        "primitive": 6,
        "firstTriangle": 0,
-       "triangleCount": 12
+       "triangleCount": 24
       },
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 164
+       "triangleCount": 152
       },
       {
        "primitive": 8,
@@ -100372,7 +100372,7 @@
        0.397
       ]
      },
-     "triangles": 1633,
+     "triangles": 2413,
      "ranges": [
       {
        "primitive": 2,
@@ -100381,8 +100381,8 @@
       },
       {
        "primitive": 3,
-       "firstTriangle": 544,
-       "triangleCount": 592
+       "firstTriangle": 1336,
+       "triangleCount": 1360
       },
       {
        "primitive": 4,
@@ -100391,18 +100391,18 @@
       },
       {
        "primitive": 5,
-       "firstTriangle": 796,
-       "triangleCount": 796
+       "firstTriangle": 808,
+       "triangleCount": 808
       },
       {
        "primitive": 6,
-       "firstTriangle": 12,
-       "triangleCount": 12
+       "firstTriangle": 24,
+       "triangleCount": 24
       },
       {
        "primitive": 7,
-       "firstTriangle": 164,
-       "triangleCount": 164
+       "firstTriangle": 152,
+       "triangleCount": 152
       },
       {
        "primitive": 8,
@@ -100438,7 +100438,7 @@
        0.421
       ]
      },
-     "triangles": 1716,
+     "triangles": 2496,
      "ranges": [
       {
        "primitive": 0,
@@ -100447,8 +100447,8 @@
       },
       {
        "primitive": 3,
-       "firstTriangle": 1136,
-       "triangleCount": 664
+       "firstTriangle": 2696,
+       "triangleCount": 1432
       },
       {
        "primitive": 4,
@@ -100457,18 +100457,18 @@
       },
       {
        "primitive": 5,
-       "firstTriangle": 1592,
-       "triangleCount": 796
+       "firstTriangle": 1616,
+       "triangleCount": 808
       },
       {
        "primitive": 6,
-       "firstTriangle": 24,
-       "triangleCount": 12
+       "firstTriangle": 48,
+       "triangleCount": 24
       },
       {
        "primitive": 7,
-       "firstTriangle": 328,
-       "triangleCount": 164
+       "firstTriangle": 304,
+       "triangleCount": 152
       },
       {
        "primitive": 8,

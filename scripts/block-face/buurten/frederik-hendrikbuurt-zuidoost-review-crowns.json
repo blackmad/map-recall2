@@ -4,21 +4,63 @@
  "pins": [
   {
    "pandId": "0363100012159954",
-   "type": "fh-1887-dentil-pediment",
+   "type": "fh-1887-arched-gable",
    "crown": "point-gable",
    "reason": "houweningen-1-31 r3 pand 2: pointed brick gable with one attic light, arched heads"
   },
   {
    "pandId": "0363100012152931",
-   "type": "fh-1887-dentil-pediment",
+   "type": "fh-1887-arched-gable",
    "crown": "point-gable",
    "reason": "Frederik Hendrikstraat 154-ish r2 pand 3: pointed gable"
   },
   {
    "pandId": "0363100012158307",
-   "type": "fh-1887-dentil-pediment",
+   "type": "fh-1887-arched-gable",
    "crown": "point-gable",
    "reason": "houweningen r2 pand 3: pointed gable"
+  },
+  {
+   "pandId": "0363100012156720",
+   "type": "fh-1887-arched-gable",
+   "crown": "point-gable",
+   "reason": "Frederik Hendrikstraat 154: pointed gable over arched heads"
+  },
+  {
+   "pandId": "0363100012156678",
+   "type": "fh-1887-arched-gable",
+   "crown": "point-gable",
+   "reason": "reigersbergen-1-37: pointed gable (2021-02-22 / 2025-06-18 strip)"
+  },
+  {
+   "pandId": "0363100012155474",
+   "type": "fh-1887-arched-gable",
+   "crown": "point-gable",
+   "reason": "reigersbergen-1-37: pointed gable (2021-02-22 / 2025-06-18 strip)"
+  },
+  {
+   "pandId": "0363100012156249",
+   "type": "fh-1887-arched-gable",
+   "crown": "point-gable",
+   "reason": "reigersbergen-1-37: pointed gable (2021-02-22 / 2025-06-18 strip)"
+  },
+  {
+   "pandId": "0363100012156521",
+   "type": "fh-1887-arched-gable",
+   "crown": "point-gable",
+   "reason": "houweningen-2-38: pointed gable (2021-02-22 / 2025-06-18 strip)"
+  },
+  {
+   "pandId": "0363100012159242",
+   "type": "fh-1887-arched-gable",
+   "crown": "point-gable",
+   "reason": "houweningen-2-38: pointed gable (2021-02-22 / 2025-06-18 strip)"
+  },
+  {
+   "pandId": "0363100012153786",
+   "type": "fh-1887-arched-gable",
+   "crown": "point-gable",
+   "reason": "houweningen-2-38: pointed gable (2021-02-22 / 2025-06-18 strip)"
   }
  ]
 }
