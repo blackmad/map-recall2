@@ -1,7 +1,7 @@
 // Hand set v1 (lane H5h, #351): every number the hand set is for.
 //   1. reader ceiling   the two blind readers (B and C) on the 30 shared pands, per field; reader A against each for reference
 //   2. writers          H5's describe writers (scripts/house-specs/generated/AB07) and the merge against reader A, with the gates
-//                       (agreement.ts GATE_FLOORS / gateFor / verdict: ceiling - 0.1 with floors, Wilson 95 %)
+//                       (agreement.ts gateFor / MIN_N / verdict: blind ceiling - 0.1, Wilson 95 %; gable pooled with the gable-only rows B2 vs C2)
 //   3. BAG storeys      the raw count and the offsets (-1 pitched crown, -1 souterrain) against reader A
 //   4. old hand truth   the block-face / recipe intents agreement.ts used (handSpecs) against reader A
 //   5. H9 review        H9's easy-houses review values against reader A
@@ -13,8 +13,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { rgbToHsl } from '../../../src/canalRecall/blockFace/wallColour.ts';
 import { frontBays, specField, type HouseSpec } from '../../../src/canalRecall/houseSpec/spec.ts';
-import { STOREYS_DEFINITION, UNKNOWN, hexTone, toneOf, type HandPand, type HandSet, type WallFamily } from '../../../src/canalRecall/houseSpec/handSet.ts';
-import { GATE_FLOORS, gateFor, handSpecs, verdict, wilson, type GateField } from '../agreement.ts';
+import { STOREYS_DEFINITION, UNKNOWN, hexTone, toneOf, type GableRow, type GableRowSet, type HandPand, type HandSet, type WallFamily } from '../../../src/canalRecall/houseSpec/handSet.ts';
+import { GATE_FIELDS, GATE_MARGIN, MIN_N, gateFor, handSpecs, verdict, wilson, type GateField } from '../agreement.ts';
 import { auc, lowestThreshold, type Row as JRow } from '../../house-crops/recall-pass.ts';
 import { quality, type JudgeRecord } from '../../house-crops/judge.ts';
 import { JUDGE_GOOD } from '../../house-crops/flags.ts';
@@ -27,7 +27,7 @@ export const HELP = `hand-set score: reader ceiling, writer gates, BAG storeys, 
   (also: node --import tsx scripts/house-specs/agreement.ts --hand-set)
 
 --min-confidence drops hand readings below that confidence (default low = every stated value).
-Gates per field: max(blind reader ceiling - 0.1, floor), floors ${JSON.stringify(GATE_FLOORS)}; Wilson 95 % intervals; a writer fails
+Gates per field: blind reader ceiling - ${GATE_MARGIN} (gable n >= ${MIN_N.gable}); Wilson 95 % intervals; a writer fails
 only when the top of its interval is below the gate, passes when the bottom is at or above it, else open.`;
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../../..');
@@ -85,11 +85,20 @@ export function scoreHandSet(o: { out?: string; min?: keyof typeof RANK } = {}) 
   if (C) console.log(`\nB vs C disagreements: ${disagree(B, C).join('; ') || 'none'}`);
   console.log(`A vs B disagreements: ${disagree(A, B).join('; ') || 'none'}`);
   if (C) console.log(`A vs C disagreements: ${disagree(A, C).join('; ') || 'none'}`);
-  const ceiling = Object.fromEntries(FIELDS.map(f => [f, ceilTable[f].precision]));
-  const gates = Object.fromEntries((Object.keys(GATE_FLOORS) as GateField[]).map(g => [g, gateFor(g, ceiling[GATED[g]] as number | null)]));
-  console.log('\n| gated field | ceiling | floor | gate |\n|---|---|---|---|');
-  for (const g of Object.keys(GATE_FLOORS) as GateField[]) console.log(`| ${g} | ${ceiling[GATED[g]] ?? '-'} | ${GATE_FLOORS[g]} | ${gates[g]} |`);
-  out.readerCeiling = { ceiling: ceilName, pands: B.pands.length, multiLeftOut: multiShared, BC, AB, AC, gates, disagreements: { BC: C ? disagree(B, C) : null, AB: disagree(A, B), AC: C ? disagree(A, C) : null } };
+  const ceiling: Record<string, number | null> = Object.fromEntries(FIELDS.map(f => [f, ceilTable[f].precision]));
+  // gable-only rows (round 3): blind readers B2 and C2 on 40 crown crops; the gable ceiling pools them with B vs C
+  const loadRows = (f: string): GableRowSet | null => (fs.existsSync(path.join(D, f)) ? JSON.parse(fs.readFileSync(path.join(D, f), 'utf8')) : null);
+  const B2 = loadRows('hand-set-v1.gable-b2.json'), C2 = loadRows('hand-set-v1.gable-c2.json');
+  const gv = (r: GableRow | undefined) => (r && r.gable.value !== UNKNOWN && RANK[r.gable.confidence] >= RANK[min] ? r.gable.value : undefined);
+  let rowsPair = { stated: 0, agree: 0 }; const rowsDis: string[] = [];
+  if (B2 && C2) { const c2 = new Map(C2.rows.map(r => [r.pandId, r])); for (const r of B2.rows) { const u = gv(r), v = gv(c2.get(r.pandId)); if (u === undefined || v === undefined) continue; rowsPair.stated++; if (u === v) rowsPair.agree++; else rowsDis.push(`${r.pandId.slice(-6)} ${u} / ${v}`); } }
+  const gk = ceilTable.gable.agree + rowsPair.agree, gn = ceilTable.gable.stated + rowsPair.stated;
+  const gablePooled = { agree: gk, stated: gn, precision: gn ? +(gk / gn).toFixed(3) : null, ci: wilson(gk, gn) };
+  if (B2 && C2) { console.log(`\nGable-only rows, B2 vs C2: ${rowsPair.agree}/${rowsPair.stated} = ${(rowsPair.agree / rowsPair.stated).toFixed(2)} [${wilson(rowsPair.agree, rowsPair.stated).join(', ')}]; disagreements: ${rowsDis.join('; ')}`); console.log(`Gable ceiling pooled (B vs C + B2 vs C2): ${gk}/${gn} = ${gablePooled.precision} [${gablePooled.ci.join(', ')}]`); ceiling.gable = gablePooled.precision; }
+  const gates = Object.fromEntries(GATE_FIELDS.map(g => [g, gateFor(ceiling[GATED[g]] as number)])) as Record<GateField, number>;
+  console.log('\n| gated field | blind ceiling | gate (ceiling - 0.1) | min n |\n|---|---|---|---|');
+  for (const g of GATE_FIELDS) console.log(`| ${g} | ${ceiling[GATED[g]] ?? '-'} | ${gates[g]} | ${MIN_N[g] ?? '-'} |`);
+  out.readerCeiling = { ceiling: ceilName, pands: B.pands.length, multiLeftOut: multiShared, BC, AB, AC, gableRows: { B2C2: rowsPair, disagreements: rowsDis, pooled: gablePooled }, gates, disagreements: { BC: C ? disagree(B, C) : null, AB: disagree(A, B), AC: C ? disagree(A, C) : null } };
 
   // 2. writers against reader A on the AB07 pands, with the gates
   const gen = path.join(ROOT, 'scripts/house-specs/generated/AB07');
@@ -102,9 +111,9 @@ export function scoreHandSet(o: { out?: string; min?: keyof typeof RANK } = {}) 
   console.log(`\n## 2. Writers vs hand set (AB07: ${ab.length} pands, ${scored} readable single-front)\n`);
   console.log('| field | gate | ' + writers.map(w => `${w}: agree/stated [Wilson 95 %] verdict`).join(' | ') + ' |\n|---|---|' + writers.map(() => '---').join('|') + '|');
   const verdicts: Record<string, Record<string, ReturnType<typeof verdict>>> = {};
-  for (const g of Object.keys(GATE_FLOORS) as GateField[]) {
+  for (const g of GATE_FIELDS) {
     const f = GATED[g];
-    console.log(`| ${f} | ${gates[g]} | ` + writers.map(w => { const c = wt[w][f]; const v = verdict(c.agree, c.stated, gates[g]); (verdicts[w] ??= {})[f] = v; return c.stated ? `${c.agree}/${c.stated} = ${c.precision!.toFixed(2)} [${v.lo.toFixed(2)}, ${v.hi.toFixed(2)}] **${v.verdict}**` : '-'; }).join(' | ') + ' |');
+    console.log(`| ${f} | ${gates[g]} | ` + writers.map(w => { const c = wt[w][f]; const v = verdict(c.agree, c.stated, gates[g], MIN_N[g]); (verdicts[w] ??= {})[f] = v; return c.stated ? `${c.agree}/${c.stated} = ${c.precision!.toFixed(2)} [${v.lo.toFixed(2)}, ${v.hi.toFixed(2)}] **${v.verdict}**` : '-'; }).join(' | ') + ' |');
   }
   for (const f of ['bays±1', 'storeys±1'] as F[]) console.log(`| ${f} | (info) | ` + writers.map(w => fmt(wt[w][f])).join(' | ') + ' |');
   const fam: Record<string, number[][]> = {};
@@ -112,7 +121,18 @@ export function scoreHandSet(o: { out?: string; min?: keyof typeof RANK } = {}) 
   const med = (v: number[]) => { const s = [...v].sort((x, y) => x - y); return s[Math.floor(s.length / 2)]; };
   const famMed = Object.fromEntries(Object.entries(fam).map(([f, v]) => [f, { n: v.length, hue: Math.round(med(v.map(x => x[0]))), sat: +med(v.map(x => x[1])).toFixed(2), light: +med(v.map(x => x[2])).toFixed(2) }]));
   console.log('\npixel wall colour per read family (median HSL): ' + Object.entries(famMed).map(([f, m]) => `${f} n${m.n} h${m.hue} s${m.sat} l${m.light}`).join('; '));
-  out.writers = { pands: ab.length, scored, familyMedians: famMed, tables: wt, verdicts };
+  // the register's gable-type writer on the hand set's AB07 rows (reader A) plus the gable-only rows (B2 the record, C2 a check)
+  const regGable = (id: string) => { const e = JSON.parse(fs.readFileSync(path.join(gen, `${id}.json`), 'utf8')) as Envelope; return e.writers.register ? specField(e.writers.register, 'fronts/0/gable') as string | undefined : undefined; };
+  const gRow = (rows: GableRowSet | null) => { let k = 0, n = 0; const miss: string[] = []; for (const r of rows?.rows ?? []) { const h = gv(r), w = regGable(r.pandId); if (h === undefined || w === undefined) continue; n++; if (h === w) k++; else miss.push(`${r.pandId.slice(-6)} register ${w} / read ${h}`); } return { k, n, miss }; };
+  const rb = gRow(B2), rc = gRow(C2), main = wt.register.gable;
+  const regV = verdict(main.agree + rb.k, main.stated + rb.n, gates.gable, MIN_N.gable), regVc = verdict(main.agree + rc.k, main.stated + rc.n, gates.gable, MIN_N.gable);
+  console.log(`\nregister gable-type writer (gate ${gates.gable}, n >= ${MIN_N.gable}): hand set ${main.agree}/${main.stated} + gable rows (B2) ${rb.k}/${rb.n} = ${main.agree + rb.k}/${main.stated + rb.n} = ${((main.agree + rb.k) / (main.stated + rb.n)).toFixed(2)} [${regV.lo}, ${regV.hi}] **${regV.verdict}**; with C2 as the row truth ${main.agree + rc.k}/${main.stated + rc.n} [${regVc.lo}, ${regVc.hi}] ${regVc.verdict}`);
+  console.log(`register gable misses on the gable rows (B2): ${rb.miss.join('; ')}`);
+  // Jev storeys (measurement only, jev-storeys.ts)
+  const js = fs.existsSync(path.join(D, 'hand-set-v1.jev-storeys.json')) ? JSON.parse(fs.readFileSync(path.join(D, 'hand-set-v1.jev-storeys.json'), 'utf8')) : null;
+  const jsV = (c: any) => (c ? { ...c, ...verdict(c.agree, c.stated, gates.storeys) } : null);
+  if (js) for (const [name, c] of [['all crops', js.all], ['good-tier AB07 (what the Jev writer sees)', js.byTier['ab07-good']]] as const) { const v = jsV(c)!; console.log(`Jev storeys, ${name}: ${c.agree}/${c.stated} = ${c.precision} [${v.lo}, ${v.hi}] **${v.verdict}** (gate ${gates.storeys}), within 1 ${c.within1}/${c.stated}`); }
+  out.writers = { pands: ab.length, scored, familyMedians: famMed, tables: wt, verdicts, registerGableType: { handSet: { agree: main.agree, stated: main.stated }, rowsB2: rb, rowsC2: rc, verdict: regV, verdictC2: regVc }, jevStoreys: js ? { all: jsV(js.all), good: jsV(js.byTier['ab07-good']) } : null };
 
   // 3. BAG storeys: raw (as the envelopes hold it) and the offsets of the ruling, recomputed from the bag-facts descriptor
   const bag = loadBag();

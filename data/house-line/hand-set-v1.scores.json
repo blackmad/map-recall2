@@ -308,14 +308,35 @@
     ]
    }
   },
+  "gableRows": {
+   "B2C2": {
+    "stated": 32,
+    "agree": 28
+   },
+   "disagreements": [
+    "172888 spout / cornice",
+    "172890 neck / raised-neck",
+    "174031 neck / bell",
+    "571486 spout / point"
+   ],
+   "pooled": {
+    "agree": 49,
+    "stated": 57,
+    "precision": 0.86,
+    "ci": [
+     0.747,
+     0.927
+    ]
+   }
+  },
   "gates": {
    "bays": 0.9,
    "storeys": 0.9,
-   "gable": 0.86,
-   "finish": 0.83,
-   "pui": 0.79,
-   "wallTone": 0.79,
-   "wallFamily": 0.72
+   "gable": 0.76,
+   "finish": 0.823,
+   "pui": 0.78,
+   "wallTone": 0.785,
+   "wallFamily": 0.708
   },
   "disagreements": {
    "BC": [
@@ -807,7 +828,7 @@
     "gable": {
      "lo": 0.424,
      "hi": 0.764,
-     "verdict": "fail"
+     "verdict": "open"
     },
     "finish": {
      "lo": 0.095,
@@ -955,7 +976,7 @@
     "gable": {
      "lo": 0.424,
      "hi": 0.764,
-     "verdict": "fail"
+     "verdict": "open"
     },
     "finish": {
      "lo": 0.798,
@@ -977,6 +998,100 @@
      "hi": 1,
      "verdict": "n/a"
     }
+   }
+  },
+  "registerGableType": {
+   "handSet": {
+    "agree": 17,
+    "stated": 28
+   },
+   "rowsB2": {
+    "k": 19,
+    "n": 32,
+    "miss": [
+     "167957 register point / read cornice",
+     "168655 register neck / read cornice",
+     "169904 register bell / read cornice",
+     "170091 register bell / read flat",
+     "172603 register bell / read cornice",
+     "172776 register point / read flat",
+     "172888 register bell / read spout",
+     "172890 register cornice / read neck",
+     "174014 register bell / read cornice",
+     "174411 register point / read cornice",
+     "174427 register neck / read cornice",
+     "174911 register point / read cornice",
+     "571486 register point / read spout"
+    ]
+   },
+   "rowsC2": {
+    "k": 19,
+    "n": 32,
+    "miss": [
+     "174911 register point / read cornice",
+     "174427 register neck / read cornice",
+     "174411 register point / read cornice",
+     "174031 register neck / read bell",
+     "174014 register bell / read cornice",
+     "172890 register cornice / read raised-neck",
+     "172888 register bell / read cornice",
+     "172776 register point / read flat",
+     "172603 register bell / read cornice",
+     "170091 register bell / read flat",
+     "169904 register bell / read cornice",
+     "168655 register neck / read cornice",
+     "167957 register point / read cornice"
+    ]
+   },
+   "verdict": {
+    "lo": 0.474,
+    "hi": 0.714,
+    "verdict": "fail"
+   },
+   "verdictC2": {
+    "lo": 0.474,
+    "hi": 0.714,
+    "verdict": "fail"
+   }
+  },
+  "jevStoreys": {
+   "all": {
+    "hand": 63,
+    "stated": 63,
+    "agree": 48,
+    "precision": 0.762,
+    "ci": [
+     0.644,
+     0.85
+    ],
+    "within1": 63,
+    "diff": {
+     "0": 48,
+     "1": 5,
+     "-1": 10
+    },
+    "verdict": "fail",
+    "lo": 0.644,
+    "hi": 0.85
+   },
+   "good": {
+    "hand": 34,
+    "stated": 34,
+    "agree": 30,
+    "precision": 0.882,
+    "ci": [
+     0.734,
+     0.953
+    ],
+    "within1": 34,
+    "diff": {
+     "0": 30,
+     "1": 2,
+     "-1": 2
+    },
+    "verdict": "open",
+    "lo": 0.734,
+    "hi": 0.953
    }
   }
  },

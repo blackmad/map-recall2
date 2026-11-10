@@ -35,10 +35,16 @@ export type HandFields = {
   storeys: Reading<number>;
   souterrain?: boolean; entresol?: boolean; atticInCrown?: boolean;
   gable: Reading<GableIntent>;
+  /** How many separate crowns of the `gable` type one front carries, when more than one (182857: two step gables over one pand,
+   *  ruling H5h round 3). The gable is scored on its type only; a renderer draws `crowns` of them. Absent = one. */
+  crowns?: number;
   finish: Reading<Finish>;
   wall: Reading<WallFamily>;
   pui?: Reading<Pui>;
 };
+/** One house front of a multi-front pand, left to right along the pand's street wall; `share` of the wall's width (the shares sum
+ *  to 1). Same readings and the same unknown rule as a pand's fields; it maps to one HouseSpec `design.fronts[]` entry. */
+export type HandFront = { share: number } & Omit<HandFields, 'axesPerStorey'>;
 export type HandPand = {
   pandId: string;
   group: 'ab07' | 'easy' | 'nassau';
@@ -49,8 +55,13 @@ export type HandPand = {
    *  kept with its readings but left out of every score (a writer reading one front cannot match, and nor can a reader's count). */
   extent: 'single' | 'multi';
   fields: HandFields;
+  /** extent multi only: the fronts of the wall, left to right (absent when the fronts cannot be told apart, e.g. under a tree). */
+  fronts?: HandFront[];
   notes?: string;
 };
+/** Gable-only rows (round 3): a crown crop read for the gable type only, by a blind reader, to bring the gable gate to n >= 60. */
+export type GableRow = { pandId: string; images: { ref: string; sha256: string }[]; gable: Reading<GableIntent>; crowns?: number; note?: string };
+export type GableRowSet = { version: typeof HAND_SET_VERSION; reader: string; date: string; convention: string; rows: GableRow[] };
 export type HandSet = { version: typeof HAND_SET_VERSION; reader: string; date: string; convention: string; pands: HandPand[] };
 
 /** The one storey definition of the house line (docs/house-line.md §1 and §4c; H5's writers, H9 and H1c use it). */
@@ -115,6 +126,41 @@ export function validateHandSet(set: any): string[] {
     if (f.axesPerStorey !== undefined && (!Array.isArray(f.axesPerStorey) || !f.axesPerStorey.every(posInt(30)))) p.push(`${at}: axesPerStorey`);
     if (!h.readable) for (const [k] of checks) if (f[k] && f[k].value !== UNKNOWN) p.push(`${at}: unreadable pand states ${k}`);
     for (const [k] of checks) if (f[k]?.ref && Array.isArray(h.images) && !h.images.some((i: any) => i.ref === f[k].ref)) p.push(`${at}: fields.${k}.ref is not one of the pand's images`);
+    if (f.crowns !== undefined && !(posInt(5)(f.crowns) && f.crowns >= 2)) p.push(`${at}: fields.crowns is 2..5 (absent = one crown)`);
+    if (h.fronts !== undefined) {
+      if (h.extent !== 'multi') p.push(`${at}: fronts only on an extent multi pand`);
+      if (!Array.isArray(h.fronts) || h.fronts.length < 2) p.push(`${at}: fronts lists two or more fronts`);
+      else {
+        h.fronts.forEach((fr: any, n: number) => {
+          if (!(typeof fr?.share === 'number' && fr.share > 0 && fr.share <= 1)) p.push(`${at}: fronts[${n}].share 0..1`);
+          for (const [k, ok] of checks) if (!isReading(fr?.[k], ok)) p.push(`${at}: fronts[${n}].${k} must be {value, confidence, ref}`); else if (!h.images.some((i: any) => i.ref === fr[k].ref)) p.push(`${at}: fronts[${n}].${k}.ref is not one of the pand's images`);
+          if (fr?.pui !== undefined && !isReading(fr.pui, inList(PUIS))) p.push(`${at}: fronts[${n}].pui`);
+          if (fr?.crowns !== undefined && !(posInt(5)(fr.crowns) && fr.crowns >= 2)) p.push(`${at}: fronts[${n}].crowns 2..5`);
+        });
+        const sum = h.fronts.reduce((a: number, fr: any) => a + (fr?.share ?? 0), 0);
+        if (Math.abs(sum - 1) > 0.02) p.push(`${at}: fronts shares sum to ${sum.toFixed(2)}, not 1`);
+      }
+    }
+  }
+  return p;
+}
+
+/** Problems with a gable-only row set (empty = valid). */
+export function validateGableRows(set: any): string[] {
+  const p: string[] = [];
+  if (set?.version !== HAND_SET_VERSION) p.push('version must be 1');
+  if (typeof set?.reader !== 'string' || !set.reader) p.push('reader required');
+  if (!Array.isArray(set?.rows)) return [...p, 'rows must be an array'];
+  const seen = new Set<string>();
+  for (const r of set.rows) {
+    const at = `row ${r?.pandId}`;
+    if (!/^\d{16}$/.test(r?.pandId ?? '')) p.push(`${at}: pandId 16 digits`);
+    if (seen.has(r.pandId)) p.push(`${at}: duplicate`); seen.add(r.pandId);
+    if (!Array.isArray(r.images) || !r.images.length || r.images.some((i: any) => !/^source-data:\/\//.test(i.ref) || !/^[0-9a-f]{64}$/.test(i.sha256))) p.push(`${at}: images need source-data refs and sha256`);
+    if (r.gable?.value === null) p.push(`${at}: gable is null: say "unknown"`);
+    else if (!isReading(r.gable, inList(GABLES))) p.push(`${at}: gable must be {value, confidence, ref}`);
+    else if (!r.images.some((i: any) => i.ref === r.gable.ref)) p.push(`${at}: gable.ref is not one of the row's images`);
+    if (r.crowns !== undefined && !(posInt(5)(r.crowns) && r.crowns >= 2)) p.push(`${at}: crowns 2..5`);
   }
   return p;
 }

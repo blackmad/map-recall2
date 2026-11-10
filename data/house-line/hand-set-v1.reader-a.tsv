@@ -62,7 +62,7 @@
 0363100012175320	B	3:high	4:med	souterrain	cornice:high	brick:med	brown:med	residential:high	B (front-alt) shows the whole front to the cornice: bel-etage with stoop door + 3 storeys; A is a closer, cut view; a houseboat hides B's ground
 0363100012175318	A	3:high	-:low	-	-:low	brick:high	brown:med	shop:med	top cut at 14 m in both panels (at least ground + 3 storeys); houseboat over A's ground; balconied centre axis
 0363100012168136	A	3:high	3:med	souterrain,atticInCrown	-:low	stucco:high	grey:high	residential:high	bel-etage over a souterrain (stoop); one gable window; top cut at 15 m, only a slanting shoulder shows
-0363100012182857	A	5:high	3:med	entresol,atticInCrown	step:high	brick:high	red:med	shop:high	two step gables over a 12 m front, white banded voussoirs and quoin blocks; entresol band over the shopfront
+0363100012182857	A	5:high	3:med	entresol,atticInCrown,crowns=2	step:high	brick:high	red:med	shop:high	two step gables over a 12 m front, white banded voussoirs and quoin blocks; entresol band over the shopfront | rev 3: crowns 2 (one pand, 5 axes; ruling): gable scored on its type
 0363100012182849	B	2:high	3:med	entresol,atticInCrown	cornice:high	brick:high	orange:med	shop:high	shop plus a glazed entresol band (4.2-6 m) not counted; pediment dormer over the cornice
 0363100012182848	B	-:low	-:low	-	-:low	brick:med	brown:med	shop:high	oblique, dim, lamp posts in front; the top is cut; only the cafe ground storey and two upper columns read
 0363100012176312	B	4:med	4:med	atticInCrown	point:med	brick:high	red-brown:high	shop:med	corner building seen from the canal (quay wall 0-5 m); corner erker counted as one axis; a cross gable over part of the front and dormers; an advertising column hides part of A

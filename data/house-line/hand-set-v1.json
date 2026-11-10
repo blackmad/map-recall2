@@ -288,7 +288,114 @@
     }
    },
    "notes": "one pand of three house fronts with stoops, three plain rectangular neck tops with one window each; branches over the left | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored",
-   "group": "ab07"
+   "group": "ab07",
+   "fronts": [
+    {
+     "share": 0.33,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "souterrain": true,
+     "atticInCrown": true,
+     "gable": {
+      "value": "neck",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "finish": {
+      "value": "painted-brick",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "wall": {
+      "value": "grey",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     }
+    },
+    {
+     "share": 0.34,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "souterrain": true,
+     "atticInCrown": true,
+     "gable": {
+      "value": "neck",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "finish": {
+      "value": "painted-brick",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "wall": {
+      "value": "grey",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     }
+    },
+    {
+     "share": 0.33,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "souterrain": true,
+     "atticInCrown": true,
+     "gable": {
+      "value": "neck",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "finish": {
+      "value": "painted-brick",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "wall": {
+      "value": "grey",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012168085/front.jpg"
+     }
+    }
+   ]
   },
   {
    "pandId": "0363100012168155",
@@ -1962,7 +2069,76 @@
     }
    },
    "notes": "the crop holds two fronts: a taller cornice front (0-5.5 m, 3 axes, 4 storeys) and a lower one (5.5-10 m, 3 axes, 3 storeys + dormer); both counted | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored",
-   "group": "ab07"
+   "group": "ab07",
+   "fronts": [
+    {
+     "share": 0.52,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "storeys": {
+      "value": 4,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "gable": {
+      "value": "cornice",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "finish": {
+      "value": "brick",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "wall": {
+      "value": "red-brown",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     }
+    },
+    {
+     "share": 0.48,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "atticInCrown": true,
+     "gable": {
+      "value": "cornice",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "finish": {
+      "value": "brick",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "wall": {
+      "value": "red-brown",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174696/front.jpg"
+     }
+    }
+   ]
   },
   {
    "pandId": "0363100012170043",
@@ -2203,7 +2379,76 @@
     }
    },
    "notes": "two fronts: left brown brick neck gable (3 axes), right dark painted gable behind a trunk (2-3 axes); gable/finish/colour read from the left front | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored",
-   "group": "ab07"
+   "group": "ab07",
+   "fronts": [
+    {
+     "share": 0.53,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "atticInCrown": true,
+     "gable": {
+      "value": "bell",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "finish": {
+      "value": "brick",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "wall": {
+      "value": "brown",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     }
+    },
+    {
+     "share": 0.47,
+     "axes": {
+      "value": "unknown",
+      "confidence": "low",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "gable": {
+      "value": "unknown",
+      "confidence": "low",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "finish": {
+      "value": "painted-brick",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "wall": {
+      "value": "dark",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174923/front.jpg"
+     }
+    }
+   ]
   },
   {
    "pandId": "0363100012169088",
@@ -2535,7 +2780,77 @@
     }
    },
    "notes": "the 14 m wall shows two cornice fronts (left 3 axes, right 3 axes plus a narrow window at 11 m); counted 6; basement lights under both | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored",
-   "group": "ab07"
+   "group": "ab07",
+   "fronts": [
+    {
+     "share": 0.31,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "souterrain": true,
+     "gable": {
+      "value": "cornice",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "finish": {
+      "value": "brick",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "wall": {
+      "value": "brown",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     }
+    },
+    {
+     "share": 0.69,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "souterrain": true,
+     "gable": {
+      "value": "cornice",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "finish": {
+      "value": "brick",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "wall": {
+      "value": "brown",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012169899/front.jpg"
+     }
+    }
+   ]
   },
   {
    "pandId": "0363100012167956",
@@ -2855,7 +3170,75 @@
     }
    },
    "notes": "a 19 m modern ensemble of three masses (red brick tower, grey-striped blocks with roof terraces); axes counted on the front plane of storey 2 | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored",
-   "group": "ab07"
+   "group": "ab07",
+   "fronts": [
+    {
+     "share": 0.55,
+     "axes": {
+      "value": 1,
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "gable": {
+      "value": "flat",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "finish": {
+      "value": "brick",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "wall": {
+      "value": "grey",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     }
+    },
+    {
+     "share": 0.45,
+     "axes": {
+      "value": 2,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "storeys": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "gable": {
+      "value": "flat",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "finish": {
+      "value": "brick",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "wall": {
+      "value": "grey",
+      "confidence": "med",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "high",
+      "ref": "source-data://pand-crops/0363100012174080/front.jpg"
+     }
+    }
+   ]
   },
   {
    "pandId": "0363100012175320",
@@ -3035,6 +3418,7 @@
      "confidence": "high",
      "ref": "source-data://pand-reference-easy-houses/0363100012182857/front.jpg"
     },
+    "crowns": 2,
     "finish": {
      "value": "brick",
      "confidence": "high",
@@ -3051,7 +3435,7 @@
      "ref": "source-data://pand-reference-easy-houses/0363100012182857/front.jpg"
     }
    },
-   "notes": "two step gables over a 12 m front, white banded voussoirs and quoin blocks; entresol band over the shopfront",
+   "notes": "two step gables over a 12 m front, white banded voussoirs and quoin blocks; entresol band over the shopfront | rev 3: crowns 2 (one pand, 5 axes; ruling): gable scored on its type",
    "group": "easy"
   },
   {
@@ -3545,7 +3929,77 @@
     }
    },
    "notes": "corner 151-152: two fronts (shop left with wreath ornaments, not openings; residential right); bracketed cornice and two dormers | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored",
-   "group": "nassau"
+   "group": "nassau",
+   "fronts": [
+    {
+     "share": 0.57,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "storeys": {
+      "value": 4,
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "atticInCrown": true,
+     "gable": {
+      "value": "cornice",
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "finish": {
+      "value": "brick",
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "wall": {
+      "value": "red-brown",
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "pui": {
+      "value": "shop",
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     }
+    },
+    {
+     "share": 0.43,
+     "axes": {
+      "value": 3,
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "storeys": {
+      "value": 4,
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "atticInCrown": true,
+     "gable": {
+      "value": "cornice",
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "finish": {
+      "value": "brick",
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "wall": {
+      "value": "red-brown",
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     },
+     "pui": {
+      "value": "residential",
+      "confidence": "high",
+      "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547"
+     }
+    }
+   ]
   },
   {
    "pandId": "0363100012164843",

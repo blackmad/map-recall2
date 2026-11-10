@@ -19,7 +19,7 @@ export const EASY_IDS = ['0363100012175320', '0363100012175318', '03631000121681
 export const NASSAU_FACE = 'nassau-145-152';
 
 export type Image = { ref: string; sha256: string; file: string; ppm: number; label: string; /** pixel span to cut (strip) */ px?: [number, number] };
-export type SetPand = { pandId: string; group: 'ab07' | 'easy' | 'nassau'; images: Image[] };
+export type SetPand = { pandId: string; group: 'ab07' | 'easy' | 'nassau' | 'gable'; images: Image[] };
 
 export const sha = (f: string) => crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
 
@@ -28,9 +28,15 @@ export function ab07Ids(): { pandId: string; crop: string }[] {
   return sel.picks.map((p: any) => ({ pandId: p.pandId, crop: p.crop }));
 }
 
-export function setPands(): SetPand[] {
+/** The gable-only rows (select-gable.ts): AB07 crops, read for the gable type only from crown crops. */
+export function gableIds(): { pandId: string; crop: string }[] {
+  const f = path.join(ROOT, 'data/house-line/hand-set-v1.gable-selection.json');
+  return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')).picks.map((p: any) => ({ pandId: p.pandId, crop: p.crop })) : [];
+}
+
+function cropPands(ids: { pandId: string; crop: string }[], group: 'ab07' | 'gable'): SetPand[] {
   const out: SetPand[] = [];
-  for (const { pandId, crop } of ab07Ids()) {
+  for (const { pandId, crop } of ids) {
     const dir = path.join(ARCHIVE, 'pand-crops', pandId);
     const meta = JSON.parse(fs.readFileSync(path.join(dir, 'front.json'), 'utf8'));
     const ppm = meta.crop?.pixelsPerMetre ?? (meta.method === 'strip' ? 40 : 50);
@@ -42,8 +48,15 @@ export function setPands(): SetPand[] {
       const h = sha(abs); if (seen.has(h)) continue; seen.add(h);
       images.push({ ref: `source-data://pand-crops/${pandId}/${f}`, sha256: h, file: abs, ppm, label: f === first ? `${f} (describe crop)` : f });
     }
-    out.push({ pandId, group: 'ab07', images });
+    out.push({ pandId, group, images });
   }
+  return out;
+}
+
+export const gablePands = (): SetPand[] => cropPands(gableIds(), 'gable');
+
+export function setPands(): SetPand[] {
+  const out: SetPand[] = cropPands(ab07Ids(), 'ab07');
   for (const pandId of EASY_IDS) {
     const images: Image[] = [];
     for (const n of ['front', 'front-alt']) {

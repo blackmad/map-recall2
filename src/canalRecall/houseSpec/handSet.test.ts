@@ -3,8 +3,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { HEX_DARK_L, READING_CONVENTION, STOREYS_DEFINITION, UNKNOWN, hexTone, toneOf, validateHandSet, type HandSet } from './handSet.ts';
-import { GATE_FLOORS, gateFor, verdict, wilson } from '../../../scripts/house-specs/agreement.ts';
+import { HEX_DARK_L, READING_CONVENTION, STOREYS_DEFINITION, UNKNOWN, hexTone, toneOf, validateGableRows, validateHandSet, type HandSet } from './handSet.ts';
+import { GATE_MARGIN, MIN_N, gateFor, verdict, wilson } from '../../../scripts/house-specs/agreement.ts';
+import { multiSpec } from '../../../scripts/house-specs/hand-set/build.ts';
+import { specProblems } from './spec.ts';
 import { parseRow } from '../../../scripts/house-specs/hand-set/build.ts';
 import { agree, handValues, table } from '../../../scripts/house-specs/hand-set/score.ts';
 
@@ -95,10 +97,50 @@ test('unknown and multi-front pands are never scored', () => {
   assert.equal(handValues(pand() as any, 'low', 'multi').bays, undefined);
 });
 
-test('gates: ceiling - 0.1 with per-field floors; a writer fails only when its Wilson top is under the gate', () => {
-  assert.deepEqual(GATE_FLOORS, { bays: 0.9, storeys: 0.9, gable: 0.86, finish: 0.83, pui: 0.79, wallTone: 0.79, wallFamily: 0.72 });
-  assert.equal(gateFor('gable', 0.84), 0.86); assert.equal(gateFor('wallTone', 0.923), 0.823); assert.equal(gateFor('bays', null), 0.9);
+test('gates: the blind ceiling - 0.1; a writer fails only when its Wilson top is under the gate; gable needs n >= 60', () => {
+  assert.equal(GATE_MARGIN, 0.1); assert.deepEqual(MIN_N, { gable: 60 });
+  assert.equal(gateFor(0.84), 0.74); assert.equal(gateFor(0.923), 0.823); assert.equal(gateFor(1), 0.9);
+  assert.equal(verdict(17, 28, 0.74, 60).verdict, 'open'); assert.equal(verdict(36, 60, 0.76, 60).verdict, 'fail');
   const [lo, hi] = wilson(25, 30); assert.ok(Math.abs(lo - 0.664) < 0.005 && Math.abs(hi - 0.927) < 0.005, `${lo} ${hi}`);
   assert.deepEqual(wilson(0, 0), [0, 1]);
   assert.equal(verdict(25, 30, 0.9).verdict, 'open'); assert.equal(verdict(17, 28, 0.86).verdict, 'fail'); assert.equal(verdict(23, 23, 0.83).verdict, 'pass'); assert.equal(verdict(0, 0, 0.9).verdict, 'n/a');
+});
+
+test('round 3: crowns, multi-front fronts[], gable-only rows', () => {
+  const a = load('hand-set-v1.json'); const byId = (id: string) => a.pands.find(p => p.pandId === '0363100012' + id)!;
+  assert.equal(byId('182857').extent, 'single'); assert.equal(byId('182857').fields.crowns, 2); assert.equal(byId('182857').fields.gable.value, 'step');
+  const multi = a.pands.filter(p => p.extent === 'multi'); assert.equal(multi.length, 7);
+  assert.deepEqual(multi.filter(p => p.fronts).map(p => p.pandId.slice(-6)).sort(), ['116526', '168085', '169899', '174080', '174696', '174923']);
+  for (const p of multi) if (p.fronts) assert.ok(Math.abs(p.fronts.reduce((x, f) => x + f.share, 0) - 1) <= 0.02, p.pandId);
+  // validator: fronts only on multi, two or more, shares sum to 1, crowns 2..5
+  const m = { ...pand({ extent: 'multi' }), fronts: [{ share: 0.5, ...pand().fields }, { share: 0.5, ...pand().fields }] };
+  assert.deepEqual(validateHandSet(set([m])), []);
+  assert.match(validateHandSet(set([{ ...m, extent: 'single' }])).join(), /fronts only on an extent multi/);
+  assert.match(validateHandSet(set([{ ...m, fronts: [m.fronts[0]] }])).join(), /two or more/);
+  assert.match(validateHandSet(set([{ ...m, fronts: [m.fronts[0], { ...m.fronts[1], share: 0.3 }] }])).join(), /sum to 0.80/);
+  assert.match(validateHandSet(set([pand({ fields: { ...pand().fields, crowns: 1 } })])).join(), /crowns is 2..5/);
+  // the multi fronts as HouseSpecs validate, and the spec validator checks share per facade
+  const specs = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/house-line/hand-set-v1.multi-specs.json'), 'utf8'));
+  assert.equal(specs.length, 6); for (const s of specs) assert.deepEqual(specProblems(s), [], s.pandId);
+  assert.deepEqual(multiSpec(byId('168085'), '2026-11-10').design.fronts!.map((f: any) => f.share), [0.33, 0.34, 0.33]);
+  const two = (shares: unknown[], streets: (string | undefined)[] = []) => specProblems({ schemaVersion: 1, pandId: '0363100012168085', design: { fronts: shares.map((share, i) => ({ ...(share === undefined ? {} : { share }), ...(streets[i] ? { street: streets[i] } : {}) })) }, provenance: { '': { source: 'author', confidence: 1, ref: 't', at: null } } } as any).join();
+  assert.equal(two([0.5, 0.5]), ''); assert.match(two([0.5, 0.3]), /sum to 0.80/); assert.match(two([0.5, undefined]), /each state share/);
+  assert.equal(two([undefined, undefined], ['Bloemgracht', 'Tweede Leliedwarsstraat']), ''); assert.match(two([1.5]), /share of the wall/);
+  // gable rows: two blind readers on the same 40 crown crops
+  const b2 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/house-line/hand-set-v1.gable-b2.json'), 'utf8')), c2 = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/house-line/hand-set-v1.gable-c2.json'), 'utf8'));
+  assert.deepEqual(validateGableRows(b2), []); assert.deepEqual(validateGableRows(c2), []); assert.equal(b2.rows.length, 40);
+  assert.deepEqual(b2.rows.map((r: any) => r.pandId).sort(), c2.rows.map((r: any) => r.pandId).sort());
+  for (const r of b2.rows) assert.ok(!a.pands.some(p => p.pandId === r.pandId), `${r.pandId} is new`);
+  assert.match(validateGableRows({ ...b2, rows: [{ ...b2.rows[0], gable: { ...b2.rows[0].gable, value: null } }] }).join(), /say "unknown"/);
+});
+
+test('Jev storeys question: off as a writer, parsed strictly, cached per prompt version', async () => {
+  const { JEV_WRITES_STOREYS, JEV_STOREYS, parseStoreys, storeysHash, storeysRequestBody } = await import('./writers/jevStoreys.ts');
+  assert.equal(JEV_WRITES_STOREYS, false);
+  assert.ok(JEV_STOREYS.questions.storeys.instructions.includes('souterrain') && JEV_STOREYS.questions.storeys.instructions.includes('set-back attic'));
+  const r = parseStoreys({ answers: { storeys: { type: 'choice', choice: 'four', probabilities: { four: 0.7, three: 0.3 } } }, usage: { input_tokens: 10, output_tokens: 2 } });
+  assert.deepEqual([r.answer.value, r.answer.p, r.tokens], [4, 0.7, 12]);
+  assert.throws(() => parseStoreys({ answers: {} }), /no storeys answer/);
+  assert.notEqual(storeysHash(Buffer.from('x')), storeysHash(Buffer.from('y')));
+  assert.ok(!JSON.stringify(storeysRequestBody('i')).includes('Bearer'));
 });

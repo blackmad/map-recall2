@@ -55,6 +55,12 @@ type Prov = { source: SpecSource; confidence: number /* 0..1 */; ref: string; at
   `BlockFaceIntent.schemaLimits` on a1's belt lanes). `component` is the kit part (`gable ornament`, `ground storey`,
   `palette`); the kit-gap queue (§5) keys on it. Legacy `"component: what"` strings are read by `toSpecLimit`; a line with
   no component is filed under `facade`. Never fit the nearest option instead of recording the limit.
+- **Several fronts on one facade** (`design.fronts[]`, H5h round 3): a pand whose street wall carries more than one house front
+  has one `fronts[]` entry per front, left to right, each with its `share` of the wall (0..1). `specProblems` checks it per
+  facade (fronts grouped by `street`; no street = one facade): two or more fronts on a facade each state `share` and the shares
+  sum to 1 (+-0.02); one front per street needs none; `share` is 0..1 and `street` a name. Schema and validator only: no renderer
+  change, and every staged and generated spec validates byte-identically (the staged house-specs tiles hash the same before and
+  after). The hand set's six separable multi pands are `data/house-line/hand-set-v1.multi-specs.json`.
 - **`storeys`** (`fronts/N/storeys`) has one definition, used by every writer, reader and checker (H5, H9, H1c):
   **full street-facing storeys, counting neither a souterrain nor an attic in the crown**
   (`STOREYS_DEFINITION`, `handSet.ts`). The ground storey counts once however tall; an entresol inside it, gable, crown and
@@ -848,6 +854,11 @@ was read from (`ref`, a `source-data://` path, plus the file's sha256 in `images
   re-crop does not exist; no panorama was fetched. Multi in v1: 168085, 174923, 174696, 169899, 174173, 174080 (AB07) and 116526
   (Nassaukade). 182857 is single with 5 axes (ruling).
 - **readable** false when no panel shows the front; every value is then unknown.
+- **crowns** (round 3): one front carrying several crowns of one gable type records `crowns: n` (n >= 2) beside `gable`; the gable
+  is scored on its type only, and a renderer draws n crowns. 182857 (ruling: one pand, 5 axes) is `gable: step, crowns: 2`.
+- **fronts** (round 3): a multi pand records its fronts left to right (`fronts[]`: share of the wall plus the same readings), from
+  `hand-set-v1.reader-a.fronts.json`. Six of the seven have them; 174173 has none (a tree hides the split; it may be one
+  double-house front, 5 axes about a central door). Multi pands stay out of every score.
 
 Round 2 (judgement ruling, 2026-11-10) also re-read the 7 Nassaukade rows (the user's benchmark) at 2x against the blind reader:
 164843, 161422 and 160273 are painted-brick / dark (reader B; the authored face intent agrees), 157426 stays brick / brown; 170031's
@@ -871,34 +882,44 @@ values. Over pands both stated (not unknown, single-front by reader A; 2 multi l
 | wall tone | 23/26 = 0.89 [0.71, 0.96] | 24/26 = 0.92 | 24/25 = 0.96 |
 
 B-C disagreements: gable cornice / flat (2), bell / neck, bell / point; pui shop / residential on big ground-storey glazing (3);
-painted vs bare brick (2); neighbouring colour words (red-brown / brown 3, brown / dark 2). Gable is the one field whose blind
-ceiling (0.84) is under its floor: cornice vs flat and the neck / bell / point family are where readers part.
+painted vs bare brick (2); neighbouring colour words (red-brown / brown 3, brown / dark 2). Gable is the field readers
+agree on least (cornice vs flat and the neck / bell / point family); round 3 widened its ceiling with the gable-only rows below.
 
-**Gates** (`scripts/house-specs/agreement.ts` `GATE_FLOORS`, `gateFor`, `wilson`, `verdict`): per field, gate = max(floor, reader
-ceiling - 0.1). A writer's precision gets a Wilson 95 % interval; it **fails only when the top of the interval is under the gate**,
-passes when the bottom is at or over it, and is **open** in between (n too small to say).
+**Gable-only rows** (round 3; `select-gable.ts`, seed 352): the gable gate needs n >= 60 register-stated gables and the 60-pand set
+has 28, so 40 more AB07 pands with a register gable and a good or fallback crop (not in the set, not labelled bad; round-robin over
+the register's group: bell 11, cornice 10, neck 10, point 7, step 2) were cut as **crown crops** (`sheets.ts --gable`: the top half of
+each panel, the grid still measured from the ground) and read for the gable type only by two fresh blind readers, B2 (the record,
+`hand-set-v1.gable-b2.json`) and C2 (`hand-set-v1.gable-c2.json`), given only the round-2 convention. 32 of 40 read by each (8
+unknown: top cut, tree, close-up). B2 vs C2: 28/32 = 0.88 [0.72, 0.95]; the four splits are spout / cornice, neck / raised-neck,
+neck / bell, spout / point. 40, not 30, so that the stated n reaches 60 after the unknowns.
 
-| field | floor | ceiling (B vs C) | gate |
-|---|---|---|---|
-| axes (bays) | 0.90 | 1.00 | 0.90 |
-| storeys | 0.90 | 1.00 | 0.90 |
-| gable | 0.86 | 0.84 | 0.86 |
-| finish | 0.83 | 0.92 | 0.83 |
-| pui | 0.79 | 0.88 | 0.79 |
-| wall tone | 0.79 | 0.89 | 0.79 |
-| wall family | 0.72 | 0.81 | 0.72 |
+**Gates** (`scripts/house-specs/agreement.ts` `gateFor`, `GATE_MARGIN`, `MIN_N`, `wilson`, `verdict`): per field, **gate = blind
+reader ceiling - 0.1**, recomputed whenever the ceiling is re-measured (round 3: the round-2 floors came from the first ceiling and
+are gone). A writer's precision gets a Wilson 95 % interval; it **fails only when the top of the interval is under the gate**, passes
+when the bottom is at or over it, and is **open** in between. **Gable gives no pass or fail under n = 60** (`MIN_N`). The gable
+ceiling pools B vs C (21/25) with B2 vs C2 (28/32): 49/57 = 0.86 [0.75, 0.93] (B vs C alone was 0.84, gate 0.74).
+
+| field | blind ceiling | gate |
+|---|---|---|
+| axes (bays) | 1.00 (B vs C 25/25) | 0.90 |
+| storeys | 1.00 (25/25) | 0.90 |
+| gable | 0.86 (pooled 49/57) | 0.76, n >= 60 |
+| finish | 0.92 (24/26) | 0.82 |
+| pui | 0.88 (22/25) | 0.78 |
+| wall tone | 0.89 (23/26) | 0.79 |
+| wall family | 0.81 (21/26) | 0.71 |
 
 **Writers against the hand set** (`score.ts`; AB07, 60 pands, 51 readable single-front; agree / stated, Wilson 95 %, verdict):
 
 | field | gate | register | pixel | Jev | merged |
 |---|---|---|---|---|---|
 | bays | 0.90 | | 5/5 [0.57, 1.00] open | 25/30 = 0.83 [0.66, 0.93] open (+-1: 29/30) | 25/30 open |
-| storeys | 0.90 | | (off) | | none: BAG off |
-| gable | 0.86 | 17/28 = 0.61 [0.42, 0.76] **fail** | | 1/1 open | 17/28 **fail** |
-| finish | 0.83 | 1/2 open | | 23/23 = 1.00 [0.86, 1.00] **pass** | 23/24 open |
-| pui | 0.79 | | | 10/11 = 0.91 [0.62, 0.98] open | 10/11 open |
+| storeys | 0.90 | | (off) | measured, not a writer: good tier 30/34 = 0.88 [0.73, 0.95] open; all crops 48/63 = 0.76 [0.64, 0.85] fail | none: BAG off |
+| gable | 0.76 | gable-type writer on 60: 36/60 = 0.60 [0.47, 0.71] **fail** (set 17/28 + rows 19/32) | | 1/1 open | (n < 60) open |
+| finish | 0.82 | 1/2 open | | 23/23 = 1.00 [0.86, 1.00] **pass** | 23/24 open |
+| pui | 0.78 | | | 10/11 = 0.91 [0.62, 0.98] open | 10/11 open |
 | wall tone | 0.79 | | 28/37 = 0.76 [0.60, 0.87] open | | 28/37 open |
-| wall family | 0.72 | | (hex not mapped to a word) | | |
+| wall family | 0.71 | | (hex not mapped to a word) | | |
 
 - **BAG storeys** (eaves / 3 m, reader A, 47 pands): raw 20/47 = 0.43 [0.29, 0.57]; -1 for a pitched crown (BAG roof code 3)
   26/47 = 0.55 [0.41, 0.69]; -1 for the register's stoop (souterrain) never fires on AB07; with the hand souterrain flag (an oracle,
@@ -906,6 +927,19 @@ passes when the bottom is at or over it, and is **open** in between (n too small
   (`BAG_WRITES_STOREYS = false`, `bagStoreys` keeps the offsets for a later writer); it stays the source for heights. Within one
   storey it is 0.98-1.00: BAG's eaves overcount a tall ground storey or a cornice attic by one. Facade storeys now come from no
   writer; Jev and the register are ranked above BAG for the field, and neither asks it yet.
+- **The register as the gable-type writer** (round 3 re-scope): measured on 60 stated gables, the hand set's 28 (reader A) and the
+  gable rows' 32 (B2; with C2 as the row truth the same 36/60), it agrees 0.60 [0.47, 0.71], under the 0.76 gate: **fail**. On the
+  rows its misses are bell / neck / point where the crown is a cornice or flat front today (9 of 13) and point against spout (2): the
+  register names the monument's historic gable type, not always today's crown. It should not write `fronts/0/gable` above the
+  vision and photo writers; a later step could keep it as a prior for the neck / bell family only, re-measured.
+- **Jev storeys** (round 3, `writers/jevStoreys.ts`, `fixtures/jev-storeys.json`, measured by `hand-set/jev-storeys.ts`; 63 calls,
+  $0.004): the question states STOREYS_DEFINITION. Good-tier AB07 crops (what the Jev writer sees) 30/34 = 0.88 [0.73, 0.95]
+  **open**; all crops 48/63 = 0.76 [0.64, 0.85] **fail** (fallback 10/14, easy 6/9, Nassaukade strip 2/6); within one storey 63/63.
+  Good tier at p >= 0.6: 22/23 [0.79, 0.99] (a threshold read off this set, not a result). `JEV_WRITES_STOREYS` stays false: facade
+  storeys stay unwritten and the generic path keeps its height-derived default until a larger good-tier set clears 0.90 (about 35
+  agreeing of 35 needed for the interval's bottom to reach it).
+- **Pui and wall tone rows** were not grown this round (the crown crops do not show the ground storey); the next set should add
+  ground-storey crops for pui (Jev stated 11) and more pixel-tone pands.
 - Jev's five bay misses: narrow fronts whose top storey is one three-light window (it says 3, the front has 2) and 170031, whose
   glazed storey 2 has 4 lights against 2 above (Jev gave the typical storey; `bays` is the maximum).
 - The register's gable agrees on 17 of 28: neck or bell where the photo shows a cornice or flat front, neck against bell, cornice
@@ -927,8 +961,11 @@ v1 stays the default (judgement ruling); these are numbers only.
 
 ```
 node --import tsx scripts/house-specs/hand-set/select.ts     # the AB07 draw (hand-set-v1.selection.json)
+node --import tsx scripts/house-specs/hand-set/select-gable.ts   # the 40 gable-only rows (hand-set-v1.gable-selection.json)
+node --import tsx scripts/house-specs/hand-set/sheets.ts --gable --out <dir>   # their crown crops
 node --import tsx scripts/house-specs/hand-set/sheets.ts     # reading sheets -> artifacts/hand-set/sheets/<id>.jpg
-node --import tsx scripts/house-specs/hand-set/build.ts      # reader-a.tsv + reader-{b,c}.raw.json -> hand-set-v1.json, reader-b.json, reader-c.json (validated)
+node --import tsx scripts/house-specs/hand-set/build.ts      # reader-a.tsv (+ .fronts.json) + reader-{b,c}.raw.json + gable-{b2,c2}.raw.json -> hand-set-v1.json, reader-b/c.json, gable-b2/c2.json, multi-specs.json (validated)
+zsh -lic 'node --import tsx scripts/house-specs/hand-set/jev-storeys.ts --budget-usd 1'   # Jev storeys -> hand-set-v1.jev-storeys.json
 node --import tsx scripts/house-specs/hand-set/score.ts      # ceiling, gates, writers, BAG variants, old truth, H9, judge recall -> hand-set-v1.scores.json
 node --import tsx scripts/house-specs/agreement.ts --hand-set  # the same report from the agreement entry point
 node --import tsx scripts/house-specs/hand-set/contact.ts --pands <12 ids> --out <dir>   # the spot-check sheets

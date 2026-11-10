@@ -22,19 +22,23 @@ Hand truth: the block-face intents (scripts/block-face/faces/*/intent.json, auth
   precision agree / written        recall agree / hand
 
 The photo-read hand set (data/house-line/hand-set-v1.json, docs/house-line.md §4c) is the gate set since H5h: score the writers
-against it with --hand-set (runs scripts/house-specs/hand-set/score.ts: reader ceiling, per-field gates = ceiling - 0.1 with the floors
-in GATE_FLOORS, Wilson 95 % intervals; a writer fails only when the top of its interval is below the gate).
+against it with --hand-set (runs scripts/house-specs/hand-set/score.ts: reader ceiling, per-field gates = blind reader ceiling - 0.1
+(GATE_MARGIN), Wilson 95 % intervals; a writer fails only when the top of its interval is below the gate; gable needs n >= 60, MIN_N).
 
   node --import tsx scripts/house-specs/agreement.ts --hand-set [--out data/house-line/hand-set-v1.scores.json]`;
 
 /**
- * Writer gates against the photo-read hand set (judgement ruling on H5h #351, docs/house-line.md §4c): per field, the blind reader
- * ceiling minus 0.1, never below the floor. A writer FAILS only when the top of its Wilson 95 % interval is below the gate (a small n
- * cannot fail a writer that might be good); it PASSES when the bottom is at or above the gate; otherwise the verdict is OPEN.
+ * Writer gates against the photo-read hand set (judgement rulings on H5h #351, docs/house-line.md §4c): per field, the gate is the
+ * blind reader ceiling minus 0.1, computed from the ceiling each time it is re-measured (round 3: the round-2 floors came from the
+ * first ceiling and are gone). A writer FAILS only when the top of its Wilson 95 % interval is below the gate (a small n cannot
+ * fail a writer that might be good); it PASSES when the bottom is at or above the gate; otherwise the verdict is OPEN. A field
+ * with a MIN_N gives no pass or fail verdict under that n (gable: 60 stated pands).
  */
-export const GATE_FLOORS = { bays: 0.9, storeys: 0.9, gable: 0.86, finish: 0.83, pui: 0.79, wallTone: 0.79, wallFamily: 0.72 } as const;
-export type GateField = keyof typeof GATE_FLOORS;
-export const gateFor = (f: GateField, ceiling: number | null) => +Math.max(GATE_FLOORS[f], ceiling === null ? 0 : ceiling - 0.1).toFixed(3);
+export const GATE_FIELDS = ['bays', 'storeys', 'gable', 'finish', 'pui', 'wallTone', 'wallFamily'] as const;
+export type GateField = (typeof GATE_FIELDS)[number];
+export const GATE_MARGIN = 0.1;
+export const MIN_N: Partial<Record<GateField, number>> = { gable: 60 };
+export const gateFor = (ceiling: number) => +(ceiling - GATE_MARGIN).toFixed(3);
 /** Wilson score interval for k successes of n (z 1.96). */
 export function wilson(k: number, n: number, z = 1.96): [number, number] {
   if (!n) return [0, 1];
@@ -42,10 +46,10 @@ export function wilson(k: number, n: number, z = 1.96): [number, number] {
   return [+Math.max(0, (c - r) / d).toFixed(3), +Math.min(1, (c + r) / d).toFixed(3)];
 }
 export type Verdict = 'pass' | 'open' | 'fail' | 'n/a';
-export function verdict(k: number, n: number, gate: number): { lo: number; hi: number; verdict: Verdict } {
+export function verdict(k: number, n: number, gate: number, minN = 0): { lo: number; hi: number; verdict: Verdict } {
   if (!n) return { lo: 0, hi: 1, verdict: 'n/a' };
   const [lo, hi] = wilson(k, n);
-  return { lo, hi, verdict: hi < gate ? 'fail' : lo >= gate ? 'pass' : 'open' };
+  return { lo, hi, verdict: n < minN ? 'open' : hi < gate ? 'fail' : lo >= gate ? 'pass' : 'open' };
 }
 
 export const WALL_L = 0.12;
