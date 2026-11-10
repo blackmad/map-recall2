@@ -146,7 +146,7 @@
   ]
  },
  "0363100012171854": {
-  "address": "Nieuwmarkt 8",
+  "address": "Nieuwmarkt 8-10",
   "photo": "pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
   "date": "2022-04-26",
   "design": {
@@ -202,7 +202,7 @@
   "limits": []
  },
  "0363100012182849": {
-  "address": "Nieuwmarkt 10-12",
+  "address": "Nieuwmarkt 12",
   "photo": "pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
   "date": "2025-01-08",
   "design": {
@@ -971,5 +971,541 @@
     "what": "white carved claw pieces and sculpture beside the neck"
    }
   ]
+ },
+ "0363100012182299": {
+  "address": "Nieuwmarkt 1",
+  "photo": "pand-crops/0363100012182299/front.jpg (2020-04-21)",
+  "date": "2020-04-21",
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Nieuwmarkt",
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 5,
+     "bays": [
+      2,
+      2,
+      2,
+      2,
+      3
+     ],
+     "doorBay": 0,
+     "tallGround": true,
+     "basement": "none",
+     "hoist": false,
+     "windows": "casement-toplight",
+     "archedStoreys": [
+      2
+     ],
+     "bands": "painted",
+     "bandLines": [
+      "sill",
+      "head"
+     ],
+     "balconies": {
+      "storeys": [
+       1,
+       2
+      ],
+      "bays": [
+       0,
+       1
+      ]
+     },
+     "shopfront": {
+      "colour": "#2a2a2a",
+      "fascia": true,
+      "entrance": "left",
+      "stallriser": "low",
+      "sign": {
+       "text": "SPAR",
+       "textColour": "#d8262e"
+      },
+      "evidence": "dark supermarket front with a red sign (Spar), 2020-04-21"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#63483b",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "flat brick parapet with a simple cornice between brick corner piers (c. 1890 front)",
+   "fronts/0/storeys": "shop storey and four window storeys",
+   "fronts/0/bays": "two axes, three small lights on the top storey",
+   "fronts/0/bands": "white painted bands at the sill and head lines",
+   "fronts/0/archedStoreys": "round-headed windows on the second storey",
+   "fronts/0/balconies": "iron balconies across the first- and second-storey windows",
+   "palette/brick": "dark red-brown brick (estimated: the crop reading did not match the preview wall)"
+  },
+  "limits": [
+   {
+    "component": "window head",
+    "what": "white stone tympana over the round-headed second-storey windows"
+   }
+  ]
+ },
+ "0363100012181817": {
+  "address": "Nieuwmarkt 7",
+  "photo": "pand-crops/0363100012181817/front.jpg (2021-03-08)",
+  "date": "2021-03-08",
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Nieuwmarkt",
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 4,
+     "bays": 3,
+     "doorBay": 2,
+     "tallGround": true,
+     "basement": "none",
+     "hoist": false,
+     "windows": "cross",
+     "storeyHeights": [
+      1.8,
+      1.0,
+      1.0,
+      0.95
+     ],
+     "shopfront": {
+      "colour": "#1e1e1e",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "right",
+      "stallriser": "none",
+      "displayWindows": 2,
+      "evidence": "black lower front (ATMs) under a white-framed entresol of four lights, door at the right, 2021-03-08"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#725a4d",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "plain brick parapet with a thin cornice",
+   "fronts/0/windows": "cross windows, dark sashes in white frames",
+   "fronts/0/storeyHeights": "ground storey with its entresol about 5 m",
+   "palette/brick": "dark brown brick, crop reading #685246 lifted 10 %"
+  },
+  "limits": [
+   {
+    "component": "ground storey",
+    "what": "the entresol row of four white-framed lights over the shop; iron wall anchors on every floor line"
+   }
+  ]
+ },
+ "0363100012182303": {
+  "address": "Nieuwmarkt 9",
+  "photo": "pand-crops/0363100012182303/front.jpg (2022-04-26)",
+  "date": "2022-04-26",
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Nieuwmarkt",
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 4,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "basement": "none",
+     "hoist": false,
+     "windows": "cross",
+     "storeyHeights": [
+      1.6,
+      1.0,
+      1.0,
+      0.9
+     ],
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "left",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "white timber pui with an entresol of lights (glare on the crop), 2022-04-26"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#645a56",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick",
+    "cornice": "#e6e2d8"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "white cornice (sun glare over the crown on the crop)",
+   "palette/brick": "dark brown brick, crop reading #5b524e lifted 10 %"
+  },
+  "limits": []
+ },
+ "0363100012181818": {
+  "address": "Nieuwmarkt 11",
+  "photo": "pand-crops/0363100012181818/front.jpg (2020-04-21)",
+  "date": "2020-04-21",
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Nieuwmarkt",
+     "gable": "cornice",
+     "cornice": "frieze",
+     "storeys": 4,
+     "bays": 3,
+     "doorBay": 1,
+     "tallGround": true,
+     "basement": "none",
+     "hoist": true,
+     "dormers": 1,
+     "dormerStyle": "pediment",
+     "windows": "cross",
+     "windowHead": {
+      "kind": "relieving",
+      "archRing": {
+       "colour": "wall",
+       "style": "solid"
+      }
+     },
+     "shopfront": {
+      "colour": "#7a1c1c",
+      "fascia": true,
+      "entrance": "centre",
+      "stallriser": "medium",
+      "displayWindows": 2,
+      "sign": {
+       "text": "MASSAGE",
+       "textColour": "#d9b24a"
+      },
+      "evidence": "red painted shop front with a gold sign, 2020-04-21"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#5a5044",
+    "frame": "#e4dcc4",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick",
+    "cornice": "#e4dcc4"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "deep cream frieze cornice",
+   "fronts/0/dormers": "one hoist dormer with a pointed head over the cornice",
+   "fronts/0/windowHead": "brick relieving arches over every window",
+   "palette/frame": "cream window frames and cornice",
+   "palette/brick": "brown brick, crop reading #52493e lifted 10 %"
+  },
+  "limits": [
+   {
+    "component": "basement",
+    "what": "two stone steps up to each shop door"
+   }
+  ]
+ },
+ "0363100012182302": {
+  "address": "Nieuwmarkt 13",
+  "photo": "pand-crops/0363100012182302/front.jpg (2020-04-21)",
+  "date": "2020-04-21",
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Nieuwmarkt",
+     "gable": "cornice",
+     "cornice": "simple",
+     "storeys": 3,
+     "bays": 3,
+     "doorBay": 0,
+     "tallGround": true,
+     "basement": "none",
+     "hoist": true,
+     "dormers": 1,
+     "dormerStyle": "pediment",
+     "windows": "casement-toplight",
+     "windowHead": {
+      "kind": "relieving",
+      "archRing": {
+       "colour": "wall",
+       "style": "solid"
+      }
+     },
+     "storeyHeights": [
+      1.7,
+      1.0,
+      1.0
+     ],
+     "shopfront": {
+      "colour": "#e6e2d8",
+      "fascia": false,
+      "glazing": "transom",
+      "entrance": "left",
+      "stallriser": "low",
+      "displayWindows": 2,
+      "evidence": "white timber pui with an entresol of five lights, 2020-04-21"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile"
+   },
+   "palette": {
+    "brick": "#483f38",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick",
+    "cornice": "#e4dcc4"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "cream cornice with a hoist dormer under a pointed head",
+   "fronts/0/windowHead": "brick relieving arches over the windows",
+   "palette/brick": "dark brown brick, crop reading #413933 lifted 10 %"
+  },
+  "limits": [
+   {
+    "component": "balcony",
+    "what": "low white guard rails across the top-storey windows"
+   }
+  ]
+ },
+ "0363100012181808": {
+  "address": "Nieuwmarkt 17-23",
+  "photo": "pand-crops/0363100012181808/front.jpg (2025-01-08)",
+  "date": "2025-01-08",
+  "design": {
+   "fronts": [
+    {
+     "id": "front0",
+     "street": "Nieuwmarkt",
+     "gable": "neck",
+     "crownCap": "rounded",
+     "atticWindows": 1,
+     "storeys": 5,
+     "bays": 3,
+     "doorBay": 1,
+     "tallGround": true,
+     "basement": "none",
+     "cornice": "none",
+     "hoist": false,
+     "windows": "cross",
+     "shopfront": {
+      "colour": "#2a2a2a",
+      "fascia": false,
+      "entrance": "centre",
+      "stallriser": "low",
+      "awning": {
+       "style": "fabric-straight",
+       "colour": "#a4532c"
+      },
+      "evidence": "cafe terrace under an orange awning, 2025-01-08"
+     },
+     "windowShare": 0.62,
+     "windowHeights": "diminishing"
+    }
+   ],
+   "roof": {
+    "material": "black-tile",
+    "source": "front",
+    "evidence": "gable front: the roof follows the crown (house:crops crop)"
+   },
+   "palette": {
+    "brick": "#4f3a30",
+    "frame": "white",
+    "door": "#2c3a33",
+    "stone": "#e6e2d8",
+    "wallMaterial": "brick"
+   }
+  },
+  "why": {
+   "fronts/0/gable": "neck gable with large white sculpted scrolls and a rounded cap",
+   "fronts/0/storeys": "cafe storey and four window storeys",
+   "palette/brick": "dark brown brick (the crop is in shade)"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "large white sculpted scrolls and vases beside the neck; a gable stone under the first-storey windows"
+   }
+  ]
+ },
+ "_held": {
+  "0363100012182296": {
+   "why": "recipe compile: \"Grouped frontage is not a straight surveyed wall\" (facts.ts frontage of Nieuwmarkt 3)",
+   "reading": {
+    "address": "Nieuwmarkt 3",
+    "photo": "pand-crops/0363100012182296/front.jpg (2022-04-26)",
+    "date": "2022-04-26",
+    "design": {
+     "fronts": [
+      {
+       "id": "front0",
+       "street": "Nieuwmarkt",
+       "gable": "cornice",
+       "cornice": "simple",
+       "storeys": 4,
+       "bays": 3,
+       "doorBay": 1,
+       "tallGround": true,
+       "basement": "none",
+       "hoist": false,
+       "windows": "casement-toplight",
+       "windowHead": {
+        "kind": "segmental",
+        "archRing": {
+         "colour": "stone",
+         "style": "none",
+         "keystone": true
+        }
+       },
+       "shopfront": {
+        "colour": "#3a3a36",
+        "fascia": true,
+        "entrance": "centre",
+        "stallriser": "low",
+        "evidence": "cafe front with a red awning rail, 2022-04-26"
+       },
+       "windowShare": 0.62,
+       "windowHeights": "diminishing"
+      }
+     ],
+     "roof": {
+      "material": "black-tile"
+     },
+     "palette": {
+      "brick": "#5b544b",
+      "frame": "white",
+      "door": "#2c3a33",
+      "stone": "#e6e2d8",
+      "wallMaterial": "brick",
+      "cornice": "#e6e2d8"
+     }
+    },
+    "why": {
+     "fronts/0/gable": "white cornice over a plain brick front",
+     "fronts/0/windowHead": "segmental heads with a white keystone over every window",
+     "palette/brick": "dark brown brick, overcast crop reading #534c44 lifted 10 %"
+    },
+    "limits": []
+   }
+  },
+  "0363100012177902": {
+   "why": "facts.ts: \"No footprint edge faces Nieuwmarkt\" (4A faces the square at bearing 190; the routing street does not run along it)",
+   "reading": {
+    "address": "Nieuwmarkt 4A",
+    "photo": "pand-crops/0363100012177902/front.jpg (2022-04-26)",
+    "date": "2022-04-26",
+    "design": {
+     "fronts": [
+      {
+       "id": "front0",
+       "street": "Nieuwmarkt",
+       "gable": "cornice",
+       "cornice": "heavy",
+       "storeys": 4,
+       "bays": 5,
+       "doorBay": 0,
+       "tallGround": true,
+       "basement": "none",
+       "hoist": false,
+       "dormers": 2,
+       "windows": "two-light",
+       "windowHead": {
+        "kind": "round",
+        "storeys": [
+         1,
+         2
+        ]
+       },
+       "bands": "speklagen",
+       "speklagen": {
+        "spacing": 4,
+        "courses": 3
+       },
+       "quoins": "stone",
+       "shopfront": {
+        "colour": "#3c4247",
+        "fascia": true,
+        "entrance": "left",
+        "stallriser": "medium",
+        "displayWindows": 2,
+        "sign": {
+         "text": "THE JOLLY JOKER",
+         "textColour": "#e8b830"
+        },
+        "evidence": "grey painted shop front with colourful lettering, 2022-04-26"
+       },
+       "windowShare": 0.62,
+       "windowHeights": "diminishing"
+      }
+     ],
+     "roof": {
+      "material": "slate"
+     },
+     "palette": {
+      "brick": "#9a4a3a",
+      "frame": "white",
+      "door": "#2c3a33",
+      "stone": "#ece8dc",
+      "wallMaterial": "brick",
+      "cornice": "#e6e2d8"
+     }
+    },
+    "why": {
+     "fronts/0/gable": "heavy white cornice over a slate mansard with two dormers (neo-renaissance, c. 1890)",
+     "fronts/0/bands": "white stone banding through the red brick (alternate courses on the piers)",
+     "fronts/0/quoins": "stone quoins at both ends",
+     "fronts/0/windowHead": "round-arched heads on the first and second storeys",
+     "palette/brick": "red brick between white stone"
+    },
+    "limits": [
+     {
+      "component": "wall",
+      "what": "the piers between the windows are banded white/red in long blocks, not full-width speklagen"
+     }
+    ]
+   }
+  }
  }
 }

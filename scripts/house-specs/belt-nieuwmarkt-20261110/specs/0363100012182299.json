@@ -1,0 +1,221 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182299",
+ "address": "Nieuwmarkt 1",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Nieuwmarkt",
+    "gable": "cornice",
+    "cornice": "simple",
+    "storeys": 5,
+    "bays": [
+     2,
+     2,
+     2,
+     2,
+     3
+    ],
+    "doorBay": 0,
+    "tallGround": true,
+    "basement": "none",
+    "hoist": false,
+    "windows": "casement-toplight",
+    "archedStoreys": [
+     2
+    ],
+    "bands": "painted",
+    "bandLines": [
+     "sill",
+     "head"
+    ],
+    "balconies": {
+     "storeys": [
+      1,
+      2
+     ],
+     "bays": [
+      0,
+      1
+     ]
+    },
+    "shopfront": {
+     "colour": "#2a2a2a",
+     "fascia": true,
+     "entrance": "left",
+     "stallriser": "low",
+     "sign": {
+      "text": "SPAR",
+      "textColour": "#d8262e"
+     },
+     "evidence": "dark supermarket front with a red sign (Spar), 2020-04-21"
+    },
+    "windowShare": 0.62,
+    "windowHeights": "diminishing"
+   }
+  ],
+  "roof": {
+   "material": "black-tile"
+  },
+  "palette": {
+   "brick": "#63483b",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21): flat brick parapet with a simple cornice between brick corner piers (c. 1890 front)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21): shop storey and four window storeys",
+   "at": "2020-04-21"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21): two axes, three small lights on the top storey",
+   "at": "2020-04-21"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/archedStoreys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21): round-headed windows on the second storey",
+   "at": "2020-04-21"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21): white painted bands at the sill and head lines",
+   "at": "2020-04-21"
+  },
+  "fronts/0/bandLines": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/balconies": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21): iron balconies across the first- and second-storey windows",
+   "at": "2020-04-21"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21): dark red-brown brick (estimated: the crop reading did not match the preview wall)",
+   "at": "2020-04-21"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182299/front.jpg (2020-04-21)",
+   "at": "2020-04-21"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "window head",
+   "what": "white stone tympana over the round-headed second-storey windows"
+  }
+ ]
+}

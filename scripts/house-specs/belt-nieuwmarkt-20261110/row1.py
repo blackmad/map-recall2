@@ -30,7 +30,7 @@ house('0363100012171851', 'Nieuwmarkt 6', 'b_20250108_1041_Track23', [F(
      'palette/brick': 'bare orange-red brick; crop reading #b18453 partly in shade, drawn as the row'},
     [{'component': 'gable', 'what': 'the step caps are white stone slabs; the top light sits stacked over the two gable windows'}])
 
-house('0363100012171854', 'Nieuwmarkt 8', None, [F(
+house('0363100012171854', 'Nieuwmarkt 8-10', None, [F(
     gable='cornice', storeys=4, bays=3, doorBay=2, tallGround=True, basement='none', cornice='heavy', hoist=False,
     windows='t-window', windowHead={'kind': 'segmental'}, windowSurround='sill',
     shopfront={'colour': '#2a2d30', 'fascia': True, 'entrance': 'right', 'stallriser': 'low', 'displayWindows': 2,
@@ -41,7 +41,7 @@ house('0363100012171854', 'Nieuwmarkt 8', None, [F(
      'palette/brick': 'dark grey painted brick, white frames and cornice'},
     photo='pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)', date='2022-04-26')
 
-house('0363100012182849', 'Nieuwmarkt 10-12', None, [F(
+house('0363100012182849', 'Nieuwmarkt 12', None, [F(
     gable='cornice', cornice='bracketed', crownCap='rounded', crownCapSpan='narrow', atticWindows=1, storeys=3, bays=2,
     doorBay=1, tallGround=True, basement='none', hoist=False, windows='cross', windowSurround='sill',
     shopfront={'colour': '#2b2b2b', 'fascia': True, 'fasciaColour': W, 'entrance': 'right', 'stallriser': 'low',

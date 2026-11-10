@@ -17,6 +17,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b), H5h (§4c hand set) | landed on the AB07 pilot |
 | §5 The kit-gap queue | H6 | stub |
 | §6 Worked example: the timed pilot (Nieuwmarkt, Bloemgracht, Nassaukade) | H7 | landed (staged batch `pilot-20261110`) |
+| §6a Belt builder: the Nieuwmarkt (recipe-route designs per pand) | belt-nieuwmarkt | staged (batches 1-2) |
 | §6b The standing acceptance set (easy houses) | H9 | landed |
 | §7 Review in the game (`house:frames`) | H10 | landed |
 | §8 Browser-free GLB passes | H12 | landed (gate: raster metrics; verdicts advisory, judgement ruling 2026-11-10) |
@@ -1737,6 +1738,52 @@ The judgement session read the round-3 frame pairs. Three follow-ups, all on the
   drops it and the pose took the rear (a 2023 Da Costakade close-up at 34.9 m). A `--list` entry may now give the wall's two end
   points, `"chord": [[lng, lat], [lng, lat]]` with a `bearing` for the outward side; 160704 then poses from the 2021-03-24 Nassaukade
   panorama at 8.2 m.
+
+## §6a Belt builder: the Nieuwmarkt (lane belt-nieuwmarkt, #363, 2026-11-10)
+
+The first belt builder lane: whole recipe-route designs (fronts, roof, palette) per pand from the photo, so each pand gets
+its own GLB at publish, accepted on `house:frames` pairs. Files: `scripts/house-specs/belt-nieuwmarkt-20261110/`
+(`row1.py`, `row2.py` -> `readings.json` -> `make-specs.py` -> `specs/<pandId>.json`; `frames-b<N>.json` the pose lists).
+
+```sh
+# crops for a row on a square: the wall facing the square, not the nearest road
+PAND_REFERENCE_CACHE=~/Code/map-recall2/.cache/pand-reference HOUSE_CROPS_ARCHIVE=<sparse source-data worktree> \
+  npm run house:crops -- --buurt AE03 --pand <ids> --prefer-bearing 115 --resume
+python3 scripts/house-specs/belt-nieuwmarkt-20261110/row1.py && python3 .../make-specs.py
+node --import tsx scripts/house-preview/resolved.ts --specs scripts/house-specs/belt-nieuwmarkt-20261110/specs <ids> \
+  --photo --prefer-crop --crops <archive> --wall 115deg     # recipe compile + render beside the crop, ~12 s a pand
+npm run house:stage -- scripts/house-specs/belt-nieuwmarkt-20261110/specs/<pand>.json --by "belt-nieuwmarkt lane"
+npm run house:frames -- --list .../frames-b1.json --season winter --label before --query '?world=live' --out <dir>
+```
+
+What the row taught:
+
+- **Recipe route by a full design.** A spec is recipe route when `toRecipe` validates it: every front needs `id`, `street`,
+  `gable`, `storeys`, `bays`, `doorBay`, `basement`, `cornice`, `windows`, `hoist`, plus `roof.material` and a palette, and one
+  dated receipt. `make-specs.py` writes an `author` receipt per field path dated by the photo's capture day.
+- **Wall colour under a low sun.** The 2025-01-08 captures (11:30, low winter sun) read every brick front orange and light. The
+  lane's correction (`wallcast.py`: hue -9 degrees, saturation x0.88, HSL lightness x0.80) was calibrated on Nieuwmarkt 38,
+  whose corrected colour passed the preview (dL -0.09) and matches the overcast 2023-02-20 panorama; overcast captures
+  (row 2) take a 10 % lift only. The preview's photo wall is sometimes the dark glass (182848): then the row's colour.
+- **`--wall`.** `house:preview` takes `pickWall`'s nearest-road wall unless told; on the square that is a side wall and the
+  crop is then not found (`no house:crops crop`). Pass `--wall <bearing>deg`; a pand whose crop wall still does not match
+  (171854 needed 113deg) prints no verdict and `house:stage` refuses it without `compare.png`.
+- **Cornices.** `cornice: heavy` draws a thin band; the deep white entablatures on consoles of the square read as
+  `frieze` (1.6 m). The consoles are a schemaLimit.
+- **Two crowns on one pand** (Nieuwmarkt 20-22, the register's tweeling): `crownGroups: [{from: 0, to: 1}, {from: 3, to: 4}]`
+  over a 5-axis front draws both step gables with the valley over axis 2. Two houses with their own fronts in one pand
+  (Nieuwmarkt 32-34): two `fronts[]` with `share: 0.5`, one palette.
+- **What the recipe route cannot take, and why it was held:**
+  - 182849 (Nieuwmarkt 12): 3DBAG has a roof plane from 3.3 m over the street front, so `facts.ts` gives eaves 3.43 m and the
+    compile draws a 3 m house under a 14 m wedge. A hand `eavesM` in `facts.json` does not reach the compile. Staged as a
+    generic spec (no roof); its shop fascia also made an opening escape the 4.2 m wall.
+  - 182296 (Nieuwmarkt 3): "Grouped frontage is not a straight surveyed wall".
+  - 177902 (Nieuwmarkt 4A): `facts.ts` "No footprint edge faces Nieuwmarkt" (the front faces the square at 190 degrees).
+  - `roof.source: front` and `roof.form` are block-face only (`blockFace/compile.ts`); a recipe house keeps the 3DBAG roof,
+    which the elevation shows as a pyramid over a cornice front that the street never sees.
+- **`resolved.ts`** now removes the intent it wrote into a house directory that held only a hand `facts.json`.
+- **`house:frames` takes its own `/tmp/canal-pw.sh` slot.** Wrapping the command in `canal-pw.sh` again holds one slot
+  while the inner run waits for a second: with three slots and other lanes doing the same, every run waits.
 
 ## §6b The standing acceptance set: the user's easy houses (lane H9)
 
