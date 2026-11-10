@@ -56,7 +56,7 @@ Cost: a one-image call is about 1,500-2,000 tokens, $0.00006-0.00008. The eight-
    an H5 pixel brick hex, the hex mapped to the nearest swatch matches my label 23 % of the time; Jev matches 70 %. Jev was right where the
    pixel family was wrong on 22 pands and wrong where pixels were right on 2. The pixel hex is dull and dark: it turns red-brown fronts into
    "dark brown" (A0, A1, A3, A11, A26, A29, A46), pale salmon into grey, and sunlit brick into white plaster (A21, `#f9e9bc`).
-   Where Jev errs it errs by one step (dark brown vs red-brown, orange vs red-brown): 14 of its 15 misses sit in those neighbouring pairs.
+   Where Jev errs it errs by one step (dark brown vs red-brown, orange vs red-brown): 13 of its 14 run-1 misses sit in neighbouring pairs (dark brown, red-brown, orange, pale salmon, near-black).
    Use it to choose the colour **family** (and so which palette to pull the pixel hex towards), not to set a hex. Words alone do as well as swatches.
 2. **Window head.** The set is 42 flat, 4 segmental, 2 round, so 96 % is barely above 87.5 %. Arch detection found all six arch fronts.
    It needs a set with many arches before it can be trusted for segmental vs round. Per-storey heads were asked (`top_storey_head`) but not scored.
