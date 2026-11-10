@@ -66,12 +66,14 @@ async function rows(): Promise<void> {
 }
 
 async function ride(): Promise<void> {
-  const d = path.join(dir, 'ride');
+  const rideDir = process.argv.find(a => a.startsWith('--ride-dir='))?.split('=')[1] ?? 'ride';
+  const d = path.join(dir, rideDir);
   const files = fs.readdirSync(d).filter(f => f.endsWith('.png')).sort();
   const tiles: Buffer[] = [];
   for (const f of files) tiles.push(await tile(path.join(d, f), [f.replace(/\.png$/, ''), 'game chase frame, fixed pose']));
-  const bytes = await grid(path.join(dir, 'contact-ride.jpg'), 'Ride frames (chase camera, fixed pose): audit spots', tiles);
-  console.log(`wrote contact-ride.jpg: ${files.length} frames, ${bytes} bytes`);
+  const outName = rideDir === 'ride' ? 'contact-ride.jpg' : `contact-${rideDir}.jpg`;
+  const bytes = await grid(path.join(dir, outName), `Ride frames (fixed pose): ${rideDir}`, tiles);
+  console.log(`wrote ${outName}: ${files.length} frames, ${bytes} bytes`);
 }
 
 async function main() {
