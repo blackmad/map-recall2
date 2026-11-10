@@ -3,7 +3,7 @@
  "street": "Djambistraat",
  "library": "indische-buurt",
  "stripDate": "2019-12-18",
- "seconds": 11.61,
+ "seconds": 11.33,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -26,7 +26,7 @@
     "0363100012072833"
    ],
    "passed": true,
-   "triangles": 11539
+   "triangles": 11460
   }
  ],
  "pands": [
@@ -364,7 +364,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.633
+    "iou": 0.635
    },
    "challengers": {
     "indisch-1913-arched-pair-dormer": 0.558,
@@ -451,7 +451,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.707
+    "iou": 0.705
    },
    "challengers": {
     "indisch-1913-arched-pair-dormer~m": 0.576,
@@ -537,7 +537,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.705
+    "iou": 0.707
    },
    "challengers": {
     "indisch-1913-arched-pair-dormer": 0.557,
@@ -624,7 +624,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.692
+    "iou": 0.69
    },
    "challengers": {
     "indisch-1913-arched-pair-dormer~m": 0.557,
@@ -710,7 +710,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.687
+    "iou": 0.689
    },
    "challengers": {
     "indisch-1913-arched-pair-dormer": 0.529,
@@ -797,7 +797,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.619
+    "iou": 0.617
    },
    "challengers": {
     "indisch-1913-arched-pair-dormer~m": 0.565,
@@ -883,7 +883,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.667
+    "iou": 0.67
    },
    "challengers": {
     "indisch-1913-arched-pair-dormer": 0.498,
@@ -932,7 +932,7 @@
    },
    "status": "held",
    "stage": "review",
-   "reason": "review: its half-width door reveal at the party wall trips the GLB audit opening-outside rule (3 parts, 0.47-0.95 m2, door leaf at depth 0.3 m) on either side and at insets 0.05-0.3 m, where the same reveal passes on Djambistraat 9-21 and on Soendastraat; the cause is not found (last pand of the run, frontage 16.53-22.03 in the chunk frame); not loosened, held for the integrator",
+   "reason": "review: round 4: with the dark 0.12 m frame and inset 0.15 m the half-width reveal passes the GLB audit on Djambistraat 9-21 and Soendastraat, but on this pand (the last of the run) 3 opening parts (0.95 m2, the door leaf at depth 0.3 m near x 17.0) still reach past the wall silhouette, with the door on either side; cause not found, audit not loosened",
    "likeness": null,
    "challengers": {}
   },

@@ -3,7 +3,7 @@
  "street": "Lampongstraat",
  "library": "indische-buurt",
  "stripDate": "2025-09-26",
- "seconds": 6.8,
+ "seconds": 7.58,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -24,7 +24,7 @@
     "0363100012112381"
    ],
    "passed": true,
-   "triangles": 7127
+   "triangles": 6767
   }
  ],
  "pands": [
@@ -343,8 +343,8 @@
    ],
    "likeness": {
     "pandId": "0363100012140561",
-    "ncc": 0.463,
-    "nccRaw": 0.463,
+    "ncc": 0.465,
+    "nccRaw": 0.465,
     "shiftM": [
      0,
      -0.25
@@ -371,8 +371,8 @@
     "iou": 0.534
    },
    "challengers": {
-    "indisch-1914-red-sash-pairs": 0.463,
-    "indisch-1914-red-sash-pairs~m": 0.315
+    "indisch-1914-red-sash-pairs": 0.465,
+    "indisch-1914-red-sash-pairs~m": 0.317
    }
   },
   {
@@ -436,8 +436,8 @@
    ],
    "likeness": {
     "pandId": "0363100012150248",
-    "ncc": 0.41,
-    "nccRaw": 0.41,
+    "ncc": 0.397,
+    "nccRaw": 0.397,
     "shiftM": [
      -0.15,
      -0.1
@@ -462,8 +462,8 @@
     "iou": 0.557
    },
    "challengers": {
-    "indisch-1914-red-sash-pairs~m": 0.41,
-    "indisch-1914-red-sash-pairs": 0.272
+    "indisch-1914-red-sash-pairs~m": 0.397,
+    "indisch-1914-red-sash-pairs": 0.253
    }
   },
   {
@@ -527,8 +527,8 @@
    ],
    "likeness": {
     "pandId": "0363100012085260",
-    "ncc": 0.385,
-    "nccRaw": 0.385,
+    "ncc": 0.37,
+    "nccRaw": 0.37,
     "shiftM": [
      -0.25,
      -0.05
@@ -553,8 +553,8 @@
     "iou": 0.53
    },
    "challengers": {
-    "indisch-1914-red-sash-pairs~m": 0.385,
-    "indisch-1914-red-sash-pairs": 0.317
+    "indisch-1914-red-sash-pairs~m": 0.37,
+    "indisch-1914-red-sash-pairs": 0.305
    }
   },
   {
@@ -617,8 +617,8 @@
    ],
    "likeness": {
     "pandId": "0363100012064007",
-    "ncc": 0.426,
-    "nccRaw": 0.426,
+    "ncc": 0.416,
+    "nccRaw": 0.416,
     "shiftM": [
      0.15,
      -0.05
@@ -643,8 +643,8 @@
     "iou": 0.482
    },
    "challengers": {
-    "indisch-1914-red-sash-pairs": 0.426,
-    "indisch-1914-red-sash-pairs~m": 0.28
+    "indisch-1914-red-sash-pairs": 0.416,
+    "indisch-1914-red-sash-pairs~m": 0.27
    }
   },
   {
@@ -707,8 +707,8 @@
    ],
    "likeness": {
     "pandId": "0363100012112381",
-    "ncc": 0.278,
-    "nccRaw": 0.278,
+    "ncc": 0.261,
+    "nccRaw": 0.261,
     "shiftM": [
      -0.05,
      0
@@ -735,8 +735,8 @@
     "iou": 0.493
    },
    "challengers": {
-    "indisch-1914-red-sash-pairs": 0.278,
-    "indisch-1914-red-sash-pairs~m": 0.142
+    "indisch-1914-red-sash-pairs": 0.261,
+    "indisch-1914-red-sash-pairs~m": 0.148
    }
   }
  ]

@@ -3,7 +3,7 @@
  "street": "Soendastraat",
  "library": "indische-buurt",
  "stripDate": "2019-12-18",
- "seconds": 18.05,
+ "seconds": 19.2,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -25,7 +25,7 @@
     "0363100012111204"
    ],
    "passed": true,
-   "triangles": 9655
+   "triangles": 9583
   },
   {
    "face": "soenda-2-36-r2",
@@ -35,7 +35,7 @@
     "0363100012092864"
    ],
    "passed": true,
-   "triangles": 4880
+   "triangles": 4844
   }
  ],
  "pands": [
@@ -307,7 +307,7 @@
      "photo": 3,
      "model": 3
     },
-    "iou": 0.409
+    "iou": 0.41
    },
    "challengers": {
     "indisch-1913-arched-pair-dormer~m": 0.31,
