@@ -1,0 +1,312 @@
+{
+ "street": "Plantage Kerklaan",
+ "seed": "0363100012180485",
+ "members": [
+  "0363100012181240",
+  "0363100012181246"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of kerklaan-2-34: 181241 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of kerklaan-2-34: 170488 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164971",
+   "reason": "frontage 67.3 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012164973",
+   "reason": "frontage 109.9 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170474",
+   "reason": "frontage 94.3 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170475",
+   "reason": "frontage 94.3 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170543",
+   "reason": "frontage 38.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170547",
+   "reason": "frontage 71.9 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170548",
+   "reason": "frontage 67.7 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170550",
+   "reason": "frontage 67.0 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170551",
+   "reason": "frontage 62.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170552",
+   "reason": "frontage 51.6 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170553",
+   "reason": "frontage 46.6 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180482",
+   "reason": "frontage 46.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180483",
+   "reason": "frontage 39.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180484",
+   "reason": "frontage 32.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180489",
+   "reason": "frontage 62.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180492",
+   "reason": "frontage 46.7 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180493",
+   "reason": "frontage 79.3 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180494",
+   "reason": "frontage 53.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180495",
+   "reason": "frontage 60.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180952",
+   "reason": "sightline to Plantage Kerklaan crosses 0363100012181245"
+  },
+  {
+   "pandId": "0363100012180968",
+   "reason": "frontage 89.4 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180969",
+   "reason": "frontage 94.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180970",
+   "reason": "frontage 94.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012164938",
+   "reason": "frontage 59.0 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012164939",
+   "reason": "frontage 34.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170476",
+   "reason": "frontage 35.7 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170477",
+   "reason": "frontage 41.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170478",
+   "reason": "frontage 46.7 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170479",
+   "reason": "frontage 51.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170482",
+   "reason": "frontage 57.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170483",
+   "reason": "frontage 63.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170498",
+   "reason": "frontage 67.4 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180950",
+   "reason": "frontage 31.6 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012180971",
+   "reason": "frontage 94.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181041",
+   "reason": "frontage 94.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181042",
+   "reason": "frontage 94.1 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181043",
+   "reason": "frontage 89.3 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181322",
+   "reason": "frontage 31.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181323",
+   "reason": "sightline to Plantage Kerklaan crosses 0363100012181244"
+  },
+  {
+   "pandId": "0363100012181324",
+   "reason": "sightline to Plantage Kerklaan crosses 0363100012180952"
+  },
+  {
+   "pandId": "0363100012181650",
+   "reason": "sightline to Plantage Kerklaan crosses 0363100012180486"
+  },
+  {
+   "pandId": "0363100012181651",
+   "reason": "frontage 69.3 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181652",
+   "reason": "frontage 84.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181280",
+   "reason": "frontage 30.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181281",
+   "reason": "frontage 33.2 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181283",
+   "reason": "frontage 90.0 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181284",
+   "reason": "frontage 79.8 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181352",
+   "reason": "frontage 79.8 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181354",
+   "reason": "frontage 69.4 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181365",
+   "reason": "frontage 46.8 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181368",
+   "reason": "frontage 89.8 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012181369",
+   "reason": "frontage 79.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012253539",
+   "reason": "frontage 41.5 m from Plantage Kerklaan"
+  },
+  {
+   "pandId": "0363100012170480",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170484",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170485",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170486",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170542",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180951",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181311",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181312",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181313",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181316",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181318",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181319",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181320",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012181240",
+   "alongM": -57.13,
+   "widthM": 5,
+   "eavesM": 16.38,
+   "roofMaxM": 18.5,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181246",
+   "alongM": -52.12,
+   "widthM": 5.01,
+   "eavesM": 18.5,
+   "roofMaxM": 18.53,
+   "storeys3dbag": 5,
+   "builtYear": 1874,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "kerklaan-2-34"
+}

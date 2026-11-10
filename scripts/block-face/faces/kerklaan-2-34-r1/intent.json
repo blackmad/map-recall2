@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "kerklaan-2-34-r1",
+ "street": "Plantage Kerklaan",
+ "sources": [
+  {
+   "id": "strip-2024-12-10",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-10",
+   "image": "staging/block-face/kerklaan-2-34-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the plantage library (buurt Plantage); scores and holds in scripts/block-face/faces/kerklaan-2-34/auto-place.json"
+ },
+ "types": [
+  "plantage-1879-neck-arched-shop"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012181240",
+   "slug": "kerklaan-181240",
+   "address": "Plantage Kerklaan 26",
+   "type": {
+    "type": "plantage-1879-neck-arched-shop",
+    "ground": {
+     "shopfront": {
+      "colour": "#b3ab94",
+      "fascia": true,
+      "name": "Tempura",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2024-12-10 span 801-1001"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#96725c",
+     "evidence": "strip 2024-12-10 span 801-1001: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Tempura",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 4453872010,
+     "name": "Tempura"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2024-12-10",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: plantage-1879-neck-arched-shop scored 1 on eaves 1, stucco 1, columns 1; strip 2024-12-10 span 801-1001"
+   }
+  },
+  {
+   "pandId": "0363100012181246",
+   "slug": "kerklaan-181246",
+   "address": "Plantage Kerklaan 24",
+   "type": {
+    "type": "plantage-1879-neck-arched-shop",
+    "ground": {
+     "shopfront": {
+      "colour": "#946a40",
+      "fascia": true,
+      "name": "Sagra",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, amenity=cafe); fascia colour measured on the strip 2024-12-10 span 1001-1201"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#946e5a",
+     "evidence": "strip 2024-12-10 span 1001-1201: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "cafe",
+    "name": "Sagra",
+    "category": "amenity=cafe",
+    "osm": {
+     "type": "node",
+     "id": 2742862882,
+     "name": "Sagra"
+    },
+    "bag": [
+     "winkelfunctie,woonfunctie"
+    ],
+    "photoDate": "2024-12-10",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: plantage-1879-neck-arched-shop scored 0.82 on eaves 0.5, stucco 1, columns 1; strip 2024-12-10 span 1001-1201"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

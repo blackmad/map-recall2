@@ -1,0 +1,130 @@
+{
+ "face": "kerklaan-2-34-r1",
+ "image": "staging/block-face/kerklaan-2-34-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 400,
+ "height": 940,
+ "groundNAP": 0.556,
+ "heightM": 23.5,
+ "frame": {
+  "midRD": [
+   122602.92831250001,
+   486560.32349999994
+  ],
+  "uRD": [
+   -0.49980317276631886,
+   -0.8661390122218958
+  ],
+  "nRD": [
+   -0.8661390122218958,
+   0.49980317276631886
+  ]
+ },
+ "x0M": -5,
+ "x1M": 5,
+ "date": "2024-12-10",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012181240",
+   "x0M": -5,
+   "x1M": 0,
+   "px": [
+    0,
+    200
+   ],
+   "date": "2024-12-10",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241210_1246_Track24_Sphere_00098",
+     "timestamp": "2024-12-10T12:57:50Z",
+     "distanceM": 14.6,
+     "obliquityDeg": 4.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241210_1246_Track24_Sphere_00099",
+     "timestamp": "2024-12-10T12:57:51Z",
+     "distanceM": 15,
+     "obliquityDeg": 14.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241210_1246_Track24_Sphere_00097",
+     "timestamp": "2024-12-10T12:57:49Z",
+     "distanceM": 15.8,
+     "obliquityDeg": 22.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181246",
+   "x0M": 0,
+   "x1M": 5,
+   "px": [
+    200,
+    400
+   ],
+   "date": "2024-12-10",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "b_20241210_1246_Track24_Sphere_00099",
+     "timestamp": "2024-12-10T12:57:51Z",
+     "distanceM": 14.5,
+     "obliquityDeg": 4.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241210_1246_Track24_Sphere_00100",
+     "timestamp": "2024-12-10T12:57:51Z",
+     "distanceM": 15,
+     "obliquityDeg": 15,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "b_20241210_1246_Track24_Sphere_00098",
+     "timestamp": "2024-12-10T12:57:50Z",
+     "distanceM": 15.8,
+     "obliquityDeg": 23,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-01-14": 17,
+  "2018-05-08": 17,
+  "2019-05-14": 17,
+  "2022-04-25": 17,
+  "2021-03-18": 17,
+  "2020-04-29": 17,
+  "2020-01-07": 17,
+  "2023-01-02": 17,
+  "2017-05-18": 17,
+  "2020-04-22": 17,
+  "2016-08-17": 17,
+  "2024-12-10": 17,
+  "2023-01-13": 17,
+  "2017-03-23": 17,
+  "2025-06-19": 17,
+  "2016-06-07": 17,
+  "2022-06-24": 1,
+  "2021-12-31": 2,
+  "2020-09-01": 2,
+  "2018-11-21": 2,
+  "2016-11-24": 0,
+  "2021-09-15": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "kerklaan-2-34",
+  "px": [
+   801,
+   1201
+  ]
+ }
+}

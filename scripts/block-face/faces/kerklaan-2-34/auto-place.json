@@ -1,0 +1,1090 @@
+{
+ "face": "kerklaan-2-34",
+ "street": "Plantage Kerklaan",
+ "library": "plantage",
+ "stripDate": "2024-12-10",
+ "seconds": 17.16,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "kerklaan-2-34-r1",
+   "pands": [
+    "0363100012181240",
+    "0363100012181246"
+   ],
+   "passed": false,
+   "triangles": 4848
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012181244",
+   "address": "Plantage Kerklaan 34",
+   "builtYear": 1863,
+   "widthM": 5,
+   "eavesM": 18.02,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#352a1a",
+    "wallRaw": "#424235",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 940,
+     "confidence": 0.16,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.9,
+       "widthM": 0.8,
+       "centre": 0.84
+      },
+      {
+       "atM": 5.27,
+       "widthM": 0.97,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: different front (white dentil lintels, stepped gable)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181243",
+   "address": "Plantage Kerklaan 32",
+   "builtYear": 1879,
+   "widthM": 5,
+   "eavesM": 18.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#513e2a",
+    "wallRaw": "#4e4636",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 940,
+     "confidence": 0.21,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.029,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8,
+       "widthM": 0.8,
+       "centre": 0.17
+      },
+      {
+       "atM": 5.3,
+       "widthM": 1.07,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.119 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.14; glazing storey band off by 0.42 mean 0.49 vs photo 0.25; wall family unresolved (#433523 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012181243",
+    "ncc": 0.119,
+    "nccRaw": 0.119,
+    "shiftM": [
+     -0.05,
+     -0.25
+    ],
+    "usable": 0.59,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.14",
+     "glazing storey band off by 0.42 mean 0.49 vs photo 0.25",
+     "wall family unresolved (#433523 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#433523",
+     "model": "#71573b",
+     "dL": 0.137
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.384
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181242",
+   "address": "Plantage Kerklaan 30",
+   "builtYear": 1873,
+   "widthM": 5.01,
+   "eavesM": 15.44,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#624734",
+    "wallRaw": "#6b5c48",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 940,
+     "confidence": 0.13,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.123,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.3
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 49 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012181242",
+    "ncc": null,
+    "nccRaw": 0.24,
+    "shiftM": [
+     -0.1,
+     -0.1
+    ],
+    "usable": 0.49,
+    "abstain": "usable photo 49 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 30 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#5d4534",
+     "model": "#805d44",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.306
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181241",
+   "address": "Plantage Kerklaan 28",
+   "builtYear": 1887,
+   "widthM": 5.01,
+   "eavesM": 18.12,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#afa692",
+    "wallRaw": "#9a9377",
+    "skyline": {
+     "eavesM": 18.9,
+     "eavesRow": 184,
+     "confidence": 0.79,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 3.8,
+      "topWidthM": 0.17,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.363,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.82,
+       "widthM": 1.18,
+       "centre": 0.13
+      },
+      {
+       "atM": 5,
+       "widthM": 0.88,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0.06,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: white painted house, different design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181240",
+   "address": "Plantage Kerklaan 26",
+   "builtYear": 1879,
+   "widthM": 5,
+   "eavesM": 16.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#96725c",
+    "wallRaw": "#9d8268",
+    "skyline": {
+     "eavesM": 17.9,
+     "eavesRow": 224,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 5.6,
+      "topWidthM": 0.45,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.334,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.48,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.16
+   },
+   "status": "placed",
+   "type": "plantage-1879-neck-arched-shop",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1879-neck-arched-shop",
+    "ground": {
+     "shopfront": {
+      "colour": "#b3ab94",
+      "fascia": true,
+      "name": "Tempura",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2024-12-10 span 801-1001"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#96725c",
+     "evidence": "strip 2024-12-10 span 801-1001: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-gable (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012181240",
+    "ncc": 0.338,
+    "nccRaw": 0.338,
+    "shiftM": [
+     -0.05,
+     0.25
+    ],
+    "usable": 0.54,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.26 mean 0.49 vs photo 0.29"
+    ],
+    "wall": {
+     "photo": "#926d58",
+     "model": "#a78570",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.362
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181246",
+   "address": "Plantage Kerklaan 24",
+   "builtYear": 1874,
+   "widthM": 5.01,
+   "eavesM": 18.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#946e5a",
+    "wallRaw": "#a68870",
+    "skyline": {
+     "eavesM": 19.82,
+     "eavesRow": 147,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 2.75,
+      "riseM": 3.68,
+      "topWidthM": 0.38,
+      "centre": 0.64
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.385,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.14,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.93,
+       "widthM": 0.82,
+       "centre": 0.54
+      },
+      {
+       "atM": 7.85,
+       "widthM": 1.13,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0.13,
+    "foliageShare": 0.18
+   },
+   "status": "placed",
+   "type": "plantage-1879-neck-arched-shop",
+   "score": 0.82,
+   "placement": {
+    "type": "plantage-1879-neck-arched-shop",
+    "ground": {
+     "shopfront": {
+      "colour": "#946a40",
+      "fascia": true,
+      "name": "Sagra",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie,woonfunctie, amenity=cafe); fascia colour measured on the strip 2024-12-10 span 1001-1201"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#946e5a",
+     "evidence": "strip 2024-12-10 span 1001-1201: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown neck-gable (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012181246",
+    "ncc": 0.209,
+    "nccRaw": 0.209,
+    "shiftM": [
+     -0.05,
+     0.4
+    ],
+    "usable": 0.52,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.16",
+     "glazing storey band off by 0.40 mean 0.50 vs photo 0.13"
+    ],
+    "wall": {
+     "photo": "#895c36",
+     "model": "#a6816d",
+     "dL": 0.165
+    },
+    "glazing": {
+     "photo": 0.13,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.553
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170488",
+   "address": "Plantage Kerklaan 22",
+   "builtYear": 1835,
+   "widthM": 5,
+   "eavesM": 18.57,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c8bdad",
+    "wallRaw": "#a69077",
+    "skyline": {
+     "eavesM": 22.48,
+     "eavesRow": 41,
+     "confidence": 0.58,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 1.02,
+      "topWidthM": 0.57,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 17,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.415,
+    "structure": {
+     "bayWidthM": 1,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.07,
+       "widthM": 0.93,
+       "centre": 0.15
+      },
+      {
+       "atM": 11.68,
+       "widthM": 0.95,
+       "centre": 0.14
+      },
+      {
+       "atM": 8.45,
+       "widthM": 0.85,
+       "centre": 0.14
+      },
+      {
+       "atM": 5.38,
+       "widthM": 0.97,
+       "centre": 0.11
+      }
+     ]
+    },
+    "voidShare": 0.09,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: white-trimmed step gable, different design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170487",
+   "address": "Plantage Kerklaan 20",
+   "builtYear": 1887,
+   "widthM": 4.82,
+   "eavesM": 17.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#837756",
+    "wallRaw": "#dbb08d",
+    "skyline": {
+     "eavesM": 21.25,
+     "eavesRow": 90,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 0.68,
+      "topWidthM": 0.75,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.457,
+    "structure": {
+     "bayWidthM": 4.42,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 3.67 m @ 0.58), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 3.67,
+       "centre": 0.42,
+       "light": 0.58
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 4.77,
+       "widthM": 1.25,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0.3,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: different design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181653",
+   "address": "Plantage Kerklaan 18",
+   "builtYear": 1905,
+   "widthM": 5.02,
+   "eavesM": 17.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ac886b",
+    "wallRaw": "#c89d7d",
+    "skyline": {
+     "eavesM": 21.8,
+     "eavesRow": 68,
+     "confidence": 0.81,
+     "crown": {
+      "widthM": 0.7,
+      "riseM": 1.7,
+      "topWidthM": 0.13,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.371,
+    "structure": {
+     "bayWidthM": 1.68,
+     "bayCentre": 0.82,
+     "balconies": true,
+     "why": "dark open axis 1.07 m at 0.48 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.07,
+       "centre": 0.48,
+       "light": 0.43
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.81,
+       "light": 0.55
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.15,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: different design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180477",
+   "address": "Plantage Kerklaan 16",
+   "builtYear": 1895,
+   "widthM": 4.42,
+   "eavesM": 17.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ab8f6f",
+    "wallRaw": "#d7a684",
+    "skyline": {
+     "eavesM": 19.1,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 3.4,
+      "topWidthM": 0.15,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.391,
+    "structure": {
+     "bayWidthM": 1.02,
+     "bayCentre": 0.44,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 1.07,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: right half: different design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180476",
+   "address": "Plantage Kerklaan 14",
+   "builtYear": 1890,
+   "widthM": 4.79,
+   "eavesM": 16.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#bc9a7a",
+    "wallRaw": "#d7ab8a",
+    "skyline": {
+     "eavesM": 19.05,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 3.25,
+      "topWidthM": 0.57,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.381,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.88,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.97,
+       "widthM": 0.82,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0.2,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: right half: different design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180475",
+   "address": "Plantage Kerklaan 12",
+   "builtYear": 1850,
+   "widthM": 4.73,
+   "eavesM": 18.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b89f7f",
+    "wallRaw": "#e0b392",
+    "skyline": {
+     "eavesM": 19.05,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 3.27,
+      "topWidthM": 0.55,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.364,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.13,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.22,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: right half",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180481",
+   "address": "Plantage Kerklaan 10",
+   "builtYear": 1889,
+   "widthM": 4.74,
+   "eavesM": 17.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d0aa88",
+    "wallRaw": "#d3aa89",
+    "skyline": {
+     "eavesM": 19.2,
+     "eavesRow": 172,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 3.25,
+      "topWidthM": 0.75,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.243,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.2,
+       "widthM": 1,
+       "centre": 0.55
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.27,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: right half",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180480",
+   "address": "Plantage Kerklaan 8",
+   "builtYear": 1893,
+   "widthM": 4.74,
+   "eavesM": 17.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c0977d",
+    "wallRaw": "#cfa586",
+    "skyline": {
+     "eavesM": 19.7,
+     "eavesRow": 152,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 3,
+      "topWidthM": 0.28,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.253,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.84,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 0.85,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: right half",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180479",
+   "address": "Plantage Kerklaan 6",
+   "builtYear": 1880,
+   "widthM": 4.74,
+   "eavesM": 16.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c1987f",
+    "wallRaw": "#d3a789",
+    "skyline": {
+     "eavesM": 19.1,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.05,
+      "riseM": 3.13,
+      "topWidthM": 0.82,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.318,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.89,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.1,
+       "widthM": 1.1,
+       "centre": 0.87
+      },
+      {
+       "atM": 5.8,
+       "widthM": 1.15,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: right half",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180486",
+   "address": "Plantage Kerklaan 4",
+   "builtYear": 1880,
+   "widthM": 4.74,
+   "eavesM": 16.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#867159",
+    "wallRaw": "#988367",
+    "skyline": {
+     "eavesM": 22.07,
+     "eavesRow": 57,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 1.43,
+      "topWidthM": 0.4,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.218,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: right half",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012180485",
+   "address": "Plantage Kerklaan 2",
+   "builtYear": 1865,
+   "widthM": 3.8,
+   "eavesM": 16.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b79e84",
+    "wallRaw": "#81765e",
+    "skyline": {
+     "eavesM": 19.13,
+     "eavesRow": 175,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.2,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.65,
+       "widthM": 2.02,
+       "centre": 0.29
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.31
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: right half",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

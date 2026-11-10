@@ -1,0 +1,995 @@
+{
+ "face": "polaklaan-2-42",
+ "street": "Henri Polaklaan",
+ "library": "plantage",
+ "stripDate": "2024-12-10",
+ "seconds": 13.61,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "polaklaan-2-42-r1",
+   "pands": [
+    "0363100012181404",
+    "0363100012181327",
+    "0363100012181398",
+    "0363100012181399",
+    "0363100012181400",
+    "0363100012181326"
+   ],
+   "passed": false,
+   "triangles": 7441
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012181401",
+   "address": "Henri Polaklaan 32",
+   "builtYear": 1860,
+   "widthM": 5.4,
+   "eavesM": 19.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#d0be9b",
+    "wallRaw": "#d8b695",
+    "skyline": {
+     "eavesM": 23.38,
+     "eavesRow": 112,
+     "confidence": 0.8,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 2.8,
+      "topWidthM": 0.53,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.418,
+    "structure": {
+     "bayWidthM": 4.95,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.21,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: taller (3DBAG eaves 19.3), different house",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181402",
+   "address": "Henri Polaklaan 30",
+   "builtYear": 1847,
+   "widthM": 5.32,
+   "eavesM": 12.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#84644a",
+    "wallRaw": "#9e9279",
+    "skyline": {
+     "eavesM": 20.57,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 4.8,
+      "topWidthM": 0.8,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.307,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.32,
+       "widthM": 0.9,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: eaves 12.8 but ridge 20.3, different house",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181403",
+   "address": "Henri Polaklaan 28",
+   "builtYear": 1857,
+   "widthM": 5.4,
+   "eavesM": 12.6,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#684b3a",
+    "wallRaw": "#795946",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 456,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 3,
+      "topWidthM": 0.2,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.437,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.45 m at 0.15 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.45,
+       "centre": 0.15,
+       "light": 0.37
+      },
+      {
+       "widthM": 1.5,
+       "centre": 0.47,
+       "light": 0.32
+      },
+      {
+       "widthM": 1.48,
+       "centre": 0.81,
+       "light": 0.36
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.85,
+       "widthM": 1.2,
+       "centre": 0.19
+      },
+      {
+       "atM": 8.32,
+       "widthM": 1.23,
+       "centre": 0.18
+      },
+      {
+       "atM": 4.72,
+       "widthM": 0.97,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 47 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012181403",
+    "ncc": null,
+    "nccRaw": 0.456,
+    "shiftM": [
+     0.1,
+     0.4
+    ],
+    "usable": 0.47,
+    "abstain": "usable photo 47 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 32 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#6c4f3d",
+     "model": "#85604a",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.417
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181404",
+   "address": "Henri Polaklaan 26",
+   "builtYear": 1900,
+   "widthM": 5.17,
+   "eavesM": 12.54,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#95725c",
+    "wallRaw": "#977b64",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 480,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 1.45,
+      "topWidthM": 0.65,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.412,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.85,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.25,
+    "foliageShare": 0.22
+   },
+   "status": "placed",
+   "type": "plantage-1855-point-gable-row",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-point-gable-row",
+    "measuredPalette": {
+     "brick": "#95725c",
+     "evidence": "strip 2024-12-10 span 645-852: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown point-gable (type default)",
+    "no photo evidence of its own (usable photo 36 % < 50 %); placed on row evidence from 181327",
+    "no photo evidence of its own (usable photo 36 % < 50 %); placed on row evidence from 181327"
+   ],
+   "likeness": {
+    "pandId": "0363100012181404",
+    "ncc": null,
+    "nccRaw": 0.583,
+    "shiftM": [
+     0.05,
+     0.35
+    ],
+    "usable": 0.36,
+    "abstain": "usable photo 36 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 33 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#96745d",
+     "model": "#a68570",
+     "dL": 0.069
+    },
+    "glazing": {
+     "photo": 0.16,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.327
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181327",
+   "address": "Henri Polaklaan 24",
+   "builtYear": 1864,
+   "widthM": 5.45,
+   "eavesM": 12.14,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#93735b",
+    "wallRaw": "#a1856b",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 480,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.2,
+      "riseM": 1.6,
+      "topWidthM": 0.72,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.38,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.21
+   },
+   "status": "placed",
+   "type": "plantage-1855-point-gable-row",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-point-gable-row",
+    "measuredPalette": {
+     "brick": "#93735b",
+     "evidence": "strip 2024-12-10 span 852-1070: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown point-gable (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012181327",
+    "ncc": 0.393,
+    "nccRaw": 0.393,
+    "shiftM": [
+     0,
+     0.2
+    ],
+    "usable": 0.52,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 30 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#9b7962",
+     "model": "#a5866e",
+     "dL": 0.043
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.524
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181398",
+   "address": "Henri Polaklaan 22",
+   "builtYear": 1851,
+   "widthM": 5.24,
+   "eavesM": 12.33,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#cca489",
+    "wallRaw": "#d0a78e",
+    "skyline": {
+     "eavesM": 13.68,
+     "eavesRow": 500,
+     "confidence": 0.73,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 12.5,
+      "topWidthM": 0.03,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.395,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.16,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.79 (light 0.49): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.79,
+       "light": 0.49
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.17,
+    "foliageShare": 0.21
+   },
+   "status": "placed",
+   "type": "plantage-1855-point-gable-row",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-point-gable-row",
+    "measuredPalette": {
+     "brick": "#cca489",
+     "evidence": "strip 2024-12-10 span 1070-1280: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown point-gable (type default)",
+    "no photo evidence of its own (usable photo 43 % < 50 %); placed on row evidence from 181327",
+    "no photo evidence of its own (usable photo 43 % < 50 %); placed on row evidence from 181327"
+   ],
+   "likeness": {
+    "pandId": "0363100012181398",
+    "ncc": null,
+    "nccRaw": 0.398,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.43,
+    "abstain": "usable photo 43 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 35 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#ae8b73",
+     "model": "#c19171",
+     "dL": 0.033
+    },
+    "glazing": {
+     "photo": 0.09,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.252
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181399",
+   "address": "Henri Polaklaan 20",
+   "builtYear": 1905,
+   "widthM": 5.36,
+   "eavesM": 12.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#95765f",
+    "wallRaw": "#a1836a",
+    "skyline": {
+     "eavesM": 22.18,
+     "eavesRow": 160,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.02,
+      "topWidthM": 0.65,
+      "centre": 0.57
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.421,
+    "structure": {
+     "bayWidthM": 1.4,
+     "bayCentre": 0.79,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.08 (light 0.39): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.08,
+       "light": 0.39
+      },
+      {
+       "widthM": 1.38,
+       "centre": 0.46,
+       "light": 0.34
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.86,
+       "light": 0.58
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.22
+   },
+   "status": "placed",
+   "type": "plantage-1855-point-gable-row",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-point-gable-row",
+    "measuredPalette": {
+     "brick": "#95765f",
+     "evidence": "strip 2024-12-10 span 1279-1493: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown point-gable (type default)",
+    "no photo evidence of its own (usable photo 41 % < 50 %); placed on row evidence from 181400",
+    "no photo evidence of its own (usable photo 41 % < 50 %); placed on row evidence from 181400"
+   ],
+   "likeness": {
+    "pandId": "0363100012181399",
+    "ncc": null,
+    "nccRaw": 0.46,
+    "shiftM": [
+     -0.05,
+     0.3
+    ],
+    "usable": 0.41,
+    "abstain": "usable photo 41 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 35 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#a08068",
+     "model": "#a68973",
+     "dL": 0.033
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.529
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181400",
+   "address": "Henri Polaklaan 18",
+   "builtYear": 1838,
+   "widthM": 5.24,
+   "eavesM": 12.21,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c9a386",
+    "wallRaw": "#c69f82",
+    "skyline": {
+     "eavesM": 19.4,
+     "eavesRow": 271,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 5.98,
+      "topWidthM": 0.3,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.346,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "plantage-1855-point-gable-row",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-point-gable-row",
+    "measuredPalette": {
+     "brick": "#c9a386",
+     "evidence": "strip 2024-12-10 span 1494-1704: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown point-gable (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012181400",
+    "ncc": 0.479,
+    "nccRaw": 0.479,
+    "shiftM": [
+     0,
+     0.3
+    ],
+    "usable": 0.53,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 29 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#c5a083",
+     "model": "#c09472",
+     "dL": -0.043
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.51
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.612
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181326",
+   "address": "Henri Polaklaan 16",
+   "builtYear": 1853,
+   "widthM": 5.32,
+   "eavesM": 12.32,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#525953",
+    "wallRaw": "#565b50",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 448,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.27,
+      "riseM": 10.42,
+      "topWidthM": 0.28,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.265,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.09,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 0.8,
+       "centre": 0.78
+      },
+      {
+       "atM": 4.75,
+       "widthM": 0.97,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.5
+   },
+   "status": "placed",
+   "type": "plantage-1855-point-gable-row",
+   "score": 1,
+   "placement": {
+    "type": "plantage-1855-point-gable-row",
+    "paletteOverrides": {
+     "brick": "#46474a"
+    }
+   },
+   "notes": [
+    "crown point-gable (type default)",
+    "palette pinned: Polaklaan 16: the front is painted dark grey-black in the 2024-12-10 strip (photo #52584d), the model drew red brick",
+    "no photo evidence of its own (usable photo 16 % < 50 %); placed on row evidence from 181400",
+    "no photo evidence of its own (usable photo 15 % < 50 %); placed on row evidence from 181400"
+   ],
+   "likeness": {
+    "pandId": "0363100012181326",
+    "ncc": null,
+    "nccRaw": 0.46,
+    "shiftM": [
+     -0.05,
+     0.35
+    ],
+    "usable": 0.15,
+    "abstain": "usable photo 15 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "usable upper cells 33 % < 40 %",
+     "foliage 58 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#555a56",
+     "model": "#5d5e62",
+     "dL": 0.031
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.44
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181325",
+   "address": "Henri Polaklaan 14",
+   "builtYear": 1877,
+   "widthM": 8.28,
+   "eavesM": 12.76,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a715b",
+    "wallRaw": "#958169",
+    "skyline": {
+     "eavesM": 20.48,
+     "eavesRow": 228,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 2.75,
+      "riseM": 5.7,
+      "topWidthM": 0.57,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.301,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: 8.3 m double-width, different front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170600",
+   "address": "Henri Polaklaan 6A",
+   "builtYear": 1905,
+   "widthM": 28.59,
+   "eavesM": 14.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6e56",
+    "wallRaw": "#8b8065",
+    "skyline": {
+     "eavesM": 19.35,
+     "eavesRow": 273,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 4.4,
+      "riseM": 3.25,
+      "topWidthM": 0.28,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 24,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.337,
+    "structure": {
+     "bayWidthM": 2.1,
+     "bayCentre": 0.96,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 2.02,
+       "centre": 0.9
+      },
+      {
+       "atM": 5.15,
+       "widthM": 0.93,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0.11,
+    "foliageShare": 0.35
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: 28 m institutional block",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181449",
+   "address": "Henri Polaklaan 4",
+   "builtYear": 1866,
+   "widthM": 6.28,
+   "eavesM": 13.59,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#dedbcc",
+    "wallRaw": "#7f8069",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 468,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.72,
+      "topWidthM": 1,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.565,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.32,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.35,
+       "widthM": 1.2,
+       "centre": 0.47
+      },
+      {
+       "atM": 6.75,
+       "widthM": 1.25,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0.26,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: different design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181450",
+   "address": "Henri Polaklaan 2",
+   "builtYear": 1866,
+   "widthM": 6.28,
+   "eavesM": 13.72,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#887e63",
+    "wallRaw": "#565b49",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 1047,
+     "confidence": 0.12,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.7,
+       "widthM": 0.9,
+       "centre": 0.08
+      },
+      {
+       "atM": 6.97,
+       "widthM": 1.18,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.72
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: different design",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
