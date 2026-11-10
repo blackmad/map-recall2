@@ -15,6 +15,9 @@
  * A body whose accent share passes `stuccoShare` is a painted/stucco wall: its wall colour is the accent median.
  */
 import {rgbToHsl, toHex, type Rgb} from './wallColour.ts';
+import {fitWallColour, type WallFit, type WallFitOptions} from './wallFit.ts';
+import {measureWhiteBalance} from './stripWhiteBalance.ts';
+import {isLeaf} from '../buildingRecipe/measureFacade.ts';
 
 export interface StripPaletteInput {
   /** Raw RGB (3 channels) of the strip, `width` x `height`. */
@@ -131,4 +134,25 @@ const hexRgb = (h: string): Rgb => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2)
 export function paintFromFrames(band: string, frame: string, frameDrawn: string): {paint: string; ratio: number} {
   const ratio = luma(hexRgb(band)) / Math.max(1, luma(hexRgb(frame)));
   return {paint: toHex(hexRgb(frameDrawn).map(v => Math.min(255, v * ratio)) as Rgb), ratio: +ratio.toFixed(3)};
+}
+
+/**
+ * The fitted wall colour of one pand of the strip (wallFit.ts: foliage dropped, dominant cluster, a dark painted wall
+ * neutral): the body band's `wall`-class pixels, the same band and side inset as `measureStripPalette`. Separate from
+ * `measureStripPalette` so its medians (and every library palette taken from them) stay as they were.
+ */
+export function measureStripWallFit(input: StripPaletteInput, opts: WallFitOptions & {balance?: boolean} = {}): WallFit | null {
+  const {rgb, width, height, pixelsPerMetre: ppm, eavesM} = input;
+  const x0 = Math.max(0, Math.round(input.x0)), x1 = Math.min(width, Math.round(input.x1));
+  const rowOf = (m: number) => Math.max(0, Math.min(height, Math.round(height - m * ppm)));
+  const inset = Math.round((x1 - x0) * 0.06), xa = x0 + inset, xb = x1 - inset;
+  const bodyTop = rowOf(eavesM - 1), bodyBottom = rowOf(input.bodyFromM ?? (eavesM > 6 ? 4.4 : 0.9));
+  const wall: Rgb[] = [];
+  for (let y = bodyTop; y < bodyBottom; y++) for (let x = xa; x < xb; x++) {
+    const i = (y * width + x) * 3, p: Rgb = [rgb[i], rgb[i + 1], rgb[i + 2]];
+    if (classifyPixel(p) === 'wall') wall.push(p);
+  }
+  // The masks read the day's balanced pixel (stripWhiteBalance.ts, this pand's columns); the colour stays unbalanced.
+  const wb = opts.balance === false ? null : measureWhiteBalance(rgb, width, height, [[x0, x1]]);
+  return fitWallColour(wall, {...opts, leaf: isLeaf, ...(wb?.applied ? {gains: wb.gains} : {})});
 }

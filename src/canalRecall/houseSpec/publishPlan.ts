@@ -107,3 +107,16 @@ export function mergeRecipeIntent(existing: IntentLike | null, generated: Intent
   for (const s of generated.sources ?? []) if (!sources.some(e => e.id === s.id)) sources.push(s);
   return { ...generated, id: houseId, sources };
 }
+
+/**
+ * The facts a new recipe-route house directory starts from (lane H7 round 2, #354): a pand on a block face takes the
+ * face's own `pands/<pand>/facts.json` (intake.ts: the street frontage, and the chord over a BAG erker when the face was
+ * taken with --bay-outline), else null and the caller runs building-recipes/facts.ts from BAG. Nassaukade 146
+ * (0363100012160704): facts.ts --no-photo framed its BAG erker outline, and every window "escaped its wall"; the face's
+ * facts compile. `faceDirs` are the face directories in the caller's order; the first face listing the pand wins.
+ */
+export function blockFaceFactsFor(pandId: string, faceDirs: readonly string[], exists: (p: string) => boolean): string | null {
+  const bare = pandId.replace('NL.IMBAG.Pand.', '');
+  for (const d of faceDirs) { const f = `${d}/pands/${bare}/facts.json`; if (exists(f)) return f; }
+  return null;
+}

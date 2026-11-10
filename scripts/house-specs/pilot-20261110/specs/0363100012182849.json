@@ -1,0 +1,35 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182849",
+ "address": "Nieuwmarkt 10-12",
+ "design": {
+  "fronts": [
+   {
+    "bays": 2
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012182849/front.jpg (2025-01-08): two axes (held)",
+   "at": "2026-11-10"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012182849/front.jpg (2025-01-08): orange brick with a white cornice; the generic path drew grey stucco",
+   "at": "2026-11-10"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "cornice with a crowned central dormer (attic window under a pediment)"
+  }
+ ]
+}

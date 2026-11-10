@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012161422",
+ "address": "Nassaukade 149",
+ "design": {
+  "palette": {
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of block-face strip nassau-145-152 2024-11-21: dark painted brick: confirms the face and the H5h hand set",
+   "at": "2026-11-10"
+  }
+ }
+}

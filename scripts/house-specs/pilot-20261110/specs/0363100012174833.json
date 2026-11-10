@@ -1,0 +1,29 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174833",
+ "address": "Bloemgracht",
+ "design": {
+  "fronts": [
+   {
+    "bays": 2
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h5 pand-crops/0363100012174833 (2023-02-27): two axes (held)",
+   "at": "2026-11-10"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h5 pand-crops/0363100012174833 (2023-02-27): dark brick; the generic path drew white stucco (dL 0.47)",
+   "at": "2026-11-10"
+  }
+ }
+}
