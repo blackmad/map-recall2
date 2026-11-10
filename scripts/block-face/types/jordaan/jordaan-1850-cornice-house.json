@@ -27,6 +27,8 @@
   ],
   "stucco": false,
   "crownMatch": true,
+  "crownStrict": true,
+  "materialVeto": true,
   "baysByWidth": [
    {
     "maxWidthM": 4.6,
@@ -48,7 +50,7 @@
    "dormer": {
     "riseM": [
      0.6,
-     2.2
+     2.0
     ],
     "topWidthM": [
      0.4,
@@ -56,7 +58,7 @@
     ]
    }
   },
-  "note": "Bloemgracht 80-128 and 138-300 (2024-12 strips): cornices at 10.7, 13.5 and 14.5 m over three to five storeys; a front whose skyline reads a tall crown is the gable house's (crownMatch)",
+  "note": "Bloemgracht 80-128 and 138-300 (2024-12 strips): cornices at 10.7, 13.5 and 14.5 m over three to five storeys; a front whose skyline reads a tall crown is the gable house's (crownMatch); dormer rise capped at 2.0 m (the gable types start at 2.0 m, round 2 #113: the ranges overlapped at 2.0-2.2 m)",
   "mirrorForDoor": "left"
  },
  "body": {

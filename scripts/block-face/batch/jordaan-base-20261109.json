@@ -1,0 +1,620 @@
+{
+ "name": "jordaan-base-20261109",
+ "buurt": "bloemgrachtbuurt",
+ "library": "jordaan",
+ "generatedAt": "2026-11-09T22:54:53.011Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 22,
+  "runs": 23,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 22,
+  "byReason": {
+   "no-type": 14,
+   "compile-gates": 4,
+   "intake-failed": 2,
+   "strip-over-drawn-high": 1,
+   "glb-audit": 1,
+   "already-installed": 1,
+   "compile-error": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "akoleien-2-10",
+   "street": "Akoleienstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "akoleien-2-10",
+   "pands": 6,
+   "mode": "auto-place",
+   "stripDate": "2021-03-17",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/6 placed (2x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 2x evidence: strip # % without panorama data; 2x review: review: Akoleienstraat #-# (strip): a close oblique crop of a modern b)"
+   ],
+   "seconds": 13
+  },
+  {
+   "face": "akoleien-1-9",
+   "street": "Akoleienstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.573,
+    "reasons": [
+     "blown",
+     "cold cast rb"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "akoleien-1-9",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2021-03-17",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla; 1x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: glazing storey ; 1x evidence: strip # % without panorama data)"
+   ],
+   "seconds": 16.6
+  },
+  {
+   "face": "bloemgracht-4-10",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloemgracht-4-10",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": "2024-12-16",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/4 placed (2x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne; 1x match: every type vetoed (best jordaan-#-neck-gable: built #, type #-#); 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 24.8
+  },
+  {
+   "face": "bloemgracht-16-32",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.197,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": 0.197,
+   "nccMedian": 0.197,
+   "stripOverDrawn": 3.041,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 1300,
+   "sheet": "staging/block-face/bloemgracht-16-32-r1/review/strip-sheet.png",
+   "stripDate": "2023-03-27",
+   "run": "bloemgracht-16-32-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 173350/storey-height",
+    "strip-over-drawn-high: 3.041 > 1.25 (walls drawn darker than the photo)"
+   ],
+   "seconds": 22.9
+  },
+  {
+   "face": "bloemgracht-32-74",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloemgracht-32-74",
+   "pands": 16,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "intake-failed: Seed 0363100012173354 has no frontage on Bloemgracht: sightline to Bloemgracht crosses 0363100012172857"
+   ],
+   "seconds": 8.3
+  },
+  {
+   "face": "bloemgracht-80-128",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.242,
+   "nccMedian": 0.243,
+   "stripOverDrawn": 1.044,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 3255,
+   "sheet": "staging/block-face/bloemgracht-80-128-r1/review/strip-sheet.png",
+   "stripDate": "2024-12-16",
+   "run": "bloemgracht-80-128-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 11.5
+  },
+  {
+   "face": "bloemgracht-138-300",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloemgracht-138-300",
+   "pands": 19,
+   "mode": "authored",
+   "stripDate": null,
+   "status": "skipped",
+   "reasons": [
+    "already-installed"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "bloemgracht-1-51",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.127,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloemgracht-1-51",
+   "pands": 22,
+   "mode": "auto-place",
+   "stripDate": "2024-12-16",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/19 placed (4x match: every type vetoed (best jordaan-#-neck-gable: built #, type #-#; front; 4x run: a single placed pand between held neighbours or the face end: a block ; 4x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne)"
+   ],
+   "seconds": 209.8
+  },
+  {
+   "face": "bloemgracht-53-95",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloemgracht-53-95",
+   "pands": 20,
+   "mode": "auto-place",
+   "stripDate": "2023-03-27",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/14 placed (4x match: every type vetoed (best jordaan-#-neck-gable: built #, type #-#); 3x run: a single placed pand between held neighbours or the face end: a block ; 2x review: review: Bloemgracht #-# (strip): the right pand is behind a fence and )"
+   ],
+   "seconds": 120.8
+  },
+  {
+   "face": "bloemgracht-99-117",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloemgracht-99-117",
+   "pands": 5,
+   "mode": "auto-place",
+   "stripDate": "2024-12-17",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/5 placed (2x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne; 1x match: every type vetoed (best jordaan-#-neck-gable: built #, type #-#; front; 1x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 45.2
+  },
+  {
+   "face": "bloemgracht-121-197",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloemgracht-121-197",
+   "pands": 19,
+   "mode": "auto-place",
+   "stripDate": "2024-12-17",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/8 placed (2x match: every type vetoed (best jordaan-#-neck-gable: built #, type #-#; front; 2x review: review: Bloemgracht #-# (strip): a black-painted front drawn green, an; 1x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne)"
+   ],
+   "seconds": 61.6
+  },
+  {
+   "face": "bloemgracht-167-179",
+   "street": "Bloemgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloemgracht-167-179",
+   "pands": 4,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "intake-failed: Seed 0363100012167880 has no frontage on Bloemgracht: sightline to Bloemgracht crosses 0363100012174834"
+   ],
+   "seconds": 10.1
+  },
+  {
+   "face": "bloem-2-42",
+   "street": "Bloemstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.122,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloem-2-42",
+   "pands": 16,
+   "mode": "auto-place",
+   "stripDate": "2021-03-17",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/16 placed (6x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 3x evidence: strip # % without panorama data; 2x likeness: edge NCC # < # (photo vs model body; likeness#ts FAIL: wall dL +#; gla)"
+   ],
+   "seconds": 97.7
+  },
+  {
+   "face": "bloem-44-116",
+   "street": "Bloemstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloem-44-116",
+   "pands": 18,
+   "mode": "auto-place",
+   "stripDate": "2021-03-17",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/14 placed (5x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 3x run: a single placed pand between held neighbours or the face end: a block ; 2x match: best jordaan-#-cornice-house scores # < # (#DBAG eaves # m = # storeys)"
+   ],
+   "seconds": 125.5
+  },
+  {
+   "face": "bloem-118-124",
+   "street": "Bloemstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloem-118-124",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1855/1990; jordaan types 1600-1870, 1650-1910)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "bloem-128-206",
+   "street": "Bloemstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 3427,
+   "sheet": null,
+   "stripDate": "2021-03-17",
+   "run": "bloem-128-206-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-error: page.evaluate: Target page, context or browser has been closed"
+   ],
+   "seconds": 3
+  },
+  {
+   "face": "bloem-3-25",
+   "street": "Bloemstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloem-3-25",
+   "pands": 8,
+   "mode": "auto-place",
+   "stripDate": "2023-01-16",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/8 placed (4x likeness: run did not compile; 2x review: review: Bloemstraat #-# (strip): two tall grey-painted ornamented fron; 1x match: every type vetoed (best jordaan-#-neck-gable: built #, type #-#; front)"
+   ],
+   "seconds": 14.7
+  },
+  {
+   "face": "bloem-27-31",
+   "street": "Bloemstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "bloem-27-31",
+   "pands": 2,
+   "mode": "auto-place",
+   "stripDate": null,
+   "status": "failed",
+   "reasons": [
+    "no-type: no library year (built 1845/2009; jordaan types 1600-1870, 1650-1910)"
+   ],
+   "seconds": 0
+  },
+  {
+   "face": "egelantiersgracht-47-101",
+   "street": "Egelantiersgracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0.046,
+    "reasons": [
+     "blown"
+    ]
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "egelantiersgracht-47-101",
+   "pands": 26,
+   "mode": "auto-place",
+   "stripDate": "2024-12-16",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/22 placed (6x match: every type vetoed (best jordaan-#-neck-gable: built #, type #-#); 4x match: best jordaan-#-cornice-house scores # < # (#DBAG eaves # m = # storeys; 4x run: a single placed pand between held neighbours or the face end: a block )"
+   ],
+   "seconds": 123.7
+  },
+  {
+   "face": "lelie-150-194",
+   "street": "Nieuwe Leliestraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "lelie-150-194",
+   "pands": 18,
+   "mode": "auto-place",
+   "stripDate": "2024-12-16",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/18 placed (14x evidence: strip # % without panorama data; 2x review: review: Nieuwe Leliestraat #-# (strip): a close oblique crop of brick ; 1x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th)"
+   ],
+   "seconds": 63.3
+  },
+  {
+   "face": "lelie-83-141",
+   "street": "Nieuwe Leliestraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.174,
+   "nccMedian": 0.32,
+   "stripOverDrawn": 1.065,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 2013,
+   "sheet": "staging/block-face/lelie-83-141-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-16",
+   "run": "lelie-83-141-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 168148/roof-behind-crown; 168148/roof-under-crown"
+   ],
+   "seconds": 9.9
+  },
+  {
+   "face": "lelie-83-141",
+   "street": "Nieuwe Leliestraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.188,
+   "nccMedian": 0.264,
+   "stripOverDrawn": 0.886,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 3158,
+   "sheet": "staging/block-face/lelie-83-141-r2/review/strip-sheet.png",
+   "stripDate": "2023-01-16",
+   "run": "lelie-83-141-r2",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 169849/storey-height"
+   ],
+   "seconds": 7.9
+  },
+  {
+   "face": "rozengracht-30-82",
+   "street": "Rozengracht",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.297,
+   "nccMedian": 0.42,
+   "stripOverDrawn": 0.833,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 3585,
+   "sheet": "staging/block-face/rozengracht-30-82-r1/review/strip-sheet.png",
+   "stripDate": "2025-01-20",
+   "run": "rozengracht-30-82-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "compile-gates: 168605/storey-height"
+   ],
+   "seconds": 8
+  }
+ ]
+}

@@ -16,6 +16,8 @@
 //  - detailed buildings, when on, replace the landmarks (vector-map.js
 //    _syncDetailedBuildingLayers); off by default as in vector-map.js.
 
+import { YardFillLayer, yardFillFlag } from './yardFillLayer';
+
 const W = () => globalThis as any;
 
 /** Minimum interval between landmark ground re-bases (ms). */
@@ -46,6 +48,8 @@ export class CityExtras {
   artis: any = null;
   /** Street furniture from the open registers (street-furniture-source.js, lane #170); `?furniture=0` leaves it out. */
   furniture: any = null;
+  /** Container stacks and rail ballast for bare yards (yardFillLayer.ts); only under `?yardFill=1`. */
+  yardFill: YardFillLayer | null = null;
   private roofFeatures: any[] = [];
   private treesVisible = false;
   private detailedVisible = false;
@@ -113,6 +117,12 @@ export class CityExtras {
         this.furniture.load(h.extractPath());
       } catch (error) { h.fail('street furniture', error); }
     }
+    if (yardFillFlag()) {
+      try {
+        this.yardFill = new YardFillLayer(h.cameraMap, h.mercator, { sharedFrame: h.sharedFrame });
+        void this.yardFill.load(h.extractPath());
+      } catch (error) { h.fail('yard fill', error); }
+    }
     this.syncEnabled();
   }
 
@@ -142,7 +152,7 @@ export class CityExtras {
 
   /** The start flight holds what the driving view loaded; landing resumes (vector-map.js sync). */
   setSuspended(suspended: boolean): void {
-    for (const s of [this.signature, this.trees, this.furniture]) s?.setSuspended?.(suspended);
+    for (const s of [this.signature, this.trees, this.furniture, this.yardFill]) s?.setSuspended?.(suspended);
   }
 
   /** Own ground: models and trees stand on the relief / decks (vector-map.js _syncOwnGroundConsumers). */
@@ -154,6 +164,7 @@ export class CityExtras {
     const steps = [
       () => this.trees?.setGroundBase?.((lngLat: [number, number]) => ground.pointBase(lngLat)),
       () => this.furniture?.setGroundBase?.((lngLat: [number, number]) => ground.surfaceBase?.(lngLat) ?? ground.pointBase(lngLat)),
+      () => this.yardFill?.setGroundBase((lngLat) => ground.surfaceBase?.(lngLat) ?? ground.pointBase(lngLat)),
       () => this.signature?.setGroundBase?.((anchor: [number, number], halfM: number) => ground.pointBase(anchor, halfM)),
     ];
     do steps[this.hookStep++](); while (!staged && this.hookStep < steps.length);
@@ -168,6 +179,7 @@ export class CityExtras {
   refreshGroundBases(now = performance.now()): void {
     this.trees?.refreshGroundBases?.();
     this.furniture?.refreshGroundBases?.();
+    this.yardFill?.refreshGroundBases();
     this.landmarkRebaseDue = true;
     this.tick(now);
   }

@@ -15,6 +15,11 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Feedback 2026-11-09 follow-ups (session a1)
+
+- **Publish the 1,110 post-2020 pands (feedback C).** Staged at `scripts/data/bag-gaps/new-pands-supplement.geojson`; `publish-bag-gaps.ts` hardcodes `bag-gaps-supplement.geojson` and rewrites `heightSource`: widen the type in bagGaps.ts or add `--supplement=`, dry run, `--write`, then world:compile in the batched compile with feedback B, covers, check:bag-gaps, test:bag-tiles. Replace fallback heights when a newer 3DBAG or AHN6 lands.
+- **Yard fills (`?yardFill=1`).** Publish `scripts/data/yard-fill/{container-stacks,rail-sidings}.json` to `public/data/extracts/amsterdam/yard-fill/`, run `tests/e2e/yard-fill-shots.spec.ts`, judge Hornweg/Zaanstraat beside the orthophoto before defaulting on; other terminals need reviewed anchors in `scripts/build-yard-fill.ts`. Moermanskkade lot: check the panorama.
+
 ## City coverage programme (2026-11-07) — T0 whole city, T1 ride ring, T2 landmarks
 
 Plan `docs/plans/city-coverage-20261107.md` (Fable, user-approved 2026-11-07; explainer
@@ -2778,22 +2783,7 @@ All 5,333 origins are published (see HISTORY, 2026-09-30).
 
   Spot review stays mandatory for each batch, on a 10 % sample.
 
-- **Batch evidence guard for narrow streets (#113 Jordaan, 2026-10-29).** Bloemgrachtbuurt installed 8 runs, and a review of all 8 kept 1. All 8 passed edge NCC (0.155–0.218). Four held runs had no usable front:
-  - close two-storey crops (bloem-128-206);
-  - oblique wall crops (akoleien-2-10, lelie-150-194);
-  - a fence (bloemgracht-53-95).
-
-  NCC needs an evidence floor before it scores. Candidates:
-  - a skyline read under clear sky on every pand of the run;
-  - the strip's metric height reaching the eaves;
-  - obliquity from the panorama heading.
-
-  The other three held runs were wrong paint or crown, which the type match misses:
-  - black paint drawn green;
-  - grey render drawn as brick;
-  - gables drawn as cornice houses.
-
-  The Jordaan library has only 2 types and their crown rules are loose. Until both are fixed, review every Jordaan run, not a 10 % sample.
+- **Jordaan placements blocked by compile gates (#113, 2026-11-09).** The type match is tightened (HISTORY); no Jordaan run would place because of compile-gates storey-height and roof-behind-crown (bloem-128-206, lelie-83-141, rozengracht-30-82, bloemgracht-16-32), glb-audit (bloemgracht-80-128) and strip-over-drawn. The neck-gable storey pitch 3.33 m disagrees with its fronts (2.6–2.9 m). `jordaan-1900-gable-rebuild` needs an Opus strip review before any run using it installs. Kit gaps: black paint (no near-black neutral in the city brick tint), grey render over a brick type, arched heads unmeasured by measureFacade.
 
 - **Batch installer yield (#103 follow-ups, 2026-10-29).**
   1. **Type-library coverage is the bottleneck.** Of 133 failed faces, 39 are outside every type's years, 69 are vetoed after the strip and 17 score too low.
