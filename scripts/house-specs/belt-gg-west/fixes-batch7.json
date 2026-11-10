@@ -1,0 +1,74 @@
+{
+ "0363100012176014": {
+  "ref": "block-face strip herengracht-133-151 2021-01-25 (40 px/m, gridded crop)",
+  "at": "2021-01-25",
+  "fields": {
+   "roof/source": "front",
+   "roof/rakeClear": true,
+   "fronts/0/windowFrames": {
+    "frame": 0.1
+   }
+  },
+  "why": {
+   "roof/source": "a saddle under the gable crown outline, not 3DBAG's roof",
+   "roof/rakeClear": "the saddle stays under the crown's rakes",
+   "fronts/0/windowFrames": "white frames round the small-pane windows on the black front"
+  },
+  "limits": [
+   {
+    "component": "ground",
+    "what": "a ground storey of white pilasters and dark panels under a white fascia (Herengracht 139A, 2021-01-25)"
+   },
+   {
+    "component": "facade",
+    "what": "two carved stone masks either side of the neck window"
+   }
+  ]
+ },
+ "0363100012176004": {
+  "ref": "block-face strip herengracht-133-151 2021-01-25 (40 px/m, gridded crop)",
+  "at": "2021-01-25",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat",
+   "palette/wallMaterial": "stucco"
+  },
+  "why": {
+   "roof/source": "the roof the front implies, not 3DBAG",
+   "roof/form": "sky over the cornice from the quay, no roof face",
+   "palette/wallMaterial": "white-painted rendered front"
+  },
+  "limits": [
+   {
+    "component": "crown",
+    "what": "a pedimented dormer over the cornice on the left axis (Herengracht 149)"
+   },
+   {
+    "component": "windows",
+    "what": "segment-headed windows under hood moulds"
+   }
+  ]
+ },
+ "0363100012176017": {
+  "ref": "block-face strip herengracht-133-151 2021-01-25 (40 px/m, gridded crop)",
+  "at": "2021-01-25",
+  "fields": {
+   "roof/source": "front",
+   "roof/form": "flat",
+   "fronts/0/windowFrames": {
+    "frame": 0.1
+   }
+  },
+  "why": {
+   "roof/source": "the roof the front implies, not 3DBAG",
+   "roof/form": "sky over the cornice from the quay, no roof face",
+   "fronts/0/windowFrames": "white frames round the segment-headed sashes"
+  },
+  "limits": [
+   {
+    "component": "windows",
+    "what": "segment-headed windows with white hood moulds and small iron balconettes on the upper storeys (Herengracht 151, 1880)"
+   }
+  ]
+ }
+}
