@@ -16,8 +16,11 @@ import { rectifyFromFrame, type Rgb8 } from './photo.ts';
 export const EDGE_SEARCH_PCT = 6;
 /** An edge reads as found when its consistent gradient is this many times the search window's median. */
 export const EDGE_MIN_CONTRAST = 1.8;
-/** Roof offset: the game's skyline over the wall sits this far (m, on the wall plane) from the photo's. */
+/** Roof offset: the game's skyline over the wall sits this far (m, on the wall plane) from the crown line the photo confirms. */
 export const ROOF_OFFSET_M = 1;
+/** Blank wall: the game's wall reads at most this many openings (a slab's edge strip reads as one) where the photo reads at least BLANK_PHOTO_MIN. */
+export const BLANK_MAX_OPENINGS = 1;
+export const BLANK_PHOTO_MIN = 3;
 
 const luma = (img: Rgb8, x: number, y: number) => {
   const xi = Math.max(0, Math.min(img.width - 1, Math.round(x))), yi = Math.max(0, Math.min(img.height - 1, Math.round(y))), o = (yi * img.width + xi) * 3;
@@ -76,48 +79,45 @@ export function edgeOffsets(img: Rgb8, frame: CameraFrame, pose: FramePose, wall
 // ---- skyline: where each half's sky starts over the wall ------------------------------------------------------------
 export type SkyCol = { u: number; topM: number | null };
 
-/** Sky reference of a half: the median colour of its top 2 % rows, when at least half of them agree with it. */
-function skyRef(img: Rgb8): [number, number, number] | null {
-  const rows = Math.max(2, Math.round(img.height * 0.02)), px: number[][] = [];
-  for (let y = 0; y < rows; y++) for (let x = 0; x < img.width; x += 4) { const o = (y * img.width + x) * 3; px.push([img.data[o], img.data[o + 1], img.data[o + 2]]); }
-  const med = [0, 1, 2].map(c => px.map(p => p[c]).sort((a, b) => a - b)[px.length >> 1]) as [number, number, number];
-  const agree = px.filter(p => Math.abs(p[0] - med[0]) + Math.abs(p[1] - med[1]) + Math.abs(p[2] - med[2]) < 45).length / px.length;
-  const bright = med[0] + med[1] + med[2] > 300 || med[2] > med[0] + 15;
-  return agree >= 0.5 && bright ? med : null;
-}
+/** Sky-like at the top of a column: bright and not warm (brick and roof tiles are red-dominant; sky is blue or grey). */
+const skyLike = (r: number, g: number, b: number) => 0.299 * r + 0.587 * g + 0.114 * b > 120 && b >= r - 6;
 
 /**
  * Per column over the wall (7 columns, 10-90 %): the height on the wall plane (m) where the sky ends, scanning down from
- * the top of the frame; null where the column starts in something that is not sky or the half has no clear sky. Read on
- * the wall plane, so a ridge set back from the front reads lower than its true height, alike in both halves.
+ * the top of the frame with a running sky colour (the gradient of a sky drifts); null where the column does not start in
+ * sky. Read on the wall plane, so a ridge set back from the front reads lower than its true height, alike in both halves.
  */
 export function skyline(img: Rgb8, frame: CameraFrame, pose: FramePose, wall: WallQuad): SkyCol[] {
-  const ref = skyRef(img), len = Math.hypot(wall.b.x - wall.a.x, wall.b.y - wall.a.y), out: SkyCol[] = [];
+  const len = Math.hypot(wall.b.x - wall.a.x, wall.b.y - wall.a.y), out: SkyCol[] = [];
   for (let i = 0; i < 7; i++) {
     const u = len * (0.1 + 0.8 * i / 6);
-    if (!ref) { out.push({ u, topM: null }); continue; }
     const base = wallPoint(frame, pose, wall, u, 0), hi = wallPoint(frame, pose, wall, u, wall.heightM * 3);
     const x = Math.round(base.x);
     if (base.depth <= 0 || x < 0 || x >= img.width) { out.push({ u, topM: null }); continue; }
-    const isSky = (y: number) => { const o = (y * img.width + x) * 3; return Math.abs(img.data[o] - ref[0]) + Math.abs(img.data[o + 1] - ref[1]) + Math.abs(img.data[o + 2] - ref[2]) < 45; };
-    if (!isSky(0)) { out.push({ u, topM: null }); continue; }
-    let y = 0, run = 0;
-    for (; y < Math.min(img.height, base.y); y++) { if (!isSky(y)) { if (++run >= 4) break; } else run = 0; }
+    const px = (y: number) => { const o = (y * img.width + x) * 3; return [img.data[o], img.data[o + 1], img.data[o + 2]]; };
+    const p0 = px(0);
+    if (!skyLike(p0[0], p0[1], p0[2])) { out.push({ u, topM: null }); continue; }
+    const ref = [...p0];
+    let y = 1, run = 0;
+    for (; y < Math.min(img.height, base.y); y++) {
+      const p = px(y), d = Math.abs(p[0] - ref[0]) + Math.abs(p[1] - ref[1]) + Math.abs(p[2] - ref[2]);
+      if (d < 40) { run = 0; for (let c = 0; c < 3; c++) ref[c] = ref[c] * 0.9 + p[c] * 0.1; } else if (++run >= 4) break;
+    }
     y -= run - 1;
     if (y >= base.y) { out.push({ u, topM: 0 }); continue; }
+    if (hi.depth > 0 && hi.y > y) { out.push({ u, topM: null }); continue; }
     // Height on the wall plane at that row: bisect v (the projection is monotonic in v along a vertical wall line).
     let lo = 0, top = wall.heightM * 3;
-    if (hi.depth > 0 && hi.y > y) { out.push({ u, topM: null }); continue; }
     for (let k = 0; k < 30; k++) { const v = (lo + top) / 2, s = wallPoint(frame, pose, wall, u, v); if (s.y > y) lo = v; else top = v; }
     out.push({ u, topM: +((lo + top) / 2).toFixed(2) });
   }
   return out;
 }
 
-/** Median of game - photo skyline heights over the columns both halves read (m), with the count. */
-export function skylineOffset(game: SkyCol[], photo: SkyCol[]): { medianM: number | null; n: number } {
-  const d = game.map((g, i) => g.topM != null && photo[i]?.topM != null ? g.topM - photo[i].topM! : null).filter((v): v is number => v != null).sort((a, b) => a - b);
-  return { medianM: d.length ? +d[d.length >> 1].toFixed(2) : null, n: d.length };
+/** Median skyline height (m on the wall plane) over the columns a half reads; null under 3 columns. */
+export function skylineMedian(cols: SkyCol[]): { medianM: number | null; n: number } {
+  const d = cols.map(c => c.topM).filter((v): v is number => v != null).sort((a, b) => a - b);
+  return { medianM: d.length >= 3 ? +d[d.length >> 1].toFixed(2) : null, n: d.length };
 }
 
 // ---- the game's picks ----------------------------------------------------------------------------------------------
@@ -181,21 +181,23 @@ export function measureHalf(img: Rgb8, frame: CameraFrame, pose: FramePose, wall
 export type Flags = { blankWall: boolean; missing: boolean; otherBuilding: string | null; roofOffset: string | null; wallColour: string | null };
 
 /**
- * Advisory flags. blank wall: the game's wall reads no openings where the photo reads >= 2. missing: half or more of the
+ * Advisory flags. blank wall: the game's wall reads <= 1 opening (a bare slab's edge strip reads as one) where the photo reads >= 3. missing: half or more of the
  * wall samples hit sky or ground in the game. otherBuilding: half or more hit another building or model (a cover that
- * does not draw this wall, a neighbour drawn over it). roof offset: the median game - photo skyline over the wall's
- * columns (`skyline`, on the wall plane) is more than ROOF_OFFSET_M off on >= 3 columns both read; or, failing a skyline,
- * a model's picked surface stands >= 1.2 m over the crown line on 2 of 7 columns (generic picks are prisms: no roofs).
+ * does not draw this wall, a neighbour drawn over it). roof offset: the game's median skyline over the wall (`skyline`,
+ * on the wall plane, >= 3 columns) sits more than ROOF_OFFSET_M from the projected crown line (tile height) while the
+ * photo's sits within it (the photo confirms the crown); or a model's picked surface stands >= 1.2 m over the crown line
+ * on 2 of 7 columns (generic picks are prisms: no roofs).
  * wall colour: |dL| > 0.12 between the halves' measured wall colours (advisory until H2e and H9 round 3 land).
  */
-export function flagsFor(picks: PickRead, game: HalfMeasure, photo: HalfMeasure, roof: { skyline: { medianM: number | null; n: number }; above: number }): Flags {
+export function flagsFor(picks: PickRead, game: HalfMeasure, photo: HalfMeasure, roof: { crownM: number; game: number | null; photo: number | null; above: number }): Flags {
   const f: Flags = { blankWall: false, missing: false, otherBuilding: null, roofOffset: null, wallColour: null };
   if (picks.wall.n >= 6) {
     if (picks.wall.none / picks.wall.n >= 0.5) f.missing = true;
     if (picks.wall.other / picks.wall.n >= 0.5) f.otherBuilding = Object.entries(picks.wall.others).sort((a, b) => b[1] - a[1])[0]?.[0] ?? '?';
   }
-  if (!f.missing && game.openings === 0 && (photo.openings ?? 0) >= 2) f.blankWall = true;
-  if (roof.skyline.medianM != null && roof.skyline.n >= 3 && Math.abs(roof.skyline.medianM) > ROOF_OFFSET_M) f.roofOffset = `skyline ${roof.skyline.medianM > 0 ? '+' : ''}${roof.skyline.medianM} m vs photo (${roof.skyline.n} cols)`;
+  if (!f.missing && game.openings != null && game.openings <= BLANK_MAX_OPENINGS && (photo.openings ?? 0) >= BLANK_PHOTO_MIN) f.blankWall = true;
+  if (roof.game != null && roof.photo != null && Math.abs(roof.game - roof.crownM) > ROOF_OFFSET_M && Math.abs(roof.photo - roof.crownM) <= ROOF_OFFSET_M)
+    f.roofOffset = `game skyline ${roof.game} m vs crown ${roof.crownM} m (photo ${roof.photo} m)`;
   else if (roof.above >= 2) f.roofOffset = `model drawn over the crown line on ${roof.above}/7 columns`;
   if (game.wallL != null && photo.wallL != null && Math.abs(game.wallL - photo.wallL) > 0.12) f.wallColour = `dL ${(game.wallL - photo.wallL).toFixed(2)}`;
   return f;

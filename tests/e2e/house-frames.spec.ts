@@ -101,7 +101,7 @@ test('house frames', async ({ page }) => {
               const h = vm.inspectBuilding(x, y, rect);
               if (!h) return null;
               const p = h.properties ?? h.feature?.properties ?? {};
-              return { id: String(p.id ?? h.id ?? h.landmarkId ?? h.modelId ?? ''), kind: String(h.kind ?? h.source ?? p.source ?? ''), model: String(h.model ?? h.modelId ?? p.model ?? h.landmark?.id ?? ''), depth: Number(h.depth), keys: Object.keys(h).slice(0, 12).join(',') };
+              return { id: String(p.id ?? h.id ?? h.landmarkId ?? h.modelId ?? ''), kind: String(h.kind ?? h.source ?? p.source ?? ''), model: String(h.landmarkId ?? h.model ?? h.modelId ?? p.model ?? ''), depth: Number(h.depth), keys: Object.keys(h).slice(0, 12).join(',') };
             }),
           };
         }, pose.picks);

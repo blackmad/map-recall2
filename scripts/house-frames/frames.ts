@@ -19,7 +19,7 @@ import { exposedWalls, listPanos, pickWall, rankPanos, type PanoPick, type Wall 
 import { isLeaf } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { aimPose, fpsFor, frameFor, gridConvergenceDeg, hfovDeg, wallOutline, wallPoint, CROWN_EXTRA_M, FRAME_H, FRAME_W, type FramePose, type WallQuad } from './pose.ts';
 import { cutPerspective, loadEquirect, type PanoSize, type Rgb8 } from './photo.ts';
-import { bare, edgeOffsets, flagsFor, measureHalf, pickSamples, readPicks, skyline, skylineOffset, type EdgeRead, type Hit, type PickSample } from './analyse.ts';
+import { bare, edgeOffsets, flagsFor, measureHalf, pickSamples, readPicks, skyline, skylineMedian, type EdgeRead, type Hit, type PickSample } from './analyse.ts';
 
 export const HELP = `npm run house:frames -- <input> [flags]
 
@@ -66,10 +66,10 @@ Checks (pose.json)
                width (a consistent-gradient search +-6 %); 'found' when the edge stands 1.8x over its window
   picks        the game's surfaces at 35 wall points and 14 over the crown: this pand, its cover model, another
                building, or sky/ground; 'drew' names the model or path (generic houses pick as footprint prisms)
-  skyline      per column over the wall, where each half's sky ends (m on the wall plane); game - photo median
-  flags        blank wall (game 0 openings where the photo has >= 2, H2d houseLine profile), missing (>= 50 % sky or
-               ground), other building (>= 50 % another building or model), roof offset (skyline median > 1 m from the photo's
-               on >= 3 columns; else a model drawn >= 1.2 m over the crown line on 2 of 7 columns), wall colour (|dL| > 0.12; advisory until H2e and H9 round 3)
+  skyline      per column over the wall, where each half's sky ends (m on the wall plane); medians vs the crown line
+  flags        blank wall (game <= 1 opening where the photo has >= 3, H2d houseLine profile), missing (>= 50 % sky or
+               ground), other building (>= 50 % another building or model), roof offset (the game's skyline > 1 m from the crown line
+               where the photo's is within 1 m; or a model drawn >= 1.2 m over it on 2 of 7 columns), wall colour (|dL| > 0.12; advisory until H2e and H9 round 3)
 
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
@@ -278,12 +278,13 @@ async function half(file: string, pose: FramePose, wall: WallQuad, size: number)
 }
 
 function captionLines(r: any): string[] {
-  const e = (list: EdgeRead[]) => list.map(x => `${x.side[0].toUpperCase()}${x.found ? (x.offsetPct >= 0 ? '+' : '') + x.offsetPct.toFixed(1) + '%' : '?'}`).join(' ');
+  const e = (list: EdgeRead[]) => list.map(x => `${x.side[0].toUpperCase()}${x.found ? (x.offsetPct >= 0 ? '+' : '') + x.offsetPct.toFixed(1) + '%' : '?'}`).join(' ') || '-';
   const flags = Object.entries(r.flags ?? {}).filter(([, v]) => v).map(([k, v]) => v === true ? k : `${k}: ${v}`);
   return [
     `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  pano ${String(r.pick.timestamp).slice(0, 10)}  ${r.pick.distM.toFixed(1)} m  obl ${r.pick.obliquityDeg.toFixed(0)}°  |  vfov ${r.pose.vfovDeg.toFixed(0)}°${r.pose.clipped.length ? ` clipped ${r.pose.clipped.join('+')}` : ''}`,
     `drew: ${r.route}${r.picks?.drawnBy ? ` (picked ${r.picks.drawnBy})` : ''}  |  ${r.query || '(default world)'}${r.label && r.label !== 'run' ? `  |  ${r.label}` : ''}`,
-    `${flags.length ? 'FLAGS ' + flags.join(', ') : 'no flags'}  |  edges photo ${e(r.edges.photo)}  game ${e(r.edges.game)}  |  openings photo ${r.measure.photo.openings ?? '?'} game ${r.measure.game.openings ?? '?'}  |  skyline ${r.skyline?.offset?.medianM ?? '?'} m`,
+    flags.length ? `FLAGS ${flags.join(', ')}` : 'no flags',
+    `edges photo ${e(r.edges.photo)}  game ${e(r.edges.game)}  |  openings photo ${r.measure.photo.openings ?? '?'} game ${r.measure.game.openings ?? '?'}  |  skyline game ${r.skyline?.offset?.game?.medianM ?? '?'} photo ${r.skyline?.offset?.photo?.medianM ?? '?'} crown ${r.wall.heightM} m`,
   ];
 }
 
@@ -326,14 +327,15 @@ async function post(prep: Prepared, args: Args, job: any): Promise<any> {
   const game = gameRaw.width === prep.pose.width ? gameRaw : await (async () => { const { data, info } = await sharp(gamePath).removeAlpha().resize(prep.pose.width, prep.pose.height, { fit: 'fill' }).raw().toBuffer({ resolveWithObject: true }); return { width: info.width, height: info.height, data: new Uint8Array(data) }; })();
   const frame = frameFor(prep.pose);
   const edges = { photo: edgeOffsets(photo, frame, prep.pose, prep.wall), game: edgeOffsets(game, frame, prep.pose, prep.wall) };
-  const hits: Hit[] = g.picks?.hits ?? [];
+  // A model's hit carries landmarkId (the model key; frames from before the spec returned it name it by its keys).
+  const hits: Hit[] = (g.picks?.hits ?? []).map((h: any) => h && !h.model && String(h.keys ?? '').includes('landmarkId') ? { ...h, model: coverOf(prep.pandId) ?? 'model' } : h);
   const picks = readPicks(prep.samples, hits, prep.pandId, coverOf(prep.pandId));
   const cols = new Set<number>();
   prep.samples.forEach((s, i) => { const h = hits[i]; if (s.zone === 'above' && s.v >= prep.wall.heightM + 1.2 && h && (bare(h.id) === prep.pandId || (coverOf(prep.pandId) && (h.id === coverOf(prep.pandId) || h.model === coverOf(prep.pandId))))) cols.add(Math.round(s.u * 10)); });
   const measure = { photo: measureHalf(photo, frame, prep.pose, prep.wall), game: measureHalf(game, frame, prep.pose, prep.wall) };
   const sky = { photo: skyline(photo, frame, prep.pose, prep.wall), game: skyline(game, frame, prep.pose, prep.wall) };
-  const skyOff = skylineOffset(sky.game, sky.photo);
-  const flags = flagsFor(picks, measure.game, measure.photo, { skyline: skyOff, above: cols.size });
+  const skyOff = { game: skylineMedian(sky.game), photo: skylineMedian(sky.photo), crownM: prep.wall.heightM };
+  const flags = flagsFor(picks, measure.game, measure.photo, { crownM: prep.wall.heightM, game: skyOff.game.medianM, photo: skyOff.photo.medianM, above: cols.size });
   const fpsUsed = g.picks?.fps ?? null;
   const r = { pandId: prep.pandId, key: prep.key, street: prep.street, label: args.label, query: job.query, route: prep.route, why: prep.why, wall: prep.wall, wallLenM: prep.wallLenM, pick: prep.pick, pose: prep.pose, hfovDeg: prep.hfovDeg, fps: fpsFor(prep.pose), fpsUsed, foliage: prep.foliage, candidates: prep.candidates, edges, skyline: { ...sky, offset: skyOff }, picks, measure, flags, settle: g.settle, ms: g.ms };
   fs.writeFileSync(path.join(dir, 'pose.json'), JSON.stringify(r, null, 1));
