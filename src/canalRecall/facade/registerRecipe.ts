@@ -7,7 +7,8 @@
 //   date     -> `constructionYear` (the period palette, window/sash layout, roof era odds all key on it), only when the
 //               register's facade date falls in another era than the BAG year, or the BAG year is missing
 //   finish   -> `registerFinish` 'light' | 'brick' (genericFacades.decorateFacade picks the wall colour family)
-//   elements -> `registerForce`: wall-extra component ids whose dice are set to 1 (facadeExtras.dressWall)
+//   elements -> `registerForce`: wall-extra component ids whose dice are set to 1 (facadeExtras.dressWall);
+//               a named dakkapel/dakvenster sets `roofDormer`
 // A pand without facts, a measured appearance and a landmark/kit are returned unchanged (same object), so the chain is
 // byte-identical for them. The register outranks 3DBAG for the crown kind and the era; measured photo fronts outrank
 // the register (appearanceStyleSource measured, kits and recipes never reach this decorator).
@@ -70,6 +71,8 @@ export function registerPatch(f: PublishedFacts, p: Props): Props {
     if (!Number.isFinite(bag) || eraOfYear(ry) !== eraOfYear(bag)) { patch.constructionYear = ry; patch.bagConstructionYear = Number.isFinite(bag) ? bag : null; }
   }
   if (f.finish) patch.registerFinish = f.finish === 'brick' || f.finish === 'ornamentalBrick' ? 'brick' : 'light';
+  // A dakkapel or dakvenster the register names: the roof planner's dormer flag (3DBAG's roof parts otherwise decide).
+  if (f.elements?.some(e => e.key === 'dormer') && p.roofDormer !== true) patch.roofDormer = true;
   const force = registerForce(f);
   if (force.length) patch.registerForce = force;
   return patch;

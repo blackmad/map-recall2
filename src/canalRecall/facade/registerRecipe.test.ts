@@ -61,6 +61,8 @@ test('gable: the register crown is set where nothing else set one, and never ove
 test('elements: the register forces wall extras on, in a stable order', () => {
   assert.deepEqual(registerForce({ elements: [{ key: 'stoop', term: 'stoep' }, { key: 'hoistBeam', term: 'hijsbalk' }, { key: 'sculpture', term: 'beeld' }], stoneBands: true }), ['hoist-beam', 'stoop', 'string-courses']);
   assert.deepEqual(registerPatch({ elements: [] }, house().properties), {});
+  assert.equal(registerPatch({ elements: [{ key: 'dormer', term: 'dakkapel' }] }, house().properties).roofDormer, true);
+  assert.equal(registerPatch({ elements: [{ key: 'dormer', term: 'dakkapel' }] }, house({ roofDormer: true }).properties).roofDormer, undefined);
 });
 
 test('a register gable plans the crown through the roof decorator', () => {
