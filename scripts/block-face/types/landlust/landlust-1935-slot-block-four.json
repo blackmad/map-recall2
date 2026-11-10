@@ -1,0 +1,232 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "landlust-1935-slot-block-four",
+ "district": "landlust",
+ "description": "Jan den Haenstraat 6-62 and Karel Doorman side rows (BAG 1935), the four-storey twin of landlust-1934-slot-block: 12.8 m red-brick blocks of two mirrored houses, four storeys (three window rows over the ground) under a flat roofline with large zinc dormers: on each upper storey a pair of windows (1.2 and 1.15 m) at either end and two tall slot lights (0.5 m, 3.9-9.0 m) of the stair pair in the middle; ground: two small windows at each end and four house doors in pairs under one flat canopy at 2.5 m",
+ "fit": {
+  "widthM": [
+   11.8,
+   13.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1934,
+   1937
+  ],
+  "eavesM": [
+   12.2,
+   13.8
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "balconies": true,
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    11.8,
+    13.6
+   ],
+   "storeys": [
+    4
+   ],
+   "axisPitchM": [
+    0.9,
+    6.5
+   ]
+  },
+  "lonePand": {
+   "minWidthM": 5
+  },
+  "mirrorForDoor": "right",
+  "crownFromType": "parapet",
+  "frontEavesM": 12.9,
+  "measuredWall": true,
+  "note": "Jan den Haenstraat 6-62 (BAG 1935, 12.8 m pands, 3DBAG eaves 12.8-13.1 m): the same slot-block design as the three-storey 1934 type with one more window row; measured from the strip at 1.5 m resolution, not gridded",
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   6,
+   6,
+   6,
+   6
+  ],
+  "axisGrid": 13,
+  "storeyAxes": {
+   "0": [
+    1,
+    3,
+    4,
+    8,
+    9,
+    11
+   ],
+   "1": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11
+   ],
+   "2": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11
+   ],
+   "3": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11
+   ]
+  },
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "bayWidths": [
+   0.5,
+   1.2,
+   0.35,
+   1.15,
+   2.2,
+   0.5,
+   0.8,
+   0.55,
+   2.25,
+   1.1,
+   0.4,
+   1.1,
+   0.7
+  ],
+  "bayFill": [
+   0.5,
+   0.98,
+   0.5,
+   0.98,
+   0.5,
+   0.95,
+   0.5,
+   0.95,
+   0.5,
+   0.98,
+   0.5,
+   0.98,
+   0.5
+  ],
+  "storeyHeights": [
+   3.2,
+   3.2,
+   3.2,
+   3.2
+  ],
+  "windowHeights": [
+   0.52,
+   0.53,
+   0.53,
+   0.5
+  ],
+  "headLines": [
+   0.83,
+   0.75,
+   0.75,
+   0.74
+  ],
+  "windowSurround": "sill",
+  "surroundStoreys": [
+   1,
+   2,
+   3
+  ],
+  "axisWindows": {
+   "0": "casement-toplight"
+  }
+ },
+ "crowns": {
+  "parapet": {
+   "gable": "flat",
+   "cornice": "none",
+   "parapet": {
+    "courses": 4,
+    "coping": true
+   },
+   "note": "Haenstraat 6-62 strip: a dark thin eaves band at about 12.9 m; the zinc dormers are not drawn"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 2,
+   "note": "house doors in pairs under one flat canopy at 2.5 m (3.8-8.8 m of the block), flat doors 0-2.4 m; ground windows 1.0-2.66 m at each end; mirrored when the strip reads the door on the right",
+   "doorReveal": {
+    "form": "portiek",
+    "deep": 0.5,
+    "steps": 0
+   }
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#8a5238",
+   "frame": "#6b6454",
+   "door": "#1e1b12",
+   "stone": "#6b6454",
+   "cornice": "#3a3a32"
+  }
+ },
+ "roof": {
+  "material": "zinc",
+  "source": "front",
+  "form": "flat",
+  "evidence": "Callenburgstraat 2-32 strip: flat eaves band with two zinc dormers per block, 3DBAG ridge 12.8 m"
+ },
+ "rhythm": {
+  "bays": "pair, slot, slot, pair per block",
+  "identicalBays": "mirror about the block centre",
+  "windowsPerStorey": "ground: 2 windows + doors + 2 windows | 1-2: pair, two slots, pair",
+  "symmetry": "mirror about the block centre",
+  "groundFloor": "four doors in two pairs under a canopy",
+  "signage": "none",
+  "roofline": "flat with two large dormers",
+  "photoRows": [
+   6,
+   6
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "haen-6-62",
+   "pands": [
+    "6/8",
+    "10/12"
+   ],
+   "citation": "strip.jpg 2024-11 at 40 px/m, read from the rectified strip (not gridded): the Callenburgstraat slot-block grid (pair, two slots, pair; four doors under one canopy) with three window rows above the ground storey, eaves 12.9 m"
+  }
+ ],
+ "schemaLimits": [
+  "the tall slot lights run through both upper storeys; drawn as one narrow window per storey",
+  "four doors in two pairs under one canopy: one door and a window are drawn",
+  "the zinc dormers (10.1-12.2 m) are not drawn"
+ ],
+ "notes": [
+  "Palette: type default red-brown; placed pands take their trim-normalised strip wall."
+ ]
+}

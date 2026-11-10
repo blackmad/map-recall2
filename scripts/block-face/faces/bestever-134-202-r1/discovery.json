@@ -1,0 +1,1741 @@
+{
+ "street": "Bestevâerstraat",
+ "seed": "0363100012151749",
+ "members": [
+  "0363100012138101"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of bestever-134-202: 147479 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of bestever-134-202: 076341 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061651",
+   "reason": "frontage 36.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012061794",
+   "reason": "frontage 115.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012062141",
+   "reason": "frontage 98.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012062166",
+   "reason": "frontage 165.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012062858",
+   "reason": "frontage 111.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012063203",
+   "reason": "frontage 79.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012063321",
+   "reason": "frontage 112.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012063549",
+   "reason": "frontage 115.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012064868",
+   "reason": "frontage 161.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012066272",
+   "reason": "frontage 97.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012066992",
+   "reason": "frontage 110.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012067375",
+   "reason": "frontage 86.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012068179",
+   "reason": "frontage 129.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012068528",
+   "reason": "frontage 139.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012070395",
+   "reason": "frontage 47.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012070549",
+   "reason": "frontage 109.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012071754",
+   "reason": "frontage 55.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012071938",
+   "reason": "frontage 140.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012072687",
+   "reason": "frontage 139.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012072724",
+   "reason": "frontage 88.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012073116",
+   "reason": "frontage 84.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012073277",
+   "reason": "frontage 161.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012061629",
+   "reason": "frontage 105.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012063069",
+   "reason": "frontage 44.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012063379",
+   "reason": "frontage 73.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012063511",
+   "reason": "frontage 203.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012063567",
+   "reason": "frontage 44.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012064224",
+   "reason": "frontage 48.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012065649",
+   "reason": "frontage 44.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012065661",
+   "reason": "frontage 112.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012066203",
+   "reason": "frontage 136.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012066626",
+   "reason": "frontage 44.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012067932",
+   "reason": "frontage 166.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012068639",
+   "reason": "frontage 124.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012068691",
+   "reason": "frontage 127.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012069813",
+   "reason": "frontage 106.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012069920",
+   "reason": "frontage 105.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012070361",
+   "reason": "frontage 89.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012070497",
+   "reason": "frontage 104.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012071142",
+   "reason": "frontage 104.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012072332",
+   "reason": "frontage 48.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012073024",
+   "reason": "frontage 43.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012073715",
+   "reason": "frontage 143.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012074955",
+   "reason": "frontage 167.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012074974",
+   "reason": "frontage 147.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012075310",
+   "reason": "frontage 115.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012077147",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012124515"
+  },
+  {
+   "pandId": "0363100012077211",
+   "reason": "frontage 145.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012078751",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012114797"
+  },
+  {
+   "pandId": "0363100012079479",
+   "reason": "frontage 135.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012080535",
+   "reason": "frontage 42.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012080798",
+   "reason": "frontage 165.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012083007",
+   "reason": "frontage 104.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012085566",
+   "reason": "frontage 47.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012087026",
+   "reason": "frontage 115.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012087231",
+   "reason": "frontage 86.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012087773",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012138866"
+  },
+  {
+   "pandId": "0363100012087932",
+   "reason": "frontage 162.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012087956",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012108701"
+  },
+  {
+   "pandId": "0363100012089155",
+   "reason": "frontage 47.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012089525",
+   "reason": "frontage 80.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012089590",
+   "reason": "frontage 112.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012089597",
+   "reason": "frontage 61.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012089839",
+   "reason": "frontage 66.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012090526",
+   "reason": "frontage 140.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012090556",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012116325"
+  },
+  {
+   "pandId": "0363100012090746",
+   "reason": "frontage 47.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012090839",
+   "reason": "frontage 101.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012076342",
+   "reason": "frontage 167.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012079424",
+   "reason": "frontage 48.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012080635",
+   "reason": "frontage 104.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012081660",
+   "reason": "frontage 118.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012082410",
+   "reason": "frontage 43.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012083022",
+   "reason": "frontage 135.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012084532",
+   "reason": "frontage 201.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012085871",
+   "reason": "frontage 164.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012091714",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012078751"
+  },
+  {
+   "pandId": "0363100012091743",
+   "reason": "frontage 47.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012092326",
+   "reason": "frontage 139.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012093157",
+   "reason": "frontage 145.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012093179",
+   "reason": "frontage 48.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012093475",
+   "reason": "frontage 54.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012093972",
+   "reason": "frontage 109.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012095737",
+   "reason": "frontage 105.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012096169",
+   "reason": "frontage 153.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012096832",
+   "reason": "frontage 179.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012096971",
+   "reason": "frontage 108.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012098196",
+   "reason": "frontage 48.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012098683",
+   "reason": "frontage 110.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012099110",
+   "reason": "frontage 111.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012100119",
+   "reason": "frontage 72.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012100357",
+   "reason": "frontage 66.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012100954",
+   "reason": "frontage 109.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012102270",
+   "reason": "frontage 115.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012103132",
+   "reason": "frontage 92.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012103157",
+   "reason": "frontage 110.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012104360",
+   "reason": "frontage 48.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012104480",
+   "reason": "frontage 85.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012104481",
+   "reason": "frontage 91.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012104577",
+   "reason": "frontage 48.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012090923",
+   "reason": "frontage 119.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012094709",
+   "reason": "frontage 205.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012095658",
+   "reason": "frontage 105.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012095699",
+   "reason": "frontage 72.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012098318",
+   "reason": "frontage 43.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012098932",
+   "reason": "frontage 167.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012099589",
+   "reason": "frontage 102.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012100981",
+   "reason": "frontage 136.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012101492",
+   "reason": "frontage 105.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012102574",
+   "reason": "frontage 201.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012103314",
+   "reason": "frontage 156.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012103458",
+   "reason": "frontage 135.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012104725",
+   "reason": "frontage 126.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012104827",
+   "reason": "frontage 49.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012105956",
+   "reason": "frontage 109.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012107813",
+   "reason": "frontage 173.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012108028",
+   "reason": "frontage 167.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012108701",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012151749"
+  },
+  {
+   "pandId": "0363100012108809",
+   "reason": "frontage 47.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012108855",
+   "reason": "frontage 73.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012109667",
+   "reason": "frontage 67.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012109847",
+   "reason": "frontage 74.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012110115",
+   "reason": "frontage 44.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012110215",
+   "reason": "frontage 48.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012110942",
+   "reason": "frontage 112.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012111325",
+   "reason": "frontage 82.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012111417",
+   "reason": "frontage 115.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012111802",
+   "reason": "frontage 145.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012112286",
+   "reason": "frontage 47.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012112322",
+   "reason": "frontage 107.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012112405",
+   "reason": "frontage 145.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012113082",
+   "reason": "frontage 40.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012113583",
+   "reason": "frontage 48.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012114256",
+   "reason": "frontage 145.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012114539",
+   "reason": "frontage 165.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012115256",
+   "reason": "frontage 83.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012115570",
+   "reason": "frontage 155.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012116190",
+   "reason": "frontage 169.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012117681",
+   "reason": "frontage 109.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012105020",
+   "reason": "frontage 49.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012105359",
+   "reason": "frontage 72.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012106602",
+   "reason": "frontage 204.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012106979",
+   "reason": "frontage 49.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012107097",
+   "reason": "frontage 73.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012107155",
+   "reason": "frontage 45.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012107347",
+   "reason": "frontage 202.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012108020",
+   "reason": "frontage 84.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012110203",
+   "reason": "frontage 120.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012110487",
+   "reason": "frontage 73.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012112059",
+   "reason": "frontage 150.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012114763",
+   "reason": "frontage 166.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012116397",
+   "reason": "frontage 49.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012117545",
+   "reason": "frontage 203.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012119108",
+   "reason": "frontage 44.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012119859",
+   "reason": "frontage 115.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012120653",
+   "reason": "frontage 122.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012121115",
+   "reason": "frontage 60.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012121980",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012073127"
+  },
+  {
+   "pandId": "0363100012122114",
+   "reason": "frontage 82.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012122456",
+   "reason": "frontage 78.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012124235",
+   "reason": "frontage 138.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012124337",
+   "reason": "frontage 92.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012124495",
+   "reason": "frontage 80.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012124987",
+   "reason": "frontage 82.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012125953",
+   "reason": "frontage 168.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012127077",
+   "reason": "frontage 82.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012127749",
+   "reason": "frontage 145.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012128075",
+   "reason": "frontage 142.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012128123",
+   "reason": "frontage 48.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012128652",
+   "reason": "frontage 42.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012128885",
+   "reason": "frontage 115.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012131151",
+   "reason": "frontage 185.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012131416",
+   "reason": "frontage 53.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012131455",
+   "reason": "frontage 82.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012131648",
+   "reason": "frontage 107.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012132169",
+   "reason": "frontage 109.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012132905",
+   "reason": "frontage 36.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012118854",
+   "reason": "frontage 48.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012119748",
+   "reason": "frontage 163.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012122387",
+   "reason": "frontage 48.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012123027",
+   "reason": "frontage 118.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012124138",
+   "reason": "frontage 48.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012124713",
+   "reason": "frontage 134.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012125261",
+   "reason": "frontage 134.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012125512",
+   "reason": "frontage 72.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012127952",
+   "reason": "frontage 166.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012129691",
+   "reason": "frontage 151.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012130983",
+   "reason": "frontage 48.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012131228",
+   "reason": "frontage 134.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012131573",
+   "reason": "frontage 135.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012131694",
+   "reason": "frontage 128.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012132798",
+   "reason": "frontage 43.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012133359",
+   "reason": "frontage 145.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012133707",
+   "reason": "frontage 59.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012133746",
+   "reason": "frontage 73.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012137538",
+   "reason": "frontage 173.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012138672",
+   "reason": "frontage 48.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012139329",
+   "reason": "frontage 30.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012140401",
+   "reason": "frontage 162.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012140656",
+   "reason": "frontage 82.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012140948",
+   "reason": "frontage 82.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012141413",
+   "reason": "frontage 84.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012141674",
+   "reason": "frontage 140.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012141931",
+   "reason": "frontage 115.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012142100",
+   "reason": "frontage 115.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012142317",
+   "reason": "frontage 115.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012142349",
+   "reason": "frontage 105.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012142602",
+   "reason": "frontage 128.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012143406",
+   "reason": "frontage 113.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012144234",
+   "reason": "frontage 84.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012144291",
+   "reason": "frontage 110.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012144890",
+   "reason": "frontage 82.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012145032",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012077147"
+  },
+  {
+   "pandId": "0363100012145712",
+   "reason": "frontage 145.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012145738",
+   "reason": "frontage 148.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012133454",
+   "reason": "frontage 46.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012134001",
+   "reason": "frontage 202.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012135780",
+   "reason": "frontage 49.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012136590",
+   "reason": "frontage 49.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012137010",
+   "reason": "frontage 42.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012137912",
+   "reason": "frontage 74.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012139881",
+   "reason": "frontage 50.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012140098",
+   "reason": "frontage 167.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012140644",
+   "reason": "frontage 166.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012140983",
+   "reason": "frontage 48.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012141001",
+   "reason": "frontage 201.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012141048",
+   "reason": "frontage 72.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012141696",
+   "reason": "frontage 201.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012141830",
+   "reason": "frontage 168.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012143887",
+   "reason": "frontage 167.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012145986",
+   "reason": "frontage 115.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012146057",
+   "reason": "frontage 99.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012146058",
+   "reason": "frontage 80.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012147018",
+   "reason": "frontage 128.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012148081",
+   "reason": "frontage 111.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012148568",
+   "reason": "frontage 145.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012149193",
+   "reason": "frontage 103.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012149997",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012090556"
+  },
+  {
+   "pandId": "0363100012151221",
+   "reason": "frontage 82.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012151258",
+   "reason": "frontage 154.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012152159",
+   "reason": "frontage 109.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012153317",
+   "reason": "frontage 40.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012153518",
+   "reason": "frontage 40.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012153966",
+   "reason": "frontage 82.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012154577",
+   "reason": "frontage 33.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012155330",
+   "reason": "frontage 83.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012155604",
+   "reason": "frontage 100.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012156090",
+   "reason": "frontage 93.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012156543",
+   "reason": "frontage 101.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012157301",
+   "reason": "frontage 32.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012157411",
+   "reason": "frontage 83.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012158432",
+   "reason": "frontage 92.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012159429",
+   "reason": "frontage 83.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012161571",
+   "reason": "frontage 83.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012146137",
+   "reason": "frontage 166.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012146143",
+   "reason": "frontage 201.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012146167",
+   "reason": "frontage 49.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012147879",
+   "reason": "frontage 105.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012148995",
+   "reason": "frontage 135.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012149596",
+   "reason": "frontage 49.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012150375",
+   "reason": "frontage 123.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012151397",
+   "reason": "frontage 52.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012152138",
+   "reason": "frontage 74.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012152219",
+   "reason": "frontage 81.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012154198",
+   "reason": "frontage 85.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012155359",
+   "reason": "frontage 83.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012156736",
+   "reason": "frontage 84.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012157038",
+   "reason": "frontage 48.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012157577",
+   "reason": "frontage 33.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012157588",
+   "reason": "frontage 85.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012160325",
+   "reason": "frontage 47.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012161475",
+   "reason": "frontage 85.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012161496",
+   "reason": "frontage 85.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012162223",
+   "reason": "frontage 84.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012162411",
+   "reason": "frontage 47.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012163283",
+   "reason": "frontage 83.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012183198",
+   "reason": "frontage 155.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012183701",
+   "reason": "frontage 102.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012186303",
+   "reason": "frontage 103.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012186467",
+   "reason": "frontage 68.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012187380",
+   "reason": "frontage 162.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012188265",
+   "reason": "frontage 162.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012188581",
+   "reason": "frontage 53.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012188883",
+   "reason": "frontage 162.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012189695",
+   "reason": "frontage 156.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012189980",
+   "reason": "frontage 162.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012189994",
+   "reason": "frontage 80.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012190705",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012146228"
+  },
+  {
+   "pandId": "0363100012191767",
+   "reason": "frontage 153.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012192801",
+   "reason": "frontage 156.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012192884",
+   "reason": "frontage 156.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012195050",
+   "reason": "frontage 113.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012195483",
+   "reason": "frontage 56.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012196139",
+   "reason": "frontage 100.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012196363",
+   "reason": "frontage 101.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012196393",
+   "reason": "frontage 171.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012196677",
+   "reason": "frontage 62.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012198215",
+   "reason": "frontage 154.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012198537",
+   "reason": "frontage 162.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012199178",
+   "reason": "frontage 72.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012200538",
+   "reason": "frontage 156.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012201356",
+   "reason": "frontage 99.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012203673",
+   "reason": "frontage 43.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012203892",
+   "reason": "frontage 55.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012204308",
+   "reason": "frontage 95.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012204341",
+   "reason": "frontage 48.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012204836",
+   "reason": "frontage 167.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012205041",
+   "reason": "frontage 161.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012205763",
+   "reason": "frontage 99.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012206546",
+   "reason": "frontage 93.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012207906",
+   "reason": "frontage 103.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208490",
+   "reason": "frontage 107.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208491",
+   "reason": "frontage 107.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208492",
+   "reason": "frontage 106.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208493",
+   "reason": "frontage 106.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208495",
+   "reason": "frontage 106.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208500",
+   "reason": "frontage 106.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208501",
+   "reason": "frontage 106.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208502",
+   "reason": "frontage 106.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012165745",
+   "reason": "frontage 40.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012166057",
+   "reason": "frontage 84.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012166109",
+   "reason": "frontage 84.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012166593",
+   "reason": "frontage 46.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012167066",
+   "reason": "frontage 84.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012201901",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012074374"
+  },
+  {
+   "pandId": "0363100012208503",
+   "reason": "frontage 106.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208504",
+   "reason": "frontage 107.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208505",
+   "reason": "frontage 107.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208506",
+   "reason": "frontage 107.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208541",
+   "reason": "frontage 58.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012208561",
+   "reason": "frontage 65.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012209025",
+   "reason": "frontage 169.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012209082",
+   "reason": "frontage 50.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012209115",
+   "reason": "frontage 71.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012210080",
+   "reason": "frontage 100.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012210395",
+   "reason": "frontage 77.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012210521",
+   "reason": "frontage 59.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012211769",
+   "reason": "frontage 101.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012211823",
+   "reason": "frontage 99.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012212037",
+   "reason": "frontage 159.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012212042",
+   "reason": "frontage 99.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012213665",
+   "reason": "frontage 162.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012214129",
+   "reason": "frontage 32.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012214707",
+   "reason": "frontage 99.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012214708",
+   "reason": "frontage 99.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012214804",
+   "reason": "frontage 74.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012215690",
+   "reason": "frontage 103.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012217251",
+   "reason": "frontage 68.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012218181",
+   "reason": "frontage 156.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012218990",
+   "reason": "frontage 162.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012219258",
+   "reason": "frontage 97.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012220429",
+   "reason": "frontage 46.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012221494",
+   "reason": "frontage 157.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012221793",
+   "reason": "frontage 159.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012223759",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012134150"
+  },
+  {
+   "pandId": "0363100012225568",
+   "reason": "frontage 32.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012226035",
+   "reason": "frontage 165.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012226036",
+   "reason": "frontage 162.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012226688",
+   "reason": "frontage 162.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012229058",
+   "reason": "frontage 99.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012229262",
+   "reason": "frontage 86.8 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012229823",
+   "reason": "frontage 100.0 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012229868",
+   "reason": "frontage 153.2 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012230265",
+   "reason": "frontage 171.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012232028",
+   "reason": "frontage 80.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012234108",
+   "reason": "frontage 161.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012234355",
+   "reason": "frontage 156.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012234815",
+   "reason": "frontage 96.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012234955",
+   "reason": "frontage 92.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012235049",
+   "reason": "frontage 60.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012218606",
+   "reason": "sightline to Bestevâerstraat crosses 0363100012063083"
+  },
+  {
+   "pandId": "0363100012222102",
+   "reason": "frontage 175.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012233061",
+   "reason": "frontage 35.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012233062",
+   "reason": "frontage 35.5 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012233507",
+   "reason": "frontage 85.6 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012236147",
+   "reason": "frontage 46.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012237016",
+   "reason": "frontage 31.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012237034",
+   "reason": "frontage 83.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012237105",
+   "reason": "frontage 48.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012237134",
+   "reason": "frontage 48.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012236253",
+   "reason": "frontage 84.3 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012236346",
+   "reason": "frontage 84.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012236535",
+   "reason": "frontage 84.4 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012236618",
+   "reason": "frontage 84.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012236623",
+   "reason": "frontage 83.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012236782",
+   "reason": "frontage 84.1 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012237215",
+   "reason": "frontage 84.7 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012237361",
+   "reason": "frontage 83.9 m from Bestevâerstraat"
+  },
+  {
+   "pandId": "0363100012064826",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065098",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012070415",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012073127",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012061720",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074072",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074999",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075319",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012084116",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012086484",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088204",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074071",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074943",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076413",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080374",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088781",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091666",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093008",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095246",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100100",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104319",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105791",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117945",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105865",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117468",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118809",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129007",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129595",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119132",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130051",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133151",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133883",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138866",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142838",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143956",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136297",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142154",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143073",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143225",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012138101",
+   "alongM": -79.22,
+   "widthM": 12.18,
+   "eavesM": 12.69,
+   "roofMaxM": 12.74,
+   "storeys3dbag": 4,
+   "builtYear": 1924,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "bestever-134-202"
+}

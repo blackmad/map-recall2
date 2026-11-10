@@ -1,0 +1,114 @@
+{
+ "street": "Tjerk Hiddes de Vriesstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012061629",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 33-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695533"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 13-H",
+     "use": "kantoorfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000828600"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099589",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000828604"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070361",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 17",
+    "Tjerk Hiddes de Vriesstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000828608"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000828612"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001988098"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152219",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 21-H",
+     "use": "kantoorfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000828616"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152138",
+   "addresses": [
+    "Tjerk Hiddes de Vriesstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Callenburgstraat 34-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000643347"
+    },
+    {
+     "address": "Tjerk Hiddes de Vriesstraat 23-H",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001988103"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

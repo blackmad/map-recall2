@@ -1,0 +1,235 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "coppelstock-25-55-r1",
+ "street": "Coppelstockstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/coppelstock-25-55-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/coppelstock-25-55/auto-place.json"
+ },
+ "types": [
+  "landlust-1933-three-axis-tile"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012149193",
+   "slug": "coppelstock-149193",
+   "address": "Coppelstockstraat 29",
+   "type": {
+    "type": "landlust-1933-three-axis-tile",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7b5a44",
+     "evidence": "strip 2024-11-21 span 527-782: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-three-axis-tile scored 0.9 on eaves 0.5, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2024-11-21 span 527-782"
+   }
+  },
+  {
+   "pandId": "0363100012066272",
+   "slug": "coppelstock-066272",
+   "address": "Coppelstockstraat 31",
+   "type": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#745a41",
+     "evidence": "strip 2024-11-21 span 782-1026: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-three-axis-tile scored 0.9 on eaves 0.5, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2024-11-21 span 782-1026"
+   }
+  },
+  {
+   "pandId": "0363100012104481",
+   "slug": "coppelstock-104481",
+   "address": "Coppelstockstraat 33",
+   "type": {
+    "type": "landlust-1933-three-axis-tile",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#746d5a",
+     "evidence": "strip 2024-11-21 span 1026-1270: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-three-axis-tile scored 0.9 on eaves 0.5, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2024-11-21 span 1026-1270"
+   }
+  },
+  {
+   "pandId": "0363100012104480",
+   "slug": "coppelstock-104480",
+   "address": "Coppelstockstraat 35",
+   "type": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#746046",
+     "evidence": "strip 2024-11-21 span 1270-1514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-three-axis-tile scored 0.81 on eaves 0, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2024-11-21 span 1270-1514"
+   }
+  },
+  {
+   "pandId": "0363100012122456",
+   "slug": "coppelstock-122456",
+   "address": "Coppelstockstraat 37",
+   "type": {
+    "type": "landlust-1933-three-axis-tile",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#736046",
+     "evidence": "strip 2024-11-21 span 1514-1758: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-three-axis-tile scored 0.9 on eaves 0.5, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2024-11-21 span 1514-1758"
+   }
+  },
+  {
+   "pandId": "0363100012100119",
+   "slug": "coppelstock-100119",
+   "address": "Coppelstockstraat 39",
+   "type": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#7a674e",
+     "evidence": "strip 2024-11-21 span 1758-2002: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-three-axis-tile scored 0.76 on eaves 0.5, storeys 1, roof 1, stucco 1, bag-bay 1, columns 0; strip 2024-11-21 span 1758-2002"
+   }
+  },
+  {
+   "pandId": "0363100012089839",
+   "slug": "coppelstock-089839",
+   "address": "Coppelstockstraat 41",
+   "type": {
+    "type": "landlust-1933-three-axis-tile",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#504130",
+     "evidence": "strip 2024-11-21 span 2002-2246: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1933-three-axis-tile scored 0.81 on eaves 0, storeys 1, roof 1, stucco 1, bag-bay 1, columns 1; strip 2024-11-21 span 2002-2246"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012149193",
+    "stripRow": 198,
+    "evidence": "auto-place: strip skyline cornice 10.88 m within 1 m of the landlust-1933-three-axis-tile line 9.9 m; 3DBAG/PDOK eaves 9.98 m"
+   },
+   {
+    "pand": "0363100012066272",
+    "stripRow": 200,
+    "evidence": "auto-place: strip skyline cornice 10.82 m within 1 m of the landlust-1933-three-axis-tile line 9.9 m; 3DBAG/PDOK eaves 9.95 m"
+   },
+   {
+    "pand": "0363100012104481",
+    "stripRow": 200,
+    "evidence": "auto-place: strip skyline cornice 10.82 m within 1 m of the landlust-1933-three-axis-tile line 9.9 m; 3DBAG/PDOK eaves 9.8 m"
+   },
+   {
+    "pand": "0363100012122456",
+    "stripRow": 197,
+    "evidence": "auto-place: strip skyline cornice 10.9 m within 1 m of the landlust-1933-three-axis-tile line 9.9 m; 3DBAG/PDOK eaves 9.85 m"
+   },
+   {
+    "pand": "0363100012100119",
+    "stripRow": 198,
+    "evidence": "auto-place: strip skyline cornice 10.88 m within 1 m of the landlust-1933-three-axis-tile line 9.9 m; 3DBAG/PDOK eaves 9.87 m"
+   }
+  ]
+ }
+}

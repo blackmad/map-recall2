@@ -1,0 +1,122 @@
+{
+ "street": "Willem de Zwijgerlaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:34:18.949Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122849",
+   "addresses": [
+    "Willem de Zwijgerlaan 205",
+    "Willem de Zwijgerlaan 207"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 205",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000871504"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094828",
+   "addresses": [
+    "Willem de Zwijgerlaan 209"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 209-H",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000871508"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113440",
+   "addresses": [
+    "Willem de Zwijgerlaan 211"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 211-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000871512"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071588",
+   "addresses": [
+    "Willem de Zwijgerlaan 213"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 213-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000871516"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012118131",
+   "addresses": [
+    "Willem de Zwijgerlaan 215"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 215-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000871520"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100401",
+   "addresses": [
+    "Willem de Zwijgerlaan 217"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 217-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000871526"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149837",
+   "addresses": [
+    "Willem de Zwijgerlaan 219"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpgracht 3",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000745873"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

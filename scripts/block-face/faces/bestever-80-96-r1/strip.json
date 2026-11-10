@@ -1,0 +1,90 @@
+{
+ "face": "bestever-80-96-r1",
+ "image": "staging/block-face/bestever-80-96-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 246,
+ "height": 722,
+ "groundNAP": 0.454,
+ "heightM": 18.04,
+ "frame": {
+  "midRD": [
+   119057.3944375,
+   487690.9835
+  ],
+  "uRD": [
+   0.18085664374140134,
+   -0.9835094683909231
+  ],
+  "nRD": [
+   -0.9835094683909231,
+   -0.18085664374140134
+  ]
+ },
+ "x0M": -3.08,
+ "x1M": 3.07,
+ "date": "2024-11-21",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012150285",
+   "x0M": -3.08,
+   "x1M": 3.07,
+   "px": [
+    0,
+    246
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00046",
+     "timestamp": "2024-11-21T11:38:44Z",
+     "distanceM": 9.4,
+     "obliquityDeg": 9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00045",
+     "timestamp": "2024-11-21T11:38:43Z",
+     "distanceM": 10,
+     "obliquityDeg": 20.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00047",
+     "timestamp": "2024-11-21T11:38:45Z",
+     "distanceM": 11.4,
+     "obliquityDeg": 34.6,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-01-04": 8,
+  "2022-06-27": 8,
+  "2016-06-22": 8,
+  "2019-04-16": 8,
+  "2025-09-26": 8,
+  "2018-11-21": 8,
+  "2019-12-10": 8,
+  "2017-04-20": 8,
+  "2018-06-14": 8,
+  "2024-11-21": 8,
+  "2021-03-24": 8,
+  "2020-05-14": 8,
+  "2019-01-07": 8,
+  "2020-08-17": 0,
+  "2022-12-12": 0,
+  "2022-06-24": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "bestever-80-96",
+  "px": [
+   525,
+   771
+  ]
+ }
+}

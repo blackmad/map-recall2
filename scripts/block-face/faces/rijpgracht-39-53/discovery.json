@@ -1,0 +1,675 @@
+{
+ "street": "De Rijpgracht",
+ "seed": "0363100012083007",
+ "members": [
+  "0363100012083007",
+  "0363100012062141",
+  "0363100012124337",
+  "0363100012067375",
+  "0363100012063203",
+  "0363100012133746",
+  "0363100012109667",
+  "0363100012089597"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012083007 (face continues: 105956)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061651",
+   "reason": "sightline to De Rijpgracht crosses 0363100012128652"
+  },
+  {
+   "pandId": "0363100012064868",
+   "reason": "frontage 43.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012066272",
+   "reason": "frontage 95.8 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012066992",
+   "reason": "frontage 62.0 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012068528",
+   "reason": "sightline to De Rijpgracht crosses 0363100012092326"
+  },
+  {
+   "pandId": "0363100012070549",
+   "reason": "frontage 96.2 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012071754",
+   "reason": "no frontage on De Rijpgracht: No footprint edge faces De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012071938",
+   "reason": "frontage 33.1 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012072687",
+   "reason": "sightline to De Rijpgracht crosses 0363100012068528"
+  },
+  {
+   "pandId": "0363100012073086",
+   "reason": "frontage 79.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012074955",
+   "reason": "frontage 43.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012077147",
+   "reason": "frontage 39.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012081763",
+   "reason": "frontage 44.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012087761",
+   "reason": "no frontage on De Rijpgracht: No footprint edge faces De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012087956",
+   "reason": "frontage 32.0 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012089525",
+   "reason": "frontage 58.6 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012089590",
+   "reason": "frontage 103.7 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012089839",
+   "reason": "frontage 95.2 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012090526",
+   "reason": "frontage 39.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012090556",
+   "reason": "frontage 87.2 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012092326",
+   "reason": "sightline to De Rijpgracht crosses 0363100012124235"
+  },
+  {
+   "pandId": "0363100012092821",
+   "reason": "no frontage on De Rijpgracht: No footprint edge faces De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012093157",
+   "reason": "frontage 103.6 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012093475",
+   "reason": "frontage 96.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012093972",
+   "reason": "sightline to De Rijpgracht crosses 0363100012105956"
+  },
+  {
+   "pandId": "0363100012096616",
+   "reason": "frontage 47.8 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012098396",
+   "reason": "frontage 48.0 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012098683",
+   "reason": "frontage 55.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012100119",
+   "reason": "frontage 95.1 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012100357",
+   "reason": "frontage 58.2 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012100954",
+   "reason": "frontage 43.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012103157",
+   "reason": "frontage 68.0 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012073024",
+   "reason": "frontage 33.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012095658",
+   "reason": "sightline to De Rijpgracht crosses 0363100012095737"
+  },
+  {
+   "pandId": "0363100012104220",
+   "reason": "frontage 79.7 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012104480",
+   "reason": "frontage 95.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012104481",
+   "reason": "frontage 95.6 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012107813",
+   "reason": "frontage 39.8 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012111802",
+   "reason": "frontage 109.7 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012112405",
+   "reason": "frontage 91.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012113082",
+   "reason": "no frontage on De Rijpgracht: No footprint edge faces De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012114256",
+   "reason": "frontage 78.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012115201",
+   "reason": "frontage 52.0 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012115570",
+   "reason": "frontage 43.0 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012116325",
+   "reason": "no frontage on De Rijpgracht: No footprint edge faces De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012117681",
+   "reason": "frontage 37.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012119108",
+   "reason": "sightline to De Rijpgracht crosses 0363100012113082"
+  },
+  {
+   "pandId": "0363100012121115",
+   "reason": "frontage 95.6 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012122456",
+   "reason": "frontage 95.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012123427",
+   "reason": "frontage 44.0 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012125415",
+   "reason": "no frontage on De Rijpgracht: No footprint edge faces De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012125953",
+   "reason": "frontage 79.1 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012128652",
+   "reason": "sightline to De Rijpgracht crosses 0363100012138672"
+  },
+  {
+   "pandId": "0363100012131416",
+   "reason": "frontage 61.7 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012132169",
+   "reason": "sightline to De Rijpgracht crosses 0363100012093972"
+  },
+  {
+   "pandId": "0363100012132905",
+   "reason": "frontage 63.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012133707",
+   "reason": "frontage 60.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012138498",
+   "reason": "frontage 58.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012138672",
+   "reason": "no frontage on De Rijpgracht: No footprint edge faces De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012140401",
+   "reason": "frontage 78.8 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012140619",
+   "reason": "frontage 44.2 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012141674",
+   "reason": "frontage 44.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012144291",
+   "reason": "frontage 49.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012145032",
+   "reason": "frontage 33.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012145712",
+   "reason": "frontage 97.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012145738",
+   "reason": "frontage 43.8 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012149193",
+   "reason": "frontage 96.0 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012149997",
+   "reason": "frontage 77.8 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012110487",
+   "reason": "sightline to De Rijpgracht crosses 0363100012108855"
+  },
+  {
+   "pandId": "0363100012152159",
+   "reason": "frontage 31.8 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012154577",
+   "reason": "sightline to De Rijpgracht crosses 0363100012113082"
+  },
+  {
+   "pandId": "0363100012183198",
+   "reason": "frontage 35.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012183701",
+   "reason": "sightline to De Rijpgracht crosses 0363100012062141"
+  },
+  {
+   "pandId": "0363100012187380",
+   "reason": "frontage 116.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012188265",
+   "reason": "frontage 108.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012188581",
+   "reason": "frontage 31.2 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012188883",
+   "reason": "frontage 98.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012189695",
+   "reason": "sightline to De Rijpgracht crosses 0363100012151258"
+  },
+  {
+   "pandId": "0363100012189994",
+   "reason": "sightline to De Rijpgracht crosses 0363100012063203"
+  },
+  {
+   "pandId": "0363100012190705",
+   "reason": "frontage 34.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012192801",
+   "reason": "sightline to De Rijpgracht crosses 0363100012151258"
+  },
+  {
+   "pandId": "0363100012192817",
+   "reason": "frontage 30.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012192884",
+   "reason": "sightline to De Rijpgracht crosses 0363100012151258"
+  },
+  {
+   "pandId": "0363100012195050",
+   "reason": "frontage 73.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012196139",
+   "reason": "frontage 70.8 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012196393",
+   "reason": "frontage 30.6 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012198215",
+   "reason": "sightline to De Rijpgracht crosses 0363100012151258"
+  },
+  {
+   "pandId": "0363100012198537",
+   "reason": "frontage 100.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012200538",
+   "reason": "frontage 33.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012201356",
+   "reason": "frontage 46.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012203673",
+   "reason": "no frontage on De Rijpgracht: No footprint edge faces De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012203892",
+   "reason": "sightline to De Rijpgracht crosses 0363100012071754"
+  },
+  {
+   "pandId": "0363100012204308",
+   "reason": "frontage 63.2 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012204836",
+   "reason": "frontage 96.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012205041",
+   "reason": "sightline to De Rijpgracht crosses 0363100012073277"
+  },
+  {
+   "pandId": "0363100012205735",
+   "reason": "frontage 96.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012205763",
+   "reason": "frontage 37.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012206147",
+   "reason": "sightline to De Rijpgracht crosses 0363100012065855"
+  },
+  {
+   "pandId": "0363100012206546",
+   "reason": "sightline to De Rijpgracht crosses 0363100012124337"
+  },
+  {
+   "pandId": "0363100012208561",
+   "reason": "sightline to De Rijpgracht crosses 0363100012109667"
+  },
+  {
+   "pandId": "0363100012209025",
+   "reason": "frontage 96.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012209202",
+   "reason": "sightline to De Rijpgracht crosses 0363100012131151"
+  },
+  {
+   "pandId": "0363100012210080",
+   "reason": "frontage 61.6 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012210395",
+   "reason": "sightline to De Rijpgracht crosses 0363100012133746"
+  },
+  {
+   "pandId": "0363100012210521",
+   "reason": "frontage 49.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012211823",
+   "reason": "frontage 49.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012212037",
+   "reason": "frontage 30.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012214707",
+   "reason": "frontage 31.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012214708",
+   "reason": "sightline to De Rijpgracht crosses 0363100012062141"
+  },
+  {
+   "pandId": "0363100012215944",
+   "reason": "frontage 97.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012216387",
+   "reason": "frontage 30.9 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012217251",
+   "reason": "sightline to De Rijpgracht crosses 0363100012109667"
+  },
+  {
+   "pandId": "0363100012218144",
+   "reason": "frontage 96.8 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012218181",
+   "reason": "frontage 31.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012219112",
+   "reason": "frontage 31.1 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012221494",
+   "reason": "frontage 35.5 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012221793",
+   "reason": "sightline to De Rijpgracht crosses 0363100012151258"
+  },
+  {
+   "pandId": "0363100012223759",
+   "reason": "frontage 39.1 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012225568",
+   "reason": "frontage 31.2 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012226035",
+   "reason": "frontage 96.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012226036",
+   "reason": "frontage 96.2 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012226688",
+   "reason": "frontage 114.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012229058",
+   "reason": "sightline to De Rijpgracht crosses 0363100012062141"
+  },
+  {
+   "pandId": "0363100012229823",
+   "reason": "frontage 58.3 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012230265",
+   "reason": "sightline to De Rijpgracht crosses 0363100012108028"
+  },
+  {
+   "pandId": "0363100012234108",
+   "reason": "frontage 30.4 m from De Rijpgracht"
+  },
+  {
+   "pandId": "0363100012234355",
+   "reason": "sightline to De Rijpgracht crosses 0363100012151258"
+  },
+  {
+   "pandId": "0363100012235159",
+   "reason": "sightline to De Rijpgracht crosses 0363100012096832"
+  },
+  {
+   "pandId": "0363100012072724",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012079479",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090839",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095737",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012061771",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012067932",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103314",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108855",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012128075",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139329",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146058",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112059",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119748",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012083007",
+   "alongM": 0,
+   "widthM": 8.21,
+   "eavesM": 12.89,
+   "roofMaxM": 17.04,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012062141",
+   "alongM": 7.21,
+   "widthM": 6.21,
+   "eavesM": 12.85,
+   "roofMaxM": 17.04,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012124337",
+   "alongM": 13.42,
+   "widthM": 6.2,
+   "eavesM": 12.85,
+   "roofMaxM": 17.05,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012067375",
+   "alongM": 19.63,
+   "widthM": 6.21,
+   "eavesM": 12.92,
+   "roofMaxM": 17.15,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012063203",
+   "alongM": 25.82,
+   "widthM": 6.18,
+   "eavesM": 12.87,
+   "roofMaxM": 17.08,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012133746",
+   "alongM": 32.01,
+   "widthM": 6.2,
+   "eavesM": 12.87,
+   "roofMaxM": 17.05,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012109667",
+   "alongM": 38.23,
+   "widthM": 6.22,
+   "eavesM": 12.89,
+   "roofMaxM": 17.05,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012089597",
+   "alongM": 44.43,
+   "widthM": 6.19,
+   "eavesM": 12.78,
+   "roofMaxM": 16.96,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  }
+ ]
+}

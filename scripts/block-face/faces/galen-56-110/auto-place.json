@@ -1,0 +1,970 @@
+{
+ "face": "galen-56-110",
+ "street": "Jan van Galenstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 16.78,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012100410",
+   "address": "Jan van Galenstraat 86",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 13.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3e3422",
+    "wallRaw": "#4f5048",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 795,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.36,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.57 m (1.63 m wide), 6.35 m (2.63 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.57,
+       "widthM": 1.63,
+       "centre": 0.42
+      },
+      {
+       "atM": 6.35,
+       "widthM": 2.63,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126499",
+   "address": "Jan van Galenstraat 84",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 14.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423425",
+    "wallRaw": "#48493f",
+    "skyline": {
+     "eavesM": 17.3,
+     "eavesRow": 103,
+     "confidence": 0.92,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.3,
+      "topWidthM": 0.5,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 1.57,
+     "bayCentre": 0.45,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.32,
+       "widthM": 0.9,
+       "centre": 0.46
+      },
+      {
+       "atM": 6.32,
+       "widthM": 2.8,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012077081",
+   "address": "Jan van Galenstraat 82",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 13.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#45321f",
+    "wallRaw": "#46453a",
+    "skyline": {
+     "eavesM": 18.52,
+     "eavesRow": 54,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.28,
+      "topWidthM": 0.23,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 0.85,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012121206",
+   "address": "Jan van Galenstraat 80",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 14.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#503a28",
+    "wallRaw": "#504e45",
+    "skyline": {
+     "eavesM": 17.95,
+     "eavesRow": 77,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.75,
+      "topWidthM": 1.48,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.35,
+       "widthM": 1,
+       "centre": 0.09
+      },
+      {
+       "atM": 9.5,
+       "widthM": 1.75,
+       "centre": 0.54
+      },
+      {
+       "atM": 7.55,
+       "widthM": 0.8,
+       "centre": 0.07
+      },
+      {
+       "atM": 6.27,
+       "widthM": 1.3,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012118984",
+   "address": "Jan van Galenstraat 78",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 13.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d3e2b",
+    "wallRaw": "#4e4a3e",
+    "skyline": {
+     "eavesM": 19.25,
+     "eavesRow": 25,
+     "confidence": 0.46,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.27,
+       "widthM": 2.55,
+       "centre": 0.37
+      },
+      {
+       "atM": 5.6,
+       "widthM": 0.8,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012124911",
+   "address": "Jan van Galenstraat 76",
+   "builtYear": 1933,
+   "widthM": 6.02,
+   "eavesM": 13.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423528",
+    "wallRaw": "#50534b",
+    "skyline": {
+     "eavesM": 15.4,
+     "eavesRow": 179,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.3,
+      "riseM": 3.28,
+      "topWidthM": 0.4,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.55,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.43 m (2.33 m wide), 6.27 m (2.6 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.43,
+       "widthM": 2.33,
+       "centre": 0.57
+      },
+      {
+       "atM": 6.27,
+       "widthM": 2.6,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012084175",
+   "address": "Jan van Galenstraat 74",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 13.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#342a19",
+    "wallRaw": "#50524a",
+    "skyline": {
+     "eavesM": 18.48,
+     "eavesRow": 56,
+     "confidence": 0.55,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 1.4,
+      "topWidthM": 0.55,
+      "centre": 0.7
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.35,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.3,
+       "widthM": 1.02,
+       "centre": 0.51
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.38,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012143344",
+   "address": "Jan van Galenstraat 72",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 14,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2e2513",
+    "wallRaw": "#4a4d42",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 180,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.13,
+       "widthM": 0.95,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110462",
+   "address": "Jan van Galenstraat 70",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 13.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#332717",
+    "wallRaw": "#575a53",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.95,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.22,
+       "widthM": 0.9,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012142659",
+   "address": "Jan van Galenstraat 68",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 13.86,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#2c2416",
+    "wallRaw": "#52544c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 795,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 1.1,
+     "bayCentre": 0.52,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.38,
+       "widthM": 1.05,
+       "centre": 0.13
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.73,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123697",
+   "address": "Jan van Galenstraat 66",
+   "builtYear": 1933,
+   "widthM": 6.08,
+   "eavesM": 14.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#444641",
+    "wallRaw": "#484942",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 795,
+     "confidence": 0.25,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 0.97,
+       "centre": 0.48
+      },
+      {
+       "atM": 5.2,
+       "widthM": 0.85,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012126811",
+   "address": "Jan van Galenstraat 62",
+   "builtYear": 1933,
+   "widthM": 12.22,
+   "eavesM": 15.02,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3f3d32",
+    "wallRaw": "#3f3d31",
+    "skyline": {
+     "eavesM": 17.48,
+     "eavesRow": 96,
+     "confidence": 0.62,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 2.4,
+      "topWidthM": 1.02,
+      "centre": 0.33
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.02,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.8,
+       "widthM": 0.8,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1933, type 1923-1926; stair block 12.22 m, type 5.7-7.6 m; 3DBAG eaves 15.02 m = 5 storeys of the type's 3.17 m, type 4)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1933, type 1923-1926",
+     "stair block 12.22 m, type 5.7-7.6 m",
+     "3DBAG eaves 15.02 m = 5 storeys of the type's 3.17 m, type 4"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 17.48 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012148775",
+   "address": "Jan van Galenstraat 60",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 15.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#474841",
+    "wallRaw": "#54564f",
+    "skyline": {
+     "eavesM": 16.57,
+     "eavesRow": 132,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.82,
+      "riseM": 2.1,
+      "topWidthM": 0.2,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.97,
+       "widthM": 1.75,
+       "centre": 0.63
+      },
+      {
+       "atM": 6.67,
+       "widthM": 0.9,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.145 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.17; glazing storey band off by 0.36 mean 0.43 vs photo 0.63; wall family unresolved (#34352e is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012148775",
+    "ncc": 0.145,
+    "nccRaw": 0.145,
+    "shiftM": [
+     -0.3,
+     0.3
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.17",
+     "glazing storey band off by 0.36 mean 0.43 vs photo 0.63",
+     "wall family unresolved (#34352e is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#34352e",
+     "model": "#606158",
+     "dL": 0.169
+    },
+    "glazing": {
+     "photo": 0.63,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.381,
+    "footOffsetM": 0.65
+   },
+   "challengers": {
+    "landlust-1933-erker-window~m": 0.145,
+    "landlust-1933-erker-window": 0.082,
+    "landlust-1937-erker-attic~m": 0.063,
+    "landlust-1937-erker-attic": 0.095,
+    "landlust-1938-pair-attic~m": 0.022,
+    "landlust-1938-pair-attic": 0.048,
+    "landlust-1938-ribbon-attic~m": 0.034,
+    "landlust-1938-ribbon-attic": 0.049
+   }
+  },
+  {
+   "pandId": "0363100012064565",
+   "address": "Jan van Galenstraat 58",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 14.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#20221a",
+    "wallRaw": "#413f33",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 795,
+     "confidence": 0.3,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.1,
+       "widthM": 0.8,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.13 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.19; glazing storey band off by 0.26 mean 0.39 vs photo 0.54; window shape none vs photo tall; wall family unresolved (#1e1f17 is dark and neutral, brick courses not resolved): lightness and hue judged only; columns none vs photo 6)",
+   "likeness": {
+    "pandId": "0363100012064565",
+    "ncc": 0.13,
+    "nccRaw": 0.13,
+    "shiftM": [
+     -0.35,
+     0.4
+    ],
+    "usable": 0.56,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.19",
+     "glazing storey band off by 0.26 mean 0.39 vs photo 0.54",
+     "window shape none vs photo tall",
+     "wall family unresolved (#1e1f17 is dark and neutral, brick courses not resolved): lightness and hue judged only",
+     "columns none vs photo 6"
+    ],
+    "wall": {
+     "photo": "#1e1f17",
+     "model": "#525742",
+     "dL": 0.194
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 6,
+     "model": null
+    },
+    "iou": 0.367,
+    "footOffsetM": 0.65
+   },
+   "challengers": {
+    "landlust-1933-erker-window": 0.13,
+    "landlust-1933-erker-window~m": null,
+    "landlust-1937-erker-attic": 0.055,
+    "landlust-1937-erker-attic~m": null,
+    "landlust-1938-pair-attic": null,
+    "landlust-1938-pair-attic~m": null,
+    "landlust-1938-ribbon-attic": null,
+    "landlust-1938-ribbon-attic~m": null
+   }
+  },
+  {
+   "pandId": "0363100012099109",
+   "address": "Jan van Galenstraat 56",
+   "builtYear": 1933,
+   "widthM": 6.11,
+   "eavesM": 14.55,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3d3f38",
+    "wallRaw": "#424136",
+    "skyline": {
+     "eavesM": 18.02,
+     "eavesRow": 74,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 1.85,
+      "topWidthM": 0.1,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.084 < 0.15 (photo vs model body; likeness.ts FAIL: wall dL +0.23; glazing storey band off by 0.38 mean 0.43 vs photo 0.57; wall family unresolved (#191c15 is dark and neutral, brick courses not resolved): lightness and hue judged only)",
+   "likeness": {
+    "pandId": "0363100012099109",
+    "ncc": 0.084,
+    "nccRaw": 0.084,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.23",
+     "glazing storey band off by 0.38 mean 0.43 vs photo 0.57",
+     "wall family unresolved (#191c15 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#191c15",
+     "model": "#56594f",
+     "dL": 0.233
+    },
+    "glazing": {
+     "photo": 0.57,
+     "model": 0.43
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.36,
+    "footOffsetM": 0.65
+   },
+   "challengers": {
+    "landlust-1933-erker-window": 0.084,
+    "landlust-1933-erker-window~m": 0.094,
+    "landlust-1937-erker-attic": 0.014,
+    "landlust-1937-erker-attic~m": 0.044,
+    "landlust-1938-pair-attic": -0.008,
+    "landlust-1938-pair-attic~m": -0.028,
+    "landlust-1938-ribbon-attic": 0.001,
+    "landlust-1938-ribbon-attic~m": -0.023
+   }
+  }
+ ]
+}

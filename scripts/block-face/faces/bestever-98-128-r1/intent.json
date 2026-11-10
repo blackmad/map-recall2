@@ -1,0 +1,98 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bestever-98-128-r1",
+ "street": "Bestevâerstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/bestever-98-128-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/bestever-98-128/auto-place.json"
+ },
+ "types": [
+  "landlust-1924-bestevaer-half-block",
+  "landlust-1924-bestevaer-stair-block"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012098396",
+   "slug": "bestever-098396",
+   "address": "Bestevâerstraat 118",
+   "type": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7b5f40",
+     "evidence": "strip 2024-11-21 span 1351-1606: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1924-bestevaer-half-block scored 1 on eaves 1, storeys 1, stucco 1; strip 2024-11-21 span 1351-1606"
+   }
+  },
+  {
+   "pandId": "0363100012115201",
+   "slug": "bestever-115201",
+   "address": "Bestevâerstraat 114",
+   "type": {
+    "type": "landlust-1924-bestevaer-stair-block",
+    "measuredPalette": {
+     "brick": "#7b6340",
+     "evidence": "strip 2024-11-21 span 1606-2107: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1924-bestevaer-stair-block scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2024-11-21 span 1606-2107"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012098396",
+    "stripRow": 232,
+    "evidence": "auto-place: strip skyline cornice 13.4 m within 1 m of the landlust-1924-bestevaer-half-block line 13.2 m; 3DBAG/PDOK eaves 12.78 m"
+   },
+   {
+    "pand": "0363100012115201",
+    "stripRow": 233,
+    "evidence": "auto-place: strip skyline cornice 13.38 m within 1 m of the landlust-1924-bestevaer-stair-block line 13.2 m; 3DBAG/PDOK eaves 12.82 m"
+   }
+  ]
+ }
+}

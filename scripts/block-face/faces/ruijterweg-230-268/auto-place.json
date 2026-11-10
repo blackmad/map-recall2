@@ -1,0 +1,876 @@
+{
+ "face": "ruijterweg-230-268",
+ "street": "Admiraal De Ruijterweg",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 3.19,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012064224",
+   "address": "Admiraal De Ruijterweg 250",
+   "builtYear": 1923,
+   "widthM": 6.27,
+   "eavesM": 13.33,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e7255",
+    "wallRaw": "#62533d",
+    "skyline": {
+     "eavesM": 15.93,
+     "eavesRow": 112,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.18,
+       "widthM": 5.53,
+       "centre": 0.52
+      },
+      {
+       "atM": 7.17,
+       "widthM": 2.77,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1924-bestevaer-half-block scores 0.6 < 0.7 (strip cornice 15.93 m vs the type's 13.2 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.93 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.012 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012079424",
+   "address": "Admiraal De Ruijterweg 248A",
+   "builtYear": 1923,
+   "widthM": 12.5,
+   "eavesM": 13.17,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.55,
+    "toM": 10.97,
+    "depthM": 0.28,
+    "centre": 0.461
+   },
+   "strip": {
+    "wall": "#7f6447",
+    "wallRaw": "#5d5039",
+    "skyline": {
+     "eavesM": 16.48,
+     "eavesRow": 90,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 2.17,
+      "topWidthM": 0.47,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.32 m (6.53 m wide), 7.25 m (4.8 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.32,
+       "widthM": 6.53,
+       "centre": 0.68
+      },
+      {
+       "atM": 7.25,
+       "widthM": 4.8,
+       "centre": 0.72
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 12.5 m, type 5.7-7.6 m; strip shows balconies (balcony slabs stacked at 10.32 m (6.53 m wide), 7.25 m (4.8 m wide)))",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 12.5 m, type 5.7-7.6 m",
+     "strip shows balconies (balcony slabs stacked at 10.32 m (6.53 m wide), 7.25 m (4.8 m wide))"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.48 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.014 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012140983",
+   "address": "Admiraal De Ruijterweg 246A",
+   "builtYear": 1926,
+   "widthM": 9.39,
+   "eavesM": 13.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725844",
+    "wallRaw": "#504637",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 138,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.55,
+      "riseM": 1.25,
+      "topWidthM": 1.18,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.72,
+       "widthM": 0.93,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 9.39 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 9.39 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.28 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.015 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146167",
+   "address": "Admiraal De Ruijterweg 244",
+   "builtYear": 1923,
+   "widthM": 9.39,
+   "eavesM": 13.45,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786252",
+    "wallRaw": "#574c3d",
+    "skyline": {
+     "eavesM": 15.78,
+     "eavesRow": 118,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.045,
+    "structure": {
+     "bayWidthM": 1.7,
+     "bayCentre": 0.68,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 9.39 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 9.39 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.78 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.036 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012104827",
+   "address": "Admiraal De Ruijterweg 242",
+   "builtYear": 1923,
+   "widthM": 9.4,
+   "eavesM": 13.55,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#514536",
+    "wallRaw": "#544934",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 749,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.72,
+       "widthM": 0.85,
+       "centre": 0.05
+      },
+      {
+       "atM": 5.67,
+       "widthM": 0.93,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 9.4 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 9.4 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 13.2 m; 3DBAG 13.55 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.004 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012122387",
+   "address": "Admiraal De Ruijterweg 240",
+   "builtYear": 1923,
+   "widthM": 9.4,
+   "eavesM": 13.29,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695546",
+    "wallRaw": "#5b4f40",
+    "skyline": {
+     "eavesM": 13.3,
+     "eavesRow": 217,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.23,
+      "riseM": 1.82,
+      "topWidthM": 0.35,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.099,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 9.4 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 9.4 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.3 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.077 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012118854",
+   "address": "Admiraal De Ruijterweg 238",
+   "builtYear": 1923,
+   "widthM": 9.86,
+   "eavesM": 13.32,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715a4a",
+    "wallRaw": "#5d5143",
+    "skyline": {
+     "eavesM": 15.68,
+     "eavesRow": 122,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.052,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.15,
+       "widthM": 1.35,
+       "centre": 0.88
+      },
+      {
+       "atM": 7.77,
+       "widthM": 0.97,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 9.86 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 9.86 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.68 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.041 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012072332",
+   "address": "Admiraal De Ruijterweg 236",
+   "builtYear": 1923,
+   "widthM": 9.86,
+   "eavesM": 13.38,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#574a37",
+    "wallRaw": "#554b39",
+    "skyline": {
+     "eavesM": 14.32,
+     "eavesRow": 176,
+     "confidence": 0.53,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 4.4,
+      "topWidthM": 0.57,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.031,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.13,
+       "widthM": 1.07,
+       "centre": 0.08
+      },
+      {
+       "atM": 7.75,
+       "widthM": 1.15,
+       "centre": 0.06
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 71 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012136590",
+   "address": "Admiraal De Ruijterweg 234",
+   "builtYear": 1923,
+   "widthM": 9.87,
+   "eavesM": 13.37,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#796756",
+    "wallRaw": "#5a5041",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 120,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 3,
+      "topWidthM": 0.28,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 9.87 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 9.87 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.72 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012124138",
+   "address": "Admiraal De Ruijterweg 232",
+   "builtYear": 1923,
+   "widthM": 9.88,
+   "eavesM": 13.32,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735f4e",
+    "wallRaw": "#564c3c",
+    "skyline": {
+     "eavesM": 14.35,
+     "eavesRow": 175,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 3.97,
+      "topWidthM": 0.17,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.053,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 9.88 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 9.88 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 14.35 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.043 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012104360",
+   "address": "Admiraal De Ruijterweg 230",
+   "builtYear": 1923,
+   "widthM": 9.84,
+   "eavesM": 13.24,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5a49",
+    "wallRaw": "#4f4639",
+    "skyline": {
+     "eavesM": 13.53,
+     "eavesRow": 208,
+     "confidence": 0.9,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 2.83,
+      "topWidthM": 0.75,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.039,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 9.84 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 9.84 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.53 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.03 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,368 @@
+{
+ "face": "zwijgerlaan-183-195",
+ "street": "Willem de Zwijgerlaan",
+ "library": "landlust",
+ "stripDate": "2024-12-17",
+ "seconds": 3.27,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012096558",
+   "address": "Willem de Zwijgerlaan 183",
+   "builtYear": 1938,
+   "widthM": 10.03,
+   "eavesM": 14.66,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5339",
+    "wallRaw": "#503e2c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 713,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1938-pair-attic: frontage 10.03 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1938-pair-attic",
+    "score": 0,
+    "veto": [
+     "frontage 10.03 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 14.95 m; 3DBAG 14.66 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.59 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153896",
+   "address": "Willem de Zwijgerlaan 185",
+   "builtYear": 1939,
+   "widthM": 6.11,
+   "eavesM": 15.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5138",
+    "wallRaw": "#52402d",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 102,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 2.15,
+      "topWidthM": 0.47,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {
+    "landlust-1938-pair-attic": -0.019
+   }
+  },
+  {
+   "pandId": "0363100012110829",
+   "address": "Willem de Zwijgerlaan 187",
+   "builtYear": 1939,
+   "widthM": 6.1,
+   "eavesM": 15.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f3826",
+    "wallRaw": "#503d2b",
+    "skyline": {
+     "eavesM": 17.13,
+     "eavesRow": 28,
+     "confidence": 0.41,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 0.7,
+      "topWidthM": 0.68,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {
+    "landlust-1938-pair-attic~m": 0.079
+   }
+  },
+  {
+   "pandId": "0363100012062712",
+   "address": "Willem de Zwijgerlaan 189",
+   "builtYear": 1939,
+   "widthM": 6.1,
+   "eavesM": 15.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#513827",
+    "wallRaw": "#54412e",
+    "skyline": {
+     "eavesM": 15.57,
+     "eavesRow": 90,
+     "confidence": 0.46,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {
+    "landlust-1938-pair-attic": 0.03
+   }
+  },
+  {
+   "pandId": "0363100012106765",
+   "address": "Willem de Zwijgerlaan 191",
+   "builtYear": 1938,
+   "widthM": 6.1,
+   "eavesM": 15.78,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#513828",
+    "wallRaw": "#55412f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 713,
+     "confidence": 0.29,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {
+    "landlust-1938-pair-attic~m": 0.057
+   }
+  },
+  {
+   "pandId": "0363100012103635",
+   "address": "Willem de Zwijgerlaan 193",
+   "builtYear": 1938,
+   "widthM": 6.11,
+   "eavesM": 15.71,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4d3727",
+    "wallRaw": "#513f2c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 713,
+     "confidence": 0.29,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.016,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 60 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012068152",
+   "address": "Willem de Zwijgerlaan 195",
+   "builtYear": 1938,
+   "widthM": 6.11,
+   "eavesM": 14.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#77583e",
+    "wallRaw": "#594432",
+    "skyline": {
+     "eavesM": 16.43,
+     "eavesRow": 56,
+     "confidence": 0.39,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 1.25,
+      "topWidthM": 0.57,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.03,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,219 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "landlust-1934-slot-block",
+ "district": "landlust",
+ "description": "Gerard Callenburgstraat 2-32, Jan den Haenstraat 3-31 and Joris van Andringastraat 1-32 (BAG 1934): 12.8 m red-brick blocks of two mirrored houses, three storeys under a flat roofline with large zinc dormers: on each upper storey a pair of windows (1.2 and 1.15 m) at either end and two tall slot lights (0.5 m, 3.9-9.0 m) of the stair pair in the middle; ground: two small windows at each end and four house doors in pairs under one flat canopy at 2.5 m",
+ "fit": {
+  "widthM": [
+   11.8,
+   13.6
+  ],
+  "storeys": [
+   3
+  ]
+ },
+ "match": {
+  "years": [
+   1933,
+   1935
+  ],
+  "eavesM": [
+   9.5,
+   10.8
+  ],
+  "storeys3dbag": [
+   3,
+   4
+  ],
+  "stucco": false,
+  "balconies": true,
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    11.8,
+    13.6
+   ],
+   "storeys": [
+    3
+   ],
+   "axisPitchM": [
+    0.9,
+    6.5
+   ]
+  },
+  "lonePand": {
+   "minWidthM": 5
+  },
+  "mirrorForDoor": "right",
+  "crownFromType": "parapet",
+  "frontEavesM": 10.1,
+  "measuredWall": true,
+  "note": "BAG 1933-34, 3DBAG eaves 10.0-10.3 m, ridge 12.7-13.0 m (the dormers). The 4.5-6.5 m end pands, the 17-19 m pands and Callenburg 39-63 (eaves 13.1 m, five storeys) are other fronts",
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ]
+ },
+ "body": {
+  "storeys": 3,
+  "bays": [
+   6,
+   6,
+   6
+  ],
+  "axisGrid": 13,
+  "storeyAxes": {
+   "0": [
+    1,
+    3,
+    4,
+    8,
+    9,
+    11
+   ],
+   "1": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11
+   ],
+   "2": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11
+   ]
+  },
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "bayWidths": [
+   0.5,
+   1.2,
+   0.35,
+   1.15,
+   2.2,
+   0.5,
+   0.8,
+   0.55,
+   2.25,
+   1.1,
+   0.4,
+   1.1,
+   0.7
+  ],
+  "bayFill": [
+   0.5,
+   0.98,
+   0.5,
+   0.98,
+   0.5,
+   0.95,
+   0.5,
+   0.95,
+   0.5,
+   0.98,
+   0.5,
+   0.98,
+   0.5
+  ],
+  "storeyHeights": [
+   3.2,
+   3.2,
+   3.7
+  ],
+  "windowHeights": [
+   0.52,
+   0.53,
+   0.47
+  ],
+  "headLines": [
+   0.83,
+   0.75,
+   0.59
+  ],
+  "windowSurround": "sill",
+  "surroundStoreys": [
+   1,
+   2
+  ],
+  "axisWindows": {
+   "0": "casement-toplight"
+  }
+ },
+ "crowns": {
+  "parapet": {
+   "gable": "flat",
+   "cornice": "none",
+   "parapet": {
+    "courses": 4,
+    "coping": true
+   },
+   "note": "Callenburgstraat 2-32 strip: a dark thin eaves band at 10.0-10.15 m; the zinc dormers (2.2 m wide, 10.1-12.2 m, two per block) are not drawn"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 2,
+   "note": "house doors in pairs under one flat canopy at 2.5 m (3.8-8.8 m of the block), flat doors 0-2.4 m; ground windows 1.0-2.66 m at each end; mirrored when the strip reads the door on the right",
+   "doorReveal": {
+    "form": "portiek",
+    "deep": 0.5,
+    "steps": 0
+   }
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#7a4a35",
+   "frame": "#6b6454",
+   "door": "#1e1b12",
+   "stone": "#6b6454",
+   "cornice": "#3a3a32"
+  }
+ },
+ "roof": {
+  "material": "zinc",
+  "source": "front",
+  "form": "flat",
+  "evidence": "Callenburgstraat 2-32 strip: flat eaves band with two zinc dormers per block, 3DBAG ridge 12.8 m"
+ },
+ "rhythm": {
+  "bays": "pair, slot, slot, pair per block",
+  "identicalBays": "mirror about the block centre",
+  "windowsPerStorey": "ground: 2 windows + doors + 2 windows | 1-2: pair, two slots, pair",
+  "symmetry": "mirror about the block centre",
+  "groundFloor": "four doors in two pairs under a canopy",
+  "signage": "none",
+  "roofline": "flat with two large dormers",
+  "photoRows": [
+   6,
+   6
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "callenburg-2-32",
+   "pands": [
+    "28/30",
+    "24/26"
+   ],
+   "citation": "strip.jpg 2023-24 40 px/m gridded 1 m (grid crop 0-1000 px): block 12.8 m; windows 0.5-1.7, 2.05-3.2, 9.5-10.6, 11.0-12.1 m; slots 5.4-5.9 and 6.7-7.25 m, 3.9-9.0 m high; sills/heads 3.9-5.6 and 6.85-8.6 m; ground windows 1.0-2.66 m; canopy 2.5 m; eaves 10.1 m; dormers 10.1-12.2 m; wall raw #704226"
+  }
+ ],
+ "schemaLimits": [
+  "the tall slot lights run through both upper storeys; drawn as one narrow window per storey",
+  "four doors in two pairs under one canopy: one door and a window are drawn",
+  "the zinc dormers (10.1-12.2 m) are not drawn"
+ ],
+ "notes": [
+  "Palette: type default red-brown; placed pands take their trim-normalised strip wall."
+ ]
+}

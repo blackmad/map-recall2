@@ -1,0 +1,25 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:15:04.360Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012073127",
+   "addresses": [
+    "Bestevâerstraat 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "De Rijpstraat 132",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000618698"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

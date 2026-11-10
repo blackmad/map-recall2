@@ -1,0 +1,748 @@
+{
+ "face": "haring-13-27",
+ "street": "Jan Haringstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 7.03,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "haring-13-27-r1",
+   "pands": [
+    "0363100012066992",
+    "0363100012098683",
+    "0363100012144291",
+    "0363100012100954"
+   ],
+   "passed": false,
+   "triangles": 3798
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012066992",
+   "address": "Jan Haringstraat 13",
+   "builtYear": 1939,
+   "widthM": 6.01,
+   "eavesM": 9.7,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#70593d",
+    "wallRaw": "#5e4d38",
+    "skyline": {
+     "eavesM": 11.8,
+     "eavesRow": 311,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.082,
+    "structure": {
+     "bayWidthM": 0.42,
+     "bayCentre": 0.47,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.81,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#70593d",
+     "evidence": "strip 2024-11-21 span 0-241: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012066992",
+    "ncc": 0.673,
+    "nccRaw": 0.673,
+    "shiftM": [
+     0.2,
+     0.4
+    ],
+    "usable": 0.56,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 27 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#70583c",
+     "model": "#8c704c",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.38,
+    "footOffsetM": 0.78
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile~m": 0.673,
+    "landlust-1933-three-axis-tile": 0.673
+   }
+  },
+  {
+   "pandId": "0363100012098683",
+   "address": "Jan Haringstraat 15",
+   "builtYear": 1939,
+   "widthM": 6.04,
+   "eavesM": 9.79,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#785e41",
+    "wallRaw": "#534431",
+    "skyline": {
+     "eavesM": 9.9,
+     "eavesRow": 387,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.25,
+      "riseM": 5.7,
+      "topWidthM": 0.23,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 1,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#785e41",
+     "evidence": "strip 2024-11-21 span 241-483: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012098683",
+    "ncc": 0.505,
+    "nccRaw": 0.505,
+    "shiftM": [
+     -0.15,
+     0.4
+    ],
+    "usable": 0.79,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "columns 3 vs photo 2"
+    ],
+    "wall": {
+     "photo": "#755b3e",
+     "model": "#947450",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": 2,
+     "model": 3
+    },
+    "iou": 0.47,
+    "footOffsetM": 0.78
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile": 0.505,
+    "landlust-1933-three-axis-tile~m": 0.505
+   }
+  },
+  {
+   "pandId": "0363100012144291",
+   "address": "Jan Haringstraat 15A",
+   "builtYear": 1939,
+   "widthM": 6.01,
+   "eavesM": 9.72,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79583f",
+    "wallRaw": "#574a36",
+    "skyline": {
+     "eavesM": 11.07,
+     "eavesRow": 340,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.1,
+      "riseM": 4.6,
+      "topWidthM": 0.1,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.044,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.78,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#79583f",
+     "evidence": "strip 2024-11-21 span 482-723: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012144291",
+    "ncc": 0.34,
+    "nccRaw": 0.34,
+    "shiftM": [
+     0.3,
+     0.4
+    ],
+    "usable": 0.72,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.36 vs photo 0.10"
+    ],
+    "wall": {
+     "photo": "#725d41",
+     "model": "#956c4e",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.1,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.211,
+    "footOffsetM": 0.78
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile~m": 0.34,
+    "landlust-1933-three-axis-tile": 0.34
+   }
+  },
+  {
+   "pandId": "0363100012100954",
+   "address": "Jan Haringstraat 17",
+   "builtYear": 1939,
+   "widthM": 6.01,
+   "eavesM": 9.63,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#745a3d",
+    "wallRaw": "#544431",
+    "skyline": {
+     "eavesM": 11,
+     "eavesRow": 343,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.5,
+       "widthM": 0.97,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "placed",
+   "type": "landlust-1933-three-axis-tile",
+   "score": 0.78,
+   "placement": {
+    "type": "landlust-1933-three-axis-tile",
+    "measuredPalette": {
+     "brick": "#745a3d",
+     "evidence": "strip 2024-11-21 span 723-964: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012100954",
+    "ncc": 0.443,
+    "nccRaw": 0.443,
+    "shiftM": [
+     -0.15,
+     0.4
+    ],
+    "usable": 0.64,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.36 mean 0.37 vs photo 0.04"
+    ],
+    "wall": {
+     "photo": "#745c3f",
+     "model": "#91704c",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.04,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.109,
+    "footOffsetM": 0.78
+   },
+   "challengers": {
+    "landlust-1933-three-axis-tile": 0.443,
+    "landlust-1933-three-axis-tile~m": 0.443
+   }
+  },
+  {
+   "pandId": "0363100012117681",
+   "address": "Jan Haringstraat 17A",
+   "builtYear": 1939,
+   "widthM": 6.01,
+   "eavesM": 9.7,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#68513a",
+    "wallRaw": "#554633",
+    "skyline": {
+     "eavesM": 11.03,
+     "eavesRow": 342,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.111,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.5,
+       "widthM": 0.97,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1933-three-axis-tile scores 0.67 < 0.7 (strip cornice 11.03 m vs the type's 9.9 m; strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "landlust-1933-three-axis-tile",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.03 m vs the type's 9.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.44 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.073 (brick)"
+     },
+     {
+      "key": "bag-bay",
+      "weight": 3,
+      "score": 1,
+      "note": "BAG outline straight"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152159",
+   "address": "Jan Haringstraat 19",
+   "builtYear": 1934,
+   "widthM": 6.28,
+   "eavesM": 9.73,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5c41",
+    "wallRaw": "#504736",
+    "skyline": {
+     "eavesM": 11.2,
+     "eavesRow": 335,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.8,
+      "topWidthM": 0.72,
+      "centre": 0.21
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.03,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012132169",
+   "address": "Jan Haringstraat 21",
+   "builtYear": 1934,
+   "widthM": 6.14,
+   "eavesM": 9.71,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4c34",
+    "wallRaw": "#504835",
+    "skyline": {
+     "eavesM": 11.22,
+     "eavesRow": 334,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1933-three-axis-tile scores 0.67 < 0.7 (strip cornice 11.22 m vs the type's 9.9 m; strip columns 6 vs 3 bays)",
+   "best": {
+    "type": "landlust-1933-three-axis-tile",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 11.22 m vs the type's 9.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 3/4"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.42 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "bag-bay",
+      "weight": 3,
+      "score": 1,
+      "note": "BAG outline straight"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012093972",
+   "address": "Jan Haringstraat 23",
+   "builtYear": 1934,
+   "widthM": 6.19,
+   "eavesM": 9.75,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5d41",
+    "wallRaw": "#56503c",
+    "skyline": {
+     "eavesM": 11.28,
+     "eavesRow": 332,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 2.1,
+      "topWidthM": 0.3,
+      "centre": 0.92
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.029,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012105956",
+   "address": "Jan Haringstraat 25",
+   "builtYear": 1934,
+   "widthM": 12.32,
+   "eavesM": 12.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5c42",
+    "wallRaw": "#574c38",
+    "skyline": {
+     "eavesM": 13.45,
+     "eavesRow": 245,
+     "confidence": 1,
+     "crown": {
+      "widthM": 5.58,
+      "riseM": 2.55,
+      "topWidthM": 1.13,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.3,
+       "widthM": 0.9,
+       "centre": 0.96
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1933-three-axis-tile: frontage 12.32 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1933-three-axis-tile",
+    "score": 0,
+    "veto": [
+     "frontage 12.32 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.45 m vs the type's 9.9 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 5 vs 3/4"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.93 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.079 (brick)"
+     },
+     {
+      "key": "bag-bay",
+      "weight": 3,
+      "score": 1,
+      "note": "BAG outline straight"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

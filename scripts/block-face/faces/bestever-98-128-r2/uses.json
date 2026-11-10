@@ -1,0 +1,87 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012125415",
+   "addresses": [
+    "Bestevâerstraat 106",
+    "Bestevâerstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000582681"
+    },
+    {
+     "address": "Bestevâerstraat 108-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000582689"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092821",
+   "addresses": [
+    "Bestevâerstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 104-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000582673"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012087761",
+   "addresses": [
+    "Bestevâerstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 102-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000582665"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116325",
+   "addresses": [
+    "Bestevâerstraat 98",
+    "Bestevâerstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 123,
+     "bagId": "0363010000608767"
+    },
+    {
+     "address": "Bestevâerstraat 100-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582657"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,1084 @@
+{
+ "face": "treslong-30-62",
+ "street": "Bloys van Treslongstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 15.35,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "treslong-30-62-r1",
+   "pands": [
+    "0363100012128490",
+    "0363100012152115",
+    "0363100012096543"
+   ],
+   "passed": false,
+   "triangles": 3610
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012128490",
+   "address": "Bloys van Treslongstraat 62",
+   "builtYear": 1924,
+   "widthM": 7.13,
+   "eavesM": 12.6,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78644c",
+    "wallRaw": "#6d5c45",
+    "skyline": {
+     "eavesM": 13.47,
+     "eavesRow": 156,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.19,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.77,
+       "widthM": 0.88,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "placed",
+   "type": "landlust-1924-bestevaer-half-block",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-stair-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "measuredPalette": {
+     "brick": "#78644c",
+     "evidence": "strip 2024-11-21 span 0-285: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012128490",
+    "ncc": 0.463,
+    "nccRaw": 0.463,
+    "shiftM": [
+     0,
+     0
+    ],
+    "usable": 0.8,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23",
+     "columns 2 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#79654e",
+     "model": "#91795c",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.17,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": 3,
+     "model": 2
+    },
+    "iou": 0.377
+   },
+   "challengers": {
+    "landlust-1924-bestevaer-half-block": 0.463,
+    "landlust-1924-bestevaer-half-block~m": 0.236,
+    "landlust-1924-bestevaer-stair-block": 0.142,
+    "landlust-1924-bestevaer-stair-block~m": 0.185
+   }
+  },
+  {
+   "pandId": "0363100012152115",
+   "address": "Bloys van Treslongstraat 60",
+   "builtYear": 1924,
+   "widthM": 6.3,
+   "eavesM": 12.81,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#866f50",
+    "wallRaw": "#6e5d45",
+    "skyline": {
+     "eavesM": 13.47,
+     "eavesRow": 156,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.15,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.7,
+       "widthM": 1.88,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "landlust-1924-bestevaer-half-block",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-stair-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#866f50",
+     "evidence": "strip 2024-11-21 span 288-540: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012152115",
+    "ncc": 0.319,
+    "nccRaw": 0.319,
+    "shiftM": [
+     -0.2,
+     -0.05
+    ],
+    "usable": 0.77,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#7b664a",
+     "model": "#9f845f",
+     "dL": 0.112
+    },
+    "glazing": {
+     "photo": 0.2,
+     "model": 0.24
+    },
+    "columns": {
+     "photo": 2,
+     "model": 2
+    },
+    "iou": 0.297
+   },
+   "challengers": {
+    "landlust-1924-bestevaer-half-block~m": 0.319,
+    "landlust-1924-bestevaer-half-block": 0.405
+   }
+  },
+  {
+   "pandId": "0363100012096543",
+   "address": "Bloys van Treslongstraat 56",
+   "builtYear": 1924,
+   "widthM": 12.6,
+   "eavesM": 12.69,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#775e47",
+    "wallRaw": "#6c5b44",
+    "skyline": {
+     "eavesM": 13.3,
+     "eavesRow": 163,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.173,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "landlust-1924-bestevaer-stair-block",
+   "score": 0.86,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1924-bestevaer-stair-block",
+    "measuredPalette": {
+     "brick": "#775e47",
+     "evidence": "strip 2024-11-21 span 540-1044: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown parapet (type default)",
+    "lone pand: a stair block on its own: landlust-1924-bestevaer-stair-block opts in to one-house faces from 5 m (frontage 12.6 m)"
+   ],
+   "likeness": {
+    "pandId": "0363100012096543",
+    "ncc": 0.312,
+    "nccRaw": 0.312,
+    "shiftM": [
+     0.3,
+     -0.1
+    ],
+    "usable": 0.8,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "window shape square vs photo tall"
+    ],
+    "wall": {
+     "photo": "#785e48",
+     "model": "#917357",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.25
+    },
+    "columns": {
+     "photo": 5,
+     "model": 4
+    },
+    "iou": 0.292
+   },
+   "challengers": {
+    "landlust-1924-bestevaer-stair-block": 0.192,
+    "landlust-1924-bestevaer-stair-block~m": 0.175
+   }
+  },
+  {
+   "pandId": "0363100012110115",
+   "address": "Bloys van Treslongstraat 52",
+   "builtYear": 1937,
+   "widthM": 6.23,
+   "eavesM": 15.36,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f3d2d",
+    "wallRaw": "#5d4636",
+    "skyline": {
+     "eavesM": 16.43,
+     "eavesRow": 38,
+     "confidence": 0.99,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.111,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1937-erker-attic scores 0.61 < 0.7 (strip cornice 16.43 m vs the type's 15 m; strip columns 2 vs 3 bays)",
+   "best": {
+    "type": "landlust-1937-erker-attic",
+    "score": 0.61,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 16.43 m vs the type's 15 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.02 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012084608",
+   "address": "Bloys van Treslongstraat 50",
+   "builtYear": 1937,
+   "widthM": 3.41,
+   "eavesM": 14.95,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a4a2f",
+    "wallRaw": "#543f2e",
+    "skyline": {
+     "eavesM": 14.65,
+     "eavesRow": 109,
+     "confidence": 0.56,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 1.45,
+     "bayCentre": 0.77,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.88,
+       "widthM": 0.97,
+       "centre": 0.83
+      },
+      {
+       "atM": 5.88,
+       "widthM": 1.23,
+       "centre": 0.61
+      },
+      {
+       "atM": 5.13,
+       "widthM": 0.95,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 60 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154644",
+   "address": "Bloys van Treslongstraat 48",
+   "builtYear": 1937,
+   "widthM": 6.11,
+   "eavesM": 15.11,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.24,
+    "toM": 5.22,
+    "depthM": 0.66,
+    "centre": 0.693
+   },
+   "strip": {
+    "wall": "#6e4e35",
+    "wallRaw": "#564637",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 76,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.17 (light 0.39): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.17,
+       "light": 0.39
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.36,
+       "light": 0.01
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.63,
+       "widthM": 1.38,
+       "centre": 0.63
+      },
+      {
+       "atM": 12.25,
+       "widthM": 0.85,
+       "centre": 0.66
+      },
+      {
+       "atM": 6.55,
+       "widthM": 1.5,
+       "centre": 0.83
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.27,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012107114",
+   "address": "Bloys van Treslongstraat 46",
+   "builtYear": 1937,
+   "widthM": 6.11,
+   "eavesM": 15.16,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.89,
+    "toM": 2.87,
+    "depthM": 0.66,
+    "centre": 0.308
+   },
+   "strip": {
+    "wall": "#614331",
+    "wallRaw": "#5a4c3e",
+    "skyline": {
+     "eavesM": 15.88,
+     "eavesRow": 60,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.25 m (2.23 m wide), 6.1 m (2.45 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.25,
+       "widthM": 2.23,
+       "centre": 0.25
+      },
+      {
+       "atM": 8.95,
+       "widthM": 0.88,
+       "centre": 0.9
+      },
+      {
+       "atM": 6.1,
+       "widthM": 2.45,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012071058",
+   "address": "Bloys van Treslongstraat 44",
+   "builtYear": 1937,
+   "widthM": 6.11,
+   "eavesM": 15.04,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.24,
+    "toM": 5.22,
+    "depthM": 0.66,
+    "centre": 0.693
+   },
+   "strip": {
+    "wall": "#664837",
+    "wallRaw": "#594b3b",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 77,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.65,
+       "widthM": 0.9,
+       "centre": 0.86
+      },
+      {
+       "atM": 9.5,
+       "widthM": 1,
+       "centre": 0.7
+      },
+      {
+       "atM": 8.97,
+       "widthM": 1,
+       "centre": 0.17
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.88,
+       "centre": 0.81
+      },
+      {
+       "atM": 5.3,
+       "widthM": 2,
+       "centre": 0.75
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012109847",
+   "address": "Bloys van Treslongstraat 42",
+   "builtYear": 1937,
+   "widthM": 6.11,
+   "eavesM": 14.96,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.89,
+    "toM": 2.87,
+    "depthM": 0.66,
+    "centre": 0.308
+   },
+   "strip": {
+    "wall": "#6b4a31",
+    "wallRaw": "#524232",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 78,
+     "confidence": 0.54,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 8.97 m (1.4 m wide), 6.13 m (1.4 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.97,
+       "widthM": 1.4,
+       "centre": 0.84
+      },
+      {
+       "atM": 6.13,
+       "widthM": 1.4,
+       "centre": 0.85
+      },
+      {
+       "atM": 5.82,
+       "widthM": 1.18,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012124495",
+   "address": "Bloys van Treslongstraat 40",
+   "builtYear": 1937,
+   "widthM": 6.11,
+   "eavesM": 14.93,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.24,
+    "toM": 5.22,
+    "depthM": 0.66,
+    "centre": 0.693
+   },
+   "strip": {
+    "wall": "#5f3b20",
+    "wallRaw": "#4b3a24",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 695,
+     "confidence": 0.15,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.6,
+       "widthM": 1.02,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 53 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012087231",
+   "address": "Bloys van Treslongstraat 38",
+   "builtYear": 1938,
+   "widthM": 6.11,
+   "eavesM": 14.93,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.88,
+    "toM": 2.86,
+    "depthM": 0.71,
+    "centre": 0.306
+   },
+   "strip": {
+    "wall": "#593c1f",
+    "wallRaw": "#48361d",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 77,
+     "confidence": 0.39,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 1.9,
+      "topWidthM": 0.15,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012103132",
+   "address": "Bloys van Treslongstraat 36",
+   "builtYear": 1937,
+   "widthM": 6.11,
+   "eavesM": 14.92,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.24,
+    "toM": 5.22,
+    "depthM": 0.66,
+    "centre": 0.692
+   },
+   "strip": {
+    "wall": "#5a3e2a",
+    "wallRaw": "#544738",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 102,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 0.98,
+      "topWidthM": 0.4,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.9,
+       "widthM": 1.2,
+       "centre": 0.22
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.2,
+       "centre": 0.76
+      },
+      {
+       "atM": 5.22,
+       "widthM": 0.88,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146057",
+   "address": "Bloys van Treslongstraat 34",
+   "builtYear": 1937,
+   "widthM": 6.11,
+   "eavesM": 14.96,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.89,
+    "toM": 2.87,
+    "depthM": 0.66,
+    "centre": 0.308
+   },
+   "strip": {
+    "wall": "#654734",
+    "wallRaw": "#594b3b",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 70,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.057,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.77 m at 0.74 (light 0.21): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.77,
+       "centre": 0.74,
+       "light": 0.21
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.55,
+       "widthM": 1.45,
+       "centre": 0.22
+      },
+      {
+       "atM": 12.25,
+       "widthM": 1.68,
+       "centre": 0.21
+      },
+      {
+       "atM": 6.55,
+       "widthM": 1.48,
+       "centre": 0.35
+      },
+      {
+       "atM": 6.02,
+       "widthM": 0.97,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012142349",
+   "address": "Bloys van Treslongstraat 32",
+   "builtYear": 1937,
+   "widthM": 6.11,
+   "eavesM": 14.95,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.24,
+    "toM": 5.22,
+    "depthM": 0.66,
+    "centre": 0.693
+   },
+   "strip": {
+    "wall": "#6d4e3a",
+    "wallRaw": "#524536",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 77,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.87,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.55 m (2.13 m wide), 6.02 m (1.6 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.55,
+       "widthM": 2.13,
+       "centre": 0.6
+      },
+      {
+       "atM": 9.32,
+       "widthM": 0.97,
+       "centre": 0.91
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.6,
+       "centre": 0.58
+      },
+      {
+       "atM": 5.2,
+       "widthM": 0.8,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012099110",
+   "address": "Bloys van Treslongstraat 30",
+   "builtYear": 1937,
+   "widthM": 6.11,
+   "eavesM": 14.89,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0.89,
+    "toM": 2.87,
+    "depthM": 0.66,
+    "centre": 0.308
+   },
+   "strip": {
+    "wall": "#704e35",
+    "wallRaw": "#544234",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 80,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.031,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.13,
+       "widthM": 1.48,
+       "centre": 0.36
+      },
+      {
+       "atM": 5.15,
+       "widthM": 1.65,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.08
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "run did not compile",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

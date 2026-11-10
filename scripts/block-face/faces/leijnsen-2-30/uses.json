@@ -1,0 +1,249 @@
+{
+ "street": "Jasper Leijnsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:32:46.723Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012145738",
+   "addresses": [
+    "Jasper Leijnsenstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000688813"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115570",
+   "addresses": [
+    "Jasper Leijnsenstraat 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000688806"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064868",
+   "addresses": [
+    "Jasper Leijnsenstraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688799"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012074955",
+   "addresses": [
+    "Jasper Leijnsenstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688791"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107813",
+   "addresses": [
+    "Jasper Leijnsenstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000688783"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123427",
+   "addresses": [
+    "Jasper Leijnsenstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688775"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140619",
+   "addresses": [
+    "Jasper Leijnsenstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688767"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012081763",
+   "addresses": [
+    "Jasper Leijnsenstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688759"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132371",
+   "addresses": [
+    "Jasper Leijnsenstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688751"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137482",
+   "addresses": [
+    "Jasper Leijnsenstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688743"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117865",
+   "addresses": [
+    "Jasper Leijnsenstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000688735"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077897",
+   "addresses": [
+    "Jasper Leijnsenstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688730"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094763",
+   "addresses": [
+    "Jasper Leijnsenstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000688723"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012139647",
+   "addresses": [
+    "Jasper Leijnsenstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000688716"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129908",
+   "addresses": [
+    "Jasper Leijnsenstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jasper Leijnsenstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000688707"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,96 @@
+{
+ "face": "bestever-141-213-r1",
+ "image": "staging/block-face/bestever-141-213-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 301,
+ "height": 760,
+ "groundNAP": 0.352,
+ "heightM": 19,
+ "frame": {
+  "midRD": [
+   119011.56381250001,
+   487858.24250000005
+  ],
+  "uRD": [
+   -0.18745958708931224,
+   0.9822723162180153
+  ],
+  "nRD": [
+   0.9822723162180153,
+   0.18745958708931224
+  ]
+ },
+ "x0M": -3.77,
+ "x1M": 3.76,
+ "date": "2024-11-21",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012073127",
+   "x0M": -3.77,
+   "x1M": 3.76,
+   "px": [
+    0,
+    301
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00066",
+     "timestamp": "2024-11-21T11:44:18Z",
+     "distanceM": 6.4,
+     "obliquityDeg": 11.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00067",
+     "timestamp": "2024-11-21T11:44:19Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 28.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track37_Sphere_00060",
+     "timestamp": "2024-11-21T11:44:08Z",
+     "distanceM": 30,
+     "obliquityDeg": 39,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-06-27": 13,
+  "2018-06-14": 13,
+  "2019-12-10": 13,
+  "2017-04-20": 11,
+  "2025-09-26": 13,
+  "2020-05-08": 13,
+  "2016-06-22": 13,
+  "2019-01-07": 13,
+  "2019-04-16": 13,
+  "2024-11-21": 13,
+  "2021-03-24": 11,
+  "2025-09-25": 0,
+  "2020-08-17": 0,
+  "2021-03-29": 0,
+  "2022-01-04": 0,
+  "2019-12-09": 0,
+  "2022-06-24": 0,
+  "2022-12-12": 0,
+  "2020-05-14": 0,
+  "2022-05-02": 0,
+  "2018-11-21": 0,
+  "2019-04-17": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "bestever-141-213",
+  "px": [
+   0,
+   301
+  ]
+ }
+}

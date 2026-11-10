@@ -1,0 +1,25 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:15:04.360Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012074071",
+   "addresses": [
+    "Bestevâerstraat 163"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 163-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000582892"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,573 @@
+{
+ "street": "Jan den Haenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:07:35.026Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012117545",
+   "addresses": [
+    "Jan den Haenstraat 32",
+    "Jan den Haenstraat 32B",
+    "Jan den Haenstraat 32C",
+    "Jan den Haenstraat 32D",
+    "Jan den Haenstraat 32E",
+    "Jan den Haenstraat 34",
+    "Jan den Haenstraat 34A",
+    "Jan den Haenstraat 34C",
+    "Jan den Haenstraat 34D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000683989"
+    },
+    {
+     "address": "Jan den Haenstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000683996"
+    },
+    {
+     "address": "Jan den Haenstraat 32B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117936"
+    },
+    {
+     "address": "Jan den Haenstraat 32C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117937"
+    },
+    {
+     "address": "Jan den Haenstraat 32D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117938"
+    },
+    {
+     "address": "Jan den Haenstraat 32E",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117939"
+    },
+    {
+     "address": "Jan den Haenstraat 34A",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010012117940"
+    },
+    {
+     "address": "Jan den Haenstraat 34C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117941"
+    },
+    {
+     "address": "Jan den Haenstraat 34D",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012117942"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107347",
+   "addresses": [
+    "Jan den Haenstraat 28",
+    "Jan den Haenstraat 28B",
+    "Jan den Haenstraat 28C",
+    "Jan den Haenstraat 28E",
+    "Jan den Haenstraat 30",
+    "Jan den Haenstraat 30A",
+    "Jan den Haenstraat 30C",
+    "Jan den Haenstraat 30D",
+    "Jan den Haenstraat 30E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 28-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000683975"
+    },
+    {
+     "address": "Jan den Haenstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000683982"
+    },
+    {
+     "address": "Jan den Haenstraat 28B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117929"
+    },
+    {
+     "address": "Jan den Haenstraat 28C",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012117930"
+    },
+    {
+     "address": "Jan den Haenstraat 28E",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117931"
+    },
+    {
+     "address": "Jan den Haenstraat 30A",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012117932"
+    },
+    {
+     "address": "Jan den Haenstraat 30C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117933"
+    },
+    {
+     "address": "Jan den Haenstraat 30D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117934"
+    },
+    {
+     "address": "Jan den Haenstraat 30E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117935"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146143",
+   "addresses": [
+    "Jan den Haenstraat 26",
+    "Jan den Haenstraat 26A",
+    "Jan den Haenstraat 26C",
+    "Jan den Haenstraat 26D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000683968"
+    },
+    {
+     "address": "Jan den Haenstraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117926"
+    },
+    {
+     "address": "Jan den Haenstraat 26C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117927"
+    },
+    {
+     "address": "Jan den Haenstraat 26D",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012117928"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141001",
+   "addresses": [
+    "Jan den Haenstraat 24",
+    "Jan den Haenstraat 24B",
+    "Jan den Haenstraat 24C",
+    "Jan den Haenstraat 24D",
+    "Jan den Haenstraat 24E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 24-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000683961"
+    },
+    {
+     "address": "Jan den Haenstraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117923"
+    },
+    {
+     "address": "Jan den Haenstraat 24C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117924"
+    },
+    {
+     "address": "Jan den Haenstraat 24D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117925"
+    },
+    {
+     "address": "Jan den Haenstraat 24E",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117976"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084532",
+   "addresses": [
+    "Jan den Haenstraat 20",
+    "Jan den Haenstraat 20B",
+    "Jan den Haenstraat 20C",
+    "Jan den Haenstraat 20E",
+    "Jan den Haenstraat 22",
+    "Jan den Haenstraat 22A",
+    "Jan den Haenstraat 22C",
+    "Jan den Haenstraat 22D",
+    "Jan den Haenstraat 22E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000683947"
+    },
+    {
+     "address": "Jan den Haenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000683954"
+    },
+    {
+     "address": "Jan den Haenstraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117916"
+    },
+    {
+     "address": "Jan den Haenstraat 20C",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012117917"
+    },
+    {
+     "address": "Jan den Haenstraat 20E",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010012117918"
+    },
+    {
+     "address": "Jan den Haenstraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117919"
+    },
+    {
+     "address": "Jan den Haenstraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117920"
+    },
+    {
+     "address": "Jan den Haenstraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117921"
+    },
+    {
+     "address": "Jan den Haenstraat 22E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117922"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141696",
+   "addresses": [
+    "Jan den Haenstraat 16",
+    "Jan den Haenstraat 16B",
+    "Jan den Haenstraat 16C",
+    "Jan den Haenstraat 16D",
+    "Jan den Haenstraat 16E",
+    "Jan den Haenstraat 18",
+    "Jan den Haenstraat 18A",
+    "Jan den Haenstraat 18C",
+    "Jan den Haenstraat 18D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000683933"
+    },
+    {
+     "address": "Jan den Haenstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000683940"
+    },
+    {
+     "address": "Jan den Haenstraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117910"
+    },
+    {
+     "address": "Jan den Haenstraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117911"
+    },
+    {
+     "address": "Jan den Haenstraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117912"
+    },
+    {
+     "address": "Jan den Haenstraat 16E",
+     "use": "woonfunctie",
+     "areaM2": 135,
+     "bagId": "0363010012117913"
+    },
+    {
+     "address": "Jan den Haenstraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010012117914"
+    },
+    {
+     "address": "Jan den Haenstraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117915"
+    },
+    {
+     "address": "Jan den Haenstraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012117975"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102574",
+   "addresses": [
+    "Jan den Haenstraat 12",
+    "Jan den Haenstraat 12B",
+    "Jan den Haenstraat 12C",
+    "Jan den Haenstraat 12E",
+    "Jan den Haenstraat 14",
+    "Jan den Haenstraat 14A",
+    "Jan den Haenstraat 14C",
+    "Jan den Haenstraat 14D",
+    "Jan den Haenstraat 14E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000683919"
+    },
+    {
+     "address": "Jan den Haenstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000683926"
+    },
+    {
+     "address": "Jan den Haenstraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117903"
+    },
+    {
+     "address": "Jan den Haenstraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012117904"
+    },
+    {
+     "address": "Jan den Haenstraat 12E",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117905"
+    },
+    {
+     "address": "Jan den Haenstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117906"
+    },
+    {
+     "address": "Jan den Haenstraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117907"
+    },
+    {
+     "address": "Jan den Haenstraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117908"
+    },
+    {
+     "address": "Jan den Haenstraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117909"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134001",
+   "addresses": [
+    "Jan den Haenstraat 8",
+    "Jan den Haenstraat 8B",
+    "Jan den Haenstraat 8C",
+    "Jan den Haenstraat 8D",
+    "Jan den Haenstraat 8E",
+    "Jan den Haenstraat 10",
+    "Jan den Haenstraat 10A",
+    "Jan den Haenstraat 10C",
+    "Jan den Haenstraat 10D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000683905"
+    },
+    {
+     "address": "Jan den Haenstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000683912"
+    },
+    {
+     "address": "Jan den Haenstraat 8B",
+     "use": "overige gebruiksfunctie,woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117896"
+    },
+    {
+     "address": "Jan den Haenstraat 8C",
+     "use": "overige gebruiksfunctie,woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117897"
+    },
+    {
+     "address": "Jan den Haenstraat 8D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117898"
+    },
+    {
+     "address": "Jan den Haenstraat 8E",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010012117899"
+    },
+    {
+     "address": "Jan den Haenstraat 10A",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117900"
+    },
+    {
+     "address": "Jan den Haenstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117901"
+    },
+    {
+     "address": "Jan den Haenstraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012117902"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140027",
+   "addresses": [
+    "Jan den Haenstraat 6",
+    "Jan den Haenstraat 6A",
+    "Jan den Haenstraat 6B",
+    "Jan den Haenstraat 6C",
+    "Jan den Haenstraat 6D",
+    "Jan den Haenstraat 6E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000683898"
+    },
+    {
+     "address": "Jan den Haenstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012117891"
+    },
+    {
+     "address": "Jan den Haenstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012117892"
+    },
+    {
+     "address": "Jan den Haenstraat 6C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012117893"
+    },
+    {
+     "address": "Jan den Haenstraat 6D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012117894"
+    },
+    {
+     "address": "Jan den Haenstraat 6E",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010012117895"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

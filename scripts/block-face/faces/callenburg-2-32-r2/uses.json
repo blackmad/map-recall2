@@ -1,0 +1,102 @@
+{
+ "street": "Gerard Callenburgstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:57:49.900Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012095699",
+   "addresses": [
+    "Gerard Callenburgstraat 16",
+    "Gerard Callenburgstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Callenburgstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000643293"
+    },
+    {
+     "address": "Gerard Callenburgstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000643299"
+    },
+    {
+     "address": "Gerard Callenburgstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001988081"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125512",
+   "addresses": [
+    "Gerard Callenburgstraat 12",
+    "Gerard Callenburgstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Callenburgstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000643281"
+    },
+    {
+     "address": "Gerard Callenburgstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000643287"
+    },
+    {
+     "address": "Gerard Callenburgstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001988080"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105359",
+   "addresses": [
+    "Gerard Callenburgstraat 8",
+    "Gerard Callenburgstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Gerard Callenburgstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000643269"
+    },
+    {
+     "address": "Gerard Callenburgstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000643275"
+    },
+    {
+     "address": "Gerard Callenburgstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001988077"
+    },
+    {
+     "address": "Gerard Callenburgstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001988079"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

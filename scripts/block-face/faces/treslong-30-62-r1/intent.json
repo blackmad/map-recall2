@@ -1,0 +1,127 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "treslong-30-62-r1",
+ "street": "Bloys van Treslongstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/treslong-30-62-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/treslong-30-62/auto-place.json"
+ },
+ "types": [
+  "landlust-1924-bestevaer-half-block",
+  "landlust-1924-bestevaer-stair-block"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012128490",
+   "slug": "treslong-128490",
+   "address": "Bloys van Treslongstraat 62",
+   "type": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "measuredPalette": {
+     "brick": "#78644c",
+     "evidence": "strip 2024-11-21 span 0-285: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1924-bestevaer-half-block scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2024-11-21 span 0-285"
+   }
+  },
+  {
+   "pandId": "0363100012152115",
+   "slug": "treslong-152115",
+   "address": "Bloys van Treslongstraat 60",
+   "type": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#866f50",
+     "evidence": "strip 2024-11-21 span 288-540: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1924-bestevaer-half-block scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 288-540"
+   }
+  },
+  {
+   "pandId": "0363100012096543",
+   "slug": "treslong-096543",
+   "address": "Bloys van Treslongstraat 56",
+   "type": {
+    "type": "landlust-1924-bestevaer-stair-block",
+    "measuredPalette": {
+     "brick": "#775e47",
+     "evidence": "strip 2024-11-21 span 540-1044: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1924-bestevaer-stair-block scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2024-11-21 span 540-1044"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012128490",
+    "stripRow": 156,
+    "evidence": "auto-place: strip skyline cornice 13.47 m within 1 m of the landlust-1924-bestevaer-half-block line 13.2 m; 3DBAG/PDOK eaves 12.6 m"
+   },
+   {
+    "pand": "0363100012152115",
+    "stripRow": 156,
+    "evidence": "auto-place: strip skyline cornice 13.47 m within 1 m of the landlust-1924-bestevaer-half-block line 13.2 m; 3DBAG/PDOK eaves 12.81 m"
+   },
+   {
+    "pand": "0363100012096543",
+    "stripRow": 163,
+    "evidence": "auto-place: strip skyline cornice 13.3 m within 1 m of the landlust-1924-bestevaer-stair-block line 13.2 m; 3DBAG/PDOK eaves 12.69 m"
+   }
+  ]
+ }
+}

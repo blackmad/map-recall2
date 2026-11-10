@@ -1,0 +1,55 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:36:21.125Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012100977",
+   "addresses": [
+    "Bestevâerstraat 148",
+    "Bestevâerstraat 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 150-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000582840"
+    },
+    {
+     "address": "Bestevâerstraat 148-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000582832"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094201",
+   "addresses": [
+    "Bestevâerstraat 144",
+    "Bestevâerstraat 146"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 144-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000582816"
+    },
+    {
+     "address": "Bestevâerstraat 146-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000582824"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

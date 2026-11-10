@@ -1,0 +1,186 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "landlust-1934-tile-pair",
+ "district": "landlust",
+ "description": "Jasper Leijnsenstraat 2-30 and Jan Haringstraat 26-38 (BAG 1934): 6.2 m red-brown brick fronts of four storeys under a grey tiled roof with box dormers: on every storey three casement windows (a 1.05 m window against the party wall that pairs with its mirrored neighbour's, a 1.65 m wall, then a close pair of 1.3 m windows); ground: the same windows and the paired house doors under a flat canopy at the party wall; a dark gutter at 12.0 m",
+ "fit": {
+  "widthM": [
+   5.7,
+   7.2
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1933,
+   1935
+  ],
+  "eavesM": [
+   12.4,
+   14.2
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "balconies": false,
+  "roof": "pitched",
+  "frontEavesM": 12.0,
+  "mirrorForDoor": "left",
+  "measuredWall": true,
+  "note": "Leijnsenstraat 2-30 (BAG 1934, 15 pands of 5.7-7 m, 3DBAG eaves 12.8-13.8 m, ridge 16.7-17.7 m) and Haringstraat 26-38 (7 pands, eaves 13.0 m, ridge 16.8): the strip's gutter stands at 12.0 m with the tiled slope rising to about 15 m behind dormers; 3DBAG reads the dormer-level eaves. Leijnsenstraat 2 (eaves 14.9 m) and 4-14 (13.6-13.8 m) are told by the photo"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "axisGrid": 7,
+  "storeyAxes": {
+   "0": [
+    1,
+    3,
+    5
+   ],
+   "1": [
+    1,
+    3,
+    5
+   ],
+   "2": [
+    1,
+    3,
+    5
+   ],
+   "3": [
+    1,
+    3,
+    5
+   ]
+  },
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "bayWidths": [
+   0.25,
+   1.05,
+   1.65,
+   1.3,
+   0.35,
+   1.3,
+   0.3
+  ],
+  "bayFill": [
+   0.5,
+   0.98,
+   0.5,
+   0.98,
+   0.5,
+   0.98,
+   0.5
+  ],
+  "storeyHeights": [
+   3.0,
+   3.0,
+   3.0,
+   3.0
+  ],
+  "windowHeights": [
+   0.59,
+   0.6,
+   0.65,
+   0.65
+  ],
+  "headLines": [
+   0.88,
+   0.87,
+   0.87,
+   0.87
+  ],
+  "windowSurround": "sill",
+  "surroundStoreys": [
+   1,
+   2,
+   3
+  ]
+ },
+ "crowns": {
+  "gutter": {
+   "gable": "cornice",
+   "eavesOverhang": {
+    "projection": 0.3,
+    "fascia": 0.2,
+    "colour": "#4a4540",
+    "soffit": "#3a3530"
+   },
+   "note": "Leijnsenstraat 2-30 strip: a dark gutter at 12.0 m, the grey tile slope above it to about 15 m; box dormers 2.0 m wide at 13.2-14.5 m are not drawn"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "note": "paired house doors at the party wall under one flat canopy at 2.9 m (doors 0-2.3 m), the other two ground windows 0.78-2.65 m; mirrored when the strip reads the door on the right",
+   "doorReveal": {
+    "form": "portiek",
+    "deep": 0.5,
+    "steps": 1,
+    "riser": 0.15
+   }
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#7a4a3a",
+   "frame": "#e8e2d0",
+   "door": "#4a2a1e",
+   "stone": "#e8e2d0",
+   "cornice": "#4a4540"
+  }
+ },
+ "roof": {
+  "material": "black-tile",
+  "source": "front",
+  "form": "saddle",
+  "evidence": "Leijnsenstraat 2-30 strip: grey tile slope from the 12.0 m gutter rising to 15 m with box dormers; 3DBAG ridge 16.7 m"
+ },
+ "rhythm": {
+  "bays": "window, wall, window pair",
+  "identicalBays": "no, mirrored per pand",
+  "windowsPerStorey": "ground: door + 2 windows | 1-3: 3",
+  "symmetry": "mirrored pands pair their single windows (and doors) across the party wall",
+  "groundFloor": "paired house doors under a canopy at the party wall",
+  "signage": "none",
+  "roofline": "dark gutter under a tiled slope with box dormers",
+  "photoRows": [
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "leijnsen-2-30",
+   "pands": [
+    "26",
+    "24",
+    "22"
+   ],
+   "citation": "strip.jpg 2024-11 at 40 px/m gridded 1 m (grid crop 700-1700 px): windows 1.05 (against the party wall) and 1.3, 1.3 m, sills 3.8, 6.65, 9.6 m, heads 5.6, 8.6, 11.55 m, ground windows 0.78-2.65 m; gutter 12.0 m; canopy 2.9 m; dormers 13.2-14.5 m; wall raw #5c3a2b"
+  }
+ ],
+ "schemaLimits": [
+  "the box dormers (2.0 m wide, 13.2-14.5 m) are not drawn",
+  "the paired-door canopy is not drawn",
+  "the two-over-two sash bars are simplified"
+ ],
+ "notes": [
+  "Palette: type default red-brown; placed pands take their trim-normalised strip wall."
+ ]
+}

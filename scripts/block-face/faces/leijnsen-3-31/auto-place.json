@@ -1,0 +1,796 @@
+{
+ "face": "leijnsen-3-31",
+ "street": "Jasper Leijnsenstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 8.95,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "leijnsen-3-31-r1",
+   "pands": [
+    "0363100012078570",
+    "0363100012121647",
+    "0363100012066007",
+    "0363100012104220",
+    "0363100012073086"
+   ],
+   "passed": true,
+   "triangles": 5441
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012142777",
+   "address": "Jasper Leijnsenstraat 3",
+   "builtYear": 1938,
+   "widthM": 2.24,
+   "eavesM": 13.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705038",
+    "wallRaw": "#604d37",
+    "skyline": {
+     "eavesM": 13.8,
+     "eavesRow": 156,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 2.32,
+      "topWidthM": 0.55,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.226,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.95,
+       "widthM": 0.85,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1938-pair-attic: frontage 2.24 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1938-pair-attic",
+    "score": 0,
+    "veto": [
+     "frontage 2.24 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 13.8 m vs the type's 14.95 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 2.65 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.179 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012078570",
+   "address": "Jasper Leijnsenstraat 11",
+   "builtYear": 1938,
+   "widthM": 6.11,
+   "eavesM": 15.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#855f45",
+    "wallRaw": "#69553f",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 76,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.113,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.28,
+       "widthM": 0.93,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "landlust-1938-pair-attic",
+   "score": 0.83,
+   "placement": {
+    "type": "landlust-1938-pair-attic",
+    "measuredPalette": {
+     "brick": "#855f45",
+     "evidence": "strip 2024-11-21 span 89-333: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown flat-slab (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012078570",
+    "ncc": 0.238,
+    "nccRaw": 0.238,
+    "shiftM": [
+     -0.15,
+     0.4
+    ],
+    "usable": 0.73,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21"
+    ],
+    "wall": {
+     "photo": "#7d5f41",
+     "model": "#a07253",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.544
+   },
+   "challengers": {
+    "landlust-1938-pair-attic": 0.238,
+    "landlust-1938-pair-attic~m": 0.274
+   }
+  },
+  {
+   "pandId": "0363100012121647",
+   "address": "Jasper Leijnsenstraat 13",
+   "builtYear": 1938,
+   "widthM": 6.1,
+   "eavesM": 15.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#816147",
+    "wallRaw": "#6b553e",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 80,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.111,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.35,
+       "widthM": 1.43,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "landlust-1938-pair-attic",
+   "score": 0.83,
+   "placement": {
+    "type": "landlust-1938-pair-attic",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#816147",
+     "evidence": "strip 2024-11-21 span 334-578: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown flat-slab (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012121647",
+    "ncc": 0.213,
+    "nccRaw": 0.213,
+    "shiftM": [
+     -0.15,
+     0.35
+    ],
+    "usable": 0.74,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.26"
+    ],
+    "wall": {
+     "photo": "#7b5d40",
+     "model": "#9c7556",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.519
+   },
+   "challengers": {
+    "landlust-1938-pair-attic~m": 0.213,
+    "landlust-1938-pair-attic": 0.243
+   }
+  },
+  {
+   "pandId": "0363100012066007",
+   "address": "Jasper Leijnsenstraat 15",
+   "builtYear": 1938,
+   "widthM": 6.1,
+   "eavesM": 15.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5940",
+    "wallRaw": "#5d503c",
+    "skyline": {
+     "eavesM": 15.88,
+     "eavesRow": 73,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.157,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.9,
+       "widthM": 0.8,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "placed",
+   "type": "landlust-1938-pair-attic",
+   "score": 0.83,
+   "placement": {
+    "type": "landlust-1938-pair-attic",
+    "measuredPalette": {
+     "brick": "#6b5940",
+     "evidence": "strip 2024-11-21 span 578-822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown flat-slab (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012066007",
+    "ncc": 0.224,
+    "nccRaw": 0.224,
+    "shiftM": [
+     -0.15,
+     0.25
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 26 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#62523a",
+     "model": "#877051",
+     "dL": 0.118
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.375
+   },
+   "challengers": {
+    "landlust-1938-pair-attic": 0.224,
+    "landlust-1938-pair-attic~m": 0.22
+   }
+  },
+  {
+   "pandId": "0363100012104220",
+   "address": "Jasper Leijnsenstraat 17",
+   "builtYear": 1938,
+   "widthM": 6.1,
+   "eavesM": 15.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79654a",
+    "wallRaw": "#635540",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 78,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.157,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "placed",
+   "type": "landlust-1938-pair-attic",
+   "score": 0.83,
+   "placement": {
+    "type": "landlust-1938-pair-attic",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#79654a",
+     "evidence": "strip 2024-11-21 span 822-1066: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown flat-slab (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012104220",
+    "ncc": 0.27,
+    "nccRaw": 0.27,
+    "shiftM": [
+     -0.25,
+     0.35
+    ],
+    "usable": 0.61,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 29 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#5a4a38",
+     "model": "#937b5a",
+     "dL": 0.178
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 2
+    },
+    "iou": 0.441
+   },
+   "challengers": {
+    "landlust-1938-pair-attic~m": 0.27,
+    "landlust-1938-pair-attic": 0.17
+   }
+  },
+  {
+   "pandId": "0363100012073086",
+   "address": "Jasper Leijnsenstraat 19",
+   "builtYear": 1938,
+   "widthM": 6.11,
+   "eavesM": 14.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5e45",
+    "wallRaw": "#615541",
+    "skyline": {
+     "eavesM": 15.57,
+     "eavesRow": 85,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.112,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.22
+   },
+   "status": "placed",
+   "type": "landlust-1938-pair-attic",
+   "score": 0.83,
+   "placement": {
+    "type": "landlust-1938-pair-attic",
+    "measuredPalette": {
+     "brick": "#6c5e45",
+     "evidence": "strip 2024-11-21 span 1066-1310: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown flat-slab (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012073086",
+    "ncc": 0.284,
+    "nccRaw": 0.284,
+    "shiftM": [
+     -0.15,
+     0.4
+    ],
+    "usable": 0.65,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.16"
+    ],
+    "wall": {
+     "photo": "#67573f",
+     "model": "#877556",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.492
+   },
+   "challengers": {
+    "landlust-1938-pair-attic": 0.284,
+    "landlust-1938-pair-attic~m": 0.208
+   }
+  },
+  {
+   "pandId": "0363100012125953",
+   "address": "Jasper Leijnsenstraat 21",
+   "builtYear": 1938,
+   "widthM": 12.19,
+   "eavesM": 14.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705f48",
+    "wallRaw": "#645642",
+    "skyline": {
+     "eavesM": 15.5,
+     "eavesRow": 88,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.156,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1938-pair-attic: frontage 12.19 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1938-pair-attic",
+    "score": 0,
+    "veto": [
+     "frontage 12.19 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.5 m vs the type's 14.95 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.125 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012140401",
+   "address": "Jasper Leijnsenstraat 25",
+   "builtYear": 1938,
+   "widthM": 6.11,
+   "eavesM": 14.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#887153",
+    "wallRaw": "#635540",
+    "skyline": {
+     "eavesM": 15.5,
+     "eavesRow": 88,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.084,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.21
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1938-pair-attic scores 0.67 < 0.7 (strip cornice 15.5 m vs the type's 14.95 m; strip columns 5 vs 2 bays)",
+   "best": {
+    "type": "landlust-1938-pair-attic",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.5 m vs the type's 14.95 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.51 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.07 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012114256",
+   "address": "Jasper Leijnsenstraat 27",
+   "builtYear": 1938,
+   "widthM": 16.85,
+   "eavesM": 14.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#634a36",
+    "wallRaw": "#6f5842",
+    "skyline": {
+     "eavesM": 15.53,
+     "eavesRow": 87,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.2,
+    "structure": {
+     "bayWidthM": 0.9,
+     "bayCentre": 0.97,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.5,
+       "widthM": 1.05,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1938-pair-attic: frontage 16.85 m, type 5.8-6.6 m)",
+   "best": {
+    "type": "landlust-1938-pair-attic",
+    "score": 0,
+    "veto": [
+     "frontage 16.85 m, type 5.8-6.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 15.53 m vs the type's 14.95 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 0.61 m (flat) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.164 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

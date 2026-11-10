@@ -1,0 +1,440 @@
+{
+ "face": "rijpgracht-39-53",
+ "street": "De Rijpgracht",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 1.62,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012083007",
+   "address": "De Rijpgracht 39",
+   "builtYear": 1934,
+   "widthM": 8.21,
+   "eavesM": 12.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#746348",
+    "wallRaw": "#5f533e",
+    "skyline": {
+     "eavesM": 13.55,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 2.82,
+      "topWidthM": 0.8,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.149,
+    "structure": {
+     "bayWidthM": 1.18,
+     "bayCentre": 0.16,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1934, type 1923-1926; stair block 8.21 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1934, type 1923-1926",
+     "stair block 8.21 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.55 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.104 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012062141",
+   "address": "De Rijpgracht 41",
+   "builtYear": 1934,
+   "widthM": 6.21,
+   "eavesM": 12.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79674b",
+    "wallRaw": "#625641",
+    "skyline": {
+     "eavesM": 13.45,
+     "eavesRow": 228,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.3,
+      "topWidthM": 1.07,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.145,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.2,
+       "widthM": 1.02,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.27
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012124337",
+   "address": "De Rijpgracht 43",
+   "builtYear": 1934,
+   "widthM": 6.2,
+   "eavesM": 12.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78674b",
+    "wallRaw": "#5f533d",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.35,
+      "topWidthM": 1.5,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.168,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.24
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012067375",
+   "address": "De Rijpgracht 45",
+   "builtYear": 1934,
+   "widthM": 6.21,
+   "eavesM": 12.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6b4f",
+    "wallRaw": "#645843",
+    "skyline": {
+     "eavesM": 13.35,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.4,
+      "topWidthM": 1.1,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.212,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.32
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012063203",
+   "address": "De Rijpgracht 47",
+   "builtYear": 1934,
+   "widthM": 6.18,
+   "eavesM": 12.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725d45",
+    "wallRaw": "#5c503a",
+    "skyline": {
+     "eavesM": 13.47,
+     "eavesRow": 227,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.9,
+      "topWidthM": 1.13,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.116,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.22,
+       "widthM": 1.5,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133746",
+   "address": "De Rijpgracht 49",
+   "builtYear": 1934,
+   "widthM": 6.2,
+   "eavesM": 12.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b563a",
+    "wallRaw": "#4e412e",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.22,
+       "widthM": 1.35,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012109667",
+   "address": "De Rijpgracht 51",
+   "builtYear": 1934,
+   "widthM": 6.22,
+   "eavesM": 12.89,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b563a",
+    "wallRaw": "#4e412e",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 138,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 1.07,
+      "topWidthM": 0.75,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.016,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.4,
+       "widthM": 1.05,
+       "centre": 0.69
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.17
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012089597",
+   "address": "De Rijpgracht 53",
+   "builtYear": 1934,
+   "widthM": 6.19,
+   "eavesM": 12.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e583b",
+    "wallRaw": "#4f412e",
+    "skyline": {
+     "eavesM": 15.75,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 1,
+      "topWidthM": 0.5,
+      "centre": 0.95
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.2,
+       "widthM": 1.35,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

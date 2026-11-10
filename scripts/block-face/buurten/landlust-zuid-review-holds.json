@@ -1,0 +1,201 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason). Lane review 2026-11-10; the Opus strip review confirms or amends.",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012065393",
+   "address": "De Rijpgracht 9",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012136762",
+   "address": "De Rijpgracht 11",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012073793",
+   "address": "De Rijpgracht 13",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012154479",
+   "address": "De Rijpgracht 15",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012147833",
+   "address": "De Rijpgracht 17",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012065855",
+   "address": "De Rijpgracht 19",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012131151",
+   "address": "De Rijpgracht 21",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012096832",
+   "address": "De Rijpgracht 23",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012137538",
+   "address": "De Rijpgracht 25",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012108028",
+   "address": "De Rijpgracht 27",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012073277",
+   "address": "De Rijpgracht 29",
+   "reason": "De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)"
+  },
+  {
+   "pandId": "0363100012062141",
+   "address": "De Rijpgracht 41",
+   "reason": "De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design"
+  },
+  {
+   "pandId": "0363100012124337",
+   "address": "De Rijpgracht 43",
+   "reason": "De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design"
+  },
+  {
+   "pandId": "0363100012067375",
+   "address": "De Rijpgracht 45",
+   "reason": "De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design"
+  },
+  {
+   "pandId": "0363100012063203",
+   "address": "De Rijpgracht 47",
+   "reason": "De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design"
+  },
+  {
+   "pandId": "0363100012133746",
+   "address": "De Rijpgracht 49",
+   "reason": "De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design"
+  },
+  {
+   "pandId": "0363100012109667",
+   "address": "De Rijpgracht 51",
+   "reason": "De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design"
+  },
+  {
+   "pandId": "0363100012089597",
+   "address": "De Rijpgracht 53",
+   "reason": "De Rijpgracht 39-53: the same four-storey front as 5-33; the erker-window type is a three-storey design"
+  },
+  {
+   "pandId": "0363100012100410",
+   "address": "Jan van Galenstraat 86",
+   "reason": "Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few"
+  },
+  {
+   "pandId": "0363100012126499",
+   "address": "Jan van Galenstraat 84",
+   "reason": "Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few"
+  },
+  {
+   "pandId": "0363100012121206",
+   "address": "Jan van Galenstraat 80",
+   "reason": "Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few"
+  },
+  {
+   "pandId": "0363100012118984",
+   "address": "Jan van Galenstraat 78",
+   "reason": "Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few"
+  },
+  {
+   "pandId": "0363100012124911",
+   "address": "Jan van Galenstraat 76",
+   "reason": "Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few"
+  },
+  {
+   "pandId": "0363100012084175",
+   "address": "Jan van Galenstraat 74",
+   "reason": "Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few"
+  },
+  {
+   "pandId": "0363100012143344",
+   "address": "Jan van Galenstraat 72",
+   "reason": "Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few"
+  },
+  {
+   "pandId": "0363100012110462",
+   "address": "Jan van Galenstraat 70",
+   "reason": "Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few"
+  },
+  {
+   "pandId": "0363100012142659",
+   "address": "Jan van Galenstraat 68",
+   "reason": "Jan van Galenstraat 56-110: shop ground floors under erker fronts of four storeys; the erker-window type drew no erkers and one row too few"
+  },
+  {
+   "pandId": "0363100012149997",
+   "address": "Coppelstockstraat 52",
+   "reason": "Coppelstockstraat 8-56 (1939, five storeys): not the three-storey Treslongstraat/Coppelstock 25-55 fronts; the erker-attic and stair-block types were matched on year and eaves alone"
+  },
+  {
+   "pandId": "0363100012131416",
+   "address": "Coppelstockstraat 44",
+   "reason": "Coppelstockstraat 8-56 (1939, five storeys): not the three-storey Treslongstraat/Coppelstock 25-55 fronts; the erker-attic and stair-block types were matched on year and eaves alone"
+  },
+  {
+   "pandId": "0363100012133707",
+   "address": "Coppelstockstraat 42",
+   "reason": "Coppelstockstraat 8-56 (1939, five storeys): not the three-storey Treslongstraat/Coppelstock 25-55 fronts; the erker-attic and stair-block types were matched on year and eaves alone"
+  },
+  {
+   "pandId": "0363100012136562",
+   "address": "Karel Doormanstraat 145",
+   "reason": "Karel Doormanstraat 143-149: a one-off front the stair-block type does not describe"
+  },
+  {
+   "pandId": "0363100012129691",
+   "address": "Tjerk Hiddes de Vriesstraat 5",
+   "reason": "Tjerk Hiddes de Vriesstraat 1-11: the slot-block design in eight-metre pands with a different window grouping; the four-storey slot block put the wrong grid"
+  },
+  {
+   "pandId": "0363100012099392",
+   "address": "Willem de Zwijgerlaan 165",
+   "reason": "Willem de Zwijgerlaan 161-179: the strip is behind scaffolding and sheeting; the erker-window type has no support"
+  },
+  {
+   "pandId": "0363100012119704",
+   "address": "Willem de Zwijgerlaan 167",
+   "reason": "Willem de Zwijgerlaan 161-179: the strip is behind scaffolding and sheeting; the erker-window type has no support"
+  },
+  {
+   "pandId": "0363100012067779",
+   "address": "Willem de Zwijgerlaan 169",
+   "reason": "Willem de Zwijgerlaan 161-179: the strip is behind scaffolding and sheeting; the erker-window type has no support"
+  },
+  {
+   "pandId": "0363100012151258",
+   "address": "De Rijpgracht 31",
+   "reason": "De Rijpgracht 5-33: four storeys under an attic with dormers; no type has this front"
+  },
+  {
+   "pandId": "0363100012074974",
+   "address": "De Rijpgracht 33",
+   "reason": "De Rijpgracht 5-33: four storeys under an attic with dormers; no type has this front"
+  },
+  {
+   "pandId": "0363100012112059",
+   "address": "De Rijpgracht 20",
+   "reason": "De Rijpgracht 14-24: a three-axis front with an arched door and three ground windows; the erker-window type draws a wide ground window and a square door (ground bays 3 vs 2)"
+  },
+  {
+   "pandId": "0363100012103314",
+   "address": "De Rijpgracht 18",
+   "reason": "De Rijpgracht 14-24: a three-axis front with an arched door and three ground windows; the erker-window type draws a wide ground window and a square door (ground bays 3 vs 2)"
+  }
+ ]
+}

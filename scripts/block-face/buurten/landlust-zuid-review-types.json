@@ -1,0 +1,168 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace). Authored by the lane from the strips; the Opus strip review confirms or amends.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "face": "haring-6-18",
+   "types": [
+    "landlust-1938-ribbon-attic"
+   ],
+   "reason": "Haringstraat 6-18 (2024-11 strip): every front has the white-framed wide+narrow window pair, the attic ribbon and the white eaves slab; no erker (the erker-attic type took Haringstraat 12 on a 0.19 NCC near tie)"
+  },
+  {
+   "face": "treslong-5-59",
+   "types": [
+    "landlust-1933-erker-window"
+   ],
+   "reason": "Treslongstraat 5-59 (strip gridded 1 m): erker + single window per pand under a dark tiled roof on every front 17-51; no other design on the face"
+  },
+  {
+   "face": "callenburg-2-32",
+   "types": [
+    "landlust-1934-slot-block"
+   ],
+   "reason": "Callenburgstraat 2-32 strip: every 12.8 m block is the pair / two slots / pair front under a flat roofline with two zinc dormers"
+  },
+  {
+   "face": "haen-3-31",
+   "types": [
+    "landlust-1934-slot-block"
+   ],
+   "reason": "Jan den Haenstraat 3-31: the three-storey twin of the Callenburgstraat slot blocks (strip read at full size)"
+  },
+  {
+   "face": "andringa-4-32",
+   "types": [
+    "landlust-1934-slot-block"
+   ],
+   "reason": "Joris van Andringastraat 4-32: the three-storey Callenburgstraat slot-block design (strip read at full size)"
+  },
+  {
+   "face": "andringa-1-31",
+   "types": [
+    "landlust-1934-slot-block"
+   ],
+   "reason": "Joris van Andringastraat 1-31: the three-storey Callenburgstraat slot-block design (strip read at full size)"
+  },
+  {
+   "face": "haen-6-62",
+   "types": [
+    "landlust-1935-slot-block-four"
+   ],
+   "reason": "Jan den Haenstraat 6-62 strip: the slot-block design with three window rows over the ground storey on every block; the tile-pair and erker types took 24 and 26 on edge NCC through trees"
+  },
+  {
+   "face": "leijnsen-2-30",
+   "types": [
+    "landlust-1934-tile-pair"
+   ],
+   "reason": "Jasper Leijnsenstraat 2-30 strip (gridded): every front is the three-window tile-roof design; the erker and ribbon types took 8, 10, 12 and 28 on edge NCC through trees"
+  },
+  {
+   "face": "haring-26-38",
+   "types": [
+    "landlust-1934-tile-pair"
+   ],
+   "reason": "Jan Haringstraat 26-38: the Leijnsenstraat tile-roof design (same year, width, gutter and window grid)"
+  },
+  {
+   "face": "coppelstock-25-55",
+   "types": [
+    "landlust-1933-three-axis-tile"
+   ],
+   "reason": "Coppelstockstraat 29-49 strip: three equal windows per upper storey, wide ground window and a door; the erker-window type (erker + one window) took 8 pands on a layout that does not match"
+  },
+  {
+   "face": "leijnsen-3-31",
+   "types": [
+    "landlust-1938-pair-attic"
+   ],
+   "reason": "Leijnsenstraat 3-31 strip: the Haringstraat wide+narrow window pair with two squat attic windows per pand under a thick white slab; the ribbon type draws six attic lights and the erker type a front that is not there"
+  },
+  {
+   "face": "zwijgerlaan-183-195",
+   "types": [
+    "landlust-1938-pair-attic"
+   ],
+   "reason": "Zwijgerlaan 185-195: the Leijnsenstraat design (same year, width, eaves)"
+  },
+  {
+   "face": "haring-1-11",
+   "types": [
+    "landlust-1937-three-axis-four"
+   ],
+   "reason": "Haringstraat 1-11 strip: three equal windows on three rows over a wide ground window and a door; the tile-pair type draws a pair and a wall"
+  },
+  {
+   "face": "bestever-64-78",
+   "types": [
+    "landlust-1924-bestevaer-stair-block",
+    "landlust-1924-bestevaer-half-block"
+   ],
+   "reason": "Bestevaerstraat strips: the yellow-brown stair-block design on every 1923-26 pand; the tile-pair and erker types took pands of 98-128 and 141-213 on edge NCC through trees"
+  },
+  {
+   "face": "bestever-80-96",
+   "types": [
+    "landlust-1924-bestevaer-stair-block",
+    "landlust-1924-bestevaer-half-block"
+   ],
+   "reason": "Bestevaerstraat strips: the yellow-brown stair-block design on every 1923-26 pand; the tile-pair and erker types took pands of 98-128 and 141-213 on edge NCC through trees"
+  },
+  {
+   "face": "bestever-98-128",
+   "types": [
+    "landlust-1924-bestevaer-stair-block",
+    "landlust-1924-bestevaer-half-block"
+   ],
+   "reason": "Bestevaerstraat strips: the yellow-brown stair-block design on every 1923-26 pand; the tile-pair and erker types took pands of 98-128 and 141-213 on edge NCC through trees"
+  },
+  {
+   "face": "bestever-134-202",
+   "types": [
+    "landlust-1924-bestevaer-stair-block",
+    "landlust-1924-bestevaer-half-block"
+   ],
+   "reason": "Bestevaerstraat strips: the yellow-brown stair-block design on every 1923-26 pand; the tile-pair and erker types took pands of 98-128 and 141-213 on edge NCC through trees"
+  },
+  {
+   "face": "bestever-63-139",
+   "types": [
+    "landlust-1924-bestevaer-stair-block",
+    "landlust-1924-bestevaer-half-block"
+   ],
+   "reason": "Bestevaerstraat strips: the yellow-brown stair-block design on every 1923-26 pand; the tile-pair and erker types took pands of 98-128 and 141-213 on edge NCC through trees"
+  },
+  {
+   "face": "bestever-141-213",
+   "types": [
+    "landlust-1924-bestevaer-stair-block",
+    "landlust-1924-bestevaer-half-block"
+   ],
+   "reason": "Bestevaerstraat strips: the yellow-brown stair-block design on every 1923-26 pand; the tile-pair and erker types took pands of 98-128 and 141-213 on edge NCC through trees"
+  },
+  {
+   "face": "treslong-6-26",
+   "types": [
+    "landlust-1938-pair-attic"
+   ],
+   "reason": "Treslongstraat 6-20 strip: wide+narrow window pair per storey with two attic windows under a white slab, no erker: the pair-attic design of Leijnsenstraat/Zwijgerlaan 185-195"
+  },
+  {
+   "face": "treslong-30-62",
+   "types": [
+    "landlust-1937-erker-attic",
+    "landlust-1924-bestevaer-stair-block",
+    "landlust-1924-bestevaer-half-block"
+   ],
+   "reason": "Treslongstraat 30-52 are the erker + attic fronts (1937); 56-62 are the 1924 yellow-brown stair blocks of Bestevaerstraat"
+  },
+  {
+   "face": "haring-13-27",
+   "types": [
+    "landlust-1933-three-axis-tile"
+   ],
+   "reason": "Haringstraat 13-27 strip: three equal windows on two rows over a wide ground window and a door under a tile roof with dormers (the Coppelstockstraat front); the four-storey and tile-pair types were matched on year and width"
+  }
+ ]
+}

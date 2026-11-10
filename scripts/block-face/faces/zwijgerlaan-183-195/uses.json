@@ -1,0 +1,121 @@
+{
+ "street": "Willem de Zwijgerlaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012096558",
+   "addresses": [
+    "Willem de Zwijgerlaan 183"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 183-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000871472"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153896",
+   "addresses": [
+    "Willem de Zwijgerlaan 185"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 185-H",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000871476"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110829",
+   "addresses": [
+    "Willem de Zwijgerlaan 187"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 187-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000871480"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062712",
+   "addresses": [
+    "Willem de Zwijgerlaan 189"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 189-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000871484"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106765",
+   "addresses": [
+    "Willem de Zwijgerlaan 191"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 191-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000871488"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103635",
+   "addresses": [
+    "Willem de Zwijgerlaan 193"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 193-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000871492"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068152",
+   "addresses": [
+    "Willem de Zwijgerlaan 195"
+   ],
+   "groundUnits": [
+    {
+     "address": "Willem de Zwijgerlaan 195-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000871496"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

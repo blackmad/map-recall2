@@ -1,0 +1,886 @@
+{
+ "face": "callenburg-3-63",
+ "street": "Gerard Callenburgstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 44.16,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "callenburg-3-63",
+   "pands": [
+    "0363100012119108",
+    "0363100012073024",
+    "0363100012132798",
+    "0363100012098318",
+    "0363100012137010",
+    "0363100012082410",
+    "0363100012066626",
+    "0363100012063567"
+   ],
+   "passed": true,
+   "triangles": 14695
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012119108",
+   "address": "Gerard Callenburgstraat 3",
+   "builtYear": 1933,
+   "widthM": 12.85,
+   "eavesM": 10.19,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#865435",
+    "wallRaw": "#764f37",
+    "skyline": {
+     "eavesM": 10.68,
+     "eavesRow": 173,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.02,
+     "balconies": true,
+     "why": "dark open axis 0.72 m at 0.47 (light 0.19): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.72,
+       "centre": 0.47,
+       "light": 0.19
+      },
+      {
+       "widthM": 0.6,
+       "centre": 0.59,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 2.55,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#865435",
+     "evidence": "strip 2024-11-21 span 0-514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012119108",
+    "ncc": 0.433,
+    "nccRaw": 0.433,
+    "shiftM": [
+     0.35,
+     0.2
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.22 vs photo 0.44",
+     "window shape tall vs photo square",
+     "columns 6 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#865235",
+     "model": "#a46741",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.285
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.433,
+    "landlust-1933-three-axis-tile": 0.285,
+    "landlust-1933-three-axis-tile~m": 0.285,
+    "landlust-1934-slot-block~m": 0.453,
+    "landlust-1937-three-axis-four": 0.217,
+    "landlust-1937-three-axis-four~m": 0.217
+   }
+  },
+  {
+   "pandId": "0363100012073024",
+   "address": "Gerard Callenburgstraat 7",
+   "builtYear": 1933,
+   "widthM": 12.85,
+   "eavesM": 10.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b5a3d",
+    "wallRaw": "#714d35",
+    "skyline": {
+     "eavesM": 10.63,
+     "eavesRow": 175,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 1.63,
+       "centre": 0.93
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#8b5a3d",
+     "evidence": "strip 2024-11-21 span 514-1028: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012073024",
+    "ncc": 0.468,
+    "nccRaw": 0.468,
+    "shiftM": [
+     0.25,
+     0.15
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing storey band off by 0.31 mean 0.22 vs photo 0.41"
+    ],
+    "wall": {
+     "photo": "#794a2f",
+     "model": "#a86d4a",
+     "dL": 0.145
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.453
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.468,
+    "landlust-1933-three-axis-tile": 0.257,
+    "landlust-1933-three-axis-tile~m": 0.257,
+    "landlust-1934-slot-block~m": 0.477,
+    "landlust-1937-three-axis-four": 0.27,
+    "landlust-1937-three-axis-four~m": 0.27
+   }
+  },
+  {
+   "pandId": "0363100012132798",
+   "address": "Gerard Callenburgstraat 11",
+   "builtYear": 1933,
+   "widthM": 12.85,
+   "eavesM": 10.2,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f4f34",
+    "wallRaw": "#765038",
+    "skyline": {
+     "eavesM": 10.63,
+     "eavesRow": 175,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.069,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.46 (light 0.16): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.46,
+       "light": 0.16
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.57,
+       "light": 0.22
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.38,
+       "widthM": 1.68,
+       "centre": 0.93
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#7f4f34",
+     "evidence": "strip 2024-11-21 span 1028-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012132798",
+    "ncc": 0.444,
+    "nccRaw": 0.444,
+    "shiftM": [
+     0.25,
+     0.1
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.12",
+     "glazing storey band off by 0.44 mean 0.21 vs photo 0.54"
+    ],
+    "wall": {
+     "photo": "#76442b",
+     "model": "#9e6241",
+     "dL": 0.122
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.21
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.349
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.444,
+    "landlust-1933-three-axis-tile": 0.237,
+    "landlust-1933-three-axis-tile~m": 0.237,
+    "landlust-1934-slot-block~m": 0.455,
+    "landlust-1937-three-axis-four": 0.227,
+    "landlust-1937-three-axis-four~m": 0.227
+   }
+  },
+  {
+   "pandId": "0363100012098318",
+   "address": "Gerard Callenburgstraat 15",
+   "builtYear": 1933,
+   "widthM": 12.85,
+   "eavesM": 10.21,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#845333",
+    "wallRaw": "#704b32",
+    "skyline": {
+     "eavesM": 10.75,
+     "eavesRow": 170,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.036,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 2.02,
+       "centre": 0.58
+      },
+      {
+       "atM": 9.07,
+       "widthM": 1.23,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#845333",
+     "evidence": "strip 2024-11-21 span 1542-2056: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012098318",
+    "ncc": 0.471,
+    "nccRaw": 0.471,
+    "shiftM": [
+     0.2,
+     0.2
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.22 vs photo 0.33"
+    ],
+    "wall": {
+     "photo": "#794c30",
+     "model": "#a3663f",
+     "dL": 0.112
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.342
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.471,
+    "landlust-1933-three-axis-tile": 0.245,
+    "landlust-1933-three-axis-tile~m": 0.245,
+    "landlust-1934-slot-block~m": 0.468,
+    "landlust-1937-three-axis-four": 0.241,
+    "landlust-1937-three-axis-four~m": 0.241
+   }
+  },
+  {
+   "pandId": "0363100012137010",
+   "address": "Gerard Callenburgstraat 19",
+   "builtYear": 1933,
+   "widthM": 12.85,
+   "eavesM": 10.19,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#865439",
+    "wallRaw": "#714d34",
+    "skyline": {
+     "eavesM": 10.63,
+     "eavesRow": 175,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 1.8,
+       "centre": 0.92
+      },
+      {
+       "atM": 9.07,
+       "widthM": 1.35,
+       "centre": 0.65
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#865439",
+     "evidence": "strip 2024-11-21 span 2056-2570: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012137010",
+    "ncc": 0.479,
+    "nccRaw": 0.479,
+    "shiftM": [
+     0.15,
+     0.15
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29 mean 0.22 vs photo 0.41"
+    ],
+    "wall": {
+     "photo": "#875539",
+     "model": "#a46746",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.443
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.479,
+    "landlust-1933-three-axis-tile": 0.259,
+    "landlust-1933-three-axis-tile~m": 0.259,
+    "landlust-1934-slot-block~m": 0.477,
+    "landlust-1937-three-axis-four": 0.232,
+    "landlust-1937-three-axis-four~m": 0.232
+   }
+  },
+  {
+   "pandId": "0363100012082410",
+   "address": "Gerard Callenburgstraat 23",
+   "builtYear": 1933,
+   "widthM": 12.85,
+   "eavesM": 10.19,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#98613f",
+    "wallRaw": "#724d35",
+    "skyline": {
+     "eavesM": 10.65,
+     "eavesRow": 174,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 1.8,
+       "centre": 0.92
+      },
+      {
+       "atM": 9.07,
+       "widthM": 1.05,
+       "centre": 0.64
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 0.85,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#98613f",
+     "evidence": "strip 2024-11-21 span 2570-3084: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012082410",
+    "ncc": 0.457,
+    "nccRaw": 0.457,
+    "shiftM": [
+     0.15,
+     0.15
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.50 mean 0.22 vs photo 0.58",
+     "window shape tall vs photo square",
+     "columns 6 vs photo 3"
+    ],
+    "wall": {
+     "photo": "#95603d",
+     "model": "#b4734b",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.58,
+     "model": 0.22
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.326
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.457,
+    "landlust-1933-three-axis-tile": 0.263,
+    "landlust-1933-three-axis-tile~m": 0.263,
+    "landlust-1934-slot-block~m": 0.467,
+    "landlust-1937-three-axis-four": 0.217,
+    "landlust-1937-three-axis-four~m": 0.217
+   }
+  },
+  {
+   "pandId": "0363100012066626",
+   "address": "Gerard Callenburgstraat 27",
+   "builtYear": 1933,
+   "widthM": 12.85,
+   "eavesM": 10.18,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 4.14,
+    "toM": 4.14,
+    "depthM": 0.28,
+    "centre": 0.322
+   },
+   "strip": {
+    "wall": "#935f3e",
+    "wallRaw": "#704b33",
+    "skyline": {
+     "eavesM": 10.57,
+     "eavesRow": 177,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.061,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.43,
+       "widthM": 1.82,
+       "centre": 0.92
+      },
+      {
+       "atM": 9.05,
+       "widthM": 1.8,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#935f3e",
+     "evidence": "strip 2024-11-21 span 3084-3598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012066626",
+    "ncc": 0.447,
+    "nccRaw": 0.447,
+    "shiftM": [
+     0.1,
+     -0.15
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.21 vs photo 0.38"
+    ],
+    "wall": {
+     "photo": "#8d5e3f",
+     "model": "#af714a",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.38,
+     "model": 0.21
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.395
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.447,
+    "landlust-1933-three-axis-tile": 0.289,
+    "landlust-1933-three-axis-tile~m": 0.289,
+    "landlust-1934-slot-block~m": 0.445,
+    "landlust-1937-three-axis-four": 0.245,
+    "landlust-1937-three-axis-four~m": 0.245
+   }
+  },
+  {
+   "pandId": "0363100012063567",
+   "address": "Gerard Callenburgstraat 31",
+   "builtYear": 1933,
+   "widthM": 12.85,
+   "eavesM": 10.19,
+   "storeys3dbag": 4,
+   "bagBay": {
+    "fromM": 4.09,
+    "toM": 4.09,
+    "depthM": 0.25,
+    "centre": 0.318
+   },
+   "strip": {
+    "wall": "#9f6946",
+    "wallRaw": "#724f38",
+    "skyline": {
+     "eavesM": 10.55,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.19,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.44 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.44,
+       "light": 0.31
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.56,
+       "light": 0.24
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 1.8,
+       "centre": 0.91
+      },
+      {
+       "atM": 9.15,
+       "widthM": 1.9,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "landlust-1934-slot-block",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "landlust-1924-bestevaer-half-block",
+    "score": 0
+   },
+   "placement": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#9f6946",
+     "evidence": "strip 2024-11-21 span 3598-4112: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown parapet (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012063567",
+    "ncc": 0.454,
+    "nccRaw": 0.454,
+    "shiftM": [
+     0.05,
+     -0.15
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.19",
+     "glazing storey band off by 0.44 mean 0.21 vs photo 0.53"
+    ],
+    "wall": {
+     "photo": "#7b4b31",
+     "model": "#b57c56",
+     "dL": 0.186
+    },
+    "glazing": {
+     "photo": 0.53,
+     "model": 0.21
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.36
+   },
+   "challengers": {
+    "landlust-1934-slot-block": 0.454,
+    "landlust-1933-three-axis-tile": 0.285,
+    "landlust-1933-three-axis-tile~m": 0.285,
+    "landlust-1934-slot-block~m": 0.463,
+    "landlust-1937-three-axis-four": 0.22,
+    "landlust-1937-three-axis-four~m": 0.22
+   }
+  }
+ ]
+}

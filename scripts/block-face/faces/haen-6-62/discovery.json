@@ -1,0 +1,1486 @@
+{
+ "street": "Jan den Haenstraat",
+ "seed": "0363100012140027",
+ "members": [
+  "0363100012117545",
+  "0363100012107347",
+  "0363100012146143",
+  "0363100012141001",
+  "0363100012084532",
+  "0363100012141696",
+  "0363100012102574",
+  "0363100012134001",
+  "0363100012140027"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012117545 (face continues: 064916 099024 109488 143788 130626 111169 094709 106602 063511)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012140027 (face continues: 061771)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061651",
+   "reason": "frontage 162.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012062141",
+   "reason": "frontage 107.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012063203",
+   "reason": "frontage 122.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012064868",
+   "reason": "frontage 96.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012065393",
+   "reason": "frontage 64.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012065855",
+   "reason": "frontage 55.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012066007",
+   "reason": "frontage 128.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012066992",
+   "reason": "frontage 135.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012067375",
+   "reason": "frontage 117.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012068152",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012068528",
+   "reason": "frontage 82.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012071588",
+   "reason": "frontage 93.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012071754",
+   "reason": "frontage 144.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012071938",
+   "reason": "frontage 94.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012072687",
+   "reason": "frontage 89.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012072724",
+   "reason": "frontage 88.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012073086",
+   "reason": "frontage 128.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012073277",
+   "reason": "frontage 62.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012073793",
+   "reason": "frontage 59.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012074955",
+   "reason": "frontage 94.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012074974",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012077147",
+   "reason": "frontage 169.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012077897",
+   "reason": "frontage 97.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012078570",
+   "reason": "frontage 129.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012079479",
+   "reason": "frontage 42.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012081763",
+   "reason": "frontage 92.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012061629",
+   "reason": "frontage 73.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012063069",
+   "reason": "frontage 134.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012063379",
+   "reason": "frontage 106.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012063567",
+   "reason": "frontage 134.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012065649",
+   "reason": "frontage 137.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012066203",
+   "reason": "frontage 42.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012066626",
+   "reason": "frontage 134.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012069813",
+   "reason": "frontage 73.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012069920",
+   "reason": "frontage 73.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012070361",
+   "reason": "frontage 88.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012070497",
+   "reason": "frontage 73.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012071142",
+   "reason": "frontage 73.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012071966",
+   "reason": "frontage 47.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012072970",
+   "reason": "frontage 47.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012073024",
+   "reason": "frontage 134.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012073715",
+   "reason": "frontage 39.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012074709",
+   "reason": "frontage 47.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012077824",
+   "reason": "frontage 47.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012080635",
+   "reason": "frontage 74.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012083007",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012087761",
+   "reason": "frontage 204.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012087956",
+   "reason": "frontage 156.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012089525",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012089597",
+   "reason": "frontage 139.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012090526",
+   "reason": "frontage 100.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012090839",
+   "reason": "frontage 80.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012092326",
+   "reason": "frontage 78.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012092821",
+   "reason": "frontage 202.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012093972",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012094763",
+   "reason": "frontage 99.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012094828",
+   "reason": "frontage 103.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012095737",
+   "reason": "frontage 73.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012096616",
+   "reason": "frontage 181.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012096832",
+   "reason": "frontage 56.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012098396",
+   "reason": "frontage 182.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012098683",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012100357",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012100401",
+   "reason": "frontage 81.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012100954",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012103157",
+   "reason": "frontage 140.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012103635",
+   "reason": "frontage 156.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012104220",
+   "reason": "frontage 128.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012105956",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012106765",
+   "reason": "frontage 161.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012107813",
+   "reason": "frontage 89.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012082410",
+   "reason": "frontage 134.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012083022",
+   "reason": "frontage 44.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012085871",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012143887"
+  },
+  {
+   "pandId": "0363100012088035",
+   "reason": "frontage 47.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012095658",
+   "reason": "frontage 73.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012095699",
+   "reason": "frontage 106.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012096641",
+   "reason": "frontage 43.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012098318",
+   "reason": "frontage 134.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012099589",
+   "reason": "frontage 80.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012100981",
+   "reason": "frontage 44.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012101492",
+   "reason": "frontage 74.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012103314",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012067932"
+  },
+  {
+   "pandId": "0363100012103458",
+   "reason": "frontage 44.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012105359",
+   "reason": "frontage 106.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012107097",
+   "reason": "frontage 106.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012107155",
+   "reason": "frontage 134.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012108028",
+   "reason": "frontage 59.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012108701",
+   "reason": "frontage 162.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012108855",
+   "reason": "frontage 104.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012109667",
+   "reason": "frontage 133.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012112405",
+   "reason": "frontage 147.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012113082",
+   "reason": "frontage 134.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012113440",
+   "reason": "frontage 98.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012114256",
+   "reason": "frontage 133.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012115201",
+   "reason": "frontage 185.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012115570",
+   "reason": "frontage 98.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012116325",
+   "reason": "frontage 212.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012117681",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012117865",
+   "reason": "frontage 94.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012118131",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012119108",
+   "reason": "frontage 134.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012121647",
+   "reason": "frontage 128.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012122849",
+   "reason": "frontage 105.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012123427",
+   "reason": "frontage 92.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012124235",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012124337",
+   "reason": "frontage 112.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012124515",
+   "reason": "frontage 176.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012125415",
+   "reason": "frontage 196.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012125953",
+   "reason": "frontage 129.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012126004",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012128075",
+   "reason": "frontage 39.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012128652",
+   "reason": "frontage 156.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012129908",
+   "reason": "frontage 104.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012131151",
+   "reason": "frontage 55.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012131416",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012132169",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012109779",
+   "reason": "frontage 47.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012110487",
+   "reason": "frontage 106.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012112059",
+   "reason": "frontage 32.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012114811",
+   "reason": "frontage 101.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012118580",
+   "reason": "frontage 43.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012119748",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012067932"
+  },
+  {
+   "pandId": "0363100012124713",
+   "reason": "frontage 44.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012125261",
+   "reason": "frontage 44.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012125512",
+   "reason": "frontage 106.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012126078",
+   "reason": "frontage 47.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012128873",
+   "reason": "frontage 44.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012129691",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012085871"
+  },
+  {
+   "pandId": "0363100012131228",
+   "reason": "frontage 44.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012131573",
+   "reason": "frontage 44.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012132371",
+   "reason": "frontage 93.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012132905",
+   "reason": "frontage 175.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012133707",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012133746",
+   "reason": "frontage 128.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012134150",
+   "reason": "frontage 176.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012135052",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012136762",
+   "reason": "frontage 61.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012137482",
+   "reason": "frontage 94.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012137538",
+   "reason": "frontage 57.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012138498",
+   "reason": "frontage 190.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012138672",
+   "reason": "frontage 151.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012139329",
+   "reason": "frontage 157.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012139647",
+   "reason": "frontage 101.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012140401",
+   "reason": "frontage 130.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012140619",
+   "reason": "frontage 92.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012141674",
+   "reason": "frontage 103.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012142777",
+   "reason": "frontage 129.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012144291",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012145032",
+   "reason": "frontage 163.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012145269",
+   "reason": "frontage 178.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012145738",
+   "reason": "frontage 101.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012146058",
+   "reason": "frontage 101.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012146228",
+   "reason": "frontage 179.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012147833",
+   "reason": "frontage 56.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012149837",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012149997",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012151258",
+   "reason": "frontage 65.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012132798",
+   "reason": "frontage 134.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012133454",
+   "reason": "frontage 137.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012133739",
+   "reason": "frontage 44.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012135820",
+   "reason": "frontage 43.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012136106",
+   "reason": "frontage 47.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012137010",
+   "reason": "frontage 134.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012137912",
+   "reason": "frontage 106.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012141048",
+   "reason": "frontage 106.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012143360",
+   "reason": "frontage 47.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012147879",
+   "reason": "frontage 73.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012148995",
+   "reason": "frontage 44.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012151107",
+   "reason": "frontage 47.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012152159",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012154479",
+   "reason": "frontage 57.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012154577",
+   "reason": "frontage 149.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012183198",
+   "reason": "frontage 91.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012183569",
+   "reason": "frontage 85.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012183701",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012184990",
+   "reason": "frontage 88.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012188581",
+   "reason": "frontage 157.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012189695",
+   "reason": "frontage 79.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012189994",
+   "reason": "frontage 133.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012190441",
+   "reason": "frontage 83.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012190705",
+   "reason": "frontage 167.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012192720",
+   "reason": "frontage 81.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012192724",
+   "reason": "frontage 210.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012192801",
+   "reason": "frontage 83.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012192817",
+   "reason": "frontage 79.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012192884",
+   "reason": "frontage 85.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012193333",
+   "reason": "frontage 152.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012194101",
+   "reason": "frontage 77.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012195050",
+   "reason": "frontage 145.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012195399",
+   "reason": "frontage 146.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012195964",
+   "reason": "frontage 146.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012196139",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012196393",
+   "reason": "frontage 81.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012197357",
+   "reason": "frontage 145.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012198215",
+   "reason": "frontage 80.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012200538",
+   "reason": "frontage 89.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012200689",
+   "reason": "frontage 149.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012201356",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012203238",
+   "reason": "frontage 79.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012203673",
+   "reason": "frontage 165.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012203716",
+   "reason": "frontage 148.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012203892",
+   "reason": "frontage 154.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012204308",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012204836",
+   "reason": "frontage 147.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012205041",
+   "reason": "frontage 82.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012205166",
+   "reason": "frontage 79.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012205648",
+   "reason": "frontage 84.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012205708",
+   "reason": "frontage 81.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012205735",
+   "reason": "frontage 145.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012205763",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012206147",
+   "reason": "frontage 77.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012151482",
+   "reason": "frontage 47.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012152138",
+   "reason": "frontage 104.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012152219",
+   "reason": "frontage 101.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012154608",
+   "reason": "frontage 43.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012201629",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012202378",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012203142",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012206546",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012207755",
+   "reason": "frontage 145.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012208561",
+   "reason": "frontage 146.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012209025",
+   "reason": "frontage 147.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012209202",
+   "reason": "frontage 77.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012210080",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012210395",
+   "reason": "frontage 136.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012210506",
+   "reason": "frontage 169.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012210521",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012211823",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012212037",
+   "reason": "frontage 85.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012214006",
+   "reason": "frontage 146.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012214007",
+   "reason": "frontage 147.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012214707",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012214708",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012215944",
+   "reason": "frontage 146.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012216387",
+   "reason": "frontage 79.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012217251",
+   "reason": "frontage 144.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012218144",
+   "reason": "frontage 146.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012218181",
+   "reason": "frontage 87.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012218771",
+   "reason": "frontage 82.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012219084",
+   "reason": "frontage 79.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012219112",
+   "reason": "frontage 79.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012221209",
+   "reason": "frontage 212.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012221494",
+   "reason": "frontage 91.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012221793",
+   "reason": "frontage 83.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012223196",
+   "reason": "frontage 86.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012223759",
+   "reason": "frontage 170.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012225568",
+   "reason": "frontage 165.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012226035",
+   "reason": "frontage 147.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012226036",
+   "reason": "frontage 148.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012228802",
+   "reason": "frontage 155.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012229058",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012229823",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012230265",
+   "reason": "frontage 79.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012230460",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012234108",
+   "reason": "frontage 84.4 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012234355",
+   "reason": "frontage 81.8 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012235159",
+   "reason": "frontage 77.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012210446",
+   "reason": "no frontage on Jan den Haenstraat: No footprint edge faces Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012210511",
+   "reason": "frontage 158.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012214198",
+   "reason": "frontage 112.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012214199",
+   "reason": "frontage 113.9 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012214200",
+   "reason": "frontage 115.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012214201",
+   "reason": "frontage 114.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012214202",
+   "reason": "frontage 114.7 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249222",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012109488"
+  },
+  {
+   "pandId": "0363100012249223",
+   "reason": "frontage 33.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249224",
+   "reason": "frontage 33.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249225",
+   "reason": "frontage 33.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249226",
+   "reason": "frontage 33.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249227",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249228",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249229",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249230",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249231",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249232",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249233",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249234",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249235",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249236",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249237",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249238",
+   "reason": "frontage 33.1 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249239",
+   "reason": "frontage 33.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249240",
+   "reason": "frontage 33.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249241",
+   "reason": "frontage 33.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249242",
+   "reason": "frontage 33.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249243",
+   "reason": "frontage 33.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249244",
+   "reason": "frontage 33.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249251",
+   "reason": "frontage 33.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249252",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012130626"
+  },
+  {
+   "pandId": "0363100012249253",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012130626"
+  },
+  {
+   "pandId": "0363100012249254",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012130626"
+  },
+  {
+   "pandId": "0363100012249255",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012143788"
+  },
+  {
+   "pandId": "0363100012249256",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012143788"
+  },
+  {
+   "pandId": "0363100012249258",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012143788"
+  },
+  {
+   "pandId": "0363100012249259",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012143788"
+  },
+  {
+   "pandId": "0363100012249260",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012143788"
+  },
+  {
+   "pandId": "0363100012249261",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012143788"
+  },
+  {
+   "pandId": "0363100012249262",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012143788"
+  },
+  {
+   "pandId": "0363100012249263",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012099024"
+  },
+  {
+   "pandId": "0363100012249264",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012099024"
+  },
+  {
+   "pandId": "0363100012249265",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012099024"
+  },
+  {
+   "pandId": "0363100012249269",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012099024"
+  },
+  {
+   "pandId": "0363100012249270",
+   "reason": "frontage 30.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249271",
+   "reason": "frontage 30.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249272",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012109488"
+  },
+  {
+   "pandId": "0363100012249273",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012109488"
+  },
+  {
+   "pandId": "0363100012249274",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012109488"
+  },
+  {
+   "pandId": "0363100012249275",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012109488"
+  },
+  {
+   "pandId": "0363100012249276",
+   "reason": "frontage 30.2 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249277",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012109488"
+  },
+  {
+   "pandId": "0363100012249278",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012109488"
+  },
+  {
+   "pandId": "0363100012249279",
+   "reason": "frontage 30.3 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012249280",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012109488"
+  },
+  {
+   "pandId": "0363100012253767",
+   "reason": "frontage 34.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012253768",
+   "reason": "frontage 34.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012253769",
+   "reason": "frontage 34.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012253770",
+   "reason": "frontage 34.6 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012253771",
+   "reason": "frontage 34.5 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012253772",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012143788"
+  },
+  {
+   "pandId": "0363100012253775",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012064916"
+  },
+  {
+   "pandId": "0363100012253776",
+   "reason": "sightline to Jan den Haenstraat crosses 0363100012064916"
+  },
+  {
+   "pandId": "0363100012253777",
+   "reason": "frontage 33.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012253778",
+   "reason": "frontage 33.0 m from Jan den Haenstraat"
+  },
+  {
+   "pandId": "0363100012067932",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076342",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089744",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098932",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114763",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127952",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140098",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140644",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141830",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143887",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146137",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012202594",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012222102",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012117545",
+   "alongM": -86.41,
+   "widthM": 12.8,
+   "eavesM": 13.03,
+   "roofMaxM": 15.59,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012107347",
+   "alongM": -73.61,
+   "widthM": 12.79,
+   "eavesM": 13.03,
+   "roofMaxM": 15.86,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012146143",
+   "alongM": -64.02,
+   "widthM": 6.4,
+   "eavesM": 13.03,
+   "roofMaxM": 15.59,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012141001",
+   "alongM": -57.62,
+   "widthM": 6.4,
+   "eavesM": 13,
+   "roofMaxM": 15.58,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012084532",
+   "alongM": -48.01,
+   "widthM": 12.82,
+   "eavesM": 13.05,
+   "roofMaxM": 15.56,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012141696",
+   "alongM": -35.19,
+   "widthM": 12.8,
+   "eavesM": 13.01,
+   "roofMaxM": 15.59,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012102574",
+   "alongM": -22.39,
+   "widthM": 12.8,
+   "eavesM": 12.99,
+   "roofMaxM": 15.56,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012134001",
+   "alongM": -9.64,
+   "widthM": 12.8,
+   "eavesM": 12.99,
+   "roofMaxM": 16.88,
+   "storeys3dbag": 0,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012140027",
+   "alongM": 0,
+   "widthM": 6.39,
+   "eavesM": 12.96,
+   "roofMaxM": 15.59,
+   "storeys3dbag": 5,
+   "builtYear": 1935,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

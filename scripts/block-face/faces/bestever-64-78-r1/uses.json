@@ -1,0 +1,41 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:26:53.502Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012080563",
+   "addresses": [
+    "Bestevâerstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000582565"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144446",
+   "addresses": [
+    "Bestevâerstraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000582557"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

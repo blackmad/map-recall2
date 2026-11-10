@@ -1,0 +1,100 @@
+{
+ "street": "Bestevâerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:15:04.360Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012129595",
+   "addresses": [
+    "Bestevâerstraat 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 145-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000582820"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105791",
+   "addresses": [
+    "Bestevâerstraat 147",
+    "Bestevâerstraat 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 149-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582836"
+    },
+    {
+     "address": "Bestevâerstraat 147-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000582828"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117468",
+   "addresses": [
+    "Bestevâerstraat 151",
+    "Bestevâerstraat 153"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 151-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582844"
+    },
+    {
+     "address": "Bestevâerstraat 153-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582852"
+    },
+    {
+     "address": "Bestevâerstraat 153-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012103368"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104319",
+   "addresses": [
+    "Bestevâerstraat 155",
+    "Bestevâerstraat 157"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bestevâerstraat 155-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582860"
+    },
+    {
+     "address": "Bestevâerstraat 157-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000582868"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}
