@@ -29,7 +29,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#695d4d",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Goudexpert",
       "entrance": "centre",
@@ -37,9 +37,10 @@
       "stallriser": "low",
       "residentialDoor": {
        "side": "left",
-       "colour": "#2a2a2a"
+       "colour": "#e6e1d2"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=gold_buyer); fascia colour measured on the strip 2022-01-12 span 796-997"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=gold_buyer); fascia colour measured on the strip 2022-01-12 span 796-997",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {
@@ -75,7 +76,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#665d4e",
+      "colour": "#1d1b1a",
       "fascia": true,
       "name": "Cosme hairfashion",
       "entrance": "centre",
@@ -83,9 +84,10 @@
       "stallriser": "low",
       "residentialDoor": {
        "side": "left",
-       "colour": "#2a2a2a"
+       "colour": "#e6e1d2"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=cosmetics); fascia colour measured on the strip 2022-01-12 span 997-1197"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=cosmetics); fascia colour measured on the strip 2022-01-12 span 997-1197",
+      "fasciaColour": "#1d1b1a"
      }
     },
     "measuredPalette": {
@@ -121,7 +123,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#685a4b",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Losyana",
       "entrance": "centre",
@@ -131,7 +133,8 @@
        "side": "left",
        "colour": "#2a2a2a"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-01-12 span 1197-1397"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-01-12 span 1197-1397",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {
@@ -167,7 +170,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#4e4740",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Nura's Beauty",
       "entrance": "centre",
@@ -175,9 +178,10 @@
       "stallriser": "low",
       "residentialDoor": {
        "side": "left",
-       "colour": "#2a2a2a"
+       "colour": "#e6e1d2"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=beauty); fascia colour measured on the strip 2022-01-12 span 1397-1597"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=beauty); fascia colour measured on the strip 2022-01-12 span 1397-1597",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {
@@ -213,17 +217,18 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#636258",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Dapper Post",
       "entrance": "centre",
       "glazing": "split",
       "stallriser": "low",
       "residentialDoor": {
-       "side": "left",
-       "colour": "#2a2a2a"
+       "side": "right",
+       "colour": "#e6e1d2"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=convenience); fascia colour measured on the strip 2022-01-12 span 1598-1800"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=convenience); fascia colour measured on the strip 2022-01-12 span 1598-1800",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {
@@ -259,7 +264,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#4f4740",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Çiğköftem",
       "entrance": "centre",
@@ -269,7 +274,8 @@
        "side": "left",
        "colour": "#2a2a2a"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, amenity=fast_food); fascia colour measured on the strip 2022-01-12 span 1800-2007"
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=fast_food); fascia colour measured on the strip 2022-01-12 span 1800-2007",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {

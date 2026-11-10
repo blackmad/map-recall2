@@ -64,3 +64,18 @@ Ruysch 98 (pointed gable, yellow brick), 94 (white ornamental brick bands), 92 (
 
 `npx tsx scripts/look/build-chunk-wall-exposure.ts --write`, covers, bake-frontages, buurt pages, explorer-looks. `roof-golden.json` was written by the batch (CHANGED names only these faces).
 Note: some auto-place and review runs used the headless renderer without `canal-pw.sh` before I noticed the queue; every batch install ran under it.
+
+## Round 2 (2026-11-10): the Opus strip verdict applied
+
+Source: `docs/reports/dapper-oosterpark-strip-verdict-20261110.md`. Same 15 pands re-placed with `auto-place --replace` and re-installed with `compile.ts --install`
+(the batch skips a face that already has chunks); sheets re-made in the archive folder, now labelled `No <house number> · <BAG id>`.
+
+* New kit: `blockFace/reviewFronts.ts` (`<buurt>-review-fronts.json`): per-pand `ground` (door bay and arch, shopfront merged field by field, door colour/side) and
+  `overrides` (body fields, `null` removes) pins, tested in `reviewFronts.test.ts`. Absent file = byte-identical.
+* Swinden 391-401: cream `#e6e1d2` shopfront frame and fascia, cream house doors (391, 393, 397, 399), 399's house door on the right, Cosme black; the cornice is an
+  `entablature` of 1.25 m (cap 0.3 m, flush frieze).
+* Ruyschstraat: every pand has its street door (88 R, 86 L, 82 R, 80 L, 78 R arched, 76 L arched, 331 R, 339 L; 80's double leaf is drawn as one leaf); 90 has a cream shopfront
+  with a door at each side, no lower balcony, stone keystones; top-storey heads flat except 78 and 76 (`axisHeads`); cornice `#a29d95`; bricks 82 / 78 / 339 set through
+  `fit-wall-palette.ts` so the rendered wall lands on the verdict colours; the other pands keep the wall refits the first batch measured, now as palette pins.
+* Still limits: double-leaf door (80), brick frieze and carved brackets, tall tympanum heads (76, 78), the cream house door of 395 and 401 not changed (awning hid it).
+* `roof-golden.json` re-recorded: 6 Swinden pands reclassed (the deeper entablature moved their front hash), 4 intents changed, all in these faces.

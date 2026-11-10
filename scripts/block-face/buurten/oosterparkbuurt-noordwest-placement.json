@@ -1,8 +1,8 @@
 {
  "buurt": "oosterparkbuurt-noordwest",
  "library": "oud-west",
- "generatedAt": "2026-11-10T08:38:19.311Z",
- "seconds": 11.58,
+ "generatedAt": "2026-11-10T08:53:17.128Z",
+ "seconds": 64.76,
  "totals": {
   "faces": 10,
   "pands": 102,
@@ -349,10 +349,10 @@
       "0363100012155674"
      ],
      "passed": true,
-     "triangles": 4137
+     "triangles": 3825
     }
    ],
-   "seconds": 11.57,
+   "seconds": 21.41,
    "byType": {
     "oosterpark-1900-balcony-camber": 2
    },
@@ -384,7 +384,7 @@
       "0363100012165864"
      ],
      "passed": true,
-     "triangles": 6253
+     "triangles": 5909
     },
     {
      "face": "ruysch-64-124-r2",
@@ -395,10 +395,10 @@
       "0363100012154180"
      ],
      "passed": true,
-     "triangles": 8357
+     "triangles": 8237
     }
    ],
-   "seconds": 25.7,
+   "seconds": 43.33,
    "byType": {
     "oosterpark-1900-balcony-camber": 7
    },

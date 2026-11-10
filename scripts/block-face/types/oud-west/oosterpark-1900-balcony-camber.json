@@ -75,6 +75,26 @@
    "bays": [
     1
    ]
+  },
+  "axisHeads": {
+   "0": {
+    "kind": "flat",
+    "storeys": [
+     3
+    ]
+   },
+   "1": {
+    "kind": "flat",
+    "storeys": [
+     3
+    ]
+   },
+   "2": {
+    "kind": "flat",
+    "storeys": [
+     3
+    ]
+   }
   }
  },
  "crowns": {
@@ -98,7 +118,7 @@
    "door": "black",
    "stone": "#d8d3c6",
    "band": "#5a3b31",
-   "cornice": "#cfc9bb"
+   "cornice": "#a29d95"
   }
  },
  "roof": {
@@ -150,6 +170,7 @@
   "carved stone brackets under the balconies"
  ],
  "notes": [
-  "Palette approximate; each placed pand takes its own strip wall."
+  "Palette approximate; each placed pand takes its own strip wall.",
+  "Verdict 2026-11-10: top storey flat-headed under a brick lintel (Ruysch 90-80, 331, 339); 76 and 78 keep tall arched heads, so their pins remove axisHeads. Cornice grey #a29d95 (60 % of the way to the photo #716b68-#837f7b)."
  ]
 }

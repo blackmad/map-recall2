@@ -1,0 +1,122 @@
+{
+ "note": "Per-pand ground and body pins from the Opus strip verdict (src/canalRecall/blockFace/reviewFronts.ts).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012150384",
+   "type": "oosterpark-1900-balcony-camber",
+   "reason": "Ruyschstraat 88: ground storey in the strip: two windows and the street door on the right (verdict dapper-oosterpark-strip-verdict-20261110)",
+   "ground": {
+    "doorBay": 2
+   }
+  },
+  {
+   "pandId": "0363100012165864",
+   "type": "oosterpark-1900-balcony-camber",
+   "reason": "Ruyschstraat 86: ground storey in the strip: two windows and the street door on the left (verdict dapper-oosterpark-strip-verdict-20261110)",
+   "ground": {
+    "doorBay": 0
+   }
+  },
+  {
+   "pandId": "0363100012158466",
+   "type": "oosterpark-1900-balcony-camber",
+   "reason": "Ruyschstraat 82: ground storey in the strip: two windows and the street door on the right (verdict dapper-oosterpark-strip-verdict-20261110)",
+   "ground": {
+    "doorBay": 2
+   }
+  },
+  {
+   "pandId": "0363100012160930",
+   "type": "oosterpark-1900-balcony-camber",
+   "reason": "Ruyschstraat 80: ground storey in the strip: two windows and the street door on the left; 80's double leaf is drawn as one leaf (kit limit) (verdict dapper-oosterpark-strip-verdict-20261110)",
+   "ground": {
+    "doorBay": 0
+   }
+  },
+  {
+   "pandId": "0363100012163039",
+   "type": "oosterpark-1900-balcony-camber",
+   "reason": "Ruyschstraat 78: ground storey in the strip: two windows and the street door on the right, round-arched (verdict dapper-oosterpark-strip-verdict-20261110)",
+   "ground": {
+    "doorBay": 2,
+    "doorArch": {
+     "span": 1.1,
+     "apex": 2.9
+    }
+   },
+   "overrides": {
+    "axisHeads": null
+   }
+  },
+  {
+   "pandId": "0363100012154180",
+   "type": "oosterpark-1900-balcony-camber",
+   "reason": "Ruyschstraat 76: ground storey in the strip: two windows and the street door on the left, round-arched (verdict dapper-oosterpark-strip-verdict-20261110)",
+   "ground": {
+    "doorBay": 0,
+    "doorArch": {
+     "span": 1.1,
+     "apex": 2.9
+    }
+   },
+   "overrides": {
+    "axisHeads": null
+   }
+  },
+  {
+   "pandId": "0363100012161684",
+   "type": "oosterpark-1900-balcony-camber",
+   "reason": "Ruyschstraat 331: ground storey in the strip: two windows and the street door on the right (verdict dapper-oosterpark-strip-verdict-20261110)",
+   "ground": {
+    "doorBay": 2
+   }
+  },
+  {
+   "pandId": "0363100012155674",
+   "type": "oosterpark-1900-balcony-camber",
+   "reason": "Ruyschstraat 339: ground storey in the strip: two windows and the street door on the left (verdict dapper-oosterpark-strip-verdict-20261110)",
+   "ground": {
+    "doorBay": 0
+   }
+  },
+  {
+   "pandId": "0363100012159820",
+   "type": "oosterpark-1900-balcony-camber",
+   "reason": "Ruyschstraat 90: white shopfront with a door at each side; no balcony on the lower upper storey (plain centre window); white keystones/impost blocks at the arches",
+   "ground": {
+    "shopfront": {
+     "colour": "#e6e1d2",
+     "fascia": true,
+     "entrance": "left",
+     "glazing": "transom",
+     "stallriser": "low",
+     "residentialDoor": {
+      "side": "right",
+      "colour": "#e6e1d2"
+     },
+     "evidence": "Ruyschstraat 90, strip 2023-01-02: white timber shopfront across the full width, a door at each side, wide glazing with a transom row, white fascia"
+    }
+   },
+   "overrides": {
+    "balconies": {
+     "storeys": [
+      2,
+      3
+     ],
+     "bays": [
+      1
+     ]
+    },
+    "windowHead": {
+     "kind": "segmental",
+     "archRing": {
+      "colour": "stone",
+      "style": "solid",
+      "keystone": true
+     }
+    }
+   }
+  }
+ ]
+}

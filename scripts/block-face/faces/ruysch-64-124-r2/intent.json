@@ -30,6 +30,12 @@
     "measuredPalette": {
      "brick": "#705e58",
      "evidence": "strip 2023-01-02 span 1774-1998: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#58504e"
+    },
+    "ground": {
+     "doorBay": 2
     }
    },
    "groundFloor": {
@@ -42,26 +48,6 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "3 window axes",
-    "identicalBays": "centre axis: French windows with balconettes on every upper storey",
-    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
-    "symmetry": "symmetric about the centre axis",
-    "groundFloor": "shop per house",
-    "signage": "per house",
-    "roofline": "cream cornice over a brick frieze; slate mansard; one white box dormer",
-    "photoRows": [
-     1,
-     3,
-     3,
-     3
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "iron balconette railings are drawn as the kit balcony",
-     "brick frieze under the cornice",
-     "carved stone brackets under the balconies"
-    ],
     "citation": "auto-place: oosterpark-1900-balcony-camber scored 1 on stucco 1, columns 1; strip 2023-01-02 span 1774-1998"
    }
   },
@@ -77,6 +63,9 @@
     },
     "paletteOverrides": {
      "brick": "#534a47"
+    },
+    "ground": {
+     "doorBay": 0
     }
    },
    "groundFloor": {
@@ -89,26 +78,6 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "3 window axes",
-    "identicalBays": "centre axis: French windows with balconettes on every upper storey",
-    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
-    "symmetry": "symmetric about the centre axis",
-    "groundFloor": "shop per house",
-    "signage": "per house",
-    "roofline": "cream cornice over a brick frieze; slate mansard; one white box dormer",
-    "photoRows": [
-     1,
-     3,
-     3,
-     3
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "iron balconette railings are drawn as the kit balcony",
-     "brick frieze under the cornice",
-     "carved stone brackets under the balconies"
-    ],
     "citation": "auto-place: oosterpark-1900-balcony-camber scored 1 on stucco 1, columns 1; strip 2023-01-02 span 1998-2222"
    }
   },
@@ -121,6 +90,19 @@
     "measuredPalette": {
      "brick": "#714e48",
      "evidence": "strip 2023-01-02 span 2222-2445: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#5c3f3a"
+    },
+    "ground": {
+     "doorBay": 2,
+     "doorArch": {
+      "span": 1.1,
+      "apex": 2.9
+     }
+    },
+    "overrides": {
+     "axisHeads": null
     }
    },
    "groundFloor": {
@@ -133,26 +115,6 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "3 window axes",
-    "identicalBays": "centre axis: French windows with balconettes on every upper storey",
-    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
-    "symmetry": "symmetric about the centre axis",
-    "groundFloor": "shop per house",
-    "signage": "per house",
-    "roofline": "cream cornice over a brick frieze; slate mansard; one white box dormer",
-    "photoRows": [
-     1,
-     3,
-     3,
-     3
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "iron balconette railings are drawn as the kit balcony",
-     "brick frieze under the cornice",
-     "carved stone brackets under the balconies"
-    ],
     "citation": "auto-place: oosterpark-1900-balcony-camber scored 1 on stucco 1, columns 1; strip 2023-01-02 span 2222-2445"
    }
   },
@@ -168,6 +130,16 @@
     },
     "paletteOverrides": {
      "brick": "#433731"
+    },
+    "ground": {
+     "doorBay": 0,
+     "doorArch": {
+      "span": 1.1,
+      "apex": 2.9
+     }
+    },
+    "overrides": {
+     "axisHeads": null
     }
    },
    "groundFloor": {
@@ -180,26 +152,6 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "3 window axes",
-    "identicalBays": "centre axis: French windows with balconettes on every upper storey",
-    "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
-    "symmetry": "symmetric about the centre axis",
-    "groundFloor": "shop per house",
-    "signage": "per house",
-    "roofline": "cream cornice over a brick frieze; slate mansard; one white box dormer",
-    "photoRows": [
-     1,
-     3,
-     3,
-     3
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "iron balconette railings are drawn as the kit balcony",
-     "brick frieze under the cornice",
-     "carved stone brackets under the balconies"
-    ],
     "citation": "auto-place: oosterpark-1900-balcony-camber scored 1 on stucco 1, columns 1; strip 2023-01-02 span 2445-2667"
    }
   }

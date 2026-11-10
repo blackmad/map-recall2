@@ -3,7 +3,7 @@
  "street": "Eerste Van Swindenstraat",
  "library": "oud-west",
  "stripDate": "2022-01-12",
- "seconds": 14.38,
+ "seconds": 26.79,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -25,7 +25,7 @@
     "0363100012161671"
    ],
    "passed": true,
-   "triangles": 10989
+   "triangles": 10941
   }
  ],
  "pands": [
@@ -314,7 +314,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#695d4d",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Goudexpert",
       "entrance": "centre",
@@ -322,9 +322,10 @@
       "stallriser": "low",
       "residentialDoor": {
        "side": "left",
-       "colour": "#2a2a2a"
+       "colour": "#e6e1d2"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=gold_buyer); fascia colour measured on the strip 2022-01-12 span 796-997"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=gold_buyer); fascia colour measured on the strip 2022-01-12 span 796-997",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {
@@ -333,36 +334,37 @@
     }
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 391 (Goudexpert): cream painted shopfront and cream house door"
    ],
    "likeness": {
     "pandId": "0363100012159406",
-    "ncc": 0.573,
-    "nccRaw": 0.573,
+    "ncc": 0.51,
+    "nccRaw": 0.51,
     "shiftM": [
-     0.2,
-     0.2
+     0.25,
+     -0.15
     ],
-    "usable": 0.97,
+    "usable": 0.96,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.46 mean 0.46 vs photo 0.85"
+     "glazing storey band off by 0.23 mean 0.47 vs photo 0.29"
     ],
     "wall": {
-     "photo": "#987864",
+     "photo": "#9b7b69",
      "model": "#9b7a66",
-     "dL": 0.01
+     "dL": -0.006
     },
     "glazing": {
-     "photo": 0.85,
-     "model": 0.46
+     "photo": 0.29,
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.544
+    "iou": 0.583
    },
    "challengers": {}
   },
@@ -423,7 +425,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#665d4e",
+      "colour": "#1d1b1a",
       "fascia": true,
       "name": "Cosme hairfashion",
       "entrance": "centre",
@@ -431,9 +433,10 @@
       "stallriser": "low",
       "residentialDoor": {
        "side": "left",
-       "colour": "#2a2a2a"
+       "colour": "#e6e1d2"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=cosmetics); fascia colour measured on the strip 2022-01-12 span 997-1197"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=cosmetics); fascia colour measured on the strip 2022-01-12 span 997-1197",
+      "fasciaColour": "#1d1b1a"
      }
     },
     "measuredPalette": {
@@ -442,21 +445,22 @@
     }
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 393 (Cosme): black fascia and frame, cream house door"
    ],
    "likeness": {
     "pandId": "0363100012158925",
-    "ncc": 0.467,
-    "nccRaw": 0.467,
+    "ncc": 0.415,
+    "nccRaw": 0.415,
     "shiftM": [
      0.2,
-     0.2
+     -0.1
     ],
     "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.56 mean 0.46 vs photo 0.62"
+     "glazing storey band off by 0.52 mean 0.47 vs photo 0.63"
     ],
     "wall": {
      "photo": "#7f6757",
@@ -464,14 +468,14 @@
      "dL": 0.076
     },
     "glazing": {
-     "photo": 0.62,
-     "model": 0.46
+     "photo": 0.63,
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.605
+    "iou": 0.645
    },
    "challengers": {
     "clercq-e-corbel-brick": 0.124,
@@ -531,7 +535,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#685a4b",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Losyana",
       "entrance": "centre",
@@ -541,7 +545,8 @@
        "side": "left",
        "colour": "#2a2a2a"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-01-12 span 1197-1397"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-01-12 span 1197-1397",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {
@@ -550,21 +555,22 @@
     }
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 395: cream painted shopfront (awning hides the door)"
    ],
    "likeness": {
     "pandId": "0363100012165201",
-    "ncc": 0.481,
-    "nccRaw": 0.481,
+    "ncc": 0.405,
+    "nccRaw": 0.405,
     "shiftM": [
      0.2,
-     0.2
+     -0.1
     ],
-    "usable": 0.97,
+    "usable": 0.96,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing  mean 0.46 vs photo 0.26"
+     "glazing  mean 0.47 vs photo 0.28"
     ],
     "wall": {
      "photo": "#947766",
@@ -572,14 +578,14 @@
      "dL": 0.025
     },
     "glazing": {
-     "photo": 0.26,
-     "model": 0.46
+     "photo": 0.28,
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.542
+    "iou": 0.555
    },
    "challengers": {
     "clercq-e-corbel-brick": 0.089,
@@ -634,7 +640,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#4e4740",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Nura's Beauty",
       "entrance": "centre",
@@ -642,9 +648,10 @@
       "stallriser": "low",
       "residentialDoor": {
        "side": "left",
-       "colour": "#2a2a2a"
+       "colour": "#e6e1d2"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=beauty); fascia colour measured on the strip 2022-01-12 span 1397-1597"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=beauty); fascia colour measured on the strip 2022-01-12 span 1397-1597",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {
@@ -653,21 +660,22 @@
     }
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 397: cream shopfront, house door at the left as photographed"
    ],
    "likeness": {
     "pandId": "0363100012163378",
-    "ncc": 0.534,
-    "nccRaw": 0.534,
+    "ncc": 0.499,
+    "nccRaw": 0.499,
     "shiftM": [
      0.2,
-     0.15
+     -0.15
     ],
-    "usable": 0.97,
+    "usable": 0.96,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.22 mean 0.46 vs photo 0.28"
+     "glazing storey band off by 0.21 mean 0.47 vs photo 0.31"
     ],
     "wall": {
      "photo": "#8f7261",
@@ -675,14 +683,14 @@
      "dL": 0.075
     },
     "glazing": {
-     "photo": 0.28,
-     "model": 0.46
+     "photo": 0.31,
+     "model": 0.47
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.59
+    "iou": 0.609
    },
    "challengers": {
     "clercq-e-corbel-brick": 0.085,
@@ -742,17 +750,18 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#636258",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Dapper Post",
       "entrance": "centre",
       "glazing": "split",
       "stallriser": "low",
       "residentialDoor": {
-       "side": "left",
-       "colour": "#2a2a2a"
+       "side": "right",
+       "colour": "#e6e1d2"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, shop=convenience); fascia colour measured on the strip 2022-01-12 span 1598-1800"
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=convenience); fascia colour measured on the strip 2022-01-12 span 1598-1800",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {
@@ -761,36 +770,37 @@
     }
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 399 (Dapper Post): shop double door at the left, white house door at the far right"
    ],
    "likeness": {
     "pandId": "0363100012236602",
-    "ncc": 0.528,
-    "nccRaw": 0.528,
+    "ncc": 0.418,
+    "nccRaw": 0.418,
     "shiftM": [
-     0.15,
-     0.15
+     0.2,
+     -0.15
     ],
     "usable": 0.97,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.30 mean 0.47 vs photo 0.59"
+     "glazing  mean 0.48 vs photo 0.30"
     ],
     "wall": {
-     "photo": "#937666",
+     "photo": "#947768",
      "model": "#a68c7e",
-     "dL": 0.084
+     "dL": 0.078
     },
     "glazing": {
-     "photo": 0.59,
-     "model": 0.47
+     "photo": 0.3,
+     "model": 0.48
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.666
+    "iou": 0.629
    },
    "challengers": {}
   },
@@ -845,7 +855,7 @@
     "type": "dapper-1882-plain-dormer",
     "ground": {
      "shopfront": {
-      "colour": "#4f4740",
+      "colour": "#e6e1d2",
       "fascia": true,
       "name": "Çiğköftem",
       "entrance": "centre",
@@ -855,7 +865,8 @@
        "side": "left",
        "colour": "#2a2a2a"
       },
-      "evidence": "auto-place: osm-only (winkelfunctie, amenity=fast_food); fascia colour measured on the strip 2022-01-12 span 1800-2007"
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=fast_food); fascia colour measured on the strip 2022-01-12 span 1800-2007",
+      "fasciaColour": "#e6e1d2"
      }
     },
     "measuredPalette": {
@@ -864,34 +875,37 @@
     }
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 401: cream painted shopfront"
    ],
    "likeness": {
     "pandId": "0363100012161671",
-    "ncc": 0.581,
-    "nccRaw": 0.581,
+    "ncc": 0.567,
+    "nccRaw": 0.567,
     "shiftM": [
      0.1,
-     0.3
+     -0.1
     ],
-    "usable": 0.94,
+    "usable": 0.92,
     "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.40 mean 0.49 vs photo 0.80"
+    ],
     "wall": {
-     "photo": "#745c4d",
+     "photo": "#755c4e",
      "model": "#927669",
-     "dL": 0.114
+     "dL": 0.11
     },
     "glazing": {
-     "photo": 0.42,
-     "model": 0.47
+     "photo": 0.8,
+     "model": 0.49
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": 3
     },
-    "iou": 0.715
+    "iou": 0.597
    },
    "challengers": {}
   },

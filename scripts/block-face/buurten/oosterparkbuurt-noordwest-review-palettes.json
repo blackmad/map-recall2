@@ -1,0 +1,77 @@
+{
+ "note": "Reviewer palette pins (src/canalRecall/blockFace/reviewPalettes.ts), levels from the Opus strip verdict.",
+ "pins": [
+  {
+   "pandId": "0363100012158466",
+   "type": "oosterpark-1900-balcony-camber",
+   "palette": {
+    "brick": "#58504e"
+   },
+   "reason": "Ruyschstraat 82: photo #5f514d, model #7a6660 too light; verdict 60 % of the way; brick set through fit-wall-palette.ts so the rendered wall lands on the verdict target #6a5955"
+  },
+  {
+   "pandId": "0363100012163039",
+   "type": "oosterpark-1900-balcony-camber",
+   "palette": {
+    "brick": "#5c3f3a"
+   },
+   "reason": "Ruyschstraat 78 (red brick): photo #60433e, model #7e5750 too light; brick set through fit-wall-palette.ts so the rendered wall lands on the verdict target #6c4b45"
+  },
+  {
+   "pandId": "0363100012155674",
+   "type": "oosterpark-1900-balcony-camber",
+   "palette": {
+    "brick": "#514d4b"
+   },
+   "reason": "Ruyschstraat 339: photo #5a504c, model #76645d too light; brick set through fit-wall-palette.ts so the rendered wall lands on the verdict target #655853"
+  },
+  {
+   "pandId": "0363100012159820",
+   "type": "oosterpark-1900-balcony-camber",
+   "palette": {
+    "brick": "#3b3836"
+   },
+   "reason": "Ruyschstraat 90: the wall refit the batch measured on the first install (review wall check: photo vs model through the city tint), kept as a pin so the replacement run reproduces the sheet the verdict read"
+  },
+  {
+   "pandId": "0363100012150384",
+   "type": "oosterpark-1900-balcony-camber",
+   "palette": {
+    "brick": "#373230"
+   },
+   "reason": "Ruyschstraat 88: the wall refit the batch measured on the first install (review wall check: photo vs model through the city tint), kept as a pin so the replacement run reproduces the sheet the verdict read"
+  },
+  {
+   "pandId": "0363100012165864",
+   "type": "oosterpark-1900-balcony-camber",
+   "palette": {
+    "brick": "#423c39"
+   },
+   "reason": "Ruyschstraat 86: the wall refit the batch measured on the first install (review wall check: photo vs model through the city tint), kept as a pin so the replacement run reproduces the sheet the verdict read"
+  },
+  {
+   "pandId": "0363100012160930",
+   "type": "oosterpark-1900-balcony-camber",
+   "palette": {
+    "brick": "#534a47"
+   },
+   "reason": "Ruyschstraat 80: the wall refit the batch measured on the first install (review wall check: photo vs model through the city tint), kept as a pin so the replacement run reproduces the sheet the verdict read"
+  },
+  {
+   "pandId": "0363100012154180",
+   "type": "oosterpark-1900-balcony-camber",
+   "palette": {
+    "brick": "#433731"
+   },
+   "reason": "Ruyschstraat 76: the wall refit the batch measured on the first install (review wall check: photo vs model through the city tint), kept as a pin so the replacement run reproduces the sheet the verdict read"
+  },
+  {
+   "pandId": "0363100012161684",
+   "type": "oosterpark-1900-balcony-camber",
+   "palette": {
+    "brick": "#4a4645"
+   },
+   "reason": "Ruyschstraat 331: the wall refit the batch measured on the first install (review wall check: photo vs model through the city tint), kept as a pin so the replacement run reproduces the sheet the verdict read"
+  }
+ ]
+}

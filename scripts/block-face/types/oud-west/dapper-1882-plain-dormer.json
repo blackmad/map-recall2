@@ -58,7 +58,12 @@
    2.85,
    2.85,
    2.85
-  ]
+  ],
+  "entablature": {
+   "rise": 1.25,
+   "cap": 0.3,
+   "frieze": "trim"
+  }
  },
  "crowns": {
   "pediment-dormer": {
@@ -108,8 +113,8 @@
   "photoGables": 0,
   "schemaLimits": [
    "iron wall anchors",
-   "cornice frieze panels",
-   "skylights in the mansard"
+   "skylights in the mansard",
+   "cornice frieze panels (the frieze is a flush band)"
   ]
  },
  "evidence": [
@@ -128,8 +133,8 @@
  ],
  "schemaLimits": [
   "iron wall anchors",
-  "cornice frieze panels",
-  "skylights in the mansard"
+  "skylights in the mansard",
+  "cornice frieze panels (the frieze is a flush band)"
  ],
  "notes": [
   "Palette: approximate; each placed pand takes its own trim-normalised strip wall."
