@@ -133,10 +133,19 @@ for (const c of [...usable].sort((a, b) => score(b) - score(a) || a.pandId.local
   perFace.set(c.face, (perFace.get(c.face) ?? 0) + 1); picked.push(c); if (c.truth.shopfront) shops++;
 }
 for (const c of picked) {
-  const img = sharp(c.image).extract({left: c.px[0], top: 0, width: c.widthPx, height: c.heightPx});
+  // Jev needs 280..1568 px per side and never resizes: a front narrower than 300/1400 of its height is widened
+  // symmetrically into its neighbours (the questions ask about the house in the middle) before scaling.
+  const minW = Math.ceil(c.heightPx * 300 / 1400);
+  if (c.widthPx < minW) {
+    const full = (await sharp(c.image).metadata()).width!, mid = (c.px[0] + c.px[1]) / 2;
+    const left = Math.max(0, Math.min(full - minW, Math.round(mid - minW / 2)));
+    c.cropPx = [left, left + minW]; c.widened = true;
+  } else c.cropPx = c.px;
+  const cw = c.cropPx[1] - c.cropPx[0];
+  const img = sharp(c.image).extract({left: c.cropPx[0], top: 0, width: cw, height: c.heightPx});
   // Within Jev's 280..1568 px per side: scale so the short side is >= 320 and the long side <= 1400.
-  const s = Math.min(1400 / Math.max(c.widthPx, c.heightPx), Math.max(1, 320 / Math.min(c.widthPx, c.heightPx)));
-  const w = Math.round(c.widthPx * s), hgt = Math.round(c.heightPx * s);
+  const s = Math.min(1400 / Math.max(cw, c.heightPx), Math.max(1, 300 / Math.min(cw, c.heightPx)));
+  const w = Math.round(cw * s), hgt = Math.round(c.heightPx * s);
   c.crop = {file: `crops/${c.pandId}.jpg`, width: w, height: hgt};
   await img.resize(w, hgt).jpeg({quality: 88}).toFile(path.join(OUT, c.crop.file));
 }
