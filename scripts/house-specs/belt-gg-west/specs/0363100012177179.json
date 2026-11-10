@@ -1,0 +1,257 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177179",
+ "address": "Herengracht 259",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Herengracht",
+    "storeys": 5,
+    "bays": 3,
+    "storeyHeights": [
+     4.6,
+     2.9,
+     2.8,
+     2.7,
+     2.6
+    ],
+    "windows": "sash",
+    "windowSurround": "full-frame",
+    "windowHeights": [
+     0.72,
+     0.72,
+     0.72,
+     0.72,
+     0.7
+    ],
+    "headLines": [
+     0.86,
+     0.86,
+     0.86,
+     0.86,
+     0.84
+    ],
+    "windowShare": 0.55,
+    "cornice": "heavy",
+    "gable": "cornice",
+    "doorBay": 2,
+    "basement": "none",
+    "hoist": false
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "source": "front",
+   "evidence": "Keizersgracht 258 (2021-01-22 strip): sky over the plain cornice from the quay; no roof face shows, so the front gives a flat top at the cornice",
+   "form": "flat"
+  },
+  "palette": {
+   "brick": "#e4e1d8",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "wallMaterial": "stucco"
+  },
+  "notes": [
+   "type ggw-1760-plain-cornice: crown none, mirrored, palette dark-brown-brick + measured brick #e4e1d8",
+   "type deviations: storeys 5 (type: 4); cornice \"heavy\" (type: \"simple\"); storeyHeights [4.6,2.9,2.8,2.7,2.6] (type: [4.6,3.1,2.4,2.4]); windowHeights [0.72,0.72,0.72,0.72,0.7] (type: [0.74,0.83,0.83,0.62]); headLines [0.86,0.86,0.86,0.86,0.84] (type: [0.82,0.9,0.9,0.75])"
+  ]
+ },
+ "provenance": {
+  "fronts/0/partyClip": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/id": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/street": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/storeys": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/windows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/windowSurround": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/windowHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/headLines": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/windowShare": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/gable": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/doorBay": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/basement": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "fronts/0/hoist": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "roof/material": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip herengracht-245-261 2021-01-22 (40 px/m, gridded crop): the roof the front implies, not 3DBAG",
+   "at": "2021-01-22"
+  },
+  "roof/evidence": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "palette/frame": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "palette/door": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "palette/stone": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "palette/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "palette/stoneMaterial": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "notes": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "facts/pui": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/herengracht-245-261/strip.json",
+   "at": "2021-01-22"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip herengracht-245-261 2021-01-22 (40 px/m, gridded crop): sky over the cornice from the quay, no roof face",
+   "at": "2021-01-22"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip herengracht-245-261 2021-01-22 (40 px/m, gridded crop): white-painted stucco front",
+   "at": "2021-01-22"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "facade",
+   "what": "the iron balconettes of the first floor are not drawn"
+  },
+  {
+   "component": "facade",
+   "what": "the broad eared white frames are drawn as plain full frames"
+  },
+  {
+   "component": "windows",
+   "what": "segment-headed windows under moulded hoods on every upper storey and a wide arched shop window at the ground (Herengracht 259, 1905)"
+  }
+ ],
+ "facts": {
+  "pui": "residential"
+ }
+}

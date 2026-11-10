@@ -1,0 +1,246 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "herengracht-245-261-b4",
+ "street": "Herengracht",
+ "sources": [
+  {
+   "id": "strip-2021-01-22",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-22",
+   "image": "staging/block-face/herengracht-245-261/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane belt-gg-west-build-20261110 (hand-typed from the 2021-01-22 strip, gridded crops at 40 px/m)",
+  "passes": 1,
+  "note": "a spec run, not an installed face: house:from-face --face-file turns each house into a HouseSpec (recipe route)"
+ },
+ "types": [
+  "ggw-1700-neck-bell-gable",
+  "ggw-1760-plain-cornice"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "sky over the cornices from the quay"
+  }
+ },
+ "houses": [
+  {
+   "pandId": "0363100012177515",
+   "slug": "herengracht-177515",
+   "address": "Herengracht 245A",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "storeyHeights": [
+      3.4,
+      2.5,
+      2.4,
+      2.4
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#323131",
+     "evidence": "strip 2021-01-22 span 0-196 read by eye: black-painted brick (raw #42423f with white frames mixed in)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-22",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-22 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-22 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012177362",
+   "slug": "herengracht-177362",
+   "address": "Herengracht 247",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "bays": 2,
+     "storeyHeights": [
+      4.4,
+      3.0,
+      2.8,
+      2.7
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#534b42",
+     "evidence": "strip 2021-01-22 span 196-324: trim-normalised wall (auto-place.json)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-22",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-22 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-22 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 2 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012171305",
+   "slug": "herengracht-171305",
+   "address": "Herengracht 249",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "tall-neck",
+    "mirror": true,
+    "overrides": {
+     "storeyHeights": [
+      5.0,
+      3.1,
+      2.9,
+      2.6
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#59554d",
+     "evidence": "strip 2021-01-22 span 391-598: trim-normalised wall (auto-place.json)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-22",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-22 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-22 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012171304",
+   "slug": "herengracht-171304",
+   "address": "Herengracht 251A",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "bell",
+    "mirror": true,
+    "overrides": {
+     "storeyHeights": [
+      4.6,
+      3.0,
+      2.9,
+      2.7
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#3f3833",
+     "evidence": "strip 2021-01-22 span 598-798 read by eye: very dark brown brick in shade (wallRaw #4e4843 includes the white frames; preview at #4e4843 read dL +0.15)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-22",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-22 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-22 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012177179",
+   "slug": "herengracht-177179",
+   "address": "Herengracht 259",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "mirror": true,
+    "overrides": {
+     "storeys": 5,
+     "cornice": "heavy",
+     "storeyHeights": [
+      4.6,
+      2.9,
+      2.8,
+      2.7,
+      2.6
+     ],
+     "windowHeights": [
+      0.72,
+      0.72,
+      0.72,
+      0.72,
+      0.7
+     ],
+     "headLines": [
+      0.86,
+      0.86,
+      0.86,
+      0.86,
+      0.84
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#e4e1d8",
+     "evidence": "strip 2021-01-22 span 2212-2463 read by eye: white-painted stucco (the trim-normalised #949b9a is the shade)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-22",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-22 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-22 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012177169",
+   "slug": "herengracht-177169",
+   "address": "Herengracht 261",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "neck",
+    "overrides": {
+     "storeys": 3,
+     "bays": 2,
+     "storeyHeights": [
+      4.2,
+      3.2,
+      3.0
+     ],
+     "windowHeights": [
+      0.6,
+      0.72,
+      0.72
+     ],
+     "headLines": [
+      0.86,
+      0.86,
+      0.86
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#514b47",
+     "evidence": "strip 2021-01-22 span 2463-2673: wallRaw (dark brick)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-22",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-22 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-22 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 2 as on the photo"
+   }
+  }
+ ]
+}
