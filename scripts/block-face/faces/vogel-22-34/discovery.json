@@ -1,0 +1,788 @@
+{
+ "street": "Derde Vogelstraat",
+ "seed": "0363100012133967",
+ "members": [
+  "0363100012116446",
+  "0363100012105093",
+  "0363100012123312",
+  "0363100012134789",
+  "0363100012133967"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012148706 9.1 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012144561 11.9 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062060",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012092401"
+  },
+  {
+   "pandId": "0363100012062882",
+   "reason": "frontage 74.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062919",
+   "reason": "frontage 42.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063945",
+   "reason": "frontage 73.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012064187",
+   "reason": "frontage 45.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065099",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012123312"
+  },
+  {
+   "pandId": "0363100012065299",
+   "reason": "frontage 73.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065314",
+   "reason": "frontage 40.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065957",
+   "reason": "frontage 70.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012066995",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012137372"
+  },
+  {
+   "pandId": "0363100012067750",
+   "reason": "frontage 56.4 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012068684",
+   "reason": "frontage 96.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012069851",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012150171"
+  },
+  {
+   "pandId": "0363100012071049",
+   "reason": "frontage 70.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012072678",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012084589"
+  },
+  {
+   "pandId": "0363100012073659",
+   "reason": "frontage 56.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076424",
+   "reason": "frontage 96.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076655",
+   "reason": "frontage 83.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076808",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012099577"
+  },
+  {
+   "pandId": "0363100012076999",
+   "reason": "frontage 91.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078199",
+   "reason": "frontage 106.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078259",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012062060"
+  },
+  {
+   "pandId": "0363100012078306",
+   "reason": "frontage 40.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079189",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012083019"
+  },
+  {
+   "pandId": "0363100012079324",
+   "reason": "frontage 47.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079661",
+   "reason": "frontage 89.5 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079781",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012079189"
+  },
+  {
+   "pandId": "0363100012079816",
+   "reason": "frontage 106.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080054",
+   "reason": "frontage 73.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012081710",
+   "reason": "frontage 40.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012082395",
+   "reason": "frontage 41.5 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012082673",
+   "reason": "frontage 89.4 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083174",
+   "reason": "frontage 96.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084233",
+   "reason": "frontage 89.4 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084318",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012080292"
+  },
+  {
+   "pandId": "0363100012084589",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012106658"
+  },
+  {
+   "pandId": "0363100012085239",
+   "reason": "frontage 96.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071224",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012105876"
+  },
+  {
+   "pandId": "0363100012071462",
+   "reason": "no frontage on Derde Vogelstraat: No footprint edge faces Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012073375",
+   "reason": "frontage 80.5 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079772",
+   "reason": "frontage 51.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083876",
+   "reason": "no frontage on Derde Vogelstraat: No footprint edge faces Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083966",
+   "reason": "frontage 36.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085288",
+   "reason": "no frontage on Derde Vogelstraat: No footprint edge faces Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086118",
+   "reason": "frontage 75.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086230",
+   "reason": "frontage 96.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086231",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012116509"
+  },
+  {
+   "pandId": "0363100012086556",
+   "reason": "frontage 52.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086814",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012134789"
+  },
+  {
+   "pandId": "0363100012087612",
+   "reason": "frontage 41.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087867",
+   "reason": "frontage 73.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088645",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012099269"
+  },
+  {
+   "pandId": "0363100012091188",
+   "reason": "frontage 40.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091593",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012106782"
+  },
+  {
+   "pandId": "0363100012092401",
+   "reason": "no frontage on Derde Vogelstraat: No footprint edge faces Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092462",
+   "reason": "frontage 73.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092948",
+   "reason": "frontage 93.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012094588",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012085288"
+  },
+  {
+   "pandId": "0363100012096215",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012085288"
+  },
+  {
+   "pandId": "0363100012096696",
+   "reason": "frontage 70.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097156",
+   "reason": "frontage 42.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097544",
+   "reason": "frontage 80.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097822",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012080292"
+  },
+  {
+   "pandId": "0363100012097992",
+   "reason": "frontage 52.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012098785",
+   "reason": "frontage 96.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012099577",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012100692"
+  },
+  {
+   "pandId": "0363100012100260",
+   "reason": "frontage 96.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100504",
+   "reason": "frontage 52.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104456",
+   "reason": "frontage 88.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104899",
+   "reason": "frontage 57.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106658",
+   "reason": "no frontage on Derde Vogelstraat: No footprint edge faces Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085777",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012076432"
+  },
+  {
+   "pandId": "0363100012087451",
+   "reason": "no frontage on Derde Vogelstraat: No footprint edge faces Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087797",
+   "reason": "frontage 46.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090564",
+   "reason": "frontage 92.5 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090748",
+   "reason": "frontage 69.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097154",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012076432"
+  },
+  {
+   "pandId": "0363100012101207",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012076432"
+  },
+  {
+   "pandId": "0363100012103178",
+   "reason": "frontage 91.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104069",
+   "reason": "frontage 52.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106957",
+   "reason": "frontage 41.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107391",
+   "reason": "frontage 41.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107760",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012088357"
+  },
+  {
+   "pandId": "0363100012108351",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012091593"
+  },
+  {
+   "pandId": "0363100012108395",
+   "reason": "frontage 96.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108562",
+   "reason": "frontage 73.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109523",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012065937"
+  },
+  {
+   "pandId": "0363100012110238",
+   "reason": "frontage 52.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110498",
+   "reason": "frontage 96.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012112593",
+   "reason": "frontage 47.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012114049",
+   "reason": "frontage 89.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012115379",
+   "reason": "frontage 85.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117406",
+   "reason": "frontage 37.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117598",
+   "reason": "frontage 84.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118497",
+   "reason": "frontage 89.5 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118660",
+   "reason": "frontage 85.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012119786",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012092401"
+  },
+  {
+   "pandId": "0363100012120077",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012088825"
+  },
+  {
+   "pandId": "0363100012120569",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012142979"
+  },
+  {
+   "pandId": "0363100012120708",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012106782"
+  },
+  {
+   "pandId": "0363100012120731",
+   "reason": "frontage 74.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121571",
+   "reason": "frontage 96.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121730",
+   "reason": "frontage 56.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121905",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012105093"
+  },
+  {
+   "pandId": "0363100012123207",
+   "reason": "frontage 41.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123354",
+   "reason": "frontage 40.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123606",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012076808"
+  },
+  {
+   "pandId": "0363100012127241",
+   "reason": "frontage 89.4 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129706",
+   "reason": "frontage 52.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130136",
+   "reason": "frontage 57.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130216",
+   "reason": "frontage 73.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130936",
+   "reason": "frontage 90.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012131492",
+   "reason": "frontage 78.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012132631",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012101482"
+  },
+  {
+   "pandId": "0363100012133910",
+   "reason": "frontage 41.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012134762",
+   "reason": "frontage 37.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109124",
+   "reason": "frontage 115.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116764",
+   "reason": "frontage 85.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120334",
+   "reason": "frontage 36.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122354",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012076432"
+  },
+  {
+   "pandId": "0363100012122850",
+   "reason": "frontage 116.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012128498",
+   "reason": "frontage 52.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012128642",
+   "reason": "frontage 72.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129359",
+   "reason": "frontage 36.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133044",
+   "reason": "frontage 41.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135488",
+   "reason": "frontage 79.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135700",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012076808"
+  },
+  {
+   "pandId": "0363100012135886",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012106658"
+  },
+  {
+   "pandId": "0363100012136147",
+   "reason": "frontage 73.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012136571",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012079189"
+  },
+  {
+   "pandId": "0363100012137341",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012080292"
+  },
+  {
+   "pandId": "0363100012138634",
+   "reason": "frontage 56.4 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012138972",
+   "reason": "frontage 37.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012140588",
+   "reason": "frontage 52.7 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012140660",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012133967"
+  },
+  {
+   "pandId": "0363100012141264",
+   "reason": "frontage 80.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141389",
+   "reason": "frontage 37.2 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142347",
+   "reason": "frontage 111.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142488",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012062516"
+  },
+  {
+   "pandId": "0363100012146114",
+   "reason": "frontage 96.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012146996",
+   "reason": "frontage 60.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147550",
+   "reason": "frontage 41.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012149443",
+   "reason": "frontage 55.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150842",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012085288"
+  },
+  {
+   "pandId": "0363100012151653",
+   "reason": "frontage 50.8 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151805",
+   "reason": "frontage 37.3 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151858",
+   "reason": "frontage 74.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012153864",
+   "reason": "frontage 56.5 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219881",
+   "reason": "frontage 96.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219882",
+   "reason": "frontage 91.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219883",
+   "reason": "frontage 91.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219884",
+   "reason": "frontage 91.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219980",
+   "reason": "frontage 91.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219981",
+   "reason": "frontage 91.1 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012136383",
+   "reason": "frontage 36.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137379",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012105876"
+  },
+  {
+   "pandId": "0363100012137414",
+   "reason": "frontage 73.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137760",
+   "reason": "frontage 56.9 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141926",
+   "reason": "frontage 73.0 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012143803",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012106782"
+  },
+  {
+   "pandId": "0363100012147662",
+   "reason": "sightline to Derde Vogelstraat crosses 0363100012104339"
+  },
+  {
+   "pandId": "0363100012191596",
+   "reason": "frontage 94.6 m from Derde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062516",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065937",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012076566",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012080292",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083019",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088357",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099269",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100692",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101482",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087707",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100095",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106782",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124606",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137372",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142979",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150171",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012116446",
+   "alongM": -32.92,
+   "widthM": 4.21,
+   "eavesM": 3.31,
+   "roofMaxM": 5.47,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012105093",
+   "alongM": -27.91,
+   "widthM": 5.8,
+   "eavesM": 3.3,
+   "roofMaxM": 5.48,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012123312",
+   "alongM": -20.01,
+   "widthM": 10.01,
+   "eavesM": 3.29,
+   "roofMaxM": 5.47,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012134789",
+   "alongM": -10,
+   "widthM": 10.01,
+   "eavesM": 3.29,
+   "roofMaxM": 5.5,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012133967",
+   "alongM": 0,
+   "widthM": 9.99,
+   "eavesM": 3.28,
+   "roofMaxM": 5.48,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  }
+ ]
+}

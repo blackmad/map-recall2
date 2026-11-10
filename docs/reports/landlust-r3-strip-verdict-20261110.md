@@ -82,3 +82,94 @@ These are not blocking. The lane's run brick values are lighter than the round-1
 | Treslong | #6c4e36 | #573f2b |
 
 Each is now uniform, which fixes the patchwork, but all four still read lighter than the photo (the sheets still mark these walls ✗). Apply the round-1 values on the next re-sheet, unless the lane measured something I did not.
+
+## Round 4 (lane at 3a7b871d5, sheets `round4-final/`), by eye
+
+| Run | Verdict |
+|---|---|
+| coppelstock-25-55-r1 | **MERGE** |
+| haring-26-38-r1 | **MERGE** |
+| leijnsen-2-30-r1 | **MERGE** |
+| leijnsen-2-30-r2 | **MERGE** |
+| callenburg-3-63 | **FIX: canopy slab** (below). This run has no dormers, matching the photo. |
+| andringa-1-31-r1 | **FIX: canopy slab + zinc dormer** |
+| andringa-4-32-r1 | **FIX: canopy slab + zinc dormer** |
+| callenburg-2-32-r1 | **FIX: canopy slab + zinc dormer** |
+| callenburg-2-32-r2 | **FIX: canopy slab + zinc dormer** |
+| haen-3-31-r1 | **FIX: canopy slab + zinc dormer** |
+| haen-3-31-r2 | **FIX: canopy slab + zinc dormer** |
+| haen-6-62-r1 | **FIX: canopy slab + zinc dormer** (flush doors are acceptable) |
+| haen-6-62-r2 | **FIX: canopy slab + zinc dormer** (flush doors are acceptable) |
+| haen-6-62-r3 | **FIX: canopy slab + zinc dormer** (flush doors are acceptable) |
+| zwijgerlaan-225-279-r1 | **FIX: canopy slab + zinc dormer** (flush doors are acceptable) |
+| zwijgerlaan-225-279-r2 | **FIX: canopy slab + zinc dormer** (flush doors are acceptable) |
+| treslong-5-19-a | **FIX: dormer seam and form** |
+| treslong-5-19-b | **FIX: dormer seam and form** |
+| treslong-21-35-a | **FIX: dormer seam and form** |
+| treslong-21-35-b | **FIX: dormer seam and form**. The 111921 mirror is now right: narrow window and door on the left. |
+
+If the fixes cannot land this round, merging is still better than the round-2 install in one respect: the doors. The slot-block fronts with
+four doors are a clear gain. But do not ship the grey cube dormers or the Treslong window-pair dormers. Merge those runs with the dormers
+turned off rather than as drawn.
+
+### Slot blocks: the doors are right, the slab and dormers are not
+
+**Doors.** The four doors across 0.32–0.69 now match the photo's count, spacing and width.
+
+**Slab (FIX).**
+- The canopy is drawn as **two pieces with a gap**, about 0.52–0.58 of the front (andringa-1-31-r1 at 2×). The photo has one continuous
+  slab from about 0.32 to 0.70.
+- The slab also floats about 0.45 m above the door heads; in the photo it sits directly on them.
+- The fix: draw one slab and drop it onto the door heads.
+- Optional: the photo's doors are single dark-green leaves (about #1c2a24) with no transom. The model draws double leaves with a transom.
+
+**Dormers (FIX).** The width (about 2.5 m) and the placement over the end window pairs are right on Haen, Zwijgerlaan and Callenburg
+2-32. But the dormers render as a **grey brick-coursed cube with one small 2-light window**, which reads as a lift shaft rather than a
+zinc dormer. In the photo they are:
+- a front that is mostly glass: a 3-light band about 2.0 m wide across a 2.5 m box;
+- smooth zinc cheeks, no brick texture, mid grey about #6f7275;
+- a dark flat cap, about #3e4144, overhanging about 0.15 m;
+- about 1.6 m high including the cap. The model is about 2.1 m.
+
+On Andringa the photo's two dormers sit further inward, flanking the slot lights. That is a minor point and need not block.
+
+### Treslong: dormer position right, seam and form wrong
+
+**Position.** The dormer now straddles the party wall between pands 1|2 and 3|4 of each face, sitting on the roof foot just above the
+gutter band. That matches the photo.
+
+**Seam.** At 3× zoom (treslong-21-35-b), the two mirrored halves are two separate framed 2-light windows. They meet with a doubled
+cream frame and a hairline slate gap at the party wall, so the dormer reads as a pair of tall windows.
+
+**Form.** In the photo the dormer is one cream box:
+- about 2.2 m wide and about 0.9–1.0 m high;
+- two lights in one frame, with a single centre mullion;
+- a dark flat cap with an overhang;
+- cream cheeks.
+
+The model's halves are each about 0.9 m wide by 1.3 m high and have no box, no cheeks and no cap.
+
+**Fix.**
+- Drop the inner frame members at the seam, so the two halves meet as one frame with one mullion.
+- Make the dormer wider and lower, about 2.2 × 1.0 m.
+- Add cream cheeks and a dark cap.
+
+### Treslong wall tone: reads right, not too dark
+
+| | Wall |
+|---|---|
+| Rendered model, every Treslong pand | #5c4531 / #5d4632 |
+| Photo, by pand | #3e2c1c to #55432f, median about #473625 |
+
+The rendered wall is about 25 % lighter than the photo, which is exactly the exposure allowance used for every other run. Side by side
+it reads as the same dark purple-brown. The #2b1f16 pin is only the input the renderer lifts from, so judge by the render, and the render
+is right.
+
+Brighter-palette note: these fronts really are dark. Lifting Treslong further would mean departing from the photo. The other runs hit
+their targets too, all ✓ on the sheets:
+
+| Run | Rendered wall |
+|---|---|
+| Coppelstock | #6b5b46 |
+| Haringstraat 26-38 | #6a573d |
+| Leijnsenstraat 2-30 | #6c593e |

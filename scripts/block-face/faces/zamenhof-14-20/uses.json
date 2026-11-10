@@ -1,0 +1,73 @@
+{
+ "street": "Zamenhofstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:08:58.421Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012135860",
+   "addresses": [
+    "Zamenhofstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877873"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101216",
+   "addresses": [
+    "Zamenhofstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000877872"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108165",
+   "addresses": [
+    "Zamenhofstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877871"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124024",
+   "addresses": [
+    "Zamenhofstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zamenhofstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000877867"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

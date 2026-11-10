@@ -1,0 +1,78 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "vogel-3-15-r1",
+ "street": "Eerste Vogelstraat",
+ "sources": [
+  {
+   "id": "strip-2021-06-15",
+   "kind": "street-panorama",
+   "capturedAt": "2021-06-15",
+   "image": "staging/block-face/vogel-3-15-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the vogelbuurt library (buurt Vogelbuurt-Noord); scores and holds in scripts/block-face/faces/vogel-3-15/auto-place.json"
+ },
+ "types": [
+  "vogel-1918-cottage-2axis",
+  "vogel-1918-cottage-3axis"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012101772",
+   "slug": "vogel-101772",
+   "address": "Eerste Vogelstraat 9",
+   "type": {
+    "type": "vogel-1918-cottage-2axis",
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-06-15",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1918-cottage-2axis scored 1 on eaves 1, storeys 1, stucco 1; strip 2025-09-22 span 800-965"
+   }
+  },
+  {
+   "pandId": "0363100012132959",
+   "slug": "vogel-132959",
+   "address": "Eerste Vogelstraat 11",
+   "type": {
+    "type": "vogel-1918-cottage-3axis"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-06-15",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: vogel-1918-cottage-3axis scored 1 on eaves 1, storeys 1, stucco 1, columns 1; strip 2025-09-22 span 965-1200"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

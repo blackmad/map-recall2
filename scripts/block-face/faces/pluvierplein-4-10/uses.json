@@ -1,0 +1,73 @@
+{
+ "street": "Pluvierplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122496",
+   "addresses": [
+    "Pluvierplein 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pluvierplein 10-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000778633"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113533",
+   "addresses": [
+    "Pluvierplein 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pluvierplein 8-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000778629"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090671",
+   "addresses": [
+    "Pluvierplein 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pluvierplein 6-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000778625"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099505",
+   "addresses": [
+    "Pluvierplein 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pluvierplein 4-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000778621"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

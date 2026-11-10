@@ -1,0 +1,639 @@
+{
+ "street": "Zesde Vogelstraat",
+ "seed": "0363100012146114",
+ "members": [
+  "0363100012146114",
+  "0363100012068684",
+  "0363100012110498",
+  "0363100012085239",
+  "0363100012108395",
+  "0363100012121571",
+  "0363100012076424",
+  "0363100012086230",
+  "0363100012100260",
+  "0363100012098785"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012146114 (face continues: 083174 219881)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012147609 15.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062060",
+   "reason": "frontage 82.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062919",
+   "reason": "frontage 59.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065099",
+   "reason": "frontage 77.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065957",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012108395"
+  },
+  {
+   "pandId": "0363100012071049",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012098785"
+  },
+  {
+   "pandId": "0363100012072678",
+   "reason": "frontage 77.5 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076566",
+   "reason": "frontage 110.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078259",
+   "reason": "frontage 77.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079324",
+   "reason": "frontage 54.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084589",
+   "reason": "frontage 82.5 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086118",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012118660"
+  },
+  {
+   "pandId": "0363100012086231",
+   "reason": "frontage 77.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086556",
+   "reason": "frontage 44.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086814",
+   "reason": "frontage 77.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087867",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012146114"
+  },
+  {
+   "pandId": "0363100012088645",
+   "reason": "frontage 126.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092401",
+   "reason": "frontage 97.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012094588",
+   "reason": "frontage 82.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012061698",
+   "reason": "frontage 31.0 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062617",
+   "reason": "frontage 49.0 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012068698",
+   "reason": "frontage 57.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012069001",
+   "reason": "frontage 58.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012070328",
+   "reason": "frontage 57.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012073092",
+   "reason": "frontage 57.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012073375",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012116764"
+  },
+  {
+   "pandId": "0363100012074377",
+   "reason": "frontage 57.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012074945",
+   "reason": "frontage 57.6 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012075081",
+   "reason": "frontage 109.5 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012077328",
+   "reason": "frontage 57.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079772",
+   "reason": "frontage 49.2 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083966",
+   "reason": "frontage 59.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084339",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012088960"
+  },
+  {
+   "pandId": "0363100012086482",
+   "reason": "no frontage on Zesde Vogelstraat: No footprint edge faces Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012087797",
+   "reason": "frontage 54.2 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088960",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012110818"
+  },
+  {
+   "pandId": "0363100012090748",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012066125"
+  },
+  {
+   "pandId": "0363100012091738",
+   "reason": "frontage 43.1 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092409",
+   "reason": "frontage 57.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012094025",
+   "reason": "frontage 57.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012094213",
+   "reason": "frontage 57.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012096215",
+   "reason": "frontage 77.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012096696",
+   "reason": "frontage 31.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097156",
+   "reason": "frontage 59.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097544",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012115379"
+  },
+  {
+   "pandId": "0363100012097992",
+   "reason": "frontage 49.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012099269",
+   "reason": "frontage 110.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100504",
+   "reason": "frontage 44.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104208",
+   "reason": "frontage 92.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104899",
+   "reason": "frontage 44.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012105093",
+   "reason": "frontage 93.4 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106658",
+   "reason": "frontage 97.5 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109073",
+   "reason": "frontage 34.4 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110238",
+   "reason": "frontage 49.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012112593",
+   "reason": "frontage 54.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116446",
+   "reason": "frontage 93.4 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117406",
+   "reason": "frontage 64.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118660",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012130936"
+  },
+  {
+   "pandId": "0363100012119786",
+   "reason": "frontage 87.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120077",
+   "reason": "frontage 77.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120569",
+   "reason": "frontage 126.4 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121905",
+   "reason": "frontage 78.0 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123312",
+   "reason": "frontage 93.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012102795",
+   "reason": "no frontage on Zesde Vogelstraat: No footprint edge faces Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104069",
+   "reason": "frontage 44.1 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106317",
+   "reason": "frontage 44.0 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106957",
+   "reason": "frontage 59.2 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107577",
+   "reason": "frontage 94.6 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108071",
+   "reason": "no frontage on Zesde Vogelstraat: No footprint edge faces Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109019",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012088960"
+  },
+  {
+   "pandId": "0363100012120241",
+   "reason": "frontage 94.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120334",
+   "reason": "frontage 59.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124737",
+   "reason": "frontage 57.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012128498",
+   "reason": "frontage 44.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012128642",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012090564"
+  },
+  {
+   "pandId": "0363100012129706",
+   "reason": "frontage 44.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130136",
+   "reason": "frontage 44.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130216",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012085239"
+  },
+  {
+   "pandId": "0363100012130936",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012147609"
+  },
+  {
+   "pandId": "0363100012133967",
+   "reason": "frontage 93.1 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012134762",
+   "reason": "frontage 60.4 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012134789",
+   "reason": "frontage 93.2 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135886",
+   "reason": "frontage 87.5 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012136147",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012085239"
+  },
+  {
+   "pandId": "0363100012137372",
+   "reason": "frontage 110.6 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012138972",
+   "reason": "frontage 60.4 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012140588",
+   "reason": "frontage 44.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012140660",
+   "reason": "frontage 77.6 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141264",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012118660"
+  },
+  {
+   "pandId": "0363100012141389",
+   "reason": "frontage 60.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142979",
+   "reason": "frontage 110.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012144561",
+   "reason": "frontage 92.5 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012148706",
+   "reason": "frontage 92.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150171",
+   "reason": "frontage 110.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150842",
+   "reason": "frontage 87.3 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151805",
+   "reason": "frontage 64.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219882",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012085239"
+  },
+  {
+   "pandId": "0363100012219883",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012085239"
+  },
+  {
+   "pandId": "0363100012219884",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012085239"
+  },
+  {
+   "pandId": "0363100012219980",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012085239"
+  },
+  {
+   "pandId": "0363100012219981",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012085239"
+  },
+  {
+   "pandId": "0363100012129359",
+   "reason": "frontage 59.7 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130615",
+   "reason": "frontage 54.0 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130637",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012088960"
+  },
+  {
+   "pandId": "0363100012131870",
+   "reason": "frontage 57.6 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133044",
+   "reason": "frontage 59.0 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012136383",
+   "reason": "frontage 64.2 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137414",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012090564"
+  },
+  {
+   "pandId": "0363100012137760",
+   "reason": "frontage 44.2 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141926",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012090564"
+  },
+  {
+   "pandId": "0363100012144578",
+   "reason": "sightline to Zesde Vogelstraat crosses 0363100012191595"
+  },
+  {
+   "pandId": "0363100012149024",
+   "reason": "frontage 57.8 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012225137",
+   "reason": "frontage 94.9 m from Zesde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012064504",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085295",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012092832",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097295",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097484",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012102702",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012103472",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109124",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122850",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129931",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134309",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143096",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148859",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149482",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012207953",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012146114",
+   "alongM": 0,
+   "widthM": 3.48,
+   "eavesM": 2.48,
+   "roofMaxM": 2.48,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012068684",
+   "alongM": 2.61,
+   "widthM": 1.74,
+   "eavesM": 2.48,
+   "roofMaxM": 2.49,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012110498",
+   "alongM": 4.34,
+   "widthM": 1.72,
+   "eavesM": 2.48,
+   "roofMaxM": 2.53,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012085239",
+   "alongM": 11.12,
+   "widthM": 11.83,
+   "eavesM": 3.2,
+   "roofMaxM": 4.52,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012108395",
+   "alongM": 17.9,
+   "widthM": 1.73,
+   "eavesM": 2.54,
+   "roofMaxM": 2.61,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012121571",
+   "alongM": 19.64,
+   "widthM": 1.75,
+   "eavesM": 2.54,
+   "roofMaxM": 2.55,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012076424",
+   "alongM": 21.39,
+   "widthM": 1.75,
+   "eavesM": 2.54,
+   "roofMaxM": 2.55,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012086230",
+   "alongM": 23.14,
+   "widthM": 1.75,
+   "eavesM": 2.53,
+   "roofMaxM": 2.55,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012100260",
+   "alongM": 24.89,
+   "widthM": 1.75,
+   "eavesM": 2.52,
+   "roofMaxM": 2.57,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012098785",
+   "alongM": 27.8,
+   "widthM": 4.08,
+   "eavesM": 3.28,
+   "roofMaxM": 4.63,
+   "storeys3dbag": 0,
+   "builtYear": 1922,
+   "uncertainty": []
+  }
+ ]
+}

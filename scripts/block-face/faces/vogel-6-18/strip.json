@@ -1,0 +1,179 @@
+{
+ "face": "vogel-6-18",
+ "image": "staging/block-face/vogel-6-18/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1602,
+ "height": 300,
+ "groundNAP": 0.796,
+ "heightM": 7.51,
+ "frame": {
+  "midRD": [
+   123706.6048,
+   488901.82229999994
+  ],
+  "uRD": [
+   -0.5374007883914131,
+   -0.8433269784824199
+  ],
+  "nRD": [
+   -0.8433269784824199,
+   0.5374007883914131
+  ]
+ },
+ "x0M": -16.82,
+ "x1M": 23.25,
+ "date": "2016-08-16",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012063850",
+   "x0M": -16.82,
+   "x1M": -12.83,
+   "px": [
+    0,
+    160
+   ],
+   "date": "2016-08-16",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003591",
+     "timestamp": "2016-08-16T09:42:20.021160Z",
+     "distanceM": 5.4,
+     "obliquityDeg": 18.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003592",
+     "timestamp": "2016-08-16T09:42:21.215900Z",
+     "distanceM": 6.1,
+     "obliquityDeg": 32.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003633",
+     "timestamp": "2016-08-16T09:43:29.640480Z",
+     "distanceM": 27,
+     "obliquityDeg": 41.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012116509",
+   "x0M": -12.83,
+   "x1M": -6.81,
+   "px": [
+    160,
+    401
+   ],
+   "date": "2016-08-16",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003592",
+     "timestamp": "2016-08-16T09:42:21.215900Z",
+     "distanceM": 5.4,
+     "obliquityDeg": 18.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003593",
+     "timestamp": "2016-08-16T09:42:22.450940Z",
+     "distanceM": 6.1,
+     "obliquityDeg": 32.7,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012088825",
+   "x0M": -6.81,
+   "x1M": 3.2,
+   "px": [
+    400,
+    800
+   ],
+   "date": "2016-08-16",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003594",
+     "timestamp": "2016-08-16T09:42:23.710940Z",
+     "distanceM": 5.3,
+     "obliquityDeg": 3.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003593",
+     "timestamp": "2016-08-16T09:42:22.450940Z",
+     "distanceM": 7,
+     "obliquityDeg": 42.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012105876",
+   "x0M": 3.2,
+   "x1M": 13.21,
+   "px": [
+    801,
+    1201
+   ],
+   "date": "2016-08-16",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003596",
+     "timestamp": "2016-08-16T09:42:27.175850Z",
+     "distanceM": 5.2,
+     "obliquityDeg": 4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003595",
+     "timestamp": "2016-08-16T09:42:25.125860Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 41.5,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012104339",
+   "x0M": 13.23,
+   "x1M": 23.25,
+   "px": [
+    1202,
+    1603
+   ],
+   "date": "2016-08-16",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316060226-000022_pano_0008_003597",
+     "timestamp": "2016-08-16T09:42:29.530880Z",
+     "distanceM": 6.6,
+     "obliquityDeg": 43,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2017-05-15": 0,
+  "2025-09-22": 0,
+  "2020-05-29": 0,
+  "2019-06-28": 0,
+  "2022-05-10": 0,
+  "2018-07-30": 0,
+  "2024-09-10": 1,
+  "2021-06-15": 1,
+  "2016-08-16": 4,
+  "2021-09-20": 0,
+  "2022-12-27": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

@@ -1,0 +1,405 @@
+{
+ "face": "vogel-3-11",
+ "street": "Vierde Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2022-05-10",
+ "seconds": 2.3,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "vogel-3-11-r1",
+   "pands": [
+    "0363100012137379",
+    "0363100012071224"
+   ],
+   "passed": true,
+   "triangles": 608
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012147662",
+   "address": "Vierde Vogelstraat 3",
+   "builtYear": 1919,
+   "widthM": 9.99,
+   "eavesM": 3.42,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#c1968c",
+    "wallRaw": "#7b6760",
+    "skyline": {
+     "eavesM": 4.2,
+     "eavesRow": 132,
+     "confidence": 0.4,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 2.92,
+      "topWidthM": 0.75,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 2.52,
+       "widthM": 4.83,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 9.99 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 9.99 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 3.2 m; 3DBAG 3.42 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.066 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137379",
+   "address": "Vierde Vogelstraat 5",
+   "builtYear": 1918,
+   "widthM": 5.97,
+   "eavesM": 3.39,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#65544e",
+    "wallRaw": "#5a4c43",
+    "skyline": {
+     "eavesM": 5.35,
+     "eavesRow": 86,
+     "confidence": 0.59,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.53,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.68,
+       "centre": 0.85,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 1.95,
+       "widthM": 1.15,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "placed",
+   "type": "vogel-1918-cottage-3axis",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "vogel-1918-cottage-2axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "vogel-1918-cottage-3axis",
+    "mirror": true
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012137379",
+    "ncc": 0.313,
+    "nccRaw": 0.313,
+    "shiftM": [
+     0.3,
+     0.05
+    ],
+    "usable": 0.7,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing  mean 0.30 vs photo 0.05"
+    ],
+    "wall": {
+     "photo": "#5a4a42",
+     "model": "#8e6c5a",
+     "dL": 0.149
+    },
+    "glazing": {
+     "photo": 0.05,
+     "model": 0.3
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.173
+   },
+   "challengers": {
+    "vogel-1918-cottage-3axis~m": 0.313
+   }
+  },
+  {
+   "pandId": "0363100012071224",
+   "address": "Vierde Vogelstraat 7",
+   "builtYear": 1918,
+   "widthM": 4.04,
+   "eavesM": 3.38,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#625048",
+    "wallRaw": "#655449",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 300,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.89,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "vogel-1918-cottage-2axis",
+   "score": 0.8,
+   "runnerUp": {
+    "typeId": "vogel-1918-cottage-3axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "vogel-1918-cottage-2axis"
+   },
+   "notes": [
+    "door unread",
+    "crown gutter (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012071224",
+    "ncc": 0.316,
+    "nccRaw": 0.316,
+    "shiftM": [
+     -0.05,
+     0.15
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "glazing  mean 0.33 vs photo 0.08"
+    ],
+    "wall": {
+     "photo": "#5c4b41",
+     "model": "#8e6c5a",
+     "dL": 0.147
+    },
+    "glazing": {
+     "photo": 0.08,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.25
+   },
+   "challengers": {
+    "vogel-1918-cottage-2axis": 0.316
+   }
+  },
+  {
+   "pandId": "0363100012120077",
+   "address": "Vierde Vogelstraat 11",
+   "builtYear": 1919,
+   "widthM": 10.01,
+   "eavesM": 3.42,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c4b42",
+    "wallRaw": "#5a4e40",
+    "skyline": {
+     "eavesM": 5.92,
+     "eavesRow": 63,
+     "confidence": 0.52,
+     "crown": {
+      "widthM": 1,
+      "riseM": 1.42,
+      "topWidthM": 0.53,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.4,
+       "centre": 0.11,
+       "light": 0.04
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.72,
+       "light": 0.4
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.82,
+       "light": 0.2
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.96,
+       "light": 0.14
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 2.3,
+       "widthM": 1.5,
+       "centre": 0.68
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 10.01 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 10.01 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 3.2 m; 3DBAG 3.42 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

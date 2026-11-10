@@ -1,0 +1,57 @@
+{
+ "street": "Meeuwenplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:14:14.863Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012107162",
+   "addresses": [
+    "Meeuwenplein 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenplein 41-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000741094"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116125",
+   "addresses": [
+    "Meeuwenplein 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenplein 43-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000741096"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078630",
+   "addresses": [
+    "Meeuwenplein 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenplein 45-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000741098"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

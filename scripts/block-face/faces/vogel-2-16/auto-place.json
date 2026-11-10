@@ -1,0 +1,395 @@
+{
+ "face": "vogel-2-16",
+ "street": "Eerste Vogelstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2022-05-10",
+ "seconds": 0.34,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012075795",
+   "address": "Eerste Vogelstraat 16",
+   "builtYear": 1918,
+   "widthM": 4.21,
+   "eavesM": 3.31,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#594a3f",
+    "wallRaw": "#5f4c3f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 304,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.14,
+       "light": 0.13
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012093588",
+   "address": "Eerste Vogelstraat 14",
+   "builtYear": 1918,
+   "widthM": 5.79,
+   "eavesM": 3.34,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e7cfcc",
+    "wallRaw": "#8e7476",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 304,
+     "confidence": 0.07,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.94,
+       "light": 0.19
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: vogel-2-16-r1: mis-mirrored (pins to be corrected, verdict)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012122579",
+   "address": "Eerste Vogelstraat 12",
+   "builtYear": 1918,
+   "widthM": 5.89,
+   "eavesM": 3.34,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#795a4f",
+    "wallRaw": "#584a43",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 304,
+     "confidence": 0.06,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: vogel-2-16-r1: mis-mirrored (photo puts pand 2 doors on the left, verdict)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012109169",
+   "address": "Eerste Vogelstraat 10",
+   "builtYear": 1918,
+   "widthM": 4.12,
+   "eavesM": 3.32,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f5548",
+    "wallRaw": "#5e4c43",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 304,
+     "confidence": 0.07,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 2.5,
+       "widthM": 2.27,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: vogel-2-16-r1: held with the run (verdict)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012106420",
+   "address": "Eerste Vogelstraat 6",
+   "builtYear": 1918,
+   "widthM": 10.01,
+   "eavesM": 3.34,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f574f",
+    "wallRaw": "#4e433a",
+    "skyline": {
+     "eavesM": 6.33,
+     "eavesRow": 51,
+     "confidence": 0.38,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 0.88,
+      "topWidthM": 0.72,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 3.63,
+       "centre": 0.2,
+       "light": 0.3
+      },
+      {
+       "widthM": 1.27,
+       "centre": 0.7,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best vogel-1918-cottage-2axis: frontage 10.01 m, type 3.8-4.95 m)",
+   "best": {
+    "type": "vogel-1918-cottage-2axis",
+    "score": 0,
+    "veto": [
+     "frontage 10.01 m, type 3.8-4.95 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": null,
+      "note": "strip cornice unread (type line 3.2 m; 3DBAG 3.34 m not compared)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110100",
+   "address": "Eerste Vogelstraat 4",
+   "builtYear": 1918,
+   "widthM": 6.25,
+   "eavesM": 3.38,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#72584e",
+    "wallRaw": "#5a483f",
+    "skyline": {
+     "eavesM": 4.2,
+     "eavesRow": 136,
+     "confidence": 0.53,
+     "crown": {
+      "widthM": 0.93,
+      "riseM": 3.4,
+      "topWidthM": 0.4,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.11,
+       "light": 0.16
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 2.63,
+       "widthM": 1.13,
+       "centre": 0.75
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137810",
+   "address": "Eerste Vogelstraat 2",
+   "builtYear": 1918,
+   "widthM": 3.77,
+   "eavesM": 3.36,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b5346",
+    "wallRaw": "#676153",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 304,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.47,
+     "bayCentre": 0.26,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.28,
+       "light": 0.33
+      },
+      {
+       "widthM": 1.68,
+       "centre": 0.67,
+       "light": 0.13
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 0 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

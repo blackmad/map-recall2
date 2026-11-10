@@ -1,0 +1,273 @@
+{
+ "face": "vogelplantsoen-7-11",
+ "street": "Vogelplantsoen",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 2.17,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012097156",
+   "address": "Vogelplantsoen 7",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.1,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#393f3c",
+    "wallRaw": "#788b67",
+    "skyline": {
+     "eavesM": 6.58,
+     "eavesRow": 103,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.48,
+       "centre": 0.84,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.88
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best vogel-1918-timber-band-cottage scores 0.67 < 0.7 (strip cornice 6.58 m vs the type's 4.1 m (wall-dormer skyline 6 m))",
+   "best": {
+    "type": "vogel-1918-timber-band-cottage",
+    "score": 0.67,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 6.58 m vs the type's 4.1 m (wall-dormer skyline 6 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012079324",
+   "address": "Vogelplantsoen 9",
+   "builtYear": 1919,
+   "widthM": 5,
+   "eavesM": 4.12,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a5b8bd",
+    "wallRaw": "#838e71",
+    "skyline": {
+     "eavesM": 5.72,
+     "eavesRow": 137,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.3,
+      "riseM": 1.3,
+      "topWidthM": 0.03,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.07,
+       "light": 0.19
+      },
+      {
+       "widthM": 1.07,
+       "centre": 0.31,
+       "light": 0.23
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.44
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 33 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012079324",
+    "ncc": null,
+    "nccRaw": 0.349,
+    "shiftM": [
+     0.15,
+     0.35
+    ],
+    "usable": 0.33,
+    "abstain": "usable photo 33 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 42 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#f8e0b5",
+     "model": "#2c2b30",
+     "dL": -0.663
+    },
+    "glazing": {
+     "photo": 0.97,
+     "model": 0.16
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.205
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage~m": null,
+    "vogel-1918-timber-band-cottage": null
+   }
+  },
+  {
+   "pandId": "0363100012110238",
+   "address": "Vogelplantsoen 11",
+   "builtYear": 1919,
+   "widthM": 5.01,
+   "eavesM": 4.14,
+   "storeys3dbag": 2,
+   "bagBay": null,
+   "strip": {
+    "wall": "#899295",
+    "wallRaw": "#758163",
+    "skyline": {
+     "eavesM": 5.92,
+     "eavesRow": 129,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.35,
+      "riseM": 2.52,
+      "topWidthM": 1.05,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.6,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.73,
+       "centre": 0.19,
+       "light": 0.21
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.59,
+       "light": 0.47
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.89,
+       "light": 0.04
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.68
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 5 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012110238",
+    "ncc": null,
+    "nccRaw": 0.677,
+    "shiftM": [
+     -0.15,
+     0.3
+    ],
+    "usable": 0.05,
+    "abstain": "usable photo 5 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "usable upper cells 27 % < 40 %",
+     "foliage 58 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#e5d5ad",
+     "model": "#2c2b30",
+     "dL": -0.61
+    },
+    "glazing": {
+     "photo": 0.79,
+     "model": 0.16
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.22
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": null,
+    "vogel-1918-timber-band-cottage~m": null
+   }
+  }
+ ]
+}

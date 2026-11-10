@@ -1,0 +1,793 @@
+{
+ "street": "Pluvierplein",
+ "seed": "0363100012070701",
+ "members": [
+  "0363100012070701",
+  "0363100012151759",
+  "0363100012061542",
+  "0363100012141895",
+  "0363100012149277",
+  "0363100012125723"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012188847 7.7 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062796",
+   "reason": "frontage 42.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012063621",
+   "reason": "frontage 51.6 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012064330",
+   "reason": "frontage 38.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012065881",
+   "reason": "frontage 35.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012065905",
+   "reason": "sightline to Pluvierplein crosses 0363100012086855"
+  },
+  {
+   "pandId": "0363100012066068",
+   "reason": "frontage 72.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012067427",
+   "reason": "frontage 94.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012067838",
+   "reason": "frontage 35.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012069013",
+   "reason": "frontage 45.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012069269",
+   "reason": "frontage 77.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012070462",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012070874",
+   "reason": "frontage 39.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012072893",
+   "reason": "frontage 61.8 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012073124",
+   "reason": "frontage 65.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012073820",
+   "reason": "sightline to Pluvierplein crosses 0363100012136196"
+  },
+  {
+   "pandId": "0363100012077955",
+   "reason": "frontage 49.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012079610",
+   "reason": "frontage 79.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012081925",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012083680",
+   "reason": "sightline to Pluvierplein crosses 0363100012086855"
+  },
+  {
+   "pandId": "0363100012084287",
+   "reason": "frontage 31.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012085326",
+   "reason": "frontage 31.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012085420",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012086855",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012086978",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012087361",
+   "reason": "frontage 37.8 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012087399",
+   "reason": "frontage 43.9 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012090659",
+   "reason": "frontage 59.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012091888",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012091921",
+   "reason": "sightline to Pluvierplein crosses 0363100012089126"
+  },
+  {
+   "pandId": "0363100012092344",
+   "reason": "frontage 34.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012092470",
+   "reason": "frontage 74.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012093848",
+   "reason": "frontage 34.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012094241",
+   "reason": "frontage 41.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012097125",
+   "reason": "sightline to Pluvierplein crosses 0363100012111326"
+  },
+  {
+   "pandId": "0363100012097235",
+   "reason": "frontage 75.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012097975",
+   "reason": "sightline to Pluvierplein crosses 0363100012080458"
+  },
+  {
+   "pandId": "0363100012098633",
+   "reason": "frontage 50.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012098790",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012099283",
+   "reason": "frontage 74.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012099649",
+   "reason": "frontage 51.6 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012100275",
+   "reason": "frontage 36.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012103632",
+   "reason": "frontage 62.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012103927",
+   "reason": "frontage 37.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012105550",
+   "reason": "frontage 75.6 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012107449",
+   "reason": "frontage 75.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012108326",
+   "reason": "frontage 32.9 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012108368",
+   "reason": "frontage 31.8 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012109590",
+   "reason": "frontage 74.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012110748",
+   "reason": "frontage 51.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012111816",
+   "reason": "sightline to Pluvierplein crosses 0363100012080458"
+  },
+  {
+   "pandId": "0363100012113975",
+   "reason": "frontage 41.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012115096",
+   "reason": "frontage 37.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012115376",
+   "reason": "frontage 39.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012115389",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012116365",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012116656",
+   "reason": "sightline to Pluvierplein crosses 0363100012097125"
+  },
+  {
+   "pandId": "0363100012117906",
+   "reason": "frontage 91.8 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012118945",
+   "reason": "frontage 55.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012120081",
+   "reason": "frontage 61.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012120713",
+   "reason": "sightline to Pluvierplein crosses 0363100012065905"
+  },
+  {
+   "pandId": "0363100012121272",
+   "reason": "frontage 38.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012121384",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012122196",
+   "reason": "frontage 45.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012122296",
+   "reason": "frontage 41.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012124227",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012124330",
+   "reason": "frontage 31.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012125954",
+   "reason": "frontage 74.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012128368",
+   "reason": "frontage 61.9 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012128530",
+   "reason": "frontage 31.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012129687",
+   "reason": "frontage 87.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012130020",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012131012",
+   "reason": "frontage 56.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012131893",
+   "reason": "frontage 50.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012132122",
+   "reason": "frontage 64.8 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012137382",
+   "reason": "frontage 50.6 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012137809",
+   "reason": "frontage 39.6 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012137973",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012141500",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012142974",
+   "reason": "frontage 93.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012144524",
+   "reason": "sightline to Pluvierplein crosses 0363100012089126"
+  },
+  {
+   "pandId": "0363100012145013",
+   "reason": "frontage 40.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012150102",
+   "reason": "frontage 39.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012155017",
+   "reason": "frontage 37.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012188176",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012188828",
+   "reason": "sightline to Pluvierplein crosses 0363100012070701"
+  },
+  {
+   "pandId": "0363100012188830",
+   "reason": "sightline to Pluvierplein crosses 0363100012070701"
+  },
+  {
+   "pandId": "0363100012188831",
+   "reason": "sightline to Pluvierplein crosses 0363100012151759"
+  },
+  {
+   "pandId": "0363100012188832",
+   "reason": "sightline to Pluvierplein crosses 0363100012151759"
+  },
+  {
+   "pandId": "0363100012188833",
+   "reason": "sightline to Pluvierplein crosses 0363100012061542"
+  },
+  {
+   "pandId": "0363100012188834",
+   "reason": "sightline to Pluvierplein crosses 0363100012061542"
+  },
+  {
+   "pandId": "0363100012188835",
+   "reason": "sightline to Pluvierplein crosses 0363100012141895"
+  },
+  {
+   "pandId": "0363100012188836",
+   "reason": "sightline to Pluvierplein crosses 0363100012149277"
+  },
+  {
+   "pandId": "0363100012188837",
+   "reason": "sightline to Pluvierplein crosses 0363100012149277"
+  },
+  {
+   "pandId": "0363100012188838",
+   "reason": "sightline to Pluvierplein crosses 0363100012125723"
+  },
+  {
+   "pandId": "0363100012188839",
+   "reason": "sightline to Pluvierplein crosses 0363100012125723"
+  },
+  {
+   "pandId": "0363100012188841",
+   "reason": "frontage 32.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012188842",
+   "reason": "frontage 34.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012188843",
+   "reason": "sightline to Pluvierplein crosses 0363100012149277"
+  },
+  {
+   "pandId": "0363100012188848",
+   "reason": "sightline to Pluvierplein crosses 0363100012073820"
+  },
+  {
+   "pandId": "0363100012188849",
+   "reason": "sightline to Pluvierplein crosses 0363100012073820"
+  },
+  {
+   "pandId": "0363100012188850",
+   "reason": "sightline to Pluvierplein crosses 0363100012073820"
+  },
+  {
+   "pandId": "0363100012191196",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012191197",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012191198",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012191199",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012191200",
+   "reason": "sightline to Pluvierplein crosses 0363100012086855"
+  },
+  {
+   "pandId": "0363100012191201",
+   "reason": "sightline to Pluvierplein crosses 0363100012086855"
+  },
+  {
+   "pandId": "0363100012191202",
+   "reason": "frontage 64.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012191203",
+   "reason": "frontage 54.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012191204",
+   "reason": "frontage 52.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012191205",
+   "reason": "frontage 66.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194275",
+   "reason": "frontage 42.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194276",
+   "reason": "frontage 40.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194277",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194278",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194279",
+   "reason": "sightline to Pluvierplein crosses 0363100012086855"
+  },
+  {
+   "pandId": "0363100012194280",
+   "reason": "sightline to Pluvierplein crosses 0363100012086855"
+  },
+  {
+   "pandId": "0363100012194281",
+   "reason": "frontage 53.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194282",
+   "reason": "frontage 51.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194283",
+   "reason": "frontage 65.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194284",
+   "reason": "frontage 63.4 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194481",
+   "reason": "frontage 44.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194482",
+   "reason": "frontage 44.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194483",
+   "reason": "frontage 44.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194484",
+   "reason": "sightline to Pluvierplein crosses 0363100012099505"
+  },
+  {
+   "pandId": "0363100012194485",
+   "reason": "sightline to Pluvierplein crosses 0363100012090671"
+  },
+  {
+   "pandId": "0363100012194486",
+   "reason": "sightline to Pluvierplein crosses 0363100012113533"
+  },
+  {
+   "pandId": "0363100012194487",
+   "reason": "sightline to Pluvierplein crosses 0363100012122496"
+  },
+  {
+   "pandId": "0363100012194488",
+   "reason": "sightline to Pluvierplein crosses 0363100012194489"
+  },
+  {
+   "pandId": "0363100012194490",
+   "reason": "frontage 43.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194491",
+   "reason": "frontage 44.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194492",
+   "reason": "frontage 43.6 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194493",
+   "reason": "frontage 43.6 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194494",
+   "reason": "frontage 43.6 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194590",
+   "reason": "frontage 33.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194591",
+   "reason": "frontage 31.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194592",
+   "reason": "sightline to Pluvierplein crosses 0363100012194593"
+  },
+  {
+   "pandId": "0363100012194594",
+   "reason": "frontage 45.8 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012194595",
+   "reason": "frontage 45.8 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012200400",
+   "reason": "frontage 84.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012205053",
+   "reason": "frontage 38.7 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012205055",
+   "reason": "frontage 30.5 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012205056",
+   "reason": "sightline to Pluvierplein crosses 0363100012091921"
+  },
+  {
+   "pandId": "0363100012205057",
+   "reason": "sightline to Pluvierplein crosses 0363100012091921"
+  },
+  {
+   "pandId": "0363100012205058",
+   "reason": "frontage 41.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012211568",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012215956",
+   "reason": "frontage 91.3 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012215960",
+   "reason": "frontage 89.8 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012215962",
+   "reason": "frontage 89.8 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012227123",
+   "reason": "frontage 82.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012233392",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012233393",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012233394",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012233402",
+   "reason": "frontage 39.0 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012234557",
+   "reason": "frontage 34.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012234558",
+   "reason": "frontage 41.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012234559",
+   "reason": "frontage 39.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012234560",
+   "reason": "frontage 40.1 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012234561",
+   "reason": "frontage 38.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012234564",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012247993",
+   "reason": "frontage 31.6 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012247994",
+   "reason": "frontage 33.2 m from Pluvierplein"
+  },
+  {
+   "pandId": "0363100012252464",
+   "reason": "no frontage on Pluvierplein: No footprint edge faces Pluvierplein"
+  },
+  {
+   "pandId": "0363100012080458",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089126",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012090671",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099505",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012111326",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113533",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122496",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136196",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012188175",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012188845",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012194489",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012194593",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012205054",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012070701",
+   "alongM": 0,
+   "widthM": 6.71,
+   "eavesM": 7.28,
+   "roofMaxM": 11.97,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012151759",
+   "alongM": 6.53,
+   "widthM": 6.36,
+   "eavesM": 6.82,
+   "roofMaxM": 11.69,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012061542",
+   "alongM": 12.95,
+   "widthM": 6.47,
+   "eavesM": 6.83,
+   "roofMaxM": 11.73,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012141895",
+   "alongM": 19.39,
+   "widthM": 6.43,
+   "eavesM": 6.83,
+   "roofMaxM": 11.73,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012149277",
+   "alongM": 25.73,
+   "widthM": 6.23,
+   "eavesM": 6.84,
+   "roofMaxM": 11.74,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012125723",
+   "alongM": 32.09,
+   "widthM": 6.49,
+   "eavesM": 7.54,
+   "roofMaxM": 11.83,
+   "storeys3dbag": 3,
+   "builtYear": 1924,
+   "uncertainty": []
+  }
+ ]
+}

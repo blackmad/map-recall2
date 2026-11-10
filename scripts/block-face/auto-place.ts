@@ -22,7 +22,7 @@ import {AUTO_PLACE, FRONT_EAVES, frontEavesFor, decidePand, ribbonRowHolds, fill
 import {classifyPixel, measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.ts';
 import {measureSkyline} from '../../src/canalRecall/blockFace/stripSkyline.ts';
 import {measureSkyBound} from '../../src/canalRecall/blockFace/stripSkyBound.ts';
-import {evidenceVerdict, measureSpanEvidence} from '../../src/canalRecall/blockFace/stripEvidence.ts';
+import {bodyBandM, evidenceVerdict, measureSpanEvidence} from '../../src/canalRecall/blockFace/stripEvidence.ts';
 import {measureStripStructure} from '../../src/canalRecall/blockFace/stripStructure.ts';
 import {isLeaf, measureFacade, type FacadeImage, type FrontClass} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {compareLikeness, modelElevation, PAD_M, type LikenessResult} from '../../src/canalRecall/buildingRecipe/likeness.ts';
@@ -32,7 +32,7 @@ import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts'
 import {loadMaterialSoup} from '../landmarks/material-soup.ts';
 import {renderModels, closeRenderer} from '../building-recipes/render.ts';
 import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stripLikeness.ts';
-import {runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
+import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
@@ -51,7 +51,7 @@ async function stripRaw(file: string): Promise<Raw> {
 
 /** Shares of placeholder grey and foliage in the body band (4.4 m .. eaves - 1) of a span. */
 function evidenceShares(raw: Raw, px: [number, number], ppm: number, eavesM: number) {
-  const inset = Math.round((px[1] - px[0]) * 0.06), y0 = Math.max(0, Math.round(raw.height - (eavesM - 1) * ppm)), y1 = Math.round(raw.height - 4.4 * ppm);
+  const inset = Math.round((px[1] - px[0]) * 0.06), [bandLo, bandHi] = bodyBandM(eavesM), y0 = Math.max(0, Math.round(raw.height - bandHi * ppm)), y1 = Math.round(raw.height - bandLo * ppm);
   let n = 0, v = 0, leaf = 0;
   for (let y = y0; y < y1; y++) for (let x = px[0] + inset; x < px[1] - inset; x++) {
     const i = (y * raw.width + x) * 3, p: [number, number, number] = [raw.rgb[i], raw.rgb[i + 1], raw.rgb[i + 2]];
@@ -90,18 +90,19 @@ function accentSide(raw: Raw, px: [number, number], ppm: number, eavesM: number)
 }
 
 /** Door side on the ground band (0.1-2.3 m): the darkest 0.9 m window of columns, if it is dark and in an outer third. */
-function doorSide(raw: Raw, px: [number, number], ppm: number): 'left' | 'right' | null {
-  const y0 = Math.round(raw.height - 2.3 * ppm), y1 = Math.round(raw.height - 0.1 * ppm), cols = px[1] - px[0];
+function doorSide(raw: Raw, px: [number, number], ppm: number, lowFront = false): 'left' | 'right' | null {
+  // A one-storey front's windows are as dark as its door over 1.1-2.4 m: only the door is dark between its foot and the sills (0.8-1.05 m).
+  const y0 = Math.round(raw.height - (lowFront ? 1.05 : 2.3) * ppm), y1 = Math.round(raw.height - (lowFront ? 0.8 : 0.1) * ppm), cols = px[1] - px[0];
   const dark = Array.from({length: cols}, (_, k) => {
     let d = 0, n = 0;
     for (let y = y0; y < y1; y++) { const i = (y * raw.width + px[0] + k) * 3, p: [number, number, number] = [raw.rgb[i], raw.rgb[i + 1], raw.rgb[i + 2]]; const c = classifyPixel(p); if (c === 'void') continue; n++; if (c === 'glass') d++; }
     return n ? d / n : 0;
   });
-  const w = Math.round(0.9 * ppm);
+  const w = Math.round((lowFront ? 0.6 : 0.9) * ppm);
   if (cols < 2 * w) return null;
   let best = {at: -1, v: 0};
   for (let k = 0; k + w <= cols; k++) { let s = 0; for (let j = k; j < k + w; j++) s += dark[j]; s /= w; if (s > best.v) best = {at: k + w / 2, v: s}; }
-  if (best.v < 0.55) return null;
+  if (best.v < (lowFront ? 0.4 : 0.55)) return null;
   return best.at < cols / 3 ? 'left' : best.at > cols * 2 / 3 ? 'right' : null;
 }
 
@@ -133,7 +134,7 @@ function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableTy
     const fe = t && ev ? frontEavesFor(t, ev) : null, bagM = photoEaves.get(h.pandId)?.bagM ?? ev?.eavesM;
     if (fe && ev && bagM !== undefined) {
       if (Math.abs(fe.eavesM - bagM) <= PHOTO_EAVES.minDeltaM && !photoEaves.has(h.pandId)) return [];
-      return [{pand: h.pandId, stripRow: Math.round(strip.height - fe.eavesM * strip.pixelsPerMetre), ...(fe.eavesM < bagM ? {frontRoof: {}} : {}),
+      return [{pand: h.pandId, stripRow: Math.round(strip.height - fe.eavesM * strip.pixelsPerMetre), ...(fe.eavesM < bagM && !t!.match?.keepSurveyRoof ? {frontRoof: {}} : {}),
         evidence: fe.source === 'skyline' ? `auto-place: strip skyline cornice ${fe.eavesM} m within ${FRONT_EAVES.tolM} m of the ${t!.id} line ${t!.match!.frontEavesM} m; 3DBAG/PDOK eaves ${bagM} m`
           : `auto-place: the ${t!.id} cornice line ${fe.eavesM} m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves ${bagM} m`}];
     }
@@ -152,7 +153,7 @@ async function faceEvidence(faceId: string) {
   for (const id of discovery.members as string[]) {
     const facts: BuildingFacts = await readJson(path.join(dir, 'pands', id, 'facts.json'));
     const u = uses.pands.find((p: any) => p.pandId === id), span = strip.spans.find((s: any) => s.pandId === id);
-    const f0 = facts.fronts[0], eavesM = f0.eavesM >= 6 ? f0.eavesM : facts.heights.dak70pM;
+    const f0 = facts.fronts[0], eavesM = f0.eavesM >= 6 || f0.eavesM <= 5 ? f0.eavesM : facts.heights.dak70pM; // <= 5 m: a one-storey front's own gutter (Vogelbuurt cottages), not the roof's 70th percentile
     const ev: PandEvidence = {pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
       groundUses: [...new Set<string>((u?.groundUnits ?? []).map((g: any) => g.use))],
       osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: osmCategory(b.tags)})),
@@ -180,7 +181,7 @@ async function faceEvidence(faceId: string) {
       }
       const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas}) : null;
       const skyBound = measureSkyBound({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre});
-      ev.strip = {date: span.date, px, palette, wall, skyline, skyBound, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
+      ev.strip = {date: span.date, px, palette, wall, skyline, skyBound, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre, eavesM <= 5), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
     }
     evs.push(ev);
   }
@@ -245,7 +246,7 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
   const [png] = await renderModels([{file: path.join(STAGING, runId, 'chunk.glb')}], [{eye: [(x0M + x1M) / 2, top / 2, 200], target: [(x0M + x1M) / 2, top / 2, 0], fov: 30, width: W, height: H,
     ortho: [-(x1M - x0M) / 2, (x1M - x0M) / 2, top / 2, -top / 2], background: '#9fb8cf', noGround: true}]);
   const modelRgb = new Uint8Array(await sharp(png).resize(W, H, {fit: 'fill'}).removeAlpha().raw().toBuffer());
-  const P = soup.positions, foot = runFootOffset(raw, strip, !process.argv.includes('--no-foot'));
+  const P = soup.positions, foot = runFootOffset(raw, strip, !process.argv.includes('--no-foot'), lowFrontFootMaxM(report.perPand.map((pp: any) => pp.eavesM)));
   if (foot.offsetM) console.log(`${runId}: facade foot ${foot.offsetM} m above the strip's bottom row (${foot.read}/${foot.spans} spans read, spread ${foot.spreadM} m)`);
   return report.perPand.map((pp: any, i: number) => {
     const s = strip.spans[i], w = (s.px[1] - s.px[0]) / strip.pixelsPerMetre, x0 = s.x0M;
@@ -267,7 +268,9 @@ export async function runLikeness(runId: string): Promise<PandLikeness[]> {
 }
 
 if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
-  const buurt = arg('buurt') ?? 'bellamybuurt-zuid', district = arg('district') ?? 'bellamy', only = arg('only')?.split(','), skipFaces = new Set((arg('skip') ?? '').split(',').filter(Boolean));
+  // No defaults: an invocation without --buurt (a `--help` probe) used to rewrite the tracked Bellamy placement record with 0 faces.
+  if (!arg('buurt') || !arg('district')) throw Error('auto-place: pass --buurt=<slug> --district=<library> (it rewrites scripts/block-face/buurten/<buurt>-placement.json)');
+  const buurt = arg('buurt')!, district = arg('district')!, only = arg('only')?.split(','), skipFaces = new Set((arg('skip') ?? '').split(',').filter(Boolean));
   // --photo-decides (Rivierenbuurt, 2026-10-16): where facts and strip readings cannot tell two types of one row apart
   // (Boterdiepstraat's flat and erker fronts share year, width, eaves and roof; the sunlit strip reads no door or accent
   // side), the edge NCC of every candidate (type x mirroring) decides instead of holding the pand.

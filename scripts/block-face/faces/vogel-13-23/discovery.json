@@ -1,0 +1,708 @@
+{
+ "street": "Vierde Vogelstraat",
+ "seed": "0363100012086814",
+ "members": [
+  "0363100012086814",
+  "0363100012065099",
+  "0363100012121905"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012086814 (face continues: 140660)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012078259 12.0 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062060",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012078259"
+  },
+  {
+   "pandId": "0363100012062516",
+   "reason": "frontage 37.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062919",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012151805"
+  },
+  {
+   "pandId": "0363100012063850",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012086231"
+  },
+  {
+   "pandId": "0363100012063945",
+   "reason": "frontage 107.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012064187",
+   "reason": "frontage 79.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065299",
+   "reason": "frontage 106.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065314",
+   "reason": "frontage 74.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065937",
+   "reason": "frontage 37.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065957",
+   "reason": "frontage 37.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012066995",
+   "reason": "frontage 52.4 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067750",
+   "reason": "frontage 89.4 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012068684",
+   "reason": "frontage 63.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012069851",
+   "reason": "frontage 52.4 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012071049",
+   "reason": "frontage 37.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076424",
+   "reason": "frontage 63.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076566",
+   "reason": "frontage 36.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076655",
+   "reason": "frontage 117.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076808",
+   "reason": "frontage 47.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076999",
+   "reason": "frontage 124.5 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078306",
+   "reason": "frontage 73.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079189",
+   "reason": "frontage 47.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079324",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012097156"
+  },
+  {
+   "pandId": "0363100012079781",
+   "reason": "frontage 52.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080054",
+   "reason": "frontage 106.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080292",
+   "reason": "frontage 43.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012081710",
+   "reason": "frontage 73.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012082673",
+   "reason": "frontage 122.5 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083019",
+   "reason": "frontage 42.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083174",
+   "reason": "frontage 63.3 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084318",
+   "reason": "frontage 48.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084589",
+   "reason": "no frontage on Vierde Vogelstraat: No footprint edge faces Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085239",
+   "reason": "frontage 63.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085288",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012086231"
+  },
+  {
+   "pandId": "0363100012086118",
+   "reason": "frontage 42.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086230",
+   "reason": "frontage 63.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086556",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012141389"
+  },
+  {
+   "pandId": "0363100012087612",
+   "reason": "frontage 74.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012073375",
+   "reason": "frontage 48.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076432",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012085777"
+  },
+  {
+   "pandId": "0363100012079772",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012087797"
+  },
+  {
+   "pandId": "0363100012085777",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012101207"
+  },
+  {
+   "pandId": "0363100012087797",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012106957"
+  },
+  {
+   "pandId": "0363100012087867",
+   "reason": "frontage 40.3 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088357",
+   "reason": "frontage 37.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088645",
+   "reason": "frontage 52.4 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088825",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012120077"
+  },
+  {
+   "pandId": "0363100012091188",
+   "reason": "frontage 73.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091593",
+   "reason": "frontage 52.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092401",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012062060"
+  },
+  {
+   "pandId": "0363100012092462",
+   "reason": "frontage 106.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092948",
+   "reason": "frontage 127.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012094588",
+   "reason": "no frontage on Vierde Vogelstraat: No footprint edge faces Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012096215",
+   "reason": "no frontage on Vierde Vogelstraat: No footprint edge faces Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012096696",
+   "reason": "frontage 37.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097156",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012117406"
+  },
+  {
+   "pandId": "0363100012097544",
+   "reason": "frontage 48.4 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097822",
+   "reason": "frontage 57.8 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097992",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012062919"
+  },
+  {
+   "pandId": "0363100012098785",
+   "reason": "frontage 63.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012099269",
+   "reason": "frontage 36.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012099577",
+   "reason": "frontage 43.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100260",
+   "reason": "frontage 63.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012100504",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012134762"
+  },
+  {
+   "pandId": "0363100012100692",
+   "reason": "frontage 38.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101482",
+   "reason": "frontage 37.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104208",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012086231"
+  },
+  {
+   "pandId": "0363100012104456",
+   "reason": "frontage 122.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104899",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012079324"
+  },
+  {
+   "pandId": "0363100012105093",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012121905"
+  },
+  {
+   "pandId": "0363100012105876",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012071224"
+  },
+  {
+   "pandId": "0363100012106658",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012135886"
+  },
+  {
+   "pandId": "0363100012107391",
+   "reason": "frontage 74.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012107760",
+   "reason": "frontage 52.5 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108351",
+   "reason": "frontage 57.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108395",
+   "reason": "frontage 63.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108562",
+   "reason": "frontage 107.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109073",
+   "reason": "frontage 108.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109523",
+   "reason": "frontage 52.7 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110238",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012079324"
+  },
+  {
+   "pandId": "0363100012110498",
+   "reason": "frontage 63.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012112593",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012062919"
+  },
+  {
+   "pandId": "0363100012115379",
+   "reason": "frontage 52.7 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090564",
+   "reason": "frontage 59.7 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090748",
+   "reason": "frontage 36.8 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097154",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012085777"
+  },
+  {
+   "pandId": "0363100012101207",
+   "reason": "no frontage on Vierde Vogelstraat: No footprint edge faces Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012103178",
+   "reason": "frontage 61.5 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104069",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012083966"
+  },
+  {
+   "pandId": "0363100012104339",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012147662"
+  },
+  {
+   "pandId": "0363100012106782",
+   "reason": "frontage 37.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106957",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012136383"
+  },
+  {
+   "pandId": "0363100012109124",
+   "reason": "frontage 82.3 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116446",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012121905"
+  },
+  {
+   "pandId": "0363100012116509",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012086231"
+  },
+  {
+   "pandId": "0363100012118660",
+   "reason": "frontage 52.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012119786",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012062060"
+  },
+  {
+   "pandId": "0363100012120569",
+   "reason": "frontage 52.5 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120708",
+   "reason": "frontage 47.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121571",
+   "reason": "frontage 63.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121730",
+   "reason": "frontage 89.5 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123312",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012065099"
+  },
+  {
+   "pandId": "0363100012123354",
+   "reason": "frontage 73.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123606",
+   "reason": "frontage 57.7 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124606",
+   "reason": "frontage 37.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012127241",
+   "reason": "frontage 122.4 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129706",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012138972"
+  },
+  {
+   "pandId": "0363100012130136",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012062919"
+  },
+  {
+   "pandId": "0363100012130216",
+   "reason": "frontage 40.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012130936",
+   "reason": "frontage 57.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012131492",
+   "reason": "frontage 112.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012132631",
+   "reason": "frontage 52.6 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133910",
+   "reason": "frontage 74.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133967",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012140660"
+  },
+  {
+   "pandId": "0363100012134789",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012086814"
+  },
+  {
+   "pandId": "0363100012135700",
+   "reason": "frontage 52.8 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135886",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012084589"
+  },
+  {
+   "pandId": "0363100012136147",
+   "reason": "frontage 40.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012136571",
+   "reason": "frontage 57.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137341",
+   "reason": "frontage 52.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137372",
+   "reason": "frontage 36.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012138634",
+   "reason": "frontage 89.5 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012140588",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012141389"
+  },
+  {
+   "pandId": "0363100012141264",
+   "reason": "frontage 47.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116764",
+   "reason": "frontage 52.6 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122850",
+   "reason": "frontage 84.3 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012128498",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012129359"
+  },
+  {
+   "pandId": "0363100012128642",
+   "reason": "frontage 40.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137414",
+   "reason": "frontage 40.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137760",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012079772"
+  },
+  {
+   "pandId": "0363100012142488",
+   "reason": "frontage 52.6 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142979",
+   "reason": "frontage 37.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012144561",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012084589"
+  },
+  {
+   "pandId": "0363100012146114",
+   "reason": "frontage 63.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012146996",
+   "reason": "frontage 94.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147609",
+   "reason": "frontage 62.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012148706",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012062060"
+  },
+  {
+   "pandId": "0363100012149443",
+   "reason": "frontage 89.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150171",
+   "reason": "frontage 36.8 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150842",
+   "reason": "sightline to Vierde Vogelstraat crosses 0363100012094588"
+  },
+  {
+   "pandId": "0363100012151653",
+   "reason": "frontage 84.0 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151858",
+   "reason": "frontage 106.9 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012153864",
+   "reason": "frontage 89.4 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219881",
+   "reason": "frontage 63.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219882",
+   "reason": "frontage 58.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219883",
+   "reason": "frontage 58.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219884",
+   "reason": "frontage 58.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219980",
+   "reason": "frontage 58.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012219981",
+   "reason": "frontage 58.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141926",
+   "reason": "frontage 40.1 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012143803",
+   "reason": "frontage 42.2 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012191596",
+   "reason": "frontage 61.8 m from Vierde Vogelstraat"
+  },
+  {
+   "pandId": "0363100012072678",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083966",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117406",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134762",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012138972",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012141389",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120334",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129359",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133044",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136383",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151805",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012086814",
+   "alongM": 0,
+   "widthM": 10.01,
+   "eavesM": 3.41,
+   "roofMaxM": 5.51,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012065099",
+   "alongM": 10.01,
+   "widthM": 10.01,
+   "eavesM": 3.47,
+   "roofMaxM": 5.51,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012121905",
+   "alongM": 20.02,
+   "widthM": 10.01,
+   "eavesM": 3.47,
+   "roofMaxM": 5.51,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,237 @@
+{
+ "face": "flamingo-4-10",
+ "street": "Flamingostraat",
+ "library": "vogelbuurt",
+ "stripDate": "2020-06-02",
+ "seconds": 0.28,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012063000",
+   "address": "Flamingostraat 10",
+   "builtYear": 1921,
+   "widthM": 6.58,
+   "eavesM": 7.34,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#433937",
+    "wallRaw": "#5e525b",
+    "skyline": {
+     "eavesM": 8.95,
+     "eavesRow": 197,
+     "confidence": 0.77,
+     "crown": {
+      "widthM": 2.33,
+      "riseM": 3.73,
+      "topWidthM": 0.7,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1 m at 0.08 (light 0.07): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1,
+       "centre": 0.08,
+       "light": 0.07
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run flamingo-4-10; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012087661",
+   "address": "Flamingostraat 8",
+   "builtYear": 1921,
+   "widthM": 6.32,
+   "eavesM": 6.92,
+   "storeys3dbag": 3,
+   "bagBay": {
+    "fromM": 6.22,
+    "toM": 6.22,
+    "depthM": 0.27,
+    "centre": 0.984
+   },
+   "strip": {
+    "wall": "#594740",
+    "wallRaw": "#50433f",
+    "skyline": {
+     "eavesM": 6.7,
+     "eavesRow": 287,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.8,
+      "riseM": 1.2,
+      "topWidthM": 1.85,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.33,
+     "balconies": true,
+     "why": "dark open axis 1.75 m at 0.25 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.75,
+       "centre": 0.25,
+       "light": 0.46
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.86,
+       "light": 0.49
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 1.02,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run flamingo-4-10; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012066422",
+   "address": "Flamingostraat 6",
+   "builtYear": 1921,
+   "widthM": 6.31,
+   "eavesM": 6.9,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#57494a",
+    "wallRaw": "#4b4447",
+    "skyline": {
+     "eavesM": 9.53,
+     "eavesRow": 174,
+     "confidence": 0.87,
+     "crown": {
+      "widthM": 2.65,
+      "riseM": 3.95,
+      "topWidthM": 0.03,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run flamingo-4-10; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012129921",
+   "address": "Flamingostraat 4",
+   "builtYear": 1921,
+   "widthM": 6.68,
+   "eavesM": 7.18,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4848",
+    "wallRaw": "#463c40",
+    "skyline": {
+     "eavesM": 9.57,
+     "eavesRow": 172,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 3.25,
+      "riseM": 3.1,
+      "topWidthM": 0.53,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.83 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.83,
+       "light": 0.32
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: step-gable run flamingo-4-10; held until the coordinator sends the correctly mirrored non-gable pands back for another Opus look",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

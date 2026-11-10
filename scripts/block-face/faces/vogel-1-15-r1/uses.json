@@ -1,0 +1,41 @@
+{
+ "street": "Lange Vogelstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:57:44.099Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012141706",
+   "addresses": [
+    "Lange Vogelstraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000723364"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144274",
+   "addresses": [
+    "Lange Vogelstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000723366"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

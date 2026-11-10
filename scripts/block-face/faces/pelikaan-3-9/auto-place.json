@@ -1,0 +1,318 @@
+{
+ "face": "pelikaan-3-9",
+ "street": "Pelikaanstraat",
+ "library": "vogelbuurt",
+ "stripDate": "2025-09-22",
+ "seconds": 4.09,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "pelikaan-3-9-r1",
+   "pands": [
+    "0363100012119758",
+    "0363100012124605"
+   ],
+   "passed": true,
+   "triangles": 1321
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012104432",
+   "address": "Pelikaanstraat 3",
+   "builtYear": 1924,
+   "widthM": 6.38,
+   "eavesM": 7.57,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5950",
+    "wallRaw": "#836b60",
+    "skyline": {
+     "eavesM": 12.38,
+     "eavesRow": 58,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 0.9,
+      "topWidthM": 0.55,
+      "centre": 0.05
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.253,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: gable crown pin added (verdict): held with the gable runs",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012119758",
+   "address": "Pelikaanstraat 5",
+   "builtYear": 1924,
+   "widthM": 6.67,
+   "eavesM": 7.02,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e675d",
+    "wallRaw": "#866e62",
+    "skyline": {
+     "eavesM": 11.82,
+     "eavesRow": 80,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.48,
+      "riseM": 1.6,
+      "topWidthM": 1.2,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.455,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.82 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.82,
+       "light": 0.29
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 1.55,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#7e675d",
+     "evidence": "strip 2025-09-22 span 255-522: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown flat-dormer (type default)",
+    "photo decides: vogel-1921-two-storey-dormer-row~m edge NCC 0.381 vs vogel-1921-two-storey-dormer-row 0.192"
+   ],
+   "likeness": {
+    "pandId": "0363100012119758",
+    "ncc": 0.485,
+    "nccRaw": 0.485,
+    "shiftM": [
+     0.1,
+     -0.35
+    ],
+    "usable": 0.67,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#7a625a",
+     "model": "#947a6e",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.534
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.192,
+    "vogel-1921-two-storey-dormer-row~m": 0.381
+   }
+  },
+  {
+   "pandId": "0363100012124605",
+   "address": "Pelikaanstraat 7",
+   "builtYear": 1924,
+   "widthM": 6.4,
+   "eavesM": 6.72,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786056",
+    "wallRaw": "#836c60",
+    "skyline": {
+     "eavesM": 13.22,
+     "eavesRow": 24,
+     "confidence": 0.61,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.82 m at 0.13 (light 0.34): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.82,
+       "centre": 0.13,
+       "light": 0.34
+      },
+      {
+       "widthM": 2.55,
+       "centre": 0.65,
+       "light": 0.33
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 5.9,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "vogel-1921-two-storey-dormer-row",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1921-two-storey-dormer-row",
+    "measuredPalette": {
+     "brick": "#786056",
+     "evidence": "strip 2025-09-22 span 522-778: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012124605",
+    "ncc": 0.436,
+    "nccRaw": 0.436,
+    "shiftM": [
+     -0.25,
+     -0.1
+    ],
+    "usable": 0.74,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#81675d",
+     "model": "#907367",
+     "dL": 0.049
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.647
+   },
+   "challengers": {
+    "vogel-1921-two-storey-dormer-row": 0.436,
+    "vogel-1921-two-storey-dormer-row~m": 0.206
+   }
+  },
+  {
+   "pandId": "0363100012153865",
+   "address": "Pelikaanstraat 9",
+   "builtYear": 1924,
+   "widthM": 6.39,
+   "eavesM": 7.31,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#70584d",
+    "wallRaw": "#816b5f",
+    "skyline": {
+     "eavesM": 12.22,
+     "eavesRow": 64,
+     "confidence": 0.82,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.5,
+      "topWidthM": 1.38,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.243,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: gable crown pin added (verdict): held with the gable runs",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

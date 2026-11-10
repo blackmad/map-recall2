@@ -1,0 +1,149 @@
+{
+ "street": "Meeuwenlaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:04:17.244Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155017",
+   "addresses": [
+    "Meeuwenlaan 301",
+    "Meeuwenlaan 303"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 301-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000741032"
+    },
+    {
+     "address": "Meeuwenlaan 303-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000741034"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100275",
+   "addresses": [
+    "Meeuwenlaan 305",
+    "Meeuwenlaan 307"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 305-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000741036"
+    },
+    {
+     "address": "Meeuwenlaan 307-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000741038"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115376",
+   "addresses": [
+    "Meeuwenlaan 309"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 309-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000741040"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113975",
+   "addresses": [
+    "Meeuwenlaan 311"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 311-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000741042"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012124227",
+   "addresses": [
+    "Meeuwenlaan 313"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 313-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000741044"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062796",
+   "addresses": [
+    "Meeuwenlaan 315"
+   ],
+   "groundUnits": [
+    {
+     "address": "Meeuwenlaan 315",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000741046"
+    },
+    {
+     "address": "Merelstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000742397"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2848620101,
+     "lngLat": [
+      4.9246014,
+      52.3899816
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "315",
+      "addr:postcode": "1022AK",
+      "addr:street": "Meeuwenlaan",
+      "name": "Burger & Zn IJzerwaren",
+      "opening_hours": "Mo-Fr 08:30-17:00, Sa 08:30-16:00",
+      "shop": "hardware",
+      "source": "BAG",
+      "source:date": "2014-05-07",
+      "website": "https://www.burger-ijzerwaren.nl/"
+     },
+     "fetchedAt": "2026-11-10T02:04:17.244Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

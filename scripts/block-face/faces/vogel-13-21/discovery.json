@@ -1,0 +1,717 @@
+{
+ "street": "Brede Vogelstraat",
+ "seed": "0363100012123354",
+ "members": [
+  "0363100012123354",
+  "0363100012078306",
+  "0363100012091188",
+  "0363100012065314"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012107391 48.3 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012081710 12.0 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062060",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062516",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012142488"
+  },
+  {
+   "pandId": "0363100012062882",
+   "reason": "frontage 38.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012062910",
+   "reason": "frontage 92.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063241",
+   "reason": "frontage 58.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063850",
+   "reason": "frontage 39.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012063945",
+   "reason": "frontage 38.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012064187",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012081710"
+  },
+  {
+   "pandId": "0363100012065099",
+   "reason": "frontage 54.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065299",
+   "reason": "frontage 38.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065836",
+   "reason": "frontage 43.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012065937",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012109523"
+  },
+  {
+   "pandId": "0363100012067081",
+   "reason": "frontage 87.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067236",
+   "reason": "frontage 53.6 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067531",
+   "reason": "frontage 91.9 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012067750",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012091188"
+  },
+  {
+   "pandId": "0363100012072678",
+   "reason": "frontage 59.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012073659",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012087612"
+  },
+  {
+   "pandId": "0363100012075795",
+   "reason": "frontage 54.4 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076566",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012088645"
+  },
+  {
+   "pandId": "0363100012076655",
+   "reason": "frontage 48.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012076808",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012123606"
+  },
+  {
+   "pandId": "0363100012076999",
+   "reason": "frontage 56.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078199",
+   "reason": "frontage 71.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078259",
+   "reason": "frontage 59.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012078328",
+   "reason": "frontage 38.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079189",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012079781"
+  },
+  {
+   "pandId": "0363100012079324",
+   "reason": "frontage 82.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079661",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012079781",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012136571"
+  },
+  {
+   "pandId": "0363100012079816",
+   "reason": "frontage 71.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080054",
+   "reason": "frontage 38.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012080292",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012084318"
+  },
+  {
+   "pandId": "0363100012081976",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012139381"
+  },
+  {
+   "pandId": "0363100012082673",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012083019",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012079189"
+  },
+  {
+   "pandId": "0363100012084233",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012084318",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012097822"
+  },
+  {
+   "pandId": "0363100012084589",
+   "reason": "frontage 54.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012085288",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012080292"
+  },
+  {
+   "pandId": "0363100012086231",
+   "reason": "frontage 54.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086556",
+   "reason": "frontage 87.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012086814",
+   "reason": "frontage 54.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012070792",
+   "reason": "no frontage on Brede Vogelstraat: No footprint edge faces Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012101771",
+   "reason": "no frontage on Brede Vogelstraat: No footprint edge faces Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012088357",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012107760"
+  },
+  {
+   "pandId": "0363100012088825",
+   "reason": "frontage 39.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012090616",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012123207"
+  },
+  {
+   "pandId": "0363100012091400",
+   "reason": "frontage 48.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012091593",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012108351"
+  },
+  {
+   "pandId": "0363100012092401",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012079189"
+  },
+  {
+   "pandId": "0363100012092462",
+   "reason": "frontage 38.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012092948",
+   "reason": "frontage 58.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012093588",
+   "reason": "frontage 54.4 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012094056",
+   "reason": "frontage 71.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012094588",
+   "reason": "frontage 54.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012096215",
+   "reason": "frontage 59.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097156",
+   "reason": "frontage 77.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012097236",
+   "reason": "frontage 58.6 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012099269",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012088645"
+  },
+  {
+   "pandId": "0363100012099577",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012076808"
+  },
+  {
+   "pandId": "0363100012100692",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012076808"
+  },
+  {
+   "pandId": "0363100012101482",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012132631"
+  },
+  {
+   "pandId": "0363100012101772",
+   "reason": "frontage 71.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012103994",
+   "reason": "frontage 38.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104208",
+   "reason": "frontage 44.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104456",
+   "reason": "frontage 53.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012104899",
+   "reason": "frontage 92.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012105093",
+   "reason": "frontage 39.4 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012105876",
+   "reason": "frontage 39.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106420",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012106658",
+   "reason": "frontage 31.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108489",
+   "reason": "frontage 71.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012108562",
+   "reason": "frontage 38.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012109169",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110100",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012110238",
+   "reason": "frontage 87.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012111139",
+   "reason": "frontage 43.6 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012111314",
+   "reason": "frontage 87.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012111907",
+   "reason": "frontage 71.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012114049",
+   "reason": "frontage 53.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116446",
+   "reason": "frontage 39.4 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116509",
+   "reason": "frontage 39.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012116965",
+   "reason": "frontage 71.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117406",
+   "reason": "frontage 72.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012095622",
+   "reason": "frontage 46.4 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012117598",
+   "reason": "frontage 48.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012118497",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012119786",
+   "reason": "frontage 49.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120077",
+   "reason": "frontage 54.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120169",
+   "reason": "frontage 91.9 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012120708",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012091593"
+  },
+  {
+   "pandId": "0363100012120731",
+   "reason": "frontage 38.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121047",
+   "reason": "frontage 87.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121063",
+   "reason": "frontage 71.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121416",
+   "reason": "frontage 71.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012121730",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012065314"
+  },
+  {
+   "pandId": "0363100012121905",
+   "reason": "frontage 54.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122155",
+   "reason": "frontage 86.9 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122579",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012122702",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012082395"
+  },
+  {
+   "pandId": "0363100012123001",
+   "reason": "frontage 81.9 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123312",
+   "reason": "frontage 39.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012123947",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012081976"
+  },
+  {
+   "pandId": "0363100012124242",
+   "reason": "frontage 38.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012124606",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012107760"
+  },
+  {
+   "pandId": "0363100012127132",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012082395"
+  },
+  {
+   "pandId": "0363100012127241",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012128397",
+   "reason": "frontage 76.9 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012129583",
+   "reason": "frontage 87.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012131492",
+   "reason": "frontage 43.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012132959",
+   "reason": "frontage 71.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133462",
+   "reason": "frontage 58.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012133967",
+   "reason": "frontage 39.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012134762",
+   "reason": "frontage 72.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012134789",
+   "reason": "frontage 39.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135488",
+   "reason": "frontage 43.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012135700",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012123606"
+  },
+  {
+   "pandId": "0363100012135886",
+   "reason": "frontage 49.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012137341",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012097822"
+  },
+  {
+   "pandId": "0363100012137372",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012066995"
+  },
+  {
+   "pandId": "0363100012137810",
+   "reason": "frontage 54.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012138008",
+   "reason": "frontage 53.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012138583",
+   "reason": "frontage 81.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012138634",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012091188"
+  },
+  {
+   "pandId": "0363100012138972",
+   "reason": "frontage 72.4 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012139381",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012147550"
+  },
+  {
+   "pandId": "0363100012140660",
+   "reason": "frontage 54.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141389",
+   "reason": "frontage 72.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012141706",
+   "reason": "frontage 86.9 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142347",
+   "reason": "frontage 76.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012142979",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012120569"
+  },
+  {
+   "pandId": "0363100012144274",
+   "reason": "frontage 81.9 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012144429",
+   "reason": "frontage 38.7 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012144561",
+   "reason": "frontage 44.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012145652",
+   "reason": "frontage 76.9 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012146996",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012064187"
+  },
+  {
+   "pandId": "0363100012147035",
+   "reason": "frontage 48.6 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012147250",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012139381"
+  },
+  {
+   "pandId": "0363100012147442",
+   "reason": "frontage 94.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012148706",
+   "reason": "frontage 44.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012149443",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012064187"
+  },
+  {
+   "pandId": "0363100012150171",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012069851"
+  },
+  {
+   "pandId": "0363100012150433",
+   "reason": "frontage 38.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012150842",
+   "reason": "frontage 49.2 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151653",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012064187"
+  },
+  {
+   "pandId": "0363100012151805",
+   "reason": "frontage 72.3 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012151858",
+   "reason": "frontage 38.8 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012153864",
+   "reason": "sightline to Brede Vogelstraat crosses 0363100012078306"
+  },
+  {
+   "pandId": "0363100012158267",
+   "reason": "no frontage on Brede Vogelstraat: No footprint edge faces Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012207992",
+   "reason": "frontage 124.4 m from Brede Vogelstraat"
+  },
+  {
+   "pandId": "0363100012066995",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012069851",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012088645",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097822",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012107760",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108351",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109523",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120569",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123606",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132631",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136571",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142488",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012123354",
+   "alongM": 0,
+   "widthM": 5.85,
+   "eavesM": 3.37,
+   "roofMaxM": 5.47,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012078306",
+   "alongM": 5.01,
+   "widthM": 4.17,
+   "eavesM": 3.39,
+   "roofMaxM": 5.51,
+   "storeys3dbag": 2,
+   "builtYear": 1918,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012091188",
+   "alongM": 12.1,
+   "widthM": 10.01,
+   "eavesM": 3.41,
+   "roofMaxM": 5.5,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012065314",
+   "alongM": 22.11,
+   "widthM": 10,
+   "eavesM": 3.42,
+   "roofMaxM": 5.5,
+   "storeys3dbag": 2,
+   "builtYear": 1919,
+   "uncertainty": []
+  }
+ ]
+}
