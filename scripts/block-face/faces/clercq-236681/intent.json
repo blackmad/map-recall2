@@ -544,21 +544,9 @@
       "id": "nassaukade",
       "street": "Nassaukade",
       "gable": "cornice",
-      "dormers": 2,
-      "dormerStyle": "pediment",
-      "dormerAt": [
-       {
-        "from": 0.24,
-        "to": 0.38
-       },
-       {
-        "from": 0.68,
-        "to": 0.82
-       }
-      ],
-      "storeys": 5,
-      "bays": 6,
-      "doorBay": 5,
+      "storeys": 4,
+      "bays": 7,
+      "doorBay": 6,
       "basement": "none",
       "tallGround": true,
       "cornice": "bracketed",
@@ -575,7 +563,47 @@
        "glazing": "transom",
        "evidence": "strip.jpg 2024-11-21: black-framed bar front over the three left axes, a chalk board, no legible sign; BAG bijeenkomstfunctie, no OSM node"
       },
-      "hoist": false
+      "hoist": false,
+      "rosettes": [
+       {
+        "bays": [
+         1
+        ],
+        "storeys": [
+         1,
+         2,
+         3
+        ],
+        "diameter": 1.0
+       }
+      ],
+      "palette": {
+       "brick": "#564543"
+      },
+      "towers": [
+       {
+        "bays": {
+         "from": 2,
+         "to": 2
+        },
+        "rise": 0.85,
+        "cap": "flat",
+        "finish": "stone",
+        "lightRise": 0.45,
+        "lightSill": 0.2
+       },
+       {
+        "bays": {
+         "from": 5,
+         "to": 5
+        },
+        "rise": 0.85,
+        "cap": "flat",
+        "finish": "stone",
+        "lightRise": 0.45,
+        "lightSill": 0.2
+       }
+      ]
      }
     ],
     "roof": {
@@ -591,7 +619,8 @@
     "notes": [
      "type clercq-nassaukade-corner: crown two-dormers, palette red-brown-brick",
      "lane H7 (#354, 2026-11-10): multi-front corner pand. front0 is the resolved type clercq-nassaukade-corner (crown two-dormers) on De Clercqstraat; front 'nassaukade' is the Nassaukade face read on face nassau-145-152 (strip 2024-11-21: 6 axes in two halves, 5 storeys with a tall ground storey, bracketed white cornice, two pediment dormers, bar front over the left three axes), copied unchanged from that face's design so the chunk draws it instead of the bare slab the #341 audit found.",
-     "palette: one palette per pand; the De Clercqstraat type's (#715850) is kept on both fronts, the Nassaukade read was #6b5947 (dE small)."
+     "palette: one palette per pand; the De Clercqstraat type's (#715850) is kept on both fronts, the Nassaukade read was #6b5947 (dE small).",
+     "H7 round 2 (#354): the Nassaukade front is ground + 3 storeys (STOREYS_DEFINITION; it was 5, copied from nassau-145-152) over 7 axes, axis 1 blind with three wreath roundels (rosettes), two stone towers on the cornice over axes 2 and 5 (`towers`, finish stone, flat caps; roof dormers set behind the facade were buried in the attic's vertical Nassaukade end), its own wall colour #564543 = blockFace/wallFit.ts over the 2019-01-09 strip and the 2019-01-09 / 2021-03-24 / 2022-04-26 crops (scripts/block-face/wall-fit.ts); the De Clercqstraat palette #715850 stays on front0."
     ]
    }
   }

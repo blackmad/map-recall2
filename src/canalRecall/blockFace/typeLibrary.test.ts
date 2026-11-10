@@ -16,9 +16,11 @@ const face = (id: string): BlockFaceIntent => JSON.parse(fs.readFileSync(path.jo
 const members = (id: string): string[] => JSON.parse(fs.readFileSync(path.join('scripts/block-face/faces', id, 'discovery.json'), 'utf8')).members;
 const stub = (id: string): HouseTypeIntent => ({schemaVersion: 1, kind: 'house-type', id} as HouseTypeIntent);
 
-test('De Clercqstraat references its three types by id; the file loader resolves them with district and evidence', () => {
+// The corner pand 116526 left `clercq-nassaukade-corner` for a two-front design in lane H7 (#354): its Nassaukade face is
+// its own front, which a one-front type cannot say.
+test('De Clercqstraat references its two types by id; the file loader resolves them with district and evidence', () => {
   const f = face('clercq-236681');
-  assert.deepEqual(f.types, ['clercq-e-corbel-brick', 'clercq-f-stucco-mansard', 'clercq-nassaukade-corner']);
+  assert.deepEqual(f.types, ['clercq-e-corbel-brick', 'clercq-f-stucco-mansard']);
   const types = resolveFaceTypes(f, fileTypeLoader());
   assert.deepEqual(types.map(t => t.id), f.types);
   for (const t of types) { assert.equal((t as any).district, 'oud-west'); assert.ok(t.evidence.length); }
