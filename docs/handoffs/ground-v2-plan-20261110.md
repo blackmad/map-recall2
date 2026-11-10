@@ -145,6 +145,39 @@ The structural fix the user chose. Every cell becomes one planar partition: no o
 - **G2c, crossings.** Decks, cuts, slots and portals become partition constraints. Floor, walls and ground share edges, which removes `clipMeshAtCuts` and lids.
 - **G2d, flip.** Default on after the user rides the named places. The old path stays behind `?groundV2=0` for one week.
 
+### G3 — Crossing register: evidenced records for every vertical crossing (opus; starts now, Node-only)
+
+**User, 2026-11-10:** "I think you need to make some larger manual changes to the source data to model this correctly, yes?" Yes. The ring corridor shows that guessing crossings from tags and the terrain model fails: the false 73 m Kranenbergpad span, portal boxes on grass, saddles under every deck. The game needs authored records, as `railViaducts.ts` already does for exactly one place (Droogbak, with BGT and AHN evidence and panoramas).
+
+- **One record per vertical crossing,** at `data/crossings/<area>.json`, typed in `src/canalRecall/ownGround/crossings.ts`. This generalises `RailViaduct`. Each record carries:
+  - **kind:** rail over road, road over road, road under (slot or tunnel), level crossing, or not a crossing;
+  - **plan:** deck extents (BGT overbruggingsdeel), piers (pijler), abutment walls (scheiding muur), tunnel parts (tunneldeel/kunstwerkdeel), and portal positions;
+  - **heights:** street level under, soffit, deck top, and rail or road grade on each side (AHN DTM/DSM at the open sides);
+  - **the ways it binds:** OSM way ids above and below, and the BGT ids;
+  - **`evidence`:** source ids plus the ortho and panorama ids it was checked against;
+  - **`reviewed`:** who and when.
+- **Drafts are generated,** by `npm run crossings:draft -- --area ring-zuid`, from BGT (overbruggingsdeel, kunstwerkdeel, tunneldeel, spoor, wegdeel with hoogteligging), OSM bridge, tunnel and layer tags, and AHN. Every place where tags and terrain disagree is listed.
+- **Every draft is reviewed by eye,** with opus reading the ortho cut and a panorama per record. Records the photos contradict are corrected by hand. Kranenbergpad becomes a level crossing for the siding, plus the ring decks over the path.
+- **The game treats records as truth:**
+  - deck caps and lowered street floors come from records (G1 item 1 reads them);
+  - slots and portals come from records, with inference only where no record exists;
+  - rail grade through a record follows its heights;
+  - `railSpans` and `tunnels.ts` skip any crossing a record covers.
+- **Scope, in order:**
+  1. the 8 named places;
+  2. the ring railway Sloterdijk – Lelylaan – Zuid – RAI;
+  3. the A10 ring;
+  4. the IJ and Coen tunnel approaches;
+  5. then by ride priority.
+
+  The lane reports the count per area first. Expect a few hundred records, at about 2 minutes each with draft plus photo.
+- **Gates:**
+  - every named place has a reviewed record;
+  - G0's audit at those places shows no deck saddles and no unbound portals;
+  - ride frames sit beside the ortho;
+  - `check:tunnels` and `check-rail-street.ts` are re-pinned to the records;
+  - records are archived with their crops to source-data.
+
 ### G4 — Near-ground coverage (sonnet; parallel with G1)
 
 - Reproduce at Cornelis Lelylaan / Delflandlaan.
@@ -170,7 +203,7 @@ The structural fix the user chose. Every cell becomes one planar partition: no o
 
 ### Order
 
-1. **Today:** G0, C1, C2 and G4 start; G2-design starts in parallel.
+1. **Today:** G0, G3 (drafts plus the named places), C1, C2 and G4 start; G2-design starts in parallel. G1 item 1 and G2c read G3's records.
 2. **After G0's numbers:** the open-ground default is decided, then G1.
 3. **After my design review:** G2a, G2b, G2c, then G2d.
 4. **Elsewhere:** a1's rails lane continues on spans. T-shape (trees) runs independently.
