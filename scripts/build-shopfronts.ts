@@ -18,7 +18,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 import { businessColour, shopKindForTags, type ShopfrontExtract } from '../src/canalRecall/shopfronts.ts';
 import { SHOP_KINDS, type ShopKind } from '../src/canalRecall/bayTextures.ts';
-import { bagAllowsShop, inferBusyStretch, type BagUsesTable } from '../src/canalRecall/shopGate.ts';
+import { bagAllowsShop, hostForPoi, inferBusyStretch, isTradeBusiness, type BagUsesTable } from '../src/canalRecall/shopGate.ts';
 
 const BBOX = '52.28,4.75,52.43,5.05';
 const noGate = process.argv.includes('--no-gate');
@@ -70,10 +70,14 @@ for (const x of fs.readdirSync(root)) for (const f of fs.readdirSync(path.join(r
   }
 }
 const near = (x: number, y: number) => { const gx = Math.floor(x / CELL), gy = Math.floor(y / CELL), out: Building[] = []; for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) out.push(...(grid.get(`${gx + dx},${gy + dy}`) ?? [])); return out; };
-const contains = (ring: [number, number][], x: number, y: number) => { let inside = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [xi, yi] = ring[i], [xj, yj] = ring[j]; if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside; } return inside; };
-const edgeDistance = (ring: [number, number][], x: number, y: number) => { let best = Infinity; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) { const [ax, ay] = ring[j], [bx, by] = ring[i], dx = bx - ax, dy = by - ay, l = dx * dx + dy * dy || 1, t = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / l)); best = Math.min(best, Math.hypot(x - ax - t * dx, y - ay - t * dy)); } return best; };
 
 const nodes = await fetchNodes();
+const bagUses = (JSON.parse(fs.readFileSync('.cache/industrial/bag-uses.json', 'utf8')) as { pands: BagUsesTable }).pands;
+const bagKey = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
+const noSnapGate = process.argv.includes('--no-snap-gate');
+const byId = new Map(buildings.map(b => [b.id, b]));
+const snapped: Array<{ id: string; d: number; bag: boolean }> = [];
+const hosted: Array<{ id: string; inside: boolean; tag: string; name?: string }> = [];
 // The businesses the game labels on the map (branded-pois local-food, with an orientation score).
 const labelled = (JSON.parse(fs.readFileSync('public/data/extracts/amsterdam/branded-pois.json', 'utf8')) as any[])
   .filter(p => p.kind === 'local-food' && Number(p.orientationScore) >= 5).map(p => ({ name: String(p.name).toLowerCase(), xy: local(p.center[1], p.center[0]), score: Number(p.orientationScore) }));
@@ -86,7 +90,7 @@ const notability = (name: string, x: number, y: number) => {
 };
 const colours = new Map<string, string>(), signatures = new Map<string, { at: [number, number]; score: number }>();
 const assigned = new Map<string, ShopKind>(), points: Array<{ x: number; y: number; kind: ShopKind }> = [];
-let unplaced = 0, skipped = 0;
+let unplaced = 0, skipped = 0, tradeSkipped = 0;
 for (const node of nodes) {
   const kind = shopKindForTags(node.tags ?? {});
   if (!kind) { skipped++; continue; }
@@ -95,9 +99,15 @@ for (const node of nodes) {
   const [x, y] = local(node.lon, node.lat);
   points.push({ x, y, kind });
   const candidates = near(x, y);
-  let host = candidates.find(b => contains(b.ring, x, y));
-  if (!host) { let best = 8; for (const b of candidates) { const d = edgeDistance(b.ring, x, y); if (d < best) { best = d; host = b; } } }
+  // A node inside a footprint belongs to it; one on the pavement snaps to a footprint BAG lists as shop/horeca within 8 m,
+  // and to any other footprint only within 2 m (shopGate.ts hostForPoi). --no-snap-gate: the old 8 m for every pand.
+  const hit = hostForPoi(candidates, x, y, id => bagUses[bagKey(id)], !noGate && !noSnapGate);
+  const host = hit ? byId.get(hit.id) : undefined;
+  if (hit) hosted.push({ id: hit.id, inside: hit.inside, tag: node.tags.shop ? `shop=${node.tags.shop}` : `amenity=${node.tags.amenity}`, name: node.tags.name });
+  if (hit && !hit.inside) snapped.push({ id: hit.id, d: hit.distanceM, bag: bagAllowsShop(bagUses[bagKey(hit.id)]) });
   if (!host) { unplaced++; continue; }
+  // A garage, wholesaler or storage unit on a pand BAG does not list as shop/horeca is a workshop, not a shopfront.
+  if (!noGate && !noSnapGate && isTradeBusiness(node.tags) && !bagAllowsShop(bagUses[bagKey(host.id)])) { tradeSkipped++; continue; }
   // A food or café use beats a generic window when one building carries several POIs.
   const held = assigned.get(host.id);
   if (!held || held === 'shopWindow' || held === 'groundShop') assigned.set(host.id, kind);
@@ -113,8 +123,6 @@ const direct = assigned.size;
 const pointGrid = new Map<string, typeof points>();
 for (const pt of points) { const key = `${Math.floor(pt.x / CELL)},${Math.floor(pt.y / CELL)}`; let l = pointGrid.get(key); if (!l) pointGrid.set(key, l = []); l.push(pt); }
 // The gate (src/canalRecall/shopGate.ts): the stretch only lends a shop to a pand BAG registers for retail or horeca.
-const bagUses = (JSON.parse(fs.readFileSync('.cache/industrial/bag-uses.json', 'utf8')) as { pands: BagUsesTable }).pands;
-const bagKey = (id: string) => id.replace(/^NL\.IMBAG\.Pand\./, '');
 const stretch = inferBusyStretch<ShopKind>(buildings, id => assigned.has(id), b => {
   const gx = Math.floor(b.cx / CELL), gy = Math.floor(b.cy / CELL), around: typeof points = [];
   for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) around.push(...(pointGrid.get(`${gx + dx},${gy + dy}`) ?? []));
@@ -145,9 +153,11 @@ if (publishedChains) { out.chains = publishedChains; for (const id of Object.key
 const text = JSON.stringify(out);
 fs.mkdirSync(path.dirname(STAGING), { recursive: true });
 fs.writeFileSync(STAGING, text);
+fs.writeFileSync(`${outDir}/hosted.json`, JSON.stringify(hosted));
+fs.writeFileSync(`${outDir}/snapped.json`, JSON.stringify(snapped));
 fs.writeFileSync(`${outDir}/shopfront-sources.json`, JSON.stringify({ gate: !noGate, sources, refused: Object.fromEntries(stretch.refused) }));
 const byKind = Object.fromEntries(kinds.map(k => [k, [...assigned.values()].filter(v => v === k).length]));
-console.log(`${nodes.length} POIs (${skipped} not ground-floor businesses, ${unplaced} with no building within 8 m); ${direct} buildings carry a business, ${busy} more on busy stretches (${stretch.refused.size} refused by the BAG gate), ${carried} carried from the previous extract, of ${buildings.length} ground buildings; ${(text.length / 1024).toFixed(0)} KB`);
+console.log(`${nodes.length} POIs (${skipped} not ground-floor businesses, ${unplaced} with no building within 8 m, ${tradeSkipped} trade businesses on non-shop pands); ${direct} buildings carry a business, ${busy} more on busy stretches (${stretch.refused.size} refused by the BAG gate), ${carried} carried from the previous extract, of ${buildings.length} ground buildings; ${(text.length / 1024).toFixed(0)} KB`);
 console.log(byKind);
 console.log(`${colours.size} buildings in their business's own colour, ${signatures.size} signature storefronts (${labelled.length} labelled businesses, ${[...branches.values()].filter(n => n >= 3).length} chains of 3+)`);
 if (process.argv.includes('--publish')) { fs.writeFileSync(PUBLISHED, text); console.log(`published -> ${PUBLISHED}`); }
