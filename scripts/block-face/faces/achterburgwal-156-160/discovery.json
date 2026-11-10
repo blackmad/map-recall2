@@ -1,0 +1,547 @@
+{
+ "street": "Oudezijds Achterburgwal",
+ "seed": "0363100012178663",
+ "members": [
+  "0363100012178662",
+  "0363100012178663"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012178662 (face continues: 178661 178825)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012178663 (face continues: 178828)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165293",
+   "reason": "frontage 92.2 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012171201",
+   "reason": "frontage 33.9 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012171203",
+   "reason": "frontage 89.3 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012171238",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178661"
+  },
+  {
+   "pandId": "0363100012171239",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178663"
+  },
+  {
+   "pandId": "0363100012171240",
+   "reason": "frontage 44.1 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012171241",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178662"
+  },
+  {
+   "pandId": "0363100012165008",
+   "reason": "frontage 58.5 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012165371",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178646"
+  },
+  {
+   "pandId": "0363100012171200",
+   "reason": "frontage 77.2 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012171204",
+   "reason": "frontage 33.8 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012171205",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012171213"
+  },
+  {
+   "pandId": "0363100012171208",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178834"
+  },
+  {
+   "pandId": "0363100012171210",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012171211"
+  },
+  {
+   "pandId": "0363100012171211",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178734"
+  },
+  {
+   "pandId": "0363100012171212",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178659"
+  },
+  {
+   "pandId": "0363100012171236",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178744"
+  },
+  {
+   "pandId": "0363100012171245",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178834"
+  },
+  {
+   "pandId": "0363100012171246",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012171207"
+  },
+  {
+   "pandId": "0363100012171248",
+   "reason": "frontage 48.1 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012171251",
+   "reason": "frontage 32.9 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012171252",
+   "reason": "frontage 52.6 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178193",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012171250"
+  },
+  {
+   "pandId": "0363100012178195",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012171250"
+  },
+  {
+   "pandId": "0363100012178196",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178193"
+  },
+  {
+   "pandId": "0363100012178210",
+   "reason": "frontage 59.4 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178383",
+   "reason": "frontage 33.2 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178384",
+   "reason": "frontage 39.3 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178385",
+   "reason": "frontage 39.0 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178386",
+   "reason": "frontage 43.2 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178387",
+   "reason": "frontage 42.7 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178388",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178389"
+  },
+  {
+   "pandId": "0363100012178389",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178391"
+  },
+  {
+   "pandId": "0363100012178648",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178653"
+  },
+  {
+   "pandId": "0363100012178738",
+   "reason": "frontage 37.5 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178739",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178838"
+  },
+  {
+   "pandId": "0363100012178740",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178837"
+  },
+  {
+   "pandId": "0363100012178741",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178837"
+  },
+  {
+   "pandId": "0363100012178748",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178743"
+  },
+  {
+   "pandId": "0363100012178751",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178832"
+  },
+  {
+   "pandId": "0363100012178753",
+   "reason": "frontage 39.5 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178754",
+   "reason": "frontage 34.8 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178755",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178824"
+  },
+  {
+   "pandId": "0363100012178824",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178826"
+  },
+  {
+   "pandId": "0363100012178452",
+   "reason": "frontage 60.0 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178453",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178390"
+  },
+  {
+   "pandId": "0363100012178455",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178388"
+  },
+  {
+   "pandId": "0363100012178465",
+   "reason": "frontage 45.7 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178466",
+   "reason": "frontage 50.2 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178529",
+   "reason": "frontage 49.4 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178530",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178391"
+  },
+  {
+   "pandId": "0363100012178640",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178643"
+  },
+  {
+   "pandId": "0363100012178641",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178640"
+  },
+  {
+   "pandId": "0363100012178643",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178644"
+  },
+  {
+   "pandId": "0363100012178656",
+   "reason": "frontage 46.5 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178659",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178660"
+  },
+  {
+   "pandId": "0363100012178660",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178839"
+  },
+  {
+   "pandId": "0363100012178716",
+   "reason": "frontage 37.0 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178735",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178734"
+  },
+  {
+   "pandId": "0363100012178736",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178734"
+  },
+  {
+   "pandId": "0363100012178737",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178734"
+  },
+  {
+   "pandId": "0363100012178749",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178745"
+  },
+  {
+   "pandId": "0363100012178826",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178828"
+  },
+  {
+   "pandId": "0363100012178827",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178663"
+  },
+  {
+   "pandId": "0363100012178829",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178826"
+  },
+  {
+   "pandId": "0363100012178830",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178826"
+  },
+  {
+   "pandId": "0363100012178832",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178831"
+  },
+  {
+   "pandId": "0363100012178833",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178832"
+  },
+  {
+   "pandId": "0363100012180029",
+   "reason": "frontage 95.7 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180030",
+   "reason": "frontage 95.6 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180036",
+   "reason": "frontage 38.3 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180037",
+   "reason": "frontage 43.1 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180038",
+   "reason": "frontage 46.5 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180039",
+   "reason": "frontage 41.0 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180138",
+   "reason": "frontage 95.4 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180142",
+   "reason": "frontage 111.1 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180143",
+   "reason": "frontage 104.5 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180144",
+   "reason": "frontage 95.2 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180145",
+   "reason": "frontage 95.0 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180146",
+   "reason": "frontage 94.5 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180147",
+   "reason": "frontage 94.2 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180148",
+   "reason": "frontage 93.6 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180212",
+   "reason": "frontage 107.9 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180213",
+   "reason": "frontage 97.2 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180218",
+   "reason": "frontage 41.4 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180219",
+   "reason": "frontage 93.3 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180315",
+   "reason": "frontage 114.0 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180317",
+   "reason": "frontage 110.1 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180384",
+   "reason": "frontage 91.0 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012180385",
+   "reason": "frontage 90.6 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012186196",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012250981"
+  },
+  {
+   "pandId": "0363100012250983",
+   "reason": "frontage 38.7 m from Oudezijds Achterburgwal"
+  },
+  {
+   "pandId": "0363100012178915",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012171247"
+  },
+  {
+   "pandId": "0363100012178916",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012178920"
+  },
+  {
+   "pandId": "0363100012178921",
+   "reason": "sightline to Oudezijds Achterburgwal crosses 0363100012171247"
+  },
+  {
+   "pandId": "0363100012171206",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171209",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171213",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171214",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171215",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171235",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171237",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171249",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171250",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171253",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171731",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171791",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178377",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178378",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178646",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178653",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178657",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178390",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178391",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178644",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178645",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178647",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178658",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178732",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178733",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178734",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178836",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178839",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178995",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178996",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012178662",
+   "alongM": -6.96,
+   "widthM": 9.43,
+   "eavesM": 15.86,
+   "roofMaxM": 15.89,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178663",
+   "alongM": 0,
+   "widthM": 4.49,
+   "eavesM": 8.07,
+   "roofMaxM": 11.92,
+   "storeys3dbag": 0,
+   "builtYear": 1788,
+   "uncertainty": []
+  }
+ ]
+}

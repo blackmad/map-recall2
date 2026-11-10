@@ -1,0 +1,237 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "achterburgwal-156-160",
+ "street": "Oudezijds Achterburgwal",
+ "sources": [
+  {
+   "id": "strip-2025-01-08",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "image": "staging/block-face/achterburgwal-156-160/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Oudezijds Achterburgwal 158-160 and 156 (even side): a plain four-storey brown-brick cornice front with four windows in pairs and a slate mansard with two white dormers, over a restaurant with a red fascia; and an 18th-c. brick neck gable (Rijksmonument 119) over a white timber pui."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012178662",
+   "slug": "achterburgwal-178662",
+   "address": "Oudezijds Achterburgwal 158H",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Oudezijds Achterburgwal",
+      "gable": "cornice",
+      "cornice": "simple",
+      "storeys": 4,
+      "bays": 4,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "windowShare": 0.62,
+      "roofFront": "mansard",
+      "dormers": 2,
+      "dormerStyle": "flat",
+      "dormerBody": "stone",
+      "dormerAt": [
+       {
+        "from": 0.11,
+        "to": 0.41
+       },
+       {
+        "from": 0.59,
+        "to": 0.9
+       }
+      ],
+      "storeyHeights": [
+       4.0,
+       3.0,
+       2.9,
+       3.0
+      ],
+      "windowHeights": [
+       0.6,
+       0.55,
+       0.58,
+       0.55
+      ],
+      "headLines": [
+       0.8,
+       0.7,
+       0.72,
+       0.68
+      ],
+      "shopfront": {
+       "colour": "#8e2420",
+       "fascia": true,
+       "stallriser": "low",
+       "displayWindows": 2,
+       "entrance": "right",
+       "evidence": "strip 2025-01-08 pand 1: red ornamented fascia over dark restaurant windows, white-framed door on the right"
+      }
+     }
+    ],
+    "roof": {
+     "material": "slate"
+    },
+    "palette": {
+     "brick": "#57483c",
+     "frame": "white-painted",
+     "door": "#2a2a2a",
+     "stone": "#e4e0d6",
+     "cornice": "#cfcabe"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Siga La Vaca",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 4212704748,
+     "name": "Siga La Vaca",
+     "tags": "amenity=restaurant"
+    },
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "4 axes in two pairs",
+    "windowsPerStorey": "ground: restaurant | 1: 4 | 2: 4 | 3: 4 | mansard: 2 dormers",
+    "symmetry": "symmetric",
+    "groundFloor": "restaurant with red fascia",
+    "signage": "none",
+    "roofline": "simple cornice at 12.9 m, slate mansard to 15 m with two white dormers",
+    "citation": "strip.jpg pand 1 (2025-01-08)",
+    "photoRows": [
+     1,
+     4,
+     4,
+     4,
+     2
+    ],
+    "schemaLimits": [
+     "the red fascia carries Chinese-style ornament and lanterns; drawn as a plain red fascia",
+     "the dormers are pairs of casements under a shallow segmental head; drawn as flat white dormers"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012178663",
+   "slug": "achterburgwal-178663",
+   "address": "Oudezijds Achterburgwal 156",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Oudezijds Achterburgwal",
+      "gable": "neck",
+      "crownCap": "rounded",
+      "crownRise": 0.85,
+      "crownNeckWidth": 0.6,
+      "cornice": "none",
+      "storeys": 3,
+      "bays": 2,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash",
+      "windowShare": 0.5,
+      "atticWindows": 1,
+      "gableOrnament": {
+       "wings": "volutes"
+      },
+      "storeyHeights": [
+       3.5,
+       2.9,
+       2.8
+      ],
+      "windowHeights": [
+       0.6,
+       0.72,
+       0.62
+      ],
+      "headLines": [
+       0.8,
+       0.8,
+       0.72
+      ],
+      "groundFront": {
+       "kind": "pui",
+       "bays": [
+        "window",
+        "door",
+        "window"
+       ],
+       "colour": "cream-painted",
+       "evidence": "strip 2025-01-08 pand 2: cream timber pui, door between two windows"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile",
+     "squareSaddle": true
+    },
+    "palette": {
+     "brick": "#684634",
+     "frame": "white-painted",
+     "door": "#2d3a34",
+     "stone": "#e6e0d0"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: pui | 1: 2 | 2: 2 | gable: 1",
+    "symmetry": "symmetric",
+    "groundFloor": "timber pui",
+    "signage": "none",
+    "roofline": "neck gable, foot 9.2 m, neck ledge 10.9 m, segmental cap 11.6 m",
+    "citation": "strip.jpg pand 2 (2025-01-08)",
+    "photoRows": [
+     3,
+     2,
+     2,
+     1
+    ],
+    "photoGables": 1
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012178662",
+    "stripRow": 200,
+    "evidence": "top of the cornice under the mansard (grid crop a156, 12.9 m)"
+   },
+   {
+    "pand": "0363100012178663",
+    "stripRow": 348,
+    "evidence": "gable foot where the claw pieces start (grid crop a156c, 9.2 m)"
+   }
+  ]
+ }
+}

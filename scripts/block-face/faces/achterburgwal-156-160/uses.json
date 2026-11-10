@@ -1,0 +1,121 @@
+{
+ "street": "Oudezijds Achterburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:50:22.805Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012178662",
+   "addresses": [
+    "Oudezijds Achterburgwal 158H",
+    "Oudezijds Achterburgwal 158E",
+    "Oudezijds Achterburgwal 158B",
+    "Oudezijds Achterburgwal 158F",
+    "Oudezijds Achterburgwal 158G",
+    "Oudezijds Achterburgwal 158K",
+    "Oudezijds Achterburgwal 158A",
+    "Oudezijds Achterburgwal 158C",
+    "Oudezijds Achterburgwal 158D",
+    "Oudezijds Achterburgwal 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 158H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000811652"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 160",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000815372"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 158E",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000811250"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 158B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000945801"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 158F",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000989265"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 158G",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000989266"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 158K",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000989267"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 158A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000810349"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 158C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000945800"
+    },
+    {
+     "address": "Oudezijds Achterburgwal 158D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000810412"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4212704748,
+     "lngLat": [
+      4.8965258,
+      52.3713794
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Siga La Vaca",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:50:22.805Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012178663",
+   "addresses": [
+    "Oudezijds Achterburgwal 156"
+   ],
+   "groundUnits": [
+    {
+     "address": "Oudezijds Achterburgwal 156",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001172175"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}
