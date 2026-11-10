@@ -228,16 +228,18 @@ function placedToEnu(p: Placement): (x: number, y: number, z: number) => V3 {
   return (x, y, z) => { const xm = p.mirror ? -x : x; return [ex + xm * c - z * s, ny - xm * s - z * c, y]; };
 }
 
-type ModelTris = { cells: Grid<number>; tris: Float64Array; normals: Float64Array; count: number; facing: number };
+type ModelTris = { cells: Grid<number>; tris: Float64Array; normals: Float64Array; count: number; facing: number; ground: Float64Array };
 /** Near-vertical triangles of the placed model, in chunk metres, with their winding normals. */
 async function modelTris(p: Placement): Promise<ModelTris> {
   const soup = await loadMaterialSoup(p.glb);
   const f = placedToEnu(p), P = soup.positions, I = soup.indices, nt = I.length / 3;
   const tris = new Float64Array(nt * 9), normals = new Float64Array(nt * 3);
+  const ground: number[] = [];
   const cells = new Grid<number>(1);
   let count = 0;
   for (let t = 0; t < nt; t++) {
     const v = [0, 1, 2].map(k => f(P[I[t * 3 + k] * 3], P[I[t * 3 + k] * 3 + 1], P[I[t * 3 + k] * 3 + 2]));
+    if (Math.max(v[0][2], v[1][2], v[2][2]) < 1) ground.push(v[0][0], v[0][1], v[1][0], v[1][1], v[2][0], v[2][1]);
     const ux = v[1][0] - v[0][0], uy = v[1][1] - v[0][1], uz = v[1][2] - v[0][2];
     const wx = v[2][0] - v[0][0], wy = v[2][1] - v[0][1], wz = v[2][2] - v[0][2];
     let nx = uy * wz - uz * wy, ny = uz * wx - ux * wz, nz = ux * wy - uy * wx;
@@ -251,7 +253,7 @@ async function modelTris(p: Placement): Promise<ModelTris> {
     cells.insert(Math.min(v[0][0], v[1][0], v[2][0]), Math.min(v[0][1], v[1][1], v[2][1]), Math.max(v[0][0], v[1][0], v[2][0]), Math.max(v[0][1], v[1][1], v[2][1]), count);
     count++;
   }
-  return { cells, tris: tris.subarray(0, count * 9), normals: normals.subarray(0, count * 3), count, facing: 0 };
+  return { cells, tris: tris.subarray(0, count * 9), normals: normals.subarray(0, count * 3), count, facing: 0, ground: Float64Array.from(ground) };
 }
 
 /** Closest point on triangle abc to p (Ericson, Real-Time Collision Detection 5.1.5), returns the distance. */
@@ -334,6 +336,48 @@ function loadBuurten(): Buurt[] {
 }
 const buurtOf = (lng: number, lat: number, bs: Buurt[]) => bs.find(b => (b.rings as unknown as number[][][]).some(r => pip(lng, lat, r))) ?? null;
 
+/** IoU of the model's ground triangles (xy, 6 numbers each) and the union of footprint rings, on a 0.5 m grid. */
+function groundIou(ground: Float64Array, rings: V2[][]): number | null {
+  if (!ground.length || !rings.length) return null;
+  const C = 0.5;
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  const grow = (x: number, y: number) => { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); };
+  for (let i = 0; i < ground.length; i += 2) grow(ground[i], ground[i + 1]);
+  for (const r of rings) for (const [x, y] of r) grow(x, y);
+  const nx = Math.ceil((x1 - x0) / C) + 1, ny = Math.ceil((y1 - y0) / C) + 1;
+  if (nx * ny > 4e7) return null;
+  const A = new Uint8Array(nx * ny), B = new Uint8Array(nx * ny);
+  // Ground: each triangle's cells, by barycentric test at the cell centre.
+  for (let t = 0; t < ground.length; t += 6) {
+    const ax = ground[t], ay = ground[t + 1], bx = ground[t + 2], by = ground[t + 3], cx = ground[t + 4], cy = ground[t + 5];
+    const det = (by - cy) * (ax - cx) + (cx - bx) * (ay - cy);
+    if (Math.abs(det) < 1e-12) continue;
+    const ix0 = Math.max(0, Math.floor((Math.min(ax, bx, cx) - x0) / C)), ix1 = Math.min(nx - 1, Math.ceil((Math.max(ax, bx, cx) - x0) / C));
+    const iy0 = Math.max(0, Math.floor((Math.min(ay, by, cy) - y0) / C)), iy1 = Math.min(ny - 1, Math.ceil((Math.max(ay, by, cy) - y0) / C));
+    for (let ix = ix0; ix <= ix1; ix++) for (let iy = iy0; iy <= iy1; iy++) {
+      const px = x0 + (ix + 0.5) * C, py = y0 + (iy + 0.5) * C;
+      const l1 = ((by - cy) * (px - cx) + (cx - bx) * (py - cy)) / det, l2 = ((cy - ay) * (px - cx) + (ax - cx) * (py - cy)) / det, l3 = 1 - l1 - l2;
+      if (l1 >= -1e-9 && l2 >= -1e-9 && l3 >= -1e-9) A[iy * nx + ix] = 1;
+    }
+  }
+  // Footprint: cells whose centre lies inside any ring (even-odd per ring, OR across rings).
+  for (const r of rings) {
+    let rx0 = Infinity, ry0 = Infinity, rx1 = -Infinity, ry1 = -Infinity;
+    for (const [x, y] of r) { rx0 = Math.min(rx0, x); ry0 = Math.min(ry0, y); rx1 = Math.max(rx1, x); ry1 = Math.max(ry1, y); }
+    const ix0 = Math.max(0, Math.floor((rx0 - x0) / C)), ix1 = Math.min(nx - 1, Math.ceil((rx1 - x0) / C));
+    const iy0 = Math.max(0, Math.floor((ry0 - y0) / C)), iy1 = Math.min(ny - 1, Math.ceil((ry1 - y0) / C));
+    for (let ix = ix0; ix <= ix1; ix++) for (let iy = iy0; iy <= iy1; iy++) {
+      const px = x0 + (ix + 0.5) * C, py = y0 + (iy + 0.5) * C;
+      let c = false;
+      for (let i = 0, j = r.length - 1; i < r.length; j = i++) if ((r[i][1] > py) !== (r[j][1] > py) && px < ((r[j][0] - r[i][0]) * (py - r[i][1])) / (r[j][1] - r[i][1]) + r[i][0]) c = !c;
+      if (c) B[iy * nx + ix] = 1;
+    }
+  }
+  let inter = 0, uni = 0;
+  for (let k = 0; k < A.length; k++) { if (A[k] && B[k]) inter++; if (A[k] || B[k]) uni++; }
+  return uni ? +(inter / uni).toFixed(3) : null;
+}
+
 // ----------------------------------------------------------------------------------------------------------------
 // Main
 // ----------------------------------------------------------------------------------------------------------------
@@ -377,7 +421,7 @@ async function main() {
   const walls: Out[] = [];
   const perPand: Record<string, { walls: number; uncovered: number; lengthM: number; uncoveredLengthM: number; streets: string[]; buurt: string | null }> = {};
   let noFootprint = 0, noPlacement = 0;
-  const placementCheck: Record<string, { pand: string; offsetM: number | null }> = {};
+  const placementCheck: Record<string, { pands: number; iou: number | null; verified: boolean }> = {};
 
   for (const [pand, s] of suppressed) {
     const pr = byPand.get(pand);
@@ -388,15 +432,11 @@ async function main() {
     const [lng, lat] = inverseMetres(pr[0].pts[0][0], pr[0].pts[0][1]);
     const b = buurtOf(lng, lat, buurten);
     if (s.kind === 'landmark' && !placementCheck[s.key]) {
-      // Placement sanity: the placed model's xy centre against the footprint centre of the pand it covers.
-      const T = m.tris; let sx = 0, sy = 0, n = 0;
-      for (let i = 0; i < T.length; i += 3) { sx += T[i]; sy += T[i + 1]; n++; }
-      // All the pands the model covers (a complex covers many), vertices averaged.
+      // Placement check: the model's ground outline (triangles below 1 m) against the footprints of the pands it covers,
+      // on a 0.5 m grid. IoU < 0.5 is unverified. A complex covers many pands, so the footprint is the union of them.
       const rs = (covers[s.key].p ?? []).flatMap(q => byPand.get(q) ?? []);
-      const nv = rs.reduce((a, r) => a + r.pts.length, 0);
-      const fx = rs.reduce((a, r) => a + r.pts.reduce((q, v) => q + v[0], 0), 0) / nv;
-      const fy = rs.reduce((a, r) => a + r.pts.reduce((q, v) => q + v[1], 0), 0) / nv;
-      placementCheck[s.key] = { pand, offsetM: n ? +Math.hypot(sx / n - fx, sy / n - fy).toFixed(1) : null };
+      placementCheck[s.key] = { pands: (covers[s.key].p ?? []).length, iou: groundIou(m.ground, rs.map(r => r.pts)), verified: false };
+      placementCheck[s.key].verified = (placementCheck[s.key].iou ?? 0) >= 0.5;
     }
     const rec = { walls: 0, uncovered: 0, lengthM: 0, uncoveredLengthM: 0, streets: [] as string[], buurt: b?.name ?? null };
     for (const w of ws) {
