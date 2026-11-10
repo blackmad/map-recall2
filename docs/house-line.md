@@ -1347,6 +1347,7 @@ then the 20 house cases again on the default world (`--label after`). Sheets: `m
 | Nieuwmarkt 4-22 (182850-182858) | register gables visible, crowns match | gables visible on all nine (step, neck, bell); crowns match on 6 of 9; Nieuwmarkt 20-22 (182857) is a double step-gable front drawn as one step gable (a kit gap: two crowns on one pand) |
 | Nassaukade 145-152 (H7's row) | before frames; after once H7 publishes | before: 7 pairs; `roofOffset` fires on 4 (the game's skyline 2-3 m under the crown line the photo confirms); 160704's wall is the rear (the pick saw only 157610: `otherBuilding`). After: H7 not published at this run |
 | 169916 (H1c, three windows) | 3 columns in game and photo | 3 columns in both (a tree stands in front in the photo) |
+| live before/after: 169916 + Nieuwmarkt, `?world=live&houseSpecs=0` vs `?world=live` | the spec's change shows, nothing else moves | 169916: the game goes from 2 to 3 window columns (openings 9 to 16; 3.4 % of pixels move by more than 20 levels); the nine Nieuwmarkt frames are identical to the byte (no spec there). The wall-colour flag stays on 169916 (dL 0.59): the game draws it cream, the photo is dark brown brick, a real catch for the spec's wallHex |
 | Houthavenkade 26 (large recipe, 12 of 510 surfaces) | the missing surfaces show | shows: the photo's dark grey front panel is absent in the game; the outline frames the model's brick walls set back behind it and open pavement under them. No flag fires (the picks hit the same model further back): a reader's catch, and a case for a depth check (OPEN) |
 | two roof-offset shots (2026-11-08) | the offset flag fires | does not fire, rightly: #257 was fixed on main (5ce1b11f2, shell roofs trimmed at the walls) and the defect lived in the far/shell tier, which a 12-22 m street pose does not draw. Stadhouderskade 233471 and Prins Hendrikkade 178053 draw on their walls |
 | 15 walls of the #341 blank-wall audit | false-positive rate | 11 readable: 4 real (the four Funenpark 184743 walls: the ordinary model's front floats above the ground, the lower storeys are sky), 7 drawn in the game (186003, 063603, 151240, 088589, 244160-e13, 237838-e8, and 237838-e2 where the Eye's wall is blank in reality too): **false-positive rate 7/11 = 64 %**. Unreadable 4: 129127 (a neighbour in front), 104378 (the panorama, 2018, predates the building), 244160-e0 and 239853 (the wall stands off the frame or behind a plaza) |
@@ -1357,6 +1358,8 @@ search took a stronger nearby edge (a white pilaster, a shopfront edge, the neig
 detector, not the pose. One over 5 %: 104378 (5.4 %), whose 2018 panorama predates the building; the edge found is the
 neighbour's. Throughput: 35 poses in 165 s in one page (one open), **12.7 pairs/min** including the 11 s open; settle
 median 3.0 s; under a shared slot with a check:canal gate queued.
+
+Gate: `check:canal` green on this branch (162 checks, EXIT 0, 2026-11-10 20:01, `CANAL_PW_EXCLUSIVE=1`).
 
 Flags on the 35 (before): blankWall 1 (116526), missing 2, otherBuilding 3, roofOffset 4, wallColour 24. The wall-colour
 flag fires on most pairs (sunlit or white-balanced photos against the lit look): read it as advisory only, as the brief
