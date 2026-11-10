@@ -17,7 +17,7 @@ import type { CanalHouse, GableType, WindowType } from '../facade/houseRecord.ts
 import { ELEMENT_COMPONENTS, registerYear, type PublishedFacts } from '../facade/registerRecipe.ts';
 import type { RegisterFinish } from '../facade/registerFacts.ts';
 import type { GableShape } from '../roofMesh.ts';
-import { emptySpec, pandDigits, setSpecField, specStrength, type HouseSpec, type Prov, type SpecSource } from './spec.ts';
+import { emptySpec, pandDigits, setSpecField, specStrength, toSpecLimit, uniqueLimits, type SpecLimit, type HouseSpec, type Prov, type SpecSource } from './spec.ts';
 
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const dateOrNull = (s: string | null | undefined) => (s && DATE.test(s) ? s : null);
@@ -35,8 +35,10 @@ export const BLOCK_FACE_CONFIDENCE = { authored: 0.85, autoPlaced: 0.6 } as cons
 
 /**
  * One house of a block face. `stripRef` is the face's strip.json path (the evidence the design was read off).
- * Every design field gets the face's receipt; `rhythm.schemaLimits` and the face `limitations` lines that name the
- * pand (`<pand6>: …` or the full id) become schemaLimits. Null when the pand is not on the face.
+ * Every design field gets the face's receipt. Limits, in either form (a1's `{component, what}` objects or legacy
+ * `"component: what"` strings, toSpecLimit): the house's `rhythm.schemaLimits`; the face `schemaLimits` whose text names
+ * the pand (pand6 or full id), or every house when it names no pand of the face; the face `limitations` lines that name
+ * the pand. Null when the pand is not on the face.
  */
 export function fromBlockFace(face: BlockFaceIntent, pandId: string, stripRef = `scripts/block-face/faces/${face.id}/strip.json`, load?: TypeLoader): HouseSpec | null {
   const digits = pandDigits(pandId);
@@ -47,12 +49,16 @@ export function fromBlockFace(face: BlockFaceIntent, pandId: string, stripRef = 
   const spec = emptySpec(digits, house.address);
   spec.design = designOf(intent);
   spec.provenance[''] = { source: 'streetlevel-measured', confidence: auto ? BLOCK_FACE_CONFIDENCE.autoPlaced : BLOCK_FACE_CONFIDENCE.authored, ref: stripRef, at: latest(face.sources) };
-  const six = digits.slice(-6);
-  const limits = [
-    ...(house.rhythm?.schemaLimits ?? []),
-    ...(face.limitations ?? []).filter(l => l.includes(digits) || l.startsWith(`${six}:`) || new RegExp(`\\b${six}\\b`).test(l)),
-  ].map(asLimit);
-  if (limits.length) spec.schemaLimits = [...new Set(limits)];
+  const six = digits.slice(-6), faceSix = face.houses.map(h => h.pandId.slice(-6));
+  const names = (text: string, p: string) => text.includes(digits) || new RegExp(`\\b${p}\\b`).test(text);
+  const faceLimits = ((face as unknown as { schemaLimits?: unknown[] }).schemaLimits ?? []).map(toSpecLimit).filter((l): l is SpecLimit => !!l)
+    .filter(l => names(`${l.component} ${l.what}`, six) || !faceSix.some(p => names(`${l.component} ${l.what}`, p)));
+  const limits = uniqueLimits([
+    ...((house.rhythm?.schemaLimits ?? []) as unknown[]).map(toSpecLimit).filter((l): l is SpecLimit => !!l),
+    ...faceLimits,
+    ...(face.limitations ?? []).filter(l => names(l, six)).map(asLimit),
+  ]);
+  if (limits.length) spec.schemaLimits = limits;
   if (house.groundFloor?.use) {
     const pui = house.groundFloor.use === 'residential' ? 'residential' : ['vacant', 'office', 'other'].includes(house.groundFloor.use) ? null : 'shop';
     if (pui) setSpecField(spec, 'facts/pui', pui);
@@ -60,14 +66,8 @@ export function fromBlockFace(face: BlockFaceIntent, pandId: string, stripRef = 
   return spec;
 }
 
-/** A free-text limit as `<component>: <what>`: kept when it already reads so, else filed under `facade`. */
-export function asLimit(line: string): string {
-  const t = line.trim();
-  const m = /^(\d{6}):\s*(.*)$/.exec(t); // face limitations are `<pand6>: <what>`
-  const body = m ? m[2] : t;
-  // A component is one to three words before the colon (`gable: …`, `shop sign: …`); anything else is filed under facade.
-  return /^[a-z][\w-]*(?: [\w-]+){0,2}: \S/i.test(body) ? body : `facade: ${body}`;
-}
+/** A free-text limit line as a {component, what} (toSpecLimit; a line with no component is filed under `facade`). */
+export const asLimit = (line: string): SpecLimit => toSpecLimit(line) ?? { component: 'facade', what: line.trim() };
 
 // --- recipe intents ----------------------------------------------------------------------------------------------
 /** Intent source kind -> spec source. An archive photo is a photo someone read, not a rectified measurement. */
@@ -161,7 +161,7 @@ export function fromRegisterFacts(published: PublishedFacts, nr: string | string
   if (published.finish) {
     const material = REGISTER_FINISH[published.finish];
     if (material) put('palette/wallMaterial', material, REGISTER_CONFIDENCE.finish);
-    else spec.schemaLimits = [`palette: register finish ${published.finish} (no wallMaterial for a ${published.finish} front)`];
+    else spec.schemaLimits = [{ component: 'palette', what: `register finish ${published.finish} (no wallMaterial for a ${published.finish} front)` }];
   }
   const keys = new Set((published.elements ?? []).map(e => e.key));
   if (keys.has('hoistBeam')) put('fronts/0/hoist', true, REGISTER_CONFIDENCE.element);

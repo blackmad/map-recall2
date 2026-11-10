@@ -73,7 +73,8 @@ test('resolveSpecs: strongest source per field, then confidence, then newer evid
   assert.equal(out.provenance['fronts/0/bays'].ref, 'crop');
   assert.doesNotThrow(() => validateSpec(out));
   // schemaLimits are the union of the parts'.
-  assert.deepEqual(resolveSpecs([{ ...a, schemaLimits: ['gable: x'] }, { ...b, schemaLimits: ['gable: x', 'oriel: y'] }]).schemaLimits, ['gable: x', 'oriel: y']);
+  const gx = { component: 'gable', what: 'x' }, oy = { component: 'oriel', what: 'y' };
+  assert.deepEqual(resolveSpecs([{ ...a, schemaLimits: [gx] }, { ...b, schemaLimits: [{ ...gx }, oy] }]).schemaLimits, [gx, oy]);
 });
 
 test('validateSpec: receipts, enums and limits', () => {
@@ -83,7 +84,8 @@ test('validateSpec: receipts, enums and limits', () => {
   bare.provenance = {};
   assert.match(specProblems(bare).join('\n'), /no provenance covers/);
   assert.match(specProblems({ ...bare, pandId: 'NL.IMBAG.Pand.1' }).join('\n'), /16 digits/);
-  assert.match(specProblems({ ...part({}, prov('osm')), schemaLimits: ['no colon here'] }).join('\n'), /<component>: <what/);
+  assert.match(specProblems({ ...part({}, prov('osm')), schemaLimits: ['gable: a string' as any] }).join('\n'), /must be \{component, what\}/);
+  assert.match(specProblems({ ...part({}, prov('osm')), schemaLimits: [{ component: '', what: 'x' }] }).join('\n'), /must be \{component, what\}/);
   assert.match(specProblems(part({ 'palette/brick': 'mauve' }, prov('osm'))).join('\n'), /palette\/brick/);
 });
 

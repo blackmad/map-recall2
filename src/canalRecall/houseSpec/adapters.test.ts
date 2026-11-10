@@ -19,13 +19,13 @@ test('fromBlockFace: the face design with the strip as receipt; limits that name
   assert.equal(spec.pandId, '0363100012113386');
   assert.deepEqual(spec.provenance[''], { source: 'streetlevel-measured', confidence: 0.85, ref: 'scripts/block-face/faces/evertsen-152-160/strip.json', at: '2024-12-06' });
   assert.ok(spec.design.fronts?.length && spec.design.palette && spec.design.roof);
-  // rhythm.schemaLimits of this house become `<component>: …` lines.
-  assert.ok(spec.schemaLimits?.some(l => l.startsWith('facade: the white oriel')), JSON.stringify(spec.schemaLimits));
+  // rhythm.schemaLimits of this house (legacy strings) become {component, what}; a line without a component is `facade`.
+  assert.ok(spec.schemaLimits?.some(l => l.component === 'facade' && l.what.startsWith('the white oriel')), JSON.stringify(spec.schemaLimits));
   // A face limitation that names no pand is not attributed to any house.
-  assert.ok(!spec.schemaLimits?.some(l => l.includes('coffeeshop sign')));
+  assert.ok(!spec.schemaLimits?.some(l => l.what.includes('coffeeshop sign')));
   assert.equal(fromBlockFace(face, '0363100000000000'), null);
-  assert.equal(asLimit('113386: oriel: the white corner oriel'), 'oriel: the white corner oriel');
-  assert.equal(asLimit('a tree hides the raised end above 12.3 m: no top window'), 'facade: a tree hides the raised end above 12.3 m: no top window');
+  assert.deepEqual(asLimit('113386: oriel: the white corner oriel'), { component: 'oriel', what: 'the white corner oriel' });
+  assert.deepEqual(asLimit('a tree hides the raised end above 12.3 m: no top window'), { component: 'facade', what: 'a tree hides the raised end above 12.3 m: no top window' });
 });
 
 test('fromRecipeIntent: canal-house intents only, their sources as provenance', () => {
@@ -68,7 +68,8 @@ test('fromRegisterFacts: the Nieuwmarkt 20-22 register entry (RCE 3856)', () => 
   // A stone front cannot be said by palette.wallMaterial: a schema limit, not the nearest option.
   const stone = fromRegisterFacts({ finish: 'stone', gable: 'cornice' }, '1', id);
   assert.equal(stone.design.palette, undefined);
-  assert.match(stone.schemaLimits![0], /^palette: register finish stone/);
+  assert.equal(stone.schemaLimits![0].component, 'palette');
+  assert.match(stone.schemaLimits![0].what, /^register finish stone/);
   const el = fromRegisterFacts({ elements: [{ key: 'hoistBeam', term: 'hijsbalk' }, { key: 'stoop', term: 'stoep' }] }, '2', id);
   assert.equal(el.design.fronts?.[0]?.hoist, true);
   assert.equal(el.design.fronts?.[0]?.basement, 'stoop');
@@ -88,4 +89,31 @@ test('fromJev: vision-judge receipts, confident gables only, weak answers droppe
   const out = resolveSpecs([register, spec]);
   assert.equal(out.design.fronts?.[0]?.gable, 'bell');
   assert.equal(out.design.fronts?.[0]?.bays, 3);
+});
+
+test('fromBlockFace: a1 object limits {component, what} (the shape on lane/belt-haarlemmer-20261110)', () => {
+  // a1's belt faces carry face-level `schemaLimits: [{component, what}]` naming pands by their last six digits
+  // (haarlemmer-46-96-r1: "54 (171144) and 52 (171145): sandstone scrolls…"). Main's faces do not yet, so the same
+  // shape is put on a main face here: one limit per pand, one naming two pands, one naming none (face-wide).
+  const face = validateBlockFace({ ...json('scripts/block-face/faces/evertsen-152-160/intent.json'), schemaLimits: [
+    { component: 'gable ornament', what: '160 (065375) and 158 (144634): sandstone scrolls on the crowns; drawn plain' },
+    { component: 'ground storey', what: '158 (144634): two tall arched windows and a portal; drawn with a door and plain windows' },
+    { component: 'roof', what: 'a continuous zinc gutter along the row; not drawn' },
+  ] });
+  const first = fromBlockFace(face, '0363100012065375')!, second = fromBlockFace(face, '0363100012144634')!, last = fromBlockFace(face, '0363100012113386')!;
+  validateSpec(first); validateSpec(second); validateSpec(last);
+  // (Houses may also carry their type's legacy rhythm strings, filed under `facade`.)
+  const own = (s: typeof first) => s.schemaLimits?.map(l => l.component).filter(c => c !== 'facade');
+  assert.deepEqual(own(first), ['gable ornament', 'roof']);
+  assert.deepEqual(own(second), ['gable ornament', 'ground storey', 'roof']);
+  assert.match(second.schemaLimits!.find(l => l.component === 'ground storey')!.what, /two tall arched windows/);
+  // The last house: its own legacy rhythm strings (filed under facade) plus the face-wide roof limit.
+  assert.deepEqual([...new Set(last.schemaLimits?.map(l => l.component))], ['facade', 'roof']);
+});
+
+test('limits: legacy strings and objects read the same way', () => {
+  const a = { ...fromRegisterFacts({}, '1', '0363100012182857'), schemaLimits: [asLimit('oriel: the white corner oriel')] };
+  const b = { ...fromRegisterFacts({}, '1', '0363100012182857'), schemaLimits: [{ component: 'oriel', what: 'the white corner oriel' }] };
+  assert.deepEqual(a.schemaLimits, b.schemaLimits);
+  assert.deepEqual(resolveSpecs([a, b]).schemaLimits, [{ component: 'oriel', what: 'the white corner oriel' }]);
 });

@@ -60,10 +60,35 @@ export interface HouseSpec {
   /** Keyed by field path (`fronts/0/gable`, `palette/brick`, `facts/facadeYear`); an ancestor key (`fronts/0`, or `` for
    *  the whole record) covers every field below it. resolve.ts writes one key per field. */
   provenance: Record<string, Prov>;
-  /** `${component}: ${what the kit cannot say}`, e.g. `gable: shouldered crown with a balustrade`. */
-  schemaLimits?: string[];
+  /** What the kit cannot say about this house, one entry per kit component (the kit-gap queue keys on `component`).
+   *  The shape of BlockFaceIntent.schemaLimits since a1's belt lanes (2026-11-10); legacy `"component: what"` strings are
+   *  read through `toSpecLimit`. */
+  schemaLimits?: SpecLimit[];
   /** Derived (toRecipe.ts `withRoute`): `recipe` when the spec is a complete, valid canal-house intent, else `generic`. */
   route?: 'generic' | 'recipe';
+}
+
+/** One kit limit: `component` names the kit part (a window kind, a crown ornament, a roof form), `what` says what the
+ *  photo has that the kit cannot draw. */
+export interface SpecLimit { component: string; what: string }
+
+/** A limit in either form: the object as is, or a legacy `"component: what"` string (component = one to three words
+ *  before the first colon; anything else is filed under `facade`). Null for an empty or malformed entry. */
+export function toSpecLimit(entry: unknown): SpecLimit | null {
+  if (entry && typeof entry === 'object' && !Array.isArray(entry)) {
+    const { component, what } = entry as Record<string, unknown>;
+    return typeof component === 'string' && component.trim() && typeof what === 'string' && what.trim() ? { component: component.trim(), what: what.trim() } : null;
+  }
+  if (typeof entry !== 'string' || !entry.trim()) return null;
+  const t = entry.trim().replace(/^\d{6}:\s*/, ''); // face limitations are `<pand6>: <what>`
+  const m = /^([a-z][\w-]*(?: [\w-]+){0,2}): (\S.*)$/is.exec(t);
+  return m ? { component: m[1], what: m[2] } : { component: 'facade', what: t };
+}
+/** Deduplicate limits (same component and text), keeping first-seen order. */
+export function uniqueLimits(limits: readonly SpecLimit[]): SpecLimit[] {
+  const seen = new Set<string>(), out: SpecLimit[] = [];
+  for (const l of limits) { const k = `${l.component}\u0000${l.what}`; if (!seen.has(k)) { seen.add(k); out.push(l); } }
+  return out;
 }
 
 const STRENGTH = new Map<string, number>(SOURCE_STRENGTH.map((s, i) => [s, i]));
@@ -159,7 +184,8 @@ export function specProblems(input: unknown): string[] {
     else if (path === 'facts/elements' && !(Array.isArray(value) && value.every(v => typeof v === 'string'))) p.push(`${path}: a list of component ids`);
     else if (path === 'facts/pui' && !['shop', 'residential', 'warehouse'].includes(value as string)) p.push(`${path}: shop|residential|warehouse`);
   }
-  for (const l of spec.schemaLimits ?? []) if (typeof l !== 'string' || !/^[\w .\/-]+: \S/.test(l)) p.push(`schemaLimits: ${JSON.stringify(l)} must read "<component>: <what the kit cannot say>"`);
+  if (spec.schemaLimits !== undefined && !Array.isArray(spec.schemaLimits)) p.push('schemaLimits must be a list of {component, what}');
+  for (const l of spec.schemaLimits ?? []) if (typeof l !== 'object' || toSpecLimit(l) === null) p.push(`schemaLimits: ${JSON.stringify(l)} must be {component, what} (non-empty strings)`);
   if (spec.route !== undefined && spec.route !== 'generic' && spec.route !== 'recipe') p.push('route must be generic|recipe');
   return p;
 }

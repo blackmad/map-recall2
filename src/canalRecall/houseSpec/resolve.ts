@@ -8,7 +8,7 @@
  */
 import { resolveField, type FacadeSource, type Measured } from '../facade/evidence.ts';
 import {
-  emptySpec, provenanceOf, setSpecField, specFields, specStrength,
+  emptySpec, provenanceOf, setSpecField, specFields, specStrength, uniqueLimits,
   type HouseSpec, type Prov, type SpecSource,
 } from './spec.ts';
 
@@ -43,7 +43,7 @@ export function resolveSpecs(parts: readonly HouseSpec[]): HouseSpec {
     setSpecField(out, path, structuredClone(w.value));
     out.provenance[path] = { ...w.prov };
   }
-  const limits = [...new Set(parts.flatMap(p => p.schemaLimits ?? []))];
+  const limits = uniqueLimits(parts.flatMap(p => p.schemaLimits ?? []));
   if (limits.length) out.schemaLimits = limits;
   return out;
 }

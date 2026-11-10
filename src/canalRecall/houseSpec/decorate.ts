@@ -126,7 +126,8 @@ export interface HouseSpecTileRecord {
   x?: Record<string, unknown>;
   /** Winning source per field path. */
   s: Record<string, string>;
-  l?: string[];
+  /** Kit limits (spec.ts SpecLimit). */
+  l?: { component: string; what: string }[];
   r: 'generic' | 'recipe';
   /** The runtime view the enricher stamps as `p.houseSpec`. */
   v: HouseSpecView;
