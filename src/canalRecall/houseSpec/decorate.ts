@@ -74,12 +74,12 @@ const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appea
 export const SPEC_WALLS_HELD = true;
 
 /**
- * Held (2026-11-10, spot-check #348): on a 24-pand sample of the 410 bay-changed pands the spec bay count was closer
- * to the photo on only 5 of 23 scored, and group-01 shows doubling (photo 3 -> 6, 2 -> 4). Until H1b finds the cause
- * (frontageLayoutScale reading bays as window units, 2-axis cell rounding, or per-storey sums), spec bays write no
- * recipe. Gables (withHouseSpecCrown), year and finish stay on.
+ * Released (2026-11-10, H1b #349). Held after the #348 spot-check (the spec's bay count was closer to the photo on 5
+ * of 23 and group-01 showed doubling, photo 3 -> 6). Cause: frontageLayoutScale rounded bays / axesPerCell up, so an odd
+ * count on 2-axis cells drew the even number above it (5 bays -> 3 cells -> 6 columns). It now draws the nearest
+ * whole-cell count, ties down, held to MIN_COLUMN_M (streetFacadeRendering.ts specCellCount). docs/house-line.md §1.
  */
-export const SPEC_BAYS_HELD = true;
+export const SPEC_BAYS_HELD = false;
 
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
