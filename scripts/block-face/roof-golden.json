@@ -5149,6 +5149,138 @@
     "hash": "bc019be4abf4863a",
     "class": "recipe"
    }
+  },
+  "vogel-3-15-r1": {
+   "101772": {
+    "hash": "789261d673203a76",
+    "class": "recipe"
+   },
+   "132959": {
+    "hash": "14cad9f32032b4d6",
+    "class": "recipe"
+   }
+  },
+  "kalkoen-8-16-r1": {
+   "125954": {
+    "hash": "b86dfab305fd1c85",
+    "class": "front"
+   },
+   "099283": {
+    "hash": "e007fd314eb4b4ee",
+    "class": "front"
+   }
+  },
+  "kalkoen-8-16-r2": {
+   "105550": {
+    "hash": "93f1f7ca37eac1a5",
+    "class": "front"
+   },
+   "109590": {
+    "hash": "308bb6e029a518b0",
+    "class": "front"
+   }
+  },
+  "kalkoen-18-26-r1": {
+   "123527": {
+    "hash": "0742a843c5b09dd3",
+    "class": "front"
+   },
+   "086436": {
+    "hash": "22b0fc4610075a35",
+    "class": "recipe"
+   }
+  },
+  "kalkoen-28-34-r1": {
+   "111141": {
+    "hash": "9cf7c5b606e9a834",
+    "class": "front"
+   },
+   "123147": {
+    "hash": "0250add7145ff674",
+    "class": "front"
+   },
+   "133141": {
+    "hash": "a4c1dd5dc0bbc615",
+    "class": "front"
+   }
+  },
+  "vogel-2-16-122155-r1": {
+   "138008": {
+    "hash": "9541eaf6575bd68c",
+    "class": "recipe"
+   },
+   "065836": {
+    "hash": "2702ae4f56f8f711",
+    "class": "recipe"
+   },
+   "091400": {
+    "hash": "4846c6c951c0fad7",
+    "class": "recipe"
+   }
+  },
+  "pelikaan-16-22-r1": {
+   "111816": {
+    "hash": "486dc9bfa4e171ce",
+    "class": "recipe"
+   },
+   "128530": {
+    "hash": "02d25f7ebebede03",
+    "class": "recipe"
+   },
+   "097975": {
+    "hash": "73f6775f31c22fbd",
+    "class": "front"
+   }
+  },
+  "pelikaan-3-9-r1": {
+   "119758": {
+    "hash": "e272fee9188efb2d",
+    "class": "front"
+   },
+   "124605": {
+    "hash": "3a61c8cc56b07fd9",
+    "class": "recipe"
+   }
+  },
+  "vogel-3-11-r1": {
+   "137379": {
+    "hash": "1cb2df4c799ba526",
+    "class": "recipe"
+   },
+   "071224": {
+    "hash": "2a5c589787d24265",
+    "class": "recipe"
+   }
+  },
+  "vogelplantsoen-8-12-r1": {
+   "079772": {
+    "hash": "d9b68f7f7b1b8f45",
+    "class": "recipe"
+   },
+   "087797": {
+    "hash": "6e08dd7ba5ef5898",
+    "class": "recipe"
+   }
+  },
+  "zamenhof-6-12-r1": {
+   "122427": {
+    "hash": "2ec4dcb9c4360ed2",
+    "class": "recipe"
+   },
+   "085003": {
+    "hash": "6b889505a2b0d766",
+    "class": "recipe"
+   }
+  },
+  "zamenhof-54-60-r1": {
+   "151653": {
+    "hash": "fe23808a5871c749",
+    "class": "recipe"
+   },
+   "064187": {
+    "hash": "16b9241dd1007a3e",
+    "class": "recipe"
+   }
   }
  },
  "intents": {
@@ -5386,6 +5518,18 @@
   "java-93-149-r2": "5704908fbcefd2fa",
   "lampong-2-20-r1": "6d8c7d7d451ecd4d",
   "soenda-2-36-r1": "c3353dc56ae6c24b",
-  "soenda-2-36-r2": "01e457db56dd9f6b"
+  "soenda-2-36-r2": "01e457db56dd9f6b",
+  "vogel-3-15-r1": "76e33ff1285a2da6",
+  "kalkoen-8-16-r1": "7ba7e45060fb1969",
+  "kalkoen-8-16-r2": "84b16a21bd6a05fd",
+  "kalkoen-18-26-r1": "3de3ea47019a1f51",
+  "kalkoen-28-34-r1": "63431e2410fc8c3c",
+  "vogel-2-16-122155-r1": "b289230e3207c083",
+  "pelikaan-16-22-r1": "1a5b55df8fb76ad8",
+  "pelikaan-3-9-r1": "ba2330589f2ff00f",
+  "vogel-3-11-r1": "18ff5ced1f418c65",
+  "vogelplantsoen-8-12-r1": "fa18c325e8c29bcb",
+  "zamenhof-6-12-r1": "44d5d188fd3e3cec",
+  "zamenhof-54-60-r1": "7f6f752b8faa4e4c"
  }
 }
