@@ -1,0 +1,292 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012174971",
+ "address": "Prinsengracht 124",
+ "design": {
+  "fronts": [
+   {
+    "partyClip": true,
+    "id": "front0",
+    "street": "Prinsengracht",
+    "storeys": 4,
+    "bays": 3,
+    "storeyHeights": [
+     4,
+     3,
+     2.9,
+     2.8
+    ],
+    "windows": "sash-small-panes",
+    "windowSurround": "sill",
+    "windowHeights": [
+     0.7,
+     0.75,
+     0.75,
+     0.72
+    ],
+    "headLines": [
+     0.88,
+     0.88,
+     0.88,
+     0.86
+    ],
+    "windowShare": 0.6,
+    "cornice": "frieze",
+    "entablature": {
+     "rise": 2.3,
+     "cap": 0.6,
+     "frieze": "trim",
+     "capDepth": 0.45,
+     "architrave": 0.12
+    },
+    "friezeVents": {
+     "span": 1.1,
+     "rise": 0.45,
+     "sill": 0.65,
+     "light": true
+    },
+    "gable": "cornice",
+    "doorBay": 0,
+    "basement": "stoop-and-windows",
+    "souterrain": true,
+    "hoist": false,
+    "windowFrames": {
+     "frame": 0.1
+    },
+    "doorSurround": {
+     "pilaster": 0.24,
+     "cap": 0.3
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#5d4337",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  },
+  "notes": [
+   "type ggw-1740-frieze-cornice: crown none, palette dark-painted-brick + measured brick #5d4337",
+   "type deviations: windows \"sash-small-panes\" (type: \"sash\"); storeyHeights [4,3,2.9,2.8] (type: [2.1,1.6,1.39,1.37]); windowHeights [0.7,0.75,0.75,0.72] (type: [0.82,0.79,0.68,0.65]); headLines [0.88,0.88,0.88,0.86] (type: [0.875,0.885,0.81,0.81])"
+  ]
+ },
+ "provenance": {
+  "fronts/0/partyClip": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/id": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/street": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/storeys": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/bays": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windows": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowSurround": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowHeights": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/headLines": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowShare": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/entablature": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/friezeVents": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/gable": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/doorBay": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/basement": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/souterrain": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/hoist": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "roof/material": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "roof/squareSaddle": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/frame": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/door": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/stone": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/cornice": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "palette/stoneMaterial": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "notes": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "facts/pui": {
+   "source": "streetlevel-measured",
+   "confidence": 0.85,
+   "ref": "scripts/block-face/faces/prinsengracht-114-128-ggw/strip.json",
+   "at": "2023-03-20"
+  },
+  "fronts/0/windowFrames": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip prinsengracht-114-128-ggw 2023-03-20 (40 px/m, gridded crop): white frames round the small-pane sashes",
+   "at": "2023-03-20"
+  },
+  "fronts/0/doorSurround": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "block-face strip prinsengracht-114-128-ggw 2023-03-20 (40 px/m, gridded crop): white pilasters and a cap round the door",
+   "at": "2023-03-20"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "facade",
+   "what": "the cornice consoles between the attic lights are drawn as plain entablature"
+  },
+  {
+   "component": "facade",
+   "what": "the door surround (pilasters, transom light) is drawn as a plain door with the window over it"
+  },
+  {
+   "component": "facade",
+   "what": "the stoop's iron railing is not drawn"
+  },
+  {
+   "component": "roof",
+   "what": "a hipped tiled roof shows over the frieze cornice (kept as the 3DBAG roof)"
+  },
+  {
+   "component": "ground",
+   "what": "a white pilastered ground storey with two doors"
+  }
+ ],
+ "facts": {
+  "pui": "residential"
+ }
+}
