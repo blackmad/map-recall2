@@ -1,0 +1,135 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "herengracht-150-168-b6",
+ "street": "Herengracht",
+ "sources": [
+  {
+   "id": "strip-2021-03-17",
+   "kind": "street-panorama",
+   "capturedAt": "2021-03-17",
+   "image": "staging/block-face/herengracht-150-168/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane belt-gg-west-build-20261110 (hand-typed from the 2021-03-17 strip, gridded crops at 40 px/m)",
+  "passes": 1,
+  "note": "a spec run, not an installed face: house:from-face --face-file turns each house into a HouseSpec (recipe route)"
+ },
+ "types": [
+  "ggw-1760-plain-cornice",
+  "ggw-1740-crest-cornice"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "sky over the cornices from the quay"
+  }
+ },
+ "houses": [
+  {
+   "pandId": "0363100012176357",
+   "slug": "herengracht-176357",
+   "address": "Herengracht 166",
+   "type": {
+    "type": "ggw-1740-crest-cornice",
+    "crown": "crest",
+    "overrides": {
+     "windows": "sash-small-panes",
+     "windowShare": 0.62
+    },
+    "measuredPalette": {
+     "brick": "#2f2e30",
+     "evidence": "strip 2021-03-17 span 249-589 read by eye: black-painted brick (raw #595757 with white frames mixed in)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-03-17",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-03-17 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-03-17 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012167646",
+   "slug": "herengracht-167646",
+   "address": "Herengracht 162",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "cornice": "heavy",
+     "windowShare": 0.62
+    },
+    "measuredPalette": {
+     "brick": "#302e31",
+     "evidence": "strip 2021-03-17 span 1026-1323 read by eye: black-painted brick (trim-normalised #524d53)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-03-17",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-03-17 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-03-17 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  },
+  {
+   "pandId": "0363100012167644",
+   "slug": "herengracht-167644",
+   "address": "Herengracht 160",
+   "type": {
+    "type": "ggw-1760-plain-cornice",
+    "overrides": {
+     "storeys": 5,
+     "cornice": "heavy",
+     "windowShare": 0.4,
+     "storeyHeights": [
+      4.0,
+      3.6,
+      3.3,
+      3.2,
+      2.9
+     ],
+     "windowHeights": [
+      0.66,
+      0.74,
+      0.72,
+      0.7,
+      0.66
+     ],
+     "headLines": [
+      0.88,
+      0.88,
+      0.88,
+      0.86,
+      0.86
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#9a968f",
+     "evidence": "strip 2021-03-17 span 1323-1622 read by eye: grey natural stone/render front (raw #827f7b under an overcast sky)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-03-17",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-03-17 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-03-17 strip (gridded crop at 40 px/m): type, crown, door side and storeys read by the lane; bays 3 as on the photo"
+   }
+  }
+ ]
+}
