@@ -141,6 +141,10 @@ waits measured 40 s on 2026-11-10).
 Acceptance sheets: `scripts/house-preview/gate.ts` puts the preview beside the `render.ts` frame of the same pand's
 GLB and the photo (`/tmp/canal-pw.sh node --import tsx scripts/house-preview/gate.ts --face=<face>:<pand> --recipe=<house>`).
 
+### Suppressed-face audit (issue #341)
+
+`node --import tsx scripts/house-audit/suppressed-faces.ts` (its HELP is `--help`; an npm script is the integrator's to add) lists every pand that a chunk-* or ordinary-* model suppresses in `models/covers.json` and checks its street-facing BAG walls (at least 4 m, on a named road in `streets-routing.json`, not party walls) against the placed model. Two tests: the brief's outward-triangle test (a triangle facing the wall within 1 m of its midpoint at half height), and a slab test, because a plain brick box passes the first and is the blank wall the ride shows. A wall is blank when it has no outward geometry or only a bare slab (every outward plane vertex on the wall's two ends). The self-check must pass before the numbers count: 0363100012116526's Nassaukade walls are bare slabs (blank), 0363100012236681's De Clercqstraat face is drawn. `scripts/house-audit/contact-sheet.ts` draws the top 20 blank walls (preview, installed route, 3/4 view). Output: `artifacts/house-audit/suppressed-faces.json` (gitignored), the sheet at `ui/2026-11-10-suppressed-faces/` in the screenshots repo.
+
 ### `--help`
 
 The command prints this text (`HELP` in `scripts/house-preview/preview.ts`; `scripts/house-preview/help.test.ts`
