@@ -309,3 +309,21 @@ be drawn as geometry inside the budget (a pitch of about 1.1 m would fit, but is
 - Lampong: new window kind `casement-transom` (one undivided lower pane under a fixed top light), on axes 0-1 of the 1914
   type, so the wide windows lose the red mullion; other types unchanged.
 - Counts: djambi-1-29 7/15, soenda-2-36 9/16, java-93-149 12/15 (r1 7, r2 5), lampong-2-20 5/8, borneo-7-27 0/9.
+
+## Round 5 (2026-11-10): install and re-sheet
+
+Install commit 4111b2b40: `batch.ts --install` on djambi-1-29, java-93-149 (r1 101-109, r2 113-117) and `compile.ts --install`
+on lampong-2-20-r1 (`roof-golden.ts --write` ran for it, as the batch does after an install; the install step also rewrote
+`chunkWallExposureData.ts`). 20 pands: Djambistraat 9-21 (7), Javastraat 101-109 (5) and 113, 115, 117 (3), Lampongstraat 2-10 (5).
+- 115 is installed with a brick pin (#72604f): holding it would split 113 and 117 into two lone pands that cannot form a run.
+- The batch's strip-quality gate vetoes the 2025 Lampong strip (cold cast) and, on its first pass, re-stripped to 2022-08-31 and
+  installed 4 refitted pands; I rolled that back (chunk entry, glb, roof golden, run dir, strip) and installed the reviewed
+  2025-strip run with `compile.ts --install`, since its blue cast is what the per-pand palette pins correct.
+- Everything else is held: Soendastraat (9, for the brick re-check), Javastraat 95, 97, 99, 119, 121, Djambistraat 23, Borneo.
+
+Re-sheet commit: Soenda brick pins (#6c5647) replace the per-pand measured colours; Javastraat 97/99 pinned #72604f.
+Soenda renders within +0.00 of the photo on all nine (wall check ok). Java 97/99 (run java-93-149-r3): wall ok, but 99 busts the
+3000-triangle budget (3176) as a two-pand run because its 37 m2 rear wing is drawn when it has no installed neighbour (2896 inside
+the 7-pand r1 of round 4). To install 97/99 they need re-placing together with 101-109 (`--replace=java-93-149-r1`).
+Javastraat 119 (mirror false) and 121 (mirror true) are pinned and held: 119 has a dark brick hooded dormer, 121 a tall stepped
+dormer-gable; both are kit gaps (hooded brick dormer; stepped dormer-gable).

@@ -103,61 +103,6 @@
    "reason": "round 4: with the dark 0.12 m frame and inset 0.15 m the half-width reveal passes the GLB audit on Djambistraat 9-21 and Soendastraat, but on this pand (the last of the run) 3 opening parts (0.95 m2, the door leaf at depth 0.3 m near x 17.0) still reach past the wall silhouette, with the door on either side; cause not found, audit not loosened"
   },
   {
-   "pandId": "0363100012150368",
-   "address": "Soendastraat 28",
-   "reason": "round 5: held from the first install until the brick is re-checked (the per-pand measuredPalette brick overrode the type's #6c5647; a palette pin sets it, sheet to be re-made)"
-  },
-  {
-   "pandId": "0363100012069113",
-   "address": "Soendastraat 26",
-   "reason": "round 5: held from the first install until the brick is re-checked (the per-pand measuredPalette brick overrode the type's #6c5647; a palette pin sets it, sheet to be re-made)"
-  },
-  {
-   "pandId": "0363100012062527",
-   "address": "Soendastraat 24",
-   "reason": "round 5: held from the first install until the brick is re-checked (the per-pand measuredPalette brick overrode the type's #6c5647; a palette pin sets it, sheet to be re-made)"
-  },
-  {
-   "pandId": "0363100012081321",
-   "address": "Soendastraat 22",
-   "reason": "round 5: held from the first install until the brick is re-checked (the per-pand measuredPalette brick overrode the type's #6c5647; a palette pin sets it, sheet to be re-made)"
-  },
-  {
-   "pandId": "0363100012107809",
-   "address": "Soendastraat 20",
-   "reason": "round 5: held from the first install until the brick is re-checked (the per-pand measuredPalette brick overrode the type's #6c5647; a palette pin sets it, sheet to be re-made)"
-  },
-  {
-   "pandId": "0363100012111204",
-   "address": "Soendastraat 18",
-   "reason": "round 5: held from the first install until the brick is re-checked (the per-pand measuredPalette brick overrode the type's #6c5647; a palette pin sets it, sheet to be re-made)"
-  },
-  {
-   "pandId": "0363100012136122",
-   "address": "Soendastraat 14",
-   "reason": "round 5: held from the first install until the brick is re-checked (the per-pand measuredPalette brick overrode the type's #6c5647; a palette pin sets it, sheet to be re-made)"
-  },
-  {
-   "pandId": "0363100012068591",
-   "address": "Soendastraat 12",
-   "reason": "round 5: held from the first install until the brick is re-checked (the per-pand measuredPalette brick overrode the type's #6c5647; a palette pin sets it, sheet to be re-made)"
-  },
-  {
-   "pandId": "0363100012092864",
-   "address": "Soendastraat 10",
-   "reason": "round 5: held from the first install until the brick is re-checked (the per-pand measuredPalette brick overrode the type's #6c5647; a palette pin sets it, sheet to be re-made)"
-  },
-  {
-   "pandId": "0363100012132949",
-   "address": "Javastraat 97",
-   "reason": "round 5: held from the first install until the brick is re-checked (per-pand brick about #72604f, the median of 101-109; they render 30 levels light)"
-  },
-  {
-   "pandId": "0363100012138717",
-   "address": "Javastraat 99",
-   "reason": "round 5: held from the first install until the brick is re-checked (per-pand brick about #72604f, the median of 101-109; they render 30 levels light)"
-  },
-  {
    "pandId": "0363100012085970",
    "address": "Javastraat 119",
    "reason": "dark brick hooded dormer, not the white pediment of the Java type: a different dormer the kit type does not draw (kit gap); mirror pinned from the photo"
@@ -166,6 +111,11 @@
    "pandId": "0363100012110585",
    "address": "Javastraat 121",
    "reason": "tall stepped brick dormer-gable the Java type omits (kit gap); mirror pinned from the photo"
+  },
+  {
+   "pandId": "0363100012067472",
+   "address": "Javastraat 95",
+   "reason": "round 5: not in the approved set; with it in the run its neighbours 97 and 99 exceed the 3000-triangle budget (3125, 3068) and its own wall renders +0.11 light; mirror pin (false) kept"
   }
  ]
 }

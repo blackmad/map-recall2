@@ -3,7 +3,7 @@
  "street": "Javastraat",
  "library": "indische-buurt",
  "stripDate": "2023-01-02",
- "seconds": 23.1,
+ "seconds": 8.32,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -15,6 +15,15 @@
  },
  "runs": [
   {
+   "face": "java-93-149-r3",
+   "pands": [
+    "0363100012132949",
+    "0363100012138717"
+   ],
+   "passed": false,
+   "triangles": 6102
+  },
+  {
    "face": "java-93-149-r1",
    "pands": [
     "0363100012120527",
@@ -23,8 +32,7 @@
     "0363100012098497",
     "0363100012126147"
    ],
-   "passed": true,
-   "triangles": 14364
+   "installed": true
   },
   {
    "face": "java-93-149-r2",
@@ -33,8 +41,7 @@
     "0363100012103232",
     "0363100012141749"
    ],
-   "passed": true,
-   "triangles": 8665
+   "installed": true
   }
  ],
  "pands": [
@@ -186,8 +193,8 @@
     "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "review",
+   "reason": "review: round 5: not in the approved set; with it in the run its neighbours 97 and 99 exceed the 3000-triangle budget (3125, 3068) and its own wall renders +0.11 light; mirror pin (false) kept",
    "likeness": null,
    "challengers": {}
   },
@@ -248,11 +255,73 @@
     "voidShare": 0,
     "foliageShare": 0.01
    },
-   "status": "held",
-   "stage": "review",
-   "reason": "review: round 5: held from the first install until the brick is re-checked (per-pand brick about #72604f, the median of 101-109; they render 30 levels light)",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#5c4f48",
+      "fascia": true,
+      "name": "Asgül Kledingreparatie & Stomerij",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=tailor); fascia colour measured on the strip 2023-01-02 span 764-1004"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#806c62",
+     "evidence": "strip 2023-01-02 span 764-1004: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72604f"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "palette pinned: Javastraat 97 (strip 2023-01-02): per-pand brick rendered about 30 levels light and pinker than 101-109; set to #72604f, the median of 101-109 (round-4 verdict)",
+    "door reviewer pin: mirrored (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits LEFT of the balcony axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012132949",
+    "ncc": 0.336,
+    "nccRaw": 0.336,
+    "shiftM": [
+     0.4,
+     -0.2
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.38 mean 0.45 vs photo 0.21"
+    ],
+    "wall": {
+     "photo": "#7f6a5f",
+     "model": "#8b7560",
+     "dL": 0.025
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.373
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches~m": 0.336,
+    "indisch-1912-java-mansard-arches": 0.288
+   }
   },
   {
    "pandId": "0363100012138717",
@@ -300,11 +369,72 @@
     "voidShare": 0,
     "foliageShare": 0.03
    },
-   "status": "held",
-   "stage": "review",
-   "reason": "review: round 5: held from the first install until the brick is re-checked (per-pand brick about #72604f, the median of 101-109; they render 30 levels light)",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "indisch-1912-java-mansard-arches",
+   "score": 0.86,
+   "placement": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#5f4b40",
+      "fascia": true,
+      "name": "La Fucina",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-02 span 1005-1245"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7e695e",
+     "evidence": "strip 2023-01-02 span 1005-1245: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#72604f"
+    }
+   },
+   "notes": [
+    "crown mansard-dormer (type default)",
+    "palette pinned: Javastraat 99 (strip 2023-01-02): per-pand brick rendered about 30 levels light and pinker than 101-109; set to #72604f, the median of 101-109 (round-4 verdict)",
+    "door reviewer pin: as drawn (Javastraat 93-149 strip 2023-01-02 (verdict 2026-11-10): the narrow arched pair sits RIGHT of the balcony axis)"
+   ],
+   "likeness": {
+    "pandId": "0363100012138717",
+    "ncc": 0.364,
+    "nccRaw": 0.364,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.45 vs photo 0.27"
+    ],
+    "wall": {
+     "photo": "#7c6455",
+     "model": "#8b7560",
+     "dL": 0.051
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.45
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.484
+   },
+   "challengers": {
+    "indisch-1912-java-mansard-arches": 0.364,
+    "indisch-1912-java-mansard-arches~m": 0.346
+   }
   },
   {
    "pandId": "0363100012120527",
@@ -429,7 +559,8 @@
    "challengers": {
     "indisch-1912-java-mansard-arches~m": 0.221,
     "indisch-1912-java-mansard-arches": 0.199
-   }
+   },
+   "installed": "java-93-149-r1"
   },
   {
    "pandId": "0363100012081977",
@@ -538,7 +669,8 @@
    "challengers": {
     "indisch-1912-java-mansard-arches": 0.299,
     "indisch-1912-java-mansard-arches~m": 0.273
-   }
+   },
+   "installed": "java-93-149-r1"
   },
   {
    "pandId": "0363100012133860",
@@ -651,7 +783,8 @@
    "challengers": {
     "indisch-1912-java-mansard-arches~m": 0.295,
     "indisch-1912-java-mansard-arches": 0.271
-   }
+   },
+   "installed": "java-93-149-r1"
   },
   {
    "pandId": "0363100012098497",
@@ -758,7 +891,8 @@
    "challengers": {
     "indisch-1912-java-mansard-arches": 0.3,
     "indisch-1912-java-mansard-arches~m": 0.254
-   }
+   },
+   "installed": "java-93-149-r1"
   },
   {
    "pandId": "0363100012126147",
@@ -875,7 +1009,8 @@
    "challengers": {
     "indisch-1912-java-mansard-arches~m": 0.194,
     "indisch-1912-java-mansard-arches": 0.192
-   }
+   },
+   "installed": "java-93-149-r1"
   },
   {
    "pandId": "0363100012120784",
@@ -1075,7 +1210,8 @@
    "challengers": {
     "indisch-1912-java-mansard-arches": 0.252,
     "indisch-1912-java-mansard-arches~m": 0.325
-   }
+   },
+   "installed": "java-93-149-r2"
   },
   {
    "pandId": "0363100012103232",
@@ -1192,7 +1328,8 @@
    "challengers": {
     "indisch-1912-java-mansard-arches": 0.242,
     "indisch-1912-java-mansard-arches~m": 0.228
-   }
+   },
+   "installed": "java-93-149-r2"
   },
   {
    "pandId": "0363100012141749",
@@ -1308,7 +1445,8 @@
    "challengers": {
     "indisch-1912-java-mansard-arches~m": 0.179,
     "indisch-1912-java-mansard-arches": 0.153
-   }
+   },
+   "installed": "java-93-149-r2"
   },
   {
    "pandId": "0363100012085970",

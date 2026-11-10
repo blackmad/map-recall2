@@ -48,6 +48,94 @@
     "brick": "#72604f"
    },
    "reason": "Javastraat 115 (strip 2023-01-02): its per-pand brick #89766f rendered 28 levels light against photo #6d5d52; set to #72604f, the median of 101-109 (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012150368",
+   "type": "indisch-1913-arched-pair-dormer",
+   "palette": {
+    "brick": "#6c5647"
+   },
+   "reason": "Soendastraat 28: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012069113",
+   "type": "indisch-1913-arched-pair-dormer",
+   "palette": {
+    "brick": "#6c5647"
+   },
+   "reason": "Soendastraat 26: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012062527",
+   "type": "indisch-1913-arched-pair-dormer",
+   "palette": {
+    "brick": "#6c5647"
+   },
+   "reason": "Soendastraat 24: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012081321",
+   "type": "indisch-1913-arched-pair-dormer",
+   "palette": {
+    "brick": "#6c5647"
+   },
+   "reason": "Soendastraat 22: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012107809",
+   "type": "indisch-1913-arched-pair-dormer",
+   "palette": {
+    "brick": "#6c5647"
+   },
+   "reason": "Soendastraat 20: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012111204",
+   "type": "indisch-1913-arched-pair-dormer",
+   "palette": {
+    "brick": "#6c5647"
+   },
+   "reason": "Soendastraat 18: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012136122",
+   "type": "indisch-1913-arched-pair-dormer",
+   "palette": {
+    "brick": "#6c5647"
+   },
+   "reason": "Soendastraat 14: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012068591",
+   "type": "indisch-1913-arched-pair-dormer",
+   "palette": {
+    "brick": "#6c5647"
+   },
+   "reason": "Soendastraat 12: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012092864",
+   "type": "indisch-1913-arched-pair-dormer",
+   "palette": {
+    "brick": "#6c5647"
+   },
+   "reason": "Soendastraat 10: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012132949",
+   "type": "indisch-1912-java-mansard-arches",
+   "palette": {
+    "brick": "#72604f"
+   },
+   "reason": "Javastraat 97 (strip 2023-01-02): per-pand brick rendered about 30 levels light and pinker than 101-109; set to #72604f, the median of 101-109 (round-4 verdict)"
+  },
+  {
+   "pandId": "0363100012138717",
+   "type": "indisch-1912-java-mansard-arches",
+   "palette": {
+    "brick": "#72604f"
+   },
+   "reason": "Javastraat 99 (strip 2023-01-02): per-pand brick rendered about 30 levels light and pinker than 101-109; set to #72604f, the median of 101-109 (round-4 verdict)"
   }
  ]
 }

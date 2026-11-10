@@ -1,0 +1,200 @@
+{
+ "street": "Javastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:27:15.455Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012132949",
+   "addresses": [
+    "Javastraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 97-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000689485"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348134395,
+     "lngLat": [
+      4.9359909,
+      52.3638849
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "97",
+      "addr:postcode": "1094HC",
+      "addr:street": "Javastraat",
+      "check_date:opening_hours": "2026-10-03",
+      "name": "Asgül Kledingreparatie & Stomerij",
+      "opening_hours": "Mo-Fr 09:00-18:15; Sa 09:00-17:30",
+      "phone": "+31 20 693 53 68",
+      "self_service": "no",
+      "shop": "tailor",
+      "website": "https://asgulraamdecoratie.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12704722350,
+     "lngLat": [
+      4.9360288,
+      52.3638052
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012138717",
+   "addresses": [
+    "Javastraat 99",
+    "Javastraat 99F",
+    "Javastraat 99E",
+    "Javastraat 99H",
+    "Javastraat 99G",
+    "Javastraat 99B",
+    "Javastraat 99A",
+    "Javastraat 99D",
+    "Javastraat 99C",
+    "Javastraat 99K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 99-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000689493"
+    },
+    {
+     "address": "Javastraat 99F",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012072948"
+    },
+    {
+     "address": "Javastraat 99E",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012072949"
+    },
+    {
+     "address": "Javastraat 99H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012072950"
+    },
+    {
+     "address": "Javastraat 99G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012072951"
+    },
+    {
+     "address": "Javastraat 99B",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012072952"
+    },
+    {
+     "address": "Javastraat 99A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012072953"
+    },
+    {
+     "address": "Javastraat 99D",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012072954"
+    },
+    {
+     "address": "Javastraat 99C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012072955"
+    },
+    {
+     "address": "Javastraat 99K",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012084063"
+    }
+   ],
+   "units": 14,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8338843317,
+     "lngLat": [
+      4.9360762,
+      52.3638845
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "99",
+      "addr:postcode": "1094HC",
+      "addr:street": "Javastraat",
+      "amenity": "restaurant",
+      "contact:facebook": "fucinamsterdam",
+      "contact:instagram": "lafucinamsterdam",
+      "contact:youtube": "https://www.youtube.com/channel/UCiPrMMHjm7AkaztpsEDYEeA",
+      "cuisine": "italian",
+      "delivery": "yes",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "dog": "yes",
+      "highchair": "yes",
+      "kids_area:indoor": "yes",
+      "level": "0",
+      "name": "La Fucina",
+      "opening_hours": "We, Fr-Su 12:00-22:00; Tu 17:00-22:00; Th 12:00-21:30",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 337 9897",
+      "source": "BAG",
+      "source:date": "2021-01-08",
+      "takeaway": "yes",
+      "toilets": "yes",
+      "toilets:access": "customers",
+      "website": "https://lafucina.nl/la-fucina-javastraat/",
+      "website:menu": "https://lafucina.b-cdn.net/wp-content/uploads/2021/12/menu-java-2021-English.pdf",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12704722350,
+     "lngLat": [
+      4.9360288,
+      52.3638052
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.8
+    }
+   ]
+  }
+ ]
+}

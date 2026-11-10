@@ -3,7 +3,7 @@
  "street": "Soendastraat",
  "library": "indische-buurt",
  "stripDate": "2019-12-18",
- "seconds": 19.2,
+ "seconds": 24.75,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -179,16 +179,20 @@
     "measuredPalette": {
      "brick": "#765e51",
      "evidence": "strip 2019-12-18 span 480-720: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c5647"
     }
    },
    "notes": [
     "door unread",
-    "crown brick-dormer (type default)"
+    "crown brick-dormer (type default)",
+    "palette pinned: Soendastraat 28: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
    ],
    "likeness": {
     "pandId": "0363100012150368",
-    "ncc": 0.284,
-    "nccRaw": 0.284,
+    "ncc": 0.282,
+    "nccRaw": 0.282,
     "shiftM": [
      0.4,
      -0.1
@@ -201,8 +205,8 @@
     ],
     "wall": {
      "photo": "#816658",
-     "model": "#8e7262",
-     "dL": 0.045
+     "model": "#866b58",
+     "dL": 0.01
     },
     "glazing": {
      "photo": 0.48,
@@ -215,8 +219,8 @@
     "iou": 0.384
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.285,
-    "indisch-1913-arched-pair-dormer~m": 0.06
+    "indisch-1913-arched-pair-dormer": 0.283,
+    "indisch-1913-arched-pair-dormer~m": 0.062
    }
   },
   {
@@ -274,16 +278,20 @@
      "brick": "#8b6e60",
      "evidence": "strip 2019-12-18 span 720-940: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "paletteOverrides": {
+     "brick": "#6c5647"
+    },
     "mirror": true
    },
    "notes": [
     "crown brick-dormer (type default)",
+    "palette pinned: Soendastraat 26: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)",
     "door reviewer pin: mirrored (Soendastraat 26: arched window and door on the left, pairing with 28 across the wall)"
    ],
    "likeness": {
     "pandId": "0363100012069113",
-    "ncc": 0.31,
-    "nccRaw": 0.31,
+    "ncc": 0.299,
+    "nccRaw": 0.299,
     "shiftM": [
      0,
      0
@@ -296,8 +304,8 @@
     ],
     "wall": {
      "photo": "#896c5c",
-     "model": "#9e8173",
-     "dL": 0.086
+     "model": "#866b58",
+     "dL": -0.014
     },
     "glazing": {
      "photo": 0.46,
@@ -310,8 +318,8 @@
     "iou": 0.41
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.31,
-    "indisch-1913-arched-pair-dormer": 0.204
+    "indisch-1913-arched-pair-dormer~m": 0.298,
+    "indisch-1913-arched-pair-dormer": 0.203
    }
   },
   {
@@ -368,16 +376,20 @@
     "measuredPalette": {
      "brick": "#886c5a",
      "evidence": "strip 2019-12-18 span 940-1160: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c5647"
     }
    },
    "notes": [
     "door unread: as drawn, the opposite of 081321",
-    "crown brick-dormer (type default)"
+    "crown brick-dormer (type default)",
+    "palette pinned: Soendastraat 24: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
    ],
    "likeness": {
     "pandId": "0363100012062527",
-    "ncc": 0.271,
-    "nccRaw": 0.271,
+    "ncc": 0.268,
+    "nccRaw": 0.268,
     "shiftM": [
      0.3,
      -0.05
@@ -390,8 +402,8 @@
     ],
     "wall": {
      "photo": "#7e6759",
-     "model": "#9d7f6b",
-     "dL": 0.096
+     "model": "#866b58",
+     "dL": 0.014
     },
     "glazing": {
      "photo": 0.11,
@@ -404,8 +416,8 @@
     "iou": 0.197
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.267,
-    "indisch-1913-arched-pair-dormer~m": 0.004
+    "indisch-1913-arched-pair-dormer": 0.266,
+    "indisch-1913-arched-pair-dormer~m": 0.009
    }
   },
   {
@@ -463,16 +475,20 @@
     "measuredPalette": {
      "brick": "#836756",
      "evidence": "strip 2019-12-18 span 1160-1380: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c5647"
     }
    },
    "notes": [
     "door left: mirrored",
-    "crown brick-dormer (type default)"
+    "crown brick-dormer (type default)",
+    "palette pinned: Soendastraat 22: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
    ],
    "likeness": {
     "pandId": "0363100012081321",
-    "ncc": 0.284,
-    "nccRaw": 0.284,
+    "ncc": 0.282,
+    "nccRaw": 0.282,
     "shiftM": [
      0.2,
      -0.1
@@ -485,8 +501,8 @@
     ],
     "wall": {
      "photo": "#7a6354",
-     "model": "#9b7a66",
-     "dL": 0.1
+     "model": "#866b58",
+     "dL": 0.031
     },
     "glazing": {
      "photo": 0.1,
@@ -499,8 +515,8 @@
     "iou": 0.175
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.294,
-    "indisch-1913-arched-pair-dormer": 0.287
+    "indisch-1913-arched-pair-dormer~m": 0.292,
+    "indisch-1913-arched-pair-dormer": 0.286
    }
   },
   {
@@ -557,16 +573,20 @@
     "measuredPalette": {
      "brick": "#8a6c5a",
      "evidence": "strip 2019-12-18 span 1380-1600: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c5647"
     }
    },
    "notes": [
     "door unread: as drawn, the opposite of 081321",
-    "crown brick-dormer (type default)"
+    "crown brick-dormer (type default)",
+    "palette pinned: Soendastraat 20: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
    ],
    "likeness": {
     "pandId": "0363100012107809",
-    "ncc": 0.316,
-    "nccRaw": 0.316,
+    "ncc": 0.311,
+    "nccRaw": 0.311,
     "shiftM": [
      0.4,
      -0.05
@@ -579,8 +599,8 @@
     ],
     "wall": {
      "photo": "#7b6455",
-     "model": "#9f7f6c",
-     "dL": 0.116
+     "model": "#866b58",
+     "dL": 0.027
     },
     "glazing": {
      "photo": 0.14,
@@ -593,8 +613,8 @@
     "iou": 0.217
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.315,
-    "indisch-1913-arched-pair-dormer~m": 0.035
+    "indisch-1913-arched-pair-dormer": 0.311,
+    "indisch-1913-arched-pair-dormer~m": 0.041
    }
   },
   {
@@ -652,16 +672,20 @@
     "measuredPalette": {
      "brick": "#876a57",
      "evidence": "strip 2019-12-18 span 1600-1822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c5647"
     }
    },
    "notes": [
     "door left: mirrored",
-    "crown brick-dormer (type default)"
+    "crown brick-dormer (type default)",
+    "palette pinned: Soendastraat 18: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
    ],
    "likeness": {
     "pandId": "0363100012111204",
-    "ncc": 0.301,
-    "nccRaw": 0.301,
+    "ncc": 0.296,
+    "nccRaw": 0.296,
     "shiftM": [
      0.3,
      -0.05
@@ -674,8 +698,8 @@
     ],
     "wall": {
      "photo": "#8a6c5a",
-     "model": "#9d7d68",
-     "dL": 0.065
+     "model": "#866b58",
+     "dL": -0.012
     },
     "glazing": {
      "photo": 0.5,
@@ -688,8 +712,8 @@
     "iou": 0.424
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.303,
-    "indisch-1913-arched-pair-dormer": 0.299
+    "indisch-1913-arched-pair-dormer~m": 0.298,
+    "indisch-1913-arched-pair-dormer": 0.297
    }
   },
   {
@@ -830,16 +854,20 @@
     "measuredPalette": {
      "brick": "#8a6d5c",
      "evidence": "strip 2019-12-18 span 2044-2266: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c5647"
     }
    },
    "notes": [
     "door left: mirrored",
-    "crown brick-dormer (type default)"
+    "crown brick-dormer (type default)",
+    "palette pinned: Soendastraat 14: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
    ],
    "likeness": {
     "pandId": "0363100012136122",
-    "ncc": 0.282,
-    "nccRaw": 0.282,
+    "ncc": 0.275,
+    "nccRaw": 0.275,
     "shiftM": [
      0.35,
      -0.1
@@ -852,8 +880,8 @@
     ],
     "wall": {
      "photo": "#886d5c",
-     "model": "#9e806e",
-     "dL": 0.078
+     "model": "#866b58",
+     "dL": -0.012
     },
     "glazing": {
      "photo": 0.21,
@@ -866,8 +894,8 @@
     "iou": 0.292
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.287,
-    "indisch-1913-arched-pair-dormer": 0.292
+    "indisch-1913-arched-pair-dormer~m": 0.28,
+    "indisch-1913-arched-pair-dormer": 0.291
    }
   },
   {
@@ -924,16 +952,20 @@
     "measuredPalette": {
      "brick": "#8d6f5e",
      "evidence": "strip 2019-12-18 span 2266-2488: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#6c5647"
     }
    },
    "notes": [
     "door unread: as drawn, the opposite of 136122",
-    "crown brick-dormer (type default)"
+    "crown brick-dormer (type default)",
+    "palette pinned: Soendastraat 12: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
    ],
    "likeness": {
     "pandId": "0363100012068591",
-    "ncc": 0.234,
-    "nccRaw": 0.234,
+    "ncc": 0.23,
+    "nccRaw": 0.23,
     "shiftM": [
      0.4,
      -0.1
@@ -946,8 +978,8 @@
     ],
     "wall": {
      "photo": "#876c5c",
-     "model": "#a08271",
-     "dL": 0.09
+     "model": "#866b58",
+     "dL": -0.01
     },
     "glazing": {
      "photo": 0.12,
@@ -960,8 +992,8 @@
     "iou": 0.16
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer": 0.231,
-    "indisch-1913-arched-pair-dormer~m": 0.16
+    "indisch-1913-arched-pair-dormer": 0.229,
+    "indisch-1913-arched-pair-dormer~m": 0.159
    }
   },
   {
@@ -1013,16 +1045,20 @@
      "brick": "#866b5d",
      "evidence": "strip 2019-12-18 span 2488-2728: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
+    "paletteOverrides": {
+     "brick": "#6c5647"
+    },
     "mirror": true
    },
    "notes": [
     "door unread: mirrored, the opposite of 068591",
-    "crown brick-dormer (type default)"
+    "crown brick-dormer (type default)",
+    "palette pinned: Soendastraat 10: the per-pand measuredPalette brick (trim-normalised #765e51-#8b6e60) overrode the type palette and rendered 20-29 levels light and pink against the raw strip pixels (#745e51-#7b6557); set to #6c5647, the raw-pixel value that renders about +10 like Djambistraat (round-4 verdict)"
    ],
    "likeness": {
     "pandId": "0363100012092864",
-    "ncc": 0.282,
-    "nccRaw": 0.282,
+    "ncc": 0.279,
+    "nccRaw": 0.279,
     "shiftM": [
      0.05,
      -0.1
@@ -1035,8 +1071,8 @@
     ],
     "wall": {
      "photo": "#7a6354",
-     "model": "#9b7e6f",
-     "dL": 0.118
+     "model": "#866b58",
+     "dL": 0.031
     },
     "glazing": {
      "photo": 0.29,
@@ -1049,8 +1085,8 @@
     "iou": 0.304
    },
    "challengers": {
-    "indisch-1913-arched-pair-dormer~m": 0.281,
-    "indisch-1913-arched-pair-dormer": 0.281
+    "indisch-1913-arched-pair-dormer~m": 0.277,
+    "indisch-1913-arched-pair-dormer": 0.272
    }
   },
   {
