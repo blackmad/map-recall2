@@ -80,9 +80,17 @@ Westpoort: no pand lost a shop; the gate removes nothing there (its sheds were a
 
 ## Images
 
-/Users/blackmad/Code/map-recall2-screenshots-a1/buildings/2026-11-10-storefront-gate/ (before/after at Pazzanistraat 31-37,
-Brouwersgracht 222 / Binnen Oranjestraat, Haarlemmerdijk). Taken at `?world=live` with the old and new shopfronts.json
-swapped in by route, because compiled world-v1 cells carry the old stamps until `world:compile` is rerun.
+/Users/blackmad/Code/map-recall2-screenshots-a1/buildings/2026-11-10-storefront-gate/: `<spot>-<n|s>-<before|after>.jpg` for
+Pazzanistraat 37, Brouwersgracht 222 / Binnen Oranjestraat 28 and Haarlemmerdijk 14 (free ride, tilt 40, looking north and
+south). Taken at `?world=live` with the old and new shopfronts.json swapped in by route, because compiled world-v1 cells
+carry the old stamps until `world:compile` is rerun.
+
+What they show: `brouwersgracht-pakhuis-s-*` is the clear one. Before, the grey office/warehouse block at the lower left has a
+dark-green shopfront strip along its ground floor and the row at the right has several shop signs; after, the
+block's ground floor is plain and only the one real shop sign at the far right remains. The Pazzanistraat frames are
+near-identical (the block is mostly hidden behind roofs at this angle) and the Haarlemmerdijk frames are occluded by roofs;
+the camera pose script could not get a street-level view there, so those two spots are not visually confirmed and the node
+pins above are the evidence. No Westpoort frame: the gate changes nothing there.
 
 ## Side effects
 
