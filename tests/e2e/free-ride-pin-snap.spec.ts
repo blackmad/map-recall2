@@ -73,6 +73,7 @@ for (const mode of ['boat', 'car'] as const) {
           snapM: Math.hypot(lm.x - own.x, lm.y - own.y) / 3,
           anchorM: Math.hypot(place.x - own.x, place.y - own.y) / 3,
           ownWater: water(own), snapWater: water(lm), anchorWater: water(place),
+          anchorFootprint: !!g.vectorMap.isFootprint?.(place.x, place.y, g.osmLoader), ownFootprint: !!g.vectorMap.isFootprint?.(own.x, own.y, g.osmLoader),
         });
       }
       const tower = (g.landmarks as any[]).find(lm => /westertoren/i.test(lm.name));
@@ -96,6 +97,7 @@ for (const mode of ['boat', 'car'] as const) {
       anchorOnWater: rows.filter(r => r.anchorWater).length,
       anchorMedianM: +med('anchorM').toFixed(1), anchorMaxM: +Math.max(0, ...rows.map(r => r.anchorM)).toFixed(1),
       anchorOver25M: rows.filter(r => r.anchorM > 25).length, noPin: rows.filter(r => r.dropped).length,
+      ownInFootprint: rows.filter(r => r.ownFootprint).length, anchorInFootprint: rows.filter(r => r.anchorFootprint).length,
       tower: result.tower,
     };
     console.log(`S5 ${JSON.stringify(summary)}`);
