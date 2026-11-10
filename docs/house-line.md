@@ -1011,3 +1011,7 @@ switch. No re-pick was run: `pick.ts --prompt v2` re-judges the existing candida
 ## §5 The kit-gap queue
 
 Stub (lane H6): `kit-gaps.ts` aggregates `schemaLimits` by `component`; the horizon rule.
+
+## §6 Worked example: the H7 timed pilot (in progress)
+
+Lane H7 (#354) runs Nieuwmarkt 4-22, one Bloemgracht row and Nassaukade 145-152 through describe, preview, compare and stage, timed. Filled in by the lane.
