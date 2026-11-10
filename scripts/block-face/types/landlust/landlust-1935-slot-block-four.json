@@ -200,6 +200,38 @@
     "coping": true
    },
    "note": "Haenstraat 6-62 strip: a dark thin eaves band at about 12.9 m; the zinc dormers are not drawn"
+  },
+  "zinc-dormers-inward": {
+   "gable": "flat",
+   "cornice": "none",
+   "parapet": {
+    "courses": 4,
+    "coping": true
+   },
+   "dormers": 2,
+   "dormerStyle": "box",
+   "dormerBody": "zinc-band",
+   "dormerAt": [
+    {
+     "from": 0.17,
+     "to": 0.36
+    },
+    {
+     "from": 0.64,
+     "to": 0.83
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.5,
+    "setback": 0.3
+   },
+   "note": "the same two zinc dormers moved inward to flank the slot lights (Andringastraat 1-31 and 4-32, round-5 review)",
+   "dormerWindow": {
+    "apron": 0.2,
+    "light": 2.0,
+    "tall": 1.1
+   }
   }
  },
  "grounds": {
@@ -228,7 +260,7 @@
   "red-brown": {
    "brick": "#8a5238",
    "frame": "#6b6454",
-   "door": "#1e1b12",
+   "door": "#1c2a24",
    "stone": "#6b6454",
    "cornice": "#3a3a32"
   }

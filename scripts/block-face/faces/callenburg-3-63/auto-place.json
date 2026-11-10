@@ -3,7 +3,7 @@
  "street": "Gerard Callenburgstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 29.92,
+ "seconds": 29.8,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -96,15 +96,11 @@
      "brick": "#865435",
      "evidence": "strip 2024-11-21 span 0-514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "parapet",
-    "paletteOverrides": {
-     "door": "#1c2a24"
-    }
+    "crown": "parapet"
    },
    "notes": [
     "door unread",
-    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
-    "palette pinned: Callenburgstraat 3-63 (round-4 review 2026-11-10): the photo's doors are single dark-green leaves, about #1c2a24"
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)"
    ],
    "likeness": {
     "pandId": "0363100012119108",
@@ -202,8 +198,7 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f",
-     "door": "#1c2a24"
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
@@ -314,15 +309,11 @@
      "brick": "#7f4f34",
      "evidence": "strip 2024-11-21 span 1028-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "parapet",
-    "paletteOverrides": {
-     "door": "#1c2a24"
-    }
+    "crown": "parapet"
    },
    "notes": [
     "door unread",
-    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
-    "palette pinned: Callenburgstraat 3-63 (round-4 review 2026-11-10): the photo's doors are single dark-green leaves, about #1c2a24"
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)"
    ],
    "likeness": {
     "pandId": "0363100012132798",
@@ -424,15 +415,11 @@
      "brick": "#845333",
      "evidence": "strip 2024-11-21 span 1542-2056: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "parapet",
-    "paletteOverrides": {
-     "door": "#1c2a24"
-    }
+    "crown": "parapet"
    },
    "notes": [
     "door unread",
-    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
-    "palette pinned: Callenburgstraat 3-63 (round-4 review 2026-11-10): the photo's doors are single dark-green leaves, about #1c2a24"
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)"
    ],
    "likeness": {
     "pandId": "0363100012098318",
@@ -533,8 +520,7 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f",
-     "door": "#1c2a24"
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
@@ -641,8 +627,7 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f",
-     "door": "#1c2a24"
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
@@ -756,8 +741,7 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f",
-     "door": "#1c2a24"
+     "brick": "#7a4c2f"
     }
    },
    "notes": [
@@ -880,8 +864,7 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f",
-     "door": "#1c2a24"
+     "brick": "#7a4c2f"
     }
    },
    "notes": [

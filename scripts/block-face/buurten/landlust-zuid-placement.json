@@ -1,8 +1,8 @@
 {
  "buurt": "landlust-zuid",
  "library": "landlust",
- "generatedAt": "2026-11-10T05:06:20.974Z",
- "seconds": 239.15,
+ "generatedAt": "2026-11-10T05:38:20.844Z",
+ "seconds": 171.5,
  "totals": {
   "faces": 42,
   "pands": 364,
@@ -26,7 +26,7 @@
      "triangles": 5406
     }
    ],
-   "seconds": 10.05,
+   "seconds": 7.68,
    "byType": {
     "landlust-1934-slot-block": 2
    },
@@ -56,7 +56,7 @@
      "triangles": 5373
     }
    ],
-   "seconds": 11.03,
+   "seconds": 7.51,
    "byType": {
     "landlust-1934-slot-block": 2
    },
@@ -204,7 +204,7 @@
      "triangles": 8086
     }
    ],
-   "seconds": 16.18,
+   "seconds": 16.37,
    "byType": {
     "landlust-1934-slot-block": 5
    },
@@ -240,7 +240,7 @@
      "triangles": 18485
     }
    ],
-   "seconds": 29.92,
+   "seconds": 29.8,
    "byType": {
     "landlust-1934-slot-block": 8
    },
@@ -367,7 +367,7 @@
      "triangles": 5371
     }
    ],
-   "seconds": 108.96,
+   "seconds": 14.23,
    "byType": {
     "landlust-1934-slot-block": 3
    },
@@ -412,7 +412,7 @@
      "triangles": 2695
     }
    ],
-   "seconds": 13.05,
+   "seconds": 13.12,
    "byType": {
     "landlust-1935-slot-block-four": 3
    },
@@ -743,10 +743,10 @@
       "0363100012121629"
      ],
      "passed": true,
-     "triangles": 5504
+     "triangles": 5552
     }
    ],
-   "seconds": 3.65,
+   "seconds": 7.46,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -775,10 +775,10 @@
       "0363100012145888"
      ],
      "passed": true,
-     "triangles": 5581
+     "triangles": 5629
     }
    ],
-   "seconds": 3.52,
+   "seconds": 7.14,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -861,10 +861,10 @@
       "0363100012114449"
      ],
      "passed": true,
-     "triangles": 5513
+     "triangles": 5561
     }
    ],
-   "seconds": 3.89,
+   "seconds": 22.61,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -893,10 +893,10 @@
       "0363100012065427"
      ],
      "passed": true,
-     "triangles": 5556
+     "triangles": 5604
     }
    ],
-   "seconds": 3.58,
+   "seconds": 8.6,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -1099,7 +1099,7 @@
      "triangles": 2774
     }
    ],
-   "seconds": 35.27,
+   "seconds": 36.94,
    "byType": {
     "landlust-1935-slot-block-four": 3
    },

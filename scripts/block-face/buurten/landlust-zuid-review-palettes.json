@@ -13,8 +13,7 @@
    "pandId": "0363100012073024",
    "type": "landlust-1934-slot-block",
    "palette": {
-    "brick": "#7a4c2f",
-    "door": "#1c2a24"
+    "brick": "#7a4c2f"
    },
    "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
   },
@@ -22,8 +21,7 @@
    "pandId": "0363100012137010",
    "type": "landlust-1934-slot-block",
    "palette": {
-    "brick": "#7a4c2f",
-    "door": "#1c2a24"
+    "brick": "#7a4c2f"
    },
    "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
   },
@@ -31,8 +29,7 @@
    "pandId": "0363100012082410",
    "type": "landlust-1934-slot-block",
    "palette": {
-    "brick": "#7a4c2f",
-    "door": "#1c2a24"
+    "brick": "#7a4c2f"
    },
    "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
   },
@@ -40,8 +37,7 @@
    "pandId": "0363100012066626",
    "type": "landlust-1934-slot-block",
    "palette": {
-    "brick": "#7a4c2f",
-    "door": "#1c2a24"
+    "brick": "#7a4c2f"
    },
    "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
   },
@@ -49,8 +45,7 @@
    "pandId": "0363100012063567",
    "type": "landlust-1934-slot-block",
    "palette": {
-    "brick": "#7a4c2f",
-    "door": "#1c2a24"
+    "brick": "#7a4c2f"
    },
    "reason": "Callenburgstraat 3-63 / Haenstraat 3-31 (Opus verdict 2026-11-10): the model read #986344-#a3704e against photo #6e4a32-#714c34 (#8f5534 against #5d412d on Haen 19); one brick for the run, 60 % of the way from the model wall to the photo median"
   },
@@ -389,30 +384,6 @@
     "brick": "#745b41"
    },
    "reason": "Leijnsenstraat 11-19 (Opus verdict): model red/olive patchwork about #8a6a4c against photo about #655039; one brick for the run"
-  },
-  {
-   "pandId": "0363100012119108",
-   "type": "landlust-1934-slot-block",
-   "palette": {
-    "door": "#1c2a24"
-   },
-   "reason": "Callenburgstraat 3-63 (round-4 review 2026-11-10): the photo's doors are single dark-green leaves, about #1c2a24"
-  },
-  {
-   "pandId": "0363100012132798",
-   "type": "landlust-1934-slot-block",
-   "palette": {
-    "door": "#1c2a24"
-   },
-   "reason": "Callenburgstraat 3-63 (round-4 review 2026-11-10): the photo's doors are single dark-green leaves, about #1c2a24"
-  },
-  {
-   "pandId": "0363100012098318",
-   "type": "landlust-1934-slot-block",
-   "palette": {
-    "door": "#1c2a24"
-   },
-   "reason": "Callenburgstraat 3-63 (round-4 review 2026-11-10): the photo's doors are single dark-green leaves, about #1c2a24"
   }
  ]
 }

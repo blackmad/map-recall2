@@ -219,6 +219,8 @@ export const DORMER_BODIES = ['stone', 'brick', 'timber', 'zinc', 'zinc-band'] a
  * review): a painted-zinc box dormer: smooth mid-grey cheeks, a mostly glazed front of three lights and a dark flat cap
  * overhanging the front. Pair with `dormerWindow` (the glass band's width, apron and height). Absent = byte-identical.
  */
+/** Party-wall dormer fascia (Treslong 5-35, round-5 review): a pale grey-beige board on the cap's front edge, 17 cm deep, so the dark cap does not merge into the roof. */
+export const PARTY_DORMER_FASCIA = {colour: '#9a988c', heightM: 0.17} as const;
 export const ZINC_BAND = {cheek: '#6f7275', cap: '#3e4144', capOverhangM: 0.15} as const;
 /**
  * `dormerBody: "zinc"` (Landlust 1932-1940 tiled-roof fronts, Leijnsenstraat 2-30, Coppelstockstraat 29-49): a box dormer

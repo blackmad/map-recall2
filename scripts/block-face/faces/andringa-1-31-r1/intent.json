@@ -30,7 +30,8 @@
     "measuredPalette": {
      "brick": "#644029",
      "evidence": "strip 2024-11-21 span 2734-3248: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "zinc-dormers-inward"
    },
    "groundFloor": {
     "use": "residential",
@@ -54,7 +55,8 @@
     "measuredPalette": {
      "brick": "#633f27",
      "evidence": "strip 2024-11-21 span 3248-3760: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "zinc-dormers-inward"
    },
    "groundFloor": {
     "use": "residential",

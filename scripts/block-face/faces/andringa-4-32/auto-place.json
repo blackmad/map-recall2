@@ -3,7 +3,7 @@
  "street": "Joris van Andringastraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 11.03,
+ "seconds": 7.51,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -468,11 +468,12 @@
     "measuredPalette": {
      "brick": "#66432b",
      "evidence": "strip 2024-11-21 span 2560-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "zinc-dormers-inward"
    },
    "notes": [
     "door unread",
-    "crown zinc-dormers (type default)"
+    "crown zinc-dormers-inward: reviewer pin (Andringastraat (round-5 review 2026-11-10): the photo's two zinc dormers sit further inward, flanking the slot lights)"
    ],
    "likeness": {
     "pandId": "0363100012124713",
@@ -563,11 +564,12 @@
     "measuredPalette": {
      "brick": "#67432a",
      "evidence": "strip 2024-11-21 span 3073-3585: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "crown": "zinc-dormers-inward"
    },
    "notes": [
     "door unread",
-    "crown zinc-dormers (type default)"
+    "crown zinc-dormers-inward: reviewer pin (Andringastraat (round-5 review 2026-11-10): the photo's two zinc dormers sit further inward, flanking the slot lights)"
    ],
    "likeness": {
     "pandId": "0363100012103458",

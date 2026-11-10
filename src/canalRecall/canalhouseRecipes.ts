@@ -90,6 +90,8 @@ export interface CanalhouseDormer {
   bodyColour?:string;capColour?:string;
   /** A half dormer against a party wall (Treslong: one dormer straddles two pands): the cheek on that side is left out, the frame member there is thickened to the wall so two halves read as one frame with one mullion, and the cap runs to the wall. Absent = a free-standing dormer, byte-identical. */
   partyEdge?:'left'|'right';
+  /** A visible fascia board on the front edge of a flat cap (`fasciaColour`, #rrggbb, smooth measured), `fasciaHeightM` (0.05..0.3) deep: a dark cap otherwise merges into the roof behind it (Treslong party dormers). Absent = no board, byte-identical. */
+  fasciaColour?:string;fasciaHeightM?:number;
   id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
 /** `accent` is a second masonry colour (banding, relieving arches); `shop` is the shopfront joinery/fascia paint. */
 export interface CanalhouseFacadeBlock { id: string; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface?: 'wall' | 'trim' | 'stone' | 'accent' | 'shop' }
@@ -932,6 +934,12 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           const cx0=d.partyEdge==='left'?x0-partyGap:x0,cx1=d.partyEdge==='right'?x1+partyGap:x1;
           quad([cx0,top+lift,front],[cx1,top+lift,front],[cx1,top+lift,-d.depthM],[cx0,top+lift,-d.depthM]);
           box(cx0,top,cx1-cx0,lift-.005,d.depthM+front,(front-d.depthM)/2,roofSurface,`${label}/roof-slab`);
+          if(d.fasciaColour!==undefined){
+            const fh=d.fasciaHeightM??.17;if(!/^#[\da-f]{6}$/i.test(d.fasciaColour)||!(fh>=.05&&fh<=.3))throw Error('Invalid dormer fascia');
+            // Proud of the slab's nose by 4 cm (past the audit's coplanar bands), hanging over the frame head.
+            const board=box(cx0,top+lift-fh,cx1-cx0,fh,.05,front+.015,'trim',`${label}/fascia`);
+            const mat=new T.MeshStandardMaterial({color:d.fasciaColour,roughness:1});mat.userData={tintSource:'measured'};board.material=mat;board.userData={...board.userData,surface:'stone'};
+          }
         }
         const roof=new T.BufferGeometry();roof.setAttribute('position',new T.Float32BufferAttribute(roofValues,3));roof.computeVertexNormals();add(roof,roofSurface,`${label}/roof`,facade);
         // Painted-zinc colours: smooth measured materials on the walls (`bodyColour`) and the flat roof (`capColour`).

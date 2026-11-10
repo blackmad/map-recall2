@@ -139,5 +139,21 @@ test('painted-zinc and party-wall dormers compile: smooth measured materials, no
   assert.ok(Object.keys(half).some(n => /left-wall$/.test(n)));
   const post = Object.entries(half).find(([n]) => /frame-right$/.test(n))![1], free = Object.entries(names((await compileBuilding(house('landlust-1933-erker-window', 'treslong-5-19-a', '151165', f => { delete f.dormerParty; }, {crown: 'party-dormer', pair: 'left'}), facts('treslong-5-19-a', '151165'))).group)).find(([n]) => /frame-right$/.test(n))![1];
   const wid = (m: T.Mesh) => { const b = new T.Box3().setFromBufferAttribute(m.geometry.getAttribute('position') as T.BufferAttribute); return b.max.x - b.min.x; };
+  const fascia = Object.entries(half).find(([n]) => /fascia$/.test(n))![1];
+  assert.equal('#' + (fascia.material as T.MeshStandardMaterial).color.getHexString(), '#9a988c');
+  const fb = new T.Box3().setFromBufferAttribute(fascia.geometry.getAttribute('position') as T.BufferAttribute);
+  assert.ok(Math.abs(fb.max.y - fb.min.y - 0.17) < 1e-3, 'fascia 17 cm deep');
+  assert.ok(!Object.keys(names((await compileBuilding(house('landlust-1933-erker-window', 'treslong-5-19-a', '151165', f => { delete f.dormerParty; }, {crown: 'party-dormer', pair: 'left'}), facts('treslong-5-19-a', '151165'))).group)).some(n => /fascia$/.test(n)), 'no fascia without dormerParty');
   assert.ok(wid(post) > wid(free) + 0.02, `party post ${wid(post)} vs free ${wid(free)}`);
+});
+
+test('slot types: dark green-black doors in the palette; the inward crown moves the dormers toward the slot lights', () => {
+  for (const type of ['landlust-1934-slot-block', 'landlust-1935-slot-block-four']) {
+    const t = defaultTypeLoader(type)!;
+    assert.equal(Object.values(t.palettes).every(p => p.door === '#1c2a24'), true, type);
+  }
+  const t = 'landlust-1935-slot-block-four', f = 'haen-6-62-r2', p = '084532';
+  const a = dormers(t, f, p, undefined, {crown: 'zinc-dormers'}), b = dormers(t, f, p, undefined, {crown: 'zinc-dormers-inward'});
+  assert.equal(b.length, 2);
+  assert.ok(b[0].leftM > a[0].leftM + 0.5 && b[1].leftM + b[1].widthM < a[1].leftM + a[1].widthM - 0.5, JSON.stringify([a.map(x => x.leftM), b.map(x => x.leftM)]));
 });
