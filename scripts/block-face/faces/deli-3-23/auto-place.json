@@ -1,0 +1,1015 @@
+{
+ "face": "deli-3-23",
+ "street": "Delistraat",
+ "library": "indische-buurt",
+ "stripDate": "2023-01-02",
+ "seconds": 4.52,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012093892",
+   "address": "Delistraat 3",
+   "builtYear": 2005,
+   "widthM": 11.5,
+   "eavesM": 14.47,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c433e",
+    "wallRaw": "#5b5450",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 830,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.244,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.22,
+       "widthM": 1.38,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 2005, type 1910-1914; frontage 11.5 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 2005, type 1910-1914",
+     "frontage 11.5 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.47 m = 4 storeys of 3.62 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 3 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.184 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160942",
+   "address": "Delistraat 5A",
+   "builtYear": 1905,
+   "widthM": 5.21,
+   "eavesM": 16.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#805d51",
+    "wallRaw": "#7a5c4f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 830,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 10,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.233,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.42,
+       "widthM": 1.1,
+       "centre": 0.19
+      },
+      {
+       "atM": 10.43,
+       "widthM": 1.05,
+       "centre": 0.52
+      },
+      {
+       "atM": 7.5,
+       "widthM": 1.57,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1905, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.35 m = 4 storeys of 4.09 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.205 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158528",
+   "address": "Delistraat 7A",
+   "builtYear": 1905,
+   "widthM": 5.31,
+   "eavesM": 16.29,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b5d45",
+    "wallRaw": "#826851",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 830,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 12,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.231,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 14.8,
+       "widthM": 1.4,
+       "centre": 0.55
+      },
+      {
+       "atM": 13.45,
+       "widthM": 1.07,
+       "centre": 0.23
+      },
+      {
+       "atM": 10.52,
+       "widthM": 1.15,
+       "centre": 0.55
+      },
+      {
+       "atM": 7.52,
+       "widthM": 1.13,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1905, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.29 m = 4 storeys of 4.07 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.193 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158549",
+   "address": "Delistraat 9",
+   "builtYear": 1902,
+   "widthM": 5.31,
+   "eavesM": 16.39,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#735141",
+    "wallRaw": "#7c5e4f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 830,
+     "confidence": 0.11,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.239,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.55,
+       "widthM": 1,
+       "centre": 0.23
+      },
+      {
+       "atM": 10.55,
+       "widthM": 1.18,
+       "centre": 0.55
+      },
+      {
+       "atM": 7.55,
+       "widthM": 1.52,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.39 m = 4 storeys of 4.1 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.196 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160862",
+   "address": "Delistraat 11A",
+   "builtYear": 1905,
+   "widthM": 5.34,
+   "eavesM": 16.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c5c4c",
+    "wallRaw": "#7d6659",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 830,
+     "confidence": 0.09,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 10,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.246,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.93 m (1.43 m wide), 7.7 m (1.88 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.63,
+       "widthM": 0.88,
+       "centre": 0.89
+      },
+      {
+       "atM": 10.93,
+       "widthM": 1.43,
+       "centre": 0.56
+      },
+      {
+       "atM": 7.7,
+       "widthM": 1.88,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1905, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.03 m = 4 storeys of 4.01 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.208 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161587",
+   "address": "Delistraat 13A",
+   "builtYear": 1903,
+   "widthM": 5.34,
+   "eavesM": 15.69,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#775d4e",
+    "wallRaw": "#7f6756",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 830,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.207,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.72,
+       "widthM": 0.97,
+       "centre": 0.23
+      },
+      {
+       "atM": 10.72,
+       "widthM": 1.1,
+       "centre": 0.56
+      },
+      {
+       "atM": 7.8,
+       "widthM": 1.55,
+       "centre": 0.56
+      },
+      {
+       "atM": 5.4,
+       "widthM": 0.82,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1903, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.69 m = 4 storeys of 3.92 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.19 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166688",
+   "address": "Delistraat 15",
+   "builtYear": 1903,
+   "widthM": 5.36,
+   "eavesM": 15.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6256",
+    "wallRaw": "#735f54",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 830,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 8,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.232,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 10.95 m (1.8 m wide), 7.72 m (1.7 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.95,
+       "widthM": 1.8,
+       "centre": 0.56
+      },
+      {
+       "atM": 7.72,
+       "widthM": 1.7,
+       "centre": 0.56
+      },
+      {
+       "atM": 7.2,
+       "widthM": 0.85,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1903, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.83 m = 4 storeys of 3.96 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.206 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165390",
+   "address": "Delistraat 17",
+   "builtYear": 1903,
+   "widthM": 5.83,
+   "eavesM": 15.44,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#806453",
+    "wallRaw": "#786151",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 830,
+     "confidence": 0.07,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.26,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.63,
+       "widthM": 0.9,
+       "centre": 0.22
+      },
+      {
+       "atM": 10.77,
+       "widthM": 1.13,
+       "centre": 0.55
+      },
+      {
+       "atM": 7.77,
+       "widthM": 1.13,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1903, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.44 m = 4 storeys of 3.86 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.23 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156955",
+   "address": "Delistraat 19",
+   "builtYear": 1903,
+   "widthM": 5.88,
+   "eavesM": 12.28,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#775f55",
+    "wallRaw": "#69584f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 830,
+     "confidence": 0.12,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.197,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.93,
+       "widthM": 1.88,
+       "centre": 0.56
+      },
+      {
+       "atM": 7.7,
+       "widthM": 1.07,
+       "centre": 0.54
+      },
+      {
+       "atM": 7.25,
+       "widthM": 0.8,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1903, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1903, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.28 m = 4 storeys of 3.07 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.145 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236382",
+   "address": "Delistraat 21",
+   "builtYear": 1902,
+   "widthM": 9.23,
+   "eavesM": 15.06,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64544e",
+    "wallRaw": "#6f5d54",
+    "skyline": {
+     "eavesM": 19.15,
+     "eavesRow": 64,
+     "confidence": 0.57,
+     "crown": {
+      "widthM": 1.07,
+      "riseM": 1.6,
+      "topWidthM": 0.3,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.156,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.5,
+       "widthM": 1.05,
+       "centre": 0.15
+      },
+      {
+       "atM": 10.2,
+       "widthM": 0.97,
+       "centre": 0.77
+      },
+      {
+       "atM": 7.57,
+       "widthM": 1.07,
+       "centre": 0.14
+      },
+      {
+       "atM": 7.2,
+       "widthM": 0.93,
+       "centre": 0.8
+      },
+      {
+       "atM": 6.9,
+       "widthM": 0.9,
+       "centre": 0.8
+      },
+      {
+       "atM": 4.72,
+       "widthM": 1.1,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 9.23 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 9.23 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.06 m = 4 storeys of 3.77 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.132 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012082559",
+   "address": "Delistraat 23",
+   "builtYear": 1902,
+   "widthM": 11.77,
+   "eavesM": 10.96,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d4f46",
+    "wallRaw": "#65554c",
+    "skyline": {
+     "eavesM": 17.4,
+     "eavesRow": 134,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 2.92,
+      "riseM": 2.95,
+      "topWidthM": 0.75,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.18,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.2,
+       "widthM": 1.38,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1902, type 1910-1914; frontage 11.77 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1902, type 1910-1914",
+     "frontage 11.77 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 10.96 m = 4 storeys of 2.74 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.136 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

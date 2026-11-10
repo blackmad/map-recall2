@@ -1,0 +1,1471 @@
+{
+ "face": "djambi-1-35",
+ "street": "Djambistraat",
+ "library": "indische-buurt",
+ "stripDate": "2019-12-18",
+ "seconds": 21.93,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "djambi-1-35-r1",
+   "pands": [
+    "0363100012149516",
+    "0363100012104592",
+    "0363100012131961",
+    "0363100012100535",
+    "0363100012110582",
+    "0363100012099261",
+    "0363100012129720",
+    "0363100012077761",
+    "0363100012072833",
+    "0363100012108617",
+    "0363100012117530",
+    "0363100012095414"
+   ],
+   "passed": false,
+   "triangles": 18279
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012065784",
+   "address": "Djambistraat 1",
+   "builtYear": 1913,
+   "widthM": 8.83,
+   "eavesM": 13.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#604c46",
+    "wallRaw": "#5f4e48",
+    "skyline": {
+     "eavesM": 14.25,
+     "eavesRow": 161,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.07,
+      "topWidthM": 0.33,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.38,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.68,
+       "widthM": 0.82,
+       "centre": 0.66
+      },
+      {
+       "atM": 4.82,
+       "widthM": 1.07,
+       "centre": 0.88
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1913-arched-pair-dormer: frontage 8.83 m, type 5-6.4 m)",
+   "best": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 8.83 m, type 5-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.01 m = 4 storeys of 3.25 m vs the type's 3.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.77 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113498",
+   "address": "Djambistraat 3",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 13.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c4a43",
+    "wallRaw": "#5f4d47",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 112,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 1.25,
+      "topWidthM": 0.28,
+      "centre": 0.05
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.9,
+       "widthM": 0.82,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.062 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.32 vs photo 0.52)",
+   "likeness": {
+    "pandId": "0363100012113498",
+    "ncc": 0.062,
+    "nccRaw": 0.062,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.32 vs photo 0.52"
+    ],
+    "wall": {
+     "photo": "#5e4b44",
+     "model": "#765f56",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.229
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.062,
+    "indisch-1913-arched-pair-dormer": 0.226
+   }
+  },
+  {
+   "pandId": "0363100012149516",
+   "address": "Djambistraat 5",
+   "builtYear": 1913,
+   "widthM": 5.37,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 5.01,
+    "toM": 5.36,
+    "depthM": 0.31,
+    "centre": 0.967,
+    "lineRD": [
+     [
+      124410.766125,
+      486488.563
+     ],
+     [
+      124411.109125,
+      486483.51700000005
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#614d46",
+    "wallRaw": "#614f49",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 138,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 2.15,
+      "riseM": 3.25,
+      "topWidthM": 0.53,
+      "centre": 0.76
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.033,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#614d46",
+     "evidence": "strip 2019-12-18 span 618-833: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012149516",
+    "ncc": 0.281,
+    "nccRaw": 0.281,
+    "shiftM": [
+     0.2,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.33 vs photo 0.56"
+    ],
+    "wall": {
+     "photo": "#79635b",
+     "model": "#7b6259",
+     "dL": 0
+    },
+    "glazing": {
+     "photo": 0.56,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.523
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.278,
+    "indisch-1913-arched-pair-dormer~m": 0.335
+   }
+  },
+  {
+   "pandId": "0363100012104592",
+   "address": "Djambistraat 7",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 13.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#55433c",
+    "wallRaw": "#5a4942",
+    "skyline": {
+     "eavesM": 13.7,
+     "eavesRow": 183,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.7,
+      "riseM": 2.3,
+      "topWidthM": 0.28,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#55433c",
+     "evidence": "strip 2019-12-18 span 833-1073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012104592",
+    "ncc": 0.221,
+    "nccRaw": 0.221,
+    "shiftM": [
+     0.4,
+     -0.3
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17"
+    ],
+    "wall": {
+     "photo": "#58463e",
+     "model": "#70594f",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.4,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.418
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.235,
+    "indisch-1913-arched-pair-dormer": 0.345
+   }
+  },
+  {
+   "pandId": "0363100012131961",
+   "address": "Djambistraat 9",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4942",
+    "wallRaw": "#604e47",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 205,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 2.42,
+      "topWidthM": 0.7,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#5b4942",
+     "evidence": "strip 2019-12-18 span 1073-1313: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012131961",
+    "ncc": 0.515,
+    "nccRaw": 0.515,
+    "shiftM": [
+     -0.05,
+     -0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5c4942",
+     "model": "#755e55",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.574
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.515,
+    "indisch-1913-arched-pair-dormer~m": 0.29
+   }
+  },
+  {
+   "pandId": "0363100012100535",
+   "address": "Djambistraat 11",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4943",
+    "wallRaw": "#5f4d46",
+    "skyline": {
+     "eavesM": 13.18,
+     "eavesRow": 204,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.4,
+      "topWidthM": 0.63,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#5b4943",
+     "evidence": "strip 2019-12-18 span 1313-1533: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 131961",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012100535",
+    "ncc": 0.55,
+    "nccRaw": 0.55,
+    "shiftM": [
+     -0.4,
+     -0.2
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5c4a43",
+     "model": "#755e56",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.635
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.553,
+    "indisch-1913-arched-pair-dormer": 0.084
+   }
+  },
+  {
+   "pandId": "0363100012110582",
+   "address": "Djambistraat 13",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 12.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4842",
+    "wallRaw": "#5e4c46",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 205,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 3.35,
+      "riseM": 5.12,
+      "topWidthM": 0.5,
+      "centre": 0.67
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.011,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#5a4842",
+     "evidence": "strip 2019-12-18 span 1533-1753: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012110582",
+    "ncc": 0.526,
+    "nccRaw": 0.526,
+    "shiftM": [
+     -0.15,
+     -0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5b4943",
+     "model": "#745d55",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.665
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.543,
+    "indisch-1913-arched-pair-dormer~m": 0.46
+   }
+  },
+  {
+   "pandId": "0363100012099261",
+   "address": "Djambistraat 15",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#594840",
+    "wallRaw": "#5e4c45",
+    "skyline": {
+     "eavesM": 13.88,
+     "eavesRow": 176,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 3.48,
+      "riseM": 4.4,
+      "topWidthM": 0.05,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#594840",
+     "evidence": "strip 2019-12-18 span 1753-1973: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 110582",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012099261",
+    "ncc": 0.535,
+    "nccRaw": 0.535,
+    "shiftM": [
+     -0.2,
+     -0.2
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5b4942",
+     "model": "#745e53",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.628
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.538,
+    "indisch-1913-arched-pair-dormer": 0.085
+   }
+  },
+  {
+   "pandId": "0363100012129720",
+   "address": "Djambistraat 17",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 12.76,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d4c45",
+    "wallRaw": "#61504a",
+    "skyline": {
+     "eavesM": 13.07,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.15,
+      "riseM": 3.05,
+      "topWidthM": 0.15,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#5d4c45",
+     "evidence": "strip 2019-12-18 span 1973-2193: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 099261",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012129720",
+    "ncc": 0.502,
+    "nccRaw": 0.502,
+    "shiftM": [
+     0.1,
+     -0.15
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5e4c46",
+     "model": "#776158",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.677
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.511,
+    "indisch-1913-arched-pair-dormer~m": 0.241
+   }
+  },
+  {
+   "pandId": "0363100012077761",
+   "address": "Djambistraat 19",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c4b45",
+    "wallRaw": "#604f49",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 136,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.55,
+      "riseM": 2.6,
+      "topWidthM": 0.15,
+      "centre": 0.95
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.008,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#5c4b45",
+     "evidence": "strip 2019-12-18 span 2193-2413: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012077761",
+    "ncc": 0.534,
+    "nccRaw": 0.534,
+    "shiftM": [
+     0,
+     -0.2
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5c4b45",
+     "model": "#766058",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.589
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.534,
+    "indisch-1913-arched-pair-dormer": 0.257
+   }
+  },
+  {
+   "pandId": "0363100012072833",
+   "address": "Djambistraat 21",
+   "builtYear": 1913,
+   "widthM": 5.51,
+   "eavesM": 12.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#56453d",
+    "wallRaw": "#5d4d45",
+    "skyline": {
+     "eavesM": 13.32,
+     "eavesRow": 198,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 3.15,
+      "topWidthM": 0.1,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.015,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#56453d",
+     "evidence": "strip 2019-12-18 span 2413-2633: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 077761",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012072833",
+    "ncc": 0.447,
+    "nccRaw": 0.447,
+    "shiftM": [
+     0.2,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#58473f",
+     "model": "#715b50",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.4,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.635
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.451,
+    "indisch-1913-arched-pair-dormer~m": 0.084
+   }
+  },
+  {
+   "pandId": "0363100012108617",
+   "address": "Djambistraat 23",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 12.66,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#65524b",
+    "wallRaw": "#63514b",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 205,
+     "confidence": 0.86,
+     "crown": {
+      "widthM": 2.95,
+      "riseM": 4.72,
+      "topWidthM": 0.13,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.023,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.86,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#65524b",
+     "evidence": "strip 2019-12-18 span 2633-2853: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012108617",
+    "ncc": 0.52,
+    "nccRaw": 0.52,
+    "shiftM": [
+     0.15,
+     -0.25
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#5d4b44",
+     "model": "#7e665e",
+     "dL": 0.116
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.631
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.526,
+    "indisch-1913-arched-pair-dormer": 0.415
+   }
+  },
+  {
+   "pandId": "0363100012117530",
+   "address": "Djambistraat 25",
+   "builtYear": 1913,
+   "widthM": 5.1,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#614e47",
+    "wallRaw": "#62514c",
+    "skyline": {
+     "eavesM": 13.85,
+     "eavesRow": 177,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 3.7,
+      "topWidthM": 0.07,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 0.88,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#614e47",
+     "evidence": "strip 2019-12-18 span 2869-3073: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 108617",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012117530",
+    "ncc": 0.299,
+    "nccRaw": 0.299,
+    "shiftM": [
+     0.4,
+     -0.2
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.32 vs photo 0.46"
+    ],
+    "wall": {
+     "photo": "#5a4943",
+     "model": "#7b635a",
+     "dL": 0.11
+    },
+    "glazing": {
+     "photo": 0.46,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.458
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.304,
+    "indisch-1913-arched-pair-dormer~m": 0.032
+   }
+  },
+  {
+   "pandId": "0363100012095414",
+   "address": "Djambistraat 27",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 12.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#65514b",
+    "wallRaw": "#63524c",
+    "skyline": {
+     "eavesM": 13.75,
+     "eavesRow": 181,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 3.95,
+      "topWidthM": 0.47,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.038,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.88,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#65514b",
+     "evidence": "strip 2019-12-18 span 3073-3313: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012095414",
+    "ncc": 0.239,
+    "nccRaw": 0.239,
+    "shiftM": [
+     0.4,
+     -0.3
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.441 < 0.45"
+    ],
+    "wall": {
+     "photo": "#5d4b45",
+     "model": "#7e655e",
+     "dL": 0.114
+    },
+    "glazing": {
+     "photo": 0.41,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.441
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.245,
+    "indisch-1913-arched-pair-dormer": 0.329
+   }
+  },
+  {
+   "pandId": "0363100012145454",
+   "address": "Djambistraat 29",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 12.76,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 6,
+    "toM": 6,
+    "depthM": 0.25,
+    "centre": 1,
+    "lineRD": [
+     [
+      124411.467125,
+      486421.2
+     ],
+     [
+      124411.721125,
+      486416.324
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#7b645d",
+    "wallRaw": "#604f4a",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 143,
+     "confidence": 0.88,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 3.57,
+      "topWidthM": 0.35,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.08,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.63,
+       "widthM": 0.88,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.034 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.33 vs photo 0.52; columns 3 vs photo 7)",
+   "likeness": {
+    "pandId": "0363100012145454",
+    "ncc": 0.034,
+    "nccRaw": 0.034,
+    "shiftM": [
+     -0.35,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.33 vs photo 0.52",
+     "columns 3 vs photo 7"
+    ],
+    "wall": {
+     "photo": "#7a625d",
+     "model": "#91766e",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 7,
+     "model": 3
+    },
+    "iou": 0.303
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.034,
+    "indisch-1913-arched-pair-dormer~m": 0.048
+   }
+  },
+  {
+   "pandId": "0363100012089626",
+   "address": "Djambistraat 31",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 12.78,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0.18,
+    "depthM": 0.31,
+    "centre": 0.015,
+    "lineRD": [
+     [
+      124411.80112500001,
+      486414.294
+     ],
+     [
+      124411.59212500001,
+      486409.2
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#83655b",
+    "wallRaw": "#594944",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 142,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 1.67,
+      "topWidthM": 0.33,
+      "centre": 0.09
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.023,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC -0.046 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.43 mean 0.32 vs photo 0.67; wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.20 darker than the model's in shade or overcast light)",
+   "likeness": {
+    "pandId": "0363100012089626",
+    "ncc": -0.046,
+    "nccRaw": -0.046,
+    "shiftM": [
+     0.2,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.43 mean 0.32 vs photo 0.67",
+     "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.20 darker than the model's in shade or overcast light"
+    ],
+    "wall": {
+     "photo": "#5b4842",
+     "model": "#99776c",
+     "dL": 0.204
+    },
+    "glazing": {
+     "photo": 0.67,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.333
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": -0.046,
+    "indisch-1913-arched-pair-dormer": 0.082
+   }
+  }
+ ]
+}

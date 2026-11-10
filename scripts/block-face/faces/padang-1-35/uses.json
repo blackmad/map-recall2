@@ -1,0 +1,203 @@
+{
+ "street": "Padangstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012131518",
+   "addresses": [
+    "Padangstraat 1",
+    "Padangstraat 1C",
+    "Padangstraat 1B",
+    "Padangstraat 3",
+    "Padangstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Padangstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000770349"
+    },
+    {
+     "address": "Padangstraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012090621"
+    },
+    {
+     "address": "Padangstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012090620"
+    },
+    {
+     "address": "Padangstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000770353"
+    },
+    {
+     "address": "Padangstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000770355"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154579",
+   "addresses": [
+    "Padangstraat 7",
+    "Padangstraat 9",
+    "Padangstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Padangstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000770365"
+    },
+    {
+     "address": "Padangstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000770359"
+    },
+    {
+     "address": "Padangstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000770363"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095455",
+   "addresses": [
+    "Padangstraat 13",
+    "Padangstraat 15",
+    "Padangstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Padangstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000770375"
+    },
+    {
+     "address": "Padangstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000770369"
+    },
+    {
+     "address": "Padangstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000770373"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078916",
+   "addresses": [
+    "Padangstraat 19",
+    "Padangstraat 21",
+    "Padangstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Padangstraat 21",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000770383"
+    },
+    {
+     "address": "Padangstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000770385"
+    },
+    {
+     "address": "Padangstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000770379"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113411",
+   "addresses": [
+    "Padangstraat 25",
+    "Padangstraat 27",
+    "Padangstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Padangstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000770389"
+    },
+    {
+     "address": "Padangstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000770393"
+    },
+    {
+     "address": "Padangstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000770395"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130744",
+   "addresses": [
+    "Padangstraat 31",
+    "Padangstraat 33",
+    "Padangstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Padangstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000770399"
+    },
+    {
+     "address": "Padangstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000770403"
+    },
+    {
+     "address": "Padangstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000770405"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "street": "Javastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:27:15.455Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012150083",
+   "addresses": [
+    "Javastraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 113-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000689546"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103232",
+   "addresses": [
+    "Javastraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 115-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000689556"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

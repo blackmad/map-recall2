@@ -719,6 +719,13 @@ export interface FrontIntent {
    * pediment or pointed front) in the wall colour; the frame, bars and pane stay trim and glass.
    */
   dormerBody?: typeof DORMER_BODIES[number];
+  /**
+   * A measured window in a solid dormer front (Djambistraat 1-35, Soendastraat 2-36, 1913: a 2.0 m pointed brick dormer holding
+   * a 0.85 m two-light window over an apron): the window is `light` wide (0.4..2, clamped to leave 0.1 m posts) and sits on an
+   * apron of `apron` (0..1.2) in the dormer front, whatever the body material. Absent = the body's own front (timber: the
+   * TIMBER_DORMER apron and posts; brick/stone/trim: the opening is the whole front), byte-identical.
+   */
+  dormerWindow?: {light: number; apron: number};
   /** Several gables on one front: each `{from, to}` (inclusive bay axes) carries one crown of the front's gable type; eaves line between them. Not together with `crownAt`/`crownBays`. */
   crownGroups?: {from: number; to: number}[];
   /**
@@ -2098,6 +2105,12 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
     if (!z || typeof z !== 'object' || Array.isArray(z) || Object.keys(z).some(k => k !== 'reach') || (z.reach !== undefined && !(typeof z.reach === 'number' && z.reach >= 0.3 && z.reach <= 1.5))) problems.push(`${at}.dormerHoist: {reach?: 0.3..1.5 m in front of the dormer}`);
     if (!f.dormers || f.dormerStyle === 'box' || f.dormerStyle === 'flat') problems.push(`${at}.dormerHoist: needs plain, pediment, pointed or arched dormers`);
     if (f.hoist) problems.push(`${at}.dormerHoist: not with hoist (one beam per dormer replaces the facade beam)`);
+  }
+  if (f.dormerWindow !== undefined) {
+    const z = f.dormerWindow as {light?: unknown; apron?: unknown};
+    if (!f.dormers) problems.push(`${at}.dormerWindow: only with dormers`);
+    else if (f.roofFront === 'mansard') problems.push(`${at}.dormerWindow: not on a mansard`);
+    else if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['light', 'apron'].includes(k)) || !(typeof z.light === 'number' && z.light >= 0.4 && z.light <= 2) || !(typeof z.apron === 'number' && z.apron >= 0 && z.apron <= 1.2)) problems.push(`${at}.dormerWindow: {light 0.4..2, apron 0..1.2}`);
   }
   if (f.dormerSize !== undefined) {
     const z = f.dormerSize as {sill?: unknown; rise?: unknown; setback?: unknown};

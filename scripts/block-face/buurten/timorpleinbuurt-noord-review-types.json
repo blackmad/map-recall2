@@ -1,0 +1,62 @@
+{
+ "note": "Faces a reviewer restricted to some house types after reading the strip at full size (scripts/block-face/auto-place.ts, blockFace/reviewCrowns.ts typesForFace).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "face": "djambi-1-35",
+   "types": [
+    "indisch-1913-arched-pair-dormer"
+   ],
+   "reason": "Djambistraat 1-35 / Soendastraat 2-36 (2019-12-18 and 2020 strips, gridded): the arched pair over the paired doors and one brick dormer per front; the Javastraat mansard and the Lampong red-sash types match them on year, storeys and eaves alone"
+  },
+  {
+   "face": "soenda-2-36",
+   "types": [
+    "indisch-1913-arched-pair-dormer"
+   ],
+   "reason": "Djambistraat 1-35 / Soendastraat 2-36 (2019-12-18 and 2020 strips, gridded): the arched pair over the paired doors and one brick dormer per front; the Javastraat mansard and the Lampong red-sash types match them on year, storeys and eaves alone"
+  },
+  {
+   "face": "java-93-149",
+   "types": [
+    "indisch-1912-java-mansard-arches"
+   ],
+   "reason": "Javastraat 95-121 (2023-01-02 strip, gridded): arched windows, balcony door and a black mansard over shops; the pitched-roof Djambi and the red-sash types match on year and storeys alone"
+  },
+  {
+   "face": "madura-35-79",
+   "types": [
+    "indisch-1912-java-mansard-arches"
+   ],
+   "reason": "Javastraat 95-121 (2023-01-02 strip, gridded): arched windows, balcony door and a black mansard over shops; the pitched-roof Djambi and the red-sash types match on year and storeys alone"
+  },
+  {
+   "face": "sumatra-26-34",
+   "types": [
+    "indisch-1912-java-mansard-arches"
+   ],
+   "reason": "Javastraat 95-121 (2023-01-02 strip, gridded): arched windows, balcony door and a black mansard over shops; the pitched-roof Djambi and the red-sash types match on year and storeys alone"
+  },
+  {
+   "face": "lampong-2-20",
+   "types": [
+    "indisch-1914-red-sash-pairs"
+   ],
+   "reason": "Lampongstraat 2-20 / Borneostraat 7-27 (2025-09-26, 2023-01-02 strips, gridded): four cream-framed axes in pairs, double white door, flat dormer; mirror pairs about the party wall"
+  },
+  {
+   "face": "borneo-7-27",
+   "types": [
+    "indisch-1914-red-sash-pairs"
+   ],
+   "reason": "Lampongstraat 2-20 / Borneostraat 7-27 (2025-09-26, 2023-01-02 strips, gridded): four cream-framed axes in pairs, double white door, flat dormer; mirror pairs about the party wall"
+  },
+  {
+   "face": "djambi-38-46",
+   "types": [
+    "indisch-1914-red-sash-pairs"
+   ],
+   "reason": "Lampongstraat 2-20 / Borneostraat 7-27 (2025-09-26, 2023-01-02 strips, gridded): four cream-framed axes in pairs, double white door, flat dormer; mirror pairs about the party wall"
+  }
+ ]
+}

@@ -1,0 +1,1812 @@
+{
+ "street": "Bankastraat",
+ "seed": "0363100012143434",
+ "members": [
+  "0363100012086581",
+  "0363100012073492",
+  "0363100012161436",
+  "0363100012084055",
+  "0363100012158898",
+  "0363100012163800",
+  "0363100012156404",
+  "0363100012166460",
+  "0363100012155981",
+  "0363100012160166",
+  "0363100012161683",
+  "0363100012239390",
+  "0363100012143434"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012086581 (face continues: 117547 143219 112828 108012 120446 097709 114510)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012161026 33.4 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061834",
+   "reason": "frontage 40.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012062525",
+   "reason": "sightline to Bankastraat crosses 0363100012103695"
+  },
+  {
+   "pandId": "0363100012062668",
+   "reason": "frontage 48.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012063065",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012063442",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012064141",
+   "reason": "frontage 195.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012067136",
+   "reason": "sightline to Bankastraat crosses 0363100012117241"
+  },
+  {
+   "pandId": "0363100012067627",
+   "reason": "frontage 77.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012067912",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012068160",
+   "reason": "frontage 35.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012069385",
+   "reason": "frontage 39.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012069540",
+   "reason": "frontage 68.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012070112",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012070857",
+   "reason": "frontage 79.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012071940",
+   "reason": "frontage 41.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012074063",
+   "reason": "frontage 117.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012074801",
+   "reason": "frontage 103.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012075282",
+   "reason": "frontage 195.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012075745",
+   "reason": "frontage 36.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012075855",
+   "reason": "frontage 195.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012076537",
+   "reason": "frontage 137.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012076648",
+   "reason": "frontage 93.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012078037",
+   "reason": "frontage 31.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012079478",
+   "reason": "frontage 87.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012081210",
+   "reason": "frontage 118.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012081591",
+   "reason": "sightline to Bankastraat crosses 0363100012117547"
+  },
+  {
+   "pandId": "0363100012082559",
+   "reason": "frontage 65.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012083849",
+   "reason": "frontage 117.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012084463",
+   "reason": "frontage 65.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012086187",
+   "reason": "frontage 65.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012088199",
+   "reason": "frontage 120.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012089653",
+   "reason": "sightline to Bankastraat crosses 0363100012062525"
+  },
+  {
+   "pandId": "0363100012091463",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012092016",
+   "reason": "frontage 88.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012093210",
+   "reason": "frontage 117.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012093447",
+   "reason": "frontage 82.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012093892",
+   "reason": "frontage 65.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012094808",
+   "reason": "frontage 44.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012095283",
+   "reason": "frontage 66.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012098294",
+   "reason": "frontage 162.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012099836",
+   "reason": "frontage 49.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012099854",
+   "reason": "frontage 65.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012100512",
+   "reason": "frontage 66.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012103589",
+   "reason": "frontage 66.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012103647",
+   "reason": "frontage 93.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012103858",
+   "reason": "frontage 67.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012104596",
+   "reason": "frontage 37.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012104668",
+   "reason": "frontage 90.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012105391",
+   "reason": "frontage 65.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012106733",
+   "reason": "frontage 51.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012106911",
+   "reason": "frontage 90.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012107098",
+   "reason": "frontage 35.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012107875",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012108874",
+   "reason": "frontage 109.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012109720",
+   "reason": "frontage 195.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012109925",
+   "reason": "frontage 76.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012110061",
+   "reason": "frontage 65.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012110087",
+   "reason": "frontage 36.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012111692",
+   "reason": "frontage 36.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012112631",
+   "reason": "frontage 79.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012114339",
+   "reason": "frontage 120.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012115931",
+   "reason": "frontage 35.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012116382",
+   "reason": "frontage 73.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012116648",
+   "reason": "frontage 82.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012117388",
+   "reason": "frontage 65.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012118382",
+   "reason": "frontage 37.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012119175",
+   "reason": "frontage 30.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012119301",
+   "reason": "frontage 117.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012119955",
+   "reason": "frontage 50.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012120221",
+   "reason": "frontage 86.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012120631",
+   "reason": "frontage 117.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012121308",
+   "reason": "frontage 140.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012121673",
+   "reason": "frontage 38.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012121935",
+   "reason": "frontage 67.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012122126",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012123220",
+   "reason": "frontage 71.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012123386",
+   "reason": "frontage 117.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012123537",
+   "reason": "frontage 65.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012123747",
+   "reason": "frontage 37.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012124208",
+   "reason": "frontage 35.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012124656",
+   "reason": "frontage 99.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012125662",
+   "reason": "frontage 47.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012126493",
+   "reason": "frontage 90.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012126786",
+   "reason": "frontage 117.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012127656",
+   "reason": "frontage 65.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012128833",
+   "reason": "frontage 76.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012128905",
+   "reason": "frontage 195.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012129388",
+   "reason": "frontage 86.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012132796",
+   "reason": "frontage 91.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012132944",
+   "reason": "frontage 52.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012133527",
+   "reason": "frontage 90.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012133669",
+   "reason": "frontage 84.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012134187",
+   "reason": "frontage 96.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012135028",
+   "reason": "frontage 82.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012135082",
+   "reason": "frontage 147.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012135662",
+   "reason": "frontage 195.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012137632",
+   "reason": "frontage 150.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012137665",
+   "reason": "frontage 37.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012137853",
+   "reason": "frontage 37.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012137879",
+   "reason": "frontage 195.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012139300",
+   "reason": "frontage 180.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012139551",
+   "reason": "frontage 38.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012139587",
+   "reason": "frontage 117.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012139830",
+   "reason": "frontage 100.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012140332",
+   "reason": "frontage 102.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012140728",
+   "reason": "frontage 91.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012140805",
+   "reason": "frontage 36.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012140935",
+   "reason": "frontage 195.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012141428",
+   "reason": "frontage 30.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012142289",
+   "reason": "frontage 82.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012142728",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012144166",
+   "reason": "frontage 65.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012144327",
+   "reason": "frontage 36.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012145344",
+   "reason": "frontage 195.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012145563",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012145829",
+   "reason": "frontage 90.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012146568",
+   "reason": "frontage 37.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012147159",
+   "reason": "frontage 66.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012147446",
+   "reason": "frontage 76.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012147735",
+   "reason": "frontage 158.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012149400",
+   "reason": "frontage 93.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012150269",
+   "reason": "frontage 195.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012150462",
+   "reason": "frontage 38.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012151222",
+   "reason": "frontage 56.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012151577",
+   "reason": "frontage 85.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012152417",
+   "reason": "frontage 103.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012152587",
+   "reason": "frontage 202.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012152620",
+   "reason": "frontage 135.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012152663",
+   "reason": "frontage 68.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012152720",
+   "reason": "frontage 104.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012152752",
+   "reason": "frontage 94.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012152916",
+   "reason": "frontage 38.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012152938",
+   "reason": "frontage 139.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153157",
+   "reason": "frontage 157.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153180",
+   "reason": "frontage 212.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153181",
+   "reason": "frontage 83.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153224",
+   "reason": "frontage 77.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153404",
+   "reason": "frontage 97.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153445",
+   "reason": "frontage 98.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153604",
+   "reason": "frontage 100.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153633",
+   "reason": "frontage 40.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153727",
+   "reason": "frontage 65.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153798",
+   "reason": "frontage 36.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012153956",
+   "reason": "sightline to Bankastraat crosses 0363100012117547"
+  },
+  {
+   "pandId": "0363100012154122",
+   "reason": "frontage 195.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012154130",
+   "reason": "frontage 113.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012154152",
+   "reason": "sightline to Bankastraat crosses 0363100012165886"
+  },
+  {
+   "pandId": "0363100012154207",
+   "reason": "frontage 117.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012154266",
+   "reason": "frontage 173.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012154338",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012154505",
+   "reason": "frontage 65.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012155479",
+   "reason": "frontage 99.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012155617",
+   "reason": "frontage 69.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012155622",
+   "reason": "frontage 199.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012155672",
+   "reason": "frontage 193.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012155800",
+   "reason": "frontage 110.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012155855",
+   "reason": "frontage 38.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012155944",
+   "reason": "frontage 205.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156012",
+   "reason": "frontage 210.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156032",
+   "reason": "frontage 38.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156109",
+   "reason": "frontage 91.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156240",
+   "reason": "frontage 121.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156328",
+   "reason": "frontage 154.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156431",
+   "reason": "frontage 135.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156603",
+   "reason": "frontage 122.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156651",
+   "reason": "frontage 158.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156701",
+   "reason": "frontage 38.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156762",
+   "reason": "frontage 199.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156806",
+   "reason": "frontage 141.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156865",
+   "reason": "frontage 38.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156954",
+   "reason": "frontage 93.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012156955",
+   "reason": "frontage 65.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157248",
+   "reason": "frontage 198.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157278",
+   "reason": "frontage 102.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157309",
+   "reason": "frontage 190.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157328",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012157361",
+   "reason": "frontage 137.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157366",
+   "reason": "frontage 70.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157520",
+   "reason": "frontage 135.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157682",
+   "reason": "frontage 214.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157786",
+   "reason": "frontage 78.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157865",
+   "reason": "frontage 173.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012157913",
+   "reason": "frontage 197.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158155",
+   "reason": "frontage 104.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158166",
+   "reason": "frontage 38.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158220",
+   "reason": "frontage 92.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158528",
+   "reason": "frontage 65.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158549",
+   "reason": "frontage 65.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158614",
+   "reason": "frontage 206.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158624",
+   "reason": "frontage 98.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158638",
+   "reason": "frontage 202.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158691",
+   "reason": "frontage 98.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158694",
+   "reason": "frontage 152.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158721",
+   "reason": "frontage 138.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158741",
+   "reason": "frontage 135.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158806",
+   "reason": "frontage 73.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012158854",
+   "reason": "frontage 146.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159033",
+   "reason": "frontage 85.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159144",
+   "reason": "frontage 195.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159187",
+   "reason": "frontage 73.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159197",
+   "reason": "frontage 115.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159398",
+   "reason": "frontage 156.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159432",
+   "reason": "frontage 37.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159475",
+   "reason": "frontage 136.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159581",
+   "reason": "frontage 38.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159602",
+   "reason": "frontage 38.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159670",
+   "reason": "frontage 98.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012159846",
+   "reason": "frontage 149.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012160203",
+   "reason": "frontage 208.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012160251",
+   "reason": "frontage 108.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012160256",
+   "reason": "frontage 201.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012160632",
+   "reason": "frontage 38.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012160811",
+   "reason": "frontage 115.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012160849",
+   "reason": "frontage 198.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012160862",
+   "reason": "frontage 65.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012160942",
+   "reason": "frontage 65.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012160973",
+   "reason": "frontage 98.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012161028",
+   "reason": "frontage 204.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012161364",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012161587",
+   "reason": "frontage 65.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012161628",
+   "reason": "frontage 100.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012161647",
+   "reason": "frontage 87.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012161665",
+   "reason": "frontage 38.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012161748",
+   "reason": "frontage 75.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012161766",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012161846",
+   "reason": "frontage 218.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012161879",
+   "reason": "frontage 135.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012161923",
+   "reason": "frontage 203.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162053",
+   "reason": "frontage 38.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162353",
+   "reason": "frontage 72.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162390",
+   "reason": "frontage 178.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162405",
+   "reason": "frontage 135.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162407",
+   "reason": "frontage 174.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162445",
+   "reason": "frontage 98.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162548",
+   "reason": "frontage 225.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162667",
+   "reason": "frontage 101.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162735",
+   "reason": "frontage 135.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012162917",
+   "reason": "frontage 210.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163009",
+   "reason": "frontage 71.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163032",
+   "reason": "frontage 175.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163107",
+   "reason": "frontage 90.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163220",
+   "reason": "frontage 135.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163243",
+   "reason": "frontage 137.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163270",
+   "reason": "frontage 135.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163348",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012163445",
+   "reason": "frontage 98.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163709",
+   "reason": "frontage 38.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163748",
+   "reason": "frontage 74.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163782",
+   "reason": "frontage 142.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163862",
+   "reason": "frontage 200.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163975",
+   "reason": "frontage 102.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012163982",
+   "reason": "frontage 89.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164008",
+   "reason": "frontage 71.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164011",
+   "reason": "frontage 38.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164080",
+   "reason": "frontage 70.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164083",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012164098",
+   "reason": "frontage 135.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164155",
+   "reason": "frontage 87.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164161",
+   "reason": "frontage 215.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164292",
+   "reason": "frontage 207.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164399",
+   "reason": "frontage 176.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164513",
+   "reason": "frontage 114.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164515",
+   "reason": "frontage 75.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164534",
+   "reason": "frontage 95.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164660",
+   "reason": "frontage 87.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164675",
+   "reason": "frontage 109.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164783",
+   "reason": "frontage 196.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012164919",
+   "reason": "frontage 142.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012165200",
+   "reason": "frontage 69.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012165376",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012165390",
+   "reason": "frontage 65.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012165406",
+   "reason": "frontage 176.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012165443",
+   "reason": "frontage 138.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012165652",
+   "reason": "frontage 143.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012165708",
+   "reason": "frontage 195.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012165715",
+   "reason": "frontage 177.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012165831",
+   "reason": "frontage 160.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012165935",
+   "reason": "frontage 69.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166139",
+   "reason": "frontage 121.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166153",
+   "reason": "frontage 136.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166239",
+   "reason": "frontage 118.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166312",
+   "reason": "frontage 172.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166331",
+   "reason": "frontage 38.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166496",
+   "reason": "frontage 68.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166688",
+   "reason": "frontage 65.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166721",
+   "reason": "frontage 81.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166875",
+   "reason": "frontage 76.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012166898",
+   "reason": "frontage 41.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012167118",
+   "reason": "no frontage on Bankastraat: No footprint edge faces Bankastraat"
+  },
+  {
+   "pandId": "0363100012167133",
+   "reason": "frontage 211.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012167145",
+   "reason": "frontage 72.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012167198",
+   "reason": "frontage 101.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012167240",
+   "reason": "frontage 153.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012167320",
+   "reason": "frontage 136.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012185545",
+   "reason": "sightline to Bankastraat crosses 0363100012086581"
+  },
+  {
+   "pandId": "0363100012186474",
+   "reason": "frontage 35.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012186687",
+   "reason": "sightline to Bankastraat crosses 0363100012161436"
+  },
+  {
+   "pandId": "0363100012186766",
+   "reason": "sightline to Bankastraat crosses 0363100012161726"
+  },
+  {
+   "pandId": "0363100012186806",
+   "reason": "frontage 80.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012187779",
+   "reason": "frontage 97.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012190002",
+   "reason": "frontage 89.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012190639",
+   "reason": "sightline to Bankastraat crosses 0363100012117157"
+  },
+  {
+   "pandId": "0363100012192495",
+   "reason": "frontage 83.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012193543",
+   "reason": "frontage 88.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012194183",
+   "reason": "frontage 87.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012194332",
+   "reason": "frontage 87.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012195630",
+   "reason": "frontage 107.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012196256",
+   "reason": "frontage 151.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012200324",
+   "reason": "sightline to Bankastraat crosses 0363100012143219"
+  },
+  {
+   "pandId": "0363100012200325",
+   "reason": "sightline to Bankastraat crosses 0363100012143219"
+  },
+  {
+   "pandId": "0363100012200422",
+   "reason": "sightline to Bankastraat crosses 0363100012097709"
+  },
+  {
+   "pandId": "0363100012201499",
+   "reason": "sightline to Bankastraat crosses 0363100012160050"
+  },
+  {
+   "pandId": "0363100012202944",
+   "reason": "sightline to Bankastraat crosses 0363100012108012"
+  },
+  {
+   "pandId": "0363100012205383",
+   "reason": "sightline to Bankastraat crosses 0363100012112828"
+  },
+  {
+   "pandId": "0363100012205384",
+   "reason": "sightline to Bankastraat crosses 0363100012112828"
+  },
+  {
+   "pandId": "0363100012205398",
+   "reason": "frontage 154.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012205508",
+   "reason": "frontage 170.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012205851",
+   "reason": "frontage 33.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012206112",
+   "reason": "sightline to Bankastraat crosses 0363100012152591"
+  },
+  {
+   "pandId": "0363100012207223",
+   "reason": "frontage 79.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012207341",
+   "reason": "frontage 152.5 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012207961",
+   "reason": "sightline to Bankastraat crosses 0363100012112828"
+  },
+  {
+   "pandId": "0363100012207962",
+   "reason": "sightline to Bankastraat crosses 0363100012143219"
+  },
+  {
+   "pandId": "0363100012207963",
+   "reason": "sightline to Bankastraat crosses 0363100012120446"
+  },
+  {
+   "pandId": "0363100012207999",
+   "reason": "frontage 89.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012208118",
+   "reason": "frontage 165.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012208413",
+   "reason": "sightline to Bankastraat crosses 0363100012086581"
+  },
+  {
+   "pandId": "0363100012212044",
+   "reason": "sightline to Bankastraat crosses 0363100012162736"
+  },
+  {
+   "pandId": "0363100012213325",
+   "reason": "sightline to Bankastraat crosses 0363100012108012"
+  },
+  {
+   "pandId": "0363100012213326",
+   "reason": "sightline to Bankastraat crosses 0363100012108012"
+  },
+  {
+   "pandId": "0363100012213327",
+   "reason": "sightline to Bankastraat crosses 0363100012108012"
+  },
+  {
+   "pandId": "0363100012214721",
+   "reason": "frontage 217.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012214722",
+   "reason": "frontage 217.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012215532",
+   "reason": "sightline to Bankastraat crosses 0363100012112828"
+  },
+  {
+   "pandId": "0363100012215533",
+   "reason": "sightline to Bankastraat crosses 0363100012112828"
+  },
+  {
+   "pandId": "0363100012215803",
+   "reason": "frontage 88.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012215913",
+   "reason": "frontage 217.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012216045",
+   "reason": "sightline to Bankastraat crosses 0363100012114510"
+  },
+  {
+   "pandId": "0363100012217983",
+   "reason": "frontage 91.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012219248",
+   "reason": "frontage 215.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012219570",
+   "reason": "frontage 86.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012222144",
+   "reason": "frontage 94.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012223428",
+   "reason": "sightline to Bankastraat crosses 0363100012152591"
+  },
+  {
+   "pandId": "0363100012223471",
+   "reason": "frontage 93.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012225201",
+   "reason": "sightline to Bankastraat crosses 0363100012073492"
+  },
+  {
+   "pandId": "0363100012225491",
+   "reason": "frontage 88.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012225608",
+   "reason": "sightline to Bankastraat crosses 0363100012120446"
+  },
+  {
+   "pandId": "0363100012227052",
+   "reason": "sightline to Bankastraat crosses 0363100012143219"
+  },
+  {
+   "pandId": "0363100012227053",
+   "reason": "sightline to Bankastraat crosses 0363100012143219"
+  },
+  {
+   "pandId": "0363100012227379",
+   "reason": "sightline to Bankastraat crosses 0363100012164378"
+  },
+  {
+   "pandId": "0363100012227581",
+   "reason": "sightline to Bankastraat crosses 0363100012114510"
+  },
+  {
+   "pandId": "0363100012228273",
+   "reason": "sightline to Bankastraat crosses 0363100012164378"
+  },
+  {
+   "pandId": "0363100012229482",
+   "reason": "frontage 214.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012229693",
+   "reason": "frontage 166.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012230151",
+   "reason": "frontage 103.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012231219",
+   "reason": "sightline to Bankastraat crosses 0363100012153019"
+  },
+  {
+   "pandId": "0363100012233868",
+   "reason": "frontage 32.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012234025",
+   "reason": "frontage 183.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012234153",
+   "reason": "frontage 89.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012234534",
+   "reason": "sightline to Bankastraat crosses 0363100012084055"
+  },
+  {
+   "pandId": "0363100012234545",
+   "reason": "frontage 118.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236009",
+   "reason": "frontage 88.2 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236050",
+   "reason": "frontage 100.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236094",
+   "reason": "frontage 135.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236343",
+   "reason": "frontage 139.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236382",
+   "reason": "frontage 65.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236410",
+   "reason": "frontage 170.0 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236589",
+   "reason": "frontage 196.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236599",
+   "reason": "frontage 151.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236694",
+   "reason": "frontage 145.1 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236709",
+   "reason": "frontage 182.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236762",
+   "reason": "frontage 108.6 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236930",
+   "reason": "frontage 90.9 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012236963",
+   "reason": "frontage 135.3 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012237049",
+   "reason": "frontage 87.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012237086",
+   "reason": "frontage 147.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012237094",
+   "reason": "frontage 87.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012237101",
+   "reason": "frontage 104.8 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012237168",
+   "reason": "frontage 171.4 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012237198",
+   "reason": "frontage 112.7 m from Bankastraat"
+  },
+  {
+   "pandId": "0363100012240920",
+   "reason": "sightline to Bankastraat crosses 0363100012161683"
+  },
+  {
+   "pandId": "0363100012077315",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117157",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117241",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120330",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127054",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143930",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152591",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152653",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153019",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156008",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157049",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158249",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158325",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158823",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160050",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160057",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160244",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160383",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160987",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161217",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161726",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162476",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162736",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162952",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164378",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164891",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165886",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166770",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167385",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253816",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012086581",
+   "alongM": -82.6,
+   "widthM": 6.12,
+   "eavesM": 12.43,
+   "roofMaxM": 18.43,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012073492",
+   "alongM": -76.48,
+   "widthM": 6.13,
+   "eavesM": 13.7,
+   "roofMaxM": 16.05,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161436",
+   "alongM": -70.65,
+   "widthM": 5.54,
+   "eavesM": 13.99,
+   "roofMaxM": 16.44,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012084055",
+   "alongM": -65.13,
+   "widthM": 5.49,
+   "eavesM": 14.38,
+   "roofMaxM": 19.03,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158898",
+   "alongM": -59.63,
+   "widthM": 5.52,
+   "eavesM": 16.78,
+   "roofMaxM": 16.83,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163800",
+   "alongM": -54.12,
+   "widthM": 5.49,
+   "eavesM": 14.15,
+   "roofMaxM": 16.85,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156404",
+   "alongM": -48.62,
+   "widthM": 5.51,
+   "eavesM": 14.2,
+   "roofMaxM": 16.87,
+   "storeys3dbag": 0,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166460",
+   "alongM": -43.09,
+   "widthM": 5.56,
+   "eavesM": 16.82,
+   "roofMaxM": 16.84,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155981",
+   "alongM": -37.6,
+   "widthM": 5.41,
+   "eavesM": 14.35,
+   "roofMaxM": 16.45,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160166",
+   "alongM": -32.19,
+   "widthM": 5.41,
+   "eavesM": 16.44,
+   "roofMaxM": 16.46,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161683",
+   "alongM": -26.77,
+   "widthM": 5.42,
+   "eavesM": 15.17,
+   "roofMaxM": 18.73,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012239390",
+   "alongM": -18.45,
+   "widthM": 11.23,
+   "eavesM": 13.97,
+   "roofMaxM": 16.79,
+   "storeys3dbag": 5,
+   "builtYear": 2011,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012143434",
+   "alongM": 0,
+   "widthM": 25.67,
+   "eavesM": 7.68,
+   "roofMaxM": 8.67,
+   "storeys3dbag": 0,
+   "builtYear": 1988,
+   "uncertainty": []
+  }
+ ]
+}

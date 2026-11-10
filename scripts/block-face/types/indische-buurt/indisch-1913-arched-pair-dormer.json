@@ -1,0 +1,159 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "indisch-1913-arched-pair-dormer",
+ "district": "indische-buurt",
+ "description": "Djambistraat 1-35 (BAG 1913): 5.5-6.0 m dark brick fronts of a 3.3 m ground storey and three 3.0 m upper storeys under a light gutter at 12.7 m; three axes per front, two tall white-framed windows with a top light and, on the door side against the party wall, one round-arched window that pairs with the neighbour's across the wall; the paired house doors stand under the arched pair; one pointed brick dormer with a small light per front on the steep tiled roof",
+ "fit": {
+  "widthM": [
+   5.0,
+   6.4
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1912,
+   1915
+  ],
+  "eavesM": [
+   12.2,
+   13.4
+  ],
+  "storeys3dbag": [
+   5
+  ],
+  "roof": "pitched",
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "stucco": false,
+  "balconies": false,
+  "mirrorForDoor": "right",
+  "note": "BAG 1913 on 16 of 16 Djambistraat 1-35 pands, eaves 12.6-13.1 m, ridge 15.5-16.1 m; the arched pair straddles the party wall so every second front is the mirror of the first (mirrorForDoor right: a door on the left is mirrored). The even side of Djambistraat (a low three-storey row) is a different design and fails the storey count"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "axisGrid": 3,
+  "bayWidths": [
+   2.1,
+   2.0,
+   1.4
+  ],
+  "bayFill": [
+   0.48,
+   0.5,
+   0.44
+  ],
+  "axisHeads": {
+   "2": {
+    "kind": "round",
+    "storeys": [
+     1,
+     2,
+     3
+    ]
+   }
+  },
+  "cornice": "simple",
+  "windows": "casement-toplight",
+  "storeyHeights": [
+   3.3,
+   3.0,
+   3.0,
+   3.3
+  ],
+  "windowHeights": [
+   0.63,
+   0.69,
+   0.69,
+   0.63
+  ],
+  "headLines": [
+   0.8,
+   0.79,
+   0.8,
+   0.72
+  ]
+ },
+ "crowns": {
+  "brick-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pointed",
+   "dormerBody": "brick",
+   "dormerSize": {
+    "sill": 0.25,
+    "rise": 2.2,
+    "setback": 0.3
+   },
+   "note": "Djambistraat 11-13: a pointed brick dormer 2.0 m wide over the tall pair, small light, apex 15.1 m over the 12.9 m gutter; the 0.85 m two-light window sits in the brick front on a 0.15 m apron (dormerWindow)",
+   "dormerWindow": {
+    "light": 0.85,
+    "apron": 0.15
+   }
+  },
+  "none": {
+   "gable": "cornice",
+   "note": "gutter only"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 2,
+   "note": "the house door under the arched window, at the party wall; paired with the neighbour's door"
+  }
+ },
+ "palettes": {
+  "dark-brown": {
+   "brick": "#5f4e48",
+   "frame": "#dfdad0",
+   "door": "#2a2622",
+   "stone": "#dfdad0",
+   "cornice": "#dfdad0"
+  }
+ },
+ "roof": {
+  "material": "red-tile"
+ },
+ "rhythm": {
+  "bays": "3 axes: window, window, arched window on the door side",
+  "identicalBays": "equal windows; the arched one narrower",
+  "windowsPerStorey": "ground: 2 windows + door | 1-3: 2 + arched",
+  "symmetry": "mirror pairs about the party wall",
+  "groundFloor": "paired house doors under the arched pair",
+  "signage": "none",
+  "roofline": "light gutter, a pointed brick dormer per front",
+  "photoRows": [
+   3,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "djambi-1-35",
+   "pands": [
+    "110582",
+    "099261",
+    "129720",
+    "077761"
+   ],
+   "citation": "strip.jpg 2019-12-18, 40 px/m, gridded: pand 5.5 m; window heads 2.63, 5.66, 8.69, 11.69 m (3.03 m pitch), sills 0.56, 3.59, 6.63, 9.63 m (windows 2.07 m tall, 1.0 m wide at 1.1, 3.1 m from the left edge); arched windows 0.62 m wide at 4.9 m, heads 5.9-6.1, 8.9-9.1, 11.9-12.1 m; gutter 12.7-12.9 m; dormer 2.0 m wide, apex 15.1 m; wall median #5f4e48 over 16 pands (palette-from-strip)"
+  }
+ ],
+ "schemaLimits": [
+  "the iron sill rails (low juliet balcony) under every upper window",
+  "the bracket row under the gutter",
+  "a pointed brick GABLE over two or three fronts (Djambistraat 1-5, 9-13) is drawn as the dormer"
+ ],
+ "notes": []
+}

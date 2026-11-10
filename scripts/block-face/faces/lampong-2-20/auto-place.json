@@ -1,0 +1,723 @@
+{
+ "face": "lampong-2-20",
+ "street": "Lampongstraat",
+ "library": "indische-buurt",
+ "stripDate": "2025-09-26",
+ "seconds": 10.51,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "lampong-2-20-r1",
+   "pands": [
+    "0363100012140561",
+    "0363100012150248",
+    "0363100012085260",
+    "0363100012064007",
+    "0363100012112381"
+   ],
+   "passed": true,
+   "triangles": 6947
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012109433",
+   "address": "Lampongstraat 20",
+   "builtYear": 1914,
+   "widthM": 8.5,
+   "eavesM": 12.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#777b7e",
+    "wallRaw": "#787a7c",
+    "skyline": {
+     "eavesM": 13.18,
+     "eavesRow": 182,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.17,
+      "topWidthM": 1.07,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.051,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1914-red-sash-pairs: frontage 8.5 m, type 5.6-7.2 m)",
+   "best": {
+    "type": "indisch-1914-red-sash-pairs",
+    "score": 0,
+    "veto": [
+     "frontage 8.5 m, type 5.6-7.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.84 m = 4 storeys of 3.21 m vs the type's 3.21 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.83 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.057 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012078026",
+   "address": "Lampongstraat 16",
+   "builtYear": 1914,
+   "widthM": 12,
+   "eavesM": 12.79,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#757a7b",
+    "wallRaw": "#78797a",
+    "skyline": {
+     "eavesM": 13.55,
+     "eavesRow": 167,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.17,
+      "topWidthM": 0.72,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.038,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1914-red-sash-pairs: frontage 12 m, type 5.6-7.2 m)",
+   "best": {
+    "type": "indisch-1914-red-sash-pairs",
+    "score": 0,
+    "veto": [
+     "frontage 12 m, type 5.6-7.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.79 m = 4 storeys of 3.2 m vs the type's 3.21 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.73 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.039 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012062429",
+   "address": "Lampongstraat 12",
+   "builtYear": 1914,
+   "widthM": 12,
+   "eavesM": 12.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#747878",
+    "wallRaw": "#7a7c7c",
+    "skyline": {
+     "eavesM": 14.7,
+     "eavesRow": 121,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.82,
+      "riseM": 1.85,
+      "topWidthM": 0.95,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.023,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1914-red-sash-pairs: frontage 12 m, type 5.6-7.2 m)",
+   "best": {
+    "type": "indisch-1914-red-sash-pairs",
+    "score": 0,
+    "veto": [
+     "frontage 12 m, type 5.6-7.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.84 m = 4 storeys of 3.21 m vs the type's 3.21 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.77 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.022 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012140561",
+   "address": "Lampongstraat 10",
+   "builtYear": 1914,
+   "widthM": 6,
+   "eavesM": 12.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c8183",
+    "wallRaw": "#7c7e80",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 125,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 0.75,
+      "topWidthM": 1.43,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7c8183",
+     "evidence": "strip 2025-09-26 span 1300-1540: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012140561",
+    "ncc": 0.424,
+    "nccRaw": 0.424,
+    "shiftM": [
+     -0.05,
+     -0.25
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.38 vs photo 0.59"
+    ],
+    "wall": {
+     "photo": "#7f7b7b",
+     "model": "#8e9394",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.534
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.424,
+    "indisch-1914-red-sash-pairs~m": 0.285
+   }
+  },
+  {
+   "pandId": "0363100012150248",
+   "address": "Lampongstraat 8",
+   "builtYear": 1914,
+   "widthM": 6,
+   "eavesM": 12.79,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e8485",
+    "wallRaw": "#818283",
+    "skyline": {
+     "eavesM": 13.63,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.72,
+      "topWidthM": 1.32,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.095,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7e8485",
+     "evidence": "strip 2025-09-26 span 1540-1780: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 085260",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012150248",
+    "ncc": 0.411,
+    "nccRaw": 0.411,
+    "shiftM": [
+     -0.15,
+     -0.15
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#7b8082",
+     "model": "#909596",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.557
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs~m": 0.411,
+    "indisch-1914-red-sash-pairs": 0.296
+   }
+  },
+  {
+   "pandId": "0363100012085260",
+   "address": "Lampongstraat 6",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b8083",
+    "wallRaw": "#7f8082",
+    "skyline": {
+     "eavesM": 13.63,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 2.5,
+      "topWidthM": 0.35,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.78,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7b8083",
+     "evidence": "strip 2025-09-26 span 1780-2032: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012085260",
+    "ncc": 0.355,
+    "nccRaw": 0.355,
+    "shiftM": [
+     0.35,
+     0
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.447 < 0.45"
+    ],
+    "wall": {
+     "photo": "#7c8184",
+     "model": "#8d9294",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.37,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.447
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.355,
+    "indisch-1914-red-sash-pairs~m": 0.408
+   }
+  },
+  {
+   "pandId": "0363100012064007",
+   "address": "Lampongstraat 4",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e8487",
+    "wallRaw": "#818286",
+    "skyline": {
+     "eavesM": 13.63,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.72,
+      "topWidthM": 1.15,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.032,
+    "structure": {
+     "bayWidthM": 0.88,
+     "bayCentre": 0.47,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7e8487",
+     "evidence": "strip 2025-09-26 span 2032-2284: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 085260",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012064007",
+    "ncc": 0.278,
+    "nccRaw": 0.278,
+    "shiftM": [
+     -0.4,
+     -0.05
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#817d7d",
+     "model": "#909598",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.42,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.463
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs~m": 0.278,
+    "indisch-1914-red-sash-pairs": 0.411
+   }
+  },
+  {
+   "pandId": "0363100012112381",
+   "address": "Lampongstraat 2",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.9,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a7f82",
+    "wallRaw": "#7d7d7f",
+    "skyline": {
+     "eavesM": 13.68,
+     "eavesRow": 162,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.07,
+      "topWidthM": 0.68,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.031,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.17,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#7a7f82",
+     "evidence": "strip 2025-09-26 span 2284-2536: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 064007",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012112381",
+    "ncc": 0.281,
+    "nccRaw": 0.281,
+    "shiftM": [
+     -0.05,
+     -0.05
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#847f7e",
+     "model": "#8c9194",
+     "dL": 0.059
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.502
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.281,
+    "indisch-1914-red-sash-pairs~m": 0.142
+   }
+  }
+ ]
+}

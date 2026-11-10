@@ -1,0 +1,825 @@
+{
+ "face": "borneo-7-27",
+ "street": "Borneostraat",
+ "library": "indische-buurt",
+ "stripDate": "2023-01-02",
+ "seconds": 20.88,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "borneo-7-27-r1",
+   "pands": [
+    "0363100012074710",
+    "0363100012090483",
+    "0363100012108761",
+    "0363100012145601",
+    "0363100012084255",
+    "0363100012133599",
+    "0363100012102480"
+   ],
+   "passed": true,
+   "triangles": 9810
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012068360",
+   "address": "Borneostraat 7",
+   "builtYear": 1914,
+   "widthM": 11.4,
+   "eavesM": 12.9,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5a51",
+    "wallRaw": "#6c5c53",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 160,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 3.6,
+      "riseM": 2.3,
+      "topWidthM": 0.63,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.095,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.7,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1914-red-sash-pairs: frontage 11.4 m, type 5.6-7.2 m)",
+   "best": {
+    "type": "indisch-1914-red-sash-pairs",
+    "score": 0,
+    "veto": [
+     "frontage 11.4 m, type 5.6-7.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.9 m = 4 storeys of 3.23 m vs the type's 3.21 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.07 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.087 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074710",
+   "address": "Borneostraat 13",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#837169",
+    "wallRaw": "#6a5a51",
+    "skyline": {
+     "eavesM": 15.5,
+     "eavesRow": 120,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 2.85,
+      "topWidthM": 0.63,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.112,
+    "structure": {
+     "bayWidthM": 0.85,
+     "bayCentre": 0.53,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#837169",
+     "evidence": "strip 2023-01-02 span 456-708: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012074710",
+    "ncc": 0.289,
+    "nccRaw": 0.289,
+    "shiftM": [
+     -0.05,
+     -0.25
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.37 vs photo 0.25"
+    ],
+    "wall": {
+     "photo": "#827069",
+     "model": "#96847c",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.379
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.289,
+    "indisch-1914-red-sash-pairs~m": 0.226
+   }
+  },
+  {
+   "pandId": "0363100012090483",
+   "address": "Borneostraat 15",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.79,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#816b63",
+    "wallRaw": "#5e4f46",
+    "skyline": {
+     "eavesM": 17,
+     "eavesRow": 60,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.5,
+      "topWidthM": 0.55,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.05,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#816b63",
+     "evidence": "strip 2023-01-02 span 708-960: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown flat-dormer (type default)",
+    "photo decides: indisch-1914-red-sash-pairs~m edge NCC 0.491 vs indisch-1914-red-sash-pairs 0.407"
+   ],
+   "likeness": {
+    "pandId": "0363100012090483",
+    "ncc": 0.491,
+    "nccRaw": 0.491,
+    "shiftM": [
+     -0.35,
+     -0.3
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.20",
+     "glazing storey band off by 0.25 mean 0.37 vs photo 0.55"
+    ],
+    "wall": {
+     "photo": "#5f5047",
+     "model": "#957e75",
+     "dL": 0.196
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.534
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.407,
+    "indisch-1914-red-sash-pairs~m": 0.491
+   }
+  },
+  {
+   "pandId": "0363100012108761",
+   "address": "Borneostraat 17",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#877164",
+    "wallRaw": "#6c5c52",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 108,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.7,
+      "topWidthM": 0.05,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.135,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.43,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#877164",
+     "evidence": "strip 2023-01-02 span 960-1212: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012108761",
+    "ncc": 0.447,
+    "nccRaw": 0.447,
+    "shiftM": [
+     -0.05,
+     -0.35
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18 mean 0.36 vs photo 0.50"
+    ],
+    "wall": {
+     "photo": "#847062",
+     "model": "#9a8477",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.5,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.584
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.447,
+    "indisch-1914-red-sash-pairs~m": 0.257
+   }
+  },
+  {
+   "pandId": "0363100012145601",
+   "address": "Borneostraat 19",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5a50",
+    "wallRaw": "#6b5b51",
+    "skyline": {
+     "eavesM": 15.1,
+     "eavesRow": 136,
+     "confidence": 0.5,
+     "crown": {
+      "widthM": 0.95,
+      "riseM": 3.4,
+      "topWidthM": 0.23,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0.6,
+     "bayCentre": 0.53,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#6a5a50",
+     "evidence": "strip 2023-01-02 span 1212-1464: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown flat-dormer (type default)",
+    "photo decides: indisch-1914-red-sash-pairs~m edge NCC 0.43 vs indisch-1914-red-sash-pairs 0.32"
+   ],
+   "likeness": {
+    "pandId": "0363100012145601",
+    "ncc": 0.43,
+    "nccRaw": 0.43,
+    "shiftM": [
+     -0.35,
+     -0.35
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33 mean 0.35 vs photo 0.55"
+    ],
+    "wall": {
+     "photo": "#6b5b50",
+     "model": "#826f62",
+     "dL": 0.08
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.35
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.513
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.32,
+    "indisch-1914-red-sash-pairs~m": 0.43
+   }
+  },
+  {
+   "pandId": "0363100012084255",
+   "address": "Borneostraat 21",
+   "builtYear": 1914,
+   "widthM": 6.9,
+   "eavesM": 12.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695b4f",
+    "wallRaw": "#65584d",
+    "skyline": {
+     "eavesM": 16.1,
+     "eavesRow": 96,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 2.4,
+      "topWidthM": 0.35,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#695b4f",
+     "evidence": "strip 2023-01-02 span 1464-1740: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012084255",
+    "ncc": 0.321,
+    "nccRaw": 0.321,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.35 mean 0.36 vs photo 0.64",
+     "window shape tall vs photo square"
+    ],
+    "wall": {
+     "photo": "#6b5d51",
+     "model": "#817061",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.64,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 4,
+     "model": 4
+    },
+    "iou": 0.426
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.321,
+    "indisch-1914-red-sash-pairs~m": 0.269
+   }
+  },
+  {
+   "pandId": "0363100012133599",
+   "address": "Borneostraat 23",
+   "builtYear": 1914,
+   "widthM": 6.9,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#756658",
+    "wallRaw": "#726355",
+    "skyline": {
+     "eavesM": 14.9,
+     "eavesRow": 144,
+     "confidence": 0.52,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 3.2,
+      "topWidthM": 0.23,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.208,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#756658",
+     "evidence": "strip 2023-01-02 span 1740-2016: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown flat-dormer (type default)",
+    "photo decides: indisch-1914-red-sash-pairs~m edge NCC 0.486 vs indisch-1914-red-sash-pairs 0.367"
+   ],
+   "likeness": {
+    "pandId": "0363100012133599",
+    "ncc": 0.486,
+    "nccRaw": 0.486,
+    "shiftM": [
+     -0.25,
+     -0.35
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.20 mean 0.36 vs photo 0.55"
+    ],
+    "wall": {
+     "photo": "#726355",
+     "model": "#8c7a69",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.55,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.581
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.367,
+    "indisch-1914-red-sash-pairs~m": 0.486
+   }
+  },
+  {
+   "pandId": "0363100012102480",
+   "address": "Borneostraat 25",
+   "builtYear": 1914,
+   "widthM": 6.9,
+   "eavesM": 12.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66584c",
+    "wallRaw": "#605449",
+    "skyline": {
+     "eavesM": 15.4,
+     "eavesRow": 124,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 3.1,
+      "topWidthM": 0.2,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#66584c",
+     "evidence": "strip 2023-01-02 span 2016-2292: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012102480",
+    "ncc": 0.353,
+    "nccRaw": 0.353,
+    "shiftM": [
+     -0.2,
+     -0.3
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.37 mean 0.38 vs photo 0.69"
+    ],
+    "wall": {
+     "photo": "#64564b",
+     "model": "#7f6d5f",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.69,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 4
+    },
+    "iou": 0.512
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.353,
+    "indisch-1914-red-sash-pairs~m": 0.162
+   }
+  },
+  {
+   "pandId": "0363100012063476",
+   "address": "Borneostraat 27",
+   "builtYear": 1914,
+   "widthM": 9.94,
+   "eavesM": 12.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#706155",
+    "wallRaw": "#6f6055",
+    "skyline": {
+     "eavesM": 14.4,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.25,
+      "riseM": 3.3,
+      "topWidthM": 0.1,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.119,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.6,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1914-red-sash-pairs: frontage 9.94 m, type 5.6-7.2 m)",
+   "best": {
+    "type": "indisch-1914-red-sash-pairs",
+    "score": 0,
+    "veto": [
+     "frontage 9.94 m, type 5.6-7.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.88 m = 4 storeys of 3.22 m vs the type's 3.21 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.62 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

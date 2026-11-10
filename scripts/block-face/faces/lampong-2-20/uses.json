@@ -1,0 +1,151 @@
+{
+ "street": "Lampongstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:47:48.765Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012109433",
+   "addresses": [
+    "Lampongstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000717212"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012078026",
+   "addresses": [
+    "Lampongstraat 16",
+    "Lampongstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000717200"
+    },
+    {
+     "address": "Lampongstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000717206"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062429",
+   "addresses": [
+    "Lampongstraat 12",
+    "Lampongstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000717189"
+    },
+    {
+     "address": "Lampongstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000717195"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140561",
+   "addresses": [
+    "Lampongstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000717183"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150248",
+   "addresses": [
+    "Lampongstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000717178"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085260",
+   "addresses": [
+    "Lampongstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000717172"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064007",
+   "addresses": [
+    "Lampongstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000717166"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112381",
+   "addresses": [
+    "Lampongstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000717161"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

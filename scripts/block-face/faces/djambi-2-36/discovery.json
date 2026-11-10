@@ -1,0 +1,1195 @@
+{
+ "street": "Djambistraat",
+ "seed": "0363100012082255",
+ "members": [
+  "0363100012127733",
+  "0363100012148300",
+  "0363100012104158",
+  "0363100012115019",
+  "0363100012100391",
+  "0363100012082255"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012127733 (face continues: 122926)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012082255 (face continues: 066931)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062429",
+   "reason": "frontage 39.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012062527",
+   "reason": "frontage 30.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012063047",
+   "reason": "frontage 30.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012063476",
+   "reason": "frontage 38.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012063489",
+   "reason": "frontage 53.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012063515",
+   "reason": "frontage 86.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012063800",
+   "reason": "sightline to Djambistraat crosses 0363100012065784"
+  },
+  {
+   "pandId": "0363100012064007",
+   "reason": "frontage 69.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012064858",
+   "reason": "frontage 150.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012065807",
+   "reason": "frontage 95.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012066054",
+   "reason": "frontage 30.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012066697",
+   "reason": "frontage 108.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012068278",
+   "reason": "frontage 112.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012068360",
+   "reason": "frontage 82.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012068591",
+   "reason": "frontage 30.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012068787",
+   "reason": "frontage 170.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012069113",
+   "reason": "frontage 30.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012069682",
+   "reason": "frontage 30.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012069698",
+   "reason": "sightline to Djambistraat crosses 0363100012104978"
+  },
+  {
+   "pandId": "0363100012070865",
+   "reason": "frontage 163.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012073042",
+   "reason": "frontage 113.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012074338",
+   "reason": "frontage 130.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012074710",
+   "reason": "frontage 81.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012075844",
+   "reason": "frontage 148.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012075959",
+   "reason": "frontage 148.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012078026",
+   "reason": "sightline to Djambistraat crosses 0363100012109433"
+  },
+  {
+   "pandId": "0363100012078338",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012078465",
+   "reason": "frontage 101.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012078916",
+   "reason": "frontage 32.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012079210",
+   "reason": "frontage 92.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012079465",
+   "reason": "frontage 145.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012079497",
+   "reason": "frontage 45.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012079555",
+   "reason": "frontage 183.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012080112",
+   "reason": "frontage 79.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012080471",
+   "reason": "frontage 78.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012080763",
+   "reason": "frontage 113.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012080878",
+   "reason": "frontage 113.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012081321",
+   "reason": "frontage 30.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012081365",
+   "reason": "frontage 70.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012081366",
+   "reason": "frontage 64.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012081431",
+   "reason": "frontage 148.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012081726",
+   "reason": "frontage 151.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012082066",
+   "reason": "frontage 80.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012082284",
+   "reason": "frontage 112.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012082517",
+   "reason": "frontage 178.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012083849",
+   "reason": "frontage 188.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012083959",
+   "reason": "frontage 67.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012084255",
+   "reason": "frontage 58.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012084401",
+   "reason": "frontage 30.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012085260",
+   "reason": "frontage 63.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012085781",
+   "reason": "frontage 56.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012086183",
+   "reason": "frontage 113.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012086737",
+   "reason": "frontage 149.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012087108",
+   "reason": "frontage 130.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012087984",
+   "reason": "frontage 91.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012088199",
+   "reason": "frontage 176.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012088631",
+   "reason": "frontage 148.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012088701",
+   "reason": "frontage 113.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012089774",
+   "reason": "frontage 141.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012090264",
+   "reason": "frontage 157.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012090483",
+   "reason": "frontage 76.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012090617",
+   "reason": "frontage 92.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012092089",
+   "reason": "frontage 30.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012092864",
+   "reason": "frontage 30.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012092896",
+   "reason": "frontage 113.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012093268",
+   "reason": "frontage 30.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012093463",
+   "reason": "sightline to Djambistraat crosses 0363100012066931"
+  },
+  {
+   "pandId": "0363100012093828",
+   "reason": "frontage 76.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012093873",
+   "reason": "frontage 54.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012094001",
+   "reason": "frontage 105.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012094377",
+   "reason": "frontage 113.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012095234",
+   "reason": "frontage 144.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012095455",
+   "reason": "frontage 33.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012096113",
+   "reason": "frontage 113.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012096397",
+   "reason": "frontage 124.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012096412",
+   "reason": "frontage 70.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012097230",
+   "reason": "frontage 157.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012097481",
+   "reason": "frontage 111.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012098028",
+   "reason": "frontage 101.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012098110",
+   "reason": "frontage 41.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012098659",
+   "reason": "frontage 54.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012100086",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012100331",
+   "reason": "frontage 115.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012100806",
+   "reason": "frontage 143.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012101053",
+   "reason": "frontage 66.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012101257",
+   "reason": "frontage 156.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012102359",
+   "reason": "frontage 129.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012102408",
+   "reason": "frontage 148.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012102480",
+   "reason": "frontage 45.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012102563",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012102651",
+   "reason": "frontage 157.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012102866",
+   "reason": "frontage 121.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012103586",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012103643",
+   "reason": "frontage 78.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012103647",
+   "reason": "frontage 176.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012103819",
+   "reason": "frontage 152.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012103954",
+   "reason": "frontage 69.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012103977",
+   "reason": "frontage 170.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012105884",
+   "reason": "frontage 148.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012106412",
+   "reason": "frontage 159.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012106433",
+   "reason": "frontage 79.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012106655",
+   "reason": "frontage 112.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012107515",
+   "reason": "frontage 113.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012107709",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012107809",
+   "reason": "frontage 30.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012107948",
+   "reason": "frontage 57.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012108761",
+   "reason": "frontage 70.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012108941",
+   "reason": "frontage 113.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012109433",
+   "reason": "sightline to Djambistraat crosses 0363100012113540"
+  },
+  {
+   "pandId": "0363100012109843",
+   "reason": "frontage 170.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012110044",
+   "reason": "frontage 113.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012110430",
+   "reason": "frontage 127.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012111204",
+   "reason": "frontage 30.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012111959",
+   "reason": "frontage 113.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012112314",
+   "reason": "sightline to Djambistraat crosses 0363100012122027"
+  },
+  {
+   "pandId": "0363100012112381",
+   "reason": "frontage 76.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012112606",
+   "reason": "frontage 80.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012113301",
+   "reason": "frontage 30.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012113411",
+   "reason": "frontage 33.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012113869",
+   "reason": "frontage 70.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012114269",
+   "reason": "frontage 53.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012114995",
+   "reason": "frontage 75.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012116590",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012117596",
+   "reason": "frontage 89.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012117891",
+   "reason": "frontage 69.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012118700",
+   "reason": "sightline to Djambistraat crosses 0363100012065784"
+  },
+  {
+   "pandId": "0363100012119304",
+   "reason": "frontage 105.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012119824",
+   "reason": "frontage 163.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012120215",
+   "reason": "frontage 44.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012120631",
+   "reason": "frontage 182.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012121540",
+   "reason": "frontage 80.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012121776",
+   "reason": "frontage 117.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012122436",
+   "reason": "frontage 136.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012122437",
+   "reason": "frontage 133.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012122980",
+   "reason": "frontage 149.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012123289",
+   "reason": "frontage 145.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012123753",
+   "reason": "frontage 112.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012124171",
+   "reason": "frontage 148.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012124226",
+   "reason": "sightline to Djambistraat crosses 0363100012112314"
+  },
+  {
+   "pandId": "0363100012124833",
+   "reason": "frontage 134.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012124922",
+   "reason": "frontage 148.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012125352",
+   "reason": "frontage 100.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012125421",
+   "reason": "frontage 123.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012125487",
+   "reason": "sightline to Djambistraat crosses 0363100012081898"
+  },
+  {
+   "pandId": "0363100012125631",
+   "reason": "frontage 151.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012125885",
+   "reason": "frontage 145.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012126729",
+   "reason": "frontage 79.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012127674",
+   "reason": "frontage 164.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012128109",
+   "reason": "frontage 46.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012128311",
+   "reason": "frontage 112.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012128496",
+   "reason": "frontage 33.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012129419",
+   "reason": "frontage 54.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012130723",
+   "reason": "frontage 46.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012130744",
+   "reason": "frontage 33.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012131182",
+   "reason": "frontage 113.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012131435",
+   "reason": "frontage 192.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012131518",
+   "reason": "frontage 34.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012131529",
+   "reason": "frontage 139.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012131587",
+   "reason": "frontage 126.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012131890",
+   "reason": "frontage 112.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012132796",
+   "reason": "frontage 182.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012133565",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012133599",
+   "reason": "frontage 51.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012136122",
+   "reason": "frontage 30.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012136282",
+   "reason": "frontage 148.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012136784",
+   "reason": "frontage 112.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012139109",
+   "reason": "frontage 145.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012139295",
+   "reason": "frontage 49.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012139392",
+   "reason": "sightline to Djambistraat crosses 0363100012122926"
+  },
+  {
+   "pandId": "0363100012140052",
+   "reason": "frontage 95.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012140561",
+   "reason": "frontage 51.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012140581",
+   "reason": "frontage 150.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012140728",
+   "reason": "frontage 188.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012142474",
+   "reason": "frontage 50.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012144103",
+   "reason": "frontage 143.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012144738",
+   "reason": "frontage 31.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012145195",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012145601",
+   "reason": "frontage 64.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012146291",
+   "reason": "frontage 114.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012146406",
+   "reason": "frontage 54.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012146653",
+   "reason": "frontage 53.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012147120",
+   "reason": "frontage 112.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012147259",
+   "reason": "frontage 120.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012147329",
+   "reason": "frontage 112.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012148852",
+   "reason": "frontage 113.0 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012148990",
+   "reason": "frontage 113.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012149152",
+   "reason": "frontage 113.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012149325",
+   "reason": "frontage 59.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012150096",
+   "reason": "frontage 185.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012150248",
+   "reason": "frontage 57.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012150368",
+   "reason": "frontage 30.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012150628",
+   "reason": "frontage 53.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012150787",
+   "reason": "frontage 163.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012153044",
+   "reason": "frontage 97.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012154579",
+   "reason": "frontage 34.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012154744",
+   "reason": "frontage 30.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012156742",
+   "reason": "frontage 153.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012159049",
+   "reason": "frontage 97.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012161130",
+   "reason": "frontage 163.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012183495",
+   "reason": "frontage 91.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012184242",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012184243",
+   "reason": "frontage 86.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012184280",
+   "reason": "sightline to Djambistraat crosses 0363100012115009"
+  },
+  {
+   "pandId": "0363100012187907",
+   "reason": "frontage 48.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012190399",
+   "reason": "frontage 59.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012190400",
+   "reason": "frontage 73.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012190415",
+   "reason": "frontage 140.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012194532",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012197922",
+   "reason": "frontage 113.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012199412",
+   "reason": "frontage 136.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012200722",
+   "reason": "frontage 47.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012200723",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012205159",
+   "reason": "frontage 115.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012205412",
+   "reason": "frontage 142.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012208388",
+   "reason": "frontage 135.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012209776",
+   "reason": "frontage 127.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012211423",
+   "reason": "frontage 103.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012212092",
+   "reason": "sightline to Djambistraat crosses 0363100012115009"
+  },
+  {
+   "pandId": "0363100012212093",
+   "reason": "frontage 34.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012213456",
+   "reason": "frontage 157.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012214166",
+   "reason": "frontage 57.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012217804",
+   "reason": "frontage 101.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012217805",
+   "reason": "frontage 101.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012220346",
+   "reason": "frontage 101.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012220645",
+   "reason": "frontage 136.2 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012221702",
+   "reason": "frontage 125.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012222320",
+   "reason": "frontage 171.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012223439",
+   "reason": "frontage 155.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012223443",
+   "reason": "frontage 206.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012230054",
+   "reason": "frontage 140.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012231207",
+   "reason": "frontage 184.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012232259",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012232364",
+   "reason": "frontage 169.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012232512",
+   "reason": "frontage 186.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012233528",
+   "reason": "frontage 151.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012234466",
+   "reason": "frontage 89.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012234467",
+   "reason": "frontage 75.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012235222",
+   "reason": "frontage 155.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012236071",
+   "reason": "frontage 31.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012237183",
+   "reason": "frontage 138.3 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012237325",
+   "reason": "frontage 101.6 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012237392",
+   "reason": "frontage 107.8 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012238726",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012240312",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012242931",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012242932",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012242933",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012242934",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012242935",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012242936",
+   "reason": "no frontage on Djambistraat: No footprint edge faces Djambistraat"
+  },
+  {
+   "pandId": "0363100012242937",
+   "reason": "frontage 175.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012242938",
+   "reason": "frontage 172.7 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012242939",
+   "reason": "frontage 169.4 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012248158",
+   "reason": "frontage 132.9 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012249646",
+   "reason": "frontage 53.5 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012253816",
+   "reason": "frontage 89.1 m from Djambistraat"
+  },
+  {
+   "pandId": "0363100012065784",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012072833",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012077761",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083822",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089626",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094122",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012095414",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099261",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012100535",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104592",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104978",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108617",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110582",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012113498",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115009",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012117530",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122027",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012129720",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131961",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012145454",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149516",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012127733",
+   "alongM": -74.43,
+   "widthM": 13.4,
+   "eavesM": 6.87,
+   "roofMaxM": 10.28,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012148300",
+   "alongM": -60.94,
+   "widthM": 13.6,
+   "eavesM": 7.04,
+   "roofMaxM": 10.65,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012104158",
+   "alongM": -45.68,
+   "widthM": 16.92,
+   "eavesM": 7.68,
+   "roofMaxM": 11.46,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012115019",
+   "alongM": -28.76,
+   "widthM": 16.91,
+   "eavesM": 7.35,
+   "roofMaxM": 10.96,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012100391",
+   "alongM": -13.5,
+   "widthM": 13.6,
+   "eavesM": 7.2,
+   "roofMaxM": 10.56,
+   "storeys3dbag": 3,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012082255",
+   "alongM": 0,
+   "widthM": 13.4,
+   "eavesM": 7.3,
+   "roofMaxM": 10.77,
+   "storeys3dbag": 4,
+   "builtYear": 1913,
+   "uncertainty": []
+  }
+ ]
+}

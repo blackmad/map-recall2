@@ -1,0 +1,10 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at full size against the photo (scripts/block-face/auto-place.ts reads this file: a listed pand is held at stage 'review' with its reason). Remove an entry when a type or kit change makes the pand read right, and review the sheet again.",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {"pandId": "0363100012104596", "address": "Madurastraat 45A", "reason": "a different 1913 front (grouped windows, three iron balconies on a stacked axis, a bell-shaped roof): the Javastraat mansard type matched it on year, storeys and eaves alone"},
+  {"pandId": "0363100012146568", "address": "Madurastraat 47", "reason": "a different 1913 front (three-light windows and a wide balcony bay): not the Javastraat arched-window design"},
+  {"pandId": "0363100012147446", "address": "Sumatrastraat 28", "reason": "a 1915 front with square-headed paired windows, green iron balconies on every storey and a flat mansard: the arched Javastraat type draws arches that are not there"},
+  {"pandId": "0363100012123220", "address": "Sumatrastraat 26", "reason": "same 1915 Sumatrastraat design as 28: square heads, green iron balconies, a flat mansard"}
+ ]
+}

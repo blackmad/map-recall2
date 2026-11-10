@@ -85,3 +85,19 @@ test('Gorontalostraat 31: the white top storey starts 0.44 m over its floor; wit
   assert.ok(Math.abs(lifted.bottomM - floor.bottomM - 0.44) < 0.002, `${lifted.bottomM} vs ${floor.bottomM}`);
   assert.ok(Math.abs(lifted.bottomM + lifted.heightM - (floor.bottomM + floor.heightM)) < 0.002, 'same top');
 });
+
+test('dormerWindow: Djambistraat 13 brick dormer holds a 0.85 m window on a 0.15 m apron; validation; absent = no front wall', () => {
+  const DJ = '0363100012110582', facts = factsOf('djambi-1-35', DJ);
+  const dormers = (i: CanalHouseIntent) => fitIntent(i, facts).recipe.elevations[0].dormers!.value;
+  const sized = dormers(house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat'));
+  const plain = dormers(house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat', f => { delete f.dormerWindow; }));
+  assert.equal(sized.length, 1);
+  assert.equal(sized[0].frontWall?.apronM, 0.15);
+  assert.ok(Math.abs(sized[0].frontWall!.sideM - (sized[0].widthM - 0.85) / 2) < 0.01);
+  assert.equal(plain[0].frontWall, undefined);
+  assert.equal(plain[0].widthM, sized[0].widthM);
+  const base = house('indisch-1913-arched-pair-dormer', DJ, 'Djambistraat');
+  const front = (patch: Record<string, unknown>) => () => validateIntent({...base, fronts: base.fronts.map(f => ({...f, ...patch}))} as CanalHouseIntent);
+  assert.throws(front({dormerWindow: {light: 3, apron: 0.3}}), /dormerWindow: \{light 0.4..2/);
+  assert.throws(front({dormers: 0}), /dormerWindow: only with dormers/);
+});

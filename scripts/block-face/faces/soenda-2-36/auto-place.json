@@ -1,0 +1,1477 @@
+{
+ "face": "soenda-2-36",
+ "street": "Soendastraat",
+ "library": "indische-buurt",
+ "stripDate": "2019-12-18",
+ "seconds": 29.97,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "soenda-2-36-r1",
+   "pands": [
+    "0363100012113301",
+    "0363100012150368",
+    "0363100012069113",
+    "0363100012062527",
+    "0363100012081321",
+    "0363100012107809",
+    "0363100012111204"
+   ],
+   "passed": true,
+   "triangles": 10499
+  },
+  {
+   "face": "soenda-2-36-r2",
+   "pands": [
+    "0363100012136122",
+    "0363100012068591",
+    "0363100012092864",
+    "0363100012092089"
+   ],
+   "passed": true,
+   "triangles": 6076
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012084401",
+   "address": "Soendastraat 32",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 13.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#786051",
+    "wallRaw": "#745f53",
+    "skyline": {
+     "eavesM": 11.75,
+     "eavesRow": 248,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 2.07,
+      "topWidthM": 0.33,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 8,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.159,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.114 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.30 mean 0.33 vs photo 0.57)",
+   "likeness": {
+    "pandId": "0363100012084401",
+    "ncc": 0.114,
+    "nccRaw": 0.114,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.30 mean 0.33 vs photo 0.57"
+    ],
+    "wall": {
+     "photo": "#786051",
+     "model": "#917462",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.57,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.379
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.114,
+    "indisch-1913-arched-pair-dormer~m": 0.106
+   }
+  },
+  {
+   "pandId": "0363100012113301",
+   "address": "Soendastraat 30",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 13.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725b4f",
+    "wallRaw": "#766054",
+    "skyline": {
+     "eavesM": 11.78,
+     "eavesRow": 247,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.13,
+      "riseM": 2.8,
+      "topWidthM": 0.47,
+      "centre": 0.19
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.203,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#725b4f",
+     "evidence": "strip 2019-12-18 span 240-480: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012113301",
+    "ncc": 0.171,
+    "nccRaw": 0.171,
+    "shiftM": [
+     0.4,
+     0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.41 mean 0.33 vs photo 0.61",
+     "columns 3 vs photo 8"
+    ],
+    "wall": {
+     "photo": "#7c6154",
+     "model": "#8b6f60",
+     "dL": 0.053
+    },
+    "glazing": {
+     "photo": 0.61,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 8,
+     "model": 3
+    },
+    "iou": 0.36
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.171,
+    "indisch-1913-arched-pair-dormer~m": 0.081
+   }
+  },
+  {
+   "pandId": "0363100012150368",
+   "address": "Soendastraat 28",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 13.07,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#765e51",
+    "wallRaw": "#715c4f",
+    "skyline": {
+     "eavesM": 11.95,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.9,
+      "riseM": 2.53,
+      "topWidthM": 0.5,
+      "centre": 0.61
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.124,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#765e51",
+     "evidence": "strip 2019-12-18 span 480-720: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012150368",
+    "ncc": 0.282,
+    "nccRaw": 0.282,
+    "shiftM": [
+     0.4,
+     -0.3
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.31 mean 0.33 vs photo 0.54"
+    ],
+    "wall": {
+     "photo": "#816657",
+     "model": "#8e7262",
+     "dL": 0.047
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.388
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.273,
+    "indisch-1913-arched-pair-dormer~m": 0.042
+   }
+  },
+  {
+   "pandId": "0363100012069113",
+   "address": "Soendastraat 26",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b6e60",
+    "wallRaw": "#735d4f",
+    "skyline": {
+     "eavesM": 11.95,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.95,
+      "riseM": 2.45,
+      "topWidthM": 0.55,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.2,
+       "widthM": 1.3,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#8b6e60",
+     "evidence": "strip 2019-12-18 span 720-940: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012069113",
+    "ncc": 0.211,
+    "nccRaw": 0.211,
+    "shiftM": [
+     -0.4,
+     -0.2
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.34 vs photo 0.49"
+    ],
+    "wall": {
+     "photo": "#896c5c",
+     "model": "#9e8173",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.36
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.22
+   }
+  },
+  {
+   "pandId": "0363100012062527",
+   "address": "Soendastraat 24",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 12.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#886c5a",
+    "wallRaw": "#715c4f",
+    "skyline": {
+     "eavesM": 11.97,
+     "eavesRow": 239,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.9,
+      "riseM": 2.43,
+      "topWidthM": 0.53,
+      "centre": 0.6
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.1,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.22,
+       "widthM": 5.05,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#886c5a",
+     "evidence": "strip 2019-12-18 span 940-1160: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 081321",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012062527",
+    "ncc": 0.238,
+    "nccRaw": 0.238,
+    "shiftM": [
+     0.3,
+     -0.2
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19 mean 0.34 vs photo 0.47"
+    ],
+    "wall": {
+     "photo": "#8c6e5d",
+     "model": "#9d7f6b",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.477
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.25,
+    "indisch-1913-arched-pair-dormer~m": -0.003
+   }
+  },
+  {
+   "pandId": "0363100012081321",
+   "address": "Soendastraat 22",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 12.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836756",
+    "wallRaw": "#725c4f",
+    "skyline": {
+     "eavesM": 11.95,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.95,
+      "riseM": 2.48,
+      "topWidthM": 0.5,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.121,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.2,
+       "widthM": 3.42,
+       "centre": 0.66
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#836756",
+     "evidence": "strip 2019-12-18 span 1160-1380: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012081321",
+    "ncc": 0.283,
+    "nccRaw": 0.283,
+    "shiftM": [
+     0.2,
+     -0.25
+    ],
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.33 mean 0.34 vs photo 0.10"
+    ],
+    "wall": {
+     "photo": "#786152",
+     "model": "#9b7a66",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.1,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.252
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.276,
+    "indisch-1913-arched-pair-dormer": 0.293
+   }
+  },
+  {
+   "pandId": "0363100012107809",
+   "address": "Soendastraat 20",
+   "builtYear": 1913,
+   "widthM": 5.5,
+   "eavesM": 12.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a6c5a",
+    "wallRaw": "#715d50",
+    "skyline": {
+     "eavesM": 11.93,
+     "eavesRow": 241,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 2.42,
+      "topWidthM": 0.6,
+      "centre": 0.63
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.115,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.18,
+       "widthM": 3.77,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#8a6c5a",
+     "evidence": "strip 2019-12-18 span 1380-1600: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 081321",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012107809",
+    "ncc": 0.295,
+    "nccRaw": 0.295,
+    "shiftM": [
+     0.4,
+     -0.2
+    ],
+    "usable": 0.87,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.34 vs photo 0.14"
+    ],
+    "wall": {
+     "photo": "#7b6455",
+     "model": "#9f7f6c",
+     "dL": 0.116
+    },
+    "glazing": {
+     "photo": 0.14,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.296
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.304,
+    "indisch-1913-arched-pair-dormer~m": 0.032
+   }
+  },
+  {
+   "pandId": "0363100012111204",
+   "address": "Soendastraat 18",
+   "builtYear": 1913,
+   "widthM": 5.55,
+   "eavesM": 12.98,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#876a57",
+    "wallRaw": "#715d4f",
+    "skyline": {
+     "eavesM": 11.93,
+     "eavesRow": 241,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 2.47,
+      "topWidthM": 0.5,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.095,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.18,
+       "widthM": 5.1,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#876a57",
+     "evidence": "strip 2019-12-18 span 1600-1822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012111204",
+    "ncc": 0.276,
+    "nccRaw": 0.276,
+    "shiftM": [
+     0.3,
+     -0.25
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.26 mean 0.32 vs photo 0.48"
+    ],
+    "wall": {
+     "photo": "#8a6c5a",
+     "model": "#9d7d68",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.48,
+     "model": 0.32
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.451
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.285,
+    "indisch-1913-arched-pair-dormer": 0.293
+   }
+  },
+  {
+   "pandId": "0363100012063047",
+   "address": "Soendastraat 16",
+   "builtYear": 1913,
+   "widthM": 5.55,
+   "eavesM": 12.96,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a6d5c",
+    "wallRaw": "#6f5b4f",
+    "skyline": {
+     "eavesM": 12,
+     "eavesRow": 238,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 2.35,
+      "topWidthM": 0.63,
+      "centre": 0.65
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.079,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.25,
+       "widthM": 4.47,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.081 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28 mean 0.33 vs photo 0.15)",
+   "likeness": {
+    "pandId": "0363100012063047",
+    "ncc": 0.081,
+    "nccRaw": 0.081,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28 mean 0.33 vs photo 0.15"
+    ],
+    "wall": {
+     "photo": "#866b5a",
+     "model": "#9e806e",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.15,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.216
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.081,
+    "indisch-1913-arched-pair-dormer": 0.246
+   }
+  },
+  {
+   "pandId": "0363100012136122",
+   "address": "Soendastraat 14",
+   "builtYear": 1913,
+   "widthM": 5.55,
+   "eavesM": 12.98,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a6d5c",
+    "wallRaw": "#715c4f",
+    "skyline": {
+     "eavesM": 11.97,
+     "eavesRow": 239,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.93,
+      "riseM": 2.47,
+      "topWidthM": 0.5,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.103,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.22,
+       "widthM": 5.1,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#8a6d5c",
+     "evidence": "strip 2019-12-18 span 2044-2266: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door left: mirrored",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012136122",
+    "ncc": 0.282,
+    "nccRaw": 0.282,
+    "shiftM": [
+     0.3,
+     -0.1
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23 mean 0.33 vs photo 0.21"
+    ],
+    "wall": {
+     "photo": "#886d5c",
+     "model": "#9e806e",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.21,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.382
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.288,
+    "indisch-1913-arched-pair-dormer": 0.296
+   }
+  },
+  {
+   "pandId": "0363100012068591",
+   "address": "Soendastraat 12",
+   "builtYear": 1913,
+   "widthM": 5.55,
+   "eavesM": 12.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8d6f5e",
+    "wallRaw": "#6f5a4d",
+    "skyline": {
+     "eavesM": 12,
+     "eavesRow": 238,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.38,
+      "topWidthM": 0.63,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.091,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.25,
+       "widthM": 4.75,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#8d6f5e",
+     "evidence": "strip 2019-12-18 span 2266-2488: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread: as drawn, the opposite of 136122",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012068591",
+    "ncc": 0.211,
+    "nccRaw": 0.211,
+    "shiftM": [
+     0.4,
+     -0.35
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.34 vs photo 0.09"
+    ],
+    "wall": {
+     "photo": "#886c5b",
+     "model": "#a08271",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.09,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.168
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.22,
+    "indisch-1913-arched-pair-dormer~m": 0.156
+   }
+  },
+  {
+   "pandId": "0363100012092864",
+   "address": "Soendastraat 10",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 12.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#866b5d",
+    "wallRaw": "#776254",
+    "skyline": {
+     "eavesM": 11.65,
+     "eavesRow": 252,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 2.65,
+      "topWidthM": 0.63,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.164,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.45,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#866b5d",
+     "evidence": "strip 2019-12-18 span 2488-2728: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 068591",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012092864",
+    "ncc": 0.271,
+    "nccRaw": 0.271,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.33 vs photo 0.52"
+    ],
+    "wall": {
+     "photo": "#846a59",
+     "model": "#9b7e6f",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.396
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.275,
+    "indisch-1913-arched-pair-dormer": 0.25
+   }
+  },
+  {
+   "pandId": "0363100012092089",
+   "address": "Soendastraat 8",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 13.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6153",
+    "wallRaw": "#6b584c",
+    "skyline": {
+     "eavesM": 14.75,
+     "eavesRow": 128,
+     "confidence": 0.43,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 3.2,
+      "topWidthM": 0.17,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.157,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12,
+       "widthM": 0.93,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "indisch-1913-arched-pair-dormer",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#7a6153",
+     "evidence": "strip 2019-12-18 span 2728-2968: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown brick-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012092089",
+    "ncc": 0.259,
+    "nccRaw": 0.259,
+    "shiftM": [
+     -0.4,
+     0.4
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.13",
+     "glazing storey band off by 0.23",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#6b5448",
+     "model": "#927463",
+     "dL": 0.129
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.391
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.26,
+    "indisch-1913-arched-pair-dormer~m": 0.332
+   }
+  },
+  {
+   "pandId": "0363100012066054",
+   "address": "Soendastraat 6",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 13.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#694e40",
+    "wallRaw": "#735e51",
+    "skyline": {
+     "eavesM": 13.4,
+     "eavesRow": 182,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 4.4,
+      "topWidthM": 0.25,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.146,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.93,
+       "widthM": 3.8,
+       "centre": 0.65
+      },
+      {
+       "atM": 5.55,
+       "widthM": 0.82,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.109 < 0.15 (photo vs model body; likeness.ts WARN: mask IoU 0.378 < 0.45)",
+   "likeness": {
+    "pandId": "0363100012066054",
+    "ncc": 0.109,
+    "nccRaw": 0.109,
+    "shiftM": [
+     -0.1,
+     0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "mask IoU 0.378 < 0.45"
+    ],
+    "wall": {
+     "photo": "#664b3e",
+     "model": "#856251",
+     "dL": 0.098
+    },
+    "glazing": {
+     "photo": 0.27,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.378
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer~m": 0.109,
+    "indisch-1913-arched-pair-dormer": 0.233
+   }
+  },
+  {
+   "pandId": "0363100012069682",
+   "address": "Soendastraat 4",
+   "builtYear": 1913,
+   "widthM": 6,
+   "eavesM": 13.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a6653",
+    "wallRaw": "#614f43",
+    "skyline": {
+     "eavesM": 13.18,
+     "eavesRow": 191,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 2.27,
+      "topWidthM": 0.35,
+      "centre": 0.84
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.023,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012069682",
+    "ncc": 0.199,
+    "nccRaw": 0.199,
+    "shiftM": [
+     -0.4,
+     -0.15
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.33 vs photo 0.51"
+    ],
+    "wall": {
+     "photo": "#83624e",
+     "model": "#a17863",
+     "dL": 0.1
+    },
+    "glazing": {
+     "photo": 0.51,
+     "model": 0.33
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.401
+   },
+   "challengers": {
+    "indisch-1913-arched-pair-dormer": 0.199,
+    "indisch-1913-arched-pair-dormer~m": 0.345
+   }
+  },
+  {
+   "pandId": "0363100012093268",
+   "address": "Soendastraat 2",
+   "builtYear": 1913,
+   "widthM": 8.64,
+   "eavesM": 13.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695143",
+    "wallRaw": "#5c4d41",
+    "skyline": {
+     "eavesM": 16.15,
+     "eavesRow": 72,
+     "confidence": 0.66,
+     "crown": {
+      "widthM": 1.2,
+      "riseM": 1.75,
+      "topWidthM": 0.05,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1913-arched-pair-dormer: frontage 8.64 m, type 5-6.4 m)",
+   "best": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "score": 0,
+    "veto": [
+     "frontage 8.64 m, type 5-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.18 m = 4 storeys of 3.29 m vs the type's 3.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.51 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.005 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

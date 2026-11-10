@@ -1,0 +1,663 @@
+{
+ "street": "Borneostraat",
+ "seed": "0363100012153798",
+ "members": [
+  "0363100012117241",
+  "0363100012067136",
+  "0363100012141428",
+  "0363100012078037",
+  "0363100012153798"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012253816 97.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012153798 (face continues: 154152)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061834",
+   "reason": "frontage 57.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012067627",
+   "reason": "sightline to Borneostraat crosses 0363100012116382"
+  },
+  {
+   "pandId": "0363100012068160",
+   "reason": "frontage 72.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012071940",
+   "reason": "frontage 113.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012073492",
+   "reason": "frontage 60.5 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012074063",
+   "reason": "frontage 62.1 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012075745",
+   "reason": "frontage 78.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012081210",
+   "reason": "frontage 65.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012081591",
+   "reason": "frontage 49.5 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012082559",
+   "reason": "sightline to Borneostraat crosses 0363100012128833"
+  },
+  {
+   "pandId": "0363100012083849",
+   "reason": "frontage 80.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012084055",
+   "reason": "frontage 65.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012086581",
+   "reason": "frontage 57.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012088199",
+   "reason": "frontage 86.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012092016",
+   "reason": "frontage 34.1 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012093210",
+   "reason": "frontage 56.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012097709",
+   "reason": "frontage 52.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012103647",
+   "reason": "frontage 62.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012104596",
+   "reason": "frontage 101.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012104668",
+   "reason": "frontage 41.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012106911",
+   "reason": "frontage 51.5 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012107098",
+   "reason": "frontage 57.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012108012",
+   "reason": "frontage 45.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012110087",
+   "reason": "frontage 76.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012112828",
+   "reason": "frontage 42.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012114510",
+   "reason": "frontage 55.1 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012115931",
+   "reason": "frontage 63.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012117157",
+   "reason": "frontage 30.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012117547",
+   "reason": "frontage 33.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012118382",
+   "reason": "frontage 94.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012119301",
+   "reason": "frontage 51.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012120330",
+   "reason": "frontage 30.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012120446",
+   "reason": "frontage 50.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012120631",
+   "reason": "frontage 81.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012121673",
+   "reason": "frontage 47.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012123386",
+   "reason": "frontage 57.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012123747",
+   "reason": "frontage 94.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012124208",
+   "reason": "frontage 66.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012126493",
+   "reason": "frontage 48.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012126786",
+   "reason": "frontage 67.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012127054",
+   "reason": "frontage 35.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012132796",
+   "reason": "frontage 59.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012137665",
+   "reason": "frontage 88.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012137853",
+   "reason": "frontage 95.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012139551",
+   "reason": "frontage 106.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012139587",
+   "reason": "frontage 52.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012140728",
+   "reason": "frontage 56.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012140805",
+   "reason": "frontage 83.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012142289",
+   "reason": "sightline to Borneostraat crosses 0363100012067627"
+  },
+  {
+   "pandId": "0363100012143219",
+   "reason": "frontage 36.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012143434",
+   "reason": "frontage 94.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012143930",
+   "reason": "frontage 35.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012144327",
+   "reason": "frontage 82.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012145829",
+   "reason": "frontage 44.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012146568",
+   "reason": "frontage 101.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012150462",
+   "reason": "frontage 107.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012153019",
+   "reason": "frontage 42.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012153633",
+   "reason": "frontage 115.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012153956",
+   "reason": "frontage 41.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012155981",
+   "reason": "frontage 77.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012156008",
+   "reason": "frontage 63.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012156032",
+   "reason": "frontage 41.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012156404",
+   "reason": "frontage 72.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012156701",
+   "reason": "frontage 44.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012156955",
+   "reason": "sightline to Borneostraat crosses 0363100012166721"
+  },
+  {
+   "pandId": "0363100012157049",
+   "reason": "frontage 61.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012158166",
+   "reason": "frontage 39.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012158249",
+   "reason": "frontage 44.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012158823",
+   "reason": "frontage 72.1 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012158898",
+   "reason": "frontage 68.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012159581",
+   "reason": "sightline to Borneostraat crosses 0363100012144166"
+  },
+  {
+   "pandId": "0363100012160057",
+   "reason": "frontage 56.5 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012160166",
+   "reason": "frontage 80.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012160244",
+   "reason": "frontage 51.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012160987",
+   "reason": "frontage 47.1 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012161217",
+   "reason": "frontage 74.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012161436",
+   "reason": "frontage 63.1 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012161665",
+   "reason": "frontage 31.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012161683",
+   "reason": "frontage 82.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012161726",
+   "reason": "frontage 40.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012162053",
+   "reason": "frontage 36.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012162476",
+   "reason": "frontage 49.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012162736",
+   "reason": "frontage 54.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012163800",
+   "reason": "frontage 70.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012164378",
+   "reason": "frontage 58.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012164891",
+   "reason": "frontage 69.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012165886",
+   "reason": "frontage 38.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012166331",
+   "reason": "frontage 34.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012166460",
+   "reason": "frontage 75.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012166770",
+   "reason": "frontage 65.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012166898",
+   "reason": "frontage 118.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012167385",
+   "reason": "frontage 67.5 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012185545",
+   "reason": "frontage 78.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012186474",
+   "reason": "frontage 111.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012186687",
+   "reason": "frontage 81.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012186766",
+   "reason": "sightline to Borneostraat crosses 0363100012154152"
+  },
+  {
+   "pandId": "0363100012190639",
+   "reason": "sightline to Borneostraat crosses 0363100012141428"
+  },
+  {
+   "pandId": "0363100012195630",
+   "reason": "sightline to Borneostraat crosses 0363100012207999"
+  },
+  {
+   "pandId": "0363100012200324",
+   "reason": "frontage 57.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012200325",
+   "reason": "frontage 55.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012200422",
+   "reason": "frontage 72.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012202944",
+   "reason": "frontage 62.5 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012205383",
+   "reason": "frontage 62.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012205384",
+   "reason": "frontage 61.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012205851",
+   "reason": "frontage 111.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012207961",
+   "reason": "frontage 59.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012207962",
+   "reason": "frontage 56.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012207963",
+   "reason": "frontage 68.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012208413",
+   "reason": "frontage 75.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012212044",
+   "reason": "frontage 43.5 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012213325",
+   "reason": "frontage 66.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012213326",
+   "reason": "frontage 64.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012213327",
+   "reason": "frontage 64.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012215532",
+   "reason": "frontage 60.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012215533",
+   "reason": "frontage 58.7 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012216045",
+   "reason": "frontage 72.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012225201",
+   "reason": "frontage 81.0 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012225608",
+   "reason": "frontage 66.3 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012227052",
+   "reason": "frontage 54.8 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012227053",
+   "reason": "frontage 52.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012227379",
+   "reason": "frontage 50.1 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012227581",
+   "reason": "frontage 75.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012228273",
+   "reason": "frontage 48.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012231219",
+   "reason": "frontage 31.1 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012234534",
+   "reason": "frontage 84.4 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012236382",
+   "reason": "sightline to Borneostraat crosses 0363100012186806"
+  },
+  {
+   "pandId": "0363100012236762",
+   "reason": "frontage 31.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012236930",
+   "reason": "frontage 54.2 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012237198",
+   "reason": "frontage 69.6 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012239390",
+   "reason": "frontage 86.5 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012240920",
+   "reason": "frontage 102.9 m from Borneostraat"
+  },
+  {
+   "pandId": "0363100012076648",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012079478",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012108874",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012109925",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012112631",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116382",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012133669",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012135028",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152916",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155855",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159602",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160632",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163709",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164011",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012207999",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012117241",
+   "alongM": -52.67,
+   "widthM": 16.91,
+   "eavesM": 3.71,
+   "roofMaxM": 15.08,
+   "storeys3dbag": 0,
+   "builtYear": 1914,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012067136",
+   "alongM": -21.65,
+   "widthM": 9.35,
+   "eavesM": 16.92,
+   "roofMaxM": 16.93,
+   "storeys3dbag": 5,
+   "builtYear": 1914,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012141428",
+   "alongM": -13.44,
+   "widthM": 7.07,
+   "eavesM": 15.62,
+   "roofMaxM": 15.71,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012078037",
+   "alongM": -6.34,
+   "widthM": 7.13,
+   "eavesM": 15.74,
+   "roofMaxM": 15.77,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153798",
+   "alongM": 0,
+   "widthM": 5.54,
+   "eavesM": 14.69,
+   "roofMaxM": 15.11,
+   "storeys3dbag": 5,
+   "builtYear": 1903,
+   "uncertainty": []
+  }
+ ]
+}

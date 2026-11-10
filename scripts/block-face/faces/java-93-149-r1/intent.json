@@ -1,0 +1,329 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "java-93-149-r1",
+ "street": "Javastraat",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/java-93-149-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Timorpleinbuurt-Noord); scores and holds in scripts/block-face/faces/java-93-149/auto-place.json"
+ },
+ "types": [
+  "indisch-1912-java-mansard-arches"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012132949",
+   "slug": "java-132949",
+   "address": "Javastraat 97",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#5c4f48",
+      "fascia": true,
+      "name": "Asgül Kledingreparatie & Stomerij",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=tailor); fascia colour measured on the strip 2023-01-02 span 764-1004"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#806c62",
+     "evidence": "strip 2023-01-02 span 764-1004: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Asgül Kledingreparatie & Stomerij",
+    "category": "shop=tailor",
+    "osm": {
+     "type": "node",
+     "id": 2348134395,
+     "name": "Asgül Kledingreparatie & Stomerij"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 764-1004"
+   }
+  },
+  {
+   "pandId": "0363100012138717",
+   "slug": "java-138717",
+   "address": "Javastraat 99",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#5f4b40",
+      "fascia": true,
+      "name": "La Fucina",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, woonfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-02 span 1005-1245"
+     }
+    },
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#7e695e",
+     "evidence": "strip 2023-01-02 span 1005-1245: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "La Fucina",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 8338843317,
+     "name": "La Fucina"
+    },
+    "bag": [
+     "bijeenkomstfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 1005-1245"
+   }
+  },
+  {
+   "pandId": "0363100012120527",
+   "slug": "java-120527",
+   "address": "Javastraat 101",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#6d5c51",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-02 span 1245-1485"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#725b51",
+     "evidence": "strip 2023-01-02 span 1245-1485: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 1245-1485"
+   }
+  },
+  {
+   "pandId": "0363100012081977",
+   "slug": "java-081977",
+   "address": "Javastraat 103",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#6d5e52",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-02 span 1486-1726"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7a6458",
+     "evidence": "strip 2023-01-02 span 1486-1726: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.71 on eaves 1, storeys 0, stucco 1, columns 0.4; strip 2023-01-02 span 1486-1726"
+   }
+  },
+  {
+   "pandId": "0363100012133860",
+   "slug": "java-133860",
+   "address": "Javastraat 105",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#5f4e43",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-02 span 1726-1966"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#6f5d50",
+     "evidence": "strip 2023-01-02 span 1726-1966: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.71 on eaves 1, storeys 0, stucco 1, columns 0.4; strip 2023-01-02 span 1726-1966"
+   }
+  },
+  {
+   "pandId": "0363100012098497",
+   "slug": "java-098497",
+   "address": "Javastraat 107",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#635246",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie); fascia colour measured on the strip 2023-01-02 span 1966-2206"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#72665d",
+     "evidence": "strip 2023-01-02 span 1966-2206: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.77 on eaves 1, storeys 1, stucco 1, columns 0; strip 2023-01-02 span 1966-2206"
+   }
+  },
+  {
+   "pandId": "0363100012126147",
+   "slug": "java-126147",
+   "address": "Javastraat 109",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#68594e",
+      "fascia": true,
+      "name": "Nour",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (bijeenkomstfunctie, amenity=restaurant); fascia colour measured on the strip 2023-01-02 span 2207-2447"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#715e52",
+     "evidence": "strip 2023-01-02 span 2207-2447: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "restaurant",
+    "name": "Nour",
+    "category": "amenity=restaurant",
+    "osm": {
+     "type": "node",
+     "id": 2348138319,
+     "name": "Nour"
+    },
+    "bag": [
+     "bijeenkomstfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 2207-2447"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

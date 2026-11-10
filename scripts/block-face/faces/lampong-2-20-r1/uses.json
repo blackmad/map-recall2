@@ -1,0 +1,89 @@
+{
+ "street": "Lampongstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:47:48.765Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012140561",
+   "addresses": [
+    "Lampongstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000717183"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150248",
+   "addresses": [
+    "Lampongstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000717178"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085260",
+   "addresses": [
+    "Lampongstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000717172"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064007",
+   "addresses": [
+    "Lampongstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000717166"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012112381",
+   "addresses": [
+    "Lampongstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lampongstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000717161"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
