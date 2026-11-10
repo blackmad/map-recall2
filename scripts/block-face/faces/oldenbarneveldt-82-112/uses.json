@@ -1,0 +1,350 @@
+{
+ "street": "Van Oldenbarneveldtstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:20:31.764Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153162",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 110",
+    "Van Oldenbarneveldtstraat 112"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 112",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010001036277"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160629",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 108-H",
+     "use": "industriefunctie",
+     "areaM2": 121,
+     "bagId": "0363010000844198"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156229",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 106"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 106-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000844188"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158481",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 104"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 104-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001036963"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162737",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 102-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000689070"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161105",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 100-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000844169"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153166",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000844160"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156219",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 96D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 96D-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001166734"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165585",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 96C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 96C-H",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000844146"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158975",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 96B",
+    "Van Oldenbarneveldtstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 96B-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000844141"
+    },
+    {
+     "address": "Van Oldenbarneveldtstraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010003684147"
+    },
+    {
+     "address": "Van Oldenbarneveldtstraat 96B-H",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010012099272"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158608",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 96A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 96A-H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000844136"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157665",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 96"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160587",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 94-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000979541"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161554",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 92-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000844114"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161142",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 90-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000844105"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157303",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 88-H",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000844094"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012062978",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000844078"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155505",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 84-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000844070"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164852",
+   "addresses": [
+    "Van Oldenbarneveldtstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Oldenbarneveldtstraat 82-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000844062"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2809665848,
+     "lngLat": [
+      4.8737642,
+      52.3743097
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "82-H",
+      "addr:postcode": "1052KG",
+      "addr:street": "Van Oldenbarneveldtstraat",
+      "amenity": "cafe",
+      "branch": "Westerpark",
+      "brand": "Cafecito",
+      "check_date": "2025-06-19",
+      "contact:instagram": "cafecito_nl",
+      "cuisine": "coffee",
+      "email": "coffee@cafecito.nl",
+      "name": "Cafecito",
+      "opening_hours": "Mo-Fr 07:00-18:00; Sa-Su 09:00-18:00",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://cafecito.nl"
+     },
+     "fetchedAt": "2026-11-10T07:20:31.764Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

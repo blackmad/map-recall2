@@ -1,0 +1,57 @@
+{
+ "street": "Van Houweningenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:47:43.736Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012156727",
+   "addresses": [
+    "Van Houweningenstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000840993"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167046",
+   "addresses": [
+    "Van Houweningenstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841001"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157692",
+   "addresses": [
+    "Van Houweningenstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Van Houweningenstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000841009"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

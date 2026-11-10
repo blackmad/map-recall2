@@ -1,0 +1,43 @@
+{
+ "note": "Mirrors read from the red door pair on the strips (lane, not an Opus review).",
+ "reviewed": "2026-11-10 (lane, from the sheets)",
+ "pins": [],
+ "mirrors": [
+  {
+   "pandId": "0363100012158949",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "houweningen-1-31 r2 pand 1: photo door right, window left"
+  },
+  {
+   "pandId": "0363100012167046",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "r2 pand 5: door right of centre"
+  },
+  {
+   "pandId": "0363100012157843",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "r1 pand 2: door right"
+  },
+  {
+   "pandId": "0363100012159954",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "r3 pand 2: door right (arched head not drawn)"
+  },
+  {
+   "pandId": "0363100012158151",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "hendrik-134-154 r1 pand 1: wide window left, doors right"
+  },
+  {
+   "pandId": "0363100012164007",
+   "type": "fh-1887-dentil-pediment",
+   "mirror": true,
+   "reason": "hendrik r2 pand 2: door right"
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "street": "Frederik Hendrikstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:42:45.846Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158151",
+   "addresses": [
+    "Frederik Hendrikstraat 152"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frederik Hendrikstraat 152-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000639829"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157111",
+   "addresses": [
+    "Frederik Hendrikstraat 150"
+   ],
+   "groundUnits": [
+    {
+     "address": "Frederik Hendrikstraat 150-H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000639820"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,126 @@
+{
+ "face": "reigersbergen-1-37-r1",
+ "image": "staging/block-face/reigersbergen-1-37-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 399,
+ "height": 790,
+ "groundNAP": 0.592,
+ "heightM": 19.75,
+ "frame": {
+  "midRD": [
+   119840.76990625,
+   487492.186
+  ],
+  "uRD": [
+   -0.4299762954149604,
+   -0.9028401770973792
+  ],
+  "nRD": [
+   -0.9028401770973792,
+   0.4299762954149604
+  ]
+ },
+ "x0M": -4.99,
+ "x1M": 4.98,
+ "date": "2021-03-22",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012156249",
+   "x0M": -4.99,
+   "x1M": 0.01,
+   "px": [
+    0,
+    200
+   ],
+   "date": "2021-03-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002055_pano_0000_001669",
+     "timestamp": "2021-03-22T11:46:57.666080Z",
+     "distanceM": 5.8,
+     "obliquityDeg": 2.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002055_pano_0000_001670",
+     "timestamp": "2021-03-22T11:46:58.691050Z",
+     "distanceM": 7.4,
+     "obliquityDeg": 39.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002055_pano_0000_001668",
+     "timestamp": "2021-03-22T11:46:56.756020Z",
+     "distanceM": 7.8,
+     "obliquityDeg": 42.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012160664",
+   "x0M": 0.01,
+   "x1M": 4.98,
+   "px": [
+    200,
+    399
+   ],
+   "date": "2021-03-22",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002055_pano_0000_001670",
+     "timestamp": "2021-03-22T11:46:58.691050Z",
+     "distanceM": 5.7,
+     "obliquityDeg": 3.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002055_pano_0000_001407",
+     "timestamp": "2021-03-22T11:40:51.304140Z",
+     "distanceM": 27.8,
+     "obliquityDeg": 31,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002055_pano_0000_001408",
+     "timestamp": "2021-03-22T11:40:52.394090Z",
+     "distanceM": 23.7,
+     "obliquityDeg": 37.3,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2021-03-22": 19,
+  "2025-06-18": 19,
+  "2020-08-17": 19,
+  "2017-04-26": 19,
+  "2016-08-03": 19,
+  "2024-09-11": 19,
+  "2022-10-07": 19,
+  "2018-06-13": 19,
+  "2019-04-17": 19,
+  "2022-04-29": 5,
+  "2021-02-22": 0,
+  "2025-06-16": 2,
+  "2017-04-21": 1,
+  "2022-12-14": 1,
+  "2020-08-27": 1,
+  "2025-06-17": 1,
+  "2018-11-19": 1,
+  "2019-01-07": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "reigersbergen-1-37",
+  "px": [
+   3207,
+   3606
+  ]
+ }
+}

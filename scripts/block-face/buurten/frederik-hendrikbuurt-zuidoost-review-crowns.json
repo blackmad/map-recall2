@@ -1,0 +1,24 @@
+{
+ "note": "Block-end gables read from the strips.",
+ "reviewed": "2026-11-10 (lane, from the sheets)",
+ "pins": [
+  {
+   "pandId": "0363100012159954",
+   "type": "fh-1887-dentil-pediment",
+   "crown": "point-gable",
+   "reason": "houweningen-1-31 r3 pand 2: pointed brick gable with one attic light, arched heads"
+  },
+  {
+   "pandId": "0363100012152931",
+   "type": "fh-1887-dentil-pediment",
+   "crown": "point-gable",
+   "reason": "Frederik Hendrikstraat 154-ish r2 pand 3: pointed gable"
+  },
+  {
+   "pandId": "0363100012158307",
+   "type": "fh-1887-dentil-pediment",
+   "crown": "point-gable",
+   "reason": "houweningen r2 pand 3: pointed gable"
+  }
+ ]
+}

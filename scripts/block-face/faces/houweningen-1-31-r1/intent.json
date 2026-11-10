@@ -1,0 +1,85 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "houweningen-1-31-r1",
+ "street": "Van Houweningenstraat",
+ "sources": [
+  {
+   "id": "strip-2021-02-22",
+   "kind": "street-panorama",
+   "capturedAt": "2021-02-22",
+   "image": "staging/block-face/houweningen-1-31-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the frederik-hendrikbuurt library (buurt Frederik Hendrikbuurt-Zuidoost); scores and holds in scripts/block-face/faces/houweningen-1-31/auto-place.json"
+ },
+ "types": [
+  "fh-1887-dentil-pediment"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012160230",
+   "slug": "houweningen-160230",
+   "address": "Van Houweningenstraat 5",
+   "type": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6e5b51",
+     "evidence": "strip 2021-02-22 span 762-950: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-02-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1, columns 1; strip 2021-02-22 span 762-950"
+   }
+  },
+  {
+   "pandId": "0363100012157843",
+   "slug": "houweningen-157843",
+   "address": "Van Houweningenstraat 7",
+   "type": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6a584c",
+     "evidence": "strip 2021-02-22 span 950-1138: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2021-02-22",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: fh-1887-dentil-pediment scored 1 on eaves 1, roof 1, stucco 1; strip 2021-02-22 span 950-1138"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

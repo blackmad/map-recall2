@@ -1,0 +1,1572 @@
+{
+ "street": "Van Reigersbergenstraat",
+ "seed": "0363100012161489",
+ "members": [
+  "0363100012156249",
+  "0363100012160664"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of reigersbergen-1-37: 162778 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012108051 29.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062099",
+   "reason": "frontage 91.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012062431",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012062978",
+   "reason": "frontage 171.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012064071",
+   "reason": "frontage 161.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012064133",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012064170",
+   "reason": "frontage 97.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012068296",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012068923",
+   "reason": "frontage 152.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012069106",
+   "reason": "frontage 156.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012070765",
+   "reason": "frontage 160.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012073234",
+   "reason": "frontage 109.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012074508",
+   "reason": "frontage 151.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012075765",
+   "reason": "frontage 55.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012078697",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012080537",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012085345",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012087049",
+   "reason": "frontage 169.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012088686",
+   "reason": "frontage 196.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012090511",
+   "reason": "frontage 201.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012091500",
+   "reason": "frontage 80.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012092749",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012093249",
+   "reason": "frontage 154.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012094166",
+   "reason": "frontage 150.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012094649",
+   "reason": "frontage 56.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012095635",
+   "reason": "frontage 156.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012095986",
+   "reason": "frontage 86.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012096312",
+   "reason": "frontage 131.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012097064",
+   "reason": "frontage 161.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012097369",
+   "reason": "frontage 160.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012098006",
+   "reason": "frontage 166.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012102987",
+   "reason": "frontage 156.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012103957",
+   "reason": "frontage 144.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012107080",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012107450",
+   "reason": "frontage 69.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012110842",
+   "reason": "frontage 161.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012110900",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012113175",
+   "reason": "frontage 116.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012114021",
+   "reason": "frontage 55.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012130131",
+   "reason": "frontage 56.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152351",
+   "reason": "frontage 31.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012116763",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012117087",
+   "reason": "frontage 165.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012117185",
+   "reason": "frontage 169.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012117381",
+   "reason": "frontage 55.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012117950",
+   "reason": "frontage 159.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012118303",
+   "reason": "frontage 80.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012119296",
+   "reason": "frontage 161.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012119725",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012120593",
+   "reason": "frontage 120.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012120863",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012121169",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012122740",
+   "reason": "frontage 164.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012123270",
+   "reason": "frontage 125.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012126724",
+   "reason": "frontage 227.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012127274",
+   "reason": "frontage 199.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012129482",
+   "reason": "frontage 82.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012132504",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012134249",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012135155",
+   "reason": "frontage 133.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012136487",
+   "reason": "frontage 116.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012136928",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012137990",
+   "reason": "frontage 149.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012143493",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012144196",
+   "reason": "frontage 141.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012145003",
+   "reason": "frontage 103.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012146183",
+   "reason": "frontage 144.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012147161",
+   "reason": "frontage 75.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012148808",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012150234",
+   "reason": "frontage 120.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152326",
+   "reason": "frontage 117.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152378",
+   "reason": "frontage 81.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152390",
+   "reason": "frontage 169.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152438",
+   "reason": "frontage 42.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152451",
+   "reason": "frontage 158.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152541",
+   "reason": "frontage 197.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152548",
+   "reason": "frontage 122.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152672",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152689",
+   "reason": "frontage 73.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152789",
+   "reason": "frontage 61.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152824",
+   "reason": "frontage 44.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152856",
+   "reason": "frontage 84.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152888",
+   "reason": "frontage 200.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152931",
+   "reason": "frontage 75.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152966",
+   "reason": "frontage 76.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012152985",
+   "reason": "frontage 88.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153126",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153139",
+   "reason": "frontage 127.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153162",
+   "reason": "frontage 172.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153166",
+   "reason": "frontage 173.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153241",
+   "reason": "frontage 179.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153416",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153513",
+   "reason": "frontage 199.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153566",
+   "reason": "frontage 177.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153589",
+   "reason": "frontage 175.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153637",
+   "reason": "frontage 95.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153689",
+   "reason": "frontage 166.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012153718",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012161768"
+  },
+  {
+   "pandId": "0363100012153786",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012156678"
+  },
+  {
+   "pandId": "0363100012153807",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012153810"
+  },
+  {
+   "pandId": "0363100012153814",
+   "reason": "frontage 117.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012154093",
+   "reason": "frontage 54.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012154196",
+   "reason": "frontage 151.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012154220",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012153800"
+  },
+  {
+   "pandId": "0363100012154311",
+   "reason": "frontage 135.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012154357",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155284",
+   "reason": "frontage 172.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155441",
+   "reason": "frontage 117.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155444",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155455",
+   "reason": "frontage 205.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155505",
+   "reason": "frontage 171.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155561",
+   "reason": "frontage 171.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155649",
+   "reason": "frontage 66.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155661",
+   "reason": "frontage 145.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155669",
+   "reason": "frontage 94.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155718",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155730",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012153800"
+  },
+  {
+   "pandId": "0363100012155772",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155828",
+   "reason": "frontage 84.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155912",
+   "reason": "frontage 138.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012155999",
+   "reason": "frontage 200.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157976",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156074",
+   "reason": "frontage 74.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156096",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012155474"
+  },
+  {
+   "pandId": "0363100012156097",
+   "reason": "frontage 79.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156164",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012153560"
+  },
+  {
+   "pandId": "0363100012156176",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012166883"
+  },
+  {
+   "pandId": "0363100012156219",
+   "reason": "frontage 172.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156229",
+   "reason": "frontage 174.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156403",
+   "reason": "frontage 34.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156465",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156521",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012156249"
+  },
+  {
+   "pandId": "0363100012156720",
+   "reason": "frontage 78.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156725",
+   "reason": "frontage 90.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156727",
+   "reason": "frontage 54.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156794",
+   "reason": "frontage 54.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012156999",
+   "reason": "frontage 170.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157111",
+   "reason": "frontage 77.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157176",
+   "reason": "frontage 170.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157219",
+   "reason": "frontage 49.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157220",
+   "reason": "frontage 71.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157231",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157270",
+   "reason": "frontage 69.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157303",
+   "reason": "frontage 171.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157321",
+   "reason": "frontage 204.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157364",
+   "reason": "frontage 155.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157409",
+   "reason": "frontage 150.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157601",
+   "reason": "frontage 30.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157613",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012153291"
+  },
+  {
+   "pandId": "0363100012157665",
+   "reason": "frontage 171.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157672",
+   "reason": "frontage 54.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157692",
+   "reason": "frontage 54.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157716",
+   "reason": "frontage 54.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157773",
+   "reason": "frontage 178.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012157843",
+   "reason": "frontage 54.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158004",
+   "reason": "frontage 173.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158116",
+   "reason": "frontage 121.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158145",
+   "reason": "frontage 183.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158151",
+   "reason": "frontage 77.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158201",
+   "reason": "frontage 175.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158307",
+   "reason": "frontage 54.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158366",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012153810"
+  },
+  {
+   "pandId": "0363100012158370",
+   "reason": "frontage 120.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158481",
+   "reason": "frontage 174.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158608",
+   "reason": "frontage 172.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158652",
+   "reason": "frontage 34.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158704",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012156678"
+  },
+  {
+   "pandId": "0363100012158868",
+   "reason": "frontage 160.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158916",
+   "reason": "frontage 76.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158949",
+   "reason": "frontage 54.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158963",
+   "reason": "frontage 200.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012158975",
+   "reason": "frontage 172.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159018",
+   "reason": "frontage 40.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159068",
+   "reason": "frontage 33.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159082",
+   "reason": "frontage 172.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159105",
+   "reason": "frontage 63.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159130",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159135",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012152999"
+  },
+  {
+   "pandId": "0363100012159185",
+   "reason": "frontage 177.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159205",
+   "reason": "frontage 67.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159242",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012155474"
+  },
+  {
+   "pandId": "0363100012159274",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159387",
+   "reason": "frontage 100.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159572",
+   "reason": "frontage 133.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159587",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159613",
+   "reason": "frontage 54.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159733",
+   "reason": "frontage 121.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159764",
+   "reason": "frontage 30.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159821",
+   "reason": "frontage 145.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159853",
+   "reason": "frontage 165.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159921",
+   "reason": "frontage 115.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012159933",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012166918"
+  },
+  {
+   "pandId": "0363100012159954",
+   "reason": "frontage 54.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012160230",
+   "reason": "frontage 54.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012160432",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012161489"
+  },
+  {
+   "pandId": "0363100012160467",
+   "reason": "frontage 116.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012160502",
+   "reason": "frontage 139.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012160524",
+   "reason": "frontage 89.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012160587",
+   "reason": "frontage 171.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012160629",
+   "reason": "frontage 172.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012160769",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012166120"
+  },
+  {
+   "pandId": "0363100012160837",
+   "reason": "frontage 180.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012160880",
+   "reason": "frontage 76.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012160905",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012153560"
+  },
+  {
+   "pandId": "0363100012160910",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012160769"
+  },
+  {
+   "pandId": "0363100012160979",
+   "reason": "frontage 128.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161097",
+   "reason": "frontage 132.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161105",
+   "reason": "frontage 173.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161142",
+   "reason": "frontage 171.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161234",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161334",
+   "reason": "frontage 198.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161412",
+   "reason": "frontage 122.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163330",
+   "reason": "frontage 162.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161539",
+   "reason": "frontage 38.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161554",
+   "reason": "frontage 171.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161572",
+   "reason": "frontage 79.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161580",
+   "reason": "frontage 147.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161605",
+   "reason": "frontage 31.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161764",
+   "reason": "frontage 79.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161909",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161928",
+   "reason": "frontage 48.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012161994",
+   "reason": "frontage 170.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162014",
+   "reason": "frontage 150.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162047",
+   "reason": "frontage 199.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162154",
+   "reason": "frontage 75.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162195",
+   "reason": "frontage 71.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162344",
+   "reason": "frontage 117.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162380",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012164833"
+  },
+  {
+   "pandId": "0363100012162506",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012156059"
+  },
+  {
+   "pandId": "0363100012162599",
+   "reason": "frontage 129.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162737",
+   "reason": "frontage 173.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162764",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162863",
+   "reason": "frontage 54.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162901",
+   "reason": "frontage 37.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012162933",
+   "reason": "frontage 134.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163008",
+   "reason": "frontage 145.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163129",
+   "reason": "frontage 132.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163170",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163198",
+   "reason": "frontage 62.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163222",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012156059"
+  },
+  {
+   "pandId": "0363100012163315",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012164833"
+  },
+  {
+   "pandId": "0363100012163427",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163516",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163630",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012160432"
+  },
+  {
+   "pandId": "0363100012163779",
+   "reason": "frontage 129.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163783",
+   "reason": "frontage 56.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012163814",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012163395"
+  },
+  {
+   "pandId": "0363100012163846",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164007",
+   "reason": "frontage 75.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164073",
+   "reason": "frontage 109.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164206",
+   "reason": "frontage 121.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164255",
+   "reason": "frontage 51.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164325",
+   "reason": "frontage 30.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164533",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164721",
+   "reason": "frontage 76.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164742",
+   "reason": "frontage 199.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164747",
+   "reason": "frontage 85.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164804",
+   "reason": "frontage 69.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164829",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012164852",
+   "reason": "frontage 170.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165159",
+   "reason": "frontage 198.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165179",
+   "reason": "frontage 59.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165226",
+   "reason": "frontage 162.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165258",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165319",
+   "reason": "frontage 152.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165332",
+   "reason": "frontage 54.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165392",
+   "reason": "frontage 54.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165393",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012152999"
+  },
+  {
+   "pandId": "0363100012165440",
+   "reason": "frontage 171.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165508",
+   "reason": "frontage 76.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165521",
+   "reason": "frontage 105.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165578",
+   "reason": "frontage 139.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165585",
+   "reason": "frontage 172.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165678",
+   "reason": "frontage 43.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165736",
+   "reason": "frontage 131.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165776",
+   "reason": "frontage 55.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012165875",
+   "reason": "frontage 111.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166050",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012153800"
+  },
+  {
+   "pandId": "0363100012166065",
+   "reason": "frontage 163.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166285",
+   "reason": "frontage 158.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166294",
+   "reason": "frontage 154.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166317",
+   "reason": "frontage 126.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166368",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166413",
+   "reason": "frontage 99.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166479",
+   "reason": "frontage 135.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166575",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166596",
+   "reason": "frontage 54.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166795",
+   "reason": "frontage 44.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166805",
+   "reason": "frontage 126.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166822",
+   "reason": "frontage 64.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012166929",
+   "reason": "frontage 199.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012167020",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012166918"
+  },
+  {
+   "pandId": "0363100012167046",
+   "reason": "frontage 54.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012167086",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012167104",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012155772"
+  },
+  {
+   "pandId": "0363100012167119",
+   "reason": "frontage 172.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012167163",
+   "reason": "frontage 76.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012167168",
+   "reason": "frontage 46.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012167215",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012167222",
+   "reason": "frontage 104.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012167241",
+   "reason": "frontage 116.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012167267",
+   "reason": "sightline to Van Reigersbergenstraat crosses 0363100012163395"
+  },
+  {
+   "pandId": "0363100012183577",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012188293",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012191494",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012192764",
+   "reason": "frontage 150.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012193554",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012194914",
+   "reason": "frontage 161.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012196725",
+   "reason": "frontage 135.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012197630",
+   "reason": "frontage 127.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012197980",
+   "reason": "frontage 156.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012198997",
+   "reason": "frontage 150.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012202533",
+   "reason": "frontage 121.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012202595",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012203091",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012204593",
+   "reason": "frontage 121.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012205580",
+   "reason": "frontage 104.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012205854",
+   "reason": "frontage 144.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012206208",
+   "reason": "frontage 147.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012207145",
+   "reason": "frontage 124.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012207146",
+   "reason": "frontage 150.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012207147",
+   "reason": "frontage 144.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012208025",
+   "reason": "frontage 134.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012208547",
+   "reason": "frontage 133.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012209442",
+   "reason": "frontage 149.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012209560",
+   "reason": "frontage 155.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012209955",
+   "reason": "frontage 173.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012211913",
+   "reason": "frontage 124.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012214280",
+   "reason": "frontage 78.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012214302",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012214303",
+   "reason": "frontage 143.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012214601",
+   "reason": "frontage 129.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012215329",
+   "reason": "frontage 215.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012216372",
+   "reason": "frontage 121.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012216784",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012216967",
+   "reason": "frontage 138.8 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012218617",
+   "reason": "frontage 150.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012220713",
+   "reason": "frontage 155.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012222274",
+   "reason": "frontage 127.2 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012222617",
+   "reason": "frontage 116.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012222758",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012222788",
+   "reason": "frontage 106.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012222950",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012223378",
+   "reason": "frontage 110.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012224098",
+   "reason": "frontage 115.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012225245",
+   "reason": "frontage 138.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012226481",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012228860",
+   "reason": "frontage 133.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012231007",
+   "reason": "frontage 204.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012231008",
+   "reason": "frontage 210.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012231275",
+   "reason": "frontage 144.9 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012233544",
+   "reason": "frontage 85.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012233631",
+   "reason": "frontage 68.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012237050",
+   "reason": "frontage 171.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012235889",
+   "reason": "frontage 54.3 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012235917",
+   "reason": "frontage 118.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012236281",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012236296",
+   "reason": "frontage 223.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012236745",
+   "reason": "frontage 38.1 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012236753",
+   "reason": "frontage 99.6 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012236791",
+   "reason": "frontage 161.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012236984",
+   "reason": "no frontage on Van Reigersbergenstraat: No footprint edge faces Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012237064",
+   "reason": "frontage 180.0 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012237116",
+   "reason": "frontage 61.7 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012237389",
+   "reason": "frontage 140.5 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012241753",
+   "reason": "frontage 205.4 m from Van Reigersbergenstraat"
+  },
+  {
+   "pandId": "0363100012064442",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065603",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012081097",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082280",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012087535",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012096039",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012105271",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012114065",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115688",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116611",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121031",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124271",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012134308",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148234",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012148379",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153560",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153800",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012156249",
+   "alongM": 80.3,
+   "widthM": 5,
+   "eavesM": 13.61,
+   "roofMaxM": 17.4,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160664",
+   "alongM": 85.29,
+   "widthM": 4.98,
+   "eavesM": 13.56,
+   "roofMaxM": 17.75,
+   "storeys3dbag": 5,
+   "builtYear": 1888,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "reigersbergen-1-37"
+}

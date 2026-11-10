@@ -1,0 +1,1474 @@
+{
+ "face": "houweningen-1-31",
+ "street": "Van Houweningenstraat",
+ "library": "frederik-hendrikbuurt",
+ "stripDate": "2021-02-22",
+ "seconds": 22.54,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "houweningen-1-31-r1",
+   "pands": [
+    "0363100012160230",
+    "0363100012157843"
+   ],
+   "passed": false,
+   "triangles": 3101
+  },
+  {
+   "face": "houweningen-1-31-r2",
+   "pands": [
+    "0363100012158949",
+    "0363100012157672"
+   ],
+   "passed": true,
+   "triangles": 3330
+  },
+  {
+   "face": "houweningen-1-31-r3",
+   "pands": [
+    "0363100012156727",
+    "0363100012167046",
+    "0363100012157692"
+   ],
+   "passed": true,
+   "triangles": 4947
+  },
+  {
+   "face": "houweningen-1-31-r4",
+   "pands": [
+    "0363100012156794",
+    "0363100012159954",
+    "0363100012165776"
+   ],
+   "passed": true,
+   "triangles": 4977
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012159613",
+   "address": "Van Houweningenstraat 1A",
+   "builtYear": 1887,
+   "widthM": 10.35,
+   "eavesM": 13.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6960",
+    "wallRaw": "#867268",
+    "skyline": {
+     "eavesM": 13.78,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 2.85,
+      "topWidthM": 0.53,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.372,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.37,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.27,
+       "widthM": 0.82,
+       "centre": 0.57
+      },
+      {
+       "atM": 8.5,
+       "widthM": 1.27,
+       "centre": 0.56
+      },
+      {
+       "atM": 5.65,
+       "widthM": 2.92,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best fh-1887-dentil-pediment: frontage 10.35 m, type 4.3-5.4 m)",
+   "best": {
+    "type": "fh-1887-dentil-pediment",
+    "score": 0,
+    "veto": [
+     "frontage 10.35 m, type 4.3-5.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.67 m = 4 storeys of 3.42 m vs the type's 3.39 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.45 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.331 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154093",
+   "address": "Van Houweningenstraat 3",
+   "builtYear": 1887,
+   "widthM": 8.71,
+   "eavesM": 13.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#736258",
+    "wallRaw": "#7c6a60",
+    "skyline": {
+     "eavesM": 14.03,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.82,
+      "topWidthM": 1.35,
+      "centre": 0.71
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.408,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.14 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.14,
+       "light": 0.37
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.7,
+       "light": 0.36
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.72,
+       "widthM": 2.33,
+       "centre": 0.7
+      },
+      {
+       "atM": 8.52,
+       "widthM": 0.95,
+       "centre": 0.15
+      },
+      {
+       "atM": 5.67,
+       "widthM": 0.95,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best fh-1887-dentil-pediment: frontage 8.71 m, type 4.3-5.4 m)",
+   "best": {
+    "type": "fh-1887-dentil-pediment",
+    "score": 0,
+    "veto": [
+     "frontage 8.71 m, type 4.3-5.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.69 m = 4 storeys of 3.42 m vs the type's 3.39 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.67 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.38 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160230",
+   "address": "Van Houweningenstraat 5",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5b51",
+    "wallRaw": "#736257",
+    "skyline": {
+     "eavesM": 14.22,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 4.8,
+      "topWidthM": 0.2,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.296,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6e5b51",
+     "evidence": "strip 2021-02-22 span 762-950: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012160230",
+    "ncc": 0.276,
+    "nccRaw": 0.276,
+    "shiftM": [
+     -0.3,
+     0.4
+    ],
+    "usable": 0.88,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.37 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#6d5b51",
+     "model": "#866f63",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.303
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.276
+   }
+  },
+  {
+   "pandId": "0363100012157843",
+   "address": "Van Houweningenstraat 7",
+   "builtYear": 1887,
+   "widthM": 4.69,
+   "eavesM": 13.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a584c",
+    "wallRaw": "#79655a",
+    "skyline": {
+     "eavesM": 13.82,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 2.43,
+      "topWidthM": 0.97,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.35,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.67,
+       "widthM": 0.93,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6a584c",
+     "evidence": "strip 2021-02-22 span 950-1138: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (r1 pand 2: door right)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157843",
+    "ncc": 0.312,
+    "nccRaw": 0.312,
+    "shiftM": [
+     -0.3,
+     0.4
+    ],
+    "usable": 0.89,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6d5b50",
+     "model": "#836d5e",
+     "dL": 0.071
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.558
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.312
+   }
+  },
+  {
+   "pandId": "0363100012165392",
+   "address": "Van Houweningenstraat 9",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5d53",
+    "wallRaw": "#806d62",
+    "skyline": {
+     "eavesM": 14.03,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.22,
+      "topWidthM": 1.05,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.388,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "era guard: the strip reads ribbon windows; fh-1887-dentil-pediment is a punched-window type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158949",
+   "address": "Van Houweningenstraat 11",
+   "builtYear": 1887,
+   "widthM": 4.68,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#77655a",
+    "wallRaw": "#7c6a5f",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.13,
+      "topWidthM": 0.78,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.398,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.1,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.09 (light 0.46): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.09,
+       "light": 0.46
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 12.97,
+       "widthM": 2.52,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#77655a",
+     "evidence": "strip 2021-02-22 span 1327-1514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (houweningen-1-31 r2 pand 1: photo door right, window left)"
+   ],
+   "likeness": {
+    "pandId": "0363100012158949",
+    "ncc": 0.308,
+    "nccRaw": 0.308,
+    "shiftM": [
+     -0.3,
+     0.4
+    ],
+    "usable": 0.86,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.19"
+    ],
+    "wall": {
+     "photo": "#6e5c52",
+     "model": "#8e786b",
+     "dL": 0.112
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.423
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.316
+   }
+  },
+  {
+   "pandId": "0363100012157672",
+   "address": "Van Houweningenstraat 13",
+   "builtYear": 1887,
+   "widthM": 4.72,
+   "eavesM": 13.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b584d",
+    "wallRaw": "#7b675d",
+    "skyline": {
+     "eavesM": 14.18,
+     "eavesRow": 210,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.45,
+      "topWidthM": 0.4,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.354,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6b584d",
+     "evidence": "strip 2021-02-22 span 1515-1704: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157672",
+    "ncc": 0.357,
+    "nccRaw": 0.357,
+    "shiftM": [
+     -0.25,
+     0.4
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6f5b50",
+     "model": "#846c5f",
+     "dL": 0.071
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.552
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.357
+   }
+  },
+  {
+   "pandId": "0363100012158307",
+   "address": "Van Houweningenstraat 15",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.91,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#67564b",
+    "wallRaw": "#79665d",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.03,
+      "topWidthM": 1.15,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.299,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.44,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.88,
+       "widthM": 0.9,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.115 < 0.15 (photo vs model body; likeness.ts PASS)",
+   "likeness": {
+    "pandId": "0363100012158307",
+    "ncc": 0.115,
+    "nccRaw": 0.115,
+    "shiftM": [
+     -0.25,
+     0
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#705d53",
+     "model": "#806b5d",
+     "dL": 0.051
+    },
+    "glazing": {
+     "photo": 0.39,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.499
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.115
+   }
+  },
+  {
+   "pandId": "0363100012156727",
+   "address": "Van Houweningenstraat 17",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.7,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705e53",
+    "wallRaw": "#736056",
+    "skyline": {
+     "eavesM": 14.13,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.13,
+      "topWidthM": 1.6,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.322,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.41,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.5,
+       "widthM": 1.2,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#705e53",
+     "evidence": "strip 2021-02-22 span 1892-2080: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012156727",
+    "ncc": 0.355,
+    "nccRaw": 0.355,
+    "shiftM": [
+     -0.3,
+     0.3
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25 mean 0.37 vs photo 0.49"
+    ],
+    "wall": {
+     "photo": "#6f5e53",
+     "model": "#887265",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.49,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.491
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.378
+   }
+  },
+  {
+   "pandId": "0363100012167046",
+   "address": "Van Houweningenstraat 19",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#715d52",
+    "wallRaw": "#715f55",
+    "skyline": {
+     "eavesM": 14.2,
+     "eavesRow": 209,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.05,
+      "topWidthM": 1.4,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.37,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#715d52",
+     "evidence": "strip 2021-02-22 span 2080-2268: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (r2 pand 5: door right of centre)"
+   ],
+   "likeness": {
+    "pandId": "0363100012167046",
+    "ncc": 0.333,
+    "nccRaw": 0.333,
+    "shiftM": [
+     -0.3,
+     0.4
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#6e5b4f",
+     "model": "#897164",
+     "dL": 0.094
+    },
+    "glazing": {
+     "photo": 0.34,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.501
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.333
+   }
+  },
+  {
+   "pandId": "0363100012157692",
+   "address": "Van Houweningenstraat 21",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5c53",
+    "wallRaw": "#6f5f55",
+    "skyline": {
+     "eavesM": 14.22,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2,
+      "topWidthM": 1.35,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.393,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#6f5c53",
+     "evidence": "strip 2021-02-22 span 2268-2456: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012157692",
+    "ncc": 0.301,
+    "nccRaw": 0.301,
+    "shiftM": [
+     -0.3,
+     0.4
+    ],
+    "usable": 0.9,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.18"
+    ],
+    "wall": {
+     "photo": "#6e5c52",
+     "model": "#877065",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.439
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.298
+   }
+  },
+  {
+   "pandId": "0363100012166596",
+   "address": "Van Houweningenstraat 23",
+   "builtYear": 1887,
+   "widthM": 4.71,
+   "eavesM": 13.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5c51",
+    "wallRaw": "#6b594f",
+    "skyline": {
+     "eavesM": 14.25,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 3.57,
+      "topWidthM": 0.55,
+      "centre": 0.42
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.165,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "era guard: the strip reads ribbon windows; fh-1887-dentil-pediment is a punched-window type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165332",
+   "address": "Van Houweningenstraat 25",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#725c4d",
+    "wallRaw": "#67574c",
+    "skyline": {
+     "eavesM": 14.22,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 3.6,
+      "topWidthM": 0.57,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.144,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.129 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17)",
+   "likeness": {
+    "pandId": "0363100012165332",
+    "ncc": 0.129,
+    "nccRaw": 0.129,
+    "shiftM": [
+     -0.35,
+     0.05
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17"
+    ],
+    "wall": {
+     "photo": "#705b4c",
+     "model": "#8b705e",
+     "dL": 0.088
+    },
+    "glazing": {
+     "photo": 0.32,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.378,
+    "footOffsetM": 1.1
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.129
+   }
+  },
+  {
+   "pandId": "0363100012162863",
+   "address": "Van Houweningenstraat 27",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5343",
+    "wallRaw": "#625349",
+    "skyline": {
+     "eavesM": 14.65,
+     "eavesRow": 191,
+     "confidence": 0.6,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 4.78,
+      "topWidthM": 0.35,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.122,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.134 < 0.15 (photo vs model body; likeness.ts PASS)",
+   "likeness": {
+    "pandId": "0363100012162863",
+    "ncc": 0.134,
+    "nccRaw": 0.134,
+    "shiftM": [
+     -0.3,
+     0.05
+    ],
+    "usable": 0.91,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#755e50",
+     "model": "#856854",
+     "dL": 0.039
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.452,
+    "footOffsetM": 1.1
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.134
+   }
+  },
+  {
+   "pandId": "0363100012156794",
+   "address": "Van Houweningenstraat 29",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.76,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a635b",
+    "wallRaw": "#625146",
+    "skyline": {
+     "eavesM": 16.38,
+     "eavesRow": 122,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 3.05,
+      "topWidthM": 0.25,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.089,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#7a635b",
+     "evidence": "strip 2021-02-22 span 3020-3208: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012156794",
+    "ncc": 0.229,
+    "nccRaw": 0.229,
+    "shiftM": [
+     -0.35,
+     0.05
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue -18 deg",
+     "glazing storey band off by 0.40 mean 0.38 vs photo 0.65"
+    ],
+    "wall": {
+     "photo": "#968d81",
+     "model": "#91766c",
+     "dL": -0.051
+    },
+    "glazing": {
+     "photo": 0.65,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.413,
+    "footOffsetM": 1.1
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.234
+   }
+  },
+  {
+   "pandId": "0363100012159954",
+   "address": "Van Houweningenstraat 31",
+   "builtYear": 1887,
+   "widthM": 4.7,
+   "eavesM": 13.95,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#766057",
+    "wallRaw": "#615249",
+    "skyline": {
+     "eavesM": 16.2,
+     "eavesRow": 129,
+     "confidence": 0.84,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 3.23,
+      "topWidthM": 0.6,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.08,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#766057",
+     "evidence": "strip 2021-02-22 span 3208-3396: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "point-gable",
+    "mirror": true
+   },
+   "notes": [
+    "crown point-gable: reviewer pin (houweningen-1-31 r3 pand 2: pointed brick gable with one attic light, arched heads)",
+    "door reviewer pin: mirrored (r3 pand 2: door right (arched head not drawn))"
+   ],
+   "likeness": {
+    "pandId": "0363100012159954",
+    "ncc": 0.15,
+    "nccRaw": 0.15,
+    "shiftM": [
+     -0.35,
+     0.35
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17 mean 0.40 vs photo 0.25"
+    ],
+    "wall": {
+     "photo": "#756056",
+     "model": "#8d7368",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.25,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.313,
+    "footOffsetM": 1.1
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment~m": 0.155
+   }
+  },
+  {
+   "pandId": "0363100012165776",
+   "address": "Van Houweningenstraat 31A",
+   "builtYear": 1887,
+   "widthM": 5.3,
+   "eavesM": 13.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79645b",
+    "wallRaw": "#65554e",
+    "skyline": {
+     "eavesM": 15.9,
+     "eavesRow": 141,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 3.28,
+      "topWidthM": 0.38,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.101,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "fh-1887-dentil-pediment",
+   "score": 1,
+   "placement": {
+    "type": "fh-1887-dentil-pediment",
+    "measuredPalette": {
+     "brick": "#79645b",
+     "evidence": "strip 2021-02-22 span 3396-3608: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012165776",
+    "ncc": 0.205,
+    "nccRaw": 0.205,
+    "shiftM": [
+     -0.4,
+     -0.15
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.38 vs photo 0.28"
+    ],
+    "wall": {
+     "photo": "#715f56",
+     "model": "#90776c",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.461,
+    "footOffsetM": 1.1
+   },
+   "challengers": {
+    "fh-1887-dentil-pediment": 0.216
+   }
+  }
+ ]
+}

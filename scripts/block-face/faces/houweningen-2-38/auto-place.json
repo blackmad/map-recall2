@@ -1,0 +1,1271 @@
+{
+ "face": "houweningen-2-38",
+ "street": "Van Houweningenstraat",
+ "library": "frederik-hendrikbuurt",
+ "stripDate": "2021-03-22",
+ "seconds": 10.47,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012161605",
+   "address": "Van Houweningenstraat 38",
+   "builtYear": 1888,
+   "widthM": 4.6,
+   "eavesM": 13.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b3f37",
+    "wallRaw": "#554a41",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.07,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.01,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.084 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.30)",
+   "likeness": {
+    "pandId": "0363100012161605",
+    "ncc": 0.084,
+    "nccRaw": 0.084,
+    "shiftM": [
+     0.4,
+     0.3
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.30"
+    ],
+    "wall": {
+     "photo": "#4b3f36",
+     "model": "#67564b",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.44,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.36,
+    "footOffsetM": 0.65
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156521",
+   "address": "Van Houweningenstraat 36",
+   "builtYear": 1888,
+   "widthM": 4.86,
+   "eavesM": 13.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#775f51",
+    "wallRaw": "#55483e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.028,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.048 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.29)",
+   "likeness": {
+    "pandId": "0363100012156521",
+    "ncc": 0.048,
+    "nccRaw": 0.048,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.29"
+    ],
+    "wall": {
+     "photo": "#786658",
+     "model": "#907362",
+     "dL": 0.067
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.264,
+    "footOffsetM": 0.65
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153807",
+   "address": "Van Houweningenstraat 34",
+   "builtYear": 1888,
+   "widthM": 4.7,
+   "eavesM": 13.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#766458",
+    "wallRaw": "#594f47",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.033,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.062 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.64 mean 0.40 vs photo 0.69)",
+   "likeness": {
+    "pandId": "0363100012153807",
+    "ncc": 0.062,
+    "nccRaw": 0.062,
+    "shiftM": [
+     -0.4,
+     -0.35
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.64 mean 0.40 vs photo 0.69"
+    ],
+    "wall": {
+     "photo": "#7d6b61",
+     "model": "#8d7869",
+     "dL": 0.047
+    },
+    "glazing": {
+     "photo": 0.69,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.33,
+    "footOffsetM": 0.65
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158366",
+   "address": "Van Houweningenstraat 32",
+   "builtYear": 1888,
+   "widthM": 4.6,
+   "eavesM": 13.6,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6a60",
+    "wallRaw": "#594a42",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.03,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC -0.032 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.64 mean 0.38 vs photo 0.76)",
+   "likeness": {
+    "pandId": "0363100012158366",
+    "ncc": -0.032,
+    "nccRaw": -0.032,
+    "shiftM": [
+     0.15,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.64 mean 0.38 vs photo 0.76"
+    ],
+    "wall": {
+     "photo": "#816e62",
+     "model": "#927d72",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.76,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.34,
+    "footOffsetM": 0.65
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162380",
+   "address": "Van Houweningenstraat 30",
+   "builtYear": 1888,
+   "widthM": 4.82,
+   "eavesM": 13.51,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5f54",
+    "wallRaw": "#5c4f46",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.077,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.75,
+       "widthM": 0.8,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.097 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.65 mean 0.39 vs photo 0.78)",
+   "likeness": {
+    "pandId": "0363100012162380",
+    "ncc": 0.097,
+    "nccRaw": 0.097,
+    "shiftM": [
+     0.1,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.65 mean 0.39 vs photo 0.78"
+    ],
+    "wall": {
+     "photo": "#746358",
+     "model": "#867366",
+     "dL": 0.063
+    },
+    "glazing": {
+     "photo": 0.78,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.348,
+    "footOffsetM": 0.65
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163315",
+   "address": "Van Houweningenstraat 28",
+   "builtYear": 1888,
+   "widthM": 4.71,
+   "eavesM": 13.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6b61",
+    "wallRaw": "#605248",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.121,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.75,
+       "widthM": 0.82,
+       "centre": 0.9
+      },
+      {
+       "atM": 4.8,
+       "widthM": 1.07,
+       "centre": 0.64
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.02 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.28)",
+   "likeness": {
+    "pandId": "0363100012163315",
+    "ncc": 0.02,
+    "nccRaw": 0.02,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.28"
+    ],
+    "wall": {
+     "photo": "#74645a",
+     "model": "#907e73",
+     "dL": 0.104
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.261,
+    "footOffsetM": 0.65
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159933",
+   "address": "Van Houweningenstraat 26",
+   "builtYear": 1888,
+   "widthM": 4.47,
+   "eavesM": 13.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78665c",
+    "wallRaw": "#61554c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.091,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.004 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.65 mean 0.37 vs photo 0.83)",
+   "likeness": {
+    "pandId": "0363100012159933",
+    "ncc": 0.004,
+    "nccRaw": 0.004,
+    "shiftM": [
+     0.25,
+     -0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.65 mean 0.37 vs photo 0.83"
+    ],
+    "wall": {
+     "photo": "#7a685e",
+     "model": "#8f796d",
+     "dL": 0.071
+    },
+    "glazing": {
+     "photo": 0.83,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.345,
+    "footOffsetM": 0.65
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167020",
+   "address": "Van Houweningenstraat 24",
+   "builtYear": 1888,
+   "widthM": 4.91,
+   "eavesM": 13.58,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f6c61",
+    "wallRaw": "#64544a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.065,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.88,
+       "widthM": 0.85,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 68 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156096",
+   "address": "Van Houweningenstraat 22",
+   "builtYear": 1888,
+   "widthM": 4.7,
+   "eavesM": 13.56,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#72655a",
+    "wallRaw": "#6e6055",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.12,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.164,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 57 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159242",
+   "address": "Van Houweningenstraat 20",
+   "builtYear": 1888,
+   "widthM": 4.7,
+   "eavesM": 14.02,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f6c5c",
+    "wallRaw": "#6c5d52",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.12,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.102,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.95,
+       "widthM": 1.18,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC -0.016 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.62 mean 0.40 vs photo 0.93)",
+   "likeness": {
+    "pandId": "0363100012159242",
+    "ncc": -0.016,
+    "nccRaw": -0.016,
+    "shiftM": [
+     0.4,
+     -0.25
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.62 mean 0.40 vs photo 0.93"
+    ],
+    "wall": {
+     "photo": "#847163",
+     "model": "#957f6d",
+     "dL": 0.053
+    },
+    "glazing": {
+     "photo": 0.93,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.411
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163814",
+   "address": "Van Houweningenstraat 18",
+   "builtYear": 1888,
+   "widthM": 4.72,
+   "eavesM": 13.63,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.35,
+    "toM": 3.35,
+    "depthM": 0.3,
+    "centre": 0.71
+   },
+   "strip": {
+    "wall": "#6e5b51",
+    "wallRaw": "#6b5b52",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.02,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.196,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.124 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.63 mean 0.39 vs photo 0.73)",
+   "likeness": {
+    "pandId": "0363100012163814",
+    "ncc": 0.124,
+    "nccRaw": 0.124,
+    "shiftM": [
+     0.05,
+     0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.63 mean 0.39 vs photo 0.73"
+    ],
+    "wall": {
+     "photo": "#776559",
+     "model": "#866f63",
+     "dL": 0.049
+    },
+    "glazing": {
+     "photo": 0.73,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.346
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167267",
+   "address": "Van Houweningenstraat 16",
+   "builtYear": 1888,
+   "widthM": 4.61,
+   "eavesM": 13.74,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5f55",
+    "wallRaw": "#67584f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.167,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.05,
+       "widthM": 0.88,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.015 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.25)",
+   "likeness": {
+    "pandId": "0363100012167267",
+    "ncc": 0.015,
+    "nccRaw": 0.015,
+    "shiftM": [
+     0.1,
+     0.4
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.25"
+    ],
+    "wall": {
+     "photo": "#64594d",
+     "model": "#817468",
+     "dL": 0.11
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.298
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165393",
+   "address": "Van Houweningenstraat 14",
+   "builtYear": 1888,
+   "widthM": 4.83,
+   "eavesM": 13.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d6a5e",
+    "wallRaw": "#605249",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.02,
+       "widthM": 0.88,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 67 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159135",
+   "address": "Van Houweningenstraat 12",
+   "builtYear": 1888,
+   "widthM": 4.7,
+   "eavesM": 13.65,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6a61",
+    "wallRaw": "#5e5148",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.1,
+       "widthM": 1.65,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163222",
+   "address": "Van Houweningenstraat 10",
+   "builtYear": 1888,
+   "widthM": 4.7,
+   "eavesM": 13.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5b51",
+    "wallRaw": "#64584f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.01,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.149,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7,
+       "widthM": 1,
+       "centre": 0.12
+      },
+      {
+       "atM": 5.13,
+       "widthM": 1.02,
+       "centre": 0.12
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "evidence",
+   "reason": "no front on the strip: sky over the roof in 73 % of columns (< 75 %): the strip shows a nearer wall, fence or tree, not the front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162506",
+   "address": "Van Houweningenstraat 8",
+   "builtYear": 1888,
+   "widthM": 4.69,
+   "eavesM": 13.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b594c",
+    "wallRaw": "#73645a",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.06,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.285,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC -0.055 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.62 mean 0.40 vs photo 0.53)",
+   "likeness": {
+    "pandId": "0363100012162506",
+    "ncc": -0.055,
+    "nccRaw": -0.055,
+    "shiftM": [
+     0,
+     0.4
+    ],
+    "usable": 0.93,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.62 mean 0.40 vs photo 0.53"
+    ],
+    "wall": {
+     "photo": "#746356",
+     "model": "#846e5e",
+     "dL": 0.047
+    },
+    "glazing": {
+     "photo": 0.53,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.268
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158704",
+   "address": "Van Houweningenstraat 6",
+   "builtYear": 1888,
+   "widthM": 4.7,
+   "eavesM": 13.67,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78685f",
+    "wallRaw": "#66584f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.117,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012158704",
+    "ncc": 0.161,
+    "nccRaw": 0.161,
+    "shiftM": [
+     0,
+     -0.4
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.64 mean 0.39 vs photo 0.81"
+    ],
+    "wall": {
+     "photo": "#7d6c63",
+     "model": "#8e7b71",
+     "dL": 0.061
+    },
+    "glazing": {
+     "photo": 0.81,
+     "model": 0.39
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.368
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153786",
+   "address": "Van Houweningenstraat 4",
+   "builtYear": 1888,
+   "widthM": 4.69,
+   "eavesM": 14.07,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#61584f",
+    "wallRaw": "#5c5047",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 788,
+     "confidence": 0.05,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.117 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.17)",
+   "likeness": {
+    "pandId": "0363100012153786",
+    "ncc": 0.117,
+    "nccRaw": 0.117,
+    "shiftM": [
+     -0.05,
+     -0.2
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.17"
+    ],
+    "wall": {
+     "photo": "#5f5146",
+     "model": "#796e63",
+     "dL": 0.108
+    },
+    "glazing": {
+     "photo": 0.45,
+     "model": 0.4
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.331
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163630",
+   "address": "Van Houweningenstraat 2",
+   "builtYear": 1888,
+   "widthM": 5.16,
+   "eavesM": 13.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5c55",
+    "wallRaw": "#61554c",
+    "skyline": {
+     "eavesM": 15.7,
+     "eavesRow": 160,
+     "confidence": 0.49,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 3.75,
+      "topWidthM": 0.05,
+      "centre": 0.64
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.75,
+       "widthM": 0.82,
+       "centre": 0.91
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.107 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.58 mean 0.44 vs photo 0.83)",
+   "likeness": {
+    "pandId": "0363100012163630",
+    "ncc": 0.107,
+    "nccRaw": 0.107,
+    "shiftM": [
+     0,
+     -0.3
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.58 mean 0.44 vs photo 0.83"
+    ],
+    "wall": {
+     "photo": "#6d5c55",
+     "model": "#837067",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.83,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.425
+   },
+   "challengers": {}
+  }
+ ]
+}

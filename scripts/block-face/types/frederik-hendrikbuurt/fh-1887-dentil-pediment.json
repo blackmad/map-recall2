@@ -1,0 +1,221 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "fh-1887-dentil-pediment",
+ "district": "frederik-hendrikbuurt",
+ "description": "Frederik Hendrikbuurt 1885-1890 four-storey front (Houweningenstraat, Van Reigersbergenstraat, Frederik Hendrikstraat 134-154): red-brown brick, 3 axes on ~4.7 m, tall two-light windows with white frames under white dentil lintels, white sill bands, white cornice with consoles, ground storey with a pair of red doors beside a wide window; crowns: one white pediment dormer over the centre axis, sometimes a pointed brick gable with one attic light. Drafted by typeDraft.ts from 57 pands, authored from the strips.",
+ "fit": {
+  "widthM": [
+   4.3,
+   5.4
+  ],
+  "storeys": [
+   4,
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1885,
+   1890
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.5,
+   14.6
+  ],
+  "roof": "pitched",
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "houweningen-1-31, houweningen-2-38, reigersbergen-1-37, hendrik-134-154 strips (2021-2022); 3DBAG eaves 13.5-14.0 m"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "heavy",
+  "windows": "t-window",
+  "storeyHeights": [
+   3.34,
+   2.95,
+   2.95,
+   2.9
+  ],
+  "windowHeights": [
+   0.62,
+   0.66,
+   0.66,
+   0.64
+  ],
+  "bands": "painted",
+  "bandLines": [
+   "head"
+  ],
+  "bandHeights": {
+   "head": 0.08
+  },
+  "windowSurround": "stone-lintel"
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerAt": [
+    {
+     "from": 0.38,
+     "to": 0.62
+    }
+   ],
+   "dormerBody": "stone",
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.25,
+    "setback": 0.3
+   },
+   "note": "houweningen-1-31 and hendrik-134-154: one white pediment dormer with a finial over the centre of nearly every pand"
+  },
+  "point-gable": {
+   "gable": "point",
+   "crownRise": 2.6,
+   "atticWindows": 1,
+   "note": "houweningen-1-31 pands 2 and 9, hendrik-134-154: a pointed brick gable with one attic light, about 2.6 m over the cornice"
+  },
+  "none": {
+   "gable": "cornice",
+   "note": "cornice only"
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#7a5646",
+   "frame": "#e8e6dc",
+   "door": "#a52a22",
+   "stone": "#e6e2d4",
+   "cornice": "#e0dccd"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "rise": 0.25,
+  "pitchDeg": 45,
+  "evidence": "strips 2021-03/2022-04: over the cornice only the dormers and gables stand against the sky; dark slate band behind (hendrik-134-154)"
+ },
+ "rhythm": {
+  "bays": "3 window axes",
+  "windowsPerStorey": "ground: pair of doors + wide window | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "paired red doors, wide window",
+  "roofline": "white cornice, centre pediment dormer, occasional pointed gable",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "citation": "strips houweningen-1-31 2021-02-22, hendrik-134-154 2022-04-29",
+  "signage": "none above the ground; per-door numbers",
+  "identicalBays": "upper storeys: equal axes, no balconies"
+ },
+ "evidence": [
+  {
+   "face": "houweningen-2-38",
+   "pands": [
+    "161605",
+    "153807",
+    "158366",
+    "162380",
+    "163315",
+    "159933",
+    "156096",
+    "159242",
+    "163814",
+    "167267",
+    "165393",
+    "159135",
+    "163222",
+    "162506",
+    "158704",
+    "153786"
+   ],
+   "citation": "drafted from 16 pand spans of the houweningen-2-38 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "pands": [
+    "161489",
+    "156678",
+    "155831",
+    "156059",
+    "152999",
+    "163303",
+    "163395",
+    "157676",
+    "155474",
+    "153212",
+    "166918",
+    "153758",
+    "164833",
+    "156927",
+    "153810",
+    "162778"
+   ],
+   "citation": "drafted from 16 pand spans of the reigersbergen-1-37 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "houweningen-1-31",
+   "pands": [
+    "160230",
+    "157843",
+    "165392",
+    "158949",
+    "157672",
+    "158307",
+    "156727",
+    "167046",
+    "157692",
+    "166596",
+    "165332",
+    "162863",
+    "156794",
+    "159954"
+   ],
+   "citation": "drafted from 14 pand spans of the houweningen-1-31 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "hendrik-134-154",
+   "pands": [
+    "156720",
+    "158151",
+    "157111",
+    "164721",
+    "167163",
+    "158916",
+    "152966",
+    "165508",
+    "160880",
+    "164007",
+    "152931"
+   ],
+   "citation": "drafted from 11 pand spans of the hendrik-134-154 strip (draft.fields carry the medians)"
+  }
+ ],
+ "schemaLimits": [
+  "dentil lintels (drawn as a flat white head band)",
+  "paired double doors with a transom (one door drawn)",
+  "arched ground heads on some pands",
+  "wall roundels / iron anchors"
+ ],
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "note": "house door (a pair of red doors under a transom) on the left axis beside a wide two-light window; mirrored when the strip reads it on the right"
+  }
+ }
+}
