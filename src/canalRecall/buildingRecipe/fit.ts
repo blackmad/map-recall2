@@ -1090,18 +1090,18 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // Attic windows inside the crown.
       const attic = front.atticWindows ?? 0, rise = crownTop - eaves;
       if (attic > 0 && rise > 1.2 && !groupCrowns) {
-        const w = clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
+        const size = front.atticSize, w = size ? size.span : clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = size ? size.rise : clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
         // Gable lights follow a partial crown: on its bay axes when there is one light per bay, else centred on it.
         const onAxes = front.crownBays && front.crownBays.to - front.crownBays.from + 1 === attic ? layout.axisCentres.slice(front.crownBays.from, front.crownBays.to + 1) : null;
         const crownCentre = crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2;
         const round = front.atticShape === 'round', od = clamp(Math.min(crownW * 0.22, rise * 0.28), 0.5, 0.95);
         const atticLeft = (k: number) => onAxes ? onAxes[k] - w / 2 : stack ? (crownSpan ? crownCentre - w / 2 : (mw - w) / 2) : crownSpan ? crownCentre - total / 2 + k * (w + gap) : (mw - total) / 2 + k * (w + gap);
         // Neck gables stack their attic lights up the neck; other crowns set them side by side.
-        const stack = front.gable === 'neck' || front.gable === 'raised-neck', hh = stack ? Math.min(h, (rise - 0.8) / attic - 0.3) : h;
+        const stack = front.gable === 'neck' || front.gable === 'raised-neck', hh = stack && !size ? Math.min(h, (rise - 0.8) / attic - 0.3) : h, sill = size?.sill ?? 0.25;
         if (round) for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', head: 'oval', leftM: flipX(place(m, (onAxes ? onAxes[k] : crownCentre) - od / 2, od), od), bottomM: eaves + Math.min(rise - od - 0.3, rise * 0.3), widthM: od, heightM: od, trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim'});
         else {
           // Side-by-side lights that would escape a narrow crown (three lights in a gable) shrink until they fit under it.
-          const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
+          const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + sill + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
           const lights = stack || !moduleProfile ? planned : fitGableLights(moduleProfile, planned, warnings, front.id);
           for (let m = 0; m < count; m++) lights.forEach((l, k) => elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, l.left, l.width), l.width), bottomM: l.bottom, widthM: l.width, heightM: l.height, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'}));
         }

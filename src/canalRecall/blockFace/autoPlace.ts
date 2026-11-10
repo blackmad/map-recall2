@@ -417,7 +417,7 @@ export function autoShopfront(ev: PandEvidence, use: GroundFloorUse): ShopfrontI
 }
 
 /** Decide one pand: the best type over the threshold, or a hold with the reason. */
-export function decidePand(types: MatchableType[], ev: PandEvidence, slug: string, photoDate: string, pin?: {accept?: true; storeys?: number; houseGround?: true}): Decision {
+export function decidePand(types: MatchableType[], ev: PandEvidence, slug: string, photoDate: string, pin?: {accept?: true; storeys?: number; houseGround?: true; ground?: string; doorBay?: number; overrides?: HousePlacement['overrides']}): Decision {
   const s = ev.strip;
   if (!s) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: 'no strip span (no panorama covers the front)'};
   if (s.voidShare > AUTO_PLACE.maxVoid) return {kind: 'held', pandId: ev.pandId, address: ev.address, stage: 'evidence', reason: `strip ${Math.round(s.voidShare * 100)} % without panorama data`};
@@ -454,6 +454,10 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   if (t.match?.mirrorForAccent && aSide) { if (aSide !== t.match.mirrorForAccent) placement.mirror = true; notes.push(`accent ${aSide}${placement.mirror ? ': mirrored' : ''}`); }
   else if (t.match?.mirrorForDoor) { if (s.doorSide && s.doorSide !== t.match.mirrorForDoor) placement.mirror = true; notes.push(`door ${s.doorSide ?? 'unread'}${placement.mirror ? ': mirrored' : ''}`); }
   else if (!trading && s.doorSide && grounds.includes(`door-${s.doorSide}`)) placement.ground = `door-${s.doorSide}`;
+  // Reviewer ground / door pins (reviewCrowns.ts TypePin): the strip's ground variant and door bay, over the door-side pick.
+  if (pin?.ground && !trading) { placement.ground = pin.ground; notes.push(`ground ${pin.ground}: reviewer pin`); }
+  if (pin?.doorBay !== undefined) { placement.doorBay = pin.doorBay; notes.push(`door bay ${pin.doorBay}: reviewer pin`); }
+  if (pin?.overrides) { placement.overrides = {...placement.overrides, ...pin.overrides}; notes.push(`body ${Object.keys(pin.overrides).join(', ')}: reviewer pin`); }
   if (s.wall && !s.palette.stucco && s.foliageShare <= AUTO_PLACE.maxFoliage && t.match?.measuredWall !== false) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: ${s.wallOwnGain ? `raw wall at the row's trim gain (autoPlace.ts rowExposure; own gain ${s.wallOwnGain})` : 'trim-normalised wall (buildingRecipe/measureFacade.ts)'}`};
   const crown = crownFor(t, s.skyline, {roofMaxM: ev.roofMaxM, skyBound: s.skyBound});
   if (crown.name !== Object.keys(t.crowns)[0]) placement.crown = crown.name;

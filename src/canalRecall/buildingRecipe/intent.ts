@@ -199,7 +199,10 @@ export const DORMER_CAP = {rise: 1.2, flare: 0.25, depthM: 0.9, colour: '#adad9d
 /** Historic (17th/18th-c.) canal-house vocabulary, see `HistoricFrontIntent`. */
 export const GABLE_WINGS = ['volutes', 'scrolls'] as const;
 export const GABLE_FINIALS = ['crab', 'vase', 'ball'] as const;
-export const ROOF_GABLETS = ['crest', 'pediment'] as const;
+/** `louis` (Keizersgracht 244-246): a Louis XIV attic crest, C-scrolls at both feet sweeping in to a raised central arch, a crab on top. */
+export const ROOF_GABLETS = ['crest', 'pediment', 'louis'] as const;
+/** A dark light in a crest/louis gablet's face: a round `oculus` or an `arched` lucarne (round head). */
+export const GABLET_LIGHTS = ['oculus', 'arched'] as const;
 export const GROUND_FRONT_KINDS = ['arcade', 'pui', 'wall'] as const;
 /** `blank`: a bay of plain wall with no opening (Jan Evertsenstraat 143: brick between the house door and the cafe window). */
 export const GROUND_BAYS = ['door', 'glazed-door', 'window', 'shutter', 'panel', 'blank'] as const;
@@ -407,6 +410,12 @@ export interface FrontIntent {
   bays: number | number[];
   /** Windows inside the gable/crown above the top full storey. */
   atticWindows?: number;
+  /**
+   * Measured size of the rectangular attic lights in metres (lane belt-gg-west 2026-11-10, Keizersgracht 256: one light
+   * 1.3 x 1.6 m just over the shoulders of a neck gable): `span` across, `rise` up, and `sill` over the eaves (default
+   * 0.25). Stacked neck lights keep this rise instead of sharing the neck. Absent = the fitted size, byte-identical.
+   */
+  atticSize?: {span: number; rise: number; sill?: number};
   /** Roof dormers standing on the eaves line behind a cornice/flat front. */
   dormers?: number;
   /** 0-based bay (left-to-right, as seen from the street) holding the main door; null = no door. */
@@ -841,6 +850,14 @@ export interface GableOrnamentIntent {
   cartouche?: boolean;
   ears?: boolean;
   gablet?: typeof ROOF_GABLETS[number];
+  /**
+   * Measured gablet size in metres (lane belt-gg-west 2026-11-10): `span` across its foot on the cornice, `rise` from the
+   * cornice to its top (a `louis` crest's crab stands above). Herengracht 96: a pediment 4.5 m over the centre two bays;
+   * Keizersgracht 254: a semicircular crest 3.5 x 1.5 m. Absent = the small default gablet, byte-identical.
+   */
+  gabletSize?: {span: number; rise: number};
+  /** A dark light in the gablet face (`crest` or `louis`), drawn in the palette's shop/door colour. */
+  gabletLight?: typeof GABLET_LIGHTS[number];
 }
 export interface GroundFrontIntent {
   kind: typeof GROUND_FRONT_KINDS[number];
@@ -1755,6 +1772,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.crownFinial && !['step', 'neck', 'raised-neck', 'bell'].includes(f.gable)) problems.push(`${at}.crownFinial: needs a step, neck or bell gable (a flat top to stand on)`);
     if (f.atticShape !== undefined) oneOf(f.atticShape, ATTIC_SHAPES, `${at}.atticShape`);
     if (f.atticShape === 'round' && !f.atticWindows) problems.push(`${at}.atticShape: round needs atticWindows >= 1`);
+    if (f.atticSize !== undefined) {
+      const z = f.atticSize as any;
+      if (!f.atticWindows) problems.push(`${at}.atticSize: needs atticWindows >= 1`);
+      if (f.atticShape === 'round') problems.push(`${at}.atticSize: rectangular lights only (atticShape round sizes itself)`);
+      if (!z || typeof z !== 'object' || Object.keys(z).some(k => !['span', 'rise', 'sill'].includes(k)) || !(z.span >= 0.3 && z.span <= 3) || !(z.rise >= 0.3 && z.rise <= 3) || (z.sill !== undefined && !(z.sill >= 0 && z.sill <= 4))) problems.push(`${at}.atticSize: {span 0.3..3, rise 0.3..3, sill? 0..4} m`);
+    }
     if (f.windowProportion !== undefined) oneOf(f.windowProportion, WINDOW_PROPORTIONS, `${at}.windowProportion`);
     if (f.crownAt !== undefined && f.crownBays !== undefined) problems.push(`${at}: crownAt and crownBays are alternatives`);
     if (f.crownAt !== undefined || f.crownBays !== undefined) {
@@ -2109,7 +2132,7 @@ function windowProblems(f: FrontIntent, at: string, oneOf: (v: unknown, allowed:
   return p;
 }
 
-const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet'];
+const GABLE_ORNAMENT_KEYS = ['wings', 'finial', 'cartouche', 'ears', 'gablet', 'gabletSize', 'gabletLight'];
 const GROUND_FRONT_KEYS = ['kind', 'bays', 'colour', 'shutterColour', 'evidence'];
 /** Problems with the historic-front fields of one front (all optional; absent fields are never checked). */
 function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where: string) => void, oneOf: (v: unknown, allowed: readonly string[], where: string) => void): string[] {
@@ -2127,6 +2150,12 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
       if (o.cartouche && !shoulders) problems.push(`${at}.gableOrnament.cartouche: a cartouche sits on the cap of a neck or bell gable (gable ${f.gable})`);
       if (o.finial !== undefined) { oneOf(o.finial, GABLE_FINIALS, `${at}.gableOrnament.finial`); if (!shoulders && f.gable !== 'step' && f.gable !== 'point' && f.gable !== 'spout') problems.push(`${at}.gableOrnament.finial: needs a gable top to stand on (gable ${f.gable})`); }
       if (o.gablet !== undefined) { oneOf(o.gablet, ROOF_GABLETS, `${at}.gableOrnament.gablet`); if (f.gable !== 'cornice' && f.gable !== 'flat') problems.push(`${at}.gableOrnament.gablet: a rooftop gablet stands on a cornice/flat front (gable ${f.gable})`); }
+      if (o.gabletSize !== undefined) {
+        const z = o.gabletSize as any;
+        if (!o.gablet) problems.push(`${at}.gableOrnament.gabletSize: needs a gablet`);
+        if (!z || typeof z !== 'object' || Object.keys(z).some(k => k !== 'span' && k !== 'rise') || !(z.span >= 0.6 && z.span <= 12) || !(z.rise >= 0.3 && z.rise <= 4) || z.rise > z.span) problems.push(`${at}.gableOrnament.gabletSize: {span 0.6..12, rise 0.3..4 and <= span} m`);
+      }
+      if (o.gabletLight !== undefined) { oneOf(o.gabletLight, GABLET_LIGHTS, `${at}.gableOrnament.gabletLight`); if (o.gablet !== 'crest' && o.gablet !== 'louis') problems.push(`${at}.gableOrnament.gabletLight: a light in a crest or louis gablet (gablet ${o.gablet})`); }
     }
   }
   if (f.leanDegrees !== undefined && !(typeof f.leanDegrees === 'number' && f.leanDegrees >= 0 && f.leanDegrees <= MAX_LEAN_DEGREES)) problems.push(`${at}.leanDegrees: 0..${MAX_LEAN_DEGREES} degrees forward`);

@@ -115,6 +115,35 @@
     "gablet": "pediment"
    },
    "note": "a pointed pediment standing on the middle of the cornice (Herengracht 96, 167714)"
+  },
+  "pediment-dormers": {
+   "gable": "cornice",
+   "gableOrnament": {
+    "gablet": "pediment",
+    "gabletSize": {
+     "span": 4.2,
+     "rise": 1.1
+    }
+   },
+   "dormers": 2,
+   "dormerStyle": "flat",
+   "dormerLights": 2,
+   "dormerAt": [
+    {
+     "from": 0.03,
+     "to": 0.24
+    },
+    {
+     "from": 0.76,
+     "to": 0.97
+    }
+   ],
+   "note": "Herengracht 96 (167714), 2021-01-25 strip and its round-2 sheet at 40 px/m: a triangular pediment about 4.2 m wide over the centre two bays standing 1.1 m on the cornice, with a flat-topped two-light dormer each side (0.3-2.3 m and 6.6-8.4 m of the 8.6 m front) about 1.2 m over the cornice",
+   "dormerSize": {
+    "sill": 0.05,
+    "rise": 1.2,
+    "setback": 0.35
+   }
   }
  },
  "grounds": {
@@ -123,6 +152,11 @@
    "basement": "stoop-and-windows",
    "souterrain": true,
    "note": "souterrain to about 1.9 m, the house door on the bel-etage up a stoop on the left axis (Herengracht 92); a door on the right axis is mirrored (Herengracht 94). The souterrain takes the default weight 1 against the storeys' 2.1/1.6/1.39/1.37 (1.9 m of 16.6 m on Herengracht 92), so a shop ground without a souterrain keeps a valid list"
+  },
+  "door-street": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "the house door at street level without a souterrain (Herengracht 96: the third of four bays, pinned per pand with doorBay)"
   }
  },
  "palettes": {
@@ -178,6 +212,13 @@
     "175700"
    ],
    "citation": "strip.jpg 2021-01-25 gridded at 2x (grid-crop.ts 3423-3953): door sills 2.0-2.3 m; bel-etage windows 2.0-5.4 m; s1 6.2-8.6; s2 9.3-11.1; s3 12.0-13.7; white entablature 14.2 m to the cap at 16.3-16.6 m with three attic lights 1.1 x 0.45 m at 14.85-15.3 m; windows 1.3 m wide, 2-over-2 sashes in white frames"
+  },
+  {
+   "face": "herengracht-84-148",
+   "pands": [
+    "167714"
+   ],
+   "citation": "strip.jpg 2021-01-25 gridded at 2x (grid-crop.ts 3070-3430): 96 four bays, ground windows 1.0-4.7 m with the door in the third bay (1.0-3.4 m under a transom to 4.7 m); rows 5.6-7.8, 8.8-10.8, 11.6-13.7 m; entablature about 1.4 m deep; pediment 1.1 m over the cornice (round-2 sheet, 40 px/m) about 4.2 m wide; dormers about 1.2 m over the cornice; grey paint #a7a08a"
   }
  ],
  "notes": [

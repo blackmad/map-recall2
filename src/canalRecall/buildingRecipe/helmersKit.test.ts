@@ -120,7 +120,7 @@ test('entablature: the measured crown band of Eerste Helmersstraat 120 (white fr
   assert.equal(g.layers!.length, 2, 'cap and architrave over an open brick frieze');
   assert.equal(g.accents!.length, 4);
   assert.ok(g.accents!.every(a => a.profile === 'console' && a.bottomM >= g.bottomM && a.bottomM + a.heightM <= g.bottomM + g.heightM + 1e-9));
-  assert.throws(bad(h, {entablature: {rise: 3, cap: 0.35, frieze: 'trim'}}), /entablature.rise/);
+  assert.throws(bad(h, {entablature: {rise: 3.2, cap: 0.35, frieze: 'trim'}}), /entablature.rise/);
   assert.throws(bad(h, {entablature: {rise: 1.2, cap: 0.35, frieze: 'stone' as never}}), /entablature.frieze/);
   assert.throws(bad(h, {entablature: {rise: 0.5, cap: 0.4, frieze: 'trim', architrave: 0.1}}), /no frieze/);
   assert.throws(bad(h, {entablature: {rise: 1.2, cap: 0.35, frieze: 'trim', consoles: 1}}), /consoles/);

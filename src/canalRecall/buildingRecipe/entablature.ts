@@ -12,8 +12,9 @@
  */
 import type {FrontIntent} from './intent.ts';
 
+/** maxHeightM 3.0 (was 2.4): the Louis XIV attic of Keizersgracht 244-246 stands 2.8 m, 14.2-17.0 m (lane belt-gg-west 2026-11-10). */
 export const ENTABLATURE = {
-  minHeightM: 0.4, maxHeightM: 2.4, minCapM: 0.15, maxCapM: 0.7, capDepthM: 0.4, maxCapDepthM: 0.8,
+  minHeightM: 0.4, maxHeightM: 3.0, minCapM: 0.15, maxCapM: 0.7, capDepthM: 0.4, maxCapDepthM: 0.8,
   friezeDepthM: 0.04, architraveDepthM: 0.08, maxArchitraveM: 0.4, consoleWidthM: 0.18, consoleInsetM: 0.08, maxConsoles: 24,
 } as const;
 
