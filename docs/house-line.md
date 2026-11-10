@@ -118,11 +118,18 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
   (the roof planner draws a monument gable as a canal house's whole roof; measured on the first full compile, cornice
   fronts gave 681 flat-roofed 1890s pands a pitched canal roof).
 - `threeBuildingFeatures.ts meshBuildingFor` keeps `specRecipe` as `MeshBuilding.specRecipe` (not `.recipe`: that slot
-  switches every wall to recipe openings and street-crown recolouring). A measured `wallHex` is a sourced wall in the
-  photo look. `streetFacadeRendering.ts frontageLayoutScale` fits a street run to the stated bays:
+  switches every wall to recipe openings and street-crown recolouring). A measured `wallHex` would be a sourced wall in
+  the photo look, but it is **held** (`decorate.ts SPEC_WALLS_HELD`): strip colours are overcast readings and drew
+  Kinkerstraat 244-332 darker than the generic palette. Release after a white-point pass and a panorama side-by-side. `streetFacadeRendering.ts frontageLayoutScale` fits a street run to the stated bays:
   cells = round(bays / window axes per cell), clamped to 0.7–1.5 of the style's bay. The generic cells carry two or
   three window axes, so an odd bay count on a two-axis cell rounds (a limit of the generic path, not of the spec).
 - Byte-identical off: with `HOUSE_SPECS=0` the world compile is identical to origin/main (605 of 605 cell files).
+  On: 85 of 604 cells differ, only in the 7,134 spec'd buildings (+31 kB gz). On the generic path (pands no installed
+  model hides, `scripts/house-specs/measure-generic-effect.ts`): 403 carry bays, about 175 of them change cell count;
+  29 change gable.
+- The live paths compose the same steps: `public/canal-drive/js/vector-map.js` (the page's tile streamer) and
+  `engine/ownWorldView.ts`, through the `CanalRecallThreeBuildings` globals (`houseSpecEnricher`, `withHouseSpec`,
+  `withHouseSpecCrown`, `houseSpecsEnabled`). World-v1 cells carry the bake; `?houseSpecs=0` only affects `?world=live`.
 
 ### Where to look next
 

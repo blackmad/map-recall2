@@ -65,6 +65,14 @@ const viewOf = (p: Props): HouseSpecView | null => {
 /** The same exclusions as the register step (registerRecipe.ts registerPatch): measured fronts, kits, large tier. */
 const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appearanceStyleSource !== PRIOR_SOURCE) || !!p.kitWall || !!p.largeTier;
 
+/**
+ * Held (2026-11-10, H1 frames): a strip-measured wall colour is the overcast panorama reading (block-face palettes
+ * carry a `whitePoint` for that reason) and drew Kinkerstraat 244-332 visibly darker than the generic palette, against
+ * the user's brighter-palette priority (2026-10-16). The view keeps `wallHex`; the mesher's sourced-wall slot
+ * (meshBuildingFor) is wired. Release after a white-point pass and a side-by-side with the panorama.
+ */
+export const SPEC_WALLS_HELD = true;
+
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   const patch: Props = {};
@@ -82,7 +90,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   }
   const recipe: SpecRecipe = {};
   if (view.bays && view.bays > 0) recipe.bays = view.bays;
-  if (view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex)) recipe.wallHex = view.wallHex.toLowerCase();
+  if (!SPEC_WALLS_HELD && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex)) recipe.wallHex = view.wallHex.toLowerCase();
   // A spec recipe only when it carries something the mesher reads (bays, a wall colour); crown and period ride along.
   if (recipe.bays || recipe.wallHex) {
     const year = Number.isInteger(view.year) ? view.year! : Number(patch.constructionYear ?? p.constructionYear);

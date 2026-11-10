@@ -32,7 +32,9 @@ test('facts step: era-only year moves, finish, a spec recipe only when the meshe
   // The register already moved the year: bagConstructionYear keeps the BAG value it recorded.
   assert.deepEqual(houseSpecPatch(view, { constructionYear: 1880, bagConstructionYear: 1905, registerFinish: 'light' }), { constructionYear: 1605 });
   const measured: HouseSpecView = { gable: 'neck', year: 1680, bays: 3, wallHex: '#7A4A3A', src: { bays: 'streetlevel-measured', wallHex: 'streetlevel-measured' } };
-  assert.deepEqual(houseSpecPatch(measured, { constructionYear: 1680 }).specRecipe, { bays: 3, wallHex: '#7a4a3a', period: 'canal', crownShape: 'neck' });
+  // The measured wall colour is held (SPEC_WALLS_HELD): the recipe carries the bays, crown and period only.
+  assert.deepEqual(houseSpecPatch(measured, { constructionYear: 1680 }).specRecipe, { bays: 3, period: 'canal', crownShape: 'neck' });
+  assert.equal(houseSpecPatch({ wallHex: '#7a4a3a', src: {} }, {}).specRecipe, undefined, 'a wall colour alone writes no recipe while held');
   assert.equal(houseSpecPatch({ gable: 'neck', src: {} }, {}).specRecipe, undefined);
 });
 
