@@ -21,12 +21,12 @@ const PILOT = path.join(ROOT, 'scripts/house-specs/pilot-20261110');
 const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 const readings = readJson(path.join(PILOT, 'readings.json'));
 const ROW: { pand: string; address: string; route: 'recipe' | 'chunk' | 'none'; afterDir?: string; note?: string }[] = [
-  { pand: '0363100012116526', address: 'Nassaukade 151-152 (corner)', route: 'chunk', afterDir: 'artifacts/house-line/pilot/0363100012116526/after', note: 'multi-front pand: the Nassaukade front added to chunk-face-clercq-236681 (block-face route), not a HouseSpec; installs with the clercq chunk' },
+  { pand: '0363100012116526', address: 'Nassaukade 151-152 (corner)', route: 'chunk', afterDir: 'artifacts/house-line/r2/116526', note: 'multi-front pand: the Nassaukade front added to chunk-face-clercq-236681 (block-face route), not a HouseSpec; installs with the clercq chunk' },
   { pand: '0363100012164843', address: 'Nassaukade 150', route: 'recipe' },
   { pand: '0363100012161422', address: 'Nassaukade 149', route: 'recipe' },
   { pand: '0363100012157426', address: 'Nassaukade 148', route: 'recipe' },
   { pand: '0363100012160273', address: 'Nassaukade 147', route: 'recipe' },
-  { pand: '0363100012160704', address: 'Nassaukade 146', route: 'none', note: 'not staged: its resolved spec fails the recipe compile ("Opening escapes its wall": BAG draws the erker into the footprint, a 1.61 m front; only the block-face route has the bay-outline chord), so a staged spec would stop the publish batch' },
+  { pand: '0363100012160704', address: 'Nassaukade 146', route: 'recipe', note: 'round 2: staged; the recipe compile takes the block face facts (the frontage chord over the erker), BAG draws the erker into the footprint' },
   { pand: '0363100012159694', address: 'Nassaukade 145', route: 'recipe' },
 ];
 
@@ -78,8 +78,8 @@ for (const h of ROW) {
   const after = h.route === 'none' ? null : path.join(ROOT, h.afterDir ?? path.join('artifacts/house-preview', h.pand));
   const cp = (from: string, to: string) => { if (fs.existsSync(from)) fs.copyFileSync(from, path.join(d, to)); };
   cp(path.join(before, 'photo.png'), 'photo.png'); cp(path.join(before, 'front.png'), 'before.png'); cp(path.join(before, 'compare.png'), 'compare-before.png'); cp(path.join(before, 'measure.json'), 'measure-before.json');
-  if (after) { cp(path.join(after, 'front.png'), 'after.png'); cp(path.join(after, 'compare.png'), 'compare-after.png'); cp(path.join(after, 'measure.json'), 'measure-after.json'); cp(path.join(after, 'threeq.png'), 'threeq-after.png'); }
-  await triptych([{ file: path.join(d, 'before.png'), label: 'game today' }, { file: path.join(d, 'after.png'), label: h.route === 'chunk' ? 'after (clercq chunk + Nassaukade front)' : 'after (spec, recipe route)' }, { file: path.join(d, 'photo.png'), label: 'photo (strip 2024-11-21)' }], path.join(d, 'triptych.jpg'));
+  if (after) { cp(path.join(after, 'front.png'), 'after.png'); cp(path.join(after, 'compare.png'), 'compare-after.png'); cp(path.join(after, 'measure.json'), 'measure-after.json'); cp(path.join(after, 'threeq.png'), 'threeq-after.png'); cp(path.join(after, 'photo.png'), 'photo-winter.png'); }
+  await triptych([{ file: path.join(d, 'before.png'), label: 'game today' }, { file: path.join(d, 'after.png'), label: h.route === 'chunk' ? 'after (clercq chunk + Nassaukade front)' : 'after (spec, recipe route)' }, { file: path.join(d, 'photo.png'), label: 'photo 2024-11-21' }, { file: path.join(d, 'photo-winter.png'), label: 'photo 2019-01-09' }], path.join(d, 'triptych.jpg'));
   const handFile = path.join(PILOT, 'specs', `${h.pand}.json`), hand = fs.existsSync(handFile) ? readJson(handFile) : null;
   const rec = h.route === 'recipe' ? stagedRecord(h.pand) : null;
   fs.writeFileSync(path.join(d, 'spec.json'), JSON.stringify({ pandId: h.pand, address: h.address, route: h.route, note: h.note ?? null, handSpec: hand, reading: readings[h.pand] ?? null, resolved: rec }, null, 1) + '\n');
@@ -93,7 +93,7 @@ for (const h of ROW) {
   } else if (h.route === 'chunk') {
     const face = readJson(path.join(ROOT, 'scripts/block-face/faces/clercq-236681/intent.json'));
     const f = face.houses.find((x: { pandId: string }) => x.pandId === h.pand).design.fronts.find((x: { id: string }) => x.id === 'nassaukade');
-    for (const [k, v] of Object.entries(f)) if (k !== 'id' && k !== 'street') fields.push({ field: `fronts/1/${k}`, value: v, source: 'streetlevel-measured', evidence: 'scripts/block-face/faces/nassau-145-152/intent.json house 0363100012116526 (strip 2024-11-21), copied to clercq-236681 front "nassaukade" by lane H7', changed: what(k) });
+    for (const [k, v] of Object.entries(f)) if (k !== 'id' && k !== 'street') fields.push({ field: `fronts/1/${k}`, value: v, source: 'streetlevel-measured', evidence: 'scripts/block-face/faces/clercq-236681/intent.json front "nassaukade" (lane H7: strip 2024-11-21, round 2 towers/rosettes/storeys from the 2019-01-09 strip, palette from wall-fit 2019-2022)', changed: what(k) });
   }
   fs.writeFileSync(path.join(d, 'fields.json'), JSON.stringify(fields, null, 1) + '\n');
   const mb = fs.existsSync(path.join(d, 'measure-before.json')) ? readJson(path.join(d, 'measure-before.json')) : null, ma = fs.existsSync(path.join(d, 'measure-after.json')) ? readJson(path.join(d, 'measure-after.json')) : null;
@@ -103,4 +103,5 @@ fs.writeFileSync(path.join(out, 'index.json'), JSON.stringify({ row: 'Nassaukade
 await triptych(ROW.filter(h => fs.existsSync(path.join(out, h.pand, 'triptych.jpg'))).map(h => ({ file: path.join(out, h.pand, 'after.png'), label: h.address.replace('Nassaukade ', '') })), path.join(out, 'row-after.jpg'), 700);
 await triptych(ROW.map(h => ({ file: path.join(out, h.pand, 'before.png'), label: h.address.replace('Nassaukade ', '') })), path.join(out, 'row-before.jpg'), 700);
 await triptych(ROW.map(h => ({ file: path.join(out, h.pand, 'photo.png'), label: h.address.replace('Nassaukade ', '') })), path.join(out, 'row-photo.jpg'), 700);
+await triptych(ROW.map(h => ({ file: path.join(out, h.pand, 'photo-winter.png'), label: h.address.replace('Nassaukade ', '') })), path.join(out, 'row-photo-winter.jpg'), 700);
 console.log(`demo bundle: ${path.relative(ROOT, out)} (${ROW.length} houses)`);

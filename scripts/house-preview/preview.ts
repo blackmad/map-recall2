@@ -61,6 +61,8 @@ Flags
   --crops <dir>       the house:crops archive (a map-recall2-source-data checkout holding pand-crops/<pand>/front.jpg;
                       default env HOUSE_CROPS_ARCHIVE); the describe envelope's best-of-years pick is used when present
   --prefer-crop       take the house:crops crop before the block-face strip
+  --strip <dir>       take this strip first (a directory holding strip.json + strip.jpg, e.g. a leaf-off capture day
+                      from scripts/block-face/intake.ts --date, staged under staging/block-face/<face>-w<year>)
   --chunk <face>      render the block face compiled by scripts/block-face/compile.ts --face=<face> and not installed
                       (staging/block-face/<face>/chunk.glb, placed by its manifest-entry.json) instead of the route the
                       game draws today: the after frame of a chunk change before the integrator installs it
@@ -81,7 +83,8 @@ Flags
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
-                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall
+                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall;
+                      "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -113,7 +116,7 @@ Chromium) or a ride frame.`;
 // Arguments
 // ---------------------------------------------------------------------------------------------------------------
 export type Route = 'generic' | 'spec' | 'installed' | 'recipe';
-type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; crops?: string; preferCrop: boolean; chunk?: string; help: boolean };
+type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; crops?: string; preferCrop: boolean; chunk?: string; strip?: string; help: boolean };
 export function parseArgs(argv: string[]): Args {
   const a: Args = { unlit: false, glbLit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, preferCrop: false, help: false };
   for (let i = 0; i < argv.length; i++) {
@@ -143,6 +146,7 @@ export function parseArgs(argv: string[]): Args {
       case '--crops': a.crops = value(); break;
       case '--prefer-crop': a.preferCrop = true; break;
       case '--chunk': a.chunk = value(); break;
+      case '--strip': a.strip = value(); break;
       default:
         if (flag.startsWith('--')) throw new Error(`unknown flag ${flag} (see --help)`);
         if (a.target) throw new Error(`two targets: ${a.target} and ${flag}`);
@@ -252,6 +256,23 @@ type LngLat = [number, number];
 export type FrontWall = { a: LngLat; b: LngLat; lengthM: number; source: string; reference?: string };
 
 async function frontWall(pandId: string, own: Feature, neighbours: Feature[], wallSpec?: string): Promise<FrontWall> {
+  if (wallSpec === 'face') {
+    // --wall face (lane H7 round 2): the street frontage of the block face that lists the pand (its facts.json fronts[0]
+    // endpoints: the chord over a BAG erker, Nassaukade 146), not one footprint edge of it.
+    const faces = path.join(REPO_ROOT, 'scripts/block-face/faces');
+    for (const face of fs.existsSync(faces) ? fs.readdirSync(faces).sort() : []) {
+      const f = path.join(faces, face, 'pands', bare(pandId), 'facts.json');
+      if (!fs.existsSync(f)) continue;
+      const fr = readJson(f).fronts?.[0];
+      if (!fr?.endpointsRD) continue;
+      let [a, b] = fr.endpointsRD as [number, number][];
+      // wallFrame's outward normal is (right.y, -right.x): order a -> b so it agrees with the face's outward normal.
+      const n = fr.outwardNormalRD as [number, number] | undefined, r = [b[0] - a[0], b[1] - a[1]];
+      if (n && r[1] * n[0] - r[0] * n[1] < 0) [a, b] = [b, a];
+      return { a: rdToLngLat({ x: a[0], y: a[1] }), b: rdToLngLat({ x: b[0], y: b[1] }), lengthM: Math.hypot(b[0] - a[0], b[1] - a[1]), source: `--wall face: ${face} frontage (${fr.street ?? ''})` };
+    }
+    throw new Error(`${pandId}: --wall face: no block face lists the pand`);
+  }
   if (wallSpec) {
     // --wall: the framed wall is a footprint edge (index or bearing), not the reference's or pickWall's choice.
     const outer = (asPolygons(own.geometry)[0]?.[0] ?? []) as LngLat[];
@@ -306,7 +327,7 @@ const facadeImage = (img: { width: number; height: number; rgba: Uint8ClampedArr
 
 type Photo = { image: FacadeImage; file: string; kind: string; png: Buffer };
 /** The reference photo on the wall's axis at `ppm`: the pand-reference crop, else the block-face strip crop. */
-async function referencePhoto(pandId: string, wall: FrontWall, ppm: number, opts: { crops?: string; preferCrop?: boolean } = {}): Promise<Photo | null> {
+async function referencePhoto(pandId: string, wall: FrontWall, ppm: number, opts: { crops?: string; preferCrop?: boolean; strip?: string } = {}): Promise<Photo | null> {
   const toImage = async (buf: Buffer, topM: number, file: string, kind: string, extract?: { left: number; width: number }, scale = 1): Promise<Photo> => {
     let s = sharp(buf);
     if (extract) { const meta = await sharp(buf).metadata(); s = sharp(await s.extract({ left: extract.left, top: 0, width: extract.width, height: meta.height! }).toBuffer()); }
@@ -344,6 +365,23 @@ async function referencePhoto(pandId: string, wall: FrontWall, ppm: number, opts
   };
   if (opts.preferCrop) { const c = await cropPhoto(); if (c) return c; }
   // Block-face strips: the face whose spans list the pand; crop the wall's [a, b] along the strip's u axis.
+  const fromStrip = (s: { frame: { midRD: number[]; uRD: number[] }; x0M: number; pixelsPerMetre: number; width: number; heightM: number; date?: string }, img: string, label: string): Photo | null => {
+    const along = (ll: LngLat) => { const p = lngLatToRd(ll); return (p.x - s.frame.midRD[0]) * s.frame.uRD[0] + (p.y - s.frame.midRD[1]) * s.frame.uRD[1]; };
+    let x0 = along(wall.a), x1 = along(wall.b);
+    if (x1 < x0) [x0, x1] = [x1, x0];
+    const left = Math.max(0, Math.round((x0 - s.x0M) * s.pixelsPerMetre)), right = Math.min(s.width, Math.round((x1 - s.x0M) * s.pixelsPerMetre));
+    if (right - left < 10) return null;
+    return toImage(fs.readFileSync(img), s.heightM, img, `block-face strip ${label} ${s.date ?? ''} (${s.pixelsPerMetre} px/m)`, { left, width: right - left }, ppm / s.pixelsPerMetre);
+  };
+  // `--strip <dir>` (lane H7 round 2): an explicit strip (strip.json + strip.jpg in one directory, e.g. a leaf-off capture
+  // day from intake.ts --date) before the face strips.
+  if (opts.strip) {
+    const sj = path.join(opts.strip, 'strip.json'), img = path.join(opts.strip, 'strip.jpg');
+    if (fs.existsSync(sj) && fs.existsSync(img)) {
+      const text = fs.readFileSync(sj, 'utf8');
+      if (text.includes(bare(pandId))) { const got = fromStrip(JSON.parse(text), img, path.basename(opts.strip)); if (got) return got; }
+    }
+  }
   const faces = path.join(REPO_ROOT, 'scripts/block-face/faces');
   for (const face of fs.existsSync(faces) ? fs.readdirSync(faces) : []) {
     const sj = path.join(faces, face, 'strip.json');
@@ -354,12 +392,8 @@ async function referencePhoto(pandId: string, wall: FrontWall, ppm: number, opts
     const candidates = [path.join(REPO_ROOT, s.image), process.env.MAP_RECALL_SOURCE_DATA && path.join(process.env.MAP_RECALL_SOURCE_DATA, 'block-face-strips', face, 'strip.jpg'), path.join(REPO_ROOT, '../../map-recall2-source-data/block-face-strips', face, 'strip.jpg'), path.join(path.dirname(REPO_ROOT), '../map-recall2-source-data/block-face-strips', face, 'strip.jpg')].filter(Boolean) as string[];
     const img = candidates.find(f => fs.existsSync(f));
     if (!img) continue;
-    const along = (ll: LngLat) => { const p = lngLatToRd(ll); return (p.x - s.frame.midRD[0]) * s.frame.uRD[0] + (p.y - s.frame.midRD[1]) * s.frame.uRD[1]; };
-    let x0 = along(wall.a), x1 = along(wall.b);
-    if (x1 < x0) [x0, x1] = [x1, x0];
-    const left = Math.max(0, Math.round((x0 - s.x0M) * s.pixelsPerMetre)), right = Math.min(s.width, Math.round((x1 - s.x0M) * s.pixelsPerMetre));
-    if (right - left < 10) continue;
-    return toImage(fs.readFileSync(img), s.heightM, img, `block-face strip ${face} ${s.date ?? ''} (${s.pixelsPerMetre} px/m)`, { left, width: right - left }, ppm / s.pixelsPerMetre);
+    const got = fromStrip(s, img, face);
+    if (got) return got;
   }
   return opts.preferCrop ? null : cropPhoto();
 }
@@ -494,7 +528,7 @@ async function finish(f: Finish): Promise<PreviewResult> {
   const renderM = measureBlurred(facadeImage(front, args.ppm, top), mbox, lines);
   const measure: Record<string, unknown> = { profile: profileUsed(), pandId: bare(f.pandId), route: f.route, routeWhy: f.why, shader: f.shader ?? (args.unlit ? 'unlit' : 'lit'), preBlurPx: PRE_BLUR_PX, ...f.measure, heights: { topM: +top.toFixed(2), eavesM: +eaves.toFixed(2), lines }, render: summary(renderM) };
   if (args.photo) {
-    const photo = await referencePhoto(f.pandId, wall, args.ppm, { crops: args.crops ?? process.env.HOUSE_CROPS_ARCHIVE, preferCrop: args.preferCrop });
+    const photo = await referencePhoto(f.pandId, wall, args.ppm, { crops: args.crops ?? process.env.HOUSE_CROPS_ARCHIVE, preferCrop: args.preferCrop, strip: args.strip });
     if (!photo) measure.photo = { missing: `no staging/pand-reference/${bare(f.pandId)}/front.jpg, no block-face strip lists the pand and no house:crops crop (--crops <archive>/pand-crops/${bare(f.pandId)}/front.jpg; run npm run house:crops -- --buurt <code> --pand ${bare(f.pandId)})` };
     else {
       const photoM = measureBlurred(photo.image, { ...mbox, v1: Math.min(mbox.v1, photo.image.topM) }, lines.filter(l => l <= photo.image.topM));

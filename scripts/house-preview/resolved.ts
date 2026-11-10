@@ -12,7 +12,7 @@
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import { mergeRecipeIntent } from '../../src/canalRecall/houseSpec/publishPlan.ts';
+import { blockFaceFactsFor, mergeRecipeIntent } from '../../src/canalRecall/houseSpec/publishPlan.ts';
 import { REPO_ROOT } from './nodeDom.ts';
 
 export const HELP = `scripts/house-preview/resolved.ts: render specs as the game will draw them after house:publish.
@@ -24,12 +24,14 @@ export const HELP = `scripts/house-preview/resolved.ts: render specs as the game
   <pandId,...>      the pands to render (each needs no spec of its own: a pand without one renders from the staged extract)
   --out-root <dir>  write each pand to <dir>/<pandId> (default artifacts/house-preview/<pandId>, the house:stage receipt dir)
   --no-recipe       render recipe-route pands on the generic path too (what the game draws if the install is held)
+  env RESOLVED_VERBOSE=1  print a failed render's whole error output (default: its first three error lines)
   --help            this text
   every other flag (--photo, --crops <dir>, --wall <edge|deg>, --threeq, ...) is passed to house:preview
 
 Route per pand: recipe when the resolved spec validates as a CanalHouseIntent (toRecipe; house:publish step 3 then installs
 a GLB): the intent is written to scripts/building-recipes/houses/<the house dir naming the pand, else spec-<pandId>>/intent.json
-with mergeRecipeIntent, facts.ts fills a new directory's facts (--no-photo), and house:preview --recipe renders the compile;
+with mergeRecipeIntent, a new directory's facts are the block face's facts.json when the pand is on a face (the frontage
+chord over an erker), else facts.ts --no-photo, and house:preview --recipe renders the compile;
 the directory is removed (or restored) when the script exits.
 Otherwise generic: HOUSE_SPECS_DIR=staging/house-specs house:preview <pandId>.`;
 
@@ -53,6 +55,7 @@ const mergeMs = Math.round(performance.now() - t0);
 console.log(`merged ${specs} into staging/house-specs in ${mergeMs} ms`);
 
 const HOUSES = path.join(REPO_ROOT, 'scripts/building-recipes/houses');
+const FACES = path.join(REPO_ROOT, 'scripts/block-face/faces'), FACE_DIRS = fs.readdirSync(FACES).sort().map(f => path.join(FACES, f));
 const byPand = new Map<string, string>();
 for (const d of fs.readdirSync(HOUSES)) { const f = path.join(HOUSES, d, 'intent.json'); if (fs.existsSync(f)) { const j = readJson(f); if (j.pandId && j.kind === 'canal-house') byPand.set(String(j.pandId).replace('NL.IMBAG.Pand.', ''), d); } }
 
@@ -71,8 +74,13 @@ for (const pand of pands) {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, JSON.stringify(mergeRecipeIntent(fs.existsSync(file) ? readJson(file) : null, generated, id), null, 1) + '\n');
     if (!fs.existsSync(path.join(HOUSES, id, 'facts.json'))) {
-      const street = /^(.*?)\s+\d/.exec(String(generated.address ?? ''))?.[1];
-      tsx('scripts/building-recipes/facts.ts', [`--house=${id}`, `--pand=${pand}`, ...(street ? [`--street=${street}`] : []), '--no-photo']);
+      // A pand on a block face starts from the face's facts (blockFaceFactsFor: the frontage chord over a BAG erker).
+      const faceFacts = blockFaceFactsFor(pand, FACE_DIRS, fs.existsSync);
+      if (faceFacts) fs.copyFileSync(faceFacts, path.join(HOUSES, id, 'facts.json'));
+      else {
+        const street = /^(.*?)\s+\d/.exec(String(generated.address ?? ''))?.[1];
+        tsx('scripts/building-recipes/facts.ts', [`--house=${id}`, `--pand=${pand}`, ...(street ? [`--street=${street}`] : []), '--no-photo']);
+      }
     }
     args = [pand, '--recipe', id, ...pass, '--out', out];
     console.log(`${pand}: route recipe -> scripts/building-recipes/houses/${id}`);
@@ -84,7 +92,8 @@ for (const pand of pands) {
   try { log = tsx('scripts/house-preview/preview.ts', args, { HOUSE_SPECS_DIR: 'staging/house-specs' }); }
   catch (e) {
     const err = e as { stderr?: Buffer; stdout?: Buffer; message: string };
-    console.log(`  FAILED: ${String(err.stderr ?? err.stdout ?? err.message).trim().split('\n').filter(l => /Error|error|fail/i.test(l)).slice(0, 3).join(' | ')}`);
+    const text = String(err.stderr ?? err.stdout ?? err.message).trim();
+    console.log(`  FAILED: ${process.env.RESOLVED_VERBOSE ? text : text.split('\n').filter(l => /Error|error|fail/i.test(l)).slice(0, 3).join(' | ')}`);
     process.exitCode = 1;
     continue;
   }

@@ -517,6 +517,8 @@ Flags
   --crops <dir>       the house:crops archive (a map-recall2-source-data checkout holding pand-crops/<pand>/front.jpg;
                       default env HOUSE_CROPS_ARCHIVE); the describe envelope's best-of-years pick is used when present
   --prefer-crop       take the house:crops crop before the block-face strip
+  --strip <dir>       take this strip first (a directory holding strip.json + strip.jpg, e.g. a leaf-off capture day
+                      from scripts/block-face/intake.ts --date, staged under staging/block-face/<face>-w<year>)
   --chunk <face>      render the block face compiled by scripts/block-face/compile.ts --face=<face> and not installed
                       (staging/block-face/<face>/chunk.glb, placed by its manifest-entry.json) instead of the route the
                       game draws today: the after frame of a chunk change before the integrator installs it
@@ -537,7 +539,8 @@ Flags
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
-                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall
+                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall;
+                      "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -676,8 +679,9 @@ chooses; the repo installs no cron). One batch = one commit, one HISTORY entry, 
 2. **write.** The specs are copied to `scripts/house-specs/specs/` and `build-house-specs --publish` replaces the published
    `house-specs/14`. This is the first step that changes `public/`.
 3. **recipe route.** Only for specs that resolve to `route: 'recipe'`. The intent is `toRecipe(resolved spec)` under the id of the
-   house directory that already carries the pand (its earlier sources are kept), else `spec-<pandId>`; `facts.ts` fills the facts of a new
-   directory; `install.ts --house=<ids>` compiles and installs; then `build-covers`, the covers copy to `models/covers.json` and
+   house directory that already carries the pand (its earlier sources are kept), else `spec-<pandId>`; a new directory takes the
+   block face's `pands/<pand>/facts.json` when a face lists the pand (`blockFaceFactsFor`, `publishPlan.ts`: the frontage chord over an
+   erker; BAG's own front of Nassaukade 146 is the 1.61 m erker side), else `facts.ts` fills it; `install.ts --house=<ids>` compiles and installs; then `build-covers`, the covers copy to `models/covers.json` and
    `check:covers`. **Stale installs:** a reinstall that fails its gates keeps the old GLB and writes `held-installs.json` with the
    reason `staged spec <date>` (`check:stale-installs` then passes with the hold explicit); a new house that fails stops the batch.
 4. **compile.** `world:compile --changed --shell` into the compile directory. Every tile hashes its own inputs and its own slice of
@@ -1321,7 +1325,7 @@ The after render is byte-identical to the before: on the generic path a spec dra
 * Not staged: Bloemgracht 174173 (a tree covers the front: no evidence), 174177 (the crop shows a pointed brick gable where the
   register says cornice and plaster: crop or pand link unresolved), Nassaukade 146 (0363100012160704: the resolved spec fails the
   recipe compile, "Opening escapes its wall", because BAG draws the erker into the footprint; a staged spec would stop the batch),
-  and the corner 151-152 (0363100012116526, below).
+  and the corner 151-152 (0363100012116526, below). Round 2 staged 146 (the face facts, below).
 
 ### The corner pand 0363100012116526 (multi-front)
 
@@ -1355,3 +1359,48 @@ wins per field path, so two faces naming one pand merge into one front (bays 1 f
   compare sheets and measureFacade before/after, the spec with provenance, `fields.json` = field, value, source, evidence, what it
   changed; plus the row strips and `index.json`) into `artifacts/house-line/demo-nassaukade/` (gitignored). The archived copy, JPEG,
   paths flattened to `<pandId>-<file>`, is `ui/2026-11-10-house-line-nassaukade/` in the screenshots repo.
+
+### Round 2 (the judgement ruling on #354)
+
+**Wall colour (`src/canalRecall/blockFace/wallFit.ts`, `scripts/block-face/wall-fit.ts`).** The round-1 palettes were per-channel
+medians (`measureStripPalette`) of the 2024-11-21 strip: golden hour, a yellow cast (white reads 240,240,192) and foliage, so the
+painted-black fronts read olive-khaki, red-brown brick read mauve and 145 pale peach. `fitWallColour` replaces the median for a wall
+colour: leaf and light-trim masks on the white-balanced pixel, a deterministic 2-means in Lab, the darker (dominant) cluster unless
+the paler one covers at least 60 % of the wall mask, a brick/joint split on chroma for bare brick, the median Lab of what is left;
+a painted wall at L* 40 or below is a neutral near-black (a = b = 0, never lifted), and any lift scales chroma with L
+(`liftWithChroma`). `combineWallFits` votes over captures; `npm run test:block-face` pins the three cases (`wallFit.test.ts`).
+`wall-fit.ts --face=<id> --crops <archive>/pand-crops --years 2018,2021,2022 --strips <dir>` prints one vote per leaf-off capture
+and the combined hex (it writes nothing); its result went into `nassau-145-152/intent.json` (`paletteOverrides.brick`, source
+`wall-fit-2019-2022`). Light varies by capture (145 reads L* 64, 81, 32 and 37), so take votes from several leaf-off years.
+
+| Nassaukade | photo wall-fit (4 leaf-off votes) | render round 1 | dE | render round 2 | dE |
+|---|---|---|---|---|---|
+| 151-152 corner | #564543 | #8a6b61 | 18.6 | #705a57 | 9.6 |
+| 150 | #404040 | #524b3d | 10.7 | #404040 | 0.0 |
+| 149 | #4d4d4d | #6a685d | 13.0 | #4d4d4d | 0.0 |
+| 148 | #665648 | #96816f | 17.8 | #806c5a | 9.6 |
+| 147 | #535353 | #615a47 | 12.4 | #535353 | 0.0 |
+| 146 | #957d73 (strip only) | #ba9378 | 14.9 | #a48f87 | 7.0 |
+| 145 | #886957 | #ba9378 | 17.6 | #9e7c68 | 7.8 |
+
+Render = the flat wall pixel of the front (`artifacts/house-line/tools/colour-table.ts`). The brick remainder is the look's wall-tint
+lightness lift (hue within 1 degree, chroma kept).
+
+**Leaf-off evidence.** `scripts/block-face/intake.ts --date 2019-01-09` builds a winter strip
+(`staging/block-face/nassau-145-152-w2019/`); `house:preview --strip <dir>` takes it as the photo. None of the Nassaukade verdicts is
+NO EVIDENCE for foliage any more: 150, 148 PASS; 147 PASS on the chunk route; 149 FAILs dL -0.12 because the preview's wall metric
+takes in the white bands (the four wall-fit votes agree at L* 30-34); 145 and 146 are NO EVIDENCE for a washed-out sky band.
+
+**146.** `house:preview --wall face` frames the block face's frontage chord. The recipe compile failed on BAG's erker front
+("Opening escapes its wall"); with the face facts (above) it compiles and 146 is staged.
+
+**Corner 151-152: new kit components.** The photo's Nassaukade front has two tall stone dormer towers rising through the eaves and
+three wall rosettes, which no field said. `FrontIntent.towers[]` (`{bays, rise, cap, finish: 'stone', lightRise, lightSill}`, in the
+facade plane, one per entry; the old `tower` is one per front) and `FrontIntent.rosettes[]` (`{bays, storeys, diameter}`: a stone
+ring, wall field and boss in place of the window, `src/canalRecall/buildingRecipe/rosettes.ts`) are typed, validated and
+byte-identical when absent (`test:fit-golden`: all 207 recipes identical). The pediment dormers were dropped: the attic is extruded
+along front0's street, so the Nassaukade end of it is a vertical face and dormers set behind the facade are buried in it. The front
+takes `palette.brick` from the Nassaukade wall-fit; storeys 4 (STOREYS_DEFINITION). Preview on the chunk route: PASS (wall #675350
+vs #594b48, dL 0.043, 7 vs 8 columns). Still unsaid: the attic face shows wall-coloured wedges beside each tower (the single
+`tower` does the same), and the corner's roof end.
+
