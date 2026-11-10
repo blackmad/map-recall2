@@ -1,5 +1,20 @@
 # Canal Recall — what is built
 
+**House-line tools: H2 preview, H2c wall vs trim, the suppressed-face audit (2026-11-10, #338, #340, #341).**
+- **H2 + H2b: `house:preview` in Node** (e06f8dcff, opus). It renders a pand's front through the game's decorator chain and chunk builder, with the facade atlas painted under @napi-rs/canvas stubs and a software rasteriser. It takes 1.5–1.8 s cold and 0.09–0.20 s per `--watch` re-render.
+  - By default it draws the route the game draws (`--route generic|spec|installed`), with the route printed in the sheet header.
+  - It uses the lit city look (Lambert under `SUNNY_LIGHT_RIG`); `--unlit` gives the legacy shader. Wall ΔL against ride frames is +0.004 / +0.008. GLB fronts default to flat game colours, because Lambert drew them 0.106 too dark.
+  - `PRE_BLUR_PX = 1.5` is applied to the render and the photo alike, so heren and keizers now pass glazing. The 3/4 view uses FOV 20° and a flat ground.
+  - Two bugs were caught on the way. Images drawn before napi finished decoding came out blank, while the check still passed. And a pand built without its tile neighbours lost its window heads and balconies, so the preview now builds within 30 m.
+  - It found a real defect: 116526's Nassaukade face is a blank brown wall, because `chunk-face-clercq-236681` suppresses it but models only the De Clercqstraat face. This is now part of H7's row.
+- **H2c: `wallVsTrim`** (`buildingRecipe/wallTrim.ts`, 949b22d6f, sonnet). measureFacade had been reading white trim as the wall: Nassaukade 164843 now reads #452c26 (ride #3d2722) instead of #b0a99a. White stays the wall where it is the dominant area.
+  - Replaying all 448 photo groups of the 160 installed large houses moves 0 verdicts. A first version moved 8, including glass fronts read as dark wall; warm-candidate and neutral-band guards fixed that.
+  - Eight labelled fixtures pin it. Dark-front glazing (0.86 vs about 0.25 by eye) is left to H2d #342.
+- **Suppressed-face audit** (`house:audit`, `house:audit-sheet`, 04297ce2a, haiku). The brief's midpoint-coverage test called 116526 covered, because a bare brick slab has triangles at the wall ends. The lane added a bare-slab test.
+  - 1,033 suppressed pands have 1,483 street walls of at least 4 m. Of these, 219 are blank at 25 % or 50 % height (4,072 m), and 48 more are blank only at 80 % ("stops short", which may be setbacks).
+  - Landmarks are placement-checked by footprint IoU (191 of 332 verified, median 0.834). 64 of 145 blank landmark walls sit on verified models.
+  - The false-positive rate is unmeasured: the 11 m chase frames are aerial and unreadable. `house:preview --wall <edge|deg>` frames a chosen wall.
+
 **H1: HouseSpec, one record per house (2026-11-10, #337, lane/house-h1-spec-20261110 at 613667cb4, opus; house line plan `docs/handoffs/house-line-plan-20261110.md`, docs `docs/house-line.md` §1).**
 - **Why it exists:** each house's facts were scattered across recipe intents, block faces, house records, the monument register and photo judges, with no single place to merge them or say which source won. HouseSpec is that place: one record per pand, provenance per field, merged by the evidence trust order. Every later station (preview, crops, judge, stage) reads and writes it instead of keeping a format of its own.
 - **Code:** `src/canalRecall/houseSpec/` (spec, resolve, adapters, toRecipe, decorate, extractStamp). `schemaLimits` uses a1's `{component, what}` shape and still reads the legacy strings.
