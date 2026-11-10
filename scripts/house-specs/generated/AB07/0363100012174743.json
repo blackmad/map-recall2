@@ -1,0 +1,175 @@
+{
+ "version": 1,
+ "pandId": "0363100012174743",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "front.jpg",
+  "year": 2024,
+  "quality": 0.686,
+  "panoIds": [
+   "b_20241216_0911_Track06_Sphere_00009"
+  ],
+  "date": "2024-12-16",
+  "reasons": [],
+  "ppm": 50
+ },
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174743",
+   "design": {
+    "fronts": [
+     {
+      "gable": "point"
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/gable": {
+     "source": "monument-text",
+     "confidence": 0.8,
+     "ref": "rce:3505",
+     "at": null
+    },
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.5,
+     "ref": "rce:3505",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1750
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174743",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012174743",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1844
+   }
+  },
+  "pixel": null,
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174743",
+   "design": {
+    "fronts": [
+     {
+      "bays": 3,
+      "gable": "point"
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.84,
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg",
+     "at": "2024-12-16"
+    },
+    "facts/pui": {
+     "source": "vision-judge",
+     "confidence": 0.9,
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg",
+     "at": "2024-12-16"
+    },
+    "fronts/0/gable": {
+     "source": "vision-judge",
+     "confidence": 0.92,
+     "ref": "source-data://pand-crops/0363100012174743/front.jpg",
+     "at": "2024-12-16"
+    }
+   },
+   "facts": {
+    "pui": "residential"
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012174743",
+  "design": {
+   "fronts": [
+    {
+     "bays": 3,
+     "gable": "point"
+    }
+   ],
+   "notes": [
+    "describe: facts/facadeYear disagrees: register 1750 (monument-text 0.5) vs bag 1844 (bag 0.5); register wins"
+   ]
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "vision-judge",
+    "confidence": 0.84,
+    "ref": "source-data://pand-crops/0363100012174743/front.jpg",
+    "at": "2024-12-16"
+   },
+   "fronts/0/gable": {
+    "source": "monument-text",
+    "confidence": 0.8,
+    "ref": "rce:3505",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.5,
+    "ref": "rce:3505",
+    "at": null
+   },
+   "facts/pui": {
+    "source": "vision-judge",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174743/front.jpg",
+    "at": "2024-12-16"
+   },
+   "notes": {
+    "source": "default",
+    "confidence": 0,
+    "ref": "house:describe",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1750,
+   "pui": "residential"
+  }
+ },
+ "disagreements": [
+  {
+   "path": "facts/facadeYear",
+   "values": [
+    {
+     "writer": "register",
+     "value": 1750,
+     "source": "monument-text",
+     "confidence": 0.5
+    },
+    {
+     "writer": "bag",
+     "value": 1844,
+     "source": "bag",
+     "confidence": 0.5
+    }
+   ],
+   "picked": "register"
+  }
+ ],
+ "jev": {
+  "cached": true,
+  "hash": "96802dea0ee4cc4fbf3a83e1681da584",
+  "usd": 0
+ }
+}

@@ -23,7 +23,7 @@ import { buildPickBvhs, nearestVisibleHit } from '../../../src/canalRecall/landm
 import { anchorDistanceM, keepReachM, landmarkReachM, landmarkResidencyBudget, pastMinDwell, pickEvictions, withinReach } from '../../../src/canalRecall/landmarks/landmarkResidency.ts';
 import { popFadeFlag } from '../../../src/canalRecall/engine/popFade.ts';
 // Lane P3 (#328, `?landmarkDissolve`): a level swap dissolves (screen-door, complementary) instead of switching in one frame.
-import { DissolveWarmth, LevelDissolves, NO_LEVEL, landmarkArriveFlag, landmarkDissolveFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
+import { DissolveWarmth, LevelDissolves, NO_LEVEL, landmarkArriveFlag, landmarkDissolveFlag, landmarkHoldFlag } from '../../../src/canalRecall/engine/levelDissolve.ts';
 import { freezeStaticMatrices } from '../../../src/canalRecall/landmarks/staticMatrices.ts';
 import { hasReleasedVertexData, releaseGeometryOnUpload, releaseVertexDataOnUpload } from '../../../src/canalRecall/landmarks/releaseVertexData.ts';
 import { SHADOW_STAND_IN_PENDING, disposeShadowStandIn, shadowStandInFor } from '../../../src/canalRecall/rendererShared/shadowStandIns.ts';
@@ -630,21 +630,26 @@ export class SignatureLandmarks {
   /** OSM ids of every footprint a currently drawn model replaces. */
   shownSuppressOsmIds() {
     if (!this.enabled || !this.suppressing) return [];
-    return (this._entries || []).flatMap(entry => [...entry.spec.suppressOsmIds]);
+    return this._suppressingEntries().flatMap(entry => [...entry.spec.suppressOsmIds]);
+  }
+
+  /** Entries whose replaced buildings are hidden: all but those still dissolving in under `?landmarkHold` (lane P5). */
+  _suppressingEntries() {
+    return (this._entries || []).filter(entry => !entry.arriving);
   }
 
   /** The same models as shownSuppressOsmIds, with their ids: `?bagTiles=1` swaps each
    *  model's suppress list for the pands covers.json says it stands on. */
   shownSuppressModels() {
     if (!this.enabled || !this.suppressing) return [];
-    return (this._entries || []).map(entry => ({ id: entry.spec.id, suppressOsmIds: [...entry.spec.suppressOsmIds] }));
+    return this._suppressingEntries().map(entry => ({ id: entry.spec.id, suppressOsmIds: [...entry.spec.suppressOsmIds] }));
   }
 
   /** Footprints of every currently drawn model, for spatial suppression of the
    *  coloured extract (which names buildings the landmark id does not). */
   shownFootprints() {
     if (!this.enabled || !this.suppressing) return [];
-    return (this._entries || [])
+    return this._suppressingEntries()
       .filter(entry => entry.spec.spatialSuppression !== false)
       .map(entry => entry.spec.footprint)
       .filter(Boolean);
@@ -667,7 +672,7 @@ export class SignatureLandmarks {
       base = this._baseBuildingFilter;
     }
     const osmIds = active
-      ? (this._entries || []).flatMap(entry => [...entry.spec.suppressOsmIds])
+      ? this._suppressingEntries().flatMap(entry => [...entry.spec.suppressOsmIds])
       : [];
     this.map.setFilter('building-3d', basemapBuildingFilter(osmIds, base));
   }
@@ -1741,8 +1746,12 @@ export class SignatureLandmarks {
     if (!this.sharedFrame || !entry.holder?.visible) return false;
     if (this._arriveOn === undefined) this._arriveOn = landmarkArriveFlag();
     if (!this._arriveOn || !this._dissolveWarm([entry.imported])) return false;
+    // Lane P5 (#332): the building it replaces stays until the dissolve ends (`?landmarkHold=0`: it leaves at once).
+    if (this._holdOn === undefined) this._holdOn = landmarkHoldFlag();
+    entry.arriving = this._holdOn;
     this._levelFades.start(entry, entry.imported, NO_LEVEL, () => {
-      if (this._entries?.includes(entry)) { this._syncBatch(entry); this.map.triggerRepaint(); }
+      const held = entry.arriving; entry.arriving = false;
+      if (this._entries?.includes(entry)) { this._syncBatch(entry); if (held) this._applySuppression(); this.map.triggerRepaint(); }
     });
     return true;
   }

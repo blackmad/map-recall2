@@ -1,0 +1,23 @@
+{
+ "version": 1,
+ "model": "jev-1.14.0",
+ "endpoint": "https://api.typesafe.ai/v1/systemone",
+ "imageHeader": "TypeSafe-Danger-Zone-Images",
+ "note": "A rectified street-panorama crop of one Amsterdam house front; the house in question fills the middle of the image and neighbours may show at the edges.",
+ "source": "Lane H5h round 3 (#351): the storeys question under STOREYS_DEFINITION (handSet.ts), a measurement only; it becomes a writer only if it passes the storeys gate on the hand set. Changing any text bumps `version` and so every cache key.",
+ "questions": {
+  "storeys": {
+   "type": "choice",
+   "instructions": "How many full street-facing storeys does the house front in the middle of `facade` have? Count the ground storey once however tall it is, then each full storey above it up to the cornice line or the foot of the gable. Do NOT count: a souterrain (a half-sunk basement with windows at knee height, usually under a stoop), an entresol or mezzanine inside a tall ground storey, windows in the gable or crown, dormers or roof windows, or a set-back attic storey. A bel-etage above a souterrain is the first storey.",
+   "criteria": {
+    "one": "one full storey (the ground storey only)",
+    "two": "two full storeys",
+    "three": "three full storeys",
+    "four": "four full storeys",
+    "five": "five full storeys",
+    "six": "six full storeys",
+    "seven": "seven or more full storeys"
+   }
+  }
+ }
+}

@@ -1,0 +1,578 @@
+{
+ "street": "Nicolaas Witsenstraat",
+ "seed": "0363100012177794",
+ "members": [
+  "0363100012177794",
+  "0363100012177793",
+  "0363100012177763",
+  "0363100012177762",
+  "0363100012177761",
+  "0363100012177760",
+  "0363100012177759",
+  "0363100012171225",
+  "0363100012178936",
+  "0363100012178935"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012177795 14.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012178935 (face continues: 177748)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012169152",
+   "reason": "frontage 53.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171219",
+   "reason": "frontage 92.1 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171220",
+   "reason": "frontage 80.0 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171221",
+   "reason": "frontage 62.5 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171223",
+   "reason": "frontage 73.8 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171224",
+   "reason": "frontage 51.4 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171230",
+   "reason": "frontage 94.4 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171231",
+   "reason": "frontage 62.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171232",
+   "reason": "no frontage on Nicolaas Witsenstraat: No footprint edge faces Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171658",
+   "reason": "frontage 77.3 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171716",
+   "reason": "frontage 88.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177750",
+   "reason": "frontage 41.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177751",
+   "reason": "frontage 47.8 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177752",
+   "reason": "frontage 54.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177753",
+   "reason": "frontage 81.5 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177754",
+   "reason": "frontage 53.3 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177755",
+   "reason": "frontage 52.8 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177756",
+   "reason": "frontage 48.4 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177757",
+   "reason": "frontage 50.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177758",
+   "reason": "frontage 49.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012168037",
+   "reason": "frontage 58.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012168042",
+   "reason": "frontage 72.5 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012168096",
+   "reason": "frontage 78.5 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012169015",
+   "reason": "frontage 52.0 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012169016",
+   "reason": "frontage 65.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171189",
+   "reason": "frontage 33.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171190",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012171191"
+  },
+  {
+   "pandId": "0363100012171192",
+   "reason": "frontage 30.8 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171194",
+   "reason": "frontage 39.7 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171195",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012171222"
+  },
+  {
+   "pandId": "0363100012171198",
+   "reason": "frontage 53.3 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171216",
+   "reason": "frontage 45.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171217",
+   "reason": "frontage 36.1 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171218",
+   "reason": "frontage 59.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171226",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012171222"
+  },
+  {
+   "pandId": "0363100012171234",
+   "reason": "no frontage on Nicolaas Witsenstraat: No footprint edge faces Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177749",
+   "reason": "frontage 35.1 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177764",
+   "reason": "frontage 50.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177765",
+   "reason": "frontage 49.7 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177768",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012177766"
+  },
+  {
+   "pandId": "0363100012177769",
+   "reason": "frontage 36.5 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177770",
+   "reason": "frontage 44.1 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177771",
+   "reason": "frontage 47.1 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177803",
+   "reason": "frontage 64.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177804",
+   "reason": "frontage 67.7 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177805",
+   "reason": "frontage 71.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178259",
+   "reason": "frontage 97.5 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178260",
+   "reason": "frontage 103.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178261",
+   "reason": "frontage 109.0 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178350",
+   "reason": "frontage 94.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178427",
+   "reason": "frontage 100.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178863",
+   "reason": "frontage 52.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178934",
+   "reason": "frontage 60.5 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178937",
+   "reason": "frontage 86.8 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178939",
+   "reason": "frontage 38.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012177766",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012177795"
+  },
+  {
+   "pandId": "0363100012177767",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012177766"
+  },
+  {
+   "pandId": "0363100012178938",
+   "reason": "frontage 35.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012178940",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012177748"
+  },
+  {
+   "pandId": "0363100012179087",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012180228"
+  },
+  {
+   "pandId": "0363100012179088",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012179087"
+  },
+  {
+   "pandId": "0363100012179089",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012171193"
+  },
+  {
+   "pandId": "0363100012179090",
+   "reason": "frontage 39.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179091",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012171193"
+  },
+  {
+   "pandId": "0363100012179092",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012171197"
+  },
+  {
+   "pandId": "0363100012179093",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012171196"
+  },
+  {
+   "pandId": "0363100012179094",
+   "reason": "frontage 64.3 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179095",
+   "reason": "frontage 51.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179096",
+   "reason": "frontage 64.4 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179097",
+   "reason": "frontage 70.4 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179100",
+   "reason": "frontage 50.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179101",
+   "reason": "frontage 43.1 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179102",
+   "reason": "frontage 42.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179103",
+   "reason": "frontage 36.0 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179104",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012171227"
+  },
+  {
+   "pandId": "0363100012179716",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012171227"
+  },
+  {
+   "pandId": "0363100012179717",
+   "reason": "frontage 70.3 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179722",
+   "reason": "frontage 57.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179789",
+   "reason": "frontage 33.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179791",
+   "reason": "frontage 45.8 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012239613",
+   "reason": "frontage 88.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012239614",
+   "reason": "frontage 91.3 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012253826",
+   "reason": "frontage 100.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179792",
+   "reason": "frontage 58.1 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179795",
+   "reason": "frontage 76.3 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179796",
+   "reason": "frontage 79.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179797",
+   "reason": "frontage 35.9 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179799",
+   "reason": "frontage 57.5 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012179800",
+   "reason": "frontage 64.7 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012180223",
+   "reason": "frontage 36.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012180224",
+   "reason": "frontage 42.7 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012180227",
+   "reason": "sightline to Nicolaas Witsenstraat crosses 0363100012179087"
+  },
+  {
+   "pandId": "0363100012180229",
+   "reason": "frontage 57.6 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012180402",
+   "reason": "frontage 69.3 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012180403",
+   "reason": "frontage 62.8 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012180404",
+   "reason": "frontage 55.8 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012185507",
+   "reason": "frontage 47.4 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012185997",
+   "reason": "frontage 42.2 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012253071",
+   "reason": "frontage 50.4 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012253929",
+   "reason": "frontage 49.1 m from Nicolaas Witsenstraat"
+  },
+  {
+   "pandId": "0363100012171191",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171193",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171196",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171197",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171222",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171227",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171228",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171233",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180222",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180225",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012180228",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012177794",
+   "alongM": 0,
+   "widthM": 5.98,
+   "eavesM": 15.6,
+   "roofMaxM": 15.62,
+   "storeys3dbag": 5,
+   "builtYear": 1882,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012177793",
+   "alongM": 5.99,
+   "widthM": 6.01,
+   "eavesM": 14.66,
+   "roofMaxM": 15.67,
+   "storeys3dbag": 5,
+   "builtYear": 1930,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177763",
+   "alongM": 12.01,
+   "widthM": 6.04,
+   "eavesM": 15.62,
+   "roofMaxM": 16.77,
+   "storeys3dbag": 5,
+   "builtYear": 1873,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177762",
+   "alongM": 18.18,
+   "widthM": 6.3,
+   "eavesM": 18.1,
+   "roofMaxM": 18.12,
+   "storeys3dbag": 5,
+   "builtYear": 1877,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177761",
+   "alongM": 24.49,
+   "widthM": 6.3,
+   "eavesM": 17.95,
+   "roofMaxM": 17.98,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177760",
+   "alongM": 30.79,
+   "widthM": 6.3,
+   "eavesM": 17.7,
+   "roofMaxM": 17.73,
+   "storeys3dbag": 5,
+   "builtYear": 1873,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012177759",
+   "alongM": 37.08,
+   "widthM": 6.3,
+   "eavesM": 17.95,
+   "roofMaxM": 18,
+   "storeys3dbag": 0,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171225",
+   "alongM": 43.29,
+   "widthM": 6.12,
+   "eavesM": 17.68,
+   "roofMaxM": 17.69,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178936",
+   "alongM": 49.46,
+   "widthM": 6.21,
+   "eavesM": 17.77,
+   "roofMaxM": 17.83,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178935",
+   "alongM": 55.79,
+   "widthM": 6.45,
+   "eavesM": 17.89,
+   "roofMaxM": 17.97,
+   "storeys3dbag": 5,
+   "builtYear": 1891,
+   "uncertainty": []
+  }
+ ]
+}

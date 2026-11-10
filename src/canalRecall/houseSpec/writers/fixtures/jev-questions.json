@@ -1,0 +1,64 @@
+{
+ "version": 1,
+ "model": "jev-1.14.0",
+ "endpoint": "https://api.typesafe.ai/v1/systemone",
+ "imageHeader": "TypeSafe-Danger-Zone-Images",
+ "note": "A rectified street-panorama crop of one Amsterdam house front; the house in question fills the middle of the image and neighbours may show at the edges.",
+ "source": "Questions copied from scripts/jev/run.mjs (lane J1 spike, #326), word form of bays only (the picture form needs five reference images and 5x the tokens); finish drops nothing. Changing any text bumps `version` and so every cache key.",
+ "thresholds": {
+  "gable": 0.75,
+  "finish": 0.9,
+  "bays": 0.55,
+  "pui": 0.875
+ },
+ "thresholdSource": "J1 spike accept rules: gable p>=0.75 (21/21 right, both runs agreeing), finish p>=0.9 (95.2%), bays word p>=0.55 (96.7%), shopfront |noul-0.5|*2>=0.75 i.e. answer probability >= 0.875 (96.7%). One run here, not two: drift was 0-6%.",
+ "questions": {
+  "gable": {
+   "type": "choice",
+   "instructions": "What is the shape of the top of the house front in `facade` (the gable or roofline of the main house in the middle of the image)?",
+   "criteria": {
+    "neck": "Neck gable (halsgevel): a tall narrow raised centre panel with straight sides, flanked by shoulder pieces or small scrolls, often topped by a small pediment.",
+    "bell": "Bell gable (klokgevel): a raised centre whose outline curves like a bell, convex then concave, often with a small arched or rounded top.",
+    "step": "Step gable (trapgevel): the outline climbs in stair steps on both sides to a central peak.",
+    "cornice": "Cornice or flat top (lijstgevel): the front ends in a horizontal cornice or straight parapet with no raised gable shape; dormers or a roof may show behind it.",
+    "spout": "Spout gable (tuitgevel): a narrow pointed or triangular top with a spout-like tip, typical of old warehouses and wooden houses.",
+    "plain": "Plain pointed gable (puntgevel): a simple triangular gable following the roof slope, without steps, curves or a neck."
+   }
+  },
+  "finish": {
+   "type": "choice",
+   "instructions": "What is the main wall surface of the house front in `facade` above the ground floor?",
+   "criteria": {
+    "brick": "Exposed brick: individual bricks and mortar joints visible in natural red, brown, yellow or dark brick colours.",
+    "painted brick": "Painted brick: brick bonding still shows but the whole wall is painted one flat colour (often black, grey, white or dark green).",
+    "plaster": "Plaster or render: a smooth rendered surface with no brick joints, usually white, cream or grey.",
+    "stone": "Natural stone: the wall is faced in sandstone or other cut stone blocks.",
+    "mixed": "Mixed: large parts of the front are clearly different finishes (for example brick with a fully rendered upper storey)."
+   }
+  },
+  "shopfront": {
+   "type": "noul",
+   "instructions": "Does the ground floor of the house front in `facade` have a shopfront (large display windows, a shop or cafe front, a fascia or a sign)?",
+   "criteria": {
+    "true": "The ground floor is a shop, cafe, bar or other commercial front.",
+    "false": "The ground floor is residential: house doors and ordinary windows."
+   }
+  },
+  "bays": {
+   "type": "choice",
+   "instructions": "How many vertical window axes (bays: columns of windows side by side) does the house front in the middle of `facade` have on its upper storeys?",
+   "criteria": {
+    "one": "one window axis per upper storey",
+    "two": "two window axes per upper storey",
+    "three": "three window axes per upper storey",
+    "four": "four window axes per upper storey",
+    "five": "five window axes per upper storey"
+   }
+  }
+ },
+ "gableClasses": [
+  "step",
+  "plain"
+ ],
+ "gableClassesSource": "Spike (Kinkerstraat, 1890s fronts): cornice and step reliable, bell/neck/plain not. Checked on AB07 against the 14 pands that both the register and a confident Jev gable name (H5, 2026-11-10): Jev agreed with the register on 8; its cornice contradicted the register's bell or neck on 5 of 8 calls (3 of them at p>=0.96), so cornice is not written on canal-belt fronts. step and plain are written; bell and neck stay out. Widen only after a buurt of 1890s cornice fronts shows cornice >= 0.9 against hand truth."
+}

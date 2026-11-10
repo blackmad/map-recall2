@@ -1,0 +1,213 @@
+{
+ "version": 1,
+ "pandId": "0363100012172884",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "front.jpg",
+  "year": 2024,
+  "quality": 0.614,
+  "panoIds": [
+   "b_20241216_0911_Track07_Sphere_00043",
+   "b_20241216_0911_Track07_Sphere_00044",
+   "b_20241216_0911_Track07_Sphere_00042"
+  ],
+  "date": "2024-12-16",
+  "reasons": [],
+  "ppm": 40
+ },
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172884",
+   "design": {
+    "fronts": [
+     {
+      "gable": "neck"
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/gable": {
+     "source": "monument-text",
+     "confidence": 0.8,
+     "ref": "rce:967",
+     "at": null
+    },
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.7,
+     "ref": "rce:967",
+     "at": null
+    },
+    "facts/elements": {
+     "source": "monument-text",
+     "confidence": 0.6,
+     "ref": "rce:967",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1612,
+    "elements": [
+     "gable-stone"
+    ]
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172884",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012172884",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1874
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172884",
+   "design": {
+    "palette": {
+     "brick": "#886f56"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.35,
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg#good",
+     "at": "2024-12-16"
+    }
+   }
+  },
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172884",
+   "design": {
+    "fronts": [
+     {
+      "bays": 1
+     }
+    ],
+    "palette": {
+     "wallMaterial": "brick"
+    }
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.58,
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg",
+     "at": "2024-12-16"
+    },
+    "palette/wallMaterial": {
+     "source": "vision-judge",
+     "confidence": 0.94,
+     "ref": "source-data://pand-crops/0363100012172884/front.jpg",
+     "at": "2024-12-16"
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012172884",
+  "design": {
+   "fronts": [
+    {
+     "bays": 1,
+     "gable": "neck"
+    }
+   ],
+   "palette": {
+    "brick": "#886f56",
+    "wallMaterial": "brick"
+   },
+   "notes": [
+    "describe: facts/facadeYear disagrees: register 1612 (monument-text 0.7) vs bag 1874 (bag 0.5); register wins"
+   ]
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "vision-judge",
+    "confidence": 0.58,
+    "ref": "source-data://pand-crops/0363100012172884/front.jpg",
+    "at": "2024-12-16"
+   },
+   "fronts/0/gable": {
+    "source": "monument-text",
+    "confidence": 0.8,
+    "ref": "rce:967",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.35,
+    "ref": "source-data://pand-crops/0363100012172884/front.jpg#good",
+    "at": "2024-12-16"
+   },
+   "palette/wallMaterial": {
+    "source": "vision-judge",
+    "confidence": 0.94,
+    "ref": "source-data://pand-crops/0363100012172884/front.jpg",
+    "at": "2024-12-16"
+   },
+   "facts/elements": {
+    "source": "monument-text",
+    "confidence": 0.6,
+    "ref": "rce:967",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.7,
+    "ref": "rce:967",
+    "at": null
+   },
+   "notes": {
+    "source": "default",
+    "confidence": 0,
+    "ref": "house:describe",
+    "at": null
+   }
+  },
+  "facts": {
+   "elements": [
+    "gable-stone"
+   ],
+   "facadeYear": 1612
+  }
+ },
+ "disagreements": [
+  {
+   "path": "facts/facadeYear",
+   "values": [
+    {
+     "writer": "register",
+     "value": 1612,
+     "source": "monument-text",
+     "confidence": 0.7
+    },
+    {
+     "writer": "bag",
+     "value": 1874,
+     "source": "bag",
+     "confidence": 0.5
+    }
+   ],
+   "picked": "register"
+  }
+ ],
+ "jev": {
+  "cached": true,
+  "hash": "db9035dd828ce1a0939baa064cd2a4b9",
+  "usd": 0
+ }
+}

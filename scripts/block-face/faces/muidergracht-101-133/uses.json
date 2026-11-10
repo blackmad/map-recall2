@@ -1,0 +1,285 @@
+{
+ "street": "Plantage Muidergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:12:10.705Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170827",
+   "addresses": [
+    "Plantage Muidergracht 101",
+    "Plantage Muidergracht 101B",
+    "Plantage Muidergracht 101A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 101-H",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000777800"
+    },
+    {
+     "address": "Plantage Muidergracht 101B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012074681"
+    },
+    {
+     "address": "Plantage Muidergracht 101A",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012074682"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170834",
+   "addresses": [
+    "Plantage Muidergracht 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 103-H",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000777802"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012244846",
+   "addresses": [
+    "Plantage Muidergracht 105",
+    "Plantage Muidergracht 105A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 105",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000777804"
+    },
+    {
+     "address": "Plantage Muidergracht 105A",
+     "use": "woonfunctie",
+     "areaM2": 234,
+     "bagId": "0363010012094467"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012244940",
+   "addresses": [
+    "Plantage Muidergracht 105B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 105B",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010012094701"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170831",
+   "addresses": [
+    "Plantage Muidergracht 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 109",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000777805"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181426",
+   "addresses": [
+    "Plantage Muidergracht 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 111",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001014224"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170830",
+   "addresses": [
+    "Plantage Muidergracht 113",
+    "Plantage Muidergracht 115",
+    "Plantage Muidergracht 117",
+    "Plantage Muidergracht 119",
+    "Plantage Muidergracht 121",
+    "Plantage Muidergracht 123",
+    "Plantage Muidergracht 123A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 117-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000777815"
+    },
+    {
+     "address": "Plantage Muidergracht 115",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000777813"
+    },
+    {
+     "address": "Plantage Muidergracht 119",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000878213"
+    },
+    {
+     "address": "Plantage Muidergracht 121",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000878214"
+    },
+    {
+     "address": "Plantage Muidergracht 123",
+     "use": "woonfunctie",
+     "areaM2": 216,
+     "bagId": "0363010000949772"
+    },
+    {
+     "address": "Plantage Muidergracht 123A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000978733"
+    },
+    {
+     "address": "Plantage Muidergracht 113-H",
+     "use": "kantoorfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000976305"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181428",
+   "addresses": [
+    "Plantage Muidergracht 125A",
+    "Plantage Muidergracht 125B",
+    "Plantage Muidergracht 125C",
+    "Plantage Muidergracht 125D",
+    "Plantage Muidergracht 125E"
+   ],
+   "groundUnits": [],
+   "units": 26,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181425",
+   "addresses": [
+    "Plantage Muidergracht 129A",
+    "Plantage Muidergracht 129B",
+    "Plantage Muidergracht 129C",
+    "Plantage Muidergracht 129D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 129A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010001030059"
+    },
+    {
+     "address": "Plantage Muidergracht 129B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010001030060"
+    },
+    {
+     "address": "Plantage Muidergracht 129C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001030062"
+    },
+    {
+     "address": "Plantage Muidergracht 129D",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010001030064"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181424",
+   "addresses": [
+    "Plantage Muidergracht 131B",
+    "Plantage Muidergracht 131A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 131B",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000980497"
+    },
+    {
+     "address": "Plantage Muidergracht 131A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000987636"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181070",
+   "addresses": [
+    "Plantage Muidergracht 133"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 133-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000983598"
+    },
+    {
+     "address": "Plantage Badlaan 1B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000994838"
+    },
+    {
+     "address": "Plantage Badlaan 1A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000994839"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

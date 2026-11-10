@@ -1,0 +1,216 @@
+{
+ "street": "Plantage Doklaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:12:25.983Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181136",
+   "addresses": [
+    "Plantage Doklaan 42A",
+    "Plantage Doklaan 42B",
+    "Plantage Doklaan 42C",
+    "Plantage Doklaan 42D",
+    "Plantage Doklaan 42E",
+    "Plantage Doklaan 42F",
+    "Plantage Doklaan 42G",
+    "Plantage Doklaan 42H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Doklaan 42B",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000995275"
+    },
+    {
+     "address": "Plantage Doklaan 42C",
+     "use": "woonfunctie",
+     "areaM2": 20,
+     "bagId": "0363010000995276"
+    },
+    {
+     "address": "Plantage Doklaan 42D",
+     "use": "woonfunctie",
+     "areaM2": 20,
+     "bagId": "0363010000995277"
+    },
+    {
+     "address": "Plantage Doklaan 42E",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000995278"
+    },
+    {
+     "address": "Plantage Doklaan 42F",
+     "use": "woonfunctie",
+     "areaM2": 20,
+     "bagId": "0363010000995279"
+    },
+    {
+     "address": "Plantage Doklaan 42G",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000995280"
+    },
+    {
+     "address": "Plantage Doklaan 42H",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000995281"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181140",
+   "addresses": [
+    "Plantage Doklaan 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Doklaan 40-H",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010001041407"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181139",
+   "addresses": [
+    "Plantage Doklaan 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Doklaan 38-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000777332"
+    },
+    {
+     "address": "Plantage Doklaan 38-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010012130249"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181141",
+   "addresses": [
+    "Plantage Doklaan 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Doklaan 36-H",
+     "use": "industriefunctie,kantoorfunctie,winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010012152050"
+    },
+    {
+     "address": "Plantage Doklaan 36-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000777325"
+    },
+    {
+     "address": "Plantage Doklaan 36-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012160999"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181142",
+   "addresses": [
+    "Plantage Doklaan 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Doklaan 34-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000777322"
+    },
+    {
+     "address": "Plantage Doklaan 34-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012122436"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181143",
+   "addresses": [
+    "Plantage Doklaan 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Doklaan 32-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000777319"
+    },
+    {
+     "address": "Plantage Doklaan 32-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012122434"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181138",
+   "addresses": [
+    "Plantage Doklaan 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Doklaan 30-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000949745"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170666",
+   "addresses": [
+    "Plantage Doklaan 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Doklaan 28-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000777312"
+    },
+    {
+     "address": "Plantage Doklaan 28-H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012576778"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

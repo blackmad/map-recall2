@@ -3,6 +3,99 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Three-window houses",
+      "text": "Measured window bays are back, and this time a house with three windows across draws three. Before, the generic facades could only draw an even number, so the most common canal-house rhythm came out as two or four. About 400 measured houses now match the window count in their street photos; houses without a confirmed count keep the generic rhythm.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-house-h1c/ride-desktop-169916-photo-before-after.jpg",
+          "alt": "Street photo, then the game before and after: the cream house goes from two to three window columns",
+          "caption": "Photo, before, after."
+        },
+        {
+          "src": "ui/2026-11-10-house-h1c/ride-phone-169916-photo-before-after.jpg",
+          "alt": "The same row on a phone, before and after",
+          "caption": "On a phone."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Measured window bays paused",
+      "text": "The measured window bays from earlier today are switched off again. A spot check against street photos found some houses drawn with twice their real number of windows, so houses use the generic window rhythm until we find the cause. Measured gables, build years and finishes stay on.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-house-h1-spec/desktop-kinker-244-332-specs-off.jpg",
+          "alt": "Kinkerstraat 244–332 with the generic window rhythm",
+          "caption": "Houses are back on the generic rhythm."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Fewer made-up shops",
+      "text": "Shopfronts used to be guessed on streets with many businesses, so warehouses, offices and houses beside a row of shops got a shop window too. Now a building gets a shopfront only when a shop is mapped on it or the city's building register lists it as a shop, café or restaurant. Around 5,400 guessed shops are gone, including canal warehouses such as Brouwersgracht 222, while Kalverstraat and Haarlemmerdijk keep theirs.",
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-storefront-gate.jpg",
+          "alt": "Brouwersgracht warehouse before and after: the green shop strip on the ground floor is gone",
+          "caption": "Before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Houses keep their measured window bays",
+      "text": "Ordinary houses we have measured from the street, a block face or the monument register now draw their real number of window bays instead of the generic texture's default rhythm. About 400 houses change.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-house-h1-spec/desktop-kinker-244-332-specs-off.jpg",
+          "alt": "Kinkerstraat 244–332 with the generic window rhythm",
+          "caption": "Before: the generic rhythm."
+        },
+        {
+          "src": "ui/2026-11-10-house-h1-spec/desktop-kinker-244-332-specs-on.jpg",
+          "alt": "Kinkerstraat 244–332 with measured window bays",
+          "caption": "After: each house's measured bays."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Stoops, door surrounds and string courses are back",
+      "text": "The small details on ordinary houses had been fading out of view for most camera angles: stoops, door surrounds, string courses, pilasters and flower boxes. A focal-length bug in the fade for thin geometry caused it, and it is now fixed, so these details show from street level again. Details the monument register records for a house are now placed before the random ones.",
+      "images": [
+        {
+          "src": "whats-new/2026-11-10-facade-extras.jpg",
+          "alt": "Panorama, before and after strips of canal-belt houses",
+          "caption": "Photo, before, after"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Free Ride pins stand at their landmark",
+      "text": "In Free Ride a landmark's pin now stands at the landmark itself rather than at the nearest street or canal, which by boat could be hundreds of metres away. Pins step onto the quay when the point is in the water and off a building's roof onto the street.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-note-shots-3/westermarkt-before-desktop-boat.jpg",
+          "alt": "Westermarkt in Free Ride by boat, the Westertoren pin on the canal edge",
+          "caption": "Before: the Westertoren pin stood on the quay in front of the tower."
+        },
+        {
+          "src": "ui/2026-11-10-note-shots-3/westermarkt-after-desktop-boat.jpg",
+          "alt": "Westermarkt in Free Ride by boat, the Westertoren pin on the tower",
+          "caption": "After: it stands at the tower."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Trees no longer blink",
+      "text": "As you ride or fly, new trees now fade in and old ones fade out instead of the whole row of trees swapping at once, and a landmark arriving in the distance no longer leaves a see-through moment where the building it replaces was.",
+      "images": []
+    },
+    {
+      "date": "2026-11-10",
       "title": "Calmer distant landmarks",
       "text": "From the air, landmarks appearing in the distance and the far city handing over to nearer buildings now fade in instead of snapping.",
       "images": []
@@ -91,8 +184,14 @@
     {
       "date": "2026-11-10",
       "title": "More Dutch on Dutch cards",
-      "text": "In the Dutch game, 56 more landmarks now tell their facts in Dutch, each sentence taken word for word from the Dutch Wikipedia article and linked to it. Where the Dutch article does not say the same thing, the card stays in English rather than guess.",
-      "images": []
+      "text": "In the Dutch game, 56 more landmarks now tell some of their facts in Dutch, each sentence taken word for word from the Dutch Wikipedia article. Where the Dutch article does not say the same thing, the fact stays in English rather than guess. The card's source link still points to the English article.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-note-shots-3/dutch-card-expanded-desktop.jpg",
+          "alt": "The expanded Westerkerk card in the Dutch game, two facts in Dutch",
+          "caption": "The Westerkerk card in the Dutch game: the first two facts are sentences from the Dutch Wikipedia article."
+        }
+      ]
     },
     {
       "date": "2026-11-09",

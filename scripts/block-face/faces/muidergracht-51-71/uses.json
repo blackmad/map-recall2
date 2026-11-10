@@ -1,0 +1,211 @@
+{
+ "street": "Plantage Muidergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:01:00.007Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181354",
+   "addresses": [
+    "Plantage Muidergracht 51"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 51-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000777735"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170483",
+   "addresses": [
+    "Plantage Muidergracht 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 53-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000976306"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170482",
+   "addresses": [
+    "Plantage Muidergracht 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 55-H",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000777740"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170479",
+   "addresses": [
+    "Plantage Muidergracht 57C",
+    "Plantage Muidergracht 57D",
+    "Plantage Muidergracht 57E",
+    "Plantage Muidergracht 57A",
+    "Plantage Muidergracht 57B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 57C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000777746"
+    },
+    {
+     "address": "Plantage Muidergracht 57D",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000777747"
+    },
+    {
+     "address": "Plantage Muidergracht 57E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000777748"
+    },
+    {
+     "address": "Plantage Muidergracht 57A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000987464"
+    },
+    {
+     "address": "Plantage Muidergracht 57B",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000777745"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170478",
+   "addresses": [
+    "Plantage Muidergracht 59",
+    "Plantage Muidergracht 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 61",
+     "use": "industriefunctie",
+     "areaM2": 142,
+     "bagId": "0363010000777752"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170477",
+   "addresses": [
+    "Plantage Muidergracht 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 63-H",
+     "use": "woonfunctie",
+     "areaM2": 243,
+     "bagId": "0363010000993464"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170476",
+   "addresses": [
+    "Plantage Muidergracht 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 65-H",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000777757"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181280",
+   "addresses": [
+    "Plantage Muidergracht 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 67-H",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000994535"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170480",
+   "addresses": [
+    "Plantage Muidergracht 69",
+    "Plantage Muidergracht 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 69-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000777762"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1299724230,
+     "lngLat": [
+      4.9108037,
+      52.3656632
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "69-71",
+      "addr:postcode": "1018TM",
+      "addr:street": "Plantage Muidergracht",
+      "amenity": "cafe",
+      "brand": "Coffee Company",
+      "brand:wikidata": "Q108927063",
+      "check_date": "2024-08-18",
+      "cuisine": "coffee_shop",
+      "name": "Coffee Company",
+      "opening_hours": "Mo-Fr 07:30-17:00; Sa-Su 08:30-17:00",
+      "phone": "+31 20 237 4330",
+      "takeaway": "yes",
+      "website": "https://www.coffeecompany.nl/locations/plantage-muidergracht-69-71"
+     },
+     "fetchedAt": "2026-11-10T08:01:00.007Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

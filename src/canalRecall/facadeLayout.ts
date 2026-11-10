@@ -35,7 +35,10 @@ export const MIN_FACADE_WALL_M = 2.6;
  * door goes at; `groundLevel` is false for a part that floats above the street.
  */
 /** Per-building multipliers on the style's nominal bay width, storey and ground-floor height. */
-export type LayoutScale = { bay: number; storey: number; ground: number; /** Bays between doors on a long wall (large tier: one entrance per run). */ doorEvery?: number };
+export type LayoutScale = { bay: number; storey: number; ground: number; /** Bays between doors on a long wall (large tier: one entrance per run). */ doorEvery?: number;
+  /** The narrowest bay that carries a door (default 2.4 m). Axis units (streetFacadeRendering.ts `axisUnitPlan`) are half
+   *  a cell wide, so they pass half of it. Absent = byte-identical. */
+  doorMinBayM?: number };
 const NO_SCALE: LayoutScale = { bay: 1, storey: 1, ground: 1 };
 
 export function layoutWall(style: FacadeStyle, lengthM: number, exposedM: number, seed: number, groundLevel = true, scale: LayoutScale = NO_SCALE): WallLayout | null {
@@ -52,7 +55,7 @@ export function layoutWall(style: FacadeStyle, lengthM: number, exposedM: number
   const storeys = upperM > 0 ? Math.max(1, Math.round(upperM / dims.storey)) : 0;
   const storeyM = storeys ? upperM / storeys : dims.storey;
   const doorBays: number[] = [];
-  if (groundLevel && lengthM >= 2.4 && bayWidthM >= 2.4) {
+  if (groundLevel && lengthM >= 2.4 && bayWidthM >= (scale.doorMinBayM ?? 2.4)) {
     // A door a bay in from one end: the end bay is the corner pier on narrow
     // houses. Long walls repeat the door (stair cores) every `doorEvery` bays.
     const first = bays <= 2 ? (seed < 0.5 ? 0 : bays - 1) : Math.min(bays - 1, 1 + Math.floor(seed * 2));

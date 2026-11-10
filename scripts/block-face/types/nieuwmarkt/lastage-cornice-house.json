@@ -1,0 +1,200 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "lastage-cornice-house",
+ "district": "nieuwmarkt",
+ "description": "Lastage/Nieuwmarkt cornice houses (lijstgevels, 17th-18th c. fronts and their 19th-c. rebuilds; Rapenburg 95-97, 2024-12-10): 5.4-6 m fronts of dark brown brick over a white-painted ground storey of 4.2-4.8 m (door, wide window, door), three axes of tall white two-light sashes (2.1 m on the first storey, 2.0 on the second, 1.5 on the top), and a white plastered attic frieze with its cornice (12.5-14.7 m), or a small white dormer over a plain cornice",
+ "fit": {
+  "widthM": [
+   4.6,
+   7.4
+  ],
+  "storeys": [
+   4,
+   5
+  ]
+ },
+ "match": {
+  "years": [
+   1600,
+   1925
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   12.0,
+   16.0
+  ],
+  "stucco": false,
+  "crownMatch": true,
+  "crownStrict": true,
+  "materialVeto": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 4.6,
+    "bays": 2
+   },
+   {
+    "maxWidthM": 7.4,
+    "bays": 3
+   },
+   {
+    "maxWidthM": 99,
+    "bays": 4
+   }
+  ],
+  "crowns": {
+   "frieze": {
+    "riseM": [
+     0.8,
+     2.6
+    ],
+    "topWidthM": [
+     3.5,
+     8.0
+    ]
+   },
+   "dormer": {
+    "riseM": [
+     0.6,
+     2.0
+    ],
+    "topWidthM": [
+     0.4,
+     3.0
+    ]
+   },
+   "none": {
+    "none": true
+   }
+  },
+  "note": "Rapenburg 97 (181605, strip 2024-12-10, gridded crop): white ground storey 0-4.3 m, windows 4.5-6.6 / 7.4-9.4 / 10.1-11.6 m, brick to 12.5 m, frieze and cornice to 14.7 m; 1905 is the BAG placeholder in the centre (unknownYears), and BAG dates many of these fronts 1810-1925 after rebuilds, so the skyline crown decides against the bell house (crownMatch); the top storey carries the frieze (12.5-14.7 m) so the eaves is the cornice top 14.7 m, not 3DBAG's 11.6; round 2 (Opus verdict): windows 4.5-6.6 / 7.1-9.2 / 10.1-11.6 m, white frieze and cornice 12.5-14.7 m (entablature 2.2 m); two-light sashes on storeys 1-2, cross window on top, flush full-frame surrounds",
+  "mirrorForDoor": "left",
+  "unknownYears": [
+   1905
+  ]
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   4.3,
+   2.7,
+   2.8,
+   2.7
+  ],
+  "windows": "sash",
+  "windowSurround": "full-frame",
+  "windowHeights": [
+   0.5,
+   0.78,
+   0.74,
+   0.56
+  ],
+  "headLines": [
+   0.85,
+   0.85,
+   0.79,
+   0.67
+  ],
+  "windowShare": 0.68,
+  "cornice": "simple",
+  "entablature": {
+   "rise": 2.2,
+   "cap": 0.35,
+   "frieze": "trim"
+  },
+  "storeyWindows": {
+   "1": "two-light",
+   "2": "two-light"
+  }
+ },
+ "crowns": {
+  "frieze": {
+   "gable": "cornice",
+   "note": "Rapenburg 97 (181605, Opus strip verdict 2026-11-10): a white frieze and cornice 2.2 m deep (entablature, 12.5-14.7 m on the strip) over the brick, no dormer"
+  },
+  "dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.36,
+     "to": 0.64
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.3,
+    "setback": 0.35
+   },
+   "note": "Rapenburg 95 (181532): a white dormer over the middle behind a plain cornice"
+  },
+  "none": {
+   "gable": "cornice",
+   "note": "cornice only"
+  }
+ },
+ "grounds": {
+  "white-pui": {
+   "doorBay": 0,
+   "basement": "none",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window",
+     "door"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "Rapenburg 97 strip 2024-12-10: white-painted ground storey, door left, wide window, door right"
+   },
+   "note": "white painted ground storey"
+  }
+ },
+ "palettes": {
+  "dark-brown-lastage": {
+   "brick": "#5a3d33",
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "red-tile"
+ },
+ "rhythm": {
+  "bays": "3 axes (2 under 4.6 m, 4 over 7.6 m)",
+  "identicalBays": "every upper storey alike",
+  "windowsPerStorey": "ground: door + windows | upper: 2-4",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "a house door and windows, or a shop",
+  "signage": "per shop",
+  "roofline": "white frieze and cornice, or a cornice with one dormer",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the frieze has no oculi or console brackets",
+   "the ground storey shop glazing bars are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "rapenburg-89-103",
+   "pands": [
+    "0363100012181605",
+    "0363100012181532"
+   ],
+   "citation": "strip 2024-12-10, gridded crop at 40 px/m (lane belt-nieuwmarkt-lastage-20261110)"
+  }
+ ]
+}

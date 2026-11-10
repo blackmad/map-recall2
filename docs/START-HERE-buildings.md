@@ -1,5 +1,8 @@
 # Start here: adding buildings to Ride Amsterdam
 
+> **House line (2026-11-10):** a house's facts now go in one record, the HouseSpec. Read
+> [`docs/house-line.md`](house-line.md) first; the steps below that it supersedes are being replaced station by station.
+
 This is the entry point for anyone, person or agent, who wants to add or
 improve buildings in the game. Read it in full first. It is short on purpose,
 and it links to the deeper docs instead of repeating them.

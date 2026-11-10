@@ -1,0 +1,277 @@
+{
+ "street": "Plantage Muidergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:13:18.290Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171266",
+   "addresses": [
+    "Plantage Muidergracht 137",
+    "Plantage Muidergracht 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 137-H",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012171456"
+    },
+    {
+     "address": "Plantage Muidergracht 137-O",
+     "use": "industriefunctie",
+     "areaM2": 53,
+     "bagId": "0363010000777840"
+    },
+    {
+     "address": "Plantage Muidergracht 137-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000777839"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181655",
+   "addresses": [
+    "Plantage Muidergracht 141"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 141-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010001020799"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181660",
+   "addresses": [
+    "Plantage Muidergracht 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 143-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000777848"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181661",
+   "addresses": [
+    "Plantage Muidergracht 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 145-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000777853"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181662",
+   "addresses": [
+    "Plantage Muidergracht 147",
+    "Plantage Muidergracht 147F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 147-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000777862"
+    },
+    {
+     "address": "Plantage Muidergracht 147F",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010012583575"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181654",
+   "addresses": [
+    "Plantage Muidergracht 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 149-H",
+     "use": "woonfunctie",
+     "areaM2": 258,
+     "bagId": "0363010001993847"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181737",
+   "addresses": [
+    "Plantage Muidergracht 151A",
+    "Plantage Muidergracht 151B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 151A",
+     "use": "woonfunctie",
+     "areaM2": 216,
+     "bagId": "0363010011073771"
+    },
+    {
+     "address": "Plantage Muidergracht 151B",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010011073772"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181738",
+   "addresses": [
+    "Plantage Muidergracht 153",
+    "Plantage Muidergracht 153A",
+    "Plantage Muidergracht 153B",
+    "Plantage Muidergracht 153C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 153",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 372,
+     "bagId": "0363010000777874"
+    },
+    {
+     "address": "Plantage Muidergracht 153A",
+     "use": "woonfunctie",
+     "areaM2": 248,
+     "bagId": "0363010012089826"
+    },
+    {
+     "address": "Plantage Muidergracht 153B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012089827"
+    },
+    {
+     "address": "Plantage Muidergracht 153C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012089828"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171263",
+   "addresses": [
+    "Plantage Muidergracht 155",
+    "Plantage Muidergracht 155C",
+    "Plantage Muidergracht 155A",
+    "Plantage Muidergracht 155D",
+    "Plantage Muidergracht 155B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 155C",
+     "use": "woonfunctie",
+     "areaM2": 209,
+     "bagId": "0363010012151262"
+    },
+    {
+     "address": "Plantage Muidergracht 155A",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 321,
+     "bagId": "0363010012151260"
+    },
+    {
+     "address": "Plantage Muidergracht 155-H",
+     "use": "kantoorfunctie",
+     "areaM2": 280,
+     "bagId": "0363010000777876"
+    },
+    {
+     "address": "Plantage Muidergracht 155D",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010012151263"
+    },
+    {
+     "address": "Plantage Muidergracht 155B",
+     "use": "woonfunctie",
+     "areaM2": 210,
+     "bagId": "0363010012151261"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012186001",
+   "addresses": [
+    "Plantage Muidergracht 157"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 157-H",
+     "use": "woonfunctie",
+     "areaM2": 206,
+     "bagId": "0363010000777879"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181735",
+   "addresses": [
+    "Plantage Muidergracht 159"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 159-H",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000777883"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181736",
+   "addresses": [
+    "Plantage Muidergracht 161"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 161-H",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000995170"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

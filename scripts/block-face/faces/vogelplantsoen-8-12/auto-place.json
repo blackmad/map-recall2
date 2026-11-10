@@ -2,8 +2,8 @@
  "face": "vogelplantsoen-8-12",
  "street": "Vogelplantsoen",
  "library": "vogelbuurt",
- "stripDate": "2022-05-10",
- "seconds": 0.18,
+ "stripDate": "2025-09-22",
+ "seconds": 4.11,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -13,7 +13,17 @@
   "widthSlackM": 0.4,
   "flatRoofRiseM": 1.5
  },
- "runs": [],
+ "runs": [
+  {
+   "face": "vogelplantsoen-8-12-r1",
+   "pands": [
+    "0363100012079772",
+    "0363100012087797"
+   ],
+   "passed": true,
+   "triangles": 1019
+  }
+ ],
  "pands": [
   {
    "pandId": "0363100012079772",
@@ -24,18 +34,23 @@
    "storeys3dbag": 2,
    "bagBay": null,
    "strip": {
-    "wall": "#4a4a4b",
-    "wallRaw": "#4f4239",
+    "wall": "#2f3740",
+    "wallRaw": "#434940",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 367,
-     "confidence": 0.25,
-     "crown": null
+     "eavesM": 6.08,
+     "eavesRow": 124,
+     "confidence": 0.5,
+     "crown": {
+      "widthM": 0.68,
+      "riseM": 3.1,
+      "topWidthM": 0.28,
+      "centre": 0.64
+     }
     },
     "stucco": false,
     "bands": 0,
     "columns": null,
-    "frontClass": "blank",
+    "frontClass": "punched",
     "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
@@ -46,21 +61,76 @@
      "why": "one-storey front (eaves <= 6 m): no balcony",
      "openAxes": [
       {
-       "widthM": 4.6,
-       "centre": 0.5,
-       "light": 0.2
+       "widthM": 1.38,
+       "centre": 0.18,
+       "light": 0.24
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.42,
+       "light": 0.16
+      },
+      {
+       "widthM": 1.02,
+       "centre": 0.89,
+       "light": 0.18
       }
      ],
-     "slabs": []
+     "slabs": [
+      {
+       "atM": 3,
+       "widthM": 1.6,
+       "centre": 0.83
+      }
+     ]
     },
     "voidShare": 0,
-    "foliageShare": 0.02
+    "foliageShare": 0.19
    },
-   "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 1,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
+   },
+   "notes": [
+    "door right",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012079772",
+    "ncc": 0.28,
+    "nccRaw": 0.28,
+    "shiftM": [
+     0.15,
+     0.1
+    ],
+    "usable": 0.75,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL -0.16",
+     "glazing  mean 0.16 vs photo 0.77"
+    ],
+    "wall": {
+     "photo": "#585854",
+     "model": "#2c2b30",
+     "dL": -0.159
+    },
+    "glazing": {
+     "photo": 0.77,
+     "model": 0.16
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.179
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.28,
+    "vogel-1918-timber-band-cottage~m": 0.151
+   }
   },
   {
    "pandId": "0363100012087797",
@@ -71,19 +141,24 @@
    "storeys3dbag": 2,
    "bagBay": null,
    "strip": {
-    "wall": "#4b4b51",
-    "wallRaw": "#554539",
+    "wall": "#343a47",
+    "wallRaw": "#4b514b",
     "skyline": {
-     "eavesM": 0,
-     "eavesRow": 367,
-     "confidence": 0.18,
-     "crown": null
+     "eavesM": 6.38,
+     "eavesRow": 112,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 0.97,
+      "riseM": 1.22,
+      "topWidthM": 0.38,
+      "centre": 0.58
+     }
     },
     "stucco": false,
     "bands": 0,
-    "columns": 4,
-    "frontClass": "ribbon",
-    "doorSide": "left",
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "right",
     "accentSide": null,
     "accentShare": 0,
     "structure": {
@@ -95,56 +170,70 @@
       {
        "widthM": 0.72,
        "centre": 0.08,
-       "light": 0.13
+       "light": 0.17
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.46,
+       "light": 0.14
       }
      ],
      "slabs": [
       {
-       "atM": 2.45,
-       "widthM": 4.6,
-       "centre": 0.5
+       "atM": 2.98,
+       "widthM": 0.9,
+       "centre": 0.9
       }
      ]
     },
     "voidShare": 0,
-    "foliageShare": 0.03
+    "foliageShare": 0.14
    },
-   "status": "held",
-   "stage": "match",
-   "reason": "best vogel-1918-timber-band-cottage scores 0.67 < 0.7 (strip columns 4 vs 2 bays)",
-   "best": {
-    "type": "vogel-1918-timber-band-cottage",
-    "score": 0.67,
-    "veto": [],
-    "criteria": [
-     {
-      "key": "eaves",
-      "weight": 2,
-      "score": null,
-      "note": "strip cornice unread (type line 4.1 m; 3DBAG 4.25 m not compared)"
-     },
-     {
-      "key": "storeys",
-      "weight": 1,
-      "score": 1,
-      "note": "3DBAG bouwlagen 2 vs 0/1/2"
-     },
-     {
-      "key": "stucco",
-      "weight": 2,
-      "score": 1,
-      "note": "strip accent share 0 (brick)"
-     },
-     {
-      "key": "columns",
-      "weight": 1.5,
-      "score": 0,
-      "note": "strip columns 4 vs 2 bays"
-     }
-    ]
+   "status": "placed",
+   "type": "vogel-1918-timber-band-cottage",
+   "score": 0.77,
+   "placement": {
+    "type": "vogel-1918-timber-band-cottage"
    },
-   "likeness": null,
-   "challengers": {}
+   "notes": [
+    "door right",
+    "crown half-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012087797",
+    "ncc": 0.289,
+    "nccRaw": 0.289,
+    "shiftM": [
+     -0.2,
+     0.35
+    ],
+    "usable": 0.78,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.18",
+     "glazing  mean 0.16 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#2c2b30",
+     "dL": 0.178
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.16
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.17
+   },
+   "challengers": {
+    "vogel-1918-timber-band-cottage": 0.289,
+    "vogel-1918-timber-band-cottage~m": 0.492
+   }
   },
   {
    "pandId": "0363100012106957",
@@ -155,17 +244,17 @@
    "storeys3dbag": 2,
    "bagBay": null,
    "strip": {
-    "wall": "#4a4a50",
-    "wallRaw": "#443e3b",
+    "wall": "#505263",
+    "wallRaw": "#585857",
     "skyline": {
-     "eavesM": 6,
-     "eavesRow": 127,
-     "confidence": 0.74,
+     "eavesM": 7.1,
+     "eavesRow": 83,
+     "confidence": 1,
      "crown": null
     },
     "stucco": false,
     "bands": 0,
-    "columns": 4,
+    "columns": null,
     "frontClass": "ribbon",
     "doorSide": "left",
     "accentSide": null,
@@ -177,25 +266,50 @@
      "why": "one-storey front (eaves <= 6 m): no balcony",
      "openAxes": [
       {
-       "widthM": 4.45,
-       "centre": 0.52,
-       "light": 0.28
+       "widthM": 0.75,
+       "centre": 0.08,
+       "light": 0.18
       }
      ],
      "slabs": [
       {
-       "atM": 2.5,
-       "widthM": 1.2,
-       "centre": 0.13
+       "atM": 3.1,
+       "widthM": 4.13,
+       "centre": 0.55
       }
      ]
     },
-    "voidShare": 0,
-    "foliageShare": 0.03
+    "voidShare": 0.01,
+    "foliageShare": 0.02
    },
    "status": "held",
-   "stage": "run",
-   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "stage": "match",
+   "reason": "best vogel-1918-timber-band-cottage scores 0.6 < 0.7 (strip cornice 7.1 m vs the type's 4.1 m (wall-dormer skyline 6 m))",
+   "best": {
+    "type": "vogel-1918-timber-band-cottage",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 7.1 m vs the type's 4.1 m (wall-dormer skyline 6 m)"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 2 vs 0/1/2"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.003 (brick)"
+     }
+    ]
+   },
    "likeness": null,
    "challengers": {}
   }

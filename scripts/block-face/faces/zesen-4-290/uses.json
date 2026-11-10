@@ -1,0 +1,676 @@
+{
+ "street": "Von Zesenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:50:43.009Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012098734",
+   "addresses": [
+    "Von Zesenstraat 224",
+    "Von Zesenstraat 226",
+    "Von Zesenstraat 228",
+    "Von Zesenstraat 230",
+    "Von Zesenstraat 232",
+    "Von Zesenstraat 234",
+    "Von Zesenstraat 236"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 226",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000856908"
+    },
+    {
+     "address": "Von Zesenstraat 228",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000856910"
+    },
+    {
+     "address": "Von Zesenstraat 230",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000856912"
+    },
+    {
+     "address": "Von Zesenstraat 234",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000856916"
+    },
+    {
+     "address": "Von Zesenstraat 236",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000856918"
+    },
+    {
+     "address": "Von Zesenstraat 232",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000856914"
+    },
+    {
+     "address": "Von Zesenstraat 224",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000856906"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144130",
+   "addresses": [
+    "Von Zesenstraat 200",
+    "Von Zesenstraat 202",
+    "Von Zesenstraat 204",
+    "Von Zesenstraat 206",
+    "Von Zesenstraat 208",
+    "Von Zesenstraat 210",
+    "Von Zesenstraat 212",
+    "Von Zesenstraat 214",
+    "Von Zesenstraat 216",
+    "Von Zesenstraat 218",
+    "Von Zesenstraat 220",
+    "Von Zesenstraat 222"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 200",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000856882"
+    },
+    {
+     "address": "Von Zesenstraat 204",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000856886"
+    },
+    {
+     "address": "Von Zesenstraat 206",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000856888"
+    },
+    {
+     "address": "Von Zesenstraat 208",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000856890"
+    },
+    {
+     "address": "Von Zesenstraat 212",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000856894"
+    },
+    {
+     "address": "Von Zesenstraat 218",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000856900"
+    },
+    {
+     "address": "Von Zesenstraat 202",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000856884"
+    },
+    {
+     "address": "Von Zesenstraat 210",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000856892"
+    },
+    {
+     "address": "Von Zesenstraat 214",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000856896"
+    },
+    {
+     "address": "Von Zesenstraat 216",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000856898"
+    },
+    {
+     "address": "Von Zesenstraat 220",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000856902"
+    },
+    {
+     "address": "Von Zesenstraat 222",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000856904"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012136808",
+   "addresses": [
+    "Von Zesenstraat 166",
+    "Von Zesenstraat 168",
+    "Von Zesenstraat 170",
+    "Von Zesenstraat 172",
+    "Von Zesenstraat 176",
+    "Von Zesenstraat 178",
+    "Von Zesenstraat 180",
+    "Von Zesenstraat 182",
+    "Von Zesenstraat 184",
+    "Von Zesenstraat 188",
+    "Von Zesenstraat 190",
+    "Von Zesenstraat 192",
+    "Von Zesenstraat 194"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 166",
+     "use": "industriefunctie",
+     "areaM2": 268,
+     "bagId": "0363010001002195"
+    },
+    {
+     "address": "Von Zesenstraat 168",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001002196"
+    },
+    {
+     "address": "Von Zesenstraat 170",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001002197"
+    },
+    {
+     "address": "Von Zesenstraat 176",
+     "use": "industriefunctie",
+     "areaM2": 137,
+     "bagId": "0363010001002200"
+    },
+    {
+     "address": "Von Zesenstraat 178",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001002201"
+    },
+    {
+     "address": "Von Zesenstraat 180",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001002202"
+    },
+    {
+     "address": "Von Zesenstraat 182",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001002204"
+    },
+    {
+     "address": "Von Zesenstraat 188",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001002205"
+    },
+    {
+     "address": "Von Zesenstraat 192",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010001002207"
+    },
+    {
+     "address": "Von Zesenstraat 194",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001002208"
+    },
+    {
+     "address": "Von Zesenstraat 190",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001002206"
+    },
+    {
+     "address": "Von Zesenstraat 172",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010010914400"
+    },
+    {
+     "address": "Von Zesenstraat 184",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010001002203"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065823",
+   "addresses": [
+    "Von Zesenstraat 144",
+    "Von Zesenstraat 146",
+    "Von Zesenstraat 148",
+    "Von Zesenstraat 150",
+    "Von Zesenstraat 152",
+    "Von Zesenstraat 154",
+    "Von Zesenstraat 156",
+    "Von Zesenstraat 158",
+    "Von Zesenstraat 160",
+    "Von Zesenstraat 162",
+    "Von Zesenstraat 164"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 144",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000856840"
+    },
+    {
+     "address": "Von Zesenstraat 150",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000856846"
+    },
+    {
+     "address": "Von Zesenstraat 154",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000856850"
+    },
+    {
+     "address": "Von Zesenstraat 160",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000856856"
+    },
+    {
+     "address": "Von Zesenstraat 164",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000856859"
+    },
+    {
+     "address": "Von Zesenstraat 162",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000989533"
+    },
+    {
+     "address": "Von Zesenstraat 146",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000856842"
+    },
+    {
+     "address": "Von Zesenstraat 148",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000856844"
+    },
+    {
+     "address": "Von Zesenstraat 152",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000856848"
+    },
+    {
+     "address": "Von Zesenstraat 156",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000856852"
+    },
+    {
+     "address": "Von Zesenstraat 158",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000856854"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126532",
+   "addresses": [
+    "Von Zesenstraat 122",
+    "Von Zesenstraat 124",
+    "Von Zesenstraat 126",
+    "Von Zesenstraat 128",
+    "Von Zesenstraat 130",
+    "Von Zesenstraat 132",
+    "Von Zesenstraat 134",
+    "Von Zesenstraat 136",
+    "Von Zesenstraat 138",
+    "Von Zesenstraat 140",
+    "Von Zesenstraat 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 122",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000856815"
+    },
+    {
+     "address": "Von Zesenstraat 126",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000856822"
+    },
+    {
+     "address": "Von Zesenstraat 130",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000856826"
+    },
+    {
+     "address": "Von Zesenstraat 134",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000856830"
+    },
+    {
+     "address": "Von Zesenstraat 138",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000856834"
+    },
+    {
+     "address": "Von Zesenstraat 140",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000989532"
+    },
+    {
+     "address": "Von Zesenstraat 124",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000856820"
+    },
+    {
+     "address": "Von Zesenstraat 132",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000856828"
+    },
+    {
+     "address": "Von Zesenstraat 136",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000856832"
+    },
+    {
+     "address": "Von Zesenstraat 142",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000856838"
+    },
+    {
+     "address": "Von Zesenstraat 128",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000856824"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117450",
+   "addresses": [
+    "Von Zesenstraat 100",
+    "Von Zesenstraat 102",
+    "Von Zesenstraat 104",
+    "Von Zesenstraat 106",
+    "Von Zesenstraat 108",
+    "Von Zesenstraat 110",
+    "Von Zesenstraat 112",
+    "Von Zesenstraat 114",
+    "Von Zesenstraat 116",
+    "Von Zesenstraat 118",
+    "Von Zesenstraat 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 100",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000856743"
+    },
+    {
+     "address": "Von Zesenstraat 112",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000856781"
+    },
+    {
+     "address": "Von Zesenstraat 114",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000856786"
+    },
+    {
+     "address": "Von Zesenstraat 116",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000856791"
+    },
+    {
+     "address": "Von Zesenstraat 118",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000989531"
+    },
+    {
+     "address": "Von Zesenstraat 104",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000856745"
+    },
+    {
+     "address": "Von Zesenstraat 108",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000856775"
+    },
+    {
+     "address": "Von Zesenstraat 102",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000856744"
+    },
+    {
+     "address": "Von Zesenstraat 110",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000856776"
+    },
+    {
+     "address": "Von Zesenstraat 120",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000856810"
+    },
+    {
+     "address": "Von Zesenstraat 106",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000856774"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065278",
+   "addresses": [
+    "Von Zesenstraat 92",
+    "Von Zesenstraat 94",
+    "Von Zesenstraat 96",
+    "Von Zesenstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 92",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000941734"
+    },
+    {
+     "address": "Von Zesenstraat 94",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000941738"
+    },
+    {
+     "address": "Von Zesenstraat 96",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000941739"
+    },
+    {
+     "address": "Von Zesenstraat 98",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000941740"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012134469",
+   "addresses": [
+    "Von Zesenstraat 84",
+    "Von Zesenstraat 86",
+    "Von Zesenstraat 88",
+    "Von Zesenstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 84",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000941735"
+    },
+    {
+     "address": "Von Zesenstraat 86",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000941736"
+    },
+    {
+     "address": "Von Zesenstraat 90",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000941733"
+    },
+    {
+     "address": "Von Zesenstraat 88",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000941737"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132768",
+   "addresses": [
+    "Von Zesenstraat 4B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 4B-H",
+     "use": "industriefunctie",
+     "areaM2": 98,
+     "bagId": "0363010003684125"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161996",
+   "addresses": [
+    "Von Zesenstraat 4A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 4A-H",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000856625"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164381",
+   "addresses": [
+    "Von Zesenstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 163,
+     "bagId": "0363010012582694"
+    },
+    {
+     "address": "Von Zesenstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000856621"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080864",
+   "addresses": [
+    "Von Zesenstraat 46",
+    "Von Zesenstraat 48",
+    "Von Zesenstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Von Zesenstraat 46",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000686168"
+    },
+    {
+     "address": "Von Zesenstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000686169"
+    },
+    {
+     "address": "Von Zesenstraat 50",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000686196"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:27:28.040Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177815",
+   "addresses": [
+    "Groenburgwal 56"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 56",
+     "use": "woonfunctie",
+     "areaM2": 216,
+     "bagId": "0363010000651594"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012253757",
+   "addresses": [
+    "Groenburgwal 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 54-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 235,
+     "bagId": "0363010000651589"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177816",
+   "addresses": [
+    "Groenburgwal 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 52-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000651580"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177817",
+   "addresses": [
+    "Groenburgwal 50B",
+    "Groenburgwal 50A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 50B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000651578"
+    },
+    {
+     "address": "Groenburgwal 50A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000949235"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177777",
+   "addresses": [
+    "Groenburgwal 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 48",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000651574"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177820",
+   "addresses": [
+    "Groenburgwal 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 46",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000651568"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,240 @@
+{
+ "street": "Andreas Bonnstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:18:21.995Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012118119",
+   "addresses": [
+    "Andreas Bonnstraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 24-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000569361"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8890561757,
+     "lngLat": [
+      4.9121819,
+      52.3596515
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "name": "Swieti Sranang"
+     },
+     "fetchedAt": "2026-11-10T07:18:21.995Z",
+     "match": "frontage",
+     "distanceM": 5.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012144373",
+   "addresses": [
+    "Andreas Bonnstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 22-H",
+     "use": "woonfunctie,kantoorfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012061512"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012115312",
+   "addresses": [
+    "Andreas Bonnstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 20-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000569346"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086336",
+   "addresses": [
+    "Andreas Bonnstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000569338"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106328",
+   "addresses": [
+    "Andreas Bonnstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 16-H",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000569330"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092490",
+   "addresses": [
+    "Andreas Bonnstraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001002109"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068295",
+   "addresses": [
+    "Andreas Bonnstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 12-H",
+     "use": "industriefunctie",
+     "areaM2": 75,
+     "bagId": "0363010000569314"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012090486",
+   "addresses": [
+    "Andreas Bonnstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000569306"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083563",
+   "addresses": [
+    "Andreas Bonnstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 8-H",
+     "use": "kantoorfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000569298"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064037",
+   "addresses": [
+    "Andreas Bonnstraat 2",
+    "Andreas Bonnstraat 4",
+    "Andreas Bonnstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 2",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000569278"
+    },
+    {
+     "address": "Andreas Bonnstraat 6-H",
+     "use": "kantoorfunctie",
+     "areaM2": 66,
+     "bagId": "0363010001009767"
+    },
+    {
+     "address": "Van Musschenbroekstraat 1-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012097686"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11591541666,
+     "lngLat": [
+      4.9110984,
+      52.3598497
+     ],
+     "tags": {
+      "addr:housenumber": "2",
+      "addr:street": "Andreas Bonnstraat",
+      "amenity": "cafe",
+      "name": "YUSU",
+      "opening_hours": "Mo, Tu, Sa, Su 09:00-18:00; We-Fr 08:00-18:00",
+      "website": "https://yusu.coffee"
+     },
+     "fetchedAt": "2026-11-10T07:18:21.995Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 14099223901,
+     "lngLat": [
+      4.9110465,
+      52.3598331
+     ],
+     "tags": {
+      "addr:housenumber": "1",
+      "addr:street": "Van Musschenbroekstraat",
+      "check_date": "2026-08-16",
+      "check_date:opening_hours": "2026-08-16",
+      "name": "The Laundry Club",
+      "opening_hours": "Mo-Su 08:00-22:00",
+      "shop": "laundry",
+      "website": "https://www.love2laundry.nl/dry-cleaner/the-laundry-club"
+     },
+     "fetchedAt": "2026-11-10T07:18:21.995Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

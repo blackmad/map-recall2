@@ -1,0 +1,149 @@
+{
+ "street": "Roomtuintjes",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:49:18.861Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012107875",
+   "addresses": [
+    "Roomtuintjes 131A",
+    "Roomtuintjes 131B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roomtuintjes 131A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001920"
+    },
+    {
+     "address": "Roomtuintjes 131B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001921"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063442",
+   "addresses": [
+    "Roomtuintjes 126A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roomtuintjes 126A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001919"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145563",
+   "addresses": [
+    "Roomtuintjes 121A",
+    "Roomtuintjes 121B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roomtuintjes 121A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001914"
+    },
+    {
+     "address": "Roomtuintjes 121B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001916"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012116936",
+   "addresses": [
+    "Roomtuintjes 116A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roomtuintjes 116A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001913"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141178",
+   "addresses": [
+    "Roomtuintjes 111A",
+    "Roomtuintjes 111B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roomtuintjes 111A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001910"
+    },
+    {
+     "address": "Roomtuintjes 111B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001911"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012133877",
+   "addresses": [
+    "Roomtuintjes 106A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roomtuintjes 106A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001909"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080316",
+   "addresses": [
+    "Roomtuintjes 101A",
+    "Roomtuintjes 101B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Roomtuintjes 101A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001907"
+    },
+    {
+     "address": "Roomtuintjes 101B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001908"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,340 @@
+{
+ "street": "Ruyschstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:04:46.626Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158632",
+   "addresses": [
+    "Ruyschstraat 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 98-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000800908"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166792",
+   "addresses": [
+    "Ruyschstraat 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001002394"
+    },
+    {
+     "address": "Ruyschstraat 96-H",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010012155835"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165861",
+   "addresses": [
+    "Ruyschstraat 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 94-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000800891"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158203",
+   "addresses": [
+    "Ruyschstraat 92"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 92-H",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800882"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159820",
+   "addresses": [
+    "Ruyschstraat 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 90-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000800874"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012150384",
+   "addresses": [
+    "Ruyschstraat 88"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 88-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000800863"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165864",
+   "addresses": [
+    "Ruyschstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 86-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000800859"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162209",
+   "addresses": [
+    "Ruyschstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 84-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000800853"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158466",
+   "addresses": [
+    "Ruyschstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000800848"
+    },
+    {
+     "address": "Ruyschstraat 82-H",
+     "use": "woonfunctie",
+     "areaM2": 211,
+     "bagId": "0363010012072972"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160930",
+   "addresses": [
+    "Ruyschstraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010012072973"
+    },
+    {
+     "address": "Ruyschstraat 80-H",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000800844"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163039",
+   "addresses": [
+    "Ruyschstraat 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 78-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000800836"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154180",
+   "addresses": [
+    "Ruyschstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 76-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000800828"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158158",
+   "addresses": [
+    "Ruyschstraat 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 74-O",
+     "use": "industriefunctie",
+     "areaM2": 93,
+     "bagId": "0363010000800820"
+    },
+    {
+     "address": "Ruyschstraat 74-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000800819"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091930",
+   "addresses": [
+    "Ruyschstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 72-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000800811"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236748",
+   "addresses": [
+    "Ruyschstraat 68",
+    "Ruyschstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 68-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000800795"
+    },
+    {
+     "address": "Ruyschstraat 70-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000800803"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012067223",
+   "addresses": [
+    "Ruyschstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 66-H",
+     "use": "industriefunctie",
+     "areaM2": 108,
+     "bagId": "0363010000800788"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012098315",
+   "addresses": [
+    "Ruyschstraat 64A",
+    "Ruyschstraat 64B",
+    "Ruyschstraat 64C",
+    "Ruyschstraat 64D",
+    "Ruyschstraat 64E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 64A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000800779"
+    },
+    {
+     "address": "Ruyschstraat 64B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000800780"
+    },
+    {
+     "address": "Ruyschstraat 64C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000800781"
+    },
+    {
+     "address": "Ruyschstraat 64D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000800782"
+    },
+    {
+     "address": "Ruyschstraat 64E",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010000800783"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

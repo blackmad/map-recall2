@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { calmLabels, corridorDistance, CALM_POI_MAX } from './labelCalm';
+import { calmLabels, corridorDistance, CALM_POI_MAX, CALM_POI_MIN } from './labelCalm';
 import type { PlacedLabel } from './labels';
 import { cameraFrame, project, unproject } from './mapCamera';
 
@@ -49,8 +49,40 @@ test('realistic chase camera (zoom 17.5, pitch 60, eye ~350 m out): ground dista
   const eyeDepth = (l: PlacedLabel) => { const g = ground.get(l.id)!; return project(f, g).depth; };
   const groundDist = (l: PlacedLabel) => { const g = ground.get(l.id)!; return Math.hypot(g[0] - f.target[0], g[1] - f.target[1]); };
   assert.ok(labels.every(l => eyeDepth(l) > 150), 'every point is deeper than 150 m from the eye');
-  assert.equal(calmLabels(labels, { ...base, width: 1440, height: 900, distanceOf: eyeDepth }).length, 0);
+  assert.equal(calmLabels(labels, { ...base, width: 1440, height: 900, distanceOf: eyeDepth }).length, CALM_POI_MIN, 'the old eye-depth rule would leave the floor only');
   const out = calmLabels(labels, { ...base, width: 1440, height: 900, distanceOf: groundDist });
   assert.ok(out.length > 0 && out.length <= CALM_POI_MAX, `kept ${out.length}`);
   assert.ok(out.every(l => l.y! >= 300 && groundDist(l) <= 150));
+});
+
+test('landmarks are exempt from the top third, the reach and the cap', () => {
+  const list = [poi('mark-high', 450, 40), poi('mark-far', 450, 400), ...Array.from({ length: 8 }, (_, i) => poi(`p${i}`, 100 + i * 80, 450))];
+  const out = calmLabels(list, { ...base, distanceOf: l => l.id === 'mark-far' ? 900 : 50, isLandmark: l => l.id.startsWith('mark') });
+  assert.ok(out.some(l => l.id === 'mark-high') && out.some(l => l.id === 'mark-far'));
+  assert.equal(out.filter(l => l.id.startsWith('p')).length, CALM_POI_MAX);
+});
+
+test('a street short of names is topped up to the minimum from the nearest beyond the reach, never from the top third', () => {
+  const depth = new Map([['a', 60], ['b', 300], ['c', 200], ['d', 500], ['top', 100]]);
+  const list = [poi('a', 450, 400), poi('b', 400, 400), poi('c', 350, 400), poi('d', 300, 400), poi('top', 450, 50)];
+  const out = calmLabels(list, { ...base, distanceOf: l => depth.get(l.id) ?? null });
+  assert.equal(out.length, CALM_POI_MIN);
+  assert.deepEqual(out.map(l => l.id), ['a', 'b', 'c']);
+  assert.deepEqual(calmLabels(list, { ...base, distanceOf: l => depth.get(l.id) ?? null, min: 0 }).map(l => l.id), ['a']);
+});
+
+test('the minimum counts landmarks and never exceeds what is available', () => {
+  const out = calmLabels([poi('mark', 450, 400), poi('b', 400, 400)], { ...base, distanceOf: l => l.id === 'b' ? 400 : 10, isLandmark: l => l.id === 'mark' });
+  assert.deepEqual(out.map(l => l.id), ['mark', 'b']);
+});
+
+test('labelCalmFlag: on by default, ?labelCalm=0 or the global false turns it off', async () => {
+  const { labelCalmFlag } = await import('./labelCalm');
+  const g = globalThis as { __canalRecallLabelCalm?: boolean | string };
+  delete g.__canalRecallLabelCalm;
+  assert.equal(labelCalmFlag(), true);
+  g.__canalRecallLabelCalm = false; assert.equal(labelCalmFlag(), false);
+  g.__canalRecallLabelCalm = '0'; assert.equal(labelCalmFlag(), false);
+  g.__canalRecallLabelCalm = '1'; assert.equal(labelCalmFlag(), true);
+  delete g.__canalRecallLabelCalm;
 });

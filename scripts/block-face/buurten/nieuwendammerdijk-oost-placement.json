@@ -1,0 +1,43 @@
+{
+ "buurt": "nieuwendammerdijk-oost",
+ "library": "nieuwendammerdijk",
+ "generatedAt": "2026-11-10T07:48:55.396Z",
+ "seconds": 4.44,
+ "totals": {
+  "faces": 1,
+  "pands": 5,
+  "placed": 2
+ },
+ "faces": [
+  {
+   "face": "nieuwendammerdijk-300-308",
+   "street": "Nieuwendammerdijk",
+   "pands": 5,
+   "placed": 2,
+   "held": 3,
+   "runs": [
+    {
+     "face": "nieuwendammerdijk-300-308-r1",
+     "pands": [
+      "0363100012160505",
+      "0363100012154157"
+     ],
+     "passed": false,
+     "triangles": 2297
+    }
+   ],
+   "seconds": 4.44,
+   "byType": {
+    "nieuwendam-oost-villa-5axis": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 3
+   }
+  }
+ ]
+}

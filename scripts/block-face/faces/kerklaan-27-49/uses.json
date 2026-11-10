@@ -1,0 +1,263 @@
+{
+ "street": "Plantage Kerklaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:30:48.385Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170541",
+   "addresses": [
+    "Plantage Kerklaan 27"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181408",
+   "addresses": [
+    "Plantage Kerklaan 33",
+    "Plantage Kerklaan 35",
+    "Plantage Kerklaan 35A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 33",
+     "use": "winkelfunctie",
+     "areaM2": 419,
+     "bagId": "0363010000777471"
+    },
+    {
+     "address": "Plantage Kerklaan 35-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000777476"
+    },
+    {
+     "address": "Plantage Kerklaan 35A",
+     "use": "kantoorfunctie",
+     "areaM2": 375,
+     "bagId": "0363010012602232"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742884798,
+     "lngLat": [
+      4.9119362,
+      52.3668426
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "35-H",
+      "addr:postcode": "1018CV",
+      "addr:street": "Plantage Kerklaan",
+      "amenity": "ice_cream",
+      "brand": "IJscuypje",
+      "brand:wikidata": "Q121742244",
+      "check_date": "2026-03-31",
+      "email": "info@ijscuypje.nl",
+      "name": "IJscuypje",
+      "opening_hours": "Mo-Su 12:00 - 22:00",
+      "phone": "+31 20 617 0039",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.ijscuypje.nl/"
+     },
+     "fetchedAt": "2026-11-10T07:30:48.385Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181409",
+   "addresses": [
+    "Plantage Kerklaan 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 37-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000777481"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5868715775,
+     "lngLat": [
+      4.911983,
+      52.3669068
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "check_date": "2026-03-31",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "name": "Burgermeester",
+      "opening_hours": "Mo-Su 12:00-23:00",
+      "website": "https://www.burgermeester.eu/"
+     },
+     "fetchedAt": "2026-11-10T07:30:48.385Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181411",
+   "addresses": [
+    "Plantage Kerklaan 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 39",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000777487"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181410",
+   "addresses": [
+    "Plantage Kerklaan 41",
+    "Plantage Kerklaan 43A",
+    "Plantage Kerklaan 43D",
+    "Plantage Kerklaan 43B",
+    "Plantage Kerklaan 43C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 41",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000777488"
+    },
+    {
+     "address": "Plantage Kerklaan 43A",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000777489"
+    },
+    {
+     "address": "Plantage Kerklaan 43D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000777492"
+    },
+    {
+     "address": "Plantage Kerklaan 43B",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000777490"
+    },
+    {
+     "address": "Plantage Kerklaan 43C",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000777491"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 976615026,
+     "lngLat": [
+      4.9120064,
+      52.3670112
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "41",
+      "addr:street": "Plantage Kerklaan",
+      "amenity": "restaurant",
+      "check_date": "2026-03-31",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "email": "info@borrl.kitchen",
+      "name": "De Deli",
+      "old_name": "Amsterdam Borrl Kitchen",
+      "opening_hours": "Mo-Su 10:00-18:00",
+      "phone": "+31 20 354 2669",
+      "website": "https://borrl.kitchen/"
+     },
+     "fetchedAt": "2026-11-10T07:30:48.385Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181406",
+   "addresses": [
+    "Plantage Kerklaan 45",
+    "Plantage Kerklaan 45B",
+    "Plantage Kerklaan 45A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 45-H",
+     "use": "industriefunctie",
+     "areaM2": 30,
+     "bagId": "0363010000777493"
+    },
+    {
+     "address": "Plantage Kerklaan 45B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000777496"
+    },
+    {
+     "address": "Plantage Kerklaan 45A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001015024"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181407",
+   "addresses": [
+    "Plantage Kerklaan 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 47-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000777497"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170546",
+   "addresses": [
+    "Plantage Kerklaan 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Kerklaan 49-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000777502"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

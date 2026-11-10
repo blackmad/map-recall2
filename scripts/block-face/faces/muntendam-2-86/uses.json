@@ -1,0 +1,346 @@
+{
+ "street": "Muntendamstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:03:36.998Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012106148",
+   "addresses": [
+    "Muntendamstraat 68",
+    "Muntendamstraat 70",
+    "Muntendamstraat 72",
+    "Muntendamstraat 74",
+    "Muntendamstraat 76",
+    "Muntendamstraat 78",
+    "Muntendamstraat 80",
+    "Muntendamstraat 82",
+    "Muntendamstraat 84",
+    "Muntendamstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Muntendamstraat 68",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000928477"
+    },
+    {
+     "address": "Muntendamstraat 70",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000928478"
+    },
+    {
+     "address": "Muntendamstraat 72",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000928479"
+    },
+    {
+     "address": "Muntendamstraat 74",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000928480"
+    },
+    {
+     "address": "Muntendamstraat 76",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000928481"
+    },
+    {
+     "address": "Muntendamstraat 78",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000928482"
+    },
+    {
+     "address": "Muntendamstraat 80",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000928483"
+    },
+    {
+     "address": "Muntendamstraat 82",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000928484"
+    },
+    {
+     "address": "Muntendamstraat 84",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000928485"
+    },
+    {
+     "address": "Muntendamstraat 86",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000928486"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077446",
+   "addresses": [
+    "Muntendamstraat 52",
+    "Muntendamstraat 54",
+    "Muntendamstraat 56",
+    "Muntendamstraat 58",
+    "Muntendamstraat 60",
+    "Muntendamstraat 62",
+    "Muntendamstraat 64",
+    "Muntendamstraat 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Muntendamstraat 54",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000928465"
+    },
+    {
+     "address": "Muntendamstraat 56",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000928467"
+    },
+    {
+     "address": "Muntendamstraat 58",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000928469"
+    },
+    {
+     "address": "Muntendamstraat 60",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000928471"
+    },
+    {
+     "address": "Muntendamstraat 62",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000928473"
+    },
+    {
+     "address": "Muntendamstraat 64",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000928475"
+    },
+    {
+     "address": "Muntendamstraat 66",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000928476"
+    },
+    {
+     "address": "Muntendamstraat 52",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000928463"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012086519",
+   "addresses": [
+    "Muntendamstraat 36",
+    "Muntendamstraat 38",
+    "Muntendamstraat 40",
+    "Muntendamstraat 42",
+    "Muntendamstraat 44",
+    "Muntendamstraat 46",
+    "Muntendamstraat 48",
+    "Muntendamstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Muntendamstraat 36",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000928447"
+    },
+    {
+     "address": "Muntendamstraat 38",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000928449"
+    },
+    {
+     "address": "Muntendamstraat 40",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000928451"
+    },
+    {
+     "address": "Muntendamstraat 42",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000928453"
+    },
+    {
+     "address": "Muntendamstraat 44",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000928455"
+    },
+    {
+     "address": "Muntendamstraat 46",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000928457"
+    },
+    {
+     "address": "Muntendamstraat 48",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000928459"
+    },
+    {
+     "address": "Muntendamstraat 50",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000928461"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130452",
+   "addresses": [
+    "Muntendamstraat 2",
+    "Muntendamstraat 4",
+    "Muntendamstraat 6",
+    "Muntendamstraat 8",
+    "Muntendamstraat 10",
+    "Muntendamstraat 12",
+    "Muntendamstraat 14",
+    "Muntendamstraat 16",
+    "Muntendamstraat 18",
+    "Muntendamstraat 20",
+    "Muntendamstraat 22",
+    "Muntendamstraat 24",
+    "Muntendamstraat 26",
+    "Muntendamstraat 28",
+    "Muntendamstraat 30",
+    "Muntendamstraat 32",
+    "Muntendamstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Muntendamstraat 2",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000928412"
+    },
+    {
+     "address": "Muntendamstraat 4",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000928414"
+    },
+    {
+     "address": "Muntendamstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000928416"
+    },
+    {
+     "address": "Muntendamstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000928418"
+    },
+    {
+     "address": "Muntendamstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000928424"
+    },
+    {
+     "address": "Muntendamstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000928430"
+    },
+    {
+     "address": "Muntendamstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000928433"
+    },
+    {
+     "address": "Muntendamstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000928435"
+    },
+    {
+     "address": "Muntendamstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000928439"
+    },
+    {
+     "address": "Muntendamstraat 30",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000928441"
+    },
+    {
+     "address": "Muntendamstraat 32",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000928443"
+    },
+    {
+     "address": "Muntendamstraat 34",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000928445"
+    },
+    {
+     "address": "Muntendamstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000928420"
+    },
+    {
+     "address": "Muntendamstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000928422"
+    },
+    {
+     "address": "Muntendamstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000928428"
+    },
+    {
+     "address": "Muntendamstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000928437"
+    },
+    {
+     "address": "Muntendamstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000928426"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+{
+ "pins": [
+  {
+   "pandId": "0363100012177762",
+   "type": "witsen-1890-iron-zinc-mansard",
+   "palette": {
+    "brick": "#493c2f"
+   },
+   "reason": "Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #493c2f fitted by fit-wall-palette.ts so the render lands on #5e4d3c"
+  },
+  {
+   "pandId": "0363100012177761",
+   "type": "witsen-1890-balustrade-mansard",
+   "palette": {
+    "brick": "#665445"
+   },
+   "reason": "Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #665445 fitted by fit-wall-palette.ts so the render lands on #74604e"
+  },
+  {
+   "pandId": "0363100012177760",
+   "type": "witsen-1890-balustrade-mansard",
+   "palette": {
+    "brick": "#211c18"
+   },
+   "reason": "Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #211c18 fitted by fit-wall-palette.ts so the render lands on #4b4033"
+  },
+  {
+   "pandId": "0363100012177759",
+   "type": "witsen-1890-plain-block-mansard",
+   "palette": {
+    "brick": "#2c2721"
+   },
+   "reason": "Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #2c2721 fitted by fit-wall-palette.ts so the render lands on #4a4133"
+  },
+  {
+   "pandId": "0363100012171225",
+   "type": "witsen-1890-plain-block-mansard",
+   "palette": {
+    "brick": "#2e2820"
+   },
+   "reason": "Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #2e2820 fitted by fit-wall-palette.ts so the render lands on #4f4536"
+  },
+  {
+   "pandId": "0363100012178936",
+   "type": "witsen-1890-iron-zinc-mansard",
+   "palette": {
+    "brick": "#4b3f34"
+   },
+   "reason": "Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #4b3f34 fitted by fit-wall-palette.ts so the render lands on #5e4f41"
+  },
+  {
+   "pandId": "0363100012178935",
+   "type": "witsen-1890-balconette-zinc-mansard",
+   "palette": {
+    "brick": "#4e3f31"
+   },
+   "reason": "Opus round 2 brick pin (60 %% of the way to the strip median), drawn as measured; palette #4e3f31 fitted by fit-wall-palette.ts so the render lands on #624f3e"
+  }
+ ]
+}

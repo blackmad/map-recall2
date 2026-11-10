@@ -1,0 +1,89 @@
+{
+ "name": "oosterpark-ruysch3",
+ "buurt": "oosterparkbuurt-noordwest",
+ "library": "oud-west",
+ "generatedAt": "2026-11-10T08:38:27.994Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 2,
+  "runs": 3,
+  "installed": 3,
+  "installedPands": 9,
+  "failed": 0,
+  "byReason": {}
+ },
+ "rows": [
+  {
+   "face": "ruysch-64-124",
+   "street": "Ruyschstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.266,
+   "nccMedian": 0.28,
+   "stripOverDrawn": 1.222,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 6253,
+   "sheet": "staging/block-face/ruysch-64-124-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "ruysch-64-124-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 14.3
+  },
+  {
+   "face": "ruysch-64-124",
+   "street": "Ruyschstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.356,
+   "nccMedian": 0.378,
+   "stripOverDrawn": 0.949,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 8357,
+   "sheet": "staging/block-face/ruysch-64-124-r2/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "ruysch-64-124-r2",
+   "pands": 4,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 12.4
+  },
+  {
+   "face": "ruysch-307-393",
+   "street": "Ruyschstraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.188,
+   "nccMedian": 0.2,
+   "stripOverDrawn": 0.854,
+   "wallFits": 1,
+   "droppedCorners": [],
+   "triangles": 4137,
+   "sheet": "staging/block-face/ruysch-307-393-r1/review/strip-sheet.png",
+   "stripDate": "2020-04-29",
+   "run": "ruysch-307-393-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [],
+   "seconds": 8.6
+  }
+ ]
+}

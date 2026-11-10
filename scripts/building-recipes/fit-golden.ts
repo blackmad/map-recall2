@@ -3,7 +3,10 @@
  * deterministic fit and compares a sha256 of the fitted recipe + report to fit-golden.json. Schema additions
  * must leave houses that do not opt in unchanged; an intentional change re-records with --write (review the diff).
  *
- *   node --import tsx scripts/building-recipes/fit-golden.ts [--write]
+ *   node --import tsx scripts/building-recipes/fit-golden.ts [--write] [--allow=<id,id>]
+ *
+ * --allow=<house dirs>: house:publish's flag. A changed house in the list is re-recorded; one outside it fails (exit 1,
+ * nothing recorded). docs/house-line.md section 3.
  */
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -11,6 +14,7 @@ import {fitIntent, fitLarge} from '../../src/canalRecall/buildingRecipe/fit.ts';
 import {validateLargeIntent} from '../../src/canalRecall/buildingRecipe/largeIntent.ts';
 import {resolveIntent} from '../../src/canalRecall/buildingRecipe/compile.ts';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
+import {parseAllow, partitionChanged} from '../../src/canalRecall/houseSpec/allow.ts';
 
 const HOUSES = 'scripts/building-recipes/houses', GOLDEN = 'scripts/building-recipes/fit-golden.json';
 const raw = (id: string) => JSON.parse(fs.readFileSync(`${HOUSES}/${id}/intent.json`, 'utf8'));
@@ -46,6 +50,18 @@ if (process.argv[1]?.endsWith('fit-golden.ts')) {
   } else {
     const golden = readGolden(), bad = Object.keys({...golden, ...now}).filter(k => golden[k] !== now[k]);
     for (const k of bad) console.log(`CHANGED ${k}: ${golden[k]} -> ${now[k]}`);
+    const allow = parseAllow(process.argv);
+    if (allow && bad.length) {
+      const {allowed, outside} = partitionChanged(bad, allow);
+      if (outside.length) console.log(`OUTSIDE the allow-list (${outside.length}): ${outside.join(', ')}`);
+      else {
+        const next = {...golden};
+        for (const k of allowed) if (k in now) next[k] = now[k]; else delete next[k];
+        fs.writeFileSync(GOLDEN, JSON.stringify(next, null, 1) + '\n');
+        console.log(`re-recorded ${allowed.length} allowed house recipes: ${allowed.join(', ')}`);
+      }
+      process.exit(outside.length ? 1 : 0);
+    }
     console.log(bad.length ? `${bad.length} house recipes changed` : `all ${Object.keys(now).length} house recipes identical`);
     process.exit(bad.length ? 1 : 0);
   }

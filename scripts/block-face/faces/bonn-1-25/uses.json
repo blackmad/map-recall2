@@ -1,0 +1,241 @@
+{
+ "street": "Andreas Bonnstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:31:01.666Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012121398",
+   "addresses": [
+    "Andreas Bonnstraat 1A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tweede Boerhaavestraat 52",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000549956"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 54",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000549957"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5858981686,
+     "lngLat": [
+      4.9136486,
+      52.3596115
+     ],
+     "tags": {
+      "amenity": "bar",
+      "name": "Douwes",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T07:31:01.666Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012137198",
+   "addresses": [
+    "Andreas Bonnstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000569279"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012063468",
+   "addresses": [
+    "Andreas Bonnstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000569286"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156889",
+   "addresses": [
+    "Andreas Bonnstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000569294"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152496",
+   "addresses": [
+    "Andreas Bonnstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000569302"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160601",
+   "addresses": [
+    "Andreas Bonnstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000569310"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154202",
+   "addresses": [
+    "Andreas Bonnstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000569318"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158236",
+   "addresses": [
+    "Andreas Bonnstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000569326"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158886",
+   "addresses": [
+    "Andreas Bonnstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000569334"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166557",
+   "addresses": [
+    "Andreas Bonnstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000569342"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152778",
+   "addresses": [
+    "Andreas Bonnstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000569350"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161704",
+   "addresses": [
+    "Andreas Bonnstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000569357"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159139",
+   "addresses": [
+    "Andreas Bonnstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000569365"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

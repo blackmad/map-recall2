@@ -1,0 +1,102 @@
+{
+ "street": "Peperstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:15:19.510Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181223",
+   "addresses": [
+    "Peperstraat 8C",
+    "Peperstraat 8A",
+    "Peperstraat 8B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Peperstraat 8C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000772886"
+    },
+    {
+     "address": "Peperstraat 8A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000772884"
+    },
+    {
+     "address": "Peperstraat 8B",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000772885"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181290",
+   "addresses": [
+    "Peperstraat 4",
+    "Peperstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Peperstraat 4-H",
+     "use": "industriefunctie",
+     "areaM2": 98,
+     "bagId": "0363010000772872"
+    },
+    {
+     "address": "Peperstraat 6-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000772876"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741067063,
+     "lngLat": [
+      4.9080442,
+      52.3719704
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4-H",
+      "addr:postcode": "1011TL",
+      "addr:street": "Peperstraat",
+      "name": "Quality bike rent Amsterdam",
+      "rental": "bicycle",
+      "service:bicycle:rental": "yes",
+      "shop": "rental",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-10T08:15:19.510Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181291",
+   "addresses": [
+    "Peperstraat 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Peperstraat 2-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000753815"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

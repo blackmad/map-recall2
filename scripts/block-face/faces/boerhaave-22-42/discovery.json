@@ -1,0 +1,1155 @@
+{
+ "street": "Tweede Boerhaavestraat",
+ "seed": "0363100012152781",
+ "members": [
+  "0363100012237010",
+  "0363100012236722",
+  "0363100012112665",
+  "0363100012156111",
+  "0363100012152781"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012237010 (face continues: 237252)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012152781 (face continues: 240319)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061848",
+   "reason": "frontage 32.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012063049",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012064037",
+   "reason": "frontage 86.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012064686",
+   "reason": "frontage 140.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012064740",
+   "reason": "frontage 76.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012067200",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012067223",
+   "reason": "frontage 140.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012068295",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012070691",
+   "reason": "frontage 106.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012076514",
+   "reason": "frontage 71.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012078936",
+   "reason": "frontage 71.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012079694",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012081882",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012082560",
+   "reason": "frontage 133.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012083461",
+   "reason": "frontage 107.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012083563",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012085377",
+   "reason": "frontage 40.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012090486",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012091868",
+   "reason": "frontage 42.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012063468",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012130219"
+  },
+  {
+   "pandId": "0363100012064799",
+   "reason": "frontage 39.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012071678",
+   "reason": "frontage 158.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012075399",
+   "reason": "frontage 70.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012076908",
+   "reason": "frontage 62.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012079614",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012237252"
+  },
+  {
+   "pandId": "0363100012083299",
+   "reason": "frontage 103.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012083528",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012084114",
+   "reason": "frontage 35.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012084336",
+   "reason": "frontage 172.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012084666",
+   "reason": "frontage 209.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012084737",
+   "reason": "frontage 166.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012086336",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012088234",
+   "reason": "frontage 70.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012088363",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012089563",
+   "reason": "frontage 171.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012090102",
+   "reason": "frontage 166.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012090461",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012091930",
+   "reason": "frontage 139.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012071120",
+   "reason": "frontage 77.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012073029",
+   "reason": "frontage 48.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012076340",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012077446",
+   "reason": "frontage 104.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012086519",
+   "reason": "frontage 117.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012086773",
+   "reason": "frontage 86.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012086877",
+   "reason": "frontage 46.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012087566",
+   "reason": "frontage 78.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012092001",
+   "reason": "frontage 75.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012092786",
+   "reason": "frontage 40.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012093163",
+   "reason": "frontage 71.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012098315",
+   "reason": "frontage 140.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012098411",
+   "reason": "frontage 83.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012101569",
+   "reason": "frontage 107.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012104007",
+   "reason": "frontage 103.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012105777",
+   "reason": "frontage 58.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012110120",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012115822",
+   "reason": "frontage 71.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012116088",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012116519",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012125644",
+   "reason": "frontage 40.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012125707",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012124335"
+  },
+  {
+   "pandId": "0363100012125963",
+   "reason": "frontage 36.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012127076",
+   "reason": "frontage 107.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012128359",
+   "reason": "frontage 40.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012092490",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012092532",
+   "reason": "frontage 37.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012093393",
+   "reason": "frontage 97.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012094518",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012085060"
+  },
+  {
+   "pandId": "0363100012099249",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012074769"
+  },
+  {
+   "pandId": "0363100012100364",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012090461"
+  },
+  {
+   "pandId": "0363100012104085",
+   "reason": "frontage 165.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012106328",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012106618",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012114055",
+   "reason": "frontage 35.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012115312",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012118119",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012119020",
+   "reason": "frontage 172.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012119052",
+   "reason": "frontage 39.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012120159",
+   "reason": "frontage 198.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012120946",
+   "reason": "frontage 36.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012121766",
+   "reason": "frontage 147.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012123253",
+   "reason": "frontage 104.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012124921",
+   "reason": "frontage 131.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012126283",
+   "reason": "frontage 228.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012130223",
+   "reason": "frontage 40.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012130246",
+   "reason": "frontage 39.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012093442",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012106148",
+   "reason": "frontage 89.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012117471",
+   "reason": "frontage 95.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012130609",
+   "reason": "frontage 79.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012112869",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012130654",
+   "reason": "frontage 105.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012131987",
+   "reason": "frontage 52.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012137737",
+   "reason": "frontage 71.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012145144",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012150775",
+   "reason": "frontage 88.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012153373",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012155729",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012156532",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012131294",
+   "reason": "frontage 200.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012134460",
+   "reason": "frontage 93.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012134675",
+   "reason": "frontage 196.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012135740",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012137198",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012137641",
+   "reason": "frontage 39.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012138929",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012106618"
+  },
+  {
+   "pandId": "0363100012143306",
+   "reason": "frontage 200.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012144373",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012145159",
+   "reason": "frontage 32.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012145190",
+   "reason": "frontage 133.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012145863",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012085060"
+  },
+  {
+   "pandId": "0363100012146383",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012090461"
+  },
+  {
+   "pandId": "0363100012150384",
+   "reason": "frontage 137.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012150546",
+   "reason": "frontage 36.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012152594",
+   "reason": "frontage 200.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012152760",
+   "reason": "frontage 103.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012153263",
+   "reason": "frontage 37.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012153640",
+   "reason": "frontage 104.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012153789",
+   "reason": "frontage 41.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012154180",
+   "reason": "frontage 139.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012154617",
+   "reason": "frontage 31.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012155532",
+   "reason": "frontage 67.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012155605",
+   "reason": "frontage 96.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012155620",
+   "reason": "frontage 202.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012155684",
+   "reason": "frontage 65.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012155712",
+   "reason": "frontage 201.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012155764",
+   "reason": "frontage 134.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012155770",
+   "reason": "frontage 65.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012156355",
+   "reason": "frontage 39.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012156726",
+   "reason": "frontage 136.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012157037",
+   "reason": "frontage 100.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012157190",
+   "reason": "frontage 201.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012133358",
+   "reason": "frontage 78.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012135894",
+   "reason": "frontage 49.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012142563",
+   "reason": "frontage 77.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012143244",
+   "reason": "frontage 38.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012147310",
+   "reason": "frontage 138.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012149299",
+   "reason": "frontage 50.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012158330",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012158358",
+   "reason": "frontage 124.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159089",
+   "reason": "frontage 156.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159381",
+   "reason": "frontage 150.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159554",
+   "reason": "frontage 127.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012160422",
+   "reason": "frontage 151.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012162902",
+   "reason": "frontage 130.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012163592",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012157243",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012157386",
+   "reason": "frontage 201.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012157783",
+   "reason": "frontage 135.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012158038",
+   "reason": "frontage 39.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012158158",
+   "reason": "frontage 139.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012158203",
+   "reason": "frontage 136.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012158228",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012083528"
+  },
+  {
+   "pandId": "0363100012158466",
+   "reason": "frontage 138.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012158632",
+   "reason": "frontage 136.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012158824",
+   "reason": "frontage 105.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159006",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159414",
+   "reason": "frontage 40.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159433",
+   "reason": "frontage 135.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159496",
+   "reason": "frontage 88.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159599",
+   "reason": "frontage 32.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159606",
+   "reason": "frontage 94.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159767",
+   "reason": "frontage 201.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159820",
+   "reason": "frontage 137.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012159998",
+   "reason": "frontage 103.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012160016",
+   "reason": "frontage 103.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012160451",
+   "reason": "frontage 37.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012160479",
+   "reason": "frontage 40.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012160922",
+   "reason": "frontage 172.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012160930",
+   "reason": "frontage 138.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012160967",
+   "reason": "frontage 201.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012161310",
+   "reason": "frontage 135.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012161763",
+   "reason": "frontage 64.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012162116",
+   "reason": "frontage 172.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012162209",
+   "reason": "frontage 137.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012162321",
+   "reason": "frontage 135.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012162497",
+   "reason": "frontage 41.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012162660",
+   "reason": "frontage 201.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012162696",
+   "reason": "frontage 95.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012163039",
+   "reason": "frontage 139.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012163336",
+   "reason": "frontage 37.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012163439",
+   "reason": "frontage 202.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012163492",
+   "reason": "frontage 40.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012163948",
+   "reason": "frontage 32.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012164033",
+   "reason": "frontage 44.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012164361",
+   "reason": "frontage 102.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012164874",
+   "reason": "frontage 39.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012165366",
+   "reason": "frontage 104.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012166075",
+   "reason": "frontage 154.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012186480",
+   "reason": "frontage 34.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012195325",
+   "reason": "frontage 90.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012195326",
+   "reason": "frontage 63.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012195527",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012204426",
+   "reason": "frontage 161.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012205751",
+   "reason": "frontage 38.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012210108",
+   "reason": "frontage 156.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012210109",
+   "reason": "frontage 167.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012210110",
+   "reason": "frontage 156.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012215469",
+   "reason": "frontage 115.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012165397",
+   "reason": "frontage 202.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012165410",
+   "reason": "frontage 100.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012165667",
+   "reason": "frontage 172.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012165810",
+   "reason": "frontage 66.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012165861",
+   "reason": "frontage 136.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012165864",
+   "reason": "frontage 137.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012166008",
+   "reason": "frontage 41.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012166792",
+   "reason": "frontage 136.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012167265",
+   "reason": "frontage 103.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012167291",
+   "reason": "frontage 201.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012188665",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012193025",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012236722"
+  },
+  {
+   "pandId": "0363100012194013",
+   "reason": "frontage 90.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194014",
+   "reason": "frontage 90.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194015",
+   "reason": "frontage 90.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194016",
+   "reason": "frontage 90.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194017",
+   "reason": "frontage 90.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194018",
+   "reason": "frontage 90.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194019",
+   "reason": "frontage 90.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194020",
+   "reason": "frontage 90.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194021",
+   "reason": "frontage 90.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194022",
+   "reason": "frontage 90.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194023",
+   "reason": "frontage 90.9 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194024",
+   "reason": "frontage 91.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012194025",
+   "reason": "frontage 91.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012198655",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012199836",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012204354",
+   "reason": "frontage 30.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012205088",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012205655",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012208334",
+   "reason": "frontage 35.4 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012215085",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012237010"
+  },
+  {
+   "pandId": "0363100012215832",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012237010"
+  },
+  {
+   "pandId": "0363100012218713",
+   "reason": "frontage 31.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012221456",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012193063",
+   "reason": "frontage 39.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012193067",
+   "reason": "frontage 39.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012193068",
+   "reason": "frontage 39.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012193069",
+   "reason": "frontage 39.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012222392",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012236727",
+   "reason": "frontage 111.8 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012236748",
+   "reason": "frontage 140.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012237069",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012241376",
+   "reason": "frontage 44.5 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012241772",
+   "reason": "frontage 70.0 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012252826",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100100092329",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012232505",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012236722"
+  },
+  {
+   "pandId": "0363100012233055",
+   "reason": "sightline to Tweede Boerhaavestraat crosses 0363100012253764"
+  },
+  {
+   "pandId": "0363100012233431",
+   "reason": "frontage 70.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012233566",
+   "reason": "frontage 70.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012233658",
+   "reason": "frontage 70.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012234263",
+   "reason": "no frontage on Tweede Boerhaavestraat: No footprint edge faces Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012236263",
+   "reason": "frontage 69.6 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012236272",
+   "reason": "frontage 90.1 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012236273",
+   "reason": "frontage 90.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012236274",
+   "reason": "frontage 90.2 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012236768",
+   "reason": "frontage 38.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012236804",
+   "reason": "frontage 98.7 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012237304",
+   "reason": "frontage 71.3 m from Tweede Boerhaavestraat"
+  },
+  {
+   "pandId": "0363100012063505",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012074769",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012085060",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012097902",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124335",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122461",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132067",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012241375",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012241500",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236586",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253764",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012237010",
+   "alongM": -59.23,
+   "widthM": 10.2,
+   "eavesM": 12.89,
+   "roofMaxM": 16.36,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236722",
+   "alongM": -41.63,
+   "widthM": 10.17,
+   "eavesM": 12.89,
+   "roofMaxM": 16.35,
+   "storeys3dbag": 0,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012112665",
+   "alongM": -25.53,
+   "widthM": 14.2,
+   "eavesM": 13.06,
+   "roofMaxM": 14.94,
+   "storeys3dbag": 4,
+   "builtYear": 1908,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156111",
+   "alongM": -14.81,
+   "widthM": 7.24,
+   "eavesM": 10.11,
+   "roofMaxM": 10.48,
+   "storeys3dbag": 3,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152781",
+   "alongM": 0,
+   "widthM": 22.39,
+   "eavesM": 8.13,
+   "roofMaxM": 11.5,
+   "storeys3dbag": 0,
+   "builtYear": 1917,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

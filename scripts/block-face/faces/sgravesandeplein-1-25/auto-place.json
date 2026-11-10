@@ -1,0 +1,876 @@
+{
+ "face": "sgravesandeplein-1-25",
+ "street": "'s-Gravesandeplein",
+ "library": "oud-west",
+ "stripDate": "2022-01-12",
+ "seconds": 4.26,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "sgravesandeplein-1-25-r1",
+   "pands": [
+    "0363100012166277",
+    "0363100012154172"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012163707",
+   "address": "'s-Gravesandeplein 1",
+   "builtYear": 1904,
+   "widthM": 7.69,
+   "eavesM": 14.76,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e665a",
+    "wallRaw": "#756256",
+    "skyline": {
+     "eavesM": 16.7,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.6,
+      "riseM": 1.9,
+      "topWidthM": 2.75,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.072,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 2.58 m at 0.37 (light 0.13): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 2.58,
+       "centre": 0.37,
+       "light": 0.13
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.02,
+       "widthM": 0.82,
+       "centre": 0.89
+      },
+      {
+       "atM": 6.65,
+       "widthM": 0.88,
+       "centre": 0.89
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1904, type 1899-1903; frontage 7.69 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1899-1903",
+     "frontage 7.69 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.76 m = 4 storeys of 3.69 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.56 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.073 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159618",
+   "address": "'s-Gravesandeplein 3",
+   "builtYear": 1904,
+   "widthM": 7.01,
+   "eavesM": 14.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#756259",
+    "wallRaw": "#6c5e56",
+    "skyline": {
+     "eavesM": 16.1,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.88,
+      "riseM": 2.6,
+      "topWidthM": 1.32,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.042,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.45,
+       "widthM": 1.38,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1904, type 1899-1903; frontage 7.01 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1904, type 1899-1903",
+     "frontage 7.01 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.92 m = 4 storeys of 3.73 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.72 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.04 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161624",
+   "address": "'s-Gravesandeplein 11",
+   "builtYear": 1903,
+   "widthM": 4.77,
+   "eavesM": 15.01,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534b43",
+    "wallRaw": "#6e625a",
+    "skyline": {
+     "eavesM": 16.35,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 4.55,
+      "topWidthM": 0.2,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.101,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.05,
+       "widthM": 0.8,
+       "centre": 0.44
+      },
+      {
+       "atM": 12.75,
+       "widthM": 1.05,
+       "centre": 0.79
+      },
+      {
+       "atM": 9.6,
+       "widthM": 1.23,
+       "centre": 0.79
+      },
+      {
+       "atM": 9.07,
+       "widthM": 1.05,
+       "centre": 0.44
+      },
+      {
+       "atM": 6.07,
+       "widthM": 1.8,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012235974",
+   "address": "'s-Gravesandeplein 13",
+   "builtYear": 1903,
+   "widthM": 14.98,
+   "eavesM": 13.95,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3b3633",
+    "wallRaw": "#6f5f54",
+    "skyline": {
+     "eavesM": 15.3,
+     "eavesRow": 272,
+     "confidence": 0.54,
+     "crown": {
+      "widthM": 3.88,
+      "riseM": 6,
+      "topWidthM": 0.07,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.146,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.13,
+       "widthM": 1.07,
+       "centre": 0.43
+      },
+      {
+       "atM": 12.82,
+       "widthM": 0.88,
+       "centre": 0.06
+      },
+      {
+       "atM": 9.82,
+       "widthM": 1.07,
+       "centre": 0.95
+      },
+      {
+       "atM": 9.52,
+       "widthM": 1.13,
+       "centre": 0.05
+      },
+      {
+       "atM": 9.22,
+       "widthM": 0.93,
+       "centre": 0.31
+      },
+      {
+       "atM": 6.52,
+       "widthM": 1.13,
+       "centre": 0.8
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.18,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: frontage 14.98 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "frontage 14.98 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.95 m = 4 storeys of 3.49 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.02 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.162 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154179",
+   "address": "'s-Gravesandeplein 17",
+   "builtYear": 1903,
+   "widthM": 7.49,
+   "eavesM": 14.02,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#62554f",
+    "wallRaw": "#5d544f",
+    "skyline": {
+     "eavesM": 15.45,
+     "eavesRow": 266,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 3.8,
+      "riseM": 6.65,
+      "topWidthM": 0.2,
+      "centre": 0.69
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.38 m (1.25 m wide), 6.45 m (1.68 m wide), 6.15 m (1.82 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.38,
+       "widthM": 1.25,
+       "centre": 0.52
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.68,
+       "centre": 0.6
+      },
+      {
+       "atM": 6.15,
+       "widthM": 1.82,
+       "centre": 0.68
+      },
+      {
+       "atM": 4.95,
+       "widthM": 0.82,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: frontage 7.49 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "frontage 7.49 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.02 m = 4 storeys of 3.5 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.59 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.035 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153841",
+   "address": "'s-Gravesandeplein 19A",
+   "builtYear": 1905,
+   "widthM": 17.09,
+   "eavesM": 14.85,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#71635e",
+    "wallRaw": "#7c6d65",
+    "skyline": {
+     "eavesM": 14.75,
+     "eavesRow": 294,
+     "confidence": 1,
+     "crown": {
+      "widthM": 5.58,
+      "riseM": 4.18,
+      "topWidthM": 0.5,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 18,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.195,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.03,
+       "widthM": 0.85,
+       "centre": 0.17
+      },
+      {
+       "atM": 8.52,
+       "widthM": 0.85,
+       "centre": 0.24
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1905, type 1899-1903; frontage 17.09 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1905, type 1899-1903",
+     "frontage 17.09 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.85 m = 4 storeys of 3.71 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.26 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.186 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 18 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166277",
+   "address": "'s-Gravesandeplein 21",
+   "builtYear": 1903,
+   "widthM": 6.11,
+   "eavesM": 17.41,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#89756e",
+    "wallRaw": "#71655e",
+    "skyline": {
+     "eavesM": 17.02,
+     "eavesRow": 203,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 3.68,
+      "topWidthM": 0.55,
+      "centre": 0.34
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.136,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.2,
+       "widthM": 1.1,
+       "centre": 0.49
+      },
+      {
+       "atM": 10.05,
+       "widthM": 1.13,
+       "centre": 0.84
+      },
+      {
+       "atM": 9.38,
+       "widthM": 3.73,
+       "centre": 0.35
+      },
+      {
+       "atM": 7.8,
+       "widthM": 1.15,
+       "centre": 0.58
+      },
+      {
+       "atM": 6.9,
+       "widthM": 1.23,
+       "centre": 0.84
+      },
+      {
+       "atM": 6.3,
+       "widthM": 0.85,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "kinker-1902-balcony-axis",
+   "score": 0.84,
+   "runnerUp": {
+    "typeId": "clercq-e-corbel-brick",
+    "score": 0.4
+   },
+   "placement": {
+    "type": "kinker-1902-balcony-axis",
+    "storeys": 5,
+    "measuredPalette": {
+     "brick": "#89756e",
+     "evidence": "strip 2022-01-12 span 2456-2700: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "storeys 5: eaves 17.41 m at the type's 3.77 m pitch",
+    "crown dormer (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154172",
+   "address": "'s-Gravesandeplein 23",
+   "builtYear": 1903,
+   "widthM": 5.85,
+   "eavesM": 15.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#69574f",
+    "wallRaw": "#6d5f58",
+    "skyline": {
+     "eavesM": 15.28,
+     "eavesRow": 273,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.62,
+      "topWidthM": 0.55,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.045,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.17,
+       "widthM": 0.8,
+       "centre": 0.86
+      },
+      {
+       "atM": 10.02,
+       "widthM": 1.2,
+       "centre": 0.84
+      },
+      {
+       "atM": 9.27,
+       "widthM": 1.93,
+       "centre": 0.53
+      },
+      {
+       "atM": 7.77,
+       "widthM": 0.9,
+       "centre": 0.42
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.15,
+       "centre": 0.16
+      },
+      {
+       "atM": 6.2,
+       "widthM": 1.07,
+       "centre": 0.51
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "kinker-1902-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "clercq-e-corbel-brick",
+    "score": 0.85
+   },
+   "placement": {
+    "type": "kinker-1902-balcony-axis",
+    "measuredPalette": {
+     "brick": "#69574f",
+     "evidence": "strip 2022-01-12 span 2700-2934: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown dormer (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160888",
+   "address": "'s-Gravesandeplein 25",
+   "builtYear": 1903,
+   "widthM": 7.04,
+   "eavesM": 17.2,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 2.25,
+    "toM": 4.59,
+    "depthM": 0.85,
+    "centre": 0.487
+   },
+   "strip": {
+    "wall": "#775c52",
+    "wallRaw": "#77675f",
+    "skyline": {
+     "eavesM": 16.93,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.02,
+      "riseM": 4,
+      "topWidthM": 0.75,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.244,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 13.03 m (1.32 m wide), 11.3 m (1.45 m wide), 9.95 m (1.25 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.88,
+       "widthM": 0.9,
+       "centre": 0.52
+      },
+      {
+       "atM": 13.03,
+       "widthM": 1.32,
+       "centre": 0.17
+      },
+      {
+       "atM": 11.3,
+       "widthM": 1.45,
+       "centre": 0.55
+      },
+      {
+       "atM": 9.95,
+       "widthM": 1.25,
+       "centre": 0.17
+      },
+      {
+       "atM": 6.72,
+       "widthM": 1.23,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: frontage 7.04 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "frontage 7.04 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.2 m = 4 storeys of 4.3 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.69 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.203 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

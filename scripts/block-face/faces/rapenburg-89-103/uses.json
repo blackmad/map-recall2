@@ -1,0 +1,418 @@
+{
+ "street": "Rapenburg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:20:33.725Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012254590",
+   "addresses": [
+    "Rapenburg 89A",
+    "Rapenburg 89B",
+    "Rapenburg 89C",
+    "Rapenburg 89D",
+    "Rapenburg 89E",
+    "Rapenburg 89F",
+    "Rapenburg 89G",
+    "Rapenburg 89H",
+    "Rapenburg 89K",
+    "Rapenburg 89L",
+    "Rapenburg 89M",
+    "Rapenburg 89N",
+    "Rapenburg 89P",
+    "Rapenburg 91C",
+    "Rapenburg 91B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 91C",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001001806"
+    },
+    {
+     "address": "Rapenburg 91B",
+     "use": "kantoorfunctie",
+     "areaM2": 128,
+     "bagId": "0363010001001807"
+    },
+    {
+     "address": "Rapenburg 89A",
+     "use": "winkelfunctie",
+     "areaM2": 283,
+     "bagId": "0363010012165486"
+    },
+    {
+     "address": "Rapenburg 89B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012165487"
+    },
+    {
+     "address": "Rapenburg 89C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012165488"
+    },
+    {
+     "address": "Rapenburg 89D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012165489"
+    },
+    {
+     "address": "Rapenburg 89E",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012165490"
+    },
+    {
+     "address": "Rapenburg 89F",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012165491"
+    },
+    {
+     "address": "Rapenburg 89G",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012165492"
+    },
+    {
+     "address": "Rapenburg 89H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012165493"
+    },
+    {
+     "address": "Rapenburg 89K",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012165494"
+    },
+    {
+     "address": "Rapenburg 89L",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012165495"
+    },
+    {
+     "address": "Rapenburg 89M",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012165496"
+    },
+    {
+     "address": "Rapenburg 89N",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012165497"
+    },
+    {
+     "address": "Rapenburg 89P",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010012165498"
+    },
+    {
+     "address": "Foeliedwarsstraat 6",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012165499"
+    },
+    {
+     "address": "Foeliedwarsstraat 8",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012165500"
+    },
+    {
+     "address": "Foeliedwarsstraat 10",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012165501"
+    },
+    {
+     "address": "Foeliedwarsstraat 12",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012165502"
+    },
+    {
+     "address": "Foeliedwarsstraat 14",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012165503"
+    },
+    {
+     "address": "Foeliedwarsstraat 16",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012165504"
+    },
+    {
+     "address": "Foeliedwarsstraat 18",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012165505"
+    },
+    {
+     "address": "Foeliedwarsstraat 20",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012165506"
+    },
+    {
+     "address": "Foeliedwarsstraat 22",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012165507"
+    },
+    {
+     "address": "Foeliedwarsstraat 24",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012165508"
+    },
+    {
+     "address": "Foeliedwarsstraat 26",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010012165509"
+    },
+    {
+     "address": "Foeliedwarsstraat 28",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012165510"
+    }
+   ],
+   "units": 27,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8112112421,
+     "lngLat": [
+      4.9101022,
+      52.3705321
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "recycling",
+      "fee": "no",
+      "location": "overground",
+      "recycling:clothes": "yes",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-11-10T08:20:33.725Z",
+     "match": "frontage",
+     "distanceM": 1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181531",
+   "addresses": [
+    "Rapenburg 91A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 91A",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 463,
+     "bagId": "0363010001001808"
+    },
+    {
+     "address": "Rapenburg 91A-H",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010012172484"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181606",
+   "addresses": [
+    "Rapenburg 93",
+    "Rapenburg 93D",
+    "Rapenburg 93B",
+    "Rapenburg 93A",
+    "Rapenburg 93C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 93-H",
+     "use": "winkelfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000788157"
+    },
+    {
+     "address": "Rapenburg 93D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012114184"
+    },
+    {
+     "address": "Rapenburg 93B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012114182"
+    },
+    {
+     "address": "Rapenburg 93A",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012114181"
+    },
+    {
+     "address": "Rapenburg 93C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012114183"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181532",
+   "addresses": [
+    "Rapenburg 95",
+    "Rapenburg 95B",
+    "Rapenburg 95C",
+    "Rapenburg 95D",
+    "Rapenburg 95E",
+    "Rapenburg 95F",
+    "Rapenburg 95G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 95-H",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000788161"
+    },
+    {
+     "address": "Rapenburg 95B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012138336"
+    },
+    {
+     "address": "Rapenburg 95C",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012138337"
+    },
+    {
+     "address": "Rapenburg 95D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012138338"
+    },
+    {
+     "address": "Rapenburg 95E",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010012138339"
+    },
+    {
+     "address": "Rapenburg 95F",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012138340"
+    },
+    {
+     "address": "Rapenburg 95G",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010012138341"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181605",
+   "addresses": [
+    "Rapenburg 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 97",
+     "use": "kantoorfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000788164"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170674",
+   "addresses": [
+    "Rapenburg 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 99-H",
+     "use": "winkelfunctie",
+     "areaM2": 343,
+     "bagId": "0363010000788165"
+    },
+    {
+     "address": "Rapenburg 99-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010012079654"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170673",
+   "addresses": [
+    "Rapenburg 101",
+    "Rapenburg 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 103-H",
+     "use": "industriefunctie",
+     "areaM2": 216,
+     "bagId": "0363010012079655"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741082326,
+     "lngLat": [
+      4.9105531,
+      52.3703294
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "103-H",
+      "addr:postcode": "1011TW",
+      "addr:street": "Rapenburg",
+      "name": "Vereenigde Laboratoria Drs. W.H. Nagel B.V.",
+      "office": "company",
+      "phone": "+31 20 6242583",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.labnagel.com/"
+     },
+     "fetchedAt": "2026-11-10T08:20:33.725Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

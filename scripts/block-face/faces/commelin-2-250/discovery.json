@@ -1,0 +1,981 @@
+{
+ "street": "Commelinstraat",
+ "seed": "0363100012236918",
+ "members": [
+  "0363100012233668",
+  "0363100012078517",
+  "0363100012141437",
+  "0363100012095429",
+  "0363100012094602",
+  "0363100012112407",
+  "0363100012074254",
+  "0363100012156075",
+  "0363100012163419",
+  "0363100012158379",
+  "0363100012153380",
+  "0363100012236918"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012233668 (face continues: 209348 161088 152829 153138 161396 148725 143470 090879 097187)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063961",
+   "reason": "frontage 103.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012064747",
+   "reason": "frontage 99.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012065278",
+   "reason": "frontage 39.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012065823",
+   "reason": "frontage 37.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012068865",
+   "reason": "frontage 39.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012074401",
+   "reason": "frontage 99.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012075601",
+   "reason": "frontage 103.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012077478",
+   "reason": "frontage 79.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012080864",
+   "reason": "frontage 37.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012081261",
+   "reason": "frontage 173.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012082861",
+   "reason": "no frontage on Commelinstraat: No footprint edge faces Commelinstraat"
+  },
+  {
+   "pandId": "0363100012088692",
+   "reason": "frontage 79.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012089362",
+   "reason": "frontage 99.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012090552",
+   "reason": "frontage 37.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012091544",
+   "reason": "frontage 80.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012094055",
+   "reason": "frontage 101.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012094063",
+   "reason": "frontage 103.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012094813",
+   "reason": "frontage 75.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012096868",
+   "reason": "frontage 153.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012097001",
+   "reason": "frontage 220.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012097700",
+   "reason": "frontage 32.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012098648",
+   "reason": "frontage 103.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012098734",
+   "reason": "frontage 39.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012100061",
+   "reason": "frontage 174.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012101318",
+   "reason": "frontage 174.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012102646",
+   "reason": "frontage 39.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012106887",
+   "reason": "frontage 75.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012109340",
+   "reason": "frontage 107.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012109920",
+   "reason": "frontage 103.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012112463",
+   "reason": "frontage 101.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012115247",
+   "reason": "frontage 75.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012117450",
+   "reason": "frontage 36.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012069825",
+   "reason": "frontage 150.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012072638",
+   "reason": "sightline to Commelinstraat crosses 0363100012089961"
+  },
+  {
+   "pandId": "0363100012108076",
+   "reason": "frontage 173.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012112062",
+   "reason": "frontage 205.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012112452",
+   "reason": "frontage 79.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012114922",
+   "reason": "frontage 102.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012116676",
+   "reason": "frontage 33.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012118480",
+   "reason": "frontage 150.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012119238",
+   "reason": "frontage 206.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012119432",
+   "reason": "frontage 75.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012120616",
+   "reason": "frontage 75.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012121661",
+   "reason": "frontage 101.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012121854",
+   "reason": "frontage 101.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012122070",
+   "reason": "frontage 101.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012125671",
+   "reason": "frontage 101.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012125776",
+   "reason": "frontage 103.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012126532",
+   "reason": "frontage 37.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012127889",
+   "reason": "frontage 205.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012132768",
+   "reason": "frontage 32.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012134469",
+   "reason": "frontage 36.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012135213",
+   "reason": "frontage 79.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012136510",
+   "reason": "frontage 99.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012136808",
+   "reason": "frontage 33.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012137243",
+   "reason": "frontage 92.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012138979",
+   "reason": "frontage 39.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012139064",
+   "reason": "frontage 39.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012140949",
+   "reason": "frontage 179.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012144130",
+   "reason": "frontage 39.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012144406",
+   "reason": "frontage 75.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012146257",
+   "reason": "frontage 76.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012150078",
+   "reason": "frontage 101.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012152395",
+   "reason": "frontage 98.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012152400",
+   "reason": "frontage 80.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012152482",
+   "reason": "frontage 80.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012152605",
+   "reason": "frontage 94.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012152885",
+   "reason": "frontage 41.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012152891",
+   "reason": "frontage 94.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012153339",
+   "reason": "frontage 151.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012153561",
+   "reason": "frontage 204.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012153680",
+   "reason": "frontage 205.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012153696",
+   "reason": "frontage 80.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012153708",
+   "reason": "frontage 179.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012122650",
+   "reason": "frontage 174.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012133643",
+   "reason": "frontage 79.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012137435",
+   "reason": "frontage 43.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012140194",
+   "reason": "frontage 96.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012152426",
+   "reason": "frontage 41.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012153706",
+   "reason": "frontage 150.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012153794",
+   "reason": "frontage 150.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012154124",
+   "reason": "frontage 80.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012154498",
+   "reason": "frontage 103.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012154850",
+   "reason": "frontage 98.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012155550",
+   "reason": "frontage 151.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012155577",
+   "reason": "frontage 80.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012156704",
+   "reason": "frontage 151.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012156871",
+   "reason": "frontage 206.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012157029",
+   "reason": "frontage 102.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012157163",
+   "reason": "frontage 31.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012158275",
+   "reason": "frontage 80.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012158364",
+   "reason": "sightline to Commelinstraat crosses 0363100012236918"
+  },
+  {
+   "pandId": "0363100012158515",
+   "reason": "frontage 94.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012158748",
+   "reason": "frontage 43.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012159201",
+   "reason": "frontage 87.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012159551",
+   "reason": "frontage 151.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012160508",
+   "reason": "frontage 80.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012160757",
+   "reason": "frontage 94.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012160990",
+   "reason": "frontage 97.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012161046",
+   "reason": "frontage 151.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012161077",
+   "reason": "frontage 151.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012161273",
+   "reason": "frontage 151.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012161996",
+   "reason": "frontage 36.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012162085",
+   "reason": "frontage 104.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012163169",
+   "reason": "frontage 206.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012163265",
+   "reason": "frontage 80.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012163414",
+   "reason": "frontage 102.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012154273",
+   "reason": "frontage 41.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012155065",
+   "reason": "frontage 79.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012156441",
+   "reason": "frontage 33.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012157458",
+   "reason": "frontage 33.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012159616",
+   "reason": "frontage 41.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012159658",
+   "reason": "frontage 150.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012161497",
+   "reason": "frontage 150.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012163489",
+   "reason": "frontage 107.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012163547",
+   "reason": "frontage 37.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012163786",
+   "reason": "frontage 151.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012163837",
+   "reason": "frontage 80.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012164381",
+   "reason": "frontage 36.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012164468",
+   "reason": "frontage 151.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012165385",
+   "reason": "frontage 99.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012165837",
+   "reason": "frontage 151.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012166134",
+   "reason": "frontage 49.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012166230",
+   "reason": "frontage 102.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012166399",
+   "reason": "frontage 80.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012166530",
+   "reason": "frontage 94.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012169163",
+   "reason": "frontage 132.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012170402",
+   "reason": "frontage 186.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012170792",
+   "reason": "frontage 167.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012170793",
+   "reason": "frontage 173.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012170861",
+   "reason": "frontage 179.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012170862",
+   "reason": "frontage 184.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012180513",
+   "reason": "no frontage on Commelinstraat: No footprint edge faces Commelinstraat"
+  },
+  {
+   "pandId": "0363100012180514",
+   "reason": "no frontage on Commelinstraat: No footprint edge faces Commelinstraat"
+  },
+  {
+   "pandId": "0363100012180517",
+   "reason": "frontage 162.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012180518",
+   "reason": "frontage 156.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012180520",
+   "reason": "frontage 190.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012180522",
+   "reason": "frontage 202.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012180523",
+   "reason": "frontage 206.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012180524",
+   "reason": "frontage 218.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012181496",
+   "reason": "frontage 168.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012181675",
+   "reason": "no frontage on Commelinstraat: No footprint edge faces Commelinstraat"
+  },
+  {
+   "pandId": "0363100012181676",
+   "reason": "frontage 150.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012181677",
+   "reason": "frontage 144.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012181678",
+   "reason": "frontage 138.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012181680",
+   "reason": "no frontage on Commelinstraat: No footprint edge faces Commelinstraat"
+  },
+  {
+   "pandId": "0363100012181681",
+   "reason": "no frontage on Commelinstraat: No footprint edge faces Commelinstraat"
+  },
+  {
+   "pandId": "0363100012187268",
+   "reason": "frontage 168.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012193844",
+   "reason": "frontage 165.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012194063",
+   "reason": "frontage 66.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012205926",
+   "reason": "no frontage on Commelinstraat: No footprint edge faces Commelinstraat"
+  },
+  {
+   "pandId": "0363100012205927",
+   "reason": "frontage 156.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012213726",
+   "reason": "frontage 167.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012215058",
+   "reason": "frontage 32.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012165193",
+   "reason": "frontage 41.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012191321",
+   "reason": "sightline to Commelinstraat crosses 0363100012148725"
+  },
+  {
+   "pandId": "0363100012195468",
+   "reason": "frontage 34.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012219995",
+   "reason": "frontage 32.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012221551",
+   "reason": "frontage 93.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012226361",
+   "reason": "frontage 96.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012230390",
+   "reason": "frontage 169.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012235898",
+   "reason": "frontage 151.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012236163",
+   "reason": "frontage 151.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012236675",
+   "reason": "frontage 151.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012236713",
+   "reason": "frontage 151.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012237251",
+   "reason": "frontage 61.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012242035",
+   "reason": "frontage 179.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244352",
+   "reason": "no frontage on Commelinstraat: No footprint edge faces Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244353",
+   "reason": "frontage 167.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244354",
+   "reason": "frontage 170.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244355",
+   "reason": "frontage 173.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244356",
+   "reason": "frontage 175.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244363",
+   "reason": "frontage 174.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244364",
+   "reason": "frontage 171.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244365",
+   "reason": "frontage 169.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244366",
+   "reason": "frontage 166.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244367",
+   "reason": "frontage 163.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244368",
+   "reason": "frontage 160.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012244369",
+   "reason": "frontage 155.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012570789",
+   "reason": "frontage 143.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012064691",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089347",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012098167",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012089961",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153383",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153573",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155457",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157418",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158819",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159015",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159120",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159281",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160991",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161399",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161741",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159494",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161754",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163446",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164331",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165939",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166369",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167033",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164775",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236370",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236435",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012233668",
+   "alongM": -91.37,
+   "widthM": 12.55,
+   "eavesM": 15.23,
+   "roofMaxM": 19.42,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012078517",
+   "alongM": -82.04,
+   "widthM": 6.11,
+   "eavesM": 15.25,
+   "roofMaxM": 20.48,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012141437",
+   "alongM": -69.55,
+   "widthM": 18.86,
+   "eavesM": 13.63,
+   "roofMaxM": 16.36,
+   "storeys3dbag": 5,
+   "builtYear": 1992,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012095429",
+   "alongM": -54.17,
+   "widthM": 11.91,
+   "eavesM": 16.49,
+   "roofMaxM": 16.49,
+   "storeys3dbag": 5,
+   "builtYear": 1994,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012094602",
+   "alongM": -45.29,
+   "widthM": 5.87,
+   "eavesM": 16.06,
+   "roofMaxM": 18.69,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012112407",
+   "alongM": -39.26,
+   "widthM": 6.19,
+   "eavesM": 17.26,
+   "roofMaxM": 19.49,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012074254",
+   "alongM": -33.18,
+   "widthM": 5.96,
+   "eavesM": 16.22,
+   "roofMaxM": 18.09,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156075",
+   "alongM": -27.23,
+   "widthM": 5.96,
+   "eavesM": 18.17,
+   "roofMaxM": 18.82,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163419",
+   "alongM": -21.22,
+   "widthM": 6.04,
+   "eavesM": 15.85,
+   "roofMaxM": 18.35,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158379",
+   "alongM": -15.2,
+   "widthM": 5.98,
+   "eavesM": 15.78,
+   "roofMaxM": 18.35,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153380",
+   "alongM": -9.21,
+   "widthM": 5.98,
+   "eavesM": 17.03,
+   "roofMaxM": 19.9,
+   "storeys3dbag": 5,
+   "builtYear": 1882,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012236918",
+   "alongM": 0,
+   "widthM": 12.46,
+   "eavesM": 19.01,
+   "roofMaxM": 19.05,
+   "storeys3dbag": 0,
+   "builtYear": 1882,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

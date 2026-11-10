@@ -1,0 +1,868 @@
+{
+ "face": "bonn-2-24",
+ "street": "Andreas Bonnstraat",
+ "library": "oud-west",
+ "stripDate": "2020-04-29",
+ "seconds": 2.96,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012118119",
+   "address": "Andreas Bonnstraat 24",
+   "builtYear": 1921,
+   "widthM": 6.92,
+   "eavesM": 13.1,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#80665f",
+    "wallRaw": "#5d4d43",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 2.38,
+      "topWidthM": 0.33,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.052,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.5,
+       "widthM": 1.1,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1921, type 1899-1903; frontage 6.92 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1899-1903",
+     "frontage 6.92 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.1 m = 4 storeys of 3.27 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.77 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.038 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012144373",
+   "address": "Andreas Bonnstraat 22",
+   "builtYear": 1921,
+   "widthM": 6.92,
+   "eavesM": 13.08,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#745d54",
+    "wallRaw": "#5c4b42",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 197,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.53,
+      "topWidthM": 0.28,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.128,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 1.18,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1921, type 1899-1903; frontage 6.92 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1899-1903",
+     "frontage 6.92 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.08 m = 4 storeys of 3.27 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.87 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.101 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012115312",
+   "address": "Andreas Bonnstraat 20",
+   "builtYear": 1921,
+   "widthM": 6.92,
+   "eavesM": 13.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#81675d",
+    "wallRaw": "#5d4b40",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 197,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 2.53,
+      "topWidthM": 0.93,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.062,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.55,
+       "widthM": 1.18,
+       "centre": 0.86
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1921, type 1899-1903; frontage 6.92 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1899-1903",
+     "frontage 6.92 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.15 m = 4 storeys of 3.29 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.51 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.047 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012086336",
+   "address": "Andreas Bonnstraat 18",
+   "builtYear": 1921,
+   "widthM": 6.92,
+   "eavesM": 12.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6156",
+    "wallRaw": "#5f4c42",
+    "skyline": {
+     "eavesM": 14.47,
+     "eavesRow": 207,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.6,
+      "riseM": 2,
+      "topWidthM": 0.47,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.111,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1921, type 1899-1903; frontage 6.92 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1899-1903",
+     "frontage 6.92 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.69 m = 4 storeys of 3.17 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.92 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.086 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012106328",
+   "address": "Andreas Bonnstraat 16",
+   "builtYear": 1921,
+   "widthM": 6.92,
+   "eavesM": 12.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836659",
+    "wallRaw": "#634f45",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.7,
+      "topWidthM": 0.7,
+      "centre": 0.32
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.106,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1921, type 1899-1903; frontage 6.92 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1899-1903",
+     "frontage 6.92 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.68 m = 4 storeys of 3.17 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.97 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.083 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012092490",
+   "address": "Andreas Bonnstraat 14",
+   "builtYear": 1921,
+   "widthM": 7.11,
+   "eavesM": 12.97,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6155",
+    "wallRaw": "#5f4b41",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 197,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.63,
+      "riseM": 2.92,
+      "topWidthM": 0.03,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.142,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.6,
+       "widthM": 1.15,
+       "centre": 0.24
+      },
+      {
+       "atM": 4.8,
+       "widthM": 0.82,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1921, type 1899-1903; frontage 7.11 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1921, type 1899-1903",
+     "frontage 7.11 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.97 m = 4 storeys of 3.24 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.21 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.102 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012068295",
+   "address": "Andreas Bonnstraat 12",
+   "builtYear": 1924,
+   "widthM": 6.23,
+   "eavesM": 15.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6457",
+    "wallRaw": "#625246",
+    "skyline": {
+     "eavesM": 16.77,
+     "eavesRow": 115,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 2,
+      "riseM": 2.48,
+      "topWidthM": 0.68,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.3,
+       "widthM": 0.85,
+       "centre": 0.1
+      },
+      {
+       "atM": 11,
+       "widthM": 1.18,
+       "centre": 0.51
+      },
+      {
+       "atM": 8.07,
+       "widthM": 1.63,
+       "centre": 0.53
+      },
+      {
+       "atM": 4.77,
+       "widthM": 0.85,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1924, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1924, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.72 m = 4 storeys of 3.93 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.042 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012090486",
+   "address": "Andreas Bonnstraat 10",
+   "builtYear": 1924,
+   "widthM": 6.23,
+   "eavesM": 15.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6961",
+    "wallRaw": "#66564d",
+    "skyline": {
+     "eavesM": 16.8,
+     "eavesRow": 114,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.97,
+       "widthM": 1.6,
+       "centre": 0.53
+      },
+      {
+       "atM": 10.97,
+       "widthM": 1.65,
+       "centre": 0.2
+      },
+      {
+       "atM": 5.57,
+       "widthM": 1.15,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1924, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1924, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.85 m = 4 storeys of 3.96 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.01 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.042 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012083563",
+   "address": "Andreas Bonnstraat 8",
+   "builtYear": 1924,
+   "widthM": 6.23,
+   "eavesM": 15.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#886f67",
+    "wallRaw": "#65584b",
+    "skyline": {
+     "eavesM": 16.85,
+     "eavesRow": 112,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.6,
+      "riseM": 1.6,
+      "topWidthM": 0.75,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.062,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.95,
+       "widthM": 1.68,
+       "centre": 0.56
+      },
+      {
+       "atM": 7.95,
+       "widthM": 1.1,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1924, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1924, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.83 m = 4 storeys of 3.96 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.054 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012064037",
+   "address": "Andreas Bonnstraat 2",
+   "builtYear": 1924,
+   "widthM": 12.85,
+   "eavesM": 15.68,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#645246",
+    "wallRaw": "#635448",
+    "skyline": {
+     "eavesM": 17.25,
+     "eavesRow": 96,
+     "confidence": 0.48,
+     "crown": {
+      "widthM": 2.17,
+      "riseM": 2.2,
+      "topWidthM": 1.23,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.35 m at 0.08 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.35,
+       "centre": 0.08,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.95,
+       "widthM": 0.95,
+       "centre": 0.93
+      },
+      {
+       "atM": 7.95,
+       "widthM": 1.15,
+       "centre": 0.25
+      },
+      {
+       "atM": 4.95,
+       "widthM": 1.07,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1924, type 1899-1903; frontage 12.85 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1924, type 1899-1903",
+     "frontage 12.85 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.68 m = 4 storeys of 3.92 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.016 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

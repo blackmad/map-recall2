@@ -1,0 +1,1232 @@
+{
+ "street": "Tilanusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:30:46.414Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012240319",
+   "addresses": [
+    "Tilanusstraat 1",
+    "Tilanusstraat 5",
+    "Tilanusstraat 7",
+    "Tilanusstraat 9",
+    "Tilanusstraat 11",
+    "Tilanusstraat 13",
+    "Tilanusstraat 15",
+    "Tilanusstraat 17R",
+    "Tilanusstraat 17M",
+    "Tilanusstraat 17N",
+    "Tilanusstraat 17S",
+    "Tilanusstraat 17T",
+    "Tilanusstraat 17U",
+    "Tilanusstraat 17L",
+    "Tilanusstraat 17C",
+    "Tilanusstraat 17D",
+    "Tilanusstraat 17A",
+    "Tilanusstraat 17B",
+    "Tilanusstraat 17E",
+    "Tilanusstraat 17H",
+    "Tilanusstraat 17K",
+    "Tilanusstraat 17G",
+    "Tilanusstraat 17F",
+    "Tilanusstraat 17V",
+    "Tilanusstraat 17W",
+    "Tilanusstraat 17P",
+    "Tilanusstraat 19R",
+    "Tilanusstraat 19P",
+    "Tilanusstraat 19M",
+    "Tilanusstraat 19N",
+    "Tilanusstraat 19V",
+    "Tilanusstraat 19T",
+    "Tilanusstraat 19U",
+    "Tilanusstraat 19D",
+    "Tilanusstraat 19E",
+    "Tilanusstraat 19C",
+    "Tilanusstraat 19A",
+    "Tilanusstraat 19H",
+    "Tilanusstraat 19K",
+    "Tilanusstraat 19L",
+    "Tilanusstraat 19B",
+    "Tilanusstraat 19F",
+    "Tilanusstraat 19G",
+    "Tilanusstraat 19X",
+    "Tilanusstraat 19W",
+    "Tilanusstraat 19S",
+    "Tilanusstraat 21R",
+    "Tilanusstraat 21S",
+    "Tilanusstraat 21P",
+    "Tilanusstraat 21M",
+    "Tilanusstraat 21N",
+    "Tilanusstraat 21V",
+    "Tilanusstraat 21T",
+    "Tilanusstraat 21U",
+    "Tilanusstraat 21D",
+    "Tilanusstraat 21E",
+    "Tilanusstraat 21C",
+    "Tilanusstraat 21A",
+    "Tilanusstraat 21K",
+    "Tilanusstraat 21G",
+    "Tilanusstraat 21F",
+    "Tilanusstraat 21B",
+    "Tilanusstraat 21L",
+    "Tilanusstraat 21H",
+    "Tilanusstraat 21W",
+    "Tilanusstraat 21X",
+    "Tilanusstraat 23P",
+    "Tilanusstraat 23M",
+    "Tilanusstraat 23T",
+    "Tilanusstraat 23R",
+    "Tilanusstraat 23G",
+    "Tilanusstraat 23B",
+    "Tilanusstraat 23A",
+    "Tilanusstraat 23F",
+    "Tilanusstraat 23V",
+    "Tilanusstraat 23E",
+    "Tilanusstraat 23N",
+    "Tilanusstraat 23C",
+    "Tilanusstraat 23L",
+    "Tilanusstraat 23H",
+    "Tilanusstraat 23S",
+    "Tilanusstraat 23D",
+    "Tilanusstraat 23K",
+    "Tilanusstraat 23U"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 1",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 2404,
+     "bagId": "0363010000827808"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 10",
+     "use": "bijeenkomstfunctie,sportfunctie",
+     "areaM2": 2681,
+     "bagId": "0363010012070347"
+    },
+    {
+     "address": "Wibautstraat 5B",
+     "use": "sportfunctie",
+     "areaM2": 646,
+     "bagId": "0363010012070348"
+    },
+    {
+     "address": "Wibautstraat 5A",
+     "use": "onderwijsfunctie",
+     "areaM2": 6498,
+     "bagId": "0363010012070349"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12M",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070362"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12K",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070364"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12L",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070365"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12S",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070366"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12T",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070367"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12R",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070369"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070370"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070371"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070372"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070373"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070374"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12H",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070375"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14P",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070390"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14R",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070391"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14M",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070392"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14N",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070393"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14V",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070395"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14W",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070397"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14U",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070399"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14L",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070400"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070401"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070403"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070404"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070405"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14H",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070407"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14K",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070408"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070410"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16P",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070428"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16R",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070429"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16M",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070430"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16N",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070431"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16V",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070433"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16W",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070434"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16U",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070436"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16L",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070437"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070438"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070439"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070440"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070441"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16H",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070443"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16K",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070444"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18P",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070461"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18L",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070462"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18M",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070463"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18U",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070466"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18S",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012070468"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070473"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18H",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070476"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18F",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070478"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 20",
+     "use": "sportfunctie",
+     "areaM2": 401,
+     "bagId": "0363010012070488"
+    },
+    {
+     "address": "Tilanusstraat 17R",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070504"
+    },
+    {
+     "address": "Tilanusstraat 17M",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070505"
+    },
+    {
+     "address": "Tilanusstraat 17N",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070507"
+    },
+    {
+     "address": "Tilanusstraat 17S",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070508"
+    },
+    {
+     "address": "Tilanusstraat 17T",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070512"
+    },
+    {
+     "address": "Tilanusstraat 17U",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070513"
+    },
+    {
+     "address": "Tilanusstraat 17L",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070515"
+    },
+    {
+     "address": "Tilanusstraat 17C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070516"
+    },
+    {
+     "address": "Tilanusstraat 17D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070517"
+    },
+    {
+     "address": "Tilanusstraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070518"
+    },
+    {
+     "address": "Tilanusstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070519"
+    },
+    {
+     "address": "Tilanusstraat 17E",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070520"
+    },
+    {
+     "address": "Tilanusstraat 17H",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070521"
+    },
+    {
+     "address": "Tilanusstraat 17K",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070522"
+    },
+    {
+     "address": "Tilanusstraat 17G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070542"
+    },
+    {
+     "address": "Tilanusstraat 17F",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070543"
+    },
+    {
+     "address": "Tilanusstraat 19R",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070544"
+    },
+    {
+     "address": "Tilanusstraat 19P",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070546"
+    },
+    {
+     "address": "Tilanusstraat 19M",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070547"
+    },
+    {
+     "address": "Tilanusstraat 19N",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070548"
+    },
+    {
+     "address": "Tilanusstraat 19V",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070551"
+    },
+    {
+     "address": "Tilanusstraat 19T",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070552"
+    },
+    {
+     "address": "Tilanusstraat 19U",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070553"
+    },
+    {
+     "address": "Tilanusstraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070554"
+    },
+    {
+     "address": "Tilanusstraat 19E",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070555"
+    },
+    {
+     "address": "Tilanusstraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070556"
+    },
+    {
+     "address": "Tilanusstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070557"
+    },
+    {
+     "address": "Tilanusstraat 19H",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070558"
+    },
+    {
+     "address": "Tilanusstraat 19K",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070559"
+    },
+    {
+     "address": "Tilanusstraat 19L",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070560"
+    },
+    {
+     "address": "Tilanusstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070561"
+    },
+    {
+     "address": "Tilanusstraat 19F",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070562"
+    },
+    {
+     "address": "Tilanusstraat 19G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070563"
+    },
+    {
+     "address": "Tilanusstraat 21R",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070564"
+    },
+    {
+     "address": "Tilanusstraat 21S",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070565"
+    },
+    {
+     "address": "Tilanusstraat 21P",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070566"
+    },
+    {
+     "address": "Tilanusstraat 21M",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070567"
+    },
+    {
+     "address": "Tilanusstraat 21N",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070568"
+    },
+    {
+     "address": "Tilanusstraat 21V",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070571"
+    },
+    {
+     "address": "Tilanusstraat 21T",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070572"
+    },
+    {
+     "address": "Tilanusstraat 21U",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070573"
+    },
+    {
+     "address": "Tilanusstraat 21D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070574"
+    },
+    {
+     "address": "Tilanusstraat 21E",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070575"
+    },
+    {
+     "address": "Tilanusstraat 21C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070576"
+    },
+    {
+     "address": "Tilanusstraat 21A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070577"
+    },
+    {
+     "address": "Tilanusstraat 21K",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070578"
+    },
+    {
+     "address": "Tilanusstraat 21G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070579"
+    },
+    {
+     "address": "Tilanusstraat 21F",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070580"
+    },
+    {
+     "address": "Tilanusstraat 21B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070581"
+    },
+    {
+     "address": "Tilanusstraat 21L",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070582"
+    },
+    {
+     "address": "Tilanusstraat 21H",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070583"
+    },
+    {
+     "address": "Tilanusstraat 23P",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070585"
+    },
+    {
+     "address": "Tilanusstraat 23M",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070587"
+    },
+    {
+     "address": "Tilanusstraat 23T",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070588"
+    },
+    {
+     "address": "Tilanusstraat 23R",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070590"
+    },
+    {
+     "address": "Tilanusstraat 23G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070595"
+    },
+    {
+     "address": "Tilanusstraat 23B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070598"
+    },
+    {
+     "address": "Tilanusstraat 23A",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070599"
+    },
+    {
+     "address": "Tilanusstraat 23F",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012070600"
+    },
+    {
+     "address": "Tilanusstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012070492"
+    },
+    {
+     "address": "Tilanusstraat 7",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012070495"
+    },
+    {
+     "address": "Tilanusstraat 5",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012070500"
+    },
+    {
+     "address": "Tilanusstraat 13",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012070491"
+    },
+    {
+     "address": "Tilanusstraat 11",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012070494"
+    },
+    {
+     "address": "Tilanusstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012070496"
+    },
+    {
+     "address": "Tilanusstraat 17V",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012070509"
+    },
+    {
+     "address": "Tilanusstraat 19X",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070550"
+    },
+    {
+     "address": "Tilanusstraat 21W",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070569"
+    },
+    {
+     "address": "Tilanusstraat 19W",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070549"
+    },
+    {
+     "address": "Tilanusstraat 23V",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070594"
+    },
+    {
+     "address": "Tilanusstraat 21X",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070570"
+    },
+    {
+     "address": "Tilanusstraat 23E",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012070597"
+    },
+    {
+     "address": "Tilanusstraat 17W",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070511"
+    },
+    {
+     "address": "Tilanusstraat 23N",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012070584"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16E",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070442"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14F",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070409"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18T",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012070465"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18R",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070467"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14T",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070398"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14E",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070406"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012070471"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16T",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070435"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16F",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070445"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18E",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070477"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070472"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 14S",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070394"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12E",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070376"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12P",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070368"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12F",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012070377"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16S",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070432"
+    },
+    {
+     "address": "Tilanusstraat 23C",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070593"
+    },
+    {
+     "address": "Tilanusstraat 19S",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070545"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 12N",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012070363"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18G",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070475"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012070474"
+    },
+    {
+     "address": "Tilanusstraat 23L",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070586"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18K",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070470"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 18N",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070460"
+    },
+    {
+     "address": "Tilanusstraat 23H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012070596"
+    },
+    {
+     "address": "Tilanusstraat 17P",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070503"
+    },
+    {
+     "address": "Tilanusstraat 23S",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012070591"
+    },
+    {
+     "address": "Tilanusstraat 23D",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070601"
+    },
+    {
+     "address": "Tilanusstraat 23K",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070592"
+    },
+    {
+     "address": "Tilanusstraat 23U",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070589"
+    },
+    {
+     "address": "Tweede Boerhaavestraat 16G",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010012070446"
+    }
+   ],
+   "units": 159,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085377",
+   "addresses": [
+    "Tilanusstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000827852"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092786",
+   "addresses": [
+    "Tilanusstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000827860"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125644",
+   "addresses": [
+    "Tilanusstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000827868"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128359",
+   "addresses": [
+    "Tilanusstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000827876"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012130223",
+   "addresses": [
+    "Tilanusstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000827884"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012064799",
+   "addresses": [
+    "Tilanusstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000827892"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012119052",
+   "addresses": [
+    "Tilanusstraat 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 37-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000827899"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012137641",
+   "addresses": [
+    "Tilanusstraat 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 39-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000827906"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084114",
+   "addresses": [
+    "Tilanusstraat 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 41-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000827913"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114055",
+   "addresses": [
+    "Tilanusstraat 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 43-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000827921"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012120946",
+   "addresses": [
+    "Tilanusstraat 45"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 45-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010001976642"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

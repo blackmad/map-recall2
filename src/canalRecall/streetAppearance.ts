@@ -16,6 +16,9 @@ export interface ArchitecturalRecipe {
   period: 'canal' | 'c19' | 'school' | 'postwar' | 'modern' | 'tower';
   wallHex?: string; frameHex?: string; groundWallHex?: string;
   bayScale?: number; storeyScale?: number; groundScale?: number;
+  /** Window bays across the street front (a HouseSpec, houseSpec/decorate.ts): the run's bay grid is fitted to it
+   *  (streetFacadeRendering.ts frontageLayoutScale). Absent = the style's own bay width. */
+  bays?: number;
   windowWidth?: number; windowHeight?: number;
   windowProportions?: 'tall' | 'balanced' | 'wide';
   windowHead?: 'flat' | 'segmental';

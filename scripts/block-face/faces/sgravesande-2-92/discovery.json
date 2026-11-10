@@ -1,0 +1,155 @@
+{
+ "street": "'s-Gravesandestraat",
+ "seed": "0363100012113688",
+ "members": [
+  "0363100012101376",
+  "0363100012093334",
+  "0363100012151587",
+  "0363100012113688"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012093449 31.0 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064922",
+   "reason": "sightline to 's-Gravesandestraat crosses 0363100012093449"
+  },
+  {
+   "pandId": "0363100012069114",
+   "reason": "frontage 56.9 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012092001",
+   "reason": "frontage 130.1 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012101066",
+   "reason": "sightline to 's-Gravesandestraat crosses 0363100012101376"
+  },
+  {
+   "pandId": "0363100012111015",
+   "reason": "frontage 69.3 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012120940",
+   "reason": "frontage 41.8 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012122406",
+   "reason": "frontage 72.1 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012124352",
+   "reason": "frontage 92.1 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012133373",
+   "reason": "frontage 48.4 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012164446",
+   "reason": "sightline to 's-Gravesandestraat crosses 0363100012113688"
+  },
+  {
+   "pandId": "0363100012164969",
+   "reason": "frontage 55.2 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012170608",
+   "reason": "frontage 97.6 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012170675",
+   "reason": "no frontage on 's-Gravesandestraat: No footprint edge faces 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012170679",
+   "reason": "frontage 105.1 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012181378",
+   "reason": "frontage 68.4 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012181380",
+   "reason": "frontage 49.3 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012181381",
+   "reason": "no frontage on 's-Gravesandestraat: No footprint edge faces 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012230617",
+   "reason": "frontage 95.8 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012236231",
+   "reason": "frontage 46.9 m from 's-Gravesandestraat"
+  },
+  {
+   "pandId": "0363100012156540",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012192463",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236788",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012101376",
+   "alongM": -50.2,
+   "widthM": 17.31,
+   "eavesM": 12.48,
+   "roofMaxM": 15.21,
+   "storeys3dbag": 5,
+   "builtYear": 1988,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012093334",
+   "alongM": -32.2,
+   "widthM": 18.69,
+   "eavesM": 15.15,
+   "roofMaxM": 15.19,
+   "storeys3dbag": 5,
+   "builtYear": 1988,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012151587",
+   "alongM": -13.52,
+   "widthM": 18.68,
+   "eavesM": 14.94,
+   "roofMaxM": 14.97,
+   "storeys3dbag": 5,
+   "builtYear": 1988,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012113688",
+   "alongM": 0,
+   "widthM": 8.36,
+   "eavesM": 12.11,
+   "roofMaxM": 14.74,
+   "storeys3dbag": 5,
+   "builtYear": 1988,
+   "uncertainty": []
+  }
+ ]
+}

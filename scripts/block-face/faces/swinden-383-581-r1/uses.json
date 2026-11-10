@@ -1,0 +1,213 @@
+{
+ "street": "Eerste Van Swindenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:22:01.839Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159406",
+   "addresses": [
+    "Eerste Van Swindenstraat 391"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 391-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000549150"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13361416155,
+     "lngLat": [
+      4.9282938,
+      52.3630149
+     ],
+     "tags": {
+      "name": "Goudexpert",
+      "shop": "gold_buyer"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158925",
+   "addresses": [
+    "Eerste Van Swindenstraat 393"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 393-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000549155"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348245296,
+     "lngLat": [
+      4.9283649,
+      52.3630245
+     ],
+     "tags": {
+      "name": "Cosme hairfashion",
+      "shop": "cosmetics",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165201",
+   "addresses": [
+    "Eerste Van Swindenstraat 395"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 395-H",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000960570"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12693319167,
+     "lngLat": [
+      4.9284346,
+      52.3630385
+     ],
+     "tags": {
+      "name": "Losyana",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163378",
+   "addresses": [
+    "Eerste Van Swindenstraat 397"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 397-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000549170"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12693324382,
+     "lngLat": [
+      4.9285023,
+      52.363054
+     ],
+     "tags": {
+      "name": "Nura's Beauty",
+      "opening_hours": "Mo-Su 10:00-19:00",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236602",
+   "addresses": [
+    "Eerste Van Swindenstraat 399"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 399-H",
+     "use": "winkelfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000549180"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348245295,
+     "lngLat": [
+      4.9285743,
+      52.3630686
+     ],
+     "tags": {
+      "check_date:opening_hours": "2026-10-15",
+      "name": "Dapper Post",
+      "opening_hours": "Mo-Sa 10:00-18:30; Su 12:00-17:00",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161671",
+   "addresses": [
+    "Eerste Van Swindenstraat 401"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 401-H",
+     "use": "winkelfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000549188"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12693328560,
+     "lngLat": [
+      4.9286457,
+      52.3630818
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "brand": "Çiğköftem",
+      "brand:wikidata": "Q106597459",
+      "cuisine": "turkish",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "only",
+      "drive_through": "no",
+      "name": "Çiğköftem",
+      "opening_hours": "Mo-Sa 12:00-21:00",
+      "takeaway": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

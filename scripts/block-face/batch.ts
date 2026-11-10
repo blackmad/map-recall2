@@ -19,6 +19,8 @@
  *        [--install] [--ride[=<routes>]] [--limit=<n>] [--skip=<id>,...] [--strip-cache=<worktree>,...] [--redo] [--no-restrip]
  *        [--intake-only]   only intake + strip checks (network; safe beside a placing run: no browser, no manifest writes)
  *        [--faces=<id>,... | --only=<id>,...] with --buurt: only those faces of the buurt (the list is printed before the run)
+ *        [--reviewed-strips=<file>] a reviewed-verdict file ({accepted:[{face,date,by}]}): the colour-cast strip-quality reasons are waived
+ *                          for that exact face+strip date only (blockFace/reviewedStrips.ts); pair with --no-restrip so the date stays
  *        [--replace=<run>,...] passed to auto-place: re-place these installed runs (others with a chunk are never touched)
  *        [--photo-decides] passed to auto-place: where two library types of one row tie on the facts, the strip's edges pick
  *                          (Transvaalbuurt 1911 low/tall-ground twins; absent = the auto-place call is unchanged)
@@ -38,6 +40,7 @@ import {FACES, STAGING, intake} from './intake.ts';
 import {compileFace, installFace} from './compile.ts';
 import {reviewFace} from './review.ts';
 import {runLikeness, writeRunFace} from './auto-place.ts';
+import {pinnedEaves, type EavesPin} from '../../src/canalRecall/blockFace/reviewFaceEaves.ts';
 import {fitWallBrick} from './fit-wall-palette.ts';
 import {faceWallExposure} from '../look/face-wall-exposure.ts';
 import {runEvidence} from './evidence-gate.ts';
@@ -49,6 +52,7 @@ import {measureStripPalette} from '../../src/canalRecall/blockFace/stripPalette.
 import {isLeaf} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {hexToRgb} from '../../src/canalRecall/look/palette.ts';
 import {spanQuality, stripQuality, type StripQualityVerdict} from '../../src/canalRecall/blockFace/stripQuality.ts';
+import {applyReviewedStrip, type ReviewedStrips} from '../../src/canalRecall/blockFace/reviewedStrips.ts';
 import {BATCH_GATES, brickForDrawnLuma, coveredElsewhere, facingsToHousePalette, libraryYearMatches, installVerdict, restripDates, sampleShare, selectBatchFaces, autoPlaceArgs, trimShared, foliageColumns, maskColumns, cleanWallVerdict, rowMedianRgb, type PixelBox} from '../../src/canalRecall/blockFace/batchInstall.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -73,10 +77,14 @@ async function measureStrip(face: string): Promise<StripQualityVerdict | null> {
   if (!existsSync(jpg)) return null;
   const {data, info} = await sharp(jpg).removeAlpha().raw().toBuffer({resolveWithObject: true});
   const ppm = strip.pixelsPerMetre, H = info.height;
+  // A reviewer's eaves pin (reviewFaceEaves.ts) puts the facade box under the measured gutter: a one-storey dike cottage's
+  // facade box from 3.8 m up to the 3DBAG roof max is sky. No pin = as before.
+  const buurtArg = process.argv.find(a => a.startsWith('--buurt='))?.slice(8), pinFile = buurtArg ? path.join('scripts/block-face/buurten', `${buurtArg}-review-face-eaves.json`) : '';
+  const pinEaves = pinFile && existsSync(pinFile) ? pinnedEaves((await readJson(pinFile)).pins as EavesPin[], face) : null;
   const spans = await Promise.all(strip.spans.map(async (s: any) => {
     const f = path.join(dir, 'pands', s.pandId, 'facts.json'), h = existsSync(f) ? (await readJson(f)).heights : null;
-    const top = h?.roofMaxM ?? h?.eavesM ?? 12;
-    return {widthPx: s.px[1] - s.px[0], quality: spanQuality(data, info.width, {x0: s.px[0] + 8, x1: s.px[1] - 8, y0: Math.max(0, Math.round(H - top * ppm)), y1: Math.round(H - 3.8 * ppm)})};
+    const top = pinEaves ?? h?.roofMaxM ?? h?.eavesM ?? 12, floorM = pinEaves !== null ? Math.min(3.8, pinEaves * 0.3) : 3.8;
+    return {widthPx: s.px[1] - s.px[0], quality: spanQuality(data, info.width, {x0: s.px[0] + 8, x1: s.px[1] - 8, y0: Math.max(0, Math.round(H - top * ppm)), y1: Math.round(H - floorM * ppm)})};
   }));
   return stripQuality(spans);
 }
@@ -139,9 +147,11 @@ async function quiet<T>(fn: () => Promise<T>): Promise<T> {
 }
 
 /** Strip check with fallback dates; returns the final verdict and the date it re-stripped to (if any). */
-async function stripStep(face: string, noRestrip: boolean): Promise<{q: StripQualityVerdict | null; restriped: string | null; date: string}> {
+async function stripStep(face: string, noRestrip: boolean, reviewed: ReviewedStrips | null = null): Promise<{q: StripQualityVerdict | null; restriped: string | null; date: string}> {
   let q = await measureStrip(face), strip = await readJson(path.join(FACES, face, 'strip.json'));
   const original = strip.date;
+  // A strip a reviewer accepted by eye keeps its date: restriping would swap it for a strip nobody looked at.
+  if (q?.bad && !applyReviewedStrip(q, reviewed, face, strip.date).bad) return {q, restriped: null, date: strip.date};
   if (!q?.bad || noRestrip) return {q, restriped: null, date: strip.date};
   const tried: string[] = [];
   let best = {q, date: strip.date};
@@ -333,6 +343,7 @@ async function main() {
     if (sel.missing.length) throw Error(`--faces not among ${buurt}'s uncovered faces of 2+ pands: ${sel.missing.join(', ')}`);
     faces = sel.faces;
   }
+  const reviewedStrips: ReviewedStrips | null = arg('reviewed-strips') ? await readJson(arg('reviewed-strips')!) : null;
   const replace = (arg('replace') ?? '').split(',').filter(Boolean);
   console.log(`${name}: ${faces.length} face(s)${doc ? ` of ${buurt}` : ''}${requested ? ' (--faces)' : ''}${flag('photo-decides') ? ', --photo-decides' : ''}${replace.length ? `, --replace=${replace.join(',')}` : ''}: ${faces.map(f => f.id).join(' ')}`);
   const library: {match?: {years: [number, number]; yearSlack?: number}}[] = district ? await Promise.all((await fs.readdir(path.join('scripts/block-face/types', district))).filter(f => f.endsWith('.json')).map(f => readJson(path.join('scripts/block-face/types', district, f)))) : [];
@@ -360,7 +371,7 @@ async function main() {
     const fail = (run: string, mode: Row['mode'], reasons: string[], extra: Partial<Row> = {}) => { rows.push({...base, run, pands: f.members.length, mode, stripDate: null, status: 'failed', reasons, ...extra, seconds: secs()} as Row); };
     const manifest0 = await readJson(MANIFEST);
     if (flag('intake-only') && existsSync(path.join(FACES, f.id, 'strip.json')) && existsSync(path.join(STAGING, f.id, 'strip.jpg'))) continue;
-    if (manifest0.chunks.some((c: any) => c.id === `chunk-face-${f.id}` || c.id.startsWith(`chunk-face-${f.id}-r`) || c.id === `chunk-face-${f.id}-t`)) { rows.push({...base, run: f.id, pands: f.members.length, mode: 'authored', stripDate: null, status: 'skipped', reasons: ['already-installed'], seconds: 0} as Row); await save(); continue; }
+    if (!replace.some(r => r === f.id || r.startsWith(`${f.id}-r`)) && manifest0.chunks.some((c: any) => c.id === `chunk-face-${f.id}` || c.id.startsWith(`chunk-face-${f.id}-r`) || c.id === `chunk-face-${f.id}-t`)) { rows.push({...base, run: f.id, pands: f.members.length, mode: 'authored', stripDate: null, status: 'skipped', reasons: ['already-installed'], seconds: 0} as Row); await save(); continue; }
     console.log(`\n== ${f.id} (${f.street}, ${f.members.length} pands${base.ride !== null ? `, ride ${base.ride}` : ''})`);
     // 0. A face the library cannot place (build years) is logged before any panorama fetch.
     const ownIntent = path.join(FACES, f.id, 'intent.json');
@@ -382,10 +393,21 @@ async function main() {
         }
       } else console.log(`  strip image: ${await ensureStripImage(f.id, caches)}`);
     } catch (e) { fail(f.id, 'auto-place', [`intake-failed: ${(e as Error).message.slice(0, 160)}`]); await save(); continue; }
-    const st = await stripStep(f.id, flag('no-restrip'));
+    // A face whose reviewed strip is on another date (an earlier restrip changed it) goes back to the reviewed date first.
+    const wanted = reviewedStrips?.accepted.filter(a => a.face === f.id) ?? [];
+    const haveDate: string | null = wanted.length ? (await readJson(path.join(FACES, f.id, 'strip.json'))).date : null;
+    if (wanted.length && !wanted.some(a => a.date === haveDate)) {
+      const r = await restrip(f.id, wanted[0].date);
+      console.log(`  restore reviewed strip ${wanted[0].date}: ${r.ok ? 'ok' : r.why}`);
+      if (!r.ok) { fail(f.id, 'auto-place', [`reviewed-strip-unavailable: ${wanted[0].date}: ${r.why}`]); await save(); continue; }
+    }
+    const st = await stripStep(f.id, flag('no-restrip'), reviewedStrips);
     const stripInfo = {stripDate: st.date, restriped: st.restriped, stripQuality: st.q ? {badShare: st.q.badShare, reasons: st.q.reasons} : null};
     console.log(`  strip ${st.date}: bad share ${st.q?.badShare} ${st.q?.reasons.join(', ') ?? ''}${st.restriped ? ` (restriped ${st.restriped})` : ''}`);
-    const stripVerdict = {bad: !st.q || st.q.bad, reasons: st.q?.reasons ?? ['no strip image']};
+    const rawVerdict = {bad: !st.q || st.q.bad, reasons: st.q?.reasons ?? ['no strip image']};
+    const eye = applyReviewedStrip(rawVerdict, reviewedStrips, f.id, st.date);
+    if (eye.waived.length) console.log(`  strip ${st.date} accepted by eye (reviewed-strips): waived ${eye.waived.join(', ')}`);
+    const stripVerdict = {bad: eye.bad, reasons: eye.reasons};
     // --intake-only: network-bound intake and strip checks ahead of a placing run (no browser, no manifest writes).
     if (flag('intake-only')) continue;
     // 2. Type assignment.

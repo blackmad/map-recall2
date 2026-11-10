@@ -1,0 +1,299 @@
+{
+ "street": "Plantage Muidergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:50:35.573Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181036",
+   "addresses": [
+    "Plantage Muidergracht 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 1",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000777686"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181038",
+   "addresses": [
+    "Plantage Muidergracht 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 3",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010000777687"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170491",
+   "addresses": [
+    "Plantage Muidergracht 5",
+    "Plantage Muidergracht 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 5",
+     "use": "woonfunctie",
+     "areaM2": 263,
+     "bagId": "0363010000777689"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181039",
+   "addresses": [
+    "Plantage Muidergracht 9",
+    "Plantage Muidergracht 9B",
+    "Plantage Muidergracht 9A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 9",
+     "use": "woonfunctie",
+     "areaM2": 243,
+     "bagId": "0363010000777692"
+    },
+    {
+     "address": "Plantage Muidergracht 9B",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010012609328"
+    },
+    {
+     "address": "Plantage Muidergracht 9A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012609327"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181040",
+   "addresses": [
+    "Plantage Muidergracht 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 11",
+     "use": "woonfunctie",
+     "areaM2": 232,
+     "bagId": "0363010000777693"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170501",
+   "addresses": [
+    "Plantage Muidergracht 13C",
+    "Plantage Muidergracht 13D",
+    "Plantage Muidergracht 13A",
+    "Plantage Muidergracht 13B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 13C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000777696"
+    },
+    {
+     "address": "Plantage Muidergracht 13D",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000777697"
+    },
+    {
+     "address": "Plantage Muidergracht 13A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 376,
+     "bagId": "0363010000981336"
+    },
+    {
+     "address": "Plantage Muidergracht 13B",
+     "use": "woonfunctie",
+     "areaM2": 219,
+     "bagId": "0363010000981337"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170440",
+   "addresses": [
+    "Plantage Muidergracht 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 15",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000777699"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170500",
+   "addresses": [
+    "Plantage Muidergracht 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 17",
+     "use": "woonfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000777700"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181362",
+   "addresses": [
+    "Plantage Muidergracht 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 19",
+     "use": "woonfunctie",
+     "areaM2": 219,
+     "bagId": "0363010000777701"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181361",
+   "addresses": [
+    "Plantage Muidergracht 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 21",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000777704"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181360",
+   "addresses": [
+    "Plantage Muidergracht 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 23",
+     "use": "woonfunctie",
+     "areaM2": 188,
+     "bagId": "0363010000777706"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181357",
+   "addresses": [
+    "Plantage Muidergracht 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 25-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000777707"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742884224,
+     "lngLat": [
+      4.9095961,
+      52.366078
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "25-H",
+      "addr:postcode": "1018TL",
+      "addr:street": "Plantage Muidergracht",
+      "name:signed": "no",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "apartment",
+      "website": "https://eatbu.nl/perfect-apt-heart-of-amsterdam-netherlands"
+     },
+     "fetchedAt": "2026-11-10T07:50:35.573Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181358",
+   "addresses": [
+    "Plantage Muidergracht 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 27-H",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010000777710"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181359",
+   "addresses": [
+    "Plantage Muidergracht 29A",
+    "Plantage Muidergracht 29B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Muidergracht 29A",
+     "use": "woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000777712"
+    },
+    {
+     "address": "Plantage Muidergracht 29B",
+     "use": "woonfunctie",
+     "areaM2": 193,
+     "bagId": "0363010000777713"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

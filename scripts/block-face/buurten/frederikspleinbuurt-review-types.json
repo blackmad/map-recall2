@@ -1,0 +1,76 @@
+{
+ "note": "Frederikspleinbuurt review type pins (lane buurt-dentex-frederiksplein-20261110)",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "face": "witsen-1-19",
+   "types": [
+    "witsen-1890-iron-zinc-mansard"
+   ],
+   "pands": [
+    "0363100012177762"
+   ],
+   "reason": "Nicolaas Witsenstraat (Opus round 2): witsen-1890-iron-zinc-mansard"
+  },
+  {
+   "face": "witsen-1-19",
+   "types": [
+    "witsen-1890-balustrade-mansard"
+   ],
+   "pands": [
+    "0363100012177761"
+   ],
+   "reason": "Nicolaas Witsenstraat (Opus round 2): witsen-1890-balustrade-mansard"
+  },
+  {
+   "face": "witsen-1-19",
+   "types": [
+    "witsen-1890-balustrade-mansard"
+   ],
+   "pands": [
+    "0363100012177760"
+   ],
+   "reason": "Nicolaas Witsenstraat (Opus round 2): witsen-1890-balustrade-mansard"
+  },
+  {
+   "face": "witsen-1-19",
+   "types": [
+    "witsen-1890-plain-block-mansard"
+   ],
+   "pands": [
+    "0363100012177759"
+   ],
+   "reason": "Nicolaas Witsenstraat (Opus round 2): witsen-1890-plain-block-mansard"
+  },
+  {
+   "face": "witsen-1-19",
+   "types": [
+    "witsen-1890-plain-block-mansard"
+   ],
+   "pands": [
+    "0363100012171225"
+   ],
+   "reason": "Nicolaas Witsenstraat (Opus round 2): witsen-1890-plain-block-mansard"
+  },
+  {
+   "face": "witsen-1-19",
+   "types": [
+    "witsen-1890-iron-zinc-mansard"
+   ],
+   "pands": [
+    "0363100012178936"
+   ],
+   "reason": "Nicolaas Witsenstraat (Opus round 2): witsen-1890-iron-zinc-mansard"
+  },
+  {
+   "face": "witsen-1-19",
+   "types": [
+    "witsen-1890-balconette-zinc-mansard"
+   ],
+   "pands": [
+    "0363100012178935"
+   ],
+   "reason": "Nicolaas Witsenstraat (Opus round 2): witsen-1890-balconette-zinc-mansard"
+  }
+ ]
+}

@@ -1,0 +1,248 @@
+{
+ "street": "Brandewijnsteeg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:07:07.942Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171480",
+   "addresses": [
+    "Brandewijnsteeg 1",
+    "Brandewijnsteeg 3",
+    "Brandewijnsteeg 5",
+    "Brandewijnsteeg 7",
+    "Brandewijnsteeg 9",
+    "Brandewijnsteeg 11",
+    "Brandewijnsteeg 13",
+    "Brandewijnsteeg 15",
+    "Brandewijnsteeg 17",
+    "Brandewijnsteeg 19",
+    "Brandewijnsteeg 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brandewijnsteeg 3",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000595364"
+    },
+    {
+     "address": "Brandewijnsteeg 7",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000595367"
+    },
+    {
+     "address": "Brandewijnsteeg 11",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000595369"
+    },
+    {
+     "address": "Brandewijnsteeg 13",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000595370"
+    },
+    {
+     "address": "Brandewijnsteeg 19",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000595373"
+    },
+    {
+     "address": "Brandewijnsteeg 21",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000595374"
+    },
+    {
+     "address": "Brandewijnsteeg 15",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000595371"
+    },
+    {
+     "address": "Brandewijnsteeg 17",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000595372"
+    },
+    {
+     "address": "Brandewijnsteeg 9",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000595368"
+    },
+    {
+     "address": "Brandewijnsteeg 1",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000595363"
+    },
+    {
+     "address": "Recht Boomssloot 16A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000788657"
+    },
+    {
+     "address": "Recht Boomssloot 16B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000788658"
+    },
+    {
+     "address": "Brandewijnsteeg 5",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000595365"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182300",
+   "addresses": [
+    "Brandewijnsteeg 23",
+    "Brandewijnsteeg 25",
+    "Brandewijnsteeg 27",
+    "Brandewijnsteeg 29",
+    "Brandewijnsteeg 31",
+    "Brandewijnsteeg 33",
+    "Brandewijnsteeg 35",
+    "Brandewijnsteeg 37",
+    "Brandewijnsteeg 39",
+    "Brandewijnsteeg 41",
+    "Brandewijnsteeg 43",
+    "Brandewijnsteeg 45",
+    "Brandewijnsteeg 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brandewijnsteeg 23",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000595375"
+    },
+    {
+     "address": "Brandewijnsteeg 25",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000595376"
+    },
+    {
+     "address": "Brandewijnsteeg 29",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000595378"
+    },
+    {
+     "address": "Brandewijnsteeg 31",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000595379"
+    },
+    {
+     "address": "Brandewijnsteeg 33",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000595380"
+    },
+    {
+     "address": "Brandewijnsteeg 37",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000595382"
+    },
+    {
+     "address": "Brandewijnsteeg 39",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000595383"
+    },
+    {
+     "address": "Brandewijnsteeg 43",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000595385"
+    },
+    {
+     "address": "Brandewijnsteeg 45",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000595386"
+    },
+    {
+     "address": "Brandewijnsteeg 47",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000595387"
+    },
+    {
+     "address": "Koningsstraat 13",
+     "use": "kantoorfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000710282"
+    },
+    {
+     "address": "Koningsstraat 17",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000710284"
+    },
+    {
+     "address": "Brandewijnsteeg 41",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000595384"
+    },
+    {
+     "address": "Brandewijnsteeg 35",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000595381"
+    },
+    {
+     "address": "Brandewijnsteeg 27",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000595377"
+    },
+    {
+     "address": "Koningsstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000710283"
+    }
+   ],
+   "units": 16,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2725746969,
+     "lngLat": [
+      4.9015224,
+      52.3726238
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13",
+      "addr:postcode": "1011ES",
+      "addr:street": "Koningsstraat",
+      "name": "Beauty-ME",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://beauty-me.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:07:07.942Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

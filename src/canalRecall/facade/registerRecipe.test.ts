@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { decorateFacade } from '../genericFacades.ts';
 import { decorateRoof } from '../roofMesh.ts';
-import { REGISTER_READS_HELD, REGISTER_READS_NONE_HELD, registerFactsEnabled, registerForce, registerPatch, registerYear, withRegisterFacts, eraOfYear, type PublishedFacts } from './registerRecipe.ts';
+import { ELEMENT_COMPONENTS, REGISTER_READS_HELD, REGISTER_READS_NONE_HELD, registerFactsEnabled, registerForce, registerPatch, registerYear, withRegisterFacts, eraOfYear, type PublishedFacts } from './registerRecipe.ts';
 
 const ring = [[4.9, 52.37], [4.90007, 52.37], [4.90007, 52.37008], [4.9, 52.37008], [4.9, 52.37]];
 const house = (props: Record<string, unknown> = {}) => ({ type: 'Feature' as const, properties: <Record<string, unknown>>{ id: 'NL.IMBAG.Pand.1', height: 14, minHeight: 0, constructionYear: 1905, appearanceStyleSource: 'citywide-identity-palette-v3-not-measured', ...props }, geometry: { type: 'Polygon', coordinates: [ring] } });
@@ -79,7 +79,7 @@ test('flag: on by default in the lane, ?registerFacts=0 or REGISTER_FACTS=0 turn
   assert.equal(registerFactsEnabled('?registerFacts=1', '0'), true);
 });
 
-import { ExtraSink, wallExtras, type ExtraContext } from '../facadeExtras.ts';
+import { ExtraSink, WALL_COMPONENTS, registerFirst, wallExtras, type ExtraContext } from '../facadeExtras.ts';
 const wall = (id: string, extra: Partial<ExtraContext> = {}): ExtraContext => ({ id, style: 'canal', period: 'canal', wallKey: 'street', f: { x0: 0, y0: 0, ux: 1, uy: 0, nx: 0, ny: -1, len: 6.4 }, base: 0, top: 13,
   layout: { bays: 2, bayWidthM: 3.2, groundM: 3.4, storeys: 4, storeyM: 3.0, doorBays: [0] }, wallHex: '#a46c56', accentHex: '#e8e2d2', groundLevel: true, streetSide: true, ...extra });
 
@@ -96,6 +96,25 @@ test('forced extras: the register sets hoist beam, stoop and kroonlijst to certa
   }
   assert.ok(forcedHoist > diceHoist && forcedHoist >= 30, `hoist beam ${diceHoist} -> ${forcedHoist} of 40`);
   assert.ok(forcedCornice >= 30 && forcedStoop >= 25, `kroonlijst ${forcedCornice}, stoop ${forcedStoop}`);
+});
+
+test('forced extras dress first: each stated part alone is drawn on (nearly) every wall, whatever the dice won before it', () => {
+  // Lane register-extras 2026-11-10: in registry order a forced part came after the dice-won crown, door and trim, which
+  // spent the wall's budget or took its group. Forced alone it drew on 4 of 40 walls (iron balconies), 6 (corner
+  // pilasters), 8 (bay window), 15 (console cornice: a dice kroonlijst took the crown group).
+  const ids = Array.from({ length: 40 }, (_, i) => `NL.IMBAG.Pand.9${i}`);
+  const parts = [...new Set(Object.values(ELEMENT_COMPONENTS).flat()), 'string-courses'];
+  for (const period of ['canal', 'c19'] as const) for (const part of parts) {
+    const n = ids.filter(id => wallExtras(wall(id, { period, registerForce: [part] }), new ExtraSink(230)).includes(part)).length;
+    assert.ok(n >= 36, `${period} ${part}: ${n} of 40`);
+  }
+  // A stated console cornice takes the crown from the kroonlijst the dice would have drawn.
+  const kroon = ids.filter(id => wallExtras(wall(id), new ExtraSink(230)).includes('kroonlijst'));
+  assert.ok(kroon.length >= 10);
+  for (const id of kroon) { const used = wallExtras(wall(id, { registerForce: ['console-cornice'] }), new ExtraSink(230)); assert.ok(used.includes('console-cornice') && !used.includes('kroonlijst'), id); }
+  // Nothing stated: the registry order, so every wall is as before.
+  assert.equal(registerFirst(WALL_COMPONENTS, undefined, false), WALL_COMPONENTS);
+  assert.equal(registerFirst(WALL_COMPONENTS, [], true), WALL_COMPONENTS);
 });
 
 test('held reads (review 2026-11-10): the default ships era, finish and gable; every forced extra and the dakkapel are held', () => {

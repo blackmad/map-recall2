@@ -1,0 +1,115 @@
+{
+ "version": 1,
+ "pandId": "0363100012169392",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "front.jpg",
+  "year": 2024,
+  "quality": 0.614,
+  "panoIds": [
+   "b_20241217_0841_Track27_Sphere_00030"
+  ],
+  "date": "2024-12-17",
+  "reasons": [],
+  "ppm": 50
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012169392",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012169392",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1929
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012169392",
+   "design": {
+    "palette": {
+     "brick": "#403123"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.45,
+     "ref": "source-data://pand-crops/0363100012169392/front.jpg#good",
+     "at": "2024-12-17"
+    }
+   }
+  },
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012169392",
+   "design": {
+    "fronts": [
+     {
+      "bays": 4
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.93,
+     "ref": "source-data://pand-crops/0363100012169392/front.jpg",
+     "at": "2024-12-17"
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012169392",
+  "design": {
+   "fronts": [
+    {
+     "bays": 4
+    }
+   ],
+   "palette": {
+    "brick": "#403123"
+   }
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "vision-judge",
+    "confidence": 0.93,
+    "ref": "source-data://pand-crops/0363100012169392/front.jpg",
+    "at": "2024-12-17"
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.45,
+    "ref": "source-data://pand-crops/0363100012169392/front.jpg#good",
+    "at": "2024-12-17"
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012169392",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1929
+  }
+ },
+ "disagreements": [],
+ "jev": {
+  "cached": true,
+  "hash": "fa104835b0a264584044864e3e86a6c9",
+  "usd": 0
+ }
+}

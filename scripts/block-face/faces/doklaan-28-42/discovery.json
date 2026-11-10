@@ -1,0 +1,301 @@
+{
+ "street": "Plantage Doklaan",
+ "seed": "0363100012170666",
+ "members": [
+  "0363100012181136",
+  "0363100012181140",
+  "0363100012181139",
+  "0363100012181141",
+  "0363100012181142",
+  "0363100012181143",
+  "0363100012181138",
+  "0363100012170666"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012181137 15.0 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012170666 (face continues: 170667 170612 181480 170607 170613 181485)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164980",
+   "reason": "sightline to Plantage Doklaan crosses 0363100012169718"
+  },
+  {
+   "pandId": "0363100012170602",
+   "reason": "frontage 68.6 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170609",
+   "reason": "frontage 50.6 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170610",
+   "reason": "frontage 60.4 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170611",
+   "reason": "frontage 70.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170663",
+   "reason": "frontage 55.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170664",
+   "reason": "frontage 70.5 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170665",
+   "reason": "frontage 70.5 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170668",
+   "reason": "frontage 50.5 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170669",
+   "reason": "sightline to Plantage Doklaan crosses 0363100012181143"
+  },
+  {
+   "pandId": "0363100012181052",
+   "reason": "frontage 64.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181053",
+   "reason": "frontage 72.3 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181056",
+   "reason": "frontage 67.4 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181130",
+   "reason": "frontage 59.0 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181132",
+   "reason": "frontage 43.4 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181134",
+   "reason": "sightline to Plantage Doklaan crosses 0363100012181135"
+  },
+  {
+   "pandId": "0363100012181135",
+   "reason": "sightline to Plantage Doklaan crosses 0363100012181137"
+  },
+  {
+   "pandId": "0363100012181401",
+   "reason": "frontage 114.1 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181402",
+   "reason": "frontage 114.3 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181403",
+   "reason": "frontage 114.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181404",
+   "reason": "frontage 114.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170600",
+   "reason": "frontage 101.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170603",
+   "reason": "frontage 66.8 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170604",
+   "reason": "frontage 34.5 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012170606",
+   "reason": "sightline to Plantage Doklaan crosses 0363100012170614"
+  },
+  {
+   "pandId": "0363100012170614",
+   "reason": "sightline to Plantage Doklaan crosses 0363100012181484"
+  },
+  {
+   "pandId": "0363100012181325",
+   "reason": "frontage 114.0 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181326",
+   "reason": "frontage 114.1 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181327",
+   "reason": "frontage 114.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181398",
+   "reason": "frontage 114.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181399",
+   "reason": "frontage 114.1 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181400",
+   "reason": "frontage 114.1 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181416",
+   "reason": "frontage 68.1 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181417",
+   "reason": "frontage 35.1 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181418",
+   "reason": "frontage 53.0 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181476",
+   "reason": "frontage 47.3 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181477",
+   "reason": "frontage 68.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181478",
+   "reason": "frontage 52.9 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181479",
+   "reason": "frontage 52.9 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181482",
+   "reason": "frontage 47.2 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181483",
+   "reason": "frontage 50.5 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181419",
+   "reason": "frontage 52.1 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181481",
+   "reason": "frontage 68.7 m from Plantage Doklaan"
+  },
+  {
+   "pandId": "0363100012181484",
+   "reason": "sightline to Plantage Doklaan crosses 0363100012181485"
+  },
+  {
+   "pandId": "0363100012165550",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170662",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181144",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181486",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012181136",
+   "alongM": -35.88,
+   "widthM": 5.44,
+   "eavesM": 12.09,
+   "roofMaxM": 14.68,
+   "storeys3dbag": 4,
+   "builtYear": 1890,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181140",
+   "alongM": -30.33,
+   "widthM": 5.64,
+   "eavesM": 12.13,
+   "roofMaxM": 14.66,
+   "storeys3dbag": 4,
+   "builtYear": 1867,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181139",
+   "alongM": -24.94,
+   "widthM": 5.15,
+   "eavesM": 12.31,
+   "roofMaxM": 15.89,
+   "storeys3dbag": 5,
+   "builtYear": 1879,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181141",
+   "alongM": -19.88,
+   "widthM": 4.96,
+   "eavesM": 12.24,
+   "roofMaxM": 15.84,
+   "storeys3dbag": 5,
+   "builtYear": 1871,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181142",
+   "alongM": -14.93,
+   "widthM": 4.95,
+   "eavesM": 12.13,
+   "roofMaxM": 15.83,
+   "storeys3dbag": 5,
+   "builtYear": 1844,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181143",
+   "alongM": -9.98,
+   "widthM": 4.94,
+   "eavesM": 12.08,
+   "roofMaxM": 15.87,
+   "storeys3dbag": 5,
+   "builtYear": 1841,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181138",
+   "alongM": -5.05,
+   "widthM": 4.92,
+   "eavesM": 12.15,
+   "roofMaxM": 15.87,
+   "storeys3dbag": 5,
+   "builtYear": 1856,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170666",
+   "alongM": 0,
+   "widthM": 5.18,
+   "eavesM": 12.28,
+   "roofMaxM": 15.89,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  }
+ ]
+}

@@ -3,6 +3,8 @@ import { STYLE_DIMS, CELL_LAYER_COUNT } from './facadeCells.js';
 import { recipeForWall, type ArchitecturalRecipe, type StreetAppearanceProfile } from './streetAppearance.js';
 import type { MeshBuilding, Origin } from './threeBuildingMesh.js';
 import { levelWallHex } from './look/paletteLevel.js';
+import type { Openings, OpeningRow } from './facadeOpenings.js';
+import type { LayoutScale } from './facadeLayout.js';
 
 /**
  * A recipe's own measured wall stays as measured; a wall the bay look picked from the buurt profile or the period (no
@@ -91,10 +93,129 @@ export function recipeLayoutScale(recipe: ArchitecturalRecipe | undefined, fallb
   } : fallback;
 }
 
-/** A scoped canal cell represents the complete native frontage, including polygon kinks. */
-export function frontageLayoutScale(recipe: ArchitecturalRecipe | undefined, fallback: {bay:number;storey:number;ground:number}, style: MeshBuilding['style'], lengthM:number) {
+/** The fitted cell width for a stated bay count stays within these multiples of the style's nominal bay. */
+export const SPEC_BAY_SCALE = { min: 0.7, max: 1.5 } as const;
+/** A street front's stated window bays (HouseSpec, houseSpec/decorate.ts), and how many window axes one texture cell
+ *  of this building carries (bay-look cells hold 2 or 3; `MeshBuilding.openings.upper.axes`). */
+export type FrontageBays = { bays: number; axesPerCell: number };
+
+/** No drawn window column is narrower than this: a stated bay count never packs columns tighter (H1b, #349). */
+export const MIN_COLUMN_M = 1.8;
+
+/**
+ * How many whole texture cells draw a stated bay count (`bays` = columns of window openings per facade, see
+ * docs/house-line.md §1). A cell holds `axesPerCell` columns, so the drawn count is cells x axes: the cell count is
+ * the one whose drawn count is nearest `bays`, a tie going to the fewer (an odd count on 2-axis cells lands on the
+ * even number below, never above: 5 bays draw 4 columns, not 6; the 2026-11-10 doubling was round(5 / 2) = 3 cells).
+ * Then it is held to what the run can carry: cells no narrower than `axesPerCell` columns of MIN_COLUMN_M, and a
+ * count the bay-scale clamp (SPEC_BAY_SCALE) lets `layoutWall` reproduce.
+ */
+export function specCellCount(bays: number, axesPerCell: number, lengthM: number, nominalBayM: number): number {
+  const axes = Math.max(1, Math.floor(axesPerCell || 1));
+  const lo = Math.max(1, Math.floor(bays / axes)), hi = Math.max(1, Math.ceil(bays / axes));
+  let cells = Math.abs(lo * axes - bays) <= Math.abs(hi * axes - bays) ? lo : hi;
+  const widest = Math.max(1, Math.floor(lengthM / (axes * MIN_COLUMN_M)));
+  const reach = (scale: number) => Math.max(1, Math.round(lengthM / (nominalBayM * scale)));
+  cells = Math.min(cells, widest, reach(SPEC_BAY_SCALE.min));
+  return Math.max(cells, reach(SPEC_BAY_SCALE.max));
+}
+
+/**
+ * A scoped canal cell represents the complete native frontage, including polygon kinks.
+ * With a bay count (`recipe.bays`, else `spec` for a street run of a building without a street-appearance recipe), the
+ * run gets `specCellCount` cells and the bay scale that makes `layoutWall` round to exactly that many.
+ */
+export function frontageLayoutScale(recipe: ArchitecturalRecipe | undefined, fallback: {bay:number;storey:number;ground:number}, style: MeshBuilding['style'], lengthM:number, spec?: FrontageBays) {
   const scale=recipeLayoutScale(recipe,fallback);
-  return recipe?.openingGroup ? {...scale,bay:lengthM/STYLE_DIMS[style].bay} : scale;
+  if (recipe?.openingGroup) return {...scale,bay:lengthM/STYLE_DIMS[style].bay};
+  const bays = recipe?.bays ?? spec?.bays;
+  if (!(bays && bays > 0 && lengthM > 0)) return scale;
+  const nominal = STYLE_DIMS[style].bay;
+  // A street-appearance recipe's own bays keep their original fit (whole cells, scale clamped); only a spec's bays,
+  // counted in window columns, go through specCellCount.
+  if (recipe?.bays) return {...scale,bay:Math.min(SPEC_BAY_SCALE.max,Math.max(SPEC_BAY_SCALE.min,lengthM / Math.max(1,Math.round(recipe.bays)) / nominal))};
+  const cells = specCellCount(bays, spec?.axesPerCell ?? 1, lengthM, nominal);
+  return {...scale,bay:lengthM / cells / nominal};
+}
+
+// --- Axis units: odd bay counts on 2-axis cells (H1c, #350, docs/house-line.md §1 "Odd bays") ---------------------
+//
+// Every canal/c19 bay-look cell with two windows paints them on axes 0.25 and 0.75 (facadeOpenings.ts rowPx), so each
+// half of the cell is a one-window cell with the same sill, head, frame, lintel and white accents. A front whose stated
+// bay count is odd is laid out in half-cell units: one window axis per unit, the texture sampled half a cell per unit
+// (u advances 0.5 per unit), so three units draw three windows of the building's own cell and one unit draws one. The
+// door unit samples the half of the door cell around the door, clear of its side window (axisUnitOpenings `doorU`). No atlas layer is added,
+// and a front without an odd stated count is laid out exactly as before.
+
+/** How far u advances per axis unit: half a texture cell. */
+export const AXIS_UNIT_U = 0.5;
+/**
+ * The narrowest axis pitch an axis-unit front draws, for up to AXIS_UNIT_NARROW_MAX bays: the 10th percentile of
+ * 80 hand-counted three-axis fronts on the H4 crop archive (pitch = wall width / 3, median 1.85 m, p10 1.49 m,
+ * scripts/house-specs/bays-audit-photo.json). Wider counts keep MIN_COLUMN_M (no narrower 4+ axis front was measured).
+ */
+export const MIN_AXIS_PITCH_M = 1.45;
+export const AXIS_UNIT_NARROW_MAX = 3;
+const near = (a: number, b: number) => Math.abs(a - b) < 1e-6;
+
+/** A cell's two-window row as a one-window unit row, or null when its windows are not centred in the cell's halves. */
+function unitRow(row: OpeningRow): OpeningRow | null {
+  if (row.axes.length !== 2 || !near(row.axes[0], 0.25) || !near(row.axes[1], 0.75)) return null;
+  if (row.widths && !near(row.widths[0], row.widths[1])) return null;
+  const width = (row.widths?.[0] ?? row.width) * 2;
+  return width < 1 ? { axes: [0.5], width, sill: row.sill, head: row.head, ...(row.arch !== undefined ? { arch: row.arch } : {}) } : null;
+}
+
+/** Clearance (fraction of a cell) kept between the door unit's sampled half and the door cell's side window: its frame
+ *  and stone surround reach about 16 px of the 520 px bay beyond the glass (bayTextures.ts windowAt). */
+export const DOOR_UNIT_CLEARANCE = 0.035;
+/**
+ * The openings of one axis unit of a two-window cell (fractions of the unit), or null when the cell cannot be halved:
+ * not two windows centred in the halves (upper and ground), a ribbon, or a door half a cell cannot hold clear of its
+ * side window. `doorU` is where the door unit's half-cell sample starts in the door cell (centred on the door, kept
+ * DOOR_UNIT_CLEARANCE off the side window on both sides, the cell wrapping): the restrained door window starts at 0.497.
+ */
+export function axisUnitOpenings(o: Openings | undefined): (Openings & { doorU: number }) | null {
+  if (!o || o.ribbon) return null;
+  const upper = unitRow(o.upper), ground = o.ground ? unitRow(o.ground) : null;
+  if (!upper || (o.ground && !ground)) return null;
+  const d = o.door, w = o.doorWindow;
+  let lo = d.axis + d.width / 2 - 0.5, hi = d.axis - d.width / 2;
+  if (w) for (const axis of w.axes) {
+    const half = (w.widths?.[0] ?? w.width) / 2;
+    hi = Math.min(hi, axis - half - 0.5 - DOOR_UNIT_CLEARANCE);
+    lo = Math.max(lo, axis + half - 1 + DOOR_UNIT_CLEARANCE);
+  }
+  if (lo > hi) return null;
+  const doorU = Math.min(hi, Math.max(lo, d.axis - 0.25));
+  return { upper, ground, doorWindow: null, door: { ...d, axis: (d.axis - doorU) * 2, width: d.width * 2 }, doorU };
+}
+
+/** ODD_AXIS_CELLS=0 (Node) or `?oddAxisCells=0` keeps every stated odd count on whole cells (the H1b fit). The page flag
+ *  reaches only a main-thread build: in the building worker `location` is the worker script's URL. */
+export function oddAxisCellsEnabled(search?: string): boolean {
+  try {
+    if (search === undefined && typeof process !== 'undefined' && process.env?.ODD_AXIS_CELLS === '0') return false;
+    const q = search ?? (typeof location !== 'undefined' ? location.search : '');
+    return new URLSearchParams(q).get('oddAxisCells') !== '0';
+  } catch { return true; }
+}
+
+export type AxisUnitPlan = { units: number; scale: LayoutScale; openings: Openings; doorU: number };
+/**
+ * The axis-unit layout of a street run for a stated bay count, or null (whole cells, `frontageLayoutScale`): only an
+ * odd count on a halvable two-window cell, at an axis pitch from MIN_AXIS_PITCH_M (MIN_COLUMN_M above
+ * AXIS_UNIT_NARROW_MAX bays) up to half the style's bay times SPEC_BAY_SCALE.max. The scale makes `layoutWall` lay
+ * exactly `units` bays; doors recur every doorEvery cells (twice as many units) and fit a unit half the usual width.
+ */
+export function axisUnitPlan(spec: FrontageBays | undefined, openings: Openings | undefined, style: MeshBuilding['style'], lengthM: number, fallback: { bay: number; storey: number; ground: number }): AxisUnitPlan | null {
+  if (!spec || spec.axesPerCell !== 2 || !Number.isInteger(spec.bays) || spec.bays % 2 !== 1 || !(lengthM > 0) || !oddAxisCellsEnabled()) return null;
+  const unit = axisUnitOpenings(openings);
+  if (!unit) return null;
+  const nominal = STYLE_DIMS[style], pitch = lengthM / spec.bays;
+  if (pitch < (spec.bays <= AXIS_UNIT_NARROW_MAX ? MIN_AXIS_PITCH_M : MIN_COLUMN_M) || pitch > nominal.bay / 2 * SPEC_BAY_SCALE.max) return null;
+  const { doorU, ...openingsOfUnit } = unit;
+  return { units: spec.bays, openings: openingsOfUnit, doorU, scale: { ...fallback, bay: pitch / nominal.bay, doorEvery: nominal.doorEvery * 2, doorMinBayM: 1.2 } };
 }
 
 /** Carry admitted color onto a shallow exposed return, never a new opening/source class. */

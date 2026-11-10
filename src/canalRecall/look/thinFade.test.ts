@@ -3,7 +3,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import * as THREE from 'three';
-import { THIN_CLASS, THIN_OWNER_CLASSES, installThinFade, patchThinShaders, thinCm, thinFadeCoverage, thinFocalPx } from './thinFade.ts';
+import { THIN_CLASS, THIN_OWNER_CLASSES, installThinFade, patchThinShaders, projectionFocal11, thinCm, thinFadeCoverage, thinFocalPx } from './thinFade.ts';
 import { createCityLookMaterial, createCityUniforms } from './cityLook.ts';
 import { createLitFacadeMaterial } from '../rendererShared/litFacadeMaterial.ts';
 import { buildFeatureChunk, ORIGIN } from '../threeBuildingFeatures.ts';
@@ -79,6 +79,32 @@ test('lit facade material: patched the same way; the focal length follows the dr
   const camera = new THREE.PerspectiveCamera(36.86989764584402, 1448 / 657, 1, 1000);
   m.onBeforeRender({ getDrawingBufferSize: (v: any) => v.set(2896, 1314).floor() }, null, camera);
   assert.ok(Math.abs(s.uniforms.thinFocalPx.value - 1971) < 1);
+});
+
+test('shared frame: the view lives in the projection; the focal length does not turn with the heading', () => {
+  // rendererShared/sharedFrame.ts keeps the camera's matrices identity and sets projectionMatrix = clipFromWorld = P · V
+  // (world: east, north, up metres about the eye). Until 2026-11-10 the fade read elements[5] (P11 times the camera
+  // up vector's north component): a ride camera facing west read ~0 px per metre and every facade extra (stoops, door
+  // surrounds, cornices: all thin) was faded out at 9 m (lane register-extras, Langestraat 175320).
+  const persp = new THREE.PerspectiveCamera(36.86989764584402, 1448 / 657, 1, 1000);
+  const m = createLitFacadeMaterial(THREE, {});
+  const s = compiled(m);
+  const renderer = { getDrawingBufferSize: (v: any) => v.set(2896, 1314).floor() };
+  for (const heading of [0, 90, 180, 262, 270]) for (const pitchDeg of [60, 80, 88]) {
+    // The ride camera: pitched pitchDeg from straight down, facing `heading` (deg from north).
+    const eye = new THREE.Object3D();
+    eye.up.set(0, 0, 1);
+    const h = heading * Math.PI / 180, t = pitchDeg * Math.PI / 180;
+    eye.lookAt(Math.sin(h) * Math.sin(t), Math.cos(h) * Math.sin(t), -Math.cos(t));
+    eye.updateMatrixWorld(true);
+    const frame = new THREE.Camera();
+    frame.projectionMatrix.copy(persp.projectionMatrix).multiply(eye.matrixWorld.clone().invert());
+    assert.ok(Math.abs(projectionFocal11(frame.projectionMatrix.elements) - persp.projectionMatrix.elements[5]) < 1e-9, `P11 at heading ${heading}, pitch ${pitchDeg}`);
+    m.onBeforeRender(renderer, null, frame);
+    assert.ok(Math.abs(s.uniforms.thinFocalPx.value - 1971) < 1, `heading ${heading}, pitch ${pitchDeg}: ${s.uniforms.thinFocalPx.value.toFixed(0)} px/m`);
+  }
+  // A stoop step (20 cm) at 9 m is ~44 px across in that window: solid, at any heading.
+  assert.equal(thinFadeCoverage(0.2 * thinFocalPx(projectionFocal11(persp.projectionMatrix.elements), 1314) / 9), 1);
 });
 
 test('patchThinShaders: a missing anchor leaves the material alone', () => {

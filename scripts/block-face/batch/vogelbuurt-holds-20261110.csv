@@ -1,0 +1,20 @@
+face,run,street,pands,mode,ride,stripDate,restriped,status,reasons,nccMin,nccMedian,stripOverDrawn,wallFits,droppedCorners,triangles,seconds
+vogel-5-15,vogel-5-15,Derde Vogelstraat,5,auto-place,,2022-12-27,,failed,"no-type: 0/5 placed (2x match: every type vetoed (best vogel-#-cottage-#axis: frontage # m, type #-# ; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x review: review: Opus strip verdict #-#-#: a hedge hides the door and the photo)",,,,0,,,0.9
+vogel-2-16,vogel-2-16,Eerste Vogelstraat,7,auto-place,,2022-05-10,,failed,no-type: 0/7 placed (2x evidence: no front on the strip: sky over the roof in # % of columns (< # %): th; 1x review: review: Opus strip verdict #-#-#: vogel-#-#-r#: mis-mirrored (pins to ; 1x review: review: Opus strip verdict #-#-#: vogel-#-#-r#: mis-mirrored (photo pu),,,,0,,,0.9
+vogel-3-15,vogel-3-15-r1,Eerste Vogelstraat,2,auto-place,,2021-06-15,,installed,,0.243,0.35,1.047,2,,629,7.7
+kalkoen-8-16,kalkoen-8-16-r1,Kalkoenstraat,2,auto-place,,2018-07-30,,installed,,0.362,0.515,0.955,1,,1259,13.3
+kalkoen-8-16,kalkoen-8-16-r2,Kalkoenstraat,2,auto-place,,2018-07-30,,installed,,0.447,0.563,1.031,4,,1273,8.8
+kalkoen-18-26,kalkoen-18-26-r1,Kalkoenstraat,2,auto-place,,2025-09-22,,installed,,0.16,0.318,0.982,2,,1317,10.3
+kalkoen-28-34,kalkoen-28-34-r1,Kalkoenstraat,3,auto-place,,2017-12-28,,installed,,0.261,0.315,0.803,1,,1938,7.9
+vogel-2-16-122155,vogel-2-16-122155-r1,Lange Vogelstraat,3,auto-place,,2025-09-22,,installed,,0.364,0.495,1.002,3,,1477,7.2
+vogel-1-15,vogel-1-15-r1,Lange Vogelstraat,3,auto-place,,2025-09-22,,failed,strip-over-drawn-high: 1.849 > 1.25 (walls drawn darker than the photo),0.525,0.813,1.849,3,,1490,5.2
+pelikaan-16-22,pelikaan-16-22-r1,Pelikaanstraat,3,auto-place,,2021-02-17,,installed,,0.32,0.523,1.038,2,,2012,7.2
+pelikaan-3-9,pelikaan-3-9-r1,Pelikaanstraat,2,auto-place,,2025-09-22,,installed,,0.182,0.203,,0,,1321,4.8
+vogel-2-6,vogel-2-6,Vierde Vogelstraat,3,auto-place,,2017-05-15,,failed,"no-type: 0/3 placed (1x match: every type vetoed (best vogel-#-cottage-#axis: frontage # m, type #-# ; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x review: review: Opus strip verdict #-#-#: photo reads window then door, model )",,,,0,,,0.8
+vogel-3-11,vogel-3-11-r1,Vierde Vogelstraat,2,auto-place,,2022-05-10,,installed,,0.346,0.382,1.004,2,,608,6.7
+vogelplantsoen-8-12,vogelplantsoen-8-12-r1,Vogelplantsoen,2,auto-place,,2025-09-22,,installed,,0.278,0.393,1.034,2,,1019,5.9
+zamenhof-6-12,zamenhof-6-12-r1,Zamenhofstraat,2,auto-place,,2025-09-22,,installed,,0.38,0.428,1.005,2,,1016,7.6
+zamenhof-46-52,zamenhof-46-52,Zamenhofstraat,4,auto-place,,2025-09-22,,failed,no-type: 0/4 placed (2x match: best vogel-#-timber-band-cottage scores # < # (strip cornice # m vs th; 1x review: review: Opus strip verdict #-#-#: wrong mirror; the photo door is on t; 1x run: a single placed pand between held neighbours or the face end: a block ),,,,0,,,1.2
+zamenhof-54-60,zamenhof-54-60-r1,Zamenhofstraat,2,auto-place,,2025-09-22,,installed,,0.432,0.432,1.016,1,,1006,9.1
+zamenhof-78-82,zamenhof-78-82,Zamenhofstraat,3,auto-place,,2025-09-22,,failed,no-type: 0/3 placed (1x run: a single placed pand between held neighbours or the face end: a block ; 1x review: review: Opus strip verdict #-#-#: a hedge hides the door (verdict); 1x review: review: Opus strip verdict #-#-#: window about # m off the photo (verd),,,,0,,,1.5
+zamenhof-84-90,zamenhof-84-90-r1,Zamenhofstraat,3,auto-place,,2025-09-22,,failed,strip-over-drawn-low: 0.787 < 0.8 (walls drawn lighter than the photo),0.35,0.364,0.787,3,,1476,5.4

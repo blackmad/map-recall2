@@ -1,0 +1,438 @@
+[
+ {
+  "schemaVersion": 1,
+  "pandId": "0363100012168085",
+  "design": {
+   "fronts": [
+    {
+     "share": 0.33,
+     "bays": 3,
+     "storeys": 3,
+     "gable": "neck"
+    },
+    {
+     "share": 0.34,
+     "bays": 3,
+     "storeys": 3,
+     "gable": "neck"
+    },
+    {
+     "share": 0.33,
+     "bays": 3,
+     "storeys": 3,
+     "gable": "neck"
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/storeys": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/gable": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/storeys": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/gable": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/2/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/2/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/2/storeys": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/2/gable": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012168085/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   }
+  }
+ },
+ {
+  "schemaVersion": 1,
+  "pandId": "0363100012174696",
+  "design": {
+   "fronts": [
+    {
+     "share": 0.52,
+     "bays": 3,
+     "storeys": 4,
+     "gable": "cornice"
+    },
+    {
+     "share": 0.48,
+     "bays": 3,
+     "storeys": 3,
+     "gable": "cornice"
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174696/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174696/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/storeys": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174696/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/gable": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174696/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174696/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174696/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/storeys": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174696/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/gable": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174696/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   }
+  }
+ },
+ {
+  "schemaVersion": 1,
+  "pandId": "0363100012174923",
+  "design": {
+   "fronts": [
+    {
+     "share": 0.53,
+     "bays": 3,
+     "storeys": 3,
+     "gable": "bell"
+    },
+    {
+     "share": 0.47,
+     "storeys": 3
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174923/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174923/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/storeys": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174923/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/gable": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174923/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174923/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/storeys": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174923/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   }
+  }
+ },
+ {
+  "schemaVersion": 1,
+  "pandId": "0363100012169899",
+  "design": {
+   "fronts": [
+    {
+     "share": 0.31,
+     "bays": 3,
+     "storeys": 3,
+     "gable": "cornice"
+    },
+    {
+     "share": 0.69,
+     "bays": 3,
+     "storeys": 3,
+     "gable": "cornice"
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012169899/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012169899/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/storeys": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012169899/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/gable": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012169899/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012169899/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012169899/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/storeys": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012169899/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/gable": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012169899/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   }
+  }
+ },
+ {
+  "schemaVersion": 1,
+  "pandId": "0363100012174080",
+  "design": {
+   "fronts": [
+    {
+     "share": 0.55,
+     "bays": 1,
+     "storeys": 3,
+     "gable": "flat"
+    },
+    {
+     "share": 0.45,
+     "bays": 2,
+     "storeys": 3,
+     "gable": "flat"
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174080/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/bays": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174080/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/storeys": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174080/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/gable": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174080/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://pand-crops/0363100012174080/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174080/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/storeys": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174080/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/gable": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://pand-crops/0363100012174080/front.jpg (hand set v1, reader A)",
+    "at": "2026-11-10"
+   }
+  }
+ },
+ {
+  "schemaVersion": 1,
+  "pandId": "0363100012116526",
+  "design": {
+   "fronts": [
+    {
+     "share": 0.57,
+     "bays": 3,
+     "storeys": 4,
+     "gable": "cornice"
+    },
+    {
+     "share": 0.43,
+     "bays": 3,
+     "storeys": 4,
+     "gable": "cornice"
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547 (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547 (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/storeys": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547 (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/0/gable": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547 (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/share": {
+    "source": "author",
+    "confidence": 0.7,
+    "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547 (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/bays": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547 (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/storeys": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547 (hand set v1, reader A)",
+    "at": "2026-11-10"
+   },
+   "fronts/1/gable": {
+    "source": "author",
+    "confidence": 0.9,
+    "ref": "source-data://block-face-strips/nassau-145-152/strip.jpg#px=0-547 (hand set v1, reader A)",
+    "at": "2026-11-10"
+   }
+  }
+ }
+]

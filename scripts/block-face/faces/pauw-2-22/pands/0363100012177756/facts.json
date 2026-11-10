@@ -1,0 +1,378 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012177756",
+ "source": {
+  "threeDBag": "https://api.3dbag.nl/collections/pand/items/NL.IMBAG.Pand.0363100012177756",
+  "fetchedAt": "2026-11-10",
+  "streets": "public/data/extracts/amsterdam/streets-routing.json"
+ },
+ "attributes": {
+  "b3_bag_bag_overlap": 0,
+  "b3_bouwlagen": 5,
+  "b3_dak_type": "multiple horizontal",
+  "b3_extrusie": "standard",
+  "b3_h_dak_50p": 17.51099967956543,
+  "b3_h_dak_70p": 17.58300018310547,
+  "b3_h_dak_max": 17.708999633789062,
+  "b3_h_dak_min": 17.327999114990234,
+  "b3_h_maaiveld": 0.12800000607967377,
+  "b3_h_nok": null,
+  "b3_is_glas_dak": false,
+  "b3_kas_warenhuis": false,
+  "b3_kwaliteitsindicator": true,
+  "b3_mutatie_ahn3_ahn4": false,
+  "b3_mutatie_ahn4_ahn5": false,
+  "b3_n_nok": 0,
+  "b3_n_vlakken": 3,
+  "b3_nodata_fractie_ahn3": 0,
+  "b3_nodata_fractie_ahn4": 0,
+  "b3_nodata_fractie_ahn5": 0.01840490847826004,
+  "b3_nodata_radius_ahn3": 0,
+  "b3_nodata_radius_ahn4": 0,
+  "b3_nodata_radius_ahn5": 0,
+  "b3_opp_buitenmuur": 283.57,
+  "b3_opp_dak_plat": 79.91,
+  "b3_opp_dak_schuin": 0,
+  "b3_opp_grond": 79.88,
+  "b3_opp_scheidingsmuur": 383.21,
+  "b3_puntdichtheid_ahn3": 19.680980682373047,
+  "b3_puntdichtheid_ahn4": 28.527606964111328,
+  "b3_puntdichtheid_ahn5": 16.299999237060547,
+  "b3_pw_bron": "ahn5",
+  "b3_pw_datum": 2023,
+  "b3_pw_onvoldoende": false,
+  "b3_pw_selectie_reden": "PREFERRED_AND_LATEST",
+  "b3_rmse_lod12": 0.5677680373191833,
+  "b3_rmse_lod13": 0.5677680373191833,
+  "b3_rmse_lod22": 0.5469130873680115,
+  "b3_t_run": 24,
+  "b3_val3dity_lod12": "[]",
+  "b3_val3dity_lod13": "[]",
+  "b3_val3dity_lod22": "[]",
+  "b3_volume_lod12": 1393.6705322265625,
+  "b3_volume_lod13": 1393.6705322265625,
+  "b3_volume_lod22": 1388.203125,
+  "begingeldigheid": "2023-09-21",
+  "documentdatum": "2023-09-21",
+  "documentnummer": "GV00007167_AC00AC",
+  "eindgeldigheid": null,
+  "eindregistratie": null,
+  "fid": 8316666,
+  "geconstateerd": false,
+  "identificatie": "NL.IMBAG.Pand.0363100012177756",
+  "oorspronkelijkbouwjaar": 1880,
+  "status": "Pand in gebruik",
+  "tijdstipeindregistratielv": null,
+  "tijdstipinactief": null,
+  "tijdstipinactieflv": null,
+  "tijdstipnietbaglv": null,
+  "tijdstipregistratie": "2023-09-21T17:13:40Z",
+  "tijdstipregistratielv": "2023-09-21T17:37:57Z",
+  "voorkomenidentificatie": 4
+ },
+ "bagFootprintRD": [
+  [
+   [
+    121622.0029375,
+    485786.265
+   ],
+   [
+    121609.3219375,
+    485787.481
+   ],
+   [
+    121608.72093750001,
+    485781.37200000003
+   ],
+   [
+    121622.0139375,
+    485780.129
+   ]
+  ]
+ ],
+ "surveyFootprintPolygonsRD": [
+  [
+   [
+    [
+     121622.0139375,
+     485780.129
+    ],
+    [
+     121608.72093750001,
+     485781.37200000003
+    ],
+    [
+     121609.3219375,
+     485787.481
+    ],
+    [
+     121622.0029375,
+     485786.265
+    ]
+   ]
+  ]
+ ],
+ "roofsRD": [
+  {
+   "surfaceId": "NL.IMBAG.Pand.0363100012177756-0:lod22:roof:5",
+   "vertices": [
+    [
+     121622.0029375,
+     485786.265,
+     17.65350123596191
+    ],
+    [
+     121609.3219375,
+     485787.481,
+     17.301501235961915
+    ],
+    [
+     121608.72093750001,
+     485781.37200000003,
+     17.354501235961912
+    ],
+    [
+     121622.0139375,
+     485780.129,
+     17.723501235961912
+    ]
+   ],
+   "ringsRD": [
+    [
+     [
+      121622.0029375,
+      485786.265,
+      17.65350123596191
+     ],
+     [
+      121609.3219375,
+      485787.481,
+      17.301501235961915
+     ],
+     [
+      121608.72093750001,
+      485781.37200000003,
+      17.354501235961912
+     ],
+     [
+      121622.0139375,
+      485780.129,
+      17.723501235961912
+     ]
+    ]
+   ],
+   "slopeDeg": 1.6606531982873811,
+   "areaM2": 79.87560653686523
+  }
+ ],
+ "heights": {
+  "groundNAP": 0.12800000607967377,
+  "roofMinM": 17.17350122988224,
+  "roofMaxM": 17.595501229882238,
+  "ridgeM": 17.58099962770939,
+  "dak50pM": 17.382999673485756,
+  "dak70pM": 17.455000177025795,
+  "storeys": 5,
+  "builtYear": 1880
+ },
+ "fronts": [
+  {
+   "street": "Pieter Pauwstraat",
+   "endpointsRD": [
+    [
+     121622.0139375,
+     485780.129
+    ],
+    [
+     121622.0029375,
+     485786.265
+    ]
+   ],
+   "chainRD": [
+    [
+     121622.0139375,
+     485780.129
+    ],
+    [
+     121622.0029375,
+     485786.265
+    ]
+   ],
+   "widthM": 6.136009859834225,
+   "outwardNormalRD": [
+    0.9999983931193321,
+    0.0017926959457167822
+   ],
+   "streetDistanceM": 12.807195771577987,
+   "topProfile": [
+    {
+     "alongM": 0.061360098590763794,
+     "heightM": 17.592581145776904
+    },
+    {
+     "alongM": 0.21169234014689492,
+     "heightM": 17.590870593148786
+    },
+    {
+     "alongM": 0.36202458170302604,
+     "heightM": 17.589160040520667
+    },
+    {
+     "alongM": 0.5123568233173647,
+     "heightM": 17.58744948789189
+    },
+    {
+     "alongM": 0.6626890648734958,
+     "heightM": 17.585738935263777
+    },
+    {
+     "alongM": 0.8130213064296269,
+     "heightM": 17.58402838263566
+    },
+    {
+     "alongM": 0.9633535479857581,
+     "heightM": 17.58231783000754
+    },
+    {
+     "alongM": 1.1136857895418892,
+     "heightM": 17.58060727737942
+    },
+    {
+     "alongM": 1.2640180310980205,
+     "heightM": 17.578896724751303
+    },
+    {
+     "alongM": 1.4143502727123591,
+     "heightM": 17.577186172122524
+    },
+    {
+     "alongM": 1.5646825142684901,
+     "heightM": 17.57547561949441
+    },
+    {
+     "alongM": 1.7150147558246212,
+     "heightM": 17.57376506686629
+    },
+    {
+     "alongM": 1.8653469973807524,
+     "heightM": 17.57205451423817
+    },
+    {
+     "alongM": 2.0156792389368836,
+     "heightM": 17.570343961610053
+    },
+    {
+     "alongM": 2.1660114804930144,
+     "heightM": 17.568633408981935
+    },
+    {
+     "alongM": 2.3163437221073533,
+     "heightM": 17.56692285635316
+    },
+    {
+     "alongM": 2.4666759636634845,
+     "heightM": 17.56521230372504
+    },
+    {
+     "alongM": 2.6170082052196153,
+     "heightM": 17.563501751096922
+    },
+    {
+     "alongM": 2.7673404467757465,
+     "heightM": 17.561791198468804
+    },
+    {
+     "alongM": 2.9176726883318778,
+     "heightM": 17.56008064584069
+    },
+    {
+     "alongM": 3.068004929946216,
+     "heightM": 17.55837009321191
+    },
+    {
+     "alongM": 3.2183371715023474,
+     "heightM": 17.556659540583794
+    },
+    {
+     "alongM": 3.3686694130584787,
+     "heightM": 17.554948987955676
+    },
+    {
+     "alongM": 3.51900165461461,
+     "heightM": 17.553238435327557
+    },
+    {
+     "alongM": 3.6693338961707407,
+     "heightM": 17.55152788269944
+    },
+    {
+     "alongM": 3.819666137726872,
+     "heightM": 17.54981733007132
+    },
+    {
+     "alongM": 3.969998379341211,
+     "heightM": 17.548106777442545
+    },
+    {
+     "alongM": 4.120330620897342,
+     "heightM": 17.546396224814426
+    },
+    {
+     "alongM": 4.270662862453473,
+     "heightM": 17.544685672186308
+    },
+    {
+     "alongM": 4.420995104009604,
+     "heightM": 17.54297511955819
+    },
+    {
+     "alongM": 4.571327345565735,
+     "heightM": 17.54126456693007
+    },
+    {
+     "alongM": 4.7216595871218665,
+     "heightM": 17.539554014301952
+    },
+    {
+     "alongM": 4.8719918287362045,
+     "heightM": 17.53784346167318
+    },
+    {
+     "alongM": 5.022324070292336,
+     "heightM": 17.53613290904506
+    },
+    {
+     "alongM": 5.172656311848467,
+     "heightM": 17.534422356416943
+    },
+    {
+     "alongM": 5.322988553404598,
+     "heightM": 17.532711803788825
+    },
+    {
+     "alongM": 5.473320794960729,
+     "heightM": 17.531001251160706
+    },
+    {
+     "alongM": 5.623653036516861,
+     "heightM": 17.52929069853259
+    },
+    {
+     "alongM": 5.773985278131199,
+     "heightM": 17.527580145903812
+    },
+    {
+     "alongM": 5.92431751968733,
+     "heightM": 17.525869593275694
+    },
+    {
+     "alongM": 6.074649761243461,
+     "heightM": 17.524159040647575
+    }
+   ],
+   "eavesM": 17.531001251160706,
+   "topM": 17.592581145776904,
+   "uncertainty": []
+  }
+ ]
+}

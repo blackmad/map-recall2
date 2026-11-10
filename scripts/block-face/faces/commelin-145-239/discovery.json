@@ -1,0 +1,228 @@
+{
+ "street": "Commelinstraat",
+ "seed": "0363100012081086",
+ "members": [
+  "0363100012081086",
+  "0363100012115265",
+  "0363100012132237",
+  "0363100012100393",
+  "0363100012128935"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012081086 (face continues: 089681)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012066094",
+   "reason": "frontage 103.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012066596",
+   "reason": "frontage 103.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012067983",
+   "reason": "frontage 37.5 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012068873",
+   "reason": "frontage 103.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012075801",
+   "reason": "frontage 74.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012086718",
+   "reason": "frontage 56.4 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012089063",
+   "reason": "frontage 103.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012089178",
+   "reason": "frontage 74.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012097852",
+   "reason": "frontage 76.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012104532",
+   "reason": "frontage 55.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012105220",
+   "reason": "frontage 78.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012118756",
+   "reason": "frontage 73.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012123847",
+   "reason": "frontage 76.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012125168",
+   "reason": "frontage 76.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012128991",
+   "reason": "frontage 103.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012130961",
+   "reason": "frontage 103.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012132654",
+   "reason": "frontage 54.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012134849",
+   "reason": "frontage 76.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012135214",
+   "reason": "frontage 80.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012136432",
+   "reason": "sightline to Commelinstraat crosses 0363100012115265"
+  },
+  {
+   "pandId": "0363100012165730",
+   "reason": "frontage 44.0 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012203772",
+   "reason": "frontage 103.3 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012208478",
+   "reason": "frontage 35.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012208479",
+   "reason": "frontage 35.7 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012208480",
+   "reason": "frontage 35.8 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012232762",
+   "reason": "frontage 91.6 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012232763",
+   "reason": "frontage 93.1 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012236764",
+   "reason": "frontage 32.9 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012243311",
+   "reason": "frontage 73.2 m from Commelinstraat"
+  },
+  {
+   "pandId": "0363100012064744",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012071398",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012078846",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091687",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115824",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116052",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122004",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137078",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166798",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012081086",
+   "alongM": 0,
+   "widthM": 6.38,
+   "eavesM": 12.8,
+   "roofMaxM": 15.53,
+   "storeys3dbag": 5,
+   "builtYear": 1983,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012115265",
+   "alongM": 15.57,
+   "widthM": 4.07,
+   "eavesM": 12.47,
+   "roofMaxM": 15.53,
+   "storeys3dbag": 0,
+   "builtYear": 1983,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012132237",
+   "alongM": 54.06,
+   "widthM": 3.8,
+   "eavesM": 11.45,
+   "roofMaxM": 16.03,
+   "storeys3dbag": 5,
+   "builtYear": 1983,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012100393",
+   "alongM": 57.86,
+   "widthM": 3.8,
+   "eavesM": 11.64,
+   "roofMaxM": 15.14,
+   "storeys3dbag": 5,
+   "builtYear": 1983,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012128935",
+   "alongM": 85.06,
+   "widthM": 6.08,
+   "eavesM": 14.4,
+   "roofMaxM": 16.02,
+   "storeys3dbag": 4,
+   "builtYear": 1983,
+   "uncertainty": []
+  }
+ ]
+}

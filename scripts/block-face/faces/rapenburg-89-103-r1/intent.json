@@ -1,0 +1,119 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "rapenburg-89-103-r1",
+ "street": "Rapenburg",
+ "sources": [
+  {
+   "id": "strip-2024-12-10",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-10",
+   "image": "staging/block-face/rapenburg-89-103-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the nieuwmarkt library (buurt Rapenburg); scores and holds in scripts/block-face/faces/rapenburg-89-103/auto-place.json"
+ },
+ "types": [
+  "lastage-bell-house",
+  "lastage-cornice-house"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012181605",
+   "slug": "rapenburg-181605",
+   "address": "Rapenburg 97",
+   "type": {
+    "type": "lastage-cornice-house",
+    "measuredPalette": {
+     "brick": "#483f32",
+     "evidence": "Opus strip verdict 2026-11-10: photo #3f392c, 60 % from the model toward it"
+    },
+    "crown": "none"
+   },
+   "groundFloor": {
+    "use": "office",
+    "bag": [
+     "kantoorfunctie"
+    ],
+    "photoDate": "2024-12-10",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: lastage-cornice-house scored 0.76 on eaves 0, stucco 1, crown 1, columns 1; strip 2024-12-10 span 915-1139"
+   }
+  },
+  {
+   "pandId": "0363100012170674",
+   "slug": "rapenburg-170674",
+   "address": "Rapenburg 99",
+   "type": {
+    "type": "lastage-bell-house",
+    "ground": {
+     "groundFront": {
+      "kind": "pui",
+      "bays": [
+       "door",
+       "door",
+       "window"
+      ],
+      "bayWeights": [
+       0.75,
+       0.8,
+       2.5
+      ],
+      "transom": 2.4,
+      "lights": 4,
+      "colour": "#ece9e0",
+      "evidence": "Rapenburg 99 strip 2024-12-10 (Opus strip verdict): white full-width ground storey, a row of transom lights over two black doors (0.75, 0.8 m) at the left and a 2.5 m four-light shop window"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#45372a",
+     "evidence": "Opus strip verdict 2026-11-10: photo #3a2f22, 60 % from the model toward it"
+    },
+    "crown": "bell"
+   },
+   "groundFloor": {
+    "use": "shop",
+    "bag": [
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-10",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: lastage-bell-house scored 1 on eaves 1, roof 1, stucco 1, crown 1, columns 1; strip 2024-12-10 span 1140-1367"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012181605",
+    "stripRow": 148,
+    "evidence": "review pin: Rapenburg 97: cornice top 14.7 m over the frieze (brick top 12.5 m); 3DBAG eaves 11.6 m reads the roof behind"
+   },
+   {
+    "pand": "0363100012170674",
+    "stripRow": 240,
+    "evidence": "review pin: Rapenburg 99: bell gable foot 12.4 m (3DBAG 11.3 m)"
+   }
+  ]
+ }
+}

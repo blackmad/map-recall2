@@ -1,0 +1,652 @@
+{
+ "face": "rapenburg-89-103",
+ "street": "Rapenburg",
+ "library": "nieuwmarkt",
+ "stripDate": "2024-12-10",
+ "seconds": 7.14,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "rapenburg-89-103-r1",
+   "pands": [
+    "0363100012181605",
+    "0363100012170674"
+   ],
+   "passed": true,
+   "triangles": 3487
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012254590",
+   "address": "Rapenburg 89A",
+   "builtYear": 2020,
+   "widthM": 5.97,
+   "eavesM": 6.26,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 4.86,
+    "toM": 5.96,
+    "depthM": 0.29,
+    "centre": 0.907,
+    "lineRD": [
+     [
+      122505.164,
+      487072.46274999995
+     ],
+     [
+      122508.727,
+      487069.15975
+     ]
+    ]
+   },
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 9.8,
+     "eavesRow": 344,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 2.22,
+      "topWidthM": 1.15,
+      "centre": 0.88
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 5.45 m at 0.5 (light 0.18): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 5.45,
+       "centre": 0.5,
+       "light": 0.18
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: built 2020, type 1600-1925)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "built 2020, type 1600-1925"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.26 m = 3 storeys of 2.09 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.1 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 2.22 m, top 1.15 m fits neck"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181531",
+   "address": "Rapenburg 91A",
+   "builtYear": 2001,
+   "widthM": 5.71,
+   "eavesM": 9.33,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#47473b",
+    "skyline": {
+     "eavesM": 11.93,
+     "eavesRow": 259,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.1,
+      "topWidthM": 0.33,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.77,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.16 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.16,
+       "light": 0.43
+      },
+      {
+       "widthM": 0.65,
+       "centre": 0.37,
+       "light": 0.49
+      },
+      {
+       "widthM": 1,
+       "centre": 0.77,
+       "light": 0.66
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.92,
+       "widthM": 1.23,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: built 2001, type 1600-1925)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "built 2001, type 1600-1925"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 9.33 m = 3 storeys of 3.11 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.1 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": 1,
+      "note": "skyline crown rise 2.1 m, top 0.33 m fits bell"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181606",
+   "address": "Rapenburg 93",
+   "builtYear": 1878,
+   "widthM": 5.67,
+   "eavesM": 13.89,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#643c29",
+    "wallRaw": "#4d4136",
+    "skyline": {
+     "eavesM": 13.53,
+     "eavesRow": 195,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 1.93,
+     "bayCentre": 0.36,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.93 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.93,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.63,
+       "widthM": 2.38,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Rapenburg 93: an 1878 red-brick front with a stepped brick cornice, white-banded window surrounds and iron balconettes; not the cornice-house type",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181532",
+   "address": "Rapenburg 95",
+   "builtYear": 1882,
+   "widthM": 5.55,
+   "eavesM": 11.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3e382a",
+    "wallRaw": "#424136",
+    "skyline": {
+     "eavesM": 12.4,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.03,
+      "topWidthM": 0.57,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Rapenburg 95: two window storeys under a tall panelled frieze and a dormer; the type draws three; a run of one beside 93",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181605",
+   "address": "Rapenburg 97",
+   "builtYear": 1917,
+   "widthM": 5.61,
+   "eavesM": 11.57,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#574837",
+    "wallRaw": "#3f3c30",
+    "skyline": {
+     "eavesM": 14.78,
+     "eavesRow": 145,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.052,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "placed",
+   "type": "lastage-cornice-house",
+   "score": 0.76,
+   "placement": {
+    "type": "lastage-cornice-house",
+    "measuredPalette": {
+     "brick": "#574837",
+     "evidence": "strip 2024-12-10 span 915-1139: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "crown": "none"
+   },
+   "notes": [
+    "door unread",
+    "crown none: skyline no crown over the eaves",
+    "edge NCC 0.103 passed on the reviewer floor 0.08"
+   ],
+   "likeness": {
+    "pandId": "0363100012181605",
+    "ncc": 0.103,
+    "nccRaw": 0.103,
+    "shiftM": [
+     -0.15,
+     -0.4
+    ],
+    "usable": 0.61,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 31 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#635343",
+     "model": "#746049",
+     "dL": 0.045
+    },
+    "glazing": {
+     "photo": 0.47,
+     "model": 0.5
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.508,
+    "footOffsetM": 0.7
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170674",
+   "address": "Rapenburg 99",
+   "builtYear": 1921,
+   "widthM": 5.67,
+   "eavesM": 11.09,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#533d2b",
+    "wallRaw": "#505448",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.13,
+      "topWidthM": 1.5,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.84,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.55 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.55,
+       "light": 0.33
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.83,
+       "light": 0.42
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.55,
+       "widthM": 2.58,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.3
+   },
+   "status": "placed",
+   "type": "lastage-bell-house",
+   "score": 1,
+   "placement": {
+    "type": "lastage-bell-house",
+    "ground": {
+     "shopfront": {
+      "colour": "#3c3f36",
+      "fascia": true,
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: bag-only (winkelfunctie, woonfunctie); fascia colour measured on the strip 2024-12-10 span 1140-1367"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#533d2b",
+     "evidence": "strip 2024-12-10 span 1140-1367: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door unread",
+    "crown neck: skyline rise 2.13 m, width 2.77 m, top 1.5 m"
+   ],
+   "likeness": {
+    "pandId": "0363100012170674",
+    "ncc": 0.391,
+    "nccRaw": 0.391,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.61,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 33 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#533e2d",
+     "model": "#73553c",
+     "dL": 0.092
+    },
+    "glazing": {
+     "photo": 0.52,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.4,
+    "footOffsetM": 0.7
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012170673",
+   "address": "Rapenburg 101",
+   "builtYear": 1846,
+   "widthM": 11.61,
+   "eavesM": 12.18,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e7760",
+    "wallRaw": "#6d6e5d",
+    "skyline": {
+     "eavesM": 12.78,
+     "eavesRow": 225,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.38,
+      "riseM": 2.67,
+      "topWidthM": 1.57,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.05 m at 0.11 (light 0.11): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.05,
+       "centre": 0.11,
+       "light": 0.11
+      },
+      {
+       "widthM": 1.05,
+       "centre": 0.26,
+       "light": 0.12
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.41,
+       "light": 0.12
+      },
+      {
+       "widthM": 0.8,
+       "centre": 0.58,
+       "light": 0.13
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.35,
+       "widthM": 1.15,
+       "centre": 0.26
+      },
+      {
+       "atM": 4.9,
+       "widthM": 1.18,
+       "centre": 0.26
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.34
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best lastage-bell-house: frontage 11.61 m, type 3.6-7 m)",
+   "best": {
+    "type": "lastage-bell-house",
+    "score": 0,
+    "veto": [
+     "frontage 11.61 m, type 3.6-7 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.18 m = 4 storeys of 3.04 m vs the type's 2.81 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.53 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": null,
+      "note": "no strip"
+     },
+     {
+      "key": "crown",
+      "weight": 3,
+      "score": null,
+      "note": "skyline unread"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

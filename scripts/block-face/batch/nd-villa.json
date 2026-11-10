@@ -1,0 +1,47 @@
+{
+ "name": "nd-villa",
+ "buurt": "nieuwendammerdijk-oost",
+ "library": "nieuwendammerdijk",
+ "generatedAt": "2026-11-10T07:49:05.600Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 1,
+  "runs": 1,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 1,
+  "byReason": {
+   "strip-quality": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "nieuwendammerdijk-300-308",
+   "street": "Nieuwendammerdijk",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 1,
+    "reasons": [
+     "cold cast rb"
+    ]
+   },
+   "nccMin": 0.238,
+   "nccMedian": 0.446,
+   "stripOverDrawn": 1.009,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 2297,
+   "sheet": "staging/block-face/nieuwendammerdijk-300-308-r1/review/strip-sheet.png",
+   "stripDate": "2019-12-12",
+   "run": "nieuwendammerdijk-300-308-r1",
+   "pands": 2,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "strip-quality: cold cast rb"
+   ],
+   "seconds": 10.2
+  }
+ ]
+}

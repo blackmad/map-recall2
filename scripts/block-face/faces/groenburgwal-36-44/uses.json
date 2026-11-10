@@ -1,0 +1,223 @@
+{
+ "street": "Groenburgwal",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:24:16.120Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012171157",
+   "addresses": [
+    "Groenburgwal 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 44",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 714,
+     "bagId": "0363010000651566"
+    },
+    {
+     "address": "Staalstraat 7B",
+     "use": "winkelfunctie",
+     "areaM2": 895,
+     "bagId": "0363010002005119"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724186821,
+     "lngLat": [
+      4.8973418,
+      52.3683253
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7B",
+      "addr:postcode": "1011JJ",
+      "addr:street": "Staalstraat",
+      "amenity": "cafe",
+      "name": "@droog",
+      "opening_hours": "Mo-Su 10:00-17:00",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.droog.com/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:16.120Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10820188746,
+     "lngLat": [
+      4.8971682,
+      52.3683155
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7",
+      "addr:postcode": "1011JJ",
+      "addr:street": "Staalstraat",
+      "check_date": "2024-08-18",
+      "name": "Tonny Media",
+      "office": "yes",
+      "website": "https://tonnymedia.nl"
+     },
+     "fetchedAt": "2026-11-10T08:24:16.120Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171165",
+   "addresses": [
+    "Groenburgwal 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 42",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 366,
+     "bagId": "0363010000960743"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "way",
+     "id": 266927240,
+     "lngLat": [
+      4.8976041,
+      52.3686141
+     ],
+     "tags": {
+      "amenity": "place_of_worship",
+      "building": "yes",
+      "denomination": "anglican",
+      "height": "14.5",
+      "heritage": "2",
+      "heritage:operator": "rce",
+      "name": "Church of England",
+      "ref:bag": "0363100012171165",
+      "ref:rce": "1269",
+      "religion": "christian",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1829",
+      "toilets:wheelchair": "no",
+      "wheelchair": "yes",
+      "wikimedia_commons": "Category:English Episcopal Church (Amsterdam)",
+      "wikipedia": "nl:Christ Church (Amsterdam)"
+     },
+     "fetchedAt": "2026-11-10T08:24:16.120Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177717",
+   "addresses": [
+    "Groenburgwal 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 40-H",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000651550"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178715",
+   "addresses": [
+    "Groenburgwal 38B",
+    "Groenburgwal 38D",
+    "Groenburgwal 38C",
+    "Groenburgwal 38A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 38B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000969234"
+    },
+    {
+     "address": "Groenburgwal 38D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000969235"
+    },
+    {
+     "address": "Groenburgwal 38C",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000963554"
+    },
+    {
+     "address": "Groenburgwal 38A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000969233"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178714",
+   "addresses": [
+    "Groenburgwal 36",
+    "Groenburgwal 36A",
+    "Groenburgwal 36B",
+    "Groenburgwal 36C",
+    "Groenburgwal 36D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Groenburgwal 36",
+     "use": "woonfunctie",
+     "areaM2": 334,
+     "bagId": "0363010000651544"
+    },
+    {
+     "address": "Groenburgwal 36A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010012138443"
+    },
+    {
+     "address": "Groenburgwal 36B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012138444"
+    },
+    {
+     "address": "Groenburgwal 36C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012138445"
+    },
+    {
+     "address": "Groenburgwal 36D",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012138446"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

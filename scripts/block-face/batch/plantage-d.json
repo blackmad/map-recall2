@@ -1,0 +1,69 @@
+{
+ "name": "plantage-d",
+ "buurt": "plantage",
+ "library": "plantage",
+ "generatedAt": "2026-11-10T08:37:10.063Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 2,
+  "runs": 2,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 1,
+  "byReason": {
+   "no-type": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "badlaan-1-21",
+   "street": "Plantage Badlaan",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.286,
+   "nccMedian": 0.318,
+   "stripOverDrawn": 1.205,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 10822,
+   "sheet": "staging/block-face/badlaan-1-21-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "badlaan-1-21-r1",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "passed (not installed: no --install)",
+   "reasons": [],
+   "seconds": 18.7
+  },
+  {
+   "face": "doklaan-28-42",
+   "street": "Plantage Doklaan",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "doklaan-28-42",
+   "pands": 8,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/8 placed (5x likeness: edge NCC # < # (photo vs model body; likeness#ts NO EVIDENCE: washed o; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x review: review: a different (white, balconied) front)"
+   ],
+   "seconds": 8.6
+  }
+ ]
+}

@@ -20,7 +20,7 @@ import { planRepeatedTerraceFrontage, type RepeatedTerraceFrontagePlan } from '.
 import { applyHostWallOpenings, type ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { sharedWallCuts, subtractWallCuts, subtractConvex, polygonArea, type Point2, NEAR_COPLANAR_M } from './coplanarSurfaces.js';
 import { recipeBayOpenings, type Openings } from './facadeOpenings.js';
-import { streetWallBuilding, frontageLayoutScale, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
+import { streetWallBuilding, frontageLayoutScale, axisUnitPlan, AXIS_UNIT_U, PROCEDURAL_RECIPE_LAYER_OFFSET, type StreetFacadeContext } from './streetFacadeRendering.js';
 import { BAY_LAYER_COUNT, bayLookFor } from './bayLook.js';
 import type { ArchitecturalRecipe } from './streetAppearance.js';
 import { streetCrown, type StreetCrownFront, type StreetCrownTri } from './streetCrown.js';
@@ -47,6 +47,8 @@ export type MeshBuilding = {
   surveyedEnvelope?: SurveyedMeshBinding;
   streetAppearance?: StreetFacadeContext;
   recipe?: ArchitecturalRecipe;
+  /** A HouseSpec's reads for the generic mesher (houseSpec/decorate.ts `specRecipe`): street-run bay count, crown, period, wall. */
+  specRecipe?: Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>>;
   /** Exact opening positions of the active texture, shared with 3D entrance details. */
   openings?: Openings;
   id: string;
@@ -540,7 +542,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const candidate=streetWallBuilding(fallbackBuilding,full,origin,!streetGrid||streetDistance(full,streetGrid,wallGrid,bi)<Infinity);
         if(candidate.recipe?.shopCanopy)b=candidate;
       }
-      const runScale = frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0));
+      // A HouseSpec's bay count fits the street run's grid (houseSpec/decorate.ts); a street-appearance recipe keeps its own.
+      const specBays = !b.recipe && b.specRecipe?.bays && run.some(({ e }) => doorAllowed.has(e)) ? { bays: b.specRecipe.bays, axesPerCell: b.openings?.upper?.axes.length ?? 1 } : undefined;
+      // An odd stated count on a two-window cell: half-cell axis units (streetFacadeRendering.ts axisUnitPlan, H1c #350).
+      const units = specBays ? axisUnitPlan(specBays, b.openings, b.style, run.reduce((sum,r)=>sum+r.e.len,0), scale) : null;
+      const runScale = units ? units.scale : frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
+      const cellU = units ? AXIS_UNIT_U : 1;
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
       if (b.recipe) crownFronts.push({ start:[first.x0,first.y0],end:[run[run.length-1].e.x1,run[run.length-1].e.y1],normal:[first.nx,first.ny],tint:[r*jitter,g*jitter,bl*jitter],plainLayer:b.plainLayer,recipe:b.recipe,frameHex:b.recipe.frameHex??'#e6e1d4',glassHex:b.streetAppearance?.look==='cartoon'?'#68a2bf':'#35464f' });
@@ -562,7 +569,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const tint: [number, number, number, number] = [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), 255];
         for (const { e } of run) {
           walls++;
-          quads.push({ kind: 'shell-wall', e, u0: 0, u1: Math.max(1, e.len / bay), v1: Math.max(1, (top - base) / storey), layer, accent, z0: base, z1: top, tint, along0: 0, along1: 1 });
+          quads.push({ kind: 'shell-wall', e, u0: 0, u1: units ? Math.max(cellU, e.len / bay * cellU) : Math.max(1, e.len / bay), v1: Math.max(1, (top - base) / storey), layer, accent, z0: base, z1: top, tint, along0: 0, along1: 1 });
         }
         continue;
       }
@@ -586,7 +593,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       // Doors first, so the stoops and pediments the extras hang on a door follow them.
       if (b.plainWalls && b.plainLayer !== undefined) layout.doorBays.length = 0;
       // A shop fills its ground floor; only a wide front keeps a separate door to the floors above.
-      if (b.shopfront && layout.bays < 3) layout.doorBays.length = 0;
+      if (b.shopfront && (units ? layout.bays * cellU : layout.bays) < 3) layout.doorBays.length = 0;
       const bw = layout.bayWidthM, groundTop = base + layout.groundM;
       const compound=b.recipe?.compoundFrontage&&b.layers&&b.plainLayer!==undefined&&base<.5
         &&run.every(({e})=>!e.hole&&Math.abs(e.nx-first.nx)+Math.abs(e.ny-first.ny)<1e-6)
@@ -623,7 +630,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       run.forEach(({ e }, k) => {
         walls++;
         const s = layout.edgeStartM[k];
-        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
+        if (extraSink && !b.plainWalls && !e.hole && ((b.recipe?.openingGroup ? k === 0 && layout.lengthM >= 2.5 : e.len >= 2.5) || canopyRuns.has(k))) wallExtraContexts.push({ id: b.id, style: b.style, wallKey: edgeKey(e.x0, e.y0), f: { x0: e.x0, y0: e.y0, ux: (e.x1 - e.x0) / e.len, uy: (e.y1 - e.y0) / e.len, nx: e.nx, ny: e.ny, len: b.recipe?.openingGroup ? layout.lengthM : e.len }, base, top, layout: b.recipe?.openingGroup ? layout : edgeLayout(layout, k, e.len), wallHex: b.wallHex, accentHex: b.accentHex ?? '#ffffff', groundLevel: base < 0.5, period: b.period, ...(b.registerForce ? { registerForce: b.registerForce } : {}), recipe: b.recipe, runStart: k === 0, runEnd: k === run.length - 1, assemblyOwner: b.recipe?.facadeAssembly ? k === assemblyOwnerEdge : undefined, canopyOwner: b.recipe?.shopCanopy ? canopyRuns.has(k) : undefined, canopyFrames: canopyRuns.get(k), groundFrontageActive:!!(compound||regular||terrace), openings: b.recipe ? recipeBayOpenings(b.id, b.recipe, b.streetAppearance?.look === 'procedural' ? 'photo' : b.streetAppearance?.look ?? 'photo') : units ? units.openings : b.openings, streetSide: canopyRuns.has(k) || (b.recipe?.openingGroup ? run.some(r=>doorAllowed.has(r.e)) : doorAllowed.has(e)), shopfront: !!(b.shopfront || b.shop), roofKind: b.roof ? b.roof.plan.kind : 'flat' });
         // A projecting cornice under the flat lid: one sloped strip that catches the light and throws a shadow line.
         if (!b.surveyedEnvelope && !b.roof && b.plainLayer !== undefined && CORNICE_STYLES.has(b.style) && e.len >= 3.5 && !e.hole) {
           const z = top - 0.05, out = 0.26, drop = 0.22, nx = e.nx * out, ny = e.ny * out;
@@ -644,10 +651,12 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
             quads.push({ kind: 'frontage-wall', e,u0:a/5,u1:end/5,v0:piece.bottom/3,v1:(piece.bottom+piece.height)/3,tint,layer:b.plainLayer!,accent,z0:piece.bottom,z1:piece.bottom+piece.height,along0:(a-s)/e.len,along1:(end-s)/e.len});
           }
         }else for (const piece of edgeGroundPieces(layout, k, e.len)) {
-          quads.push({ kind: piece.door ? 'door' : 'ground', e, u0: piece.a0 / bw, u1: piece.a1 / bw, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
+          // An axis-unit door samples the half of the door cell around the door, clear of its side window (units.doorU).
+          const pu0 = !units ? piece.a0 / bw : piece.door ? units.doorU : piece.a0 / bw * cellU, pu1 = !units ? piece.a1 / bw : piece.door ? units.doorU + cellU * (piece.a1 - piece.a0) / bw : piece.a1 / bw * cellU;
+          quads.push({ kind: piece.door ? 'door' : 'ground', e, u0: pu0, u1: pu1, v1: 1, tint: (piece.door && !b.recipe?.groundWallHex) || b.plainWalls ? tint : paint, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? (piece.door ? b.layers.door : b.layers.ground) : cellLayer(b.style, piece.door ? 'door' : b.shop ? 'shop' : 'ground', variant), accent, z0: base, z1: groundTop, along0: (piece.a0 - s) / e.len, along1: (piece.a1 - s) / e.len });
         }
-        if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: s / bw, u1: (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
-        if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: s / bw, u1: (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
+        if (!compound&&!regular&&!terrace&&layout.storeys > 0) quads.push({ kind: 'upper', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: layout.storeys, layer: b.plainWalls && b.plainLayer !== undefined ? b.plainLayer : b.layers ? b.layers.upper : cellLayer(b.style, 'upper', variant), accent, z0: groundTop, z1: facadeTop, tint, along0: 0, along1: 1 });
+        if (parapet && b.plainLayer !== undefined) quads.push({ kind: 'parapet', e, u0: units ? s / bw * cellU : s / bw, u1: units ? (s + e.len) / bw * cellU : (s + e.len) / bw, v1: parapet / layout.storeyM, layer: b.plainLayer, accent, z0: facadeTop, z1: top, tint, along0: 0, along1: 1 });
       });
     }
     const clampToSource=(q:Quad):Quad[]=>{

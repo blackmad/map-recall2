@@ -1,0 +1,42 @@
+{
+ "name": "plantage-f",
+ "buurt": "plantage",
+ "library": "plantage",
+ "generatedAt": "2026-11-10T08:50:32.944Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 1,
+  "runs": 1,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 0,
+  "byReason": {
+   "already-installed": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "badlaan-1-21",
+   "street": "Plantage Badlaan",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": null,
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "badlaan-1-21",
+   "pands": 10,
+   "mode": "authored",
+   "stripDate": null,
+   "status": "skipped",
+   "reasons": [
+    "already-installed"
+   ],
+   "seconds": 0
+  }
+ ]
+}

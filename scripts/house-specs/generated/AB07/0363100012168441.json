@@ -1,0 +1,133 @@
+{
+ "version": 1,
+ "pandId": "0363100012168441",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "front.jpg",
+  "year": 2019,
+  "quality": 0.627,
+  "panoIds": [
+   "TMX7316010203-001540_pano_0000_000761"
+  ],
+  "date": "2020-01-07",
+  "reasons": [
+   "occluder"
+  ],
+  "ppm": 50
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168441",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012168441",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1914
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168441",
+   "design": {
+    "palette": {
+     "brick": "#444141"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.45,
+     "ref": "source-data://pand-crops/0363100012168441/front.jpg#good",
+     "at": "2020-01-07"
+    }
+   }
+  },
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168441",
+   "design": {
+    "fronts": [
+     {
+      "bays": 3
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.98,
+     "ref": "source-data://pand-crops/0363100012168441/front.jpg",
+     "at": "2020-01-07"
+    },
+    "facts/pui": {
+     "source": "vision-judge",
+     "confidence": 0.98,
+     "ref": "source-data://pand-crops/0363100012168441/front.jpg",
+     "at": "2020-01-07"
+    }
+   },
+   "facts": {
+    "pui": "shop"
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012168441",
+  "design": {
+   "fronts": [
+    {
+     "bays": 3
+    }
+   ],
+   "palette": {
+    "brick": "#444141"
+   }
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "vision-judge",
+    "confidence": 0.98,
+    "ref": "source-data://pand-crops/0363100012168441/front.jpg",
+    "at": "2020-01-07"
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.45,
+    "ref": "source-data://pand-crops/0363100012168441/front.jpg#good",
+    "at": "2020-01-07"
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012168441",
+    "at": null
+   },
+   "facts/pui": {
+    "source": "vision-judge",
+    "confidence": 0.98,
+    "ref": "source-data://pand-crops/0363100012168441/front.jpg",
+    "at": "2020-01-07"
+   }
+  },
+  "facts": {
+   "facadeYear": 1914,
+   "pui": "shop"
+  }
+ },
+ "disagreements": [],
+ "jev": {
+  "cached": true,
+  "hash": "916731a6b93cf3f7f1e519ed3cc26836",
+  "usd": 0
+ }
+}

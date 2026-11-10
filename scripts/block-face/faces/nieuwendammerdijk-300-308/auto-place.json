@@ -1,0 +1,461 @@
+{
+ "face": "nieuwendammerdijk-300-308",
+ "street": "Nieuwendammerdijk",
+ "library": "nieuwendammerdijk",
+ "stripDate": "2019-12-12",
+ "seconds": 4.44,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "nieuwendammerdijk-300-308-r1",
+   "pands": [
+    "0363100012160505",
+    "0363100012154157"
+   ],
+   "passed": false,
+   "triangles": 2297
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012075876",
+   "address": "Nieuwendammerdijk 308",
+   "builtYear": 1955,
+   "widthM": 9.58,
+   "eavesM": 7.5,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#453f41",
+    "wallRaw": "#474141",
+    "skyline": {
+     "eavesM": 9.15,
+     "eavesRow": 158,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.25,
+      "riseM": 2.15,
+      "topWidthM": 0.42,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2019-12-12: different front (low, stucco ground floor), tree over the strip, 3 columns",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012152822",
+   "address": "Nieuwendammerdijk 306",
+   "builtYear": 1955,
+   "widthM": 10.38,
+   "eavesM": 8.69,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5c54",
+    "wallRaw": "#6c645d",
+    "skyline": {
+     "eavesM": 9.1,
+     "eavesRow": 160,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.88,
+      "riseM": 2.15,
+      "topWidthM": 0.17,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.005,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.11 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.11,
+       "light": 0.37
+      },
+      {
+       "widthM": 1.6,
+       "centre": 0.28,
+       "light": 0.3
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.53,
+       "light": 0.23
+      },
+      {
+       "widthM": 1.43,
+       "centre": 0.68,
+       "light": 0.22
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.89,
+       "light": 0.18
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.72,
+       "widthM": 1.73,
+       "centre": 0.19
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.48,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2019-12-12: matches the five-axis row by eye but tree and creeper branches make the column read 10 vs 5 (score 0.57 < 0.7); held until a columns override exists",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012160505",
+   "address": "Nieuwendammerdijk 304",
+   "builtYear": 1955,
+   "widthM": 10.67,
+   "eavesM": 8.74,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6b5a4e",
+    "wallRaw": "#746f64",
+    "skyline": {
+     "eavesM": 8.88,
+     "eavesRow": 169,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 1.03,
+      "topWidthM": 2.1,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 1.63,
+     "bayCentre": 0.54,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.53 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.53,
+       "light": 0.31
+      },
+      {
+       "widthM": 1.75,
+       "centre": 0.87,
+       "light": 0.09
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.7,
+       "widthM": 0.88,
+       "centre": 0.23
+      },
+      {
+       "atM": 6.2,
+       "widthM": 1.25,
+       "centre": 0.75
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "nieuwendam-oost-villa-5axis",
+   "score": 0.74,
+   "runnerUp": {
+    "typeId": "nieuwendam-1935-cottage-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "nieuwendam-oost-villa-5axis",
+    "measuredPalette": {
+     "brick": "#6b5a4e",
+     "evidence": "strip 2019-12-12 span 780-1207: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012160505",
+    "ncc": 0.246,
+    "nccRaw": 0.246,
+    "shiftM": [
+     -0.1,
+     -0.05
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.44 mean 0.44 vs photo 0.72"
+    ],
+    "wall": {
+     "photo": "#716356",
+     "model": "#846f60",
+     "dL": 0.057
+    },
+    "glazing": {
+     "photo": 0.72,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 3,
+     "model": 5
+    },
+    "iou": 0.434
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154157",
+   "address": "Nieuwendammerdijk 302",
+   "builtYear": 1955,
+   "widthM": 10.36,
+   "eavesM": 8.99,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#655b5c",
+    "wallRaw": "#52514b",
+    "skyline": {
+     "eavesM": 9.03,
+     "eavesRow": 163,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 0.75,
+      "topWidthM": 1.13,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.2 m at 0.12 (light 0.41): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.2,
+       "centre": 0.12,
+       "light": 0.41
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.32,
+       "light": 0.36
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.51,
+       "light": 0.24
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.72,
+       "widthM": 1.35,
+       "centre": 0.07
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1,
+       "centre": 0.95
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "nieuwendam-oost-villa-5axis",
+   "score": 0.74,
+   "runnerUp": {
+    "typeId": "nieuwendam-1935-cottage-dormer",
+    "score": 0
+   },
+   "placement": {
+    "type": "nieuwendam-oost-villa-5axis",
+    "measuredPalette": {
+     "brick": "#655b5c",
+     "evidence": "strip 2019-12-12 span 1198-1613: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012154157",
+    "ncc": 0.434,
+    "nccRaw": 0.434,
+    "shiftM": [
+     0.4,
+     -0.05
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "glazing not judged (frames cannot be told from bands: 11 % of the front is a band run along openings (glazing 0.5..0.609))"
+    ],
+    "wall": {
+     "photo": "#777369",
+     "model": "#7b6f70",
+     "dL": 0.02
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.44
+    },
+    "columns": {
+     "photo": 6,
+     "model": 5
+    },
+    "iou": 0.481
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153207",
+   "address": "Nieuwendammerdijk 300",
+   "builtYear": 1955,
+   "widthM": 9.54,
+   "eavesM": 8.84,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4b4845",
+    "wallRaw": "#57554f",
+    "skyline": {
+     "eavesM": 8.93,
+     "eavesRow": 167,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.53,
+      "riseM": 2.57,
+      "topWidthM": 0.45,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.3,
+     "bayCentre": 0.02,
+     "balconies": true,
+     "why": "dark open axis 0.8 m at 0.13 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.8,
+       "centre": 0.13,
+       "light": 0.26
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.31,
+       "light": 0.24
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.66,
+       "light": 0.41
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.76,
+       "light": 0.11
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 7.72,
+       "widthM": 1.95,
+       "centre": 0.39
+      },
+      {
+       "atM": 6.22,
+       "widthM": 2,
+       "centre": 0.19
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2019-12-12: the ground floor is one wide glazed shopfront and the upper windows pair up differently (3 + 1), not the five regular axes",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

@@ -1,0 +1,259 @@
+{
+ "street": "Zeeburgerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:00:44.520Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012074546",
+   "addresses": [
+    "Zeeburgerdijk 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 27-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000878193"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012083957",
+   "addresses": [
+    "Zeeburgerdijk 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 29-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000878197"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012123330",
+   "addresses": [
+    "Zeeburgerdijk 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 31-H",
+     "use": "kantoorfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000878201"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826848227,
+     "lngLat": [
+      4.9296951,
+      52.3661307
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "31-H",
+      "addr:postcode": "1093SL",
+      "addr:street": "Zeeburgerdijk",
+      "healthcare": "physiotherapist",
+      "name": "Fysiotherapie Zeeburg",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://fysiotherapie-zeeburg.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:00:44.520Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012141494",
+   "addresses": [
+    "Zeeburgerdijk 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 33-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000878205"
+    },
+    {
+     "address": "Zeeburgerdijk 33-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 52,
+     "bagId": "0363010001000700"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826849068,
+     "lngLat": [
+      4.9298269,
+      52.3661312
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "33-H",
+      "addr:postcode": "1093SL",
+      "addr:street": "Zeeburgerdijk",
+      "name": "Coffeeshop Trefpunt",
+      "shop": "cannabis",
+      "source": "BAG",
+      "source:date": "2014-03-24"
+     },
+     "fetchedAt": "2026-11-10T08:00:44.520Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012107958",
+   "addresses": [
+    "Zeeburgerdijk 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 35-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010012073192"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153934",
+   "addresses": [
+    "Zeeburgerdijk 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 37-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000878216"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128400",
+   "addresses": [
+    "Zeeburgerdijk 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 39-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000878220"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012125164",
+   "addresses": [
+    "Zeeburgerdijk 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 41-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000878224"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073961",
+   "addresses": [
+    "Zeeburgerdijk 43"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 43-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000878228"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012233489",
+   "addresses": [
+    "Zeeburgerdijk 45",
+    "Zeeburgerdijk 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 45-H",
+     "use": "industriefunctie",
+     "areaM2": 144,
+     "bagId": "0363010000878232"
+    },
+    {
+     "address": "Zeeburgerdijk 47-H",
+     "use": "industriefunctie",
+     "areaM2": 66,
+     "bagId": "0363010001020445"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012091478",
+   "addresses": [
+    "Zeeburgerdijk 49"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 49-H",
+     "use": "industriefunctie",
+     "areaM2": 60,
+     "bagId": "0363010012074330"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12714083765,
+     "lngLat": [
+      4.9308487,
+      52.3661796
+     ],
+     "tags": {
+      "artwork_type": "mural",
+      "tourism": "artwork"
+     },
+     "fetchedAt": "2026-11-10T08:00:44.520Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

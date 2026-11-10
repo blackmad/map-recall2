@@ -1,0 +1,1189 @@
+{
+ "face": "commelin-2-250",
+ "street": "Commelinstraat",
+ "library": "oud-west",
+ "stripDate": "2022-01-12",
+ "seconds": 5.36,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012233668",
+   "address": "Commelinstraat 112",
+   "builtYear": 1881,
+   "widthM": 12.55,
+   "eavesM": 15.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78635b",
+    "wallRaw": "#64544c",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 899,
+     "confidence": 0.29,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.071,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.3,
+       "widthM": 0.97,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1881, type 1899-1903; frontage 12.55 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1881, type 1899-1903",
+     "frontage 12.55 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.23 m = 4 storeys of 3.81 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.19 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.045 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012078517",
+   "address": "Commelinstraat 102",
+   "builtYear": 1881,
+   "widthM": 6.11,
+   "eavesM": 15.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a6762",
+    "wallRaw": "#65554d",
+    "skyline": {
+     "eavesM": 17.57,
+     "eavesRow": 196,
+     "confidence": 0.68,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 4.9,
+      "topWidthM": 0.35,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.58,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.95,
+       "widthM": 1.07,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1881, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1881, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.25 m = 4 storeys of 3.81 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 5.23 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.031 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012141437",
+   "address": "Commelinstraat 76",
+   "builtYear": 1992,
+   "widthM": 18.86,
+   "eavesM": 13.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9d9e99",
+    "wallRaw": "#797b76",
+    "skyline": {
+     "eavesM": 19.68,
+     "eavesRow": 112,
+     "confidence": 0.76,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.6,
+      "topWidthM": 0.45,
+      "centre": 0.93
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.322,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.88,
+       "widthM": 1.25,
+       "centre": 0.91
+      },
+      {
+       "atM": 12.5,
+       "widthM": 1.07,
+       "centre": 0.14
+      },
+      {
+       "atM": 10.63,
+       "widthM": 0.95,
+       "centre": 0.63
+      },
+      {
+       "atM": 10.32,
+       "widthM": 1.05,
+       "centre": 0.76
+      },
+      {
+       "atM": 9.95,
+       "widthM": 1.27,
+       "centre": 0.14
+      },
+      {
+       "atM": 8.22,
+       "widthM": 0.85,
+       "centre": 0.83
+      },
+      {
+       "atM": 7.92,
+       "widthM": 0.97,
+       "centre": 0.23
+      },
+      {
+       "atM": 7.25,
+       "widthM": 0.82,
+       "centre": 0.17
+      },
+      {
+       "atM": 6.65,
+       "widthM": 3.48,
+       "centre": 0.69
+      },
+      {
+       "atM": 6.35,
+       "widthM": 1.75,
+       "centre": 0.92
+      },
+      {
+       "atM": 5.45,
+       "widthM": 1,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1992, type 1899-1903; frontage 18.86 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1992, type 1899-1903",
+     "frontage 18.86 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.63 m = 4 storeys of 3.41 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.73 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.248 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012095429",
+   "address": "Commelinstraat 38",
+   "builtYear": 1994,
+   "widthM": 11.91,
+   "eavesM": 16.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a5a9a8",
+    "wallRaw": "#605e5d",
+    "skyline": {
+     "eavesM": 16.73,
+     "eavesRow": 230,
+     "confidence": 0.7,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 5.75,
+      "topWidthM": 0.5,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.382,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.67,
+       "widthM": 1.85,
+       "centre": 0.51
+      },
+      {
+       "atM": 12.38,
+       "widthM": 0.82,
+       "centre": 0.3
+      },
+      {
+       "atM": 9.97,
+       "widthM": 1.1,
+       "centre": 0.75
+      },
+      {
+       "atM": 9.3,
+       "widthM": 1.18,
+       "centre": 0.5
+      },
+      {
+       "atM": 6.38,
+       "widthM": 1.23,
+       "centre": 0.76
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1994, type 1899-1903; frontage 11.91 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1994, type 1899-1903",
+     "frontage 11.91 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.49 m = 4 storeys of 4.12 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.393 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012094602",
+   "address": "Commelinstraat 16",
+   "builtYear": 1880,
+   "widthM": 5.87,
+   "eavesM": 16.06,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f6b66",
+    "wallRaw": "#6e5f56",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 899,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 5,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.115,
+    "structure": {
+     "bayWidthM": 0.4,
+     "bayCentre": 0.73,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best dapper-1882-plain-dormer scores 0.36 < 0.7 (3DBAG eaves 16.06 m = 4 storeys of 4.01 m vs the type's 3.1 m; strip columns 5 vs 3 bays)",
+   "best": {
+    "type": "dapper-1882-plain-dormer",
+    "score": 0.36,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.06 m = 4 storeys of 4.01 m vs the type's 3.1 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.098 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012112407",
+   "address": "Commelinstraat 14",
+   "builtYear": 1880,
+   "widthM": 6.19,
+   "eavesM": 17.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d6458",
+    "wallRaw": "#7b766e",
+    "skyline": {
+     "eavesM": 21.02,
+     "eavesRow": 58,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.45,
+      "topWidthM": 0.85,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "ribbon",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.241,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 15.3 m (1.32 m wide), 12 m (2.05 m wide), 8.93 m (1.65 m wide), 5.7 m (1.32 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.3,
+       "widthM": 1.32,
+       "centre": 0.18
+      },
+      {
+       "atM": 12,
+       "widthM": 2.05,
+       "centre": 0.82
+      },
+      {
+       "atM": 8.93,
+       "widthM": 1.65,
+       "centre": 0.22
+      },
+      {
+       "atM": 8.63,
+       "widthM": 0.82,
+       "centre": 0.4
+      },
+      {
+       "atM": 6.45,
+       "widthM": 1.07,
+       "centre": 0.59
+      },
+      {
+       "atM": 6,
+       "widthM": 1.18,
+       "centre": 0.57
+      },
+      {
+       "atM": 5.7,
+       "widthM": 1.32,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1880, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1880, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.26 m = 4 storeys of 4.32 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.23 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.196 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074254",
+   "address": "Commelinstraat 12",
+   "builtYear": 1880,
+   "widthM": 5.96,
+   "eavesM": 16.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685c51",
+    "wallRaw": "#6b6258",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 899,
+     "confidence": 0.23,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.095,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 15.32,
+       "widthM": 1.2,
+       "centre": 0.66
+      },
+      {
+       "atM": 11.5,
+       "widthM": 1.15,
+       "centre": 0.23
+      },
+      {
+       "atM": 8.35,
+       "widthM": 1.25,
+       "centre": 0.22
+      },
+      {
+       "atM": 4.9,
+       "widthM": 0.95,
+       "centre": 0.22
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1880, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1880, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.22 m = 4 storeys of 4.05 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 1.87 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.083 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156075",
+   "address": "Commelinstraat 10",
+   "builtYear": 1880,
+   "widthM": 5.96,
+   "eavesM": 18.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e887d",
+    "wallRaw": "#6f6b62",
+    "skyline": {
+     "eavesM": 21.38,
+     "eavesRow": 44,
+     "confidence": 0.35,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.238,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.5,
+       "widthM": 1.2,
+       "centre": 0.21
+      },
+      {
+       "atM": 8.43,
+       "widthM": 1.1,
+       "centre": 0.9
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1880, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1880, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 18.17 m = 4 storeys of 4.54 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.65 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.184 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163419",
+   "address": "Commelinstraat 8",
+   "builtYear": 1880,
+   "widthM": 6.04,
+   "eavesM": 15.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b8578",
+    "wallRaw": "#848177",
+    "skyline": {
+     "eavesM": 17.07,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.63,
+      "riseM": 2.63,
+      "topWidthM": 0.2,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 4,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.453,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.02,
+       "widthM": 4.08,
+       "centre": 0.46
+      },
+      {
+       "atM": 8.72,
+       "widthM": 2.65,
+       "centre": 0.56
+      },
+      {
+       "atM": 8.35,
+       "widthM": 0.9,
+       "centre": 0.58
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1880, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1880, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.85 m = 4 storeys of 3.96 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.5 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.41 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158379",
+   "address": "Commelinstraat 6",
+   "builtYear": 1880,
+   "widthM": 5.98,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6f63",
+    "wallRaw": "#726d66",
+    "skyline": {
+     "eavesM": 17.82,
+     "eavesRow": 186,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 4.65,
+      "topWidthM": 0.07,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.224,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.27,
+       "widthM": 0.8,
+       "centre": 0.25
+      },
+      {
+       "atM": 8.27,
+       "widthM": 1.05,
+       "centre": 0.2
+      },
+      {
+       "atM": 6.47,
+       "widthM": 0.82,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1880, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1880, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.78 m = 4 storeys of 3.94 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.57 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.184 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153380",
+   "address": "Commelinstraat 4",
+   "builtYear": 1882,
+   "widthM": 5.98,
+   "eavesM": 17.03,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#b4afa0",
+    "wallRaw": "#6d6058",
+    "skyline": {
+     "eavesM": 19.15,
+     "eavesRow": 133,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 2.15,
+      "topWidthM": 0.42,
+      "centre": 0.56
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.145,
+    "structure": {
+     "bayWidthM": 0.6,
+     "bayCentre": 0.1,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.52,
+       "widthM": 1.07,
+       "centre": 0.27
+      },
+      {
+       "atM": 9.22,
+       "widthM": 0.9,
+       "centre": 0.57
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.38,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1882, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 17.03 m = 4 storeys of 4.26 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.87 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.155 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236918",
+   "address": "Commelinstraat 2",
+   "builtYear": 1882,
+   "widthM": 12.46,
+   "eavesM": 19.01,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 10.75,
+    "toM": 11.84,
+    "depthM": 0.29,
+    "centre": 0.906
+   },
+   "strip": {
+    "wall": "#afac9d",
+    "wallRaw": "#655a53",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 899,
+     "confidence": 0.19,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.074,
+    "structure": {
+     "bayWidthM": 0.53,
+     "bayCentre": 0.42,
+     "balconies": false,
+     "why": "no dark open axis, 4 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.15,
+       "widthM": 0.93,
+       "centre": 0.26
+      },
+      {
+       "atM": 10.07,
+       "widthM": 1.5,
+       "centre": 0.51
+      },
+      {
+       "atM": 9.25,
+       "widthM": 1.1,
+       "centre": 0.14
+      },
+      {
+       "atM": 7,
+       "widthM": 1.38,
+       "centre": 0.77
+      },
+      {
+       "atM": 6.63,
+       "widthM": 0.82,
+       "centre": 0.56
+      },
+      {
+       "atM": 6.25,
+       "widthM": 3.8,
+       "centre": 0.83
+      },
+      {
+       "atM": 5.95,
+       "widthM": 1.57,
+       "centre": 0.07
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1882, type 1899-1903; frontage 12.46 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1882, type 1899-1903",
+     "frontage 12.46 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 19.01 m = 4 storeys of 4.75 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.04 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.063 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

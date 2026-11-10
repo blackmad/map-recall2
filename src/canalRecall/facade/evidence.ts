@@ -41,6 +41,12 @@ export const SOURCE_STRENGTH = [
   'ahn',
   /** PDOK orthophoto: roof colour and material, measured not chosen. */
   'pdok-ortho',
+  /**
+   * A vision model's typed judgement of a street-level crop (Jev, #326): bays, pui, a confident gable, finish.
+   * Read off a photo but not measured on it, so it ranks under the registry records and over aerial and survey
+   * sources (house line, docs/house-line.md). Added 2026-11-10; the relative order of every other source is unchanged.
+   */
+  'vision-judge',
   /** BAG: authoritative identity, footprint and bouwjaar. */
   'bag',
   /** A Rijksmonument description naming gable type, bays, cornice or date. */

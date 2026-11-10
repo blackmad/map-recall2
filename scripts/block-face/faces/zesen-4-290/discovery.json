@@ -1,0 +1,1027 @@
+{
+ "street": "Von Zesenstraat",
+ "seed": "0363100012132768",
+ "members": [
+  "0363100012098734",
+  "0363100012144130",
+  "0363100012136808",
+  "0363100012065823",
+  "0363100012126532",
+  "0363100012117450",
+  "0363100012065278",
+  "0363100012134469",
+  "0363100012132768",
+  "0363100012161996",
+  "0363100012164381",
+  "0363100012080864"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012098734 (face continues: 137435 139064 102646 138979)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012080864 (face continues: 090552)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063961",
+   "reason": "frontage 41.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012064691",
+   "reason": "sightline to Von Zesenstraat crosses 0363100012090552"
+  },
+  {
+   "pandId": "0363100012064747",
+   "reason": "frontage 37.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012068865",
+   "reason": "frontage 102.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012074254",
+   "reason": "frontage 75.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012074401",
+   "reason": "frontage 37.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012075601",
+   "reason": "frontage 41.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012077478",
+   "reason": "frontage 142.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012078517",
+   "reason": "frontage 75.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012088692",
+   "reason": "frontage 142.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012089347",
+   "reason": "frontage 36.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012089362",
+   "reason": "frontage 37.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012090879",
+   "reason": "frontage 75.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012091544",
+   "reason": "frontage 142.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012094055",
+   "reason": "frontage 38.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012094063",
+   "reason": "frontage 41.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012094602",
+   "reason": "frontage 75.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012095429",
+   "reason": "frontage 75.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012097187",
+   "reason": "frontage 75.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012097700",
+   "reason": "sightline to Von Zesenstraat crosses 0363100012090552"
+  },
+  {
+   "pandId": "0363100012098167",
+   "reason": "frontage 36.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012098648",
+   "reason": "frontage 41.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012109340",
+   "reason": "frontage 169.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012109920",
+   "reason": "frontage 41.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012112407",
+   "reason": "frontage 75.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012112463",
+   "reason": "frontage 163.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012121661",
+   "reason": "frontage 38.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012069825",
+   "reason": "frontage 213.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012072638",
+   "reason": "sightline to Von Zesenstraat crosses 0363100012116676"
+  },
+  {
+   "pandId": "0363100012083647",
+   "reason": "frontage 90.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012084765",
+   "reason": "frontage 230.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012089961",
+   "reason": "frontage 40.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012095985",
+   "reason": "frontage 73.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012108076",
+   "reason": "frontage 235.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012112452",
+   "reason": "frontage 142.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012114922",
+   "reason": "frontage 165.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012116676",
+   "reason": "sightline to Von Zesenstraat crosses 0363100012137435"
+  },
+  {
+   "pandId": "0363100012120520",
+   "reason": "frontage 165.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012121854",
+   "reason": "frontage 164.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012122070",
+   "reason": "frontage 38.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012125671",
+   "reason": "frontage 38.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012125776",
+   "reason": "frontage 41.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012135213",
+   "reason": "frontage 142.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012136510",
+   "reason": "frontage 37.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012137243",
+   "reason": "sightline to Von Zesenstraat crosses 0363100012146257"
+  },
+  {
+   "pandId": "0363100012141437",
+   "reason": "frontage 75.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012143470",
+   "reason": "frontage 75.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012148725",
+   "reason": "frontage 75.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012150078",
+   "reason": "frontage 38.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012152395",
+   "reason": "frontage 35.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012152400",
+   "reason": "frontage 142.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012152482",
+   "reason": "frontage 142.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012152605",
+   "reason": "frontage 157.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012152885",
+   "reason": "frontage 103.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012152891",
+   "reason": "frontage 32.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153339",
+   "reason": "frontage 213.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153380",
+   "reason": "frontage 75.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153383",
+   "reason": "frontage 37.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153459",
+   "reason": "frontage 76.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153465",
+   "reason": "frontage 92.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153466",
+   "reason": "frontage 97.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153573",
+   "reason": "frontage 33.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153696",
+   "reason": "frontage 142.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012154124",
+   "reason": "frontage 142.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012154498",
+   "reason": "frontage 165.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012154850",
+   "reason": "frontage 36.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012122650",
+   "reason": "frontage 237.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012128991",
+   "reason": "frontage 36.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012133643",
+   "reason": "frontage 142.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012140194",
+   "reason": "sightline to Von Zesenstraat crosses 0363100012123847"
+  },
+  {
+   "pandId": "0363100012142845",
+   "reason": "frontage 39.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012152426",
+   "reason": "frontage 103.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012152829",
+   "reason": "frontage 74.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153138",
+   "reason": "frontage 75.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153706",
+   "reason": "frontage 213.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012153794",
+   "reason": "frontage 213.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012154273",
+   "reason": "frontage 103.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012155386",
+   "reason": "frontage 77.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012155457",
+   "reason": "frontage 37.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012155577",
+   "reason": "frontage 142.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012155654",
+   "reason": "frontage 76.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012155803",
+   "reason": "frontage 76.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012156075",
+   "reason": "frontage 75.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012156143",
+   "reason": "frontage 76.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012157029",
+   "reason": "frontage 39.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012157163",
+   "reason": "frontage 93.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012157418",
+   "reason": "frontage 37.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012158275",
+   "reason": "frontage 142.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012158364",
+   "reason": "frontage 87.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012158379",
+   "reason": "frontage 75.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012158515",
+   "reason": "frontage 32.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012158685",
+   "reason": "frontage 76.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012158748",
+   "reason": "frontage 105.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012158819",
+   "reason": "frontage 36.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012159015",
+   "reason": "frontage 37.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012159120",
+   "reason": "frontage 36.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012159201",
+   "reason": "frontage 150.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012159281",
+   "reason": "frontage 36.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012159551",
+   "reason": "frontage 213.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012159594",
+   "reason": "frontage 76.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012160168",
+   "reason": "frontage 76.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012160508",
+   "reason": "frontage 142.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012160757",
+   "reason": "frontage 32.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012160990",
+   "reason": "frontage 35.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012160991",
+   "reason": "frontage 36.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161046",
+   "reason": "frontage 213.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161077",
+   "reason": "frontage 213.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161273",
+   "reason": "frontage 213.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161399",
+   "reason": "frontage 37.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161692",
+   "reason": "frontage 76.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161741",
+   "reason": "frontage 37.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012155065",
+   "reason": "frontage 142.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012155092",
+   "reason": "frontage 172.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012156017",
+   "reason": "frontage 141.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012156106",
+   "reason": "frontage 85.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012156441",
+   "reason": "frontage 96.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012157458",
+   "reason": "frontage 96.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012158317",
+   "reason": "frontage 142.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012159494",
+   "reason": "frontage 32.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012159616",
+   "reason": "frontage 103.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012159658",
+   "reason": "frontage 213.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012160124",
+   "reason": "frontage 96.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161088",
+   "reason": "frontage 74.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161299",
+   "reason": "frontage 213.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161396",
+   "reason": "frontage 75.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161497",
+   "reason": "frontage 213.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161952",
+   "reason": "frontage 84.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012162085",
+   "reason": "frontage 41.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012162301",
+   "reason": "frontage 87.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163265",
+   "reason": "frontage 142.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163414",
+   "reason": "frontage 39.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163419",
+   "reason": "frontage 75.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163446",
+   "reason": "frontage 37.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163489",
+   "reason": "frontage 44.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163547",
+   "reason": "frontage 99.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163697",
+   "reason": "frontage 85.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163786",
+   "reason": "frontage 213.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163837",
+   "reason": "frontage 142.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012164331",
+   "reason": "sightline to Von Zesenstraat crosses 0363100012132768"
+  },
+  {
+   "pandId": "0363100012164468",
+   "reason": "frontage 213.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012165385",
+   "reason": "frontage 37.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012165821",
+   "reason": "frontage 125.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012165837",
+   "reason": "frontage 213.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012165939",
+   "reason": "frontage 36.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012166134",
+   "reason": "frontage 111.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012166230",
+   "reason": "frontage 39.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012166369",
+   "reason": "frontage 36.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012166399",
+   "reason": "frontage 142.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012166530",
+   "reason": "frontage 32.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012166835",
+   "reason": "frontage 82.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012167033",
+   "reason": "frontage 34.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012169163",
+   "reason": "frontage 80.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012169164",
+   "reason": "frontage 165.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012170398",
+   "reason": "frontage 150.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012170399",
+   "reason": "frontage 177.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012170400",
+   "reason": "frontage 169.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012170401",
+   "reason": "frontage 157.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012170402",
+   "reason": "frontage 123.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012170792",
+   "reason": "frontage 122.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012170793",
+   "reason": "frontage 127.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012170861",
+   "reason": "frontage 132.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012170862",
+   "reason": "frontage 137.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012180517",
+   "reason": "frontage 116.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012180518",
+   "reason": "frontage 111.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012180520",
+   "reason": "frontage 143.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012180521",
+   "reason": "frontage 161.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012161754",
+   "reason": "frontage 35.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163286",
+   "reason": "frontage 80.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163521",
+   "reason": "frontage 73.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012163689",
+   "reason": "frontage 96.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012164775",
+   "reason": "sightline to Von Zesenstraat crosses 0363100012139064"
+  },
+  {
+   "pandId": "0363100012165193",
+   "reason": "frontage 103.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012166798",
+   "reason": "frontage 74.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012167343",
+   "reason": "frontage 104.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012180523",
+   "reason": "frontage 151.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012180524",
+   "reason": "frontage 161.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012181496",
+   "reason": "frontage 105.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012181675",
+   "reason": "frontage 104.2 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012181676",
+   "reason": "frontage 106.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012181677",
+   "reason": "frontage 101.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012181678",
+   "reason": "frontage 95.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012181680",
+   "reason": "frontage 118.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012181681",
+   "reason": "frontage 127.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012194063",
+   "reason": "frontage 36.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012205927",
+   "reason": "frontage 194.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012215058",
+   "reason": "frontage 94.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012219995",
+   "reason": "frontage 94.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012221551",
+   "reason": "frontage 155.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012226361",
+   "reason": "frontage 158.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012233668",
+   "reason": "frontage 75.3 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012235898",
+   "reason": "frontage 213.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012235954",
+   "reason": "frontage 89.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012236370",
+   "reason": "frontage 37.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012236435",
+   "reason": "sightline to Von Zesenstraat crosses 0363100012102646"
+  },
+  {
+   "pandId": "0363100012236675",
+   "reason": "frontage 213.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012236713",
+   "reason": "frontage 213.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012236918",
+   "reason": "frontage 75.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012237251",
+   "reason": "frontage 95.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012244352",
+   "reason": "no frontage on Von Zesenstraat: No footprint edge faces Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012244363",
+   "reason": "frontage 132.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012244364",
+   "reason": "frontage 130.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012244365",
+   "reason": "frontage 127.9 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012244366",
+   "reason": "frontage 125.4 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012244367",
+   "reason": "frontage 123.0 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012244368",
+   "reason": "frontage 120.5 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012244369",
+   "reason": "frontage 115.6 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012191321",
+   "reason": "frontage 91.8 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012195468",
+   "reason": "frontage 96.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012209348",
+   "reason": "frontage 74.7 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012237163",
+   "reason": "frontage 213.1 m from Von Zesenstraat"
+  },
+  {
+   "pandId": "0363100012094813",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106887",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115247",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119432",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120616",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144406",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146257",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123847",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012098734",
+   "alongM": -104.27,
+   "widthM": 15.29,
+   "eavesM": 11.1,
+   "roofMaxM": 13.89,
+   "storeys3dbag": 5,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012144130",
+   "alongM": -88.54,
+   "widthM": 16.17,
+   "eavesM": 11.15,
+   "roofMaxM": 14.91,
+   "storeys3dbag": 5,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012136808",
+   "alongM": -71.89,
+   "widthM": 17.12,
+   "eavesM": 13.14,
+   "roofMaxM": 15.41,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012065823",
+   "alongM": -54.69,
+   "widthM": 17.28,
+   "eavesM": 11.14,
+   "roofMaxM": 14.99,
+   "storeys3dbag": 5,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012126532",
+   "alongM": -37.6,
+   "widthM": 16.91,
+   "eavesM": 11.08,
+   "roofMaxM": 13.89,
+   "storeys3dbag": 5,
+   "builtYear": 1990,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012117450",
+   "alongM": -20.57,
+   "widthM": 17.15,
+   "eavesM": 11.11,
+   "roofMaxM": 13.88,
+   "storeys3dbag": 5,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012065278",
+   "alongM": -9.63,
+   "widthM": 4.73,
+   "eavesM": 13.25,
+   "roofMaxM": 16.02,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012134469",
+   "alongM": -5.07,
+   "widthM": 4.4,
+   "eavesM": 13.36,
+   "roofMaxM": 16.02,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012132768",
+   "alongM": 0,
+   "widthM": 5.73,
+   "eavesM": 13.76,
+   "roofMaxM": 16.67,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161996",
+   "alongM": 5.15,
+   "widthM": 4.56,
+   "eavesM": 13.29,
+   "roofMaxM": 15.98,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164381",
+   "alongM": 9.73,
+   "widthM": 4.6,
+   "eavesM": 13.31,
+   "roofMaxM": 15.98,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012080864",
+   "alongM": 14.75,
+   "widthM": 5.44,
+   "eavesM": 13,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 5,
+   "builtYear": 1886,
+   "uncertainty": []
+  }
+ ]
+}

@@ -5,7 +5,10 @@
  * Recorded on main before the front-roof rules (2026-10-16) so the rules can prove which pands they leave untouched:
  * a pand whose class is still survey or recipe must hash the same; the test lists every pand that changed class.
  *
- *   node --import tsx scripts/block-face/roof-golden.ts [--write] [--face=<id>]
+ *   node --import tsx scripts/block-face/roof-golden.ts [--write] [--face=<id>] [--allow=<face or pand ids>]
+ *
+ * --allow: house:publish's flag. A violation or class change on an allowed face / pand is re-recorded; one outside the
+ * list fails (exit 1, nothing recorded). docs/house-line.md section 3.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -15,6 +18,7 @@ import {prepareFaceFacts} from '../../src/canalRecall/blockFace/compile.ts';
 import {houseIntents, validateBlockFace, type BlockFaceIntent} from '../../src/canalRecall/blockFace/intent.ts';
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
 import {sharedTerrain} from '../lib/terrainField.ts';
+import {parseAllow, partitionChanged} from '../../src/canalRecall/houseSpec/allow.ts';
 /** scripts/block-face/intake.ts FACES (not imported: intake.ts is a CLI outside the typed program). */
 const FACES = 'scripts/block-face/faces';
 
@@ -97,6 +101,24 @@ if (process.argv[1]?.endsWith('roof-golden.ts')) {
     for (const r of reclassed) console.log(`reclassed ${r}`);
     for (const i of intentsChanged) console.log(`intents changed ${i}`);
     console.log(`${violations.length} violations, ${reclassed.length} reclassed, ${intentsChanged.length} intent changes`);
+    const allow = parseAllow(process.argv);
+    if (allow) {
+      // House:publish: a face or pand in the list is re-recorded (every changed hash, class and intent hash of it);
+      // a violation outside the list fails and nothing is recorded.
+      // Any changed pand hash outside the list fails, violation or class change alike (the line's head is `<face> <pand>`).
+      const {outside} = partitionChanged([...violations, ...reclassed].map(l => l.split(':')[0]), allow);
+      if (outside.length) { console.log(`OUTSIDE the allow-list (${outside.length}): ${outside.join('; ')}`); process.exit(1); }
+      const golden = readRoofGolden();
+      let recorded = 0;
+      for (const [face, pands] of Object.entries(now.faces)) for (const [pand, e] of Object.entries(pands)) {
+        const w = golden.faces[face]?.[pand];
+        if (w && w.hash !== e.hash && (allow.has(face) || allow.has(pand))) { golden.faces[face][pand] = e; recorded++; }
+      }
+      for (const face of Object.keys(now.intents)) if (golden.intents[face] !== undefined && golden.intents[face] !== now.intents[face] && (allow.has(face) || Object.keys(now.faces[face] ?? {}).some(p => allow.has(p)))) { golden.intents[face] = now.intents[face]; recorded++; }
+      if (recorded) fs.writeFileSync(ROOF_GOLDEN, JSON.stringify(golden, null, 1) + '\n');
+      console.log(`re-recorded ${recorded} allowed entries`);
+      process.exit(0);
+    }
     process.exit(violations.length ? 1 : 0);
   }
 }

@@ -64,7 +64,7 @@ test('a type with a gable crown stays under its rakes: roof.rakeClear (the saddl
   assert.equal(t.roof?.rakeClear, true);
 });
 
-test('dormerLights: n lights = n-1 evenly spaced bars; absent keeps the single middle bar; validated 2..8', async () => {
+test('dormerLights: n lights = n-1 evenly spaced bars; absent keeps the single middle bar; validated 1..8', async () => {
   const {fitIntent} = await import('../buildingRecipe/fit.ts');
   const {validateIntent} = await import('../buildingRecipe/intent.ts');
   const {resolvePlacement} = await import('./houseType.ts');
@@ -77,6 +77,7 @@ test('dormerLights: n lights = n-1 evenly spaced bars; absent keeps the single m
   const none = bars(), five = bars(5);
   assert.ok(none && none.length > 0, 'dormers built');
   { assert.ok(none.every(b => b.length === 1 && b[0] === 0.5)); assert.ok(five!.every(b => b.length === 4 && Math.abs(b[0] - 0.2) < 1e-9)); }
-  assert.throws(() => mk(1), /dormerLights/);
+  assert.ok(bars(1)!.every(b => b.length === 0), 'one light = no bars');
+  assert.throws(() => mk(0), /dormerLights/);
   assert.throws(() => mk(9), /dormerLights/);
 });

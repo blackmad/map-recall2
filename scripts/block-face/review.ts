@@ -135,7 +135,7 @@ export async function reviewFace(faceId: string, glbOverride?: string, label?: s
     const tx = (dy: number, size: number, text: string, colour = '#1f2328', weight = 'normal') => `<text x="${x}" y="${infoY + dy}" font-size="${size}" font-weight="${weight}" fill="${colour}">${esc(text)}</text>`;
     const clip = (text: string, px: number) => text.length * px * 0.55 > w - 10 ? text.slice(0, Math.max(4, Math.floor((w - 10) / (px * 0.55)) - 1)) + '…' : text;
     svg += `<rect x="${s.px[0]}" y="${infoY}" width="${w}" height="${INFO - 4}" fill="${i % 2 ? '#eef0f2' : '#e3e6ea'}"/>`;
-    svg += tx(18, 15, clip(`${i + 1}. ${h.pandId.slice(-6)} ${h.address}`, 15), '#1f2328', 'bold');
+    svg += tx(18, 15, clip(`${i + 1}. No ${h.address.match(/(\d+\S*)$/)?.[1] ?? h.address} · ${h.pandId.slice(-6)}`, 15), '#1f2328', 'bold');
     svg += tx(38, 13, clip(`${g.use}${g.name ? ': ' + g.name : ''}`, 13), '#0b5394', 'bold');
     svg += tx(55, 12, clip(`${g.category ?? (g.bag ?? []).join('+')}`, 12));
     svg += tx(71, 12, clip(`${g.agreement} · photo ${g.photoDate}`, 12), g.agreement === 'osm-and-photo' ? '#1d7a35' : '#a15c00');

@@ -1,0 +1,295 @@
+{
+ "street": "A.S. Onderwijzerhof",
+ "seed": "0363100012171835",
+ "members": [
+  "0363100012171840",
+  "0363100012171835"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012171835 (face continues: 182354)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012171688",
+   "reason": "frontage 132.1 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171689",
+   "reason": "frontage 110.4 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171691",
+   "reason": "frontage 117.5 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171692",
+   "reason": "frontage 113.1 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171693",
+   "reason": "frontage 112.4 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171694",
+   "reason": "frontage 111.2 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171695",
+   "reason": "frontage 105.7 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171828",
+   "reason": "frontage 126.9 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171830",
+   "reason": "frontage 66.8 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171831",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171832",
+   "reason": "frontage 42.3 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171833",
+   "reason": "frontage 97.1 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171834",
+   "reason": "frontage 43.8 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171836",
+   "reason": "frontage 36.7 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171837",
+   "reason": "frontage 88.9 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171838",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171841",
+   "reason": "frontage 87.7 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012171994",
+   "reason": "frontage 43.3 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181763",
+   "reason": "frontage 73.0 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181764",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181765",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181766",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181767",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181768",
+   "reason": "frontage 83.5 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181978",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181979",
+   "reason": "frontage 37.1 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182038",
+   "reason": "frontage 45.4 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182266",
+   "reason": "frontage 91.3 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182267",
+   "reason": "frontage 120.9 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182268",
+   "reason": "frontage 117.0 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182269",
+   "reason": "frontage 111.1 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182270",
+   "reason": "frontage 88.3 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182344",
+   "reason": "frontage 80.7 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182345",
+   "reason": "frontage 72.5 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182346",
+   "reason": "frontage 53.7 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182347",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182348",
+   "reason": "frontage 97.0 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182349",
+   "reason": "frontage 94.9 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182350",
+   "reason": "frontage 87.8 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012165558",
+   "reason": "sightline to A.S. Onderwijzerhof crosses 0363100012182040"
+  },
+  {
+   "pandId": "0363100012170253",
+   "reason": "frontage 71.4 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181980",
+   "reason": "frontage 30.0 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012181981",
+   "reason": "frontage 88.0 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182036",
+   "reason": "frontage 38.3 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182351",
+   "reason": "frontage 77.1 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182352",
+   "reason": "frontage 99.4 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182353",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182355",
+   "reason": "frontage 50.1 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182356",
+   "reason": "no frontage on A.S. Onderwijzerhof: No footprint edge faces A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182357",
+   "reason": "frontage 51.6 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182358",
+   "reason": "frontage 56.9 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182359",
+   "reason": "frontage 64.3 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182360",
+   "reason": "frontage 60.7 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012182451",
+   "reason": "sightline to A.S. Onderwijzerhof crosses 0363100012182354"
+  },
+  {
+   "pandId": "0363100012186092",
+   "reason": "frontage 82.8 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012571655",
+   "reason": "frontage 76.2 m from A.S. Onderwijzerhof"
+  },
+  {
+   "pandId": "0363100012571673",
+   "reason": "sightline to A.S. Onderwijzerhof crosses 0363100012182039"
+  },
+  {
+   "pandId": "0363100012571674",
+   "reason": "sightline to A.S. Onderwijzerhof crosses 0363100012182039"
+  },
+  {
+   "pandId": "0363100012171839",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182037",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182039",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182040",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182512",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012171840",
+   "alongM": -15.72,
+   "widthM": 14.3,
+   "eavesM": 8.73,
+   "roofMaxM": 11.57,
+   "storeys3dbag": 4,
+   "builtYear": 1984,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171835",
+   "alongM": 0,
+   "widthM": 17.14,
+   "eavesM": 11.57,
+   "roofMaxM": 14.38,
+   "storeys3dbag": 5,
+   "builtYear": 1984,
+   "uncertainty": []
+  }
+ ]
+}

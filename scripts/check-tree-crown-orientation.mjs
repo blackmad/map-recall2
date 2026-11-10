@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';import fs from 'node:fs';import {execFileSync} from 'node:child_process';import {pathToFileURL} from 'node:url';import * as THREE from 'three';
 import {treeTypology} from '../public/canal-drive/da-costa-block/tree-typology.js';
-globalThis.window={CanalRecallThree:{THREE}};
+globalThis.window={CanalRecallThree:{THREE}};globalThis.location={search:'',href:'http://localhost/canal-drive/index.html'};
 const {InventoryTrees}=await import('../public/canal-drive/js/inventory-trees-source.js');
 const oldSource=execFileSync('git',['show','108ccf65:public/canal-drive/js/inventory-trees-source.js'],{encoding:'utf8'}).replace("'../da-costa-block/tree-typology.js'",JSON.stringify(pathToFileURL(process.cwd()+'/public/canal-drive/da-costa-block/tree-typology.js').href));
 const OldTrees=(await import('data:text/javascript;base64,'+Buffer.from(oldSource).toString('base64'))).InventoryTrees;

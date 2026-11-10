@@ -1,0 +1,47 @@
+{
+ "family": "occlusion",
+ "set": "AB",
+ "note": "A rectified street-panorama crop of one Amsterdam house front; the house in question fills the image.",
+ "questions": {
+  "scaffold": {
+   "type": "noul",
+   "instructions": "Is there scaffolding, a construction hoarding or a builder's cover in front of the house front in `facade`?",
+   "criteria": {
+    "true": "Scaffolding or a hoarding covers part of the front.",
+    "false": "No scaffolding or hoarding."
+   }
+  },
+  "van": {
+   "type": "noul",
+   "instructions": "Does a van, truck or large vehicle stand in front of the house front in `facade` and hide part of it (not a small car at the kerb)?",
+   "criteria": {
+    "true": "A van or truck hides part of the front.",
+    "false": "No van or truck in front of the front."
+   }
+  },
+  "trunk": {
+   "type": "noul",
+   "instructions": "Does a tree trunk or a lamp post stand in front of the house front in `facade` and hide a vertical strip of it?",
+   "criteria": {
+    "true": "A tree trunk or post blocks part of the front.",
+    "false": "No trunk or post in front of the front."
+   }
+  },
+  "branches": {
+   "type": "noul",
+   "instructions": "Do bare tree branches or twigs cross in front of the house front in `facade`?",
+   "criteria": {
+    "true": "Branches cross the front.",
+    "false": "No branches cross the front."
+   }
+  },
+  "boat": {
+   "type": "noul",
+   "instructions": "Is a moored boat, houseboat or barge in front of the house front in `facade`?",
+   "criteria": {
+    "true": "A boat hides part of the front.",
+    "false": "No boat in front."
+   }
+  }
+ }
+}

@@ -1,0 +1,198 @@
+{
+ "street": "Roomtuintjes",
+ "seed": "0363100012107875",
+ "members": [
+  "0363100012107875",
+  "0363100012063442",
+  "0363100012145563",
+  "0363100012116936",
+  "0363100012141178",
+  "0363100012133877",
+  "0363100012080316"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012107875 (face continues: 070112)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012080316 (face continues: 076805 067912 128006 085504)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012073961",
+   "reason": "frontage 34.4 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012074546",
+   "reason": "frontage 31.3 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012083957",
+   "reason": "frontage 32.2 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012089298",
+   "reason": "frontage 41.0 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012104532",
+   "reason": "frontage 49.7 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012107958",
+   "reason": "frontage 35.1 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012112843",
+   "reason": "sightline to Roomtuintjes crosses 0363100012085504"
+  },
+  {
+   "pandId": "0363100012114089",
+   "reason": "frontage 35.4 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012123330",
+   "reason": "frontage 33.2 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012125164",
+   "reason": "frontage 37.0 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012128400",
+   "reason": "frontage 37.1 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012132654",
+   "reason": "frontage 68.2 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012134278",
+   "reason": "frontage 54.1 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012141494",
+   "reason": "frontage 34.2 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012153934",
+   "reason": "frontage 36.1 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012160858",
+   "reason": "frontage 31.9 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012191362",
+   "reason": "frontage 41.0 m from Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012233489",
+   "reason": "no frontage on Roomtuintjes: No footprint edge faces Roomtuintjes"
+  },
+  {
+   "pandId": "0363100012091463",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012091478",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012120221",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012135758",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012142728",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012149400",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155632",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012107875",
+   "alongM": 0,
+   "widthM": 7.7,
+   "eavesM": 14.38,
+   "roofMaxM": 17.67,
+   "storeys3dbag": 0,
+   "builtYear": 1974,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012063442",
+   "alongM": 7.6,
+   "widthM": 7.5,
+   "eavesM": 14.4,
+   "roofMaxM": 17.67,
+   "storeys3dbag": 0,
+   "builtYear": 1974,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012145563",
+   "alongM": 15.08,
+   "widthM": 7.48,
+   "eavesM": 14.41,
+   "roofMaxM": 17.68,
+   "storeys3dbag": 0,
+   "builtYear": 1974,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012116936",
+   "alongM": 22.57,
+   "widthM": 7.5,
+   "eavesM": 14.39,
+   "roofMaxM": 17.65,
+   "storeys3dbag": 0,
+   "builtYear": 1974,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012141178",
+   "alongM": 30.12,
+   "widthM": 7.6,
+   "eavesM": 14.38,
+   "roofMaxM": 17.63,
+   "storeys3dbag": 0,
+   "builtYear": 1974,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012133877",
+   "alongM": 37.72,
+   "widthM": 7.62,
+   "eavesM": 14.34,
+   "roofMaxM": 17.63,
+   "storeys3dbag": 0,
+   "builtYear": 1974,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012080316",
+   "alongM": 45.28,
+   "widthM": 7.5,
+   "eavesM": 14.36,
+   "roofMaxM": 17.63,
+   "storeys3dbag": 0,
+   "builtYear": 1974,
+   "uncertainty": []
+  }
+ ]
+}

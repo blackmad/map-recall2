@@ -8,6 +8,7 @@
  */
 import type { GroundPiers, Item, RecessBand, Row, System, WinParams } from './spec.ts';
 import type { ArchKind, ArchParams } from './arch.ts';
+import { ribbonStoreyRow, type RibbonStoreyFit } from './ribbonStoreys.ts';
 
 /**
  * - `glazed-hall`: a brick base, then one glass skin up to the eaves with a mullion grid (largeCompile `drawGlazedHall`);
@@ -115,6 +116,8 @@ export interface SystemFit {
   loggias?: LoggiaFit;
   /** a glazed plinth with its own mullion pitch on the lowest storeys (intent `plinth`; fitLarge fills the defaults, PLINTH) */
   plinth?: PlinthFit;
+  /** continuous ribbon bands of glazing on some storeys, measured per storey (intent `ribbonStoreys`, ribbonStoreys.ts; opt-in) */
+  ribbonStoreys?: RibbonStoreyFit[];
   /** a side light in its own frame colour in every punched window of the listed storeys (intent `sideLight`; opt-in) */
   sideLight?: SideLightFit;
   /** per-storey, per-bay windows: width, centre, height, sill and side light per bay, cycling (intent `bayWindows`; opt-in) */
@@ -490,6 +493,12 @@ export function largeSystem(name: LargeSystemName, f: SystemFit): System {
     const win: WinParams = { w: +(1 - P.pier).toFixed(3), h: P.h, sill: +(P.sill * sh).toFixed(3), ...(lights > 1 ? { mullAt: Array.from({ length: lights - 1 }, (_, k) => +((k + 1) / lights).toFixed(4)) } : {}),
       ...(P.transom > 0 ? { rowsAt: [P.transom] } : {}), frame: s.frame, glass: s.glass, sillSlot: null, frameW: f.frames === false ? 0 : 0.06, ...(f.deepBars ? { barD: 0.035 } : {}) };
     put(st, under => inBays(under, { kind: 'punched', win }, P.bays));
+  }
+  for (const R of f.ribbonStoreys ?? []) for (const st of R.storeys) {
+    const sh = storeyH(st);
+    if (sh <= 0) continue;
+    const row = ribbonStoreyRow(R, sh, { glass: s.glass, frames: f.frames, deepBars: f.deepBars, paneSplit: f.paneSplit });
+    put(st, under => inBays(under, row, R.bays));
   }
   if (f.loggias) for (const st of f.loggias.storeys) {
     const L = f.loggias, sh = storeyH(st);

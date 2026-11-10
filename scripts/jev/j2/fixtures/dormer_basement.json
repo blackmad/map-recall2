@@ -1,0 +1,31 @@
+{
+ "family": "dormer_basement",
+ "set": "J1",
+ "note": "A rectified street-panorama crop of one Amsterdam house front; the house in question fills the image.",
+ "questions": {
+  "dormer": {
+   "type": "noul",
+   "instructions": "Is there a dormer window on the house front in `facade`: a small window with its own little roof that sticks out of the sloping roof surface, seen above the cornice or eaves line? A window inside the flat wall of a gable (an attic window in a gable) is NOT a dormer.",
+   "criteria": {
+    "true": "A separate small roofed window projects out of the roof slope above the eaves.",
+    "false": "No window projects from a roof slope: the top of the front is a gable or flat cornice with no roof dormers."
+   }
+  },
+  "basement": {
+   "type": "noul",
+   "instructions": "Are there windows or a door BELOW street level on the house front in `facade`, visible as basement windows in a well or area below the ground floor (the ground floor itself is not below street level)?",
+   "criteria": {
+    "true": "Windows or a door sit below the pavement level, in a light well or area.",
+    "false": "No openings below street level; the ground floor sits at pavement or at a raised stoop level."
+   }
+  },
+  "stoop": {
+   "type": "noul",
+   "instructions": "Are there outside steps leading up to a raised front door on the house front in `facade`?",
+   "criteria": {
+    "true": "Steps rise to a raised door.",
+    "false": "The door is at pavement level."
+   }
+  }
+ }
+}

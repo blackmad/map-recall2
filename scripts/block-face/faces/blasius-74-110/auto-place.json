@@ -1,0 +1,1390 @@
+{
+ "face": "blasius-74-110",
+ "street": "Blasiusstraat",
+ "library": "oud-west",
+ "stripDate": "2025-06-20",
+ "seconds": 7.2,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "blasius-74-110-r1",
+   "pands": [
+    "0363100012159877",
+    "0363100012251301",
+    "0363100012166289"
+   ]
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012159767",
+   "address": "Blasiusstraat 110",
+   "builtYear": 1899,
+   "widthM": 4.03,
+   "eavesM": 12.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#575a5c",
+    "wallRaw": "#5b5c5d",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 274,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 2.08,
+      "topWidthM": 1.15,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best clercq-nassaukade-corner scores 0.64 < 0.7 (3DBAG eaves 12.34 m = 4 storeys of 3.08 m vs the type's 3.69 m)",
+   "best": {
+    "type": "clercq-nassaukade-corner",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.34 m = 4 storeys of 3.08 m vs the type's 3.69 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155712",
+   "address": "Blasiusstraat 108",
+   "builtYear": 1899,
+   "widthM": 4.31,
+   "eavesM": 12.34,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#585553",
+    "wallRaw": "#5c5b5a",
+    "skyline": {
+     "eavesM": 13.65,
+     "eavesRow": 272,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 2.03,
+      "topWidthM": 1.45,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best clercq-nassaukade-corner scores 0.47 < 0.7 (3DBAG eaves 12.34 m = 4 storeys of 3.08 m vs the type's 3.69 m; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "clercq-nassaukade-corner",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.34 m = 4 storeys of 3.08 m vs the type's 3.69 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165397",
+   "address": "Blasiusstraat 106E",
+   "builtYear": 1899,
+   "widthM": 4.12,
+   "eavesM": 12.17,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#505854",
+    "wallRaw": "#565759",
+    "skyline": {
+     "eavesM": 11.6,
+     "eavesRow": 354,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 4.05,
+      "topWidthM": 0.47,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.105,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.24,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best clercq-nassaukade-corner scores 0.64 < 0.7 (3DBAG eaves 12.17 m = 4 storeys of 3.04 m vs the type's 3.69 m)",
+   "best": {
+    "type": "clercq-nassaukade-corner",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.17 m = 4 storeys of 3.04 m vs the type's 3.69 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.014 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155620",
+   "address": "Blasiusstraat 104E",
+   "builtYear": 1899,
+   "widthM": 4.28,
+   "eavesM": 12.24,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#474d4c",
+    "wallRaw": "#5e5e60",
+    "skyline": {
+     "eavesM": 12.45,
+     "eavesRow": 320,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 3.23,
+      "topWidthM": 0.75,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.118,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.63 m at 0.16 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.63,
+       "centre": 0.16,
+       "light": 0.31
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best clercq-nassaukade-corner scores 0.47 < 0.7 (3DBAG eaves 12.24 m = 4 storeys of 3.06 m vs the type's 3.69 m; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "clercq-nassaukade-corner",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.24 m = 4 storeys of 3.06 m vs the type's 3.69 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.022 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163439",
+   "address": "Blasiusstraat 102E",
+   "builtYear": 1899,
+   "widthM": 4.14,
+   "eavesM": 12.13,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 4.14,
+    "depthM": 0.42,
+    "centre": 0.5,
+    "lineRD": [
+     [
+      122632.09000000001,
+      485589.59975
+     ],
+     [
+      122630.09000000001,
+      485588.80874999997
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#504f52",
+    "wallRaw": "#525154",
+    "skyline": {
+     "eavesM": 12.55,
+     "eavesRow": 316,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 3.13,
+      "topWidthM": 0.75,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0.97,
+     "bayCentre": 0.71,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best clercq-nassaukade-corner scores 0.64 < 0.7 (3DBAG eaves 12.13 m = 4 storeys of 3.03 m vs the type's 3.69 m)",
+   "best": {
+    "type": "clercq-nassaukade-corner",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.13 m = 4 storeys of 3.03 m vs the type's 3.69 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.001 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 2 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158619",
+   "address": "Blasiusstraat 100E",
+   "builtYear": 1899,
+   "widthM": 4.27,
+   "eavesM": 12.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#545255",
+    "wallRaw": "#555456",
+    "skyline": {
+     "eavesM": 12.57,
+     "eavesRow": 315,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.7,
+      "topWidthM": 1.15,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0.95,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.45,
+       "widthM": 0.97,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best clercq-nassaukade-corner scores 0.47 < 0.7 (3DBAG eaves 12.15 m = 4 storeys of 3.04 m vs the type's 3.69 m; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "clercq-nassaukade-corner",
+    "score": 0.47,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.15 m = 4 storeys of 3.04 m vs the type's 3.69 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159877",
+   "address": "Blasiusstraat 98A",
+   "builtYear": 1899,
+   "widthM": 5.15,
+   "eavesM": 14.27,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#655c5d",
+    "wallRaw": "#665e5f",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 217,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.32,
+      "riseM": 1.85,
+      "topWidthM": 0.6,
+      "centre": 0.44
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.32,
+       "widthM": 1.1,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "placed",
+   "type": "kinker-1890-plain-brick",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "clercq-f-stucco-mansard",
+    "score": 0.82
+   },
+   "placement": {
+    "type": "kinker-1890-plain-brick",
+    "measuredPalette": {
+     "brick": "#655c5d",
+     "evidence": "strip 2025-06-20 span 1006-1212: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012251301",
+   "address": "Blasiusstraat 96",
+   "builtYear": 1900,
+   "widthM": 4.66,
+   "eavesM": 15.78,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 4.66,
+    "depthM": 0.43,
+    "centre": 0.5,
+    "lineRD": [
+     [
+      122619.024,
+      485584.47475
+     ],
+     [
+      122616.918,
+      485583.65175
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#58524f",
+    "wallRaw": "#5d5b58",
+    "skyline": {
+     "eavesM": 14.8,
+     "eavesRow": 226,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.07,
+      "topWidthM": 1.55,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.047,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.15,
+       "widthM": 3.85,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "clercq-nassaukade-corner",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "kinker-1890-brick-arched",
+    "score": 1
+   },
+   "placement": {
+    "type": "clercq-nassaukade-corner",
+    "measuredPalette": {
+     "brick": "#58524f",
+     "evidence": "strip 2025-06-20 span 1212-1399: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "near tie with kinker-1890-brick-arched (1)",
+    "crown two-dormers (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166289",
+   "address": "Blasiusstraat 94A",
+   "builtYear": 1900,
+   "widthM": 4.28,
+   "eavesM": 15.64,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 4.28,
+    "depthM": 0.39,
+    "centre": 0.5,
+    "lineRD": [
+     [
+      122614.00200000001,
+      485582.5585
+     ],
+     [
+      122611.90100000001,
+      485581.7585
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#5d6060",
+    "wallRaw": "#575653",
+    "skyline": {
+     "eavesM": 14.88,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2,
+      "topWidthM": 1.68,
+      "centre": 0.53
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.032,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.15,
+       "widthM": 3.92,
+       "centre": 0.5
+      },
+      {
+       "atM": 9.25,
+       "widthM": 0.82,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "placed",
+   "type": "kinker-1902-balcony-axis",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "clercq-nassaukade-corner",
+    "score": 0.84
+   },
+   "placement": {
+    "type": "kinker-1902-balcony-axis",
+    "measuredPalette": {
+     "brick": "#5d6060",
+     "evidence": "strip 2025-06-20 span 1398-1569: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown dormer (type default)"
+   ],
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012101460",
+   "address": "Blasiusstraat 92A",
+   "builtYear": 1953,
+   "widthM": 5.93,
+   "eavesM": 15.63,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 5.93,
+    "depthM": 0.28,
+    "centre": 0.5,
+    "lineRD": [
+     [
+      122609.87199999999,
+      485581.07325
+     ],
+     [
+      122606.309,
+      485579.70225000003
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#4a4b4b",
+    "wallRaw": "#4b4d4c",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.65 m at 0.6 (light 0.25): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.6,
+       "light": 0.25
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 13.97,
+       "widthM": 1.3,
+       "centre": 0.84
+      },
+      {
+       "atM": 12.18,
+       "widthM": 2.65,
+       "centre": 0.24
+      },
+      {
+       "atM": 10,
+       "widthM": 3.88,
+       "centre": 0.4
+      },
+      {
+       "atM": 9.18,
+       "widthM": 1.23,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1953, type 1899-1903)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1953, type 1899-1903"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.63 m = 4 storeys of 3.91 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.06 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012235931",
+   "address": "Blasiusstraat 88",
+   "builtYear": 1902,
+   "widthM": 7.9,
+   "eavesM": 15.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#585350",
+    "wallRaw": "#494948",
+    "skyline": {
+     "eavesM": 14.68,
+     "eavesRow": 231,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 2.6,
+      "topWidthM": 0.45,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.033,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.95,
+       "widthM": 1.57,
+       "centre": 0.31
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: frontage 7.9 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "frontage 7.9 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.64 m = 4 storeys of 3.91 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.8 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165732",
+   "address": "Blasiusstraat 86",
+   "builtYear": 1902,
+   "widthM": 5.42,
+   "eavesM": 15.63,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#23292a",
+    "wallRaw": "#4d4d4c",
+    "skyline": {
+     "eavesM": 16.02,
+     "eavesRow": 177,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 1.25,
+      "topWidthM": 1.6,
+      "centre": 0.5
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.012,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.6,
+       "widthM": 1.07,
+       "centre": 0.14
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012106512",
+   "address": "Blasiusstraat 82",
+   "builtYear": 1955,
+   "widthM": 8.9,
+   "eavesM": 15.64,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3a3f42",
+    "wallRaw": "#3d4141",
+    "skyline": {
+     "eavesM": 16.25,
+     "eavesRow": 168,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.17,
+       "widthM": 0.8,
+       "centre": 0.6
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1955, type 1899-1903; frontage 8.9 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1955, type 1899-1903",
+     "frontage 8.9 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.64 m = 4 storeys of 3.91 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.04 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113169",
+   "address": "Blasiusstraat 80",
+   "builtYear": 1911,
+   "widthM": 5.14,
+   "eavesM": 12.81,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#363738",
+    "wallRaw": "#383a3a",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 233,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.85,
+      "topWidthM": 1.25,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.45,
+     "bayCentre": 0.35,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.42,
+       "widthM": 1.2,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best kinker-1902-balcony-axis scores 0.64 < 0.7 (3DBAG eaves 12.81 m = 4 storeys of 3.2 m vs the type's 3.77 m)",
+   "best": {
+    "type": "kinker-1902-balcony-axis",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.81 m = 4 storeys of 3.2 m vs the type's 3.77 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065804",
+   "address": "Blasiusstraat 78",
+   "builtYear": 1911,
+   "widthM": 5.09,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 0.21,
+    "depthM": 0.33,
+    "centre": 0.021,
+    "lineRD": [
+     [
+      122578.62343749999,
+      485568.59425
+     ],
+     [
+      122575.7054375,
+      485567.61225
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#333536",
+    "wallRaw": "#373839",
+    "skyline": {
+     "eavesM": 14.75,
+     "eavesRow": 228,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.73,
+      "topWidthM": 1.63,
+      "centre": 0.74
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.23,
+     "bayCentre": 0.64,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.42,
+       "widthM": 1.02,
+       "centre": 0.64
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best kinker-1902-balcony-axis scores 0.64 < 0.7 (3DBAG eaves 12.72 m = 4 storeys of 3.18 m vs the type's 3.77 m)",
+   "best": {
+    "type": "kinker-1902-balcony-axis",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 12.72 m = 4 storeys of 3.18 m vs the type's 3.77 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012095110",
+   "address": "Blasiusstraat 76",
+   "builtYear": 1911,
+   "widthM": 5.12,
+   "eavesM": 12.89,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 4.88,
+    "toM": 5.11,
+    "depthM": 0.32,
+    "centre": 0.977,
+    "lineRD": [
+     [
+      122575.70499999999,
+      485567.61225
+     ],
+     [
+      122572.938,
+      485566.26625
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#343536",
+    "wallRaw": "#37393a",
+    "skyline": {
+     "eavesM": 14.45,
+     "eavesRow": 240,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 2,
+      "topWidthM": 1,
+      "centre": 0.29
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.52,
+       "widthM": 1.13,
+       "centre": 0.17
+      },
+      {
+       "atM": 6.38,
+       "widthM": 1.25,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012143521",
+   "address": "Blasiusstraat 74A",
+   "builtYear": 1991,
+   "widthM": 19.77,
+   "eavesM": 12.91,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 8.21,
+    "depthM": 0.96,
+    "centre": 0.208,
+    "lineRD": [
+     [
+      122563.675,
+      485561.70050000004
+     ],
+     [
+      122552.999,
+      485557.42250000004
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#414a4c",
+    "wallRaw": "#3b4141",
+    "skyline": {
+     "eavesM": 15,
+     "eavesRow": 218,
+     "confidence": 0.59,
+     "crown": {
+      "widthM": 2.63,
+      "riseM": 5.45,
+      "topWidthM": 0.35,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.55,
+       "widthM": 0.97,
+       "centre": 0.31
+      },
+      {
+       "atM": 4.88,
+       "widthM": 2,
+       "centre": 0.27
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1991, type 1899-1903; frontage 19.77 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1991, type 1899-1903",
+     "frontage 19.77 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.91 m = 4 storeys of 3.23 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.7 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

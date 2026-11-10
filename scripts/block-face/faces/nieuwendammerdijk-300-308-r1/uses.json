@@ -1,0 +1,41 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:35:48.161Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160505",
+   "addresses": [
+    "Nieuwendammerdijk 304"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 304",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000751851"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154157",
+   "addresses": [
+    "Nieuwendammerdijk 302"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 302",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000751849"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

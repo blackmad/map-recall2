@@ -1,0 +1,637 @@
+{
+ "version": 1,
+ "reader": "C2: second blind gable reader (Claude Opus subagent; same convention and sheets, read in reverse order)",
+ "date": "2026-11-10",
+ "convention": "Reading convention, hand set v1 (docs/house-line.md §4c). Read the pand's street front from the sheet: each panel is an archived\nrectified crop (x along the wall, y up from the ground) under a metre grid (thin line every metre, heavy every 3 m). Several panels are\nother capture years of the same wall: use them to see past trees and vans. Count on the grid, never on a small thumbnail.\n\naxes    Window columns of the upper storeys: vertical lines of openings above the ground storey. Take the storey with the most columns\n        (record axesPerStorey from storey 2 up only when storeys differ). One axis per separate opening in the masonry: two lights in\n        one opening split by a timber or stone mullion are one axis; two openings with a brick pier between are two. A balcony door\n        counts. A projecting bay window (erker) is one axis, however many lights it has. The ground storey (shopfront, doors) is not\n        counted.\n        A pand whose wall carries two house fronts counts both (all columns of the pand's street wall).\nstoreys Full street-facing storeys, counting neither a souterrain nor an attic in the crown.\n        How to apply it: count from the street-level storey up to the cornice line or the gable foot (where a gable's outline leaves\n        the party walls). The ground storey counts once however tall (shop or bel-etage); an entresol/mezzanine inside it is part of\n        it -> entresol: true. A souterrain (half below the pavement, windows at knee height, usually under a stoop) -> souterrain: true.\n        Windows inside the gable, crown or roof (dormers, a gable's attic storey, a set-back roof storey) -> atticInCrown: true. A\n        bel-etage over a souterrain is storey 1. A full top storey in the front plane under a cornice counts.\ngable   The crown: spout (tuit), neck (hals), raised-neck (verhoogde hals), bell (klok), step (trap), point (a triangular or pointed\n        gable, punt), cornice (a horizontal moulded cornice/lijst, roof behind, flat or pitched), flat (a plain parapet, no moulding),\n        shouldered. unknown when the crown is not in view (top cut off or hidden).\nfinish  The upper wall: brick (bare brick, any colour), painted-brick (painted, brick coursing still visible), stucco (smooth render,\n        plaster, often with incised joints), stone (stone-faced). Ignore the ground storey.\nwall    Colour family of the main upper wall (not trim, not shopfront): white (white, cream, very pale), grey, buff (yellow, sand,\n        beige), orange (orange, salmon), red, red-brown, brown, dark (near-black, very dark brown or grey).\npui     Ground storey use: shop (shop window, cafe, office glazing), residential (house door and house windows), warehouse (loading doors).\nconfidence per field: high = clearly visible, one reading; med = partly hidden or one close alternative; low = mostly guessed.\n        ref = the panel (A, B, C) you read it from.\nunknown A field the crop cannot show is \"unknown\" (the crown not in view, the top cut off so storeys cannot be counted, the ground\n        storey hidden for pui): never guess it at low confidence. unknown is never scored.\nextent  multi when the pand's wall carries more than one house front (two or three gables, a row of fronts in one crop); the\n        readings are still made but the pand is not scored. single otherwise.\nreadable false when no panel shows the pand's front (wrong wall, close-up, all hidden); then every value is unknown.",
+ "rows": [
+  {
+   "pandId": "0363100012571486",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012571486/front.jpg",
+     "sha256": "63d8055f0f565593df19c3829842cdee4d6155dc2f95edefbacdf09f45b5c967"
+    }
+   ],
+   "gable": {
+    "value": "point",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012571486/front.jpg"
+   },
+   "note": "straight-sided triangular warehouse gable with small shoulder ornaments at 15 m; apex cut off, spout the close alternative"
+  },
+  {
+   "pandId": "0363100012174979",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174979/front.jpg",
+     "sha256": "853828dc4cf49803a7ff7a22fc0133a12e484b2ca51c74f50cd076386170ff3d"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012174979/front.jpg"
+   },
+   "note": "horizontal moulded cornice ~10 m with dormer behind; neighbours' cornices too, tree on right"
+  },
+  {
+   "pandId": "0363100012174968",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174968/front.jpg",
+     "sha256": "83c1d8df6f530241bbfe3a07b947b74a2ea9042a0d1b6a67eaecde5390bd7d9a"
+    }
+   ],
+   "gable": {
+    "value": "neck",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174968/front.jpg"
+   },
+   "note": "vertical brick neck with curved white cap and claw pieces at ~8.4 m"
+  },
+  {
+   "pandId": "0363100012174911",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174911/front.jpg",
+     "sha256": "4ca44ba826f222f292c2e29938d0e027e2a3bd05f0da8d8fc87d402135da76cb"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174911/front.jpg"
+   },
+   "note": "deep overhanging cornice on brackets ~10-12 m"
+  },
+  {
+   "pandId": "0363100012174776",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174776/front.jpg",
+     "sha256": "1829d42eff57cd5ec1c69c2861c24cac708ae84cd256057844751e8ec6c89d65"
+    }
+   ],
+   "gable": {
+    "value": "bell",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012174776/front.jpg"
+   },
+   "note": "continuous curved white-edged outline from scroll feet at 12 m to cap at 14.5 m; neck with claw pieces the close alternative"
+  },
+  {
+   "pandId": "0363100012174735",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174735/front.jpg",
+     "sha256": "529df094492251b62f4c080cb57e6a88051f73d5d718f0fe9bca8bde6fd55dda"
+    }
+   ],
+   "gable": {
+    "value": "unknown",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174735/front.jpg"
+   },
+   "note": "crop shows only upper windows, crown not in view"
+  },
+  {
+   "pandId": "0363100012174702",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174702/front.jpg",
+     "sha256": "e7366a9f216abad49609c1bb19ec5cd033ecbf074c2200351bbb243d9319b2bf"
+    }
+   ],
+   "gable": {
+    "value": "neck",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174702/front.jpg"
+   },
+   "note": "vertical neck with white claw pieces at ~8.5 m and curved cap"
+  },
+  {
+   "pandId": "0363100012174429",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174429/years/2025.jpg",
+     "sha256": "2f555a2b87b170d00b89299c752ca3da3f6c3edd18418548539773819596353d"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012174429/front.jpg",
+     "sha256": "ab5b53261aef8618321ab043d247d9d3e499da4e8264e3c03d52d58548eaf2ec"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012174429/years/2021.jpg",
+     "sha256": "51900777112fee9d18f073df0cfafd899dd144bb076855cfcf85f401a6d90dba"
+    }
+   ],
+   "gable": {
+    "value": "neck",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174429/years/2025.jpg"
+   },
+   "note": "vertical brick neck with claw pieces at ~10 m; C agrees"
+  },
+  {
+   "pandId": "0363100012174427",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174427/front.jpg",
+     "sha256": "6aef1e44bbec173695ac2f6a8280cb27a27bb604008fb2e9fa2aed1a146773a6"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174427/front.jpg"
+   },
+   "note": "wide horizontal cornice ~10 m, dormers behind"
+  },
+  {
+   "pandId": "0363100012174412",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174412/front.jpg",
+     "sha256": "170fe040d882308cf0fd1f62302a08ffb43e660137012886ebcf99b9267f1e58"
+    }
+   ],
+   "gable": {
+    "value": "unknown",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174412/front.jpg"
+   },
+   "note": "modern balconies and glass roof, crown not readable"
+  },
+  {
+   "pandId": "0363100012174411",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174411/front.jpg",
+     "sha256": "e6df440881f02317a7a678513a141468c776ab83db2dd70575b8525fa175ba29"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174411/front.jpg"
+   },
+   "note": "eaves cornice ~12 m with pitched tiled roof and dormer"
+  },
+  {
+   "pandId": "0363100012174270",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174270/front.jpg",
+     "sha256": "8788f3f9fd7f990df5996b5177a0b282102d94e7c2054a0268295e61eef5b593"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012174270/front.jpg"
+   },
+   "note": "low eaves cornice ~7 m with tiled roof and dormer; curved gable at left is a neighbour"
+  },
+  {
+   "pandId": "0363100012174262",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174262/front.jpg",
+     "sha256": "ff0e6835e9eb31d2db3184d33a4c74e4d75a79af68faf27a7cf3b7123f2199fe"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012174262/front.jpg"
+   },
+   "note": "moulded cornice ~9.5 m; triangular tiled dormer/roof behind it"
+  },
+  {
+   "pandId": "0363100012174033",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174033/front.jpg",
+     "sha256": "49cf1cfd85b418f3f6670b5c435db545fb8cfe3992d3d0da0257f8d907345773"
+    }
+   ],
+   "gable": {
+    "value": "unknown",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174033/front.jpg"
+   },
+   "note": "top cut off at ~11.5 m, only the gable foot edge visible"
+  },
+  {
+   "pandId": "0363100012174031",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174031/front.jpg",
+     "sha256": "d7101cb3680f7b0560f0976aba0e8e250d2f0f8ba1a53ea336140ebcff323649"
+    }
+   ],
+   "gable": {
+    "value": "bell",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012174031/front.jpg"
+   },
+   "note": "curved brick shoulders from 12 m into vertical top with cap at ~14.6 m; neck the close alternative"
+  },
+  {
+   "pandId": "0363100012174017",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174017/front.jpg",
+     "sha256": "d066e334c155faf935eb68f8ef9277e353445e4a956addbc62248f8b4036d8c9"
+    }
+   ],
+   "gable": {
+    "value": "point",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012174017/front.jpg"
+   },
+   "note": "straight-sided triangular brick gable, apex ~15.3 m, foot ~13.7 m; glare"
+  },
+  {
+   "pandId": "0363100012174014",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012174014/front.jpg",
+     "sha256": "1ab77be06d28fad267cfa162202fe2fa6fe2a55f5c002e834898c2c330f443cb"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012174014/front.jpg"
+   },
+   "note": "horizontal cornice ~9.4 m on brackets, dormer behind"
+  },
+  {
+   "pandId": "0363100012173132",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173132/front.jpg",
+     "sha256": "d673c49e3eddd4907e8ffbfcfd3cf5ed261be35351906207b61e2421a70c1ac1"
+    }
+   ],
+   "gable": {
+    "value": "bell",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012173132/front.jpg"
+   },
+   "note": "curved brick shoulders from ~11 m rising into vertical top; top cut slightly; neck the alternative"
+  },
+  {
+   "pandId": "0363100012173054",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173054/front.jpg",
+     "sha256": "c2ddb5c615b5dc163cb795555c8e61516eca3703445c91e8bfcdf4070af01249"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012173054/front.jpg"
+   },
+   "note": "moulded cornice ~10-11 m"
+  },
+  {
+   "pandId": "0363100012173051",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173051/front.jpg",
+     "sha256": "948056a8d70087e27de09a96c35b89d4252870182ae5a572cdbe7aa3c0773a01"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012173051/front.jpg"
+   },
+   "note": "heavy cornice with dentils ~13.5-15 m"
+  },
+  {
+   "pandId": "0363100012173048",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012173048/front.jpg",
+     "sha256": "0d9510a571cd1a609d00f5cd776dd911e89b6c4b7d0a5fd04b7bf5bb100c5f7f"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012173048/front.jpg"
+   },
+   "note": "moulded cornice ~11 m, pyramid roof element behind"
+  },
+  {
+   "pandId": "0363100012172890",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172890/front.jpg",
+     "sha256": "c4e54e24b3606033718d2821fcc351e1bf8d96e7bde8a6aef42d9a33e1b291d8"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012172890/years/2025.jpg",
+     "sha256": "3dea19dfb9a545e07411879ca8e10b9961026a6591497c796860c70c7b95c8a8"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012172890/years/2022.jpg",
+     "sha256": "ab18e7df73f4d91932356f09e111f06c070181bc6fbf3616ca7e8f8fa72224a2"
+    }
+   ],
+   "gable": {
+    "value": "raised-neck",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012172890/years/2025.jpg"
+   },
+   "note": "claw pieces at ~10.5 m, tall vertical neck with second set of side pieces ~12.8 m and scrolled cap ~14 m"
+  },
+  {
+   "pandId": "0363100012172888",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172888/front.jpg",
+     "sha256": "1dc832c7f480d1c5be22450a006486c08b4372f5c04aaf94d0880da3e768d9b3"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012172888/front.jpg"
+   },
+   "note": "full-width cornice with triangular pediment ~11.5-12.5 m; point the alternative"
+  },
+  {
+   "pandId": "0363100012172882",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172882/front.jpg",
+     "sha256": "25e7e26afd08221274a8aafdf3dcb9680a624b8795808b4e0dc2cf87ba19d135"
+    }
+   ],
+   "gable": {
+    "value": "unknown",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012172882/front.jpg"
+   },
+   "note": "front hidden by tree foliage"
+  },
+  {
+   "pandId": "0363100012172776",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172776/front.jpg",
+     "sha256": "795a341a186f7b5d93956febfc89f48102c427f90abbde8f4cc4d4e1ed071645"
+    }
+   ],
+   "gable": {
+    "value": "flat",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012172776/front.jpg"
+   },
+   "note": "plain brick parapet with simple coping ~12.5 m, no moulded cornice"
+  },
+  {
+   "pandId": "0363100012172603",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172603/front.jpg",
+     "sha256": "a979115f833983d5037e142c951603776f5a73eed98af86d0de1d3acdde17a80"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012172603/front.jpg"
+   },
+   "note": "bracketed cornice ~12.3-13.5 m, two dormers behind"
+  },
+  {
+   "pandId": "0363100012172579",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012172579/front.jpg",
+     "sha256": "43606c4c2258f010f5f115b76341247f2192d67dd68348a7e6921382340033ca"
+    }
+   ],
+   "gable": {
+    "value": "bell",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012172579/front.jpg"
+   },
+   "note": "convex curved brick outline from feet ~12.2 m with vases, rising to top"
+  },
+  {
+   "pandId": "0363100012170208",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012170208/years/2021.jpg",
+     "sha256": "760b5185ee3451a23e73bb87dcdfef4986df51684b315c9d3ceee5dd82583b16"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012170208/front.jpg",
+     "sha256": "3a3e88de1f1d720b5d97b72c2923781bf166232c5cb0c927805fa80083b6299d"
+    }
+   ],
+   "gable": {
+    "value": "unknown",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012170208/front.jpg"
+   },
+   "note": "A cut off below crown; B shows a crown but blurred and behind branches"
+  },
+  {
+   "pandId": "0363100012170091",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012170091/front.jpg",
+     "sha256": "f88a2e91b00500a94245d9fd06fcc92c167891bbfbeab5ce897602eea5b80c57"
+    }
+   ],
+   "gable": {
+    "value": "flat",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012170091/front.jpg"
+   },
+   "crowns": 2,
+   "note": "modern plain parapet ~15 m; two front sections each with hoist beam"
+  },
+  {
+   "pandId": "0363100012170089",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012170089/front.jpg",
+     "sha256": "836e731d54dd32fe5b1c1db3c1404cde9d3cf2523d5f4d8bc89c7ac3ddd3da6c"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012170089/front.jpg"
+   },
+   "note": "broad cornice ~13.3-15 m"
+  },
+  {
+   "pandId": "0363100012170044",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012170044/front.jpg",
+     "sha256": "d8c650387506607402b2391f381988be1c32922e724ec87638bd2ea5f159fcb5"
+    }
+   ],
+   "gable": {
+    "value": "unknown",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012170044/front.jpg"
+   },
+   "note": "close-up of doorway, crown not in view"
+  },
+  {
+   "pandId": "0363100012170036",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012170036/front.jpg",
+     "sha256": "c46a6cb01c2abd59cc8fea54073b1c14cc55cf247940bb949b026f5efc51744a"
+    }
+   ],
+   "gable": {
+    "value": "step",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012170036/front.jpg"
+   },
+   "note": "stepped brick gable, steps at ~10.8, 11.6, 12.5 m with stone caps"
+  },
+  {
+   "pandId": "0363100012170033",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012170033/front.jpg",
+     "sha256": "0bedd51cc50ac5cba0a14c850a0892717c71d1d4ba7ef7f7e9e66d6de7950242"
+    }
+   ],
+   "gable": {
+    "value": "bell",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012170033/front.jpg"
+   },
+   "note": "convex curved brick sides from foot ~8 m, vase at right foot"
+  },
+  {
+   "pandId": "0363100012169908",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169908/front.jpg",
+     "sha256": "452ca7a5b0ddc50bd616e7cdd1465a2ea4eeb229870baff8cba2664d9d623109"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012169908/front.jpg"
+   },
+   "note": "deep overhanging eaves cornice ~10-12 m"
+  },
+  {
+   "pandId": "0363100012169904",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169904/years/2020.jpg",
+     "sha256": "15663cd80788f036b9a54f1cf47aada4134d609cf0174bcb9504e6beb84ae62d"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012169904/front.jpg",
+     "sha256": "b5e05b3c2ade2c7136ef0420ee90d4412b62e6f4bdd42a197815108c72196342"
+    },
+    {
+     "ref": "source-data://pand-crops/0363100012169904/years/2022.jpg",
+     "sha256": "d90453aa66f9bcddf79ec9877f2e2feb1a2e44b19bd1fb08a7920987002004e7"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012169904/years/2020.jpg"
+   },
+   "note": "moulded cornice ~10-11 m, B agrees"
+  },
+  {
+   "pandId": "0363100012169092",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169092/front.jpg",
+     "sha256": "9029c6c3e09e85f880aac10d95528b21ae2f235834a5204ff83d155c7d228ab6"
+    }
+   ],
+   "gable": {
+    "value": "unknown",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012169092/front.jpg"
+   },
+   "note": "crop shows shop cornice and upper windows only, crown cut off"
+  },
+  {
+   "pandId": "0363100012169085",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012169085/front.jpg",
+     "sha256": "9c1d1146bbb12c30e44b50241a2dba0d7d430a8d0932efa41b5581a3a05350be"
+    }
+   ],
+   "gable": {
+    "value": "bell",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012169085/front.jpg"
+   },
+   "note": "scroll at foot ~11.3 m and convex curved brick side rising past 13 m; top cut off"
+  },
+  {
+   "pandId": "0363100012168655",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168655/front.jpg",
+     "sha256": "be96fed4de24ad8202eb6f03c484e605490ad34601109674b1f6123d5b7ef043"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012168655/front.jpg"
+   },
+   "note": "moulded cornice ~8.5-9.5 m, dormer behind"
+  },
+  {
+   "pandId": "0363100012168147",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012168147/front.jpg",
+     "sha256": "fdf1b00bb2e5c62a7bdac4bc2277e12489ddc7264937c503648179182d0d6819"
+    }
+   ],
+   "gable": {
+    "value": "unknown",
+    "confidence": "high",
+    "ref": "source-data://pand-crops/0363100012168147/front.jpg"
+   },
+   "note": "upper part blurred/obscured"
+  },
+  {
+   "pandId": "0363100012167957",
+   "images": [
+    {
+     "ref": "source-data://pand-crops/0363100012167957/front.jpg",
+     "sha256": "b97cc339be868046890fea5876b90ba1fe60c9194e26b66cc8f51fa5e8dba16d"
+    }
+   ],
+   "gable": {
+    "value": "cornice",
+    "confidence": "med",
+    "ref": "source-data://pand-crops/0363100012167957/front.jpg"
+   },
+   "note": "low eaves with gutter ~6 m and pitched tiled roof with dormer"
+  }
+ ]
+}

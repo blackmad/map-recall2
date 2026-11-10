@@ -1,0 +1,251 @@
+[
+ {
+  "name": "nassau-164843-render",
+  "file": "nassau-164843-render.png",
+  "source": "house:preview 0363100012164843 (generic route, lit), front.png",
+  "ppm": 50,
+  "topM": 18.5,
+  "box": {
+   "u0": 0.2,
+   "u1": 5.68,
+   "v0": 0,
+   "v1": 15.62
+  },
+  "lines": [
+   0,
+   3.2,
+   6.305,
+   9.41,
+   12.515,
+   15.62
+  ]
+ },
+ {
+  "name": "nassau-164843-photo",
+  "file": "nassau-164843-photo.jpg",
+  "source": "pand-reference 2022-04-26 crop (house:preview --photo photo.png)",
+  "ppm": 50,
+  "topM": 19.24,
+  "box": {
+   "u0": 0.2,
+   "u1": 5.68,
+   "v0": 0,
+   "v1": 15.62
+  },
+  "lines": [
+   0,
+   3.2,
+   6.305,
+   9.41,
+   12.515,
+   15.62
+  ]
+ },
+ {
+  "name": "nassau-161422-render",
+  "file": "nassau-161422-render.png",
+  "source": "house:preview 0363100012161422 (generic route, lit), front.png",
+  "ppm": 50,
+  "topM": 18,
+  "box": {
+   "u0": 0.2,
+   "u1": 5.81,
+   "v0": 0,
+   "v1": 14.13
+  },
+  "lines": [
+   0,
+   3.2,
+   5.933,
+   8.665,
+   11.398,
+   14.13
+  ]
+ },
+ {
+  "name": "heren-175702-render",
+  "file": "heren-175702-render.png",
+  "source": "house:preview 0363100012175702 --recipe cw-heren-175702, front.png",
+  "ppm": 50,
+  "topM": 16,
+  "box": {
+   "u0": 0.2,
+   "u1": 5.37,
+   "v0": 0,
+   "v1": 10.57
+  },
+  "lines": [
+   0,
+   3.2,
+   6.885,
+   10.569
+  ]
+ },
+ {
+  "name": "keizers-171052-render",
+  "file": "keizers-171052-render.png",
+  "source": "house:preview 0363100012171052 --recipe cw-keizers-171052, front.png",
+  "ppm": 50,
+  "topM": 19,
+  "box": {
+   "u0": 0.2,
+   "u1": 5.32,
+   "v0": 0,
+   "v1": 15.4
+  },
+  "lines": [
+   0,
+   3.2,
+   5.972,
+   8.743,
+   11.515,
+   14.286,
+   15.4
+  ]
+ },
+ {
+  "name": "nassau-116526-strip",
+  "file": "nassau-116526-strip.jpg",
+  "source": "block-face strip nassau-145-152 crop of 0363100012116526 (house:preview --photo photo.png)",
+  "ppm": 50,
+  "topM": 20.46,
+  "box": {
+   "u0": 0.2,
+   "u1": 12.61,
+   "v0": 0,
+   "v1": 14.75
+  },
+  "lines": [
+   0,
+   3.2,
+   6.088,
+   8.977,
+   11.865,
+   14.753
+  ]
+ },
+ {
+  "name": "haarlemmerweg-940-white",
+  "file": "haarlemmerweg-940-white.jpg",
+  "source": "likeness-replay dump haarlemmerweg-940 walls[1] (white painted slab), lower 16 m, first 700 px",
+  "ppm": 50,
+  "topM": 15.504,
+  "box": {
+   "u0": 0.2,
+   "u1": 13.8,
+   "v0": 0,
+   "v1": 15.504
+  },
+  "lines": [
+   0,
+   3.566,
+   6.42,
+   9.273,
+   12.126,
+   14.979
+  ]
+ },
+ {
+  "name": "marnixstraat-248-white",
+  "file": "marnixstraat-248-white.jpg",
+  "source": "likeness-replay dump marnixstraat-248-185422 walls[1] (white slab), first 700 px",
+  "ppm": 50,
+  "topM": 22.355,
+  "box": {
+   "u0": 0.2,
+   "u1": 13.8,
+   "v0": 0,
+   "v1": 22.355
+  },
+  "lines": [
+   0,
+   3.682,
+   6.627,
+   9.573,
+   12.518,
+   15.464,
+   18.409,
+   21.355,
+   21.855
+  ]
+ },
+ {
+  "name": "ab07-168006-dark",
+  "file": "ab07-168006-dark.jpg",
+  "ppm": 50,
+  "topM": 15.24,
+  "box": {
+   "u0": 0.2,
+   "u1": 7.02,
+   "v0": 0,
+   "v1": 11.2
+  },
+  "lines": [
+   0,
+   3.0,
+   5.9,
+   8.6,
+   11.2
+  ],
+  "source": "H4 AB07 crop 0363100012168006 (wall route, 2021-03-17, Amsterdam panoramas CC BY 4.0), front.jpg"
+ },
+ {
+  "name": "ab07-173056-white",
+  "file": "ab07-173056-white.jpg",
+  "ppm": 40,
+  "topM": 11.57,
+  "box": {
+   "u0": 0.2,
+   "u1": 3.65,
+   "v0": 0,
+   "v1": 10.3
+  },
+  "lines": [
+   0,
+   3.4,
+   5.2,
+   7.9,
+   10.3
+  ],
+  "source": "H4 AB07 crop 0363100012173056 (strip route, 2021-03-17), front.jpg: white-painted canal house"
+ },
+ {
+  "name": "ab07-168698-dark",
+  "file": "ab07-168698-dark.jpg",
+  "ppm": 50,
+  "topM": 12.24,
+  "box": {
+   "u0": 0.2,
+   "u1": 5.48,
+   "v0": 0,
+   "v1": 10.2
+  },
+  "lines": [
+   0,
+   5.0,
+   7.5,
+   10.2
+  ],
+  "source": "H4 AB07 crop 0363100012168698 (wall route, 2023-02-27), front.jpg"
+ },
+ {
+  "name": "ab07-169846-dark",
+  "file": "ab07-169846-dark.jpg",
+  "ppm": 50,
+  "topM": 12.84,
+  "box": {
+   "u0": 0.2,
+   "u1": 3.84,
+   "v0": 0,
+   "v1": 12.5
+  },
+  "lines": [
+   0,
+   5.0,
+   7.6,
+   10.3,
+   12.5
+  ],
+  "source": "H4 AB07 crop 0363100012169846 (wall route), front.jpg"
+ }
+]

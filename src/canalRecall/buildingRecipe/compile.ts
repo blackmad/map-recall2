@@ -22,6 +22,7 @@ import {addTilePanels} from './tileAccents.ts';
 import {addFriezeVents} from './friezeVents.ts';
 import {addJambBlocks} from './jambBlocks.ts';
 import {addWallAnchors} from './wallAnchors.ts';
+import {addPierBlocks} from './pierBlocks.ts';
 import {addEavesOverhangs} from './eavesOverhang.ts';
 import {addGroundCanopies} from './groundCanopy.ts';
 import {applyOudWest} from './oudWest.ts';
@@ -227,6 +228,7 @@ export function compileBuilding(intent: BuildingIntent, facts: BuildingFacts): C
   if (intent.fronts.some(f => f.jambBlocks)) addJambBlocks(built.group, intent, recipe, report);
   // Iron wall anchors on the piers (opt-in, De Pijp 1882-1893 rows).
   if (intent.fronts.some(f => f.wallAnchors)) addWallAnchors(built.group, intent, recipe, report);
+  if (intent.fronts.some(f => f.pierBlocks)) addPierBlocks(built.group, intent, recipe, report);
   // Flat roof's deep eaves overhang (opt-in, Rivierenbuurt 1930s rows).
   if (intent.fronts.some(f => f.eavesOverhang)) addEavesOverhangs(built.group, intent, recipe, report);
   if (intent.fronts.some(f => f.groundCanopy)) addGroundCanopies(built.group, intent, recipe, report);

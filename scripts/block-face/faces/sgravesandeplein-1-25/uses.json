@@ -1,0 +1,189 @@
+{
+ "street": "'s-Gravesandeplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:08:17.598Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163707",
+   "addresses": [
+    "'s-Gravesandeplein 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "'s-Gravesandeplein 1-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000802225"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159618",
+   "addresses": [
+    "'s-Gravesandeplein 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "'s-Gravesandeplein 3-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000802229"
+    },
+    {
+     "address": "'s-Gravesandeplein 3-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010012610973"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161624",
+   "addresses": [
+    "'s-Gravesandeplein 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "'s-Gravesandeplein 11-H",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000802233"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012235974",
+   "addresses": [
+    "'s-Gravesandeplein 13",
+    "'s-Gravesandeplein 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "'s-Gravesandeplein 13-H",
+     "use": "kantoorfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000802237"
+    },
+    {
+     "address": "'s-Gravesandeplein 15-H",
+     "use": "kantoorfunctie",
+     "areaM2": 124,
+     "bagId": "0363010001012051"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154179",
+   "addresses": [
+    "'s-Gravesandeplein 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "'s-Gravesandeplein 17-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000802267"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153841",
+   "addresses": [
+    "'s-Gravesandeplein 19A",
+    "'s-Gravesandeplein 19B"
+   ],
+   "groundUnits": [
+    {
+     "address": "'s-Gravesandeplein 19A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 844,
+     "bagId": "0363010001038434"
+    },
+    {
+     "address": "'s-Gravesandeplein 19B",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 286,
+     "bagId": "0363010001038438"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12748094426,
+     "lngLat": [
+      4.9155335,
+      52.3595419
+     ],
+     "tags": {
+      "amenity": "community_centre",
+      "name": "Dynamo"
+     },
+     "fetchedAt": "2026-11-10T07:08:17.598Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166277",
+   "addresses": [
+    "'s-Gravesandeplein 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "'s-Gravesandeplein 21-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000802272"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154172",
+   "addresses": [
+    "'s-Gravesandeplein 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "'s-Gravesandeplein 23-H",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000802276"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160888",
+   "addresses": [
+    "'s-Gravesandeplein 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "'s-Gravesandeplein 25-H",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000802279"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

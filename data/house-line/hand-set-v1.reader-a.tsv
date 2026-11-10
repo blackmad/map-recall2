@@ -1,0 +1,81 @@
+# pandId	panel	axes:conf	storeys:conf	flags (souterrain,entresol,atticInCrown,multi,aps=a-b)	gable:conf	finish:conf	wall:conf	pui:conf	note   (- = unknown: the crop cannot show it)
+0363100012174187	A	3:med	5:high	-	cornice:high	brick:high	brown:med	residential:med	two erkers over storeys 3-4 plus balconies; storey 2 has three window groups (erker bases + centre coupled window)
+0363100012172884	A	1:high	2:high	atticInCrown	neck:med	brick:high	red-brown:high	shop:low	tiny front; one coupled window on storey 2; one window in the gable; neck vs bell outline (concave shoulders at 8.5 m)
+0363100012172889	A	2:high	3:med	atticInCrown,entresol	neck:med	painted-brick:med	dark:high	residential:med	tall ground storey with transom lights (entresol); low third storey 10-11.5 m with one three-light window; top cut at 13.5 m
+0363100012173353	B	3:high	3:high	atticInCrown	neck:high	brick:high	red-brown:high	residential:high	claw-piece neck gable, one gable window
+0363100012173345	A	2:high	3:med	souterrain,atticInCrown	bell:med	brick:high	red:med	residential:med	storey 3 one three-light window with raised centre; low basement lights at 0.5-1.2 m; curved flanks to a rounded top (bell rather than claw-piece neck)
+0363100012168085	A	9:med	3:med	souterrain,atticInCrown,multi	neck:med	painted-brick:med	grey:high	residential:high	one pand of three house fronts with stoops, three plain rectangular neck tops with one window each; branches over the left | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored
+0363100012168155	B	2:high	3:high	atticInCrown	bell:med	painted-brick:med	dark:high	residential:med	tall ground storey with transoms; curved flanks to a small rounded cap
+0363100012173341	A	2:high	3:high	atticInCrown	neck:med	brick:high	red-brown:high	shop:med	small claws at the gable foot (10.3 m), arched cap
+0363100012169981	A	3:med	3:high	atticInCrown,aps=2-3	cornice:high	brick:high	dark:med	shop:high	axesPerStorey 2,3: storey 3 window + balcony door + window inside one white surround; attic light in the cornice frieze; very dark brown brick
+0363100012173134	A	2:high	3:high	atticInCrown	flat:high	brick:high	red-brown:med	residential:high	modern infill; each storey two wide multi-light openings; setback roof storey not counted
+0363100012172576	A	3:high	3:high	atticInCrown	neck:high	brick:high	red-brown:high	residential:med	claw pieces at the gable foot, one gable window
+0363100012173058	A	3:high	2:high	atticInCrown	bell:med	brick:high	red-brown:high	shop:low	concave flanks to a short rounded cap with small shoulders at 8.8 m (bell or neck); arched ground-storey glazing between pilasters
+0363100012174743	A	3:high	2:high	atticInCrown	point:high	brick:high	brown:med	residential:high	triangular gable with four windows on two levels; white rendered ground storey
+0363100012168157	A	2:high	3:med	atticInCrown	point:med	painted-brick:med	dark:high	residential:med	storey 3 one three-light window; straight-sided pointed gable (or spout) with one window
+0363100012174971	A	3:high	4:high	atticInCrown	cornice:high	brick:high	brown:med	shop:med	attic lights in the cornice frieze, hipped roof behind
+0363100012174976	A	3:high	4:high	-	cornice:high	brick:high	red-brown:med	shop:med	white cornice band, tiled roof behind
+0363100012172582	B	3:high	4:high	-	cornice:high	brick:high	brown:med	residential:med	top storey has oculus, window, oculus (3 openings); big central double doors on the ground storey
+0363100012168159	A	3:med	-:low	-	point:high	brick:high	red:high	-:low	a church front (rose window, pinnacles), not a house: storeys and pui do not apply well
+0363100012174177	A	3:high	3:high	atticInCrown	point:high	brick:high	red-brown:med	shop:med	brick point gable with one window; the grey gable behind it belongs to another roof
+0363100012168647	A	3:high	3:high	-	cornice:high	painted-brick:high	dark:high	residential:med	near-black painted brick, white cornice and ground-storey fascia; dormer behind; tree at right
+0363100012168442	A	3:high	4:high	atticInCrown	cornice:med	brick:high	brown:med	shop:high	narrow front, centre balcony doors; a recessed attic storey above the cornice
+0363100012174653	A	3:high	3:high	-	cornice:high	brick:high	red:med	residential:med	bracketed eaves cornice, one dormer; arched ground-storey window
+0363100012169902	A	2:high	3:high	atticInCrown	point:med	brick:high	red-brown:med	shop:med	straight-sided gable with one window, chimney on top; B half hidden by sheeting, C is a close-up
+0363100012174746	A	4:high	3:high	-	cornice:med	brick:high	red-brown:high	residential:high	plain white cornice band, tiled roof and dormers behind
+0363100012169914	A	3:high	4:high	-	cornice:high	brick:high	red-brown:high	shop:high	frieze under the cornice, yellow quoins; roof dormer behind
+0363100012173131	A	3:high	3:high	-	cornice:high	brick:high	brown:med	shop:med	pediment hoods over the windows
+0363100012172773	A	7:med	5:high	-	flat:high	brick:high	grey:low	shop:high	modern block, 17 m; centre bay with two loggia columns and a small window between, curved balcony; colour grey-brown in A/B, sunlit buff in C
+0363100012174564	A	3:high	4:high	atticInCrown	bell:med	brick:high	red:med	shop:high	neo-renaissance curved top gable with a window aedicule; white bands
+0363100012173135	A	2:high	3:high	entresol,atticInCrown,aps=1-2	neck:med	brick:high	red-brown:high	shop:med	glazed entresol over the shop; storey 2 a wide erker (one axis), storey 3 two windows; small ornaments at the gable foot
+0363100012172891	A	4:med	4:high	-	cornice:high	brick:high	red-brown:high	residential:med	corner building: the three panels show different walls (B 3 columns, C 2); read A, the describe crop; white bands, dormers behind the cornice
+0363100012168606	A	3:high	4:high	atticInCrown	bell:med	brick:high	red-brown:high	residential:med	curved flanks to a rounded cap, no vertical neck sides
+0363100012170031	B	4:med	4:med	aps=4-2-2	-:low	stucco:high	white:high	shop:med	storey 2 is a glazed band of four lights between pilasters, upper storeys two windows (typical 2); A is washed out but shows a pointed top at 10.7-12 m; B/C cut at 12 m | rev 2: no crown in view: gable unknown
+0363100012174646	A	3:high	3:high	-	cornice:med	brick:med	dark:high	residential:med	near-black brick, projecting eaves board; white band over the ground storey
+0363100012174253	A	3:high	4:high	atticInCrown	bell:med	brick:high	red:med	residential:low	curved flanks to a rounded top; dark painted ground storey
+0363100012168077	A	3:high	4:high	souterrain	cornice:high	painted-brick:med	dark:high	residential:high	raised ground storey over basement lights; white cornice
+0363100012170145	A	3:high	4:high	atticInCrown	cornice:low	brick:high	brown:med	shop:high	centre erker over storeys 2-4; balustraded parapet with a central gabled dormer above (cornice vs flat)
+0363100012174168	A	3:high	4:high	-	cornice:low	brick:high	dark:med	shop:high	dark grey brick; thin white coping at 14.3 m, nothing visible above it (a tree hides the top left)
+0363100012174180	A	-:low	-:low	-	step:med	brick:med	red-brown:med	-:low	smeared multi-panorama fusion (doubled edges); only the stepped outline and the brick read
+0363100012174422	A	2:high	3:high	entresol,atticInCrown	step:high	brick:high	brown:med	residential:med	stone pilastered ground storey with an entresol window band; one gable window
+0363100012172779	A	-:low	-:low	atticInCrown	-:low	brick:med	brown:low	-:low	tree over the left half, dim; ornamented gable flank and an oculus
+0363100012174696	A	6:low	4:med	multi	cornice:high	brick:high	red-brown:high	residential:med	the crop holds two fronts: a taller cornice front (0-5.5 m, 3 axes, 4 storeys) and a lower one (5.5-10 m, 3 axes, 3 storeys + dormer); both counted | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored
+0363100012170043	A	-:low	3:med	souterrain,atticInCrown	-:low	painted-brick:med	dark:high	residential:high	white stucco bel-etage over a souterrain with a stoop; B is smeared; a third window column at 3.3 m in A may be the neighbour's
+0363100012167955	A	3:high	3:med	atticInCrown	flat:med	brick:high	red-brown:high	residential:high	modern infill with a set-back top storey; A top smeared, B a close-up
+0363100012174173	A	5:low	-:low	multi	-:low	painted-brick:low	dark:med	residential:low	a leafy tree and a trunk hide most of a ~10 m double front (dark painted sides, pale centre); top not visible | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored
+0363100012169988	A	4:high	4:med	-	flat:high	brick:high	buff:med	residential:high	post-war block of two parts: left 4 storeys, right 3 with a roof terrace; pinkish beige brick
+0363100012174923	A	6:low	3:med	atticInCrown,multi	neck:med	brick:med	brown:med	residential:med	two fronts: left brown brick neck gable (3 axes), right dark painted gable behind a trunk (2-3 axes); gable/finish/colour read from the left front | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored
+0363100012169088	A	UNREADABLE	-	-	-	-	-	-	the left half is a neighbour's corner shopfront close to the camera; the dark front behind is cut at the right edge, the pand cannot be isolated
+0363100012174641	A	3:med	5:med	atticInCrown,aps=2-2-3-3	point:high	brick:high	dark:high	shop:low	a lamp post hides the right column; storeys 4-5 have a raised centre (hoist) window between two; one gable window
+0363100012169091	A	UNREADABLE	-	-	-	-	-	-	an oblique close-up of a shopfront and one window; no front
+0363100012168698	A	3:high	3:high	souterrain	cornice:high	painted-brick:med	dark:high	residential:high	near-black painted brick, white cornice; basement under a stoop (A; B/C a houseboat hides the ground)
+0363100012172583	A	3:high	5:med	-	cornice:high	brick:high	brown:med	residential:med	a loft storey with one central hoist opening under the cornice counted as storey 5; storey 4 is oculus-window-oculus
+0363100012174184	A	2:high	3:high	-	cornice:high	painted-brick:low	dark:high	residential:med	white cornice band, tiled roof with a dormer behind; a lamp post in front
+0363100012169899	A	6:low	3:med	souterrain,multi	cornice:high	brick:high	brown:med	residential:high	the 14 m wall shows two cornice fronts (left 3 axes, right 3 axes plus a narrow window at 11 m); counted 6; basement lights under both | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored
+0363100012167956	A	UNREADABLE	-	-	-	-	-	-	a close-up of two windows of a modern infill; no full front
+0363100012174754	A	2:high	3:high	-	cornice:med	brick:high	red-brown:high	-:low	a white van hides the ground storey; projecting eaves cornice
+0363100012174428	A	2:high	4:high	-	cornice:high	brick:high	red-brown:med	shop:high	top half overexposed; frieze vents under the cornice
+0363100012173352	A	3:high	3:high	-	cornice:high	painted-brick:med	dark:high	shop:med	bare tree in front (A), B is a trunk; white cornice
+0363100100093912	A	-:low	1:med	-	flat:low	brick:high	red-brown:med	shop:med	a one-storey brick annex with a cafe sign and a roof slope behind; no upper storey, so no axes
+0363100012169267	A	3:high	4:high	atticInCrown	cornice:high	brick:high	red-brown:high	shop:high	white banded voussoirs; attic frieze with small lights under the cornice
+0363100012174080	A	3:low	3:med	multi	flat:high	brick:high	grey:med	residential:high	a 19 m modern ensemble of three masses (red brick tower, grey-striped blocks with roof terraces); axes counted on the front plane of storey 2 | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored
+0363100012175320	B	3:high	4:med	souterrain	cornice:high	brick:med	brown:med	residential:high	B (front-alt) shows the whole front to the cornice: bel-etage with stoop door + 3 storeys; A is a closer, cut view; a houseboat hides B's ground
+0363100012175318	A	3:high	-:low	-	-:low	brick:high	brown:med	shop:med	top cut at 14 m in both panels (at least ground + 3 storeys); houseboat over A's ground; balconied centre axis
+0363100012168136	A	3:high	3:med	souterrain,atticInCrown	-:low	stucco:high	grey:high	residential:high	bel-etage over a souterrain (stoop); one gable window; top cut at 15 m, only a slanting shoulder shows
+0363100012182857	A	5:high	3:med	entresol,atticInCrown,crowns=2	step:high	brick:high	red:med	shop:high	two step gables over a 12 m front, white banded voussoirs and quoin blocks; entresol band over the shopfront | rev 3: crowns 2 (one pand, 5 axes; ruling): gable scored on its type
+0363100012182849	B	2:high	3:med	entresol,atticInCrown	cornice:high	brick:high	orange:med	shop:high	shop plus a glazed entresol band (4.2-6 m) not counted; pediment dormer over the cornice
+0363100012182848	B	-:low	-:low	-	-:low	brick:med	brown:med	shop:high	oblique, dim, lamp posts in front; the top is cut; only the cafe ground storey and two upper columns read
+0363100012176312	B	4:med	4:med	atticInCrown	point:med	brick:high	red-brown:high	shop:med	corner building seen from the canal (quay wall 0-5 m); corner erker counted as one axis; a cross gable over part of the front and dormers; an advertising column hides part of A
+0363100012176346	A	3:high	3:med	entresol	flat:med	brick:high	red-brown:high	shop:high	double-height shop storey with a glazed canopy (one storey + entresol); arched windows; arcaded parapet (flat vs cornice)
+0363100012169116	B	3:high	-:low	souterrain	-:low	brick:high	brown:high	residential:high	both panels are cut at the sides and top: at least a bel-etage over basement lights + 3 storeys; crown not visible
+0363100012168578	A	UNREADABLE	-	-	-	-	-	-	both panels are oblique views of a 19 m wall of several fronts; B is under scaffolding
+0363100012180181	B	3:high	4:high	-	cornice:high	brick:high	orange:med	residential:high	B (front-alt) shows the whole front; A is sky and a lamp; white cornice/attic band with a pediment dormer
+0363100012167483	A	3:high	4:high	souterrain	cornice:med	painted-brick:high	dark:high	residential:high	near-black painted brick; bel-etage over a souterrain with a stoop (B); white cornice at the cut top
+0363100012171023	A	3:high	4:high	atticInCrown	point:high	brick:high	brown:med	residential:med	pointed gable with two oculi and a window; centre French windows; light flare at 9.8 m
+0363100012116526	A	6:high	4:high	multi	cornice:high	brick:high	red-brown:high	shop:high	corner 151-152: two fronts (shop left with wreath ornaments, not openings; residential right); bracketed cornice and two dormers | rev 2: extent multi: the crop is the pand's own BAG wall and it carries several house fronts, so no single-front crop exists; not scored
+0363100012164843	A	3:high	4:high	atticInCrown	step:med	painted-brick:med	dark:med	residential:med	backlit (golden-hour) and dark; a stepped crown with one window; balcony stack on the centre axis | rev 2: re-checked at 2x against reader B and the authored face: painted (near-black) brick
+0363100012161422	A	2:med	4:high	-	cornice:high	painted-brick:med	dark:med	residential:high	left window column and a right paired-light / balcony column (two lights in one surround = one axis); pediment dormer; backlit | rev 2: re-checked at 2x: dark grey painted brick, as the authored face says
+0363100012157426	A	3:high	4:high	-	cornice:high	brick:high	brown:med	residential:high	three axes, balconettes on the centre axis; cornice with a pointed dormer
+0363100012160273	A	3:high	4:high	atticInCrown	bell:low	painted-brick:med	dark:med	residential:med	a curved brick crown with a dormer window group (bell vs mansard); full-width balcony on storey 2 | rev 2: re-checked at 2x: dark painted brick, as the authored face says
+0363100012160704	A	3:high	4:high	-	cornice:high	brick:high	red-brown:high	residential:high	a glazed erker on storey 2 across the right two axes (counted by its window columns above); cornice with a dormer
+0363100012159694	A	2:med	4:high	-	cornice:high	brick:high	red-brown:med	residential:high	left window column and a right paired-light balcony column; cornice with a pointed dormer

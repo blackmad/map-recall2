@@ -1,0 +1,221 @@
+{
+ "street": "Zeeburgerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:59:51.164Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012159385",
+   "addresses": [
+    "Zeeburgerdijk 1",
+    "Zeeburgerdijk 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 3-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001006706"
+    },
+    {
+     "address": "Zeeburgerdijk 1-4",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001963624"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2357273161,
+     "lngLat": [
+      4.9270203,
+      52.3660675
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "3",
+      "addr:postcode": "1093SJ",
+      "addr:street": "Zeeburgerdijk",
+      "amenity": "pub",
+      "check_date": "2025-06-11",
+      "name": "Dorst"
+     },
+     "fetchedAt": "2026-11-10T07:59:51.164Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012102204",
+   "addresses": [
+    "Zeeburgerdijk 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 5-H",
+     "use": "woonfunctie",
+     "areaM2": 197,
+     "bagId": "0363010000956013"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162254",
+   "addresses": [
+    "Zeeburgerdijk 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 7-H",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000878148"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157471",
+   "addresses": [
+    "Zeeburgerdijk 9D",
+    "Zeeburgerdijk 9C",
+    "Zeeburgerdijk 9E",
+    "Zeeburgerdijk 9F",
+    "Zeeburgerdijk 9B",
+    "Zeeburgerdijk 9A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 9D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000878160"
+    },
+    {
+     "address": "Zeeburgerdijk 9C",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000878161"
+    },
+    {
+     "address": "Zeeburgerdijk 9E",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000878162"
+    },
+    {
+     "address": "Zeeburgerdijk 9F",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000941200"
+    },
+    {
+     "address": "Zeeburgerdijk 9B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000878158"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138574",
+   "addresses": [
+    "Zeeburgerdijk 11A",
+    "Zeeburgerdijk 11C",
+    "Zeeburgerdijk 11B",
+    "Zeeburgerdijk 11E",
+    "Zeeburgerdijk 11D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 11A",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000878163"
+    },
+    {
+     "address": "Zeeburgerdijk 11C",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000878164"
+    },
+    {
+     "address": "Zeeburgerdijk 11B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000878165"
+    },
+    {
+     "address": "Zeeburgerdijk 11E",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000942431"
+    },
+    {
+     "address": "Zeeburgerdijk 11D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000942432"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166344",
+   "addresses": [
+    "Zeeburgerdijk 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 13-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000878170"
+    },
+    {
+     "address": "Zeeburgerdijk 13-H",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010012074234"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157030",
+   "addresses": [
+    "Zeeburgerdijk 15"
+   ],
+   "groundUnits": [],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151981",
+   "addresses": [
+    "Zeeburgerdijk 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 17-H",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000878185"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

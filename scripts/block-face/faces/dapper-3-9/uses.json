@@ -1,0 +1,142 @@
+{
+ "street": "Dapperstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:20:33.572Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012083647",
+   "addresses": [
+    "Dapperstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dapperstraat 3-H",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010001002170"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2364940136,
+     "lngLat": [
+      4.9262697,
+      52.3652329
+     ],
+     "tags": {
+      "name": "Talay Gordijnenhuis",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "shop": "curtain"
+     },
+     "fetchedAt": "2026-11-09T23:20:33.572Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012156106",
+   "addresses": [
+    "Dapperstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dapperstraat 5-H",
+     "use": "winkelfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000615559"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12744714609,
+     "lngLat": [
+      4.926293,
+      52.3651861
+     ],
+     "tags": {
+      "name": "Dierenspeciaalzaak Oscar",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "shop": "pet"
+     },
+     "fetchedAt": "2026-11-09T23:20:33.572Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163286",
+   "addresses": [
+    "Dapperstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dapperstraat 7-H",
+     "use": "winkelfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000615582"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12744686133,
+     "lngLat": [
+      4.9263164,
+      52.3651446
+     ],
+     "tags": {
+      "name": "L'Abeille",
+      "opening_hours": "We-Sa 08:30-16:00; Su 09:00-16:30",
+      "shop": "bakery"
+     },
+     "fetchedAt": "2026-11-09T23:20:33.572Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163521",
+   "addresses": [
+    "Dapperstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dapperstraat 9-H",
+     "use": "winkelfunctie",
+     "areaM2": 157,
+     "bagId": "0363010000615590"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2364940134,
+     "lngLat": [
+      4.9263469,
+      52.3650936
+     ],
+     "tags": {
+      "check_date": "2025-03-08",
+      "name": "Tabakshop Rex",
+      "shop": "convenience",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-09T23:20:33.572Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,350 @@
+{
+ "street": "Plantage Muidergracht",
+ "seed": "0363100012181036",
+ "members": [
+  "0363100012181036",
+  "0363100012181038",
+  "0363100012170491",
+  "0363100012181039",
+  "0363100012181040",
+  "0363100012170501",
+  "0363100012170440",
+  "0363100012170500",
+  "0363100012181362",
+  "0363100012181361",
+  "0363100012181360",
+  "0363100012181357",
+  "0363100012181358",
+  "0363100012181359"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012181036 (face continues: 181035)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012181359 (face continues: 181368 181369)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164939",
+   "reason": "frontage 65.7 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012164948",
+   "reason": "frontage 55.2 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012164952",
+   "reason": "frontage 87.7 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170437",
+   "reason": "frontage 86.9 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170438",
+   "reason": "frontage 74.9 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170439",
+   "reason": "frontage 68.9 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170492",
+   "reason": "frontage 64.1 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170493",
+   "reason": "frontage 67.1 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170494",
+   "reason": "frontage 59.4 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170495",
+   "reason": "frontage 64.4 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170497",
+   "reason": "frontage 76.8 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170499",
+   "reason": "frontage 54.7 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170502",
+   "reason": "frontage 85.5 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170503",
+   "reason": "frontage 84.2 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170504",
+   "reason": "frontage 78.4 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170505",
+   "reason": "frontage 54.5 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181029",
+   "reason": "frontage 51.9 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181030",
+   "reason": "frontage 30.7 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181031",
+   "reason": "frontage 36.7 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181032",
+   "reason": "frontage 42.8 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181033",
+   "reason": "frontage 48.7 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181034",
+   "reason": "sightline to Plantage Muidergracht crosses 0363100012181036"
+  },
+  {
+   "pandId": "0363100012181037",
+   "reason": "sightline to Plantage Muidergracht crosses 0363100012181036"
+  },
+  {
+   "pandId": "0363100012181283",
+   "reason": "frontage 32.4 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181284",
+   "reason": "frontage 46.7 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181352",
+   "reason": "sightline to Plantage Muidergracht crosses 0363100012181369"
+  },
+  {
+   "pandId": "0363100012181355",
+   "reason": "frontage 48.3 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181356",
+   "reason": "frontage 34.4 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181363",
+   "reason": "frontage 30.1 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181364",
+   "reason": "frontage 30.2 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181374",
+   "reason": "frontage 130.2 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012181438",
+   "reason": "frontage 130.2 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012182566",
+   "reason": "no frontage on Plantage Muidergracht: No footprint edge faces Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012182570",
+   "reason": "frontage 99.8 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012183072",
+   "reason": "frontage 76.5 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012183073",
+   "reason": "frontage 73.7 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012183074",
+   "reason": "frontage 71.3 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012185999",
+   "reason": "frontage 54.2 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012186087",
+   "reason": "frontage 54.5 m from Plantage Muidergracht"
+  },
+  {
+   "pandId": "0363100012170498",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181028",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181281",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012247448",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012181036",
+   "alongM": 0,
+   "widthM": 5.67,
+   "eavesM": 10.68,
+   "roofMaxM": 14.68,
+   "storeys3dbag": 4,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181038",
+   "alongM": 5.2,
+   "widthM": 4.73,
+   "eavesM": 10.67,
+   "roofMaxM": 14.65,
+   "storeys3dbag": 4,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170491",
+   "alongM": 10.56,
+   "widthM": 5.99,
+   "eavesM": 10.58,
+   "roofMaxM": 15.56,
+   "storeys3dbag": 4,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181039",
+   "alongM": 16.31,
+   "widthM": 5.51,
+   "eavesM": 10.65,
+   "roofMaxM": 14.81,
+   "storeys3dbag": 4,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181040",
+   "alongM": 21.84,
+   "widthM": 5.55,
+   "eavesM": 10.64,
+   "roofMaxM": 14.81,
+   "storeys3dbag": 4,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170501",
+   "alongM": 28.68,
+   "widthM": 8.13,
+   "eavesM": 10.86,
+   "roofMaxM": 14.75,
+   "storeys3dbag": 4,
+   "builtYear": 1878,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170440",
+   "alongM": 34.95,
+   "widthM": 4.4,
+   "eavesM": 12.02,
+   "roofMaxM": 13.22,
+   "storeys3dbag": 4,
+   "builtYear": 1885,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170500",
+   "alongM": 39.35,
+   "widthM": 4.4,
+   "eavesM": 10.19,
+   "roofMaxM": 13.23,
+   "storeys3dbag": 4,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181362",
+   "alongM": 44.94,
+   "widthM": 6.77,
+   "eavesM": 10.2,
+   "roofMaxM": 13.24,
+   "storeys3dbag": 4,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181361",
+   "alongM": 50.56,
+   "widthM": 4.46,
+   "eavesM": 10.31,
+   "roofMaxM": 13.31,
+   "storeys3dbag": 4,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181360",
+   "alongM": 55.02,
+   "widthM": 4.45,
+   "eavesM": 12.13,
+   "roofMaxM": 13.29,
+   "storeys3dbag": 4,
+   "builtYear": 1875,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181357",
+   "alongM": 60.03,
+   "widthM": 5.57,
+   "eavesM": 15.26,
+   "roofMaxM": 19.82,
+   "storeys3dbag": 5,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181358",
+   "alongM": 65.76,
+   "widthM": 5.84,
+   "eavesM": 15.72,
+   "roofMaxM": 20.21,
+   "storeys3dbag": 5,
+   "builtYear": 1832,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012181359",
+   "alongM": 71.42,
+   "widthM": 5.49,
+   "eavesM": 15.43,
+   "roofMaxM": 19.8,
+   "storeys3dbag": 5,
+   "builtYear": 1887,
+   "uncertainty": []
+  }
+ ]
+}

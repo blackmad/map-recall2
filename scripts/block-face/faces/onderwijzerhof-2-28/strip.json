@@ -1,0 +1,64 @@
+{
+ "face": "onderwijzerhof-2-28",
+ "image": "staging/block-face/onderwijzerhof-2-28/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 1257,
+ "height": 655,
+ "groundNAP": 1.123,
+ "heightM": 16.38,
+ "frame": {
+  "midRD": [
+   122054.0025,
+   486666.88574999996
+  ],
+  "uRD": [
+   -0.742154655611157,
+   0.6702286678102368
+  ],
+  "nRD": [
+   0.6702286678102368,
+   0.742154655611157
+  ]
+ },
+ "x0M": -15.01,
+ "x1M": 16.43,
+ "date": "2025-01-09",
+ "coverage": 0,
+ "spans": [
+  {
+   "pandId": "0363100012171840",
+   "x0M": -15.01,
+   "x1M": -0.71,
+   "px": [
+    0,
+    572
+   ],
+   "date": "2025-01-09",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012171835",
+   "x0M": -0.71,
+   "x1M": 16.43,
+   "px": [
+    572,
+    1258
+   ],
+   "date": "2025-01-09",
+   "fallbackDate": false,
+   "panoramas": []
+  }
+ ],
+ "candidatesByDate": {
+  "2022-09-05": 0,
+  "2025-06-19": 0,
+  "2019-05-13": 0,
+  "2018-11-21": 0,
+  "2021-09-15": 0,
+  "2025-01-09": 0,
+  "2016-06-07": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

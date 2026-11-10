@@ -1,0 +1,112 @@
+{
+ "street": "Boerhaaveplein",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:52:14.811Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012122461",
+   "addresses": [
+    "Boerhaaveplein 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boerhaaveplein 22-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 178,
+     "bagId": "0363010000589741"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106618",
+   "addresses": [
+    "Boerhaaveplein 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boerhaaveplein 20-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001031563"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012138929",
+   "addresses": [
+    "Boerhaaveplein 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boerhaaveplein 18-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000589732"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145863",
+   "addresses": [
+    "Boerhaaveplein 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boerhaaveplein 16-H",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000589723"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094518",
+   "addresses": [
+    "Boerhaaveplein 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Boerhaaveplein 14-H",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000589718"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012085060",
+   "addresses": [
+    "Boerhaaveplein 10",
+    "Boerhaaveplein 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Camperstraat 1",
+     "use": "kantoorfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000601890"
+    },
+    {
+     "address": "Boerhaaveplein 10",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000589712"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

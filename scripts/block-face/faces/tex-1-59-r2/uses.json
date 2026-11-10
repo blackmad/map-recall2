@@ -1,0 +1,66 @@
+{
+ "street": "Den Texstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:13:02.951Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012179512",
+   "addresses": [
+    "Den Texstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000620911"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179511",
+   "addresses": [
+    "Den Texstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000620915"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179510",
+   "addresses": [
+    "Den Texstraat 25"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179509",
+   "addresses": [
+    "Den Texstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000620922"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

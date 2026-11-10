@@ -1,0 +1,250 @@
+{
+ "street": "Dijkstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:08:48.503Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012183064",
+   "addresses": [
+    "Dijkstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dijkstraat 29-H",
+     "use": "industriefunctie",
+     "areaM2": 64,
+     "bagId": "0363010000623146"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183061",
+   "addresses": [
+    "Dijkstraat 81",
+    "Dijkstraat 83",
+    "Dijkstraat 85",
+    "Dijkstraat 87",
+    "Dijkstraat 89",
+    "Dijkstraat 91",
+    "Dijkstraat 93",
+    "Dijkstraat 95",
+    "Dijkstraat 97",
+    "Dijkstraat 99",
+    "Dijkstraat 101",
+    "Dijkstraat 103",
+    "Dijkstraat 105",
+    "Dijkstraat 107",
+    "Dijkstraat 109",
+    "Dijkstraat 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dijkstraat 99",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000623185"
+    },
+    {
+     "address": "Dijkstraat 105",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000623188"
+    },
+    {
+     "address": "Dijkstraat 109",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000623190"
+    },
+    {
+     "address": "Dijkstraat 87",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000623179"
+    },
+    {
+     "address": "Dijkstraat 93",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000623182"
+    },
+    {
+     "address": "Dijkstraat 103",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000623187"
+    },
+    {
+     "address": "Dijkstraat 89",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000623180"
+    },
+    {
+     "address": "Dijkstraat 97",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000623184"
+    },
+    {
+     "address": "Dijkstraat 81",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000623176"
+    },
+    {
+     "address": "Dijkstraat 95",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000623183"
+    },
+    {
+     "address": "Dijkstraat 111",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000623191"
+    },
+    {
+     "address": "Dijkstraat 83",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000623177"
+    },
+    {
+     "address": "Dijkstraat 107",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000623189"
+    },
+    {
+     "address": "Dijkstraat 101",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000623186"
+    },
+    {
+     "address": "Dijkstraat 91",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000623181"
+    },
+    {
+     "address": "Dijkstraat 85",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000623178"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181801",
+   "addresses": [
+    "Dijkstraat 113",
+    "Dijkstraat 115",
+    "Dijkstraat 117",
+    "Dijkstraat 119",
+    "Dijkstraat 121",
+    "Dijkstraat 123",
+    "Dijkstraat 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dijkstraat 113",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000623192"
+    },
+    {
+     "address": "Dijkstraat 121",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000623196"
+    },
+    {
+     "address": "Dijkstraat 123",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000623197"
+    },
+    {
+     "address": "Dijkstraat 125",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000623198"
+    },
+    {
+     "address": "Dijkstraat 117",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000623194"
+    },
+    {
+     "address": "Dijkstraat 119",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000623195"
+    },
+    {
+     "address": "Dijkstraat 115",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000623193"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171308",
+   "addresses": [
+    "Dijkstraat 127",
+    "Dijkstraat 129",
+    "Dijkstraat 131"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dijkstraat 127",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000623199"
+    },
+    {
+     "address": "Dijkstraat 129",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000623200"
+    },
+    {
+     "address": "Dijkstraat 131",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000623201"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170912",
+   "addresses": [
+    "Dijkstraat 47"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dijkstraat 47",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000623159"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -12,7 +12,9 @@ import { parseRegisterFacts, type RegisterFacts } from '../../src/canalRecall/fa
 const STAGING = 'public/data/extracts/amsterdam/staging/monument-facts.json';
 const REPORT = 'public/data/extracts/amsterdam/staging/monument-facts.coverage.json';
 const EXTRACT = process.env.REGISTER_FACTS_PUBLISH_TO ?? 'public/data/extracts/amsterdam/monument-facts.json';
-export const RIDE_PRIORITY_GEBIEDEN = new Set(['Centrum-West', 'Centrum-Oost', 'Oud-West, De Baarsjes', 'Westerpark', 'Oud-Zuid', 'De Pijp, Rivierenbuurt', 'Oud-Oost']);
+// Moved to src/canalRecall/ridePriority.ts (house line H1); re-exported for existing importers.
+import { RIDE_PRIORITY_GEBIEDEN } from '../../src/canalRecall/ridePriority.ts';
+export { RIDE_PRIORITY_GEBIEDEN };
 
 type Ring = number[][];
 const inside = ([x, y]: number[], ring: Ring) => { let c = false; for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) if ((ring[i][1] > y) !== (ring[j][1] > y) && x < ((ring[j][0] - ring[i][0]) * (y - ring[i][1])) / (ring[j][1] - ring[i][1]) + ring[i][0]) c = !c; return c; };

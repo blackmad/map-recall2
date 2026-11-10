@@ -1,0 +1,9351 @@
+{
+ "model": "jev-1.14.0",
+ "picks": [
+  {
+   "pandId": "0363100012164995",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-001979_pano_0001_000286"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.19,
+     "occluded": 0.43,
+     "quality": 0.108
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000934"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.44,
+     "occluded": 0.09,
+     "quality": 0.4
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241121_1354_Track03_Sphere_00121"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.11,
+     "occluded": 0.12,
+     "quality": 0.097
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001979_pano_0001_000286"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.19,
+    "occluded": 0.43,
+    "quality": 0.108
+   },
+   "best": {
+    "year": 2017,
+    "panoIds": [
+     "TMX7316010203-000205_pano_0000_000934"
+    ],
+    "file": "years/2017.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.44,
+    "occluded": 0.09,
+    "quality": 0.4
+   }
+  },
+  {
+   "pandId": "0363100012164999",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002985_pano_0022_000123",
+      "TMX7316010203-002985_pano_0022_000122"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.22,
+     "occluded": 0.05,
+     "quality": 0.209
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001543_pano_0000_001190",
+      "TMX7316010203-001543_pano_0000_001189"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.17,
+     "occluded": 0.06,
+     "quality": 0.16
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005050",
+      "TMX7316010203-001054_pano_0000_005049"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.15,
+     "occluded": 0.06,
+     "quality": 0.141
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000920",
+      "TMX7316010203-000205_pano_0000_000151",
+      "TMX7316010203-000205_pano_0000_000152"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.3,
+     "occluded": 0.55,
+     "quality": 0.135
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241121_1354_Track03_Sphere_00091"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.05,
+     "occluded": 0.22,
+     "quality": 0.039
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002985_pano_0022_000123",
+     "TMX7316010203-002985_pano_0022_000122"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.22,
+    "occluded": 0.05,
+    "quality": 0.209
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002985_pano_0022_000123",
+     "TMX7316010203-002985_pano_0022_000122"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.22,
+    "occluded": 0.05,
+    "quality": 0.209
+   }
+  },
+  {
+   "pandId": "0363100012165018",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003382"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003157"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_000504"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000017"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004365"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003382"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012167876",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002538_pano_0000_001916"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001587"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "washed-out",
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001432"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001540_pano_0000_001088"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005171"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002538_pano_0000_001916"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012167941",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000152"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.48,
+     "occluded": 0.04,
+     "quality": 0.461
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00891"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.51,
+     "occluded": 0.14,
+     "quality": 0.439
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000152"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.48,
+    "occluded": 0.04,
+    "quality": 0.461
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000152"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.48,
+    "occluded": 0.04,
+    "quality": 0.461
+   }
+  },
+  {
+   "pandId": "0363100012167943",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002538_pano_0000_001880"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001445"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000704_pano_0000_000242"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316010203-000076_pano_0000_002940"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track02_Sphere_00041"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002538_pano_0000_001880"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012167944",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track24_Sphere_00007"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.05,
+     "occluded": 0.03,
+     "quality": 0.049
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002967_pano_0005_000039"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "washed-out",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001428"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001540_pano_0000_001085"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005168"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track24_Sphere_00007"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.05,
+    "occluded": 0.03,
+    "quality": 0.049
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track24_Sphere_00007"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.05,
+    "occluded": 0.03,
+    "quality": 0.049
+   }
+  },
+  {
+   "pandId": "0363100012167946",
+   "cands": [
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316060226-000020_pano_0007_001292"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.06,
+     "occluded": 0.29,
+     "quality": 0.043
+    }
+   ],
+   "first": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316060226-000020_pano_0007_001292"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.06,
+    "occluded": 0.29,
+    "quality": 0.043
+   },
+   "best": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316060226-000020_pano_0007_001292"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.06,
+    "occluded": 0.29,
+    "quality": 0.043
+   }
+  },
+  {
+   "pandId": "0363100012167950",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000080"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001309"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00581"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002188"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000080"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder",
+     "blocked",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012167954",
+   "cands": [
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316060226-000020_pano_0007_001299"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [
+      "foliage"
+     ],
+     "hard": true,
+     "score": 0.04,
+     "occluded": 0.3,
+     "quality": 0.028
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_000738"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316060226-000020_pano_0007_001299"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [
+     "foliage"
+    ],
+    "hard": true,
+    "score": 0.04,
+    "occluded": 0.3,
+    "quality": 0.028
+   },
+   "best": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316060226-000020_pano_0007_001299"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [
+     "foliage"
+    ],
+    "hard": true,
+    "score": 0.04,
+    "occluded": 0.3,
+    "quality": 0.028
+   }
+  },
+  {
+   "pandId": "0363100012167955",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0000_000019"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.26,
+     "occluded": 0.03,
+     "quality": 0.252
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002938_pano_0000_000019"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.26,
+    "occluded": 0.03,
+    "quality": 0.252
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002938_pano_0000_000019"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.26,
+    "occluded": 0.03,
+    "quality": 0.252
+   }
+  },
+  {
+   "pandId": "0363100012168006",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002961"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.56,
+     "occluded": 0.14,
+     "quality": 0.482
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000651"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.51,
+     "occluded": 0.1,
+     "quality": 0.459
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002961"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.56,
+    "occluded": 0.14,
+    "quality": 0.482
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002961"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.56,
+    "occluded": 0.14,
+    "quality": 0.482
+   }
+  },
+  {
+   "pandId": "0363100012168010",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000159",
+      "TMX7316010203-002445_pano_0008_000158"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.2,
+     "occluded": 0.13,
+     "quality": 0.174
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00884",
+      "recording_2025-07-03_08-35-58_00885"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.17,
+     "occluded": 0.84,
+     "quality": 0.027
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002076",
+      "TMX7316010203-001179_pano_0000_002077"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.18,
+     "occluded": 0.56,
+     "quality": 0.079
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000717_pano_0002_000313",
+      "TMX7316010203-000717_pano_0002_000312",
+      "TMX7316010203-000717_pano_0002_000314"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.31,
+     "occluded": 0.5,
+     "quality": 0.155
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000159",
+     "TMX7316010203-002445_pano_0008_000158"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.2,
+    "occluded": 0.13,
+    "quality": 0.174
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000159",
+     "TMX7316010203-002445_pano_0008_000158"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.2,
+    "occluded": 0.13,
+    "quality": 0.174
+   }
+  },
+  {
+   "pandId": "0363100012168013",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000158"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.42,
+     "occluded": 0.06,
+     "quality": 0.395
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00885"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.69,
+     "occluded": 0.09,
+     "quality": 0.628
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002077"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.12,
+     "quality": 0.211
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000158"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.42,
+    "occluded": 0.06,
+    "quality": 0.395
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00885"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.69,
+    "occluded": 0.09,
+    "quality": 0.628
+   }
+  },
+  {
+   "pandId": "0363100012168081",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002882"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.63,
+     "occluded": 0.06,
+     "quality": 0.592
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00107"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.72,
+     "occluded": 0.06,
+     "quality": 0.677
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002882"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.63,
+    "occluded": 0.06,
+    "quality": 0.592
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00107"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.72,
+    "occluded": 0.06,
+    "quality": 0.677
+   }
+  },
+  {
+   "pandId": "0363100012168084",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002923_pano_0000_000109"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.21,
+     "occluded": 0.75,
+     "quality": 0.052
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000181"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.06,
+     "occluded": 0.15,
+     "quality": 0.051
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002923_pano_0000_000109"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.21,
+    "occluded": 0.75,
+    "quality": 0.052
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002923_pano_0000_000109"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.21,
+    "occluded": 0.75,
+    "quality": 0.052
+   }
+  },
+  {
+   "pandId": "0363100012168155",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003030",
+      "TMX7316010203-002043_pano_0000_003031",
+      "TMX7316010203-002043_pano_0000_003029"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.48,
+     "occluded": 0.09,
+     "quality": 0.437
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000872",
+      "TMX7316010203-001673_pano_0000_000871",
+      "TMX7316010203-001673_pano_0000_000873"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.65,
+     "occluded": 0.08,
+     "quality": 0.598
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000872",
+      "TMX7316010203-001551_pano_0000_000717",
+      "TMX7316010203-001551_pano_0000_000871"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.44,
+     "occluded": 0.11,
+     "quality": 0.392
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000181",
+      "TMX7316010203-000205_pano_0000_000180",
+      "TMX7316010203-000205_pano_0000_000182"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.1,
+     "occluded": 0.12,
+     "quality": 0.088
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003030",
+     "TMX7316010203-002043_pano_0000_003031",
+     "TMX7316010203-002043_pano_0000_003029"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.48,
+    "occluded": 0.09,
+    "quality": 0.437
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001673_pano_0000_000872",
+     "TMX7316010203-001673_pano_0000_000871",
+     "TMX7316010203-001673_pano_0000_000873"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.65,
+    "occluded": 0.08,
+    "quality": 0.598
+   }
+  },
+  {
+   "pandId": "0363100012168159",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003036"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.57,
+     "occluded": 0.05,
+     "quality": 0.541
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003036"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.57,
+    "occluded": 0.05,
+    "quality": 0.541
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003036"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.57,
+    "occluded": 0.05,
+    "quality": 0.541
+   }
+  },
+  {
+   "pandId": "0363100012168161",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002865",
+      "TMX7316010203-002043_pano_0000_002866"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.28,
+     "occluded": 0.09,
+     "quality": 0.255
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004414",
+      "TMX7316010203-001054_pano_0000_004415",
+      "TMX7316010203-001054_pano_0000_004413"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.11,
+     "occluded": 0.06,
+     "quality": 0.103
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00091"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.48,
+     "occluded": 0.07,
+     "quality": 0.446
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_001711",
+      "TMX7316010203-001179_pano_0000_001712"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.36,
+     "occluded": 0.08,
+     "quality": 0.331
+    },
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316010203-000076_pano_0000_002798",
+      "TMX7316010203-000076_pano_0000_002797"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.22,
+     "occluded": 0.07,
+     "quality": 0.205
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002865",
+     "TMX7316010203-002043_pano_0000_002866"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.28,
+    "occluded": 0.09,
+    "quality": 0.255
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00091"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.48,
+    "occluded": 0.07,
+    "quality": 0.446
+   }
+  },
+  {
+   "pandId": "0363100012168433",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-001974_pano_0000_000485"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.2,
+     "occluded": 0.44,
+     "quality": 0.112
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000297"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.04,
+     "occluded": 0.67,
+     "quality": 0.013
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001974_pano_0000_000485"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.2,
+    "occluded": 0.44,
+    "quality": 0.112
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001974_pano_0000_000485"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.2,
+    "occluded": 0.44,
+    "quality": 0.112
+   }
+  },
+  {
+   "pandId": "0363100012168435",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-001974_pano_0000_000484"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.46,
+     "occluded": 0.83,
+     "quality": 0.078
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001974_pano_0000_000484"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.46,
+    "occluded": 0.83,
+    "quality": 0.078
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001974_pano_0000_000484"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.46,
+    "occluded": 0.83,
+    "quality": 0.078
+   }
+  },
+  {
+   "pandId": "0363100012168438",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002862_pano_0001_000017"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.59,
+     "occluded": 0.07,
+     "quality": 0.549
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_000608"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.19,
+     "occluded": 0.35,
+     "quality": 0.124
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002862_pano_0001_000017"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.59,
+    "occluded": 0.07,
+    "quality": 0.549
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002862_pano_0001_000017"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.59,
+    "occluded": 0.07,
+    "quality": 0.549
+   }
+  },
+  {
+   "pandId": "0363100012168439",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002550_pano_0000_000068"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.2,
+     "occluded": 0.49,
+     "quality": 0.102
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001593"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.02,
+     "occluded": 0.94,
+     "quality": 0.001
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001675_pano_0000_004506"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.72,
+     "quality": 0.022
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002550_pano_0000_000068"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.2,
+    "occluded": 0.49,
+    "quality": 0.102
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002550_pano_0000_000068"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.2,
+    "occluded": 0.49,
+    "quality": 0.102
+   }
+  },
+  {
+   "pandId": "0363100012168440",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002862_pano_0001_000020"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.15,
+     "occluded": 0.23,
+     "quality": 0.115
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_000611"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.19,
+     "quality": 0.065
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002862_pano_0001_000020"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.15,
+    "occluded": 0.23,
+    "quality": 0.115
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002862_pano_0001_000020"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.15,
+    "occluded": 0.23,
+    "quality": 0.115
+   }
+  },
+  {
+   "pandId": "0363100012168443",
+   "cands": [
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316060226-000020_pano_0007_001261"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.04,
+     "quality": 0.077
+    }
+   ],
+   "first": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316060226-000020_pano_0007_001261"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.08,
+    "occluded": 0.04,
+    "quality": 0.077
+   },
+   "best": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316060226-000020_pano_0007_001261"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.08,
+    "occluded": 0.04,
+    "quality": 0.077
+   }
+  },
+  {
+   "pandId": "0363100012168546",
+   "cands": [
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001540_pano_0000_000765"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.06,
+     "occluded": 0.61,
+     "quality": 0.023
+    }
+   ],
+   "first": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001540_pano_0000_000765"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.06,
+    "occluded": 0.61,
+    "quality": 0.023
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001540_pano_0000_000765"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.06,
+    "occluded": 0.61,
+    "quality": 0.023
+   }
+  },
+  {
+   "pandId": "0363100012168604",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002862_pano_0001_000072",
+      "TMX7316010203-002862_pano_0001_000071",
+      "TMX7316010203-002862_pano_0001_000073"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001848",
+      "TMX7316010203-002044_pano_0000_001269",
+      "TMX7316010203-002044_pano_0000_001270"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001675_pano_0000_004559",
+      "TMX7316010203-001673_pano_0000_001075",
+      "TMX7316010203-001675_pano_0000_004558"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_001052",
+      "TMX7316010203-001551_pano_0000_001053",
+      "TMX7316010203-001551_pano_0000_000809"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005539",
+      "TMX7316010203-001054_pano_0000_005281",
+      "TMX7316010203-001054_pano_0000_005540"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "narrow"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002862_pano_0001_000072",
+     "TMX7316010203-002862_pano_0001_000071",
+     "TMX7316010203-002862_pano_0001_000073"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "narrow"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012168645",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track09_Sphere_00086"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0000_000086"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001833"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_001037"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder",
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005297"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track09_Sphere_00086"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012168646",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track09_Sphere_00087"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "occluder",
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0000_000087"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001834"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder",
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001372"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_001038"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005296"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track09_Sphere_00087"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "occluder",
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012168653",
+   "cands": [
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316010203-000076_pano_0000_002248"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.44,
+     "occluded": 0.07,
+     "quality": 0.409
+    }
+   ],
+   "first": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316010203-000076_pano_0000_002248"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.44,
+    "occluded": 0.07,
+    "quality": 0.409
+   },
+   "best": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316010203-000076_pano_0000_002248"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.44,
+    "occluded": 0.07,
+    "quality": 0.409
+   }
+  },
+  {
+   "pandId": "0363100012168654",
+   "cands": [
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00070"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.21,
+     "occluded": 0.07,
+     "quality": 0.195
+    }
+   ],
+   "first": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00070"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.21,
+    "occluded": 0.07,
+    "quality": 0.195
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00070"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.21,
+    "occluded": 0.07,
+    "quality": 0.195
+   }
+  },
+  {
+   "pandId": "0363100012168693",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0011_000116",
+      "TMX7316010203-002445_pano_0011_000115",
+      "TMX7316010203-002445_pano_0011_000117"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000561",
+      "TMX7316010203-001673_pano_0000_000560",
+      "TMX7316010203-001673_pano_0000_000562"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.56,
+     "occluded": 0.89,
+     "quality": 0.062
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000984",
+      "TMX7316010203-001551_pano_0000_000983",
+      "TMX7316010203-001551_pano_0000_000985"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.7,
+     "occluded": 0.13,
+     "quality": 0.609
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004171",
+      "TMX7316010203-001054_pano_0000_004170",
+      "TMX7316010203-001054_pano_0000_004172"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.73,
+     "occluded": 0.11,
+     "quality": 0.65
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0011_000116",
+     "TMX7316010203-002445_pano_0011_000115",
+     "TMX7316010203-002445_pano_0011_000117"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder",
+     "blank"
+    ],
+    "hard": false
+   },
+   "best": {
+    "year": 2018,
+    "panoIds": [
+     "TMX7316010203-001054_pano_0000_004171",
+     "TMX7316010203-001054_pano_0000_004170",
+     "TMX7316010203-001054_pano_0000_004172"
+    ],
+    "file": "years/2018.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.73,
+    "occluded": 0.11,
+    "quality": 0.65
+   }
+  },
+  {
+   "pandId": "0363100012168698",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002985_pano_0022_000142"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.11,
+     "quality": 0.214
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-001974_pano_0000_000567"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.19,
+     "occluded": 0.16,
+     "quality": 0.16
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000930"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.15,
+     "occluded": 0.45,
+     "quality": 0.083
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002985_pano_0022_000142"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.24,
+    "occluded": 0.11,
+    "quality": 0.214
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002985_pano_0022_000142"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.24,
+    "occluded": 0.11,
+    "quality": 0.214
+   }
+  },
+  {
+   "pandId": "0363100012168709",
+   "cands": [
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000757"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.89,
+     "quality": 0.009
+    }
+   ],
+   "first": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001551_pano_0000_000757"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.08,
+    "occluded": 0.89,
+    "quality": 0.009
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001551_pano_0000_000757"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.08,
+    "occluded": 0.89,
+    "quality": 0.009
+   }
+  },
+  {
+   "pandId": "0363100012168710",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002581",
+      "TMX7316010203-002043_pano_0000_002582",
+      "TMX7316010203-002043_pano_0000_002580"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_000618",
+      "TMX7316010203-001673_pano_0000_000746",
+      "TMX7316010203-001673_pano_0000_000747"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000589",
+      "TMX7316010203-001551_pano_0000_000590",
+      "TMX7316010203-001551_pano_0000_000588"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005068",
+      "TMX7316010203-001054_pano_0000_005067",
+      "TMX7316010203-001054_pano_0000_005069"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "narrow"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002581",
+     "TMX7316010203-002043_pano_0000_002582",
+     "TMX7316010203-002043_pano_0000_002580"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "narrow"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012168763",
+   "cands": [
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000161"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.18,
+     "occluded": 0.09,
+     "quality": 0.164
+    }
+   ],
+   "first": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001541_pano_0002_000161"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.18,
+    "occluded": 0.09,
+    "quality": 0.164
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001541_pano_0002_000161"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.18,
+    "occluded": 0.09,
+    "quality": 0.164
+   }
+  },
+  {
+   "pandId": "0363100012168766",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track17_Sphere_00015"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.12,
+     "occluded": 0.07,
+     "quality": 0.112
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003162"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.26,
+     "occluded": 0.09,
+     "quality": 0.237
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003168"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.16,
+     "occluded": 0.06,
+     "quality": 0.15
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_000536"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.06,
+     "occluded": 0.06,
+     "quality": 0.056
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000149"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.12,
+     "occluded": 0.07,
+     "quality": 0.112
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004375"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track17_Sphere_00015"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.12,
+    "occluded": 0.07,
+    "quality": 0.112
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003162"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.26,
+    "occluded": 0.09,
+    "quality": 0.237
+   }
+  },
+  {
+   "pandId": "0363100012168805",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003391"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.11,
+     "occluded": 0.08,
+     "quality": 0.101
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003391"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.11,
+    "occluded": 0.08,
+    "quality": 0.101
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003391"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.11,
+    "occluded": 0.08,
+    "quality": 0.101
+   }
+  },
+  {
+   "pandId": "0363100012169031",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track14_Sphere_00003"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.45,
+     "occluded": 0.37,
+     "quality": 0.284
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002967_pano_0005_000164"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.45,
+     "occluded": 0.08,
+     "quality": 0.414
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track14_Sphere_00003"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.45,
+    "occluded": 0.37,
+    "quality": 0.284
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002967_pano_0005_000164"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.45,
+    "occluded": 0.08,
+    "quality": 0.414
+   }
+  },
+  {
+   "pandId": "0363100012169830",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0000_000020"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000155"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001327"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "washed-out",
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00888"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002080"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000717_pano_0002_000309"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002938_pano_0000_000020"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blocked",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012169841",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002538_pano_0000_002212"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.07,
+     "occluded": 0.1,
+     "quality": 0.063
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000863"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.09,
+     "occluded": 0.06,
+     "quality": 0.085
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00661"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.07,
+     "occluded": 0.08,
+     "quality": 0.064
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000703_pano_0000_007280"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.04,
+     "quality": 0.23
+    },
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316010203-000076_pano_0000_002601"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.18,
+     "occluded": 0.06,
+     "quality": 0.169
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track09_Sphere_00045"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002538_pano_0000_002212"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.07,
+    "occluded": 0.1,
+    "quality": 0.063
+   },
+   "best": {
+    "year": 2018,
+    "panoIds": [
+     "TMX7316010203-000703_pano_0000_007280"
+    ],
+    "file": "years/2018.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.24,
+    "occluded": 0.04,
+    "quality": 0.23
+   }
+  },
+  {
+   "pandId": "0363100012169842",
+   "cands": [
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000209"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.41,
+     "occluded": 0.05,
+     "quality": 0.389
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003571"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002941"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_000766"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004933"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001541_pano_0002_000209"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.41,
+    "occluded": 0.05,
+    "quality": 0.389
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001541_pano_0002_000209"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.41,
+    "occluded": 0.05,
+    "quality": 0.389
+   }
+  },
+  {
+   "pandId": "0363100012169845",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003572"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002941"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004430"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00616"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003572"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blocked",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012169846",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003440"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.2,
+     "occluded": 0.11,
+     "quality": 0.178
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002874"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.1,
+     "quality": 0.216
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001056"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.36,
+     "occluded": 0.19,
+     "quality": 0.292
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004422"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.09,
+     "occluded": 0.1,
+     "quality": 0.081
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00099"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.68,
+     "occluded": 0.05,
+     "quality": 0.646
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003440"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.2,
+    "occluded": 0.11,
+    "quality": 0.178
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00099"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.68,
+    "occluded": 0.05,
+    "quality": 0.646
+   }
+  },
+  {
+   "pandId": "0363100012169848",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00032",
+      "b_20241216_0911_Track06_Sphere_00033"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.33,
+     "occluded": 0.12,
+     "quality": 0.29
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002871",
+      "TMX7316010203-002043_pano_0000_002870",
+      "TMX7316010203-002043_pano_0000_002872"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.38,
+     "occluded": 0.07,
+     "quality": 0.353
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001053",
+      "TMX7316010203-001674_pano_0000_001054"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.29,
+     "occluded": 0.08,
+     "quality": 0.267
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004420",
+      "TMX7316010203-001054_pano_0000_004419"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.26,
+     "occluded": 0.09,
+     "quality": 0.237
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00096",
+      "recording_2025-07-03_08-35-58_00095"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.72,
+     "occluded": 0.05,
+     "quality": 0.684
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00032",
+     "b_20241216_0911_Track06_Sphere_00033"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.33,
+    "occluded": 0.12,
+    "quality": 0.29
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00096",
+     "recording_2025-07-03_08-35-58_00095"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.72,
+    "occluded": 0.05,
+    "quality": 0.684
+   }
+  },
+  {
+   "pandId": "0363100012169849",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002870",
+      "TMX7316010203-002043_pano_0000_002871",
+      "TMX7316010203-002043_pano_0000_002869"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.16,
+     "occluded": 0.09,
+     "quality": 0.146
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001052",
+      "TMX7316010203-001674_pano_0000_001053"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.12,
+     "occluded": 0.09,
+     "quality": 0.109
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_001716",
+      "TMX7316010203-001179_pano_0000_001717"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.53,
+     "occluded": 0.14,
+     "quality": 0.456
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004419",
+      "TMX7316010203-001054_pano_0000_004418",
+      "TMX7316010203-001054_pano_0000_004420"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.26,
+     "quality": 0.059
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00095",
+      "recording_2025-07-03_08-35-58_00096"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.56,
+     "occluded": 0.06,
+     "quality": 0.526
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002870",
+     "TMX7316010203-002043_pano_0000_002871",
+     "TMX7316010203-002043_pano_0000_002869"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.16,
+    "occluded": 0.09,
+    "quality": 0.146
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00095",
+     "recording_2025-07-03_08-35-58_00096"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.56,
+    "occluded": 0.06,
+    "quality": 0.526
+   }
+  },
+  {
+   "pandId": "0363100012169899",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track18_Sphere_00008"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.12,
+     "occluded": 0.06,
+     "quality": 0.113
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track18_Sphere_00008"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.12,
+    "occluded": 0.06,
+    "quality": 0.113
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track18_Sphere_00008"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.12,
+    "occluded": 0.06,
+    "quality": 0.113
+   }
+  },
+  {
+   "pandId": "0363100012169902",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00058"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.55,
+     "occluded": 0.08,
+     "quality": 0.506
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00219"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.04,
+     "occluded": 0.88,
+     "quality": 0.005
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002961_pano_0005_000010"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003299"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000658"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00058"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.55,
+    "occluded": 0.08,
+    "quality": 0.506
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00058"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.55,
+    "occluded": 0.08,
+    "quality": 0.506
+   }
+  },
+  {
+   "pandId": "0363100012169904",
+   "cands": [
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001136"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.17,
+     "occluded": 0.05,
+     "quality": 0.162
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0001_000138"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002856"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000182"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004403"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001674_pano_0000_001136"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.17,
+    "occluded": 0.05,
+    "quality": 0.162
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001674_pano_0000_001136"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.17,
+    "occluded": 0.05,
+    "quality": 0.162
+   }
+  },
+  {
+   "pandId": "0363100012169905",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003042",
+      "TMX7316010203-002043_pano_0000_003043",
+      "TMX7316010203-002043_pano_0000_003041"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.07,
+     "occluded": 0.19,
+     "quality": 0.057
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000883",
+      "TMX7316010203-001673_pano_0000_000884",
+      "TMX7316010203-001673_pano_0000_000882"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "foliage"
+     ],
+     "hard": true,
+     "score": 0.07,
+     "occluded": 0.8,
+     "quality": 0.014
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000883",
+      "TMX7316010203-001551_pano_0000_000884",
+      "TMX7316010203-001551_pano_0000_000882"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.06,
+     "occluded": 0.27,
+     "quality": 0.044
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000175",
+      "TMX7316010203-000205_pano_0000_000174",
+      "TMX7316010203-000205_pano_0000_000176"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.06,
+     "occluded": 0.17,
+     "quality": 0.05
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003042",
+     "TMX7316010203-002043_pano_0000_003043",
+     "TMX7316010203-002043_pano_0000_003041"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.07,
+    "occluded": 0.19,
+    "quality": 0.057
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003042",
+     "TMX7316010203-002043_pano_0000_003043",
+     "TMX7316010203-002043_pano_0000_003041"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.07,
+    "occluded": 0.19,
+    "quality": 0.057
+   }
+  },
+  {
+   "pandId": "0363100012169910",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00038"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.04,
+     "quality": 0.23
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002865",
+      "TMX7316010203-002043_pano_0000_002864"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.17,
+     "occluded": 0.11,
+     "quality": 0.151
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001120"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.03,
+     "occluded": 0.42,
+     "quality": 0.017
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004413",
+      "TMX7316010203-001054_pano_0000_004414"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.07,
+     "occluded": 0.11,
+     "quality": 0.062
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00090",
+      "recording_2025-07-03_08-35-58_00089"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.53,
+     "occluded": 0.24,
+     "quality": 0.403
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00038"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.24,
+    "occluded": 0.04,
+    "quality": 0.23
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00090",
+     "recording_2025-07-03_08-35-58_00089"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.53,
+    "occluded": 0.24,
+    "quality": 0.403
+   }
+  },
+  {
+   "pandId": "0363100012169911",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00060"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.09,
+     "occluded": 0.06,
+     "quality": 0.085
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000998"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.13,
+     "occluded": 0.04,
+     "quality": 0.125
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004291"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.02,
+     "occluded": 0.07,
+     "quality": 0.019
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003298"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000660"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00060"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.09,
+    "occluded": 0.06,
+    "quality": 0.085
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001551_pano_0000_000998"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.13,
+    "occluded": 0.04,
+    "quality": 0.125
+   }
+  },
+  {
+   "pandId": "0363100012169914",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002538_pano_0000_002234"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.12,
+     "occluded": 0.78,
+     "quality": 0.026
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002538_pano_0000_002234"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.12,
+    "occluded": 0.78,
+    "quality": 0.026
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002538_pano_0000_002234"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.12,
+    "occluded": 0.78,
+    "quality": 0.026
+   }
+  },
+  {
+   "pandId": "0363100012169916",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002950_pano_0002_000399"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.12,
+     "occluded": 0.27,
+     "quality": 0.088
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-001974_pano_0000_000542"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.26,
+     "occluded": 0.18,
+     "quality": 0.213
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005314"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002950_pano_0002_000399"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.12,
+    "occluded": 0.27,
+    "quality": 0.088
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001974_pano_0000_000542"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.26,
+    "occluded": 0.18,
+    "quality": 0.213
+   }
+  },
+  {
+   "pandId": "0363100012169967",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002740"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001100"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000281"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004973"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002740"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012169968",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00058"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "narrow",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002740"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001101"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "washed-out",
+      "blocked",
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000999"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "narrow",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004973"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "narrow",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00058"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "occluder",
+     "blocked",
+     "narrow",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012169973",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0001_000131"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003066"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002938_pano_0001_000131"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blocked",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012169974",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track27_Sphere_00023"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "washed-out",
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002978_pano_0002_000238"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002736"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000648"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000279"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004969"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track27_Sphere_00023"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "washed-out",
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012169976",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003754"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.27,
+     "occluded": 0.11,
+     "quality": 0.24
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001103"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.16,
+     "occluded": 0.06,
+     "quality": 0.15
+    },
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316010203-000076_pano_0000_002252"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.08,
+     "quality": 0.074
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00047"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002856"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000183"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003754"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.27,
+    "occluded": 0.11,
+    "quality": 0.24
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003754"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.27,
+    "occluded": 0.11,
+    "quality": 0.24
+   }
+  },
+  {
+   "pandId": "0363100012169978",
+   "cands": [
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_001001"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.56,
+     "occluded": 0.1,
+     "quality": 0.504
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track08_Sphere_00042"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "foliage",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0001_000222"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002847"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004395"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001551_pano_0000_001001"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.56,
+    "occluded": 0.1,
+    "quality": 0.504
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001551_pano_0000_001001"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.56,
+    "occluded": 0.1,
+    "quality": 0.504
+   }
+  },
+  {
+   "pandId": "0363100012169980",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003412"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.27,
+     "occluded": 0.05,
+     "quality": 0.257
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00071"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.19,
+     "quality": 0.065
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000703_pano_0000_006963"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.43,
+     "occluded": 0.05,
+     "quality": 0.408
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003067"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003412"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.27,
+    "occluded": 0.05,
+    "quality": 0.257
+   },
+   "best": {
+    "year": 2018,
+    "panoIds": [
+     "TMX7316010203-000703_pano_0000_006963"
+    ],
+    "file": "years/2018.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.43,
+    "occluded": 0.05,
+    "quality": 0.408
+   }
+  },
+  {
+   "pandId": "0363100012169981",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track08_Sphere_00043"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.58,
+     "occluded": 0.06,
+     "quality": 0.545
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004396"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.11,
+     "occluded": 0.26,
+     "quality": 0.081
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track08_Sphere_00043"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.58,
+    "occluded": 0.06,
+    "quality": 0.545
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track08_Sphere_00043"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.58,
+    "occluded": 0.06,
+    "quality": 0.545
+   }
+  },
+  {
+   "pandId": "0363100012170031",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track08_Sphere_00043"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.71,
+     "occluded": 0.05,
+     "quality": 0.674
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0001_000156"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.05,
+     "quality": 0.228
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002849"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.23,
+     "occluded": 0.05,
+     "quality": 0.218
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track08_Sphere_00043"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.71,
+    "occluded": 0.05,
+    "quality": 0.674
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track08_Sphere_00043"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.71,
+    "occluded": 0.05,
+    "quality": 0.674
+   }
+  },
+  {
+   "pandId": "0363100012170043",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00040"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.06,
+     "quality": 0.226
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002864",
+      "TMX7316010203-002043_pano_0000_002863"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.13,
+     "occluded": 0.23,
+     "quality": 0.1
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001120",
+      "TMX7316010203-001674_pano_0000_001121"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.14,
+     "occluded": 0.21,
+     "quality": 0.111
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004413",
+      "TMX7316010203-001054_pano_0000_004412"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.14,
+     "occluded": 0.18,
+     "quality": 0.115
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_001710",
+      "TMX7316010203-001179_pano_0000_001709"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.12,
+     "occluded": 0.26,
+     "quality": 0.089
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00040"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.24,
+    "occluded": 0.06,
+    "quality": 0.226
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00040"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.24,
+    "occluded": 0.06,
+    "quality": 0.226
+   }
+  },
+  {
+   "pandId": "0363100012170046",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track08_Sphere_00044"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.19,
+     "occluded": 0.35,
+     "quality": 0.124
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0001_000155"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000275"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000177"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.1,
+     "occluded": 0.88,
+     "quality": 0.012
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004398"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.03,
+     "occluded": 0.71,
+     "quality": 0.009
+    },
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316010203-000076_pano_0000_002814"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.04,
+     "occluded": 0.37,
+     "quality": 0.025
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track08_Sphere_00044"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.19,
+    "occluded": 0.35,
+    "quality": 0.124
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track08_Sphere_00044"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.19,
+    "occluded": 0.35,
+    "quality": 0.124
+   }
+  },
+  {
+   "pandId": "0363100012170047",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00065"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.37,
+     "occluded": 0.21,
+     "quality": 0.292
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000566"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.22,
+     "occluded": 0.58,
+     "quality": 0.092
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000989"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.5,
+     "quality": 0.12
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004176"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.37,
+     "occluded": 0.38,
+     "quality": 0.229
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00065"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.37,
+    "occluded": 0.21,
+    "quality": 0.292
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00065"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.37,
+    "occluded": 0.21,
+    "quality": 0.292
+   }
+  },
+  {
+   "pandId": "0363100012170086",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002862_pano_0001_000074"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.47,
+     "occluded": 0.07,
+     "quality": 0.437
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001272"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.14,
+     "occluded": 0.46,
+     "quality": 0.076
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001675_pano_0000_004561"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.63,
+     "occluded": 0.05,
+     "quality": 0.598
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_001050"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.58,
+     "occluded": 0.05,
+     "quality": 0.551
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005284"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.17,
+     "occluded": 0.17,
+     "quality": 0.141
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002862_pano_0001_000074"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.47,
+    "occluded": 0.07,
+    "quality": 0.437
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001675_pano_0000_004561"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.63,
+    "occluded": 0.05,
+    "quality": 0.598
+   }
+  },
+  {
+   "pandId": "0363100012170146",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002862_pano_0001_000060"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.32,
+     "occluded": 0.28,
+     "quality": 0.23
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005270"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.4,
+     "occluded": 0.2,
+     "quality": 0.32
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002862_pano_0001_000060"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.32,
+    "occluded": 0.28,
+    "quality": 0.23
+   },
+   "best": {
+    "year": 2018,
+    "panoIds": [
+     "TMX7316010203-001054_pano_0000_005270"
+    ],
+    "file": "years/2018.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.4,
+    "occluded": 0.2,
+    "quality": 0.32
+   }
+  },
+  {
+   "pandId": "0363100012170159",
+   "cands": [
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_000716"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001674_pano_0000_000716"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012170208",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-001974_pano_0000_000542"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.14,
+     "occluded": 0.08,
+     "quality": 0.129
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001974_pano_0000_000542"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.14,
+    "occluded": 0.08,
+    "quality": 0.129
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001974_pano_0000_000542"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.14,
+    "occluded": 0.08,
+    "quality": 0.129
+   }
+  },
+  {
+   "pandId": "0363100012170224",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002923_pano_0000_000019"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.1,
+     "occluded": 0.92,
+     "quality": 0.008
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001774"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.09,
+     "occluded": 0.82,
+     "quality": 0.016
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000782"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.07,
+     "occluded": 0.92,
+     "quality": 0.006
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002923_pano_0000_000019"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.1,
+    "occluded": 0.92,
+    "quality": 0.008
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002044_pano_0000_001774"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.09,
+    "occluded": 0.82,
+    "quality": 0.016
+   }
+  },
+  {
+   "pandId": "0363100012172577",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000187"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.64,
+     "occluded": 0.04,
+     "quality": 0.614
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002048"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.68,
+     "occluded": 0.06,
+     "quality": 0.639
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track19_Sphere_00011"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.65,
+     "occluded": 0.07,
+     "quality": 0.604
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000187"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.64,
+    "occluded": 0.04,
+    "quality": 0.614
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001179_pano_0000_002048"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.68,
+    "occluded": 0.06,
+    "quality": 0.639
+   }
+  },
+  {
+   "pandId": "0363100012172582",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002542_pano_0006_000142"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.2,
+     "occluded": 0.07,
+     "quality": 0.186
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_01163"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.66,
+     "occluded": 0.07,
+     "quality": 0.614
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002053"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.62,
+     "occluded": 0.09,
+     "quality": 0.564
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002542_pano_0006_000142"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.2,
+    "occluded": 0.07,
+    "quality": 0.186
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_01163"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.66,
+    "occluded": 0.07,
+    "quality": 0.614
+   }
+  },
+  {
+   "pandId": "0363100012172693",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-003013_pano_0002_000008"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000548"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000970"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004157"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-003013_pano_0002_000008"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012172770",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002361_pano_0005_000039"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000796"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000703_pano_0000_003500"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316060226-000020_pano_0007_001162"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002361_pano_0005_000039"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "blocked",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012172772",
+   "cands": [
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000704_pano_0000_000215"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.2,
+     "occluded": 0.05,
+     "quality": 0.19
+    },
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316010203-000076_pano_0000_002912"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.25,
+     "occluded": 0.05,
+     "quality": 0.237
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001833"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.25,
+     "occluded": 0.09,
+     "quality": 0.228
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_001037"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.39,
+     "occluded": 0.06,
+     "quality": 0.367
+    }
+   ],
+   "first": {
+    "year": 2018,
+    "panoIds": [
+     "TMX7316010203-000704_pano_0000_000215"
+    ],
+    "file": "years/2018.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.2,
+    "occluded": 0.05,
+    "quality": 0.19
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001551_pano_0000_001037"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.39,
+    "occluded": 0.06,
+    "quality": 0.367
+   }
+  },
+  {
+   "pandId": "0363100012172773",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20250120_0926_Track14_Sphere_00098"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002538_pano_0000_001853"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.63,
+     "occluded": 0.22,
+     "quality": 0.491
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002361_pano_0005_000038"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.75,
+     "occluded": 0.08,
+     "quality": 0.69
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20250120_0926_Track14_Sphere_00098"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "blank"
+    ],
+    "hard": false
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002361_pano_0005_000038"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.75,
+    "occluded": 0.08,
+    "quality": 0.69
+   }
+  },
+  {
+   "pandId": "0363100012172858",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track26_Sphere_00011",
+      "b_20241216_0911_Track26_Sphere_00012",
+      "b_20241216_0911_Track26_Sphere_00010"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.33,
+     "occluded": 0.08,
+     "quality": 0.304
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003083",
+      "TMX7316010203-002043_pano_0000_003084",
+      "TMX7316010203-002043_pano_0000_003082"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.13,
+     "occluded": 0.11,
+     "quality": 0.116
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000896",
+      "TMX7316010203-001674_pano_0000_000604",
+      "TMX7316010203-001673_pano_0000_000897"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.2,
+     "occluded": 0.07,
+     "quality": 0.186
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000740",
+      "TMX7316010203-001551_pano_0000_000741",
+      "TMX7316010203-001551_pano_0000_000739"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.16,
+     "occluded": 0.06,
+     "quality": 0.15
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005322",
+      "TMX7316010203-001054_pano_0000_005321",
+      "TMX7316010203-001054_pano_0000_005320"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.07,
+     "occluded": 0.09,
+     "quality": 0.064
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track26_Sphere_00011",
+     "b_20241216_0911_Track26_Sphere_00012",
+     "b_20241216_0911_Track26_Sphere_00010"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.33,
+    "occluded": 0.08,
+    "quality": 0.304
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track26_Sphere_00011",
+     "b_20241216_0911_Track26_Sphere_00012",
+     "b_20241216_0911_Track26_Sphere_00010"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.33,
+    "occluded": 0.08,
+    "quality": 0.304
+   }
+  },
+  {
+   "pandId": "0363100012172859",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0001_000214"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002839"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_000555"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000167"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004388"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002938_pano_0001_000214"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blocked",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012172860",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002950_pano_0002_000271"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002594"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000759"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder",
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000602"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005080"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002950_pano_0002_000271"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012172886",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0011_000111",
+      "TMX7316010203-002445_pano_0011_000112",
+      "TMX7316010203-002445_pano_0011_000110"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.57,
+     "occluded": 0.12,
+     "quality": 0.502
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000556",
+      "TMX7316010203-001673_pano_0000_000557",
+      "TMX7316010203-001673_pano_0000_000555"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.56,
+     "occluded": 0.72,
+     "quality": 0.157
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000979",
+      "TMX7316010203-001551_pano_0000_000980",
+      "TMX7316010203-001551_pano_0000_000978"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.65,
+     "occluded": 0.45,
+     "quality": 0.358
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004166",
+      "TMX7316010203-001054_pano_0000_004167",
+      "TMX7316010203-001054_pano_0000_004165"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.76,
+     "occluded": 0.11,
+     "quality": 0.676
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0011_000111",
+     "TMX7316010203-002445_pano_0011_000112",
+     "TMX7316010203-002445_pano_0011_000110"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.57,
+    "occluded": 0.12,
+    "quality": 0.502
+   },
+   "best": {
+    "year": 2018,
+    "panoIds": [
+     "TMX7316010203-001054_pano_0000_004166",
+     "TMX7316010203-001054_pano_0000_004167",
+     "TMX7316010203-001054_pano_0000_004165"
+    ],
+    "file": "years/2018.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.76,
+    "occluded": 0.11,
+    "quality": 0.676
+   }
+  },
+  {
+   "pandId": "0363100012172890",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0001_000201"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.09,
+     "quality": 0.073
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000154"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.08,
+     "quality": 0.074
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00051"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.07,
+     "quality": 0.074
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000703_pano_0000_006941"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.09,
+     "occluded": 0.08,
+     "quality": 0.083
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002938_pano_0001_000201"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.08,
+    "occluded": 0.09,
+    "quality": 0.073
+   },
+   "best": {
+    "year": 2018,
+    "panoIds": [
+     "TMX7316010203-000703_pano_0000_006941"
+    ],
+    "file": "years/2018.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.09,
+    "occluded": 0.08,
+    "quality": 0.083
+   }
+  },
+  {
+   "pandId": "0363100012172891",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002996_pano_0001_000286"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.25,
+     "occluded": 0.08,
+     "quality": 0.23
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-001974_pano_0000_000365"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.05,
+     "occluded": 0.29,
+     "quality": 0.035
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000682"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.29,
+     "occluded": 0.04,
+     "quality": 0.278
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000145"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.62,
+     "occluded": 0.05,
+     "quality": 0.589
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000704_pano_0000_000510"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.32,
+     "occluded": 0.04,
+     "quality": 0.307
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000414"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.13,
+     "occluded": 0.09,
+     "quality": 0.118
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002996_pano_0001_000286"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.25,
+    "occluded": 0.08,
+    "quality": 0.23
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001541_pano_0002_000145"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.62,
+    "occluded": 0.05,
+    "quality": 0.589
+   }
+  },
+  {
+   "pandId": "0363100012173047",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000268"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.5,
+     "occluded": 0.16,
+     "quality": 0.42
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000703_pano_0000_006956"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.1,
+     "occluded": 0.1,
+     "quality": 0.09
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000268"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.5,
+    "occluded": 0.16,
+    "quality": 0.42
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000268"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.5,
+    "occluded": 0.16,
+    "quality": 0.42
+   }
+  },
+  {
+   "pandId": "0363100012173056",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track26_Sphere_00013",
+      "b_20241216_0911_Track26_Sphere_00014",
+      "b_20241216_0911_Track26_Sphere_00012"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.25,
+     "occluded": 0.28,
+     "quality": 0.18
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003086",
+      "TMX7316010203-002043_pano_0000_003085",
+      "TMX7316010203-002043_pano_0000_003087"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.4,
+     "occluded": 0.19,
+     "quality": 0.324
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000899",
+      "TMX7316010203-001674_pano_0000_000607",
+      "TMX7316010203-001673_pano_0000_000898"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.06,
+     "occluded": 0.85,
+     "quality": 0.009
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000743",
+      "TMX7316010203-001551_pano_0000_000742",
+      "TMX7316010203-001551_pano_0000_000744"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.71,
+     "quality": 0.023
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005324",
+      "TMX7316010203-001054_pano_0000_005323",
+      "TMX7316010203-001054_pano_0000_005325"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.14,
+     "occluded": 0.34,
+     "quality": 0.092
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track26_Sphere_00013",
+     "b_20241216_0911_Track26_Sphere_00014",
+     "b_20241216_0911_Track26_Sphere_00012"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.25,
+    "occluded": 0.28,
+    "quality": 0.18
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003086",
+     "TMX7316010203-002043_pano_0000_003085",
+     "TMX7316010203-002043_pano_0000_003087"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.4,
+    "occluded": 0.19,
+    "quality": 0.324
+   }
+  },
+  {
+   "pandId": "0363100012173134",
+   "cands": [
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000170"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.48,
+     "occluded": 0.08,
+     "quality": 0.442
+    }
+   ],
+   "first": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001541_pano_0002_000170"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.48,
+    "occluded": 0.08,
+    "quality": 0.442
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001541_pano_0002_000170"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.48,
+    "occluded": 0.08,
+    "quality": 0.442
+   }
+  },
+  {
+   "pandId": "0363100012173350",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000220",
+      "TMX7316010203-002445_pano_0008_000221"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.23,
+     "occluded": 0.16,
+     "quality": 0.193
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000906",
+      "TMX7316010203-001673_pano_0000_000907"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.1,
+     "occluded": 0.51,
+     "quality": 0.049
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000750",
+      "TMX7316010203-001551_pano_0000_000749",
+      "TMX7316010203-001551_pano_0000_000751"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.31,
+     "occluded": 0.43,
+     "quality": 0.177
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005331",
+      "TMX7316010203-001054_pano_0000_005332",
+      "TMX7316010203-001054_pano_0000_005330"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.22,
+     "quality": 0.187
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000220",
+     "TMX7316010203-002445_pano_0008_000221"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.23,
+    "occluded": 0.16,
+    "quality": 0.193
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000220",
+     "TMX7316010203-002445_pano_0008_000221"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.23,
+    "occluded": 0.16,
+    "quality": 0.193
+   }
+  },
+  {
+   "pandId": "0363100012173352",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track26_Sphere_00018"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "foliage"
+     ],
+     "hard": true,
+     "score": 0.02,
+     "occluded": 0.95,
+     "quality": 0.001
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002978_pano_0003_000138"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.28,
+     "occluded": 0.84,
+     "quality": 0.045
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track26_Sphere_00018"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "foliage"
+    ],
+    "hard": true,
+    "score": 0.02,
+    "occluded": 0.95,
+    "quality": 0.001
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002978_pano_0003_000138"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.28,
+    "occluded": 0.84,
+    "quality": 0.045
+   }
+  },
+  {
+   "pandId": "0363100012173353",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002938_pano_0001_000210"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.09,
+     "occluded": 0.08,
+     "quality": 0.083
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000162"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.64,
+     "occluded": 0.06,
+     "quality": 0.602
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002938_pano_0001_000210"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.09,
+    "occluded": 0.08,
+    "quality": 0.083
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001541_pano_0002_000162"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.64,
+    "occluded": 0.06,
+    "quality": 0.602
+   }
+  },
+  {
+   "pandId": "0363100012174015",
+   "cands": [
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_01161"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.1,
+     "occluded": 0.09,
+     "quality": 0.091
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002538_pano_0000_002048"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001691"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002054"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_01161"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.1,
+    "occluded": 0.09,
+    "quality": 0.091
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_01161"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.1,
+    "occluded": 0.09,
+    "quality": 0.091
+   }
+  },
+  {
+   "pandId": "0363100012174029",
+   "cands": [
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316060226-000020_pano_0007_001339"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241121_1354_Track03_Sphere_00124"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "blocked",
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001666_pano_0000_000943"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked",
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000780"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "narrow"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316060226-000020_pano_0007_001339"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [
+     "narrow"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012174040",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002978_pano_0003_000014"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.02,
+     "occluded": 0.91,
+     "quality": 0.002
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002044_pano_0000_001773"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.49,
+     "occluded": 0.07,
+     "quality": 0.456
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002978_pano_0003_000014"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.02,
+    "occluded": 0.91,
+    "quality": 0.002
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002044_pano_0000_001773"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.49,
+    "occluded": 0.07,
+    "quality": 0.456
+   }
+  },
+  {
+   "pandId": "0363100012174042",
+   "cands": [
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002080"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.27,
+     "occluded": 0.05,
+     "quality": 0.257
+    }
+   ],
+   "first": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001179_pano_0000_002080"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.27,
+    "occluded": 0.05,
+    "quality": 0.257
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001179_pano_0000_002080"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.27,
+    "occluded": 0.05,
+    "quality": 0.257
+   }
+  },
+  {
+   "pandId": "0363100012174082",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000137"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.47,
+     "occluded": 0.13,
+     "quality": 0.409
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00581"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.69,
+     "occluded": 0.07,
+     "quality": 0.642
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002188"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.4,
+     "occluded": 0.2,
+     "quality": 0.32
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000137"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.47,
+    "occluded": 0.13,
+    "quality": 0.409
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00581"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.69,
+    "occluded": 0.07,
+    "quality": 0.642
+   }
+  },
+  {
+   "pandId": "0363100012174085",
+   "cands": [
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002189"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.12,
+     "occluded": 0.03,
+     "quality": 0.116
+    }
+   ],
+   "first": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001179_pano_0000_002189"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.12,
+    "occluded": 0.03,
+    "quality": 0.116
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001179_pano_0000_002189"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.12,
+    "occluded": 0.03,
+    "quality": 0.116
+   }
+  },
+  {
+   "pandId": "0363100012174176",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track27_Sphere_00067"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.42,
+     "occluded": 0.12,
+     "quality": 0.37
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003013"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.46,
+     "occluded": 0.09,
+     "quality": 0.419
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track27_Sphere_00067"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.42,
+    "occluded": 0.12,
+    "quality": 0.37
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003013"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.46,
+    "occluded": 0.09,
+    "quality": 0.419
+   }
+  },
+  {
+   "pandId": "0363100012174186",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-003013_pano_0001_000134"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.11,
+     "occluded": 0.36,
+     "quality": 0.07
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000867"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "foliage"
+     ],
+     "hard": true,
+     "score": 0.06,
+     "occluded": 0.91,
+     "quality": 0.005
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-003013_pano_0001_000134"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.11,
+    "occluded": 0.36,
+    "quality": 0.07
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-003013_pano_0001_000134"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.11,
+    "occluded": 0.36,
+    "quality": 0.07
+   }
+  },
+  {
+   "pandId": "0363100012174246",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00034"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.33,
+     "occluded": 0.08,
+     "quality": 0.304
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002869"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.22,
+     "occluded": 0.07,
+     "quality": 0.205
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00034"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.33,
+    "occluded": 0.08,
+    "quality": 0.304
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00034"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.33,
+    "occluded": 0.08,
+    "quality": 0.304
+   }
+  },
+  {
+   "pandId": "0363100012174417",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-003006_pano_0002_000172"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.17,
+     "occluded": 0.05,
+     "quality": 0.162
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000152"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.23,
+     "quality": 0.185
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-003006_pano_0002_000172"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.17,
+    "occluded": 0.05,
+    "quality": 0.162
+   },
+   "best": {
+    "year": 2017,
+    "panoIds": [
+     "TMX7316010203-000205_pano_0000_000152"
+    ],
+    "file": "years/2017.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.24,
+    "occluded": 0.23,
+    "quality": 0.185
+   }
+  },
+  {
+   "pandId": "0363100012174419",
+   "cands": [
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00099"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.62,
+     "occluded": 0.07,
+     "quality": 0.577
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003572"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002941"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004934"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00099"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.62,
+    "occluded": 0.07,
+    "quality": 0.577
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00099"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.62,
+    "occluded": 0.07,
+    "quality": 0.577
+   }
+  },
+  {
+   "pandId": "0363100012174420",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track06_Sphere_00030"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.26,
+     "occluded": 0.09,
+     "quality": 0.237
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00098"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.46,
+     "occluded": 0.07,
+     "quality": 0.428
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track06_Sphere_00030"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.26,
+    "occluded": 0.09,
+    "quality": 0.237
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00098"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.46,
+    "occluded": 0.07,
+    "quality": 0.428
+   }
+  },
+  {
+   "pandId": "0363100012174429",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002874"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.27,
+     "occluded": 0.18,
+     "quality": 0.221
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001057"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.14,
+     "occluded": 0.12,
+     "quality": 0.123
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004423"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.09,
+     "occluded": 0.1,
+     "quality": 0.081
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00099"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.63,
+     "occluded": 0.04,
+     "quality": 0.605
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002874"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.27,
+    "occluded": 0.18,
+    "quality": 0.221
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00099"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.63,
+    "occluded": 0.04,
+    "quality": 0.605
+   }
+  },
+  {
+   "pandId": "0363100012174497",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003170"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.07,
+     "occluded": 0.09,
+     "quality": 0.064
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00732"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.13,
+     "occluded": 0.09,
+     "quality": 0.118
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_001842"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.25,
+     "occluded": 0.07,
+     "quality": 0.232
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003170"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.07,
+    "occluded": 0.09,
+    "quality": 0.064
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001179_pano_0000_001842"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.25,
+    "occluded": 0.07,
+    "quality": 0.232
+   }
+  },
+  {
+   "pandId": "0363100012174498",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000243"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.13,
+     "occluded": 0.06,
+     "quality": 0.122
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003171"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.13,
+     "occluded": 0.06,
+     "quality": 0.122
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_001843"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.21,
+     "occluded": 0.06,
+     "quality": 0.197
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00731"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.19,
+     "occluded": 0.07,
+     "quality": 0.177
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_000640"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0008_000243"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.13,
+    "occluded": 0.06,
+    "quality": 0.122
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001179_pano_0000_001843"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.21,
+    "occluded": 0.06,
+    "quality": 0.197
+   }
+  },
+  {
+   "pandId": "0363100012174500",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track17_Sphere_00027",
+      "b_20241217_0841_Track17_Sphere_00028"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.25,
+     "occluded": 0.09,
+     "quality": 0.228
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0008_000241"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.29,
+     "occluded": 0.06,
+     "quality": 0.273
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000741"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.43,
+     "occluded": 0.05,
+     "quality": 0.408
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_001848"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.42,
+     "occluded": 0.07,
+     "quality": 0.391
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005063"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.18,
+     "occluded": 0.09,
+     "quality": 0.164
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track17_Sphere_00027",
+     "b_20241217_0841_Track17_Sphere_00028"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.25,
+    "occluded": 0.09,
+    "quality": 0.228
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001673_pano_0000_000741"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.43,
+    "occluded": 0.05,
+    "quality": 0.408
+   }
+  },
+  {
+   "pandId": "0363100012174503",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track08_Sphere_00010"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.44,
+     "occluded": 0.38,
+     "quality": 0.273
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003155"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.69,
+     "occluded": 0.09,
+     "quality": 0.628
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track08_Sphere_00010"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.44,
+    "occluded": 0.38,
+    "quality": 0.273
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003155"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.69,
+    "occluded": 0.09,
+    "quality": 0.628
+   }
+  },
+  {
+   "pandId": "0363100012174640",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003494"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002993"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000840"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder",
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000684"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004902"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002549_pano_0000_003494"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [
+     "blocked"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012174654",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track25_Sphere_00012"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001293"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00565"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [
+      "blocked"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002173"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track25_Sphere_00012"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "blocked",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012174661",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-001974_pano_0000_000478"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.32,
+     "occluded": 0.08,
+     "quality": 0.294
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000304"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.23,
+     "occluded": 0.16,
+     "quality": 0.193
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001974_pano_0000_000478"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.32,
+    "occluded": 0.08,
+    "quality": 0.294
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-001974_pano_0000_000478"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.32,
+    "occluded": 0.08,
+    "quality": 0.294
+   }
+  },
+  {
+   "pandId": "0363100012174690",
+   "cands": [
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_000508"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.14,
+     "occluded": 0.08,
+     "quality": 0.129
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00047"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.57,
+     "occluded": 0.25,
+     "quality": 0.427
+    }
+   ],
+   "first": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001674_pano_0000_000508"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.14,
+    "occluded": 0.08,
+    "quality": 0.129
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00047"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.57,
+    "occluded": 0.25,
+    "quality": 0.427
+   }
+  },
+  {
+   "pandId": "0363100012174691",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track27_Sphere_00071"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "washed-out",
+      "blocked",
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002996_pano_0001_000300"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked",
+      "narrow",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0011_000010"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "blocked",
+      "narrow",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000696"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "narrow",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000327"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked",
+      "narrow",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_005017"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked",
+      "narrow",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track27_Sphere_00071"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "washed-out",
+     "blocked",
+     "narrow"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012174693",
+   "cands": [
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00045"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.34,
+     "occluded": 0.06,
+     "quality": 0.32
+    }
+   ],
+   "first": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00045"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.34,
+    "occluded": 0.06,
+    "quality": 0.32
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00045"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.34,
+    "occluded": 0.06,
+    "quality": 0.32
+   }
+  },
+  {
+   "pandId": "0363100012174694",
+   "cands": [
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00044"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.23,
+     "occluded": 0.05,
+     "quality": 0.218
+    },
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316010203-000076_pano_0000_002845"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.15,
+     "occluded": 0.06,
+     "quality": 0.141
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track17_Sphere_00023"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "foliage",
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002549_pano_0000_003170"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000037"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00044"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.23,
+    "occluded": 0.05,
+    "quality": 0.218
+   },
+   "best": {
+    "year": 2025,
+    "panoIds": [
+     "recording_2025-07-03_08-35-58_00044"
+    ],
+    "file": "years/2025.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.23,
+    "occluded": 0.05,
+    "quality": 0.218
+   }
+  },
+  {
+   "pandId": "0363100012174698",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241216_0911_Track08_Sphere_00007"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "washed-out"
+     ],
+     "hard": true,
+     "score": 0.31,
+     "occluded": 0.28,
+     "quality": 0.223
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004361"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.71,
+     "occluded": 0.08,
+     "quality": 0.653
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241216_0911_Track08_Sphere_00007"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "washed-out"
+    ],
+    "hard": true,
+    "score": 0.31,
+    "occluded": 0.28,
+    "quality": 0.223
+   },
+   "best": {
+    "year": 2018,
+    "panoIds": [
+     "TMX7316010203-001054_pano_0000_004361"
+    ],
+    "file": "years/2018.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.71,
+    "occluded": 0.08,
+    "quality": 0.653
+   }
+  },
+  {
+   "pandId": "0363100012174700",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241121_1354_Track03_Sphere_00085"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.15,
+     "occluded": 0.85,
+     "quality": 0.023
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002542_pano_0006_000190"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.15,
+     "occluded": 0.17,
+     "quality": 0.124
+    },
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002045_pano_0001_000275"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.52,
+     "occluded": 0.04,
+     "quality": 0.499
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001666_pano_0000_000906"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.56,
+     "occluded": 0.06,
+     "quality": 0.526
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001543_pano_0000_001183"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.47,
+     "occluded": 0.05,
+     "quality": 0.446
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241121_1354_Track03_Sphere_00085"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.15,
+    "occluded": 0.85,
+    "quality": 0.023
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001666_pano_0000_000906"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.56,
+    "occluded": 0.06,
+    "quality": 0.526
+   }
+  },
+  {
+   "pandId": "0363100012174704",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002990_pano_0013_000001"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.14,
+     "occluded": 0.57,
+     "quality": 0.06
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002990_pano_0013_000001"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.14,
+    "occluded": 0.57,
+    "quality": 0.06
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002990_pano_0013_000001"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.14,
+    "occluded": 0.57,
+    "quality": 0.06
+   }
+  },
+  {
+   "pandId": "0363100012174736",
+   "cands": [
+    {
+     "year": 2016,
+     "panoIds": [
+      "TMX7316060226-000020_pano_0007_001280"
+     ],
+     "file": "years/2016.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track26_Sphere_00006"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002542_pano_0006_000091"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001302"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00575"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2016,
+    "panoIds": [
+     "TMX7316060226-000020_pano_0007_001280"
+    ],
+    "file": "years/2016.jpg",
+    "reasons": [
+     "blocked",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012174739",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track26_Sphere_00007"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [
+      "foliage",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002542_pano_0006_000092"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [
+      "occluder",
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00576"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001179_pano_0000_002183"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000703_pano_0000_003414"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "blocked",
+      "blank"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track26_Sphere_00007"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [
+     "foliage",
+     "blocked",
+     "blank"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012174744",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0009_000014",
+      "TMX7316010203-002445_pano_0009_000015",
+      "TMX7316010203-002445_pano_0009_000013"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.3,
+     "occluded": 0.14,
+     "quality": 0.258
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001030",
+      "TMX7316010203-001674_pano_0000_001029",
+      "TMX7316010203-001674_pano_0000_001031"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.02,
+     "occluded": 0.82,
+     "quality": 0.004
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000219",
+      "TMX7316010203-001541_pano_0002_000220"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.2,
+     "occluded": 0.17,
+     "quality": 0.166
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-000703_pano_0000_007008",
+      "TMX7316010203-000703_pano_0000_007007",
+      "TMX7316010203-000703_pano_0000_007009"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.34,
+     "occluded": 0.61,
+     "quality": 0.133
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0009_000014",
+     "TMX7316010203-002445_pano_0009_000015",
+     "TMX7316010203-002445_pano_0009_000013"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.3,
+    "occluded": 0.14,
+    "quality": 0.258
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0009_000014",
+     "TMX7316010203-002445_pano_0009_000015",
+     "TMX7316010203-002445_pano_0009_000013"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.3,
+    "occluded": 0.14,
+    "quality": 0.258
+   }
+  },
+  {
+   "pandId": "0363100012174745",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0009_000011",
+      "TMX7316010203-002445_pano_0009_000012"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder",
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001032",
+      "TMX7316010203-001674_pano_0000_001033",
+      "TMX7316010203-001674_pano_0000_001031"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder",
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001541_pano_0002_000217",
+      "TMX7316010203-001541_pano_0002_000216"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder",
+      "narrow"
+     ],
+     "hard": false
+    },
+    {
+     "year": 2025,
+     "panoIds": [
+      "recording_2025-07-03_08-35-58_00114",
+      "recording_2025-07-03_08-35-58_00115"
+     ],
+     "file": "years/2025.jpg",
+     "reasons": [
+      "washed-out",
+      "narrow"
+     ],
+     "hard": false
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0009_000011",
+     "TMX7316010203-002445_pano_0009_000012"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder",
+     "narrow"
+    ],
+    "hard": false
+   }
+  },
+  {
+   "pandId": "0363100012174747",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002978_pano_0003_000077"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.24,
+     "occluded": 0.43,
+     "quality": 0.137
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002978_pano_0003_000077"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.24,
+    "occluded": 0.43,
+    "quality": 0.137
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002978_pano_0003_000077"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.24,
+    "occluded": 0.43,
+    "quality": 0.137
+   }
+  },
+  {
+   "pandId": "0363100012174748",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002998"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.51,
+     "quality": 0.039
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000844"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.5,
+     "occluded": 0.11,
+     "quality": 0.445
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000689"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.35,
+     "occluded": 0.05,
+     "quality": 0.332
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004907"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.35,
+     "occluded": 0.06,
+     "quality": 0.329
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002998"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.08,
+    "occluded": 0.51,
+    "quality": 0.039
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001673_pano_0000_000844"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.5,
+    "occluded": 0.11,
+    "quality": 0.445
+   }
+  },
+  {
+   "pandId": "0363100012174750",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0009_000021"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.43,
+     "occluded": 0.09,
+     "quality": 0.391
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001024"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.07,
+     "quality": 0.074
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0009_000021"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.43,
+    "occluded": 0.09,
+    "quality": 0.391
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0009_000021"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.43,
+    "occluded": 0.09,
+    "quality": 0.391
+   }
+  },
+  {
+   "pandId": "0363100012174753",
+   "cands": [
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001674_pano_0000_001027"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.09,
+     "occluded": 0.16,
+     "quality": 0.076
+    }
+   ],
+   "first": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001674_pano_0000_001027"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.09,
+    "occluded": 0.16,
+    "quality": 0.076
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001674_pano_0000_001027"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.09,
+    "occluded": 0.16,
+    "quality": 0.076
+   }
+  },
+  {
+   "pandId": "0363100012174775",
+   "cands": [
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000525"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.08,
+     "occluded": 0.94,
+     "quality": 0.005
+    }
+   ],
+   "first": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001673_pano_0000_000525"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.08,
+    "occluded": 0.94,
+    "quality": 0.005
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001673_pano_0000_000525"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.08,
+    "occluded": 0.94,
+    "quality": 0.005
+   }
+  },
+  {
+   "pandId": "0363100012174779",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002923_pano_0001_000043"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.71,
+     "occluded": 0.18,
+     "quality": 0.582
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002923_pano_0001_000043"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.71,
+    "occluded": 0.18,
+    "quality": 0.582
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002923_pano_0001_000043"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.71,
+    "occluded": 0.18,
+    "quality": 0.582
+   }
+  },
+  {
+   "pandId": "0363100012174780",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002990_pano_0012_000321"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.28,
+     "occluded": 0.11,
+     "quality": 0.249
+    },
+    {
+     "year": 2017,
+     "panoIds": [
+      "TMX7316010203-000205_pano_0000_000424"
+     ],
+     "file": "years/2017.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.3,
+     "occluded": 0.12,
+     "quality": 0.264
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002990_pano_0012_000321"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.28,
+    "occluded": 0.11,
+    "quality": 0.249
+   },
+   "best": {
+    "year": 2017,
+    "panoIds": [
+     "TMX7316010203-000205_pano_0000_000424"
+    ],
+    "file": "years/2017.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.3,
+    "occluded": 0.12,
+    "quality": 0.264
+   }
+  },
+  {
+   "pandId": "0363100012174824",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_002992"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.25,
+     "occluded": 0.15,
+     "quality": 0.212
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000839"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.29,
+     "occluded": 0.12,
+     "quality": 0.255
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000683"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.04,
+     "occluded": 0.8,
+     "quality": 0.008
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004901"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.38,
+     "occluded": 0.18,
+     "quality": 0.312
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_002992"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.25,
+    "occluded": 0.15,
+    "quality": 0.212
+   },
+   "best": {
+    "year": 2018,
+    "panoIds": [
+     "TMX7316010203-001054_pano_0000_004901"
+    ],
+    "file": "years/2018.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.38,
+    "occluded": 0.18,
+    "quality": 0.312
+   }
+  },
+  {
+   "pandId": "0363100012174827",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002445_pano_0010_000020",
+      "TMX7316010203-002445_pano_0010_000019",
+      "TMX7316010203-002445_pano_0010_000021"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.39,
+     "occluded": 0.07,
+     "quality": 0.363
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000838",
+      "TMX7316010203-001673_pano_0000_000837",
+      "TMX7316010203-001673_pano_0000_000839"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.61,
+     "occluded": 0.05,
+     "quality": 0.58
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000682",
+      "TMX7316010203-001551_pano_0000_000681",
+      "TMX7316010203-001551_pano_0000_000683"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.5,
+     "occluded": 0.06,
+     "quality": 0.47
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004900",
+      "TMX7316010203-001054_pano_0000_004901",
+      "TMX7316010203-001054_pano_0000_004899"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [
+      "occluder"
+     ],
+     "hard": true,
+     "score": 0.39,
+     "occluded": 0.04,
+     "quality": 0.374
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002445_pano_0010_000020",
+     "TMX7316010203-002445_pano_0010_000019",
+     "TMX7316010203-002445_pano_0010_000021"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [
+     "occluder"
+    ],
+    "hard": true,
+    "score": 0.39,
+    "occluded": 0.07,
+    "quality": 0.363
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001673_pano_0000_000838",
+     "TMX7316010203-001673_pano_0000_000837",
+     "TMX7316010203-001673_pano_0000_000839"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.61,
+    "occluded": 0.05,
+    "quality": 0.58
+   }
+  },
+  {
+   "pandId": "0363100012174828",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002923_pano_0000_000050"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.37,
+     "occluded": 0.61,
+     "quality": 0.144
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002923_pano_0000_000050"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.37,
+    "occluded": 0.61,
+    "quality": 0.144
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002923_pano_0000_000050"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.37,
+    "occluded": 0.61,
+    "quality": 0.144
+   }
+  },
+  {
+   "pandId": "0363100012174829",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002967_pano_0003_000092"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.37,
+     "occluded": 0.26,
+     "quality": 0.274
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000691"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.53,
+     "occluded": 0.13,
+     "quality": 0.461
+    },
+    {
+     "year": 2018,
+     "panoIds": [
+      "TMX7316010203-001054_pano_0000_004909"
+     ],
+     "file": "years/2018.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.33,
+     "occluded": 0.29,
+     "quality": 0.234
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002967_pano_0003_000092"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.37,
+    "occluded": 0.26,
+    "quality": 0.274
+   },
+   "best": {
+    "year": 2019,
+    "panoIds": [
+     "TMX7316010203-001551_pano_0000_000691"
+    ],
+    "file": "years/2019.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.53,
+    "occluded": 0.13,
+    "quality": 0.461
+   }
+  },
+  {
+   "pandId": "0363100012174830",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003002"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.61,
+     "occluded": 0.07,
+     "quality": 0.567
+    },
+    {
+     "year": 2020,
+     "panoIds": [
+      "TMX7316010203-001673_pano_0000_000848"
+     ],
+     "file": "years/2020.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.71,
+     "occluded": 0.09,
+     "quality": 0.646
+    },
+    {
+     "year": 2019,
+     "panoIds": [
+      "TMX7316010203-001551_pano_0000_000693"
+     ],
+     "file": "years/2019.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.63,
+     "occluded": 0.07,
+     "quality": 0.586
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003002"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.61,
+    "occluded": 0.07,
+    "quality": 0.567
+   },
+   "best": {
+    "year": 2020,
+    "panoIds": [
+     "TMX7316010203-001673_pano_0000_000848"
+    ],
+    "file": "years/2020.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.71,
+    "occluded": 0.09,
+    "quality": 0.646
+   }
+  },
+  {
+   "pandId": "0363100012174913",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002923_pano_0001_000128"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.25,
+     "occluded": 0.66,
+     "quality": 0.085
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002923_pano_0001_000128"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.25,
+    "occluded": 0.66,
+    "quality": 0.085
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002923_pano_0001_000128"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.25,
+    "occluded": 0.66,
+    "quality": 0.085
+   }
+  },
+  {
+   "pandId": "0363100012174925",
+   "cands": [
+    {
+     "year": 2024,
+     "panoIds": [
+      "b_20241217_0841_Track14_Sphere_00006"
+     ],
+     "file": "years/2024.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.66,
+     "occluded": 0.19,
+     "quality": 0.535
+    },
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002989_pano_0006_000026"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.42,
+     "occluded": 0.39,
+     "quality": 0.256
+    }
+   ],
+   "first": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track14_Sphere_00006"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.66,
+    "occluded": 0.19,
+    "quality": 0.535
+   },
+   "best": {
+    "year": 2024,
+    "panoIds": [
+     "b_20241217_0841_Track14_Sphere_00006"
+    ],
+    "file": "years/2024.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.66,
+    "occluded": 0.19,
+    "quality": 0.535
+   }
+  },
+  {
+   "pandId": "0363100012174965",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002985_pano_0018_000178"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.26,
+     "occluded": 0.3,
+     "quality": 0.182
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002985_pano_0018_000178"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.26,
+    "occluded": 0.3,
+    "quality": 0.182
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002985_pano_0018_000178"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.26,
+    "occluded": 0.3,
+    "quality": 0.182
+   }
+  },
+  {
+   "pandId": "0363100012174978",
+   "cands": [
+    {
+     "year": 2022,
+     "panoIds": [
+      "TMX7316010203-002985_pano_0018_000187"
+     ],
+     "file": "years/2022.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.44,
+     "occluded": 0.56,
+     "quality": 0.194
+    }
+   ],
+   "first": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002985_pano_0018_000187"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.44,
+    "occluded": 0.56,
+    "quality": 0.194
+   },
+   "best": {
+    "year": 2022,
+    "panoIds": [
+     "TMX7316010203-002985_pano_0018_000187"
+    ],
+    "file": "years/2022.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.44,
+    "occluded": 0.56,
+    "quality": 0.194
+   }
+  },
+  {
+   "pandId": "0363100012243821",
+   "cands": [
+    {
+     "year": 2021,
+     "panoIds": [
+      "TMX7316010203-002043_pano_0000_003161"
+     ],
+     "file": "years/2021.jpg",
+     "reasons": [],
+     "hard": true,
+     "score": 0.59,
+     "occluded": 0.09,
+     "quality": 0.537
+    }
+   ],
+   "first": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003161"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.59,
+    "occluded": 0.09,
+    "quality": 0.537
+   },
+   "best": {
+    "year": 2021,
+    "panoIds": [
+     "TMX7316010203-002043_pano_0000_003161"
+    ],
+    "file": "years/2021.jpg",
+    "reasons": [],
+    "hard": true,
+    "score": 0.59,
+    "occluded": 0.09,
+    "quality": 0.537
+   }
+  }
+ ]
+}

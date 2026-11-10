@@ -6,32 +6,48 @@
  },
  "pands": [
   {
-   "pandId": "0363100012141706",
+   "pandId": "0363100012114049",
    "addresses": [
-    "Lange Vogelstraat 1"
+    "Lange Vogelstraat 11"
    ],
    "groundUnits": [
     {
-     "address": "Lange Vogelstraat 1",
+     "address": "Lange Vogelstraat 11",
      "use": "woonfunctie",
-     "areaM2": 48,
-     "bagId": "0363010000723364"
+     "areaM2": 49,
+     "bagId": "0363010000723374"
     }
    ],
    "units": 1,
    "osm": []
   },
   {
-   "pandId": "0363100012144274",
+   "pandId": "0363100012117598",
    "addresses": [
-    "Lange Vogelstraat 3"
+    "Lange Vogelstraat 13"
    ],
    "groundUnits": [
     {
-     "address": "Lange Vogelstraat 3",
+     "address": "Lange Vogelstraat 13",
      "use": "woonfunctie",
-     "areaM2": 48,
-     "bagId": "0363010000723366"
+     "areaM2": 49,
+     "bagId": "0363010000723376"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012135488",
+   "addresses": [
+    "Lange Vogelstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lange Vogelstraat 15",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000723378"
     }
    ],
    "units": 1,

@@ -1,0 +1,122 @@
+{
+ "face": "nieuwendammerdijk-300-308-r1",
+ "image": "staging/block-face/nieuwendammerdijk-300-308-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 833,
+ "height": 524,
+ "groundNAP": -0.211,
+ "heightM": 13.1,
+ "frame": {
+  "midRD": [
+   124729.43075,
+   489221.985
+  ],
+  "uRD": [
+   -0.7687124766486821,
+   0.6395945029818887
+  ],
+  "nRD": [
+   0.6395945029818887,
+   0.7687124766486821
+  ]
+ },
+ "x0M": -10.49,
+ "x1M": 10.33,
+ "date": "2019-12-12",
+ "cameraHeightM": 2.75,
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012160505",
+   "x0M": -10.49,
+   "x1M": 0.19,
+   "px": [
+    0,
+    427
+   ],
+   "date": "2019-12-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001513_pano_0001_000217",
+     "timestamp": "2019-12-12T09:28:32.393230Z",
+     "distanceM": 17.2,
+     "obliquityDeg": 1.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001513_pano_0001_000216",
+     "timestamp": "2019-12-12T09:28:31.778270Z",
+     "distanceM": 17.5,
+     "obliquityDeg": 15.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001513_pano_0001_000218",
+     "timestamp": "2019-12-12T09:28:32.998140Z",
+     "distanceM": 18.3,
+     "obliquityDeg": 17.2,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012154157",
+   "x0M": -0.04,
+   "x1M": 10.33,
+   "px": [
+    418,
+    833
+   ],
+   "date": "2019-12-12",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001513_pano_0001_000215",
+     "timestamp": "2019-12-12T09:28:31.153270Z",
+     "distanceM": 17,
+     "obliquityDeg": 2.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001513_pano_0001_000214",
+     "timestamp": "2019-12-12T09:28:30.508260Z",
+     "distanceM": 17.4,
+     "obliquityDeg": 14.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001513_pano_0001_000216",
+     "timestamp": "2019-12-12T09:28:31.778270Z",
+     "distanceM": 18.2,
+     "obliquityDeg": 18.1,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2017-05-15": 5,
+  "2025-09-24": 5,
+  "2021-06-15": 5,
+  "2016-08-08": 5,
+  "2019-06-27": 5,
+  "2022-10-07": 5,
+  "2024-08-29": 5,
+  "2022-05-09": 5,
+  "2020-05-28": 5,
+  "2018-12-19": 5,
+  "2018-07-25": 5,
+  "2019-12-12": 5,
+  "2019-07-01": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "nieuwendammerdijk-300-308",
+  "px": [
+   780,
+   1613
+  ]
+ }
+}

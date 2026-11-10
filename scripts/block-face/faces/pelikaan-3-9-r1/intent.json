@@ -27,11 +27,11 @@
    "address": "Pelikaanstraat 5",
    "type": {
     "type": "vogel-1921-two-storey-dormer-row",
+    "mirror": true,
     "measuredPalette": {
-     "brick": "#7e675d",
+     "brick": "#aba095",
      "evidence": "strip 2025-09-22 span 255-522: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "mirror": true
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -53,7 +53,7 @@
    "type": {
     "type": "vogel-1921-two-storey-dormer-row",
     "measuredPalette": {
-     "brick": "#786056",
+     "brick": "#a99c90",
      "evidence": "strip 2025-09-22 span 522-778: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     }
    },

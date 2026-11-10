@@ -30,6 +30,7 @@ import {classifyOpenings} from './facadeOpenings.ts';
 import {brickFaceColour, cellTexture, poolTexture, type PooledTexture} from './facadeTexture.ts';
 import {wallFamily} from '../facade/materials.ts';
 import {rowSegments} from './rowSplit.ts';
+import {wallVsTrim} from './wallTrim.ts';
 
 export type Rgb = [number, number, number];
 
@@ -52,6 +53,11 @@ export interface MeasureInput {
   groundBandM?: number; cell?: number;
   /** cells whose centre is outside the wall (box metres u, v) are not facade (the 3DBAG panel's outline: sky over a lower part) */
   inside?: (u: number, v: number) => boolean;
+  /** wall vs trim (wallTrim.ts): a pale thin band is never the wall when a darker solid body outweighs it; false = the pre-H2c reading */
+  wallVsTrim?: boolean;
+  /** lane H2d: the four parts of the opening split and stable wall (`OpeningSplit`); true = all, false = the pre-H2d reading,
+   *  an object = the parts named. Default: `OPENING_SPLIT_DEFAULT`. */
+  openingSplit?: boolean | Partial<OpeningSplit>;
 }
 
 /**
@@ -62,6 +68,38 @@ export function isLeaf(r: number, g: number, b: number): boolean {
   const hi = Math.max(r, g, b), lo = Math.min(r, g, b);
   if (hi - lo < 12 || hi < 25) return false;
   return (g >= r && g > b + 8) || (g > r - 6 && g > b + 22 && r > b + 16);
+}
+/**
+ * Lane H2d. `groups`: the frame-like ring test per material group, not per cluster (facadeOpenings.ts), so a dark front's
+ * two brown clusters stop reading as one big frame. `core`: each opening is its glass plus a one-cell frame, a lintel, sill
+ * or surround strip is trim. `solidBody`: the wall is the solid body of the wall set, not a thin cluster enriched in the floor
+ * zones (wallTrim.ts rule B). `clusterWall`: the wall colour is the median over the picked wall cluster's cells (with the
+ * wall-set clusters within dE 12), not over the body cluster with the most interior cells.
+ */
+export interface OpeningSplit {groups: boolean; core: boolean; solidBody: boolean; clusterWall: boolean}
+export const OPENING_SPLIT_ALL: OpeningSplit = {groups: true, core: true, solidBody: true, clusterWall: true};
+/**
+ * Named profiles (the judgement session's split of lane H2d). `installGate`: groups + solidBody, the 0-flip reading the 448-group
+ * replay confirmed; likenessGate, install-large and every caller that names no profile use it, so no installed verdict moves.
+ * `houseLine`: all four parts; house:preview, its gate and the house-line verdicts use it (house:describe, H7 and H9 later).
+ * `core` and `clusterWall` move 8 and 5 replay verdicts, which is why they are not in `installGate`.
+ */
+export const MEASURE_PROFILES = {
+  installGate: {groups: true, core: false, solidBody: true, clusterWall: false},
+  houseLine: {groups: true, core: true, solidBody: true, clusterWall: true},
+} as const satisfies Record<string, OpeningSplit>;
+export type MeasureProfile = keyof typeof MEASURE_PROFILES;
+export const OPENING_SPLIT_DEFAULT: OpeningSplit = {...MEASURE_PROFILES.installGate};
+/** The profile a resolved split is, else 'custom' (a `--opening-split=` selection) or 'pre-H2d' (none of the parts). */
+export function profileName(v: boolean | Partial<OpeningSplit> | undefined): string {
+  const r = resolveOpeningSplit(v);
+  for (const [n, p] of Object.entries(MEASURE_PROFILES)) if ((Object.keys(p) as (keyof OpeningSplit)[]).every(k => p[k] === r[k])) return n;
+  return Object.values(r).some(Boolean) ? 'custom' : 'pre-H2d';
+}
+export function resolveOpeningSplit(v: boolean | Partial<OpeningSplit> | undefined): OpeningSplit {
+  if (v === undefined) return OPENING_SPLIT_DEFAULT;
+  if (typeof v === 'boolean') return v ? OPENING_SPLIT_ALL : {groups: false, core: false, solidBody: false, clusterWall: false};
+  return {...{groups: false, core: false, solidBody: false, clusterWall: false}, ...v};
 }
 export const CELL_M = 0.1;
 /** floor-zone enrichment of an undecided cluster (between clearly glazing and clearly wall), see `altMask` */
@@ -391,6 +429,7 @@ export function washedFloorBandRows(washed: Uint8Array, seen: Uint8Array, cols: 
 }
 
 export function measureFacade(input: MeasureInput): FacadeMeasurement {
+  const osplit = resolveOpeningSplit(input.openingSplit);
   const {image: im, box} = input, cell = input.cell ?? CELL_M, gb = input.groundBandM ?? GROUND_BAND_M;
   const cols = Math.max(1, Math.floor((box.u1 - box.u0) / cell)), rows = Math.max(1, Math.floor((box.v1 - box.v0) / cell));
   const N = cols * rows, texture = new Float32Array(N), mean: Rgb[] = new Array(N), usable = new Uint8Array(N), foliage = new Uint8Array(N), washed = new Uint8Array(N), seen = new Uint8Array(N), edgeX = new Float32Array(N), edgeY = new Float32Array(N);
@@ -531,6 +570,18 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   pool.forEach((k, n) => { const z = zone(vOf(Math.floor(k / cols))); if (z === 1) { inFloor[label[n]]++; nF++; } else if (z === 2) { inMid[label[n]]++; nM++; } });
   const enrich = centres.map((_, c) => (nF && nM ? (inFloor[c] / nF) / Math.max(1e-3, inMid[c] / nM) : 1));
   const zoned = nF >= 50 && nM >= 50 && enrich.some((e, c) => e < 0.7 && share[c] >= 0.08);
+  // ... and thin: a cluster with a solid body (>= 35 % of its cells with all 8 neighbours in it) is a material, not an edge
+  // ring, however textured (brick piers between windows are as textured as the window edges: Waagdragerhof 198 walls[1])
+  const solid = centres.map((_, c) => {
+    let n = 0, inner = 0;
+    pool.forEach(k => {
+      if (cellOf[k] !== c) return; n++;
+      const i = k % cols, j = (k - i) / cols; let all = true;
+      for (let dj = -1; dj <= 1 && all; dj++) for (let di = -1; di <= 1; di++) { const ii = i + di, jj = j + dj; if (ii < 0 || jj < 0 || ii >= cols || jj >= rows || cellOf[jj * cols + ii] !== c) { all = false; break; } }
+      if (all) inner++;
+    });
+    return n ? inner / n : 0;
+  });
   // fallback (no storey zones, or a uniform front): one continuous, textured, warm body
   const score = centres.map((c, i) => share[i] * shape[i].conn * Math.sqrt(shape[i].spanW * shape[i].spanH) * (warm(c) ? 1.5 : c[2] < 0 ? 0.4 : 1) * (glassy(i) ? 0.2 : 1) * Math.max(0.3, Math.min(2, texOf[i] / Math.max(1e-6, texMean))));
   let wallSet: boolean[], wallC: number;
@@ -544,6 +595,11 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
     wallSet = centres.map((c, i) => i === wallC || (!glassy(i) && dE76(c, centres[wallC]) < 12)
       // a second continuous body spanning the height (two bricks on one 3DBAG plane)
       || (share[i] >= 0.1 && shape[i].conn >= 0.6 && shape[i].spanH >= 0.6 && shape[i].spanW >= 0.3 && (!glassy(i) || share[i] < share[wallC] * 1.5)));
+  }
+  // Wall vs trim (wallTrim.ts): a thin pale band cluster picked as the wall on a dark front is trim; the dark body is the wall
+  if (input.wallVsTrim !== false) {
+    const t = wallVsTrim(centres.map((c, i) => ({lab: c, share: share[i], solid: solid[i], glassy: glassy(i)})), wallSet, wallC, osplit.solidBody);
+    if (t) { wallSet = t.wallSet; wallC = t.wallC; }
   }
   // Same material in other light: a lighter not-wall cluster with a warm wall's chromaticity (the r, g, b shares of its
   // median colour) is that wall in sun where the wall cluster is its shade (the sunlit brick piers and frieze beside
@@ -563,18 +619,6 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   // lies between a wall and a not-wall centre. Neither floor nor glazing, so their cells go cell by cell to the nearer
   // (in Lab) of the pure wall and not-wall colours.
   const segDist = (p: Rgb, a: Rgb, b: Rgb) => { const ab = [0, 1, 2].map(c => b[c] - a[c]), l2 = ab.reduce((x, v) => x + v * v, 0); if (l2 < 1) return null; const t = Math.max(0, Math.min(1, [0, 1, 2].reduce((x, c) => x + (p[c] - a[c]) * ab[c], 0) / l2)); return {d: Math.hypot(...[0, 1, 2].map(c => p[c] - a[c] - t * ab[c])), t, len: Math.sqrt(l2)}; };
-  // ... and thin: a cluster with a solid body (>= 35 % of its cells with all 8 neighbours in it) is a material, not an edge
-  // ring, however textured (brick piers between windows are as textured as the window edges: Waagdragerhof 198 walls[1])
-  const solid = centres.map((_, c) => {
-    let n = 0, inner = 0;
-    pool.forEach(k => {
-      if (cellOf[k] !== c) return; n++;
-      const i = k % cols, j = (k - i) / cols; let all = true;
-      for (let dj = -1; dj <= 1 && all; dj++) for (let di = -1; di <= 1; di++) { const ii = i + di, jj = j + dj; if (ii < 0 || jj < 0 || ii >= cols || jj >= rows || cellOf[jj * cols + ii] !== c) { all = false; break; } }
-      if (all) inner++;
-    });
-    return n ? inner / n : 0;
-  });
   const mixed = centres.map((c, i) => {
     if ((texOf[i] < texMean * 1.2 && solid[i] >= 0.1) || solid[i] >= 0.35) return false;
     for (let a = 0; a < centres.length; a++) for (let b = 0; b < centres.length; b++) {
@@ -597,7 +641,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
     });
     majorityClean(raw, cols, rows, out);
     // Openings (facadeOpenings.ts): frames, bars and panes regrouped into connected openings; bands and second materials out.
-    const op = classifyOpenings({mask: Uint8Array.from(out), label: fullLabel, wallSet: ws, centres, edgeX, cols, rows, cell, counted: k => isUpper(Math.floor(k / cols)),
+    const op = classifyOpenings({mask: Uint8Array.from(out), label: fullLabel, wallSet: ws, centres, groupFrames: osplit.groups, coreTrim: osplit.core, clusterSolid: solid, edgeX, cols, rows, cell, counted: k => isUpper(Math.floor(k / cols)),
       // floors: the fit's storey lines, and where the fit has upper storeys, the photo's own floor zones (+-0.35 m round
       // the calmest rows of the storey period): a fit line half a storey off does not let openings join across a floor
       floorRows: [...fitFloors, ...(ups.length ? Array.from({length: rows}, (_, j) => j).filter(j => zone(vOf(j)) === 1) : [])].filter(j => j >= 0 && j < rows), fitFloorRows: fitFloors,
@@ -643,7 +687,12 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const byC = new Map<number, number>(); inner0.forEach(k => byC.set(fullLabel[k], (byC.get(fullLabel[k]) ?? 0) + 1));
   const domC = [...byC].sort((x, y) => y[1] - x[1])[0]?.[0] ?? wallC;
   const wallInner = inner0.filter(k => dE76(centres[fullLabel[k]], centres[domC]) < 12), wallCells = wallInner.length >= Math.max(30, wallAll.length * 0.3) ? wallInner : wallAll;
-  const wallRaw = medRgb((wallCells.length ? wallCells : allUsable.filter(k => mask[k] === MASK.wall)).map(k => mean[k]));
+  // H2d: the median over the picked wall cluster's own cells (the cluster `wallVsTrim` settled on, with the wall-set clusters within dE 12 of it: one brick in two lightnesses), whatever the opening pass made of them, not over whichever body
+  // cluster has the most interior cells: that count moved with a 10 cm box change and swapped a slate wall for its lintels
+  const inGroup = (c: number) => c >= 0 && (c === wallC || (wallSet[c] && !glassy(c) && dE76(centres[c], centres[wallC]) < 12));
+  const clusterCells = osplit.clusterWall ? allUsable.filter(k => isUpper(Math.floor(k / cols)) && inGroup(cellOf[k])) : [];
+  const wallCluster = clusterCells.length >= Math.max(30, wallAll.length * 0.3) ? clusterCells : null;
+  const wallRaw = medRgb((wallCluster ?? (wallCells.length ? wallCells : allUsable.filter(k => mask[k] === MASK.wall))).map(k => mean[k]));
   const darkCells = allUsable.filter(k => mask[k] === MASK.dark), trimCells = allUsable.filter(k => mask[k] === MASK.trim || mask[k] === MASK.frame);
   const glassRaw = darkCells.length >= 20 ? medRgb(darkCells.map(k => mean[k])) : null;
   const trimN = trimCells.length >= 20 ? norm(medRgb(trimCells.map(k => mean[k]))) : null;
@@ -887,4 +936,17 @@ export function analyseMask(a: {mask: Uint8Array; cols: number; rows: number; ce
     : window && window.h >= 0.92 ? 'columns' : 'punched';
   const windowColumns = columns === null ? null : columns * (window?.perBay ?? 1);
   return {glazing: +glazing.toFixed(3), storeyGlazing, ground, pitchM: pitchM ? +pitchM.toFixed(3) : null, pitchScore: per?.score ?? 0, columns, storeyM, window, frontClass, windowColumns};
+}
+
+/**
+ * `--no-opening-split` / `--opening-split=<parts>` of the scripts: the `openingSplit` input they pass (parts are
+ * `groups`, `core`, `solidBody`, `clusterWall`, comma-separated; none given = the default).
+ */
+export function openingSplitFromArgs(argv: readonly string[]): {openingSplit: boolean | Partial<OpeningSplit>} | {} {
+  if (argv.includes('--no-opening-split')) return {openingSplit: false};
+  const a = argv.find(x => x.startsWith('--opening-split='));
+  if (!a) return {};
+  const parts: Partial<OpeningSplit> = {};
+  for (const n of a.slice('--opening-split='.length).split(',').filter(Boolean)) { if (!(n in OPENING_SPLIT_ALL)) throw new Error(`--opening-split: unknown part ${n}`); (parts as Record<string, boolean>)[n] = true; }
+  return {openingSplit: parts};
 }

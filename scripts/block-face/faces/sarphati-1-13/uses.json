@@ -1,0 +1,202 @@
+{
+ "street": "Sarphatistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:43:57.831Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165431",
+   "addresses": [
+    "Sarphatistraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 1",
+     "use": "bijeenkomstfunctie,kantoorfunctie",
+     "areaM2": 4359,
+     "bagId": "0363010000804484"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3793730139,
+     "lngLat": [
+      4.9013061,
+      52.3601929
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1017WS",
+      "addr:street": "Sarphatistraat",
+      "contact:email": "bezoekerscentrum@dnb.nl",
+      "contact:website": "https://www.dnb.nl/over-dnb/dnb-bezoekerscentrum/",
+      "information": "office",
+      "name": "Bezoekerscentrum De Nederlandse Bank",
+      "source": "BAG",
+      "source:date": "2015-10-20",
+      "tourism": "information"
+     },
+     "fetchedAt": "2026-11-10T08:43:57.831Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10782331072,
+     "lngLat": [
+      4.9014135,
+      52.3601451
+     ],
+     "tags": {
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "wall_loops",
+      "capacity": "12",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:43:57.831Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12874290929,
+     "lngLat": [
+      4.901397,
+      52.3602045
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1017WS",
+      "addr:street": "Sarphatistraat",
+      "name": "BUX",
+      "office": "financial",
+      "website": "https://getbux.com/",
+      "wikidata": "Q104864987",
+      "wikimedia_commons": "Category:BUX (company)",
+      "wikipedia": "en:BUX (brokerage)"
+     },
+     "fetchedAt": "2026-11-10T08:43:57.831Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171539",
+   "addresses": [
+    "Sarphatistraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 7",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 577,
+     "bagId": "0363010000804489"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012183035",
+   "addresses": [
+    "Sarphatistraat 9",
+    "Sarphatistraat 9B",
+    "Sarphatistraat 9A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 9",
+     "use": "kantoorfunctie",
+     "areaM2": 326,
+     "bagId": "0363010000804488"
+    },
+    {
+     "address": "Sarphatistraat 9B",
+     "use": "woonfunctie",
+     "areaM2": 221,
+     "bagId": "0363010012583418"
+    },
+    {
+     "address": "Sarphatistraat 9A",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010012583419"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171537",
+   "addresses": [
+    "Sarphatistraat 11",
+    "Sarphatistraat 11A",
+    "Sarphatistraat 11D",
+    "Sarphatistraat 11E",
+    "Sarphatistraat 11B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 11",
+     "use": "woonfunctie",
+     "areaM2": 188,
+     "bagId": "0363010000631071"
+    },
+    {
+     "address": "Sarphatistraat 11A",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010012110264"
+    },
+    {
+     "address": "Sarphatistraat 11D",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012110266"
+    },
+    {
+     "address": "Sarphatistraat 11E",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010012110267"
+    },
+    {
+     "address": "Sarphatistraat 11B",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010012110265"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171538",
+   "addresses": [
+    "Sarphatistraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Maarten Jansz. Kosterstraat 20A",
+     "use": "industriefunctie",
+     "areaM2": 255,
+     "bagId": "0363010000731235"
+    },
+    {
+     "address": "Sarphatistraat 13-H",
+     "use": "kantoorfunctie",
+     "areaM2": 152,
+     "bagId": "0363010000804497"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

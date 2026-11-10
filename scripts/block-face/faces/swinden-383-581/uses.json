@@ -1,0 +1,993 @@
+{
+ "street": "Eerste Van Swindenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:22:01.839Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158293",
+   "addresses": [
+    "Eerste Van Swindenstraat 383A",
+    "Eerste Van Swindenstraat 383B",
+    "Eerste Van Swindenstraat 383C",
+    "Eerste Van Swindenstraat 383D",
+    "Eerste Van Swindenstraat 383E",
+    "Eerste Van Swindenstraat 383F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 383A",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001994572"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 383B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001994573"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 383C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001994574"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 383D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001994575"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 383E",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001994576"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 383F",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010001994577"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012154113",
+   "addresses": [
+    "Eerste Van Swindenstraat 385"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 385-H",
+     "use": "winkelfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000549128"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12693332667,
+     "lngLat": [
+      4.9280893,
+      52.3629684
+     ],
+     "tags": {
+      "amenity": "post_office",
+      "name": "Nandan Shipping",
+      "opening_hours": "Tu-Fr 10:00-18:00; Sa 10:00-17:00; Mo 13:00-18:00"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163918",
+   "addresses": [
+    "Eerste Van Swindenstraat 387",
+    "Eerste Van Swindenstraat 389"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 387-H",
+     "use": "winkelfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000549133"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 389-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000549141"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826850733,
+     "lngLat": [
+      4.9282359,
+      52.3629797
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "389-H",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "amenity": "fast_food",
+      "branch": "Amsterdam Oost",
+      "brand": "Gangnam Chicken",
+      "brand:website": "https://www.gangnamchicken.nl",
+      "cuisine": "chicken;korean",
+      "name": "Gangnam Chicken",
+      "opening_hours": "Su-Th 12:00-24:00, Fr,Sa 12:00-01:00",
+      "phone": "+31 88 33 555 02",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://gangnamchicken.nl/locaties/amsterdam-oost"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12736798113,
+     "lngLat": [
+      4.9281591,
+      52.3629846
+     ],
+     "tags": {
+      "check_date": "2026-10-15",
+      "shop": "vacant"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012159406",
+   "addresses": [
+    "Eerste Van Swindenstraat 391"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 391-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000549150"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 13361416155,
+     "lngLat": [
+      4.9282938,
+      52.3630149
+     ],
+     "tags": {
+      "name": "Goudexpert",
+      "shop": "gold_buyer"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012158925",
+   "addresses": [
+    "Eerste Van Swindenstraat 393"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 393-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000549155"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348245296,
+     "lngLat": [
+      4.9283649,
+      52.3630245
+     ],
+     "tags": {
+      "name": "Cosme hairfashion",
+      "shop": "cosmetics",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165201",
+   "addresses": [
+    "Eerste Van Swindenstraat 395"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 395-H",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000960570"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12693319167,
+     "lngLat": [
+      4.9284346,
+      52.3630385
+     ],
+     "tags": {
+      "name": "Losyana",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012163378",
+   "addresses": [
+    "Eerste Van Swindenstraat 397"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 397-H",
+     "use": "winkelfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000549170"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12693324382,
+     "lngLat": [
+      4.9285023,
+      52.363054
+     ],
+     "tags": {
+      "name": "Nura's Beauty",
+      "opening_hours": "Mo-Su 10:00-19:00",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236602",
+   "addresses": [
+    "Eerste Van Swindenstraat 399"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 399-H",
+     "use": "winkelfunctie",
+     "areaM2": 135,
+     "bagId": "0363010000549180"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348245295,
+     "lngLat": [
+      4.9285743,
+      52.3630686
+     ],
+     "tags": {
+      "check_date:opening_hours": "2026-10-15",
+      "name": "Dapper Post",
+      "opening_hours": "Mo-Sa 10:00-18:30; Su 12:00-17:00",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012161671",
+   "addresses": [
+    "Eerste Van Swindenstraat 401"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 401-H",
+     "use": "winkelfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000549188"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12693328560,
+     "lngLat": [
+      4.9286457,
+      52.3630818
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "brand": "Çiğköftem",
+      "brand:wikidata": "Q106597459",
+      "cuisine": "turkish",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "only",
+      "drive_through": "no",
+      "name": "Çiğköftem",
+      "opening_hours": "Mo-Sa 12:00-21:00",
+      "takeaway": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236289",
+   "addresses": [
+    "Eerste Van Swindenstraat 423",
+    "Eerste Van Swindenstraat 425",
+    "Eerste Van Swindenstraat 427",
+    "Eerste Van Swindenstraat 429",
+    "Eerste Van Swindenstraat 431",
+    "Eerste Van Swindenstraat 433",
+    "Eerste Van Swindenstraat 435",
+    "Eerste Van Swindenstraat 437",
+    "Eerste Van Swindenstraat 439",
+    "Eerste Van Swindenstraat 441",
+    "Eerste Van Swindenstraat 443",
+    "Eerste Van Swindenstraat 445",
+    "Eerste Van Swindenstraat 447",
+    "Eerste Van Swindenstraat 449",
+    "Eerste Van Swindenstraat 451",
+    "Eerste Van Swindenstraat 453",
+    "Eerste Van Swindenstraat 455",
+    "Eerste Van Swindenstraat 457",
+    "Eerste Van Swindenstraat 459",
+    "Eerste Van Swindenstraat 461",
+    "Eerste Van Swindenstraat 463",
+    "Eerste Van Swindenstraat 467",
+    "Eerste Van Swindenstraat 469",
+    "Eerste Van Swindenstraat 471",
+    "Eerste Van Swindenstraat 473",
+    "Eerste Van Swindenstraat 475",
+    "Eerste Van Swindenstraat 477",
+    "Eerste Van Swindenstraat 479",
+    "Eerste Van Swindenstraat 481",
+    "Eerste Van Swindenstraat 483",
+    "Eerste Van Swindenstraat 485",
+    "Eerste Van Swindenstraat 487",
+    "Eerste Van Swindenstraat 489",
+    "Eerste Van Swindenstraat 491",
+    "Eerste Van Swindenstraat 493",
+    "Eerste Van Swindenstraat 495",
+    "Eerste Van Swindenstraat 497",
+    "Eerste Van Swindenstraat 499",
+    "Eerste Van Swindenstraat 501",
+    "Eerste Van Swindenstraat 503",
+    "Eerste Van Swindenstraat 505",
+    "Eerste Van Swindenstraat 509"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 423",
+     "use": "winkelfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000549276"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 427",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000549277"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 429",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000549278"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 431",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000549279"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 441",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549284"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 449",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549288"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 451",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549289"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 455",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000549291"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 459",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000549293"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 469",
+     "use": "winkelfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000549296"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 477",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549300"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 481",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549302"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 483",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000549303"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 485",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549304"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 487",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549305"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 491",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000549307"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 501",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000549312"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 505",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000549314"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 509",
+     "use": "winkelfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000549315"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 463",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 189,
+     "bagId": "0363010001988331"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 467",
+     "use": "winkelfunctie",
+     "areaM2": 41,
+     "bagId": "0363010001988332"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 423",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012156041"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 425",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012156042"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 461",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000549294"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 443",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000549285"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 433",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000549280"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 447",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000549287"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 493",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000549308"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 479",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000549301"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 471",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000549297"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 489",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000549306"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 503",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000549313"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 475",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000549299"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 457",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000549292"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 497",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000549310"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 445",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000549286"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 439",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000549283"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 453",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000549290"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 435",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000549281"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 495",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000549309"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 473",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000549298"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 499",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000549311"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 437",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000549282"
+    }
+   ],
+   "units": 43,
+   "osm": [
+    {
+     "type": "node",
+     "id": 251150887,
+     "lngLat": [
+      4.9290605,
+      52.3631785
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "diet:halal": "yes",
+      "name": "Sweet Asia",
+      "opening_hours": "Mo,Tu,Th-Sa 12:30-21:30; Su 13:00-21:30",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2348245281,
+     "lngLat": [
+      4.928909,
+      52.3631447
+     ],
+     "tags": {
+      "female": "yes",
+      "name": "Burcin hair and Beauty",
+      "shop": "hairdresser",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2348245283,
+     "lngLat": [
+      4.9293848,
+      52.3632451
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "check_date:opening_hours": "2026-10-15",
+      "cuisine": "chinese",
+      "name": "Mi Lobie",
+      "opening_hours": "We-Mo 12:00-21:00",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2348245284,
+     "lngLat": [
+      4.9287347,
+      52.3631061
+     ],
+     "tags": {
+      "craft": "caterer",
+      "name": "Toko Bersama"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2348245286,
+     "lngLat": [
+      4.9291881,
+      52.3632044
+     ],
+     "tags": {
+      "craft": "electronics_repair",
+      "name": "Aria Mobile"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2348245303,
+     "lngLat": [
+      4.9288091,
+      52.3631197
+     ],
+     "tags": {
+      "clothes": "women",
+      "name": "Kenza",
+      "shop": "clothes",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2826852254,
+     "lngLat": [
+      4.9292821,
+      52.3632214
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "469",
+      "addr:postcode": "1093GB",
+      "addr:street": "Eerste Van Swindenstraat",
+      "name": "Bureau Wijn Oost",
+      "opening_hours": "We-Fr 13:00-19:00; Su 15:00-19:00; Sa 12:00-19:00",
+      "shop": "wine",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://www.bureauwijn.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9967488367,
+     "lngLat": [
+      4.929517,
+      52.3632716
+     ],
+     "tags": {
+      "check_date": "2025-11-16",
+      "name": "Kringloop",
+      "opening_hours": "Mo-Sa 10:00-18:00; Su 12:00-18:00",
+      "second_hand": "only",
+      "shop": "second_hand",
+      "website": "https://kringloopamsterdam.com/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012236937",
+   "addresses": [
+    "Eerste Van Swindenstraat 511",
+    "Eerste Van Swindenstraat 513",
+    "Eerste Van Swindenstraat 515",
+    "Eerste Van Swindenstraat 517",
+    "Eerste Van Swindenstraat 519",
+    "Eerste Van Swindenstraat 521",
+    "Eerste Van Swindenstraat 523",
+    "Eerste Van Swindenstraat 525",
+    "Eerste Van Swindenstraat 527",
+    "Eerste Van Swindenstraat 529",
+    "Eerste Van Swindenstraat 531",
+    "Eerste Van Swindenstraat 533",
+    "Eerste Van Swindenstraat 535",
+    "Eerste Van Swindenstraat 537",
+    "Eerste Van Swindenstraat 539",
+    "Eerste Van Swindenstraat 541",
+    "Eerste Van Swindenstraat 543",
+    "Eerste Van Swindenstraat 545",
+    "Eerste Van Swindenstraat 547"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Van Swindenstraat 511",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000549316"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 513",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000549317"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 517",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000549319"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 519",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000549320"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 531",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000549326"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 533",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000549327"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 535",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000549328"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 539",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000549332"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 545",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000549335"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 547",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000549336"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 529",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000549325"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 521",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000549321"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 541",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000549333"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 523",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000549322"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 543",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000549334"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 515",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000549318"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 527",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000549324"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 525",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000549323"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 537",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000549329"
+    }
+   ],
+   "units": 19,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2348245301,
+     "lngLat": [
+      4.9298127,
+      52.3633397
+     ],
+     "tags": {
+      "name": "Lamaï Amsterdam",
+      "shop": "furniture",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12736821694,
+     "lngLat": [
+      4.9296887,
+      52.3633125
+     ],
+     "tags": {
+      "amenity": "community_centre",
+      "name": "Dapperhuis Buurtkamer"
+     },
+     "fetchedAt": "2026-11-09T23:22:01.839Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

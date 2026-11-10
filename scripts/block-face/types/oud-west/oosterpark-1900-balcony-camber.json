@@ -1,0 +1,178 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "oosterpark-1900-balcony-camber",
+ "district": "oud-west",
+ "description": "Ruyschstraat 72-98 and the 1898-1904 rows around it (strip 2023-01-02, gridded 40 px/m): dark red-brown brick, 3 axes on 5.6 m, one ground storey and three uppers, 1.15 x 2.1 m sash windows under cambered brick heads, the centre axis a French window with an iron balconette on every upper storey, a cream cornice with a brick frieze above the top row (13.1-13.6 m), a slate mansard behind it and one white box dormer per house",
+ "fit": {
+  "widthM": [
+   5.0,
+   6.2
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1897,
+   1906
+  ],
+  "yearSlack": 0,
+  "frontEavesM": 13.5,
+  "frontEavesUnscored": true,
+  "eavesM": [
+   14.0,
+   17.6
+  ],
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Ruyschstraat 72-98 (3DBAG eaves 15.8-17.9 m read the mansard top; the photo cornice stands at 13.5 m)",
+  "frontEavesAtLine": true
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "simple",
+  "windows": "t-window",
+  "windowShare": 0.62,
+  "windowHead": {
+   "kind": "segmental",
+   "archRing": {
+    "colour": "band",
+    "style": "solid"
+   }
+  },
+  "storeyHeights": [
+   3.4,
+   3.1,
+   3.0,
+   3.9
+  ],
+  "windowHeights": [
+   0.65,
+   0.66,
+   0.7,
+   0.52
+  ],
+  "headLines": [
+   0.74,
+   0.71,
+   0.75,
+   0.57
+  ],
+  "balconies": {
+   "storeys": [
+    1,
+    2,
+    3
+   ],
+   "bays": [
+    1
+   ]
+  },
+  "axisHeads": {
+   "0": {
+    "kind": "flat",
+    "storeys": [
+     3
+    ]
+   },
+   "1": {
+    "kind": "flat",
+    "storeys": [
+     3
+    ]
+   },
+   "2": {
+    "kind": "flat",
+    "storeys": [
+     3
+    ]
+   }
+  }
+ },
+ "crowns": {
+  "box-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "plain",
+   "dormerSize": {
+    "sill": 0.3,
+    "rise": 1.9,
+    "setback": 0.8
+   },
+   "note": "one white box dormer over the centre axis in a slate mansard (Ruyschstraat 72-98)",
+   "dormerBody": "timber"
+  }
+ },
+ "palettes": {
+  "dark-red-brown": {
+   "brick": "#6e4a3e",
+   "frame": "#d8d3c6",
+   "door": "black",
+   "stone": "#a29d95",
+   "band": "#5a3b31",
+   "cornice": "#a29d95",
+   "corniceAs": "stone"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "rise": 0.4,
+  "pitchDeg": 70,
+  "evidence": "Ruyschstraat 72-98, 2023-01-02 strip: a slate mansard about 1.2 m high behind the cornice, one box dormer per house"
+ },
+ "rhythm": {
+  "bays": "3 window axes",
+  "identicalBays": "centre axis: French windows with balconettes on every upper storey",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric about the centre axis",
+  "groundFloor": "shop per house",
+  "signage": "per house",
+  "roofline": "cream cornice over a brick frieze; slate mansard; one white box dormer",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "iron balconette railings are drawn as the kit balcony",
+   "brick frieze under the cornice",
+   "carved stone brackets under the balconies"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "ruysch-64-124",
+   "pands": [
+    "158466",
+    "160930",
+    "163039",
+    "154180",
+    "158158",
+    "091930"
+   ],
+   "citation": "strip.jpg 2023-01-02, Ruyschstraat 72-84 gridded at 40 px/m: window rows 0.3-2.5, 3.5-5.6, 6.5-8.75, 9.6-11.7 m; cornice 13.1-13.6 m; centre balconettes on storeys 1-3"
+  }
+ ],
+ "schemaLimits": [
+  "iron balconette railings are drawn as the kit balcony",
+  "brick frieze under the cornice",
+  "carved stone brackets under the balconies"
+ ],
+ "notes": [
+  "Palette approximate; each placed pand takes its own strip wall.",
+  "Verdict 2026-11-10: top storey flat-headed under a brick lintel (Ruysch 90-80, 331, 339); 76 and 78 keep tall arched heads, so their pins remove axisHeads. Cornice grey #a29d95 (60 % of the way to the photo #716b68-#837f7b).",
+  "Cornice on the stone slot (palette.corniceAs) so the chunk draws it #a29d95; the timber dormer keeps white posts and frame, its cheeks take the stone colour (kit gap: no separate dormer slot)."
+ ]
+}

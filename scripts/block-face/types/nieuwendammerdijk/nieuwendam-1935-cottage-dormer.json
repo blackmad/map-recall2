@@ -1,0 +1,154 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "nieuwendam-1935-cottage-dormer",
+ "district": "nieuwendammerdijk",
+ "description": "Nieuwendammerdijk 135-163 (2022-05-09 strip): single-storey brick dike cottages 4.7 m wide, a low gutter above two separate white-framed casements (1.0 m wide) and a dark door with a transom at the party wall, doors paired across it; a flat-roofed white box dormer 1.5 m high against the party wall over the door side, joined with its neighbour's; red tile roof",
+ "fit": {
+  "widthM": [
+   4.4,
+   5.1
+  ],
+  "storeys": [
+   1
+  ]
+ },
+ "match": {
+  "years": [
+   1900,
+   1990
+  ],
+  "storeys3dbag": [
+   3
+  ],
+  "stucco": false,
+  "balconies": false,
+  "mirrorForDoor": "left",
+  "frontEavesM": 3.25,
+  "measuredWall": false,
+  "note": "BAG years of this one row are 1905/1935/1960/1984 (renovations); the cottages are identical on the strip, so the type matches on width and the strip, not the year. 3DBAG bouwlagen 3, eaves 6.2-8.4 m and roof max 9.2-10 m are the roofs with their dormers over the road; the 2022-05-09 panorama height drifts 2.2 m on this dike, so the face is re-taken with --camera-height=1.64 and the gutter reads 3.25 m (review-eaves pin)",
+  "frontEavesUnscored": true,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ]
+ },
+ "body": {
+  "storeys": 1,
+  "bays": 3,
+  "axisGrid": 3,
+  "bayWidths": [
+   1.3,
+   1.55,
+   1.85
+  ],
+  "bayFill": [
+   0.45,
+   0.75,
+   0.65
+  ],
+  "cornice": "none",
+  "windows": "casement-pair",
+  "storeyHeights": [
+   3.25
+  ],
+  "windowHeights": [
+   0.46
+  ],
+  "headLines": [
+   0.64
+  ]
+ },
+ "crowns": {
+  "half-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "flat",
+   "dormerLights": 2,
+   "dormerSize": {
+    "sill": 0.2,
+    "rise": 1.5,
+    "setback": 0.3
+   },
+   "eavesOverhang": {
+    "projection": 0.3,
+    "fascia": 0.1,
+    "colour": "#c4c2b6",
+    "soffit": "#33302d"
+   },
+   "note": "Nieuwendammerdijk 139-153 (2022-05-09): a flush white box dormer about 2.5 m wide, white face, cheeks and fascia, the window filling the front with 0.25 m white posts (no stone ring: palette stone is the same white #f0f0ec; a trim body with no front wall fails the opening-outside audit); against the party wall over the door; joined with the neighbour's",
+   "dormerAt": [
+    {
+     "from": 0.03,
+     "to": 0.58
+    }
+   ],
+   "dormerBody": "timber",
+   "dormerWindow": {
+    "light": 2.0,
+    "apron": 0.15,
+    "tall": 1.15
+   }
+  },
+  "none": {
+   "gable": "cornice",
+   "eavesOverhang": {
+    "projection": 0.3,
+    "fascia": 0.1,
+    "colour": "#c4c2b6",
+    "soffit": "#33302d"
+   },
+   "note": "gutter only"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "note": "dark single leaf 0.75 m with a transom at the party wall; neighbour mirrors it"
+  }
+ },
+ "palettes": {
+  "red-brick": {
+   "brick": "#7b5846",
+   "frame": "#f0f0ec",
+   "door": "#232323",
+   "stone": "#f0f0ec",
+   "cornice": "#f0f0ec"
+  }
+ },
+ "roof": {
+  "material": "black-tile"
+ },
+ "rhythm": {
+  "bays": "door, window, window",
+  "identicalBays": "no",
+  "windowsPerStorey": "1 storey",
+  "symmetry": "mirror pairs about the party wall; dormers and doors pair across it",
+  "groundFloor": "door at the party wall",
+  "signage": "none",
+  "roofline": "white gutter, tiled roof, flat box dormer per pair",
+  "photoRows": [
+   2,
+   1
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "nieuwendammerdijk-135-163",
+   "pands": [
+    "139",
+    "141",
+    "143"
+   ],
+   "citation": "strip.jpg 2022-05-09 re-taken with --camera-height=1.64, 40 px/m, 1 m grid: pands 4.7 m; windows 1.05 m wide, sill 0.65 m, head 2.05 m, at 1.3-2.4 and 2.9-3.9 m; door 0.55-1.25 m (head 2.1 m) at the party wall; white gutter 3.25 m; flat white dormer 3.3-5.0 m, two lights, against the party wall"
+  }
+ ],
+ "schemaLimits": [
+  "the white fascia and bracket detail",
+  "the dike garden railing"
+ ],
+ "notes": []
+}

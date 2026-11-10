@@ -1,0 +1,56 @@
+{
+ "version": 1,
+ "pandId": "0363100012172581",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "front.jpg",
+  "year": 2020,
+  "quality": 0.006,
+  "panoIds": [
+   "TMX7316010203-001674_pano_0000_000707"
+  ],
+  "date": "2020-04-24",
+  "reasons": [
+   "washed-out"
+  ],
+  "ppm": 50
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172581",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012172581",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1839
+   }
+  },
+  "pixel": null
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012172581",
+  "design": {},
+  "provenance": {
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012172581",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1839
+  }
+ },
+ "disagreements": []
+}

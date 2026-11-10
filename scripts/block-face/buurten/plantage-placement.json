@@ -1,0 +1,97 @@
+{
+ "buurt": "plantage",
+ "library": "plantage",
+ "generatedAt": "2026-11-10T08:51:09.050Z",
+ "seconds": 29.34,
+ "totals": {
+  "faces": 3,
+  "pands": 29,
+  "placed": 10
+ },
+ "faces": [
+  {
+   "face": "badlaan-1-21",
+   "street": "Plantage Badlaan",
+   "pands": 10,
+   "placed": 5,
+   "held": 5,
+   "runs": [
+    {
+     "face": "badlaan-1-21-r1",
+     "pands": [
+      "0363100012181075",
+      "0363100012181073",
+      "0363100012171260",
+      "0363100012171261",
+      "0363100012170230"
+     ],
+     "passed": true,
+     "triangles": 11426
+    }
+   ],
+   "seconds": 29.33,
+   "byType": {
+    "plantage-1881-polychrome-two-axis": 5
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 2,
+    "run": 1,
+    "review": 2
+   }
+  },
+  {
+   "face": "badlaan-4-24",
+   "street": "Plantage Badlaan",
+   "pands": 11,
+   "placed": 5,
+   "held": 6,
+   "runs": [
+    {
+     "face": "badlaan-4-24-r1",
+     "pands": [
+      "0363100012181658",
+      "0363100012181657",
+      "0363100012171265",
+      "0363100012171264",
+      "0363100012171258"
+     ],
+     "passed": false,
+     "triangles": 12134
+    }
+   ],
+   "seconds": 10.71,
+   "byType": {
+    "plantage-1855-brick-hood": 5
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 6
+   }
+  },
+  {
+   "face": "doklaan-28-42",
+   "street": "Plantage Doklaan",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 7.57,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 6,
+    "run": 1,
+    "review": 1
+   }
+  }
+ ]
+}

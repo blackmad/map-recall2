@@ -1,0 +1,66 @@
+{
+ "version": 1,
+ "pandId": "0363100012174038",
+ "buurt": "AB07",
+ "crop": null,
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174038",
+   "design": {
+    "fronts": [
+     {
+      "gable": "bell"
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/gable": {
+     "source": "monument-text",
+     "confidence": 0.8,
+     "ref": "rce:4532",
+     "at": null
+    },
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.7,
+     "ref": "rce:4532",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1762
+   }
+  },
+  "bag": null
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012174038",
+  "design": {
+   "fronts": [
+    {
+     "gable": "bell"
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/gable": {
+    "source": "monument-text",
+    "confidence": 0.8,
+    "ref": "rce:4532",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.7,
+    "ref": "rce:4532",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1762
+  }
+ },
+ "disagreements": []
+}

@@ -1,0 +1,70 @@
+{
+ "from": "lane/house-h9-easy-houses-20261110 3b4fe8bc5 scripts/house-specs/sets/easy-houses-20261110.json (review.bays/storeys/gable), copied for the H5h comparison",
+ "review": {
+  "0363100012175320": {
+   "bays": 2,
+   "gable": "cornice"
+  },
+  "0363100012175318": {
+   "storeys": 4,
+   "bays": 3,
+   "gable": "cornice"
+  },
+  "0363100012175321": {
+   "gable": "cornice"
+  },
+  "0363100012175358": {},
+  "0363100012168136": {
+   "storeys": 4,
+   "bays": 3,
+   "gable": "neck"
+  },
+  "0363100012182857": {
+   "storeys": 3,
+   "bays": 8,
+   "gable": "step"
+  },
+  "0363100012182849": {
+   "storeys": 4,
+   "bays": 2,
+   "gable": "cornice"
+  },
+  "0363100012171851": {},
+  "0363100012171854": {},
+  "0363100012182848": {
+   "storeys": 4,
+   "gable": "bell"
+  },
+  "0363100012176312": {
+   "storeys": 5,
+   "bays": 4
+  },
+  "0363100012176346": {
+   "storeys": 4,
+   "bays": 3
+  },
+  "0363100012169116": {
+   "storeys": 5,
+   "bays": 3,
+   "gable": "cornice"
+  },
+  "0363100012168578": {
+   "storeys": 4
+  },
+  "0363100012180181": {
+   "storeys": 5,
+   "bays": 3,
+   "gable": "cornice"
+  },
+  "0363100012167483": {
+   "storeys": 5,
+   "bays": 3,
+   "gable": "cornice"
+  },
+  "0363100012171023": {
+   "storeys": 4,
+   "bays": 3,
+   "gable": "point"
+  }
+ }
+}

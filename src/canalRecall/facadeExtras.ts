@@ -331,6 +331,19 @@ export function wallExtras(c: ExtraContext, sink: ExtraSink): string[] {
   return state.used;
 }
 
+/**
+ * Register-stated components (facade/registerRecipe.ts `registerForce`) dress first, after a defining assembly. In
+ * registry order a forced part (dice 1) still came after the dice-won crown, door and trim that spent the wall's
+ * budget or took its group: forced alone it drew on 4 of 40 test walls (iron balconies), 6 (corner pilasters), 8 (bay
+ * window), 15 (console cornice, beaten by a dice kroonlijst) (lane register-extras 2026-11-10). Without a forced id
+ * the order, and so every wall, is unchanged.
+ */
+export function registerFirst<T extends { id: string }>(components: readonly T[], force: readonly string[] | undefined, keepFirst: boolean): readonly T[] {
+  if (!force?.length) return components;
+  const stated = new Set(force), head = keepFirst ? components.slice(0, 1) : [], rest = keepFirst ? components.slice(1) : components;
+  return [...head, ...rest.filter(comp => stated.has(comp.id)), ...rest.filter(comp => !stated.has(comp.id))];
+}
+
 function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase: 'all' | 'defining' | 'optional'): void {
   const { used, groups } = state, beforeWall = sink.tris.length;
   const street = isStreetWall(c), period = c.period ?? c.style, outer = sink.budget;
@@ -363,7 +376,7 @@ function dressWall(c: ExtraContext, sink: ExtraSink, state: DressingState, phase
   const historicAssembly = c.recipe?.facadeAssembly === 'stacked-iron-balcony';
   const defaultComponents = c.recipe?.trim ? PROFILE_COMPONENTS : WALL_COMPONENTS;
   const components = assembly ? [WALL_COMPONENTS.find(comp => comp.id === 'glass-balconies')!, ...defaultComponents.filter(comp => !['glass-balconies', 'balcony-slabs', 'gallery-walkway', 'vertical-fins'].includes(comp.id))] : historicAssembly ? [WALL_COMPONENTS.find(comp => comp.id === 'historic-balcony-stack')!, ...defaultComponents.filter(comp => !['historic-balcony-stack','iron-balconies','glass-balconies','balcony-slabs','gallery-walkway'].includes(comp.id))] : defaultComponents;
-  for (const comp of components) {
+  for (const comp of registerFirst(components, c.registerForce, assembly || historicAssembly)) {
     const definingComponent = assembly && comp.id === 'glass-balconies' || historicAssembly && comp.id === 'historic-balcony-stack';
     if (c.recipe?.balconyPolicy === 'assembly-only' && !definingComponent && (comp.group === 'balcony' || ['glass-balconies','balcony-slabs','gallery-walkway','brick-balcony','juliet-balcony'].includes(comp.id))) continue;
     if (c.recipe?.detailPolicy === 'architectural' && !definingComponent && !DEFINING_TRIM.has(comp.id) && !['door-surround','hoist-beam','wall-anchors'].includes(comp.id)) continue;

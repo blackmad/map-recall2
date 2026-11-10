@@ -1,0 +1,20 @@
+{
+ "family": "gable_crown",
+ "set": "J1",
+ "cropTop": 0.4,
+ "note": "The top part of one Amsterdam house front (the crown), cropped from a rectified street panorama.",
+ "questions": {
+  "gable": {
+   "type": "choice",
+   "instructions": "What is the outline of the top of the house front in `facade`: the gable or roofline of the house in the middle of the image?",
+   "criteria": {
+    "neck": "Neck gable (halsgevel): a tall narrow raised centre with straight vertical sides, flanked by shoulder pieces or scrolls, often topped by a small pediment.",
+    "bell": "Bell gable (klokgevel): a raised centre whose outline curves like a bell, convex then concave, often topped by a small arch.",
+    "step": "Step gable (trapgevel): the outline climbs in stair steps on both sides to a peak.",
+    "cornice": "Cornice or flat top (lijstgevel): the front ends in a horizontal cornice or straight parapet, no raised gable shape.",
+    "spout": "Spout gable (tuitgevel): a narrow pointed top with a spout-like tip.",
+    "plain": "Plain pointed gable (puntgevel): a simple triangular gable following the roof slope, no steps or curves."
+   }
+  }
+ }
+}

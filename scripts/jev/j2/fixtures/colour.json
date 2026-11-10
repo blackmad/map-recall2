@@ -1,0 +1,18 @@
+{
+  "family": "colour",
+  "set": "A",
+  "note": "A rectified street-panorama crop of one Amsterdam house front plus eight colour swatches. The photo may have shadow, glare or a colour cast from the camera.",
+  "fixedImages": {"sw0": "swatch:#2b2b2e", "sw1": "swatch:#4a3a34", "sw2": "swatch:#8a4a3c", "sw3": "swatch:#b8643c", "sw4": "swatch:#c9937f", "sw5": "swatch:#c4a574", "sw6": "swatch:#e8e4da", "sw7": "swatch:#8a8d8f"},
+  "questions": {
+    "wall_colour": {"type": "choice", "instructions": "Which swatch is closest to the true colour of the main wall of the house front in `facade` above the ground floor (the colour the wall would have in neutral daylight)? Ignore shadows, bright glare and any colour cast from the camera; judge the paint or brick itself, and ignore white window frames, trim and the sky.", "criteria": {
+      "near_black_painted": {"description": "Near-black, charcoal or very dark grey painted wall.", "example": "$sw0"},
+      "dark_brown_brick": {"description": "Dark brown or purple-brown brick.", "example": "$sw1"},
+      "red_brown_brick": {"description": "Classic red-brown brick.", "example": "$sw2"},
+      "orange_brick": {"description": "Bright orange or orange-red brick.", "example": "$sw3"},
+      "pale_salmon_brick": {"description": "Pale salmon, pinkish or light brown-grey brick.", "example": "$sw4"},
+      "tan_yellow_brick": {"description": "Tan, buff or yellow brick.", "example": "$sw5"},
+      "white_plaster": {"description": "White or cream plaster or painted white wall.", "example": "$sw6"},
+      "grey_stone": {"description": "Mid grey stone, concrete or grey brick.", "example": "$sw7"}
+    }}
+  }
+}

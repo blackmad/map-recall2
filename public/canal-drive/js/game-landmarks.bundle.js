@@ -7856,6 +7856,14 @@ ${register}` : detail,
           y: -(lat - centerLat) * metersPerDegreeLat * PIXELS_PER_METER + this.osmLoader._lastOffsetY
         });
         this.landmarks = buildLandmarks(features, (lat, lng, feature) => feature.manualPoi || isTransit(this.travelMode) ? toWorld([lat, lng]) : this.osmLoader.latLngToGamePoint(lat, lng, centerLat, centerLng, segments, false));
+        if (!isTransit(this.travelMode)) {
+          for (const landmark of this.landmarks) {
+            if (!landmark.lngLat) continue;
+            const own = toWorld([landmark.lngLat[1], landmark.lngLat[0]]);
+            landmark.ownX = own.x;
+            landmark.ownY = own.y;
+          }
+        }
         const landmarks = this.landmarks;
         this._landmarkImages = /* @__PURE__ */ new Map();
         this._landmarkImageRequests = /* @__PURE__ */ new Set();

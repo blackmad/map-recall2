@@ -1,0 +1,919 @@
+{
+ "street": "Wagenaarstraat",
+ "seed": "0363100012166399",
+ "members": [
+  "0363100012077478",
+  "0363100012088692",
+  "0363100012091544",
+  "0363100012152400",
+  "0363100012152482",
+  "0363100012153696",
+  "0363100012158275",
+  "0363100012155577",
+  "0363100012163265",
+  "0363100012163837",
+  "0363100012160508",
+  "0363100012166399"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012077478 (face continues: 161514 152732 155494 158763 156017 158317 112452 133643 155065 135213)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012166399 (face continues: 154124)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012064691",
+   "reason": "frontage 81.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012065278",
+   "reason": "frontage 109.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012065823",
+   "reason": "frontage 106.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012074254",
+   "reason": "frontage 39.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012078517",
+   "reason": "frontage 43.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012080864",
+   "reason": "frontage 107.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012081261",
+   "reason": "frontage 105.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012082861",
+   "reason": "frontage 94.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012088409",
+   "reason": "frontage 169.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012089347",
+   "reason": "frontage 81.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012090552",
+   "reason": "frontage 107.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012090879",
+   "reason": "frontage 44.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012094602",
+   "reason": "frontage 41.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012094813",
+   "reason": "frontage 144.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012095429",
+   "reason": "frontage 43.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012096868",
+   "reason": "frontage 86.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012097001",
+   "reason": "frontage 150.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012097187",
+   "reason": "frontage 42.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012097700",
+   "reason": "frontage 102.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012098167",
+   "reason": "frontage 81.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012098734",
+   "reason": "frontage 107.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012100061",
+   "reason": "frontage 105.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012101318",
+   "reason": "frontage 105.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012102646",
+   "reason": "frontage 107.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012106887",
+   "reason": "frontage 144.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012109340",
+   "reason": "frontage 37.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012112407",
+   "reason": "frontage 41.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012112463",
+   "reason": "frontage 31.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012114824",
+   "reason": "frontage 214.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012115247",
+   "reason": "frontage 144.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012117450",
+   "reason": "frontage 106.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012068771",
+   "reason": "frontage 190.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012069825",
+   "reason": "frontage 82.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012072638",
+   "reason": "frontage 90.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012079299",
+   "reason": "frontage 189.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012084765",
+   "reason": "frontage 99.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012089681",
+   "reason": "frontage 75.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012089961",
+   "reason": "frontage 80.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012091504",
+   "reason": "frontage 218.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012100034",
+   "reason": "frontage 215.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012103872",
+   "reason": "frontage 134.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012108076",
+   "reason": "frontage 104.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012112062",
+   "reason": "frontage 136.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012114922",
+   "reason": "frontage 34.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012116676",
+   "reason": "frontage 100.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012118480",
+   "reason": "frontage 82.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012119238",
+   "reason": "frontage 136.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012119432",
+   "reason": "frontage 144.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012120616",
+   "reason": "frontage 144.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012121854",
+   "reason": "frontage 33.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012126532",
+   "reason": "frontage 106.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012127889",
+   "reason": "frontage 136.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012132768",
+   "reason": "frontage 102.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012134148",
+   "reason": "frontage 198.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012134469",
+   "reason": "frontage 106.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012136808",
+   "reason": "frontage 102.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012138979",
+   "reason": "frontage 107.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012139064",
+   "reason": "frontage 107.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012140949",
+   "reason": "frontage 110.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012141437",
+   "reason": "frontage 43.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012143470",
+   "reason": "frontage 44.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012144130",
+   "reason": "frontage 108.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012144406",
+   "reason": "frontage 144.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012148725",
+   "reason": "frontage 42.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012151073",
+   "reason": "frontage 182.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012152605",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012154124"
+  },
+  {
+   "pandId": "0363100012152754",
+   "reason": "frontage 192.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153339",
+   "reason": "frontage 82.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153380",
+   "reason": "frontage 44.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153383",
+   "reason": "frontage 81.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153389",
+   "reason": "frontage 172.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153561",
+   "reason": "frontage 137.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153573",
+   "reason": "frontage 80.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153680",
+   "reason": "frontage 137.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153708",
+   "reason": "frontage 110.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153815",
+   "reason": "frontage 155.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012120520",
+   "reason": "frontage 34.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012122650",
+   "reason": "frontage 106.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012137435",
+   "reason": "frontage 110.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012139414",
+   "reason": "frontage 155.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012145175",
+   "reason": "frontage 34.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012152829",
+   "reason": "frontage 40.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153138",
+   "reason": "frontage 36.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153706",
+   "reason": "frontage 82.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012153794",
+   "reason": "frontage 82.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012154498",
+   "reason": "frontage 34.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012155457",
+   "reason": "frontage 81.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012155550",
+   "reason": "frontage 82.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012156075",
+   "reason": "frontage 43.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012156485",
+   "reason": "frontage 185.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012156514",
+   "reason": "frontage 149.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012156704",
+   "reason": "frontage 82.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012156871",
+   "reason": "frontage 137.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012157163",
+   "reason": "frontage 32.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012157418",
+   "reason": "frontage 81.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012158364",
+   "reason": "frontage 38.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012158379",
+   "reason": "frontage 43.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012158748",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012166134"
+  },
+  {
+   "pandId": "0363100012158819",
+   "reason": "frontage 81.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012159015",
+   "reason": "frontage 81.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012159120",
+   "reason": "frontage 81.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012159201",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012154124"
+  },
+  {
+   "pandId": "0363100012159281",
+   "reason": "frontage 81.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012159551",
+   "reason": "frontage 82.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012160317",
+   "reason": "frontage 157.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012160327",
+   "reason": "frontage 167.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012160692",
+   "reason": "frontage 200.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012160991",
+   "reason": "frontage 81.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161046",
+   "reason": "frontage 82.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161077",
+   "reason": "frontage 82.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161273",
+   "reason": "frontage 82.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161399",
+   "reason": "frontage 81.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012155092",
+   "reason": "frontage 41.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012159494",
+   "reason": "frontage 80.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012159624",
+   "reason": "frontage 213.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012159658",
+   "reason": "frontage 82.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161088",
+   "reason": "frontage 42.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161245",
+   "reason": "frontage 207.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161299",
+   "reason": "frontage 82.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161396",
+   "reason": "frontage 41.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161497",
+   "reason": "frontage 82.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161741",
+   "reason": "frontage 81.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012161996",
+   "reason": "frontage 106.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012162668",
+   "reason": "frontage 180.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012163169",
+   "reason": "frontage 137.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012163419",
+   "reason": "frontage 40.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012163446",
+   "reason": "frontage 81.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012163524",
+   "reason": "frontage 207.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012163547",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012158748"
+  },
+  {
+   "pandId": "0363100012163786",
+   "reason": "frontage 82.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012164331",
+   "reason": "frontage 81.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012164381",
+   "reason": "frontage 106.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012164468",
+   "reason": "frontage 82.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012165837",
+   "reason": "frontage 82.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012165939",
+   "reason": "frontage 81.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012166369",
+   "reason": "frontage 81.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012167033",
+   "reason": "frontage 80.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012169163",
+   "reason": "frontage 193.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012170402",
+   "reason": "frontage 263.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012180518",
+   "reason": "frontage 211.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012181675",
+   "reason": "frontage 197.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012181676",
+   "reason": "frontage 205.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012181677",
+   "reason": "frontage 200.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012181678",
+   "reason": "frontage 193.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012187268",
+   "reason": "frontage 98.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012193844",
+   "reason": "frontage 96.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012194063",
+   "reason": "frontage 126.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012205926",
+   "reason": "no frontage on Wagenaarstraat: No footprint edge faces Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012205927",
+   "reason": "frontage 134.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012213726",
+   "reason": "frontage 98.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012215058",
+   "reason": "frontage 34.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012218755",
+   "reason": "frontage 209.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012219995",
+   "reason": "frontage 34.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012221551",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012160508"
+  },
+  {
+   "pandId": "0363100012226361",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012152482"
+  },
+  {
+   "pandId": "0363100012161754",
+   "reason": "frontage 80.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012162270",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012161514"
+  },
+  {
+   "pandId": "0363100012164562",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012161514"
+  },
+  {
+   "pandId": "0363100012164775",
+   "reason": "frontage 80.7 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012166798",
+   "reason": "frontage 34.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012191321",
+   "reason": "frontage 34.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012195468",
+   "reason": "frontage 31.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012198020",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012155494"
+  },
+  {
+   "pandId": "0363100012209348",
+   "reason": "frontage 34.9 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012230390",
+   "reason": "frontage 100.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012233668",
+   "reason": "frontage 43.2 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012235898",
+   "reason": "frontage 82.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012236163",
+   "reason": "frontage 82.0 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012236370",
+   "reason": "frontage 81.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012236435",
+   "reason": "frontage 80.8 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012236675",
+   "reason": "frontage 82.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012236713",
+   "reason": "frontage 82.1 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012236918",
+   "reason": "frontage 44.6 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012237251",
+   "reason": "frontage 55.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012570789",
+   "reason": "frontage 78.5 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012232837",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012158763"
+  },
+  {
+   "pandId": "0363100012233258",
+   "reason": "frontage 205.3 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012236764",
+   "reason": "sightline to Wagenaarstraat crosses 0363100012165730"
+  },
+  {
+   "pandId": "0363100012237163",
+   "reason": "frontage 82.4 m from Wagenaarstraat"
+  },
+  {
+   "pandId": "0363100012068865",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152885",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152426",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012154273",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156441",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157458",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159616",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160124",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166134",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165193",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165730",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167343",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012077478",
+   "alongM": -90.33,
+   "widthM": 28.84,
+   "eavesM": 13.86,
+   "roofMaxM": 13.92,
+   "storeys3dbag": 4,
+   "builtYear": 1986,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012088692",
+   "alongM": -70.48,
+   "widthM": 10.87,
+   "eavesM": 15.2,
+   "roofMaxM": 15.24,
+   "storeys3dbag": 5,
+   "builtYear": 1900,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012091544",
+   "alongM": -57.59,
+   "widthM": 14.92,
+   "eavesM": 13.72,
+   "roofMaxM": 13.8,
+   "storeys3dbag": 5,
+   "builtYear": 1988,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152400",
+   "alongM": -47.58,
+   "widthM": 5.09,
+   "eavesM": 13.68,
+   "roofMaxM": 16.71,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012152482",
+   "alongM": -42.03,
+   "widthM": 6.03,
+   "eavesM": 13.92,
+   "roofMaxM": 17.14,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153696",
+   "alongM": -36.02,
+   "widthM": 5.98,
+   "eavesM": 14.12,
+   "roofMaxM": 17.28,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158275",
+   "alongM": -30.03,
+   "widthM": 6,
+   "eavesM": 14.2,
+   "roofMaxM": 17.14,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155577",
+   "alongM": -24.03,
+   "widthM": 6.01,
+   "eavesM": 14.4,
+   "roofMaxM": 17.39,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012163265",
+   "alongM": -17.98,
+   "widthM": 6.09,
+   "eavesM": 14.22,
+   "roofMaxM": 17.99,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163837",
+   "alongM": -11.97,
+   "widthM": 5.93,
+   "eavesM": 14.55,
+   "roofMaxM": 17.7,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160508",
+   "alongM": -6,
+   "widthM": 6,
+   "eavesM": 14.21,
+   "roofMaxM": 17.86,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166399",
+   "alongM": 0,
+   "widthM": 5.99,
+   "eavesM": 14.08,
+   "roofMaxM": 17.56,
+   "storeys3dbag": 5,
+   "builtYear": 1880,
+   "uncertainty": []
+  }
+ ]
+}

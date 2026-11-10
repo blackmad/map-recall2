@@ -1,0 +1,251 @@
+{
+ "street": "Blasiusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:43:37.689Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012134675",
+   "addresses": [
+    "Blasiusstraat 150",
+    "Blasiusstraat 152",
+    "Blasiusstraat 154",
+    "Blasiusstraat 156",
+    "Blasiusstraat 158",
+    "Blasiusstraat 160",
+    "Blasiusstraat 162",
+    "Blasiusstraat 164",
+    "Blasiusstraat 166",
+    "Blasiusstraat 168",
+    "Blasiusstraat 170",
+    "Blasiusstraat 172",
+    "Blasiusstraat 174"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 154",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000937449"
+    },
+    {
+     "address": "Blasiusstraat 152",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000937452"
+    },
+    {
+     "address": "Blasiusstraat 158",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000937453"
+    },
+    {
+     "address": "Blasiusstraat 164",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000937454"
+    },
+    {
+     "address": "Blasiusstraat 150",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000937455"
+    },
+    {
+     "address": "Blasiusstraat 156",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000937456"
+    },
+    {
+     "address": "Blasiusstraat 162",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000937457"
+    },
+    {
+     "address": "Blasiusstraat 174",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000937462"
+    },
+    {
+     "address": "Blasiusstraat 168",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000937471"
+    },
+    {
+     "address": "Blasiusstraat 170",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000937472"
+    },
+    {
+     "address": "Blasiusstraat 172",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000987244"
+    },
+    {
+     "address": "Camperstraat 56",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000867647"
+    },
+    {
+     "address": "Blasiusstraat 160",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000937450"
+    },
+    {
+     "address": "Blasiusstraat 166",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000937451"
+    }
+   ],
+   "units": 14,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1262086567,
+     "lngLat": [
+      4.9135565,
+      52.3575611
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54",
+      "addr:postcode": "1091AJ",
+      "addr:street": "Camperstraat",
+      "amenity": "fast_food",
+      "name": "Tiba Cafetaria",
+      "toilets:wheelchair": "no",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:43:37.689Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012120159",
+   "addresses": [
+    "Blasiusstraat 138",
+    "Blasiusstraat 140",
+    "Blasiusstraat 142",
+    "Blasiusstraat 144"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 140-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001014028"
+    },
+    {
+     "address": "Blasiusstraat 142-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 4,
+     "bagId": "0363010001014029"
+    },
+    {
+     "address": "Blasiusstraat 144",
+     "use": "industriefunctie",
+     "areaM2": 168,
+     "bagId": "0363010001014030"
+    },
+    {
+     "address": "Blasiusstraat 138-H",
+     "use": "industriefunctie",
+     "areaM2": 70,
+     "bagId": "0363010000588109"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2522585265,
+     "lngLat": [
+      4.9133037,
+      52.3575387
+     ],
+     "tags": {
+      "addr:housenumber": "144",
+      "addr:postcode": "1091CZ",
+      "addr:street": "Blasiusstraat",
+      "contact:facebook": "American-Fitness-Amsterdam",
+      "contact:twitter": "AFAmsterdam",
+      "email": "info@americanfitness.nl",
+      "name": "American Fitness",
+      "phone": "+31 20 694 1358;+31 6 51905823",
+      "shop": "beauty",
+      "website": "https://americanfitness.nl/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T07:43:37.689Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012131294",
+   "addresses": [
+    "Blasiusstraat 128",
+    "Blasiusstraat 130",
+    "Blasiusstraat 132",
+    "Blasiusstraat 134",
+    "Blasiusstraat 136"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 136",
+     "use": "industriefunctie",
+     "areaM2": 444,
+     "bagId": "0363010000588107"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6550888449,
+     "lngLat": [
+      4.9129638,
+      52.3574241
+     ],
+     "tags": {
+      "healthcare": "physiotherapist",
+      "name": "Fysio Holland"
+     },
+     "fetchedAt": "2026-11-10T07:43:37.689Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012143306",
+   "addresses": [
+    "Blasiusstraat 124"
+   ],
+   "groundUnits": [
+    {
+     "address": "Blasiusstraat 124-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000588090"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

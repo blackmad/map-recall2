@@ -1,0 +1,44 @@
+{
+ "buurt": "rapenburg",
+ "library": "nieuwmarkt",
+ "generatedAt": "2026-11-10T08:25:31.689Z",
+ "seconds": 7.14,
+ "totals": {
+  "faces": 1,
+  "pands": 7,
+  "placed": 2
+ },
+ "faces": [
+  {
+   "face": "rapenburg-89-103",
+   "street": "Rapenburg",
+   "pands": 7,
+   "placed": 2,
+   "held": 5,
+   "runs": [
+    {
+     "face": "rapenburg-89-103-r1",
+     "pands": [
+      "0363100012181605",
+      "0363100012170674"
+     ],
+     "passed": true,
+     "triangles": 3487
+    }
+   ],
+   "seconds": 7.14,
+   "byType": {
+    "lastage-cornice-house": 1,
+    "lastage-bell-house": 1
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 2
+   }
+  }
+ ]
+}

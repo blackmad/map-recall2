@@ -1,0 +1,107 @@
+{
+ "street": "Den Texstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:13:02.951Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012179436",
+   "addresses": [
+    "Den Texstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000620881"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179435",
+   "addresses": [
+    "Den Texstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000620888"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 441909910,
+     "lngLat": [
+      4.893828,
+      52.3589917
+     ],
+     "tags": {
+      "internet_access": "wlan",
+      "name": "Kap",
+      "stars": "2",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-11-10T07:13:02.951Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179430",
+   "addresses": [
+    "Den Texstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000620892"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179429",
+   "addresses": [
+    "Den Texstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000620895"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179383",
+   "addresses": [
+    "Den Texstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000620897"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

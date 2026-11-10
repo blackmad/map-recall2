@@ -28,7 +28,10 @@
    "address": "Vierde Vogelstraat 5",
    "type": {
     "type": "vogel-1918-cottage-3axis",
-    "mirror": true
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#543f35"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -40,6 +43,17 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "small window, wide window, door (mirrored: door, wide window, small window)",
+    "identicalBays": "no",
+    "windowsPerStorey": "1 storey",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "green door at one end",
+    "signage": "none",
+    "roofline": "gutter, long tiled roof",
+    "photoRows": [
+     3
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: vogel-1918-cottage-3axis scored 0.8 on eaves -, storeys 1, stucco 1, columns 0.4; strip 2022-05-10 span 400-639"
    }
   },
@@ -48,7 +62,10 @@
    "slug": "vogel-071224",
    "address": "Vierde Vogelstraat 7",
    "type": {
-    "type": "vogel-1918-cottage-2axis"
+    "type": "vogel-1918-cottage-2axis",
+    "paletteOverrides": {
+     "brick": "#5f483d"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -60,6 +77,17 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
+    "bays": "wide window, door",
+    "identicalBays": "no",
+    "windowsPerStorey": "1 storey",
+    "symmetry": "mirror pairs about the party wall",
+    "groundFloor": "green door at one end",
+    "signage": "none",
+    "roofline": "gutter, long tiled roof",
+    "photoRows": [
+     2
+    ],
+    "photoGroundRows": 1,
     "citation": "auto-place: vogel-1918-cottage-2axis scored 0.8 on eaves -, storeys 1, stucco 1, columns 0.4; strip 2022-05-10 span 639-801"
    }
   }

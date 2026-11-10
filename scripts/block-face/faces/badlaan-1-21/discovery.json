@@ -1,0 +1,393 @@
+{
+ "street": "Plantage Badlaan",
+ "seed": "0363100012181430",
+ "members": [
+  "0363100012181430",
+  "0363100012181431",
+  "0363100012181432",
+  "0363100012171256",
+  "0363100012181074",
+  "0363100012181075",
+  "0363100012181073",
+  "0363100012171260",
+  "0363100012171261",
+  "0363100012170230"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012181430 (face continues: 181070)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012170230 (face continues: 181739)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164976",
+   "reason": "frontage 41.3 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170231",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012181739"
+  },
+  {
+   "pandId": "0363100012170734",
+   "reason": "frontage 98.6 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170826",
+   "reason": "frontage 82.6 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170827",
+   "reason": "frontage 91.4 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170828",
+   "reason": "frontage 92.9 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170829",
+   "reason": "frontage 93.0 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170830",
+   "reason": "frontage 41.2 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170831",
+   "reason": "frontage 67.7 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170833",
+   "reason": "frontage 56.4 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170834",
+   "reason": "frontage 86.9 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170835",
+   "reason": "frontage 93.0 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012171259",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012181073"
+  },
+  {
+   "pandId": "0363100012171262",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012170231"
+  },
+  {
+   "pandId": "0363100012171263",
+   "reason": "frontage 34.2 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012171266",
+   "reason": "no frontage on Plantage Badlaan: No footprint edge faces Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181071",
+   "reason": "frontage 79.4 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181072",
+   "reason": "frontage 56.7 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181151",
+   "reason": "frontage 69.7 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181152",
+   "reason": "frontage 57.0 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181153",
+   "reason": "frontage 72.1 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181346",
+   "reason": "frontage 83.4 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181347",
+   "reason": "no frontage on Plantage Badlaan: No footprint edge faces Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181423",
+   "reason": "frontage 43.9 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181424",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012181070"
+  },
+  {
+   "pandId": "0363100012181425",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012181070"
+  },
+  {
+   "pandId": "0363100012181426",
+   "reason": "frontage 63.7 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181427",
+   "reason": "frontage 66.1 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181428",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012181070"
+  },
+  {
+   "pandId": "0363100012181469",
+   "reason": "frontage 80.3 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181470",
+   "reason": "frontage 95.8 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181654",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012181659"
+  },
+  {
+   "pandId": "0363100012181655",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012171264"
+  },
+  {
+   "pandId": "0363100012181660",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012171265"
+  },
+  {
+   "pandId": "0363100012181661",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012171265"
+  },
+  {
+   "pandId": "0363100012181662",
+   "reason": "frontage 30.3 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181735",
+   "reason": "frontage 54.7 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181737",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012181659"
+  },
+  {
+   "pandId": "0363100012181738",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012171267"
+  },
+  {
+   "pandId": "0363100012181741",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012181742"
+  },
+  {
+   "pandId": "0363100012181744",
+   "reason": "frontage 39.7 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181746",
+   "reason": "sightline to Plantage Badlaan crosses 0363100012181741"
+  },
+  {
+   "pandId": "0363100012181747",
+   "reason": "frontage 32.7 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012181748",
+   "reason": "frontage 30.4 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012186001",
+   "reason": "frontage 42.6 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012186093",
+   "reason": "frontage 112.6 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012244846",
+   "reason": "frontage 77.7 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012244940",
+   "reason": "frontage 71.7 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012252712",
+   "reason": "frontage 86.5 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012253971",
+   "reason": "frontage 41.6 m from Plantage Badlaan"
+  },
+  {
+   "pandId": "0363100012170226",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170227",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171257",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171258",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171264",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171265",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171267",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181422",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181429",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181657",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181658",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181659",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181740",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181742",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181743",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012181430",
+   "alongM": 0,
+   "widthM": 5.98,
+   "eavesM": 15.01,
+   "roofMaxM": 16.7,
+   "storeys3dbag": 5,
+   "builtYear": 1857,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181431",
+   "alongM": 5.98,
+   "widthM": 5.99,
+   "eavesM": 14.05,
+   "roofMaxM": 16.73,
+   "storeys3dbag": 5,
+   "builtYear": 1869,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181432",
+   "alongM": 11.97,
+   "widthM": 5.99,
+   "eavesM": 14.15,
+   "roofMaxM": 16.87,
+   "storeys3dbag": 5,
+   "builtYear": 1807,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171256",
+   "alongM": 20.96,
+   "widthM": 11.97,
+   "eavesM": 14.13,
+   "roofMaxM": 17.5,
+   "storeys3dbag": 5,
+   "builtYear": 1816,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181074",
+   "alongM": 30.05,
+   "widthM": 6.21,
+   "eavesM": 13.95,
+   "roofMaxM": 16.79,
+   "storeys3dbag": 5,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181075",
+   "alongM": 36.09,
+   "widthM": 5.88,
+   "eavesM": 12.02,
+   "roofMaxM": 15.35,
+   "storeys3dbag": 4,
+   "builtYear": 1881,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012181073",
+   "alongM": 41.97,
+   "widthM": 5.89,
+   "eavesM": 12.06,
+   "roofMaxM": 15.06,
+   "storeys3dbag": 4,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171260",
+   "alongM": 47.86,
+   "widthM": 5.88,
+   "eavesM": 12.03,
+   "roofMaxM": 15.06,
+   "storeys3dbag": 4,
+   "builtYear": 1881,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012171261",
+   "alongM": 53.73,
+   "widthM": 5.87,
+   "eavesM": 12.03,
+   "roofMaxM": 15.09,
+   "storeys3dbag": 4,
+   "builtYear": 1872,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170230",
+   "alongM": 59.47,
+   "widthM": 5.61,
+   "eavesM": 12.02,
+   "roofMaxM": 15.02,
+   "storeys3dbag": 4,
+   "builtYear": 1881,
+   "uncertainty": []
+  }
+ ]
+}

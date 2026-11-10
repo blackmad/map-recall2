@@ -1,0 +1,89 @@
+{
+ "street": "Linnaeusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:23:31.023Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012158364",
+   "addresses": [
+    "Linnaeusstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000726227"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157163",
+   "addresses": [
+    "Linnaeusstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000726233"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163547",
+   "addresses": [
+    "Linnaeusstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000726239"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158748",
+   "addresses": [
+    "Linnaeusstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000726250"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166134",
+   "addresses": [
+    "Linnaeusstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010001020424"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

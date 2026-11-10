@@ -28,6 +28,8 @@ export function dressHistoric(group: T.Group, intent: CanalHouseIntent, fit: Fit
     const cornice = front.palette?.cornice ?? intent.palette.cornice;
     const paint = (test: (name: string) => boolean, colour: string) => { const m = material(swatch(colour)); for (const mesh of meshesUnder(facade)) if (test(mesh.name)) { mesh.material = m; painted++; } };
     if (cornice) paint(n => n.startsWith('cornice/'), cornice);
+    // `palette.corniceAs: 'stone'`: the chunk export colours meshes by their surface slot, so move the cornice onto the stone slot.
+    if (cornice && intent.palette.corniceAs === 'stone') for (const mesh of meshesUnder(facade)) if (mesh.name.startsWith('cornice/')) mesh.userData.surface = 'stone';
     const shutter = front.groundFront?.shutterColour;
     if (shutter) paint(n => /^opening\/(\S*-)?gf-b\d+-shutter(-m\d+)?\/(pane|bar)$/.test(n), shutter);
   }

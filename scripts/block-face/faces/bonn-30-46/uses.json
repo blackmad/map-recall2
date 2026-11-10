@@ -1,0 +1,261 @@
+{
+ "street": "Andreas Bonnstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:20:09.197Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012152682",
+   "addresses": [
+    "Andreas Bonnstraat 44",
+    "Andreas Bonnstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 46",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000569405"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12748078059,
+     "lngLat": [
+      4.9141875,
+      52.3592064
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "cuisine": "pizza",
+      "name": "Oost",
+      "opening_hours": "Mo-Su 17:30-23:00"
+     },
+     "fetchedAt": "2026-11-10T07:20:09.197Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166422",
+   "addresses": [
+    "Andreas Bonnstraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 42-H",
+     "use": "kantoorfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001016270"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156355",
+   "addresses": [
+    "Andreas Bonnstraat 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 40-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 158,
+     "bagId": "0363010000569394"
+    },
+    {
+     "address": "Tilanusstraat 83-H",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000828032"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10214285417,
+     "lngLat": [
+      4.9139745,
+      52.3592503
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "40-H",
+      "addr:postcode": "1091BA",
+      "addr:street": "Andreas Bonnstraat",
+      "amenity": "pub",
+      "name": "CatuaBar",
+      "opening_hours": "We-Sa 17:00-24:00+"
+     },
+     "fetchedAt": "2026-11-10T07:20:09.197Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012145159",
+   "addresses": [
+    "Andreas Bonnstraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000569390"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146383",
+   "addresses": [
+    "Andreas Bonnstraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 36-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000569386"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9959308017,
+     "lngLat": [
+      4.9137969,
+      52.3592855
+     ],
+     "tags": {
+      "addr:housenumber": "36",
+      "addr:street": "Andreas Bonnstraat",
+      "amenity": "restaurant",
+      "check_date": "2026-01-18",
+      "check_date:opening_hours": "2026-01-18",
+      "name": "Sushi Fanatics",
+      "opening_hours": "Mo-Sa 12:00-21:30",
+      "payment:cash": "yes",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "website": "http://sushifanatics.nl"
+     },
+     "fetchedAt": "2026-11-10T07:20:09.197Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13093173801,
+     "lngLat": [
+      4.9138162,
+      52.3593204
+     ],
+     "tags": {
+      "addr:housenumber": "36",
+      "addr:street": "Andreas Bonnstraat",
+      "level": "0",
+      "name": "Taigu",
+      "opening_hours": "Mo-Su 12:00-21:30",
+      "shop": "pastry"
+     },
+     "fetchedAt": "2026-11-10T07:20:09.197Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012100364",
+   "addresses": [
+    "Andreas Bonnstraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000569382"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1619441662,
+     "lngLat": [
+      4.9137126,
+      52.3593021
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "34H",
+      "addr:postcode": "1091BA",
+      "addr:street": "Andreas Bonnstraat",
+      "amenity": "restaurant",
+      "diet:vegetarian": "yes",
+      "email": "info@maritshuiskamerrestaurant.nl",
+      "name": "Marits",
+      "phone": "+31 20 776 3864",
+      "toilets:wheelchair": "no",
+      "website": "https://www.maritshuiskamerrestaurant.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T07:20:09.197Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012090461",
+   "addresses": [
+    "Andreas Bonnstraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010012085684"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012088363",
+   "addresses": [
+    "Andreas Bonnstraat 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Andreas Bonnstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000569375"
+    },
+    {
+     "address": "Andreas Bonnstraat 30-H",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012085683"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

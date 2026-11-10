@@ -1,0 +1,373 @@
+{
+ "face": "sgravesande-2-92",
+ "street": "'s-Gravesandestraat",
+ "library": "oud-west",
+ "stripDate": "2023-01-02",
+ "seconds": 2.73,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012101376",
+   "address": "'s-Gravesandestraat 64",
+   "builtYear": 1988,
+   "widthM": 17.31,
+   "eavesM": 12.48,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 17,
+    "toM": 17,
+    "depthM": 0.31,
+    "centre": 0.982
+   },
+   "strip": {
+    "wall": "#655d54",
+    "wallRaw": "#625b52",
+    "skyline": {
+     "eavesM": 16.02,
+     "eavesRow": 47,
+     "confidence": 0.62,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 3.15 m at 0.9 (light 0): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 3.15,
+       "centre": 0.9,
+       "light": 0
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10,
+       "widthM": 1.02,
+       "centre": 0.83
+      },
+      {
+       "atM": 7.07,
+       "widthM": 0.85,
+       "centre": 0.92
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1988, type 1899-1903; frontage 17.31 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1988, type 1899-1903",
+     "frontage 17.31 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.48 m = 4 storeys of 3.12 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.73 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012093334",
+   "address": "'s-Gravesandestraat 44",
+   "builtYear": 1988,
+   "widthM": 18.69,
+   "eavesM": 15.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52433c",
+    "wallRaw": "#52463f",
+    "skyline": {
+     "eavesM": 16.35,
+     "eavesRow": 34,
+     "confidence": 0.61,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.45,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.67,
+       "widthM": 2.05,
+       "centre": 0.06
+      },
+      {
+       "atM": 9.75,
+       "widthM": 2.63,
+       "centre": 0.84
+      },
+      {
+       "atM": 5.55,
+       "widthM": 1,
+       "centre": 0.46
+      },
+      {
+       "atM": 4.95,
+       "widthM": 1.4,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1988, type 1899-1903; frontage 18.69 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1988, type 1899-1903",
+     "frontage 18.69 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.15 m = 4 storeys of 3.79 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.04 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.013 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012151587",
+   "address": "'s-Gravesandestraat 24",
+   "builtYear": 1988,
+   "widthM": 18.68,
+   "eavesM": 14.94,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52443d",
+    "wallRaw": "#544740",
+    "skyline": {
+     "eavesM": 16.23,
+     "eavesRow": 39,
+     "confidence": 0.61,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.024,
+    "structure": {
+     "bayWidthM": 0.85,
+     "bayCentre": 0.34,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.63,
+       "widthM": 2.02,
+       "centre": 0.84
+      },
+      {
+       "atM": 5.65,
+       "widthM": 0.85,
+       "centre": 0.33
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1988, type 1899-1903; frontage 18.68 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1988, type 1899-1903",
+     "frontage 18.68 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 14.94 m = 4 storeys of 3.73 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.03 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.008 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012113688",
+   "address": "'s-Gravesandestraat 2",
+   "builtYear": 1988,
+   "widthM": 8.36,
+   "eavesM": 12.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#53443d",
+    "wallRaw": "#52443e",
+    "skyline": {
+     "eavesM": 16.4,
+     "eavesRow": 32,
+     "confidence": 0.59,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.05,
+       "widthM": 3,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1988, type 1899-1903; frontage 8.36 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1988, type 1899-1903",
+     "frontage 8.36 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.11 m = 4 storeys of 3.03 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.63 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

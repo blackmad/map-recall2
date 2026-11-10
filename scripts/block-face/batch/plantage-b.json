@@ -1,0 +1,120 @@
+{
+ "name": "plantage-b",
+ "buurt": "plantage",
+ "library": "plantage",
+ "generatedAt": "2026-11-10T07:43:43.293Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 3,
+  "runs": 4,
+  "installed": 0,
+  "installedPands": 0,
+  "failed": 2,
+  "byReason": {
+   "glb-audit": 1,
+   "no-type": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "badlaan-4-24",
+   "street": "Plantage Badlaan",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.178,
+   "nccMedian": 0.259,
+   "stripOverDrawn": 0.974,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": 12134,
+   "sheet": "staging/block-face/badlaan-4-24-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "badlaan-4-24-r1",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "failed",
+   "reasons": [
+    "glb-audit: failed (see report.json audit)"
+   ],
+   "seconds": 14.1
+  },
+  {
+   "face": "badlaan-1-21",
+   "street": "Plantage Badlaan",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.178,
+   "nccMedian": 0.204,
+   "stripOverDrawn": 1.069,
+   "wallFits": 2,
+   "droppedCorners": [],
+   "triangles": 6381,
+   "sheet": "staging/block-face/badlaan-1-21-r1/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "badlaan-1-21-r1",
+   "pands": 3,
+   "mode": "auto-place",
+   "status": "passed (not installed: no --install)",
+   "reasons": [],
+   "seconds": 8.4
+  },
+  {
+   "face": "badlaan-1-21",
+   "street": "Plantage Badlaan",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.364,
+   "nccMedian": 0.402,
+   "stripOverDrawn": 1.205,
+   "wallFits": 4,
+   "droppedCorners": [],
+   "triangles": 11382,
+   "sheet": "staging/block-face/badlaan-1-21-r2/review/strip-sheet.png",
+   "stripDate": "2023-01-02",
+   "run": "badlaan-1-21-r2",
+   "pands": 5,
+   "mode": "auto-place",
+   "status": "passed (not installed: no --install)",
+   "reasons": [],
+   "seconds": 10.3
+  },
+  {
+   "face": "doklaan-28-42",
+   "street": "Plantage Doklaan",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": null,
+   "nccMedian": null,
+   "stripOverDrawn": null,
+   "wallFits": 0,
+   "droppedCorners": [],
+   "triangles": null,
+   "sheet": null,
+   "run": "doklaan-28-42",
+   "pands": 8,
+   "mode": "auto-place",
+   "stripDate": "2023-01-02",
+   "status": "failed",
+   "reasons": [
+    "no-type: 0/8 placed (5x likeness: edge NCC # < # (photo vs model body; likeness#ts NO EVIDENCE: washed o; 1x run: a single placed pand between held neighbours or the face end: a block ; 1x review: review: a different (white, balconied) front)"
+   ],
+   "seconds": 7
+  }
+ ]
+}

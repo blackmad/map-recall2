@@ -1,0 +1,50 @@
+{
+ "model": "jev-1.14.0",
+ "answers": {
+  "gable": {
+   "type": "choice",
+   "choice": "cornice",
+   "confidence": 0.94,
+   "probabilities": {
+    "neck": 0,
+    "bell": 0,
+    "step": 0.02,
+    "cornice": 0.95,
+    "spout": 0,
+    "plain": 0.03
+   }
+  },
+  "finish": {
+   "type": "choice",
+   "choice": "brick",
+   "confidence": 1,
+   "probabilities": {
+    "brick": 1,
+    "painted brick": 0,
+    "plaster": 0,
+    "stone": 0,
+    "mixed": 0
+   }
+  },
+  "shopfront": {
+   "type": "noul",
+   "noul": 0.1
+  },
+  "bays": {
+   "type": "choice",
+   "choice": "three",
+   "confidence": 0.26,
+   "probabilities": {
+    "one": 0.07,
+    "two": 0.16,
+    "three": 0.41,
+    "four": 0.26,
+    "five": 0.1
+   }
+  }
+ },
+ "usage": {
+  "input_tokens": 7343,
+  "output_tokens": 379
+ }
+}

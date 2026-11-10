@@ -131,3 +131,26 @@ export function tapOnOpenWater(surfaceHit: unknown, groundWater: boolean): boole
 export function freeRideWayTapAllowed(onWater: boolean, boat: boolean): boolean {
   return boat ? onWater : !onWater;
 }
+
+/** How far (world px) a landmark pin standing inside a building footprint may move to open ground (S5, #333). */
+export const FACADE_NUDGE_PX = 15 * 3;
+
+/**
+ * A landmark pin whose own point falls inside a building's footprint moves to the nearest open ground (off the
+ * footprint, clear of the waterline) within `maxPx`, rings of 16 bearings. A pin on a building bigger than the
+ * reach (a museum block) keeps its point: the pin is the building. `moved` tells the caller which case it was.
+ */
+export function facadeNudge(
+  point: WorldPoint, isWater: IsWater | null, inBuilding: IsWater | null, maxPx = FACADE_NUDGE_PX,
+): { point: WorldPoint; inside: boolean; moved: boolean } {
+  if (!inBuilding || !inBuilding(point.x, point.y)) return { point, inside: false, moved: false };
+  const solid = isWater ? withLandMargin(isWater) : () => false;
+  for (let r = LAND_RING_STEP_PX; r <= maxPx; r += LAND_RING_STEP_PX) {
+    for (let i = 0; i < 16; i++) {
+      const a = i / 16 * Math.PI * 2;
+      const p = { x: point.x + Math.cos(a) * r, y: point.y + Math.sin(a) * r };
+      if (!inBuilding(p.x, p.y) && !solid(p.x, p.y)) return { point: p, inside: true, moved: true };
+    }
+  }
+  return { point, inside: true, moved: false };
+}

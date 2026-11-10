@@ -1,0 +1,26 @@
+{
+ "note": "Lane pins (belt-nieuwmarkt-lastage-20261110) after reading rapenburg-89-103 (2024-12-10) at full size; one-off canal fronts, so each pand is typed by its own photo.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "face": "rapenburg-89-103",
+   "pands": [
+    "0363100012181605"
+   ],
+   "types": [
+    "lastage-cornice-house"
+   ],
+   "reason": "Rapenburg 97: cornice house with a white attic frieze, no gable; edge NCC preferred the bell type on the window rows alone"
+  },
+  {
+   "face": "rapenburg-89-103",
+   "pands": [
+    "0363100012170674"
+   ],
+   "types": [
+    "lastage-bell-house"
+   ],
+   "reason": "Rapenburg 99: bell gable 12.4-15.0 m with one attic light"
+  }
+ ]
+}

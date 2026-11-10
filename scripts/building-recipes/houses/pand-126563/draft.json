@@ -1,0 +1,122 @@
+{
+ "date": "2026-11-10",
+ "groups": [
+  {
+   "group": 0,
+   "panel": 30,
+   "bearing": 270,
+   "widthM": 64.6,
+   "heightM": 9.3,
+   "street": "Anthony Fokkerweg"
+  },
+  {
+   "group": 1,
+   "panel": 10,
+   "bearing": 360,
+   "widthM": 36.9,
+   "heightM": 9.3,
+   "street": "Valschermkade"
+  },
+  {
+   "group": 2,
+   "panel": 21,
+   "bearing": 9,
+   "widthM": 5.8,
+   "heightM": 6.7,
+   "street": "Valschermkade"
+  },
+  {
+   "group": 3,
+   "panel": 20,
+   "bearing": 90,
+   "widthM": 47.9,
+   "heightM": 12,
+   "street": null
+  },
+  {
+   "group": 4,
+   "panel": 16,
+   "bearing": 180,
+   "widthM": 10.8,
+   "heightM": 12,
+   "street": null
+  }
+ ],
+ "skipped": [
+  {
+   "panel": 0,
+   "widthM": 6.5,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 2,
+   "widthM": 37,
+   "reason": "party wall"
+  },
+  {
+   "panel": 17,
+   "widthM": 8.1,
+   "reason": "party wall"
+  },
+  {
+   "panel": 8,
+   "widthM": 2.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 33,
+   "widthM": 3.1,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 18,
+   "widthM": 2.2,
+   "reason": "party wall"
+  },
+  {
+   "panel": 14,
+   "widthM": 2.2,
+   "reason": "party wall"
+  },
+  {
+   "panel": 19,
+   "widthM": 2.9,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 25,
+   "widthM": 5.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 35,
+   "widthM": 2.2,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 9,
+   "widthM": 2.3,
+   "reason": "unnamed panel under 8 m"
+  },
+  {
+   "panel": 27,
+   "widthM": 4.3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 4,
+   "widthM": 3,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 24,
+   "widthM": 3.1,
+   "reason": "under 3 m tall"
+  },
+  {
+   "panel": 34,
+   "widthM": 2.6,
+   "reason": "under 3 m tall"
+  }
+ ]
+}

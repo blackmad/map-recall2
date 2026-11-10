@@ -1,0 +1,57 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012120045",
+   "addresses": [
+    "Nieuwendammerdijk 196"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 196",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010000751756"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104663",
+   "addresses": [
+    "Nieuwendammerdijk 194"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 194",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000751754"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012102932",
+   "addresses": [
+    "Nieuwendammerdijk 192"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 192",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000751753"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,358 @@
+{
+ "street": "Peperstraat",
+ "seed": "0363100012181291",
+ "members": [
+  "0363100012181223",
+  "0363100012181290",
+  "0363100012181291"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012181223 (face continues: 170619)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012181291 (face continues: 170633)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164958",
+   "reason": "no frontage on Peperstraat: No footprint edge faces Peperstraat"
+  },
+  {
+   "pandId": "0363100012170444",
+   "reason": "no frontage on Peperstraat: No footprint edge faces Peperstraat"
+  },
+  {
+   "pandId": "0363100012170620",
+   "reason": "sightline to Peperstraat crosses 0363100012181290"
+  },
+  {
+   "pandId": "0363100012170623",
+   "reason": "frontage 70.7 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170624",
+   "reason": "frontage 61.1 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170625",
+   "reason": "frontage 77.8 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170626",
+   "reason": "sightline to Peperstraat crosses 0363100012181291"
+  },
+  {
+   "pandId": "0363100012170627",
+   "reason": "frontage 65.6 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170628",
+   "reason": "sightline to Peperstraat crosses 0363100012170622"
+  },
+  {
+   "pandId": "0363100012170629",
+   "reason": "sightline to Peperstraat crosses 0363100012170622"
+  },
+  {
+   "pandId": "0363100012170630",
+   "reason": "frontage 56.1 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170631",
+   "reason": "frontage 100.6 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170632",
+   "reason": "frontage 31.2 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170683",
+   "reason": "frontage 113.3 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170685",
+   "reason": "frontage 53.7 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170686",
+   "reason": "frontage 68.1 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170687",
+   "reason": "frontage 109.1 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170688",
+   "reason": "frontage 104.8 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170690",
+   "reason": "frontage 97.0 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012170691",
+   "reason": "frontage 77.5 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181214",
+   "reason": "frontage 38.1 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181215",
+   "reason": "frontage 33.0 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181216",
+   "reason": "sightline to Peperstraat crosses 0363100012170622"
+  },
+  {
+   "pandId": "0363100012181217",
+   "reason": "frontage 53.4 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181218",
+   "reason": "frontage 56.6 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181219",
+   "reason": "frontage 60.5 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181221",
+   "reason": "frontage 70.0 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181222",
+   "reason": "frontage 48.4 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181285",
+   "reason": "frontage 78.5 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181286",
+   "reason": "frontage 96.4 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181287",
+   "reason": "frontage 72.4 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181288",
+   "reason": "sightline to Peperstraat crosses 0363100012186000"
+  },
+  {
+   "pandId": "0363100012181289",
+   "reason": "sightline to Peperstraat crosses 0363100012186000"
+  },
+  {
+   "pandId": "0363100012181295",
+   "reason": "sightline to Peperstraat crosses 0363100012181300"
+  },
+  {
+   "pandId": "0363100012181296",
+   "reason": "sightline to Peperstraat crosses 0363100012181292"
+  },
+  {
+   "pandId": "0363100012181297",
+   "reason": "frontage 34.9 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181298",
+   "reason": "frontage 39.0 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181299",
+   "reason": "frontage 49.2 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181300",
+   "reason": "sightline to Peperstraat crosses 0363100012181302"
+  },
+  {
+   "pandId": "0363100012181301",
+   "reason": "sightline to Peperstraat crosses 0363100012181300"
+  },
+  {
+   "pandId": "0363100012181303",
+   "reason": "frontage 43.2 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012181607",
+   "reason": "frontage 94.6 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182654",
+   "reason": "no frontage on Peperstraat: No footprint edge faces Peperstraat"
+  },
+  {
+   "pandId": "0363100012182660",
+   "reason": "frontage 38.7 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182662",
+   "reason": "frontage 31.6 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182732",
+   "reason": "sightline to Peperstraat crosses 0363100012182731"
+  },
+  {
+   "pandId": "0363100012182733",
+   "reason": "frontage 40.4 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182734",
+   "reason": "sightline to Peperstraat crosses 0363100012170619"
+  },
+  {
+   "pandId": "0363100012182735",
+   "reason": "sightline to Peperstraat crosses 0363100012170619"
+  },
+  {
+   "pandId": "0363100012182736",
+   "reason": "frontage 32.8 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182737",
+   "reason": "frontage 40.1 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182738",
+   "reason": "frontage 40.3 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182740",
+   "reason": "sightline to Peperstraat crosses 0363100012182731"
+  },
+  {
+   "pandId": "0363100012182742",
+   "reason": "sightline to Peperstraat crosses 0363100012170444"
+  },
+  {
+   "pandId": "0363100012182743",
+   "reason": "frontage 30.9 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182746",
+   "reason": "frontage 120.6 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182747",
+   "reason": "frontage 119.5 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182748",
+   "reason": "frontage 122.5 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182827",
+   "reason": "frontage 117.3 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182828",
+   "reason": "frontage 121.5 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182829",
+   "reason": "frontage 124.1 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012182830",
+   "reason": "frontage 121.9 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012185926",
+   "reason": "frontage 60.2 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012186000",
+   "reason": "sightline to Peperstraat crosses 0363100012571678"
+  },
+  {
+   "pandId": "0363100012571640",
+   "reason": "frontage 51.4 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012571641",
+   "reason": "frontage 59.9 m from Peperstraat"
+  },
+  {
+   "pandId": "0363100012571676",
+   "reason": "sightline to Peperstraat crosses 0363100012164958"
+  },
+  {
+   "pandId": "0363100012170617",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170618",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170622",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181292",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181293",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181294",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181302",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182739",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012571678",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012181223",
+   "alongM": -12.78,
+   "widthM": 5.85,
+   "eavesM": 11.8,
+   "roofMaxM": 13.99,
+   "storeys3dbag": 4,
+   "builtYear": 1829,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181290",
+   "alongM": -5.94,
+   "widthM": 7.84,
+   "eavesM": 12.25,
+   "roofMaxM": 15.95,
+   "storeys3dbag": 5,
+   "builtYear": 1928,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181291",
+   "alongM": 0,
+   "widthM": 4.04,
+   "eavesM": 13.64,
+   "roofMaxM": 16.14,
+   "storeys3dbag": 5,
+   "builtYear": 1753,
+   "uncertainty": []
+  }
+ ]
+}

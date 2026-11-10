@@ -1,0 +1,185 @@
+{
+ "street": "Tilanusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:33:00.637Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012150546",
+   "addresses": [
+    "Tilanusstraat 61"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 61-H",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000738440"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162497",
+   "addresses": [
+    "Tilanusstraat 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 63-H",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000827990"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164033",
+   "addresses": [
+    "Tilanusstraat 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 65-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000827994"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157243",
+   "addresses": [
+    "Tilanusstraat 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 67-H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000827998"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159006",
+   "addresses": [
+    "Tilanusstraat 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 69-H",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000828002"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166008",
+   "addresses": [
+    "Tilanusstraat 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 71-H",
+     "use": "winkelfunctie",
+     "areaM2": 167,
+     "bagId": "0363010000828006"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164874",
+   "addresses": [
+    "Tilanusstraat 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 73-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000828010"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153263",
+   "addresses": [
+    "Tilanusstraat 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 75-H",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000828014"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160451",
+   "addresses": [
+    "Tilanusstraat 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 77-H",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000828018"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163336",
+   "addresses": [
+    "Tilanusstraat 79"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 79-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000828023"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158038",
+   "addresses": [
+    "Tilanusstraat 81"
+   ],
+   "groundUnits": [
+    {
+     "address": "Tilanusstraat 81-H",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000828027"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  }
+ ]
+}

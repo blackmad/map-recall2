@@ -1,0 +1,108 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:12:27.444Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012160445",
+   "addresses": [
+    "Nieuwendammerdijk 58",
+    "Nieuwendammerdijk 58A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 58A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000751624"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163962",
+   "addresses": [
+    "Nieuwendammerdijk 56"
+   ],
+   "groundUnits": [],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161350",
+   "addresses": [
+    "Nieuwendammerdijk 54"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163429",
+   "addresses": [
+    "Nieuwendammerdijk 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 52",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000751617"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158059",
+   "addresses": [
+    "Nieuwendammerdijk 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 50",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000751615"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156372",
+   "addresses": [
+    "Nieuwendammerdijk 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 48",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000751612"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166973",
+   "addresses": [
+    "Nieuwendammerdijk 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 46",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000751610"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

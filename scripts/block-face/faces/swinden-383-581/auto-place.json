@@ -1,0 +1,1093 @@
+{
+ "face": "swinden-383-581",
+ "street": "Eerste Van Swindenstraat",
+ "library": "oud-west",
+ "stripDate": "2022-01-12",
+ "seconds": 26.79,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "swinden-383-581-r1",
+   "pands": [
+    "0363100012159406",
+    "0363100012158925",
+    "0363100012165201",
+    "0363100012163378",
+    "0363100012236602",
+    "0363100012161671"
+   ],
+   "passed": true,
+   "triangles": 10941
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012158293",
+   "address": "Eerste Van Swindenstraat 383A",
+   "builtYear": 1981,
+   "widthM": 4.96,
+   "eavesM": 12.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#876d5f",
+    "wallRaw": "#7a685c",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 198,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 4.95,
+      "topWidthM": 0.05,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.132,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best kinker-1985-infill scores 0.55 < 0.7 (3DBAG eaves 12.59 m = 5 storeys of 2.52 m vs the type's 2.83 m; roof rise 3.3 m (pitched) vs flat; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "kinker-1985-infill",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.59 m = 5 storeys of 2.52 m vs the type's 2.83 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 3.3 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.117 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154113",
+   "address": "Eerste Van Swindenstraat 385",
+   "builtYear": 1981,
+   "widthM": 4.97,
+   "eavesM": 12.58,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#876f60",
+    "wallRaw": "#7f6d60",
+    "skyline": {
+     "eavesM": 12.43,
+     "eavesRow": 227,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 3.25,
+      "riseM": 5.68,
+      "topWidthM": 0.33,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.184,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best kinker-1985-infill scores 0.55 < 0.7 (3DBAG eaves 12.58 m = 5 storeys of 2.52 m vs the type's 2.83 m; roof rise 2.12 m (pitched) vs flat; strip columns 3 vs 2 bays)",
+   "best": {
+    "type": "kinker-1985-infill",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.58 m = 5 storeys of 2.52 m vs the type's 2.83 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 2.12 m (pitched) vs flat"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.154 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163918",
+   "address": "Eerste Van Swindenstraat 387",
+   "builtYear": 1881,
+   "widthM": 9.96,
+   "eavesM": 12.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#876c5c",
+    "wallRaw": "#867263",
+    "skyline": {
+     "eavesM": 12.7,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.55,
+      "riseM": 1.6,
+      "topWidthM": 0.2,
+      "centre": 0.25
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.281,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1881, type 1899-1903; frontage 9.96 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1881, type 1899-1903",
+     "frontage 9.96 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.48 m = 4 storeys of 3.12 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.38 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.222 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159406",
+   "address": "Eerste Van Swindenstraat 391",
+   "builtYear": 1882,
+   "widthM": 5.02,
+   "eavesM": 12.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836756",
+    "wallRaw": "#81695a",
+    "skyline": {
+     "eavesM": 13.18,
+     "eavesRow": 197,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 0.88,
+      "riseM": 4.47,
+      "topWidthM": 0.13,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.16,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "dapper-1882-plain-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "clercq-e-corbel-brick",
+    "score": 0
+   },
+   "placement": {
+    "type": "dapper-1882-plain-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#e6e1d2",
+      "fascia": true,
+      "name": "Goudexpert",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#e6e1d2"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=gold_buyer); fascia colour measured on the strip 2022-01-12 span 796-997",
+      "fasciaColour": "#e6e1d2"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#836756",
+     "evidence": "strip 2022-01-12 span 796-997: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 391 (Goudexpert): cream painted shopfront and cream house door"
+   ],
+   "likeness": {
+    "pandId": "0363100012159406",
+    "ncc": 0.51,
+    "nccRaw": 0.51,
+    "shiftM": [
+     0.25,
+     -0.15
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.23 mean 0.47 vs photo 0.29"
+    ],
+    "wall": {
+     "photo": "#9b7b69",
+     "model": "#9b7a66",
+     "dL": -0.006
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.583
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012158925",
+   "address": "Eerste Van Swindenstraat 393",
+   "builtYear": 1882,
+   "widthM": 5.01,
+   "eavesM": 12.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f6656",
+    "wallRaw": "#836e5f",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 187,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 4.57,
+      "topWidthM": 0.03,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.136,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.55,
+       "widthM": 2.6,
+       "centre": 0.38
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "dapper-1882-plain-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "clercq-e-corbel-brick",
+    "score": 0
+   },
+   "placement": {
+    "type": "dapper-1882-plain-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#1d1b1a",
+      "fascia": true,
+      "name": "Cosme hairfashion",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#e6e1d2"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=cosmetics); fascia colour measured on the strip 2022-01-12 span 997-1197",
+      "fasciaColour": "#1d1b1a"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7f6656",
+     "evidence": "strip 2022-01-12 span 997-1197: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 393 (Cosme): black fascia and frame, cream house door"
+   ],
+   "likeness": {
+    "pandId": "0363100012158925",
+    "ncc": 0.415,
+    "nccRaw": 0.415,
+    "shiftM": [
+     0.2,
+     -0.1
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.52 mean 0.47 vs photo 0.63"
+    ],
+    "wall": {
+     "photo": "#7f6757",
+     "model": "#977966",
+     "dL": 0.076
+    },
+    "glazing": {
+     "photo": 0.63,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.645
+   },
+   "challengers": {
+    "clercq-e-corbel-brick": 0.124,
+    "kinker-1886-neo-renaissance": 0.191,
+    "kinker-1900-stucco-front": 0.259
+   }
+  },
+  {
+   "pandId": "0363100012165201",
+   "address": "Eerste Van Swindenstraat 395",
+   "builtYear": 1882,
+   "widthM": 5.01,
+   "eavesM": 12.49,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#866b5b",
+    "wallRaw": "#887161",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 200,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.247,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.68,
+       "widthM": 4.6,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "dapper-1882-plain-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "clercq-e-corbel-brick",
+    "score": 0
+   },
+   "placement": {
+    "type": "dapper-1882-plain-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#e6e1d2",
+      "fascia": true,
+      "name": "Losyana",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=clothes); fascia colour measured on the strip 2022-01-12 span 1197-1397",
+      "fasciaColour": "#e6e1d2"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#866b5b",
+     "evidence": "strip 2022-01-12 span 1197-1397: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 395: cream painted shopfront (awning hides the door)"
+   ],
+   "likeness": {
+    "pandId": "0363100012165201",
+    "ncc": 0.405,
+    "nccRaw": 0.405,
+    "shiftM": [
+     0.2,
+     -0.1
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.47 vs photo 0.28"
+    ],
+    "wall": {
+     "photo": "#947766",
+     "model": "#9b7e6c",
+     "dL": 0.025
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.555
+   },
+   "challengers": {
+    "clercq-e-corbel-brick": 0.089,
+    "kinker-1886-neo-renaissance": 0.172,
+    "kinker-1890-plain-brick": 0.141,
+    "kinker-1900-stucco-front": 0.156
+   }
+  },
+  {
+   "pandId": "0363100012163378",
+   "address": "Eerste Van Swindenstraat 397",
+   "builtYear": 1882,
+   "widthM": 5,
+   "eavesM": 12.47,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#907261",
+    "wallRaw": "#816b5c",
+    "skyline": {
+     "eavesM": 13.1,
+     "eavesRow": 200,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.187,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "dapper-1882-plain-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "clercq-e-corbel-brick",
+    "score": 0
+   },
+   "placement": {
+    "type": "dapper-1882-plain-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#e6e1d2",
+      "fascia": true,
+      "name": "Nura's Beauty",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#e6e1d2"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=beauty); fascia colour measured on the strip 2022-01-12 span 1397-1597",
+      "fasciaColour": "#e6e1d2"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#907261",
+     "evidence": "strip 2022-01-12 span 1397-1597: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 397: cream shopfront, house door at the left as photographed"
+   ],
+   "likeness": {
+    "pandId": "0363100012163378",
+    "ncc": 0.499,
+    "nccRaw": 0.499,
+    "shiftM": [
+     0.2,
+     -0.15
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21 mean 0.47 vs photo 0.31"
+    ],
+    "wall": {
+     "photo": "#8f7261",
+     "model": "#a28574",
+     "dL": 0.075
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.47
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.609
+   },
+   "challengers": {
+    "clercq-e-corbel-brick": 0.085,
+    "kinker-1886-neo-renaissance": 0.163,
+    "kinker-1890-plain-brick": 0.19,
+    "kinker-1900-stucco-front": 0.134
+   }
+  },
+  {
+   "pandId": "0363100012236602",
+   "address": "Eerste Van Swindenstraat 399",
+   "builtYear": 1882,
+   "widthM": 5.06,
+   "eavesM": 12.63,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#977969",
+    "wallRaw": "#856f62",
+    "skyline": {
+     "eavesM": 13.03,
+     "eavesRow": 203,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.65,
+      "riseM": 1.25,
+      "topWidthM": 0.17,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.294,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "dapper-1882-plain-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "clercq-e-corbel-brick",
+    "score": 0
+   },
+   "placement": {
+    "type": "dapper-1882-plain-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#e6e1d2",
+      "fascia": true,
+      "name": "Dapper Post",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "right",
+       "colour": "#e6e1d2"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=convenience); fascia colour measured on the strip 2022-01-12 span 1598-1800",
+      "fasciaColour": "#e6e1d2"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#977969",
+     "evidence": "strip 2022-01-12 span 1598-1800: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 399 (Dapper Post): shop double door at the left, white house door at the far right"
+   ],
+   "likeness": {
+    "pandId": "0363100012236602",
+    "ncc": 0.418,
+    "nccRaw": 0.418,
+    "shiftM": [
+     0.2,
+     -0.15
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.48 vs photo 0.30"
+    ],
+    "wall": {
+     "photo": "#947768",
+     "model": "#a68c7e",
+     "dL": 0.078
+    },
+    "glazing": {
+     "photo": 0.3,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.629
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161671",
+   "address": "Eerste Van Swindenstraat 401",
+   "builtYear": 1882,
+   "widthM": 5.17,
+   "eavesM": 12.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7b6358",
+    "wallRaw": "#7e695d",
+    "skyline": {
+     "eavesM": 12.5,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 1.63,
+      "topWidthM": 0.23,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.317,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "placed",
+   "type": "dapper-1882-plain-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "clercq-e-corbel-brick",
+    "score": 0
+   },
+   "placement": {
+    "type": "dapper-1882-plain-dormer",
+    "ground": {
+     "shopfront": {
+      "colour": "#e6e1d2",
+      "fascia": true,
+      "name": "Çiğköftem",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, amenity=fast_food); fascia colour measured on the strip 2022-01-12 span 1800-2007",
+      "fasciaColour": "#e6e1d2"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7b6358",
+     "evidence": "strip 2022-01-12 span 1800-2007: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "crown pediment-dormer (type default)",
+    "front pinned: Swinden 401: cream painted shopfront"
+   ],
+   "likeness": {
+    "pandId": "0363100012161671",
+    "ncc": 0.567,
+    "nccRaw": 0.567,
+    "shiftM": [
+     0.1,
+     -0.1
+    ],
+    "usable": 0.92,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.40 mean 0.49 vs photo 0.80"
+    ],
+    "wall": {
+     "photo": "#755c4e",
+     "model": "#927669",
+     "dL": 0.11
+    },
+    "glazing": {
+     "photo": 0.8,
+     "model": 0.49
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.597
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236289",
+   "address": "Eerste Van Swindenstraat 423",
+   "builtYear": 1886,
+   "widthM": 11.76,
+   "eavesM": 0.36,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 11.76,
+    "depthM": 0.97,
+    "centre": 0.5,
+    "lineRD": [
+     [
+      123806.39275000001,
+      486241.404
+     ],
+     [
+      123811.37275000001,
+      486243.066
+     ]
+    ]
+   },
+   "strip": {
+    "wall": null,
+    "wallRaw": null,
+    "skyline": {
+     "eavesM": 11.97,
+     "eavesRow": 245,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 4.7,
+      "riseM": 3.6,
+      "topWidthM": 0.35,
+      "centre": 0.22
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "blank",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": null,
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best kinker-1886-neo-renaissance scores 0.4 < 0.7 (3DBAG eaves 0.36 m = 4 storeys of 0.09 m vs the type's 3.56 m; 0 painted band runs)",
+   "best": {
+    "type": "kinker-1886-neo-renaissance",
+    "score": 0.4,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 0.36 m = 4 storeys of 0.09 m vs the type's 3.56 m"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "bands",
+      "weight": 1,
+      "score": 0,
+      "note": "0 painted band runs"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236937",
+   "address": "Eerste Van Swindenstraat 511",
+   "builtYear": 1886,
+   "widthM": 19.73,
+   "eavesM": 10.84,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 7.55,
+    "toM": 12.36,
+    "depthM": 0.33,
+    "centre": 0.505,
+    "lineRD": [
+     [
+      123839.574125,
+      486252.646
+     ],
+     [
+      123851.116125,
+      486256.54000000004
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#786354",
+    "wallRaw": "#725d4e",
+    "skyline": {
+     "eavesM": 12.9,
+     "eavesRow": 208,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 11.13,
+      "riseM": 5.2,
+      "topWidthM": 0.65,
+      "centre": 0.31
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 11,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.154,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.13 m at 0.52 (light 0.24): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.52,
+       "light": 0.24
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1886, type 1899-1903; frontage 19.73 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1886, type 1899-1903",
+     "frontage 19.73 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 10.84 m = 4 storeys of 2.71 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 4.34 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.132 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 11 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

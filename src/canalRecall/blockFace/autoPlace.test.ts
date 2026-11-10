@@ -300,6 +300,9 @@ test('frontEavesM (Eerste Helmersstraat 209-243): the strip cornice is scored ag
   assert.deepEqual(frontEavesFor(balconette, at225), {eavesM: 10.9, source: 'skyline'});
   assert.deepEqual(frontEavesFor(balconette, pand({strip: sky(13.4)})), {eavesM: 10.8, source: 'type'});
   assert.equal(frontEavesFor(types[0], at225), null);
+  // frontEavesAtLine (Ruyschstraat 72-98): a near skyline (a dormer top) is not drawn; the line is. Absent = the skyline as before.
+  const atLine = {...balconette, match: {...balconette.match!, frontEavesAtLine: true}} as MatchableType;
+  assert.deepEqual(frontEavesFor(atLine, at225), {eavesM: 10.8, source: 'type'});
   // frontSkylineM: Derde Helmersstraat 60, the crenellated wall dormer reads as the skyline (18.2 m over a 14.3 m cornice).
   const merlon = defaultTypeLoader('helmers-1900-merlon-dormer') as MatchableType;
   const at60 = pand({builtYear: 1900, widthM: 5.79, eavesM: 16.29, strip: sky(18.0)});

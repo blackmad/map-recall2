@@ -33,7 +33,7 @@ import {
 } from './freeRide';
 import { isWorthACard } from './landmarkData';
 import { isBoat } from './modes';
-import { bridgeMarkerAnchor, freeRideWayTapAllowed, landAnchor, tapOnOpenWater, type IsWater } from './freeRideWater';
+import { bridgeMarkerAnchor, facadeNudge, freeRideWayTapAllowed, landAnchor, tapOnOpenWater, type IsWater } from './freeRideWater';
 import type { LandmarkHost } from './host';
 import type { Hud, Track } from './collaborators';
 import { DEFAULT_NOTICE_CONFIG, type NoticeHold } from './landmarkNotice';
@@ -586,12 +586,24 @@ export class GameFreeRideRuntime {
    *  rider, a landmark whose point lies in a canal on the nearest quay; a place with no land in reach gets no marker. */
   _freeRideOnLand(nearby: FreeRideNearby[]): FreeRideNearby[] {
     const isWater = this._freeRideIsWater();
-    if (!isWater || !this.player) return nearby;
+    if (!this.player) return nearby;
     const out: FreeRideNearby[] = [];
-    for (const place of nearby) {
+    const own = new Map<string, WorldPoint>();
+    for (const landmark of this.landmarks || []) {
+      if (Number.isFinite(landmark.ownX) && Number.isFinite(landmark.ownY)) own.set(String(landmark.id), { x: landmark.ownX!, y: landmark.ownY! });
+    }
+    const map = this.vectorMap;
+    const inFootprint = map?.isFootprint && this.osmLoader ? (x: number, y: number) => map.isFootprint!(x, y, this.osmLoader) : null;
+    for (const placed of nearby) {
+      // A landmark's pin stands at its own point (S5, #333); the catalogue keeps the snapped point for routing and tokens.
+      const ownPoint = placed.kind === 'landmark' ? own.get(String(placed.key)) : undefined;
+      const place = ownPoint ? { ...placed, x: ownPoint.x, y: ownPoint.y } : placed;
       const bridge = place.kind === 'bridge' ? this.bridges?.find(b => `bridge:${b.id}` === place.key) : null;
       const at = bridge ? bridgeMarkerAnchor(bridge.lines, place, this.player, isWater) : landAnchor(place, isWater);
-      if (at) out.push(at.x === place.x && at.y === place.y ? place : { ...place, x: at.x, y: at.y });
+      if (!at) continue;
+      // A landmark pin that stands inside a footprint moves to open ground within 15 m (S5, #333).
+      const final = ownPoint && inFootprint ? facadeNudge(at, isWater, inFootprint).point : at;
+      out.push(final.x === placed.x && final.y === placed.y ? placed : { ...place, x: final.x, y: final.y });
     }
     return out;
   }

@@ -1,0 +1,30 @@
+{
+ "about": "Reader A's per-front readings of the extent-multi pands (round 3, #351), left to right along the pand's street wall, from panel A of each sheet. Cells as in hand-set-v1.reader-a.tsv: value:confidence, '-' = unknown; share = the front's width over the wall's (metre grid). 174173 is left without fronts: the tree hides the split (it may be one double-house front: 5 axes about a central door).",
+ "fronts": {
+  "0363100012168085": [
+   {"share": 0.33, "axes": "3:high", "storeys": "3:med", "flags": "souterrain,atticInCrown", "gable": "neck:med", "finish": "painted-brick:med", "wall": "grey:high", "pui": "residential:high", "note": "plain raised top, one crown window"},
+   {"share": 0.34, "axes": "3:high", "storeys": "3:med", "flags": "souterrain,atticInCrown", "gable": "neck:med", "finish": "painted-brick:med", "wall": "grey:high", "pui": "residential:high"},
+   {"share": 0.33, "axes": "3:high", "storeys": "3:med", "flags": "souterrain,atticInCrown", "gable": "neck:med", "finish": "painted-brick:med", "wall": "grey:high", "pui": "residential:high"}
+  ],
+  "0363100012174923": [
+   {"share": 0.53, "axes": "3:high", "storeys": "3:med", "flags": "atticInCrown", "gable": "bell:med", "finish": "brick:high", "wall": "brown:med", "pui": "residential:med", "note": "curved flanks with scrolls, arched cap"},
+   {"share": 0.47, "axes": "-:low", "storeys": "3:med", "flags": "-", "gable": "-:low", "finish": "painted-brick:med", "wall": "dark:high", "pui": "residential:med", "note": "a trunk hides the middle axis and the crown"}
+  ],
+  "0363100012174696": [
+   {"share": 0.52, "axes": "3:high", "storeys": "4:high", "flags": "-", "gable": "cornice:high", "finish": "brick:high", "wall": "red-brown:high", "pui": "residential:med"},
+   {"share": 0.48, "axes": "3:high", "storeys": "3:high", "flags": "atticInCrown", "gable": "cornice:med", "finish": "brick:high", "wall": "red-brown:high", "pui": "residential:med", "note": "roof terrace and dormer over the cornice"}
+  ],
+  "0363100012169899": [
+   {"share": 0.31, "axes": "3:high", "storeys": "3:high", "flags": "souterrain", "gable": "cornice:high", "finish": "brick:high", "wall": "brown:med", "pui": "residential:high"},
+   {"share": 0.69, "axes": "3:high", "storeys": "3:high", "flags": "souterrain", "gable": "cornice:high", "finish": "brick:high", "wall": "brown:med", "pui": "residential:high", "note": "wide front, the narrow window at 11 m is its third axis"}
+  ],
+  "0363100012116526": [
+   {"share": 0.57, "axes": "3:high", "storeys": "4:high", "flags": "atticInCrown", "gable": "cornice:high", "finish": "brick:high", "wall": "red-brown:high", "pui": "shop:high", "note": "wreaths are ornaments, not openings; dormer over"},
+   {"share": 0.43, "axes": "3:high", "storeys": "4:high", "flags": "atticInCrown", "gable": "cornice:high", "finish": "brick:high", "wall": "red-brown:high", "pui": "residential:high"}
+  ],
+  "0363100012174080": [
+   {"share": 0.55, "axes": "1:med", "storeys": "3:med", "flags": "-", "gable": "flat:high", "finish": "brick:high", "wall": "grey:med", "pui": "residential:high", "note": "brick tower and grey-striped block; one axis on the block"},
+   {"share": 0.45, "axes": "2:high", "storeys": "3:high", "flags": "-", "gable": "flat:high", "finish": "brick:high", "wall": "grey:med", "pui": "residential:high"}
+  ]
+ }
+}

@@ -1,0 +1,1073 @@
+{
+ "face": "nieuwendammerdijk-135-163",
+ "street": "Nieuwendammerdijk",
+ "library": "nieuwendammerdijk",
+ "stripDate": "2022-05-09",
+ "seconds": 4.92,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "nieuwendammerdijk-135-163-r1",
+   "pands": [
+    "0363100012163617",
+    "0363100012167049",
+    "0363100012167155",
+    "0363100012156422",
+    "0363100012166543"
+   ],
+   "passed": true,
+   "triangles": 2643
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012158100",
+   "address": "Nieuwendammerdijk 135",
+   "builtYear": 1935,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#24221c",
+    "wallRaw": "#585f3a",
+    "skyline": {
+     "eavesM": 5.5,
+     "eavesRow": 258,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.7,
+      "riseM": 1.15,
+      "topWidthM": 0.38,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 3.6,
+       "centre": 0.58,
+       "light": 0.24
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.49
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2022-05-09: a 1930s black-painted ornamental front, not the brick cottage",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156100",
+   "address": "Nieuwendammerdijk 137",
+   "builtYear": 1935,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#e8e1cf",
+    "wallRaw": "#5c6557",
+    "skyline": {
+     "eavesM": 5.85,
+     "eavesRow": 244,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.85,
+      "riseM": 1.7,
+      "topWidthM": 0.85,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 2.98,
+     "bayCentre": 0.63,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 4.25,
+       "centre": 0.49,
+       "light": 0.46
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.22
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2022-05-09: a cream-painted front with a different dormer, not the brick cottage",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166857",
+   "address": "Nieuwendammerdijk 139",
+   "builtYear": 1935,
+   "widthM": 4.71,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8f9398",
+    "wallRaw": "#6c6e65",
+    "skyline": {
+     "eavesM": 5.9,
+     "eavesRow": 242,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.1,
+      "riseM": 1.67,
+      "topWidthM": 1.1,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.68,
+       "centre": 0.21,
+       "light": 0.27
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.55,
+       "light": 0.42
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.12,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2022-05-09: a black-painted front with white bands and balustrade, not the brick cottage",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163241",
+   "address": "Nieuwendammerdijk 141",
+   "builtYear": 1935,
+   "widthM": 4.73,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#666c69",
+    "skyline": {
+     "eavesM": 7.55,
+     "eavesRow": 176,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.52,
+      "riseM": 1.6,
+      "topWidthM": 0.33,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.14,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2022-05-09: a black-painted front with white bands and balustrade, not the brick cottage",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163617",
+   "address": "Nieuwendammerdijk 143",
+   "builtYear": 1935,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#594c42",
+    "wallRaw": "#6d6853",
+    "skyline": {
+     "eavesM": 4.47,
+     "eavesRow": 299,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.75,
+      "riseM": 2.03,
+      "topWidthM": 0.03,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.48,
+     "bayCentre": 0.46,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.13,
+       "light": 0.04
+      },
+      {
+       "widthM": 1.63,
+       "centre": 0.46,
+       "light": 0.46
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.91,
+       "light": 0.28
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "placed",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "nieuwendam-oost-villa-5axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "nieuwendam-1935-cottage-dormer",
+    "mirror": true
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Nieuwendammerdijk 143: door and dormer on the right in the 2022-05-09 photo (Opus verdict))"
+   ],
+   "likeness": {
+    "pandId": "0363100012163617",
+    "ncc": 0.379,
+    "nccRaw": 0.379,
+    "shiftM": [
+     0.1,
+     0.4
+    ],
+    "usable": 0.62,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "glazing not judged (frames cannot be told from bands: 10 % of the front is a band run along openings (glazing 0.373..0.477))",
+     "columns none vs photo 3",
+     "mask IoU 0.255 < 0.45"
+    ],
+    "wall": {
+     "photo": "#ac957c",
+     "model": "#966b55",
+     "dL": -0.12
+    },
+    "glazing": {
+     "photo": 0.36,
+     "model": 0.26
+    },
+    "columns": {
+     "photo": 3,
+     "model": null
+    },
+    "iou": 0.255
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167049",
+   "address": "Nieuwendammerdijk 145",
+   "builtYear": 1984,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a38c74",
+    "wallRaw": "#6f6d63",
+    "skyline": {
+     "eavesM": 4.4,
+     "eavesRow": 302,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 0.7,
+      "topWidthM": 0.5,
+      "centre": 0.06
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.18,
+       "centre": 0.4,
+       "light": 0.19
+      },
+      {
+       "widthM": 1.3,
+       "centre": 0.8,
+       "light": 0.23
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.03
+   },
+   "status": "placed",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "nieuwendam-oost-villa-5axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "nieuwendam-1935-cottage-dormer"
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: as drawn (Nieuwendammerdijk 145: door and dormer on the left in the 2022-05-09 photo (Opus verdict))"
+   ],
+   "likeness": {
+    "pandId": "0363100012167049",
+    "ncc": 0.403,
+    "nccRaw": 0.403,
+    "shiftM": [
+     -0.35,
+     0.05
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.46",
+     "glazing  mean 0.25 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#966b55",
+     "dL": 0.461
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.25
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.258
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012167155",
+   "address": "Nieuwendammerdijk 147",
+   "builtYear": 1984,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#544639",
+    "wallRaw": "#746e5f",
+    "skyline": {
+     "eavesM": 4.35,
+     "eavesRow": 304,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 0.75,
+      "topWidthM": 0.5,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.18,
+       "centre": 0.14,
+       "light": 0.13
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.52,
+       "light": 0.13
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.89,
+       "light": 0
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.08
+   },
+   "status": "placed",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "nieuwendam-oost-villa-5axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "nieuwendam-1935-cottage-dormer",
+    "mirror": true
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Nieuwendammerdijk 147: door and dormer on the right in the 2022-05-09 photo (Opus verdict))"
+   ],
+   "likeness": {
+    "pandId": "0363100012167155",
+    "ncc": 0.459,
+    "nccRaw": 0.459,
+    "shiftM": [
+     -0.05,
+     0
+    ],
+    "usable": 0.94,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.26 vs photo 0.81",
+     "wall family unresolved (#605e5a is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#605e5a",
+     "model": "#966b55",
+     "dL": 0.096
+    },
+    "glazing": {
+     "photo": 0.81,
+     "model": 0.26
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.314
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156422",
+   "address": "Nieuwendammerdijk 149",
+   "builtYear": 1984,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a99074",
+    "wallRaw": "#756e62",
+    "skyline": {
+     "eavesM": 4.33,
+     "eavesRow": 305,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.13,
+      "riseM": 0.75,
+      "topWidthM": 1.13,
+      "centre": 0.13
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 3.05,
+       "centre": 0.59,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.06
+   },
+   "status": "placed",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "nieuwendam-oost-villa-5axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "nieuwendam-1935-cottage-dormer"
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: as drawn (Nieuwendammerdijk 149: door and dormer on the left in the 2022-05-09 photo (Opus verdict))"
+   ],
+   "likeness": {
+    "pandId": "0363100012156422",
+    "ncc": 0.388,
+    "nccRaw": 0.388,
+    "shiftM": [
+     -0.4,
+     0
+    ],
+    "usable": 0.95,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.46",
+     "glazing  mean 0.25 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#966b55",
+     "dL": 0.461
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.25
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.308
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012166543",
+   "address": "Nieuwendammerdijk 151",
+   "builtYear": 1984,
+   "widthM": 4.73,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#ba9f81",
+    "wallRaw": "#616357",
+    "skyline": {
+     "eavesM": 4.33,
+     "eavesRow": 305,
+     "confidence": 0.99,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.13,
+       "light": 0.08
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.51,
+       "light": 0.08
+      },
+      {
+       "widthM": 0.95,
+       "centre": 0.89,
+       "light": 0.06
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.12
+   },
+   "status": "placed",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "score": 1,
+   "runnerUp": {
+    "typeId": "nieuwendam-oost-villa-5axis",
+    "score": 0
+   },
+   "placement": {
+    "type": "nieuwendam-1935-cottage-dormer",
+    "mirror": true
+   },
+   "notes": [
+    "crown half-dormer (type default)",
+    "door reviewer pin: mirrored (Nieuwendammerdijk 151: door and dormer on the right in the 2022-05-09 photo (Opus verdict))"
+   ],
+   "likeness": {
+    "pandId": "0363100012166543",
+    "ncc": 0.504,
+    "nccRaw": 0.504,
+    "shiftM": [
+     -0.15,
+     -0.2
+    ],
+    "usable": 1,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.46",
+     "glazing  mean 0.26 vs photo 1.00",
+     "wall family unresolved (#000000 is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#000000",
+     "model": "#966b55",
+     "dL": 0.461
+    },
+    "glazing": {
+     "photo": 1,
+     "model": 0.26
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.315
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162650",
+   "address": "Nieuwendammerdijk 153",
+   "builtYear": 1905,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8c816b",
+    "wallRaw": "#6d6b5c",
+    "skyline": {
+     "eavesM": 4.28,
+     "eavesRow": 307,
+     "confidence": 0.99,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.1,
+       "centre": 0.35,
+       "light": 0.16
+      },
+      {
+       "widthM": 0.97,
+       "centre": 0.74,
+       "light": 0.09
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Opus strip verdict 2026-11-10: a white balustrade in front of the dormer and white pilaster and lintel stonework at roof level; the type cannot express that front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157616",
+   "address": "Nieuwendammerdijk 155",
+   "builtYear": 1984,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#5f594e",
+    "skyline": {
+     "eavesM": 4.25,
+     "eavesRow": 308,
+     "confidence": 0.99,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 0.75,
+      "topWidthM": 1.18,
+      "centre": 0.86
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.97,
+       "centre": 0.11,
+       "light": 0.13
+      },
+      {
+       "widthM": 1.38,
+       "centre": 0.43,
+       "light": 0.17
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.9,
+       "light": 0.12
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.05,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2022-05-09: a taller front with a brick parapet and a different window layout",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163237",
+   "address": "Nieuwendammerdijk 157",
+   "builtYear": 1984,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a5c5d",
+    "wallRaw": "#787769",
+    "skyline": {
+     "eavesM": 4.28,
+     "eavesRow": 307,
+     "confidence": 0.99,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.9,
+       "centre": 0.22,
+       "light": 0.41
+      },
+      {
+       "widthM": 2.17,
+       "centre": 0.74,
+       "light": 0.26
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.16,
+    "foliageShare": 0.2
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2022-05-09: a painted front with white bands and a balustrade, not the brick cottage",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012165331",
+   "address": "Nieuwendammerdijk 159",
+   "builtYear": 1960,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#937c6f",
+    "wallRaw": "#65654b",
+    "skyline": {
+     "eavesM": 4.35,
+     "eavesRow": 304,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.3,
+      "riseM": 0.9,
+      "topWidthM": 1.23,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.38,
+     "bayCentre": 0.04,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 1.9,
+       "centre": 0.35,
+       "light": 0.15
+      },
+      {
+       "widthM": 1.63,
+       "centre": 0.81,
+       "light": 0.16
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.45
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2022-05-09: a black-brick front with a white band and a different dormer",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162714",
+   "address": "Nieuwendammerdijk 161",
+   "builtYear": 1960,
+   "widthM": 4.73,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#817575",
+    "wallRaw": "#5b605a",
+    "skyline": {
+     "eavesM": 4.4,
+     "eavesRow": 302,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.5,
+      "riseM": 0.85,
+      "topWidthM": 1.38,
+      "centre": 0.17
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.65,
+       "centre": 0.08,
+       "light": 0.03
+      },
+      {
+       "widthM": 1.35,
+       "centre": 0.38,
+       "light": 0.32
+      },
+      {
+       "widthM": 1.25,
+       "centre": 0.73,
+       "light": 0.24
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.08,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2022-05-09: a black-brick front with white bands, not the brick cottage",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163693",
+   "address": "Nieuwendammerdijk 163",
+   "builtYear": 1960,
+   "widthM": 4.74,
+   "eavesM": 3.25,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#996f70",
+    "wallRaw": "#696756",
+    "skyline": {
+     "eavesM": 5.4,
+     "eavesRow": 262,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 1.07,
+     "bayCentre": 0.66,
+     "balconies": false,
+     "why": "one-storey front (eaves <= 6 m): no balcony",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.1,
+       "light": 0.86
+      },
+      {
+       "widthM": 2.85,
+       "centre": 0.58,
+       "light": 0.35
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.29,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: strip 2022-05-09: a white painted villa front with a bay and a different roof",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

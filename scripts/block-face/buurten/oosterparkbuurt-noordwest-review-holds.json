@@ -1,0 +1,41 @@
+{
+ "note": "Pands held after reviewing the auto-place strip sheets at full size (auto-place.ts reads this file).",
+ "reviewed": "2026-11-10",
+ "holds": [
+  {
+   "pandId": "0363100012158632",
+   "address": "Ruyschstraat 98",
+   "reason": "a pointed brick gable in yellow brick with red courses over a different front; the type draws a box dormer in dark brick"
+  },
+  {
+   "pandId": "0363100012158203",
+   "address": "Ruyschstraat 92",
+   "reason": "a bell-shaped brick gable with a round attic light where the type draws a box dormer"
+  },
+  {
+   "pandId": "0363100012165861",
+   "address": "Ruyschstraat 94",
+   "reason": "white ornamental brick bands (speklagen / diaper) over every window row, which the type does not draw"
+  },
+  {
+   "pandId": "0363100012159606",
+   "address": "Ruyschstraat 323",
+   "reason": "a bell-shaped brick gable with an arched attic light where the type draws a box dormer"
+  },
+  {
+   "pandId": "0363100012157939",
+   "address": "Ruyschstraat 363G",
+   "reason": "fails the footprint-vs-3DBAG gate and has a distinct ground floor; held rather than loosening the gate"
+  },
+  {
+   "pandId": "0363100012163888",
+   "address": "Ruyschstraat 371",
+   "reason": "a curved brick gable with a round-headed attic light where the type draws a box dormer"
+  },
+  {
+   "pandId": "0363100012162898",
+   "address": "Ruyschstraat 355",
+   "reason": "edge NCC 0.139 under the 0.15 gate on the 2020 strip (dormer and balcony width read differently from the type)"
+  }
+ ]
+}

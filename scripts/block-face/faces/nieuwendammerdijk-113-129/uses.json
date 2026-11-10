@@ -1,0 +1,153 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012153080",
+   "addresses": [
+    "Nieuwendammerdijk 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 113",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000751675"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155593",
+   "addresses": [
+    "Nieuwendammerdijk 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 115",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000751677"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153047",
+   "addresses": [
+    "Nieuwendammerdijk 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 117",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000751679"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165911",
+   "addresses": [
+    "Nieuwendammerdijk 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 119",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000751681"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164547",
+   "addresses": [
+    "Nieuwendammerdijk 121"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 121",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000751683"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163369",
+   "addresses": [
+    "Nieuwendammerdijk 123"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 123",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000751685"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160604",
+   "addresses": [
+    "Nieuwendammerdijk 125"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 125",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010000751687"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161555",
+   "addresses": [
+    "Nieuwendammerdijk 127"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 127",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000751689"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152850",
+   "addresses": [
+    "Nieuwendammerdijk 129"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 129",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000751690"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

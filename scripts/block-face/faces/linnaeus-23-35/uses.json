@@ -1,0 +1,282 @@
+{
+ "street": "Linnaeusstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:29:59.506Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012154124",
+   "addresses": [
+    "Linnaeusstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000726262"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159201",
+   "addresses": [
+    "Linnaeusstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 25-H",
+     "use": "overige gebruiksfunctie,woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000994482"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012152605",
+   "addresses": [
+    "Linnaeusstraat 27B",
+    "Linnaeusstraat 27C",
+    "Linnaeusstraat 27D",
+    "Linnaeusstraat 27E",
+    "Linnaeusstraat 27F",
+    "Linnaeusstraat 27A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 27B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001170561"
+    },
+    {
+     "address": "Linnaeusstraat 27C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010001170563"
+    },
+    {
+     "address": "Linnaeusstraat 27D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010001170564"
+    },
+    {
+     "address": "Linnaeusstraat 27E",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001170565"
+    },
+    {
+     "address": "Linnaeusstraat 27F",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001170566"
+    },
+    {
+     "address": "Linnaeusstraat 27A",
+     "use": "gezondheidszorgfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001170559"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12754527634,
+     "lngLat": [
+      4.9242587,
+      52.3623748
+     ],
+     "tags": {
+      "amenity": "doctors",
+      "healthcare": "doctor",
+      "healthcare:speciality": "general",
+      "name": "Huisartsenpraktijk Linnaeus"
+     },
+     "fetchedAt": "2026-11-10T07:29:59.506Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012112463",
+   "addresses": [
+    "Linnaeusstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 29-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000994573"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 94829657,
+     "lngLat": [
+      4.9242884,
+      52.3623182
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "29",
+      "addr:postcode": "1093EE",
+      "addr:street": "Linnaeusstraat",
+      "amenity": "pub",
+      "food": "yes",
+      "name": "De Biertuin",
+      "note": "Horecagroep 3WO",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 665 0956",
+      "website": "https://www.debiertuin.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T07:29:59.506Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012109340",
+   "addresses": [
+    "Linnaeusstraat 31A",
+    "Linnaeusstraat 31C",
+    "Linnaeusstraat 31D",
+    "Linnaeusstraat 31B",
+    "Linnaeusstraat 33A",
+    "Linnaeusstraat 33B",
+    "Linnaeusstraat 33C",
+    "Linnaeusstraat 33D",
+    "Linnaeusstraat 35A",
+    "Linnaeusstraat 35B",
+    "Linnaeusstraat 35C",
+    "Linnaeusstraat 35D",
+    "Linnaeusstraat 35E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Linnaeusstraat 35A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000726302"
+    },
+    {
+     "address": "Linnaeusstraat 35B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000726303"
+    },
+    {
+     "address": "Linnaeusstraat 35C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000726304"
+    },
+    {
+     "address": "Linnaeusstraat 31A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000726283"
+    },
+    {
+     "address": "Linnaeusstraat 31C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000726285"
+    },
+    {
+     "address": "Linnaeusstraat 31D",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000726286"
+    },
+    {
+     "address": "Linnaeusstraat 33A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000726293"
+    },
+    {
+     "address": "Linnaeusstraat 33B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000726294"
+    },
+    {
+     "address": "Linnaeusstraat 33C",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000726295"
+    },
+    {
+     "address": "Eerste Van Swindenstraat 1",
+     "use": "winkelfunctie",
+     "areaM2": 164,
+     "bagId": "0363010001001503"
+    },
+    {
+     "address": "Linnaeusstraat 33D",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010001040052"
+    },
+    {
+     "address": "Linnaeusstraat 35D",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000726305"
+    },
+    {
+     "address": "Linnaeusstraat 35E",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000726306"
+    },
+    {
+     "address": "Linnaeusstraat 31B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000726284"
+    }
+   ],
+   "units": 14,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2826835539,
+     "lngLat": [
+      4.9243928,
+      52.3621986
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1093ES",
+      "addr:street": "Eerste Van Swindenstraat",
+      "name": "Baldev",
+      "opening_hours": "Mo 12:00-17:30; Tu-Sa 10:00-17:30; Su off",
+      "shop": "jewelry",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://baldev.nl/"
+     },
+     "fetchedAt": "2026-11-10T07:29:59.506Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

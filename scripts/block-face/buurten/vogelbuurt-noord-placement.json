@@ -1,12 +1,12 @@
 {
  "buurt": "vogelbuurt-noord",
  "library": "vogelbuurt",
- "generatedAt": "2026-11-10T03:58:42.216Z",
- "seconds": 3.61,
+ "generatedAt": "2026-11-10T07:08:52.131Z",
+ "seconds": 6.43,
  "totals": {
   "faces": 55,
   "pands": 252,
-  "placed": 41
+  "placed": 44
  },
  "faces": [
   {
@@ -116,7 +116,7 @@
      "triangles": 1317
     }
    ],
-   "seconds": 8.03,
+   "seconds": 9.23,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 2
    },
@@ -165,7 +165,7 @@
      "triangles": 1938
     }
    ],
-   "seconds": 4.36,
+   "seconds": 5.84,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 3
    },
@@ -222,7 +222,7 @@
      "triangles": 1273
     }
    ],
-   "seconds": 4.58,
+   "seconds": 9.03,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 4
    },
@@ -394,7 +394,7 @@
      "triangles": 2012
     }
    ],
-   "seconds": 3.74,
+   "seconds": 6.07,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 3
    },
@@ -424,7 +424,7 @@
      "triangles": 1321
     }
    ],
-   "seconds": 4.09,
+   "seconds": 4.29,
    "byType": {
     "vogel-1921-two-storey-dormer-row": 2
    },
@@ -495,20 +495,11 @@
    "face": "vogel-1-15",
    "street": "Lange Vogelstraat",
    "pands": 7,
-   "placed": 5,
-   "held": 2,
+   "placed": 3,
+   "held": 4,
    "runs": [
     {
      "face": "vogel-1-15-r1",
-     "pands": [
-      "0363100012141706",
-      "0363100012144274"
-     ],
-     "passed": true,
-     "triangles": 985
-    },
-    {
-     "face": "vogel-1-15-r2",
      "pands": [
       "0363100012114049",
       "0363100012117598",
@@ -518,15 +509,15 @@
      "triangles": 1490
     }
    ],
-   "seconds": 4.73,
+   "seconds": 8.92,
    "byType": {
-    "vogel-1918-timber-band-cottage": 5
+    "vogel-1918-timber-band-cottage": 3
    },
    "installed": 0,
    "holds": {
     "evidence": 1,
-    "match": 1,
-    "likeness": 0,
+    "match": 0,
+    "likeness": 3,
     "run": 0,
     "review": 0
    }
@@ -700,7 +691,7 @@
    "placed": 0,
    "held": 7,
    "runs": [],
-   "seconds": 0.34,
+   "seconds": 0.35,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -715,16 +706,29 @@
    "face": "vogel-2-16-122155",
    "street": "Lange Vogelstraat",
    "pands": 7,
-   "placed": 0,
-   "held": 7,
-   "runs": [],
-   "seconds": 3.53,
-   "byType": {},
+   "placed": 3,
+   "held": 4,
+   "runs": [
+    {
+     "face": "vogel-2-16-122155-r1",
+     "pands": [
+      "0363100012065836",
+      "0363100012091400",
+      "0363100012138008"
+     ],
+     "passed": true,
+     "triangles": 1477
+    }
+   ],
+   "seconds": 6.36,
+   "byType": {
+    "vogel-1918-timber-band-cottage": 3
+   },
    "installed": 0,
    "holds": {
-    "evidence": 3,
-    "match": 1,
-    "likeness": 3,
+    "evidence": 4,
+    "match": 0,
+    "likeness": 0,
     "run": 0,
     "review": 0
    }
@@ -736,7 +740,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.15,
+   "seconds": 0.21,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -800,7 +804,7 @@
      "triangles": 608
     }
    ],
-   "seconds": 2.3,
+   "seconds": 4.25,
    "byType": {
     "vogel-1918-cottage-3axis": 1,
     "vogel-1918-cottage-2axis": 1
@@ -831,7 +835,7 @@
      "triangles": 629
     }
    ],
-   "seconds": 2.29,
+   "seconds": 3.47,
    "byType": {
     "vogel-1918-cottage-2axis": 1,
     "vogel-1918-cottage-3axis": 1
@@ -942,7 +946,7 @@
    "placed": 0,
    "held": 5,
    "runs": [],
-   "seconds": 0.33,
+   "seconds": 0.32,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1029,17 +1033,29 @@
    "face": "vogelplantsoen-8-12",
    "street": "Vogelplantsoen",
    "pands": 3,
-   "placed": 0,
-   "held": 3,
-   "runs": [],
-   "seconds": 0.18,
-   "byType": {},
+   "placed": 2,
+   "held": 1,
+   "runs": [
+    {
+     "face": "vogelplantsoen-8-12-r1",
+     "pands": [
+      "0363100012079772",
+      "0363100012087797"
+     ],
+     "passed": true,
+     "triangles": 1019
+    }
+   ],
+   "seconds": 4.11,
+   "byType": {
+    "vogel-1918-timber-band-cottage": 2
+   },
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 1,
     "likeness": 0,
-    "run": 2,
+    "run": 0,
     "review": 0
    }
   },
@@ -1068,7 +1084,7 @@
    "placed": 0,
    "held": 4,
    "runs": [],
-   "seconds": 0.16,
+   "seconds": 0.36,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1096,7 +1112,7 @@
      "triangles": 1006
     }
    ],
-   "seconds": 2.95,
+   "seconds": 5.92,
    "byType": {
     "vogel-1918-timber-band-cottage": 2
    },
@@ -1119,22 +1135,22 @@
     {
      "face": "zamenhof-6-12-r1",
      "pands": [
-      "0363100012085003",
-      "0363100012110286"
+      "0363100012122427",
+      "0363100012085003"
      ],
      "passed": true,
-     "triangles": 1044
+     "triangles": 1016
     }
    ],
-   "seconds": 3.02,
+   "seconds": 4.92,
    "byType": {
     "vogel-1918-timber-band-cottage": 2
    },
    "installed": 0,
    "holds": {
     "evidence": 0,
-    "match": 1,
-    "likeness": 0,
+    "match": 0,
+    "likeness": 1,
     "run": 0,
     "review": 1
    }
@@ -1164,7 +1180,7 @@
    "placed": 0,
    "held": 3,
    "runs": [],
-   "seconds": 0.13,
+   "seconds": 0.44,
    "byType": {},
    "installed": 0,
    "holds": {
@@ -1193,7 +1209,7 @@
      "triangles": 1476
     }
    ],
-   "seconds": 3.18,
+   "seconds": 6.42,
    "byType": {
     "vogel-1918-timber-band-cottage": 3
    },

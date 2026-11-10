@@ -1,0 +1,31 @@
+{
+ "family": "white2",
+ "set": "A",
+ "note": "A rectified street-panorama crop of one Amsterdam house front; the house in question fills the image.",
+ "questions": {
+  "bands": {
+   "type": "noul",
+   "instructions": "Look only at the brick or painted wall ABOVE the ground floor of the house front in `facade`. Do light-coloured stripes (white, cream or pale stone) run horizontally across that wall for most of its width, between rows of windows, as part of the wall (speklagen or string courses)? Light window lintels, light window frames, a light ground floor and a light cornice do NOT count.",
+   "criteria": {
+    "true": "A continuous light stripe crosses the upper wall between window rows.",
+    "false": "No continuous stripe crosses the upper wall; only separate lintels, frames, a light ground floor or a cornice."
+   }
+  },
+  "surrounds": {
+   "type": "noul",
+   "instructions": "Look at the upper-storey windows of the house front in `facade`. Is each window set in a broad light-coloured stone or painted frame (at least as wide as the window's own frame again) that stands out from a darker wall? Thin white window frames or sashes alone do NOT count.",
+   "criteria": {
+    "true": "A broad light stone or painted surround frames each window.",
+    "false": "The windows sit directly in the brick; any white is only the thin window frame."
+   }
+  },
+  "balcony": {
+   "type": "noul",
+   "instructions": "Does the house front in `facade` have a balcony (a platform projecting out of the wall in front of a door or window, with a railing)? Window railings flush with the wall, stoop railings and ground-floor steps do NOT count.",
+   "criteria": {
+    "true": "A projecting balcony with a railing.",
+    "false": "No projecting balcony."
+   }
+  }
+ }
+}

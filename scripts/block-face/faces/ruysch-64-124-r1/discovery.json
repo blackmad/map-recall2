@@ -1,0 +1,1311 @@
+{
+ "street": "Ruyschstraat",
+ "seed": "0363100012098315",
+ "members": [
+  "0363100012159820",
+  "0363100012150384",
+  "0363100012165864"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of ruysch-64-124: 158203 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of ruysch-64-124: 162209 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063882",
+   "reason": "frontage 133.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012064740",
+   "reason": "frontage 74.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012065804",
+   "reason": "frontage 71.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012066244",
+   "reason": "frontage 107.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012066899",
+   "reason": "frontage 102.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012067200",
+   "reason": "frontage 43.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012074118",
+   "reason": "frontage 139.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012076514",
+   "reason": "frontage 38.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012077895",
+   "reason": "frontage 41.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012078670",
+   "reason": "frontage 102.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012078936",
+   "reason": "frontage 38.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012079691",
+   "reason": "frontage 68.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012085377",
+   "reason": "frontage 68.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012092761",
+   "reason": "frontage 133.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012092786",
+   "reason": "frontage 68.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012062369",
+   "reason": "frontage 201.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012063988",
+   "reason": "frontage 200.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012064394",
+   "reason": "frontage 228.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012064799",
+   "reason": "frontage 68.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012068680",
+   "reason": "frontage 131.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012071678",
+   "reason": "sightline to Ruyschstraat crosses 0363100012150384"
+  },
+  {
+   "pandId": "0363100012071913",
+   "reason": "frontage 184.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012075399",
+   "reason": "frontage 37.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012076300",
+   "reason": "frontage 184.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012077177",
+   "reason": "frontage 180.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012077856",
+   "reason": "frontage 228.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012077936",
+   "reason": "frontage 139.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012079614",
+   "reason": "frontage 88.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012083528",
+   "reason": "frontage 92.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012084114",
+   "reason": "frontage 67.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012084336",
+   "reason": "frontage 46.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012084666",
+   "reason": "frontage 83.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012084737",
+   "reason": "frontage 35.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012085060",
+   "reason": "frontage 101.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012087795",
+   "reason": "frontage 227.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012088234",
+   "reason": "frontage 33.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012089493",
+   "reason": "frontage 228.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012089563",
+   "reason": "frontage 45.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012090102",
+   "reason": "frontage 42.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012092390",
+   "reason": "frontage 139.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012092532",
+   "reason": "frontage 66.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012092894",
+   "reason": "frontage 182.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012093163",
+   "reason": "frontage 42.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012093813",
+   "reason": "frontage 97.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012095110",
+   "reason": "frontage 70.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012095804",
+   "reason": "frontage 133.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012097902",
+   "reason": "frontage 129.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012098411",
+   "reason": "sightline to Ruyschstraat crosses 0363100012104007"
+  },
+  {
+   "pandId": "0363100012098885",
+   "reason": "frontage 104.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012099939",
+   "reason": "frontage 104.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012101665",
+   "reason": "frontage 79.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012106090",
+   "reason": "frontage 31.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012106512",
+   "reason": "frontage 71.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012110120",
+   "reason": "frontage 43.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012111285",
+   "reason": "frontage 39.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012111748",
+   "reason": "frontage 107.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012113169",
+   "reason": "frontage 71.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012114602",
+   "reason": "frontage 102.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012114742",
+   "reason": "frontage 42.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012115822",
+   "reason": "frontage 41.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012116088",
+   "reason": "frontage 73.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012118749",
+   "reason": "frontage 68.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012124335",
+   "reason": "frontage 131.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012125123",
+   "reason": "frontage 41.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012125226",
+   "reason": "frontage 43.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012125644",
+   "reason": "frontage 68.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012125707",
+   "reason": "frontage 146.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012125963",
+   "reason": "frontage 138.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012101460",
+   "reason": "frontage 71.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012104085",
+   "reason": "frontage 35.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012112665",
+   "reason": "frontage 95.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012114055",
+   "reason": "frontage 67.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012116525",
+   "reason": "frontage 139.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012116876",
+   "reason": "frontage 202.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012117430",
+   "reason": "frontage 139.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012118444",
+   "reason": "frontage 138.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012119020",
+   "reason": "frontage 44.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012119052",
+   "reason": "frontage 68.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012120159",
+   "reason": "frontage 72.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012120946",
+   "reason": "frontage 67.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012121766",
+   "reason": "sightline to Ruyschstraat crosses 0363100012145190"
+  },
+  {
+   "pandId": "0363100012122972",
+   "reason": "frontage 184.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012126283",
+   "reason": "frontage 102.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012128359",
+   "reason": "frontage 68.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012129127",
+   "reason": "frontage 149.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012130654",
+   "reason": "frontage 36.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012132728",
+   "reason": "frontage 133.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012133227",
+   "reason": "frontage 36.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012137737",
+   "reason": "frontage 37.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012140373",
+   "reason": "frontage 104.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012143521",
+   "reason": "frontage 65.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012150775",
+   "reason": "sightline to Ruyschstraat crosses 0363100012104007"
+  },
+  {
+   "pandId": "0363100012150951",
+   "reason": "frontage 102.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012152636",
+   "reason": "frontage 68.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012152781",
+   "reason": "frontage 102.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012153174",
+   "reason": "sightline to Ruyschstraat crosses 0363100012153175"
+  },
+  {
+   "pandId": "0363100012153446",
+   "reason": "frontage 30.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012153964",
+   "reason": "frontage 44.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012154249",
+   "reason": "frontage 68.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012155923",
+   "reason": "frontage 68.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012127457",
+   "reason": "frontage 199.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012129936",
+   "reason": "frontage 183.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012130223",
+   "reason": "frontage 68.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012131294",
+   "reason": "frontage 72.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012134460",
+   "reason": "sightline to Ruyschstraat crosses 0363100012093393"
+  },
+  {
+   "pandId": "0363100012134675",
+   "reason": "frontage 71.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012137641",
+   "reason": "frontage 68.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012143306",
+   "reason": "frontage 72.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012147141",
+   "reason": "frontage 184.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012147144",
+   "reason": "frontage 228.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012150546",
+   "reason": "frontage 64.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012151829",
+   "reason": "frontage 228.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012152594",
+   "reason": "frontage 72.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012153263",
+   "reason": "frontage 64.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012153789",
+   "reason": "frontage 67.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012155532",
+   "reason": "frontage 34.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012155620",
+   "reason": "frontage 72.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012155712",
+   "reason": "frontage 72.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012155770",
+   "reason": "frontage 35.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012156111",
+   "reason": "frontage 97.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012156180",
+   "reason": "frontage 94.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012156181",
+   "reason": "frontage 90.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012156394",
+   "reason": "frontage 102.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012156541",
+   "reason": "frontage 68.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157057",
+   "reason": "frontage 68.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157385",
+   "reason": "frontage 67.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157711",
+   "reason": "frontage 68.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012158420",
+   "reason": "frontage 69.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012158753",
+   "reason": "frontage 85.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012158773",
+   "reason": "frontage 101.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012158872",
+   "reason": "frontage 68.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159746",
+   "reason": "frontage 108.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012156366",
+   "reason": "frontage 180.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157016",
+   "reason": "frontage 228.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157041",
+   "reason": "frontage 188.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157190",
+   "reason": "frontage 72.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157243",
+   "reason": "frontage 64.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157386",
+   "reason": "frontage 72.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157449",
+   "reason": "frontage 228.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012157602",
+   "reason": "frontage 191.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012158038",
+   "reason": "frontage 67.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012158228",
+   "reason": "frontage 86.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012158524",
+   "reason": "frontage 229.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012158619",
+   "reason": "frontage 72.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159006",
+   "reason": "frontage 63.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159369",
+   "reason": "frontage 202.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159414",
+   "reason": "frontage 67.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159496",
+   "reason": "sightline to Ruyschstraat crosses 0363100012093393"
+  },
+  {
+   "pandId": "0363100012159544",
+   "reason": "frontage 202.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159599",
+   "reason": "frontage 82.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159767",
+   "reason": "frontage 72.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159983",
+   "reason": "frontage 69.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160005",
+   "reason": "frontage 68.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160061",
+   "reason": "frontage 40.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160270",
+   "reason": "frontage 37.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160785",
+   "reason": "frontage 99.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160786",
+   "reason": "frontage 104.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012161357",
+   "reason": "sightline to Ruyschstraat crosses 0363100012159381"
+  },
+  {
+   "pandId": "0363100012162213",
+   "reason": "frontage 68.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012162640",
+   "reason": "frontage 68.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012162662",
+   "reason": "frontage 103.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012162884",
+   "reason": "frontage 67.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012162896",
+   "reason": "frontage 68.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163568",
+   "reason": "frontage 67.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163732",
+   "reason": "frontage 40.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159773",
+   "reason": "frontage 228.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159876",
+   "reason": "frontage 201.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012159877",
+   "reason": "frontage 72.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160342",
+   "reason": "frontage 229.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160451",
+   "reason": "frontage 65.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160479",
+   "reason": "frontage 67.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160922",
+   "reason": "frontage 44.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012160967",
+   "reason": "frontage 72.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012162116",
+   "reason": "frontage 44.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012162497",
+   "reason": "frontage 64.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012162644",
+   "reason": "frontage 228.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012162660",
+   "reason": "frontage 72.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163225",
+   "reason": "frontage 202.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163290",
+   "reason": "frontage 202.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163324",
+   "reason": "frontage 201.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163336",
+   "reason": "frontage 66.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163439",
+   "reason": "frontage 72.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163492",
+   "reason": "frontage 67.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163655",
+   "reason": "frontage 178.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163816",
+   "reason": "frontage 229.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012164199",
+   "reason": "sightline to Ruyschstraat crosses 0363100012159381"
+  },
+  {
+   "pandId": "0363100012164233",
+   "reason": "frontage 69.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012164445",
+   "reason": "frontage 91.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012164488",
+   "reason": "frontage 104.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012165244",
+   "reason": "sightline to Ruyschstraat crosses 0363100012159381"
+  },
+  {
+   "pandId": "0363100012165506",
+   "reason": "frontage 102.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012165910",
+   "reason": "frontage 41.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012165918",
+   "reason": "frontage 68.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012166324",
+   "reason": "frontage 79.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012166325",
+   "reason": "frontage 69.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012166470",
+   "reason": "frontage 69.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012166518",
+   "reason": "frontage 68.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012186480",
+   "reason": "frontage 88.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012193257",
+   "reason": "frontage 84.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012163948",
+   "reason": "frontage 80.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012164033",
+   "reason": "frontage 64.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012164104",
+   "reason": "frontage 229.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012164527",
+   "reason": "frontage 229.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012164874",
+   "reason": "frontage 63.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012165320",
+   "reason": "frontage 201.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012165397",
+   "reason": "frontage 72.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012165667",
+   "reason": "frontage 44.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012165732",
+   "reason": "frontage 71.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012165810",
+   "reason": "frontage 34.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012166008",
+   "reason": "frontage 63.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012166289",
+   "reason": "frontage 72.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012166547",
+   "reason": "frontage 196.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012167291",
+   "reason": "frontage 72.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012185785",
+   "reason": "frontage 93.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012185786",
+   "reason": "frontage 93.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012185787",
+   "reason": "frontage 93.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012185788",
+   "reason": "frontage 93.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012193025",
+   "reason": "frontage 91.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194013",
+   "reason": "frontage 30.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194014",
+   "reason": "frontage 30.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194015",
+   "reason": "frontage 30.4 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194016",
+   "reason": "frontage 30.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194017",
+   "reason": "frontage 30.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194018",
+   "reason": "frontage 30.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194019",
+   "reason": "frontage 30.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194020",
+   "reason": "frontage 30.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194021",
+   "reason": "frontage 30.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194834",
+   "reason": "frontage 97.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012195325",
+   "reason": "frontage 95.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012195326",
+   "reason": "frontage 116.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012203310",
+   "reason": "frontage 67.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012204426",
+   "reason": "sightline to Ruyschstraat crosses 0363100012236748"
+  },
+  {
+   "pandId": "0363100012204875",
+   "reason": "frontage 97.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012206009",
+   "reason": "frontage 97.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012210108",
+   "reason": "sightline to Ruyschstraat crosses 0363100012098315"
+  },
+  {
+   "pandId": "0363100012210109",
+   "reason": "frontage 35.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012210110",
+   "reason": "sightline to Ruyschstraat crosses 0363100012098315"
+  },
+  {
+   "pandId": "0363100012215469",
+   "reason": "sightline to Ruyschstraat crosses 0363100012158358"
+  },
+  {
+   "pandId": "0363100012222580",
+   "reason": "frontage 106.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012228609",
+   "reason": "frontage 96.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012229460",
+   "reason": "frontage 91.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012233603",
+   "reason": "frontage 87.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012236530",
+   "reason": "frontage 30.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012236626",
+   "reason": "frontage 102.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012236727",
+   "reason": "sightline to Ruyschstraat crosses 0363100012082560"
+  },
+  {
+   "pandId": "0363100012237069",
+   "reason": "frontage 37.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012237348",
+   "reason": "frontage 98.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012240319",
+   "reason": "frontage 70.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194022",
+   "reason": "frontage 30.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194023",
+   "reason": "frontage 30.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194024",
+   "reason": "frontage 30.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012194025",
+   "reason": "frontage 30.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012198655",
+   "reason": "frontage 84.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012200484",
+   "reason": "frontage 185.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012204354",
+   "reason": "frontage 88.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012208334",
+   "reason": "frontage 86.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012215057",
+   "reason": "frontage 92.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012215085",
+   "reason": "frontage 90.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012215832",
+   "reason": "frontage 90.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012221775",
+   "reason": "frontage 91.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012232505",
+   "reason": "frontage 91.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012233431",
+   "reason": "frontage 40.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012233566",
+   "reason": "frontage 40.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012233658",
+   "reason": "frontage 39.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012235931",
+   "reason": "frontage 71.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012236263",
+   "reason": "frontage 31.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012236272",
+   "reason": "frontage 30.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012236273",
+   "reason": "frontage 30.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012236274",
+   "reason": "frontage 30.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012236722",
+   "reason": "frontage 102.7 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012236768",
+   "reason": "frontage 67.0 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012237010",
+   "reason": "frontage 101.8 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012237252",
+   "reason": "frontage 94.6 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012241375",
+   "reason": "frontage 133.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012241500",
+   "reason": "frontage 133.5 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012241772",
+   "reason": "frontage 148.9 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012247344",
+   "reason": "frontage 140.2 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012252826",
+   "reason": "sightline to Ruyschstraat crosses 0363100012082560"
+  },
+  {
+   "pandId": "0363100012246848",
+   "reason": "frontage 139.3 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012251301",
+   "reason": "frontage 72.1 m from Ruyschstraat"
+  },
+  {
+   "pandId": "0363100012063049",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012079694",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012082560",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083461",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012083299",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012101569",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104007",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012116519",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012127076",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012093393",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123253",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124921",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012136324",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153373",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155729",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152760",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153640",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155605",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156532",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158330",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158358",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159554",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157037",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158824",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162902",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163592",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159998",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012160016",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164361",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165366",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165410",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167265",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236804",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237304",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012159820",
+   "alongM": -74.15,
+   "widthM": 5.57,
+   "eavesM": 16.15,
+   "roofMaxM": 16.17,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012150384",
+   "alongM": -68.57,
+   "widthM": 5.6,
+   "eavesM": 16.28,
+   "roofMaxM": 16.28,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012165864",
+   "alongM": -62.97,
+   "widthM": 5.6,
+   "eavesM": 16.28,
+   "roofMaxM": 16.32,
+   "storeys3dbag": 5,
+   "builtYear": 1899,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "ruysch-64-124"
+}
