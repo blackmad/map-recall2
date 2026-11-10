@@ -28,16 +28,16 @@
 	float fadeLuma = dot( gl_FragColor.rgb, vec3( 0.2126, 0.7152, 0.0722 ) );
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, vec3( fadeLuma ), fogFactor * ${Ll(s0*t)} );
 	gl_FragColor.rgb = mix( gl_FragColor.rgb, fogColor, fogFactor * ${Ll(a0*t)} );
-#endif`,Y2=l0(1),El=`uniform vec3 fogColor;
+#endif`,X2=l0(1),El=`uniform vec3 fogColor;
 	varying float vFogDepth;
 	#ifdef FOG_EXP2
 		uniform float fogDensity;
 	#else
 		uniform float fogNear;
 		uniform float fogFar;
-	#endif`,q2=`#if defined( USE_FOG ) && ! defined( DEPTH_FADE_FOG_PARS )
+	#endif`,Z2=`#if defined( USE_FOG ) && ! defined( DEPTH_FADE_FOG_PARS )
 	${El}
-#endif`,X2=`
+#endif`,Q2=`
 #if defined( USE_FOG ) && ! defined( DEPTH_FADE_FOG_PARS )
 #define DEPTH_FADE_FOG_PARS
 	${El}

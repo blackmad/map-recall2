@@ -231,7 +231,7 @@ const exceptLandmarks = <T extends { properties: Record<string, unknown>; type: 
 export { decorateRoof, exceptLandmarks, decorateKitRoof, decorateFront, decorateShopfront, setShopfronts, KIT_HIDE_IDS, withMonumentGable };
 
 const KIT_KEY = '__kit';
-/** `?kitFade=1` under `?popFade` (lane P2 #325): the kit chunk's rebuilds cross-fade like any other chunk's. Default off (heap). */
+/** `?kitFade` under `?popFade` (lanes P2 #325, P3 #328): the kit chunk's rebuilds cross-fade like any other chunk's. Default on. */
 const KIT_FADE = kitFadeFlag();
 /** chunkRank: an uninstalled coarse shell builds before detail up to this much nearer (metres of ahead rank). */
 const COARSE_HOLE_BONUS_M = 400;
@@ -2086,7 +2086,7 @@ export class ThreeBuildings {
 
   /**
    * Whether chunks of `key` dissolve in and out now. The street-kit chunk (one mesh of every installed kit, rebuilt
-   * whole as kits come and go) cross-fades too with `?kitFade=1` (default off, heap) (engine/popFade.ts, lane P2 #325): its rebuilds were the
+   * whole as kits come and go) cross-fades too with `?kitFade` (default on since P3 #328) (engine/popFade.ts, lane P2 #325): its rebuilds were the
    * aerial pan's largest unfaded swap, 29 a minute beyond 1.2 km.
    */
   private fades(key: string): boolean { return CHUNK_FADE && (key !== KIT_KEY || KIT_FADE) && !this.basemapHeld; }
