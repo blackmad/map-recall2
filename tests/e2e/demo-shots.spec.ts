@@ -10,6 +10,31 @@ import { openRoute } from './helpers';
 type Spot = { name: string; centre: [number, number]; standDeg: number; standM: number; query?: string; faceDeg?: number; view?: 'chase' | 'cockpit'; camZoom?: number };
 
 const SPOTS: Spot[] = [
+  // Issue #341 close frames: each flagged wall from 11 m on its normal (top five, five seeded random, five longest verified landmark walls).
+  { name: 'close-top-186003-e15', centre: [4.891812, 52.3860703], standDeg: 274, standM: 11 },
+  { name: 'close-top-063603-e19', centre: [4.8491275, 52.3922765], standDeg: 179, standM: 11 },
+  { name: 'close-top-184743-e26', centre: [4.930919, 52.3677885], standDeg: 359, standM: 11 },
+  { name: 'close-top-129127-e17', centre: [4.9103075, 52.3555555], standDeg: 250, standM: 11 },
+  { name: 'close-top-184743-e36', centre: [4.9291305, 52.3677605], standDeg: 359, standM: 11 },
+  { name: 'close-rand-184743-e34', centre: [4.929536, 52.367712], standDeg: 357, standM: 11 },
+  { name: 'close-rand-151240-e1', centre: [4.860265, 52.3811255], standDeg: 223, standM: 11 },
+  { name: 'close-rand-184743-e29', centre: [4.930345, 52.3677245], standDeg: 359, standM: 11 },
+  { name: 'close-rand-104378-e5', centre: [4.9331395, 52.4013025], standDeg: 217, standM: 11 },
+  { name: 'close-rand-088589-e16', centre: [4.8436815, 52.3487845], standDeg: 89, standM: 11 },
+  { name: 'close-worst-244160-e13', centre: [4.8698895, 52.340565], standDeg: 357, standM: 11 },
+  { name: 'close-worst-244160-e0', centre: [4.8687265, 52.3400705], standDeg: 267, standM: 11 },
+  { name: 'close-worst-237838-e8', centre: [4.9009085, 52.384138], standDeg: 185, standM: 11 },
+  { name: 'close-worst-239853-e35', centre: [4.877706, 52.341109], standDeg: 191, standM: 11 },
+  { name: 'close-worst-237838-e2', centre: [4.900743, 52.384658], standDeg: 51, standM: 11 },
+  // Issue #341 audit: blank walls (top five of the ride-priority list) and stops-short examples, standing 26 m out on the wall's normal.
+  { name: 'audit-blank1-186003', centre: [4.891812, 52.3860703], standDeg: 274, standM: 26 },
+  { name: 'audit-blank2-063603', centre: [4.8491275, 52.3922765], standDeg: 179, standM: 26 },
+  { name: 'audit-blank3-184743', centre: [4.930919, 52.3677885], standDeg: 359, standM: 26 },
+  { name: 'audit-blank4-129127', centre: [4.9103075, 52.3555555], standDeg: 250, standM: 26 },
+  { name: 'audit-blank5-184743', centre: [4.9291305, 52.3677605], standDeg: 359, standM: 26 },
+  { name: 'audit-short1-088027', centre: [4.864121, 52.384944], standDeg: 179, standM: 26 },
+  { name: 'audit-short2-092013', centre: [4.8706509, 52.3664365], standDeg: 67, standM: 26 },
+  { name: 'audit-short3-164930', centre: [4.918371, 52.3717836], standDeg: 134, standM: 26 },
   { name: 'police-van-leijenberghlaan', centre: [4.8799828, 52.3311922], standDeg: 262, standM: 48 },
   { name: 'leidsestraat-67', centre: [4.8853524, 52.3651691], standDeg: 323, standM: 34 },
   { name: 'oosterkerk', centre: [4.9193125, 52.3699834], standDeg: 225, standM: 52 },
@@ -98,6 +123,12 @@ const SPOTS: Spot[] = [
   { name: 'transvaal5b-afrikanerplein-33-51', centre: [4.9171430, 52.3518849], standDeg: 315, standM: 30, view: 'cockpit' },
   { name: 'transvaal5b-schalkburgerstraat-59-77', centre: [4.9209948, 52.3530040], standDeg: 234, standM: 30, view: 'cockpit' },
   { name: 'transvaal5b-schalkburgerstraat-99-115', centre: [4.9213461, 52.3527139], standDeg: 234, standM: 30, view: 'cockpit' },
+  // House line H2b (#338): the walls the Node preview's lit look is gated against (wall dL <= 0.03 vs the ride frame):
+  // Nassaukade 0363100012164843 (generic, east-facing: sky only), Bloemgracht-side 0363100012169916 (generic, faces
+  // 160: sunlit), and the Nassaukade face of the installed corner chunk-face-clercq-236681 (0363100012116526).
+  { name: 'house-preview-nassaukade-164843', centre: [4.873841, 52.3720195], standDeg: 85, standM: 14, view: 'cockpit' },
+  { name: 'house-preview-169916', centre: [4.8809335, 52.374876], standDeg: 160, standM: 12, view: 'cockpit' },
+  { name: 'house-preview-nassaukade-116526', centre: [4.873862, 52.371936], standDeg: 80, standM: 14, view: 'cockpit' },
   { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
   // House line H1 (#337): the Nieuwmarkt 4-22 row by the Waag at the user's 2026-11-09 photo pose (register gables), and
   // a Kinkerstraat block face whose HouseSpec bays and measured walls reach the generic path (live tiles, before/after).

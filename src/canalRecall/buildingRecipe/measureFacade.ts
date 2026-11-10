@@ -30,6 +30,7 @@ import {classifyOpenings} from './facadeOpenings.ts';
 import {brickFaceColour, cellTexture, poolTexture, type PooledTexture} from './facadeTexture.ts';
 import {wallFamily} from '../facade/materials.ts';
 import {rowSegments} from './rowSplit.ts';
+import {wallVsTrim} from './wallTrim.ts';
 
 export type Rgb = [number, number, number];
 
@@ -52,6 +53,8 @@ export interface MeasureInput {
   groundBandM?: number; cell?: number;
   /** cells whose centre is outside the wall (box metres u, v) are not facade (the 3DBAG panel's outline: sky over a lower part) */
   inside?: (u: number, v: number) => boolean;
+  /** wall vs trim (wallTrim.ts): a pale thin band is never the wall when a darker solid body outweighs it; false = the pre-H2c reading */
+  wallVsTrim?: boolean;
 }
 
 /**
@@ -531,6 +534,18 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   pool.forEach((k, n) => { const z = zone(vOf(Math.floor(k / cols))); if (z === 1) { inFloor[label[n]]++; nF++; } else if (z === 2) { inMid[label[n]]++; nM++; } });
   const enrich = centres.map((_, c) => (nF && nM ? (inFloor[c] / nF) / Math.max(1e-3, inMid[c] / nM) : 1));
   const zoned = nF >= 50 && nM >= 50 && enrich.some((e, c) => e < 0.7 && share[c] >= 0.08);
+  // ... and thin: a cluster with a solid body (>= 35 % of its cells with all 8 neighbours in it) is a material, not an edge
+  // ring, however textured (brick piers between windows are as textured as the window edges: Waagdragerhof 198 walls[1])
+  const solid = centres.map((_, c) => {
+    let n = 0, inner = 0;
+    pool.forEach(k => {
+      if (cellOf[k] !== c) return; n++;
+      const i = k % cols, j = (k - i) / cols; let all = true;
+      for (let dj = -1; dj <= 1 && all; dj++) for (let di = -1; di <= 1; di++) { const ii = i + di, jj = j + dj; if (ii < 0 || jj < 0 || ii >= cols || jj >= rows || cellOf[jj * cols + ii] !== c) { all = false; break; } }
+      if (all) inner++;
+    });
+    return n ? inner / n : 0;
+  });
   // fallback (no storey zones, or a uniform front): one continuous, textured, warm body
   const score = centres.map((c, i) => share[i] * shape[i].conn * Math.sqrt(shape[i].spanW * shape[i].spanH) * (warm(c) ? 1.5 : c[2] < 0 ? 0.4 : 1) * (glassy(i) ? 0.2 : 1) * Math.max(0.3, Math.min(2, texOf[i] / Math.max(1e-6, texMean))));
   let wallSet: boolean[], wallC: number;
@@ -544,6 +559,11 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
     wallSet = centres.map((c, i) => i === wallC || (!glassy(i) && dE76(c, centres[wallC]) < 12)
       // a second continuous body spanning the height (two bricks on one 3DBAG plane)
       || (share[i] >= 0.1 && shape[i].conn >= 0.6 && shape[i].spanH >= 0.6 && shape[i].spanW >= 0.3 && (!glassy(i) || share[i] < share[wallC] * 1.5)));
+  }
+  // Wall vs trim (wallTrim.ts): a thin pale band cluster picked as the wall on a dark front is trim; the dark body is the wall
+  if (input.wallVsTrim !== false) {
+    const t = wallVsTrim(centres.map((c, i) => ({lab: c, share: share[i], solid: solid[i], glassy: glassy(i)})), wallSet, wallC);
+    if (t) { wallSet = t.wallSet; wallC = t.wallC; }
   }
   // Same material in other light: a lighter not-wall cluster with a warm wall's chromaticity (the r, g, b shares of its
   // median colour) is that wall in sun where the wall cluster is its shade (the sunlit brick piers and frieze beside
@@ -563,18 +583,6 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   // lies between a wall and a not-wall centre. Neither floor nor glazing, so their cells go cell by cell to the nearer
   // (in Lab) of the pure wall and not-wall colours.
   const segDist = (p: Rgb, a: Rgb, b: Rgb) => { const ab = [0, 1, 2].map(c => b[c] - a[c]), l2 = ab.reduce((x, v) => x + v * v, 0); if (l2 < 1) return null; const t = Math.max(0, Math.min(1, [0, 1, 2].reduce((x, c) => x + (p[c] - a[c]) * ab[c], 0) / l2)); return {d: Math.hypot(...[0, 1, 2].map(c => p[c] - a[c] - t * ab[c])), t, len: Math.sqrt(l2)}; };
-  // ... and thin: a cluster with a solid body (>= 35 % of its cells with all 8 neighbours in it) is a material, not an edge
-  // ring, however textured (brick piers between windows are as textured as the window edges: Waagdragerhof 198 walls[1])
-  const solid = centres.map((_, c) => {
-    let n = 0, inner = 0;
-    pool.forEach(k => {
-      if (cellOf[k] !== c) return; n++;
-      const i = k % cols, j = (k - i) / cols; let all = true;
-      for (let dj = -1; dj <= 1 && all; dj++) for (let di = -1; di <= 1; di++) { const ii = i + di, jj = j + dj; if (ii < 0 || jj < 0 || ii >= cols || jj >= rows || cellOf[jj * cols + ii] !== c) { all = false; break; } }
-      if (all) inner++;
-    });
-    return n ? inner / n : 0;
-  });
   const mixed = centres.map((c, i) => {
     if ((texOf[i] < texMean * 1.2 && solid[i] >= 0.1) || solid[i] >= 0.35) return false;
     for (let a = 0; a < centres.length; a++) for (let b = 0; b < centres.length; b++) {

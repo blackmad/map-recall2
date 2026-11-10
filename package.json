@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test:canal-elevation": "node --import tsx --test src/canalRecall/elevation/elevation.test.ts",
-    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts src/canalRecall/houseSpec/extractStamp.test.ts",
+    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts src/canalRecall/houseSpec/extractStamp.test.ts src/canalRecall/houseSpec/previewVerdict.test.ts src/canalRecall/houseSpec/softRaster.test.ts scripts/house-preview/help.test.ts scripts/house-preview/nodeDom.test.ts scripts/house-preview/wallSelect.test.ts",
     "house:specs": "node --import tsx scripts/house-specs/build-house-specs.ts",
     "test:large-tier": "node --import tsx scripts/check-large-tier.ts",
     "test:landmark-triage": "node --import tsx --test src/canalRecall/landmarks/triage.test.ts",
@@ -250,6 +250,9 @@
     "test:steer-model": "node --import tsx --test src/canalRecall/drive/steerModel.test.ts src/canalRecall/drive/cameraFollow.test.ts src/canalRecall/drive/inputBlend.test.ts",
     "check:site-imports": "node scripts/sentry/collect-canal-bundles.mjs --source=public/canal-drive --imports-only",
     "world:compile": "node --max-old-space-size=12000 --import tsx scripts/world/compile.ts",
+    "house:preview": "node --import tsx scripts/house-preview/preview.ts",
+    "house:audit": "node --import tsx scripts/house-audit/suppressed-faces.ts",
+    "house:audit-sheet": "node --import tsx scripts/house-audit/contact-sheet.ts",
     "world:verify": "node --import tsx scripts/world/verify.ts",
     "world:browser-math": "node --import tsx scripts/world/check-browser-math.ts",
     "test:world-format": "node --import tsx --test src/canalRecall/world/cellFormat.test.ts src/canalRecall/world/shellMesh.test.ts src/canalRecall/world/worldV1Enabled.test.ts src/canalRecall/world/worldStreamer.test.ts src/canalRecall/engine/worldStreamer.test.ts src/canalRecall/world/worldRing.test.ts src/canalRecall/engine/workerPool.test.ts",
