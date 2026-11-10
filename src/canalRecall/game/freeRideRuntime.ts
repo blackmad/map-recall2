@@ -586,9 +586,16 @@ export class GameFreeRideRuntime {
    *  rider, a landmark whose point lies in a canal on the nearest quay; a place with no land in reach gets no marker. */
   _freeRideOnLand(nearby: FreeRideNearby[]): FreeRideNearby[] {
     const isWater = this._freeRideIsWater();
-    if (!isWater || !this.player) return nearby;
+    if (!this.player) return nearby;
     const out: FreeRideNearby[] = [];
-    for (const place of nearby) {
+    const own = new Map<string, WorldPoint>();
+    for (const landmark of this.landmarks || []) {
+      if (Number.isFinite(landmark.ownX) && Number.isFinite(landmark.ownY)) own.set(String(landmark.id), { x: landmark.ownX!, y: landmark.ownY! });
+    }
+    for (const placed of nearby) {
+      // A landmark's pin stands at its own point (S5, #333); the catalogue keeps the snapped point for routing and tokens.
+      const ownPoint = placed.kind === 'landmark' ? own.get(String(placed.key)) : undefined;
+      const place = ownPoint ? { ...placed, x: ownPoint.x, y: ownPoint.y } : placed;
       const bridge = place.kind === 'bridge' ? this.bridges?.find(b => `bridge:${b.id}` === place.key) : null;
       const at = bridge ? bridgeMarkerAnchor(bridge.lines, place, this.player, isWater) : landAnchor(place, isWater);
       if (at) out.push(at.x === place.x && at.y === place.y ? place : { ...place, x: at.x, y: at.y });
