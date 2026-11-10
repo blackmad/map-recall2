@@ -316,6 +316,25 @@ moves no verdict; it is the `measureFacade` default, so `likenessGate`, `install
 `measure profile <name>`, and `measure.json` carries `profile`. `--no-opening-split` and `--opening-split=<parts>` override it (the
 header then says `pre-H2d` or `custom`).
 
+**houseLine fixes (lane H2e, #352).** Three fixes before houseLine becomes the default (the integrator flips it after the judgement
+session approves the v2 flip sheet; `installGate` stays a named profile for one week, for rollback):
+
+1. *Glazing is informational in the replay comparator too* (`compareLikeness({profile: 'houseLine'})`): the numbers are still printed,
+   never a reason or a FAIL. Houthavenkade 26 walls[1] and Stadhouderskade 111 walls[2] failed only on glazing storey bands.
+2. *Bay pitch on mullioned two-storey fronts* (`measureFacade.ts` `halvedPeriod`, `HALF_PERIOD_TOL_HOUSELINE`, used only by the houseLine profile; `analyseMask({halfTol})`): with `core` the openings are
+   thinner, the autocorrelation at the half lag becomes a rising shoulder whose peak sits 8 % off the half lag, and the half-bay
+   test (local maximum within +-6 %) missed it, so Hotel Arena (pand 236788) walls[0], five tall windows at 3.8 m, was read as
+   3 columns of one square window. The houseLine profile reads the tolerance as 10 % (installGate keeps 6 %: at 10 % Hotel Arena's installGate verdict moved WARN to FAIL).
+3. *No evidence is not a verdict*: under houseLine a wall that does not face the street (`street: false`) abstains
+   (`wall does not face the street: not judged`) instead of FAILing on columns the model does not draw (pand-070306 walls[5]: a glass
+   canopy and bare trees). Foliage over the wall already abstains above 25 % of the cells; leafless branches are not counted as foliage
+   (open: a branch-density measure).
+
+Fixtures: `src/canalRecall/buildingRecipe/fixtures/houseline/{hotel-arena-236788.g0,pand-070306.g5}.{json,bin}` (dumped likeness groups:
+`likeness-replay.ts --dump`), tested by `houseLineFixtures.test.ts` (run `node --import tsx --test src/canalRecall/buildingRecipe/houseLineFixtures.test.ts`; the integrator joins it to `test:house-spec`). Rule for the flip: a new FAIL on an
+already-installed house goes on a review list (`artifacts/house-line/houseline-new-fails.json`, built by
+`scripts/house-preview/houseline-new-fails.ts`), never into an uninstall, a hold or a stale-install failure.
+
 ### 3/4 view
 
 `--threeq`: a 20° vertical field of view from 38° off the wall's normal, far enough to hold 1.6 × the wall, eye at

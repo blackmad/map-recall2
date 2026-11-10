@@ -36,6 +36,8 @@
  * (the photo's dark / light split); and the mask goes through the photo's 3x3 majority clean-up (measureFacade
  * `majorityClean`), so a grid line one cell wide vanishes on both sides. The same LIKENESS constants judge it.
  *
+ * houseLine profile (H2e): glazing is informational (previewVerdict's rule), and a wall that does not face the street abstains.
+ *
  * NO EVIDENCE (abstain) when under 40 % of the upper cells are usable, foliage covers over 25 %, over 30 % is
  * washed out, the view is more than 45 degrees oblique, or the camera stood under 8 m from a wall over 15 m wide (for a
  * mosaic: one crop from under 8 m covering over 15 m of it).
@@ -46,7 +48,7 @@ import {nearestMaterial, wallFamily} from '../facade/materials.ts';
 import {rgbToHsl, WALL_TOLERANCE} from '../blockFace/wallColour.ts';
 import {renderElevation, type MaterialSoup} from '../landmarks/facadeCompare.ts';
 import {compareRowOpenings, ROW_OPENINGS, rowOpenings, type RowOpeningsComparison} from './rowOpenings.ts';
-import {analyseMask, chromaticity, hex, isOpeningCell, majorityClean, MASK, rgbToLab, SAME_MATERIAL, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
+import {analyseMask, HALF_PERIOD_TOL_HOUSELINE, chromaticity, hex, isOpeningCell, majorityClean, MASK, rgbToLab, SAME_MATERIAL, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
 
 export const PAD_M = 0.5;
 export const LIKENESS = {dL: 0.12, hueDeg: WALL_TOLERANCE.hueDeg, satForHue: 0.08, storeyGlazing: 0.15, meanGlazing: 0.1, columns: 0.2, iouWarn: 0.45,
@@ -307,25 +309,28 @@ export function closeCameraSpan(pieces: readonly {u0: number; u1: number; crop: 
  * `cameraSpanM`: the widest stretch of the wall that a camera under 8 m away covers (a mosaic of segment crops, each
  * from its own nearby panorama, `all-walls.ts --segment`); default the whole box width (one crop for the wall).
  */
-export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; model: ModelElevation; lines: number[]; obliquityDeg?: number; cameraDistM?: number; cameraSpanM?: number}): LikenessResult {
+export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; model: ModelElevation; lines: number[]; obliquityDeg?: number; cameraDistM?: number; cameraSpanM?: number;
+  /** H2e: 'houseLine' reads glazing as information (a number, never a reason; previewVerdict's rule) and abstains on a wall that does not face the street (`street: false`); omitted = installGate, as before */
+  profile?: 'installGate' | 'houseLine'; street?: boolean}): LikenessResult {
+  const houseLine = a.profile === 'houseLine';
   const {photo, padCells} = a, cr = a.model.curtain;
   // curtain symmetry (file header): the model's curtain grid read as the photo reads one
   const curtainMode = !!cr && (a.model.system === 'curtain-wall' || photo.frontClass === 'curtain');
   const model: ModelElevation = curtainMode ? {...a.model, mask: cr.mask, wall: cr.wall, wallToday: cr.wallToday, wallSlot: cr.wallSlot, grid: cr.grid} : a.model;
-  const {cols, rows, cell, box} = model;
+  const {cols, rows, cell, box} = model, gridOpts = houseLine ? {halfTol: HALF_PERIOD_TOL_HOUSELINE} : {};
   // best shift within +-PAD_M
   let best = {du: 0, dv: 0, iou: -1};
   for (let dv = -padCells; dv <= padCells; dv++) for (let du = -padCells; du <= padCells; du++) {
     const iou = notWallIoU(model.mask, photoWindow(photo, padCells, du, dv, cols, rows), cols, rows, box, cell);
     if (iou !== null && (iou > best.iou + 1e-9 || (Math.abs(iou - best.iou) < 1e-9 && Math.abs(du) + Math.abs(dv) < Math.abs(best.du) + Math.abs(best.dv)))) best = {du, dv, iou};
   }
-  const clusterWin = photoClusterWindow(photo, padCells, best.du, best.dv, cols, rows), mg = model.grid;
+  const clusterWin = photoClusterWindow(photo, padCells, best.du, best.dv, cols, rows), mg = houseLine && !curtainMode ? analyseMask({mask: model.mask, cols, rows, cell, box, lines: a.lines, ...gridOpts}) : model.grid;
   const rereads: string[] = [];
   // the photo's readings: its mask, and where it has an undecided blend cluster (measureFacade `altMask`) the mask with
   // that cluster as wall; the gate judges the reading nearer the model (the photo cannot tell which it is)
   const reading = (m: Uint8Array) => {
     const w = photoWindow({...photo, mask: m}, padCells, best.du, best.dv, cols, rows), panels = rereadPalePanels(w, clusterWin, photo, model);
-    return {win: w, panels, pg: analyseMask({mask: w, cols, rows, cell, box, lines: a.lines})};
+    return {win: w, panels, pg: analyseMask({mask: w, cols, rows, cell, box, lines: a.lines, ...gridOpts})};
   };
   const first = reading(photo.mask), alt = photo.altMask ? reading(photo.altMask) : null;
   const miss = (r: typeof first) => { const g = glazingMiss(r.pg, mg); return Math.max((g.maxDiff ?? 0) / LIKENESS.storeyGlazing, g.meanDiff / LIKENESS.meanGlazing); };
@@ -339,6 +344,7 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   if (photo.foliageFraction > LIKENESS.maxFoliage) abstain.push(`foliage ${(photo.foliageFraction * 100).toFixed(0)} % > 25 %`);
   if (photo.washedOutFraction > LIKENESS.maxWashedOut) abstain.push(`washed out ${(photo.washedOutFraction * 100).toFixed(0)} % > 30 %`);
   if ((a.obliquityDeg ?? 0) > LIKENESS.maxObliquityDeg) abstain.push(`obliquity ${a.obliquityDeg} deg > 45`);
+  if (houseLine && a.street === false) abstain.push('wall does not face the street: not judged');
   const closeSpanM = a.cameraSpanM ?? widthM;
   if ((a.cameraDistM ?? 99) < LIKENESS.minCameraM && closeSpanM > LIKENESS.wideWallM) abstain.push(`camera ${a.cameraDistM} m < 8 m from a ${closeSpanM.toFixed(0)} m wall`);
 
@@ -362,7 +368,7 @@ export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; 
   const {maxDiff, meanDiff} = glazingMiss(pg, mg);
   // the photo's opening pass abstains where it cannot tell frames from bands: no glazing verdict there (a warning)
   const glazingAbstain = photo.openings?.abstain ?? null;
-  const glazingPass = glazingAbstain !== null || ((maxDiff === null || maxDiff <= LIKENESS.storeyGlazing) && meanDiff <= LIKENESS.meanGlazing);
+  const glazingPass = houseLine || glazingAbstain !== null || ((maxDiff === null || maxDiff <= LIKENESS.storeyGlazing) && meanDiff <= LIKENESS.meanGlazing);
   // columns and window shape (not where the photo shows no rhythm: curtain walls, blank fronts)
   const rhythmic = pg.frontClass !== 'curtain' && pg.frontClass !== 'blank';
   const pW = pg.windowColumns, mW = mg.windowColumns;

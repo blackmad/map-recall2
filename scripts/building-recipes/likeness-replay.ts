@@ -19,7 +19,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import {compileLargeHouse} from './large.ts';
-import {measureFacade, analyseMask, openingSplitFromArgs, type FacadeBox, type Rgb} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import {measureFacade, analyseMask, openingSplitFromArgs, profileName, type FacadeBox, type OpeningSplit, type Rgb} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {compareLikeness, PAD_M, type ModelElevation} from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import {streetFacing} from '../../src/canalRecall/buildingRecipe/likenessGate.ts';
 import {insidePanel} from '../../src/canalRecall/blockBuilding/panels.ts';
@@ -74,19 +74,21 @@ async function dump(dir: string) {
 }
 
 /** One dumped group, re-measured with this checkout's code. */
-export function replayGroup(meta: GroupMeta, bin: Buffer) {
+/** `opts` replaces the command line's `--opening-split` (tests); `houseLine` passes the houseLine comparator profile (glazing informational, non-street walls abstain). */
+export function replayGroup(meta: GroupMeta, bin: Buffer, opts?: {openingSplit: boolean | Partial<OpeningSplit>; houseLine: boolean}) {
   const {width, height} = meta.image, P = width * height, M = meta.model.cols * meta.model.rows;
   const rgb = new Uint8Array(bin.subarray(0, P * 3)), valid = new Uint8Array(bin.subarray(P * 3, P * 4));
   const mask = new Uint8Array(bin.subarray(P * 4, P * 4 + M)), colours = new Uint8Array(bin.subarray(P * 4 + M, P * 4 + M * 4));
   const panel = {polys: meta.polys} as Parameters<typeof insidePanel>[0];
   const inside = (u: number, v: number) => insidePanel(panel, [u + meta.panelU0, v]);
-  const photo = measureFacade({image: {...meta.image, rgb, valid}, box: meta.photoBox, lines: meta.lines, inside, ...(process.argv.includes('--no-wall-vs-trim') ? {wallVsTrim: false} : {}), ...openingSplitFromArgs(process.argv)});
+  const split = opts ?? (() => { const a = openingSplitFromArgs(process.argv); const o = 'openingSplit' in a ? a.openingSplit : undefined; return {openingSplit: o, houseLine: profileName(o) === 'houseLine'}; })(), houseLine = split.houseLine;
+  const photo = measureFacade({image: {...meta.image, rgb, valid}, box: meta.photoBox, lines: meta.lines, inside, ...(process.argv.includes('--no-wall-vs-trim') ? {wallVsTrim: false} : {}), ...(split.openingSplit !== undefined ? {openingSplit: split.openingSplit} : {})});
   const grid = analyseMask({mask, cols: meta.model.cols, rows: meta.model.rows, cell: meta.model.cell, box: meta.model.box, lines: meta.lines});
   const {curtain: cm, ...rest} = meta.model;
   const cmask = cm ? new Uint8Array(bin.subarray(P * 4 + M * 4, P * 4 + M * 5)) : null;
   const curtain = cm && cmask ? {...cm, mask: cmask, grid: analyseMask({mask: cmask, cols: meta.model.cols, rows: meta.model.rows, cell: meta.model.cell, box: meta.model.box, lines: meta.lines})} : undefined;
   const model: ModelElevation = {...rest, mask, colours, grid, ...(curtain ? {curtain} : {})};
-  const likeness = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines: meta.lines, obliquityDeg: meta.obliquityDeg, cameraDistM: meta.cameraDistM, cameraSpanM: meta.cameraSpanM});
+  const likeness = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines: meta.lines, obliquityDeg: meta.obliquityDeg, cameraDistM: meta.cameraDistM, cameraSpanM: meta.cameraSpanM, ...(houseLine ? {profile: 'houseLine' as const, street: meta.street} : {})});
   return {photo, model, likeness};
 }
 

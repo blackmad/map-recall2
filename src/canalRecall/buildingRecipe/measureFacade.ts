@@ -303,10 +303,12 @@ const refinePeak = (ac: number[], lag: number, score: number) => {
  * at 2.4 m), and the fold then reads two windows as one square one. Paired windows (Stadhouderskade 111) repeat at their
  * own offset inside the bay, not at its half, so they keep the bay pitch.
  */
-export function halvedPeriod(p: number[], per: {lag: number; score: number}, minLag: number, minScore = 0.15): {lag: number; score: number} | null {
+/** how far from the half lag a local maximum may sit: 0.06 (installGate); the houseLine profile reads 0.10 (H2e: Hotel Arena's half-bay peak sits 8 % off, on a shoulder) */
+export const HALF_PERIOD_TOL = 0.06, HALF_PERIOD_TOL_HOUSELINE = 0.10;
+export function halvedPeriod(p: number[], per: {lag: number; score: number}, minLag: number, minScore = 0.15, tolFrac = HALF_PERIOD_TOL): {lag: number; score: number} | null {
   const half = per.lag / 2; if (half < minLag) return null;
   const ac = autocorr(p, Math.ceil(per.lag)); if (!ac) return null;
-  const tol = Math.max(1, 0.06 * half);
+  const tol = Math.max(1, tolFrac * half);
   let best: {lag: number; score: number} | null = null;
   for (let lag = Math.max(2, Math.ceil(half - tol)); lag <= Math.floor(half + tol) && lag < ac.length - 1; lag++) {
     if (ac[lag] >= ac[lag - 1] && ac[lag] >= ac[lag + 1] && ac[lag] >= minScore && (!best || ac[lag] > best.score)) best = {lag, score: ac[lag]};
@@ -696,7 +698,7 @@ export function measureFacade(input: MeasureInput): FacadeMeasurement {
   const darkCells = allUsable.filter(k => mask[k] === MASK.dark), trimCells = allUsable.filter(k => mask[k] === MASK.trim || mask[k] === MASK.frame);
   const glassRaw = darkCells.length >= 20 ? medRgb(darkCells.map(k => mean[k])) : null;
   const trimN = trimCells.length >= 20 ? norm(medRgb(trimCells.map(k => mean[k]))) : null;
-  const grid = analyseMask({mask, cols, rows, cell, box, lines: input.lines, groundBandM: gb, edgeX, edgeY});
+  const grid = analyseMask({mask, cols, rows, cell, box, lines: input.lines, groundBandM: gb, edgeX, edgeY, ...(profileName(input.openingSplit) === 'houseLine' ? {halfTol: HALF_PERIOD_TOL_HOUSELINE} : {})});
   const {glazing, storeyGlazing, ground, pitchM, pitchScore, columns, storeyM, window, frontClass, windowColumns} = grid;
 
   // Material: texture pooled over the interior wall cells; when the courses are resolved, the colour is the brick faces'
@@ -845,7 +847,7 @@ export function windowGroupOf(cp: readonly number[], pitchCells: number, cell: n
  * ground band, bay pitch and column count, storey height, window proportions and the front class. Shared by the photo
  * measurement and the model elevation (likeness.ts), so both are read the same way. Edge profiles are optional.
  */
-export function analyseMask(a: {mask: Uint8Array; cols: number; rows: number; cell: number; box: FacadeBox; lines: number[]; groundBandM?: number; edgeX?: Float32Array; edgeY?: Float32Array}): MaskGrid {
+export function analyseMask(a: {mask: Uint8Array; cols: number; rows: number; cell: number; box: FacadeBox; lines: number[]; groundBandM?: number; edgeX?: Float32Array; edgeY?: Float32Array; halfTol?: number}): MaskGrid {
   const {mask, cols, rows, cell, box} = a, gb = a.groundBandM ?? GROUND_BAND_M, N = cols * rows;
   const edgeX = a.edgeX ?? new Float32Array(N), edgeY = a.edgeY ?? new Float32Array(N);
   const usable = Uint8Array.from(mask, m => (m === MASK.unusable ? 0 : 1));
@@ -881,7 +883,7 @@ export function analyseMask(a: {mask: Uint8Array; cols: number; rows: number; ce
   const cp = fill(colP), ce = fill(colE), zc = z(cp), ze = z(ce), prof = zc.map((v, i) => v + 0.5 * ze[i]);
   // the not-wall profile alone first (mullions inside a ribbon are not bays); its edges help where it is weak (dark glass in dark brick)
   const perMask = dominantPeriod(zc, 0.8 / cell, 8 / cell), useMask = !!perMask && perMask.score >= 0.3, per0 = useMask ? perMask : dominantPeriod(prof, 0.8 / cell, 8 / cell);
-  const per = per0 && per0.score >= 0.15 ? (halvedPeriod(useMask ? zc : prof, per0, 0.8 / cell) ?? per0) : per0;
+  const per = per0 && per0.score >= 0.15 ? (halvedPeriod(useMask ? zc : prof, per0, 0.8 / cell, 0.15, a.halfTol) ?? per0) : per0;
   const widthM = cols * cell;
   const pitchM = per && per.score >= 0.15 ? per.lag * cell : null;
   const columns = pitchM ? Math.max(1, Math.round(widthM / pitchM)) : null;
