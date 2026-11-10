@@ -1,0 +1,177 @@
+{
+ "note": "Runs placed by the lane from the strips (scripts/block-face/hand-place.ts): per pand the type, crown, storey count and cornice line read at full size on the 2023 strips. Lauriergracht is a canal of 1840-1880 cornice fronts with tall ground storeys, two or three upper storeys and white pedimented dormers; auto-place reads 3DBAG eaves at the roof back and dates restorations. The Opus strip review confirms or amends.",
+ "reviewed": "2026-11-10",
+ "runs": [
+  {
+   "id": "lauriergracht-62-110-h1",
+   "face": "lauriergracht-62-110",
+   "reason": "Lauriergracht 92-102 (strip 2023-03-20): four cornice fronts of one height, tall ground storeys with arched doors, two upper storeys, white pedimented dormers",
+   "houses": [
+    {
+     "pand": "167869",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 3,
+     "eavesM": 12.8,
+     "why": "Lauriergracht 102: three axes, a 4.9 m ground storey under a stone band, two upper storeys, a white frieze cornice at 12.3-12.8 m, red tile saddle with one pedimented dormer (its dormer is not drawn: the kit's dormer frame pierces a roof plane of this pand's 3DBAG roof, geometry audit opening-outside)",
+     "roof": {
+      "material": "black-tile",
+      "evidence": "strip 2023-03-20: dark glazed pantiles on the saddle behind the cornice"
+     },
+     "overrides": {
+      "cornice": "heavy",
+      "windowShare": 0.6
+     }
+    },
+    {
+     "pand": "169895",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 3,
+     "eavesM": 12.8,
+     "why": "Lauriergracht 100: the twin of 102, three axes, one pedimented dormer",
+     "roof": {
+      "material": "black-tile",
+      "evidence": "strip 2023-03-20: dark glazed pantiles on the saddle behind the cornice"
+     },
+     "overrides": {
+      "cornice": "heavy",
+      "windowShare": 0.6
+     }
+    },
+    {
+     "pand": "169894",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-pair-low",
+     "storeys": 3,
+     "eavesM": 12.4,
+     "overrides": {
+      "bays": 6,
+      "cornice": "heavy",
+      "windowShare": 0.6
+     },
+     "why": "Lauriergracht 96-98: six axes, two round-arched carriage doors in the ground storey, two upper storeys, cornice at ~12.4 m, slate attic with two pedimented dormers",
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-20: a grey slate mansard face behind the cornice"
+     }
+    },
+    {
+     "pand": "169948",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-pair-low",
+     "storeys": 3,
+     "eavesM": 12.4,
+     "overrides": {
+      "bays": 6,
+      "cornice": "heavy",
+      "windowShare": 0.6
+     },
+     "why": "Lauriergracht 92-94: the same six-axis front as 96-98, one arched carriage door, two pedimented dormers",
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-20: a grey slate mansard face behind the cornice"
+     }
+    }
+   ]
+  },
+  {
+   "id": "lauriergracht-62-110-h2",
+   "face": "lauriergracht-62-110",
+   "reason": "Lauriergracht 78-86 (strip 2023-03-20): 1840-1910 cornice fronts with white keystones and pedimented dormers, one painted white (88 is left out: BAG leaves a 0.9 m gap between 88 and 86)",
+   "houses": [
+    {
+     "pand": "169946",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "overrides": {
+      "windowSurround": "keystone",
+      "windowShare": 0.6
+     },
+     "why": "Lauriergracht 86: three axes, ground and three storeys, white keystones, a bracketed cornice at ~14.6 m, red tile roof with one pedimented dormer (the dormer is not drawn: the kit's dormer escapes this pand's surveyed footprint)",
+     "eavesM": 14.6
+    },
+    {
+     "pand": "169892",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 3,
+     "eavesM": 12.5,
+     "why": "Lauriergracht 84: three axes, ground and two storeys under a white cornice at ~12.5 m, slate mansard with one pedimented dormer",
+     "roof": {
+      "material": "slate",
+      "form": "attic",
+      "pitchDeg": 60,
+      "rise": 0.6,
+      "evidence": "strip 2023-03-20: a steep slate roof face rises about 1.8 m behind the cornice to the dormer tops (3DBAG's p95 sits under 1.5 m over the cornice line, which drew a flat roof)"
+     },
+     "overrides": {
+      "windowShare": 0.6
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#6e5b52"
+     }
+    },
+    {
+     "pand": "169942",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 4,
+     "eavesM": 14.0,
+     "overrides": {
+      "windowShare": 0.6
+     },
+     "why": "Lauriergracht 82: a white painted front, two axes, ground and three storeys, cornice at ~14 m, one dormer",
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-20: a dark slate mansard face behind the cornice"
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#e4e2dc",
+      "wallMaterial": "painted-brick"
+     }
+    },
+    {
+     "pand": "169889",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 4,
+     "eavesM": 13.6,
+     "overrides": {
+      "windowSurround": "keystone",
+      "windowShare": 0.6
+     },
+     "why": "Lauriergracht 80: three axes, ground and three storeys with white keystones, cornice at ~13.6 m, a pedimented dormer",
+     "roof": {
+      "material": "slate",
+      "form": "attic",
+      "pitchDeg": 60,
+      "rise": 0.6,
+      "evidence": "strip 2023-03-20: a steep slate roof face rises about 1.8 m behind the cornice to the dormer tops (3DBAG's p95 sits under 1.5 m over the cornice line, which drew a flat roof)"
+     }
+    },
+    {
+     "pand": "169943",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "eavesM": 14.2,
+     "overrides": {
+      "windowHead": {
+       "kind": "segmental"
+      },
+      "windowShare": 0.6
+     },
+     "why": "Lauriergracht 78: three axes of segmental-headed white-framed windows, ground and three storeys, a bracketed frieze cornice at ~14.2 m, one pedimented dormer (its dormer is not drawn: the kit's dormer frame pierces a roof plane of this pand's 3DBAG roof, geometry audit opening-outside)",
+     "roof": {
+      "material": "slate",
+      "form": "attic",
+      "pitchDeg": 60,
+      "rise": 0.6,
+      "evidence": "strip 2023-03-20: a steep slate roof face rises about 1.8 m behind the cornice to the dormer tops (3DBAG's p95 sits under 1.5 m over the cornice line, which drew a flat roof)"
+     }
+    }
+   ]
+  }
+ ]
+}

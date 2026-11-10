@@ -1,0 +1,306 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T02:27:39.605Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012253893",
+   "addresses": [
+    "Prinsengracht 328"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 328",
+     "use": "logiesfunctie",
+     "areaM2": 1156,
+     "bagId": "0363010003684167"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173854",
+   "addresses": [
+    "Prinsengracht 326",
+    "Prinsengracht 326A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 326-H",
+     "use": "woonfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000784562"
+    },
+    {
+     "address": "Prinsengracht 326A",
+     "use": "industriefunctie",
+     "areaM2": 126,
+     "bagId": "0363010012099243"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173848",
+   "addresses": [
+    "Prinsengracht 324D",
+    "Prinsengracht 324A",
+    "Prinsengracht 324C",
+    "Prinsengracht 324B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 324D",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000784561"
+    },
+    {
+     "address": "Prinsengracht 324A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000784558"
+    },
+    {
+     "address": "Prinsengracht 324C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000784560"
+    },
+    {
+     "address": "Prinsengracht 324B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000784559"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173853",
+   "addresses": [
+    "Prinsengracht 322A",
+    "Prinsengracht 322B",
+    "Prinsengracht 322C",
+    "Prinsengracht 322D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 322A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000784554"
+    },
+    {
+     "address": "Prinsengracht 322B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000784555"
+    },
+    {
+     "address": "Prinsengracht 322C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000784556"
+    },
+    {
+     "address": "Prinsengracht 322D",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000784557"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173849",
+   "addresses": [
+    "Prinsengracht 320A",
+    "Prinsengracht 320B",
+    "Prinsengracht 320C",
+    "Prinsengracht 320D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 320A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001018451"
+    },
+    {
+     "address": "Prinsengracht 320B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001018452"
+    },
+    {
+     "address": "Prinsengracht 320C",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010001018453"
+    },
+    {
+     "address": "Prinsengracht 320D",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010001018455"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169404",
+   "addresses": [
+    "Prinsengracht 318A",
+    "Prinsengracht 318C",
+    "Prinsengracht 318D",
+    "Prinsengracht 318B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 318A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000784545"
+    },
+    {
+     "address": "Prinsengracht 318C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000784547"
+    },
+    {
+     "address": "Prinsengracht 318D",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000784548"
+    },
+    {
+     "address": "Prinsengracht 318B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000784546"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169406",
+   "addresses": [
+    "Prinsengracht 314A",
+    "Prinsengracht 314E",
+    "Prinsengracht 314C",
+    "Prinsengracht 314B",
+    "Prinsengracht 314D",
+    "Prinsengracht 316D",
+    "Prinsengracht 316A",
+    "Prinsengracht 316B",
+    "Prinsengracht 316C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 314A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000784535"
+    },
+    {
+     "address": "Prinsengracht 314E",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000784539"
+    },
+    {
+     "address": "Prinsengracht 316D",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000784544"
+    },
+    {
+     "address": "Prinsengracht 316A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000784541"
+    },
+    {
+     "address": "Prinsengracht 316B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000784542"
+    },
+    {
+     "address": "Prinsengracht 314C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000784537"
+    },
+    {
+     "address": "Prinsengracht 314B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000784536"
+    },
+    {
+     "address": "Prinsengracht 314D",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000784538"
+    },
+    {
+     "address": "Prinsengracht 316C",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000784543"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173880",
+   "addresses": [
+    "Prinsengracht 312"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 312-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784527"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4656887390,
+     "lngLat": [
+      4.8823176,
+      52.3694651
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "312",
+      "addr:postcode": "1016HX",
+      "addr:street": "Prinsengracht",
+      "amenity": "pub",
+      "name": "La Tertulia Coffeeshop",
+      "opening_hours": "Tu-Sa 11:00-19:00",
+      "website": "https://www.coffeeshoptertulia.com"
+     },
+     "fetchedAt": "2026-10-30T02:27:39.605Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

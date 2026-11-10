@@ -1,0 +1,639 @@
+{
+ "street": "Lauriergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169605",
+   "addresses": [
+    "Lauriergracht 37A",
+    "Lauriergracht 37B",
+    "Lauriergracht 37C",
+    "Lauriergracht 37D",
+    "Lauriergracht 37E",
+    "Lauriergracht 37F",
+    "Lauriergracht 37G",
+    "Lauriergracht 37H"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 37A",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000942256"
+    },
+    {
+     "address": "Lauriergracht 37B",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000942257"
+    },
+    {
+     "address": "Lauriergracht 37C",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000942258"
+    },
+    {
+     "address": "Lauriergracht 37D",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000942259"
+    },
+    {
+     "address": "Lauriergracht 37E",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000942260"
+    },
+    {
+     "address": "Lauriergracht 37F",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000942261"
+    },
+    {
+     "address": "Lauriergracht 37G",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000942262"
+    },
+    {
+     "address": "Lauriergracht 37H",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000947465"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169893",
+   "addresses": [
+    "Lauriergracht 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 39",
+     "use": "kantoorfunctie",
+     "areaM2": 561,
+     "bagId": "0363010000969768"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169598",
+   "addresses": [
+    "Lauriergracht 41A",
+    "Lauriergracht 41B",
+    "Lauriergracht 41C",
+    "Lauriergracht 41D",
+    "Lauriergracht 41F",
+    "Lauriergracht 41G",
+    "Lauriergracht 41E",
+    "Lauriergracht 43A",
+    "Lauriergracht 43B",
+    "Lauriergracht 45A",
+    "Lauriergracht 45B",
+    "Lauriergracht 45C",
+    "Lauriergracht 45D",
+    "Lauriergracht 45F",
+    "Lauriergracht 45E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 41A",
+     "use": "kantoorfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000950547"
+    },
+    {
+     "address": "Lauriergracht 41B",
+     "use": "industriefunctie",
+     "areaM2": 40,
+     "bagId": "0363010000950548"
+    },
+    {
+     "address": "Lauriergracht 41C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000950549"
+    },
+    {
+     "address": "Lauriergracht 41D",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000950550"
+    },
+    {
+     "address": "Lauriergracht 41F",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000950552"
+    },
+    {
+     "address": "Lauriergracht 41G",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000950553"
+    },
+    {
+     "address": "Lauriergracht 43A",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000950567"
+    },
+    {
+     "address": "Lauriergracht 43B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000950568"
+    },
+    {
+     "address": "Lauriergracht 45A",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000950570"
+    },
+    {
+     "address": "Lauriergracht 45B",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000950571"
+    },
+    {
+     "address": "Lauriergracht 45C",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000950572"
+    },
+    {
+     "address": "Lauriergracht 45D",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000950573"
+    },
+    {
+     "address": "Lauriergracht 45F",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000950574"
+    },
+    {
+     "address": "Lauriergracht 45E",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000950613"
+    },
+    {
+     "address": "Lauriergracht 41E",
+     "use": "woonfunctie",
+     "areaM2": 159,
+     "bagId": "0363010000950551"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168552",
+   "addresses": [
+    "Lauriergracht 47A",
+    "Lauriergracht 47B",
+    "Lauriergracht 47D",
+    "Lauriergracht 47E",
+    "Lauriergracht 47F",
+    "Lauriergracht 47G",
+    "Lauriergracht 47H",
+    "Lauriergracht 47K",
+    "Lauriergracht 47L",
+    "Lauriergracht 47M",
+    "Lauriergracht 47N",
+    "Lauriergracht 47P",
+    "Lauriergracht 47R",
+    "Lauriergracht 47S",
+    "Lauriergracht 47T",
+    "Lauriergracht 47C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 47A",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000719397"
+    },
+    {
+     "address": "Lauriergracht 47B",
+     "use": "woonfunctie",
+     "areaM2": 294,
+     "bagId": "0363010000719398"
+    },
+    {
+     "address": "Lauriergracht 47D",
+     "use": "woonfunctie",
+     "areaM2": 207,
+     "bagId": "0363010000719400"
+    },
+    {
+     "address": "Lauriergracht 47E",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000719401"
+    },
+    {
+     "address": "Lauriergracht 47F",
+     "use": "woonfunctie",
+     "areaM2": 423,
+     "bagId": "0363010000719402"
+    },
+    {
+     "address": "Lauriergracht 47G",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000719403"
+    },
+    {
+     "address": "Lauriergracht 47H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000719404"
+    },
+    {
+     "address": "Lauriergracht 47K",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000719409"
+    },
+    {
+     "address": "Lauriergracht 47L",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000719410"
+    },
+    {
+     "address": "Lauriergracht 47M",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000719411"
+    },
+    {
+     "address": "Lauriergracht 47N",
+     "use": "woonfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000719412"
+    },
+    {
+     "address": "Lauriergracht 47P",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000719413"
+    },
+    {
+     "address": "Lauriergracht 47R",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000719414"
+    },
+    {
+     "address": "Lauriergracht 47S",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000719415"
+    },
+    {
+     "address": "Lauriergracht 47T",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010000719416"
+    },
+    {
+     "address": "Lauriergracht 47C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000719399"
+    }
+   ],
+   "units": 16,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169004",
+   "addresses": [
+    "Lauriergracht 49",
+    "Lauriergracht 51D",
+    "Lauriergracht 51E",
+    "Lauriergracht 51A",
+    "Lauriergracht 51B",
+    "Lauriergracht 51C",
+    "Lauriergracht 51F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 49",
+     "use": "kantoorfunctie",
+     "areaM2": 18,
+     "bagId": "0363010012051846"
+    },
+    {
+     "address": "Lauriergracht 51D",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012051847"
+    },
+    {
+     "address": "Lauriergracht 51E",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012051848"
+    },
+    {
+     "address": "Lauriergracht 51A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012051849"
+    },
+    {
+     "address": "Lauriergracht 51B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012051850"
+    },
+    {
+     "address": "Lauriergracht 51C",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010012051851"
+    },
+    {
+     "address": "Lauriergracht 51F",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012051852"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167868",
+   "addresses": [
+    "Lauriergracht 53",
+    "Lauriergracht 55A",
+    "Lauriergracht 55C",
+    "Lauriergracht 55B",
+    "Lauriergracht 57A",
+    "Lauriergracht 57D",
+    "Lauriergracht 57B",
+    "Lauriergracht 57C",
+    "Lauriergracht 59A",
+    "Lauriergracht 59D",
+    "Lauriergracht 59E",
+    "Lauriergracht 59B",
+    "Lauriergracht 59C",
+    "Lauriergracht 59F",
+    "Lauriergracht 59G",
+    "Lauriergracht 59K",
+    "Lauriergracht 61C",
+    "Lauriergracht 61D",
+    "Lauriergracht 61G",
+    "Lauriergracht 61K",
+    "Lauriergracht 61A",
+    "Lauriergracht 61B",
+    "Lauriergracht 61E",
+    "Lauriergracht 61F",
+    "Lauriergracht 63A",
+    "Lauriergracht 63D",
+    "Lauriergracht 63E",
+    "Lauriergracht 63B",
+    "Lauriergracht 63C",
+    "Lauriergracht 63F",
+    "Lauriergracht 63G",
+    "Lauriergracht 63K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 53",
+     "use": "kantoorfunctie",
+     "areaM2": 1,
+     "bagId": "0363010012051853"
+    },
+    {
+     "address": "Lauriergracht 55A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010012051854"
+    },
+    {
+     "address": "Lauriergracht 55C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010012051855"
+    },
+    {
+     "address": "Lauriergracht 55B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010012051856"
+    },
+    {
+     "address": "Lauriergracht 57A",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012051857"
+    },
+    {
+     "address": "Lauriergracht 57D",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012051858"
+    },
+    {
+     "address": "Lauriergracht 57B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012051859"
+    },
+    {
+     "address": "Lauriergracht 57C",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012051860"
+    },
+    {
+     "address": "Lauriergracht 59A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012051861"
+    },
+    {
+     "address": "Lauriergracht 59D",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012051862"
+    },
+    {
+     "address": "Lauriergracht 59E",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012051863"
+    },
+    {
+     "address": "Lauriergracht 59B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012051864"
+    },
+    {
+     "address": "Lauriergracht 59C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010012051865"
+    },
+    {
+     "address": "Lauriergracht 59F",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012051866"
+    },
+    {
+     "address": "Lauriergracht 59G",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010012051867"
+    },
+    {
+     "address": "Lauriergracht 59K",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012051868"
+    },
+    {
+     "address": "Lauriergracht 61C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012051869"
+    },
+    {
+     "address": "Lauriergracht 61D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012051870"
+    },
+    {
+     "address": "Lauriergracht 61G",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012051871"
+    },
+    {
+     "address": "Lauriergracht 61K",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012051872"
+    },
+    {
+     "address": "Lauriergracht 61A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012051873"
+    },
+    {
+     "address": "Lauriergracht 61B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012051874"
+    },
+    {
+     "address": "Lauriergracht 61E",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012051875"
+    },
+    {
+     "address": "Lauriergracht 61F",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012051876"
+    },
+    {
+     "address": "Lauriergracht 63A",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012051877"
+    },
+    {
+     "address": "Lauriergracht 63D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012051878"
+    },
+    {
+     "address": "Lauriergracht 63E",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012051879"
+    },
+    {
+     "address": "Lauriergracht 63B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012051880"
+    },
+    {
+     "address": "Lauriergracht 63C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010012051881"
+    },
+    {
+     "address": "Lauriergracht 63F",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012051882"
+    },
+    {
+     "address": "Lauriergracht 63G",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012051883"
+    },
+    {
+     "address": "Lauriergracht 63K",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010012051884"
+    }
+   ],
+   "units": 32,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168980",
+   "addresses": [
+    "Lauriergracht 67",
+    "Lauriergracht 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 67-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000719440"
+    },
+    {
+     "address": "Lauriergracht 69-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000719444"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  }
+ ]
+}

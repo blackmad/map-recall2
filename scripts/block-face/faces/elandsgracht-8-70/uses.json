@@ -1,0 +1,709 @@
+{
+ "street": "Elandsgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T00:10:32.649Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170202",
+   "addresses": [
+    "Elandsgracht 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 70",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 842,
+     "bagId": "0363010000630872"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721830975,
+     "lngLat": [
+      4.8809076,
+      52.3698591
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70",
+      "addr:postcode": "1016TX",
+      "addr:street": "Elandsgracht",
+      "amenity": "community_centre",
+      "check_date:opening_hours": "2024-03-20",
+      "name": "Claverhuis",
+      "opening_hours:signed": "no",
+      "phone": "+31 20 624 8353",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.dock.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170198",
+   "addresses": [
+    "Elandsgracht 68"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 68-H",
+     "use": "winkelfunctie",
+     "areaM2": 454,
+     "bagId": "0363010000630861"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8516157194,
+     "lngLat": [
+      4.8809707,
+      52.3699272
+     ],
+     "tags": {
+      "check_date": "2025-02-15",
+      "check_date:opening_hours": "2024-03-20",
+      "female": "yes",
+      "name": "Rob Peetoom",
+      "opening_hours:signed": "no",
+      "shop": "hairdresser",
+      "website": "https://www.robpeetoom.nl"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170197",
+   "addresses": [
+    "Elandsgracht 66"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 66-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000630851"
+    },
+    {
+     "address": "Elandsgracht 66-O",
+     "use": "industriefunctie",
+     "areaM2": 36,
+     "bagId": "0363010000630852"
+    },
+    {
+     "address": "Elandsgracht 66-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010012105833"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170190",
+   "addresses": [
+    "Elandsgracht 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 64-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000630843"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721829907,
+     "lngLat": [
+      4.8811565,
+      52.3699335
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "64-H",
+      "addr:postcode": "1016TX",
+      "addr:street": "Elandsgracht",
+      "amenity": "restaurant",
+      "check_date": "2025-02-26",
+      "contact:facebook": "https://www.facebook.com/Palladio-cafe-restaurant-104482312927139/",
+      "cuisine": "italian",
+      "name": "Palladio",
+      "opening_hours": "Mo-Sa 15:00-22:00; Su off",
+      "phone": "+31 20 627 7442",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.restaurantpalladio.nl/"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170191",
+   "addresses": [
+    "Elandsgracht 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 60-H",
+     "use": "winkelfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000630837"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721829315,
+     "lngLat": [
+      4.8812148,
+      52.3699496
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60-H",
+      "addr:postcode": "1016TX",
+      "addr:street": "Elandsgracht",
+      "check_date": "2025-02-15",
+      "name": "Tenue de Nîmes",
+      "shop": "shoes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://tenuedenimes.com/"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12772250358,
+     "lngLat": [
+      4.8812564,
+      52.3699638
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "60-H",
+      "addr:postcode": "1016TX",
+      "addr:street": "Elandsgracht",
+      "check_date": "2025-02-26",
+      "name": "Tenure De Nimes",
+      "shop": "clothes",
+      "website": "https://tenuedenimes.com/"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168881",
+   "addresses": [
+    "Elandsgracht 38",
+    "Elandsgracht 40",
+    "Elandsgracht 42",
+    "Elandsgracht 44",
+    "Elandsgracht 46",
+    "Elandsgracht 48",
+    "Elandsgracht 50",
+    "Elandsgracht 52",
+    "Elandsgracht 54",
+    "Elandsgracht 56",
+    "Elandsgracht 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 38",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000630787"
+    },
+    {
+     "address": "Elandsgracht 58",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000630829"
+    },
+    {
+     "address": "Elandsgracht 46",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000630801"
+    },
+    {
+     "address": "Elandsgracht 40",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000630789"
+    },
+    {
+     "address": "Elandsgracht 54",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000630813"
+    },
+    {
+     "address": "Elandsgracht 56",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000630817"
+    },
+    {
+     "address": "Elandsgracht 42",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000630795"
+    },
+    {
+     "address": "Elandsgracht 52",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000630808"
+    },
+    {
+     "address": "Elandsgracht 48",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000630802"
+    },
+    {
+     "address": "Elandsgracht 50",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000630803"
+    },
+    {
+     "address": "Elandsgracht 44",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000630799"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721828942,
+     "lngLat": [
+      4.8812984,
+      52.3699743
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "58",
+      "addr:postcode": "1016TW",
+      "addr:street": "Elandsgracht",
+      "name": "Kleine Eland",
+      "opening_hours": "Tu-Fr 11:00-17:30; Sa 11:00-17:00",
+      "phone": "+31 20 620 9001",
+      "shop": "toys",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.kleine-eland.nl/"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173873",
+   "addresses": [
+    "Elandsgracht 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 36-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000630782"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173874",
+   "addresses": [
+    "Elandsgracht 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 34-H",
+     "use": "winkelfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000630778"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169410",
+   "addresses": [
+    "Elandsgracht 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 32-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000630772"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169414",
+   "addresses": [
+    "Elandsgracht 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 18-H",
+     "use": "industriefunctie",
+     "areaM2": 285,
+     "bagId": "0363010000630749"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1724414492,
+     "lngLat": [
+      4.8817334,
+      52.3701207
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18-28",
+      "addr:postcode": "1016TW",
+      "addr:street": "Elandsgracht",
+      "brand": "Etos",
+      "brand:website": "https://www.etos.nl/",
+      "brand:wikidata": "Q2609459",
+      "brand:wikipedia": "nl:Etos",
+      "check_date": "2025-02-23",
+      "name": "Etos",
+      "opening_hours": "Mo-Sa 09:00-18:30; Su 11:00-18:30",
+      "panoramax": "9dc98bab-c1be-404c-88d4-820fd1c4d1f2",
+      "phone": "+31 20 428 9008",
+      "ref": "7798",
+      "shop": "chemist",
+      "website": "https://www.etos.nl/winkels/amsterdam/elandsgracht-18-28-7798/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169411",
+   "addresses": [
+    "Elandsgracht 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 16",
+     "use": "woonfunctie",
+     "areaM2": 500,
+     "bagId": "0363010000630744"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721822615,
+     "lngLat": [
+      4.8818232,
+      52.370148
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16",
+      "addr:postcode": "1016TW",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "contact:instagram": "https://www.instagram.com/galerie_bart",
+      "name": "Galerie Bart",
+      "opening_hours": "Mo-We off; Th-Su 13:00-18:00",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "gallery",
+      "website": "https://www.galeriebart.nl"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169415",
+   "addresses": [
+    "Elandsgracht 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 14-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 190,
+     "bagId": "0363010000630738"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721820875,
+     "lngLat": [
+      4.8818981,
+      52.3701754
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "14-H",
+      "addr:postcode": "1016TV",
+      "addr:street": "Elandsgracht",
+      "amenity": "restaurant",
+      "check_date": "2026-07-06",
+      "cuisine": "ramen",
+      "name": "Gifu Ramen Bar",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169413",
+   "addresses": [
+    "Elandsgracht 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 12-H",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010001010869"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721818121,
+     "lngLat": [
+      4.8819588,
+      52.3702046
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1016TV",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "contact:facebook": "https://www.facebook.com/ensovintage",
+      "contact:instagram": "https://www.instagram.com/enso.vintage",
+      "name": "Ensō",
+      "opening_hours": "11:00-18:00",
+      "second_hand": "only",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://ensovintage.com/"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169416",
+   "addresses": [
+    "Elandsgracht 10A",
+    "Elandsgracht 10B",
+    "Elandsgracht 10C",
+    "Elandsgracht 10D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 10A",
+     "use": "kantoorfunctie",
+     "areaM2": 152,
+     "bagId": "0363010000995927"
+    },
+    {
+     "address": "Elandsgracht 10B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000995928"
+    },
+    {
+     "address": "Elandsgracht 10C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000995929"
+    },
+    {
+     "address": "Elandsgracht 10D",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000995930"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11948584426,
+     "lngLat": [
+      4.8820363,
+      52.3702255
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10",
+      "addr:postcode": "1016TV",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "name": "Daniele Dentici",
+      "shop": "shoes"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012169418",
+   "addresses": [
+    "Elandsgracht 8A",
+    "Elandsgracht 8B",
+    "Elandsgracht 8C",
+    "Elandsgracht 8D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 8A",
+     "use": "kantoorfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000630724"
+    },
+    {
+     "address": "Elandsgracht 8B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000630725"
+    },
+    {
+     "address": "Elandsgracht 8C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000630726"
+    },
+    {
+     "address": "Elandsgracht 8D",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000630727"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721825704,
+     "lngLat": [
+      4.8821848,
+      52.3702711
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4-H",
+      "addr:postcode": "1016TV",
+      "addr:street": "Elandsgracht",
+      "check_date": "2025-02-16",
+      "diet:gluten_free": "only",
+      "diet:vegan": "only",
+      "indoor_seating": "no",
+      "name": "SUE Bites Bar",
+      "opening_hours": "09:00-18:00",
+      "outdoor_seating": "no",
+      "payment:cash": "no",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "phone": "+31 20 221 0769",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "takeaway": "only",
+      "website": "https://sue-food.nl/pages/elandsgracht-amsterdam",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "frontage",
+     "distanceM": 3.4
+    },
+    {
+     "type": "node",
+     "id": 2721832432,
+     "lngLat": [
+      4.8821092,
+      52.370245
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8A",
+      "addr:postcode": "1016TV",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "name": "gr8acht",
+      "opening_hours": "Mo 13:00-18:00; Tu-Sa 11:00-18:00; Su 12:00-18:00",
+      "phone": "+31 20 625 7717",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.elandenvanderhelst.nl"
+     },
+     "fetchedAt": "2026-10-30T00:10:32.649Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

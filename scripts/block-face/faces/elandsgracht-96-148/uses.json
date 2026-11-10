@@ -1,0 +1,745 @@
+{
+ "street": "Elandsgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T00:13:40.992Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174552",
+   "addresses": [
+    "Elandsgracht 142"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 142-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000996080"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989713707,
+     "lngLat": [
+      4.878599,
+      52.3690995
+     ],
+     "tags": {
+      "name": "Vroom & Nobbe",
+      "shop": "optician"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174554",
+   "addresses": [
+    "Elandsgracht 140"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 140-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001172379"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989735732,
+     "lngLat": [
+      4.8786611,
+      52.3691132
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "Dutch Dabba Walla"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174555",
+   "addresses": [
+    "Elandsgracht 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 134-H",
+     "use": "winkelfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000631053"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721819804,
+     "lngLat": [
+      4.8787089,
+      52.3691388
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "134-H",
+      "addr:postcode": "1016VC",
+      "addr:street": "Elandsgracht",
+      "name": "Rum Baba",
+      "opening_hours": "Mo-Su 08:00-16:30",
+      "shop": "coffee",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174157",
+   "addresses": [
+    "Elandsgracht 132A",
+    "Elandsgracht 132C",
+    "Elandsgracht 132B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 132A",
+     "use": "kantoorfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000631049"
+    },
+    {
+     "address": "Elandsgracht 132C",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000631052"
+    },
+    {
+     "address": "Elandsgracht 132B",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001024895"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989696252,
+     "lngLat": [
+      4.87877,
+      52.3691543
+     ],
+     "tags": {
+      "name": "The Soulsisters",
+      "shop": "health_food"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174158",
+   "addresses": [
+    "Elandsgracht 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 130-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000631045"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1089777298,
+     "lngLat": [
+      4.8788095,
+      52.3691986
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "130",
+      "addr:postcode": "1016VB",
+      "addr:street": "Elandsgracht",
+      "amenity": "fast_food",
+      "check_date": "2023-04-13",
+      "cuisine": "burger",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "drive_through": "no",
+      "name": "Burgermeester",
+      "website": "https://burgermeester.eu/"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174155",
+   "addresses": [
+    "Elandsgracht 128A",
+    "Elandsgracht 128B",
+    "Elandsgracht 128C",
+    "Elandsgracht 128D",
+    "Elandsgracht 128E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 128A",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010001098476"
+    },
+    {
+     "address": "Elandsgracht 128B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001098522"
+    },
+    {
+     "address": "Elandsgracht 128C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001098559"
+    },
+    {
+     "address": "Elandsgracht 128D",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010001098718"
+    },
+    {
+     "address": "Elandsgracht 128E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001098756"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3400727086,
+     "lngLat": [
+      4.8789073,
+      52.3692132
+     ],
+     "tags": {
+      "check_date": "2023-04-13",
+      "name": "Yenba",
+      "shop": "supermarket"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174156",
+   "addresses": [
+    "Elandsgracht 126"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 126-H",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000631035"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989736941,
+     "lngLat": [
+      4.8789936,
+      52.3692385
+     ],
+     "tags": {
+      "name": "Eland",
+      "opening_hours": "Tu-Fr 10:00-18:00; Sa 10:00-17:00; Su,Mo off",
+      "shop": "tobacco"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168929",
+   "addresses": [
+    "Elandsgracht 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 122-H",
+     "use": "winkelfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000631031"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1598225523,
+     "lngLat": [
+      4.8790616,
+      52.3693004
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "122 (bg)",
+      "addr:postcode": "1016VB",
+      "addr:street": "Elandsgracht",
+      "check_date": "2023-04-13",
+      "cuisine": "coffee_shop",
+      "name": "Vlaamsch Broodhuys",
+      "name:nl": "Vlaamsch Broodhuys",
+      "name:tr": "beğenilen fırın",
+      "opening_hours": "Mo-Sa 08:00-18:00; Su 09:00-18:00",
+      "shop": "bakery",
+      "website": "https://www.vlaamschbroodhuys.nl"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168926",
+   "addresses": [
+    "Elandsgracht 120A"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989741365,
+     "lngLat": [
+      4.8791817,
+      52.369296
+     ],
+     "tags": {
+      "brand": "A.P.C.",
+      "brand:wikidata": "Q546542",
+      "name": "A.P.C.",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168935",
+   "addresses": [
+    "Elandsgracht 118A",
+    "Elandsgracht 120"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 120",
+     "use": "kantoorfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000631027"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168936",
+   "addresses": [
+    "Elandsgracht 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 118-H",
+     "use": "winkelfunctie",
+     "areaM2": 659,
+     "bagId": "0363010000631020"
+    },
+    {
+     "address": "Lijnbaansstraat 17-1",
+     "use": "industriefunctie",
+     "areaM2": 220,
+     "bagId": "0363010000724518"
+    },
+    {
+     "address": "Lijnbaansstraat 17-2",
+     "use": "industriefunctie",
+     "areaM2": 220,
+     "bagId": "0363010000724519"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1089777293,
+     "lngLat": [
+      4.879283,
+      52.3694252
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "118",
+      "addr:postcode": "1016VB",
+      "addr:street": "Elandsgracht",
+      "brand": "Ekoplaza",
+      "brand:wikidata": "Q47017915",
+      "brand:wikipedia": "nl:Ekoplaza",
+      "check_date": "2023-07-17",
+      "name": "Ekoplaza",
+      "opening_hours": "Mo-Sa 08:00-20:00; Su 10:00-19:00",
+      "organic": "only",
+      "phone": "+31 20 412 4696",
+      "shop": "supermarket",
+      "website": "https://www.ekoplaza.nl"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174351",
+   "addresses": [
+    "Elandsgracht 116A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 116A-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000631015"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1089777297,
+     "lngLat": [
+      4.879448,
+      52.3693696
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "116A-H",
+      "addr:postcode": "1016VB",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "name": "Siem van der Gragt",
+      "opening_hours": "Mo 10:00-18:00; Tu-Fr 09:00-18:00; Sa 08:00-17:00",
+      "phone": "+31 20 623 4387",
+      "shop": "butcher",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://siemvandergragt.nl"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174352",
+   "addresses": [
+    "Elandsgracht 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 116-H",
+     "use": "winkelfunctie",
+     "areaM2": 156,
+     "bagId": "0363010000631011"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174349",
+   "addresses": [
+    "Elandsgracht 114"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 114-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000631005"
+    },
+    {
+     "address": "Elandsgracht 114-H",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012591438"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174350",
+   "addresses": [
+    "Elandsgracht 110"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 110-H",
+     "use": "winkelfunctie",
+     "areaM2": 65,
+     "bagId": "0363010012591437"
+    },
+    {
+     "address": "Elandsgracht 110-H",
+     "use": "winkelfunctie",
+     "areaM2": 170,
+     "bagId": "0363010010953526"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 913920173,
+     "lngLat": [
+      4.879686,
+      52.3694485
+     ],
+     "tags": {
+      "check_date": "2024-03-20",
+      "name": "Rijwielhandel Comman",
+      "opening_hours": "We-Fr 08:30-18:00; Su-Tu off; Sa 10:00-16:00",
+      "shop": "bicycle"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174346",
+   "addresses": [
+    "Elandsgracht 108"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 108-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000630989"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4149464204,
+     "lngLat": [
+      4.8797457,
+      52.3694677
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "108",
+      "addr:street": "Elandsgracht",
+      "amenity": "restaurant",
+      "check_date": "2024-05-31",
+      "contact:instagram": "https://www.instagram.com/balthazarskeuken",
+      "name": "Balthazar's Keuken",
+      "phone": "+31 20 420 2114",
+      "website": "https://balthazarskeuken.nl/site/"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174347",
+   "addresses": [
+    "Elandsgracht 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 100-H",
+     "use": "winkelfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000630971"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721816017,
+     "lngLat": [
+      4.8798,
+      52.369493
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "100-H",
+      "addr:postcode": "1016VA",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "contact:instagram": "https://www.instagram.com/koopmandelicatessen",
+      "name": "Koopman",
+      "shop": "deli",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168933",
+   "addresses": [
+    "Elandsgracht 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 98-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000630967"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1724414513,
+     "lngLat": [
+      4.8798647,
+      52.369534
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "98",
+      "addr:postcode": "1016VA",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "check_date:opening_hours": "2024-03-20",
+      "description": "Sportspecialisten",
+      "email": "info@smit-cruyff.nl",
+      "name": "Smit Cruyff",
+      "opening_hours:signed": "no",
+      "phone": "+31 20 623 1735",
+      "shop": "sports",
+      "sport": "soccer",
+      "website": "https://www.smit-cruyff.nl"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168954",
+   "addresses": [
+    "Elandsgracht 96"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 96-H",
+     "use": "winkelfunctie",
+     "areaM2": 223,
+     "bagId": "0363010000630960"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721833844,
+     "lngLat": [
+      4.8799417,
+      52.3695587
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "96-H",
+      "addr:postcode": "1016VA",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "craft": "photographic_laboratory",
+      "email": "info@key-color.nl",
+      "name": "key-color / het fotolab",
+      "opening_hours": "Mo-Fr 09:30-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 620 1418",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.key-color.nl"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 7487206400,
+     "lngLat": [
+      4.8800704,
+      52.3695841
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "92",
+      "addr:postcode": "1016TZ",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "name": "Melrose",
+      "source": "BAG",
+      "source:date": "2021-01-29",
+      "tourism": "hotel",
+      "website": "https://www.melrosehotelamsterdam.com"
+     },
+     "fetchedAt": "2026-10-30T00:13:40.992Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    }
+   ]
+  }
+ ]
+}

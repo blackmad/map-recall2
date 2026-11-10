@@ -50,6 +50,11 @@ test('typed placement: roof override merges over the type roof; source front nee
   const unknown = JSON.parse(JSON.stringify(raw));
   unknown.houses[2].type.roof = {ridgeM: 17};
   assert.throws(() => validateBlockFace(unknown, members, fileTypeLoader()), /not a placement roof field/);
+  const rise = JSON.parse(JSON.stringify(raw));
+  rise.houses[2].type.roof = {rise: 0.6};
+  assert.throws(() => validateBlockFace(rise, members, fileTypeLoader()), /roof\.rise needs evidence/);
+  rise.houses[2].type.roof = {rise: 0.6, evidence: 'strip: slate face 1.8 m over the cornice'};
+  assert.equal(houseIntents(validateBlockFace(rise, members, fileTypeLoader()), fileTypeLoader())[2].roof.rise, 0.6);
   const bad = JSON.parse(JSON.stringify(raw));
   bad.houses[2].type.roof = {pitchDeg: 90};
   assert.throws(() => validateBlockFace(bad, members, fileTypeLoader()), /pitchDeg/);

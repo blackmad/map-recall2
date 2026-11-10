@@ -1,0 +1,41 @@
+{
+ "street": "Egelantiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:27:00.711Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174703",
+   "addresses": [
+    "Egelantiersgracht 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 11-H",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000566549"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174775",
+   "addresses": [
+    "Egelantiersgracht 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 13-H",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000628931"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

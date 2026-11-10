@@ -1,0 +1,714 @@
+{
+ "street": "Rozengracht",
+ "seed": "0363100012174001",
+ "members": [
+  "0363100012174001",
+  "0363100012174000",
+  "0363100012168642",
+  "0363100012168612",
+  "0363100012168649",
+  "0363100012170141",
+  "0363100012170140",
+  "0363100012170151",
+  "0363100012170154",
+  "0363100012170152",
+  "0363100012170153",
+  "0363100012170143"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012174002 6.4 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012170143 (face continues: 170142)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012168602",
+   "reason": "frontage 77.3 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168609",
+   "reason": "frontage 77.1 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168610",
+   "reason": "frontage 76.7 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168611",
+   "reason": "frontage 76.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168641",
+   "reason": "frontage 57.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168650",
+   "reason": "frontage 47.3 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012169027",
+   "reason": "frontage 47.4 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012169028",
+   "reason": "frontage 37.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012169962",
+   "reason": "frontage 41.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012169963",
+   "reason": "frontage 52.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012169964",
+   "reason": "frontage 77.4 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012169965",
+   "reason": "frontage 87.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170013",
+   "reason": "frontage 82.5 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170017",
+   "reason": "frontage 58.4 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170018",
+   "reason": "frontage 58.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170025",
+   "reason": "frontage 77.4 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170028",
+   "reason": "frontage 63.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170029",
+   "reason": "frontage 56.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170079",
+   "reason": "frontage 78.4 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170080",
+   "reason": "frontage 56.3 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168643",
+   "reason": "sightline to Rozengracht crosses 0363100012172575"
+  },
+  {
+   "pandId": "0363100012168636",
+   "reason": "frontage 86.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168637",
+   "reason": "frontage 76.5 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168638",
+   "reason": "frontage 76.3 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168010",
+   "reason": "frontage 49.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168011",
+   "reason": "frontage 47.1 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168012",
+   "reason": "frontage 48.3 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168013",
+   "reason": "frontage 47.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168014",
+   "reason": "frontage 49.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168606",
+   "reason": "frontage 39.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168607",
+   "reason": "frontage 43.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168608",
+   "reason": "frontage 44.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168647",
+   "reason": "frontage 44.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012169085",
+   "reason": "frontage 48.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012169086",
+   "reason": "frontage 46.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012169092",
+   "reason": "frontage 65.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170094",
+   "reason": "frontage 34.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012172575",
+   "reason": "no frontage on Rozengracht: No footprint edge faces Rozengracht"
+  },
+  {
+   "pandId": "0363100012172576",
+   "reason": "frontage 36.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012172577",
+   "reason": "frontage 35.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012172579",
+   "reason": "frontage 35.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012172768",
+   "reason": "frontage 38.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012172769",
+   "reason": "frontage 38.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170155",
+   "reason": "frontage 67.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170157",
+   "reason": "frontage 66.1 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170158",
+   "reason": "frontage 65.5 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170159",
+   "reason": "frontage 40.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170206",
+   "reason": "frontage 39.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170214",
+   "reason": "frontage 65.3 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170216",
+   "reason": "frontage 67.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170217",
+   "reason": "frontage 67.4 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170218",
+   "reason": "frontage 66.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170219",
+   "reason": "frontage 66.7 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170220",
+   "reason": "frontage 66.4 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170222",
+   "reason": "frontage 67.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012170223",
+   "reason": "frontage 88.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012172581",
+   "reason": "sightline to Rozengracht crosses 0363100012168644"
+  },
+  {
+   "pandId": "0363100012172582",
+   "reason": "frontage 36.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012172583",
+   "reason": "frontage 36.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012172770",
+   "reason": "sightline to Rozengracht crosses 0363100012168640"
+  },
+  {
+   "pandId": "0363100012172771",
+   "reason": "sightline to Rozengracht crosses 0363100012168644"
+  },
+  {
+   "pandId": "0363100012172772",
+   "reason": "frontage 33.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173953",
+   "reason": "frontage 76.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173954",
+   "reason": "frontage 76.7 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173955",
+   "reason": "frontage 76.7 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173962",
+   "reason": "frontage 101.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173963",
+   "reason": "frontage 104.1 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173964",
+   "reason": "frontage 104.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173966",
+   "reason": "frontage 102.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173972",
+   "reason": "frontage 76.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173996",
+   "reason": "frontage 54.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173997",
+   "reason": "frontage 49.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173998",
+   "reason": "frontage 37.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173999",
+   "reason": "frontage 37.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012174003",
+   "reason": "frontage 40.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173978",
+   "reason": "frontage 53.3 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173980",
+   "reason": "frontage 36.5 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173981",
+   "reason": "sightline to Rozengracht crosses 0363100012173982"
+  },
+  {
+   "pandId": "0363100012173984",
+   "reason": "frontage 36.5 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173990",
+   "reason": "sightline to Rozengracht crosses 0363100012173981"
+  },
+  {
+   "pandId": "0363100012173939",
+   "reason": "frontage 119.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173940",
+   "reason": "frontage 99.7 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173941",
+   "reason": "frontage 103.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173942",
+   "reason": "frontage 99.7 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173943",
+   "reason": "frontage 109.3 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173944",
+   "reason": "frontage 114.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173948",
+   "reason": "frontage 113.4 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173951",
+   "reason": "frontage 101.7 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173952",
+   "reason": "frontage 111.3 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173975",
+   "reason": "frontage 36.5 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173976",
+   "reason": "frontage 63.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173977",
+   "reason": "frontage 58.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173979",
+   "reason": "frontage 76.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173986",
+   "reason": "frontage 58.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012173987",
+   "reason": "frontage 58.2 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012172774",
+   "reason": "frontage 38.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012238689",
+   "reason": "frontage 54.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012238690",
+   "reason": "frontage 54.7 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012240299",
+   "reason": "frontage 46.7 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012174013",
+   "reason": "frontage 37.6 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012174014",
+   "reason": "frontage 33.5 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012174015",
+   "reason": "frontage 42.0 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012174037",
+   "reason": "frontage 45.5 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012174041",
+   "reason": "frontage 91.8 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012174043",
+   "reason": "frontage 67.9 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012239834",
+   "reason": "frontage 45.4 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012243113",
+   "reason": "frontage 47.1 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012571981",
+   "reason": "frontage 42.1 m from Rozengracht"
+  },
+  {
+   "pandId": "0363100012168603",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168604",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168605",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168613",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168639",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168640",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168644",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168645",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168646",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012168648",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170085",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172578",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172580",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172773",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170086",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170087",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170088",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170089",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170090",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170091",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170092",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170093",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170145",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170146",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170147",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170148",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170149",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012172775",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174012",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012174039",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174001",
+   "alongM": 0,
+   "widthM": 5.55,
+   "eavesM": 13.99,
+   "roofMaxM": 14.07,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174000",
+   "alongM": 5.47,
+   "widthM": 5.39,
+   "eavesM": 15.14,
+   "roofMaxM": 15.18,
+   "storeys3dbag": 5,
+   "builtYear": 1992,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168642",
+   "alongM": 10.83,
+   "widthM": 5.36,
+   "eavesM": 15.01,
+   "roofMaxM": 18.04,
+   "storeys3dbag": 5,
+   "builtYear": 1750,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168612",
+   "alongM": 14.5,
+   "widthM": 1.87,
+   "eavesM": 1.78,
+   "roofMaxM": 17.5,
+   "storeys3dbag": 5,
+   "builtYear": 1663,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168649",
+   "alongM": 21.73,
+   "widthM": 6.06,
+   "eavesM": 17.95,
+   "roofMaxM": 20.52,
+   "storeys3dbag": 5,
+   "builtYear": 1860,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012170141",
+   "alongM": 27.27,
+   "widthM": 5.02,
+   "eavesM": 13.49,
+   "roofMaxM": 16.08,
+   "storeys3dbag": 5,
+   "builtYear": 1904,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170140",
+   "alongM": 38.06,
+   "widthM": 16.64,
+   "eavesM": 15.03,
+   "roofMaxM": 16.47,
+   "storeys3dbag": 5,
+   "builtYear": 1992,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012170151",
+   "alongM": 49.34,
+   "widthM": 5.57,
+   "eavesM": 16.94,
+   "roofMaxM": 16.98,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": [
+    "Possible partial selected frontage: a near-parallel outward facade lies beyond a rejected native jog of at most 1m. Inspect sources and explicitly review a bounded jog-limit override."
+   ]
+  },
+  {
+   "pandId": "0363100012170154",
+   "alongM": 54.99,
+   "widthM": 5.74,
+   "eavesM": 10.73,
+   "roofMaxM": 13.34,
+   "storeys3dbag": 4,
+   "builtYear": 1861,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170152",
+   "alongM": 61.61,
+   "widthM": 7.53,
+   "eavesM": 7.69,
+   "roofMaxM": 9.22,
+   "storeys3dbag": 3,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170153",
+   "alongM": 69.04,
+   "widthM": 5.75,
+   "eavesM": 8.71,
+   "roofMaxM": 12.97,
+   "storeys3dbag": 4,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170143",
+   "alongM": 74.66,
+   "widthM": 5.5,
+   "eavesM": 13.07,
+   "roofMaxM": 13.11,
+   "storeys3dbag": 4,
+   "builtYear": 1896,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

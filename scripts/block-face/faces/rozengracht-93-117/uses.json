@@ -1,0 +1,596 @@
+{
+ "street": "Rozengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T02:36:43.110Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012572097",
+   "addresses": [
+    "Rozengracht 93B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 93B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000697726"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721834739,
+     "lngLat": [
+      4.880078,
+      52.3730732
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "99",
+      "addr:postcode": "1016LT",
+      "addr:street": "Rozengracht",
+      "alt_name": "Games Workshop",
+      "brand": "Warhammer",
+      "brand:wikidata": "Q587270",
+      "name": "Warhammer",
+      "opening_hours": "Tu-Sa 11:00-14:30,15:00-17:30",
+      "shop": "games",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-30T02:36:43.110Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012572098",
+   "addresses": [
+    "Rozengracht 95C",
+    "Rozengracht 95A",
+    "Rozengracht 95B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 95C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000723981"
+    },
+    {
+     "address": "Rozengracht 95A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000723235"
+    },
+    {
+     "address": "Rozengracht 95B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000986390"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721816027,
+     "lngLat": [
+      4.8799902,
+      52.3730458
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "101",
+      "addr:postcode": "1016LV",
+      "addr:street": "Rozengracht",
+      "name": "De Kinderboekwinkel",
+      "opening_hours": "Mo-Sa 10:00-18:00; Su 12:00-17:00; PH off",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://kinderboekwinkel.nl/"
+     },
+     "fetchedAt": "2026-10-30T02:36:43.110Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167939",
+   "addresses": [
+    "Rozengracht 97A",
+    "Rozengracht 97B",
+    "Rozengracht 97C",
+    "Rozengracht 97D",
+    "Rozengracht 97N",
+    "Rozengracht 97F",
+    "Rozengracht 97L",
+    "Rozengracht 97H",
+    "Rozengracht 97G",
+    "Rozengracht 97K",
+    "Rozengracht 97M",
+    "Rozengracht 97E",
+    "Rozengracht 99",
+    "Rozengracht 101",
+    "Rozengracht 103",
+    "Rozengracht 105A",
+    "Rozengracht 105B",
+    "Rozengracht 105C",
+    "Rozengracht 105D",
+    "Rozengracht 105E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 99",
+     "use": "winkelfunctie",
+     "areaM2": 121,
+     "bagId": "0363010000697819"
+    },
+    {
+     "address": "Rozengracht 97A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000724537"
+    },
+    {
+     "address": "Rozengracht 97B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000788824"
+    },
+    {
+     "address": "Rozengracht 101",
+     "use": "winkelfunctie",
+     "areaM2": 334,
+     "bagId": "0363010000944130"
+    },
+    {
+     "address": "Rozengracht 103",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000944131"
+    },
+    {
+     "address": "Rozengracht 105A-1",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010000944133"
+    },
+    {
+     "address": "Rozengracht 105A-2",
+     "use": "industriefunctie",
+     "areaM2": 62,
+     "bagId": "0363010000944134"
+    },
+    {
+     "address": "Rozengracht 105A-3",
+     "use": "industriefunctie",
+     "areaM2": 75,
+     "bagId": "0363010000944135"
+    },
+    {
+     "address": "Rozengracht 105A-4",
+     "use": "industriefunctie",
+     "areaM2": 75,
+     "bagId": "0363010000944136"
+    },
+    {
+     "address": "Rozengracht 105A-5",
+     "use": "industriefunctie",
+     "areaM2": 72,
+     "bagId": "0363010000944137"
+    },
+    {
+     "address": "Rozengracht 105A-6",
+     "use": "industriefunctie",
+     "areaM2": 60,
+     "bagId": "0363010000944138"
+    },
+    {
+     "address": "Rozengracht 105A-7",
+     "use": "industriefunctie",
+     "areaM2": 65,
+     "bagId": "0363010000944139"
+    },
+    {
+     "address": "Rozengracht 105A-8",
+     "use": "industriefunctie",
+     "areaM2": 119,
+     "bagId": "0363010000944140"
+    },
+    {
+     "address": "Rozengracht 105B-1",
+     "use": "industriefunctie",
+     "areaM2": 91,
+     "bagId": "0363010000944141"
+    },
+    {
+     "address": "Rozengracht 105B-4",
+     "use": "industriefunctie",
+     "areaM2": 79,
+     "bagId": "0363010000944144"
+    },
+    {
+     "address": "Rozengracht 105B-5",
+     "use": "industriefunctie",
+     "areaM2": 70,
+     "bagId": "0363010000944145"
+    },
+    {
+     "address": "Rozengracht 105B-6",
+     "use": "industriefunctie",
+     "areaM2": 72,
+     "bagId": "0363010000944146"
+    },
+    {
+     "address": "Rozengracht 105B-7",
+     "use": "industriefunctie",
+     "areaM2": 64,
+     "bagId": "0363010000944147"
+    },
+    {
+     "address": "Rozengracht 105B-8",
+     "use": "industriefunctie",
+     "areaM2": 78,
+     "bagId": "0363010000944148"
+    },
+    {
+     "address": "Rozengracht 105C-2",
+     "use": "industriefunctie",
+     "areaM2": 87,
+     "bagId": "0363010000944150"
+    },
+    {
+     "address": "Rozengracht 105D-1",
+     "use": "industriefunctie",
+     "areaM2": 58,
+     "bagId": "0363010000944151"
+    },
+    {
+     "address": "Rozengracht 105D-2",
+     "use": "industriefunctie",
+     "areaM2": 58,
+     "bagId": "0363010000944152"
+    },
+    {
+     "address": "Rozengracht 105D-3",
+     "use": "industriefunctie",
+     "areaM2": 56,
+     "bagId": "0363010000944153"
+    },
+    {
+     "address": "Rozengracht 105D-5",
+     "use": "industriefunctie",
+     "areaM2": 90,
+     "bagId": "0363010000944155"
+    },
+    {
+     "address": "Rozengracht 105E-1",
+     "use": "industriefunctie",
+     "areaM2": 73,
+     "bagId": "0363010000944156"
+    },
+    {
+     "address": "Rozengracht 97C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000944719"
+    },
+    {
+     "address": "Rozengracht 97D",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000944720"
+    },
+    {
+     "address": "Rozengracht 97N",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000944721"
+    },
+    {
+     "address": "Rozengracht 97F",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000944722"
+    },
+    {
+     "address": "Rozengracht 97L",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000944723"
+    },
+    {
+     "address": "Rozengracht 97H",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000944724"
+    },
+    {
+     "address": "Rozengracht 97G",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000986391"
+    },
+    {
+     "address": "Rozengracht 97K",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000986392"
+    },
+    {
+     "address": "Rozengracht 97M",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000986393"
+    },
+    {
+     "address": "Rozengracht 97E",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000944718"
+    }
+   ],
+   "units": 40,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8643485122,
+     "lngLat": [
+      4.8796973,
+      52.3730694
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-10-30T02:36:43.110Z",
+     "match": "frontage",
+     "distanceM": 5.7
+    },
+    {
+     "type": "node",
+     "id": 11985840045,
+     "lngLat": [
+      4.8796187,
+      52.372965
+     ],
+     "tags": {
+      "addr:housenumber": "107",
+      "addr:street": "Rozengracht",
+      "check_date": "2024-06-16",
+      "name": "Backstage Make-up And Hair",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-30T02:36:43.110Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "way",
+     "id": 1114922510,
+     "lngLat": [
+      4.879848,
+      52.3731109
+     ],
+     "tags": {
+      "amenity": "parking",
+      "capacity": "4",
+      "fee": "yes",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-30T02:36:43.110Z",
+     "match": "frontage",
+     "distanceM": 6
+    },
+    {
+     "type": "way",
+     "id": 1114922511,
+     "lngLat": [
+      4.8794747,
+      52.37302
+     ],
+     "tags": {
+      "amenity": "parking",
+      "capacity": "5",
+      "fee": "yes",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-30T02:36:43.110Z",
+     "match": "frontage",
+     "distanceM": 6.5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012572096",
+   "addresses": [
+    "Rozengracht 107"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 107",
+     "use": "winkelfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000944132"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012572095",
+   "addresses": [
+    "Rozengracht 109C",
+    "Rozengracht 109A",
+    "Rozengracht 109B",
+    "Rozengracht 111A",
+    "Rozengracht 111B",
+    "Rozengracht 111C",
+    "Rozengracht 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 109C",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000797553"
+    },
+    {
+     "address": "Rozengracht 111A",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000797554"
+    },
+    {
+     "address": "Rozengracht 111B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000797555"
+    },
+    {
+     "address": "Rozengracht 111C",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000797556"
+    },
+    {
+     "address": "Rozengracht 113",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000797560"
+    },
+    {
+     "address": "Rozengracht 109A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000797551"
+    },
+    {
+     "address": "Rozengracht 109B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000797552"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "way",
+     "id": 1114922512,
+     "lngLat": [
+      4.8791658,
+      52.3729447
+     ],
+     "tags": {
+      "access": "delivery",
+      "amenity": "parking",
+      "fee": "yes",
+      "parking": "street_side"
+     },
+     "fetchedAt": "2026-10-30T02:36:43.110Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175000",
+   "addresses": [
+    "Rozengracht 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 115",
+     "use": "winkelfunctie",
+     "areaM2": 418,
+     "bagId": "0363010000797571"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1591108281,
+     "lngLat": [
+      4.8791415,
+      52.3728406
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "115",
+      "addr:postcode": "1016LV",
+      "addr:street": "Rozengracht",
+      "name": "Dijkman",
+      "opening_hours": "Mo-Sa 10:00-18:00",
+      "phone": "+31 20 626 5611",
+      "shop": "musical_instrument",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.dijkmanmuziek.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-30T02:36:43.110Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174999",
+   "addresses": [
+    "Rozengracht 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 117",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 1179,
+     "bagId": "0363010000797573"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1591108293,
+     "lngLat": [
+      4.879009,
+      52.372808
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "117",
+      "addr:postcode": "1016LV",
+      "addr:street": "Rozengracht",
+      "amenity": "theatre",
+      "contact:instagram": "https://www.instagram.com/boomchicago/",
+      "contact:linkedin": "https://www.linkedin.com/company/boomchicago",
+      "contact:tripadvisor": "https://www.tripadvisor.com/Attraction_Review-g188590-d245172-Reviews-or20-Boom_Chicago-Amsterdam_North_Holland_Province.html",
+      "contact:youtube": "https://www.youtube.com/user/boomchicago",
+      "name": "Boom Chicago",
+      "note": "Improv comedy theater and bar",
+      "operator": "Boom Chicago",
+      "phone": "+31 20 217 0400",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.boomchicago.nl",
+      "wheelchair": "yes",
+      "wikidata": "Q13583637",
+      "wikimedia_commons": "File:Rozentheater.JPG",
+      "wikipedia": "en:Boom Chicago"
+     },
+     "fetchedAt": "2026-10-30T02:36:43.110Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -149,7 +149,7 @@ function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableTy
   return pinned?.length ? {...intent, continuity: {...intent.continuity, measuredEaves: pinned}} : intent;
 }
 
-async function faceEvidence(faceId: string) {
+export async function faceEvidence(faceId: string) {
   const dir = path.join(FACES, faceId);
   const [discovery, strip, uses] = await Promise.all(['discovery', 'strip', 'uses'].map(n => readJson(path.join(dir, `${n}.json`))));
   const raw = await stripRaw(path.join(STAGING, faceId, 'strip.jpg'));

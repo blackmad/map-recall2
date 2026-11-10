@@ -1,0 +1,110 @@
+{
+ "street": "Lauriergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169946",
+   "addresses": [
+    "Lauriergracht 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 86-H",
+     "use": "sportfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000719478"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169892",
+   "addresses": [
+    "Lauriergracht 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 84-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000719476"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169942",
+   "addresses": [
+    "Lauriergracht 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 82-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001165911"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169889",
+   "addresses": [
+    "Lauriergracht 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 80-H",
+     "use": "industriefunctie",
+     "areaM2": 228,
+     "bagId": "0363010000719474"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169943",
+   "addresses": [
+    "Lauriergracht 78A",
+    "Lauriergracht 78B",
+    "Lauriergracht 78C",
+    "Lauriergracht 78D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 78A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000719470"
+    },
+    {
+     "address": "Lauriergracht 78B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000719471"
+    },
+    {
+     "address": "Lauriergracht 78C",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000719472"
+    },
+    {
+     "address": "Lauriergracht 78D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000719473"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

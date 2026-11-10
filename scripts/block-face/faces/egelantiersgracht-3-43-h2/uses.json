@@ -1,0 +1,126 @@
+{
+ "street": "Egelantiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:27:00.711Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174965",
+   "addresses": [
+    "Egelantiersgracht 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 19-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000628950"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174781",
+   "addresses": [
+    "Egelantiersgracht 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 21-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000628957"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174968",
+   "addresses": [
+    "Egelantiersgracht 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 23",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000628966"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6063307091,
+     "lngLat": [
+      4.8832668,
+      52.3763208
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "yes"
+     },
+     "fetchedAt": "2026-10-29T21:27:00.711Z",
+     "match": "frontage",
+     "distanceM": 7.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174977",
+   "addresses": [
+    "Egelantiersgracht 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 25-H",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000628968"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174976",
+   "addresses": [
+    "Egelantiersgracht 27C",
+    "Egelantiersgracht 27D",
+    "Egelantiersgracht 27B",
+    "Egelantiersgracht 27A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 27C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000628973"
+    },
+    {
+     "address": "Egelantiersgracht 27D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000628974"
+    },
+    {
+     "address": "Egelantiersgracht 27B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000628972"
+    },
+    {
+     "address": "Egelantiersgracht 27A",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000628971"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

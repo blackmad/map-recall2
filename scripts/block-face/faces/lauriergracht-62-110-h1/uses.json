@@ -1,0 +1,93 @@
+{
+ "street": "Lauriergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167869",
+   "addresses": [
+    "Lauriergracht 102"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 102-H",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010000965804"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169895",
+   "addresses": [
+    "Lauriergracht 100"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 100-H",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000719514"
+    },
+    {
+     "address": "Lauriergracht 100-H",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010012061141"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169894",
+   "addresses": [
+    "Lauriergracht 96",
+    "Lauriergracht 98"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 98-H",
+     "use": "woonfunctie",
+     "areaM2": 245,
+     "bagId": "0363010000964093"
+    },
+    {
+     "address": "Lauriergracht 96-H",
+     "use": "woonfunctie",
+     "areaM2": 180,
+     "bagId": "0363010000881064"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169948",
+   "addresses": [
+    "Lauriergracht 92",
+    "Lauriergracht 94"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 94-H",
+     "use": "winkelfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000965803"
+    },
+    {
+     "address": "Lauriergracht 92-H",
+     "use": "woonfunctie",
+     "areaM2": 152,
+     "bagId": "0363010001007253"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

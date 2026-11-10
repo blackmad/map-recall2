@@ -1,0 +1,429 @@
+{
+ "street": "Rozengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T02:39:06.469Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167875",
+   "addresses": [
+    "Rozengracht 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 143-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000797607"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168550",
+   "addresses": [
+    "Rozengracht 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 145-H",
+     "use": "winkelfunctie",
+     "areaM2": 163,
+     "bagId": "0363010000983618"
+    },
+    {
+     "address": "Rozengracht 145-H",
+     "use": "winkelfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012106930"
+    },
+    {
+     "address": "Rozengracht 145-H",
+     "use": "winkelfunctie",
+     "areaM2": 125,
+     "bagId": "0363010012108387"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174357",
+   "addresses": [
+    "Rozengracht 151A",
+    "Rozengracht 151B",
+    "Rozengracht 151C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 151A",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000797634"
+    },
+    {
+     "address": "Rozengracht 151B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000797635"
+    },
+    {
+     "address": "Rozengracht 151C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000797636"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174281",
+   "addresses": [
+    "Rozengracht 149A",
+    "Rozengracht 149B",
+    "Rozengracht 149C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 149A",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000797630"
+    },
+    {
+     "address": "Rozengracht 149B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000797631"
+    },
+    {
+     "address": "Rozengracht 149C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000797632"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174278",
+   "addresses": [
+    "Rozengracht 147A",
+    "Rozengracht 147B",
+    "Rozengracht 147C",
+    "Rozengracht 181A",
+    "Rozengracht 181B",
+    "Rozengracht 181C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 181A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000797702"
+    },
+    {
+     "address": "Rozengracht 181B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000797703"
+    },
+    {
+     "address": "Rozengracht 181C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000797704"
+    },
+    {
+     "address": "Rozengracht 147A",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000797614"
+    },
+    {
+     "address": "Rozengracht 147B",
+     "use": "kantoorfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000797615"
+    },
+    {
+     "address": "Rozengracht 147C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000797616"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174360",
+   "addresses": [
+    "Rozengracht 179A",
+    "Rozengracht 179B",
+    "Rozengracht 179C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 179A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000797698"
+    },
+    {
+     "address": "Rozengracht 179B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000797699"
+    },
+    {
+     "address": "Rozengracht 179C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000797700"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174285",
+   "addresses": [
+    "Rozengracht 183",
+    "Rozengracht 185"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 183",
+     "use": "winkelfunctie",
+     "areaM2": 143,
+     "bagId": "0363010000797706"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174567",
+   "addresses": [
+    "Rozengracht 187",
+    "Rozengracht 191"
+   ],
+   "groundUnits": [],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174568",
+   "addresses": [
+    "Rozengracht 193"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 193",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 692,
+     "bagId": "0363010000797727"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174359",
+   "addresses": [
+    "Rozengracht 207A",
+    "Rozengracht 207D",
+    "Rozengracht 207F",
+    "Rozengracht 207B",
+    "Rozengracht 207C",
+    "Rozengracht 207E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 207A",
+     "use": "woonfunctie",
+     "areaM2": 304,
+     "bagId": "0363010011048057"
+    },
+    {
+     "address": "Rozengracht 207F",
+     "use": "sportfunctie",
+     "areaM2": 751,
+     "bagId": "0363010011048062"
+    },
+    {
+     "address": "Rozengracht 207B",
+     "use": "kantoorfunctie",
+     "areaM2": 290,
+     "bagId": "0363010011048058"
+    },
+    {
+     "address": "Rozengracht 207C",
+     "use": "kantoorfunctie",
+     "areaM2": 135,
+     "bagId": "0363010011048059"
+    },
+    {
+     "address": "Rozengracht 207E",
+     "use": "kantoorfunctie",
+     "areaM2": 226,
+     "bagId": "0363010011048061"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174566",
+   "addresses": [
+    "Rozengracht 215"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 215",
+     "use": "winkelfunctie",
+     "areaM2": 188,
+     "bagId": "0363010000797746"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4346467921,
+     "lngLat": [
+      4.8772388,
+      52.372385
+     ],
+     "tags": {
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-30T02:39:06.469Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174565",
+   "addresses": [
+    "Rozengracht 217"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 217-H",
+     "use": "winkelfunctie",
+     "areaM2": 233,
+     "bagId": "0363010000797755"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168373",
+   "addresses": [
+    "Rozengracht 219",
+    "Rozengracht 221A",
+    "Rozengracht 221B",
+    "Rozengracht 221C",
+    "Rozengracht 221D",
+    "Rozengracht 223",
+    "Rozengracht 225A",
+    "Rozengracht 225B",
+    "Rozengracht 225C",
+    "Rozengracht 225D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 221A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000745778"
+    },
+    {
+     "address": "Rozengracht 221B",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000745779"
+    },
+    {
+     "address": "Rozengracht 225A",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000745780"
+    },
+    {
+     "address": "Rozengracht 225B",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000745781"
+    },
+    {
+     "address": "Rozengracht 225C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000745782"
+    },
+    {
+     "address": "Rozengracht 225D",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000745783"
+    },
+    {
+     "address": "Rozengracht 221C",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000745784"
+    },
+    {
+     "address": "Rozengracht 221D",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000745785"
+    },
+    {
+     "address": "Rozengracht 219",
+     "use": "winkelfunctie",
+     "areaM2": 74,
+     "bagId": "0363010000745786"
+    },
+    {
+     "address": "Rozengracht 223",
+     "use": "winkelfunctie",
+     "areaM2": 490,
+     "bagId": "0363010000745787"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5190233521,
+     "lngLat": [
+      4.8770052,
+      52.3723205
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "223",
+      "addr:street": "Rozengracht",
+      "name": "Fjällräven",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-30T02:39:06.469Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

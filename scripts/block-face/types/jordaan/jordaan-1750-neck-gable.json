@@ -100,6 +100,12 @@
    "crownRise": 1.3,
    "atticWindows": 1,
    "note": "Bloemgracht 16-32 (173345): a bell gable 8.6-11.3 m, one attic light"
+  },
+  "bell-low": {
+   "gable": "bell",
+   "crownRise": 0.8,
+   "atticWindows": 1,
+   "note": "Egelantiersgracht 21 and 23 (174781, 174968; strip 2023-03-13): small bell gables 9.8-12.4 m, about 2.6 m over the gable foot on a 4.4 m front (the 1.3-storey bell draws 4.3 m); placed by hand, not by the skyline rule"
   }
  },
  "grounds": {

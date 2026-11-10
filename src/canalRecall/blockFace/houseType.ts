@@ -153,6 +153,13 @@ export interface HousePlacement {
   roof?: Partial<CanalHouseIntent['roof']>;
 }
 
+/**
+ * Roof fields a placement may set over its type's roof. `rise` (2026-11-10, Lauriergracht 78-84): the attic face's rise over
+ * the front eaves in top-storey heights, read on the strip, for a pand whose cornice line sits under 3DBAG's p95 by less than
+ * the flat-roof threshold (the recipe drew it flat although the photo shows a steep slate face with dormers on it).
+ */
+export const PLACEMENT_ROOF_KEYS = ['source', 'form', 'pitchDeg', 'hip', 'material', 'rise', 'evidence'] as const;
+
 /** Colour slots a placement may measure per pand (`HousePlacement.measuredPalette`). */
 export const MEASURED_PALETTE_KEYS = ['brick', 'frame', 'stone', 'band', 'cornice', 'door'] as const;
 export type MeasuredPalette = Partial<Pick<PaletteIntent, typeof MEASURED_PALETTE_KEYS[number]>> & {evidence: string};
@@ -348,8 +355,9 @@ export function placementProblems(types: Map<string, HouseTypeIntent>, houses: {
       else for (const k of Object.keys(o)) if (!PALETTE_OVERRIDE_KEYS.includes(k as typeof PALETTE_OVERRIDE_KEYS[number])) p.push(`${at}.paletteOverrides.${k}: not a house-palette field (${PALETTE_OVERRIDE_KEYS.join(', ')})`);
     }
     if (pl.roof !== undefined) {
-      if (!pl.roof || typeof pl.roof !== 'object' || Array.isArray(pl.roof)) p.push(`${at}.roof: an object (source, form, pitchDeg, hip, material, evidence)`);
-      else for (const k of Object.keys(pl.roof)) if (!['source', 'form', 'pitchDeg', 'hip', 'material', 'evidence'].includes(k)) p.push(`${at}.roof.${k}: not a placement roof field (source, form, pitchDeg, hip, material, evidence)`);
+      if (!pl.roof || typeof pl.roof !== 'object' || Array.isArray(pl.roof)) p.push(`${at}.roof: an object (${PLACEMENT_ROOF_KEYS.join(', ')})`);
+      else for (const k of Object.keys(pl.roof)) if (!(PLACEMENT_ROOF_KEYS as readonly string[]).includes(k)) p.push(`${at}.roof.${k}: not a placement roof field (${PLACEMENT_ROOF_KEYS.join(', ')})`);
+      if (pl.roof?.rise !== undefined && !pl.roof.evidence) p.push(`${at}.roof.rise needs evidence (the strip rows that show the roof face over the cornice)`);
       if (pl.roof?.source === 'front' && !pl.roof.evidence) p.push(`${at}.roof.source front needs evidence (what on the strip shows the roof form)`);
       if ((pl.roof?.material !== undefined || pl.roof?.hip !== undefined) && !pl.roof.evidence) p.push(`${at}.roof: a material or hip override needs evidence (the orthophoto or strip that shows it)`);
     }

@@ -1,0 +1,106 @@
+{
+ "street": "Elandsgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T00:18:08.644Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170193",
+   "addresses": [
+    "Elandsgracht 39"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 39",
+     "use": "woonfunctie",
+     "areaM2": 185,
+     "bagId": "0363010000949587"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170192",
+   "addresses": [
+    "Elandsgracht 41"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 41-H",
+     "use": "winkelfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000630794"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12772250360,
+     "lngLat": [
+      4.8810505,
+      52.3695613
+     ],
+     "tags": {
+      "check_date": "2025-02-15",
+      "name": "Vintage Of Amsterdam",
+      "second_hand": "only",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-30T00:18:08.644Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170196",
+   "addresses": [
+    "Elandsgracht 43A",
+    "Elandsgracht 43B",
+    "Elandsgracht 43C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 43A",
+     "use": "industriefunctie",
+     "areaM2": 86,
+     "bagId": "0363010000630796"
+    },
+    {
+     "address": "Elandsgracht 43B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000630797"
+    },
+    {
+     "address": "Elandsgracht 43C",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000630798"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12772250359,
+     "lngLat": [
+      4.8809813,
+      52.3695429
+     ],
+     "tags": {
+      "check_date": "2025-02-15",
+      "name": "Tailors Of Amsterdam",
+      "shop": "tailor"
+     },
+     "fetchedAt": "2026-10-30T00:18:08.644Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

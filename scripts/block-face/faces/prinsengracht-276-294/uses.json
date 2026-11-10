@@ -1,0 +1,478 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:20:37.912Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173893",
+   "addresses": [
+    "Prinsengracht 294"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 294-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000784483"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721825115,
+     "lngLat": [
+      4.8823716,
+      52.3703345
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "294-H",
+      "addr:postcode": "1016HJ",
+      "addr:street": "Prinsengracht",
+      "check_date": "2024-05-31",
+      "contact:instagram": "https://www.instagram.com/lasavonnerienl",
+      "name": "La Savonnerie",
+      "opening_hours": "Mo-Sa 12:00-16:00",
+      "phone": "+31 20 428 1139",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.savonnerie.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:20:37.912Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11948584424,
+     "lngLat": [
+      4.8823641,
+      52.3702697
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "material": "metal",
+      "waste": "trash;cigarettes"
+     },
+     "fetchedAt": "2026-11-10T08:20:37.912Z",
+     "match": "frontage",
+     "distanceM": 6.7
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173897",
+   "addresses": [
+    "Prinsengracht 292"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 292-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000784477"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721825111,
+     "lngLat": [
+      4.8823985,
+      52.3704017
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "292-H",
+      "addr:postcode": "1016HJ",
+      "addr:street": "Prinsengracht",
+      "amenity": "ice_cream",
+      "brand": "IJscuypje",
+      "brand:wikidata": "Q121742244",
+      "check_date": "2025-08-17",
+      "email": "info@ijscuypje.nl",
+      "name": "IJscuypje",
+      "opening_hours": "Mo-Su 12:00 - 22:00",
+      "opening_hours:signed": "no",
+      "payment:cash": "no",
+      "payment:contactless": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "phone": "+31 20 617 0039",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.ijscuypje.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:20:37.912Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173896",
+   "addresses": [
+    "Prinsengracht 290D",
+    "Prinsengracht 290A",
+    "Prinsengracht 290B",
+    "Prinsengracht 290C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 290D",
+     "use": "winkelfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000581356"
+    },
+    {
+     "address": "Prinsengracht 290A",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000581357"
+    },
+    {
+     "address": "Prinsengracht 290B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000581358"
+    },
+    {
+     "address": "Prinsengracht 290C",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000581359"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3642283955,
+     "lngLat": [
+      4.8824031,
+      52.3704422
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "290",
+      "addr:postcode": "1016HJ",
+      "addr:street": "Prinsengracht",
+      "check_date": "2024-05-31",
+      "name": "Xantippe",
+      "opening_hours": "Mo off; Tu-Fr 10:00-18:00; Sa 10:00-17:00; Su 12:00-17:00",
+      "shop": "books",
+      "website": "https://www.xantippe.nl/",
+      "wikidata": "Q62033683",
+      "wikipedia": "nl:Xantippe (boekhandel)"
+     },
+     "fetchedAt": "2026-11-10T08:20:37.912Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173885",
+   "addresses": [
+    "Prinsengracht 284A",
+    "Prinsengracht 284B",
+    "Prinsengracht 284C",
+    "Prinsengracht 284D",
+    "Prinsengracht 284E",
+    "Prinsengracht 284F",
+    "Prinsengracht 284G",
+    "Prinsengracht 286A",
+    "Prinsengracht 286B",
+    "Prinsengracht 286C",
+    "Prinsengracht 286D",
+    "Prinsengracht 286E",
+    "Prinsengracht 286F",
+    "Prinsengracht 286G",
+    "Prinsengracht 286K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 286A",
+     "use": "industriefunctie",
+     "areaM2": 107,
+     "bagId": "0363010000784459"
+    },
+    {
+     "address": "Prinsengracht 286B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000784460"
+    },
+    {
+     "address": "Prinsengracht 286C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000784461"
+    },
+    {
+     "address": "Prinsengracht 286D",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000784462"
+    },
+    {
+     "address": "Prinsengracht 286E",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000784463"
+    },
+    {
+     "address": "Prinsengracht 286F",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000784464"
+    },
+    {
+     "address": "Prinsengracht 286G",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010000784465"
+    },
+    {
+     "address": "Prinsengracht 284A",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000952380"
+    },
+    {
+     "address": "Prinsengracht 284B",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000952387"
+    },
+    {
+     "address": "Prinsengracht 284C",
+     "use": "woonfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000952388"
+    },
+    {
+     "address": "Prinsengracht 284D",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000952389"
+    },
+    {
+     "address": "Prinsengracht 284E",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000952390"
+    },
+    {
+     "address": "Prinsengracht 284F",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000952391"
+    },
+    {
+     "address": "Prinsengracht 284G",
+     "use": "woonfunctie",
+     "areaM2": 151,
+     "bagId": "0363010012109940"
+    },
+    {
+     "address": "Prinsengracht 286K",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 42,
+     "bagId": "0363010012109941"
+    }
+   ],
+   "units": 15,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721825052,
+     "lngLat": [
+      4.8824047,
+      52.3705223
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "286A",
+      "addr:postcode": "1016HJ",
+      "addr:street": "Prinsengracht",
+      "check_date": "2024-05-31",
+      "contact:whatsapp": "+31611440899",
+      "name": "kopjethee",
+      "opening_hours": "Mo,Su off; Tu-Sa 11:00-17:00",
+      "phone": "+31 20 331 7440",
+      "shop": "kitchen",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.kopjethee.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:20:37.912Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11948533663,
+     "lngLat": [
+      4.8824072,
+      52.3705891
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "284A",
+      "addr:postcode": "1016HJ",
+      "addr:street": "Prinsengracht",
+      "check_date": "2024-05-31",
+      "name": "De Sleutelspecialist",
+      "opening_hours": "Mo-Fr 08:15-17:00; Sa-Su off",
+      "phone": "+31 20 623 9869; +31 6 53807145; +31 6 22459282",
+      "shop": "locksmith",
+      "website": "https://desleutelspecialist.nl/"
+     },
+     "fetchedAt": "2026-11-10T08:20:37.912Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173886",
+   "addresses": [
+    "Prinsengracht 282A",
+    "Prinsengracht 282B",
+    "Prinsengracht 282C",
+    "Prinsengracht 282D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 282A",
+     "use": "kantoorfunctie",
+     "areaM2": 223,
+     "bagId": "0363010000784445"
+    },
+    {
+     "address": "Prinsengracht 282B",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000784446"
+    },
+    {
+     "address": "Prinsengracht 282C",
+     "use": "woonfunctie",
+     "areaM2": 205,
+     "bagId": "0363010000994856"
+    },
+    {
+     "address": "Prinsengracht 282D",
+     "use": "woonfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000994857"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173901",
+   "addresses": [
+    "Prinsengracht 280B",
+    "Prinsengracht 280C",
+    "Prinsengracht 280D",
+    "Prinsengracht 280A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 280B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000938489"
+    },
+    {
+     "address": "Prinsengracht 280C",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000938490"
+    },
+    {
+     "address": "Prinsengracht 280D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000938491"
+    },
+    {
+     "address": "Prinsengracht 280A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000948787"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173903",
+   "addresses": [
+    "Prinsengracht 278"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 278",
+     "use": "industriefunctie,woonfunctie",
+     "areaM2": 312,
+     "bagId": "0363010000784442"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173895",
+   "addresses": [
+    "Prinsengracht 276"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 276-H",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000784437"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11919676210,
+     "lngLat": [
+      4.8824288,
+      52.3709061
+     ],
+     "tags": {
+      "addr:housenumber": "276",
+      "addr:street": "Prinsengracht",
+      "amenity": "cafe",
+      "check_date": "2024-05-20",
+      "contact:facebook": "https://www.facebook.com/cloudamsterdam",
+      "contact:instagram": "https://www.instagram.com/cloudamsterdam",
+      "cuisine": "coffee_shop",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "Cloud",
+      "opening_hours": "Mo-Fr 09:00-17:00; Sa 11:00-18:00; Su 12:00-18:00",
+      "toilets": "yes",
+      "toilets:wheelchair": "no",
+      "website": "https://www.cloudamsterdam.com/"
+     },
+     "fetchedAt": "2026-11-10T08:20:37.912Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

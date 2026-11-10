@@ -1,0 +1,255 @@
+{
+ "street": "Looiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T01:45:12.246Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168862",
+   "addresses": [
+    "Looiersgracht 40A",
+    "Looiersgracht 40B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 40B",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000990432"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 31-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000990433"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 410212543,
+     "lngLat": [
+      4.8813577,
+      52.3686458
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "40B",
+      "addr:postcode": "1016VS",
+      "addr:street": "Looiersgracht",
+      "amenity": "pub",
+      "check_date": "2024-05-20",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "email": "eetcafe@cafefestinalente.nl",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Festina Lente",
+      "opening_hours": "Mo-Fr 00:00-01:00,09:00-24:00; Sa,Su 00:00-03:00,10:00-24:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 638 1412",
+      "smoking": "outside",
+      "website": "https://cafefestinalente.nl"
+     },
+     "fetchedAt": "2026-10-30T01:45:12.246Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 7556008111,
+     "lngLat": [
+      4.8813999,
+      52.368656
+     ],
+     "tags": {
+      "alt_name": "de man met kat",
+      "artist_name": "Albert Zweep",
+      "artwork_type": "statue",
+      "material": "bronze",
+      "name": "Vaste klant",
+      "name:en": "regular customer",
+      "source": "survey",
+      "start_date": "1997",
+      "tourism": "artwork",
+      "website": "https://www.buitenbeeldinbeeld.nl/Amsterdam_C/VasteKlant.htm",
+      "wikidata": "Q29167584",
+      "wikipedia": "nl:Vaste klant"
+     },
+     "fetchedAt": "2026-10-30T01:45:12.246Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173845",
+   "addresses": [
+    "Looiersgracht 34",
+    "Looiersgracht 36",
+    "Looiersgracht 38",
+    "Looiersgracht 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 38",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000727933"
+    },
+    {
+     "address": "Looiersgracht 34",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010012062183"
+    },
+    {
+     "address": "Looiersgracht 36",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010012062184"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012253930",
+   "addresses": [
+    "Looiersgracht 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 32-H",
+     "use": "industriefunctie",
+     "areaM2": 641,
+     "bagId": "0363010000727924"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169710",
+   "addresses": [
+    "Looiersgracht 26",
+    "Looiersgracht 28",
+    "Looiersgracht 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 28-H",
+     "use": "sportfunctie",
+     "areaM2": 1043,
+     "bagId": "0363010001007143"
+    },
+    {
+     "address": "Oude Looiersstraat 31",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010001010871"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173850",
+   "addresses": [
+    "Looiersgracht 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 14-H",
+     "use": "industriefunctie",
+     "areaM2": 134,
+     "bagId": "0363010000727870"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173851",
+   "addresses": [
+    "Looiersgracht 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000727865"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721818130,
+     "lngLat": [
+      4.8819771,
+      52.3688483
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1016VS",
+      "addr:street": "Looiersgracht",
+      "amenity": "restaurant",
+      "check_date": "2024-06-22",
+      "name": "Foodware",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://foodware.nl"
+     },
+     "fetchedAt": "2026-10-30T01:45:12.246Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173856",
+   "addresses": [
+    "Looiersgracht 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 10-H",
+     "use": "woonfunctie",
+     "areaM2": 256,
+     "bagId": "0363010001007322"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173855",
+   "addresses": [
+    "Looiersgracht 2",
+    "Looiersgracht 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 4",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000727862"
+    },
+    {
+     "address": "Looiersgracht 2",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000727861"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

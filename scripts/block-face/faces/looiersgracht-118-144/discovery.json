@@ -1,0 +1,298 @@
+{
+ "street": "Looiersgracht",
+ "seed": "0363100012174545",
+ "members": [
+  "0363100012174463",
+  "0363100012174464",
+  "0363100012174545"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012167469 27.4 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012169552",
+   "reason": "frontage 78.7 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012169620",
+   "reason": "frontage 67.0 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170009",
+   "reason": "frontage 78.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170055",
+   "reason": "frontage 67.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170056",
+   "reason": "frontage 67.3 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170060",
+   "reason": "frontage 45.8 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170061",
+   "reason": "frontage 36.3 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170120",
+   "reason": "frontage 36.3 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170121",
+   "reason": "frontage 67.5 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170130",
+   "reason": "frontage 67.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174145",
+   "reason": "frontage 89.1 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174146",
+   "reason": "frontage 91.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174147",
+   "reason": "frontage 84.0 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012167464",
+   "reason": "frontage 77.6 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012167467",
+   "reason": "frontage 40.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012167468",
+   "reason": "sightline to Looiersgracht crosses 0363100012167469"
+  },
+  {
+   "pandId": "0363100012167470",
+   "reason": "frontage 37.2 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012167471",
+   "reason": "frontage 38.3 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012167886",
+   "reason": "frontage 45.1 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012167887",
+   "reason": "frontage 43.8 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012168917",
+   "reason": "sightline to Looiersgracht crosses 0363100012169999"
+  },
+  {
+   "pandId": "0363100012169550",
+   "reason": "frontage 86.7 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012169616",
+   "reason": "frontage 63.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012169617",
+   "reason": "sightline to Looiersgracht crosses 0363100012170000"
+  },
+  {
+   "pandId": "0363100012169991",
+   "reason": "frontage 63.2 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012169992",
+   "reason": "frontage 63.1 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170004",
+   "reason": "sightline to Looiersgracht crosses 0363100012167890"
+  },
+  {
+   "pandId": "0363100012170005",
+   "reason": "frontage 37.2 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170006",
+   "reason": "frontage 45.0 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170059",
+   "reason": "frontage 36.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012170064",
+   "reason": "frontage 36.3 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012173536",
+   "reason": "frontage 78.2 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174148",
+   "reason": "frontage 73.6 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174149",
+   "reason": "frontage 89.7 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174150",
+   "reason": "frontage 81.1 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174151",
+   "reason": "frontage 74.2 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174152",
+   "reason": "frontage 97.8 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174153",
+   "reason": "frontage 89.5 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174160",
+   "reason": "frontage 75.3 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174549",
+   "reason": "frontage 91.7 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174550",
+   "reason": "frontage 98.8 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174556",
+   "reason": "frontage 90.1 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174557",
+   "reason": "frontage 82.3 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174558",
+   "reason": "frontage 89.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174560",
+   "reason": "frontage 85.1 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174562",
+   "reason": "frontage 90.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174154",
+   "reason": "frontage 79.2 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174159",
+   "reason": "frontage 89.4 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174465",
+   "reason": "sightline to Looiersgracht crosses 0363100012174463"
+  },
+  {
+   "pandId": "0363100012174466",
+   "reason": "sightline to Looiersgracht crosses 0363100012174463"
+  },
+  {
+   "pandId": "0363100012174467",
+   "reason": "sightline to Looiersgracht crosses 0363100012174464"
+  },
+  {
+   "pandId": "0363100012174468",
+   "reason": "sightline to Looiersgracht crosses 0363100012174545"
+  },
+  {
+   "pandId": "0363100012174469",
+   "reason": "frontage 30.5 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174470",
+   "reason": "frontage 38.2 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174546",
+   "reason": "frontage 53.6 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174547",
+   "reason": "frontage 60.1 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012174548",
+   "reason": "frontage 52.8 m from Looiersgracht"
+  },
+  {
+   "pandId": "0363100012240264",
+   "reason": "sightline to Looiersgracht crosses 0363100012167889"
+  },
+  {
+   "pandId": "0363100012167465",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167466",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170000",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012174463",
+   "alongM": -21.81,
+   "widthM": 6.75,
+   "eavesM": 10.91,
+   "roofMaxM": 12.99,
+   "storeys3dbag": 4,
+   "builtYear": 1908,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174464",
+   "alongM": -14.56,
+   "widthM": 7.75,
+   "eavesM": 13.41,
+   "roofMaxM": 18.15,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012174545",
+   "alongM": 0,
+   "widthM": 21.37,
+   "eavesM": 17.77,
+   "roofMaxM": 19.32,
+   "storeys3dbag": 5,
+   "builtYear": 1920,
+   "uncertainty": []
+  }
+ ]
+}

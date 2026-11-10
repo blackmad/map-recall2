@@ -1,0 +1,155 @@
+{
+ "street": "Looiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T01:47:45.134Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167469",
+   "addresses": [
+    "Looiersgracht 98",
+    "Looiersgracht 100",
+    "Looiersgracht 102",
+    "Looiersgracht 104",
+    "Looiersgracht 106",
+    "Looiersgracht 108",
+    "Looiersgracht 110",
+    "Looiersgracht 112",
+    "Looiersgracht 114",
+    "Looiersgracht 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 98",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000728008"
+    },
+    {
+     "address": "Looiersgracht 100",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000728010"
+    },
+    {
+     "address": "Looiersgracht 102",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000728012"
+    },
+    {
+     "address": "Looiersgracht 104",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000728014"
+    },
+    {
+     "address": "Looiersgracht 106",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000728016"
+    },
+    {
+     "address": "Looiersgracht 108",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000728018"
+    },
+    {
+     "address": "Looiersgracht 110",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000728020"
+    },
+    {
+     "address": "Looiersgracht 112",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000728021"
+    },
+    {
+     "address": "Looiersgracht 114",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000728022"
+    },
+    {
+     "address": "Looiersgracht 116",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000728023"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167889",
+   "addresses": [
+    "Looiersgracht 80",
+    "Looiersgracht 82",
+    "Looiersgracht 84",
+    "Looiersgracht 86",
+    "Looiersgracht 88",
+    "Looiersgracht 90"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 80",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001165913"
+    },
+    {
+     "address": "Looiersgracht 82",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010001165914"
+    },
+    {
+     "address": "Looiersgracht 84",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010001165915"
+    },
+    {
+     "address": "Looiersgracht 86",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010001165916"
+    },
+    {
+     "address": "Looiersgracht 88",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010001165917"
+    },
+    {
+     "address": "Looiersgracht 90",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001165918"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170002",
+   "addresses": [
+    "Looiersgracht 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 78",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010003695380"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,615 @@
+{
+ "street": "Elandsgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T00:19:08.677Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169621",
+   "addresses": [
+    "Elandsgracht 51",
+    "Elandsgracht 51A",
+    "Elandsgracht 51B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 51",
+     "use": "winkelfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000630804"
+    },
+    {
+     "address": "Elandsgracht 51A",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010001970887"
+    },
+    {
+     "address": "Elandsgracht 51B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010001970891"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989732579,
+     "lngLat": [
+      4.8806483,
+      52.369451
+     ],
+     "tags": {
+      "name": "In de Jordaan",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012254021",
+   "addresses": [
+    "Elandsgracht 53"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 53-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000630809"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 3400742539,
+     "lngLat": [
+      4.880568,
+      52.3694181
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "53",
+      "addr:postcode": "1016TN",
+      "addr:street": "Elandsgracht",
+      "amenity": "cafe",
+      "check_date": "2025-11-15",
+      "name": "Koffiespot",
+      "website": "https://www.koffiespot.nl/"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168956",
+   "addresses": [
+    "Elandsgracht 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 55-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000630814"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989709500,
+     "lngLat": [
+      4.8805221,
+      52.3693997
+     ],
+     "tags": {
+      "check_date": "2025-11-15",
+      "name": "Baskèts",
+      "shop": "shoes"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168951",
+   "addresses": [
+    "Elandsgracht 57A",
+    "Elandsgracht 57C",
+    "Elandsgracht 57D",
+    "Elandsgracht 57E",
+    "Elandsgracht 57G",
+    "Elandsgracht 57F",
+    "Elandsgracht 57B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 57A",
+     "use": "industriefunctie",
+     "areaM2": 150,
+     "bagId": "0363010001994437"
+    },
+    {
+     "address": "Elandsgracht 57C",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010001994439"
+    },
+    {
+     "address": "Elandsgracht 57D",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010001994440"
+    },
+    {
+     "address": "Elandsgracht 57E",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010001994441"
+    },
+    {
+     "address": "Elandsgracht 57G",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001994443"
+    },
+    {
+     "address": "Elandsgracht 57F",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001994442"
+    },
+    {
+     "address": "Elandsgracht 57B",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010001994438"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989708122,
+     "lngLat": [
+      4.8804501,
+      52.3693852
+     ],
+     "tags": {
+      "check_date": "2025-11-15",
+      "clothes": "men",
+      "name": "Baskèts",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168950",
+   "addresses": [
+    "Elandsgracht 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 59-H",
+     "use": "winkelfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000630830"
+    }
+   ],
+   "units": 18,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989731583,
+     "lngLat": [
+      4.8803843,
+      52.3693673
+     ],
+     "tags": {
+      "check_date": "2025-11-15",
+      "contact:facebook": "https://www.facebook.com/miscstore.ams/",
+      "contact:instagram": "https://www.instagram.com/miscstore.ams",
+      "email": "hello@misc-store.com",
+      "name": "Misc",
+      "opening_hours": "Mo-Sa 10:30-18:00; Su 12:00-18:00",
+      "shop": "stationery",
+      "website": "https://misc-store.com",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168949",
+   "addresses": [
+    "Elandsgracht 61A",
+    "Elandsgracht 61B",
+    "Elandsgracht 61C",
+    "Elandsgracht 61D",
+    "Elandsgracht 61E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 61A",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010011323168"
+    },
+    {
+     "address": "Elandsgracht 61B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010011323169"
+    },
+    {
+     "address": "Elandsgracht 61C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010011323170"
+    },
+    {
+     "address": "Elandsgracht 61D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010011323171"
+    },
+    {
+     "address": "Elandsgracht 61E",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010011323172"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989704346,
+     "lngLat": [
+      4.8803174,
+      52.369343
+     ],
+     "tags": {
+      "check_date": "2025-04-21",
+      "healthcare": "alternative",
+      "healthcare:speciality": "acupuncture",
+      "name": "De Eland"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170127",
+   "addresses": [
+    "Elandsgracht 63"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 63-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000945974"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989702359,
+     "lngLat": [
+      4.8802526,
+      52.36932
+     ],
+     "tags": {
+      "amenity": "fast_food",
+      "check_date": "2025-04-21",
+      "name": "Snackbar Stoot je hoofd niet"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170126",
+   "addresses": [
+    "Elandsgracht 65"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 65-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000630847"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989734251,
+     "lngLat": [
+      4.8802238,
+      52.3693042
+     ],
+     "tags": {
+      "check_date": "2025-04-21",
+      "name": "Hollywood Mark",
+      "shop": "tattoo"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170125",
+   "addresses": [
+    "Elandsgracht 67"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 67-H",
+     "use": "winkelfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000630857"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989713675,
+     "lngLat": [
+      4.8801774,
+      52.3692905
+     ],
+     "tags": {
+      "check_date": "2025-04-21",
+      "contact:facebook": "https://www.facebook.com/repose.ams/",
+      "contact:instagram": "https://www.instagram.com/repose.ams",
+      "name": "Repose AMS",
+      "opening_hours": "Mo-Sa 10:00-18:00; Su 12:00-18:00",
+      "shop": "baby_goods",
+      "website": "https://www.repose-ams.com"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170124",
+   "addresses": [
+    "Elandsgracht 69"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 69-H",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000630864"
+    }
+   ],
+   "units": 11,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989732921,
+     "lngLat": [
+      4.8801168,
+      52.369275
+     ],
+     "tags": {
+      "name": "Amstenrade Advies",
+      "office": "company"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170129",
+   "addresses": [
+    "Elandsgracht 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 71-H",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000630873"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170054",
+   "addresses": [
+    "Elandsgracht 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 73-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000630880"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 8891270385,
+     "lngLat": [
+      4.879983,
+      52.3692425
+     ],
+     "tags": {
+      "name": "Jacob Frederik Muller",
+      "tourism": "artwork"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168952",
+   "addresses": [
+    "Elandsgracht 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 75-H",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000630888"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168953",
+   "addresses": [
+    "Elandsgracht 77"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 77-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000630897"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012168927",
+   "addresses": [
+    "Elandsgracht 83"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 83-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000630912"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174561",
+   "addresses": [
+    "Elandsgracht 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 85-H",
+     "use": "kantoorfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000630927"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989734361,
+     "lngLat": [
+      4.8797768,
+      52.3691592
+     ],
+     "tags": {
+      "name": "Studio Stroop",
+      "shop": "beauty"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174559",
+   "addresses": [
+    "Elandsgracht 87"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 87-H",
+     "use": "woonfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000630936"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174161",
+   "addresses": [
+    "Elandsgracht 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 89-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000630945"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11989702360,
+     "lngLat": [
+      4.8795201,
+      52.3690763
+     ],
+     "tags": {
+      "name": "Waldo",
+      "opening_hours": "Tu-Fr 10:00-17:30; Mo 12:00-17:30; Sa 09:00-17:30; Su off",
+      "shop": "pastry"
+     },
+     "fetchedAt": "2026-10-30T00:19:08.677Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    }
+   ]
+  }
+ ]
+}

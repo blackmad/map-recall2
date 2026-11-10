@@ -1,0 +1,367 @@
+{
+ "street": "Elandsgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T00:16:11.329Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173875",
+   "addresses": [
+    "Elandsgracht 1A",
+    "Elandsgracht 1B",
+    "Elandsgracht 1C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 1A",
+     "use": "winkelfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000630705"
+    },
+    {
+     "address": "Elandsgracht 1B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001026094"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721823568,
+     "lngLat": [
+      4.8821402,
+      52.3699363
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1A",
+      "addr:postcode": "1016TM",
+      "addr:street": "Elandsgracht",
+      "beauty": "nails",
+      "check_date": "2024-05-31",
+      "contact:facebook": "https://www.facebook.com/amsterdamnail",
+      "contact:instagram": "https://www.instagram.com/amsterdamnail",
+      "name": "Amsterdam Nail Art Studio",
+      "opening_hours": "10:00-19:30",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://amsterdamnail.nl/"
+     },
+     "fetchedAt": "2026-10-30T00:16:11.329Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173857",
+   "addresses": [
+    "Elandsgracht 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 3-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000987042"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721825212,
+     "lngLat": [
+      4.8820968,
+      52.3699089
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "3-H",
+      "addr:postcode": "1016TM",
+      "addr:street": "Elandsgracht",
+      "check_date": "2024-05-31",
+      "name": "Coffeeshop Johnny",
+      "name:nl": "Coffeeshop Johnny",
+      "shop": "cannabis",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-30T00:16:11.329Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173862",
+   "addresses": [
+    "Elandsgracht 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 5-H",
+     "use": "industriefunctie",
+     "areaM2": 54,
+     "bagId": "0363010000630717"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 483553534,
+     "lngLat": [
+      4.882021,
+      52.3699014
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5-H",
+      "addr:postcode": "1016TM",
+      "addr:street": "Elandsgracht",
+      "brand": "Gall & Gall",
+      "brand:wikidata": "Q13639185",
+      "brand:wikipedia": "nl:Gall & Gall",
+      "check_date": "2024-05-31",
+      "name": "Gall & Gall",
+      "opening_hours": "Mo 10:00-20:00; Tu-Th 09:00-20:00; Fr 08:00-19:00",
+      "phone": "+31 20 320 3144",
+      "ref": "6950",
+      "shop": "alcohol",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.gall.nl/winkels/details/?storeId=6950"
+     },
+     "fetchedAt": "2026-10-30T00:16:11.329Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173863",
+   "addresses": [
+    "Elandsgracht 7",
+    "Elandsgracht 9",
+    "Elandsgracht 11",
+    "Elandsgracht 13A",
+    "Elandsgracht 13B",
+    "Elandsgracht 13C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 13A",
+     "use": "winkelfunctie",
+     "areaM2": 779,
+     "bagId": "0363010001007796"
+    },
+    {
+     "address": "Elandsgracht 13B",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010001007797"
+    },
+    {
+     "address": "Elandsgracht 13C",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010001007798"
+    },
+    {
+     "address": "Elandsgracht 11",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010001172415"
+    }
+   ],
+   "units": 17,
+   "osm": [
+    {
+     "type": "node",
+     "id": 34044772,
+     "lngLat": [
+      4.8818702,
+      52.3698562
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13A",
+      "addr:postcode": "1016TM",
+      "addr:street": "Elandsgracht",
+      "brand": "Albert Heijn",
+      "brand:wikidata": "Q1653985",
+      "brand:wikipedia": "nl:Albert Heijn (supermarkt)",
+      "check_date": "2025-02-23",
+      "name": "Albert Heijn",
+      "opening_hours": "Mo-Su 07:30-22:00",
+      "phone": "+31 20 623 6574",
+      "ref": "8684",
+      "shop": "supermarket",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.ah.nl/winkel/8684",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-30T00:16:11.329Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 1089777270,
+     "lngLat": [
+      4.8819397,
+      52.3698467
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13",
+      "addr:postcode": "1016TM",
+      "addr:street": "Elandsgracht",
+      "amenity": "atm",
+      "brand": "Geldmaat",
+      "brand:wikidata": "Q74051230",
+      "brand:wikipedia": "nl:Geldmaat",
+      "cash_in": "no",
+      "cash_out": "yes",
+      "cash_out:notes": "yes",
+      "check_date": "2023-05-25",
+      "description": "In Albert Heijn",
+      "indoor": "yes",
+      "name": "Geldmaat",
+      "opening_hours": "Mo-Su 07:30-22:00",
+      "ref": "1016002",
+      "speech_output": "yes",
+      "website": "https://locatiewijzer.geldmaat.nl/nl/location/1016002"
+     },
+     "fetchedAt": "2026-10-30T00:16:11.329Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173864",
+   "addresses": [
+    "Elandsgracht 15A",
+    "Elandsgracht 15C",
+    "Elandsgracht 15B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 15A",
+     "use": "woonfunctie",
+     "areaM2": 137,
+     "bagId": "0363010011872113"
+    },
+    {
+     "address": "Elandsgracht 15C",
+     "use": "woonfunctie",
+     "areaM2": 236,
+     "bagId": "0363010011872114"
+    },
+    {
+     "address": "Elandsgracht 15B",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010011872115"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173865",
+   "addresses": [
+    "Elandsgracht 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 17-H",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000630745"
+    },
+    {
+     "address": "Elandsgracht 17-O",
+     "use": "kantoorfunctie",
+     "areaM2": 43,
+     "bagId": "0363010000630746"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173872",
+   "addresses": [
+    "Elandsgracht 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 19-H",
+     "use": "kantoorfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000630754"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173869",
+   "addresses": [
+    "Elandsgracht 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Elandsgracht 21",
+     "use": "woonfunctie",
+     "areaM2": 169,
+     "bagId": "0363010010953527"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721824996,
+     "lngLat": [
+      4.8813926,
+      52.3696978
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27-H",
+      "addr:postcode": "1016TM",
+      "addr:street": "Elandsgracht",
+      "alt_name": "Kaashuis Tromp",
+      "branch": "Amsterdam Elandsgracht",
+      "brand": "Zuivelhoeve",
+      "brand:website": "https://www.zuivelhoeve.nl",
+      "brand:wikidata": "Q106581549",
+      "check_date": "2026-10-22",
+      "check_date:opening_hours": "2026-10-22",
+      "email": "elandsgracht@kaashuistromp.nl",
+      "name": "Zuivelhoeve by Kaashuis Tromp",
+      "opening_hours": "Mo-Sa 08:30-19:00; Su 08:30-18:00",
+      "phone": "+31 20 6230010",
+      "shop": "cheese",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://winkels.zuivelhoeve.nl/zuivelhoeve-by-kaashuis-tromp-amsterdam-elandsgracht/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-30T00:16:11.329Z",
+     "match": "frontage",
+     "distanceM": 3.8
+    }
+   ]
+  }
+ ]
+}

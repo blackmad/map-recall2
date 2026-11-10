@@ -1,0 +1,342 @@
+{
+ "street": "Looiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T01:46:24.256Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167890",
+   "addresses": [
+    "Looiersgracht 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 70",
+     "use": "winkelfunctie",
+     "areaM2": 1,
+     "bagId": "0363010003763599"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "way",
+     "id": 266659840,
+     "lngLat": [
+      4.8803662,
+      52.3684015
+     ],
+     "tags": {
+      "amenity": "place_of_worship",
+      "building": "church",
+      "denomination": "protestant",
+      "height": "12.8",
+      "name": "Simon de Looier",
+      "ref:bag": "0363100012167890",
+      "religion": "christian",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "source:height": "3DBAG",
+      "source:height:date": "2025-09-03",
+      "start_date": "1894",
+      "website": "https://bijsimondelooier.nl/"
+     },
+     "fetchedAt": "2026-10-30T01:46:24.256Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168916",
+   "addresses": [
+    "Looiersgracht 68A",
+    "Looiersgracht 68B",
+    "Looiersgracht 68C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 68A",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000727974"
+    },
+    {
+     "address": "Looiersgracht 68B",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000727975"
+    },
+    {
+     "address": "Looiersgracht 68C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000727976"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169618",
+   "addresses": [
+    "Looiersgracht 64A",
+    "Looiersgracht 64B",
+    "Looiersgracht 64C",
+    "Looiersgracht 64D",
+    "Looiersgracht 64E",
+    "Looiersgracht 64F",
+    "Looiersgracht 66A",
+    "Looiersgracht 66B",
+    "Looiersgracht 66C",
+    "Looiersgracht 66D",
+    "Looiersgracht 66E",
+    "Looiersgracht 66F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 64A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000727970"
+    },
+    {
+     "address": "Looiersgracht 66A",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000727972"
+    },
+    {
+     "address": "Looiersgracht 64B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988702"
+    },
+    {
+     "address": "Looiersgracht 64C",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988703"
+    },
+    {
+     "address": "Looiersgracht 64D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988704"
+    },
+    {
+     "address": "Looiersgracht 64E",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988705"
+    },
+    {
+     "address": "Looiersgracht 64F",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988706"
+    },
+    {
+     "address": "Looiersgracht 66B",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988707"
+    },
+    {
+     "address": "Looiersgracht 66C",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988708"
+    },
+    {
+     "address": "Looiersgracht 66D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988709"
+    },
+    {
+     "address": "Looiersgracht 66E",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988710"
+    },
+    {
+     "address": "Looiersgracht 66F",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010000988711"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169619",
+   "addresses": [
+    "Looiersgracht 58",
+    "Looiersgracht 60",
+    "Looiersgracht 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 60",
+     "use": "winkelfunctie",
+     "areaM2": 708,
+     "bagId": "0363010000727961"
+    }
+   ],
+   "units": 13,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170068",
+   "addresses": [
+    "Looiersgracht 50",
+    "Looiersgracht 52F",
+    "Looiersgracht 52G",
+    "Looiersgracht 52H",
+    "Looiersgracht 52L",
+    "Looiersgracht 52K"
+   ],
+   "groundUnits": [
+    {
+     "address": "Looiersgracht 52F",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000982995"
+    },
+    {
+     "address": "Looiersgracht 52G",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000982996"
+    },
+    {
+     "address": "Looiersgracht 52H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000982997"
+    },
+    {
+     "address": "Looiersgracht 52L",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000982999"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 24C",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000983002"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 24D",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000983003"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 24E",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000983004"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 26A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000983005"
+    },
+    {
+     "address": "Eerste Looiersdwarsstraat 26B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000983006"
+    },
+    {
+     "address": "Looiersgracht 50",
+     "use": "kantoorfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000984342"
+    },
+    {
+     "address": "Looiersgracht 52K",
+     "use": "woonfunctie",
+     "areaM2": 210,
+     "bagId": "0363010001007055"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170058",
+   "addresses": [
+    "Looiersgracht 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Eerste Looiersdwarsstraat 28",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000547523"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 410212543,
+     "lngLat": [
+      4.8813577,
+      52.3686458
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:country": "NL",
+      "addr:housenumber": "40B",
+      "addr:postcode": "1016VS",
+      "addr:street": "Looiersgracht",
+      "amenity": "pub",
+      "check_date": "2024-05-20",
+      "diet:vegan": "yes",
+      "diet:vegetarian": "yes",
+      "email": "eetcafe@cafefestinalente.nl",
+      "internet_access": "wlan",
+      "internet_access:fee": "no",
+      "name": "Festina Lente",
+      "opening_hours": "Mo-Fr 00:00-01:00,09:00-24:00; Sa,Su 00:00-03:00,10:00-24:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 638 1412",
+      "smoking": "outside",
+      "website": "https://cafefestinalente.nl"
+     },
+     "fetchedAt": "2026-10-30T01:46:24.256Z",
+     "match": "frontage",
+     "distanceM": 7.9
+    },
+    {
+     "type": "node",
+     "id": 11919676211,
+     "lngLat": [
+      4.8812289,
+      52.3685963
+     ],
+     "tags": {
+      "check_date": "2024-05-20",
+      "contact:facebook": "https://www.facebook.com/marchewed",
+      "contact:instagram": "https://www.instagram.com/motti.amsterdam",
+      "name": "Motti Korean Concept Store",
+      "opening_hours": "Tu-Sa 12:00-19:30; Su 12:00-19:00",
+      "origin": "korean",
+      "shop": "convenience"
+     },
+     "fetchedAt": "2026-10-30T01:46:24.256Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

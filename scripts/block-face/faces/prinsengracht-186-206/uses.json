@@ -1,0 +1,370 @@
+{
+ "street": "Prinsengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T02:00:40.434Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173976",
+   "addresses": [
+    "Prinsengracht 206"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 206-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000784135"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173977",
+   "addresses": [
+    "Prinsengracht 204"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 204-H",
+     "use": "industriefunctie",
+     "areaM2": 66,
+     "bagId": "0363010000784126"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12085564668,
+     "lngLat": [
+      4.8826621,
+      52.3733019
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "204",
+      "addr:postcode": "1016HD",
+      "addr:street": "Prinsengracht",
+      "name": "A Space Oddity",
+      "phone": "+31 20 427 4036",
+      "shop": "toys",
+      "website": "https://spaceoddity.nl/"
+     },
+     "fetchedAt": "2026-10-30T02:00:40.434Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173978",
+   "addresses": [
+    "Prinsengracht 202"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 202-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000784109"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012240299",
+   "addresses": [
+    "Prinsengracht 198",
+    "Prinsengracht 200",
+    "Prinsengracht 200D",
+    "Prinsengracht 200E",
+    "Prinsengracht 200C",
+    "Prinsengracht 200A",
+    "Prinsengracht 200B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 198",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000784099"
+    },
+    {
+     "address": "Prinsengracht 200",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000784105"
+    },
+    {
+     "address": "Prinsengracht 200D",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012067510"
+    },
+    {
+     "address": "Prinsengracht 200E",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012067511"
+    },
+    {
+     "address": "Prinsengracht 200C",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012067512"
+    },
+    {
+     "address": "Prinsengracht 200A",
+     "use": "woonfunctie",
+     "areaM2": 248,
+     "bagId": "0363010012067513"
+    },
+    {
+     "address": "Prinsengracht 200B",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010012067514"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173984",
+   "addresses": [
+    "Prinsengracht 196"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 196-H",
+     "use": "industriefunctie",
+     "areaM2": 439,
+     "bagId": "0363010001168947"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721823548,
+     "lngLat": [
+      4.8826548,
+      52.3734616
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "196-H",
+      "addr:postcode": "1016HC",
+      "addr:street": "Prinsengracht",
+      "amenity": "kindergarten",
+      "check_date": "2025-03-17",
+      "max_age": "4",
+      "min_age": "0",
+      "name": "'t Klaproosje",
+      "operator": "Flowerkids",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.flowerkids.nl/vestigingen/amsterdam-klaproosje/"
+     },
+     "fetchedAt": "2026-10-30T02:00:40.434Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173980",
+   "addresses": [
+    "Prinsengracht 194C",
+    "Prinsengracht 194A",
+    "Prinsengracht 194B",
+    "Prinsengracht 194D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 194C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000784091"
+    },
+    {
+     "address": "Prinsengracht 194A",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000784089"
+    },
+    {
+     "address": "Prinsengracht 194B",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010000784090"
+    },
+    {
+     "address": "Prinsengracht 194D",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000784092"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173990",
+   "addresses": [
+    "Prinsengracht 190",
+    "Prinsengracht 192"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 190-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000784071"
+    },
+    {
+     "address": "Prinsengracht 192-H",
+     "use": "winkelfunctie",
+     "areaM2": 168,
+     "bagId": "0363010000784079"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1757260899,
+     "lngLat": [
+      4.8826868,
+      52.3736246
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "192",
+      "addr:postcode": "1016HC",
+      "addr:street": "Prinsengracht",
+      "check_date": "2025-03-17",
+      "lgbtq": "welcome",
+      "name": "Mister B",
+      "shop": "erotic",
+      "website": "https://www.misterb.com"
+     },
+     "fetchedAt": "2026-10-30T02:00:40.434Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173981",
+   "addresses": [
+    "Prinsengracht 188"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 188-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000784063"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721823451,
+     "lngLat": [
+      4.8826702,
+      52.3736685
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "188-H",
+      "addr:postcode": "1016HC",
+      "addr:street": "Prinsengracht",
+      "amenity": "restaurant",
+      "check_date": "2025-03-17",
+      "cuisine": "argentinian",
+      "delivery": "no",
+      "indoor_seating": "yes",
+      "name": "Amigo",
+      "outdoor_seating": "yes",
+      "reservation": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "takeaway": "no",
+      "website": "https://www.amigogrill.nl"
+     },
+     "fetchedAt": "2026-10-30T02:00:40.434Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173983",
+   "addresses": [
+    "Prinsengracht 186A",
+    "Prinsengracht 186B",
+    "Prinsengracht 186C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Prinsengracht 186A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000784059"
+    },
+    {
+     "address": "Prinsengracht 186B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000784060"
+    },
+    {
+     "address": "Prinsengracht 186C",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000784061"
+    },
+    {
+     "address": "Rozengracht 1",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000797340"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5870490900,
+     "lngLat": [
+      4.8826827,
+      52.3737394
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:street": "Rozengracht",
+      "amenity": "restaurant",
+      "check_date": "2025-03-17",
+      "cuisine": "italian;pizza",
+      "diet:vegetarian": "yes",
+      "indoor_seating": "yes",
+      "name": "Pizza Pasta Steaks",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 625 7502"
+     },
+     "fetchedAt": "2026-10-30T02:00:40.434Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

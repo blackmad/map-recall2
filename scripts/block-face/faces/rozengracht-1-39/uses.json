@@ -1,0 +1,711 @@
+{
+ "street": "Rozengracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T02:28:32.312Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012173982",
+   "addresses": [
+    "Rozengracht 1A",
+    "Rozengracht 1B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 1A",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000797341"
+    },
+    {
+     "address": "Rozengracht 1B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012088847"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721823575,
+     "lngLat": [
+      4.882567,
+      52.3737037
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1A-H",
+      "addr:postcode": "1016LP",
+      "addr:street": "Rozengracht",
+      "amenity": "cafe",
+      "check_date": "2018-07-20",
+      "cuisine": "coffee_shop",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-10-30T02:28:32.312Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174004",
+   "addresses": [
+    "Rozengracht 3",
+    "Rozengracht 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 5",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 45,
+     "bagId": "0363010001020758"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721826417,
+     "lngLat": [
+      4.8824499,
+      52.3736855
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "5",
+      "addr:postcode": "1016LP",
+      "addr:street": "Rozengracht",
+      "amenity": "restaurant",
+      "cuisine": "argentinian",
+      "delivery": "no",
+      "name": "Amigo",
+      "reservation": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "takeaway": "no",
+      "website": "https://www.amigogrill.nl"
+     },
+     "fetchedAt": "2026-10-30T02:28:32.312Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173992",
+   "addresses": [
+    "Rozengracht 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 7-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000797353"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721830971,
+     "lngLat": [
+      4.8823934,
+      52.3736782
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "7-H",
+      "addr:postcode": "1016LP",
+      "addr:street": "Rozengracht",
+      "name": "Tara massage",
+      "shop": "massage",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://taramassages.com"
+     },
+     "fetchedAt": "2026-10-30T02:28:32.312Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173989",
+   "addresses": [
+    "Rozengracht 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 9-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000797360"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721832932,
+     "lngLat": [
+      4.8823475,
+      52.3736633
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "9-H",
+      "addr:postcode": "1016LP",
+      "addr:street": "Rozengracht",
+      "amenity": "fast_food",
+      "check_date": "2023-06-18",
+      "cuisine": "burger",
+      "drive_through": "no",
+      "mobile": "+31 6 57439738",
+      "name": "Maijard Smashburgers",
+      "name:nl": "Maijard Smashburgers",
+      "panoramax": "142b4f44-0cdd-451a-b991-dbd7fbc37632",
+      "payment:cash": "yes",
+      "payment:mastercard": "yes",
+      "payment:visa": "yes",
+      "smoking": "no",
+      "source": "BAG;survey",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-10-30T02:28:32.312Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173988",
+   "addresses": [
+    "Rozengracht 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 11-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000797365"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721817199,
+     "lngLat": [
+      4.8822994,
+      52.3736506
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11-H",
+      "addr:postcode": "1016LP",
+      "addr:street": "Rozengracht",
+      "name": "Theatre de Coiffure",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "http://www.theatredecoiffure.nl/"
+     },
+     "fetchedAt": "2026-10-30T02:28:32.312Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173995",
+   "addresses": [
+    "Rozengracht 13",
+    "Rozengracht 13A",
+    "Rozengracht 13B",
+    "Rozengracht 13C",
+    "Rozengracht 13D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 13-H",
+     "use": "winkelfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000797372"
+    },
+    {
+     "address": "Rozengracht 13A",
+     "use": "winkelfunctie",
+     "areaM2": 87,
+     "bagId": "0363010012098449"
+    },
+    {
+     "address": "Rozengracht 13B",
+     "use": "winkelfunctie",
+     "areaM2": 135,
+     "bagId": "0363010012098450"
+    },
+    {
+     "address": "Rozengracht 13C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012098451"
+    },
+    {
+     "address": "Rozengracht 13D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010012098452"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10692454659,
+     "lngLat": [
+      4.8822417,
+      52.3736396
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "13",
+      "addr:postcode": "1016LP",
+      "addr:street": "Rozengracht",
+      "branch": "Hairdressing",
+      "brand": "Toni & Guy",
+      "brand:wikidata": "Q324784",
+      "brand:wikipedia": "en:Toni & Guy",
+      "name": "Toni & Guy",
+      "shop": "hairdresser",
+      "source": "BAG",
+      "source:date": "2021-01-08",
+      "website": "https://www.toniandguy.nl/salon/rozengracht/#amsterdam"
+     },
+     "fetchedAt": "2026-10-30T02:28:32.312Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173994",
+   "addresses": [
+    "Rozengracht 15A",
+    "Rozengracht 15B",
+    "Rozengracht 15C",
+    "Rozengracht 15D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 15A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000797378"
+    },
+    {
+     "address": "Rozengracht 15B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000797379"
+    },
+    {
+     "address": "Rozengracht 15C",
+     "use": "woonfunctie",
+     "areaM2": 181,
+     "bagId": "0363010000797380"
+    },
+    {
+     "address": "Rozengracht 15D",
+     "use": "winkelfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000797382"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721822583,
+     "lngLat": [
+      4.8822012,
+      52.3736035
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "15D",
+      "addr:postcode": "1016LP",
+      "addr:street": "Rozengracht",
+      "email": "info@fabula-rosa.nl",
+      "name": "Fabula Rosa",
+      "opening_hours": "Tu-Fr 12:00-17:00; Sa 11:30-17:00",
+      "phone": "+31 20 6382505",
+      "shop": "esoteric",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.fabula-rosa.com/"
+     },
+     "fetchedAt": "2026-10-30T02:28:32.312Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012173991",
+   "addresses": [
+    "Rozengracht 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 17-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000797384"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173993",
+   "addresses": [
+    "Rozengracht 19",
+    "Rozengracht 19B",
+    "Rozengracht 19A",
+    "Rozengracht 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 19",
+     "use": "woonfunctie",
+     "areaM2": 210,
+     "bagId": "0363010000797387"
+    },
+    {
+     "address": "Rozengracht 21",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000797388"
+    },
+    {
+     "address": "Rozengracht 19B",
+     "use": "woonfunctie",
+     "areaM2": 171,
+     "bagId": "0363010012609441"
+    },
+    {
+     "address": "Rozengracht 19A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010012609442"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721824226,
+     "lngLat": [
+      4.8819961,
+      52.3735577
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "21",
+      "addr:postcode": "1016LR",
+      "addr:street": "Rozengracht",
+      "check_date": "2023-08-16",
+      "name": "Sneaker District",
+      "shop": "shoes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.sneakerdistrict.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-10-30T02:28:32.312Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174005",
+   "addresses": [
+    "Rozengracht 23A",
+    "Rozengracht 23C",
+    "Rozengracht 23D",
+    "Rozengracht 23E",
+    "Rozengracht 23H",
+    "Rozengracht 23B",
+    "Rozengracht 23F",
+    "Rozengracht 23G"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 23A",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001036308"
+    },
+    {
+     "address": "Rozengracht 23C",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001036310"
+    },
+    {
+     "address": "Rozengracht 23D",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010001036311"
+    },
+    {
+     "address": "Rozengracht 23E",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001036312"
+    },
+    {
+     "address": "Rozengracht 23H",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010001036315"
+    },
+    {
+     "address": "Rozengracht 23B",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010001036309"
+    },
+    {
+     "address": "Rozengracht 23F",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010001036313"
+    },
+    {
+     "address": "Rozengracht 23G",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010001036314"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174006",
+   "addresses": [
+    "Rozengracht 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 25",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001036316"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174007",
+   "addresses": [
+    "Rozengracht 27A",
+    "Rozengracht 27B",
+    "Rozengracht 27C",
+    "Rozengracht 27D",
+    "Rozengracht 29D",
+    "Rozengracht 29A",
+    "Rozengracht 29B",
+    "Rozengracht 29C",
+    "Rozengracht 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 29D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000713829"
+    },
+    {
+     "address": "Rozengracht 27A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000744578"
+    },
+    {
+     "address": "Rozengracht 27B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000941525"
+    },
+    {
+     "address": "Rozengracht 27C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000941526"
+    },
+    {
+     "address": "Rozengracht 27D",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000941527"
+    },
+    {
+     "address": "Rozengracht 29A",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000941528"
+    },
+    {
+     "address": "Rozengracht 29B",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000941529"
+    },
+    {
+     "address": "Rozengracht 29C",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000941530"
+    },
+    {
+     "address": "Rozengracht 31",
+     "use": "kantoorfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000942750"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174008",
+   "addresses": [
+    "Rozengracht 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 33",
+     "use": "winkelfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000797404"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174009",
+   "addresses": [
+    "Rozengracht 35",
+    "Rozengracht 39B",
+    "Rozengracht 39C",
+    "Rozengracht 39D",
+    "Rozengracht 39E",
+    "Rozengracht 39F",
+    "Rozengracht 39G",
+    "Rozengracht 39H",
+    "Rozengracht 39A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 35",
+     "use": "winkelfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000797416"
+    },
+    {
+     "address": "Rozengracht 39B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000797428"
+    },
+    {
+     "address": "Rozengracht 39C",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000797429"
+    },
+    {
+     "address": "Rozengracht 39D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000797430"
+    },
+    {
+     "address": "Rozengracht 39E",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000797431"
+    },
+    {
+     "address": "Rozengracht 39F",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000797432"
+    },
+    {
+     "address": "Rozengracht 39G",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000797433"
+    },
+    {
+     "address": "Rozengracht 39H",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000797434"
+    },
+    {
+     "address": "Rozengracht 39A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000797427"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11497504242,
+     "lngLat": [
+      4.8816264,
+      52.3734837
+     ],
+     "tags": {
+      "amenity": "restaurant",
+      "name": "pizza'dam"
+     },
+     "fetchedAt": "2026-10-30T02:28:32.312Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174002",
+   "addresses": [
+    "Rozengracht 37"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rozengracht 37-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 26,
+     "bagId": "0363010000797422"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,96 @@
+{
+ "street": "Lauriergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012169608",
+   "addresses": [
+    "Lauriergracht 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 30-H",
+     "use": "woonfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000996270"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169609",
+   "addresses": [
+    "Lauriergracht 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 16-H",
+     "use": "industriefunctie",
+     "areaM2": 156,
+     "bagId": "0363010000719374"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169610",
+   "addresses": [
+    "Lauriergracht 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 14-H",
+     "use": "industriefunctie",
+     "areaM2": 153,
+     "bagId": "0363010000719369"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012169611",
+   "addresses": [
+    "Lauriergracht 12",
+    "Lauriergracht 12A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 12-H",
+     "use": "kantoorfunctie",
+     "areaM2": 217,
+     "bagId": "0363010000719361"
+    },
+    {
+     "address": "Lauriergracht 12A",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000719364"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012173917",
+   "addresses": [
+    "Lauriergracht 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 10-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 16,
+     "bagId": "0363010000719356"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}
