@@ -161,3 +161,43 @@ After one re-sheet:
 - **Soendastraat 28-18 and 14-10** (9) need the door fix plus brick #6c5647.
 - **Javastraat 97-115** (9) need the arch-ring colour plus two-course speklagen.
 - **Javastraat 95 and 117** need mirror flips on top of that.
+
+## Round 4 (lane at 58c49d90a, sheets of 2026-11-10 03:00)
+
+I read all six sheets again and checked every mirror against the photo. I zoomed on the Djambi door and the Java
+heads and stripes. I measured wall medians, photo against model, on the sheets.
+
+### Door verdict: two dark openings are acceptable
+The photo, enlarged, shows one dark opening of about 1.1 m under a wide transom, with dark mailbox panels on both
+jambs. The model draws two dark 0.45 m openings with small transoms and a 0.3 m brick pier between them. At
+gallery size both read as a dark band about 1.5 m wide in a dark-light-dark rhythm. The cream "ladders" of round 3
+are gone, the reveal is 0.25 m, and nothing reads as a flush or white door. The pier sits where the photo has the
+single leaf, but that is a sub-metre detail, and the GLB audit forces it (0.15 m minimum inset). **Accepted.** Log
+it as a kit gap: a pair-module door that crosses the party wall.
+
+### Per-pand list
+
+| run | pand | verdict | why |
+|---|---|---|---|
+| lampong-2-20-r1 | Lampongstraat 10, 8, 6, 4, 2 | **INSTALL** | Mirrors are unchanged and correct. The wide windows now have an undivided lower pane under a red transom, matching the photo |
+| djambi-1-29-r1 | Djambistraat 9, 11, 13, 15, 17, 19, 21 | **INSTALL** | Door accepted (above). All 7 door sides match the photo doorways: 9\|11, 13\|15, 17\|19, and 21 on the right, which agrees with its arched window. Dormer, eaves, sills and brick are right (render about +10 over the photo, in line with the rest of the library) |
+| soenda-2-36-r1 | Soendastraat 28, 26, 24, 22, 20, 18 | **HOLD (brick)** | **The #6c5647 change did not take effect.** Every pand in the run intent carries a trim-normalised `measuredPalette.brick` (#765e51 … #8b6e60), and that overrides the type palette. The render is unchanged: model #8e7463 against photo #796d61, and #8e6f5d against #796252, about +20-25 and pinker. Fix: remove the per-pand `measuredPalette` from soenda-2-36-r1 and -r2, or set it to #6c5647, then re-sheet. Doors and mirrors are fine |
+| soenda-2-36-r2 | Soendastraat 14, 12, 10 | **HOLD (brick)** | Same override problem: #8a6d5c, #8d6f5e, #866b5d. Model #917567 against photo #745f4c, +29 |
+| java-93-149-r1 | Javastraat 101, 103, 105, 107, 109 | **INSTALL** | All mirrors are correct. The heads are now dark brick segmental caps over the windows, and two cream courses per storey read as the speklagen at gallery size. The wall check passes on all five |
+| java-93-149-r1 | Javastraat 97 (132949), 99 (138717) | **HOLD (brick)** | Their per-pand bricks, #806c62 and #7e695e, are the lightest in the row. They render #87736a and #867164 against photo #695b53 and #625045, +30, and visibly pinker than 101-109 beside them. Fix: set both to about #72604f, the median of 101-109 |
+| java-93-149-r2 | Javastraat 113, 117 | **INSTALL** | Mirrors are correct, including the 117 flip, and the wall check passes |
+| java-93-149-r2 | Javastraat 115 (103232) | **HOLD (brick)** | Model #89766f against photo #6d5d52, +28. Same fix as 97/99 |
+| java-93-149-r2 | Javastraat 119 (085970) | **HOLD (mirror)** | New in this run, with an auto mirror. The photo is [wide][balcony][narrow pair] and the model draws pair-first. Its dormer is also a dark brick hooded dormer, not the white pediment |
+| java-93-149-r2 | Javastraat 121 (110585) | **HOLD (mirror, crown)** | New in this run. The photo is [narrow pair][balcony][wide] and the model draws wide-first. It also has a tall stepped brick dormer-gable that the model omits |
+| — | Javastraat 95 | not in any run | Its pin flip (`false`) is right going by the round-3 photo, [wide][balcony][pair]. But 95 is not in r1 or r2 now, so there is nothing to install |
+
+### Install list (round 4): 19 pands
+- Lampongstraat 2, 4, 6, 8, 10
+- Djambistraat 9, 11, 13, 15, 17, 19, 21
+- Javastraat 101, 103, 105, 107, 109, 113, 117
+
+Next re-sheet:
+- Soenda (9 pands): drop the measuredPalette overrides.
+- Javastraat 97, 99 and 115: brick #72604f.
+- Javastraat 119: flip its mirror and give it its own dormer.
+- Javastraat 121: needs a mirror flip and a stepped crown, so it is a separate job.

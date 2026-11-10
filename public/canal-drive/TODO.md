@@ -27,6 +27,13 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 - **Recipe roof partition vs BAG micro-jogs (Indische buurt lane, 2026-11-10).** A 4–5 cm jog in a BAG front (pand 0363100012089626, Djambistraat 31) makes overlapping 0.0005–0.0012 m² roof slivers in the `survey-recipe.ts` partition, so `recipeRoof.test.ts` fails at 1.5e-5 against 1e-6 at 70°. The lane split the face round it. Fix the partition (snap or simplify jogs under ~5 cm before partitioning), then re-intake `djambi-1-35` whole.
 - **#171 FPS round 2 (lane running).** Plan the ground at a chase-equivalent zoom in FPS (+10–45 % triangles now; check the far-field handover in groundResidency.ts). Fix the false `stuck` clearance guard that ghosts pands 0363100012174217 and 2172887 at quays. Assert the eye height on a real bridge deck. Car view is not wired.
 - **Kit: brick bands (speklagen) as texture, not geometry (Indische buurt round 3).** `brickStripes` at the measured 0.46 m pitch adds ~800 triangles per house (Javastraat 95-121: 2,670 → 3,470 against the 3,000 budget), so the Java type ships without its cream bands. Next: a texture/normal-map stripe in the facade shader. Also open from that lane: Djambistraat 23 half-width door reveal fails `opening-outside` while the same reveal passes on 9-21 (cause unknown); a 1914 three-light 'trio' type for Djambistraat 40; a single shared portiek leaf (drawn as two half reveals now).
+- **Recipe tiles: what the near tier needs before any flip (report in HISTORY 2026-11-10).**
+  - per-pand relief lift (`ownGround/chunkBases.ts` separatePands);
+  - lod2 for chunks and ordinary buildings (the R4-C records);
+  - wallExposure parity;
+  - a size answer for the 44 MB mesh tiles.
+
+  Then re-run the pose A/B and convert the 143 chunks to `kind: glb`. The pilot data is stale: all 14 Bilderdijkstraat chunks differ from installed, and bilder-079721-x2 is null. The `tile-buildings.bundle.js` is stale against source by 44 lines. `?recipeTiles=1` has never been exercised on ENGINE=own.
 - **Meshopt follow-ups.** `install-large.ts` still writes recipe-large GLBs uncompressed (call compressGlb + re-describe); `scripts/building-tiles/compile-recipes.ts` installedMatch compares staged vs installed bytes and now reports false for compressed installs (compare decoded geometry).
 
 ## City coverage programme (2026-11-07) — T0 whole city, T1 ride ring, T2 landmarks
