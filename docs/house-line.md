@@ -143,6 +143,10 @@ count is cells x axes. `streetFacadeRendering.ts` `specCellCount` picks the cell
 the generic cells have no plain 3-window c19 style and no 1-window canal/c19 style, which is the kit limit behind that.
 A street-appearance recipe's own `bays` keep the old cell fit.
 
+**Still held** (`decorate.ts SPEC_BAYS_HELD = true`, judgement ruling on #349): the fix removed the doubling but on the 19
+scorable #348 pands after = before, because 2-axis cells cannot draw the commonest canal rhythm (3 bays). H1c #350 adds
+odd-axis cells and audits the bay sources; the hold lifts after its gate (strictly closer on >= 60 %, worse on none).
+
 The 2026-11-10 doubling (photo 3 drawn 6, photo 2 drawn 4, photo 3 drawn 4 on the #348 sample) was `Math.round(bays /
 axes)`: 5/2 = 2.5 rounded up to 3 cells = 6 columns, 3/2 = 1.5 up to 2 cells = 4. Trace of 0363100012169901
 (Bloemgracht, front 8.87 m): block-face intent `fronts/0/bays: 5` -> house-specs view `bays: 5` -> `specRecipe.bays: 5`

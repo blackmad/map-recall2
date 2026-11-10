@@ -74,12 +74,13 @@ const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appea
 export const SPEC_WALLS_HELD = true;
 
 /**
- * Released (2026-11-10, H1b #349). Held after the #348 spot-check (the spec's bay count was closer to the photo on 5
- * of 23 and group-01 showed doubling, photo 3 -> 6). Cause: frontageLayoutScale rounded bays / axesPerCell up, so an odd
- * count on 2-axis cells drew the even number above it (5 bays -> 3 cells -> 6 columns). It now draws the nearest
- * whole-cell count, ties down, held to MIN_COLUMN_M (streetFacadeRendering.ts specCellCount). docs/house-line.md §1.
+ * Held (2026-11-10, spot-check #348; H1b #349 fixed the cause, still held by ruling). The #348 spot-check found group-01
+ * doubling (photo 3 -> 6). Cause: frontageLayoutScale rounded bays / axesPerCell up, so an odd count on 2-axis cells drew
+ * the even number above it; specCellCount (streetFacadeRendering.ts) now draws the nearest whole-cell count, ties down.
+ * Held because on the 19 scorable pands after = before: 2-axis cells cannot draw 3 bays, the commonest canal rhythm.
+ * Lifts after H1c #350 (odd-axis cells + source-bay audit) passes its gate. docs/house-line.md §1.
  */
-export const SPEC_BAYS_HELD = false;
+export const SPEC_BAYS_HELD = true;
 
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
