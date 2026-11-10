@@ -34,9 +34,15 @@ test('newbuild strip', async ({ page }, info) => {
   test.setTimeout(1_800_000);
   mkdirSync(OUT, { recursive: true });
   await page.setViewportSize({ width: 1326, height: 761 });
+  // BUNDLES_DIR=<dir>: serve freshly built bundles (context routes also reach the chunk worker, page routes do not).
+  const bundles = process.env.BUNDLES_DIR;
+  if (bundles) await page.context().route(/\/canal-drive\/js\/([\w-]+\.bundle\.js)(\?.*)?$/, route => {
+    const file = `${bundles}/${/\/([\w-]+\.bundle\.js)/.exec(route.request().url())![1]}`;
+    return existsSync(file) ? route.fulfill({ path: file, contentType: 'application/javascript' }) : route.continue();
+  });
   // NB_DATA_DIR=<dir>: serve extract files found there instead (the "before" tiles of a data fix).
   const dataDir = process.env.NB_DATA_DIR;
-  if (dataDir) await page.route(/\/data\/extracts\/amsterdam\/([\w/.-]+?)(\?.*)?$/, route => {
+  if (dataDir) await page.context().route(/\/data\/extracts\/amsterdam\/([\w/.-]+?)(\?.*)?$/, route => {
     const file = `${dataDir}/${/\/amsterdam\/([\w/.-]+?)(\?.*)?$/.exec(route.request().url())![1]}`;
     return existsSync(file) ? route.fulfill({ body: readFileSync(file), contentType: 'application/octet-stream' }) : route.continue();
   });

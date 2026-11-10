@@ -4,7 +4,7 @@
 import fs from 'node:fs'; import zlib from 'node:zlib'; import path from 'node:path';
 const PANDS = { 'houthaven-2021-orange': '0363100012252867', 'houthaven-2018-dark': '0363100012247676', 'ijburg-2021': '0363100012253701', 'ijburg-2009': '0363100012154305', 'sluisbuurt-2025': '0363100012570345', 'zeeburgereiland-2016': '0363100012244416' };
 const USER = [
-  { slug: 'user-narva-houthaven', name: 'Narva-eiland (feedback 1c694c0d)', lng: 4.881404, lat: 52.393525, bearing: 0, distM: 70, eyeM: 16 },
+  { slug: 'user-narva-houthaven', name: 'Narva-eiland (feedback 1c694c0d)', lng: 4.881412, lat: 52.39353, bearing: 50, distM: 60, eyeM: 14 },
   { slug: 'user-westpoort-slab', name: 'Danzigerkade Ydek canopy (feedback 2c486751)', lng: 4.87207, lat: 52.39879, bearing: 60, distM: 70, eyeM: 14 },
   { slug: 'user-houthavenkade-26', name: 'Houthavenkade 26 / 4e Gymnasium (feedback 75242f30)', lng: 4.876389, lat: 52.394353, bearing: 200, distM: 110, eyeM: 18 },
 ];
