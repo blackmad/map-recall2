@@ -1,0 +1,290 @@
+{
+ "street": "Den Texstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:13:02.951Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168127",
+   "addresses": [
+    "Den Texstraat 1A",
+    "Den Texstraat 1B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010000953089"
+    },
+    {
+     "address": "Den Texstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000953090"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179440",
+   "addresses": [
+    "Den Texstraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000620873"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179439",
+   "addresses": [
+    "Den Texstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 166,
+     "bagId": "0363010000620875"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179438",
+   "addresses": [
+    "Den Texstraat 5A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 5A-H",
+     "use": "woonfunctie",
+     "areaM2": 114,
+     "bagId": "0363010000620878"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179437",
+   "addresses": [
+    "Den Texstraat 5B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 5B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 304,
+     "bagId": "0363010000620880"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179436",
+   "addresses": [
+    "Den Texstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000620881"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179435",
+   "addresses": [
+    "Den Texstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000620888"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 441909910,
+     "lngLat": [
+      4.893828,
+      52.3589917
+     ],
+     "tags": {
+      "internet_access": "wlan",
+      "name": "Kap",
+      "stars": "2",
+      "tourism": "hotel"
+     },
+     "fetchedAt": "2026-11-10T07:13:02.951Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179430",
+   "addresses": [
+    "Den Texstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000620892"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179429",
+   "addresses": [
+    "Den Texstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000620895"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179383",
+   "addresses": [
+    "Den Texstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000620897"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179382",
+   "addresses": [
+    "Den Texstraat 17A",
+    "Den Texstraat 17B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 17A",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000620899"
+    },
+    {
+     "address": "Den Texstraat 17B",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000620900"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179381",
+   "addresses": [
+    "Den Texstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000620908"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179512",
+   "addresses": [
+    "Den Texstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 155,
+     "bagId": "0363010000620911"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179511",
+   "addresses": [
+    "Den Texstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010000620915"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179510",
+   "addresses": [
+    "Den Texstraat 25"
+   ],
+   "groundUnits": [],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012179509",
+   "addresses": [
+    "Den Texstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Den Texstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000620922"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

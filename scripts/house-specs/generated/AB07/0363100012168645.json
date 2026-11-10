@@ -1,0 +1,42 @@
+{
+ "version": 1,
+ "pandId": "0363100012168645",
+ "buurt": "AB07",
+ "crop": null,
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168645",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012168645",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1840
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012168645",
+  "design": {},
+  "provenance": {
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012168645",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1840
+  }
+ },
+ "disagreements": []
+}

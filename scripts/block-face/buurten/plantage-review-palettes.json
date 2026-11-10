@@ -1,0 +1,14 @@
+{
+ "note": "Palette pins (blockFace/reviewPalettes.ts).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012181073",
+   "type": "plantage-1881-polychrome-two-axis",
+   "palette": {
+    "brick": "#5f4d42"
+   },
+   "reason": "opus verdict: photo #57463c, model #6b574b lighter than its neighbours; 60 % of the way"
+  }
+ ]
+}

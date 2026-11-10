@@ -1,0 +1,212 @@
+{
+ "street": "Dapperstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:15:46.032Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155386",
+   "addresses": [
+    "Dapperstraat 10C",
+    "Dapperstraat 10D",
+    "Dapperstraat 10G",
+    "Dapperstraat 10B",
+    "Dapperstraat 10E",
+    "Dapperstraat 10F",
+    "Dapperstraat 10A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 13B",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010003701342"
+    },
+    {
+     "address": "Pieter Vlamingstraat 13C",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010003701344"
+    },
+    {
+     "address": "Pieter Vlamingstraat 13D",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010003701345"
+    },
+    {
+     "address": "Dapperstraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010003701346"
+    },
+    {
+     "address": "Dapperstraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010003701347"
+    },
+    {
+     "address": "Dapperstraat 10G",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010003701348"
+    },
+    {
+     "address": "Dapperstraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010003701350"
+    },
+    {
+     "address": "Dapperstraat 10E",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010003701351"
+    },
+    {
+     "address": "Dapperstraat 10F",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010003701352"
+    },
+    {
+     "address": "Dapperstraat 10A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 120,
+     "bagId": "0363010011876880"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5309990890,
+     "lngLat": [
+      4.9258735,
+      52.364986
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10",
+      "addr:postcode": "1093BT",
+      "addr:street": "Dapperstraat",
+      "amenity": "pub",
+      "name": "Café Vlaming",
+      "opening_hours": "We,Su 11:00-24:00, Th 11:00-01:00, Fr,Sa 11:00-03:00; Mo,Tu off"
+     },
+     "fetchedAt": "2026-11-10T07:15:46.032Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012166835",
+   "addresses": [
+    "Dapperstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dapperstraat 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000615586"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12645321945,
+     "lngLat": [
+      4.9258701,
+      52.3650384
+     ],
+     "tags": {
+      "name": "Makola Market",
+      "shop": "general"
+     },
+     "fetchedAt": "2026-11-10T07:15:46.032Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012162301",
+   "addresses": [
+    "Dapperstraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dapperstraat 6-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000615578"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12645326847,
+     "lngLat": [
+      4.9258442,
+      52.3650798
+     ],
+     "tags": {
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-10T07:15:46.032Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012153465",
+   "addresses": [
+    "Dapperstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Dapperstraat 4-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000615555"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2364940131,
+     "lngLat": [
+      4.9258167,
+      52.3651214
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4",
+      "addr:postcode": "1093BT",
+      "addr:street": "Dapperstraat",
+      "alt_name": "Restaurant Oké",
+      "amenity": "fast_food",
+      "check_date": "2025-04-10",
+      "check_date:opening_hours": "2025-04-10",
+      "cuisine": "kebab",
+      "name": "Beste Döner",
+      "note": "broodje döner etc.",
+      "opening_hours": "Mo-Sa 10:00-17:00",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T07:15:46.032Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

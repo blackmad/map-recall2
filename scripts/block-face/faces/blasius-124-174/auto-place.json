@@ -1,0 +1,417 @@
+{
+ "face": "blasius-124-174",
+ "street": "Blasiusstraat",
+ "library": "oud-west",
+ "stripDate": "2025-06-20",
+ "seconds": 2.65,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012134675",
+   "address": "Blasiusstraat 150",
+   "builtYear": 1993,
+   "widthM": 16.11,
+   "eavesM": 15.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#72605b",
+    "wallRaw": "#5f5a59",
+    "skyline": {
+     "eavesM": 15.65,
+     "eavesRow": 104,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.83,
+      "topWidthM": 1.4,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.084,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.75 m at 0.03 (light 0.02): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.75,
+       "centre": 0.03,
+       "light": 0.02
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.54,
+       "light": 0.14
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.64,
+       "light": 0.13
+      },
+      {
+       "widthM": 2.15,
+       "centre": 0.75,
+       "light": 0.13
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.85,
+       "light": 0.1
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.9,
+       "light": 0.07
+      },
+      {
+       "widthM": 1,
+       "centre": 0.97,
+       "light": 0.14
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.95,
+       "widthM": 0.88,
+       "centre": 0.9
+      },
+      {
+       "atM": 6.63,
+       "widthM": 1.18,
+       "centre": 0.62
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1993, type 1899-1903; frontage 16.11 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1993, type 1899-1903",
+     "frontage 16.11 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 15.11 m = 4 storeys of 3.78 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.067 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012120159",
+   "address": "Blasiusstraat 138",
+   "builtYear": 1954,
+   "widthM": 23.04,
+   "eavesM": 13.05,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#535758",
+    "wallRaw": "#585c5d",
+    "skyline": {
+     "eavesM": 14.57,
+     "eavesRow": 147,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 2.2,
+     "bayCentre": 0.92,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 1.02 m @ 0.58, 1.23 m @ 0.56, 0.75 m @ 0.7), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 1.02,
+       "centre": 0.1,
+       "light": 0.58
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.55,
+       "light": 0.56
+      },
+      {
+       "widthM": 0.75,
+       "centre": 0.95,
+       "light": 0.7
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1954, type 1899-1903; frontage 23.04 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1954, type 1899-1903",
+     "frontage 23.04 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.05 m = 4 storeys of 3.26 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.08 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131294",
+   "address": "Blasiusstraat 128",
+   "builtYear": 1955,
+   "widthM": 21.53,
+   "eavesM": 13.42,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 21.53,
+    "depthM": 0.31,
+    "centre": 0.5,
+    "lineRD": [
+     [
+      122698.682,
+      485616.46749999997
+     ],
+     [
+      122683.725,
+      485610.37549999997
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#464d50",
+    "wallRaw": "#454a4b",
+    "skyline": {
+     "eavesM": 15.4,
+     "eavesRow": 114,
+     "confidence": 0.75,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.32,
+       "widthM": 1.13,
+       "centre": 0.23
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1955, type 1899-1903; frontage 21.53 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1955, type 1899-1903",
+     "frontage 21.53 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.42 m = 4 storeys of 3.35 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.82 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012143306",
+   "address": "Blasiusstraat 124",
+   "builtYear": 1954,
+   "widthM": 8.3,
+   "eavesM": 12.39,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 2.67,
+    "depthM": 0.52,
+    "centre": 0.161,
+    "lineRD": [
+     [
+      122676.615,
+      485607.45149999997
+     ],
+     [
+      122671.25,
+      485605.68549999996
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#c7bac2",
+    "wallRaw": "#8c918a",
+    "skyline": {
+     "eavesM": 13.35,
+     "eavesRow": 196,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "ribbon",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.147,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best clercq-e-corbel-brick: built 1954, type 1899-1903; frontage 8.3 m, type 5.8-6.2 m)",
+   "best": {
+    "type": "clercq-e-corbel-brick",
+    "score": 0,
+    "veto": [
+     "built 1954, type 1899-1903",
+     "frontage 8.3 m, type 5.8-6.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 12.39 m = 4 storeys of 3.1 m vs the type's 3.48 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.15 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.092 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 2 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

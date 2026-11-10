@@ -1,0 +1,89 @@
+{
+ "street": "Nieuwendammerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012163617",
+   "addresses": [
+    "Nieuwendammerdijk 143"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 143",
+     "use": "woonfunctie",
+     "areaM2": 100,
+     "bagId": "0363010000751702"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167049",
+   "addresses": [
+    "Nieuwendammerdijk 145"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 145",
+     "use": "woonfunctie",
+     "areaM2": 129,
+     "bagId": "0363010000751708"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167155",
+   "addresses": [
+    "Nieuwendammerdijk 147"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 147",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000751710"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156422",
+   "addresses": [
+    "Nieuwendammerdijk 149"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 149",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000751712"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166543",
+   "addresses": [
+    "Nieuwendammerdijk 151"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nieuwendammerdijk 151",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000751714"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  }
+ ]
+}

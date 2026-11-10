@@ -1,0 +1,353 @@
+{
+ "street": "Rapenburg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:17:18.279Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170624",
+   "addresses": [
+    "Rapenburg 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 44-H",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000788080"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170630",
+   "addresses": [
+    "Rapenburg 42A",
+    "Rapenburg 42C",
+    "Rapenburg 42D",
+    "Rapenburg 42B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 42A",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000788074"
+    },
+    {
+     "address": "Rapenburg 42C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000788076"
+    },
+    {
+     "address": "Rapenburg 42D",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000788077"
+    },
+    {
+     "address": "Rapenburg 42B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000788075"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181303",
+   "addresses": [
+    "Rapenburg 36",
+    "Rapenburg 38A",
+    "Rapenburg 38B",
+    "Rapenburg 38D",
+    "Rapenburg 38E",
+    "Rapenburg 38F",
+    "Rapenburg 38C",
+    "Rapenburg 40"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 38A",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000788067"
+    },
+    {
+     "address": "Rapenburg 38B",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000788068"
+    },
+    {
+     "address": "Rapenburg 38D",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000788070"
+    },
+    {
+     "address": "Rapenburg 38E",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000788071"
+    },
+    {
+     "address": "Rapenburg 38F",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000788072"
+    },
+    {
+     "address": "Rapenburg 38C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000788069"
+    },
+    {
+     "address": "Rapenburg 36",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000788065"
+    },
+    {
+     "address": "Rapenburg 40",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000788073"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7906233354,
+     "lngLat": [
+      4.9083419,
+      52.3713839
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_gutter",
+      "capacity": "6",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:17:18.279Z",
+     "match": "frontage",
+     "distanceM": 1.9
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181214",
+   "addresses": [
+    "Rapenburg 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 34",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000788063"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181215",
+   "addresses": [
+    "Rapenburg 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 32",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000788060"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181216",
+   "addresses": [
+    "Rapenburg 26",
+    "Rapenburg 28D",
+    "Rapenburg 28E",
+    "Rapenburg 28F",
+    "Rapenburg 28A",
+    "Rapenburg 28B",
+    "Rapenburg 28C",
+    "Rapenburg 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 28D",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000788053"
+    },
+    {
+     "address": "Rapenburg 28E",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000788054"
+    },
+    {
+     "address": "Rapenburg 28F",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000788055"
+    },
+    {
+     "address": "Rapenburg 30",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000788057"
+    },
+    {
+     "address": "Rapenburg 28A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000788049"
+    },
+    {
+     "address": "Rapenburg 26",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000788046"
+    },
+    {
+     "address": "Rapenburg 28B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000788050"
+    },
+    {
+     "address": "Rapenburg 28C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000788051"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 7911865796,
+     "lngLat": [
+      4.9080803,
+      52.3715216
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "bicycle_parking": "safe_gutter",
+      "capacity": "10",
+      "covered": "no"
+     },
+     "fetchedAt": "2026-11-10T08:17:18.279Z",
+     "match": "frontage",
+     "distanceM": 4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170629",
+   "addresses": [
+    "Rapenburg 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 24-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 98,
+     "bagId": "0363010000785542"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170628",
+   "addresses": [
+    "Rapenburg 22A",
+    "Rapenburg 22B",
+    "Rapenburg 22C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 22A",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000788040"
+    },
+    {
+     "address": "Rapenburg 22B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000788041"
+    },
+    {
+     "address": "Rapenburg 22C",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010000788042"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170622",
+   "addresses": [
+    "Rapenburg 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Peperstraat 23",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 186,
+     "bagId": "0363010001021126"
+    },
+    {
+     "address": "Peperstraat 23",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 187,
+     "bagId": "0363010012085811"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1055573894,
+     "lngLat": [
+      4.9077158,
+      52.3715795
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "23",
+      "addr:postcode": "1011TJ",
+      "addr:street": "Peperstraat",
+      "amenity": "restaurant",
+      "name": "R21",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:17:18.279Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

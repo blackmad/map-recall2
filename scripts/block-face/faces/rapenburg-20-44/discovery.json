@@ -1,0 +1,364 @@
+{
+ "street": "Rapenburg",
+ "seed": "0363100012170622",
+ "members": [
+  "0363100012170624",
+  "0363100012170630",
+  "0363100012181303",
+  "0363100012181214",
+  "0363100012181215",
+  "0363100012181216",
+  "0363100012170629",
+  "0363100012170628",
+  "0363100012170622"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012170623 17.8 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012182731 16.6 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164957",
+   "reason": "frontage 93.0 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012164958",
+   "reason": "frontage 73.1 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170444",
+   "reason": "frontage 61.4 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170445",
+   "reason": "frontage 78.3 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170446",
+   "reason": "frontage 72.2 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170617",
+   "reason": "frontage 57.8 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170618",
+   "reason": "frontage 52.1 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170620",
+   "reason": "sightline to Rapenburg crosses 0363100012182735"
+  },
+  {
+   "pandId": "0363100012170626",
+   "reason": "frontage 32.9 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170632",
+   "reason": "frontage 47.4 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170633",
+   "reason": "frontage 39.1 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170691",
+   "reason": "frontage 36.9 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012181210",
+   "reason": "frontage 53.0 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012181211",
+   "reason": "frontage 52.9 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012181222",
+   "reason": "sightline to Rapenburg crosses 0363100012181219"
+  },
+  {
+   "pandId": "0363100012181223",
+   "reason": "sightline to Rapenburg crosses 0363100012170619"
+  },
+  {
+   "pandId": "0363100012181285",
+   "reason": "frontage 37.0 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012181287",
+   "reason": "frontage 37.3 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012181288",
+   "reason": "frontage 56.9 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012181289",
+   "reason": "frontage 63.8 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012181290",
+   "reason": "sightline to Rapenburg crosses 0363100012170619"
+  },
+  {
+   "pandId": "0363100012181291",
+   "reason": "frontage 35.1 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012181292",
+   "reason": "sightline to Rapenburg crosses 0363100012181294"
+  },
+  {
+   "pandId": "0363100012181293",
+   "reason": "frontage 39.1 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012181294",
+   "reason": "sightline to Rapenburg crosses 0363100012181300"
+  },
+  {
+   "pandId": "0363100012182654",
+   "reason": "frontage 77.8 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012182656",
+   "reason": "frontage 64.8 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012182657",
+   "reason": "frontage 61.8 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012182658",
+   "reason": "frontage 62.1 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012182659",
+   "reason": "frontage 63.2 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012182661",
+   "reason": "sightline to Rapenburg crosses 0363100012182731"
+  },
+  {
+   "pandId": "0363100012182733",
+   "reason": "sightline to Rapenburg crosses 0363100012182737"
+  },
+  {
+   "pandId": "0363100012182738",
+   "reason": "sightline to Rapenburg crosses 0363100012182737"
+  },
+  {
+   "pandId": "0363100012182739",
+   "reason": "sightline to Rapenburg crosses 0363100012170622"
+  },
+  {
+   "pandId": "0363100012182742",
+   "reason": "frontage 61.4 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012182743",
+   "reason": "frontage 61.6 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012185926",
+   "reason": "sightline to Rapenburg crosses 0363100012181219"
+  },
+  {
+   "pandId": "0363100012186000",
+   "reason": "frontage 41.8 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012571640",
+   "reason": "frontage 61.3 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012571676",
+   "reason": "frontage 83.3 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012571677",
+   "reason": "frontage 89.1 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012571678",
+   "reason": "frontage 50.7 m from Rapenburg"
+  },
+  {
+   "pandId": "0363100012170619",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012170625",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181217",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181218",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181219",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181221",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181295",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181296",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181297",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181298",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181299",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181300",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181301",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181302",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181607",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182734",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182735",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182736",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012182737",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012170624",
+   "alongM": -56.15,
+   "widthM": 7.15,
+   "eavesM": 13.27,
+   "roofMaxM": 13.9,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170630",
+   "alongM": -50.13,
+   "widthM": 4.88,
+   "eavesM": 13.44,
+   "roofMaxM": 15.6,
+   "storeys3dbag": 5,
+   "builtYear": 1834,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181303",
+   "alongM": -44.88,
+   "widthM": 5.63,
+   "eavesM": 11.76,
+   "roofMaxM": 13.18,
+   "storeys3dbag": 5,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181214",
+   "alongM": -32.62,
+   "widthM": 5.6,
+   "eavesM": 13.21,
+   "roofMaxM": 13.23,
+   "storeys3dbag": 3,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181215",
+   "alongM": -27.18,
+   "widthM": 5.27,
+   "eavesM": 11.79,
+   "roofMaxM": 11.88,
+   "storeys3dbag": 3,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181216",
+   "alongM": -14.62,
+   "widthM": 5.39,
+   "eavesM": 13.26,
+   "roofMaxM": 14.92,
+   "storeys3dbag": 5,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170629",
+   "alongM": -9.41,
+   "widthM": 5.04,
+   "eavesM": 15.86,
+   "roofMaxM": 18.35,
+   "storeys3dbag": 5,
+   "builtYear": 1812,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170628",
+   "alongM": -4.64,
+   "widthM": 4.49,
+   "eavesM": 13.49,
+   "roofMaxM": 13.51,
+   "storeys3dbag": 4,
+   "builtYear": 1981,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170622",
+   "alongM": 0,
+   "widthM": 4.8,
+   "eavesM": 15.1,
+   "roofMaxM": 17.18,
+   "storeys3dbag": 5,
+   "builtYear": 1774,
+   "uncertainty": []
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "note": "Shopfront colours and door sides from the Opus strip verdict (reviewFronts.ts).",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012159406",
+   "type": "dapper-1882-plain-dormer",
+   "ground": {
+    "shopfront": {
+     "colour": "#e6e1d2",
+     "fasciaColour": "#e6e1d2",
+     "residentialDoor": {
+      "colour": "#e6e1d2"
+     }
+    }
+   },
+   "reason": "Swinden 391 (Goudexpert): cream painted shopfront and cream house door"
+  },
+  {
+   "pandId": "0363100012158925",
+   "type": "dapper-1882-plain-dormer",
+   "ground": {
+    "shopfront": {
+     "colour": "#1d1b1a",
+     "fasciaColour": "#1d1b1a",
+     "residentialDoor": {
+      "colour": "#e6e1d2"
+     }
+    }
+   },
+   "reason": "Swinden 393 (Cosme): black fascia and frame, cream house door"
+  },
+  {
+   "pandId": "0363100012165201",
+   "type": "dapper-1882-plain-dormer",
+   "ground": {
+    "shopfront": {
+     "colour": "#e6e1d2",
+     "fasciaColour": "#e6e1d2"
+    }
+   },
+   "reason": "Swinden 395: cream painted shopfront (awning hides the door)"
+  },
+  {
+   "pandId": "0363100012163378",
+   "type": "dapper-1882-plain-dormer",
+   "ground": {
+    "shopfront": {
+     "colour": "#e6e1d2",
+     "fasciaColour": "#e6e1d2",
+     "residentialDoor": {
+      "colour": "#e6e1d2"
+     }
+    }
+   },
+   "reason": "Swinden 397: cream shopfront, house door at the left as photographed"
+  },
+  {
+   "pandId": "0363100012236602",
+   "type": "dapper-1882-plain-dormer",
+   "ground": {
+    "shopfront": {
+     "colour": "#e6e1d2",
+     "fasciaColour": "#e6e1d2",
+     "residentialDoor": {
+      "side": "right",
+      "colour": "#e6e1d2"
+     }
+    }
+   },
+   "reason": "Swinden 399 (Dapper Post): shop double door at the left, white house door at the far right"
+  },
+  {
+   "pandId": "0363100012161671",
+   "type": "dapper-1882-plain-dormer",
+   "ground": {
+    "shopfront": {
+     "colour": "#e6e1d2",
+     "fasciaColour": "#e6e1d2"
+    }
+   },
+   "reason": "Swinden 401: cream painted shopfront"
+  }
+ ]
+}

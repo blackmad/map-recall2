@@ -1,0 +1,54 @@
+{
+ "version": 1,
+ "pandId": "0363100012174977",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "front.jpg",
+  "year": 2024,
+  "quality": 0.118,
+  "panoIds": [
+   "b_20241216_0911_Track07_Sphere_00024"
+  ],
+  "date": "2024-12-16",
+  "reasons": [],
+  "ppm": 50
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174977",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012174977",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1871
+   }
+  },
+  "pixel": null
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012174977",
+  "design": {},
+  "provenance": {
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012174977",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1871
+  }
+ },
+ "disagreements": []
+}

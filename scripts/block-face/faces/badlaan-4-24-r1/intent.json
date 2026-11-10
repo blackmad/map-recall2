@@ -1,0 +1,159 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "badlaan-4-24-r1",
+ "street": "Plantage Badlaan",
+ "sources": [
+  {
+   "id": "strip-2023-01-02",
+   "kind": "street-panorama",
+   "capturedAt": "2023-01-02",
+   "image": "staging/block-face/badlaan-4-24-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the plantage library (buurt Plantage); scores and holds in scripts/block-face/faces/badlaan-4-24/auto-place.json"
+ },
+ "types": [
+  "plantage-1855-brick-hood"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012181658",
+   "slug": "badlaan-181658",
+   "address": "Plantage Badlaan 14",
+   "type": {
+    "type": "plantage-1855-brick-hood",
+    "ground": "door-right",
+    "measuredPalette": {
+     "brick": "#574942",
+     "evidence": "strip 2023-01-02 span 1374-1598: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: plantage-1855-brick-hood scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-02 span 1374-1598"
+   }
+  },
+  {
+   "pandId": "0363100012181657",
+   "slug": "badlaan-181657",
+   "address": "Plantage Badlaan 12",
+   "type": {
+    "type": "plantage-1855-brick-hood",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#4c433d",
+     "evidence": "strip 2023-01-02 span 1599-1822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: plantage-1855-brick-hood scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-02 span 1599-1822"
+   }
+  },
+  {
+   "pandId": "0363100012171265",
+   "slug": "badlaan-171265",
+   "address": "Plantage Badlaan 10",
+   "type": {
+    "type": "plantage-1855-brick-hood",
+    "ground": "door-left",
+    "measuredPalette": {
+     "brick": "#4a423d",
+     "evidence": "strip 2023-01-02 span 1823-2047: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: plantage-1855-brick-hood scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-02 span 1823-2047"
+   }
+  },
+  {
+   "pandId": "0363100012171264",
+   "slug": "badlaan-171264",
+   "address": "Plantage Badlaan 8A",
+   "type": {
+    "type": "plantage-1855-brick-hood",
+    "measuredPalette": {
+     "brick": "#5c4a43",
+     "evidence": "strip 2023-01-02 span 2047-2271: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: plantage-1855-brick-hood scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-02 span 2047-2271"
+   }
+  },
+  {
+   "pandId": "0363100012171258",
+   "slug": "badlaan-171258",
+   "address": "Plantage Badlaan 6",
+   "type": {
+    "type": "plantage-1855-brick-hood",
+    "measuredPalette": {
+     "brick": "#5b4a42",
+     "evidence": "strip 2023-01-02 span 2271-2495: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: plantage-1855-brick-hood scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-02 span 2271-2495"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

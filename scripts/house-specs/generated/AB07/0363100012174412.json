@@ -1,0 +1,137 @@
+{
+ "version": 1,
+ "pandId": "0363100012174412",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "front.jpg",
+  "year": 2018,
+  "quality": 0.055,
+  "panoIds": [
+   "TMX7316010203-000704_pano_0000_000499",
+   "TMX7316010203-000704_pano_0000_000500"
+  ],
+  "date": "2018-05-03",
+  "reasons": [],
+  "ppm": 40
+ },
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174412",
+   "design": {
+    "fronts": [
+     {
+      "gable": "step"
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/gable": {
+     "source": "monument-text",
+     "confidence": 0.8,
+     "ref": "rce:3436",
+     "at": null
+    },
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.7,
+     "ref": "rce:3436",
+     "at": null
+    },
+    "facts/elements": {
+     "source": "monument-text",
+     "confidence": 0.6,
+     "ref": "rce:3436",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1644,
+    "elements": [
+     "gable-stone"
+    ]
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174412",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012174412",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1644
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174412",
+   "design": {
+    "palette": {
+     "brick": "#8c867a"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.45,
+     "ref": "source-data://pand-crops/0363100012174412/front.jpg#fallback",
+     "at": "2018-05-03"
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012174412",
+  "design": {
+   "fronts": [
+    {
+     "gable": "step"
+    }
+   ],
+   "palette": {
+    "brick": "#8c867a"
+   }
+  },
+  "provenance": {
+   "fronts/0/gable": {
+    "source": "monument-text",
+    "confidence": 0.8,
+    "ref": "rce:3436",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.45,
+    "ref": "source-data://pand-crops/0363100012174412/front.jpg#fallback",
+    "at": "2018-05-03"
+   },
+   "facts/elements": {
+    "source": "monument-text",
+    "confidence": 0.6,
+    "ref": "rce:3436",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.7,
+    "ref": "rce:3436",
+    "at": null
+   }
+  },
+  "facts": {
+   "elements": [
+    "gable-stone"
+   ],
+   "facadeYear": 1644
+  }
+ },
+ "disagreements": []
+}

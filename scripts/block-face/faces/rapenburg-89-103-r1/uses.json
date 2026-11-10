@@ -1,0 +1,47 @@
+{
+ "street": "Rapenburg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:20:33.725Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181605",
+   "addresses": [
+    "Rapenburg 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 97",
+     "use": "kantoorfunctie",
+     "areaM2": 119,
+     "bagId": "0363010000788164"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170674",
+   "addresses": [
+    "Rapenburg 99"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 99-H",
+     "use": "winkelfunctie",
+     "areaM2": 343,
+     "bagId": "0363010000788165"
+    },
+    {
+     "address": "Rapenburg 99-H",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010012079654"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

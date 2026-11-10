@@ -1,0 +1,142 @@
+{
+ "street": "Plantage Middenlaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:47:25.701Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170229",
+   "addresses": [
+    "Plantage Middenlaan 86"
+   ],
+   "groundUnits": [],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170228",
+   "addresses": [
+    "Plantage Middenlaan 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 84-H",
+     "use": "woonfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000952805"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181745",
+   "addresses": [
+    "Plantage Middenlaan 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 82-H",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000777672"
+    },
+    {
+     "address": "Plantage Middenlaan 82-O",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000777673"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181744",
+   "addresses": [
+    "Plantage Middenlaan 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 80",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000777670"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181747",
+   "addresses": [
+    "Plantage Middenlaan 78"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 78-H",
+     "use": "woonfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000777668"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181746",
+   "addresses": [
+    "Plantage Middenlaan 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 76-H",
+     "use": "kantoorfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000777665"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181741",
+   "addresses": [
+    "Plantage Middenlaan 74"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 74-H",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010000948781"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181742",
+   "addresses": [
+    "Plantage Middenlaan 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 72-H",
+     "use": "winkelfunctie",
+     "areaM2": 182,
+     "bagId": "0363010000952732"
+    },
+    {
+     "address": "Plantage Badlaan 26",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000952733"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

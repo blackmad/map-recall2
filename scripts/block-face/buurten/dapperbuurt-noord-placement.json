@@ -1,0 +1,607 @@
+{
+ "buurt": "dapperbuurt-noord",
+ "library": "oud-west",
+ "generatedAt": "2026-11-10T08:53:45.546Z",
+ "seconds": 26.8,
+ "totals": {
+  "faces": 14,
+  "pands": 91,
+  "placed": 12
+ },
+ "faces": [
+  {
+   "face": "commelin-1-63",
+   "street": "Commelinstraat",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 5.43,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 11,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "commelin-145-239",
+   "street": "Commelinstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 0.78,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "commelin-2-250",
+   "street": "Commelinstraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 5.36,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 12,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "commelin-322-538",
+   "street": "Commelinstraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 3.11,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "dapper-12-24",
+   "status": "no intake"
+  },
+  {
+   "face": "dapper-141-143",
+   "status": "no intake"
+  },
+  {
+   "face": "dapper-28-32",
+   "status": "no intake"
+  },
+  {
+   "face": "dapper-3-9",
+   "street": "Dapperstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.73,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 3,
+    "match": 1,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "dapper-34-36",
+   "status": "no intake"
+  },
+  {
+   "face": "dapper-4-10",
+   "street": "Dapperstraat",
+   "pands": 4,
+   "placed": 3,
+   "held": 1,
+   "runs": [
+    {
+     "face": "dapper-4-10-r1",
+     "pands": [
+      "0363100012166835",
+      "0363100012162301",
+      "0363100012153465"
+     ],
+     "passed": true,
+     "triangles": 5104
+    }
+   ],
+   "seconds": 7.16,
+   "byType": {
+    "dapper-1882-plain-dormer": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "dapper-40-44",
+   "status": "no intake"
+  },
+  {
+   "face": "dapper-53-55",
+   "status": "no intake"
+  },
+  {
+   "face": "linnaeus-13-21",
+   "street": "Linnaeusstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.25,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 2,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "linnaeus-23-35",
+   "street": "Linnaeusstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 2.07,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 4,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "linnaeus-5-5",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-100-100",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-100-100-159594",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-101-101",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-102-102",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-103-103",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-104-104",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-105-107",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-108-108",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-109-109",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-110-110",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-111-111",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-112-112",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-113-113",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-64-64",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-66-92",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-93-93",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-94-94",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-95-95",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-98-98",
+   "status": "no intake"
+  },
+  {
+   "face": "mauritskade-99-99",
+   "status": "no intake"
+  },
+  {
+   "face": "pontanus-1-13",
+   "status": "no intake"
+  },
+  {
+   "face": "pontanus-185-193",
+   "status": "no intake"
+  },
+  {
+   "face": "pontanus-194-202",
+   "status": "no intake"
+  },
+  {
+   "face": "pontanus-30-32",
+   "status": "no intake"
+  },
+  {
+   "face": "pontanus-36-37",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-1-20",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-101-131",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-106-106",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-116-116",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-126-126",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-136-136",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-148-154",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-155-161",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-16-16",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-162-168",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-169-175",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-176-182",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-183-189",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-190-204",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-205-211",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-21-90",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-212-232",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-233-233",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-26-26",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-46-46",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-51-51",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-56-56",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-6-6",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-71-71",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-76-76",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-81-147",
+   "status": "no intake"
+  },
+  {
+   "face": "roomtuintjes-96-96",
+   "status": "no intake"
+  },
+  {
+   "face": "swinden-371-379",
+   "status": "no intake"
+  },
+  {
+   "face": "swinden-383-581",
+   "street": "Eerste Van Swindenstraat",
+   "pands": 11,
+   "placed": 6,
+   "held": 5,
+   "runs": [
+    {
+     "face": "swinden-383-581-r1",
+     "pands": [
+      "0363100012159406",
+      "0363100012158925",
+      "0363100012165201",
+      "0363100012163378",
+      "0363100012236602",
+      "0363100012161671"
+     ],
+     "passed": true,
+     "triangles": 10941
+    }
+   ],
+   "seconds": 26.79,
+   "byType": {
+    "dapper-1882-plain-dormer": 6
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 5,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "swinden-5-229",
+   "street": "Eerste Van Swindenstraat",
+   "pands": 3,
+   "placed": 0,
+   "held": 3,
+   "runs": [],
+   "seconds": 8.32,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vlaming-101-207",
+   "street": "Pieter Vlamingstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 2.61,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 4,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "vlaming-16-30",
+   "status": "no intake"
+  },
+  {
+   "face": "vlaming-206-282",
+   "street": "Pieter Vlamingstraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 23.1,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 1,
+    "likeness": 2,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vlaming-284-284",
+   "status": "no intake"
+  },
+  {
+   "face": "vlaming-36-56",
+   "street": "Pieter Vlamingstraat",
+   "pands": 11,
+   "placed": 3,
+   "held": 8,
+   "runs": [
+    {
+     "face": "vlaming-36-56-r1",
+     "pands": [
+      "0363100012150078",
+      "0363100012122070",
+      "0363100012125671"
+     ],
+     "passed": true,
+     "triangles": 5081
+    }
+   ],
+   "seconds": 50.92,
+   "byType": {
+    "dapper-1882-plain-dormer": 3
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 2,
+    "likeness": 4,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "vlaming-5-11",
+   "street": "Pieter Vlamingstraat",
+   "pands": 4,
+   "placed": 0,
+   "held": 4,
+   "runs": [],
+   "seconds": 0.71,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 4,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "wagenaar-2-250",
+   "status": "no intake"
+  },
+  {
+   "face": "wagenaar-293-501",
+   "status": "no intake"
+  },
+  {
+   "face": "wagenaar-314-482",
+   "status": "no intake"
+  },
+  {
+   "face": "wagenaar-7-209",
+   "status": "no intake"
+  },
+  {
+   "face": "zeeburgerdijk-1-17",
+   "status": "no intake"
+  },
+  {
+   "face": "zeeburgerdijk-19-23",
+   "status": "no intake"
+  },
+  {
+   "face": "zeeburgerdijk-25-25",
+   "status": "no intake"
+  },
+  {
+   "face": "zeeburgerdijk-27-49",
+   "status": "no intake"
+  },
+  {
+   "face": "zesen-261-367",
+   "status": "no intake"
+  },
+  {
+   "face": "zesen-298-422",
+   "status": "no intake"
+  },
+  {
+   "face": "zesen-385-675",
+   "status": "no intake"
+  },
+  {
+   "face": "zesen-4-290",
+   "status": "no intake"
+  },
+  {
+   "face": "zesen-89-259",
+   "status": "no intake"
+  }
+ ]
+}

@@ -1,0 +1,126 @@
+{
+ "version": 1,
+ "pandId": "0363100012172889",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "front.jpg",
+  "year": 2024,
+  "quality": 0.506,
+  "panoIds": [
+   "b_20241216_0911_Track07_Sphere_00046",
+   "b_20241216_0911_Track07_Sphere_00047",
+   "b_20241216_0911_Track07_Sphere_00045"
+  ],
+  "date": "2024-12-16",
+  "reasons": [],
+  "ppm": 40
+ },
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172889",
+   "design": {
+    "fronts": [
+     {
+      "gable": "neck"
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/gable": {
+     "source": "monument-text",
+     "confidence": 0.8,
+     "ref": "rce:971",
+     "at": null
+    },
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.7,
+     "ref": "rce:971",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1664
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172889",
+   "design": {},
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012172889",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1664
+   }
+  },
+  "pixel": null,
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172889",
+   "design": {
+    "fronts": [
+     {
+      "bays": 3
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.55,
+     "ref": "source-data://pand-crops/0363100012172889/front.jpg",
+     "at": "2024-12-16"
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012172889",
+  "design": {
+   "fronts": [
+    {
+     "bays": 3,
+     "gable": "neck"
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "vision-judge",
+    "confidence": 0.55,
+    "ref": "source-data://pand-crops/0363100012172889/front.jpg",
+    "at": "2024-12-16"
+   },
+   "fronts/0/gable": {
+    "source": "monument-text",
+    "confidence": 0.8,
+    "ref": "rce:971",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.7,
+    "ref": "rce:971",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1664
+  }
+ },
+ "disagreements": [],
+ "jev": {
+  "cached": true,
+  "hash": "f644fc4bdd8c371121a934ed5c7e23fd",
+  "usd": 0
+ }
+}

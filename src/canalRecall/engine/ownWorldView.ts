@@ -34,10 +34,10 @@ import { isTouchPointer, START_SETTLE_GROUND_RADIUS_M, START_SETTLE_LEGACY_CAP_M
 import { CameraMap, EngineCamera, unitsPerMetre, mercatorX, mercatorY } from './cameraMap';
 import { GameCameraSolver, lngLatToWorld, worldToLngLat, type GameCamera, type LoaderFrame } from './gameCamera';
 import { clearCamera, clearanceResidents, residentIndex } from './cameraClearance';
-import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, footprintTopM, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
+import { clearEye, coverAheadPoints, easePullIn, eyeInsideBuilding, footprintsNear, footprintTopM, nearPlaneReachM, EYE_WALL_MARGIN_M, type Eye } from './streetVisibility';
 import { RiderCoverTracker } from './riderCover';
 import { idleScheduler } from './idleBoxGrid';
-import { coverRouteFlag, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
+import { coverRouteFlag, footprintContains, routeAheadPoints, type LngLat as CoverLngLat } from '../coveredPassage';
 import { decodeOverviewBytes, fetchOverviewBytes, OverviewLayer, overviewTileGrid, OVERVIEW_TILE_MIN_TRIANGLES } from './overviewLayer';
 import { overviewFromPool } from '../ownMap/overviewPool';
 import { awaitWorkerPool } from './workerPool';
@@ -659,7 +659,10 @@ export class OwnWorldView implements WorldViewOracles {
     // Register facts (facade/registerRecipe.ts) read before the facade so the era, wall family and forced extras follow the register.
     const facts = this.decoration.registerFacts;
     const registered = facts?.size && api.withRegisterFacts ? (f: any) => api.withRegisterFacts(f, facts) : (f: any) => f;
-    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(named(Facades.decorateFacade(registered(f)))) : (f: any) => Facades.decorateFacade(registered(f));
+    // HouseSpecs (houseSpec/decorate.ts; the tile enricher stamps `p.houseSpec`): facts after the register, crown after
+    // the monument gable, as galleryPipeline.gameFeatureDecorator composes them. No-ops on a feature without a spec.
+    const spec = api.withHouseSpec ?? ((f: any) => f), crown = api.withHouseSpecCrown ?? ((f: any) => f);
+    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(crown(named(Facades.decorateFacade(spec(registered(f)))))) : (f: any) => Facades.decorateFacade(spec(registered(f)));
     const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, landmarks, listed) : decorate;
     city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
   }
@@ -1575,6 +1578,15 @@ export class OwnWorldView implements WorldViewOracles {
     if (!this._overview || !loader || loader._lastCenterLat == null) return false;
     const [lng, lat] = worldToLngLat(worldX, worldY, loader);
     return this._overview.isWater(lng, lat);
+  }
+
+  /** Whether a world point stands inside a resident building footprint (Free Ride pins keep off facades, S5 #333);
+   *  false before the footprints are up. */
+  isFootprint(worldX: number, worldY: number, loader: LoaderFrame): boolean {
+    const resident = this._completeCity?.residentFeatures?.();
+    if (!resident?.length || !loader || loader._lastCenterLat == null) return false;
+    const at = worldToLngLat(worldX, worldY, loader) as [number, number];
+    return footprintsNear(at, 1, resident).some((f: any) => footprintContains(f.geometry, at));
   }
 
   /** Picking: the facades' own screen-space pick (prismPick) — the nearest surface under the pixel. */

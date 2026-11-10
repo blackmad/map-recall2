@@ -10,7 +10,7 @@
 import './useBrowserMath.js'; // first: the browser's Math.cos/sin (browserMath.ts)
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, EXTRACT, CODE, GLOBAL_INPUTS, gameChain, inputHash, loadTile, readJson, tileInputs } from './pipeline.js';
+import { ROOT, EXTRACT, CODE, GLOBAL_INPUTS, gameChain, inputHash, loadTile, readJson, tileCoversHashes, tileIdsCacheFile, tileInputs } from './pipeline.js';
 import { rawFeature, sameValue, styledFeature, type Cell, type CellBuilding, type Geometry, type Props } from '../../src/canalRecall/world/cellFormat.js';
 import { quantiseHeights, sharedVertices, policyFootprint, policyOptionsOf, POLICY_VERSION } from '../../src/canalRecall/world/cellPolicy.js';
 import { readCell, readGlobalStrings } from './cellFiles.js';
@@ -28,6 +28,9 @@ async function main() {
   const tiles = value('tiles')?.split(',').filter(Boolean) ?? [...new Set([...all, ...Object.keys(index.tileCells)])].sort();
   const globalFresh = index.globalHash === inputHash([...CODE, ...GLOBAL_INPUTS]);
   const staleTiles = tiles.filter(t => (index.tileHashes?.[t] ?? 'absent') !== (all.includes(t) ? inputHash(tileInputs(t)) : 'absent'));
+  // covers.json is hashed per tile (house line H3): a tile whose slice of it moved since the compile is stale too.
+  const covers = tileCoversHashes(tiles, tileIdsCacheFile(DIR));
+  const staleCovers = tiles.filter(t => (index.tileCovers?.[t] ?? 'absent') !== covers.hashes.get(t));
   const chain = gameChain(), cells = new Map<string, Cell>();
   const globals = readGlobalStrings(DIR);
   const cell = (k: string) => { let c = cells.get(k); if (!c) cells.set(k, c = readCell(DIR, k, globals)); return c; };
@@ -59,10 +62,10 @@ async function main() {
     verdicts.push(v);
   }
   const differing = verdicts.filter(v => v.onlyWorld.length || v.onlyDefault.length || v.rawDiffer.length || v.styledDiffer.length || v.orderDiffers);
-  const summary = { dir: path.relative(ROOT, DIR), tiles: tiles.length, buildings: verdicts.reduce((s, v) => s + v.default, 0), globalFresh, staleTiles, differingTiles: differing.map(v => ({ ...v, onlyWorld: v.onlyWorld.length, onlyDefault: v.onlyDefault.length, rawDiffer: v.rawDiffer.length, styledDiffer: v.styledDiffer.length })) };
+  const summary = { dir: path.relative(ROOT, DIR), tiles: tiles.length, buildings: verdicts.reduce((s, v) => s + v.default, 0), globalFresh, staleTiles, staleCovers, differingTiles: differing.map(v => ({ ...v, onlyWorld: v.onlyWorld.length, onlyDefault: v.onlyDefault.length, rawDiffer: v.rawDiffer.length, styledDiffer: v.styledDiffer.length })) };
   if (REPORT) fs.writeFileSync(REPORT, JSON.stringify({ ...summary, verdicts: differing }, null, 2));
   console.log(JSON.stringify(summary, null, 2));
-  if (differing.length || staleTiles.length || !globalFresh) process.exit(1);
+  if (differing.length || staleTiles.length || staleCovers.length || !globalFresh) process.exit(1);
 }
 
 main().catch(error => { console.error(error); process.exit(1); });

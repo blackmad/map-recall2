@@ -39,11 +39,19 @@ test('register frontal strip', async ({ page }, info) => {
   for (const c of CAMS) {
     // The rider starts at the panorama's spot; the finish is Dam square (a race needs a finish some way off).
     const [e, f] = [c.eye, [4.8926, 52.3731]];
-    await page.goto(`/canal-drive/?engine=own&travel=car&governor=0${process.env.REG_QUERY ?? ''}#race=${e[1]},${e[0]},${e[1]},${e[0]},${f[1]},${f[0]}`);
+    // `cam=` makes every spot a full page load: with only the `#race=` fragment changed, the goto was a same-document
+    // navigation, the rider stayed at the first spot, and every later frame was drawn by the coarse tier, without the
+    // facade extras (lane register-extras 2026-11-10: 11 of 12 verdict frames were identical for that reason).
+    await page.goto(`/canal-drive/?engine=own&travel=car&governor=0&cam=${encodeURIComponent(c.slug)}${process.env.REG_QUERY ?? ''}#race=${e[1]},${e[0]},${e[1]},${e[0]},${f[1]},${f[0]}`);
     await expect.poll(() => page.evaluate(() => Boolean((window as any).canalRecallGame?.player?.x)), { timeout: 120_000 }).toBe(true);
     await page.evaluate(() => { const g = (window as any).canalRecallGame; g.state = 4; g._quizFreezesRide = () => false; g._updateCanalQuiz = () => {}; g._updateBridgeQuiz = () => {}; g.player.handleInput = () => {}; g.player.update = function () { this.speed = 0; this.vx = 0; this.vy = 0; }; });
     await expect.poll(() => page.evaluate(() => { const vm = (window as any).canalRecallGame.vectorMap; return vm.engine === 'own' && !!vm._threeBuildings?.ready; }), { timeout: 120_000 }).toBe(true);
     await settle(page);
+    // The aimed pand is in the detail tier, extras included (the frame is the rider's view of it, not a coarse shell).
+    expect(await page.evaluate((id: string) => {
+      const t = (window as any).canalRecallGame.vectorMap._threeBuildings;
+      return [...t.chunks].filter(([key, ch]: [string, any]) => /^(near|extras):/.test(key) && ch.source?.some((f: any) => String(f.properties.id) === id)).map(([key]: [string, any]) => key.split(':')[0]).sort();
+    }, c.ids[0]), `${c.slug}: the aimed pand's detail chunks`).toEqual(['extras', 'near']);
     await page.evaluate(({ c }) => {
       const vm = (window as any).canalRecallGame.vectorMap, map = vm.map ?? vm.cameraMap;
       if (vm._playerBike?._modelRoot) vm._playerBike._modelRoot.visible = false;

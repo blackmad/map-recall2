@@ -31,6 +31,13 @@ export interface TypeMatchRule {
   /** BAG/3DBAG build years (inclusive); outside by more than `yearSlack` vetoes the type. */
   years: [number, number];
   yearSlack?: number;
+  /**
+   * Build years that are a register placeholder, not a date, for this type's pands: such a year neither passes nor vetoes
+   * the type (the year veto is skipped). Nieuwmarkt/Lastage 2026-11-10: 109 of 748 centre pands carry 1905 (Zuiderkerkbuurt
+   * 43 against 3 pands in 1900-1904 and 0 in 1906), 17th-18th c. gables and cornice houses whose BAG date is unknown.
+   * Absent = every year is a date (byte-identical).
+   */
+  unknownYears?: number[];
   /** 3DBAG eaves of the street front (m). */
   eavesM?: [number, number];
   /** 3DBAG bouwlagen the type is seen with. */
@@ -147,6 +154,12 @@ export interface TypeMatchRule {
    */
   frontEavesUnscored?: boolean;
   /**
+   * With `frontEavesM`: draw every placed pand at the line, never at its own skyline reading. Where the skyline within
+   * FRONT_EAVES.tolM of the line is a dormer or mansard top (Ruyschstraat 72-98: cornice 13.5 m on every front, skylines
+   * 13.5-14.5 m), reading it lifts houses of one row up to a metre over their neighbours. Absent = byte-identical.
+   */
+  frontEavesAtLine?: boolean;
+  /**
    * With `frontEavesM`: the top of a wall dormer that spans most of the front, where the strip skyline reads it instead
    * of the cornice (Derde Helmersstraat 54-64: crenellated wall dormers over two of three axes, skyline 17.4-18.2 m
    * over a 14.3 m cornice). A skyline near it scores like one near the cornice line; the house is drawn at the line.
@@ -222,6 +235,7 @@ export const FRONT_EAVES = {tolM: 1.0} as const;
 export function frontEavesFor(t: MatchableType, ev: PandEvidence): {eavesM: number; source: 'skyline' | 'type'} | null {
   const line = t.match?.frontEavesM;
   if (line === undefined) return null;
+  if (t.match?.frontEavesAtLine) return {eavesM: line, source: 'type'};
   const sky = ev.strip?.skyline;
   if (sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE && Math.abs(sky.eavesM - line) <= FRONT_EAVES.tolM) return {eavesM: r2(sky.eavesM), source: 'skyline'};
   return {eavesM: line, source: 'type'};
@@ -270,7 +284,7 @@ export interface PandEvidence {
   builtYear: number | null;
   widthM: number;
   eavesM: number;
-  /** The 3DBAG/PDOK eaves when a reviewer's eaves pin replaced `eavesM` (reviewEaves.ts); absent = `eavesM` is the survey's. */
+  /** The 3DBAG/PDOK eaves when a reviewer's eaves pin replaced `eavesM` (reviewFaceEaves.ts); absent = `eavesM` is the survey's. */
   surveyEavesM?: number;
   roofMaxM: number;
   storeys3dbag: number | null;
@@ -334,6 +348,7 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   if (!m) return {typeId: t.id, score: 0, veto: ['type has no match rule'], criteria};
   const slack = m.yearSlack ?? AUTO_PLACE.yearSlack;
   if (ev.builtYear === null) veto.push('no build year');
+  else if (m.unknownYears?.includes(ev.builtYear)) { /* a placeholder year: no year evidence either way */ }
   else if (ev.builtYear < m.years[0] - slack || ev.builtYear > m.years[1] + slack) veto.push(`built ${ev.builtYear}, type ${m.years.join('-')}`);
   veto.push(...frontageVetoes(t, ev));
   if (m.frontEavesM !== undefined && m.frontEavesUnscored) { /* drawn at the line, not scored */ }
