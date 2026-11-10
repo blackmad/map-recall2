@@ -22,7 +22,7 @@
  },
  "x0M": -24.34,
  "x1M": 28,
- "date": "2024-11-21",
+ "date": "2023-03-13",
  "coverage": 1,
  "spans": [
   {
@@ -33,28 +33,21 @@
     0,
     249
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00240",
-     "timestamp": "2024-11-21T13:34:14Z",
-     "distanceM": 5.8,
-     "obliquityDeg": 11,
+     "panoId": "TMX7316010203-002995_pano_0003_000059",
+     "timestamp": "2023-03-13T08:57:00.500960Z",
+     "distanceM": 6.6,
+     "obliquityDeg": 16.9,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00241",
-     "timestamp": "2024-11-21T13:34:15Z",
-     "distanceM": 6.8,
-     "obliquityDeg": 32.5,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241121_1354_Track03_Sphere_00239",
-     "timestamp": "2024-11-21T13:34:13Z",
-     "distanceM": 8.1,
-     "obliquityDeg": 44.4,
+     "panoId": "TMX7316010203-002995_pano_0003_000058",
+     "timestamp": "2023-03-13T08:56:59.745900Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 26.6,
      "missingFraction": 0
     }
    ]
@@ -67,28 +60,21 @@
     249,
     470
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00239",
-     "timestamp": "2024-11-21T13:34:13Z",
-     "distanceM": 5.4,
-     "obliquityDeg": 3.3,
+     "panoId": "TMX7316010203-002995_pano_0003_000057",
+     "timestamp": "2023-03-13T08:56:58.925920Z",
+     "distanceM": 6.5,
+     "obliquityDeg": 20.2,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00238",
-     "timestamp": "2024-11-21T13:34:11Z",
-     "distanceM": 7.2,
-     "obliquityDeg": 41,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241121_1354_Track03_Sphere_00240",
-     "timestamp": "2024-11-21T13:34:14Z",
-     "distanceM": 7.1,
-     "obliquityDeg": 43,
+     "panoId": "TMX7316010203-002995_pano_0003_000058",
+     "timestamp": "2023-03-13T08:56:59.745900Z",
+     "distanceM": 6.5,
+     "obliquityDeg": 25.4,
      "missingFraction": 0
     }
    ]
@@ -101,14 +87,21 @@
     469,
     707
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00238",
-     "timestamp": "2024-11-21T13:34:11Z",
-     "distanceM": 5.4,
-     "obliquityDeg": 8.2,
+     "panoId": "TMX7316010203-002995_pano_0003_000056",
+     "timestamp": "2023-03-13T08:56:58.175920Z",
+     "distanceM": 6.4,
+     "obliquityDeg": 16,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0003_000057",
+     "timestamp": "2023-03-13T08:56:58.925920Z",
+     "distanceM": 6.9,
+     "obliquityDeg": 28.3,
      "missingFraction": 0
     }
    ]
@@ -121,21 +114,28 @@
     707,
     935
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00237",
-     "timestamp": "2024-11-21T13:34:09Z",
-     "distanceM": 5.4,
-     "obliquityDeg": 3.2,
+     "panoId": "TMX7316010203-002995_pano_0003_000055",
+     "timestamp": "2023-03-13T08:56:57.560990Z",
+     "distanceM": 6.2,
+     "obliquityDeg": 8.1,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00236",
-     "timestamp": "2024-11-21T13:34:08Z",
-     "distanceM": 7.2,
-     "obliquityDeg": 41.9,
+     "panoId": "TMX7316010203-002995_pano_0003_000056",
+     "timestamp": "2023-03-13T08:56:58.175920Z",
+     "distanceM": 7.4,
+     "obliquityDeg": 34.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0003_000054",
+     "timestamp": "2023-03-13T08:56:56.995950Z",
+     "distanceM": 8.5,
+     "obliquityDeg": 43.9,
      "missingFraction": 0
     }
    ]
@@ -148,21 +148,28 @@
     935,
     1160
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00236",
-     "timestamp": "2024-11-21T13:34:08Z",
-     "distanceM": 5.4,
-     "obliquityDeg": 8.5,
+     "panoId": "TMX7316010203-002995_pano_0003_000054",
+     "timestamp": "2023-03-13T08:56:56.995950Z",
+     "distanceM": 6.1,
+     "obliquityDeg": 2.6,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00235",
-     "timestamp": "2024-11-21T13:34:08Z",
-     "distanceM": 6.7,
-     "obliquityDeg": 39.1,
+     "panoId": "TMX7316010203-002995_pano_0003_000055",
+     "timestamp": "2023-03-13T08:56:57.560990Z",
+     "distanceM": 7.8,
+     "obliquityDeg": 37.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0003_000053",
+     "timestamp": "2023-03-13T08:56:56.441020Z",
+     "distanceM": 8.1,
+     "obliquityDeg": 41.7,
      "missingFraction": 0
     }
    ]
@@ -175,21 +182,28 @@
     1160,
     1392
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00235",
-     "timestamp": "2024-11-21T13:34:08Z",
-     "distanceM": 5.4,
-     "obliquityDeg": 15,
+     "panoId": "TMX7316010203-002995_pano_0003_000053",
+     "timestamp": "2023-03-13T08:56:56.441020Z",
+     "distanceM": 6,
+     "obliquityDeg": 2.3,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00234",
-     "timestamp": "2024-11-21T13:34:07Z",
-     "distanceM": 6.3,
-     "obliquityDeg": 35.3,
+     "panoId": "TMX7316010203-002995_pano_0003_000052",
+     "timestamp": "2023-03-13T08:56:55.880980Z",
+     "distanceM": 7.7,
+     "obliquityDeg": 39.4,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0003_000054",
+     "timestamp": "2023-03-13T08:56:56.995950Z",
+     "distanceM": 8.2,
+     "obliquityDeg": 41.1,
      "missingFraction": 0
     }
    ]
@@ -202,28 +216,21 @@
     1391,
     1829
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00233",
-     "timestamp": "2024-11-21T13:34:06Z",
-     "distanceM": 5.3,
-     "obliquityDeg": 0.2,
+     "panoId": "TMX7316010203-002995_pano_0003_000051",
+     "timestamp": "2023-03-13T08:56:55.305980Z",
+     "distanceM": 6.3,
+     "obliquityDeg": 12,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00232",
-     "timestamp": "2024-11-21T13:34:05Z",
-     "distanceM": 7.4,
-     "obliquityDeg": 42.9,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "b_20241121_1354_Track03_Sphere_00234",
-     "timestamp": "2024-11-21T13:34:07Z",
+     "panoId": "TMX7316010203-002995_pano_0003_000052",
+     "timestamp": "2023-03-13T08:56:55.880980Z",
      "distanceM": 7.2,
-     "obliquityDeg": 44.4,
+     "obliquityDeg": 32.2,
      "missingFraction": 0
     }
    ]
@@ -236,21 +243,21 @@
     1829,
     2093
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00231",
-     "timestamp": "2024-11-21T13:34:04Z",
-     "distanceM": 5.4,
-     "obliquityDeg": 16,
+     "panoId": "TMX7316010203-002995_pano_0003_000050",
+     "timestamp": "2023-03-13T08:56:54.715970Z",
+     "distanceM": 6.5,
+     "obliquityDeg": 18.2,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00232",
-     "timestamp": "2024-11-21T13:34:05Z",
-     "distanceM": 6.4,
-     "obliquityDeg": 32.7,
+     "panoId": "TMX7316010203-002995_pano_0003_000049",
+     "timestamp": "2023-03-13T08:56:54.105980Z",
+     "distanceM": 6.7,
+     "obliquityDeg": 27.4,
      "missingFraction": 0
     }
    ]
@@ -267,11 +274,8 @@
   "2020-01-08": 8,
   "2023-02-20": 8,
   "2016-08-17": 8,
-  "2023-04-17": 8,
-  "2023-04-11": 8,
   "2023-02-13": 8,
   "2019-05-14": 8,
-  "2023-04-03": 8,
   "2020-04-22": 8,
   "2023-03-20": 8,
   "2022-04-25": 8,

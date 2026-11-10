@@ -22,7 +22,7 @@
  },
  "x0M": -8.79,
  "x1M": 7.61,
- "date": "2024-11-21",
+ "date": "2023-03-13",
  "coverage": 1,
  "spans": [
   {
@@ -33,21 +33,21 @@
     0,
     271
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00222",
-     "timestamp": "2024-11-21T13:33:55Z",
-     "distanceM": 5.1,
-     "obliquityDeg": 25.2,
+     "panoId": "TMX7316010203-002995_pano_0003_000040",
+     "timestamp": "2023-03-13T08:56:47.816050Z",
+     "distanceM": 5.3,
+     "obliquityDeg": 10.8,
      "missingFraction": 0
     },
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00221",
-     "timestamp": "2024-11-21T13:33:54Z",
-     "distanceM": 5.3,
-     "obliquityDeg": 30.4,
+     "panoId": "TMX7316010203-002995_pano_0003_000041",
+     "timestamp": "2023-03-13T08:56:48.806040Z",
+     "distanceM": 6.8,
+     "obliquityDeg": 38.5,
      "missingFraction": 0
     }
    ]
@@ -60,14 +60,21 @@
     271,
     455
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00221",
-     "timestamp": "2024-11-21T13:33:54Z",
-     "distanceM": 5.5,
-     "obliquityDeg": 33.1,
+     "panoId": "TMX7316010203-002995_pano_0003_000039",
+     "timestamp": "2023-03-13T08:56:46.941050Z",
+     "distanceM": 5.2,
+     "obliquityDeg": 4.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0003_000040",
+     "timestamp": "2023-03-13T08:56:47.816050Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 41.6,
      "missingFraction": 0
     }
    ]
@@ -80,21 +87,27 @@
     455,
     656
    ],
-   "date": "2024-11-21",
+   "date": "2023-03-13",
    "fallbackDate": false,
    "panoramas": [
     {
-     "panoId": "b_20241121_1354_Track03_Sphere_00220",
-     "timestamp": "2024-11-21T13:33:53Z",
-     "distanceM": 5.6,
-     "obliquityDeg": 33.4,
+     "panoId": "TMX7316010203-002995_pano_0003_000038",
+     "timestamp": "2023-03-13T08:56:46.301080Z",
+     "distanceM": 5.1,
+     "obliquityDeg": 8.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0003_000039",
+     "timestamp": "2023-03-13T08:56:46.941050Z",
+     "distanceM": 6.7,
+     "obliquityDeg": 40.3,
      "missingFraction": 0
     }
    ]
   }
  ],
  "candidatesByDate": {
-  "2023-04-11": 0,
   "2023-02-20": 0,
   "2025-06-16": 0,
   "2023-01-30": 3,
@@ -106,9 +119,7 @@
   "2024-11-21": 3,
   "2023-02-13": 3,
   "2023-03-13": 3,
-  "2023-04-03": 3,
   "2020-04-22": 3,
-  "2023-04-17": 3,
   "2022-04-25": 3,
   "2019-05-14": 3,
   "2021-09-09": 3,
