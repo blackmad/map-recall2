@@ -3,6 +3,12 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Calmer distant landmarks",
+      "text": "From the air, landmarks appearing in the distance and the far city handing over to nearer buildings now fade in instead of snapping.",
+      "images": []
+    },
+    {
+      "date": "2026-11-10",
       "title": "Ground no longer turns sky-blue",
       "text": "Since this morning's horizon change, wide open ground on the city's edge (IJburg, Houthaven) could take the sky's colour. Haze is now measured per pixel, so the ground keeps its own colour close by and only fades with real distance.",
       "where": [
