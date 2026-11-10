@@ -47,7 +47,7 @@ function card(idx: BuurtProfileIndex, s: Spot, era: string): Buffer {
   const total = walls.reduce((a, [, w]) => a + w, 0) || 1;
   let x = 0; const bars = walls.map(([h, w]) => { const bw = w / total * (CW - 20), r = `<rect x="${10 + x}" y="64" width="${bw.toFixed(1)}" height="60" fill="${h}"/>`; x += bw; return r; }).join('');
   const pct = (v?: number) => v === undefined ? '-' : `${Math.round(v * 100)}%`;
-  const rows = [`era ${era}${e ? ` (n ${e.n})` : ' (no profile era)'}`, `painted ${pct(e?.paintedShare)}  pale ${pct(e?.paleAccentShare)}  arch ${pct(e?.archShare)}`, `tall ${pct(e?.tallShare)}  dark frames ${pct(e?.darkFrameShare)}`, `storey ${e?.storeyHeightM ? e.storeyHeightM.toFixed(2) + ' m' : 'nominal'}  shops ${pct(p?.shopfrontShare ?? p?.shopShare)}`];
+  const rows = [`era ${era}${e ? ` (n ${e.n}${e.from ? `, filled from ${e.from}` : ''})` : ' (no profile era)'}`, `painted ${pct(e?.paintedShare)}  pale ${pct(e?.paleAccentShare)}  arch ${pct(e?.archShare)}`, `tall ${pct(e?.tallShare)}  dark frames ${pct(e?.darkFrameShare)}`, `storey ${e?.storeyHeightM ? e.storeyHeightM.toFixed(2) + ' m' : 'nominal'}  shops ${pct(p?.shopfrontShare ?? p?.shopShare)}`];
   const svg = `<svg width="${CW}" height="${H}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#1a1a1a"/><text x="10" y="24" font-family="Helvetica" font-size="14" fill="#fff">${esc(level)}</text><text x="10" y="46" font-family="Helvetica" font-size="12" fill="#bbb">wall swatches by weight</text>${bars}${rows.map((r, i) => `<text x="10" y="${150 + i * 22}" font-family="Helvetica" font-size="13" fill="#ddd">${esc(r)}</text>`).join('')}</svg>`;
   return Buffer.from(svg);
 }

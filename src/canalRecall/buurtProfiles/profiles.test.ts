@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { BuurtProfileIndex, pruneEras, storeyScaleOf, STOREY_SCALE_MAX, STOREY_SCALE_MIN, pickWeighted, profileTraits, unitDraw, validateProfileSet, type BuurtProfile, type BuurtProfileSet } from './profiles.ts';
+import { BuurtProfileIndex, pruneEras, storeyScaleOf, STOREY_SCALE_ENABLED, STOREY_SCALE_MAX, STOREY_SCALE_MIN, pickWeighted, profileTraits, unitDraw, validateProfileSet, type BuurtProfile, type BuurtProfileSet } from './profiles.ts';
 import { bayLookFor } from '../bayLook.ts';
 import { PERIOD_WALLS } from '../look/palette.ts';
 import PUBLISHED from './buurt-profiles.json' with { type: 'json' };
@@ -94,12 +94,14 @@ test('pruneEras: drops thin and undrawable eras, leaves good profiles byte-ident
   assert.doesNotThrow(() => validateProfileSet({ ...set(), profiles: [{ ...profile, eras: bad.eras }] }));
 });
 
-test('storeyHeightM: validated, bounded, absent = scale 1', () => {
+test('storeyHeightM: held (scale 1 by default), validated, bounded when enabled, absent = scale 1', () => {
+  assert.equal(STOREY_SCALE_ENABLED, false);
+  assert.equal(storeyScaleOf({ n: 10, storeyHeightM: 3.6 }, 3), 1);
   assert.equal(storeyScaleOf(undefined, 3), 1);
   assert.equal(storeyScaleOf({ n: 10 }, 3), 1);
-  assert.ok(Math.abs(storeyScaleOf({ n: 10, storeyHeightM: 3.15 }, 3) - 1.05) < 1e-9);
-  assert.equal(storeyScaleOf({ n: 10, storeyHeightM: 5 }, 3), STOREY_SCALE_MAX);
-  assert.equal(storeyScaleOf({ n: 10, storeyHeightM: 2.2 }, 3), STOREY_SCALE_MIN);
+  assert.ok(Math.abs(storeyScaleOf({ n: 10, storeyHeightM: 3.15 }, 3, true) - 1.05) < 1e-9);
+  assert.equal(storeyScaleOf({ n: 10, storeyHeightM: 5 }, 3, true), STOREY_SCALE_MAX);
+  assert.equal(storeyScaleOf({ n: 10, storeyHeightM: 2.2 }, 3, true), STOREY_SCALE_MIN);
   const withKnob = (e: object, extra: object = {}) => ({ ...set(), profiles: [{ ...profile, ...extra, eras: { c19: { n: 9, ...e } } }] });
   assert.doesNotThrow(() => validateProfileSet(withKnob({ storeyHeightM: 3.1 }, { shopfrontShare: 0.4 })));
   assert.throws(() => validateProfileSet(withKnob({ storeyHeightM: 9 })), /storeyHeightM/);
@@ -115,4 +117,15 @@ test('bayLookFor: shopfrontShare 0 / 1 decides the shop draw without the extract
     assert.equal(hasShop(all), true);
   }
   for (let i = 0; i < 40; i++) assert.deepEqual(bayLookFor(`p${i}`, 1890, 14, 'photo', undefined, undefined, undefined, base), bayLookFor(`p${i}`, 1890, 14, 'photo', undefined, undefined, undefined, { ...base, shopfrontShare: undefined }));
+});
+
+test('pruneEras: per-era minimum (pre-1945 20, modern 8) and the `from` marker validates', () => {
+  const walls = [['#5a3a30', 3]] as const;
+  const r = pruneEras({ canal: { n: 12, walls }, c19: { n: 20, walls }, modern: { n: 9, walls } }, { canal: 20, c19: 20, school: 20, modern: 8 });
+  assert.deepEqual(Object.keys(r.eras).sort(), ['c19', 'modern']);
+  assert.deepEqual(r.dropped, ['canal']);
+  const withFrom = (from: unknown) => ({ ...set(), profiles: [{ ...profile, eras: { c19: { n: 30, walls, from } } }] }) as unknown as BuurtProfileSet;
+  assert.doesNotThrow(() => validateProfileSet(withFrom('wijk')));
+  assert.doesNotThrow(() => validateProfileSet(withFrom('stadsdeel')));
+  assert.throws(() => validateProfileSet(withFrom('city')), /from/);
 });

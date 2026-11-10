@@ -35,6 +35,8 @@ export interface EraProfile {
    * Drawn by the generic grammar as a storey-pitch scale (`storeyScaleOf`, bounded), absent = the style's nominal.
    */
   storeyHeightM?: number;
+  /** Set when the era was not measured in this area but filled from a larger one (era-level fallback): the wijk or the stadsdeel pool. */
+  from?: 'wijk' | 'stadsdeel';
 }
 
 export interface BuurtProfile {
@@ -82,10 +84,10 @@ export const eraWallsUsable = (e: EraProfile): boolean => !e.walls || (e.walls.l
  * drawable. The era then falls back to the area's wijk or the city value (recorded by the caller from `dropped`).
  * Profiles whose eras all pass come back unchanged (same object contents, byte-identical JSON).
  */
-export function pruneEras(eras: BuurtProfile['eras'], minN: number): { eras: BuurtProfile['eras']; dropped: Period[] } {
+export function pruneEras(eras: BuurtProfile['eras'], minN: number | Partial<Record<Period, number>>): { eras: BuurtProfile['eras']; dropped: Period[] } {
   const kept: BuurtProfile['eras'] = {}, dropped: Period[] = [];
   for (const [era, e] of Object.entries(eras) as [Period, EraProfile][]) {
-    if (e.n >= minN && eraWallsUsable(e)) kept[era] = e; else dropped.push(era);
+    if (e.n >= (typeof minN === 'number' ? minN : minN[era] ?? 0) && eraWallsUsable(e)) kept[era] = e; else dropped.push(era);
   }
   return { eras: kept, dropped };
 }
@@ -98,6 +100,7 @@ export function validateProfileSet(set: BuurtProfileSet): BuurtProfileSet {
     for (const [era, e] of Object.entries(p.eras ?? {}) as [string, EraProfile | undefined][]) {
       if (!e || !Number.isFinite(e.n)) throw Error(`buurt profiles: ${p.code} ${era} n`);
       if (e.walls && (!e.walls.length || e.walls.some(([hex, w]) => !HEX.test(hex) || !(w > 0)))) throw Error(`buurt profiles: ${p.code} ${era} walls`);
+      if (e.from !== undefined && e.from !== 'wijk' && e.from !== 'stadsdeel') throw Error(`buurt profiles: ${p.code} ${era} from`);
       if (e.storeyHeightM !== undefined && !(Number.isFinite(e.storeyHeightM) && e.storeyHeightM >= 2 && e.storeyHeightM <= 6)) throw Error(`buurt profiles: ${p.code} ${era} storeyHeightM`);
       for (const k of ['paintedShare', 'paleAccentShare', 'darkFrameShare', 'archShare', 'tallShare'] as const) if (!share(e[k])) throw Error(`buurt profiles: ${p.code} ${era} ${k}`);
     }
@@ -167,9 +170,16 @@ export function profileTraits(id: string, era: EraProfile | undefined): ProfileT
 /** Bounds on the storey-pitch scale a profile may ask of the grammar (nominal 3.0-3.1 m; the measured medians scatter 2.45-3.85, eaves over a storey count that may or may not include the ground floor, so the pull is capped at 8 %). */
 export const STOREY_SCALE_MIN = 0.92, STOREY_SCALE_MAX = 1.08;
 
+/**
+ * HELD (Opus verdict 2026-11-10): the measured medians are buurt-level copies with a 3.45 m median against a 3.0-3.1 m
+ * nominal (eaves over a storey count that may or may not include the ground floor). The data stays; nothing draws it
+ * until it is re-measured per era with the ground floor counted and n >= 20.
+ */
+export const STOREY_SCALE_ENABLED = false;
+
 /** The storey-pitch scale of a profiled era against the style's nominal storey (m), or 1 when the era has no opinion. */
-export function storeyScaleOf(era: EraProfile | undefined, nominalStoreyM: number): number {
-  const m = era?.storeyHeightM;
+export function storeyScaleOf(era: EraProfile | undefined, nominalStoreyM: number, enabled = STOREY_SCALE_ENABLED): number {
+  const m = enabled ? era?.storeyHeightM : undefined;
   return typeof m === 'number' && nominalStoreyM > 0 ? Math.max(STOREY_SCALE_MIN, Math.min(STOREY_SCALE_MAX, m / nominalStoreyM)) : 1;
 }
 

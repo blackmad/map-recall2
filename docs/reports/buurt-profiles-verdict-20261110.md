@@ -17,7 +17,7 @@ Reviewed: lane/profiles-citywide-20261107 at dc40c59b9; sheet
 | 7 | Tweede Jan Steenstraat (KE05) | PASS | Brown brick plus grey and pale matches the mixed row. Shops 25 % is fine. |
 | 8 | Saenredamstraat (KE01) | WARN | Painted share rises from 36 % to 48 %: half the swatches are now pale, while the photo is brick with white cornices plus one rendered block. Brighter is the requested direction, so this is accepted. Storey 2.70 m pulls these tall-storeyed Pijp houses lower, which is the wrong direction. |
 | 9 | Daniel Stalpertstraat (KE02) | WARN | The photo is a red-brown brick block with white frames; the card shows 4 whites and 2 greys of 9 and painted 54 %, which over-paints it. Unchanged palette. Shops 51 % is high. |
-| 10 | Van Breestraat (KE…, Cornelis Schuytbuurt) | PASS | n grows from 16 to 24 and adds the cream/sandstone the photo shows. Shops 10 % is right. |
+| 10 | Van Breestraat (KD02, Cornelis Schuytbuurt) | PASS | n grows from 16 to 24 and adds the cream/sandstone the photo shows. Shops 10 % is right. |
 | 11 | Kerkstraat (AG04) | PASS | It moves from the wijk fallback to its own Spiegelbuurt canal era (n 18), with darker browns and painted 33 % → 17 %. The photo is mostly brick, so that is acceptable. Shops 100 % → 49 % is a clear improvement. |
 | 12 | Runstraat (AC03) | FAIL | Regression. Before, it drew the wijk Grachtengordel-West canal era (n 26). After, its own profile has only a modern era, so the canal pand gets "no profile era" and swatches that include greens. The photo is classic canal brick and render. |
 | 13 | Schellingwoude-Oost (NQ05) | WARN | Still the city school default (orange-red). The photo is dark purple-brown brick. The wijk NQ school era (n 27, #662b1d…) would be closer. |
@@ -84,3 +84,11 @@ default.
 
 The era-level fallback above is the next change and should land before the T1 week. Saturation and the
 grey-heavy painted swatches (spots 1, 9) belong to the palette lane.
+
+## Follow-up applied (2026-11-10, same lane)
+
+- storeyHeightM held: `storeyScaleOf` returns 1 (`STOREY_SCALE_ENABLED = false`, test pins it); data kept. Follow-up: re-measure per era with the ground floor counted and n >= 20.
+- Pre-1945 era minimum raised to n >= 20 (modern stays 8).
+- Era-level fallback in derive.ts: a missing canal/c19/school era is filled from the wijk era (n >= 20), else the stadsdeel pool (first letter of the gebied code); the era carries `from: 'wijk' | 'stadsdeel'` and each fill is recorded in the coverage JSON (`eraFills`).
+- Coverage: 299 buurten with a measured era, 58 filled from wijk/stadsdeel only, 158 on their wijk profile, 3 city default (TG01-03) = 518.
+- Re-check on the regenerated sheet `docs/images/look/profiles-citywide-18spot-20261110.jpg`: spot 12 Runstraat follows wijk AC canal era (n 60); spot 16 Tuindorp drops its 12-front era for the N stadsdeel pool (painted 33 %, not 58 %); spots 13, 14, 15 get an area pool (13 from wijk NQ, 14 and 15 from stadsdeel M and N); spot 17 Betondorp now takes the M stadsdeel pool instead of its 14-front own era; spot 18 stays city default (stadsdeel F has no pre-1945 pool of 20).

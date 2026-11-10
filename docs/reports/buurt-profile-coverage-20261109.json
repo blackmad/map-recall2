@@ -8,7 +8,8 @@
   "fronts": 20,
   "modernFronts": 3,
   "pands": 60,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AA02",
@@ -19,7 +20,12 @@
   "fronts": 19,
   "modernFronts": 20,
   "pands": 414,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AA03",
@@ -30,18 +36,24 @@
   "fronts": 2,
   "modernFronts": 4,
   "pands": 12,
-  "why": "2 pre-1945 and 4 post-war measured fronts of 12 pands, under the minimum 12"
+  "why": "2 pre-1945 and 4 post-war measured fronts of 12 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "AA04",
   "name": "Planciusbuurt-Zuid",
   "wijk": "AA",
-  "level": "own",
+  "level": "filled",
   "fallback": "AA04",
   "fronts": 18,
   "modernFronts": 0,
   "pands": 31,
-  "why": ""
+  "why": "18 pre-1945 and 0 post-war measured fronts of 31 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AA05",
@@ -52,7 +64,12 @@
   "fronts": 16,
   "modernFronts": 17,
   "pands": 427,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AA06",
@@ -63,7 +80,8 @@
   "fronts": 26,
   "modernFronts": 11,
   "pands": 342,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AB01",
@@ -74,7 +92,8 @@
   "fronts": 20,
   "modernFronts": 16,
   "pands": 184,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AB02",
@@ -85,7 +104,12 @@
   "fronts": 18,
   "modernFronts": 18,
   "pands": 517,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AB03",
@@ -96,7 +120,12 @@
   "fronts": 16,
   "modernFronts": 18,
   "pands": 449,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AB04",
@@ -107,7 +136,8 @@
   "fronts": 20,
   "modernFronts": 7,
   "pands": 125,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AB05",
@@ -118,7 +148,12 @@
   "fronts": 16,
   "modernFronts": 19,
   "pands": 559,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AB06",
@@ -129,7 +164,8 @@
   "fronts": 20,
   "modernFronts": 0,
   "pands": 31,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AB07",
@@ -140,29 +176,40 @@
   "fronts": 50,
   "modernFronts": 16,
   "pands": 662,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AB08",
   "name": "Groenmarktkadebuurt",
   "wijk": "AB",
-  "level": "own",
+  "level": "filled",
   "fallback": "AB08",
   "fronts": 19,
   "modernFronts": 3,
   "pands": 50,
-  "why": ""
+  "why": "19 pre-1945 and 3 post-war measured fronts of 50 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AB09",
   "name": "Marnixbuurt-Zuid",
   "wijk": "AB",
-  "level": "own",
+  "level": "filled",
   "fallback": "AB09",
   "fronts": 19,
   "modernFronts": 1,
   "pands": 53,
-  "why": ""
+  "why": "19 pre-1945 and 1 post-war measured fronts of 53 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AB10",
@@ -173,7 +220,12 @@
   "fronts": 17,
   "modernFronts": 18,
   "pands": 823,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AB11",
@@ -184,7 +236,12 @@
   "fronts": 19,
   "modernFronts": 16,
   "pands": 133,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AC01",
@@ -195,7 +252,12 @@
   "fronts": 13,
   "modernFronts": 10,
   "pands": 430,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AC02",
@@ -206,7 +268,8 @@
   "fronts": 33,
   "modernFronts": 1,
   "pands": 438,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AC03",
@@ -217,7 +280,12 @@
   "fronts": 10,
   "modernFronts": 12,
   "pands": 634,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AC04",
@@ -228,7 +296,8 @@
   "fronts": 25,
   "modernFronts": 1,
   "pands": 187,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AD01",
@@ -239,18 +308,24 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 3,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 3 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 3 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "AD02",
   "name": "Hemelrijk",
   "wijk": "AD",
-  "level": "own",
+  "level": "filled",
   "fallback": "AD02",
   "fronts": 15,
   "modernFronts": 3,
   "pands": 165,
-  "why": ""
+  "why": "15 pre-1945 and 3 post-war measured fronts of 165 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AD03",
@@ -261,7 +336,12 @@
   "fronts": 13,
   "modernFronts": 9,
   "pands": 161,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AD04",
@@ -272,7 +352,8 @@
   "fronts": 25,
   "modernFronts": 2,
   "pands": 218,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AD05",
@@ -283,7 +364,12 @@
   "fronts": 12,
   "modernFronts": 8,
   "pands": 234,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AD06",
@@ -294,29 +380,40 @@
   "fronts": 27,
   "modernFronts": 1,
   "pands": 178,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AD07",
   "name": "Begijnhofbuurt",
   "wijk": "AD",
-  "level": "own",
+  "level": "filled",
   "fallback": "AD07",
   "fronts": 16,
   "modernFronts": 4,
   "pands": 225,
-  "why": ""
+  "why": "16 pre-1945 and 4 post-war measured fronts of 225 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AD08",
   "name": "Kalverdriehoek",
   "wijk": "AD",
-  "level": "own",
+  "level": "filled",
   "fallback": "AD08",
   "fronts": 15,
   "modernFronts": 3,
   "pands": 130,
-  "why": ""
+  "why": "15 pre-1945 and 3 post-war measured fronts of 130 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AE01",
@@ -327,18 +424,28 @@
   "fronts": 18,
   "modernFronts": 10,
   "pands": 277,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AE02",
   "name": "Oude Kerk e.o.",
   "wijk": "AE",
-  "level": "own",
+  "level": "filled",
   "fallback": "AE02",
   "fronts": 15,
   "modernFronts": 5,
   "pands": 206,
-  "why": ""
+  "why": "15 pre-1945 and 5 post-war measured fronts of 206 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AE03",
@@ -349,29 +456,40 @@
   "fronts": 29,
   "modernFronts": 12,
   "pands": 430,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AE04",
   "name": "Nes e.o.",
   "wijk": "AE",
-  "level": "own",
+  "level": "filled",
   "fallback": "AE04",
   "fronts": 16,
   "modernFronts": 2,
   "pands": 151,
-  "why": ""
+  "why": "16 pre-1945 and 2 post-war measured fronts of 151 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AE05",
   "name": "BG-terrein e.o.",
   "wijk": "AE",
-  "level": "own",
+  "level": "filled",
   "fallback": "AE05",
   "fronts": 19,
   "modernFronts": 7,
   "pands": 178,
-  "why": ""
+  "why": "19 pre-1945 and 7 post-war measured fronts of 178 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AF01",
@@ -382,7 +500,8 @@
   "fronts": 6,
   "modernFronts": 1,
   "pands": 20,
-  "why": "6 pre-1945 and 1 post-war measured fronts of 20 pands, under the minimum 12"
+  "why": "6 pre-1945 and 1 post-war measured fronts of 20 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "AF02",
@@ -393,18 +512,24 @@
   "fronts": 28,
   "modernFronts": 6,
   "pands": 242,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AF03",
   "name": "Scheepvaarthuisbuurt",
   "wijk": "AF",
-  "level": "own",
+  "level": "filled",
   "fallback": "AF03",
   "fronts": 12,
   "modernFronts": 0,
   "pands": 106,
-  "why": ""
+  "why": "12 pre-1945 and 0 post-war measured fronts of 106 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AF04",
@@ -415,7 +540,12 @@
   "fronts": 12,
   "modernFronts": 12,
   "pands": 131,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AF05",
@@ -426,7 +556,12 @@
   "fronts": 17,
   "modernFronts": 14,
   "pands": 236,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AF06",
@@ -437,7 +572,12 @@
   "fronts": 19,
   "modernFronts": 12,
   "pands": 133,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AF07",
@@ -448,7 +588,8 @@
   "fronts": 8,
   "modernFronts": 9,
   "pands": 86,
-  "why": "8 pre-1945 and 9 post-war measured fronts of 86 pands, under the minimum 12"
+  "why": "8 pre-1945 and 9 post-war measured fronts of 86 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "AF08",
@@ -459,7 +600,12 @@
   "fronts": 19,
   "modernFronts": 17,
   "pands": 292,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AF09",
@@ -470,7 +616,12 @@
   "fronts": 12,
   "modernFronts": 17,
   "pands": 151,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AG01",
@@ -481,18 +632,24 @@
   "fronts": 27,
   "modernFronts": 1,
   "pands": 240,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AG02",
   "name": "Geelvinckbuurt",
   "wijk": "AG",
-  "level": "own",
+  "level": "filled",
   "fallback": "AG02",
   "fronts": 18,
   "modernFronts": 2,
   "pands": 100,
-  "why": ""
+  "why": "18 pre-1945 and 2 post-war measured fronts of 100 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AG03",
@@ -503,7 +660,12 @@
   "fronts": 14,
   "modernFronts": 10,
   "pands": 275,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AG04",
@@ -514,7 +676,8 @@
   "fronts": 25,
   "modernFronts": 5,
   "pands": 258,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AG05",
@@ -525,7 +688,8 @@
   "fronts": 34,
   "modernFronts": 5,
   "pands": 450,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AG06",
@@ -536,7 +700,12 @@
   "fronts": 17,
   "modernFronts": 12,
   "pands": 449,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AH01",
@@ -547,7 +716,8 @@
   "fronts": 20,
   "modernFronts": 5,
   "pands": 65,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AH02",
@@ -558,7 +728,12 @@
   "fronts": 18,
   "modernFronts": 16,
   "pands": 256,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AH03",
@@ -569,7 +744,12 @@
   "fronts": 14,
   "modernFronts": 17,
   "pands": 552,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AH04",
@@ -580,40 +760,60 @@
   "fronts": 10,
   "modernFronts": 16,
   "pands": 270,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AH05",
   "name": "Leidsebuurt-Zuidwest",
   "wijk": "AH",
-  "level": "own",
+  "level": "filled",
   "fallback": "AH05",
   "fronts": 12,
   "modernFronts": 1,
   "pands": 43,
-  "why": ""
+  "why": "12 pre-1945 and 1 post-war measured fronts of 43 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AH06",
   "name": "Leidsebuurt-Zuidoost",
   "wijk": "AH",
-  "level": "own",
+  "level": "filled",
   "fallback": "AH06",
   "fronts": 18,
   "modernFronts": 1,
   "pands": 68,
-  "why": ""
+  "why": "18 pre-1945 and 1 post-war measured fronts of 68 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AH07",
   "name": "Den Texbuurt",
   "wijk": "AH",
-  "level": "own",
+  "level": "filled",
   "fallback": "AH07",
   "fronts": 12,
   "modernFronts": 2,
   "pands": 219,
-  "why": ""
+  "why": "12 pre-1945 and 2 post-war measured fronts of 219 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AH08",
@@ -624,7 +824,8 @@
   "fronts": 33,
   "modernFronts": 10,
   "pands": 207,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "AJ01",
@@ -635,18 +836,28 @@
   "fronts": 17,
   "modernFronts": 18,
   "pands": 423,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AJ02",
   "name": "Plantage",
   "wijk": "AJ",
-  "level": "own",
+  "level": "filled",
   "fallback": "AJ02",
   "fronts": 20,
   "modernFronts": 3,
   "pands": 397,
-  "why": ""
+  "why": "20 pre-1945 and 3 post-war measured fronts of 397 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AJ03",
@@ -657,7 +868,12 @@
   "fronts": 17,
   "modernFronts": 15,
   "pands": 298,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AJ04",
@@ -668,7 +884,8 @@
   "fronts": 11,
   "modernFronts": 0,
   "pands": 83,
-  "why": "11 pre-1945 and 0 post-war measured fronts of 83 pands, under the minimum 12"
+  "why": "11 pre-1945 and 0 post-war measured fronts of 83 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "AK01",
@@ -679,7 +896,8 @@
   "fronts": 0,
   "modernFronts": 5,
   "pands": 46,
-  "why": "0 pre-1945 and 5 post-war measured fronts of 46 pands, under the minimum 12"
+  "why": "0 pre-1945 and 5 post-war measured fronts of 46 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "AK02",
@@ -690,7 +908,12 @@
   "fronts": 2,
   "modernFronts": 19,
   "pands": 66,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AK03",
@@ -701,7 +924,12 @@
   "fronts": 6,
   "modernFronts": 13,
   "pands": 116,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AK04",
@@ -712,7 +940,12 @@
   "fronts": 16,
   "modernFronts": 11,
   "pands": 158,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AK05",
@@ -723,7 +956,12 @@
   "fronts": 16,
   "modernFronts": 19,
   "pands": 289,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AK06",
@@ -734,7 +972,12 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 31,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AK07",
@@ -745,18 +988,28 @@
   "fronts": 19,
   "modernFronts": 13,
   "pands": 232,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "AK08",
   "name": "Kazernebuurt",
   "wijk": "AK",
-  "level": "own",
+  "level": "filled",
   "fallback": "AK08",
   "fronts": 15,
   "modernFronts": 2,
   "pands": 38,
-  "why": ""
+  "why": "15 pre-1945 and 2 post-war measured fronts of 38 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "BA01",
@@ -767,7 +1020,12 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 123,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 123 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 123 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "BA02",
@@ -778,7 +1036,12 @@
   "fronts": 1,
   "modernFronts": 1,
   "pands": 718,
-  "why": "1 pre-1945 and 1 post-war measured fronts of 718 pands, under the minimum 12"
+  "why": "1 pre-1945 and 1 post-war measured fronts of 718 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "BA03",
@@ -789,7 +1052,12 @@
   "fronts": 0,
   "modernFronts": 11,
   "pands": 346,
-  "why": "0 pre-1945 and 11 post-war measured fronts of 346 pands, under the minimum 12"
+  "why": "0 pre-1945 and 11 post-war measured fronts of 346 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "BA04",
@@ -800,7 +1068,12 @@
   "fronts": 0,
   "modernFronts": 8,
   "pands": 473,
-  "why": "0 pre-1945 and 8 post-war measured fronts of 473 pands, under the minimum 12"
+  "why": "0 pre-1945 and 8 post-war measured fronts of 473 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "BA05",
@@ -811,7 +1084,12 @@
   "fronts": 0,
   "modernFronts": 5,
   "pands": 63,
-  "why": "0 pre-1945 and 5 post-war measured fronts of 63 pands, under the minimum 12"
+  "why": "0 pre-1945 and 5 post-war measured fronts of 63 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "BA06",
@@ -822,7 +1100,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 410,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 410 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 410 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "BB01",
@@ -833,7 +1116,8 @@
   "fronts": 0,
   "modernFronts": 7,
   "pands": 106,
-  "why": "0 pre-1945 and 7 post-war measured fronts of 106 pands, under the minimum 12"
+  "why": "0 pre-1945 and 7 post-war measured fronts of 106 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "BB02",
@@ -844,7 +1128,8 @@
   "fronts": 0,
   "modernFronts": 4,
   "pands": 73,
-  "why": "0 pre-1945 and 4 post-war measured fronts of 73 pands, under the minimum 12"
+  "why": "0 pre-1945 and 4 post-war measured fronts of 73 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "BB03",
@@ -855,7 +1140,8 @@
   "fronts": 0,
   "modernFronts": 10,
   "pands": 26,
-  "why": "0 pre-1945 and 10 post-war measured fronts of 26 pands, under the minimum 12"
+  "why": "0 pre-1945 and 10 post-war measured fronts of 26 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "BB04",
@@ -866,7 +1152,12 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 90,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "BB05",
@@ -877,7 +1168,8 @@
   "fronts": 20,
   "modernFronts": 20,
   "pands": 74,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "BB06",
@@ -888,7 +1180,8 @@
   "fronts": 0,
   "modernFronts": 7,
   "pands": 38,
-  "why": "0 pre-1945 and 7 post-war measured fronts of 38 pands, under the minimum 12"
+  "why": "0 pre-1945 and 7 post-war measured fronts of 38 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "BB07",
@@ -899,7 +1192,8 @@
   "fronts": 0,
   "modernFronts": 10,
   "pands": 48,
-  "why": "0 pre-1945 and 10 post-war measured fronts of 48 pands, under the minimum 12"
+  "why": "0 pre-1945 and 10 post-war measured fronts of 48 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "BB08",
@@ -910,7 +1204,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 4,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 4 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 4 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "EA01",
@@ -921,7 +1216,12 @@
   "fronts": 1,
   "modernFronts": 10,
   "pands": 100,
-  "why": "1 pre-1945 and 10 post-war measured fronts of 100 pands, under the minimum 12"
+  "why": "1 pre-1945 and 10 post-war measured fronts of 100 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "EA02",
@@ -932,7 +1232,12 @@
   "fronts": 0,
   "modernFronts": 4,
   "pands": 72,
-  "why": "0 pre-1945 and 4 post-war measured fronts of 72 pands, under the minimum 12"
+  "why": "0 pre-1945 and 4 post-war measured fronts of 72 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "EA03",
@@ -943,7 +1248,12 @@
   "fronts": 2,
   "modernFronts": 2,
   "pands": 105,
-  "why": "2 pre-1945 and 2 post-war measured fronts of 105 pands, under the minimum 12"
+  "why": "2 pre-1945 and 2 post-war measured fronts of 105 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "EB01",
@@ -954,7 +1264,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 3,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 3 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 3 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "EB02",
@@ -965,7 +1276,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 42,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 42 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 42 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "EB03",
@@ -976,7 +1288,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 8,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 8 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 8 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "EB04",
@@ -987,7 +1300,8 @@
   "fronts": 57,
   "modernFronts": 1,
   "pands": 294,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EB05",
@@ -998,7 +1312,8 @@
   "fronts": 37,
   "modernFronts": 8,
   "pands": 233,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EB06",
@@ -1009,7 +1324,8 @@
   "fronts": 20,
   "modernFronts": 20,
   "pands": 174,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EB07",
@@ -1020,7 +1336,8 @@
   "fronts": 21,
   "modernFronts": 21,
   "pands": 247,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EB08",
@@ -1031,18 +1348,28 @@
   "fronts": 19,
   "modernFronts": 20,
   "pands": 190,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EB09",
   "name": "Westergasfabriek",
   "wijk": "EB",
-  "level": "own",
+  "level": "filled",
   "fallback": "EB09",
   "fronts": 17,
   "modernFronts": 1,
   "pands": 74,
-  "why": ""
+  "why": "17 pre-1945 and 1 post-war measured fronts of 74 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EB10",
@@ -1053,7 +1380,12 @@
   "fronts": 18,
   "modernFronts": 20,
   "pands": 151,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EC01",
@@ -1064,7 +1396,12 @@
   "fronts": 1,
   "modernFronts": 17,
   "pands": 214,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "EC02",
@@ -1075,7 +1412,12 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 4,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 4 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 4 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "ED01",
@@ -1086,7 +1428,12 @@
   "fronts": 1,
   "modernFronts": 17,
   "pands": 261,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "ED02",
@@ -1097,7 +1444,12 @@
   "fronts": 0,
   "modernFronts": 8,
   "pands": 73,
-  "why": "0 pre-1945 and 8 post-war measured fronts of 73 pands, under the minimum 12"
+  "why": "0 pre-1945 and 8 post-war measured fronts of 73 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "ED03",
@@ -1108,7 +1460,12 @@
   "fronts": 0,
   "modernFronts": 8,
   "pands": 142,
-  "why": "0 pre-1945 and 8 post-war measured fronts of 142 pands, under the minimum 12"
+  "why": "0 pre-1945 and 8 post-war measured fronts of 142 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "ED04",
@@ -1119,7 +1476,12 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 73,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "EE01",
@@ -1130,7 +1492,12 @@
   "fronts": 19,
   "modernFronts": 20,
   "pands": 662,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EE02",
@@ -1141,7 +1508,8 @@
   "fronts": 20,
   "modernFronts": 20,
   "pands": 816,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EE03",
@@ -1152,18 +1520,28 @@
   "fronts": 3,
   "modernFronts": 15,
   "pands": 64,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EE04",
   "name": "Landlust-Noord",
   "wijk": "EE",
-  "level": "own",
+  "level": "filled",
   "fallback": "EE04",
   "fronts": 19,
   "modernFronts": 1,
   "pands": 296,
-  "why": ""
+  "why": "19 pre-1945 and 1 post-war measured fronts of 296 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EE05",
@@ -1174,7 +1552,8 @@
   "fronts": 20,
   "modernFronts": 17,
   "pands": 205,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EE06",
@@ -1185,7 +1564,8 @@
   "fronts": 20,
   "modernFronts": 1,
   "pands": 706,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EF01",
@@ -1196,7 +1576,8 @@
   "fronts": 20,
   "modernFronts": 7,
   "pands": 354,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EF02",
@@ -1207,7 +1588,8 @@
   "fronts": 20,
   "modernFronts": 20,
   "pands": 678,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EG01",
@@ -1218,7 +1600,12 @@
   "fronts": 0,
   "modernFronts": 9,
   "pands": 81,
-  "why": "0 pre-1945 and 9 post-war measured fronts of 81 pands, under the minimum 12"
+  "why": "0 pre-1945 and 9 post-war measured fronts of 81 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "EG02",
@@ -1229,7 +1616,12 @@
   "fronts": 3,
   "modernFronts": 20,
   "pands": 42,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "EG03",
@@ -1240,7 +1632,12 @@
   "fronts": 6,
   "modernFronts": 5,
   "pands": 60,
-  "why": "6 pre-1945 and 5 post-war measured fronts of 60 pands, under the minimum 12"
+  "why": "6 pre-1945 and 5 post-war measured fronts of 60 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "EG04",
@@ -1251,7 +1648,12 @@
   "fronts": 0,
   "modernFronts": 4,
   "pands": 46,
-  "why": "0 pre-1945 and 4 post-war measured fronts of 46 pands, under the minimum 12"
+  "why": "0 pre-1945 and 4 post-war measured fronts of 46 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "EH01",
@@ -1262,7 +1664,8 @@
   "fronts": 21,
   "modernFronts": 2,
   "pands": 569,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EH02",
@@ -1273,7 +1676,12 @@
   "fronts": 19,
   "modernFronts": 18,
   "pands": 546,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EH03",
@@ -1284,7 +1692,12 @@
   "fronts": 9,
   "modernFronts": 16,
   "pands": 101,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EH04",
@@ -1295,7 +1708,8 @@
   "fronts": 29,
   "modernFronts": 3,
   "pands": 169,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EH05",
@@ -1306,7 +1720,12 @@
   "fronts": 19,
   "modernFronts": 12,
   "pands": 81,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EH06",
@@ -1317,7 +1736,8 @@
   "fronts": 21,
   "modernFronts": 21,
   "pands": 316,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EJ01",
@@ -1328,7 +1748,12 @@
   "fronts": 19,
   "modernFronts": 16,
   "pands": 587,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EJ02",
@@ -1339,7 +1764,12 @@
   "fronts": 9,
   "modernFronts": 19,
   "pands": 67,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EJ03",
@@ -1350,7 +1780,12 @@
   "fronts": 19,
   "modernFronts": 9,
   "pands": 482,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EK01",
@@ -1361,7 +1796,8 @@
   "fronts": 1,
   "modernFronts": 2,
   "pands": 11,
-  "why": "1 pre-1945 and 2 post-war measured fronts of 11 pands, under the minimum 12"
+  "why": "1 pre-1945 and 2 post-war measured fronts of 11 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "EK02",
@@ -1372,7 +1808,8 @@
   "fronts": 28,
   "modernFronts": 15,
   "pands": 293,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EK03",
@@ -1383,7 +1820,8 @@
   "fronts": 45,
   "modernFronts": 2,
   "pands": 376,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EK04",
@@ -1394,7 +1832,8 @@
   "fronts": 36,
   "modernFronts": 2,
   "pands": 314,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EL01",
@@ -1405,18 +1844,24 @@
   "fronts": 20,
   "modernFronts": 3,
   "pands": 386,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EL02",
   "name": "Trompbuurt",
   "wijk": "EL",
-  "level": "own",
+  "level": "filled",
   "fallback": "EL02",
   "fronts": 19,
   "modernFronts": 2,
   "pands": 418,
-  "why": ""
+  "why": "19 pre-1945 and 2 post-war measured fronts of 418 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EL03",
@@ -1427,7 +1872,8 @@
   "fronts": 20,
   "modernFronts": 1,
   "pands": 226,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EM01",
@@ -1438,7 +1884,8 @@
   "fronts": 29,
   "modernFronts": 0,
   "pands": 368,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EM02",
@@ -1449,18 +1896,24 @@
   "fronts": 63,
   "modernFronts": 12,
   "pands": 421,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EM03",
   "name": "Orteliusbuurt-Zuid",
   "wijk": "EM",
-  "level": "own",
+  "level": "filled",
   "fallback": "EM03",
   "fronts": 19,
   "modernFronts": 3,
   "pands": 369,
-  "why": ""
+  "why": "19 pre-1945 and 3 post-war measured fronts of 369 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EM04",
@@ -1471,7 +1924,8 @@
   "fronts": 20,
   "modernFronts": 1,
   "pands": 538,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EN01",
@@ -1482,7 +1936,8 @@
   "fronts": 39,
   "modernFronts": 1,
   "pands": 125,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EN02",
@@ -1493,7 +1948,12 @@
   "fronts": 17,
   "modernFronts": 12,
   "pands": 313,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EN03",
@@ -1504,18 +1964,24 @@
   "fronts": 21,
   "modernFronts": 1,
   "pands": 103,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EN04",
   "name": "De Wester Quartier",
   "wijk": "EN",
-  "level": "own",
+  "level": "filled",
   "fallback": "EN04",
   "fronts": 14,
   "modernFronts": 2,
   "pands": 182,
-  "why": ""
+  "why": "14 pre-1945 and 2 post-war measured fronts of 182 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EP01",
@@ -1526,7 +1992,12 @@
   "fronts": 19,
   "modernFronts": 8,
   "pands": 441,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "EP02",
@@ -1537,7 +2008,8 @@
   "fronts": 177,
   "modernFronts": 24,
   "pands": 602,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EQ01",
@@ -1548,7 +2020,8 @@
   "fronts": 116,
   "modernFronts": 7,
   "pands": 655,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "ER01",
@@ -1559,7 +2032,8 @@
   "fronts": 20,
   "modernFronts": 4,
   "pands": 712,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "ER02",
@@ -1570,7 +2044,8 @@
   "fronts": 20,
   "modernFronts": 4,
   "pands": 637,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "ES01",
@@ -1581,7 +2056,8 @@
   "fronts": 42,
   "modernFronts": 6,
   "pands": 288,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "ES02",
@@ -1592,7 +2068,12 @@
   "fronts": 44,
   "modernFronts": 45,
   "pands": 128,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "ES03",
@@ -1603,7 +2084,8 @@
   "fronts": 66,
   "modernFronts": 9,
   "pands": 290,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "ET01",
@@ -1614,7 +2096,8 @@
   "fronts": 33,
   "modernFronts": 9,
   "pands": 972,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "ET02",
@@ -1625,7 +2108,8 @@
   "fronts": 21,
   "modernFronts": 9,
   "pands": 351,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EU01",
@@ -1636,7 +2120,8 @@
   "fronts": 26,
   "modernFronts": 3,
   "pands": 417,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EU02",
@@ -1647,7 +2132,8 @@
   "fronts": 20,
   "modernFronts": 7,
   "pands": 280,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EU03",
@@ -1658,7 +2144,8 @@
   "fronts": 40,
   "modernFronts": 2,
   "pands": 427,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EV01",
@@ -1669,18 +2156,24 @@
   "fronts": 20,
   "modernFronts": 9,
   "pands": 181,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "EV02",
   "name": "Vondelparkbuurt-Oost",
   "wijk": "EV",
-  "level": "own",
+  "level": "filled",
   "fallback": "EV02",
   "fronts": 19,
   "modernFronts": 3,
   "pands": 255,
-  "why": ""
+  "why": "19 pre-1945 and 3 post-war measured fronts of 255 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "FA01",
@@ -1691,7 +2184,8 @@
   "fronts": 0,
   "modernFronts": 4,
   "pands": 120,
-  "why": "0 pre-1945 and 4 post-war measured fronts of 120 pands, under the minimum 12"
+  "why": "0 pre-1945 and 4 post-war measured fronts of 120 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FA02",
@@ -1702,7 +2196,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 140,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 140 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 140 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FA03",
@@ -1713,7 +2208,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 650,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FA04",
@@ -1724,7 +2220,8 @@
   "fronts": 0,
   "modernFronts": 3,
   "pands": 58,
-  "why": "0 pre-1945 and 3 post-war measured fronts of 58 pands, under the minimum 12"
+  "why": "0 pre-1945 and 3 post-war measured fronts of 58 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FA05",
@@ -1735,7 +2232,8 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 22,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 22 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FA06",
@@ -1746,7 +2244,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 12,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 12 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 12 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FA07",
@@ -1757,7 +2256,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 21,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 21 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 21 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FA08",
@@ -1768,7 +2268,8 @@
   "fronts": 2,
   "modernFronts": 12,
   "pands": 86,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FB01",
@@ -1779,7 +2280,8 @@
   "fronts": 1,
   "modernFronts": 4,
   "pands": 120,
-  "why": "1 pre-1945 and 4 post-war measured fronts of 120 pands, under the minimum 12"
+  "why": "1 pre-1945 and 4 post-war measured fronts of 120 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FB02",
@@ -1790,7 +2292,8 @@
   "fronts": 0,
   "modernFronts": 32,
   "pands": 1223,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FB03",
@@ -1801,7 +2304,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 1180,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FB04",
@@ -1812,7 +2316,8 @@
   "fronts": 0,
   "modernFronts": 7,
   "pands": 16,
-  "why": "0 pre-1945 and 7 post-war measured fronts of 16 pands, under the minimum 12"
+  "why": "0 pre-1945 and 7 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FB05",
@@ -1823,7 +2328,8 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 1172,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FB06",
@@ -1834,7 +2340,8 @@
   "fronts": 0,
   "modernFronts": 11,
   "pands": 214,
-  "why": "0 pre-1945 and 11 post-war measured fronts of 214 pands, under the minimum 12"
+  "why": "0 pre-1945 and 11 post-war measured fronts of 214 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FB07",
@@ -1845,7 +2352,8 @@
   "fronts": 1,
   "modernFronts": 13,
   "pands": 136,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FB08",
@@ -1856,7 +2364,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 747,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FC01",
@@ -1867,7 +2376,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 671,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FC02",
@@ -1878,7 +2388,8 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 425,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FC03",
@@ -1889,7 +2400,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 1072,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FD01",
@@ -1900,7 +2412,8 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 622,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FD02",
@@ -1911,7 +2424,8 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 481,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FD03",
@@ -1922,7 +2436,8 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 1027,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FD04",
@@ -1933,7 +2448,8 @@
   "fronts": 0,
   "modernFronts": 30,
   "pands": 252,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FE01",
@@ -1944,7 +2460,8 @@
   "fronts": 1,
   "modernFronts": 28,
   "pands": 250,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FE02",
@@ -1955,7 +2472,8 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 600,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FE03",
@@ -1966,7 +2484,8 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 543,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FE04",
@@ -1977,7 +2496,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 10,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 10 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 10 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FF01",
@@ -1988,7 +2508,8 @@
   "fronts": 2,
   "modernFronts": 26,
   "pands": 696,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FF02",
@@ -1999,7 +2520,8 @@
   "fronts": 0,
   "modernFronts": 4,
   "pands": 72,
-  "why": "0 pre-1945 and 4 post-war measured fronts of 72 pands, under the minimum 12"
+  "why": "0 pre-1945 and 4 post-war measured fronts of 72 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FF03",
@@ -2010,7 +2532,8 @@
   "fronts": 1,
   "modernFronts": 10,
   "pands": 136,
-  "why": "1 pre-1945 and 10 post-war measured fronts of 136 pands, under the minimum 12"
+  "why": "1 pre-1945 and 10 post-war measured fronts of 136 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FG01",
@@ -2021,7 +2544,8 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 2334,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FG02",
@@ -2032,7 +2556,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 1853,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FG03",
@@ -2043,7 +2568,8 @@
   "fronts": 7,
   "modernFronts": 20,
   "pands": 2601,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FH01",
@@ -2054,7 +2580,8 @@
   "fronts": 0,
   "modernFronts": 5,
   "pands": 44,
-  "why": "0 pre-1945 and 5 post-war measured fronts of 44 pands, under the minimum 12"
+  "why": "0 pre-1945 and 5 post-war measured fronts of 44 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FH02",
@@ -2065,7 +2592,8 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 1181,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FJ01",
@@ -2076,7 +2604,8 @@
   "fronts": 0,
   "modernFronts": 24,
   "pands": 272,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FJ02",
@@ -2087,7 +2616,8 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 183,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FJ03",
@@ -2098,7 +2628,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 50,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FJ04",
@@ -2109,7 +2640,8 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 521,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FK01",
@@ -2120,7 +2652,8 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 389,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FK02",
@@ -2131,7 +2664,8 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 234,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FK03",
@@ -2142,7 +2676,8 @@
   "fronts": 1,
   "modernFronts": 20,
   "pands": 178,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FK04",
@@ -2153,7 +2688,8 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 306,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FK05",
@@ -2164,7 +2700,8 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 1285,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FL01",
@@ -2175,7 +2712,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 609,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FL02",
@@ -2186,7 +2724,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 686,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FL03",
@@ -2197,7 +2736,8 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 819,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FM01",
@@ -2208,7 +2748,8 @@
   "fronts": 1,
   "modernFronts": 2,
   "pands": 13,
-  "why": "1 pre-1945 and 2 post-war measured fronts of 13 pands, under the minimum 12"
+  "why": "1 pre-1945 and 2 post-war measured fronts of 13 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FM02",
@@ -2219,7 +2760,8 @@
   "fronts": 1,
   "modernFronts": 19,
   "pands": 424,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FM03",
@@ -2230,7 +2772,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 23,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 23 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 23 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FM04",
@@ -2241,7 +2784,8 @@
   "fronts": 4,
   "modernFronts": 23,
   "pands": 202,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FM05",
@@ -2252,7 +2796,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 6,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 6 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 6 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FM06",
@@ -2263,7 +2808,8 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 35,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FN01",
@@ -2274,7 +2820,8 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 613,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FN02",
@@ -2285,7 +2832,8 @@
   "fronts": 1,
   "modernFronts": 20,
   "pands": 630,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FN03",
@@ -2296,7 +2844,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 36,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 36 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 36 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FN04",
@@ -2307,7 +2856,8 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 333,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FP01",
@@ -2318,7 +2868,8 @@
   "fronts": 1,
   "modernFronts": 2,
   "pands": 11,
-  "why": "1 pre-1945 and 2 post-war measured fronts of 11 pands, under the minimum 12"
+  "why": "1 pre-1945 and 2 post-war measured fronts of 11 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FP02",
@@ -2329,7 +2880,8 @@
   "fronts": 0,
   "modernFronts": 11,
   "pands": 145,
-  "why": "0 pre-1945 and 11 post-war measured fronts of 145 pands, under the minimum 12"
+  "why": "0 pre-1945 and 11 post-war measured fronts of 145 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FP03",
@@ -2340,7 +2892,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 23,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 23 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 23 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FP04",
@@ -2351,7 +2904,8 @@
   "fronts": 0,
   "modernFronts": 12,
   "pands": 118,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FP05",
@@ -2362,7 +2916,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 68,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FP06",
@@ -2373,7 +2928,8 @@
   "fronts": 0,
   "modernFronts": 6,
   "pands": 32,
-  "why": "0 pre-1945 and 6 post-war measured fronts of 32 pands, under the minimum 12"
+  "why": "0 pre-1945 and 6 post-war measured fronts of 32 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FQ01",
@@ -2384,7 +2940,8 @@
   "fronts": 6,
   "modernFronts": 17,
   "pands": 472,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FQ02",
@@ -2395,7 +2952,8 @@
   "fronts": 0,
   "modernFronts": 25,
   "pands": 1709,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FQ03",
@@ -2406,7 +2964,8 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 1630,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FQ04",
@@ -2417,7 +2976,8 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 1211,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FQ05",
@@ -2428,7 +2988,8 @@
   "fronts": 0,
   "modernFronts": 12,
   "pands": 47,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FQ06",
@@ -2439,7 +3000,8 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 1218,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FQ07",
@@ -2450,7 +3012,8 @@
   "fronts": 2,
   "modernFronts": 15,
   "pands": 200,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FQ08",
@@ -2461,7 +3024,8 @@
   "fronts": 0,
   "modernFronts": 24,
   "pands": 257,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "FQ09",
@@ -2472,7 +3036,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 40,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 40 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 40 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "FQ10",
@@ -2483,18 +3048,24 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 87,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 87 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 87 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "KA01",
   "name": "Westlandgrachtbuurt",
   "wijk": "KA",
-  "level": "own",
+  "level": "filled",
   "fallback": "KA01",
   "fronts": 19,
   "modernFronts": 4,
   "pands": 813,
-  "why": ""
+  "why": "19 pre-1945 and 4 post-war measured fronts of 813 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KA02",
@@ -2505,40 +3076,60 @@
   "fronts": 19,
   "modernFronts": 20,
   "pands": 323,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KA03",
   "name": "Legmeerpleinbuurt",
   "wijk": "KA",
-  "level": "own",
+  "level": "filled",
   "fallback": "KA03",
   "fronts": 18,
   "modernFronts": 3,
   "pands": 337,
-  "why": ""
+  "why": "18 pre-1945 and 3 post-war measured fronts of 337 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KA04",
   "name": "Aalsmeerwegbuurt-West",
   "wijk": "KA",
-  "level": "own",
+  "level": "filled",
   "fallback": "KA04",
   "fronts": 18,
   "modernFronts": 0,
   "pands": 627,
-  "why": ""
+  "why": "18 pre-1945 and 0 post-war measured fronts of 627 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KA05",
   "name": "Aalsmeerwegbuurt-Oost",
   "wijk": "KA",
-  "level": "own",
+  "level": "filled",
   "fallback": "KA05",
   "fronts": 15,
   "modernFronts": 2,
   "pands": 470,
-  "why": ""
+  "why": "15 pre-1945 and 2 post-war measured fronts of 470 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KA06",
@@ -2549,7 +3140,12 @@
   "fronts": 1,
   "modernFronts": 16,
   "pands": 155,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KB01",
@@ -2560,18 +3156,28 @@
   "fronts": 18,
   "modernFronts": 15,
   "pands": 437,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KB02",
   "name": "Schinkelbuurt-Zuid",
   "wijk": "KB",
-  "level": "own",
+  "level": "filled",
   "fallback": "KB02",
   "fronts": 19,
   "modernFronts": 4,
   "pands": 273,
-  "why": ""
+  "why": "19 pre-1945 and 4 post-war measured fronts of 273 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KC01",
@@ -2582,40 +3188,56 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 2,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 2 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 2 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "KC02",
   "name": "Willemsparkbuurt-Noord",
   "wijk": "KC",
-  "level": "own",
+  "level": "filled",
   "fallback": "KC02",
   "fronts": 15,
   "modernFronts": 3,
   "pands": 433,
-  "why": ""
+  "why": "15 pre-1945 and 3 post-war measured fronts of 433 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KC03",
   "name": "Valeriusbuurt-West",
   "wijk": "KC",
-  "level": "own",
+  "level": "filled",
   "fallback": "KC03",
   "fronts": 14,
   "modernFronts": 0,
   "pands": 489,
-  "why": ""
+  "why": "14 pre-1945 and 0 post-war measured fronts of 489 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KC04",
   "name": "Valeriusbuurt-Oost",
   "wijk": "KC",
-  "level": "own",
+  "level": "filled",
   "fallback": "KC04",
   "fronts": 17,
   "modernFronts": 2,
   "pands": 310,
-  "why": ""
+  "why": "17 pre-1945 and 2 post-war measured fronts of 310 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KD01",
@@ -2626,7 +3248,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 15,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 15 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 15 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "KD02",
@@ -2637,29 +3260,40 @@
   "fronts": 24,
   "modernFronts": 1,
   "pands": 742,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KD03",
   "name": "Concertgebouwbuurt",
   "wijk": "KD",
-  "level": "own",
+  "level": "filled",
   "fallback": "KD03",
   "fronts": 18,
   "modernFronts": 3,
   "pands": 502,
-  "why": ""
+  "why": "18 pre-1945 and 3 post-war measured fronts of 502 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KD04",
   "name": "P.C. Hooftbuurt",
   "wijk": "KD",
-  "level": "own",
+  "level": "filled",
   "fallback": "KD04",
   "fronts": 19,
   "modernFronts": 2,
   "pands": 309,
-  "why": ""
+  "why": "19 pre-1945 and 2 post-war measured fronts of 309 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KD05",
@@ -2670,18 +3304,24 @@
   "fronts": 4,
   "modernFronts": 1,
   "pands": 22,
-  "why": "4 pre-1945 and 1 post-war measured fronts of 22 pands, under the minimum 12"
+  "why": "4 pre-1945 and 1 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "KD06",
   "name": "Banpleinbuurt",
   "wijk": "KD",
-  "level": "own",
+  "level": "filled",
   "fallback": "KD06",
   "fronts": 19,
   "modernFronts": 2,
   "pands": 236,
-  "why": ""
+  "why": "19 pre-1945 and 2 post-war measured fronts of 236 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KD07",
@@ -2692,7 +3332,8 @@
   "fronts": 22,
   "modernFronts": 3,
   "pands": 343,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KD08",
@@ -2703,7 +3344,8 @@
   "fronts": 27,
   "modernFronts": 4,
   "pands": 332,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KD09",
@@ -2714,18 +3356,24 @@
   "fronts": 30,
   "modernFronts": 0,
   "pands": 228,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KD10",
   "name": "Harmoniehofbuurt",
   "wijk": "KD",
-  "level": "own",
+  "level": "filled",
   "fallback": "KD10",
   "fronts": 13,
   "modernFronts": 0,
   "pands": 146,
-  "why": ""
+  "why": "13 pre-1945 and 0 post-war measured fronts of 146 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KE01",
@@ -2736,7 +3384,8 @@
   "fronts": 105,
   "modernFronts": 3,
   "pands": 461,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KE02",
@@ -2747,7 +3396,12 @@
   "fronts": 13,
   "modernFronts": 17,
   "pands": 252,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KE03",
@@ -2758,7 +3412,12 @@
   "fronts": 17,
   "modernFronts": 18,
   "pands": 326,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KE04",
@@ -2769,18 +3428,24 @@
   "fronts": 106,
   "modernFronts": 19,
   "pands": 870,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KE05",
   "name": "Hemonybuurt",
   "wijk": "KE",
-  "level": "own",
+  "level": "filled",
   "fallback": "KE05",
   "fronts": 19,
   "modernFronts": 5,
   "pands": 442,
-  "why": ""
+  "why": "19 pre-1945 and 5 post-war measured fronts of 442 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KF01",
@@ -2791,7 +3456,8 @@
   "fronts": 21,
   "modernFronts": 5,
   "pands": 680,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KF02",
@@ -2802,7 +3468,12 @@
   "fronts": 19,
   "modernFronts": 8,
   "pands": 331,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KF03",
@@ -2813,7 +3484,12 @@
   "fronts": 17,
   "modernFronts": 17,
   "pands": 593,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KF04",
@@ -2824,7 +3500,12 @@
   "fronts": 17,
   "modernFronts": 13,
   "pands": 392,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KG01",
@@ -2835,40 +3516,56 @@
   "fronts": 20,
   "modernFronts": 0,
   "pands": 589,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KG02",
   "name": "Burgemeester Tellegenbuurt-Oost",
   "wijk": "KG",
-  "level": "own",
+  "level": "filled",
   "fallback": "KG02",
   "fronts": 18,
   "modernFronts": 6,
   "pands": 467,
-  "why": ""
+  "why": "18 pre-1945 and 6 post-war measured fronts of 467 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KG03",
   "name": "Diamantbuurt",
   "wijk": "KG",
-  "level": "own",
+  "level": "filled",
   "fallback": "KG03",
   "fronts": 19,
   "modernFronts": 2,
   "pands": 495,
-  "why": ""
+  "why": "19 pre-1945 and 2 post-war measured fronts of 495 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KH01",
   "name": "Bertelmanpleinbuurt",
   "wijk": "KH",
-  "level": "own",
+  "level": "filled",
   "fallback": "KH01",
   "fronts": 17,
   "modernFronts": 0,
   "pands": 265,
-  "why": ""
+  "why": "17 pre-1945 and 0 post-war measured fronts of 265 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KH02",
@@ -2879,40 +3576,56 @@
   "fronts": 11,
   "modernFronts": 1,
   "pands": 45,
-  "why": "11 pre-1945 and 1 post-war measured fronts of 45 pands, under the minimum 12"
+  "why": "11 pre-1945 and 1 post-war measured fronts of 45 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "KH03",
   "name": "Marathonbuurt-West",
   "wijk": "KH",
-  "level": "own",
+  "level": "filled",
   "fallback": "KH03",
   "fronts": 18,
   "modernFronts": 0,
   "pands": 480,
-  "why": ""
+  "why": "18 pre-1945 and 0 post-war measured fronts of 480 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KH04",
   "name": "Marathonbuurt-Oost",
   "wijk": "KH",
-  "level": "own",
+  "level": "filled",
   "fallback": "KH04",
   "fronts": 18,
   "modernFronts": 1,
   "pands": 307,
-  "why": ""
+  "why": "18 pre-1945 and 1 post-war measured fronts of 307 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KH05",
   "name": "Van Tuyllbuurt",
   "wijk": "KH",
-  "level": "own",
+  "level": "filled",
   "fallback": "KH05",
   "fronts": 13,
   "modernFronts": 0,
   "pands": 946,
-  "why": ""
+  "why": "13 pre-1945 and 0 post-war measured fronts of 946 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KH06",
@@ -2923,73 +3636,104 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 41,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 41 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 41 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "KJ01",
   "name": "Hiltonbuurt",
   "wijk": "KJ",
-  "level": "own",
+  "level": "filled",
   "fallback": "KJ01",
   "fronts": 16,
   "modernFronts": 3,
   "pands": 58,
-  "why": ""
+  "why": "16 pre-1945 and 3 post-war measured fronts of 58 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KJ02",
   "name": "Minervabuurt-Noord",
   "wijk": "KJ",
-  "level": "own",
+  "level": "filled",
   "fallback": "KJ02",
   "fronts": 19,
   "modernFronts": 4,
   "pands": 302,
-  "why": ""
+  "why": "19 pre-1945 and 4 post-war measured fronts of 302 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KJ03",
   "name": "Minervabuurt-Midden",
   "wijk": "KJ",
-  "level": "own",
+  "level": "filled",
   "fallback": "KJ03",
   "fronts": 18,
   "modernFronts": 4,
   "pands": 442,
-  "why": ""
+  "why": "18 pre-1945 and 4 post-war measured fronts of 442 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KJ04",
   "name": "Minervabuurt-Zuid",
   "wijk": "KJ",
-  "level": "own",
+  "level": "filled",
   "fallback": "KJ04",
   "fronts": 19,
   "modernFronts": 7,
   "pands": 420,
-  "why": ""
+  "why": "19 pre-1945 and 7 post-war measured fronts of 420 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KJ05",
   "name": "Beethovenbuurt",
   "wijk": "KJ",
-  "level": "own",
+  "level": "filled",
   "fallback": "KJ05",
   "fronts": 18,
   "modernFronts": 2,
   "pands": 352,
-  "why": ""
+  "why": "18 pre-1945 and 2 post-war measured fronts of 352 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KJ06",
   "name": "Diepenbrockbuurt",
   "wijk": "KJ",
-  "level": "own",
+  "level": "filled",
   "fallback": "KJ06",
   "fronts": 13,
   "modernFronts": 0,
   "pands": 330,
-  "why": ""
+  "why": "13 pre-1945 and 0 post-war measured fronts of 330 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KK01",
@@ -3000,29 +3744,40 @@
   "fronts": 20,
   "modernFronts": 1,
   "pands": 545,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KK02",
   "name": "Scheldebuurt-West",
   "wijk": "KK",
-  "level": "own",
+  "level": "filled",
   "fallback": "KK02",
   "fronts": 15,
   "modernFronts": 0,
   "pands": 795,
-  "why": ""
+  "why": "15 pre-1945 and 0 post-war measured fronts of 795 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KK03",
   "name": "Scheldebuurt-Midden",
   "wijk": "KK",
-  "level": "own",
+  "level": "filled",
   "fallback": "KK03",
   "fronts": 19,
   "modernFronts": 1,
   "pands": 564,
-  "why": ""
+  "why": "19 pre-1945 and 1 post-war measured fronts of 564 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KK04",
@@ -3033,7 +3788,8 @@
   "fronts": 26,
   "modernFronts": 0,
   "pands": 446,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KK05",
@@ -3044,7 +3800,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 199,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 199 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 199 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "KK06",
@@ -3055,40 +3812,56 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 16,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 16 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "KL01",
   "name": "IJselbuurt-West",
   "wijk": "KL",
-  "level": "own",
+  "level": "filled",
   "fallback": "KL01",
   "fronts": 17,
   "modernFronts": 0,
   "pands": 423,
-  "why": ""
+  "why": "17 pre-1945 and 0 post-war measured fronts of 423 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KL02",
   "name": "IJselbuurt-Oost",
   "wijk": "KL",
-  "level": "own",
+  "level": "filled",
   "fallback": "KL02",
   "fronts": 16,
   "modernFronts": 2,
   "pands": 486,
-  "why": ""
+  "why": "16 pre-1945 and 2 post-war measured fronts of 486 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KM01",
   "name": "Kromme Mijdrechtbuurt",
   "wijk": "KM",
-  "level": "own",
+  "level": "filled",
   "fallback": "KM01",
   "fronts": 13,
   "modernFronts": 0,
   "pands": 456,
-  "why": ""
+  "why": "13 pre-1945 and 0 post-war measured fronts of 456 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "KM02",
@@ -3099,7 +3872,8 @@
   "fronts": 20,
   "modernFronts": 0,
   "pands": 155,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KM03",
@@ -3110,7 +3884,8 @@
   "fronts": 23,
   "modernFronts": 1,
   "pands": 584,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KM04",
@@ -3121,7 +3896,8 @@
   "fronts": 113,
   "modernFronts": 6,
   "pands": 733,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "KM05",
@@ -3132,7 +3908,8 @@
   "fronts": 1,
   "modernFronts": 1,
   "pands": 27,
-  "why": "1 pre-1945 and 1 post-war measured fronts of 27 pands, under the minimum 12"
+  "why": "1 pre-1945 and 1 post-war measured fronts of 27 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "KN01",
@@ -3143,7 +3920,12 @@
   "fronts": 1,
   "modernFronts": 18,
   "pands": 510,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KN02",
@@ -3154,7 +3936,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 4,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 4 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 4 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KP01",
@@ -3165,7 +3952,12 @@
   "fronts": 4,
   "modernFronts": 6,
   "pands": 62,
-  "why": "4 pre-1945 and 6 post-war measured fronts of 62 pands, under the minimum 12"
+  "why": "4 pre-1945 and 6 post-war measured fronts of 62 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KP02",
@@ -3176,7 +3968,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 7,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 7 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 7 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KP03",
@@ -3187,7 +3984,12 @@
   "fronts": 3,
   "modernFronts": 2,
   "pands": 59,
-  "why": "3 pre-1945 and 2 post-war measured fronts of 59 pands, under the minimum 12"
+  "why": "3 pre-1945 and 2 post-war measured fronts of 59 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KP04",
@@ -3198,7 +4000,12 @@
   "fronts": 0,
   "modernFronts": 6,
   "pands": 33,
-  "why": "0 pre-1945 and 6 post-war measured fronts of 33 pands, under the minimum 12"
+  "why": "0 pre-1945 and 6 post-war measured fronts of 33 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KP05",
@@ -3209,7 +4016,12 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 23,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 23 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 23 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KQ01",
@@ -3220,7 +4032,12 @@
   "fronts": 0,
   "modernFronts": 4,
   "pands": 130,
-  "why": "0 pre-1945 and 4 post-war measured fronts of 130 pands, under the minimum 12"
+  "why": "0 pre-1945 and 4 post-war measured fronts of 130 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KQ02",
@@ -3231,7 +4048,12 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 22,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 22 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KQ03",
@@ -3242,7 +4064,12 @@
   "fronts": 1,
   "modernFronts": 11,
   "pands": 220,
-  "why": "1 pre-1945 and 11 post-war measured fronts of 220 pands, under the minimum 12"
+  "why": "1 pre-1945 and 11 post-war measured fronts of 220 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KQ04",
@@ -3253,7 +4080,12 @@
   "fronts": 1,
   "modernFronts": 20,
   "pands": 333,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KQ05",
@@ -3264,7 +4096,12 @@
   "fronts": 1,
   "modernFronts": 12,
   "pands": 1056,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KQ06",
@@ -3275,7 +4112,12 @@
   "fronts": 0,
   "modernFronts": 33,
   "pands": 513,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KR01",
@@ -3286,7 +4128,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 54,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 54 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 54 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KR02",
@@ -3297,7 +4144,12 @@
   "fronts": 0,
   "modernFronts": 6,
   "pands": 281,
-  "why": "0 pre-1945 and 6 post-war measured fronts of 281 pands, under the minimum 12"
+  "why": "0 pre-1945 and 6 post-war measured fronts of 281 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KR03",
@@ -3308,7 +4160,12 @@
   "fronts": 0,
   "modernFronts": 14,
   "pands": 626,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "KR04",
@@ -3319,7 +4176,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 43,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 43 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 43 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA01",
@@ -3330,7 +4192,12 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 195,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA02",
@@ -3341,7 +4208,12 @@
   "fronts": 3,
   "modernFronts": 7,
   "pands": 46,
-  "why": "3 pre-1945 and 7 post-war measured fronts of 46 pands, under the minimum 12"
+  "why": "3 pre-1945 and 7 post-war measured fronts of 46 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA03",
@@ -3352,7 +4224,12 @@
   "fronts": 2,
   "modernFronts": 8,
   "pands": 16,
-  "why": "2 pre-1945 and 8 post-war measured fronts of 16 pands, under the minimum 12"
+  "why": "2 pre-1945 and 8 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA04",
@@ -3363,7 +4240,12 @@
   "fronts": 11,
   "modernFronts": 19,
   "pands": 150,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA05",
@@ -3374,7 +4256,12 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 456,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA06",
@@ -3385,7 +4272,12 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 332,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA07",
@@ -3396,7 +4288,12 @@
   "fronts": 0,
   "modernFronts": 5,
   "pands": 28,
-  "why": "0 pre-1945 and 5 post-war measured fronts of 28 pands, under the minimum 12"
+  "why": "0 pre-1945 and 5 post-war measured fronts of 28 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA08",
@@ -3407,7 +4304,12 @@
   "fronts": 3,
   "modernFronts": 20,
   "pands": 129,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA09",
@@ -3418,7 +4320,12 @@
   "fronts": 1,
   "modernFronts": 12,
   "pands": 102,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA10",
@@ -3429,7 +4336,12 @@
   "fronts": 0,
   "modernFronts": 14,
   "pands": 55,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MA11",
@@ -3440,7 +4352,12 @@
   "fronts": 1,
   "modernFronts": 9,
   "pands": 50,
-  "why": "1 pre-1945 and 9 post-war measured fronts of 50 pands, under the minimum 12"
+  "why": "1 pre-1945 and 9 post-war measured fronts of 50 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MB01",
@@ -3451,7 +4368,12 @@
   "fronts": 19,
   "modernFronts": 20,
   "pands": 311,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MB02",
@@ -3462,7 +4384,12 @@
   "fronts": 20,
   "modernFronts": 15,
   "pands": 397,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MB03",
@@ -3473,7 +4400,8 @@
   "fronts": 0,
   "modernFronts": 5,
   "pands": 22,
-  "why": "0 pre-1945 and 5 post-war measured fronts of 22 pands, under the minimum 12"
+  "why": "0 pre-1945 and 5 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MC01",
@@ -3484,7 +4412,12 @@
   "fronts": 19,
   "modernFronts": 19,
   "pands": 382,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MC02",
@@ -3495,7 +4428,8 @@
   "fronts": 2,
   "modernFronts": 1,
   "pands": 48,
-  "why": "2 pre-1945 and 1 post-war measured fronts of 48 pands, under the minimum 12"
+  "why": "2 pre-1945 and 1 post-war measured fronts of 48 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MC03",
@@ -3506,7 +4440,12 @@
   "fronts": 18,
   "modernFronts": 17,
   "pands": 286,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MC04",
@@ -3517,7 +4456,12 @@
   "fronts": 18,
   "modernFronts": 21,
   "pands": 475,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MD01",
@@ -3528,7 +4472,8 @@
   "fronts": 102,
   "modernFronts": 17,
   "pands": 590,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "MD02",
@@ -3539,7 +4484,8 @@
   "fronts": 51,
   "modernFronts": 18,
   "pands": 739,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "ME01",
@@ -3550,7 +4496,12 @@
   "fronts": 15,
   "modernFronts": 17,
   "pands": 334,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "ME02",
@@ -3561,7 +4512,8 @@
   "fronts": 20,
   "modernFronts": 19,
   "pands": 361,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "ME03",
@@ -3572,7 +4524,12 @@
   "fronts": 7,
   "modernFronts": 23,
   "pands": 454,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MF01",
@@ -3583,7 +4540,12 @@
   "fronts": 19,
   "modernFronts": 19,
   "pands": 569,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MF02",
@@ -3594,7 +4556,12 @@
   "fronts": 17,
   "modernFronts": 17,
   "pands": 516,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MF03",
@@ -3605,7 +4572,12 @@
   "fronts": 16,
   "modernFronts": 19,
   "pands": 227,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MG01",
@@ -3616,7 +4588,8 @@
   "fronts": 63,
   "modernFronts": 16,
   "pands": 514,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "MG02",
@@ -3627,7 +4600,8 @@
   "fronts": 1,
   "modernFronts": 1,
   "pands": 17,
-  "why": "1 pre-1945 and 1 post-war measured fronts of 17 pands, under the minimum 12"
+  "why": "1 pre-1945 and 1 post-war measured fronts of 17 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MG03",
@@ -3638,7 +4612,12 @@
   "fronts": 17,
   "modernFronts": 18,
   "pands": 246,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MG04",
@@ -3649,7 +4628,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 35,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 35 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 35 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MH01",
@@ -3660,7 +4640,12 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 16,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 16 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MH02",
@@ -3671,7 +4656,12 @@
   "fronts": 0,
   "modernFronts": 27,
   "pands": 288,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MH03",
@@ -3682,7 +4672,12 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 14,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 14 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 14 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MH04",
@@ -3693,7 +4688,12 @@
   "fronts": 1,
   "modernFronts": 19,
   "pands": 107,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MH05",
@@ -3704,7 +4704,12 @@
   "fronts": 0,
   "modernFronts": 6,
   "pands": 22,
-  "why": "0 pre-1945 and 6 post-war measured fronts of 22 pands, under the minimum 12"
+  "why": "0 pre-1945 and 6 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MH06",
@@ -3715,7 +4720,12 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 97,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 97 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 97 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MJ01",
@@ -3726,7 +4736,12 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 646,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MJ02",
@@ -3737,7 +4752,12 @@
   "fronts": 0,
   "modernFronts": 28,
   "pands": 270,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MJ03",
@@ -3748,7 +4768,12 @@
   "fronts": 0,
   "modernFronts": 34,
   "pands": 804,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MJ04",
@@ -3759,7 +4784,12 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 308,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MJ05",
@@ -3770,7 +4800,12 @@
   "fronts": 0,
   "modernFronts": 12,
   "pands": 690,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MK01",
@@ -3781,7 +4816,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 0,
-  "why": "no BAG pands in the buurt (water, park, industrial land)"
+  "why": "no BAG pands in the buurt (water, park, industrial land)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MK02",
@@ -3792,7 +4832,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 8,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 8 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 8 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MK03",
@@ -3803,7 +4848,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 0,
-  "why": "no BAG pands in the buurt (water, park, industrial land)"
+  "why": "no BAG pands in the buurt (water, park, industrial land)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MK04",
@@ -3814,7 +4864,12 @@
   "fronts": 0,
   "modernFronts": 28,
   "pands": 110,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MK05",
@@ -3825,7 +4880,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 2,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 2 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 2 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MK06",
@@ -3836,7 +4896,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 0,
-  "why": "no BAG pands in the buurt (water, park, industrial land)"
+  "why": "no BAG pands in the buurt (water, park, industrial land)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "ML01",
@@ -3847,7 +4912,12 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 198,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "ML02",
@@ -3858,7 +4928,12 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 1303,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "ML03",
@@ -3869,7 +4944,12 @@
   "fronts": 0,
   "modernFronts": 11,
   "pands": 96,
-  "why": "0 pre-1945 and 11 post-war measured fronts of 96 pands, under the minimum 12"
+  "why": "0 pre-1945 and 11 post-war measured fronts of 96 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MM01",
@@ -3880,7 +4960,8 @@
   "fronts": 0,
   "modernFronts": 11,
   "pands": 41,
-  "why": "0 pre-1945 and 11 post-war measured fronts of 41 pands, under the minimum 12"
+  "why": "0 pre-1945 and 11 post-war measured fronts of 41 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MM02",
@@ -3891,7 +4972,8 @@
   "fronts": 0,
   "modernFronts": 6,
   "pands": 45,
-  "why": "0 pre-1945 and 6 post-war measured fronts of 45 pands, under the minimum 12"
+  "why": "0 pre-1945 and 6 post-war measured fronts of 45 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MM03",
@@ -3902,7 +4984,8 @@
   "fronts": 20,
   "modernFronts": 20,
   "pands": 577,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "MM04",
@@ -3913,7 +4996,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 172,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 172 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 172 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MM05",
@@ -3924,7 +5008,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 15,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 15 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 15 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MM06",
@@ -3935,7 +5020,12 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 278,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MM07",
@@ -3946,7 +5036,12 @@
   "fronts": 18,
   "modernFronts": 18,
   "pands": 820,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MM08",
@@ -3957,7 +5052,12 @@
   "fronts": 13,
   "modernFronts": 10,
   "pands": 800,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MN01",
@@ -3968,18 +5068,28 @@
   "fronts": 19,
   "modernFronts": 12,
   "pands": 552,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MN02",
   "name": "Middenmeer-Noord",
   "wijk": "MN",
-  "level": "own",
+  "level": "filled",
   "fallback": "MN02",
   "fronts": 19,
   "modernFronts": 0,
   "pands": 652,
-  "why": ""
+  "why": "19 pre-1945 and 0 post-war measured fronts of 652 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MN03",
@@ -3990,7 +5100,12 @@
   "fronts": 14,
   "modernFronts": 14,
   "pands": 1045,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MN04",
@@ -4001,7 +5116,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 24,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 24 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 24 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MN05",
@@ -4012,7 +5128,8 @@
   "fronts": 0,
   "modernFronts": 5,
   "pands": 98,
-  "why": "0 pre-1945 and 5 post-war measured fronts of 98 pands, under the minimum 12"
+  "why": "0 pre-1945 and 5 post-war measured fronts of 98 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MN06",
@@ -4023,7 +5140,8 @@
   "fronts": 1,
   "modernFronts": 3,
   "pands": 62,
-  "why": "1 pre-1945 and 3 post-war measured fronts of 62 pands, under the minimum 12"
+  "why": "1 pre-1945 and 3 post-war measured fronts of 62 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MN07",
@@ -4034,7 +5152,8 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 11,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 11 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 11 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MN08",
@@ -4045,7 +5164,12 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 322,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "MN09",
@@ -4056,7 +5180,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 9,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 9 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 9 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "MP01",
@@ -4067,7 +5192,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 12,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 12 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 12 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MP02",
@@ -4078,18 +5208,28 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 17,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 17 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 17 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MP03",
   "name": "Betondorp",
   "wijk": "MP",
-  "level": "own",
+  "level": "filled",
   "fallback": "MP03",
   "fronts": 14,
   "modernFronts": 0,
   "pands": 3013,
-  "why": ""
+  "why": "14 pre-1945 and 0 post-war measured fronts of 3013 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MQ01",
@@ -4100,7 +5240,12 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 26,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 26 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 26 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MQ02",
@@ -4111,7 +5256,12 @@
   "fronts": 1,
   "modernFronts": 0,
   "pands": 29,
-  "why": "1 pre-1945 and 0 post-war measured fronts of 29 pands, under the minimum 12"
+  "why": "1 pre-1945 and 0 post-war measured fronts of 29 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MQ03",
@@ -4122,7 +5272,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 16,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 16 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MQ04",
@@ -4133,7 +5288,12 @@
   "fronts": 0,
   "modernFronts": 3,
   "pands": 11,
-  "why": "0 pre-1945 and 3 post-war measured fronts of 11 pands, under the minimum 12"
+  "why": "0 pre-1945 and 3 post-war measured fronts of 11 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MQ05",
@@ -4144,7 +5304,12 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 122,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MQ06",
@@ -4155,7 +5320,12 @@
   "fronts": 0,
   "modernFronts": 12,
   "pands": 49,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "MQ07",
@@ -4166,7 +5336,12 @@
   "fronts": 2,
   "modernFronts": 19,
   "pands": 172,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NA01",
@@ -4177,7 +5352,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 10,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 10 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 10 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NA02",
@@ -4188,7 +5364,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 66,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 66 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 66 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NA03",
@@ -4199,7 +5376,12 @@
   "fronts": 1,
   "modernFronts": 15,
   "pands": 871,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NA04",
@@ -4210,7 +5392,12 @@
   "fronts": 12,
   "modernFronts": 12,
   "pands": 1148,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NA05",
@@ -4221,7 +5408,12 @@
   "fronts": 9,
   "modernFronts": 14,
   "pands": 180,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NA06",
@@ -4232,7 +5424,12 @@
   "fronts": 0,
   "modernFronts": 13,
   "pands": 479,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NA07",
@@ -4243,7 +5440,8 @@
   "fronts": 0,
   "modernFronts": 7,
   "pands": 53,
-  "why": "0 pre-1945 and 7 post-war measured fronts of 53 pands, under the minimum 12"
+  "why": "0 pre-1945 and 7 post-war measured fronts of 53 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NB01",
@@ -4254,7 +5452,12 @@
   "fronts": 0,
   "modernFronts": 8,
   "pands": 83,
-  "why": "0 pre-1945 and 8 post-war measured fronts of 83 pands, under the minimum 12"
+  "why": "0 pre-1945 and 8 post-war measured fronts of 83 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NB02",
@@ -4265,7 +5468,12 @@
   "fronts": 0,
   "modernFronts": 14,
   "pands": 145,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NB03",
@@ -4276,7 +5484,12 @@
   "fronts": 3,
   "modernFronts": 18,
   "pands": 140,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NB04",
@@ -4287,7 +5500,12 @@
   "fronts": 4,
   "modernFronts": 37,
   "pands": 315,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NB05",
@@ -4298,7 +5516,12 @@
   "fronts": 2,
   "modernFronts": 14,
   "pands": 324,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NB06",
@@ -4309,7 +5532,12 @@
   "fronts": 0,
   "modernFronts": 7,
   "pands": 64,
-  "why": "0 pre-1945 and 7 post-war measured fronts of 64 pands, under the minimum 12"
+  "why": "0 pre-1945 and 7 post-war measured fronts of 64 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NB07",
@@ -4320,7 +5548,12 @@
   "fronts": 0,
   "modernFronts": 4,
   "pands": 41,
-  "why": "0 pre-1945 and 4 post-war measured fronts of 41 pands, under the minimum 12"
+  "why": "0 pre-1945 and 4 post-war measured fronts of 41 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NC01",
@@ -4331,18 +5564,28 @@
   "fronts": 0,
   "modernFronts": 10,
   "pands": 512,
-  "why": "0 pre-1945 and 10 post-war measured fronts of 512 pands, under the minimum 12"
+  "why": "0 pre-1945 and 10 post-war measured fronts of 512 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NC02",
   "name": "Tuindorp Oostzaan-Oost",
   "wijk": "NC",
-  "level": "own",
+  "level": "filled",
   "fallback": "NC02",
   "fronts": 12,
   "modernFronts": 0,
   "pands": 3930,
-  "why": ""
+  "why": "12 pre-1945 and 0 post-war measured fronts of 3930 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NC03",
@@ -4353,7 +5596,12 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 2047,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NC04",
@@ -4364,7 +5612,12 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 1100,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "ND01",
@@ -4375,7 +5628,12 @@
   "fronts": 0,
   "modernFronts": 25,
   "pands": 642,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "ND02",
@@ -4386,7 +5644,12 @@
   "fronts": 9,
   "modernFronts": 17,
   "pands": 1485,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NE01",
@@ -4397,7 +5660,12 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 185,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NE02",
@@ -4408,7 +5676,12 @@
   "fronts": 0,
   "modernFronts": 33,
   "pands": 405,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NE03",
@@ -4419,7 +5692,12 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 590,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NE04",
@@ -4430,7 +5708,12 @@
   "fronts": 1,
   "modernFronts": 19,
   "pands": 852,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NE05",
@@ -4441,7 +5724,12 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 200,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NE06",
@@ -4452,7 +5740,12 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 126,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NF01",
@@ -4463,7 +5756,8 @@
   "fronts": 4,
   "modernFronts": 2,
   "pands": 64,
-  "why": "4 pre-1945 and 2 post-war measured fronts of 64 pands, under the minimum 12"
+  "why": "4 pre-1945 and 2 post-war measured fronts of 64 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NF02",
@@ -4474,7 +5768,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 61,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 61 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 61 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NF03",
@@ -4485,7 +5780,12 @@
   "fronts": 19,
   "modernFronts": 16,
   "pands": 471,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NF04",
@@ -4496,7 +5796,12 @@
   "fronts": 14,
   "modernFronts": 11,
   "pands": 153,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NF05",
@@ -4507,7 +5812,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 1,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 1 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 1 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NG01",
@@ -4518,7 +5824,12 @@
   "fronts": 1,
   "modernFronts": 16,
   "pands": 1317,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NG02",
@@ -4529,7 +5840,12 @@
   "fronts": 1,
   "modernFronts": 5,
   "pands": 18,
-  "why": "1 pre-1945 and 5 post-war measured fronts of 18 pands, under the minimum 12"
+  "why": "1 pre-1945 and 5 post-war measured fronts of 18 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NG03",
@@ -4540,7 +5856,12 @@
   "fronts": 0,
   "modernFronts": 4,
   "pands": 43,
-  "why": "0 pre-1945 and 4 post-war measured fronts of 43 pands, under the minimum 12"
+  "why": "0 pre-1945 and 4 post-war measured fronts of 43 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NH01",
@@ -4551,7 +5872,12 @@
   "fronts": 1,
   "modernFronts": 19,
   "pands": 314,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NH02",
@@ -4562,7 +5888,12 @@
   "fronts": 0,
   "modernFronts": 10,
   "pands": 52,
-  "why": "0 pre-1945 and 10 post-war measured fronts of 52 pands, under the minimum 12"
+  "why": "0 pre-1945 and 10 post-war measured fronts of 52 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NH03",
@@ -4573,7 +5904,12 @@
   "fronts": 0,
   "modernFronts": 3,
   "pands": 91,
-  "why": "0 pre-1945 and 3 post-war measured fronts of 91 pands, under the minimum 12"
+  "why": "0 pre-1945 and 3 post-war measured fronts of 91 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NH04",
@@ -4584,7 +5920,12 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 114,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NH05",
@@ -4595,7 +5936,12 @@
   "fronts": 0,
   "modernFronts": 3,
   "pands": 39,
-  "why": "0 pre-1945 and 3 post-war measured fronts of 39 pands, under the minimum 12"
+  "why": "0 pre-1945 and 3 post-war measured fronts of 39 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NH06",
@@ -4606,7 +5952,12 @@
   "fronts": 2,
   "modernFronts": 7,
   "pands": 217,
-  "why": "2 pre-1945 and 7 post-war measured fronts of 217 pands, under the minimum 12"
+  "why": "2 pre-1945 and 7 post-war measured fronts of 217 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NJ01",
@@ -4617,7 +5968,12 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 12,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 12 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 12 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NJ02",
@@ -4628,7 +5984,12 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 1115,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NJ03",
@@ -4639,7 +6000,12 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 396,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NJ04",
@@ -4650,7 +6016,12 @@
   "fronts": 0,
   "modernFronts": 3,
   "pands": 31,
-  "why": "0 pre-1945 and 3 post-war measured fronts of 31 pands, under the minimum 12"
+  "why": "0 pre-1945 and 3 post-war measured fronts of 31 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NJ05",
@@ -4661,7 +6032,12 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 335,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NJ06",
@@ -4672,7 +6048,12 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 355,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NK01",
@@ -4683,7 +6064,8 @@
   "fronts": 20,
   "modernFronts": 7,
   "pands": 1368,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "NK02",
@@ -4694,7 +6076,8 @@
   "fronts": 20,
   "modernFronts": 20,
   "pands": 1123,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "NK03",
@@ -4705,18 +6088,24 @@
   "fronts": 20,
   "modernFronts": 20,
   "pands": 2144,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "NL01",
   "name": "Vogelbuurt-Noord",
   "wijk": "NL",
-  "level": "own",
+  "level": "filled",
   "fallback": "NL01",
   "fronts": 17,
   "modernFronts": 0,
   "pands": 628,
-  "why": ""
+  "why": "17 pre-1945 and 0 post-war measured fronts of 628 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NL02",
@@ -4727,7 +6116,8 @@
   "fronts": 1,
   "modernFronts": 1,
   "pands": 68,
-  "why": "1 pre-1945 and 1 post-war measured fronts of 68 pands, under the minimum 12"
+  "why": "1 pre-1945 and 1 post-war measured fronts of 68 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NL03",
@@ -4738,7 +6128,12 @@
   "fronts": 20,
   "modernFronts": 18,
   "pands": 1160,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NL04",
@@ -4749,7 +6144,12 @@
   "fronts": 1,
   "modernFronts": 15,
   "pands": 98,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NM01",
@@ -4760,7 +6160,12 @@
   "fronts": 19,
   "modernFronts": 16,
   "pands": 1702,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NN01",
@@ -4771,7 +6176,12 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 517,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NN02",
@@ -4782,7 +6192,12 @@
   "fronts": 15,
   "modernFronts": 11,
   "pands": 2265,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NP01",
@@ -4793,7 +6208,12 @@
   "fronts": 17,
   "modernFronts": 8,
   "pands": 228,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NP02",
@@ -4804,7 +6224,12 @@
   "fronts": 0,
   "modernFronts": 3,
   "pands": 165,
-  "why": "0 pre-1945 and 3 post-war measured fronts of 165 pands, under the minimum 12"
+  "why": "0 pre-1945 and 3 post-war measured fronts of 165 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NP03",
@@ -4815,7 +6240,12 @@
   "fronts": 1,
   "modernFronts": 9,
   "pands": 75,
-  "why": "1 pre-1945 and 9 post-war measured fronts of 75 pands, under the minimum 12"
+  "why": "1 pre-1945 and 9 post-war measured fronts of 75 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "NQ01",
@@ -4826,7 +6256,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 28,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 28 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 28 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NQ02",
@@ -4837,7 +6268,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 15,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 15 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 15 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NQ03",
@@ -4848,7 +6280,12 @@
   "fronts": 1,
   "modernFronts": 16,
   "pands": 363,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NQ04",
@@ -4859,7 +6296,8 @@
   "fronts": 1,
   "modernFronts": 6,
   "pands": 50,
-  "why": "1 pre-1945 and 6 post-war measured fronts of 50 pands, under the minimum 12"
+  "why": "1 pre-1945 and 6 post-war measured fronts of 50 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NQ05",
@@ -4870,7 +6308,12 @@
   "fronts": 10,
   "modernFronts": 17,
   "pands": 247,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "NQ06",
@@ -4881,7 +6324,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 18,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 18 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 18 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NQ07",
@@ -4892,7 +6336,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 29,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 29 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 29 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NQ08",
@@ -4903,7 +6348,8 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 351,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 351 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 351 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NQ09",
@@ -4914,7 +6360,8 @@
   "fronts": 5,
   "modernFronts": 1,
   "pands": 310,
-  "why": "5 pre-1945 and 1 post-war measured fronts of 310 pands, under the minimum 12"
+  "why": "5 pre-1945 and 1 post-war measured fronts of 310 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "NQ10",
@@ -4925,7 +6372,12 @@
   "fronts": 15,
   "modernFronts": 16,
   "pands": 469,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SA01",
@@ -4936,7 +6388,12 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 82,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 82 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 82 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SA02",
@@ -4947,7 +6404,12 @@
   "fronts": 19,
   "modernFronts": 15,
   "pands": 1017,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SB01",
@@ -4958,7 +6420,12 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 10,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 10 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 10 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SB02",
@@ -4969,7 +6436,12 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 311,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SB03",
@@ -4980,7 +6452,12 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 1466,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SB04",
@@ -4991,7 +6468,12 @@
   "fronts": 1,
   "modernFronts": 12,
   "pands": 379,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SB05",
@@ -5002,7 +6484,12 @@
   "fronts": 2,
   "modernFronts": 36,
   "pands": 797,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SB06",
@@ -5013,7 +6500,12 @@
   "fronts": 2,
   "modernFronts": 2,
   "pands": 53,
-  "why": "2 pre-1945 and 2 post-war measured fronts of 53 pands, under the minimum 12"
+  "why": "2 pre-1945 and 2 post-war measured fronts of 53 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SC01",
@@ -5024,7 +6516,8 @@
   "fronts": 1,
   "modernFronts": 7,
   "pands": 172,
-  "why": "1 pre-1945 and 7 post-war measured fronts of 172 pands, under the minimum 12"
+  "why": "1 pre-1945 and 7 post-war measured fronts of 172 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "SC02",
@@ -5035,7 +6528,12 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 257,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SC03",
@@ -5046,7 +6544,12 @@
   "fronts": 0,
   "modernFronts": 36,
   "pands": 1009,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SC04",
@@ -5057,7 +6560,12 @@
   "fronts": 1,
   "modernFronts": 21,
   "pands": 336,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SC05",
@@ -5068,7 +6576,12 @@
   "fronts": 14,
   "modernFronts": 11,
   "pands": 345,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SC06",
@@ -5079,29 +6592,44 @@
   "fronts": 10,
   "modernFronts": 16,
   "pands": 524,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SD01",
   "name": "Herensingelkwartier",
   "wijk": "SD",
-  "level": "own",
+  "level": "filled",
   "fallback": "SD01",
   "fronts": 18,
   "modernFronts": 6,
   "pands": 519,
-  "why": ""
+  "why": "18 pre-1945 and 6 post-war measured fronts of 519 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SD02",
   "name": "Bedrijventerrein Van Houten",
   "wijk": "SD",
-  "level": "own",
+  "level": "filled",
   "fallback": "SD02",
   "fronts": 15,
   "modernFronts": 5,
   "pands": 303,
-  "why": ""
+  "why": "15 pre-1945 and 5 post-war measured fronts of 303 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SD03",
@@ -5112,7 +6640,12 @@
   "fronts": 19,
   "modernFronts": 18,
   "pands": 1265,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SD04",
@@ -5123,7 +6656,12 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 341,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SD05",
@@ -5134,7 +6672,12 @@
   "fronts": 1,
   "modernFronts": 14,
   "pands": 501,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SD06",
@@ -5145,7 +6688,12 @@
   "fronts": 1,
   "modernFronts": 23,
   "pands": 518,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
  },
  {
   "code": "SE01",
@@ -5156,7 +6704,12 @@
   "fronts": 2,
   "modernFronts": 6,
   "pands": 319,
-  "why": "2 pre-1945 and 6 post-war measured fronts of 319 pands, under the minimum 12"
+  "why": "2 pre-1945 and 6 post-war measured fronts of 319 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SE02",
@@ -5167,7 +6720,12 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 1182,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SE03",
@@ -5178,7 +6736,12 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 1041,
-  "why": ""
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "SE04",
@@ -5189,7 +6752,12 @@
   "fronts": 1,
   "modernFronts": 1,
   "pands": 492,
-  "why": "1 pre-1945 and 1 post-war measured fronts of 492 pands, under the minimum 12"
+  "why": "1 pre-1945 and 1 post-war measured fronts of 492 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
  },
  {
   "code": "TA01",
@@ -5200,7 +6768,8 @@
   "fronts": 0,
   "modernFronts": 4,
   "pands": 25,
-  "why": "0 pre-1945 and 4 post-war measured fronts of 25 pands, under the minimum 12"
+  "why": "0 pre-1945 and 4 post-war measured fronts of 25 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TA02",
@@ -5211,7 +6780,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 219,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TA03",
@@ -5222,7 +6792,8 @@
   "fronts": 0,
   "modernFronts": 11,
   "pands": 100,
-  "why": "0 pre-1945 and 11 post-war measured fronts of 100 pands, under the minimum 12"
+  "why": "0 pre-1945 and 11 post-war measured fronts of 100 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TA04",
@@ -5233,7 +6804,8 @@
   "fronts": 0,
   "modernFronts": 5,
   "pands": 47,
-  "why": "0 pre-1945 and 5 post-war measured fronts of 47 pands, under the minimum 12"
+  "why": "0 pre-1945 and 5 post-war measured fronts of 47 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TA05",
@@ -5244,7 +6816,8 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 47,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 47 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 47 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TA06",
@@ -5255,7 +6828,8 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 52,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 52 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 52 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TA07",
@@ -5266,7 +6840,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 47,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 47 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 47 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TB01",
@@ -5277,7 +6852,8 @@
   "fronts": 0,
   "modernFronts": 14,
   "pands": 242,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TB02",
@@ -5288,7 +6864,8 @@
   "fronts": 0,
   "modernFronts": 13,
   "pands": 361,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TC01",
@@ -5299,7 +6876,8 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 18,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 18 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 18 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TC02",
@@ -5310,7 +6888,8 @@
   "fronts": 0,
   "modernFronts": 13,
   "pands": 777,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TC03",
@@ -5321,7 +6900,8 @@
   "fronts": 0,
   "modernFronts": 6,
   "pands": 22,
-  "why": "0 pre-1945 and 6 post-war measured fronts of 22 pands, under the minimum 12"
+  "why": "0 pre-1945 and 6 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TC04",
@@ -5332,7 +6912,8 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 412,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TC05",
@@ -5343,7 +6924,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 6,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 6 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 6 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TD01",
@@ -5354,7 +6936,8 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 151,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TD02",
@@ -5365,7 +6948,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 17,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 17 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 17 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TD03",
@@ -5376,7 +6960,8 @@
   "fronts": 0,
   "modernFronts": 6,
   "pands": 32,
-  "why": "0 pre-1945 and 6 post-war measured fronts of 32 pands, under the minimum 12"
+  "why": "0 pre-1945 and 6 post-war measured fronts of 32 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TD04",
@@ -5387,7 +6972,8 @@
   "fronts": 0,
   "modernFronts": 3,
   "pands": 160,
-  "why": "0 pre-1945 and 3 post-war measured fronts of 160 pands, under the minimum 12"
+  "why": "0 pre-1945 and 3 post-war measured fronts of 160 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TE01",
@@ -5398,7 +6984,8 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 755,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TE02",
@@ -5409,7 +6996,8 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 1097,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TE03",
@@ -5420,7 +7008,8 @@
   "fronts": 0,
   "modernFronts": 2,
   "pands": 10,
-  "why": "0 pre-1945 and 2 post-war measured fronts of 10 pands, under the minimum 12"
+  "why": "0 pre-1945 and 2 post-war measured fronts of 10 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TF01",
@@ -5431,7 +7020,8 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 1023,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TF02",
@@ -5442,7 +7032,8 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 767,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TF03",
@@ -5453,7 +7044,8 @@
   "fronts": 0,
   "modernFronts": 14,
   "pands": 1283,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TG01",
@@ -5464,7 +7056,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 8,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 8 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 8 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TG02",
@@ -5475,7 +7068,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 7,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 7 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 7 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TG03",
@@ -5486,7 +7080,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 43,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 43 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 43 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TH01",
@@ -5497,7 +7092,8 @@
   "fronts": 0,
   "modernFronts": 18,
   "pands": 407,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TH02",
@@ -5508,7 +7104,8 @@
   "fronts": 0,
   "modernFronts": 24,
   "pands": 559,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TH03",
@@ -5519,7 +7116,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 749,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 749 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 749 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TH04",
@@ -5530,7 +7128,8 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 716,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TH05",
@@ -5541,7 +7140,8 @@
   "fronts": 0,
   "modernFronts": 20,
   "pands": 693,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TJ01",
@@ -5552,7 +7152,8 @@
   "fronts": 0,
   "modernFronts": 19,
   "pands": 241,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TJ02",
@@ -5563,7 +7164,8 @@
   "fronts": 0,
   "modernFronts": 15,
   "pands": 1436,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TJ03",
@@ -5574,7 +7176,8 @@
   "fronts": 0,
   "modernFronts": 14,
   "pands": 283,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TK01",
@@ -5585,7 +7188,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 71,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TK02",
@@ -5596,7 +7200,8 @@
   "fronts": 0,
   "modernFronts": 1,
   "pands": 33,
-  "why": "0 pre-1945 and 1 post-war measured fronts of 33 pands, under the minimum 12"
+  "why": "0 pre-1945 and 1 post-war measured fronts of 33 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TK03",
@@ -5607,7 +7212,8 @@
   "fronts": 0,
   "modernFronts": 0,
   "pands": 39,
-  "why": "0 pre-1945 and 0 post-war measured fronts of 39 pands, under the minimum 12"
+  "why": "0 pre-1945 and 0 post-war measured fronts of 39 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TL01",
@@ -5618,7 +7224,8 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 136,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TL02",
@@ -5629,7 +7236,8 @@
   "fronts": 0,
   "modernFronts": 10,
   "pands": 120,
-  "why": "0 pre-1945 and 10 post-war measured fronts of 120 pands, under the minimum 12"
+  "why": "0 pre-1945 and 10 post-war measured fronts of 120 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
  },
  {
   "code": "TL03",
@@ -5640,7 +7248,8 @@
   "fronts": 0,
   "modernFronts": 36,
   "pands": 843,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TL04",
@@ -5651,7 +7260,8 @@
   "fronts": 0,
   "modernFronts": 16,
   "pands": 1228,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TM01",
@@ -5662,7 +7272,8 @@
   "fronts": 1,
   "modernFronts": 30,
   "pands": 154,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TM02",
@@ -5673,7 +7284,8 @@
   "fronts": 0,
   "modernFronts": 33,
   "pands": 103,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TM03",
@@ -5684,7 +7296,8 @@
   "fronts": 0,
   "modernFronts": 14,
   "pands": 2478,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  },
  {
   "code": "TM04",
@@ -5695,6 +7308,7 @@
   "fronts": 0,
   "modernFronts": 17,
   "pands": 1141,
-  "why": ""
+  "why": "",
+  "eraFills": {}
  }
 ]
