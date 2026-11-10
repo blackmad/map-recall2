@@ -31,9 +31,6 @@
     "measuredPalette": {
      "brick": "#70584c",
      "evidence": "strip 2023-01-02 span 1446-1681: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "paletteOverrides": {
-     "brick": "#463830"
     }
    },
    "groundFloor": {
@@ -46,24 +43,6 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "2 round-arched axes",
-    "identicalBays": "every upper storey: 3 T-windows",
-    "windowsPerStorey": "ground: window + door | 1: 2 | 2: 2",
-    "symmetry": "symmetric above the shop",
-    "groundFloor": "residential",
-    "signage": "per shop",
-    "roofline": "white eaves, one pediment dormer",
-    "photoRows": [
-     1,
-     2,
-     2
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "the sculpted keystone heads of 44 are plain blocks",
-     "the dormer's low side cheeks are not drawn"
-    ],
     "citation": "auto-place: plantage-1881-polychrome-two-axis scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-02 span 1446-1681"
    }
   },
@@ -76,7 +55,11 @@
     "measuredPalette": {
      "brick": "#5a493f",
      "evidence": "strip 2023-01-02 span 1681-1917: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#5f4d42"
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -88,24 +71,6 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "2 round-arched axes",
-    "identicalBays": "every upper storey: 3 T-windows",
-    "windowsPerStorey": "ground: window + door | 1: 2 | 2: 2",
-    "symmetry": "symmetric above the shop",
-    "groundFloor": "residential",
-    "signage": "per shop",
-    "roofline": "white eaves, one pediment dormer",
-    "photoRows": [
-     1,
-     2,
-     2
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "the sculpted keystone heads of 44 are plain blocks",
-     "the dormer's low side cheeks are not drawn"
-    ],
     "citation": "auto-place: plantage-1881-polychrome-two-axis scored 0.84 on eaves 1, stucco 1, columns 0.4; strip 2023-01-02 span 1681-1917"
    }
   },
@@ -119,9 +84,6 @@
     "measuredPalette": {
      "brick": "#72564c",
      "evidence": "strip 2023-01-02 span 1916-2151: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    },
-    "paletteOverrides": {
-     "brick": "#44372f"
     }
    },
    "groundFloor": {
@@ -134,24 +96,6 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "2 round-arched axes",
-    "identicalBays": "every upper storey: 3 T-windows",
-    "windowsPerStorey": "ground: window + door | 1: 2 | 2: 2",
-    "symmetry": "symmetric above the shop",
-    "groundFloor": "residential",
-    "signage": "per shop",
-    "roofline": "white eaves, one pediment dormer",
-    "photoRows": [
-     1,
-     2,
-     2
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "the sculpted keystone heads of 44 are plain blocks",
-     "the dormer's low side cheeks are not drawn"
-    ],
     "citation": "auto-place: plantage-1881-polychrome-two-axis scored 0.84 on eaves 1, stucco 1, columns 0.4; strip 2023-01-02 span 1916-2151"
    }
   },
@@ -166,9 +110,7 @@
      "brick": "#816556",
      "evidence": "strip 2023-01-02 span 2151-2386: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "paletteOverrides": {
-     "brick": "#41352d"
-    }
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -180,24 +122,6 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "2 round-arched axes",
-    "identicalBays": "every upper storey: 3 T-windows",
-    "windowsPerStorey": "ground: window + door | 1: 2 | 2: 2",
-    "symmetry": "symmetric above the shop",
-    "groundFloor": "residential",
-    "signage": "per shop",
-    "roofline": "white eaves, one pediment dormer",
-    "photoRows": [
-     1,
-     2,
-     2
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "the sculpted keystone heads of 44 are plain blocks",
-     "the dormer's low side cheeks are not drawn"
-    ],
     "citation": "auto-place: plantage-1881-polychrome-two-axis scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-02 span 2151-2386"
    }
   },
@@ -212,9 +136,7 @@
      "brick": "#846858",
      "evidence": "strip 2023-01-02 span 2386-2610: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "paletteOverrides": {
-     "brick": "#43362f"
-    }
+    "mirror": true
    },
    "groundFloor": {
     "use": "residential",
@@ -226,24 +148,6 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "bays": "2 round-arched axes",
-    "identicalBays": "every upper storey: 3 T-windows",
-    "windowsPerStorey": "ground: window + door | 1: 2 | 2: 2",
-    "symmetry": "symmetric above the shop",
-    "groundFloor": "residential",
-    "signage": "per shop",
-    "roofline": "white eaves, one pediment dormer",
-    "photoRows": [
-     1,
-     2,
-     2
-    ],
-    "photoGroundRows": 1,
-    "photoGables": 0,
-    "schemaLimits": [
-     "the sculpted keystone heads of 44 are plain blocks",
-     "the dormer's low side cheeks are not drawn"
-    ],
     "citation": "auto-place: plantage-1881-polychrome-two-axis scored 1 on eaves 1, stucco 1, columns 1; strip 2023-01-02 span 2386-2610"
    }
   }

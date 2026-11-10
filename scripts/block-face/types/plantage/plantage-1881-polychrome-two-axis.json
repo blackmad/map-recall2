@@ -37,17 +37,18 @@
   "bays": 2,
   "storeyHeights": [
    4.2,
-   3.7,
-   4.0
+   3.85,
+   4.15
   ],
-  "windows": "casement-toplight",
+  "windows": "casement-transom",
   "windowSurround": "sill",
   "windowHead": {
    "kind": "segmental",
+   "rise": 0.15,
    "archRing": {
     "colour": "band",
-    "style": "solid",
-    "widthCourses": 2,
+    "style": "blocks",
+    "widthCourses": 5,
     "keystone": true
    }
   },
@@ -80,8 +81,8 @@
    "dormerBody": "stone",
    "dormerAt": [
     {
-     "from": 0.3,
-     "to": 0.7
+     "from": 0.39,
+     "to": 0.61
     }
    ],
    "dormerSize": {
@@ -89,7 +90,7 @@
     "rise": 1.2,
     "setback": 0.3
    },
-   "note": "one white pediment dormer 1.8 m wide, 12.3-14.5 m"
+   "note": "one white dormer about 1.3 m wide, one two-leaf casement, white cheeks (opus verdict 2026-11-10)"
   }
  },
  "grounds": {
@@ -111,7 +112,7 @@
    "door": "#2a2420",
    "stone": "#d9cdb0",
    "cornice": "#ebe8df",
-   "band": "#c9a560",
+   "band": "#c9a86a",
    "stoneMaterial": "painted"
   }
  },
@@ -151,6 +152,7 @@
   }
  ],
  "schemaLimits": [
-  "the yellow cross hood is a plain arch ring; the speklagen are a band course every 0.5 m not the measured 0.2 m pitch"
+  "the yellow cross hood is a plain arch ring; the speklagen are a band course every 0.5 m not the measured 0.2 m pitch",
+  "the yellow frieze band and the scrolled dormer pediment are not drawn; the hood is five alternating voussoir blocks, the cross crown is the keystone block"
  ]
 }

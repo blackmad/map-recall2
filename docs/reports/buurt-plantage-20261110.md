@@ -24,3 +24,6 @@ No kit component added. What the kit cannot say: the yellow cross-shaped brick h
 ## Open
 - Badlaan 4-24 glb-audit `opening-outside` on the hood type; Doklaan likeness gate abstains on the washed-out white stucco; 2023-01-02 is the best strip day found, others not tried.
 - Integrator: `build-chunk-wall-exposure.ts --write`, covers, bake-frontages, explorer-looks, buurt pages; archive strips done.
+
+## Round 2: Opus verdict applied (`plantage-strip-verdict-20261110.md`)
+Mirror pins for 181073, 171261 and 170230 (doors now R L R L R as photographed); palette pin #5f4d42 on 181073; upper storeys +0.15 m (eaves still 3DBAG 12.03, the verdict's 12.5 m is not reachable without leaving the roof from 3DBAG); `casement-transom` panes (one undivided pane, no mullion); hood = `archRing` style `blocks`, 5 courses (0.28 m) of yellow #c9a86a voussoirs alternating with wall brick plus the crown block; dormer 1.3 m. Kit: `windowHead.rise` (metres, segmental only, 0.15 here; tested in `plantage.test.ts`, absent = byte-identical). Not done: the yellow frieze band (no kit slot for a band at the frieze line) and the scrolled dormer pediment; the hood is 0.28 m deep, not 0.35-0.4 (widthCourses caps at 6 and ring would collide with the window above). Re-installed over the same chunk; roof golden re-recorded (1 intent change, badlaan-1-21-r1 only).

@@ -1,8 +1,8 @@
 {
  "buurt": "plantage",
  "library": "plantage",
- "generatedAt": "2026-11-10T08:39:47.521Z",
- "seconds": 41.32,
+ "generatedAt": "2026-11-10T08:51:09.050Z",
+ "seconds": 29.34,
  "totals": {
   "faces": 3,
   "pands": 29,
@@ -26,10 +26,10 @@
       "0363100012170230"
      ],
      "passed": true,
-     "triangles": 10822
+     "triangles": 11426
     }
    ],
-   "seconds": 41.31,
+   "seconds": 29.33,
    "byType": {
     "plantage-1881-polychrome-two-axis": 5
    },

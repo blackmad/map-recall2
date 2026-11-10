@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T08:40:17.327Z",
+ "generatedAt": "2026-11-10T08:51:27.233Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -90018,10 +90018,10 @@
    "id": "chunk-face-badlaan-1-21-r1",
    "category": "street-survey",
    "name": "face-badlaan-1-21-r1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-badlaan-1-21-r1.glb?asset=6702b1abf67547ce",
-   "sha256": "6702b1abf67547ced96b9c1ea4d1ee150ec34e9ee5e32a14e0641c26d2b78549",
-   "bytes": 258288,
-   "triangles": 10822,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-badlaan-1-21-r1.glb?asset=76cf3830de8d1038",
+   "sha256": "76cf3830de8d1038a2911cb541597e4ff0a072e72f49999d432edd056f3b2562",
+   "bytes": 273392,
+   "triangles": 11426,
    "primitives": 14,
    "instance": {
     "anchor": [
@@ -90226,17 +90226,17 @@
        0.233
       ]
      },
-     "triangles": 2196,
+     "triangles": 2320,
      "ranges": [
       {
-       "primitive": 3,
+       "primitive": 1,
        "firstTriangle": 0,
        "triangleCount": 115
       },
       {
        "primitive": 5,
        "firstTriangle": 0,
-       "triangleCount": 952
+       "triangleCount": 1136
       },
       {
        "primitive": 6,
@@ -90246,7 +90246,7 @@
       {
        "primitive": 7,
        "firstTriangle": 0,
-       "triangleCount": 636
+       "triangleCount": 576
       },
       {
        "primitive": 8,
@@ -90302,17 +90302,17 @@
        0.147
       ]
      },
-     "triangles": 2141,
+     "triangles": 2281,
      "ranges": [
       {
-       "primitive": 4,
+       "primitive": 0,
        "firstTriangle": 0,
        "triangleCount": 64
       },
       {
        "primitive": 5,
-       "firstTriangle": 952,
-       "triangleCount": 936
+       "firstTriangle": 1136,
+       "triangleCount": 1136
       },
       {
        "primitive": 6,
@@ -90321,8 +90321,8 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 636,
-       "triangleCount": 660
+       "firstTriangle": 576,
+       "triangleCount": 600
       },
       {
        "primitive": 8,
@@ -90378,7 +90378,7 @@
        0.175
       ]
      },
-     "triangles": 2195,
+     "triangles": 2287,
      "ranges": [
       {
        "primitive": 2,
@@ -90387,8 +90387,8 @@
       },
       {
        "primitive": 5,
-       "firstTriangle": 1888,
-       "triangleCount": 968
+       "firstTriangle": 2272,
+       "triangleCount": 1120
       },
       {
        "primitive": 6,
@@ -90397,8 +90397,8 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 1296,
-       "triangleCount": 660
+       "firstTriangle": 1176,
+       "triangleCount": 600
       },
       {
        "primitive": 8,
@@ -90454,17 +90454,17 @@
        0.204
       ]
      },
-     "triangles": 2176,
+     "triangles": 2300,
      "ranges": [
       {
-       "primitive": 0,
+       "primitive": 3,
        "firstTriangle": 0,
        "triangleCount": 71
       },
       {
        "primitive": 5,
-       "firstTriangle": 2856,
-       "triangleCount": 952
+       "firstTriangle": 3392,
+       "triangleCount": 1136
       },
       {
        "primitive": 6,
@@ -90473,8 +90473,8 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 1956,
-       "triangleCount": 660
+       "firstTriangle": 1776,
+       "triangleCount": 600
       },
       {
        "primitive": 8,
@@ -90530,17 +90530,17 @@
        0.231
       ]
      },
-     "triangles": 2114,
+     "triangles": 2238,
      "ranges": [
       {
-       "primitive": 1,
+       "primitive": 4,
        "firstTriangle": 0,
        "triangleCount": 53
       },
       {
        "primitive": 5,
-       "firstTriangle": 3808,
-       "triangleCount": 952
+       "firstTriangle": 4528,
+       "triangleCount": 1136
       },
       {
        "primitive": 6,
@@ -90549,8 +90549,8 @@
       },
       {
        "primitive": 7,
-       "firstTriangle": 2616,
-       "triangleCount": 636
+       "firstTriangle": 2376,
+       "triangleCount": 576
       },
       {
        "primitive": 8,

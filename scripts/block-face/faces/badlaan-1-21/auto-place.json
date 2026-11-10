@@ -3,7 +3,7 @@
  "street": "Plantage Badlaan",
  "library": "plantage",
  "stripDate": "2023-01-02",
- "seconds": 41.31,
+ "seconds": 29.33,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -24,7 +24,7 @@
     "0363100012170230"
    ],
    "passed": true,
-   "triangles": 10822
+   "triangles": 11426
   }
  ],
  "pands": [
@@ -445,8 +445,8 @@
    ],
    "likeness": {
     "pandId": "0363100012181075",
-    "ncc": 0.346,
-    "nccRaw": 0.346,
+    "ncc": 0.344,
+    "nccRaw": 0.344,
     "shiftM": [
      0.15,
      -0.4
@@ -470,7 +470,7 @@
      "photo": 2,
      "model": 2
     },
-    "iou": 0.571
+    "iou": 0.567
    },
    "challengers": {}
   },
@@ -526,15 +526,21 @@
     "measuredPalette": {
      "brick": "#5a493f",
      "evidence": "strip 2023-01-02 span 1681-1917: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "paletteOverrides": {
+     "brick": "#5f4d42"
+    },
+    "mirror": true
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "palette pinned: opus verdict: photo #57463c, model #6b574b lighter than its neighbours; 60 % of the way",
+    "door reviewer pin: mirrored (photo: door left, window right (row alternates R L R L R; opus verdict 2026-11-10))"
    ],
    "likeness": {
     "pandId": "0363100012181073",
-    "ncc": 0.286,
-    "nccRaw": 0.286,
+    "ncc": 0.271,
+    "nccRaw": 0.271,
     "shiftM": [
      0.2,
      -0.4
@@ -543,14 +549,14 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.23 mean 0.28 vs photo 0.41",
+     "glazing storey band off by 0.22 mean 0.28 vs photo 0.41",
      "window shape square vs photo tall",
      "columns 2 vs photo 3"
     ],
     "wall": {
      "photo": "#7e6359",
-     "model": "#755f52",
-     "dL": -0.031
+     "model": "#7a6354",
+     "dL": -0.018
     },
     "glazing": {
      "photo": 0.41,
@@ -560,7 +566,7 @@
      "photo": 3,
      "model": 2
     },
-    "iou": 0.522
+    "iou": 0.514
    },
    "challengers": {}
   },
@@ -624,8 +630,8 @@
    ],
    "likeness": {
     "pandId": "0363100012171260",
-    "ncc": 0.37,
-    "nccRaw": 0.37,
+    "ncc": 0.339,
+    "nccRaw": 0.339,
     "shiftM": [
      0.2,
      -0.4
@@ -650,7 +656,7 @@
      "photo": 3,
      "model": 2
     },
-    "iou": 0.542
+    "iou": 0.537
    },
    "challengers": {}
   },
@@ -707,15 +713,17 @@
     "measuredPalette": {
      "brick": "#816556",
      "evidence": "strip 2023-01-02 span 2151-2386: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (photo: door left, window right)"
    ],
    "likeness": {
     "pandId": "0363100012171261",
-    "ncc": 0.384,
-    "nccRaw": 0.384,
+    "ncc": 0.363,
+    "nccRaw": 0.363,
     "shiftM": [
      0.15,
      -0.4
@@ -739,7 +747,7 @@
      "photo": 2,
      "model": 2
     },
-    "iou": 0.508
+    "iou": 0.506
    },
    "challengers": {}
   },
@@ -796,15 +804,17 @@
     "measuredPalette": {
      "brick": "#846858",
      "evidence": "strip 2023-01-02 span 2386-2610: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "notes": [
-    "crown pediment-dormer (type default)"
+    "crown pediment-dormer (type default)",
+    "door reviewer pin: mirrored (photo: window left, door right (the model default is door left))"
    ],
    "likeness": {
     "pandId": "0363100012170230",
-    "ncc": 0.44,
-    "nccRaw": 0.44,
+    "ncc": 0.42,
+    "nccRaw": 0.42,
     "shiftM": [
      0.3,
      -0.4
@@ -828,7 +838,7 @@
      "photo": 2,
      "model": 2
     },
-    "iou": 0.663
+    "iou": 0.662
    },
    "challengers": {}
   }
