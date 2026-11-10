@@ -35,6 +35,15 @@ export const OPEN_GROUND_LAYER: Readonly<Record<OpenGroundCover, 'garden' | 'shr
 /** Lift over the relief per cover, metres: as the parks' surfaces (parks.ts PARK_LIFT lawn / shrub / sand), bare between. */
 export const OPEN_GROUND_LIFT: Readonly<Record<OpenGroundCover, number>> = { meadow: 0.018, shrub: 0.021, bare: 0.02, sand: 0.022 };
 
+/**
+ * How finely open ground drapes the relief (parks.ts drapeBisect: longest edge, how far the fill may sag under the land
+ * before it is split, shortest edge), near (LOD 0 full detail) and far (LOD 1, touch). Coarser than the parks' 8 m /
+ * 2 mm: at the parks' settings the open ground added 33 % of the triangles of the Nieuw-West cell -5_1 (320k → 426k)
+ * and 43 % at LOD 1; at these 19 % and 18 % (1_0: 16 % and 12 %; Centrum 0_0 +2.4 %, -1_-1 +0.5 %). A 1 cm sag under an
+ * 18 mm lift never lets the land through near; the far ring's 5 cm is under a pixel there.
+ */
+export const OPEN_GROUND_DRAPE = { near: { edge: 12, clearance: 0.01, minEdge: 2 }, far: { edge: 32, clearance: 0.05, minEdge: 6 } } as const;
+
 export type BgtCollection = 'wegdeel' | 'ondersteunendwegdeel' | 'begroeidterreindeel' | 'onbegroeidterreindeel';
 
 export interface BgtGroundProps { functie?: string | null; fysiek_voorkomen?: string | null; plus_fysiek_voorkomen?: string | null }

@@ -33,7 +33,7 @@ import { inLandedPlatform } from './landedPlatforms.js';
 import { pavedAreaSurface, type OsmGroundExtract } from './osmGround.js';
 import { buildParks, cullCovered, decodeLine, drapeBisect, flatten, CULL_MARGIN_M, CULL_RES_M, CLEARANCE_M, CLEARANCE_FAR_M, PARK_LIFT, SURFACE_LAYER, SurfaceIndex, type ParkBuildStats, type ParksCell, type SurfaceRaster } from './parks.js';
 import { COURTYARD_SURFACES, type CourtyardsCell } from './courtyards.js';
-import { OPEN_GROUND_COVERS, OPEN_GROUND_LAYER, OPEN_GROUND_LIFT, type OpenGroundCell } from './groundSurface.js';
+import { OPEN_GROUND_COVERS, OPEN_GROUND_DRAPE, OPEN_GROUND_LAYER, OPEN_GROUND_LIFT, type OpenGroundCell } from './groundSurface.js';
 import { cycleThrough, meshCover, type ThroughStats } from './cycleThrough.js';
 import { fillPockets, POCKET_LIFT, type PocketCover, type PocketStats, type SurveyGap, SURVEY_GAP_MIN_R } from './pockets.js';
 import { buildRoadSurfaces, deckLevelHeight, RoadIndex, type RoadBuildStats } from './roadSurfaces.js';
@@ -547,7 +547,7 @@ export function buildCell(input: CellInput): BuiltCell {
     const { flat, holes } = flatten(a.r.map(decodeLine));
     if (flat.length < 6) continue;
     const m = emptyMesh();
-    drapeBisect(m, flat, earcut(flat, holes), onLand, OPEN_GROUND_LIFT[a.k], fine ? 8 : 16, fine ? CLEARANCE_M : CLEARANCE_FAR_M, fine ? 1 : 2, step);
+    drapeBisect(m, flat, earcut(flat, holes), onLand, OPEN_GROUND_LIFT[a.k], fine ? OPEN_GROUND_DRAPE.near.edge : OPEN_GROUND_DRAPE.far.edge, fine ? OPEN_GROUND_DRAPE.near.clearance : OPEN_GROUND_DRAPE.far.clearance, fine ? OPEN_GROUND_DRAPE.near.minEdge : OPEN_GROUND_DRAPE.far.minEdge, step);
     add(OPEN_GROUND_LAYER[a.k], m, 'park');
     openGround++;
   }
