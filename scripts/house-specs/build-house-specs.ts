@@ -12,6 +12,7 @@ import { frontBays, specFields, validateSpec, type HouseSpec } from '../../src/c
 import { toRecipe, withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
 import type { HouseSpecTile, HouseSpecTileRecord, HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
+import { decodeDescriptor } from '../../src/canalRecall/bagTiles.ts';
 
 export const HELP = `build-house-specs: resolve every pand's HouseSpec from its sources and write the tiled extract.
 
@@ -165,6 +166,15 @@ for (const tile of tileKeys) {
   }
 }
 
+// --- 3b. 3DBAG crown rise for the register gable gate -------------------------------------------------------------
+const BAG_FACTS = path.join(ROOT, 'public/data/extracts/amsterdam/bag-facts/14');
+const bagRise = new Map<string, number>();
+if (existsSync(BAG_FACTS)) for (const x of readdirSync(BAG_FACTS)) for (const y of readdirSync(path.join(BAG_FACTS, x))) {
+  const t = JSON.parse(gunzipSync(readFileSync(path.join(BAG_FACTS, x, y))).toString('utf8'));
+  for (const [k, row] of Object.entries<number[]>(t.pands ?? {})) { const d = decodeDescriptor(row as any); if (d.eavesM !== null && d.ridgeM !== null) bagRise.set(k.slice(-16), Math.round((d.ridgeM - d.eavesM) * 10) / 10); }
+}
+function crownRise(pand: string): number | null { return bagRise.get(pand) ?? null; }
+
 // --- 4. write the staged tiles ------------------------------------------------------------------------------------
 rmSync(path.join(STAGING, '14'), { recursive: true, force: true });
 const byTile = new Map<string, HouseSpecTile>();
@@ -172,6 +182,9 @@ for (const [pand, spec] of resolved) {
   const at = where.get(pand);
   if (!at) continue;
   const record: HouseSpecTileRecord = { d: spec.design as Record<string, unknown>, s: fieldSources(spec), r: spec.route ?? 'generic', v: viewOf(spec) };
+  // The register gable gate (houseSpec/decorate.ts, H5h round 4) needs 3DBAG's crown above the eaves, which the live building
+  // tiles do not carry: the view carries ridge - eaves (bag-facts) for every pand with a gable or a historic gable.
+  if (record.v.gable || spec.facts?.historicGable) { const rise = crownRise(pand); if (rise !== null) record.v.crownRiseM = rise; }
   if (spec.facts && Object.keys(spec.facts).length) record.x = spec.facts as Record<string, unknown>;
   if (spec.schemaLimits?.length) record.l = spec.schemaLimits;
   const tile = byTile.get(at.tile) ?? { version: 1 as const, buildings: {} };

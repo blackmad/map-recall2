@@ -172,7 +172,11 @@ export function fromRegisterFacts(published: PublishedFacts, nr: string | string
     setSpecField(spec, path, value);
     spec.provenance[path] = { source: 'monument-text', confidence, ref, at: null };
   };
-  if (published.gable && REGISTER_GABLE[published.gable]) put('fronts/0/gable', REGISTER_GABLE[published.gable], REGISTER_CONFIDENCE.gable);
+  if (published.gable && REGISTER_GABLE[published.gable]) {
+    put('fronts/0/gable', REGISTER_GABLE[published.gable], REGISTER_CONFIDENCE.gable);
+    // the register's text as a historic fact (H5h round 4): kept for cards even where a photo or the gate overrides the crown
+    put('facts/historicGable', REGISTER_GABLE[published.gable], REGISTER_CONFIDENCE.gable);
+  }
   const year = registerYear(published);
   if (year !== null) {
     const d = published.facadeDate ?? published.coreDate!;
