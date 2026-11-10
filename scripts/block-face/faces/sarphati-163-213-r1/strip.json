@@ -2,33 +2,33 @@
  "face": "sarphati-163-213-r1",
  "image": "staging/block-face/sarphati-163-213-r1/strip.jpg",
  "pixelsPerMetre": 40,
- "width": 775,
+ "width": 1810,
  "height": 1045,
  "groundNAP": 1.405,
  "heightM": 26.14,
  "frame": {
   "midRD": [
-   122749.39408333333,
-   486174.26300000004
+   122761.66839285714,
+   486178.3129285714
   ],
   "uRD": [
-   0.9496179034880776,
-   0.3134100147967645
+   0.9496426588271172,
+   0.31333499730442366
   ],
   "nRD": [
-   0.3134100147967645,
-   -0.9496179034880776
+   0.31333499730442366,
+   -0.9496426588271172
   ]
  },
- "x0M": -9.69,
- "x1M": 9.69,
+ "x0M": -22.62,
+ "x1M": 22.63,
  "date": "2017-03-31",
  "coverage": 1,
  "spans": [
   {
    "pandId": "0363100012180964",
-   "x0M": -9.69,
-   "x1M": -3.21,
+   "x0M": -22.62,
+   "x1M": -16.15,
    "px": [
     0,
     259
@@ -54,8 +54,8 @@
   },
   {
    "pandId": "0363100012170677",
-   "x0M": -3.21,
-   "x1M": 3.24,
+   "x0M": -16.15,
+   "x1M": -9.7,
    "px": [
     259,
     517
@@ -81,8 +81,8 @@
   },
   {
    "pandId": "0363100012170681",
-   "x0M": 3.24,
-   "x1M": 9.69,
+   "x0M": -9.7,
+   "x1M": -3.25,
    "px": [
     517,
     775
@@ -102,6 +102,114 @@
      "timestamp": "2017-03-31T07:46:03.007870Z",
      "distanceM": 11.7,
      "obliquityDeg": 30.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170733",
+   "x0M": -3.22,
+   "x1M": 3.25,
+   "px": [
+    776,
+    1035
+   ],
+   "date": "2017-03-31",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000234_pano_0001_000738",
+     "timestamp": "2017-03-31T07:46:01.797750Z",
+     "distanceM": 10.3,
+     "obliquityDeg": 13.3,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000234_pano_0001_000737",
+     "timestamp": "2017-03-31T07:46:00.497720Z",
+     "distanceM": 12.4,
+     "obliquityDeg": 37.8,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181393",
+   "x0M": 3.23,
+   "x1M": 9.68,
+   "px": [
+    1034,
+    1292
+   ],
+   "date": "2017-03-31",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000234_pano_0001_000737",
+     "timestamp": "2017-03-31T07:46:00.497720Z",
+     "distanceM": 9.9,
+     "obliquityDeg": 6.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000234_pano_0001_000738",
+     "timestamp": "2017-03-31T07:46:01.797750Z",
+     "distanceM": 13.4,
+     "obliquityDeg": 41.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181394",
+   "x0M": 9.71,
+   "x1M": 16.18,
+   "px": [
+    1293,
+    1552
+   ],
+   "date": "2017-03-31",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000234_pano_0001_000736",
+     "timestamp": "2017-03-31T07:45:59.212760Z",
+     "distanceM": 10.8,
+     "obliquityDeg": 26,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000234_pano_0001_000737",
+     "timestamp": "2017-03-31T07:46:00.497720Z",
+     "distanceM": 11.2,
+     "obliquityDeg": 28.4,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181458",
+   "x0M": 16.15,
+   "x1M": 22.63,
+   "px": [
+    1551,
+    1810
+   ],
+   "date": "2017-03-31",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-000234_pano_0001_000736",
+     "timestamp": "2017-03-31T07:45:59.212760Z",
+     "distanceM": 9.9,
+     "obliquityDeg": 10.1,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-000234_pano_0001_000735",
+     "timestamp": "2017-03-31T07:45:57.967740Z",
+     "distanceM": 12.8,
+     "obliquityDeg": 40.5,
      "missingFraction": 0
     }
    ]
@@ -147,7 +255,7 @@
   "face": "sarphati-163-213",
   "px": [
    517,
-   1292
+   2327
   ]
  }
 }

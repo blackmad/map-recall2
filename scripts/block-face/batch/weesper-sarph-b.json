@@ -1,0 +1,45 @@
+{
+ "name": "weesper-sarph-b",
+ "buurt": "sarphatistrook",
+ "library": "weesperbuurt",
+ "generatedAt": "2026-11-10T08:20:01.545Z",
+ "method": "scripts/block-face/batch.ts",
+ "totals": {
+  "faces": 1,
+  "runs": 1,
+  "installed": 1,
+  "installedPands": 7,
+  "failed": 0,
+  "byReason": {
+   "roof-golden (installed; integrator to review)": 1
+  }
+ },
+ "rows": [
+  {
+   "face": "sarphati-163-213",
+   "street": "Sarphatistraat",
+   "ride": null,
+   "restriped": null,
+   "stripQuality": {
+    "badShare": 0,
+    "reasons": []
+   },
+   "nccMin": 0.265,
+   "nccMedian": 0.342,
+   "stripOverDrawn": 1.051,
+   "wallFits": 3,
+   "droppedCorners": [],
+   "triangles": 16240,
+   "sheet": "staging/block-face/sarphati-163-213-r1/review/strip-sheet.png",
+   "stripDate": "2017-03-31",
+   "run": "sarphati-163-213-r1",
+   "pands": 7,
+   "mode": "auto-place",
+   "status": "installed",
+   "reasons": [
+    "roof-golden (installed; integrator to review): 0 violations, 3 reclassed, 1 intent changes"
+   ],
+   "seconds": 24
+  }
+ ]
+}

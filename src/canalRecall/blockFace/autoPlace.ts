@@ -156,7 +156,9 @@ export interface TypeMatchRule {
    * With `frontEavesM`: draw every pand at the line, never at its own skyline reading. Where the strip skyline reads the
    * cornice's crown, a tower cap or the trees over it 0.7-1.0 m above the cornice (Sarphatistraat 163-213: cornice 14.4,
    * skyline 15.1-15.4), a reading inside `FRONT_EAVES.tolM` would lift single houses of one row. Absent = the skyline
-   * within tolerance wins, byte-identical.
+   * within tolerance wins, byte-identical. The line is also kept at the same height over the street where a pand's own
+   * 3DBAG ground sits under the strip's ground (Sarphatistraat 167-171: 0.30 m against 1.405 m: the cornice came out
+   * 1.07 m high): `withPhotoEaves` offsets the measured row by that difference.
    */
   frontEavesFixed?: boolean;
   /**
@@ -265,6 +267,8 @@ export interface StripEvidence {
 }
 
 export interface PandEvidence {
+  /** The pand's own 3DBAG ground (m NAP); `frontEavesFixed` types measure their line against the strip's ground and need the difference. */
+  groundNAP?: number;
   pandId: string;
   address: string;
   builtYear: number | null;

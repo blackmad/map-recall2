@@ -128,13 +128,14 @@ const photoEaves = new Map<string, {row: number; eavesM: number; bagM: number; c
  * `match.frontEavesM` type (their own skyline cornice near the type's line, else the line); a cornice under 3DBAG's eaves
  * re-pitches the front roof (`frontRoof`).
  */
-function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableType[], evs: PandEvidence[], strip: {height: number; pixelsPerMetre: number}): ReturnType<typeof runIntent> {
+function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableType[], evs: PandEvidence[], strip: {height: number; pixelsPerMetre: number; groundNAP?: number}): ReturnType<typeof runIntent> {
   const m = intent.houses.flatMap(h => {
     const ev = evs.find(e => e.pandId === h.pandId), t = types.find(x => x.id === h.type?.type);
     const fe = t && ev ? frontEavesFor(t, ev) : null, bagM = photoEaves.get(h.pandId)?.bagM ?? ev?.eavesM;
     if (fe && ev && bagM !== undefined) {
       if (Math.abs(fe.eavesM - bagM) <= PHOTO_EAVES.minDeltaM && !photoEaves.has(h.pandId) && !t!.match?.frontEavesFixed) return [];
-      return [{pand: h.pandId, stripRow: Math.round(strip.height - fe.eavesM * strip.pixelsPerMetre), ...(fe.eavesM < bagM && !t!.match?.keepSurveyRoof ? {frontRoof: {}} : {}),
+      const groundGap = t!.match?.frontEavesFixed && strip.groundNAP !== undefined && ev.groundNAP !== undefined ? strip.groundNAP - ev.groundNAP : 0;
+      return [{pand: h.pandId, stripRow: Math.round(strip.height - (fe.eavesM - groundGap) * strip.pixelsPerMetre), ...(fe.eavesM < bagM && !t!.match?.keepSurveyRoof ? {frontRoof: {}} : {}),
         evidence: fe.source === 'skyline' ? `auto-place: strip skyline cornice ${fe.eavesM} m within ${FRONT_EAVES.tolM} m of the ${t!.id} line ${t!.match!.frontEavesM} m; 3DBAG/PDOK eaves ${bagM} m`
           : `auto-place: the ${t!.id} cornice line ${fe.eavesM} m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves ${bagM} m`}];
     }
@@ -154,7 +155,7 @@ async function faceEvidence(faceId: string) {
     const facts: BuildingFacts = await readJson(path.join(dir, 'pands', id, 'facts.json'));
     const u = uses.pands.find((p: any) => p.pandId === id), span = strip.spans.find((s: any) => s.pandId === id);
     const f0 = facts.fronts[0], eavesM = f0.eavesM >= 6 || f0.eavesM <= 5 ? f0.eavesM : facts.heights.dak70pM; // <= 5 m: a one-storey front's own gutter (Vogelbuurt cottages), not the roof's 70th percentile
-    const ev: PandEvidence = {pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
+    const ev: PandEvidence = {groundNAP: facts.heights.groundNAP, pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
       groundUses: [...new Set<string>((u?.groundUnits ?? []).map((g: any) => g.use))],
       osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: osmCategory(b.tags)})),
       // The bay of the discovered BAG front (bay-outline.ts / intake --bay-outline=auto keep it in facts-bay-outline.json).

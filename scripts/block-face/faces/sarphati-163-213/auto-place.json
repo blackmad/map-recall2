@@ -3,7 +3,7 @@
  "street": "Sarphatistraat",
  "library": "weesperbuurt",
  "stripDate": "2017-03-31",
- "seconds": 11.32,
+ "seconds": 12.14,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -19,20 +19,14 @@
    "pands": [
     "0363100012180964",
     "0363100012170677",
-    "0363100012170681"
-   ],
-   "passed": true,
-   "triangles": 3169
-  },
-  {
-   "face": "sarphati-163-213-r2",
-   "pands": [
+    "0363100012170681",
+    "0363100012170733",
     "0363100012181393",
     "0363100012181394",
     "0363100012181458"
    ],
-   "passed": false,
-   "triangles": 3177
+   "passed": true,
+   "triangles": 16240
   }
  ],
  "pands": [
@@ -221,38 +215,36 @@
    ],
    "likeness": {
     "pandId": "0363100012180964",
-    "ncc": 0.408,
-    "nccRaw": 0.408,
+    "ncc": 0.265,
+    "nccRaw": 0.265,
     "shiftM": [
-     -0.05,
-     0.3
+     -0.4,
+     -0.2
     ],
-    "usable": 0.74,
+    "usable": 0.7,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.15 mean 0.41 vs photo 0.31",
-     "window shape none vs photo tall",
-     "columns none vs photo 3"
+     "glazing storey band off by 0.26 mean 0.37 vs photo 0.53"
     ],
     "wall": {
-     "photo": "#6e5d4e",
+     "photo": "#706151",
      "model": "#7f705f",
-     "dL": 0.067
+     "dL": 0.057
     },
     "glazing": {
-     "photo": 0.31,
-     "model": 0.41
+     "photo": 0.53,
+     "model": 0.37
     },
     "columns": {
-     "photo": 3,
+     "photo": null,
      "model": null
     },
-    "iou": 0.57
+    "iou": 0.565
    },
    "challengers": {
-    "sarphati-1910-arched-tower-pair": 0.408,
-    "sarphati-1910-arched-tower-pair~m": 0.238
+    "sarphati-1910-arched-tower-pair": 0.265,
+    "sarphati-1910-arched-tower-pair~m": 0.213
    }
   },
   {
@@ -328,36 +320,36 @@
    ],
    "likeness": {
     "pandId": "0363100012170677",
-    "ncc": 0.396,
-    "nccRaw": 0.396,
+    "ncc": 0.33,
+    "nccRaw": 0.33,
     "shiftM": [
-     -0.35,
-     0.15
+     0.1,
+     -0.4
     ],
     "usable": 0.57,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16"
+     "glazing storey band off by 0.33 mean 0.36 vs photo 0.54"
     ],
     "wall": {
-     "photo": "#7d6855",
+     "photo": "#816c5a",
      "model": "#957e68",
-     "dL": 0.084
+     "dL": 0.067
     },
     "glazing": {
-     "photo": 0.45,
-     "model": 0.42
+     "photo": 0.54,
+     "model": 0.36
     },
     "columns": {
      "photo": null,
-     "model": null
+     "model": 3
     },
-    "iou": 0.533
+    "iou": 0.428
    },
    "challengers": {
-    "sarphati-1910-arched-tower-pair~m": 0.396,
-    "sarphati-1910-arched-tower-pair": 0.262
+    "sarphati-1910-arched-tower-pair~m": 0.33,
+    "sarphati-1910-arched-tower-pair": 0.189
    }
   },
   {
@@ -422,38 +414,38 @@
    ],
    "likeness": {
     "pandId": "0363100012170681",
-    "ncc": 0.388,
-    "nccRaw": 0.388,
+    "ncc": 0.342,
+    "nccRaw": 0.342,
     "shiftM": [
-     -0.2,
-     0.15
+     -0.4,
+     -0.4
     ],
-    "usable": 0.73,
+    "usable": 0.71,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.26 mean 0.42 vs photo 0.18",
+     "glazing storey band off by 0.19 mean 0.37 vs photo 0.23",
      "window shape none vs photo tall",
      "columns none vs photo 4"
     ],
     "wall": {
-     "photo": "#645547",
+     "photo": "#675a4c",
      "model": "#7b6b5c",
-     "dL": 0.086
+     "dL": 0.071
     },
     "glazing": {
-     "photo": 0.18,
-     "model": 0.42
+     "photo": 0.23,
+     "model": 0.37
     },
     "columns": {
      "photo": 4,
      "model": null
     },
-    "iou": 0.473
+    "iou": 0.529
    },
    "challengers": {
-    "sarphati-1910-arched-tower-pair": 0.388,
-    "sarphati-1910-arched-tower-pair~m": 0.273
+    "sarphati-1910-arched-tower-pair": 0.342,
+    "sarphati-1910-arched-tower-pair~m": 0.227
    }
   },
   {
@@ -496,11 +488,54 @@
     "voidShare": 0,
     "foliageShare": 0.12
    },
-   "status": "held",
-   "stage": "review",
-   "reason": "review: its recipe roof z-fights 0.24 m2 with 171 across the party wall (interference gate roofZFight, equal 3DBAG ridges 18.62 m) and fails the GLB geometry audit for the whole run; edge NCC 0.17 is the lowest of the row (3DBAG eaves 8.68 m: a dormer read as the eaves)",
-   "likeness": null,
-   "challengers": {}
+   "status": "placed",
+   "type": "sarphati-1910-arched-tower-pair",
+   "score": 1,
+   "placement": {
+    "type": "sarphati-1910-arched-tower-pair",
+    "measuredPalette": {
+     "brick": "#725e4c",
+     "evidence": "strip 2017-03-31 span 1293-1552: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "crown tower (type default)",
+    "door left: mirrored: reviewer pin (Sarphatistraat 173 (strip 2024-12-11, gridded 1 m): arched house door at the left end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random))"
+   ],
+   "likeness": {
+    "pandId": "0363100012170733",
+    "ncc": 0.39,
+    "nccRaw": 0.39,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.71,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.37 mean 0.37 vs photo 0.56"
+    ],
+    "wall": {
+     "photo": "#8d715a",
+     "model": "#8b735d",
+     "dL": 0.002
+    },
+    "glazing": {
+     "photo": 0.56,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.453
+   },
+   "challengers": {
+    "sarphati-1910-arched-tower-pair~m": 0.39,
+    "sarphati-1910-arched-tower-pair": 0.1
+   }
   },
   {
    "pandId": "0363100012181393",
@@ -569,37 +604,37 @@
    ],
    "likeness": {
     "pandId": "0363100012181393",
-    "ncc": 0.328,
-    "nccRaw": 0.328,
+    "ncc": 0.353,
+    "nccRaw": 0.353,
     "shiftM": [
-     -0.25,
-     -0.4
+     -0.4,
+     -0.3
     ],
     "usable": 0.68,
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
      "window shape none vs photo tall",
-     "columns none vs photo 3"
+     "columns none vs photo 5"
     ],
     "wall": {
-     "photo": "#745c4d",
+     "photo": "#735b4c",
      "model": "#896e5b",
-     "dL": 0.069
+     "dL": 0.073
     },
     "glazing": {
      "photo": 0.44,
-     "model": 0.42
+     "model": 0.38
     },
     "columns": {
-     "photo": 3,
+     "photo": 5,
      "model": null
     },
-    "iou": 0.423
+    "iou": 0.32
    },
    "challengers": {
-    "sarphati-1910-arched-tower-pair": 0.328,
-    "sarphati-1910-arched-tower-pair~m": 0.008
+    "sarphati-1910-arched-tower-pair": 0.353,
+    "sarphati-1910-arched-tower-pair~m": 0.089
    }
   },
   {
@@ -657,40 +692,40 @@
    "notes": [
     "crown tower (type default)",
     "door left: mirrored: reviewer pin (Sarphatistraat 177 (strip 2024-12-11, gridded 1 m): arched house door at the left end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random))",
-    "no photo evidence of its own (usable photo 48 % < 50 %); placed on row evidence from 181393, 181458"
+    "no photo evidence of its own (usable photo 49 % < 50 %); placed on row evidence from 181393, 181458"
    ],
    "likeness": {
     "pandId": "0363100012181394",
     "ncc": null,
-    "nccRaw": 0.286,
+    "nccRaw": 0.355,
     "shiftM": [
-     -0.4,
-     -0.4
+     -0.2,
+     -0.35
     ],
-    "usable": 0.48,
-    "abstain": "usable photo 48 % < 50 %",
+    "usable": 0.49,
+    "abstain": "usable photo 49 % < 50 %",
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.24 mean 0.42 vs photo 0.31"
+     "glazing storey band off by 0.20"
     ],
     "wall": {
-     "photo": "#695944",
+     "photo": "#6b5a45",
      "model": "#7e6b55",
-     "dL": 0.075
+     "dL": 0.069
     },
     "glazing": {
-     "photo": 0.31,
-     "model": 0.42
+     "photo": 0.33,
+     "model": 0.36
     },
     "columns": {
      "photo": null,
-     "model": null
+     "model": 3
     },
-    "iou": 0.385
+    "iou": 0.359
    },
    "challengers": {
     "sarphati-1910-arched-tower-pair~m": null,
-    "sarphati-1910-arched-tower-pair": 0.01
+    "sarphati-1910-arched-tower-pair": null
    }
   },
   {
@@ -755,34 +790,38 @@
    ],
    "likeness": {
     "pandId": "0363100012181458",
-    "ncc": 0.35,
-    "nccRaw": 0.35,
+    "ncc": 0.285,
+    "nccRaw": 0.285,
     "shiftM": [
-     -0.2,
-     -0.4
+     -0.4,
+     -0.35
     ],
-    "usable": 0.53,
+    "usable": 0.52,
     "abstain": null,
-    "verdict": "PASS",
-    "reasons": [],
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.38 vs photo 0.10",
+     "window shape none vs photo tall",
+     "columns none vs photo 3"
+    ],
     "wall": {
-     "photo": "#6e5c49",
+     "photo": "#685745",
      "model": "#826d56",
-     "dL": 0.065
+     "dL": 0.084
     },
     "glazing": {
-     "photo": 0.4,
-     "model": 0.42
+     "photo": 0.1,
+     "model": 0.38
     },
     "columns": {
-     "photo": null,
+     "photo": 3,
      "model": null
     },
-    "iou": 0.564
+    "iou": 0.345
    },
    "challengers": {
-    "sarphati-1910-arched-tower-pair": 0.35,
-    "sarphati-1910-arched-tower-pair~m": 0.135
+    "sarphati-1910-arched-tower-pair": 0.285,
+    "sarphati-1910-arched-tower-pair~m": 0.137
    }
   },
   {

@@ -8,11 +8,6 @@
    "reason": "a shop front with a wide arched garage entrance and a different ground storey (3DBAG eaves 24 m); the arched door pair type does not describe it"
   },
   {
-   "pandId": "0363100012170733",
-   "address": "Sarphatistraat 173",
-   "reason": "its recipe roof z-fights 0.24 m2 with 171 across the party wall (interference gate roofZFight, equal 3DBAG ridges 18.62 m) and fails the GLB geometry audit for the whole run; edge NCC 0.17 is the lowest of the row (3DBAG eaves 8.68 m: a dormer read as the eaves)"
-  },
-  {
    "pandId": "0363100012180965",
    "address": "Sarphatistraat 163",
    "reason": "the face seam: the strip shows the grey no-data band beside it and the front is a corner section with a wider window and a different roofline, not the tower-pair design"

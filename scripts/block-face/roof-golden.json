@@ -5152,15 +5152,31 @@
   },
   "sarphati-163-213-r1": {
    "170677": {
-    "hash": "3aa87024dfc847ee",
+    "hash": "49f02ee651f482a4",
     "class": "front"
    },
    "170681": {
-    "hash": "83e110485c90ff4b",
+    "hash": "99f36e153c70d2af",
+    "class": "front"
+   },
+   "170733": {
+    "hash": "c3c408040bcec155",
     "class": "front"
    },
    "180964": {
-    "hash": "bb11e79cc1d649ad",
+    "hash": "fd7d9a89bd3b5f97",
+    "class": "front"
+   },
+   "181393": {
+    "hash": "3d358c2c311628fc",
+    "class": "front"
+   },
+   "181394": {
+    "hash": "ed79ce4d2497df35",
+    "class": "front"
+   },
+   "181458": {
+    "hash": "aa27e3b670f3500e",
     "class": "front"
    }
   },
@@ -5176,6 +5192,254 @@
    "181458": {
     "hash": "5418ca69bce3dee3",
     "class": "front"
+   }
+  },
+  "borneo-7-27-r1": {
+   "102480": {
+    "hash": "f71a44161059dea6",
+    "class": "recipe"
+   },
+   "108761": {
+    "hash": "882d7d170916e0a6",
+    "class": "recipe"
+   },
+   "133599": {
+    "hash": "5ebdd44013d7facd",
+    "class": "recipe"
+   },
+   "145601": {
+    "hash": "9d4c6aae33f2dad4",
+    "class": "recipe+row"
+   },
+   "074710": {
+    "hash": "64da13df17d22f46",
+    "class": "recipe"
+   },
+   "090483": {
+    "hash": "209c59a7e0885ff3",
+    "class": "recipe"
+   },
+   "084255": {
+    "hash": "1c21992fac6dfadd",
+    "class": "recipe"
+   }
+  },
+  "djambi-38-46-r1": {
+   "113540": {
+    "hash": "2e9e393d27e0f96b",
+    "class": "recipe"
+   },
+   "125682": {
+    "hash": "a5028462e606fd97",
+    "class": "recipe"
+   }
+  },
+  "java-93-149-r3": {
+   "132949": {
+    "hash": "9d77ca7842989eb3",
+    "class": "front"
+   },
+   "138717": {
+    "hash": "399424b65c013767",
+    "class": "front"
+   }
+  },
+  "kalkoen-18-26-r1": {
+   "123527": {
+    "hash": "0742a843c5b09dd3",
+    "class": "front"
+   },
+   "086436": {
+    "hash": "22b0fc4610075a35",
+    "class": "recipe"
+   }
+  },
+  "kalkoen-28-34-r1": {
+   "111141": {
+    "hash": "9cf7c5b606e9a834",
+    "class": "front"
+   },
+   "123147": {
+    "hash": "0250add7145ff674",
+    "class": "front"
+   },
+   "133141": {
+    "hash": "a4c1dd5dc0bbc615",
+    "class": "front"
+   }
+  },
+  "kalkoen-8-16-r1": {
+   "125954": {
+    "hash": "b86dfab305fd1c85",
+    "class": "front"
+   },
+   "099283": {
+    "hash": "e007fd314eb4b4ee",
+    "class": "front"
+   }
+  },
+  "kalkoen-8-16-r2": {
+   "105550": {
+    "hash": "93f1f7ca37eac1a5",
+    "class": "front"
+   },
+   "109590": {
+    "hash": "308bb6e029a518b0",
+    "class": "front"
+   }
+  },
+  "meeuwenplein-1-7-r1": {
+   "082803": {
+    "hash": "8de8631687eb662d",
+    "class": "front"
+   },
+   "084066": {
+    "hash": "e98d8805a7d884ca",
+    "class": "front"
+   },
+   "065418": {
+    "hash": "42227ed9a90b717b",
+    "class": "front"
+   }
+  },
+  "meeuwenplein-29-39-r1": {
+   "129900": {
+    "hash": "4e1f9a4bfd061c42",
+    "class": "recipe"
+   },
+   "131749": {
+    "hash": "f8aeb6a016ae3063",
+    "class": "front"
+   }
+  },
+  "meeuwenplein-41-45": {
+   "107162": {
+    "hash": "9578f78f2c8ce2cd",
+    "class": "recipe"
+   },
+   "116125": {
+    "hash": "0c6f52caa88b4e08",
+    "class": "recipe"
+   },
+   "078630": {
+    "hash": "d066bca4eda1f4d8",
+    "class": "recipe"
+   }
+  },
+  "meeuwenplein-9-19-r1": {
+   "116850": {
+    "hash": "fe940ba32d302319",
+    "class": "front"
+   },
+   "140709": {
+    "hash": "d7558d9a930a2948",
+    "class": "front"
+   },
+   "074442": {
+    "hash": "bdb0de9c16f6e9e2",
+    "class": "front"
+   }
+  },
+  "pelikaan-16-22-r1": {
+   "111816": {
+    "hash": "486dc9bfa4e171ce",
+    "class": "recipe"
+   },
+   "128530": {
+    "hash": "02d25f7ebebede03",
+    "class": "recipe"
+   },
+   "097975": {
+    "hash": "73f6775f31c22fbd",
+    "class": "front"
+   }
+  },
+  "pelikaan-3-9-r1": {
+   "119758": {
+    "hash": "e272fee9188efb2d",
+    "class": "front"
+   },
+   "124605": {
+    "hash": "3a61c8cc56b07fd9",
+    "class": "recipe"
+   }
+  },
+  "vogel-1-15-r1": {
+   "141706": {
+    "hash": "9d4189047b89a6b4",
+    "class": "recipe"
+   },
+   "144274": {
+    "hash": "d02fc2470b7b8c15",
+    "class": "recipe"
+   }
+  },
+  "vogel-1-15-r2": {
+   "114049": {
+    "hash": "74b121ef7635e116",
+    "class": "recipe"
+   },
+   "117598": {
+    "hash": "4294131e5e91747c",
+    "class": "recipe"
+   },
+   "135488": {
+    "hash": "ae0ebe35294c00cc",
+    "class": "recipe"
+   }
+  },
+  "vogel-3-11-r1": {
+   "137379": {
+    "hash": "1cb2df4c799ba526",
+    "class": "recipe"
+   },
+   "071224": {
+    "hash": "2a5c589787d24265",
+    "class": "recipe"
+   }
+  },
+  "vogel-3-15-r1": {
+   "101772": {
+    "hash": "789261d673203a76",
+    "class": "recipe"
+   },
+   "132959": {
+    "hash": "14cad9f32032b4d6",
+    "class": "recipe"
+   }
+  },
+  "zamenhof-54-60-r1": {
+   "151653": {
+    "hash": "fe23808a5871c749",
+    "class": "recipe"
+   },
+   "064187": {
+    "hash": "16b9241dd1007a3e",
+    "class": "recipe"
+   }
+  },
+  "zamenhof-6-12-r1": {
+   "110286": {
+    "hash": "c8d00697c88afcac",
+    "class": "recipe"
+   },
+   "085003": {
+    "hash": "e5fecb5b20c830e2",
+    "class": "recipe"
+   }
+  },
+  "zamenhof-84-90-r1": {
+   "118660": {
+    "hash": "576d5db01a512f5e",
+    "class": "recipe"
+   },
+   "130936": {
+    "hash": "274b0ee71cd7852d",
+    "class": "recipe"
+   },
+   "141264": {
+    "hash": "81a105b8816b686a",
+    "class": "recipe"
    }
   }
  },
@@ -5415,7 +5679,27 @@
   "lampong-2-20-r1": "6d8c7d7d451ecd4d",
   "soenda-2-36-r1": "c3353dc56ae6c24b",
   "soenda-2-36-r2": "01e457db56dd9f6b",
-  "sarphati-163-213-r1": "bd2602050d4692b2",
-  "sarphati-163-213-r2": "564448355987a324"
+  "sarphati-163-213-r1": "84222ea836071992",
+  "sarphati-163-213-r2": "564448355987a324",
+  "borneo-7-27-r1": "fb5d54993f31de2f",
+  "djambi-38-46-r1": "dca34671fb34a937",
+  "java-93-149-r3": "11854cbb03ccf408",
+  "kalkoen-18-26-r1": "68eeba8bde74032e",
+  "kalkoen-28-34-r1": "50dfe2c93e364035",
+  "kalkoen-8-16-r1": "03d1360079897e36",
+  "kalkoen-8-16-r2": "a7c2af00731677d2",
+  "meeuwenplein-1-7-r1": "1a8e92974b9ee925",
+  "meeuwenplein-29-39-r1": "04310898bc3c5693",
+  "meeuwenplein-41-45": "464cd401fbef1473",
+  "meeuwenplein-9-19-r1": "c771054fa7fe36f7",
+  "pelikaan-16-22-r1": "a612ddd1db00eef3",
+  "pelikaan-3-9-r1": "1db05725acd89c2d",
+  "vogel-1-15-r1": "5cf21383e18e7005",
+  "vogel-1-15-r2": "bd473d6b8fad7d3f",
+  "vogel-3-11-r1": "33896eef5db16dd7",
+  "vogel-3-15-r1": "e2cb775f31e878d4",
+  "zamenhof-54-60-r1": "daf7097523219787",
+  "zamenhof-6-12-r1": "b9192bc580ff7c36",
+  "zamenhof-84-90-r1": "aee52bb4ffae4f33"
  }
 }

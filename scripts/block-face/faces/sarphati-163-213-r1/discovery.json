@@ -4,7 +4,11 @@
  "members": [
   "0363100012180964",
   "0363100012170677",
-  "0363100012170681"
+  "0363100012170681",
+  "0363100012170733",
+  "0363100012181393",
+  "0363100012181394",
+  "0363100012181458"
  ],
  "ends": [
   {
@@ -13,7 +17,7 @@
   },
   {
    "side": "right",
-   "reason": "run of sarphati-163-213: 170733 held (auto-place.json)"
+   "reason": "run of sarphati-163-213: 181392 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -388,6 +392,46 @@
    "roofMaxM": 18.8,
    "storeys3dbag": 5,
    "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170733",
+   "alongM": 32.46,
+   "widthM": 6.46,
+   "eavesM": 8.68,
+   "roofMaxM": 18.53,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181393",
+   "alongM": 38.92,
+   "widthM": 6.46,
+   "eavesM": 14.04,
+   "roofMaxM": 17.25,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181394",
+   "alongM": 45.39,
+   "widthM": 6.46,
+   "eavesM": 13.95,
+   "roofMaxM": 17.24,
+   "storeys3dbag": 5,
+   "builtYear": 1909,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181458",
+   "alongM": 51.85,
+   "widthM": 6.46,
+   "eavesM": 14.04,
+   "roofMaxM": 17.21,
+   "storeys3dbag": 5,
+   "builtYear": 1910,
    "uncertainty": []
   }
  ],
