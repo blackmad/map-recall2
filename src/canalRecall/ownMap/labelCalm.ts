@@ -14,6 +14,8 @@ import type { PlacedLabel } from './labels';
 export const CALM_POI_MAX = 6;
 export const CALM_SHOP_M = 150;
 export const CALM_TOP_SHARE = 1 / 3;
+/** Fewer than this many shop names on screen reads as empty: the nearest ones beyond the reach come back (never top third). */
+export const CALM_POI_MIN = 3;
 
 export interface CalmLabelInput {
   width: number;
@@ -25,6 +27,8 @@ export interface CalmLabelInput {
   /** The game's own point labels (the answered street, ferry landings): never thinned. */
   isGamePoint?: (label: PlacedLabel) => boolean;
   max?: number;
+  /** Top up to this many shop names (and landmarks) from beyond the reach when the street is short of them. */
+  min?: number;
   shopM?: number;
 }
 
@@ -34,18 +38,26 @@ export function corridorDistance(x: number, y: number, width: number, height: nu
 }
 
 export function calmLabels(placed: readonly PlacedLabel[], input: CalmLabelInput): PlacedLabel[] {
-  const max = input.max ?? CALM_POI_MAX, shopM = input.shopM ?? CALM_SHOP_M;
+  const max = input.max ?? CALM_POI_MAX, shopM = input.shopM ?? CALM_SHOP_M, min = Math.min(input.min ?? CALM_POI_MIN, max);
   const keep = new Set<PlacedLabel>();
-  const pois: PlacedLabel[] = [];
+  const pois: PlacedLabel[] = [], beyond: { l: PlacedLabel; d: number }[] = [];
+  let landmarks = 0;
   for (const l of placed) {
     if (l.kind !== 'poi' || l.x === undefined || l.y === undefined || input.isGamePoint?.(l)) { keep.add(l); continue; }
+    // Signature landmarks are the point of the ride: exempt from the top third, the reach and the cap (they are few).
+    if (input.isLandmark(l)) { keep.add(l); landmarks++; continue; }
     if (l.y < input.height * CALM_TOP_SHARE) continue;
     const dist = input.distanceOf(l);
-    if (dist !== null && dist > shopM && !input.isLandmark(l)) continue;
+    if (dist !== null && dist > shopM) { beyond.push({ l, d: dist }); continue; }
     pois.push(l);
   }
-  pois.sort((a, b) => corridorDistance(a.x!, a.y!, input.width, input.height) - corridorDistance(b.x!, b.y!, input.width, input.height) || (a.id < b.id ? -1 : 1));
-  for (const l of pois.slice(0, max)) keep.add(l);
+  const byCorridor = (a: PlacedLabel, b: PlacedLabel) => corridorDistance(a.x!, a.y!, input.width, input.height) - corridorDistance(b.x!, b.y!, input.width, input.height) || (a.id < b.id ? -1 : 1);
+  pois.sort(byCorridor);
+  const shown = pois.slice(0, max);
+  for (const l of shown) keep.add(l);
+  // A street with one name on it reads as empty: top up to the minimum with the nearest shops beyond the reach.
+  const missing = min - shown.length - landmarks;
+  if (missing > 0) for (const { l } of beyond.sort((a, b) => a.d - b.d || (a.l.id < b.l.id ? -1 : 1)).slice(0, missing)) keep.add(l);
   return placed.filter(l => keep.has(l));
 }
 
