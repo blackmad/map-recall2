@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { planBuildingRoof, roofTrianglesForOutline, type RoofPlan } from './roofMesh.ts';
+import { planBuildingRoof, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofPlan } from './roofMesh.ts';
 import { roofAttachment } from './roofAttachmentAudit.ts';
 
 const ORIGIN = { lng: 4.9, lat: 52.37 };
@@ -16,7 +16,8 @@ const L_SHAPE: Array<[number, number]> = [[0, 0], [16, 0], [16, 9], [8, 9], [8, 
 function measure(ring: Array<[number, number]>, plan: RoofPlan, height: number, clip: boolean) {
   const lngLat = toLngLat(ring);
   const wallTop = height - plan.riseM;
-  const tris = roofTrianglesForOutline(lngLat, ORIGIN, clip ? plan : { ...plan, clipToOutline: false }, wallTop, DIMS, KX);
+  // Since lane S3 (#315) every roof is cut where it hangs; the uncut box is the explicit opt-out.
+  const tris = (clip ? roofTrianglesForOutline : roofTrianglesForOutlineUncut)(lngLat, ORIGIN, plan, wallTop, DIMS, KX);
   return roofAttachment(ring, tris, wallTop, !!plan.keepLid);
 }
 

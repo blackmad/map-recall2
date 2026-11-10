@@ -5,7 +5,8 @@ import { FeatureCategory, FeatureType, StreetFeature } from '../src/types.ts';
 import { pickNearestDistractors } from '../src/canalRecall/bridgeDistractors.ts';
 import { supplementBridges, type RoutingWay } from '../src/canalRecall/askableBridges.ts';
 import { renamedPoi, unusedPoiRenames } from '../src/canalRecall/poiRenames.ts';
-import { isBikeRoutingHighway, isBicycleRestricted } from '../src/canalRecall/routing/bikeAccess.ts';
+import { isBikeRoutingHighway, isBicycleRestricted, isRideablePathAdmission, RIDEABLE_PATH_HIGHWAYS } from '../src/canalRecall/routing/bikeAccess.ts';
+import { ROUTING_GRAPH_REVISION } from '../src/canalRecall/routing/rideablePaths.ts';
 import { findMunicipality, hasAreaGeometry } from './lib/municipality.ts';
 import { classify, extractName, localName as localNameOf } from './lib/extractNaming.ts';
 
@@ -286,7 +287,8 @@ for (const item of source.features) {
   const name = (classification.category === 'bridges' && tags['bridge:name']
     ? tags['bridge:name']
     : roadOrPlaceName).trim();
-  if (tags.highway && isBikeRoutingHighway(tags) && paths.length) {
+  const pathAdmitted = !RIDEABLE_PATH_HIGHWAYS.has(tags.highway || '') || tags.bridge === 'yes' || isRideablePathAdmission(tags);
+  if (tags.highway && isBikeRoutingHighway(tags) && pathAdmitted && paths.length) {
     const routingFeature: StreetFeature & {
       bridge?: boolean;
       bicycleRestricted?: boolean;
@@ -306,6 +308,12 @@ for (const item of source.features) {
       feature: routingFeature,
     });
   }
+  // Footways and paths are in the graph only because bikes may use them
+  // (`isRideablePathAdmission`, lane D2 #322). They are routing, never quiz
+  // material: a named park path must not join the street question pool, and an
+  // unnamed one carries '' like every other unnamed routing way. Bridges keep
+  // their own category.
+  if (RIDEABLE_PATH_HIGHWAYS.has(tags.highway || '') && classification.category === 'streets') continue;
   if (!name) continue;
   const key = `${classification.category}:${name.toLocaleLowerCase()}`;
   const mappedLength = paths.reduce((total, line) => total + line.slice(1).reduce((sum, point, index) => sum + distance(line[index], point), 0), 0);
@@ -640,6 +648,7 @@ partitions.all = {
 await writeFile(path.join(outputDirectory, 'manifest.json'), JSON.stringify({
   cityId, source: `OpenStreetMap / BBBike ${cityName} extract`, generatedAt: new Date().toISOString(), center, partitions,
   boundaries: { file: 'boundaries.json', count: areas.length },
+  routing: { file: 'streets-routing.json', count: publishedRouting.length, graphRevision: ROUTING_GRAPH_REVISION },
   brandedPois: { file: 'branded-pois.json', count: publishedBrandedPois.length },
   localFoodPois: { count: localFoodPois.length },
   majorChains: majorChains.map(({ name, brandWikidata, count, icon }) => ({ name, brandWikidata, count, icon })),

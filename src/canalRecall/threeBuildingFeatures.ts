@@ -6,7 +6,7 @@ import type {SurveyedMeshBinding} from './surveyedEnvelopeMeshBinding.js';
 import type { ChunkHostOpeningConfig } from './hostWallOpenings.js';
 import { CELL_LAYER_COUNT, STYLE_DIMS, cellLayer } from './facadeCells.js';
 import { ROOF_CELL_M } from './roofCells.js';
-import { roofPlanForFeature, roofTrianglesForOutline, type RoofDims, type RoofPlan } from './roofMesh.js';
+import { roofPlanForFeature, roofTrianglesForOutline, roofTrianglesForOutlineUncut, type RoofDims, type RoofPlan } from './roofMesh.js';
 import { sourceVisualRoof } from './sourceVisualRoof.js';
 import { BAY_LAYER_COUNT, BAY_STYLES, FATIH_MASONRY_LAYER, bayLayer, bayLookFor } from './bayLook.js';
 import { paletteFor } from './bayTextures.js';
@@ -298,7 +298,7 @@ export function roofHangM(outer: readonly number[][], plan: RoofPlan, dims: Roof
   const inside = (x: number, y: number) => { let r = false; for (let a = 0, b = ring.length - 1; a < ring.length; b = a++) if ((ring[a][1] > y) !== (ring[b][1] > y) && x < (ring[b][0] - ring[a][0]) * (y - ring[a][1]) / (ring[b][1] - ring[a][1]) + ring[a][0]) r = !r; return r; };
   const toWall = (x: number, y: number) => { let d = Infinity; for (let a = 0; a < ring.length; a++) { const p = ring[a], q = ring[(a + 1) % ring.length], dx = q[0] - p[0], dy = q[1] - p[1], t = Math.max(0, Math.min(1, ((x - p[0]) * dx + (y - p[1]) * dy) / (dx * dx + dy * dy || 1))); d = Math.min(d, Math.hypot(x - p[0] - t * dx, y - p[1] - t * dy)); } return d; };
   let hang = 0;
-  for (const t of roofTrianglesForOutline(outer, ORIGIN, { ...plan, clipToOutline: false }, 0, dims, KX_SHELL)) for (const [x, y] of t.p) if (!inside(x, y)) hang = Math.max(hang, toWall(x, y));
+  for (const t of roofTrianglesForOutlineUncut(outer, ORIGIN, plan, 0, dims, KX_SHELL)) for (const [x, y] of t.p) if (!inside(x, y)) hang = Math.max(hang, toWall(x, y));
   return hang;
 }
 /** The shell's roof plan for a building: shellRoofPlan, cut at the walls only where the uncut roof hangs past them (#257). */
