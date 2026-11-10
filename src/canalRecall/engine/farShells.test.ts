@@ -43,9 +43,9 @@ test('farCellOrigin is the shell origin of the key', () => {
 });
 
 // A minimal three stand-in: enough for install / hidden / drop.
-class Attr { needsUpdate = false; constructor(public array: any, public itemSize: number) {} }
-class Geometry { attrs = new Map<string, Attr>(); index: Attr | null = null; disposed = false; setAttribute(n: string, a: Attr) { this.attrs.set(n, a); } getAttribute(n: string) { return this.attrs.get(n)!; } setIndex(a: Attr) { this.index = a; } deleteAttribute(n: string) { this.attrs.delete(n); } computeBoundingSphere() {} dispose() { this.disposed = true; } }
-class Mesh { name = ''; visible = true; parent: any = null; castShadow = true; receiveShadow = true; userData: any = {}; position = { set: (..._: number[]) => {} }; scale = { set: (..._: number[]) => {} }; constructor(public geometry: Geometry, public material: any) {} }
+class Attr { needsUpdate = false; constructor(public array: any, public itemSize: number) {} get count() { return this.array.length / this.itemSize; } }
+class Geometry { attrs = new Map<string, Attr>(); index: Attr | null = null; disposed = false; boundingSphere: unknown = null; get attributes() { return Object.fromEntries(this.attrs); } setAttribute(n: string, a: Attr) { this.attrs.set(n, a); } getAttribute(n: string) { return this.attrs.get(n)!; } setIndex(a: Attr | null) { this.index = a; } deleteAttribute(n: string) { this.attrs.delete(n); } computeBoundingSphere() {} dispose() { this.disposed = true; } }
+class Mesh { name = ''; visible = true; parent: any = null; castShadow = true; receiveShadow = true; userData: any = {}; position = { set: (..._: number[]) => {}, copy: (_: unknown) => {} }; scale = { set: (..._: number[]) => {}, copy: (_: unknown) => {} }; constructor(public geometry: Geometry, public material: any) {} }
 const THREE = { BufferGeometry: Geometry, BufferAttribute: Attr, Mesh };
 
 function harness(drawn: Set<string>) {
@@ -136,4 +136,53 @@ test('nearTileCells: z16 detail keys grouped by z14 tile with the world cells th
   // The z14 tile touches more cells than any one of its z16 children.
   const all = nearTileCells(['33660/21536', '33663/21539'], 16, 14).get('8415/5384')!;
   assert.ok(all.size > cells.size);
+});
+
+test('FarShells (lane P4 #330, farHandFade): the hand-over dissolves through a ghost that shares the cell\'s buffers', async () => {
+  const drawn = new Set<string>();
+  const { host, added } = harness(drawn);
+  const clones: { uniforms: { cityFade: { value: number } }; disposed: boolean; dispose(): void }[] = [];
+  host.fadeMaterial = (v: number) => { const c = { uniforms: { cityFade: { value: v } }, disposed: false, dispose() { this.disposed = true; } }; clones.push(c); return c; };
+  const far = new FarShells(host, { budget: { cells: 1, triangles: 1e6 } });
+  far.update(centre[0], centre[1], 3000);
+  await settle(); await settle();
+  assert.equal(added.length, 1);
+  const cell = added[0], hidden = cell.geometry.getAttribute('hidden');
+  far.frame(performance.now() + 1000); // the cell's own arrival dissolve ends
+  // Out: the cell hides part a at once; a ghost draws part a alone and fades out.
+  drawn.add('a'); far.frame();
+  assert.equal(added.length, 2);
+  const ghost = added[1];
+  assert.deepEqual([...hidden.array], [1, 1, 0, 0]);
+  assert.deepEqual([...ghost.geometry.getAttribute('hidden').array], [0, 0, 1, 1]);
+  assert.equal(ghost.geometry.getAttribute('position'), cell.geometry.getAttribute('position'), 'buffers shared');
+  far.frame(performance.now() + 300);
+  const out = clones[clones.length - 1];
+  assert.ok(out.uniforms.cityFade.value > 0.3 && out.uniforms.cityFade.value < 0.7, `${out.uniforms.cityFade.value}`);
+  far.frame(performance.now() + 700);
+  assert.equal(added.length, 1, 'ghost gone');
+  assert.ok(ghost.geometry.disposed && out.disposed);
+  assert.ok(cell.geometry.getAttribute('position'), 'the cell keeps its buffers');
+  assert.equal(ghost.geometry.attrs.size, 1, 'the ghost freed only its own hidden byte');
+  // In: the part stays hidden on the cell until the ghost has dissolved in, then the cell draws it again.
+  drawn.clear(); far.frame();
+  assert.equal(added.length, 2);
+  assert.deepEqual([...hidden.array], [1, 1, 0, 0]);
+  far.frame(performance.now() + 700);
+  assert.equal(added.length, 1);
+  assert.deepEqual([...hidden.array], [0, 0, 0, 0]);
+  // A drop mid-hand-over takes the ghost with it.
+  drawn.add('b'); far.frame();
+  assert.equal(added.length, 2);
+  far.update(centre[0], centre[1], 0);
+  far.frame(performance.now() + 2000);
+  assert.equal(added.length, 0);
+});
+
+test('farHandFadeFlag: on by default, off with ?farHandFade=0 or ?popFade=0', async () => {
+  const { farHandFadeFlag } = await import('./popFade.js');
+  const g = globalThis as { __canalRecallFarHandFade?: unknown; __canalRecallPopFade?: unknown };
+  assert.equal(farHandFadeFlag(), true);
+  g.__canalRecallFarHandFade = '0'; assert.equal(farHandFadeFlag(), false); delete g.__canalRecallFarHandFade;
+  g.__canalRecallPopFade = false; assert.equal(farHandFadeFlag(), false); delete g.__canalRecallPopFade;
 });
