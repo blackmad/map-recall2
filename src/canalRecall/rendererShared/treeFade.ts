@@ -42,9 +42,13 @@ export function treeShadowFadeFlag(): boolean {
 /** One group's full instance arrays (before culling compacts them) and their fade values. */
 export type GroupSnapshot = { matrices: Float32Array; colours: Float32Array | null; fades: Float32Array | null; count: number };
 
-/** Instance identity: trunk/lobe position in the plane to 0.1 m (the lift is not part of it). */
-export function instanceKey(matrices: ArrayLike<number>, i: number): string {
-  return `${Math.round(matrices[16 * i + 12] * 10)},${Math.round(matrices[16 * i + 13] * 10)}`;
+/**
+ * Instance identity: trunk/lobe position in the plane to 0.1 m (the lift is not part of it), packed into one exact
+ * integer (lane P6 #334: string keys made the diff ~25 ms per 50 k instances, most of a touch rebuild's fade cost).
+ * Exact within +/-209 km of the origin, far beyond the city.
+ */
+export function instanceKey(matrices: ArrayLike<number>, i: number): number {
+  return (Math.round(matrices[16 * i + 12] * 10) + 2097152) * 4194304 + (Math.round(matrices[16 * i + 13] * 10) + 2097152);
 }
 
 /** Whether a fade value is still running at clock `now` (seconds). */
@@ -67,7 +71,7 @@ export type FadeDiff = {
  */
 export function diffGroup(prev: GroupSnapshot | null, next: Float32Array, count: number, now: number, ms = TREE_FADE_MS): FadeDiff {
   const fades = new Float32Array(count);
-  const pool = new Map<string, number[]>();
+  const pool = new Map<number, number[]>();
   if (prev) for (let i = 0; i < prev.count; i++) {
     const v = prev.fades ? prev.fades[i] : 0;
     if (v < 0) continue; // already leaving
