@@ -84,3 +84,46 @@ Placed: 5 on 2 runs (batch NCC min 0.40 / 0.41, stripOverDrawn 0.85 / 0.97). Doo
 * the 205|207 interference sheet row reads FAIL (roof z-fight 0.2 m2 at the tower pair; 175|177 also 0.2 earlier) while the batch and the GLB audit pass: check before merging.
 * the tower cap needs a `cornice` cap (white dentil band): a `TOWER_CAPS` addition in the library tower code, not done.
 * balconies, fanlight tracery and the corbel blocks at the window heads remain.
+
+## Round 3 (2026-11-10, house line): 22 pands staged, nothing installed by the lane
+The branch's own chunk installs (`chunk-face-sarphati-*`, 3 GLBs and their chunks.json rows) are removed: branch-only installs go through
+`house:stage` (a1 handoff). The faces stay the streetlevel-measured source; `scripts/house-specs/weesper-20261110/` holds the author specs
+(`readings.json` -> `make-specs.py` -> `specs/<pandId>.json`). Each spec resolves to the recipe route (one `spec-<pandId>` house each).
+
+### Pipeline fix: a staged face pand compiles from the face-planned facts
+`resolved.ts` and `house:publish` step 3 gave a new `spec-<pandId>` house the face's raw `pands/<pand>/facts.json` (3DBAG LoD2.2 roofs).
+Sarphatistraat 169 then drew a 3 m slate slope and a side wall up to the 3DBAG ridge over a front whose type says `roof.form: flat`.
+`scripts/house-specs/face-facts.ts preparedFaceFacts` returns the facts the face itself compiles from (`prepareFaceFacts`: the recipe
+roof read off the photo, measured eaves, shared street ground), for the face whose intent lists the pand; both callers take it first
+(`FACE_FACTS=raw` keeps the old copy). Pinned in `weesperbuurt.test.ts`. Pands on no face intent are unchanged.
+
+### Staged (artifacts/house-specs/staging/, receipts in artifacts/house-preview/<pandId>/)
+| Buurt | Row | Pands | Author fields over the face |
+|---|---|---|---|
+| Sarphatistrook | Sarphatistraat 167-179 (`sarphati-163-213-r1`) | 167, 169, 171, 173, 175, 177, 179 | iron balconies on storeys 1-2: under the inner light of the wide pair (167, 171, 173, 175), under both lights (169, 177, 179) |
+| Sarphatistrook | Sarphatistraat 197-207 (`sarphati-195-213-r1`, `-r2`) | 197, 199, 203, 205, 207 | balconies on storeys 1-2 under the inner light |
+| Plantage | Badlaan 6-14 (`badlaan-4-24-r1`) | 14, 12, 10, 8A, 6 | domed (arched) dormers; 10: balcony stack storeys 1-3; 8A: storeys 1-2 and the door on the right axis |
+| Plantage | Henri Polaklaan 16-26 (`polaklaan-2-42-r1`) | 26, 24, 20, 18, 16 | point gable confirmed |
+
+Balcony `bays` in a spec are the storey's windows in viewer order (the face's `mirror` is already applied), not the type's axes.
+Badlaan 6-14 was held in round 1 on the chunk's GLB audit (`opening-outside`); per house on the recipe route it compiles.
+
+### Held, with reasons
+* Henri Polaklaan 22 (0363100012181398): a flat white cornice with a chimney lantern, no point gable (strip 2024-12-10): not the point-gable
+  row the type was placed on in round 3. Dropped from `polaklaan-2-42-r1` and added to `plantage-review-holds.json`.
+* Plantage Kerklaan 24, 26 (run intent moved to `kerklaan-2-34-r1/intent.held.json` so build-house-specs does not publish an unreviewed face record for them; it made `house:publish` refuse the batch as drift): the photo cornice (17.0 m) stands over 3DBAG's eaves (15.4-16.4); the recipe preview draws the front a storey short.
+  Needs eaves pins and an auto-place rerun of the Plantage buurt, which rewrites every placed Plantage intent: left for a lane that owns that rerun.
+* Sarphatistraat 189 (a slate mansard and dormer behind the cornice, not the flat roof of the type), 183/185 and 209/211 (the splayed bend),
+  187 (shop and garage, a taller pyramid-roofed tower), 181 (tree), 163, 165A, 191, 193, 195, 201, 213 as in rounds 1-2.
+* Weesperbuurt: still 0. Nieuwe Prinsengracht, Nieuwe Keizersgracht, Achtergracht and Plantage Middenlaan 1-27 are individual designs every
+  one to three pands; no family to type.
+
+### What the kit still cannot say (also in each spec's `schemaLimits`)
+* Sarphati: the corbelled dark lintel blocks over every window; double-leaf arched doors with fanlight tracery; the tower's white cornice cap
+  with dentils (`TOWER_CAPS` has none); the balcony slab's two stone corbel brackets.
+* Badlaan: flat corbelled brick lintels (drawn as a segmental ring); the white console blocks beside the window heads and under the balcony
+  slabs (Badlaan 10); domed dormer hoods with a finial (drawn as `arched`, wider than the photo's).
+* Polaklaan: the scrolled white finial and moulded coping on the rakes; a pointed (lancet) gable window with tracery; the fanlight tracery.
+
+### Frames
+`house:frames` before/after pairs: see the hand-back (artifacts/house-frames/weesper-*/ and plantage-*/, copied to the strip archive folder).
