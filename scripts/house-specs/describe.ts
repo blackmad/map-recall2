@@ -43,7 +43,7 @@ export const HELP = `house:describe: fill a HouseSpec from the sources in trust 
 
 Writers (src/canalRecall/houseSpec/writers/), what each may write, source and rank:
   register  monument-text   gable, facade year, finish, hoist beam, stoop, elements (no crop needed)
-  bag       bag / 3dbag     facts/facadeYear (0.5), fronts/0/storeys (0.4, eaves at 3 m a storey)
+  bag       bag             facts/facadeYear (0.5); storeys off (H5h: eaves / 3 m agreed 0.43 with the hand set, 0.55 with offsets)
   pixel     streetlevel-measured   wall colour + brick material + rhythmic window columns (bays) + measured storeys; measureFacade
                                    'houseLine' profile; fallback-tier crops write only colour and storeys, at lower confidence
   jev       vision-judge    bays (p>=0.55), a confident gable (p>=0.75), finish (p>=0.9), shop/residential (p>=0.875); good-tier crops only

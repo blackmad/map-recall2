@@ -1,0 +1,31 @@
+{
+ "family": "likeness2",
+ "set": "triples",
+ "note": "One street photo and a rendering of an Amsterdam house.",
+ "questions": {
+  "same_r1": {
+   "type": "noul",
+   "instructions": "`photo` is a street photograph of one Amsterdam house front. `r1` is a computer rendering of a house. Is `r1` a rendering of the SAME house as in the photo: same number of storeys, same number and layout of window columns, same ground floor, same gable or roofline, and a similar wall colour? Ignore sharpness and lighting.",
+   "criteria": {
+    "true": "Same house: the layout and colour match.",
+    "false": "A different house: the storeys, window layout, roofline or colour differ."
+   }
+  },
+  "same_r2": {
+   "type": "noul",
+   "instructions": "`photo` is a street photograph of one Amsterdam house front. `r2` is a computer rendering of a house. Is `r2` a rendering of the SAME house as in the photo: same number of storeys, same number and layout of window columns, same ground floor, same gable or roofline, and a similar wall colour? Ignore sharpness and lighting.",
+   "criteria": {
+    "true": "Same house: the layout and colour match.",
+    "false": "A different house: the storeys, window layout, roofline or colour differ."
+   }
+  },
+  "same_r3": {
+   "type": "noul",
+   "instructions": "`photo` is a street photograph of one Amsterdam house front. `r3` is a computer rendering of a house. Is `r3` a rendering of the SAME house as in the photo: same number of storeys, same number and layout of window columns, same ground floor, same gable or roofline, and a similar wall colour? Ignore sharpness and lighting.",
+   "criteria": {
+    "true": "Same house: the layout and colour match.",
+    "false": "A different house: the storeys, window layout, roofline or colour differ."
+   }
+  }
+ }
+}

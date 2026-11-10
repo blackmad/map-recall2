@@ -6,7 +6,8 @@ import { validateBlockFace } from '../blockFace/intent.ts';
 import { defaulted, measured } from '../facade/evidence.ts';
 import { unobservedHouse } from '../facade/houseRecord.ts';
 import { registerFactsFromExtract } from '../facade/registerRecipe.ts';
-import { asLimit, fromBlockFace, fromHouseRecord, fromJev, fromRecipeIntent, fromRegisterFacts } from './adapters.ts';
+import { asLimit, autoPlaceColumnsScore, fromBlockFace, fromHouseRecord, fromJev, fromRecipeIntent, fromRegisterFacts, jevBays, registerBays } from './adapters.ts';
+import { fieldSources } from './resolve.ts';
 import { validateSpec } from './spec.ts';
 import { resolveSpecs } from './resolve.ts';
 
@@ -116,4 +117,37 @@ test('limits: legacy strings and objects read the same way', () => {
   const b = { ...fromRegisterFacts({}, '1', '0363100012182857'), schemaLimits: [{ component: 'oriel', what: 'the white corner oriel' }] };
   assert.deepEqual(a.schemaLimits, b.schemaLimits);
   assert.deepEqual(resolveSpecs([a, b]).schemaLimits, [{ component: 'oriel', what: 'the white corner oriel' }]);
+});
+
+// H1c (#350) source-bay audit: an auto-placed type's bay count is a default unless the strip's columns agreed.
+test('fromBlockFace: auto-placed type bays the strip did not confirm are a default, not a measurement (#350)', () => {
+  const face = validateBlockFace(json('scripts/block-face/faces/rozengracht-30-82-r1/intent.json'));
+  // Rozengracht 40C: type jordaan-1750-neck-gable says 3 bays, the strip's columns scored 0.4, the photo has 2 axes.
+  const wrong = fromBlockFace(face, '0363100012168603')!;
+  assert.equal(wrong.design.fronts?.[0].bays, 3);
+  assert.equal(wrong.provenance['fronts/0/bays']?.source, 'default');
+  assert.equal(fieldSources(wrong)['fronts/0/bays'], 'default');
+  assert.equal(fieldSources(wrong)['fronts/0/gable'] ?? 'streetlevel-measured', 'streetlevel-measured');
+  // Rozengracht 38: the strip read 3 columns for the type's 3 (score 1): street-measured.
+  const right = fromBlockFace(face, '0363100012168605')!;
+  assert.equal(right.provenance['fronts/0/bays'], undefined);
+  assert.equal(right.provenance[''].source, 'streetlevel-measured');
+  // A vision-judge reading now outranks the default; it never outranked the face's street-measured claim.
+  const jev = fromJev({ pandId: '0363100012168603', crop: 'pand-crops/0363100012168603/front.jpg', capturedAt: '2021-03-17', bays: { value: 2, p: 0.95 } });
+  assert.equal(resolveSpecs([wrong, jev]).design.fronts?.[0].bays, 2);
+  // An authored face keeps every field street-measured.
+  const authored = fromBlockFace(validateBlockFace(json('scripts/block-face/faces/kinker-31-49/intent.json')), '0363100012160646')!;
+  assert.equal(authored.provenance['fronts/0/bays'], undefined);
+});
+
+test('autoPlaceColumnsScore, registerBays, jevBays (#350)', () => {
+  assert.equal(autoPlaceColumnsScore('auto-place: t scored 0.86 on eaves 1, roof 1, stucco 1, crown -, columns 0.4; strip 2025-01-20 span 3046-3230'), 0.4);
+  assert.equal(autoPlaceColumnsScore('auto-place: t scored 0.9 on eaves 1, columns 1; strip x'), 1);
+  assert.equal(autoPlaceColumnsScore('auto-place: t scored 0.9 on eaves 1; strip x'), null);
+  assert.deepEqual(registerBays('Breed huis van drie vensterassen (XVIId/XVIIIa) met gevel onder rechte lijst'), { value: 3, phrase: 'drie vensterassen' });
+  assert.equal(registerBays('Vier traveeën brede gevel')?.value, 4);
+  assert.equal(registerBays('Pand met een travee'), null, '"een" is the article');
+  assert.equal(registerBays('Voorgevel van drie vensterassen; achtergevel van twee vensterassen'), null, 'two counts are ambiguous');
+  assert.deepEqual(jevBays({ choice: 'three', probabilities: { two: 0.01, three: 0.99 } }), { value: 3, p: 0.99 });
+  assert.equal(jevBays({ choice: 'many' }), null);
 });

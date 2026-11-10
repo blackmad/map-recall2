@@ -59,12 +59,32 @@ export function fromBlockFace(face: BlockFaceIntent, pandId: string, stripRef = 
     ...(face.limitations ?? []).filter(l => names(l, six)).map(asLimit),
   ]);
   if (limits.length) spec.schemaLimits = limits;
+  // An auto-placed type's bay count is the type's width rule (autoPlace.ts baysFor), not a reading of this front; the
+  // strip's window columns only score the match. It is street-measured only when that criterion agreed (score 1).
+  if (auto && house.type && !house.design && autoPlaceColumnsScore(house.rhythm?.citation) !== 1) {
+    for (const p of ['fronts/0/bays', 'fronts/0/axisGrid']) {
+      if (getBays(spec, p) === undefined) continue;
+      spec.provenance[p] = { source: 'default', confidence: TYPE_DEFAULT_BAYS_CONFIDENCE, ref: `${stripRef}#type:${house.type.type}`, at: null };
+    }
+  }
   if (house.groundFloor?.use) {
     const pui = house.groundFloor.use === 'residential' ? 'residential' : ['vacant', 'office', 'other'].includes(house.groundFloor.use) ? null : 'shop';
     if (pui) setSpecField(spec, 'facts/pui', pui);
   }
   return spec;
 }
+
+/** Confidence of a type's default bay count on an auto-placed house the strip did not confirm (source `default`). */
+export const TYPE_DEFAULT_BAYS_CONFIDENCE = 0.3;
+/**
+ * The `columns` criterion score in an auto-place citation ("auto-place: <type> scored 0.86 on eaves 1, ..., columns 0.4;
+ * strip ..."): 1 = the strip's window columns equal the placed bays, 0.4 = one apart, 0 = further, null = unread.
+ */
+export function autoPlaceColumnsScore(citation: string | undefined): number | null {
+  const m = /\bcolumns (\d+(?:\.\d+)?)\b/.exec(citation ?? '');
+  return m ? Number(m[1]) : null;
+}
+const getBays = (spec: HouseSpec, path: string) => (spec.design.fronts?.[0] as Record<string, unknown> | undefined)?.[path.split('/')[2]];
 
 /** A free-text limit line as a {component, what} (toSpecLimit; a line with no component is filed under `facade`). */
 export const asLimit = (line: string): SpecLimit => toSpecLimit(line) ?? { component: 'facade', what: line.trim() };
@@ -201,4 +221,36 @@ export function fromJev(j: JevJudgement): HouseSpec {
   if (j.gable?.confident) put('fronts/0/gable', j.gable.value, j.gable.p);
   if (j.finish) put('palette/wallMaterial', j.finish.value, j.finish.p);
   return spec;
+}
+
+// --- bay counts as sources state them (H1c, #350; docs/house-line.md §1 "Bay sources") -------------------------------
+/** The sources the bay audit (scripts/house-specs/bays-audit.ts) compares against the photo. */
+export type BaySource = 'block-face' | 'type-default' | 'recipe' | 'author' | 'house-record' | 'register-text' | 'vision-judge';
+
+const DUTCH_COUNT: Record<string, number> = {
+  'één': 1, 'eén': 1, twee: 2, drie: 3, vier: 4, vijf: 5, zes: 6, zeven: 7, acht: 8, negen: 9, tien: 10, elf: 11, twaalf: 12,
+};
+const REGISTER_AXES = /\b(één|eén|twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|\d{1,2})\s+(vensterassen|vensteras|traveeën|traveeen|travee|assen)\b/gi;
+/**
+ * The window-axis count a register description states ("Breed huis van drie vensterassen", "vier traveeën brede
+ * gevel"), or null. "een" is the article as often as the number, so only "één" counts as one. A text that states two
+ * different counts (front and rear, or two houses) is ambiguous and gives null. The register adapter does not read
+ * this yet (monument-facts.json carries no bays); the audit measures it first.
+ */
+export function registerBays(text: string): { value: number; phrase: string } | null {
+  const found: { value: number; phrase: string }[] = [];
+  for (const m of text.matchAll(REGISTER_AXES)) {
+    const w = m[1].toLowerCase(), value = DUTCH_COUNT[w] ?? Number(w);
+    if (Number.isInteger(value) && value > 0) found.push({ value, phrase: m[0] });
+  }
+  if (!found.length || new Set(found.map(f => f.value)).size > 1) return null;
+  return found[0];
+}
+
+const JEV_WORDS: Record<string, number> = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6 };
+/** A Jev cache answer (`answers.bays` = {choice: "three", probabilities}) as the `JevJudgement.bays` value. */
+export function jevBays(a: { choice?: string; probabilities?: Record<string, number> } | undefined): { value: number; p: number } | null {
+  const value = a?.choice ? JEV_WORDS[a.choice] : undefined;
+  if (!value) return null;
+  return { value, p: a!.probabilities?.[a!.choice!] ?? 0 };
 }

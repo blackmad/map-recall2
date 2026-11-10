@@ -127,6 +127,10 @@ const SPOTS: Spot[] = [
   // Nassaukade 0363100012164843 (generic, east-facing: sky only), Bloemgracht-side 0363100012169916 (generic, faces
   // 160: sunlit), and the Nassaukade face of the installed corner chunk-face-clercq-236681 (0363100012116526).
   { name: 'house-preview-nassaukade-164843', centre: [4.873841, 52.3720195], standDeg: 85, standM: 14, view: 'cockpit' },
+  // H1c (#350): a 3-bay canal row on the live path, odd axis units on and off (?oddAxisCells=0 is the H1b whole-cell fit).
+  { name: 'h1c-169916-units', centre: [4.8809335, 52.374876], standDeg: 160, standM: 16, view: 'cockpit', query: '?world=live' },
+  { name: 'h1c-169916-phone', centre: [4.8809335, 52.374876], standDeg: 160, standM: 48, view: 'cockpit', query: '?world=live' },
+  { name: 'h1c-169916-cells', centre: [4.8809335, 52.374876], standDeg: 160, standM: 16, view: 'cockpit', query: '?world=live&oddAxisCells=0' },
   { name: 'house-preview-169916', centre: [4.8809335, 52.374876], standDeg: 160, standM: 12, view: 'cockpit' },
   { name: 'house-preview-nassaukade-116526', centre: [4.873862, 52.371936], standDeg: 80, standM: 14, view: 'cockpit' },
   // House line H7 (#354): the Nassaukade 152-145 row (face nassau-145-152) from across the Singelgracht, the pilot's demo row.

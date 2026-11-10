@@ -21,23 +21,11 @@
   "bag": {
    "schemaVersion": 1,
    "pandId": "0363100012173043",
-   "design": {
-    "fronts": [
-     {
-      "storeys": 3
-     }
-    ]
-   },
+   "design": {},
    "provenance": {
     "facts/facadeYear": {
      "source": "bag",
      "confidence": 0.5,
-     "ref": "bag-facts:0363100012173043",
-     "at": null
-    },
-    "fronts/0/storeys": {
-     "source": "3dbag",
-     "confidence": 0.4,
      "ref": "bag-facts:0363100012173043",
      "at": null
     }
@@ -51,20 +39,8 @@
  "spec": {
   "schemaVersion": 1,
   "pandId": "0363100012173043",
-  "design": {
-   "fronts": [
-    {
-     "storeys": 3
-    }
-   ]
-  },
+  "design": {},
   "provenance": {
-   "fronts/0/storeys": {
-    "source": "3dbag",
-    "confidence": 0.4,
-    "ref": "bag-facts:0363100012173043",
-    "at": null
-   },
    "facts/facadeYear": {
     "source": "bag",
     "confidence": 0.5,

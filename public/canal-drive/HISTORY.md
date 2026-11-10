@@ -1,5 +1,25 @@
 # Canal Recall — what is built
 
+**Odd-bay cells; spec bays released (2026-11-10, H1c #350, 7c4c72fe3, opus).**
+- **Audit:** the 169901 over-count (5 for a photo 3) came from recipe intent bloemgracht-90. Auto-placed type bays that the strip did not confirm are now a `default` source and never written, so view bays went from 1,348 to 919.
+- **Odd bays:** a 3- or 1-bay front on a two-window canal/c19 cell draws as half-cell axis units (`axisUnitPlan`, streetFacadeRendering.ts). They reuse the cell's own sills, heads, frames and keystones; no atlas layer was added.
+- **Gate (#348 sample):** closer on 12/19 scorable, worse on none. The mesh is byte-identical while held. When released, about 400 buildings change: 397 odd-bay spec'd ones and 3 neighbours, which pick up a flat-roof piece via the R5-E budget.
+- **Rollback:** `SPEC_BAYS_HELD = true` plus a world-v1 recompile. `?oddAxisCells=0` does not reach the building worker.
+- **Kit still can't draw:** fronts whose storeys differ in axis count (170031) and asymmetric 3-axis fronts.
+- **Integrator note:** the test:street-appearance failures (cohorts + coarse lip) predate a332381a9, and a1 is bisecting them.
+
+**H5h photo-read hand set and J2 Jev capabilities (2026-11-10, #351, #353).**
+- **H5h** (4db067da6, opus): `data/house-line/hand-set-v1.json` is the house line's truth set.
+  - 80 pands: 60 stratified AB07, 13 easy houses and 7 Nassaukade, plus 40 gable-only crown rows. Each field carries a confidence and a `source-data://` crop ref. A field the crop cannot show is `unknown` and never scored.
+  - Seven pands with several fronts are `extent: multi`, which is why HouseSpec `design.fronts[]` now states each front's `share`.
+  - One storeys definition (full street-facing storeys, no souterrain and no attic-in-crown) now holds for H5, H9 and H1c.
+- **Blind reader ceilings:** axes 1.00, storeys 1.00, gable 0.86 (pooled), finish 0.92, pui 0.88, wall tone 0.89, wall family 0.81. Gates are ceiling − 0.1, judged by Wilson 95 % intervals; gable needs n ≥ 60.
+- **What passed:** Jev finish (23/23). Failed: BAG storeys (0.43, now off; BAG stays the height source) and register gable as a crown writer (0.60). Its misses are historic crowns that are a cornice today. Open: Jev bays, Jev storeys (good tier 0.88, off until more rows), pui and wall tone. Facade storeys stay unwritten rather than wrong.
+- **J2** (032290b8e, sonnet, $0.11; docs/reviews/jev-capabilities-j2-20261110.md):
+  - Reliable: cross-year same-building (46/48), shopfront (16/16), reworded dormer, balcony, stoop and colour family. Colour family is used as a corrector, not a hex.
+  - Not reliable: white bands and surrounds, basement, crown-only gable crops and per-render likeness (it picks the decoy 11 of 28 times).
+  - The 28 likeness triples await the judgement session's labels.
+
 **H5 house describe (2026-11-10, #346, d60938093, sonnet).** `npm run house:describe` merges four writers in trust order: register, BAG, pixel and Jev. Input is H4's crops in good/fallback/none tiers. It keeps a disagreement log, a Jev cache keyed by crop hash, and hard budgets of $2 per run and $3 per buurt (AB07 spent $0.07 in total). `agreement.ts` builds the worst-twelve sheets.
 - **Gated off by measurement.** Pixel storeys were 7/16 right, no better than BAG. Pixel bays are written only when the column pitch resolves. Jev gable is limited to step and plain, since its cornice contradicted the register 5 of 8 times on canal fronts.
 - **Agreement against the 39 "hand" pands:** bays 3/4, gable 9/14, storeys 19/39. That set turned out to be mostly type placements (33 of 39), so the 0.85 gate was not assessable.
@@ -19,6 +39,16 @@
   - `installGate` (groups + solidBody) is the default, so likenessGate and install-large see 0 verdict flips on the 448-group replay.
   - `houseLine` (+ core + clusterWall) is used by house:preview and the line. It holds wall ΔL spread under ±10 cm box jitter to 0.020, down from 0.437, but would flip 13 installed verdicts, so it stays off the install path until a sheet of those 13 is read.
   - Glazing is informational in house-line verdicts: within ±0.10 on only 6 of 12 labelled fronts. The verdict rests on wall colour family, column count, storeys and window shape. The hand-grid value for 164843 is 0.375 (the earlier label of 0.25 was wrong).
+
+**Disk hygiene: automatic sweep and sparse source-data worktrees (2026-11-10).**
+- The disk reached 99 % full (16 GB free). The causes were 39 leftover screenshot-repo copies (26.5 GB), a full 20 GB source-data checkout made for the J1 Jev spike, merged lane worktrees, and an orphaned dev server that kept a merged worktree "live". Removing them freed 47 GB. J2 then made a second full 20 GB checkout within the hour.
+- `scripts/worktrees/new-source-data.sh` makes a sparse source-data worktree with only the lane's directories: 6.5 MB instead of 20 GB.
+- User-level Claude Code hooks (`~/.claude/hooks/map-recall2/hook.sh`, outside the repo so every worktree gets them) run `sweep.sh` in the background after each push to `main`, and at session start at most every 6 h. Session start also warns below 30 GB free.
+  - The sweep removes only copies that are clean, stash-free, fully pushed, idle and untouched for 12 h.
+  - It stops orphaned dev servers in merged, clean lane worktrees by PID, and removes merged worktrees through `triage.sh`.
+  - It deletes cached panorama JPEGs older than 3 days, the age the user approved.
+  - Its first unattended run, triggered by an integrator push, removed six merged house-line worktrees.
+- CLAUDE.md gains a "Disk hygiene" section with these rules.
 
 **House-line tools: H2 preview, H2c wall vs trim, the suppressed-face audit (2026-11-10, #338, #340, #341).**
 - **H2 + H2b: `house:preview` in Node** (e06f8dcff, opus). It renders a pand's front through the game's decorator chain and chunk builder, with the facade atlas painted under @napi-rs/canvas stubs and a software rasteriser. It takes 1.5–1.8 s cold and 0.09–0.20 s per `--watch` re-render.

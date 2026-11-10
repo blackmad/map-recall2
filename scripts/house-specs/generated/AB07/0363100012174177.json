@@ -55,23 +55,11 @@
   "bag": {
    "schemaVersion": 1,
    "pandId": "0363100012174177",
-   "design": {
-    "fronts": [
-     {
-      "storeys": 4
-     }
-    ]
-   },
+   "design": {},
    "provenance": {
     "facts/facadeYear": {
      "source": "bag",
      "confidence": 0.5,
-     "ref": "bag-facts:0363100012174177",
-     "at": null
-    },
-    "fronts/0/storeys": {
-     "source": "3dbag",
-     "confidence": 0.4,
      "ref": "bag-facts:0363100012174177",
      "at": null
     }
@@ -124,8 +112,7 @@
    "fronts": [
     {
      "bays": 3,
-     "gable": "cornice",
-     "storeys": 4
+     "gable": "cornice"
     }
    ],
    "palette": {
@@ -147,12 +134,6 @@
     "source": "monument-text",
     "confidence": 0.8,
     "ref": "rce:540",
-    "at": null
-   },
-   "fronts/0/storeys": {
-    "source": "3dbag",
-    "confidence": 0.4,
-    "ref": "bag-facts:0363100012174177",
     "at": null
    },
    "palette/brick": {

@@ -1,0 +1,1350 @@
+{
+ "version": 1,
+ "question": "fixtures/jev-storeys.json v1",
+ "gate": 0.9,
+ "ceiling": 1,
+ "calls": {
+  "called": 63,
+  "cached": 0,
+  "failed": 0,
+  "skipped": 0,
+  "usd": 0.00376
+ },
+ "all": {
+  "hand": 63,
+  "stated": 63,
+  "agree": 48,
+  "precision": 0.762,
+  "ci": [
+   0.644,
+   0.85
+  ],
+  "within1": 63,
+  "diff": {
+   "0": 48,
+   "1": 5,
+   "-1": 10
+  },
+  "verdict": "fail"
+ },
+ "byTier": {
+  "ab07-fallback": {
+   "hand": 14,
+   "stated": 14,
+   "agree": 10,
+   "precision": 0.714,
+   "ci": [
+    0.454,
+    0.883
+   ],
+   "within1": 14,
+   "diff": {
+    "0": 10,
+    "-1": 4
+   },
+   "verdict": "fail"
+  },
+  "ab07-good": {
+   "hand": 34,
+   "stated": 34,
+   "agree": 30,
+   "precision": 0.882,
+   "ci": [
+    0.734,
+    0.953
+   ],
+   "within1": 34,
+   "diff": {
+    "0": 30,
+    "1": 2,
+    "-1": 2
+   },
+   "verdict": "open"
+  },
+  "easy": {
+   "hand": 9,
+   "stated": 9,
+   "agree": 6,
+   "precision": 0.667,
+   "ci": [
+    0.354,
+    0.879
+   ],
+   "within1": 9,
+   "diff": {
+    "0": 6,
+    "1": 2,
+    "-1": 1
+   },
+   "verdict": "fail"
+  },
+  "nassau": {
+   "hand": 6,
+   "stated": 6,
+   "agree": 2,
+   "precision": 0.333,
+   "ci": [
+    0.097,
+    0.7
+   ],
+   "within1": 6,
+   "diff": {
+    "0": 2,
+    "1": 1,
+    "-1": 3
+   },
+   "verdict": "fail"
+  }
+ },
+ "atP": {
+  "0.5": {
+   "hand": 63,
+   "stated": 62,
+   "agree": 47,
+   "precision": 0.758,
+   "ci": [
+    0.638,
+    0.848
+   ],
+   "within1": 62,
+   "diff": {
+    "0": 47,
+    "1": 5,
+    "-1": 10
+   },
+   "verdict": "fail"
+  },
+  "0.7": {
+   "hand": 63,
+   "stated": 31,
+   "agree": 27,
+   "precision": 0.871,
+   "ci": [
+    0.711,
+    0.949
+   ],
+   "within1": 31,
+   "diff": {
+    "0": 27,
+    "1": 2,
+    "-1": 2
+   },
+   "verdict": "open"
+  },
+  "0.9": {
+   "hand": 63,
+   "stated": 2,
+   "agree": 1,
+   "precision": 0.5,
+   "ci": [
+    0.095,
+    0.905
+   ],
+   "within1": 2,
+   "diff": {
+    "0": 1,
+    "-1": 1
+   },
+   "verdict": "open"
+  }
+ },
+ "rows": [
+  {
+   "pandId": "0363100012174187",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 5,
+   "jev": {
+    "value": 4,
+    "p": 0.58,
+    "probabilities": {
+     "one": 0,
+     "two": 0.01,
+     "three": 0.15,
+     "four": 0.58,
+     "five": 0.23,
+     "six": 0.03,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012172884",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 2,
+   "jev": {
+    "value": 2,
+    "p": 0.57,
+    "probabilities": {
+     "one": 0.01,
+     "two": 0.57,
+     "three": 0.41,
+     "four": 0.01,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012172889",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.5,
+    "probabilities": {
+     "one": 0.01,
+     "two": 0.42,
+     "three": 0.5,
+     "four": 0.06,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012173353",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 4,
+    "p": 0.73,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.17,
+     "four": 0.73,
+     "five": 0.09,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012173345",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.7,
+    "probabilities": {
+     "one": 0,
+     "two": 0.22,
+     "three": 0.7,
+     "four": 0.08,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168155",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.88,
+    "probabilities": {
+     "one": 0,
+     "two": 0.08,
+     "three": 0.88,
+     "four": 0.04,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012173341",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.53,
+    "probabilities": {
+     "one": 0,
+     "two": 0.02,
+     "three": 0.53,
+     "four": 0.44,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169981",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.77,
+    "probabilities": {
+     "one": 0,
+     "two": 0.21,
+     "three": 0.77,
+     "four": 0.02,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012173134",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.81,
+    "probabilities": {
+     "one": 0,
+     "two": 0.15,
+     "three": 0.81,
+     "four": 0.04,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012172576",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.53,
+    "probabilities": {
+     "one": 0,
+     "two": 0.02,
+     "three": 0.53,
+     "four": 0.44,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012173058",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 2,
+   "jev": {
+    "value": 2,
+    "p": 0.78,
+    "probabilities": {
+     "one": 0.01,
+     "two": 0.78,
+     "three": 0.21,
+     "four": 0,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174743",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 2,
+   "jev": {
+    "value": 3,
+    "p": 0.57,
+    "probabilities": {
+     "one": 0,
+     "two": 0.41,
+     "three": 0.57,
+     "four": 0.02,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168157",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.7,
+    "probabilities": {
+     "one": 0,
+     "two": 0.23,
+     "three": 0.7,
+     "four": 0.06,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174971",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.67,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.05,
+     "four": 0.67,
+     "five": 0.18,
+     "six": 0.1,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174976",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.87,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.11,
+     "four": 0.87,
+     "five": 0.01,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012172582",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.61,
+    "probabilities": {
+     "one": 0,
+     "two": 0.01,
+     "three": 0.36,
+     "four": 0.61,
+     "five": 0.02,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174177",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.58,
+    "probabilities": {
+     "one": 0,
+     "two": 0.02,
+     "three": 0.58,
+     "four": 0.39,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168647",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.76,
+    "probabilities": {
+     "one": 0,
+     "two": 0.23,
+     "three": 0.76,
+     "four": 0.01,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168442",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.7,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.26,
+     "four": 0.7,
+     "five": 0.03,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174653",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.89,
+    "probabilities": {
+     "one": 0,
+     "two": 0.03,
+     "three": 0.89,
+     "four": 0.08,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169902",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.85,
+    "probabilities": {
+     "one": 0,
+     "two": 0.13,
+     "three": 0.85,
+     "four": 0.02,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174746",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.88,
+    "probabilities": {
+     "one": 0,
+     "two": 0.11,
+     "three": 0.88,
+     "four": 0.01,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169914",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.78,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.21,
+     "four": 0.78,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012173131",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.87,
+    "probabilities": {
+     "one": 0,
+     "two": 0.12,
+     "three": 0.87,
+     "four": 0.01,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012172773",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 5,
+   "jev": {
+    "value": 5,
+    "p": 0.75,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0,
+     "four": 0.12,
+     "five": 0.75,
+     "six": 0.12,
+     "seven": 0.01
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174564",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.6,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.35,
+     "four": 0.6,
+     "five": 0.04,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012173135",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.75,
+    "probabilities": {
+     "one": 0,
+     "two": 0.14,
+     "three": 0.75,
+     "four": 0.11,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012172891",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.67,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.26,
+     "four": 0.67,
+     "five": 0.05,
+     "six": 0.02,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168606",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.58,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.41,
+     "four": 0.58,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012170031",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 3,
+    "p": 0.55,
+    "probabilities": {
+     "one": 0.01,
+     "two": 0.25,
+     "three": 0.55,
+     "four": 0.17,
+     "five": 0.02,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174646",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.87,
+    "probabilities": {
+     "one": 0,
+     "two": 0.11,
+     "three": 0.87,
+     "four": 0.02,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174253",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.5,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.47,
+     "four": 0.5,
+     "five": 0.02,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168077",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.75,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.24,
+     "four": 0.75,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012170145",
+   "group": "ab07",
+   "tier": "ab07-good",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.55,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.1,
+     "four": 0.55,
+     "five": 0.29,
+     "six": 0.06,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174168",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.91,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.07,
+     "four": 0.91,
+     "five": 0.01,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174422",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.73,
+    "probabilities": {
+     "one": 0,
+     "two": 0.08,
+     "three": 0.73,
+     "four": 0.18,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012170043",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.52,
+    "probabilities": {
+     "one": 0,
+     "two": 0.07,
+     "three": 0.52,
+     "four": 0.37,
+     "five": 0.03,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012167955",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.56,
+    "probabilities": {
+     "one": 0,
+     "two": 0.13,
+     "three": 0.56,
+     "four": 0.25,
+     "five": 0.05,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169988",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.77,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.21,
+     "four": 0.77,
+     "five": 0.01,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174641",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 5,
+   "jev": {
+    "value": 4,
+    "p": 0.67,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.05,
+     "four": 0.67,
+     "five": 0.24,
+     "six": 0.04,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168698",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.78,
+    "probabilities": {
+     "one": 0,
+     "two": 0.05,
+     "three": 0.78,
+     "four": 0.16,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012172583",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 5,
+   "jev": {
+    "value": 4,
+    "p": 0.62,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.3,
+     "four": 0.62,
+     "five": 0.07,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174184",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.68,
+    "probabilities": {
+     "one": 0,
+     "two": 0.31,
+     "three": 0.68,
+     "four": 0.01,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174754",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 3,
+   "jev": {
+    "value": 2,
+    "p": 0.92,
+    "probabilities": {
+     "one": 0.01,
+     "two": 0.92,
+     "three": 0.07,
+     "four": 0,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012174428",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 4,
+   "jev": {
+    "value": 3,
+    "p": 0.61,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.61,
+     "four": 0.38,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012173352",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.74,
+    "probabilities": {
+     "one": 0,
+     "two": 0.06,
+     "three": 0.74,
+     "four": 0.19,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100100093912",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 1,
+   "jev": {
+    "value": 1,
+    "p": 0.74,
+    "probabilities": {
+     "one": 0.74,
+     "two": 0.23,
+     "three": 0.03,
+     "four": 0,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012169267",
+   "group": "ab07",
+   "tier": "ab07-fallback",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.58,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.41,
+     "four": 0.58,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012175320",
+   "group": "easy",
+   "tier": "easy",
+   "hand": 4,
+   "jev": {
+    "value": 3,
+    "p": 0.6,
+    "probabilities": {
+     "one": 0,
+     "two": 0.03,
+     "three": 0.6,
+     "four": 0.35,
+     "five": 0.02,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012168136",
+   "group": "easy",
+   "tier": "easy",
+   "hand": 3,
+   "jev": {
+    "value": 4,
+    "p": 0.73,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.12,
+     "four": 0.73,
+     "five": 0.13,
+     "six": 0.02,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012182857",
+   "group": "easy",
+   "tier": "easy",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.49,
+    "probabilities": {
+     "one": 0,
+     "two": 0.03,
+     "three": 0.49,
+     "four": 0.42,
+     "five": 0.05,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012182849",
+   "group": "easy",
+   "tier": "easy",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.85,
+    "probabilities": {
+     "one": 0,
+     "two": 0.13,
+     "three": 0.85,
+     "four": 0.02,
+     "five": 0,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012176312",
+   "group": "easy",
+   "tier": "easy",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.71,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.26,
+     "four": 0.71,
+     "five": 0.03,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012176346",
+   "group": "easy",
+   "tier": "easy",
+   "hand": 3,
+   "jev": {
+    "value": 3,
+    "p": 0.56,
+    "probabilities": {
+     "one": 0,
+     "two": 0.07,
+     "three": 0.56,
+     "four": 0.34,
+     "five": 0.03,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012180181",
+   "group": "easy",
+   "tier": "easy",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.61,
+    "probabilities": {
+     "one": 0,
+     "two": 0.01,
+     "three": 0.28,
+     "four": 0.61,
+     "five": 0.09,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012167483",
+   "group": "easy",
+   "tier": "easy",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.89,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.06,
+     "four": 0.89,
+     "five": 0.04,
+     "six": 0.01,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012171023",
+   "group": "easy",
+   "tier": "easy",
+   "hand": 4,
+   "jev": {
+    "value": 5,
+    "p": 0.68,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.01,
+     "four": 0.08,
+     "five": 0.68,
+     "six": 0.21,
+     "seven": 0.02
+    }
+   }
+  },
+  {
+   "pandId": "0363100012164843",
+   "group": "nassau",
+   "tier": "nassau",
+   "hand": 4,
+   "jev": {
+    "value": 5,
+    "p": 0.58,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.02,
+     "four": 0.22,
+     "five": 0.58,
+     "six": 0.16,
+     "seven": 0.02
+    }
+   }
+  },
+  {
+   "pandId": "0363100012161422",
+   "group": "nassau",
+   "tier": "nassau",
+   "hand": 4,
+   "jev": {
+    "value": 3,
+    "p": 0.57,
+    "probabilities": {
+     "one": 0,
+     "two": 0.01,
+     "three": 0.57,
+     "four": 0.4,
+     "five": 0.02,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012157426",
+   "group": "nassau",
+   "tier": "nassau",
+   "hand": 4,
+   "jev": {
+    "value": 3,
+    "p": 0.55,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.55,
+     "four": 0.43,
+     "five": 0.02,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012160273",
+   "group": "nassau",
+   "tier": "nassau",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.62,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.16,
+     "four": 0.62,
+     "five": 0.18,
+     "six": 0.04,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012160704",
+   "group": "nassau",
+   "tier": "nassau",
+   "hand": 4,
+   "jev": {
+    "value": 4,
+    "p": 0.52,
+    "probabilities": {
+     "one": 0,
+     "two": 0,
+     "three": 0.47,
+     "four": 0.52,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  },
+  {
+   "pandId": "0363100012159694",
+   "group": "nassau",
+   "tier": "nassau",
+   "hand": 4,
+   "jev": {
+    "value": 3,
+    "p": 0.82,
+    "probabilities": {
+     "one": 0,
+     "two": 0.02,
+     "three": 0.82,
+     "four": 0.15,
+     "five": 0.01,
+     "six": 0,
+     "seven": 0
+    }
+   }
+  }
+ ]
+}
