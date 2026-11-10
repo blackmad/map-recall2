@@ -1,0 +1,54 @@
+{
+ "note": "Palette pins (blockFace/reviewPalettes.ts), Sarphatistraat 197-207.",
+ "reviewed": "2026-11-10 (lane)",
+ "pins": [
+  {
+   "pandId": "0363100012181388",
+   "type": "sarphati-1910-arched-tower-pair",
+   "palette": {
+    "brick": "#5a4636"
+   },
+   "reason": "Sarphatistraat 197: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25"
+  },
+  {
+   "pandId": "0363100012181385",
+   "type": "sarphati-1910-arched-tower-pair",
+   "palette": {
+    "brick": "#5a4636"
+   },
+   "reason": "Sarphatistraat 199: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25"
+  },
+  {
+   "pandId": "0363100012170680",
+   "type": "sarphati-1910-arched-tower-pair",
+   "palette": {
+    "brick": "#4a3a2c"
+   },
+   "reason": "Sarphatistraat 201: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25"
+  },
+  {
+   "pandId": "0363100012170824",
+   "type": "sarphati-1910-arched-tower-pair",
+   "palette": {
+    "brick": "#4a3a2c"
+   },
+   "reason": "Sarphatistraat 203: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25"
+  },
+  {
+   "pandId": "0363100012181350",
+   "type": "sarphati-1910-arched-tower-pair",
+   "palette": {
+    "brick": "#4a3a2c"
+   },
+   "reason": "Sarphatistraat 205: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25"
+  },
+  {
+   "pandId": "0363100012181351",
+   "type": "sarphati-1910-arched-tower-pair",
+   "palette": {
+    "brick": "#4a3a2c"
+   },
+   "reason": "Sarphatistraat 207: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25"
+  }
+ ]
+}

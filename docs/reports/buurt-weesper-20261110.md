@@ -59,3 +59,28 @@ Candidates viewed in `strip-dates/`: 2019-05-14 (leaves), 2022-06-10 (leaves), 2
 ## Integrator rebuild
 `npx tsx scripts/look/build-chunk-wall-exposure.ts --write`; covers (`build-covers` then `check:covers`); bake-frontages; buurt pages / explorer-looks;
 archive: strips already written to the source-data folder above.
+
+## Round 2 (2026-11-10, after the Opus verdict `sarphati-strip-verdict-20261110.md`)
+**Sarphatistrook now has 12 pands installed**: 167, 169, 171, 173, 175, 177, 179 (one run `sarphati-163-213-r1`) and 197, 199 (`sarphati-195-213-r1`), 203, 205, 207 (`-r2`).
+Sheets: `block-face-strips/weesperbuurt-20261110/sheet-sarphati-163-213-r1-round2.jpg`, `sheet-sarphati-195-213-r1.jpg`, `-r2.jpg`.
+
+### Verdict fixes applied to the type
+1. Roof flat behind the cornice (`roof.form: flat`, source front), towers kept; 2. speklagen as `brickStripes` (band #d4b48c: doubled pair at each head line 6.65 / 10.1 / 13.3 m,
+one at each sill 4.5 / 7.8 / 11.1, a single course every 0.8 m between; about 2,300 triangles a house, under 3,000);
+3. the wide axis is two casements (1.1 m, 0.3 m pier) on a five-axis grid (blank margin, light, light, blank, narrow), ground storey two tall windows, door index 2 with `doorArch`;
+4. a projecting cornice `eavesOverhang` 0.4 m, #e2dccb. The tower cap stays a flat slab: `TOWER_CAPS` has no cornice cap (a kit gap, below);
+5. eaves: 167-171 stood 1.07 m high because their own 3DBAG ground (0.30 m NAP) sits under the strip's ground (1.405 m): `withPhotoEaves` now offsets the measured row by that gap
+for `frontEavesFixed` types (`PandEvidence.groundNAP`, auto-place.ts), so all seven read 14.14-14.41 m (173: 3DBAG eaves 8.68 m).
+
+### 173 released
+The 171|173 coplanar roof was the 30 degree recipe attic over equal 3DBAG ridges; the flat front roof removes it (roofZFight 0, GLB audit pass), so no party-wall offset kit was needed. 173 is installed.
+
+### 195-213 (intake `--from=181390`, strip 2017-03-31, looked at)
+Vetoed before comparison: none. Compared and held: 195 (end of strip, run of one), 201 (usable photo 37 %), 209 and 211 (the splayed bend, as 183|185), 213 (corner house, taller tower): 5.
+Placed: 5 on 2 runs (batch NCC min 0.40 / 0.41, stripOverDrawn 0.85 / 0.97). Door pins 197 R, 199 L, 201 R, 203 L, 205 R, 207 L. The strip is darker with a green-grey cast
+(raw brick #5a553b; the trim-normalised wall was #0f1104 on 199), so the brick is pinned per run (`sarphatistrook-review-palettes.json`: #5a4636 for 197-199, #4a3a2c for 203-207).
+
+### Open
+* the 205|207 interference sheet row reads FAIL (roof z-fight 0.2 m2 at the tower pair; 175|177 also 0.2 earlier) while the batch and the GLB audit pass: check before merging.
+* the tower cap needs a `cornice` cap (white dentil band): a `TOWER_CAPS` addition in the library tower code, not done.
+* balconies, fanlight tracery and the corbel blocks at the window heads remain.

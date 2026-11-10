@@ -5441,6 +5441,30 @@
     "hash": "81a105b8816b686a",
     "class": "recipe"
    }
+  },
+  "sarphati-195-213-r1": {
+   "181385": {
+    "hash": "63a3694efec8d7a8",
+    "class": "front"
+   },
+   "181388": {
+    "hash": "940bc6a0baf79e83",
+    "class": "front"
+   }
+  },
+  "sarphati-195-213-r2": {
+   "170824": {
+    "hash": "c1335a772647386d",
+    "class": "front"
+   },
+   "181350": {
+    "hash": "8dab040743f05cdb",
+    "class": "front"
+   },
+   "181351": {
+    "hash": "c808f63a924b22fa",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -5700,6 +5724,8 @@
   "vogel-3-15-r1": "e2cb775f31e878d4",
   "zamenhof-54-60-r1": "daf7097523219787",
   "zamenhof-6-12-r1": "b9192bc580ff7c36",
-  "zamenhof-84-90-r1": "aee52bb4ffae4f33"
+  "zamenhof-84-90-r1": "aee52bb4ffae4f33",
+  "sarphati-195-213-r1": "83977422ad424ee3",
+  "sarphati-195-213-r2": "b849b0a3fab61b1a"
  }
 }

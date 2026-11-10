@@ -1,0 +1,914 @@
+{
+ "face": "sarphati-195-213",
+ "street": "Sarphatistraat",
+ "library": "weesperbuurt",
+ "stripDate": "2017-03-31",
+ "seconds": 18.03,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "sarphati-195-213-r1",
+   "pands": [
+    "0363100012181388",
+    "0363100012181385"
+   ],
+   "passed": true,
+   "triangles": 4656
+  },
+  {
+   "face": "sarphati-195-213-r2",
+   "pands": [
+    "0363100012170824",
+    "0363100012181350",
+    "0363100012181351"
+   ],
+   "passed": false,
+   "triangles": 6970
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012181390",
+   "address": "Sarphatistraat 195",
+   "builtYear": 1910,
+   "widthM": 6.46,
+   "eavesM": 13.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#846036",
+    "wallRaw": "#5d4b31",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 456,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.33,
+      "riseM": 2.62,
+      "topWidthM": 2.88,
+      "centre": 0.28
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 1.2,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.7,
+       "widthM": 1.25,
+       "centre": 0.19
+      },
+      {
+       "atM": 10.15,
+       "widthM": 1.23,
+       "centre": 0.84
+      },
+      {
+       "atM": 9.47,
+       "widthM": 1.2,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the left end of the strip: a lower cornice and an end house whose pair partner (193) is held; a run of one",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181388",
+   "address": "Sarphatistraat 197",
+   "builtYear": 1910,
+   "widthM": 6.46,
+   "eavesM": 13.93,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f492d",
+    "wallRaw": "#614f34",
+    "skyline": {
+     "eavesM": 15.22,
+     "eavesRow": 448,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 2.83,
+      "topWidthM": 2.48,
+      "centre": 0.77
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.001,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.88,
+       "widthM": 1.32,
+       "centre": 0.85
+      },
+      {
+       "atM": 10.18,
+       "widthM": 1.07,
+       "centre": 0.18
+      },
+      {
+       "atM": 9.57,
+       "widthM": 1.27,
+       "centre": 0.85
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.38
+   },
+   "status": "placed",
+   "type": "sarphati-1910-arched-tower-pair",
+   "score": 1,
+   "placement": {
+    "type": "sarphati-1910-arched-tower-pair",
+    "paletteOverrides": {
+     "brick": "#5a4636"
+    }
+   },
+   "notes": [
+    "crown tower (type default)",
+    "door right: reviewer pin (Sarphatistraat 197 (strip 2017-03-31, 40 px/m): arched house door at the right end, paired with its neighbour across the party wall (197|199, 201|203, 205|207))",
+    "palette pinned: Sarphatistraat 197: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25"
+   ],
+   "likeness": {
+    "pandId": "0363100012181388",
+    "ncc": 0.4,
+    "nccRaw": 0.4,
+    "shiftM": [
+     -0.05,
+     -0.35
+    ],
+    "usable": 0.52,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 28 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#644c2f",
+     "model": "#775d48",
+     "dL": 0.086
+    },
+    "glazing": {
+     "photo": 0.23,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.315
+   },
+   "challengers": {
+    "sarphati-1910-arched-tower-pair": 0.41,
+    "sarphati-1910-arched-tower-pair~m": 0.108
+   }
+  },
+  {
+   "pandId": "0363100012181385",
+   "address": "Sarphatistraat 199",
+   "builtYear": 1910,
+   "widthM": 6.46,
+   "eavesM": 14.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#0f1104",
+    "wallRaw": "#5a553b",
+    "skyline": {
+     "eavesM": 15.25,
+     "eavesRow": 447,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.83,
+      "riseM": 2.8,
+      "topWidthM": 2.55,
+      "centre": 0.24
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.019,
+    "structure": {
+     "bayWidthM": 1.05,
+     "bayCentre": 0.58,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.47,
+       "widthM": 1.25,
+       "centre": 0.84
+      },
+      {
+       "atM": 12.88,
+       "widthM": 1.25,
+       "centre": 0.18
+      },
+      {
+       "atM": 10.25,
+       "widthM": 1.23,
+       "centre": 0.84
+      },
+      {
+       "atM": 9.57,
+       "widthM": 1.27,
+       "centre": 0.18
+      },
+      {
+       "atM": 6.88,
+       "widthM": 1.07,
+       "centre": 0.8
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.41
+   },
+   "status": "placed",
+   "type": "sarphati-1910-arched-tower-pair",
+   "score": 1,
+   "placement": {
+    "type": "sarphati-1910-arched-tower-pair",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#5a4636"
+    }
+   },
+   "notes": [
+    "crown tower (type default)",
+    "door left: mirrored: reviewer pin (Sarphatistraat 199 (strip 2017-03-31, 40 px/m): arched house door at the left end, paired with its neighbour across the party wall (197|199, 201|203, 205|207))",
+    "palette pinned: Sarphatistraat 199: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25",
+    "no photo evidence of its own (usable photo 48 % < 50 %); placed on row evidence from 181388",
+    "no photo evidence of its own (usable photo 49 % < 50 %); placed on row evidence from 181388"
+   ],
+   "likeness": {
+    "pandId": "0363100012181385",
+    "ncc": null,
+    "nccRaw": 0.379,
+    "shiftM": [
+     0.2,
+     -0.25
+    ],
+    "usable": 0.49,
+    "abstain": "usable photo 49 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 27 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#453920",
+     "model": "#775d48",
+     "dL": 0.176
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.306
+   },
+   "challengers": {
+    "sarphati-1910-arched-tower-pair~m": null,
+    "sarphati-1910-arched-tower-pair": 0.178
+   }
+  },
+  {
+   "pandId": "0363100012170680",
+   "address": "Sarphatistraat 201",
+   "builtYear": 1910,
+   "widthM": 6.46,
+   "eavesM": 14.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#3f331a",
+    "wallRaw": "#474631",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 1057,
+     "confidence": 0.22,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.24,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.42,
+       "widthM": 1.3,
+       "centre": 0.45
+      },
+      {
+       "atM": 12.9,
+       "widthM": 1.13,
+       "centre": 0.86
+      },
+      {
+       "atM": 10.2,
+       "widthM": 1.23,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "no photo evidence (usable photo 37 % < 50 %) and no passing same-type neighbour",
+   "likeness": {
+    "pandId": "0363100012170680",
+    "ncc": null,
+    "nccRaw": 0.333,
+    "shiftM": [
+     -0.1,
+     -0.15
+    ],
+    "usable": 0.37,
+    "abstain": "usable photo 37 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 34 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#42351c",
+     "model": "#69523e",
+     "dL": 0.143
+    },
+    "glazing": {
+     "photo": 0.24,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": null,
+     "model": null
+    },
+    "iou": 0.297
+   },
+   "challengers": {
+    "sarphati-1910-arched-tower-pair": null,
+    "sarphati-1910-arched-tower-pair~m": null
+   }
+  },
+  {
+   "pandId": "0363100012170824",
+   "address": "Sarphatistraat 203",
+   "builtYear": 1910,
+   "widthM": 6.46,
+   "eavesM": 14.32,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#131204",
+    "wallRaw": "#54543e",
+    "skyline": {
+     "eavesM": 15.57,
+     "eavesRow": 434,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 0.95,
+      "riseM": 10.85,
+      "topWidthM": 0.17,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.003,
+    "structure": {
+     "bayWidthM": 0.93,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.5,
+       "widthM": 1.15,
+       "centre": 0.59
+      },
+      {
+       "atM": 12.9,
+       "widthM": 1.18,
+       "centre": 0.18
+      },
+      {
+       "atM": 10.2,
+       "widthM": 1.05,
+       "centre": 0.6
+      },
+      {
+       "atM": 9.6,
+       "widthM": 1.15,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "placed",
+   "type": "sarphati-1910-arched-tower-pair",
+   "score": 1,
+   "placement": {
+    "type": "sarphati-1910-arched-tower-pair",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4a3a2c"
+    }
+   },
+   "notes": [
+    "crown tower (type default)",
+    "door left: mirrored: reviewer pin (Sarphatistraat 203 (strip 2017-03-31, 40 px/m): arched house door at the left end, paired with its neighbour across the party wall (197|199, 201|203, 205|207))",
+    "palette pinned: Sarphatistraat 203: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25",
+    "no photo evidence of its own (usable photo 42 % < 50 %); placed on row evidence from 181350",
+    "no photo evidence of its own (usable photo 42 % < 50 %); placed on row evidence from 181350"
+   ],
+   "likeness": {
+    "pandId": "0363100012170824",
+    "ncc": null,
+    "nccRaw": 0.472,
+    "shiftM": [
+     0.2,
+     -0.2
+    ],
+    "usable": 0.42,
+    "abstain": "usable photo 42 % < 50 %",
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 34 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#3c321a",
+     "model": "#69523e",
+     "dL": 0.159
+    },
+    "glazing": {
+     "photo": 0.07,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.186
+   },
+   "challengers": {
+    "sarphati-1910-arched-tower-pair~m": null,
+    "sarphati-1910-arched-tower-pair": null
+   }
+  },
+  {
+   "pandId": "0363100012181350",
+   "address": "Sarphatistraat 205",
+   "builtYear": 1910,
+   "widthM": 6.46,
+   "eavesM": 14.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584825",
+    "wallRaw": "#4f4b35",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 440,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.98,
+      "riseM": 2.8,
+      "topWidthM": 2.08,
+      "centre": 0.75
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.88,
+       "widthM": 1.15,
+       "centre": 0.43
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.28
+   },
+   "status": "placed",
+   "type": "sarphati-1910-arched-tower-pair",
+   "score": 1,
+   "placement": {
+    "type": "sarphati-1910-arched-tower-pair",
+    "measuredPalette": {
+     "brick": "#584825",
+     "evidence": "strip 2024-12-11 span 1293-1552: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4a3a2c"
+    }
+   },
+   "notes": [
+    "crown tower (type default)",
+    "door right: reviewer pin (Sarphatistraat 205 (strip 2017-03-31, 40 px/m): arched house door at the right end, paired with its neighbour across the party wall (197|199, 201|203, 205|207))",
+    "palette pinned: Sarphatistraat 205: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25"
+   ],
+   "likeness": {
+    "pandId": "0363100012181350",
+    "ncc": 0.406,
+    "nccRaw": 0.406,
+    "shiftM": [
+     -0.15,
+     -0.2
+    ],
+    "usable": 0.55,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue -14 deg",
+     "glazing storey band off by 0.28 mean 0.38 vs photo 0.12",
+     "window shape none vs photo tall",
+     "columns none vs photo 4"
+    ],
+    "wall": {
+     "photo": "#584925",
+     "model": "#69523e",
+     "dL": 0.082
+    },
+    "glazing": {
+     "photo": 0.12,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 4,
+     "model": null
+    },
+    "iou": 0.301
+   },
+   "challengers": {
+    "sarphati-1910-arched-tower-pair": 0.434,
+    "sarphati-1910-arched-tower-pair~m": 0.07
+   }
+  },
+  {
+   "pandId": "0363100012181351",
+   "address": "Sarphatistraat 207",
+   "builtYear": 1910,
+   "widthM": 6.46,
+   "eavesM": 14.27,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#40341c",
+    "wallRaw": "#575238",
+    "skyline": {
+     "eavesM": 17.93,
+     "eavesRow": 340,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.38,
+      "riseM": 8.1,
+      "topWidthM": 0.28,
+      "centre": 0.85
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.84,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.53,
+       "widthM": 1.25,
+       "centre": 0.57
+      },
+      {
+       "atM": 12.92,
+       "widthM": 1.25,
+       "centre": 0.17
+      },
+      {
+       "atM": 10.22,
+       "widthM": 0.85,
+       "centre": 0.87
+      },
+      {
+       "atM": 6.92,
+       "widthM": 1.27,
+       "centre": 0.57
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.35
+   },
+   "status": "placed",
+   "type": "sarphati-1910-arched-tower-pair",
+   "score": 1,
+   "placement": {
+    "type": "sarphati-1910-arched-tower-pair",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4a3a2c"
+    }
+   },
+   "notes": [
+    "crown tower (type default)",
+    "door left: mirrored: reviewer pin (Sarphatistraat 207 (strip 2017-03-31, 40 px/m): arched house door at the left end, paired with its neighbour across the party wall (197|199, 201|203, 205|207))",
+    "palette pinned: Sarphatistraat 207: the 2017-03-31 strip of 195-213 is darker than 167-179 (raw brick #5a553b, green-grey cast) and the trim-normalised wall is unstable (#0f1104 on 199); one brick for the row, set so the batch gate stripOverDrawn reads 0.8-1.25"
+   ],
+   "likeness": {
+    "pandId": "0363100012181351",
+    "ncc": 0.427,
+    "nccRaw": 0.427,
+    "shiftM": [
+     0.15,
+     -0.25
+    ],
+    "usable": 0.5,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.15",
+     "wall family unresolved (#40341c is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#40341c",
+     "model": "#69523e",
+     "dL": 0.147
+    },
+    "glazing": {
+     "photo": 0.29,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": null,
+     "model": 3
+    },
+    "iou": 0.308
+   },
+   "challengers": {
+    "sarphati-1910-arched-tower-pair~m": 0.438,
+    "sarphati-1910-arched-tower-pair": 0.202
+   }
+  },
+  {
+   "pandId": "0363100012181420",
+   "address": "Sarphatistraat 209",
+   "builtYear": 1910,
+   "widthM": 6.51,
+   "eavesM": 13.41,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 3.86,
+    "toM": 6.46,
+    "depthM": 0.82,
+    "centre": 0.798,
+    "lineRD": [
+     [
+      122869.06975000001,
+      486213.751
+     ],
+     [
+      122872.73375000001,
+      486214.959
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#40351c",
+    "wallRaw": "#55523a",
+    "skyline": {
+     "eavesM": 16.38,
+     "eavesRow": 402,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.25,
+      "topWidthM": 0.3,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.004,
+    "structure": {
+     "bayWidthM": 0.33,
+     "bayCentre": 0.52,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.72,
+       "widthM": 0.97,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.46
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a splayed front where the street bends (as 183|185): curved mansard, no tower, a glazed bay on storeys 1-2",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181421",
+   "address": "Sarphatistraat 211",
+   "builtYear": 1910,
+   "widthM": 6.51,
+   "eavesM": 13.38,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 0,
+    "toM": 2.69,
+    "depthM": 0.82,
+    "centre": 0.209,
+    "lineRD": [
+     [
+      122877.76775000001,
+      486216.62
+     ],
+     [
+      122881.34775,
+      486217.79199999996
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#3f351d",
+    "wallRaw": "#51513d",
+    "skyline": {
+     "eavesM": 16.63,
+     "eavesRow": 392,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.6,
+      "riseM": 0.7,
+      "topWidthM": 0.57,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.67,
+       "widthM": 0.8,
+       "centre": 0.45
+      },
+      {
+       "atM": 6.77,
+       "widthM": 0.93,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.43
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the other half of the splayed bend with 209: curved mansard, no tower",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012181349",
+   "address": "Sarphatistraat 213",
+   "builtYear": 1910,
+   "widthM": 7.25,
+   "eavesM": 18.24,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#563f24",
+    "wallRaw": "#58462d",
+    "skyline": {
+     "eavesM": 18.32,
+     "eavesRow": 324,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.006,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the corner house: 3DBAG eaves 18.2 m, ridge 24.4 m, a taller tower and no arched pair",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

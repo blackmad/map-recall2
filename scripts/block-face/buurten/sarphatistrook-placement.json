@@ -1,12 +1,12 @@
 {
  "buurt": "sarphatistrook",
  "library": "weesperbuurt",
- "generatedAt": "2026-11-10T08:19:37.483Z",
- "seconds": 12.14,
+ "generatedAt": "2026-11-10T08:27:40.325Z",
+ "seconds": 18.04,
  "totals": {
-  "faces": 1,
-  "pands": 16,
-  "placed": 7
+  "faces": 2,
+  "pands": 26,
+  "placed": 12
  },
  "faces": [
   {
@@ -42,6 +42,46 @@
     "likeness": 0,
     "run": 2,
     "review": 5
+   }
+  },
+  {
+   "face": "sarphati-195-213",
+   "street": "Sarphatistraat",
+   "pands": 10,
+   "placed": 5,
+   "held": 5,
+   "runs": [
+    {
+     "face": "sarphati-195-213-r1",
+     "pands": [
+      "0363100012181388",
+      "0363100012181385"
+     ],
+     "passed": true,
+     "triangles": 4656
+    },
+    {
+     "face": "sarphati-195-213-r2",
+     "pands": [
+      "0363100012170824",
+      "0363100012181350",
+      "0363100012181351"
+     ],
+     "passed": false,
+     "triangles": 6970
+    }
+   ],
+   "seconds": 18.03,
+   "byType": {
+    "sarphati-1910-arched-tower-pair": 5
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 1,
+    "run": 0,
+    "review": 4
    }
   }
  ]

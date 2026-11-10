@@ -79,6 +79,42 @@
    "type": "sarphati-1910-arched-tower-pair",
    "side": "right",
    "reason": "Sarphatistraat 189 (strip 2024-12-11, gridded 1 m): arched house door at the right end, paired with its neighbour across the party wall (pairs 163|165A, 167|169 ... 183|185 read off the strip; the detector read the sides at random)"
+  },
+  {
+   "pandId": "0363100012181385",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "left",
+   "reason": "Sarphatistraat 199 (strip 2017-03-31, 40 px/m): arched house door at the left end, paired with its neighbour across the party wall (197|199, 201|203, 205|207)"
+  },
+  {
+   "pandId": "0363100012170680",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 201 (strip 2017-03-31, 40 px/m): arched house door at the right end, paired with its neighbour across the party wall (197|199, 201|203, 205|207)"
+  },
+  {
+   "pandId": "0363100012170824",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "left",
+   "reason": "Sarphatistraat 203 (strip 2017-03-31, 40 px/m): arched house door at the left end, paired with its neighbour across the party wall (197|199, 201|203, 205|207)"
+  },
+  {
+   "pandId": "0363100012181350",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 205 (strip 2017-03-31, 40 px/m): arched house door at the right end, paired with its neighbour across the party wall (197|199, 201|203, 205|207)"
+  },
+  {
+   "pandId": "0363100012181351",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "left",
+   "reason": "Sarphatistraat 207 (strip 2017-03-31, 40 px/m): arched house door at the left end, paired with its neighbour across the party wall (197|199, 201|203, 205|207)"
+  },
+  {
+   "pandId": "0363100012181388",
+   "type": "sarphati-1910-arched-tower-pair",
+   "side": "right",
+   "reason": "Sarphatistraat 197 (strip 2017-03-31, 40 px/m): arched house door at the right end, paired with its neighbour across the party wall (197|199, 201|203, 205|207)"
   }
  ]
 }

@@ -1,0 +1,128 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "sarphati-195-213-r2",
+ "street": "Sarphatistraat",
+ "sources": [
+  {
+   "id": "strip-2017-03-31",
+   "kind": "street-panorama",
+   "capturedAt": "2017-03-31",
+   "image": "staging/block-face/sarphati-195-213-r2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the weesperbuurt library (buurt Sarphatistrook); scores and holds in scripts/block-face/faces/sarphati-195-213/auto-place.json"
+ },
+ "types": [
+  "sarphati-1910-arched-tower-pair"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012170824",
+   "slug": "sarphati-170824",
+   "address": "Sarphatistraat 203",
+   "type": {
+    "type": "sarphati-1910-arched-tower-pair",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4a3a2c"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2017-03-31",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: sarphati-1910-arched-tower-pair scored 1 on storeys 1, stucco -; strip 2024-12-11 span 1034-1292"
+   }
+  },
+  {
+   "pandId": "0363100012181350",
+   "slug": "sarphati-181350",
+   "address": "Sarphatistraat 205",
+   "type": {
+    "type": "sarphati-1910-arched-tower-pair",
+    "measuredPalette": {
+     "brick": "#584825",
+     "evidence": "strip 2024-12-11 span 1293-1552: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4a3a2c"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2017-03-31",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: sarphati-1910-arched-tower-pair scored 1 on storeys 1, stucco 1; strip 2024-12-11 span 1293-1552"
+   }
+  },
+  {
+   "pandId": "0363100012181351",
+   "slug": "sarphati-181351",
+   "address": "Sarphatistraat 207",
+   "type": {
+    "type": "sarphati-1910-arched-tower-pair",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#4a3a2c"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2017-03-31",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: sarphati-1910-arched-tower-pair scored 1 on storeys 1, stucco -; strip 2024-12-11 span 1551-1809"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012170824",
+    "stripRow": 481,
+    "evidence": "auto-place: the sarphati-1910-arched-tower-pair cornice line 14.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.32 m"
+   },
+   {
+    "pand": "0363100012181350",
+    "stripRow": 481,
+    "evidence": "auto-place: the sarphati-1910-arched-tower-pair cornice line 14.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.22 m"
+   },
+   {
+    "pand": "0363100012181351",
+    "stripRow": 481,
+    "evidence": "auto-place: the sarphati-1910-arched-tower-pair cornice line 14.4 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.27 m"
+   }
+  ]
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "street": "Sarphatistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:19:41.495Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170824",
+   "addresses": [
+    "Sarphatistraat 203"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 203-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000804850"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181350",
+   "addresses": [
+    "Sarphatistraat 205",
+    "Sarphatistraat 205A",
+    "Sarphatistraat 205B",
+    "Sarphatistraat 205C",
+    "Sarphatistraat 205D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 205-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000804854"
+    },
+    {
+     "address": "Sarphatistraat 205A",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010001172113"
+    },
+    {
+     "address": "Sarphatistraat 205B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001172114"
+    },
+    {
+     "address": "Sarphatistraat 205C",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001172115"
+    },
+    {
+     "address": "Sarphatistraat 205D",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010001172116"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181351",
+   "addresses": [
+    "Sarphatistraat 207"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 207-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000804858"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

@@ -26,6 +26,26 @@
    "pandId": "0363100012181465",
    "address": "Sarphatistraat 185",
    "reason": "the other half of the splayed bend with 183: a curved mansard roof and no tower; the model also fails the 1.02 m2 roof z-fight gate against 183"
+  },
+  {
+   "pandId": "0363100012181390",
+   "address": "Sarphatistraat 195",
+   "reason": "the left end of the strip: a lower cornice and an end house whose pair partner (193) is held; a run of one"
+  },
+  {
+   "pandId": "0363100012181420",
+   "address": "Sarphatistraat 209",
+   "reason": "a splayed front where the street bends (as 183|185): curved mansard, no tower, a glazed bay on storeys 1-2"
+  },
+  {
+   "pandId": "0363100012181421",
+   "address": "Sarphatistraat 211",
+   "reason": "the other half of the splayed bend with 209: curved mansard, no tower"
+  },
+  {
+   "pandId": "0363100012181349",
+   "address": "Sarphatistraat 213",
+   "reason": "the corner house: 3DBAG eaves 18.2 m, ridge 24.4 m, a taller tower and no arched pair"
   }
  ]
 }

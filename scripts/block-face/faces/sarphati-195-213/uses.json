@@ -1,0 +1,214 @@
+{
+ "street": "Sarphatistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:19:41.495Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181390",
+   "addresses": [
+    "Sarphatistraat 195"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 195-H",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000804836"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181388",
+   "addresses": [
+    "Sarphatistraat 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 197-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000804840"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181385",
+   "addresses": [
+    "Sarphatistraat 199"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 199-H",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000804844"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11914254482,
+     "lngLat": [
+      4.9151162,
+      52.3627478
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2"
+     },
+     "fetchedAt": "2026-11-10T08:19:41.495Z",
+     "match": "frontage",
+     "distanceM": 5
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170680",
+   "addresses": [
+    "Sarphatistraat 201"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 201-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000804847"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170824",
+   "addresses": [
+    "Sarphatistraat 203"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 203-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000804850"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181350",
+   "addresses": [
+    "Sarphatistraat 205",
+    "Sarphatistraat 205A",
+    "Sarphatistraat 205B",
+    "Sarphatistraat 205C",
+    "Sarphatistraat 205D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 205-H",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010000804854"
+    },
+    {
+     "address": "Sarphatistraat 205A",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010001172113"
+    },
+    {
+     "address": "Sarphatistraat 205B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001172114"
+    },
+    {
+     "address": "Sarphatistraat 205C",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001172115"
+    },
+    {
+     "address": "Sarphatistraat 205D",
+     "use": "woonfunctie",
+     "areaM2": 125,
+     "bagId": "0363010001172116"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181351",
+   "addresses": [
+    "Sarphatistraat 207"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 207-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000804858"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181420",
+   "addresses": [
+    "Sarphatistraat 209"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 209-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000804862"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181421",
+   "addresses": [
+    "Sarphatistraat 211"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 211-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000804866"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181349",
+   "addresses": [
+    "Sarphatistraat 213"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 213-H",
+     "use": "woonfunctie",
+     "areaM2": 232,
+     "bagId": "0363010000804871"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "street": "Sarphatistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:19:41.495Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181388",
+   "addresses": [
+    "Sarphatistraat 197"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 197-H",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000804840"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181385",
+   "addresses": [
+    "Sarphatistraat 199"
+   ],
+   "groundUnits": [
+    {
+     "address": "Sarphatistraat 199-H",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000804844"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11914254482,
+     "lngLat": [
+      4.9151162,
+      52.3627478
+     ],
+     "tags": {
+      "amenity": "charging_station",
+      "bicycle": "no",
+      "capacity": "2"
+     },
+     "fetchedAt": "2026-11-10T08:19:41.495Z",
+     "match": "frontage",
+     "distanceM": 5
+    }
+   ]
+  }
+ ]
+}
