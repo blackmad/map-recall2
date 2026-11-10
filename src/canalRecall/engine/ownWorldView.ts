@@ -643,7 +643,7 @@ export class OwnWorldView implements WorldViewOracles {
   }
 
   /** Monument gables, listed landmarks, landmark building ids: what the live tile path decorates with (vector-map.js). */
-  private decoration: { gables: Map<string, unknown> | null; listed: Set<string> | undefined; landmarks: Set<string> } = { gables: null, listed: undefined, landmarks: new Set() };
+  private decoration: { gables: Map<string, unknown> | null; listed: Set<string> | undefined; landmarks: Set<string>; registerFacts?: Map<string, unknown> } = { gables: null, listed: undefined, landmarks: new Set() };
 
   /**
    * The building decorator, as vector-map.js `_applyFeatureDecorator` builds it: facade, monument gable, roof, landmark
@@ -656,7 +656,10 @@ export class OwnWorldView implements WorldViewOracles {
     if (!api || !Facades || !city) return;
     const { gables, listed, landmarks } = this.decoration;
     const named = gables?.size && api.withMonumentGable ? (f: any) => api.withMonumentGable(f, gables) : (f: any) => f;
-    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(named(Facades.decorateFacade(f))) : Facades.decorateFacade;
+    // Register facts (facade/registerRecipe.ts) read before the facade so the era, wall family and forced extras follow the register.
+    const facts = this.decoration.registerFacts;
+    const registered = facts?.size && api.withRegisterFacts ? (f: any) => api.withRegisterFacts(f, facts) : (f: any) => f;
+    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(named(Facades.decorateFacade(registered(f)))) : (f: any) => Facades.decorateFacade(registered(f));
     const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, landmarks, listed) : decorate;
     city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
   }
@@ -671,6 +674,12 @@ export class OwnWorldView implements WorldViewOracles {
         if (!data) return;
         this.decoration.gables = new Map(Object.entries(data.buildings || {}));
         this.decoration.listed = new Set(data.listedLandmarks || []);
+        this.decorateCity();
+      }),
+      // The monuments register's facts (monument-facts.json, published by the integrator); `?registerFacts=0` skips them.
+      json('monument-facts.json').then(data => {
+        if (!data || !api?.registerFactsEnabled?.(W().location?.search)) return;
+        this.decoration.registerFacts = new Map(Object.entries(data.buildings || {}));
         this.decorateCity();
       }),
       json('landmark-buildings.json').then(data => {

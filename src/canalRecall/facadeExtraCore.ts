@@ -35,6 +35,8 @@ export type ExtraContext = {
   openings?: Openings;
   /** The ground floor is a shopfront: no ground-floor window dressing. */
   shopfront?: boolean;
+  /** Wall-extra component ids the monuments register states for this pand: their dice are set to certain (registerRecipe.ts). */
+  registerForce?: readonly string[];
 };
 export type RoofContext = { id: string; style: FacadeStyle; rect: { cx: number; cy: number; ux: number; uy: number; len: number; wid: number }; z: number; wallHex: string };
 
