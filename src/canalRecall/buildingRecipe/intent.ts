@@ -12,6 +12,7 @@ import type {BoxBalconyIntent} from '../blockBuilding/boxBalcony.ts';
 import type {BalconyBandsIntent} from '../blockBuilding/balconyBands.ts';
 import type {StackedBlocksIntent} from '../blockBuilding/stackedBlocks.ts';
 import type {RoofLevelIntent} from './roofLevel.ts';
+import type {RoofTidyIntent} from './roofTidy.ts';
 import type {LargeGround, LargeSystemName, LargeWindow} from '../blockBuilding/systems.ts';
 import {brickStripeProblems, type BrickStripeZone} from './brickStripes.ts';
 import {stairLightProblems, type StairLightIntent} from './stairLight.ts';
@@ -1487,6 +1488,11 @@ export interface LargeRoofIntent {
    * unchanged output.
    */
   levelRooftop?: RoofLevelIntent;
+  /**
+   * Tidy the 3DBAG roof planes (roofTidy.ts): merge flat levels within 0.5 m, fold slivers under 4 m², clamp lone
+   * spikes; planes near the photographed fronts stay. Absent: unchanged output.
+   */
+  tidy?: RoofTidyIntent;
 }
 
 export type BuildingIntent = CanalHouseIntent | LargeBuildingIntent;

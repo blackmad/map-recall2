@@ -40,6 +40,7 @@ import {reviewFace} from './review.ts';
 import {runLikeness, writeRunFace} from './auto-place.ts';
 import {fitWallBrick} from './fit-wall-palette.ts';
 import {faceWallExposure} from '../look/face-wall-exposure.ts';
+import {runEvidence} from './evidence-gate.ts';
 import {closeRenderer} from '../building-recipes/render.ts';
 import {houseIntents, validateBlockFace} from '../../src/canalRecall/blockFace/intent.ts';
 import {fileTypeLoader} from '../../src/canalRecall/blockFace/typeLibrary.ts';
@@ -304,7 +305,8 @@ async function judgeRun(run: string, strip: {bad: boolean; reasons: string[]}) {
   const likeness = c && !error ? await quiet(() => runLikeness(run)).catch(() => []) : [];
   const exposure = c && !error ? await faceWallExposure(run).catch(() => null) : null;
   const report: any = c?.report;
-  const verdict = installVerdict({strip, compile: {error, gatesFailed: (report?.gates ?? []).filter((g: any) => !g.pass).map((g: any) => `${String(g.pand).slice(-6)}/${g.id}`), auditPassed: !!report?.audit?.passWithPartyExemption},
+  const evidence = c && !error ? await runEvidence(run).catch(() => null) : null;
+  const verdict = installVerdict({strip, evidence, compile: {error, gatesFailed: (report?.gates ?? []).filter((g: any) => !g.pass).map((g: any) => `${String(g.pand).slice(-6)}/${g.id}`), auditPassed: !!report?.audit?.passWithPartyExemption},
     likeness, stripOverDrawn: exposure?.stripOverDrawn ?? null, brickPands: exposure?.brickPands ?? 0});
   const nccs = likeness.map(l => l.ncc).filter((v): v is number => v !== null);
   return {verdict, compiled: c, sheet, wallFits, nccMin: nccs.length ? Math.min(...nccs) : null, nccMedian: med(nccs), stripOverDrawn: exposure?.stripOverDrawn ?? null, triangles: report?.triangles?.chunk ?? null};
