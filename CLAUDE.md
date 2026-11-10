@@ -109,3 +109,15 @@ working behavior, and leave it easier for the next session to continue.
 - `TODO.md` contains the unfinished work, prioritized, plus design notes for
   parked bets in `HISTORY.md`. Read `TODO.md` before choosing the next task, and
   update it — and `HISTORY.md` — before committing status changes.
+
+### House line
+
+- One record per house: `HouseSpec` (`src/canalRecall/houseSpec/`), the intent
+  vocabulary plus a receipt per field; sources merge by evidence strength.
+  Read `docs/house-line.md` before any house, block-face or buurt lane.
+- House lanes write specs and stage them (`npm run house:specs` stages the
+  extract and prints coverage); they never install, publish or recompile the
+  world. Publishing (`house:specs -- --publish`, later `house:publish`) and the
+  world recompile are the integrator's.
+- What the kit cannot say goes in `schemaLimits` as `{component, what}`, never
+  the nearest option. `?houseSpecs=0` / `HOUSE_SPECS=0` turns the line off.

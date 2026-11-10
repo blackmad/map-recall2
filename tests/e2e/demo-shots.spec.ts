@@ -99,7 +99,15 @@ const SPOTS: Spot[] = [
   { name: 'transvaal5b-schalkburgerstraat-59-77', centre: [4.9209948, 52.3530040], standDeg: 234, standM: 30, view: 'cockpit' },
   { name: 'transvaal5b-schalkburgerstraat-99-115', centre: [4.9213461, 52.3527139], standDeg: 234, standM: 30, view: 'cockpit' },
   { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
+  // House line H1 (#337): the Nieuwmarkt 4-22 row by the Waag at the user's 2026-11-09 photo pose (register gables), and
+  // a Kinkerstraat block face whose HouseSpec bays and measured walls reach the generic path (live tiles, before/after).
+  { name: 'nieuwmarkt-row', centre: [4.89976, 52.37282], standDeg: 75, standM: 55 },
+  { name: 'nieuwmarkt-row-live', centre: [4.89976, 52.37282], standDeg: 75, standM: 55, query: '?world=live' },
+  { name: 'kinker-244-332-specs-off', centre: [4.86405, 52.36545], standDeg: 335, standM: 22, view: 'cockpit', query: '?world=live&houseSpecs=0' },
+  { name: 'kinker-244-332-specs-on', centre: [4.86405, 52.36545], standDeg: 335, standM: 22, view: 'cockpit', query: '?world=live' },
 ];
+// DEMO_DPR=2: desktop shots at device pixel ratio 2 (house line frames).
+if (process.env.DEMO_DPR) test.use({ deviceScaleFactor: Number(process.env.DEMO_DPR) });
 
 const OUT = process.env.DEMO_OUT ?? 'artifacts/demo';
 const only = process.env.DEMO_SPOTS?.split(',').filter(Boolean);
@@ -127,7 +135,8 @@ for (const spot of SPOTS) {
   if (only && !only.includes(spot.name)) continue;
   test(`demo shot: ${spot.name}`, async ({ page }) => {
     test.setTimeout(240_000);
-    await page.setViewportSize({ width: 1440, height: 900 });
+    // The iphone project keeps its own viewport (phone frames); every other project shoots 1440 x 900.
+    if (test.info().project.name !== 'iphone') await page.setViewportSize({ width: 1440, height: 900 });
     if (process.env.DEMO_LOG) {
       page.on('response', r => { if (r.status() >= 400) console.log(`HTTP ${r.status()} ${r.url()}`); });
       page.on('requestfailed', r => console.log(`FAILED ${r.url()} ${r.failure()?.errorText}`));

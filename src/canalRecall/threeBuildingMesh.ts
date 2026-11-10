@@ -47,6 +47,8 @@ export type MeshBuilding = {
   surveyedEnvelope?: SurveyedMeshBinding;
   streetAppearance?: StreetFacadeContext;
   recipe?: ArchitecturalRecipe;
+  /** A HouseSpec's reads for the generic mesher (houseSpec/decorate.ts `specRecipe`): street-run bay count, crown, period, wall. */
+  specRecipe?: Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>>;
   /** Exact opening positions of the active texture, shared with 3D entrance details. */
   openings?: Openings;
   id: string;
@@ -540,7 +542,9 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         const candidate=streetWallBuilding(fallbackBuilding,full,origin,!streetGrid||streetDistance(full,streetGrid,wallGrid,bi)<Infinity);
         if(candidate.recipe?.shopCanopy)b=candidate;
       }
-      const runScale = frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0));
+      // A HouseSpec's bay count fits the street run's grid (houseSpec/decorate.ts); a street-appearance recipe keeps its own.
+      const specBays = !b.recipe && b.specRecipe?.bays && run.some(({ e }) => doorAllowed.has(e)) ? { bays: b.specRecipe.bays, axesPerCell: b.openings?.upper?.axes.length ?? 1 } : undefined;
+      const runScale = frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
       if (b.recipe) crownFronts.push({ start:[first.x0,first.y0],end:[run[run.length-1].e.x1,run[run.length-1].e.y1],normal:[first.nx,first.ny],tint:[r*jitter,g*jitter,bl*jitter],plainLayer:b.plainLayer,recipe:b.recipe,frameHex:b.recipe.frameHex??'#e6e1d4',glassHex:b.streetAppearance?.look==='cartoon'?'#68a2bf':'#35464f' });

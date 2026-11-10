@@ -659,7 +659,10 @@ export class OwnWorldView implements WorldViewOracles {
     // Register facts (facade/registerRecipe.ts) read before the facade so the era, wall family and forced extras follow the register.
     const facts = this.decoration.registerFacts;
     const registered = facts?.size && api.withRegisterFacts ? (f: any) => api.withRegisterFacts(f, facts) : (f: any) => f;
-    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(named(Facades.decorateFacade(registered(f)))) : (f: any) => Facades.decorateFacade(registered(f));
+    // HouseSpecs (houseSpec/decorate.ts; the tile enricher stamps `p.houseSpec`): facts after the register, crown after
+    // the monument gable, as galleryPipeline.gameFeatureDecorator composes them. No-ops on a feature without a spec.
+    const spec = api.withHouseSpec ?? ((f: any) => f), crown = api.withHouseSpecCrown ?? ((f: any) => f);
+    const decorate = api.decorateRoof ? (f: any) => api.decorateRoof(crown(named(Facades.decorateFacade(spec(registered(f)))))) : (f: any) => Facades.decorateFacade(spec(registered(f)));
     const base = api.exceptLandmarks ? api.exceptLandmarks(decorate, landmarks, listed) : decorate;
     city.setFeatureDecorator(api.decorateKitRoof ? (f: any) => api.decorateShopfront(api.decorateFront(api.decorateKitRoof(base(f)))) : base);
   }

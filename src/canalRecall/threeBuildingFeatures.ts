@@ -153,12 +153,16 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     building.openings = proceduralOpenings(layout);
     plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
   }
+  // A HouseSpec's reads (houseSpec/decorate.ts): the street run's bay count, crown and period, and a wall colour
+  // measured on a street photo. Absent unless the spec extract stamped the pand (`?houseSpecs=0` = absent).
+  const specRecipe = p.specRecipe && typeof p.specRecipe === 'object' && !Array.isArray(p.specRecipe) ? p.specRecipe as NonNullable<MeshBuilding['specRecipe']> : undefined;
+  if (specRecipe) building.specRecipe = specRecipe;
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
   let sourcedWall: string | undefined;
   if (look === 'photo') {
     // A buurt profile's measured wall (bayLook.ts) outranks a city-wide material-family hue of the same family.
     const materialPrior = profileWall && profileWallBeatsMaterial(p.material, profileWall) ? undefined : p.facadeMaterialColourPrior;
-    const sourced = [p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, materialPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
+    const sourced = [specRecipe?.wallHex, p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, materialPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
     if (sourced) building.wallHex = String(sourced);
     sourcedWall = sourced ? String(sourced) : undefined;
   }

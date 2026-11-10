@@ -91,10 +91,26 @@ export function recipeLayoutScale(recipe: ArchitecturalRecipe | undefined, fallb
   } : fallback;
 }
 
-/** A scoped canal cell represents the complete native frontage, including polygon kinks. */
-export function frontageLayoutScale(recipe: ArchitecturalRecipe | undefined, fallback: {bay:number;storey:number;ground:number}, style: MeshBuilding['style'], lengthM:number) {
+/** The fitted cell width for a stated bay count stays within these multiples of the style's nominal bay. */
+export const SPEC_BAY_SCALE = { min: 0.7, max: 1.5 } as const;
+/** A street front's stated window bays (HouseSpec, houseSpec/decorate.ts), and how many window axes one texture cell
+ *  of this building carries (bay-look cells hold 2 or 3; `MeshBuilding.openings.upper.axes`). */
+export type FrontageBays = { bays: number; axesPerCell: number };
+
+/**
+ * A scoped canal cell represents the complete native frontage, including polygon kinks.
+ * With a bay count (`recipe.bays`, else `spec` for a street run of a building without a street-appearance recipe), the
+ * run gets round(bays / axesPerCell) cells: bay scale = run length / cells / the style's bay, clamped to
+ * SPEC_BAY_SCALE. An odd bay count on a two-axis cell rounds to the nearest whole cell (a limit of the generic cells).
+ */
+export function frontageLayoutScale(recipe: ArchitecturalRecipe | undefined, fallback: {bay:number;storey:number;ground:number}, style: MeshBuilding['style'], lengthM:number, spec?: FrontageBays) {
   const scale=recipeLayoutScale(recipe,fallback);
-  return recipe?.openingGroup ? {...scale,bay:lengthM/STYLE_DIMS[style].bay} : scale;
+  if (recipe?.openingGroup) return {...scale,bay:lengthM/STYLE_DIMS[style].bay};
+  const bays = recipe?.bays ?? spec?.bays;
+  if (!(bays && bays > 0 && lengthM > 0)) return scale;
+  const cells = Math.max(1, Math.round(bays / Math.max(1, spec?.axesPerCell ?? 1)));
+  const bay = Math.min(SPEC_BAY_SCALE.max, Math.max(SPEC_BAY_SCALE.min, lengthM / cells / STYLE_DIMS[style].bay));
+  return {...scale,bay};
 }
 
 /** Carry admitted color onto a shallow exposed return, never a new opening/source class. */
