@@ -1,0 +1,71 @@
+{
+ "family": "features",
+ "set": "A",
+ "note": "A rectified street-panorama crop of one Amsterdam house front; the house in question fills the image.",
+ "questions": {
+  "hoist": {
+   "type": "noul",
+   "instructions": "Does the house front in `facade` have a hoist beam (a projecting timber beam with a hook or pulley under the gable top, for lifting goods)?",
+   "criteria": {
+    "true": "A hoist beam or hook projects from the gable top.",
+    "false": "No hoist beam."
+   }
+  },
+  "stoop": {
+   "type": "noul",
+   "instructions": "Is there a stoop (outside steps leading UP from the pavement to the front door, which is a floor above the pavement) on the house front in `facade`?",
+   "criteria": {
+    "true": "Steps rise from the pavement to a raised front door.",
+    "false": "The front door is at pavement level."
+   }
+  },
+  "souterrain": {
+   "type": "noul",
+   "instructions": "Is there a souterrain entrance (a door or window BELOW pavement level, reached by steps going down, under the stoop or beside the front)?",
+   "criteria": {
+    "true": "A below-street-level door or basement window with steps or a well in front.",
+    "false": "No below-pavement entrance."
+   }
+  },
+  "erker": {
+   "type": "noul",
+   "instructions": "Does the house front in `facade` have a bay window (erker: a window box that projects forward from the wall, usually on one or more upper storeys)?",
+   "criteria": {
+    "true": "A projecting bay window box.",
+    "false": "No projecting bay window."
+   }
+  },
+  "balcony": {
+   "type": "noul",
+   "instructions": "Does the house front in `facade` have a balcony or a balustrade/railing in front of a French window?",
+   "criteria": {
+    "true": "A balcony or railing is in front of a window or door opening.",
+    "false": "No balcony or railing."
+   }
+  },
+  "door_present": {
+   "type": "noul",
+   "instructions": "Is the main front door of the house visible in `facade`?",
+   "criteria": {
+    "true": "A front door of this house is visible.",
+    "false": "No front door visible (out of frame, hidden, or all shop windows)."
+   }
+  },
+  "door": {
+   "type": "box",
+   "instructions": "The main front door of the house in `facade`."
+  },
+  "shopfront": {
+   "type": "noul",
+   "instructions": "Does the ground floor of the house front in `facade` have a shopfront (large display windows, a shop or cafe front, a fascia or a sign)?",
+   "criteria": {
+    "true": "The ground floor is a shop, cafe or other commercial front.",
+    "false": "The ground floor is residential."
+   }
+  },
+  "shop_box": {
+   "type": "box",
+   "instructions": "The shopfront (ground floor commercial front) of the house in `facade`."
+  }
+ }
+}
