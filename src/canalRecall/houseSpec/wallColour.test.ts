@@ -1,7 +1,7 @@
 // The wall-colour rule (lane H9): measured hue (pulled half way from a yellow cast), lifted lightness and warm chroma, the trim-misread family tone.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { FAMILY_TONE, hexToOklab, nearestWallFamily, oklabToHex, specWallDisplay, specWallSource, specWallsEnabled, wallColourFamily, SPEC_WALL_LIFT, paleWarmHeld, paleWarmReading } from './wallColour.ts';
+import { FAMILY_TONE, hexToOklab, nearestWallFamily, oklabToHex, specWallDisplay, specWallSource, specWallsEnabled, wallColourFamily, SPEC_WALL_LIFT, paleWarmHeld, paleWarmReading, heldBrickWall, heldTakesBrick } from './wallColour.ts';
 import { houseSpecPatch, specWallGuarded, type HouseSpecView } from './decorate.ts';
 
 const L = (h: string) => hexToOklab(h)[0];
@@ -135,3 +135,38 @@ test('pale-warm guard (H9f r2): render and light families release the reading', 
 // the photo, but the strip reads a grey-white stucco (#717877, family grey) and the game draws grey-white before and after
 // the wall un-hold. The reading, not the lift, is wrong: the crop normalises to the white frames.
 test.todo('Brouwersgracht 168136 draws near-black (black-painted brick, white frames), not grey-white');
+
+// Lane H9g (#345): a held brick pand never falls back to grey; the fallback is family-aware.
+const C19 = ['#b05a40', '#bd6a45', '#a24d38', '#c58b5e', '#d3b184', '#e2d5ba', '#9a5846'];
+test('heldBrickWall: a grey or pale fallback takes a brick-family entry of the period palette, a brick one stays', () => {
+  for (const grey of ['#6f6f6e', '#5d605a', '#e4ddcd', '#7e8082']) {
+    const hex = heldBrickWall(grey, C19, 3);
+    assert.ok(C19.includes(hex), hex);
+    assert.ok(['brick-dark', 'brick-red', 'brick-brown'].includes(wallColourFamily(hex)), `${grey} -> ${hex}`);
+  }
+  assert.equal(heldBrickWall('#a24d38', C19, 5), '#a24d38', 'already brick: byte-identical');
+  assert.equal(heldBrickWall('#6f6f6e', C19, 7), heldBrickWall('#6f6f6e', C19, 7), 'stable');
+  assert.notEqual(heldBrickWall('#6f6f6e', C19, 0), heldBrickWall('#6f6f6e', C19, 1), 'the pick spreads a row over the entries');
+  assert.equal(heldBrickWall('#6f6f6e', null, 1), '#6f6f6e', 'no palette: unchanged');
+  assert.equal(heldBrickWall('#6f6f6e', ['#e2d5ba'], 1), '#6f6f6e', 'no brick entry: unchanged');
+});
+
+test('heldTakesBrick: unless the finish is stated light', () => {
+  assert.equal(heldTakesBrick({ wallMaterial: 'brick' }), true);
+  assert.equal(heldTakesBrick({}), true);
+  assert.equal(heldTakesBrick({ registerFinish: 'brick' }), true);
+  assert.equal(heldTakesBrick({ registerFinish: 'light' }), false);
+  assert.equal(heldTakesBrick({ wallMaterial: 'stucco', registerFinish: 'brick' }), false);
+  assert.equal(heldTakesBrick({ wallMaterial: 'painted-brick' }), false);
+});
+
+test('houseSpecPatch: a guarded brick wall marks heldBrick, a drawn wall and a light finish do not', () => {
+  const held = houseSpecPatch({ wallHex: '#c9a080', src: {} }, {}).specRecipe as { heldBrick?: boolean; wallHex?: string } | undefined;
+  assert.equal(held?.heldBrick, true);
+  assert.equal(held?.wallHex, undefined);
+  const dark = houseSpecPatch({ wallHex: '#42352e', wallMaterial: 'brick', src: {} }, {}).specRecipe as { heldBrick?: boolean; wallHex?: string } | undefined;
+  assert.equal(dark?.heldBrick, undefined);
+  assert.ok(dark?.wallHex);
+  const light = houseSpecPatch({ wallHex: '#c9a080', src: {} }, { registerFinish: 'light' }).specRecipe as { heldBrick?: boolean } | undefined;
+  assert.equal(light?.heldBrick, undefined);
+});

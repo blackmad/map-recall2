@@ -17,7 +17,7 @@ import type { ArchitecturalRecipe } from '../streetAppearance.js';
 import type { StoopIntent } from '../buildingRecipe/stoop.ts';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
-import { hexToOklab, paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
+import { heldTakesBrick, hexToOklab, paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
 const rank = (s: string | undefined) => (SOURCE_STRENGTH as readonly string[]).indexOf(s === 'author' ? 'reviewed' : s ?? '');
@@ -74,6 +74,8 @@ export type SpecRecipe = Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'perio
   look?: SpecLook;
   /** H11: the shop's ground-storey paint. */
   shopHex?: string;
+  /** H9g: the pale-warm guard held this brick pand's wall; the period colour it keeps must be a brick one (wallColour.ts heldBrickWall). */
+  heldBrick?: true;
 };
 
 /** Default on; `?houseSpecs=0` in the page or HOUSE_SPECS=0 in Node turns the enricher (and so every step) off. */
@@ -198,6 +200,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   if ((SPEC_WALLS_HELD ? specWallsForcedOn() : specWallsOn()) && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex) && !SPEC_WALL_HOLD.has(pandNumber(p.id))) {
     const drawn = specWallColour(view, p);
     if (drawn) recipe.wallHex = drawn;
+    else if (heldTakesBrick({ wallMaterial: view.wallMaterial, registerFinish: String(p.registerFinish ?? '') })) recipe.heldBrick = true;
   }
   // The storey count (H9) on street runs; H11 (held) adds the nearest-count fit on every ground-level run and the ground height.
   if (view.storeys && view.storeys >= 2) {
@@ -215,7 +218,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (view.shop && view.shopHex && /^#[0-9a-f]{6}$/i.test(view.shopHex)) recipe.shopHex = view.shopHex.toLowerCase();
   }
   // A spec recipe only when it carries something the mesher reads; crown and period ride along.
-  if (recipe.bays || recipe.wallHex || recipe.storeys || recipe.look || recipe.shopHex) {
+  if (recipe.bays || recipe.wallHex || recipe.heldBrick || recipe.storeys || recipe.look || recipe.shopHex) {
     const year = Number.isInteger(view.year) ? view.year! : Number(patch.constructionYear ?? p.constructionYear);
     if (Number.isFinite(year)) recipe.period = ERA_PERIOD[eraOfYear(year)];
     if (view.gable && GABLE_TO_CROWN[view.gable]) recipe.crownShape = GABLE_TO_CROWN[view.gable];

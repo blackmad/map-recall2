@@ -206,3 +206,22 @@ export function paleWarmHeld(drawnHex: string, ctx: { family?: WallFamily | null
   if (paleWarmReading(drawnHex)) return true;
   return ctx.readingL !== undefined && hexToOklab(drawnHex)[0] - Math.max(ctx.readingL, SPEC_WALL_LIFT.minL) > PALE_WARM.inversion;
 }
+
+/**
+ * The held-wall fallback is family-aware (lane H9g, #345). A pand the pale-warm guard holds keeps its period colour, and on
+ * Kinkerstraat 154359 and its row the period colour the mesher resolves is a slate grey: the
+ * buurt profile, the period-wall enricher or the material prior, none of which knows the pand is brick. A held pand that is
+ * not stated light (stucco, painted, register light) is brick by the guard's own scope, so a grey (or a pale peach) fallback
+ * is swapped for a dark, red or brown entry of the period palette, picked by `pick` (a hash of the pand id, the same one
+ * the palette pick uses, so the choice is stable). A fallback already in a brick family stays.
+ */
+const HELD_BRICK_FAMILIES: readonly WallColourFamily[] = ['brick-dark', 'brick-red', 'brick-brown'];
+export function heldBrickWall(fallbackHex: string, palette: readonly string[] | null | undefined, pick: number): string {
+  if (HELD_BRICK_FAMILIES.includes(wallColourFamily(fallbackHex))) return fallbackHex;
+  const bricks = (palette ?? []).filter(h => HELD_BRICK_FAMILIES.includes(wallColourFamily(h)));
+  return bricks.length ? bricks[Math.abs(Math.trunc(pick)) % bricks.length] : fallbackHex;
+}
+/** A held pand takes the brick fallback unless its finish is stated light (stucco, painted, register light). */
+export function heldTakesBrick(ctx: { wallMaterial?: string; registerFinish?: string }): boolean {
+  return ctx.wallMaterial ? ctx.wallMaterial === 'brick' : ctx.registerFinish !== 'light';
+}
