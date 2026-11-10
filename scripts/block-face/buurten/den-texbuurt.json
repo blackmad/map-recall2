@@ -1,0 +1,6759 @@
+{
+ "buurt": "Den Texbuurt",
+ "code": "AH07",
+ "identificatie": "03630980000074",
+ "slug": "den-texbuurt",
+ "sources": {
+  "outline": "api.data.amsterdam.nl gebieden/buurten (CC0)",
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (CC0)",
+  "threeDBag": "3DBAG api.3dbag.nl (CC BY 4.0)"
+ },
+ "surveyedAt": "2026-11-10",
+ "outlineRD": [
+  [
+   121565.267,
+   485867.35
+  ],
+  [
+   121565.276,
+   485850.261
+  ],
+  [
+   121549.662,
+   485685.397
+  ],
+  [
+   121189.039,
+   485723.754
+  ],
+  [
+   121173.711,
+   485726.884
+  ],
+  [
+   121158.937,
+   485730.955
+  ],
+  [
+   121143.871,
+   485736.234
+  ],
+  [
+   121129.787,
+   485742.274
+  ],
+  [
+   121116.137,
+   485749.241
+  ],
+  [
+   121102.446,
+   485757.449
+  ],
+  [
+   121088.847,
+   485766.972
+  ],
+  [
+   121078.56,
+   485775.493
+  ],
+  [
+   121056.787,
+   485796.925
+  ],
+  [
+   121037.397,
+   485820.535
+  ],
+  [
+   121021.735,
+   485844.144
+  ],
+  [
+   121013.693,
+   485860.15
+  ],
+  [
+   121005.829,
+   485873.614
+  ],
+  [
+   120990.655,
+   485894.954
+  ],
+  [
+   120972.744,
+   485914.902
+  ],
+  [
+   120952.665,
+   485932.665
+  ],
+  [
+   120878.919,
+   485994.051
+  ],
+  [
+   120888.682,
+   486005.946
+  ],
+  [
+   120896.125,
+   486016.949
+  ],
+  [
+   120912.43,
+   486055.211
+  ],
+  [
+   120926.019,
+   486078.237
+  ],
+  [
+   121131.534,
+   485915.535
+  ],
+  [
+   121138.575,
+   485913.45
+  ],
+  [
+   121183.305,
+   485907.997
+  ],
+  [
+   121551.417,
+   485868.86
+  ],
+  [
+   121565.267,
+   485867.35
+  ]
+ ],
+ "facesRule": "blockFace/buurtFaces.ts proposeFaces: per street and side, pands with a frontage on their address street joined by shared BAG party walls (>= 1 m, front normals within 0.8 dot); faces already authored are kept, not proposed",
+ "faces": [
+  {
+   "id": "tex-8-58",
+   "street": "Den Texstraat",
+   "side": "even",
+   "seed": "0363100012179441",
+   "members": [
+    "0363100012179093",
+    "0363100012171190",
+    "0363100012171189",
+    "0363100012171194",
+    "0363100012171216",
+    "0363100012169015",
+    "0363100012168037",
+    "0363100012179096",
+    "0363100012179097",
+    "0363100012168040",
+    "0363100012168039",
+    "0363100012179793",
+    "0363100012179099",
+    "0363100012168038",
+    "0363100012168125",
+    "0363100012179506",
+    "0363100012179508",
+    "0363100012179507",
+    "0363100012179378",
+    "0363100012179377",
+    "0363100012179379",
+    "0363100012179380",
+    "0363100012179514",
+    "0363100012179432",
+    "0363100012179433",
+    "0363100012179442",
+    "0363100012179441"
+   ],
+   "numbers": [
+    8,
+    58
+   ],
+   "lengthM": 167.1,
+   "dropped": [
+    "0363100012179093",
+    "0363100012171190",
+    "0363100012171189",
+    "0363100012171194",
+    "0363100012171216",
+    "0363100012169015",
+    "0363100012168037",
+    "0363100012179096",
+    "0363100012179097",
+    "0363100012168040",
+    "0363100012168039",
+    "0363100012179793"
+   ]
+  },
+  {
+   "id": "tex-1-59",
+   "street": "Den Texstraat",
+   "side": "odd",
+   "seed": "0363100012168127",
+   "members": [
+    "0363100012168127",
+    "0363100012179440",
+    "0363100012179439",
+    "0363100012179438",
+    "0363100012179437",
+    "0363100012179436",
+    "0363100012179435",
+    "0363100012179430",
+    "0363100012179429",
+    "0363100012179383",
+    "0363100012179382",
+    "0363100012179381",
+    "0363100012179512",
+    "0363100012179511",
+    "0363100012179510",
+    "0363100012179509",
+    "0363100012168126",
+    "0363100012179719",
+    "0363100012179790",
+    "0363100012179718",
+    "0363100012179794",
+    "0363100012179795",
+    "0363100012179717",
+    "0363100012179094",
+    "0363100012179792",
+    "0363100012179095",
+    "0363100012179791",
+    "0363100012179090",
+    "0363100012179789",
+    "0363100012179091",
+    "0363100012179092",
+    "0363100012171197"
+   ],
+   "numbers": [
+    1,
+    59
+   ],
+   "lengthM": 200.6,
+   "dropped": [
+    "0363100012168126",
+    "0363100012179719",
+    "0363100012179790",
+    "0363100012179718",
+    "0363100012179794",
+    "0363100012179795",
+    "0363100012179717",
+    "0363100012179094",
+    "0363100012179792",
+    "0363100012179095",
+    "0363100012179791",
+    "0363100012179090",
+    "0363100012179789",
+    "0363100012179091",
+    "0363100012179092",
+    "0363100012171197"
+   ]
+  },
+  {
+   "id": "weteringplantsoen-2-2",
+   "street": "Eerste Weteringplantsoen",
+   "side": "even",
+   "seed": "0363100012165003",
+   "members": [
+    "0363100012165003"
+   ],
+   "numbers": [
+    2,
+    2
+   ],
+   "lengthM": 24.3
+  },
+  {
+   "id": "weteringplantsoen-4-6",
+   "street": "Eerste Weteringplantsoen",
+   "side": "even",
+   "seed": "0363100012176209",
+   "members": [
+    "0363100012176209",
+    "0363100012176206"
+   ],
+   "numbers": [
+    4,
+    6
+   ],
+   "lengthM": 25
+  },
+  {
+   "id": "weteringplantsoen-8-10",
+   "street": "Eerste Weteringplantsoen",
+   "side": "even",
+   "seed": "0363100012176207",
+   "members": [
+    "0363100012176207",
+    "0363100012176208"
+   ],
+   "numbers": [
+    8,
+    10
+   ],
+   "lengthM": 12.6
+  },
+  {
+   "id": "witsenkade-8-8",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012179371",
+   "members": [
+    "0363100012179371"
+   ],
+   "numbers": [
+    8,
+    8
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-10-10",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012179369",
+   "members": [
+    "0363100012179369"
+   ],
+   "numbers": [
+    10,
+    10
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-12-12",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012179373",
+   "members": [
+    "0363100012179373"
+   ],
+   "numbers": [
+    12,
+    12
+   ],
+   "lengthM": 6.6
+  },
+  {
+   "id": "witsenkade-14-14",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012179376",
+   "members": [
+    "0363100012179376"
+   ],
+   "numbers": [
+    14,
+    14
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-16-16",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012179083",
+   "members": [
+    "0363100012179083"
+   ],
+   "numbers": [
+    16,
+    16
+   ],
+   "lengthM": 6.6
+  },
+  {
+   "id": "witsenkade-18-18",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012179085",
+   "members": [
+    "0363100012179085"
+   ],
+   "numbers": [
+    18,
+    18
+   ],
+   "lengthM": 6.6
+  },
+  {
+   "id": "witsenkade-20-20",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012180402",
+   "members": [
+    "0363100012180402"
+   ],
+   "numbers": [
+    20,
+    20
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-22-22",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012180404",
+   "members": [
+    "0363100012180404"
+   ],
+   "numbers": [
+    22,
+    22
+   ],
+   "lengthM": 7
+  },
+  {
+   "id": "witsenkade-24-24",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012180224",
+   "members": [
+    "0363100012180224"
+   ],
+   "numbers": [
+    24,
+    24
+   ],
+   "lengthM": 6.4
+  },
+  {
+   "id": "witsenkade-26-26",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012179088",
+   "members": [
+    "0363100012179088"
+   ],
+   "numbers": [
+    26,
+    26
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-28-28",
+   "street": "Nicolaas Witsenkade",
+   "side": "even",
+   "seed": "0363100012179087",
+   "members": [
+    "0363100012179087"
+   ],
+   "numbers": [
+    28,
+    28
+   ],
+   "lengthM": 1.8
+  },
+  {
+   "id": "witsenkade-7-7",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012179375",
+   "members": [
+    "0363100012179375"
+   ],
+   "numbers": [
+    7,
+    7
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-9-9",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012179370",
+   "members": [
+    "0363100012179370"
+   ],
+   "numbers": [
+    9,
+    9
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-11-11",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012179372",
+   "members": [
+    "0363100012179372"
+   ],
+   "numbers": [
+    11,
+    11
+   ],
+   "lengthM": 6.4
+  },
+  {
+   "id": "witsenkade-13-13",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012179374",
+   "members": [
+    "0363100012179374"
+   ],
+   "numbers": [
+    13,
+    13
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-15-15",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012168124",
+   "members": [
+    "0363100012168124"
+   ],
+   "numbers": [
+    15,
+    15
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-17-17",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012179084",
+   "members": [
+    "0363100012179084"
+   ],
+   "numbers": [
+    17,
+    17
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-19-19",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012179086",
+   "members": [
+    "0363100012179086"
+   ],
+   "numbers": [
+    19,
+    19
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-21-21",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012180403",
+   "members": [
+    "0363100012180403"
+   ],
+   "numbers": [
+    21,
+    21
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-25-25",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012180223",
+   "members": [
+    "0363100012180223"
+   ],
+   "numbers": [
+    25,
+    25
+   ],
+   "lengthM": 6.5
+  },
+  {
+   "id": "witsenkade-27-27",
+   "street": "Nicolaas Witsenkade",
+   "side": "odd",
+   "seed": "0363100012180227",
+   "members": [
+    "0363100012180227"
+   ],
+   "numbers": [
+    27,
+    27
+   ],
+   "lengthM": 7.5
+  },
+  {
+   "id": "witsen-2-4",
+   "street": "Nicolaas Witsenstraat",
+   "side": "even",
+   "seed": "0363100012171228",
+   "members": [
+    "0363100012171193",
+    "0363100012171228"
+   ],
+   "numbers": [
+    2,
+    4
+   ],
+   "lengthM": 26
+  },
+  {
+   "id": "witsen-12-18",
+   "street": "Nicolaas Witsenstraat",
+   "side": "even",
+   "seed": "0363100012171196",
+   "members": [
+    "0363100012180222",
+    "0363100012180225",
+    "0363100012171191",
+    "0363100012171196"
+   ],
+   "numbers": [
+    12,
+    18
+   ],
+   "lengthM": 18.3
+  },
+  {
+   "id": "witsen-20-20",
+   "street": "Nicolaas Witsenstraat",
+   "side": "even",
+   "seed": "0363100012180228",
+   "members": [
+    "0363100012180228"
+   ],
+   "numbers": [
+    20,
+    20
+   ],
+   "lengthM": 17.1
+  },
+  {
+   "id": "vijzel-1-7",
+   "street": "Nieuwe Vijzelstraat",
+   "side": "odd",
+   "seed": "0363100012175475",
+   "members": [
+    "0363100012175475",
+    "0363100012176744",
+    "0363100012176741",
+    "0363100012175477"
+   ],
+   "numbers": [
+    1,
+    7
+   ],
+   "lengthM": 20.2
+  },
+  {
+   "id": "reguliersgracht-138-142",
+   "street": "Reguliersgracht",
+   "side": "even",
+   "seed": "0363100012171234",
+   "members": [
+    "0363100012171222",
+    "0363100012171226",
+    "0363100012171234"
+   ],
+   "numbers": [
+    138,
+    142
+   ],
+   "lengthM": 18.2
+  },
+  {
+   "id": "weteringplantsoen-6-6",
+   "street": "Tweede Weteringplantsoen",
+   "side": "even",
+   "seed": "0363100012180092",
+   "members": [
+    "0363100012180092"
+   ],
+   "numbers": [
+    6,
+    6
+   ],
+   "lengthM": 6
+  },
+  {
+   "id": "weteringplantsoen-3-17",
+   "street": "Tweede Weteringplantsoen",
+   "side": "odd",
+   "seed": "0363100012180096",
+   "members": [
+    "0363100012180096",
+    "0363100012180095",
+    "0363100012180094"
+   ],
+   "numbers": [
+    3,
+    17
+   ],
+   "lengthM": 38.5
+  },
+  {
+   "id": "weteringplantsoen-21-21",
+   "street": "Tweede Weteringplantsoen",
+   "side": "odd",
+   "seed": "0363100012168122",
+   "members": [
+    "0363100012168122"
+   ],
+   "numbers": [
+    21,
+    21
+   ],
+   "lengthM": 38.3
+  },
+  {
+   "id": "weteringschans-26-26",
+   "street": "Weteringschans",
+   "side": "even",
+   "seed": "0363100012172644",
+   "members": [
+    "0363100012172644"
+   ],
+   "numbers": [
+    26,
+    26
+   ],
+   "lengthM": 10
+  },
+  {
+   "id": "weteringschans-28-28",
+   "street": "Weteringschans",
+   "side": "even",
+   "seed": "0363100012171974",
+   "members": [
+    "0363100012171974"
+   ],
+   "numbers": [
+    28,
+    28
+   ],
+   "lengthM": 10.1
+  },
+  {
+   "id": "weteringschans-30-30",
+   "street": "Weteringschans",
+   "side": "even",
+   "seed": "0363100012176829",
+   "members": [
+    "0363100012176829"
+   ],
+   "numbers": [
+    30,
+    30
+   ],
+   "lengthM": 6.1
+  },
+  {
+   "id": "weteringschans-34-60",
+   "street": "Weteringschans",
+   "side": "even",
+   "seed": "0363100012176215",
+   "members": [
+    "0363100012165002",
+    "0363100012175055",
+    "0363100012176217",
+    "0363100012176216",
+    "0363100012176215"
+   ],
+   "numbers": [
+    34,
+    60
+   ],
+   "lengthM": 49.1
+  },
+  {
+   "id": "weteringschans-66-84",
+   "street": "Weteringschans",
+   "side": "even",
+   "seed": "0363100012179443",
+   "members": [
+    "0363100012179513",
+    "0363100012179502",
+    "0363100012179454",
+    "0363100012179453",
+    "0363100012253946",
+    "0363100012179452",
+    "0363100012179445",
+    "0363100012179444",
+    "0363100012179443"
+   ],
+   "numbers": [
+    66,
+    84
+   ],
+   "lengthM": 62.9
+  },
+  {
+   "id": "weteringschans-84-118",
+   "street": "Weteringschans",
+   "side": "even",
+   "seed": "0363100012179448",
+   "members": [
+    "0363100012171227",
+    "0363100012179716",
+    "0363100012179104",
+    "0363100012179797",
+    "0363100012179102",
+    "0363100012179100",
+    "0363100012179799",
+    "0363100012179800",
+    "0363100012179796",
+    "0363100012179720",
+    "0363100012179721",
+    "0363100012179798",
+    "0363100012168128",
+    "0363100012179449",
+    "0363100012179450",
+    "0363100012179504",
+    "0363100012179448"
+   ],
+   "numbers": [
+    84,
+    118
+   ],
+   "lengthM": 126.7,
+   "dropped": [
+    "0363100012171227",
+    "0363100012179716",
+    "0363100012179104",
+    "0363100012179797"
+   ]
+  },
+  {
+   "id": "weteringschans-81-109",
+   "street": "Weteringschans",
+   "side": "odd",
+   "seed": "0363100012171823",
+   "members": [
+    "0363100012171823",
+    "0363100012171970",
+    "0363100012171889",
+    "0363100012176836",
+    "0363100012177022",
+    "0363100012177021",
+    "0363100012176838"
+   ],
+   "numbers": [
+    81,
+    109
+   ],
+   "lengthM": 94.2
+  },
+  {
+   "id": "weteringschans-113-151",
+   "street": "Weteringschans",
+   "side": "odd",
+   "seed": "0363100012177023",
+   "members": [
+    "0363100012177023",
+    "0363100012177024",
+    "0363100012171971",
+    "0363100012171824",
+    "0363100012171982",
+    "0363100012175058",
+    "0363100012171983",
+    "0363100012175059",
+    "0363100012175060",
+    "0363100012175061",
+    "0363100012175063",
+    "0363100012175062",
+    "0363100012176210",
+    "0363100012175064",
+    "0363100012176211",
+    "0363100012176212",
+    "0363100012176213"
+   ],
+   "numbers": [
+    113,
+    151
+   ],
+   "lengthM": 123.1
+  },
+  {
+   "id": "weteringschans-153-161",
+   "street": "Weteringschans",
+   "side": "odd",
+   "seed": "0363100012176214",
+   "members": [
+    "0363100012176214",
+    "0363100012175056",
+    "0363100012175057",
+    "0363100012165036"
+   ],
+   "numbers": [
+    153,
+    161
+   ],
+   "lengthM": 44
+  },
+  {
+   "id": "weteringschans-165-195",
+   "street": "Weteringschans",
+   "side": "odd",
+   "seed": "0363100012168275",
+   "members": [
+    "0363100012168275",
+    "0363100012179817",
+    "0363100012179816",
+    "0363100012179815",
+    "0363100012179814",
+    "0363100012179813",
+    "0363100012179812",
+    "0363100012180101",
+    "0363100012180100",
+    "0363100012180099",
+    "0363100012180098",
+    "0363100012180097",
+    "0363100012168178",
+    "0363100012178184",
+    "0363100012178186",
+    "0363100012178185"
+   ],
+   "numbers": [
+    165,
+    195
+   ],
+   "lengthM": 154.5
+  },
+  {
+   "id": "weteringschans-197-255",
+   "street": "Weteringschans",
+   "side": "odd",
+   "seed": "0363100012178188",
+   "members": [
+    "0363100012178188",
+    "0363100012178189",
+    "0363100012179519",
+    "0363100012178187",
+    "0363100012179522",
+    "0363100012179521",
+    "0363100012168175",
+    "0363100012168176",
+    "0363100012168177",
+    "0363100012168041",
+    "0363100012168093",
+    "0363100012168094",
+    "0363100012168095",
+    "0363100012168043",
+    "0363100012168096",
+    "0363100012168042",
+    "0363100012169016",
+    "0363100012171218",
+    "0363100012171198",
+    "0363100012185507",
+    "0363100012185997",
+    "0363100012171217",
+    "0363100012171192",
+    "0363100012171195"
+   ],
+   "numbers": [
+    197,
+    255
+   ],
+   "lengthM": 158.3,
+   "dropped": [
+    "0363100012168043",
+    "0363100012168096",
+    "0363100012168042",
+    "0363100012169016",
+    "0363100012171218",
+    "0363100012171198",
+    "0363100012185507",
+    "0363100012185997",
+    "0363100012171217",
+    "0363100012171192",
+    "0363100012171195"
+   ]
+  },
+  {
+   "id": "wetering-60-86",
+   "street": "Weteringstraat",
+   "side": "even",
+   "seed": "0363100012177027",
+   "members": [
+    "0363100012177027"
+   ],
+   "numbers": [
+    60,
+    86
+   ],
+   "lengthM": 22.5
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012168127",
+   "street": "Den Texstraat",
+   "numbers": [
+    1
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1893,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 13.8,
+   "ridgeM": 17.2,
+   "roofMaxM": 18,
+   "normal": [
+    -0.101,
+    -0.995
+   ],
+   "frontMidRD": [
+    121351.31,
+    485792.56
+   ]
+  },
+  {
+   "pandId": "0363100012179440",
+   "street": "Den Texstraat",
+   "numbers": [
+    3
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1885,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.6,
+   "ridgeM": 14.9,
+   "roofMaxM": 16.5,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121357.31,
+    485792.06
+   ]
+  },
+  {
+   "pandId": "0363100012179437",
+   "street": "Den Texstraat",
+   "numbers": [
+    5
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1880,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.2,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.2,
+   "normal": [
+    -0.104,
+    -0.995
+   ],
+   "frontMidRD": [
+    121375.43,
+    485790.13
+   ]
+  },
+  {
+   "pandId": "0363100012179438",
+   "street": "Den Texstraat",
+   "numbers": [
+    5
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1882,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.3,
+   "ridgeM": 17,
+   "roofMaxM": 16.8,
+   "normal": [
+    -0.104,
+    -0.995
+   ],
+   "frontMidRD": [
+    121369.3,
+    485790.86
+   ]
+  },
+  {
+   "pandId": "0363100012179439",
+   "street": "Den Texstraat",
+   "numbers": [
+    5
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1881,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.2,
+   "ridgeM": 14.4,
+   "roofMaxM": 14.2,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121363.27,
+    485791.37
+   ]
+  },
+  {
+   "pandId": "0363100012179436",
+   "street": "Den Texstraat",
+   "numbers": [
+    7
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1883,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 11.2,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.2,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121381.58,
+    485789.62
+   ]
+  },
+  {
+   "pandId": "0363100012179441",
+   "street": "Den Texstraat",
+   "numbers": [
+    8
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1851,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 14,
+   "ridgeM": 14.1,
+   "roofMaxM": 14.1,
+   "normal": [
+    0.097,
+    0.995
+   ],
+   "frontMidRD": [
+    121367.82,
+    485775.95
+   ]
+  },
+  {
+   "pandId": "0363100012179442",
+   "street": "Den Texstraat",
+   "numbers": [
+    8
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1868,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 14,
+   "ridgeM": 14.2,
+   "roofMaxM": 14.1,
+   "normal": [
+    0.098,
+    0.995
+   ],
+   "frontMidRD": [
+    121373.29,
+    485775.41
+   ]
+  },
+  {
+   "pandId": "0363100012179435",
+   "street": "Den Texstraat",
+   "numbers": [
+    9
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1881,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.2,
+   "ridgeM": 14.4,
+   "roofMaxM": 16.3,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121387.66,
+    485789.01
+   ]
+  },
+  {
+   "pandId": "0363100012179433",
+   "street": "Den Texstraat",
+   "numbers": [
+    10
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1855,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.8,
+   "eavesM": 14.5,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.5,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121379.39,
+    485774.81
+   ]
+  },
+  {
+   "pandId": "0363100012179430",
+   "street": "Den Texstraat",
+   "numbers": [
+    11
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1883,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.4,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.4,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121393.72,
+    485788.3
+   ]
+  },
+  {
+   "pandId": "0363100012179432",
+   "street": "Den Texstraat",
+   "numbers": [
+    12
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1867,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.8,
+   "ridgeM": 17.2,
+   "roofMaxM": 17.3,
+   "normal": [
+    0.102,
+    0.995
+   ],
+   "frontMidRD": [
+    121385.73,
+    485774.17
+   ]
+  },
+  {
+   "pandId": "0363100012179429",
+   "street": "Den Texstraat",
+   "numbers": [
+    13
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1883,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.3,
+   "ridgeM": 16.6,
+   "roofMaxM": 14.3,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121399.81,
+    485787.81
+   ]
+  },
+  {
+   "pandId": "0363100012179514",
+   "street": "Den Texstraat",
+   "numbers": [
+    14,
+    16
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1884,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 12.2,
+   "eavesM": 15.5,
+   "ridgeM": 18.6,
+   "roofMaxM": 19.5,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121394.8,
+    485773.3
+   ]
+  },
+  {
+   "pandId": "0363100012179383",
+   "street": "Den Texstraat",
+   "numbers": [
+    15
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1883,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.1,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.2,
+   "normal": [
+    -0.098,
+    -0.995
+   ],
+   "frontMidRD": [
+    121405.88,
+    485787.21
+   ]
+  },
+  {
+   "pandId": "0363100012179382",
+   "street": "Den Texstraat",
+   "numbers": [
+    17
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.4,
+   "ridgeM": 15.3,
+   "roofMaxM": 15.7,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121411.93,
+    485786.55
+   ]
+  },
+  {
+   "pandId": "0363100012179380",
+   "street": "Den Texstraat",
+   "numbers": [
+    18
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1881,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.4,
+   "ridgeM": 17.2,
+   "roofMaxM": 17.1,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121403.96,
+    485772.33
+   ]
+  },
+  {
+   "pandId": "0363100012179381",
+   "street": "Den Texstraat",
+   "numbers": [
+    19
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1876,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.4,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.6,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121418,
+    485785.95
+   ]
+  },
+  {
+   "pandId": "0363100012179379",
+   "street": "Den Texstraat",
+   "numbers": [
+    20
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1884,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.4,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.4,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121410.14,
+    485771.71
+   ]
+  },
+  {
+   "pandId": "0363100012179512",
+   "street": "Den Texstraat",
+   "numbers": [
+    21
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1877,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.3,
+   "ridgeM": 14.6,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121424.07,
+    485785.39
+   ]
+  },
+  {
+   "pandId": "0363100012179377",
+   "street": "Den Texstraat",
+   "numbers": [
+    22
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1882,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.2,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.3,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121416.29,
+    485771.09
+   ]
+  },
+  {
+   "pandId": "0363100012179511",
+   "street": "Den Texstraat",
+   "numbers": [
+    23
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1875,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.4,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121430.13,
+    485784.77
+   ]
+  },
+  {
+   "pandId": "0363100012179378",
+   "street": "Den Texstraat",
+   "numbers": [
+    24
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1883,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 14.4,
+   "ridgeM": 17,
+   "roofMaxM": 16.8,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121422.47,
+    485770.57
+   ]
+  },
+  {
+   "pandId": "0363100012179510",
+   "street": "Den Texstraat",
+   "numbers": [
+    25
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1876,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.6,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.6,
+   "normal": [
+    -0.103,
+    -0.995
+   ],
+   "frontMidRD": [
+    121436.23,
+    485784.14
+   ]
+  },
+  {
+   "pandId": "0363100012179507",
+   "street": "Den Texstraat",
+   "numbers": [
+    26
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1882,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.2,
+   "ridgeM": 16.3,
+   "roofMaxM": 14.7,
+   "normal": [
+    0.104,
+    0.995
+   ],
+   "frontMidRD": [
+    121428.63,
+    485769.84
+   ]
+  },
+  {
+   "pandId": "0363100012179509",
+   "street": "Den Texstraat",
+   "numbers": [
+    27
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1872,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.4,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.4,
+   "normal": [
+    -0.103,
+    -0.995
+   ],
+   "frontMidRD": [
+    121442.37,
+    485783.51
+   ]
+  },
+  {
+   "pandId": "0363100012179508",
+   "street": "Den Texstraat",
+   "numbers": [
+    28
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1890,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 13.2,
+   "ridgeM": 13.4,
+   "roofMaxM": 13.2,
+   "normal": [
+    0.098,
+    0.995
+   ],
+   "frontMidRD": [
+    121434.73,
+    485769.22
+   ]
+  },
+  {
+   "pandId": "0363100012168126",
+   "street": "Den Texstraat",
+   "numbers": [
+    29
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1871,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 11.7,
+   "ridgeM": 14.4,
+   "roofMaxM": 14.3,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121448.66,
+    485782.87
+   ]
+  },
+  {
+   "pandId": "0363100012168125",
+   "street": "Den Texstraat",
+   "numbers": [
+    30
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1881,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 15,
+   "ridgeM": 15.1,
+   "roofMaxM": 15,
+   "normal": [
+    0.102,
+    0.995
+   ],
+   "frontMidRD": [
+    121447.13,
+    485767.98
+   ]
+  },
+  {
+   "pandId": "0363100012179506",
+   "street": "Den Texstraat",
+   "numbers": [
+    30
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1888,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 13.3,
+   "ridgeM": 15.6,
+   "roofMaxM": 15.6,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121440.81,
+    485768.62
+   ]
+  },
+  {
+   "pandId": "0363100012179719",
+   "street": "Den Texstraat",
+   "numbers": [
+    31
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1866,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 14.3,
+   "ridgeM": 16.4,
+   "roofMaxM": 16.4,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121455.1,
+    485782.23
+   ]
+  },
+  {
+   "pandId": "0363100012168038",
+   "street": "Den Texstraat",
+   "numbers": [
+    32
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1881,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 15.2,
+   "ridgeM": 16.9,
+   "roofMaxM": 16.9,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121453.65,
+    485767.32
+   ]
+  },
+  {
+   "pandId": "0363100012179790",
+   "street": "Den Texstraat",
+   "numbers": [
+    33
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1858,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.1,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.7,
+   "normal": [
+    -0.097,
+    -0.995
+   ],
+   "frontMidRD": [
+    121461.3,
+    485781.61
+   ]
+  },
+  {
+   "pandId": "0363100012179099",
+   "street": "Den Texstraat",
+   "numbers": [
+    34
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1880,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 15.2,
+   "ridgeM": 15.2,
+   "roofMaxM": 15.2,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121460.12,
+    485766.67
+   ]
+  },
+  {
+   "pandId": "0363100012179718",
+   "street": "Den Texstraat",
+   "numbers": [
+    35
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1858,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 14.4,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.9,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121467.78,
+    485780.97
+   ]
+  },
+  {
+   "pandId": "0363100012179793",
+   "street": "Den Texstraat",
+   "numbers": [
+    36
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 15.2,
+   "ridgeM": 15.2,
+   "roofMaxM": 15.3,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121466.54,
+    485766.02
+   ]
+  },
+  {
+   "pandId": "0363100012179794",
+   "street": "Den Texstraat",
+   "numbers": [
+    37
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1863,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 11.3,
+   "ridgeM": 14.4,
+   "roofMaxM": 14.3,
+   "normal": [
+    -0.117,
+    -0.993
+   ],
+   "frontMidRD": [
+    121474.25,
+    485780.32
+   ]
+  },
+  {
+   "pandId": "0363100012168039",
+   "street": "Den Texstraat",
+   "numbers": [
+    38
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1872,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.7,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.8,
+   "normal": [
+    0.102,
+    0.995
+   ],
+   "frontMidRD": [
+    121472.78,
+    485765.39
+   ]
+  },
+  {
+   "pandId": "0363100012179795",
+   "street": "Den Texstraat",
+   "numbers": [
+    39
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1859,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.2,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121480.24,
+    485779.71
+   ]
+  },
+  {
+   "pandId": "0363100012168040",
+   "street": "Den Texstraat",
+   "numbers": [
+    40
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1883,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 14.7,
+   "ridgeM": 14.8,
+   "roofMaxM": 15.7,
+   "normal": [
+    0.103,
+    0.995
+   ],
+   "frontMidRD": [
+    121478.8,
+    485764.77
+   ]
+  },
+  {
+   "pandId": "0363100012179717",
+   "street": "Den Texstraat",
+   "numbers": [
+    41
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1880,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.1,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.115,
+    -0.993
+   ],
+   "frontMidRD": [
+    121486.23,
+    485779.06
+   ]
+  },
+  {
+   "pandId": "0363100012179097",
+   "street": "Den Texstraat",
+   "numbers": [
+    42
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1882,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.1,
+   "ridgeM": 14.4,
+   "roofMaxM": 15.7,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121484.72,
+    485764.17
+   ]
+  },
+  {
+   "pandId": "0363100012179094",
+   "street": "Den Texstraat",
+   "numbers": [
+    43
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1875,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.2,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.092,
+    -0.996
+   ],
+   "frontMidRD": [
+    121492.2,
+    485778.44
+   ]
+  },
+  {
+   "pandId": "0363100012179096",
+   "street": "Den Texstraat",
+   "numbers": [
+    44
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1885,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 13.9,
+   "ridgeM": 14,
+   "roofMaxM": 13.9,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121490.69,
+    485763.57
+   ]
+  },
+  {
+   "pandId": "0363100012179792",
+   "street": "Den Texstraat",
+   "numbers": [
+    45
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.5,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.09,
+    -0.996
+   ],
+   "frontMidRD": [
+    121498.3,
+    485777.86
+   ]
+  },
+  {
+   "pandId": "0363100012168037",
+   "street": "Den Texstraat",
+   "numbers": [
+    46
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1882,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.2,
+   "ridgeM": 14.3,
+   "roofMaxM": 14.2,
+   "normal": [
+    0.098,
+    0.995
+   ],
+   "frontMidRD": [
+    121496.77,
+    485762.96
+   ]
+  },
+  {
+   "pandId": "0363100012179095",
+   "street": "Den Texstraat",
+   "numbers": [
+    47
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1880,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.5,
+   "ridgeM": 16.5,
+   "roofMaxM": 16.5,
+   "normal": [
+    -0.101,
+    -0.995
+   ],
+   "frontMidRD": [
+    121504.47,
+    485777.25
+   ]
+  },
+  {
+   "pandId": "0363100012169015",
+   "street": "Den Texstraat",
+   "numbers": [
+    48
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1881,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.1,
+   "ridgeM": 14.4,
+   "roofMaxM": 14.1,
+   "normal": [
+    0.098,
+    0.995
+   ],
+   "frontMidRD": [
+    121502.94,
+    485762.35
+   ]
+  },
+  {
+   "pandId": "0363100012179791",
+   "street": "Den Texstraat",
+   "numbers": [
+    49
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1876,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 2.2,
+   "eavesM": 14.5,
+   "ridgeM": 16.5,
+   "roofMaxM": 16.5,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121512.55,
+    485776.34
+   ]
+  },
+  {
+   "pandId": "0363100012171216",
+   "street": "Den Texstraat",
+   "numbers": [
+    50
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1881,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 2.2,
+   "eavesM": 14.3,
+   "ridgeM": 16.8,
+   "roofMaxM": 16.7,
+   "normal": [
+    0.097,
+    0.995
+   ],
+   "frontMidRD": [
+    121510.99,
+    485761.68
+   ]
+  },
+  {
+   "pandId": "0363100012179090",
+   "street": "Den Texstraat",
+   "numbers": [
+    51
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 14.5,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.8,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121516.71,
+    485776.02
+   ]
+  },
+  {
+   "pandId": "0363100012171194",
+   "street": "Den Texstraat",
+   "numbers": [
+    52
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1875,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.4,
+   "ridgeM": 17,
+   "roofMaxM": 17,
+   "normal": [
+    0.098,
+    0.995
+   ],
+   "frontMidRD": [
+    121515.15,
+    485761.17
+   ]
+  },
+  {
+   "pandId": "0363100012179789",
+   "street": "Den Texstraat",
+   "numbers": [
+    53
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 14.5,
+   "ridgeM": 14.6,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121522.79,
+    485775.41
+   ]
+  },
+  {
+   "pandId": "0363100012171189",
+   "street": "Den Texstraat",
+   "numbers": [
+    54
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1876,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 14.3,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.7,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121521.27,
+    485760.57
+   ]
+  },
+  {
+   "pandId": "0363100012179091",
+   "street": "Den Texstraat",
+   "numbers": [
+    55
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1873,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 13.9,
+   "ridgeM": 14,
+   "roofMaxM": 14,
+   "normal": [
+    -0.101,
+    -0.995
+   ],
+   "frontMidRD": [
+    121528.54,
+    485774.82
+   ]
+  },
+  {
+   "pandId": "0363100012171190",
+   "street": "Den Texstraat",
+   "numbers": [
+    56
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1891,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 14.1,
+   "ridgeM": 16.5,
+   "roofMaxM": 16.7,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121527.2,
+    485759.97
+   ]
+  },
+  {
+   "pandId": "0363100012179092",
+   "street": "Den Texstraat",
+   "numbers": [
+    57
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.5,
+   "eavesM": 13.8,
+   "ridgeM": 16.1,
+   "roofMaxM": 16.1,
+   "normal": [
+    -0.101,
+    -0.995
+   ],
+   "frontMidRD": [
+    121534.02,
+    485774.27
+   ]
+  },
+  {
+   "pandId": "0363100012179093",
+   "street": "Den Texstraat",
+   "numbers": [
+    58
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1876,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.3,
+   "eavesM": 13.9,
+   "ridgeM": 14,
+   "roofMaxM": 13.9,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121532.72,
+    485759.41
+   ]
+  },
+  {
+   "pandId": "0363100012171197",
+   "street": "Den Texstraat",
+   "numbers": [
+    59
+   ],
+   "otherStreets": {
+    "Nicolaas Witsenstraat": [
+     10
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1860,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 15.2,
+   "eavesM": 13.3,
+   "ridgeM": 16.4,
+   "roofMaxM": 16.2,
+   "normal": [
+    -0.101,
+    -0.995
+   ],
+   "frontMidRD": [
+    121544.33,
+    485773.57
+   ]
+  },
+  {
+   "pandId": "0363100012165003",
+   "street": "Eerste Weteringplantsoen",
+   "numbers": [
+    2
+   ],
+   "otherStreets": {
+    "Weteringschans": [
+     32
+    ]
+   },
+   "side": "even",
+   "builtYear": 1941,
+   "storeys3dbag": 0,
+   "units": 20,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 24.3,
+   "eavesM": 18.5,
+   "ridgeM": 20.6,
+   "roofMaxM": 20.6,
+   "normal": [
+    -0.929,
+    0.37
+   ],
+   "frontMidRD": [
+    121074.38,
+    485873.3
+   ]
+  },
+  {
+   "pandId": "0363100012176209",
+   "street": "Eerste Weteringplantsoen",
+   "numbers": [
+    4
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 14.1,
+   "ridgeM": 17.6,
+   "roofMaxM": 17.7,
+   "normal": [
+    -0.942,
+    -0.335
+   ],
+   "frontMidRD": [
+    121077.96,
+    485840.06
+   ]
+  },
+  {
+   "pandId": "0363100012176206",
+   "street": "Eerste Weteringplantsoen",
+   "numbers": [
+    6
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1884,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 17.5,
+   "eavesM": 13.1,
+   "ridgeM": 13.8,
+   "roofMaxM": 13.6,
+   "normal": [
+    -0.942,
+    -0.335
+   ],
+   "frontMidRD": [
+    121082.14,
+    485828.3
+   ]
+  },
+  {
+   "pandId": "0363100012176207",
+   "street": "Eerste Weteringplantsoen",
+   "numbers": [
+    8
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1895,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 14.5,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.8,
+   "normal": [
+    0.334,
+    -0.943
+   ],
+   "frontMidRD": [
+    121094.62,
+    485823.45
+   ]
+  },
+  {
+   "pandId": "0363100012176208",
+   "street": "Eerste Weteringplantsoen",
+   "numbers": [
+    10
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1895,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 14.5,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.8,
+   "normal": [
+    0.334,
+    -0.943
+   ],
+   "frontMidRD": [
+    121100.54,
+    485825.57
+   ]
+  },
+  {
+   "pandId": "0363100012168277",
+   "street": "H.M. van Randwijkplantsoen",
+   "numbers": [
+    1
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": null,
+   "storeys3dbag": null,
+   "units": 1,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "factsError": "Street \"H.M. van Randwijkplantsoen\" not found in the routing extract"
+  },
+  {
+   "pandId": "0363100012179375",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    7
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1888,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 17.4,
+   "ridgeM": 20.1,
+   "roofMaxM": 17.5,
+   "normal": [
+    -0.104,
+    -0.995
+   ],
+   "frontMidRD": [
+    121396.45,
+    485727.28
+   ]
+  },
+  {
+   "pandId": "0363100012179371",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    8
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1888,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 17.5,
+   "ridgeM": 19.7,
+   "roofMaxM": 19.7,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121402.9,
+    485726.72
+   ]
+  },
+  {
+   "pandId": "0363100012179370",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    9
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1887,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 17.5,
+   "ridgeM": 19.8,
+   "roofMaxM": 19.7,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121409.36,
+    485726.07
+   ]
+  },
+  {
+   "pandId": "0363100012179369",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    10
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1890,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 17.5,
+   "ridgeM": 19.7,
+   "roofMaxM": 19.7,
+   "normal": [
+    -0.103,
+    -0.995
+   ],
+   "frontMidRD": [
+    121415.82,
+    485725.34
+   ]
+  },
+  {
+   "pandId": "0363100012179372",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    11
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1892,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 16.6,
+   "ridgeM": 19.2,
+   "roofMaxM": 19.3,
+   "normal": [
+    -0.095,
+    -0.995
+   ],
+   "frontMidRD": [
+    121422.28,
+    485724.77
+   ]
+  },
+  {
+   "pandId": "0363100012179373",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    12
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1886,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 16.8,
+   "ridgeM": 19.2,
+   "roofMaxM": 19.1,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121428.76,
+    485724.13
+   ]
+  },
+  {
+   "pandId": "0363100012179374",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    13
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1886,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 19,
+   "ridgeM": 19.1,
+   "roofMaxM": 19.1,
+   "normal": [
+    -0.108,
+    -0.994
+   ],
+   "frontMidRD": [
+    121435.26,
+    485723.36
+   ]
+  },
+  {
+   "pandId": "0363100012179376",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    14
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1884,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 19,
+   "ridgeM": 19.2,
+   "roofMaxM": 19.1,
+   "normal": [
+    -0.098,
+    -0.995
+   ],
+   "frontMidRD": [
+    121441.73,
+    485722.76
+   ]
+  },
+  {
+   "pandId": "0363100012168124",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    15
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1873,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 16.8,
+   "ridgeM": 17,
+   "roofMaxM": 16.9,
+   "normal": [
+    -0.098,
+    -0.995
+   ],
+   "frontMidRD": [
+    121448.19,
+    485722.03
+   ]
+  },
+  {
+   "pandId": "0363100012179083",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    16
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1949,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 16.7,
+   "ridgeM": 16.8,
+   "roofMaxM": 16.7,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121454.7,
+    485721.45
+   ]
+  },
+  {
+   "pandId": "0363100012179084",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    17
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1886,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 16.6,
+   "ridgeM": 19,
+   "roofMaxM": 19,
+   "normal": [
+    -0.103,
+    -0.995
+   ],
+   "frontMidRD": [
+    121461.21,
+    485720.79
+   ]
+  },
+  {
+   "pandId": "0363100012179085",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    18
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1884,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 14.2,
+   "ridgeM": 19.2,
+   "roofMaxM": 19.2,
+   "normal": [
+    -0.09,
+    -0.996
+   ],
+   "frontMidRD": [
+    121467.74,
+    485720.09
+   ]
+  },
+  {
+   "pandId": "0363100012179086",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    19
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1897,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 12.9,
+   "ridgeM": 19.3,
+   "roofMaxM": 19.3,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121474.26,
+    485719.44
+   ]
+  },
+  {
+   "pandId": "0363100012180402",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    20
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1897,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 15.6,
+   "ridgeM": 16.9,
+   "roofMaxM": 16.9,
+   "normal": [
+    -0.104,
+    -0.995
+   ],
+   "frontMidRD": [
+    121480.74,
+    485718.75
+   ]
+  },
+  {
+   "pandId": "0363100012180403",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    21
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1897,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 13.7,
+   "ridgeM": 13.6,
+   "roofMaxM": 13.7,
+   "normal": [
+    -0.105,
+    -0.994
+   ],
+   "frontMidRD": [
+    121487.23,
+    485718.07
+   ]
+  },
+  {
+   "pandId": "0363100012180404",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    22
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1897,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "gezondheidszorgfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 14.4,
+   "ridgeM": 14.5,
+   "roofMaxM": 14.5,
+   "normal": [
+    -0.087,
+    -0.996
+   ],
+   "frontMidRD": [
+    121493.95,
+    485717.36
+   ]
+  },
+  {
+   "pandId": "0363100012180224",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    24
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1870,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 15.8,
+   "ridgeM": 15.9,
+   "roofMaxM": 15.9,
+   "normal": [
+    -0.098,
+    -0.995
+   ],
+   "frontMidRD": [
+    121507.26,
+    485716.03
+   ]
+  },
+  {
+   "pandId": "0363100012180223",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    25
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1872,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 15.9,
+   "ridgeM": 15.9,
+   "roofMaxM": 15.9,
+   "normal": [
+    -0.112,
+    -0.994
+   ],
+   "frontMidRD": [
+    121513.69,
+    485715.36
+   ]
+  },
+  {
+   "pandId": "0363100012179088",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    26
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1877,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 16.1,
+   "ridgeM": 17.1,
+   "roofMaxM": 16.1,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121520.12,
+    485714.56
+   ]
+  },
+  {
+   "pandId": "0363100012180227",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    27
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.5,
+   "eavesM": 20.3,
+   "ridgeM": 20.9,
+   "roofMaxM": 20.9,
+   "normal": [
+    -0.095,
+    -0.995
+   ],
+   "frontMidRD": [
+    121527.08,
+    485713.96
+   ]
+  },
+  {
+   "pandId": "0363100012179087",
+   "street": "Nicolaas Witsenkade",
+   "numbers": [
+    28
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1878,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.8,
+   "eavesM": 15.4,
+   "ridgeM": 15.5,
+   "roofMaxM": 15.4,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121533.13,
+    485712.45
+   ]
+  },
+  {
+   "pandId": "0363100012171228",
+   "street": "Nicolaas Witsenstraat",
+   "numbers": [
+    2
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1864,
+   "storeys3dbag": 0,
+   "units": 7,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.8,
+   "eavesM": 18.5,
+   "ridgeM": 18.6,
+   "roofMaxM": 18.5,
+   "normal": [
+    0.995,
+    -0.103
+   ],
+   "frontMidRD": [
+    121553.29,
+    485798.52
+   ]
+  },
+  {
+   "pandId": "0363100012171193",
+   "street": "Nicolaas Witsenstraat",
+   "numbers": [
+    4
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1884,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "logiesfunctie"
+   ],
+   "frontWidthM": 15.2,
+   "eavesM": 14.9,
+   "ridgeM": 15,
+   "roofMaxM": 16.8,
+   "normal": [
+    0.995,
+    -0.103
+   ],
+   "frontMidRD": [
+    121551.98,
+    485785.6
+   ]
+  },
+  {
+   "pandId": "0363100012171196",
+   "street": "Nicolaas Witsenstraat",
+   "numbers": [
+    12
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1876,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 3.1,
+   "eavesM": 16.1,
+   "ridgeM": 16.3,
+   "roofMaxM": 16.1,
+   "normal": [
+    0.996,
+    -0.09
+   ],
+   "frontMidRD": [
+    121550.17,
+    485755.39
+   ]
+  },
+  {
+   "pandId": "0363100012171191",
+   "street": "Nicolaas Witsenstraat",
+   "numbers": [
+    14
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1877,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 14.5,
+   "ridgeM": 16.9,
+   "roofMaxM": 16.9,
+   "normal": [
+    0.995,
+    -0.101
+   ],
+   "frontMidRD": [
+    121548.4,
+    485749.76
+   ]
+  },
+  {
+   "pandId": "0363100012180225",
+   "street": "Nicolaas Witsenstraat",
+   "numbers": [
+    16
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1834,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 14.6,
+   "ridgeM": 14.7,
+   "roofMaxM": 14.6,
+   "normal": [
+    0.995,
+    -0.102
+   ],
+   "frontMidRD": [
+    121547.99,
+    485744.77
+   ]
+  },
+  {
+   "pandId": "0363100012180222",
+   "street": "Nicolaas Witsenstraat",
+   "numbers": [
+    18
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1875,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 14.7,
+   "ridgeM": 14.8,
+   "roofMaxM": 14.7,
+   "normal": [
+    0.994,
+    -0.108
+   ],
+   "frontMidRD": [
+    121547.46,
+    485739.71
+   ]
+  },
+  {
+   "pandId": "0363100012180228",
+   "street": "Nicolaas Witsenstraat",
+   "numbers": [
+    20
+   ],
+   "otherStreets": {
+    "Nicolaas Witsenkade": [
+     29
+    ]
+   },
+   "side": "even",
+   "builtYear": 1897,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 17.1,
+   "eavesM": 18.5,
+   "ridgeM": 18.7,
+   "roofMaxM": 18.5,
+   "normal": [
+    0.995,
+    -0.097
+   ],
+   "frontMidRD": [
+    121545.59,
+    485720.67
+   ]
+  },
+  {
+   "pandId": "0363100012175475",
+   "street": "Nieuwe Vijzelstraat",
+   "numbers": [
+    1
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 5.4,
+   "eavesM": 13.2,
+   "ridgeM": 15.5,
+   "roofMaxM": 15.5,
+   "normal": [
+    -0.994,
+    0.105
+   ],
+   "frontMidRD": [
+    121214.29,
+    485890.36
+   ]
+  },
+  {
+   "pandId": "0363100012176744",
+   "street": "Nieuwe Vijzelstraat",
+   "numbers": [
+    3
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 4.3,
+   "eavesM": 13.8,
+   "ridgeM": 15.2,
+   "roofMaxM": 15.2,
+   "normal": [
+    -0.994,
+    0.106
+   ],
+   "frontMidRD": [
+    121213.78,
+    485885.57
+   ]
+  },
+  {
+   "pandId": "0363100012176741",
+   "street": "Nieuwe Vijzelstraat",
+   "numbers": [
+    5
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1868,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 4.1,
+   "eavesM": 13.9,
+   "ridgeM": 15.3,
+   "roofMaxM": 15.3,
+   "normal": [
+    -0.996,
+    0.094
+   ],
+   "frontMidRD": [
+    121213.36,
+    485881.42
+   ]
+  },
+  {
+   "pandId": "0363100012175477",
+   "street": "Nieuwe Vijzelstraat",
+   "numbers": [
+    7
+   ],
+   "otherStreets": {
+    "Weteringschans": [
+     163
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1864,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 12.3,
+   "ridgeM": 15.2,
+   "roofMaxM": 16,
+   "normal": [
+    -0.996,
+    0.095
+   ],
+   "frontMidRD": [
+    121212.88,
+    485876.22
+   ]
+  },
+  {
+   "pandId": "0363100012171234",
+   "street": "Reguliersgracht",
+   "numbers": [
+    138
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 16,
+   "ridgeM": 19.5,
+   "roofMaxM": 19.3,
+   "normal": [
+    0.996,
+    -0.094
+   ],
+   "frontMidRD": [
+    121558.64,
+    485853.72
+   ]
+  },
+  {
+   "pandId": "0363100012171226",
+   "street": "Reguliersgracht",
+   "numbers": [
+    140
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1873,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 16.4,
+   "ridgeM": 19.4,
+   "roofMaxM": 19.4,
+   "normal": [
+    0.996,
+    -0.087
+   ],
+   "frontMidRD": [
+    121557.97,
+    485847.55
+   ]
+  },
+  {
+   "pandId": "0363100012171222",
+   "street": "Reguliersgracht",
+   "numbers": [
+    142
+   ],
+   "otherStreets": {
+    "Weteringschans": [
+     257
+    ]
+   },
+   "side": "even",
+   "builtYear": 1879,
+   "storeys3dbag": 0,
+   "units": 2,
+   "groundUses": [
+    "kantoorfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 18.5,
+   "ridgeM": 18.7,
+   "roofMaxM": 18.5,
+   "normal": [
+    0.996,
+    -0.089
+   ],
+   "frontMidRD": [
+    121557.4,
+    485841.75
+   ]
+  },
+  {
+   "pandId": "0363100012168123",
+   "street": "Tweede Weteringplantsoen",
+   "numbers": [
+    1
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": null,
+   "storeys3dbag": null,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "factsError": "No footprint edge faces Tweede Weteringplantsoen"
+  },
+  {
+   "pandId": "0363100012180096",
+   "street": "Tweede Weteringplantsoen",
+   "numbers": [
+    3,
+    5,
+    7
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1893,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 18.8,
+   "eavesM": 16.7,
+   "ridgeM": 16.9,
+   "roofMaxM": 16.7,
+   "normal": [
+    -0.995,
+    0.097
+   ],
+   "frontMidRD": [
+    121337.27,
+    485823.25
+   ]
+  },
+  {
+   "pandId": "0363100012180092",
+   "street": "Tweede Weteringplantsoen",
+   "numbers": [
+    6
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1995,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 3.9,
+   "ridgeM": 4,
+   "roofMaxM": 3.9,
+   "normal": [
+    0.994,
+    -0.109
+   ],
+   "frontMidRD": [
+    121313.49,
+    485744.16
+   ]
+  },
+  {
+   "pandId": "0363100012180095",
+   "street": "Tweede Weteringplantsoen",
+   "numbers": [
+    9
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1893,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 16.6,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.6,
+   "normal": [
+    -0.995,
+    0.098
+   ],
+   "frontMidRD": [
+    121335.98,
+    485810.78
+   ]
+  },
+  {
+   "pandId": "0363100012180094",
+   "street": "Tweede Weteringplantsoen",
+   "numbers": [
+    11,
+    13,
+    15,
+    17
+   ],
+   "otherStreets": {
+    "Den Texstraat": [
+     1
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1893,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 13.4,
+   "eavesM": 16.4,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.7,
+   "normal": [
+    -0.995,
+    0.097
+   ],
+   "frontMidRD": [
+    121334.92,
+    485801
+   ]
+  },
+  {
+   "pandId": "0363100012168122",
+   "street": "Tweede Weteringplantsoen",
+   "numbers": [
+    21
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1970,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 38.3,
+   "eavesM": 13.9,
+   "ridgeM": 25.4,
+   "roofMaxM": 25.4,
+   "normal": [
+    -0.994,
+    0.106
+   ],
+   "frontMidRD": [
+    121331.02,
+    485760.58
+   ]
+  },
+  {
+   "pandId": "0363100012172644",
+   "street": "Weteringschans",
+   "numbers": [
+    26
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1978,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 10,
+   "eavesM": 16.3,
+   "ridgeM": 20.9,
+   "roofMaxM": 19.9,
+   "normal": [
+    0.598,
+    0.802
+   ],
+   "frontMidRD": [
+    120931.03,
+    485994.61
+   ]
+  },
+  {
+   "pandId": "0363100012171974",
+   "street": "Weteringschans",
+   "numbers": [
+    28
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1980,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 10.1,
+   "eavesM": 16.3,
+   "ridgeM": 24.7,
+   "roofMaxM": 24.2,
+   "normal": [
+    0.597,
+    0.802
+   ],
+   "frontMidRD": [
+    120971,
+    485967.7
+   ]
+  },
+  {
+   "pandId": "0363100012176829",
+   "street": "Weteringschans",
+   "numbers": [
+    30
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1986,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 4.3,
+   "ridgeM": 4.6,
+   "roofMaxM": 4.3,
+   "normal": [
+    0.633,
+    0.774
+   ],
+   "frontMidRD": [
+    121005.25,
+    485941.17
+   ]
+  },
+  {
+   "pandId": "0363100012176215",
+   "street": "Weteringschans",
+   "numbers": [
+    34
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 15.4,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.6,
+   "normal": [
+    0.373,
+    0.928
+   ],
+   "frontMidRD": [
+    121088.95,
+    485880.54
+   ]
+  },
+  {
+   "pandId": "0363100012176216",
+   "street": "Weteringschans",
+   "numbers": [
+    36
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.9,
+   "eavesM": 15.2,
+   "ridgeM": 17.5,
+   "roofMaxM": 17.4,
+   "normal": [
+    0.374,
+    0.928
+   ],
+   "frontMidRD": [
+    121093.49,
+    485878.71
+   ]
+  },
+  {
+   "pandId": "0363100012176217",
+   "street": "Weteringschans",
+   "numbers": [
+    38
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.7,
+   "eavesM": 15.5,
+   "ridgeM": 17.7,
+   "roofMaxM": 17.7,
+   "normal": [
+    0.374,
+    0.928
+   ],
+   "frontMidRD": [
+    121097.96,
+    485876.93
+   ]
+  },
+  {
+   "pandId": "0363100012175055",
+   "street": "Weteringschans",
+   "numbers": [
+    40
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.8,
+   "eavesM": 14.8,
+   "ridgeM": 17.3,
+   "roofMaxM": 17.3,
+   "normal": [
+    0.367,
+    0.93
+   ],
+   "frontMidRD": [
+    121102.41,
+    485875.15
+   ]
+  },
+  {
+   "pandId": "0363100012165002",
+   "street": "Weteringschans",
+   "numbers": [
+    50,
+    52,
+    54,
+    56,
+    58,
+    60
+   ],
+   "otherStreets": {
+    "Eerste Weteringplantsoen": [
+     40,
+     42,
+     44,
+     46,
+     48,
+     50,
+     52,
+     54,
+     56,
+     58,
+     60,
+     62,
+     64,
+     66,
+     68,
+     70,
+     72,
+     74
+    ]
+   },
+   "side": "even",
+   "builtYear": 1986,
+   "storeys3dbag": 5,
+   "units": 49,
+   "groundUses": [
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 29.8,
+   "eavesM": 13.8,
+   "ridgeM": 16,
+   "roofMaxM": 15.8,
+   "normal": [
+    0.374,
+    0.928
+   ],
+   "frontMidRD": [
+    121118.45,
+    485868.65
+   ]
+  },
+  {
+   "pandId": "0363100012179443",
+   "street": "Weteringschans",
+   "numbers": [
+    66
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1891,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 16.7,
+   "ridgeM": 16.8,
+   "roofMaxM": 16.8,
+   "normal": [
+    0.102,
+    0.995
+   ],
+   "frontMidRD": [
+    121355.68,
+    485837.98
+   ]
+  },
+  {
+   "pandId": "0363100012179444",
+   "street": "Weteringschans",
+   "numbers": [
+    68
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1861,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 16.6,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.6,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121361.6,
+    485837.3
+   ]
+  },
+  {
+   "pandId": "0363100012179445",
+   "street": "Weteringschans",
+   "numbers": [
+    70
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1866,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 16.6,
+   "ridgeM": 17.8,
+   "roofMaxM": 16.6,
+   "normal": [
+    0.095,
+    0.995
+   ],
+   "frontMidRD": [
+    121367.61,
+    485836.71
+   ]
+  },
+  {
+   "pandId": "0363100012179452",
+   "street": "Weteringschans",
+   "numbers": [
+    72
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1879,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 15.3,
+   "ridgeM": 15.4,
+   "roofMaxM": 15.3,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121374.1,
+    485836.08
+   ]
+  },
+  {
+   "pandId": "0363100012253946",
+   "street": "Weteringschans",
+   "numbers": [
+    74
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1891,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 14.7,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.8,
+   "normal": [
+    0.098,
+    0.995
+   ],
+   "frontMidRD": [
+    121381.1,
+    485835.38
+   ]
+  },
+  {
+   "pandId": "0363100012179453",
+   "street": "Weteringschans",
+   "numbers": [
+    76
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1879,
+   "storeys3dbag": 0,
+   "units": 3,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 16.8,
+   "ridgeM": 17,
+   "roofMaxM": 16.9,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121387.8,
+    485834.8
+   ]
+  },
+  {
+   "pandId": "0363100012179454",
+   "street": "Weteringschans",
+   "numbers": [
+    78
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1876,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 17,
+   "ridgeM": 21.1,
+   "roofMaxM": 20.8,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121394.01,
+    485834.09
+   ]
+  },
+  {
+   "pandId": "0363100012179502",
+   "street": "Weteringschans",
+   "numbers": [
+    80
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1869,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 17.1,
+   "ridgeM": 22,
+   "roofMaxM": 22,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121400.08,
+    485833.48
+   ]
+  },
+  {
+   "pandId": "0363100012171823",
+   "street": "Weteringschans",
+   "numbers": [
+    81,
+    83,
+    85,
+    87,
+    89
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1983,
+   "storeys3dbag": 0,
+   "units": 13,
+   "groundUses": [
+    "kantoorfunctie",
+    "overige gebruiksfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 28,
+   "eavesM": 15.7,
+   "ridgeM": 20.8,
+   "roofMaxM": 20.9,
+   "normal": [
+    -0.623,
+    -0.782
+   ],
+   "frontMidRD": [
+    120930.19,
+    486033.95
+   ]
+  },
+  {
+   "pandId": "0363100012179513",
+   "street": "Weteringschans",
+   "numbers": [
+    82,
+    84
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1922,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "logiesfunctie"
+   ],
+   "frontWidthM": 12.3,
+   "eavesM": 17,
+   "ridgeM": 21.3,
+   "roofMaxM": 21.1,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121409.25,
+    485832.59
+   ]
+  },
+  {
+   "pandId": "0363100012179448",
+   "street": "Weteringschans",
+   "numbers": [
+    84
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1873,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 16,
+   "ridgeM": 17.9,
+   "roofMaxM": 16,
+   "normal": [
+    0.098,
+    0.995
+   ],
+   "frontMidRD": [
+    121424.74,
+    485831.1
+   ]
+  },
+  {
+   "pandId": "0363100012179504",
+   "street": "Weteringschans",
+   "numbers": [
+    84
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1877,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 20,
+   "ridgeM": 20.2,
+   "roofMaxM": 20,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121430.83,
+    485830.46
+   ]
+  },
+  {
+   "pandId": "0363100012179450",
+   "street": "Weteringschans",
+   "numbers": [
+    86
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1876,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 20.2,
+   "ridgeM": 20.2,
+   "roofMaxM": 20.2,
+   "normal": [
+    0.103,
+    0.995
+   ],
+   "frontMidRD": [
+    121437.33,
+    485829.87
+   ]
+  },
+  {
+   "pandId": "0363100012179449",
+   "street": "Weteringschans",
+   "numbers": [
+    88
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1895,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 19.6,
+   "ridgeM": 22.3,
+   "roofMaxM": 22.9,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121444.1,
+    485829.1
+   ]
+  },
+  {
+   "pandId": "0363100012168128",
+   "street": "Weteringschans",
+   "numbers": [
+    90
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1895,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 19.7,
+   "ridgeM": 21.8,
+   "roofMaxM": 21.8,
+   "normal": [
+    0.113,
+    0.994
+   ],
+   "frontMidRD": [
+    121450.59,
+    485828.44
+   ]
+  },
+  {
+   "pandId": "0363100012171970",
+   "street": "Weteringschans",
+   "numbers": [
+    91
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1886,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.8,
+   "eavesM": 14.5,
+   "ridgeM": 18,
+   "roofMaxM": 18.6,
+   "normal": [
+    -0.622,
+    -0.783
+   ],
+   "frontMidRD": [
+    120943.85,
+    486023.11
+   ]
+  },
+  {
+   "pandId": "0363100012179798",
+   "street": "Weteringschans",
+   "numbers": [
+    92
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1879,
+   "storeys3dbag": 0,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.3,
+   "eavesM": 17.4,
+   "ridgeM": 22.6,
+   "roofMaxM": 22.6,
+   "normal": [
+    0.094,
+    0.996
+   ],
+   "frontMidRD": [
+    121457.43,
+    485827.77
+   ]
+  },
+  {
+   "pandId": "0363100012171889",
+   "street": "Weteringschans",
+   "numbers": [
+    93
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1893,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "bijeenkomstfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 14.3,
+   "ridgeM": 19.1,
+   "roofMaxM": 19,
+   "normal": [
+    -0.626,
+    -0.779
+   ],
+   "frontMidRD": [
+    120949.36,
+    486018.69
+   ]
+  },
+  {
+   "pandId": "0363100012179721",
+   "street": "Weteringschans",
+   "numbers": [
+    94
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1879,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 8,
+   "eavesM": 15,
+   "ridgeM": 20.1,
+   "roofMaxM": 15,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121465.03,
+    485827.03
+   ]
+  },
+  {
+   "pandId": "0363100012176836",
+   "street": "Weteringschans",
+   "numbers": [
+    95
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 15,
+   "ridgeM": 21.1,
+   "roofMaxM": 21,
+   "normal": [
+    -0.622,
+    -0.783
+   ],
+   "frontMidRD": [
+    120954.68,
+    486014.73
+   ]
+  },
+  {
+   "pandId": "0363100012179720",
+   "street": "Weteringschans",
+   "numbers": [
+    96
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1879,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 8.7,
+   "eavesM": 17.4,
+   "ridgeM": 17.4,
+   "roofMaxM": 17.4,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121473.35,
+    485826.21
+   ]
+  },
+  {
+   "pandId": "0363100012177022",
+   "street": "Weteringschans",
+   "numbers": [
+    97
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 14.8,
+   "ridgeM": 18.6,
+   "roofMaxM": 19.4,
+   "normal": [
+    -0.627,
+    -0.779
+   ],
+   "frontMidRD": [
+    120959.68,
+    486010.4
+   ]
+  },
+  {
+   "pandId": "0363100012179796",
+   "street": "Weteringschans",
+   "numbers": [
+    98
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1881,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 16.6,
+   "ridgeM": 17.6,
+   "roofMaxM": 17.8,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121481.2,
+    485825.43
+   ]
+  },
+  {
+   "pandId": "0363100012177021",
+   "street": "Weteringschans",
+   "numbers": [
+    99
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 6.9,
+   "eavesM": 16.7,
+   "ridgeM": 20.6,
+   "roofMaxM": 20.5,
+   "normal": [
+    -0.63,
+    -0.776
+   ],
+   "frontMidRD": [
+    120964.93,
+    486006.19
+   ]
+  },
+  {
+   "pandId": "0363100012179800",
+   "street": "Weteringschans",
+   "numbers": [
+    100,
+    102
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1879,
+   "storeys3dbag": 0,
+   "units": 9,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 14.5,
+   "eavesM": 18,
+   "ridgeM": 22.3,
+   "roofMaxM": 21,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121491.89,
+    485824.35
+   ]
+  },
+  {
+   "pandId": "0363100012179799",
+   "street": "Weteringschans",
+   "numbers": [
+    104
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1895,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 1.1,
+   "eavesM": 13.1,
+   "ridgeM": 16.2,
+   "roofMaxM": 16.5,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121503,
+    485824.26
+   ]
+  },
+  {
+   "pandId": "0363100012179100",
+   "street": "Weteringschans",
+   "numbers": [
+    106
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1895,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 7.2,
+   "eavesM": 16.7,
+   "ridgeM": 19.7,
+   "roofMaxM": 19.7,
+   "normal": [
+    0.1,
+    0.995
+   ],
+   "frontMidRD": [
+    121509.89,
+    485822.55
+   ]
+  },
+  {
+   "pandId": "0363100012179102",
+   "street": "Weteringschans",
+   "numbers": [
+    108
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1891,
+   "storeys3dbag": 4,
+   "units": 4,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.3,
+   "eavesM": 14.4,
+   "ridgeM": 15,
+   "roofMaxM": 15,
+   "normal": [
+    0.099,
+    0.995
+   ],
+   "frontMidRD": [
+    121517.11,
+    485821.83
+   ]
+  },
+  {
+   "pandId": "0363100012176838",
+   "street": "Weteringschans",
+   "numbers": [
+    109
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1900,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 32.7,
+   "eavesM": 15.8,
+   "ridgeM": 23.7,
+   "roofMaxM": 23.7,
+   "normal": [
+    -0.624,
+    -0.781
+   ],
+   "frontMidRD": [
+    120980.38,
+    485993.84
+   ]
+  },
+  {
+   "pandId": "0363100012179797",
+   "street": "Weteringschans",
+   "numbers": [
+    110
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "kantoorfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.1,
+   "eavesM": 19,
+   "ridgeM": 20.2,
+   "roofMaxM": 20.2,
+   "normal": [
+    0.101,
+    0.995
+   ],
+   "frontMidRD": [
+    121524.26,
+    485821.09
+   ]
+  },
+  {
+   "pandId": "0363100012179104",
+   "street": "Weteringschans",
+   "numbers": [
+    112,
+    114
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1896,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 13.5,
+   "eavesM": 20.1,
+   "ridgeM": 20.5,
+   "roofMaxM": 20.3,
+   "normal": [
+    0.102,
+    0.995
+   ],
+   "frontMidRD": [
+    121534.47,
+    485820.05
+   ]
+  },
+  {
+   "pandId": "0363100012177023",
+   "street": "Weteringschans",
+   "numbers": [
+    113
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1867,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "frontWidthM": 12.4,
+   "eavesM": 17.4,
+   "ridgeM": 22.3,
+   "roofMaxM": 22.3,
+   "normal": [
+    -0.621,
+    -0.784
+   ],
+   "frontMidRD": [
+    121023.92,
+    485959.17
+   ]
+  },
+  {
+   "pandId": "0363100012179716",
+   "street": "Weteringschans",
+   "numbers": [
+    116
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1878,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "industriefunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 16.7,
+   "ridgeM": 20.4,
+   "roofMaxM": 20.3,
+   "normal": [
+    0.098,
+    0.995
+   ],
+   "frontMidRD": [
+    121544.66,
+    485819.04
+   ]
+  },
+  {
+   "pandId": "0363100012177024",
+   "street": "Weteringschans",
+   "numbers": [
+    117
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1867,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.9,
+   "eavesM": 16.5,
+   "ridgeM": 20.2,
+   "roofMaxM": 20.2,
+   "normal": [
+    -0.625,
+    -0.78
+   ],
+   "frontMidRD": [
+    121031.4,
+    485953.13
+   ]
+  },
+  {
+   "pandId": "0363100012171227",
+   "street": "Weteringschans",
+   "numbers": [
+    118
+   ],
+   "otherStreets": {},
+   "side": "even",
+   "builtYear": 1872,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 15.7,
+   "ridgeM": 17.1,
+   "roofMaxM": 17.2,
+   "normal": [
+    0.092,
+    0.996
+   ],
+   "frontMidRD": [
+    121551.02,
+    485818.49
+   ]
+  },
+  {
+   "pandId": "0363100012171971",
+   "street": "Weteringschans",
+   "numbers": [
+    119
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1867,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 15.8,
+   "ridgeM": 20.5,
+   "roofMaxM": 20.5,
+   "normal": [
+    -0.624,
+    -0.782
+   ],
+   "frontMidRD": [
+    121036.86,
+    485948.77
+   ]
+  },
+  {
+   "pandId": "0363100012171824",
+   "street": "Weteringschans",
+   "numbers": [
+    121
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1867,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie,woonfunctie"
+   ],
+   "frontWidthM": 6.9,
+   "eavesM": 15.7,
+   "ridgeM": 20.4,
+   "roofMaxM": 20.4,
+   "normal": [
+    -0.624,
+    -0.781
+   ],
+   "frontMidRD": [
+    121042.09,
+    485944.59
+   ]
+  },
+  {
+   "pandId": "0363100012171982",
+   "street": "Weteringschans",
+   "numbers": [
+    123
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1867,
+   "storeys3dbag": 0,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 7,
+   "eavesM": 15.5,
+   "ridgeM": 20.2,
+   "roofMaxM": 20.2,
+   "normal": [
+    -0.619,
+    -0.786
+   ],
+   "frontMidRD": [
+    121047.52,
+    485940.28
+   ]
+  },
+  {
+   "pandId": "0363100012175058",
+   "street": "Weteringschans",
+   "numbers": [
+    125
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1867,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 15.5,
+   "ridgeM": 20.2,
+   "roofMaxM": 20.2,
+   "normal": [
+    -0.633,
+    -0.774
+   ],
+   "frontMidRD": [
+    121053.02,
+    485936.3
+   ]
+  },
+  {
+   "pandId": "0363100012171983",
+   "street": "Weteringschans",
+   "numbers": [
+    127
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1867,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 17,
+   "ridgeM": 21.9,
+   "roofMaxM": 22,
+   "normal": [
+    -0.62,
+    -0.784
+   ],
+   "frontMidRD": [
+    121057.8,
+    485932.09
+   ]
+  },
+  {
+   "pandId": "0363100012175059",
+   "street": "Weteringschans",
+   "numbers": [
+    129
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1867,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 16.2,
+   "ridgeM": 21.1,
+   "roofMaxM": 21.1,
+   "normal": [
+    -0.619,
+    -0.785
+   ],
+   "frontMidRD": [
+    121062.68,
+    485928.17
+   ]
+  },
+  {
+   "pandId": "0363100012175060",
+   "street": "Weteringschans",
+   "numbers": [
+    131
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.3,
+   "eavesM": 15.9,
+   "ridgeM": 18,
+   "roofMaxM": 17.9,
+   "normal": [
+    -0.62,
+    -0.785
+   ],
+   "frontMidRD": [
+    121067.28,
+    485924.54
+   ]
+  },
+  {
+   "pandId": "0363100012175061",
+   "street": "Weteringschans",
+   "numbers": [
+    133,
+    135,
+    137
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 9,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie",
+    "overige gebruiksfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 15.8,
+   "eavesM": 16.5,
+   "ridgeM": 19.8,
+   "roofMaxM": 19.3,
+   "normal": [
+    -0.62,
+    -0.785
+   ],
+   "frontMidRD": [
+    121075.57,
+    485917.99
+   ]
+  },
+  {
+   "pandId": "0363100012175063",
+   "street": "Weteringschans",
+   "numbers": [
+    139
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1865,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie,woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 15.8,
+   "ridgeM": 19.9,
+   "roofMaxM": 19.9,
+   "normal": [
+    -0.613,
+    -0.79
+   ],
+   "frontMidRD": [
+    121084.46,
+    485911.14
+   ]
+  },
+  {
+   "pandId": "0363100012175062",
+   "street": "Weteringschans",
+   "numbers": [
+    141
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1865,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 13.5,
+   "ridgeM": 18,
+   "roofMaxM": 18,
+   "normal": [
+    -0.646,
+    -0.763
+   ],
+   "frontMidRD": [
+    121089.49,
+    485907.48
+   ]
+  },
+  {
+   "pandId": "0363100012176210",
+   "street": "Weteringschans",
+   "numbers": [
+    143
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1865,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 13.5,
+   "ridgeM": 18,
+   "roofMaxM": 18,
+   "normal": [
+    -0.613,
+    -0.79
+   ],
+   "frontMidRD": [
+    121093.95,
+    485903.48
+   ]
+  },
+  {
+   "pandId": "0363100012175064",
+   "street": "Weteringschans",
+   "numbers": [
+    145
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1865,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6,
+   "eavesM": 13.7,
+   "ridgeM": 18.2,
+   "roofMaxM": 19.5,
+   "normal": [
+    -0.621,
+    -0.784
+   ],
+   "frontMidRD": [
+    121098.73,
+    485899.74
+   ]
+  },
+  {
+   "pandId": "0363100012176211",
+   "street": "Weteringschans",
+   "numbers": [
+    147
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1865,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "winkelfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 13.7,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.624,
+    -0.781
+   ],
+   "frontMidRD": [
+    121103.51,
+    485895.93
+   ]
+  },
+  {
+   "pandId": "0363100012176212",
+   "street": "Weteringschans",
+   "numbers": [
+    149
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1865,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 14,
+   "ridgeM": 18.1,
+   "roofMaxM": 18,
+   "normal": [
+    -0.624,
+    -0.782
+   ],
+   "frontMidRD": [
+    121108.54,
+    485892.58
+   ]
+  },
+  {
+   "pandId": "0363100012176213",
+   "street": "Weteringschans",
+   "numbers": [
+    151
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1865,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.6,
+   "eavesM": 15.5,
+   "ridgeM": 19.7,
+   "roofMaxM": 19.7,
+   "normal": [
+    -0.624,
+    -0.781
+   ],
+   "frontMidRD": [
+    121113.14,
+    485888.38
+   ]
+  },
+  {
+   "pandId": "0363100012176214",
+   "street": "Weteringschans",
+   "numbers": [
+    153
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1901,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "winkelfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 8.5,
+   "ridgeM": 11.2,
+   "roofMaxM": 11.5,
+   "normal": [
+    -0.3,
+    -0.954
+   ],
+   "frontMidRD": [
+    121123.61,
+    485883.74
+   ]
+  },
+  {
+   "pandId": "0363100012175056",
+   "street": "Weteringschans",
+   "numbers": [
+    155
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 3,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.4,
+   "eavesM": 9.5,
+   "ridgeM": 11.3,
+   "roofMaxM": 11.1,
+   "normal": [
+    -0.267,
+    -0.964
+   ],
+   "frontMidRD": [
+    121128.16,
+    485882.4
+   ]
+  },
+  {
+   "pandId": "0363100012175057",
+   "street": "Weteringschans",
+   "numbers": [
+    157
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1876,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 8.2,
+   "eavesM": 13.8,
+   "ridgeM": 17.6,
+   "roofMaxM": 17.6,
+   "normal": [
+    -0.112,
+    -0.994
+   ],
+   "frontMidRD": [
+    121134.36,
+    485881.36
+   ]
+  },
+  {
+   "pandId": "0363100012165036",
+   "street": "Weteringschans",
+   "numbers": [
+    159,
+    161
+   ],
+   "otherStreets": {
+    "Nieuwe Vijzelstraat": [
+     2
+    ]
+   },
+   "side": "odd",
+   "builtYear": 1985,
+   "storeys3dbag": 5,
+   "units": 29,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 26.3,
+   "eavesM": 13,
+   "ridgeM": 16.5,
+   "roofMaxM": 15.8,
+   "normal": [
+    -0.099,
+    -0.995
+   ],
+   "frontMidRD": [
+    121151.52,
+    485879.59
+   ]
+  },
+  {
+   "pandId": "0363100012168275",
+   "street": "Weteringschans",
+   "numbers": [
+    165
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1982,
+   "storeys3dbag": 0,
+   "units": 4,
+   "groundUses": [
+    "overige gebruiksfunctie",
+    "winkelfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 51.7,
+   "eavesM": 12.3,
+   "ridgeM": 18.6,
+   "roofMaxM": 18.5,
+   "normal": [
+    -0.108,
+    -0.994
+   ],
+   "frontMidRD": [
+    121248.44,
+    485869.28
+   ]
+  },
+  {
+   "pandId": "0363100012179817",
+   "street": "Weteringschans",
+   "numbers": [
+    167
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1871,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "onderwijsfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 14.1,
+   "ridgeM": 14,
+   "roofMaxM": 14.1,
+   "normal": [
+    -0.103,
+    -0.995
+   ],
+   "frontMidRD": [
+    121277,
+    485866.22
+   ]
+  },
+  {
+   "pandId": "0363100012179816",
+   "street": "Weteringschans",
+   "numbers": [
+    171
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1863,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie",
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 9.8,
+   "eavesM": 10,
+   "ridgeM": 12.4,
+   "roofMaxM": 14,
+   "normal": [
+    -0.105,
+    -0.994
+   ],
+   "frontMidRD": [
+    121284.74,
+    485865.32
+   ]
+  },
+  {
+   "pandId": "0363100012179815",
+   "street": "Weteringschans",
+   "numbers": [
+    173
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1856,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.5,
+   "eavesM": 10.9,
+   "ridgeM": 15.2,
+   "roofMaxM": 15.2,
+   "normal": [
+    -0.107,
+    -0.994
+   ],
+   "frontMidRD": [
+    121291.86,
+    485864.63
+   ]
+  },
+  {
+   "pandId": "0363100012179814",
+   "street": "Weteringschans",
+   "numbers": [
+    175
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1847,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.9,
+   "eavesM": 11.6,
+   "ridgeM": 15.9,
+   "roofMaxM": 15.9,
+   "normal": [
+    -0.101,
+    -0.995
+   ],
+   "frontMidRD": [
+    121297.55,
+    485864.16
+   ]
+  },
+  {
+   "pandId": "0363100012179813",
+   "street": "Weteringschans",
+   "numbers": [
+    177
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1862,
+   "storeys3dbag": 4,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.1,
+   "eavesM": 11.4,
+   "ridgeM": 15.8,
+   "roofMaxM": 15.9,
+   "normal": [
+    -0.11,
+    -0.994
+   ],
+   "frontMidRD": [
+    121303.52,
+    485863.32
+   ]
+  },
+  {
+   "pandId": "0363100012179812",
+   "street": "Weteringschans",
+   "numbers": [
+    179,
+    181
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1880,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.1,
+   "eavesM": 11.4,
+   "ridgeM": 18.7,
+   "roofMaxM": 19.2,
+   "normal": [
+    -0.104,
+    -0.995
+   ],
+   "frontMidRD": [
+    121311.1,
+    485862.51
+   ]
+  },
+  {
+   "pandId": "0363100012180101",
+   "street": "Weteringschans",
+   "numbers": [
+    183
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1883,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 14.3,
+   "ridgeM": 17.8,
+   "roofMaxM": 17.8,
+   "normal": [
+    -0.101,
+    -0.995
+   ],
+   "frontMidRD": [
+    121318.62,
+    485861.74
+   ]
+  },
+  {
+   "pandId": "0363100012180100",
+   "street": "Weteringschans",
+   "numbers": [
+    185
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1877,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5,
+   "eavesM": 14.4,
+   "ridgeM": 17.9,
+   "roofMaxM": 17.9,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121323.62,
+    485861.23
+   ]
+  },
+  {
+   "pandId": "0363100012168178",
+   "street": "Weteringschans",
+   "numbers": [
+    187
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 0,
+   "units": 6,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 7.3,
+   "eavesM": 17.1,
+   "ridgeM": 22.6,
+   "roofMaxM": 22.6,
+   "normal": [
+    -0.103,
+    -0.995
+   ],
+   "frontMidRD": [
+    121351.41,
+    485858.32
+   ]
+  },
+  {
+   "pandId": "0363100012180097",
+   "street": "Weteringschans",
+   "numbers": [
+    187
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 0,
+   "units": 5,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 7.3,
+   "eavesM": 16.5,
+   "ridgeM": 21.9,
+   "roofMaxM": 22,
+   "normal": [
+    -0.101,
+    -0.995
+   ],
+   "frontMidRD": [
+    121344.15,
+    485859.07
+   ]
+  },
+  {
+   "pandId": "0363100012180098",
+   "street": "Weteringschans",
+   "numbers": [
+    187
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 0,
+   "units": 4,
+   "groundUses": [],
+   "frontWidthM": 7.4,
+   "eavesM": 16.5,
+   "ridgeM": 22,
+   "roofMaxM": 22,
+   "normal": [
+    -0.105,
+    -0.994
+   ],
+   "frontMidRD": [
+    121336.88,
+    485859.82
+   ]
+  },
+  {
+   "pandId": "0363100012180099",
+   "street": "Weteringschans",
+   "numbers": [
+    187
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1935,
+   "storeys3dbag": 0,
+   "units": 6,
+   "groundUses": [
+    "bijeenkomstfunctie"
+   ],
+   "frontWidthM": 7.1,
+   "eavesM": 16.5,
+   "ridgeM": 21.9,
+   "roofMaxM": 22,
+   "normal": [
+    -0.108,
+    -0.994
+   ],
+   "frontMidRD": [
+    121329.68,
+    485860.59
+   ]
+  },
+  {
+   "pandId": "0363100012178184",
+   "street": "Weteringschans",
+   "numbers": [
+    189
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1856,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 11,
+   "ridgeM": 14.9,
+   "roofMaxM": 20.4,
+   "normal": [
+    -0.098,
+    -0.995
+   ],
+   "frontMidRD": [
+    121357.91,
+    485857.66
+   ]
+  },
+  {
+   "pandId": "0363100012178186",
+   "street": "Weteringschans",
+   "numbers": [
+    191
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1905,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.2,
+   "eavesM": 11.9,
+   "ridgeM": 15.6,
+   "roofMaxM": 15.4,
+   "normal": [
+    -0.104,
+    -0.995
+   ],
+   "frontMidRD": [
+    121363.33,
+    485857.11
+   ]
+  },
+  {
+   "pandId": "0363100012178185",
+   "street": "Weteringschans",
+   "numbers": [
+    193,
+    195
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1927,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "winkelfunctie",
+    "winkelfunctie,woonfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 10.6,
+   "eavesM": 15.9,
+   "ridgeM": 19.7,
+   "roofMaxM": 19.7,
+   "normal": [
+    -0.093,
+    -0.996
+   ],
+   "frontMidRD": [
+    121371.16,
+    485856.35
+   ]
+  },
+  {
+   "pandId": "0363100012178188",
+   "street": "Weteringschans",
+   "numbers": [
+    197
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2003,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 8.2,
+   "eavesM": 16.7,
+   "ridgeM": 17.7,
+   "roofMaxM": 18,
+   "normal": [
+    -0.093,
+    -0.996
+   ],
+   "frontMidRD": [
+    121380.59,
+    485855.52
+   ]
+  },
+  {
+   "pandId": "0363100012178189",
+   "street": "Weteringschans",
+   "numbers": [
+    201,
+    203,
+    205
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1881,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "winkelfunctie"
+   ],
+   "frontWidthM": 15.8,
+   "eavesM": 10.8,
+   "ridgeM": 14.9,
+   "roofMaxM": 14.9,
+   "normal": [
+    -0.092,
+    -0.996
+   ],
+   "frontMidRD": [
+    121392.51,
+    485854.33
+   ]
+  },
+  {
+   "pandId": "0363100012179519",
+   "street": "Weteringschans",
+   "numbers": [
+    207
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1900,
+   "storeys3dbag": 5,
+   "units": 6,
+   "groundUses": [
+    "kantoorfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.6,
+   "eavesM": 16.1,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.2,
+   "normal": [
+    -0.098,
+    -0.995
+   ],
+   "frontMidRD": [
+    121402.66,
+    485853.38
+   ]
+  },
+  {
+   "pandId": "0363100012178187",
+   "street": "Weteringschans",
+   "numbers": [
+    209,
+    211
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1896,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 9.7,
+   "eavesM": 14.2,
+   "ridgeM": 15.9,
+   "roofMaxM": 16,
+   "normal": [
+    -0.096,
+    -0.995
+   ],
+   "frontMidRD": [
+    121409.77,
+    485852.61
+   ]
+  },
+  {
+   "pandId": "0363100012179522",
+   "street": "Weteringschans",
+   "numbers": [
+    213
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 2004,
+   "storeys3dbag": 5,
+   "units": 8,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 11.5,
+   "eavesM": 15,
+   "ridgeM": 18.1,
+   "roofMaxM": 18.1,
+   "normal": [
+    -0.072,
+    -0.997
+   ],
+   "frontMidRD": [
+    121420.36,
+    485851.8
+   ]
+  },
+  {
+   "pandId": "0363100012179521",
+   "street": "Weteringschans",
+   "numbers": [
+    219
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 18,
+   "ridgeM": 18.1,
+   "roofMaxM": 18,
+   "normal": [
+    -0.098,
+    -0.995
+   ],
+   "frontMidRD": [
+    121429.18,
+    485850.7
+   ]
+  },
+  {
+   "pandId": "0363100012168175",
+   "street": "Weteringschans",
+   "numbers": [
+    221
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "winkelfunctie",
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.7,
+   "eavesM": 17.8,
+   "ridgeM": 17.9,
+   "roofMaxM": 17.9,
+   "normal": [
+    -0.096,
+    -0.995
+   ],
+   "frontMidRD": [
+    121435.14,
+    485850.23
+   ]
+  },
+  {
+   "pandId": "0363100012168176",
+   "street": "Weteringschans",
+   "numbers": [
+    223
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.9,
+   "eavesM": 17.9,
+   "ridgeM": 18,
+   "roofMaxM": 17.9,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121440.92,
+    485849.56
+   ]
+  },
+  {
+   "pandId": "0363100012168177",
+   "street": "Weteringschans",
+   "numbers": [
+    225
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1896,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 16.4,
+   "ridgeM": 18.9,
+   "roofMaxM": 18.8,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121446.91,
+    485849.05
+   ]
+  },
+  {
+   "pandId": "0363100012168041",
+   "street": "Weteringschans",
+   "numbers": [
+    227
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 0,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 5.8,
+   "eavesM": 18,
+   "ridgeM": 18.3,
+   "roofMaxM": 18.2,
+   "normal": [
+    -0.095,
+    -0.995
+   ],
+   "frontMidRD": [
+    121452.81,
+    485848.47
+   ]
+  },
+  {
+   "pandId": "0363100012168093",
+   "street": "Weteringschans",
+   "numbers": [
+    229
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.2,
+   "eavesM": 18.2,
+   "ridgeM": 19.8,
+   "roofMaxM": 19.9,
+   "normal": [
+    -0.096,
+    -0.995
+   ],
+   "frontMidRD": [
+    121458.76,
+    485847.9
+   ]
+  },
+  {
+   "pandId": "0363100012168094",
+   "street": "Weteringschans",
+   "numbers": [
+    231
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.8,
+   "eavesM": 16.7,
+   "ridgeM": 20.9,
+   "roofMaxM": 21.3,
+   "normal": [
+    -0.101,
+    -0.995
+   ],
+   "frontMidRD": [
+    121465.21,
+    485847.29
+   ]
+  },
+  {
+   "pandId": "0363100012168095",
+   "street": "Weteringschans",
+   "numbers": [
+    233
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 5,
+   "units": 4,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.9,
+   "eavesM": 16.8,
+   "ridgeM": 22,
+   "roofMaxM": 21.8,
+   "normal": [
+    -0.103,
+    -0.995
+   ],
+   "frontMidRD": [
+    121472.01,
+    485846.6
+   ]
+  },
+  {
+   "pandId": "0363100012168043",
+   "street": "Weteringschans",
+   "numbers": [
+    235
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 4,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.4,
+   "eavesM": 13.9,
+   "ridgeM": 16.7,
+   "roofMaxM": 21.3,
+   "normal": [
+    -0.098,
+    -0.995
+   ],
+   "frontMidRD": [
+    121478.61,
+    485845.9
+   ]
+  },
+  {
+   "pandId": "0363100012168096",
+   "street": "Weteringschans",
+   "numbers": [
+    237
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 13.9,
+   "ridgeM": 16.8,
+   "roofMaxM": 16.6,
+   "normal": [
+    -0.094,
+    -0.996
+   ],
+   "frontMidRD": [
+    121484.91,
+    485845.18
+   ]
+  },
+  {
+   "pandId": "0363100012168042",
+   "street": "Weteringschans",
+   "numbers": [
+    239
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 4,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie",
+    "kantoorfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 13.8,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.5,
+   "normal": [
+    -0.098,
+    -0.995
+   ],
+   "frontMidRD": [
+    121491.22,
+    485844.64
+   ]
+  },
+  {
+   "pandId": "0363100012169016",
+   "street": "Weteringschans",
+   "numbers": [
+    241
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 5,
+   "units": 2,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 13.7,
+   "ridgeM": 17.3,
+   "roofMaxM": 17.3,
+   "normal": [
+    -0.118,
+    -0.993
+   ],
+   "frontMidRD": [
+    121497.6,
+    485843.95
+   ]
+  },
+  {
+   "pandId": "0363100012171218",
+   "street": "Weteringschans",
+   "numbers": [
+    243
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1877,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.5,
+   "eavesM": 13.8,
+   "ridgeM": 16.8,
+   "roofMaxM": 16.6,
+   "normal": [
+    -0.104,
+    -0.995
+   ],
+   "frontMidRD": [
+    121504.06,
+    485843.22
+   ]
+  },
+  {
+   "pandId": "0363100012171198",
+   "street": "Weteringschans",
+   "numbers": [
+    245
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 5,
+   "units": 5,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 1.6,
+   "eavesM": 16.5,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.6,
+   "normal": [
+    -0.102,
+    -0.995
+   ],
+   "frontMidRD": [
+    121511.65,
+    485841.39
+   ]
+  },
+  {
+   "pandId": "0363100012185507",
+   "street": "Weteringschans",
+   "numbers": [
+    247
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 4,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 16.6,
+   "ridgeM": 16.7,
+   "roofMaxM": 17,
+   "normal": [
+    -0.084,
+    -0.996
+   ],
+   "frontMidRD": [
+    121516.73,
+    485841.97
+   ]
+  },
+  {
+   "pandId": "0363100012185997",
+   "street": "Weteringschans",
+   "numbers": [
+    249
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 4,
+   "units": 3,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 6.1,
+   "eavesM": 16.8,
+   "ridgeM": 17,
+   "roofMaxM": 16.8,
+   "normal": [
+    -0.121,
+    -0.993
+   ],
+   "frontMidRD": [
+    121522.8,
+    485841.4
+   ]
+  },
+  {
+   "pandId": "0363100012171217",
+   "street": "Weteringschans",
+   "numbers": [
+    251
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1870,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "logiesfunctie"
+   ],
+   "frontWidthM": 2.3,
+   "eavesM": 16.6,
+   "ridgeM": 16.7,
+   "roofMaxM": 16.6,
+   "normal": [
+    -0.097,
+    -0.995
+   ],
+   "frontMidRD": [
+    121528.87,
+    485839.53
+   ]
+  },
+  {
+   "pandId": "0363100012171192",
+   "street": "Weteringschans",
+   "numbers": [
+    253
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1896,
+   "storeys3dbag": 0,
+   "units": 1,
+   "groundUses": [
+    "logiesfunctie"
+   ],
+   "frontWidthM": 6.3,
+   "eavesM": 16.9,
+   "ridgeM": 17.1,
+   "roofMaxM": 16.9,
+   "normal": [
+    -0.1,
+    -0.995
+   ],
+   "frontMidRD": [
+    121535.11,
+    485840.12
+   ]
+  },
+  {
+   "pandId": "0363100012171195",
+   "street": "Weteringschans",
+   "numbers": [
+    255
+   ],
+   "otherStreets": {},
+   "side": "odd",
+   "builtYear": 1879,
+   "storeys3dbag": 5,
+   "units": 1,
+   "groundUses": [
+    "woonfunctie"
+   ],
+   "frontWidthM": 4.5,
+   "eavesM": 16.4,
+   "ridgeM": 19.7,
+   "roofMaxM": 20.1,
+   "normal": [
+    -0.095,
+    -0.995
+   ],
+   "frontMidRD": [
+    121540.38,
+    485839.07
+   ]
+  },
+  {
+   "pandId": "0363100012177027",
+   "street": "Weteringstraat",
+   "numbers": [
+    60,
+    62,
+    64,
+    66,
+    68,
+    70,
+    72,
+    74,
+    76,
+    78,
+    80,
+    82,
+    84,
+    86
+   ],
+   "otherStreets": {
+    "Weteringschans": [
+     111
+    ]
+   },
+   "side": "even",
+   "builtYear": 1900,
+   "storeys3dbag": 5,
+   "units": 15,
+   "groundUses": [
+    "winkelfunctie",
+    "bijeenkomstfunctie",
+    "woonfunctie",
+    "overige gebruiksfunctie"
+   ],
+   "frontWidthM": 22.5,
+   "eavesM": 14,
+   "ridgeM": 21,
+   "roofMaxM": 21,
+   "normal": [
+    0.782,
+    -0.624
+   ],
+   "frontMidRD": [
+    121008.86,
+    485985.49
+   ]
+  }
+ ]
+}

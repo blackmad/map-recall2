@@ -1,0 +1,56 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "tex-1882-hood-bracket-mansard",
+ "district": "de-pijp",
+ "description": "Den Texstraat 1-59 and 8-58 (1881-83): 5.5-6.5 m fronts of a raised ground storey and two tall upper storeys of dark brown brick; three axes (house door and two windows on the ground); white sills with a thin white sill band, small segmental arched heads on the first floor, flat heads on the second, each under a white bracket-block hood course; a heavy white entablature at 10.7-12.0 m; a short slate mansard with one white pediment dormer over the middle axis",
+ "fit": {"widthM": [5.0, 7.0], "storeys": [4]},
+ "match": {
+  "years": [1872, 1884],
+  "yearSlack": 0,
+  "frontEavesM": 13.5,
+  "frontSkylineM": 15.2,
+  "stucco": false,
+  "baysByWidth": [{"maxWidthM": 99, "bays": 3}],
+  "mirrorForDoor": "left",
+  "note": "Den Texstraat 1-59 on the 2024-12-04 strip: entablature 10.7-12.0 m, slate to 13.1 m, dormers 12.2-14.8 m; 3DBAG 4 bouwlagen (mansard counted), eaves 14.3-14.6 m"
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 3,
+  "storeyHeights": [4.1, 3.2, 3.4],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHead": {"kind": "segmental", "storeys": [1]},
+  "windowHeights": [0.52, 0.7, 0.69],
+  "headLines": [0.83, 0.75, 0.78],
+  "windowShare": 0.62,
+  "windowHoods": {"colour": "band"},
+  "bands": "painted",
+  "bandLines": ["sill", "head"],
+  "cornice": "simple",
+  "entablature": {"rise": 1.3, "cap": 0.35, "frieze": "trim", "architrave": 0.1}
+ },
+ "crowns": {
+  "mansard-pediment-dormer": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [{"from": 0.31, "to": 0.69}],
+   "dormerSize": {"sill": 0.2, "rise": 1.8, "setback": 0.4},
+   "note": "one white pediment dormer 1.9 m wide over the middle axis, 12.2-14.8 m, on the slate mansard"
+  }
+ },
+ "grounds": {
+  "door-left": {"doorBay": 0, "basement": "none", "note": "house door on the left axis; a pand whose door reads on the right is mirrored"},
+  "door-right": {"doorBay": 2, "basement": "none", "note": "mirrored"}
+ },
+ "palettes": {
+  "dark-brown-1882": {"brick": "#66503f", "frame": "white-painted", "door": "#2a2a2a", "stone": "#e2dfd3", "cornice": "#e2dfd3", "band": "#e2dfd3", "stoneMaterial": "painted"}
+ },
+ "roof": {"material": "slate", "source": "front", "form": "attic", "pitchDeg": 70, "evidence": "Den Texstraat 1-59: the black slate mansard 12.0-13.1 m behind the entablature, a steep front slope under the dormers"},
+ "rhythm": {"bays": "3 equal axes", "identicalBays": "storeys 1 and 2 alike", "windowsPerStorey": "ground: door + 2 windows | 1-2: 3", "symmetry": "symmetric above the ground", "groundFloor": "house door and two windows", "signage": "none", "roofline": "heavy white entablature, slate mansard, one pediment dormer", "photoRows": [1, 3, 3], "photoGroundRows": 1, "photoGables": 0},
+ "evidence": [{"face": "tex-1-59", "pands": ["179437", "179438", "179383"], "citation": "strip.jpg 2024-12-04 with a metre grid (grid-crop): ground windows 1.35-3.4 m, hoods 3.9-4.2; floor 1 windows 4.35-6.6, hood 6.9-7.2; floor 2 windows 7.65-9.95, hood 10.2-10.5; entablature 10.7-12.0; slate 12.0-13.1; dormers 12.2-14.8"}]
+}

@@ -1,0 +1,1281 @@
+{
+ "face": "tex-8-58",
+ "street": "Den Texstraat",
+ "library": "de-pijp",
+ "stripDate": "2024-12-04",
+ "seconds": 10.07,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "tex-8-58-r1",
+   "pands": [
+    "0363100012179377",
+    "0363100012179379"
+   ],
+   "passed": true,
+   "triangles": 3051
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012179099",
+   "address": "Den Texstraat 34",
+   "builtYear": 1880,
+   "widthM": 6.5,
+   "eavesM": 16.18,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#685847",
+    "wallRaw": "#524b3f",
+    "skyline": {
+     "eavesM": 16.18,
+     "eavesRow": 211,
+     "confidence": 0.91,
+     "crown": {
+      "widthM": 1.77,
+      "riseM": 4.88,
+      "topWidthM": 0.33,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.07,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.77,
+       "widthM": 1.05,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.25,
+       "widthM": 1.05,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1879-five-low scores 0.65 < 0.7 (strip cornice 16.18 m vs the type's 13 m (wall-dormer skyline 15.2 m); strip columns 4 vs 3 bays)",
+   "best": {
+    "type": "pijp-1879-five-low",
+    "score": 0.65,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 16.18 m vs the type's 13 m (wall-dormer skyline 15.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.06 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168038",
+   "address": "Den Texstraat 32",
+   "builtYear": 1881,
+   "widthM": 6.5,
+   "eavesM": 15.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5c4e40",
+    "wallRaw": "#4e493e",
+    "skyline": {
+     "eavesM": 19.05,
+     "eavesRow": 96,
+     "confidence": 0.75,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 2.3,
+      "topWidthM": 0.6,
+      "centre": 0.72
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.086,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 4.97,
+       "widthM": 1.55,
+       "centre": 0.87
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1884-bracketed-hood scores 0.64 < 0.7 (strip cornice 19.05 m vs the type's 14 m (wall-dormer skyline 16.3 m))",
+   "best": {
+    "type": "pijp-1884-bracketed-hood",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.05 m vs the type's 14 m (wall-dormer skyline 16.3 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.051 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012168125",
+   "address": "Den Texstraat 30A",
+   "builtYear": 1881,
+   "widthM": 6.61,
+   "eavesM": 14.99,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5f4e3d",
+    "wallRaw": "#4b4439",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 858,
+     "confidence": 0.17,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.07,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.48,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.27,
+       "widthM": 1.07,
+       "centre": 0.15
+      },
+      {
+       "atM": 5.02,
+       "widthM": 1.82,
+       "centre": 0.25
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179506",
+   "address": "Den Texstraat 30",
+   "builtYear": 1888,
+   "widthM": 6.09,
+   "eavesM": 12.65,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#78735e",
+    "wallRaw": "#4e493e",
+    "skyline": {
+     "eavesM": 12.65,
+     "eavesRow": 352,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.73,
+      "riseM": 1.63,
+      "topWidthM": 0.97,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.57,
+       "widthM": 1.02,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.54 < 0.7 (strip cornice 12.65 m vs the type's 15.2 m (wall-dormer skyline 18.2 m); 1 painted band runs)",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.54,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.65 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.023 (brick)"
+     },
+     {
+      "key": "bands",
+      "weight": 1,
+      "score": 0,
+      "note": "1 painted band runs"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179508",
+   "address": "Den Texstraat 28",
+   "builtYear": 1890,
+   "widthM": 6.12,
+   "eavesM": 12.5,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#191e15",
+    "wallRaw": "#4f4a40",
+    "skyline": {
+     "eavesM": 12.5,
+     "eavesRow": 358,
+     "confidence": 0.93,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 8.57,
+      "topWidthM": 0.3,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.04,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.38,
+       "widthM": 0.88,
+       "centre": 0.89
+      },
+      {
+       "atM": 6.57,
+       "widthM": 1.02,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best pijp-1889-five-storey-banded scores 0.54 < 0.7 (strip cornice 12.5 m vs the type's 15.2 m (wall-dormer skyline 18.2 m); 0 painted band runs)",
+   "best": {
+    "type": "pijp-1889-five-storey-banded",
+    "score": 0.54,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 12.5 m vs the type's 15.2 m (wall-dormer skyline 18.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.015 (brick)"
+     },
+     {
+      "key": "bands",
+      "weight": 1,
+      "score": 0,
+      "note": "0 painted band runs"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179507",
+   "address": "Den Texstraat 26",
+   "builtYear": 1882,
+   "widthM": 6.14,
+   "eavesM": 14.25,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#272923",
+    "wallRaw": "#48493d",
+    "skyline": {
+     "eavesM": 19.35,
+     "eavesRow": 84,
+     "confidence": 0.67,
+     "crown": {
+      "widthM": 1.43,
+      "riseM": 2.1,
+      "topWidthM": 0.82,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.092,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 7.13,
+       "widthM": 1.2,
+       "centre": 0.12
+      },
+      {
+       "atM": 6.82,
+       "widthM": 1.15,
+       "centre": 0.12
+      },
+      {
+       "atM": 6.15,
+       "widthM": 1.05,
+       "centre": 0.09
+      },
+      {
+       "atM": 4.8,
+       "widthM": 0.88,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best tex-1882-hood-bracket-mansard scores 0.64 < 0.7 (strip cornice 19.35 m vs the type's 13.5 m (wall-dormer skyline 15.2 m))",
+   "best": {
+    "type": "tex-1882-hood-bracket-mansard",
+    "score": 0.64,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 19.35 m vs the type's 13.5 m (wall-dormer skyline 15.2 m)"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.053 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179378",
+   "address": "Den Texstraat 24",
+   "builtYear": 1883,
+   "widthM": 6.26,
+   "eavesM": 13.4,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#867e6d",
+    "wallRaw": "#57584c",
+    "skyline": {
+     "eavesM": 13.4,
+     "eavesRow": 322,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.42,
+      "riseM": 2.7,
+      "topWidthM": 0.85,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.102,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.88,
+       "widthM": 1.23,
+       "centre": 0.82
+      },
+      {
+       "atM": 6.13,
+       "widthM": 0.82,
+       "centre": 0.81
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Den Texstraat 24: 3DBAG's 16.6 m ridge draws a flat slate slab 3 m over the cornice (photo shows sky above the dormer); roof pin not available in the kit",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179377",
+   "address": "Den Texstraat 22",
+   "builtYear": 1882,
+   "widthM": 6.14,
+   "eavesM": 13.53,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#726451",
+    "wallRaw": "#5d5648",
+    "skyline": {
+     "eavesM": 13.53,
+     "eavesRow": 317,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.95,
+      "topWidthM": 0.95,
+      "centre": 0.48
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.189,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.25,
+       "widthM": 1,
+       "centre": 0.17
+      },
+      {
+       "atM": 6.85,
+       "widthM": 1.13,
+       "centre": 0.15
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.31
+   },
+   "status": "placed",
+   "type": "tex-1882-hood-bracket-mansard",
+   "score": 1,
+   "placement": {
+    "type": "tex-1882-hood-bracket-mansard",
+    "mirror": true,
+    "paletteOverrides": {
+     "brick": "#6e5a4a"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown mansard-pediment-dormer (type default)",
+    "palette pinned: Den Texstraat 22: brown brick; strip median #605849, lifted 1.15x per the Indische lesson"
+   ],
+   "likeness": {
+    "pandId": "0363100012179377",
+    "ncc": 0.063,
+    "nccRaw": 0.063,
+    "shiftM": [
+     -0.1,
+     -0.05
+    ],
+    "usable": 0.54,
+    "abstain": null,
+    "verdict": "NO EVIDENCE",
+    "reasons": [
+     "foliage 27 % > 25 %"
+    ],
+    "wall": {
+     "photo": "#504d44",
+     "model": "#886f5b",
+     "dL": 0.155
+    },
+    "glazing": {
+     "photo": 0.28,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.467,
+    "footOffsetM": 1.27
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179379",
+   "address": "Den Texstraat 20",
+   "builtYear": 1884,
+   "widthM": 6.22,
+   "eavesM": 13.4,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#454e4c",
+    "wallRaw": "#4d514a",
+    "skyline": {
+     "eavesM": 13.4,
+     "eavesRow": 322,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.67,
+      "topWidthM": 1.55,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.138,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.8,
+       "widthM": 1.25,
+       "centre": 0.83
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "placed",
+   "type": "tex-1882-hood-bracket-mansard",
+   "score": 1,
+   "placement": {
+    "type": "tex-1882-hood-bracket-mansard",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#454e4c",
+     "evidence": "strip 2024-12-04 span 2015-2264: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4a4f55"
+    }
+   },
+   "notes": [
+    "door right: mirrored",
+    "crown mansard-pediment-dormer (type default)",
+    "palette pinned: Den Texstraat 20: dark blue-grey painted front; strip median #525348"
+   ],
+   "likeness": {
+    "pandId": "0363100012179379",
+    "ncc": 0.144,
+    "nccRaw": 0.144,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.76,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall dL +0.16",
+     "glazing storey band off by 0.27 mean 0.48 vs photo 0.59",
+     "wall family unresolved (#3c3f3c is dark and neutral, brick courses not resolved): lightness and hue judged only"
+    ],
+    "wall": {
+     "photo": "#3c3f3c",
+     "model": "#5f666d",
+     "dL": 0.159
+    },
+    "glazing": {
+     "photo": 0.59,
+     "model": 0.48
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.461,
+    "footOffsetM": 1.27
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179380",
+   "address": "Den Texstraat 18",
+   "builtYear": 1881,
+   "widthM": 6.21,
+   "eavesM": 14.42,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#483d33",
+    "wallRaw": "#453f35",
+    "skyline": {
+     "eavesM": 14.6,
+     "eavesRow": 274,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 0.88,
+      "topWidthM": 0.38,
+      "centre": 0.95
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.084,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.72,
+       "widthM": 1.27,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Den Texstraat 18: same 16.7 m 3DBAG ridge slab over the cornice",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179514",
+   "address": "Den Texstraat 14",
+   "builtYear": 1884,
+   "widthM": 12.21,
+   "eavesM": 15.48,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f514b",
+    "wallRaw": "#4d554e",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 858,
+     "confidence": 0.27,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.91,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.67,
+       "widthM": 1.2,
+       "centre": 0.94
+      },
+      {
+       "atM": 10.6,
+       "widthM": 1.25,
+       "centre": 0.6
+      },
+      {
+       "atM": 7.07,
+       "widthM": 1.75,
+       "centre": 0.77
+      },
+      {
+       "atM": 4.97,
+       "widthM": 1.68,
+       "centre": 0.36
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1884, type 1875-1877; frontage 12.21 m, type 5.6-8 m)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1884, type 1875-1877",
+     "frontage 12.21 m, type 5.6-8 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.48 m = 3 storeys of 5.16 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.97 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.039 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179432",
+   "address": "Den Texstraat 12",
+   "builtYear": 1867,
+   "widthM": 6,
+   "eavesM": 14.85,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4844",
+    "wallRaw": "#494441",
+    "skyline": {
+     "eavesM": 16.52,
+     "eavesRow": 197,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.065,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.5,
+       "widthM": 1.25,
+       "centre": 0.15
+      },
+      {
+       "atM": 7.05,
+       "widthM": 5.33,
+       "centre": 0.52
+      },
+      {
+       "atM": 4.88,
+       "widthM": 0.85,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.11
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1867, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1867, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.85 m = 3 storeys of 4.95 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.41 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.044 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179433",
+   "address": "Den Texstraat 10",
+   "builtYear": 1855,
+   "widthM": 6.75,
+   "eavesM": 14.53,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5b4732",
+    "wallRaw": "#614c3a",
+    "skyline": {
+     "eavesM": 18.5,
+     "eavesRow": 118,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 2.77,
+      "riseM": 2.95,
+      "topWidthM": 0.5,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.15 m at 0.17 (light 0.33): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.15,
+       "centre": 0.17,
+       "light": 0.33
+      },
+      {
+       "widthM": 1.13,
+       "centre": 0.5,
+       "light": 0.37
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.83,
+       "light": 0.25
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.77,
+       "widthM": 1.13,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1855, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1855, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.53 m = 3 storeys of 4.84 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.01 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.035 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 4 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179442",
+   "address": "Den Texstraat 8B",
+   "builtYear": 1868,
+   "widthM": 5.51,
+   "eavesM": 14.03,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4f3f2d",
+    "wallRaw": "#4f4d3f",
+    "skyline": {
+     "eavesM": 0,
+     "eavesRow": 858,
+     "confidence": 0.2,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.06,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.43,
+       "widthM": 1.32,
+       "centre": 0.5
+      },
+      {
+       "atM": 7.05,
+       "widthM": 0.93,
+       "centre": 0.27
+      },
+      {
+       "atM": 6.22,
+       "widthM": 1.02,
+       "centre": 0.81
+      },
+      {
+       "atM": 5.92,
+       "widthM": 1.2,
+       "centre": 0.17
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.26
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1868, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1868, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.03 m = 3 storeys of 4.68 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.06 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.041 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179441",
+   "address": "Den Texstraat 8A",
+   "builtYear": 1851,
+   "widthM": 5.49,
+   "eavesM": 14.04,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#52402f",
+    "wallRaw": "#544f41",
+    "skyline": {
+     "eavesM": 20.25,
+     "eavesRow": 48,
+     "confidence": 0.39,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.11,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 10.45,
+       "widthM": 1.57,
+       "centre": 0.16
+      },
+      {
+       "atM": 7.22,
+       "widthM": 1.13,
+       "centre": 0.89
+      },
+      {
+       "atM": 6.02,
+       "widthM": 1.1,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.25
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best pijp-1875-shop-dormer: built 1851, type 1875-1877)",
+   "best": {
+    "type": "pijp-1875-shop-dormer",
+    "score": 0,
+    "veto": [
+     "built 1851, type 1875-1877"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 14.04 m = 3 storeys of 4.68 m vs the type's 4.03 m"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 0,
+      "note": "roof rise 0.02 m (flat) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.076 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

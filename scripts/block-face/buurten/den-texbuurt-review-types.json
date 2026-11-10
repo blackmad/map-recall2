@@ -1,0 +1,47 @@
+{
+ "note": "Den Texbuurt review type pins (lane buurt-dentex-frederiksplein-20261110): Den Texstraat 7-27 and 18-26 are one 1872-84 design.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "face": "tex-1-59",
+   "types": [
+    "tex-1882-hood-bracket-mansard"
+   ],
+   "pands": [
+    "0363100012179436",
+    "0363100012179435",
+    "0363100012179430",
+    "0363100012179429",
+    "0363100012179383"
+   ],
+   "reason": "Den Texstraat 7-15 (2024-12-04 strip, gridded): ground + two upper storeys, white sill band, bracket-block hoods, 1.3 m white entablature at 10.7-12.0 m, slate mansard, one pediment dormer; same design as 21-27"
+  },
+  {
+   "face": "tex-1-59",
+   "types": [
+    "tex-1876-balcony-wide-dormer"
+   ],
+   "pands": [
+    "0363100012179512",
+    "0363100012179511",
+    "0363100012179510",
+    "0363100012179509"
+   ],
+   "reason": "Den Texstraat 21-27 (1875-77 by BAG, same facade design as 7-15 on the strip: same storey lines, hoods and dormers)"
+  },
+  {
+   "face": "tex-8-58",
+   "types": [
+    "tex-1882-hood-bracket-mansard"
+   ],
+   "pands": [
+    "0363100012179507",
+    "0363100012179378",
+    "0363100012179377",
+    "0363100012179379",
+    "0363100012179380"
+   ],
+   "reason": "Den Texstraat 18-26 (2024-12-04 strip, gridded): same design as Den Texstraat 7-15, painted dark grey on 20-26 and brick on 18"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "note": "Den Texbuurt palette pins, lane buurt-dentex-frederiksplein-20261110",
+ "pins": [
+  {
+   "pandId": "0363100012179378",
+   "type": "tex-1882-hood-bracket-mansard",
+   "palette": {
+    "brick": "#45474c"
+   },
+   "reason": "Den Texstraat 24: dark charcoal painted front; strip wall median #4d4c3e (overcast) read as beige-grey by the type palette; first pin #4f4f4c rendered olive through the city tint, so a cooler charcoal"
+  },
+  {
+   "pandId": "0363100012179377",
+   "type": "tex-1882-hood-bracket-mansard",
+   "palette": {
+    "brick": "#6e5a4a"
+   },
+   "reason": "Den Texstraat 22: brown brick; strip median #605849, lifted 1.15x per the Indische lesson"
+  },
+  {
+   "pandId": "0363100012179379",
+   "type": "tex-1882-hood-bracket-mansard",
+   "palette": {
+    "brick": "#4a4f55"
+   },
+   "reason": "Den Texstraat 20: dark blue-grey painted front; strip median #525348"
+  },
+  {
+   "pandId": "0363100012179380",
+   "type": "tex-1882-hood-bracket-mansard",
+   "palette": {
+    "brick": "#5e4a3b"
+   },
+   "reason": "Den Texstraat 18: dark brown brick; strip median #3c3429 (shaded), lifted"
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "tex-1-59-r1",
+ "street": "Den Texstraat",
+ "sources": [
+  {
+   "id": "strip-2024-12-04",
+   "kind": "street-panorama",
+   "capturedAt": "2024-12-04",
+   "image": "staging/block-face/tex-1-59-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the de-pijp library (buurt Den Texbuurt); scores and holds in scripts/block-face/faces/tex-1-59/auto-place.json"
+ },
+ "types": [
+  "tex-1882-hood-bracket-mansard"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012179430",
+   "slug": "tex-179430",
+   "address": "Den Texstraat 11",
+   "type": {
+    "type": "tex-1882-hood-bracket-mansard"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco -; strip 2024-12-04 span 1704-1948"
+   }
+  },
+  {
+   "pandId": "0363100012179429",
+   "slug": "tex-179429",
+   "address": "Den Texstraat 13",
+   "type": {
+    "type": "tex-1882-hood-bracket-mansard"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco -; strip 2024-12-04 span 1948-2192"
+   }
+  },
+  {
+   "pandId": "0363100012179383",
+   "slug": "tex-179383",
+   "address": "Den Texstraat 15",
+   "type": {
+    "type": "tex-1882-hood-bracket-mansard"
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-12-04",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: tex-1882-hood-bracket-mansard scored 1 on eaves 1, stucco -; strip 2024-12-04 span 2192-2436"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012179430",
+    "stripRow": 259,
+    "frontRoof": {},
+    "evidence": "auto-place: the tex-1882-hood-bracket-mansard cornice line 13.5 m (measured on its exemplar strips; this pand's skyline unread); 3DBAG/PDOK eaves 14.36 m"
+   },
+   {
+    "pand": "0363100012179429",
+    "stripRow": 276,
+    "frontRoof": {},
+    "evidence": "auto-place: strip skyline cornice 13.07 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 14.29 m"
+   },
+   {
+    "pand": "0363100012179383",
+    "stripRow": 271,
+    "frontRoof": {},
+    "evidence": "auto-place: strip skyline cornice 13.2 m within 1 m of the tex-1882-hood-bracket-mansard line 13.5 m; 3DBAG/PDOK eaves 14.15 m"
+   }
+  ]
+ }
+}

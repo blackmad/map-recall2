@@ -1,0 +1,86 @@
+{
+ "buurt": "den-texbuurt",
+ "library": "de-pijp",
+ "generatedAt": "2026-11-10T07:48:42.332Z",
+ "seconds": 23.09,
+ "totals": {
+  "faces": 2,
+  "pands": 31,
+  "placed": 9
+ },
+ "faces": [
+  {
+   "face": "tex-1-59",
+   "street": "Den Texstraat",
+   "pands": 16,
+   "placed": 7,
+   "held": 9,
+   "runs": [
+    {
+     "face": "tex-1-59-r1",
+     "pands": [
+      "0363100012179430",
+      "0363100012179429",
+      "0363100012179383"
+     ],
+     "passed": true,
+     "triangles": 4917
+    },
+    {
+     "face": "tex-1-59-r2",
+     "pands": [
+      "0363100012179512",
+      "0363100012179511",
+      "0363100012179510",
+      "0363100012179509"
+     ],
+     "passed": true,
+     "triangles": 7620
+    }
+   ],
+   "seconds": 13.01,
+   "byType": {
+    "tex-1882-hood-bracket-mansard": 3,
+    "tex-1876-balcony-wide-dormer": 4
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 7
+   }
+  },
+  {
+   "face": "tex-8-58",
+   "street": "Den Texstraat",
+   "pands": 15,
+   "placed": 2,
+   "held": 13,
+   "runs": [
+    {
+     "face": "tex-8-58-r1",
+     "pands": [
+      "0363100012179377",
+      "0363100012179379"
+     ],
+     "passed": true,
+     "triangles": 3051
+    }
+   ],
+   "seconds": 10.07,
+   "byType": {
+    "tex-1882-hood-bracket-mansard": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 10,
+    "likeness": 0,
+    "run": 1,
+    "review": 2
+   }
+  }
+ ]
+}

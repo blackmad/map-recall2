@@ -1,0 +1,166 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "tex-1876-balcony-wide-dormer",
+ "district": "de-pijp",
+ "description": "Den Texstraat 21-27 (1872-77 by BAG): the Den Texstraat 7-15 design (ground + two upper storeys, white sill bands and bracket hoods, heavy entablature, slate mansard) with iron balconettes on the middle axis of both upper storeys and a wide three-light pediment dormer with flanking cheeks over the middle and neighbouring axes",
+ "fit": {
+  "widthM": [
+   5.0,
+   7.0
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1872,
+   1878
+  ],
+  "yearSlack": 0,
+  "frontEavesM": 13.5,
+  "frontSkylineM": 15.2,
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "mirrorForDoor": "left",
+  "note": "Den Texstraat 21-27 on the 2024-12-04 strip: dormers 3.2 m wide (three lights) 12.2-14.8 m; iron balconettes on the centre axis, storeys 1 and 2"
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 3,
+  "storeyHeights": [
+   4.1,
+   3.2,
+   3.4
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHead": {
+   "kind": "segmental",
+   "storeys": [
+    1
+   ]
+  },
+  "windowHeights": [
+   0.52,
+   0.7,
+   0.69
+  ],
+  "headLines": [
+   0.83,
+   0.75,
+   0.78
+  ],
+  "windowShare": 0.62,
+  "windowHoods": {
+   "colour": "band"
+  },
+  "bands": "painted",
+  "bandLines": [
+   "sill",
+   "head"
+  ],
+  "cornice": "simple",
+  "entablature": {
+   "rise": 1.3,
+   "cap": 0.35,
+   "frieze": "trim",
+   "architrave": 0.1
+  },
+  "balconies": {
+   "storeys": [
+    1,
+    2
+   ],
+   "bays": [
+    1
+   ]
+  }
+ },
+ "crowns": {
+  "mansard-wide-dormer": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.26,
+     "to": 0.8
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.2,
+    "rise": 1.8,
+    "setback": 0.4
+   },
+   "note": "a white pediment dormer about 3.2 m wide with three lights and cheek pieces, 12.2-14.8 m",
+   "dormerLights": 3
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "house door on the left axis; a pand whose door reads on the right is mirrored"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "mirrored"
+  }
+ },
+ "palettes": {
+  "dark-brown-1882": {
+   "brick": "#66503f",
+   "frame": "white-painted",
+   "door": "#2a2a2a",
+   "stone": "#e2dfd3",
+   "cornice": "#e2dfd3",
+   "band": "#e2dfd3",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "form": "attic",
+  "pitchDeg": 70,
+  "evidence": "Den Texstraat 1-59: the black slate mansard 12.0-13.1 m behind the entablature, a steep front slope under the dormers"
+ },
+ "rhythm": {
+  "bays": "3 equal axes",
+  "identicalBays": "storeys 1 and 2 alike",
+  "windowsPerStorey": "ground: door + 2 windows | 1-2: 3",
+  "symmetry": "symmetric above the ground",
+  "groundFloor": "house door and two windows",
+  "signage": "none",
+  "roofline": "heavy white entablature, slate mansard, one pediment dormer",
+  "photoRows": [
+   1,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0
+ },
+ "evidence": [
+  {
+   "face": "tex-1-59",
+   "pands": [
+    "179512",
+    "179511",
+    "179510",
+    "179509"
+   ],
+   "citation": "tex-1-59 strip 2024-12-04 spans 2923-3904 px: dormers 3.2 m wide, iron balconettes on the centre axis at storeys 1 and 2, otherwise the 7-15 storey lines"
+  }
+ ]
+}
