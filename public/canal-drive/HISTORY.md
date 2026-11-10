@@ -11,6 +11,18 @@
 - **Part overlap at IJdok (feedback fc427560).** The flicker was not interpenetration but a slender fin plus glass parts drawn as solid boxes. `dropNestedDuplicates` gained a slender-part rule (191 parts dropped city-wide; IJdok, NDSM and Overhoeks pinned in `test:building-nesting`, now in `check:canal`). The glass boxes remain (TODO).
 - **Storefront gate round 2** (`docs/reports/storefront-gate-20261110.md`): shopfronts.json rebuilt with the tightened gate.
 - **Feedback triage** pins and probes in `test:canal-car` for the rideability notes (`docs/reports/feedback-triage-20261110.md`); the plaza ratchets flip when the BGT plaza lane lands.
+**Register gables gated by today's roof; H7 round 2 code (2026-11-10, #351 r4, #354).**
+- **Register gables (H5h r4, 7f8a80296).** In the trust order for `fronts/N/gable`, photo writers (Jev, hand) come first, then the register.
+  - With no photo reading, a register gable draws only when the crown rise is at least 2 m. `house:specs` bakes `crownRiseM` from bag-facts; where it is missing, a gable draws when planRoof plans a pitched roof.
+  - Otherwise the register shape is kept as `historicGable`, with its rce: provenance, for cards.
+  - Modes are `?registerGable=drawn|gated|hint`; the default is `gated`. Against the photo on 60 gable rows, drawn crowns agree on 44 (today 38, hint 28). The writer itself scores 0.69 [0.56, 0.80] and stays open.
+  - 125 live crowns change and 148 gables are held.
+- **The r5 ridge rule is held.** It changes 273 houses for +1 agreement, and one wide multi-gable pand goes wrong. Only its data, `data/house-line/ridge-facts-v1.json`, is merged.
+- **H7 round 2 (66572dd81) adds code:**
+  - `blockFace/wallFit.ts`: the dominant cluster wins unless the paler covers ≥ 60 %, painted walls at L* ≤ 40 stay neutral, and chroma travels with the lift. Painted-black Nassaukade fronts reach ΔE 0, and brick holds its hue within 1°.
+  - Kit components `FrontIntent.towers[]` and `rosettes[]`.
+  - A pand on a block face compiles from that face's frontage facts.
+- **Its two chunks are NOT installed yet.** Their GLB audits fail on opening-outside, zfight-tight on the corner (6.9 m², stone 2–3 cm off brick) and geometry-regression. That is H7 round 3.
 
 **Odd-bay cells; spec bays released (2026-11-10, H1c #350, 7c4c72fe3, opus).**
 - **Audit:** the 169901 over-count (5 for a photo 3) came from recipe intent bloemgracht-90. Auto-placed type bays that the strip did not confirm are now a `default` source and never written, so view bays went from 1,348 to 919.

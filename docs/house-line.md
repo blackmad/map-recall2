@@ -16,6 +16,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §3 Stage and publish | H3 | landed |
 | §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b), H5h (§4c hand set) | landed on the AB07 pilot |
 | §5 The kit-gap queue | H6 | stub |
+| §6 Worked example: the timed pilot (Nieuwmarkt, Bloemgracht, Nassaukade) | H7 | landed (staged batch `pilot-20261110`) |
 
 ## §1 The record: HouseSpec
 
@@ -118,12 +119,25 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
 ### The generic path reads it (flag `?houseSpecs=0`, `HOUSE_SPECS=0`)
 
 - `houseSpec/decorate.ts houseSpecEnricher`, composed last in `gameTileEnricher.ts`, stamps the runtime view on each
-  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, bays, src}`.
+  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, bays, crownRiseM, src}` (`crownRiseM`: 3DBAG ridge - eaves, for pands with a gable or a historic gable).
 - `withHouseSpec` runs right after the register step (before `decorateFacade`): it moves `constructionYear` only on an
   era change (the register's rule), sets `registerFinish` from `wallMaterial`, and writes `specRecipe`
   `{bays, wallHex, period, crownShape}` when the spec has bays or a wall colour.
-- `withHouseSpecCrown` runs after `withMonumentGable` (which would otherwise restore the register's gable): it sets
-  `monumentGable` when the spec's gable source outranks `monument-text`, or when nothing named a gable.
+- `withHouseSpecCrown` runs after `withMonumentGable` (which would otherwise restore the register's gable). Since H5h
+  round 4 (ruling on #351) it applies the crown in trust order and then the **register gable gate**:
+  - a photo reading (`PHOTO_GABLE_SOURCES`: `vision-judge`, `streetlevel-measured`, `reviewed`, `author`) sets
+    `monumentGable` over the register's; a photo front with no planner gable drops the register's;
+  - otherwise a source above `monument-text` replaces it, a weaker one only fills a gap (as before);
+  - then, mode `gated` (the default, `?registerGable=drawn|gated|hint`, `REGISTER_GABLE` in Node): a raised gable that
+    did not come from a photo is drawn only when 3DBAG shows a crown above the eaves (`crownInGeometry`: ridge - eaves
+    >= 2 m, from `p.eaves`/`p.ridge` or the view's `crownRiseM`, which `build-house-specs.ts` writes from bag-facts
+    because the live building tiles carry neither), or, with no ridge, when the roof planner alone would plan a
+    `gable` or `pitched` roof. A cornice is always drawn. A held gable is removed and kept as `historicGable` on the
+    feature; mode `hint` holds every register gable, `drawn` is the chain before round 4.
+  - The same order holds in the merge: `resolve.ts strongerProv(a, b, path)` ranks a photo source over `monument-text`
+    on `fronts/N/gable` only; every other field keeps the ladder.
+- `facts/historicGable` (spec.ts, validated against GABLES) is the register's gable with its `rce:<nr>` receipt, written
+  by `fromRegisterFacts` beside `fronts/0/gable`, for cards and trivia; it is never the drawn crown.
 - The view carries a street-measured gable to the roof planner only for a full-width step/neck/raised-neck/bell/
   spout/point crown on a roof that is not flat; a cornice or flat front, or a crown over some bays, stays in the record
   (the roof planner draws a monument gable as a canal house's whole roof; measured on the first full compile, cornice
@@ -510,8 +524,17 @@ Flags
   --intent <path>     apply a CanalHouseIntent (scripts/building-recipes/houses/<id>/intent.json or a block-face
                       house intent) the same way; its pandId names the pand when no pand id is given
   --photo             add the reference photo: staging/pand-reference/<pand>/front.jpg, else the block-face strip
-                      crop of the pand's wall (scripts/block-face/faces/*/strip.json); writes compare.png and prints
-                      the likeness verdict (wall dL/hue, glazing, columns, window shape) of render vs photo
+                      crop of the pand's wall (scripts/block-face/faces/*/strip.json), else the house:crops crop
+                      (--crops); writes compare.png and prints the likeness verdict (wall dL/hue, glazing, columns,
+                      window shape) of render vs photo
+  --crops <dir>       the house:crops archive (a map-recall2-source-data checkout holding pand-crops/<pand>/front.jpg;
+                      default env HOUSE_CROPS_ARCHIVE); the describe envelope's best-of-years pick is used when present
+  --prefer-crop       take the house:crops crop before the block-face strip
+  --strip <dir>       take this strip first (a directory holding strip.json + strip.jpg, e.g. a leaf-off capture day
+                      from scripts/block-face/intake.ts --date, staged under staging/block-face/<face>-w<year>)
+  --chunk <face>      render the block face compiled by scripts/block-face/compile.ts --face=<face> and not installed
+                      (staging/block-face/<face>/chunk.glb, placed by its manifest-entry.json) instead of the route the
+                      game draws today: the after frame of a chunk change before the integrator installs it
   --threeq            add a three-quarter perspective view (threeq.png): 20 degree field of view, flat ground at
                       the median ground height of the drawn buildings
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
@@ -529,7 +552,8 @@ Flags
   --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
-                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall
+                      normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall;
+                      "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -668,8 +692,9 @@ chooses; the repo installs no cron). One batch = one commit, one HISTORY entry, 
 2. **write.** The specs are copied to `scripts/house-specs/specs/` and `build-house-specs --publish` replaces the published
    `house-specs/14`. This is the first step that changes `public/`.
 3. **recipe route.** Only for specs that resolve to `route: 'recipe'`. The intent is `toRecipe(resolved spec)` under the id of the
-   house directory that already carries the pand (its earlier sources are kept), else `spec-<pandId>`; `facts.ts` fills the facts of a new
-   directory; `install.ts --house=<ids>` compiles and installs; then `build-covers`, the covers copy to `models/covers.json` and
+   house directory that already carries the pand (its earlier sources are kept), else `spec-<pandId>`; a new directory takes the
+   block face's `pands/<pand>/facts.json` when a face lists the pand (`blockFaceFactsFor`, `publishPlan.ts`: the frontage chord over an
+   erker; BAG's own front of Nassaukade 146 is the 1.61 m erker side), else `facts.ts` fills it; `install.ts --house=<ids>` compiles and installs; then `build-covers`, the covers copy to `models/covers.json` and
    `check:covers`. **Stale installs:** a reinstall that fails its gates keeps the old GLB and writes `held-installs.json` with the
    reason `staged spec <date>` (`check:stale-installs` then passes with the hold explicit); a new house that fails stops the batch.
 4. **compile.** `world:compile --changed --shell` into the compile directory. Every tile hashes its own inputs and its own slice of
@@ -778,6 +803,7 @@ npm run house:crops -- --buurt <code> [--pand <id>] [--resume] [--dry-run] [--ra
 | `--archive <dir>` | root of the `map-recall2-source-data` checkout or lane worktree; default env `HOUSE_CROPS_ARCHIVE`. Required unless `--dry-run`. |
 | `--limit <n>` | stop after n pands this session (smoke runs). |
 | `--report` | print the coverage table and write the contact sheet from the manifest, nothing else. |
+| `--prefer-bearing <deg>` | pick the street wall whose outward normal is within 50 degrees of this bearing (`select.ts options.preferBearingDeg`). For a row on a square, where the nearest-road rule picks a side or back wall (Nieuwmarkt 6-22: 293, lane H7). Applies to every pand of the run, so use it with `--pand`. |
 
 Set `PAND_REFERENCE_CACHE=/Users/blackmad/Code/map-recall2/.cache/pand-reference` so every worktree shares one panorama cache
 (a re-run, or a neighbouring buurt, then downloads only what is new).
@@ -1218,6 +1244,30 @@ ceiling pools B vs C (21/25) with B2 vs C2 (28/32): 49/57 = 0.86 [0.75, 0.93] (B
   red-brown h28 s0.17 l0.44 (15), red h27 s0.26 l0.55 (5), dark l0.31 (7): overcast crops pull every brick to hue 27-32, so pixel
   colour separates lightness, not red from brown.
 
+**The register gable gate (round 4, ruling on #351).** The register is ranked below the photo writers for the crown and
+drawn only over a 3DBAG crown (§1 "The generic path reads it"). Scored on the 60 gable rows (the hand set's AB07 rows,
+reader A, and the gable rows, B2): the **gated register gable states 52 of 60 and agrees on 36/52 = 0.69 [0.56, 0.80]**,
+under the 0.76 gate (and n < 60): by the ruling that makes it a hint, not the fallback writer. By register type: cornice
+15/18, neck 7/9, step 3/4, point 4/7, bell 7/14. The gate held 8 rows, every one a register gable the photo contradicts;
+its misses are the cornice fronts under a pitched roof (3DBAG's ridge is the roof behind the front, so the test passes).
+
+But "hint only" means the planner's own odds draw those crowns, and they are worse. The drawn crown through the game's
+chain and roof planner (`scripts/house-audit/register-gable-gate.ts`) against the same 60 readings (a raised reading must
+match exactly; a cornice or flat reading matches any crown that is not a raised gable):
+
+| mode | agrees with the photo reading | raised readings kept | cornice/flat readings | live houses changed (of 4,634 register pands) |
+|---|---|---|---|---|
+| drawn (before) | 38/60 | 22/29 | 16/31 | - |
+| **gated (default)** | **44/60** | 22/29 | 22/31 | 125 |
+| hint (register never drawn) | 28/60 | 1/29 | 27/31 | 4,077 |
+
+So the default is `gated`: it keeps every raised gable the photos confirm and fixes six flat fronts, while `hint` loses 21
+of the 22 correct raised gables. `?registerGable=hint` stays available; whether the ruling's "hint only" should
+apply to the drawn crown is an open question for the judgement session. Gated transitions (live, top): neck -> flat 21,
+bell -> flat 18, neck -> mansard 12, point -> flat 11, bell -> hipped 7. Before/after sheet (photo | drawn | gated):
+`map-recall2-screenshots/ui/2026-11-10-register-gable-gate/before-after-1.jpg`, `-2.jpg` (`scripts/house-audit/
+register-gable-sheet.ts` over `house:preview --route generic` renders with `REGISTER_GABLE=drawn|gated`).
+
 **Old hand truth against the hand set** (11 of the 80 have an intent): authored block faces (the Nassaukade row) bays 6/6, storeys
 6/6, gable 5/6, wall tone 4/6; auto-placed faces bays 4/4, storeys 3/4, gable 1/4, pui 2/4. **H9's review values**: bays 9/11
 (182857: H9 8, the readers 5), storeys 2/8 exact and 8/8 within one (H9 counted the souterrain or the attic band; the §1 definition
@@ -1248,3 +1298,146 @@ Archive: `HOUSE_CROPS_ARCHIVE` (default `~/Code/map-recall2-source-data-h5h`) an
 ## §5 The kit-gap queue
 
 Stub (lane H6): `kit-gaps.ts` aggregates `schemaLimits` by `component`; the horizon rule.
+
+## §6 Worked example: the H7 timed pilot (lane H7, #354, 2026-11-10)
+
+Three rows went crop → describe → preview → compare → stage, timed: Nieuwmarkt 6-22 (7 pands, AE03), Bloemgracht 121-197
+(face `bloemgracht-121-197`, 8 pands, AB07: the H4 buurt is Jordaan, not Grachtengordel-West; it is the AB07 row of 8-12 houses
+with the most register entries and at least two hand intents) and Nassaukade 152-145 (face `nassau-145-152`, 7 pands, EQ01).
+Specs and readings: `scripts/house-specs/pilot-20261110/` (`readings.json` -> `make-specs.py` -> `specs/<pandId>.json`).
+
+### One house, every command: Nieuwmarkt 6 (0363100012171851)
+
+```sh
+# 1. crop (54 s for the 7 pands of the row, 3-27 requests each)
+PAND_REFERENCE_CACHE=~/Code/map-recall2/.cache/pand-reference HOUSE_CROPS_ARCHIVE=~/Code/map-recall2-source-data-h7 \
+  npm run house:crops -- --buurt AE03 --pand 0363100012171851,...   # -> "7 12171851 ok wall rejected:blocked+blank"
+```
+
+The crop was of a side wall: the row's fronts face the square (outward normal 114 degrees), and `pickWall` takes the longest
+wall on the nearest *road*, which on Nieuwmarkt is an alley or the back street for 5 of the 7 pands (two were close-ups of a door).
+`--prefer-bearing 114` (new in H7) picks the wall facing the square, falling back to the longest exposed wall within 50 degrees of
+the bearing when no road-facing wall is there; re-cropped in 36 s, all 7 usable.
+
+```sh
+npm run house:crops -- --buurt AE03 --pand <the 7> --prefer-bearing 114 --restart     # -> "7 12171851 ok wall usable"
+zsh -lic 'node --import tsx scripts/house-crops/judge.ts --buurt AE03 --archive <archive> --pand <the 7> --budget 0.5'  # quality 0.59
+# 2. describe (0.7-1.1 s a pand): register step gable, Jev bays 2 + wallMaterial brick, pixel colour, BAG storeys
+zsh -lic 'npm run house:describe -- 0363100012171851 --archive ~/Code/map-recall2-source-data-h7'
+# 3. preview the game today beside the crop (1.7 s); --wall frames the same wall as the crop
+npm run house:preview -- 0363100012171851 --photo --wall 114deg --crops ~/Code/map-recall2-source-data-h7
+```
+
+The sheet shows the game already draws the register's step gable on the square front (the generic path, since H1) with two
+window axes; the photo has two axes, bare orange brick and white speklagen through the gable. The verdict is FAIL (columns 3 vs 2,
+wall hue -159 degrees): the render's wall patch is read on glass, so the verdict is not taken on its own; the reading is by eye.
+
+4. **Correct.** `readings.json` gets `fronts/0/gable: step` (confirms the register), `fronts/0/bays: 2` (held, `SPEC_BAYS_HELD`),
+`palette/wallMaterial: brick` and the limit `{palette: speklagen ...}`; `make-specs.py` writes the spec with `author` receipts.
+
+```sh
+# 5. preview the spec as the game will draw it after publish (staged extract; 1.8 s a pand after a 1.7 s merge)
+node --import tsx scripts/house-preview/resolved.ts --specs scripts/house-specs/pilot-20261110/specs 0363100012171851 \
+  --photo --wall 114deg --crops ~/Code/map-recall2-source-data-h7
+# 6. stage (0.3 s)
+npm run house:stage -- scripts/house-specs/pilot-20261110/specs/0363100012171851.json --by "lane H7"
+```
+
+The after render is byte-identical to the before: on the generic path a spec draws only the gable (already drawn), the era and
+`registerFinish`, and a brick finish on a canal-style front changes no pixel. Time for this house: about 2 minutes of lane time
+(its share of the row's crop and re-crop, 0.7 s describe, two 2 s previews, one reading, 0.3 s stage).
+
+### What the pilot measured
+
+| Row | Houses | Staged | Route after publish | Render changed by the spec |
+|---|---|---|---|---|
+| Nieuwmarkt 6-22 | 7 | 7 | generic (all) | 0 of 7 (byte-identical previews) |
+| Bloemgracht 121-197 | 8 | 6 | generic 4, recipe 2 (168006, 174828) | 2 of 8 (the recipe pands; 168006 needed a wall-colour and roof correction) |
+| Nassaukade 152-145 | 7 | 5 (+ the corner by the chunk route) | recipe 5, chunk 1, none 1 | 6 of 7 |
+
+* Lane time from the first crop request (16:10) to the 18th staged spec (16:32): 22 minutes for 22 houses, including two tool
+  fixes (`--prefer-bearing`, `resolved.ts`) and the corner chunk; median about 1 minute a house, the slowest the corner (6 minutes).
+* Per step: crop 6-8 s a pand (network), judge 0.05 s, describe 0.5-1.4 s, preview 1.5-2.2 s (generic) or 2.5-10 s (recipe compile),
+  stage 0.3 s. One hand-correction iteration took 5 s (spec edit -> resolved preview).
+* Not staged: Bloemgracht 174173 (a tree covers the front: no evidence), 174177 (the crop shows a pointed brick gable where the
+  register says cornice and plaster: crop or pand link unresolved), Nassaukade 146 (0363100012160704: the resolved spec fails the
+  recipe compile, "Opening escapes its wall", because BAG draws the erker into the footprint; a staged spec would stop the batch),
+  and the corner 151-152 (0363100012116526, below). Round 2 staged 146 (the face facts, below).
+
+### The corner pand 0363100012116526 (multi-front)
+
+`chunk-face-clercq-236681` suppressed it and modelled only its De Clercqstraat front; its Nassaukade face was a bare slab. Route
+chosen: **chunk extension** (block-face route). Its house in `clercq-236681/intent.json` became a two-front `design`: `front0` the
+resolved De Clercqstraat type (`clercq-nassaukade-corner`), front `nassaukade` the face read on `nassau-145-152` (6 axes in two
+halves, 5 storeys with a tall ground storey, bracketed white cornice, two pediment dormers, bar front over the left three axes);
+`pands/0363100012116526/facts.json` gained the Nassaukade frontage. The face compiles with every gate and interference check
+passing (27,660 triangles). `npm run house:preview -- 0363100012116526 --chunk clercq-236681 --photo` draws the front: 6 vs 7
+columns, tall windows (verdict FAIL on wall dL +0.14: one palette per pand, the De Clercqstraat type's #715850 is kept). Narrowing
+the suppression was not chosen: the generic path would draw a second shell over the chunk's (the pand stays in the chunk for its
+other front), and the HouseSpec recipe route compiles one street front per pand (its resolved spec is the clercq record, street
+De Clercqstraat, and fails "facts.json has no frontage for De Clercqstraat").
+
+What a `fronts[]` HouseSpec field needs to say for such a pand: one entry per street facade with its `street` (the key the
+recipe fit uses to find the frontage in facts), its own gable/cornice, storeys, bays, door axis, shopfront and dormers, and the
+receipt per front (`fronts/1/bays` from the Nassaukade strip, `fronts/0/*` from the De Clercqstraat strip); a shared palette or a
+per-front palette (the two reads differ by about dE 5); and a rule for which front's roof line wins at the corner (the chunk planned
+the attic from front0's 14.65 m eaves, so the Nassaukade dormers are not drawn). Today the resolver keeps whichever face's adapter
+wins per field path, so two faces naming one pand merge into one front (bays 1 from the clercq record).
+
+### The tools H7 added
+
+* `house:crops --prefer-bearing <deg>`: §4a table.
+* `house:preview --crops <dir>` (the house:crops archive as the photo; the describe envelope's best-of-years pick when present),
+  `--prefer-crop`, `--chunk <face>` (a compiled, not installed block face): §2 `--help`.
+* `scripts/house-preview/resolved.ts` (`--help`): a spec batch rendered as the game will draw it after publish. `house:preview --spec`
+  writes the gable and the wall colour onto the pand directly, so it draws a wall colour the game holds and never shows the recipe
+  route; `resolved.ts` runs the publish merge (`build-house-specs --extra-specs`) and renders by the resolved route. Use it for receipts.
+* `scripts/house-specs/pilot-20261110/demo-bundle.ts`: the Nassaukade demo bundle (per house: photo crop, before/after render,
+  compare sheets and measureFacade before/after, the spec with provenance, `fields.json` = field, value, source, evidence, what it
+  changed; plus the row strips and `index.json`) into `artifacts/house-line/demo-nassaukade/` (gitignored). The archived copy, JPEG,
+  paths flattened to `<pandId>-<file>`, is `ui/2026-11-10-house-line-nassaukade/` in the screenshots repo.
+
+### Round 2 (the judgement ruling on #354)
+
+**Wall colour (`src/canalRecall/blockFace/wallFit.ts`, `scripts/block-face/wall-fit.ts`).** The round-1 palettes were per-channel
+medians (`measureStripPalette`) of the 2024-11-21 strip: golden hour, a yellow cast (white reads 240,240,192) and foliage, so the
+painted-black fronts read olive-khaki, red-brown brick read mauve and 145 pale peach. `fitWallColour` replaces the median for a wall
+colour: leaf and light-trim masks on the white-balanced pixel, a deterministic 2-means in Lab, the darker (dominant) cluster unless
+the paler one covers at least 60 % of the wall mask, a brick/joint split on chroma for bare brick, the median Lab of what is left;
+a painted wall at L* 40 or below is a neutral near-black (a = b = 0, never lifted), and any lift scales chroma with L
+(`liftWithChroma`). `combineWallFits` votes over captures; `npm run test:block-face` pins the three cases (`wallFit.test.ts`).
+`wall-fit.ts --face=<id> --crops <archive>/pand-crops --years 2018,2021,2022 --strips <dir>` prints one vote per leaf-off capture
+and the combined hex (it writes nothing); its result went into `nassau-145-152/intent.json` (`paletteOverrides.brick`, source
+`wall-fit-2019-2022`). Light varies by capture (145 reads L* 64, 81, 32 and 37), so take votes from several leaf-off years.
+
+| Nassaukade | photo wall-fit (4 leaf-off votes) | render round 1 | dE | render round 2 | dE |
+|---|---|---|---|---|---|
+| 151-152 corner | #564543 | #8a6b61 | 18.6 | #705a57 | 9.6 |
+| 150 | #404040 | #524b3d | 10.7 | #404040 | 0.0 |
+| 149 | #4d4d4d | #6a685d | 13.0 | #4d4d4d | 0.0 |
+| 148 | #665648 | #96816f | 17.8 | #806c5a | 9.6 |
+| 147 | #535353 | #615a47 | 12.4 | #535353 | 0.0 |
+| 146 | #957d73 (strip only) | #ba9378 | 14.9 | #a48f87 | 7.0 |
+| 145 | #886957 | #ba9378 | 17.6 | #9e7c68 | 7.8 |
+
+Render = the flat wall pixel of the front (`artifacts/house-line/tools/colour-table.ts`). The brick remainder is the look's wall-tint
+lightness lift (hue within 1 degree, chroma kept).
+
+**Leaf-off evidence.** `scripts/block-face/intake.ts --date 2019-01-09` builds a winter strip
+(`staging/block-face/nassau-145-152-w2019/`); `house:preview --strip <dir>` takes it as the photo. None of the Nassaukade verdicts is
+NO EVIDENCE for foliage any more: 150, 148 PASS; 147 PASS on the chunk route; 149 FAILs dL -0.12 because the preview's wall metric
+takes in the white bands (the four wall-fit votes agree at L* 30-34); 145 and 146 are NO EVIDENCE for a washed-out sky band.
+
+**146.** `house:preview --wall face` frames the block face's frontage chord. The recipe compile failed on BAG's erker front
+("Opening escapes its wall"); with the face facts (above) it compiles and 146 is staged.
+
+**Corner 151-152: new kit components.** The photo's Nassaukade front has two tall stone dormer towers rising through the eaves and
+three wall rosettes, which no field said. `FrontIntent.towers[]` (`{bays, rise, cap, finish: 'stone', lightRise, lightSill}`, in the
+facade plane, one per entry; the old `tower` is one per front) and `FrontIntent.rosettes[]` (`{bays, storeys, diameter}`: a stone
+ring, wall field and boss in place of the window, `src/canalRecall/buildingRecipe/rosettes.ts`) are typed, validated and
+byte-identical when absent (`test:fit-golden`: all 207 recipes identical). The pediment dormers were dropped: the attic is extruded
+along front0's street, so the Nassaukade end of it is a vertical face and dormers set behind the facade are buried in it. The front
+takes `palette.brick` from the Nassaukade wall-fit; storeys 4 (STOREYS_DEFINITION). Preview on the chunk route: PASS (wall #675350
+vs #594b48, dL 0.043, 7 vs 8 columns). Still unsaid: the attic face shows wall-coloured wedges beside each tower (the single
+`tower` does the same), and the corner's roof end.
+

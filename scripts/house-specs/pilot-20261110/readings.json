@@ -1,0 +1,328 @@
+{
+ "_about": "Lane H7 (#354) hand readings, 2026-11-10: one row per pand, read by eye from the rectified crop (house:crops archive or the block-face strip) beside the house:preview before render. Fields are HouseSpec field paths; `held` marks a field the game does not draw yet (SPEC_BAYS_HELD) but that the spec should state; `limits` are schemaLimits.",
+ "0363100012171851": {
+  "address": "Nieuwmarkt 6",
+  "photo": "source-data-h7 pand-crops/0363100012171851/front.jpg (2025-01-08, --prefer-bearing 114)",
+  "fields": {
+   "fronts/0/gable": "step",
+   "fronts/0/bays": 2,
+   "palette/wallMaterial": "brick"
+  },
+  "why": {
+   "fronts/0/gable": "confirms the register (rce) step gable on the photo",
+   "fronts/0/bays": "two window axes above the shop (held)",
+   "palette/wallMaterial": "bare orange-red brick, no paint"
+  },
+  "limits": [
+   {
+    "component": "palette",
+    "what": "speklagen: white stone bands through the step gable (generic path has no band component)"
+   }
+  ]
+ },
+ "0363100012171854": {
+  "address": "Nieuwmarkt 8 (BAG wall of 171854; the crop shows the dark grey painted front with a white cornice the user's photo labels 12)",
+  "photo": "source-data-h7 pand-crops/0363100012171854/front.jpg (--prefer-bearing 114)",
+  "fields": {
+   "fronts/0/gable": "cornice",
+   "fronts/0/bays": 3
+  },
+  "why": {
+   "fronts/0/gable": "straight white cornice on the photo; the register's bell for no. 8 does not match this BAG wall (address-to-pand link suspect)",
+   "fronts/0/bays": "three axes (held)"
+  },
+  "limits": [
+   {
+    "component": "palette",
+    "what": "dark grey painted brick: palette/wallMaterial painted-brick maps to the generic 'light' finish (decorate.ts), the wrong way for a dark painted front; not stated"
+   }
+  ]
+ },
+ "0363100012182849": {
+  "address": "Nieuwmarkt 10-12",
+  "photo": "source-data-h7 pand-crops/0363100012182849/front.jpg (2025-01-08)",
+  "fields": {
+   "fronts/0/bays": 2,
+   "palette/wallMaterial": "brick"
+  },
+  "why": {
+   "fronts/0/bays": "two axes (held)",
+   "palette/wallMaterial": "orange brick with a white cornice; the generic path drew grey stucco"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "cornice with a crowned central dormer (attic window under a pediment)"
+   }
+  ]
+ },
+ "0363100012182848": {
+  "address": "Nieuwmarkt 14",
+  "photo": "source-data-h7 pand-crops/0363100012182848/front.jpg",
+  "fields": {
+   "fronts/0/gable": "bell",
+   "fronts/0/bays": 2,
+   "palette/wallMaterial": "brick"
+  },
+  "why": {
+   "fronts/0/gable": "bell gable with white scroll pieces, confirms the register",
+   "fronts/0/bays": "two axes (held)",
+   "palette/wallMaterial": "orange brick; the generic path drew a near-black wall"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "white sandstone scroll pieces (klauwstukken) beside the bell"
+   }
+  ]
+ },
+ "0363100012182847": {
+  "address": "Nieuwmarkt 16",
+  "photo": "source-data-h7 pand-crops/0363100012182847/front.jpg",
+  "fields": {
+   "fronts/0/gable": "neck",
+   "fronts/0/bays": 3,
+   "palette/wallMaterial": "brick"
+  },
+  "why": {
+   "fronts/0/gable": "neck gable, confirms the register",
+   "fronts/0/bays": "three axes (held)",
+   "palette/wallMaterial": "brick"
+  },
+  "limits": []
+ },
+ "0363100012182858": {
+  "address": "Nieuwmarkt 18",
+  "photo": "source-data-h7 pand-crops/0363100012182858/front.jpg",
+  "fields": {
+   "fronts/0/gable": "bell",
+   "fronts/0/bays": 3,
+   "palette/wallMaterial": "brick"
+  },
+  "why": {
+   "fronts/0/gable": "bell gable with scrolls on the photo; the register text says 'plain', monument-gables.json says bell; the photo decides",
+   "fronts/0/bays": "three axes (held)",
+   "palette/wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "scroll pieces and a crowning piece on the bell"
+   }
+  ]
+ },
+ "0363100012182857": {
+  "address": "Nieuwmarkt 20-22",
+  "photo": "source-data-h7 pand-crops/0363100012182857/front.jpg (2025-01-08)",
+  "fields": {
+   "fronts/0/gable": "step",
+   "fronts/0/bays": 5,
+   "palette/wallMaterial": "brick"
+  },
+  "why": {
+   "fronts/0/gable": "step gables, confirms the register",
+   "fronts/0/bays": "five axes over the shop storey (2 + 1 + 2; held)",
+   "palette/wallMaterial": "brick with white bands"
+  },
+  "limits": [
+   {
+    "component": "gable",
+    "what": "twin step gables on one pand (1605): one front draws one crown"
+   },
+   {
+    "component": "palette",
+    "what": "speklagen and white relieving-arch blocks over every window (Hendrick de Keyser style)"
+   }
+  ]
+ },
+ "0363100012167952": {
+  "address": "Bloemgracht 121",
+  "photo": "source-data-h5 pand-crops/0363100012167952 (good tier)",
+  "fields": {
+   "fronts/0/bays": 3
+  },
+  "why": {
+   "fronts/0/bays": "three axes, agrees with Jev 3 (held)"
+  },
+  "limits": [
+   {
+    "component": "palette",
+    "what": "near-black painted brick: no drawable finish for a dark painted front (painted-brick maps to 'light'; wall colours held)"
+   }
+  ]
+ },
+ "0363100012167951": {
+  "address": "Bloemgracht 123",
+  "photo": "source-data-h5 pand-crops/0363100012167951 (good tier)",
+  "fields": {
+   "fronts/0/bays": 3,
+   "facts/pui": "shop"
+  },
+  "why": {
+   "fronts/0/bays": "three axes, agrees with Jev (held)",
+   "facts/pui": "garage/shop front (GARAGE BAKKER) on the ground storey"
+  },
+  "limits": [
+   {
+    "component": "palette",
+    "what": "dark grey painted brick (as 121)"
+   }
+  ]
+ },
+ "0363100012168006": {
+  "address": "Bloemgracht (168006)",
+  "photo": "source-data-h5 pand-crops/0363100012168006 (2021-03-17)",
+  "fields": {
+   "fronts/0/bays": 3,
+   "palette/brick": "#3a3739",
+   "roof/material": "slate"
+  },
+  "why": {
+   "fronts/0/bays": "three axes; the preview measured 3 vs 3 but the render draws 2 window columns plus a door column (held)",
+   "palette/brick": "charcoal painted wall (houseLine photo wall #524b4f under a grey sky, darkened to the shadowed patch); the strip-measured #030403 drew GREEN on the recipe route (lightness clamp on a near-black hex)",
+   "roof/material": "grey slate hipped roof on the photo; the recipe drew red pantiles"
+  },
+  "limits": [
+   {
+    "component": "palette",
+    "what": "black painted brick with a white cornice band: verdict PASS on a red render because both walls are unsaturated (no hue test) and dL 0.05"
+   }
+  ]
+ },
+ "0363100012167885": {
+  "address": "Bloemgracht (167885, wide front)",
+  "photo": "source-data-h5 pand-crops/0363100012167885 (2024-12-17)",
+  "fields": {
+   "palette/wallMaterial": "brick"
+  },
+  "why": {
+   "palette/wallMaterial": "dark brown brick; the generic path drew white stucco (dL 0.44)"
+  },
+  "limits": []
+ },
+ "0363100012174828": {
+  "address": "Bloemgracht (174828)",
+  "photo": "source-data-h5 pand-crops/0363100012174828 (2023-01-11)",
+  "fields": {
+   "fronts/0/bays": 3,
+   "palette/wallMaterial": "brick"
+  },
+  "why": {
+   "fronts/0/bays": "three axes (held)",
+   "palette/wallMaterial": "brick; the generic path drew white stucco"
+  },
+  "limits": [
+   {
+    "component": "gable",
+    "what": "pointed top read but not classed (neck or spout) from a winter-tree crop; left to the register"
+   }
+  ]
+ },
+ "0363100012174833": {
+  "address": "Bloemgracht (174833)",
+  "photo": "source-data-h5 pand-crops/0363100012174833 (2023-02-27)",
+  "fields": {
+   "fronts/0/bays": 2,
+   "palette/wallMaterial": "brick"
+  },
+  "why": {
+   "fronts/0/bays": "two axes (held)",
+   "palette/wallMaterial": "dark brick; the generic path drew white stucco (dL 0.47)"
+  },
+  "limits": []
+ },
+ "0363100012164843": {
+  "address": "Nassaukade 150",
+  "photo": "block-face strip nassau-145-152 2024-11-21",
+  "fields": {
+   "fronts/0/bays": 3,
+   "palette/wallMaterial": "painted-brick"
+  },
+  "why": {
+   "fronts/0/bays": "three axes, the centre a balcony stack: confirms the face",
+   "palette/wallMaterial": "dark painted brick: confirms the face and the H5h hand set"
+  },
+  "limits": [
+   {
+    "component": "window head",
+    "what": "storey-3 round arches with keystones and springers read over each window; the recipe draws dark semicircles above a lintel course"
+   },
+   {
+    "component": "balcony",
+    "what": "bracketed timber balcony boxes; drawn as thin turned rails"
+   }
+  ]
+ },
+ "0363100012161422": {
+  "address": "Nassaukade 149",
+  "photo": "block-face strip nassau-145-152 2024-11-21",
+  "fields": {
+   "palette/wallMaterial": "painted-brick"
+  },
+  "why": {
+   "palette/wallMaterial": "dark painted brick: confirms the face and the H5h hand set"
+  },
+  "limits": []
+ },
+ "0363100012157426": {
+  "address": "Nassaukade 148",
+  "photo": "block-face strip nassau-145-152 2024-11-21",
+  "fields": {
+   "fronts/0/bays": 3
+  },
+  "why": {
+   "fronts/0/bays": "three axes, agrees with Jev 3 and the face"
+  },
+  "limits": [
+   {
+    "component": "balcony",
+    "what": "cast-iron grille balconies drawn as plain rails"
+   }
+  ]
+ },
+ "0363100012160273": {
+  "address": "Nassaukade 147",
+  "photo": "block-face strip nassau-145-152 2024-11-21",
+  "fields": {
+   "fronts/0/bays": 3,
+   "palette/wallMaterial": "painted-brick"
+  },
+  "why": {
+   "fronts/0/bays": "three axes, agrees with Jev 3",
+   "palette/wallMaterial": "dark painted brick: confirms the face and the H5h hand set"
+  },
+  "limits": [
+   {
+    "component": "roof",
+    "what": "bell-shaped mansard drawn straight"
+   }
+  ]
+ },
+ "0363100012160704": {
+  "address": "Nassaukade 146",
+  "photo": "block-face strip nassau-145-152-w2019 2019-01-09",
+  "fields": {
+   "fronts/0/bays": 3
+  },
+  "why": {
+   "fronts/0/bays": "three axes over the two-storey erker on storeys 1-2, the door in the left axis; the face's bay-outline chord carries the erker"
+  },
+  "limits": [
+   {
+    "component": "facade",
+    "what": "the timber erker's glazed side cheeks and its balcony on top are drawn as the kit's plain bay window"
+   }
+  ]
+ },
+ "0363100012159694": {
+  "address": "Nassaukade 145",
+  "photo": "block-face strip nassau-145-152 2024-11-21",
+  "fields": {
+   "fronts/0/bays": 2
+  },
+  "why": {
+   "fronts/0/bays": "two axes with the balcony stack: confirms the face"
+  },
+  "limits": []
+ }
+}

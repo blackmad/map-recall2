@@ -44,6 +44,40 @@
     },
     {
       "date": "2026-11-10",
+      "title": "Coverage page thumbnails are back",
+      "text": "The own-look cards on the coverage page lost their kit renders and photos earlier today when a republish ran without its thumbnail list. They are back, now for 403 types and families instead of 141 (the newer Bellamy and Oud-West types never had one), and a republish can no longer wipe them.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-coverage-thumbs/ep02-desktop.jpg",
+          "alt": "Coverage page, Bellamybuurt-Zuid: own-look cards with kit renders and photos",
+          "caption": "Bellamybuurt-Zuid on the coverage page."
+        },
+        {
+          "src": "ui/2026-11-10-coverage-thumbs/ep02-phone.jpg",
+          "alt": "The same cards on a phone",
+          "caption": "On a phone."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Fewer made-up gables",
+      "text": "Listed houses used to get the gable named in the monuments register even where today's front is flat. Now a register gable is drawn only where the 3D roof data shows a crown above the eaves, and a gable read from a street photo always wins. About 125 houses change, mostly bell and neck gables that become the flat fronts they really have. The old gable is kept as a fact for the house's card.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-register-gable-gate/before-after-1.jpg",
+          "alt": "Photo, before and after for six listed houses: register gables replaced by the flat fronts in the photos",
+          "caption": "Photo, before, after."
+        },
+        {
+          "src": "ui/2026-11-10-register-gable-gate/before-after-2.jpg",
+          "alt": "Photo, before and after for six more listed houses",
+          "caption": "More houses."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Three-window houses",
       "text": "Measured window bays are back, and this time a house with three windows across draws three. Before, the generic facades could only draw an even number, so the most common canal-house rhythm came out as two or four. About 400 measured houses now match the window count in their street photos; houses without a confirmed count keep the generic rhythm.",
       "images": [

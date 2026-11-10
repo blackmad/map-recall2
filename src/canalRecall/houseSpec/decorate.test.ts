@@ -1,7 +1,7 @@
 // The generic path reads HouseSpecs (house line H1 step 5): flag, decorator steps, enricher, bay fitting.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView } from './decorate.ts';
+import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView } from './decorate.ts';
 import { gameFeatureDecorator } from '../galleryPipeline.ts';
 import { frontageLayoutScale, specCellCount } from '../streetFacadeRendering.ts';
 import { layoutWall } from '../facadeLayout.ts';
@@ -17,9 +17,11 @@ test('houseSpecsEnabled: default on, ?houseSpecs=0 and HOUSE_SPECS=0 off, the qu
 });
 
 test('no spec: the same object back from both steps (byte-identical chain)', () => {
-  const f = feature({ constructionYear: 1700, monumentGable: 'bell' });
+  const f = feature({ constructionYear: 1700, monumentGable: 'bell', eaves: 9, ridge: 13 });
   assert.equal(withHouseSpec(f), f);
-  assert.equal(withHouseSpecCrown(f), f);
+  assert.equal(withHouseSpecCrown(f), f, 'a register gable with a 3DBAG crown above the eaves is drawn as before');
+  const bare = feature({ constructionYear: 1700, monumentGable: 'bell' });
+  assert.equal(withHouseSpecCrown(bare, 'drawn'), bare, 'drawn (the gate off): byte-identical');
   // A kit or a measured front is never touched, as with the register step.
   const kit = feature({ kitWall: 'plain', houseSpec: { gable: 'step', src: { gable: 'reviewed' } } });
   assert.equal(withHouseSpecCrown(kit), kit);
@@ -43,8 +45,9 @@ test('facts step: era-only year moves, finish, a spec recipe only when the meshe
 test('crown step: a stronger source than the register text replaces its gable; a weaker one only fills a gap', () => {
   const strip = feature({ monumentGable: 'bell', houseSpec: { gable: 'step', src: { gable: 'streetlevel-measured' } } });
   assert.equal(withHouseSpecCrown(strip).properties.monumentGable, 'step');
+  // H5h round 4: a photo reading (a Jev crop judgement) outranks the register for the crown
   const judge = feature({ monumentGable: 'bell', houseSpec: { gable: 'neck', src: { gable: 'vision-judge' } } });
-  assert.equal(withHouseSpecCrown(judge), judge);
+  assert.equal(withHouseSpecCrown(judge).properties.monumentGable, 'neck');
   const gap = feature({ houseSpec: { gable: 'raised-neck', src: { gable: 'vision-judge' } } });
   assert.equal(withHouseSpecCrown(gap).properties.monumentGable, 'raisedNeck');
   const flat = feature({ houseSpec: { gable: 'flat', src: { gable: 'reviewed' } } });
@@ -107,4 +110,31 @@ for (const c of doubling) test(`bays: ${c.pand} draws the photo's ${c.photo} col
   // 2-axis cells draw even counts: the nearest to the photo is photo or photo + 1 (odd photo counts are a cell limit).
   assert.ok(Math.abs(drawn - c.photo) <= 1, `${drawn} vs ${c.photo}`);
   assert.ok(drawn <= c.bays, 'the drawn columns never exceed the stated bays');
+});
+
+test('register gable gate: drawn only over a 3DBAG crown, else held as historicGable (H5h round 4)', () => {
+  // the live tiles have no eaves/ridge: the spec view's crownRiseM stands in
+  assert.equal(crownInGeometry({ houseSpec: { crownRiseM: 3.1, src: {} } }), true); assert.equal(crownInGeometry({ houseSpec: { crownRiseM: 0.4, src: {} } }), false);
+  assert.equal(REGISTER_GABLE_MODE_DEFAULT, 'gated');
+  assert.equal(registerGableMode(''), 'gated'); assert.equal(registerGableMode('?registerGable=drawn'), 'drawn'); assert.equal(registerGableMode(null, 'hint'), 'hint'); assert.equal(registerGableMode('?registerGable=bogus'), 'gated');
+  // hint: every register gable, a cornice too, is kept as historicGable and not drawn
+  assert.equal(withHouseSpecCrown(feature({ monumentGable: 'cornice', eaves: 9, ridge: 14 }), 'hint').properties.historicGable, 'cornice');
+  assert.equal(CROWN_RISE_M, 2);
+  assert.equal(crownInGeometry({ eaves: 9, ridge: 11 }), true); assert.equal(crownInGeometry({ eaves: 9, ridge: 10.9 }), false); assert.equal(crownInGeometry({ eaves: 9 }), null);
+  // flat top: the raised register gable is held, the chain draws the front as without the register
+  const flat = withHouseSpecCrown(feature({ monumentGable: 'bell', eaves: 12, ridge: 12.6 })).properties;
+  assert.equal(flat.monumentGable, undefined); assert.equal(flat.historicGable, 'bell');
+  // a cornice needs no crown: always drawn
+  const cornice = feature({ monumentGable: 'cornice', eaves: 12, ridge: 12.2 });
+  assert.equal(withHouseSpecCrown(cornice), cornice);
+  // no ridge in the tile and no footprint to plan: held
+  assert.equal(withHouseSpecCrown(feature({ monumentGable: 'neck' })).properties.historicGable, 'neck');
+  // a register-sourced spec gable is gated the same way; a photo gable is not
+  const reg = withHouseSpecCrown(feature({ eaves: 12, ridge: 12.5, houseSpec: { gable: 'neck', src: { gable: 'monument-text' } } })).properties;
+  assert.equal(reg.monumentGable, undefined); assert.equal(reg.historicGable, 'neck');
+  const photo = withHouseSpecCrown(feature({ monumentGable: 'bell', eaves: 12, ridge: 12.5, houseSpec: { gable: 'step', src: { gable: 'vision-judge' } } })).properties;
+  assert.equal(photo.monumentGable, 'step');
+  // a photo front with no planner gable (flat) drops the register's, which is kept as historicGable
+  const photoFlat = withHouseSpecCrown(feature({ monumentGable: 'bell', eaves: 9, ridge: 14, houseSpec: { gable: 'flat', src: { gable: 'reviewed' } } })).properties;
+  assert.equal(photoFlat.monumentGable, undefined); assert.equal(photoFlat.historicGable, 'bell');
 });

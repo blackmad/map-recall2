@@ -1,0 +1,36 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182847",
+ "address": "Nieuwmarkt 16",
+ "design": {
+  "fronts": [
+   {
+    "gable": "neck",
+    "bays": 3
+   }
+  ],
+  "palette": {
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012182847/front.jpg: neck gable, confirms the register",
+   "at": "2026-11-10"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012182847/front.jpg: three axes (held)",
+   "at": "2026-11-10"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "h7 hand read of source-data-h7 pand-crops/0363100012182847/front.jpg: brick",
+   "at": "2026-11-10"
+  }
+ }
+}
