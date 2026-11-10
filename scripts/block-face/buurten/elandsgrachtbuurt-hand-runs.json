@@ -11,15 +11,23 @@
      "pand": "167869",
      "type": "jordaan-1850-cornice-house",
      "storeys": 3,
-     "eavesM": 12.8,
-     "why": "Lauriergracht 102: three axes, a 4.9 m ground storey under a stone band, two upper storeys, a white frieze cornice at 12.3-12.8 m, red tile saddle with one pedimented dormer (its dormer is not drawn: the kit's dormer frame pierces a roof plane of this pand's 3DBAG roof, geometry audit opening-outside)",
+     "eavesM": 12.4,
+     "why": "Lauriergracht 102: three axes, a 4.9 m ground storey under a stone band, two upper storeys, a white frieze cornice at 12.3-12.8 m, red tile saddle with one pedimented dormer (its dormer is not drawn: the kit's dormer frame pierces a roof plane of this pand's 3DBAG roof, geometry audit opening-outside); grid read on the strip (ground 5 m, two storeys)",
      "roof": {
       "material": "black-tile",
-      "evidence": "strip 2023-03-20: dark glazed pantiles on the saddle behind the cornice"
+      "evidence": "strip 2023-03-13: a brown-grey tile saddle with one white dormer (Opus strip review: about #6a625c; black-tile is the kit's nearest covering)"
      },
      "overrides": {
       "cornice": "heavy",
       "windowShare": 0.6
+     },
+     "crown": "dormer-low",
+     "grid": {
+      "storeysM": [
+       5.0,
+       3.0,
+       3.3
+      ]
      }
     },
     {
@@ -27,15 +35,22 @@
      "type": "jordaan-1850-cornice-house",
      "crown": "dormer-low",
      "storeys": 3,
-     "eavesM": 12.8,
-     "why": "Lauriergracht 100: the twin of 102, three axes, one pedimented dormer",
+     "eavesM": 12.4,
+     "why": "Lauriergracht 100: the twin of 102, three axes, one pedimented dormer; grid read on the strip (ground 5 m, two storeys)",
      "roof": {
       "material": "black-tile",
-      "evidence": "strip 2023-03-20: dark glazed pantiles on the saddle behind the cornice"
+      "evidence": "strip 2023-03-13: a brown-grey tile saddle with one white dormer (Opus strip review: about #6a625c; black-tile is the kit's nearest covering)"
      },
      "overrides": {
       "cornice": "heavy",
       "windowShare": 0.6
+     },
+     "grid": {
+      "storeysM": [
+       5.0,
+       3.0,
+       3.3
+      ]
      }
     },
     {
@@ -43,16 +58,29 @@
      "type": "jordaan-1850-cornice-house",
      "crown": "dormer-pair-low",
      "storeys": 3,
-     "eavesM": 12.4,
+     "eavesM": 12.2,
      "overrides": {
       "bays": 6,
       "cornice": "heavy",
-      "windowShare": 0.6
+      "windowShare": 0.6,
+      "windowHead": {
+       "kind": "round",
+       "storeys": [
+        0
+       ]
+      }
      },
-     "why": "Lauriergracht 96-98: six axes, two round-arched carriage doors in the ground storey, two upper storeys, cornice at ~12.4 m, slate attic with two pedimented dormers",
+     "why": "Lauriergracht 96-98: six axes, two round-arched carriage doors in the ground storey, two upper storeys, cornice at ~12.4 m, slate attic with two pedimented dormers; grid read on the strip; the ground's two 2 m round-arched openings and small arched lights drawn as round-headed ground windows",
      "roof": {
       "material": "slate",
       "evidence": "strip 2023-03-20: a grey slate mansard face behind the cornice"
+     },
+     "grid": {
+      "storeysM": [
+       5.0,
+       3.1,
+       3.2
+      ]
      }
     },
     {
@@ -60,16 +88,23 @@
      "type": "jordaan-1850-cornice-house",
      "crown": "dormer-pair-low",
      "storeys": 3,
-     "eavesM": 12.4,
+     "eavesM": 12.2,
      "overrides": {
       "bays": 6,
       "cornice": "heavy",
       "windowShare": 0.6
      },
-     "why": "Lauriergracht 92-94: the same six-axis front as 96-98, one arched carriage door, two pedimented dormers",
+     "why": "Lauriergracht 92-94: the same six-axis front as 96-98, one arched carriage door, two pedimented dormers; grid read on the strip (the round-arched door left of the shop is not drawn: a shop ground has no doorArch)",
      "roof": {
       "material": "slate",
       "evidence": "strip 2023-03-20: a grey slate mansard face behind the cornice"
+     },
+     "grid": {
+      "storeysM": [
+       5.0,
+       3.1,
+       3.2
+      ]
      }
     }
    ]
@@ -77,7 +112,7 @@
   {
    "id": "lauriergracht-62-110-h2",
    "face": "lauriergracht-62-110",
-   "reason": "Lauriergracht 78-86 (strip 2023-03-20): 1840-1910 cornice fronts with white keystones and pedimented dormers, one painted white (88 is left out: BAG leaves a 0.9 m gap between 88 and 86)",
+   "reason": "Lauriergracht 84-86 (strip 2023-03-13): a keystone cornice house over a grey stone ground and a low cornice house (82, white render over a souterrain whose bel-etage cannot be read behind the tree, is held; 88: BAG leaves a 0.9 m gap)",
    "houses": [
     {
      "pand": "169946",
@@ -85,18 +120,33 @@
      "storeys": 4,
      "overrides": {
       "windowSurround": "keystone",
-      "windowShare": 0.6
+      "windowShare": 0.6,
+      "paintedStoreys": {
+       "storeys": [
+        0
+       ],
+       "colour": "#8a8a86"
+      }
      },
-     "why": "Lauriergracht 86: three axes, ground and three storeys, white keystones, a bracketed cornice at ~14.6 m, red tile roof with one pedimented dormer (the dormer is not drawn: the kit's dormer escapes this pand's surveyed footprint)",
-     "eavesM": 14.6
+     "why": "Lauriergracht 86: three axes with keystones, a grey stone ground storey (wide window, door on the left), three storeys, a white ornate cornice at ~13.5-14.8 m and a red tile mansard with a dormer; grid read on the strip. BAG leaves a 0.75 m gap between 86 and 84 where the photo's 86 runs on: the drawn party wall sits ~0.7 m short of the photo's",
+     "eavesM": 14.8,
+     "crown": "dormer-low",
+     "grid": {
+      "storeysM": [
+       4.8,
+       3.0,
+       3.0,
+       2.7
+      ]
+     }
     },
     {
      "pand": "169892",
      "type": "jordaan-1850-cornice-house",
      "crown": "dormer-low",
      "storeys": 3,
-     "eavesM": 12.5,
-     "why": "Lauriergracht 84: three axes, ground and two storeys under a white cornice at ~12.5 m, slate mansard with one pedimented dormer",
+     "eavesM": 11.0,
+     "why": "Lauriergracht 84: three axes, a white ground storey with the door on the left, two storeys, a white cornice at ~10-11 m and a slate mansard with a dormer; grid read on the strip (the front stands 1.5 m under its neighbours)",
      "roof": {
       "material": "slate",
       "form": "attic",
@@ -105,70 +155,87 @@
       "evidence": "strip 2023-03-20: a steep slate roof face rises about 1.8 m behind the cornice to the dormer tops (3DBAG's p95 sits under 1.5 m over the cornice line, which drew a flat roof)"
      },
      "overrides": {
-      "windowShare": 0.6
+      "windowShare": 0.6,
+      "paintedStoreys": {
+       "storeys": [
+        0
+       ],
+       "colour": "#e8e6e0"
+      }
      },
      "wall": false,
      "paletteOverrides": {
       "brick": "#6e5b52"
-     }
-    },
-    {
-     "pand": "169942",
-     "type": "jordaan-1850-cornice-house",
-     "crown": "dormer-low",
-     "storeys": 4,
-     "eavesM": 14.0,
-     "overrides": {
-      "windowShare": 0.6
      },
-     "why": "Lauriergracht 82: a white painted front, two axes, ground and three storeys, cornice at ~14 m, one dormer",
-     "roof": {
-      "material": "slate",
-      "evidence": "strip 2023-03-20: a dark slate mansard face behind the cornice"
-     },
-     "wall": false,
-     "paletteOverrides": {
-      "brick": "#e4e2dc",
-      "wallMaterial": "painted-brick"
+     "grid": {
+      "storeysM": [
+       4.8,
+       2.6,
+       2.6
+      ]
      }
-    },
+    }
+   ]
+  },
+  {
+   "id": "lauriergracht-62-110-h3",
+   "face": "lauriergracht-62-110",
+   "reason": "Lauriergracht 78-80 (strip 2023-03-13): a keystone cornice house with a shop ground and a cornice house with segmental heads",
+   "houses": [
     {
      "pand": "169889",
      "type": "jordaan-1850-cornice-house",
      "crown": "dormer-low",
      "storeys": 4,
-     "eavesM": 13.6,
+     "eavesM": 13.5,
      "overrides": {
       "windowSurround": "keystone",
       "windowShare": 0.6
      },
-     "why": "Lauriergracht 80: three axes, ground and three storeys with white keystones, cornice at ~13.6 m, a pedimented dormer",
+     "why": "Lauriergracht 80: three axes with keystones, a ground with a wide shop window (drawn as windows: BAG/OSM give a residential ground) and the door on the left, three storeys, a white cornice at ~13.5 m and a slate roof with a dormer; grid read on the strip",
      "roof": {
       "material": "slate",
       "form": "attic",
       "pitchDeg": 60,
       "rise": 0.6,
       "evidence": "strip 2023-03-20: a steep slate roof face rises about 1.8 m behind the cornice to the dormer tops (3DBAG's p95 sits under 1.5 m over the cornice line, which drew a flat roof)"
+     },
+     "grid": {
+      "storeysM": [
+       4.4,
+       2.8,
+       2.7,
+       2.9
+      ]
      }
     },
     {
      "pand": "169943",
      "type": "jordaan-1850-cornice-house",
      "storeys": 4,
-     "eavesM": 14.2,
+     "eavesM": 13.6,
      "overrides": {
       "windowHead": {
        "kind": "segmental"
       },
       "windowShare": 0.6
      },
-     "why": "Lauriergracht 78: three axes of segmental-headed white-framed windows, ground and three storeys, a bracketed frieze cornice at ~14.2 m, one pedimented dormer (its dormer is not drawn: the kit's dormer frame pierces a roof plane of this pand's 3DBAG roof, geometry audit opening-outside)",
+     "why": "Lauriergracht 78: three axes of segmental-headed windows, the red door on the left, three storeys, a white cornice at ~12.6-13.6 m and a slate mansard with a dormer; grid read on the strip",
      "roof": {
       "material": "slate",
       "form": "attic",
       "pitchDeg": 60,
       "rise": 0.6,
       "evidence": "strip 2023-03-20: a steep slate roof face rises about 1.8 m behind the cornice to the dormer tops (3DBAG's p95 sits under 1.5 m over the cornice line, which drew a flat roof)"
+     },
+     "crown": "dormer-low",
+     "grid": {
+      "storeysM": [
+       4.5,
+       2.8,
+       2.8,
+       2.7
+      ]
      }
     }
    ]

@@ -27,10 +27,23 @@
    "address": "Egelantiersgracht 11",
    "type": {
     "type": "jordaan-1850-cornice-house",
+    "storeys": 3,
     "crown": "dormer",
-    "measuredPalette": {
-     "brick": "#463b3d",
-     "evidence": "strip 2023-03-13 span 1184-1395: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    "mirror": true,
+    "overrides": {
+     "bays": 2,
+     "storeyHeights": [
+      5.5,
+      2.9,
+      3.2
+     ]
+    },
+    "paletteOverrides": {
+     "brick": "#2e2627"
+    },
+    "roof": {
+     "material": "slate",
+     "evidence": "strip 2023-03-13: a dark slate mansard with one dormer behind the cornice (Opus strip review 2026-11-10: no red tile)"
     }
    },
    "groundFloor": {
@@ -43,7 +56,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 11: two axes, ground and three storeys, white cornice at 11.3-12 m with one small dormer over the middle; strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 11: two wide axes, a tall ground storey (to ~5.5 m) with the door on the right, two upper storeys, a white cornice at ~11.6 m and a slate mansard with one dormer (grid read on the strip; Opus strip review 2026-11-10); strip 2023-03-13"
    }
   },
   {
@@ -52,6 +65,19 @@
    "address": "Egelantiersgracht 13",
    "type": {
     "type": "jordaan-1850-cornice-house",
+    "storeys": 3,
+    "crown": "dormer",
+    "overrides": {
+     "storeyHeights": [
+      4.9,
+      3.4,
+      3.6
+     ]
+    },
+    "roof": {
+     "material": "slate",
+     "evidence": "strip 2023-03-13: a grey roof with a dormer over the cornice behind the tree (no red tile)"
+    },
     "measuredPalette": {
      "brick": "#35312c",
      "evidence": "strip 2023-03-13 span 1395-1600: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -67,7 +93,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 13: three axes, ground and three storeys under a plain white cornice at ~12.5 m (front behind a bare tree); strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 13: three axes, a tall ground storey and two upper storeys (window heads ~4.5, 8.0 and 10.8 m) under a plain white cornice at ~12 m (front behind a bare tree; grid read on the strip); strip 2023-03-13"
    }
   }
  ],
@@ -84,13 +110,13 @@
   "measuredEaves": [
    {
     "pand": "0363100012174703",
-    "stripRow": 400,
-    "evidence": "hand placement: cornice top read at 12 m on the strip 2023-03-13"
+    "stripRow": 416,
+    "evidence": "hand placement: cornice top read at 11.6 m on the strip 2023-03-13"
    },
    {
     "pand": "0363100012174775",
-    "stripRow": 380,
-    "evidence": "hand placement: cornice top read at 12.5 m on the strip 2023-03-13"
+    "stripRow": 400,
+    "evidence": "hand placement: cornice top read at 12 m on the strip 2023-03-13"
    }
   ]
  }

@@ -30,8 +30,23 @@
     "type": "jordaan-1750-neck-gable",
     "storeys": 4,
     "crown": "bell-low",
+    "mirror": true,
+    "overrides": {
+     "paintedStoreys": {
+      "storeys": [
+       0
+      ],
+      "colour": "#e6e3da"
+     },
+     "storeyHeights": [
+      5.6,
+      3.2,
+      2.7,
+      2.5
+     ]
+    },
     "paletteOverrides": {
-     "brick": "#5e4a42"
+     "brick": "#4c4a48"
     }
    },
    "groundFloor": {
@@ -44,7 +59,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 8: three axes, a white-painted ground storey, ground and three storeys, a bell gable with one attic light and a crest to ~19 m (the strip wall reads green from the winter cast; brick set by eye; the white ground storey is not drawn); strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 8: three axes, a white-painted ground storey with the door on the right (mirrored), three storeys, a bell gable from ~14 m with one attic light and a crest to ~19 m; grid read on the strip; brick by eye (the strip wall reads green from the winter cast); strip 2023-03-13"
    }
   },
   {
@@ -53,7 +68,21 @@
    "address": "Bloemgracht 6D",
    "type": {
     "type": "jordaan-1850-cornice-house",
-    "storeys": 5,
+    "mirror": true,
+    "overrides": {
+     "storeyHeights": [
+      5.6,
+      3.1,
+      3,
+      3.1
+     ]
+    },
+    "roof": {
+     "form": "attic",
+     "rise": 0.6,
+     "material": "zinc",
+     "evidence": "strip 2023-03-13: a set-back glazed attic storey over the cornice at ~15.5 m (drawn as a low zinc attic face)"
+    },
     "measuredPalette": {
      "brick": "#57504e",
      "evidence": "strip 2023-03-13 span 437-656: trim-normalised wall (buildingRecipe/measureFacade.ts)"
@@ -69,7 +98,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 6: three axes, ground and four storeys, a white cornice at ~16.5 m (the glass balconies are not drawn); strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 6D: three axes, a tall ground storey (white pilasters, door on the right, mirrored) and three tall storeys (windows ~2.1 m), a cornice at ~15.5 m; the set-back glazed attic storey and the glass balconies are not drawn; grid read on the strip; strip 2023-03-13"
    }
   }
  ],
@@ -91,8 +120,8 @@
    },
    {
     "pand": "0363100012174496",
-    "stripRow": 169,
-    "evidence": "hand placement: cornice top read at 16.5 m on the strip 2023-03-13"
+    "stripRow": 209,
+    "evidence": "hand placement: cornice top read at 15.5 m on the strip 2023-03-13"
    }
   ]
  }

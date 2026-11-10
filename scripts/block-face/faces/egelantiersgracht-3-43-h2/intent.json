@@ -15,7 +15,7 @@
  "authoring": {
   "author": "lane hand placement (scripts/block-face/hand-place.ts)",
   "passes": 1,
-  "note": "Egelantiersgracht 19-27 (strip 2023-03-13): a cornice house with a dormer, two small bell gables, two cornice houses; spec scripts/block-face/buurten/bloemgrachtbuurt-hand-runs.json"
+  "note": "Egelantiersgracht 19-23 (strip 2023-03-13): a cornice house, a bell gable and a neck gable (25 is held: behind a tree, its souterrain grid cannot be read); spec scripts/block-face/buurten/bloemgrachtbuurt-hand-runs.json"
  },
  "types": [
   "jordaan-1850-cornice-house",
@@ -30,8 +30,9 @@
     "type": "jordaan-1850-cornice-house",
     "roof": {
      "form": "attic",
-     "rise": 0.6,
-     "evidence": "strip 2023-03-13: a tile or slate roof face rises behind the cornice (3DBAG's p95 under 1.5 m over the cornice line drew a flat roof)"
+     "rise": 0.3,
+     "material": "bitumen",
+     "evidence": "strip 2023-03-13: sky over the cornice with a small crest, a low dark roof face behind it (Opus strip review 2026-11-10: the red attic must not show); a flat roof hovered (audit)"
     },
     "measuredPalette": {
      "brick": "#4a4845",
@@ -58,9 +59,16 @@
    "type": {
     "type": "jordaan-1750-neck-gable",
     "crown": "bell-low",
-    "measuredPalette": {
-     "brick": "#4b4242",
-     "evidence": "strip 2023-03-13 span 2199-2377: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    "mirror": true,
+    "overrides": {
+     "storeyHeights": [
+      4.6,
+      2.6,
+      2.6
+     ]
+    },
+    "paletteOverrides": {
+     "brick": "#453f3e"
     }
    },
    "groundFloor": {
@@ -73,7 +81,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 21: three axes, ground and two storeys, a bell gable with one attic light to ~12.3 m; strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 21: three axes, ground and two storeys, a bell gable with one attic light to ~12.3 m; the red double door right of centre (mirrored), first-floor row raised to the photo (grid), brick from the Opus review; strip 2023-03-13"
    }
   },
   {
@@ -82,76 +90,15 @@
    "address": "Egelantiersgracht 23",
    "type": {
     "type": "jordaan-1750-neck-gable",
-    "crown": "bell-low",
-    "measuredPalette": {
-     "brick": "#746968",
-     "evidence": "strip 2023-03-13 span 2377-2557: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2023-03-13",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 23: three axes, ground and two low storeys, a bell gable to ~12.3 m; strip 2023-03-13"
-   }
-  },
-  {
-   "pandId": "0363100012174977",
-   "slug": "egelantiersgracht-174977",
-   "address": "Egelantiersgracht 25",
-   "type": {
-    "type": "jordaan-1850-cornice-house",
-    "roof": {
-     "form": "attic",
-     "rise": 0.6,
-     "evidence": "strip 2023-03-13: a tile or slate roof face rises behind the cornice (3DBAG's p95 under 1.5 m over the cornice line drew a flat roof)"
-    },
-    "measuredPalette": {
-     "brick": "#3e3835",
-     "evidence": "strip 2023-03-13 span 2558-2745: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
-   },
-   "groundFloor": {
-    "use": "residential",
-    "bag": [
-     "woonfunctie"
-    ],
-    "photoDate": "2023-03-13",
-    "agreement": "bag-only",
-    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
-   },
-   "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 25: dark front behind a tree, ground and three storeys under a white cornice at ~12 m; strip 2023-03-13"
-   }
-  },
-  {
-   "pandId": "0363100012174976",
-   "slug": "egelantiersgracht-174976",
-   "address": "Egelantiersgracht 27C",
-   "type": {
-    "type": "jordaan-1850-cornice-house",
     "overrides": {
-     "paintedStoreys": {
-      "storeys": [
-       0
-      ],
-      "colour": "#e6e3da"
-     }
+     "storeyHeights": [
+      4.6,
+      2.6,
+      2.6
+     ]
     },
-    "roof": {
-     "form": "attic",
-     "rise": 0.6,
-     "evidence": "strip 2023-03-13: a tile or slate roof face rises behind the cornice (3DBAG's p95 under 1.5 m over the cornice line drew a flat roof)"
-    },
-    "measuredPalette": {
-     "brick": "#756a67",
-     "evidence": "strip 2023-03-13 span 2745-2964: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    "paletteOverrides": {
+     "brick": "#423d39"
     }
    },
    "groundFloor": {
@@ -164,7 +111,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 27: three axes of white-framed windows, a white ground storey, ground and three storeys, a white frieze cornice at 12.5-13.2 m and a red tile saddle behind it (not a gable); strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Egelantiersgracht 23: a neck gable with a straight 2.2 m neck from ~9.8 m, two storeys over a white timber ground front across the full width (not drawn: BAG says residential, and the kit has no residential timber front); brick fitted to the photo #6e5f5c (fit-wall-palette.ts); the first floor's two wide windows draw as three (kit: one bay count per front); strip 2023-03-13"
    }
   }
  ],
@@ -193,16 +140,6 @@
     "pand": "0363100012174968",
     "stripRow": 488,
     "evidence": "hand placement: cornice top read at 9.8 m on the strip 2023-03-13"
-   },
-   {
-    "pand": "0363100012174977",
-    "stripRow": 400,
-    "evidence": "hand placement: cornice top read at 12 m on the strip 2023-03-13"
-   },
-   {
-    "pand": "0363100012174976",
-    "stripRow": 352,
-    "evidence": "hand placement: cornice top read at 13.2 m on the strip 2023-03-13"
    }
   ]
  }

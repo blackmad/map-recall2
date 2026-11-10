@@ -113,6 +113,13 @@ export interface TypeMatchRule {
    * over a type without `blackPaint: true`. Absent = byte-identical (`stucco` stays a weighted criterion).
    */
   materialVeto?: true;
+  /**
+   * The type's own ground is drawn whatever the BAG/OSM use says: no automatic shopfront for a trading use. Canal-belt
+   * houses keep their stoop and souterrain under offices, galleries and institutions (Herengracht 520, BAG
+   * bijeenkomstfunctie: a carved centre door over a double stoop, drawn as a shop before this). A real shop ground is a
+   * reviewer hold. Absent = byte-identical.
+   */
+  typeGround?: true;
   /** The type is drawn painted black (the black-paint wall material does not veto it). */
   blackPaint?: true;
   /**
@@ -441,7 +448,7 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   if (storeys !== t.body.storeys) { placement.storeys = storeys; notes.push(`storeys ${storeys}: eaves ${ev.eavesM} m at the type's ${storeyPitch(t).toFixed(2)} m pitch`); }
   // Door side: the type's grounds are authored door-left / door-right; the measured side picks one, unread keeps the first.
   const grounds = Object.keys(t.grounds ?? {});
-  if (trading) placement.ground = {shopfront: autoShopfront(ev, use)};
+  if (trading && !t.match?.typeGround) placement.ground = {shopfront: autoShopfront(ev, use)};
   // A bay in the BAG outline gives the accent side outright (it does not depend on the strip's exposure).
   const bagSide = ev.bagBay && Math.abs(ev.bagBay.centre - 0.5) >= 0.1 ? (ev.bagBay.centre < 0.5 ? 'left' : 'right') : null;
   const aSide = bagSide ?? accentSideOf(s);
@@ -454,7 +461,14 @@ export function decidePand(types: MatchableType[], ev: PandEvidence, slug: strin
   notes.push(crown.why);
   const rhythm: Partial<RhythmSpec> = {citation: `auto-place: ${t.id} scored ${best.score} on ${best.criteria.map(c => `${c.key} ${c.score ?? '-'}`).join(', ')}; strip ${s.date} span ${s.px.join('-')}`};
   return {kind: 'placed', pandId: ev.pandId, typeId: t.id, score: best.score, ...(second ? {runnerUp: {typeId: second.typeId, score: second.score}} : {}), notes,
-    house: {pandId: ev.pandId, slug, address: ev.address, type: placement, groundFloor: use, rhythm: rhythm as RhythmSpec}};
+    house: {pandId: ev.pandId, slug, address: ev.address, type: placement, groundFloor: typeGroundUse(t, use, trading), rhythm: rhythm as RhythmSpec}};
+}
+
+/** A type that draws its own ground (`match.typeGround`, Herengracht 520's stoop under a BAG 'winkel' use) records what the
+ *  photo shows: a residential ground, in conflict with the registers, which the note keeps. Other types keep the register use. */
+export function typeGroundUse(t: MatchableType, use: GroundFloorUse, trading: boolean): GroundFloorUse {
+  if (!trading || !t.match?.typeGround) return use;
+  return {...use, use: 'residential', agreement: 'conflict', note: `auto-place: the type's ground drawn (match.typeGround); registers say ${use.use} (${[...use.bag ?? [], use.category].filter(Boolean).join(', ')}), not a shop front on the photo`};
 }
 
 export const SKYLINE_MIN_CONFIDENCE = 0.6;

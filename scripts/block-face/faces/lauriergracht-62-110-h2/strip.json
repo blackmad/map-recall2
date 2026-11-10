@@ -2,33 +2,33 @@
  "face": "lauriergracht-62-110-h2",
  "image": "staging/block-face/lauriergracht-62-110-h2/strip.jpg",
  "pixelsPerMetre": 40,
- "width": 1056,
+ "width": 456,
  "height": 806,
  "groundNAP": 0.137,
  "heightM": 20.16,
  "frame": {
   "midRD": [
-   120506.5350375,
-   487191.71150000003
+   120499.3741875,
+   487188.68150000006
   ],
   "uRD": [
-   0.9276544778962988,
-   0.3734396465815397
+   0.9245198840738629,
+   0.3811338137085859
   ],
   "nRD": [
-   0.3734396465815397,
-   -0.9276544778962988
+   0.3811338137085859,
+   -0.9245198840738629
   ]
  },
- "x0M": -13.63,
- "x1M": 12.77,
+ "x0M": -5.85,
+ "x1M": 5.55,
  "date": "2023-03-20",
  "coverage": 1,
  "spans": [
   {
    "pandId": "0363100012169946",
-   "x0M": -13.63,
-   "x1M": -8.01,
+   "x0M": -5.85,
+   "x1M": -0.22,
    "px": [
     0,
     225
@@ -61,8 +61,8 @@
   },
   {
    "pandId": "0363100012169892",
-   "x0M": -7.26,
-   "x1M": -2.23,
+   "x0M": 0.53,
+   "x1M": 5.55,
    "px": [
     255,
     456
@@ -89,108 +89,6 @@
      "timestamp": "2023-03-20T11:44:41.219110Z",
      "distanceM": 24.7,
      "obliquityDeg": 15.4,
-     "missingFraction": 0
-    }
-   ]
-  },
-  {
-   "pandId": "0363100012169942",
-   "x0M": -2.23,
-   "x1M": 2.37,
-   "px": [
-    456,
-    640
-   ],
-   "date": "2023-03-20",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "TMX7316010203-003007_pano_0006_000017",
-     "timestamp": "2023-03-20T11:44:42.284040Z",
-     "distanceM": 23.8,
-     "obliquityDeg": 4,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-003007_pano_0006_000018",
-     "timestamp": "2023-03-20T11:44:42.824040Z",
-     "distanceM": 24,
-     "obliquityDeg": 7.6,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-003007_pano_0006_000016",
-     "timestamp": "2023-03-20T11:44:41.749080Z",
-     "distanceM": 24.7,
-     "obliquityDeg": 15.5,
-     "missingFraction": 0
-    }
-   ]
-  },
-  {
-   "pandId": "0363100012169889",
-   "x0M": 2.37,
-   "x1M": 7.89,
-   "px": [
-    640,
-    861
-   ],
-   "date": "2023-03-20",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "TMX7316010203-003007_pano_0006_000018",
-     "timestamp": "2023-03-20T11:44:42.824040Z",
-     "distanceM": 23.9,
-     "obliquityDeg": 3.8,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-003007_pano_0006_000019",
-     "timestamp": "2023-03-20T11:44:43.369070Z",
-     "distanceM": 24,
-     "obliquityDeg": 7.9,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-003007_pano_0006_000017",
-     "timestamp": "2023-03-20T11:44:42.284040Z",
-     "distanceM": 24.8,
-     "obliquityDeg": 15.1,
-     "missingFraction": 0
-    }
-   ]
-  },
-  {
-   "pandId": "0363100012169943",
-   "x0M": 7.87,
-   "x1M": 12.77,
-   "px": [
-    860,
-    1056
-   ],
-   "date": "2023-03-20",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "TMX7316010203-003007_pano_0006_000019",
-     "timestamp": "2023-03-20T11:44:43.369070Z",
-     "distanceM": 24.1,
-     "obliquityDeg": 5.3,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-003007_pano_0006_000020",
-     "timestamp": "2023-03-20T11:44:43.919100Z",
-     "distanceM": 24.2,
-     "obliquityDeg": 6.3,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-003007_pano_0006_000018",
-     "timestamp": "2023-03-20T11:44:42.824040Z",
-     "distanceM": 25,
-     "obliquityDeg": 16.5,
      "missingFraction": 0
     }
    ]
@@ -231,7 +129,7 @@
   "face": "lauriergracht-62-110",
   "px": [
    2070,
-   3126
+   2526
   ]
  }
 }

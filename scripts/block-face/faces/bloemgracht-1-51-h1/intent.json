@@ -1,0 +1,350 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "bloemgracht-1-51-h1",
+ "street": "Bloemgracht",
+ "sources": [
+  {
+   "id": "strip-2023-03-13",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-13",
+   "image": "staging/block-face/bloemgracht-1-51-h1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Bloemgracht 7-21 (strip 2023-03-13): cornice houses with dormers, small bell and neck gables, and a tall frieze-topped front (15); spec scripts/block-face/buurten/bloemgrachtbuurt-hand-runs.json"
+ },
+ "types": [
+  "jordaan-1850-cornice-house",
+  "jordaan-1750-neck-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012173342",
+   "slug": "bloemgracht-173342",
+   "address": "Bloemgracht 7",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 3,
+    "crown": "dormer",
+    "overrides": {
+     "storeyHeights": [
+      5.6,
+      3.1,
+      3.4
+     ]
+    },
+    "roof": {
+     "material": "slate",
+     "evidence": "strip 2023-03-13: a grey roof with a white bell dormer over the cornice (no red tile)"
+    },
+    "measuredPalette": {
+     "brick": "#524d4f",
+     "evidence": "strip 2023-03-13 span 1295-1483: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 7: two axes, a tall ground and two storeys under a white cornice at ~12.8 m with a small dormer; grid read on the strip; strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012173043",
+   "slug": "bloemgracht-173043",
+   "address": "Bloemgracht 9",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "crown": "bell-low",
+    "overrides": {
+     "storeyHeights": [
+      4,
+      2.7,
+      2.7
+     ]
+    },
+    "paletteOverrides": {
+     "brick": "#2f2c2c"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 9: a 3.9 m front, ground and two storeys, a small bell gable from ~9.4 m to ~12 m; grid read on the strip; strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012172863",
+   "slug": "bloemgracht-172863",
+   "address": "Bloemgracht 11",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 3,
+    "crown": "dormer",
+    "overrides": {
+     "storeyHeights": [
+      4.2,
+      2.9,
+      2.9
+     ]
+    },
+    "paletteOverrides": {
+     "brick": "#393633"
+    },
+    "roof": {
+     "form": "attic",
+     "rise": 0.6,
+     "evidence": "strip 2023-03-13: a grey roof with a white bell dormer over the cornice (no red tile)",
+     "material": "slate"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 11: two axes, ground and two storeys, a white cornice at ~10 m with a bell dormer to ~12 m; grid read on the strip; strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012172779",
+   "slug": "bloemgracht-172779",
+   "address": "Bloemgracht 13",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "overrides": {
+     "storeyHeights": [
+      4,
+      2.5,
+      2.5
+     ]
+    },
+    "paletteOverrides": {
+     "brick": "#413c3a"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 13: ground and two storeys, a neck gable with oculi from ~9 m to ~12 m (the oculi are not drawn); grid read on the strip; strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012168708",
+   "slug": "bloemgracht-168708",
+   "address": "Bloemgracht 15C",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 5,
+    "overrides": {
+     "cornice": "frieze",
+     "storeyHeights": [
+      4.5,
+      3.4,
+      2.6,
+      2.6,
+      2.5
+     ]
+    },
+    "roof": {
+     "form": "attic",
+     "rise": 0.3,
+     "material": "bitumen",
+     "evidence": "strip 2023-03-13: sky over the white frieze or cornice, no red roof face shows; a flat roof hovered (audit)"
+    },
+    "measuredPalette": {
+     "brick": "#7d6a63",
+     "evidence": "strip 2023-03-13 span 1943-2217: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 15: a 6.8 m front of three axes, ground and four storeys, a white inscribed frieze 15.6-17.2 m; grid read on the strip; strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012173045",
+   "slug": "bloemgracht-173045",
+   "address": "Bloemgracht 17",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "paletteOverrides": {
+     "brick": "#554f4c"
+    },
+    "roof": {
+     "form": "attic",
+     "rise": 0.3,
+     "material": "bitumen",
+     "evidence": "strip 2023-03-13: sky over the white frieze or cornice, no red roof face shows; a flat roof hovered (audit)"
+    }
+   },
+   "groundFloor": {
+    "use": "office",
+    "bag": [
+     "kantoorfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 17: three axes, ground and three storeys, a white cornice at ~13.5 m with a tall dormer (the dormer is not drawn: the kit's dormer frame pierces the 0.5 m attic, geometry audit opening-outside); strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012168749",
+   "slug": "bloemgracht-168749",
+   "address": "Bloemgracht 19",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "storeys": 4,
+    "overrides": {
+     "storeyHeights": [
+      4.6,
+      3.1,
+      3,
+      2.7
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#5f534d",
+     "evidence": "strip 2023-03-13 span 2402-2633: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 19: three axes, ground and three storeys, a scrolled neck gable from ~13.4 m to ~17.3 m with one attic light; grid read on the strip; strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012168758",
+   "slug": "bloemgracht-168758",
+   "address": "Bloemgracht 21",
+   "type": {
+    "type": "jordaan-1850-cornice-house",
+    "storeys": 3,
+    "crown": "dormer",
+    "overrides": {
+     "storeyHeights": [
+      4.2,
+      3,
+      3
+     ]
+    },
+    "paletteOverrides": {
+     "brick": "#2f2c2c"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 21: three axes, ground and two storeys, a white cornice at ~10.2 m, a red tile roof with a dormer; grid read on the strip; strip 2023-03-13"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012173342",
+    "stripRow": 237,
+    "evidence": "hand placement: cornice top read at 12.8 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012173043",
+    "stripRow": 373,
+    "evidence": "hand placement: cornice top read at 9.4 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012172863",
+    "stripRow": 349,
+    "evidence": "hand placement: cornice top read at 10 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012172779",
+    "stripRow": 389,
+    "evidence": "hand placement: cornice top read at 9 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012168708",
+    "stripRow": 61,
+    "evidence": "hand placement: cornice top read at 17.2 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012173045",
+    "stripRow": 209,
+    "evidence": "hand placement: cornice top read at 13.5 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012168749",
+    "stripRow": 213,
+    "evidence": "hand placement: cornice top read at 13.4 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012168758",
+    "stripRow": 341,
+    "evidence": "hand placement: cornice top read at 10.2 m on the strip 2023-03-13"
+   }
+  ]
+ }
+}

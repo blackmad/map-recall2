@@ -178,6 +178,12 @@
    "doorBay": 0,
    "basement": "none",
    "note": "house door on the left axis; a pand whose door reads on the right is mirrored (mirrorForDoor), so a two-axis front keeps a valid door bay"
+  },
+  "souterrain-door-left": {
+   "doorBay": 0,
+   "basement": "stoop-and-windows",
+   "souterrain": true,
+   "note": "a souterrain with lights under a bel-etage reached by a stoop, door on the left axis (Bloemgracht 118-122, strip 2023-03-13; mirrored for a door on the right). Picked by a hand run's storey grid with souterrainM."
   }
  },
  "palettes": {

@@ -1,0 +1,111 @@
+{
+ "face": "egelantiersgracht-3-43-h3",
+ "image": "staging/block-face/egelantiersgracht-3-43-h3/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 219,
+ "height": 880,
+ "groundNAP": 0.218,
+ "heightM": 22.01,
+ "frame": {
+  "midRD": [
+   120678.73006249999,
+   487714.5495
+  ],
+  "uRD": [
+   -0.9394834542789164,
+   -0.34259427773410817
+  ],
+  "nRD": [
+   -0.34259427773410817,
+   0.9394834542789164
+  ]
+ },
+ "x0M": -2.74,
+ "x1M": 2.73,
+ "date": "2023-03-13",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012174976",
+   "x0M": -2.74,
+   "x1M": 2.73,
+   "px": [
+    0,
+    219
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000340",
+     "timestamp": "2023-03-13T10:44:51.144710Z",
+     "distanceM": 24.3,
+     "obliquityDeg": 1.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000339",
+     "timestamp": "2023-03-13T10:44:50.594720Z",
+     "distanceM": 24.6,
+     "obliquityDeg": 9.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002996_pano_0001_000341",
+     "timestamp": "2023-03-13T10:44:51.689700Z",
+     "distanceM": 25.1,
+     "obliquityDeg": 12.8,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-04-29": 19,
+  "2023-02-06": 0,
+  "2018-05-02": 19,
+  "2023-03-27": 0,
+  "2023-02-27": 19,
+  "2021-03-17": 0,
+  "2020-01-08": 0,
+  "2020-04-24": 19,
+  "2023-01-30": 19,
+  "2023-03-13": 19,
+  "2023-01-16": 19,
+  "2025-07-03": 19,
+  "2023-03-20": 19,
+  "2024-12-16": 19,
+  "2023-02-20": 19,
+  "2019-01-15": 0,
+  "2023-03-06": 19,
+  "2022-01-27": 19,
+  "2023-01-11": 19,
+  "2023-02-13": 19,
+  "2019-05-13": 19,
+  "2021-01-22": 19,
+  "2017-03-13": 19,
+  "2016-08-17": 19,
+  "2018-05-03": 0,
+  "2024-11-21": 0,
+  "2022-09-05": 0,
+  "2022-04-22": 0,
+  "2020-01-10": 0,
+  "2025-06-16": 0,
+  "2016-08-15": 0,
+  "2018-05-14": 0,
+  "2020-04-22": 0,
+  "2022-04-25": 0,
+  "2017-03-29": 0,
+  "2024-12-17": 0,
+  "2021-01-25": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "egelantiersgracht-3-43",
+  "px": [
+   2745,
+   2964
+  ]
+ }
+}

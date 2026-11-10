@@ -11,23 +11,54 @@
      "pand": "174703",
      "type": "jordaan-1850-cornice-house",
      "crown": "dormer",
-     "storeys": 4,
-     "why": "Egelantiersgracht 11: two axes, ground and three storeys, white cornice at 11.3-12 m with one small dormer over the middle",
-     "eavesM": 12.0
+     "storeys": 3,
+     "why": "Egelantiersgracht 11: two wide axes, a tall ground storey (to ~5.5 m) with the door on the right, two upper storeys, a white cornice at ~11.6 m and a slate mansard with one dormer (grid read on the strip; Opus strip review 2026-11-10)",
+     "eavesM": 11.6,
+     "mirror": true,
+     "grid": {
+      "storeysM": [
+       5.5,
+       2.9,
+       3.2
+      ]
+     },
+     "overrides": {
+      "bays": 2
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-13: a dark slate mansard with one dormer behind the cornice (Opus strip review 2026-11-10: no red tile)"
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#2e2627"
+     }
     },
     {
      "pand": "174775",
      "type": "jordaan-1850-cornice-house",
-     "storeys": 4,
-     "why": "Egelantiersgracht 13: three axes, ground and three storeys under a plain white cornice at ~12.5 m (front behind a bare tree)",
-     "eavesM": 12.5
+     "storeys": 3,
+     "why": "Egelantiersgracht 13: three axes, a tall ground storey and two upper storeys (window heads ~4.5, 8.0 and 10.8 m) under a plain white cornice at ~12 m (front behind a bare tree; grid read on the strip)",
+     "eavesM": 12.0,
+     "grid": {
+      "storeysM": [
+       4.9,
+       3.4,
+       3.6
+      ]
+     },
+     "crown": "dormer",
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-13: a grey roof with a dormer over the cornice behind the tree (no red tile)"
+     }
     }
    ]
   },
   {
    "id": "egelantiersgracht-3-43-h2",
    "face": "egelantiersgracht-3-43",
-   "reason": "Egelantiersgracht 19-27 (strip 2023-03-13): a cornice house with a dormer, two small bell gables, two cornice houses",
+   "reason": "Egelantiersgracht 19-23 (strip 2023-03-13): a cornice house, a bell gable and a neck gable (25 is held: behind a tree, its souterrain grid cannot be read)",
    "houses": [
     {
      "pand": "174965",
@@ -37,8 +68,9 @@
      "eavesM": 12.3,
      "roof": {
       "form": "attic",
-      "rise": 0.6,
-      "evidence": "strip 2023-03-13: a tile or slate roof face rises behind the cornice (3DBAG's p95 under 1.5 m over the cornice line drew a flat roof)"
+      "rise": 0.3,
+      "material": "bitumen",
+      "evidence": "strip 2023-03-13: sky over the cornice with a small crest, a low dark roof face behind it (Opus strip review 2026-11-10: the red attic must not show); a flat roof hovered (audit)"
      }
     },
     {
@@ -46,35 +78,53 @@
      "type": "jordaan-1750-neck-gable",
      "crown": "bell-low",
      "storeys": 3,
-     "why": "Egelantiersgracht 21: three axes, ground and two storeys, a bell gable with one attic light to ~12.3 m",
-     "eavesM": 9.8
+     "why": "Egelantiersgracht 21: three axes, ground and two storeys, a bell gable with one attic light to ~12.3 m; the red double door right of centre (mirrored), first-floor row raised to the photo (grid), brick from the Opus review",
+     "eavesM": 9.8,
+     "mirror": true,
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#453f3e"
+     },
+     "grid": {
+      "storeysM": [
+       4.6,
+       2.6,
+       2.6
+      ]
+     }
     },
     {
      "pand": "174968",
      "type": "jordaan-1750-neck-gable",
-     "crown": "bell-low",
+     "crown": "neck",
      "storeys": 3,
-     "why": "Egelantiersgracht 23: three axes, ground and two low storeys, a bell gable to ~12.3 m",
-     "eavesM": 9.8
-    },
-    {
-     "pand": "174977",
-     "type": "jordaan-1850-cornice-house",
-     "storeys": 4,
-     "why": "Egelantiersgracht 25: dark front behind a tree, ground and three storeys under a white cornice at ~12 m",
-     "eavesM": 12.0,
-     "roof": {
-      "form": "attic",
-      "rise": 0.6,
-      "evidence": "strip 2023-03-13: a tile or slate roof face rises behind the cornice (3DBAG's p95 under 1.5 m over the cornice line drew a flat roof)"
+     "why": "Egelantiersgracht 23: a neck gable with a straight 2.2 m neck from ~9.8 m, two storeys over a white timber ground front across the full width (not drawn: BAG says residential, and the kit has no residential timber front); brick fitted to the photo #6e5f5c (fit-wall-palette.ts); the first floor's two wide windows draw as three (kit: one bay count per front)",
+     "eavesM": 9.8,
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#423d39"
+     },
+     "grid": {
+      "storeysM": [
+       4.6,
+       2.6,
+       2.6
+      ]
      }
-    },
+    }
+   ]
+  },
+  {
+   "id": "egelantiersgracht-3-43-h3",
+   "face": "egelantiersgracht-3-43",
+   "reason": "Egelantiersgracht 27 (strip 2023-03-13): a cornice house with a white ground storey",
+   "houses": [
     {
      "pand": "174976",
      "type": "jordaan-1850-cornice-house",
      "storeys": 4,
-     "why": "Egelantiersgracht 27: three axes of white-framed windows, a white ground storey, ground and three storeys, a white frieze cornice at 12.5-13.2 m and a red tile saddle behind it (not a gable)",
-     "eavesM": 13.2,
+     "why": "Egelantiersgracht 27: three axes of white-framed windows over a white ground storey with the door on the right (mirrored), three upper storeys, a white frieze cornice at ~12.3 m and a red tile saddle behind it (grid read on the strip; Opus strip review 2026-11-10)",
+     "eavesM": 12.3,
      "overrides": {
       "paintedStoreys": {
        "storeys": [
@@ -87,6 +137,15 @@
       "form": "attic",
       "rise": 0.6,
       "evidence": "strip 2023-03-13: a tile or slate roof face rises behind the cornice (3DBAG's p95 under 1.5 m over the cornice line drew a flat roof)"
+     },
+     "mirror": true,
+     "grid": {
+      "storeysM": [
+       4.6,
+       2.5,
+       2.5,
+       2.7
+      ]
      }
     }
    ]
@@ -94,42 +153,79 @@
   {
    "id": "bloemgracht-90-128-h1",
    "face": "bloemgracht-90-128",
-   "reason": "Bloemgracht 94-104 (strip 2023-03-13): four cornice fronts with white frieze tops and a tall neck gable, one black-painted",
+   "reason": "Bloemgracht 118-126 (strip 2023-03-13): cornice fronts with white frieze tops, three over a souterrain, and a tall neck gable (124)",
    "houses": [
     {
      "pand": "168075",
      "type": "jordaan-1850-cornice-house",
      "storeys": 4,
-     "eavesM": 14.6,
+     "eavesM": 16.4,
      "overrides": {
       "cornice": "frieze"
      },
-     "why": "three axes of white-framed windows, ground and three storeys, a white attic frieze 14.6-16.4 m with a small bell top over the middle (the bell top is not drawn)"
+     "why": "Bloemgracht 126: three axes of white-framed windows, a tall ground storey and three storeys, a white attic frieze 14.9-16.4 m with a bell crest (not drawn); grid read on the strip",
+     "grid": {
+      "storeysM": [
+       5.0,
+       3.1,
+       3.1,
+       3.5
+      ]
+     },
+     "roof": {
+      "form": "attic",
+      "rise": 0.3,
+      "material": "bitumen",
+      "evidence": "strip 2023-03-13: sky over the white frieze and its crest, no roof face shows (Opus strip review 2026-11-10: hide the red roof band); a flat roof hovered (audit)"
+     }
     },
     {
      "pand": "168080",
      "type": "jordaan-1750-neck-gable",
      "crown": "neck",
      "storeys": 4,
-     "eavesM": 14.6,
-     "why": "a 6.7 m brick front of three axes, ground and three storeys, a tall neck gable with one attic light to ~19 m",
+     "eavesM": 14.2,
+     "why": "Bloemgracht 124: a 6.7 m brick front of three axes, a shop ground and three storeys, a tall neck gable with one attic light to ~19 m (the three-light 1.5 m gable window draws as one light); grid read on the strip",
      "wall": false,
      "paletteOverrides": {
       "brick": "#6a5048"
+     },
+     "grid": {
+      "storeysM": [
+       4.6,
+       3.1,
+       3.0,
+       3.5
+      ]
      }
     },
     {
      "pand": "174186",
      "type": "jordaan-1850-cornice-house",
      "storeys": 4,
-     "eavesM": 14.5,
+     "eavesM": 15.6,
      "overrides": {
       "cornice": "frieze"
      },
-     "why": "three axes, ground and three storeys, a white frieze top 14.5-16 m with a small bell crest (not drawn)",
+     "why": "Bloemgracht 122: three axes, a grey souterrain under a bel-etage with the door at the left and three storeys, a white frieze top 14-15.6 m with a small bell crest (not drawn); grid read on the strip",
      "wall": false,
      "paletteOverrides": {
       "brick": "#4f4039"
+     },
+     "grid": {
+      "storeysM": [
+       3.6,
+       2.9,
+       2.5,
+       2.6
+      ],
+      "souterrainM": 2.4
+     },
+     "roof": {
+      "form": "attic",
+      "rise": 0.3,
+      "material": "bitumen",
+      "evidence": "strip 2023-03-13: sky over the white frieze and its crest, no roof face shows (Opus strip review 2026-11-10: hide the red roof band); a flat roof hovered (audit)"
      }
     },
     {
@@ -148,17 +244,52 @@
       },
       "cornice": "heavy"
      },
-     "why": "a black-painted front, three axes of segmental-headed white windows, ground and three storeys, a white cornice at ~14.6 m"
+     "why": "Bloemgracht 120: a black-painted front, three axes of segmental-headed white windows, a grey basement under a bel-etage with the double door on the right (mirrored) and three storeys, a white cornice at ~13.6 m; grid read on the strip",
+     "mirror": true,
+     "grid": {
+      "storeysM": [
+       3.3,
+       2.7,
+       2.6,
+       2.8
+      ],
+      "souterrainM": 2.2
+     },
+     "roof": {
+      "form": "attic",
+      "rise": 0.3,
+      "material": "bitumen",
+      "evidence": "strip 2023-03-13: sky over the white frieze and its crest, no roof face shows (Opus strip review 2026-11-10: hide the red roof band); a flat roof hovered (audit)"
+     }
     },
     {
      "pand": "168076",
      "type": "jordaan-1850-cornice-house",
      "storeys": 4,
-     "eavesM": 14.6,
+     "eavesM": 16.0,
      "overrides": {
       "cornice": "frieze"
      },
-     "why": "three axes, ground and three storeys, a white frieze top 14.6-16 m with a small bell crest (not drawn)"
+     "why": "Bloemgracht 118: three axes, a souterrain under a bel-etage with the door at the left and three storeys, a white frieze top 14-16 m with a small bell crest (not drawn); grid read on the strip",
+     "grid": {
+      "storeysM": [
+       3.5,
+       2.9,
+       2.6,
+       2.7
+      ],
+      "souterrainM": 2.3
+     },
+     "roof": {
+      "form": "attic",
+      "rise": 0.3,
+      "material": "bitumen",
+      "evidence": "strip 2023-03-13: sky over the white frieze and its crest, no roof face shows (Opus strip review 2026-11-10: hide the red roof band); a flat roof hovered (audit)"
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#484441"
+     }
     }
    ]
   },
@@ -173,18 +304,216 @@
      "crown": "bell-low",
      "storeys": 4,
      "eavesM": 14.0,
-     "why": "Bloemgracht 8: three axes, a white-painted ground storey, ground and three storeys, a bell gable with one attic light and a crest to ~19 m (the strip wall reads green from the winter cast; brick set by eye; the white ground storey is not drawn)",
+     "why": "Bloemgracht 8: three axes, a white-painted ground storey with the door on the right (mirrored), three storeys, a bell gable from ~14 m with one attic light and a crest to ~19 m; grid read on the strip; brick by eye (the strip wall reads green from the winter cast)",
      "wall": false,
      "paletteOverrides": {
-      "brick": "#5e4a42"
+      "brick": "#4c4a48"
+     },
+     "mirror": true,
+     "grid": {
+      "storeysM": [
+       5.6,
+       3.2,
+       2.7,
+       2.5
+      ]
+     },
+     "overrides": {
+      "paintedStoreys": {
+       "storeys": [
+        0
+       ],
+       "colour": "#e6e3da"
+      }
      }
     },
     {
      "pand": "174496",
      "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "eavesM": 15.5,
+     "why": "Bloemgracht 6D: three axes, a tall ground storey (white pilasters, door on the right, mirrored) and three tall storeys (windows ~2.1 m), a cornice at ~15.5 m; the set-back glazed attic storey and the glass balconies are not drawn; grid read on the strip",
+     "mirror": true,
+     "grid": {
+      "storeysM": [
+       5.6,
+       3.1,
+       3.0,
+       3.1
+      ]
+     },
+     "roof": {
+      "form": "attic",
+      "rise": 0.6,
+      "material": "zinc",
+      "evidence": "strip 2023-03-13: a set-back glazed attic storey over the cornice at ~15.5 m (drawn as a low zinc attic face)"
+     }
+    }
+   ]
+  },
+  {
+   "id": "bloemgracht-1-51-h1",
+   "face": "bloemgracht-1-51",
+   "reason": "Bloemgracht 7-21 (strip 2023-03-13): cornice houses with dormers, small bell and neck gables, and a tall frieze-topped front (15)",
+   "houses": [
+    {
+     "pand": "173342",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer",
+     "storeys": 3,
+     "eavesM": 12.8,
+     "why": "Bloemgracht 7: two axes, a tall ground and two storeys under a white cornice at ~12.8 m with a small dormer; grid read on the strip",
+     "grid": {
+      "storeysM": [
+       5.6,
+       3.1,
+       3.4
+      ]
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-13: a grey roof with a white bell dormer over the cornice (no red tile)"
+     }
+    },
+    {
+     "pand": "173043",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "bell-low",
+     "storeys": 3,
+     "eavesM": 9.4,
+     "why": "Bloemgracht 9: a 3.9 m front, ground and two storeys, a small bell gable from ~9.4 m to ~12 m; grid read on the strip",
+     "grid": {
+      "storeysM": [
+       4.0,
+       2.7,
+       2.7
+      ]
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#2f2c2c"
+     }
+    },
+    {
+     "pand": "172863",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer",
+     "storeys": 3,
+     "eavesM": 10.0,
+     "why": "Bloemgracht 11: two axes, ground and two storeys, a white cornice at ~10 m with a bell dormer to ~12 m; grid read on the strip",
+     "roof": {
+      "form": "attic",
+      "rise": 0.6,
+      "evidence": "strip 2023-03-13: a grey roof with a white bell dormer over the cornice (no red tile)",
+      "material": "slate"
+     },
+     "grid": {
+      "storeysM": [
+       4.2,
+       2.9,
+       2.9
+      ]
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#393633"
+     }
+    },
+    {
+     "pand": "172779",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "neck",
+     "storeys": 3,
+     "eavesM": 9.0,
+     "why": "Bloemgracht 13: ground and two storeys, a neck gable with oculi from ~9 m to ~12 m (the oculi are not drawn); grid read on the strip",
+     "grid": {
+      "storeysM": [
+       4.0,
+       2.5,
+       2.5
+      ]
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#413c3a"
+     }
+    },
+    {
+     "pand": "168708",
+     "type": "jordaan-1850-cornice-house",
      "storeys": 5,
-     "eavesM": 16.5,
-     "why": "Bloemgracht 6: three axes, ground and four storeys, a white cornice at ~16.5 m (the glass balconies are not drawn)"
+     "eavesM": 17.2,
+     "overrides": {
+      "cornice": "frieze"
+     },
+     "why": "Bloemgracht 15: a 6.8 m front of three axes, ground and four storeys, a white inscribed frieze 15.6-17.2 m; grid read on the strip",
+     "roof": {
+      "form": "attic",
+      "rise": 0.3,
+      "material": "bitumen",
+      "evidence": "strip 2023-03-13: sky over the white frieze or cornice, no red roof face shows; a flat roof hovered (audit)"
+     },
+     "grid": {
+      "storeysM": [
+       4.5,
+       3.4,
+       2.6,
+       2.6,
+       2.5
+      ]
+     }
+    },
+    {
+     "pand": "173045",
+     "type": "jordaan-1850-cornice-house",
+     "storeys": 4,
+     "eavesM": 13.5,
+     "why": "Bloemgracht 17: three axes, ground and three storeys, a white cornice at ~13.5 m with a tall dormer (the dormer is not drawn: the kit's dormer frame pierces the 0.5 m attic, geometry audit opening-outside)",
+     "roof": {
+      "form": "attic",
+      "rise": 0.3,
+      "material": "bitumen",
+      "evidence": "strip 2023-03-13: sky over the white frieze or cornice, no red roof face shows; a flat roof hovered (audit)"
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#554f4c"
+     }
+    },
+    {
+     "pand": "168749",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "neck",
+     "storeys": 4,
+     "eavesM": 13.4,
+     "why": "Bloemgracht 19: three axes, ground and three storeys, a scrolled neck gable from ~13.4 m to ~17.3 m with one attic light; grid read on the strip",
+     "grid": {
+      "storeysM": [
+       4.6,
+       3.1,
+       3.0,
+       2.7
+      ]
+     }
+    },
+    {
+     "pand": "168758",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer",
+     "storeys": 3,
+     "eavesM": 10.2,
+     "why": "Bloemgracht 21: three axes, ground and two storeys, a white cornice at ~10.2 m, a red tile roof with a dormer; grid read on the strip",
+     "grid": {
+      "storeysM": [
+       4.2,
+       3.0,
+       3.0
+      ]
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#2f2c2c"
+     }
     }
    ]
   }

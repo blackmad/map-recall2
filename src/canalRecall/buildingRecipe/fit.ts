@@ -54,6 +54,7 @@ const WINDOW_BARS: Record<FrontIntent['windows'], WindowBars> = {
   ladder: {horizontalBars: [.2, .4, .6, .8]},
   'sash-6-over-6': {verticalBars: [1 / 3, 2 / 3], ...SASH_RAILS},
   'sash-8-over-8': {verticalBars: [.25, .5, .75], ...SASH_RAILS},
+  'sash-4-over-4': {verticalBars: [.5], ...SASH_RAILS},
   'sash-9-over-9': {verticalBars: [1 / 3, 2 / 3], horizontalBars: [1 / 6, 1 / 3, .5, 2 / 3, 5 / 6], horizontalBarWidthsM: [.03, .03, .06, .03, .03], mullionWidthM: .03},
   'six-pane': {verticalBars: [.5], horizontalBars: [1 / 3, 2 / 3], mullionWidthM: .045},
   // T-venster: an undivided transom light over a pair of casements (the mullion stops under the transom).

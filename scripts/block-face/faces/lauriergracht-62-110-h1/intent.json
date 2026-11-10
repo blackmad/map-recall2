@@ -28,13 +28,19 @@
    "type": {
     "type": "jordaan-1850-cornice-house",
     "storeys": 3,
+    "crown": "dormer-low",
     "overrides": {
      "cornice": "heavy",
-     "windowShare": 0.6
+     "windowShare": 0.6,
+     "storeyHeights": [
+      5,
+      3,
+      3.3
+     ]
     },
     "roof": {
      "material": "black-tile",
-     "evidence": "strip 2023-03-20: dark glazed pantiles on the saddle behind the cornice"
+     "evidence": "strip 2023-03-13: a brown-grey tile saddle with one white dormer (Opus strip review: about #6a625c; black-tile is the kit's nearest covering)"
     },
     "measuredPalette": {
      "brick": "#6f625a",
@@ -51,7 +57,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 102: three axes, a 4.9 m ground storey under a stone band, two upper storeys, a white frieze cornice at 12.3-12.8 m, red tile saddle with one pedimented dormer (its dormer is not drawn: the kit's dormer frame pierces a roof plane of this pand's 3DBAG roof, geometry audit opening-outside); strip 2023-03-20"
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 102: three axes, a 4.9 m ground storey under a stone band, two upper storeys, a white frieze cornice at 12.3-12.8 m, red tile saddle with one pedimented dormer (its dormer is not drawn: the kit's dormer frame pierces a roof plane of this pand's 3DBAG roof, geometry audit opening-outside); grid read on the strip (ground 5 m, two storeys); strip 2023-03-20"
    }
   },
   {
@@ -64,11 +70,16 @@
     "crown": "dormer-low",
     "overrides": {
      "cornice": "heavy",
-     "windowShare": 0.6
+     "windowShare": 0.6,
+     "storeyHeights": [
+      5,
+      3,
+      3.3
+     ]
     },
     "roof": {
      "material": "black-tile",
-     "evidence": "strip 2023-03-20: dark glazed pantiles on the saddle behind the cornice"
+     "evidence": "strip 2023-03-13: a brown-grey tile saddle with one white dormer (Opus strip review: about #6a625c; black-tile is the kit's nearest covering)"
     },
     "measuredPalette": {
      "brick": "#8d7870",
@@ -85,7 +96,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 100: the twin of 102, three axes, one pedimented dormer; strip 2023-03-20"
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 100: the twin of 102, three axes, one pedimented dormer; grid read on the strip (ground 5 m, two storeys); strip 2023-03-20"
    }
   },
   {
@@ -99,7 +110,18 @@
     "overrides": {
      "bays": 6,
      "cornice": "heavy",
-     "windowShare": 0.6
+     "windowShare": 0.6,
+     "windowHead": {
+      "kind": "round",
+      "storeys": [
+       0
+      ]
+     },
+     "storeyHeights": [
+      5,
+      3.1,
+      3.2
+     ]
     },
     "roof": {
      "material": "slate",
@@ -120,7 +142,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 96-98: six axes, two round-arched carriage doors in the ground storey, two upper storeys, cornice at ~12.4 m, slate attic with two pedimented dormers; strip 2023-03-20"
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 96-98: six axes, two round-arched carriage doors in the ground storey, two upper storeys, cornice at ~12.4 m, slate attic with two pedimented dormers; grid read on the strip; the ground's two 2 m round-arched openings and small arched lights drawn as round-headed ground windows; strip 2023-03-20"
    }
   },
   {
@@ -148,7 +170,12 @@
     "overrides": {
      "bays": 6,
      "cornice": "heavy",
-     "windowShare": 0.6
+     "windowShare": 0.6,
+     "storeyHeights": [
+      5,
+      3.1,
+      3.2
+     ]
     },
     "roof": {
      "material": "slate",
@@ -170,7 +197,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 92-94: the same six-axis front as 96-98, one arched carriage door, two pedimented dormers; strip 2023-03-20"
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 92-94: the same six-axis front as 96-98, one arched carriage door, two pedimented dormers; grid read on the strip (the round-arched door left of the shop is not drawn: a shop ground has no doorArch); strip 2023-03-20"
    }
   }
  ],
@@ -187,23 +214,23 @@
   "measuredEaves": [
    {
     "pand": "0363100012167869",
-    "stripRow": 294,
-    "evidence": "hand placement: cornice top read at 12.8 m on the strip 2023-03-20"
+    "stripRow": 310,
+    "evidence": "hand placement: cornice top read at 12.4 m on the strip 2023-03-20"
    },
    {
     "pand": "0363100012169895",
-    "stripRow": 294,
-    "evidence": "hand placement: cornice top read at 12.8 m on the strip 2023-03-20"
+    "stripRow": 310,
+    "evidence": "hand placement: cornice top read at 12.4 m on the strip 2023-03-20"
    },
    {
     "pand": "0363100012169894",
-    "stripRow": 310,
-    "evidence": "hand placement: cornice top read at 12.4 m on the strip 2023-03-20"
+    "stripRow": 318,
+    "evidence": "hand placement: cornice top read at 12.2 m on the strip 2023-03-20"
    },
    {
     "pand": "0363100012169948",
-    "stripRow": 310,
-    "evidence": "hand placement: cornice top read at 12.4 m on the strip 2023-03-20"
+    "stripRow": 318,
+    "evidence": "hand placement: cornice top read at 12.2 m on the strip 2023-03-20"
    }
   ]
  }

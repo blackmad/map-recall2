@@ -14,7 +14,8 @@
  *   shop: true = the auto shop front from BAG/OSM (default: a shop when BAG/OSM says trading); false = never;
  *   wall: false = keep the type palette (no measured wall, e.g. a strip wall reading the shade);
  *   roof: {material, evidence} when the strip shows another covering than the type's;
- *   eavesM: the cornice line read on the strip (continuity.measuredEaves) when 3DBAG's eaves is another line.
+ *   eavesM: the cornice line read on the strip (continuity.measuredEaves) when 3DBAG's eaves is another line;
+ *   grid: {storeysM, souterrainM?} the storey grid read on the strip (body storeyHeights in metres; a souterrain adds its stoop).
  * Writes scripts/block-face/faces/<run>/{intent.json,strip.json,uses.json,discovery.json,pands/*} and the cropped strip.
  * Then: compile.ts --face=<run>, review.ts --face=<run>; install with compile.ts --install after the sheet is judged.
  */
@@ -23,7 +24,7 @@ import path from 'node:path';
 import {autoShopfront, groundUse, runIntent, type Placed} from '../../src/canalRecall/blockFace/autoPlace.ts';
 import type {HousePlacement, HouseTypeIntent} from '../../src/canalRecall/blockFace/houseType.ts';
 import {TYPE_LIBRARY_DIR} from '../../src/canalRecall/blockFace/typeLibrary.ts';
-import {handRunProblems, type HandRun} from '../../src/canalRecall/blockFace/handPlace.ts';
+import {gridOverrides, handRunProblems, souterrainGround, type HandRun} from '../../src/canalRecall/blockFace/handPlace.ts';
 import {faceEvidence, writeRunFace} from './auto-place.ts';
 import {FACES} from './intake.ts';
 
@@ -50,7 +51,8 @@ async function main() {
       if (h.mirror) placement.mirror = true;
       if (h.shop ?? trading) placement.ground = {shopfront: autoShopfront(ev, use)};
       else if (h.ground) placement.ground = h.ground;
-      if (h.overrides) placement.overrides = h.overrides;
+      else if (h.grid?.souterrainM !== undefined) placement.ground = souterrainGround(t)!;
+      if (h.overrides || h.grid) placement.overrides = {...h.overrides, ...(h.grid ? gridOverrides(h.grid) : {})} as HousePlacement['overrides'];
       if (h.paletteOverrides) placement.paletteOverrides = h.paletteOverrides;
       if (h.roof) placement.roof = h.roof;
       if (h.wall !== false && s?.wall && !s.palette.stucco) placement.measuredPalette = {brick: s.wall, evidence: `strip ${s.date} span ${s.px.join('-')}: trim-normalised wall (buildingRecipe/measureFacade.ts)`};

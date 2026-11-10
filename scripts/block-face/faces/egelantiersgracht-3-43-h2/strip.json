@@ -2,33 +2,33 @@
  "face": "egelantiersgracht-3-43-h2",
  "image": "staging/block-face/egelantiersgracht-3-43-h2/strip.jpg",
  "pixelsPerMetre": 40,
- "width": 947,
+ "width": 540,
  "height": 880,
  "groundNAP": 0.218,
  "heightM": 22.01,
  "frame": {
   "midRD": [
-   120687.70146249999,
-   487717.70090000005
+   120692.0920625,
+   487719.22500000003
   ],
   "uRD": [
-   -0.9440536704883787,
-   -0.32979185441338554
+   -0.9466030130563335,
+   -0.32240151313644694
   ],
   "nRD": [
-   -0.32979185441338554,
-   0.9440536704883787
+   -0.32240151313644694,
+   0.9466030130563335
   ]
  },
- "x0M": -11.41,
- "x1M": 12.27,
+ "x0M": -6.77,
+ "x1M": 6.73,
  "date": "2023-03-13",
  "coverage": 1,
  "spans": [
   {
    "pandId": "0363100012174965",
-   "x0M": -11.41,
-   "x1M": -6.86,
+   "x0M": -6.77,
+   "x1M": -2.22,
    "px": [
     0,
     182
@@ -61,8 +61,8 @@
   },
   {
    "pandId": "0363100012174781",
-   "x0M": -6.86,
-   "x1M": -2.41,
+   "x0M": -2.22,
+   "x1M": 2.23,
    "px": [
     182,
     360
@@ -95,8 +95,8 @@
   },
   {
    "pandId": "0363100012174968",
-   "x0M": -2.41,
-   "x1M": 2.09,
+   "x0M": 2.23,
+   "x1M": 6.73,
    "px": [
     360,
     540
@@ -123,74 +123,6 @@
      "timestamp": "2023-03-13T10:44:50.594720Z",
      "distanceM": 24.9,
      "obliquityDeg": 14.7,
-     "missingFraction": 0
-    }
-   ]
-  },
-  {
-   "pandId": "0363100012174977",
-   "x0M": 2.12,
-   "x1M": 6.79,
-   "px": [
-    541,
-    728
-   ],
-   "date": "2023-03-13",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "TMX7316010203-002996_pano_0001_000339",
-     "timestamp": "2023-03-13T10:44:50.594720Z",
-     "distanceM": 24.2,
-     "obliquityDeg": 2.3,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-002996_pano_0001_000338",
-     "timestamp": "2023-03-13T10:44:50.034890Z",
-     "distanceM": 24.4,
-     "obliquityDeg": 9.2,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-002996_pano_0001_000340",
-     "timestamp": "2023-03-13T10:44:51.144710Z",
-     "distanceM": 25,
-     "obliquityDeg": 13.6,
-     "missingFraction": 0
-    }
-   ]
-  },
-  {
-   "pandId": "0363100012174976",
-   "x0M": 6.79,
-   "x1M": 12.27,
-   "px": [
-    728,
-    947
-   ],
-   "date": "2023-03-13",
-   "fallbackDate": false,
-   "panoramas": [
-    {
-     "panoId": "TMX7316010203-002996_pano_0001_000340",
-     "timestamp": "2023-03-13T10:44:51.144710Z",
-     "distanceM": 24.3,
-     "obliquityDeg": 1.6,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-002996_pano_0001_000339",
-     "timestamp": "2023-03-13T10:44:50.594720Z",
-     "distanceM": 24.6,
-     "obliquityDeg": 9.8,
-     "missingFraction": 0
-    },
-    {
-     "panoId": "TMX7316010203-002996_pano_0001_000341",
-     "timestamp": "2023-03-13T10:44:51.689700Z",
-     "distanceM": 25.1,
-     "obliquityDeg": 12.8,
      "missingFraction": 0
     }
    ]
@@ -241,7 +173,7 @@
   "face": "egelantiersgracht-3-43",
   "px": [
    2017,
-   2964
+   2557
   ]
  }
 }

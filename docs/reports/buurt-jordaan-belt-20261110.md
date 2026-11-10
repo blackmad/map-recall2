@@ -44,22 +44,23 @@ So every installed run is a hand placement, written by a new script, `scripts/bl
 
 | buurt | vetoed before comparison | compared and held | placed (installed) |
 |---|---|---|---|
-| AB07 | auto-place on the old strips (superseded) | 9 | 14 |
-| AB10 | auto-place on the old strips (superseded) | 4 | 9 |
+| AB07 | auto-place on the old strips (superseded; removed) | 10 | 21 |
+| AB10 | auto-place on the old strips (superseded) | 5 | 8 |
 
-AB07 installed runs:
+AB07 installed runs (after the Opus strip review, 2026-11-10, and a per-pand storey grid on every pand):
 
 - egelantiersgracht-3-43-h1: 11, 13.
-- egelantiersgracht-3-43-h2: 19, 21, 23, 25, 27.
-- bloemgracht-90-128-h1: 94-104.
+- egelantiersgracht-3-43-h2: 19, 21, 23.
+- egelantiersgracht-3-43-h3: 27.
+- bloemgracht-90-128-h1: 118-126 (the earlier "94-104" was wrong; BAG numbers 118, 120, 122, 124, 126).
 - bloemgracht-4-10-h1: 6, 8.
+- bloemgracht-1-51-h1: 7-21.
 
 AB10 installed runs:
 
-- lauriergracht-62-110-h1
-- lauriergracht-62-110-h2
-
-Together they cover Lauriergracht 78-102, nine pands.
+- lauriergracht-62-110-h1: 92-102.
+- lauriergracht-62-110-h2: 84, 86.
+- lauriergracht-62-110-h3: 78, 80.
 
 Held after comparison with the photo:
 
@@ -72,7 +73,10 @@ Held after comparison with the photo:
 - Bloemgracht 90 and 168084: behind trees.
 - 168162: modern.
 - 168159: a church.
+- Egelantiersgracht 25: behind a tree; its souterrain grid cannot be read.
+- Lauriergracht 82: white render over a souterrain; the bel-etage and stoop cannot be read behind the tree.
 - Lauriergracht 88: BAG leaves a 0.9 m gap.
+- BAG split at Lauriergracht 86/84: BAG leaves a 0.75 m gap where the photo's 86 runs on, so the drawn party wall sits about 0.7 m short. Not fixable in the lane (BAG geometry).
 - Lauriergracht 66-68 and 76: 1992 infill.
 - 169912: behind a tree.
 
@@ -90,6 +94,10 @@ The next lane can author these with the same spec files.
 
 ## Kit additions
 
+- **Per-pand storey grid** (`grid: {storeysM, souterrainM?}` in the hand runs, `handPlace.ts`, tested): the floor-to-floor heights read on the strip become the body's `storeyHeights` in metres. A souterrain picks the type's new `souterrain-door-left` ground (`basement: stoop-and-windows`, `souterrain: true`) and its height goes first. This was the main cause of the review's holds: bel-etages over souterrains and 2-3 tall storeys drawn as standard storeys, 0.6-2 m off. Validation: one height per storey (1.8-6 m), the sum 0-2.5 m under the cornice top (frieze tops take up to 2.5 m).
+- Cherry-picked kit from lane/belt-gg-zuid-20261110 (9eb2d062e, src and auto-place.ts only): souterrain-first storeyHeights, `countStoreys` eaves pins, `match.typeGround`, sash-4-over-4.
+- `scripts/block-face/fit-wall-palette.ts` (fitWallBrick) from lane/buurt-dapper-oosterpark-20261110, identical; used to fit failing walls. It cannot reach the darkest walls (#3c3a3a): `cityWallTint` clamps saturation and lightness, so Bloemgracht 21 stays slightly too saturated.
+
 All of these are typed and tested. Every pre-existing placement compiles byte-identically.
 
 - **Placement roof `rise`**: added to `PLACEMENT_ROOF_KEYS` in houseType.ts. A rise needs evidence (tested in roofSchema.test.ts).
@@ -101,6 +109,12 @@ All of these are typed and tested. Every pre-existing placement compiles byte-id
 - **`faceEvidence`**: now exported from auto-place.ts.
 
 ## What the kit cannot say
+
+- Brown-grey roof tile (Lauriergracht 100-102, about #6a625c): the roof materials have no colour; black-tile is the nearest.
+- A round-arched door beside a shop front (Lauriergracht 92): a shop ground cannot take `doorArch`.
+- Large round-arched ground openings (Lauriergracht 96) draw as round-headed ground windows, narrower than the photo's 2 m arches.
+- A white timber ground front on a residential house (Egelantiersgracht 23, Lauriergracht 80's wide shop window): validation refuses a shop front on a residential ground.
+- Per-storey bay counts (Egelantiersgracht 23: two wide windows under three).
 
 - Bell crests and small bell tops on white frieze attics (Bloemgracht 94-104). The frieze draws; the crest does not.
 - A Neo-Renaissance stepped gable with arched panels (Egelantiersgracht 17).

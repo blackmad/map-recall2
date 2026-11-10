@@ -15,7 +15,7 @@
  "authoring": {
   "author": "lane hand placement (scripts/block-face/hand-place.ts)",
   "passes": 1,
-  "note": "Bloemgracht 94-104 (strip 2023-03-13): four cornice fronts with white frieze tops and a tall neck gable, one black-painted; spec scripts/block-face/buurten/bloemgrachtbuurt-hand-runs.json"
+  "note": "Bloemgracht 118-126 (strip 2023-03-13): cornice fronts with white frieze tops, three over a souterrain, and a tall neck gable (124); spec scripts/block-face/buurten/bloemgrachtbuurt-hand-runs.json"
  },
  "types": [
   "jordaan-1850-cornice-house",
@@ -29,7 +29,19 @@
    "type": {
     "type": "jordaan-1850-cornice-house",
     "overrides": {
-     "cornice": "frieze"
+     "cornice": "frieze",
+     "storeyHeights": [
+      5,
+      3.1,
+      3.1,
+      3.5
+     ]
+    },
+    "roof": {
+     "form": "attic",
+     "rise": 0.3,
+     "material": "bitumen",
+     "evidence": "strip 2023-03-13: sky over the white frieze and its crest, no roof face shows (Opus strip review 2026-11-10: hide the red roof band); a flat roof hovered (audit)"
     },
     "measuredPalette": {
      "brick": "#655954",
@@ -53,7 +65,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): three axes of white-framed windows, ground and three storeys, a white attic frieze 14.6-16.4 m with a small bell top over the middle (the bell top is not drawn); strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 126: three axes of white-framed windows, a tall ground storey and three storeys, a white attic frieze 14.9-16.4 m with a bell crest (not drawn); grid read on the strip; strip 2023-03-13"
    }
   },
   {
@@ -78,6 +90,14 @@
       "evidence": "auto-place: osm-only (woonfunctie, industriefunctie, shop=copyshop); fascia colour measured on the strip 2023-03-13 span 386-657"
      }
     },
+    "overrides": {
+     "storeyHeights": [
+      4.6,
+      3.1,
+      3,
+      3.5
+     ]
+    },
     "paletteOverrides": {
      "brick": "#6a5048"
     }
@@ -100,7 +120,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): a 6.7 m brick front of three axes, ground and three storeys, a tall neck gable with one attic light to ~19 m; strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 124: a 6.7 m brick front of three axes, a shop ground and three storeys, a tall neck gable with one attic light to ~19 m (the three-light 1.5 m gable window draws as one light); grid read on the strip; strip 2023-03-13"
    }
   },
   {
@@ -109,11 +129,25 @@
    "address": "Bloemgracht 122A",
    "type": {
     "type": "jordaan-1850-cornice-house",
+    "ground": "souterrain-door-left",
     "overrides": {
-     "cornice": "frieze"
+     "cornice": "frieze",
+     "storeyHeights": [
+      2.4,
+      3.6,
+      2.9,
+      2.5,
+      2.6
+     ]
     },
     "paletteOverrides": {
      "brick": "#4f4039"
+    },
+    "roof": {
+     "form": "attic",
+     "rise": 0.3,
+     "material": "bitumen",
+     "evidence": "strip 2023-03-13: sky over the white frieze and its crest, no roof face shows (Opus strip review 2026-11-10: hide the red roof band); a flat roof hovered (audit)"
     }
    },
    "groundFloor": {
@@ -126,7 +160,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): three axes, ground and three storeys, a white frieze top 14.5-16 m with a small bell crest (not drawn); strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 122: three axes, a grey souterrain under a bel-etage with the door at the left and three storeys, a white frieze top 14-15.6 m with a small bell crest (not drawn); grid read on the strip; strip 2023-03-13"
    }
   },
   {
@@ -135,15 +169,30 @@
    "address": "Bloemgracht 120",
    "type": {
     "type": "jordaan-1850-cornice-house",
+    "mirror": true,
+    "ground": "souterrain-door-left",
     "overrides": {
      "windowHead": {
       "kind": "segmental"
      },
-     "cornice": "heavy"
+     "cornice": "heavy",
+     "storeyHeights": [
+      2.2,
+      3.3,
+      2.7,
+      2.6,
+      2.8
+     ]
     },
     "paletteOverrides": {
      "brick": "#2e2a28",
      "wallMaterial": "painted-brick"
+    },
+    "roof": {
+     "form": "attic",
+     "rise": 0.3,
+     "material": "bitumen",
+     "evidence": "strip 2023-03-13: sky over the white frieze and its crest, no roof face shows (Opus strip review 2026-11-10: hide the red roof band); a flat roof hovered (audit)"
     }
    },
    "groundFloor": {
@@ -157,7 +206,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): a black-painted front, three axes of segmental-headed white windows, ground and three storeys, a white cornice at ~14.6 m; strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 120: a black-painted front, three axes of segmental-headed white windows, a grey basement under a bel-etage with the double door on the right (mirrored) and three storeys, a white cornice at ~13.6 m; grid read on the strip; strip 2023-03-13"
    }
   },
   {
@@ -166,12 +215,25 @@
    "address": "Bloemgracht 118",
    "type": {
     "type": "jordaan-1850-cornice-house",
+    "ground": "souterrain-door-left",
     "overrides": {
-     "cornice": "frieze"
+     "cornice": "frieze",
+     "storeyHeights": [
+      2.3,
+      3.5,
+      2.9,
+      2.6,
+      2.7
+     ]
     },
-    "measuredPalette": {
-     "brick": "#726761",
-     "evidence": "strip 2023-03-13 span 1030-1211: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    "paletteOverrides": {
+     "brick": "#484441"
+    },
+    "roof": {
+     "form": "attic",
+     "rise": 0.3,
+     "material": "bitumen",
+     "evidence": "strip 2023-03-13: sky over the white frieze and its crest, no roof face shows (Opus strip review 2026-11-10: hide the red roof band); a flat roof hovered (audit)"
     }
    },
    "groundFloor": {
@@ -184,7 +246,7 @@
     "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
    },
    "rhythm": {
-    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): three axes, ground and three storeys, a white frieze top 14.6-16 m with a small bell crest (not drawn); strip 2023-03-13"
+    "citation": "hand placement (bloemgrachtbuurt-hand-runs.json): Bloemgracht 118: three axes, a souterrain under a bel-etage with the door at the left and three storeys, a white frieze top 14-16 m with a small bell crest (not drawn); grid read on the strip; strip 2023-03-13"
    }
   }
  ],
@@ -201,18 +263,18 @@
   "measuredEaves": [
    {
     "pand": "0363100012168075",
-    "stripRow": 213,
-    "evidence": "hand placement: cornice top read at 14.6 m on the strip 2023-03-13"
+    "stripRow": 141,
+    "evidence": "hand placement: cornice top read at 16.4 m on the strip 2023-03-13"
    },
    {
     "pand": "0363100012168080",
-    "stripRow": 213,
-    "evidence": "hand placement: cornice top read at 14.6 m on the strip 2023-03-13"
+    "stripRow": 229,
+    "evidence": "hand placement: cornice top read at 14.2 m on the strip 2023-03-13"
    },
    {
     "pand": "0363100012174186",
-    "stripRow": 217,
-    "evidence": "hand placement: cornice top read at 14.5 m on the strip 2023-03-13"
+    "stripRow": 173,
+    "evidence": "hand placement: cornice top read at 15.6 m on the strip 2023-03-13"
    },
    {
     "pand": "0363100012168077",
@@ -221,8 +283,8 @@
    },
    {
     "pand": "0363100012168076",
-    "stripRow": 213,
-    "evidence": "hand placement: cornice top read at 14.6 m on the strip 2023-03-13"
+    "stripRow": 157,
+    "evidence": "hand placement: cornice top read at 16 m on the strip 2023-03-13"
    }
   ]
  }

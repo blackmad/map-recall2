@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T09:06:46.467Z",
+ "generatedAt": "2026-11-10T09:43:34.584Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -99449,13 +99449,1511 @@
    }
   },
   {
+   "id": "chunk-face-egelantiersgracht-3-43-h1",
+   "category": "street-survey",
+   "name": "face-egelantiersgracht-3-43-h1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-egelantiersgracht-3-43-h1.glb?asset=e78d854170955fed",
+   "sha256": "e78d854170955fed100434a1086ca8c066d2596b084f58b35e4985d391f8fadb",
+   "bytes": 60488,
+   "triangles": 1889,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.883684908520663,
+     52.376339531021245
+    ],
+    "northOffsetDegrees": 159.627,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.244,
+     0,
+     -15.355
+    ],
+    "max": [
+     5.438,
+     13.839,
+     0.182
+    ]
+   },
+   "height": 13.839,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012174703",
+    "NL.IMBAG.Pand.0363100012174775"
+   ],
+   "replaces": [
+    "ordinary-0363100012174703",
+    "ordinary-0363100012174775"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8837966,
+        52.376286
+       ],
+       [
+        4.8837571,
+        52.376356
+       ],
+       [
+        4.8836844,
+        52.3763393
+       ],
+       [
+        4.8837576,
+        52.3762088
+       ],
+       [
+        4.8838189,
+        52.3762466
+       ],
+       [
+        4.8838075,
+        52.3762667
+       ],
+       [
+        4.8837653,
+        52.3762552
+       ],
+       [
+        4.883753,
+        52.3762768
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8836844,
+        52.3763393
+       ],
+       [
+        4.8836138,
+        52.3763235
+       ],
+       [
+        4.8836677,
+        52.3762272
+       ],
+       [
+        4.8837389,
+        52.3762422
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "egelantiersgracht-174703",
+     "pandId": "0363100012174703",
+     "buildingId": "NL.IMBAG.Pand.0363100012174703",
+     "address": "Egelantiersgracht 11",
+     "frontage": {
+      "x0": -5.244,
+      "x1": 0.04,
+      "widthM": 5.284
+     },
+     "bounds": {
+      "min": [
+       -5.244,
+       0,
+       -15.355
+      ],
+      "max": [
+       0.411,
+       13.443,
+       0.182
+      ]
+     },
+     "triangles": 851,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 67
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 500
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "egelantiersgracht-174775",
+     "pandId": "0363100012174775",
+     "buildingId": "NL.IMBAG.Pand.0363100012174775",
+     "address": "Egelantiersgracht 13",
+     "frontage": {
+      "x0": 0.04,
+      "x1": 5.164,
+      "widthM": 5.124
+     },
+     "bounds": {
+      "min": [
+       0.04,
+       0,
+       -11.467
+      ],
+      "max": [
+       5.438,
+       13.839,
+       0.182
+      ]
+     },
+     "triangles": 1038,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 50
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 136,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 500,
+       "triangleCount": 644
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 102,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 10,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 5,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 7,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-egelantiersgracht-3-43-h2",
+   "category": "street-survey",
+   "name": "face-egelantiersgracht-3-43-h2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-egelantiersgracht-3-43-h2.glb?asset=285e6d05c98db4fd",
+   "sha256": "285e6d05c98db4fd04803746c14a233950e2b2fd64e072a6abc82a54da005df6",
+   "bytes": 121432,
+   "triangles": 4477,
+   "primitives": 13,
+   "instance": {
+    "anchor": [
+     4.883376381963912,
+     52.37627093670438
+    ],
+    "northOffsetDegrees": 160.8299,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.938,
+     0,
+     -15.854
+    ],
+    "max": [
+     6.742,
+     13.358,
+     1.098
+    ]
+   },
+   "height": 13.358,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012174965",
+    "NL.IMBAG.Pand.0363100012174781",
+    "NL.IMBAG.Pand.0363100012174968"
+   ],
+   "replaces": [
+    "ordinary-0363100012174965",
+    "ordinary-0363100012174781",
+    "ordinary-0363100012174968"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8834702,
+        52.376291
+       ],
+       [
+        4.8834073,
+        52.3762772
+       ],
+       [
+        4.8834636,
+        52.3761813
+       ],
+       [
+        4.8834961,
+        52.3761884
+       ],
+       [
+        4.8835135,
+        52.3761587
+       ],
+       [
+        4.8835273,
+        52.3761617
+       ],
+       [
+        4.8835323,
+        52.3761532
+       ],
+       [
+        4.8835489,
+        52.3761568
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.883407,
+        52.3762778
+       ],
+       [
+        4.8833454,
+        52.3762644
+       ],
+       [
+        4.8834145,
+        52.3761466
+       ],
+       [
+        4.8834421,
+        52.3761527
+       ],
+       [
+        4.8834223,
+        52.3761866
+       ],
+       [
+        4.8834561,
+        52.376194
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8833456,
+        52.376264
+       ],
+       [
+        4.8832828,
+        52.3762512
+       ],
+       [
+        4.8833323,
+        52.3761668
+       ],
+       [
+        4.8833617,
+        52.3761732
+       ],
+       [
+        4.8833858,
+        52.3761322
+       ],
+       [
+        4.8834187,
+        52.3761394
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "egelantiersgracht-174965",
+     "pandId": "0363100012174965",
+     "buildingId": "NL.IMBAG.Pand.0363100012174965",
+     "address": "Egelantiersgracht 19",
+     "frontage": {
+      "x0": -6.767,
+      "x1": -2.218,
+      "widthM": 4.549
+     },
+     "bounds": {
+      "min": [
+       -6.938,
+       0,
+       -15.854
+      ],
+      "max": [
+       -2.218,
+       13.16,
+       0.189
+      ]
+     },
+     "triangles": 1165,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 77
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 736
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 152
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "egelantiersgracht-174781",
+     "pandId": "0363100012174781",
+     "buildingId": "NL.IMBAG.Pand.0363100012174781",
+     "address": "Egelantiersgracht 21",
+     "frontage": {
+      "x0": -2.218,
+      "x1": 2.231,
+      "widthM": 4.449
+     },
+     "bounds": {
+      "min": [
+       -2.326,
+       0,
+       -13.917
+      ],
+      "max": [
+       2.231,
+       11.95,
+       0.167
+      ]
+     },
+     "triangles": 1735,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 177
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 156,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 736,
+       "triangleCount": 1288
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 152,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "egelantiersgracht-174968",
+     "pandId": "0363100012174968",
+     "buildingId": "NL.IMBAG.Pand.0363100012174968",
+     "address": "Egelantiersgracht 23",
+     "frontage": {
+      "x0": 2.231,
+      "x1": 6.742,
+      "widthM": 4.511
+     },
+     "bounds": {
+      "min": [
+       2.073,
+       0,
+       -14.824
+      ],
+      "max": [
+       6.742,
+       13.358,
+       1.098
+      ]
+     },
+     "triangles": 1577,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 145
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 276,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2024,
+       "triangleCount": 1152
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 278,
+       "triangleCount": 122
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-egelantiersgracht-3-43-h3",
+   "category": "street-survey",
+   "name": "face-egelantiersgracht-3-43-h3",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-egelantiersgracht-3-43-h3.glb?asset=47543845e363a0c6",
+   "sha256": "47543845e363a0c626ae53c2db754a41b099feb87976016818abadea5b78902e",
+   "bytes": 44460,
+   "triangles": 1301,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.883180639440657,
+     52.37622808165509
+    ],
+    "northOffsetDegrees": 159.5194,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -2.735,
+     0,
+     -13.304
+    ],
+    "max": [
+     2.735,
+     14.15,
+     0.175
+    ]
+   },
+   "height": 14.15,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012174976"
+   ],
+   "replaces": [
+    "ordinary-0363100012174976"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8832183,
+        52.3762367
+       ],
+       [
+        4.883143,
+        52.3762195
+       ],
+       [
+        4.8832107,
+        52.3761083
+       ],
+       [
+        4.8832841,
+        52.3761244
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "egelantiersgracht-174976",
+     "pandId": "0363100012174976",
+     "buildingId": "NL.IMBAG.Pand.0363100012174976",
+     "address": "Egelantiersgracht 27C",
+     "frontage": {
+      "x0": -2.735,
+      "x1": 2.735,
+      "widthM": 5.47
+     },
+     "bounds": {
+      "min": [
+       -2.735,
+       0,
+       -13.304
+      ],
+      "max": [
+       2.735,
+       14.15,
+       0.175
+      ]
+     },
+     "triangles": 1301,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 58
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 768
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-bloemgracht-90-128-h1",
+   "category": "street-survey",
+   "name": "face-bloemgracht-90-128-h1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bloemgracht-90-128-h1.glb?asset=5f18695f2d9578cc",
+   "sha256": "5f18695f2d9578ccb22b8e292e284a8df4f180fe02a7079d2dcb2c8f56b9cd0c",
+   "bytes": 210984,
+   "triangles": 8595,
+   "primitives": 18,
+   "instance": {
+    "anchor": [
+     4.879567412003049,
+     52.37456375659175
+    ],
+    "northOffsetDegrees": 339.59,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -15.707,
+     0,
+     -31.919
+    ],
+    "max": [
+     12.332,
+     18.99,
+     1.473
+    ]
+   },
+   "height": 18.99,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012168075",
+    "NL.IMBAG.Pand.0363100012168080",
+    "NL.IMBAG.Pand.0363100012174186",
+    "NL.IMBAG.Pand.0363100012168077",
+    "NL.IMBAG.Pand.0363100012168076"
+   ],
+   "replaces": [
+    "ordinary-0363100012168075",
+    "ordinary-0363100012168080",
+    "ordinary-0363100012174186",
+    "ordinary-0363100012168077",
+    "ordinary-0363100012168076"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8792923,
+        52.3748069
+       ],
+       [
+        4.8791884,
+        52.374783
+       ],
+       [
+        4.8792878,
+        52.3746227
+       ],
+       [
+        4.8793087,
+        52.3746275
+       ],
+       [
+        4.8793387,
+        52.3745764
+       ],
+       [
+        4.8793559,
+        52.3745803
+       ],
+       [
+        4.8793894,
+        52.3745234
+       ],
+       [
+        4.8794505,
+        52.3745375
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.879481,
+        52.3746606
+       ],
+       [
+        4.8794347,
+        52.37465
+       ],
+       [
+        4.8794063,
+        52.3746984
+       ],
+       [
+        4.8794269,
+        52.3747032
+       ],
+       [
+        4.87939,
+        52.3747662
+       ],
+       [
+        4.8793251,
+        52.3747512
+       ],
+       [
+        4.8794505,
+        52.3745375
+       ],
+       [
+        4.8795437,
+        52.374559
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8795286,
+        52.374708
+       ],
+       [
+        4.8794611,
+        52.3746928
+       ],
+       [
+        4.8795437,
+        52.374559
+       ],
+       [
+        4.8795475,
+        52.3745591
+       ],
+       [
+        4.8796081,
+        52.3745727
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8795816,
+        52.3747422
+       ],
+       [
+        4.8795175,
+        52.374727
+       ],
+       [
+        4.8796081,
+        52.3745727
+       ],
+       [
+        4.8796727,
+        52.374587
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8796467,
+        52.3747515
+       ],
+       [
+        4.8795842,
+        52.3747377
+       ],
+       [
+        4.8796727,
+        52.374587
+       ],
+       [
+        4.8797346,
+        52.3746017
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "bloemgracht-168075",
+     "pandId": "0363100012168075",
+     "buildingId": "NL.IMBAG.Pand.0363100012168075",
+     "address": "Bloemgracht 126",
+     "frontage": {
+      "x0": -12.93,
+      "x1": -8.479,
+      "widthM": 4.451
+     },
+     "bounds": {
+      "min": [
+       -15.707,
+       0,
+       -31.919
+      ],
+      "max": [
+       -8.148,
+       16.51,
+       0.24
+      ]
+     },
+     "triangles": 1350,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 140
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 728
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 150
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 152
+      }
+     ]
+    },
+    {
+     "recipeId": "bloemgracht-168080",
+     "pandId": "0363100012168080",
+     "buildingId": "NL.IMBAG.Pand.0363100012168080",
+     "address": "Bloemgracht 124B",
+     "frontage": {
+      "x0": -8.479,
+      "x1": -1.696,
+      "widthM": 6.783
+     },
+     "bounds": {
+      "min": [
+       -8.479,
+       0,
+       -25.356
+      ],
+      "max": [
+       -1.696,
+       18.99,
+       1.083
+      ]
+     },
+     "triangles": 2159,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 219
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 728,
+       "triangleCount": 1316
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 150,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 16
+      }
+     ]
+    },
+    {
+     "recipeId": "bloemgracht-174186",
+     "pandId": "0363100012174186",
+     "buildingId": "NL.IMBAG.Pand.0363100012174186",
+     "address": "Bloemgracht 122A",
+     "frontage": {
+      "x0": -1.696,
+      "x1": 2.946,
+      "widthM": 4.642
+     },
+     "bounds": {
+      "min": [
+       -1.792,
+       0,
+       -16.023
+      ],
+      "max": [
+       3.11,
+       15.7,
+       1.445
+      ]
+     },
+     "triangles": 1515,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 73
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 312,
+       "triangleCount": 408
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2044,
+       "triangleCount": 816
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 326,
+       "triangleCount": 174
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 152,
+       "triangleCount": 20
+      }
+     ]
+    },
+    {
+     "recipeId": "bloemgracht-168077",
+     "pandId": "0363100012168077",
+     "buildingId": "NL.IMBAG.Pand.0363100012168077",
+     "address": "Bloemgracht 120",
+     "frontage": {
+      "x0": 2.946,
+      "x1": 7.621,
+      "widthM": 4.675
+     },
+     "bounds": {
+      "min": [
+       2.946,
+       0,
+       -18.314
+      ],
+      "max": [
+       7.812,
+       15.488,
+       1.473
+      ]
+     },
+     "triangles": 2075,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 116
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 720,
+       "triangleCount": 372
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2860,
+       "triangleCount": 1168
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 500,
+       "triangleCount": 352
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 172,
+       "triangleCount": 31
+      }
+     ]
+    },
+    {
+     "recipeId": "bloemgracht-168076",
+     "pandId": "0363100012168076",
+     "buildingId": "NL.IMBAG.Pand.0363100012168076",
+     "address": "Bloemgracht 118",
+     "frontage": {
+      "x0": 7.621,
+      "x1": 12.145,
+      "widthM": 4.524
+     },
+     "bounds": {
+      "min": [
+       7.621,
+       0,
+       -17.786
+      ],
+      "max": [
+       12.332,
+       16.1,
+       1.461
+      ]
+     },
+     "triangles": 1496,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 53
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 1092,
+       "triangleCount": 408
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 4028,
+       "triangleCount": 824
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 852,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 203,
+       "triangleCount": 11
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-bloemgracht-4-10-h1",
+   "category": "street-survey",
+   "name": "face-bloemgracht-4-10-h1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bloemgracht-4-10-h1.glb?asset=1b779efe3f8d8f74",
+   "sha256": "1b779efe3f8d8f743fa7d586830ab959487f526d9bb0e4385ef96f4c00f5b574",
+   "bytes": 101296,
+   "triangles": 3501,
+   "primitives": 13,
+   "instance": {
+    "anchor": [
+     4.883147512012712,
+     52.37537688997206
+    ],
+    "northOffsetDegrees": 339.5783,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -5.316,
+     0,
+     -13.107
+    ],
+    "max": [
+     5.542,
+     16.106,
+     0.206
+    ]
+   },
+   "height": 16.106,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012174495",
+    "NL.IMBAG.Pand.0363100012174496"
+   ],
+   "replaces": [
+    "ordinary-0363100012174495",
+    "ordinary-0363100012174496"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8830919,
+        52.3754699
+       ],
+       [
+        4.8830606,
+        52.375463
+       ],
+       [
+        4.8830506,
+        52.37548
+       ],
+       [
+        4.8830092,
+        52.3754708
+       ],
+       [
+        4.8830742,
+        52.3753605
+       ],
+       [
+        4.883121,
+        52.3753708
+       ],
+       [
+        4.8831205,
+        52.3753717
+       ],
+       [
+        4.8831375,
+        52.3753754
+       ],
+       [
+        4.883138,
+        52.3753746
+       ],
+       [
+        4.8831469,
+        52.3753765
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8831575,
+        52.3755036
+       ],
+       [
+        4.8830818,
+        52.3754869
+       ],
+       [
+        4.8831469,
+        52.3753765
+       ],
+       [
+        4.8831977,
+        52.3753884
+       ],
+       [
+        4.8831962,
+        52.3753906
+       ],
+       [
+        4.8832148,
+        52.375395
+       ],
+       [
+        4.8832162,
+        52.3753927
+       ],
+       [
+        4.883222,
+        52.3753941
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "bloemgracht-174495",
+     "pandId": "0363100012174495",
+     "buildingId": "NL.IMBAG.Pand.0363100012174495",
+     "address": "Bloemgracht 8",
+     "frontage": {
+      "x0": -5.315,
+      "x1": -0.053,
+      "widthM": 5.262
+     },
+     "bounds": {
+      "min": [
+       -5.316,
+       0,
+       -13.107
+      ],
+      "max": [
+       0.05,
+       16.057,
+       0.156
+      ]
+     },
+     "triangles": 2274,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 236
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 1572
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 164
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "bloemgracht-174496",
+     "pandId": "0363100012174496",
+     "buildingId": "NL.IMBAG.Pand.0363100012174496",
+     "address": "Bloemgracht 6D",
+     "frontage": {
+      "x0": -0.053,
+      "x1": 5.422,
+      "widthM": 5.475
+     },
+     "bounds": {
+      "min": [
+       -0.053,
+       0,
+       -13.033
+      ],
+      "max": [
+       5.542,
+       16.106,
+       0.206
+      ]
+     },
+     "triangles": 1227,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1572,
+       "triangleCount": 768
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 164,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "chunk-face-lauriergracht-62-110-h1",
    "category": "street-survey",
    "name": "face-lauriergracht-62-110-h1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-lauriergracht-62-110-h1.glb?asset=9a67c01bf4758223",
-   "sha256": "9a67c01bf4758223fb238417e6e461427c0c5deb70e05f35162a604679459245",
-   "bytes": 168120,
-   "triangles": 6759,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-lauriergracht-62-110-h1.glb?asset=6bed3ef4000d508e",
+   "sha256": "6bed3ef4000d508e8411349469b9c5e18ac9b116cadf1b37366b42472804e091",
+   "bytes": 174948,
+   "triangles": 7162,
    "primitives": 18,
    "instance": {
     "anchor": [
@@ -99634,22 +101132,22 @@
        0.387
       ]
      },
-     "triangles": 1404,
+     "triangles": 1515,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 290
+       "triangleCount": 285
       },
       {
        "primitive": 4,
        "firstTriangle": 0,
-       "triangleCount": 120
+       "triangleCount": 172
       },
       {
        "primitive": 5,
        "firstTriangle": 0,
-       "triangleCount": 576
+       "triangleCount": 636
       },
       {
        "primitive": 6,
@@ -99664,22 +101162,22 @@
       {
        "primitive": 11,
        "firstTriangle": 0,
-       "triangleCount": 118
+       "triangleCount": 130
       },
       {
        "primitive": 12,
        "firstTriangle": 0,
-       "triangleCount": 19
+       "triangleCount": 6
       },
       {
        "primitive": 13,
        "firstTriangle": 0,
-       "triangleCount": 5
+       "triangleCount": 3
       },
       {
        "primitive": 14,
        "firstTriangle": 0,
-       "triangleCount": 252
+       "triangleCount": 259
       }
      ]
     },
@@ -99701,25 +101199,25 @@
       ],
       "max": [
        -1.758,
-       14.5,
+       14.173,
        0.423
       ]
      },
-     "triangles": 1097,
+     "triangles": 1089,
      "ranges": [
       {
        "primitive": 3,
        "firstTriangle": 0,
-       "triangleCount": 44
+       "triangleCount": 42
       },
       {
        "primitive": 4,
-       "firstTriangle": 120,
+       "firstTriangle": 172,
        "triangleCount": 172
       },
       {
        "primitive": 5,
-       "firstTriangle": 576,
+       "firstTriangle": 636,
        "triangleCount": 692
       },
       {
@@ -99734,22 +101232,17 @@
       },
       {
        "primitive": 11,
-       "firstTriangle": 118,
+       "firstTriangle": 130,
        "triangleCount": 144
       },
       {
        "primitive": 12,
-       "firstTriangle": 19,
-       "triangleCount": 13
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 5,
-       "triangleCount": 2
+       "firstTriangle": 6,
+       "triangleCount": 9
       },
       {
        "primitive": 14,
-       "firstTriangle": 252,
+       "firstTriangle": 259,
        "triangleCount": 6
       }
      ]
@@ -99776,7 +101269,7 @@
        0.644
       ]
      },
-     "triangles": 2428,
+     "triangles": 2728,
      "ranges": [
       {
        "primitive": 1,
@@ -99785,13 +101278,13 @@
       },
       {
        "primitive": 4,
-       "firstTriangle": 292,
+       "firstTriangle": 344,
        "triangleCount": 332
       },
       {
        "primitive": 5,
-       "firstTriangle": 1268,
-       "triangleCount": 1200
+       "firstTriangle": 1328,
+       "triangleCount": 1400
       },
       {
        "primitive": 6,
@@ -99805,18 +101298,18 @@
       },
       {
        "primitive": 11,
-       "firstTriangle": 262,
-       "triangleCount": 250
+       "firstTriangle": 274,
+       "triangleCount": 350
       },
       {
        "primitive": 15,
        "firstTriangle": 0,
-       "triangleCount": 13
+       "triangleCount": 12
       },
       {
        "primitive": 16,
        "firstTriangle": 0,
-       "triangleCount": 3
+       "triangleCount": 4
       },
       {
        "primitive": 17,
@@ -99856,12 +101349,12 @@
       },
       {
        "primitive": 4,
-       "firstTriangle": 624,
+       "firstTriangle": 676,
        "triangleCount": 296
       },
       {
        "primitive": 5,
-       "firstTriangle": 2468,
+       "firstTriangle": 2728,
        "triangleCount": 912
       },
       {
@@ -99886,23 +101379,23 @@
       },
       {
        "primitive": 11,
-       "firstTriangle": 512,
+       "firstTriangle": 624,
        "triangleCount": 212
       },
       {
        "primitive": 15,
-       "firstTriangle": 13,
-       "triangleCount": 12
+       "firstTriangle": 12,
+       "triangleCount": 13
       },
       {
        "primitive": 16,
-       "firstTriangle": 3,
+       "firstTriangle": 4,
        "triangleCount": 1
       },
       {
        "primitive": 17,
        "firstTriangle": 286,
-       "triangleCount": 25
+       "triangleCount": 24
       }
      ]
     }
@@ -99912,45 +101405,39 @@
    "id": "chunk-face-lauriergracht-62-110-h2",
    "category": "street-survey",
    "name": "face-lauriergracht-62-110-h2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-lauriergracht-62-110-h2.glb?asset=9c489f5a86cebae8",
-   "sha256": "9c489f5a86cebae80515df980c4de7f29ac0be21019ef3f2ec07a492b4f3375d",
-   "bytes": 174352,
-   "triangles": 6916,
-   "primitives": 16,
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-lauriergracht-62-110-h2.glb?asset=b9dbcfc6de5e517e",
+   "sha256": "b9dbcfc6de5e517ec3c924cd24762ca3ffa81d51bf34c83ff7a1bddd0c1aa58b",
+   "bytes": 80472,
+   "triangles": 2635,
+   "primitives": 14,
    "instance": {
     "anchor": [
-     4.880705631631974,
-     52.371518402384766
+     4.8806007973540435,
+     52.37149072109654
     ],
-    "northOffsetDegrees": 337.7059,
+    "northOffsetDegrees": 337.7131,
     "mirror": false
    },
    "bounds": {
     "min": [
-     -13.909,
+     -6.139,
      0,
-     -31.796
+     -31.821
     ],
     "max": [
-     12.774,
-     16.776,
-     0.413
+     5.563,
+     16.753,
+     0.266
     ]
    },
-   "height": 16.776,
+   "height": 16.753,
    "suppress": [
     "NL.IMBAG.Pand.0363100012169946",
-    "NL.IMBAG.Pand.0363100012169892",
-    "NL.IMBAG.Pand.0363100012169942",
-    "NL.IMBAG.Pand.0363100012169889",
-    "NL.IMBAG.Pand.0363100012169943"
+    "NL.IMBAG.Pand.0363100012169892"
    ],
    "replaces": [
     "ordinary-0363100012169946",
-    "ordinary-0363100012169892",
-    "ordinary-0363100012169942",
-    "ordinary-0363100012169889",
-    "ordinary-0363100012169943"
+    "ordinary-0363100012169892"
    ],
    "footprint": {
     "type": "MultiPolygon",
@@ -100006,35 +101493,200 @@
         52.3716043
        ]
       ]
-     ],
-     [
-      [
-       [
-        4.8806564,
-        52.3716455
-       ],
-       [
-        4.8805944,
-        52.3716278
-       ],
-       [
-        4.8806107,
-        52.3716041
-       ],
-       [
-        4.8806115,
-        52.3716043
-       ],
-       [
-        4.8806762,
-        52.3715099
-       ],
-       [
-        4.8807382,
-        52.3715261
-       ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "lauriergracht-169946",
+     "pandId": "0363100012169946",
+     "buildingId": "NL.IMBAG.Pand.0363100012169946",
+     "address": "Lauriergracht 86",
+     "frontage": {
+      "x0": -5.851,
+      "x1": -0.238,
+      "widthM": 5.613
+     },
+     "bounds": {
+      "min": [
+       -6.139,
+       0,
+       -31.821
+      ],
+      "max": [
+       0.527,
+       16.753,
+       0.266
       ]
-     ],
+     },
+     "triangles": 1447,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 118
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 788
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 162
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "lauriergracht-169892",
+     "pandId": "0363100012169892",
+     "buildingId": "NL.IMBAG.Pand.0363100012169892",
+     "address": "Lauriergracht 84",
+     "frontage": {
+      "x0": 0.526,
+      "x1": 5.563,
+      "widthM": 5.037
+     },
+     "bounds": {
+      "min": [
+       0.399,
+       0,
+       -14.288
+      ],
+      "max": [
+       5.563,
+       12.66,
+       0.242
+      ]
+     },
+     "triangles": 1188,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 89
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 208,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 788,
+       "triangleCount": 620
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 162,
+       "triangleCount": 126
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 13
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-lauriergracht-62-110-h3",
+   "category": "street-survey",
+   "name": "face-lauriergracht-62-110-h3",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-lauriergracht-62-110-h3.glb?asset=006aa3fbfc8b9fa4",
+   "sha256": "006aa3fbfc8b9fa45918cf44edd9072276c70b52abe793dcf1e3a92debd5357d",
+   "bytes": 92488,
+   "triangles": 3634,
+   "primitives": 9,
+   "instance": {
+    "anchor": [
+     4.880809679035066,
+     52.37154627120324
+    ],
+    "northOffsetDegrees": 338.4909,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -15.43,
+     0,
+     -31.581
+    ],
+    "max": [
+     5.041,
+     15.34,
+     0.494
+    ]
+   },
+   "height": 15.34,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012169889",
+    "NL.IMBAG.Pand.0363100012169943"
+   ],
+   "replaces": [
+    "ordinary-0363100012169889",
+    "ordinary-0363100012169943"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
      [
       [
        [
@@ -100127,276 +101779,68 @@
    },
    "pands": [
     {
-     "recipeId": "lauriergracht-169946",
-     "pandId": "0363100012169946",
-     "buildingId": "NL.IMBAG.Pand.0363100012169946",
-     "address": "Lauriergracht 86",
-     "frontage": {
-      "x0": -13.625,
-      "x1": -8.013,
-      "widthM": 5.612
-     },
-     "bounds": {
-      "min": [
-       -13.909,
-       0,
-       -31.673
-      ],
-      "max": [
-       -7.247,
-       16.776,
-       0.413
-      ]
-     },
-     "triangles": 1213,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 122
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 728
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 150
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 6
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 11
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 16
-      }
-     ]
-    },
-    {
-     "recipeId": "lauriergracht-169892",
-     "pandId": "0363100012169892",
-     "buildingId": "NL.IMBAG.Pand.0363100012169892",
-     "address": "Lauriergracht 84",
-     "frontage": {
-      "x0": -7.248,
-      "x1": -2.211,
-      "widthM": 5.036
-     },
-     "bounds": {
-      "min": [
-       -7.373,
-       0,
-       -14.115
-      ],
-      "max": [
-       -2.211,
-       14.091,
-       0.354
-      ]
-     },
-     "triangles": 1003,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 70
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 156,
-       "triangleCount": 172
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 728,
-       "triangleCount": 596
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 150,
-       "triangleCount": 120
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 0,
-       "triangleCount": 8
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 0,
-       "triangleCount": 13
-      }
-     ]
-    },
-    {
-     "recipeId": "lauriergracht-169942",
-     "pandId": "0363100012169942",
-     "buildingId": "NL.IMBAG.Pand.0363100012169942",
-     "address": "Lauriergracht 82",
-     "frontage": {
-      "x0": -2.211,
-      "x1": 2.378,
-      "widthM": 4.589
-     },
-     "bounds": {
-      "min": [
-       -2.401,
-       0,
-       -14.361
-      ],
-      "max": [
-       2.38,
-       15.551,
-       0.329
-      ]
-     },
-     "triangles": 1217,
-     "ranges": [
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 48
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 328,
-       "triangleCount": 208
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 1324,
-       "triangleCount": 764
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 270,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 8,
-       "triangleCount": 9
-      },
-      {
-       "primitive": 14,
-       "firstTriangle": 0,
-       "triangleCount": 1
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 13,
-       "triangleCount": 7
-      }
-     ]
-    },
-    {
      "recipeId": "lauriergracht-169889",
      "pandId": "0363100012169889",
      "buildingId": "NL.IMBAG.Pand.0363100012169889",
      "address": "Lauriergracht 80",
      "frontage": {
-      "x0": 2.378,
-      "x1": 7.897,
-      "widthM": 5.519
+      "x0": -5.351,
+      "x1": 0.165,
+      "widthM": 5.516
      },
      "bounds": {
       "min": [
-       -7.426,
+       -15.43,
        0,
-       -31.796
+       -31.581
       ],
       "max": [
-       7.903,
-       15.235,
-       0.23
+       0.174,
+       15.165,
+       0.494
       ]
      },
-     "triangles": 1716,
+     "triangles": 1723,
      "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 270
+      },
       {
        "primitive": 2,
        "firstTriangle": 0,
-       "triangleCount": 251
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 536,
        "triangleCount": 208
       },
       {
-       "primitive": 6,
-       "firstTriangle": 2088,
+       "primitive": 3,
+       "firstTriangle": 0,
        "triangleCount": 876
       },
       {
-       "primitive": 7,
-       "firstTriangle": 36,
+       "primitive": 4,
+       "firstTriangle": 0,
        "triangleCount": 12
       },
       {
-       "primitive": 8,
-       "firstTriangle": 36,
+       "primitive": 5,
+       "firstTriangle": 0,
        "triangleCount": 12
       },
       {
-       "primitive": 9,
-       "firstTriangle": 426,
+       "primitive": 6,
+       "firstTriangle": 0,
        "triangleCount": 184
       },
       {
-       "primitive": 13,
-       "firstTriangle": 17,
-       "triangleCount": 26
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 15
       },
       {
-       "primitive": 15,
-       "firstTriangle": 20,
-       "triangleCount": 147
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 146
       }
      ]
     },
@@ -100406,277 +101850,38 @@
      "buildingId": "NL.IMBAG.Pand.0363100012169943",
      "address": "Lauriergracht 78A",
      "frontage": {
-      "x0": 7.881,
-      "x1": 12.774,
-      "widthM": 4.893
+      "x0": 0.145,
+      "x1": 5.041,
+      "widthM": 4.896
      },
      "bounds": {
       "min": [
-       7.193,
+       -0.737,
        0,
-       -14.732
+       -14.562
       ],
       "max": [
-       12.774,
-       15.776,
-       0.222
+       5.041,
+       15.34,
+       0.341
       ]
      },
-     "triangles": 1767,
-     "ranges": [
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 103
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 744,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 2964,
-       "triangleCount": 1128
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 48,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 48,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 610,
-       "triangleCount": 340
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 43,
-       "triangleCount": 6
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 167,
-       "triangleCount": 10
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "chunk-face-egelantiersgracht-3-43-h1",
-   "category": "street-survey",
-   "name": "face-egelantiersgracht-3-43-h1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-egelantiersgracht-3-43-h1.glb?asset=3fa26674862fd79a",
-   "sha256": "3fa26674862fd79a6155cd627a7b3127320b5a979509f2300c8d8cf8d5d87209",
-   "bytes": 73336,
-   "triangles": 2524,
-   "primitives": 10,
-   "instance": {
-    "anchor": [
-     4.883684908520663,
-     52.376339531021245
-    ],
-    "northOffsetDegrees": 159.627,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -5.244,
-     0,
-     -15.355
-    ],
-    "max": [
-     5.438,
-     13.843,
-     0.182
-    ]
-   },
-   "height": 13.843,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012174703",
-    "NL.IMBAG.Pand.0363100012174775"
-   ],
-   "replaces": [
-    "ordinary-0363100012174703",
-    "ordinary-0363100012174775"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8837966,
-        52.376286
-       ],
-       [
-        4.8837571,
-        52.376356
-       ],
-       [
-        4.8836844,
-        52.3763393
-       ],
-       [
-        4.8837576,
-        52.3762088
-       ],
-       [
-        4.8838189,
-        52.3762466
-       ],
-       [
-        4.8838075,
-        52.3762667
-       ],
-       [
-        4.8837653,
-        52.3762552
-       ],
-       [
-        4.883753,
-        52.3762768
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8836844,
-        52.3763393
-       ],
-       [
-        4.8836138,
-        52.3763235
-       ],
-       [
-        4.8836677,
-        52.3762272
-       ],
-       [
-        4.8837389,
-        52.3762422
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "egelantiersgracht-174703",
-     "pandId": "0363100012174703",
-     "buildingId": "NL.IMBAG.Pand.0363100012174703",
-     "address": "Egelantiersgracht 11",
-     "frontage": {
-      "x0": -5.244,
-      "x1": 0.04,
-      "widthM": 5.284
-     },
-     "bounds": {
-      "min": [
-       -5.244,
-       0,
-       -15.355
-      ],
-      "max": [
-       0.411,
-       13.843,
-       0.182
-      ]
-     },
-     "triangles": 1360,
+     "triangles": 1911,
      "ranges": [
       {
        "primitive": 1,
        "firstTriangle": 0,
-       "triangleCount": 70
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 208
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 852
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 178
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 10
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 6
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      }
-     ]
-    },
-    {
-     "recipeId": "egelantiersgracht-174775",
-     "pandId": "0363100012174775",
-     "buildingId": "NL.IMBAG.Pand.0363100012174775",
-     "address": "Egelantiersgracht 13",
-     "frontage": {
-      "x0": 0.04,
-      "x1": 5.164,
-      "widthM": 5.124
-     },
-     "bounds": {
-      "min": [
-       0.04,
-       0,
-       -11.467
-      ],
-      "max": [
-       5.438,
-       13.517,
-       0.182
-      ]
-     },
-     "triangles": 1164,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 46
+       "triangleCount": 108
       },
       {
        "primitive": 2,
        "firstTriangle": 208,
-       "triangleCount": 156
+       "triangleCount": 208
       },
       {
        "primitive": 3,
-       "firstTriangle": 852,
-       "triangleCount": 768
+       "firstTriangle": 876,
+       "triangleCount": 1188
       },
       {
        "primitive": 4,
@@ -100690,71 +101895,72 @@
       },
       {
        "primitive": 6,
-       "firstTriangle": 178,
-       "triangleCount": 160
+       "firstTriangle": 184,
+       "triangleCount": 352
       },
       {
        "primitive": 7,
-       "firstTriangle": 10,
-       "triangleCount": 2
+       "firstTriangle": 15,
+       "triangleCount": 14
       },
       {
        "primitive": 8,
-       "firstTriangle": 6,
-       "triangleCount": 3
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 12,
-       "triangleCount": 5
+       "firstTriangle": 146,
+       "triangleCount": 17
       }
      ]
     }
    ]
   },
   {
-   "id": "chunk-face-egelantiersgracht-3-43-h2",
+   "id": "chunk-face-bloemgracht-1-51-h1",
    "category": "street-survey",
-   "name": "face-egelantiersgracht-3-43-h2",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-egelantiersgracht-3-43-h2.glb?asset=4effaca2d0446367",
-   "sha256": "4effaca2d0446367da24dab524b8ca47ee6c9b0c8df99cfee71692e8afedcdd8",
-   "bytes": 179972,
-   "triangles": 7090,
-   "primitives": 14,
+   "name": "face-bloemgracht-1-51-h1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bloemgracht-1-51-h1.glb?asset=2c1f6f1ddc35ffff",
+   "sha256": "2c1f6f1ddc35ffffabfc7be36ed3f58fbf3bbd41e43467eef5a55b6f88f4a5a5",
+   "bytes": 281712,
+   "triangles": 11305,
+   "primitives": 21,
    "instance": {
     "anchor": [
-     4.883312061925863,
-     52.376256964848004
+     4.88239132281979,
+     52.37493783397012
     ],
-    "northOffsetDegrees": 160.3486,
+    "northOffsetDegrees": 159.2489,
     "mirror": false
    },
    "bounds": {
     "min": [
-     -11.452,
+     -18.191,
      0,
-     -22.394
+     -36.112
     ],
     "max": [
-     12.246,
-     14.695,
-     0.24
+     20.802,
+     17.24,
+     1.308
     ]
    },
-   "height": 14.695,
+   "height": 17.24,
    "suppress": [
-    "NL.IMBAG.Pand.0363100012174965",
-    "NL.IMBAG.Pand.0363100012174781",
-    "NL.IMBAG.Pand.0363100012174968",
-    "NL.IMBAG.Pand.0363100012174977",
-    "NL.IMBAG.Pand.0363100012174976"
+    "NL.IMBAG.Pand.0363100012173342",
+    "NL.IMBAG.Pand.0363100012173043",
+    "NL.IMBAG.Pand.0363100012172863",
+    "NL.IMBAG.Pand.0363100012172779",
+    "NL.IMBAG.Pand.0363100012168708",
+    "NL.IMBAG.Pand.0363100012173045",
+    "NL.IMBAG.Pand.0363100012168749",
+    "NL.IMBAG.Pand.0363100012168758"
    ],
    "replaces": [
-    "ordinary-0363100012174965",
-    "ordinary-0363100012174781",
-    "ordinary-0363100012174968",
-    "ordinary-0363100012174977",
-    "ordinary-0363100012174976"
+    "ordinary-0363100012173342",
+    "ordinary-0363100012173043",
+    "ordinary-0363100012172863",
+    "ordinary-0363100012172779",
+    "ordinary-0363100012168708",
+    "ordinary-0363100012173045",
+    "ordinary-0363100012168749",
+    "ordinary-0363100012168758"
    ],
    "footprint": {
     "type": "MultiPolygon",
@@ -100762,156 +101968,262 @@
      [
       [
        [
-        4.8834702,
-        52.376291
+        4.8826409,
+        52.374996
        ],
        [
-        4.8834073,
-        52.3762772
+        4.8825783,
+        52.3749807
        ],
        [
-        4.8834636,
-        52.3761813
+        4.882577,
+        52.37498
        ],
        [
-        4.8834961,
-        52.3761884
+        4.8826156,
+        52.3749175
        ],
        [
-        4.8835135,
-        52.3761587
-       ],
-       [
-        4.8835273,
-        52.3761617
-       ],
-       [
-        4.8835323,
-        52.3761532
-       ],
-       [
-        4.8835489,
-        52.3761568
+        4.8826802,
+        52.3749324
        ]
       ]
      ],
      [
       [
        [
-        4.883407,
-        52.3762778
+        4.8826213,
+        52.3749083
        ],
        [
-        4.8833454,
-        52.3762644
+        4.882577,
+        52.37498
        ],
        [
-        4.8834145,
-        52.3761466
+        4.8825756,
+        52.3749793
        ],
        [
-        4.8834421,
-        52.3761527
+        4.8825239,
+        52.3749675
        ],
        [
-        4.8834223,
-        52.3761866
+        4.8826102,
+        52.3748279
        ],
        [
-        4.8834561,
-        52.376194
+        4.8826635,
+        52.3748402
+       ],
+       [
+        4.8826365,
+        52.3748837
+       ],
+       [
+        4.8826173,
+        52.3748793
+       ],
+       [
+        4.8826021,
+        52.3749039
        ]
       ]
      ],
      [
       [
        [
-        4.8833456,
-        52.376264
+        4.8825239,
+        52.3749675
        ],
        [
-        4.8832828,
-        52.3762512
+        4.8824722,
+        52.3749556
        ],
        [
-        4.8833323,
-        52.3761668
+        4.8825586,
+        52.3748159
        ],
        [
-        4.8833617,
-        52.3761732
+        4.8826102,
+        52.3748279
+       ]
+      ],
+      [
+       [
+        4.8825562,
+        52.3748493
        ],
        [
-        4.8833858,
-        52.3761322
+        4.8825421,
+        52.374872
        ],
        [
-        4.8834187,
-        52.3761394
+        4.8825669,
+        52.3748778
+       ],
+       [
+        4.8825809,
+        52.3748551
        ]
       ]
      ],
      [
       [
        [
-        4.8832828,
-        52.3762512
+        4.8824722,
+        52.3749556
        ],
        [
-        4.8832183,
-        52.3762367
+        4.8824203,
+        52.374943
        ],
        [
-        4.883278,
-        52.3761348
+        4.8824193,
+        52.3749429
        ],
        [
-        4.8833177,
-        52.3761435
+        4.8825055,
+        52.3748036
        ],
        [
-        4.883327,
-        52.3761277
-       ],
-       [
-        4.8833254,
-        52.3761274
-       ],
-       [
-        4.8833501,
-        52.3760855
-       ],
-       [
-        4.8833133,
-        52.3760774
-       ],
-       [
-        4.8833306,
-        52.3760477
-       ],
-       [
-        4.883394,
-        52.3760616
+        4.8825586,
+        52.3748159
        ]
       ]
      ],
      [
       [
        [
-        4.8832183,
-        52.3762367
+        4.8824193,
+        52.3749429
        ],
        [
-        4.883143,
-        52.3762195
+        4.8824183,
+        52.3749428
        ],
        [
-        4.8832107,
-        52.3761083
+        4.8823247,
+        52.374922
        ],
        [
-        4.8832841,
-        52.3761244
+        4.8825121,
+        52.3746192
+       ],
+       [
+        4.8826062,
+        52.374641
+       ],
+       [
+        4.8825906,
+        52.3746661
+       ],
+       [
+        4.8825121,
+        52.3746479
+       ],
+       [
+        4.8824338,
+        52.3747745
+       ],
+       [
+        4.8824495,
+        52.3747781
+       ],
+       [
+        4.8824312,
+        52.3748078
+       ],
+       [
+        4.8824717,
+        52.3748172
+       ],
+       [
+        4.8824931,
+        52.3747824
+       ],
+       [
+        4.8825154,
+        52.3747876
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.882325,
+        52.3749215
+       ],
+       [
+        4.88226,
+        52.3749093
+       ],
+       [
+        4.8823503,
+        52.3747633
+       ],
+       [
+        4.8824138,
+        52.374778
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.88226,
+        52.3749093
+       ],
+       [
+        4.8821805,
+        52.3748912
+       ],
+       [
+        4.8822932,
+        52.3747092
+       ],
+       [
+        4.8823724,
+        52.3747276
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8821805,
+        52.3748912
+       ],
+       [
+        4.882106,
+        52.374873
+       ],
+       [
+        4.8821049,
+        52.3748729
+       ],
+       [
+        4.8821755,
+        52.3747588
+       ],
+       [
+        4.8822124,
+        52.3747673
+       ],
+       [
+        4.8822225,
+        52.374751
+       ],
+       [
+        4.8822179,
+        52.3747499
+       ],
+       [
+        4.8822466,
+        52.3747035
+       ],
+       [
+        4.8822904,
+        52.3747136
        ]
       ]
      ]
@@ -100919,1118 +102231,530 @@
    },
    "pands": [
     {
-     "recipeId": "egelantiersgracht-174965",
-     "pandId": "0363100012174965",
-     "buildingId": "NL.IMBAG.Pand.0363100012174965",
-     "address": "Egelantiersgracht 19",
+     "recipeId": "bloemgracht-173342",
+     "pandId": "0363100012173342",
+     "buildingId": "NL.IMBAG.Pand.0363100012173342",
+     "address": "Bloemgracht 7",
      "frontage": {
-      "x0": -11.415,
-      "x1": -6.866,
-      "widthM": 4.549
+      "x0": -18.188,
+      "x1": -13.483,
+      "widthM": 4.705
      },
      "bounds": {
       "min": [
-       -11.452,
+       -18.191,
        0,
-       -15.907
+       -7.56
       ],
       "max": [
-       -6.866,
-       13.577,
-       0.156
+       -13.481,
+       14.622,
+       0.291
       ]
      },
-     "triangles": 1175,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 78
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 736
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 152
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 11
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 0,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 0,
-       "triangleCount": 14
-      }
-     ]
-    },
-    {
-     "recipeId": "egelantiersgracht-174781",
-     "pandId": "0363100012174781",
-     "buildingId": "NL.IMBAG.Pand.0363100012174781",
-     "address": "Egelantiersgracht 21",
-     "frontage": {
-      "x0": -6.866,
-      "x1": -2.417,
-      "widthM": 4.449
-     },
-     "bounds": {
-      "min": [
-       -6.891,
-       0,
-       -13.904
-      ],
-      "max": [
-       -2.417,
-       12.426,
-       0.158
-      ]
-     },
-     "triangles": 1734,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 176
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 156,
-       "triangleCount": 120
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 736,
-       "triangleCount": 1288
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 152,
-       "triangleCount": 126
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 11,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 14,
-       "triangleCount": 8
-      }
-     ]
-    },
-    {
-     "recipeId": "egelantiersgracht-174968",
-     "pandId": "0363100012174968",
-     "buildingId": "NL.IMBAG.Pand.0363100012174968",
-     "address": "Egelantiersgracht 23",
-     "frontage": {
-      "x0": -2.417,
-      "x1": 2.094,
-      "widthM": 4.511
-     },
-     "bounds": {
-      "min": [
-       -2.451,
-       0,
-       -14.797
-      ],
-      "max": [
-       2.094,
-       12.426,
-       0.191
-      ]
-     },
-     "triangles": 1721,
+     "triangles": 1050,
      "ranges": [
       {
        "primitive": 3,
        "firstTriangle": 0,
-       "triangleCount": 181
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 276,
-       "triangleCount": 120
+       "triangleCount": 81
       },
       {
        "primitive": 7,
-       "firstTriangle": 2024,
-       "triangleCount": 1272
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 620
       },
       {
        "primitive": 9,
-       "firstTriangle": 24,
+       "firstTriangle": 0,
        "triangleCount": 12
       },
       {
        "primitive": 10,
-       "firstTriangle": 278,
-       "triangleCount": 122
+       "firstTriangle": 0,
+       "triangleCount": 12
       },
       {
        "primitive": 11,
-       "firstTriangle": 15,
-       "triangleCount": 6
+       "firstTriangle": 0,
+       "triangleCount": 126
       },
       {
-       "primitive": 13,
-       "firstTriangle": 22,
-       "triangleCount": 8
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 10
       }
      ]
     },
     {
-     "recipeId": "egelantiersgracht-174977",
-     "pandId": "0363100012174977",
-     "buildingId": "NL.IMBAG.Pand.0363100012174977",
-     "address": "Egelantiersgracht 25",
+     "recipeId": "bloemgracht-173043",
+     "pandId": "0363100012173043",
+     "buildingId": "NL.IMBAG.Pand.0363100012173043",
+     "address": "Bloemgracht 9",
      "frontage": {
-      "x0": 2.094,
-      "x1": 6.774,
-      "widthM": 4.68
+      "x0": -13.483,
+      "x1": -9.61,
+      "widthM": 3.873
      },
      "bounds": {
       "min": [
-       2.039,
+       -13.496,
        0,
-       -22.394
+       -16.751
       ],
       "max": [
-       6.774,
-       12.17,
-       0.24
+       -9.61,
+       11.554,
+       0.077
       ]
      },
-     "triangles": 1164,
+     "triangles": 1802,
      "ranges": [
       {
        "primitive": 0,
        "firstTriangle": 0,
-       "triangleCount": 62
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 396,
-       "triangleCount": 156
+       "triangleCount": 230
       },
       {
        "primitive": 7,
-       "firstTriangle": 3296,
-       "triangleCount": 752
+       "firstTriangle": 172,
+       "triangleCount": 120
       },
       {
        "primitive": 8,
+       "firstTriangle": 620,
+       "triangleCount": 1296
+      },
+      {
+       "primitive": 10,
        "firstTriangle": 12,
        "triangleCount": 12
       },
       {
-       "primitive": 9,
-       "firstTriangle": 36,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 400,
-       "triangleCount": 156
-      },
-      {
        "primitive": 11,
-       "firstTriangle": 21,
-       "triangleCount": 11
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 30,
-       "triangleCount": 3
-      }
-     ]
-    },
-    {
-     "recipeId": "egelantiersgracht-174976",
-     "pandId": "0363100012174976",
-     "buildingId": "NL.IMBAG.Pand.0363100012174976",
-     "address": "Egelantiersgracht 27C",
-     "frontage": {
-      "x0": 6.774,
-      "x1": 12.244,
-      "widthM": 5.469
-     },
-     "bounds": {
-      "min": [
-       6.743,
-       0,
-       -13.306
-      ],
-      "max": [
-       12.246,
-       14.695,
-       0.19
-      ]
-     },
-     "triangles": 1296,
-     "ranges": [
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 56
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 120
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 552,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 4048,
-       "triangleCount": 768
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 48,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 556,
-       "triangleCount": 160
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 32,
-       "triangleCount": 4
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 4,
-       "triangleCount": 5
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 33,
-       "triangleCount": 3
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "chunk-face-bloemgracht-90-128-h1",
-   "category": "street-survey",
-   "name": "face-bloemgracht-90-128-h1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bloemgracht-90-128-h1.glb?asset=5d0d381edc33556b",
-   "sha256": "5d0d381edc33556b4bc220ce09314c021e7333620e34ea00672db2f688a30192",
-   "bytes": 181144,
-   "triangles": 7351,
-   "primitives": 16,
-   "instance": {
-    "anchor": [
-     4.879567412003049,
-     52.37456375659175
-    ],
-    "northOffsetDegrees": 339.59,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -15.707,
-     0,
-     -31.919
-    ],
-    "max": [
-     12.332,
-     19.393,
-     1.083
-    ]
-   },
-   "height": 19.393,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012168075",
-    "NL.IMBAG.Pand.0363100012168080",
-    "NL.IMBAG.Pand.0363100012174186",
-    "NL.IMBAG.Pand.0363100012168077",
-    "NL.IMBAG.Pand.0363100012168076"
-   ],
-   "replaces": [
-    "ordinary-0363100012168075",
-    "ordinary-0363100012168080",
-    "ordinary-0363100012174186",
-    "ordinary-0363100012168077",
-    "ordinary-0363100012168076"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8792923,
-        52.3748069
-       ],
-       [
-        4.8791884,
-        52.374783
-       ],
-       [
-        4.8792878,
-        52.3746227
-       ],
-       [
-        4.8793087,
-        52.3746275
-       ],
-       [
-        4.8793387,
-        52.3745764
-       ],
-       [
-        4.8793559,
-        52.3745803
-       ],
-       [
-        4.8793894,
-        52.3745234
-       ],
-       [
-        4.8794505,
-        52.3745375
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.879481,
-        52.3746606
-       ],
-       [
-        4.8794347,
-        52.37465
-       ],
-       [
-        4.8794063,
-        52.3746984
-       ],
-       [
-        4.8794269,
-        52.3747032
-       ],
-       [
-        4.87939,
-        52.3747662
-       ],
-       [
-        4.8793251,
-        52.3747512
-       ],
-       [
-        4.8794505,
-        52.3745375
-       ],
-       [
-        4.8795437,
-        52.374559
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8795286,
-        52.374708
-       ],
-       [
-        4.8794611,
-        52.3746928
-       ],
-       [
-        4.8795437,
-        52.374559
-       ],
-       [
-        4.8795475,
-        52.3745591
-       ],
-       [
-        4.8796081,
-        52.3745727
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8795816,
-        52.3747422
-       ],
-       [
-        4.8795175,
-        52.374727
-       ],
-       [
-        4.8796081,
-        52.3745727
-       ],
-       [
-        4.8796727,
-        52.374587
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8796467,
-        52.3747515
-       ],
-       [
-        4.8795842,
-        52.3747377
-       ],
-       [
-        4.8796727,
-        52.374587
-       ],
-       [
-        4.8797346,
-        52.3746017
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "bloemgracht-168075",
-     "pandId": "0363100012168075",
-     "buildingId": "NL.IMBAG.Pand.0363100012168075",
-     "address": "Bloemgracht 126",
-     "frontage": {
-      "x0": -12.93,
-      "x1": -8.479,
-      "widthM": 4.451
-     },
-     "bounds": {
-      "min": [
-       -15.707,
-       0,
-       -31.919
-      ],
-      "max": [
-       -8.148,
-       15.846,
-       0.24
-      ]
-     },
-     "triangles": 1173,
-     "ranges": [
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 90
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 728
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 0,
-       "triangleCount": 12
+       "firstTriangle": 126,
+       "triangleCount": 128
       },
       {
        "primitive": 12,
        "firstTriangle": 0,
-       "triangleCount": 150
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 0,
-       "triangleCount": 14
+       "triangleCount": 7
       },
       {
        "primitive": 14,
        "firstTriangle": 0,
-       "triangleCount": 6
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 0,
-       "triangleCount": 5
-      }
-     ]
-    },
-    {
-     "recipeId": "bloemgracht-168080",
-     "pandId": "0363100012168080",
-     "buildingId": "NL.IMBAG.Pand.0363100012168080",
-     "address": "Bloemgracht 124B",
-     "frontage": {
-      "x0": -8.479,
-      "x1": -1.696,
-      "widthM": 6.783
-     },
-     "bounds": {
-      "min": [
-       -8.479,
-       0,
-       -25.356
-      ],
-      "max": [
-       -1.696,
-       19.393,
-       1.083
-      ]
-     },
-     "triangles": 2159,
-     "ranges": [
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 219
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 156,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 728,
-       "triangleCount": 1316
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 9,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 10,
-       "firstTriangle": 0,
-       "triangleCount": 228
-      },
-      {
-       "primitive": 11,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 150,
-       "triangleCount": 176
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 14,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 5,
-       "triangleCount": 16
-      }
-     ]
-    },
-    {
-     "recipeId": "bloemgracht-174186",
-     "pandId": "0363100012174186",
-     "buildingId": "NL.IMBAG.Pand.0363100012174186",
-     "address": "Bloemgracht 122A",
-     "frontage": {
-      "x0": -1.696,
-      "x1": 2.946,
-      "widthM": 4.642
-     },
-     "bounds": {
-      "min": [
-       -1.792,
-       0,
-       -16.023
-      ],
-      "max": [
-       3.11,
-       14.6,
-       0.357
-      ]
-     },
-     "triangles": 1147,
-     "ranges": [
-      {
-       "primitive": 1,
-       "firstTriangle": 0,
-       "triangleCount": 70
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 312,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 2044,
-       "triangleCount": 720
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 326,
-       "triangleCount": 148
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 26,
-       "triangleCount": 20
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 21,
        "triangleCount": 9
       }
      ]
     },
     {
-     "recipeId": "bloemgracht-168077",
-     "pandId": "0363100012168077",
-     "buildingId": "NL.IMBAG.Pand.0363100012168077",
-     "address": "Bloemgracht 120",
+     "recipeId": "bloemgracht-172863",
+     "pandId": "0363100012172863",
+     "buildingId": "NL.IMBAG.Pand.0363100012172863",
+     "address": "Bloemgracht 11",
      "frontage": {
-      "x0": 2.946,
-      "x1": 7.621,
-      "widthM": 4.675
+      "x0": -9.61,
+      "x1": -5.851,
+      "widthM": 3.759
      },
      "bounds": {
       "min": [
-       2.946,
+       -9.621,
        0,
-       -18.314
+       -16.754
       ],
       "max": [
-       7.812,
-       14.71,
-       0.489
+       -5.851,
+       11.81,
+       0.081
       ]
      },
-     "triangles": 1767,
-     "ranges": [
-      {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 119
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 468,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 2764,
-       "triangleCount": 1096
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 24,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 36,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 474,
-       "triangleCount": 332
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 46,
-       "triangleCount": 34
-      },
-      {
-       "primitive": 15,
-       "firstTriangle": 30,
-       "triangleCount": 6
-      }
-     ]
-    },
-    {
-     "recipeId": "bloemgracht-168076",
-     "pandId": "0363100012168076",
-     "buildingId": "NL.IMBAG.Pand.0363100012168076",
-     "address": "Bloemgracht 118",
-     "frontage": {
-      "x0": 7.621,
-      "x1": 12.145,
-      "widthM": 4.524
-     },
-     "bounds": {
-      "min": [
-       7.621,
-       0,
-       -17.786
-      ],
-      "max": [
-       12.332,
-       14.7,
-       0.315
-      ]
-     },
-     "triangles": 1105,
-     "ranges": [
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 46
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 624,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 3860,
-       "triangleCount": 720
-      },
-      {
-       "primitive": 7,
-       "firstTriangle": 36,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 8,
-       "firstTriangle": 48,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 12,
-       "firstTriangle": 806,
-       "triangleCount": 148
-      },
-      {
-       "primitive": 13,
-       "firstTriangle": 80,
-       "triangleCount": 11
-      }
-     ]
-    }
-   ]
-  },
-  {
-   "id": "chunk-face-bloemgracht-4-10-h1",
-   "category": "street-survey",
-   "name": "face-bloemgracht-4-10-h1",
-   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-bloemgracht-4-10-h1.glb?asset=d874ba7af1c4ba67",
-   "sha256": "d874ba7af1c4ba67c432e25581453fd351f4a8a41164769d2e86131815052a61",
-   "bytes": 96576,
-   "triangles": 3633,
-   "primitives": 9,
-   "instance": {
-    "anchor": [
-     4.883147512012712,
-     52.37537688997206
-    ],
-    "northOffsetDegrees": 339.5783,
-    "mirror": false
-   },
-   "bounds": {
-    "min": [
-     -5.316,
-     0,
-     -13.107
-    ],
-    "max": [
-     5.542,
-     16.735,
-     0.206
-    ]
-   },
-   "height": 16.735,
-   "suppress": [
-    "NL.IMBAG.Pand.0363100012174495",
-    "NL.IMBAG.Pand.0363100012174496"
-   ],
-   "replaces": [
-    "ordinary-0363100012174495",
-    "ordinary-0363100012174496"
-   ],
-   "footprint": {
-    "type": "MultiPolygon",
-    "coordinates": [
-     [
-      [
-       [
-        4.8830919,
-        52.3754699
-       ],
-       [
-        4.8830606,
-        52.375463
-       ],
-       [
-        4.8830506,
-        52.37548
-       ],
-       [
-        4.8830092,
-        52.3754708
-       ],
-       [
-        4.8830742,
-        52.3753605
-       ],
-       [
-        4.883121,
-        52.3753708
-       ],
-       [
-        4.8831205,
-        52.3753717
-       ],
-       [
-        4.8831375,
-        52.3753754
-       ],
-       [
-        4.883138,
-        52.3753746
-       ],
-       [
-        4.8831469,
-        52.3753765
-       ]
-      ]
-     ],
-     [
-      [
-       [
-        4.8831575,
-        52.3755036
-       ],
-       [
-        4.8830818,
-        52.3754869
-       ],
-       [
-        4.8831469,
-        52.3753765
-       ],
-       [
-        4.8831977,
-        52.3753884
-       ],
-       [
-        4.8831962,
-        52.3753906
-       ],
-       [
-        4.8832148,
-        52.375395
-       ],
-       [
-        4.8832162,
-        52.3753927
-       ],
-       [
-        4.883222,
-        52.3753941
-       ]
-      ]
-     ]
-    ]
-   },
-   "pands": [
-    {
-     "recipeId": "bloemgracht-174495",
-     "pandId": "0363100012174495",
-     "buildingId": "NL.IMBAG.Pand.0363100012174495",
-     "address": "Bloemgracht 8",
-     "frontage": {
-      "x0": -5.315,
-      "x1": -0.053,
-      "widthM": 5.262
-     },
-     "bounds": {
-      "min": [
-       -5.316,
-       0,
-       -13.107
-      ],
-      "max": [
-       0.05,
-       16.735,
-       0.155
-      ]
-     },
-     "triangles": 2154,
+     "triangles": 1091,
      "ranges": [
       {
        "primitive": 1,
        "firstTriangle": 0,
-       "triangleCount": 236
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 0,
-       "triangleCount": 156
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 0,
-       "triangleCount": 1572
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 6,
-       "firstTriangle": 0,
-       "triangleCount": 164
+       "triangleCount": 99
       },
       {
        "primitive": 7,
-       "firstTriangle": 0,
-       "triangleCount": 1
+       "firstTriangle": 292,
+       "triangleCount": 172
       },
       {
        "primitive": 8,
+       "firstTriangle": 1916,
+       "triangleCount": 628
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 254,
+       "triangleCount": 128
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 17,
+       "triangleCount": 17
+      },
+      {
+       "primitive": 17,
        "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 10,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "bloemgracht-172779",
+     "pandId": "0363100012172779",
+     "buildingId": "NL.IMBAG.Pand.0363100012172779",
+     "address": "Bloemgracht 13",
+     "frontage": {
+      "x0": -5.851,
+      "x1": -1.982,
+      "widthM": 3.869
+     },
+     "bounds": {
+      "min": [
+       -5.863,
+       0,
+       -16.757
+      ],
+      "max": [
+       -1.982,
+       12.337,
+       0.979
+      ]
+     },
+     "triangles": 1635,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 157
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 464,
+       "triangleCount": 120
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2544,
+       "triangleCount": 1184
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 36,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 382,
+       "triangleCount": 130
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 7,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 9,
        "triangleCount": 13
       }
      ]
     },
     {
-     "recipeId": "bloemgracht-174496",
-     "pandId": "0363100012174496",
-     "buildingId": "NL.IMBAG.Pand.0363100012174496",
-     "address": "Bloemgracht 6D",
+     "recipeId": "bloemgracht-168708",
+     "pandId": "0363100012168708",
+     "buildingId": "NL.IMBAG.Pand.0363100012168708",
+     "address": "Bloemgracht 15C",
      "frontage": {
-      "x0": -0.053,
-      "x1": 5.422,
-      "widthM": 5.475
+      "x0": -1.982,
+      "x1": 4.868,
+      "widthM": 6.85
      },
      "bounds": {
       "min": [
-       -0.053,
+       -2.009,
        0,
-       -13.033
+       -36.112
       ],
       "max": [
-       5.542,
-       16.57,
-       0.206
+       4.868,
+       17.24,
+       0.189
       ]
      },
-     "triangles": 1479,
+     "triangles": 1433,
      "ranges": [
       {
-       "primitive": 0,
-       "firstTriangle": 0,
-       "triangleCount": 95
-      },
-      {
-       "primitive": 2,
-       "firstTriangle": 156,
-       "triangleCount": 192
-      },
-      {
-       "primitive": 3,
-       "firstTriangle": 1572,
-       "triangleCount": 952
-      },
-      {
-       "primitive": 4,
-       "firstTriangle": 0,
-       "triangleCount": 12
-      },
-      {
-       "primitive": 5,
-       "firstTriangle": 12,
-       "triangleCount": 12
-      },
-      {
        "primitive": 6,
-       "firstTriangle": 164,
-       "triangleCount": 200
+       "firstTriangle": 0,
+       "triangleCount": 107
       },
       {
        "primitive": 7,
-       "firstTriangle": 1,
-       "triangleCount": 13
+       "firstTriangle": 584,
+       "triangleCount": 192
       },
       {
        "primitive": 8,
-       "firstTriangle": 13,
-       "triangleCount": 3
+       "firstTriangle": 3728,
+       "triangleCount": 896
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 512,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 22
+      }
+     ]
+    },
+    {
+     "recipeId": "bloemgracht-173045",
+     "pandId": "0363100012173045",
+     "buildingId": "NL.IMBAG.Pand.0363100012173045",
+     "address": "Bloemgracht 17",
+     "frontage": {
+      "x0": 4.868,
+      "x1": 9.489,
+      "widthM": 4.621
+     },
+     "bounds": {
+      "min": [
+       4.856,
+       0,
+       -17.22
+      ],
+      "max": [
+       9.489,
+       14.39,
+       0.368
+      ]
+     },
+     "triangles": 1161,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 37
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 776,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4624,
+       "triangleCount": 768
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 698,
+       "triangleCount": 160
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 6,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 22,
+       "triangleCount": 4
+      }
+     ]
+    },
+    {
+     "recipeId": "bloemgracht-168749",
+     "pandId": "0363100012168749",
+     "buildingId": "NL.IMBAG.Pand.0363100012168749",
+     "address": "Bloemgracht 19",
+     "frontage": {
+      "x0": 9.489,
+      "x1": 15.262,
+      "widthM": 5.773
+     },
+     "bounds": {
+      "min": [
+       9.473,
+       0,
+       -21.47
+      ],
+      "max": [
+       15.262,
+       17.03,
+       1.308
+      ]
+     },
+     "triangles": 2006,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 139
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 932,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 5392,
+       "triangleCount": 1500
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 84,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 858,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 14,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 22,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "bloemgracht-168758",
+     "pandId": "0363100012168758",
+     "buildingId": "NL.IMBAG.Pand.0363100012168758",
+     "address": "Bloemgracht 21",
+     "frontage": {
+      "x0": 15.262,
+      "x1": 20.802,
+      "widthM": 5.54
+     },
+     "bounds": {
+      "min": [
+       15.246,
+       0,
+       -20.946
+      ],
+      "max": [
+       20.802,
+       12.404,
+       0.397
+      ]
+     },
+     "triangles": 1127,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 230,
+       "triangleCount": 110
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 1088,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 6892,
+       "triangleCount": 644
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 108,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 1034,
+       "triangleCount": 132
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 18,
+       "triangleCount": 20
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 29,
+       "triangleCount": 24
       }
      ]
     }

@@ -1,0 +1,46 @@
+{
+ "street": "Egelantiersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T21:27:00.711Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174976",
+   "addresses": [
+    "Egelantiersgracht 27C",
+    "Egelantiersgracht 27D",
+    "Egelantiersgracht 27B",
+    "Egelantiersgracht 27A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Egelantiersgracht 27C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000628973"
+    },
+    {
+     "address": "Egelantiersgracht 27D",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000628974"
+    },
+    {
+     "address": "Egelantiersgracht 27B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000628972"
+    },
+    {
+     "address": "Egelantiersgracht 27A",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000628971"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

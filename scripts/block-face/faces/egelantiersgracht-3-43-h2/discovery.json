@@ -4,9 +4,7 @@
  "members": [
   "0363100012174965",
   "0363100012174781",
-  "0363100012174968",
-  "0363100012174977",
-  "0363100012174976"
+  "0363100012174968"
  ],
  "ends": [
   {
@@ -15,7 +13,7 @@
   },
   {
    "side": "right",
-   "reason": "run of egelantiersgracht-3-43: 174975 held (auto-place.json)"
+   "reason": "run of egelantiersgracht-3-43: 174977 held (auto-place.json)"
   }
  ],
  "rejected": [
@@ -2426,26 +2424,6 @@
    "roofMaxM": 10.89,
    "storeys3dbag": 3,
    "builtYear": 1903,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012174977",
-   "alongM": 61.94,
-   "widthM": 4.68,
-   "eavesM": 10.69,
-   "roofMaxM": 10.73,
-   "storeys3dbag": 3,
-   "builtYear": 1871,
-   "uncertainty": []
-  },
-  {
-   "pandId": "0363100012174976",
-   "alongM": 67.01,
-   "widthM": 5.47,
-   "eavesM": 12.68,
-   "roofMaxM": 14.82,
-   "storeys3dbag": 4,
-   "builtYear": 1981,
    "uncertainty": []
   }
  ],
