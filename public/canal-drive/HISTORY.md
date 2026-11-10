@@ -14,6 +14,7 @@
   - 1,033 suppressed pands have 1,483 street walls of at least 4 m. Of these, 219 are blank at 25 % or 50 % height (4,072 m), and 48 more are blank only at 80 % ("stops short", which may be setbacks).
   - Landmarks are placement-checked by footprint IoU (191 of 332 verified, median 0.834). 64 of 145 blank landmark walls sit on verified models.
   - The false-positive rate is unmeasured: the 11 m chase frames are aerial and unreadable. `house:preview --wall <edge|deg>` frames a chosen wall.
+
 **Storefront gate: shopfronts only where a shop is (2026-11-10, lane/storefront-gate-20261110 at 8e1752801, sonnet).** User: 'a lot of generic storefronts on the first floor of many buildings that aren't modeled that don't need stores (industrial/warehouses)'.
 - **Cause:** busy-stretch inference in `build-shopfronts.ts` (5+ businesses within 40 m gives a pand its neighbour's shop) checked no use. It made up 44 % of shop ground floors.
 - **Fix:** `shopGate.ts` now requires an OSM POI on the pand or BAG winkel/bijeenkomstfunctie. The random 30 % `hashShop` fallback is removed, and an undecorated feature draws no shop, so no random shops flicker before shopfronts.json loads. The extract was rebuilt from a fresh Overpass pull, keeping 76 photographed shops whose node has gone where BAG still lists retail or horeca.
