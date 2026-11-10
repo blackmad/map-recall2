@@ -105,3 +105,15 @@ HELD = {'0363100012182296': 'recipe compile: "Grouped frontage is not a straight
 R.setdefault('_held', {}).update({p: {'why': w, 'reading': R.pop(p)} for p, w in HELD.items() if p in R})
 json.dump(R, open(P, 'w'), indent=1, ensure_ascii=False)
 print('row 2', len([k for k in R if not k.startswith('_')]))
+# ---- pass 3 (install gates) ----
+R['0363100012181808']['design']['fronts'][0]['storeyHeights'] = [1.3, 1.0, 1.0, 1.0, 1.0]
+R['0363100012181808']['why']['fronts/0/storeyHeights'] = 'cafe storey about 3.2 m, four upper storeys about 2.5 m'
+for p in ('0363100012181818', '0363100012182302'):
+    f = R[p]['design']['fronts'][0]; f.pop('dormers', None); f.pop('dormerStyle', None); f['hoist'] = False
+    R[p]['why'].pop('fronts/0/dormers', None)
+    R[p]['limits'].append({'component': 'dormer', 'what': 'the hoist dormer with a pointed head over the cornice (dropped: 4-7 m of open edge in the install gate)'})
+json.dump(R, open(P, 'w'), indent=1, ensure_ascii=False)
+# ---- pass 4: the shop sign leaves 3.3 m of open edge in install (kit bug, sign panel); drop it, record the limit ----
+R['0363100012181818']['design']['fronts'][0]['shopfront'].pop('sign', None)
+R['0363100012181818']['limits'].append({'component': 'shopfront sign', 'what': 'the gold MASSAGE lettering: a shopfront sign on this front leaves 21 open edges (3.3 m) in the install gate'})
+json.dump(R, open(P, 'w'), indent=1, ensure_ascii=False)

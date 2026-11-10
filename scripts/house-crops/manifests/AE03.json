@@ -78,6 +78,19 @@
    "pands": 0,
    "rateMs": 500,
    "endedAt": "2026-11-10T21:20:28.429Z"
+  },
+  {
+   "startedAt": "2026-11-10T21:35:54.303Z",
+   "wallSeconds": 24,
+   "requests": 4,
+   "bytes": 11453068,
+   "retries": 0,
+   "status429": 0,
+   "status5xx": 0,
+   "failures": 0,
+   "pands": 3,
+   "rateMs": 500,
+   "endedAt": "2026-11-10T21:36:18.588Z"
   }
  ],
  "pands": {
@@ -542,6 +555,105 @@
    "ppm": 50,
    "widthM": 5.79,
    "attempts": 2
+  },
+  "0363100012182844": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.107,
+    "foliagePlain": 0.107,
+    "wbApplied": false,
+    "washedOut": 0.089,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.202,
+    "obliquity": 49,
+    "cameraDistance": 12.4,
+    "rayBlocked": false,
+    "wallWidthM": 6.81,
+    "heightCover": 1,
+    "edgeDensity": 0.089,
+    "seamStep": 49.3,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012182844",
+   "panoIds": [
+    "b_20250108_1041_Track23_Sphere_00114"
+   ],
+   "date": "2025-01-08",
+   "ppm": 50,
+   "widthM": 6.81,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012177902": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.046,
+    "foliagePlain": 0.175,
+    "wbApplied": true,
+    "washedOut": 0.169,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.029,
+    "obliquity": 1,
+    "cameraDistance": 16.2,
+    "rayBlocked": false,
+    "wallWidthM": 7.59,
+    "heightCover": 1,
+    "edgeDensity": 0.241,
+    "seamStep": 112.4,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012177902",
+   "panoIds": [
+    "TMX7316010203-002546_pano_0002_001103"
+   ],
+   "date": "2022-04-26",
+   "ppm": 50,
+   "widthM": 7.59,
+   "attempts": 2,
+   "chosenYear": 2022,
+   "yearsTried": 2
+  },
+  "0363100012171858": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.032,
+    "foliagePlain": 0.027,
+    "wbApplied": true,
+    "washedOut": 0.005,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.209,
+    "obliquity": 20.3,
+    "cameraDistance": 5.8,
+    "rayBlocked": false,
+    "wallWidthM": 4.9,
+    "heightCover": 1,
+    "edgeDensity": 0.072,
+    "seamStep": 66.3,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012171858",
+   "panoIds": [
+    "TMX7315120208-000073_pano_0005_000105"
+   ],
+   "date": "2016-06-09",
+   "ppm": 50,
+   "widthM": 4.9,
+   "attempts": 1,
+   "chosenYear": 2016,
+   "yearsTried": 1
   }
  }
 }

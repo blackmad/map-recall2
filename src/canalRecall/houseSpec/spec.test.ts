@@ -106,3 +106,14 @@ test('toRecipe round-trips a complete spec to an intent validateIntent accepts',
   // Incomplete: a register-only spec is the generic route.
   assert.equal(withRoute(part({ 'fronts/0/gable': 'step' }, prov('monument-text', 0.8, null, 'rce:3856'))).route, 'generic');
 });
+
+test('intentSources: receipts whose refs share the first 60 characters become one source (belt-nieuwmarkt #363)', () => {
+  const spec = JSON.parse(readFileSync('scripts/house-specs/belt-nieuwmarkt-20261110/specs/0363100012182850.json', 'utf8')) as HouseSpec;
+  const refs = new Set(Object.values(spec.provenance).map(p => p.ref));
+  assert.ok(refs.size > 1, 'the spec carries one receipt note per field');
+  const intent = toRecipe(spec)!;
+  assert.ok(intent, 'the full design is recipe route');
+  const ids = intent.sources.map(s => s.id);
+  assert.equal(new Set(ids).size, ids.length, 'source ids are unique (the compiler refuses duplicate observations)');
+  assert.equal(ids.length, 1);
+});

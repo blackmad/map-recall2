@@ -8,13 +8,8 @@
     "id": "front0",
     "street": "Nieuwmarkt",
     "gable": "cornice",
-    "storeys": 4,
-    "bays": [
-     2,
-     2,
-     2,
-     1
-    ],
+    "storeys": 3,
+    "bays": 2,
     "doorBay": 0,
     "tallGround": true,
     "basement": "none",
@@ -74,7 +69,7 @@
   "fronts/0/storeys": {
    "source": "author",
    "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182855/front.jpg (pano None, 2025-01-08)",
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182855/front.jpg (pano None, 2025-01-08): three storeys under the cornice: the 3DBAG eaves (9.45 m) leave no room for the small top-storey light as a storey",
    "at": "2025-01-08"
   },
   "fronts/0/bays": {
@@ -203,5 +198,11 @@
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182855/front.jpg (pano None, 2025-01-08)",
    "at": "2025-01-08"
   }
- }
+ },
+ "schemaLimits": [
+  {
+   "component": "storeys",
+   "what": "a low fourth storey with one centred light under the cornice; 3DBAG eaves 9.45 m against about 11 m on the crop"
+  }
+ ]
 }

@@ -20,10 +20,10 @@
      "windows": "cross",
      "windowSurround": "sill",
      "storeyHeights": [
-      1.9,
+      1.75,
       1.0,
       1.0,
-      0.93
+      1.0
      ],
      "shopfront": {
       "colour": "#e6e2d8",
@@ -62,7 +62,7 @@
    "fronts/0/bays": "three window axes on every upper storey",
    "fronts/0/cornice": "a tall plain white frieze (about 1.5 m) under the cornice",
    "fronts/0/windows": "white frames, dark sashes with a mullion and a transom: cross windows",
-   "fronts/0/storeyHeights": "ground storey 5.1 m (pui with transom row), uppers 2.7, 2.7, 2.5 m on the crop",
+   "fronts/0/storeyHeights": "ground storey 4.5 m with its transom row (the install gate holds the top storey >= 2.3 m under the 3DBAG eaves)",
    "palette/brick": "bare orange-red brick; the crop (warm low sun) reads #cc9867, drawn a step darker for the cast"
   },
   "limits": [
@@ -179,12 +179,6 @@
      "windowHeights": "diminishing"
     }
    ],
-   "roof": {
-    "material": "bitumen",
-    "source": "front",
-    "form": "flat",
-    "evidence": "no roof shows over the cornice on the crop; the 3DBAG roof drew a pyramid over it"
-   },
    "palette": {
     "brick": "#46494b",
     "frame": "white",
@@ -199,7 +193,12 @@
    "palette/brick": "dark grey painted brick, white frames and cornice",
    "fronts/0/cornice": "deep white entablature (frieze under a cornice on consoles): drawn as the frieze cornice"
   },
-  "limits": []
+  "limits": [
+   {
+    "component": "roof",
+    "what": "recipe route held: the compile reads 3DBAG eaves under 6 m for a four-storey 13 m front; staged as a generic spec"
+   }
+  ]
  },
  "0363100012182849": {
   "address": "Nieuwmarkt 12",
@@ -490,7 +489,7 @@
      "windows": "sash-small-panes",
      "bands": "speklagen",
      "speklagen": {
-      "spacing": 8,
+      "spacing": 12,
       "courses": 2
      },
      "windowHead": {
@@ -549,6 +548,10 @@
    {
     "component": "gable",
     "what": "the light in the valley between the two gables (over axis 2) and the stacked top lights of each gable"
+   },
+   {
+    "component": "palette",
+    "what": "the speklagen are closer (about every 8 courses) than drawn (12): the triangle budget"
    }
   ]
  },
@@ -637,13 +640,8 @@
      "id": "front0",
      "street": "Nieuwmarkt",
      "gable": "cornice",
-     "storeys": 4,
-     "bays": [
-      2,
-      2,
-      2,
-      1
-     ],
+     "storeys": 3,
+     "bays": 2,
      "doorBay": 0,
      "tallGround": true,
      "basement": "none",
@@ -685,9 +683,15 @@
    "fronts/0/gable": "plain white cornice with a raised centre block",
    "fronts/0/bays": "two axes, one centred light in the top storey",
    "palette/brick": "red brick, crop reading #d6894e cast-corrected and taken a step toward the row",
-   "fronts/0/cornice": "deep white entablature (frieze under a cornice on consoles): drawn as the frieze cornice"
+   "fronts/0/cornice": "deep white entablature (frieze under a cornice on consoles): drawn as the frieze cornice",
+   "fronts/0/storeys": "three storeys under the cornice: the 3DBAG eaves (9.45 m) leave no room for the small top-storey light as a storey"
   },
-  "limits": []
+  "limits": [
+   {
+    "component": "storeys",
+    "what": "a low fourth storey with one centred light under the cornice; 3DBAG eaves 9.45 m against about 11 m on the crop"
+   }
+  ]
  },
  "0363100012182854": {
   "address": "Nieuwmarkt 28",
@@ -861,15 +865,6 @@
      "hoist": false,
      "windows": "cross",
      "windowSurround": "sill",
-     "windowHead": {
-      "kind": "segmental",
-      "rise": 0.06,
-      "archRing": {
-       "colour": "stone",
-       "style": "springers",
-       "keystone": true
-      }
-     },
      "shopfront": {
       "colour": "#3a2f28",
       "fascia": false,
@@ -897,13 +892,16 @@
   "why": {
    "fronts/0/gable": "left house: neck gable with white scrolls; the register says cornice (3859/3860), the photo shows two necks",
    "fronts/1/gable": "right house: neck gable under a pointed cap, white scroll feet",
-   "fronts/1/windowHead": "white springer blocks and keystones over every window of the right house",
    "palette/brick": "red-brown brick, crop reading #cb8a4e cast-corrected"
   },
   "limits": [
    {
     "component": "gable ornament",
     "what": "white carved scrolls up both necks"
+   },
+   {
+    "component": "window head",
+    "what": "white springer blocks and keystones over the right house windows (dropped: the two fronts exceed the 3000-triangle budget with them)"
    }
   ]
  },
@@ -1188,9 +1186,7 @@
      "doorBay": 1,
      "tallGround": true,
      "basement": "none",
-     "hoist": true,
-     "dormers": 1,
-     "dormerStyle": "pediment",
+     "hoist": false,
      "windows": "cross",
      "windowHead": {
       "kind": "relieving",
@@ -1205,10 +1201,6 @@
       "entrance": "centre",
       "stallriser": "medium",
       "displayWindows": 2,
-      "sign": {
-       "text": "MASSAGE",
-       "textColour": "#d9b24a"
-      },
       "evidence": "red painted shop front with a gold sign, 2020-04-21"
      },
      "windowShare": 0.62,
@@ -1229,7 +1221,6 @@
   },
   "why": {
    "fronts/0/gable": "deep cream frieze cornice",
-   "fronts/0/dormers": "one hoist dormer with a pointed head over the cornice",
    "fronts/0/windowHead": "brick relieving arches over every window",
    "palette/frame": "cream window frames and cornice",
    "palette/brick": "brown brick, crop reading #52493e lifted 10 %"
@@ -1238,6 +1229,14 @@
    {
     "component": "basement",
     "what": "two stone steps up to each shop door"
+   },
+   {
+    "component": "dormer",
+    "what": "the hoist dormer with a pointed head over the cornice (dropped: 4-7 m of open edge in the install gate)"
+   },
+   {
+    "component": "shopfront sign",
+    "what": "the gold MASSAGE lettering: a shopfront sign on this front leaves 21 open edges (3.3 m) in the install gate"
    }
   ]
  },
@@ -1257,9 +1256,7 @@
      "doorBay": 0,
      "tallGround": true,
      "basement": "none",
-     "hoist": true,
-     "dormers": 1,
-     "dormerStyle": "pediment",
+     "hoist": false,
      "windows": "casement-toplight",
      "windowHead": {
       "kind": "relieving",
@@ -1307,6 +1304,10 @@
    {
     "component": "balcony",
     "what": "low white guard rails across the top-storey windows"
+   },
+   {
+    "component": "dormer",
+    "what": "the hoist dormer with a pointed head over the cornice (dropped: 4-7 m of open edge in the install gate)"
    }
   ]
  },
@@ -1342,7 +1343,14 @@
       "evidence": "cafe terrace under an orange awning, 2025-01-08"
      },
      "windowShare": 0.62,
-     "windowHeights": "diminishing"
+     "windowHeights": "diminishing",
+     "storeyHeights": [
+      1.3,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
     }
    ],
    "roof": {
@@ -1361,7 +1369,8 @@
   "why": {
    "fronts/0/gable": "neck gable with large white sculpted scrolls and a rounded cap",
    "fronts/0/storeys": "cafe storey and four window storeys",
-   "palette/brick": "dark brown brick (the crop is in shade)"
+   "palette/brick": "dark brown brick (the crop is in shade)",
+   "fronts/0/storeyHeights": "cafe storey about 3.2 m, four upper storeys about 2.5 m"
   },
   "limits": [
    {

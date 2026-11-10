@@ -14,9 +14,7 @@
     "doorBay": 1,
     "tallGround": true,
     "basement": "none",
-    "hoist": true,
-    "dormers": 1,
-    "dormerStyle": "pediment",
+    "hoist": false,
     "windows": "cross",
     "windowHead": {
      "kind": "relieving",
@@ -31,10 +29,6 @@
      "entrance": "centre",
      "stallriser": "medium",
      "displayWindows": 2,
-     "sign": {
-      "text": "MASSAGE",
-      "textColour": "#d9b24a"
-     },
      "evidence": "red painted shop front with a gold sign, 2020-04-21"
     },
     "windowShare": 0.62,
@@ -109,18 +103,6 @@
    "at": "2020-04-21"
   },
   "fronts/0/hoist": {
-   "source": "author",
-   "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
-   "at": "2020-04-21"
-  },
-  "fronts/0/dormers": {
-   "source": "author",
-   "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21): one hoist dormer with a pointed head over the cornice",
-   "at": "2020-04-21"
-  },
-  "fronts/0/dormerStyle": {
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181818/front.jpg (2020-04-21)",
@@ -203,6 +185,14 @@
   {
    "component": "basement",
    "what": "two stone steps up to each shop door"
+  },
+  {
+   "component": "dormer",
+   "what": "the hoist dormer with a pointed head over the cornice (dropped: 4-7 m of open edge in the install gate)"
+  },
+  {
+   "component": "shopfront sign",
+   "what": "the gold MASSAGE lettering: a shopfront sign on this front leaves 21 open edges (3.3 m) in the install gate"
   }
  ]
 }

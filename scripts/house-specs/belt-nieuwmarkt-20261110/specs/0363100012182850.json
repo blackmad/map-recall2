@@ -18,10 +18,10 @@
     "windows": "cross",
     "windowSurround": "sill",
     "storeyHeights": [
-     1.9,
+     1.75,
      1.0,
      1.0,
-     0.93
+     1.0
     ],
     "shopfront": {
      "colour": "#e6e2d8",
@@ -130,7 +130,7 @@
   "fronts/0/storeyHeights": {
    "source": "author",
    "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): ground storey 5.1 m (pui with transom row), uppers 2.7, 2.7, 2.5 m on the crop",
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): ground storey 4.5 m with its transom row (the install gate holds the top storey >= 2.3 m under the 3DBAG eaves)",
    "at": "2025-01-08"
   },
   "fronts/0/shopfront": {

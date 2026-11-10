@@ -32,12 +32,6 @@
     "windowHeights": "diminishing"
    }
   ],
-  "roof": {
-   "material": "bitumen",
-   "source": "front",
-   "form": "flat",
-   "evidence": "no roof shows over the cornice on the crop; the 3DBAG roof drew a pyramid over it"
-  },
   "palette": {
    "brick": "#46494b",
    "frame": "white",
@@ -143,30 +137,6 @@
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
    "at": "2022-04-26"
   },
-  "roof/material": {
-   "source": "author",
-   "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
-   "at": "2022-04-26"
-  },
-  "roof/source": {
-   "source": "author",
-   "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
-   "at": "2022-04-26"
-  },
-  "roof/form": {
-   "source": "author",
-   "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
-   "at": "2022-04-26"
-  },
-  "roof/evidence": {
-   "source": "author",
-   "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
-   "at": "2022-04-26"
-  },
   "palette/brick": {
    "source": "author",
    "confidence": 0.85,
@@ -197,5 +167,11 @@
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
    "at": "2022-04-26"
   }
- }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof",
+   "what": "recipe route held: the compile reads 3DBAG eaves under 6 m for a four-storey 13 m front; staged as a generic spec"
+  }
+ ]
 }

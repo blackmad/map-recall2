@@ -20,7 +20,7 @@
     "windows": "sash-small-panes",
     "bands": "speklagen",
     "speklagen": {
-     "spacing": 8,
+     "spacing": 12,
      "courses": 2
     },
     "windowHead": {
@@ -241,6 +241,10 @@
   {
    "component": "gable",
    "what": "the light in the valley between the two gables (over axis 2) and the stacked top lights of each gable"
+  },
+  {
+   "component": "palette",
+   "what": "the speklagen are closer (about every 8 courses) than drawn (12): the triangle budget"
   }
  ]
 }

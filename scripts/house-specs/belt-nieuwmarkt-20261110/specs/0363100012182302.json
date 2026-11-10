@@ -14,9 +14,7 @@
     "doorBay": 0,
     "tallGround": true,
     "basement": "none",
-    "hoist": true,
-    "dormers": 1,
-    "dormerStyle": "pediment",
+    "hoist": false,
     "windows": "casement-toplight",
     "windowHead": {
      "kind": "relieving",
@@ -116,18 +114,6 @@
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182302/front.jpg (2020-04-21)",
    "at": "2020-04-21"
   },
-  "fronts/0/dormers": {
-   "source": "author",
-   "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182302/front.jpg (2020-04-21)",
-   "at": "2020-04-21"
-  },
-  "fronts/0/dormerStyle": {
-   "source": "author",
-   "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182302/front.jpg (2020-04-21)",
-   "at": "2020-04-21"
-  },
   "fronts/0/windows": {
    "source": "author",
    "confidence": 0.85,
@@ -211,6 +197,10 @@
   {
    "component": "balcony",
    "what": "low white guard rails across the top-storey windows"
+  },
+  {
+   "component": "dormer",
+   "what": "the hoist dormer with a pointed head over the cornice (dropped: 4-7 m of open edge in the install gate)"
   }
  ]
 }

@@ -209,3 +209,16 @@ tune('0363100012182857', {'fronts/0/crownGroups': 'two step gables over axes 0-1
 R['0363100012182857']['why']['fronts/0/gable'] = 'two step gables side by side (register 3856: tweeling, 1605)'
 R['0363100012182857']['limits'] = [{'component': 'gable', 'what': 'the light in the valley between the two gables (over axis 2) and the stacked top lights of each gable'}]
 json.dump(R, open(P, 'w'), indent=1, ensure_ascii=False)
+
+# ---- pass 3 (install gates, local rehearsal of house:publish step 3) ----
+tune('0363100012182850', {'fronts/0/storeyHeights': 'ground storey 4.5 m with its transom row (the install gate holds the top storey >= 2.3 m under the 3DBAG eaves)'}, storeyHeights=[1.75, 1.0, 1.0, 1.0])
+tune('0363100012182855', {'fronts/0/storeys': 'three storeys under the cornice: the 3DBAG eaves (9.45 m) leave no room for the small top-storey light as a storey'}, storeys=3, bays=2)
+R['0363100012182855']['limits'].append({'component': 'storeys', 'what': 'a low fourth storey with one centred light under the cornice; 3DBAG eaves 9.45 m against about 11 m on the crop'})
+f = fr('0363100012182852', 1); f.pop('windowHead', None); R['0363100012182852']['why'].pop('fronts/1/windowHead', None)
+R['0363100012182852']['limits'].append({'component': 'window head', 'what': 'white springer blocks and keystones over the right house windows (dropped: the two fronts exceed the 3000-triangle budget with them)'})
+tune('0363100012182857', speklagen={'spacing': 12, 'courses': 2})
+R['0363100012182857']['limits'].append({'component': 'palette', 'what': 'the speklagen are closer (about every 8 courses) than drawn (12): the triangle budget'})
+# 171854: 3DBAG eaves under 6 m for a 13 m front (storey heights 1.1-1.6 m in the compile): generic spec, like 182849.
+R['0363100012171854']['design'].pop('roof')
+R['0363100012171854']['limits'].append({'component': 'roof', 'what': 'recipe route held: the compile reads 3DBAG eaves under 6 m for a four-storey 13 m front; staged as a generic spec'})
+json.dump(R, open(P, 'w'), indent=1, ensure_ascii=False)

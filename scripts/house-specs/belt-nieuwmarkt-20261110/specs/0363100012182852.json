@@ -51,15 +51,6 @@
     "hoist": false,
     "windows": "cross",
     "windowSurround": "sill",
-    "windowHead": {
-     "kind": "segmental",
-     "rise": 0.06,
-     "archRing": {
-      "colour": "stone",
-      "style": "springers",
-      "keystone": true
-     }
-    },
     "shopfront": {
      "colour": "#3a2f28",
      "fascia": false,
@@ -283,12 +274,6 @@
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182852/front.jpg (pano None, 2025-01-08)",
    "at": "2025-01-08"
   },
-  "fronts/1/windowHead": {
-   "source": "author",
-   "confidence": 0.85,
-   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182852/front.jpg (pano None, 2025-01-08): white springer blocks and keystones over every window of the right house",
-   "at": "2025-01-08"
-  },
   "fronts/1/shopfront": {
    "source": "author",
    "confidence": 0.85,
@@ -360,6 +345,10 @@
   {
    "component": "gable ornament",
    "what": "white carved scrolls up both necks"
+  },
+  {
+   "component": "window head",
+   "what": "white springer blocks and keystones over the right house windows (dropped: the two fronts exceed the 3000-triangle budget with them)"
   }
  ]
 }

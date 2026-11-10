@@ -30,7 +30,14 @@
      "evidence": "cafe terrace under an orange awning, 2025-01-08"
     },
     "windowShare": 0.62,
-    "windowHeights": "diminishing"
+    "windowHeights": "diminishing",
+    "storeyHeights": [
+     1.3,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
    }
   ],
   "roof": {
@@ -141,6 +148,12 @@
    "source": "author",
    "confidence": 0.85,
    "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012181808/front.jpg (2025-01-08): cafe storey about 3.2 m, four upper storeys about 2.5 m",
    "at": "2025-01-08"
   },
   "roof/material": {
