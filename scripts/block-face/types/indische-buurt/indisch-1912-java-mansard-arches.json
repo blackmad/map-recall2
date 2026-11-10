@@ -63,7 +63,7 @@
     3
    ],
    "archRing": {
-    "colour": "band",
+    "colour": "wall",
     "widthCourses": 2,
     "shape": "segmental"
    },
@@ -98,7 +98,25 @@
     1
    ],
    "projecting": true
-  }
+  },
+  "brickStripes": [
+   {
+    "rise": [
+     3.4,
+     9.5
+    ],
+    "pitch": 3.0,
+    "stripe": 0.07
+   },
+   {
+    "rise": [
+     5.5,
+     11.6
+    ],
+    "pitch": 3.0,
+    "stripe": 0.07
+   }
+  ]
  },
  "crowns": {
   "mansard-dormer": {

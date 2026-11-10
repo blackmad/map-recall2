@@ -55,7 +55,7 @@ const KEYS = ['form', 'deep', 'steps', 'riser', 'jamb', 'span', 'sideDoors', 'le
 const num = (v: unknown, lo: number, hi: number) => typeof v === 'number' && Number.isFinite(v) && v >= lo && v <= hi;
 /** The cavity's 4 cm linings stand inside the opening, over the frame's outer edge: the frames are drawn 4 cm wider so
  * the white frame keeps the 8 cm (door) and 6 cm (fanlight) the flush door shows. */
-export const DOOR_REVEAL = {riser: 0.17, sideDoorM: 0.9, sideDoorH: 2.3, doorTrim: 0.12, fanTrim: 0.1,
+export const DOOR_REVEAL = {riser: 0.17, sideDoorM: 0.9, sideDoorH: 2.3, doorTrim: 0.12, fanTrim: 0.1, edgeTrim: 0.12,
   /** Lining colour per third of the depth, mouth to leaf (door-shade.ts medians, see the module note). */
   shade: [1, 0.8, 0.78] as readonly number[]} as const;
 
@@ -91,8 +91,8 @@ export function doorRevealOpenings(d: DoorRevealIntent, left: number, bottom: nu
   const landing = steps * riseM;
   const sideDoors = d.sideDoors ? {widthM: r3(Math.min(DOOR_REVEAL.sideDoorM, d.deep - 0.3)), heightM: r3(Math.min(DOOR_REVEAL.sideDoorH, doorH - (arch?.rise ?? 0) - landing - 0.05))} : undefined;
   const shade = [...DOOR_REVEAL.shade];
-  const door: CanalhouseOpening = {id: 'door', kind: 'door', leftM: left, bottomM: bottom, widthM: width, heightM: doorH, ...(arch ? {head: 'segmental' as const, headRiseM: arch.rise, headSegments: arch.segments} : {}), trimWidthM: DOOR_REVEAL.doorTrim, ...(arch ? {} : {verticalBars: [.5]}),
-    paneSurface: d.leaf === 'glazed' ? 'glass' : 'door', frameSurface: 'trim', barSurface: 'trim', recessM: d.deep,
+  const door: CanalhouseOpening = {id: 'door', kind: 'door', leftM: left, bottomM: bottom, widthM: width, heightM: doorH, ...(arch ? {head: 'segmental' as const, headRiseM: arch.rise, headSegments: arch.segments} : {}), trimWidthM: d.edge ? DOOR_REVEAL.edgeTrim : DOOR_REVEAL.doorTrim, ...(arch || d.edge ? {} : {verticalBars: [.5]}),
+    paneSurface: d.leaf === 'glazed' ? 'glass' : 'door', frameSurface: d.edge ? 'door' : 'trim', barSurface: d.edge ? 'door' : 'trim', recessM: d.deep,
     recessReturns: {glazedSides: [], ...(fan ? {omit: ['soffit' as const]} : {}), jambSurface, sillSurface: 'stone', ...(steps ? {steps: {count: steps, riseM}} : {}), ...(sideDoors ? {sideDoors} : {}), shade, ...(fan ? {jambsM: r3(doorH + transomH + 0.06)} : {})}};
   if (!fan) return [door];
   return [door, {id: 'door-transom', kind: 'window', leftM: left, bottomM: r3(bottom + doorH), widthM: width, heightM: r3(transomH + 0.06), trimWidthM: DOOR_REVEAL.fanTrim, frameSurface: 'trim', barSurface: 'trim',

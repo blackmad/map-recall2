@@ -82,7 +82,7 @@ export const BASEMENTS = ['none', 'windows', 'stoop', 'stoop-and-windows'] as co
  * light: Jan Evertsenstraat 45-53). `casement-sidelights-toplight` a wide fixed light between two narrow side lights under a
  * top light across all three (bars at 0.14 and 0.86, a transom at 0.86: Polanenstraat 229-311, 1935).
  */
-export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'] as const;
+export const WINDOWS = ['sash', 'sash-small-panes', 'cross', 'plain', 'arched', 'shop', 'two-light', 'ladder', 'sash-6-over-6', 'sash-8-over-8', 'sash-9-over-9', 'six-pane', 't-window', 'small-over-one', 'cross-transom', 'casement-toplight', 'casement-transom', 'casement-gridded-toplight', 'casement-triple', 'casement-toplight-double', 'casement-gridded-toplight-double', 'casement-pair', 'casement-small-panes', 'casement-sidelights-toplight'] as const;
 export type WindowKind = typeof WINDOWS[number];
 /** `relieving`: a flat-headed window under a segmental relieving arch (brick tympanum), the 17th-c. canal front. */
 export const WINDOW_HEADS = ['flat', 'segmental', 'round', 'relieving'] as const;
@@ -101,8 +101,8 @@ export const TYMPANUM_FILLS = ['stone', 'band', 'dark'] as const;
  * wall luma on the 2024-11-21 Nassaukade strip, 0.67 and 0.68 on 150, 0.73 and 0.80 on 147; the mean.
  */
 export const DARK_TYMPANUM_K = 0.72;
-/** Arch ring colour: the palette's `stone` (white-painted or natural sandstone), `band` brick, or the `frame` paint. */
-export const ARCH_RING_COLOURS = ['stone', 'band', 'frame'] as const;
+/** Arch ring colour: the palette's `stone` (white-painted or natural sandstone), `band` brick, the `frame` paint, or the `wall` brick (a brick-on-edge ring in the wall's own colour). */
+export const ARCH_RING_COLOURS = ['stone', 'band', 'frame', 'wall'] as const;
 /** Window height as a share of its storey height, ground storey first: medians of the canal-belt survey (`windowHeights: "diminishing"`). */
 export const DIMINISHING_WINDOW_HEIGHTS = [0.73, 0.76, 0.72, 0.72, 0.7, 0.68] as const;
 export const WINDOW_PROPORTIONS = ['standard', 'tall'] as const;

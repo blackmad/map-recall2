@@ -122,7 +122,8 @@
     "measuredPalette": {
      "brick": "#826e64",
      "evidence": "strip 2023-01-02 span 3168-3411: trim-normalised wall (buildingRecipe/measureFacade.ts)"
-    }
+    },
+    "mirror": true
    },
    "groundFloor": {
     "use": "shop",
@@ -142,6 +143,99 @@
    },
    "rhythm": {
     "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 3168-3411"
+   }
+  },
+  {
+   "pandId": "0363100012085970",
+   "slug": "java-085970",
+   "address": "Javastraat 119",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#65574c",
+      "fascia": true,
+      "name": "Hodo Mobile",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=repair); fascia colour measured on the strip 2023-01-02 span 3411-3643"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#76645b",
+     "evidence": "strip 2023-01-02 span 3411-3643: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Hodo Mobile",
+    "category": "shop=repair",
+    "osm": {
+     "type": "node",
+     "id": 2827515044,
+     "name": "Hodo Mobile"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 3411-3643"
+   }
+  },
+  {
+   "pandId": "0363100012110585",
+   "slug": "java-110585",
+   "address": "Javastraat 121",
+   "type": {
+    "type": "indisch-1912-java-mansard-arches",
+    "ground": {
+     "shopfront": {
+      "colour": "#695a50",
+      "fascia": true,
+      "name": "Divan Patisserie",
+      "entrance": "centre",
+      "glazing": "split",
+      "stallriser": "low",
+      "residentialDoor": {
+       "side": "left",
+       "colour": "#2a2a2a"
+      },
+      "evidence": "auto-place: osm-only (winkelfunctie, shop=bakery); fascia colour measured on the strip 2023-01-02 span 3643-3875"
+     }
+    },
+    "measuredPalette": {
+     "brick": "#7b6760",
+     "evidence": "strip 2023-01-02 span 3643-3875: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Divan Patisserie",
+    "category": "shop=bakery",
+    "osm": {
+     "type": "node",
+     "id": 2348124345,
+     "name": "Divan Patisserie"
+    },
+    "bag": [
+     "winkelfunctie"
+    ],
+    "photoDate": "2023-01-02",
+    "agreement": "osm-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1912-java-mansard-arches scored 0.86 on eaves 1, storeys 1, stucco 1, columns 0.4; strip 2023-01-02 span 3643-3875"
    }
   }
  ],

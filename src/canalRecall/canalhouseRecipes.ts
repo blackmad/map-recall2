@@ -105,7 +105,7 @@ export interface CanalhouseBalcony {
 export type CanalhouseDressing =
   | {id: string; kind: 'slab'; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface: 'stone' | 'trim' | 'accent' | 'wall'}
   | {id: string; kind: 'awning'; style: 'straight' | 'dutch'; leftM: number; widthM: number; topM: number; dropM: number; projectM: number; valanceM: number; surface: 'awning'};
-export interface CanalhouseOrnament { id: string; profile: CanalhousePoint[]; depthM: number; fill?: 'trim' | 'wall' | 'stone' | 'accent' | 'shop'; rimWidthM?: number }
+export interface CanalhouseOrnament { id: string; profile: CanalhousePoint[]; depthM: number; fill?: 'trim' | 'wall' | 'stone' | 'accent' | 'shade' | 'shop'; rimWidthM?: number }
 /** One reusable lateral flight, including its independently observed open rail. */
 export interface CanalhouseApproach {
   topProfile:CanalhousePoint[]|null; groundM:number; backM:number; depthM:number;
@@ -176,7 +176,7 @@ export interface CanalHouseRecipe {
   shellTopM?: Measured<number>;
   /** Local east/south metres; Y is vertical in the compiled Three group. */
   footprint: Measured<CanalhousePolygon[]>;
-  palette: Measured<{ wall: string; roof: string; trim: string; glass: string; door: string; stone?: string; joinery?: string; accent?: string; shop?: string; awning?: string }>;
+  palette: Measured<{ wall: string; roof: string; trim: string; glass: string; door: string; stone?: string; joinery?: string; accent?: string; shade?: string; shop?: string; awning?: string }>;
   /** Explicit surveyed roof partition. Planes are heightM + x*slopeX + z*slopeZ. */
   roof: Measured<{ polygon: CanalhousePolygon; plane: { heightM: number; slopeX: number; slopeZ: number }; generatedFragment?:'symmetric-roof'|'roof-envelope' }[]>;
   elevations: CanalhouseElevation[]; simplifications: string[];
@@ -361,7 +361,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
   if(!polygons.length) throw new Error('Missing surveyed footprint');
   if(Object.values(palette).some(c=>!/^#[\da-f]{6}$/i.test(c))) throw new Error('Invalid flat palette');
   const group=new T.Group(); group.name=recipe.id;
-  const materials=Object.fromEntries(Object.entries({...palette,stone:palette.stone??palette.trim,joinery:palette.joinery??palette.trim,accent:palette.accent??palette.wall,shop:palette.shop??palette.door,awning:palette.awning??palette.shop??palette.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as Record<keyof typeof palette,T.MeshStandardMaterial>;
+  const materials=Object.fromEntries(Object.entries({...palette,stone:palette.stone??palette.trim,joinery:palette.joinery??palette.trim,accent:palette.accent??palette.wall,shade:palette.shade??palette.wall,shop:palette.shop??palette.door,awning:palette.awning??palette.shop??palette.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as Record<keyof typeof palette,T.MeshStandardMaterial>;
   const facadeMaterials=new WeakMap<T.Group,typeof materials>();
   const add = (geometry:T.BufferGeometry,surface:keyof typeof palette,name:string,parent:T.Group=group) => {
     const mesh=new T.Mesh(geometry,(facadeMaterials.get(parent)??materials)[surface]); mesh.name=name; mesh.userData={component:name.split('/')[0],surface,pandId:recipe.house.pandId}; parent.add(mesh); return mesh;
@@ -501,7 +501,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     if(elevation.palette){
       const colors=read(elevation.palette,`${elevation.id}/palette`);
       if(Object.values(colors).some(c=>!/^#[\da-f]{6}$/i.test(c)))throw new Error('Invalid frontage palette');
-      facadeMaterials.set(facade,Object.fromEntries(Object.entries({...colors,stone:colors.stone??colors.trim,joinery:colors.joinery??colors.trim,accent:colors.accent??colors.wall,shop:colors.shop??colors.door,awning:colors.awning??colors.shop??colors.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as typeof materials);
+      facadeMaterials.set(facade,Object.fromEntries(Object.entries({...colors,stone:colors.stone??colors.trim,joinery:colors.joinery??colors.trim,accent:colors.accent??colors.wall,shade:colors.shade??colors.wall,shop:colors.shop??colors.door,awning:colors.awning??colors.shop??colors.door}).map(([k,c])=>[k,new T.MeshStandardMaterial({color:c,roughness:1})])) as typeof materials);
     }
     facade.matrix.set(ux,0,nx,a[0]+nx*outward, 0,1,0,0, uz,0,nz,a[1]+nz*outward, 0,0,0,1);facade.matrixAutoUpdate=false;group.add(facade);
     const box=(x:number,y:number,w:number,h:number,d:number,depth:number,s:keyof typeof palette,name:string)=>{
@@ -994,7 +994,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
       for(const o of read(elevation.ornaments,`${elevation.id}/ornaments`)){
         positive(o.depthM);if(o.depthM>.3||!o.id.trim()||ids.has(o.id))throw new Error('Invalid facade ornament');ids.add(o.id);
         if(o.profile.length<3||Math.abs(area(o.profile))<EPS||o.profile.some(([x,y])=>!Number.isFinite(x)||!Number.isFinite(y)||x<0||x>length+EPS||y<0))throw new Error('Ornament escapes its facade');
-        if(o.fill!==undefined&&!['trim','wall','stone','accent','shop'].includes(o.fill))throw new Error('Unsupported ornament fill');
+        if(o.fill!==undefined&&!['trim','wall','stone','accent','shade','shop'].includes(o.fill))throw new Error('Unsupported ornament fill');
         if(o.fill){const s=new T.Shape(o.profile.map(([x,y])=>new T.Vector2(x,y)));const g=new T.ExtrudeGeometry(s,{depth:o.depthM,bevelEnabled:false});g.translate(0,0,.09);add(g,o.fill,`ornament/${o.id}/field`,facade);}
         if(o.rimWidthM!==undefined){positive(o.rimWidthM);for(let i=0;i<o.profile.length;i++){
           const [x,y]=o.profile[i],[xx,yy]=o.profile[(i+1)%o.profile.length],distance=Math.hypot(xx-x,yy-y);if(distance<EPS)continue;

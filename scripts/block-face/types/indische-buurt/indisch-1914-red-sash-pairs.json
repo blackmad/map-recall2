@@ -84,7 +84,11 @@
    0.93,
    0.93,
    0.77
-  ]
+  ],
+  "axisWindows": {
+   "0": "casement-transom",
+   "1": "casement-transom"
+  }
  },
  "crowns": {
   "flat-dormer": {

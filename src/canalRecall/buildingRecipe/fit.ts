@@ -65,6 +65,8 @@ const WINDOW_BARS: Record<FrontIntent['windows'], WindowBars> = {
   // De Baarsjes (Jan Evertsenstraat 1925-1927): side-hung casements under a fixed top light (transom at 0.8, measured on
   // 101: the top light is 0.2 of the window), the mullion through both; the gridded top light adds two bars in it.
   'casement-toplight': {verticalBars: [.5], horizontalBars: [.8], horizontalBarWidthsM: [.05], mullionWidthM: .05},
+  // Lampongstraat 2-10 (2025 strip): one undivided lower pane under a fixed top light (a transom, no mullion).
+  'casement-transom': {horizontalBars: [.8], horizontalBarWidthsM: [.05]},
   'casement-gridded-toplight': {verticalBars: [.5], horizontalBars: [.8], horizontalBarWidthsM: [.05], mullionWidthM: .05, diagonalBars: [[[.25, .81], [.25, .95]], [[.75, .81], [.75, .95]]]},
   // A fixed centre light between two narrow casements (Jan Evertsenstraat 9-33: 0.35 | 0.6 | 0.35 m of a 1.3 m window).
   'casement-triple': {verticalBars: [.27, .73], mullionWidthM: .05},
@@ -346,7 +348,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
       if (s === 0 && f.groundFront) continue; // groundFrontLayout builds the ground storey
       if (s === 0 && f.doorBay === b && !rd) {
         doorLeft = clamp(centre - doorWidth / 2, 0.05, width - doorWidth - 0.05);
-        if (f.doorReveal?.edge) doorLeft = centre > width / 2 ? round(width - doorWidth - 0.3) : 0.3;
+        if (f.doorReveal?.edge) doorLeft = centre > width / 2 ? round(width - doorWidth - 0.15) : 0.15;
         if (f.doorArch) {
           // Round-arched portiek: a semicircular head (rise = half the span) whose crown stands at `apex`, no transom.
           const rise = Math.floor(doorWidth / 2 * 1000) / 1000, apex = Math.min(f.doorArch.apex, h - 0.15);
@@ -855,7 +857,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     };
     // Relieving arches over arched heads: a brick-on-edge ring (band brick or stone dressing).
     const headRing = front.windowHead ? front.windowHead.archRing : undefined;
-    const ringSurface = front.windowHead ? (headRing && front.windowHead.kind !== 'flat' ? ({stone: 'stone', band: 'accent', frame: 'trim'} as const)[headRing.colour] : null)
+    const ringSurface = front.windowHead ? (headRing && front.windowHead.kind !== 'flat' ? ({stone: 'stone', band: 'accent', frame: 'trim', wall: 'wall'} as const)[headRing.colour] : null)
       : front.archRings === 'none' ? null : front.archRings === 'stone' ? 'stone' as const : front.archRings === 'band' || (front.palette?.band ?? intent.palette.band) ? 'accent' as const : 'stone' as const;
     const ringM = front.windowHead ? round((headRing?.widthCourses ?? 3) * COURSE_M + 0.005) : 0.13;
     const onHeadStorey = (id: string) => { const m = /(?:^|-)s(\d+)-b\d+(?:-m\d+)?$/.exec(id), s = m ? Number(m[1]) : -1; return !!m && (front.windowHead?.storeys ? front.windowHead.storeys.includes(s) : s > 0); };
@@ -892,7 +894,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
     }
     // Dark tympanum under a relieving arch (`tympanum: dark`): the arch field over the square head, in the shadowed wall brick.
     if ((front.windowHead?.tympanum === 'dark' || front.windowHead?.tympanum === 'band') && front.windowHead.kind === 'relieving') {
-      const tymp: CanalhouseOrnament[] = ringedOpenings().map(o => { const a = relieving(o); return {id: `tympanum-${o.id}`, profile: archSegment(a.left, a.top, a.w, a.rise), depthM: 0.02, fill: 'accent' as const}; });
+      const tymp: CanalhouseOrnament[] = ringedOpenings().map(o => { const a = relieving(o); return {id: `tympanum-${o.id}`, profile: archSegment(a.left, a.top, a.w, a.rise), depthM: 0.02, fill: (front.windowHead?.tympanum === 'dark' && (front.palette?.band ?? intent.palette.band) ? 'shade' : 'accent') as 'shade' | 'accent'}; });
       if (tymp.length) elevation.ornaments = seen([...(elevation.ornaments?.value ?? []), ...tymp]);
     }
     // Bay windows, balcony guards and masonry courses (street-house features).
@@ -1522,9 +1524,9 @@ export function paletteFor(intent: CanalHouseIntent, front?: FrontIntent) {
   const shop = shopFront?.colour ?? (groundFront ? groundFront.colour ?? p.frame : undefined);
   const awningFront = (front ?? intent.fronts.find(f => f.shopfront?.awning && f.shopfront.awning.style !== 'none'))?.shopfront?.awning, awning = awningFront && awningFront.style !== 'none' ? awningFront.colour : undefined;
   // A dark tympanum without a band brick: the wall colour in shadow.
-  const dark = !p.band && (front ? [front] : intent.fronts).some(f => f.windowHead?.tympanum === 'dark');
+  const darkTymp = (front ? [front] : intent.fronts).some(f => f.windowHead?.tympanum === 'dark'), dark = !p.band && darkTymp;
   return {wall: swatch(p.brick), roof: roof.steep, trim: swatch(p.frame), glass: GLASS, door: swatch(p.door), stone: swatch(p.stone ?? 'sandstone'), joinery: swatch(p.sash ?? p.frame),
-    ...(p.band ? {accent: swatch(p.band)} : {}), ...(dark ? {accent: shadeHex(swatch(p.brick), DARK_TYMPANUM_K)} : {}), ...(shop ? {shop: swatch(shop)} : {}), ...(awning ? {awning: swatch(awning)} : {})};
+    ...(p.band ? {accent: swatch(p.band)} : {}), ...(dark ? {accent: shadeHex(swatch(p.brick), DARK_TYMPANUM_K)} : {}), ...(!p.band || !darkTymp ? {} : {shade: shadeHex(swatch(p.brick), DARK_TYMPANUM_K)}), ...(shop ? {shop: swatch(shop)} : {}), ...(awning ? {awning: swatch(awning)} : {})};
 }
 
 /** `kind: large` fit (3DBAG walls → facade systems per wall group); lives in fitLarge.ts. */

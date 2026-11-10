@@ -115,16 +115,28 @@
    "reason": "Lampongstraat 4: wide pair on the left, door on the right"
   },
   {
+   "pandId": "0363100012067472",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": false,
+   "reason": "Javastraat 95: [wide][balcony][narrow pair] in the photo, so the pair-first drawing is flipped (round-3 verdict)"
+  },
+  {
+   "pandId": "0363100012141749",
+   "type": "indisch-1912-java-mansard-arches",
+   "mirror": true,
+   "reason": "Javastraat 117: [narrow pair][balcony][wide] in the photo (round-3 verdict)"
+  },
+  {
    "pandId": "0363100012090483",
    "type": "indisch-1914-red-sash-pairs",
-   "mirror": false,
-   "reason": "Borneostraat 15: left half of the shared gable pair (pair module draws the left half unmirrored)"
+   "mirror": true,
+   "reason": "Borneostraat 15: narrow pair and door on the LEFT (round-3 verdict; the gable stands on the 13|15 wall)"
   },
   {
    "pandId": "0363100012108761",
    "type": "indisch-1914-red-sash-pairs",
-   "mirror": true,
-   "reason": "Borneostraat 17: right half of the shared gable pair (mirror of the left half)"
+   "mirror": false,
+   "reason": "Borneostraat 17: narrow pair and door on the RIGHT (round-3 verdict; the gable stands on the 17|19 wall)"
   }
  ]
 }

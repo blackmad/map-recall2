@@ -291,3 +291,21 @@ be drawn as geometry inside the budget (a pitch of about 1.1 m would fit, but is
 - Brick speklagen stripes at 0.46 m pitch within the 3000-triangle budget (needs a texture or normal-map stripe, not geometry).
 - A single shared recessed portiek leaf with its mailbox panels (drawn as two half reveals).
 - A half-gable pair crown beside a held neighbour.
+
+## Round 4 (2026-11-10): the Opus round-3 verdict applied
+
+- Door (Djambi 9-21, Soenda): `doorReveal.edge` draws the half-opening with a dark (`door` surface) 0.12 m frame, no mullion bar,
+  inset 0.15 m from the party wall. An inset of 0 or 0.02-0.08 m, or a thin cream frame, fails the GLB audit (`opening-outside`,
+  coplanar overlap) on 4-8 parts: the leaf edge must stand about 0.27 m from the party wall. So the pair reads as two dark
+  openings with a 0.3 m brick pier, not one opening without a pier; the verdict's "inset 0" is not reachable without loosening
+  the audit. Djambi 9-21 and Soenda 28-10 pass (all 6 runs `passed`).
+- Djambistraat 23 still fails `opening-outside` (3 parts, 0.95 m2), with either door side; held, cause not found.
+- Soenda brick `#6c5647` (raw pixels).
+- Java: arch ring in wall brick (new `archRing.colour: wall`), dark tympanum now draws dark even with a band brick (new `shade`
+  palette slot used by a `tympanum: dark` front that has a band; absent = byte-identical), two `brickStripes` zones (springing
+  line 5.5 m and sill 3.4 m, pitch 3.0, stripe 0.07; the pitch cap rose from 1.5 to 4 m). Triangles about 2800 a house, gates
+  pass. Mirror pins: Javastraat 95 false (was auto true), 117 true.
+- Borneo: crown pins removed (the gables stand on 13|15 and 17|19); 15 mirror true, 17 false; 15 and 17 held with 13 and 19.
+- Lampong: new window kind `casement-transom` (one undivided lower pane under a fixed top light), on axes 0-1 of the 1914
+  type, so the wide windows lose the red mullion; other types unchanged.
+- Counts: djambi-1-29 7/15, soenda-2-36 9/16, java-93-149 12/15 (r1 7, r2 5), lampong-2-20 5/8, borneo-7-27 0/9.

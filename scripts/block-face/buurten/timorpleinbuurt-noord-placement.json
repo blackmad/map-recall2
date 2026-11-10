@@ -1,12 +1,12 @@
 {
  "buurt": "timorpleinbuurt-noord",
  "library": "indische-buurt",
- "generatedAt": "2026-11-10T01:42:10.651Z",
- "seconds": 71.64,
+ "generatedAt": "2026-11-10T01:59:02.371Z",
+ "seconds": 7.58,
  "totals": {
   "faces": 26,
   "pands": 266,
-  "placed": 34
+  "placed": 33
  },
  "faces": [
   {
@@ -127,30 +127,18 @@
    "face": "borneo-7-27",
    "street": "Borneostraat",
    "pands": 9,
-   "placed": 2,
-   "held": 7,
-   "runs": [
-    {
-     "face": "borneo-7-27-r1",
-     "pands": [
-      "0363100012090483",
-      "0363100012108761"
-     ],
-     "passed": true,
-     "triangles": 2872
-    }
-   ],
-   "seconds": 6.5,
-   "byType": {
-    "indisch-1914-red-sash-pairs": 2
-   },
+   "placed": 0,
+   "held": 9,
+   "runs": [],
+   "seconds": 2.07,
+   "byType": {},
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
     "likeness": 0,
     "run": 0,
-    "review": 5
+    "review": 7
    }
   },
   {
@@ -290,10 +278,10 @@
       "0363100012072833"
      ],
      "passed": true,
-     "triangles": 11539
+     "triangles": 11460
     }
    ],
-   "seconds": 11.61,
+   "seconds": 11.33,
    "byType": {
     "indisch-1913-arched-pair-dormer": 7
    },
@@ -364,13 +352,12 @@
    "face": "java-93-149",
    "street": "Javastraat",
    "pands": 15,
-   "placed": 11,
-   "held": 4,
+   "placed": 12,
+   "held": 3,
    "runs": [
     {
      "face": "java-93-149-r1",
      "pands": [
-      "0363100012067472",
       "0363100012132949",
       "0363100012138717",
       "0363100012120527",
@@ -380,28 +367,30 @@
       "0363100012126147"
      ],
      "passed": true,
-     "triangles": 21335
+     "triangles": 20165
     },
     {
      "face": "java-93-149-r2",
      "pands": [
       "0363100012150083",
       "0363100012103232",
-      "0363100012141749"
+      "0363100012141749",
+      "0363100012085970",
+      "0363100012110585"
      ],
      "passed": true,
-     "triangles": 7993
+     "triangles": 14508
     }
    ],
-   "seconds": 39.4,
+   "seconds": 30.15,
    "byType": {
-    "indisch-1912-java-mansard-arches": 11
+    "indisch-1912-java-mansard-arches": 12
    },
    "installed": 0,
    "holds": {
     "evidence": 0,
     "match": 2,
-    "likeness": 2,
+    "likeness": 1,
     "run": 0,
     "review": 0
    }
@@ -435,10 +424,10 @@
       "0363100012112381"
      ],
      "passed": true,
-     "triangles": 7127
+     "triangles": 6767
     }
    ],
-   "seconds": 6.8,
+   "seconds": 7.58,
    "byType": {
     "indisch-1914-red-sash-pairs": 5
    },
@@ -605,7 +594,7 @@
       "0363100012111204"
      ],
      "passed": true,
-     "triangles": 9655
+     "triangles": 9583
     },
     {
      "face": "soenda-2-36-r2",
@@ -615,10 +604,10 @@
       "0363100012092864"
      ],
      "passed": true,
-     "triangles": 4880
+     "triangles": 4844
     }
    ],
-   "seconds": 18.05,
+   "seconds": 19.2,
    "byType": {
     "indisch-1913-arched-pair-dormer": 9
    },
