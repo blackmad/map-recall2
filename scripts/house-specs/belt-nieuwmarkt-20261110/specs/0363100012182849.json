@@ -1,0 +1,200 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182849",
+ "address": "Nieuwmarkt 10-12",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Nieuwmarkt",
+    "gable": "cornice",
+    "cornice": "bracketed",
+    "crownCap": "rounded",
+    "crownCapSpan": "narrow",
+    "storeys": 3,
+    "bays": 2,
+    "doorBay": 1,
+    "tallGround": true,
+    "basement": "none",
+    "hoist": false,
+    "windows": "cross",
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#2b2b2b",
+     "fascia": false,
+     "entrance": "right",
+     "stallriser": "low",
+     "evidence": "dark shop glazing under a deep white entablature (ROCKIT), 2025-01-08"
+    },
+    "windowShare": 0.62,
+    "windowHeights": "diminishing"
+   }
+  ],
+  "palette": {
+   "brick": "#a15b3c",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick",
+   "cornice": "#e6e2d8"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08): white bracketed cornice with a raised centre dormer under a rounded cap (register 3851/3852 cornice)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/crownCap": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/crownCapSpan": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08): two casements under a top light, white frames (cross: the casement-toplight bars do not fit the short lights)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08): orange brick, crop reading #c7854e cast-corrected",
+   "at": "2025-01-08"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182849/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "the dormer is flanked by white console scrolls and carries a pole; its light is round-headed"
+  },
+  {
+   "component": "gable ornament",
+   "what": "the centre dormer light: a round-headed light in the narrow cap escapes the cap wall in the compile, so it is not drawn"
+  },
+  {
+   "component": "shopfront",
+   "what": "the deep white entablature over the shop: a fascia on this 4.2 m front makes an opening escape its wall in the compile"
+  },
+  {
+   "component": "roof",
+   "what": "recipe route held: 3DBAG roof plane from 3.3 m over the street front (facts eaves 3.43 m against the 12.0 m cornice on the crop); staged as a generic spec"
+  }
+ ]
+}

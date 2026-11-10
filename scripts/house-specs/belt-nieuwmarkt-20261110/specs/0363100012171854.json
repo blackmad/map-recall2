@@ -1,0 +1,201 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012171854",
+ "address": "Nieuwmarkt 8",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Nieuwmarkt",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 2,
+    "tallGround": true,
+    "basement": "none",
+    "cornice": "frieze",
+    "hoist": false,
+    "windows": "t-window",
+    "windowHead": {
+     "kind": "segmental"
+    },
+    "windowSurround": "sill",
+    "shopfront": {
+     "colour": "#2a2d30",
+     "fascia": true,
+     "entrance": "right",
+     "stallriser": "low",
+     "displayWindows": 2,
+     "evidence": "dark grey restaurant front with a dark fascia, white door at the right, 2022-04-26"
+    },
+    "windowShare": 0.62,
+    "windowHeights": "diminishing"
+   }
+  ],
+  "roof": {
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "no roof shows over the cornice on the crop; the 3DBAG roof drew a pyramid over it"
+  },
+  "palette": {
+   "brick": "#46494b",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114): straight white cornice on consoles; the register bell (3850) does not match this BAG wall (H7)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114): deep white entablature (frieze under a cornice on consoles): drawn as the frieze cornice",
+   "at": "2022-04-26"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114): segmental-headed windows with a transom light over a pair: T-windows",
+   "at": "2022-04-26"
+  },
+  "fronts/0/windowHead": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114): dark grey painted brick, white frames and cornice",
+   "at": "2022-04-26"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012171854/front.jpg (2022-04-26, H7 --prefer-bearing 114)",
+   "at": "2022-04-26"
+  }
+ }
+}

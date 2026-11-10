@@ -1,0 +1,225 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182856",
+ "address": "Nieuwmarkt 24",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Nieuwmarkt",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 0,
+    "tallGround": true,
+    "basement": "none",
+    "cornice": "frieze",
+    "hoist": false,
+    "windows": "t-window",
+    "windowSurround": "sill",
+    "storeyHeights": [
+     1.45,
+     1.2,
+     1.0,
+     0.75
+    ],
+    "windowHeights": [
+     0.7,
+     0.8,
+     0.8,
+     0.7
+    ],
+    "shopfront": {
+     "colour": "#2a2a2a",
+     "fascia": true,
+     "entrance": "left",
+     "stallriser": "low",
+     "sign": {
+      "text": "POCO LOCO",
+      "textColour": "#d9b24a"
+     },
+     "evidence": "dark cafe front with gold lettering (Poco Loco), 2025-01-08"
+    },
+    "windowShare": 0.6
+   }
+  ],
+  "roof": {
+   "material": "bitumen",
+   "source": "front",
+   "form": "flat",
+   "evidence": "no roof shows over the cornice on the crop; the 3DBAG roof drew a pyramid over it"
+  },
+  "palette": {
+   "brick": "#9f5e3d",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "#e6e2d8",
+   "wallMaterial": "brick",
+   "cornice": "#e6e2d8"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08): deep white bracketed cornice over a frieze with consoles",
+   "at": "2025-01-08"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08): cafe storey and three window storeys",
+   "at": "2025-01-08"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08): deep white entablature (frieze under a cornice on consoles): drawn as the frieze cornice",
+   "at": "2025-01-08"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08): tall windows with a top light over a pair: T-windows",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08): storeys 4.5, 3.6, 3.1, 2.5 m on the crop",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "roof/source": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "roof/form": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08): red-brown brick, crop reading #c5884e cast-corrected",
+   "at": "2025-01-08"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182856/front.jpg (pano None, 2025-01-08)",
+   "at": "2025-01-08"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "balcony",
+   "what": "a low iron railing across the foot of every upper window"
+  }
+ ]
+}

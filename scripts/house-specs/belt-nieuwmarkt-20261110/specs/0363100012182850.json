@@ -1,0 +1,209 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012182850",
+ "address": "Nieuwmarkt 38",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "street": "Nieuwmarkt",
+    "gable": "cornice",
+    "storeys": 4,
+    "bays": 3,
+    "doorBay": 1,
+    "tallGround": true,
+    "basement": "none",
+    "cornice": "frieze",
+    "hoist": false,
+    "windows": "cross",
+    "windowSurround": "sill",
+    "storeyHeights": [
+     1.9,
+     1.0,
+     1.0,
+     0.93
+    ],
+    "shopfront": {
+     "colour": "#e6e2d8",
+     "fascia": false,
+     "glazing": "transom",
+     "entrance": "centre",
+     "stallriser": "low",
+     "displayWindows": 2,
+     "evidence": "white painted timber pui with pilasters and a transom row, glazed door in the centre bay, 2025-01-08"
+    },
+    "windowShare": 0.56,
+    "windowHeights": [
+     0.6,
+     0.72,
+     0.72,
+     0.72
+    ]
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "evidence": "red pantile roof behind the cornice on the crop; 3DBAG LoD2.2 form kept"
+  },
+  "palette": {
+   "brick": "#b06a45",
+   "frame": "white",
+   "door": "#2c3a33",
+   "stone": "white",
+   "cornice": "white",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): straight white cornice front (register 3862: lijstgevel eind XVIII-begin XIX)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): ground pui plus three window storeys (STOREYS_DEFINITION)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): three window axes on every upper storey",
+   "at": "2025-01-08"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/tallGround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): a tall plain white frieze (about 1.5 m) under the cornice",
+   "at": "2025-01-08"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): white frames, dark sashes with a mullion and a transom: cross windows",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): ground storey 5.1 m (pui with transom row), uppers 2.7, 2.7, 2.5 m on the crop",
+   "at": "2025-01-08"
+  },
+  "fronts/0/shopfront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowShare": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "fronts/0/windowHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "roof/evidence": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08): bare orange-red brick; the crop (warm low sun) reads #cc9867, drawn a step darker for the cast",
+   "at": "2025-01-08"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-nieuwmarkt hand read of pand-crops/0363100012182850/front.jpg (pano b_20250108_1041_Track24_Sphere_00004, 2025-01-08)",
+   "at": "2025-01-08"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "shopfront",
+   "what": "a narrow dark side door at the right end of the pui and fluted pilasters between the bays"
+  }
+ ]
+}

@@ -39,6 +39,45 @@
    "pands": 7,
    "rateMs": 500,
    "endedAt": "2026-11-10T15:21:23.362Z"
+  },
+  {
+   "startedAt": "2026-11-10T20:52:41.016Z",
+   "wallSeconds": 66,
+   "requests": 10,
+   "bytes": 17949737,
+   "retries": 0,
+   "status429": 0,
+   "status5xx": 0,
+   "failures": 0,
+   "pands": 7,
+   "rateMs": 500,
+   "endedAt": "2026-11-10T20:53:46.993Z"
+  },
+  {
+   "startedAt": "2026-11-10T21:19:50.143Z",
+   "wallSeconds": 0,
+   "requests": 0,
+   "bytes": 0,
+   "retries": 0,
+   "status429": 0,
+   "status5xx": 0,
+   "failures": 0,
+   "pands": 0,
+   "rateMs": 500,
+   "endedAt": "2026-11-10T21:19:50.145Z"
+  },
+  {
+   "startedAt": "2026-11-10T21:20:28.422Z",
+   "wallSeconds": 0,
+   "requests": 0,
+   "bytes": 0,
+   "retries": 0,
+   "status429": 0,
+   "status5xx": 0,
+   "failures": 0,
+   "pands": 0,
+   "rateMs": 500,
+   "endedAt": "2026-11-10T21:20:28.429Z"
   }
  ],
  "pands": {
@@ -207,39 +246,6 @@
    "chosenYear": 2024,
    "yearsTried": 1
   },
-  "0363100012171854": {
-   "status": "ok",
-   "method": "wall",
-   "usable": true,
-   "reasons": [],
-   "flags": {
-    "foliage": 0.068,
-    "foliagePlain": 0.279,
-    "wbApplied": true,
-    "washedOut": 0.123,
-    "missing": 0,
-    "voidShare": 0,
-    "occluderShare": 0.025,
-    "obliquity": 2,
-    "cameraDistance": 9.6,
-    "rayBlocked": false,
-    "wallWidthM": 5.79,
-    "heightCover": 1,
-    "edgeDensity": 0.378,
-    "seamStep": 117.7,
-    "strip": false
-   },
-   "archive": "pand-crops/0363100012171854",
-   "panoIds": [
-    "TMX7316010203-002546_pano_0002_001104"
-   ],
-   "date": "2022-04-26",
-   "ppm": 50,
-   "widthM": 5.79,
-   "attempts": 2,
-   "chosenYear": 2022,
-   "yearsTried": 2
-  },
   "0363100012171851": {
    "status": "ok",
    "method": "wall",
@@ -272,6 +278,270 @@
    "attempts": 1,
    "chosenYear": 2024,
    "yearsTried": 1
+  },
+  "0363100012182850": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.167,
+    "foliagePlain": 0.167,
+    "wbApplied": false,
+    "washedOut": 0.027,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.089,
+    "obliquity": 9.5,
+    "cameraDistance": 24.8,
+    "rayBlocked": false,
+    "wallWidthM": 6.73,
+    "heightCover": 1,
+    "edgeDensity": 0.159,
+    "seamStep": 72.7,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012182850",
+   "panoIds": [
+    "b_20250108_1041_Track24_Sphere_00004"
+   ],
+   "date": "2025-01-08",
+   "ppm": 50,
+   "widthM": 6.73,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012182851": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.233,
+    "foliagePlain": 0.233,
+    "wbApplied": false,
+    "washedOut": 0.061,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.059,
+    "obliquity": 3.3,
+    "cameraDistance": 24.6,
+    "rayBlocked": false,
+    "wallWidthM": 4.15,
+    "heightCover": 1,
+    "edgeDensity": 0.245,
+    "seamStep": 98,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012182851",
+   "panoIds": [
+    "b_20250108_1041_Track24_Sphere_00004"
+   ],
+   "date": "2025-01-08",
+   "ppm": 50,
+   "widthM": 4.15,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012182852": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.098,
+    "foliagePlain": 0.098,
+    "wbApplied": false,
+    "washedOut": 0.052,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.028,
+    "obliquity": 4.2,
+    "cameraDistance": 9.3,
+    "rayBlocked": false,
+    "wallWidthM": 7.62,
+    "heightCover": 1,
+    "edgeDensity": 0.316,
+    "seamStep": 72.7,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012182852",
+   "panoIds": [
+    "b_20250108_1041_Track23_Sphere_00108"
+   ],
+   "date": "2025-01-08",
+   "ppm": 50,
+   "widthM": 7.62,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012182853": {
+   "status": "ok",
+   "method": "strip",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.099,
+    "foliagePlain": 0.099,
+    "wbApplied": false,
+    "washedOut": 0.019,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.029,
+    "obliquity": 6.4,
+    "cameraDistance": 9.3,
+    "rayBlocked": false,
+    "wallWidthM": 3.71,
+    "heightCover": 1,
+    "edgeDensity": 0.239,
+    "seamStep": 50.2,
+    "strip": true
+   },
+   "archive": "pand-crops/0363100012182853",
+   "panoIds": [
+    "b_20250108_1041_Track23_Sphere_00107",
+    "b_20250108_1041_Track23_Sphere_00106",
+    "b_20250108_1041_Track24_Sphere_00004"
+   ],
+   "date": "2025-01-08",
+   "ppm": 40,
+   "widthM": 3.71,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012182854": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.085,
+    "foliagePlain": 0.085,
+    "wbApplied": false,
+    "washedOut": 0.047,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.018,
+    "obliquity": 1.1,
+    "cameraDistance": 9.3,
+    "rayBlocked": false,
+    "wallWidthM": 5.49,
+    "heightCover": 1,
+    "edgeDensity": 0.313,
+    "seamStep": 76.4,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012182854",
+   "panoIds": [
+    "b_20250108_1041_Track23_Sphere_00106"
+   ],
+   "date": "2025-01-08",
+   "ppm": 50,
+   "widthM": 5.49,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012182855": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.093,
+    "foliagePlain": 0.093,
+    "wbApplied": false,
+    "washedOut": 0.022,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.189,
+    "obliquity": 1.6,
+    "cameraDistance": 9.3,
+    "rayBlocked": false,
+    "wallWidthM": 4.02,
+    "heightCover": 1,
+    "edgeDensity": 0.377,
+    "seamStep": 72.6,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012182855",
+   "panoIds": [
+    "b_20250108_1041_Track23_Sphere_00105"
+   ],
+   "date": "2025-01-08",
+   "ppm": 50,
+   "widthM": 4.02,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012182856": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.114,
+    "foliagePlain": 0.114,
+    "wbApplied": false,
+    "washedOut": 0.064,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.063,
+    "obliquity": 4.9,
+    "cameraDistance": 9.2,
+    "rayBlocked": false,
+    "wallWidthM": 5.78,
+    "heightCover": 1,
+    "edgeDensity": 0.261,
+    "seamStep": 60,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012182856",
+   "panoIds": [
+    "b_20250108_1041_Track23_Sphere_00104"
+   ],
+   "date": "2025-01-08",
+   "ppm": 50,
+   "widthM": 5.78,
+   "attempts": 1,
+   "chosenYear": 2024,
+   "yearsTried": 1
+  },
+  "0363100012171854": {
+   "status": "ok",
+   "method": "wall",
+   "usable": true,
+   "reasons": [],
+   "flags": {
+    "foliage": 0.068,
+    "foliagePlain": 0.279,
+    "wbApplied": true,
+    "washedOut": 0.123,
+    "missing": 0,
+    "voidShare": 0,
+    "occluderShare": 0.025,
+    "obliquity": 2,
+    "cameraDistance": 9.6,
+    "rayBlocked": false,
+    "wallWidthM": 5.79,
+    "heightCover": 1,
+    "edgeDensity": 0.378,
+    "seamStep": 117.7,
+    "strip": false
+   },
+   "archive": "pand-crops/0363100012171854",
+   "panoIds": [
+    "TMX7316010203-002546_pano_0002_001104"
+   ],
+   "date": "2022-04-26",
+   "ppm": 50,
+   "widthM": 5.79,
+   "attempts": 2
   }
  }
 }
