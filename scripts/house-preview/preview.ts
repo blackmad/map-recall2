@@ -50,8 +50,9 @@ Flags
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
                       intent names this pand) with the recipe compiler and render its GLB (renderElevation,
                       flat game colours) instead of the streamed generic path
-  --whole-tile        build the chunk from every building of the pand's z14 tile, as the runtime groups it
-                      (window layers follow the tile's row rhythm; ~1.5 s per render instead of ~15 ms)
+  --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
+                      it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
+                      which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
   --watch             keep tile, neighbours, streets and atlas in memory and re-render whenever the spec/intent
                       file changes (needs --spec or --intent)
   --look <look>       atlas look (default photo)
@@ -67,7 +68,7 @@ Overrides (until the HouseSpec resolver of lane H1 lands): front gable -> monume
 listed under overrides.notApplied in measure.json (the generic path has no property for it yet).
 
 Not reproduced: the far and roof distance tiers, mipmaps, the lit/city-look shaders (sun, wall gain, grain),
-analytic window SDF, shadows, post-processing. When those matter (a lighting or tier question), fall back to
+analytic window SDF, shadows, the ground lift, post-processing. When those matter (a lighting or tier question), fall back to
 scripts/building-recipes/render.ts (headless Chromium) or a ride frame.`;
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -224,6 +225,8 @@ function concatChunks(parts: (RasterMesh & { ranges: Chunk['ranges'] })[]): Rast
 }
 
 const SKY: Vec3 = [159, 184, 207];
+/** Buildings of the pand's tile within this many metres of it share its chunk (see renderPand). */
+export const ROW_M = 30;
 async function png(img: { width: number; height: number; rgba: Uint8ClampedArray | Uint8Array }, file: string) {
   await sharp(Buffer.from(img.rgba.buffer, img.rgba.byteOffset, img.rgba.byteLength), { raw: { width: img.width, height: img.height, channels: 4 } }).flatten({ background: { r: SKY[0], g: SKY[1], b: SKY[2] } }).png().toFile(file);
 }
@@ -295,8 +298,15 @@ export async function renderPand(session: PreviewSession, pandId: string, args: 
   const kitHide = new Set(KIT_HIDE_IDS);
   const ctx = new BuildingContextIndex(styled, boxOf);
   const neighbours = ctx.neighbors([own], f => f.properties.id === own.properties.id || kitHide.has(String(f.properties.id)));
-  const features = args.wholeTile ? rows.map(r => r === raw ? own : r.styled).filter(f => !kitHide.has(String(f.properties.id))) : [own];
-  const context = args.wholeTile ? neighbours.filter(n => !features.includes(n)) : neighbours;
+  // The chunk: the runtime builds one per z14 group tile, and a building's mesh depends on which buildings share its
+  // chunk (a pand alone, with its row only as context, lost its window heads and balconies: 172 vs 164 wall and
+  // 684 vs 690 extra vertices at Nassaukade 0363100012164843). The buildings of the pand's tile within ROW_M of it,
+  // in tile order, gave the whole tile's vertex counts there (R30 = R100 = R300 = tile); --whole-tile builds the tile.
+  const ownBox = boxOf(own), rowLng = ROW_M / (111_320 * Math.cos(52.37 * Math.PI / 180)), rowLat = ROW_M / 110_540;
+  const nearOwn = (f: Feature) => { const b = boxOf(f); return b[0] <= ownBox[2] + rowLng && b[2] >= ownBox[0] - rowLng && b[1] <= ownBox[3] + rowLat && b[3] >= ownBox[1] - rowLat; };
+  const features = rows.map(r => r === raw ? own : r.styled).filter(f => !kitHide.has(String(f.properties.id)) && (args.wholeTile || nearOwn(f)));
+  const inChunk = new Set(features);
+  const context = ctx.neighbors(features, f => inChunk.has(f) || kitHide.has(String(f.properties.id)));
   const streets = shellStreets(REPO_ROOT, features as never), profiles = shellProfiles(REPO_ROOT);
   t0 = mark('context', t0);
   const look = session.look as 'photo';
@@ -326,11 +336,8 @@ export async function renderPand(session: PreviewSession, pandId: string, args: 
     const mid: Vec3 = [frame.origin[0] + frame.right[0] * frame.len / 2, frame.origin[1] + frame.right[1] * frame.len / 2, top * 0.45];
     const size = Math.max(frame.len * 1.6, top) * 1.25, dist = size / 2 / Math.tan(15 * Math.PI / 180), yaw = 38 * Math.PI / 180;
     const [nx, ny] = frame.normal, dx = nx * Math.cos(yaw) - ny * Math.sin(yaw), dy = nx * Math.sin(yaw) + ny * Math.cos(yaw);
-    // The row around it: the neighbours as their own chunk (the pand as their context), so the pand's own layers
-    // stay those of the front view.
-    const rowFeatures = neighbours.filter(n => !features.includes(n));
-    const rowMesh = rowFeatures.length ? concatChunks([mesh, buildFeatureChunk(rowFeatures as never, look, 'walls', streets, profiles, [own] as never), buildFeatureChunk(rowFeatures as never, look, 'extras', streets, profiles, [own] as never)]) : mesh;
-    threeq = rasterise(rowMesh, atlas, { kind: 'perspective', eye: [mid[0] + dx * dist, mid[1] + dy * dist, top * 0.9], target: mid, fovDeg: 30, width: 640, height: 800 }, { supersample: 2, background: SKY });
+    // The 3/4 view shows the row the chunk holds (every building within ROW_M of the pand).
+    threeq = rasterise(mesh, atlas, { kind: 'perspective', eye: [mid[0] + dx * dist, mid[1] + dy * dist, top * 0.9], target: mid, fovDeg: 30, width: 640, height: 800 }, { supersample: 2, background: SKY });
     files.push(path.join(out, 'threeq.png'));
     await png(threeq, files[files.length - 1]);
     t0 = mark('threeq', t0);

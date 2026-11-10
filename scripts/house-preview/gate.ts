@@ -45,7 +45,7 @@ async function one(label: string, pand: string, preview: PreviewResult, glb: str
   const box = { u0: 0.2, u1: frame.lenM - 0.2, v0: 0, v1: eaves };
   const rts = measureFacade({ image: await rgbOf(png, top), box, lines });
   const prev = measureFacade({ image: await rgbOf(fs.readFileSync(path.join(preview.out, 'front.png')), top), box, lines });
-  const vsRenderTs = previewVerdict(prev, rts);
+  const vsRenderTs = previewVerdict(prev, rts, 'render');
   let vsPhoto: PreviewVerdict | null = null, renderTsVsPhoto: PreviewVerdict | null = null, photoPng: Buffer | null = null, photoTop = 0, photoLabel = '';
   if (m.photo?.file) {
     const ref = path.join(REPO_ROOT, 'staging/pand-reference', pand, 'reference.json');

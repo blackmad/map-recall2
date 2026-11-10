@@ -22,7 +22,7 @@ npm run house:preview -- 0363100012175702 --recipe --photo # the recipe route (c
 | Step | Code (the runtime's own) |
 |---|---|
 | Source + decorators | `scripts/world/pipeline.ts` `gameChain()` + `loadTile()` (`useBrowserMath` first, as the compiler) |
-| Party-wall neighbours | `BuildingContextIndex` over the pand's tile and any adjacent tile within 60 m, the runtime's exclusion rule |
+| Chunk and context | the pand's z14 tile buildings within 30 m of it, in tile order (`--whole-tile`: the whole tile, the runtime's group); party-wall context from `BuildingContextIndex` over that tile and any adjacent tile within 60 m, with the runtime's exclusion rule |
 | Street fronts | `scripts/world/shellBake.ts` `shellStreets` / `shellProfiles` |
 | Mesh | `threeBuildingFeatures.ts` `buildFeatureChunk(…, 'walls')` then `'extras'` (ORIGIN-local metres, x east, y north, z up) |
 | Atlas | `look/paintLookAtlas.ts` `paintLookArrays` under `scripts/house-preview/nodeDom.ts` stubs (@napi-rs/canvas) |
@@ -54,8 +54,10 @@ measurement. One command covers both routes.
 
 The far and roof distance tiers, mipmaps and the cell-tap prefilter, the lit (Lambert) and city-look shaders (sun,
 wall gain, grain: the ride's default frame is lit and in the city look, so tones differ from a ride frame), the
-analytic window SDF, shadows, the ground lift, post-processing, and the runtime's tile-wide row rhythm for window
-layers unless `--whole-tile` is given (~1.5 s per render). Overrides: until H1's resolver lands, only the front's
+analytic window SDF, shadows, the ground lift and post-processing. The chunk holds the pand's row (its tile's
+buildings within 30 m), not the whole group tile: a building's mesh depends on its chunk-mates (alone, with the row
+only as context, the Nassaukade pand lost its window heads and balconies), and the row drew byte-identical pixels to
+`--whole-tile` there; use `--whole-tile` (~4 s a render) when in doubt. Overrides: until H1's resolver lands, only the front's
 gable reaches the generic path (`monumentGable`); every other design field is listed under
 `overrides.notApplied` in `measure.json`.
 
@@ -67,11 +69,17 @@ ride frame; for shape, rhythm, openings and wall colour, the preview is the tool
 
 | Run | Time |
 |---|---|
-| Cold, atlas cached (`time npm run house:preview -- 0363100012164843`) | 1.5 s wall (0.95 s in the script) |
-| First run, atlas painted | +0.8 s |
-| `--watch` re-render, front only | 0.09–0.17 s |
-| `--watch` re-render with `--photo` | 0.18–0.34 s |
-| `render.ts` one ortho frame of the same face (Chromium + SwiftShader, `ortho-compare.ts`) | see the H2 hand-back on #338 |
+| Cold, atlas cached (`time npm run house:preview -- 0363100012164843`) | 1.5–1.8 s wall (0.95–1.3 s in the script; Node + tsx start the rest) |
+| First run, atlas painted (186 layers at 256 px) | 3.7 s wall (paint 0.8–1.2 s) |
+| `--watch` re-render, front only | 0.09–0.20 s |
+| `--watch` re-render with `--photo` (two measurements + sheet) | 0.18–0.35 s |
+| `--whole-tile` (6,364 buildings in the chunk) | ~4.8 s |
+| `render.ts` (Chromium + SwiftShader): first frame in-process, browser launch and bundle included | 1.76 s |
+| `render.ts` further frames in the same browser | 0.06–0.13 s |
+
+`render.ts` is not slower per frame; it renders a GLB, and the generic streamed path (most of the city) has none.
+The preview's gain is that it needs no GLB, no compile, no dev server and no browser lock (`/tmp/canal-pw.sh`
+waits measured 40 s on 2026-11-10).
 
 Acceptance sheets: `scripts/house-preview/gate.ts` puts the preview beside the `render.ts` frame of the same pand's
 GLB and the photo (`/tmp/canal-pw.sh node --import tsx scripts/house-preview/gate.ts --face=<face>:<pand> --recipe=<house>`).
@@ -103,8 +111,9 @@ Flags
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
                       intent names this pand) with the recipe compiler and render its GLB (renderElevation,
                       flat game colours) instead of the streamed generic path
-  --whole-tile        build the chunk from every building of the pand's z14 tile, as the runtime groups it
-                      (window layers follow the tile's row rhythm; ~1.5 s per render instead of ~15 ms)
+  --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
+                      it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
+                      which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
   --watch             keep tile, neighbours, streets and atlas in memory and re-render whenever the spec/intent
                       file changes (needs --spec or --intent)
   --look <look>       atlas look (default photo)
@@ -120,6 +129,6 @@ Overrides (until the HouseSpec resolver of lane H1 lands): front gable -> monume
 listed under overrides.notApplied in measure.json (the generic path has no property for it yet).
 
 Not reproduced: the far and roof distance tiers, mipmaps, the lit/city-look shaders (sun, wall gain, grain),
-analytic window SDF, shadows, post-processing. When those matter (a lighting or tier question), fall back to
+analytic window SDF, shadows, the ground lift, post-processing. When those matter (a lighting or tier question), fall back to
 scripts/building-recipes/render.ts (headless Chromium) or a ride frame.
 ```

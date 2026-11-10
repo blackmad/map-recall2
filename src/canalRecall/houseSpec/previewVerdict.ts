@@ -22,12 +22,16 @@ export type PreviewVerdict = {
   classes: { a: string; b: string };
 };
 
-/** `a`: the render; `b`: the reference (photo or the render.ts frame). Abstains when the reference is unusable. */
-export function previewVerdict(a: FacadeMeasurement, b: FacadeMeasurement): PreviewVerdict {
+/**
+ * `a`: the render; `b`: the reference. A photo reference abstains when it is unusable (foliage, washed out, too few
+ * usable cells); a render reference (`reference: 'render'`, e.g. the render.ts frame) never does: its light walls
+ * read as "washed out" and it has no foliage to hide behind.
+ */
+export function previewVerdict(a: FacadeMeasurement, b: FacadeMeasurement, reference: 'photo' | 'render' = 'photo'): PreviewVerdict {
   const abstain: string[] = [];
-  if (b.usableFraction < LIKENESS.minUsable) abstain.push(`reference usable cells ${(b.usableFraction * 100).toFixed(0)} % < ${LIKENESS.minUsable * 100} %`);
-  if (b.foliageFraction > LIKENESS.maxFoliage) abstain.push(`reference foliage ${(b.foliageFraction * 100).toFixed(0)} % > ${LIKENESS.maxFoliage * 100} %`);
-  if (b.washedOutFraction > LIKENESS.maxWashedOut) abstain.push(`reference washed out ${(b.washedOutFraction * 100).toFixed(0)} % > ${LIKENESS.maxWashedOut * 100} %`);
+  if (reference === 'photo' && b.usableFraction < LIKENESS.minUsable) abstain.push(`reference usable cells ${(b.usableFraction * 100).toFixed(0)} % < ${LIKENESS.minUsable * 100} %`);
+  if (reference === 'photo' && b.foliageFraction > LIKENESS.maxFoliage) abstain.push(`reference foliage ${(b.foliageFraction * 100).toFixed(0)} % > ${LIKENESS.maxFoliage * 100} %`);
+  if (reference === 'photo' && b.washedOutFraction > LIKENESS.maxWashedOut) abstain.push(`reference washed out ${(b.washedOutFraction * 100).toFixed(0)} % > ${LIKENESS.maxWashedOut * 100} %`);
   const ha = rgbToHsl(a.wall.normalised), hb = rgbToHsl(b.wall.normalised);
   const dL = ha[2] - hb[2];
   let dHue: number | null = null;

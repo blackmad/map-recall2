@@ -23,4 +23,5 @@ test('an unusable reference abstains', () => {
   const v = previewVerdict(m({}), m({ foliageFraction: 0.4 }));
   assert.equal(v.verdict, 'NO EVIDENCE');
   assert.match(v.reasons[0], /foliage/);
+  assert.equal(previewVerdict(m({}), m({ washedOutFraction: 0.5 }), 'render').verdict, 'PASS');
 });
