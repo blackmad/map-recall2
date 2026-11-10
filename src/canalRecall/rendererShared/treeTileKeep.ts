@@ -5,7 +5,7 @@
 //  - a keep band: a resident tile stays while it ranks within `budget + keepExtra` of the wanted (in-view) tiles; a
 //    tile not yet resident is only added within `budget`. At most `budget + keepExtra` tiles are drawn.
 //  - a recently-dropped cache: a tile that does leave keeps its parsed records for `cacheMs` (at most `cacheMax`
-//    tiles, oldest evicted first), so coming back within that time restores it without a fetch or parse.
+//    tiles, oldest evicted first; 8 held only ~11 s of a 42-drop/min flight, 24 holds about the 45 s aerial loop), so coming back within that time restores it without a fetch or parse.
 // `?treeTileKeep=0` (or `window.__canalRecallTreeTileKeep = false`) restores the plain nearest-12 set and no cache.
 
 export const TREE_TILE_KEEP_DEFAULT = true;
@@ -21,7 +21,7 @@ export function treeTileKeepFlag(): boolean {
 }
 
 export type TileKeepOptions = { budget: number; keepExtra: number; cacheMax: number; cacheMs: number };
-export const TREE_TILE_KEEP: TileKeepOptions = { budget: 12, keepExtra: 4, cacheMax: 8, cacheMs: 90_000 };
+export const TREE_TILE_KEEP: TileKeepOptions = { budget: 12, keepExtra: 4, cacheMax: 24, cacheMs: 60_000 };
 
 /**
  * The tiles to hold. `ranked` are the wanted tile keys, nearest first. Off (`keepExtra` 0) this is the first `budget`.

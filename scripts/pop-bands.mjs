@@ -19,6 +19,9 @@
 //  - frame diff: pop-in.mjs's detector (camera motion cancelled per block, dE76 20, blobs >= 192 screen px) on every
 //    frame; a frame's blob area is charged to the tiers whose on-screen events landed in that frame or the one before
 //    (split evenly), in the band of the nearest such event. Frames with no event are 'unexplained' (motion residual).
+// --burst <dir> (lane P6 #334): at the first two tree rebuilds that add or drop >= 3000 instances the flight stops and
+//    the frame before and the frames 0/100/200/300/450/600/750 ms after are written (half resolution JPEG), then the
+//    flight resumes: what a dissolve (or a one-frame swap with ?treeFade=0) looks like on this device.
 import { chromium, devices } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -32,6 +35,7 @@ const warmup = Number(opt('warmup', '8')), measure = Number(opt('measure', '60')
 const speed = Number(opt('speed', mode === 'aerial' ? '120' : '9'));
 const extraQs = opt('qs', '');
 const framesDir = opt('frames', null);
+const burstDir = opt('burst', null);
 const origin = `http://127.0.0.1:${process.env.PORT || 4750}`;
 const BANDS = [250, 600, 1200];
 const bandOf = d => d == null ? 'unplaced' : d < 250 ? '0-250' : d < 600 ? '250-600' : d < 1200 ? '600-1200' : '>1200';
@@ -157,7 +161,7 @@ const setup = await page.evaluate(workerSrc => {
     landmarkAdd: wrap(sl, '_add', function (base, a) { const r = base.apply(this, a); const en = (this._entries || []).find(e => e.spec.id === a[0]?.id); log('landmark', 'arrive', !!(en && this._levelFades?.has?.(en)), null, a[0]?.id, anchorOf(a[0])); return r; }),
     landmarkDrop: wrap(sl, '_dropEntries', function (base, a) { const objs = (this._entries || []).filter(e => a[0]?.has?.(e.spec.id)).map(e => [e.spec.id, anchorOf(e.spec, e)]); const r = base.apply(this, a); for (const [id, an] of objs) log('landmark', 'leave', false, null, id, an); return r; }),
     landmarkLevel: wrap(sl, '_swapLevel', function (base, a) { const r = base.apply(this, a); log('landmark', 'swap', !!this._levelFades?.has?.(a[0]), null, `${a[0]?.spec?.id}:${a[2]}`, anchorOf(a[0]?.spec, a[0])); return r; }),
-    trees: wrap(tr, 'rebuild', function (base, a) { this.lastFade = null; const t0 = performance.now(); const r = base.apply(this, a); const ms = performance.now() - t0; const lf = this.lastFade; log('trees', 'rebuild', !!lf?.dissolved, null, lf ? `+${lf.entered}/-${lf.left}/=${lf.kept}` : ''); if (P.on) P.events.at(-1).ms = +ms.toFixed(1); return r; }),
+    trees: wrap(tr, 'rebuild', function (base, a) { if (P.burstOn && !P.burst && (P.bursts?.length ?? 0) < 2 && P.lastShot) { P.pre = P.lastShot; } this.lastFade = null; const t0 = performance.now(); const r = base.apply(this, a); const ms = performance.now() - t0; const lf = this.lastFade; log('trees', 'rebuild', !!lf?.dissolved, null, lf ? `+${lf.entered}/-${lf.left}/=${lf.kept}` : ''); if (P.on) P.events.at(-1).ms = +ms.toFixed(1); if (P.burstOn && !P.burst && (P.bursts?.length ?? 0) < 2 && lf && lf.entered + lf.left >= 3000) { window.__go = false; P.burst = { t0: performance.now(), key: `+${lf.entered}/-${lf.left}`, shots: [['pre', P.pre]], next: 0 }; } return r; }),
     ground: wrap(og, 'install', function (base, a) { const before = this.resident?.get?.(a[0]?.key)?.group; const r = base.apply(this, a); const now = this.resident?.get?.(a[0]?.key)?.group; if (now && now !== before) log('ground', before ? 'swap' : 'arrive', false, now, a[0]?.key); return r; }),
   };
   // Tree tile churn (lane P6 #334): every municipal tree tile fetch and drop while measuring. A refetch is a fetch of
@@ -187,6 +191,12 @@ const setup = await page.evaluate(workerSrc => {
     const t0 = performance.now();
     const r = render(...a);
     if (P.on) (P.renderMs ||= []).push(performance.now() - t0);
+    if (P.burstOn) {
+      const src = host.getCanvas ? host.getCanvas() : host.canvas, shot = () => { const c = document.createElement('canvas'); c.width = src.width >> 1; c.height = src.height >> 1; c.getContext('2d').drawImage(src, 0, 0, c.width, c.height); return c.toDataURL('image/jpeg', 0.8); };
+      const B = P.burst, at = [0, 100, 200, 300, 450, 600, 750];
+      if (!B) P.lastShot = shot();
+      else if (B.next < at.length && performance.now() - B.t0 >= at[B.next]) { B.shots.push([`${Math.round(performance.now() - B.t0)}ms`, shot()]); B.next++; if (B.next === at.length) { (P.bursts ||= []).push({ key: B.key, shots: B.shots }); P.burst = null; P.lastShot = null; window.__go = true; } }
+    }
     if (P.on) {
       for (const e of P.pending) { try { place(e); } catch (err) { e.err = String(err).slice(0, 80); } }
       P.pending.length = 0;
@@ -206,13 +216,13 @@ await page.evaluate(() => { window.__go = true; });
 await page.waitForTimeout(warmup * 1000);
 if (framesDir) await page.evaluate(() => { window.__pbKeep = true; });
 const heap0 = await page.evaluate(() => performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null);
-await page.evaluate(() => { window.__pb.on = true; });
+await page.evaluate(b => { window.__pb.on = true; window.__pb.burstOn = b; }, !!burstDir);
 await page.waitForTimeout(measure * 1000);
 await page.evaluate(() => { window.__pb.on = false; window.__pb.worker.postMessage({ type: 'dump' }); });
 await page.waitForFunction(() => window.__pb.dump && window.__pb.results.length >= window.__pb.captures.length - 1, null, { timeout: 900_000, polling: 1000 });
 const raw = await page.evaluate(() => {
   const P = window.__pb, vm = canalRecallGame.vectorMap;
-  return { events: P.events.map(({ obj, ...e }) => e), results: P.results, captures: P.captures, heapMB: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
+  return { bursts: P.bursts ?? [], events: P.events.map(({ obj, ...e }) => e), results: P.results, captures: P.captures, heapMB: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
     fog: vm._sharedFrame.scene.fog ? { near: Math.round(vm._sharedFrame.scene.fog.near), far: Math.round(vm._sharedFrame.scene.fog.far) } : null,
     limit: window.__canalRecallDrawLimitNow?.() ?? null, dbg: P.dbg,
     // Frame cost: the shared frame's main-pass wall time (ms, CPU side of three's render) and the frame gaps.
@@ -287,6 +297,7 @@ const secs = (raw.captures.at(-1)[1] - raw.captures[0][1]) / 1000;
 const summary = { treeTiles: raw.treeTiles, renderMs: raw.renderMs, gaps: raw.gaps, info: raw.info, gl: raw.gl, stats: raw.stats, mode, device, qs, seconds: +secs.toFixed(1), frames: raw.captures.length, fog: raw.fog, limit: raw.limit, heapMB: { start: heap0, end: raw.heapMB, endGC: heapGC }, heapByCtor, diffPxTotal: total, diffPxUnexplained: unexplained, tiers, hooked: setup.hooked, rails: setup.rails, errors };
 fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, JSON.stringify({ summary, events: raw.events }, null, 1));
+if (burstDir) { fs.mkdirSync(burstDir, { recursive: true }); raw.bursts.forEach((b, j) => b.shots.forEach(([lab, url], k) => url && fs.writeFileSync(path.join(burstDir, `${device}-b${j}-${k}-${lab}.jpg`), Buffer.from(url.split(',')[1], 'base64')))); console.log('bursts', raw.bursts.map(b => b.key)); }
 if (framesDir) { fs.mkdirSync(framesDir, { recursive: true }); dump.forEach((k, j) => fs.writeFileSync(path.join(framesDir, `${mode}-${device}-${j}-f${k.i}-${k.area}px.jpg`), Buffer.from(k.jpg.split(',')[1], 'base64'))); }
 console.log(`${mode} ${device} ${qs}: ${summary.seconds}s ${summary.frames} frames; fog ${JSON.stringify(raw.fog)} limit ${JSON.stringify(raw.limit)}; diff px ${total} (unexplained ${unexplained}); heap ${heap0}->${raw.heapMB} MB (after GC ${heapGC})`);
 console.log('tree tiles', JSON.stringify(raw.treeTiles));
