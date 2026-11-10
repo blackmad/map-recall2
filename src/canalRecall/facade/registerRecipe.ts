@@ -63,8 +63,31 @@ export type RegisterRead = 'gable' | 'era' | 'finish' | 'dormer' | 'stoneBands' 
 //         them and the wall was in view (Langestraat 175320 stoep + deuromlijsting, Nieuwmarkt 20-22 speklagen), so no
 //         likeness gain is shown; balcony, bay window and shutters come ~90 % from long descriptions that cover side and
 //         rear walls and whole complexes; a dormer's roof plane is not checked from the street.
+//   Second pass (lane register-extras 2026-11-10, docs/reports/register-extras-20261110.md): the first strips could not
+//   show an extra at all (the thin fade read the shared frame's focal length as ~0, and the strip spec left the rider at
+//   its first spot so later frames were coarse shells). With both fixed and the stated parts dressed first:
+//   release: stoop, door surround (drawn at the stated door where the photo has one: Langestraat 175320, Vijzelstraat 171023 from its
+//            second side; small, never wrong in the frames).
+//   hold:    the rest, each with its reason in REGISTER_HOLD_REASONS.
 export const REGISTER_ELEMENT_READS = Object.keys(ELEMENT_COMPONENTS) as ReadonlyArray<keyof typeof ELEMENT_COMPONENTS>;
-export const REGISTER_READS_HELD: ReadonlySet<RegisterRead> = new Set<RegisterRead>([...REGISTER_ELEMENT_READS, 'stoneBands', 'dormer']);
+/** Released element reads (drawn and judged against the photo in the frontal strip). */
+export const REGISTER_RELEASED_ELEMENTS: ReadonlySet<string> = new Set(['stoop', 'doorSurround']);
+/** Why each held read stays held (lane register-extras 2026-11-10). */
+export const REGISTER_HOLD_REASONS: Readonly<Partial<Record<RegisterRead, string>>> = {
+  hoistBeam: 'not in view in any strip frame where stated (176312 at 38 m, 168578); unverified',
+  crownCornice: 'cornice-gable fronts draw their crown in the roof (roofKind gable refuses the extra); crown out of frame elsewhere',
+  corniceConsoles: 'same as kroonlijst; consoles under a roof-drawn cornice are not expressible',
+  gablestone: 'a 0.6 m plaque, not distinguishable at 12-40 m; unverified',
+  pilasters: 'stated on 169116 where the photo shows a plain brick front: register pilasters are often inside or on the side',
+  anchors: 'not visible at strip distance; unverified',
+  cellarEntrance: 'basement well not visible beside the stated stoop on 175320; unverified',
+  balcony: 'no visible balcony on 175318 in frame; ~90 % of balcony statements come from long texts on side/rear walls',
+  bayWindow: 'draws as a flat pale glass panel on the 176346 gallery block: reads wrong',
+  shutters: 'not drawn on 168578 (1935 office) in frame; ~80 % from long texts',
+  stoneBands: 'string courses are a 6 cm drip edge: speklagen bands are not expressible (Nieuwmarkt 20-22: 6 px change)',
+  dormer: 'roof planes not in frame from the street',
+};
+export const REGISTER_READS_HELD: ReadonlySet<RegisterRead> = new Set<RegisterRead>([...REGISTER_ELEMENT_READS.filter(r => !REGISTER_RELEASED_ELEMENTS.has(r)), 'stoneBands', 'dormer']);
 /** No read held: the lane's full set (tests and a review pass that wants every read). */
 export const REGISTER_READS_NONE_HELD: ReadonlySet<RegisterRead> = new Set<RegisterRead>();
 const allowed = (read: RegisterRead, held: ReadonlySet<RegisterRead>) => !held.has(read);

@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { decorateFacade } from '../genericFacades.ts';
 import { decorateRoof } from '../roofMesh.ts';
-import { ELEMENT_COMPONENTS, REGISTER_READS_HELD, REGISTER_READS_NONE_HELD, registerFactsEnabled, registerForce, registerPatch, registerYear, withRegisterFacts, eraOfYear, type PublishedFacts } from './registerRecipe.ts';
+import { ELEMENT_COMPONENTS, REGISTER_HOLD_REASONS, REGISTER_READS_HELD, REGISTER_READS_NONE_HELD, registerFactsEnabled, registerForce, registerPatch, registerYear, withRegisterFacts, eraOfYear, type PublishedFacts } from './registerRecipe.ts';
 
 const ring = [[4.9, 52.37], [4.90007, 52.37], [4.90007, 52.37008], [4.9, 52.37008], [4.9, 52.37]];
 const house = (props: Record<string, unknown> = {}) => ({ type: 'Feature' as const, properties: <Record<string, unknown>>{ id: 'NL.IMBAG.Pand.1', height: 14, minHeight: 0, constructionYear: 1905, appearanceStyleSource: 'citywide-identity-palette-v3-not-measured', ...props }, geometry: { type: 'Polygon', coordinates: [ring] } });
@@ -117,12 +117,15 @@ test('forced extras dress first: each stated part alone is drawn on (nearly) eve
   assert.equal(registerFirst(WALL_COMPONENTS, [], true), WALL_COMPONENTS);
 });
 
-test('held reads (review 2026-11-10): the default ships era, finish and gable; every forced extra and the dakkapel are held', () => {
+test('held reads (reviews 2026-11-10): era, finish, gable, stoop and door surround ship; every other extra and the dakkapel are held, each with a reason', () => {
   const f: PublishedFacts = { gable: 'bell', facadeDate: date(1662), finish: 'plaster', stoneBands: true, elements: [{ key: 'stoop', term: 'stoep' }, { key: 'balcony', term: 'balkon' }, { key: 'bayWindow', term: 'erker' }, { key: 'shutters', term: 'luiken' }, { key: 'dormer', term: 'dakkapel' }] };
   const p = registerPatch(f, house().properties);
-  assert.deepEqual(Object.keys(p).sort(), ['bagConstructionYear', 'constructionYear', 'monumentGable', 'registerFinish']);
-  assert.deepEqual(registerForce(f), []);
-  for (const read of ['balcony', 'bayWindow', 'shutters', 'stoop', 'hoistBeam', 'stoneBands', 'dormer'] as const) assert.ok(REGISTER_READS_HELD.has(read), read);
+  assert.deepEqual(Object.keys(p).sort(), ['bagConstructionYear', 'constructionYear', 'monumentGable', 'registerFinish', 'registerForce']);
+  assert.deepEqual(registerForce(f), ['stoop']);
+  assert.deepEqual(registerForce({ elements: [{ key: 'doorSurround', term: 'deuromlijsting' }, { key: 'cellarEntrance', term: 'kelderpui' }] }), ['door-surround']);
+  for (const read of ['balcony', 'bayWindow', 'shutters', 'hoistBeam', 'crownCornice', 'corniceConsoles', 'pilasters', 'stoneBands', 'dormer'] as const) assert.ok(REGISTER_READS_HELD.has(read) && REGISTER_HOLD_REASONS[read], read);
+  for (const read of ['stoop', 'doorSurround'] as const) assert.ok(!REGISTER_READS_HELD.has(read), read);
+  for (const read of REGISTER_READS_HELD) assert.ok(REGISTER_HOLD_REASONS[read], `${read} is held without a reason`);
   for (const read of ['era', 'finish', 'gable'] as const) assert.ok(!REGISTER_READS_HELD.has(read), read);
   // A pand whose only facts are held reads comes back as the same object (byte-identical chain).
   const plain = house();
