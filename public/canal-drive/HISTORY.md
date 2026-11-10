@@ -1,5 +1,30 @@
 # Canal Recall — what is built
 
+**Batch a1 round 2: new-build family on, FPS round 2, calm levers, register recipes, Vogelbuurt-Noord (2026-11-10, session a1).**
+- **New-build family on by default** (lane/newbuild-kit-20261110 round 2 at be3307cf7, opus). Round 2 added:
+  - per-pand measured walls (T0 modern-pand-walls first, then panorama samples), outranking the area draw;
+  - balcony-band and tall tags, and years for 3,595 OSM gap fills;
+  - the Houthavenkade 26 shader window grid on unlisted walls (feedback 75242f30, reinstalled).
+
+  Strips: 8 PASS, 1 WARN. Integrator judged the sheet: Houthaven brick, the dark 2018 Houthaven front, IJburg and the banded Zeeburgereiland block move toward the photos. Danzigerkade goes dark brown against white offices; Sluisbuurt 2025 is wrong either way. `?newbuildFamily=0` turns it off. Unit tests that pin the old presets import `testing/newbuildFamilyOff.ts` first.
+- **FPS camera round 2** (lane/fps-camera-20261109 at cb51850d2, opus):
+  - the ground ring is planned from the chase pose;
+  - the DESTINATION pin is hidden at eye level while racing (renderer.js reads `__canalRecallFpsHidePin`);
+  - a bridge-deck spec and clearance-guard pose tests.
+- **Calm frame levers (#161)** (lane/cartoon-look-20261109 at 30434d983, opus). Five levers, all opt-in: `labelCalm`, `treeCalm`, `roofFamily`, `lightHier` and `corridorFocus`. Amsterdam fronts come under `?look=toon`, and the worker now forwards the look flags.
+  - `labelCalm` is the only lever that hits its target (≤ 6 POIs, none in the top third). It waits for a real chase-camera ride check before going on by default.
+  - `corridorFocus` and `lightHier` darken the frame against the brighter-palette priority, so they stay off.
+  - `roofFamily` measured 0.00 change; the cause is open.
+- **Register recipes** (lane/register-recipes-20261110 at 4e35b70c0, opus). Monument register facts set era, wall finish and gable in the generic chain (`?registerFacts=0` off). `monument-facts.json` is published without sourceText (1.42 MB). Forced extras and dakkapel are held: `registerForce` draws nothing in the live tier.
+- **Vogelbuurt-Noord** (lane/buurt-vogelbuurt-20261110 at 5150813b6, sonnet). The Opus strip verdict is applied:
+  - stone #d6d9cc, brick #74584a and dormerAt {0.10, 0.72};
+  - crown pins and 32 holds;
+  - a `dormerLights` kit field and `roof.rakeClear`.
+
+  Installed: 11 pands in 4 Meeuwenplein runs. Not installed:
+  - 14 verdict pands fail the batch strip-quality gate on 2025-09-22 strips the reviewer accepted by eye;
+  - 4 are lone survivors of their run.
+
 **Feedback F: Silodam whole, Station Sloterdijk modelled (2026-11-10, lane/landmarks-silodam-sloterdijk-20261110 at c0ae615f0, opus).**
 - **Silodam** ("half of silodam seems unfinished?", 95ff35e3). The MVRDV slab is three BAG panden, ~131 m long. The `silodam` model covered only the northern pand. The southern half (OSM w274024358 / BAG 0363100012187517 on piers, and 187451 at the land end) was never suppressed and drew as plain 3DBAG boxes. The builder now covers the whole slab:
   - IJ face from the Commons long elevation 15224999649: four sections, an orange container base, blue raked V-piers and a glazed public storey;

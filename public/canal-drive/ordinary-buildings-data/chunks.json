@@ -89054,7 +89054,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "3044dd8223e84bfe",
+    "buildVersion": 4,
+    "bytes": 33576,
+    "triangles": 1479
+   }
   },
   {
    "id": "chunk-face-meeuwenplein-9-19-r1",
@@ -89399,7 +89405,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "63f3647c9ad9ccd7",
+    "buildVersion": 4,
+    "bytes": 34324,
+    "triangles": 1470
+   }
   },
   {
    "id": "chunk-face-meeuwenplein-29-39-r1",
@@ -89643,7 +89655,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ffe6fa5873d9bc74",
+    "buildVersion": 4,
+    "bytes": 29872,
+    "triangles": 1311
+   }
   },
   {
    "id": "chunk-face-meeuwenplein-41-45",
@@ -89988,7 +90006,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "4d72c22d9af31117",
+    "buildVersion": 4,
+    "bytes": 33120,
+    "triangles": 1467
+   }
   }
  ]
 }
