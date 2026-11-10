@@ -62,4 +62,22 @@ if (process.argv[1]?.endsWith('house-crops/evaluate-judge.ts')) {
     await fs.writeFile(path.join('artifacts/house-crops', `${code}-disagree.json`), JSON.stringify(dis, null, 1));
     console.log(`disagreements (judge decision vs label): ${rows.filter(r => (r.hard && r.score >= t) !== r.good).length} of ${rows.length}; 20 largest written`);
   }
+  // H4c picker: the best-of-N crop per pand (pick.ts) against the labels of the picked crops (labels/<code>-picks.json) and of the H4b crops
+  const picksFile = path.resolve('scripts/house-crops/judge', `${code}-picks.json`), pl = path.resolve('scripts/house-crops/labels', `${code}-picks.json`);
+  const picks = await fs.readFile(picksFile, 'utf8').then(x => JSON.parse(x).picks as { pandId: string; best?: { quality: number; panoIds: string[] } }[]).catch(() => null);
+  if (picks) {
+    const extra: Record<string, Label> = await fs.readFile(pl, 'utf8').then(JSON.parse).catch(() => ({}));
+    const same = (a: string[], b: string[]) => [...a].sort().join() === [...b].sort().join();
+    const pool = new Map<string, { q: number; good: boolean }>();
+    for (const r of rows) pool.set(`${r.id}/${(labels[r.id] as Label).panoIds.join('+')}`, { q: r.score, good: r.good });
+    const have = picks.filter(p => p.best), lab = (p: typeof have[number]) => (extra[p.pandId] && same(extra[p.pandId].panoIds, p.best!.panoIds) ? extra[p.pandId] : labels[p.pandId] && same(labels[p.pandId].panoIds, p.best!.panoIds) ? labels[p.pandId] : null);
+    const labelled = have.filter(p => lab(p));
+    console.log(`\npicker: ${picks.length} pands re-rectified from the cache, ${have.length} with a hard-passing judged candidate, ${labelled.length} of those picks labelled`);
+    const good = labelled.filter(p => lab(p)!.label === 'good').length, h4b = have.filter(p => labels[p.pandId]?.label === 'good').length;
+    console.log(`true good rate of the judge-picked crop: ${good}/${labelled.length} = ${f(good / labelled.length)}; of the H4b-chosen crop on the same pands: ${h4b}/${have.length} = ${f(h4b / have.length)}`);
+    for (const p of labelled) pool.set(`${p.pandId}/${p.best!.panoIds.join('+')}`, { q: p.best!.quality, good: lab(p)!.label === 'good' });
+    const all = [...pool.values()], pos = all.filter(v => v.good).length;
+    for (const th of [0.3, 0.4, 0.5, 0.6]) { const sel = all.filter(v => v.q >= th), tp = sel.filter(v => v.good).length; console.log(`pool of ${all.length} labelled crops, threshold ${th}: picks ${sel.length}, precision ${f(tp / sel.length)} (${tp}/${sel.length}), recall ${f(tp / pos)}`); }
+    for (const th of [0.4, 0.5]) { const sel = labelled.filter(p => p.best!.quality >= th), tp = sel.filter(p => lab(p)!.label === 'good').length; console.log(`picked crops at ${th}: ${sel.length} of ${picks.length} pands (${f(sel.length / picks.length)}), ${tp} good = ${f(tp / sel.length)} of picks, ${f(tp / picks.length)} of all pands`); }
+  }
 }

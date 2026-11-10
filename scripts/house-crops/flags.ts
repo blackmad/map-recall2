@@ -67,8 +67,8 @@ export function usability(f: CropFlags, t: typeof THRESHOLDS = THRESHOLDS): Usab
  */
 export const HARD_REASONS = ['void', 'oblique', 'distance', 'blocked', 'narrow', 'short', 'blank'] as const;
 export const hardPass = (reasons: string[]): boolean => !reasons.some(r => (HARD_REASONS as readonly string[]).includes(r));
-/** The deployed judge threshold on `quality`. In-sample on the 150 labels: 0.3 gives precision 0.907, 0.35 gives 0.889, 0.4 gives 0.941 (recall 0.50); 0.4 is the lowest round value with a margin over the 0.9 gate (split-half thresholds ranged 0.285-0.367, so the held-out precision is lower: docs section 4a). */
-export const JUDGE_GOOD = 0.4;
+/** The deployed judge threshold on `quality`. On the 150 labels alone 0.4 gives precision 0.94 (recall 0.50) but on the pool of 228 labelled crops that includes the 78 judge-picked best-of-N crops, 0.4 gives 0.86 and 0.5 gives 0.94 (45/48, recall 0.42): the best of several years is a winner's-curse selection, so the threshold is set on the pool. See docs/house-line.md section 4a. */
+export const JUDGE_GOOD = 0.5;
 /** H4c decision: passes the hard flags and the judge score reaches `threshold`. */
 export const judgedGood = (reasons: string[], score: number | undefined, threshold: number): boolean => hardPass(reasons) && score !== undefined && score >= threshold;
 
