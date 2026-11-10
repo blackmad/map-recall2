@@ -98,6 +98,12 @@ const SPOTS: Spot[] = [
   { name: 'transvaal5b-afrikanerplein-33-51', centre: [4.9171430, 52.3518849], standDeg: 315, standM: 30, view: 'cockpit' },
   { name: 'transvaal5b-schalkburgerstraat-59-77', centre: [4.9209948, 52.3530040], standDeg: 234, standM: 30, view: 'cockpit' },
   { name: 'transvaal5b-schalkburgerstraat-99-115', centre: [4.9213461, 52.3527139], standDeg: 234, standM: 30, view: 'cockpit' },
+  // House line H2b (#338): the walls the Node preview's lit look is gated against (wall dL <= 0.03 vs the ride frame):
+  // Nassaukade 0363100012164843 (generic, east-facing: sky only), Bloemgracht-side 0363100012169916 (generic, faces
+  // 160: sunlit), and the Nassaukade face of the installed corner chunk-face-clercq-236681 (0363100012116526).
+  { name: 'house-preview-nassaukade-164843', centre: [4.873841, 52.3720195], standDeg: 85, standM: 14, view: 'cockpit' },
+  { name: 'house-preview-169916', centre: [4.8809335, 52.374876], standDeg: 160, standM: 12, view: 'cockpit' },
+  { name: 'house-preview-nassaukade-116526', centre: [4.873862, 52.371936], standDeg: 80, standM: 14, view: 'cockpit' },
   { name: 'aerial-westerdok', centre: [4.8860, 52.3840], standDeg: 0, standM: 0, faceDeg: 20, camZoom: 0.16 },
   // House line H1 (#337): the Nieuwmarkt 4-22 row by the Waag at the user's 2026-11-09 photo pose (register gables), and
   // a Kinkerstraat block face whose HouseSpec bays and measured walls reach the generic path (live tiles, before/after).
