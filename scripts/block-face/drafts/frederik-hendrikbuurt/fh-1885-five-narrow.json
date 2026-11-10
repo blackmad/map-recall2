@@ -1,0 +1,446 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "fh-1885-five-narrow",
+ "district": "frederik-hendrikbuurt",
+ "description": "DRAFT (scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)) for the review turn. Frederik Hendrikbuurt-Zuidoost family 1885-1889, 5 storeys, <4.9 m wide: 57 pands on 4 block faces; median cornice 13.69 m, 3 window columns, wall #64584e. Pane layout, head kind, cornice kind, crowns and ground variants are NOT measured: see draft.unmeasured.",
+ "fit": {
+  "widthM": [
+   4.6,
+   4.8
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1887,
+   1888
+  ],
+  "eavesM": [
+   13.5,
+   14
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "roof": "pitched",
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "stucco": false,
+  "note": "drafted: 57 pands, 4 faces; see draft.fields for n and spread of every number"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "cornice": "simple",
+  "windows": "sash",
+  "storeyHeights": [
+   3.34,
+   2.75,
+   2.95,
+   2.67
+  ]
+ },
+ "crowns": {
+  "plain": {
+   "gable": "cornice",
+   "note": "placeholder: 36 of 57 pands show a skyline crown over the cornice (draft.observations); the crown kind is for the review turn"
+  }
+ },
+ "palettes": {
+  "measured": {
+   "door": "black",
+   "brick": "#64584e",
+   "frame": "#aaa8a1",
+   "stone": "#aaa8a1",
+   "cornice": "#78716e"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "rise": 0.25,
+  "pitchDeg": 45,
+  "evidence": "draft placeholder: 57 pands, 3DBAG roof shape slanted; the covering and pitch are not measured"
+ },
+ "rhythm": {
+  "bays": "3 window axes (most frequent window-column count on the opening mask (51 of 57 pands; a miscount loses a window, so the mode, not the median))",
+  "windowsPerStorey": "ground: not read | upper storeys: 3 each",
+  "symmetry": "not measured (draft)",
+  "groundFloor": "not measured (draft): the ground storey is not read",
+  "signage": "not measured (draft)",
+  "roofline": "36 of 57 pands show a skyline crown over the cornice (kind not measured)",
+  "citation": "drafted from 57 pand spans of 4 strips: scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "houweningen-2-38",
+   "pands": [
+    "161605",
+    "153807",
+    "158366",
+    "162380",
+    "163315",
+    "159933",
+    "156096",
+    "159242",
+    "163814",
+    "167267",
+    "165393",
+    "159135",
+    "163222",
+    "162506",
+    "158704",
+    "153786"
+   ],
+   "citation": "drafted from 16 pand spans of the houweningen-2-38 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "reigersbergen-1-37",
+   "pands": [
+    "161489",
+    "156678",
+    "155831",
+    "156059",
+    "152999",
+    "163303",
+    "163395",
+    "157676",
+    "155474",
+    "153212",
+    "166918",
+    "153758",
+    "164833",
+    "156927",
+    "153810",
+    "162778"
+   ],
+   "citation": "drafted from 16 pand spans of the reigersbergen-1-37 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "houweningen-1-31",
+   "pands": [
+    "160230",
+    "157843",
+    "165392",
+    "158949",
+    "157672",
+    "158307",
+    "156727",
+    "167046",
+    "157692",
+    "166596",
+    "165332",
+    "162863",
+    "156794",
+    "159954"
+   ],
+   "citation": "drafted from 14 pand spans of the houweningen-1-31 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "hendrik-134-154",
+   "pands": [
+    "156720",
+    "158151",
+    "157111",
+    "164721",
+    "167163",
+    "158916",
+    "152966",
+    "165508",
+    "160880",
+    "164007",
+    "152931"
+   ],
+   "citation": "drafted from 11 pand spans of the hendrik-134-154 strip (draft.fields carry the medians)"
+  }
+ ],
+ "notes": [
+  "DRAFTER VERDICT: LOW CONFIDENCE. The houweningen-2-38 strip (2021-03-22) shows the street over its bottom quarter: the strip's ground line is well under the facade foot, so storey lines and eaves measured from it are offset (run the stripFoot.ts foot offset before trusting storeyHeights). Window columns, palette and widths are not affected.",
+  "Draft, not installed. Medians over 57 pands; refused below 8 pands or 3 faces."
+ ],
+ "draft": {
+  "generator": "scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+  "generatedAt": "2026-11-10",
+  "buurt": "Frederik Hendrikbuurt-Zuidoost",
+  "family": "1885-1889:5:<4.9",
+  "n": 57,
+  "faces": {
+   "houweningen-2-38": 16,
+   "reigersbergen-1-37": 16,
+   "houweningen-1-31": 14,
+   "hendrik-134-154": 11
+  },
+  "pands": [
+   "0363100012161605",
+   "0363100012153807",
+   "0363100012158366",
+   "0363100012162380",
+   "0363100012163315",
+   "0363100012159933",
+   "0363100012156096",
+   "0363100012159242",
+   "0363100012163814",
+   "0363100012167267",
+   "0363100012165393",
+   "0363100012159135",
+   "0363100012163222",
+   "0363100012162506",
+   "0363100012158704",
+   "0363100012153786",
+   "0363100012161489",
+   "0363100012156678",
+   "0363100012155831",
+   "0363100012156059",
+   "0363100012152999",
+   "0363100012163303",
+   "0363100012163395",
+   "0363100012157676",
+   "0363100012155474",
+   "0363100012153212",
+   "0363100012166918",
+   "0363100012153758",
+   "0363100012164833",
+   "0363100012156927",
+   "0363100012153810",
+   "0363100012162778",
+   "0363100012160230",
+   "0363100012157843",
+   "0363100012165392",
+   "0363100012158949",
+   "0363100012157672",
+   "0363100012158307",
+   "0363100012156727",
+   "0363100012167046",
+   "0363100012157692",
+   "0363100012166596",
+   "0363100012165332",
+   "0363100012162863",
+   "0363100012156794",
+   "0363100012159954",
+   "0363100012156720",
+   "0363100012158151",
+   "0363100012157111",
+   "0363100012164721",
+   "0363100012167163",
+   "0363100012158916",
+   "0363100012152966",
+   "0363100012165508",
+   "0363100012160880",
+   "0363100012164007",
+   "0363100012152931"
+  ],
+  "fields": {
+   "body.storeys": {
+    "source": "mode of the storeys over 57 pands (window storeys + ground where the strip profile was read, else 3DBAG)",
+    "share": 0.6,
+    "stat": {
+     "n": 57,
+     "median": 4,
+     "p25": 4,
+     "p75": 4,
+     "min": 3,
+     "max": 5
+    },
+    "note": "3DBAG storeys median 5 (it counts an attic the windows do not show)"
+   },
+   "match.years": {
+    "source": "BAG build year, p10..p90 over the family",
+    "stat": {
+     "n": 57,
+     "median": 1888,
+     "p25": 1887,
+     "p75": 1888,
+     "min": 1887,
+     "max": 1888
+    }
+   },
+   "fit.widthM": {
+    "source": "BAG/3DBAG front width, p10..p90 (rounded outward to 0.1 m)",
+    "stat": {
+     "n": 57,
+     "median": 4.7,
+     "p25": 4.69,
+     "p75": 4.71,
+     "min": 4.47,
+     "max": 4.83
+    }
+   },
+   "match.eavesM": {
+    "source": "3DBAG eaves, p10..p90 (rounded outward to 0.1 m)",
+    "stat": {
+     "n": 57,
+     "median": 13.69,
+     "p25": 13.56,
+     "p75": 13.78,
+     "min": 13.47,
+     "max": 14.07
+    }
+   },
+   "body.bays": {
+    "source": "most frequent window-column count on the opening mask (51 of 57 pands; a miscount loses a window, so the mode, not the median)",
+    "stat": {
+     "n": 51,
+     "median": 2,
+     "p25": 2,
+     "p75": 3,
+     "min": 1,
+     "max": 4
+    },
+    "share": 0.41,
+    "note": "counts 2/2/3 (quartiles), 3 on 41.18 % of the counted pands"
+   },
+   "body.storeyHeights": {
+    "source": "storey profile on the opening mask: ground = first floor line, upper = floor-to-floor, last = to the eaves (34 of 57 pands; 51 read, the rest show another storey count)",
+    "stat": {
+     "n": 34,
+     "median": 2.75,
+     "p25": 2.45,
+     "p75": 3.47,
+     "min": 1.63,
+     "max": 5.62
+    },
+    "note": "per storey medians (m): 3.34, 2.75, 2.95, 2.67; IQR ground 0.17, upper 1.02/0.25/0.31 - WIDE: over the soft limit, check against the photo"
+   },
+   "palettes.measured.brick": {
+    "source": "median RGB of the per-pand wall colour (palette-from-strip.ts / stripPalette.ts)",
+    "colour": {
+     "n": 57,
+     "hex": "#64584e",
+     "spread": 7.5,
+     "max": 40.3
+    }
+   },
+   "palettes.measured.frame": {
+    "source": "median per-pand frame colour",
+    "colour": {
+     "n": 57,
+     "hex": "#aaa8a1",
+     "spread": 6.7,
+     "max": 57.8
+    }
+   },
+   "palettes.measured.stone": {
+    "source": "median per-pand accent colour",
+    "colour": {
+     "n": 57,
+     "hex": "#aaa8a1",
+     "spread": 6.4,
+     "max": 54.9
+    }
+   },
+   "palettes.measured.cornice": {
+    "source": "median per-pand cornice colour",
+    "colour": {
+     "n": 57,
+     "hex": "#78716e",
+     "spread": 21.4,
+     "max": 146.1
+    }
+   },
+   "match.baysByWidth": {
+    "source": "window columns by frontage width band (bands with >= 3 pands): <99: 3"
+   }
+  },
+  "omitted": {
+   "body.windowHeights": "window share IQR over the hard limit 0.4 (0.21/0.16/0.52); medians were 0.65/0.68/0.7"
+  },
+  "unmeasured": [
+   "body.windows (pane layout)",
+   "body.windowHead (head kind: flat / segmental / round)",
+   "body.cornice kind (simple is a placeholder; presence is measured)",
+   "crowns (kind, dormers, gable: only the skyline rise is measured)",
+   "grounds (door side, shop; the ground storey is not read)",
+   "roof.material (3DBAG gives the shape, not the covering)",
+   "palettes.*.door"
+  ],
+  "observations": {
+   "skyline.eavesM": {
+    "source": "strip skyline cornice line (36 of 57 pands read under clean sky)",
+    "stat": {
+     "n": 36,
+     "median": 14.69,
+     "p25": 14.22,
+     "p75": 15.68,
+     "min": 12.55,
+     "max": 16.4
+    },
+    "note": "3DBAG median 13.69 m"
+   },
+   "autocorrelated bay columns": {
+    "source": "measureFacade pitch, 39 pands",
+    "stat": {
+     "n": 39,
+     "median": 3,
+     "p25": 3,
+     "p75": 3,
+     "min": 2,
+     "max": 6
+    }
+   },
+   "window width (m)": {
+    "source": "median width of the opening-column runs, 51 pands",
+    "stat": {
+     "n": 51,
+     "median": 1.2,
+     "p25": 0.95,
+     "p75": 2.55,
+     "min": 0.5,
+     "max": 4.1
+    }
+   },
+   "glazing share (upper storeys)": {
+    "source": "measureFacade not-wall share, 57 pands",
+    "stat": {
+     "n": 57,
+     "median": 0.53,
+     "p25": 0.38,
+     "p75": 0.7,
+     "min": 0.09,
+     "max": 1
+    }
+   },
+   "skyline crown": {
+    "source": "strip skyline: columns standing > 0.6 m over the cornice line",
+    "share": 0.63,
+    "stat": {
+     "n": 36,
+     "median": 2.42,
+     "p25": 2.02,
+     "p75": 3.01,
+     "min": 0.83,
+     "max": 4.8
+    },
+    "note": "median width 2.06 m; the crown kind is not measured"
+   },
+   "bands": {
+    "source": "palette band-row runs between 4.4 m and the cornice, 40 of 57 pands",
+    "share": 0.7,
+    "stat": {
+     "n": 103,
+     "median": 10.37,
+     "p25": 8.45,
+     "p75": 12.01,
+     "min": 4.62,
+     "max": 12.94
+    },
+    "note": "band kind (storey / lintel / speklagen / painted) is not measured; heights are the run centres above the ground"
+   }
+  },
+  "verdict": "DRAFTER VERDICT: LOW CONFIDENCE. The houweningen-2-38 strip (2021-03-22) shows the street over its bottom quarter: the strip's ground line is well under the facade foot, so storey lines and eaves measured from it are offset (run the stripFoot.ts foot offset before trusting storeyHeights). Window columns, palette and widths are not affected."
+ }
+}

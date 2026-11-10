@@ -113,6 +113,7 @@
   }
  ],
  "notes": [
+  "DRAFTER VERDICT: DO NOT USE. Low-rise gabled rows (2 window storeys under a gable, eaves ~7 m): the storey profile reads 0 of the pands (it assumes a ground storey top near 3.7 m), the 3DBAG count of 3 includes the gable storey, the wall colour split is two exposures of the same red brick (the strip has a cyan cast: #7e8179 / #3d3d38 against a red-brown photo wall). Kept only as the record of a failed family.",
   "Draft, not installed. Medians over 15 pands; refused below 8 pands or 3 faces."
  ],
  "draft": {
@@ -289,6 +290,7 @@
     },
     "note": "median width 1.13 m; the crown kind is not measured"
    }
-  }
+  },
+  "verdict": "DRAFTER VERDICT: DO NOT USE. Low-rise gabled rows (2 window storeys under a gable, eaves ~7 m): the storey profile reads 0 of the pands (it assumes a ground storey top near 3.7 m), the 3DBAG count of 3 includes the gable storey, the wall colour split is two exposures of the same red brick (the strip has a cyan cast: #7e8179 / #3d3d38 against a red-brown photo wall). Kept only as the record of a failed family."
  }
 }
