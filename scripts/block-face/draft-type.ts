@@ -71,7 +71,7 @@ function windowColumns(a: {mask: Uint8Array; cols: number; rows: number; cell: n
   return {count: real.length, widthM: widths.length ? r2(widths[Math.floor(widths.length / 2)]) : null};
 }
 
-export async function measureFace(face: string, ids: Set<string>, record: Map<string, PandRecord>): Promise<PandMeasure[]> {
+export async function measureFace(face: string, ids: Set<string>, record: Map<string, PandRecord>, opts: {brightSky?: boolean} = {}): Promise<PandMeasure[]> {
   const dir = path.join(FACES, face), strip = readJson(path.join(dir, 'strip.json'));
   const jpg = fs.existsSync(path.join(STAGING, face, 'strip.jpg')) ? path.join(STAGING, face, 'strip.jpg') : path.resolve(ROOT, strip.image);
   const raw = await stripRaw(jpg), out: PandMeasure[] = [];
@@ -81,7 +81,7 @@ export async function measureFace(face: string, ids: Set<string>, record: Map<st
     const f0 = facts.fronts[0], bagEaves = f0.eavesM >= 6 ? f0.eavesM : facts.heights.dak70pM;
     const storeys: number = facts.heights.storeys ?? rec.storeys3dbag ?? Math.max(2, Math.round(bagEaves / 3.1));
     const px: [number, number] = [Math.max(0, span.px[0]), Math.min(raw.width, span.px[1])], ppm = strip.pixelsPerMetre;
-    const sky = measureSkyline({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: ppm});
+    const sky = measureSkyline({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: ppm, brightSky: opts.brightSky});
     const skyOk = !!sky && sky.confidence >= 0.6 && sky.eavesM > 6;
     // The facade is read up to the lower of the 3DBAG and the photographed eaves (a gable's shoulder is no wall).
     const eavesM = skyOk ? Math.min(bagEaves, sky!.eavesM) : bagEaves;

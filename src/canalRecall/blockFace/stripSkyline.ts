@@ -21,13 +21,18 @@ export interface Skyline {
 
 export const SKYLINE = {run: 6, crownMinM: 0.6, eavesPercentile: 0.3, minTopM: 4} as const;
 
-export function isSky(p: Rgb): boolean {
+/**
+ * `brightSky` (opt-in, pand-fit 2026-11-10): an over-exposed tinted sky (the Rapenburg strips' #f8fde9) has a high HSL
+ * saturation near white, so also take any pixel whose every channel is over 225 as sky. Off by default: unchanged.
+ */
+export function isSky(p: Rgb, brightSky = false): boolean {
   if (Math.abs(p[0] - 128) <= 2 && Math.abs(p[1] - 128) <= 2 && Math.abs(p[2] - 128) <= 2) return true;
+  if (brightSky && p[0] > 225 && p[1] > 225 && p[2] > 225) return true;
   const [, s, l] = rgbToHsl(p);
   return (l > 0.72 && s < 0.25) || (l > 0.55 && p[2] > p[0] + 12 && p[2] > p[1]);
 }
 
-export function measureSkyline(a: {rgb: Uint8Array; width: number; height: number; x0: number; x1: number; pixelsPerMetre: number}): Skyline | null {
+export function measureSkyline(a: {rgb: Uint8Array; width: number; height: number; x0: number; x1: number; pixelsPerMetre: number; brightSky?: boolean}): Skyline | null {
   const {rgb, width, height, pixelsPerMetre: ppm} = a, inset = Math.round((a.x1 - a.x0) * 0.04);
   const xa = Math.max(0, a.x0 + inset), xb = Math.min(width, a.x1 - inset);
   if (xb - xa < 10) return null;
@@ -35,7 +40,7 @@ export function measureSkyline(a: {rgb: Uint8Array; width: number; height: numbe
   for (let x = xa; x < xb; x++) {
     let solid = 0, top = -1, skyAbove = 0;
     for (let y = 0; y < height; y++) {
-      const i = (y * width + x) * 3, sky = isSky([rgb[i], rgb[i + 1], rgb[i + 2]]);
+      const i = (y * width + x) * 3, sky = isSky([rgb[i], rgb[i + 1], rgb[i + 2]], a.brightSky);
       if (sky) { solid = 0; skyAbove++; continue; }
       if (++solid >= SKYLINE.run) { top = y - SKYLINE.run + 1; break; }
     }

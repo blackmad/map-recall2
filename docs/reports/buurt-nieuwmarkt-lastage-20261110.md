@@ -95,3 +95,67 @@ Reinstalled `rapenburg-89-103-r1` (all gates pass, GLB audit clean). The sheet i
   * `GroundFrontIntent.lights`: mullioned lights per window bay.
 * **Still not drawn:** the round cap is the neck width, not the narrower 1.45 m sandstone cap. The claw scrolls, the frieze vent
   and the finial are not drawn either.
+
+## Round 3: per-pand batch fit pilot (2026-11-10)
+
+`scripts/block-face/pand-fit.ts` (typed core `src/canalRecall/blockFace/pandFit.ts`, tests `pandFit.test.ts`) drafts one inline
+house type per pand from its own strip span and lets the gates decide:
+
+- **Storey lines and window rows:** `typeDraft.ts` `storeyProfile`.
+- **Bays:** the photo's window columns, or else the frontage width.
+- **Door side:** `auto-place.ts` `doorSide`.
+- **Ground storey:** a white pui (ground-band accent ≥ 35 %), a trading pui, or a house door.
+- **Crown:** the register gable (`monument-facts.json`) or else the skyline crown. Gabled pands are refined at compile time through `continuity.crownFromPhoto`.
+- **Frieze:** an entablature when the gap over the top window row is ≥ 0.8 m.
+- **Palette:** measured.
+
+**Execution:**
+
+- Runs of consecutive drafted pands become `<face>-pf<k>`, and a single pand becomes a `lonePand` face.
+- Each run goes through `compile.ts` and the likeness gate. A pand that fails drops out and the run is recompiled once.
+- Output is a CSV/JSON of pand → measured fields → result in `staging/pand-fit/`.
+
+**Changes to the kit and readers:**
+
+- **Kit:** none.
+- **Skyline reader:** gained an opt-in `brightSky`, because the Rapenburg strips' over-exposed tinted sky (#f8fde9) read as building: 0 of 9 skylines on rapenburg-20-44, 6 of 9 with the option. Absent, its output is unchanged.
+
+**Pilot:** 8 faces: rapenburg 1-19, 2-18, 20-44, 21-73, 46-80 and 89-103, peper 2-8, and foeliedwars 40-88. That is 54 pands; 97 and 99 were skipped as already installed. The Oudeschans strips are not taken yet: they come later in the running intake, and per the brief I started no new intake.
+
+| result | pands |
+|---|---|
+| storey rows unread (no window contrast 6, one window run 9, implausible profile 3) | 18 |
+| frontage outside 3–9 m (1980s renewal blocks and warehouses, not one-offs) | 14 |
+| blank front > 2.6 m over the top window row (roof storey or skyline on a dormer) | 6 |
+| storey heights implausible (merged or split rows) | 9 |
+| compiled, failed likeness (NCC 0.14, 0.12, −0.05) | 3 |
+| compiled, failed storey-height gate | 1 |
+| skipped (installed) | 2 |
+| **passed the gates** | **1** |
+
+- **Install rate:** 0 of 52 installed. The one pass (Foeliedwarsstraat 62, NCC 0.32) is held on the sheet:
+  - its brick is far lighter than the photo;
+  - the dentil frieze is missing;
+  - the ground is a door and windows where the photo shows a glazed pui.
+- **Time:** about 0.4 s per pand to measure and draft, and about 10 s to compile each run. The 54 pands took 17 s of wall time in all.
+- **Sheets** are in `map-recall2-source-data/block-face-strips/nieuwmarkt-lastage-20261110/pand-fit-pilot/`, along with the CSV and JSON. Only 4 runs compiled, so there are 4 sheets, not 6.
+
+**What the sheets show:**
+
+- The storey reader mistakes a ground shop pui plus two window rows for three window storeys: Foeliedwarsstraat 50B and 40C.
+- The skyline crown labels a spout or pointed gable a bell: 40C.
+- Stitched, ghosted strips give no usable rows: rapenburg-21-73 on its left, rapenburg 2-18.
+
+**Scaling view for about 6,000 belt pands:** this does not scale yet. The cost is negligible: about 1 hour of CPU for 6,000 pands. The yield, though, is about 2 % gate passes and under 1 % that look right. The bottleneck is reading the front, not drafting or compiling:
+
+1. The storey/window-row reader is tuned for repeated brick rows. On belt fronts it fails or misreads about 60 % of pands: shop puis, transoms, stitched strips, and white surrounds on stucco.
+2. The crown kind needs the register for every pand. The skyline guess confuses spout, bell and dormer.
+3. The likeness gate is the right referee: it held every bad draft. But a pass is not the same as a good look; brick tone, friezes and ground puis still need a human eye.
+
+Before a belt-wide run, it would be worth it to:
+
+- read storeys with the ground pui handled separately (detect the pui band first, then window rows above it);
+- take the crown kind only from the register, or hold the pand;
+- require a palette delta under a threshold as a gate.
+
+Until then, per-pand authored fronts (like Rapenburg 97/99) remain the route for the one-offs.
