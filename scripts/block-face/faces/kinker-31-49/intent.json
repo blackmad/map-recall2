@@ -515,7 +515,7 @@
     "ground": {
      "shopfront": {
       "colour": "white",
-      "fascia": false,
+      "fascia": true,
       "entrance": "none",
       "glazing": "split",
       "displayWindows": 3,
@@ -524,7 +524,7 @@
        "side": "left",
        "colour": "#2e3a40"
       },
-      "evidence": "strip.jpg 2024-12-11 pand 9: white timber pui with pilasters and three lights, dark house door left"
+      "evidence": "strip.jpg 2024-12-11 pand 9: white timber pui with pilasters and three lights, dark house door left; fascia drawn (plain white board over the lights): without one the 4.28 m pui glass escaped the wall silhouette (opening-outside 4.9 m2, H9g)"
      }
     },
     "roof": {
