@@ -1,6 +1,6 @@
 {
  "name": "easy-houses-20261110",
- "why": "User 2026-11-10 on map-recall2-screenshots/whats-new/2026-11-10-facade-extras.jpg: 'these are good examples of houses that I think should be easy to model but are currently wrong shape and color'. The house line's standing acceptance set: re-run on every look or spec change (docs/house-line.md \u00a76).",
+ "why": "User 2026-11-10 on map-recall2-screenshots/whats-new/2026-11-10-facade-extras.jpg: 'these are good examples of houses that I think should be easy to model but are currently wrong shape and color'. The house line's standing acceptance set: re-run on every look or spec change (docs/house-line.md §6).",
  "cams": "scripts/house-specs/sets/easy-houses-20261110.cams.json",
  "camsFrom": "map-recall2-screenshots buildings/2026-11-10-register-extras/cams.json (copied 2026-11-10)",
  "pands": [
@@ -18,7 +18,14 @@
     "bays": 2,
     "gable": "cornice",
     "wall": "near-black painted brick, white ground storey",
-    "notes": "crop and photo cut the top: storeys not read (drawn 5)"
+    "notes": "crop and photo cut the top: storeys not read (drawn 5)",
+    "handSet": {
+     "storeys": 4,
+     "axes": 3,
+     "wall": "brown",
+     "gable": "cornice",
+     "souterrain": true
+    }
    }
   },
   {
@@ -35,7 +42,11 @@
     "storeys": 4,
     "bays": 3,
     "gable": "cornice",
-    "wall": "dark brown brick"
+    "wall": "dark brown brick",
+    "handSet": {
+     "axes": 3,
+     "wall": "brown"
+    }
    }
   },
   {
@@ -85,7 +96,13 @@
     "bays": 3,
     "gable": "neck",
     "wall": "pale grey plaster",
-    "notes": "crop shows a neck top above the cornice line"
+    "notes": "crop shows a neck top above the cornice line",
+    "handSet": {
+     "storeys": 3,
+     "axes": 3,
+     "wall": "grey",
+     "souterrain": true
+    }
    }
   },
   {
@@ -106,7 +123,14 @@
     "bays": 8,
     "gable": "step",
     "wall": "pale salmon brick with white bands",
-    "notes": "two step gables over one wide front"
+    "notes": "two step gables over one wide front",
+    "handSet": {
+     "storeys": 3,
+     "axes": 5,
+     "wall": "red",
+     "gable": "step",
+     "entresol": true
+    }
    }
   },
   {
@@ -130,7 +154,14 @@
     "storeys": 4,
     "bays": 2,
     "gable": "cornice",
-    "wall": "orange-brown brick, white frames"
+    "wall": "orange-brown brick, white frames",
+    "handSet": {
+     "storeys": 3,
+     "axes": 2,
+     "wall": "orange",
+     "gable": "cornice",
+     "entresol": true
+    }
    }
   },
   {
@@ -177,7 +208,10 @@
    "review": {
     "storeys": 4,
     "gable": "bell",
-    "wall": "dark brown brick"
+    "wall": "dark brown brick",
+    "handSet": {
+     "wall": "brown"
+    }
    }
   },
   {
@@ -195,7 +229,13 @@
     "storeys": 5,
     "bays": 4,
     "wall": "red-brown brick, white trim",
-    "notes": "cross gables, dormers and a corner bay/turret"
+    "notes": "cross gables, dormers and a corner bay/turret",
+    "handSet": {
+     "storeys": 4,
+     "axes": 4,
+     "wall": "red-brown",
+     "gable": "point"
+    }
    }
   },
   {
@@ -219,7 +259,14 @@
     "storeys": 4,
     "bays": 3,
     "wall": "red-brown brick, stone bands",
-    "notes": "double-height shop storey under a continuous glazed canopy, two window storeys, an arcaded parapet"
+    "notes": "double-height shop storey under a continuous glazed canopy, two window storeys, an arcaded parapet",
+    "handSet": {
+     "storeys": 3,
+     "axes": 3,
+     "wall": "red-brown",
+     "gable": "flat",
+     "entresol": true
+    }
    }
   },
   {
@@ -237,7 +284,12 @@
     "storeys": 5,
     "bays": 3,
     "gable": "cornice",
-    "wall": "brown brick"
+    "wall": "brown brick",
+    "handSet": {
+     "axes": 3,
+     "wall": "brown",
+     "souterrain": true
+    }
    }
   },
   {
@@ -258,7 +310,8 @@
    },
    "review": {
     "storeys": 4,
-    "wall": "brown brick"
+    "wall": "brown brick",
+    "handSet": {}
    }
   },
   {
@@ -276,7 +329,13 @@
     "storeys": 5,
     "bays": 3,
     "gable": "cornice",
-    "wall": "buff/salmon brick, white cornice and attic"
+    "wall": "buff/salmon brick, white cornice and attic",
+    "handSet": {
+     "storeys": 4,
+     "axes": 3,
+     "wall": "orange",
+     "gable": "cornice"
+    }
    }
   },
   {
@@ -293,7 +352,14 @@
     "storeys": 5,
     "bays": 3,
     "gable": "cornice",
-    "wall": "near-black painted brick"
+    "wall": "near-black painted brick",
+    "handSet": {
+     "storeys": 4,
+     "axes": 3,
+     "wall": "dark",
+     "gable": "cornice",
+     "souterrain": true
+    }
    }
   },
   {
@@ -312,8 +378,15 @@
     "bays": 3,
     "gable": "point",
     "wall": "dark brown-grey brick",
-    "notes": "register says cornice; both crops show a pointed (point) gable with an oculus"
+    "notes": "register says cornice; both crops show a pointed (point) gable with an oculus",
+    "handSet": {
+     "storeys": 4,
+     "axes": 3,
+     "wall": "brown",
+     "gable": "point"
+    }
    }
   }
- ]
+ ],
+ "handSet": "data/house-line/hand-set-v1.json on lane/house-h5h-handset-20261110 at 1ade25980 (reader A; storeys by docs/house-line.md §4c: ground once, souterrain/entresol/attic not counted). Verdicts use review.handSet where present; review.storeys/bays are this lane's first reads (they counted the souterrain or attic band)."
 }

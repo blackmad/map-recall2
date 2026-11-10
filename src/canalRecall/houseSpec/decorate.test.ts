@@ -1,11 +1,11 @@
 // The generic path reads HouseSpecs (house line H1 step 5): flag, decorator steps, enricher, bay fitting.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, withHouseSpec, withHouseSpecCrown, type HouseSpecView } from './decorate.ts';
+import { houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, withHouseSpec, withHouseSpecCrown, type HouseSpecView, SPEC_WALL_HOLD } from './decorate.ts';
 import { gameFeatureDecorator } from '../galleryPipeline.ts';
 import { frontageLayoutScale, specStoreyScale, SPEC_BAY_SCALE } from '../streetFacadeRendering.ts';
 import { layoutWall } from '../facadeLayout.ts';
-import { specWallDisplay, resetSpecWallsFlag } from './wallColour.ts';
+import { FAMILY_TONE, resetSpecWallsFlag, specWallDisplay, specWallSource } from './wallColour.ts';
 import { STYLE_DIMS } from '../facadeCells.ts';
 
 const feature = (p: Record<string, unknown>) => ({ type: 'Feature' as const, properties: { id: 'NL.IMBAG.Pand.0363100012182857', ...p } as Record<string, unknown>, geometry: null as any });
@@ -117,4 +117,13 @@ test('specStoreyScale: a stated storey count sets the pitch layoutWall draws; ou
   assert.equal(s.storey, scale);
   assert.equal(specStoreyScale('canal', exposed, 12, 1), null, '12 storeys on 13.9 m: under the pitch floor');
   assert.equal(specStoreyScale('canal', exposed, 1, 1), null);
+});
+
+test('trim misread: a reader family and a brick finish turn a pale reading into the family tone (Nieuwmarkt 182857)', () => {
+  const view: HouseSpecView = { wallHex: '#ceb8ae', wallMaterial: 'brick', wallFamily: 'red', src: { wallHex: 'streetlevel-measured', wallFamily: 'reviewed' } };
+  assert.equal((houseSpecPatch(view, { id: 'NL.IMBAG.Pand.0363100012182857' }).specRecipe as { wallHex?: string } | undefined)?.wallHex, specWallDisplay(FAMILY_TONE.red, { fromPixel: false }));
+  // The register's brick finish stands in for a spec material.
+  assert.equal((houseSpecPatch({ wallHex: '#e8dccb', src: {} }, { registerFinish: 'brick' }).specRecipe as { wallHex?: string } | undefined)?.wallHex, specWallDisplay(specWallSource('#e8dccb', { brick: true }).hex, { fromPixel: false }));
+  assert.equal((houseSpecPatch({ wallHex: '#e8dccb', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex, specWallDisplay('#e8dccb'), 'no finish, no family: the pixel');
+  assert.equal(SPEC_WALL_HOLD.size, 0, 'no pand wall held (182857 draws red-brown after the rule)');
 });

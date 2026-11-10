@@ -8,21 +8,22 @@
  * period colour, which is the wrong colour *family* (the user's easy-houses sheet, 2026-11-10: near-black painted
  * fronts as white plaster or orange brick, pale salmon brick as dark maroon).
  *
- * The rule keeps what the photo says and lifts how bright it is drawn, in one place:
- *  - OKLab hue and chroma are kept (a brown stays brown, a neutral black or grey stays neutral, salmon stays salmon);
- *  - lightness goes through one monotone lift towards white, `L' = 1 - (1 - L) * (1 - LIFT.k)`, so the order of the
- *    walls in a row holds (a near-black painted front is still the darkest front in its row), the overcast readings
- *    come up to the city's brightness, and a pale wall moves least (pale brick stays pale brick, not cream);
- *  - a dark neutral (black or charcoal paint) takes none of the lift (`liftShare`): its reading is already relative to
- *    its own white trim, and lifted it drew level with the brown brick beside it;
- *  - a floor (`LIFT.minL`) keeps a black front from drawing as a hole, a ceiling (`LIFT.maxL`) keeps white below
- *    the paper white of the trim;
- *  - out of the sRGB gamut, chroma is reduced at the same lightness and hue.
+ * The rule keeps what the photo says and draws it at the city's brightness (round 2, the judgement session's ruling
+ * on #345: "brighter, not dour", and the trim misread; docs/house-line.md §1 "The wall colour"):
+ *  - `specWallSource`: a reading lighter than its family's usual tone, on a brick front or against a reader's family,
+ *    is a trim misread and draws the family tone instead (`FAMILY_TONE`);
+ *  - `specWallDisplay`: lightness goes through one monotone lift towards white, `L' = 1 - (1 - L) * (1 - LIFT.k)`, so
+ *    the order of the walls in a row holds; dark neutral paint takes none of it (`liftShare`);
+ *  - warm pixel readings gain chroma with the lift (overcast readings carry about half the period palette's), their
+ *    yellow cast comes half way back towards brick, and a hue-dependent cap stops brown turning ochre; neutrals keep
+ *    theirs and a cool cast is damped;
+ *  - a floor (`LIFT.minL`) keeps a black front from drawing as a hole, a ceiling (`LIFT.maxL`) keeps white below the
+ *    paper white of the trim; out of the sRGB gamut, chroma is reduced at the same lightness and hue.
  * Pure, no DOM. `?specWalls=0` (or SPEC_WALLS=0 in Node) draws the period colour again, as H1 did.
  */
 
 /** The lift constants (OKLab L, 0..1). Measured on the easy-houses set and Kinkerstraat 244-332 (docs/house-line.md §1). */
-export const SPEC_WALL_LIFT = { k: 0.2, minL: 0.34, maxL: 0.93, chroma: 1, paint: { c0: 0.01, c1: 0.018, l0: 0.45, l1: 0.6 } } as const;
+export const SPEC_WALL_LIFT = { k: 0.25, minL: 0.34, maxL: 0.93, chroma: 2.4, maxC: 0.12, hue: { pull: 0.5, toward: 46, warm: [20, 85], capAt: [45, 70], capC: [0.12, 0.06] }, neutralC: [0.015, 0.03], coolKeep: 0.35, paint: { c0: 0.01, c1: 0.018, l0: 0.45, l1: 0.6 } } as const;
 /**
  * How much of the lift a reading takes: all of it, except a dark neutral (black or charcoal paint), which takes none.
  * The readings are normalised to the crop's white trim (measureFacade's light-trim rule), so a painted black front
@@ -81,11 +82,67 @@ export function oklabToHex(lab: Vec3): string {
   return '#' + lin.map(v => Math.round(Math.max(0, Math.min(255, toSrgb(Math.max(0, Math.min(1, v)))))).toString(16).padStart(2, '0')).join('');
 }
 
-/** A measured wall reading -> the tint the generic mesher draws: measured hue and chroma, lifted lightness. */
-export function specWallDisplay(measuredHex: string): string {
-  const [L, a, b] = hexToOklab(measuredHex), k = SPEC_WALL_LIFT.k * liftShare(L, Math.hypot(a, b));
+/**
+ * A wall colour -> the tint the generic mesher draws: measured hue, lifted lightness and, for a pixel reading, lifted
+ * chroma. The overcast readings carry about half the period palette's chroma (Kinkerstraat 244-332: render C 0.065
+ * before, 0.032 with chroma 1; the judgement session's ruling on #345, "brighter, not dour"), so chroma rises with the
+ * same lift share as lightness (dark paint keeps its own; a near-neutral reading keeps its own), yellow-shifted warm hues
+ * come half way back towards the brown tone, chroma is capped by hue (0.12 at red, 0.06 at yellow-brown: high chroma on
+ * a yellowish brown reads ochre), then fitted to the sRGB gamut at the same lightness and hue. A family tone (`fromPixel: false`) is already a full-colour daylight tone: lightness only.
+ */
+export function specWallDisplay(measuredHex: string, opts: { fromPixel?: boolean } = {}): string {
+  const [L, a, b] = hexToOklab(measuredHex), C = Math.hypot(a, b), share = liftShare(L, C), k = SPEC_WALL_LIFT.k * share;
   const L2 = Math.min(SPEC_WALL_LIFT.maxL, Math.max(SPEC_WALL_LIFT.minL, 1 - (1 - L) * (1 - k)));
-  return oklabToHex([L2, a * SPEC_WALL_LIFT.chroma, b * SPEC_WALL_LIFT.chroma]);
+  if (opts.fromPixel === false || C < 1e-6) return oklabToHex([L2, a, b]);
+  const lift = SPEC_WALL_LIFT, clamp = (v: number) => Math.max(0, Math.min(1, v));
+  // A near-neutral reading stays neutral (its faint tint is camera cast: lifted, greys went blue or green).
+  const colourful = clamp((C - lift.neutralC[0]) / (lift.neutralC[1] - lift.neutralC[0])) * share;
+  let h = (Math.atan2(b, a) * 180) / Math.PI;
+  // Only warm readings gain chroma. A cool tint (blue, green) on a wall reading is camera cast, not paint, and keeps only
+  // `coolKeep` of it (0363100012167431, a grey front read blue-grey, drew lilac).
+  if (h < lift.hue.warm[0] || h > lift.hue.warm[1]) return oklabToHex([L2, a * lift.coolKeep, b * lift.coolKeep]);
+  // Overcast readings sit 15-20 degrees yellower than brick (readings hue 52-72 vs the brown tone 46, J2: the pixel turns
+  // red-brown into dull brown); half of that comes back, so a lifted brown stays brown instead of turning ochre.
+  if (h > lift.hue.toward && h < lift.hue.warm[1]) h += (lift.hue.toward - h) * lift.hue.pull * colourful;
+  const t = clamp((h - lift.hue.capAt[0]) / (lift.hue.capAt[1] - lift.hue.capAt[0]));
+  const cap = lift.hue.capC[0] + (lift.hue.capC[1] - lift.hue.capC[0]) * t;
+  const C2 = Math.min(C * (1 + (lift.chroma - 1) * colourful), Math.max(C, cap));
+  return oklabToHex([L2, C2 * Math.cos((h * Math.PI) / 180), C2 * Math.sin((h * Math.PI) / 180)]);
+}
+
+/** A reader's wall-colour family (the H5h hand-set vocabulary, docs/house-line.md §4c; J2's words map onto it). */
+export const WALL_FAMILIES = ['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'] as const;
+export type WallFamily = typeof WALL_FAMILIES[number];
+/**
+ * Each family's usual tone in neutral daylight: J2's swatches (scripts/jev/j2 on lane/jev-j2-20261110: near_black, red_brown,
+ * orange, tan_yellow, grey_stone, white_plaster) and, for the hand set's red and mid brown, a tone between them.
+ */
+export const FAMILY_TONE: Record<WallFamily, string> = {
+  white: '#e8e4da', grey: '#8a8d8f', buff: '#c4a574', orange: '#b8643c', red: '#9c4433', 'red-brown': '#8a4a3c', brown: '#6a4c3e', dark: '#2b2b2e',
+};
+const BRICK_FAMILIES: WallFamily[] = ['brown', 'red-brown', 'red', 'orange', 'buff'];
+/** The family whose tone is nearest a colour (OKLab distance). */
+export function nearestWallFamily(hex: string, among: readonly WallFamily[] = WALL_FAMILIES): WallFamily {
+  const [L, a, b] = hexToOklab(hex);
+  let best = among[0], d = Infinity;
+  for (const f of among) { const [l2, a2, b2] = hexToOklab(FAMILY_TONE[f]); const e = Math.hypot(L - l2, a - a2, b - b2); if (e < d) { d = e; best = f; } }
+  return best;
+}
+/** How much lighter than the family's usual tone (OKLab L) a reading may be before it reads as trim, not wall. */
+export const TRIM_MISREAD_L = 0.05;
+/**
+ * The wall colour the rule starts from: the pixel reading, or the family's usual tone when the reading is a trim misread
+ * (the judgement session's ruling on #345). A reading lighter than the family's usual tone, on a front whose finish is
+ * brick or whose reader family (hand set, J2) disagrees with the pixel's family, has caught white speklagen, frames or
+ * glare (Nieuwmarkt 0363100012182857: red brick with white bands read #ceb8ae, drawn pale pink-beige). Without a reader
+ * family, a brick finish compares with the nearest brick family to the pixel.
+ */
+export function specWallSource(measuredHex: string, ctx: { family?: WallFamily | null; brick?: boolean }): { hex: string; fromPixel: boolean; family: WallFamily | null } {
+  const family = ctx.family ?? (ctx.brick ? nearestWallFamily(measuredHex, BRICK_FAMILIES) : null);
+  if (!family) return { hex: measuredHex, fromPixel: true, family: null };
+  const lighter = hexToOklab(measuredHex)[0] > hexToOklab(FAMILY_TONE[family])[0] + TRIM_MISREAD_L;
+  const disagrees = !!ctx.family && nearestWallFamily(measuredHex) !== ctx.family;
+  return lighter && (ctx.brick || disagrees) ? { hex: FAMILY_TONE[family], fromPixel: false, family } : { hex: measuredHex, fromPixel: true, family };
 }
 
 /**

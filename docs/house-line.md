@@ -144,34 +144,41 @@ period palette, against the user's brighter-palette priority (2026-10-16). Held,
 period colour, which is the wrong colour *family*: the user's easy-houses sheet (2026-11-10, §6) showed near-black
 painted fronts as white plaster or orange brick and pale salmon brick as dark maroon.
 
-The rule, `specWallDisplay(measured)`, in one function with its constants in `SPEC_WALL_LIFT`:
+The rule (round 2, the judgement session's ruling on #345: "brighter, not dour"; the trim misread), constants in
+`SPEC_WALL_LIFT`, two functions:
 
-- OKLab hue and chroma are the measurement's (a brown stays brown, a neutral black or grey stays neutral);
-- lightness goes through one monotone lift towards white, `L' = 1 - (1 - L)(1 - k)` with `k = 0.2`, so the order of
-  the walls in a row holds (a near-black painted front is still the darkest front in its row) and a pale wall moves
-  least (pale brick stays pale brick, not cream);
-- a dark neutral (black or charcoal paint: chroma under 0.01-0.018, OKLab L under 0.45-0.6, blended smoothly,
-  `liftShare`) takes none of the lift: its reading is already relative to its own white trim, and lifted it drew
-  Herengracht 0363100012175321 (near-black) level with the brown brick beside it;
-- floor `minL = 0.34` (a black front is not a hole), ceiling `maxL = 0.93` (white stays below the trim's paper white);
-- out of gamut, chroma is reduced at the same lightness and hue.
+1. **`specWallSource(measured, {family, brick})`, pixel or family tone.** A reading lighter than its family's usual tone
+   (`FAMILY_TONE`, OKLab L + 0.05), on a front whose finish is brick (spec `wallMaterial` or the register's
+   `registerFinish`), or against a reader's family (`facts.wallFamily`, from the H5h hand set) that disagrees with the
+   pixel's, has caught white speklagen, frames or glare. It draws the family tone. Without a reader family, a brick
+   finish compares with the nearest brick family. For example, Nieuwmarkt 0363100012182857, red brick with white bands,
+   read #ceb8ae and drew pale pink-beige; it now renders #a45b4f.
+2. **`specWallDisplay(hex, {fromPixel})`, the drawn tint.**
+   - Lightness: one monotone lift, `L' = 1 - (1 - L)(1 - k)` with `k = 0.25`, floor 0.34 and ceiling 0.93. Dark
+     neutral paint takes no lift (`liftShare`).
+   - Chroma on a pixel reading: ×2.4 with the same lift share, on warm hues only (20-85 degrees).
+     - Near-neutral readings (C < 0.015 to 0.03) keep theirs.
+     - A cool cast (blue, green) keeps 35 % of its chroma.
+     - Yellow-shifted hues come half way back towards the brown tone (46 degrees): overcast readings sit 15-20 degrees
+       yellower than brick, and J2 found the pixel turns red-brown into dull brown.
+     - A hue-dependent cap (0.12 at red, 0.06 at yellow-brown) stops a lifted brown turning ochre.
+     - Finally the colour is fitted to the gamut at the same lightness and hue.
+   - A family tone gets lightness only.
 
-`withHouseSpec` writes `specRecipe.wallHex = specWallDisplay(view.wallHex)`. `?specWalls=0` (page, live tiles) or
-`SPEC_WALLS=0` (Node: preview, world compile) draws the period colour again, byte-identical to the H1 hold for the
-wall (bays, storeys and crowns are unaffected by the flag).
+`SPEC_WALL_HOLD` holds a pand's wall by pand number. It is empty: 182857 passes.
 
-Gate, both ways (2026-11-10, `house:preview` lit look, wall = `measureFacade` H2c reading of the render, HSL L):
+Gate, both ways (2026-11-10, `house:preview` lit look, wall = `measureFacade` H2c reading of the render; spec bays held):
 
-| Set | Before (held) | After (rule) | Mean ΔL |
+| Set | Before (period colour) | Round 1 (hue kept, chroma 1) | Round 2 (final) |
 |---|---|---|---|
-| Kinkerstraat 244-332, 26 generic pands | L 0.395 | L 0.436 | **+0.041** (gate: not below −0.03) |
-| same, `SPEC_WALLS=0` | L 0.395 | L 0.395 | 0.000 |
-| 24 random pands of the 425 the rule reaches (seed 345) | L 0.389 | L 0.486 | +0.097 |
+| Kinkerstraat 244-332, 26 generic pands: HSL L | 0.395 | 0.436 (+0.041) | 0.413 (**+0.018**, gate ≥ 0) |
+| same: OKLab C | 0.065 | 0.032 | **0.059** (gate ≥ 0.058) |
+| 24 random pands (seed 345): HSL L | 0.389 | 0.486 | 0.464 (+0.075) |
+| same: OKLab C | 0.059 | 0.033 | 0.062 |
 
-Measured with spec bays held. Nine single Kinkerstraat pands read darker by more than 0.03. Each was drawn red or
-grey before, and the strip measures dark brown brick (#4e4032 to #584332). Chroma falls with the rule (OKLab C,
-Kinkerstraat 0.065 -> 0.032, random 0.059 -> 0.033): the overcast readings are duller than the period palette.
-`SPEC_WALL_LIFT.chroma` is the knob if the user rules the brown too dour.
+The render measure moves by about 0.02 L between near-identical runs. The trim rule fires on 4 pands city-wide (176346,
+180181, 182849, 182857, each with a hand-set family). The register-brick branch fires on none today. Easy-houses
+families against the hand set: 9 of 12 exact, 3 adjacent, 0 wrong.
 
 City-wide reach: the rule changes the wall of **425 generic-path pands** (the coverage report's
 `genericVisibleBy.wallHex`; 1,367 views carry a wall colour, 1,183 pands are hidden by installed models). The

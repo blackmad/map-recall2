@@ -15,7 +15,7 @@ import type { GableShape } from '../roofMesh.js';
 import type { ArchitecturalRecipe } from '../streetAppearance.js';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
-import { specWallDisplay, specWallsOn } from './wallColour.js';
+import { specWallDisplay, specWallSource, specWallsOn, type WallFamily } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
 const rank = (s: string | undefined) => (SOURCE_STRENGTH as readonly string[]).indexOf(s === 'author' ? 'reviewed' : s ?? '');
@@ -34,8 +34,10 @@ export interface HouseSpecView {
   bays?: number;
   /** Full storeys below the crown, ground included (FrontIntent.storeys; lane H9). */
   storeys?: number;
+  /** facts.wallFamily: a reader's colour family for the wall (H5h hand set), the truth a pixel reading is checked against. */
+  wallFamily?: WallFamily;
   /** Winning source per key above. */
-  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys', string>>;
+  src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays' | 'storeys' | 'wallFamily', string>>;
 }
 
 /** What the spec adds to the generic mesher: an ArchitecturalRecipe subset plus the bay count. */
@@ -81,6 +83,12 @@ export const SPEC_WALLS_HELD = false;
  * year and finish are unaffected. Mirrors the integrator's hold on main.
  */
 export const SPEC_BAYS_HELD = true;
+/**
+ * Per-pand wall holds (the judgement session's ruling on #345: a pand whose drawn wall is still the wrong family after the
+ * trim-misread rule keeps its period colour). Bare pand numbers (the NL.IMBAG.Pand. suffix). Empty = no pand held.
+ */
+export const SPEC_WALL_HOLD: ReadonlySet<string> = new Set<string>();
+const pandNumber = (id: unknown) => String(id ?? '').replace(/^NL\.IMBAG\.Pand\./, '');
 
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
@@ -104,7 +112,13 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   const recipe: SpecRecipe = {};
   if (!SPEC_BAYS_HELD && view.bays && view.bays > 0) recipe.bays = view.bays;
   // The measured wall, through the wall-colour rule (lifted lightness, measured hue); `?specWalls=0` keeps the period colour.
-  if (!SPEC_WALLS_HELD && specWallsOn() && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex)) recipe.wallHex = specWallDisplay(view.wallHex.toLowerCase());
+  // A reading lighter than its family's usual tone on a brick front, or against a reader's family, is a trim misread and
+  // draws the family tone (wallColour.ts specWallSource).
+  if (!SPEC_WALLS_HELD && specWallsOn() && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex) && !SPEC_WALL_HOLD.has(pandNumber(p.id))) {
+    const brick = view.wallMaterial ? view.wallMaterial === 'brick' : p.registerFinish === 'brick';
+    const src = specWallSource(view.wallHex.toLowerCase(), { family: view.wallFamily ?? null, brick });
+    recipe.wallHex = specWallDisplay(src.hex, { fromPixel: src.fromPixel });
+  }
   // A spec recipe only when it carries something the mesher reads (bays, storeys, a wall colour); crown and period ride along.
   if (view.storeys && view.storeys >= 2) recipe.storeys = view.storeys;
   if (recipe.bays || recipe.wallHex || recipe.storeys) {

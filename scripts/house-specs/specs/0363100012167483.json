@@ -5,7 +5,7 @@
  "design": {
   "fronts": [
    {
-    "storeys": 5,
+    "storeys": 4,
     "axisGrid": 3
    }
   ],
@@ -16,9 +16,9 @@
  },
  "provenance": {
   "fronts/0/storeys": {
-   "source": "author",
+   "source": "reviewed",
    "confidence": 0.9,
-   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "ref": "data/house-line/hand-set-v1.json on lane/house-h5h-handset-20261110 at 1ade25980 (reader A, convention docs/house-line.md §4c) storeys",
    "at": "2026-11-10"
   },
   "fronts/0/axisGrid": {
@@ -38,6 +38,15 @@
    "confidence": 0.9,
    "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
    "at": "2026-11-10"
+  },
+  "facts/wallFamily": {
+   "source": "reviewed",
+   "confidence": 0.9,
+   "ref": "data/house-line/hand-set-v1.json on lane/house-h5h-handset-20261110 at 1ade25980 (reader A, convention docs/house-line.md §4c) wall",
+   "at": "2026-11-10"
   }
+ },
+ "facts": {
+  "wallFamily": "dark"
  }
 }

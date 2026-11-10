@@ -96,6 +96,7 @@ function viewOf(spec: HouseSpec): HouseSpecView {
   if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial; v.src.wallMaterial = src['palette/wallMaterial']; }
   const wall = hex(spec.design.palette?.brick);
   if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
+  if (spec.facts?.wallFamily) { v.wallFamily = spec.facts.wallFamily; v.src.wallFamily = src['facts/wallFamily']; }
   const bays = frontBays(front);
   if (bays) { v.bays = bays; v.src.bays = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays']; }
   // Storeys (lane H9): the drawn storey count follows the photo when a street source states it (not the register).
