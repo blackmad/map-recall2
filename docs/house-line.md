@@ -16,6 +16,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §3 Stage and publish | H3 | landed |
 | §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b) | landed on the AB07 pilot |
 | §5 The kit-gap queue | H6 | stub |
+| §6 Worked example: the timed pilot (Nieuwmarkt, Bloemgracht, Nassaukade) | H7 | landed (staged batch `pilot-20261110`) |
 
 ## §1 The record: HouseSpec
 
@@ -1020,6 +1021,100 @@ switch. No re-pick was run: `pick.ts --prompt v2` re-judges the existing candida
 
 Stub (lane H6): `kit-gaps.ts` aggregates `schemaLimits` by `component`; the horizon rule.
 
-## §6 Worked example: the H7 timed pilot (in progress)
+## §6 Worked example: the H7 timed pilot (lane H7, #354, 2026-11-10)
 
-Lane H7 (#354) runs Nieuwmarkt 4-22, one Bloemgracht row and Nassaukade 145-152 through describe, preview, compare and stage, timed. Filled in by the lane.
+Three rows went crop → describe → preview → compare → stage, timed: Nieuwmarkt 6-22 (7 pands, AE03), Bloemgracht 121-197
+(face `bloemgracht-121-197`, 8 pands, AB07: the H4 buurt is Jordaan, not Grachtengordel-West; it is the AB07 row of 8-12 houses
+with the most register entries and at least two hand intents) and Nassaukade 152-145 (face `nassau-145-152`, 7 pands, EQ01).
+Specs and readings: `scripts/house-specs/pilot-20261110/` (`readings.json` -> `make-specs.py` -> `specs/<pandId>.json`).
+
+### One house, every command: Nieuwmarkt 6 (0363100012171851)
+
+```sh
+# 1. crop (54 s for the 7 pands of the row, 3-27 requests each)
+PAND_REFERENCE_CACHE=~/Code/map-recall2/.cache/pand-reference HOUSE_CROPS_ARCHIVE=~/Code/map-recall2-source-data-h7 \
+  npm run house:crops -- --buurt AE03 --pand 0363100012171851,...   # -> "7 12171851 ok wall rejected:blocked+blank"
+```
+
+The crop was of a side wall: the row's fronts face the square (outward normal 114 degrees), and `pickWall` takes the longest
+wall on the nearest *road*, which on Nieuwmarkt is an alley or the back street for 5 of the 7 pands (two were close-ups of a door).
+`--prefer-bearing 114` (new in H7) picks the wall facing the square, falling back to the longest exposed wall within 50 degrees of
+the bearing when no road-facing wall is there; re-cropped in 36 s, all 7 usable.
+
+```sh
+npm run house:crops -- --buurt AE03 --pand <the 7> --prefer-bearing 114 --restart     # -> "7 12171851 ok wall usable"
+zsh -lic 'node --import tsx scripts/house-crops/judge.ts --buurt AE03 --archive <archive> --pand <the 7> --budget 0.5'  # quality 0.59
+# 2. describe (0.7-1.1 s a pand): register step gable, Jev bays 2 + wallMaterial brick, pixel colour, BAG storeys
+zsh -lic 'npm run house:describe -- 0363100012171851 --archive ~/Code/map-recall2-source-data-h7'
+# 3. preview the game today beside the crop (1.7 s); --wall frames the same wall as the crop
+npm run house:preview -- 0363100012171851 --photo --wall 114deg --crops ~/Code/map-recall2-source-data-h7
+```
+
+The sheet shows the game already draws the register's step gable on the square front (the generic path, since H1) with two
+window axes; the photo has two axes, bare orange brick and white speklagen through the gable. The verdict is FAIL (columns 3 vs 2,
+wall hue -159 degrees): the render's wall patch is read on glass, so the verdict is not taken on its own; the reading is by eye.
+
+4. **Correct.** `readings.json` gets `fronts/0/gable: step` (confirms the register), `fronts/0/bays: 2` (held, `SPEC_BAYS_HELD`),
+`palette/wallMaterial: brick` and the limit `{palette: speklagen ...}`; `make-specs.py` writes the spec with `author` receipts.
+
+```sh
+# 5. preview the spec as the game will draw it after publish (staged extract; 1.8 s a pand after a 1.7 s merge)
+node --import tsx scripts/house-preview/resolved.ts --specs scripts/house-specs/pilot-20261110/specs 0363100012171851 \
+  --photo --wall 114deg --crops ~/Code/map-recall2-source-data-h7
+# 6. stage (0.3 s)
+npm run house:stage -- scripts/house-specs/pilot-20261110/specs/0363100012171851.json --by "lane H7"
+```
+
+The after render is byte-identical to the before: on the generic path a spec draws only the gable (already drawn), the era and
+`registerFinish`, and a brick finish on a canal-style front changes no pixel. Time for this house: about 2 minutes of lane time
+(its share of the row's crop and re-crop, 0.7 s describe, two 2 s previews, one reading, 0.3 s stage).
+
+### What the pilot measured
+
+| Row | Houses | Staged | Route after publish | Render changed by the spec |
+|---|---|---|---|---|
+| Nieuwmarkt 6-22 | 7 | 7 | generic (all) | 0 of 7 (byte-identical previews) |
+| Bloemgracht 121-197 | 8 | 6 | generic 4, recipe 2 (168006, 174828) | 2 of 8 (the recipe pands; 168006 needed a wall-colour and roof correction) |
+| Nassaukade 152-145 | 7 | 5 (+ the corner by the chunk route) | recipe 5, chunk 1, none 1 | 6 of 7 |
+
+* Lane time from the first crop request (16:10) to the 18th staged spec (16:32): 22 minutes for 22 houses, including two tool
+  fixes (`--prefer-bearing`, `resolved.ts`) and the corner chunk; median about 1 minute a house, the slowest the corner (6 minutes).
+* Per step: crop 6-8 s a pand (network), judge 0.05 s, describe 0.5-1.4 s, preview 1.5-2.2 s (generic) or 2.5-10 s (recipe compile),
+  stage 0.3 s. One hand-correction iteration took 5 s (spec edit -> resolved preview).
+* Not staged: Bloemgracht 174173 (a tree covers the front: no evidence), 174177 (the crop shows a pointed brick gable where the
+  register says cornice and plaster: crop or pand link unresolved), Nassaukade 146 (0363100012160704: the resolved spec fails the
+  recipe compile, "Opening escapes its wall", because BAG draws the erker into the footprint; a staged spec would stop the batch),
+  and the corner 151-152 (0363100012116526, below).
+
+### The corner pand 0363100012116526 (multi-front)
+
+`chunk-face-clercq-236681` suppressed it and modelled only its De Clercqstraat front; its Nassaukade face was a bare slab. Route
+chosen: **chunk extension** (block-face route). Its house in `clercq-236681/intent.json` became a two-front `design`: `front0` the
+resolved De Clercqstraat type (`clercq-nassaukade-corner`), front `nassaukade` the face read on `nassau-145-152` (6 axes in two
+halves, 5 storeys with a tall ground storey, bracketed white cornice, two pediment dormers, bar front over the left three axes);
+`pands/0363100012116526/facts.json` gained the Nassaukade frontage. The face compiles with every gate and interference check
+passing (27,660 triangles). `npm run house:preview -- 0363100012116526 --chunk clercq-236681 --photo` draws the front: 6 vs 7
+columns, tall windows (verdict FAIL on wall dL +0.14: one palette per pand, the De Clercqstraat type's #715850 is kept). Narrowing
+the suppression was not chosen: the generic path would draw a second shell over the chunk's (the pand stays in the chunk for its
+other front), and the HouseSpec recipe route compiles one street front per pand (its resolved spec is the clercq record, street
+De Clercqstraat, and fails "facts.json has no frontage for De Clercqstraat").
+
+What a `fronts[]` HouseSpec field needs to say for such a pand: one entry per street facade with its `street` (the key the
+recipe fit uses to find the frontage in facts), its own gable/cornice, storeys, bays, door axis, shopfront and dormers, and the
+receipt per front (`fronts/1/bays` from the Nassaukade strip, `fronts/0/*` from the De Clercqstraat strip); a shared palette or a
+per-front palette (the two reads differ by about dE 5); and a rule for which front's roof line wins at the corner (the chunk planned
+the attic from front0's 14.65 m eaves, so the Nassaukade dormers are not drawn). Today the resolver keeps whichever face's adapter
+wins per field path, so two faces naming one pand merge into one front (bays 1 from the clercq record).
+
+### The tools H7 added
+
+* `house:crops --prefer-bearing <deg>`: §4a table.
+* `house:preview --crops <dir>` (the house:crops archive as the photo; the describe envelope's best-of-years pick when present),
+  `--prefer-crop`, `--chunk <face>` (a compiled, not installed block face): §2 `--help`.
+* `scripts/house-preview/resolved.ts` (`--help`): a spec batch rendered as the game will draw it after publish. `house:preview --spec`
+  writes the gable and the wall colour onto the pand directly, so it draws a wall colour the game holds and never shows the recipe
+  route; `resolved.ts` runs the publish merge (`build-house-specs --extra-specs`) and renders by the resolved route. Use it for receipts.
+* `scripts/house-specs/pilot-20261110/demo-bundle.ts`: the Nassaukade demo bundle (per house: photo crop, before/after render,
+  compare sheets and measureFacade before/after, the spec with provenance, `fields.json` = field, value, source, evidence, what it
+  changed; plus the row strips and `index.json`) into `artifacts/house-line/demo-nassaukade/` (gitignored). The archived copy, JPEG,
+  paths flattened to `<pandId>-<file>`, is `ui/2026-11-10-house-line-nassaukade/` in the screenshots repo.
