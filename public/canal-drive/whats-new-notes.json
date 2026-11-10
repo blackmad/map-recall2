@@ -3,6 +3,37 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Pins stay on land in Free Ride",
+      "text": "A place's pin now stands on the quay, not in the canal, and tapping the water beside a pin no longer opens its card. By boat, tapping your canal still names it.",
+      "where": [
+        4.8839,
+        52.3745
+      ],
+      "images": [
+        {
+          "src": "ui/2026-11-10-s2-water-taps/westermarkt-desktop-before.jpg",
+          "alt": "Before: Westermarkt in Free Ride, with pins whose dots sit in the Prinsengracht",
+          "caption": "Before: the pins' dots stood in the canal."
+        },
+        {
+          "src": "ui/2026-11-10-s2-water-taps/westermarkt-desktop-after.jpg",
+          "alt": "After: Westermarkt in Free Ride, with the pins standing on the quay",
+          "caption": "After: the pins stand on the quay."
+        },
+        {
+          "src": "ui/2026-11-10-s2-water-taps/westermarkt-phone-before.jpg",
+          "alt": "Before, on a phone: Westermarkt pins over the water",
+          "caption": "Phone, before."
+        },
+        {
+          "src": "ui/2026-11-10-s2-water-taps/westermarkt-phone-after.jpg",
+          "alt": "After, on a phone: Westermarkt pins on land",
+          "caption": "Phone, after."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "A horizon instead of an edge",
       "text": "The far city now fades into the sky haze at a fixed distance, so buildings no longer pop in and out far away; distant landmarks also stop flickering in and out.",
       "images": [
