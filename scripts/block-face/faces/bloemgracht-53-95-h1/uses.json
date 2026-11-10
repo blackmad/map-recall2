@@ -1,0 +1,104 @@
+{
+ "street": "Bloemgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-29T20:28:38.915Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012170207",
+   "addresses": [
+    "Bloemgracht 53A",
+    "Bloemgracht 53B",
+    "Bloemgracht 53C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 53A",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010001976360"
+    },
+    {
+     "address": "Bloemgracht 53B",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001976361"
+    },
+    {
+     "address": "Bloemgracht 53C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010001976362"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170208",
+   "addresses": [
+    "Bloemgracht 55"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 55",
+     "use": "woonfunctie",
+     "areaM2": 122,
+     "bagId": "0363010000588559"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11782481274,
+     "lngLat": [
+      4.8810509,
+      52.3746994
+     ],
+     "tags": {
+      "amenity": "vending_machine",
+      "ref": "11059",
+      "vending": "parking_tickets"
+     },
+     "fetchedAt": "2026-10-29T20:28:38.915Z",
+     "match": "frontage",
+     "distanceM": 6.4
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012170210",
+   "addresses": [
+    "Bloemgracht 57"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 57-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000970047"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170212",
+   "addresses": [
+    "Bloemgracht 59"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloemgracht 59-H",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000588566"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

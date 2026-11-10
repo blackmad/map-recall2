@@ -1,0 +1,136 @@
+{
+ "face": "lauriergracht-71-127-h2",
+ "image": "staging/block-face/lauriergracht-71-127-h2/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 332,
+ "height": 986,
+ "groundNAP": 0.331,
+ "heightM": 24.66,
+ "frame": {
+  "midRD": [
+   120404.1404375,
+   487118.204
+  ],
+  "uRD": [
+   -0.9222854132529501,
+   -0.3865095296378019
+  ],
+  "nRD": [
+   -0.3865095296378019,
+   0.9222854132529501
+  ]
+ },
+ "x0M": -4.06,
+ "x1M": 4.24,
+ "date": "2023-03-13",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012174528",
+   "x0M": -4.06,
+   "x1M": -0.11,
+   "px": [
+    0,
+    158
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002995_pano_0001_000152",
+     "timestamp": "2023-03-13T08:53:05.442760Z",
+     "distanceM": 24.9,
+     "obliquityDeg": 0.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0001_000153",
+     "timestamp": "2023-03-13T08:53:06.347690Z",
+     "distanceM": 25.2,
+     "obliquityDeg": 11,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0001_000151",
+     "timestamp": "2023-03-13T08:53:04.582750Z",
+     "distanceM": 25.5,
+     "obliquityDeg": 12.1,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012174519",
+   "x0M": -0.11,
+   "x1M": 4.24,
+   "px": [
+    158,
+    332
+   ],
+   "date": "2023-03-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-002995_pano_0001_000151",
+     "timestamp": "2023-03-13T08:53:04.582750Z",
+     "distanceM": 24.9,
+     "obliquityDeg": 2.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0001_000152",
+     "timestamp": "2023-03-13T08:53:05.442760Z",
+     "distanceM": 25.2,
+     "obliquityDeg": 9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-002995_pano_0001_000150",
+     "timestamp": "2023-03-13T08:53:03.777710Z",
+     "distanceM": 25.7,
+     "obliquityDeg": 14.1,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2023-02-20": 12,
+  "2019-01-11": 12,
+  "2023-03-13": 12,
+  "2023-01-30": 12,
+  "2018-05-03": 12,
+  "2023-02-13": 12,
+  "2025-07-03": 12,
+  "2024-12-17": 12,
+  "2022-04-29": 12,
+  "2016-08-17": 12,
+  "2023-03-27": 12,
+  "2021-03-17": 12,
+  "2020-04-24": 12,
+  "2020-01-08": 12,
+  "2017-03-13": 12,
+  "2021-01-22": 12,
+  "2021-01-25": 12,
+  "2023-03-06": 12,
+  "2023-01-16": 12,
+  "2023-02-27": 12,
+  "2019-05-13": 12,
+  "2022-01-27": 12,
+  "2023-03-20": 12,
+  "2024-12-16": 2,
+  "2023-02-06": 0,
+  "2019-01-15": 1,
+  "2022-06-22": 0,
+  "2021-12-30": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "lauriergracht-71-127",
+  "px": [
+   1085,
+   1417
+  ]
+ }
+}

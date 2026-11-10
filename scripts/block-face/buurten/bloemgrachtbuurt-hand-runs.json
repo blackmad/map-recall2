@@ -516,6 +516,165 @@
      }
     }
    ]
+  },
+  {
+   "id": "bloemgracht-53-95-h1",
+   "face": "bloemgracht-53-95",
+   "reason": "Bloemgracht 53-59 (strip 2023-03-13): a two-axis cornice house, a neck gable and two cornice houses with dormers (61 onward: the strip shows a broken close-up frame)",
+   "houses": [
+    {
+     "pand": "170207",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 4,
+     "eavesM": 14.5,
+     "grid": {
+      "storeysM": [
+       5.6,
+       2.9,
+       2.7,
+       2.8
+      ]
+     },
+     "overrides": {
+      "bays": 2
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-13: a slate mansard with a dormer (and a roof terrace rail, not drawn) over the cornice"
+     },
+     "why": "Bloemgracht 53: two axes, a tall ground storey and three storeys, a white cornice at ~14-14.5 m and a slate mansard with a dormer; grid read on the strip"
+    },
+    {
+     "pand": "170208",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "neck",
+     "storeys": 4,
+     "eavesM": 12.8,
+     "grid": {
+      "storeysM": [
+       4.6,
+       2.9,
+       2.6,
+       2.7
+      ]
+     },
+     "why": "Bloemgracht 55: three axes, a tall ground storey and three storeys (the top one low), a neck gable from ~12.8 m with one attic light to ~15.5 m; grid read on the strip",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#564841"
+     }
+    },
+    {
+     "pand": "170210",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 4,
+     "eavesM": 15.4,
+     "grid": {
+      "storeysM": [
+       4.6,
+       3.3,
+       3.2,
+       3.6
+      ]
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-13: a grey roof with a dormer over the cornice (behind a tree)"
+     },
+     "why": "Bloemgracht 57: three axes, ground and three tall storeys, a white cornice at ~15.4 m with a dormer; behind a bare tree; grid read on the strip",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#423d39"
+     }
+    },
+    {
+     "pand": "170212",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 4,
+     "eavesM": 14.1,
+     "grid": {
+      "storeysM": [
+       4.6,
+       3.0,
+       3.0,
+       3.1
+      ]
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-13: a grey roof with a white dormer over the cornice"
+     },
+     "why": "Bloemgracht 59: three axes, ground and three storeys, a white cornice at ~14.1 m and a white dormer; grid read on the strip",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#423934"
+     }
+    }
+   ]
+  },
+  {
+   "id": "egelantiersgracht-47-101-h1",
+   "face": "egelantiersgracht-47-101",
+   "reason": "Egelantiersgracht 47-51 (strip 2023-03-13): a black-painted bell gable, a neck gable and a cornice house with a dormer (53-55: no strip; 57: modern)",
+   "houses": [
+    {
+     "pand": "172610",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "bell-low",
+     "storeys": 3,
+     "eavesM": 8.8,
+     "grid": {
+      "storeysM": [
+       4.0,
+       2.4,
+       2.4
+      ]
+     },
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#2e2a28",
+      "wallMaterial": "painted-brick"
+     },
+     "why": "Egelantiersgracht 47: a black-painted front of three axes, a shop-like ground and two low storeys, a small bell gable from ~8.8 m with one attic light; grid read on the strip"
+    },
+    {
+     "pand": "172620",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "neck",
+     "storeys": 3,
+     "eavesM": 9.4,
+     "grid": {
+      "storeysM": [
+       4.2,
+       2.5,
+       2.6
+      ]
+     },
+     "why": "Egelantiersgracht 49: three axes, a ground and two low storeys, a neck gable from ~9.4 m with one attic light to ~12.2 m; grid read on the strip"
+    },
+    {
+     "pand": "172618",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 3,
+     "eavesM": 10.8,
+     "grid": {
+      "storeysM": [
+       4.8,
+       2.9,
+       2.6
+      ]
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-13: a dark roof with one dormer over the cornice at ~10.8 m"
+     },
+     "why": "Egelantiersgracht 51: three axes, a tall ground with a central door and two storeys, a white cornice at ~10.5-10.8 m with a dormer; behind a bare tree; grid read on the strip"
+    }
+   ]
   }
  ]
 }

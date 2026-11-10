@@ -1,0 +1,113 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "lauriergracht-71-127-h2",
+ "street": "Lauriergracht",
+ "sources": [
+  {
+   "id": "strip-2023-03-13",
+   "kind": "street-panorama",
+   "capturedAt": "2023-03-13",
+   "image": "staging/block-face/lauriergracht-71-127-h2/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane hand placement (scripts/block-face/hand-place.ts)",
+  "passes": 1,
+  "note": "Lauriergracht 89-91 (strip 2023-03-13): two small bell gables (93-95, one four-axis front over two pands with a low attic storey of small windows, is held: the kit's storeys are at least 2.3 m; 97 is a Neo-Renaissance frontispiece); spec scripts/block-face/buurten/elandsgrachtbuurt-hand-runs.json"
+ },
+ "types": [
+  "jordaan-1750-neck-gable"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012174528",
+   "slug": "lauriergracht-174528",
+   "address": "Lauriergracht 89",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "crown": "bell-low",
+    "overrides": {
+     "storeyHeights": [
+      4.6,
+      2.6,
+      2.4
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#4e4848",
+     "evidence": "strip 2023-03-13 span 1085-1243: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 89: three axes, a ground and two low storeys, a bell gable from ~9.6 m with one attic light to ~12.4 m; grid read on the strip; strip 2023-03-13"
+   }
+  },
+  {
+   "pandId": "0363100012174519",
+   "slug": "lauriergracht-174519",
+   "address": "Lauriergracht 91",
+   "type": {
+    "type": "jordaan-1750-neck-gable",
+    "crown": "bell-low",
+    "overrides": {
+     "bays": 2,
+     "storeyHeights": [
+      4.6,
+      2.6,
+      2.4
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#4a4344",
+     "evidence": "strip 2023-03-13 span 1243-1417: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2023-03-13",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "hand placement (elandsgrachtbuurt-hand-runs.json): Lauriergracht 91: two wide axes, a ground and two low storeys, a bell gable from ~9.6 m with one attic light to ~12.2 m; behind a tree; grid read on the strip; strip 2023-03-13"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  },
+  "measuredEaves": [
+   {
+    "pand": "0363100012174528",
+    "stripRow": 602,
+    "evidence": "hand placement: cornice top read at 9.6 m on the strip 2023-03-13"
+   },
+   {
+    "pand": "0363100012174519",
+    "stripRow": 602,
+    "evidence": "hand placement: cornice top read at 9.6 m on the strip 2023-03-13"
+   }
+  ]
+ }
+}

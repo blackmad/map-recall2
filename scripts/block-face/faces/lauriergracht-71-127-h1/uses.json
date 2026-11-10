@@ -1,0 +1,47 @@
+{
+ "street": "Lauriergracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-10-30T01:05:41.347Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012174521",
+   "addresses": [
+    "Lauriergracht 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 71-H",
+     "use": "winkelfunctie",
+     "areaM2": 102,
+     "bagId": "0363010000719448"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012174520",
+   "addresses": [
+    "Lauriergracht 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lauriergracht 73-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000719452"
+    },
+    {
+     "address": "Lauriergracht 73-O",
+     "use": "industriefunctie",
+     "areaM2": 81,
+     "bagId": "0363010000719453"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

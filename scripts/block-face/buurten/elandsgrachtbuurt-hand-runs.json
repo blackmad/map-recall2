@@ -239,6 +239,98 @@
      }
     }
    ]
+  },
+  {
+   "id": "lauriergracht-71-127-h1",
+   "face": "lauriergracht-71-127",
+   "reason": "Lauriergracht 71-73 (strip 2023-03-13): a cornice house with a mansard and a neck gable over a souterrain (75 is held: its low ground under two tall storeys drew ~1 m below the photo's rows with the souterrain grid)",
+   "houses": [
+    {
+     "pand": "174521",
+     "type": "jordaan-1850-cornice-house",
+     "crown": "dormer-low",
+     "storeys": 4,
+     "eavesM": 14.2,
+     "grid": {
+      "storeysM": [
+       4.6,
+       3.0,
+       3.0,
+       3.2
+      ]
+     },
+     "roof": {
+      "material": "slate",
+      "evidence": "strip 2023-03-13: a dark mansard face with one dormer over the cornice at ~14 m"
+     },
+     "why": "Lauriergracht 71: three axes of wide white-framed windows, a ground and three storeys, a white cornice at ~14 m and a mansard with a dormer; grid read on the strip",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#484543"
+     }
+    },
+    {
+     "pand": "174520",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "neck",
+     "storeys": 4,
+     "eavesM": 13.0,
+     "grid": {
+      "storeysM": [
+       3.3,
+       2.8,
+       2.5,
+       2.4
+      ],
+      "souterrainM": 2.0
+     },
+     "why": "Lauriergracht 73: three axes, a souterrain under a bel-etage with a white door surround on the left, three storeys, a neck gable from ~13 m with one attic light to ~16.6 m; grid read on the strip",
+     "wall": false,
+     "paletteOverrides": {
+      "brick": "#3a3434"
+     }
+    }
+   ]
+  },
+  {
+   "id": "lauriergracht-71-127-h2",
+   "face": "lauriergracht-71-127",
+   "reason": "Lauriergracht 89-91 (strip 2023-03-13): two small bell gables (93-95, one four-axis front over two pands with a low attic storey of small windows, is held: the kit's storeys are at least 2.3 m; 97 is a Neo-Renaissance frontispiece)",
+   "houses": [
+    {
+     "pand": "174528",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "bell-low",
+     "storeys": 3,
+     "eavesM": 9.6,
+     "grid": {
+      "storeysM": [
+       4.6,
+       2.6,
+       2.4
+      ]
+     },
+     "why": "Lauriergracht 89: three axes, a ground and two low storeys, a bell gable from ~9.6 m with one attic light to ~12.4 m; grid read on the strip"
+    },
+    {
+     "pand": "174519",
+     "type": "jordaan-1750-neck-gable",
+     "crown": "bell-low",
+     "storeys": 3,
+     "eavesM": 9.6,
+     "grid": {
+      "storeysM": [
+       4.6,
+       2.6,
+       2.4
+      ]
+     },
+     "overrides": {
+      "bays": 2
+     },
+     "why": "Lauriergracht 91: two wide axes, a ground and two low storeys, a bell gable from ~9.6 m with one attic light to ~12.2 m; behind a tree; grid read on the strip"
+    }
+   ]
   }
  ]
 }
