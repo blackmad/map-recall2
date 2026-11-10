@@ -90358,7 +90358,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "831cbea25da0feb9",
+    "buildVersion": 4,
+    "bytes": 38980,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-haring-6-18-r1",
@@ -90890,7 +90896,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "df3655564405b2a7",
+    "buildVersion": 4,
+    "bytes": 31780,
+    "triangles": 980
+   }
   },
   {
    "id": "chunk-face-leijnsen-3-31-r1",
@@ -91437,7 +91449,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "482f719baf1162fc",
+    "buildVersion": 4,
+    "bytes": 33428,
+    "triangles": 1345
+   }
   },
   {
    "id": "chunk-face-coppelstock-25-55-r1",
@@ -92247,7 +92265,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "3685b21e7ac4f2a1",
+    "buildVersion": 4,
+    "bytes": 38536,
+    "triangles": 1452
+   }
   },
   {
    "id": "chunk-face-haring-26-38-r1",
@@ -92621,7 +92645,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "d80991677e813a5b",
+    "buildVersion": 4,
+    "bytes": 39916,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-leijnsen-2-30-r1",
@@ -93319,7 +93349,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "006b0d6824d3472d",
+    "buildVersion": 4,
+    "bytes": 36228,
+    "triangles": 1344
+   }
   },
   {
    "id": "chunk-face-leijnsen-2-30-r2",
@@ -93581,7 +93617,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "7aa389947c0e2d62",
+    "buildVersion": 4,
+    "bytes": 36088,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-andringa-1-31-r1",
@@ -93871,7 +93913,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "ccd0b7bdacd2d193",
+    "buildVersion": 4,
+    "bytes": 40152,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-andringa-4-32-r1",
@@ -94166,7 +94214,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "237f5fa7da39e814",
+    "buildVersion": 4,
+    "bytes": 39548,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-callenburg-2-32-r1",
@@ -94466,7 +94520,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "b6d5e4c4b50594e7",
+    "buildVersion": 4,
+    "bytes": 39356,
+    "triangles": 1452
+   }
   },
   {
    "id": "chunk-face-callenburg-2-32-r2",
@@ -94890,7 +94950,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "5939aaeb3117dbe5",
+    "buildVersion": 4,
+    "bytes": 33428,
+    "triangles": 1152
+   }
   },
   {
    "id": "chunk-face-callenburg-3-63",
@@ -95863,7 +95929,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "44e77d671db2fb1a",
+    "buildVersion": 4,
+    "bytes": 32832,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-haen-3-31-r1",
@@ -96029,7 +96101,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "f3c75da953dcf82a",
+    "buildVersion": 4,
+    "bytes": 29412,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-haen-3-31-r2",
@@ -96319,7 +96397,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "b180231ec33bc062",
+    "buildVersion": 4,
+    "bytes": 40044,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-haen-6-62-r1",
@@ -96475,7 +96559,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "8d05ce716075a9f2",
+    "buildVersion": 4,
+    "bytes": 26732,
+    "triangles": 1497
+   }
   },
   {
    "id": "chunk-face-haen-6-62-r2",
@@ -96640,7 +96730,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "9f17a2e847f4bb93",
+    "buildVersion": 4,
+    "bytes": 28204,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-haen-6-62-r3",
@@ -96801,7 +96897,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "f048b26783ddea0a",
+    "buildVersion": 4,
+    "bytes": 27988,
+    "triangles": 1500
+   }
   },
   {
    "id": "chunk-face-zwijgerlaan-225-279-r1",
@@ -97088,7 +97190,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "20c0fe3f03dec509",
+    "buildVersion": 4,
+    "bytes": 37536,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-zwijgerlaan-225-279-r2",
@@ -97249,7 +97357,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "09e85f047c1edcca",
+    "buildVersion": 4,
+    "bytes": 27936,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-treslong-5-19-a",
@@ -97771,7 +97885,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "968ed5bde7ccd019",
+    "buildVersion": 4,
+    "bytes": 38824,
+    "triangles": 1475
+   }
   },
   {
    "id": "chunk-face-treslong-5-19-b",
@@ -98285,7 +98405,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "4c19b9be9fb46987",
+    "buildVersion": 4,
+    "bytes": 38596,
+    "triangles": 1485
+   }
   },
   {
    "id": "chunk-face-treslong-21-35-a",
@@ -98799,7 +98925,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "2495bb2acf4a7345",
+    "buildVersion": 4,
+    "bytes": 38228,
+    "triangles": 1439
+   }
   },
   {
    "id": "chunk-face-treslong-21-35-b",
@@ -99308,7 +99440,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "76943f0a2ad4b66d",
+    "buildVersion": 4,
+    "bytes": 38724,
+    "triangles": 1472
+   }
   }
  ]
 }
