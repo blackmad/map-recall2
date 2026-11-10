@@ -1,6 +1,6 @@
 // The kit-gap queue (house line H6, docs/house-line.md §5): every `schemaLimits` entry on a house spec or a block-face
-// type, counted per pand and per gap, weighted by ride priority, sorted for the weekly kit session. Pure: the script
-// `scripts/house-specs/kit-gaps.ts` reads the extracts and passes sightings in.
+// type, classified to {component, what} (scripts/house-specs/kitGapVocabulary.ts), counted per pand and per gap, weighted
+// by ride priority, sorted for the weekly kit session. Pure: the script reads the extracts and passes sightings in.
 import type { SpecLimit } from './spec.ts';
 
 /** A gap at or over this weighted count goes to a kit lane (the horizon rule, docs/house-line.md §5). */
@@ -31,7 +31,7 @@ export interface GapSighting {
 export interface QueueExample { pandId: string; cropPath: string | null; intentPath: string }
 
 export interface QueueEntry {
-  /** Normalised limit text (lower-case, trimmed, synonyms folded). */
+  /** The canonical gap wording (kitGapVocabulary.ts `classifyLimit`, or the normalised prose when no rule named it). */
   gap: string;
   /** The most common kit component filed under this gap (`facade` for an unstructured line). */
   component: string;
@@ -45,25 +45,10 @@ export interface QueueEntry {
   lastSeen: string | null;
 }
 
-/** The ten most common wordings of one gap, folded onto one canonical wording. Keys and values are normalised text
- *  (see normalizeGap); a line not listed keeps its own wording. */
-export const GAP_SYNONYMS: ReadonlyMap<string, string> = new Map([
-  ['iron wall anchors between the windows', 'iron wall anchors'],
-  ['iron wall anchors between the windows (in the gap between two springers) are not drawn', 'iron wall anchors'],
-  ['the two halves of a window across the party wall keep a 4 cm pier between them (one window on the photo)', 'the two halves of a party-wall window keep a 4 cm brick pier between them (one window on the photo)'],
-  ['the balcony depth is assumed (0.5 m)', 'the balcony depth (0.5 m) is not measurable on the ortho strip'],
-  ["the dormer's carved ears and side cheeks are plain", 'pediment dormer cheeks are plain (no scrolls); the frieze consoles and panels are a plain frieze'],
-  ["the dormer's low side cheeks are not drawn", 'pediment dormer cheeks are plain (no scrolls); the frieze consoles and panels are a plain frieze'],
-  ['narrow centre french windows (the kit widens balcony windows)', 'the narrow centre french window is drawn as wide as the side windows (+15 %)'],
-  ['yellow brick courses of the 1902 balcony row', 'the yellow brick courses of 44 and 48 are not drawn'],
-  ['decorated tympana over some window heads are not modelled', 'brick-relief tympana (carved brick fans) drawn as plain band-brick fills'],
-  ['signs on the glass-block band are not drawn', 'signs on the glass-block band'],
-]);
-
-/** Lower-case, collapse whitespace, drop trailing full stops and spaces, then fold the synonym table. */
+/** Lower-case, collapse whitespace, drop trailing full stops. The gap key of a line the classifier did not name (a
+ *  classified line arrives already in its canonical wording, scripts/house-specs/kitGapVocabulary.ts). */
 export function normalizeGap(what: string): string {
-  const t = what.toLowerCase().replace(/\s+/g, ' ').replace(/[\s.]+$/, '').trim();
-  return GAP_SYNONYMS.get(t) ?? t;
+  return what.toLowerCase().replace(/\s+/g, ' ').replace(/[\s.]+$/, '').trim();
 }
 
 const byCountThenName = (a: [string, number], b: [string, number]) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0);

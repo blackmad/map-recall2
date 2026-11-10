@@ -8,18 +8,17 @@ const sight = (pandId: string, what: string, extra: Partial<GapSighting> = {}): 
 });
 const none = () => false;
 
-test('normalizeGap lower-cases, collapses whitespace, drops trailing stops and folds the synonym table', () => {
+test('normalizeGap lower-cases, collapses whitespace and drops trailing stops (synonyms are the classifier\'s job)', () => {
   assert.equal(normalizeGap('  Brick  Flat-arch lintels. '), 'brick flat-arch lintels');
-  assert.equal(normalizeGap('Iron wall anchors between the windows'), 'iron wall anchors');
-  assert.equal(normalizeGap('The balcony depth is assumed (0.5 m)'), 'the balcony depth (0.5 m) is not measurable on the ortho strip');
+  assert.equal(normalizeGap('Iron wall anchors between the windows'), 'iron wall anchors between the windows');
 });
 
 test('a pand counts once per gap however many sources state it; the weight is 3 inside a ride-priority gebied', () => {
   const priority = new Set(['0363100000000001']);
   const q = buildKitGapQueue([
-    sight('0363100000000001', 'iron wall anchors'),
-    sight('0363100000000001', 'iron wall anchors between the windows', { source: 'type' }),
-    sight('0363100000000002', 'iron wall anchors'),
+    sight('0363100000000001', 'wall anchors'),
+    sight('0363100000000001', 'wall anchors', { source: 'type' }),
+    sight('0363100000000002', 'wall anchors'),
   ], p => priority.has(p));
   assert.equal(q.length, 1);
   assert.equal(q[0].pandCount, 2);

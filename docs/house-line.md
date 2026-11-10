@@ -166,8 +166,9 @@ Stub (lanes H4, H5): `house:crops`, `house:describe`, the writers in trust order
 ## §5 The kit-gap queue
 
 Every kit limit the house line records is a `schemaLimits` line: on a house spec (§1, `{component, what}`), or on a
-block-face type (`scripts/block-face/types/**`, `schemaLimits: string[]`, applied to each house that uses the type). The
-queue turns them into one ranked list, so the kit session chooses from counts instead of from whatever a lane last hit.
+block-face type (`scripts/block-face/types/**`, applied to each house that uses the type). The queue classifies each
+line to the kit's own part names and a canonical wording, counts it per pand, and ranks the result, so the kit session
+chooses from counts instead of from whatever a lane last hit.
 
 ### The command
 
@@ -177,18 +178,28 @@ its evidence date) and the type library. It writes:
 
 - `artifacts/kit-gaps/queue.json`: an array of `{gap, component, weightedCount, pandCount, priorityPandCount, pands,
   examples: [{pandId, cropPath, intentPath}] (up to 3), firstSeen, lastSeen}`, sorted by `weightedCount`;
-- `artifacts/kit-gaps/sources.json`: the sighting counts per source, the components and the buurt coverage;
+- `artifacts/kit-gaps/sources.json`: the sighting counts per source, the components, the gap counts before and after
+  classification, the unmapped share and the unmapped list;
 - `docs/handoffs/kit-gaps.md`: the generated table (the top 30, plus every entry at the threshold) and the horizon
   rule. Its `## Notes` section is hand-kept and carried over on every run. The script refuses to overwrite a
   hand-written doc that has no Notes heading.
 
-`artifacts/` is not committed; the doc is. A pand counts once per gap however many sources state the line. Its weight is
-3 inside a ride-priority gebied (`src/canalRecall/ridePriority.ts`, `isRidePriority`), else 1. Its gebied is the buurt
-whose polygon holds the pand's building-tile footprint centroid (`coverage-v1/buurten.json`, the same join as
-`build-house-specs.ts`). Gap text is lower-cased and whitespace-folded, and the ten most common wordings of one gap fold
-onto one canonical wording (`GAP_SYNONYMS` in `src/canalRecall/houseSpec/kitGaps.ts`). The logic is pure and tested in
-`src/canalRecall/houseSpec/kitGaps.test.ts` (`node --import tsx --test src/canalRecall/houseSpec/kitGaps.test.ts`;
-a `test:house-line-docs` script is for the integrator to add).
+`artifacts/` is not committed; the doc is.
+
+### The classifier
+
+`scripts/house-specs/kitGapVocabulary.ts` maps a prose line to `{component, what}` with ordered keyword rules, Dutch and
+English, and no model, so the output is reproducible. Component vocabulary (the kit's own part names):
+`openings`, `pui` (shopfront and signs), `crown` (gable forms), `cornice`, `ornament`, `wall` (brick, finish, massing),
+`balcony`, `dormer`, `roof`, `door`, and `other`. Dutch and English variants (`muurankers`, `erker`, `dakkapel`,
+`glasblok`, `portiek` ...) fold onto one English keyword first (`SYNONYMS`). Then the first matching rule names the
+line (`RULES`; order matters, and the file's comments say why). A line no rule names is `other` and keeps its folded
+text, so it appears in the unmapped list. Tests: `node --import tsx --test scripts/house-specs/kitGapVocabulary.test.ts`
+and `src/canalRecall/houseSpec/kitGaps.test.ts`.
+
+A pand counts once per gap. Its weight is 3 inside a ride-priority gebied (`src/canalRecall/ridePriority.ts`,
+`isRidePriority`), else 1. Its gebied is the buurt whose polygon holds the pand's building-tile footprint centroid
+(`coverage-v1/buurten.json`, the same join as `build-house-specs.ts`).
 
 ### The horizon rule
 
@@ -198,21 +209,20 @@ a `test:house-line-docs` script is for the integrator to add).
 - The weekly kit session takes the top two entries of the queue.
 - House lanes do not extend the kit themselves. They record the limit in `schemaLimits` and the queue carries it.
 
-### Measured on 2026-11-10 (first run)
+### Measured on 2026-11-10
 
-4,317 sightings (1,454 spec lines on 752 pands, 2,863 type lines on 1,225 houses) on 1,342 pands, 641 gaps, 47 at or over
-50. 1,134 of the 1,342 pands (85 %) are in a ride-priority gebied. The top three: iron wall anchors (weighted 312, 104
-pands), signs on the glass-block band (231, 77), brick flat arches (225, 75). Their examples are in `queue.json` and in
-the generated doc.
+Before classification (raw wording, one gap per distinct sentence): 650 gaps. After: 71 gaps, 39 at or over 50. 4,317
+sightings (1,454 spec lines, 2,863 type lines) on 1,342 pands; 1,134 of them (85 %) in a ride-priority gebied.
+Unmapped (`other`): 48 sightings (1.1 %, gate 15 %), mostly garden, hedge and measurement notes. The top of the
+classified queue is in the generated doc.
 
 ### Known limits of the queue
 
-- Most lines are unstructured prose in the face and type files, so 4,230 of 4,317 sightings carry the component
-  `facade`. The queue keys on the gap text for that reason. Turning a line into `{component, what}` is authoring work
-  (a face or type edit), not something the queue should guess from its wording.
-- `toSpecLimit` reads a `"component: what"` line by its first colon, so some prose becomes a component (`a`, `b`,
-  `not a Rijksmonument`). Those rows are a reader issue to fix in the adapter, not a kit gap.
-- A line that describes one house's measurement or placement (a tree hiding a storey, a module placement) is not a kit
-  gap. It stays on the spec and is not a reason to extend the kit. The queue counts it until someone moves it.
+- A family is a keyword family, not a single kit part. "dormer caps and pediments" holds a few gable lines that mention a
+  pediment; "frieze and dentils" holds a few plain-wall mentions. The rules are the place to correct them.
+- Measurement and placement notes (a tree hiding a storey, a module placement, a basement depth) are not kit gaps. They
+  classify as their nearest part, so they still count. They should move off the kit queue when someone sorts them.
+- `toSpecLimit` reads a `"component: what"` line by its first colon, so some prose becomes a component (`a`, `b`).
+  The classifier reads the `what` text, so it does not depend on that; the adapter still needs fixing.
 - Type lines reach the queue but not the house specs: `fromBlockFace` reads a house's rhythm and the face limits, not
   its type's `schemaLimits`. 17 houses name a type with no library file.
