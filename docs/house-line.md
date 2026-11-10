@@ -63,7 +63,13 @@ All thresholds live in the `THRESHOLDS` constant of `scripts/house-crops/flags.t
 | `missing` | share of invalid pixels over the whole crop (informational, not a gate) | - |
 
 Known blind spots, found in the pilot: bare winter branches over a front are not foliage; a white van is not dark; a dark shop
-window can read as an occluder. Judge the contact sheet, not the flags.
+window can read as an occluder. Judge the contact sheet, not the flags: in the AB07 pilot sheet several `usable` crops are plainly poor (very narrow side walls
+a few metres wide that show a doorway or a window only, walls seen down an alley, strip-route crops with fusion seams or sky
+where the wall is short). A width/area floor and an in-wall check on the panorama's view are the next flags to add.
+
+Pilot (Bloemgrachtbuurt AB07, 662 pands, 2026-11-10): 659 walls, 651 crops, 462 usable (70.1 % of pands with a wall); rejected
+occluder 76 / foliage 81 / washed-out 32 (primary); 7 no panorama, 1 error, 3 no exposed wall; 955 API requests, 1.66 GB,
+0 x 429, 29 min wall time. The strip route recovers less than the wall route (114/234 vs 348/417 usable).
 
 ### Archive and manifest
 

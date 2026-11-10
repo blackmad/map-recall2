@@ -135,14 +135,15 @@ async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRo
   let best: Made | null = null, attempts = 0;
   const route = needsStrip(wall, ranked) ? 'strip' : 'wall';
   const tries: Array<() => Promise<Made | 'no-pano' | null>> = route === 'strip'
-    ? [() => stripCrop(fp, wall, face, panos)]
+    ? [() => stripCrop(fp, wall, face, panos), () => wallCrop(fp, wall, ranked[0])] // planStrip is stricter (<= 30 m, <= 45 deg): fall back to the wall route
     : [() => wallCrop(fp, wall, ranked[0]), async () => { const second = pickSecond(ranked, ranked[0]); return second ? wallCrop(fp, wall, second) : null; }];
   for (const attempt of tries) {
     const made = await attempt(); attempts++;
-    if (made === 'no-pano') return { status: 'no-pano', note: 'planStrip found no panorama for the span', method: 'strip' };
+    if (made === 'no-pano') continue;
     if (made && (!best || penalty(made.flags) < penalty(best.flags))) best = made;
     if (best && usability(best.flags).usable) break;
   }
+  if (!best && route === 'strip' && attempts) return { status: 'no-pano', note: 'planStrip found no panorama for the span and the wall route failed', method: 'strip' };
   if (!best) return { status: 'error', note: 'no panorama could be decoded or rectified', attempts };
   const u = usability(best.flags), id = idOf(fp.id), rel = `pand-crops/${id}`, dir = path.join(archiveRoot, rel);
   await fs.mkdir(dir, { recursive: true });
