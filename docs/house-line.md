@@ -19,6 +19,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §6 Worked example: the timed pilot (Nieuwmarkt, Bloemgracht, Nassaukade) | H7 | landed (staged batch `pilot-20261110`) |
 | §6b The standing acceptance set (easy houses) | H9 | landed |
 | §7 Review in the game (`house:frames`) | H10 | landed |
+| §8 Browser-free GLB passes | H12 | landed (gate: raster metrics; verdicts advisory, judgement ruling 2026-11-10) |
 
 ## §1 The record: HouseSpec
 
@@ -730,8 +731,8 @@ storey pitch, window columns.
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
-its game colours flat). When those matter, fall back to scripts/building-recipes/render.ts (headless
-Chromium) or a ride frame.
+its game colours flat). When those matter, use scripts/building-recipes/render.ts (its sheets draw the slot cells
+in Node since lane H12, docs/house-line.md §8; --browser for headless Chromium) or a ride frame.
 ```
 
 ## §3 Stage and publish
@@ -1718,6 +1719,25 @@ The lod2 has no material names, and the material-blind tight area on the corner'
 Still unsaid: the corner's 2.3 m chamfer is a blank brick face with no cornice. The photo shows a narrow bevel with windows,
 and no front covers a chamfer.
 
+### Round 4 (in-game follow-ups, #354, 2026-11-10)
+
+The judgement session read the round-3 frame pairs. Three follow-ups, all on the Nassaukade corner row:
+
+- **116526's Nassaukade ground floor** drew one dark glass box (`shopfront.bays [0,2]`, `glazing transom`, nothing else). The photo
+  (pano 2021-03-24 8.2 m, "The Kiwi") shows a café front: a dark awning over the corner glazing, a pale painted fascia band over the
+  glass, three tall glazed bays and the glazed door at the right end of the span. `clercq-236681/intent.json` now sets
+  `fascia: true` + `fasciaColour #d9d1c5`, `displayWindows: 3`, `entrance: right`, `stallriser low` and a `fabric-dutch` awning
+  (`#1f1f22`, extent 0-0.3). Nothing in the kit was missing for this; what it still cannot say is the round "THE KIWI" board
+  hanging on the corner pier, the beer sign, and the multi-light transom row (white-framed small panes over the black-framed glass).
+  Compile: `passWithPartyExemption` stays true; roof golden changes on clercq-236681 alone. After frame (not installed):
+  `npm run house:preview -- 0363100012116526 --wall 75deg --chunk clercq-236681` beside the same call without `--chunk`.
+- **The chamfered corner** (the photo's left edge: a canted corner with balconies on every storey) is a kit gap, not drawn:
+  `docs/handoffs/kit-gaps.md` "Corner chamfer", with a count of the corner pands it affects.
+- **`house:frames` `chord`**: 160704's Nassaukade front is stepped in edges under 3 m (stoop and bay line), so `exposedWalls`
+  drops it and the pose took the rear (a 2023 Da Costakade close-up at 34.9 m). A `--list` entry may now give the wall's two end
+  points, `"chord": [[lng, lat], [lng, lat]]` with a `bearing` for the outward side; 160704 then poses from the 2021-03-24 Nassaukade
+  panorama at 8.2 m.
+
 ## §6b The standing acceptance set: the user's easy houses (lane H9)
 
 The user, 2026-11-10, on `map-recall2-screenshots/whats-new/2026-11-10-facade-extras.jpg` (photo | before | after, 10
@@ -1776,8 +1796,8 @@ Output per pand (or per `key` of a `--list` entry): `<out>/<key>/{photo.jpg, gam
 
 | Step | Where | What |
 |---|---|---|
-| wall | `pand-reference/select.ts pickWall` | the street wall (`--bearing`, or a `--list` entry's `bearing`/`at` for one wall of a large pand) |
-| panorama | `rankPanos` (5-35 m, obliquity <= 55) | `--year` filter; `--season winter` puts Nov-Mar first; the top three then by least foliage on the wall (a 2000 px pre-pass), then rank |
+| wall | `pand-reference/select.ts pickWall` | the street wall (`--bearing`, or a `--list` entry's `bearing`/`at` for one wall of a large pand; a front drawn as a bay or in short jogs is taken as the chord of the ring edges facing the bearing, e.g. Nassaukade 146 = 160704 with `bearing` 96) |
+| panorama | `rankPanos` (5-35 m, obliquity <= 55) | `--year` filter; `--season winter` puts Nov-Mar first; a 2000 px pre-pass over the first three (up to eight while fewer than two pass) rejects sun glare (> 12 % of the frame 0-20 deg below the horizon blown out, min RGB > 225: `GLARE_MAX`; the band stops above the recording car's bonnet, white on some captures) and a washed-out wall (> 30 % bright and colourless, `washedOutFraction`'s rule, where another candidate reads 25 % less: a white front is not rejected), even in winter; then least foliage on the wall, then rank. The caption's `why` lists what was rejected |
 | pose | `scripts/house-frames/pose.ts aimPose` | at the panorama, eye 2.44 m over the ground (`lensFor`'s datum), heading at the wall centre, 5-30 deg down, the narrowest vertical FOV in 45-120 deg that fits the wall and 1.5 m above it |
 | photo | `photo.ts cutPerspective` | a pinhole cut of the equirectangular panorama (4000 px; `--pano-size`) with the game's camera frame, rays turned onto the RD grid (`gridConvergenceDeg`, about -0.4 deg) |
 | game | `tests/e2e/house-frames.spec.ts` | one page for the list (`?engine=own&cam=fps` + `--query`), re-opened every 40 poses or after a crash; per pose: teleport, the pose handed to the engine, `settleWorld`, HUD hidden, screenshot, `inspectBuilding` picks over the wall |
@@ -1803,11 +1823,12 @@ it?). Gate: median photo offset <= 2 % over the validation set, any pose > 3 % i
 
 | Flag | Rule |
 |---|---|
-| blank wall | the game's wall reads <= 1 opening (a bare slab's edge strip reads as one) where the photo reads >= 3 (`measureFacade`, houseLine profile, on the wall rectified out of each half at 25 px/m) |
 | missing | >= 50 % of 35 wall picks hit sky or ground |
 | other building | >= 50 % of the wall picks hit another building or model (a cover that does not draw this wall; a neighbour in front) |
 | roof offset | the game's skyline over the wall (median of 7 columns, read on the wall plane) sits more than 1 m from the projected crown line (tile height) while the photo's sits within 1 m of it; or a model's surface stands >= 1.2 m over the crown line on 2 of 7 columns |
-| wall colour | \|dL\| > 0.12 between the halves' wall colours; advisory until the H2e clusterWall fix and H9 round 3 land |
+| wall colour | relative, the H9 rule: in each half, rel = the pand's wall L / the mean of its neighbours' (strips 3-5 m past each wall end on the wall's line; L = trimmed 30-70 % mean of HSL lightness from 3 m to min(12 m, 85 % of the height), leaves and, on the neighbours, sky dropped). A strip counts when it reads in both halves with < 25 % sky; with one strip the caption says `left only` / `right only`, with none `wall colour: no ref`. Fires on an inversion across 1.0 (each side > 10 % from it, `INVERSION_BAND`: lighter than the neighbours in one half, darker in the other) or when \|ln(rel game / rel photo)\| > 0.35 (`COLOUR_REL_MAX`); never on a missing / other-building pair. Exposure and white balance cancel; the absolute \|dL\| > 0.12 rule it replaced fired on 24 of 35 |
+
+Opening counts (photo and game, `measureFacade` houseLine profile on the wall rectified out of each half at 25 px/m) are printed as advisory only, with a `possible blank wall` note where the game reads <= 1 and the photo >= 3; no flag fires from them. Measured against the H5h hand counts (`data/house-line/hand-set-v1.json`, 69 readable single fronts, photo halves): columns read on 33, equal to the hand axes on 14 and within one on 25; openings / (axes x storeys) median 1.44 (p10 0.67, p90 2.5), within 30 % on 20 of 61. Not good enough to flag on |
 
 Generic houses pick as footprint prisms (`threeBuildingsBrowser.ts inspectAtScreen`), so picks say who owns the wall,
 not what its roof looks like; installed models (chunks, ordinary, landmarks) are ray-cast on their meshes.
@@ -1820,7 +1841,7 @@ One line per item; the countable ones carry the H5h blind reader ceiling (§4c),
 2. Storeys: same count above the ground storey? (ceiling 1.00)
 3. Window axes: same number of bays, roughly where the photo has them? (ceiling 1.00)
 4. Colour family and darkness: wall family (ceiling 0.81) and tone (ceiling 0.89), judged against the neighbours in the same frame, not in absolute terms.
-5. Blank or missing wall: is there a front where the photo has one, with openings? (the blank-wall / missing flags)
+5. Blank or missing wall: is there a front where the photo has one, with openings? (the missing flag; the `possible blank wall` note is advisory)
 6. Roof offset: does the roof sit on the walls, at the photo's height? (the roof flag)
 7. Shopfront (pui): shop vs residential ground storey (ceiling 0.88).
 8. Kit gaps: anything the photo shows that the kit cannot say (oriel, balcony type, ornament, painted bands) goes to the kit-gap queue (§5) as a `schemaLimits` entry, not into the nearest option.
@@ -1854,7 +1875,180 @@ median 3.0 s; under a shared slot with a check:canal gate queued.
 
 Gate: `check:canal` green on this branch (162 checks, EXIT 0, 2026-11-10 20:01, `CANAL_PW_EXCLUSIVE=1`).
 
-Flags on the 35 (before): blankWall 1 (116526), missing 2, otherBuilding 3, roofOffset 4, wallColour 24. The wall-colour
-flag fires on most pairs (sunlit or white-balanced photos against the lit look): read it as advisory only, as the brief
-says, until H2e and H9 round 3 land.
+Flags on the 35 (before, first rules): blankWall 1 (116526), missing 2, otherBuilding 3, roofOffset 4, wallColour 24.
 
+### Round 3 (2026-11-10): inversions, one-strip references, clipped skylines
+
+- The judgement session caught 116526 (H7 r4 frames) silent at photo rel 1.27 vs game 0.85: lighter than its neighbour in
+  the photo, darker in the game. Round 2 demanded both neighbour strips and only one read. Now one strip is used when only
+  one reads (`ref right only` on the caption), no strip prints `no ref`, and an inversion across 1.0 fires whatever the log
+  score. It fires on 116526 (pinned in `pose.test.ts` with the measured values).
+- The inversion takes a 10 % band either side of 1.0: the literal rule fired on 4 of H7's 15 (read as right) at noise such
+  as 236262, 1.024 vs 0.998, and 156960, 0.96 vs 1.07. With the band, **H7 false positives: 0 of 15** on the clercq set,
+  H7's Nassaukade run and the round-2 rerun; 116526 is the one flag, a true one.
+- Skyline columns whose frame top sits under the crown line (+0.5 m) read `clipped`, not a height, so a clipped-top pose
+  cannot raise a roof offset (160704 from Nassaukade had photo 12.72 m from white bay-window tops against the frame edge;
+  it now reads `skyline ... clipped`). H7's clercq set keeps its two roof offsets (157618, 156454: the game's skyline 1.1-1.3
+  m under the crown the photo confirms), which H7's own summary already had.
+- `--post-only --out <dir>` re-runs every check and flag on an existing frame dir (prepared.json, job.json and the
+  frames), writing pose.json, pair.jpg, the sheets and summary.json there.
+- Not caught: the lens-flare arc on 160704's 2021-03-24 panorama. A thin arc blows out under 1 % of the band, far under the
+  12 % glare rule; it needs a streak detector (OPEN).
+
+### Round 2 (2026-11-10): relative wall colour, glare, advisory openings, Nassaukade 146
+
+- **Wall colour**, relative (rule above). Calibrated on H7's set, which the judgement session read as right: Nassaukade
+  145-152 (rerun, 6 pairs) and Clercqstraat 236681 (9 pairs). 11 of the 15 read with both neighbour strips; their largest
+  |score| is 0.27 (164843), so the 0.35 threshold leaves them quiet: **H7 false positives 0 of 15**. (116526 reads 0.39 on one strip
+  only, the neighbour's dark-with-white-trim front rather than the pand: why one strip is not enough. H7's first Nassaukade
+  run picked 160704's Da Costakade rear wall, -0.36, which the other-building guard keeps quiet.) On the 35 validation walls it
+  reads 10 with both strips and fires on 5: 169916 (cream for dark brown brick) and Nieuwmarkt 182850, 182853, 182854,
+  182855, generic fronts whose colour is visibly wrong on the sheet (a white front for dark brick, pink brick for dark
+  grey). The trim is the 30-70 % quantiles: 40-90 % let a dark front's white trim lift it (164843 on the rerun, 0.38).
+- **Pose pick.** 164843's 2019-01-09 pick had flare over the left third: 16 % of the frame 0-20 deg below the horizon
+  blown out in the pre-pass (on the full cuts: 16 %; the next highest of 60 photos reads 10 %, Nieuwmarkt 182857's white
+  ground storey, a thin margin). The rerun rejects it (`rejected 2019-01-09 glare 16%`) and takes another 2019-01-09
+  panorama with 0 %. Without the 20 deg band the recording car's white bonnet read as glare (244160-e13's 2016 capture,
+  18 %). On an any-season pick the washed-out rule now also drops 244160-e13's 2016-07-29 capture (62 %, the tower's
+  glazing under construction) for 2021-04-30.
+- **Nassaukade 146 (160704)** from the Nassaukade side: `--list` entry `{"bearing": 96, "at": [4.87384, 52.37225]}`. Its
+  front is drawn as a bay (edges of 2.7, 1.1 and 1.7 m), which `exposedWalls` drops, so `wallAt` now takes the chord of the
+  facing edges (6.3 m). The 2021-03-24 panorama 8.2 m off; picks on chunk-face-nassau-145-152, no flags, colour score -0.10.
+
+## §8 Browser-free GLB passes (lane H12, #362)
+
+**First passes are Node; browsers are for in-game frames (`house:frames`), rides and timing.** A first look at a GLB
+(a recipe house, a block-face chunk, a large recipe, a landmark) no longer waits for a `/tmp/canal-pw.sh` slot.
+
+### What draws in Node
+
+`src/canalRecall/glbRaster/` is a pure GLB rasteriser (no DOM, no GL, no globals; byte-deterministic):
+
+- `load.ts`: `@gltf-transform/core` + the meshopt decoder (EXT_meshopt_compression, KHR_mesh_quantization), the node
+  hierarchy flattened, normals by the inverse transpose, TEXCOORD_0 (KHR_texture_transform applied), COLOR_0, base
+  colour factor and texture (decoded by sharp), emissive, alpha mode/cutoff, doubleSided, KHR_materials_unlit and the
+  material extras (three.js userData: `materialSlot`, `tint`, ...).
+- `look.ts`: the browser pages' looks as data. `recipe` is render-page.ts's default: slot-tagged materials become the
+  recipe look's unlit cell shader, built by the game's own `createRecipeLook` (`cityLook: false`) on the real three.js
+  namespace with a `@napi-rs/canvas` document passed in, so cells, tints and uv scale are the game's. `flat` is
+  `--flat`; `game` is landmark-views' Lambert (normaliseLandmarkMaterials, the glass sky tint); `gallery` the
+  GLTFLoader standard materials. The rigs (render-page's hemisphere + sun + ground, landmark-views' game and gallery
+  lights) are constants beside them.
+- `raster.ts`: houseSpec/softRaster.ts's loop (edge functions, perspective-correct attributes, z-buffer) generalised to
+  per-primitive materials and three.js cameras (render.ts `RenderView`: eye, target, vertical fov, optional ortho
+  extents). It samples the standard 4x MSAA pattern and shades once per pixel at its centre, as the browser's
+  `antialias: true` does (the regular 2x2 grid of softRaster drew mullion edges differently and moved measureFacade's
+  glazing by up to 0.5 on cw-heren-175702). Textures are mipmapped and sampled trilinearly at one level of detail per
+  triangle. The standard material's direct GGX specular (three.js BRDF_GGX) is reproduced; it is what lit the
+  Westerkerk roof (pixel |Δ| 0.45 -> 0.13 once added). BLEND draws after the opaque pass, far to near, without depth
+  writes; MASK discards below the cutoff; triangles crossing the near plane are clipped.
+- `views.ts`: one view vocabulary, the JSON landmark-views.mjs takes: `orbit` (gallery camera), `street`, `front` (the
+  orthographic elevation of a wall a -> b at N px/m, a on the left, rows from the top: the axis of
+  `scripts/pand-reference/rectify.ts rectifyWall`, so a rectified photo and the render overlay), `threeq` (render.ts
+  frontViews' 3/4). `gallerySheetViews()` is the fixed sheet: gallery card, front, top, back.
+
+### Call sites and the flag
+
+| Call site | Default now | `--browser` |
+|---|---|---|
+| `scripts/building-recipes/render.ts` `renderModels` (every importer: block-face review, auto-place, batch, draft-preview, ortho-compare, run-views, door-reveal-sheet; large.ts sheets; measure.ts, closeup.ts, measurement-sheet.ts, index-row-sheet.ts, roof-tidy-cards.ts; landmark `*-strip.ts`; mercatorplein, haparandaweg, street-chunks, street-surveys) | Node | Chromium (also `GLB_RENDER=browser`, `useBrowserRenderer()`) |
+| `render.ts` with `{city: true}` (`--city-look`, index-row-sheet.ts) | Chromium, always (Node has no city-look atlas shader) | - |
+| `scripts/landmarks/landmark-views.mjs` | Node (`scripts/glb-raster/views.ts`, no dev server) | Chromium + dev server on PORT |
+| `scripts/landmarks/review-sheet.ts` GLB tiles | Node (the page's own lights, ground, DoubleSide) | Chromium; the in-game frame stays a browser frame |
+| `scripts/house-preview/gate.ts` | Chromium (it is the Node-preview-vs-Chromium cross-check) | - |
+| `house:preview --recipe` | Node, unchanged (flat game colours: H2 calibrated them against the ride frame) | - |
+| `large.ts` likeness / `install-large.ts` likeness gate | Node already (modelElevation on the material soup); no install step launches Chromium for a check that is not a picture | - |
+
+Left in the browser, and why: `kit-sheets.ts` (renders kits from the kit code in the page, not a GLB);
+`building-types/camera-sheets.ts` and `coverage/build-look-thumbs.ts` (building-types render-page.ts: the lit
+recipe look `lit: true` under the sunny rig and its review look; the cell path is here, the lit-cell Lambert and the
+sunny rig are the next step); `big-camrender`/`big-camshot` and every `*-game*.mjs` / ride capture (in-game frames).
+
+### Commands
+
+`node --import tsx scripts/glb-raster/views.ts` (INTEGRATOR TODO: `npm run glb:views`):
+
+```
+node --import tsx scripts/glb-raster/views.ts <id | file.glb> <views.json | - | sheet> <outDir> [flags]
+
+Renders a GLB in Node (src/canalRecall/glbRaster: no browser, no dev server, no lock) from a list of views, the JSON
+scripts/landmarks/landmark-views.mjs takes: [{name, light?, w?, hgt?, kind, ...}] with kind
+  orbit  {theta, phi, zoom?}            the landmark gallery camera (vertical fov 32, fitted to the bounding sphere)
+  street {x, z, h, fov, eye?, pitch?}   camera at x/z, heading h deg from north, horizontal fov, eye height (2.5 m)
+  front  {a: [x, z], b: [x, z], ppm?, v0?, v1?, pad?}  orthographic elevation of the wall a -> b (a on the left),
+                                        ppm px/m (50), the axis of pand-reference/rectify.ts rectifyWall
+  threeq {a, b, heightM?}               render.ts frontViews' three-quarter view of that wall
+light: game (default: normaliseLandmarkMaterials' Lambert under the game's hemisphere/sun/fill, the floor) or gallery
+(the GLTFLoader standard materials under the gallery light, the sun following theta, no floor). Coordinates are the
+GLB's own (x east, y up, z south for our models).
+
+  <id>              public/canal-drive/models/<id>.glb; or a path to any .glb
+  views.json        the view list; '-' = landmark-views.mjs's defaults (gallery card, game card, three game orbits);
+                    'sheet' = the fixed sheet (gallery card, front, top, back) composed into <outDir>/sheet.png
+  --wall=ax,az,bx,bz  the sheet's front wall (else the box's south face is an orbit)
+  --look=<look>     override the dressing: game | gallery | recipe (render.ts's recipe look) | flat
+  --ss=<n>          samples per pixel side (default 2, the 4x MSAA pattern)
+  --help            this text
+
+Writes <outDir>/<name>.png per view and prints each path with its time. Not drawn: cast shadows, anisotropic
+filtering, the city-look atlas shader (use render.ts --browser or landmark-views.mjs --browser for those).
+```
+
+`node --import tsx scripts/glb-raster/agreement.ts` (INTEGRATOR TODO: `npm run glb:agreement`):
+
+```
+node --import tsx scripts/glb-raster/agreement.ts [flags]
+
+Renders the lane H12 agreement set (10 canal houses incl. the Nassaukade 506 block and Haarlemmerdijk 2-58, 5 block-face
+chunks, 5 large recipes incl. Houthavenkade 26, 5 landmarks incl. glass/leaves) in Node and in Chromium, measures each
+front elevation (measureFacade, 1.5 px blur) and judges Node against Chromium (previewVerdict, reference
+'render'). Chromium: run under /tmp/canal-pw.sh with your PW_PORT.
+
+  --out=<dir>       output directory (default artifacts/glb-raster/agreement): agreement.json, sheet-*.png, per-id PNGs
+  --only=<id,...>   these set ids only
+  --ss=<n>          Node supersampling (default: the renderer's)
+  --reuse-browser=<dir>  measure against the Chromium PNGs of an earlier run in <dir> (no browser)
+  --node-only       time the Node side only (no Chromium)
+  --browser-only    time the Chromium side only (today's path, the before numbers)
+  --help            this text
+```
+
+### Agreement (2026-11-10, 25 GLBs)
+
+Set: 8 recipe canal houses + the Nassaukade 145-152 face (the Nassaukade 506 bar) + Haarlemmerdijk 2-58 r1 (holds
+Haarlemmerdijk 6, from lane/belt-haarlemmer-20261110); 5 block-face chunks; 5 large recipes incl. Houthavenkade 26;
+5 landmarks incl. the Conservatorium (glass, BLEND) and the Lensbomen (BLEND leaves). The front elevation at up to
+50 px/m, measured with measureFacade after the 1.5 px blur, Node judged against Chromium (previewVerdict, reference
+`render`). Controls: each renderer against itself with the camera moved a quarter pixel.
+
+| Measure | Result |
+|---|---|
+| Pixel |Δ| (mean over the front, 0-255), median of 25 | 0.53 (max 0.98, clercq-236681) |
+| Wall ΔL median / hue median | 0.002 / 0.2° |
+| Verdict PASS, one frame each | 19 / 25 |
+| Verdict PASS within the renderers' quarter-pixel envelopes (some pair of {Node, Node 1/4 px} x {Chromium, Chromium 1/4 px}) | 23 / 25 |
+| Chromium PASS against itself 1/4 px over | 20 / 25 |
+| Columns equal (one frame) | 20 / 25 |
+
+The strict gate (verdicts equal on 23 of 25 single frames) is not met: 19. Every disagreement is a measureFacade
+decision on a knife edge, not a drawing difference (the renders differ by under 1/255 on average, edges only):
+
+- Chromium disagrees with itself a quarter pixel over on 5 fronts (callenburg-3-63, houthavenkade-26, entrepotdok,
+  westerkerk, conservatorium), so no renderer can score more than ~20/25 single-frame against it.
+- houthavenkade-26 (window shape none vs tall), westerkerk (wall pick flips between the stone tower and the brick
+  nave: ΔL 0.25 on the same pixels), conservatorium (window shape): Chromium's own 1/4 px control fails the same way.
+- nassau-145-152 (columns 24 vs 6) and rijksmuseum (columns 39 vs 77, period halving): Node's own 1/4 px frame flips
+  back to Chromium's reading (nassau inside the envelope).
+- clercq-236681 (window shape wide vs square: opening width 0.8 vs 0.6 m at aspect 0.62 vs 0.81, the 0.7 boundary)
+  and rijksmuseum stay outside the envelope; the crops are identical to the eye (sheet 2).
+
+Speed (the user's Mac, warm unless said): the 4-view sheet of cw-heren-175702 in 0.33-0.41 s (`views.ts ... sheet`,
+1.0 s for the whole command from a cold `node`); Chromium 1.5 s cold (launch + bundle), 0.07-0.09 s warm, plus any
+wait for a slot. A large recipe (Houthavenkade 26, `large.ts`, all wall and aerial sheets) 6.1 s in Node, 4.9 s with
+`--browser` on a free slot. Block-face `review` (bilder-081118-155417) 2.2 s Node, 4.7 s Chromium, identical review
+lines. Both completed with `PLAYWRIGHT_BROWSERS_PATH` pointing nowhere (no Chromium can start). The 25-GLB agreement:
+Node 32 s, Chromium 8 s (most of the Node time is the ortho fronts at 1800 px).
+
+Not reproduced: the city-look atlas shader, anisotropic filtering, cast shadows, environment maps. The release review
+"at gallery size from all sides" can use the Node orbit (`views.ts <id> -`) for its first look; the release decision
+itself should stay on a Chromium or in-game frame until the measureFacade knife edges above are hardened (OPEN).

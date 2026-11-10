@@ -1,4 +1,6 @@
 // The generic path reads HouseSpecs (house line H1 step 5): flag, decorator steps, enricher, bay fitting.
+// The wall-colour rule is held (SPEC_WALLS_HELD, holds.test.ts); these tests exercise it through the explicit opt-in.
+process.env.SPEC_WALLS = '1';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView, SPEC_WALL_HOLD } from './decorate.ts';

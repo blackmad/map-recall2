@@ -9,6 +9,35 @@
 **Erf exceptions and glazed parts (2026-11-10, a1 lanes).**
 - **Two rideable erf exceptions** (`docs/reports/erf-exceptions-20261110.md`): erf stays out of the plaza rule city-wide; `ERF_EXCEPTIONS` in `routing/bgtPlazas.ts` is a closed, reviewed list of two: the ASC SDW forecourt (feedback 637f346b, 1,062 m² newly rideable, roof-terrace corner cut) and the Radarweg office apron (4f47f105, 91 m²; the inner courtyard stays blocked). Geometry fetched from PDOK into `scripts/routing/bgt-erf-exceptions.json`; ratchets flipped to passing pins in `test:canal-car`; `test:bgt-plazas` keeps the list closed.
 - **Glazed parts** (`docs/reports/glass-parts-20261110.md`, feedback fc427560): building tiles dropped `building:material`, so the IJdok oriel and skybridge drew as opaque blue boxes. `glazedMaterial.ts` reads glass/mirror tags, `stamp-glass-material.ts` stamps 143 features in 15 z14 tiles, and `glassParts.ts applyGlazing` gives every storey the existing curtain-wall cell (same program, opaque, byte-identical without the tag; pinned in `test:glass-parts`, now in `check:canal`).
+**H12 browser-free GLB first passes (2026-11-10, #362, 2d519f298, opus).**
+- `src/canalRecall/glbRaster/` is a Node GLB rasteriser on softRaster, with gltf-transform, meshopt and the lit look, and one view vocabulary.
+- render.ts, landmark-views and review-sheet now default to it; `--browser` keeps Chromium. house-preview/gate.ts stays on Chromium.
+- Speed: a 4-view sheet takes 0.33–0.41 s, Houthavenkade 26 6.1 s, and block-face review 2.2 s against 4.7 s in Chromium. Output is byte-identical across runs.
+- **The gate is the raster metrics** (judgement ruling): median wall dL 0.002, hue 0.2°, columns 20/25.
+  - Verdict agreement (19/25 strict) is advisory: Chromium agrees with itself on only 20/25 under a quarter-pixel nudge, so measureFacade is the noise.
+  - Release stays on house:frames pairs. `test:glb-raster` joins check:canal.
+
+**Spec holds pinned (2026-11-10, integrator).**
+- **What happened:** H9 r1 (cd6129a19) set `SPEC_WALLS_HELD = false`, and the H9 merge carried it into the local batch, so the earlier "merged with walls held" was wrong in local commits 312f0e92a..046e3ef0d. Nothing was pushed with walls released; origin/main kept `true`.
+- **The fix:**
+  - `SPEC_WALLS_HELD = true` again.
+  - New `houseSpec/holds.test.ts` pins every `*_HELD` constant. A deliberate flip edits the test in the same commit.
+  - `?specWalls=1` / `SPEC_WALLS=1` (`specWallsForcedOn`) draws the rule while it is held, for the before/after frame read and the rule's own tests.
+- **The walls-released build was used:** it gave the "after" house:frames for kinker-244-332, the easy-houses set and random24, and the "before" frames reuse its poses.
+
+**H7 r4 corner shopfront; house:frames round 2 (2026-11-10, #354, #358).**
+- **H7 r4 (c1592ee67, sonnet): the corner shopfront.** The judgement session accepted H7 r3 on the house:frames after frames. Corner 116526's ground floor (the photo's café) now draws:
+  - a pale fascia, a dark dutch awning and three display bays with transoms;
+  - a right-hand entrance and a stallriser.
+  - The chunk is reinstalled.
+  - Not yet right: the door sits in a brick gap beside the glazing, and the awning is wider than the photo's.
+  - Still not drawn: the round corner board and the small-pane transom row.
+  - `chamfer-corner` is now in the kit-gap queue: 2,167 pands, 1,148 in ride-priority gebieden, 56 % of the ride-weighted 1850–1940 share.
+- **house:frames r2 (5f1dcc5b9):**
+  - The wall-colour flag is relative to the two neighbours in the same image, firing when |ln(game/photo ratio)| > 0.35. It gives 0 of 15 false positives on the accepted H7 set and fires on 5 of the 10 readable validation walls, all of which look wrong.
+  - Glare and washed-out panoramas are rejected even in winter.
+  - Opening counts are advisory only: they match the H5h hand axes on 14 of 33.
+  - List entries take a `chord` / `at` for stepped fronts, which is how 146 is now posed from Nassaukade.
 
 **H10 `house:frames` and H11 design fields on the generic path (2026-11-10, #358, #361).**
 - **H10 (4371ef8a8, opus): `npm run house:frames`.**

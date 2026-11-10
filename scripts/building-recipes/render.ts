@@ -1,8 +1,12 @@
 /**
- * Headless-Chromium (WebGL via SwiftShader) renders of building GLBs and the
- * contact sheet: reference photo | recipe front | recipe 3/4 | existing model 3/4.
+ * Renders of building GLBs and the contact sheet: reference photo | recipe front | recipe 3/4 | existing model 3/4.
  *
- *   node --import tsx scripts/building-recipes/render.ts --house=keizers-575 [--existing=public/canal-drive/models/ordinary-buildings/0363100012176752.glb] [--city-look [--year=<BAG year>]] [--flat]
+ * Since lane H12 (docs/house-line.md §8) `renderModels` draws in Node (src/canalRecall/glbRaster: the recipe look's
+ * cells, the sheet's hemisphere + sun, no browser and no /tmp/canal-pw.sh slot). `--browser` on any calling script's
+ * command line (or GLB_RENDER=browser, or `useBrowserRenderer()`) keeps the headless-Chromium (WebGL via SwiftShader)
+ * path of render-page.ts; the city look (`{city: true}`) always takes it, the Node raster does not draw that shader.
+ *
+ *   node --import tsx scripts/building-recipes/render.ts --house=keizers-575 [--existing=public/canal-drive/models/ordinary-buildings/0363100012176752.glb] [--city-look [--year=<BAG year>]] [--flat] [--browser]
  *   node --import tsx scripts/building-recipes/render.ts --row=bloemgracht-78,bloemgracht-80,... --out=artifacts/building-recipes/row-x.png
  */
 import fs from 'node:fs/promises';
@@ -12,6 +16,7 @@ import {chromium, type Browser, type Page} from 'playwright';
 import sharp from 'sharp';
 import {rdToLngLat} from '../../src/canalRecall/facade/rdNew.ts';
 import type {BuildingFacts} from '../../src/canalRecall/buildingRecipe/facts.ts';
+import {renderModelsNode} from '../../src/canalRecall/glbRaster/render.ts';
 
 const ARTIFACTS = 'artifacts/building-recipes', HOUSES = 'scripts/building-recipes/houses';
 export interface RenderModel { file: string; position?: number[]; rotationY?: number; scale?: number[] }
@@ -41,8 +46,23 @@ async function cityBrick() {
  * draws (render-page.ts `render`). `useFlatMaterials()` keeps the GLB's own flat lit colours for geometry review.
  */
 export interface RenderLook { city?: boolean; year?: number | null }
+/** The `--browser` flag: keep the headless-Chromium renderer (render-page.ts) instead of the Node raster. */
+export const BROWSER_FLAG = '--browser';
+let backend: 'node' | 'browser' = process.argv.includes(BROWSER_FLAG) || process.env.GLB_RENDER === 'browser' ? 'browser' : 'node';
+/** Force the Chromium renderer for this process (a script that compares against it, e.g. house-preview/gate.ts). */
+export function useBrowserRenderer(on = true) { backend = on ? 'browser' : 'node'; }
+export const rendererInUse = () => backend;
+let cityFallbackNoted = false;
+
 export async function renderModels(models: RenderModel[], views: RenderView[], look?: RenderLook): Promise<Buffer[]> {
   if (look && Object.keys(look).some(k => k !== 'city' && k !== 'year')) throw Error('renderModels: trial texture maps were retired 2026-10-14 (they skipped the game look); pass {city: true, year} for the city look');
+  if (backend === 'node' && !look?.city) return renderModelsNode(models, views, {look: brickUrl === null ? 'flat' : 'recipe'});
+  if (backend === 'node' && !cityFallbackNoted) { cityFallbackNoted = true; console.warn('render.ts: the city look ({city: true}) draws in Chromium (the Node raster has no city-look shader)'); }
+  return renderModelsBrowser(models, views, look);
+}
+
+/** The headless-Chromium path (render-page.ts), as before lane H12. */
+export async function renderModelsBrowser(models: RenderModel[], views: RenderView[], look?: RenderLook): Promise<Buffer[]> {
   const p = await getPage();
   const brick = await cityBrick();
   const payload = await Promise.all(models.map(async m => ({...m, base64: (await fs.readFile(m.file)).toString('base64')})));
@@ -152,7 +172,24 @@ export async function columnsSheet(ids: string[], out: string, panel = {width: 3
   return out;
 }
 
+export const HELP = `node --import tsx scripts/building-recipes/render.ts [--house=<id>[,<id>...] | --row=<id>,... | --sheet=<id>,...] [flags]
+
+Contact sheets of recipe GLBs (reference photo | recipe front | recipe 3/4 [| existing model 3/4]). Draws in Node
+(src/canalRecall/glbRaster: the recipe look's slot cells, the sheet's hemisphere + sun, no browser, no lock) since
+lane H12 (docs/house-line.md §8); every script that imports renderModels follows the same default.
+
+  --house=<id,...>       one contact sheet per front: artifacts/building-recipes/<id>/contact*.png
+  --existing=<glb> --existing-anchor=<lng,lat>  add the existing hand-built model's 3/4
+  --row=<id,...>         a street row from across the street (--out=<png>)
+  --sheet=<id,...>       one column per house: reference | front | 3/4 (--out=<png>)
+  --city-look [--year=<BAG year>]  the ?cityLook=1 look; drawn in Chromium (Node has no city-look shader)
+  --flat                 the GLB's own flat lit colours (geometry review)
+  --browser              headless Chromium (render-page.ts, SwiftShader) instead of Node; also GLB_RENDER=browser.
+                         Run it under /tmp/canal-pw.sh with your PW_PORT
+  --help                 this text`;
+
 if (process.argv[1]?.endsWith('building-recipes/render.ts')) {
+  if (process.argv.includes('--help')) { console.log(HELP); process.exit(0); }
   const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
   if (process.argv.includes('--flat')) useFlatMaterials();
   // `--city-look`: the city look (`?cityLook=1`) instead of the default recipe look; `--textures` (trial tiles) was retired.

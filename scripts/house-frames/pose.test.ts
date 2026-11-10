@@ -64,3 +64,40 @@ test('--help text names every input and the review section', () => {
   for (const flag of ['--pands', '--face', '--buurt', '--list', '--year', '--season', '--query', '--label', '--out']) assert.match(HELP, new RegExp(flag));
   assert.match(HELP, /§7/);
 });
+
+test('relative wall colour cancels exposure and catches a pand painted unlike its neighbours', async () => {
+  const { relativeColour, flagsFor } = await import('./analyse.ts');
+  const pose = aimPose({ lngLat: NASSAU.ll }, NASSAU.wall), f = frameFor(pose);
+  const paint = (wallGrey: number, neighbourGrey: number) => {
+    const img = { width: pose.width, height: pose.height, data: new Uint8Array(pose.width * pose.height * 3).fill(neighbourGrey) };
+    const o = wallOutline(f, pose, NASSAU.wall).map(p => p!), x0 = Math.min(...o.map(p => p.x)), x1 = Math.max(...o.map(p => p.x)), y0 = Math.min(...o.map(p => p.y)), y1 = Math.max(...o.map(p => p.y));
+    for (let y = Math.floor(y0); y < y1; y++) for (let x = Math.floor(x0); x < x1; x++) img.data.fill(wallGrey, (y * pose.width + x) * 3, (y * pose.width + x) * 3 + 3);
+    return img;
+  };
+  const same = relativeColour(paint(60, 120), paint(36, 72), f, pose, NASSAU.wall); // the game half 40 % darker overall
+  assert.equal(same.used, 2);
+  close(same.score!, 0, 0.05, 'exposure cancels');
+  const lighter = relativeColour(paint(60, 120), paint(200, 120), f, pose, NASSAU.wall); // dark in the photo, pale in the game
+  assert.ok(lighter.score! > 0.35, `score ${lighter.score}`);
+  const picks = { wall: { n: 35, target: 35, other: 0, none: 0, others: {} }, above: { n: 14, target: 0, other: 0, none: 14, others: {} }, drawnBy: '' } as any;
+  const m = { openings: 10, wallHex: null, wallL: null, usable: 1, columns: 3 };
+  assert.match(flagsFor(picks, m, m, { crownM: 17, game: null, photo: null, above: 0 }, lighter).wallColour!, /inverted \(darker than its neighbours in the photo, lighter in the game\)/);
+  assert.equal(flagsFor(picks, m, m, { crownM: 17, game: null, photo: null, above: 0 }, same).wallColour, null);
+});
+
+test('pinned 116526 (H7 r4 frames, h7r4-116526): lighter than its neighbour in the photo, darker in the game, one strip: the inversion fires', async () => {
+  const { flagsFor } = await import('./analyse.ts');
+  const picks = { wall: { n: 35, target: 35, other: 0, none: 0, others: {} }, above: { n: 14, target: 0, other: 0, none: 14, others: {} }, drawnBy: '' } as any;
+  const m = { openings: 10, wallHex: null, wallL: null, usable: 1, columns: 3 }, roof = { crownM: 17.63, game: null, photo: null, above: 0 };
+  // Measured by relativeColour on those frames: photo pand 0.309 / right neighbour 0.244, game 0.411 / 0.482 (the left strip is sky in one half).
+  const c116526 = { photo: { pand: 0.309, neighbours: [0.439, 0.244], rel: 1.266 }, game: { pand: 0.411, neighbours: [0.383, 0.482], rel: 0.853 }, used: 1, ref: 'right only' as const, score: -0.395 };
+  assert.match(flagsFor(picks, m, m, roof, c116526).wallColour!, /inverted .*ref right only/);
+  // An inversion fires under the log threshold too (each side > 10 % from 1.0); no reference never fires.
+  const small = { ...c116526, photo: { ...c116526.photo, rel: 1.15 }, game: { ...c116526.game, rel: 0.88 }, score: -0.268 };
+  assert.match(flagsFor(picks, m, m, roof, small).wallColour!, /inverted/);
+  // Noise across 1.0 is not an inversion (H7's 236262: 1.024 vs 0.998, read as right).
+  const noise = { ...c116526, photo: { ...c116526.photo, rel: 1.024 }, game: { ...c116526.game, rel: 0.998 }, score: -0.026 };
+  assert.equal(flagsFor(picks, m, m, roof, noise).wallColour, null);
+  const none = { ...c116526, photo: { ...c116526.photo, rel: null }, game: { ...c116526.game, rel: null }, used: 0, ref: 'no ref' as const, score: null };
+  assert.equal(flagsFor(picks, m, m, roof, none).wallColour, null);
+});

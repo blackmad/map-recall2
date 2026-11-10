@@ -555,14 +555,26 @@
       "windowSurround": "keystone",
       "shopfront": {
        "colour": "#1c1d1f",
-       "fascia": false,
+       "fascia": true,
        "bays": [
         0,
         2
        ],
        "stallriser": "low",
        "glazing": "transom",
-       "evidence": "strip.jpg 2024-11-21: black-framed bar front over the three left axes, a chalk board, no legible sign; BAG bijeenkomstfunctie, no OSM node"
+       "evidence": "strip.jpg 2024-11-21 + pano 2021-03-24 TMX7316010203-002059 pano_0000_001051 (house:frames pair): black-framed cafe front 'The Kiwi' over the three left axes: three tall glazed bays with a small-pane transom row, the glazed door at the right end of the span, a dark dutch awning over the two left bays, a pale painted fascia band over the glass; no stallriser beyond a low plinth. BAG bijeenkomstfunctie",
+       "fasciaColour": "#d9d1c5",
+       "displayWindows": 3,
+       "entrance": "right",
+       "stallriserColour": "#1c1d1f",
+       "awning": {
+        "style": "fabric-dutch",
+        "colour": "#1f1f22",
+        "extent": {
+         "from": 0.0,
+         "to": 0.3
+        }
+       }
       },
       "hoist": false,
       "rosettes": [
