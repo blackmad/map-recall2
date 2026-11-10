@@ -1,0 +1,36 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168578",
+ "address": "Herengracht wide front",
+ "design": {
+  "fronts": [
+   {
+    "storeys": 4
+   }
+  ],
+  "palette": {
+   "brick": "#6d5c42",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  },
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.8,
+   "ref": "panorama b_20241121_1354_Track03_Sphere_00877 front crop (scripts/pand-reference/run.ts), measureFacade H2c wall-vs-trim, box [3, 12, 3.5, 12]",
+   "at": "2024-11-21"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  }
+ }
+}

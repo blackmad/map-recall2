@@ -116,14 +116,19 @@ function viewOf(spec: HouseSpec): HouseSpecView {
   // (crownAt/crownBays over some bays) or a flat roof form is not that, so only full-width gabled crowns reach it; the
   // register's own gable words (monument-text) pass as before. The full front stays in the record's design (`d`).
   if (front?.gable && (src['fronts/0/gable'] === 'monument-text' || plannerCrown(spec))) { v.gable = front.gable; v.src.gable = src['fronts/0/gable']; }
+  // A flat crown stated by a street source or an author (lane H9) clears a register gable (decorate.ts withHouseSpecCrown).
+  else if (front?.gable === 'flat' && ['streetlevel-measured', 'reviewed', 'author'].includes(src['fronts/0/gable'] ?? '')) { v.gable = 'flat'; v.src.gable = src['fronts/0/gable']; }
   if (spec.facts?.facadeYear) { v.year = spec.facts.facadeYear; v.src.year = src['facts/facadeYear']; }
   if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial; v.src.wallMaterial = src['palette/wallMaterial']; }
   const wall = hex(spec.design.palette?.brick);
   if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
+  if (spec.facts?.wallFamily) { v.wallFamily = spec.facts.wallFamily; v.src.wallFamily = src['facts/wallFamily']; }
   // A bay count no source measured (an auto-placed type's default, adapters.ts fromBlockFace) stays in the record but
   // does not reach the generic path: its own cell count is as good a guess, and a measured source can outrank it.
   const bays = frontBays(front), baysSrc = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays'];
   if (bays && baysSrc !== 'default') { v.bays = bays; v.src.bays = baysSrc; }
+  // Storeys (lane H9): the drawn storey count follows the photo when a street source states it (not the register).
+  if (Number.isInteger(front?.storeys) && front!.storeys! >= 2) { v.storeys = front!.storeys; v.src.storeys = src['fronts/0/storeys']; }
   return v;
 }
 const PLANNER_GABLES = new Set(['step', 'neck', 'raised-neck', 'bell', 'spout', 'point']);
@@ -213,11 +218,15 @@ const report = {
   bySource: Object.fromEntries(SOURCES_SEEN.map(s => [s, 0])) as Record<string, number>,
   strongest: {} as Record<string, number>,
   multiSource: 0,
-  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0 } as Record<string, number>,
+  runtime: { gable: 0, year: 0, wallMaterial: 0, wallHex: 0, bays: 0, storeys: 0 } as Record<string, number>,
   /** Pands the generic path draws (no installed GLB/chunk hides them) whose spec carries bays or a wall colour: the
    *  houses whose look changes when the spec extract is published. */
   genericVisibleWithMesherReads: 0,
   modelledByInstall: 0,
+  /** Of genericVisibleWithMesherReads, how many carry each read (lane H9: the wall-colour rule's city-wide reach). */
+  genericVisibleBy: { wallHex: 0, bays: 0, storeys: 0 },
+  /** The generic-path pands whose wall the wall-colour rule draws (for the random review sheet). */
+  genericVisibleWallPands: [] as string[],
   ridePriority: { pands: 0, withBays: 0, withGable: 0 },
   byBuurt: {} as Record<string, { pands: number; gebied: string; ride: boolean; bays: number; gable: number }>,
 };
@@ -233,7 +242,11 @@ for (const [pand, spec] of resolved) {
   for (const k of Object.keys(report.runtime)) if ((v as any)[k] !== undefined) report.runtime[k]++;
   const installed = modelled.has(pand);
   if (installed) report.modelledByInstall++;
-  else if (at && (v.bays || v.wallHex)) report.genericVisibleWithMesherReads++;
+  else if (at && (v.bays || v.wallHex || v.storeys)) {
+    report.genericVisibleWithMesherReads++;
+    for (const k of ['wallHex', 'bays', 'storeys'] as const) if (v[k] !== undefined) report.genericVisibleBy[k]++;
+    if (v.wallHex) report.genericVisibleWallPands.push(pand);
+  }
   const b = at?.buurt;
   if (b) {
     const row = report.byBuurt[b.code] ??= { pands: 0, gebied: b.gebied, ride: isRidePriority(b), bays: 0, gable: 0 };
@@ -251,7 +264,7 @@ console.log(`  inputs: register ${counts.register}, block faces ${counts.faces} 
 console.log(`  pands with a field from: ${Object.entries(report.bySource).map(([k, n]) => `${k} ${n}`).join(', ')}; ${report.multiSource} from more than one source`);
 console.log(`  route: recipe ${report.route.recipe}, generic ${report.route.generic}`);
 console.log(`  runtime view: ${Object.entries(report.runtime).map(([k, n]) => `${k} ${n}`).join(', ')}`);
-console.log(`  installed model hides ${report.modelledByInstall}; generic-path pands whose look the spec changes (bays/wall): ${report.genericVisibleWithMesherReads}`);
+console.log(`  installed model hides ${report.modelledByInstall}; generic-path pands whose look the spec changes (bays/wall/storeys): ${report.genericVisibleWithMesherReads} (wall ${report.genericVisibleBy.wallHex}, bays ${report.genericVisibleBy.bays}, storeys ${report.genericVisibleBy.storeys})`);
 console.log(`  ride priority: ${report.ridePriority.pands} pands (${report.ridePriority.withGable} with a gable, ${report.ridePriority.withBays} with bays)`);
 console.log(`  top buurten: ${Object.entries(report.byBuurt).slice(0, 8).map(([k, r]) => `${k} ${r.pands}`).join(', ')}`);
 if (counts.facesInvalid.length) console.log(`  invalid faces (skipped): ${counts.facesInvalid.slice(0, 5).join(' | ')}${counts.facesInvalid.length > 5 ? ' …' : ''}`);

@@ -17,6 +17,7 @@ describe ──► preview ──► compare ──► stage ──► publish
 | §4 Describe at scale (crops → facts → spec) | H4 (§4a), H5 (§4b), H5h (§4c hand set) | landed on the AB07 pilot |
 | §5 The kit-gap queue | H6 | stub |
 | §6 Worked example: the timed pilot (Nieuwmarkt, Bloemgracht, Nassaukade) | H7 | landed (staged batch `pilot-20261110`) |
+| §6b The standing acceptance set (easy houses) | H9 | landed |
 
 ## §1 The record: HouseSpec
 
@@ -119,14 +120,15 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
 ### The generic path reads it (flag `?houseSpecs=0`, `HOUSE_SPECS=0`)
 
 - `houseSpec/decorate.ts houseSpecEnricher`, composed last in `gameTileEnricher.ts`, stamps the runtime view on each
-  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, bays, crownRiseM, src}` (`crownRiseM`: 3DBAG ridge - eaves, for pands with a gable or a historic gable).
+  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, bays, storeys, crownRiseM, src}` (`crownRiseM`: 3DBAG ridge - eaves, for pands with a gable or a historic gable).
 - `withHouseSpec` runs right after the register step (before `decorateFacade`): it moves `constructionYear` only on an
   era change (the register's rule), sets `registerFinish` from `wallMaterial`, and writes `specRecipe`
-  `{bays, wallHex, period, crownShape}` when the spec has bays or a wall colour.
+  `{bays, storeys, wallHex, period, crownShape}` when the spec has bays, storeys or a wall colour.
 - `withHouseSpecCrown` runs after `withMonumentGable` (which would otherwise restore the register's gable). Since H5h
   round 4 (ruling on #351) it applies the crown in trust order and then the **register gable gate**:
   - a photo reading (`PHOTO_GABLE_SOURCES`: `vision-judge`, `streetlevel-measured`, `reviewed`, `author`) sets
-    `monumentGable` over the register's; a photo front with no planner gable drops the register's;
+    `monumentGable` over the register's; a photo front with no planner gable drops the register's; an `author` flat front over a register gable takes the
+    `cornice` crown instead (H9, the Raadhuisstraat arcade 0363100012176346), the register's kept as `historicGable`;
   - otherwise a source above `monument-text` replaces it, a weaker one only fills a gap (as before);
   - then, mode `gated` (the default, `?registerGable=drawn|gated|hint`, `REGISTER_GABLE` in Node): a raised gable that
     did not come from a photo is drawn only when 3DBAG shows a crown above the eaves (`crownInGeometry`: ridge - eaves
@@ -143,11 +145,86 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
   (the roof planner draws a monument gable as a canal house's whole roof; measured on the first full compile, cornice
   fronts gave 681 flat-roofed 1890s pands a pitched canal roof).
 - `threeBuildingFeatures.ts meshBuildingFor` keeps `specRecipe` as `MeshBuilding.specRecipe` (not `.recipe`: that slot
-  switches every wall to recipe openings and street-crown recolouring). A measured `wallHex` would be a sourced wall in
-  the photo look, but it is **held** (`decorate.ts SPEC_WALLS_HELD`): strip colours are overcast readings and drew
-  Kinkerstraat 244-332 darker than the generic palette. Release after a white-point pass and a panorama side-by-side. `streetFacadeRendering.ts frontageLayoutScale` fits a street run to the stated bays:
-  cells = round(bays / window axes per cell), clamped to 0.7–1.5 of the style's bay. The generic cells carry two or
-  three window axes, so an odd bay count on a two-axis cell rounds (a limit of the generic path, not of the spec).
+  switches every wall to recipe openings and street-crown recolouring). A measured `wallHex` is a sourced wall in the
+  photo look, drawn through the wall-colour rule below (H1 held it; lane H9 released it). `streetFacadeRendering.ts
+  frontageLayoutScale` fits a street run to the stated bays: cells = round(bays / window axes per cell), clamped to
+  0.7–1.5 of the style's bay. The generic cells carry two or three window axes, so an odd bay count on a two-axis cell
+  rounds (a limit of the generic path, not of the spec). **Held** (`SPEC_BAYS_HELD`, 2026-11-10, #348: H1's bay
+  counts doubled on canal houses near the Dam, photo 3 drawn 6; lane H1b owns the cause): no spec bay count reaches
+  the mesher. Storeys, wall, gable, year and finish are unaffected.
+- **Storeys** (lane H9): `fronts/0/storeys` (storeys below the crown, ground included) reaches the view as `storeys`
+  and `specRecipe.storeys`; `specStoreyScale` sets the storey pitch so `layoutWall` draws that count on the run's wall
+  (pitch 0.75–1.45 of the style's storey; outside it the style's own count stands). The register never states
+  storeys; block faces and authored specs do (1,342 views).
+- **Flat crowns** (lane H9): a `flat` front from a source stronger than `monument-text` turns a register gable into
+  the cornice crown (a straight top over the roof behind); without a register gable nothing changes, so a flat front
+  never gains a pitched roof. 422 views state flat; one of them (Raadhuisstraat 0363100012176346) had a register gable.
+- **Painted brick** with a measured colour keeps the brick cells (`registerFinish: 'brick'`): the courses show through
+  the paint, and plaster cells drew a near-black painted front as render. Without a measured colour the register's
+  rule (painted = a light finish) stands.
+
+### The wall colour (lane H9, `houseSpec/wallColour.ts`, flag `?specWalls=0`, `SPEC_WALLS=0`)
+
+Why: H1 held the measured wall colours because the overcast strip readings drew Kinkerstraat 244-332 darker than the
+period palette, against the user's brighter-palette priority (2026-10-16). Held, every measured house fell back to its
+period colour, which is the wrong colour *family*: the user's easy-houses sheet (2026-11-10, §6) showed near-black
+painted fronts as white plaster or orange brick and pale salmon brick as dark maroon.
+
+The rule (round 2, the judgement session's ruling on #345: "brighter, not dour"; the trim misread), constants in
+`SPEC_WALL_LIFT`, two functions:
+
+1. **`specWallSource(measured, {family, brick})`, pixel or family tone.** A reading lighter than its family's usual tone
+   (`FAMILY_TONE`, OKLab L + 0.05), on a front whose finish is brick (spec `wallMaterial` or the register's
+   `registerFinish`), or against a reader's family (`facts.wallFamily`, from the H5h hand set) that disagrees with the
+   pixel's, has caught white speklagen, frames or glare. It draws the family tone. Without a reader family, a brick
+   finish compares with the nearest brick family. For example, Nieuwmarkt 0363100012182857, red brick with white bands,
+   read #ceb8ae and drew pale pink-beige; it now renders #a45b4f.
+2. **`specWallDisplay(hex, {fromPixel})`, the drawn tint** (round 3, the ruling on round 2: "relative darkness is lost and
+   the hue drifts to orange").
+   - Lightness: `L' = 1 - (1 - L)(1 - k)`, with `k = 0.2` ramped in over OKLab L 0.30-0.50 (`darkLift`) and dark neutral
+     paint taking none (`liftShare`). The lift is monotone, `dL'/dL = (1 - k) + (1 - L) k' > 0`, so it never reorders.
+     It widens the gap between a dark brown reading (L 0.41) and a red one (L 0.45), where a uniform lift compressed it.
+   - Chroma on a warm pixel reading: up to ×2.4, scaled by:
+     - the lift share;
+     - near-neutral readings: none;
+     - dark readings (OKLab L 0.38-0.46, about HSL 0.30-0.36): 35 % of the gain, so dark brown is not raised into
+       terracotta;
+     - pale readings (L 0.65-0.72 and up): none, so beige stays beige.
+   - Cool casts keep 35 % of their chroma.
+   - Hue: half of the shift past 40 degrees (the brick edge of the orange band) comes back on mid readings. Dark and pale
+     readings keep their hue.
+   - A hue cap (0.12 red, 0.06 yellow-brown) applies, then the gamut fit.
+   - A family tone gets lightness only.
+
+`SPEC_WALL_HOLD` holds a pand's wall by pand number. It is empty: 182857 renders red-brown.
+
+Gates, round 3 (2026-11-10, `house:preview` lit look, merged main 1fd7e82bd with bays released, measure profile
+houseLine).
+- **Two runs.** The Node render is deterministic: both runs gave identical numbers. The ±0.02 seen in round 2 was code
+  drift between runs, not noise.
+- **Two render readings.**
+  - The preview's render measure (`render.wall`).
+  - The dominant non-glass, non-trim colour of the upper storeys (the wall-mode reading; the render measure still picks
+    the white trim on some fronts, e.g. 182848 drawn L 0.34, measured 0.77).
+
+| Gate | Before (period) | Round 3 |
+|---|---|---|
+| Spearman, photo measure vs render measure (n 31) | 0.32 | 0.29 |
+| Spearman, photo measure vs render wall-mode | 0.28 | 0.62 |
+| Spearman, spec photo reading vs render wall-mode (n 29) | 0.43 | **0.885** |
+| Photo-dark third below render median (wall-mode) | 7/10 | **9/10** (236219: photo measure 0.17, spec reading 0.65) |
+| Hue share in 40-60 degrees (wall-mode / render measure) | 0.39 / 0.29 | **0.26** / 0.35 |
+| Kinkerstraat 244-332, HSL L (render measure) | 0.376 | 0.359 (−0.017; the original bar is −0.03) |
+| Kinkerstraat, OKLab L (wall-mode) | 0.416 | 0.437 (+0.021) |
+| Kinkerstraat, OKLab C (render / wall-mode) | 0.065 / 0.074 | 0.045 / 0.048 (round 2's ≥ 0.058 not met) |
+
+The Kinkerstraat pands are the dark browns the ruling names (12158666, 12155496, 12236481 and 12236531 are
+kinker-315-35 and kinker-244-332). Kept dark brown, they cannot reach the period palette's chroma, which belongs to a
+saturated dark red-brown (#572816). That conflict is the user's call: `darkGain` and `darkLift` are the knobs.
+
+City-wide reach: the rule changes the wall of **425 generic-path pands** (the coverage report's
+`genericVisibleBy.wallHex`; 1,367 views carry a wall colour, 1,183 pands are hidden by installed models). The
+easy-houses set's colour families are in §6.
 - Byte-identical off: with `HOUSE_SPECS=0` the world compile is identical to origin/main (605 of 605 cell files).
   On: 85 of 604 cells differ, only in the 7,134 spec'd buildings (+31 kB gz). On the generic path (pands no installed
   model hides, `scripts/house-specs/measure-generic-effect.ts`): 403 carry bays, about 175 of them change cell count;
@@ -554,6 +631,9 @@ Flags
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
                       normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall;
                       "face": the frontage of the block face that lists the pand (its facts.json fronts[0], the chord over an erker)
+  --set <set.json>    render every pand of a house-line set (scripts/house-specs/sets/*.json, e.g. the standing
+                      easy-houses-20261110 acceptance set) in one session, each into <out>/<pand> (default
+                      artifacts/house-preview/sets/<set name>/<pand>), other flags applied to each
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -1441,3 +1521,28 @@ takes `palette.brick` from the Nassaukade wall-fit; storeys 4 (STOREYS_DEFINITIO
 vs #594b48, dL 0.043, 7 vs 8 columns). Still unsaid: the attic face shows wall-coloured wedges beside each tower (the single
 `tower` does the same), and the corner's roof end.
 
+
+## §6b The standing acceptance set: the user's easy houses (lane H9)
+
+The user, 2026-11-10, on `map-recall2-screenshots/whats-new/2026-11-10-facade-extras.jpg` (photo | before | after, 10
+rows): "these are good examples of houses that I think should be easy to model but are currently wrong shape and
+color". Those houses are the line's first user-named acceptance set. **Re-run it on every look or spec change.**
+
+| Piece | Where |
+|---|---|
+| The set: 15 pands, reviewed crop choice and box per pand, the reviewer's storeys / bays / gable / wall reads | `scripts/house-specs/sets/easy-houses-20261110.json` |
+| The 19 cameras (panorama spot, heading, photo URL), copied from the screenshots repo | `scripts/house-specs/sets/easy-houses-20261110.cams.json` |
+| Step 0: what the game draws and why (route, spec, register, decorated wall and roof, roof-planner rule, drawn storeys, camera order) | `npx tsx scripts/house-specs/diagnose-set.ts <set>` |
+| The photo readings (measureFacade H2c on the reviewed crop, family, rule tint) | `npx tsx scripts/house-specs/measure-set.ts <set>` |
+| Node renders of all 15 | `npm run house:preview -- --set <set> --photo` |
+| Ride frames at the panorama poses (photo \| render) | `REG_CAMS=<cams> REG_OUT=<dir> REG_QUERY='&world=live' PW_PORT=<port> /tmp/canal-pw.sh npx playwright test tests/e2e/register-frontal-strip.spec.ts --project=desktop --workers=1` |
+| Chase frames, desktop DPR 2 and phone | `DEMO_SPOTS='easy-houses-*' DEMO_DPR=2 … demo-shots.spec.ts --project=desktop`, and `--project=iphone` |
+| The specs the set carries | `scripts/house-specs/specs/<pandId>.json` (13; 171851 and 171854 have no usable crop) |
+
+The crops come from `scripts/pand-reference/run.ts --ids=<the 15>` (staging, gitignored); where the default crop is
+unusable the set names the other year (`front-alt`) or a wall box below the sky / above a parasol.
+
+Gate (likeness first): the user's sheet re-made with a fourth column (photo | before | after a1 | after H9), colour
+family right on every pand with a photo reading, gable right where the register or the crop shows one, storeys ±0,
+bays ±1, Kinkerstraat 244-332 not darker than ΔL −0.03 (§1 "The wall colour"). Glazing is printed for information only
+(integrator ruling, H2d #342). Until H2d's `houseLine` measureFacade profile lands, the readings are H2c's.

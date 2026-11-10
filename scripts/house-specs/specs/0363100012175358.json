@@ -1,0 +1,25 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012175358",
+ "address": "Herengracht, dark brown brick beside 175320",
+ "design": {
+  "palette": {
+   "brick": "#504740",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "palette/brick": {
+   "source": "streetlevel-measured",
+   "confidence": 0.8,
+   "ref": "panorama TMX7316010203-001975_pano_0000_001495 front crop (scripts/pand-reference/run.ts), measureFacade H2c wall-vs-trim, box [0.2, 3.44, 0, 17.9]",
+   "at": "2021-01-22"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.9,
+   "ref": "scripts/house-specs/sets/easy-houses-20261110.json (review of the pand-reference crop and the cams photo)",
+   "at": "2026-11-10"
+  }
+ }
+}

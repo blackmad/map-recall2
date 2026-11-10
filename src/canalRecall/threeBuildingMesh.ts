@@ -48,7 +48,7 @@ export type MeshBuilding = {
   streetAppearance?: StreetFacadeContext;
   recipe?: ArchitecturalRecipe;
   /** A HouseSpec's reads for the generic mesher (houseSpec/decorate.ts `specRecipe`): street-run bay count, crown, period, wall. */
-  specRecipe?: Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>>;
+  specRecipe?: Partial<Pick<ArchitecturalRecipe, 'crownShape' | 'period' | 'wallHex' | 'bays'>> & { storeys?: number };
   /** Exact opening positions of the active texture, shared with 3D entrance details. */
   openings?: Openings;
   id: string;
@@ -543,10 +543,14 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
         if(candidate.recipe?.shopCanopy)b=candidate;
       }
       // A HouseSpec's bay count fits the street run's grid (houseSpec/decorate.ts); a street-appearance recipe keeps its own.
-      const specBays = !b.recipe && b.specRecipe?.bays && run.some(({ e }) => doorAllowed.has(e)) ? { bays: b.specRecipe.bays, axesPerCell: b.openings?.upper?.axes.length ?? 1 } : undefined;
+      const parapetSpec = b.parapetM && !b.bare && top - b.parapetM - base >= 5 ? b.parapetM : 0;
+      const specBays = !b.recipe && (b.specRecipe?.bays || b.specRecipe?.storeys) && run.some(({ e }) => doorAllowed.has(e))
+        ? { ...(b.specRecipe.bays ? { bays: b.specRecipe.bays } : {}), axesPerCell: b.openings?.upper?.axes.length ?? 1, ...(b.specRecipe.storeys ? { storeys: b.specRecipe.storeys, exposedM: top - parapetSpec - base } : {}) } : undefined;
       // An odd stated count on a two-window cell: half-cell axis units (streetFacadeRendering.ts axisUnitPlan, H1c #350).
-      const units = specBays ? axisUnitPlan(specBays, b.openings, b.style, run.reduce((sum,r)=>sum+r.e.len,0), scale) : null;
-      const runScale = units ? units.scale : frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
+      const units = specBays?.bays ? axisUnitPlan(specBays, b.openings, b.style, run.reduce((sum,r)=>sum+r.e.len,0), scale) : null;
+      const fitted = frontageLayoutScale(b.recipe, scale, b.style, run.reduce((sum,r)=>sum+r.e.len,0), specBays);
+      // Axis units keep the spec's storey pitch (lane H9 storeys) as whole cells do.
+      const runScale = units ? { ...units.scale, storey: fitted.storey } : fitted;
       const cellU = units ? AXIS_UNIT_U : 1;
       const [r, g, bl] = b === fallbackBuilding ? wallRGB : parseHex(b.wallHex);
       const accent = b === fallbackBuilding ? wallAccent : parseHex(b.accentHex ?? '#ffffff');
