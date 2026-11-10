@@ -433,6 +433,67 @@
    "571486 register point / read spout"
   ]
  },
+ "registerGableRidge": {
+  "agree": 37,
+  "stated": 52,
+  "held": 8,
+  "verdict": {
+   "lo": 0.577,
+   "hi": 0.817,
+   "verdict": "open"
+  },
+  "byType": {
+   "neck": {
+    "stated": 9,
+    "agree": 7
+   },
+   "bell": {
+    "stated": 14,
+    "agree": 7
+   },
+   "point": {
+    "stated": 6,
+    "agree": 4
+   },
+   "cornice": {
+    "stated": 19,
+    "agree": 16
+   },
+   "step": {
+    "stated": 4,
+    "agree": 3
+   }
+  },
+  "alongStreet": [
+   "167955 neck->held (89° b, read flat)",
+   "169988 bell->held (90° p, read flat)",
+   "174411 point->cornice (lean-to, 48° b, read cornice)"
+  ],
+  "leanTo": [
+   "173353 register neck / read neck",
+   "169085 register bell / read bell",
+   "174411 register point / read cornice",
+   "174429 register neck / read neck",
+   "174911 register point / read cornice"
+  ],
+  "misses": [
+   "173345 states neck / read bell",
+   "173341 states bell / read neck",
+   "169981 states bell / read cornice",
+   "172576 states bell / read neck",
+   "168159 states cornice / read point",
+   "174177 states cornice / read point",
+   "174168 states step / read cornice",
+   "167957 states point / read cornice",
+   "169904 states bell / read cornice",
+   "172603 states bell / read cornice",
+   "172888 states bell / read spout",
+   "172890 states cornice / read neck",
+   "174014 states bell / read cornice",
+   "174427 states neck / read cornice",
+   "571486 states point / read spout"
+  ]
+ },
  "writers": {
   "pands": 60,
   "scored": 51,

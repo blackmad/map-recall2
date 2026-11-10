@@ -20,7 +20,7 @@ import { quality, type JudgeRecord } from '../../house-crops/judge.ts';
 import { JUDGE_GOOD } from '../../house-crops/flags.ts';
 import { loadBag, type Envelope } from '../describe.ts';
 import { bagStoreys } from '../../../src/canalRecall/houseSpec/writers/bag.ts';
-import { crownInGeometry } from '../../../src/canalRecall/houseSpec/decorate.ts';
+import { crownInGeometry, RIDGE_ACROSS_MAX_DEG } from '../../../src/canalRecall/houseSpec/decorate.ts';
 
 export const HELP = `hand-set score: reader ceiling, writer gates, BAG storeys, old hand truth, H9 review and judge recall against hand set v1.
 
@@ -146,6 +146,31 @@ export function scoreHandSet(o: { out?: string; min?: keyof typeof RANK } = {}) 
   console.log(`gated register gable misses: ${gMiss.join('; ')}`);
   console.log(`gated register gable by register type: ${Object.entries(byType).map(([k, v]) => `${k} ${v.agree}/${v.stated}`).join(', ')}`);
   (out as any).registerGableGated = { agree: gk2, stated: gn2, held: heldN, heldNoRidge: nullN, heldWhereRegisterWrong: heldRight, verdict: gV, byType, misses: gMiss };
+  // round 5: the ridge orientation (staging/ridge-facts.json, build-ridge-facts.ts): a raised register gable states the crown
+  // only over a 3DBAG crown AND with the ridge across the street front; a ridge along the street over a crown states `cornice`.
+  const RF = [path.join(ROOT, 'public/data/extracts/amsterdam/staging/ridge-facts.json'), path.join(ROOT, 'data/house-line/ridge-facts-v1.json')].find(f => fs.existsSync(f)) ?? '';
+  const ridgeF: Record<string, [number, string, number?]> = RF ? JSON.parse(fs.readFileSync(RF, 'utf8')).pands : {};
+  let rk = 0, rn = 0, rHeld = 0; const rMiss: string[] = []; const rType: Record<string, { stated: number; agree: number }> = {}; const turned: string[] = [];
+  for (const r of gatedRows) {
+    const w = regGable(r.id); if (r.hand === undefined || w === undefined) continue;
+    const g = geo(r.id), rf = ridgeF[String(r.id).slice(-16)];
+    let st: string | undefined = w;
+    if (w !== 'cornice') {
+      if (rf && rf[0] > RIDGE_ACROSS_MAX_DEG) { st = g === true ? 'cornice' : undefined; turned.push(`${String(r.id).slice(-6)} ${w}->${st ?? 'held'} (${rf[2] === 0 ? 'lean-to, ' : ''}${rf[0]}° ${rf[1]}, read ${r.hand})`); }
+      else if (g !== true) st = undefined;
+    }
+    if (st === undefined) { rHeld++; continue; }
+    rn++; const t = (rType[st] ??= { stated: 0, agree: 0 }); t.stated++; if (r.hand === st) { rk++; t.agree++; } else rMiss.push(`${String(r.id).slice(-6)} states ${st} / read ${r.hand}`);
+  }
+  const rV = verdict(rk, rn, gates.gable, MIN_N.gable);
+  console.log(`gated register gable + ridge orientation (round 5): states ${rn} of ${rn + rHeld}; ${rk}/${rn} = ${(rk / rn).toFixed(2)} [${rV.lo}, ${rV.hi}] **${rV.verdict}** against gate ${gates.gable}`);
+  console.log(`  ridge along the street: ${turned.join('; ') || 'none'}`);
+  console.log(`  misses: ${rMiss.join('; ')}`);
+  console.log(`  by stated type: ${Object.entries(rType).map(([k, v]) => `${k} ${v.agree}/${v.stated}`).join(', ')}`);
+  // measured, not gated: a lean-to rule (every 3DBAG pitched face on one side of the ridge -> cornice front)
+  const lean = gatedRows.filter(r => regGable(r.id) && regGable(r.id) !== 'cornice' && r.hand !== undefined && ridgeF[String(r.id).slice(-16)]?.[2] === 0).map(r => `${String(r.id).slice(-6)} register ${regGable(r.id)} / read ${r.hand}`);
+  console.log(`  3DBAG lean-to under a raised register gable (not gated): ${lean.join('; ') || 'none'}`);
+  (out as any).registerGableRidge = { agree: rk, stated: rn, held: rHeld, verdict: rV, byType: rType, alongStreet: turned, leanTo: lean, misses: rMiss };
   // Jev storeys (measurement only, jev-storeys.ts)
   const js = fs.existsSync(path.join(D, 'hand-set-v1.jev-storeys.json')) ? JSON.parse(fs.readFileSync(path.join(D, 'hand-set-v1.jev-storeys.json'), 'utf8')) : null;
   const jsV = (c: any) => (c ? { ...c, ...verdict(c.agree, c.stated, gates.storeys) } : null);

@@ -172,6 +172,11 @@ if (existsSync(BAG_FACTS)) for (const x of readdirSync(BAG_FACTS)) for (const y 
   for (const [k, row] of Object.entries<number[]>(t.pands ?? {})) { const d = decodeDescriptor(row as any); if (d.eavesM !== null && d.ridgeM !== null) bagRise.set(k.slice(-16), Math.round((d.ridgeM - d.eavesM) * 10) / 10); }
 }
 function crownRise(pand: string): number | null { return bagRise.get(pand) ?? null; }
+// Round 5: the ridge's angle to the street front (staging/ridge-facts.json, scripts/house-specs/build-ridge-facts.ts).
+// A fresh bake in staging wins; the reviewed table committed with lane H5h round 5 is the fallback (no refetch needed).
+const RIDGE_FACTS = [path.join(ROOT, 'public/data/extracts/amsterdam/staging/ridge-facts.json'), path.join(ROOT, 'data/house-line/ridge-facts-v1.json')].find(f => existsSync(f)) ?? '';
+const ridgeFacts: Record<string, [number, 'b' | 'p', 0?]> = RIDGE_FACTS ? JSON.parse(readFileSync(RIDGE_FACTS, 'utf8')).pands ?? {} : {};
+if (!RIDGE_FACTS) console.warn('house:specs: no staging/ridge-facts.json, the gate has no ridge orientation (run build-ridge-facts.ts)');
 
 // --- 4. write the staged tiles ------------------------------------------------------------------------------------
 rmSync(path.join(STAGING, '14'), { recursive: true, force: true });
@@ -182,7 +187,10 @@ for (const [pand, spec] of resolved) {
   const record: HouseSpecTileRecord = { d: spec.design as Record<string, unknown>, s: fieldSources(spec), r: spec.route ?? 'generic', v: viewOf(spec) };
   // The register gable gate (houseSpec/decorate.ts, H5h round 4) needs 3DBAG's crown above the eaves, which the live building
   // tiles do not carry: the view carries ridge - eaves (bag-facts) for every pand with a gable or a historic gable.
-  if (record.v.gable || spec.facts?.historicGable) { const rise = crownRise(pand); if (rise !== null) record.v.crownRiseM = rise; }
+  if (record.v.gable || spec.facts?.historicGable) {
+    const rise = crownRise(pand); if (rise !== null) record.v.crownRiseM = rise;
+    const ridge = ridgeFacts[pand]; if (ridge) { record.v.ridgeToFrontDeg = ridge[0]; record.v.ridgeSrc = ridge[1]; if (ridge[2] === 0) record.v.leanTo = true; }
+  }
   if (spec.facts && Object.keys(spec.facts).length) record.x = spec.facts as Record<string, unknown>;
   if (spec.schemaLimits?.length) record.l = spec.schemaLimits;
   const tile = byTile.get(at.tile) ?? { version: 1 as const, buildings: {} };

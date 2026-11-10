@@ -1,22 +1,22 @@
 {
  "registerPands": 4634,
  "liveRegisterPands": 4634,
- "changedGated": 125,
+ "changedGated": 273,
  "changedHint": 4077,
- "heldGated": 148,
+ "heldGated": 310,
  "gatedTransitions": {
+  "point -> cornice": 55,
+  "bell -> cornice": 55,
+  "neck -> cornice": 42,
   "neck -> flat": 21,
   "bell -> flat": 18,
-  "neck -> mansard": 12,
   "point -> flat": 11,
-  "bell -> hipped": 7,
-  "bell -> pitched": 6,
-  "point -> pitched": 5,
+  "neck -> mansard": 10,
+  "step -> cornice": 8,
+  "bell -> hipped": 6,
+  "bell -> pitched": 5,
   "neck -> bell": 4,
-  "neck -> hipped": 4,
-  "point -> mansard": 4,
-  "neck -> pitched": 4,
-  "neck -> mansardHip": 4
+  "point -> pitched": 4
  },
  "hintTransitions": {
   "cornice -> pitched": 609,
@@ -40,7 +40,7 @@
     "n": 60
    },
    "gated": {
-    "agree": 44,
+    "agree": 45,
     "n": 60
    },
    "hint": {
@@ -58,7 +58,7 @@
    "gated": {
     "raisedHandAgree": 22,
     "raisedHand": 29,
-    "flatHandAgree": 22,
+    "flatHandAgree": 23,
     "flatHand": 31
    },
    "hint": {
@@ -75,6 +75,13 @@
     "drawn": "neck",
     "gated": "flat",
     "hint": "flat"
+   },
+   {
+    "id": "0363100012169988",
+    "hand": "flat",
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
    },
    {
     "id": "0363100012170091",
@@ -115,760 +122,4005 @@
  },
  "changedRows": [
   {
-   "id": "0363100012236796",
-   "register": "spout",
-   "drawn": "spout",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012137523",
-   "register": "spout",
-   "drawn": "spout",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012087391",
-   "register": "point",
-   "drawn": "point",
-   "gated": "parapet"
-  },
-  {
-   "id": "0363100012088423",
-   "register": "point",
-   "drawn": "point",
-   "gated": "parapet"
-  },
-  {
-   "id": "0363100012172867",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012172870",
-   "register": "point",
-   "drawn": "point",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012172885",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "bell"
-  },
-  {
-   "id": "0363100012172926",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "hipped"
-  },
-  {
-   "id": "0363100012169492",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012172664",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "hipped"
-  },
-  {
-   "id": "0363100012176439",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012177249",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012177494",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "hipped"
-  },
-  {
-   "id": "0363100012167807",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012176912",
-   "register": "point",
-   "drawn": "point",
-   "gated": "pitched"
-  },
-  {
-   "id": "0363100012175117",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "hipped"
-  },
-  {
-   "id": "0363100012175286",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "hipped"
-  },
-  {
-   "id": "0363100012178248",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "pitched"
-  },
-  {
-   "id": "0363100012179590",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "pitched"
-  },
-  {
-   "id": "0363100012179961",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012248815",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "pitched"
-  },
-  {
-   "id": "0363100012253925",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012175369",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012176105",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012179411",
-   "register": "point",
-   "drawn": "point",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012179615",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "cornice"
-  },
-  {
-   "id": "0363100012179649",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012179660",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012179729",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012179735",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012571599",
+   "id": "NL.IMBAG.Pand.0363100012166682",
    "register": "step",
-   "drawn": "step",
-   "gated": "mansard"
+   "crown": {
+    "drawn": "step",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "step",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012173071",
+   "id": "NL.IMBAG.Pand.0363100012062014",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "parapet"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012080385",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "school"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012115849",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012079445",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012133193",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "school"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012236796",
+   "register": "spout",
+   "crown": {
+    "drawn": "spout",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "spout",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168504",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012085266",
+   "register": "step",
+   "crown": {
+    "drawn": "step",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "step",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012082975",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "step"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012137523",
+   "register": "spout",
+   "crown": {
+    "drawn": "spout",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "spout",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012237158",
+   "register": "step",
+   "crown": {
+    "drawn": "step",
+    "gated": "cornice",
+    "hint": "cornice"
+   },
+   "historic": "step",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012087391",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "parapet",
+    "hint": "parapet"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012088423",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "parapet",
+    "hint": "parapet"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172867",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "bell"
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172870",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012174062",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172885",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "bell",
+    "hint": "bell"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172926",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012174692",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "cornice"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167762",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169372",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169492",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169518",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172664",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012176439",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012176952",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177249",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177494",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165064",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167807",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012176912",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168411",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012171956",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "cornice"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175117",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175239",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175286",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175322",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "neck"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175782",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178248",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179319",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179590",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179961",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179972",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180362",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012248815",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012253925",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175369",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175444",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "neck"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012176105",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179144",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179411",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179615",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "cornice"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179649",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179660",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179729",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179735",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180014",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180367",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012571599",
+   "register": "step",
+   "crown": {
+    "drawn": "step",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "step",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012170948",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012170955",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178326",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178401",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172981",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansardHip"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012173071",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "bell",
+    "hint": "bell"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012253827",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
    "id": "w266597866",
    "register": "point",
-   "drawn": "point",
-   "gated": "flat"
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": ""
   },
   {
    "id": "w749871272",
    "register": "point",
-   "drawn": "point",
-   "gated": "flat"
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": ""
   },
   {
-   "id": "0363100012169308",
+   "id": "NL.IMBAG.Pand.0363100012169308",
    "register": "point",
-   "drawn": "point",
-   "gated": "mansard"
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012168924",
+   "id": "NL.IMBAG.Pand.0363100012168924",
    "register": "point",
-   "drawn": "point",
-   "gated": "hipped"
+   "crown": {
+    "drawn": "point",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012169026",
+   "id": "NL.IMBAG.Pand.0363100012168986",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169026",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012169405",
+   "id": "NL.IMBAG.Pand.0363100012169405",
    "register": "point",
-   "drawn": "point",
-   "gated": "pitched"
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012169944",
+   "id": "NL.IMBAG.Pand.0363100012169944",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012169955",
+   "id": "NL.IMBAG.Pand.0363100012169955",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "mansard"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012174530",
+   "id": "NL.IMBAG.Pand.0363100012173863",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "hipped"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012167955",
+   "id": "NL.IMBAG.Pand.0363100012174530",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167955",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "flat",
-   "hand": "flat"
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "hand": "flat",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012168702",
+   "id": "NL.IMBAG.Pand.0363100012168078",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168702",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012170091",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat",
-   "hand": "flat"
-  },
-  {
-   "id": "0363100012173134",
+   "id": "NL.IMBAG.Pand.0363100012169988",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "hipped",
-   "hand": "flat"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "hand": "flat",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012174187",
+   "id": "NL.IMBAG.Pand.0363100012170091",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard",
-   "hand": "cornice"
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "hand": "flat",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012174425",
+   "id": "NL.IMBAG.Pand.0363100012173052",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012173134",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "bell",
+   "hand": "flat",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012174187",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "hand": "cornice",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012174911",
+   "id": "NL.IMBAG.Pand.0363100012174425",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012174911",
    "register": "point",
-   "drawn": "point",
-   "gated": "pitched",
-   "hand": "cornice"
+   "crown": {
+    "drawn": "point",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "hand": "cornice",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012177276",
+   "id": "NL.IMBAG.Pand.0363100012172258",
    "register": "point",
-   "drawn": "point",
-   "gated": "pitched"
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012169103",
+   "id": "NL.IMBAG.Pand.0363100012174386",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "hipped"
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "neck"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012169245",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "pitched"
-  },
-  {
-   "id": "0363100012169646",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012173792",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012177381",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012177382",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012167626",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012173926",
+   "id": "NL.IMBAG.Pand.0363100012177276",
    "register": "point",
-   "drawn": "point",
-   "gated": "pitched"
+   "crown": {
+    "drawn": "point",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012173979",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "mansardHip"
-  },
-  {
-   "id": "0363100012175752",
-   "register": "point",
-   "drawn": "point",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012176332",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012177452",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012177481",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012241755",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "hipped"
-  },
-  {
-   "id": "0363100012172776",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat",
-   "hand": "flat"
-  },
-  {
-   "id": "0363100012176004",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "spout"
-  },
-  {
-   "id": "0363100012177017",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012171050",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "pitched"
-  },
-  {
-   "id": "0363100012178681",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012168181",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012168331",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012168476",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "bell"
-  },
-  {
-   "id": "0363100012168536",
+   "id": "NL.IMBAG.Pand.0363100012168737",
    "register": "step",
-   "drawn": "step",
-   "gated": "pitched"
+   "crown": {
+    "drawn": "step",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "step",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012178859",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012179391",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "hipped"
-  },
-  {
-   "id": "0363100012179468",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012180407",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012571491",
+   "id": "NL.IMBAG.Pand.0363100012168822",
    "register": "point",
-   "drawn": "point",
-   "gated": "flat"
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012175262",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "pitched"
-  },
-  {
-   "id": "0363100012175491",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "point"
-  },
-  {
-   "id": "0363100012175842",
+   "id": "NL.IMBAG.Pand.0363100012168869",
    "register": "point",
-   "drawn": "point",
-   "gated": "flat"
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012175963",
+   "id": "NL.IMBAG.Pand.0363100012169103",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "bell"
+   "crown": {
+    "drawn": "neck",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012243264",
+   "id": "NL.IMBAG.Pand.0363100012169245",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "pitched"
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012175825",
+   "id": "NL.IMBAG.Pand.0363100012169646",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012171525",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "cornice"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012179279",
-   "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
+   "id": "NL.IMBAG.Pand.0363100012171587",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012180357",
+   "id": "NL.IMBAG.Pand.0363100012171807",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012173453",
    "register": "step",
-   "drawn": "step",
-   "gated": "flat"
+   "crown": {
+    "drawn": "step",
+    "gated": "cornice",
+    "hint": "bell"
+   },
+   "historic": "step",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012571550",
+   "id": "NL.IMBAG.Pand.0363100012173772",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012178611",
+   "id": "NL.IMBAG.Pand.0363100012173792",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012178852",
+   "id": "NL.IMBAG.Pand.0363100012173817",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012176600",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177381",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177382",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177390",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177599",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "bell"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177645",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177651",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167623",
    "register": "step",
-   "drawn": "step",
-   "gated": "flat"
+   "crown": {
+    "drawn": "step",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "step",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012171637",
+   "id": "NL.IMBAG.Pand.0363100012167626",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "pitched"
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": ""
   },
   {
-   "id": "0363100012178149",
+   "id": "NL.IMBAG.Pand.0363100012168597",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012178532",
+   "id": "NL.IMBAG.Pand.0363100012168637",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012182579",
+   "id": "NL.IMBAG.Pand.0363100012168638",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "pitched"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "neck"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012172009",
+   "id": "NL.IMBAG.Pand.0363100012169117",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012177917",
-   "register": "point",
-   "drawn": "point",
-   "gated": "bell"
-  },
-  {
-   "id": "0363100012169052",
-   "register": "point",
-   "drawn": "point",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012175007",
+   "id": "NL.IMBAG.Pand.0363100012171304",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "63100012171600:0",
+   "id": "NL.IMBAG.Pand.0363100012173926",
    "register": "point",
-   "drawn": "point",
-   "gated": "mansard"
+   "crown": {
+    "drawn": "point",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012172728",
+   "id": "NL.IMBAG.Pand.0363100012173935",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012177108",
-   "register": "point",
-   "drawn": "point",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012178551",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansardHip"
-  },
-  {
-   "id": "0363100012178562",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansardHip"
-  },
-  {
-   "id": "0363100012179996",
-   "register": "point",
-   "drawn": "point",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012180000",
+   "id": "NL.IMBAG.Pand.0363100012173951",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "parapet"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012102466",
-   "register": "point",
-   "drawn": "point",
-   "gated": "school"
-  },
-  {
-   "id": "0363100012132188",
-   "register": "point",
-   "drawn": "point",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012182674",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012177883",
+   "id": "NL.IMBAG.Pand.0363100012173979",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
+   "crown": {
+    "drawn": "bell",
+    "gated": "mansardHip",
+    "hint": "mansardHip"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175752",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": ""
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175754",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012176332",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177452",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "bell",
+   "source": ""
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177481",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012241755",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167630",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "bell"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167637",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167639",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "bell"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168767",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168796",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "cornice"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169361",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "step"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169579",
+   "register": "spout",
+   "crown": {
+    "drawn": "spout",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "spout",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172776",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "hand": "flat",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012174133",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012174217",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012176004",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "spout",
+    "hint": "spout"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177017",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167481",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012171050",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178681",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179950",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167510",
+   "register": "spout",
+   "crown": {
+    "drawn": "spout",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "spout",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168181",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168331",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168476",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "bell",
+    "hint": "bell"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168536",
+   "register": "step",
+   "crown": {
+    "drawn": "step",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "step",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178859",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179391",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179468",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179887",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180071",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180156",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180334",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "bell"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180407",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": ""
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012571491",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165111",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012167568",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168061",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "cornice"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168143",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169332",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175262",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175347",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175491",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "point"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175494",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175589",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175643",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175673",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "neck"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175750",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175751",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175842",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175963",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "bell",
+    "hint": "bell"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180197",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansardHip"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012243264",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168268",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168467",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012168469",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169082",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175420",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175421",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "bell"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175746",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175825",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "cornice"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179190",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179279",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179702",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "neck"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179707",
+   "register": "step",
+   "crown": {
+    "drawn": "step",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "step",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180357",
+   "register": "step",
+   "crown": {
+    "drawn": "step",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "step",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012571550",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": ""
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178611",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178868",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "spout"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178852",
+   "register": "step",
+   "crown": {
+    "drawn": "step",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "step",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165374",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "neck"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012171637",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012171946",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177877",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177942",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178149",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178291",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "parapet"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178532",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178828",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182579",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172009",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177917",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "bell",
+    "hint": "bell"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178478",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169052",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012175007",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "passage:NL.IMBAG.Pand.0363100012171600:0",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": ""
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172728",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": ""
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177108",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178551",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansardHip",
+    "hint": "mansardHip"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012178562",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansardHip",
+    "hint": "mansardHip"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179822",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012179996",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180000",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "parapet",
+    "hint": "parapet"
+   },
+   "historic": "bell",
+   "source": ""
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180415",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012102466",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "school",
+    "hint": "school"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012132188",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182674",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012177883",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182595",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182820",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "spout"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
    "id": "w266944034",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "hipped"
+   "crown": {
+    "drawn": "neck",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "neck",
+   "source": ""
   },
   {
-   "id": "0363100012171612",
+   "id": "NL.IMBAG.Pand.0363100012171341",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012182462",
+   "id": "NL.IMBAG.Pand.0363100012171612",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012182867",
+   "id": "NL.IMBAG.Pand.0363100012182462",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182268",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182814",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012171909",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182867",
    "register": "point",
-   "drawn": "point",
-   "gated": "neck"
+   "crown": {
+    "drawn": "point",
+    "gated": "neck",
+    "hint": "neck"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012182907",
+   "id": "NL.IMBAG.Pand.0363100012182907",
    "register": "step",
-   "drawn": "step",
-   "gated": "flat"
+   "crown": {
+    "drawn": "step",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "step",
+   "source": ""
   },
   {
-   "id": "0363100012182912",
+   "id": "NL.IMBAG.Pand.0363100012182912",
    "register": "point",
-   "drawn": "point",
-   "gated": "flat"
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012165698",
+   "id": "NL.IMBAG.Pand.0363100012571630",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "bell"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012571645",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012165698",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "mansardHip"
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansardHip",
+    "hint": "mansardHip"
+   },
+   "historic": "neck",
+   "source": ""
   },
   {
-   "id": "0363100012172002",
+   "id": "NL.IMBAG.Pand.0363100012171481",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012171759",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansardHip"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012172002",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "mansard"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012177995",
+   "id": "NL.IMBAG.Pand.0363100012177995",
    "register": "neck",
-   "drawn": "neck",
-   "gated": "mansardHip"
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "mansardHip"
+   },
+   "historic": "neck",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012181789",
+   "id": "NL.IMBAG.Pand.0363100012181789",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "pitched"
+   "crown": {
+    "drawn": "bell",
+    "gated": "pitched",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012169733",
+   "id": "NL.IMBAG.Pand.0363100012183105",
    "register": "point",
-   "drawn": "point",
-   "gated": "flat"
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "bell"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012169734",
-   "register": "point",
-   "drawn": "point",
-   "gated": "hipped"
-  },
-  {
-   "id": "0363100012182183",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012169746",
+   "id": "NL.IMBAG.Pand.0363100012571670",
    "register": "bell",
-   "drawn": "bell",
-   "gated": "flat"
+   "crown": {
+    "drawn": "bell",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "bell",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012181105",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "flat"
-  },
-  {
-   "id": "0363100012170543",
+   "id": "NL.IMBAG.Pand.0363100012169733",
    "register": "point",
-   "drawn": "point",
-   "gated": "hipped"
+   "crown": {
+    "drawn": "point",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   },
   {
-   "id": "0363100012183042",
-   "register": "neck",
-   "drawn": "neck",
-   "gated": "mansard"
-  },
-  {
-   "id": "0363100012062842",
+   "id": "NL.IMBAG.Pand.0363100012169734",
    "register": "point",
-   "drawn": "point",
-   "gated": "school"
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182183",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182214",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012169746",
+   "register": "bell",
+   "crown": {
+    "drawn": "bell",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "bell",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181105",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "flat",
+    "hint": "flat"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012182065",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012170281",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012170284",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012170336",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012170337",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012170543",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "hipped",
+    "hint": "hipped"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180975",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012180976",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181158",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansardHip"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181250",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181251",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "mansard"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181260",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181255",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181257",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "flat"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181259",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181556",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181557",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "pitched"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012181636",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "cornice",
+    "hint": "raised-neck"
+   },
+   "historic": "neck",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012183042",
+   "register": "neck",
+   "crown": {
+    "drawn": "neck",
+    "gated": "mansard",
+    "hint": "mansard"
+   },
+   "historic": "neck",
+   "source": ""
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012162645",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "parapet"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012160391",
+   "register": "spout",
+   "crown": {
+    "drawn": "spout",
+    "gated": "cornice",
+    "hint": "step"
+   },
+   "historic": "spout",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012114178",
+   "register": "step",
+   "crown": {
+    "drawn": "step",
+    "gated": "cornice",
+    "hint": "hipped"
+   },
+   "historic": "step",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0363100012062842",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "school",
+    "hint": "school"
+   },
+   "historic": "plain",
+   "source": "monument-text"
+  },
+  {
+   "id": "NL.IMBAG.Pand.0457100000058796",
+   "register": "point",
+   "crown": {
+    "drawn": "point",
+    "gated": "cornice",
+    "hint": "spout"
+   },
+   "historic": "plain",
+   "source": "monument-text"
   }
- ]
+ ],
+ "round5": {
+  "note": "ridge orientation (staging/ridge-facts.json): a raised register gable over a ridge more than 30 deg off the street front draws a cornice; vs the round-4 gate",
+  "changedVsRound4": 161,
+  "rows": [
+   {
+    "id": "NL.IMBAG.Pand.0363100012166682",
+    "register": "step",
+    "r4": "step",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012062014",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012080385",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012115849",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012079445",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012133193",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168504",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012085266",
+    "register": "step",
+    "r4": "step",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012082975",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012237158",
+    "register": "step",
+    "r4": "step",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012174062",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012174692",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012167762",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169372",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169492",
+    "register": "neck",
+    "r4": "mansard",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169518",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012176952",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012165064",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168411",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171956",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175239",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175322",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175782",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179319",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179972",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180362",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012248815",
+    "register": "bell",
+    "r4": "pitched",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175444",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179144",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180014",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180367",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012170948",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012170955",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012178326",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012178401",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012172981",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012253827",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169308",
+    "register": "point",
+    "r4": "mansard",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168986",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169405",
+    "register": "point",
+    "r4": "pitched",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169955",
+    "register": "bell",
+    "r4": "mansard",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012173863",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168078",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169988",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice",
+    "hand": "flat"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012173052",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012172258",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012174386",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168737",
+    "register": "step",
+    "r4": "step",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168822",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168869",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169245",
+    "register": "neck",
+    "r4": "pitched",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171525",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171587",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171807",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012173453",
+    "register": "step",
+    "r4": "step",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012173772",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012173817",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012176600",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177390",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177599",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177645",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177651",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012167623",
+    "register": "step",
+    "r4": "step",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168597",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168637",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168638",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169117",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171304",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012173935",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012173951",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175754",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012241755",
+    "register": "neck",
+    "r4": "hipped",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012167630",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012167637",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012167639",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168767",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168796",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169361",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169579",
+    "register": "spout",
+    "r4": "spout",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012174133",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012174217",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012167481",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179950",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012167510",
+    "register": "spout",
+    "r4": "spout",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179391",
+    "register": "bell",
+    "r4": "hipped",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179887",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180071",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180156",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180334",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012165111",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012167568",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168061",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168143",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169332",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175347",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175491",
+    "register": "neck",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175494",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175589",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175643",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175673",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175750",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175751",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180197",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168268",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168467",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012168469",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169082",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175420",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175421",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012175746",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179190",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179702",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179707",
+    "register": "step",
+    "r4": "step",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012178868",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012165374",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171946",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177877",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177942",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012178291",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012178828",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012178478",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012179822",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180415",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012182674",
+    "register": "neck",
+    "r4": "mansard",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012182595",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012182820",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171341",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012182268",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012182814",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171909",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012571630",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012571645",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171481",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012171759",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012172002",
+    "register": "bell",
+    "r4": "mansard",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012177995",
+    "register": "neck",
+    "r4": "mansardHip",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012183105",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012571670",
+    "register": "bell",
+    "r4": "bell",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012169734",
+    "register": "point",
+    "r4": "hipped",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012182214",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012182065",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012170281",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012170284",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012170336",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012170337",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180975",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012180976",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181158",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181250",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181251",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181260",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181255",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181257",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181259",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181556",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181557",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012181636",
+    "register": "neck",
+    "r4": "neck",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012162645",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012160391",
+    "register": "spout",
+    "r4": "spout",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0363100012114178",
+    "register": "step",
+    "r4": "step",
+    "r5": "cornice"
+   },
+   {
+    "id": "NL.IMBAG.Pand.0457100000058796",
+    "register": "point",
+    "r4": "point",
+    "r5": "cornice"
+   }
+  ]
+ },
+ "round4": {
+  "changedGated": 125,
+  "heldGated": 148,
+  "gatedTransitions": {
+   "neck -> flat": 21,
+   "bell -> flat": 18,
+   "neck -> mansard": 12,
+   "point -> flat": 11,
+   "bell -> hipped": 7,
+   "bell -> pitched": 6,
+   "point -> pitched": 5,
+   "neck -> bell": 4,
+   "neck -> hipped": 4,
+   "point -> mansard": 4,
+   "neck -> pitched": 4,
+   "neck -> mansardHip": 4
+  }
+ }
 }

@@ -34,6 +34,13 @@ export interface HouseSpecView {
   bays?: number;
   /** 3DBAG ridge minus eaves (m, bag-facts), for pands with a gable or a historic gable: the register gable gate's crown test. */
   crownRiseM?: number;
+  /** Angle between the ridge and the street front's normal, 0–90° (0: the ridge runs straight back, the gable faces the
+   *  street; 90: the ridge runs along the street, a cornice front with a roof behind). staging/ridge-facts.json. */
+  ridgeToFrontDeg?: number;
+  /** Where the ridge came from: b = 3DBAG LoD2.2 roof faces, p = the planned ridge (the fitted box's long axis). */
+  ridgeSrc?: 'b' | 'p';
+  /** 3DBAG's pitched faces all fall on one side of the ridge (a lean-to). Recorded for the roof planner, not gated. */
+  leanTo?: boolean;
   /** Winning source per key above. */
   src: Partial<Record<'gable' | 'year' | 'wallMaterial' | 'wallHex' | 'bays', string>>;
 }
@@ -130,6 +137,11 @@ export function withHouseSpec<T extends { properties: Props }>(feature: T): T {
  *    eaves (`crownInGeometry`: ridge - eaves >= CROWN_RISE_M) or, with no ridge in the tile, when the roof planner on its own
  *    would plan a pitched crown (`gable` or `pitched`). Otherwise it is held: `monumentGable` is removed (the chain draws the
  *    front as it would without the register) and the shape is kept as `historicGable` for cards and trivia.
+ *  - Round 5: a raised register gable is drawn only when the ridge runs across the street front (`ridgeAcrossFront`: within
+ *    RIDGE_ACROSS_MAX_DEG of the front's normal, 3DBAG roof faces else the planned ridge, view `ridgeToFrontDeg`). A ridge
+ *    along the street is a cornice front with the roof behind it: the crown becomes `cornice` wherever a roof is drawn.
+ *    The view's `leanTo` (3DBAG's pitched faces all on one side of the ridge) is recorded, not gated: on the hand set 3 of
+ *    the 4 register gables over a 3DBAG lean-to are real raised gables (3DBAG modelled half the saddle).
  * `?registerGable=drawn|gated|hint` (REGISTER_GABLE in Node) picks the mode (registerGableMode); the trust order stays.
  */
 /** How the register's gable reaches the crown: `drawn` (before H5h round 4), `gated` (only over a 3DBAG crown; a cornice
@@ -158,7 +170,17 @@ export function crownInGeometry(p: Props): boolean | null {
   const rise = viewOf(p)?.crownRiseM;
   return typeof rise === 'number' && Number.isFinite(rise) ? rise >= CROWN_RISE_M : null;
 }
+/** A register gable faces the street only when the ridge runs within this angle of the street front's normal. */
+export const RIDGE_ACROSS_MAX_DEG = 30;
+/** Does the ridge run across the street front (true), along it (false), or is it unknown (null)? */
+export function ridgeAcrossFront(p: Props): boolean | null {
+  const off = viewOf(p)?.ridgeToFrontDeg;
+  return typeof off === 'number' && Number.isFinite(off) ? off <= RIDGE_ACROSS_MAX_DEG : null;
+}
+
 const PITCHED_CROWNS = new Set(['gable', 'pitched']);
+/** Planned roofs with a ridge a cornice front can sit in front of. */
+const RIDGED_CROWNS = new Set(['gable', 'pitched', 'mansard', 'halfHipped', 'hipped', 'mansardHip']);
 /** The roof planner's own crown kind for a feature without a register gable (roofMesh roofPlanForFeature), or null. */
 const plannedKind = (feature: { properties: Props }): string | null => {
   try { return roofPlanForFeature(feature as unknown as Parameters<typeof roofPlanForFeature>[0])?.kind ?? null; } catch { return null; }
@@ -191,6 +213,13 @@ export function withHouseSpecCrown<T extends { properties: Props }>(feature: T, 
   if (mode === 'hint') return { ...out, properties: { ...rest, historicGable: g } };
   if (g === 'cornice') return out;
   const geo = crownInGeometry(q);
+  // Round 5: a ridge that runs along the street is a cornice (or parapet) front with the roof behind it, however high it
+  // rises: the crown becomes a cornice wherever a roof is drawn at all, so the planner's own saddle does not turn a plain
+  // gable to the street either. Over a flat top with no planned roof the front stays as planned.
+  if (ridgeAcrossFront(q) === false) {
+    const roofed = geo === true || RIDGED_CROWNS.has(plannedKind({ ...out, properties: rest }) ?? '');
+    return { ...out, properties: { ...rest, historicGable: g, ...(roofed ? { monumentGable: 'cornice' } : {}) } };
+  }
   if (geo === true) return out;
   if (geo === null) { const k = plannedKind({ ...out, properties: rest }); if (k && PITCHED_CROWNS.has(k)) return out; }
   return { ...out, properties: { ...rest, historicGable: g } };

@@ -133,6 +133,13 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
     because the live building tiles carry neither), or, with no ridge, when the roof planner alone would plan a
     `gable` or `pitched` roof. A cornice is always drawn. A held gable is removed and kept as `historicGable` on the
     feature; mode `hint` holds every register gable, `drawn` is the chain before round 4.
+  - Round 5 (#351): a raised register gable also needs its ridge across the street front (`ridgeAcrossFront`: the
+    view's `ridgeToFrontDeg` <= 30). A ridge along the street is a cornice front with the roof behind it: the crown
+    becomes `cornice` where a roof is drawn at all (a 3DBAG crown, or a planned roof with a ridge), else the front stays
+    as planned. `ridgeToFrontDeg`, `ridgeSrc` (`b` 3DBAG roof faces, `p` the fitted box's long axis) and `leanTo` come
+    from `staging/ridge-facts.json` (`scripts/house-specs/build-ridge-facts.ts`, math in `houseSpec/ridgeFacts.ts`),
+    which `build-house-specs.ts` bakes into the view like `crownRiseM`. `leanTo` (every 3DBAG pitched face on one side
+    of the ridge) is recorded, not gated: 3 of the 4 hand rows over a lean-to are real raised gables.
   - The same order holds in the merge: `resolve.ts strongerProv(a, b, path)` ranks a photo source over `monument-text`
     on `fronts/N/gable` only; every other field keeps the ladder.
 - `facts/historicGable` (spec.ts, validated against GABLES) is the register's gable with its `rce:<nr>` receipt, written
@@ -1225,6 +1232,24 @@ Archive: `HOUSE_CROPS_ARCHIVE` (default `~/Code/map-recall2-source-data-h5h`) an
 `~/Code/map-recall2-source-data`, for the block-face strip). Spot-check sheets for the user:
 `map-recall2-screenshots/ui/2026-11-10-house-h5h/contact-1.jpg`, `contact-2.jpg` (round 1), `contact-r2-1.jpg`, `contact-r2-2.jpg` (round 2, multi-front and unknown marked). To extend the set, add rows to
 `hand-set-v1.reader-a.tsv` (columns in build.ts), rebuild, and have two blind readers read a third of the new pands (the ceiling is the blind pair).
+
+
+**Round 5: ridge orientation (#351).** The round-4 rise test passes a pitched roof behind a cornice, so a raised register
+gable now also needs its ridge within 30° of the street front's normal (§1). Ridges come from 3DBAG LoD2.2 roof faces
+(api.3dbag.nl, 4,683 pands fetched once; faces of 15–60° vote by area in doubled angle, a pyramid or four-sided mansard
+has no ridge) for 3,371 pands, else the fitted box's long axis (1,236); fronts from the street test that crowns street
+gable ends. 577 of 4,607 come out along the street. On the 60 gable rows the register writer goes from 36/52 to
+**37/52 = 0.71 [0.58, 0.82]** (still a hint); the drawn crown from 44/60 to **45/60** (raised readings kept 22/29,
+cornice/flat 23/31). Live: **161 more houses change than in round 4** (273 against the drawn chain, 310 held), almost all
+raised -> cornice (point 55, bell 55, neck 42, step 8). Sheet (photo | round 4 | round 5):
+`map-recall2-screenshots/ui/2026-11-10-register-gable-gate/r5-ridge-before-after.jpg`. Known miss there: 168504, a wide
+pand with three bell gables whose 3DBAG ridge reads along the street.
+
+174911 (register point, photo cornice) is not a ridge case: 3DBAG's ridge runs straight back (5°) over a 0.4 m crown, a
+25° lean-to face beside a 7° deck. The round-4 rise already holds the register gable; the triangle the game draws is the
+planner's own `pitched` saddle turned to the street. It is pinned with 173134 (glass rooftop box planned hipped) and
+174187 (setback planned as a street-side mansard) as `todo` in `src/canalRecall/roofs/roofPlanKnownMisses.test.ts` for a
+planRoof lane, and with its staged view values in `decorate.test.ts`.
 
 ## §5 The kit-gap queue
 

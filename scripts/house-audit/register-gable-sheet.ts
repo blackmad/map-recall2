@@ -4,6 +4,9 @@
 //
 //   node --import tsx scripts/house-audit/register-gable-sheet.ts --renders <dir with <id6>-drawn/front.png, <id6>-gated/front.png>
 //        --pands id6,id6,... --out <dir> [--per-sheet 6]
+//        [--before drawn --after gated]   render dir suffixes, and the audit modes their labels read
+//        [--before-audit <json> --after-audit <json>]   audits the labels read (default artifacts/house-audit/register-gable-gate.json)
+// Round 5 (ridge orientation): --before r4 --after r5 with the round-4 and round-5 audits, both labelled by their gated crown.
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
@@ -24,15 +27,17 @@ async function cell(file: string | null, label: string, W = 300, H = 380) {
 async function main() {
   const argv = process.argv.slice(2), opt = (n: string) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i + 1] : undefined; };
   const renders = opt('renders')!, ids = opt('pands')!.split(','), out = opt('out')!, per = Number(opt('per-sheet') ?? 6);
-  const audit = JSON.parse(fs.readFileSync(path.join(ROOT, 'artifacts/house-audit/register-gable-gate.json'), 'utf8'));
-  const byId = new Map<string, any>(audit.rows.map((r: any) => [r.id.slice(-6), r]));
+  const before = opt('before') ?? 'drawn', after = opt('after') ?? 'gated';
+  const audit = (f?: string) => new Map<string, any>(JSON.parse(fs.readFileSync(f ?? path.join(ROOT, 'artifacts/house-audit/register-gable-gate.json'), 'utf8')).rows.map((r: any) => [r.id.slice(-6), r]));
+  const byId = audit(opt('before-audit')), afterById = opt('after-audit') ? audit(opt('after-audit')) : byId;
+  const crown = (r: any, m: string) => r?.crown?.[m] ?? r?.crown?.gated;
   fs.mkdirSync(out, { recursive: true });
   for (let s = 0; s * per < ids.length; s++) {
     const rows: Buffer[] = [];
     for (const id of ids.slice(s * per, (s + 1) * per)) {
       const r = byId.get(id); const full = r.id.slice(-16);
       const photo = path.join(ARCHIVE, 'pand-crops', full, 'front.jpg');
-      const cells = [await cell(fs.existsSync(photo) ? photo : null, `${id} photo${r.hand ? ` (read: ${r.hand})` : ''}`), await cell(path.join(renders, `${id}-drawn/front.png`), `before: ${r.crown.drawn} (register ${r.register})`), await cell(path.join(renders, `${id}-gated/front.png`), `after: ${r.crown.gated}`)];
+      const cells = [await cell(fs.existsSync(photo) ? photo : null, `${id} photo${r.hand ? ` (read: ${r.hand})` : ''}`), await cell(path.join(renders, `${id}-${before}/front.png`), `before: ${crown(r, before)} (register ${r.register})`), await cell(path.join(renders, `${id}-${after}/front.png`), `after: ${crown(afterById.get(id), after)}`)];
       rows.push(await sharp({ create: { width: 3 * 300 + 2 * 6, height: 380, channels: 3, background: '#000' } }).composite(cells.map((c, i) => ({ input: c, left: i * 306, top: 0 }))).png().toBuffer());
     }
     const sheet = await sharp({ create: { width: 2 * (912) + 12, height: Math.ceil(rows.length / 2) * 386, channels: 3, background: '#000' } }).composite(rows.map((r, i) => ({ input: r, left: (i % 2) * 924, top: Math.floor(i / 2) * 386 }))).jpeg({ quality: 78 }).toBuffer();

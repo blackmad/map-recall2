@@ -1,8 +1,9 @@
 // The generic path reads HouseSpecs (house line H1 step 5): flag, decorator steps, enricher, bay fitting.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView } from './decorate.ts';
+import { CROWN_RISE_M, crownInGeometry, houseSpecEnricher, houseSpecPatch, houseSpecsEnabled, registerGableMode, REGISTER_GABLE_MODE_DEFAULT, RIDGE_ACROSS_MAX_DEG, ridgeAcrossFront, SPEC_BAYS_HELD, withHouseSpec, withHouseSpecCrown, type HouseSpecView } from './decorate.ts';
 import { gameFeatureDecorator } from '../galleryPipeline.ts';
+import { axisOff, ridgeAxis, type RoofFace } from './ridgeFacts.ts';
 import { frontageLayoutScale, specCellCount } from '../streetFacadeRendering.ts';
 import { layoutWall } from '../facadeLayout.ts';
 import { STYLE_DIMS } from '../facadeCells.ts';
@@ -137,4 +138,55 @@ test('register gable gate: drawn only over a 3DBAG crown, else held as historicG
   // a photo front with no planner gable (flat) drops the register's, which is kept as historicGable
   const photoFlat = withHouseSpecCrown(feature({ monumentGable: 'bell', eaves: 9, ridge: 14, houseSpec: { gable: 'flat', src: { gable: 'reviewed' } } })).properties;
   assert.equal(photoFlat.monumentGable, undefined); assert.equal(photoFlat.historicGable, 'bell');
+});
+
+test('register gable gate, round 5: a raised register gable draws only with the ridge across the street front', () => {
+  assert.equal(RIDGE_ACROSS_MAX_DEG, 30);
+  const v = (ridgeToFrontDeg?: number, crownRiseM = 3.4) => ({ houseSpec: { crownRiseM, ...(ridgeToFrontDeg === undefined ? {} : { ridgeToFrontDeg, ridgeSrc: 'b' }), src: {} } });
+  assert.equal(ridgeAcrossFront(v(12)), true); assert.equal(ridgeAcrossFront(v(30)), true); assert.equal(ridgeAcrossFront(v(31)), false); assert.equal(ridgeAcrossFront(v()), null);
+  // ridge across, crown above the eaves: drawn as before
+  const across = feature({ monumentGable: 'bell', ...v(8) });
+  assert.equal(withHouseSpecCrown(across), across);
+  // no orientation known: round 4 unchanged
+  const unknown = feature({ monumentGable: 'bell', ...v() });
+  assert.equal(withHouseSpecCrown(unknown), unknown);
+  // ridge along the street over a crown: a cornice front with the roof behind, the register shape kept as historicGable
+  const along = withHouseSpecCrown(feature({ monumentGable: 'neck', ...v(84) })).properties;
+  assert.equal(along.monumentGable, 'cornice'); assert.equal(along.historicGable, 'neck');
+  // ridge along over a flat top with no footprint to plan: held, no cornice invented
+  const flat = withHouseSpecCrown(feature({ monumentGable: 'neck', ...v(84, 0.4) })).properties;
+  assert.equal(flat.monumentGable, undefined); assert.equal(flat.historicGable, 'neck');
+  // a register cornice and a photo gable ignore the ridge
+  const cornice = feature({ monumentGable: 'cornice', ...v(84) });
+  assert.equal(withHouseSpecCrown(cornice), cornice);
+  assert.equal(withHouseSpecCrown(feature({ monumentGable: 'bell', houseSpec: { gable: 'step', crownRiseM: 3, ridgeToFrontDeg: 84, src: { gable: 'vision-judge' } } })).properties.monumentGable, 'step');
+  // drawn mode keeps the old behaviour
+  assert.equal(withHouseSpecCrown(feature({ monumentGable: 'neck', ...v(84) }), 'drawn').properties.monumentGable, 'neck');
+});
+
+test('ridgeFacts: the ridge axis from 3DBAG roof faces', () => {
+  // a saddle: two equal faces downhill east and west, the ridge runs north-south (90°)
+  const saddle: RoofFace[] = [[40, 40, 0], [40, 40, 180]];
+  assert.ok(Math.abs(ridgeAxis(saddle)!.axis * 180 / Math.PI - 90) < 1e-6);
+  // a pyramid (four equal faces) and a flat deck have no ridge direction
+  assert.equal(ridgeAxis([[20, 35, 0], [20, 35, 90], [20, 35, 180], [20, 35, -90]]), null);
+  assert.equal(ridgeAxis([[60, 5, 0]]), null);
+  // mansard skirts (> 60°) do not vote
+  assert.ok(Math.abs(ridgeAxis([[30, 30, 0], [30, 30, 180], [25, 70, 90], [25, 70, -90]])!.axis * 180 / Math.PI - 90) < 1e-6);
+  assert.equal(Math.round(axisOff(Math.PI / 2, 0)), 90); assert.equal(Math.round(axisOff(Math.PI / 2, -Math.PI / 2)), 0);
+});
+
+test('fixtures (staged view values, round 5): 174911 held by the rise, 167955 by the ridge, 174411 a cornice', () => {
+  // 174911, register point, photo cornice: 3DBAG's ridge runs straight back (5°) over a 0.4 m crown (a lean-to beside a
+  // flat deck): the register gable is held by the rise, not the ridge. The street triangle the game still draws is the
+  // planner's own saddle (roofs/roofPlanKnownMisses.test.ts).
+  const f174911 = withHouseSpecCrown(feature({ id: 'NL.IMBAG.Pand.0363100012174911', monumentGable: 'plain', houseSpec: { gable: 'point', crownRiseM: 0.4, ridgeToFrontDeg: 5, ridgeSrc: 'b', leanTo: true, src: { gable: 'monument-text' } } })).properties;
+  assert.equal(f174911.monumentGable, undefined); assert.equal(f174911.historicGable, 'plain');
+  assert.equal(ridgeAcrossFront(f174911), true);
+  // 167955, register neck, photo flat: ridge along the street (89°) over a 0.3 m crown: held, no cornice invented
+  const f167955 = withHouseSpecCrown(feature({ id: 'NL.IMBAG.Pand.0363100012167955', monumentGable: 'neck', houseSpec: { gable: 'neck', crownRiseM: 0.3, ridgeToFrontDeg: 89, ridgeSrc: 'b', src: { gable: 'monument-text' } } })).properties;
+  assert.equal(f167955.monumentGable, undefined); assert.equal(f167955.historicGable, 'neck');
+  // 174411, register point, photo cornice: a 4.8 m crown whose ridge runs 48° off the front: a cornice with the roof behind
+  const f174411 = withHouseSpecCrown(feature({ id: 'NL.IMBAG.Pand.0363100012174411', monumentGable: 'plain', houseSpec: { gable: 'point', crownRiseM: 4.8, ridgeToFrontDeg: 48, ridgeSrc: 'b', leanTo: true, src: { gable: 'monument-text' } } })).properties;
+  assert.equal(f174411.monumentGable, 'cornice'); assert.equal(f174411.historicGable, 'plain');
 });
