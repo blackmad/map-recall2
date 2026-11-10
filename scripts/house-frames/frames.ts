@@ -78,7 +78,9 @@ Checks (pose.json)
   flags        missing (>= 50 % sky or
                ground), other building (>= 50 % another building or model), roof offset (the game's skyline > 1 m from the crown line
                where the photo's is within 1 m; or a model drawn >= 1.2 m over it on 2 of 7 columns), wall colour (the pand's wall L over its two neighbours' in the same
-               half, photo vs game, |ln ratio| > 0.35; both neighbour strips must read, and the picks must say the wall is this pand's)
+               half, photo vs game: an inversion across 1.0 (each side > 10 % from it) fires, else |ln ratio| > 0.35; one strip is used when only one
+               reads (the caption says which), 'no ref' when none does; the picks must say the wall is this pand's).
+               --post-only re-runs every check and flag on an existing frame dir (prepared.json + the frames)
 
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
@@ -353,8 +355,8 @@ function captionLines(r: any): string[] {
   return [
     `${r.key !== r.pandId ? r.key + ' ' : ''}${r.pandId}  ${r.street || '?'}  |  pano ${String(r.pick.timestamp).slice(0, 10)}  ${r.pick.distM.toFixed(1)} m  obl ${r.pick.obliquityDeg.toFixed(0)}°  |  vfov ${r.pose.vfovDeg.toFixed(0)}°${r.pose.clipped.length ? ` clipped ${r.pose.clipped.join('+')}` : ''}`,
     `drew: ${r.route}${r.picks?.drawnBy ? ` (picked ${r.picks.drawnBy})` : ''}  |  ${r.query || '(default world)'}${r.label && r.label !== 'run' ? `  |  ${r.label}` : ''}`,
-    flags.length ? `FLAGS ${flags.join(', ')}` : 'no flags',
-    `edges photo ${e(r.edges.photo)}  game ${e(r.edges.game)}  |  openings (advisory) photo ${r.measure.photo.openings ?? '?'} game ${r.measure.game.openings ?? '?'}${r.advisory?.openings ? ' ' + r.advisory.openings : ''}  |  rel L photo ${r.colour?.photo?.rel ?? '?'} game ${r.colour?.game?.rel ?? '?'}  |  skyline game ${r.skyline?.offset?.game?.medianM ?? '?'} photo ${r.skyline?.offset?.photo?.medianM ?? '?'} crown ${r.wall.heightM} m`,
+    (flags.length ? `FLAGS ${flags.join(', ')}` : 'no flags') + (r.colour && r.colour.ref === 'no ref' ? '  |  wall colour: no ref (no neighbour strip reads)' : ''),
+    `edges photo ${e(r.edges.photo)}  game ${e(r.edges.game)}  |  openings (advisory) photo ${r.measure.photo.openings ?? '?'} game ${r.measure.game.openings ?? '?'}${r.advisory?.openings ? ' ' + r.advisory.openings : ''}  |  rel L photo ${r.colour?.photo?.rel ?? '?'} game ${r.colour?.game?.rel ?? '?'} (${r.colour?.ref ?? '?'})  |  skyline game ${r.skyline?.offset?.game?.medianM ?? (r.skyline?.offset?.game?.clipped ? 'clipped' : '?')} photo ${r.skyline?.offset?.photo?.medianM ?? (r.skyline?.offset?.photo?.clipped ? 'clipped' : '?')} crown ${r.wall.heightM} m`,
   ];
 }
 

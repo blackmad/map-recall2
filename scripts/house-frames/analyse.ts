@@ -78,7 +78,7 @@ export function edgeOffsets(img: Rgb8, frame: CameraFrame, pose: FramePose, wall
 }
 
 // ---- skyline: where each half's sky starts over the wall ------------------------------------------------------------
-export type SkyCol = { u: number; topM: number | null };
+export type SkyCol = { u: number; topM: number | null; clipped?: boolean };
 
 /** Sky-like at the top of a column: bright and not warm (brick and roof tiles are red-dominant; sky is blue or grey). */
 const skyLike = (r: number, g: number, b: number) => 0.299 * r + 0.587 * g + 0.114 * b > 120 && b >= r - 6;
@@ -95,6 +95,9 @@ export function skyline(img: Rgb8, frame: CameraFrame, pose: FramePose, wall: Wa
     const base = wallPoint(frame, pose, wall, u, 0), hi = wallPoint(frame, pose, wall, u, wall.heightM * 3);
     const x = Math.round(base.x);
     if (base.depth <= 0 || x < 0 || x >= img.width) { out.push({ u, topM: null }); continue; }
+    // The frame's top edge on this wall line: under the crown (+0.5 m) the column cannot see where the roof ends.
+    { let lo = 0, top = wall.heightM * 3; for (let k = 0; k < 30; k++) { const v = (lo + top) / 2, s = wallPoint(frame, pose, wall, u, v); if (s.y > 0) lo = v; else top = v; }
+      if (lo < wall.heightM + 0.5) { out.push({ u, topM: null, clipped: true }); continue; } }
     const px = (y: number) => { const o = (y * img.width + x) * 3; return [img.data[o], img.data[o + 1], img.data[o + 2]]; };
     const p0 = px(0);
     if (!skyLike(p0[0], p0[1], p0[2])) { out.push({ u, topM: null }); continue; }
@@ -116,9 +119,9 @@ export function skyline(img: Rgb8, frame: CameraFrame, pose: FramePose, wall: Wa
 }
 
 /** Median skyline height (m on the wall plane) over the columns a half reads; null under 3 columns. */
-export function skylineMedian(cols: SkyCol[]): { medianM: number | null; n: number } {
+export function skylineMedian(cols: SkyCol[]): { medianM: number | null; n: number; clipped: number } {
   const d = cols.map(c => c.topM).filter((v): v is number => v != null).sort((a, b) => a - b);
-  return { medianM: d.length >= 3 ? +d[d.length >> 1].toFixed(2) : null, n: d.length };
+  return { medianM: d.length >= 3 ? +d[d.length >> 1].toFixed(2) : null, n: d.length, clipped: cols.filter(c => c.clipped).length };
 }
 
 // ---- the game's picks ----------------------------------------------------------------------------------------------
@@ -181,6 +184,9 @@ export function measureHalf(img: Rgb8, frame: CameraFrame, pose: FramePose, wall
 // ---- relative wall colour (the H9 rule: "darker or lighter than its neighbours", which cancels exposure) ---------------
 /** Wall colour flag: |ln(rel game / rel photo)| over this, rel = the pand's wall L / the mean of its neighbours' wall L in the same half. */
 export const COLOUR_REL_MAX = 0.35;
+/** An inversion counts when both sides sit this far from 1.0 (lighter than the neighbours by > 10 % on one side, darker by
+ * > 10 % on the other). Without it, H7's set (read as right) fired on 4 of 15 at noise such as 236262, 1.024 vs 0.998. */
+export const INVERSION_BAND = 0.1;
 /** The band a wall's L is read from: clear of the ground storey (shopfronts, cars) and of a shorter neighbour's sky. */
 export const COLOUR_BAND_M = [3, 12] as const;
 
@@ -218,7 +224,7 @@ export function neighbourWalls(wall: WallQuad): WallQuad[] {
 }
 
 export type RelHalf = { pand: number | null; neighbours: (number | null)[]; rel: number | null };
-export type RelColour = { photo: RelHalf; game: RelHalf; used: number; score: number | null };
+export type RelColour = { photo: RelHalf; game: RelHalf; used: number; ref: 'both' | 'left only' | 'right only' | 'no ref'; score: number | null };
 /** A neighbour strip counts when it reads in both halves with under this share of sky (a gap, a corner, a lower neighbour). */
 export const NEIGHBOUR_MAX_SKY = 0.25;
 /**
@@ -234,8 +240,9 @@ export function relativeColour(photo: Rgb8, game: Rgb8, frame: CameraFrame, pose
     const nb = h.nb.filter((_, i) => use[i]).map(b => b!.L);
     return { pand: h.pand?.L ?? null, neighbours: h.nb.map(b => b?.L ?? null), rel: h.pand && nb.length ? +(h.pand.L / (nb.reduce((s, x) => s + x, 0) / nb.length)).toFixed(3) : null };
   };
-  const ph = half(p), gh = half(g);
-  return { photo: ph, game: gh, used: use.filter(Boolean).length, score: ph.rel != null && gh.rel != null ? +Math.log(gh.rel / ph.rel).toFixed(3) : null };
+  const ph = half(p), gh = half(g), used = use.filter(Boolean).length;
+  const ref = used === 2 ? 'both' : use[0] ? 'left only' : use[1] ? 'right only' : 'no ref';
+  return { photo: ph, game: gh, used, ref, score: ph.rel != null && gh.rel != null ? +Math.log(gh.rel / ph.rel).toFixed(3) : null };
 }
 
 /** Opening counts, advisory only: a note (never a flag) where the game's wall reads <= 1 opening and the photo's >= 3. */
@@ -253,9 +260,11 @@ export type Flags = { missing: boolean; otherBuilding: string | null; roofOffset
  * on the wall plane, >= 3 columns) sits more than ROOF_OFFSET_M from the projected crown line (tile height) while the
  * photo's sits within it (the photo confirms the crown); or a model's picked surface stands >= 1.2 m over the crown line
  * on 2 of 7 columns (generic picks are prisms: no roofs).
- * wall colour: the pand's wall L over its neighbours' (`relativeColour`), photo vs game, |ln ratio| > COLOUR_REL_MAX, read
- * only with both neighbour strips (one strip measures the neighbour as much as the pand: 116526 on H7's set) and only when
- * the picks say the wall is this pand's.
+ * wall colour: the pand's wall L over its neighbours' (`relativeColour`), photo vs game: fires on an inversion across 1.0
+ * (lighter than its neighbours on one side, darker on the other, each by > INVERSION_BAND: 116526, photo 1.27 vs game
+ * 0.85) or |ln ratio| >
+ * COLOUR_REL_MAX; with one neighbour strip when only one reads (`ref` says which), never when none does ('no ref' on the
+ * caption), and only when the picks say the wall is this pand's.
  */
 export function flagsFor(picks: PickRead, game: HalfMeasure, photo: HalfMeasure, roof: { crownM: number; game: number | null; photo: number | null; above: number }, colour?: RelColour): Flags {
   const f: Flags = { missing: false, otherBuilding: null, roofOffset: null, wallColour: null };
@@ -266,7 +275,10 @@ export function flagsFor(picks: PickRead, game: HalfMeasure, photo: HalfMeasure,
   if (roof.game != null && roof.photo != null && Math.abs(roof.game - roof.crownM) > ROOF_OFFSET_M && Math.abs(roof.photo - roof.crownM) <= ROOF_OFFSET_M)
     f.roofOffset = `game skyline ${roof.game} m vs crown ${roof.crownM} m (photo ${roof.photo} m)`;
   else if (roof.above >= 2) f.roofOffset = `model drawn over the crown line on ${roof.above}/7 columns`;
-  if (colour?.score != null && colour.used === 2 && !f.missing && !f.otherBuilding && Math.abs(colour.score) > COLOUR_REL_MAX)
-    f.wallColour = `${colour.score < 0 ? 'darker' : 'lighter'} than its neighbours in the game: rel game ${colour.game.rel} vs photo ${colour.photo.rel}`;
+  if (colour?.score != null && colour.photo.rel != null && colour.game.rel != null && !f.missing && !f.otherBuilding) {
+    const inverted = (colour.photo.rel - 1) * (colour.game.rel - 1) < 0 && Math.abs(colour.photo.rel - 1) > INVERSION_BAND && Math.abs(colour.game.rel - 1) > INVERSION_BAND;
+    if (inverted || Math.abs(colour.score) > COLOUR_REL_MAX)
+      f.wallColour = `${inverted ? `inverted (${colour.photo.rel > 1 ? 'lighter' : 'darker'} than its neighbours in the photo, ${colour.game.rel > 1 ? 'lighter' : 'darker'} in the game)` : `${colour.score < 0 ? 'darker' : 'lighter'} than its neighbours in the game`}: rel game ${colour.game.rel} vs photo ${colour.photo.rel}, ref ${colour.ref}`;
+  }
   return f;
 }
