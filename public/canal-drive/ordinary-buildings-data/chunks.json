@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T02:19:28.895Z",
+ "generatedAt": "2026-11-10T09:07:35.338Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -99447,6 +99447,560 @@
     "bytes": 38724,
     "triangles": 1472
    }
+  },
+  {
+   "id": "chunk-face-haarlemmerdijk-2-58-r2",
+   "category": "street-survey",
+   "name": "face-haarlemmerdijk-2-58-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-haarlemmerdijk-2-58-r2.glb?asset=53cd02b0edd20f13",
+   "sha256": "53cd02b0edd20f139f0a72ecb636a3efdc6904b114b008f449ef1aba215db8a9",
+   "bytes": 65100,
+   "triangles": 2120,
+   "primitives": 10,
+   "instance": {
+    "anchor": [
+     4.889005147699692,
+     52.38172092791653
+    ],
+    "northOffsetDegrees": 43.0871,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -4.335,
+     0,
+     -10.999
+    ],
+    "max": [
+     4.309,
+     12.73,
+     0.193
+    ]
+   },
+   "height": 12.73,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012176172",
+    "NL.IMBAG.Pand.0363100012176174"
+   ],
+   "replaces": [
+    "ordinary-0363100012176172",
+    "ordinary-0363100012176174"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8891139,
+        52.381794
+       ],
+       [
+        4.8890921,
+        52.3818065
+       ],
+       [
+        4.8890624,
+        52.3817866
+       ],
+       [
+        4.8890387,
+        52.3818001
+       ],
+       [
+        4.8889592,
+        52.3817469
+       ],
+       [
+        4.8890049,
+        52.3817211
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8891313,
+        52.381748
+       ],
+       [
+        4.8890848,
+        52.3817745
+       ],
+       [
+        4.8890049,
+        52.3817211
+       ],
+       [
+        4.8890476,
+        52.3816977
+       ],
+       [
+        4.8890465,
+        52.3816971
+       ],
+       [
+        4.8890515,
+        52.3816945
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "haarlemmerdijk-176172",
+     "pandId": "0363100012176172",
+     "buildingId": "NL.IMBAG.Pand.0363100012176172",
+     "address": "Haarlemmerdijk 6",
+     "frontage": {
+      "x0": -4.258,
+      "x1": -0.025,
+      "widthM": 4.233
+     },
+     "bounds": {
+      "min": [
+       -4.335,
+       0,
+       -10.999
+      ],
+      "max": [
+       -0.025,
+       11.962,
+       0.193
+      ]
+     },
+     "triangles": 855,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 76
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 136
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 296
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 26
+      }
+     ]
+    },
+    {
+     "recipeId": "haarlemmerdijk-176174",
+     "pandId": "0363100012176174",
+     "buildingId": "NL.IMBAG.Pand.0363100012176174",
+     "address": "Haarlemmerdijk 4",
+     "frontage": {
+      "x0": -0.025,
+      "x1": 4.309,
+      "widthM": 4.335
+     },
+     "bounds": {
+      "min": [
+       -0.105,
+       0,
+       -8.101
+      ],
+      "max": [
+       4.309,
+       12.73,
+       0.154
+      ]
+     },
+     "triangles": 1265,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 202
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 136,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 296,
+       "triangleCount": 664
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 96,
+       "triangleCount": 102
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 9,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 26,
+       "triangleCount": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-haarlemmerdijk-2-58-r1",
+   "category": "street-survey",
+   "name": "face-haarlemmerdijk-2-58-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-haarlemmerdijk-2-58-r1.glb?asset=128023f868569534",
+   "sha256": "128023f868569534a21f37563c8758630ad27c681f65c0cf641ef390cd8c3304",
+   "bytes": 79988,
+   "triangles": 2599,
+   "primitives": 13,
+   "instance": {
+    "anchor": [
+     4.888713722089086,
+     52.38188480475189
+    ],
+    "northOffsetDegrees": 43.333,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -6.092,
+     0,
+     -25.572
+    ],
+    "max": [
+     5.815,
+     13.66,
+     1.09
+    ]
+   },
+   "height": 13.66,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012167818",
+    "NL.IMBAG.Pand.0363100012167817",
+    "NL.IMBAG.Pand.0363100012167816"
+   ],
+   "replaces": [
+    "ordinary-0363100012167818",
+    "ordinary-0363100012167817",
+    "ordinary-0363100012167816"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8889459,
+        52.3820662
+       ],
+       [
+        4.8889054,
+        52.3820893
+       ],
+       [
+        4.8887994,
+        52.3820184
+       ],
+       [
+        4.8888163,
+        52.3820089
+       ],
+       [
+        4.8887792,
+        52.3819841
+       ],
+       [
+        4.8887622,
+        52.3819936
+       ],
+       [
+        4.8886524,
+        52.3819201
+       ],
+       [
+        4.888693,
+        52.381897
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.888874,
+        52.3819665
+       ],
+       [
+        4.8888423,
+        52.3819843
+       ],
+       [
+        4.8888527,
+        52.3819912
+       ],
+       [
+        4.8888425,
+        52.381997
+       ],
+       [
+        4.888693,
+        52.381897
+       ],
+       [
+        4.888734,
+        52.3818729
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8889163,
+        52.3819429
+       ],
+       [
+        4.888874,
+        52.3819665
+       ],
+       [
+        4.888734,
+        52.3818729
+       ],
+       [
+        4.8887758,
+        52.381849
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "haarlemmerdijk-167818",
+     "pandId": "0363100012167818",
+     "buildingId": "NL.IMBAG.Pand.0363100012167818",
+     "address": "Haarlemmerdijk 20",
+     "frontage": {
+      "x0": -5.731,
+      "x1": -1.959,
+      "widthM": 3.772
+     },
+     "bounds": {
+      "min": [
+       -6.092,
+       0,
+       -25.572
+      ],
+      "max": [
+       -1.958,
+       13.66,
+       1.09
+      ]
+     },
+     "triangles": 1159,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 552
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 104
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "haarlemmerdijk-167817",
+     "pandId": "0363100012167817",
+     "buildingId": "NL.IMBAG.Pand.0363100012167817",
+     "address": "Haarlemmerdijk 18",
+     "frontage": {
+      "x0": -1.959,
+      "x1": 1.917,
+      "widthM": 3.876
+     },
+     "bounds": {
+      "min": [
+       -2.172,
+       0,
+       -15.11
+      ],
+      "max": [
+       1.917,
+       11.87,
+       0.196
+      ]
+     },
+     "triangles": 731,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 66
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 84,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 552,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 104,
+       "triangleCount": 86
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 10,
+       "triangleCount": 35
+      }
+     ]
+    },
+    {
+     "recipeId": "haarlemmerdijk-167816",
+     "pandId": "0363100012167816",
+     "buildingId": "NL.IMBAG.Pand.0363100012167816",
+     "address": "Haarlemmerdijk 16",
+     "frontage": {
+      "x0": 1.917,
+      "x1": 5.814,
+      "widthM": 3.897
+     },
+     "bounds": {
+      "min": [
+       1.717,
+       0,
+       -14.165
+      ],
+      "max": [
+       5.815,
+       11.87,
+       0.196
+      ]
+     },
+     "triangles": 709,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 64
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 168,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 796,
+       "triangleCount": 236
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 190,
+       "triangleCount": 84
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 45,
+       "triangleCount": 22
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 9,
+       "triangleCount": 3
+      }
+     ]
+    }
+   ]
   }
  ]
 }

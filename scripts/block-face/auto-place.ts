@@ -35,6 +35,7 @@ import {STRIP_LIKENESS, spanLikeness} from '../../src/canalRecall/blockFace/stri
 import {lowFrontFootMaxM, runFootOffset} from '../../src/canalRecall/blockFace/stripFoot.ts';
 import {applyCrownPins, applyMirrorPins, crownPinProblems, holdBrokenPairs, mirrorPinProblems, typePinProblems, typesForFace, typesForPand, type CrownPin, type MirrorPin, type TypePin} from '../../src/canalRecall/blockFace/reviewCrowns.ts';
 import {applyDoorPins, doorPinProblems, type DoorPin} from '../../src/canalRecall/blockFace/reviewDoors.ts';
+import {applyBaysPins, baysPinProblems, type BaysPin} from '../../src/canalRecall/blockFace/reviewBays.ts';
 import {applyEavesPins, eavesPinProblems, type EavesPin} from '../../src/canalRecall/blockFace/reviewEaves.ts';
 import {acceptFloorFor, acceptPinProblems, applyPalettePins, palettePinProblems, type AcceptPin, type PalettePin} from '../../src/canalRecall/blockFace/reviewPalettes.ts';
 import {frontBump} from '../../src/canalRecall/blockFace/bayOutline.ts';
@@ -134,7 +135,7 @@ let eavesPins: EavesPin[] = [];
 function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableType[], evs: PandEvidence[], strip: {height: number; pixelsPerMetre: number}): ReturnType<typeof runIntent> {
   const m = intent.houses.flatMap(h => {
     const ev = evs.find(e => e.pandId === h.pandId), t = types.find(x => x.id === h.type?.type);
-    const fe = t && ev ? frontEavesFor(t, ev) : null, bagM = photoEaves.get(h.pandId)?.bagM ?? ev?.eavesM;
+    const fe = t && ev ? frontEavesFor(t, ev) : null, bagM = photoEaves.get(h.pandId)?.bagM ?? ev?.surveyEavesM ?? ev?.eavesM;
     if (fe && ev && bagM !== undefined) {
       if (Math.abs(fe.eavesM - bagM) <= PHOTO_EAVES.minDeltaM && !photoEaves.has(h.pandId)) return [];
       return [{pand: h.pandId, stripRow: Math.round(strip.height - fe.eavesM * strip.pixelsPerMetre), ...(fe.eavesM < bagM && !t!.match?.keepSurveyRoof ? {frontRoof: {}} : {}),
@@ -145,7 +146,7 @@ function withPhotoEaves(intent: ReturnType<typeof runIntent>, types: MatchableTy
     return e ? [{pand: h.pandId, stripRow: e.row, ...(e.eavesM < e.bagM ? {frontRoof: {}} : {}),
       evidence: `auto-place --photo-eaves: strip skyline cornice ${e.eavesM} m (confidence ${e.confidence}) vs 3DBAG/PDOK eaves ${e.bagM} m`}] : [];
   });
-  const pinned = applyEavesPins(m.length ? m : undefined, eavesPins, intent.houses.map(h => h.pandId), id => evs.find(e => e.pandId === id)?.eavesM, strip);
+  const pinned = applyEavesPins(m.length ? m : undefined, eavesPins, intent.houses.map(h => h.pandId), id => {const e = evs.find(x => x.pandId === id); return e?.surveyEavesM ?? e?.eavesM;}, strip);
   return pinned?.length ? {...intent, continuity: {...intent.continuity, measuredEaves: pinned}} : intent;
 }
 
@@ -157,8 +158,13 @@ async function faceEvidence(faceId: string) {
   for (const id of discovery.members as string[]) {
     const facts: BuildingFacts = await readJson(path.join(dir, 'pands', id, 'facts.json'));
     const u = uses.pands.find((p: any) => p.pandId === id), span = strip.spans.find((s: any) => s.pandId === id);
-    const f0 = facts.fronts[0], eavesM = f0.eavesM >= 6 || f0.eavesM <= 5 ? f0.eavesM : facts.heights.dak70pM; // <= 5 m: a one-storey front's own gutter (Vogelbuurt cottages), not the roof's 70th percentile
-    const ev: PandEvidence = {pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
+    // A reviewer's eaves pin (reviewEaves.ts) is the pand's eaves for its evidence too (storey count, eaves score, body
+    // band, palette), not only for the run face's measuredEaves: Haarlemmerdijk 8 reads 3DBAG eaves 9.3 m (the rear roof)
+    // under a front whose point gable stands on 12.0 m, so three storeys were drawn where the photo has four. The survey's
+    // eaves stay in `surveyEavesM` for the roof re-pitch. No pin = as before.
+    const pinM = eavesPins.find(x => x.pandId === id)?.eavesM;
+    const f0 = facts.fronts[0], eavesM = pinM ?? (f0.eavesM >= 6 || f0.eavesM <= 5 ? f0.eavesM : facts.heights.dak70pM); // <= 5 m: a one-storey front's own gutter (Vogelbuurt cottages), not the roof's 70th percentile
+    const ev: PandEvidence = {pandId: id, address: u?.addresses?.[0] ?? `pand ${id.slice(-6)}`, builtYear: facts.heights.builtYear, widthM: r2(f0.widthM), eavesM: r2(eavesM), ...(pinM !== undefined ? {surveyEavesM: r2(f0.eavesM)} : {}), roofMaxM: r2(facts.heights.roofMaxM), storeys3dbag: facts.heights.storeys,
       groundUses: [...new Set<string>((u?.groundUnits ?? []).map((g: any) => g.use))],
       osm: (u?.osm ?? []).map((b: any) => ({type: b.type, id: b.id, name: b.tags.name, category: osmCategory(b.tags)})),
       // The bay of the discovered BAG front (bay-outline.ts / intake --bay-outline=auto keep it in facts-bay-outline.json).
@@ -183,7 +189,7 @@ async function faceEvidence(faceId: string) {
         photoEaves.set(id, {row: skyline.eavesRow, eavesM: r2(skyline.eavesM), bagM: ev.eavesM, confidence: skyline.confidence});
         ev.eavesM = r2(skyline.eavesM);
       }
-      const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas}) : null;
+      const front = EVIDENCE_GATE ? measureSpanEvidence({rgb: raw.rgb, width: raw.width, height: raw.height, px, pixelsPerMetre: strip.pixelsPerMetre, eavesM: pinM ?? f0.eavesM, roofM: facts.heights.roofMaxM, panoramas: span.panoramas}) : null;
       const skyBound = measureSkyBound({rgb: raw.rgb, width: raw.width, height: raw.height, x0: px[0], x1: px[1], pixelsPerMetre: strip.pixelsPerMetre});
       ev.strip = {date: span.date, px, palette, wall, skyline, skyBound, ...evidenceShares(raw, px, strip.pixelsPerMetre, eavesM), ...(front ? {frontEvidence: {...evidenceVerdict(front), skyCols: front.skyCols}} : {}), columns, ...(frontClass ? {frontClass} : {}), doorSide: doorSide(raw, px, strip.pixelsPerMetre, eavesM <= 5), ...(a => ({accentSide: a.side, accentShare: a.share}))(accentSide(raw, px, strip.pixelsPerMetre, eavesM)), structure};
     }
@@ -301,7 +307,9 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
   const typesFile = path.join('scripts/block-face/buurten', `${buurt}-review-types.json`);
   const typesDoc = existsSync(typesFile) ? await readJson(typesFile) : {};
   const typePins: TypePin[] = typesDoc.pins ?? [], mirrorPins: MirrorPin[] = typesDoc.mirrors ?? [];
-  const typePinErrs = [...typePinProblems(typePins, types), ...mirrorPinProblems(mirrorPins, types)];
+  // Axis counts a reviewer counted where the width does not decide them (blockFace/reviewBays.ts).
+  const baysPins: BaysPin[] = typesDoc.bays ?? [];
+  const typePinErrs = [...typePinProblems(typePins, types), ...mirrorPinProblems(mirrorPins, types), ...baysPinProblems(baysPins, types)];
   if (typePinErrs.length) throw Error(`${typesFile}: ${typePinErrs.join('; ')}`);
   const library = types;
   // Door sides a reviewer pinned where the strip's door was not read (blockFace/reviewDoors.ts).
@@ -380,6 +388,7 @@ if (process.argv[1]?.endsWith('block-face/auto-place.ts')) {
     if (palettePins.length) { const pinned = applyPalettePins(decisions, palettePins); if (pinned.length) console.log(`${f.id}: palette pinned on ${pinned.length} pand(s)`); }
     fillPairs(decisions, types);
     if (mirrorPins.length) { const pinned = applyMirrorPins(decisions, mirrorPins); if (pinned.length) console.log(`${f.id}: side pinned on ${pinned.length} pand(s)`); }
+    if (baysPins.length) { const pinned = applyBaysPins(decisions, baysPins, id => { const b = types.find(t => t.id === id)?.body.bays; return typeof b === 'number' ? b : undefined; }); if (pinned.length) console.log(`${f.id}: axes pinned on ${pinned.length} pand(s)`); }
     const rowSet = rowCoherence(decisions, types, evs, strip.date);
     const ribbonHeld = ribbonRowHolds(decisions, types, evs);
     if (ribbonHeld.length) console.log(`${f.id}: era guard held ${ribbonHeld.length} pand(s) of a ribbon-window row`);

@@ -1,0 +1,425 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:36:45.294Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167808",
+   "addresses": [
+    "Haarlemmerdijk 67",
+    "Haarlemmerdijk 69B",
+    "Haarlemmerdijk 69F",
+    "Haarlemmerdijk 69G",
+    "Haarlemmerdijk 69E",
+    "Haarlemmerdijk 69A",
+    "Haarlemmerdijk 69C",
+    "Haarlemmerdijk 69D",
+    "Haarlemmerdijk 71"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 67",
+     "use": "winkelfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000656031"
+    },
+    {
+     "address": "Haarlemmerdijk 71",
+     "use": "winkelfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000721315"
+    },
+    {
+     "address": "Haarlemmerdijk 69B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000756138"
+    },
+    {
+     "address": "Haarlemmerdijk 69F",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000768743"
+    },
+    {
+     "address": "Haarlemmerdijk 69G",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000768744"
+    },
+    {
+     "address": "Haarlemmerdijk 69E",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000785603"
+    },
+    {
+     "address": "Haarlemmerdijk 69A",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000656032"
+    },
+    {
+     "address": "Haarlemmerdijk 69C",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000551128"
+    },
+    {
+     "address": "Haarlemmerdijk 69D",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000756139"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415061295,
+     "lngLat": [
+      4.8871784,
+      52.3825874
+     ],
+     "tags": {
+      "check_date": "2026-04-24",
+      "name": "Phone 2 Cover",
+      "shop": "mobile_phone",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11415096945,
+     "lngLat": [
+      4.8872343,
+      52.3825535
+     ],
+     "tags": {
+      "changing_table": "no",
+      "check_date": "2025-11-12",
+      "contact:instagram": "https://www.instagram.com/bbrood_bij_luz",
+      "indoor_seating": "yes",
+      "name": "Bbrood",
+      "opening_hours": "Mo-Sa 07:30-17:00",
+      "outdoor_seating": "no",
+      "shop": "bakery",
+      "website": "https://www.bbrood.nl/",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167787",
+   "addresses": [
+    "Haarlemmerdijk 73"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 73-H",
+     "use": "winkelfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000656043"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415097963,
+     "lngLat": [
+      4.8871244,
+      52.3826253
+     ],
+     "tags": {
+      "name": "Schoen reparaties & sleutels",
+      "shop": "shoe_repair",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167786",
+   "addresses": [
+    "Haarlemmerdijk 75"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 75-H",
+     "use": "winkelfunctie",
+     "areaM2": 112,
+     "bagId": "0363010000656047"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415099119,
+     "lngLat": [
+      4.8870827,
+      52.3826538
+     ],
+     "tags": {
+      "check_date": "2026-04-24",
+      "name": "Blincq",
+      "shop": "optician",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176515",
+   "addresses": [
+    "Haarlemmerdijk 77",
+    "Haarlemmerdijk 79",
+    "Haarlemmerdijk 79A",
+    "Haarlemmerdijk 79B",
+    "Haarlemmerdijk 81",
+    "Haarlemmerdijk 83",
+    "Haarlemmerdijk 85"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 79",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010001020713"
+    },
+    {
+     "address": "Haarlemmerdijk 79A",
+     "use": "woonfunctie",
+     "areaM2": 95,
+     "bagId": "0363010012061123"
+    },
+    {
+     "address": "Haarlemmerdijk 79B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010012061124"
+    },
+    {
+     "address": "Haarlemmerdijk 77-H",
+     "use": "winkelfunctie",
+     "areaM2": 130,
+     "bagId": "0363010000977662"
+    },
+    {
+     "address": "Haarlemmerdijk 85-H",
+     "use": "winkelfunctie",
+     "areaM2": 473,
+     "bagId": "0363010001020714"
+    }
+   ],
+   "units": 13,
+   "osm": [
+    {
+     "type": "node",
+     "id": 467096008,
+     "lngLat": [
+      4.8868401,
+      52.3827605
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "81-85",
+      "addr:postcode": "1013KC",
+      "addr:street": "Haarlemmerdijk",
+      "brand": "Etos",
+      "brand:website": "https://www.etos.nl/",
+      "brand:wikidata": "Q2609459",
+      "brand:wikipedia": "nl:Etos",
+      "name": "Etos",
+      "opening_hours": "Mo-Fr 08:30-18:30; Sa 08:30-17:30; Su 10:30-17:30",
+      "phone": "+31 20 528 9238",
+      "ref": "7776",
+      "shop": "chemist",
+      "website": "https://www.etos.nl/winkels/amsterdam/haarlemmerdijk-81-85-7776/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2721299725,
+     "lngLat": [
+      4.8870032,
+      52.3826746
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "77-H",
+      "addr:postcode": "1013KC",
+      "addr:street": "Haarlemmerdijk",
+      "brand": "Gall & Gall",
+      "brand:wikidata": "Q13639185",
+      "brand:wikipedia": "nl:Gall & Gall",
+      "name": "Gall & Gall",
+      "opening_hours": "Mo 12:00-19:00; Tu-We 11:00-19:00; Th 11:00-20:00; Fr-Sa 10:00-20:00; Su 13:00-18:00",
+      "phone": "+31 20 618 8154",
+      "ref": "6563",
+      "shop": "alcohol",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.gall.nl/winkels/details/?storeId=6563",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167785",
+   "addresses": [
+    "Haarlemmerdijk 87",
+    "Haarlemmerdijk 89"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 87-H",
+     "use": "winkelfunctie",
+     "areaM2": 94,
+     "bagId": "0363010000656079"
+    },
+    {
+     "address": "Haarlemmerdijk 89-H",
+     "use": "winkelfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000656082"
+    }
+   ],
+   "units": 9,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721299853,
+     "lngLat": [
+      4.8866486,
+      52.3828703
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "89-H",
+      "addr:postcode": "1013KC",
+      "addr:street": "Haarlemmerdijk",
+      "name": "The Swap Shop",
+      "opening_hours": "Mo,Su 13:00-18:00; Tu-Sa 11:00-18:00",
+      "second_hand": "only",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.the-swapshop.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11873973786,
+     "lngLat": [
+      4.8867081,
+      52.3828435
+     ],
+     "tags": {
+      "name": "Lof",
+      "opening_hours": "Mo-Fr 11:00-19:00; Sa 10:00-18:00",
+      "shop": "wine",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167792",
+   "addresses": [
+    "Haarlemmerdijk 91"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 91-H",
+     "use": "winkelfunctie",
+     "areaM2": 90,
+     "bagId": "0363010000656089"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415021264,
+     "lngLat": [
+      4.886609,
+      52.3829032
+     ],
+     "tags": {
+      "female": "yes",
+      "name": "Haarstijl",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11415082101,
+     "lngLat": [
+      4.8865367,
+      52.3829462
+     ],
+     "tags": {
+      "name": "Hang Eleven",
+      "shop": "clothes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "frontage",
+     "distanceM": 5.2
+    },
+    {
+     "type": "node",
+     "id": 11415082389,
+     "lngLat": [
+      4.8866015,
+      52.3829051
+     ],
+     "tags": {
+      "name": "Jis",
+      "shop": "jewelry",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:36:45.294Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1189 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:24:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177585",
+   "addresses": [
+    "Haarlemmerdijk 56",
+    "Haarlemmerdijk 58A",
+    "Haarlemmerdijk 58B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 58A",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000945985"
+    },
+    {
+     "address": "Haarlemmerdijk 56",
+     "use": "winkelfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000945987"
+    },
+    {
+     "address": "Haarlemmerdijk 58B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000945986"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721299417,
+     "lngLat": [
+      4.8878144,
+      52.3824083
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "56",
+      "addr:postcode": "1013JE",
+      "addr:street": "Haarlemmerdijk",
+      "check_date": "2025-11-12",
+      "contact:instagram": "https://www.instagram.com/lartenkunst",
+      "name": "L'Art en Kunst",
+      "shop": "gift",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.lartenkunst.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12012251111,
+     "lngLat": [
+      4.8876705,
+      52.3823786
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "frontage",
+     "distanceM": 7.6
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177584",
+   "addresses": [
+    "Haarlemmerdijk 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 54-H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010000656006"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721299387,
+     "lngLat": [
+      4.8878764,
+      52.3823796
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54-H",
+      "addr:postcode": "1013JE",
+      "addr:street": "Haarlemmerdijk",
+      "fee": "no",
+      "name": "Hooffzaak",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "tourism": "gallery",
+      "website": "http://www.hooffzaak.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177590",
+   "addresses": [
+    "Haarlemmerdijk 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 52",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012080135"
+    },
+    {
+     "address": "Jacob Oliepad 19",
+     "use": "woonfunctie",
+     "areaM2": 157,
+     "bagId": "0363010012080150"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1222424119,
+     "lngLat": [
+      4.8885556,
+      52.3818093
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "19",
+      "addr:postcode": "1013JZ",
+      "addr:street": "Haarlemmerdijk",
+      "check_date": "2024-08-26",
+      "craft": "key_cutter",
+      "email": "amsterdam@desleutelkoning.nl",
+      "name": "De Sleutelkoning",
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa 10:00-18:00",
+      "phone": "+31 20 6222630",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://desleutelkoning.nl/amsterdam/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "address",
+     "distanceM": 69.8
+    },
+    {
+     "type": "node",
+     "id": 1223057305,
+     "lngLat": [
+      4.8879403,
+      52.3823474
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "52",
+      "addr:postcode": "1013JE",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "pub",
+      "food": "yes",
+      "name": "Rosereijn",
+      "outdoor_seating": "yes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.rosereijn.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176280",
+   "addresses": [
+    "Haarlemmerdijk 50",
+    "Haarlemmerdijk 50A",
+    "Haarlemmerdijk 50B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 50",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 194,
+     "bagId": "0363010000655997"
+    },
+    {
+     "address": "Haarlemmerdijk 50A",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 114,
+     "bagId": "0363010012120950"
+    },
+    {
+     "address": "Haarlemmerdijk 50B",
+     "use": "woonfunctie",
+     "areaM2": 153,
+     "bagId": "0363010012120951"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 9039983458,
+     "lngLat": [
+      4.8879982,
+      52.3823122
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "50",
+      "addr:postcode": "1013JE",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "salad",
+      "name": "SLA",
+      "opening_hours": "Mo-Su 11:30-20:30; PH off",
+      "phone": "+31 20 223 7461",
+      "website": "https://ilovesla.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176278",
+   "addresses": [
+    "Haarlemmerdijk 48"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 48-H",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000965207"
+    },
+    {
+     "address": "Haarlemmerdijk 48-1",
+     "use": "logiesfunctie",
+     "areaM2": 225,
+     "bagId": "0363010000977664"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12012284736,
+     "lngLat": [
+      4.8880705,
+      52.3822825
+     ],
+     "tags": {
+      "name": "Kitsch Kitchen",
+      "opening_hours": "Mo 12:00-17:00; Tu-Sa 11:00-18:00; Su 12:00-17:00",
+      "panoramax": "62cc8f8a-27f1-4d21-a6f4-0e33b30d2577",
+      "shop": "gift",
+      "website": "https://kitschkitchen.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12012299556,
+     "lngLat": [
+      4.8880912,
+      52.382301
+     ],
+     "tags": {
+      "name": "Schröder",
+      "tourism": "hotel",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176279",
+   "addresses": [
+    "Haarlemmerdijk 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 46-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000655982"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057224,
+     "lngLat": [
+      4.8881173,
+      52.3822394
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "46-H",
+      "addr:postcode": "1013JD",
+      "addr:street": "Haarlemmerdijk",
+      "name": "our closet",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177674",
+   "addresses": [
+    "Haarlemmerdijk 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 44-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000655977"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057292,
+     "lngLat": [
+      4.8881724,
+      52.382205
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "44-H",
+      "addr:postcode": "1013JD",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "pub",
+      "check_date": "2026-04-24",
+      "indoor_seating": "yes",
+      "internet_access": "wlan",
+      "internet_access:fee": "customers",
+      "name": "Café de Poort",
+      "opening_hours": "Mo-Th, Su 11:00-01:00; Fr, Sa 11:00-03:00",
+      "outdoor_seating": "yes",
+      "phone": "+31 20 624 7283",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "sport": "billiards",
+      "website": "https://cafedepoort.amsterdam",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012177657",
+   "addresses": [
+    "Haarlemmerdijk 40",
+    "Haarlemmerdijk 42A",
+    "Haarlemmerdijk 42B",
+    "Haarlemmerdijk 42C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 40",
+     "use": "winkelfunctie",
+     "areaM2": 111,
+     "bagId": "0363010000980332"
+    },
+    {
+     "address": "Haarlemmerdijk 42A",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000980333"
+    },
+    {
+     "address": "Haarlemmerdijk 42B",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000980334"
+    },
+    {
+     "address": "Haarlemmerdijk 42C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000980335"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223057303,
+     "lngLat": [
+      4.8882474,
+      52.382187
+     ],
+     "tags": {
+      "name": "hype",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167801",
+   "addresses": [
+    "Haarlemmerdijk 32",
+    "Haarlemmerdijk 34A",
+    "Haarlemmerdijk 34B",
+    "Haarlemmerdijk 34C",
+    "Haarlemmerdijk 34F",
+    "Haarlemmerdijk 34G",
+    "Haarlemmerdijk 34D",
+    "Haarlemmerdijk 34E",
+    "Haarlemmerdijk 34H",
+    "Haarlemmerdijk 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 32",
+     "use": "winkelfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000655946"
+    },
+    {
+     "address": "Haarlemmerdijk 34A",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000655950"
+    },
+    {
+     "address": "Haarlemmerdijk 34B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000655959"
+    },
+    {
+     "address": "Haarlemmerdijk 34C",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000655960"
+    },
+    {
+     "address": "Haarlemmerdijk 34F",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000655963"
+    },
+    {
+     "address": "Haarlemmerdijk 34G",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000655964"
+    },
+    {
+     "address": "Haarlemmerdijk 36",
+     "use": "winkelfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000655967"
+    },
+    {
+     "address": "Haarlemmerdijk 34D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000655961"
+    },
+    {
+     "address": "Haarlemmerdijk 34E",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000655962"
+    },
+    {
+     "address": "Haarlemmerdijk 34H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000655965"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10922165562,
+     "lngLat": [
+      4.8883354,
+      52.3821201
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "36",
+      "addr:postcode": "1013JD",
+      "addr:street": "Haarlemmerdijk",
+      "name": "De Amsterdamse Muis",
+      "opening_hours": "Tu-Sa 11:00-18:00",
+      "phone": "+31 20 624 9420",
+      "shop": "interior_decoration",
+      "website": "https://www.amsterdamsemuis.nl"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10922165563,
+     "lngLat": [
+      4.8884248,
+      52.3820656
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "32",
+      "addr:postcode": "1013JD",
+      "addr:street": "Haarlemmerdijk",
+      "name": "The Wash Company",
+      "opening_hours": "Su 10:00-18:00; Mo-Sa 08:45-18:00",
+      "self_service": "yes",
+      "shop": "laundry",
+      "toilets:wheelchair": "no",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167821",
+   "addresses": [
+    "Haarlemmerdijk 28",
+    "Haarlemmerdijk 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 28-H",
+     "use": "winkelfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000655938"
+    },
+    {
+     "address": "Haarlemmerdijk 30-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000965204"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10922165564,
+     "lngLat": [
+      4.888496,
+      52.3820235
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "30",
+      "addr:postcode": "1013JD",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "fast_food",
+      "cuisine": "fries",
+      "indoor_seating": "yes",
+      "name": "Oma's Friet Amsterdam",
+      "opening_hours": "Mo-Su 12:00-22:00",
+      "outdoor_seating": "no",
+      "website": "https://omasfrietamsterdam.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 10922165565,
+     "lngLat": [
+      4.8885301,
+      52.3820036
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "28",
+      "addr:postcode": "1013JD",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "indian",
+      "indoor_seating": "yes",
+      "name": "Balraj",
+      "opening_hours": "Tu-Su 16:00-23:00",
+      "outdoor_seating": "no",
+      "phone": "+31 20 625 1428",
+      "website": "https://www.balraj.nl",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167820",
+   "addresses": [
+    "Haarlemmerdijk 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 26-H",
+     "use": "winkelfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000655935"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10922165566,
+     "lngLat": [
+      4.8885634,
+      52.3819865
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "26",
+      "addr:postcode": "1013JD",
+      "addr:street": "Haarlemmerdijk",
+      "email": "info@avalonamsterdam.com",
+      "name": "Avalon Plants",
+      "opening_hours": "Mo,We-Fr 11:30-18:00, Tu 11:30-17:00, Sa 11:00-18:30, Su 12:00-18:00",
+      "payment:cash": "yes",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "shop": "garden_centre",
+      "website": "https://avalonplants.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167819",
+   "addresses": [
+    "Haarlemmerdijk 22",
+    "Haarlemmerdijk 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 24-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000655932"
+    },
+    {
+     "address": "Haarlemmerdijk 22-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010011266478"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10922165567,
+     "lngLat": [
+      4.8886233,
+      52.3819555
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "22",
+      "addr:postcode": "1013JD",
+      "addr:street": "Haarlemmerdijk",
+      "name": "De Schatkamer",
+      "opening_hours": "Tu-Fr 10:00-18:00; Sa 10:00-17:00",
+      "phone": "+31 20 624 4694",
+      "shop": "jewelry",
+      "website": "https://www.deschatkamer.eu"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167818",
+   "addresses": [
+    "Haarlemmerdijk 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 20-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000655928"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10922165568,
+     "lngLat": [
+      4.8886816,
+      52.3819144
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "contact:instagram": "https://www.instagram.com/studio.onrust/",
+      "name": "Studio Onrust",
+      "opening_hours": "Mo 12:00-18:00; We,Fr,Sa 11:00-18:00; Th 11:00-17:30; Su 12:00-17:00",
+      "payment:cash": "no",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "second_hand": "only",
+      "shop": "clothes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167817",
+   "addresses": [
+    "Haarlemmerdijk 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 18-H",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000655925"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721295958,
+     "lngLat": [
+      4.8887263,
+      52.3818899
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "name": "Hebbes in Speelgoed",
+      "opening_hours": "Mo 13:00-17:30; Tu-Sa 10:00-17:30",
+      "phone": "+31 20 625 5115",
+      "shop": "toys",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.hebbesinspeelgoed.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167816",
+   "addresses": [
+    "Haarlemmerdijk 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 16-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000655918"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294910,
+     "lngLat": [
+      4.8887657,
+      52.3818704
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "argentinian",
+      "name": "La Brasa",
+      "opening_hours": "Su 16:00-22:00; Mo, We, Th, Fr, Sa 15:00-22:00",
+      "phone": "+31 20 625 4438",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.labrasa.nl"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176104",
+   "addresses": [
+    "Haarlemmerdijk 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 14-H",
+     "use": "winkelfunctie",
+     "areaM2": 131,
+     "bagId": "0363010000655912"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176103",
+   "addresses": [
+    "Haarlemmerdijk 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 12-H",
+     "use": "winkelfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000655907"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294450,
+     "lngLat": [
+      4.8888468,
+      52.3818214
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "12-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "beauty": "nails",
+      "name": "Star Hollywood Nails",
+      "shop": "beauty",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176102",
+   "addresses": [
+    "Haarlemmerdijk 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 10-H",
+     "use": "winkelfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000655905"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294222,
+     "lngLat": [
+      4.8888945,
+      52.3817974
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "10-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "name": "Maestro Kledingreparatie",
+      "opening_hours": "Mo-Fr 09:00-18:00; Sa 09:00-17:30",
+      "shop": "tailor",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://maestrokledingreparatie.nl"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176101",
+   "addresses": [
+    "Haarlemmerdijk 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 8-H",
+     "use": "winkelfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000655902"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721299759,
+     "lngLat": [
+      4.8889431,
+      52.3817657
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "8-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "fast_food",
+      "brand": "Subway",
+      "brand:wikidata": "Q244457",
+      "cuisine": "sandwich",
+      "name": "Subway",
+      "opening_hours": "We-Su 10:00-21:00; Mo-Tu 11:00-21:00",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "takeaway": "yes",
+      "website": "https://restaurants.subway.com/netherlands/amsterdam/haarlemmerdijk-8",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176172",
+   "addresses": [
+    "Haarlemmerdijk 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 6-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000655899"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721299532,
+     "lngLat": [
+      4.8889965,
+      52.381739
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "6-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "vietnamese",
+      "name": "Pho Viet",
+      "opening_hours": "Mo 12:30-20:30; We-Su 12:30-20:30",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.pho-viet-amsterdam.nl",
+      "website:menu": "https://www.pho-viet-amsterdam.nl"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176174",
+   "addresses": [
+    "Haarlemmerdijk 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 4",
+     "use": "winkelfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000655896"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2628817016,
+     "lngLat": [
+      4.8889877,
+      52.381644
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "check_date": "2021-10-19"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    },
+    {
+     "type": "node",
+     "id": 2721298939,
+     "lngLat": [
+      4.8890378,
+      52.3817152
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "4",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "name": "Vishandel 't Centrum",
+      "shop": "seafood",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176175",
+   "addresses": [
+    "Haarlemmerdijk 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 2",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000655894"
+    },
+    {
+     "address": "Haarlemmerdijk 2",
+     "use": "winkelfunctie",
+     "areaM2": 58,
+     "bagId": "0363010012097344"
+    },
+    {
+     "address": "Korte Prinsengracht 20G",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010012097345"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1840022110,
+     "lngLat": [
+      4.8890521,
+      52.3816095
+     ],
+     "tags": {
+      "bicycle": "yes",
+      "hiking": "yes",
+      "information": "guidepost",
+      "name": "Haarlemmerdijk",
+      "note": "Information sign displays a QR code and short URL for this location on the IJdijken cycle & hiking route",
+      "note:url": "URL requires mobile User-Agent",
+      "tourism": "information"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "frontage",
+     "distanceM": 7.5
+    },
+    {
+     "type": "node",
+     "id": 2628817016,
+     "lngLat": [
+      4.8889877,
+      52.381644
+     ],
+     "tags": {
+      "amenity": "waste_basket",
+      "check_date": "2021-10-19"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    },
+    {
+     "type": "node",
+     "id": 2721296699,
+     "lngLat": [
+      4.8890993,
+      52.3816816
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "2",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "sushi",
+      "diet:pescetarian": "yes",
+      "name": "I Love Sushi & Poké Bowl: Amsterdam Centrum",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://ilovesushi.nl/location/i-love-sushi-amsterdam-centrum-2/"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

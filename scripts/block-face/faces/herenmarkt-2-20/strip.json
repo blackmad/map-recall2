@@ -1,0 +1,186 @@
+{
+ "face": "herenmarkt-2-20",
+ "image": "staging/block-face/herenmarkt-2-20/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 2296,
+ "height": 742,
+ "groundNAP": 1.51,
+ "heightM": 18.56,
+ "frame": {
+  "midRD": [
+   121243.12621527778,
+   488128.55969444447
+  ],
+  "uRD": [
+   0.3530018782989043,
+   0.9356226129788898
+  ],
+  "nRD": [
+   0.9356226129788898,
+   -0.3530018782989043
+  ]
+ },
+ "x0M": -28.59,
+ "x1M": 28.8,
+ "date": "2019-05-13",
+ "coverage": 0.11,
+ "spans": [
+  {
+   "pandId": "0363100012179842",
+   "x0M": -28.59,
+   "x1M": -22.99,
+   "px": [
+    0,
+    224
+   ],
+   "date": "2019-05-13",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012179847",
+   "x0M": -22.99,
+   "x1M": -17.08,
+   "px": [
+    224,
+    461
+   ],
+   "date": "2019-05-13",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012179848",
+   "x0M": -17.08,
+   "x1M": -11.48,
+   "px": [
+    460,
+    684
+   ],
+   "date": "2019-05-13",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012179849",
+   "x0M": -11.48,
+   "x1M": -5.81,
+   "px": [
+    685,
+    912
+   ],
+   "date": "2019-05-13",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012179845",
+   "x0M": -5.81,
+   "x1M": 5.66,
+   "px": [
+    911,
+    1369
+   ],
+   "date": "2019-05-13",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012179846",
+   "x0M": 5.66,
+   "x1M": 11.38,
+   "px": [
+    1370,
+    1599
+   ],
+   "date": "2019-05-13",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012168416",
+   "x0M": 11.38,
+   "x1M": 17.23,
+   "px": [
+    1599,
+    1833
+   ],
+   "date": "2019-05-13",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012168420",
+   "x0M": 17.23,
+   "x1M": 22.99,
+   "px": [
+    1833,
+    2063
+   ],
+   "date": "2019-05-13",
+   "fallbackDate": false,
+   "panoramas": []
+  },
+  {
+   "pandId": "0363100012168424",
+   "x0M": 22.99,
+   "x1M": 28.8,
+   "px": [
+    2063,
+    2296
+   ],
+   "date": "2019-05-13",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "TMX7316010203-001178_pano_0001_006292",
+     "timestamp": "2019-05-13T09:45:18.368220Z",
+     "distanceM": 29.4,
+     "obliquityDeg": 33.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "TMX7316010203-001178_pano_0001_006291",
+     "timestamp": "2019-05-13T09:45:17.353300Z",
+     "distanceM": 25.5,
+     "obliquityDeg": 39.9,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2022-12-15": 0,
+  "2019-05-13": 1,
+  "2020-01-10": 0,
+  "2022-06-22": 0,
+  "2024-11-21": 0,
+  "2021-09-15": 0,
+  "2016-11-22": 0,
+  "2019-01-15": 0,
+  "2021-03-11": 0,
+  "2025-06-16": 0,
+  "2021-12-29": 0,
+  "2018-05-03": 0,
+  "2019-05-16": 0,
+  "2017-03-27": 0,
+  "2023-01-16": 0,
+  "2024-12-11": 0,
+  "2020-04-24": 0,
+  "2022-04-21": 0,
+  "2022-04-22": 0,
+  "2023-01-30": 0,
+  "2023-02-27": 0,
+  "2023-02-13": 0,
+  "2023-03-27": 0,
+  "2021-03-17": 0,
+  "2023-02-20": 0,
+  "2023-03-20": 0,
+  "2023-01-11": 0,
+  "2023-03-06": 0,
+  "2023-02-06": 0,
+  "2020-04-22": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

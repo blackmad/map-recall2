@@ -1,0 +1,90 @@
+{
+ "note": "Crown pins from the lane's gridded strip read.",
+ "reviewed": "2026-11-10",
+ "pins": [
+  {
+   "pandId": "0363100012167818",
+   "type": "haarlemmer-shop-gable",
+   "crown": "neck",
+   "reason": "Haarlemmerdijk 20: neck 10.2-12.9 m, 1.55 m wide, scrolls, one attic light"
+  },
+  {
+   "pandId": "0363100012176101",
+   "type": "haarlemmer-shop-gable",
+   "crown": "point",
+   "reason": "Haarlemmerdijk 8: plain point gable, shoulders 12.0 m, apex 14.5 m"
+  },
+  {
+   "pandId": "0363100012176174",
+   "type": "haarlemmer-shop-gable",
+   "crown": "bell",
+   "reason": "Haarlemmerdijk 4: bell/neck top 9.8-12.0 m with scrolls, one attic light"
+  },
+  {
+   "pandId": "0363100012167817",
+   "type": "haarlemmer-shop-cornice",
+   "crown": "none",
+   "reason": "Haarlemmerdijk 18: cornice 11.6 m, small dormer to 12.7 m; the small dormer is left off: the kit dormer on a front-hipped roof hovers 0.10 m (18) or pokes its frame through the roof plane (35A) on this run, a compile audit failure"
+  },
+  {
+   "pandId": "0363100012167816",
+   "type": "haarlemmer-shop-cornice",
+   "crown": "none",
+   "reason": "Haarlemmerdijk 16: flat cornice 11.6 m"
+  },
+  {
+   "pandId": "0363100012176102",
+   "type": "haarlemmer-shop-cornice",
+   "crown": "none",
+   "reason": "Haarlemmerdijk 10: flat cornice 10.7 m (the skyline read 8's gable)"
+  },
+  {
+   "pandId": "0363100012176172",
+   "type": "haarlemmer-shop-cornice",
+   "crown": "dormer",
+   "reason": "Haarlemmerdijk 6: cornice 10.1 m, dormer 11.5-12.5 m"
+  },
+  {
+   "pandId": "0363100012177675",
+   "type": "haarlemmer-shop-cornice",
+   "crown": "none",
+   "reason": "Haarlemmerdijk 70: narrow brick front, two window rows 4.9-6.3 and 7.8-9.3 m over the shop, flat cornice at 10.0 m"
+  },
+  {
+   "pandId": "0363100012177671",
+   "type": "haarlemmer-shop-gable",
+   "crown": "neck",
+   "reason": "Haarlemmerdijk 68: neck gable, foot 10.0 m, top 12.4 m, scrolls; rows 4.8-6.3 and 7.2-9.05 m over a 4.3 m shop"
+  },
+  {
+   "pandId": "0363100012177670",
+   "type": "haarlemmer-shop-cornice",
+   "crown": "none",
+   "reason": "Haarlemmerdijk 66: brick cornice house, three window rows over the shop and a white bracketed cornice at 13.3 m"
+  },
+  {
+   "pandId": "0363100012171358",
+   "type": "haarlemmer-shop-gable",
+   "crown": "neck",
+   "reason": "Haarlemmerdijk 144: brick front, two axes, rows 5.9-7.75 and 8.75-10.75 m over a 4.9 m shop, a broad neck gable from 11.2 m with a large attic window 11.4-13.1 m, top 14.5 m"
+  },
+  {
+   "pandId": "0363100012171357",
+   "type": "haarlemmer-shop-cornice-four",
+   "crown": "dormer",
+   "reason": "Haarlemmerdijk 142: brick cornice house, three axes, rows 4.1-6.0 / 6.9-8.75 / 9.6-11.5 m over a 4.0 m shop, white cornice to 12.3 m and a tall lantern dormer to 15 m"
+  },
+  {
+   "pandId": "0363100012177504",
+   "type": "haarlemmer-shop-cornice-four",
+   "crown": "none",
+   "reason": "Haarlemmerdijk 21: 18th-c. cornice house, three axes, rows 4.0-6.0 / 6.75-8.6 / 9.4-10.75 m with segmental heads over a 3.7 m shop, white dentil cornice 11.6-12.4 m"
+  },
+  {
+   "pandId": "0363100012177501",
+   "type": "haarlemmer-shop-gable",
+   "crown": "bell",
+   "reason": "Haarlemmerdijk 23E: bell gable 9.9-11.9 m with one attic light, rows 4.75-6.9 and 7.4-9.0 m over the shop, three axes"
+  }
+ ]
+}

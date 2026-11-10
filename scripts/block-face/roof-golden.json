@@ -5149,6 +5149,30 @@
     "hash": "bc019be4abf4863a",
     "class": "recipe"
    }
+  },
+  "haarlemmerdijk-2-58-r1": {
+   "167816": {
+    "hash": "f029d0ff6c706760",
+    "class": "front"
+   },
+   "167817": {
+    "hash": "14c6589e75c32fcb",
+    "class": "front"
+   },
+   "167818": {
+    "hash": "1752b2d415944128",
+    "class": "front"
+   }
+  },
+  "haarlemmerdijk-2-58-r2": {
+   "176172": {
+    "hash": "b4f387df381125de",
+    "class": "front"
+   },
+   "176174": {
+    "hash": "9b1a1d336f98028c",
+    "class": "front"
+   }
   }
  },
  "intents": {
@@ -5386,6 +5410,8 @@
   "java-93-149-r2": "5704908fbcefd2fa",
   "lampong-2-20-r1": "6d8c7d7d451ecd4d",
   "soenda-2-36-r1": "c3353dc56ae6c24b",
-  "soenda-2-36-r2": "01e457db56dd9f6b"
+  "soenda-2-36-r2": "01e457db56dd9f6b",
+  "haarlemmerdijk-2-58-r1": "838515ec4d3bb39a",
+  "haarlemmerdijk-2-58-r2": "a2284f010ecda31c"
  }
 }

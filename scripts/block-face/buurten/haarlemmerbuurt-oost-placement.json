@@ -1,0 +1,49 @@
+{
+ "buurt": "haarlemmerbuurt-oost",
+ "library": "haarlemmerbuurt",
+ "generatedAt": "2026-11-10T09:04:06.488Z",
+ "seconds": 6.15,
+ "totals": {
+  "faces": 2,
+  "pands": 26,
+  "placed": 0
+ },
+ "faces": [
+  {
+   "face": "brouwersgracht-2-20",
+   "street": "Brouwersgracht",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 6.13,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 0,
+    "run": 0,
+    "review": 7
+   }
+  },
+  {
+   "face": "haarlemmer-46-96",
+   "street": "Haarlemmerstraat",
+   "pands": 19,
+   "placed": 0,
+   "held": 19,
+   "runs": [],
+   "seconds": 16.14,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 0,
+    "likeness": 5,
+    "run": 0,
+    "review": 14
+   }
+  }
+ ]
+}

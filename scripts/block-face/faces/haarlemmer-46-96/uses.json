@@ -1,0 +1,699 @@
+{
+ "street": "Haarlemmerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:38:57.401Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012168428",
+   "addresses": [
+    "Haarlemmerstraat 86"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 86-H",
+     "use": "winkelfunctie",
+     "areaM2": 135,
+     "bagId": "0363010001165071"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10839797639,
+     "lngLat": [
+      4.8913718,
+      52.3804914
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "84-86",
+      "addr:postcode": "1013EV",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Evert Bruijnesteijn",
+      "opening_hours": "Mo 13:00-17:30; Th-Fr 09:00-17:30; Sa 09:00-17:00",
+      "shop": "hardware",
+      "website": "http://www.bruijnesteijn.nl",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168427",
+   "addresses": [
+    "Haarlemmerstraat 84"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 84-H",
+     "use": "winkelfunctie",
+     "areaM2": 148,
+     "bagId": "0363010000657029"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012167538",
+   "addresses": [
+    "Haarlemmerstraat 82"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 82-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001039757"
+    },
+    {
+     "address": "Haarlemmerstraat 82-1",
+     "use": "logiesfunctie",
+     "areaM2": 230,
+     "bagId": "0363010001039758"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721581406,
+     "lngLat": [
+      4.8915119,
+      52.3804589
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "82-H",
+      "addr:postcode": "1013EV",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Rains",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 9816716629,
+     "lngLat": [
+      4.8915358,
+      52.3804568
+     ],
+     "tags": {
+      "contact:facebook": "https://www.facebook.com/AmsterdamHotelMyHome",
+      "contact:phone": "+31 20 624 2320",
+      "name": "Hotel My Home",
+      "tourism": "hotel",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175144",
+   "addresses": [
+    "Haarlemmerstraat 80"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 80-H",
+     "use": "kantoorfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000657017"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721581317,
+     "lngLat": [
+      4.8916076,
+      52.3804329
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "80-H",
+      "addr:postcode": "1013EV",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Petit Gateau",
+      "opening_hours": "Mo-Su 10:00-18:00",
+      "panoramax": "f632b78c-d251-4108-b54c-4ffe4793243c",
+      "phone": "+31 20 737 1585",
+      "shop": "pastry",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://petitgateau.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175143",
+   "addresses": [
+    "Haarlemmerstraat 78B",
+    "Haarlemmerstraat 78C",
+    "Haarlemmerstraat 78D",
+    "Haarlemmerstraat 78A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 78B",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000657012"
+    },
+    {
+     "address": "Haarlemmerstraat 78C",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000657013"
+    },
+    {
+     "address": "Haarlemmerstraat 78D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000657014"
+    },
+    {
+     "address": "Haarlemmerstraat 78A",
+     "use": "winkelfunctie",
+     "areaM2": 212,
+     "bagId": "0363010000657011"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175142",
+   "addresses": [
+    "Haarlemmerstraat 74A",
+    "Haarlemmerstraat 74B",
+    "Haarlemmerstraat 74C",
+    "Haarlemmerstraat 74D",
+    "Haarlemmerstraat 74E",
+    "Haarlemmerstraat 74F",
+    "Haarlemmerstraat 76"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 74A",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000656997"
+    },
+    {
+     "address": "Haarlemmerstraat 74B",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000656998"
+    },
+    {
+     "address": "Haarlemmerstraat 74C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000656999"
+    },
+    {
+     "address": "Haarlemmerstraat 74D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000657000"
+    },
+    {
+     "address": "Haarlemmerstraat 74E",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000657001"
+    },
+    {
+     "address": "Haarlemmerstraat 74F",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000657002"
+    },
+    {
+     "address": "Haarlemmerstraat 76",
+     "use": "winkelfunctie",
+     "areaM2": 313,
+     "bagId": "0363010000657005"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721580951,
+     "lngLat": [
+      4.8917945,
+      52.3803781
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "76",
+      "addr:postcode": "1013ET",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Thrift Shop",
+      "opening_hours": "Tu-Sa 10:00-18:00",
+      "phone": "+31 20 622 7078",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175141",
+   "addresses": [
+    "Haarlemmerstraat 72"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 72-H",
+     "use": "winkelfunctie",
+     "areaM2": 86,
+     "bagId": "0363010011259452"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175140",
+   "addresses": [
+    "Haarlemmerstraat 68",
+    "Haarlemmerstraat 70"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 68-H",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000656985"
+    },
+    {
+     "address": "Haarlemmerstraat 70",
+     "use": "winkelfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000656988"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721580836,
+     "lngLat": [
+      4.8919648,
+      52.3803406
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "70",
+      "addr:postcode": "1013ET",
+      "addr:street": "Haarlemmerstraat",
+      "brand": "Ace & Tate",
+      "brand:wikidata": "Q110516413",
+      "name": "Ace & Tate",
+      "shop": "optician",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.aceandtate.com/nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175139",
+   "addresses": [
+    "Haarlemmerstraat 66B",
+    "Haarlemmerstraat 66A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 66B",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000656983"
+    },
+    {
+     "address": "Haarlemmerstraat 66A",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000656984"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175205",
+   "addresses": [
+    "Haarlemmerstraat 64"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 64-H",
+     "use": "winkelfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000656978"
+    }
+   ],
+   "units": 6,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10839796643,
+     "lngLat": [
+      4.8921479,
+      52.3802868
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "64",
+      "addr:postcode": "1013ET",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Cookies",
+      "shop": "cannabis",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175204",
+   "addresses": [
+    "Haarlemmerstraat 62"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 62-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000656969"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5199791923,
+     "lngLat": [
+      4.8922405,
+      52.3802866
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "62",
+      "addr:postcode": "1013ET",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "name": "Eat Plaza Center",
+      "opening_hours": "Mo-Su 11:00-24:00",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175206",
+   "addresses": [
+    "Haarlemmerstraat 60"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 60-H",
+     "use": "sportfunctie",
+     "areaM2": 100,
+     "bagId": "0363010001007287"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175207",
+   "addresses": [
+    "Haarlemmerstraat 58"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 58-H",
+     "use": "winkelfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000656959"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012175208",
+   "addresses": [
+    "Haarlemmerstraat 56A",
+    "Haarlemmerstraat 56B",
+    "Haarlemmerstraat 56C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 56A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001012529"
+    },
+    {
+     "address": "Haarlemmerstraat 56B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010001012530"
+    },
+    {
+     "address": "Haarlemmerstraat 56C",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 80,
+     "bagId": "0363010001012532"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171144",
+   "addresses": [
+    "Haarlemmerstraat 54"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 54-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 107,
+     "bagId": "0363010000656953"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11841190625,
+     "lngLat": [
+      4.8925321,
+      52.3801937
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "54",
+      "addr:postcode": "1013ES",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "cuisine": "lebanese",
+      "indoor_seating": "yes",
+      "name": "The Lebanese Sajeria",
+      "opening_hours": "Mo-Su 11:30-20:00",
+      "outdoor_seating": "no",
+      "phone": "+31 20 612 7324",
+      "website": "https://thesajeria.com/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171145",
+   "addresses": [
+    "Haarlemmerstraat 52"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 52",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001044292"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171148",
+   "addresses": [
+    "Haarlemmerstraat 50"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 50-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000656946"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4229660310,
+     "lngLat": [
+      4.8926641,
+      52.3801546
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "50-H",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "fast_food",
+      "cuisine": "burger",
+      "name": "Burger Land",
+      "note": "formerly Snow Lion",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171141",
+   "addresses": [
+    "Haarlemmerstraat 48B",
+    "Haarlemmerstraat 48A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 48B",
+     "use": "winkelfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000656941"
+    },
+    {
+     "address": "Haarlemmerstraat 48A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000656940"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721579000,
+     "lngLat": [
+      4.8927015,
+      52.3801461
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "48B",
+      "addr:postcode": "1013ES",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2023-04-25",
+      "name": "De Brilllemaeker",
+      "shop": "optician"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012171140",
+   "addresses": [
+    "Haarlemmerstraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 46-H",
+     "use": "winkelfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000656937"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721578922,
+     "lngLat": [
+      4.8927918,
+      52.3801505
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "46 HS",
+      "addr:postcode": "1013ES",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "cafe",
+      "cuisine": "deli",
+      "internet_access": "wlan",
+      "name": "Vinnies",
+      "opening_hours": "Mo-Fr 07:30-18:00; Sa 09:00-18:00; Su 09:30-18:00",
+      "phone": "+31 20 771 3086",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://vinnieshomepage.com/"
+     },
+     "fetchedAt": "2026-11-10T08:38:57.401Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

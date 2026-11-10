@@ -1,0 +1,852 @@
+{
+ "street": "Herenmarkt",
+ "seed": "0363100012168424",
+ "members": [
+  "0363100012179842",
+  "0363100012179847",
+  "0363100012179848",
+  "0363100012179849",
+  "0363100012179845",
+  "0363100012179846",
+  "0363100012168416",
+  "0363100012168420",
+  "0363100012168424"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012179842 (face continues: 179934 179843 179844)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012168424 (face continues: 167537)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012165210",
+   "reason": "frontage 84.7 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012167533",
+   "reason": "frontage 87.4 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012167534",
+   "reason": "frontage 87.5 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012167538",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012167539",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012167540",
+   "reason": "frontage 100.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168271",
+   "reason": "frontage 123.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168414",
+   "reason": "frontage 81.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168415",
+   "reason": "frontage 83.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168417",
+   "reason": "frontage 38.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168418",
+   "reason": "frontage 66.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168419",
+   "reason": "frontage 65.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168421",
+   "reason": "frontage 33.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168422",
+   "reason": "sightline to Herenmarkt crosses 0363100012168416"
+  },
+  {
+   "pandId": "0363100012168423",
+   "reason": "frontage 64.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168425",
+   "reason": "sightline to Herenmarkt crosses 0363100012168424"
+  },
+  {
+   "pandId": "0363100012168426",
+   "reason": "sightline to Herenmarkt crosses 0363100012167537"
+  },
+  {
+   "pandId": "0363100012168427",
+   "reason": "sightline to Herenmarkt crosses 0363100012167538"
+  },
+  {
+   "pandId": "0363100012168428",
+   "reason": "frontage 30.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168429",
+   "reason": "frontage 118.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168430",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012168486",
+   "reason": "frontage 114.7 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012171140",
+   "reason": "frontage 33.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012171141",
+   "reason": "sightline to Herenmarkt crosses 0363100012171144"
+  },
+  {
+   "pandId": "0363100012171144",
+   "reason": "sightline to Herenmarkt crosses 0363100012175207"
+  },
+  {
+   "pandId": "0363100012171145",
+   "reason": "sightline to Herenmarkt crosses 0363100012171144"
+  },
+  {
+   "pandId": "0363100012171147",
+   "reason": "frontage 37.4 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012171148",
+   "reason": "sightline to Herenmarkt crosses 0363100012171144"
+  },
+  {
+   "pandId": "0363100012171149",
+   "reason": "frontage 36.4 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175129",
+   "reason": "frontage 44.4 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175133",
+   "reason": "frontage 40.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175134",
+   "reason": "frontage 83.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175135",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175136",
+   "reason": "sightline to Herenmarkt crosses 0363100012175204"
+  },
+  {
+   "pandId": "0363100012175137",
+   "reason": "sightline to Herenmarkt crosses 0363100012175204"
+  },
+  {
+   "pandId": "0363100012175138",
+   "reason": "sightline to Herenmarkt crosses 0363100012175206"
+  },
+  {
+   "pandId": "0363100012175139",
+   "reason": "sightline to Herenmarkt crosses 0363100012175204"
+  },
+  {
+   "pandId": "0363100012175140",
+   "reason": "sightline to Herenmarkt crosses 0363100012175141"
+  },
+  {
+   "pandId": "0363100012175141",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175143",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175144",
+   "reason": "sightline to Herenmarkt crosses 0363100012175143"
+  },
+  {
+   "pandId": "0363100012175145",
+   "reason": "sightline to Herenmarkt crosses 0363100012175142"
+  },
+  {
+   "pandId": "0363100012175146",
+   "reason": "sightline to Herenmarkt crosses 0363100012175142"
+  },
+  {
+   "pandId": "0363100012175147",
+   "reason": "frontage 80.4 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175148",
+   "reason": "frontage 80.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175149",
+   "reason": "frontage 55.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175150",
+   "reason": "frontage 71.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175199",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175200",
+   "reason": "sightline to Herenmarkt crosses 0363100012175207"
+  },
+  {
+   "pandId": "0363100012175201",
+   "reason": "sightline to Herenmarkt crosses 0363100012175206"
+  },
+  {
+   "pandId": "0363100012175202",
+   "reason": "sightline to Herenmarkt crosses 0363100012175206"
+  },
+  {
+   "pandId": "0363100012175203",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175204",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175205",
+   "reason": "sightline to Herenmarkt crosses 0363100012175204"
+  },
+  {
+   "pandId": "0363100012175207",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175208",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175209",
+   "reason": "sightline to Herenmarkt crosses 0363100012175141"
+  },
+  {
+   "pandId": "0363100012175210",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175412",
+   "reason": "sightline to Herenmarkt crosses 0363100012175132"
+  },
+  {
+   "pandId": "0363100012175413",
+   "reason": "frontage 39.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175434",
+   "reason": "sightline to Herenmarkt crosses 0363100012175455"
+  },
+  {
+   "pandId": "0363100012175435",
+   "reason": "sightline to Herenmarkt crosses 0363100012175455"
+  },
+  {
+   "pandId": "0363100012175436",
+   "reason": "sightline to Herenmarkt crosses 0363100012175454"
+  },
+  {
+   "pandId": "0363100012175437",
+   "reason": "sightline to Herenmarkt crosses 0363100012175446"
+  },
+  {
+   "pandId": "0363100012175438",
+   "reason": "frontage 38.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175439",
+   "reason": "sightline to Herenmarkt crosses 0363100012175450"
+  },
+  {
+   "pandId": "0363100012175440",
+   "reason": "sightline to Herenmarkt crosses 0363100012175450"
+  },
+  {
+   "pandId": "0363100012175441",
+   "reason": "sightline to Herenmarkt crosses 0363100012179576"
+  },
+  {
+   "pandId": "0363100012175442",
+   "reason": "sightline to Herenmarkt crosses 0363100012175132"
+  },
+  {
+   "pandId": "0363100012175443",
+   "reason": "frontage 33.5 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175444",
+   "reason": "sightline to Herenmarkt crosses 0363100012175452"
+  },
+  {
+   "pandId": "0363100012175445",
+   "reason": "sightline to Herenmarkt crosses 0363100012175453"
+  },
+  {
+   "pandId": "0363100012175447",
+   "reason": "frontage 34.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175448",
+   "reason": "frontage 34.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012175451",
+   "reason": "sightline to Herenmarkt crosses 0363100012179655"
+  },
+  {
+   "pandId": "0363100012179573",
+   "reason": "sightline to Herenmarkt crosses 0363100012179579"
+  },
+  {
+   "pandId": "0363100012179574",
+   "reason": "sightline to Herenmarkt crosses 0363100012179573"
+  },
+  {
+   "pandId": "0363100012179575",
+   "reason": "sightline to Herenmarkt crosses 0363100012179654"
+  },
+  {
+   "pandId": "0363100012179578",
+   "reason": "frontage 51.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179641",
+   "reason": "frontage 52.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179642",
+   "reason": "frontage 49.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179643",
+   "reason": "frontage 52.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179645",
+   "reason": "frontage 36.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179646",
+   "reason": "frontage 37.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179647",
+   "reason": "frontage 49.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179648",
+   "reason": "frontage 38.7 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179649",
+   "reason": "frontage 34.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179650",
+   "reason": "frontage 49.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179651",
+   "reason": "frontage 49.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179652",
+   "reason": "frontage 54.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179653",
+   "reason": "frontage 49.7 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179656",
+   "reason": "frontage 83.5 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179657",
+   "reason": "frontage 63.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179658",
+   "reason": "frontage 38.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179659",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179660",
+   "reason": "frontage 59.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179661",
+   "reason": "frontage 67.4 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179662",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179663",
+   "reason": "frontage 45.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179723",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179724",
+   "reason": "frontage 67.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179725",
+   "reason": "frontage 63.5 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179726",
+   "reason": "frontage 58.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179727",
+   "reason": "frontage 61.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179728",
+   "reason": "frontage 65.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179729",
+   "reason": "frontage 59.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179730",
+   "reason": "frontage 70.7 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179731",
+   "reason": "frontage 93.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179732",
+   "reason": "frontage 86.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179733",
+   "reason": "frontage 71.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179734",
+   "reason": "frontage 93.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179735",
+   "reason": "frontage 79.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179840",
+   "reason": "frontage 76.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179850",
+   "reason": "sightline to Herenmarkt crosses 0363100012179927"
+  },
+  {
+   "pandId": "0363100012179851",
+   "reason": "sightline to Herenmarkt crosses 0363100012179850"
+  },
+  {
+   "pandId": "0363100012179917",
+   "reason": "frontage 42.5 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179918",
+   "reason": "frontage 42.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179919",
+   "reason": "frontage 38.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179920",
+   "reason": "frontage 30.5 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179921",
+   "reason": "sightline to Herenmarkt crosses 0363100012179850"
+  },
+  {
+   "pandId": "0363100012179923",
+   "reason": "frontage 46.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179924",
+   "reason": "frontage 51.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179925",
+   "reason": "frontage 55.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179926",
+   "reason": "frontage 46.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179927",
+   "reason": "sightline to Herenmarkt crosses 0363100012179934"
+  },
+  {
+   "pandId": "0363100012179928",
+   "reason": "frontage 50.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179929",
+   "reason": "frontage 44.5 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179930",
+   "reason": "frontage 55.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179931",
+   "reason": "frontage 68.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179932",
+   "reason": "frontage 69.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179933",
+   "reason": "frontage 37.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179935",
+   "reason": "frontage 68.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179936",
+   "reason": "frontage 67.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012179937",
+   "reason": "frontage 70.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180006",
+   "reason": "frontage 42.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180007",
+   "reason": "frontage 67.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180008",
+   "reason": "frontage 62.7 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180009",
+   "reason": "frontage 42.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180010",
+   "reason": "frontage 35.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180011",
+   "reason": "frontage 42.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180012",
+   "reason": "frontage 42.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180013",
+   "reason": "frontage 37.5 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180014",
+   "reason": "frontage 32.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180015",
+   "reason": "sightline to Herenmarkt crosses 0363100012167537"
+  },
+  {
+   "pandId": "0363100012180016",
+   "reason": "sightline to Herenmarkt crosses 0363100012167537"
+  },
+  {
+   "pandId": "0363100012180017",
+   "reason": "frontage 33.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180018",
+   "reason": "frontage 113.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180019",
+   "reason": "frontage 102.4 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180020",
+   "reason": "frontage 109.4 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180021",
+   "reason": "frontage 106.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180022",
+   "reason": "frontage 93.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180023",
+   "reason": "frontage 88.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180024",
+   "reason": "frontage 61.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180025",
+   "reason": "frontage 60.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180026",
+   "reason": "frontage 62.0 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180027",
+   "reason": "frontage 84.4 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180028",
+   "reason": "frontage 81.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180104",
+   "reason": "frontage 76.9 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180105",
+   "reason": "frontage 62.5 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012180106",
+   "reason": "frontage 83.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012185505",
+   "reason": "no frontage on Herenmarkt: No footprint edge faces Herenmarkt"
+  },
+  {
+   "pandId": "0363100012186294",
+   "reason": "frontage 40.6 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012251306",
+   "reason": "frontage 82.2 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012251307",
+   "reason": "frontage 86.3 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012251308",
+   "reason": "frontage 78.1 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012252743",
+   "reason": "frontage 42.7 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012571599",
+   "reason": "frontage 37.8 m from Herenmarkt"
+  },
+  {
+   "pandId": "0363100012167535",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175132",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175142",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175206",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175446",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175449",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175450",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175452",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175453",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175454",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012175455",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179576",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179579",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179654",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179655",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012179841",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012179842",
+   "alongM": -51.67,
+   "widthM": 5.6,
+   "eavesM": 15.06,
+   "roofMaxM": 15.06,
+   "storeys3dbag": 5,
+   "builtYear": 1760,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179847",
+   "alongM": -45.91,
+   "widthM": 5.91,
+   "eavesM": 9.53,
+   "roofMaxM": 14.18,
+   "storeys3dbag": 4,
+   "builtYear": 1775,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179848",
+   "alongM": -40.16,
+   "widthM": 5.6,
+   "eavesM": 10.39,
+   "roofMaxM": 14.71,
+   "storeys3dbag": 4,
+   "builtYear": 1725,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179849",
+   "alongM": -34.52,
+   "widthM": 5.67,
+   "eavesM": 10.01,
+   "roofMaxM": 14.11,
+   "storeys3dbag": 4,
+   "builtYear": 1762,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179845",
+   "alongM": -25.96,
+   "widthM": 11.46,
+   "eavesM": 13.04,
+   "roofMaxM": 16.56,
+   "storeys3dbag": 5,
+   "builtYear": 1745,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012179846",
+   "alongM": -17.37,
+   "widthM": 5.72,
+   "eavesM": 8.81,
+   "roofMaxM": 13.12,
+   "storeys3dbag": 4,
+   "builtYear": 1724,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168416",
+   "alongM": -11.59,
+   "widthM": 5.85,
+   "eavesM": 10.07,
+   "roofMaxM": 14.08,
+   "storeys3dbag": 4,
+   "builtYear": 1753,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168420",
+   "alongM": -5.79,
+   "widthM": 5.76,
+   "eavesM": 9.86,
+   "roofMaxM": 10.45,
+   "storeys3dbag": 0,
+   "builtYear": 1005,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012168424",
+   "alongM": 0,
+   "widthM": 5.82,
+   "eavesM": 13.8,
+   "roofMaxM": 15.84,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  }
+ ]
+}

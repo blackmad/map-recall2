@@ -1,0 +1,23 @@
+{
+ "note": "Likeness floors the lane set to see the sheet of a run on the dark winter strip; kept only where the sheet reads right by eye.",
+ "pins": [
+  {
+   "pandId": "0363100012176172",
+   "type": "haarlemmer-shop-cornice",
+   "minNcc": 0.08,
+   "reason": "Haarlemmerdijk 6: dark 2022-12-15 strip, NCC under 0.15 on a shadowed front; judged on the sheet"
+  },
+  {
+   "pandId": "0363100012167794",
+   "type": "haarlemmer-shop-gable",
+   "minNcc": 0.1,
+   "reason": "Haarlemmerdijk 31: NCC 0.132 on the dark 2022-12-15 strip (camera height 2.4); judged on the sheet"
+  },
+  {
+   "pandId": "0363100012253819",
+   "type": "haarlemmer-shop-cornice-four",
+   "minNcc": 0.1,
+   "reason": "Haarlemmerdijk 33: NCC 0.118, painted dark front on the 2022-12-15 strip; judged on the sheet"
+  }
+ ]
+}

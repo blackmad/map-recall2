@@ -1,0 +1,740 @@
+{
+ "street": "Haarlemmerstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:04:27.950Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012179660",
+   "addresses": [
+    "Haarlemmerstraat 93"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 93-H",
+     "use": "winkelfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000657050"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 558302962,
+     "lngLat": [
+      4.8908642,
+      52.3805158
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "93",
+      "addr:postcode": "1013EM",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "check_date": "2024-07-27",
+      "cuisine": "spanish",
+      "name": "Ibericus Amsterdam",
+      "opening_hours": "Mo-Th 10:00-18:00; Fr-Sa 10:00-19:00; Su 11:00-17:00",
+      "phone": "+31 20 223 6573",
+      "shop": "deli",
+      "takeaway": "yes",
+      "website": "https://www.facebook.com/IbericusAmsterdam",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012179661",
+   "addresses": [
+    "Haarlemmerstraat 95F",
+    "Haarlemmerstraat 95C",
+    "Haarlemmerstraat 95E",
+    "Haarlemmerstraat 95A",
+    "Haarlemmerstraat 95D",
+    "Haarlemmerstraat 95B",
+    "Haarlemmerstraat 97"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 95F",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000657064"
+    },
+    {
+     "address": "Haarlemmerstraat 97",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 124,
+     "bagId": "0363010000657068"
+    },
+    {
+     "address": "Haarlemmerstraat 95C",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000657061"
+    },
+    {
+     "address": "Haarlemmerstraat 95E",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000657063"
+    },
+    {
+     "address": "Haarlemmerstraat 95A",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000657059"
+    },
+    {
+     "address": "Haarlemmerstraat 95D",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000657062"
+    },
+    {
+     "address": "Haarlemmerstraat 95B",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000657060"
+    }
+   ],
+   "units": 7,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236894,
+     "lngLat": [
+      4.8907284,
+      52.3805781
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "97",
+      "addr:postcode": "1013EM",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "restaurant",
+      "check_date": "2024-07-27",
+      "cuisine": "mexican",
+      "name": "Salsa Shop",
+      "source": "BAG",
+      "source:date": "2014-02-11"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180104",
+   "addresses": [
+    "Haarlemmerstraat 99A",
+    "Haarlemmerstraat 99B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 99A",
+     "use": "winkelfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000657073"
+    },
+    {
+     "address": "Haarlemmerstraat 99B",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010000657074"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 6894074285,
+     "lngLat": [
+      4.8907056,
+      52.3806138
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "99",
+      "addr:postcode": "1013EM",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2024-07-27",
+      "name": "Rumors Vintage & Design",
+      "opening_hours": "Fr-We 11:00-19:00; Th 11:00-21:00",
+      "shop": "clothes",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180028",
+   "addresses": [
+    "Haarlemmerstraat 101A",
+    "Haarlemmerstraat 101B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 101A",
+     "use": "winkelfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000657077"
+    },
+    {
+     "address": "Haarlemmerstraat 101B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000955261"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236768,
+     "lngLat": [
+      4.8906206,
+      52.3806222
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "101",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2023-04-25",
+      "name": "Het Stenen Tijdperk",
+      "shop": "stones",
+      "website": "https://www.hetstenentijdperk.nl/"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180027",
+   "addresses": [
+    "Haarlemmerstraat 103"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 103-H",
+     "use": "winkelfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000657082"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236873,
+     "lngLat": [
+      4.890573,
+      52.3806486
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "103",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Marketplace",
+      "shop": "clothes"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180023",
+   "addresses": [
+    "Haarlemmerstraat 105"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 105-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 169,
+     "bagId": "0363010000657094"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 4166630689,
+     "lngLat": [
+      4.8905633,
+      52.3806797
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "105",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "bar",
+      "check_date": "2023-04-25",
+      "cuisine": "american;barbecue",
+      "name": "Barney's Uptown Amsterdam",
+      "opening_hours": "Mo-Su 09:00-01:00"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180022",
+   "addresses": [
+    "Haarlemmerstraat 107A",
+    "Haarlemmerstraat 107B",
+    "Haarlemmerstraat 109A",
+    "Haarlemmerstraat 109B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 109A",
+     "use": "woonfunctie",
+     "areaM2": 391,
+     "bagId": "0363010000943017"
+    },
+    {
+     "address": "Haarlemmerstraat 107A",
+     "use": "woonfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000943018"
+    },
+    {
+     "address": "Haarlemmerstraat 107B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000943019"
+    },
+    {
+     "address": "Haarlemmerstraat 109B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000943020"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236859,
+     "lngLat": [
+      4.8904301,
+      52.380728
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "109",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2023-04-25",
+      "name": "La Botanica",
+      "shop": "esoteric"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180019",
+   "addresses": [
+    "Haarlemmerstraat 111A",
+    "Haarlemmerstraat 111B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 111A",
+     "use": "winkelfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000984991"
+    },
+    {
+     "address": "Haarlemmerstraat 111B",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010000984992"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236798,
+     "lngLat": [
+      4.8903825,
+      52.3807544
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "111",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2025-06-08",
+      "cuisine": "portuguese",
+      "name": "Casa Bocage",
+      "opening_hours": "Tu-Fr 11:00-19:00; Sa 10:00-18:00; Su 12:00-17:00",
+      "shop": "food",
+      "website": "https://www.casabocage.nl/"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 13935722801,
+     "lngLat": [
+      4.8904067,
+      52.380772
+     ],
+     "tags": {
+      "addr:housenumber": "111",
+      "addr:postcode": "1013EM",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Bini Bakery",
+      "shop": "bakery",
+      "website": "https://binibakery.com/"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180021",
+   "addresses": [
+    "Haarlemmerstraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 113-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000657113"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236883,
+     "lngLat": [
+      4.8903349,
+      52.3807809
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "113",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2023-04-25",
+      "name": "Jollijst",
+      "shop": "frame",
+      "website": "http://www.jollijst.nl/"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180020",
+   "addresses": [
+    "Haarlemmerstraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 115-H",
+     "use": "winkelfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000657119"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236820,
+     "lngLat": [
+      4.8902873,
+      52.3808073
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "115",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Bourgondisch Lifestyle",
+      "shop": "deli"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012180018",
+   "addresses": [
+    "Haarlemmerstraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 117-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000657126"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236908,
+     "lngLat": [
+      4.8902505,
+      52.3808487
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "117-H",
+      "addr:postcode": "1013EM",
+      "addr:street": "Haarlemmerstraat",
+      "amenity": "fast_food",
+      "check_date": "2026-04-24",
+      "cuisine": "middle_eastern",
+      "indoor_seating": "yes",
+      "name": "Lila",
+      "outdoor_seating": "no",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168429",
+   "addresses": [
+    "Haarlemmerstraat 119"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 119",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 215,
+     "bagId": "0363010000984807"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 1223236857,
+     "lngLat": [
+      4.8902111,
+      52.3808635
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "119",
+      "addr:postcode": "1013EN",
+      "addr:street": "Haarlemmerstraat",
+      "name": "Betty Jane",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012168271",
+   "addresses": [
+    "Haarlemmerstraat 123",
+    "Haarlemmerstraat 125A",
+    "Haarlemmerstraat 125B",
+    "Haarlemmerstraat 125C",
+    "Haarlemmerstraat 125D",
+    "Haarlemmerstraat 125E",
+    "Haarlemmerstraat 125F",
+    "Haarlemmerstraat 125G",
+    "Haarlemmerstraat 125H",
+    "Haarlemmerstraat 125K",
+    "Haarlemmerstraat 125L",
+    "Haarlemmerstraat 125M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 123",
+     "use": "winkelfunctie",
+     "areaM2": 356,
+     "bagId": "0363010000657135"
+    },
+    {
+     "address": "Haarlemmerstraat 125A",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012593461"
+    },
+    {
+     "address": "Haarlemmerstraat 125B",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012593462"
+    },
+    {
+     "address": "Haarlemmerstraat 125C",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012593463"
+    },
+    {
+     "address": "Haarlemmerstraat 125D",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012593464"
+    },
+    {
+     "address": "Haarlemmerstraat 125E",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010012593465"
+    },
+    {
+     "address": "Haarlemmerstraat 125F",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010012593466"
+    },
+    {
+     "address": "Haarlemmerstraat 125G",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012593467"
+    },
+    {
+     "address": "Haarlemmerstraat 125H",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010012593468"
+    },
+    {
+     "address": "Haarlemmerstraat 125K",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012593469"
+    },
+    {
+     "address": "Haarlemmerstraat 125L",
+     "use": "woonfunctie",
+     "areaM2": 32,
+     "bagId": "0363010012597670"
+    },
+    {
+     "address": "Haarlemmerstraat 125M",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010012597671"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721575611,
+     "lngLat": [
+      4.8900929,
+      52.380926
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "123",
+      "addr:postcode": "1013EN",
+      "addr:street": "Haarlemmerstraat",
+      "check_date": "2025-09-26",
+      "check_date:opening_hours": "2025-09-26",
+      "email": "amsterdam@kathmandu.nl",
+      "name": "Kathmandu Outdoor & Travel",
+      "opening_hours": "Mo 12:00-18:00; Tu-Sa 10:00-18:00; Su 12:00-17:00; PH closed",
+      "phone": "+31 20 624 3652",
+      "shop": "outdoor",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.kathmandu.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T09:04:27.950Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176125",
+   "addresses": [
+    "Haarlemmerstraat 131",
+    "Haarlemmerstraat 133",
+    "Haarlemmerstraat 135",
+    "Haarlemmerstraat 137",
+    "Haarlemmerstraat 139"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerstraat 131",
+     "use": "winkelfunctie",
+     "areaM2": 162,
+     "bagId": "0363010000657144"
+    },
+    {
+     "address": "Haarlemmerstraat 133",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010000657146"
+    },
+    {
+     "address": "Haarlemmerstraat 135",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000657147"
+    },
+    {
+     "address": "Haarlemmerstraat 139",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000657153"
+    },
+    {
+     "address": "Haarlemmerstraat 137",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000983777"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

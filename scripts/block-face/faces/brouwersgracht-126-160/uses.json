@@ -1,0 +1,521 @@
+{
+ "street": "Brouwersgracht",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:16:49.332Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012176202",
+   "addresses": [
+    "Brouwersgracht 160"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 160",
+     "use": "kantoorfunctie,woonfunctie",
+     "areaM2": 235,
+     "bagId": "0363010000597059"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176096",
+   "addresses": [
+    "Brouwersgracht 158A",
+    "Brouwersgracht 158B",
+    "Brouwersgracht 158C",
+    "Brouwersgracht 158D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 158A",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000597055"
+    },
+    {
+     "address": "Brouwersgracht 158B",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000597056"
+    },
+    {
+     "address": "Brouwersgracht 158C",
+     "use": "woonfunctie",
+     "areaM2": 186,
+     "bagId": "0363010000597057"
+    },
+    {
+     "address": "Brouwersgracht 158D",
+     "use": "woonfunctie",
+     "areaM2": 221,
+     "bagId": "0363010000597058"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176205",
+   "addresses": [
+    "Brouwersgracht 156A",
+    "Brouwersgracht 156B",
+    "Brouwersgracht 156C",
+    "Brouwersgracht 156D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 156A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001169567"
+    },
+    {
+     "address": "Brouwersgracht 156B",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010001169568"
+    },
+    {
+     "address": "Brouwersgracht 156C",
+     "use": "woonfunctie",
+     "areaM2": 147,
+     "bagId": "0363010001169569"
+    },
+    {
+     "address": "Brouwersgracht 156D",
+     "use": "industriefunctie",
+     "areaM2": 125,
+     "bagId": "0363010001169570"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176097",
+   "addresses": [
+    "Brouwersgracht 140A",
+    "Brouwersgracht 140D",
+    "Brouwersgracht 140B",
+    "Brouwersgracht 140C",
+    "Brouwersgracht 140E",
+    "Brouwersgracht 140F",
+    "Brouwersgracht 142A",
+    "Brouwersgracht 142B",
+    "Brouwersgracht 142C",
+    "Brouwersgracht 142D",
+    "Brouwersgracht 144A",
+    "Brouwersgracht 144B",
+    "Brouwersgracht 144C",
+    "Brouwersgracht 144D",
+    "Brouwersgracht 146A",
+    "Brouwersgracht 146B",
+    "Brouwersgracht 146C",
+    "Brouwersgracht 146D",
+    "Brouwersgracht 148A",
+    "Brouwersgracht 148B",
+    "Brouwersgracht 150A",
+    "Brouwersgracht 150B",
+    "Brouwersgracht 150C",
+    "Brouwersgracht 150D",
+    "Brouwersgracht 150E",
+    "Brouwersgracht 152A",
+    "Brouwersgracht 152B",
+    "Brouwersgracht 152C",
+    "Brouwersgracht 152D",
+    "Brouwersgracht 154B",
+    "Brouwersgracht 154A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 142A",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000939153"
+    },
+    {
+     "address": "Brouwersgracht 144A",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000939154"
+    },
+    {
+     "address": "Brouwersgracht 146A",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000939155"
+    },
+    {
+     "address": "Brouwersgracht 148A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000939156"
+    },
+    {
+     "address": "Brouwersgracht 150A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000939157"
+    },
+    {
+     "address": "Brouwersgracht 152A",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000939158"
+    },
+    {
+     "address": "Brouwersgracht 140A",
+     "use": "industriefunctie",
+     "areaM2": 370,
+     "bagId": "0363010000939159"
+    },
+    {
+     "address": "Brouwersgracht 140D",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000939160"
+    },
+    {
+     "address": "Brouwersgracht 140B",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000939161"
+    },
+    {
+     "address": "Brouwersgracht 140C",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000939162"
+    },
+    {
+     "address": "Brouwersgracht 140E",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000939163"
+    },
+    {
+     "address": "Brouwersgracht 140F",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000939164"
+    },
+    {
+     "address": "Brouwersgracht 142B",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000983049"
+    },
+    {
+     "address": "Brouwersgracht 142C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000983050"
+    },
+    {
+     "address": "Brouwersgracht 142D",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000983051"
+    },
+    {
+     "address": "Brouwersgracht 144B",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000983052"
+    },
+    {
+     "address": "Brouwersgracht 144C",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000983053"
+    },
+    {
+     "address": "Brouwersgracht 144D",
+     "use": "woonfunctie",
+     "areaM2": 41,
+     "bagId": "0363010000983054"
+    },
+    {
+     "address": "Brouwersgracht 146B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000983055"
+    },
+    {
+     "address": "Brouwersgracht 146C",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000983056"
+    },
+    {
+     "address": "Brouwersgracht 146D",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000983057"
+    },
+    {
+     "address": "Brouwersgracht 148B",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000983058"
+    },
+    {
+     "address": "Brouwersgracht 150B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983059"
+    },
+    {
+     "address": "Brouwersgracht 150C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983060"
+    },
+    {
+     "address": "Brouwersgracht 150D",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010000983061"
+    },
+    {
+     "address": "Brouwersgracht 150E",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983062"
+    },
+    {
+     "address": "Brouwersgracht 152B",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983069"
+    },
+    {
+     "address": "Brouwersgracht 152C",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983070"
+    },
+    {
+     "address": "Brouwersgracht 152D",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000983071"
+    },
+    {
+     "address": "Brouwersgracht 154B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000989928"
+    },
+    {
+     "address": "Brouwersgracht 154A",
+     "use": "woonfunctie",
+     "areaM2": 161,
+     "bagId": "0363010000952424"
+    }
+   ],
+   "units": 31,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176098",
+   "addresses": [
+    "Brouwersgracht 136D",
+    "Brouwersgracht 136C",
+    "Brouwersgracht 136B",
+    "Brouwersgracht 136A",
+    "Brouwersgracht 138A",
+    "Brouwersgracht 138B",
+    "Brouwersgracht 138C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 136D",
+     "use": "woonfunctie",
+     "areaM2": 219,
+     "bagId": "0363010000992702"
+    },
+    {
+     "address": "Brouwersgracht 136C",
+     "use": "kantoorfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000992703"
+    },
+    {
+     "address": "Brouwersgracht 136B",
+     "use": "woonfunctie",
+     "areaM2": 91,
+     "bagId": "0363010000992704"
+    },
+    {
+     "address": "Brouwersgracht 136A",
+     "use": "woonfunctie",
+     "areaM2": 128,
+     "bagId": "0363010000992705"
+    },
+    {
+     "address": "Brouwersgracht 138A",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000995030"
+    },
+    {
+     "address": "Brouwersgracht 138B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000995031"
+    },
+    {
+     "address": "Brouwersgracht 138C",
+     "use": "kantoorfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000995032"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176201",
+   "addresses": [
+    "Brouwersgracht 134"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 134",
+     "use": "kantoorfunctie",
+     "areaM2": 478,
+     "bagId": "0363010000597018"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176204",
+   "addresses": [
+    "Brouwersgracht 132",
+    "Brouwersgracht 132B",
+    "Brouwersgracht 132C",
+    "Brouwersgracht 132F",
+    "Brouwersgracht 132A",
+    "Brouwersgracht 132D",
+    "Brouwersgracht 132E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 132-1L",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000612475"
+    },
+    {
+     "address": "Brouwersgracht 132-1R",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000612476"
+    },
+    {
+     "address": "Brouwersgracht 132B",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012164637"
+    },
+    {
+     "address": "Brouwersgracht 132C",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012164639"
+    },
+    {
+     "address": "Brouwersgracht 132F",
+     "use": "woonfunctie",
+     "areaM2": 111,
+     "bagId": "0363010012164641"
+    },
+    {
+     "address": "Brouwersgracht 132A",
+     "use": "woonfunctie",
+     "areaM2": 275,
+     "bagId": "0363010012164649"
+    },
+    {
+     "address": "Brouwersgracht 132D",
+     "use": "woonfunctie",
+     "areaM2": 270,
+     "bagId": "0363010012164650"
+    },
+    {
+     "address": "Brouwersgracht 132E",
+     "use": "woonfunctie",
+     "areaM2": 199,
+     "bagId": "0363010012164651"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176200",
+   "addresses": [
+    "Brouwersgracht 130"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 130",
+     "use": "kantoorfunctie",
+     "areaM2": 981,
+     "bagId": "0363010000610430"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176199",
+   "addresses": [
+    "Brouwersgracht 128"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 128",
+     "use": "woonfunctie",
+     "areaM2": 383,
+     "bagId": "0363010001044830"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012176203",
+   "addresses": [
+    "Brouwersgracht 126",
+    "Brouwersgracht 126D",
+    "Brouwersgracht 126E",
+    "Brouwersgracht 126C",
+    "Brouwersgracht 126F"
+   ],
+   "groundUnits": [
+    {
+     "address": "Brouwersgracht 126C",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012117033"
+    },
+    {
+     "address": "Brouwersgracht 126F",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010012117036"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  }
+ ]
+}

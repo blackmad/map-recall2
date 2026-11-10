@@ -1,0 +1,367 @@
+{
+ "face": "brouwersgracht-2-20",
+ "street": "Brouwersgracht",
+ "library": "haarlemmerbuurt",
+ "stripDate": "2024-12-03",
+ "seconds": 6.13,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012179425",
+   "address": "Brouwersgracht 20",
+   "builtYear": 1722,
+   "widthM": 5.01,
+   "eavesM": 8.21,
+   "storeys3dbag": 3,
+   "bagBay": null,
+   "strip": {
+    "wall": "#37392c",
+    "wallRaw": "#555b49",
+    "skyline": {
+     "eavesM": 9.57,
+     "eavesRow": 466,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 3.65,
+      "topWidthM": 0.1,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.37
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Brouwersgracht 20: low two-storey bell-gable house at the face end (kit gap: low bell-gable cottages)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179426",
+   "address": "Brouwersgracht 18",
+   "builtYear": 2000,
+   "widthM": 5.21,
+   "eavesM": 13.31,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 1.44,
+    "toM": 1.44,
+    "depthM": 0.66,
+    "centre": 0.276
+   },
+   "strip": {
+    "wall": "#82674a",
+    "wallRaw": "#60543f",
+    "skyline": {
+     "eavesM": 15.65,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.2,
+      "riseM": 1.78,
+      "topWidthM": 0.4,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.42
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Brouwersgracht 18: built 2000, a neo-traditional raised-neck front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179427",
+   "address": "Brouwersgracht 14",
+   "builtYear": 1930,
+   "widthM": 5.58,
+   "eavesM": 13.99,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#57513e",
+    "wallRaw": "#5b5641",
+    "skyline": {
+     "eavesM": 15.65,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.17,
+      "riseM": 2.78,
+      "topWidthM": 0.8,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.088,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.39
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Brouwersgracht 14: tall point gable over four storeys with a warehouse-style ground floor: no four-storey residential canal type in the haarlemmerbuurt library, and the jordaan types veto the year",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179428",
+   "address": "Brouwersgracht 8",
+   "builtYear": 1728,
+   "widthM": 5.41,
+   "eavesM": 14.48,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#25251d",
+    "wallRaw": "#5f5841",
+    "skyline": {
+     "eavesM": 14.97,
+     "eavesRow": 250,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.45,
+      "topWidthM": 0.7,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.148,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.9,
+       "widthM": 1.13,
+       "centre": 0.16
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.53
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Brouwersgracht 8: five-storey canal house with a white cornice and a spire dormer: no five-storey type in the kit",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179479",
+   "address": "Brouwersgracht 6",
+   "builtYear": 1832,
+   "widthM": 5.95,
+   "eavesM": 14.24,
+   "storeys3dbag": 5,
+   "bagBay": {
+    "fromM": 2.91,
+    "toM": 5.9,
+    "depthM": 0.8,
+    "centre": 0.747,
+    "lineRD": [
+     [
+      121382.9489375,
+      488026.76275
+     ],
+     [
+      121385.9619375,
+      488026.13775
+     ]
+    ]
+   },
+   "strip": {
+    "wall": "#52442b",
+    "wallRaw": "#54472e",
+    "skyline": {
+     "eavesM": 16.43,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 1.22,
+      "topWidthM": 0.7,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.002,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Brouwersgracht 6: five storeys, the front hidden behind a tree on the 2024-12-03 strip",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179480",
+   "address": "Brouwersgracht 4",
+   "builtYear": 1799,
+   "widthM": 5.41,
+   "eavesM": 13.37,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#4c4126",
+    "wallRaw": "#52462b",
+    "skyline": {
+     "eavesM": 15.47,
+     "eavesRow": 230,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.63,
+      "riseM": 2.25,
+      "topWidthM": 0.03,
+      "centre": 0.94
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "blank",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.23
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Brouwersgracht 4: five storeys with a stucco top storey, half hidden by a tree",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012179488",
+   "address": "Brouwersgracht 2A",
+   "builtYear": 1990,
+   "widthM": 11.59,
+   "eavesM": 12.62,
+   "storeys3dbag": 0,
+   "bagBay": {
+    "fromM": 3.72,
+    "toM": 7.17,
+    "depthM": 0.93,
+    "centre": 0.47
+   },
+   "strip": {
+    "wall": "#51442e",
+    "wallRaw": "#51452f",
+    "skyline": {
+     "eavesM": 16.77,
+     "eavesRow": 178,
+     "confidence": 0.66,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "blank",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.15
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Brouwersgracht 2A-2B: built 1990, an 11.6 m wide hipped-roof block",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

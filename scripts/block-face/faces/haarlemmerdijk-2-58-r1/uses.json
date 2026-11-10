@@ -1,0 +1,136 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:24:35.136Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012167818",
+   "addresses": [
+    "Haarlemmerdijk 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 20-H",
+     "use": "winkelfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000655928"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10922165568,
+     "lngLat": [
+      4.8886816,
+      52.3819144
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "contact:instagram": "https://www.instagram.com/studio.onrust/",
+      "name": "Studio Onrust",
+      "opening_hours": "Mo 12:00-18:00; We,Fr,Sa 11:00-18:00; Th 11:00-17:30; Su 12:00-17:00",
+      "payment:cash": "no",
+      "payment:credit_cards": "yes",
+      "payment:debit_cards": "yes",
+      "second_hand": "only",
+      "shop": "clothes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167817",
+   "addresses": [
+    "Haarlemmerdijk 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 18-H",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000655925"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721295958,
+     "lngLat": [
+      4.8887263,
+      52.3818899
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "name": "Hebbes in Speelgoed",
+      "opening_hours": "Mo 13:00-17:30; Tu-Sa 10:00-17:30",
+      "phone": "+31 20 625 5115",
+      "shop": "toys",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.hebbesinspeelgoed.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012167816",
+   "addresses": [
+    "Haarlemmerdijk 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 16-H",
+     "use": "bijeenkomstfunctie,woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000655918"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294910,
+     "lngLat": [
+      4.8887657,
+      52.3818704
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "16-H",
+      "addr:postcode": "1013JC",
+      "addr:street": "Haarlemmerdijk",
+      "amenity": "restaurant",
+      "cuisine": "argentinian",
+      "name": "La Brasa",
+      "opening_hours": "Su 16:00-22:00; Mo, We, Th, Fr, Sa 15:00-22:00",
+      "phone": "+31 20 625 4438",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://www.labrasa.nl"
+     },
+     "fetchedAt": "2026-11-10T08:24:35.136Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

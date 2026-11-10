@@ -1,0 +1,409 @@
+{
+ "street": "Haarlemmerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:37:56.616Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165105",
+   "addresses": [
+    "Haarlemmerdijk 93B",
+    "Haarlemmerdijk 93A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 93B",
+     "use": "winkelfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000656093"
+    },
+    {
+     "address": "Haarlemmerdijk 93A",
+     "use": "woonfunctie",
+     "areaM2": 248,
+     "bagId": "0363010000656094"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415021264,
+     "lngLat": [
+      4.886609,
+      52.3829032
+     ],
+     "tags": {
+      "female": "yes",
+      "name": "Haarstijl",
+      "shop": "hairdresser",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "frontage",
+     "distanceM": 4.7
+    },
+    {
+     "type": "node",
+     "id": 11415082101,
+     "lngLat": [
+      4.8865367,
+      52.3829462
+     ],
+     "tags": {
+      "name": "Hang Eleven",
+      "shop": "clothes",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11415082389,
+     "lngLat": [
+      4.8866015,
+      52.3829051
+     ],
+     "tags": {
+      "name": "Jis",
+      "shop": "jewelry",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "frontage",
+     "distanceM": 4.3
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176699",
+   "addresses": [
+    "Haarlemmerdijk 95"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 95-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000656099"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 10829630288,
+     "lngLat": [
+      4.8864593,
+      52.3829921
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "95",
+      "addr:postcode": "1013KD",
+      "addr:street": "Haarlemmerdijk",
+      "brand": "Keurslager",
+      "brand:wikidata": "Q114637402",
+      "check_date": "2026-04-24",
+      "name": "Keurslagerij Pouw",
+      "phone": "+31 20 622 0654",
+      "shop": "butcher",
+      "website": "https://tpouwamsterdam.keurslager.nl/",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012165106",
+   "addresses": [
+    "Haarlemmerdijk 97",
+    "Haarlemmerdijk 99A",
+    "Haarlemmerdijk 99B",
+    "Haarlemmerdijk 99C",
+    "Haarlemmerdijk 99D",
+    "Haarlemmerdijk 99E",
+    "Haarlemmerdijk 101",
+    "Haarlemmerdijk 105A",
+    "Haarlemmerdijk 105B",
+    "Haarlemmerdijk 105C",
+    "Haarlemmerdijk 105D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 97",
+     "use": "winkelfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000955247"
+    },
+    {
+     "address": "Haarlemmerdijk 99A",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000955248"
+    },
+    {
+     "address": "Haarlemmerdijk 99B",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010000955249"
+    },
+    {
+     "address": "Haarlemmerdijk 99C",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000955250"
+    },
+    {
+     "address": "Haarlemmerdijk 99E",
+     "use": "woonfunctie",
+     "areaM2": 78,
+     "bagId": "0363010000955252"
+    },
+    {
+     "address": "Haarlemmerdijk 101",
+     "use": "winkelfunctie",
+     "areaM2": 304,
+     "bagId": "0363010000955253"
+    },
+    {
+     "address": "Haarlemmerdijk 105A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000955558"
+    },
+    {
+     "address": "Haarlemmerdijk 105B",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000955559"
+    },
+    {
+     "address": "Haarlemmerdijk 105C",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000955560"
+    },
+    {
+     "address": "Haarlemmerdijk 105D",
+     "use": "woonfunctie",
+     "areaM2": 57,
+     "bagId": "0363010000955561"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11237905551,
+     "lngLat": [
+      4.8863866,
+      52.3830317
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "97",
+      "addr:postcode": "1013KD",
+      "addr:street": "Haarlemmerdijk",
+      "contact:instagram": "diva_amsterdam",
+      "email": "info@diva-amsterdam.com",
+      "facebook": "DivaAmsterdam",
+      "name": "Diva",
+      "phone": "+31 20 785 1022",
+      "shop": "jewelry",
+      "website": "https://www.diva-amsterdam.com/",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11415082390,
+     "lngLat": [
+      4.8863303,
+      52.3830512
+     ],
+     "tags": {
+      "check_date": "2026-04-24",
+      "name": "Het Vachtje",
+      "shop": "pet",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176579",
+   "addresses": [
+    "Haarlemmerdijk 107A",
+    "Haarlemmerdijk 107C",
+    "Haarlemmerdijk 107D",
+    "Haarlemmerdijk 107B",
+    "Haarlemmerdijk 109"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 107A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000656122"
+    },
+    {
+     "address": "Haarlemmerdijk 107C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010000656123"
+    },
+    {
+     "address": "Haarlemmerdijk 107D",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000785478"
+    },
+    {
+     "address": "Haarlemmerdijk 107B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000785477"
+    },
+    {
+     "address": "Haarlemmerdijk 109",
+     "use": "winkelfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000785480"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294312,
+     "lngLat": [
+      4.8861353,
+      52.3831631
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "109",
+      "addr:postcode": "1013KD",
+      "addr:street": "Haarlemmerdijk",
+      "email": "info@demofkleding.nl",
+      "name": "De Mof",
+      "opening_hours": "Mo 13:00-18:00; Tu-Fr 10:00-18:00; Sa 10:00-17:00; Su off",
+      "phone": "+31 20 6231798",
+      "shop": "clothes",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "website": "https://demofkleding.nl",
+      "wheelchair": "yes"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176578",
+   "addresses": [
+    "Haarlemmerdijk 111"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 111",
+     "use": "winkelfunctie",
+     "areaM2": 154,
+     "bagId": "0363010000586816"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 11415096962,
+     "lngLat": [
+      4.886051,
+      52.3832205
+     ],
+     "tags": {
+      "name": "Vermeiden Antiek",
+      "shop": "antiques"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012176702",
+   "addresses": [
+    "Haarlemmerdijk 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Haarlemmerdijk 113",
+     "use": "winkelfunctie",
+     "areaM2": 32,
+     "bagId": "0363010000656124"
+    },
+    {
+     "address": "Binnen Dommersstraat 1",
+     "use": "woonfunctie",
+     "areaM2": 113,
+     "bagId": "0363010000586641"
+    }
+   ],
+   "units": 2,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2721294364,
+     "lngLat": [
+      4.8860174,
+      52.3832426
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "113",
+      "addr:postcode": "1013KD",
+      "addr:street": "Haarlemmerdijk",
+      "name": "meili",
+      "shop": "bakery",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12041128000,
+     "lngLat": [
+      4.8860508,
+      52.3832624
+     ],
+     "tags": {
+      "tourism": "artwork"
+     },
+     "fetchedAt": "2026-11-10T08:37:56.616Z",
+     "match": "frontage",
+     "distanceM": 2.3
+    }
+   ]
+  }
+ ]
+}
