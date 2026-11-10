@@ -44,6 +44,13 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
   - Held: Javastraat 95, 119 (dark brick hooded dormer), 121 (tall stepped dormer-gable); Djambistraat 23 (half-width door reveal fails `opening-outside`, cause unknown), Djambistraat 5/7/25/27, Djambistraat 40 (needs a 1914 three-light 'trio' type); Borneostraat 7-27 (gables on the 13|15 and 17|19 party walls, 21-25 a different design).
   - Unauthored designs: Padang/Lombok/Djambi 2-36 three-storey gable rows (need `modules` with per-module crowns), Borneostraat 80-102, the 1902-05 ornamented rows (Java 1-91, Banka, Deli, Madura; 6+ designs a face), the Makassar 1933-37 blocks.
   - Kit gaps: a pier-free shared portiek on a party wall; cream arch accents over a brick ring; iron sill rails/juliet balconies and gutter brackets; half-gable pair crowns beside held neighbours.
+- **Industrial kit follow-ups (feedback D).**
+  - Works office fronts: the 1972 Westpoort works reads weaker than before; give `works` a measured glazed office band.
+  - Per-pand measured cladding colour (the 1967 warehouse is blue sheet, drawn pale).
+  - Doors on yard-facing faces.
+  - Tank ring seams, floating-roof rims, domed roofs; pipe racks and bund walls; sawtooth/curved shed roofs; company colour bands.
+  - `threeBuildingsBrowser.ts` builds WORKER_URL without `withWorkerFlags`, so page flags never reach that pool.
+  - The MapLibre path (vector-map.js) composes neither rail-infra nor the industrial enricher.
 - **Meshopt follow-ups.** `install-large.ts` still writes recipe-large GLBs uncompressed (call compressGlb + re-describe); `scripts/building-tiles/compile-recipes.ts` installedMatch compares staged vs installed bytes and now reports false for compressed installs (compare decoded geometry).
 
 ## City coverage programme (2026-11-07) — T0 whole city, T1 ride ring, T2 landmarks

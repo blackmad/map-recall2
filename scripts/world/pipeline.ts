@@ -24,7 +24,7 @@ import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 export const EXTRACT = path.join(ROOT, 'public/data/extracts/amsterdam');
 export const COVERS = path.join(ROOT, 'public/canal-drive/models/covers.json');
-export const GLOBAL_INPUTS = ['monument-gables.json', 'landmark-buildings.json', 'shopfronts.json', 'rail-infra-buildings.json'].map(f => path.join(EXTRACT, f)).concat([COVERS]);
+export const GLOBAL_INPUTS = ['monument-gables.json', 'landmark-buildings.json', 'shopfronts.json', 'rail-infra-buildings.json', 'industrial-buildings.json'].map(f => path.join(EXTRACT, f)).concat([COVERS]);
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: any };
 export type Row = { tile: string; ordinal: number; raw: Feature; styled: Feature; cell: string };
 
@@ -36,7 +36,7 @@ export function inputHash(files: string[]): string {
 }
 /** Source files whose code decides the baked output: a change to any of them invalidates every cell. */
 export const CODE = ['src/canalRecall/buildingNesting.ts', 'src/canalRecall/genericFacades.ts', 'src/canalRecall/galleryPipeline.ts', 'src/canalRecall/buildingTilesBrowser.ts',
-  'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts', 'src/canalRecall/gameTileEnricher.ts', 'src/canalRecall/railInfraBuildings.ts',
+  'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts', 'src/canalRecall/gameTileEnricher.ts', 'src/canalRecall/railInfraBuildings.ts', 'src/canalRecall/industrial/industrialTable.ts', 'src/canalRecall/industrial/industrialClass.ts',
   'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'src/canalRecall/world/cellPolicy.ts', 'scripts/world/compile.ts', 'scripts/world/pipeline.ts', 'scripts/world/browserMath.ts', 'scripts/world/useBrowserMath.ts'].map(f => path.join(ROOT, f));
 
 export const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));

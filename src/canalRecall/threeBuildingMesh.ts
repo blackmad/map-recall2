@@ -36,6 +36,7 @@ import earcut from 'earcut';
 import { THIN_CLASS, thinCm } from './look/thinFade.js';
 import { ExtraSink, EXTRA_BUDGET, roofExtras, buildingWallExtras, type ExtraContext } from './facadeExtras.js';
 import type { FlatTri } from './facadeExtraCore.js';
+import { industrialTris, type IndustrialMeshSpec } from './industrial/industrialKit.js';
 import { fitRect, roofTrianglesForOutline, type RoofDims, type RoofPlan, type RoofTri } from './roofMesh.js';
 import { measuredRoofFurniture } from './roofs/roofFurniture.js';
 import { BOX_H_M, BOX_HEX, BOX_L_M, BOX_W_M, FLAT_SURFACE_BUDGET, LIP_H_M, parapetLipTris, roofBoxTris, stairCorePoint } from './roofs/flatRoofSurface.js';
@@ -111,6 +112,8 @@ export type MeshBuilding = {
   gardenRoom?: { tris: readonly FlatTri[] };
   /** The contemporary family steps this building's top storey back (contemporaryFamily.ts; threeBuildingFeatures.ts withSetbackCrown). */
   setbackCrown?: boolean;
+  /** The industrial kit (industrial/industrialKit.ts): bare cladding walls at its own cell width, plus its bands, doors and tank parts. */
+  industrial?: IndustrialMeshSpec;
 };
 
 export type Origin = { lng: number; lat: number };
@@ -574,7 +577,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       if (!layout) {
         // With the top owned here, a wall too short for a layout (a corner chamfer) is still walled, in bare wall.
         if (b.lid && b.plainLayer !== undefined && top > base + 0.01) for (const { e } of run) {
-          quads.push({ kind: 'wall-plain', e, u0: 0, u1: Math.max(1, e.len / 5), v1: 1, layer: b.plainLayer, accent, z0: base, z1: top, tint: [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255], along0: 0, along1: 1 });
+          quads.push({ kind: 'wall-plain', e, u0: 0, u1: Math.max(1, e.len / (b.industrial?.wallCellM ?? 5)), v1: 1, layer: b.plainLayer, accent, z0: base, z1: top, tint: [Math.min(255, r * jitter), Math.min(255, g * jitter), Math.min(255, bl * jitter), wallShade(e.nx, e.ny) * 255], along0: 0, along1: 1 });
         }
         continue;
       }
@@ -677,6 +680,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
       sign.push(...chainFrontTris(b.chain, street.length ? street : exposed.length ? exposed : edges, b.minHeightM, groundSeen < Infinity ? groundSeen : 3.2, origin));
     }
     if (walled && b.gardenRoom) { sign.push(...b.gardenRoom.tris); gardenTotal += b.gardenRoom.tris.length; }
+    if (walled && b.industrial && b.lid) sign.push(...industrialTris({ id: b.id, spec: b.industrial, wallHex: b.wallHex, edges, street: doorAllowed, hidden: e => hiddenByNeighbour(e as Edge, b), base: b.minHeightM, top: buildingTop }));
     if (extraSink) {
       buildingWallExtras(wallExtraContexts, extraSink);
       // Roof extras on a flat roof only (a pitched roof has its own chimneys and dormers).

@@ -1,5 +1,22 @@
 # Canal Recall — what is built
 
+**Feedback D: an industrial kit for tanks, silos, sheds and works, on by default (2026-11-10, lane/industrial-kit-20261110 at eb72e0b19, opus).** User items e6f5deb7, b95fff1c and 76bc26ce: tanks had windows, and sheds had shopfronts and windowed brick. `industrial/industrialClass.ts` classifies pands from OSM tags, BAG gebruiksdoel (fetched in RD stripes past PDOK's 50k cap), 3DBAG year/height and landuse into tank, silo, shed, works (a shed with an office front) or office. Over 349,801 buildings: shed 5,553 (10.1 M m²), tank 914, works 424, office 351, silo 6. Before the kit:
+- 774 of 913 tanks drew windowed walls;
+- 5,530 of 5,541 sheds had windows and 248 had shopfronts.
+
+`industrialKit.ts` draws:
+- tanks windowless in pale steel with rim, rail, ladder and a shallow cone;
+- silos in bare concrete;
+- sheds in profiled cladding, with dock/roller doors and a personnel door on street faces;
+- works as a shed plus a ribbon-window office block.
+
+Offices keep their windows and lose their guessed shop. A photo-sourced wall colour wins. Strips (screenshots repo `buildings/2026-11-10-industrial/`, panorama | main | kit): 6 PASS (Isarweg tank farm, Hornweg, Petroleumhaven, Westpoort tank, Minervahaven, Buiksloterham) and 3 WARN:
+- the 1967 warehouse is pale where the photo shows blue sheet;
+- the 1972 Westpoort works office front is weaker than main's window rows;
+- the 2007 hall's visible face is not a street edge, so it has no doors.
+
+`industrial-buildings.json` (288 KB) is a world GLOBAL_INPUT, so baked cells change only after world:compile.
+
 **Palette level measured, kept opt-in (`?paletteLevel=1`) (2026-11-10, lane/palette-level-20261107 at 1c32359a0, sonnet).** The lane overwrote the GPU tint of live facade chunks at Tichelstraat and read 1,294 sun-side wall pixels through the real lit shader. The render is the tint ×1.03/1.015/0.98 plus 1–2 units (mean dE76 0.51). Against the buurt-profile swatches (22,174 weighted fronts), generic photo-look walls render +1.0 L* and +2.0 C* on the sun side. The level (L* −1, C* ×0.91, CIE-LCH, generic walls only; recipes, mapped walls and landmarks untouched) brings the medians to −0.1 / 0.0, but it moves the 12-spot strips by at most 0.3 % mean luma. It stays opt-in: a slightly darker, less saturated shift runs against the user's brighter-palette priority. The real "more saturated than the photos" gap is upstream, in `derive.ts`'s BRICK_CHROMA_SHARE 0.75: swatch chroma sits 2.5–3× above raw panorama chroma, though the raw crops are hazy and underexposed (median L* 22). Painted walls stay +2.9 C* after the level. `?paletteLevel` now reaches the chunk worker through `withWorkerFlags`.
 
 **Week 2 buurt: Timorpleinbuurt-Noord (Indische buurt), 31 pands installed after five Opus strip reviews (2026-11-10, lane/buurt-indische-20261110 at 8fd74f066, sonnet + Opus reviewer).** The buurt had no library; the lane surveyed it (457 pands, 76 faces, new `buurt-families.ts` and `grid-crop.ts`) and authored three measured types: `indisch-1913-arched-pair-dormer` (Djambistraat/Soendastraat), `indisch-1912-java-mansard-arches` (Javastraat 95-121) and `indisch-1914-red-sash-pairs` (Lampongstraat). Installed:
