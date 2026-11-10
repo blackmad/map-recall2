@@ -66,8 +66,9 @@ export const STRIP_STRUCTURE = {
 const r2 = (v: number) => +v.toFixed(2);
 
 /** Read the structure of one span. Null when the body is too small to read (under 1 m wide or 1 m tall). */
+/* A front with eaves <= 6 m is one storey (Vogelbuurt cottages): the body starts at 1.0 m, not 4.6 m. Taller fronts are byte-identical. */
 export function measureStripStructure(input: StripStructureInput): StripStructure | null {
-  const S = STRIP_STRUCTURE, {rgb, width: W, height: H, pixelsPerMetre: ppm} = input;
+  const S = {...STRIP_STRUCTURE, bodyFromM: input.eavesM > 6 ? STRIP_STRUCTURE.bodyFromM : 1.0}, {rgb, width: W, height: H, pixelsPerMetre: ppm} = input;
   const inset = Math.round((input.x1 - input.x0) * 0.04);
   const x0 = Math.max(0, input.x0 + inset), x1 = Math.min(W, input.x1 - inset);
   const yTop = Math.max(0, Math.round(H - (input.eavesM - S.topInsetM) * ppm)), yBot = Math.min(H, Math.round(H - S.bodyFromM * ppm));
@@ -157,8 +158,9 @@ export function measureStripStructure(input: StripStructureInput): StripStructur
   const darkAxis = openAxes.find(o => o.light < S.openDarkLight || bayWidthM < S.openBayMinM);
   const wide = slabs.filter(s => s.widthM >= S.stackMinWidthM && s.atM >= 5.0 && s.atM <= input.eavesM - 1.5);
   const stack = wide.find(s => wide.some(t => t !== s && Math.abs(t.atM - s.atM) >= 2 && Math.abs(t.centre - s.centre) * w / ppm <= S.stackMaxOffset));
-  const balconies = !!darkAxis || !!stack;
-  const balconyWhy = darkAxis ? `${darkAxis.light < S.openDarkLight ? 'dark' : 'bay-less'} open axis ${darkAxis.widthM} m at ${darkAxis.centre} (light ${darkAxis.light}): no brick spandrel between the storeys`
+  const oneStorey = input.eavesM <= 6; // no upper storey to carry a balcony: a dark open axis is a window or a door
+  const balconies = !oneStorey && (!!darkAxis || !!stack);
+  const balconyWhy = oneStorey ? 'one-storey front (eaves <= 6 m): no balcony' : darkAxis ? `${darkAxis.light < S.openDarkLight ? 'dark' : 'bay-less'} open axis ${darkAxis.widthM} m at ${darkAxis.centre} (light ${darkAxis.light}): no brick spandrel between the storeys`
     : stack ? `balcony slabs stacked at ${wide.map(s => `${s.atM} m (${s.widthM} m wide)`).join(', ')}`
     : `no dark open axis${openAxes.length ? ` (light ones: ${openAxes.map(o => `${o.widthM} m @ ${o.light}`).join(', ')})` : ''}, ${wide.length} wide slab(s)`;
   return {wallLab: ref.map(r2) as [number, number, number], spread: r2(spread), bayWidthM, bayCentre, openAxes, slabs, balconies, balconyWhy};

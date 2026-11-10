@@ -1,0 +1,127 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "vogel-1918-cottage-2axis",
+ "district": "vogelbuurt",
+ "description": "Vogelbuurt-Noord 1918-19 single-storey cottages, short fronts (3.8-4.95 m): one wide two-light window and a green door in a cream frame under a low tiled roof behind a grey gutter",
+ "fit": {
+  "widthM": [
+   3.8,
+   4.95
+  ],
+  "storeys": [
+   1
+  ]
+ },
+ "match": {
+  "years": [
+   1916,
+   1922
+  ],
+  "storeys3dbag": [
+   0,
+   1,
+   2
+  ],
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 2
+   }
+  ],
+  "stucco": false,
+  "balconies": false,
+  "mirrorForDoor": "right",
+  "note": "BAG 1918-19, 3DBAG eaves 3.3-4.3 m; widths 3.8-4.95 m; the 3DBAG eaves (4.1-4.8 m, a mean over the hipped roof) is not the gutter: the strip gutter is at 3.4 m, so the type scores the strip cornice (frontEavesM) and drops the 3DBAG roof-rise test",
+  "frontEavesM": 3.2,
+  "frontSkylineM": 4.55,
+  "keepSurveyRoof": true,
+  "measuredWall": false
+ },
+ "body": {
+  "storeys": 1,
+  "bays": 2,
+  "axisGrid": 2,
+  "bayWidths": [
+   3.0,
+   1.4
+  ],
+  "bayFill": [
+   0.66,
+   0.62
+  ],
+  "cornice": "none",
+  "windows": "casement-pair",
+  "storeyHeights": [
+   3.2
+  ],
+  "windowHeights": [
+   0.45
+  ],
+  "headLines": [
+   0.8
+  ]
+ },
+ "crowns": {
+  "gutter": {
+   "gable": "cornice",
+   "eavesOverhang": {
+    "projection": 0.35,
+    "fascia": 0.12,
+    "colour": "#b9b8ae",
+    "soffit": "#3d3430"
+   },
+   "note": "Brede Vogelstraat 5-11 (2025-09-22): a thin grey gutter lip at 3.4 m over a dark soffit about 0.3 m deep, tile roof behind it"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 1,
+   "note": "dark green single leaf 0.9 m wide with a cream frame and a transom light, door foot on the 0.65 m plinth; mirrored when the strip reads the door on the left"
+  }
+ },
+ "palettes": {
+  "red-brick": {
+   "brick": "#8f6a58",
+   "frame": "#e4e0d2",
+   "door": "#1f3a2f",
+   "stone": "#a2634c",
+   "cornice": "#b9b8ae"
+  }
+ },
+ "roof": {
+  "material": "red-tile"
+ },
+ "rhythm": {
+  "bays": "wide window, door",
+  "identicalBays": "no",
+  "windowsPerStorey": "1 storey",
+  "symmetry": "mirror pairs about the party wall",
+  "groundFloor": "green door at one end",
+  "signage": "none",
+  "roofline": "gutter, long tiled roof",
+  "photoRows": [
+   2
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "vogel-5-11",
+   "pands": [
+    "123207",
+    "087612"
+   ],
+   "citation": "strip.jpg 2025-09-22, 40 px/m, gridded: eaves gutter 3.4 m over image foot (the facade foot is 0.65 m up, a plinth: door 0.65-2.5 m); window heads 2.55 m, sills 1.15 m, wide window 2.0 m, small window 1.0 m at sill 1.6 m, door 0.9 m in a cream frame with transom; Tweede/Brede Vogelstraat share the design"
+  }
+ ],
+ "schemaLimits": [
+  "the small high window (sill 1.6 m, head 2.45 m) is drawn at the wide window's height",
+  "the 0.65 m raised plinth: storey height 3.3 m includes it",
+  "brick bands under the gutter and the small ventilation bricks are not drawn",
+  "hedges and front gardens"
+ ],
+ "notes": [
+  "Palette: brick #8f6a58 is one tone for the buurt, not per pand: strips of one date differ by 2x in exposure (raw brick medians 77-221 on 2025-09-22) and the trim normalisation locks onto hedges and the dark timber band, so measuredWall is off. The tone is the median of the 8 darker-exposed strips (raw 86-105,66-85,58-74) lifted x1.5; a reviewer should pin the row if a photo disagrees."
+ ]
+}

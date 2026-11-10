@@ -1,0 +1,168 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "vogel-1921-two-storey-dormer-row",
+ "district": "vogelbuurt",
+ "description": "Vogelbuurt-Noord 1921-28 two-storey rows under a tiled roof (Flamingostraat, Pelikaanstraat, Pluvierplein, Meeuwenplein, Kalkoenstraat): 6.3-6.6 m brick fronts of a 3.1 m ground storey and a 3.3 m upper storey under a grey cornice slab at 6.4 m; each front has a wide white-framed window (2.7 m, three lights) over a ground window and, at the party wall, a narrow upper window over the paired double door; flat-roofed dormers over the wide windows in the row, and crow-stepped gables on the block ends",
+ "fit": {
+  "widthM": [
+   6.0,
+   7.0
+  ],
+  "storeys": [
+   2
+  ]
+ },
+ "match": {
+  "years": [
+   1919,
+   1928
+  ],
+  "eavesM": [
+   6.4,
+   8.2
+  ],
+  "storeys3dbag": [
+   3
+  ],
+  "roof": "pitched",
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 2
+   }
+  ],
+  "stucco": false,
+  "mirrorForDoor": "left",
+  "frontEavesM": 6.45,
+  "frontEavesUnscored": true,
+  "keepSurveyRoof": true,
+  "crowns": {
+   "step-gable": {
+    "riseM": [
+     2.8,
+     8
+    ]
+   },
+   "flat-dormer": {
+    "riseM": [
+     0.4,
+     2.4
+    ]
+   },
+   "none": {
+    "none": true
+   }
+  },
+  "note": "BAG 1921-28, 3DBAG eaves 6.8-7.8 m (the roof's own height; the strip cornice is at 6.4 m), bouwlagen 3; widths 6.3-6.6 m"
+ },
+ "body": {
+  "storeys": 2,
+  "bays": 2,
+  "axisGrid": 2,
+  "bayWidths": [
+   2.5,
+   3.8
+  ],
+  "bayFill": [
+   0.4,
+   0.7
+  ],
+  "cornice": "simple",
+  "windows": "casement-triple",
+  "storeyHeights": [
+   3.1,
+   3.3
+  ],
+  "windowHeights": [
+   0.52,
+   0.56
+  ],
+  "headLines": [
+   0.68,
+   0.63
+  ]
+ },
+ "crowns": {
+  "flat-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "flat",
+   "dormerBody": "timber",
+   "dormerAt": [
+    {
+     "from": 0.52,
+     "to": 0.9
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.2,
+    "rise": 1.0,
+    "setback": 0.3
+   },
+   "note": "Flamingostraat 4-10 (2020-06-02): a flat-roofed white dormer 2.4 m wide, 6.3-7.3 m, over the wide window"
+  },
+  "step-gable": {
+   "gable": "point",
+   "crownRise": 1.9,
+   "atticWindows": 1,
+   "note": "Flamingostraat 3 and 15: a pointed brick gable (fine toothed raking edge, drawn plain) 6.2 m over the 6.4 m cornice (apex 12.6 m) with one two-light window at 6.7-8.3 m"
+  },
+  "none": {
+   "gable": "cornice",
+   "note": "cornice only"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "note": "a dark green double door pair spanning the party wall, 0.9 m per front, with a transom; the neighbour mirrors it"
+  }
+ },
+ "palettes": {
+  "red-brown": {
+   "brick": "#7d5446",
+   "frame": "#e8e6de",
+   "door": "#1e3b30",
+   "stone": "#e0ddd4",
+   "cornice": "#b8b4a8"
+  }
+ },
+ "roof": {
+  "material": "red-tile"
+ },
+ "rhythm": {
+  "bays": "narrow window over the door, wide window",
+  "identicalBays": "no",
+  "windowsPerStorey": "ground: door + wide window | 1: narrow + wide",
+  "symmetry": "mirror pairs about the party wall",
+  "groundFloor": "double doors paired across the party wall",
+  "signage": "none",
+  "roofline": "grey cornice slab; a flat dormer over the wide window, a crow-stepped gable on block ends",
+  "photoRows": [
+   2,
+   2,
+   1
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "flamingo-4-10",
+   "pands": [
+    "087661",
+    "066422"
+   ],
+   "citation": "strip.jpg 2020-06-02, 40 px/m, 1 m grid: pands 6.3 m; ground window head 2.1 m sill 0.5 m, wide ground window 2.7 m; upper wide window sill 3.16 m head 5.19 m 2.7 m wide, narrow window 0.95 m, same sill and head; double door 0-2.1 m pair across the party wall; cornice slab 6.3-6.5 m; flat dormer 6.3-7.3 m, 2.4 m wide, three lights; gable apex 12.6 m, one 1.7 m window at 6.7-8.3 m"
+  }
+ ],
+ "schemaLimits": [
+  "the grey brick of Flamingostraat (lighter, grey-yellow) against the red-brown of Pelikaanstraat is one palette here",
+  "the crow-step teeth along the raking edge",
+  "the white window sills and the lintel soldier courses",
+  "the cornice's brick corbel course"
+ ],
+ "notes": [
+  "Palette: brick #7d5446 is the dark-brown family of Pelikaan/Pluvier strips; Flamingostraat photographs grey-yellow; use a palette pin per row where the photo says so."
+ ]
+}

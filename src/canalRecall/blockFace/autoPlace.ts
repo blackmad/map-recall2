@@ -134,6 +134,19 @@ export interface TypeMatchRule {
    */
   frontEavesM?: number;
   /**
+   * With `frontEavesM`: keep the 3DBAG roof (no `frontRoof` re-pitch) although the line is under 3DBAG's eaves. A one-storey
+   * cottage under a long tiled roof (Vogelbuurt-Noord 1918, gutter 3.2 m, 3DBAG eaves a mean of 4.1-4.8 m over the slope)
+   * has no attic band to re-pitch; its survey roof already stands at the gutter on the facade. Absent = byte-identical.
+   */
+  keepSurveyRoof?: boolean;
+  /**
+   * With `frontEavesM`: do not score the strip skyline against the line. Where the skyline is a gable apex or a dormer top
+   * (Vogelbuurt 1921 rows: crow-stepped gable ends 12.6 m, flat dormers 7.3 m over a 6.4 m cornice) it reads 8-13 m on
+   * the same design, so it is no evidence of the cornice; 3DBAG eaves are not compared either, the house is drawn at the
+   * line. Absent = scored, byte-identical.
+   */
+  frontEavesUnscored?: boolean;
+  /**
    * With `frontEavesM`: the top of a wall dormer that spans most of the front, where the strip skyline reads it instead
    * of the cornice (Derde Helmersstraat 54-64: crenellated wall dormers over two of three axes, skyline 17.4-18.2 m
    * over a 14.3 m cornice). A skyline near it scores like one near the cornice line; the house is drawn at the line.
@@ -308,7 +321,8 @@ export function scoreType(t: MatchableType, ev: PandEvidence): TypeScore {
   if (ev.builtYear === null) veto.push('no build year');
   else if (ev.builtYear < m.years[0] - slack || ev.builtYear > m.years[1] + slack) veto.push(`built ${ev.builtYear}, type ${m.years.join('-')}`);
   veto.push(...frontageVetoes(t, ev));
-  if (m.frontEavesM !== undefined) {
+  if (m.frontEavesM !== undefined && m.frontEavesUnscored) { /* drawn at the line, not scored */ }
+  else if (m.frontEavesM !== undefined) {
     const sky = ev.strip?.skyline, read = sky && sky.confidence >= SKYLINE_MIN_CONFIDENCE ? sky.eavesM : null;
     const off = read === null ? null : Math.min(Math.abs(read - m.frontEavesM), m.frontSkylineM === undefined ? Infinity : Math.abs(read - m.frontSkylineM));
     criteria.push({key: 'eaves', weight: W.eaves, score: off === null ? null : off <= 0.5 ? 1 : off <= 1 ? 0.5 : 0, note: read === null ? `strip cornice unread (type line ${m.frontEavesM} m; 3DBAG ${r2(ev.eavesM)} m not compared)` : `strip cornice ${r2(read)} m vs the type's ${m.frontEavesM} m${m.frontSkylineM === undefined ? '' : ` (wall-dormer skyline ${m.frontSkylineM} m)`}`});
