@@ -218,6 +218,12 @@ function dryWayDecksFlag(): boolean {
   if (typeof g.__canalRecallDryWayDecks === 'boolean') return g.__canalRecallDryWayDecks;
   return /[?&]dryWayDecks=(1|true|on)\b/.test(g.location?.search ?? '');
 }
+/** Ground v2 (lane G2a #372): the baked surface (ground-v2/, groundV2Loader.ts) over the worker build; off by default; `?groundV2=1` or `window.__canalRecallGroundV2 = true` turns it on. */
+export function groundV2Flag(): boolean {
+  const g = globalThis as { __canalRecallGroundV2?: boolean; location?: { search?: string } };
+  if (typeof g.__canalRecallGroundV2 === 'boolean') return g.__canalRecallGroundV2;
+  return /[?&]groundV2=(1|true|on)\b/.test(g.location?.search ?? '');
+}
 /** BGT open ground (open-ground-v1, groundSurface.ts; lane open-ground-look 2026-11-10): on by default; `?openGround=0` or `window.__canalRecallOpenGround = false` draws it as the land again (the before). */
 export function openGroundFlag(): boolean {
   const g = globalThis as { __canalRecallOpenGround?: boolean; location?: { search?: string } };
@@ -526,7 +532,7 @@ export class OwnGround {
     this.startup.storeReadyAt ??= performance.now();
     try {
       const count = groundWorkersFlag(this.opts.workers || defaultGroundWorkers(this.opts.detail));
-      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
+      const init = { type: 'init', root, planShare: groundPlanShareFlag(), deterministic: groundDeterministicFlag(), parks: this.opts.parks, rails: this.opts.rails, railRetry: this.railRetryOn, ...(this.railRetryOn && this.opts.rails ? { railManifest: [...this.store.railCells] } : {}), farRails: farRailFlag(), farRailDrape: farRailDrapeFlag(), roads: this.opts.roads, bridgeGaps: bridgeGapsFlag(), dryWayDecks: dryWayDecksFlag(), bridgeCarry: bridgeCarryFlag(), redDedupe: redDedupeFlag(), portalClip: portalClipFlag(), portalEnds: portalEndsFlag(), rampGaps: rampGapsFlag(), roadSlivers: roadSliversFlag(), openGround: openGroundFlag(), groundV2: groundV2Flag(), groundLook: this.opts.groundLook, compact: compactFlag(), detail: this.opts.detail, roadLook: roadLookFlag(), tiles: this.opts.tiles, nearTiles: this.opts.nearTiles, tileMin: TILE_MIN_TRIANGLES };
       // One fetch + gunzip per file for every worker (groundShare.ts): a channel per worker to one more instance of the bundle.
       const channels = count > 1 && groundShareFlag() ? Array.from({ length: count }, () => new MessageChannel()) : [];
       if (channels.length) {

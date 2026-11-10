@@ -91,6 +91,8 @@ import { landedPlatformRings } from './landedPlatforms.js';
 /** The game's local frame (galleryPipeline.toLocal), duplicated so the worker bundle stays small. */
 export const GAME_ORIGIN = { lng: 4.9, lat: 52.37 } as const;
 const KX = 111_320 * Math.cos(GAME_ORIGIN.lat * Math.PI / 180), KY = 110_540;
+/** The local frame's metres per degree (equirectangular about GAME_ORIGIN): ground v2 files record it (groundV2Format.ts). */
+export const GAME_FRAME_SCALE = { kx: KX, ky: KY } as const;
 export const toLocal = (lng: number, lat: number): Vec2 => [(lng - GAME_ORIGIN.lng) * KX, (lat - GAME_ORIGIN.lat) * KY];
 export const fromLocal = (x: number, y: number): Vec2 => [GAME_ORIGIN.lng + x / KX, GAME_ORIGIN.lat + y / KY];
 
