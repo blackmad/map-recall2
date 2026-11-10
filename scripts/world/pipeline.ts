@@ -23,20 +23,27 @@ import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
 import { HOUSE_SPECS_DIR, houseSpecsEnabled } from '../../src/canalRecall/houseSpec/decorate.js';
 import { houseSpecsStamp, type HouseSpecsStamp } from '../../src/canalRecall/houseSpec/extractStamp.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
+import { coversHides, resolveTileIds, tileCoversHash, type TileIdsCache } from '../../src/canalRecall/world/tileCovers.js';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
 export const EXTRACT = path.join(ROOT, 'public/data/extracts/amsterdam');
-export const COVERS = path.join(ROOT, 'public/canal-drive/models/covers.json');
+// COVERS_FILE: a covers.json other than the published one (house:publish rehearsals and the covers-slice measurements
+// compile against a scratch copy; nothing under public/ changes).
+export const COVERS = process.env.COVERS_FILE ? path.resolve(process.env.COVERS_FILE) : path.join(ROOT, 'public/canal-drive/models/covers.json');
 // monument-facts.json: the register facts gameChain reads (facade/registerRecipe.ts); it was missing until 2026-11-10
 // (house line H1 step 1), so a register-facts change did not invalidate any cell under --changed.
-export const GLOBAL_INPUTS = ['monument-gables.json', 'monument-facts.json', 'landmark-buildings.json', 'shopfronts.json', 'rail-infra-buildings.json', 'industrial-buildings.json'].map(f => path.join(EXTRACT, f)).concat([COVERS]);
+// covers.json is NOT here (house line H3): it reaches the world only through each cell's hide list, so each tile hashes
+// its own slice of it (tileCoversHashes below) and an install rebuilds the cells of the tiles it covers, not the city.
+export const GLOBAL_INPUTS = ['monument-gables.json', 'monument-facts.json', 'landmark-buildings.json', 'shopfronts.json', 'rail-infra-buildings.json', 'industrial-buildings.json'].map(f => path.join(EXTRACT, f));
 export type Feature = { type: 'Feature'; properties: Record<string, unknown>; geometry: any };
 export type Row = { tile: string; ordinal: number; raw: Feature; styled: Feature; cell: string };
 
 /** Hash of files' paths and contents (absent files hash as 'absent'): the compiler's change detector. */
 export function inputHash(files: string[]): string {
   const h = crypto.createHash('sha256');
-  for (const f of files) { h.update(path.relative(ROOT, f)); h.update(fs.existsSync(f) ? fs.readFileSync(f) : Buffer.from('absent')); }
+  // A staged HouseSpec extract (amsterdam/staging/house-specs, house:publish --dry-run --compile) hashes under the name it
+  // will have once published, so compiling against it rebuilds only the tiles whose spec file differs.
+  for (const f of files) { h.update(path.relative(ROOT, f).replace('amsterdam/staging/house-specs/', 'amsterdam/house-specs/')); h.update(fs.existsSync(f) ? fs.readFileSync(f) : Buffer.from('absent')); }
   return h.digest('hex');
 }
 /** Source files whose code decides the baked output: a change to any of them invalidates every cell. */
@@ -120,4 +127,24 @@ export async function loadTile(tile: string, chain: Chain, stats?: TileStats): P
     rows.push({ tile, ordinal, raw, styled, cell });
   });
   return rows;
+}
+
+/** The building ids of a z14 tile file (the ids a cell's hide list is matched against). */
+export function tileFeatureIds(tile: string): string[] {
+  if (!fs.existsSync(tileFile(tile))) return [];
+  const collection = JSON.parse(zlib.gunzipSync(fs.readFileSync(tileFile(tile))).toString('utf8'));
+  return (collection.features ?? []).map((f: Feature) => String(f.properties?.id));
+}
+/** The ids cache sits beside the compile output directory (`<out>.tile-ids.json`), not in it: the integrator publishes the directory. */
+export const tileIdsCacheFile = (out: string) => `${out.replace(/\/$/, '')}.tile-ids.json`;
+/** Each tile's covers slice hash (house line H3): the part of covers.json that hides a building of the tile.
+ *  `cacheFile` (tileIdsCacheFile) holds the ids per tile keyed by the tile file's sha256, reused while a tile file is unchanged;
+ *  a missing or stale cache is rebuilt by parsing the tiles that need it (the first run, about the cost of a full load). */
+export function tileCoversHashes(tiles: string[], cacheFile: string | null, coversFile = COVERS): { hashes: Map<string, string>; ids: Map<string, string[]>; cache: TileIdsCache; parsed: number } {
+  const hides = coversHides(fs.existsSync(coversFile) ? readJson(coversFile) : {});
+  const cachePath = cacheFile;
+  const cache: TileIdsCache | null = cachePath && fs.existsSync(cachePath) ? readJson(cachePath) : null;
+  const shaOf = (t: string) => crypto.createHash('sha256').update(fs.existsSync(tileFile(t)) ? fs.readFileSync(tileFile(t)) : Buffer.from('absent')).digest('hex');
+  const { ids, cache: next, parsed } = resolveTileIds(tiles, shaOf, cache, tileFeatureIds);
+  return { hashes: new Map(tiles.map(t => [t, tileCoversHash(ids.get(t) ?? [], hides)])), ids, cache: next, parsed };
 }

@@ -37,7 +37,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import crypto from 'node:crypto';
-import { ROOT, EXTRACT, gameChain, loadTile, readJson, tileFile, tileInputs, inputHash, CODE, GLOBAL_INPUTS, houseSpecsIndexStamp, COVERS, type Feature, type Row, type TileStats } from './pipeline.js';
+import { ROOT, EXTRACT, gameChain, loadTile, readJson, tileFile, tileInputs, inputHash, CODE, GLOBAL_INPUTS, houseSpecsIndexStamp, COVERS, tileCoversHashes, tileIdsCacheFile, type Feature, type Row, type TileStats } from './pipeline.js';
 import { roofPlanForFeature } from '../../src/canalRecall/roofMesh.js';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.js';
@@ -49,6 +49,7 @@ import { CELL_GRID, cellBounds, parseCellKey } from '../../src/canalRecall/world
 import { applyPolicy, emptyPolicyReport, summarisePolicy, policyOptionsOf, policyOptionsFromArgs, POLICY_VERSION, type PolicyOptions } from '../../src/canalRecall/world/cellPolicy.js';
 import { readGlobalStrings } from './cellFiles.js';
 import { shellLayerHash } from '../../src/canalRecall/world/shellLayers.js';
+import { changedCoversTiles, coversHides } from '../../src/canalRecall/world/tileCovers.js';
 
 // world-compiler-2 (2026-11-06, lane R2-B #229): --shell bakes the format-6 shell files; the cells are unchanged.
 export const COMPILER_VERSION = 'world-compiler-2';
@@ -90,6 +91,10 @@ async function main() {
 
   const globalHash = inputHash([...CODE, ...GLOBAL_INPUTS]);
   const tileHash = new Map(tileList.map(t => [t, inputHash(tileInputs(t))]));
+  // covers.json is not a global input (house line H3): each tile hashes the slice of it that hides one of its buildings
+  // (<out>.tile-ids.json remembers each tile's ids while its file is unchanged), so an install rebuilds only its cells.
+  const tc = tileCoversHashes(tileList, tileIdsCacheFile(OUT)), tileCovers = tc.hashes;
+  console.log(`covers slices: ${tc.parsed} of ${tileList.length} tile files parsed for ids`);
   const previous = CHANGED && exists(path.join(OUT, 'index.json')) ? readJson(path.join(OUT, 'index.json')) : null;
 
   // --changed: which cells must be rebuilt, and which tiles to load for them (their own + neighbouring cells', for context).
@@ -97,6 +102,7 @@ async function main() {
   if (previous) {
     const prevTiles: Record<string, string> = previous.tileHashes ?? {};
     const changedTiles = new Set(tileList.filter(t => prevTiles[t] !== tileHash.get(t)));
+    for (const t of changedCoversTiles(tileList, previous.tileCovers, tileCovers)) changedTiles.add(t);
     for (const t of Object.keys(prevTiles)) if (!tileHash.has(t)) changedTiles.add(t);
     rebuild = new Set();
     const allStale = previous.globalHash !== globalHash || !!previous.debug !== DEBUG;
@@ -116,11 +122,14 @@ async function main() {
   const reference = AGAINST && AGAINST !== OUT && !ONLY_TILES && exists(path.join(AGAINST, 'index.json')) ? readJson(path.join(AGAINST, 'index.json')) : null;
   const ownSources: Record<string, string> = {};
   for (const f of GLOBAL_INPUTS) ownSources[path.relative(ROOT, f)] = exists(f) ? sha(fs.readFileSync(f)) : 'absent';
-  // covers.json feeds only the hidden ids: when it alone changed, buildings are still compared, HIDE is not.
-  const coversKey = path.relative(ROOT, COVERS);
-  const referenceGlobalsMatch = !!reference && Object.entries(ownSources).every(([f, h]) => f === coversKey || reference.sources?.[f] === h);
-  const referenceCoversMatch = !!reference && reference.sources?.[coversKey] === ownSources[coversKey];
-  const against = { dir: reference ? path.relative(ROOT, AGAINST!) : null, referenceFormat: reference?.format ?? null, globalInputsMatch: referenceGlobalsMatch, coversMatch: referenceCoversMatch, compared: 0, buildings: 0, skippedStale: [] as string[], missing: [] as string[] };
+  // covers.json feeds only the hidden ids: when a cell's slice of it differs from the reference's, its buildings are
+  // still compared, its hide list is not. A reference compiled before H3 has no per-tile slices, so it is compared on
+  // the whole file (its sources entry), as before.
+  const coversKey = path.relative(ROOT, COVERS), coversSha = exists(COVERS) ? sha(fs.readFileSync(COVERS)) : 'absent';
+  const referenceGlobalsMatch = !!reference && Object.entries(ownSources).every(([f, h]) => reference.sources?.[f] === h);
+  const referenceCoversMatch = !!reference && reference.sources?.[coversKey] === coversSha;
+  const coversMatchFor = (tiles: string[]): boolean => !!reference && (referenceCoversMatch || (!!reference.tileCovers && tiles.every(t => reference.tileCovers[t] === tileCovers.get(t))));
+  const against = { dir: reference ? path.relative(ROOT, AGAINST!) : null, referenceFormat: reference?.format ?? null, globalInputsMatch: referenceGlobalsMatch, coversMatch: referenceCoversMatch, hideCompared: 0, compared: 0, buildings: 0, skippedStale: [] as string[], missing: [] as string[] };
   const chain = gameChain();
   // 1. Tiles -> raw (enriched) features and their styled copies, as BuildingTileStreamer adopts and styles them.
   const rows: Row[] = [];
@@ -143,13 +152,12 @@ async function main() {
   const ctx = new BuildingContextIndex(rows.map(r => r.styled), bounds);
 
   // 3. Hidden ids: covers.json (model -> pands / OSM ways) and the kit tables.
-  const covers = readJson(COVERS);
   const hides = new Map<string, HideEntry>();
-  const hide = (id: string, reason: number, model?: string) => { let h = hides.get(id); if (!h) hides.set(id, h = { id, reasons: 0, models: [] }); h.reasons |= reason; if (model && !h.models.includes(model)) h.models.push(model); };
-  for (const id of KIT_HIDE_IDS) hide(id, HIDE_KIT);
-  for (const [model, entry] of Object.entries<any>(covers.models ?? {})) {
-    for (const p of entry.p ?? []) hide(`NL.IMBAG.Pand.${p}`, HIDE_COVER_PAND, model);
-    for (const o of entry.o ?? []) hide(String(o), HIDE_COVER_OSM, model);
+  for (const id of KIT_HIDE_IDS) hides.set(id, { id, reasons: HIDE_KIT, models: [] });
+  for (const c of coversHides(exists(COVERS) ? readJson(COVERS) : {}).values()) {
+    const h = hides.get(c.id);
+    if (!h) hides.set(c.id, { ...c, models: [...c.models] });
+    else { h.reasons |= c.reasons; for (const m of c.models) if (!h.models.includes(m)) h.models.push(m); }
   }
 
   // 4. Cells.
@@ -229,7 +237,9 @@ async function main() {
         else {
           if (old.buildings.length !== back.buildings.length) throw Error(`${key}: ${back.buildings.length} buildings, the reference cell has ${old.buildings.length}`);
           back.buildings.forEach((b, k) => { if (!sameValue(b, old.buildings[k])) throw Error(`${key}: ${b.id} decodes differently from the reference cell (${against.dir})`); });
-          if (!sameValue(referenceCoversMatch ? back : { ...back, hide: [] }, referenceCoversMatch ? old : { ...old, hide: [] })) throw Error(`${key}: the decoded cell differs from the reference cell (${referenceCoversMatch ? 'hidden ids or ' : ''}cell fields)`);
+          const hideComparable = coversMatchFor(entry.tiles);
+          if (hideComparable) against.hideCompared++;
+          if (!sameValue(hideComparable ? back : { ...back, hide: [] }, hideComparable ? old : { ...old, hide: [] })) throw Error(`${key}: the decoded cell differs from the reference cell (${hideComparable ? 'hidden ids or ' : ''}cell fields)`);
           against.compared++; against.buildings += back.buildings.length;
         }
       }
@@ -325,12 +335,14 @@ async function main() {
   for (const f of [...GLOBAL_INPUTS, path.join(EXTRACT, 'building-tiles/index-z14.json'), path.join(EXTRACT, 'elevation-v1/index.json'), path.join(EXTRACT, 'roads-v1/cells.json')]) sources[path.relative(ROOT, f)] = exists(f) ? sha(fs.readFileSync(f)) : 'absent';
   sources['building-tiles+building-facts+roof-facts (per tile, combined)'] = sha([...tileHash.entries()].sort().map(e => e.join(':')).join('\n'));
   sources['code'] = inputHash(CODE);
+  sources[coversKey] = coversSha; // not a global input (tileCovers below): recorded so an older compiler's reference check can read it
   if (globalsBytes) fs.writeFileSync(path.join(OUT, GLOBAL_STRINGS_FILE), gz(globalsBytes));
   const stringsFile = path.join(OUT, GLOBAL_STRINGS_FILE);
   const strings = globals ? { file: GLOBAL_STRINGS_FILE, count: globals.list.length, hash: globals.hash, gzBytes: fs.statSync(stringsFile).size, sha256: sha(fs.readFileSync(stringsFile)) } : undefined;
   const policy = NO_POLICY ? undefined : POLICY_VERSION, policyOptions = NO_POLICY ? undefined : POLICY_OPTIONS;
-  const indexOut = { version: 1, format: WORLD_FORMAT_VERSION, ...(policy ? { policy, policyOptions } : {}), ...(strings ? { strings } : {}), ...(shells ? { shells } : {}), debug: DEBUG, compiler: COMPILER_VERSION, grid: CELL_GRID, generatedFrom: 'building-tiles', ...houseSpecsIndexStamp(), sources, globalHash, tileHashes: Object.fromEntries(tileHash), tileCells, cells: cellsOut };
+  const indexOut = { version: 1, format: WORLD_FORMAT_VERSION, ...(policy ? { policy, policyOptions } : {}), ...(strings ? { strings } : {}), ...(shells ? { shells } : {}), debug: DEBUG, compiler: COMPILER_VERSION, grid: CELL_GRID, generatedFrom: 'building-tiles', ...houseSpecsIndexStamp(), sources, globalHash, tileHashes: Object.fromEntries(tileHash), tileCovers: Object.fromEntries(tileCovers), tileCells, cells: cellsOut };
   fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(indexOut));
+  if (!ONLY_TILES) fs.writeFileSync(tileIdsCacheFile(OUT), JSON.stringify(tc.cache));
   // The runtime's probe reads only this (tileCells and the cell list, ~5 % of index.json): the 400 KB index cost
   // world-v1 ~150 ms against the default path at page start (lane L4 time-to-resident).
   // The far tier (engine/farShells.ts) reads `far` (gzip bytes of far/<key>.bin) to know which cells have prisms.

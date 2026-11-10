@@ -9,7 +9,7 @@ import { registerFactsFromExtract } from '../../src/canalRecall/facade/registerR
 import { fromBlockFace, fromRecipeIntent, fromRegisterFacts } from '../../src/canalRecall/houseSpec/adapters.ts';
 import { fieldSources, resolveSpecs, strongestSource } from '../../src/canalRecall/houseSpec/resolve.ts';
 import { frontBays, specFields, validateSpec, type HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
-import { withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
+import { toRecipe, withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
 import type { HouseSpecTile, HouseSpecTileRecord, HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
 
@@ -18,6 +18,11 @@ export const HELP = `build-house-specs: resolve every pand's HouseSpec from its 
   npx tsx scripts/house-specs/build-house-specs.ts            stage + coverage report (lanes may run this)
   npx tsx scripts/house-specs/build-house-specs.ts --publish  copy the staged tiles to the published extract
                                                               (integrator only, after reviewing the coverage diff)
+  --extra-specs <dir>                                         also read <dir>/<pandId>.json hand specs; a file of the same
+                                                              name replaces the one in scripts/house-specs/specs
+                                                              (house:publish stages a batch this way before it copies it)
+  --emit-intents <dir> --for <pandIds>                        write <dir>/<pandId>.json = toRecipe(resolved spec) for each
+                                                              listed pand that resolved to the recipe route
   --help                                                      this text
 
 Sources, weakest first (facade/evidence.ts SOURCE_STRENGTH, author = reviewed):
@@ -40,6 +45,7 @@ const rel = (p: string) => path.relative(ROOT, p);
 const FEATURE = (digits: string) => `NL.IMBAG.Pand.${digits}`;
 
 const args = process.argv.slice(2);
+const argValue = (name: string): string | undefined => { const i = args.findIndex(a => a === name || a.startsWith(`${name}=`)); return i < 0 ? undefined : args[i].includes('=') ? args[i].slice(name.length + 1) : args[i + 1]; };
 if (args.includes('--help')) { console.log(HELP); process.exit(0); }
 
 if (args.includes('--publish')) {
@@ -78,7 +84,9 @@ for (const dir of readdirSync(HOUSES).sort()) {
   if (spec) { add(spec); counts.recipeIntents++; } else counts.recipeOther++;
 }
 
-if (existsSync(HAND)) for (const f of readdirSync(HAND).filter(f => f.endsWith('.json')).sort()) { add(validateSpec(json(path.join(HAND, f)))); counts.hand++; }
+const handFiles = new Map<string, string>();
+for (const dir of [HAND, argValue('--extra-specs') ? path.resolve(argValue('--extra-specs')!) : null]) if (dir && existsSync(dir)) for (const f of readdirSync(dir).filter(f => f.endsWith('.json'))) handFiles.set(f, path.join(dir, f));
+for (const f of [...handFiles.keys()].sort()) { add(validateSpec(json(handFiles.get(f)!))); counts.hand++; }
 
 // --- 2. resolve, route, runtime view -----------------------------------------------------------------------------
 const hex = (v: unknown) => (typeof v === 'string' ? (/^#[0-9a-f]{6}$/i.test(v) ? v.toLowerCase() : SWATCHES[v]?.toLowerCase()) : undefined);
@@ -107,6 +115,15 @@ function plannerCrown(spec: HouseSpec): boolean {
 }
 const resolved = new Map<string, HouseSpec>();
 for (const [pand, list] of [...parts].sort(([a], [b]) => (a < b ? -1 : 1))) resolved.set(pand, withRoute(resolveSpecs(list)));
+
+const emitDir = argValue('--emit-intents');
+if (emitDir) {
+  mkdirSync(path.resolve(emitDir), { recursive: true });
+  for (const pand of (argValue('--for') ?? '').split(',').filter(Boolean)) {
+    const spec = resolved.get(pand), intent = spec?.route === 'recipe' ? toRecipe(spec) : null;
+    if (intent) writeFileSync(path.join(path.resolve(emitDir), `${pand}.json`), JSON.stringify(intent, null, 1) + '\n');
+  }
+}
 
 // --- 3. tile each pand by its footprint ---------------------------------------------------------------------------
 const index = json(path.join(EXTRACT, 'building-tiles/index-z14.json'));
