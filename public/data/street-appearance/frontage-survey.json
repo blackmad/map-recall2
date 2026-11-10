@@ -66,7 +66,7 @@
     },
     {
       "file": "src/canalRecall/streetFacadeRendering.ts",
-      "sha256": "364f08ee1c2d098f495f66608cc10d3c187c052a9cd5c3e55ef878ac25fb8ad4"
+      "sha256": "270ede76961ec8f2a24598012c316fdcbcff82b6800f622ca8d75d1091de1a7d"
     },
     {
       "file": "src/canalRecall/threeBuildingFeatures.ts",
@@ -74,7 +74,7 @@
     },
     {
       "file": "src/canalRecall/threeBuildingMesh.ts",
-      "sha256": "d36d796099eb11e2df71f49c458e17e3a2e53e5d92bf5a6ef43df6354af541b3"
+      "sha256": "118b618859366c51cdb14374f9657aa0089941e2f35fe476d3dff937e844c403"
     },
     {
       "file": "src/canalRecall/genericFacades.ts",
@@ -126,7 +126,7 @@
     },
     {
       "file": "src/canalRecall/facadeLayout.ts",
-      "sha256": "12f3ff7e314c072eece517a8ca92eec4dc1fb77c7a7a30179468787ee862a71a"
+      "sha256": "4da5d07ef2d772a7772458fd6fc7d2d3ce18bfea7a35f9666c250ec97a2b6702"
     },
     {
       "file": "src/canalRecall/sourceVisualRoof.ts",
