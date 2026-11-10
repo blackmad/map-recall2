@@ -165,3 +165,27 @@ ornate) and a souterrain door, window or closed panel. It works on the recipe, f
 | Cast-iron scroll newels and urns | Herengracht 167958, 167492 |
 | A souterrain shopfront under the landing | (none in the validation set) |
 | Per-pand BGT pavement depth for `zone` | all generic stoops |
+
+## Corner chamfer (H7 round 4, #354, 2026-11-10): `chamfer-corner`
+
+The kit has no canted corner. A pand whose two street fronts meet in a 45-degree face (Nassaukade 152 / De Clercqstraat,
+0363100012116526: a 2.0-2.3 m chamfer carrying balconies on every storey over a café corner) is drawn as a sharp blank corner;
+the roof already falls to the chamfer (`CHAMFER_MIN_M` 0.3 .. `CHAMFER_MAX_M` 6 in `blockFace/compile.ts`), the wall does not.
+
+Count, from the BAG footprints of the game's building tiles (337,552 pands; footprint area >= 40 m2; vertices closer than 0.3 m merged
+and turns under 8 degrees dropped; an edge of 0.3-6 m between two edges of at least 3 m, each end turning 25-65 degrees the same way
+for a total of 65-115, both neighbouring edges not party walls; 116526 is detected):
+
+| Set | Pands |
+|---|---|
+| Citywide | 2,167 |
+| In ride-priority gebieden (`ridePriority.ts`: Centrum, Oud-West/De Baarsjes, Westerpark, Oud-Zuid, De Pijp/Rivierenbuurt, Oud-Oost) | 1,148 |
+| Of those, built 1850-1940 (canal belt plus the 19th-century ring) | 947 |
+
+Ride weight = the buurt's `routeMetres / pands` from `docs/reports/ride-ring-buurten-20261110.json`, summed over the pands (in thousands of
+route metres per pand): citywide 133.3, ride-priority 1850-1940 74.7 (56 %). Per gebied (all years): Oud-West/De Baarsjes 287, De Pijp/Rivierenbuurt 220,
+Oud-Zuid 187, Centrum-West 140, Centrum-Oost 124, Oud-Oost 106, Westerpark 84. Highest-ride examples: 0363100012155611 (MC02, 1904, 2.5 m),
+0363100012167506 (AD08, 1891), 0363100012170817 (AB06, 1918), 0363100012174384 (AH06, 1905).
+
+What would need saying: a plan chamfer between two fronts (width 0.3-6 m, angle from the footprint), its own ground (door or shop corner
+entrance) and window axes, balconies and corbelled-out upper storeys on it, and the cornice and roof turning with it. Not built here.
