@@ -1,0 +1,251 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "spui-11-13",
+ "street": "Spui",
+ "sources": [
+  {
+   "id": "strip-2025-01-20",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-20",
+   "image": "staging/block-face/spui-11-13/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Spui 11 and 13 (odd side, between Kalverstraat and the Begijnhof gate): a black-painted 17th-c. step gable with white window frames and a white pui (Spui 11), and a narrow black-painted front with white block voussoirs, white storey bands and a pedimented dormer over an arched basement door (Spui 13)."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012175740",
+   "slug": "spui-175740",
+   "address": "Spui 11",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Spui",
+      "gable": "step",
+      "crownRise": 1.4,
+      "crownSteps": 3,
+      "atticWindows": 1,
+      "cornice": "none",
+      "storeys": 3,
+      "bays": 2,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "windowSurround": "full-frame",
+      "windowShare": 0.62,
+      "storeyHeights": [
+       5.0,
+       3.2,
+       2.8
+      ],
+      "windowHeights": [
+       0.72,
+       0.62,
+       0.68
+      ],
+      "headLines": [
+       0.8,
+       0.72,
+       0.8
+      ],
+      "groundFront": {
+       "kind": "pui",
+       "bays": [
+        "window",
+        "door"
+       ],
+       "colour": "#ecebe4",
+       "evidence": "strip 2025-01-20 pand 1: white timber pui, a wide shop window and a door on the right"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#2a2a2b",
+     "wallMaterial": "painted-brick",
+     "frame": "white-painted",
+     "door": "#3a3d3f",
+     "stone": "#ecebe4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Hampe",
+    "category": "shop=musical_instrument",
+    "osm": {
+     "type": "node",
+     "id": 2724038532,
+     "name": "Hampe",
+     "tags": "shop=musical_instrument"
+    },
+    "bag": [
+     "kantoorfunctie",
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-20",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "2 axes, one wide window in the gable",
+    "windowsPerStorey": "ground: pui | 1: 2 | 2: 2 | gable: 1 wide + 1 small",
+    "symmetry": "symmetric",
+    "groundFloor": "white timber pui (shop)",
+    "signage": "none",
+    "roofline": "black step gable, white ledge at 12.3 m, steps at 13.7, 14.4 and 15.0 m, carved crown piece",
+    "citation": "strip.jpg pand 1 (2025-01-20)",
+    "photoRows": [
+     2,
+     2,
+     2,
+     1,
+     1
+    ],
+    "photoGables": 1,
+    "schemaLimits": [
+     "the carved white crown piece on the top step is not drawn",
+     "the gable holds a wide two-light window at its foot and a small light near the top; the kit draws one narrow attic light"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012175739",
+   "slug": "spui-175739",
+   "address": "Spui 13",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Spui",
+      "gable": "cornice",
+      "cornice": "heavy",
+      "storeys": 3,
+      "bays": 2,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "casement-toplight",
+      "windowShare": 0.72,
+      "bands": "storey",
+      "windowHead": {
+       "kind": "relieving",
+       "storeys": [
+        1,
+        2
+       ],
+       "archRing": {
+        "colour": "stone",
+        "style": "blocks",
+        "keystone": true,
+        "springGap": 0.2
+       }
+      },
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "timber",
+      "storeyHeights": [
+       5.1,
+       2.9,
+       3.3
+      ],
+      "windowHeights": [
+       0.4,
+       0.6,
+       0.5
+      ],
+      "headLines": [
+       0.8,
+       0.72,
+       0.62
+      ],
+      "groundFront": {
+       "kind": "wall",
+       "bays": [
+        "window",
+        "door"
+       ],
+       "colour": "#ecebe4",
+       "evidence": "strip 2025-01-20 pand 2: a window under a white block arch over an arched basement door, a white-framed door on the right"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#262829",
+     "wallMaterial": "painted-brick",
+     "frame": "white-painted",
+     "door": "#2a2c2a",
+     "stone": "#ecebe4",
+     "band": "#ecebe4",
+     "cornice": "#ecebe4"
+    }
+   },
+   "groundFloor": {
+    "use": "shop",
+    "name": "Provelo",
+    "category": "shop=bicycle",
+    "osm": {
+     "type": "node",
+     "id": 5752445858,
+     "name": "Provelo",
+     "tags": "shop=bicycle"
+    },
+    "bag": [
+     "industriefunctie",
+     "winkelfunctie",
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-20",
+    "agreement": "osm-and-photo"
+   },
+   "rhythm": {
+    "bays": "2 axes",
+    "windowsPerStorey": "ground: window over arched basement door + door | 1: 2 | 2: 2 | roof: 1 pedimented dormer",
+    "symmetry": "symmetric above the ground",
+    "groundFloor": "basement door under white block voussoirs, door on the right",
+    "signage": "none",
+    "roofline": "white cornice over blind arches at 11.5 m, pedimented dormer to 13.5 m",
+    "citation": "strip.jpg pand 2 (2025-01-20)",
+    "photoRows": [
+     2,
+     2,
+     2,
+     1
+    ],
+    "schemaLimits": [
+     "the arched basement door with white block voussoirs (black and white striped) is drawn as a plain ground window",
+     "two blind arches with a central mask under the cornice are not drawn"
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012175740",
+    "stripRow": 253,
+    "evidence": "gable foot over the second-storey windows (grid crop s11, 11.0 m; the front runs full width to the first step at 13.7 m)"
+   },
+   {
+    "pand": "0363100012175739",
+    "stripRow": 233,
+    "evidence": "top of the white cornice (11.5 m)"
+   }
+  ]
+ }
+}

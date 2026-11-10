@@ -258,13 +258,16 @@
        0.78,
        0.85
       ],
-      "shopfront": {
+      "groundFront": {
+       "kind": "pui",
+       "bays": [
+        "window",
+        "glazed-door",
+        "window",
+        "panel"
+       ],
        "colour": "#3b6ea8",
-       "fascia": true,
-       "stallriser": "low",
-       "displayWindows": 2,
-       "entrance": "centre",
-       "evidence": "strip 2025-01-20 pand 5: blue-framed shop front with a glazed double door"
+       "evidence": "strip 2025-01-20 pand 5: blue-framed shop front, a glazed double door between two display windows"
       }
      }
     ],
@@ -305,6 +308,7 @@
     ],
     "photoGables": 1,
     "schemaLimits": [
+     "the right display window is drawn as a dark panel: a third glazed bay at the right end reaches past the wall silhouette (geometry audit opening-outside), so the pui keeps it closed",
      "claw pieces and the crowning ornament are washed out in the strip and not drawn"
     ]
    }

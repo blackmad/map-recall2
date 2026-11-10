@@ -36,10 +36,9 @@
       "hoist": false,
       "windows": "casement-toplight",
       "windowShare": 0.62,
-      "roofFront": "mansard",
       "dormers": 2,
-      "dormerStyle": "flat",
-      "dormerBody": "stone",
+      "dormerStyle": "plain",
+      "dormerBody": "zinc",
       "dormerAt": [
        {
         "from": 0.11,

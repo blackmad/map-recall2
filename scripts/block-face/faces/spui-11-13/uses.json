@@ -1,0 +1,132 @@
+{
+ "street": "Spui",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T09:05:49.728Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012175740",
+   "addresses": [
+    "Spui 11",
+    "Spui 11A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spui 11",
+     "use": "winkelfunctie",
+     "areaM2": 164,
+     "bagId": "0363010001172198"
+    },
+    {
+     "address": "Spui 11A",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010012568482"
+    },
+    {
+     "address": "Spui 11",
+     "use": "kantoorfunctie",
+     "areaM2": 93,
+     "bagId": "0363010012568483"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2724038532,
+     "lngLat": [
+      4.8907287,
+      52.3687413
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "11",
+      "addr:postcode": "1012WX",
+      "addr:street": "Spui",
+      "name": "Hampe",
+      "shop": "musical_instrument",
+      "source": "BAG",
+      "source:date": "2014-02-11",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:05:49.728Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 11953993907,
+     "lngLat": [
+      4.8906765,
+      52.3688306
+     ],
+     "tags": {
+      "access": "yes",
+      "amenity": "bicycle_parking",
+      "covered": "no",
+      "fee": "no"
+     },
+     "fetchedAt": "2026-11-10T09:05:49.728Z",
+     "match": "frontage",
+     "distanceM": 7.1
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012175739",
+   "addresses": [
+    "Spui 13",
+    "Spui 13C",
+    "Spui 13B",
+    "Spui 13A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Spui 13",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000948242"
+    },
+    {
+     "address": "Spui 13C",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012067504"
+    },
+    {
+     "address": "Spui 13B",
+     "use": "winkelfunctie",
+     "areaM2": 37,
+     "bagId": "0363010012065319"
+    },
+    {
+     "address": "Spui 13A",
+     "use": "industriefunctie",
+     "areaM2": 40,
+     "bagId": "0363010012065320"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5752445858,
+     "lngLat": [
+      4.890672,
+      52.3687524
+     ],
+     "tags": {
+      "name": "Provelo",
+      "shop": "bicycle",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T09:05:49.728Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}
