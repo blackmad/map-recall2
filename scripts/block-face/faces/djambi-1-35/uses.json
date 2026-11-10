@@ -1,0 +1,265 @@
+{
+ "street": "Djambistraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012065784",
+   "addresses": [
+    "Djambistraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000624700"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113498",
+   "addresses": [
+    "Djambistraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000624706"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012149516",
+   "addresses": [
+    "Djambistraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000624711"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012104592",
+   "addresses": [
+    "Djambistraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000624717"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012131961",
+   "addresses": [
+    "Djambistraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000624723"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012100535",
+   "addresses": [
+    "Djambistraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000624728"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012110582",
+   "addresses": [
+    "Djambistraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000624734"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012099261",
+   "addresses": [
+    "Djambistraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000624740"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012129720",
+   "addresses": [
+    "Djambistraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000624745"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012077761",
+   "addresses": [
+    "Djambistraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000624751"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012072833",
+   "addresses": [
+    "Djambistraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000624757"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012108617",
+   "addresses": [
+    "Djambistraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000624762"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012117530",
+   "addresses": [
+    "Djambistraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000624768"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095414",
+   "addresses": [
+    "Djambistraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000624774"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145454",
+   "addresses": [
+    "Djambistraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000624779"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089626",
+   "addresses": [
+    "Djambistraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Djambistraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 63,
+     "bagId": "0363010000624785"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

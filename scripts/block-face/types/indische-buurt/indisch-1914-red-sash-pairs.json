@@ -1,0 +1,179 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "indisch-1914-red-sash-pairs",
+ "district": "indische-buurt",
+ "description": "Lampongstraat 2-20 and Borneostraat 7-27 (BAG 1914): 6-7 m grey-brown brick fronts of a 3.6 m ground storey and three 3.0 m upper storeys under a white bracketed gutter at 13.0 m; four axes per front, a pair of wide cream-framed windows and a pair of narrow ones, the narrow pair on the door side so fronts mirror about the party wall; a white double door and two ground windows; one flat-roofed white dormer on a tiled roof",
+ "fit": {
+  "widthM": [
+   5.6,
+   7.2
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1913,
+   1915
+  ],
+  "eavesM": [
+   12.4,
+   13.3
+  ],
+  "storeys3dbag": [
+   5
+  ],
+  "roof": "pitched",
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 4
+   }
+  ],
+  "stucco": false,
+  "balconies": false,
+  "mirrorForDoor": "right",
+  "note": "BAG 1914, 3DBAG eaves 12.8 m, ridge 15.6-15.8 m on 16 of 17 Lampongstraat 2-20 and Borneostraat 7-27 pands; the 11-12 m double pands (Lampongstraat 12-18, Borneostraat 7-11) hold two fronts and are placed by their module count, not drawn here as one front"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   3,
+   4,
+   4,
+   4
+  ],
+  "axisGrid": 4,
+  "storeyAxes": {
+   "0": [
+    0,
+    1,
+    2
+   ]
+  },
+  "bayWidths": [
+   2.0,
+   1.4,
+   1.8,
+   0.8
+  ],
+  "bayFill": [
+   0.55,
+   0.79,
+   0.33,
+   0.75
+  ],
+  "cornice": "simple",
+  "windows": "casement-toplight",
+  "storeyHeights": [
+   3.6,
+   3.0,
+   3.0,
+   3.5
+  ],
+  "windowHeights": [
+   0.56,
+   0.67,
+   0.67,
+   0.54
+  ],
+  "headLines": [
+   0.92,
+   0.93,
+   0.93,
+   0.77
+  ]
+ },
+ "crowns": {
+  "flat-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "flat",
+   "dormerSize": {
+    "sill": 0.3,
+    "rise": 1.8,
+    "setback": 0.5
+   },
+   "eavesOverhang": {
+    "projection": 0.4,
+    "fascia": 0.2,
+    "colour": "#e6e4dc",
+    "soffit": "#c9c7bf"
+   },
+   "note": "Lampongstraat 10 and 8: a white flat-roofed dormer 1.9 m wide, 13.3-15.1 m, on the red tile roof behind a white bracketed gutter at 13.0 m",
+   "cornice": "none"
+  },
+  "none": {
+   "gable": "cornice",
+   "eavesOverhang": {
+    "projection": 0.4,
+    "fascia": 0.2,
+    "colour": "#e6e4dc",
+    "soffit": "#c9c7bf"
+   },
+   "note": "gutter only",
+   "cornice": "none"
+  }
+ },
+ "grounds": {
+  "door-right": {
+   "doorBay": 2,
+   "note": "a white double door 1.7 m wide at 3.8-5.5 m from the left edge, against the party wall; two windows to its left"
+  }
+ },
+ "palettes": {
+  "grey-brown": {
+   "brick": "#6d5d53",
+   "frame": "#dedbd3",
+   "door": "#7a2328",
+   "stone": "#dedbd3",
+   "cornice": "#e6e4dc"
+  },
+  "grey": {
+   "brick": "#7b7c7d",
+   "frame": "#dedbd3",
+   "door": "#7a2328",
+   "stone": "#dedbd3",
+   "cornice": "#e6e4dc"
+  }
+ },
+ "roof": {
+  "material": "red-tile"
+ },
+ "rhythm": {
+  "bays": "4 axes: two wide windows, two narrow windows on the door side; ground: two windows + double door",
+  "identicalBays": "pairs equal",
+  "windowsPerStorey": "ground: 2 + door | 1-3: 4",
+  "symmetry": "mirror pairs about the party wall",
+  "groundFloor": "white double door against the party wall",
+  "signage": "none",
+  "roofline": "white bracketed gutter, one white flat dormer per front on a red tile roof",
+  "photoRows": [
+   4,
+   4,
+   4,
+   4
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "lampong-2-20",
+   "pands": [
+    "140561",
+    "150248",
+    "085260"
+   ],
+   "citation": "strip.jpg 2025-09-26, 40 px/m, gridded: pands 10 and 8 (6.0 m): wide windows 1.1 m at 1.0 and 2.55 m from the left edge, narrow 0.6 m at 4.4 and 5.4 m; window heads 3.3, 6.4, 9.4, 12.3 m (3.0 m pitch), 2.0 m tall (storey 3 1.9 m); double door 3.8-5.5 m; gutter 13.0 m; dormer 13.3-15.1 m. Borneostraat 13-25 (2023-01-02) reads the same rhythm"
+  }
+ ],
+ "schemaLimits": [
+  "the red-painted sashes inside the cream frames (one frame colour)",
+  "the low iron rail under the wide windows",
+  "the bracket row under the gutter",
+  "the pointed brick gable over some pands (Borneostraat 9, 15, 21), drawn as the dormer"
+ ],
+ "notes": []
+}

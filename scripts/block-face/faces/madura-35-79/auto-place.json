@@ -1,0 +1,1406 @@
+{
+ "face": "madura-35-79",
+ "street": "Madurastraat",
+ "library": "indische-buurt",
+ "stripDate": "2022-01-12",
+ "seconds": 4.05,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012166898",
+   "address": "Madurastraat 35",
+   "builtYear": 1988,
+   "widthM": 5.19,
+   "eavesM": 15.45,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7e6a64",
+    "wallRaw": "#7c6b62",
+    "skyline": {
+     "eavesM": 14.63,
+     "eavesRow": 240,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 1.6,
+      "topWidthM": 0.68,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 9,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.335,
+    "structure": {
+     "bayWidthM": 0.63,
+     "bayCentre": 0.51,
+     "balconies": false,
+     "why": "no dark open axis, 2 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.55,
+       "widthM": 0.88,
+       "centre": 0.53
+      },
+      {
+       "atM": 8.77,
+       "widthM": 1.13,
+       "centre": 0.51
+      },
+      {
+       "atM": 8.47,
+       "widthM": 1.1,
+       "centre": 0.52
+      },
+      {
+       "atM": 5.85,
+       "widthM": 1.38,
+       "centre": 0.58
+      },
+      {
+       "atM": 5.55,
+       "widthM": 1.73,
+       "centre": 0.52
+      }
+     ]
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1988, type 1910-1914; frontage 5.19 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1988, type 1910-1914",
+     "frontage 5.19 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.45 m = 4 storeys of 3.86 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.244 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012153633",
+   "address": "Madurastraat 37",
+   "builtYear": 2001,
+   "widthM": 5.58,
+   "eavesM": 15.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5a4e46",
+    "wallRaw": "#695b52",
+    "skyline": {
+     "eavesM": 14.72,
+     "eavesRow": 236,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.3,
+      "topWidthM": 0.97,
+      "centre": 0.46
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.372,
+    "structure": {
+     "bayWidthM": 0.78,
+     "bayCentre": 0.51,
+     "balconies": false,
+     "why": "no dark open axis, 3 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.57,
+       "widthM": 0.88,
+       "centre": 0.53
+      },
+      {
+       "atM": 8.8,
+       "widthM": 1.45,
+       "centre": 0.52
+      },
+      {
+       "atM": 8.5,
+       "widthM": 1.4,
+       "centre": 0.52
+      },
+      {
+       "atM": 6.4,
+       "widthM": 0.95,
+       "centre": 0.23
+      },
+      {
+       "atM": 5.88,
+       "widthM": 1.4,
+       "centre": 0.76
+      },
+      {
+       "atM": 5.2,
+       "widthM": 1.1,
+       "centre": 0.18
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 2001, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 2001, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.26 m = 4 storeys of 3.81 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.246 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012071940",
+   "address": "Madurastraat 39",
+   "builtYear": 2001,
+   "widthM": 5.39,
+   "eavesM": 12.92,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64534d",
+    "wallRaw": "#6b5d53",
+    "skyline": {
+     "eavesM": 15.03,
+     "eavesRow": 224,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 1.53,
+      "topWidthM": 0.38,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 7,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.244,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.49 (light 0.3): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.49,
+       "light": 0.3
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 10.45,
+       "widthM": 0.85,
+       "centre": 0.53
+      },
+      {
+       "atM": 8.88,
+       "widthM": 1.52,
+       "centre": 0.51
+      },
+      {
+       "atM": 8.57,
+       "widthM": 1.13,
+       "centre": 0.5
+      },
+      {
+       "atM": 5.88,
+       "widthM": 1,
+       "centre": 0.82
+      },
+      {
+       "atM": 5.27,
+       "widthM": 1.02,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 2001, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 2001, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.92 m = 4 storeys of 3.23 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.193 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150462",
+   "address": "Madurastraat 41A",
+   "builtYear": 1912,
+   "widthM": 6.12,
+   "eavesM": 13.75,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66544c",
+    "wallRaw": "#62554c",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 208,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.15,
+      "riseM": 1.6,
+      "topWidthM": 0.38,
+      "centre": 0.1
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.237,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.18 m (1.52 m wide), 5.95 m (1.6 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.18,
+       "widthM": 1.52,
+       "centre": 0.54
+      },
+      {
+       "atM": 5.95,
+       "widthM": 1.6,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.62 < 0.7 (3DBAG eaves 13.75 m = 4 storeys of 3.44 m vs the type's 3.08 m; strip columns 6 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.62,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.75 m = 4 storeys of 3.44 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.177 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012139551",
+   "address": "Madurastraat 43A",
+   "builtYear": 1912,
+   "widthM": 6.11,
+   "eavesM": 15.69,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d514a",
+    "wallRaw": "#60564d",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 208,
+     "confidence": 0.98,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 3.63,
+      "topWidthM": 0.23,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.25,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 8.97,
+       "widthM": 0.85,
+       "centre": 0.71
+      },
+      {
+       "atM": 6.8,
+       "widthM": 1.15,
+       "centre": 0.86
+      },
+      {
+       "atM": 5.6,
+       "widthM": 1.13,
+       "centre": 0.53
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.55 < 0.7 (3DBAG eaves 15.69 m = 4 storeys of 3.92 m vs the type's 3.08 m; strip columns 3 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.69 m = 4 storeys of 3.92 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.164 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012104596",
+   "address": "Madurastraat 45A",
+   "builtYear": 1912,
+   "widthM": 6.1,
+   "eavesM": 13.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#75645c",
+    "wallRaw": "#554b44",
+    "skyline": {
+     "eavesM": 19.68,
+     "eavesRow": 38,
+     "confidence": 0.55,
+     "crown": {
+      "widthM": 1.05,
+      "riseM": 0.95,
+      "topWidthM": 0.6,
+      "centre": 0.91
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.037,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.1,
+       "widthM": 1.75,
+       "centre": 0.4
+      },
+      {
+       "atM": 5.57,
+       "widthM": 1.2,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different 1913 front (grouped windows, three iron balconies on a stacked axis, a bell-shaped roof): the Javastraat mansard type matched it on year, storeys and eaves alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012146568",
+   "address": "Madurastraat 47",
+   "builtYear": 1912,
+   "widthM": 6.13,
+   "eavesM": 13.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7f685d",
+    "wallRaw": "#736157",
+    "skyline": {
+     "eavesM": 15.38,
+     "eavesRow": 210,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.8,
+      "riseM": 1.27,
+      "topWidthM": 0.65,
+      "centre": 0.87
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.297,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.07 m (2.1 m wide), 5.63 m (1.48 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.07,
+       "widthM": 2.1,
+       "centre": 0.54
+      },
+      {
+       "atM": 7.35,
+       "widthM": 0.97,
+       "centre": 0.56
+      },
+      {
+       "atM": 5.63,
+       "widthM": 1.48,
+       "centre": 0.57
+      },
+      {
+       "atM": 5.32,
+       "widthM": 0.82,
+       "centre": 0.82
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different 1913 front (three-light windows and a wide balcony bay): not the Javastraat arched-window design",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137853",
+   "address": "Madurastraat 49A",
+   "builtYear": 1912,
+   "widthM": 5.84,
+   "eavesM": 16.07,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#5d4d45",
+    "wallRaw": "#685850",
+    "skyline": {
+     "eavesM": 15.82,
+     "eavesRow": 192,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.6,
+      "topWidthM": 0.55,
+      "centre": 0.14
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.244,
+    "structure": {
+     "bayWidthM": 0.57,
+     "bayCentre": 0.18,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.22,
+       "widthM": 1.85,
+       "centre": 0.44
+      },
+      {
+       "atM": 5.7,
+       "widthM": 0.95,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.46 < 0.7 (3DBAG eaves 16.07 m = 4 storeys of 4.02 m vs the type's 3.08 m; strip columns 7 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.46,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.07 m = 4 storeys of 4.02 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.182 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012118382",
+   "address": "Madurastraat 51A",
+   "builtYear": 1912,
+   "widthM": 6.02,
+   "eavesM": 16.15,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#574a43",
+    "wallRaw": "#5c514a",
+    "skyline": {
+     "eavesM": 16.43,
+     "eavesRow": 168,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.57,
+      "riseM": 3,
+      "topWidthM": 0.38,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.187,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.25 m (1.27 m wide), 5.88 m (1.7 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.25,
+       "widthM": 1.27,
+       "centre": 0.38
+      },
+      {
+       "atM": 5.88,
+       "widthM": 1.7,
+       "centre": 0.43
+      },
+      {
+       "atM": 5.27,
+       "widthM": 1.02,
+       "centre": 0.46
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.55 < 0.7 (3DBAG eaves 16.15 m = 4 storeys of 4.04 m vs the type's 3.08 m; strip columns 3 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.15 m = 4 storeys of 4.04 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.127 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012123747",
+   "address": "Madurastraat 53",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 16.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#705e56",
+    "wallRaw": "#79695f",
+    "skyline": {
+     "eavesM": 14.82,
+     "eavesRow": 232,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 2.2,
+      "topWidthM": 0.5,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.349,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 12.88 m (1.98 m wide), 9.2 m (1.5 m wide), 5.97 m (1.57 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.88,
+       "widthM": 1.98,
+       "centre": 0.18
+      },
+      {
+       "atM": 9.2,
+       "widthM": 1.5,
+       "centre": 0.51
+      },
+      {
+       "atM": 5.97,
+       "widthM": 1.57,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.55 < 0.7 (3DBAG eaves 16.09 m = 4 storeys of 4.02 m vs the type's 3.08 m; strip columns 3 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.09 m = 4 storeys of 4.02 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.243 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137665",
+   "address": "Madurastraat 55",
+   "builtYear": 1912,
+   "widthM": 6.02,
+   "eavesM": 16.06,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5d58",
+    "wallRaw": "#7e7068",
+    "skyline": {
+     "eavesM": 15.22,
+     "eavesRow": 216,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.65,
+      "riseM": 1.8,
+      "topWidthM": 0.4,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.299,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.22,
+       "widthM": 0.97,
+       "centre": 0.39
+      },
+      {
+       "atM": 5.63,
+       "widthM": 1.1,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0.04,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.55 < 0.7 (3DBAG eaves 16.06 m = 4 storeys of 4.01 m vs the type's 3.08 m; strip columns 3 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 16.06 m = 4 storeys of 4.01 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.198 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012140805",
+   "address": "Madurastraat 57",
+   "builtYear": 1912,
+   "widthM": 6.01,
+   "eavesM": 13.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5c56",
+    "wallRaw": "#776860",
+    "skyline": {
+     "eavesM": 14.95,
+     "eavesRow": 227,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.85,
+      "riseM": 2.28,
+      "topWidthM": 0.53,
+      "centre": 0.83
+     }
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.325,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.38 m (1.5 m wide), 6.15 m (1.73 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.38,
+       "widthM": 1.5,
+       "centre": 0.55
+      },
+      {
+       "atM": 6.15,
+       "widthM": 1.73,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012144327",
+   "address": "Madurastraat 59A",
+   "builtYear": 1912,
+   "widthM": 6,
+   "eavesM": 15.33,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64534c",
+    "wallRaw": "#6f5f57",
+    "skyline": {
+     "eavesM": 19.02,
+     "eavesRow": 64,
+     "confidence": 0.37,
+     "crown": {
+      "widthM": 0.78,
+      "riseM": 1.6,
+      "topWidthM": 0.33,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 7,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.284,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.4 m (1.48 m wide), 5.88 m (2.17 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.4,
+       "widthM": 1.48,
+       "centre": 0.44
+      },
+      {
+       "atM": 6.85,
+       "widthM": 1.07,
+       "centre": 0.12
+      },
+      {
+       "atM": 6.25,
+       "widthM": 0.85,
+       "centre": 0.45
+      },
+      {
+       "atM": 5.88,
+       "widthM": 2.17,
+       "centre": 0.44
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.55 < 0.7 (3DBAG eaves 15.33 m = 4 storeys of 3.83 m vs the type's 3.08 m; strip columns 3 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.33 m = 4 storeys of 3.83 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.228 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012075745",
+   "address": "Madurastraat 61",
+   "builtYear": 1912,
+   "widthM": 6.15,
+   "eavesM": 15.98,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#69574f",
+    "wallRaw": "#806a5f",
+    "skyline": {
+     "eavesM": 14.38,
+     "eavesRow": 250,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.02,
+      "riseM": 1.88,
+      "topWidthM": 2,
+      "centre": 0.82
+     }
+    },
+    "stucco": false,
+    "bands": 6,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.343,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.43 m (1.48 m wide), 6.35 m (1.5 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.43,
+       "widthM": 1.48,
+       "centre": 0.53
+      },
+      {
+       "atM": 6.35,
+       "widthM": 1.5,
+       "centre": 0.53
+      },
+      {
+       "atM": 5.75,
+       "widthM": 1,
+       "centre": 0.54
+      }
+     ]
+    },
+    "voidShare": 0.03,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.55 < 0.7 (3DBAG eaves 15.98 m = 4 storeys of 4 m vs the type's 3.08 m; strip columns 3 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.55,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 15.98 m = 4 storeys of 4 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.27 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012110087",
+   "address": "Madurastraat 63A",
+   "builtYear": 1913,
+   "widthM": 2.52,
+   "eavesM": 13.21,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#76625b",
+    "wallRaw": "#7b675c",
+    "skyline": {
+     "eavesM": 14.57,
+     "eavesRow": 242,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.295,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 2.52 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 2.52 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.21 m = 4 storeys of 3.3 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.246 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012068160",
+   "address": "Madurastraat 65A",
+   "builtYear": 1913,
+   "widthM": 6.41,
+   "eavesM": 13.58,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#76635a",
+    "wallRaw": "#7e6b61",
+    "skyline": {
+     "eavesM": 14.4,
+     "eavesRow": 249,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.73,
+      "riseM": 1.42,
+      "topWidthM": 0.47,
+      "centre": 0.27
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.339,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1912-java-mansard-arches scores 0.62 < 0.7 (3DBAG eaves 13.58 m = 4 storeys of 3.4 m vs the type's 3.08 m; strip columns 2 vs 4 bays)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0.62,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "3DBAG eaves 13.58 m = 4 storeys of 3.4 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.277 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

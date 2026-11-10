@@ -1,0 +1,438 @@
+{
+ "street": "Bankastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:09:00.419Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012086581",
+   "addresses": [
+    "Bankastraat 46"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 46-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000576451"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012073492",
+   "addresses": [
+    "Bankastraat 44"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 44-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000576443"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161436",
+   "addresses": [
+    "Bankastraat 42"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 42-H",
+     "use": "industriefunctie",
+     "areaM2": 65,
+     "bagId": "0363010000576434"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012084055",
+   "addresses": [
+    "Bankastraat 40B",
+    "Bankastraat 40E",
+    "Bankastraat 40F",
+    "Bankastraat 40C",
+    "Bankastraat 40D",
+    "Bankastraat 40G",
+    "Bankastraat 40H",
+    "Bankastraat 40K",
+    "Bankastraat 40A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 40B",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010010953218"
+    },
+    {
+     "address": "Bankastraat 40E",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010010953219"
+    },
+    {
+     "address": "Bankastraat 40F",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010010953220"
+    },
+    {
+     "address": "Bankastraat 40C",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010010953221"
+    },
+    {
+     "address": "Bankastraat 40D",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010010953222"
+    },
+    {
+     "address": "Bankastraat 40G",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010010953223"
+    },
+    {
+     "address": "Bankastraat 40H",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010953224"
+    },
+    {
+     "address": "Bankastraat 40K",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010010953225"
+    },
+    {
+     "address": "Bankastraat 40A",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010010953226"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012158898",
+   "addresses": [
+    "Bankastraat 38"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 38-H",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000576418"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163800",
+   "addresses": [
+    "Bankastraat 36"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 36-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000576411"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156404",
+   "addresses": [
+    "Bankastraat 34"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 34-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000576403"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012166460",
+   "addresses": [
+    "Bankastraat 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 32-H",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000576395"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155981",
+   "addresses": [
+    "Bankastraat 30A",
+    "Bankastraat 30B",
+    "Bankastraat 30C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 30A",
+     "use": "industriefunctie",
+     "areaM2": 63,
+     "bagId": "0363010001028459"
+    },
+    {
+     "address": "Bankastraat 30B",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010001028460"
+    },
+    {
+     "address": "Bankastraat 30C",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010001028461"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012160166",
+   "addresses": [
+    "Bankastraat 28A",
+    "Bankastraat 28B",
+    "Bankastraat 28C"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 28A",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010001028462"
+    },
+    {
+     "address": "Bankastraat 28B",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010001028463"
+    },
+    {
+     "address": "Bankastraat 28C",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010001028464"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161683",
+   "addresses": [
+    "Bankastraat 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 26-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000576370"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012239390",
+   "addresses": [
+    "Bankastraat 22G",
+    "Bankastraat 22A",
+    "Bankastraat 22B",
+    "Bankastraat 22E",
+    "Bankastraat 22F",
+    "Bankastraat 22C",
+    "Bankastraat 22D",
+    "Bankastraat 24E",
+    "Bankastraat 24F",
+    "Bankastraat 24G",
+    "Bankastraat 24D",
+    "Bankastraat 24A",
+    "Bankastraat 24C",
+    "Bankastraat 24B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 22G",
+     "use": "woonfunctie",
+     "areaM2": 141,
+     "bagId": "0363010001977441"
+    },
+    {
+     "address": "Bankastraat 24E",
+     "use": "woonfunctie",
+     "areaM2": 104,
+     "bagId": "0363010012064380"
+    },
+    {
+     "address": "Bankastraat 24F",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012064381"
+    },
+    {
+     "address": "Bankastraat 24G",
+     "use": "woonfunctie",
+     "areaM2": 96,
+     "bagId": "0363010012064382"
+    },
+    {
+     "address": "Bankastraat 24D",
+     "use": "woonfunctie",
+     "areaM2": 103,
+     "bagId": "0363010012064383"
+    },
+    {
+     "address": "Bankastraat 24A",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012064384"
+    },
+    {
+     "address": "Bankastraat 24C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012064386"
+    },
+    {
+     "address": "Bankastraat 22A",
+     "use": "winkelfunctie",
+     "areaM2": 48,
+     "bagId": "0363010001975581"
+    },
+    {
+     "address": "Bankastraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010001975582"
+    },
+    {
+     "address": "Bankastraat 22E",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010001975583"
+    },
+    {
+     "address": "Bankastraat 22F",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010001975584"
+    },
+    {
+     "address": "Bankastraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010001975585"
+    },
+    {
+     "address": "Bankastraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010001975586"
+    },
+    {
+     "address": "Bankastraat 24B",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012064385"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012143434",
+   "addresses": [
+    "Bankastraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bankastraat 18",
+     "use": "onderwijsfunctie",
+     "areaM2": 1635,
+     "bagId": "0363010000576345"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12700155148,
+     "lngLat": [
+      4.9326986,
+      52.3647787
+     ],
+     "tags": {
+      "amenity": "recycling",
+      "recycling:glass_bottles": "yes",
+      "recycling:paper": "yes",
+      "recycling_type": "container"
+     },
+     "fetchedAt": "2026-11-09T23:09:00.419Z",
+     "match": "frontage",
+     "distanceM": 3.8
+    },
+    {
+     "type": "way",
+     "id": 1493447599,
+     "lngLat": [
+      4.9328312,
+      52.3645238
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18",
+      "addr:postcode": "1094ED",
+      "addr:street": "Bankastraat",
+      "amenity": "school",
+      "education": "school",
+      "isced:level": "0;1",
+      "landuse": "education",
+      "name": "De Indische Buurtschool",
+      "operator": "Staij",
+      "operator:website": "https://www.staij.nl",
+      "operator:wikidata": "Q138758033",
+      "phone": "+31 20 6650252",
+      "school": "primary",
+      "website": "https://deindischebuurtschool.nl"
+     },
+     "fetchedAt": "2026-11-09T23:09:00.419Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

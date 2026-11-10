@@ -1,0 +1,73 @@
+{
+ "street": "Soendastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012136122",
+   "addresses": [
+    "Soendastraat 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soendastraat 14-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000813374"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068591",
+   "addresses": [
+    "Soendastraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soendastraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000813366"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092864",
+   "addresses": [
+    "Soendastraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soendastraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000813358"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012092089",
+   "addresses": [
+    "Soendastraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Soendastraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 45,
+     "bagId": "0363010000813350"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

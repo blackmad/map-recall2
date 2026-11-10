@@ -1,0 +1,1406 @@
+{
+ "street": "Soendastraat",
+ "seed": "0363100012093268",
+ "members": [
+  "0363100012136122",
+  "0363100012068591",
+  "0363100012092864",
+  "0363100012092089"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "run of soenda-2-36: 063047 held (auto-place.json)"
+  },
+  {
+   "side": "right",
+   "reason": "run of soenda-2-36: 066054 held (auto-place.json)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012062224",
+   "reason": "frontage 76.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012062429",
+   "reason": "frontage 85.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012063476",
+   "reason": "frontage 84.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012063489",
+   "reason": "frontage 99.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012063515",
+   "reason": "frontage 129.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012063800",
+   "reason": "sightline to Soendastraat crosses 0363100012093268"
+  },
+  {
+   "pandId": "0363100012064007",
+   "reason": "frontage 115.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012064858",
+   "reason": "frontage 105.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012065784",
+   "reason": "frontage 31.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012065807",
+   "reason": "frontage 158.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012066312",
+   "reason": "frontage 112.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012066697",
+   "reason": "frontage 180.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012066931",
+   "reason": "frontage 65.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012067472",
+   "reason": "frontage 200.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012068278",
+   "reason": "frontage 159.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012068360",
+   "reason": "frontage 128.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012070098",
+   "reason": "frontage 124.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012070922",
+   "reason": "frontage 128.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012072685",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012072833",
+   "reason": "frontage 30.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012073033",
+   "reason": "frontage 63.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012073042",
+   "reason": "frontage 67.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012073510",
+   "reason": "frontage 119.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012073640",
+   "reason": "frontage 141.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012073822",
+   "reason": "frontage 103.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012074338",
+   "reason": "frontage 84.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012074432",
+   "reason": "frontage 64.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012074710",
+   "reason": "frontage 127.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012074961",
+   "reason": "frontage 69.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012075844",
+   "reason": "frontage 103.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012075959",
+   "reason": "frontage 103.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012077761",
+   "reason": "frontage 30.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012078026",
+   "reason": "frontage 73.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012078338",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012078465",
+   "reason": "frontage 163.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012078916",
+   "reason": "frontage 78.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012079210",
+   "reason": "frontage 152.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012079465",
+   "reason": "frontage 99.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012079497",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012079555",
+   "reason": "frontage 185.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012080112",
+   "reason": "frontage 125.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012066206",
+   "reason": "frontage 143.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012077529",
+   "reason": "frontage 140.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012080471",
+   "reason": "frontage 124.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012080763",
+   "reason": "frontage 67.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012080878",
+   "reason": "frontage 67.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012081365",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012081366",
+   "reason": "frontage 38.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012081726",
+   "reason": "frontage 106.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012081898",
+   "reason": "frontage 52.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012081977",
+   "reason": "frontage 175.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012082066",
+   "reason": "frontage 126.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012082255",
+   "reason": "frontage 59.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012082284",
+   "reason": "frontage 67.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012082491",
+   "reason": "frontage 149.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012083049",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012083102",
+   "reason": "frontage 62.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012083668",
+   "reason": "frontage 124.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012083683",
+   "reason": "frontage 62.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012083822",
+   "reason": "frontage 82.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012083959",
+   "reason": "frontage 132.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012084255",
+   "reason": "frontage 103.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012084282",
+   "reason": "frontage 124.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012085260",
+   "reason": "frontage 109.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012085781",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012085970",
+   "reason": "frontage 134.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012086183",
+   "reason": "frontage 67.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012086737",
+   "reason": "frontage 104.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012087108",
+   "reason": "frontage 180.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012087984",
+   "reason": "frontage 135.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012088631",
+   "reason": "frontage 103.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012088701",
+   "reason": "frontage 67.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012089626",
+   "reason": "sightline to Soendastraat crosses 0363100012084401"
+  },
+  {
+   "pandId": "0363100012089774",
+   "reason": "frontage 200.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012090058",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012090264",
+   "reason": "frontage 133.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012090483",
+   "reason": "frontage 121.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012090617",
+   "reason": "frontage 157.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012091050",
+   "reason": "frontage 122.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012092896",
+   "reason": "frontage 68.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012092960",
+   "reason": "frontage 131.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012093121",
+   "reason": "frontage 124.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012093463",
+   "reason": "frontage 80.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012093828",
+   "reason": "frontage 36.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012093873",
+   "reason": "frontage 102.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012094001",
+   "reason": "frontage 148.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012082972",
+   "reason": "frontage 155.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012092612",
+   "reason": "frontage 147.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012094122",
+   "reason": "frontage 34.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012094377",
+   "reason": "frontage 67.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012095234",
+   "reason": "frontage 105.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012095414",
+   "reason": "sightline to Soendastraat crosses 0363100012150368"
+  },
+  {
+   "pandId": "0363100012095455",
+   "reason": "frontage 78.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012095988",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012096113",
+   "reason": "frontage 75.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012096127",
+   "reason": "frontage 123.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012096397",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012096412",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012097275",
+   "reason": "frontage 70.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012097481",
+   "reason": "frontage 149.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012097629",
+   "reason": "frontage 66.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012098028",
+   "reason": "frontage 172.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012098110",
+   "reason": "frontage 68.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012098497",
+   "reason": "frontage 164.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012098659",
+   "reason": "frontage 100.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012099261",
+   "reason": "frontage 30.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012099338",
+   "reason": "frontage 138.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012100086",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012100331",
+   "reason": "frontage 71.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012100391",
+   "reason": "frontage 55.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012100535",
+   "reason": "frontage 30.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012100806",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012101053",
+   "reason": "sightline to Soendastraat crosses 0363100012128109"
+  },
+  {
+   "pandId": "0363100012102359",
+   "reason": "frontage 91.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012102408",
+   "reason": "frontage 103.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012102480",
+   "reason": "frontage 91.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012102563",
+   "reason": "frontage 173.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012102866",
+   "reason": "frontage 75.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012103232",
+   "reason": "frontage 144.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012103586",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012103643",
+   "reason": "frontage 142.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012103819",
+   "reason": "frontage 108.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012103933",
+   "reason": "frontage 146.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012103954",
+   "reason": "frontage 115.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012103997",
+   "reason": "frontage 133.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012104158",
+   "reason": "frontage 53.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012104592",
+   "reason": "frontage 30.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012104978",
+   "reason": "sightline to Soendastraat crosses 0363100012069698"
+  },
+  {
+   "pandId": "0363100012105884",
+   "reason": "frontage 103.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012106412",
+   "reason": "frontage 119.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012106433",
+   "reason": "frontage 124.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012106655",
+   "reason": "frontage 67.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012107515",
+   "reason": "frontage 67.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012107709",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012100639",
+   "reason": "frontage 159.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012107029",
+   "reason": "frontage 159.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012107819",
+   "reason": "frontage 162.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012107862",
+   "reason": "frontage 82.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012107948",
+   "reason": "frontage 35.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012108617",
+   "reason": "frontage 30.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012108761",
+   "reason": "frontage 115.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012108941",
+   "reason": "frontage 67.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012109433",
+   "reason": "frontage 64.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012110044",
+   "reason": "frontage 67.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012110430",
+   "reason": "frontage 81.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012110582",
+   "reason": "frontage 30.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012110585",
+   "reason": "frontage 129.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012110647",
+   "reason": "frontage 52.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012111959",
+   "reason": "frontage 67.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012112314",
+   "reason": "sightline to Soendastraat crosses 0363100012124226"
+  },
+  {
+   "pandId": "0363100012112381",
+   "reason": "frontage 122.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012112606",
+   "reason": "frontage 123.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012113411",
+   "reason": "frontage 79.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012113498",
+   "reason": "frontage 30.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012113540",
+   "reason": "frontage 52.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012113869",
+   "reason": "frontage 122.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012114269",
+   "reason": "frontage 106.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012114995",
+   "reason": "frontage 118.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012115009",
+   "reason": "frontage 85.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012115019",
+   "reason": "frontage 53.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012115806",
+   "reason": "frontage 73.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012116590",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012116812",
+   "reason": "frontage 114.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012117480",
+   "reason": "frontage 143.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012117530",
+   "reason": "sightline to Soendastraat crosses 0363100012069113"
+  },
+  {
+   "pandId": "0363100012117596",
+   "reason": "frontage 152.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012117891",
+   "reason": "frontage 112.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012118669",
+   "reason": "frontage 116.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012118700",
+   "reason": "sightline to Soendastraat crosses 0363100012063800"
+  },
+  {
+   "pandId": "0363100012119304",
+   "reason": "frontage 155.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012120215",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012120527",
+   "reason": "frontage 184.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012120784",
+   "reason": "frontage 155.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012120831",
+   "reason": "frontage 133.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012120856",
+   "reason": "frontage 111.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012121540",
+   "reason": "frontage 128.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012121776",
+   "reason": "frontage 74.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012121865",
+   "reason": "frontage 124.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012122011",
+   "reason": "frontage 52.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012122027",
+   "reason": "frontage 30.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012122436",
+   "reason": "frontage 90.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012122437",
+   "reason": "frontage 87.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012122926",
+   "reason": "frontage 53.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012108442",
+   "reason": "frontage 157.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012113567",
+   "reason": "frontage 157.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012122980",
+   "reason": "frontage 103.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012123289",
+   "reason": "frontage 100.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012123753",
+   "reason": "frontage 70.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012124171",
+   "reason": "frontage 102.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012124226",
+   "reason": "sightline to Soendastraat crosses 0363100012144738"
+  },
+  {
+   "pandId": "0363100012124634",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012124833",
+   "reason": "frontage 193.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012124922",
+   "reason": "frontage 103.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012125352",
+   "reason": "frontage 148.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012125421",
+   "reason": "frontage 77.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012125487",
+   "reason": "frontage 64.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012125631",
+   "reason": "frontage 105.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012125682",
+   "reason": "frontage 52.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012125885",
+   "reason": "frontage 100.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012126147",
+   "reason": "frontage 162.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012126729",
+   "reason": "frontage 125.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012126924",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012127733",
+   "reason": "frontage 53.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012128027",
+   "reason": "frontage 76.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012128109",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012128311",
+   "reason": "frontage 67.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012128496",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012128926",
+   "reason": "frontage 63.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012129419",
+   "reason": "frontage 99.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012129720",
+   "reason": "frontage 30.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012129780",
+   "reason": "frontage 109.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012130723",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012130744",
+   "reason": "frontage 79.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012131182",
+   "reason": "frontage 67.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012131435",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012131518",
+   "reason": "frontage 83.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012131529",
+   "reason": "frontage 93.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012131587",
+   "reason": "frontage 186.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012131679",
+   "reason": "frontage 137.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012131773",
+   "reason": "frontage 134.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012131890",
+   "reason": "frontage 67.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012131961",
+   "reason": "frontage 30.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012131991",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012132949",
+   "reason": "frontage 195.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012132961",
+   "reason": "frontage 73.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012133565",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012133599",
+   "reason": "frontage 97.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012133751",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012133860",
+   "reason": "frontage 170.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012136282",
+   "reason": "frontage 103.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012136396",
+   "reason": "frontage 79.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012136784",
+   "reason": "frontage 67.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012125663",
+   "reason": "frontage 172.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012138107",
+   "reason": "frontage 156.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012138203",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012138387",
+   "reason": "frontage 96.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012138717",
+   "reason": "frontage 187.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012139109",
+   "reason": "frontage 100.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012139295",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012139392",
+   "reason": "frontage 69.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012140052",
+   "reason": "frontage 149.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012140561",
+   "reason": "frontage 97.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012140581",
+   "reason": "frontage 104.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012141749",
+   "reason": "frontage 140.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012142474",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012144103",
+   "reason": "frontage 97.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012145195",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012145454",
+   "reason": "sightline to Soendastraat crosses 0363100012113301"
+  },
+  {
+   "pandId": "0363100012145601",
+   "reason": "frontage 110.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012146291",
+   "reason": "frontage 70.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012146406",
+   "reason": "frontage 99.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012146441",
+   "reason": "frontage 127.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012146653",
+   "reason": "frontage 99.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012147120",
+   "reason": "frontage 68.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012147259",
+   "reason": "frontage 180.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012147329",
+   "reason": "frontage 67.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012148300",
+   "reason": "frontage 53.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012148852",
+   "reason": "frontage 67.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012148990",
+   "reason": "frontage 67.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012149087",
+   "reason": "frontage 124.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012149152",
+   "reason": "frontage 68.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012149325",
+   "reason": "frontage 71.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012149516",
+   "reason": "frontage 30.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012150083",
+   "reason": "frontage 151.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012150248",
+   "reason": "frontage 103.4 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012150628",
+   "reason": "frontage 99.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012152189",
+   "reason": "frontage 107.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012153044",
+   "reason": "frontage 166.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012154579",
+   "reason": "frontage 80.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012154744",
+   "reason": "frontage 76.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012159049",
+   "reason": "frontage 140.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012183495",
+   "reason": "frontage 156.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012184242",
+   "reason": "frontage 83.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012184243",
+   "reason": "frontage 89.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012184280",
+   "reason": "frontage 95.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012184832",
+   "reason": "frontage 102.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012187907",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012140768",
+   "reason": "frontage 169.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012146333",
+   "reason": "frontage 150.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012147131",
+   "reason": "frontage 170.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012163722",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012184308",
+   "reason": "frontage 159.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012190399",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012190400",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012190415",
+   "reason": "frontage 201.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012190917",
+   "reason": "frontage 116.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012194532",
+   "reason": "frontage 77.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012197922",
+   "reason": "frontage 176.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012198255",
+   "reason": "frontage 91.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012199412",
+   "reason": "frontage 90.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012199780",
+   "reason": "frontage 138.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012200582",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012200722",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012200723",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012201667",
+   "reason": "frontage 186.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012203661",
+   "reason": "frontage 102.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012205159",
+   "reason": "frontage 178.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012205412",
+   "reason": "frontage 203.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012205804",
+   "reason": "frontage 96.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012206788",
+   "reason": "frontage 144.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012206789",
+   "reason": "frontage 149.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012206790",
+   "reason": "frontage 147.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012208388",
+   "reason": "frontage 91.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012209041",
+   "reason": "frontage 88.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012209776",
+   "reason": "frontage 189.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012211423",
+   "reason": "frontage 167.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012212092",
+   "reason": "frontage 97.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012212093",
+   "reason": "frontage 106.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012214166",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012214999",
+   "reason": "frontage 182.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012217804",
+   "reason": "frontage 147.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012217805",
+   "reason": "frontage 147.2 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012219040",
+   "reason": "frontage 191.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012219041",
+   "reason": "frontage 185.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012220346",
+   "reason": "frontage 165.6 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012220645",
+   "reason": "frontage 90.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012221248",
+   "reason": "frontage 193.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012221702",
+   "reason": "frontage 187.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012228475",
+   "reason": "frontage 106.5 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012229899",
+   "reason": "frontage 136.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012230054",
+   "reason": "frontage 95.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012232259",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012232330",
+   "reason": "frontage 142.1 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012233598",
+   "reason": "frontage 68.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012234466",
+   "reason": "frontage 154.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012234467",
+   "reason": "frontage 142.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012236071",
+   "reason": "frontage 36.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012237183",
+   "reason": "frontage 182.8 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012237325",
+   "reason": "frontage 147.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012237392",
+   "reason": "frontage 168.9 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012238726",
+   "reason": "no frontage on Soendastraat: No footprint edge faces Soendastraat"
+  },
+  {
+   "pandId": "0363100012240312",
+   "reason": "frontage 153.0 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012248158",
+   "reason": "frontage 88.7 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012253816",
+   "reason": "frontage 134.3 m from Soendastraat"
+  },
+  {
+   "pandId": "0363100012249646",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012136122",
+   "alongM": -36.65,
+   "widthM": 5.55,
+   "eavesM": 12.98,
+   "roofMaxM": 15.42,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012068591",
+   "alongM": -31.1,
+   "widthM": 5.55,
+   "eavesM": 12.99,
+   "roofMaxM": 15.44,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012092864",
+   "alongM": -25.32,
+   "widthM": 6,
+   "eavesM": 12.99,
+   "roofMaxM": 15.44,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012092089",
+   "alongM": -19.32,
+   "widthM": 6,
+   "eavesM": 13.35,
+   "roofMaxM": 15.89,
+   "storeys3dbag": 5,
+   "builtYear": 1913,
+   "uncertainty": []
+  }
+ ],
+ "runOf": "soenda-2-36"
+}

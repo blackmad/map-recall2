@@ -1,0 +1,206 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "soenda-2-36-r1",
+ "street": "Soendastraat",
+ "sources": [
+  {
+   "id": "strip-2019-12-18",
+   "kind": "street-panorama",
+   "capturedAt": "2019-12-18",
+   "image": "staging/block-face/soenda-2-36-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the indische-buurt library (buurt Timorpleinbuurt-Noord); scores and holds in scripts/block-face/faces/soenda-2-36/auto-place.json"
+ },
+ "types": [
+  "indisch-1913-arched-pair-dormer"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012113301",
+   "slug": "soenda-113301",
+   "address": "Soendastraat 30",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#725b4f",
+     "evidence": "strip 2019-12-18 span 240-480: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 240-480"
+   }
+  },
+  {
+   "pandId": "0363100012150368",
+   "slug": "soenda-150368",
+   "address": "Soendastraat 28",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#765e51",
+     "evidence": "strip 2019-12-18 span 480-720: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 480-720"
+   }
+  },
+  {
+   "pandId": "0363100012069113",
+   "slug": "soenda-069113",
+   "address": "Soendastraat 26",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#8b6e60",
+     "evidence": "strip 2019-12-18 span 720-940: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 720-940"
+   }
+  },
+  {
+   "pandId": "0363100012062527",
+   "slug": "soenda-062527",
+   "address": "Soendastraat 24",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#886c5a",
+     "evidence": "strip 2019-12-18 span 940-1160: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 940-1160"
+   }
+  },
+  {
+   "pandId": "0363100012081321",
+   "slug": "soenda-081321",
+   "address": "Soendastraat 22",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#836756",
+     "evidence": "strip 2019-12-18 span 1160-1380: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 1160-1380"
+   }
+  },
+  {
+   "pandId": "0363100012107809",
+   "slug": "soenda-107809",
+   "address": "Soendastraat 20",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "measuredPalette": {
+     "brick": "#8a6c5a",
+     "evidence": "strip 2019-12-18 span 1380-1600: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 1380-1600"
+   }
+  },
+  {
+   "pandId": "0363100012111204",
+   "slug": "soenda-111204",
+   "address": "Soendastraat 18",
+   "type": {
+    "type": "indisch-1913-arched-pair-dormer",
+    "mirror": true,
+    "measuredPalette": {
+     "brick": "#876a57",
+     "evidence": "strip 2019-12-18 span 1600-1822: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2019-12-18",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: indisch-1913-arched-pair-dormer scored 1 on eaves 1, storeys 1, roof 1, stucco 1, columns 1; strip 2019-12-18 span 1600-1822"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

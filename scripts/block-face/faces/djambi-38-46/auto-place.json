@@ -1,0 +1,334 @@
+{
+ "face": "djambi-38-46",
+ "street": "Djambistraat",
+ "library": "indische-buurt",
+ "stripDate": "2019-12-18",
+ "seconds": 6.48,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "djambi-38-46-r1",
+   "pands": [
+    "0363100012125682",
+    "0363100012113540"
+   ],
+   "passed": true,
+   "triangles": 2790
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012110647",
+   "address": "Djambistraat 46",
+   "builtYear": 1914,
+   "widthM": 5.96,
+   "eavesM": 13.09,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#69584d",
+    "wallRaw": "#64564d",
+    "skyline": {
+     "eavesM": 13.78,
+     "eavesRow": 160,
+     "confidence": 0.61,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 4,
+      "topWidthM": 0.2,
+      "centre": 0.94
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.017,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012122011",
+   "address": "Djambistraat 42",
+   "builtYear": 1914,
+   "widthM": 12.08,
+   "eavesM": 13.04,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5e54",
+    "wallRaw": "#665850",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 171,
+     "confidence": 0.77,
+     "crown": {
+      "widthM": 1.52,
+      "riseM": 4.27,
+      "topWidthM": 0.23,
+      "centre": 0.08
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 8,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.033,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1914-red-sash-pairs: frontage 12.08 m, type 5.6-7.2 m)",
+   "best": {
+    "type": "indisch-1914-red-sash-pairs",
+    "score": 0,
+    "veto": [
+     "frontage 12.08 m, type 5.6-7.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 13.04 m = 4 storeys of 3.26 m vs the type's 3.21 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 2.73 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.026 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 8 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012125682",
+   "address": "Djambistraat 40",
+   "builtYear": 1914,
+   "widthM": 5.96,
+   "eavesM": 13.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e5d51",
+    "wallRaw": "#6b5c52",
+    "skyline": {
+     "eavesM": 13.43,
+     "eavesRow": 174,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 4.35,
+      "topWidthM": 0.15,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 0.88,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#6e5d51",
+     "evidence": "strip 2019-12-18 span 722-960: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "notes": [
+    "door right",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012125682",
+    "ncc": 0.367,
+    "nccRaw": 0.367,
+    "shiftM": [
+     -0.4,
+     0.3
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "WARN",
+    "reasons": [
+     "wall judged on chromaticity: the photo's exposure is not normalised and the wall reads +0.15 darker than the model's in shade or overcast light"
+    ],
+    "wall": {
+     "photo": "#5b4c43",
+     "model": "#867163",
+     "dL": 0.147
+    },
+    "glazing": {
+     "photo": 0.33,
+     "model": 0.38
+    },
+    "columns": {
+     "photo": 4,
+     "model": 4
+    },
+    "iou": 0.619,
+    "footOffsetM": 0.78
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs": 0.367,
+    "indisch-1914-red-sash-pairs~m": 0.14
+   }
+  },
+  {
+   "pandId": "0363100012113540",
+   "address": "Djambistraat 38",
+   "builtYear": 1914,
+   "widthM": 6.25,
+   "eavesM": 13.04,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584a41",
+    "wallRaw": "#5c4e45",
+    "skyline": {
+     "eavesM": 13.32,
+     "eavesRow": 178,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.009,
+    "structure": {
+     "bayWidthM": 0.35,
+     "bayCentre": 0.97,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "indisch-1914-red-sash-pairs",
+   "score": 1,
+   "placement": {
+    "type": "indisch-1914-red-sash-pairs",
+    "measuredPalette": {
+     "brick": "#584a41",
+     "evidence": "strip 2019-12-18 span 960-1210: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "mirror": true
+   },
+   "notes": [
+    "door unread: mirrored, the opposite of 125682",
+    "crown flat-dormer (type default)"
+   ],
+   "likeness": {
+    "pandId": "0363100012113540",
+    "ncc": 0.181,
+    "nccRaw": 0.181,
+    "shiftM": [
+     0.4,
+     0.35
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.34 mean 0.37 vs photo 0.50"
+    ],
+    "wall": {
+     "photo": "#725c4f",
+     "model": "#726055",
+     "dL": 0.012
+    },
+    "glazing": {
+     "photo": 0.5,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": null,
+     "model": 4
+    },
+    "iou": 0.38,
+    "footOffsetM": 0.78
+   },
+   "challengers": {
+    "indisch-1914-red-sash-pairs~m": 0.181,
+    "indisch-1914-red-sash-pairs": 0.195
+   }
+  }
+ ]
+}

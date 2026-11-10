@@ -1,0 +1,1870 @@
+{
+ "street": "Javastraat",
+ "seed": "0363100012114339",
+ "members": [
+  "0363100012114339",
+  "0363100012166139",
+  "0363100012156240",
+  "0363100012156603",
+  "0363100012154207",
+  "0363100012166239",
+  "0363100012160251",
+  "0363100012164513",
+  "0363100012154130",
+  "0363100012160811",
+  "0363100012236050",
+  "0363100012124656",
+  "0363100012155800",
+  "0363100012153404",
+  "0363100012237101"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "no further pand fronts the street in the fetched area"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012237101 (face continues: 162667 152417 158155 163975 156109 163107 157278 167198 163445 163982 153604 152752 161628 156954 155479 164155 160973)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061804",
+   "reason": "frontage 100.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012061846",
+   "reason": "frontage 73.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012062210",
+   "reason": "frontage 162.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012062525",
+   "reason": "frontage 123.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012062668",
+   "reason": "frontage 78.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012063065",
+   "reason": "frontage 69.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012064744",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012065129",
+   "reason": "frontage 106.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012066629",
+   "reason": "frontage 111.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012067136",
+   "reason": "frontage 145.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012067983",
+   "reason": "frontage 117.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012069385",
+   "reason": "frontage 98.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012069540",
+   "reason": "frontage 46.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012070143",
+   "reason": "frontage 153.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012070751",
+   "reason": "frontage 177.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012070857",
+   "reason": "frontage 55.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012071940",
+   "reason": "frontage 73.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012072531",
+   "reason": "frontage 133.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012073366",
+   "reason": "frontage 163.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012073492",
+   "reason": "frontage 101.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012074225",
+   "reason": "frontage 149.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012075745",
+   "reason": "frontage 72.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012076369",
+   "reason": "frontage 149.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012076460",
+   "reason": "frontage 86.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012076537",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012077027",
+   "reason": "frontage 194.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012077315",
+   "reason": "frontage 150.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012078037",
+   "reason": "frontage 153.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012078566",
+   "reason": "frontage 163.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012083292",
+   "reason": "frontage 155.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012084055",
+   "reason": "frontage 101.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012084511",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012085519",
+   "reason": "frontage 165.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012086187",
+   "reason": "frontage 44.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012086321",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012086581",
+   "reason": "frontage 101.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012086718",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012088291",
+   "reason": "frontage 149.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012088922",
+   "reason": "frontage 101.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012089298",
+   "reason": "frontage 209.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012089653",
+   "reason": "frontage 114.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012089681",
+   "reason": "frontage 205.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012091219",
+   "reason": "frontage 165.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012091463",
+   "reason": "frontage 193.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012091687",
+   "reason": "frontage 152.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012092717",
+   "reason": "frontage 186.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012094808",
+   "reason": "frontage 77.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012095283",
+   "reason": "frontage 45.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012097709",
+   "reason": "frontage 101.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012098831",
+   "reason": "frontage 190.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012099701",
+   "reason": "frontage 126.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012099836",
+   "reason": "frontage 78.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012100512",
+   "reason": "frontage 45.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012103589",
+   "reason": "frontage 45.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012103615",
+   "reason": "frontage 73.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012103695",
+   "reason": "frontage 130.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012103858",
+   "reason": "frontage 45.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012104532",
+   "reason": "frontage 222.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012104596",
+   "reason": "frontage 73.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012105220",
+   "reason": "frontage 138.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012106733",
+   "reason": "frontage 80.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012107677",
+   "reason": "frontage 165.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012110061",
+   "reason": "frontage 44.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012111692",
+   "reason": "frontage 169.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012112016",
+   "reason": "frontage 170.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012112715",
+   "reason": "frontage 169.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012113972",
+   "reason": "frontage 142.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012114089",
+   "reason": "frontage 254.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012114510",
+   "reason": "frontage 101.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012115824",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012116052",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012116149",
+   "reason": "frontage 164.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012116262",
+   "reason": "frontage 161.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012116648",
+   "reason": "frontage 148.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012116704",
+   "reason": "frontage 100.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012117157",
+   "reason": "frontage 130.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012117864",
+   "reason": "frontage 133.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012118382",
+   "reason": "frontage 72.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012118756",
+   "reason": "frontage 153.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012119175",
+   "reason": "frontage 106.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012119955",
+   "reason": "frontage 79.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012120221",
+   "reason": "frontage 205.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012120330",
+   "reason": "frontage 129.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012121673",
+   "reason": "frontage 169.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012121935",
+   "reason": "frontage 45.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012122004",
+   "reason": "frontage 176.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012122126",
+   "reason": "frontage 61.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012123747",
+   "reason": "frontage 72.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012125091",
+   "reason": "frontage 166.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012125134",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012125662",
+   "reason": "frontage 90.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012127054",
+   "reason": "frontage 130.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012127656",
+   "reason": "frontage 44.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012128935",
+   "reason": "frontage 187.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012129388",
+   "reason": "frontage 163.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012131006",
+   "reason": "frontage 134.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012131645",
+   "reason": "frontage 106.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012131886",
+   "reason": "frontage 133.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012132362",
+   "reason": "frontage 199.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012132654",
+   "reason": "frontage 218.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012132944",
+   "reason": "frontage 80.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012133016",
+   "reason": "frontage 160.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012133608",
+   "reason": "frontage 113.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012134278",
+   "reason": "frontage 215.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012135214",
+   "reason": "frontage 125.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012136138",
+   "reason": "frontage 124.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012137665",
+   "reason": "frontage 72.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012137853",
+   "reason": "frontage 72.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012138801",
+   "reason": "frontage 131.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012139300",
+   "reason": "frontage 30.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012139551",
+   "reason": "frontage 73.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012140805",
+   "reason": "frontage 72.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012141177",
+   "reason": "frontage 159.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012141428",
+   "reason": "frontage 152.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012143128",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012143405",
+   "reason": "frontage 98.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012143434",
+   "reason": "frontage 75.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012143930",
+   "reason": "frontage 130.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012144327",
+   "reason": "frontage 72.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012145536",
+   "reason": "frontage 103.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012146479",
+   "reason": "frontage 185.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012146568",
+   "reason": "frontage 73.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012146667",
+   "reason": "frontage 167.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012147154",
+   "reason": "frontage 89.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012147159",
+   "reason": "frontage 44.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012148776",
+   "reason": "frontage 156.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012149400",
+   "reason": "frontage 178.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012150023",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012150462",
+   "reason": "frontage 73.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012150690",
+   "reason": "frontage 152.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012151222",
+   "reason": "frontage 82.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152491",
+   "reason": "frontage 132.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152587",
+   "reason": "frontage 72.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152591",
+   "reason": "frontage 141.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152653",
+   "reason": "frontage 143.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152663",
+   "reason": "frontage 46.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152720",
+   "reason": "frontage 39.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152730",
+   "reason": "frontage 132.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152808",
+   "reason": "frontage 157.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152916",
+   "reason": "frontage 163.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012152964",
+   "reason": "frontage 177.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012153019",
+   "reason": "frontage 131.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012153123",
+   "reason": "frontage 110.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012153180",
+   "reason": "frontage 73.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012153224",
+   "reason": "frontage 52.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012153445",
+   "reason": "frontage 44.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012153633",
+   "reason": "frontage 74.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012153770",
+   "reason": "frontage 132.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012153798",
+   "reason": "frontage 159.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012154152",
+   "reason": "frontage 152.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012154194",
+   "reason": "frontage 132.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012154266",
+   "reason": "frontage 45.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012154338",
+   "reason": "frontage 94.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012154909",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012155342",
+   "reason": "frontage 148.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012155617",
+   "reason": "frontage 47.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012155622",
+   "reason": "frontage 72.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012155672",
+   "reason": "frontage 45.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012155855",
+   "reason": "frontage 163.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012155944",
+   "reason": "frontage 72.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012155980",
+   "reason": "frontage 174.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012155981",
+   "reason": "frontage 104.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156008",
+   "reason": "frontage 136.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156012",
+   "reason": "frontage 74.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156032",
+   "reason": "frontage 168.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156175",
+   "reason": "frontage 138.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156254",
+   "reason": "frontage 148.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156404",
+   "reason": "frontage 103.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156428",
+   "reason": "frontage 175.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156489",
+   "reason": "frontage 111.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156646",
+   "reason": "frontage 116.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156701",
+   "reason": "frontage 169.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156728",
+   "reason": "frontage 105.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156762",
+   "reason": "frontage 72.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012156865",
+   "reason": "frontage 164.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157049",
+   "reason": "frontage 135.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157097",
+   "reason": "frontage 153.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157214",
+   "reason": "frontage 102.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157248",
+   "reason": "frontage 73.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157309",
+   "reason": "frontage 45.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157328",
+   "reason": "frontage 69.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157332",
+   "reason": "frontage 185.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157366",
+   "reason": "frontage 48.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157639",
+   "reason": "frontage 138.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157682",
+   "reason": "frontage 73.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157779",
+   "reason": "frontage 132.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157786",
+   "reason": "frontage 49.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157805",
+   "reason": "frontage 157.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157848",
+   "reason": "frontage 73.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157865",
+   "reason": "frontage 45.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157913",
+   "reason": "frontage 73.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012157937",
+   "reason": "frontage 132.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158157",
+   "reason": "frontage 132.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158166",
+   "reason": "frontage 167.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158220",
+   "reason": "frontage 50.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158249",
+   "reason": "frontage 132.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158325",
+   "reason": "frontage 144.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158348",
+   "reason": "frontage 122.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158422",
+   "reason": "frontage 142.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158471",
+   "reason": "frontage 120.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158614",
+   "reason": "frontage 72.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158638",
+   "reason": "frontage 72.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158806",
+   "reason": "frontage 49.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158823",
+   "reason": "frontage 139.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158898",
+   "reason": "frontage 102.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012158970",
+   "reason": "frontage 133.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159187",
+   "reason": "frontage 47.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159197",
+   "reason": "sightline to Javastraat crosses 0363100012114339"
+  },
+  {
+   "pandId": "0363100012159432",
+   "reason": "frontage 169.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159437",
+   "reason": "frontage 105.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159524",
+   "reason": "frontage 105.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159559",
+   "reason": "frontage 184.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159561",
+   "reason": "frontage 105.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159581",
+   "reason": "frontage 164.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159602",
+   "reason": "frontage 161.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159714",
+   "reason": "frontage 181.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012159928",
+   "reason": "frontage 182.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160006",
+   "reason": "frontage 105.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160050",
+   "reason": "frontage 140.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160057",
+   "reason": "frontage 134.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160166",
+   "reason": "frontage 104.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160203",
+   "reason": "frontage 72.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160214",
+   "reason": "frontage 132.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160244",
+   "reason": "frontage 133.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160256",
+   "reason": "frontage 72.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160272",
+   "reason": "frontage 120.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160383",
+   "reason": "frontage 146.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160494",
+   "reason": "frontage 162.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160613",
+   "reason": "frontage 180.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160632",
+   "reason": "frontage 161.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160710",
+   "reason": "frontage 105.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160849",
+   "reason": "frontage 73.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012160987",
+   "reason": "frontage 132.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161026",
+   "reason": "frontage 117.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161028",
+   "reason": "frontage 72.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161084",
+   "reason": "frontage 143.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161217",
+   "reason": "frontage 140.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161342",
+   "reason": "frontage 105.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161356",
+   "reason": "frontage 73.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161364",
+   "reason": "frontage 90.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161436",
+   "reason": "frontage 101.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161487",
+   "reason": "frontage 133.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161665",
+   "reason": "frontage 165.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161683",
+   "reason": "frontage 105.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161726",
+   "reason": "frontage 131.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161748",
+   "reason": "frontage 51.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161766",
+   "reason": "frontage 82.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161834",
+   "reason": "frontage 166.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161846",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012161872",
+   "reason": "frontage 132.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161911",
+   "reason": "frontage 132.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012161923",
+   "reason": "frontage 72.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162002",
+   "reason": "frontage 91.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162053",
+   "reason": "frontage 166.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162068",
+   "reason": "frontage 105.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162118",
+   "reason": "frontage 162.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162353",
+   "reason": "frontage 46.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162390",
+   "reason": "frontage 45.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162407",
+   "reason": "frontage 45.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162476",
+   "reason": "frontage 133.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162500",
+   "reason": "frontage 101.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162548",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012162580",
+   "reason": "frontage 105.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162596",
+   "reason": "frontage 133.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162625",
+   "reason": "frontage 180.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162629",
+   "reason": "frontage 186.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162736",
+   "reason": "frontage 134.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162859",
+   "reason": "frontage 121.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162876",
+   "reason": "frontage 132.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162889",
+   "reason": "frontage 96.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162917",
+   "reason": "frontage 72.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012162952",
+   "reason": "frontage 145.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163009",
+   "reason": "frontage 48.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163032",
+   "reason": "frontage 45.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163057",
+   "reason": "frontage 115.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163184",
+   "reason": "frontage 166.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163188",
+   "reason": "frontage 171.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163348",
+   "reason": "frontage 78.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163352",
+   "reason": "frontage 129.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163645",
+   "reason": "frontage 125.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163709",
+   "reason": "frontage 162.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163748",
+   "reason": "frontage 50.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163800",
+   "reason": "frontage 102.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163862",
+   "reason": "frontage 72.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163863",
+   "reason": "frontage 118.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163876",
+   "reason": "frontage 176.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012163902",
+   "reason": "frontage 120.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164008",
+   "reason": "frontage 48.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164011",
+   "reason": "frontage 162.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164080",
+   "reason": "frontage 48.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164083",
+   "reason": "frontage 73.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164151",
+   "reason": "frontage 152.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164161",
+   "reason": "frontage 73.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164292",
+   "reason": "frontage 72.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164378",
+   "reason": "frontage 135.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164386",
+   "reason": "frontage 143.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164399",
+   "reason": "frontage 45.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164502",
+   "reason": "frontage 149.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164515",
+   "reason": "frontage 51.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164593",
+   "reason": "frontage 105.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164675",
+   "reason": "frontage 33.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164779",
+   "reason": "frontage 105.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164891",
+   "reason": "frontage 138.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012164895",
+   "reason": "frontage 105.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165200",
+   "reason": "frontage 47.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165376",
+   "reason": "frontage 87.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165406",
+   "reason": "frontage 45.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165419",
+   "reason": "frontage 178.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165648",
+   "reason": "frontage 119.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165715",
+   "reason": "frontage 45.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165734",
+   "reason": "frontage 132.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165884",
+   "reason": "frontage 132.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165886",
+   "reason": "frontage 130.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165935",
+   "reason": "frontage 47.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012165973",
+   "reason": "frontage 129.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166157",
+   "reason": "frontage 132.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166195",
+   "reason": "frontage 105.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166223",
+   "reason": "frontage 105.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166312",
+   "reason": "frontage 45.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166331",
+   "reason": "frontage 166.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166401",
+   "reason": "frontage 132.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166460",
+   "reason": "frontage 103.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166496",
+   "reason": "frontage 46.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166548",
+   "reason": "frontage 124.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166615",
+   "reason": "frontage 132.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166723",
+   "reason": "frontage 105.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166770",
+   "reason": "frontage 137.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166853",
+   "reason": "frontage 134.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166875",
+   "reason": "frontage 51.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012166898",
+   "reason": "frontage 74.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012167118",
+   "reason": "frontage 98.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012167132",
+   "reason": "frontage 132.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012167133",
+   "reason": "frontage 73.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012167145",
+   "reason": "frontage 49.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012167312",
+   "reason": "frontage 107.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012167385",
+   "reason": "frontage 137.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012167440",
+   "reason": "frontage 133.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012183819",
+   "reason": "frontage 98.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012183905",
+   "reason": "frontage 98.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012185545",
+   "reason": "frontage 91.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012186474",
+   "reason": "frontage 87.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012186621",
+   "reason": "frontage 97.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012186622",
+   "reason": "frontage 95.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012186687",
+   "reason": "frontage 94.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012186766",
+   "reason": "frontage 152.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012187779",
+   "reason": "frontage 36.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012190002",
+   "reason": "frontage 33.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012190639",
+   "reason": "frontage 147.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012190843",
+   "reason": "frontage 136.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012200422",
+   "reason": "frontage 91.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012201499",
+   "reason": "frontage 156.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012205851",
+   "reason": "frontage 91.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012206112",
+   "reason": "frontage 160.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012208118",
+   "reason": "frontage 32.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012208413",
+   "reason": "frontage 93.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012209801",
+   "reason": "frontage 98.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012212044",
+   "reason": "frontage 155.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012215803",
+   "reason": "frontage 32.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012216045",
+   "reason": "frontage 93.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012217983",
+   "reason": "frontage 33.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012222144",
+   "reason": "frontage 36.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012223428",
+   "reason": "frontage 159.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012223471",
+   "reason": "frontage 36.0 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012225201",
+   "reason": "frontage 91.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012225491",
+   "reason": "frontage 30.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012227379",
+   "reason": "frontage 154.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012227581",
+   "reason": "frontage 91.4 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012228273",
+   "reason": "frontage 156.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012228479",
+   "reason": "frontage 92.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012229693",
+   "reason": "frontage 32.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012230151",
+   "reason": "frontage 35.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012231219",
+   "reason": "frontage 152.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012232763",
+   "reason": "frontage 128.8 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012233868",
+   "reason": "frontage 102.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012234025",
+   "reason": "frontage 36.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012234153",
+   "reason": "frontage 34.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012234534",
+   "reason": "frontage 92.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012234545",
+   "reason": "frontage 30.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012236289",
+   "reason": "frontage 116.3 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012236410",
+   "reason": "frontage 46.1 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012236589",
+   "reason": "frontage 73.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012236646",
+   "reason": "frontage 143.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012236709",
+   "reason": "frontage 45.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012236785",
+   "reason": "no frontage on Javastraat: No footprint edge faces Javastraat"
+  },
+  {
+   "pandId": "0363100012236937",
+   "reason": "frontage 96.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012237011",
+   "reason": "frontage 103.7 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012237168",
+   "reason": "frontage 45.9 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012239390",
+   "reason": "frontage 105.2 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012240321",
+   "reason": "frontage 104.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012240901",
+   "reason": "frontage 198.5 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012240920",
+   "reason": "frontage 94.6 m from Javastraat"
+  },
+  {
+   "pandId": "0363100012098294",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012121308",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137632",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152938",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153157",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156328",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156651",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156806",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157361",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157520",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158694",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158721",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158854",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159398",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159475",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159846",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163243",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163782",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012164919",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165443",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165652",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165831",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166153",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167240",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167320",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012205508",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236343",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236599",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012236694",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012237086",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012114339",
+   "alongM": 0,
+   "widthM": 5.69,
+   "eavesM": 14.31,
+   "roofMaxM": 19.19,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166139",
+   "alongM": 5.74,
+   "widthM": 5.8,
+   "eavesM": 14.46,
+   "roofMaxM": 17.14,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156240",
+   "alongM": 11.5,
+   "widthM": 5.73,
+   "eavesM": 12.85,
+   "roofMaxM": 15.84,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012156603",
+   "alongM": 17.23,
+   "widthM": 5.73,
+   "eavesM": 15.28,
+   "roofMaxM": 15.5,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154207",
+   "alongM": 23,
+   "widthM": 5.81,
+   "eavesM": 15.29,
+   "roofMaxM": 15.5,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166239",
+   "alongM": 28.67,
+   "widthM": 5.54,
+   "eavesM": 11.97,
+   "roofMaxM": 16.06,
+   "storeys3dbag": 5,
+   "builtYear": 1901,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160251",
+   "alongM": 34.27,
+   "widthM": 5.68,
+   "eavesM": 15.38,
+   "roofMaxM": 16.8,
+   "storeys3dbag": 5,
+   "builtYear": 1905,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164513",
+   "alongM": 39.75,
+   "widthM": 5.28,
+   "eavesM": 15.69,
+   "roofMaxM": 16.07,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012154130",
+   "alongM": 45.04,
+   "widthM": 5.31,
+   "eavesM": 15.65,
+   "roofMaxM": 15.97,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160811",
+   "alongM": 50.31,
+   "widthM": 5.25,
+   "eavesM": 15.78,
+   "roofMaxM": 16.06,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236050",
+   "alongM": 58.26,
+   "widthM": 10.62,
+   "eavesM": 13.69,
+   "roofMaxM": 17.09,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012124656",
+   "alongM": 68.83,
+   "widthM": 10.62,
+   "eavesM": 15.76,
+   "roofMaxM": 16.16,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155800",
+   "alongM": 76.86,
+   "widthM": 5.49,
+   "eavesM": 15.56,
+   "roofMaxM": 15.98,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153404",
+   "alongM": 82.31,
+   "widthM": 5.47,
+   "eavesM": 15.51,
+   "roofMaxM": 15.83,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012237101",
+   "alongM": 90.49,
+   "widthM": 10.96,
+   "eavesM": 15.38,
+   "roofMaxM": 16.57,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  }
+ ]
+}

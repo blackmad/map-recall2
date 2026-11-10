@@ -1,0 +1,191 @@
+{
+ "street": "Lombokstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:51:09.728Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012121540",
+   "addresses": [
+    "Lombokstraat 1",
+    "Lombokstraat 1B",
+    "Lombokstraat 1C",
+    "Lombokstraat 3",
+    "Lombokstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lombokstraat 1-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000727720"
+    },
+    {
+     "address": "Lombokstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000727723"
+    },
+    {
+     "address": "Lombokstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010012090612"
+    },
+    {
+     "address": "Lombokstraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010012090613"
+    },
+    {
+     "address": "Lombokstraat 3",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000727722"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012082066",
+   "addresses": [
+    "Lombokstraat 7",
+    "Lombokstraat 9",
+    "Lombokstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lombokstraat 9",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000727727"
+    },
+    {
+     "address": "Lombokstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000727728"
+    },
+    {
+     "address": "Lombokstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000727725"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012106433",
+   "addresses": [
+    "Lombokstraat 13",
+    "Lombokstraat 15",
+    "Lombokstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lombokstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000727730"
+    },
+    {
+     "address": "Lombokstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000727734"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080471",
+   "addresses": [
+    "Lombokstraat 19",
+    "Lombokstraat 21",
+    "Lombokstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lombokstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000727736"
+    },
+    {
+     "address": "Lombokstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000727739"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126729",
+   "addresses": [
+    "Lombokstraat 25",
+    "Lombokstraat 27",
+    "Lombokstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lombokstraat 27",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000727743"
+    },
+    {
+     "address": "Lombokstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000727744"
+    },
+    {
+     "address": "Lombokstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000727741"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080112",
+   "addresses": [
+    "Lombokstraat 31",
+    "Lombokstraat 33",
+    "Lombokstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Lombokstraat 33",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000727748"
+    },
+    {
+     "address": "Lombokstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000727749"
+    },
+    {
+     "address": "Lombokstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 35,
+     "bagId": "0363010000727746"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

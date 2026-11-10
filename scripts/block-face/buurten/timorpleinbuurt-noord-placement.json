@@ -1,0 +1,801 @@
+{
+ "buurt": "timorpleinbuurt-noord",
+ "library": "indische-buurt",
+ "generatedAt": "2026-11-10T01:10:52.461Z",
+ "seconds": 29.11,
+ "totals": {
+  "faces": 26,
+  "pands": 266,
+  "placed": 46
+ },
+ "faces": [
+  {
+   "face": "banka-1-61",
+   "street": "Bankastraat",
+   "pands": 20,
+   "placed": 0,
+   "held": 20,
+   "runs": [],
+   "seconds": 8.59,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 20,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "banka-18-68",
+   "street": "Bankastraat",
+   "pands": 13,
+   "placed": 0,
+   "held": 13,
+   "runs": [],
+   "seconds": 17.53,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 11,
+    "likeness": 1,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "banka-2-16",
+   "street": "Bankastraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 1.99,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "billiton-2-4",
+   "status": "no intake"
+  },
+  {
+   "face": "billiton-5-39",
+   "status": "no intake"
+  },
+  {
+   "face": "borneo-1-1",
+   "status": "no intake"
+  },
+  {
+   "face": "borneo-110-112",
+   "status": "no intake"
+  },
+  {
+   "face": "borneo-26-28",
+   "status": "no intake"
+  },
+  {
+   "face": "borneo-32-40",
+   "street": "Borneostraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 2.44,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 2,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "borneo-4-22",
+   "street": "Borneostraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 3.97,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 1,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "borneo-42-70",
+   "status": "no intake"
+  },
+  {
+   "face": "borneo-7-27",
+   "street": "Borneostraat",
+   "pands": 9,
+   "placed": 7,
+   "held": 2,
+   "runs": [
+    {
+     "face": "borneo-7-27-r1",
+     "pands": [
+      "0363100012074710",
+      "0363100012090483",
+      "0363100012108761",
+      "0363100012145601",
+      "0363100012084255",
+      "0363100012133599",
+      "0363100012102480"
+     ],
+     "passed": true,
+     "triangles": 9810
+    }
+   ],
+   "seconds": 20.88,
+   "byType": {
+    "indisch-1914-red-sash-pairs": 7
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "borneo-80-102",
+   "street": "Borneostraat",
+   "pands": 12,
+   "placed": 0,
+   "held": 12,
+   "runs": [],
+   "seconds": 4.14,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 6,
+    "match": 4,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "celebes-2-2",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-22-22",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-23-23",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-24-24",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-25-25",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-26-26",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-27-27",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-3-3",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-33-33",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-34-34",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-35-35",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-36-36",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-37-37",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-4-4",
+   "status": "no intake"
+  },
+  {
+   "face": "celebes-5-6",
+   "status": "no intake"
+  },
+  {
+   "face": "deli-18-52",
+   "street": "Delistraat",
+   "pands": 17,
+   "placed": 0,
+   "held": 17,
+   "runs": [],
+   "seconds": 16.87,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 17,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "deli-27-27",
+   "status": "no intake"
+  },
+  {
+   "face": "deli-3-23",
+   "street": "Delistraat",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 4.52,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 11,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "djambi-1-29",
+   "street": "Djambistraat",
+   "pands": 15,
+   "placed": 12,
+   "held": 3,
+   "runs": [
+    {
+     "face": "djambi-1-29-r1",
+     "pands": [
+      "0363100012149516",
+      "0363100012104592",
+      "0363100012131961",
+      "0363100012100535",
+      "0363100012110582",
+      "0363100012099261",
+      "0363100012129720",
+      "0363100012077761",
+      "0363100012072833",
+      "0363100012108617",
+      "0363100012117530",
+      "0363100012095414"
+     ],
+     "passed": false,
+     "triangles": 18279
+    }
+   ],
+   "seconds": 29.1,
+   "byType": {
+    "indisch-1913-arched-pair-dormer": 12
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "djambi-2-36",
+   "street": "Djambistraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 1.46,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "djambi-38-46",
+   "street": "Djambistraat",
+   "pands": 4,
+   "placed": 2,
+   "held": 2,
+   "runs": [
+    {
+     "face": "djambi-38-46-r1",
+     "pands": [
+      "0363100012125682",
+      "0363100012113540"
+     ],
+     "passed": true,
+     "triangles": 2790
+    }
+   ],
+   "seconds": 6.48,
+   "byType": {
+    "indisch-1914-red-sash-pairs": 2
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 0,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "java-1-91",
+   "street": "Javastraat",
+   "pands": 15,
+   "placed": 0,
+   "held": 15,
+   "runs": [],
+   "seconds": 5.23,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 15,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "java-93-149",
+   "street": "Javastraat",
+   "pands": 15,
+   "placed": 9,
+   "held": 6,
+   "runs": [
+    {
+     "face": "java-93-149-r1",
+     "pands": [
+      "0363100012132949",
+      "0363100012138717",
+      "0363100012120527",
+      "0363100012081977",
+      "0363100012133860",
+      "0363100012098497",
+      "0363100012126147"
+     ],
+     "passed": false,
+     "triangles": 20443
+    },
+    {
+     "face": "java-93-149-r2",
+     "pands": [
+      "0363100012150083",
+      "0363100012103232"
+     ],
+     "passed": false,
+     "triangles": 5861
+    }
+   ],
+   "seconds": 34.76,
+   "byType": {
+    "indisch-1912-java-mansard-arches": 9
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 2,
+    "likeness": 3,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "javaplein-2-14",
+   "status": "no intake"
+  },
+  {
+   "face": "lampong-1-11",
+   "status": "no intake"
+  },
+  {
+   "face": "lampong-13-23",
+   "status": "no intake"
+  },
+  {
+   "face": "lampong-2-20",
+   "street": "Lampongstraat",
+   "pands": 8,
+   "placed": 5,
+   "held": 3,
+   "runs": [
+    {
+     "face": "lampong-2-20-r1",
+     "pands": [
+      "0363100012140561",
+      "0363100012150248",
+      "0363100012085260",
+      "0363100012064007",
+      "0363100012112381"
+     ],
+     "passed": true,
+     "triangles": 6947
+    }
+   ],
+   "seconds": 10.51,
+   "byType": {
+    "indisch-1914-red-sash-pairs": 5
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "lombok-1-35",
+   "street": "Lombokstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 2.77,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "lombok-2-38",
+   "status": "no intake"
+  },
+  {
+   "face": "madura-1-17",
+   "status": "no intake"
+  },
+  {
+   "face": "madura-107-107",
+   "status": "no intake"
+  },
+  {
+   "face": "madura-109-111",
+   "status": "no intake"
+  },
+  {
+   "face": "madura-117-119",
+   "status": "no intake"
+  },
+  {
+   "face": "madura-2-76",
+   "street": "Madurastraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 6.85,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 16,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "madura-35-79",
+   "street": "Madurastraat",
+   "pands": 16,
+   "placed": 0,
+   "held": 16,
+   "runs": [],
+   "seconds": 4.05,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 13,
+    "likeness": 0,
+    "run": 1,
+    "review": 2
+   }
+  },
+  {
+   "face": "madura-78-100",
+   "street": "Madurastraat",
+   "pands": 7,
+   "placed": 0,
+   "held": 7,
+   "runs": [],
+   "seconds": 3.16,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 7,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "molukken-4-14",
+   "status": "no intake"
+  },
+  {
+   "face": "padang-1-35",
+   "street": "Padangstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 1.13,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "padang-2-36",
+   "street": "Padangstraat",
+   "pands": 6,
+   "placed": 0,
+   "held": 6,
+   "runs": [],
+   "seconds": 1.06,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 6,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "soenda-1-127",
+   "status": "no intake"
+  },
+  {
+   "face": "soenda-2-36",
+   "street": "Soendastraat",
+   "pands": 16,
+   "placed": 11,
+   "held": 5,
+   "runs": [
+    {
+     "face": "soenda-2-36-r1",
+     "pands": [
+      "0363100012113301",
+      "0363100012150368",
+      "0363100012069113",
+      "0363100012062527",
+      "0363100012081321",
+      "0363100012107809",
+      "0363100012111204"
+     ],
+     "passed": true,
+     "triangles": 10499
+    },
+    {
+     "face": "soenda-2-36-r2",
+     "pands": [
+      "0363100012136122",
+      "0363100012068591",
+      "0363100012092864",
+      "0363100012092089"
+     ],
+     "passed": true,
+     "triangles": 6076
+    }
+   ],
+   "seconds": 29.97,
+   "byType": {
+    "indisch-1913-arched-pair-dormer": 11
+   },
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 1,
+    "likeness": 3,
+    "run": 1,
+    "review": 0
+   }
+  },
+  {
+   "face": "sumatra-12-12",
+   "status": "no intake"
+  },
+  {
+   "face": "sumatra-21-25",
+   "status": "no intake"
+  },
+  {
+   "face": "sumatra-26-34",
+   "street": "Sumatrastraat",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 1.16,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 0,
+    "run": 0,
+    "review": 2
+   }
+  },
+  {
+   "face": "sumatra-8-10",
+   "status": "no intake"
+  },
+  {
+   "face": "timor-1-5",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-1-5",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-14-14",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-15-15",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-16-16",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-17-17",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-18-18",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-21-63",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-6-6",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-7-7",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-8-8",
+   "status": "no intake"
+  },
+  {
+   "face": "timorplein-9-13",
+   "status": "no intake"
+  },
+  {
+   "face": "zeeburgerdijk-100-110",
+   "status": "no intake"
+  },
+  {
+   "face": "zeeburgerdijk-112-122",
+   "street": "Zeeburgerdijk",
+   "pands": 5,
+   "placed": 0,
+   "held": 5,
+   "runs": [],
+   "seconds": 13.18,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 3,
+    "likeness": 2,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zeeburgerdijk-115-119",
+   "status": "no intake"
+  },
+  {
+   "face": "zeeburgerdijk-50-84",
+   "street": "Zeeburgerdijk",
+   "pands": 8,
+   "placed": 0,
+   "held": 8,
+   "runs": [],
+   "seconds": 3.42,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 8,
+    "likeness": 0,
+    "run": 0,
+    "review": 0
+   }
+  },
+  {
+   "face": "zeeburgerdijk-53-109",
+   "street": "Zeeburgerdijk",
+   "pands": 11,
+   "placed": 0,
+   "held": 11,
+   "runs": [],
+   "seconds": 2.95,
+   "byType": {},
+   "installed": 0,
+   "holds": {
+    "evidence": 0,
+    "match": 9,
+    "likeness": 0,
+    "run": 2,
+    "review": 0
+   }
+  },
+  {
+   "face": "zeeburgerdijk-88-98",
+   "status": "no intake"
+  }
+ ]
+}
