@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PERF_HUD_ID, PERF_HUD_NARROW_STYLE, PERF_HUD_STYLE, perfHudLine } from '../../src/canalRecall/engine/perfHud';
 import { describeBuilding } from '../../src/canalRecall/buildingFacts';
+import { addressSentence, type PandAddress } from '../../src/canalRecall/pandAddress';
 import { landmarkLede, splitDetail } from '../../src/canalRecall/game/landmarkData';
 
 type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' | 'advanced-cartoon' | 'advanced-questions-off' | 'advanced-haze-off' | 'advanced-perf-hud' | 'hud' | 'neighborhood' | 'neighborhood-fallback'
@@ -21,6 +22,12 @@ type Scenario = 'default' | 'bike-home' | 'bike-here' | 'transit' | 'advanced' |
   | 'landmark-card-building-place' | 'landmark-card-building-place-touch'
   // The same label tap once the pand under the label is found: the place, then its building's year (#258 follow-up).
   | 'landmark-card-building-label-pand' | 'landmark-card-building-label-pand-touch'
+  // Lane C2 (#368): the BAG address on a clicked building. Free Ride shows it; a quiz keeps the street back until the
+  // answer (hidden); a pand on several streets, a very long street name, and a building the BAG lists no address for.
+  | 'landmark-card-building-address' | 'landmark-card-building-address-multi' | 'landmark-card-building-address-long'
+  | 'landmark-card-building-address-hidden' | 'landmark-card-building-address-missing'
+  | 'landmark-card-building-address-touch' | 'landmark-card-building-address-multi-touch' | 'landmark-card-building-address-long-touch'
+  | 'landmark-card-building-address-hidden-touch' | 'landmark-card-building-address-missing-touch'
   // A named bridge with no origin: the city's bridge register alone.
   | 'landmark-card-bridge-register' | 'landmark-card-bridge-register-touch'
   // A street's name origin, the most common card while driving.
@@ -425,6 +432,18 @@ function CanalDriveFrame({ scenario = 'default', perfHud = false }: { scenario?:
               longDetail: 'Around 1670, a ferry bridge was built over the Amstel, which was so narrow that it was only suitable for pedestrians. '
                 + 'Although this bridge was officially called the Kerkstraatbrug, it soon became known as the Magere Brug.',
             }
+            : scenario.startsWith('landmark-card-building-address')
+            ? (() => {
+              const variant = scenario.replace('landmark-card-building-address', '').replace('-touch', '');
+              const address: PandAddress | null = variant === '-multi' ? [['Herengracht', '12'], ['Leliegracht', '2']]
+                : variant === '-long' ? [['Burgemeester Tellegenstraat Noord-Oostzijde', '1A–1C'], ['Sint Willibrordusstraat', '110, 112'], ['Professor Tulpplein', '3']]
+                : variant === '-missing' ? null : [['Herengracht', '502–504']];
+              return {
+                id: 'clicked-NL.IMBAG.Pand.0363100012169999', type: 'building',
+                // The game's own rule: Free Ride says the street, a quiz keeps it back while a question is open.
+                ...describeBuilding([1665, -1, 2], 13, '', null, addressSentence(address, variant === '-hidden' ? { freeRide: false, quizPromptName: 'Herengracht' } : { freeRide: true })),
+              };
+            })()
             : scenario.startsWith('landmark-card-building-label-pand')
             ? {
               // The gurdwara's label point lies in pand 0363100012106767 (building-tiles 14/8412/5382); its
@@ -936,6 +955,36 @@ export const PortraitBuildingPlaceCard: Story = {
 export const BuildingLabelPandCard: Story = { args: { scenario: 'landmark-card-building-label-pand' } };
 export const PortraitBuildingLabelPandCard: Story = {
   args: { scenario: 'landmark-card-building-label-pand-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** C2 (#368): a clicked building, a pand with one street. */
+export const BuildingAddressCard: Story = { args: { scenario: 'landmark-card-building-address' } };
+export const PortraitBuildingAddressCard: Story = {
+  args: { scenario: 'landmark-card-building-address-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** C2 (#368): a clicked building, a corner pand on two streets. */
+export const BuildingAddressMultiCard: Story = { args: { scenario: 'landmark-card-building-address-multi' } };
+export const PortraitBuildingAddressMultiCard: Story = {
+  args: { scenario: 'landmark-card-building-address-multi-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** C2 (#368): a clicked building, long street names, three streets. */
+export const BuildingAddressLongCard: Story = { args: { scenario: 'landmark-card-building-address-long' } };
+export const PortraitBuildingAddressLongCard: Story = {
+  args: { scenario: 'landmark-card-building-address-long-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** C2 (#368): a clicked building, a quiz question is open: the street waits for the answer. */
+export const BuildingAddressHiddenCard: Story = { args: { scenario: 'landmark-card-building-address-hidden' } };
+export const PortraitBuildingAddressHiddenCard: Story = {
+  args: { scenario: 'landmark-card-building-address-hidden-touch' },
+  parameters: { viewport: { defaultViewport: 'mobile2' } },
+};
+/** C2 (#368): a clicked building, the BAG lists no address: the card is as before. */
+export const BuildingAddressMissingCard: Story = { args: { scenario: 'landmark-card-building-address-missing' } };
+export const PortraitBuildingAddressMissingCard: Story = {
+  args: { scenario: 'landmark-card-building-address-missing-touch' },
   parameters: { viewport: { defaultViewport: 'mobile2' } },
 };
 export const PortraitBuildingFactsCard: Story = {

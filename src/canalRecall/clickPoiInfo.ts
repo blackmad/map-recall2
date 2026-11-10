@@ -105,7 +105,8 @@ export class ClickPoiIndex {
     return best;
   }
 
-  card(building: BuildingHit): LandmarkNotice | null {
+  /** `streets` false withholds each place's street (a quiz question is open, pandAddress.ts streetShown). */
+  card(building: BuildingHit, streets = true): LandmarkNotice | null {
     if (!building.footprint) return null;
     // A place with nothing beyond its kind ("X is mapped as an artwork") is a label, not a card: the building answers.
     const places = this.contained(building.footprint).filter(row => !isLabelOnly(row));
@@ -114,7 +115,8 @@ export class ClickPoiIndex {
     // in the remaining information rather than naming the entire building.
     const title = places.findIndex(row => row[1] === building.name || row[5] === 'a mall');
     if (title > 0) places.unshift(...places.splice(title, 1));
-    const summaries = places.slice(0, 8).map(row => `${row[1]} is mapped as ${row[5] || row[4]}${row[6] ? ` at ${row[6]}` : ''}.`
+    const at = (row: ClickPoiRow) => (streets && row[6] ? ` at ${row[6]}` : '');
+    const summaries = places.slice(0, 8).map(row => `${row[1]} is mapped as ${row[5] || row[4]}${at(row)}.`
       + (row[8] ? ` ${row[8]}` : ''));
     const paragraphs = summaries.map((summary, i) => summary
       + (validPoiWebsite(places[i][7]) ? `\nWebsite: ${validPoiWebsite(places[i][7])}` : '')
@@ -122,7 +124,7 @@ export class ClickPoiIndex {
     const first = places[0];
     return {
       id: `clicked-poi-${building.id}`, name: places.length > 1 ? `${first[1]} + ${places.length - 1} mapped places` : first[1],
-      type: first[4], typeLabel: poiChipLabel(first), detail: `${first[1]} is mapped as ${first[5] || first[4]}${first[6] ? ` at ${first[6]}` : ''}.`,
+      type: first[4], typeLabel: poiChipLabel(first), detail: `${first[1]} is mapped as ${first[5] || first[4]}${at(first)}.`,
       longDetail: summaries.join('\n\n'), factTexts: paragraphs,
       sourceUrl: osmUrl(first[0]), lngLat: [first[2], first[3]], featureTarget: building.featureTarget,
     };

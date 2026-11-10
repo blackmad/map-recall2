@@ -9,6 +9,7 @@
 
 import type { BuildingArticle, BuildingArticleIndex, BuildingArticleTile } from './buildingArticles';
 import { withArticle } from './placeKind';
+import { PAND_ADDRESS_VERSION, type PandAddress, type PandAddressTile } from './pandAddress';
 
 /** Building values worth naming; anything else (`yes`, `house`, `apartments`)
  *  says nothing a rider cannot see. */
@@ -184,6 +185,8 @@ export function describeBuilding(
   heightMetres: number | null | undefined,
   name = '',
   place: PlaceOnBuilding | null = null,
+  /** The pand's BAG address sentence, already screened for the quiz (`pandAddress.ts addressSentence`); empty when none. */
+  address = '',
 ): { name: string; detail: string } {
   const storeys = storeysFor(heightMetres);
   const type = row && row[1] >= 0 ? TYPE_LABELS[BUILDING_TYPES[row[1]]] : '';
@@ -197,6 +200,8 @@ export function describeBuilding(
   const parts: string[] = [];
   const placeText = placeSentence(place, title);
   if (placeText) parts.push(placeText);
+  if (address) parts.push(address);
+  const known = parts.length;
   const designed = monument?.a ? `, designed by ${monument.a}` : '';
   if (year) {
     parts.push(type
@@ -216,6 +221,8 @@ export function describeBuilding(
   if (storeys) parts.push(`About ${Math.round(heightMetres!)} m tall, ${storeys === 1 ? 'one storey' : `some ${storeys} storeys`}.`);
   // A named building with nothing else known says so without denying its name.
   const nothing = shownName ? (place?.name ? NOTHING_KNOWN.place : NOTHING_KNOWN.named) : NOTHING_KNOWN.anonymous;
+  // An address alone is not a description: the nothing-known line still follows it.
+  if (address && parts.length === known) parts.push(nothing);
   return { name: title, detail: parts.join(' ') || nothing };
 }
 
@@ -244,6 +251,7 @@ export function factTileOf(lng: number, lat: number): { x: number; y: number } {
 export class BuildingFactStore {
   private readonly rows = new Map<string, BuildingFactRow>();
   private readonly articles = new Map<string, BuildingArticle>();
+  private readonly addresses = new Map<string, PandAddress>();
   private readonly requested = new Set<string>();
   private articleTiles: Promise<ReadonlySet<string>> | null = null;
   private lastCentre = '';
@@ -257,6 +265,7 @@ export class BuildingFactStore {
     this.base = base;
     this.rows.clear();
     this.articles.clear();
+    this.addresses.clear();
     this.requested.clear();
     this.loads.clear();
     this.articleTiles = null;
@@ -279,6 +288,11 @@ export class BuildingFactStore {
 
   lookup(id: string | number | null | undefined): BuildingFactRow | null {
     return id == null ? null : this.rows.get(shortBuildingId(String(id))) ?? null;
+  }
+
+  /** The BAG address of this pand (`pand-addresses-v1`), when its tile has arrived and the register lists one. */
+  address(id: string | number | null | undefined): PandAddress | null {
+    return id == null ? null : this.addresses.get(shortBuildingId(String(id))) ?? null;
   }
 
   /** The Wikipedia article about this building, when its tile carries one. */
@@ -311,12 +325,18 @@ export class BuildingFactStore {
   private async fetchTile(key: string): Promise<void> {
     if (this.requested.has(key)) return;
     this.requested.add(key);
-    await Promise.all([this.fetchFacts(key), this.fetchArticles(key)]);
+    await Promise.all([this.fetchFacts(key), this.fetchArticles(key), this.fetchAddresses(key)]);
   }
 
   private async fetchFacts(key: string): Promise<void> {
     const tile = await this.fetchJson<BuildingFactTile>(`building-facts/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
     for (const [id, row] of Object.entries(tile?.buildings || {})) this.rows.set(id, row);
+  }
+
+  /** Address tiles follow the fact tiles; a tile the extract lacks (or an extract not yet published) is simply absent. */
+  private async fetchAddresses(key: string): Promise<void> {
+    const tile = await this.fetchJson<PandAddressTile>(`${PAND_ADDRESS_VERSION}/${BUILDING_FACT_ZOOM}/${key}.json.gz`);
+    for (const [id, address] of Object.entries(tile?.pands || {})) this.addresses.set(id, address);
   }
 
   /** Article tiles exist only where an article is; the index says where, so

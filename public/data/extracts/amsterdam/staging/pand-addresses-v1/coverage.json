@@ -1,0 +1,22 @@
+{
+  "version": "pand-addresses-v1",
+  "source": "https://service.pdok.nl/lv/bag/wfs/v2_0 bag:verblijfsobject (hoofdadres), PDOK BAG, CC0",
+  "builtAt": "2026-11-10T21:09:27.747Z",
+  "tilesQueried": 295,
+  "tilesWritten": 291,
+  "bytesGzip": 2107664,
+  "verblijfsobjecten": 811526,
+  "pandsWithVerblijfsobject": 269911,
+  "pandsWithAddress": 269911,
+  "pandsWithoutUsableAddress": 0,
+  "coverageOfPandsWithVerblijfsobject": 1,
+  "pandsOnSeveralStreets": 5900,
+  "drawnBuildings": 350903,
+  "drawnBuildingsWithAddress": 224597,
+  "coverageOfDrawnBuildings": 0.6401,
+  "limitations": [
+    "hoofdadres only: nevenadressen (a corner pand's second street) are not in the verblijfsobject layer",
+    "tiles follow the building-facts tiles"
+  ],
+  "note": "staged, not published: the integrator copies this directory to pand-addresses-v1/ after review"
+}

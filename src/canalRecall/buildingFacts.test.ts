@@ -144,3 +144,23 @@ test('a type starting with a vowel takes "an" (page check 2026-11-08: "A industr
   assert.equal(describeBuilding([1965, BUILDING_TYPES.indexOf('industrial'), 0], null).detail, 'An industrial building, built in 1965, in the post-war decades.');
   assert.equal(describeBuilding([0, BUILDING_TYPES.indexOf('office'), 0], null, 'Kantoor').detail, 'An office building.');
 });
+
+test('an address leads the register line; an address alone still says what else is unknown', () => {
+  assert.equal(describeBuilding([1900, -1, 0], null, '', null, 'Address: Herengracht 12.').detail,
+    'Address: Herengracht 12. Built in 1900, in the early twentieth century.');
+  assert.equal(describeBuilding(null, null, '', null, 'Address: Herengracht 12.').detail,
+    `Address: Herengracht 12. ${NOTHING_KNOWN.anonymous}`);
+  assert.equal(describeBuilding(null, null, '', null, '').detail, NOTHING_KNOWN.anonymous, 'no address, no change');
+});
+
+test('the store reads the address tile beside the fact tile', async () => {
+  const { BuildingFactStore, factTileOf } = await import('./buildingFacts');
+  const { gzipSync } = await import('node:zlib');
+  const { x, y } = factTileOf(4.9, 52.37);
+  const store = new BuildingFactStore('/data/amsterdam', async (url) => String(url).endsWith(`/pand-addresses-v1/14/${x}/${y}.json.gz`)
+    ? new Response(gzipSync(JSON.stringify({ version: 1, pands: { P0363100012182945: [['Herengracht', '502–504']] } })))
+    : new Response('missing', { status: 404 }));
+  await store.ensureAt(4.9, 52.37);
+  assert.deepEqual(store.address('NL.IMBAG.Pand.0363100012182945'), [['Herengracht', '502–504']]);
+  assert.equal(store.address('NL.IMBAG.Pand.0363100012182946'), null);
+});
