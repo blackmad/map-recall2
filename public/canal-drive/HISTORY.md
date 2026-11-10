@@ -1,5 +1,11 @@
 # Canal Recall — what is built
 
+**a1 batch: street-appearance back in the gate, slender parts, ride pins (2026-11-10).**
+- **test:street-appearance** failed on main and was not gated. A bisect (`docs/reports/street-appearance-bisect-20261110.md`) found two stale references, no regressions: b712de6b5 (#123 changed `signature-landmarks.json`, so the frontage survey hashes moved; re-recorded, every profile byte-identical) and 836fb00ef (R5-E flat-roof tone and parapet lip changed the flat twin the coarse test compares against; the reference is now built with `flatRoofTone=0&flatRoofSurface=0`). The suite (103 tests, ~3.5 s) now runs in `check:canal`.
+- **Part overlap at IJdok (feedback fc427560).** The flicker was not interpenetration but a slender fin plus glass parts drawn as solid boxes. `dropNestedDuplicates` gained a slender-part rule (191 parts dropped city-wide; IJdok, NDSM and Overhoeks pinned in `test:building-nesting`, now in `check:canal`). The glass boxes remain (TODO).
+- **Storefront gate round 2** (`docs/reports/storefront-gate-20261110.md`): shopfronts.json rebuilt with the tightened gate.
+- **Feedback triage** pins and probes in `test:canal-car` for the rideability notes (`docs/reports/feedback-triage-20261110.md`); the plaza ratchets flip when the BGT plaza lane lands.
+
 **Odd-bay cells; spec bays released (2026-11-10, H1c #350, 7c4c72fe3, opus).**
 - **Audit:** the 169901 over-count (5 for a photo 3) came from recipe intent bloemgracht-90. Auto-placed type bays that the strip did not confirm are now a `default` source and never written, so view bays went from 1,348 to 919.
 - **Odd bays:** a 3- or 1-bay front on a two-window canal/c19 cell draws as half-cell axis units (`axisUnitPlan`, streetFacadeRendering.ts). They reuse the cell's own sills, heads, frames and keystones; no atlas layer was added.
