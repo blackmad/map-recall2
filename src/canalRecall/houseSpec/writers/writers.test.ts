@@ -7,7 +7,7 @@ import sharp from 'sharp';
 import { decodeDescriptor } from '../../bagTiles.ts';
 import { registerFactsFromExtract } from '../../facade/registerRecipe.ts';
 import { validateSpec, specField } from '../spec.ts';
-import { bagWriter } from './bag.ts';
+import { BAG_WRITES_STOREYS, bagStoreys, bagWriter } from './bag.ts';
 import { registerWriter } from './register.ts';
 import { PIXEL_BAYS, PIXEL_WRITES_STOREYS, pixelSpec, storeysFromPitch } from './pixel.ts';
 import { Budget, JEV, askJev, costOf, cropHash, judgementOf, jevSpec, parseResponse, requestBody } from './jev.ts';
@@ -31,17 +31,22 @@ test('register writer: a listed pand\'s gable, facade year and elements, monumen
 });
 
 // --- bag --------------------------------------------------------------------------------------------------------------
-test('bag writer: year (bag 0.5) and storeys (3dbag 0.4) from the descriptor; no heights, no storeys; an implausible year is dropped', () => {
+test('bag writer: year (bag 0.5) from the descriptor; storeys off by measurement (H5h); bagStoreys offsets; an implausible year is dropped', () => {
   const d = decodeDescriptor([2, 4, 3, 93, 129, 1890, 1]);
   const s = bagWriter('0363100012164995', d, '2026-11-10')!;
   validateSpec(s);
   assert.equal(specField(s, 'facts/facadeYear'), 1890);
-  assert.equal(specField(s, 'fronts/0/storeys'), 4);
   assert.equal(s.provenance['facts/facadeYear'].source, 'bag');
-  assert.equal(s.provenance['fronts/0/storeys'].source, '3dbag');
-  assert.equal(s.provenance['fronts/0/storeys'].confidence, 0.4);
+  assert.equal(BAG_WRITES_STOREYS, false);
+  assert.equal(specField(s, 'fronts/0/storeys'), undefined, 'BAG storeys 0.43 (0.55 with offsets) on the hand set: under 0.80, dropped');
+  assert.equal(bagStoreys(d), 4);
+  assert.equal(bagStoreys(d, { pitched: true }), 3, 'roof code 3 = slanted: -1');
+  assert.equal(bagStoreys(d, { pitched: true, souterrain: true }), 2);
+  assert.equal(bagStoreys(decodeDescriptor([2, 4, 1, 93, 129, 1890, 1]), { pitched: true }), 4, 'a flat roof takes no pitched offset');
+  assert.equal(bagStoreys(decodeDescriptor([2, 1, 3, 30, 60, 1890, 1]), { pitched: true, souterrain: true }), 1, 'never below 1');
+  assert.equal(bagStoreys(decodeDescriptor([0, 1, 0, 0, 0, 1005, 0])), undefined, 'no height, no count');
   const noHeights = bagWriter('0363100012164995', decodeDescriptor([0, 1, 0, 0, 0, 1005, 0]));
-  assert.equal(noHeights, null, 'year 1005 is a placeholder, and storeys 1 without any height is a guess');
+  assert.equal(noHeights, null, 'year 1005 is a placeholder');
   assert.equal(bagWriter('0363100012164995', undefined), null);
 });
 

@@ -51,23 +51,11 @@
   "bag": {
    "schemaVersion": 1,
    "pandId": "0363100012168748",
-   "design": {
-    "fronts": [
-     {
-      "storeys": 4
-     }
-    ]
-   },
+   "design": {},
    "provenance": {
     "facts/facadeYear": {
      "source": "bag",
      "confidence": 0.5,
-     "ref": "bag-facts:0363100012168748",
-     "at": null
-    },
-    "fronts/0/storeys": {
-     "source": "3dbag",
-     "confidence": 0.4,
      "ref": "bag-facts:0363100012168748",
      "at": null
     }
@@ -84,8 +72,7 @@
    "fronts": [
     {
      "basement": "stoop",
-     "gable": "bell",
-     "storeys": 4
+     "gable": "bell"
     }
    ],
    "notes": [
@@ -103,12 +90,6 @@
     "source": "monument-text",
     "confidence": 0.8,
     "ref": "rce:4527",
-    "at": null
-   },
-   "fronts/0/storeys": {
-    "source": "3dbag",
-    "confidence": 0.4,
-    "ref": "bag-facts:0363100012168748",
     "at": null
    },
    "facts/elements": {
