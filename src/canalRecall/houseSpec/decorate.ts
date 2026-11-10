@@ -97,7 +97,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (p.registerFinish !== finish) patch.registerFinish = finish;
   }
   const recipe: SpecRecipe = {};
-  if (!SPEC_BAYS_HELD && view.bays && view.bays > 0) recipe.bays = view.bays;
+  if (!SPEC_BAYS_HELD && view.bays && view.bays > 0 && view.src?.bays !== 'default') recipe.bays = view.bays;
   if (!SPEC_WALLS_HELD && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex)) recipe.wallHex = view.wallHex.toLowerCase();
   // A spec recipe only when it carries something the mesher reads (bays, a wall colour); crown and period ride along.
   if (recipe.bays || recipe.wallHex) {
