@@ -260,12 +260,14 @@ export class BakedCoarse {
   private readonly compact: boolean;
   /** Release from the air (bakedReleaseM): metres from the eye, or null (off). */
   private readonly releaseM: number | null;
+  private readonly now: () => number;
   private eye: [number, number] | null = null;
   /** Covered cells released to the far tier (no mesh here, not fetched). */
   private released = new Set<string>();
   private lastWant: string[] = [];
   private releases = 0;
-  constructor(private readonly host: BakedCoarseHost, options: { touch?: boolean; budget?: { cells: number; triangles: number }; paceInstalls?: boolean; compact?: boolean; releaseM?: number | null } = {}) {
+  constructor(private readonly host: BakedCoarseHost, options: { touch?: boolean; budget?: { cells: number; triangles: number }; paceInstalls?: boolean; compact?: boolean; releaseM?: number | null; /** The clock the dissolve starts on (tests inject one; the frame's `now` is read on the same one). */ now?: () => number } = {}) {
+    this.now = options.now ?? (() => performance.now());
     this.budget = options.budget ?? bakedCoarseBudget(!!options.touch);
     this.compact = options.compact ?? false;
     this.releaseM = options.releaseM ?? null;
@@ -462,7 +464,7 @@ export class BakedCoarse {
       bytes: attrs.position + attrs.uv + attrs.layer + attrs.tint + attrs.accent + attrs.thin + attrs.hidden + attrs.swapSlot + attrs.index,
       // A cell widened from the decimetre grid is drawn and lifted now, and fetched again exact (reliftNear).
       lifted: keepPositions, liftable: keepPositions && (data.positionUnit ?? 1) === 1,
-      ...(clone ? { fade: { start: performance.now(), clone, source: material } } : {}),
+      ...(clone ? { fade: { start: this.now(), clone, source: material } } : {}),
       ...(keepPositions ? { lift: { positions, unit, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}) };
     if (old) this.drop(data.key, true);
     this.host.attach(r);
