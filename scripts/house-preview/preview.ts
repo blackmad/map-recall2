@@ -106,9 +106,12 @@ overrides, measurements, verdict). The sheet header names the route and the look
 by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas cache:
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
 
-Overrides (until the HouseSpec resolver of lane H1 lands): fronts[0].gable -> monumentGable, palette.wall (or
-palette.brick) hex -> facadeMappedColour; every other design field is listed under overrides.notApplied in
-measure.json (the generic path has no property for it yet).
+Overrides: fronts[0].gable -> monumentGable, palette.wall (or palette.brick) hex -> facadeMappedColour, the bays, and
+(lane H11) storeys, storeyHeights[0], the window look (windowSurround, speklagen, windowHead, windows, windowProportion,
+palette.frame) and the shopfront through the game's own decorator (houseSpec/view.ts specView -> withHouseSpec;
+HOUSE_SPEC_DESIGN=0 holds them, =storeys,look keeps only those). Every other design field is listed under
+overrides.notApplied in measure.json (the generic path has no property for it yet). measure.json \`layout\` is the
+pand's street-run grid as the mesher laid it: drawn storeys (ground included), upper storey pitch, window columns.
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws

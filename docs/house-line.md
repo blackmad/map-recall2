@@ -119,7 +119,7 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
 ### The generic path reads it (flag `?houseSpecs=0`, `HOUSE_SPECS=0`)
 
 - `houseSpec/decorate.ts houseSpecEnricher`, composed last in `gameTileEnricher.ts`, stamps the runtime view on each
-  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, bays, crownRiseM, src}` (`crownRiseM`: 3DBAG ridge - eaves, for pands with a gable or a historic gable).
+  raw feature as `p.houseSpec` = `{gable, year, wallMaterial, wallHex, bays, crownRiseM, storeys, groundM, look, shop, shopHex, src}` (`crownRiseM`: 3DBAG ridge - eaves, for pands with a gable or a historic gable; the last five are H11's, see "Design fields on the generic path").
 - `withHouseSpec` runs right after the register step (before `decorateFacade`): it moves `constructionYear` only on an
   era change (the register's rule), sets `registerFinish` from `wallMaterial`, and writes `specRecipe`
   `{bays, wallHex, period, crownShape}` when the spec has bays or a wall colour.
@@ -236,6 +236,53 @@ pands (63 %), further on none.
 What the kit still cannot say: a 3-axis front on a cell whose windows sit off the quarter axes (the three-window canal
 styles keep their own cells), an asymmetric front (door axis plus two windows unevenly spaced), and a front whose storeys
 differ in axis count (170031: 4 on storey 2, 2 above) - a front draws one axis count for every storey.
+
+### Design fields on the generic path (H11, #361)
+
+Haarlemmer #356 found the spec route drew only `gable` and `palette.brick` (and, since H1c, the bays) of a HouseSpec; the
+other design fields reached a render only through the recipe route (a per-house GLB). H11 widens the generic consumer
+with the fields the bay-look kit can already express. `houseSpec/view.ts specView` builds the runtime view (shared by
+`build-house-specs.ts` and `house:preview --spec`), `decorate.ts houseSpecPatch` turns it into properties, and the mesher
+reads them. A key no source stated, or only a type default (`default`) stated, stays out of the view: a pand without them
+draws as before (`decorate.test.ts` "H11", `bayLookFor` with no spec look = the pick before).
+
+| View key | From (field paths) | Reaches | Kit part |
+|---|---|---|---|
+| `storeys`, `groundM` | `fronts/0/storeys`, `storeyHeights[0]` | `specRecipe.storeys/groundM` -> `streetFacadeRendering.ts specStoreyScale` on every ground-level run | the storey pitch fits `storeys - 1` upper storeys over the ground (clamped to `SPEC_STOREY_SCALE` 0.75-1.45 of the style's storey; the ground storey shrinks to `SPEC_GROUND_SCALE.min` before the count gives way) |
+| `look` `{pale, dark, arch, tall}` | `windowSurround` (stone-lintel, full-frame, keystone, eared-keystone = white trim; sill, none = none), `speklagen`, `palette.frame` (luma < 0.35 = dark), `windowHead` (most upper storeys; a stated window kind with no head = flat), `windows: arched`, `windowProportion: tall` | `specRecipe.look` -> `bayLook.ts bayLookFor(..., spec)` -> `bayStyleForTraits` | the bay preset among the plain presets, as a buurt profile's traits pick it; with stated bays only presets whose window count divides them |
+| `shop`, `shopHex` | `fronts/0/shopfront` (its `colour`), else `facts.pui`; a photo source's full front with no shopfront = quiet | `specShop` -> `threeBuildingFeatures.ts shopfrontOf`; `specRecipe.shopHex` -> the shop's `groundHex` | a stated shop keeps the shopfront extract's kind (a named café stays a café) or draws `shopWindow`; a stated quiet front drops the extract's OSM shop |
+
+Holds: `decorate.ts SPEC_DESIGN_HELD` (per field, a world-v1 recompile carries it). In Node `HOUSE_SPEC_DESIGN=0` holds
+all three and `HOUSE_SPEC_DESIGN=storeys,look` keeps only those (world compile, `house:preview`, the gates).
+`house:preview` writes the pand's drawn grid as `measure.json layout` (`threeBuildingMesh.ts layoutProbe`).
+
+Coverage (`npm run house:specs`, 2026-11-10): 1,354 pands carry storeys, look and shop (the block-face houses); 410 of
+them are on the generic path (no installed model). The register gives none of the three.
+
+**Gate** (`scripts/house-specs/design-gate.ts`, 19 belt pairs: Haarlemmer 9 + GG-Zuid 4 staged specs and H7's Nassaukade
+row 6; generic route held vs on, against the spec, the recipe route and the photo):
+
+| Field | Before -> after | Cost (own vertices, 19 pands) |
+|---|---|---|
+| storeys | drawn storeys = spec 6/19 -> 19/19; preview PASS 5 -> 6 | +180 (+1.1 %) |
+| look | window shape = recipe 5/19 -> 5/19 alone, 7/19 with storeys; pale surrounds -> plain white frames where the spec says `sill` (visible on all 9 Haarlemmer fronts) | -36 |
+| shop | shop paint on 8 of 8 shop fronts (the extract already had them as shops); 11 quiet fronts unchanged | 0 |
+| all three | storeys 19/19, columns 17/19 (unchanged), window shape 7/19, PASS 6 (5), wall dL vs recipe 0.127 (0.125) | +162 (+0.95 %) |
+
+Wall-colour verdicts dominate the preview's FAIL (12 of the 19 reasons are `wall dL`) and are advisory until H2e and H9.
+City-wide cost: H11_CITY_COST.
+
+**Not wired** (still recipe-route only), ranked by how visible in a ride frame:
+1. `eavesHeight`: the wall top is 3DBAG's (Haarlemmerdijk 18: 7.94 m against an 11.0 m measured cornice). The generic mass
+   would have to rise above 3DBAG's height; the storey fit draws the stated count on the shorter wall instead.
+2. Crown shape detail (`crownCap`, `crownCapSpan`, `crownShoulder`, neck width): the roof planner draws `monumentGable`
+   from its own outline; a neck or bell reads as a square neck box (176066, 171144).
+3. `roof.form`/`hip`/`pitchDeg`/`material`: the roof planner's plan is 3DBAG's.
+4. `cornice` depth and `crownCap` pieces: no cornice-depth or cap component in the generic cells.
+5. `doorBay`, `basement`/`souterrain`, `hoist`, `palette.door`, `windowHeights`, `headLines`, `windowShare`: no per-pand
+   control in the bay cells (one door position rule, one opening box per preset).
+6. `palette.stone`, `palette.cornice`, `palette.frame` as a colour (only its tone picks the preset), `palette.brick` (held,
+   `SPEC_WALLS_HELD`).
 
 ### Which specs a world carries
 
@@ -572,9 +619,12 @@ overrides, measurements, verdict). The sheet header names the route and the look
 by PRE_BLUR_PX (1.5 px Gaussian sigma at 50 px/m) before measureFacade. Atlas cache:
 artifacts/house-preview/atlas-<look>-<size>-<painter hash>.bin (first run paints, later runs load).
 
-Overrides (until the HouseSpec resolver of lane H1 lands): fronts[0].gable -> monumentGable, palette.wall (or
-palette.brick) hex -> facadeMappedColour; every other design field is listed under overrides.notApplied in
-measure.json (the generic path has no property for it yet).
+Overrides: fronts[0].gable -> monumentGable, palette.wall (or palette.brick) hex -> facadeMappedColour, the bays, and
+(lane H11) storeys, storeyHeights[0], the window look (windowSurround, speklagen, windowHead, windows, windowProportion,
+palette.frame) and the shopfront through the game's own decorator (houseSpec/view.ts specView -> withHouseSpec;
+HOUSE_SPEC_DESIGN=0 holds them, =storeys,look keeps only those). Every other design field is listed under
+overrides.notApplied in measure.json (the generic path has no property for it yet). measure.json `layout` is the
+pand's street-run grid as the mesher laid it: drawn storeys (ground included), upper storey pitch, window columns.
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
