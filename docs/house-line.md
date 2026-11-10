@@ -310,9 +310,15 @@ The verdict is decided by the **wall colour family** (dL <= 0.12, hue <= 12 degr
 is the least reliable number the measurer produces on a photo (the hand-drawn gate in "Openings and a stable wall" has six pinned
 misses of 0.1-0.36), while the installed-house gate (`likenessGate`, `install-large`) keeps its own glazing tolerance untouched.
 
-**Measure profiles** (`measureFacade.ts` `MEASURE_PROFILES`): `installGate` = groups + solidBody, the 0-flip reading (the 448-group replay
-moves no verdict; it is the `measureFacade` default, so `likenessGate`, `install-large` and every caller that names no profile use it);
-`houseLine` = groups + solidBody + core + clusterWall, used by `house:preview` and its gate. Every sheet header prints
+**Measure profiles** (`measureFacade.ts` `MEASURE_PROFILES`): `houseLine` = groups + solidBody + core + clusterWall is the **default since the H2e
+flip (#352)**: `measureFacade`, `compareLikeness`, `likenessGate`, `install-large`, `house:preview` and every caller that names no profile use it
+(`OPENING_SPLIT_DEFAULT`, `DEFAULT_PROFILE`). `installGate` = groups + solidBody, the old 0-flip reading, stays a named profile for rollback
+(`--opening-split=groups,solidBody` on the replay; `compareLikeness({profile: 'installGate'})`): **remove after 2026-11-17 if uncalled**.
+A new FAIL on an already-installed house goes on the review list (`scripts/house-preview/houseline-new-fails.ts`), never into an uninstall,
+a hold or a stale-install failure: `check:stale-installs` does not read likeness (exit 0 after the flip). The flip moved the replay by the
+122 verdicts of the v2 sheet, less Montessori and Amstel (now WARN), plus Kloveniersburgwal 72 walls[3] (a pinned regression); against
+the H5h hand set (60 readable single-front pands, archived crops, wall tone dark/light) the photo wall tone agrees 40/60 under installGate and
+42/60 under houseLine; window columns 28/60 under both. Every sheet header prints
 `measure profile <name>`, and `measure.json` carries `profile`. `--no-opening-split` and `--opening-split=<parts>` override it (the
 header then says `pre-H2d` or `custom`).
 

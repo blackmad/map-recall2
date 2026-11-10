@@ -88,7 +88,7 @@ export function replayGroup(meta: GroupMeta, bin: Buffer, opts?: {openingSplit: 
   const cmask = cm ? new Uint8Array(bin.subarray(P * 4 + M * 4, P * 4 + M * 5)) : null;
   const curtain = cm && cmask ? {...cm, mask: cmask, grid: analyseMask({mask: cmask, cols: meta.model.cols, rows: meta.model.rows, cell: meta.model.cell, box: meta.model.box, lines: meta.lines})} : undefined;
   const model: ModelElevation = {...rest, mask, colours, grid, ...(curtain ? {curtain} : {})};
-  const likeness = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines: meta.lines, obliquityDeg: meta.obliquityDeg, cameraDistM: meta.cameraDistM, cameraSpanM: meta.cameraSpanM, ...(houseLine ? {profile: 'houseLine' as const, street: meta.street} : {})});
+  const likeness = compareLikeness({photo, padCells: Math.round(PAD_M / photo.cell), model, lines: meta.lines, obliquityDeg: meta.obliquityDeg, cameraDistM: meta.cameraDistM, cameraSpanM: meta.cameraSpanM, profile: houseLine ? 'houseLine' as const : 'installGate' as const, ...(houseLine ? {street: meta.street} : {})});
   return {photo, model, likeness};
 }
 

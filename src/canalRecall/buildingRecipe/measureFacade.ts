@@ -85,11 +85,15 @@ export const OPENING_SPLIT_ALL: OpeningSplit = {groups: true, core: true, solidB
  * `core` and `clusterWall` move 8 and 5 replay verdicts, which is why they are not in `installGate`.
  */
 export const MEASURE_PROFILES = {
+  /** the pre-flip reading; remove after 2026-11-17 if uncalled */
   installGate: {groups: true, core: false, solidBody: true, clusterWall: false},
   houseLine: {groups: true, core: true, solidBody: true, clusterWall: true},
 } as const satisfies Record<string, OpeningSplit>;
 export type MeasureProfile = keyof typeof MEASURE_PROFILES;
-export const OPENING_SPLIT_DEFAULT: OpeningSplit = {...MEASURE_PROFILES.installGate};
+/** The default profile: houseLine (H2e flip, #352), for every caller that names none, likenessGate and install-large included. `installGate` stays a named profile for rollback: remove after 2026-11-17 if uncalled. */
+export const OPENING_SPLIT_DEFAULT: OpeningSplit = {...MEASURE_PROFILES.houseLine};
+/** The comparator profile (likeness.ts `compareLikeness`) that goes with the default split. */
+export const DEFAULT_PROFILE: MeasureProfile = 'houseLine';
 /** The profile a resolved split is, else 'custom' (a `--opening-split=` selection) or 'pre-H2d' (none of the parts). */
 export function profileName(v: boolean | Partial<OpeningSplit> | undefined): string {
   const r = resolveOpeningSplit(v);

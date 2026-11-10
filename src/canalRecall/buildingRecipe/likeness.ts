@@ -48,7 +48,7 @@ import {nearestMaterial, wallFamily} from '../facade/materials.ts';
 import {rgbToHsl, WALL_TOLERANCE} from '../blockFace/wallColour.ts';
 import {renderElevation, type MaterialSoup} from '../landmarks/facadeCompare.ts';
 import {compareRowOpenings, ROW_OPENINGS, rowOpenings, type RowOpeningsComparison} from './rowOpenings.ts';
-import {analyseMask, HALF_PERIOD_TOL_HOUSELINE, chromaticity, hex, isOpeningCell, majorityClean, MASK, rgbToLab, SAME_MATERIAL, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
+import {analyseMask, DEFAULT_PROFILE, HALF_PERIOD_TOL_HOUSELINE, chromaticity, hex, isOpeningCell, majorityClean, MASK, rgbToLab, SAME_MATERIAL, wallMaterialOf, type FacadeBox, type FacadeMeasurement, type MaskGrid, type Rgb} from './measureFacade.ts';
 
 export const PAD_M = 0.5;
 export const LIKENESS = {dL: 0.12, hueDeg: WALL_TOLERANCE.hueDeg, satForHue: 0.08, storeyGlazing: 0.15, meanGlazing: 0.1, columns: 0.2, iouWarn: 0.45,
@@ -310,9 +310,9 @@ export function closeCameraSpan(pieces: readonly {u0: number; u1: number; crop: 
  * from its own nearby panorama, `all-walls.ts --segment`); default the whole box width (one crop for the wall).
  */
 export function compareLikeness(a: {photo: FacadeMeasurement; padCells: number; model: ModelElevation; lines: number[]; obliquityDeg?: number; cameraDistM?: number; cameraSpanM?: number;
-  /** H2e: 'houseLine' reads glazing as information (a number, never a reason; previewVerdict's rule) and abstains on a wall that does not face the street (`street: false`); omitted = installGate, as before */
+  /** H2e: 'houseLine' reads glazing as information (a number, never a reason; previewVerdict's rule) and abstains on a wall that does not face the street (`street: false`); omitted = the default profile (houseLine since the H2e flip); pass 'installGate' for the old reading */
   profile?: 'installGate' | 'houseLine'; street?: boolean}): LikenessResult {
-  const houseLine = a.profile === 'houseLine';
+  const houseLine = (a.profile ?? DEFAULT_PROFILE) === 'houseLine';
   const {photo, padCells} = a, cr = a.model.curtain;
   // curtain symmetry (file header): the model's curtain grid read as the photo reads one
   const curtainMode = !!cr && (a.model.system === 'curtain-wall' || photo.frontClass === 'curtain');
