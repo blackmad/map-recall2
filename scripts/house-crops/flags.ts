@@ -14,16 +14,32 @@ export const THRESHOLDS = {
   washedOut: 0.5,
   /** largest connected dark blob in the lower third (a PROXY for a parked van or scaffold; dark shopfront glass can also trip it) */
   occluderShare: 0.35,
-  /** select.ts FACADE_WINDOW */
-  obliquityDeg: 55,
+  /** a crop is usable only from a straight view; 35-55 degrees (select.ts FACADE_WINDOW) is a fallback that is made and archived but not usable */
+  obliquityDeg: 35,
+  fallbackObliquityDeg: 55,
   cameraDistanceM: [5, 35] as const,
+  /** H4b: the wall is at least this wide (slivers and single-window close-ups) */
+  minWallM: 3.5,
+  /** H4b: the valid rows, counted up from the ground, reach at least this share of the crop height (eaves included) */
+  minHeightCover: 0.85,
+  /** H4b: share of mid-crop pixels with a luma gradient over EDGE_GRADIENT; below it the crop is a blank wall (calibrated on labels, see evaluate.ts) */
+  minEdgeDensity: 0.04,
+  /** H4b, strip route only: largest mean-luma step between adjacent columns or rows (a fusion seam); calibrated on labels */
+  maxSeamStep: 30,
   /** a wall under this falls back to planStrip (a narrow front is a few hundred pixels wide and a single parked car covers it) */
   narrowWallM: 4,
 } as const;
 
 export type CropFlags = {
-  foliage: number; washedOut: number; missing: number; voidShare: number; occluderShare: number;
+  /** foliage share on the white-balanced leaf test (a1's stripWhiteBalance.ts); foliagePlain is the unbalanced isLeaf share */
+  foliage: number; foliagePlain: number; wbApplied: boolean;
+  washedOut: number; missing: number; voidShare: number; occluderShare: number;
   obliquity: number; cameraDistance: number;
+  /** the camera ray to the wall centre crosses another BAG footprint (alley / neighbour case) */
+  rayBlocked: boolean;
+  wallWidthM: number; heightCover: number; edgeDensity: number; seamStep: number;
+  /** the crop came from the planStrip route (the seam check applies) */
+  strip: boolean;
 };
 export type Usability = { usable: boolean; reasons: string[] };
 
@@ -36,6 +52,11 @@ export function usability(f: CropFlags, t: typeof THRESHOLDS = THRESHOLDS): Usab
   if (f.occluderShare > t.occluderShare) reasons.push('occluder');
   if (f.obliquity > t.obliquityDeg) reasons.push('oblique');
   if (f.cameraDistance < t.cameraDistanceM[0] || f.cameraDistance > t.cameraDistanceM[1]) reasons.push('distance');
+  if (f.rayBlocked) reasons.push('blocked');
+  if (f.wallWidthM < t.minWallM) reasons.push('narrow');
+  if (f.heightCover < t.minHeightCover) reasons.push('short');
+  if (f.edgeDensity < t.minEdgeDensity) reasons.push('blank');
+  if (f.strip && f.seamStep > t.maxSeamStep) reasons.push('seam');
   return { usable: reasons.length === 0, reasons };
 }
 
@@ -137,4 +158,25 @@ export function groupFaces(walls: WallRef[]): WallRef[][] {
     const ux = -g[0].ny, uy = g[0].nx;
     return g.sort((p, q) => (mid(p).x * ux + mid(p).y * uy) - (mid(q).x * ux + mid(q).y * uy) || p.id.localeCompare(q.id));
   }).sort((p, q) => p[0].id.localeCompare(q[0].id));
+}
+
+// ---- wall-choice: camera ray against other footprints ---------------------------------------------
+
+const cross = (ax: number, ay: number, bx: number, by: number, cx: number, cy: number) => (bx - ax) * (cy - ay) - (by - ay) * (cx - ax);
+function segHit(p: Rd, q: Rd, a: Rd, b: Rd) {
+  const d1 = cross(p.x, p.y, q.x, q.y, a.x, a.y), d2 = cross(p.x, p.y, q.x, q.y, b.x, b.y), d3 = cross(a.x, a.y, b.x, b.y, p.x, p.y), d4 = cross(a.x, a.y, b.x, b.y, q.x, q.y);
+  return d1 * d2 < 0 && d3 * d4 < 0;
+}
+/** The segment p-q crosses an edge of one of the rings (a camera ray through a neighbouring building). */
+export function segmentHitsRings(p: Rd, q: Rd, rings: Rd[][]): boolean {
+  const x0 = Math.min(p.x, q.x), x1 = Math.max(p.x, q.x), y0 = Math.min(p.y, q.y), y1 = Math.max(p.y, q.y);
+  for (const ring of rings) {
+    if (Math.max(...ring.map(r => r.x)) < x0 || Math.min(...ring.map(r => r.x)) > x1 || Math.max(...ring.map(r => r.y)) < y0 || Math.min(...ring.map(r => r.y)) > y1) continue;
+    for (let i = 0; i + 1 < ring.length; i++) if (segHit(p, q, ring[i], ring[i + 1])) return true;
+  }
+  return false;
+}
+/** Is the view from `camera` to the wall centre (stepped 0.5 m outward so the wall itself is not hit) blocked by one of `others`? */
+export function rayBlocked(camera: Rd, wallMid: Rd, normal: [number, number], others: Rd[][]): boolean {
+  return segmentHitsRings(camera, { x: wallMid.x + normal[0] * 0.5, y: wallMid.y + normal[1] * 0.5 }, others);
 }

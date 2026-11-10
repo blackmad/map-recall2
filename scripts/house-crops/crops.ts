@@ -8,19 +8,20 @@ import jpeg from 'jpeg-js';
 import sharp from 'sharp';
 import { http, neighbourhood, type Footprint } from '../pand-reference/core.ts';
 import { listPanos, pickWall, rankPanos, type PanoPick, type Wall } from '../pand-reference/select.ts';
-import { loadPano, rectifyWall, foliageFraction, washedOutFraction, wallHeight } from '../pand-reference/rectify.ts';
+import { loadPano, rectifyWall, wallHeight } from '../pand-reference/rectify.ts';
 import { lensFor } from '../da-costa-block/neighbourhood-core.ts';
 import { AMSTERDAM_WORLD_ALIGNED, rectifyFacade } from '../../src/canalRecall/facade/rectify.ts';
 import { medianFuse, planStrip, type FrontSpan, type PanoRecord } from '../../src/canalRecall/blockFace/strip.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { loadBuurt, pandsInBuurt, centroid, type Buurt } from './buurt.ts';
-import { manifestPath, type Entry, type Manifest, type Session } from './manifest.ts';
-import { THRESHOLDS, usability, penalty, voidShare, occluderShare, spanPixels, cutSpan, groupFaces, type CropFlags, type WallRef } from './flags.ts';
+import { RULES_VERSION, manifestPath, type Entry, type Manifest, type Session } from './manifest.ts';
+import { measureCrop } from './measure.ts';
+import { THRESHOLDS, usability, penalty, rayBlocked, spanPixels, cutSpan, groupFaces, type CropFlags, type WallRef } from './flags.ts';
 
 export const HELP = `house:crops - rectified, quality-flagged facade crops for one buurt (house line station 4a)
 
   npm run house:crops -- --buurt <code|cbs|name> [--pand <id>] [--resume] [--dry-run] [--rate-ms 500]
-                         [--archive <dir>] [--limit <n>] [--restart] [--report] [--help]
+                         [--archive <dir>] [--limit <n>] [--years <n>] [--restart] [--report] [--help]
 
   --buurt <key>     CBS buurt: 4-letter code (AB07), CBS code (BU0363AB07) or name (Bloemgrachtbuurt). Required.
   --pand <id>       process only this pand (16-digit BAG id, with or without NL.IMBAG.Pand.); it must lie in the buurt.
@@ -31,16 +32,22 @@ export const HELP = `house:crops - rectified, quality-flagged facade crops for o
   --rate-ms <ms>    minimum gap between the STARTS of two network requests (default 500; cache hits are free).
   --archive <dir>   root of the map-recall2-source-data checkout (or its worktree); crops go to <dir>/pand-crops/<pandId>/.
                     Default: env HOUSE_CROPS_ARCHIVE. Required unless --dry-run.
+  --years <n>       best of up to n mission years per pand (default 6): the years are tried in order (clear straight view, leaf-off, newer) and
+                    the first crop that passes every check wins; otherwise the best-scoring one is kept. --years 1 is the single-year baseline.
   --limit <n>       stop after n pands (smoke runs); the manifest stays resumable.
   --report          print the coverage table and write the contact sheet (artifacts/house-crops/<code>-sheet.png), no crops.
 
 Per pand: the street-facing BAG wall (pand-reference/select.ts pickWall) is rectified from the best panorama
 (rankPanos, rectifyWall, 50 px/m); a wall under ${THRESHOLDS.narrowWallM} m, or a best view over 35 deg oblique, uses the block-face
 planStrip route instead (one capture day, up to 3 panoramas median-fused, 40 px/m) and cuts the pand's span out of the strip.
-A crop that misses a quality cap gets one second try from another capture day (leaf-off preferred); the better one is kept.
+The panorama is chosen per mission year (up to --years, 2016-2025): clear straight views first, then leaf-off months, then newer years;
+front.json records the chosen year and every candidate tried.
 Flags: foliage, washedOut, missing, voidShare, occluderShare (a dark-blob PROXY for vans/scaffold), obliquity, cameraDistance.
 usable = voidShare <= ${THRESHOLDS.voidShare}, foliage <= ${THRESHOLDS.foliage}, washedOut <= ${THRESHOLDS.washedOut}, occluderShare <= ${THRESHOLDS.occluderShare},
-obliquity <= ${THRESHOLDS.obliquityDeg} deg, camera ${THRESHOLDS.cameraDistanceM[0]}-${THRESHOLDS.cameraDistanceM[1]} m (scripts/house-crops/flags.ts THRESHOLDS).
+obliquity <= ${THRESHOLDS.obliquityDeg} deg (35-${THRESHOLDS.fallbackObliquityDeg} is a fallback: made, not usable), camera ${THRESHOLDS.cameraDistanceM[0]}-${THRESHOLDS.cameraDistanceM[1]} m,
+ray to the wall not through another footprint, wall >= ${THRESHOLDS.minWallM} m, height cover >= ${THRESHOLDS.minHeightCover}, edge density >= ${THRESHOLDS.minEdgeDensity},
+strip seam step <= ${THRESHOLDS.maxSeamStep} (scripts/house-crops/flags.ts THRESHOLDS). Foliage is measured after a1's white balance (stripWhiteBalance.ts).
+A manifest of an older rules version cannot be --resumed: use --restart (cached responses, no repeated requests).
 Panorama API: one request start per --rate-ms, exponential backoff on 429/5xx (Retry-After honoured), identifying User-Agent.
 Panorama bytes are cached in PAND_REFERENCE_CACHE (default .cache/pand-reference; point it at the shared cache).`;
 
@@ -74,26 +81,28 @@ async function panosNear(p: { x: number; y: number }): Promise<any[]> {
 // ---- the two crop routes -------------------------------------------------------------------------------
 type Made = { jpeg: Buffer; width: number; height: number; ppm: number; flags: CropFlags; method: 'wall' | 'strip'; picks: PanoPick[]; wallWidthM: number; wallHeightM: number; baseZ: number; groundSource: string };
 
-function decodeFlags(jpegBuf: Buffer, alpha: Uint8Array, crop: { width: number; height: number; foliage: number; washedOut: number; missingFraction: number }, pick: { distM: number; obliquityDeg: number }): CropFlags {
-  const d = jpeg.decode(jpegBuf, { useTArray: true });
-  return { foliage: round(crop.foliage), washedOut: round(crop.washedOut), missing: round(crop.missingFraction), voidShare: round(voidShare(alpha, crop.width, crop.height)),
-    occluderShare: round(occluderShare(d.data, alpha, crop.width, crop.height)), obliquity: round(pick.obliquityDeg, 1), cameraDistance: round(pick.distM, 1) };
+const r3 = (v: number) => round(v, 3);
+/** All flags of one crop from its decoded pixels plus the pick's geometry. */
+function flagsFor(rgba: Uint8ClampedArray | Uint8Array, alpha: Uint8Array, width: number, height: number, pick: { distM: number; obliquityDeg: number }, o: { blocked: boolean; wallWidthM: number; strip: boolean }): CropFlags {
+  const m = measureCrop(rgba, alpha, width, height);
+  return { foliage: r3(m.foliage), foliagePlain: r3(m.foliagePlain), wbApplied: m.wbApplied, washedOut: r3(m.washedOut), missing: r3(m.missing), voidShare: r3(m.voidShare), occluderShare: r3(m.occluderShare),
+    obliquity: round(pick.obliquityDeg, 1), cameraDistance: round(pick.distM, 1), rayBlocked: o.blocked, wallWidthM: round(o.wallWidthM, 2), heightCover: r3(m.heightCover), edgeDensity: r3(m.edgeDensity), seamStep: round(m.seamStep, 1), strip: o.strip };
 }
 
-async function wallCrop(fp: Footprint, wall: Wall, pick: PanoPick): Promise<Made | null> {
+async function wallCrop(fp: Footprint, wall: Wall, pick: PanoPick, blocked: boolean): Promise<Made | null> {
   const pano = await loadPano(pick);
   if (!pano) return null;
   const crop = rectifyWall(pano.img, pick, wall, fp.height, 50);
   if (!crop) return null;
-  return { jpeg: crop.jpeg, width: crop.width, height: crop.height, ppm: round(crop.ppm, 1), flags: decodeFlags(crop.jpeg, crop.alpha, crop, pick), method: 'wall', picks: [pick],
+  return { jpeg: crop.jpeg, width: crop.width, height: crop.height, ppm: round(crop.ppm, 1), flags: (() => { const d = jpeg.decode(crop.jpeg, { useTArray: true }); return flagsFor(d.data, crop.alpha, crop.width, crop.height, pick, { blocked, wallWidthM: wall.len, strip: false }); })(), method: 'wall', picks: [pick],
     wallWidthM: round(crop.wallWidthM, 2), wallHeightM: round(crop.wallHeightM, 2), baseZ: round(crop.baseZ), groundSource: crop.groundSource };
 }
 
 /** planStrip route: plan the face's spans on one capture day, median-fuse up to 3 panoramas over the pand's span (+1 m each side), cut the span out. */
-async function stripCrop(fp: Footprint, wall: Wall, face: WallRef[], panos: any[]): Promise<Made | 'no-pano' | null> {
+async function stripCrop(fp: Footprint, wall: Wall, face: WallRef[], panos: any[], isBlocked: (p: any) => boolean): Promise<Made | 'no-pano' | null> {
   const near = face.filter(w => Math.hypot((w.a.x + w.b.x) / 2 - wall.mid.x, (w.a.y + w.b.y) / 2 - wall.mid.y) < 28);
   const spans: FrontSpan[] = near.map(w => ({ pandId: w.id, a: [w.a.x, w.a.y], b: [w.b.x, w.b.y], normal: [w.nx, w.ny] }));
-  const records: PanoRecord[] = panos.map(p => { const r = lngLatToRd([p.geometry.coordinates[0], p.geometry.coordinates[1]]); return { panoId: p.pano_id, timestamp: p.timestamp, rd: [r.x, r.y], record: p }; });
+  const records: PanoRecord[] = panos.filter(p => !isBlocked(p)).map(p => { const r = lngLatToRd([p.geometry.coordinates[0], p.geometry.coordinates[1]]); return { panoId: p.pano_id, timestamp: p.timestamp, rd: [r.x, r.y], record: p }; });
   const plan = planStrip(spans, records), mine = plan.spans[spans.findIndex(s => s.pandId === fp.id)];
   if (!mine?.panos.length) return 'no-pano';
   const MARGIN = 1, ppm = 40, h = wallHeight(fp.height), byId = new Map(records.map(r => [r.panoId, r.record as any]));
@@ -117,45 +126,66 @@ async function stripCrop(fp: Footprint, wall: Wall, face: WallRef[], panos: any[
   let miss = 0; for (let i = 0; i < alpha.length; i++) { alpha[i] = cut.data[i * 4 + 3] === 255 ? 255 : 0; if (!alpha[i]) miss++; }
   const enc = jpeg.encode({ data: Buffer.from(cut.data.buffer), width: cut.width, height: cut.height }, 80);
   const best = [...used].sort((a, b) => a.obliquityDeg - b.obliquityDeg)[0];
-  const flags: CropFlags = { foliage: round(foliageFraction(cut.data, cut.width, cut.height)), washedOut: round(washedOutFraction(cut.data, cut.width, cut.height)), missing: round(miss / alpha.length),
-    voidShare: round(voidShare(alpha, cut.width, cut.height)), occluderShare: round(occluderShare(cut.data, alpha, cut.width, cut.height)), obliquity: round(best.obliquityDeg, 1), cameraDistance: round(best.distM, 1) };
+  const flags = flagsFor(cut.data, alpha, cut.width, cut.height, best, { blocked: false, wallWidthM: wall.len, strip: true });
   return { jpeg: enc.data, width: cut.width, height: cut.height, ppm: round(dims.ppm, 1), flags, method: 'strip', picks: used, wallWidthM: round(wall.len, 2), wallHeightM: round(h, 2), baseZ: round(ground), groundSource: `median of ${grounds.length} panoramas' camera height - 2.44 m` };
 }
 
 // ---- one pand --------------------------------------------------------------------------------------------
-export function pickSecond(ranked: PanoPick[], first: PanoPick): PanoPick | null {
-  const others = ranked.filter(c => day(c.timestamp) !== day(first.timestamp) && c.obliquityDeg <= 45);
-  return others.sort((a, b) => Number(leafOff(b.timestamp)) - Number(leafOff(a.timestamp)) || a.obliquityDeg - b.obliquityDeg)[0] ?? null;
+export const needsStrip = (wall: Wall, pick: PanoPick) => wall.len < THRESHOLDS.narrowWallM || pick.obliquityDeg > THRESHOLDS.obliquityDeg;
+
+/**
+ * One representative panorama per mission year, in the order they are tried: clear straight views first, then leaf-off
+ * months (Nov-Apr), then newer years; at most `maxYears`. Inside a year the best tier (clear ray, <= 35 deg), then leaf-off,
+ * then rankPanos order decides.
+ */
+export function yearCandidates(ranked: PanoPick[], tier: (c: PanoPick) => number, maxYears: number): PanoPick[] {
+  const byYear = new Map<number, PanoPick>();
+  const order = ranked.map((c, i) => ({ c, i, t: tier(c) })).sort((x, y) => x.t - y.t || Number(leafOff(y.c.timestamp)) - Number(leafOff(x.c.timestamp)) || x.i - y.i);
+  for (const { c } of order) if (!byYear.has(c.missionYear)) byYear.set(c.missionYear, c);
+  return [...byYear.values()].sort((a, b) => tier(a) - tier(b) || Number(leafOff(b.timestamp)) - Number(leafOff(a.timestamp)) || b.missionYear - a.missionYear).slice(0, maxYears);
 }
-export const needsStrip = (wall: Wall, ranked: PanoPick[]) => wall.len < THRESHOLDS.narrowWallM || (ranked.length > 0 && ranked[0].obliquityDeg > 35);
+
+export const options = { maxYears: 6 };
+type Tried = { year: number; panoId: string; date: string; usable: boolean; reasons: string[]; method: 'wall' | 'strip'; obliquity: number; foliage: number };
 
 async function processPand(fp: Footprint, wall: Wall, face: WallRef[], archiveRoot: string): Promise<Entry> {
-  const panos = await panosNear(wall.mid), ranked = rankPanos(wall, panos);
-  if (!ranked.length) return { status: 'no-pano', note: `no panorama 5-35 m from the wall within ${THRESHOLDS.obliquityDeg} deg (${panos.length} listed)` };
-  let best: Made | null = null, attempts = 0;
-  const route = needsStrip(wall, ranked) ? 'strip' : 'wall';
-  const tries: Array<() => Promise<Made | 'no-pano' | null>> = route === 'strip'
-    ? [() => stripCrop(fp, wall, face, panos), () => wallCrop(fp, wall, ranked[0])] // planStrip is stricter (<= 30 m, <= 45 deg): fall back to the wall route
-    : [() => wallCrop(fp, wall, ranked[0]), async () => { const second = pickSecond(ranked, ranked[0]); return second ? wallCrop(fp, wall, second) : null; }];
-  for (const attempt of tries) {
-    const made = await attempt(); attempts++;
-    if (made === 'no-pano') continue;
-    if (made && (!best || penalty(made.flags) < penalty(best.flags))) best = made;
-    if (best && usability(best.flags).usable) break;
+  const panos = await panosNear(wall.mid);
+  const others = (await neighbourhood(centroid(fp.ring))).filter(o => o.id !== fp.id).map(o => o.ring);
+  const camRd = (rec: any) => lngLatToRd([rec.geometry.coordinates[0], rec.geometry.coordinates[1]]);
+  const isBlocked = (rec: any) => rayBlocked(camRd(rec), wall.mid, [wall.nx, wall.ny], others);
+  // Tiers: clear ray and <= 35 deg, clear and 35-55 (fallback), then blocked rays.
+  const tier = (c: PanoPick) => (isBlocked(c.record) ? 2 : 0) + (c.obliquityDeg > THRESHOLDS.obliquityDeg ? 1 : 0);
+  const ranked = rankPanos(wall, panos);
+  if (!ranked.length) return { status: 'no-pano', note: `no panorama 5-35 m from the wall within ${THRESHOLDS.fallbackObliquityDeg} deg (${panos.length} listed)` };
+  const years = yearCandidates(ranked, tier, options.maxYears);
+  let best: Made | null = null, attempts = 0, bestYear = 0;
+  const tried: Tried[] = [];
+  const better = (a: Made, b: Made) => { const ra = usability(a.flags).reasons.length, rb = usability(b.flags).reasons.length; return ra < rb || (ra === rb && penalty(a.flags) < penalty(b.flags)); };
+  // Try the years in preference order and stop at the first crop that passes every check: extra panoramas are fetched only for fronts that need them.
+  for (const pick of years) {
+    const strip = needsStrip(wall, pick);
+    const yearPanos = panos.filter(p => Number(p.mission_year ?? String(p.timestamp).slice(0, 4)) === pick.missionYear);
+    let made: Made | 'no-pano' | null = strip ? await stripCrop(fp, wall, face, yearPanos, isBlocked) : await wallCrop(fp, wall, pick, isBlocked(pick.record));
+    if (made === 'no-pano') made = await wallCrop(fp, wall, pick, isBlocked(pick.record));
+    attempts++;
+    if (!made) continue;
+    const u = usability(made.flags);
+    tried.push({ year: pick.missionYear, panoId: made.picks[0].panoId, date: made.picks[0].timestamp.slice(0, 10), usable: u.usable, reasons: u.reasons, method: made.method, obliquity: made.flags.obliquity, foliage: made.flags.foliage });
+    if (!best || better(made, best)) { best = made; bestYear = pick.missionYear; }
+    if (u.usable) break;
   }
-  if (!best && route === 'strip' && attempts) return { status: 'no-pano', note: 'planStrip found no panorama for the span and the wall route failed', method: 'strip' };
-  if (!best) return { status: 'error', note: 'no panorama could be decoded or rectified', attempts };
+  if (!best) return { status: 'error', note: 'no panorama could be decoded or rectified', attempts, yearsTried: attempts };
   const u = usability(best.flags), id = idOf(fp.id), rel = `pand-crops/${id}`, dir = path.join(archiveRoot, rel);
   await fs.mkdir(dir, { recursive: true });
   await fs.writeFile(path.join(dir, 'front.jpg'), best.jpeg);
   const date = best.picks[0].timestamp.slice(0, 10);
   await fs.writeFile(path.join(dir, 'front.json'), JSON.stringify({
     pandId: fp.id, method: best.method, panoramas: best.picks.map(p => ({ panoId: p.panoId, timestamp: p.timestamp, missionYear: p.missionYear, missionType: p.missionType, surface: p.surface, cameraDistM: round(p.distM, 1), obliquityDeg: round(p.obliquityDeg, 1), sourceUrl: `https://api.data.amsterdam.nl/panorama/panoramas/${p.panoId}/` })),
-    missionDate: date, wall: { a: [round(wall.a.x, 2), round(wall.a.y, 2)], b: [round(wall.b.x, 2), round(wall.b.y, 2)], lenM: round(wall.len, 2), normal: [round(wall.nx, 3), round(wall.ny, 3)], roadDistM: round(wall.roadDistM, 1), crs: 'EPSG:28992' },
+    missionDate: date, chosenYear: bestYear, candidates: tried, missionYearsAvailable: [...new Set(ranked.map(c => c.missionYear))].sort(), wall: { a: [round(wall.a.x, 2), round(wall.a.y, 2)], b: [round(wall.b.x, 2), round(wall.b.y, 2)], lenM: round(wall.len, 2), normal: [round(wall.nx, 3), round(wall.ny, 3)], roadDistM: round(wall.roadDistM, 1), crs: 'EPSG:28992' },
     crop: { width: best.width, height: best.height, pixelsPerMetre: best.ppm, wallWidthM: best.wallWidthM, wallHeightM: best.wallHeightM, groundNapM: best.baseZ, groundSource: best.groundSource, tileHeightM: round(fp.height, 1) },
     flags: best.flags, usable: u.usable, rejectedBecause: u.reasons, thresholds: THRESHOLDS, attempts, attribution: ATTRIBUTION, createdAt: new Date().toISOString(),
   }, null, 1) + '\n');
-  return { status: 'ok', method: best.method, usable: u.usable, reasons: u.reasons, flags: best.flags, archive: rel, panoIds: best.picks.map(p => p.panoId), date, ppm: best.ppm, widthM: best.wallWidthM, attempts };
+  return { status: 'ok', method: best.method, usable: u.usable, reasons: u.reasons, flags: best.flags, archive: rel, panoIds: best.picks.map(p => p.panoId), date, ppm: best.ppm, widthM: best.wallWidthM, attempts, chosenYear: bestYear, yearsTried: tried.length };
 }
 
 // ---- driver ----------------------------------------------------------------------------------------------
@@ -171,6 +201,7 @@ async function main() {
   if (!key) { console.error('--buurt is required\n\n' + HELP); process.exit(2); }
   const buurt: Buurt = await loadBuurt(key);
   if (has('report')) { const { report } = await import('./report.ts'); await report(buurt.code, arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE); return; }
+  options.maxYears = Number(arg('years') ?? options.maxYears);
   const rateMs = Number(arg('rate-ms') ?? 500), dry = has('dry-run');
   const archiveRoot = arg('archive') ?? process.env.HOUSE_CROPS_ARCHIVE;
   if (!archiveRoot && !dry) { console.error('--archive <source-data checkout> (or env HOUSE_CROPS_ARCHIVE) is required unless --dry-run'); process.exit(2); }
@@ -200,8 +231,9 @@ async function main() {
   const root = path.resolve(archiveRoot!);
   const prior = await readManifest(buurt.code);
   if (prior && !has('resume') && !has('restart')) { console.error(`${manifestPath(buurt.code)} exists: pass --resume to continue or --restart to start over`); process.exit(2); }
-  const manifest: Manifest = prior && has('resume') ? prior : { version: 1, buurt: { code: buurt.code, cbsCode: buurt.cbsCode, name: buurt.name, gebied: buurt.gebied }, archive: 'pand-crops', thresholds: THRESHOLDS, createdAt: new Date().toISOString(), sessions: [], pands: {} };
-  manifest.thresholds = THRESHOLDS;
+  if (prior && has('resume') && prior.rulesVersion !== RULES_VERSION) { console.error(`manifest rules version ${prior.rulesVersion ?? 1} != ${RULES_VERSION}: the usable rules changed, so old crops are stale; run with --restart (cached API responses make that repeat no requests)`); process.exit(2); }
+  const manifest: Manifest = prior && has('resume') ? prior : { version: 1, rulesVersion: RULES_VERSION, buurt: { code: buurt.code, cbsCode: buurt.cbsCode, name: buurt.name, gebied: buurt.gebied }, archive: 'pand-crops', thresholds: THRESHOLDS, createdAt: new Date().toISOString(), sessions: [], pands: {} };
+  manifest.thresholds = THRESHOLDS; manifest.rulesVersion = RULES_VERSION;
   const session: Session = { startedAt: new Date().toISOString(), wallSeconds: 0, requests: 0, bytes: 0, retries: 0, status429: 0, status5xx: 0, failures: 0, pands: 0, rateMs };
   manifest.sessions.push(session);
   const t0 = Date.now(), snap = () => { Object.assign(session, { wallSeconds: Math.round((Date.now() - t0) / 1000), requests: http.requests, bytes: http.bytes, retries: http.retries, status429: http.status429, status5xx: http.status5xx, failures: http.failures, endedAt: new Date().toISOString() }); };

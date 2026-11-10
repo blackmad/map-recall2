@@ -1,8 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { THRESHOLDS, usability, penalty, voidShare, occluderShare, spanPixels, cutSpan, groupFaces, sameFace, type CropFlags } from './flags.ts';
+import { THRESHOLDS, usability, penalty, voidShare, occluderShare, spanPixels, cutSpan, groupFaces, sameFace, segmentHitsRings, rayBlocked, type CropFlags } from './flags.ts';
+import { heightCover, edgeDensity, seamStep } from './measure.ts';
 
-const ok: CropFlags = { foliage: 0.05, washedOut: 0.1, missing: 0.1, voidShare: 0.1, occluderShare: 0.05, obliquity: 20, cameraDistance: 14 };
+const ok: CropFlags = { foliage: 0.05, foliagePlain: 0.05, wbApplied: false, washedOut: 0.1, missing: 0.1, voidShare: 0.1, occluderShare: 0.05, obliquity: 20, cameraDistance: 14, rayBlocked: false, wallWidthM: 6, heightCover: 1, edgeDensity: 0.2, seamStep: 5, strip: false };
 
 test('a clean crop is usable', () => assert.deepEqual(usability(ok), { usable: true, reasons: [] }));
 test('thresholds are inclusive at the cap and exclusive above it', () => {
@@ -12,7 +13,7 @@ test('thresholds are inclusive at the cap and exclusive above it', () => {
   assert.deepEqual(usability({ ...ok, foliage: 0.31 }).reasons, ['foliage']);
   assert.deepEqual(usability({ ...ok, washedOut: 0.51 }).reasons, ['washed-out']);
   assert.deepEqual(usability({ ...ok, occluderShare: 0.36 }).reasons, ['occluder']);
-  assert.deepEqual(usability({ ...ok, obliquity: 56 }).reasons, ['oblique']);
+  assert.deepEqual(usability({ ...ok, obliquity: 36 }).reasons, ['oblique']);
   assert.ok(usability({ ...ok, cameraDistance: 5 }).usable && usability({ ...ok, cameraDistance: 35 }).usable);
   assert.deepEqual(usability({ ...ok, cameraDistance: 36 }).reasons, ['distance']);
   assert.deepEqual(usability({ ...ok, cameraDistance: 4.9 }).reasons, ['distance']);
@@ -75,4 +76,48 @@ test('a cross street gap, a setback and the far side of the street split faces',
   assert.equal(faces.length, 4);
   assert.ok(!sameFace(wall('a', 0, 5), wall('b', 9, 14)));
   assert.ok(sameFace(wall('a', 0, 5), wall('b', 6, 14)));
+});
+
+test('H4b caps: ray, width, height cover, blank wall, strip-only seam', () => {
+  assert.deepEqual(usability({ ...ok, rayBlocked: true }).reasons, ['blocked']);
+  assert.deepEqual(usability({ ...ok, wallWidthM: 3.4 }).reasons, ['narrow']);
+  assert.ok(usability({ ...ok, wallWidthM: 3.5 }).usable);
+  assert.deepEqual(usability({ ...ok, heightCover: 0.84 }).reasons, ['short']);
+  assert.deepEqual(usability({ ...ok, edgeDensity: 0.03 }).reasons, ['blank']);
+  assert.ok(usability({ ...ok, seamStep: 99 }).usable, 'seam only gates the strip route');
+  assert.deepEqual(usability({ ...ok, seamStep: 31, strip: true }).reasons, ['seam']);
+});
+
+const sq = (x: number, y: number, s = 10) => [{ x, y }, { x: x + s, y }, { x: x + s, y: y + s }, { x, y: y + s }, { x, y }];
+test('a camera ray through a neighbouring footprint is blocked, a clear one is not', () => {
+  const others = [sq(0, 10)];
+  assert.ok(segmentHitsRings({ x: 5, y: 30 }, { x: 5, y: 0 }, others));
+  assert.ok(!segmentHitsRings({ x: 25, y: 30 }, { x: 25, y: 0 }, others));
+  assert.ok(!segmentHitsRings({ x: 5, y: 30 }, { x: 5, y: 22 }, others), 'stops before the footprint');
+  // wall centre at (5, 10) facing north (0,1): camera at (5, 25) is clear of a footprint to the south; (5, -5) behind it is not tested here
+  assert.ok(!rayBlocked({ x: 5, y: 25 }, { x: 5, y: 10 }, [0, 1], [sq(0, -10)]));
+  assert.ok(rayBlocked({ x: 5, y: 25 }, { x: 5, y: 10 }, [0, 1], [sq(3, 14, 4)]));
+});
+
+test('heightCover counts valid rows up from the ground', () => {
+  const w = 20, h = 100, a = new Uint8Array(w * h).fill(255);
+  assert.equal(heightCover(a, w, h), 1);
+  a.fill(0, 0, w * 30); // top 30 rows invalid
+  assert.equal(heightCover(a, w, h), 0.7);
+});
+
+test('edgeDensity: a flat wall is ~0, a textured one is high', () => {
+  const w = 80, h = 80, alpha = new Uint8Array(w * h).fill(255), flat = new Uint8ClampedArray(w * h * 4).fill(150), tex = new Uint8ClampedArray(w * h * 4);
+  for (let p = 0; p < w * h; p++) { const v = ((p % w) + ((p / w) | 0)) % 2 === 0 ? 60 : 200; tex[p * 4] = tex[p * 4 + 1] = tex[p * 4 + 2] = v; }
+  assert.ok(edgeDensity(flat, alpha, w, h) < 0.01);
+  assert.ok(edgeDensity(tex, alpha, w, h) > 0.5);
+});
+
+test('seamStep: a luma jump across the whole height is a seam, local windows are not', () => {
+  const w = 100, h = 100, alpha = new Uint8Array(w * h).fill(255), img = new Uint8ClampedArray(w * h * 4);
+  for (let p = 0; p < w * h; p++) { const x = p % w, v = x < 50 ? 100 : 170; img[p * 4] = img[p * 4 + 1] = img[p * 4 + 2] = v; }
+  assert.ok(seamStep(img, alpha, w, h) > 60);
+  const win = new Uint8ClampedArray(w * h * 4).fill(120);
+  for (let y = 30; y < 40; y++) for (let x = 40; x < 50; x++) { const i = (y * w + x) * 4; win[i] = win[i + 1] = win[i + 2] = 30; }
+  assert.ok(seamStep(win, alpha, w, h) < 20);
 });
