@@ -20,7 +20,7 @@ const measured = (): string[] => {
 
 test('SHOP_GROUND_PAINTS is the class-median table of the measured panorama specs', () => {
   const d = derivePalette(measured());
-  assert.equal(d.reduce((s, p) => s + p.n, 0), 299);
+  assert.equal(d.reduce((s, p) => s + p.n, 0), 298); // 299 before the 2026-11-10 shopfronts refresh (storefront gate): Gallizia's POI now reads as a plain window
   assert.deepEqual(SHOP_GROUND_PAINTS.map(p => [p.hex, p.weight]), d.map(p => [p.hex, p.n]));
 });
 
