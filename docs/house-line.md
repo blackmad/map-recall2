@@ -1825,7 +1825,7 @@ it?). Gate: median photo offset <= 2 % over the validation set, any pose > 3 % i
 | missing | >= 50 % of 35 wall picks hit sky or ground |
 | other building | >= 50 % of the wall picks hit another building or model (a cover that does not draw this wall; a neighbour in front) |
 | roof offset | the game's skyline over the wall (median of 7 columns, read on the wall plane) sits more than 1 m from the projected crown line (tile height) while the photo's sits within 1 m of it; or a model's surface stands >= 1.2 m over the crown line on 2 of 7 columns |
-| wall colour | relative, the H9 rule: in each half, rel = the pand's wall L / the mean of its two neighbours' (strips 3-5 m past each wall end on the wall's line; L = trimmed 30-70 % mean of HSL lightness from 3 m to min(12 m, 85 % of the height), leaves and, on the neighbours, sky dropped). Fires when \|ln(rel game / rel photo)\| > 0.35 (`COLOUR_REL_MAX`), only when both neighbour strips read in both halves with < 25 % sky, and not on a missing / other-building pair. Exposure and white balance cancel; the absolute \|dL\| > 0.12 rule it replaces fired on 24 of 35 |
+| wall colour | relative, the H9 rule: in each half, rel = the pand's wall L / the mean of its neighbours' (strips 3-5 m past each wall end on the wall's line; L = trimmed 30-70 % mean of HSL lightness from 3 m to min(12 m, 85 % of the height), leaves and, on the neighbours, sky dropped). A strip counts when it reads in both halves with < 25 % sky; with one strip the caption says `left only` / `right only`, with none `wall colour: no ref`. Fires on an inversion across 1.0 (each side > 10 % from it, `INVERSION_BAND`: lighter than the neighbours in one half, darker in the other) or when \|ln(rel game / rel photo)\| > 0.35 (`COLOUR_REL_MAX`); never on a missing / other-building pair. Exposure and white balance cancel; the absolute \|dL\| > 0.12 rule it replaced fired on 24 of 35 |
 
 Opening counts (photo and game, `measureFacade` houseLine profile on the wall rectified out of each half at 25 px/m) are printed as advisory only, with a `possible blank wall` note where the game reads <= 1 and the photo >= 3; no flag fires from them. Measured against the H5h hand counts (`data/house-line/hand-set-v1.json`, 69 readable single fronts, photo halves): columns read on 33, equal to the hand axes on 14 and within one on 25; openings / (axes x storeys) median 1.44 (p10 0.67, p90 2.5), within 30 % on 20 of 61. Not good enough to flag on |
 
@@ -1875,6 +1875,24 @@ median 3.0 s; under a shared slot with a check:canal gate queued.
 Gate: `check:canal` green on this branch (162 checks, EXIT 0, 2026-11-10 20:01, `CANAL_PW_EXCLUSIVE=1`).
 
 Flags on the 35 (before, first rules): blankWall 1 (116526), missing 2, otherBuilding 3, roofOffset 4, wallColour 24.
+
+### Round 3 (2026-11-10): inversions, one-strip references, clipped skylines
+
+- The judgement session caught 116526 (H7 r4 frames) silent at photo rel 1.27 vs game 0.85: lighter than its neighbour in
+  the photo, darker in the game. Round 2 demanded both neighbour strips and only one read. Now one strip is used when only
+  one reads (`ref right only` on the caption), no strip prints `no ref`, and an inversion across 1.0 fires whatever the log
+  score. It fires on 116526 (pinned in `pose.test.ts` with the measured values).
+- The inversion takes a 10 % band either side of 1.0: the literal rule fired on 4 of H7's 15 (read as right) at noise such
+  as 236262, 1.024 vs 0.998, and 156960, 0.96 vs 1.07. With the band, **H7 false positives: 0 of 15** on the clercq set,
+  H7's Nassaukade run and the round-2 rerun; 116526 is the one flag, a true one.
+- Skyline columns whose frame top sits under the crown line (+0.5 m) read `clipped`, not a height, so a clipped-top pose
+  cannot raise a roof offset (160704 from Nassaukade had photo 12.72 m from white bay-window tops against the frame edge;
+  it now reads `skyline ... clipped`). H7's clercq set keeps its two roof offsets (157618, 156454: the game's skyline 1.1-1.3
+  m under the crown the photo confirms), which H7's own summary already had.
+- `--post-only --out <dir>` re-runs every check and flag on an existing frame dir (prepared.json, job.json and the
+  frames), writing pose.json, pair.jpg, the sheets and summary.json there.
+- Not caught: the lens-flare arc on 160704's 2021-03-24 panorama. A thin arc blows out under 1 % of the band, far under the
+  12 % glare rule; it needs a streak detector (OPEN).
 
 ### Round 2 (2026-11-10): relative wall colour, glare, advisory openings, Nassaukade 146
 

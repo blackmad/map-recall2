@@ -81,6 +81,23 @@ test('relative wall colour cancels exposure and catches a pand painted unlike it
   assert.ok(lighter.score! > 0.35, `score ${lighter.score}`);
   const picks = { wall: { n: 35, target: 35, other: 0, none: 0, others: {} }, above: { n: 14, target: 0, other: 0, none: 14, others: {} }, drawnBy: '' } as any;
   const m = { openings: 10, wallHex: null, wallL: null, usable: 1, columns: 3 };
-  assert.match(flagsFor(picks, m, m, { crownM: 17, game: null, photo: null, above: 0 }, lighter).wallColour!, /lighter than its neighbours/);
+  assert.match(flagsFor(picks, m, m, { crownM: 17, game: null, photo: null, above: 0 }, lighter).wallColour!, /inverted \(darker than its neighbours in the photo, lighter in the game\)/);
   assert.equal(flagsFor(picks, m, m, { crownM: 17, game: null, photo: null, above: 0 }, same).wallColour, null);
+});
+
+test('pinned 116526 (H7 r4 frames, h7r4-116526): lighter than its neighbour in the photo, darker in the game, one strip: the inversion fires', async () => {
+  const { flagsFor } = await import('./analyse.ts');
+  const picks = { wall: { n: 35, target: 35, other: 0, none: 0, others: {} }, above: { n: 14, target: 0, other: 0, none: 14, others: {} }, drawnBy: '' } as any;
+  const m = { openings: 10, wallHex: null, wallL: null, usable: 1, columns: 3 }, roof = { crownM: 17.63, game: null, photo: null, above: 0 };
+  // Measured by relativeColour on those frames: photo pand 0.309 / right neighbour 0.244, game 0.411 / 0.482 (the left strip is sky in one half).
+  const c116526 = { photo: { pand: 0.309, neighbours: [0.439, 0.244], rel: 1.266 }, game: { pand: 0.411, neighbours: [0.383, 0.482], rel: 0.853 }, used: 1, ref: 'right only' as const, score: -0.395 };
+  assert.match(flagsFor(picks, m, m, roof, c116526).wallColour!, /inverted .*ref right only/);
+  // An inversion fires under the log threshold too (each side > 10 % from 1.0); no reference never fires.
+  const small = { ...c116526, photo: { ...c116526.photo, rel: 1.15 }, game: { ...c116526.game, rel: 0.88 }, score: -0.268 };
+  assert.match(flagsFor(picks, m, m, roof, small).wallColour!, /inverted/);
+  // Noise across 1.0 is not an inversion (H7's 236262: 1.024 vs 0.998, read as right).
+  const noise = { ...c116526, photo: { ...c116526.photo, rel: 1.024 }, game: { ...c116526.game, rel: 0.998 }, score: -0.026 };
+  assert.equal(flagsFor(picks, m, m, roof, noise).wallColour, null);
+  const none = { ...c116526, photo: { ...c116526.photo, rel: null }, game: { ...c116526.game, rel: null }, used: 0, ref: 'no ref' as const, score: null };
+  assert.equal(flagsFor(picks, m, m, roof, none).wallColour, null);
 });
