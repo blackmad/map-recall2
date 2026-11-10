@@ -39,6 +39,38 @@
    }
   },
   {
+   "pandId": "0363100012175321",
+   "label": "Herengracht corner, near-black painted brick (the right half of the langestraat-175320 frame, the left of langestraat-175318)",
+   "cams": [
+    "langestraat-175320",
+    "langestraat-175318"
+   ],
+   "photo": {
+    "crop": "front-alt",
+    "why": "2019 alt: the canal front with the fanlight door; the 2021 front is the side wall behind a tree"
+   },
+   "review": {
+    "gable": "cornice",
+    "wall": "near-black painted brick, white frames and ground storey",
+    "notes": "not in the brief list; the frame the user judged is mostly this house"
+   }
+  },
+  {
+   "pandId": "0363100012175358",
+   "label": "Herengracht, dark brown brick beside 175320",
+   "cams": [
+    "langestraat-175320"
+   ],
+   "photo": {
+    "crop": "front",
+    "why": "2020"
+   },
+   "review": {
+    "wall": "dark brown brick, white cornice",
+    "notes": "not in the brief list; in the langestraat-175320 frame"
+   }
+  },
+  {
    "pandId": "0363100012168136",
    "label": "canal row (langestraat-168136)",
    "cams": [

@@ -35,12 +35,14 @@ test('facts step: era-only year moves, finish, a spec recipe only when the meshe
   assert.deepEqual(houseSpecPatch(view, { constructionYear: 1880, bagConstructionYear: 1905, registerFinish: 'light' }), { constructionYear: 1605 });
   const measured: HouseSpecView = { gable: 'neck', year: 1680, bays: 3, wallHex: '#7A4A3A', src: { bays: 'streetlevel-measured', wallHex: 'streetlevel-measured' } };
   // The measured wall colour reaches the mesher through the wall-colour rule (lane H9; H1 held it).
-  assert.deepEqual(houseSpecPatch(measured, { constructionYear: 1680 }).specRecipe, { bays: 3, wallHex: specWallDisplay('#7a4a3a'), period: 'canal', crownShape: 'neck' });
+  // Spec bays are held (SPEC_BAYS_HELD, #348): the view's 3 bays never reach the recipe.
+  assert.deepEqual(houseSpecPatch(measured, { constructionYear: 1680 }).specRecipe, { wallHex: specWallDisplay('#7a4a3a'), period: 'canal', crownShape: 'neck' });
   assert.deepEqual(houseSpecPatch({ wallHex: '#7a4a3a', src: {} }, {}).specRecipe, { wallHex: specWallDisplay('#7a4a3a') }, 'a wall colour alone writes a recipe');
-  // SPEC_WALLS=0: the period colour again (the H1 hold), bays unaffected.
+  // SPEC_WALLS=0: the period colour again (the H1 hold); with bays held too, nothing left for a recipe.
   const env = process.env.SPEC_WALLS;
   process.env.SPEC_WALLS = '0'; resetSpecWallsFlag();
-  assert.deepEqual(houseSpecPatch(measured, { constructionYear: 1680 }).specRecipe, { bays: 3, period: 'canal', crownShape: 'neck' });
+  assert.equal(houseSpecPatch(measured, { constructionYear: 1680 }).specRecipe, undefined);
+  assert.deepEqual(houseSpecPatch({ ...measured, storeys: 4 }, { constructionYear: 1680 }).specRecipe, { storeys: 4, period: 'canal', crownShape: 'neck' }, 'storeys do not depend on bays');
   assert.equal(houseSpecPatch({ wallHex: '#7a4a3a', src: {} }, {}).specRecipe, undefined);
   assert.deepEqual(houseSpecPatch({ wallMaterial: 'painted-brick', wallHex: '#343235', src: {} }, {}).registerFinish, 'light', 'flag off: painted is a light finish');
   if (env === undefined) delete process.env.SPEC_WALLS; else process.env.SPEC_WALLS = env;
@@ -79,7 +81,7 @@ test('the decorator chain: a spec gable survives withMonumentGable, which would 
   const spec = { ...base, properties: { ...base.properties, houseSpec: { gable: 'step', bays: 3, src: { gable: 'streetlevel-measured', bays: 'streetlevel-measured' } } } };
   const out = chain(spec as any).properties;
   assert.equal(out.monumentGable, 'step');
-  assert.deepEqual(out.specRecipe, { bays: 3, period: 'canal', crownShape: 'plain' });
+  assert.equal(out.specRecipe, undefined, 'spec bays held: a bays-only view writes no recipe');
 });
 
 test('enricher stamps the runtime view by feature id; a missing tile stamps nothing', async () => {

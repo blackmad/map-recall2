@@ -31,11 +31,17 @@ test('the easy-houses readings keep their family; order holds; lighter but never
   const after = [...order].sort((a, b) => L(out[a]) - L(out[b]));
   assert.deepEqual(after, order, 'lightness order of the walls holds');
   assert.equal(wallColourFamily(out.black167483).startsWith('neutral'), true, 'a black painted front stays neutral');
+  // A charcoal painted front (Herengracht 0363100012175321, #575351) stays darker than the brown brick beside it
+  // (0363100012175320, #6a5f5a) after the rule, as in the photo.
+  assert.ok(L(specWallDisplay('#575351')) < L(specWallDisplay('#6a5f5a')) - 0.05);
+  assert.ok(Math.abs(L(specWallDisplay('#575351')) - L('#575351')) < 0.01, 'dark paint takes no lift');
   assert.equal(wallColourFamily(out.brown169116), 'brick-brown');
   assert.equal(wallColourFamily(out.buff180181), 'brick-pale');
 });
 
 test('Kinkerstraat 244-332 strip readings come up (the brighter-palette constraint)', () => {
-  // Overcast strip readings of three houses of the face (H1 extract): the lift raises each by at least 0.08 L.
-  for (const h of ['#574434', '#4f463b', '#797c75']) assert.ok(L(specWallDisplay(h)) - L(h) >= 0.08, h);
+  // Overcast strip readings of the face (H1 extract): dull brown brick rises by at least 0.08 L; the grey stucco
+  // (a neutral, partly in the dark-paint band) never darkens.
+  for (const h of ['#574434', '#4f463b', '#4c4033']) assert.ok(L(specWallDisplay(h)) - L(h) >= 0.08, h);
+  for (const h of ['#797c75', '#2e302c', '#4f5148']) assert.ok(L(specWallDisplay(h)) >= L(h) - 1e-6, h);
 });

@@ -75,6 +75,12 @@ const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appea
  * lift), behind `?specWalls=0` / SPEC_WALLS=0. `false` = the rule is live.
  */
 export const SPEC_WALLS_HELD = false;
+/**
+ * Held (2026-11-10, integrator ruling after the #348 spot-check): H1's spec bay counts doubled on canal houses near the
+ * Dam (photo 3, drawn 6). Lane H1b owns the cause. Held, no spec bay count reaches the mesher; storeys, wall, gable,
+ * year and finish are unaffected. Mirrors the integrator's hold on main.
+ */
+export const SPEC_BAYS_HELD = true;
 
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
@@ -96,7 +102,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (p.registerFinish !== finish) patch.registerFinish = finish;
   }
   const recipe: SpecRecipe = {};
-  if (view.bays && view.bays > 0) recipe.bays = view.bays;
+  if (!SPEC_BAYS_HELD && view.bays && view.bays > 0) recipe.bays = view.bays;
   // The measured wall, through the wall-colour rule (lifted lightness, measured hue); `?specWalls=0` keeps the period colour.
   if (!SPEC_WALLS_HELD && specWallsOn() && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex)) recipe.wallHex = specWallDisplay(view.wallHex.toLowerCase());
   // A spec recipe only when it carries something the mesher reads (bays, storeys, a wall colour); crown and period ride along.

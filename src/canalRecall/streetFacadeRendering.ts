@@ -92,9 +92,7 @@ export function recipeLayoutScale(recipe: ArchitecturalRecipe | undefined, fallb
 }
 
 /** The fitted cell width for a stated bay count stays within these multiples of the style's nominal bay. */
-// min 0.6 (lane H9): the Nieuwmarkt double house 0363100012182857, 8 bays on 12 m, drew 6 at 0.7 (3 m cells hold two
-// sashes on a canal front).
-export const SPEC_BAY_SCALE = { min: 0.6, max: 1.5 } as const;
+export const SPEC_BAY_SCALE = { min: 0.7, max: 1.5 } as const;
 /** A street front's stated window bays (HouseSpec, houseSpec/decorate.ts), and how many window axes one texture cell
  *  of this building carries (bay-look cells hold 2 or 3; `MeshBuilding.openings.upper.axes`). */
 export type FrontageBays = { bays?: number; axesPerCell: number; storeys?: number; exposedM?: number };

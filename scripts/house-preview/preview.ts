@@ -66,6 +66,9 @@ Flags
                       which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --wall <edge|deg>   frame this footprint wall: an edge index of the outer ring (the audit's edge field) or the edge whose outward
                       normal bearing is nearest, e.g. 215deg. Sets the front and the 3/4 view's wall; overrides the reference's wall
+  --set <set.json>    render every pand of a house-line set (scripts/house-specs/sets/*.json, e.g. the standing
+                      easy-houses-20261110 acceptance set) in one session, each into <out>/<pand> (default
+                      artifacts/house-preview/sets/<set name>/<pand>), other flags applied to each
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -94,7 +97,7 @@ Chromium) or a ride frame.`;
 // Arguments
 // ---------------------------------------------------------------------------------------------------------------
 export type Route = 'generic' | 'spec' | 'installed' | 'recipe';
-type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; help: boolean };
+type Args = { target?: string; spec?: string; intent?: string; wall?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; set?: string; help: boolean };
 export function parseArgs(argv: string[]): Args {
   const a: Args = { unlit: false, glbLit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, help: false };
   for (let i = 0; i < argv.length; i++) {
@@ -121,6 +124,7 @@ export function parseArgs(argv: string[]): Args {
       case '--look': a.look = value(); break;
       case '--ppm': a.ppm = Number(value()); break;
       case '--out': a.out = value(); break;
+      case '--set': a.set = value(); break;
       default:
         if (flag.startsWith('--')) throw new Error(`unknown flag ${flag} (see --help)`);
         if (a.target) throw new Error(`two targets: ${a.target} and ${flag}`);
@@ -686,7 +690,19 @@ function report(r: PreviewResult, ms: number) {
 async function main() {
   const t0 = performance.now();
   const args = parseArgs(process.argv.slice(2));
-  if (args.help || (!args.target && !args.spec && !args.intent)) { console.log(HELP); return; }
+  if (args.help || (!args.target && !args.spec && !args.intent && !args.set)) { console.log(HELP); return; }
+  if (args.set) {
+    // A house-line set (lane H9): every pand in one session, the same flags.
+    const set = readJson(args.set) as { name: string; pands: { pandId: string }[] };
+    const root = args.out ?? path.join(ATLAS_DIR, 'sets', set.name);
+    const session = new PreviewSession(args.look);
+    for (const { pandId } of set.pands) {
+      const t1 = performance.now();
+      report(await renderPand(session, pandId, { ...args, out: path.join(root, bare(pandId)) }), performance.now() - t1);
+    }
+    console.log(`  ${set.pands.length} pands, total ${Math.round(performance.now() - t0)} ms`);
+    return;
+  }
   const overrideFile = args.spec ?? args.intent;
   const readOv = () => overrideFile ? readOverride(overrideFile, args.spec ? 'spec' : 'intent') : undefined;
   let ov = readOv();

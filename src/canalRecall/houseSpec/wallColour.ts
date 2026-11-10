@@ -13,6 +13,8 @@
  *  - lightness goes through one monotone lift towards white, `L' = 1 - (1 - L) * (1 - LIFT.k)`, so the order of the
  *    walls in a row holds (a near-black painted front is still the darkest front in its row), the overcast readings
  *    come up to the city's brightness, and a pale wall moves least (pale brick stays pale brick, not cream);
+ *  - a dark neutral (black or charcoal paint) takes none of the lift (`liftShare`): its reading is already relative to
+ *    its own white trim, and lifted it drew level with the brown brick beside it;
  *  - a floor (`LIFT.minL`) keeps a black front from drawing as a hole, a ceiling (`LIFT.maxL`) keeps white below
  *    the paper white of the trim;
  *  - out of the sRGB gamut, chroma is reduced at the same lightness and hue.
@@ -20,7 +22,19 @@
  */
 
 /** The lift constants (OKLab L, 0..1). Measured on the easy-houses set and Kinkerstraat 244-332 (docs/house-line.md §1). */
-export const SPEC_WALL_LIFT = { k: 0.2, minL: 0.34, maxL: 0.93, chroma: 1 } as const;
+export const SPEC_WALL_LIFT = { k: 0.2, minL: 0.34, maxL: 0.93, chroma: 1, paint: { c0: 0.01, c1: 0.018, l0: 0.45, l1: 0.6 } } as const;
+/**
+ * How much of the lift a reading takes: all of it, except a dark neutral (black or charcoal paint), which takes none.
+ * The readings are normalised to the crop's white trim (measureFacade's light-trim rule), so a painted black front
+ * already reads dark *against its own white frames*; lifted like overcast brick it drew Herengracht 0363100012175321
+ * (near-black in the photo) as mid grey, level with the brown brick beside it. The weight falls smoothly from chroma
+ * `c0` to `c1` and lightness `l0` to `l1`, so the lift stays monotone in lightness.
+ */
+export function liftShare(L: number, C: number): number {
+  const { c0, c1, l0, l1 } = SPEC_WALL_LIFT.paint;
+  const clamp = (v: number) => Math.max(0, Math.min(1, v));
+  return 1 - (1 - clamp((C - c0) / (c1 - c0))) * (1 - clamp((L - l0) / (l1 - l0)));
+}
 
 /** Default on; `?specWalls=0` in the page or SPEC_WALLS=0 in Node keeps the period colour (the H1 hold). */
 export const SPEC_WALLS_DEFAULT = true;
@@ -69,8 +83,8 @@ export function oklabToHex(lab: Vec3): string {
 
 /** A measured wall reading -> the tint the generic mesher draws: measured hue and chroma, lifted lightness. */
 export function specWallDisplay(measuredHex: string): string {
-  const [L, a, b] = hexToOklab(measuredHex);
-  const L2 = Math.min(SPEC_WALL_LIFT.maxL, Math.max(SPEC_WALL_LIFT.minL, 1 - (1 - L) * (1 - SPEC_WALL_LIFT.k)));
+  const [L, a, b] = hexToOklab(measuredHex), k = SPEC_WALL_LIFT.k * liftShare(L, Math.hypot(a, b));
+  const L2 = Math.min(SPEC_WALL_LIFT.maxL, Math.max(SPEC_WALL_LIFT.minL, 1 - (1 - L) * (1 - k)));
   return oklabToHex([L2, a * SPEC_WALL_LIFT.chroma, b * SPEC_WALL_LIFT.chroma]);
 }
 
@@ -80,7 +94,7 @@ export function specWallDisplay(measuredHex: string): string {
  * exposure normalisation (measureFacade's light-trim rule), so the tiers are wide.
  */
 export type WallColourFamily = 'neutral-dark' | 'neutral-mid' | 'neutral-light' | 'brick-dark' | 'brick-red' | 'brick-brown' | 'brick-pale';
-export const FAMILY = { neutralC: 0.03, darkL: 0.42, lightL: 0.72, paleL: 0.68, redHue: 45 } as const;
+export const FAMILY = { neutralC: 0.03, darkL: 0.42, lightL: 0.72, paleL: 0.68, redHue: 40 } as const;
 export function wallColourFamily(hex: string): WallColourFamily {
   const [L, a, b] = hexToOklab(hex), C = Math.hypot(a, b), h = (Math.atan2(b, a) * 180) / Math.PI;
   if (C < FAMILY.neutralC) return L < FAMILY.darkL ? 'neutral-dark' : L < FAMILY.lightL ? 'neutral-mid' : 'neutral-light';
