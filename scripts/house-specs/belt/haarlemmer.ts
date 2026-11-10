@@ -24,6 +24,20 @@ type Amend = {
 const EAVES_PINS = ['west', 'oost'].flatMap(b => JSON.parse(readFileSync(`scripts/block-face/buurten/haarlemmerbuurt-${b}-review-eaves.json`, 'utf8')).pins as {pandId: string; eavesM: number; reason: string}[]);
 
 export const AMEND: Record<string, Amend> = {
+  // Haarlemmerdijk 133A: the 2020-01-10 pose (house:frames, 5 deg obliquity) reads the shoulders at 9.9-10.1 m and a dark-brick bell crown to
+  // 12.3 m at the middle columns (photo skyline 9.9, 10.1, 10.7, 12.1, 12.3, 12.0, 10.5); the 1 m grid pin 9.2 m was the gable foot under it.
+  '0363100012173480': {
+    fields: {'fronts/0/gable': 'bell', 'fronts/0/eavesHeight': 10, 'fronts/0/crownRise': 0.9},
+    evidence: 'house:frames 2020-01-10 pose, photo skyline over the wall (belt-after/0363100012173480/pose.json): shoulders 10.0 m, crown 12.3 m; roofOffset flagged the game (skyline 8.75 m vs crown 10.57 m)',
+    at: '2020-01-10',
+  },
+  // Haarlemmerdijk 131: RCE register says stucco (monument-text, palette/wallMaterial), the photo (2022-12-15, 2020-01-10) shows a dark olive-brown
+  // painted front; the generic path draws register stucco as white plaster whatever wallHex says (decorate.ts measuredPaint needs painted-brick).
+  '0363100012173479': {
+    fields: {'palette/wallMaterial': 'painted-brick', 'roof/stepWeld': true},
+    evidence: 'strip 2022-12-15 span 1249-1463 and 2020-01-10 capture: a dark olive-brown painted front; register finish stucco (monument-text) outvoted; roof/stepWeld closes the 4-6 cm jog of the BAG rear footprint (open-edges 3 -> 0)',
+    at: '2022-12-15',
+  },
   // Haarlemmerdijk 16/18/20: the 2022-12-15 strip is under-exposed (wall medians #30-#34), the 2020-01-10 capture is not. Measured, not tuned.
   '0363100012167818': {
     fields: {'palette/brick': '#4e4641'},
@@ -78,7 +92,7 @@ export function build(pandId: string): HouseSpec {
     if (a.limits?.length) spec.schemaLimits = [...(spec.schemaLimits ?? []), ...a.limits];
   }
   const pin = EAVES_PINS.find(p => p.pandId === pandId);
-  if (pin) {
+  if (pin && !(a?.fields && 'fronts/0/eavesHeight' in a.fields)) {
     setSpecField(spec, 'fronts/0/eavesHeight', pin.eavesM);
     spec.provenance['fronts/0/eavesHeight'] = {source: 'author', confidence: 0.85, ref: `scripts/block-face/buurten/haarlemmerbuurt-*-review-eaves.json: ${pin.reason}`, at: spec.provenance['']?.at ?? null};
   }

@@ -98,6 +98,10 @@
   {
    "component": "shopfront pilasters",
    "what": "6 and 4: white pilasters on cream joinery; drawn as cream joinery only"
+  },
+  {
+   "component": "roof behind crown",
+   "what": "Haarlemmerdijk 4: the recipe route draws the 3DBAG roof (max 9.9 m, ridge 9.9 m) behind the neck crown; the strip shows sky behind it. roof.form 'flat' and roof.source 'front' are read by the block-face compile only, not by the canal-house recipe"
   }
  ],
  "facts": {

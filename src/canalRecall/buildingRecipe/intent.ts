@@ -1115,6 +1115,13 @@ export interface RoofIntent {
    * over the crown's concave shoulder in the front view (`roof-behind-crown`: 0.11 m over, limit 0.05). Absent = byte-identical.
    */
   squareSaddle?: boolean;
+  /**
+   * `true`: the roof's step walls (the walls closing the step between two roof partitions of different height) end on the
+   * footprint outline or an earlier step wall's end when within 8 cm of it (canalhouseRecipes.ts `STEP_WELD_M`). A front-derived
+   * roof over a BAG footprint whose rear corners wander by centimetres leaves two walls' vertical edges 4-6 cm apart, which the
+   * `open-edges` gate counts as open (Haarlemmerdijk 131: 3 edges, 5.2 m). Absent = byte-identical.
+   */
+  stepWeld?: boolean;
   evidence?: string;
 }
 
@@ -1970,8 +1977,9 @@ export function validateIntent(input: unknown): CanalHouseIntent {
   }
   if (intent?.roof?.rakeClear !== undefined && intent.roof.rakeClear !== true) problems.push('roof.rakeClear: true or absent');
   if (intent?.roof?.squareSaddle !== undefined && intent.roof.squareSaddle !== true) problems.push('roof.squareSaddle: true or absent');
+  if (intent?.roof?.stepWeld !== undefined && intent.roof.stepWeld !== true) problems.push('roof.stepWeld: true or absent');
   if (intent?.roof?.evidence !== undefined && typeof intent.roof.evidence !== 'string') problems.push('roof.evidence: a string (what on the photo shows the roof form)');
-  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'squareSaddle', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'squareSaddle', 'evidence'].includes(k)).join(', ')}`);
+  if (intent?.roof && Object.keys(intent.roof).some(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'squareSaddle', 'stepWeld', 'evidence'].includes(k))) problems.push(`roof: unknown field ${Object.keys(intent.roof).filter(k => !['material', 'source', 'form', 'pitchDeg', 'rise', 'rearPitchDeg', 'crossGables', 'hip', 'rakeClear', 'squareSaddle', 'stepWeld', 'evidence'].includes(k)).join(', ')}`);
   for (const k of ['brick', 'frame', 'door'] as const) colour(intent?.palette?.[k], `palette.${k}`);
   for (const k of ['shutters', 'stone', 'band', 'cornice', 'glassBlock', 'sash'] as const) if (intent?.palette?.[k] !== undefined) colour(intent.palette[k], `palette.${k}`);
   if (intent?.palette?.wallMaterial !== undefined) oneOf(intent.palette.wallMaterial, WALL_MATERIALS, 'palette.wallMaterial');

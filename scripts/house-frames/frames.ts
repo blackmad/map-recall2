@@ -40,6 +40,8 @@ Input (one of)
 Flags
   --year <yyyy>          only panoramas of that mission year
   --season winter|any    winter: Nov-Mar captures first (bare trees); default any
+  --low-obl [deg]        prefer panoramas under deg (default 30) of obliquity and at least 9 m away when one exists; the others stay as the fallback
+                         (a 45 deg view is a second view, not the first)
   --query '<q>'          game query; ?engine=own&cam=fps is added. Before/after of a spec change: '?world=live&houseSpecs=0'
                          vs '?world=live' (the baked world-v1 cells carry the specs already, so houseSpecs=0 alone
                          changes nothing), or a staged world through WORLD_DIR / BUNDLES_DIR (tests/e2e/helpers.ts)
@@ -85,8 +87,11 @@ Checks (pose.json)
 Review: docs/house-line.md §7. Builders are accepted on these pairs, read by opus or a human.
 `;
 
+/** --low-obl: a straight panorama must also stand this far (m) from the wall, or a tall front clips at the 120 deg lens limit. */
+const LOW_OBL_MIN_DIST_M = 9;
+
 type Entry = { id: string; key?: string; bearing?: number; at?: [number, number]; chord?: [[number, number], [number, number]] };
-type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; inputName: string };
+type Args = { pands: Entry[]; year?: number; season: 'winter' | 'any'; query: string; label: string; out: string; panoSize: PanoSize; bearing?: number; lowObl?: number; max: number; reopenEvery: number; prepOnly: boolean; postOnly: boolean; inputName: string };
 
 function arg(argv: string[], name: string): string | undefined {
   const i = argv.indexOf(`--${name}`);
@@ -113,8 +118,9 @@ async function parseArgs(argv: string[]): Promise<Args> {
     pands = list.map((e: any) => typeof e === 'string' ? { id: bare(e) } : { id: bare(String(e.pandId ?? e.id)), key: e.key, bearing: e.bearing, at: e.at, chord: e.chord }); inputName = `list ${path.basename(arg(argv, 'list')!)}`;
   }
   const season = arg(argv, 'season') === 'winter' ? 'winter' : 'any';
+  const lowObl = argv.includes('--low-obl') ? Number(arg(argv, 'low-obl') && !arg(argv, 'low-obl')!.startsWith('--') ? arg(argv, 'low-obl') : 30) : undefined;
   const max = Number(arg(argv, 'max') ?? Infinity);
-  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), inputName };
+  return { pands: pands.slice(0, max), year: arg(argv, 'year') ? Number(arg(argv, 'year')) : undefined, season, query: arg(argv, 'query') ?? '', label, out, panoSize: (arg(argv, 'pano-size') as PanoSize) ?? 'medium', bearing, ...(lowObl !== undefined ? { lowObl } : {}), max, reopenEvery: Number(arg(argv, 'reopen-every') ?? 40), prepOnly: argv.includes('--prep-only'), postOnly: argv.includes('--post-only'), inputName };
 }
 
 // ---- what the game draws for a pand (route) -------------------------------------------------------------------------
@@ -265,6 +271,9 @@ async function prepare(entry: Entry, fp: Footprint | undefined, args: Args): Pro
   const quad: WallQuad = { a: wall.a, b: wall.b, heightM: fp.height || 10 };
   let ranked = rankPanos(wall, await listPanos(wall.mid)).filter(c => c.surface !== 'W');
   if (args.year) ranked = ranked.filter(c => c.missionYear === args.year);
+  // --low-obl: the straight views first; the oblique ones only when no straight one exists.
+  const straight = (c: PanoPick) => c.obliquityDeg < args.lowObl! && c.distM >= LOW_OBL_MIN_DIST_M; // a straight view 5 m from a 12 m front clips its top
+  if (args.lowObl !== undefined && ranked.some(straight)) ranked = ranked.filter(straight);
   if (!ranked.length) return { pandId, skip: args.year ? `no panorama of ${args.year} in 5-35 m` : 'no panorama in 5-35 m (obliquity <= 55)' };
   const why: string[] = [note];
   // Winter first; glare and washed-out walls rejected (pre-pass over the first 3, extended to 8 while fewer than 2 pass);

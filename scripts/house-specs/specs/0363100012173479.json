@@ -56,7 +56,8 @@
    "material": "bitumen",
    "source": "front",
    "form": "flat",
-   "evidence": "Haarlemmerdijk 131 (2022-12-15 strip): sky directly over the cornice and its crown piece; 3DBAG p95 9.91 m over a 9.6 m cornice, a near-flat roof. A front-hipped red saddle drew a roof face the strip never shows (the strip-sheet review of Haarlemmerdijk 6 rejected the same)"
+   "evidence": "Haarlemmerdijk 131 (2022-12-15 strip): sky directly over the cornice and its crown piece; 3DBAG p95 9.91 m over a 9.6 m cornice, a near-flat roof. A front-hipped red saddle drew a roof face the strip never shows (the strip-sheet review of Haarlemmerdijk 6 rejected the same)",
+   "stepWeld": true
   },
   "palette": {
    "brick": "#4c4743",
@@ -64,7 +65,8 @@
    "door": "#2a2a28",
    "stone": "#e8e4d8",
    "cornice": "#e8e4d8",
-   "stoneMaterial": "painted"
+   "stoneMaterial": "painted",
+   "wallMaterial": "painted-brick"
   },
   "notes": [
    "type haarlemmer-shop-cornice-wide: crown crowned, palette haarlemmer-red-brown + measured brick #635a50",
@@ -76,6 +78,18 @@
    "source": "streetlevel-measured",
    "confidence": 0.6,
    "ref": "scripts/block-face/faces/haarlemmerdijk-117-143-r1/strip.json",
+   "at": "2022-12-15"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; strip 2022-12-15 span 1249-1463 and 2020-01-10 capture: a dark olive-brown painted front; register finish stucco (monument-text) outvoted; roof/stepWeld closes the 4-6 cm jog of the BAG rear footprint (open-edges 3 -> 0)",
+   "at": "2022-12-15"
+  },
+  "roof/stepWeld": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "docs/reports/haarlemmer-strip-verdict-20261110.md; strip 2022-12-15 span 1249-1463 and 2020-01-10 capture: a dark olive-brown painted front; register finish stucco (monument-text) outvoted; roof/stepWeld closes the 4-6 cm jog of the BAG rear footprint (open-edges 3 -> 0)",
    "at": "2022-12-15"
   },
   "fronts/0/eavesHeight": {

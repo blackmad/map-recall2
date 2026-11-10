@@ -187,12 +187,16 @@ export interface CanalHouseRecipe {
   /** Explicit surveyed roof partition. Planes are heightM + x*slopeX + z*slopeZ. */
   roof: Measured<{ polygon: CanalhousePolygon; plane: { heightM: number; slopeX: number; slopeZ: number }; generatedFragment?:'symmetric-roof'|'roof-envelope' }[]>;
   elevations: CanalhouseElevation[]; simplifications: string[];
+  /** Weld step-wall ends within 8 cm to the footprint outline or an earlier end (RoofIntent.stepWeld). Absent = as before. */
+  stepWeld?: boolean;
 }
 export interface CompiledCanalHouseRecipe {
   group: T.Group; componentVersions: typeof CANALHOUSE_COMPONENT_VERSIONS; inputKey: string;
   stats: { triangles: number; meshes: number; bounds: { min: number[]; max: number[] } };
 }
 const EPS = 1e-5;
+/** Step-wall ends closer than this share one point (see the step-wall loop). */
+const STEP_WELD_M = 0.08;
 /**
  * Survey slack over the 0.5 m outset cap: BAG digitises the 0.5 m oriel bays of Retiefstraat 2-28 and Tugelaweg 19-31
  * (1921-1922) at 0.498-0.502 m, and a 2 mm overshoot of the capped plan threw for every pand (#154). Only a plan at the
@@ -446,6 +450,16 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
   // exposed step only, never extrude an internal wall down to the common shell.
   const roofEdges=roofs.flatMap((roof,roofIndex)=>[roof.polygon.outer,...roof.polygon.holes].flatMap((ring,ringIndex)=>ring.map((a,i)=>({a,b:ring[(i+1)%ring.length],roofIndex,plane:roof.plane,sign:(area(ring)>0?1:-1)*(ringIndex===0?1:-1)}))));
   const planeHeight=(plane:typeof roofs[number]['plane'],p:CanalhousePoint)=>plane.heightM+p[0]*plane.slopeX+p[1]*plane.slopeZ;
+  // Step-wall ends within STEP_WELD_M of a footprint corner or an earlier step wall's end share it: footprint corners that wander by centimetres (a rear
+  // wing's party wall in BAG) left two walls' vertical edges 4-6 cm apart, which the gate's 1 cm weld counts as open (open-edges,
+  // Haarlemmerdijk 131). Points further apart, or exactly equal, are untouched.
+  const stepEnds:CanalhousePoint[]=boundaries.flatMap(edge=>[edge.a,edge.b]); // footprint corners first: the shell's closures end on them
+  const weldStepEnd=(p:CanalhousePoint):CanalhousePoint=>{if(!recipe.stepWeld)return p;let hit:CanalhousePoint|undefined,best=STEP_WELD_M;for(const e of stepEnds){const d=Math.hypot(e[0]-p[0],e[1]-p[1]);if(d<best){best=d;hit=e;}}if(hit)return hit;
+    // Otherwise onto the footprint outline when it passes within the weld distance (a jog edge's wall covers the step's vertical edge).
+    let on:CanalhousePoint|undefined;best=STEP_WELD_M;
+    for(const edge of boundaries){const ex=edge.b[0]-edge.a[0],ez=edge.b[1]-edge.a[1],l2=ex*ex+ez*ez;if(l2<EPS)continue;const t=Math.max(0,Math.min(1,((p[0]-edge.a[0])*ex+(p[1]-edge.a[1])*ez)/l2)),q:CanalhousePoint=[edge.a[0]+ex*t,edge.a[1]+ez*t],d=Math.hypot(q[0]-p[0],q[1]-p[1]);if(d<best){best=d;on=q;}}
+    if(on){stepEnds.push(on);return on;}
+    stepEnds.push(p);return p;};
   for(let i=0;i<roofEdges.length;i++)for(let j=i+1;j<roofEdges.length;j++){
     const a=roofEdges[i],b=roofEdges[j];if(a.roofIndex===b.roofIndex)continue;
     const dx=a.b[0]-a.a[0],dz=a.b[1]-a.a[1],length=Math.hypot(dx,dz);if(length<EPS)continue;
@@ -464,7 +478,8 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
     const d0=delta(lo),d1=delta(hi);if(Math.max(Math.abs(d0),Math.abs(d1))<EPS)continue;
     const cuts=d0*d1<0?[lo,lo+(hi-lo)*d0/(d0-d1),hi]:[lo,hi];
     for(let k=1;k<cuts.length;k++){
-      let p=point(cuts[k-1]),q=point(cuts[k]);
+      let p=weldStepEnd(point(cuts[k-1])),q=weldStepEnd(point(cuts[k]));
+      if(recipe.stepWeld&&Math.hypot(p[0]-q[0],p[1]-q[1])<EPS)continue; // both ends welded onto one point: no wall left
       const aHigh=delta((cuts[k-1]+cuts[k])/2)>0;
       const high=aHigh?a.plane:b.plane,low=aHigh?b.plane:a.plane;
       // Outward normal faces the adjacent lower roof, with source ring winding.
