@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test:canal-elevation": "node --import tsx --test src/canalRecall/elevation/elevation.test.ts",
-    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts",
+    "test:house-spec": "node --import tsx --test src/canalRecall/houseSpec/spec.test.ts src/canalRecall/houseSpec/adapters.test.ts src/canalRecall/houseSpec/decorate.test.ts src/canalRecall/houseSpec/extractStamp.test.ts",
     "house:specs": "node --import tsx scripts/house-specs/build-house-specs.ts",
     "test:large-tier": "node --import tsx scripts/check-large-tier.ts",
     "test:landmark-triage": "node --import tsx --test src/canalRecall/landmarks/triage.test.ts",

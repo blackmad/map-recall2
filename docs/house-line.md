@@ -131,6 +131,21 @@ First run (2026-11-10): 7,224 pands (register 5,958; 280 block faces = 1,314 hou
   `engine/ownWorldView.ts`, through the `CanalRecallThreeBuildings` globals (`houseSpecEnricher`, `withHouseSpec`,
   `withHouseSpecCrown`, `houseSpecsEnabled`). World-v1 cells carry the bake; `?houseSpecs=0` only affects `?world=live`.
 
+### Which specs a world carries
+
+`world:compile` writes the stamp into world-v1 `index.json` (`houseSpec/extractStamp.ts`, via
+`pipeline.ts houseSpecsIndexStamp`): `"houseSpecs": "on"` plus
+`"houseSpecsExtract": {"dir": "house-specs", "tiles": 55, "hash": "<sha256>"}`, or `"houseSpecs": "off"` alone. The hash
+is sha256 over the sorted `path:sha256(bytes)` lines of `<dir>/14/**`, so it changes only when a spec tile's name or
+content changes. Only `index.json` carries it. `tiles.json` and the cell `.bin` files are unchanged by the stamp.
+
+### Rollback
+
+**On the baked default world, `?houseSpecs=0` does nothing**: the specs are compiled into the world-v1 cells. To roll
+back, recompile with `HOUSE_SPECS=0` (`HOUSE_SPECS=0 npm run world:compile -- --shell`; its `index.json` then says
+`"houseSpecs": "off"`) and republish that world-v1, or republish the previous world-v1. `?houseSpecs=0` works only
+with `?world=live`, where the live tile streamer runs the decorators in the browser.
+
 ### Where to look next
 
 `spec.ts` (types, paths, validation), `resolve.ts` (merge), `toRecipe.ts` (recipe route), `adapters.ts` (sources),

@@ -21,6 +21,7 @@ import { setShopfronts } from '../../src/canalRecall/shopfronts.js';
 import { registerFactsEnabled, registerFactsFromExtract, type RegisterFactsMap } from '../../src/canalRecall/facade/registerRecipe.js';
 import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
 import { HOUSE_SPECS_DIR, houseSpecsEnabled } from '../../src/canalRecall/houseSpec/decorate.js';
+import { houseSpecsStamp, type HouseSpecsStamp } from '../../src/canalRecall/houseSpec/extractStamp.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
@@ -47,6 +48,14 @@ export const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 export const tileFile = (t: string) => path.join(EXTRACT, `building-tiles/14/${t}.geojson.gz`);
 /** The HouseSpec extract directory the chain reads (HOUSE_SPECS_DIR, default the published `house-specs`). */
 export const houseSpecsDir = () => process.env.HOUSE_SPECS_DIR || HOUSE_SPECS_DIR;
+/** The index.json HouseSpec stamp (houseSpec/extractStamp.ts): on/off plus the extract directory's content hash. */
+export function houseSpecsIndexStamp(): HouseSpecsStamp {
+  const dir = houseSpecsDir(), abs = path.join(EXTRACT, dir), enabled = houseSpecsEnabled(null, process.env.HOUSE_SPECS);
+  const files: [string, Uint8Array][] = [];
+  const walk = (d: string) => { if (!fs.existsSync(d)) return; for (const e of fs.readdirSync(d, { withFileTypes: true })) { const f = path.join(d, e.name); if (e.isDirectory()) walk(f); else files.push([path.relative(abs, f), fs.readFileSync(f)]); } };
+  if (enabled) walk(path.join(abs, '14'));
+  return houseSpecsStamp(enabled, dir, files);
+}
 /** A tile's own inputs: a change to any of them recompiles only the cells that list the tile. HouseSpecs are per tile
  *  (house line H1), so a spec edit rebuilds the cells of its tile, not the city. */
 export const tileInputs = (t: string) => [tileFile(t), path.join(EXTRACT, `building-facts/14/${t}.json.gz`), path.join(EXTRACT, `roof-facts/14/${t}.json.gz`),

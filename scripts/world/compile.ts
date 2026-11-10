@@ -37,7 +37,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import crypto from 'node:crypto';
-import { ROOT, EXTRACT, gameChain, loadTile, readJson, tileFile, tileInputs, inputHash, CODE, GLOBAL_INPUTS, COVERS, type Feature, type Row, type TileStats } from './pipeline.js';
+import { ROOT, EXTRACT, gameChain, loadTile, readJson, tileFile, tileInputs, inputHash, CODE, GLOBAL_INPUTS, houseSpecsIndexStamp, COVERS, type Feature, type Row, type TileStats } from './pipeline.js';
 import { roofPlanForFeature } from '../../src/canalRecall/roofMesh.js';
 import { KIT_HIDE_IDS } from '../../src/canalRecall/landmarkKits.js';
 import { BuildingContextIndex } from '../../src/canalRecall/buildingContextIndex.js';
@@ -329,7 +329,7 @@ async function main() {
   const stringsFile = path.join(OUT, GLOBAL_STRINGS_FILE);
   const strings = globals ? { file: GLOBAL_STRINGS_FILE, count: globals.list.length, hash: globals.hash, gzBytes: fs.statSync(stringsFile).size, sha256: sha(fs.readFileSync(stringsFile)) } : undefined;
   const policy = NO_POLICY ? undefined : POLICY_VERSION, policyOptions = NO_POLICY ? undefined : POLICY_OPTIONS;
-  const indexOut = { version: 1, format: WORLD_FORMAT_VERSION, ...(policy ? { policy, policyOptions } : {}), ...(strings ? { strings } : {}), ...(shells ? { shells } : {}), debug: DEBUG, compiler: COMPILER_VERSION, grid: CELL_GRID, generatedFrom: 'building-tiles', sources, globalHash, tileHashes: Object.fromEntries(tileHash), tileCells, cells: cellsOut };
+  const indexOut = { version: 1, format: WORLD_FORMAT_VERSION, ...(policy ? { policy, policyOptions } : {}), ...(strings ? { strings } : {}), ...(shells ? { shells } : {}), debug: DEBUG, compiler: COMPILER_VERSION, grid: CELL_GRID, generatedFrom: 'building-tiles', ...houseSpecsIndexStamp(), sources, globalHash, tileHashes: Object.fromEntries(tileHash), tileCells, cells: cellsOut };
   fs.writeFileSync(path.join(OUT, 'index.json'), JSON.stringify(indexOut));
   // The runtime's probe reads only this (tileCells and the cell list, ~5 % of index.json): the 400 KB index cost
   // world-v1 ~150 ms against the default path at page start (lane L4 time-to-resident).
