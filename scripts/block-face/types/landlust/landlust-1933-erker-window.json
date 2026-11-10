@@ -129,17 +129,18 @@
    "dormerBody": "stone",
    "dormerAt": [
     {
-     "from": 0.84,
+     "from": 0.82,
      "to": 0.99
     }
    ],
    "dormerSize": {
     "sill": 0.05,
-    "rise": 1.4,
+    "rise": 1.0,
     "setback": 0.05
    },
    "pair": true,
-   "note": "Treslongstraat 5-35: ONE cream box dormer with a dark cap and two lights per PAIR of pands, centred on their party wall, standing on the gutter line (Opus round-3 verdict); this variant is the left half, the right half is its mirror"
+   "note": "Treslongstraat 5-35: ONE cream box dormer about 2.2 m wide and 1.0 m high per PAIR of pands, centred on their party wall: two lights, one centre mullion, cream cheeks, a dark flat cap overhanging the front (round-4 review); this variant is the left half (dormerParty: no cheek and a full-width frame member at the wall), the right half is its mirror",
+   "dormerParty": true
   }
  },
  "grounds": {

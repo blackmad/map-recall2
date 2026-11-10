@@ -169,7 +169,7 @@
    },
    "dormers": 2,
    "dormerStyle": "box",
-   "dormerBody": "zinc",
+   "dormerBody": "zinc-band",
    "dormerAt": [
     {
      "from": 0.08,
@@ -182,14 +182,14 @@
    ],
    "dormerSize": {
     "sill": 0.05,
-    "rise": 2.0,
+    "rise": 1.5,
     "setback": 0.3
    },
-   "note": "two zinc box dormers per block, 2.2 m wide, standing on the roof edge (Callenburgstraat 2-32, Andringastraat, Haenstraat, Zwijgerlaan strips; none on Callenburgstraat 3-63, which takes the plain crown \"parapet\")",
+   "note": "two painted-zinc box dormers per block (round-4 review): a 3-light glass band about 2.0 m wide in a 2.4 m box, smooth mid-grey cheeks #6f7275, a dark flat cap #3e4144 overhanging 0.15 m, about 1.6 m high with the cap; none on Callenburgstraat 3-63, which takes the plain crown \"parapet\"",
    "dormerWindow": {
-    "apron": 0.45,
-    "light": 1.4,
-    "tall": 1.0
+    "apron": 0.2,
+    "light": 2.0,
+    "tall": 1.1
    }
   },
   "parapet": {
@@ -205,7 +205,7 @@
  "grounds": {
   "door-left": {
    "doorBay": 2,
-   "note": "house doors in pairs under one flat canopy at 2.5 m (3.8-8.8 m of the block), flat doors 0-2.4 m; ground windows 1.0-2.66 m at each end; mirrored when the strip reads the door on the right; doorRow: four 0.75 m doors side by side across 0.32-0.69 of the front under one continuous canopy slab (Opus round-3 verdict); no doorReveal on the four-storey type: four recessed doors plus the dormers cost 3,280 triangles against the 3,000 per front budget (flush doors 2,760)",
+   "note": "house doors in pairs under one flat canopy at 2.5 m (3.8-8.8 m of the block), flat doors 0-2.4 m; ground windows 1.0-2.66 m at each end; mirrored when the strip reads the door on the right; doorRow: four 0.75 m doors side by side across 0.32-0.69 of the front single leaves without a fanlight under one continuous canopy slab resting on the door heads (Opus round-3 verdict); no doorReveal on the four-storey type: four recessed doors plus the dormers cost 3,280 triangles against the 3,000 per front budget (flush doors 2,760)",
    "groundCanopy": {
     "over": [
      "door"
@@ -213,7 +213,8 @@
     "projection": 0.6,
     "thickness": 0.12,
     "overhang": 0.15,
-    "gap": 0.15
+    "gap": 0.03,
+    "groundTransomOnly": true
    },
    "doorRow": {
     "from": 0.32,

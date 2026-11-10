@@ -3,7 +3,7 @@
  "street": "Gerard Callenburgstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 34.02,
+ "seconds": 29.92,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -27,7 +27,7 @@
     "0363100012063567"
    ],
    "passed": true,
-   "triangles": 20128
+   "triangles": 18485
   }
  ],
  "pands": [
@@ -96,11 +96,15 @@
      "brick": "#865435",
      "evidence": "strip 2024-11-21 span 0-514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "parapet"
+    "crown": "parapet",
+    "paletteOverrides": {
+     "door": "#1c2a24"
+    }
    },
    "notes": [
     "door unread",
-    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)"
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
+    "palette pinned: Callenburgstraat 3-63 (round-4 review 2026-11-10): the photo's doors are single dark-green leaves, about #1c2a24"
    ],
    "likeness": {
     "pandId": "0363100012119108",
@@ -114,7 +118,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.32 mean 0.23 vs photo 0.44",
+     "glazing storey band off by 0.32 mean 0.21 vs photo 0.44",
      "window shape tall vs photo square",
      "columns 6 vs photo 3"
     ],
@@ -125,13 +129,13 @@
     },
     "glazing": {
      "photo": 0.44,
-     "model": 0.23
+     "model": 0.21
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.281
+    "iou": 0.277
    },
    "challengers": {
     "landlust-1934-slot-block": 0.433,
@@ -198,7 +202,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "notes": [
@@ -218,7 +223,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.31 mean 0.23 vs photo 0.41"
+     "glazing storey band off by 0.31 mean 0.21 vs photo 0.41"
     ],
     "wall": {
      "photo": "#794a2f",
@@ -227,13 +232,13 @@
     },
     "glazing": {
      "photo": 0.41,
-     "model": 0.23
+     "model": 0.21
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.446
+    "iou": 0.454
    },
    "challengers": {
     "landlust-1934-slot-block": 0.457,
@@ -309,16 +314,20 @@
      "brick": "#7f4f34",
      "evidence": "strip 2024-11-21 span 1028-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "parapet"
+    "crown": "parapet",
+    "paletteOverrides": {
+     "door": "#1c2a24"
+    }
    },
    "notes": [
     "door unread",
-    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)"
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
+    "palette pinned: Callenburgstraat 3-63 (round-4 review 2026-11-10): the photo's doors are single dark-green leaves, about #1c2a24"
    ],
    "likeness": {
     "pandId": "0363100012132798",
-    "ncc": 0.444,
-    "nccRaw": 0.444,
+    "ncc": 0.443,
+    "nccRaw": 0.443,
     "shiftM": [
      0.25,
      0.1
@@ -328,9 +337,9 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.12",
-     "glazing storey band off by 0.44 mean 0.22 vs photo 0.54",
-     "window shape square vs photo tall",
-     "columns 3 vs photo 6"
+     "glazing storey band off by 0.46 mean 0.21 vs photo 0.54",
+     "window shape tall vs photo square",
+     "columns 6 vs photo 3"
     ],
     "wall": {
      "photo": "#76442b",
@@ -339,16 +348,16 @@
     },
     "glazing": {
      "photo": 0.54,
-     "model": 0.22
+     "model": 0.21
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.353
+    "iou": 0.351
    },
    "challengers": {
-    "landlust-1934-slot-block": 0.444,
+    "landlust-1934-slot-block": 0.443,
     "landlust-1933-three-axis-tile": 0.237,
     "landlust-1933-three-axis-tile~m": 0.237,
     "landlust-1934-slot-block~m": 0.455,
@@ -415,11 +424,15 @@
      "brick": "#845333",
      "evidence": "strip 2024-11-21 span 1542-2056: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "parapet"
+    "crown": "parapet",
+    "paletteOverrides": {
+     "door": "#1c2a24"
+    }
    },
    "notes": [
     "door unread",
-    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)"
+    "crown parapet: reviewer pin (Callenburgstraat 3-63 (round-3 strip verdict 2026-11-10): the photo shows no zinc dormers on this row)",
+    "palette pinned: Callenburgstraat 3-63 (round-4 review 2026-11-10): the photo's doors are single dark-green leaves, about #1c2a24"
    ],
    "likeness": {
     "pandId": "0363100012098318",
@@ -433,7 +446,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing  mean 0.23 vs photo 0.33"
+     "glazing  mean 0.22 vs photo 0.33"
     ],
     "wall": {
      "photo": "#794c30",
@@ -442,7 +455,7 @@
     },
     "glazing": {
      "photo": 0.33,
-     "model": 0.23
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
@@ -520,7 +533,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "notes": [
@@ -540,7 +554,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.29 mean 0.23 vs photo 0.41"
+     "glazing storey band off by 0.29 mean 0.22 vs photo 0.41"
     ],
     "wall": {
      "photo": "#875539",
@@ -549,13 +563,13 @@
     },
     "glazing": {
      "photo": 0.41,
-     "model": 0.23
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.446
+    "iou": 0.447
    },
    "challengers": {
     "landlust-1934-slot-block": 0.472,
@@ -627,7 +641,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "notes": [
@@ -647,7 +662,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.46 mean 0.23 vs photo 0.57",
+     "glazing storey band off by 0.48 mean 0.22 vs photo 0.57",
      "window shape tall vs photo square",
      "columns 6 vs photo 3"
     ],
@@ -658,13 +673,13 @@
     },
     "glazing": {
      "photo": 0.57,
-     "model": 0.23
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.321
+    "iou": 0.331
    },
    "challengers": {
     "landlust-1934-slot-block": 0.452,
@@ -741,7 +756,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "notes": [
@@ -761,7 +777,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.43 mean 0.23 vs photo 0.56"
+     "glazing storey band off by 0.45 mean 0.22 vs photo 0.56"
     ],
     "wall": {
      "photo": "#7f4d30",
@@ -770,13 +786,13 @@
     },
     "glazing": {
      "photo": 0.56,
-     "model": 0.23
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.343
+    "iou": 0.339
    },
    "challengers": {
     "landlust-1934-slot-block": 0.452,
@@ -864,7 +880,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "notes": [
@@ -884,7 +901,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.46 mean 0.23 vs photo 0.55"
+     "glazing storey band off by 0.48 mean 0.22 vs photo 0.55"
     ],
     "wall": {
      "photo": "#7e4e34",
@@ -893,13 +910,13 @@
     },
     "glazing": {
      "photo": 0.55,
-     "model": 0.23
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.365
+    "iou": 0.36
    },
    "challengers": {
     "landlust-1934-slot-block": 0.447,

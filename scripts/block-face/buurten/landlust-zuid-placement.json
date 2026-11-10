@@ -1,8 +1,8 @@
 {
  "buurt": "landlust-zuid",
  "library": "landlust",
- "generatedAt": "2026-11-10T04:38:46.184Z",
- "seconds": 17.15,
+ "generatedAt": "2026-11-10T05:06:20.974Z",
+ "seconds": 239.15,
  "totals": {
   "faces": 42,
   "pands": 364,
@@ -22,11 +22,11 @@
       "0363100012080635",
       "0363100012069920"
      ],
-     "passed": false,
-     "triangles": 5585
+     "passed": true,
+     "triangles": 5406
     }
    ],
-   "seconds": 7.77,
+   "seconds": 10.05,
    "byType": {
     "landlust-1934-slot-block": 2
    },
@@ -52,11 +52,11 @@
       "0363100012124713",
       "0363100012103458"
      ],
-     "passed": false,
-     "triangles": 5545
+     "passed": true,
+     "triangles": 5373
     }
    ],
-   "seconds": 7.58,
+   "seconds": 11.03,
    "byType": {
     "landlust-1934-slot-block": 2
    },
@@ -190,8 +190,8 @@
       "0363100012063379",
       "0363100012107097"
      ],
-     "passed": false,
-     "triangles": 5636
+     "passed": true,
+     "triangles": 5459
     },
     {
      "face": "callenburg-2-32-r2",
@@ -200,11 +200,11 @@
       "0363100012125512",
       "0363100012105359"
      ],
-     "passed": false,
-     "triangles": 8340
+     "passed": true,
+     "triangles": 8086
     }
    ],
-   "seconds": 16.38,
+   "seconds": 16.18,
    "byType": {
     "landlust-1934-slot-block": 5
    },
@@ -237,10 +237,10 @@
       "0363100012063567"
      ],
      "passed": true,
-     "triangles": 20128
+     "triangles": 18485
     }
    ],
-   "seconds": 34.02,
+   "seconds": 29.92,
    "byType": {
     "landlust-1934-slot-block": 8
    },
@@ -354,8 +354,8 @@
      "pands": [
       "0363100012140098"
      ],
-     "passed": false,
-     "triangles": 2771
+     "passed": true,
+     "triangles": 2690
     },
     {
      "face": "haen-3-31-r2",
@@ -363,11 +363,11 @@
       "0363100012140644",
       "0363100012114763"
      ],
-     "passed": false,
-     "triangles": 5541
+     "passed": true,
+     "triangles": 5371
     }
    ],
-   "seconds": 14.73,
+   "seconds": 108.96,
    "byType": {
     "landlust-1934-slot-block": 3
    },
@@ -392,27 +392,27 @@
      "pands": [
       "0363100012107347"
      ],
-     "passed": false,
-     "triangles": 3155
+     "passed": true,
+     "triangles": 2566
     },
     {
      "face": "haen-6-62-r2",
      "pands": [
       "0363100012084532"
      ],
-     "passed": false,
-     "triangles": 3161
+     "passed": true,
+     "triangles": 2731
     },
     {
      "face": "haen-6-62-r3",
      "pands": [
       "0363100012102574"
      ],
-     "passed": false,
-     "triangles": 3125
+     "passed": true,
+     "triangles": 2695
     }
    ],
-   "seconds": 15.1,
+   "seconds": 13.05,
    "byType": {
     "landlust-1935-slot-block-four": 3
    },
@@ -743,10 +743,10 @@
       "0363100012121629"
      ],
      "passed": true,
-     "triangles": 5600
+     "triangles": 5504
     }
    ],
-   "seconds": 3.67,
+   "seconds": 3.65,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -775,10 +775,10 @@
       "0363100012145888"
      ],
      "passed": true,
-     "triangles": 5677
+     "triangles": 5581
     }
    ],
-   "seconds": 3.59,
+   "seconds": 3.52,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -861,10 +861,10 @@
       "0363100012114449"
      ],
      "passed": true,
-     "triangles": 5609
+     "triangles": 5513
     }
    ],
-   "seconds": 5.86,
+   "seconds": 3.89,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -893,10 +893,10 @@
       "0363100012065427"
      ],
      "passed": true,
-     "triangles": 5652
+     "triangles": 5556
     }
    ],
-   "seconds": 4.03,
+   "seconds": 3.58,
    "byType": {
     "landlust-1933-erker-window": 4
    },
@@ -1087,19 +1087,19 @@
       "0363100012109779",
       "0363100012133739"
      ],
-     "passed": false,
-     "triangles": 6375
+     "passed": true,
+     "triangles": 5401
     },
     {
      "face": "zwijgerlaan-225-279-r2",
      "pands": [
       "0363100012151482"
      ],
-     "passed": false,
-     "triangles": 3165
+     "passed": true,
+     "triangles": 2774
     }
    ],
-   "seconds": 32.81,
+   "seconds": 35.27,
    "byType": {
     "landlust-1935-slot-block-four": 3
    },

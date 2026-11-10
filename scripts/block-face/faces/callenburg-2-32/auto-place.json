@@ -3,7 +3,7 @@
  "street": "Gerard Callenburgstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 16.38,
+ "seconds": 16.18,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -20,8 +20,8 @@
     "0363100012063379",
     "0363100012107097"
    ],
-   "passed": false,
-   "triangles": 5636
+   "passed": true,
+   "triangles": 5459
   },
   {
    "face": "callenburg-2-32-r2",
@@ -30,8 +30,8 @@
     "0363100012125512",
     "0363100012105359"
    ],
-   "passed": false,
-   "triangles": 8340
+   "passed": true,
+   "triangles": 8086
   }
  ],
  "pands": [
@@ -113,7 +113,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.16"
+     "glazing storey band off by 0.15"
     ],
     "wall": {
      "photo": "#844e2f",
@@ -122,13 +122,13 @@
     },
     "glazing": {
      "photo": 0.2,
-     "model": 0.22
+     "model": 0.21
     },
     "columns": {
      "photo": null,
      "model": 3
     },
-    "iou": 0.42
+    "iou": 0.436
    },
    "challengers": {
     "landlust-1934-slot-block": 0.436,
@@ -207,7 +207,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.31 mean 0.23 vs photo 0.36",
+     "glazing storey band off by 0.31 mean 0.22 vs photo 0.36",
      "window shape tall vs photo square",
      "columns 6 vs photo 3"
     ],
@@ -218,13 +218,13 @@
     },
     "glazing": {
      "photo": 0.36,
-     "model": 0.23
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.347
+    "iou": 0.355
    },
    "challengers": {
     "landlust-1934-slot-block": 0.427,
@@ -392,8 +392,8 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.17 mean 0.23 vs photo 0.37",
-     "columns 6 vs photo 10"
+     "glazing storey band off by 0.19 mean 0.21 vs photo 0.37",
+     "columns 6 vs photo 11"
     ],
     "wall": {
      "photo": "#633b23",
@@ -402,13 +402,13 @@
     },
     "glazing": {
      "photo": 0.37,
-     "model": 0.23
+     "model": 0.21
     },
     "columns": {
-     "photo": 10,
+     "photo": 11,
      "model": 3
     },
-    "iou": 0.369
+    "iou": 0.377
    },
    "challengers": {
     "landlust-1934-slot-block": 0.437,
@@ -492,7 +492,7 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.52 mean 0.23 vs photo 0.59",
+     "glazing storey band off by 0.52 mean 0.22 vs photo 0.59",
      "window shape tall vs photo square",
      "columns 6 vs photo 3"
     ],
@@ -503,13 +503,13 @@
     },
     "glazing": {
      "photo": 0.59,
-     "model": 0.23
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.334
+    "iou": 0.349
    },
    "challengers": {
     "landlust-1934-slot-block": 0.36,
@@ -604,7 +604,7 @@
     "verdict": "FAIL",
     "reasons": [
      "wall dL +0.14",
-     "glazing storey band off by 0.53 mean 0.22 vs photo 0.56",
+     "glazing storey band off by 0.53 mean 0.21 vs photo 0.56",
      "window shape tall vs photo square",
      "columns 6 vs photo 3"
     ],
@@ -615,13 +615,13 @@
     },
     "glazing": {
      "photo": 0.56,
-     "model": 0.22
+     "model": 0.21
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.329
+    "iou": 0.343
    },
    "challengers": {
     "landlust-1934-slot-block": 0.429,

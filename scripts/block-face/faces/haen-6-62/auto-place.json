@@ -3,7 +3,7 @@
  "street": "Jan den Haenstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 15.1,
+ "seconds": 13.05,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -19,24 +19,24 @@
    "pands": [
     "0363100012107347"
    ],
-   "passed": false,
-   "triangles": 3155
+   "passed": true,
+   "triangles": 2566
   },
   {
    "face": "haen-6-62-r2",
    "pands": [
     "0363100012084532"
    ],
-   "passed": false,
-   "triangles": 3161
+   "passed": true,
+   "triangles": 2731
   },
   {
    "face": "haen-6-62-r3",
    "pands": [
     "0363100012102574"
    ],
-   "passed": false,
-   "triangles": 3125
+   "passed": true,
+   "triangles": 2695
   }
  ],
  "pands": [
@@ -205,13 +205,13 @@
     },
     "glazing": {
      "photo": 0.19,
-     "model": 0.23
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.535
+    "iou": 0.551
    },
    "challengers": {
     "landlust-1935-slot-block-four": 0.436,
@@ -438,8 +438,7 @@
     "verdict": "FAIL",
     "reasons": [
      "glazing storey band off by 0.21",
-     "window shape square vs photo tall",
-     "columns 3 vs photo 8"
+     "columns 6 vs photo 8"
     ],
     "wall": {
      "photo": "#8b6446",
@@ -454,7 +453,7 @@
      "photo": 8,
      "model": 3
     },
-    "iou": 0.466
+    "iou": 0.478
    },
    "challengers": {
     "landlust-1935-slot-block-four": 0.421,
@@ -626,8 +625,8 @@
     "abstain": null,
     "verdict": "FAIL",
     "reasons": [
-     "glazing storey band off by 0.22",
-     "window shape square vs photo tall"
+     "glazing storey band off by 0.21",
+     "columns 6 vs photo 3"
     ],
     "wall": {
      "photo": "#9b6e50",
@@ -636,13 +635,13 @@
     },
     "glazing": {
      "photo": 0.15,
-     "model": 0.23
+     "model": 0.22
     },
     "columns": {
      "photo": 3,
      "model": 3
     },
-    "iou": 0.473
+    "iou": 0.493
    },
    "challengers": {
     "landlust-1935-slot-block-four": 0.368,

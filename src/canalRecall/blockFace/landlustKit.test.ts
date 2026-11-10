@@ -61,6 +61,10 @@ test('erker pair crown: one dormer across a party wall, half on each pand, flush
   assert.equal(right.length, 1);
   assert.equal(left[0].wallSurface, 'stone');
   assert.ok(Math.abs(left[0].widthM - right[0].widthM) < 1e-6 && left[0].widthM > 0.8 && left[0].widthM < 1.2, `${left[0].widthM}`);
+  assert.equal(left[0].partyEdge, 'right');
+  assert.equal(right[0].partyEdge, 'left');
+  assert.equal(left[0].heightM, 1);
+  assert.deepEqual(left[0].verticalBars, []);
   assert.ok(left[0].bottomM < 13 && left[0].bottomM > 9.5, `on the gutter line: ${left[0].bottomM}`);
   assert.equal(dormers(t, f, '151165').length, 0, 'the default crown has no dormer');
 });
@@ -69,7 +73,7 @@ test('slot block crowns: two zinc box dormers per block; the parapet crown has n
   const t = 'landlust-1935-slot-block-four', f = 'haen-6-62-r2', p = '084532';
   const d = dormers(t, f, p, undefined, {crown: 'zinc-dormers'});
   assert.equal(d.length, 2);
-  assert.ok(d.every(x => x.wallSurface === 'roof' && x.widthM > 2 && x.widthM < 2.8), JSON.stringify(d.map(x => [x.leftM, x.widthM])));
+  assert.ok(d.every(x => x.wallSurface === 'stone' && x.bodyColour === '#6f7275' && x.capColour === '#3e4144' && x.frontOverhangM === 0.15 && x.heightM === 1.5 && x.widthM > 2 && x.widthM < 2.8 && x.frontWall !== undefined && x.verticalBars?.length === 2), JSON.stringify(d.map(x => [x.leftM, x.widthM])));
   assert.equal(dormers(t, f, p, undefined, {crown: 'parapet'}).length, 0);
 });
 
@@ -82,7 +86,7 @@ test('zinc dormer compiles: its cheeks and top are the roof surface material', a
 test('slot block: doorRow gives four 0.75 m doors side by side across 0.32-0.69 of the front under one slab; absent gives one door and no slab', async () => {
   const type = 'landlust-1935-slot-block-four', face = 'haen-6-62-r2', pand = '084532';
   const four = doors(type, face, pand);
-  assert.deepEqual(four.map(o => o.id).sort(), ['door', 'door-2', 'door-3', 'door-4']);
+  assert.deepEqual(four.map(o => o.id).sort(), ['door', 'door-2', 'door-3', 'door-4'], 'single leaves, no fanlight windows');
   const byLeft = [...four].sort((a, b) => a.leftM - b.leftM);
   assert.ok(byLeft.every(o => Math.abs(o.widthM - 0.75) < 0.02), JSON.stringify(byLeft.map(o => o.widthM)));
   for (let i = 1; i < 4; i++) assert.ok(byLeft[i].leftM >= byLeft[i - 1].leftM + byLeft[i - 1].widthM, 'no overlapping doors');
@@ -93,12 +97,13 @@ test('slot block: doorRow gives four 0.75 m doors side by side across 0.32-0.69 
   assert.equal(one[0].id, 'door');
   const slabs = async (edit?: (f: Record<string, unknown>) => void) => {
     const built = await compileBuilding(house(type, face, pand, edit), facts(face, pand));
-    const out: T.Box3[] = []; built.group.traverse(o => { if (o instanceof T.Mesh && o.name.startsWith('ground-canopy/')) out.push(new T.Box3().setFromBufferAttribute(o.geometry.getAttribute('position') as T.BufferAttribute)); }); return out;
+    const out: T.Box3[] = []; built.group.traverse(o => { if (o instanceof T.Mesh && o.name.startsWith('ground-canopy/')) { assert.equal(o.geometry.getAttribute('position').count, 30, 'one slab: five quads, got ' + o.geometry.getAttribute('position').count); out.push(new T.Box3().setFromBufferAttribute(o.geometry.getAttribute('position') as T.BufferAttribute)); } }); return out;
   };
   const withSlab = await slabs();
   assert.equal(withSlab.length, 1, 'one canopy mesh');
   const box = withSlab[0];
-  assert.ok(box.max.x - box.min.x > 3.5, `one continuous slab across the four doors: ${box.max.x - box.min.x}`);
+  assert.ok(box.max.x - box.min.x > 4.3, `one continuous slab across the four doors: ${box.max.x - box.min.x}`);
+  assert.ok(box.min.y < Math.max(...four.map(o => o.bottomM + o.heightM)) + 0.2, `the slab rests on the door heads: ${box.min.y}`);
   assert.equal((await slabs(f => { delete f.groundCanopy; })).length, 0);
 });
 
@@ -116,4 +121,23 @@ test('extraDoorBays + doorPairs (kept for other blocks): four doors in two pairs
   const type = 'landlust-1935-slot-block-four', face = 'haen-6-62-r2', pand = '084532';
   const d = doors(type, face, pand, f => { delete f.doorRow; f.extraDoorBays = [3]; f.doorPairs = true; });
   assert.deepEqual(d.map(o => o.id).sort(), ['door', 'door-2', 'door-b3', 'door-b3-2']);
+});
+
+test('painted-zinc and party-wall dormers compile: smooth measured materials, no cheek on the party side, one full-width post; absent keys change nothing', async () => {
+  const names = (g: T.Object3D) => { const o: Record<string, T.Mesh> = {}; g.traverse(x => { if (x instanceof T.Mesh && x.name.startsWith('dormer/')) o[x.name] = x; }); return o; };
+  const zinc = names((await compileBuilding(house('landlust-1935-slot-block-four', 'haen-6-62-r2', '084532', undefined, {crown: 'zinc-dormers'}), facts('haen-6-62-r2', '084532'))).group);
+  const left = Object.entries(zinc).find(([n]) => /dormer-0\/left-wall$/.test(n))![1];
+  assert.equal('#' + (left.material as T.MeshStandardMaterial).color.getHexString(), '#6f7275');
+  assert.equal(((left.material as T.MeshStandardMaterial).userData as {tintSource?: string}).tintSource, 'measured');
+  const cap = Object.entries(zinc).find(([n]) => /dormer-0\/roof-slab$/.test(n))![1];
+  assert.equal('#' + (cap.material as T.MeshStandardMaterial).color.getHexString(), '#3e4144');
+  const plain = names((await compileBuilding(house('landlust-1935-slot-block-four', 'haen-6-62-r2', '084532', f => { f.dormerBody = 'zinc'; delete f.dormerWindow; }, {crown: 'zinc-dormers'}), facts('haen-6-62-r2', '084532'))).group);
+  const pl = Object.entries(plain).find(([n]) => /dormer-0\/left-wall$/.test(n))![1];
+  assert.notEqual('#' + (pl.material as T.MeshStandardMaterial).color.getHexString(), '#6f7275', 'the plain zinc body keeps its surface slot colour');
+  const half = names((await compileBuilding(house('landlust-1933-erker-window', 'treslong-5-19-a', '151165', undefined, {crown: 'party-dormer', pair: 'left'}), facts('treslong-5-19-a', '151165'))).group);
+  assert.ok(!Object.keys(half).some(n => /right-wall$/.test(n)), 'no cheek on the party side');
+  assert.ok(Object.keys(half).some(n => /left-wall$/.test(n)));
+  const post = Object.entries(half).find(([n]) => /frame-right$/.test(n))![1], free = Object.entries(names((await compileBuilding(house('landlust-1933-erker-window', 'treslong-5-19-a', '151165', f => { delete f.dormerParty; }, {crown: 'party-dormer', pair: 'left'}), facts('treslong-5-19-a', '151165'))).group)).find(([n]) => /frame-right$/.test(n))![1];
+  const wid = (m: T.Mesh) => { const b = new T.Box3().setFromBufferAttribute(m.geometry.getAttribute('position') as T.BufferAttribute); return b.max.x - b.min.x; };
+  assert.ok(wid(post) > wid(free) + 0.02, `party post ${wid(post)} vs free ${wid(free)}`);
 });

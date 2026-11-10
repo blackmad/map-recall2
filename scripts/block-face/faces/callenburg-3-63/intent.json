@@ -31,7 +31,10 @@
      "brick": "#865435",
      "evidence": "strip 2024-11-21 span 0-514: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "parapet"
+    "crown": "parapet",
+    "paletteOverrides": {
+     "door": "#1c2a24"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -58,7 +61,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "groundFloor": {
@@ -84,7 +88,10 @@
      "brick": "#7f4f34",
      "evidence": "strip 2024-11-21 span 1028-1542: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "parapet"
+    "crown": "parapet",
+    "paletteOverrides": {
+     "door": "#1c2a24"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -109,7 +116,10 @@
      "brick": "#845333",
      "evidence": "strip 2024-11-21 span 1542-2056: trim-normalised wall (buildingRecipe/measureFacade.ts)"
     },
-    "crown": "parapet"
+    "crown": "parapet",
+    "paletteOverrides": {
+     "door": "#1c2a24"
+    }
    },
    "groundFloor": {
     "use": "residential",
@@ -136,7 +146,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "groundFloor": {
@@ -164,7 +175,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "groundFloor": {
@@ -192,7 +204,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "groundFloor": {
@@ -220,7 +233,8 @@
     },
     "crown": "parapet",
     "paletteOverrides": {
-     "brick": "#7a4c2f"
+     "brick": "#7a4c2f",
+     "door": "#1c2a24"
     }
    },
    "groundFloor": {

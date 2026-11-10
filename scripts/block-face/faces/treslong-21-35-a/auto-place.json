@@ -3,7 +3,7 @@
  "street": "Bloys van Treslongstraat",
  "library": "landlust",
  "stripDate": "2024-11-21",
- "seconds": 3.67,
+ "seconds": 3.65,
  "thresholds": {
   "minScore": 0.7,
   "margin": 0.05,
@@ -23,7 +23,7 @@
     "0363100012121629"
    ],
    "passed": true,
-   "triangles": 5600
+   "triangles": 5504
   }
  ],
  "pands": [
