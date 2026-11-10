@@ -20,6 +20,7 @@ import { gameDecorator, gameFeatureDecorator } from '../../src/canalRecall/galle
 import { setShopfronts } from '../../src/canalRecall/shopfronts.js';
 import { registerFactsEnabled, registerFactsFromExtract, type RegisterFactsMap } from '../../src/canalRecall/facade/registerRecipe.js';
 import { gameTileEnricher } from '../../src/canalRecall/gameTileEnricher.js';
+import { HOUSE_SPECS_DIR, houseSpecsEnabled } from '../../src/canalRecall/houseSpec/decorate.js';
 import { buildingCell } from '../../src/canalRecall/world/cellGrid.js';
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
@@ -40,11 +41,16 @@ export function inputHash(files: string[]): string {
 /** Source files whose code decides the baked output: a change to any of them invalidates every cell. */
 export const CODE = ['src/canalRecall/buildingNesting.ts', 'src/canalRecall/genericFacades.ts', 'src/canalRecall/galleryPipeline.ts', 'src/canalRecall/buildingTilesBrowser.ts',
   'src/canalRecall/roofMesh.ts', 'src/canalRecall/landmarkKits.ts', 'src/canalRecall/landmarkFrontData.ts', 'src/canalRecall/shopfronts.ts', 'src/canalRecall/monumentGables.ts', 'src/canalRecall/gameTileEnricher.ts', 'src/canalRecall/railInfraBuildings.ts', 'src/canalRecall/industrial/industrialTable.ts', 'src/canalRecall/industrial/industrialClass.ts',
-  'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/facade/registerRecipe.ts', 'src/canalRecall/facade/registerFacts.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'src/canalRecall/world/cellPolicy.ts', 'scripts/world/compile.ts', 'scripts/world/pipeline.ts', 'scripts/world/browserMath.ts', 'scripts/world/useBrowserMath.ts'].map(f => path.join(ROOT, f));
+  'src/canalRecall/roofs/roofFacts.ts', 'src/canalRecall/facade/registerRecipe.ts', 'src/canalRecall/facade/registerFacts.ts', 'src/canalRecall/houseSpec/decorate.ts', 'src/canalRecall/facade/evidence.ts', 'src/canalRecall/buildingContextIndex.ts', 'src/canalRecall/world/cellFormat.ts', 'src/canalRecall/world/cellGrid.ts', 'src/canalRecall/world/cellPolicy.ts', 'scripts/world/compile.ts', 'scripts/world/pipeline.ts', 'scripts/world/browserMath.ts', 'scripts/world/useBrowserMath.ts'].map(f => path.join(ROOT, f));
 
 export const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 export const tileFile = (t: string) => path.join(EXTRACT, `building-tiles/14/${t}.geojson.gz`);
-export const tileInputs = (t: string) => [tileFile(t), path.join(EXTRACT, `building-facts/14/${t}.json.gz`), path.join(EXTRACT, `roof-facts/14/${t}.json.gz`)];
+/** The HouseSpec extract directory the chain reads (HOUSE_SPECS_DIR, default the published `house-specs`). */
+export const houseSpecsDir = () => process.env.HOUSE_SPECS_DIR || HOUSE_SPECS_DIR;
+/** A tile's own inputs: a change to any of them recompiles only the cells that list the tile. HouseSpecs are per tile
+ *  (house line H1), so a spec edit rebuilds the cells of its tile, not the city. */
+export const tileInputs = (t: string) => [tileFile(t), path.join(EXTRACT, `building-facts/14/${t}.json.gz`), path.join(EXTRACT, `roof-facts/14/${t}.json.gz`),
+  ...(houseSpecsEnabled(null, process.env.HOUSE_SPECS) ? [path.join(EXTRACT, `${houseSpecsDir()}/14/${t}.json.gz`)] : [])];
 
 /** fetch over the extract directory, for the runtime enrichers (they take a fetch). */
 const FILE_BASE = 'file:/extract';
@@ -74,7 +80,10 @@ export function gameChain(options: { registerFacts?: RegisterFactsMap | null } =
   const featureDecorator = gameFeatureDecorator({ gables, landmarkIds, listed, registerFacts }) as (f: Feature) => Feature;
   // Years, roof facts and the rail infrastructure table: the own engine's live path calls the same function
   // (gameTileEnricher.ts), and the runtime adopts cells without enriching, so the rail table must be baked here.
-  const enricher = gameTileEnricher({ constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled }, FILE_BASE, { fetch: fileFetch, search: '' });
+  // HouseSpecs (houseSpec/decorate.ts): HOUSE_SPECS=0 turns them off; HOUSE_SPECS_DIR reads another extract directory
+  // (the lane's verification compiles against staging/house-specs before the integrator publishes).
+  const enricher = gameTileEnricher({ constructionYearEnricher, roofFactsEnricher, composeEnrichers, roofFactsEnabled }, FILE_BASE,
+    { fetch: fileFetch, search: '', houseSpecs: houseSpecsEnabled(null, process.env.HOUSE_SPECS), houseSpecsDir: houseSpecsDir() });
   return { decorate, featureDecorator, enricher, fileFetch, fileBase: FILE_BASE };
 }
 
