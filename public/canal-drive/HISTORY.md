@@ -1,5 +1,15 @@
 # Canal Recall — what is built
 
+**Disk hygiene: automatic sweep and sparse source-data worktrees (2026-11-10).**
+- The disk reached 99 % full (16 GB free). The causes were 39 leftover screenshot-repo copies (26.5 GB), a full 20 GB source-data checkout made for the J1 Jev spike, merged lane worktrees, and an orphaned dev server that kept a merged worktree "live". Removing them freed 47 GB. J2 then made a second full 20 GB checkout within the hour.
+- `scripts/worktrees/new-source-data.sh` makes a sparse source-data worktree with only the lane's directories: 6.5 MB instead of 20 GB.
+- User-level Claude Code hooks (`~/.claude/hooks/map-recall2/hook.sh`, outside the repo so every worktree gets them) run `sweep.sh` in the background after each push to `main`, and at session start at most every 6 h. Session start also warns below 30 GB free.
+  - The sweep removes only copies that are clean, stash-free, fully pushed, idle and untouched for 12 h.
+  - It stops orphaned dev servers in merged, clean lane worktrees by PID, and removes merged worktrees through `triage.sh`.
+  - It deletes cached panorama JPEGs older than 3 days, the age the user approved.
+  - Its first unattended run, triggered by an integrator push, removed six merged house-line worktrees.
+- CLAUDE.md gains a "Disk hygiene" section with these rules.
+
 **House-line tools: H2 preview, H2c wall vs trim, the suppressed-face audit (2026-11-10, #338, #340, #341).**
 - **H2 + H2b: `house:preview` in Node** (e06f8dcff, opus). It renders a pand's front through the game's decorator chain and chunk builder, with the facade atlas painted under @napi-rs/canvas stubs and a software rasteriser. It takes 1.5–1.8 s cold and 0.09–0.20 s per `--watch` re-render.
   - By default it draws the route the game draws (`--route generic|spec|installed`), with the route printed in the sheet header.
