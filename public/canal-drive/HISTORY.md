@@ -1,5 +1,17 @@
 # Canal Recall — what is built
 
+**Batch a1 round 5 (2026-11-10): first belt and inner-ring buurt installs.** Each lane's sheets were judged by Opus before merge, and the fixes were applied in the lane.
+- **Den Texbuurt 13 and Frederikspleinbuurt 7:**
+  - per-pand roof pins (`reviewRoofs.ts`), now combined with the per-pand eaves pins;
+  - `pierBlocks`;
+  - bricks via `fitWallBrick`, because a literal pin renders about 1.14× lighter.
+- **Nieuwendammerdijk 5 cottages.** Its per-face gutter pin is kept as `reviewFaceEaves.ts`, beside main's per-pand `reviewEaves.ts`, because the two lanes had written different modules of one name.
+- **Plantage, Badlaan 13–21:** polychrome voussoir hood and `windowHead.rise`.
+- **Rapenburg 97 and 99:** measured ground bays, transom and gable light.
+- **Eerste Van Swindenstraat 391–401 and Ruyschstraat 76–90, 331, 339:** `reviewFronts.ts` and `palette.corniceAs`.
+- **Also:** the 404 panorama-day intake fix, and the 1905 placeholder-year guard.
+- **The per-pand batch-fit pilot was a negative result:** 0 of 54 looked right. It is kept as opt-in tooling.
+
 **Batch a1 round 4 (2026-11-10): labelCalm on, ribbon kit, Vogelbuurt-Noord holds, coverage 92.**
 - **labelCalm on by default.** The chase-camera ride check found landmarks being culled and streets left nameless, so the lane exempted landmarks and kept a floor of 3 names before the flip. `?labelCalm=0` turns it off.
 - **Ribbon-storey kit component** (`walls[].ribbonStoreys`): continuous glazed bands with spandrel and head panels, measured pitch and transoms. Three houses were fitted but held, because the likeness judge still misreads coloured panels as glass.
