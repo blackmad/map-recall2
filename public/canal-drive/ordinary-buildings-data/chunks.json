@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-10T09:17:48.612Z",
+ "generatedAt": "2026-11-10T09:22:27.094Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -101207,6 +101207,252 @@
        "primitive": 10,
        "firstTriangle": 24,
        "triangleCount": 8
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chunk-face-achterburgwal-202-206",
+   "category": "street-survey",
+   "name": "face-achterburgwal-202-206",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-achterburgwal-202-206.glb?asset=73e9c79389f71b75",
+   "sha256": "73e9c79389f71b754581094ea28dbf64f827446e82e57a5c7cc113bc4901565b",
+   "bytes": 77100,
+   "triangles": 2545,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.895153967081079,
+     52.36980016895988
+    ],
+    "northOffsetDegrees": 297.2464,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -7.8,
+     0,
+     -11.225
+    ],
+    "max": [
+     7.474,
+     14.658,
+     0.446
+    ]
+   },
+   "height": 14.658,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012179784",
+    "NL.IMBAG.Pand.0363100012179785"
+   ],
+   "replaces": [
+    "ordinary-0363100012179784",
+    "ordinary-0363100012179785"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.8951492,
+        52.3697941
+       ],
+       [
+        4.8950341,
+        52.3698151
+       ],
+       [
+        4.8950291,
+        52.3698045
+       ],
+       [
+        4.8949965,
+        52.3698105
+       ],
+       [
+        4.8949803,
+        52.3697762
+       ],
+       [
+        4.8951139,
+        52.3697525
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.8952035,
+        52.3698601
+       ],
+       [
+        4.8950887,
+        52.3698811
+       ],
+       [
+        4.89508,
+        52.3698633
+       ],
+       [
+        4.8950629,
+        52.3698664
+       ],
+       [
+        4.895058,
+        52.3698558
+       ],
+       [
+        4.8950211,
+        52.3698626
+       ],
+       [
+        4.8950015,
+        52.3698211
+       ],
+       [
+        4.8951492,
+        52.3697941
+       ],
+       [
+        4.8951865,
+        52.3698386
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "achterburgwal-179784",
+     "pandId": "0363100012179784",
+     "buildingId": "NL.IMBAG.Pand.0363100012179784",
+     "address": "Oudezijds Achterburgwal 206",
+     "frontage": {
+      "x0": -5.968,
+      "x1": -0.752,
+      "widthM": 5.216
+     },
+     "bounds": {
+      "min": [
+       -7.8,
+       0,
+       -10.055
+      ],
+      "max": [
+       -0.752,
+       14.658,
+       0.446
+      ]
+     },
+     "triangles": 1338,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 63
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 148
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 40
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 872
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 172
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "achterburgwal-179785",
+     "pandId": "0363100012179785",
+     "buildingId": "NL.IMBAG.Pand.0363100012179785",
+     "address": "Oudezijds Achterburgwal 202",
+     "frontage": {
+      "x0": -0.752,
+      "x1": 7.471,
+      "widthM": 8.222
+     },
+     "bounds": {
+      "min": [
+       -2.696,
+       0,
+       -11.225
+      ],
+      "max": [
+       7.474,
+       10.01,
+       0.446
+      ]
+     },
+     "triangles": 1207,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 113
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 148,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 40,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 872,
+       "triangleCount": 676
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 172,
+       "triangleCount": 140
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 32
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 18
       }
      ]
     }

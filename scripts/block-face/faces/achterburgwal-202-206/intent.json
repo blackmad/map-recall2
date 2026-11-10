@@ -1,0 +1,227 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "achterburgwal-202-206",
+ "street": "Oudezijds Achterburgwal",
+ "sources": [
+  {
+   "id": "strip-2025-01-08",
+   "kind": "street-panorama",
+   "capturedAt": "2025-01-08",
+   "image": "staging/block-face/achterburgwal-202-206/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "claude-opus-5.5 (belt-burgwallen lane), per-house historic designs read off the strip with a metre grid",
+  "passes": 1,
+  "note": "Oudezijds Achterburgwal 206 and 202 (even side): a narrow 18th-c. (1726) brown-brick cornice house of three axes under a white plastered entablature, a red pantile roof with one ornate crowned dormer, over a ground storey of three round-headed openings; and a low two-storey 18th-c. (1758) dark-brick house of four axes under a white cornice, its steep dark tiled roof holding two white dormers."
+ },
+ "houses": [
+  {
+   "pandId": "0363100012179784",
+   "slug": "achterburgwal-179784",
+   "address": "Oudezijds Achterburgwal 206",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Oudezijds Achterburgwal",
+      "gable": "cornice",
+      "cornice": "heavy",
+      "entablature": {
+       "rise": 1.4,
+       "cap": 0.25,
+       "frieze": "trim",
+       "architrave": 0.1
+      },
+      "storeys": 4,
+      "bays": 3,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash",
+      "windowShare": 0.72,
+      "dormers": 1,
+      "dormerStyle": "pediment",
+      "dormerBody": "timber",
+      "storeyHeights": [
+       2.75,
+       2.95,
+       3.0,
+       2.5
+      ],
+      "windowHeights": [
+       0.6,
+       0.71,
+       0.63,
+       0.68
+      ],
+      "headLines": [
+       0.8,
+       0.83,
+       0.75,
+       0.86
+      ],
+      "groundFront": {
+       "kind": "wall",
+       "bays": [
+        "door",
+        "window",
+        "door"
+       ],
+       "colour": "#2a2a28",
+       "evidence": "strip 2025-01-08 pand 1: three dark round-headed openings between brick piers, doors at both ends"
+      }
+     }
+    ],
+    "roof": {
+     "material": "red-tile"
+    },
+    "palette": {
+     "brick": "#56402f",
+     "frame": "white-painted",
+     "door": "#232624",
+     "stone": "#e4e0d4",
+     "cornice": "#e4e0d4"
+    }
+   },
+   "groundFloor": {
+    "use": "other",
+    "bag": [
+     "industriefunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "3 equal axes",
+    "windowsPerStorey": "ground: 3 arched openings | 1: 3 | 2: 3 | 3: 3 | roof: 1 dormer",
+    "symmetry": "symmetric",
+    "groundFloor": "three round-headed openings",
+    "signage": "none",
+    "roofline": "white plastered entablature 11.2-12.6 m, red pantile roof, one dormer with a carved crown",
+    "citation": "strip.jpg pand 1 (2025-01-08)",
+    "photoRows": [
+     3,
+     3,
+     3,
+     3,
+     1
+    ],
+    "schemaLimits": [
+     "the ground openings are round-headed; drawn square",
+     "the carved crown on the dormer is not drawn"
+    ]
+   }
+  },
+  {
+   "pandId": "0363100012179785",
+   "slug": "achterburgwal-179785",
+   "address": "Oudezijds Achterburgwal 202",
+   "design": {
+    "fronts": [
+     {
+      "id": "front0",
+      "street": "Oudezijds Achterburgwal",
+      "gable": "cornice",
+      "cornice": "heavy",
+      "storeys": 2,
+      "bays": 4,
+      "doorBay": null,
+      "basement": "none",
+      "hoist": false,
+      "windows": "sash",
+      "windowShare": 0.78,
+      "dormers": 2,
+      "dormerStyle": "flat",
+      "dormerBody": "timber",
+      "dormerAt": [
+       {
+        "from": 0.2,
+        "to": 0.37
+       },
+       {
+        "from": 0.63,
+        "to": 0.8
+       }
+      ],
+      "storeyHeights": [
+       3.0,
+       3.8
+      ],
+      "windowHeights": [
+       0.6,
+       0.47
+      ],
+      "headLines": [
+       0.8,
+       0.63
+      ],
+      "groundFront": {
+       "kind": "wall",
+       "bays": [
+        "window",
+        "glazed-door",
+        "window",
+        "door"
+       ],
+       "colour": "#ecebe4",
+       "evidence": "strip 2025-01-08 pand 2: a window, a glazed double door, a window and a door with side lights"
+      }
+     }
+    ],
+    "roof": {
+     "material": "black-tile"
+    },
+    "palette": {
+     "brick": "#252120",
+     "frame": "white-painted",
+     "door": "#202322",
+     "stone": "#e4e0d4",
+     "cornice": "#e4e0d4"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2025-01-08",
+    "agreement": "bag-only"
+   },
+   "rhythm": {
+    "bays": "4 axes",
+    "windowsPerStorey": "ground: window, double door, window, door | 1: 4 | roof: 2 dormers",
+    "symmetry": "none on the ground, symmetric above",
+    "groundFloor": "house",
+    "signage": "none",
+    "roofline": "white cornice 6.1-6.8 m, steep dark tiled roof with two white dormers to about 9.2 m",
+    "citation": "strip.jpg pand 2 (2025-01-08)",
+    "photoRows": [
+     4,
+     4,
+     2
+    ]
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "measuredEaves": [
+   {
+    "pand": "0363100012179784",
+    "stripRow": 199,
+    "evidence": "top of the white entablature (grid crop a202, 12.6 m)"
+   },
+   {
+    "pand": "0363100012179785",
+    "stripRow": 431,
+    "evidence": "top of the white cornice (6.8 m)"
+   }
+  ]
+ }
+}
