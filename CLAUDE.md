@@ -133,5 +133,8 @@ The disk is shared by every lane and has hit 99 % full. Rules:
   extract and prints coverage); they never install, publish or recompile the
   world. Publishing (`house:specs -- --publish`, later `house:publish`) and the
   world recompile are the integrator's.
+- `house:publish` is the integrator's; lanes stop at `npm run house:stage -- <spec|pandId>`
+  (validates, attaches the preview receipt, writes `artifacts/house-specs/staging/`).
+  The integrator publishes the whole staged batch once (`docs/house-line.md` section 3).
 - What the kit cannot say goes in `schemaLimits` as `{component, what}`, never
   the nearest option. `?houseSpecs=0` / `HOUSE_SPECS=0` turns the line off.

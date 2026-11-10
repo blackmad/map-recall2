@@ -4,19 +4,23 @@ import { previewVerdict, blurRgb, PRE_BLUR_PX } from './previewVerdict.ts';
 import type { FacadeMeasurement } from '../buildingRecipe/measureFacade.ts';
 
 const m = (o: Partial<FacadeMeasurement> & { rgb?: [number, number, number] }): FacadeMeasurement => ({
-  usableFraction: 0.9, foliageFraction: 0, washedOutFraction: 0, glazing: 0.3, columns: 3, windowColumns: 3, frontClass: 'punched',
+  usableFraction: 0.9, foliageFraction: 0, washedOutFraction: 0, glazing: 0.3, storeyGlazing: [null, 0.3, 0.3], columns: 3, windowColumns: 3, frontClass: 'punched',
   window: { w: 0.5, h: 0.6, sill: 0.9, aspect: 1.6, shape: 'tall' },
   ...o, wall: { raw: o.rgb ?? [140, 80, 60], normalised: o.rgb ?? [140, 80, 60], hex: '#000000', rawHex: '#000000', cells: 100 },
 } as FacadeMeasurement);
 
-test('alike fronts pass; a lighter wall, a glazing gap or another window shape fail; a column miss warns', () => {
+test('alike fronts pass; a lighter wall, a glazing gap or another window shape fail; a column or storey miss fails; glazing never does', () => {
   assert.equal(previewVerdict(m({}), m({})).verdict, 'PASS');
   assert.equal(previewVerdict(m({ rgb: [220, 200, 190] }), m({})).verdict, 'FAIL');
   assert.equal(previewVerdict(m({ rgb: [60, 80, 140] }), m({})).wall.pass, false); // hue
-  assert.equal(previewVerdict(m({ glazing: 0.5 }), m({})).verdict, 'FAIL');
-  assert.equal(previewVerdict(m({ glazing: 0.42 }), m({})).verdict, 'PASS');
+  // glazing does not decide a likeness verdict: printed, never PASS or FAIL
+  const g = previewVerdict(m({ glazing: 0.9 }), m({}));
+  assert.equal(g.verdict, 'PASS');
+  assert.equal(g.glazing.pass, false);
+  assert.equal(g.reasons.length, 0);
+  assert.equal(previewVerdict(m({ storeyGlazing: [null, 0.3] }), m({})).verdict, 'FAIL'); // storeys 1 vs 2
   assert.equal(previewVerdict(m({ window: { w: 0.5, h: 0.6, sill: 0.9, aspect: 0.6, shape: 'wide' } }), m({})).verdict, 'FAIL');
-  assert.equal(previewVerdict(m({ windowColumns: 5 }), m({})).verdict, 'WARN');
+  assert.equal(previewVerdict(m({ windowColumns: 5 }), m({})).verdict, 'FAIL');
 });
 
 test('an unusable reference abstains', () => {

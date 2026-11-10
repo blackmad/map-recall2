@@ -9,7 +9,7 @@ import { registerFactsFromExtract } from '../../src/canalRecall/facade/registerR
 import { fromBlockFace, fromRecipeIntent, fromRegisterFacts } from '../../src/canalRecall/houseSpec/adapters.ts';
 import { fieldSources, resolveSpecs, strongestSource } from '../../src/canalRecall/houseSpec/resolve.ts';
 import { frontBays, specFields, validateSpec, type HouseSpec } from '../../src/canalRecall/houseSpec/spec.ts';
-import { withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
+import { toRecipe, withRoute } from '../../src/canalRecall/houseSpec/toRecipe.ts';
 import type { HouseSpecTile, HouseSpecTileRecord, HouseSpecView } from '../../src/canalRecall/houseSpec/decorate.ts';
 import { isRidePriority } from '../../src/canalRecall/ridePriority.ts';
 
@@ -18,6 +18,14 @@ export const HELP = `build-house-specs: resolve every pand's HouseSpec from its 
   npx tsx scripts/house-specs/build-house-specs.ts            stage + coverage report (lanes may run this)
   npx tsx scripts/house-specs/build-house-specs.ts --publish  copy the staged tiles to the published extract
                                                               (integrator only, after reviewing the coverage diff)
+  --generated=<buurt,...>                                     include house:describe output for these buurten only (default
+                                                              none: no buurt's generated specs are published until its
+                                                              writers pass agreement against a photo-read hand set, H5h #351)
+  --extra-specs <dir>                                         also read <dir>/<pandId>.json hand specs; a file of the same
+                                                              name replaces the one in scripts/house-specs/specs
+                                                              (house:publish stages a batch this way before it copies it)
+  --emit-intents <dir> --for <pandIds>                        write <dir>/<pandId>.json = toRecipe(resolved spec) for each
+                                                              listed pand that resolved to the recipe route
   --help                                                      this text
 
 Sources, weakest first (facade/evidence.ts SOURCE_STRENGTH, author = reviewed):
@@ -25,6 +33,8 @@ Sources, weakest first (facade/evidence.ts SOURCE_STRENGTH, author = reviewed):
   scripts/block-face/faces/*/intent.json      streetlevel-measured  (fromBlockFace, one spec per house)
   scripts/building-recipes/houses/*/intent.json  the intent's sources (fromRecipeIntent, kind canal-house only)
   scripts/house-specs/specs/<pandId>.json     hand-written specs, validated (validateSpec), usually source author
+  scripts/house-specs/generated/<buurt>/<pandId>.json  house:describe output (H5): the merged spec of the writers (register, bag,
+                                              pixel, Jev); a hand source on the same pand outranks every writer field by the ladder
 Writes public/data/extracts/amsterdam/staging/house-specs/14/<x>/<y>.json.gz ({version, buildings: {<feature id>:
 {d, x, s, l, r, v}}}) and staging/house-specs.coverage.json. --publish replaces house-specs/14 with the staged tiles.
 The world compiler hashes house-specs/14/<tile>.json.gz per tile (scripts/world/pipeline.ts tileInputs).`;
@@ -40,6 +50,7 @@ const rel = (p: string) => path.relative(ROOT, p);
 const FEATURE = (digits: string) => `NL.IMBAG.Pand.${digits}`;
 
 const args = process.argv.slice(2);
+const argValue = (name: string): string | undefined => { const i = args.findIndex(a => a === name || a.startsWith(`${name}=`)); return i < 0 ? undefined : args[i].includes('=') ? args[i].slice(name.length + 1) : args[i + 1]; };
 if (args.includes('--help')) { console.log(HELP); process.exit(0); }
 
 if (args.includes('--publish')) {
@@ -54,10 +65,22 @@ if (args.includes('--publish')) {
 // --- 1. every source, as partial specs per pand ------------------------------------------------------------------
 const parts = new Map<string, HouseSpec[]>();
 const add = (s: HouseSpec | null) => { if (s) { const list = parts.get(s.pandId) ?? []; list.push(s); parts.set(s.pandId, list); } };
-const counts = { register: 0, faces: 0, faceHouses: 0, facesInvalid: [] as string[], recipeIntents: 0, recipeOther: 0, hand: 0 };
+const counts = { register: 0, faces: 0, faceHouses: 0, facesInvalid: [] as string[], recipeIntents: 0, recipeOther: 0, hand: 0, generated: 0, generatedInvalid: [] as string[] };
 
 const facts = registerFactsFromExtract(json(path.join(EXTRACT, 'monument-facts.json')));
 for (const [id, f] of facts) { add(fromRegisterFacts(f, f.nr, id)); counts.register++; }
+
+// house:describe output (H5): the merged spec of one pand's writers. The register part is already added above and the merge is
+// idempotent (same source, same confidence, same date: the earlier part is kept), so the generated copy only adds what the register lacks.
+const GENERATED = path.join(ROOT, 'scripts/house-specs/generated');
+// Opt-in per buurt (judgement ruling on H5 #346): generated specs stay out of the build until that buurt's writers pass
+// agreement against a photo-read hand set.
+const GENERATED_BUURTEN = new Set((process.argv.slice(2).find(a => a.startsWith('--generated='))?.slice('--generated='.length) ?? '').split(',').filter(Boolean));
+if (existsSync(GENERATED)) for (const buurt of readdirSync(GENERATED).sort().filter(b => GENERATED_BUURTEN.has(b))) for (const f of readdirSync(path.join(GENERATED, buurt)).filter(f => f.endsWith('.json')).sort()) {
+  const env = json(path.join(GENERATED, buurt, f));
+  if (!env.spec) continue;
+  try { add(validateSpec(env.spec)); counts.generated++; } catch (e) { counts.generatedInvalid.push(`${buurt}/${f}: ${(e as Error).message.split('\n')[1] ?? (e as Error).message}`); }
+}
 
 const FACES = path.join(ROOT, 'scripts/block-face/faces');
 for (const dir of readdirSync(FACES).sort()) {
@@ -78,7 +101,9 @@ for (const dir of readdirSync(HOUSES).sort()) {
   if (spec) { add(spec); counts.recipeIntents++; } else counts.recipeOther++;
 }
 
-if (existsSync(HAND)) for (const f of readdirSync(HAND).filter(f => f.endsWith('.json')).sort()) { add(validateSpec(json(path.join(HAND, f)))); counts.hand++; }
+const handFiles = new Map<string, string>();
+for (const dir of [HAND, argValue('--extra-specs') ? path.resolve(argValue('--extra-specs')!) : null]) if (dir && existsSync(dir)) for (const f of readdirSync(dir).filter(f => f.endsWith('.json'))) handFiles.set(f, path.join(dir, f));
+for (const f of [...handFiles.keys()].sort()) { add(validateSpec(json(handFiles.get(f)!))); counts.hand++; }
 
 // --- 2. resolve, route, runtime view -----------------------------------------------------------------------------
 const hex = (v: unknown) => (typeof v === 'string' ? (/^#[0-9a-f]{6}$/i.test(v) ? v.toLowerCase() : SWATCHES[v]?.toLowerCase()) : undefined);
@@ -97,8 +122,10 @@ function viewOf(spec: HouseSpec): HouseSpecView {
   const wall = hex(spec.design.palette?.brick);
   if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
   if (spec.facts?.wallFamily) { v.wallFamily = spec.facts.wallFamily; v.src.wallFamily = src['facts/wallFamily']; }
-  const bays = frontBays(front);
-  if (bays) { v.bays = bays; v.src.bays = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays']; }
+  // A bay count no source measured (an auto-placed type's default, adapters.ts fromBlockFace) stays in the record but
+  // does not reach the generic path: its own cell count is as good a guess, and a measured source can outrank it.
+  const bays = frontBays(front), baysSrc = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays'];
+  if (bays && baysSrc !== 'default') { v.bays = bays; v.src.bays = baysSrc; }
   // Storeys (lane H9): the drawn storey count follows the photo when a street source states it (not the register).
   if (Number.isInteger(front?.storeys) && front!.storeys! >= 2) { v.storeys = front!.storeys; v.src.storeys = src['fronts/0/storeys']; }
   return v;
@@ -112,6 +139,15 @@ function plannerCrown(spec: HouseSpec): boolean {
 }
 const resolved = new Map<string, HouseSpec>();
 for (const [pand, list] of [...parts].sort(([a], [b]) => (a < b ? -1 : 1))) resolved.set(pand, withRoute(resolveSpecs(list)));
+
+const emitDir = argValue('--emit-intents');
+if (emitDir) {
+  mkdirSync(path.resolve(emitDir), { recursive: true });
+  for (const pand of (argValue('--for') ?? '').split(',').filter(Boolean)) {
+    const spec = resolved.get(pand), intent = spec?.route === 'recipe' ? toRecipe(spec) : null;
+    if (intent) writeFileSync(path.join(path.resolve(emitDir), `${pand}.json`), JSON.stringify(intent, null, 1) + '\n');
+  }
+}
 
 // --- 3. tile each pand by its footprint ---------------------------------------------------------------------------
 const index = json(path.join(EXTRACT, 'building-tiles/index-z14.json'));
@@ -211,7 +247,7 @@ writeFileSync(REPORT, JSON.stringify(report, null, 1) + '\n');
 
 const fields = [...resolved.values()].reduce((n, s) => n + specFields(s).length, 0);
 console.log(`house specs: ${report.pands} pands (${fields} fields), ${report.tiled} tiled in ${report.tiles} tiles (${(bytes / 1024).toFixed(0)} kB gz), ${report.notInTiles} not in any building tile`);
-console.log(`  inputs: register ${counts.register}, block faces ${counts.faces} (${counts.faceHouses} houses, ${counts.facesInvalid.length} invalid), canal-house intents ${counts.recipeIntents} (${counts.recipeOther} other kinds skipped), hand specs ${counts.hand}`);
+console.log(`  inputs: register ${counts.register}, block faces ${counts.faces} (${counts.faceHouses} houses, ${counts.facesInvalid.length} invalid), canal-house intents ${counts.recipeIntents} (${counts.recipeOther} other kinds skipped), hand specs ${counts.hand}, generated specs ${counts.generated}${counts.generatedInvalid.length ? ` (${counts.generatedInvalid.length} invalid: ${counts.generatedInvalid[0]})` : ''}`);
 console.log(`  pands with a field from: ${Object.entries(report.bySource).map(([k, n]) => `${k} ${n}`).join(', ')}; ${report.multiSource} from more than one source`);
 console.log(`  route: recipe ${report.route.recipe}, generic ${report.route.generic}`);
 console.log(`  runtime view: ${Object.entries(report.runtime).map(([k, n]) => `${k} ${n}`).join(', ')}`);

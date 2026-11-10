@@ -78,17 +78,19 @@ const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appea
  */
 export const SPEC_WALLS_HELD = false;
 /**
- * Held (2026-11-10, integrator ruling after the #348 spot-check): H1's spec bay counts doubled on canal houses near the
- * Dam (photo 3, drawn 6). Lane H1b owns the cause. Held, no spec bay count reaches the mesher; storeys, wall, gable,
- * year and finish are unaffected. Mirrors the integrator's hold on main.
- */
-export const SPEC_BAYS_HELD = true;
-/**
  * Per-pand wall holds (the judgement session's ruling on #345: a pand whose drawn wall is still the wrong family after the
  * trim-misread rule keeps its period colour). Bare pand numbers (the NL.IMBAG.Pand. suffix). Empty = no pand held.
  */
 export const SPEC_WALL_HOLD: ReadonlySet<string> = new Set<string>();
 const pandNumber = (id: unknown) => String(id ?? '').replace(/^NL\.IMBAG\.Pand\./, '');
+
+/**
+ * Released 2026-11-10 (H1c #350): odd stated counts on two-window cells draw as half-cell axis units
+ * (streetFacadeRendering.ts axisUnitPlan), and the #348 gate passes (closer on 12 of 19 scorable pands, further on none).
+ * Auto-placed type bays the strip did not confirm are a 'default' and never written. Roll back by holding it again (a
+ * world-v1 recompile carries it). docs/house-line.md §1 "Odd bays".
+ */
+export const SPEC_BAYS_HELD = false;
 
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
@@ -110,7 +112,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (p.registerFinish !== finish) patch.registerFinish = finish;
   }
   const recipe: SpecRecipe = {};
-  if (!SPEC_BAYS_HELD && view.bays && view.bays > 0) recipe.bays = view.bays;
+  if (!SPEC_BAYS_HELD && view.bays && view.bays > 0 && view.src?.bays !== 'default') recipe.bays = view.bays;
   // The measured wall, through the wall-colour rule (lifted lightness, measured hue); `?specWalls=0` keeps the period colour.
   // A reading lighter than its family's usual tone on a brick front, or against a reader's family, is a trim misread and
   // draws the family tone (wallColour.ts specWallSource).

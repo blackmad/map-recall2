@@ -12,7 +12,7 @@
  * under /tmp/canal-pw.sh.
  *
  * `--unlit`: the preview in the legacy unlit look (default: the lit city look). `--blur=0`: measure without the shared
- * PRE_BLUR_PX (the before numbers of lane H2b); `--no-wall-vs-trim`: the pre-H2c wall pick (wallTrim.ts off); default every image, preview, render.ts and photo, is blurred by it.
+ * PRE_BLUR_PX (the before numbers of lane H2b); `--no-wall-vs-trim`: the pre-H2c wall pick (wallTrim.ts off); `--no-opening-split`: the pre-H2d opening and wall estimate; default every image, preview, render.ts and photo, is blurred by it.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -21,7 +21,7 @@ import { renderModels, closeRenderer } from '../building-recipes/render.ts';
 import { lngLatToRd } from '../../src/canalRecall/facade/rdNew.ts';
 import { measureFacade, type FacadeImage } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { previewVerdict, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
-import { PreviewSession, parseArgs, renderPand, renderRecipe, compareSheet, type PreviewResult } from './preview.ts';
+import { PreviewSession, parseArgs, renderPand, renderRecipe, compareSheet, houseLineSplit, profileUsed, type PreviewResult } from './preview.ts';
 import { REPO_ROOT } from './nodeDom.ts';
 
 const arg = (n: string) => process.argv.find(a => a.startsWith(`--${n}=`))?.slice(n.length + 3);
@@ -29,7 +29,7 @@ const out = path.resolve(arg('out') ?? 'artifacts/house-preview/gate');
 const PPM = 50;
 const BLUR = arg('blur') !== undefined ? Number(arg('blur')) : PRE_BLUR_PX;
 const previewFlags = (pand: string) => [pand, '--photo', ...(process.argv.includes('--unlit') ? ['--unlit'] : [])];
-const measure = (input: Parameters<typeof measureFacade>[0]) => measureFacade({ ...input, ...(process.argv.includes('--no-wall-vs-trim') ? { wallVsTrim: false } : {}), image: { ...input.image, rgb: blurRgb(input.image.rgb, input.image.width, input.image.height, BLUR) } });
+const measure = (input: Parameters<typeof measureFacade>[0]) => measureFacade({ ...input, ...(process.argv.includes('--no-wall-vs-trim') ? { wallVsTrim: false } : {}), ...houseLineSplit(), image: { ...input.image, rgb: blurRgb(input.image.rgb, input.image.width, input.image.height, BLUR) } });
 const readJson = (p: string) => JSON.parse(fs.readFileSync(p, 'utf8'));
 
 async function rgbOf(png: Buffer, topM: number): Promise<FacadeImage> {

@@ -3,6 +3,35 @@
   "notes": [
     {
       "date": "2026-11-10",
+      "title": "Three-window houses",
+      "text": "Measured window bays are back, and this time a house with three windows across draws three. Before, the generic facades could only draw an even number, so the most common canal-house rhythm came out as two or four. About 400 measured houses now match the window count in their street photos; houses without a confirmed count keep the generic rhythm.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-house-h1c/ride-desktop-169916-photo-before-after.jpg",
+          "alt": "Street photo, then the game before and after: the cream house goes from two to three window columns",
+          "caption": "Photo, before, after."
+        },
+        {
+          "src": "ui/2026-11-10-house-h1c/ride-phone-169916-photo-before-after.jpg",
+          "alt": "The same row on a phone, before and after",
+          "caption": "On a phone."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
+      "title": "Measured window bays paused",
+      "text": "The measured window bays from earlier today are switched off again. A spot check against street photos found some houses drawn with twice their real number of windows, so houses use the generic window rhythm until we find the cause. Measured gables, build years and finishes stay on.",
+      "images": [
+        {
+          "src": "ui/2026-11-10-house-h1-spec/desktop-kinker-244-332-specs-off.jpg",
+          "alt": "Kinkerstraat 244–332 with the generic window rhythm",
+          "caption": "Houses are back on the generic rhythm."
+        }
+      ]
+    },
+    {
+      "date": "2026-11-10",
       "title": "Fewer made-up shops",
       "text": "Shopfronts used to be guessed on streets with many businesses, so warehouses, offices and houses beside a row of shops got a shop window too. Now a building gets a shopfront only when a shop is mapped on it or the city's building register lists it as a shop, café or restaurant. Around 5,400 guessed shops are gone, including canal warehouses such as Brouwersgracht 222, while Kalverstraat and Haarlemmerdijk keep theirs.",
       "images": [

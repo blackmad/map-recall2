@@ -1,0 +1,255 @@
+{
+ "version": 1,
+ "seed": 352,
+ "buurt": "AB07",
+ "pool": 119,
+ "poolByGroup": {
+  "bell": 27,
+  "point": 7,
+  "cornice": 41,
+  "neck": 42,
+  "step": 2
+ },
+ "picks": [
+  {
+   "pandId": "0363100012169085",
+   "tier": "fallback",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012169085/front.jpg"
+  },
+  {
+   "pandId": "0363100012169908",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012169908/front.jpg"
+  },
+  {
+   "pandId": "0363100012174031",
+   "tier": "good",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012174031/front.jpg"
+  },
+  {
+   "pandId": "0363100012174911",
+   "tier": "fallback",
+   "registerGable": "point",
+   "crop": "source-data://pand-crops/0363100012174911/front.jpg"
+  },
+  {
+   "pandId": "0363100012170036",
+   "tier": "fallback",
+   "registerGable": "step",
+   "crop": "source-data://pand-crops/0363100012170036/front.jpg"
+  },
+  {
+   "pandId": "0363100012174776",
+   "tier": "fallback",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012174776/front.jpg"
+  },
+  {
+   "pandId": "0363100012174979",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012174979/front.jpg"
+  },
+  {
+   "pandId": "0363100012168655",
+   "tier": "fallback",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012168655/front.jpg"
+  },
+  {
+   "pandId": "0363100012571486",
+   "tier": "fallback",
+   "registerGable": "point",
+   "crop": "source-data://pand-crops/0363100012571486/front.jpg"
+  },
+  {
+   "pandId": "0363100012174412",
+   "tier": "fallback",
+   "registerGable": "step",
+   "crop": "source-data://pand-crops/0363100012174412/front.jpg"
+  },
+  {
+   "pandId": "0363100012170033",
+   "tier": "fallback",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012170033/front.jpg"
+  },
+  {
+   "pandId": "0363100012174262",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012174262/front.jpg"
+  },
+  {
+   "pandId": "0363100012174427",
+   "tier": "fallback",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012174427/front.jpg"
+  },
+  {
+   "pandId": "0363100012174033",
+   "tier": "fallback",
+   "registerGable": "point",
+   "crop": "source-data://pand-crops/0363100012174033/front.jpg"
+  },
+  {
+   "pandId": "0363100012174014",
+   "tier": "fallback",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012174014/front.jpg"
+  },
+  {
+   "pandId": "0363100012173054",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012173054/front.jpg"
+  },
+  {
+   "pandId": "0363100012169092",
+   "tier": "fallback",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012169092/front.jpg"
+  },
+  {
+   "pandId": "0363100012174411",
+   "tier": "fallback",
+   "registerGable": "point",
+   "crop": "source-data://pand-crops/0363100012174411/front.jpg"
+  },
+  {
+   "pandId": "0363100012173132",
+   "tier": "good",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012173132/front.jpg"
+  },
+  {
+   "pandId": "0363100012172882",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012172882/front.jpg"
+  },
+  {
+   "pandId": "0363100012170044",
+   "tier": "fallback",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012170044/front.jpg"
+  },
+  {
+   "pandId": "0363100012172776",
+   "tier": "fallback",
+   "registerGable": "point",
+   "crop": "source-data://pand-crops/0363100012172776/front.jpg"
+  },
+  {
+   "pandId": "0363100012172888",
+   "tier": "fallback",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012172888/front.jpg"
+  },
+  {
+   "pandId": "0363100012174270",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012174270/front.jpg"
+  },
+  {
+   "pandId": "0363100012174735",
+   "tier": "fallback",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012174735/front.jpg"
+  },
+  {
+   "pandId": "0363100012174017",
+   "tier": "fallback",
+   "registerGable": "point",
+   "crop": "source-data://pand-crops/0363100012174017/front.jpg"
+  },
+  {
+   "pandId": "0363100012172603",
+   "tier": "good",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012172603/front.jpg"
+  },
+  {
+   "pandId": "0363100012172890",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012172890/front.jpg"
+  },
+  {
+   "pandId": "0363100012174702",
+   "tier": "good",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012174702/front.jpg"
+  },
+  {
+   "pandId": "0363100012167957",
+   "tier": "fallback",
+   "registerGable": "point",
+   "crop": "source-data://pand-crops/0363100012167957/front.jpg"
+  },
+  {
+   "pandId": "0363100012170091",
+   "tier": "good",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012170091/front.jpg"
+  },
+  {
+   "pandId": "0363100012170089",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012170089/front.jpg"
+  },
+  {
+   "pandId": "0363100012174429",
+   "tier": "good",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012174429/years/2025.jpg"
+  },
+  {
+   "pandId": "0363100012172579",
+   "tier": "fallback",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012172579/front.jpg"
+  },
+  {
+   "pandId": "0363100012173048",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012173048/front.jpg"
+  },
+  {
+   "pandId": "0363100012174968",
+   "tier": "good",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012174968/front.jpg"
+  },
+  {
+   "pandId": "0363100012168147",
+   "tier": "fallback",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012168147/front.jpg"
+  },
+  {
+   "pandId": "0363100012173051",
+   "tier": "fallback",
+   "registerGable": "cornice",
+   "crop": "source-data://pand-crops/0363100012173051/front.jpg"
+  },
+  {
+   "pandId": "0363100012170208",
+   "tier": "fallback",
+   "registerGable": "neck",
+   "crop": "source-data://pand-crops/0363100012170208/years/2021.jpg"
+  },
+  {
+   "pandId": "0363100012169904",
+   "tier": "fallback",
+   "registerGable": "bell",
+   "crop": "source-data://pand-crops/0363100012169904/years/2020.jpg"
+  }
+ ]
+}

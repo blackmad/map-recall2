@@ -180,6 +180,8 @@ export function specProblems(input: unknown): string[] {
       if (key === 'storeys' && !countOk(value, 1, 30)) p.push(`${path}: expected integer 1..30`);
       if (key === 'bays' && !(countOk(value, 1, 30) || (Array.isArray(value) && value.length && value.every(v => countOk(v, 0, 30))))) p.push(`${path}: an integer 1..30 or one per storey`);
       if (key === 'hoist' && typeof value !== 'boolean') p.push(`${path}: boolean`);
+      if (key === 'share' && !(typeof value === 'number' && value > 0 && value <= 1)) p.push(`${path}: a share of the wall 0..1`);
+      if (key === 'street' && !(typeof value === 'string' && value.length > 0)) p.push(`${path}: a street name`);
     } else if (path.startsWith('palette/')) {
       if (key === 'wallMaterial' ? !WALL_MATERIALS.includes(value as typeof WALL_MATERIALS[number]) : ['brick', 'frame', 'door', 'shutters', 'stone', 'band', 'cornice', 'sash', 'glass'].includes(key!) && !colourOk(value)) p.push(`${path}: ${JSON.stringify(value)} is not a ${key === 'wallMaterial' ? WALL_MATERIALS.join('|') : 'colour (#rrggbb or a swatch)'}`);
     } else if (path === 'roof/material' && !ROOF_MATERIALS.includes(value as typeof ROOF_MATERIALS[number])) p.push(`${path}: ${JSON.stringify(value)} not in ${ROOF_MATERIALS.join('|')}`);
@@ -187,6 +189,16 @@ export function specProblems(input: unknown): string[] {
     else if (path === 'facts/elements' && !(Array.isArray(value) && value.every(v => typeof v === 'string'))) p.push(`${path}: a list of component ids`);
     else if (path === 'facts/wallFamily' && !['white', 'grey', 'buff', 'orange', 'red', 'red-brown', 'brown', 'dark'].includes(value as string)) p.push(`${path}: white|grey|buff|orange|red|red-brown|brown|dark`);
     else if (path === 'facts/pui' && !['shop', 'residential', 'warehouse'].includes(value as string)) p.push(`${path}: shop|residential|warehouse`);
+  }
+  // Several fronts on one facade (one street, or no street stated): each states its `share` of the wall, left to right, and the
+  // shares sum to 1 (+-0.02). One front per street needs no share. (H5h round 3: the multi-front pands of the hand set.)
+  const facades = new Map<string, unknown[]>();
+  (spec.design?.fronts ?? []).forEach(f => { const k = String((f as { street?: string } | undefined)?.street ?? ''); (facades.get(k) ?? facades.set(k, []).get(k)!).push((f as { share?: unknown } | undefined)?.share); });
+  for (const [street, shares] of facades) {
+    if (shares.length < 2) continue;
+    const at = street ? `design.fronts on ${street}` : 'design.fronts';
+    if (shares.some(v => typeof v !== 'number')) p.push(`${at}: ${shares.length} fronts on one facade each state share`);
+    else if (Math.abs((shares as number[]).reduce((x, y) => x + y, 0) - 1) > 0.02) p.push(`${at}: shares sum to ${(shares as number[]).reduce((x, y) => x + y, 0).toFixed(2)}, not 1`);
   }
   if (spec.schemaLimits !== undefined && !Array.isArray(spec.schemaLimits)) p.push('schemaLimits must be a list of {component, what}');
   for (const l of spec.schemaLimits ?? []) if (typeof l !== 'object' || toSpecLimit(l) === null) p.push(`schemaLimits: ${JSON.stringify(l)} must be {component, what} (non-empty strings)`);

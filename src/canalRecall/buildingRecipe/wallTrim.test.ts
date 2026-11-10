@@ -35,6 +35,17 @@ test('a body-solid pale wall is never a band', () => {
   assert.equal(wallVsTrim([stat([75, 0, 3], 0.25, 0.5), stat([22, 10, 8], 0.4, 0.6)], [true, false], 0), null);
 });
 
+// ---- rule B (lane H2d): the solid body in the wall set, not a thin cluster enriched in the floor zones ----
+test('a thin cluster picked as the wall gives way to a solid wall-set body of the same size (a slate wall with lintels, 164843 photo)', () => {
+  const slate = stat([25, 6, -7], 0.247, 0.41, true), glass = stat([41, 1, -5], 0.31, 0.39), lintels = stat([40, 1, 5], 0.253, 0.27), pale = stat([63, -3, 2], 0.19, 0.27);
+  const r = wallVsTrim([slate, glass, lintels, pale], [true, false, true, false], 2);
+  assert.equal(r!.wallC, 0);
+  assert.deepEqual(r!.wallSet, [true, false, true, false]);
+  assert.equal(wallVsTrim([slate, glass, lintels, pale], [true, false, true, false], 2, false), null, 'off: unchanged');
+  // a thin cluster stays the wall when no solid body of the wall set is as large
+  assert.equal(wallVsTrim([stat([25, 6, -7], 0.1, 0.41), glass, lintels, pale], [true, false, true, false], 2), null);
+});
+
 // ---- hand-labelled crops (fixtures/wall-trim/cases.json) ----
 const DIR = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures/wall-trim');
 interface Case {name: string; file: string; ppm: number; topM: number; box: {u0: number; u1: number; v0: number; v1: number}; lines: number[]; source: string}
@@ -47,9 +58,9 @@ interface Case {name: string; file: string; ppm: number; topM: number; box: {u0:
  * Marnixstraat's wall is the normalised white (215 reference, lightTrimNormalisation), not the sunlit #f4f4f2.
  */
 const LABELS: Record<string, {wall: string; trim: boolean; glazing: number; knownMiss?: number}> = {
-  'nassau-164843-render': {wall: '#3d2722', trim: true, glazing: 0.25, knownMiss: 0.864},
-  'nassau-164843-photo': {wall: '#353240', trim: true, glazing: 0.25, knownMiss: 0.699},
-  'nassau-161422-render': {wall: '#784628', trim: true, glazing: 0.25, knownMiss: 0.797},
+  'nassau-164843-render': {wall: '#3d2722', trim: true, glazing: 0.375, knownMiss: 0.864},
+  'nassau-164843-photo': {wall: '#353240', trim: true, glazing: 0.368, knownMiss: 0.699},
+  'nassau-161422-render': {wall: '#784628', trim: true, glazing: 0.408, knownMiss: 0.797},
   'heren-175702-render': {wall: '#5e554d', trim: true, glazing: 0.28},
   'keizers-171052-render': {wall: '#70665e', trim: true, glazing: 0.38},
   'nassau-116526-strip': {wall: '#62493a', trim: true, glazing: 0.27},
@@ -59,12 +70,13 @@ const LABELS: Record<string, {wall: string; trim: boolean; glazing: number; know
 const hexRgb = (h: string): Rgb => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16)) as Rgb;
 const dE = (a: Rgb, b: Rgb) => { const x = rgbToLab(a), y = rgbToLab(b); return Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]); };
 
-async function read(c: Case, wallVsTrimOn: boolean) {
+async function read(c: Case, wallVsTrimOn: boolean, openingSplit = false) {
   const {data, info} = await sharp(path.join(DIR, c.file)).removeAlpha().raw().toBuffer({resolveWithObject: true});
   const rgb = blurRgb(new Uint8Array(data), info.width, info.height, 1.5);
-  return measureFacade({image: {width: info.width, height: info.height, rgb, ppm: c.ppm, topM: c.topM}, box: c.box, lines: c.lines, wallVsTrim: wallVsTrimOn});
+  return measureFacade({image: {width: info.width, height: info.height, rgb, ppm: c.ppm, topM: c.topM}, box: c.box, lines: c.lines, wallVsTrim: wallVsTrimOn, openingSplit});
 }
-const cases: Case[] = JSON.parse(fs.readFileSync(path.join(DIR, 'cases.json'), 'utf8'));
+// the eight fronts of lane H2c (lane H2d added four more to cases.json; openings and jitter are pinned in handLabels.test.ts)
+const cases: Case[] = (JSON.parse(fs.readFileSync(path.join(DIR, 'cases.json'), 'utf8')) as Case[]).filter(c => c.name in LABELS);
 
 test('eight labelled fronts: wall colour, trim, glazing', async () => {
   assert.equal(cases.length, 8);

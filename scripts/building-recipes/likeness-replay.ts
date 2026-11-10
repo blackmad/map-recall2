@@ -12,13 +12,14 @@
  * read. The model geometry is frozen in the dump; a measurement change is then replayed in seconds.
  * --replay re-measures every dumped group with the code in this checkout and writes verdicts and the judged numbers.
  * --no-wall-vs-trim (with --replay) reads the photo as before lane H2c (wallTrim.ts off): the before numbers.
+ * --no-opening-split (with --replay) reads it as before lane H2d (the opening split, the wall-cluster median and the solid-body wall pick off).
  * --diff prints the groups whose verdict or reasons moved (street-facing groups flagged as the install gate sees them).
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 import {compileLargeHouse} from './large.ts';
-import {measureFacade, analyseMask, type FacadeBox, type Rgb} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import {measureFacade, analyseMask, openingSplitFromArgs, type FacadeBox, type Rgb} from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import {compareLikeness, PAD_M, type ModelElevation} from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import {streetFacing} from '../../src/canalRecall/buildingRecipe/likenessGate.ts';
 import {insidePanel} from '../../src/canalRecall/blockBuilding/panels.ts';
@@ -79,7 +80,7 @@ export function replayGroup(meta: GroupMeta, bin: Buffer) {
   const mask = new Uint8Array(bin.subarray(P * 4, P * 4 + M)), colours = new Uint8Array(bin.subarray(P * 4 + M, P * 4 + M * 4));
   const panel = {polys: meta.polys} as Parameters<typeof insidePanel>[0];
   const inside = (u: number, v: number) => insidePanel(panel, [u + meta.panelU0, v]);
-  const photo = measureFacade({image: {...meta.image, rgb, valid}, box: meta.photoBox, lines: meta.lines, inside, ...(process.argv.includes('--no-wall-vs-trim') ? {wallVsTrim: false} : {})});
+  const photo = measureFacade({image: {...meta.image, rgb, valid}, box: meta.photoBox, lines: meta.lines, inside, ...(process.argv.includes('--no-wall-vs-trim') ? {wallVsTrim: false} : {}), ...openingSplitFromArgs(process.argv)});
   const grid = analyseMask({mask, cols: meta.model.cols, rows: meta.model.rows, cell: meta.model.cell, box: meta.model.box, lines: meta.lines});
   const {curtain: cm, ...rest} = meta.model;
   const cmask = cm ? new Uint8Array(bin.subarray(P * 4 + M * 4, P * 4 + M * 5)) : null;
