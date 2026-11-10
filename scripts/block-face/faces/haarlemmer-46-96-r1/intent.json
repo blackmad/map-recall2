@@ -111,5 +111,15 @@
     "evidence": "review pin: Haarlemmerstraat 52: front eaves/gable foot on the 1 m grid"
    }
   ]
- }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "54 (171144) and 52 (171145): sandstone scrolls on the neck gables and a three-light attic group on 54; drawn as plain necks with one attic light"
+  },
+  {
+   "component": "ground storey",
+   "what": "52 (171145): a residential ground with two tall arched windows and a portal; drawn with a door and plain windows"
+  }
+ ]
 }

@@ -137,5 +137,19 @@
     "evidence": "review pin: Haarlemmerdijk 4: gable foot 9.8 m"
    }
   ]
- }
+ },
+ "schemaLimits": [
+  {
+   "component": "cornice crown piece",
+   "what": "6 (176172): a cream moulded crowned dormer front over a 1 m cream frieze; drawn as a brick pediment cap"
+  },
+  {
+   "component": "gable ornament",
+   "what": "4 (176174): sandstone scrolls beside a 1.9 m neck; drawn as a plain bell"
+  },
+  {
+   "component": "shopfront pilasters",
+   "what": "6 and 4: white pilasters on cream joinery; drawn as cream joinery only"
+  }
+ ]
 }

@@ -195,5 +195,23 @@
     "evidence": "review pin: Haarlemmerdijk 16: cornice top 11.6 m"
    }
   ]
- }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "20 (167818): sandstone claw pieces and scrolls beside the neck and a carved cap; drawn as a plain neck"
+  },
+  {
+   "component": "attic window width",
+   "what": "20 (167818): the neck light is about 1.2 m wide and set low; the kit draws one narrow attic light"
+  },
+  {
+   "component": "cornice crown piece",
+   "what": "18 (167817): a cream moulded crowned dormer front over the frieze; drawn as a brick pediment cap"
+  },
+  {
+   "component": "strip registration",
+   "what": "every facade on the 2022-12-15 strip stands 0.4-0.9 m right of its BAG split; the models stand on BAG, so the sheet shows the neck of 20 off-centre"
+  }
+ ]
 }

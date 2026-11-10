@@ -141,5 +141,23 @@
     "evidence": "review pin: Haarlemmerdijk 133A: front eaves/gable foot on the 1 m grid"
    }
   ]
- }
+ },
+ "schemaLimits": [
+  {
+   "component": "band window",
+   "what": "131 (173479): continuous bands of 4-6 lights per storey; drawn as two wide three-light windows with top lights"
+  },
+  {
+   "component": "cornice crown piece",
+   "what": "131 (173479): a white ornamented segmental crown over a cream entablature; drawn as a brick pediment cap"
+  },
+  {
+   "component": "upper-row window count",
+   "what": "133A (173480): three windows on the upper row over two wide ones; drawn as two and two"
+  },
+  {
+   "component": "strip registration",
+   "what": "the 2022-12-15 strip stands about 1.5 m right of the BAG split between 131 and 133A; a van covers the shop ground"
+  }
+ ]
 }
