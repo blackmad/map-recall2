@@ -1,0 +1,211 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012173043",
+ "address": "Bloemgracht 9",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": true,
+    "street": "Bloemgracht",
+    "gable": "bell",
+    "crownRise": 1,
+    "atticWindows": 1,
+    "storeys": 3,
+    "bays": [
+     2,
+     2,
+     3
+    ],
+    "storeyHeights": [
+     4.2,
+     2.6,
+     2.2
+    ],
+    "doorBay": 0,
+    "groundFront": {
+     "kind": "pui",
+     "bays": [
+      "door",
+      "window"
+     ],
+     "bayWeights": [
+      1,
+      1.6
+     ],
+     "colour": "#ece9e0",
+     "evidence": "strip 2023-03-13: white painted timber ground front with the door on the left"
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#393633",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1483-1638 px): a 3.9 m front: a white timber ground front 0-4.0 m (door left, glazing right), two windows at 5.0-7.3 m, three small windows at 7.5-8.7 m, a small bell gable 9.4-12.0 m with white claw pieces, one attic light and a hoist beam; painted dark brown brick #393633",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "white sandstone claw pieces beside the bell are not drawn"
+  }
+ ]
+}

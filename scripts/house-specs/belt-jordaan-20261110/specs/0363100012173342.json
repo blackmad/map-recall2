@@ -1,0 +1,226 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012173342",
+ "address": "Bloemgracht 7",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "stoop-and-windows",
+    "cornice": "frieze",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 2,
+    "doorBay": 0,
+    "doorPairs": true,
+    "souterrain": true,
+    "storeyHeights": [
+     2,
+     3.9,
+     2.7,
+     2.8
+    ],
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.3,
+      "to": 0.7
+     }
+    ],
+    "dormerSize": {
+     "sill": 0.1,
+     "rise": 1.5,
+     "setback": 0.35
+    }
+   }
+  ],
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#1f2430",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#484346",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorPairs": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/souterrain": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerSize": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1295-1483 px): two axes; a double house door on the left (2.0-5.9 m) with a two-light transom over a stoop, a tall transomed window right over a souterrain light (0.5-2.0 m); storeys at 6.0-7.9 and 8.8-10.9 m; a tall plain white entablature 11.7-13.0 m; one white dormer with a curved top and finial to ~14.7 m; painted near-black brick #484346; grey slate",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "the dormer's top is a small curved neck with a finial, drawn as a pediment"
+  }
+ ]
+}

@@ -1,0 +1,230 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172863",
+ "address": "Bloemgracht 11",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     4.3,
+     2.9,
+     2.6
+    ],
+    "doorBay": 0,
+    "groundFront": {
+     "kind": "pui",
+     "bays": [
+      "door",
+      "window"
+     ],
+     "bayWeights": [
+      1,
+      1.4
+     ],
+     "colour": "#ece9e0",
+     "evidence": "strip 2023-03-13: white timber ground front"
+    },
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.3,
+      "to": 0.7
+     }
+    ],
+    "dormerSize": {
+     "sill": 0.1,
+     "rise": 1.5,
+     "setback": 0.35
+    }
+   }
+  ],
+  "roof": {
+   "material": "slate"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#4a4136",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/groundFront": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerSize": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 1638-1788 px): two axes; a white timber ground front 0-4.0 m with shop-like glazing; windows at 4.9-7.3 and 7.5-9.0 m; a plain white cornice 9.5-10.2 m; one white dormer with a curved top and a carved finial 10.2-12.0 m; painted dark brown brick #4a4136",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "dormer",
+   "what": "the dormer's curved top and carved finial, drawn as a pediment"
+  }
+ ]
+}

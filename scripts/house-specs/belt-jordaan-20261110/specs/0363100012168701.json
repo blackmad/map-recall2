@@ -1,0 +1,216 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168701",
+ "address": "Bloemgracht 39",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Bloemgracht",
+    "gable": "step",
+    "crownRise": 1.6,
+    "atticWindows": 2,
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     5.6,
+     2.9,
+     2.9
+    ],
+    "doorBay": 1,
+    "doorPairs": true,
+    "bands": "storey",
+    "windowHead": {
+     "kind": "segmental",
+     "archRing": {
+      "colour": "stone",
+      "style": "blocks",
+      "keystone": true
+     }
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#8a2a26",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#4d463f",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorPairs": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowHead": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of bloemgracht-1-51 strip 2023-03-13 (span 3908-4094 px): a Neo-Renaissance front (c. 1890): two axes; a tall ground 0-5.5 m with a red double door right under a transom and a window left; storeys at 6.0-7.9 and 8.5-10.6 m with segmental heads under white block rings; white stone bands; a step gable 11.5-16.5 m with a round-arched light pair; red-brown brick #4d463f",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "gable ornament",
+   "what": "the step gable's round-arched panels and white stone dressings on each step are not drawn"
+  }
+ ]
+}
