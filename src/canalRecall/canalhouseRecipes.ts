@@ -72,7 +72,7 @@ export function archPoints(x:number,w:number,ys:number,rise:number,inset:number,
 /** Strips of an arched dormer roof (`CanalhouseDormer.roofProfile: 'arch'`). */
 export const ARCH_SEGMENTS = 8;
 export interface CanalhouseDormer {
- wallSurface?:'wall'|'trim'|'stone';roofSurface?:'roof'|'trim'|'wall';
+ wallSurface?:'wall'|'trim'|'stone'|'roof';roofSurface?:'roof'|'trim'|'wall';
   /** Source-observed distance behind the main facade plane. Default preserves legacy placement. */
   setbackM?:number;
   /** Explicit source-visible opening in a native wall covering this dormer. */
@@ -861,7 +861,7 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         if(!contains(localPoint((x0+x1)/2,-d.depthM/2-setback)))throw new Error('Dormer covers surveyed courtyard');
         for(const poly of polygons)for(const hole of poly.holes)if(hole.some(v=>inRing(v,footprint,true)))throw new Error('Dormer covers surveyed courtyard');
         const label=`dormer/${d.id}`,t=d.trimWidthM??.06,wall=.08,wallSurface=d.wallSurface??'wall',roofSurface=d.roofSurface??'roof';
-        if(!['wall','trim','stone'].includes(wallSurface)||!['roof','trim','wall'].includes(roofSurface))throw Error('Invalid dormer surface');
+        if(!['wall','trim','stone','roof'].includes(wallSurface)||!['roof','trim','wall'].includes(roofSurface))throw Error('Invalid dormer surface');
         positive(t);if(t*2>=Math.min(d.widthM,d.heightM))throw new Error('Dormer frame consumes its opening');
         const top=d.bottomM+d.heightM;
         // Thin side/back walls with a genuinely open front; no solid parent behind glazing.

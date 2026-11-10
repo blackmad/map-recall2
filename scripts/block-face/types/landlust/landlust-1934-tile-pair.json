@@ -119,7 +119,21 @@
     "colour": "#4a4540",
     "soffit": "#3a3530"
    },
-   "note": "Leijnsenstraat 2-30 strip: a dark gutter at 12.0 m, the grey tile slope above it to about 15 m; box dormers 2.0 m wide at 13.2-14.5 m are not drawn"
+   "note": "Leijnsenstraat 2-30 strip: a dark gutter at 12.0 m, the grey tile slope above it to about 15 m; box dormers 2.0 m wide at 13.2-14.5 m are not drawn; dormer: one zinc box dormer per pand, 2.0 m wide, sill 0.9 m over the gutter (Leijnsenstraat 2-30 strip: 13.2-14.5 m)",
+   "dormers": 1,
+   "dormerStyle": "box",
+   "dormerBody": "zinc",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.62
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.9,
+    "rise": 1.3,
+    "setback": 1.2
+   }
   }
  },
  "grounds": {

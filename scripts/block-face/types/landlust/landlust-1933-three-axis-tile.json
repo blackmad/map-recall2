@@ -106,7 +106,21 @@
     "colour": "#d8d3c3",
     "soffit": "#4a3a30"
    },
-   "note": "Coppelstockstraat 29-49 strip: a light cornice band at 9.8-10.0 m, a dark tile slope with one box dormer per pand; dormers not drawn"
+   "note": "Coppelstockstraat 29-49 strip: a light cornice band at 9.8-10.0 m, a dark tile slope with one box dormer per pand; dormers not drawn; dormer: one zinc box dormer per pand (Coppelstockstraat 29-49 strip)",
+   "dormers": 1,
+   "dormerStyle": "box",
+   "dormerBody": "zinc",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.6
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.9,
+    "rise": 1.3,
+    "setback": 1.2
+   }
   }
  },
  "grounds": {

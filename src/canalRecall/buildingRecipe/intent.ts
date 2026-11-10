@@ -213,7 +213,12 @@ export const DORMER_STYLES = ['plain', 'pediment', 'pointed', 'box', 'flat', 'ar
  * and the facade top behind which the dormer stands (round 3: the fully glazed front reached 6 cm over the eaves and
  * failed the GLB audit, opening-outside 2.5 m2).
  */
-export const DORMER_BODIES = ['stone', 'brick', 'timber'] as const;
+export const DORMER_BODIES = ['stone', 'brick', 'timber', 'zinc'] as const;
+/**
+ * `dormerBody: "zinc"` (Landlust 1932-1940 tiled-roof fronts, Leijnsenstraat 2-30, Coppelstockstraat 29-49): a box dormer
+ * clad in the roof's own covering (the grey zinc cheeks and flat top read as a continuation of the slope). Its cheeks and back
+ * take the roof surface; with `dormerStyle: "box"` the front is the plain flat-topped box. Absent = byte-identical.
+ */
 /** `dormerBody: "timber"`: the apron under the window (m) and the post share of the dormer width each side (clamped). */
 export const TIMBER_DORMER = {apronM: 0.35, sideShare: 0.16, sideMinM: 0.12, sideMaxM: 0.35} as const;
 /**
@@ -396,6 +401,16 @@ export interface FrontIntent {
   dormers?: number;
   /** 0-based bay (left-to-right, as seen from the street) holding the main door; null = no door. */
   doorBay: number | null;
+  /**
+   * Further ground bays that hold a door like `doorBay` (Landlust slot blocks 1934-1937: two door pairs per block, each pair
+   * under one flat `groundCanopy` slab). 0-based, other than `doorBay`; needs a `doorBay`. Absent = byte-identical.
+   */
+  extraDoorBays?: number[];
+  /**
+   * Every door bay (`doorBay` and `extraDoorBays`) holds two doors side by side, each half the bay wide, instead of one door
+   * centred in it. Absent = one door.
+   */
+  doorPairs?: boolean;
   /**
    * The house door is a round-arched portiek opening (Amsterdam School, Polanenstraat 229-311, Spaarndammerdijk 247-299):
    * `span` m wide (0.8..2.6), its semicircular head's crown `apex` m over the ground storey floor (1.8..4, at least
@@ -1557,6 +1572,12 @@ export function validateIntent(input: unknown): CanalHouseIntent {
     if (f.atticWindows !== undefined) count(f.atticWindows, `${at}.atticWindows`, 0, 6);
     if (f.dormers !== undefined) count(f.dormers, `${at}.dormers`, 0, 8);
     if (f.doorBay !== null) count(f.doorBay, `${at}.doorBay`, 0, Math.max(0, bays[0] - 1));
+    if (f.extraDoorBays !== undefined) {
+      if (f.doorBay === null) problems.push(`${at}.extraDoorBays: needs a doorBay`);
+      else if (!Array.isArray(f.extraDoorBays) || !f.extraDoorBays.length || f.extraDoorBays.some((b, i) => !Number.isInteger(b) || b < 0 || b > bays[0] - 1 || b === f.doorBay || f.extraDoorBays!.indexOf(b) !== i)) problems.push(`${at}.extraDoorBays: distinct ground bays 0..${bays[0] - 1}, not the doorBay`);
+      if (f.shopfront || f.groundFront || f.doorArch) problems.push(`${at}.extraDoorBays: not with a shopfront, ground front or doorArch`);
+    }
+    if (f.doorPairs !== undefined && (typeof f.doorPairs !== 'boolean' || f.doorBay === null || f.doorArch)) problems.push(`${at}.doorPairs: true, with a doorBay and no doorArch`);
     if (f.doorArch !== undefined) {
       const d = f.doorArch as unknown as Record<string, unknown>, n = (v: unknown, a: number, b: number) => typeof v === 'number' && v >= a && v <= b;
       if (!d || typeof d !== 'object' || Object.keys(d).some(k => k !== 'span' && k !== 'apex') || !n(d.span, 0.8, 2.6) || !n(d.apex, 1.8, 4) || (d.apex as number) < (d.span as number) / 2 + 1.2) problems.push(`${at}.doorArch: {span 0.8..2.6 m, apex 1.8..4 m and at least span / 2 + 1.2}`);
@@ -2077,7 +2098,7 @@ function historicProblems(f: FrontIntent, at: string, colour: (v: unknown, where
   if (f.dormerBody !== undefined) {
     if (!(DORMER_BODIES as readonly unknown[]).includes(f.dormerBody)) problems.push(`${at}.dormerBody: one of ${DORMER_BODIES.join(', ')} (or leave it out)`);
     if (!f.dormers) problems.push(`${at}.dormerBody: needs dormers >= 1`);
-    if (f.dormerStyle === 'box') problems.push(`${at}.dormerBody: a box dormer is brick`);
+    if (f.dormerStyle === 'box' && f.dormerBody !== 'zinc' && f.dormerBody !== 'stone') problems.push(`${at}.dormerBody: a box dormer is brick (or zinc, or stone)`);
   }
   if (f.crownGroups !== undefined) {
     if (f.crownAt !== undefined || f.crownBays !== undefined) problems.push(`${at}.crownGroups: not together with crownAt/crownBays`);

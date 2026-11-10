@@ -174,11 +174,24 @@
  "grounds": {
   "door-left": {
    "doorBay": 2,
-   "note": "house doors in pairs under one flat canopy at 2.5 m (3.8-8.8 m of the block), flat doors 0-2.4 m; ground windows 1.0-2.66 m at each end; mirrored when the strip reads the door on the right",
+   "note": "house doors in pairs under one flat canopy at 2.5 m (3.8-8.8 m of the block), flat doors 0-2.4 m; ground windows 1.0-2.66 m at each end; mirrored when the strip reads the door on the right; extraDoorBays [3] + doorPairs: slots 4 and 8 each hold a pair of doors, one flat canopy over each pair (Opus verdict 2026-11-10, slot block 1)",
    "doorReveal": {
     "form": "portiek",
     "deep": 0.5,
     "steps": 0
+   },
+   "extraDoorBays": [
+    3
+   ],
+   "doorPairs": true,
+   "groundCanopy": {
+    "over": [
+     "door"
+    ],
+    "projection": 0.6,
+    "thickness": 0.12,
+    "overhang": 0.15,
+    "gap": 0.15
    }
   }
  },
