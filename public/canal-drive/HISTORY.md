@@ -1,5 +1,7 @@
 # Canal Recall — what is built
 
+**Spec bays held after the spot-check (2026-11-10, #348, #349).** H1 shipped measured bay counts on ~400 ordinary houses. The planned spot-check (#348, 24 random bay-changed pands, photo vs `house:preview` before and after) failed: one group of pands drew double the photo's bays (3 → 6, 2 → 4). The judgement session ruled a hold. `SPEC_BAYS_HELD = true` in `src/canalRecall/houseSpec/decorate.ts` keeps spec bays out of the recipe while gables (withHouseSpecCrown), year and finish stay on, and world-v1 was recompiled. The compile needed `--against=none`. The reference check treats a cell as fresh when its tile hashes match, and a code-only recipe change does not move those hashes, so a deliberate decoder-visible change trips it. H1b #349 finds the cause. Sheets: map-recall2-screenshots `ui/2026-11-10-bay-spotcheck/`.
+
 **House-line crops and measures: H4 crops + Jev picker, H2d measure profiles (2026-11-10, #339, #342).**
 - **H4 `house:crops`** (a1664e9c0…cb4379e26, sonnet). Resumable, paced facade crops per buurt, piloted on Bloemgrachtbuurt AB07 (662 pands, 40 in hand intents).
   - **H4 flags overstated the yield.** H4's flags said 70.1 % usable. The judgement session's read of the sheet put the real share at 40–55 %.
