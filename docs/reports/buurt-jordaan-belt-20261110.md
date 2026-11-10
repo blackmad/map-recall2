@@ -44,8 +44,10 @@ So every installed run is a hand placement, written by a new script, `scripts/bl
 
 | buurt | vetoed before comparison | compared and held | placed (installed) |
 |---|---|---|---|
-| AB07 | auto-place on the old strips (superseded; removed) | 10 | 21 |
-| AB10 | auto-place on the old strips (superseded) | 5 | 8 |
+| AB07 | auto-place on the old strips (superseded; removed) | 10 + the faces below | 28 |
+| AB10 | auto-place on the old strips (superseded) | 8 + the faces below | 19 |
+
+Installs stopped on 2026-11-10 at the integrator's order (house assembly line plan); everything below is kept as records.
 
 AB07 installed runs (after the Opus strip review, 2026-11-10, and a per-pand storey grid on every pand):
 
@@ -55,12 +57,18 @@ AB07 installed runs (after the Opus strip review, 2026-11-10, and a per-pand sto
 - bloemgracht-90-128-h1: 118-126 (the earlier "94-104" was wrong; BAG numbers 118, 120, 122, 124, 126).
 - bloemgracht-4-10-h1: 6, 8.
 - bloemgracht-1-51-h1: 7-21.
+- bloemgracht-53-95-h1: 53-59.
+- egelantiersgracht-47-101-h1: 47-51.
 
 AB10 installed runs:
 
 - lauriergracht-62-110-h1: 92-102.
 - lauriergracht-62-110-h2: 84, 86.
 - lauriergracht-62-110-h3: 78, 80.
+- lauriergracht-71-127-h1: 71, 73 (73 over a souterrain).
+- lauriergracht-71-127-h2: 89, 91.
+- elandsgracht-51-89-h1: 73-85 (five-storey row under one balustrade).
+- elandsgracht-51-89-h2: 87, 89.
 
 Held after comparison with the photo:
 
@@ -76,16 +84,23 @@ Held after comparison with the photo:
 - Egelantiersgracht 25: behind a tree; its souterrain grid cannot be read.
 - Lauriergracht 82: white render over a souterrain; the bel-etage and stoop cannot be read behind the tree.
 - Lauriergracht 88: BAG leaves a 0.9 m gap.
+- Bloemgracht 152-156: compiled, but the interference check fails (BAG overlap of 6 cm and a 4 cm detail overhang at 156/154); not installed, run removed from the spec.
+- Bloemgracht 138-144: BAG spans sit up to 1.2 m off the photo's party walls (142/140); 138 is a Neo-Renaissance front.
+- Bloemgracht 61 onward: the strip shows a broken close-up frame.
+- Egelantiersgracht 53-55: no strip (grey); 57: modern.
+- Lauriergracht 75: its low ground under two tall storeys drew ~1 m below the photo's rows with the souterrain grid.
+- Lauriergracht 93-95: one four-axis front over two pands with a low attic storey of small windows (the kit's storeys are at least 2.3 m); 97: Neo-Renaissance frontispiece.
+- Lauriergracht 112-170 (strip 2023-02-20): BAG spans misaligned with the photo, modern infill, a plain triangle gable the kit has no crown for.
 - BAG split at Lauriergracht 86/84: BAG leaves a 0.75 m gap where the photo's 86 runs on, so the drawn party wall sits about 0.7 m short. Not fixable in the lane (BAG geometry).
 - Lauriergracht 66-68 and 76: 1992 infill.
 - 169912: behind a tree.
 
 Not yet authored, though their faces are intaken on good strips:
 
-- Bloemgracht 1-51, 53-95, 80-88 and 138-300;
-- Egelantiersgracht 47-101;
-- Lauriergracht 1-29, 71-127 and 112-170;
-- Elandsgracht;
+- Bloemgracht 80-88 and the rest of 53-95 and 138-300;
+- Egelantiersgracht 61-101, 105-195 and 197-227;
+- Lauriergracht 1-29;
+- Elandsgracht 96-148 and the rest of 51-89;
 - Looiersgracht;
 - Rozengracht;
 - Prinsengracht.
@@ -115,6 +130,10 @@ All of these are typed and tested. Every pre-existing placement compiles byte-id
 - Large round-arched ground openings (Lauriergracht 96) draw as round-headed ground windows, narrower than the photo's 2 m arches.
 - A white timber ground front on a residential house (Egelantiersgracht 23, Lauriergracht 80's wide shop window): validation refuses a shop front on a residential ground.
 - Per-storey bay counts (Egelantiersgracht 23: two wide windows under three).
+- A low attic storey of small windows under the cornice (Lauriergracht 93-95).
+- A plain triangle (spout) gable.
+- Pierced balustrades over a cornice (Elandsgracht 73-85: drawn as the heavy white cornice band).
+- The darkest walls: `cityWallTint` clamps lightness and saturation, so fitWallBrick returns near-black and the render stays too saturated (Bloemgracht 21, Lauriergracht 73, Elandsgracht 89 set by hand).
 
 - Bell crests and small bell tops on white frieze attics (Bloemgracht 94-104). The frieze draws; the crest does not.
 - A Neo-Renaissance stepped gable with arched panels (Egelantiersgracht 17).
