@@ -177,3 +177,29 @@ export function wallColourFamily(hex: string): WallColourFamily {
   if (L < FAMILY.darkL) return 'brick-dark';
   return h < FAMILY.redHue ? 'brick-red' : 'brick-brown';
 }
+
+/**
+ * The pale-warm guard (lane H9f, the judgement session's ruling on the house:frames wall read, 2026-11-10). Kinkerstraat
+ * 154359 and its row drew peach, orange and salmon in the released build where the photo is dark brown brick: the strip
+ * reading came out pale and warm (here #c9a080, OKLab L 0.72, hue 55), and the relative flag cannot see it because the
+ * whole row shifted together. A spec reading with OKLab L over `PALE_WARM.minL` and hue inside `PALE_WARM.hue` (peach,
+ * salmon, orange) is held: the house keeps its period colour, as SPEC_WALL_HOLD does per pand (decorate.ts
+ * specWallColour). A reading a reader's family has already replaced with its own tone is not drawn, so it is not held. The reading passes
+ * when the wall is a render or light finish (the register's stucco / light finish, or a reader's white, grey or buff
+ * family: pale warm is then right), or when two capture dates agree. The spec view carries one date per pand (provenance
+ * `at` is the latest of the sources), not one per reading, so the two-dates exception is not available yet and the
+ * exception rests on the family alone.
+ */
+export const PALE_WARM = { minL: 0.6, hue: [35, 70] } as const;
+const LIGHT_FAMILIES: readonly WallFamily[] = ['white', 'grey', 'buff'];
+export function paleWarmReading(hex: string): boolean {
+  const [L, a, b] = hexToOklab(hex);
+  const h = ((Math.atan2(b, a) * 180) / Math.PI + 360) % 360;
+  return L > PALE_WARM.minL && h >= PALE_WARM.hue[0] && h <= PALE_WARM.hue[1];
+}
+/** True when the pale-warm guard holds this reading: pale warm, and neither a render/light wall nor two agreeing dates. */
+export function paleWarmHeld(hex: string, ctx: { family?: WallFamily | null; render?: boolean; agreeingDates?: number }): boolean {
+  if (!paleWarmReading(hex)) return false;
+  if (ctx.render || (ctx.family && LIGHT_FAMILIES.includes(ctx.family))) return false;
+  return (ctx.agreeingDates ?? 1) < 2;
+}

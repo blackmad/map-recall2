@@ -1,7 +1,8 @@
 // The wall-colour rule (lane H9): measured hue (pulled half way from a yellow cast), lifted lightness and warm chroma, the trim-misread family tone.
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { FAMILY_TONE, hexToOklab, nearestWallFamily, oklabToHex, specWallDisplay, specWallSource, specWallsEnabled, wallColourFamily, SPEC_WALL_LIFT } from './wallColour.ts';
+import { FAMILY_TONE, hexToOklab, nearestWallFamily, oklabToHex, specWallDisplay, specWallSource, specWallsEnabled, wallColourFamily, SPEC_WALL_LIFT, paleWarmHeld, paleWarmReading } from './wallColour.ts';
+import { houseSpecPatch, specWallGuarded } from './decorate.ts';
 
 const L = (h: string) => hexToOklab(h)[0];
 const hue = (h: string) => { const [, a, b] = hexToOklab(h); return Math.atan2(b, a) * 180 / Math.PI; };
@@ -85,3 +86,45 @@ test('trim misread: a reading lighter than its family tone draws the family tone
   assert.equal(specWallSource('#f0ede4', { family: 'white', brick: false }).fromPixel, true);
   assert.equal(nearestWallFamily('#2b2b2e'), 'dark');
 });
+
+test('pale-warm guard (H9f): a pale peach/salmon/orange reading keeps the period colour (Kinkerstraat 154359 row)', () => {
+  // The released build drew this row peach where the photo is dark brown brick; every reading here is pale (L > 0.6) and warm (hue 35-70).
+  for (const hex of ['#c9a080' /* 0363100012154359 */, '#c9a080' /* 0363100012161457 */, '#d0ab8d' /* 0363100012157926 */, '#ebc79f' /* 0363100012174415 */]) {
+    assert.ok(paleWarmReading(hex), hex);
+    assert.equal(paleWarmHeld(hex, {}), true, `${hex} is held`);
+    assert.equal(paleWarmHeld(hex, { family: 'brown' }), true, `${hex} stays held against a brick family`);
+    // Through the decorator: a held reading writes no wall colour, so the house keeps its period colour.
+    assert.equal(houseSpecPatch({ wallHex: hex, wallMaterial: 'brick', src: {} }, {}).specRecipe, undefined);
+    assert.equal(specWallGuarded({ wallHex: hex, src: {} }, {}), true);
+  }
+  // The rest of the Kinkerstraat face and the other frames stay live: dark brown (#5b4532), Singel 175320 (#6a5f5a), Bloemgracht.
+  for (const hex of ['#5b4532', '#6a5f5a', '#584332', '#7a4a3a']) {
+    assert.equal(paleWarmHeld(hex, {}), false, hex);
+    assert.ok(((houseSpecPatch({ wallHex: hex, wallMaterial: 'brick', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex), `${hex} draws`);
+  }
+  // Boundaries: not warm (grey, cool) and not pale pass.
+  assert.equal(paleWarmHeld('#717877', {}), false);
+  assert.equal(paleWarmHeld('#d8e0e4', {}), false);
+  assert.equal(paleWarmReading('#8a5a44'), false);
+});
+
+test('pale-warm guard (H9f): render and light families release the reading', () => {
+  // Release 1: a reader names the wall white (pale warm plaster is right: Nieuwmarkt-style cream render).
+  assert.equal(paleWarmHeld('#e2c2af', { family: 'white' }), false);
+  assert.equal(paleWarmHeld('#d4b6a8', { family: 'grey' }), false);
+  assert.equal(paleWarmHeld('#ebc79f', { family: 'buff' }), false);
+  assert.ok(((houseSpecPatch({ wallHex: '#e2c2af', wallFamily: 'white', wallMaterial: 'stucco', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex));
+  // Release 2: the register's light finish (registerFinish 'light') or a stucco wall material, no reader needed.
+  assert.equal(specWallGuarded({ wallHex: '#d4b6a8', src: {} }, { registerFinish: 'light' }), false);
+  assert.equal(specWallGuarded({ wallHex: '#d4b6a8', wallMaterial: 'stucco', src: {} }, {}), false);
+  assert.ok(((houseSpecPatch({ wallHex: '#d4b6a8', wallMaterial: 'stucco', src: {} }, {}).specRecipe as { wallHex?: string } | undefined)?.wallHex));
+  // Two agreeing capture dates would release it too; the spec view carries one date per pand, so none reaches here yet.
+  assert.equal(paleWarmHeld('#c9a080', { agreeingDates: 2 }), false);
+  // A red or orange reader family does not release a pale warm pixel.
+  assert.equal(paleWarmHeld('#f1c18d', { family: 'orange' }), true);
+});
+
+// H9 follow-up (reading miss, not fixed here): Brouwersgracht 0363100012168136 is black-painted brick with white frames in
+// the photo, but the strip reads a grey-white stucco (#717877, family grey) and the game draws grey-white before and after
+// the wall un-hold. The reading, not the lift, is wrong: the crop normalises to the white frames.
+test.todo('Brouwersgracht 168136 draws near-black (black-painted brick, white frames), not grey-white');

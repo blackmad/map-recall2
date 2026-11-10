@@ -17,7 +17,7 @@ import type { ArchitecturalRecipe } from '../streetAppearance.js';
 import type { StoopIntent } from '../buildingRecipe/stoop.ts';
 import { eraOfYear } from '../facade/registerRecipe.js';
 import { SOURCE_STRENGTH } from '../facade/evidence.js';
-import { specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
+import { paleWarmHeld, specWallDisplay, specWallSource, specWallsOn, type WallFamily, specWallsForcedOn } from './wallColour.js';
 
 /** Rank on the evidence ladder (spec.ts specStrength without the intent schema import): `author` = `reviewed`. */
 const rank = (s: string | undefined) => (SOURCE_STRENGTH as readonly string[]).indexOf(s === 'author' ? 'reviewed' : s ?? '');
@@ -108,9 +108,10 @@ const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appea
  * 244-332 darker than the generic palette, against the user's brighter-palette priority (2026-10-16). Released by lane
  * H9 (2026-11-10) through the wall-colour rule (wallColour.ts specWallDisplay: measured hue and chroma, one lightness
  * lift), behind `?specWalls=0` / SPEC_WALLS=0. `false` = the rule is live. Held again 2026-11-10 by the judgement
- * ruling on H9 r3 until the house:frames before/after read; `?specWalls=1` / SPEC_WALLS=1 draws it while held.
+ * ruling on H9 r3, flipped by the H9 un-hold commit after the frame read 2026-11-10 with the pale-warm guard
+ * (wallColour.ts paleWarmHeld); `?specWalls=1` / SPEC_WALLS=1 still draws the rule if it is ever held again.
  */
-export const SPEC_WALLS_HELD = true;
+export const SPEC_WALLS_HELD = false;
 /**
  * Per-pand wall holds (the judgement session's ruling on #345: a pand whose drawn wall is still the wrong family after the
  * trim-misread rule keeps its period colour). Bare pand numbers (the NL.IMBAG.Pand. suffix). Empty = no pand held.
@@ -153,6 +154,24 @@ export function specDesignOn(field: keyof typeof SPEC_DESIGN_HELD, env: string |
 /** The shop cell a spec'd shop draws: the plain shop window (the recipe route's dark display glazing), not a themed café or florist. */
 export const SPEC_SHOP_KIND = 'shopWindow' as const;
 
+/**
+ * The wall colour a spec view draws, or null when it keeps the period colour: the trim-misread rule and the lift, behind the
+ * pale-warm guard on the *reading* (wallColour.ts paleWarmHeld; render/light finishes and light reader families pass). A
+ * reading a reader's family has already replaced with its tone (Nieuwmarkt 182857, a pale reading on a red front) is not
+ * drawn, so the guard has nothing to hold.
+ */
+export function specWallColour(view: HouseSpecView, p: Props): string | null {
+  if (!view.wallHex || !/^#[0-9a-f]{6}$/i.test(view.wallHex)) return null;
+  const reading = view.wallHex.toLowerCase(), brick = view.wallMaterial ? view.wallMaterial === 'brick' : p.registerFinish === 'brick';
+  const src = specWallSource(reading, { family: view.wallFamily ?? null, brick });
+  const readerTone = !!view.wallFamily && !src.fromPixel;
+  if (!readerTone && paleWarmHeld(reading, { family: view.wallFamily ?? null, render: view.wallMaterial === 'stucco' || p.registerFinish === 'light' })) return null;
+  return specWallDisplay(src.hex, { fromPixel: src.fromPixel });
+}
+/** True when the pale-warm guard holds this view's wall at the period colour. */
+export const specWallGuarded = (view: HouseSpecView, p: Props): boolean =>
+  !!view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex) && specWallColour(view, p) === null;
+
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   const patch: Props = {};
@@ -168,7 +187,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     // Painted brick with a measured wall colour keeps the brick cells (its courses show; the colour is the measured
     // paint, lane H9): a near-black painted front drawn in plaster cells read as render. Without a measured colour the
     // register's rule stands (painted = a light finish).
-    const measuredPaint = view.wallMaterial === 'painted-brick' && !!view.wallHex && specWallsOn();
+    const measuredPaint = view.wallMaterial === 'painted-brick' && !!view.wallHex && specWallsOn() && !specWallGuarded(view, p);
     const finish = view.wallMaterial === 'brick' || measuredPaint ? 'brick' : 'light';
     if (p.registerFinish !== finish) patch.registerFinish = finish;
   }
@@ -179,9 +198,8 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
   // A reading lighter than its family's usual tone on a brick front, or against a reader's family, is a trim misread and
   // draws the family tone (wallColour.ts specWallSource).
   if ((SPEC_WALLS_HELD ? specWallsForcedOn() : specWallsOn()) && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex) && !SPEC_WALL_HOLD.has(pandNumber(p.id))) {
-    const brick = view.wallMaterial ? view.wallMaterial === 'brick' : p.registerFinish === 'brick';
-    const src = specWallSource(view.wallHex.toLowerCase(), { family: view.wallFamily ?? null, brick });
-    recipe.wallHex = specWallDisplay(src.hex, { fromPixel: src.fromPixel });
+    const drawn = specWallColour(view, p);
+    if (drawn) recipe.wallHex = drawn;
   }
   // The storey count (H9) on street runs; H11 (held) adds the nearest-count fit on every ground-level run and the ground height.
   if (view.storeys && view.storeys >= 2) {
