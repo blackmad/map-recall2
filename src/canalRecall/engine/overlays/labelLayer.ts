@@ -14,6 +14,7 @@ import { framePhases } from '../framePhases';
 import { LABEL_ROOT_CLASS } from '../../labels/labelStyle';
 import { placeLabels, drawPlacedLabels, LabelPlacement, type LabelCandidate, type LabelKind, type LabelPaint, type PlacedLabel } from '../../ownMap/labels';
 import { OwnLabelFade, type DrawnLabel } from '../../ownMap/labelFade';
+import { calmLabels, labelCalmFlag } from '../../ownMap/labelCalm';
 import { neighbourhoodLabelVisible, poiLabelVisible, streetLabelVisible, type LabelContext } from '../../ownMap/labelPolicy';
 import { interpolateStops, STREET_STYLE } from '../../ownMap/style';
 import { toLocal, type Vec2 } from '../../ownMap/frame';
@@ -135,6 +136,8 @@ export class LabelLayer {
    * names fill the free room. Set by the world view while aerial (`?labelSticky=0` off).
    */
   sticky = false;
+  /** Calm frame (#161 lever 3, `?labelCalm=1`): at most six POI names, corridor first, none in the top third, shops within 150 m. */
+  calm = labelCalmFlag();
   /** Line labels try only centres that can land on screen (ownMap/labels.ts; `?labelClipTries=0` off, lane R3-F #241). */
   clipTries = true;
   /** From the air while the camera moves (world view, with the budget): full placements at most this often, ms. */
@@ -522,6 +525,15 @@ export class LabelLayer {
       if (due.length) this.placed = this.placed.filter(l => this.winners.has(l.id) && !this.hiddenCopies.has(keys.get(l)!));
     }
     lap(full ? 'occlusion (full)' : 'occlusion (between)');
+    // Label budget (#161 lever 3, `?labelCalm=1`): thin the POI winners before they are recorded as winners.
+    if (this.calm) {
+      this.placed = calmLabels(this.placed, {
+        width: vp.width, height: vp.height,
+        distanceOf: l => { const at = original.get(l.id)?.at, t = frame.target; return at && t ? Math.hypot(at[0] - t[0], at[1] - t[1]) : null; },
+        isLandmark: l => this.aerialPoiIds.has(l.id),
+        isGamePoint: l => (original.get(l.id)?.priority ?? 0) >= 1e6,
+      });
+    }
     if (full) {
       const ms = performance.now() - now;
       this.stats.fullMs += ms; this.stats.lastFullMs = ms; this.stats.occluded = occluded;

@@ -51,6 +51,7 @@ import { AERIAL_EYE_MIN_M, eyeHeightM, isAerialView } from '../rendererShared/ae
 import { AerialPower, aerialLeversFromQuery } from './aerialPower';
 import { BASE_REFRESH_BUDGET_MS } from '../rendererShared/baseRefreshBudget';
 import { ToonPost, toonLookFlag } from './toonLook';
+import { CorridorPost, corridorFocusFlag } from './corridorFocus';
 import { SmaaPost, smaaFlag } from './postAA';
 import { COVER_POLL_MS, isCoveredState } from '../labels/coveredState';
 import { AERIAL_POI_MAX, LabelLayer, type PointLabel } from './overlays/labelLayer';
@@ -244,6 +245,7 @@ export class OwnWorldView implements WorldViewOracles {
   private buildingLookNow: BuildingLookId = 'photo';
   /** The toon look's palette pass (`?look=toon`, #161); null otherwise. */
   private toonPost: ToonPost | null = null;
+  private corridorPost: CorridorPost | null = null;
   /** `?smaa=1` (lane R3-A #230): SMAA 1x over the resolved frame, before the toon remap. */
   private smaaPost: SmaaPost | null = null;
   private buildingLookLocked = false;
@@ -349,6 +351,7 @@ export class OwnWorldView implements WorldViewOracles {
     if (urlLook) { this.buildingLookNow = urlLook; this.buildingLookLocked = true; }
     // The toon look (#161) starts from the Cartoon buildings look; an explicit ?buildings3d= still wins.
     const toon = toonLookFlag();
+    const corridor = corridorFocusFlag();
     if (toon && !urlLook) { this.buildingLookNow = 'cartoon'; this.buildingLookLocked = true; }
     const three = W().CanalRecallThree;
     if (!three?.THREE) throw new Error('OwnWorldView needs window.CanalRecallThree');
@@ -370,8 +373,10 @@ export class OwnWorldView implements WorldViewOracles {
       // per rendered frame and the idle checks run on render, so at 1 Hz the start pose's cells were still missing at
       // the 6 s cap (R5-B2 #261). startSettle.ts startSettleCoveredFrameMs.
       coveredFrameMs: () => (W().canalRecallGame?.state === LOADING_STATE ? (this._startPose || this._startShellsBusy ? startSettleCoveredFrameMs(isTouchPointer(W())) : COVERED_FRAME_MS) : null),
-      ...(toon || smaa ? { post: (renderer: any, width: number, height: number) => {
+      ...(toon || smaa || corridor ? { post: (renderer: any, width: number, height: number) => {
         if (smaa) (this.smaaPost ??= new SmaaPost(THREE)).apply(renderer, width, height);
+        // Corridor emphasis first: the toon palette then remaps what it leaves.
+        if (corridor) (this.corridorPost ??= new CorridorPost(THREE)).apply(renderer, width, height);
         if (toon) (this.toonPost ??= new ToonPost(THREE)).apply(renderer, width, height);
       } } : {}),
     }, { antialias, pixelRatio: Math.min(dpr, cap), clearColor: clear, renderOnChange: flag('renderOnChange', '__canalRecallRenderOnChange', true), clearGuard: flag('skyClear', '__canalRecallSkyClear', true) });
