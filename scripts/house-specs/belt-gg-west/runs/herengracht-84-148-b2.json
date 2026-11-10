@@ -1,0 +1,176 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "herengracht-84-148-b2",
+ "street": "Herengracht",
+ "sources": [
+  {
+   "id": "strip-2021-01-25",
+   "kind": "street-panorama",
+   "capturedAt": "2021-01-25",
+   "image": "staging/block-face/herengracht-84-148/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "lane belt-gg-west-build-20261110 (hand-typed from the 2021-01-25 strip, gridded crops at 40 px/m)",
+  "passes": 1,
+  "note": "a spec run, not an installed face: house:from-face --face-file turns each house into a HouseSpec (recipe route)"
+ },
+ "types": [
+  "ggw-1700-neck-bell-gable",
+  "ggw-1740-frieze-cornice"
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "sky over the cornices from the quay"
+  }
+ },
+ "houses": [
+  {
+   "pandId": "0363100012169008",
+   "slug": "herengracht-169008",
+   "address": "Herengracht 116C",
+   "type": {
+    "type": "ggw-1740-frieze-cornice",
+    "crown": "crest",
+    "ground": "door-street",
+    "doorBay": 0,
+    "overrides": {
+     "storeys": 3,
+     "bays": 3,
+     "storeyHeights": [
+      2.4,
+      1.9,
+      1.6
+     ],
+     "windowHeights": [
+      0.72,
+      0.82,
+      0.8
+     ],
+     "headLines": [
+      0.86,
+      0.9,
+      0.9
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#be9f7a",
+     "evidence": "strip 2021-01-25 span 0-344: trim-normalised wall (auto-place.json)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-25",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-25 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-25 strip (gridded crop at 40 px/m): type, crown, door side, storeys and axes read by the lane"
+   }
+  },
+  {
+   "pandId": "0363100012169006",
+   "slug": "herengracht-169006",
+   "address": "Herengracht 112",
+   "type": {
+    "type": "ggw-1700-neck-bell-gable",
+    "crown": "neck",
+    "mirror": true,
+    "overrides": {
+     "storeys": 3,
+     "bays": 2,
+     "storeyHeights": [
+      4.6,
+      2.9,
+      2.7
+     ],
+     "windowHeights": [
+      0.55,
+      0.75,
+      0.75
+     ],
+     "headLines": [
+      0.86,
+      0.88,
+      0.88
+     ]
+    },
+    "measuredPalette": {
+     "brick": "#55524d",
+     "evidence": "strip 2021-01-25 span 546-743 read by eye: dark grey painted brick (the trim-normalised #b3a78a read the white cornice)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-25",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-25 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-25 strip (gridded crop at 40 px/m): type, crown, door side, storeys and axes read by the lane"
+   }
+  },
+  {
+   "pandId": "0363100012167709",
+   "slug": "herengracht-167709",
+   "address": "Herengracht 106",
+   "type": {
+    "type": "ggw-1740-frieze-cornice",
+    "crown": "none",
+    "ground": "door-street",
+    "doorBay": 1,
+    "overrides": {
+     "bays": 2
+    },
+    "measuredPalette": {
+     "brick": "#5f5850",
+     "evidence": "strip 2021-01-25 span 1475-1714 read by eye: dark grey-brown painted brick (trim-normalised #786e5f)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-25",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-25 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-25 strip (gridded crop at 40 px/m): type, crown, door side, storeys and axes read by the lane"
+   }
+  },
+  {
+   "pandId": "0363100012167711",
+   "slug": "herengracht-167711",
+   "address": "Herengracht 104",
+   "type": {
+    "type": "ggw-1740-frieze-cornice",
+    "crown": "none",
+    "ground": "door-street",
+    "doorBay": 2,
+    "overrides": {
+     "bays": 4
+    },
+    "measuredPalette": {
+     "brick": "#635b52",
+     "evidence": "strip 2021-01-25 span 1714-2056 read by eye: dark grey-brown painted brick (trim-normalised #847b6e)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "photoDate": "2021-01-25",
+    "agreement": "photo-only",
+    "note": "house ground read on the 2021-01-25 strip"
+   },
+   "rhythm": {
+    "citation": "hand-typed from the 2021-01-25 strip (gridded crop at 40 px/m): type, crown, door side, storeys and axes read by the lane"
+   }
+  }
+ ]
+}

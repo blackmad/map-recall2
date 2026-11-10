@@ -13,11 +13,15 @@ import { validateIntent } from '../../src/canalRecall/buildingRecipe/intent.ts';
 
 export const HELP = `house:from-face: write hand HouseSpecs from the houses of a block face (recipe route).
 
-  node --import tsx scripts/house-specs/from-face.ts --face <id> [--pands <id,...>] [--fixes <fixes.json>]
-                                                      [--out <dir>] [--check]
+  node --import tsx scripts/house-specs/from-face.ts (--face <id> | --face-file <run.json> --strip-face <id>)
+                                                      [--pands <id,...>] [--fixes <fixes.json>] [--out <dir>] [--check]
   --help                this text
 
 --face <id>       scripts/block-face/faces/<id>/intent.json (a run face such as herengracht-84-148-r1)
+--face-file <f>   a run file in block-face form that is not a face (no install, no extract source): houses typed by
+                  hand from a strip (type, crown, mirror, overrides, measuredPalette), e.g.
+                  scripts/house-specs/belt-gg-west/runs/<run>.json; needs --strip-face
+--strip-face <id> the face whose strip.json the run was read from (the receipt's ref)
 --pands <ids>     only these pands (16 digits, comma separated; default every house of the face)
 --fixes <file>    the reviewer's corrections: {"<pandId>": {"fields": {"<field path>": value}, "why": {"<field path>":
                   "<what the photo shows>"}, "ref": "<photo the fields were read from>", "at": "YYYY-MM-DD",
@@ -36,9 +40,10 @@ const flag = (args: string[], name: string) => { const i = args.indexOf(`--${nam
 
 function main(args: string[]): number {
   if (args.includes('--help') || !args.length) { console.log(HELP); return args.length ? 0 : 1; }
-  const faceId = flag(args, 'face');
-  if (!faceId) { console.error('house:from-face: --face is required (--help)'); return 1; }
-  const faceFile = path.join(ROOT, 'scripts/block-face/faces', faceId, 'intent.json');
+  const faceFileArg = flag(args, 'face-file'), stripFace = flag(args, 'strip-face');
+  const faceId = faceFileArg ? stripFace : flag(args, 'face');
+  if (!faceId) { console.error('house:from-face: --face, or --face-file with --strip-face, is required (--help)'); return 1; }
+  const faceFile = faceFileArg ? path.resolve(faceFileArg) : path.join(ROOT, 'scripts/block-face/faces', faceId, 'intent.json');
   const face = validateBlockFace(JSON.parse(readFileSync(faceFile, 'utf8')));
   const only = flag(args, 'pands')?.split(',').filter(Boolean);
   const fixesFile = flag(args, 'fixes');
@@ -49,7 +54,7 @@ function main(args: string[]): number {
   for (const h of face.houses) {
     if (only && !only.includes(h.pandId)) continue;
     const base = fromBlockFace(face, h.pandId, `scripts/block-face/faces/${faceId}/strip.json`);
-    if (!base) { console.log(`${h.pandId} not on ${faceId}`); bad++; continue; }
+    if (!base) { console.log(`${h.pandId} not on ${face.id}`); bad++; continue; }
     const spec = specFromFace(base, fixes[h.pandId]);
     const problems = specProblems(spec);
     const recipe = toRecipe(spec);
