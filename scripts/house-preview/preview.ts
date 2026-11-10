@@ -57,8 +57,10 @@ Flags
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
                       intent names this pand) with the recipe compiler and render its GLB
   --unlit             the legacy unlit look: the near-tier facade shader with its baked shade for generic chunks,
-                      renderElevation in flat game colours for GLBs (default: the lit city look, sun and sky of the
-                      ride's sunny rig, wall gain, sky tint on glazing)
+                      renderElevation in flat game colours for GLBs (default: the lit city look for generic chunks,
+                      sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
+  --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
+                      which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -80,16 +82,16 @@ measure.json (the generic path has no property for it yet).
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
-its game colours flat, lit). When those matter, fall back to scripts/building-recipes/render.ts (headless
+its game colours flat). When those matter, fall back to scripts/building-recipes/render.ts (headless
 Chromium) or a ride frame.`;
 
 // ---------------------------------------------------------------------------------------------------------------
 // Arguments
 // ---------------------------------------------------------------------------------------------------------------
 export type Route = 'generic' | 'spec' | 'installed' | 'recipe';
-type Args = { target?: string; spec?: string; intent?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; help: boolean };
+type Args = { target?: string; spec?: string; intent?: string; route?: Exclude<Route, 'recipe'>; unlit: boolean; glbLit: boolean; photo: boolean; threeq: boolean; recipe: string | boolean; wholeTile: boolean; watch: boolean; look: string; ppm: number; out?: string; help: boolean };
 export function parseArgs(argv: string[]): Args {
-  const a: Args = { unlit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, help: false };
+  const a: Args = { unlit: false, glbLit: false, photo: false, threeq: false, recipe: false, wholeTile: false, watch: false, look: 'photo', ppm: 50, help: false };
   for (let i = 0; i < argv.length; i++) {
     const [flag, inline] = argv[i].split(/=(.*)/s, 2);
     const value = () => inline ?? argv[++i];
@@ -98,6 +100,7 @@ export function parseArgs(argv: string[]): Args {
       case '--photo': a.photo = true; break;
       case '--threeq': a.threeq = true; break;
       case '--unlit': a.unlit = true; break;
+      case '--glb-lit': a.glbLit = true; break;
       case '--route': {
         const r = value();
         if (r !== 'generic' && r !== 'spec' && r !== 'installed') throw new Error(`--route ${r}: generic, spec or installed`);
@@ -415,13 +418,13 @@ function threeqView(frame: ReturnType<typeof wallFrame>, top: number, groundZ: n
   return { kind: 'perspective' as const, eye: [mid[0] + dx * dist, mid[1] + dy * dist, groundZ + top * 0.9] as Vec3, target: mid, fovDeg: THREEQ_FOV_DEG, width: 640, height: 800 };
 }
 
-type Finish = { pandId: string; route: Route; why: string; args: Args; out: string; files: string[]; front: { width: number; height: number; rgba: Uint8ClampedArray }; top: number; eaves: number; lines: number[]; frameLen: number; wall: FrontWall; label: string; measure: Record<string, unknown>; tm: Timer };
+type Finish = { pandId: string; route: Route; why: string; args: Args; out: string; files: string[]; front: { width: number; height: number; rgba: Uint8ClampedArray }; top: number; eaves: number; lines: number[]; frameLen: number; wall: FrontWall; label: string; measure: Record<string, unknown>; tm: Timer; shader?: string };
 async function finish(f: Finish): Promise<PreviewResult> {
   const { args, front, top, eaves, lines, wall, tm } = f;
-  const look = args.unlit ? 'unlit (legacy)' : 'lit city look (sunny rig)';
+  const look = f.shader ?? (args.unlit ? 'unlit (legacy)' : 'lit city look (sunny rig)');
   const mbox = { u0: Math.min(0.2, f.frameLen / 4), u1: f.frameLen - Math.min(0.2, f.frameLen / 4), v0: 0, v1: eaves };
   const renderM = measureBlurred(facadeImage(front, args.ppm, top), mbox, lines);
-  const measure: Record<string, unknown> = { pandId: bare(f.pandId), route: f.route, routeWhy: f.why, shader: args.unlit ? 'unlit' : 'lit', preBlurPx: PRE_BLUR_PX, ...f.measure, heights: { topM: +top.toFixed(2), eavesM: +eaves.toFixed(2), lines }, render: summary(renderM) };
+  const measure: Record<string, unknown> = { pandId: bare(f.pandId), route: f.route, routeWhy: f.why, shader: f.shader ?? (args.unlit ? 'unlit' : 'lit'), preBlurPx: PRE_BLUR_PX, ...f.measure, heights: { topM: +top.toFixed(2), eavesM: +eaves.toFixed(2), lines }, render: summary(renderM) };
   if (args.photo) {
     const photo = await referencePhoto(f.pandId, wall, args.ppm);
     if (!photo) measure.photo = { missing: `no staging/pand-reference/${bare(f.pandId)}/front.jpg and no block-face strip lists the pand (run scripts/pand-reference/run.ts --ids=${bare(f.pandId)})` };
@@ -576,7 +579,10 @@ async function renderGlb(session: PreviewSession, pandId: string, job: GlbJob, a
   // keep() takes the raster mesh's (unshared) vertex index.
   const MP = mesh.positions, nearFace = (v: number) => (MP[v * 3] - frame.origin[0]) * frame.normal[0] + (MP[v * 3 + 1] - frame.origin[1]) * frame.normal[1] < 3;
   let front: { width: number; height: number; rgba: Uint8ClampedArray };
-  if (args.unlit) {
+  // GLB fronts default to flat game colours: they matched the ride frame (the Nassaukade face of
+  // chunk-face-clercq-236681: ride L 0.453, flat 0.461, the rig's Lambert on game colours 0.347), the game lights
+  // installed models with more than the chunk rig's sky. --glb-lit draws them through the Lambert instead.
+  if (args.unlit || !args.glbLit) {
     // renderElevation in its frame (x east, y up, z south): flat game colours x its facing shade, as the recipe route always drew.
     const el = soupElevation(soup, frame, args.ppm, groundZ, top);
     front = el;
@@ -595,7 +601,7 @@ async function renderGlb(session: PreviewSession, pandId: string, job: GlbJob, a
     tm.mark('threeq');
   }
   const eaves = Math.min(top, job.eavesHint || wallTopHeightM(own.properties) || top);
-  return finish({ pandId, route: job.route, why: job.why, args, out, files, front, top, eaves, lines: storeyLines(eaves, Number(own.properties.groundFloorHeightM) || 3.2), frameLen: frame.len, wall, tm, label: job.label, measure: { tile, ppm: args.ppm, wall: { ...wall, lengthM: +frame.len.toFixed(2) }, groundZ: +groundZ.toFixed(2), ...job.measure } });
+  return finish({ pandId, route: job.route, why: job.why, args, out, files, front, top, eaves, lines: storeyLines(eaves, Number(own.properties.groundFloorHeightM) || 3.2), frameLen: frame.len, wall, tm, label: job.label, shader: args.unlit || !args.glbLit ? 'GLB flat game colours' : 'GLB, rig Lambert on game colours', measure: { tile, ppm: args.ppm, wall: { ...wall, lengthM: +frame.len.toFixed(2) }, groundZ: +groundZ.toFixed(2), ...job.measure } });
 }
 
 /** renderElevation of an ENU soup along the wall: [left, right] = the wall's span, rows from groundZ up to top. */

@@ -42,12 +42,25 @@ The default is the ride's lit city look (`look/cityLook.ts` `createCityLookMater
 `wallGain = litFacadeWallGain(photo) × CITY_LIT_LEVELS.sunny` (1.186), albedo `cityC^2.2`, Lambert
 `albedo / π × (sun · max(n·l, 0) + mix(ground, sky, ½ n_z + ½))` with the rig's linear colours × intensities (sun
 azimuth 215°, elevation 40°), `SKY_TINT` emissive on dark untinted texels, then sRGB. The baked shade in `tint.a` is
-not used (the lit path ignores it, as the game's does). A GLB route draws its game colours through the same Lambert.
-`--unlit` keeps the legacy look: the near-tier unlit shader with the baked shade for chunks, `renderElevation` flat
+not used (the lit path ignores it, as the game's does). A GLB route's front draws flat game colours
+(`renderElevation`), because that is what matched the ride: the rig's Lambert on game colours drew the installed
+wall 0.11 L dark (`--glb-lit` opts into it; the 3/4 view of a GLB is always lit, for shape). `--unlit` keeps the legacy look: the near-tier unlit shader with the baked shade for chunks, `renderElevation` flat
 colours × its facing shade for GLBs.
 
 **Gate (lane H2b):** the preview's wall is within ΔL 0.03 of the same wall in a ride frame
-(`tests/e2e/demo-shots.spec.ts` spots `house-preview-*`); numbers under "Measured".
+(`tests/e2e/demo-shots.spec.ts` spots `house-preview-*`, `DEMO_SPOTS=… PW_PORT=… /tmp/canal-pw.sh npx playwright
+test tests/e2e/demo-shots.spec.ts --project=desktop`). Median of a hand-picked wall-only patch, HSL L, 2026-11-10:
+
+| Wall | Preview | Ride frame | ΔL |
+|---|---|---|---|
+| Nassaukade 0363100012164843, generic, faces 85° (sky only), lit | `#3d2722` L 0.186 | `#3c2721` L 0.182 | +0.004 pass |
+| same, `--unlit` | L 0.192 | | +0.010 |
+| Nassaukade face of 0363100012116526, installed `chunk-face-clercq-236681`, flat game colours | `#8a6b61` L 0.461 | `#856b62` L 0.453 | +0.008 pass |
+| same, `--glb-lit` (rig Lambert on game colours) | L 0.347 | | −0.106 fail |
+
+Not yet gated: a sun-facing wall (the `house-preview-169916` frame did not show 0363100012169916's front clearly
+enough to pick a patch). The 116526 frame also confirms what the installed route drew: the corner chunk's Nassaukade
+face is a blank wall in the game.
 
 ### Glazing: one pre-blur
 
@@ -160,8 +173,10 @@ Flags
   --recipe [<id>]     the recipe route: compile scripts/building-recipes/houses/<id> (default: the house whose
                       intent names this pand) with the recipe compiler and render its GLB
   --unlit             the legacy unlit look: the near-tier facade shader with its baked shade for generic chunks,
-                      renderElevation in flat game colours for GLBs (default: the lit city look, sun and sky of the
-                      ride's sunny rig, wall gain, sky tint on glazing)
+                      renderElevation in flat game colours for GLBs (default: the lit city look for generic chunks,
+                      sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
+  --glb-lit           draw a GLB route's front through the rig's Lambert too (default: flat game colours,
+                      which matched the ride frame; the Lambert drew an installed wall 0.11 L dark)
   --whole-tile        build the chunk from every building of the pand's z14 tile, exactly as the runtime groups
                       it (~4 s a render); by default the chunk holds the tile's buildings within 30 m of the pand,
                       which drew the same pixels as the whole tile at Nassaukade (0363100012164843)
@@ -183,6 +198,6 @@ measure.json (the generic path has no property for it yet).
 
 Not reproduced: the far and roof distance tiers, mipmaps, cast shadows (a wall in another building's shadow draws
 sunlit), fog, the analytic window SDF, the ground lift, post-processing, the GLB slot cells (an installed GLB draws
-its game colours flat, lit). When those matter, fall back to scripts/building-recipes/render.ts (headless
+its game colours flat). When those matter, fall back to scripts/building-recipes/render.ts (headless
 Chromium) or a ride frame.
 ```
