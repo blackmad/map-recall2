@@ -236,6 +236,27 @@ easy-houses set's colour families are in §6.
   `engine/ownWorldView.ts`, through the `CanalRecallThreeBuildings` globals (`houseSpecEnricher`, `withHouseSpec`,
   `withHouseSpecCrown`, `houseSpecsEnabled`). World-v1 cells carry the bake; `?houseSpecs=0` only affects `?world=live`.
 
+### Held walls fall back to brick, and re-measured hand-authored bricks (lane H9g, #345)
+
+* **The re-measure.** Kinkerstraat 33-47 (`kinker-31-49`) was hand-authored at #856c57, #91735c, #c9a080, #c9a080 (41, 43, 45, 47) and
+  #d0ab8d (49) in the #98 pass ("sunlit red brick ... through the city tint"). Those were read on the right half of the 2024-12-11
+  strip, which is stitched from a brighter exposure: `wall-fit.ts` on that strip returns #772d1b, #9a765d, #b79175, #b59075, #b59376
+  for 41-49 and #413b2d, #453022 for 33, 35, a gradient that is the stitch, not the row. The street-level panorama of the row
+  (overcast, one uniform dark brown with white frames) fitted per pand with `fitWallColour` gives 37 #453b34, 39 #42352f, 41 #443530,
+  43 #41322b, 45 #42352e, 47 #423934, 49 #47403a (corner, mixed with its speklagen). 37 and 39 had no override and drew the type's
+  orange-red. The intent note records the source. A strip is only a wall vote when its exposure is uniform over the face:
+  compare the strip's left and right halves before trusting a gradient. Other faces named `red-brown-sunlit` carry a family palette
+  name, not an authored hex, and their bricks are measured (kinker-56-84, kinker-206-242); kinker-49-63 57 and 59 still draw the
+  name (strip votes #745945, #7f624c).
+* **The fallback.** A pand the pale-warm guard holds keeps its period colour, and the colour the mesher resolved (buurt profile,
+  period-wall enricher, material prior) was a slate grey for Kinkerstraat 154359. `heldBrickWall(fallback, palette, pick)`
+  (`wallColour.ts`): a held pand that is not stated light (`heldTakesBrick`: wallMaterial brick, or no material and register finish
+  not light) whose fallback is not a brick family (`brick-dark/red/brown`) takes a brick-family entry of `PERIOD_WALLS.photo[archetype]`,
+  picked by the id hash. `decorate.ts` marks it `specRecipe.heldBrick`; `threeBuildingFeatures.ts` applies it after the sourced-wall
+  step (a `measured-accepted` side colour is left alone). A fallback already brick, a drawn wall and every pand without the flag are
+  byte-identical. `npx tsx scripts/house-specs/held-wall-audit.ts` counts it on the game chain: 91 held pands (the published
+  extract, installed models and kits excluded), 30 drew a neutral wall (2 with a stated brick finish, 28 with none), 0 after.
+
 ### What `bays` means (H1b, #349)
 
 `bays` is the number of **columns of window openings per facade** on the storeys above the ground floor (`frontBays`:
