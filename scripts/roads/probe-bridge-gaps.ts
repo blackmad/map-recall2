@@ -82,7 +82,7 @@ async function probe(): Promise<void> {
  * The bridge ways whose middle lies in `key` (optionally only `only`), probed in the cell and its neighbours as built
  * by `cell` (a cache over buildCell). One row per way.
  */
-export async function probeCell(store: GroundStore, key: string, cell: (k: string) => Promise<BuiltCell>, only?: ReadonlySet<number>): Promise<WayRow[]> {
+export async function probeCell(store: GroundStore, key: string, cell: (k: string) => Promise<BuiltCell>, only?: ReadonlySet<number>, onSamples?: (id: number, samples: readonly Sample[], length: number) => void): Promise<WayRow[]> {
     const rows: WayRow[] = [];
     if (!store.covers(key)) return rows;
     const input = await store.cellInput(key, 0), [x0, y0, x1, y1] = input.rect;
@@ -107,6 +107,7 @@ export async function probeCell(store: GroundStore, key: string, cell: (k: strin
     for (const w of ways) {
       const half = Math.max(0.75, w.section.coreHalfWidth);
       const { length, samples } = probeWay(index, w.points, half, (x, y) => store.surface.height(x, y), deckAt, {}, surveyAt);
+      onSamples?.(w.id, samples, length);
       const sum = summarise(samples, half);
       const mid = w.points[w.points.length >> 1], [lng, lat] = fromLocal(mid[0], mid[1]);
       const votes = new Map<string, number>();

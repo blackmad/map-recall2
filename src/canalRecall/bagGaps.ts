@@ -176,7 +176,7 @@ export function ahnHeights(roofNap: readonly number[], groundNap: readonly numbe
 
 export interface SupplementFeature {
   type: 'Feature';
-  properties: { id: string; tier: 3; minHeight: 0; height: number; heightSource: 'ahn-dsm-p70'; bagGap: true; year?: number; eaves?: number; ridge?: number; replaces?: string[] };
+  properties: { id: string; tier: 3; minHeight: 0; height: number; heightSource: SupplementHeightSource; bagGap: true; year?: number; eaves?: number; ridge?: number; replaces?: string[]; newPand?: true; neighbours?: number };
   geometry: { type: 'Polygon'; coordinates: number[][][] } | { type: 'MultiPolygon'; coordinates: number[][][][] };
 }
 
@@ -198,9 +198,12 @@ export function supplementFeature(gap: BagGap, rings: readonly Ring[], heights: 
   };
 }
 
+/** Where a supplement height comes from: AHN DSM p70 (register gaps), or for pands newer than AHN/3DBAG the median of measured 3DBAG neighbours within 120 m, else a 3 / 9 m area default. */
+export type SupplementHeightSource = 'ahn-dsm-p70' | 'neighbour-median' | 'area-default';
+
 /** The building-tiles copy carries only the drawing keys (bag-tiles also keeps year/eaves/ridge). */
 export const forBuildingTiles = (f: SupplementFeature): SupplementFeature => ({
-  ...f, properties: { id: f.properties.id, tier: 3, minHeight: 0, height: f.properties.height, heightSource: 'ahn-dsm-p70', bagGap: true, ...(f.properties.replaces ? { replaces: f.properties.replaces } : {}) },
+  ...f, properties: { id: f.properties.id, tier: 3, minHeight: 0, height: f.properties.height, heightSource: f.properties.heightSource, bagGap: true, ...(f.properties.replaces ? { replaces: f.properties.replaces } : {}) },
 });
 
 /**

@@ -1,0 +1,296 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "vogel-1920-three-dark",
+ "district": "vogelbuurt",
+ "description": "DRAFT (scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)) for the review turn. Vogelbuurt-Noord family 1920-1924, 3 storeys, 6.4-8 m wide: 15 pands on 4 block faces; median cornice 7.72 m, ? window columns, wall #3d3d38. Pane layout, head kind, cornice kind, crowns and ground variants are NOT measured: see draft.unmeasured.",
+ "fit": {
+  "widthM": [
+   6.3,
+   6.7
+  ],
+  "storeys": [
+   3
+  ]
+ },
+ "match": {
+  "years": [
+   1921,
+   1923
+  ],
+  "eavesM": [
+   6.8,
+   7.1
+  ],
+  "storeys3dbag": [
+   3
+  ],
+  "roof": "pitched",
+  "stucco": false,
+  "note": "drafted: 15 pands, 4 faces; see draft.fields for n and spread of every number"
+ },
+ "body": {
+  "storeys": 3,
+  "bays": 3,
+  "cornice": "simple",
+  "windows": "sash"
+ },
+ "crowns": {
+  "plain": {
+   "gable": "cornice",
+   "note": "placeholder: 5 of 15 pands show a skyline crown over the cornice (draft.observations); the crown kind is for the review turn"
+  }
+ },
+ "palettes": {
+  "measured": {
+   "door": "black",
+   "brick": "#3d3d38",
+   "cornice": "#3f3532",
+   "frame": "#cfcbbf"
+  }
+ },
+ "roof": {
+  "material": "slate",
+  "source": "front",
+  "rise": 0.25,
+  "pitchDeg": 45,
+  "evidence": "draft placeholder: 15 pands, 3DBAG roof shape slanted; the covering and pitch are not measured"
+ },
+ "rhythm": {
+  "bays": "unread",
+  "windowsPerStorey": "ground: not read | upper storeys: ? each",
+  "symmetry": "not measured (draft)",
+  "groundFloor": "not measured (draft): the ground storey is not read",
+  "signage": "not measured (draft)",
+  "roofline": "5 of 15 pands show a skyline crown over the cornice (kind not measured)",
+  "citation": "drafted from 15 pand spans of 4 strips: scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+  "photoRows": [
+   1,
+   3,
+   3
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "flamingo-14-28",
+   "pands": [
+    "070462",
+    "098790",
+    "137809",
+    "069013",
+    "141395",
+    "120930"
+   ],
+   "citation": "drafted from 6 pand spans of the flamingo-14-28 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "meeuwenplein-29-39",
+   "pands": [
+    "142951",
+    "131749",
+    "129900",
+    "138874"
+   ],
+   "citation": "drafted from 4 pand spans of the meeuwenplein-29-39 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "meeuwenplein-9-19",
+   "pands": [
+    "074442",
+    "140709",
+    "074267",
+    "148193"
+   ],
+   "citation": "drafted from 4 pand spans of the meeuwenplein-9-19 strip (draft.fields carry the medians)"
+  },
+  {
+   "face": "pelikaan-16-22",
+   "pands": [
+    "111816"
+   ],
+   "citation": "drafted from 1 pand spans of the pelikaan-16-22 strip (draft.fields carry the medians)"
+  }
+ ],
+ "notes": [
+  "DRAFTER VERDICT: DO NOT USE. Low-rise gabled rows (2 window storeys under a gable, eaves ~7 m): the storey profile reads 0 of the pands (it assumes a ground storey top near 3.7 m), the 3DBAG count of 3 includes the gable storey, the wall colour split is two exposures of the same red brick (the strip has a cyan cast: #7e8179 / #3d3d38 against a red-brown photo wall). Kept only as the record of a failed family.",
+  "Draft, not installed. Medians over 15 pands; refused below 8 pands or 3 faces."
+ ],
+ "draft": {
+  "generator": "scripts/block-face/draft-type.ts (src/canalRecall/blockFace/typeDraft.ts)",
+  "generatedAt": "2026-11-09",
+  "buurt": "Vogelbuurt-Noord",
+  "family": "1920-1924:3:6.4-8",
+  "n": 15,
+  "faces": {
+   "flamingo-14-28": 6,
+   "meeuwenplein-29-39": 4,
+   "meeuwenplein-9-19": 4,
+   "pelikaan-16-22": 1
+  },
+  "pands": [
+   "0363100012070462",
+   "0363100012098790",
+   "0363100012137809",
+   "0363100012069013",
+   "0363100012141395",
+   "0363100012120930",
+   "0363100012142951",
+   "0363100012131749",
+   "0363100012129900",
+   "0363100012138874",
+   "0363100012074442",
+   "0363100012140709",
+   "0363100012074267",
+   "0363100012148193",
+   "0363100012111816"
+  ],
+  "fields": {
+   "body.storeys": {
+    "source": "mode of the storeys over 15 pands (window storeys + ground where the strip profile was read, else 3DBAG)",
+    "share": 1,
+    "stat": {
+     "n": 15,
+     "median": 3,
+     "p25": 3,
+     "p75": 3,
+     "min": 3,
+     "max": 3
+    },
+    "note": "3DBAG storeys median 3 (it counts an attic the windows do not show)"
+   },
+   "match.years": {
+    "source": "BAG build year, p10..p90 over the family",
+    "stat": {
+     "n": 15,
+     "median": 1923,
+     "p25": 1921,
+     "p75": 1923,
+     "min": 1921,
+     "max": 1924
+    }
+   },
+   "fit.widthM": {
+    "source": "BAG/3DBAG front width, p10..p90 (rounded outward to 0.1 m)",
+    "stat": {
+     "n": 15,
+     "median": 6.41,
+     "p25": 6.39,
+     "p75": 6.61,
+     "min": 6.36,
+     "max": 6.78
+    }
+   },
+   "match.eavesM": {
+    "source": "3DBAG eaves, p10..p90 (rounded outward to 0.1 m)",
+    "stat": {
+     "n": 15,
+     "median": 6.92,
+     "p25": 6.87,
+     "p75": 6.96,
+     "min": 6.77,
+     "max": 7.55
+    }
+   },
+   "palettes.measured.brick": {
+    "source": "median RGB of the per-pand wall colour (palette-from-strip.ts / stripPalette.ts)",
+    "colour": {
+     "n": 15,
+     "hex": "#3d3d38",
+     "spread": 15.1,
+     "max": 43.5
+    }
+   },
+   "palettes.measured.cornice": {
+    "source": "median per-pand cornice colour",
+    "colour": {
+     "n": 15,
+     "hex": "#3f3532",
+     "spread": 15.7,
+     "max": 52
+    }
+   },
+   "match.baysByWidth": {
+    "source": "window columns by frontage width band (bands with >= 3 pands): none"
+   }
+  },
+  "omitted": {
+   "body.bays": "window column counts disagree or are fused: modal count 2 on 66.67 % (limit 40 %), median run width 2.7 m (limit 2), quartiles 2/2/2",
+   "body.storeyHeights/windowHeights/headLines": "storey profile: 0 of 15 pands read, 0 agree on 3 storeys (needs >= 8 pands, >= 40 % of the family and >= 50 % of those read)",
+   "palettes.measured.frame": "measured on fewer than 3 pands",
+   "palettes.measured.stone": "measured on fewer than 3 pands"
+  },
+  "unmeasured": [
+   "body.windows (pane layout)",
+   "body.windowHead (head kind: flat / segmental / round)",
+   "body.cornice kind (simple is a placeholder; presence is measured)",
+   "crowns (kind, dormers, gable: only the skyline rise is measured)",
+   "grounds (door side, shop; the ground storey is not read)",
+   "roof.material (3DBAG gives the shape, not the covering)",
+   "palettes.*.door",
+   "palettes.measured.frame (placeholder #cfcbbf: no usable frame colour measured)",
+   "body.bays (placeholder 3: the window columns were not countable)"
+  ],
+  "observations": {
+   "skyline.eavesM": {
+    "source": "strip skyline cornice line (13 of 15 pands read under clean sky)",
+    "stat": {
+     "n": 13,
+     "median": 7.72,
+     "p25": 7.53,
+     "p75": 8.65,
+     "min": 6.7,
+     "max": 12.88
+    },
+    "note": "3DBAG median 6.92 m"
+   },
+   "autocorrelated bay columns": {
+    "source": "measureFacade pitch, 6 pands",
+    "stat": {
+     "n": 6,
+     "median": 3,
+     "p25": 3,
+     "p75": 5.25,
+     "min": 3,
+     "max": 9
+    }
+   },
+   "window width (m)": {
+    "source": "median width of the opening-column runs, 15 pands",
+    "stat": {
+     "n": 15,
+     "median": 2.7,
+     "p25": 2.5,
+     "p75": 2.75,
+     "min": 1.1,
+     "max": 3.5
+    }
+   },
+   "glazing share (upper storeys)": {
+    "source": "measureFacade not-wall share, 15 pands",
+    "stat": {
+     "n": 15,
+     "median": 0.35,
+     "p25": 0.28,
+     "p75": 0.52,
+     "min": 0.06,
+     "max": 0.84
+    }
+   },
+   "skyline crown": {
+    "source": "strip skyline: columns standing > 0.6 m over the cornice line",
+    "share": 0.33,
+    "stat": {
+     "n": 5,
+     "median": 3,
+     "p25": 1.3,
+     "p75": 3.7,
+     "min": 1.03,
+     "max": 7.17
+    },
+    "note": "median width 1.13 m; the crown kind is not measured"
+   }
+  },
+  "verdict": "DRAFTER VERDICT: DO NOT USE. Low-rise gabled rows (2 window storeys under a gable, eaves ~7 m): the storey profile reads 0 of the pands (it assumes a ground storey top near 3.7 m), the 3DBAG count of 3 includes the gable storey, the wall colour split is two exposures of the same red brick (the strip has a cyan cast: #7e8179 / #3d3d38 against a red-brown photo wall). Kept only as the record of a failed family."
+ }
+}

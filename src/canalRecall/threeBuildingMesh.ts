@@ -95,6 +95,8 @@ export type MeshBuilding = {
   flatRoof?: { lip: boolean; box: boolean; /** Roof area (m²): the chunk's surface budget goes to the largest roofs first. */ areaM2?: number; /** The coarse tier (and the baked shell): no measured furniture, the coarse budget. */ coarse?: boolean };
   /** Overrides the per-building rhythm jitter (large tier: civic storeys, one entrance per run). */
   layoutScale?: LayoutScale;
+  /** A buurt profile's storey-pitch scale (buurtProfiles/profiles.ts `storeyScaleOf`), applied on top of the per-building jitter; absent = 1. */
+  storeyScale?: number;
   /** A plain band this tall between the top window row and the wall top (large tier). */
   parapetM?: number;
   /** A real roof for this building; its walls already stop at the eaves. */
@@ -504,7 +506,7 @@ export function buildChunk(buildings: readonly MeshBuilding[], origin: Origin, m
     const groundPaint = b.groundHex && b.layers ? parseHex(b.groundHex) : null;
     const variant = Math.floor(hash01(`${b.id}:look`) * CELL_VARIANTS);
     // No two neighbours share a rhythm: bay width, storey and ground-floor height vary per building.
-    const scale = b.layoutScale ?? { bay: 0.88 + hash01(`${b.id}:bay`) * 0.3, storey: 0.93 + hash01(`${b.id}:storey`) * 0.16, ground: 0.92 + hash01(`${b.id}:ground`) * 0.2 };
+    const scale = b.layoutScale ?? { bay: 0.88 + hash01(`${b.id}:bay`) * 0.3, storey: (b.storeyScale ?? 1) * (0.93 + hash01(`${b.id}:storey`) * 0.16), ground: 0.92 + hash01(`${b.id}:ground`) * 0.2 };
     const jitter = 0.9 + hash01(`${b.id}:tone`) * 0.2;
     let walls = 0;
     const extraSink = mode === 'extras' && b.extras ? new ExtraSink(EXTRA_BUDGET.building) : null;

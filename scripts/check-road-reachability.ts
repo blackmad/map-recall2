@@ -10,7 +10,7 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { isMotorOnlyHighway, motorOnlyNames } from '../src/canalRecall/routing/bikeAccess.ts';
-import { loadRoutingFeatures, routingSource } from './lib/routingFeatures.ts';
+import { loadRoutingFeatures, routingDirectory, routingSource } from './lib/routingFeatures.ts';
 
 const PIXELS_PER_METER = 3;
 const SIMPLIFICATION_TOLERANCE = 0.00003; // degrees, as constants.js
@@ -21,7 +21,7 @@ type Feature = { id: string; name?: string; path?: LatLon[]; paths?: LatLon[][];
 type Point = { x: number; y: number };
 type Segment = { name: string; wayId: string; points: Point[] };
 
-const directory = path.resolve('public/data/extracts/amsterdam');
+const directory = path.resolve(routingDirectory());
 const features: Feature[] = await loadRoutingFeatures<Feature>(directory);
 
 // ---- osm-loader.js: fetchRoads (car) ----
@@ -270,7 +270,7 @@ console.log(`\nunsimplified reference: ${unsimplified.groups.length} components`
     }
     return best!;
   };
-  const places: Array<[string, number, number]> = [
+  const places: Array<[string, number, number, number?]> = [
     ['Dam', 52.37310, 4.89260],
     ['Buikslotermeerplein (Noord)', 52.40030, 4.93240],
     ['NDSM-werf (Noord)', 52.40090, 4.89150],
@@ -282,14 +282,34 @@ console.log(`\nunsimplified reference: ${unsimplified.groups.length} components`
     // east end is a cul-de-sac at the steps to Insulindeweg, but the promenade
     // itself leads back to the city (the bike turns round: check-canal-car.ts).
     ['Javaplantsoen promenade east end', 52.362966, 4.946304],
+    // User report 2026-11-09 (Houthaven, newer than the first basemap): the Gevlebrug deck and the Karlskrona-eiland
+    // street behind it, and Haparandadam (the dam the 1966 pand stands on), join the city (land-mask lane
+    // 2026-11-09; the land and deck pins are scripts/land-mask/check-land-mask.ts).
+    ['Gevlebrug (Houthaven)', 52.39183, 4.88458],
+    ['Karlskrona-eiland (Houthaven)', 52.39208, 4.88343],
+    ['Haparandadam (Houthaven)', 52.39624, 4.87985],
+    // Lane D2 (#322, 2026-11-09 feedback queue). The fourth value is how far the
+    // nearest graph node may be. The Oosterpark path by the Tropenmuseum is a
+    // bicycle=yes footway (w376383016) the extract used to drop: nearest node
+    // 26 m before, on the path after. The ASC SDW square (Heathrowstraat) and
+    // the Radarweg office courtyard have no rideable OSM way inside them (no
+    // highway=pedestrian area; private parking): they are pinned at their
+    // nearest street, 27 m and 26 m, so a regression that loses those is seen.
+    ['Oosterpark path by the Tropenmuseum', 52.36227, 4.92220, 12],
+    ['ASC SDW square, Heathrowstraat', 52.38599, 4.83218, 30],
+    ['Radarweg office courtyard', 52.38745, 4.83378, 30],
   ];
   const centre = componentOf.get(nearest(places[0][1], places[0][2]));
   console.log(`\nmotor-only ways dropped for cycling: ${motorOnly}`);
   let failed = false;
-  for (const [label, lat, lon] of places) {
-    const component = componentOf.get(nearest(lat, lon));
-    console.log(`  ${label}: component ${component}${component === centre ? '' : '  <-- cut off from the Dam'}`);
-    if (component !== centre) failed = true;
+  for (const [label, lat, lon, maxMeters] of places) {
+    const node = nearest(lat, lon);
+    const component = componentOf.get(node);
+    const target = project([lat, lon]);
+    const meters = Math.hypot(node.x - target.x, node.y - target.y) / PIXELS_PER_METER;
+    const tooFar = maxMeters !== undefined && meters > maxMeters;
+    console.log(`  ${label}: component ${component}, nearest node ${meters.toFixed(1)} m${component === centre ? '' : '  <-- cut off from the Dam'}${tooFar ? `  <-- no graph within ${maxMeters} m` : ''}`);
+    if (component !== centre || tooFar) failed = true;
   }
   if (failed) { console.error('Some named places are cut off from the centre.'); process.exitCode = 1; }
 }

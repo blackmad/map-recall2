@@ -1,0 +1,7314 @@
+[
+ {
+  "code": "AA01",
+  "name": "Planciusbuurt-Noord",
+  "wijk": "AA",
+  "level": "own",
+  "fallback": "AA01",
+  "fronts": 20,
+  "modernFronts": 3,
+  "pands": 60,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AA02",
+  "name": "Westelijke eilanden",
+  "wijk": "AA",
+  "level": "own",
+  "fallback": "AA02",
+  "fronts": 19,
+  "modernFronts": 20,
+  "pands": 414,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AA03",
+  "name": "Westerdokseiland",
+  "wijk": "AA",
+  "level": "wijk",
+  "fallback": "AA",
+  "fronts": 2,
+  "modernFronts": 4,
+  "pands": 12,
+  "why": "2 pre-1945 and 4 post-war measured fronts of 12 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "AA04",
+  "name": "Planciusbuurt-Zuid",
+  "wijk": "AA",
+  "level": "filled",
+  "fallback": "AA04",
+  "fronts": 18,
+  "modernFronts": 0,
+  "pands": 31,
+  "why": "18 pre-1945 and 0 post-war measured fronts of 31 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AA05",
+  "name": "Haarlemmerbuurt-West",
+  "wijk": "AA",
+  "level": "own",
+  "fallback": "AA05",
+  "fronts": 16,
+  "modernFronts": 17,
+  "pands": 427,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AA06",
+  "name": "Haarlemmerbuurt-Oost",
+  "wijk": "AA",
+  "level": "own",
+  "fallback": "AA06",
+  "fronts": 26,
+  "modernFronts": 11,
+  "pands": 342,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AB01",
+  "name": "Marnixbuurt-Noord",
+  "wijk": "AB",
+  "level": "own",
+  "fallback": "AB01",
+  "fronts": 20,
+  "modernFronts": 16,
+  "pands": 184,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AB02",
+  "name": "Driehoekbuurt",
+  "wijk": "AB",
+  "level": "own",
+  "fallback": "AB02",
+  "fronts": 18,
+  "modernFronts": 18,
+  "pands": 517,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AB03",
+  "name": "Anjeliersbuurt-Noord",
+  "wijk": "AB",
+  "level": "own",
+  "fallback": "AB03",
+  "fronts": 16,
+  "modernFronts": 18,
+  "pands": 449,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AB04",
+  "name": "Zaagpoortbuurt",
+  "wijk": "AB",
+  "level": "own",
+  "fallback": "AB04",
+  "fronts": 20,
+  "modernFronts": 7,
+  "pands": 125,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AB05",
+  "name": "Anjeliersbuurt-Zuid",
+  "wijk": "AB",
+  "level": "own",
+  "fallback": "AB05",
+  "fronts": 16,
+  "modernFronts": 19,
+  "pands": 559,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AB06",
+  "name": "Marnixbuurt-Midden",
+  "wijk": "AB",
+  "level": "own",
+  "fallback": "AB06",
+  "fronts": 20,
+  "modernFronts": 0,
+  "pands": 31,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AB07",
+  "name": "Bloemgrachtbuurt",
+  "wijk": "AB",
+  "level": "own",
+  "fallback": "AB07",
+  "fronts": 50,
+  "modernFronts": 16,
+  "pands": 662,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AB08",
+  "name": "Groenmarktkadebuurt",
+  "wijk": "AB",
+  "level": "filled",
+  "fallback": "AB08",
+  "fronts": 19,
+  "modernFronts": 3,
+  "pands": 50,
+  "why": "19 pre-1945 and 3 post-war measured fronts of 50 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AB09",
+  "name": "Marnixbuurt-Zuid",
+  "wijk": "AB",
+  "level": "filled",
+  "fallback": "AB09",
+  "fronts": 19,
+  "modernFronts": 1,
+  "pands": 53,
+  "why": "19 pre-1945 and 1 post-war measured fronts of 53 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AB10",
+  "name": "Elandsgrachtbuurt",
+  "wijk": "AB",
+  "level": "own",
+  "fallback": "AB10",
+  "fronts": 17,
+  "modernFronts": 18,
+  "pands": 823,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AB11",
+  "name": "Passeerdersgrachtbuurt",
+  "wijk": "AB",
+  "level": "own",
+  "fallback": "AB11",
+  "fronts": 19,
+  "modernFronts": 16,
+  "pands": 133,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AC01",
+  "name": "Langestraat e.o.",
+  "wijk": "AC",
+  "level": "own",
+  "fallback": "AC01",
+  "fronts": 13,
+  "modernFronts": 10,
+  "pands": 430,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AC02",
+  "name": "Leliegracht e.o.",
+  "wijk": "AC",
+  "level": "own",
+  "fallback": "AC02",
+  "fronts": 33,
+  "modernFronts": 1,
+  "pands": 438,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AC03",
+  "name": "Felix Meritisbuurt",
+  "wijk": "AC",
+  "level": "own",
+  "fallback": "AC03",
+  "fronts": 10,
+  "modernFronts": 12,
+  "pands": 634,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AC04",
+  "name": "Leidsegracht-Noord",
+  "wijk": "AC",
+  "level": "own",
+  "fallback": "AC04",
+  "fronts": 25,
+  "modernFronts": 1,
+  "pands": 187,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AD01",
+  "name": "Stationsplein e.o.",
+  "wijk": "AD",
+  "level": "wijk",
+  "fallback": "AD",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 3,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 3 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "AD02",
+  "name": "Hemelrijk",
+  "wijk": "AD",
+  "level": "filled",
+  "fallback": "AD02",
+  "fronts": 15,
+  "modernFronts": 3,
+  "pands": 165,
+  "why": "15 pre-1945 and 3 post-war measured fronts of 165 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AD03",
+  "name": "Nieuwendijk-Noord",
+  "wijk": "AD",
+  "level": "own",
+  "fallback": "AD03",
+  "fronts": 13,
+  "modernFronts": 9,
+  "pands": 161,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AD04",
+  "name": "Spuistraat-Noord",
+  "wijk": "AD",
+  "level": "own",
+  "fallback": "AD04",
+  "fronts": 25,
+  "modernFronts": 2,
+  "pands": 218,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AD05",
+  "name": "Nieuwe Kerk e.o.",
+  "wijk": "AD",
+  "level": "own",
+  "fallback": "AD05",
+  "fronts": 12,
+  "modernFronts": 8,
+  "pands": 234,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AD06",
+  "name": "Spuistraat-Zuid",
+  "wijk": "AD",
+  "level": "own",
+  "fallback": "AD06",
+  "fronts": 27,
+  "modernFronts": 1,
+  "pands": 178,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AD07",
+  "name": "Begijnhofbuurt",
+  "wijk": "AD",
+  "level": "filled",
+  "fallback": "AD07",
+  "fronts": 16,
+  "modernFronts": 4,
+  "pands": 225,
+  "why": "16 pre-1945 and 4 post-war measured fronts of 225 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AD08",
+  "name": "Kalverdriehoek",
+  "wijk": "AD",
+  "level": "filled",
+  "fallback": "AD08",
+  "fronts": 15,
+  "modernFronts": 3,
+  "pands": 130,
+  "why": "15 pre-1945 and 3 post-war measured fronts of 130 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AE01",
+  "name": "Kop Zeedijk",
+  "wijk": "AE",
+  "level": "own",
+  "fallback": "AE01",
+  "fronts": 18,
+  "modernFronts": 10,
+  "pands": 277,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AE02",
+  "name": "Oude Kerk e.o.",
+  "wijk": "AE",
+  "level": "filled",
+  "fallback": "AE02",
+  "fronts": 15,
+  "modernFronts": 5,
+  "pands": 206,
+  "why": "15 pre-1945 and 5 post-war measured fronts of 206 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AE03",
+  "name": "Burgwallen-Oost",
+  "wijk": "AE",
+  "level": "own",
+  "fallback": "AE03",
+  "fronts": 29,
+  "modernFronts": 12,
+  "pands": 430,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AE04",
+  "name": "Nes e.o.",
+  "wijk": "AE",
+  "level": "filled",
+  "fallback": "AE04",
+  "fronts": 16,
+  "modernFronts": 2,
+  "pands": 151,
+  "why": "16 pre-1945 and 2 post-war measured fronts of 151 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AE05",
+  "name": "BG-terrein e.o.",
+  "wijk": "AE",
+  "level": "filled",
+  "fallback": "AE05",
+  "fronts": 19,
+  "modernFronts": 7,
+  "pands": 178,
+  "why": "19 pre-1945 and 7 post-war measured fronts of 178 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AF01",
+  "name": "Oosterdokseiland",
+  "wijk": "AF",
+  "level": "wijk",
+  "fallback": "AF",
+  "fronts": 6,
+  "modernFronts": 1,
+  "pands": 20,
+  "why": "6 pre-1945 and 1 post-war measured fronts of 20 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "AF02",
+  "name": "Lastage",
+  "wijk": "AF",
+  "level": "own",
+  "fallback": "AF02",
+  "fronts": 28,
+  "modernFronts": 6,
+  "pands": 242,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AF03",
+  "name": "Scheepvaarthuisbuurt",
+  "wijk": "AF",
+  "level": "filled",
+  "fallback": "AF03",
+  "fronts": 12,
+  "modernFronts": 0,
+  "pands": 106,
+  "why": "12 pre-1945 and 0 post-war measured fronts of 106 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AF04",
+  "name": "Rapenburg",
+  "wijk": "AF",
+  "level": "own",
+  "fallback": "AF04",
+  "fronts": 12,
+  "modernFronts": 12,
+  "pands": 131,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AF05",
+  "name": "Nieuwmarkt",
+  "wijk": "AF",
+  "level": "own",
+  "fallback": "AF05",
+  "fronts": 17,
+  "modernFronts": 14,
+  "pands": 236,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AF06",
+  "name": "Uilenburg",
+  "wijk": "AF",
+  "level": "own",
+  "fallback": "AF06",
+  "fronts": 19,
+  "modernFronts": 12,
+  "pands": 133,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AF07",
+  "name": "Valkenburg",
+  "wijk": "AF",
+  "level": "wijk",
+  "fallback": "AF",
+  "fronts": 8,
+  "modernFronts": 9,
+  "pands": 86,
+  "why": "8 pre-1945 and 9 post-war measured fronts of 86 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "AF08",
+  "name": "Zuiderkerkbuurt",
+  "wijk": "AF",
+  "level": "own",
+  "fallback": "AF08",
+  "fronts": 19,
+  "modernFronts": 17,
+  "pands": 292,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AF09",
+  "name": "Waterloopleinbuurt",
+  "wijk": "AF",
+  "level": "own",
+  "fallback": "AF09",
+  "fronts": 12,
+  "modernFronts": 17,
+  "pands": 151,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AG01",
+  "name": "Leidsegracht-Zuid",
+  "wijk": "AG",
+  "level": "own",
+  "fallback": "AG01",
+  "fronts": 27,
+  "modernFronts": 1,
+  "pands": 240,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AG02",
+  "name": "Geelvinckbuurt",
+  "wijk": "AG",
+  "level": "filled",
+  "fallback": "AG02",
+  "fronts": 18,
+  "modernFronts": 2,
+  "pands": 100,
+  "why": "18 pre-1945 and 2 post-war measured fronts of 100 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AG03",
+  "name": "Rembrandtplein e.o.",
+  "wijk": "AG",
+  "level": "own",
+  "fallback": "AG03",
+  "fronts": 14,
+  "modernFronts": 10,
+  "pands": 275,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AG04",
+  "name": "Spiegelbuurt",
+  "wijk": "AG",
+  "level": "own",
+  "fallback": "AG04",
+  "fronts": 25,
+  "modernFronts": 5,
+  "pands": 258,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AG05",
+  "name": "Vijzelstraatbuurt",
+  "wijk": "AG",
+  "level": "own",
+  "fallback": "AG05",
+  "fronts": 34,
+  "modernFronts": 5,
+  "pands": 450,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AG06",
+  "name": "Amstelveldbuurt",
+  "wijk": "AG",
+  "level": "own",
+  "fallback": "AG06",
+  "fronts": 17,
+  "modernFronts": 12,
+  "pands": 449,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AH01",
+  "name": "Leidsebuurt-Noordwest",
+  "wijk": "AH",
+  "level": "own",
+  "fallback": "AH01",
+  "fronts": 20,
+  "modernFronts": 5,
+  "pands": 65,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AH02",
+  "name": "Leidsebuurt-Noordoost",
+  "wijk": "AH",
+  "level": "own",
+  "fallback": "AH02",
+  "fronts": 18,
+  "modernFronts": 16,
+  "pands": 256,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AH03",
+  "name": "Weteringbuurt",
+  "wijk": "AH",
+  "level": "own",
+  "fallback": "AH03",
+  "fronts": 14,
+  "modernFronts": 17,
+  "pands": 552,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AH04",
+  "name": "Utrechtsebuurt-Zuid",
+  "wijk": "AH",
+  "level": "own",
+  "fallback": "AH04",
+  "fronts": 10,
+  "modernFronts": 16,
+  "pands": 270,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AH05",
+  "name": "Leidsebuurt-Zuidwest",
+  "wijk": "AH",
+  "level": "filled",
+  "fallback": "AH05",
+  "fronts": 12,
+  "modernFronts": 1,
+  "pands": 43,
+  "why": "12 pre-1945 and 1 post-war measured fronts of 43 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AH06",
+  "name": "Leidsebuurt-Zuidoost",
+  "wijk": "AH",
+  "level": "filled",
+  "fallback": "AH06",
+  "fronts": 18,
+  "modernFronts": 1,
+  "pands": 68,
+  "why": "18 pre-1945 and 1 post-war measured fronts of 68 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AH07",
+  "name": "Den Texbuurt",
+  "wijk": "AH",
+  "level": "filled",
+  "fallback": "AH07",
+  "fronts": 12,
+  "modernFronts": 2,
+  "pands": 219,
+  "why": "12 pre-1945 and 2 post-war measured fronts of 219 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AH08",
+  "name": "Frederikspleinbuurt",
+  "wijk": "AH",
+  "level": "own",
+  "fallback": "AH08",
+  "fronts": 33,
+  "modernFronts": 10,
+  "pands": 207,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "AJ01",
+  "name": "Weesperbuurt",
+  "wijk": "AJ",
+  "level": "own",
+  "fallback": "AJ01",
+  "fronts": 17,
+  "modernFronts": 18,
+  "pands": 423,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AJ02",
+  "name": "Plantage",
+  "wijk": "AJ",
+  "level": "filled",
+  "fallback": "AJ02",
+  "fronts": 20,
+  "modernFronts": 3,
+  "pands": 397,
+  "why": "20 pre-1945 and 3 post-war measured fronts of 397 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AJ03",
+  "name": "Sarphatistrook",
+  "wijk": "AJ",
+  "level": "own",
+  "fallback": "AJ03",
+  "fronts": 17,
+  "modernFronts": 15,
+  "pands": 298,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AJ04",
+  "name": "Alexanderplein e.o.",
+  "wijk": "AJ",
+  "level": "wijk",
+  "fallback": "AJ",
+  "fronts": 11,
+  "modernFronts": 0,
+  "pands": 83,
+  "why": "11 pre-1945 and 0 post-war measured fronts of 83 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "AK01",
+  "name": "Marine-Etablissement",
+  "wijk": "AK",
+  "level": "wijk",
+  "fallback": "AK",
+  "fronts": 0,
+  "modernFronts": 5,
+  "pands": 46,
+  "why": "0 pre-1945 and 5 post-war measured fronts of 46 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "AK02",
+  "name": "Kattenburg",
+  "wijk": "AK",
+  "level": "own",
+  "fallback": "AK02",
+  "fronts": 2,
+  "modernFronts": 19,
+  "pands": 66,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AK03",
+  "name": "Wittenburg",
+  "wijk": "AK",
+  "level": "own",
+  "fallback": "AK03",
+  "fronts": 6,
+  "modernFronts": 13,
+  "pands": 116,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AK04",
+  "name": "Oostenburg",
+  "wijk": "AK",
+  "level": "own",
+  "fallback": "AK04",
+  "fronts": 16,
+  "modernFronts": 11,
+  "pands": 158,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AK05",
+  "name": "Czaar Peterbuurt",
+  "wijk": "AK",
+  "level": "own",
+  "fallback": "AK05",
+  "fronts": 16,
+  "modernFronts": 19,
+  "pands": 289,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AK06",
+  "name": "Het Funen",
+  "wijk": "AK",
+  "level": "own",
+  "fallback": "AK06",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 31,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AK07",
+  "name": "Kadijken",
+  "wijk": "AK",
+  "level": "own",
+  "fallback": "AK07",
+  "fronts": 19,
+  "modernFronts": 13,
+  "pands": 232,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "AK08",
+  "name": "Kazernebuurt",
+  "wijk": "AK",
+  "level": "filled",
+  "fallback": "AK08",
+  "fronts": 15,
+  "modernFronts": 2,
+  "pands": 38,
+  "why": "15 pre-1945 and 2 post-war measured fronts of 38 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "BA01",
+  "name": "Afrikahaven",
+  "wijk": "BA",
+  "level": "wijk",
+  "fallback": "BA",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 123,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 123 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "BA02",
+  "name": "Amerikahaven",
+  "wijk": "BA",
+  "level": "wijk",
+  "fallback": "BA",
+  "fronts": 1,
+  "modernFronts": 1,
+  "pands": 718,
+  "why": "1 pre-1945 and 1 post-war measured fronts of 718 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "BA03",
+  "name": "Westhaven-Noord",
+  "wijk": "BA",
+  "level": "wijk",
+  "fallback": "BA",
+  "fronts": 0,
+  "modernFronts": 11,
+  "pands": 346,
+  "why": "0 pre-1945 and 11 post-war measured fronts of 346 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "BA04",
+  "name": "Petroleumhaven",
+  "wijk": "BA",
+  "level": "wijk",
+  "fallback": "BA",
+  "fronts": 0,
+  "modernFronts": 8,
+  "pands": 473,
+  "why": "0 pre-1945 and 8 post-war measured fronts of 473 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "BA05",
+  "name": "Vervoerscentrum",
+  "wijk": "BA",
+  "level": "wijk",
+  "fallback": "BA",
+  "fronts": 0,
+  "modernFronts": 5,
+  "pands": 63,
+  "why": "0 pre-1945 and 5 post-war measured fronts of 63 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "BA06",
+  "name": "Westhaven-Zuid",
+  "wijk": "BA",
+  "level": "wijk",
+  "fallback": "BA",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 410,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 410 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "BB01",
+  "name": "Coenhaven",
+  "wijk": "BB",
+  "level": "wijk",
+  "fallback": "BB",
+  "fronts": 0,
+  "modernFronts": 7,
+  "pands": 106,
+  "why": "0 pre-1945 and 7 post-war measured fronts of 106 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "BB02",
+  "name": "Vlothaven",
+  "wijk": "BB",
+  "level": "wijk",
+  "fallback": "BB",
+  "fronts": 0,
+  "modernFronts": 4,
+  "pands": 73,
+  "why": "0 pre-1945 and 4 post-war measured fronts of 73 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "BB03",
+  "name": "Minervahaven-Noordoost",
+  "wijk": "BB",
+  "level": "wijk",
+  "fallback": "BB",
+  "fronts": 0,
+  "modernFronts": 10,
+  "pands": 26,
+  "why": "0 pre-1945 and 10 post-war measured fronts of 26 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "BB04",
+  "name": "Minervahaven-Noordwest",
+  "wijk": "BB",
+  "level": "own",
+  "fallback": "BB04",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 90,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "BB05",
+  "name": "Minervahaven-Zuidwest",
+  "wijk": "BB",
+  "level": "own",
+  "fallback": "BB05",
+  "fronts": 20,
+  "modernFronts": 20,
+  "pands": 74,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "BB06",
+  "name": "Minervahaven-Zuidoost",
+  "wijk": "BB",
+  "level": "wijk",
+  "fallback": "BB",
+  "fronts": 0,
+  "modernFronts": 7,
+  "pands": 38,
+  "why": "0 pre-1945 and 7 post-war measured fronts of 38 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "BB07",
+  "name": "Alfa-driehoek",
+  "wijk": "BB",
+  "level": "wijk",
+  "fallback": "BB",
+  "fronts": 0,
+  "modernFronts": 10,
+  "pands": 48,
+  "why": "0 pre-1945 and 10 post-war measured fronts of 48 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "BB08",
+  "name": "Hemknoop-Noord",
+  "wijk": "BB",
+  "level": "wijk",
+  "fallback": "BB",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 4,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 4 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "EA01",
+  "name": "Isolatorbuurt",
+  "wijk": "EA",
+  "level": "wijk",
+  "fallback": "EA",
+  "fronts": 1,
+  "modernFronts": 10,
+  "pands": 100,
+  "why": "1 pre-1945 and 10 post-war measured fronts of 100 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "EA02",
+  "name": "Contactbuurt",
+  "wijk": "EA",
+  "level": "wijk",
+  "fallback": "EA",
+  "fronts": 0,
+  "modernFronts": 4,
+  "pands": 72,
+  "why": "0 pre-1945 and 4 post-war measured fronts of 72 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "EA03",
+  "name": "Woon- en Groengebied Sloterdijk",
+  "wijk": "EA",
+  "level": "wijk",
+  "fallback": "EA",
+  "fronts": 2,
+  "modernFronts": 2,
+  "pands": 105,
+  "why": "2 pre-1945 and 2 post-war measured fronts of 105 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "EB01",
+  "name": "Hemknoop-Zuid",
+  "wijk": "EB",
+  "level": "wijk",
+  "fallback": "EB",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 3,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 3 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "EB02",
+  "name": "Overbraker Binnenpolder",
+  "wijk": "EB",
+  "level": "wijk",
+  "fallback": "EB",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 42,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 42 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "EB03",
+  "name": "Zaanstraat emplacement",
+  "wijk": "EB",
+  "level": "wijk",
+  "fallback": "EB",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 8,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 8 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "EB04",
+  "name": "Spaarndammerbuurt-Noordwest",
+  "wijk": "EB",
+  "level": "own",
+  "fallback": "EB04",
+  "fronts": 57,
+  "modernFronts": 1,
+  "pands": 294,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EB05",
+  "name": "Spaarndammerbuurt-Midden",
+  "wijk": "EB",
+  "level": "own",
+  "fallback": "EB05",
+  "fronts": 37,
+  "modernFronts": 8,
+  "pands": 233,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EB06",
+  "name": "Spaarndammerbuurt-Zuidwest",
+  "wijk": "EB",
+  "level": "own",
+  "fallback": "EB06",
+  "fronts": 20,
+  "modernFronts": 20,
+  "pands": 174,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EB07",
+  "name": "Spaarndammerbuurt-Noordoost",
+  "wijk": "EB",
+  "level": "own",
+  "fallback": "EB07",
+  "fronts": 21,
+  "modernFronts": 21,
+  "pands": 247,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EB08",
+  "name": "Zeeheldenbuurt",
+  "wijk": "EB",
+  "level": "own",
+  "fallback": "EB08",
+  "fronts": 19,
+  "modernFronts": 20,
+  "pands": 190,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EB09",
+  "name": "Westergasfabriek",
+  "wijk": "EB",
+  "level": "filled",
+  "fallback": "EB09",
+  "fronts": 17,
+  "modernFronts": 1,
+  "pands": 74,
+  "why": "17 pre-1945 and 1 post-war measured fronts of 74 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EB10",
+  "name": "Spaarndammerbuurt-Zuidoost",
+  "wijk": "EB",
+  "level": "own",
+  "fallback": "EB10",
+  "fronts": 18,
+  "modernFronts": 20,
+  "pands": 151,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EC01",
+  "name": "Houthavens-West",
+  "wijk": "EC",
+  "level": "own",
+  "fallback": "EC01",
+  "fronts": 1,
+  "modernFronts": 17,
+  "pands": 214,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "EC02",
+  "name": "Houthavens-Oost",
+  "wijk": "EC",
+  "level": "wijk",
+  "fallback": "EC",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 4,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 4 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "ED01",
+  "name": "Kolenkitbuurt-Noord",
+  "wijk": "ED",
+  "level": "own",
+  "fallback": "ED01",
+  "fronts": 1,
+  "modernFronts": 17,
+  "pands": 261,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "ED02",
+  "name": "Kolenkitbuurt-Zuid",
+  "wijk": "ED",
+  "level": "wijk",
+  "fallback": "ED",
+  "fronts": 0,
+  "modernFronts": 8,
+  "pands": 73,
+  "why": "0 pre-1945 and 8 post-war measured fronts of 73 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "ED03",
+  "name": "Laan van Spartaan",
+  "wijk": "ED",
+  "level": "wijk",
+  "fallback": "ED",
+  "fronts": 0,
+  "modernFronts": 8,
+  "pands": 142,
+  "why": "0 pre-1945 and 8 post-war measured fronts of 142 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "ED04",
+  "name": "Robert Scottbuurt-West",
+  "wijk": "ED",
+  "level": "own",
+  "fallback": "ED04",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 73,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "EE01",
+  "name": "Bosleeuw",
+  "wijk": "EE",
+  "level": "own",
+  "fallback": "EE01",
+  "fronts": 19,
+  "modernFronts": 20,
+  "pands": 662,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EE02",
+  "name": "Gibraltarbuurt",
+  "wijk": "EE",
+  "level": "own",
+  "fallback": "EE02",
+  "fronts": 20,
+  "modernFronts": 20,
+  "pands": 816,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EE03",
+  "name": "Bedrijventerrein Landlust",
+  "wijk": "EE",
+  "level": "own",
+  "fallback": "EE03",
+  "fronts": 3,
+  "modernFronts": 15,
+  "pands": 64,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EE04",
+  "name": "Landlust-Noord",
+  "wijk": "EE",
+  "level": "filled",
+  "fallback": "EE04",
+  "fronts": 19,
+  "modernFronts": 1,
+  "pands": 296,
+  "why": "19 pre-1945 and 1 post-war measured fronts of 296 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EE05",
+  "name": "Erasmusparkbuurt-Oost",
+  "wijk": "EE",
+  "level": "own",
+  "fallback": "EE05",
+  "fronts": 20,
+  "modernFronts": 17,
+  "pands": 205,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EE06",
+  "name": "Landlust-Zuid",
+  "wijk": "EE",
+  "level": "own",
+  "fallback": "EE06",
+  "fronts": 20,
+  "modernFronts": 1,
+  "pands": 706,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EF01",
+  "name": "Robert Scottbuurt-Oost",
+  "wijk": "EF",
+  "level": "own",
+  "fallback": "EF01",
+  "fronts": 20,
+  "modernFronts": 7,
+  "pands": 354,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EF02",
+  "name": "Erasmusparkbuurt-West",
+  "wijk": "EF",
+  "level": "own",
+  "fallback": "EF02",
+  "fronts": 20,
+  "modernFronts": 20,
+  "pands": 678,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EG01",
+  "name": "Bedrijvencentrum Westerkwartier",
+  "wijk": "EG",
+  "level": "wijk",
+  "fallback": "EG",
+  "fronts": 0,
+  "modernFronts": 9,
+  "pands": 81,
+  "why": "0 pre-1945 and 9 post-war measured fronts of 81 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "EG02",
+  "name": "GWL-terrein",
+  "wijk": "EG",
+  "level": "own",
+  "fallback": "EG02",
+  "fronts": 3,
+  "modernFronts": 20,
+  "pands": 42,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "EG03",
+  "name": "Markthallen",
+  "wijk": "EG",
+  "level": "wijk",
+  "fallback": "EG",
+  "fronts": 6,
+  "modernFronts": 5,
+  "pands": 60,
+  "why": "6 pre-1945 and 5 post-war measured fronts of 60 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "EG04",
+  "name": "Marcanti",
+  "wijk": "EG",
+  "level": "wijk",
+  "fallback": "EG",
+  "fronts": 0,
+  "modernFronts": 4,
+  "pands": 46,
+  "why": "0 pre-1945 and 4 post-war measured fronts of 46 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "EH01",
+  "name": "Westerstaatsman",
+  "wijk": "EH",
+  "level": "own",
+  "fallback": "EH01",
+  "fronts": 21,
+  "modernFronts": 2,
+  "pands": 569,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EH02",
+  "name": "Fannius Scholtenbuurt",
+  "wijk": "EH",
+  "level": "own",
+  "fallback": "EH02",
+  "fronts": 19,
+  "modernFronts": 18,
+  "pands": 546,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EH03",
+  "name": "Staatsliedenbuurt-Noordoost",
+  "wijk": "EH",
+  "level": "own",
+  "fallback": "EH03",
+  "fronts": 9,
+  "modernFronts": 16,
+  "pands": 101,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EH04",
+  "name": "De Wittenbuurt-Noord",
+  "wijk": "EH",
+  "level": "own",
+  "fallback": "EH04",
+  "fronts": 29,
+  "modernFronts": 3,
+  "pands": 169,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EH05",
+  "name": "De Wittenbuurt-Zuid",
+  "wijk": "EH",
+  "level": "own",
+  "fallback": "EH05",
+  "fronts": 19,
+  "modernFronts": 12,
+  "pands": 81,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EH06",
+  "name": "Buyskade e.o.",
+  "wijk": "EH",
+  "level": "own",
+  "fallback": "EH06",
+  "fronts": 21,
+  "modernFronts": 21,
+  "pands": 316,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EJ01",
+  "name": "Frederik Hendrikbuurt-Noord",
+  "wijk": "EJ",
+  "level": "own",
+  "fallback": "EJ01",
+  "fronts": 19,
+  "modernFronts": 16,
+  "pands": 587,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EJ02",
+  "name": "Frederik Hendrikbuurt-Zuidwest",
+  "wijk": "EJ",
+  "level": "own",
+  "fallback": "EJ02",
+  "fronts": 9,
+  "modernFronts": 19,
+  "pands": 67,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EJ03",
+  "name": "Frederik Hendrikbuurt-Zuidoost",
+  "wijk": "EJ",
+  "level": "own",
+  "fallback": "EJ03",
+  "fronts": 19,
+  "modernFronts": 9,
+  "pands": 482,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EK01",
+  "name": "Mercatorpark",
+  "wijk": "EK",
+  "level": "wijk",
+  "fallback": "EK",
+  "fronts": 1,
+  "modernFronts": 2,
+  "pands": 11,
+  "why": "1 pre-1945 and 2 post-war measured fronts of 11 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "EK02",
+  "name": "Orteliusbuurt-Noord",
+  "wijk": "EK",
+  "level": "own",
+  "fallback": "EK02",
+  "fronts": 28,
+  "modernFronts": 15,
+  "pands": 293,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EK03",
+  "name": "Jan Maijenbuurt",
+  "wijk": "EK",
+  "level": "own",
+  "fallback": "EK03",
+  "fronts": 45,
+  "modernFronts": 2,
+  "pands": 376,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EK04",
+  "name": "John Franklinbuurt",
+  "wijk": "EK",
+  "level": "own",
+  "fallback": "EK04",
+  "fronts": 36,
+  "modernFronts": 2,
+  "pands": 314,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EL01",
+  "name": "Pieter van der Doesbuurt",
+  "wijk": "EL",
+  "level": "own",
+  "fallback": "EL01",
+  "fronts": 20,
+  "modernFronts": 3,
+  "pands": 386,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EL02",
+  "name": "Trompbuurt",
+  "wijk": "EL",
+  "level": "filled",
+  "fallback": "EL02",
+  "fronts": 19,
+  "modernFronts": 2,
+  "pands": 418,
+  "why": "19 pre-1945 and 2 post-war measured fronts of 418 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EL03",
+  "name": "Geuzenhofbuurt",
+  "wijk": "EL",
+  "level": "own",
+  "fallback": "EL03",
+  "fronts": 20,
+  "modernFronts": 1,
+  "pands": 226,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EM01",
+  "name": "Orteliusbuurt-Midden",
+  "wijk": "EM",
+  "level": "own",
+  "fallback": "EM01",
+  "fronts": 29,
+  "modernFronts": 0,
+  "pands": 368,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EM02",
+  "name": "Balboaplein e.o.",
+  "wijk": "EM",
+  "level": "own",
+  "fallback": "EM02",
+  "fronts": 63,
+  "modernFronts": 12,
+  "pands": 421,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EM03",
+  "name": "Orteliusbuurt-Zuid",
+  "wijk": "EM",
+  "level": "filled",
+  "fallback": "EM03",
+  "fronts": 19,
+  "modernFronts": 3,
+  "pands": 369,
+  "why": "19 pre-1945 and 3 post-war measured fronts of 369 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EM04",
+  "name": "Columbusplein e.o.",
+  "wijk": "EM",
+  "level": "own",
+  "fallback": "EM04",
+  "fronts": 20,
+  "modernFronts": 1,
+  "pands": 538,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EN01",
+  "name": "Filips van Almondekwartier",
+  "wijk": "EN",
+  "level": "own",
+  "fallback": "EN01",
+  "fronts": 39,
+  "modernFronts": 1,
+  "pands": 125,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EN02",
+  "name": "Kortenaerkwartier",
+  "wijk": "EN",
+  "level": "own",
+  "fallback": "EN02",
+  "fronts": 17,
+  "modernFronts": 12,
+  "pands": 313,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EN03",
+  "name": "Van Brakelkwartier",
+  "wijk": "EN",
+  "level": "own",
+  "fallback": "EN03",
+  "fronts": 21,
+  "modernFronts": 1,
+  "pands": 103,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EN04",
+  "name": "De Wester Quartier",
+  "wijk": "EN",
+  "level": "filled",
+  "fallback": "EN04",
+  "fronts": 14,
+  "modernFronts": 2,
+  "pands": 182,
+  "why": "14 pre-1945 and 2 post-war measured fronts of 182 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EP01",
+  "name": "Bellamybuurt-Noord",
+  "wijk": "EP",
+  "level": "own",
+  "fallback": "EP01",
+  "fronts": 19,
+  "modernFronts": 8,
+  "pands": 441,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "EP02",
+  "name": "Bellamybuurt-Zuid",
+  "wijk": "EP",
+  "level": "own",
+  "fallback": "EP02",
+  "fronts": 177,
+  "modernFronts": 24,
+  "pands": 602,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EQ01",
+  "name": "Da Costabuurt-Noord",
+  "wijk": "EQ",
+  "level": "own",
+  "fallback": "EQ01",
+  "fronts": 116,
+  "modernFronts": 7,
+  "pands": 655,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "ER01",
+  "name": "Postjeskade e.o.",
+  "wijk": "ER",
+  "level": "own",
+  "fallback": "ER01",
+  "fronts": 20,
+  "modernFronts": 4,
+  "pands": 712,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "ER02",
+  "name": "Paramariboplein e.o.",
+  "wijk": "ER",
+  "level": "own",
+  "fallback": "ER02",
+  "fronts": 20,
+  "modernFronts": 4,
+  "pands": 637,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "ES01",
+  "name": "Lootsbuurt",
+  "wijk": "ES",
+  "level": "own",
+  "fallback": "ES01",
+  "fronts": 42,
+  "modernFronts": 6,
+  "pands": 288,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "ES02",
+  "name": "Borgerbuurt",
+  "wijk": "ES",
+  "level": "own",
+  "fallback": "ES02",
+  "fronts": 44,
+  "modernFronts": 45,
+  "pands": 128,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "ES03",
+  "name": "Da Costabuurt-Zuid",
+  "wijk": "ES",
+  "level": "own",
+  "fallback": "ES03",
+  "fronts": 66,
+  "modernFronts": 9,
+  "pands": 290,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "ET01",
+  "name": "Cremerbuurt-West",
+  "wijk": "ET",
+  "level": "own",
+  "fallback": "ET01",
+  "fronts": 33,
+  "modernFronts": 9,
+  "pands": 972,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "ET02",
+  "name": "Vondelparkbuurt-West",
+  "wijk": "ET",
+  "level": "own",
+  "fallback": "ET02",
+  "fronts": 21,
+  "modernFronts": 9,
+  "pands": 351,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EU01",
+  "name": "Cremerbuurt-Oost",
+  "wijk": "EU",
+  "level": "own",
+  "fallback": "EU01",
+  "fronts": 26,
+  "modernFronts": 3,
+  "pands": 417,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EU02",
+  "name": "WG-terrein",
+  "wijk": "EU",
+  "level": "own",
+  "fallback": "EU02",
+  "fronts": 20,
+  "modernFronts": 7,
+  "pands": 280,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EU03",
+  "name": "Helmersbuurt-Oost",
+  "wijk": "EU",
+  "level": "own",
+  "fallback": "EU03",
+  "fronts": 40,
+  "modernFronts": 2,
+  "pands": 427,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EV01",
+  "name": "Vondelparkbuurt-Midden",
+  "wijk": "EV",
+  "level": "own",
+  "fallback": "EV01",
+  "fronts": 20,
+  "modernFronts": 9,
+  "pands": 181,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "EV02",
+  "name": "Vondelparkbuurt-Oost",
+  "wijk": "EV",
+  "level": "filled",
+  "fallback": "EV02",
+  "fronts": 19,
+  "modernFronts": 3,
+  "pands": 255,
+  "why": "19 pre-1945 and 3 post-war measured fronts of 255 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "FA01",
+  "name": "Sloterdijk De Heining",
+  "wijk": "FA",
+  "level": "wijk",
+  "fallback": "FA",
+  "fronts": 0,
+  "modernFronts": 4,
+  "pands": 120,
+  "why": "0 pre-1945 and 4 post-war measured fronts of 120 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FA02",
+  "name": "Sloterdijk Poort-Noord",
+  "wijk": "FA",
+  "level": "wijk",
+  "fallback": "FA",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 140,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 140 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FA03",
+  "name": "Sloterdijk Poort-Zuid",
+  "wijk": "FA",
+  "level": "own",
+  "fallback": "FA03",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 650,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FA04",
+  "name": "Sloterdijk Rhônepark",
+  "wijk": "FA",
+  "level": "wijk",
+  "fallback": "FA",
+  "fronts": 0,
+  "modernFronts": 3,
+  "pands": 58,
+  "why": "0 pre-1945 and 3 post-war measured fronts of 58 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FA05",
+  "name": "Sloterdijk Donauhoek",
+  "wijk": "FA",
+  "level": "wijk",
+  "fallback": "FA",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 22,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FA06",
+  "name": "Bretten-West",
+  "wijk": "FA",
+  "level": "wijk",
+  "fallback": "FA",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 12,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 12 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FA07",
+  "name": "Bretten-Oost",
+  "wijk": "FA",
+  "level": "wijk",
+  "fallback": "FA",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 21,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 21 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FA08",
+  "name": "Sloterdijk Stationskwartier",
+  "wijk": "FA",
+  "level": "own",
+  "fallback": "FA08",
+  "fronts": 2,
+  "modernFronts": 12,
+  "pands": 86,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FB01",
+  "name": "Osdorper Binnenpolder",
+  "wijk": "FB",
+  "level": "wijk",
+  "fallback": "FB",
+  "fronts": 1,
+  "modernFronts": 4,
+  "pands": 120,
+  "why": "1 pre-1945 and 4 post-war measured fronts of 120 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FB02",
+  "name": "De Eendracht",
+  "wijk": "FB",
+  "level": "own",
+  "fallback": "FB02",
+  "fronts": 0,
+  "modernFronts": 32,
+  "pands": 1223,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FB03",
+  "name": "Ruys de Beerenbrouckbuurt",
+  "wijk": "FB",
+  "level": "own",
+  "fallback": "FB03",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 1180,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FB04",
+  "name": "Eendrachtspark",
+  "wijk": "FB",
+  "level": "wijk",
+  "fallback": "FB",
+  "fronts": 0,
+  "modernFronts": 7,
+  "pands": 16,
+  "why": "0 pre-1945 and 7 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FB05",
+  "name": "Van Tijenbuurt",
+  "wijk": "FB",
+  "level": "own",
+  "fallback": "FB05",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 1172,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FB06",
+  "name": "Dudokbuurt",
+  "wijk": "FB",
+  "level": "wijk",
+  "fallback": "FB",
+  "fronts": 0,
+  "modernFronts": 11,
+  "pands": 214,
+  "why": "0 pre-1945 and 11 post-war measured fronts of 214 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FB07",
+  "name": "Bakemabuurt",
+  "wijk": "FB",
+  "level": "own",
+  "fallback": "FB07",
+  "fronts": 1,
+  "modernFronts": 13,
+  "pands": 136,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FB08",
+  "name": "Wegener Sleeswijkbuurt",
+  "wijk": "FB",
+  "level": "own",
+  "fallback": "FB08",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 747,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FC01",
+  "name": "Jan de Louterbuurt",
+  "wijk": "FC",
+  "level": "own",
+  "fallback": "FC01",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 671,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FC02",
+  "name": "Lodewijk van Deysselbuurt",
+  "wijk": "FC",
+  "level": "own",
+  "fallback": "FC02",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 425,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FC03",
+  "name": "Confuciusbuurt",
+  "wijk": "FC",
+  "level": "own",
+  "fallback": "FC03",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 1072,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FD01",
+  "name": "Arondeusbuurt",
+  "wijk": "FD",
+  "level": "own",
+  "fallback": "FD01",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 622,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FD02",
+  "name": "Coronelbuurt",
+  "wijk": "FD",
+  "level": "own",
+  "fallback": "FD02",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 481,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FD03",
+  "name": "Meerwaldtbuurt",
+  "wijk": "FD",
+  "level": "own",
+  "fallback": "FD03",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 1027,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FD04",
+  "name": "Dobbebuurt",
+  "wijk": "FD",
+  "level": "own",
+  "fallback": "FD04",
+  "fronts": 0,
+  "modernFronts": 30,
+  "pands": 252,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FE01",
+  "name": "Dichtersbuurt",
+  "wijk": "FE",
+  "level": "own",
+  "fallback": "FE01",
+  "fronts": 1,
+  "modernFronts": 28,
+  "pands": 250,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FE02",
+  "name": "Louis Couperusbuurt",
+  "wijk": "FE",
+  "level": "own",
+  "fallback": "FE02",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 600,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FE03",
+  "name": "Noordoever Sloterplas",
+  "wijk": "FE",
+  "level": "own",
+  "fallback": "FE03",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 543,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FE04",
+  "name": "Sloterpark",
+  "wijk": "FE",
+  "level": "wijk",
+  "fallback": "FE",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 10,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 10 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FF01",
+  "name": "Osdorper Bovenpolder",
+  "wijk": "FF",
+  "level": "own",
+  "fallback": "FF01",
+  "fronts": 2,
+  "modernFronts": 26,
+  "pands": 696,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FF02",
+  "name": "Ookmeer",
+  "wijk": "FF",
+  "level": "wijk",
+  "fallback": "FF",
+  "fronts": 0,
+  "modernFronts": 4,
+  "pands": 72,
+  "why": "0 pre-1945 and 4 post-war measured fronts of 72 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FF03",
+  "name": "Bedrijvenpark Lutkemeer",
+  "wijk": "FF",
+  "level": "wijk",
+  "fallback": "FF",
+  "fronts": 1,
+  "modernFronts": 10,
+  "pands": 136,
+  "why": "1 pre-1945 and 10 post-war measured fronts of 136 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FG01",
+  "name": "Middelveldsche Akerpolder",
+  "wijk": "FG",
+  "level": "own",
+  "fallback": "FG01",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 2334,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FG02",
+  "name": "De Aker-West",
+  "wijk": "FG",
+  "level": "own",
+  "fallback": "FG02",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 1853,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FG03",
+  "name": "De Aker-Oost",
+  "wijk": "FG",
+  "level": "own",
+  "fallback": "FG03",
+  "fronts": 7,
+  "modernFronts": 20,
+  "pands": 2601,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FH01",
+  "name": "Bedrijvencentrum Osdorp",
+  "wijk": "FH",
+  "level": "wijk",
+  "fallback": "FH",
+  "fronts": 0,
+  "modernFronts": 5,
+  "pands": 44,
+  "why": "0 pre-1945 and 5 post-war measured fronts of 44 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FH02",
+  "name": "Dijkgraafpleinbuurt",
+  "wijk": "FH",
+  "level": "own",
+  "fallback": "FH02",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 1181,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FJ01",
+  "name": "Reimerswaal",
+  "wijk": "FJ",
+  "level": "own",
+  "fallback": "FJ01",
+  "fronts": 0,
+  "modernFronts": 24,
+  "pands": 272,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FJ02",
+  "name": "Botteskerkbuurt",
+  "wijk": "FJ",
+  "level": "own",
+  "fallback": "FJ02",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 183,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FJ03",
+  "name": "Zuidwestkwadrant-Noord",
+  "wijk": "FJ",
+  "level": "own",
+  "fallback": "FJ03",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 50,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FJ04",
+  "name": "Zuidwestkwadrant-Zuid",
+  "wijk": "FJ",
+  "level": "own",
+  "fallback": "FJ04",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 521,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FK01",
+  "name": "Wildeman",
+  "wijk": "FK",
+  "level": "own",
+  "fallback": "FK01",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 389,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FK02",
+  "name": "Meer en Oever",
+  "wijk": "FK",
+  "level": "own",
+  "fallback": "FK02",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 234,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FK03",
+  "name": "Osdorpplein e.o.",
+  "wijk": "FK",
+  "level": "own",
+  "fallback": "FK03",
+  "fronts": 1,
+  "modernFronts": 20,
+  "pands": 178,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FK04",
+  "name": "Calandlaan/Lelylaan",
+  "wijk": "FK",
+  "level": "own",
+  "fallback": "FK04",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 306,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FK05",
+  "name": "Osdorp-Zuidoost",
+  "wijk": "FK",
+  "level": "own",
+  "fallback": "FK05",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 1285,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FL01",
+  "name": "Oostoever Sloterplas",
+  "wijk": "FL",
+  "level": "own",
+  "fallback": "FL01",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 609,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FL02",
+  "name": "Emanuel van Meterenbuurt",
+  "wijk": "FL",
+  "level": "own",
+  "fallback": "FL02",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 686,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FL03",
+  "name": "Jacob Geelbuurt",
+  "wijk": "FL",
+  "level": "own",
+  "fallback": "FL03",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 819,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FM01",
+  "name": "Lucas/Andreasziekenhuis e.o.",
+  "wijk": "FM",
+  "level": "wijk",
+  "fallback": "FM",
+  "fronts": 1,
+  "modernFronts": 2,
+  "pands": 13,
+  "why": "1 pre-1945 and 2 post-war measured fronts of 13 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FM02",
+  "name": "Overtoomse Veld-Noord",
+  "wijk": "FM",
+  "level": "own",
+  "fallback": "FM02",
+  "fronts": 1,
+  "modernFronts": 19,
+  "pands": 424,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FM03",
+  "name": "Rembrandtpark-Noord",
+  "wijk": "FM",
+  "level": "wijk",
+  "fallback": "FM",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 23,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 23 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FM04",
+  "name": "Overtoomse Veld-Zuid",
+  "wijk": "FM",
+  "level": "own",
+  "fallback": "FM04",
+  "fronts": 4,
+  "modernFronts": 23,
+  "pands": 202,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FM05",
+  "name": "Rembrandtpark-Zuid",
+  "wijk": "FM",
+  "level": "wijk",
+  "fallback": "FM",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 6,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 6 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FM06",
+  "name": "Johan Jongkindbuurt",
+  "wijk": "FM",
+  "level": "own",
+  "fallback": "FM06",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 35,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FN01",
+  "name": "Louis Crispijnbuurt",
+  "wijk": "FN",
+  "level": "own",
+  "fallback": "FN01",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 613,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FN02",
+  "name": "Jacques Veltmanbuurt",
+  "wijk": "FN",
+  "level": "own",
+  "fallback": "FN02",
+  "fronts": 1,
+  "modernFronts": 20,
+  "pands": 630,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FN03",
+  "name": "Medisch Centrum Slotervaart",
+  "wijk": "FN",
+  "level": "wijk",
+  "fallback": "FN",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 36,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 36 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FN04",
+  "name": "Staalmanbuurt",
+  "wijk": "FN",
+  "level": "own",
+  "fallback": "FN04",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 333,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FP01",
+  "name": "Schipluidenbuurt",
+  "wijk": "FP",
+  "level": "wijk",
+  "fallback": "FP",
+  "fronts": 1,
+  "modernFronts": 2,
+  "pands": 11,
+  "why": "1 pre-1945 and 2 post-war measured fronts of 11 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FP02",
+  "name": "Koningin Wilhelminaplein",
+  "wijk": "FP",
+  "level": "wijk",
+  "fallback": "FP",
+  "fronts": 0,
+  "modernFronts": 11,
+  "pands": 145,
+  "why": "0 pre-1945 and 11 post-war measured fronts of 145 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FP03",
+  "name": "Andreasterrein",
+  "wijk": "FP",
+  "level": "wijk",
+  "fallback": "FP",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 23,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 23 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FP04",
+  "name": "Delflandpleinbuurt-West",
+  "wijk": "FP",
+  "level": "own",
+  "fallback": "FP04",
+  "fronts": 0,
+  "modernFronts": 12,
+  "pands": 118,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FP05",
+  "name": "Delflandpleinbuurt-Oost",
+  "wijk": "FP",
+  "level": "own",
+  "fallback": "FP05",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 68,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FP06",
+  "name": "Riekerhaven",
+  "wijk": "FP",
+  "level": "wijk",
+  "fallback": "FP",
+  "fronts": 0,
+  "modernFronts": 6,
+  "pands": 32,
+  "why": "0 pre-1945 and 6 post-war measured fronts of 32 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ01",
+  "name": "Dorp Sloten",
+  "wijk": "FQ",
+  "level": "own",
+  "fallback": "FQ01",
+  "fronts": 6,
+  "modernFronts": 17,
+  "pands": 472,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ02",
+  "name": "Nieuw-Sloten-Noordwest",
+  "wijk": "FQ",
+  "level": "own",
+  "fallback": "FQ02",
+  "fronts": 0,
+  "modernFronts": 25,
+  "pands": 1709,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ03",
+  "name": "Nieuw-Sloten-Noordoost",
+  "wijk": "FQ",
+  "level": "own",
+  "fallback": "FQ03",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 1630,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ04",
+  "name": "Nieuw-Sloten-Zuidwest",
+  "wijk": "FQ",
+  "level": "own",
+  "fallback": "FQ04",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 1211,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ05",
+  "name": "Belgiëplein e.o.",
+  "wijk": "FQ",
+  "level": "own",
+  "fallback": "FQ05",
+  "fronts": 0,
+  "modernFronts": 12,
+  "pands": 47,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ06",
+  "name": "Nieuw-Sloten-Zuidoost",
+  "wijk": "FQ",
+  "level": "own",
+  "fallback": "FQ06",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 1218,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ07",
+  "name": "Sloterweg e.o.",
+  "wijk": "FQ",
+  "level": "own",
+  "fallback": "FQ07",
+  "fronts": 2,
+  "modernFronts": 15,
+  "pands": 200,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ08",
+  "name": "Park Haagseweg",
+  "wijk": "FQ",
+  "level": "own",
+  "fallback": "FQ08",
+  "fronts": 0,
+  "modernFronts": 24,
+  "pands": 257,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ09",
+  "name": "Riekerpolder",
+  "wijk": "FQ",
+  "level": "wijk",
+  "fallback": "FQ",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 40,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 40 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "FQ10",
+  "name": "Nieuwe Meer",
+  "wijk": "FQ",
+  "level": "wijk",
+  "fallback": "FQ",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 87,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 87 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "KA01",
+  "name": "Westlandgrachtbuurt",
+  "wijk": "KA",
+  "level": "filled",
+  "fallback": "KA01",
+  "fronts": 19,
+  "modernFronts": 4,
+  "pands": 813,
+  "why": "19 pre-1945 and 4 post-war measured fronts of 813 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KA02",
+  "name": "Surinamepleinbuurt",
+  "wijk": "KA",
+  "level": "own",
+  "fallback": "KA02",
+  "fronts": 19,
+  "modernFronts": 20,
+  "pands": 323,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KA03",
+  "name": "Legmeerpleinbuurt",
+  "wijk": "KA",
+  "level": "filled",
+  "fallback": "KA03",
+  "fronts": 18,
+  "modernFronts": 3,
+  "pands": 337,
+  "why": "18 pre-1945 and 3 post-war measured fronts of 337 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KA04",
+  "name": "Aalsmeerwegbuurt-West",
+  "wijk": "KA",
+  "level": "filled",
+  "fallback": "KA04",
+  "fronts": 18,
+  "modernFronts": 0,
+  "pands": 627,
+  "why": "18 pre-1945 and 0 post-war measured fronts of 627 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KA05",
+  "name": "Aalsmeerwegbuurt-Oost",
+  "wijk": "KA",
+  "level": "filled",
+  "fallback": "KA05",
+  "fronts": 15,
+  "modernFronts": 2,
+  "pands": 470,
+  "why": "15 pre-1945 and 2 post-war measured fronts of 470 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KA06",
+  "name": "Bedrijventerrein Schinkel",
+  "wijk": "KA",
+  "level": "own",
+  "fallback": "KA06",
+  "fronts": 1,
+  "modernFronts": 16,
+  "pands": 155,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KB01",
+  "name": "Schinkelbuurt-Noord",
+  "wijk": "KB",
+  "level": "own",
+  "fallback": "KB01",
+  "fronts": 18,
+  "modernFronts": 15,
+  "pands": 437,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KB02",
+  "name": "Schinkelbuurt-Zuid",
+  "wijk": "KB",
+  "level": "filled",
+  "fallback": "KB02",
+  "fronts": 19,
+  "modernFronts": 4,
+  "pands": 273,
+  "why": "19 pre-1945 and 4 post-war measured fronts of 273 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KC01",
+  "name": "Vondelpark-West",
+  "wijk": "KC",
+  "level": "wijk",
+  "fallback": "KC",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 2,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 2 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "KC02",
+  "name": "Willemsparkbuurt-Noord",
+  "wijk": "KC",
+  "level": "filled",
+  "fallback": "KC02",
+  "fronts": 15,
+  "modernFronts": 3,
+  "pands": 433,
+  "why": "15 pre-1945 and 3 post-war measured fronts of 433 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KC03",
+  "name": "Valeriusbuurt-West",
+  "wijk": "KC",
+  "level": "filled",
+  "fallback": "KC03",
+  "fronts": 14,
+  "modernFronts": 0,
+  "pands": 489,
+  "why": "14 pre-1945 and 0 post-war measured fronts of 489 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KC04",
+  "name": "Valeriusbuurt-Oost",
+  "wijk": "KC",
+  "level": "filled",
+  "fallback": "KC04",
+  "fronts": 17,
+  "modernFronts": 2,
+  "pands": 310,
+  "why": "17 pre-1945 and 2 post-war measured fronts of 310 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KD01",
+  "name": "Vondelpark-Oost",
+  "wijk": "KD",
+  "level": "wijk",
+  "fallback": "KD",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 15,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 15 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "KD02",
+  "name": "Cornelis Schuytbuurt",
+  "wijk": "KD",
+  "level": "own",
+  "fallback": "KD02",
+  "fronts": 24,
+  "modernFronts": 1,
+  "pands": 742,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KD03",
+  "name": "Concertgebouwbuurt",
+  "wijk": "KD",
+  "level": "filled",
+  "fallback": "KD03",
+  "fronts": 18,
+  "modernFronts": 3,
+  "pands": 502,
+  "why": "18 pre-1945 and 3 post-war measured fronts of 502 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KD04",
+  "name": "P.C. Hooftbuurt",
+  "wijk": "KD",
+  "level": "filled",
+  "fallback": "KD04",
+  "fronts": 19,
+  "modernFronts": 2,
+  "pands": 309,
+  "why": "19 pre-1945 and 2 post-war measured fronts of 309 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KD05",
+  "name": "Museumplein",
+  "wijk": "KD",
+  "level": "wijk",
+  "fallback": "KD",
+  "fronts": 4,
+  "modernFronts": 1,
+  "pands": 22,
+  "why": "4 pre-1945 and 1 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "KD06",
+  "name": "Banpleinbuurt",
+  "wijk": "KD",
+  "level": "filled",
+  "fallback": "KD06",
+  "fronts": 19,
+  "modernFronts": 2,
+  "pands": 236,
+  "why": "19 pre-1945 and 2 post-war measured fronts of 236 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KD07",
+  "name": "Hondecoeterbuurt",
+  "wijk": "KD",
+  "level": "own",
+  "fallback": "KD07",
+  "fronts": 22,
+  "modernFronts": 3,
+  "pands": 343,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KD08",
+  "name": "Johannes Vermeerbuurt",
+  "wijk": "KD",
+  "level": "own",
+  "fallback": "KD08",
+  "fronts": 27,
+  "modernFronts": 4,
+  "pands": 332,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KD09",
+  "name": "Duivelseiland",
+  "wijk": "KD",
+  "level": "own",
+  "fallback": "KD09",
+  "fronts": 30,
+  "modernFronts": 0,
+  "pands": 228,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KD10",
+  "name": "Harmoniehofbuurt",
+  "wijk": "KD",
+  "level": "filled",
+  "fallback": "KD10",
+  "fronts": 13,
+  "modernFronts": 0,
+  "pands": 146,
+  "why": "13 pre-1945 and 0 post-war measured fronts of 146 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KE01",
+  "name": "Frans Halsbuurt",
+  "wijk": "KE",
+  "level": "own",
+  "fallback": "KE01",
+  "fronts": 105,
+  "modernFronts": 3,
+  "pands": 461,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KE02",
+  "name": "Gerard Doubuurt",
+  "wijk": "KE",
+  "level": "own",
+  "fallback": "KE02",
+  "fronts": 13,
+  "modernFronts": 17,
+  "pands": 252,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KE03",
+  "name": "Hercules Seghersbuurt",
+  "wijk": "KE",
+  "level": "own",
+  "fallback": "KE03",
+  "fronts": 17,
+  "modernFronts": 18,
+  "pands": 326,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KE04",
+  "name": "Sarphatiparkbuurt",
+  "wijk": "KE",
+  "level": "own",
+  "fallback": "KE04",
+  "fronts": 106,
+  "modernFronts": 19,
+  "pands": 870,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KE05",
+  "name": "Hemonybuurt",
+  "wijk": "KE",
+  "level": "filled",
+  "fallback": "KE05",
+  "fronts": 19,
+  "modernFronts": 5,
+  "pands": 442,
+  "why": "19 pre-1945 and 5 post-war measured fronts of 442 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KF01",
+  "name": "Cornelis Troostbuurt",
+  "wijk": "KF",
+  "level": "own",
+  "fallback": "KF01",
+  "fronts": 21,
+  "modernFronts": 5,
+  "pands": 680,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KF02",
+  "name": "Lizzy Ansinghbuurt",
+  "wijk": "KF",
+  "level": "own",
+  "fallback": "KF02",
+  "fronts": 19,
+  "modernFronts": 8,
+  "pands": 331,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KF03",
+  "name": "Van der Helstpleinbuurt",
+  "wijk": "KF",
+  "level": "own",
+  "fallback": "KF03",
+  "fronts": 17,
+  "modernFronts": 17,
+  "pands": 593,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KF04",
+  "name": "Willibrordusbuurt",
+  "wijk": "KF",
+  "level": "own",
+  "fallback": "KF04",
+  "fronts": 17,
+  "modernFronts": 13,
+  "pands": 392,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KG01",
+  "name": "Burgemeester Tellegenbuurt-West",
+  "wijk": "KG",
+  "level": "own",
+  "fallback": "KG01",
+  "fronts": 20,
+  "modernFronts": 0,
+  "pands": 589,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KG02",
+  "name": "Burgemeester Tellegenbuurt-Oost",
+  "wijk": "KG",
+  "level": "filled",
+  "fallback": "KG02",
+  "fronts": 18,
+  "modernFronts": 6,
+  "pands": 467,
+  "why": "18 pre-1945 and 6 post-war measured fronts of 467 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KG03",
+  "name": "Diamantbuurt",
+  "wijk": "KG",
+  "level": "filled",
+  "fallback": "KG03",
+  "fronts": 19,
+  "modernFronts": 2,
+  "pands": 495,
+  "why": "19 pre-1945 and 2 post-war measured fronts of 495 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KH01",
+  "name": "Bertelmanpleinbuurt",
+  "wijk": "KH",
+  "level": "filled",
+  "fallback": "KH01",
+  "fronts": 17,
+  "modernFronts": 0,
+  "pands": 265,
+  "why": "17 pre-1945 and 0 post-war measured fronts of 265 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KH02",
+  "name": "Olympisch Stadion e.o.",
+  "wijk": "KH",
+  "level": "wijk",
+  "fallback": "KH",
+  "fronts": 11,
+  "modernFronts": 1,
+  "pands": 45,
+  "why": "11 pre-1945 and 1 post-war measured fronts of 45 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "KH03",
+  "name": "Marathonbuurt-West",
+  "wijk": "KH",
+  "level": "filled",
+  "fallback": "KH03",
+  "fronts": 18,
+  "modernFronts": 0,
+  "pands": 480,
+  "why": "18 pre-1945 and 0 post-war measured fronts of 480 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KH04",
+  "name": "Marathonbuurt-Oost",
+  "wijk": "KH",
+  "level": "filled",
+  "fallback": "KH04",
+  "fronts": 18,
+  "modernFronts": 1,
+  "pands": 307,
+  "why": "18 pre-1945 and 1 post-war measured fronts of 307 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KH05",
+  "name": "Van Tuyllbuurt",
+  "wijk": "KH",
+  "level": "filled",
+  "fallback": "KH05",
+  "fronts": 13,
+  "modernFronts": 0,
+  "pands": 946,
+  "why": "13 pre-1945 and 0 post-war measured fronts of 946 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KH06",
+  "name": "IJsbaanpad e.o.",
+  "wijk": "KH",
+  "level": "wijk",
+  "fallback": "KH",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 41,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 41 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "KJ01",
+  "name": "Hiltonbuurt",
+  "wijk": "KJ",
+  "level": "filled",
+  "fallback": "KJ01",
+  "fronts": 16,
+  "modernFronts": 3,
+  "pands": 58,
+  "why": "16 pre-1945 and 3 post-war measured fronts of 58 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KJ02",
+  "name": "Minervabuurt-Noord",
+  "wijk": "KJ",
+  "level": "filled",
+  "fallback": "KJ02",
+  "fronts": 19,
+  "modernFronts": 4,
+  "pands": 302,
+  "why": "19 pre-1945 and 4 post-war measured fronts of 302 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KJ03",
+  "name": "Minervabuurt-Midden",
+  "wijk": "KJ",
+  "level": "filled",
+  "fallback": "KJ03",
+  "fronts": 18,
+  "modernFronts": 4,
+  "pands": 442,
+  "why": "18 pre-1945 and 4 post-war measured fronts of 442 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KJ04",
+  "name": "Minervabuurt-Zuid",
+  "wijk": "KJ",
+  "level": "filled",
+  "fallback": "KJ04",
+  "fronts": 19,
+  "modernFronts": 7,
+  "pands": 420,
+  "why": "19 pre-1945 and 7 post-war measured fronts of 420 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KJ05",
+  "name": "Beethovenbuurt",
+  "wijk": "KJ",
+  "level": "filled",
+  "fallback": "KJ05",
+  "fronts": 18,
+  "modernFronts": 2,
+  "pands": 352,
+  "why": "18 pre-1945 and 2 post-war measured fronts of 352 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KJ06",
+  "name": "Diepenbrockbuurt",
+  "wijk": "KJ",
+  "level": "filled",
+  "fallback": "KJ06",
+  "fronts": 13,
+  "modernFronts": 0,
+  "pands": 330,
+  "why": "13 pre-1945 and 0 post-war measured fronts of 330 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KK01",
+  "name": "Wielingenbuurt",
+  "wijk": "KK",
+  "level": "own",
+  "fallback": "KK01",
+  "fronts": 20,
+  "modernFronts": 1,
+  "pands": 545,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KK02",
+  "name": "Scheldebuurt-West",
+  "wijk": "KK",
+  "level": "filled",
+  "fallback": "KK02",
+  "fronts": 15,
+  "modernFronts": 0,
+  "pands": 795,
+  "why": "15 pre-1945 and 0 post-war measured fronts of 795 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KK03",
+  "name": "Scheldebuurt-Midden",
+  "wijk": "KK",
+  "level": "filled",
+  "fallback": "KK03",
+  "fronts": 19,
+  "modernFronts": 1,
+  "pands": 564,
+  "why": "19 pre-1945 and 1 post-war measured fronts of 564 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KK04",
+  "name": "Scheldebuurt-Oost",
+  "wijk": "KK",
+  "level": "own",
+  "fallback": "KK04",
+  "fronts": 26,
+  "modernFronts": 0,
+  "pands": 446,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KK05",
+  "name": "Veluwebuurt",
+  "wijk": "KK",
+  "level": "wijk",
+  "fallback": "KK",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 199,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 199 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "KK06",
+  "name": "Kop Zuidas",
+  "wijk": "KK",
+  "level": "wijk",
+  "fallback": "KK",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 16,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "KL01",
+  "name": "IJselbuurt-West",
+  "wijk": "KL",
+  "level": "filled",
+  "fallback": "KL01",
+  "fronts": 17,
+  "modernFronts": 0,
+  "pands": 423,
+  "why": "17 pre-1945 and 0 post-war measured fronts of 423 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KL02",
+  "name": "IJselbuurt-Oost",
+  "wijk": "KL",
+  "level": "filled",
+  "fallback": "KL02",
+  "fronts": 16,
+  "modernFronts": 2,
+  "pands": 486,
+  "why": "16 pre-1945 and 2 post-war measured fronts of 486 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KM01",
+  "name": "Kromme Mijdrechtbuurt",
+  "wijk": "KM",
+  "level": "filled",
+  "fallback": "KM01",
+  "fronts": 13,
+  "modernFronts": 0,
+  "pands": 456,
+  "why": "13 pre-1945 and 0 post-war measured fronts of 456 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "KM02",
+  "name": "Rijnbuurt-West",
+  "wijk": "KM",
+  "level": "own",
+  "fallback": "KM02",
+  "fronts": 20,
+  "modernFronts": 0,
+  "pands": 155,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KM03",
+  "name": "Rijnbuurt-Midden",
+  "wijk": "KM",
+  "level": "own",
+  "fallback": "KM03",
+  "fronts": 23,
+  "modernFronts": 1,
+  "pands": 584,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KM04",
+  "name": "Rijnbuurt-Oost",
+  "wijk": "KM",
+  "level": "own",
+  "fallback": "KM04",
+  "fronts": 113,
+  "modernFronts": 6,
+  "pands": 733,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "KM05",
+  "name": "Zorgvlied",
+  "wijk": "KM",
+  "level": "wijk",
+  "fallback": "KM",
+  "fronts": 1,
+  "modernFronts": 1,
+  "pands": 27,
+  "why": "1 pre-1945 and 1 post-war measured fronts of 27 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "KN01",
+  "name": "Prinses Irenebuurt",
+  "wijk": "KN",
+  "level": "own",
+  "fallback": "KN01",
+  "fronts": 1,
+  "modernFronts": 18,
+  "pands": 510,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KN02",
+  "name": "Beatrixpark",
+  "wijk": "KN",
+  "level": "wijk",
+  "fallback": "KN",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 4,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 4 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KP01",
+  "name": "Zuidas-Noord",
+  "wijk": "KP",
+  "level": "wijk",
+  "fallback": "KP",
+  "fronts": 4,
+  "modernFronts": 6,
+  "pands": 62,
+  "why": "4 pre-1945 and 6 post-war measured fronts of 62 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KP02",
+  "name": "RAI",
+  "wijk": "KP",
+  "level": "wijk",
+  "fallback": "KP",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 7,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 7 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KP03",
+  "name": "VU-kwartier",
+  "wijk": "KP",
+  "level": "wijk",
+  "fallback": "KP",
+  "fronts": 3,
+  "modernFronts": 2,
+  "pands": 59,
+  "why": "3 pre-1945 and 2 post-war measured fronts of 59 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KP04",
+  "name": "Zuidas-Zuid",
+  "wijk": "KP",
+  "level": "wijk",
+  "fallback": "KP",
+  "fronts": 0,
+  "modernFronts": 6,
+  "pands": 33,
+  "why": "0 pre-1945 and 6 post-war measured fronts of 33 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KP05",
+  "name": "Vivaldi",
+  "wijk": "KP",
+  "level": "wijk",
+  "fallback": "KP",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 23,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 23 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KQ01",
+  "name": "Amsterdamse Bos",
+  "wijk": "KQ",
+  "level": "wijk",
+  "fallback": "KQ",
+  "fronts": 0,
+  "modernFronts": 4,
+  "pands": 130,
+  "why": "0 pre-1945 and 4 post-war measured fronts of 130 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KQ02",
+  "name": "Zuiderhof",
+  "wijk": "KQ",
+  "level": "wijk",
+  "fallback": "KQ",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 22,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KQ03",
+  "name": "Buitenveldert-West-Midden",
+  "wijk": "KQ",
+  "level": "wijk",
+  "fallback": "KQ",
+  "fronts": 1,
+  "modernFronts": 11,
+  "pands": 220,
+  "why": "1 pre-1945 and 11 post-war measured fronts of 220 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KQ04",
+  "name": "Gelderlandpleinbuurt",
+  "wijk": "KQ",
+  "level": "own",
+  "fallback": "KQ04",
+  "fronts": 1,
+  "modernFronts": 20,
+  "pands": 333,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KQ05",
+  "name": "Buitenveldert-Zuidwest",
+  "wijk": "KQ",
+  "level": "own",
+  "fallback": "KQ05",
+  "fronts": 1,
+  "modernFronts": 12,
+  "pands": 1056,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KQ06",
+  "name": "Buitenveldert-Zuid-Midden",
+  "wijk": "KQ",
+  "level": "own",
+  "fallback": "KQ06",
+  "fronts": 0,
+  "modernFronts": 33,
+  "pands": 513,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KR01",
+  "name": "De Klenckebuurt",
+  "wijk": "KR",
+  "level": "wijk",
+  "fallback": "KR",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 54,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 54 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KR02",
+  "name": "Buitenveldert-Oost-Midden",
+  "wijk": "KR",
+  "level": "wijk",
+  "fallback": "KR",
+  "fronts": 0,
+  "modernFronts": 6,
+  "pands": 281,
+  "why": "0 pre-1945 and 6 post-war measured fronts of 281 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KR03",
+  "name": "Buitenveldert-Zuidoost",
+  "wijk": "KR",
+  "level": "own",
+  "fallback": "KR03",
+  "fronts": 0,
+  "modernFronts": 14,
+  "pands": 626,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "KR04",
+  "name": "Amstelpark",
+  "wijk": "KR",
+  "level": "wijk",
+  "fallback": "KR",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 43,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 43 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA01",
+  "name": "Java-eiland",
+  "wijk": "MA",
+  "level": "own",
+  "fallback": "MA01",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 195,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA02",
+  "name": "KNSM-eiland",
+  "wijk": "MA",
+  "level": "wijk",
+  "fallback": "MA",
+  "fronts": 3,
+  "modernFronts": 7,
+  "pands": 46,
+  "why": "3 pre-1945 and 7 post-war measured fronts of 46 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA03",
+  "name": "Oostelijke Handelskade",
+  "wijk": "MA",
+  "level": "wijk",
+  "fallback": "MA",
+  "fronts": 2,
+  "modernFronts": 8,
+  "pands": 16,
+  "why": "2 pre-1945 and 8 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA04",
+  "name": "Rietlanden",
+  "wijk": "MA",
+  "level": "own",
+  "fallback": "MA04",
+  "fronts": 11,
+  "modernFronts": 19,
+  "pands": 150,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA05",
+  "name": "Sporenburg",
+  "wijk": "MA",
+  "level": "own",
+  "fallback": "MA05",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 456,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA06",
+  "name": "Borneo",
+  "wijk": "MA",
+  "level": "own",
+  "fallback": "MA06",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 332,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA07",
+  "name": "Entrepot-Noordwest",
+  "wijk": "MA",
+  "level": "wijk",
+  "fallback": "MA",
+  "fronts": 0,
+  "modernFronts": 5,
+  "pands": 28,
+  "why": "0 pre-1945 and 5 post-war measured fronts of 28 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA08",
+  "name": "Bedrijvengebied Veelaan",
+  "wijk": "MA",
+  "level": "own",
+  "fallback": "MA08",
+  "fronts": 3,
+  "modernFronts": 20,
+  "pands": 129,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA09",
+  "name": "Architectenbuurt",
+  "wijk": "MA",
+  "level": "own",
+  "fallback": "MA09",
+  "fronts": 1,
+  "modernFronts": 12,
+  "pands": 102,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA10",
+  "name": "Cruquiusbuurt",
+  "wijk": "MA",
+  "level": "own",
+  "fallback": "MA10",
+  "fronts": 0,
+  "modernFronts": 14,
+  "pands": 55,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MA11",
+  "name": "Bedrijvengebied Zeeburgerkade",
+  "wijk": "MA",
+  "level": "wijk",
+  "fallback": "MA",
+  "fronts": 1,
+  "modernFronts": 9,
+  "pands": 50,
+  "why": "1 pre-1945 and 9 post-war measured fronts of 50 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MB01",
+  "name": "Weesperzijde-Noord",
+  "wijk": "MB",
+  "level": "own",
+  "fallback": "MB01",
+  "fronts": 19,
+  "modernFronts": 20,
+  "pands": 311,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MB02",
+  "name": "Weesperzijde-Midden/Zuid",
+  "wijk": "MB",
+  "level": "own",
+  "fallback": "MB02",
+  "fronts": 20,
+  "modernFronts": 15,
+  "pands": 397,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MB03",
+  "name": "Parooldriehoek",
+  "wijk": "MB",
+  "level": "wijk",
+  "fallback": "MB",
+  "fronts": 0,
+  "modernFronts": 5,
+  "pands": 22,
+  "why": "0 pre-1945 and 5 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MC01",
+  "name": "Oosterparkbuurt-Noordwest",
+  "wijk": "MC",
+  "level": "own",
+  "fallback": "MC01",
+  "fronts": 19,
+  "modernFronts": 19,
+  "pands": 382,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MC02",
+  "name": "Oosterpark",
+  "wijk": "MC",
+  "level": "wijk",
+  "fallback": "MC",
+  "fronts": 2,
+  "modernFronts": 1,
+  "pands": 48,
+  "why": "2 pre-1945 and 1 post-war measured fronts of 48 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MC03",
+  "name": "Oosterparkbuurt-Zuidwest",
+  "wijk": "MC",
+  "level": "own",
+  "fallback": "MC03",
+  "fronts": 18,
+  "modernFronts": 17,
+  "pands": 286,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MC04",
+  "name": "Oosterparkbuurt-Zuidoost",
+  "wijk": "MC",
+  "level": "own",
+  "fallback": "MC04",
+  "fronts": 18,
+  "modernFronts": 21,
+  "pands": 475,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MD01",
+  "name": "Transvaalbuurt-West",
+  "wijk": "MD",
+  "level": "own",
+  "fallback": "MD01",
+  "fronts": 102,
+  "modernFronts": 17,
+  "pands": 590,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "MD02",
+  "name": "Transvaalbuurt-Oost",
+  "wijk": "MD",
+  "level": "own",
+  "fallback": "MD02",
+  "fronts": 51,
+  "modernFronts": 18,
+  "pands": 739,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "ME01",
+  "name": "Dapperbuurt-Noord",
+  "wijk": "ME",
+  "level": "own",
+  "fallback": "ME01",
+  "fronts": 15,
+  "modernFronts": 17,
+  "pands": 334,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "ME02",
+  "name": "Dapperbuurt-Zuid",
+  "wijk": "ME",
+  "level": "own",
+  "fallback": "ME02",
+  "fronts": 20,
+  "modernFronts": 19,
+  "pands": 361,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "ME03",
+  "name": "Oostpoort",
+  "wijk": "ME",
+  "level": "own",
+  "fallback": "ME03",
+  "fronts": 7,
+  "modernFronts": 23,
+  "pands": 454,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MF01",
+  "name": "Timorpleinbuurt-Noord",
+  "wijk": "MF",
+  "level": "own",
+  "fallback": "MF01",
+  "fronts": 19,
+  "modernFronts": 19,
+  "pands": 569,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MF02",
+  "name": "Timorpleinbuurt-Zuid",
+  "wijk": "MF",
+  "level": "own",
+  "fallback": "MF02",
+  "fronts": 17,
+  "modernFronts": 17,
+  "pands": 516,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MF03",
+  "name": "Ambonpleinbuurt",
+  "wijk": "MF",
+  "level": "own",
+  "fallback": "MF03",
+  "fronts": 16,
+  "modernFronts": 19,
+  "pands": 227,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MG01",
+  "name": "Makassarpleinbuurt",
+  "wijk": "MG",
+  "level": "own",
+  "fallback": "MG01",
+  "fronts": 63,
+  "modernFronts": 16,
+  "pands": 514,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "MG02",
+  "name": "Zeeburgerdijk-Oost",
+  "wijk": "MG",
+  "level": "wijk",
+  "fallback": "MG",
+  "fronts": 1,
+  "modernFronts": 1,
+  "pands": 17,
+  "why": "1 pre-1945 and 1 post-war measured fronts of 17 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MG03",
+  "name": "Sumatraplantsoenbuurt",
+  "wijk": "MG",
+  "level": "own",
+  "fallback": "MG03",
+  "fronts": 17,
+  "modernFronts": 18,
+  "pands": 246,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MG04",
+  "name": "Flevopark",
+  "wijk": "MG",
+  "level": "wijk",
+  "fallback": "MG",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 35,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 35 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MH01",
+  "name": "Sluisbuurt",
+  "wijk": "MH",
+  "level": "wijk",
+  "fallback": "MH",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 16,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MH02",
+  "name": "Sportheldenbuurt",
+  "wijk": "MH",
+  "level": "own",
+  "fallback": "MH02",
+  "fronts": 0,
+  "modernFronts": 27,
+  "pands": 288,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MH03",
+  "name": "Oostpunt Zeeburgereiland",
+  "wijk": "MH",
+  "level": "wijk",
+  "fallback": "MH",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 14,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 14 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MH04",
+  "name": "Baaibuurt-West",
+  "wijk": "MH",
+  "level": "own",
+  "fallback": "MH04",
+  "fronts": 1,
+  "modernFronts": 19,
+  "pands": 107,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MH05",
+  "name": "Baaibuurt-Oost",
+  "wijk": "MH",
+  "level": "wijk",
+  "fallback": "MH",
+  "fronts": 0,
+  "modernFronts": 6,
+  "pands": 22,
+  "why": "0 pre-1945 and 6 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MH06",
+  "name": "Bovendiep/Diemerpark",
+  "wijk": "MH",
+  "level": "wijk",
+  "fallback": "MH",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 97,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 97 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MJ01",
+  "name": "Steigereiland-Zuid",
+  "wijk": "MJ",
+  "level": "own",
+  "fallback": "MJ01",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 646,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MJ02",
+  "name": "Steigereiland-Noord",
+  "wijk": "MJ",
+  "level": "own",
+  "fallback": "MJ02",
+  "fronts": 0,
+  "modernFronts": 28,
+  "pands": 270,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MJ03",
+  "name": "Rieteilanden-West",
+  "wijk": "MJ",
+  "level": "own",
+  "fallback": "MJ03",
+  "fronts": 0,
+  "modernFronts": 34,
+  "pands": 804,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MJ04",
+  "name": "Joris Ivenspleinbuurt",
+  "wijk": "MJ",
+  "level": "own",
+  "fallback": "MJ04",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 308,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MJ05",
+  "name": "Ed Pelsterparkbuurt",
+  "wijk": "MJ",
+  "level": "own",
+  "fallback": "MJ05",
+  "fronts": 0,
+  "modernFronts": 12,
+  "pands": 690,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MK01",
+  "name": "Buiteneiland",
+  "wijk": "MK",
+  "level": "wijk",
+  "fallback": "MK",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 0,
+  "why": "no BAG pands in the buurt (water, park, industrial land)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MK02",
+  "name": "Pampusbuurt-West",
+  "wijk": "MK",
+  "level": "wijk",
+  "fallback": "MK",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 8,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 8 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MK03",
+  "name": "Pampusbuurt-Oost",
+  "wijk": "MK",
+  "level": "wijk",
+  "fallback": "MK",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 0,
+  "why": "no BAG pands in the buurt (water, park, industrial land)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MK04",
+  "name": "Centrumeiland",
+  "wijk": "MK",
+  "level": "own",
+  "fallback": "MK04",
+  "fronts": 0,
+  "modernFronts": 28,
+  "pands": 110,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MK05",
+  "name": "Muidenbuurt-West",
+  "wijk": "MK",
+  "level": "wijk",
+  "fallback": "MK",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 2,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 2 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MK06",
+  "name": "Muidenbuurt-Oost",
+  "wijk": "MK",
+  "level": "wijk",
+  "fallback": "MK",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 0,
+  "why": "no BAG pands in the buurt (water, park, industrial land)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "ML01",
+  "name": "Havenkwartier IJburg",
+  "wijk": "ML",
+  "level": "own",
+  "fallback": "ML01",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 198,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "ML02",
+  "name": "Theo van Goghparkbuurt",
+  "wijk": "ML",
+  "level": "own",
+  "fallback": "ML02",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 1303,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "ML03",
+  "name": "Rieteiland-Oost",
+  "wijk": "ML",
+  "level": "wijk",
+  "fallback": "ML",
+  "fronts": 0,
+  "modernFronts": 11,
+  "pands": 96,
+  "why": "0 pre-1945 and 11 post-war measured fronts of 96 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MM01",
+  "name": "Van der Kunbuurt",
+  "wijk": "MM",
+  "level": "wijk",
+  "fallback": "MM",
+  "fronts": 0,
+  "modernFronts": 11,
+  "pands": 41,
+  "why": "0 pre-1945 and 11 post-war measured fronts of 41 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MM02",
+  "name": "De Eenhoorn",
+  "wijk": "MM",
+  "level": "wijk",
+  "fallback": "MM",
+  "fronts": 0,
+  "modernFronts": 6,
+  "pands": 45,
+  "why": "0 pre-1945 and 6 post-war measured fronts of 45 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MM03",
+  "name": "Don Bosco",
+  "wijk": "MM",
+  "level": "own",
+  "fallback": "MM03",
+  "fronts": 20,
+  "modernFronts": 20,
+  "pands": 577,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "MM04",
+  "name": "Julianapark",
+  "wijk": "MM",
+  "level": "wijk",
+  "fallback": "MM",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 172,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 172 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MM05",
+  "name": "Frankendael",
+  "wijk": "MM",
+  "level": "wijk",
+  "fallback": "MM",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 15,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 15 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MM06",
+  "name": "Tuindorp Amstelstation",
+  "wijk": "MM",
+  "level": "own",
+  "fallback": "MM06",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 278,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MM07",
+  "name": "De Wetbuurt",
+  "wijk": "MM",
+  "level": "own",
+  "fallback": "MM07",
+  "fronts": 18,
+  "modernFronts": 18,
+  "pands": 820,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MM08",
+  "name": "Tuindorp Frankendael",
+  "wijk": "MM",
+  "level": "own",
+  "fallback": "MM08",
+  "fronts": 13,
+  "modernFronts": 10,
+  "pands": 800,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MN01",
+  "name": "Linnaeusparkbuurt",
+  "wijk": "MN",
+  "level": "own",
+  "fallback": "MN01",
+  "fronts": 19,
+  "modernFronts": 12,
+  "pands": 552,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MN02",
+  "name": "Middenmeer-Noord",
+  "wijk": "MN",
+  "level": "filled",
+  "fallback": "MN02",
+  "fronts": 19,
+  "modernFronts": 0,
+  "pands": 652,
+  "why": "19 pre-1945 and 0 post-war measured fronts of 652 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MN03",
+  "name": "Middenmeer-Zuid",
+  "wijk": "MN",
+  "level": "own",
+  "fallback": "MN03",
+  "fronts": 14,
+  "modernFronts": 14,
+  "pands": 1045,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MN04",
+  "name": "Science Park-Noord",
+  "wijk": "MN",
+  "level": "wijk",
+  "fallback": "MN",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 24,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 24 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MN05",
+  "name": "Science Park-Zuid",
+  "wijk": "MN",
+  "level": "wijk",
+  "fallback": "MN",
+  "fronts": 0,
+  "modernFronts": 5,
+  "pands": 98,
+  "why": "0 pre-1945 and 5 post-war measured fronts of 98 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MN06",
+  "name": "Sportpark Middenmeer-Zuid",
+  "wijk": "MN",
+  "level": "wijk",
+  "fallback": "MN",
+  "fronts": 1,
+  "modernFronts": 3,
+  "pands": 62,
+  "why": "1 pre-1945 and 3 post-war measured fronts of 62 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MN07",
+  "name": "Sportpark Middenmeer-Noord",
+  "wijk": "MN",
+  "level": "wijk",
+  "fallback": "MN",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 11,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 11 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MN08",
+  "name": "Park de Meer",
+  "wijk": "MN",
+  "level": "own",
+  "fallback": "MN08",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 322,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "MN09",
+  "name": "Sportpark Voorland",
+  "wijk": "MN",
+  "level": "wijk",
+  "fallback": "MN",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 9,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 9 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "MP01",
+  "name": "Drieburg",
+  "wijk": "MP",
+  "level": "wijk",
+  "fallback": "MP",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 12,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 12 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MP02",
+  "name": "Nieuwe Oosterbegraafplaats",
+  "wijk": "MP",
+  "level": "wijk",
+  "fallback": "MP",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 17,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 17 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MP03",
+  "name": "Betondorp",
+  "wijk": "MP",
+  "level": "filled",
+  "fallback": "MP03",
+  "fronts": 14,
+  "modernFronts": 0,
+  "pands": 3013,
+  "why": "14 pre-1945 and 0 post-war measured fronts of 3013 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MQ01",
+  "name": "De Omval",
+  "wijk": "MQ",
+  "level": "wijk",
+  "fallback": "MQ",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 26,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 26 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MQ02",
+  "name": "Overamstel",
+  "wijk": "MQ",
+  "level": "wijk",
+  "fallback": "MQ",
+  "fronts": 1,
+  "modernFronts": 0,
+  "pands": 29,
+  "why": "1 pre-1945 and 0 post-war measured fronts of 29 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MQ03",
+  "name": "Amstelglorie",
+  "wijk": "MQ",
+  "level": "wijk",
+  "fallback": "MQ",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 16,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 16 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MQ04",
+  "name": "Amstelkwartier-West",
+  "wijk": "MQ",
+  "level": "wijk",
+  "fallback": "MQ",
+  "fronts": 0,
+  "modernFronts": 3,
+  "pands": 11,
+  "why": "0 pre-1945 and 3 post-war measured fronts of 11 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MQ05",
+  "name": "Amstelkwartier-Noord",
+  "wijk": "MQ",
+  "level": "own",
+  "fallback": "MQ05",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 122,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MQ06",
+  "name": "Amstelkwartier-Zuid",
+  "wijk": "MQ",
+  "level": "own",
+  "fallback": "MQ06",
+  "fronts": 0,
+  "modernFronts": 12,
+  "pands": 49,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "MQ07",
+  "name": "Weespertrekvaart",
+  "wijk": "MQ",
+  "level": "own",
+  "fallback": "MQ07",
+  "fronts": 2,
+  "modernFronts": 19,
+  "pands": 172,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NA01",
+  "name": "Noorder IJplas",
+  "wijk": "NA",
+  "level": "wijk",
+  "fallback": "NA",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 10,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 10 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NA02",
+  "name": "Melkweg/Oostzanerwerf",
+  "wijk": "NA",
+  "level": "wijk",
+  "fallback": "NA",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 66,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 66 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NA03",
+  "name": "Walvisbuurt",
+  "wijk": "NA",
+  "level": "own",
+  "fallback": "NA03",
+  "fronts": 1,
+  "modernFronts": 15,
+  "pands": 871,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NA04",
+  "name": "Twiske-West",
+  "wijk": "NA",
+  "level": "own",
+  "fallback": "NA04",
+  "fronts": 12,
+  "modernFronts": 12,
+  "pands": 1148,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NA05",
+  "name": "Oostzanerdijk",
+  "wijk": "NA",
+  "level": "own",
+  "fallback": "NA05",
+  "fronts": 9,
+  "modernFronts": 14,
+  "pands": 180,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NA06",
+  "name": "Circus/Kermisbuurt",
+  "wijk": "NA",
+  "level": "own",
+  "fallback": "NA06",
+  "fronts": 0,
+  "modernFronts": 13,
+  "pands": 479,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NA07",
+  "name": "Molenwijk",
+  "wijk": "NA",
+  "level": "wijk",
+  "fallback": "NA",
+  "fronts": 0,
+  "modernFronts": 7,
+  "pands": 53,
+  "why": "0 pre-1945 and 7 post-war measured fronts of 53 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NB01",
+  "name": "Cornelis Douwesterrein-West",
+  "wijk": "NB",
+  "level": "wijk",
+  "fallback": "NB",
+  "fronts": 0,
+  "modernFronts": 8,
+  "pands": 83,
+  "why": "0 pre-1945 and 8 post-war measured fronts of 83 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NB02",
+  "name": "Cornelis Douwesterrein-Oost",
+  "wijk": "NB",
+  "level": "own",
+  "fallback": "NB02",
+  "fronts": 0,
+  "modernFronts": 14,
+  "pands": 145,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NB03",
+  "name": "NDSM terrein",
+  "wijk": "NB",
+  "level": "own",
+  "fallback": "NB03",
+  "fronts": 3,
+  "modernFronts": 18,
+  "pands": 140,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NB04",
+  "name": "Buiksloterham-Zuid",
+  "wijk": "NB",
+  "level": "own",
+  "fallback": "NB04",
+  "fronts": 4,
+  "modernFronts": 37,
+  "pands": 315,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NB05",
+  "name": "Buiksloterham-Noord",
+  "wijk": "NB",
+  "level": "own",
+  "fallback": "NB05",
+  "fronts": 2,
+  "modernFronts": 14,
+  "pands": 324,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NB06",
+  "name": "Klaprozenbuurt",
+  "wijk": "NB",
+  "level": "wijk",
+  "fallback": "NB",
+  "fronts": 0,
+  "modernFronts": 7,
+  "pands": 64,
+  "why": "0 pre-1945 and 7 post-war measured fronts of 64 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NB07",
+  "name": "Overhoeks",
+  "wijk": "NB",
+  "level": "wijk",
+  "fallback": "NB",
+  "fronts": 0,
+  "modernFronts": 4,
+  "pands": 41,
+  "why": "0 pre-1945 and 4 post-war measured fronts of 41 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NC01",
+  "name": "Tuindorp Oostzaan-West",
+  "wijk": "NC",
+  "level": "wijk",
+  "fallback": "NC",
+  "fronts": 0,
+  "modernFronts": 10,
+  "pands": 512,
+  "why": "0 pre-1945 and 10 post-war measured fronts of 512 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NC02",
+  "name": "Tuindorp Oostzaan-Oost",
+  "wijk": "NC",
+  "level": "filled",
+  "fallback": "NC02",
+  "fronts": 12,
+  "modernFronts": 0,
+  "pands": 3930,
+  "why": "12 pre-1945 and 0 post-war measured fronts of 3930 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NC03",
+  "name": "Terrasdorp",
+  "wijk": "NC",
+  "level": "own",
+  "fallback": "NC03",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 2047,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NC04",
+  "name": "De Bongerd",
+  "wijk": "NC",
+  "level": "own",
+  "fallback": "NC04",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 1100,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "ND01",
+  "name": "Twiske-Oost",
+  "wijk": "ND",
+  "level": "own",
+  "fallback": "ND01",
+  "fronts": 0,
+  "modernFronts": 25,
+  "pands": 642,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "ND02",
+  "name": "Kadoelen",
+  "wijk": "ND",
+  "level": "own",
+  "fallback": "ND02",
+  "fronts": 9,
+  "modernFronts": 17,
+  "pands": 1485,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NE01",
+  "name": "Banne-Noordwest",
+  "wijk": "NE",
+  "level": "own",
+  "fallback": "NE01",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 185,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NE02",
+  "name": "Banne-Noordoost",
+  "wijk": "NE",
+  "level": "own",
+  "fallback": "NE02",
+  "fronts": 0,
+  "modernFronts": 33,
+  "pands": 405,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NE03",
+  "name": "Banne-Zuidwest",
+  "wijk": "NE",
+  "level": "own",
+  "fallback": "NE03",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 590,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NE04",
+  "name": "Banne-Zuidoost",
+  "wijk": "NE",
+  "level": "own",
+  "fallback": "NE04",
+  "fronts": 1,
+  "modernFronts": 19,
+  "pands": 852,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NE05",
+  "name": "Buiksloterbreek",
+  "wijk": "NE",
+  "level": "own",
+  "fallback": "NE05",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 200,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NE06",
+  "name": "Marjoleinterrein",
+  "wijk": "NE",
+  "level": "own",
+  "fallback": "NE06",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 126,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NF01",
+  "name": "Buiksloterdijk-West",
+  "wijk": "NF",
+  "level": "wijk",
+  "fallback": "NF",
+  "fronts": 4,
+  "modernFronts": 2,
+  "pands": 64,
+  "why": "4 pre-1945 and 2 post-war measured fronts of 64 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NF02",
+  "name": "Buiksloterdijk-Oost",
+  "wijk": "NF",
+  "level": "wijk",
+  "fallback": "NF",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 61,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 61 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NF03",
+  "name": "Nieuwendammerdijk-West",
+  "wijk": "NF",
+  "level": "own",
+  "fallback": "NF03",
+  "fronts": 19,
+  "modernFronts": 16,
+  "pands": 471,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NF04",
+  "name": "Nieuwendammerdijk-Oost",
+  "wijk": "NF",
+  "level": "own",
+  "fallback": "NF04",
+  "fronts": 14,
+  "modernFronts": 11,
+  "pands": 153,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NF05",
+  "name": "Nieuwendammerdijk-Zuid",
+  "wijk": "NF",
+  "level": "wijk",
+  "fallback": "NF",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 1,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 1 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NG01",
+  "name": "Elzenhagen-Noord",
+  "wijk": "NG",
+  "level": "own",
+  "fallback": "NG01",
+  "fronts": 1,
+  "modernFronts": 16,
+  "pands": 1317,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NG02",
+  "name": "Elzenhagen-Zuid",
+  "wijk": "NG",
+  "level": "wijk",
+  "fallback": "NG",
+  "fronts": 1,
+  "modernFronts": 5,
+  "pands": 18,
+  "why": "1 pre-1945 and 5 post-war measured fronts of 18 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NG03",
+  "name": "Nintemanterrein",
+  "wijk": "NG",
+  "level": "wijk",
+  "fallback": "NG",
+  "fronts": 0,
+  "modernFronts": 4,
+  "pands": 43,
+  "why": "0 pre-1945 and 4 post-war measured fronts of 43 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NH01",
+  "name": "Buikslotermeer-Noord",
+  "wijk": "NH",
+  "level": "own",
+  "fallback": "NH01",
+  "fronts": 1,
+  "modernFronts": 19,
+  "pands": 314,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NH02",
+  "name": "De Kleine Wereld",
+  "wijk": "NH",
+  "level": "wijk",
+  "fallback": "NH",
+  "fronts": 0,
+  "modernFronts": 10,
+  "pands": 52,
+  "why": "0 pre-1945 and 10 post-war measured fronts of 52 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NH03",
+  "name": "Loenermark",
+  "wijk": "NH",
+  "level": "wijk",
+  "fallback": "NH",
+  "fronts": 0,
+  "modernFronts": 3,
+  "pands": 91,
+  "why": "0 pre-1945 and 3 post-war measured fronts of 91 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NH04",
+  "name": "Buikslotermeerplein",
+  "wijk": "NH",
+  "level": "own",
+  "fallback": "NH04",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 114,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NH05",
+  "name": "Plan van Gool",
+  "wijk": "NH",
+  "level": "wijk",
+  "fallback": "NH",
+  "fronts": 0,
+  "modernFronts": 3,
+  "pands": 39,
+  "why": "0 pre-1945 and 3 post-war measured fronts of 39 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NH06",
+  "name": "Rode Kruisbuurt",
+  "wijk": "NH",
+  "level": "wijk",
+  "fallback": "NH",
+  "fronts": 2,
+  "modernFronts": 7,
+  "pands": 217,
+  "why": "2 pre-1945 and 7 post-war measured fronts of 217 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NJ01",
+  "name": "Markengouw-Noord",
+  "wijk": "NJ",
+  "level": "wijk",
+  "fallback": "NJ",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 12,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 12 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NJ02",
+  "name": "Markengouw-Midden",
+  "wijk": "NJ",
+  "level": "own",
+  "fallback": "NJ02",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 1115,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NJ03",
+  "name": "Markengouw-Zuid",
+  "wijk": "NJ",
+  "level": "own",
+  "fallback": "NJ03",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 396,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NJ04",
+  "name": "Werengouw-Noord",
+  "wijk": "NJ",
+  "level": "wijk",
+  "fallback": "NJ",
+  "fronts": 0,
+  "modernFronts": 3,
+  "pands": 31,
+  "why": "0 pre-1945 and 3 post-war measured fronts of 31 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NJ05",
+  "name": "Werengouw-Midden",
+  "wijk": "NJ",
+  "level": "own",
+  "fallback": "NJ05",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 335,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NJ06",
+  "name": "Werengouw-Zuid",
+  "wijk": "NJ",
+  "level": "own",
+  "fallback": "NJ06",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 355,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NK01",
+  "name": "Bloemenbuurt-Noord",
+  "wijk": "NK",
+  "level": "own",
+  "fallback": "NK01",
+  "fronts": 20,
+  "modernFronts": 7,
+  "pands": 1368,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "NK02",
+  "name": "Bloemenbuurt-Zuid",
+  "wijk": "NK",
+  "level": "own",
+  "fallback": "NK02",
+  "fronts": 20,
+  "modernFronts": 20,
+  "pands": 1123,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "NK03",
+  "name": "Van der Pekbuurt",
+  "wijk": "NK",
+  "level": "own",
+  "fallback": "NK03",
+  "fronts": 20,
+  "modernFronts": 20,
+  "pands": 2144,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "NL01",
+  "name": "Vogelbuurt-Noord",
+  "wijk": "NL",
+  "level": "filled",
+  "fallback": "NL01",
+  "fronts": 17,
+  "modernFronts": 0,
+  "pands": 628,
+  "why": "17 pre-1945 and 0 post-war measured fronts of 628 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NL02",
+  "name": "Vliegenbos",
+  "wijk": "NL",
+  "level": "wijk",
+  "fallback": "NL",
+  "fronts": 1,
+  "modernFronts": 1,
+  "pands": 68,
+  "why": "1 pre-1945 and 1 post-war measured fronts of 68 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NL03",
+  "name": "Vogelbuurt-Zuid",
+  "wijk": "NL",
+  "level": "own",
+  "fallback": "NL03",
+  "fronts": 20,
+  "modernFronts": 18,
+  "pands": 1160,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NL04",
+  "name": "IJplein e.o.",
+  "wijk": "NL",
+  "level": "own",
+  "fallback": "NL04",
+  "fronts": 1,
+  "modernFronts": 15,
+  "pands": 98,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NM01",
+  "name": "Blauwe Zand",
+  "wijk": "NM",
+  "level": "own",
+  "fallback": "NM01",
+  "fronts": 19,
+  "modernFronts": 16,
+  "pands": 1702,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NN01",
+  "name": "Tuindorp Nieuwendam-West",
+  "wijk": "NN",
+  "level": "own",
+  "fallback": "NN01",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 517,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NN02",
+  "name": "Tuindorp Nieuwendam-Oost",
+  "wijk": "NN",
+  "level": "own",
+  "fallback": "NN02",
+  "fronts": 15,
+  "modernFronts": 11,
+  "pands": 2265,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NP01",
+  "name": "Hamerstraatkwartier-West",
+  "wijk": "NP",
+  "level": "own",
+  "fallback": "NP01",
+  "fronts": 17,
+  "modernFronts": 8,
+  "pands": 228,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NP02",
+  "name": "Hamerstraatkwartier-Oost",
+  "wijk": "NP",
+  "level": "wijk",
+  "fallback": "NP",
+  "fronts": 0,
+  "modernFronts": 3,
+  "pands": 165,
+  "why": "0 pre-1945 and 3 post-war measured fronts of 165 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NP03",
+  "name": "Bedrijventerrein Nieuwendammerdijk",
+  "wijk": "NP",
+  "level": "wijk",
+  "fallback": "NP",
+  "fronts": 1,
+  "modernFronts": 9,
+  "pands": 75,
+  "why": "1 pre-1945 and 9 post-war measured fronts of 75 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "NQ01",
+  "name": "Noorderstrook-West",
+  "wijk": "NQ",
+  "level": "wijk",
+  "fallback": "NQ",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 28,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 28 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NQ02",
+  "name": "Noorderstrook-Oost",
+  "wijk": "NQ",
+  "level": "wijk",
+  "fallback": "NQ",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 15,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 15 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NQ03",
+  "name": "Zunderdorp",
+  "wijk": "NQ",
+  "level": "own",
+  "fallback": "NQ03",
+  "fronts": 1,
+  "modernFronts": 16,
+  "pands": 363,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NQ04",
+  "name": "Schellingwoude-West",
+  "wijk": "NQ",
+  "level": "wijk",
+  "fallback": "NQ",
+  "fronts": 1,
+  "modernFronts": 6,
+  "pands": 50,
+  "why": "1 pre-1945 and 6 post-war measured fronts of 50 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NQ05",
+  "name": "Schellingwoude-Oost",
+  "wijk": "NQ",
+  "level": "own",
+  "fallback": "NQ05",
+  "fronts": 10,
+  "modernFronts": 17,
+  "pands": 247,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "NQ06",
+  "name": "Schellingwoude-Noord",
+  "wijk": "NQ",
+  "level": "wijk",
+  "fallback": "NQ",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 18,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 18 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NQ07",
+  "name": "Zwarte Gouw",
+  "wijk": "NQ",
+  "level": "wijk",
+  "fallback": "NQ",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 29,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 29 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NQ08",
+  "name": "Holysloot",
+  "wijk": "NQ",
+  "level": "wijk",
+  "fallback": "NQ",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 351,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 351 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NQ09",
+  "name": "Ransdorp",
+  "wijk": "NQ",
+  "level": "wijk",
+  "fallback": "NQ",
+  "fronts": 5,
+  "modernFronts": 1,
+  "pands": 310,
+  "why": "5 pre-1945 and 1 post-war measured fronts of 310 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "NQ10",
+  "name": "Durgerdam",
+  "wijk": "NQ",
+  "level": "own",
+  "fallback": "NQ10",
+  "fronts": 15,
+  "modernFronts": 16,
+  "pands": 469,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SA01",
+  "name": "Landelijk gebied Driemond",
+  "wijk": "SA",
+  "level": "wijk",
+  "fallback": "SA",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 82,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 82 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SA02",
+  "name": "Dorp Driemond",
+  "wijk": "SA",
+  "level": "own",
+  "fallback": "SA02",
+  "fronts": 19,
+  "modernFronts": 15,
+  "pands": 1017,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SB01",
+  "name": "Weespersluis-Noord",
+  "wijk": "SB",
+  "level": "wijk",
+  "fallback": "SB",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 10,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 10 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SB02",
+  "name": "Waterrijk",
+  "wijk": "SB",
+  "level": "own",
+  "fallback": "SB02",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 311,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SB03",
+  "name": "Lanenrijk",
+  "wijk": "SB",
+  "level": "own",
+  "fallback": "SB03",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 1466,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SB04",
+  "name": "Vechtrijk",
+  "wijk": "SB",
+  "level": "own",
+  "fallback": "SB04",
+  "fronts": 1,
+  "modernFronts": 12,
+  "pands": 379,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SB05",
+  "name": "Leeuwenveld",
+  "wijk": "SB",
+  "level": "own",
+  "fallback": "SB05",
+  "fronts": 2,
+  "modernFronts": 36,
+  "pands": 797,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SB06",
+  "name": "Bedrijventerrein Nijverheidslaan",
+  "wijk": "SB",
+  "level": "wijk",
+  "fallback": "SB",
+  "fronts": 2,
+  "modernFronts": 2,
+  "pands": 53,
+  "why": "2 pre-1945 and 2 post-war measured fronts of 53 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SC01",
+  "name": "Bedrijventerrein-Noord Weesp",
+  "wijk": "SC",
+  "level": "wijk",
+  "fallback": "SC",
+  "fronts": 1,
+  "modernFronts": 7,
+  "pands": 172,
+  "why": "1 pre-1945 and 7 post-war measured fronts of 172 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "SC02",
+  "name": "Hogewey-Noord",
+  "wijk": "SC",
+  "level": "own",
+  "fallback": "SC02",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 257,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SC03",
+  "name": "Hogewey-Midden",
+  "wijk": "SC",
+  "level": "own",
+  "fallback": "SC03",
+  "fronts": 0,
+  "modernFronts": 36,
+  "pands": 1009,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SC04",
+  "name": "Hogewey-Zuid",
+  "wijk": "SC",
+  "level": "own",
+  "fallback": "SC04",
+  "fronts": 1,
+  "modernFronts": 21,
+  "pands": 336,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SC05",
+  "name": "Weesp Dichtersbuurt",
+  "wijk": "SC",
+  "level": "own",
+  "fallback": "SC05",
+  "fronts": 14,
+  "modernFronts": 11,
+  "pands": 345,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SC06",
+  "name": "Weesp Schildersbuurt",
+  "wijk": "SC",
+  "level": "own",
+  "fallback": "SC06",
+  "fronts": 10,
+  "modernFronts": 16,
+  "pands": 524,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SD01",
+  "name": "Herensingelkwartier",
+  "wijk": "SD",
+  "level": "filled",
+  "fallback": "SD01",
+  "fronts": 18,
+  "modernFronts": 6,
+  "pands": 519,
+  "why": "18 pre-1945 and 6 post-war measured fronts of 519 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SD02",
+  "name": "Bedrijventerrein Van Houten",
+  "wijk": "SD",
+  "level": "filled",
+  "fallback": "SD02",
+  "fronts": 15,
+  "modernFronts": 5,
+  "pands": 303,
+  "why": "15 pre-1945 and 5 post-war measured fronts of 303 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SD03",
+  "name": "Weesp Centrum",
+  "wijk": "SD",
+  "level": "own",
+  "fallback": "SD03",
+  "fronts": 19,
+  "modernFronts": 18,
+  "pands": 1265,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SD04",
+  "name": "Weesp-Zuid I",
+  "wijk": "SD",
+  "level": "own",
+  "fallback": "SD04",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 341,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SD05",
+  "name": "Weesp-Zuid II",
+  "wijk": "SD",
+  "level": "own",
+  "fallback": "SD05",
+  "fronts": 1,
+  "modernFronts": 14,
+  "pands": 501,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SD06",
+  "name": "De Klomp",
+  "wijk": "SD",
+  "level": "own",
+  "fallback": "SD06",
+  "fronts": 1,
+  "modernFronts": 23,
+  "pands": 518,
+  "why": "",
+  "eraFills": {
+   "canal": "wijk",
+   "c19": "wijk",
+   "school": "wijk"
+  }
+ },
+ {
+  "code": "SE01",
+  "name": "Aetsveldsepolder",
+  "wijk": "SE",
+  "level": "wijk",
+  "fallback": "SE",
+  "fronts": 2,
+  "modernFronts": 6,
+  "pands": 319,
+  "why": "2 pre-1945 and 6 post-war measured fronts of 319 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SE02",
+  "name": "Aetsveld-Zuid",
+  "wijk": "SE",
+  "level": "own",
+  "fallback": "SE02",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 1182,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SE03",
+  "name": "Aetsveld-Noord",
+  "wijk": "SE",
+  "level": "own",
+  "fallback": "SE03",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 1041,
+  "why": "",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "SE04",
+  "name": "Oostelijke Vechtoever",
+  "wijk": "SE",
+  "level": "wijk",
+  "fallback": "SE",
+  "fronts": 1,
+  "modernFronts": 1,
+  "pands": 492,
+  "why": "1 pre-1945 and 1 post-war measured fronts of 492 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {
+   "canal": "stadsdeel",
+   "c19": "stadsdeel",
+   "school": "stadsdeel"
+  }
+ },
+ {
+  "code": "TA01",
+  "name": "Hoofdcentrum-Zuidoost",
+  "wijk": "TA",
+  "level": "wijk",
+  "fallback": "TA",
+  "fronts": 0,
+  "modernFronts": 4,
+  "pands": 25,
+  "why": "0 pre-1945 and 4 post-war measured fronts of 25 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TA02",
+  "name": "Amstel III deel C/D-Noord",
+  "wijk": "TA",
+  "level": "own",
+  "fallback": "TA02",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 219,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TA03",
+  "name": "Amstel III deel A/B-Noord",
+  "wijk": "TA",
+  "level": "wijk",
+  "fallback": "TA",
+  "fronts": 0,
+  "modernFronts": 11,
+  "pands": 100,
+  "why": "0 pre-1945 and 11 post-war measured fronts of 100 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TA04",
+  "name": "Amstel III deel C/D-Zuid",
+  "wijk": "TA",
+  "level": "wijk",
+  "fallback": "TA",
+  "fronts": 0,
+  "modernFronts": 5,
+  "pands": 47,
+  "why": "0 pre-1945 and 5 post-war measured fronts of 47 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TA05",
+  "name": "Amstel III deel A/B-Zuid",
+  "wijk": "TA",
+  "level": "wijk",
+  "fallback": "TA",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 47,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 47 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TA06",
+  "name": "AMC",
+  "wijk": "TA",
+  "level": "wijk",
+  "fallback": "TA",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 52,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 52 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TA07",
+  "name": "Hoge Dijk",
+  "wijk": "TA",
+  "level": "wijk",
+  "fallback": "TA",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 47,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 47 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TB01",
+  "name": "Venserpolder-West",
+  "wijk": "TB",
+  "level": "own",
+  "fallback": "TB01",
+  "fronts": 0,
+  "modernFronts": 14,
+  "pands": 242,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TB02",
+  "name": "Venserpolder-Oost",
+  "wijk": "TB",
+  "level": "own",
+  "fallback": "TB02",
+  "fronts": 0,
+  "modernFronts": 13,
+  "pands": 361,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TC01",
+  "name": "D-buurt",
+  "wijk": "TC",
+  "level": "wijk",
+  "fallback": "TC",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 18,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 18 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TC02",
+  "name": "F-buurt",
+  "wijk": "TC",
+  "level": "own",
+  "fallback": "TC02",
+  "fronts": 0,
+  "modernFronts": 13,
+  "pands": 777,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TC03",
+  "name": "Amsterdamse Poort",
+  "wijk": "TC",
+  "level": "wijk",
+  "fallback": "TC",
+  "fronts": 0,
+  "modernFronts": 6,
+  "pands": 22,
+  "why": "0 pre-1945 and 6 post-war measured fronts of 22 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TC04",
+  "name": "Vogeltjeswei",
+  "wijk": "TC",
+  "level": "own",
+  "fallback": "TC04",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 412,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TC05",
+  "name": "Nelson Mandelapark",
+  "wijk": "TC",
+  "level": "wijk",
+  "fallback": "TC",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 6,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 6 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TD01",
+  "name": "Hoptille",
+  "wijk": "TD",
+  "level": "own",
+  "fallback": "TD01",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 151,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TD02",
+  "name": "Rechte H-buurt",
+  "wijk": "TD",
+  "level": "wijk",
+  "fallback": "TD",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 17,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 17 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TD03",
+  "name": "Hakfort/Huigenbos",
+  "wijk": "TD",
+  "level": "wijk",
+  "fallback": "TD",
+  "fronts": 0,
+  "modernFronts": 6,
+  "pands": 32,
+  "why": "0 pre-1945 and 6 post-war measured fronts of 32 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TD04",
+  "name": "Huntum",
+  "wijk": "TD",
+  "level": "wijk",
+  "fallback": "TD",
+  "fronts": 0,
+  "modernFronts": 3,
+  "pands": 160,
+  "why": "0 pre-1945 and 3 post-war measured fronts of 160 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TE01",
+  "name": "E-buurt",
+  "wijk": "TE",
+  "level": "own",
+  "fallback": "TE01",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 755,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TE02",
+  "name": "G-buurt-West",
+  "wijk": "TE",
+  "level": "own",
+  "fallback": "TE02",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 1097,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TE03",
+  "name": "G-buurt-Noord",
+  "wijk": "TE",
+  "level": "wijk",
+  "fallback": "TE",
+  "fronts": 0,
+  "modernFronts": 2,
+  "pands": 10,
+  "why": "0 pre-1945 and 2 post-war measured fronts of 10 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TF01",
+  "name": "G-buurt-Oost",
+  "wijk": "TF",
+  "level": "own",
+  "fallback": "TF01",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 1023,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TF02",
+  "name": "Grunder/Koningshoef",
+  "wijk": "TF",
+  "level": "own",
+  "fallback": "TF02",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 767,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TF03",
+  "name": "Kantershof",
+  "wijk": "TF",
+  "level": "own",
+  "fallback": "TF03",
+  "fronts": 0,
+  "modernFronts": 14,
+  "pands": 1283,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TG01",
+  "name": "Bijlmermuseum-Noord",
+  "wijk": "TG",
+  "level": "city",
+  "fallback": null,
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 8,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 8 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TG02",
+  "name": "Bijlmermuseum-Zuid",
+  "wijk": "TG",
+  "level": "city",
+  "fallback": null,
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 7,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 7 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TG03",
+  "name": "De Kameleon e.o.",
+  "wijk": "TG",
+  "level": "city",
+  "fallback": null,
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 43,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 43 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TH01",
+  "name": "Gooise Kant",
+  "wijk": "TH",
+  "level": "own",
+  "fallback": "TH01",
+  "fronts": 0,
+  "modernFronts": 18,
+  "pands": 407,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TH02",
+  "name": "Kortvoort",
+  "wijk": "TH",
+  "level": "own",
+  "fallback": "TH02",
+  "fronts": 0,
+  "modernFronts": 24,
+  "pands": 559,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TH03",
+  "name": "Kelbergen",
+  "wijk": "TH",
+  "level": "wijk",
+  "fallback": "TH",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 749,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 749 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TH04",
+  "name": "K-buurt-Zuidwest",
+  "wijk": "TH",
+  "level": "own",
+  "fallback": "TH04",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 716,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TH05",
+  "name": "K-buurt-Zuidoost",
+  "wijk": "TH",
+  "level": "own",
+  "fallback": "TH05",
+  "fronts": 0,
+  "modernFronts": 20,
+  "pands": 693,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TJ01",
+  "name": "Holendrecht-West",
+  "wijk": "TJ",
+  "level": "own",
+  "fallback": "TJ01",
+  "fronts": 0,
+  "modernFronts": 19,
+  "pands": 241,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TJ02",
+  "name": "Holendrecht-Oost",
+  "wijk": "TJ",
+  "level": "own",
+  "fallback": "TJ02",
+  "fronts": 0,
+  "modernFronts": 15,
+  "pands": 1436,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TJ03",
+  "name": "Holendrecht-Zuid",
+  "wijk": "TJ",
+  "level": "own",
+  "fallback": "TJ03",
+  "fronts": 0,
+  "modernFronts": 14,
+  "pands": 283,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TK01",
+  "name": "L-buurt",
+  "wijk": "TK",
+  "level": "own",
+  "fallback": "TK01",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 71,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TK02",
+  "name": "Gaasperpark",
+  "wijk": "TK",
+  "level": "wijk",
+  "fallback": "TK",
+  "fronts": 0,
+  "modernFronts": 1,
+  "pands": 33,
+  "why": "0 pre-1945 and 1 post-war measured fronts of 33 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TK03",
+  "name": "Gaasperplas",
+  "wijk": "TK",
+  "level": "wijk",
+  "fallback": "TK",
+  "fronts": 0,
+  "modernFronts": 0,
+  "pands": 39,
+  "why": "0 pre-1945 and 0 post-war measured fronts of 39 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TL01",
+  "name": "Reigersbos 1",
+  "wijk": "TL",
+  "level": "own",
+  "fallback": "TL01",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 136,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TL02",
+  "name": "Reigersbos 2",
+  "wijk": "TL",
+  "level": "wijk",
+  "fallback": "TL",
+  "fronts": 0,
+  "modernFronts": 10,
+  "pands": 120,
+  "why": "0 pre-1945 and 10 post-war measured fronts of 120 pands, under the minimums (pre-1945 era 20, profile 12)",
+  "eraFills": {}
+ },
+ {
+  "code": "TL03",
+  "name": "Reigersbos 3",
+  "wijk": "TL",
+  "level": "own",
+  "fallback": "TL03",
+  "fronts": 0,
+  "modernFronts": 36,
+  "pands": 843,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TL04",
+  "name": "Reigersbos 4",
+  "wijk": "TL",
+  "level": "own",
+  "fallback": "TL04",
+  "fronts": 0,
+  "modernFronts": 16,
+  "pands": 1228,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TM01",
+  "name": "Gein 1",
+  "wijk": "TM",
+  "level": "own",
+  "fallback": "TM01",
+  "fronts": 1,
+  "modernFronts": 30,
+  "pands": 154,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TM02",
+  "name": "Gein 2",
+  "wijk": "TM",
+  "level": "own",
+  "fallback": "TM02",
+  "fronts": 0,
+  "modernFronts": 33,
+  "pands": 103,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TM03",
+  "name": "Gein 3",
+  "wijk": "TM",
+  "level": "own",
+  "fallback": "TM03",
+  "fronts": 0,
+  "modernFronts": 14,
+  "pands": 2478,
+  "why": "",
+  "eraFills": {}
+ },
+ {
+  "code": "TM04",
+  "name": "Gein 4",
+  "wijk": "TM",
+  "level": "own",
+  "fallback": "TM04",
+  "fronts": 0,
+  "modernFronts": 17,
+  "pands": 1141,
+  "why": "",
+  "eraFills": {}
+ }
+]

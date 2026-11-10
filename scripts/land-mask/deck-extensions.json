@@ -1,0 +1,13 @@
+{
+  "about": "Measured bridges whose AHN deck range (deckRangeM) is far shorter than the water the road crosses, so the road runs over open water with no deck at either end (a 'stub'). Each entry replaces `deck` (metres along the road way, DeckProfile.deck) after eyeballing the orthophoto. Applied by extend-decks.py to a STAGING copy of elevation-v1/bridges.json.",
+  "extensions": [
+    {
+      "id": "BRU2430",
+      "name": "Gevlebrug",
+      "deck": [0.46, 73.56],
+      "was": [23.83, 52.13],
+      "evidence": "User 2026-11-09 'bridge missing (Gevlebrug stub)'. OSM way 991513319 is a 75 m bridge=yes way; the municipal footprint and AHN deck are 28-31 m; audit-deck-ends sees open water at 99 of 378 end probes. PDOK luchtfoto: one 70+ m deck from the Karlskrona-eiland block to the Pontsteiger road (docs/reports/land-mask-gaps-20261109/ortho-gevlebrug.jpg)."
+    }
+  ],
+  "flaggedUnreviewed": ["BRU0620", "BRU0985", "BRU0583", "BRU0736", "BRU2022", "BRU2198", "BRU2264", "BRU0374"]
+}

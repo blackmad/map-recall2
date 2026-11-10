@@ -6,7 +6,7 @@
  * >= 50% drawn, is skipped; guessed-height outlines a fill `replaces` are dropped from every tile, so a later 3DBAG release that reconstructs the pand wins.
  * Re-run after any full tile rebuild (build-lod1-city.ts drops these pands; see bagGaps.ts).
  *
- * Usage: node --import tsx scripts/publish-bag-gaps.ts [--write] [--root=<dir holding building-tiles/ and bag-tiles/>]
+ * Usage: node --import tsx scripts/publish-bag-gaps.ts [--write] [--supplement=scripts/data/bag-gaps/new-pands-supplement.geojson] [--root=<dir holding building-tiles/ and bag-tiles/>]
  *   dry run by default; --root writes a copy elsewhere (default: public/data/extracts/amsterdam).
  */
 import fs from 'node:fs';
@@ -22,7 +22,8 @@ const flag = (name: string) => process.argv.find(a => a.startsWith(`--${name}=`)
 const write = process.argv.includes('--write');
 const extract = path.join(ROOT, 'public/data/extracts/amsterdam');
 const outRoot = path.resolve(flag('root') ?? extract);
-const supplementFile = path.join(ROOT, 'scripts/data/bag-gaps/bag-gaps-supplement.geojson');
+const supplementRel = flag('supplement') ?? 'scripts/data/bag-gaps/bag-gaps-supplement.geojson';
+const supplementFile = path.resolve(ROOT, supplementRel);
 const supplement = (JSON.parse(fs.readFileSync(supplementFile, 'utf8')) as { features: SupplementFeature[] }).features;
 const ringsOf = (g: unknown): Ring[] => {
   const geom = g as { type: string; coordinates: unknown } | null;
@@ -75,7 +76,9 @@ for (const dir of ['building-tiles', 'bag-tiles'] as const) {
       index.totalBytes = total; index.totalGzipBytes = gzip;
     }
     const prior = (index.bagGapSupplement as { features?: number } | undefined)?.features ?? 0;
-    index.bagGapSupplement = { version: 'bag-gaps-v1', source: 'scripts/data/bag-gaps/bag-gaps-supplement.geojson (BAG WFS footprint, AHN dsm/dtm 05m height)', features: prior + added };
+    const priorSources = (index.bagGapSupplement as { sources?: string[] } | undefined)?.sources ?? ['scripts/data/bag-gaps/bag-gaps-supplement.geojson (BAG WFS footprint, AHN dsm/dtm 05m height)'];
+    const sources = priorSources.some(x => x.startsWith(supplementRel)) ? priorSources : [...priorSources, supplementRel];
+    index.bagGapSupplement = { version: 'bag-gaps-v1', source: sources[0], sources, features: prior + added };
     fs.mkdirSync(path.join(outRoot, dir), { recursive: true });
     fs.writeFileSync(path.join(outRoot, dir, 'index-z14.json'), `${JSON.stringify(index, null, 2)}\n`);
   }

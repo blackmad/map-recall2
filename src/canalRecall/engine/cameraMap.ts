@@ -35,7 +35,7 @@ export function unitsPerMetre(lat: number): number { return 1 / (EARTH_CIRCUMFER
 
 const asLngLat = (p: LngLatLike): [number, number] => Array.isArray(p) ? [p[0], p[1]] : [(p as LngLat).lng, (p as LngLat).lat];
 
-export type MapCameraOptions = { center?: LngLatLike; zoom?: number; bearing?: number; pitch?: number; elevation?: number; fovDeg?: number; minZoom?: number; maxZoom?: number; maxPitch?: number };
+export type MapCameraOptions = { center?: LngLatLike; zoom?: number; bearing?: number; pitch?: number; elevation?: number; fovDeg?: number; /** Near plane = eye-to-centre distance / this (default 50; the first-person view asks for more). */ nearDivisor?: number; /** Far plane cap in metres (default none). */ farCapM?: number; minZoom?: number; maxZoom?: number; maxPitch?: number };
 
 const lngLatObject = (lng: number, lat: number) => ({ lng, lat, toArray: () => [lng, lat] as [number, number] });
 type LngLatObject = ReturnType<typeof lngLatObject>;
@@ -82,6 +82,8 @@ export class EngineCamera {
   pitch = 0;
   elevation = 0;
   fovDeg = DEFAULT_FOV_DEG;
+  nearDivisor = 50;
+  farCapM = Infinity;
   minZoom = 0;
   maxZoom = 22;
   maxPitch = MAX_PITCH_DEG;
@@ -102,18 +104,23 @@ export class EngineCamera {
     if (Number.isFinite(options.pitch)) this.pitch = Math.max(0, Math.min(this.maxPitch, options.pitch!));
     if (options.elevation != null && Number.isFinite(options.elevation)) this.elevation = options.elevation;
     if (options.fovDeg != null) this.fovDeg = options.fovDeg;
+    if (options.nearDivisor != null) this.nearDivisor = options.nearDivisor;
+    if (options.farCapM != null) this.farCapM = options.farCapM;
     return { moved: this.key() !== before, zoomed: this.zoom !== zoomBefore };
   }
 
   /** Would `set(options)` change no field by more than `tol` (centre in degrees)? Options it does not handle count as changes. */
   within(options: MapCameraOptions, tol: CameraTolerance): boolean {
     const keys = Object.keys(options).filter(k => (options as Record<string, unknown>)[k] !== undefined);
-    if (keys.some(k => !['center', 'zoom', 'bearing', 'pitch', 'elevation'].includes(k))) return false;
+    if (keys.some(k => !['center', 'zoom', 'bearing', 'pitch', 'elevation', 'fovDeg', 'nearDivisor', 'farCapM'].includes(k))) return false;
     if (options.center) { const [lng, lat] = asLngLat(options.center); if (!(Math.abs(lng - this.lng) <= tol.deg && Math.abs(Math.max(-85, Math.min(85, lat)) - this.lat) <= tol.deg)) return false; }
     if (options.zoom != null && !(Math.abs(Math.max(this.minZoom, Math.min(this.maxZoom, options.zoom)) - this.zoom) <= tol.zoom)) return false;
     if (options.bearing != null) { const d = Math.abs(((((options.bearing - this.bearing) + 180) % 360) + 360) % 360 - 180); if (!(d <= tol.angle)) return false; }
     if (options.pitch != null && !(Math.abs(Math.max(0, Math.min(this.maxPitch, options.pitch)) - this.pitch) <= tol.angle)) return false;
     if (options.elevation != null && !(Math.abs(options.elevation - this.elevation) <= tol.metres)) return false;
+    if (options.fovDeg != null && !(Math.abs(options.fovDeg - this.fovDeg) <= tol.angle)) return false;
+    if (options.nearDivisor != null && options.nearDivisor !== this.nearDivisor) return false;
+    if (options.farCapM != null && options.farCapM !== this.farCapM) return false;
     return true;
   }
 
@@ -183,7 +190,7 @@ export class EngineCamera {
     const groundAngle = Math.PI / 2 + pitch;
     const topHalf = (Math.sin(half) * d) / Math.sin(Math.max(0.01, Math.min(Math.PI - 0.01, Math.PI - groundAngle - half)));
     const furthest = Math.cos(Math.PI / 2 - pitch) * topHalf + d;
-    const near = d / 50, far = Math.max(near * 2, furthest * 1.01 + Math.max(0, this.elevation));
+    const near = d / this.nearDivisor, far = Math.max(near * 2, Math.min(this.farCapM, furthest * 1.01 + Math.max(0, this.elevation)));
     const aspect = vp.width / Math.max(1, vp.height);
     const t = 1 / Math.tan(half);
     // Column-major perspective (GL convention, -z forward in view space).

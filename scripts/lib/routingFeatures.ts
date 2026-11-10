@@ -13,7 +13,16 @@ export function routingSource(): RoutingSource {
   return process.env.ROADS === 'json' ? 'json' : 'bin';
 }
 
-export async function loadRoutingFeatures<T = unknown>(directory = 'public/data/extracts/amsterdam'): Promise<T[]> {
+/**
+ * `ROUTING_EXTRACT_DIR` points the routing checks at a staged extract (lane D2:
+ * `ROADS=json ROUTING_EXTRACT_DIR=public/data/extracts/amsterdam/staging/d2-routing`).
+ * It replaces the default Amsterdam directory only.
+ */
+export function routingDirectory(fallback = 'public/data/extracts/amsterdam'): string {
+  return process.env.ROUTING_EXTRACT_DIR || fallback;
+}
+
+export async function loadRoutingFeatures<T = unknown>(directory = routingDirectory()): Promise<T[]> {
   if (routingSource() === 'json') {
     return JSON.parse(await readFile(path.join(directory, 'streets-routing.json'), 'utf8')) as T[];
   }

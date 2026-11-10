@@ -67,6 +67,8 @@ import { LabelOcclusion } from './labelOcclusion';
 import { withLabelPand } from './labelPand';
 import { SpoilerSources } from './spoilerSources';
 import { groundCentre, groundViewFlag } from '../ownGround/groundResidency';
+import { clearBackM, fpsPose, fpsRequested, headBobM, stepFpsYaw, FPS_FAR_CAP_M, FPS_NEAR_DIVISOR, type FpsPose } from './fpsCamera';
+import { DEFAULT_FOV_DEG, MAX_PITCH_DEG } from '../ownMap/mapCamera';
 
 declare const CANVAS_W: number;
 declare const CANVAS_H: number;
@@ -1320,7 +1322,11 @@ export class OwnWorldView implements WorldViewOracles {
       this.riderSurfaceM = this.revealSurfaceTarget(surface, view.subject);
     }
     const elevation = surface ? (view.detached || view.introFlat > 0 ? 0 : this.riderSurfaceM) : 0;
-    if (view.needsClearance && this._completeCity?.sampleFeatures) {
+    // First-person view (`?cam=fps`, V): the eye on the rider at 1.6 m (engine/fpsCamera.ts). It replaces the chase solve.
+    const fps = this.fps && !view.detached && view.introFlat === 0 && this.riderAngle != null && (camera.viewMode === 'chase' || camera.viewMode === 'cockpit') ? this.solveFps(view, elevation) : null;
+    if (!fps && this.fpsDrawn) this.leaveFps();
+    this.fpsDrawn = !!fps;
+    if (!fps && view.needsClearance && this._completeCity?.sampleFeatures) {
       const result = clearCamera(view.pitch, view.lngLat, view.subject, pitch => {
         const probe = new EngineCamera(() => this.host.viewport(), { center: view.lngLat, zoom: view.zoom, bearing: view.bearing, pitch, elevation, maxPitch: this.cameraMap.camera.maxPitch });
         const e = probe.eye();
@@ -1329,11 +1335,12 @@ export class OwnWorldView implements WorldViewOracles {
       if (result) this.solver.safePitch = result.safePitch;
       (this as any)._lastCameraClearance = result;
     }
-    const eased = this.solver.applyClearance(view, !!camera.reducedMotion);
+    const eased = fps ? fps.pitch : this.solver.applyClearance(view, !!camera.reducedMotion);
     lap('camera solve and clearance');
     // The eye never enters a building (streetVisibility.ts, lane F4 #320): chunks draw FrontSide, so a camera inside a
     // house drew none of it. Checked every frame; pulled in at once, eased back out. `?eyeClear=0` turns it off.
-    const eye = this.eyeClear && !view.detached && view.introFlat === 0 && eased > 0 ? this.clearEyeFor(view, eased, elevation) : { pitch: eased, zoom: view.zoom };
+    const eye = fps ? { pitch: fps.pitch, zoom: fps.zoom } : this.eyeClear && !view.detached && view.introFlat === 0 && eased > 0 ? this.clearEyeFor(view, eased, elevation) : { pitch: eased, zoom: view.zoom };
+    if (fps) { view.lngLat = fps.center; view.bearing = fps.bearing; }
     const pitch = eye.pitch;
     const drawZoom = eye.zoom;
     lap('eye clearance');
@@ -1358,7 +1365,14 @@ export class OwnWorldView implements WorldViewOracles {
     lap('ground update');
     this.updateFarShells(view.subject, view.introFlat > 0 ? 0 : (this._ownGround?.farRadiusM ?? 0));
     lap('far shells');
-    this.cameraMap.jumpTo({ center: view.lngLat, zoom: drawZoom, bearing: view.bearing, pitch, elevation });
+    // The first-person lens (wider fov, a finer near plane, a capped far plane); put back once, on leaving.
+    // The game caps the chase camera (pitch 75, zoom 22); a 1.6 m eye needs pitch 85 and ~zoom 22.4, lifted while it is on.
+    const cam = this.cameraMap.camera;
+    if (fps && !this.fpsLensSet) this.fpsSaved = { maxPitch: cam.maxPitch, maxZoom: cam.maxZoom };
+    const lens = fps ? { fovDeg: fps.fovDeg, nearDivisor: FPS_NEAR_DIVISOR, farCapM: FPS_FAR_CAP_M, maxPitch: MAX_PITCH_DEG, maxZoom: Math.max(cam.maxZoom, 24) }
+      : this.fpsLensSet ? { fovDeg: DEFAULT_FOV_DEG, nearDivisor: 50, farCapM: Infinity, maxPitch: this.fpsSaved?.maxPitch, maxZoom: this.fpsSaved?.maxZoom } : {};
+    this.fpsLensSet = !!fps;
+    this.cameraMap.jumpTo({ center: view.lngLat, zoom: drawZoom, bearing: view.bearing, pitch, elevation, ...lens });
     lap('jumpTo and move listeners');
     if (this._aerialPower?.any) this.applyAerialPower(view, pitch);
     this.lastSubject = view.subject;
@@ -1403,6 +1417,71 @@ export class OwnWorldView implements WorldViewOracles {
     if (this.coverDim && tb?.setGhosted) tb.setGhosted('cover', ids);
     else tb?.setHidden?.('cover', ids);
     this.riderCovered = r.covered;
+  }
+  // ---- first-person camera (engine/fpsCamera.ts, issue #171) ----
+  private fps = (() => { try { return fpsRequested(globalThis.location?.search ?? '', globalThis.localStorage?.getItem('canalRecallCam') ?? null); } catch { return false; } })();
+  private fpsBob = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('bob') === '1'; } catch { return false; } })();
+  private fpsYaw: number | null = null;
+  private fpsAt = 0;
+  private fpsBack: number | null = null;
+  private fpsStuckId: string | null = null;
+  private fpsDrawn = false;
+  private fpsLensSet = false;
+  private fpsSaved: { maxPitch: number; maxZoom: number } | null = null;
+  /** Measurement: the last first-person pose and its clearance (specs read it). */
+  _lastFps: { pose: FpsPose; backM: number; stuckId: string | null; elevation: number } | null = null;
+  fpsCameraOn(): boolean { return this.fps; }
+  setFpsCamera(on: boolean): void {
+    this.fps = on;
+    try { globalThis.localStorage?.setItem('canalRecallCam', on ? 'fps' : 'chase'); } catch { /* storage may be blocked */ }
+    this.host.triggerRepaint();
+  }
+  private readonly fpsKey = (() => {
+    try {
+      globalThis.addEventListener?.('keydown', (e: KeyboardEvent) => {
+        if (e.code !== 'KeyV' || e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+        const t = e.target as HTMLElement | null, tag = t?.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || t?.isContentEditable) return;
+        this.setFpsCamera(!this.fps);
+      });
+    } catch { /* no window */ }
+    return true;
+  })();
+  private leaveFps(): void {
+    this.fpsYaw = null; this.fpsBack = null;
+    if (this.fpsStuckId) { this.fpsStuckId = null; this._threeBuildings?.setGhosted?.('eye', []); }
+  }
+  private solveFps(view: { subject: [number, number] }, elevation: number): FpsPose {
+    const now = performance.now(), dt = this.fpsAt ? (now - this.fpsAt) / 1000 : 0;
+    this.fpsAt = now;
+    this.fpsYaw = stepFpsYaw(this.fpsYaw, (this.riderAngle! + Math.PI / 2) * 180 / Math.PI, dt);
+    const speed = Number(W().canalRecallGame?.player?.speed) || 0, pxPerM = 3;
+    const bobM = this.fpsBob ? headBobM(Number(W().canalRecallGame?.player?.distancePx) / pxPerM || 0, speed / pxPerM) : 0;
+    const vp = this.host.viewport(), maxPitchDeg = MAX_PITCH_DEG;
+    const base = { rider: view.subject, bearingDeg: this.fpsYaw, viewportHeightPx: vp.height, bobM, maxPitchDeg };
+    let backM = 0, stuckId: string | null = null;
+    const city = this._completeCity as { sampleFeatures?(limit: number): any[] } | null;
+    if (this.eyeClear && city?.sampleFeatures) {
+      const resident = clearanceResidents(city as { sampleFeatures(limit: number): any[] });
+      const probe = fpsPose({ ...base });
+      const aspect = vp.width / Math.max(1, vp.height);
+      const reach = 0.2 + nearPlaneReachM(probe.distanceM / FPS_NEAR_DIVISOR, probe.fovDeg, aspect);
+      const blockerAt = (back: number) => { const p = fpsPose({ ...base, backM: back }); return eyeInsideBuilding({ lngLat: p.eye.lngLat, altitude: elevation + p.eye.heightM }, resident, reach); };
+      const wanted = clearBackM(back => !!blockerAt(back));
+      let next = wanted ?? (this.fpsBack ?? 0);
+      // In at once, out eased and held where the eased eye would be in a wall.
+      if (wanted != null && this.fpsBack != null && wanted < this.fpsBack) { next = Math.max(wanted, this.fpsBack - 0.04); if (blockerAt(next)) next = this.fpsBack; }
+      backM = next; this.fpsBack = backM > 0 ? backM : null;
+      if (wanted == null) {
+        // The rider is inside a footprint (a covered passage): ghost it rather than lose the view.
+        const f = blockerAt(0) as { properties?: Record<string, unknown>; id?: unknown } | null;
+        stuckId = f ? String(f.properties?.id ?? f.id ?? '') || null : null;
+      }
+      if (stuckId !== this.fpsStuckId) { this.fpsStuckId = stuckId; this._threeBuildings?.setGhosted?.('eye', stuckId ? [stuckId] : []); }
+    }
+    const pose = fpsPose({ ...base, backM });
+    this._lastFps = { pose, backM, stuckId, elevation };
+    return pose;
   }
   private readonly eyeClear = (() => { try { return new URLSearchParams(globalThis.location?.search ?? '').get('eyeClear') !== '0'; } catch { return true; } })();
   /** The drawn pull-in fraction and pitch cap (null: none), and the building ghosted while the eye cannot get out. */
@@ -1518,7 +1597,7 @@ export class OwnWorldView implements WorldViewOracles {
       const pose = surface.riderPose(lngLat, player.angle, bike.surfaceContactOffsets?.());
       bike.setSurfacePose?.(this.easeRiderSurface(pose.heightM) + 0.22, pose.pitch);
     }
-    bike.update(lngLat, player.angle, visible, player.steerInput || 0, player.distancePx || 0);
+    bike.update(lngLat, player.angle, visible && !this.fpsDrawn, player.steerInput || 0, player.distancePx || 0);
   }
   setPlayerBoat(player: any, loader: LoaderFrame, visible: boolean, zoomScale = 1): void {
     const boat = this._playerBoat;
