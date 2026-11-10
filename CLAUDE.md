@@ -70,6 +70,20 @@ working behavior, and leave it easier for the next session to continue.
   default guest route is not done; exercise signed-in, home-route, expanded
   advanced settings, long names, missing images, and stacked notices.
 
+## Disk hygiene
+
+The disk is shared by every lane and has hit 99 % full. Rules:
+
+- Create lane worktrees with `scripts/worktrees/new.sh`; it links `node_modules` and `.cache`.
+- Archive sources through a sparse source-data worktree,
+  `scripts/worktrees/new-source-data.sh <branch> <dir-in-repo>`, never a full checkout (20 GB each).
+- Screenshot copies are worktrees of `~/Code/map-recall2-screenshots`, not new clones.
+- Stop your dev server by its port's PID when the lane ends; an orphaned server keeps its worktree alive.
+- Cleanup is automatic: user-level hooks in `~/.claude/hooks/map-recall2/` run `sweep.sh` after every push to
+  `main` and at session start (at most every 6 h). It removes only clean, pushed, idle copies and merged
+  worktrees (via `triage.sh`), plus cached panoramas older than 3 days. `sweep.sh --dry-run` shows what would
+  go; the log is `sweep.log` beside it. Under 15 GB free, start no fetches or builds and tell the integrator.
+
 ## Canal Recall product principles
 
 - Geographic learning outranks arcade spectacle. The street/canal under
