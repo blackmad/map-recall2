@@ -169,19 +169,19 @@ export const RAIL_COLOURS = { slab: [0.6, 0.59, 0.56] as [number, number, number
  * to the midpoint (plus `overlap`) and that side has no shoulder: adjacent tracks share one bed, one shoulder pair
  * for the group. Real yard and main-line centres are 4.0-6.5 m; separate corridors are 10 m+ apart.
  */
-export const RAIL_MERGE = { maxM: 7, maxDeg: 25, overlap: 0.05 } as const;
+export const RAIL_MERGE = { maxM: 7, maxDeg: 25, overlap: 0.05, /** A bridge track and one off the bridges share a bed where their levels differ by at most this (sideGap crossDeck). */ levelM: 0.5 } as const;
 
 /** Segments of every way, bucketed for the side-gap ray test. */
-export interface RailSegIndex { grid: Map<string, { way: number; a: Vec2; b: Vec2 }[]>; cellM: number }
+export interface RailSegIndex { grid: Map<string, { way: number; a: Vec2; b: Vec2; /** Metres along the way to `a`. */ s: number }[]>; cellM: number }
 export function railSegIndex(ways: readonly RailWay[], cellM = 16): RailSegIndex {
-  const grid = new Map<string, { way: number; a: Vec2; b: Vec2 }[]>();
+  const grid = new Map<string, { way: number; a: Vec2; b: Vec2; s: number }[]>();
   ways.forEach((w, way) => {
-    for (let i = 0; i + 1 < w.points.length; i++) {
+    for (let i = 0, s = 0; i + 1 < w.points.length; s += Math.hypot(w.points[i + 1][0] - w.points[i][0], w.points[i + 1][1] - w.points[i][1]), i++) {
       const a = w.points[i], b = w.points[i + 1];
       const gx0 = Math.floor(Math.min(a[0], b[0]) / cellM), gx1 = Math.floor(Math.max(a[0], b[0]) / cellM);
       const gy0 = Math.floor(Math.min(a[1], b[1]) / cellM), gy1 = Math.floor(Math.max(a[1], b[1]) / cellM);
       if ((gx1 - gx0 + 1) * (gy1 - gy0 + 1) > 400) continue;
-      for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) { const k = `${gx}:${gy}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push({ way, a, b }); }
+      for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) { const k = `${gx}:${gy}`; (grid.get(k) ?? grid.set(k, []).get(k)!).push({ way, a, b, s }); }
     }
   });
   return { grid, cellM };
@@ -189,16 +189,21 @@ export function railSegIndex(ways: readonly RailWay[], cellM = 16): RailSegIndex
 
 /**
  * Distance (m) from `p` along the unit direction `dir` to the nearest segment of another way of the same deck that
- * runs within RAIL_MERGE.maxDeg of `tangent`; Infinity when none lies within RAIL_MERGE.maxM.
+ * runs within RAIL_MERGE.maxDeg of `tangent`; Infinity when none lies within RAIL_MERGE.maxM. With `crossDeck`, a way
+ * of the other deck (a bridge track beside one off the bridges) counts too where crossDeck(way, metres along it at the
+ * hit) says the two beds stand level there (lane rails-uncover 2026-11-10, feedback 3ddc4cbf: on the Hemboog viaduct by
+ * the Sloterdijkerweg a bridge track and a track off the bridges run 4-6 m apart on one deck, and the V between their
+ * separate beds showed the bridge deck's pale top as a wedge on the ballast).
  */
-export function sideGap(index: RailSegIndex, ways: readonly RailWay[], self: number, p: Vec2, dir: Vec2, tangent: Vec2): number {
+export function sideGap(index: RailSegIndex, ways: readonly RailWay[], self: number, p: Vec2, dir: Vec2, tangent: Vec2, crossDeck?: (way: number, s: number) => boolean): number {
   const max = RAIL_MERGE.maxM, cos = Math.cos(RAIL_MERGE.maxDeg * Math.PI / 180), c = index.cellM;
   const q: Vec2 = [p[0] + dir[0] * max, p[1] + dir[1] * max];
   const gx0 = Math.floor(Math.min(p[0], q[0]) / c), gx1 = Math.floor(Math.max(p[0], q[0]) / c);
   const gy0 = Math.floor(Math.min(p[1], q[1]) / c), gy1 = Math.floor(Math.max(p[1], q[1]) / c);
   let best = Infinity;
   for (let gx = gx0; gx <= gx1; gx++) for (let gy = gy0; gy <= gy1; gy++) for (const s of index.grid.get(`${gx}:${gy}`) ?? []) {
-    if (s.way === self || ways[s.way].bridge !== ways[self].bridge) continue;
+    const cross = ways[s.way].bridge !== ways[self].bridge;
+    if (s.way === self || (cross && !crossDeck)) continue;
     const ex = s.b[0] - s.a[0], ey = s.b[1] - s.a[1], el = Math.hypot(ex, ey);
     if (el < 1e-6 || Math.abs((ex * tangent[0] + ey * tangent[1]) / el) < cos) continue;
     // p + t·dir = a + u·e
@@ -206,7 +211,7 @@ export function sideGap(index: RailSegIndex, ways: readonly RailWay[], self: num
     if (Math.abs(den) < 1e-9) continue;
     const wx = s.a[0] - p[0], wy = s.a[1] - p[1];
     const t = (wx * ey - wy * ex) / den, u = (wx * dir[1] - wy * dir[0]) / den;
-    if (t > 0.01 && t < best && u >= 0 && u <= 1) best = t;
+    if (t > 0.01 && t < best && u >= 0 && u <= 1 && (!cross || crossDeck!(s.way, s.s + u * el))) best = t;
   }
   return best <= max ? best : Infinity;
 }
@@ -384,7 +389,9 @@ export function railMeshes(input: RailBuildInput): RailMeshes {
     const reach = (i: number, side: 1 | -1): number | null => {
       if (flat[i]) return null;
       const [nx, ny] = normals[i], j = Math.min(i, n - 2), tx = pts[j + 1][0] - pts[j][0], ty = pts[j + 1][1] - pts[j][1], tl = Math.hypot(tx, ty) || 1;
-      return yardReach(sideGap(segs, input.ways, wi, pts[i], [nx * side, ny * side], [tx / tl, ty / tl]));
+      // Across decks only on the profile's levels (both ways have one; the legacy build keeps its separate beds).
+      const crossDeck = level && !input.legacy ? (other: number, s: number) => { const l = input.levels!.get(input.ways[other]); return !!l && Math.abs(levelAt(l, s) - z[i]) <= RAIL_MERGE.levelM; } : undefined;
+      return yardReach(sideGap(segs, input.ways, wi, pts[i], [nx * side, ny * side], [tx / tl, ty / tl], crossDeck));
     };
     // Per station: the bed's five vertices (toe, top edge, top edge, toe) and the rails.
     const bedReach: [number | null, number | null][] = [];

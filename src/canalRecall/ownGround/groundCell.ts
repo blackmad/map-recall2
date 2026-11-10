@@ -172,6 +172,8 @@ export interface CellInput {
   /** Deck spans where a street passes under a track off the bridges (railSpans.ts; default on, false: the build before lane rails-classb, for measuring). */
   /** Level crossings ramp the bed at the track's grade (railTracks.ts `ramps`, lane rails-uncover); default on, false: the before. */
   railRamps?: boolean;
+  /** The deck spans' headroom, metres (railSpans.ts SPAN_HEADROOM_M; measuring only: 1.0 is lane rails-classb's rule). */
+  railSpanHeadroom?: number;
   railSpans?: boolean;
   /** OSM way ids the neighbourhood's road polygons cover (roadCells coverWays): no bands for them. */
   coverWays?: readonly number[];
@@ -606,7 +608,7 @@ export function buildCell(input: CellInput): BuiltCell {
     if (profile && input.railSpans !== false) for (const w of input.rails) {
       const level = profile.levels.get(w);
       if (w.bridge || !level) continue;
-      const found = underpassSpans(w, s => railLevelAt(level, s), spanStreets, onLand, measured);
+      const found = underpassSpans(w, s => railLevelAt(level, s), spanStreets, onLand, measured, input.railSpanHeadroom);
       if (found.length) spans.set(w, found);
     }
     const promoted = new Set([...spans.keys()].map(railWayKey));
