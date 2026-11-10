@@ -25,6 +25,8 @@ Sources, weakest first (facade/evidence.ts SOURCE_STRENGTH, author = reviewed):
   scripts/block-face/faces/*/intent.json      streetlevel-measured  (fromBlockFace, one spec per house)
   scripts/building-recipes/houses/*/intent.json  the intent's sources (fromRecipeIntent, kind canal-house only)
   scripts/house-specs/specs/<pandId>.json     hand-written specs, validated (validateSpec), usually source author
+  scripts/house-specs/generated/<buurt>/<pandId>.json  house:describe output (H5): the merged spec of the writers (register, bag,
+                                              pixel, Jev); a hand source on the same pand outranks every writer field by the ladder
 Writes public/data/extracts/amsterdam/staging/house-specs/14/<x>/<y>.json.gz ({version, buildings: {<feature id>:
 {d, x, s, l, r, v}}}) and staging/house-specs.coverage.json. --publish replaces house-specs/14 with the staged tiles.
 The world compiler hashes house-specs/14/<tile>.json.gz per tile (scripts/world/pipeline.ts tileInputs).`;
@@ -54,10 +56,19 @@ if (args.includes('--publish')) {
 // --- 1. every source, as partial specs per pand ------------------------------------------------------------------
 const parts = new Map<string, HouseSpec[]>();
 const add = (s: HouseSpec | null) => { if (s) { const list = parts.get(s.pandId) ?? []; list.push(s); parts.set(s.pandId, list); } };
-const counts = { register: 0, faces: 0, faceHouses: 0, facesInvalid: [] as string[], recipeIntents: 0, recipeOther: 0, hand: 0 };
+const counts = { register: 0, faces: 0, faceHouses: 0, facesInvalid: [] as string[], recipeIntents: 0, recipeOther: 0, hand: 0, generated: 0, generatedInvalid: [] as string[] };
 
 const facts = registerFactsFromExtract(json(path.join(EXTRACT, 'monument-facts.json')));
 for (const [id, f] of facts) { add(fromRegisterFacts(f, f.nr, id)); counts.register++; }
+
+// house:describe output (H5): the merged spec of one pand's writers. The register part is already added above and the merge is
+// idempotent (same source, same confidence, same date: the earlier part is kept), so the generated copy only adds what the register lacks.
+const GENERATED = path.join(ROOT, 'scripts/house-specs/generated');
+if (existsSync(GENERATED)) for (const buurt of readdirSync(GENERATED).sort()) for (const f of readdirSync(path.join(GENERATED, buurt)).filter(f => f.endsWith('.json')).sort()) {
+  const env = json(path.join(GENERATED, buurt, f));
+  if (!env.spec) continue;
+  try { add(validateSpec(env.spec)); counts.generated++; } catch (e) { counts.generatedInvalid.push(`${buurt}/${f}: ${(e as Error).message.split('\n')[1] ?? (e as Error).message}`); }
+}
 
 const FACES = path.join(ROOT, 'scripts/block-face/faces');
 for (const dir of readdirSync(FACES).sort()) {
@@ -198,7 +209,7 @@ writeFileSync(REPORT, JSON.stringify(report, null, 1) + '\n');
 
 const fields = [...resolved.values()].reduce((n, s) => n + specFields(s).length, 0);
 console.log(`house specs: ${report.pands} pands (${fields} fields), ${report.tiled} tiled in ${report.tiles} tiles (${(bytes / 1024).toFixed(0)} kB gz), ${report.notInTiles} not in any building tile`);
-console.log(`  inputs: register ${counts.register}, block faces ${counts.faces} (${counts.faceHouses} houses, ${counts.facesInvalid.length} invalid), canal-house intents ${counts.recipeIntents} (${counts.recipeOther} other kinds skipped), hand specs ${counts.hand}`);
+console.log(`  inputs: register ${counts.register}, block faces ${counts.faces} (${counts.faceHouses} houses, ${counts.facesInvalid.length} invalid), canal-house intents ${counts.recipeIntents} (${counts.recipeOther} other kinds skipped), hand specs ${counts.hand}, generated specs ${counts.generated}${counts.generatedInvalid.length ? ` (${counts.generatedInvalid.length} invalid: ${counts.generatedInvalid[0]})` : ''}`);
 console.log(`  pands with a field from: ${Object.entries(report.bySource).map(([k, n]) => `${k} ${n}`).join(', ')}; ${report.multiSource} from more than one source`);
 console.log(`  route: recipe ${report.route.recipe}, generic ${report.route.generic}`);
 console.log(`  runtime view: ${Object.entries(report.runtime).map(([k, n]) => `${k} ${n}`).join(', ')}`);

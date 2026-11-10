@@ -3,7 +3,7 @@
  * the probability of "full_front". Results go to scripts/house-crops/judge/<code>.json, keyed by pand id and the panorama
  * ids of the crop that was judged (a score counts only for that crop).
  *
- *   zsh -lic 'node --import tsx scripts/house-crops/judge.ts --buurt AB07 --archive <source-data> [--labelled] [--pand a,b] [--limit n] [--budget 2] [--concurrency 4]'
+ *   zsh -lic 'node --import tsx scripts/house-crops/judge.ts --buurt AB07 --archive <source-data> [--labelled] [--pand a,b] [--limit n] [--budget 2] [--concurrency 4] [--prompt v1|v2]'
  *
  * The key is read ONLY from process.env.TYPESAFE_API_KEY (the Jev endpoint takes no other); it is never printed, logged or
  * written, and a 401/403 stops the run at once. Saved records hold scores and token counts, never the request headers.
@@ -18,15 +18,30 @@ import { manifestPath, type Manifest } from './manifest.ts';
 export const ENDPOINT = 'https://api.typesafe.ai/v1/systemone', MODEL = 'jev-1.14.0';
 /** USD per token, from the J1 spike (7,328 tokens = $0.000308); output tokens are priced the same here, which can only overstate the spend. */
 export const USD_PER_TOKEN = 0.042 / 1e6;
-export const judgePath = (code: string) => path.resolve('scripts/house-crops/judge', `${code}.json`);
+/** Prompt versions: v1 is the H4c prompt; v2 is the H5 step 0b recall pass (dark painted brick and narrow canal fronts are normal, sky glare is ignored, single-building-ness is asked apart from obstruction). Each version keeps its own store. */
+export type PromptVersion = 'v1' | 'v2';
+export const judgePath = (code: string, prompt: PromptVersion = 'v1') => path.resolve('scripts/house-crops/judge', prompt === 'v1' ? `${code}.json` : `${code}.${prompt}.json`);
 
 export type JudgeRecord = { panoIds: string[]; score: number; occluded: number; closeUp: number; tokens: number; model: string; at: string };
 
-export const QUESTIONS = {
+export const QUESTIONS_V1 = {
   full_front: { type: 'noul', instructions: 'Is `facade` a full front of ONE building, seen straight on from ground to roofline, and usable as a reference photo of that building? It must show the whole front, top to bottom, with the ground floor and the top of the front both inside the image, and it must not be a close-up of a window or door, a side or alley wall, a blank wall, or a view down the street.', criteria: { true: 'The image shows the whole street front of one building, straight on, ground floor to roofline, with no large part hidden.', false: 'The image is a partial, oblique, side or blank wall view, a close-up, or a large part of the front is hidden.' } },
   occluded: { type: 'noul', instructions: 'Is a large part of the building front in `facade` hidden by a tree, branches, a van or truck, scaffolding, a tent or a crowd of people?', criteria: { true: 'Trees, branches, vehicles, scaffolding or similar hide a large part of the front.', false: 'The front is mostly unobstructed.' } },
   close_up: { type: 'noul', instructions: 'Is `facade` a close-up of only a small part of a building (one window, one door, a few bricks), or a view along the street or into an alley rather than at a building front?', criteria: { true: 'A close-up detail, a side wall, an alley or a street view.', false: 'A whole building front.' } },
 } as const;
+/**
+ * v2 (H5 step 0b). The eleven good full fronts v1 rejected were dark painted-brick or black canal fronts, narrow, some with sky glare
+ * above the cornice. The question now says those are normal, ignores the sky, and asks "one building, straight on, whole" apart from
+ * obstruction (the `occluded` question carries that on its own).
+ */
+export const QUESTIONS_V2 = {
+  full_front: { type: 'noul', instructions: 'Does `facade` show the street front of ONE building (one house front, possibly narrow) seen from the street, with its ground floor at the bottom and its roofline or gable at the top, so that it can serve as a reference photo of that one building? Dark brick, black or dark-painted walls, deep shade, a narrow canal-house front, and a bright or glaring sky above the cornice are all normal and do not count against it. Judge only whether it is one whole building front, not whether anything stands in front of it.', criteria: { true: 'One building front, ground floor to roofline, taken from the street; it may be dark or narrow.', false: 'More than one building is the subject, a close-up of a window or door, a side or alley wall, a blank wall, a view along the street, or the top or bottom of the front is missing.' } },
+  occluded: { type: 'noul', instructions: 'Is more than a third of the building front in `facade` hidden by a tree, branches, a van or truck, scaffolding, a tent or a crowd of people? Ignore the sky, glare and the neighbouring buildings.', criteria: { true: 'Trees, branches, vehicles, scaffolding or similar hide more than a third of the front.', false: 'The front is mostly unobstructed.' } },
+  close_up: QUESTIONS_V1.close_up,
+} as const;
+export const QUESTIONS = QUESTIONS_V1;
+export const questionsFor = (v: PromptVersion) => (v === 'v2' ? QUESTIONS_V2 : QUESTIONS_V1);
+
 
 /** Jev rejects any image side under 280 px and does not resize: scale so the short side is >= 300 and the long side <= 1400; null when both cannot hold. */
 export function judgeSize(w: number, h: number): { width: number; height: number } | null {
@@ -49,12 +64,12 @@ export function parseAnswers(res: any): { score: number; occluded: number; close
 
 const arg = (n: string) => { const i = process.argv.indexOf(`--${n}`); return i >= 0 ? process.argv[i + 1] : undefined; };
 
-export async function ask(key: string, file: string): Promise<{ status: number; body: any }> {
+export async function ask(key: string, file: string, prompt: PromptVersion = 'v1'): Promise<{ status: number; body: any }> {
   const meta = await sharp(file).metadata(), size = judgeSize(meta.width!, meta.height!);
   if (!size) return { status: 0, body: { error: 'crop proportions cannot satisfy the 280 px side rule' } };
   const jpg = await sharp(file).resize(size.width, size.height).jpeg({ quality: 88 }).toBuffer();
   const id = `${randomUUID()}-facade`;
-  const body = { model: MODEL, state: { facade: id, note: 'A rectified street-panorama crop of one Amsterdam building front.' }, assets: { [id]: { type: 'image', part: 'facade' } }, questions: QUESTIONS };
+  const body = { model: MODEL, state: { facade: id, note: 'A rectified street-panorama crop of one Amsterdam building front.' }, assets: { [id]: { type: 'image', part: 'facade' } }, questions: questionsFor(prompt) };
   const form = new FormData();
   form.append('request', new Blob([JSON.stringify(body)], { type: 'application/json' }));
   form.append('facade', new Blob([jpg], { type: 'image/jpeg' }), 'facade.jpg');
@@ -72,18 +87,18 @@ if (process.argv[1]?.endsWith('house-crops/judge.ts')) {
   const key = process.env.TYPESAFE_API_KEY;
   if (!key) { console.error('TYPESAFE_API_KEY is not set in this process (run through zsh -lic); stopping.'); process.exit(2); }
   const m: Manifest = JSON.parse(await fs.readFile(manifestPath(code), 'utf8'));
-  const store: Record<string, JudgeRecord> = await fs.readFile(judgePath(code), 'utf8').then(JSON.parse).catch(() => ({}));
+  const prompt = (arg('prompt') ?? 'v1') as PromptVersion, store: Record<string, JudgeRecord> = await fs.readFile(judgePath(code, prompt), 'utf8').then(JSON.parse).catch(() => ({}));
   const only = arg('pand') ? new Set(arg('pand')!.split(',')) : process.argv.includes('--labelled') ? new Set(Object.keys(JSON.parse(await fs.readFile(path.resolve('scripts/house-crops/labels', `${code}.json`), 'utf8')))) : null;
   const todo = Object.entries(m.pands).filter(([id, e]) => e.status === 'ok' && (!only || only.has(id)) && JSON.stringify(store[id]?.panoIds) !== JSON.stringify(e.panoIds)).slice(0, limit);
   let spent = 0, done = 0, stop = false, failed = 0;
   console.log(`${todo.length} crops to judge (${Object.keys(store).length} already stored), budget $${budget}`);
-  const save = () => fs.mkdir(path.dirname(judgePath(code)), { recursive: true }).then(() => fs.writeFile(judgePath(code), JSON.stringify(store, null, 1) + '\n'));
+  const save = () => fs.mkdir(path.dirname(judgePath(code)), { recursive: true }).then(() => fs.writeFile(judgePath(code, prompt), JSON.stringify(store, null, 1) + '\n'));
   const queue = [...todo];
   await Promise.all(Array.from({ length: conc }, async () => {
     while (queue.length && !stop) {
       if (spent >= budget) { stop = true; console.error('budget reached; stopping'); break; }
       const [id, e] = queue.shift()!;
-      const r = await ask(key, path.join(root, 'pand-crops', id, 'front.jpg'));
+      const r = await ask(key, path.join(root, 'pand-crops', id, 'front.jpg'), prompt);
       if (r.status === 401 || r.status === 403) { stop = true; console.error(`auth error ${r.status}; stopping (fail closed)`); break; }
       try {
         if (r.status !== 200) throw new Error(`HTTP ${r.status} ${JSON.stringify(r.body).slice(0, 120)}`);

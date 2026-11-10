@@ -1,0 +1,80 @@
+{
+ "version": 1,
+ "pandId": "0363100012174563",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "front.jpg",
+  "year": 2020,
+  "quality": 0.456,
+  "panoIds": [
+   "TMX7316010203-001675_pano_0000_004500",
+   "TMX7316010203-001673_pano_0000_001134",
+   "TMX7316010203-001675_pano_0000_004499"
+  ],
+  "date": "2020-04-24",
+  "reasons": [],
+  "ppm": 40
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174563",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 5
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012174563",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012174563",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1886
+   }
+  },
+  "pixel": null
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012174563",
+  "design": {
+   "fronts": [
+    {
+     "storeys": 5
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012174563",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012174563",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1886
+  }
+ },
+ "disagreements": []
+}

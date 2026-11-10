@@ -1,0 +1,106 @@
+{
+ "version": 1,
+ "pandId": "0363100012168010",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "years/2021.jpg",
+  "year": 2021,
+  "quality": 0.174,
+  "panoIds": [
+   "TMX7316010203-002445_pano_0008_000159",
+   "TMX7316010203-002445_pano_0008_000158"
+  ],
+  "date": null,
+  "reasons": [
+   "occluder"
+  ],
+  "ppm": 40
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168010",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 4
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012168010",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012168010",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1905
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012168010",
+   "design": {
+    "palette": {
+     "brick": "#494544"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.45,
+     "ref": "source-data://pand-crops/0363100012168010/years/2021.jpg#fallback",
+     "at": null
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012168010",
+  "design": {
+   "fronts": [
+    {
+     "storeys": 4
+    }
+   ],
+   "palette": {
+    "brick": "#494544"
+   }
+  },
+  "provenance": {
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012168010",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.45,
+    "ref": "source-data://pand-crops/0363100012168010/years/2021.jpg#fallback",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012168010",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1905
+  }
+ },
+ "disagreements": []
+}

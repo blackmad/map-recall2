@@ -1,0 +1,78 @@
+{
+ "version": 1,
+ "pandId": "0363100012174167",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "front.jpg",
+  "year": 2024,
+  "quality": 0.346,
+  "panoIds": [
+   "b_20241216_0911_Track02_Sphere_00055"
+  ],
+  "date": "2024-12-16",
+  "reasons": [],
+  "ppm": 50
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012174167",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 5
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012174167",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012174167",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1856
+   }
+  },
+  "pixel": null
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012174167",
+  "design": {
+   "fronts": [
+    {
+     "storeys": 5
+    }
+   ]
+  },
+  "provenance": {
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012174167",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012174167",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1856
+  }
+ },
+ "disagreements": []
+}

@@ -1,0 +1,167 @@
+{
+ "version": 1,
+ "pandId": "0363100012172779",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "fallback",
+  "file": "front.jpg",
+  "year": 2020,
+  "quality": 0.016,
+  "panoIds": [
+   "TMX7316010203-001673_pano_0000_000750",
+   "TMX7316010203-001674_pano_0000_000615",
+   "TMX7316010203-001673_pano_0000_000749"
+  ],
+  "date": "2020-04-24",
+  "reasons": [],
+  "ppm": 40
+ },
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172779",
+   "design": {
+    "fronts": [
+     {
+      "gable": "neck"
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/gable": {
+     "source": "monument-text",
+     "confidence": 0.8,
+     "ref": "rce:509",
+     "at": null
+    },
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.7,
+     "ref": "rce:509",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1687
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172779",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 3
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012172779",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012172779",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1890
+   }
+  },
+  "pixel": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172779",
+   "design": {
+    "palette": {
+     "brick": "#48413f"
+    }
+   },
+   "provenance": {
+    "palette/brick": {
+     "source": "streetlevel-measured",
+     "confidence": 0.45,
+     "ref": "source-data://pand-crops/0363100012172779/front.jpg#fallback",
+     "at": "2020-04-24"
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012172779",
+  "design": {
+   "fronts": [
+    {
+     "gable": "neck",
+     "storeys": 3
+    }
+   ],
+   "palette": {
+    "brick": "#48413f"
+   },
+   "notes": [
+    "describe: facts/facadeYear disagrees: register 1687 (monument-text 0.7) vs bag 1890 (bag 0.5); register wins"
+   ]
+  },
+  "provenance": {
+   "fronts/0/gable": {
+    "source": "monument-text",
+    "confidence": 0.8,
+    "ref": "rce:509",
+    "at": null
+   },
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012172779",
+    "at": null
+   },
+   "palette/brick": {
+    "source": "streetlevel-measured",
+    "confidence": 0.45,
+    "ref": "source-data://pand-crops/0363100012172779/front.jpg#fallback",
+    "at": "2020-04-24"
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.7,
+    "ref": "rce:509",
+    "at": null
+   },
+   "notes": {
+    "source": "default",
+    "confidence": 0,
+    "ref": "house:describe",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1687
+  }
+ },
+ "disagreements": [
+  {
+   "path": "facts/facadeYear",
+   "values": [
+    {
+     "writer": "register",
+     "value": 1687,
+     "source": "monument-text",
+     "confidence": 0.7
+    },
+    {
+     "writer": "bag",
+     "value": 1890,
+     "source": "bag",
+     "confidence": 0.5
+    }
+   ],
+   "picked": "register"
+  }
+ ]
+}

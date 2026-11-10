@@ -1,0 +1,128 @@
+{
+ "version": 1,
+ "pandId": "0363100012172857",
+ "buurt": "AB07",
+ "crop": null,
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172857",
+   "design": {
+    "fronts": [
+     {
+      "gable": "cornice"
+     }
+    ]
+   },
+   "provenance": {
+    "fronts/0/gable": {
+     "source": "monument-text",
+     "confidence": 0.8,
+     "ref": "rce:551",
+     "at": null
+    },
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.7,
+     "ref": "rce:551",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1862
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172857",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 3
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012172857",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012172857",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1700
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012172857",
+  "design": {
+   "fronts": [
+    {
+     "gable": "cornice",
+     "storeys": 3
+    }
+   ],
+   "notes": [
+    "describe: facts/facadeYear disagrees: register 1862 (monument-text 0.7) vs bag 1700 (bag 0.5); register wins"
+   ]
+  },
+  "provenance": {
+   "fronts/0/gable": {
+    "source": "monument-text",
+    "confidence": 0.8,
+    "ref": "rce:551",
+    "at": null
+   },
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012172857",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.7,
+    "ref": "rce:551",
+    "at": null
+   },
+   "notes": {
+    "source": "default",
+    "confidence": 0,
+    "ref": "house:describe",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1862
+  }
+ },
+ "disagreements": [
+  {
+   "path": "facts/facadeYear",
+   "values": [
+    {
+     "writer": "register",
+     "value": 1862,
+     "source": "monument-text",
+     "confidence": 0.7
+    },
+    {
+     "writer": "bag",
+     "value": 1700,
+     "source": "bag",
+     "confidence": 0.5
+    }
+   ],
+   "picked": "register"
+  }
+ ]
+}

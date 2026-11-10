@@ -1,0 +1,129 @@
+{
+ "version": 1,
+ "pandId": "0363100012170031",
+ "buurt": "AB07",
+ "crop": {
+  "tier": "good",
+  "file": "years/2024.jpg",
+  "year": 2024,
+  "quality": 0.674,
+  "panoIds": [
+   "b_20241216_0911_Track08_Sphere_00043"
+  ],
+  "date": null,
+  "reasons": [
+   "washed-out"
+  ],
+  "ppm": 50
+ },
+ "writers": {
+  "register": null,
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012170031",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 4
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012170031",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012170031",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1905
+   }
+  },
+  "pixel": null,
+  "jev": {
+   "schemaVersion": 1,
+   "pandId": "0363100012170031",
+   "design": {
+    "fronts": [
+     {
+      "bays": 2
+     }
+    ],
+    "palette": {
+     "wallMaterial": "stucco"
+    }
+   },
+   "provenance": {
+    "fronts/0/bays": {
+     "source": "vision-judge",
+     "confidence": 0.75,
+     "ref": "source-data://pand-crops/0363100012170031/years/2024.jpg",
+     "at": null
+    },
+    "palette/wallMaterial": {
+     "source": "vision-judge",
+     "confidence": 0.92,
+     "ref": "source-data://pand-crops/0363100012170031/years/2024.jpg",
+     "at": null
+    }
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012170031",
+  "design": {
+   "fronts": [
+    {
+     "bays": 2,
+     "storeys": 4
+    }
+   ],
+   "palette": {
+    "wallMaterial": "stucco"
+   }
+  },
+  "provenance": {
+   "fronts/0/bays": {
+    "source": "vision-judge",
+    "confidence": 0.75,
+    "ref": "source-data://pand-crops/0363100012170031/years/2024.jpg",
+    "at": null
+   },
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012170031",
+    "at": null
+   },
+   "palette/wallMaterial": {
+    "source": "vision-judge",
+    "confidence": 0.92,
+    "ref": "source-data://pand-crops/0363100012170031/years/2024.jpg",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "bag",
+    "confidence": 0.5,
+    "ref": "bag-facts:0363100012170031",
+    "at": null
+   }
+  },
+  "facts": {
+   "facadeYear": 1905
+  }
+ },
+ "disagreements": [],
+ "jev": {
+  "cached": true,
+  "hash": "20660352a7fc7057e2e7e7799272a7a9",
+  "usd": 0
+ }
+}

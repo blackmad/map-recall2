@@ -1,0 +1,148 @@
+{
+ "version": 1,
+ "pandId": "0363100012172781",
+ "buurt": "AB07",
+ "crop": null,
+ "writers": {
+  "register": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172781",
+   "design": {
+    "fronts": [
+     {
+      "hoist": true
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "monument-text",
+     "confidence": 0.7,
+     "ref": "rce:552",
+     "at": null
+    },
+    "fronts/0/hoist": {
+     "source": "monument-text",
+     "confidence": 0.6,
+     "ref": "rce:552",
+     "at": null
+    },
+    "facts/elements": {
+     "source": "monument-text",
+     "confidence": 0.6,
+     "ref": "rce:552",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1762,
+    "elements": [
+     "console-cornice",
+     "hoist-beam"
+    ]
+   }
+  },
+  "bag": {
+   "schemaVersion": 1,
+   "pandId": "0363100012172781",
+   "design": {
+    "fronts": [
+     {
+      "storeys": 3
+     }
+    ]
+   },
+   "provenance": {
+    "facts/facadeYear": {
+     "source": "bag",
+     "confidence": 0.5,
+     "ref": "bag-facts:0363100012172781",
+     "at": null
+    },
+    "fronts/0/storeys": {
+     "source": "3dbag",
+     "confidence": 0.4,
+     "ref": "bag-facts:0363100012172781",
+     "at": null
+    }
+   },
+   "facts": {
+    "facadeYear": 1775
+   }
+  }
+ },
+ "spec": {
+  "schemaVersion": 1,
+  "pandId": "0363100012172781",
+  "design": {
+   "fronts": [
+    {
+     "hoist": true,
+     "storeys": 3
+    }
+   ],
+   "notes": [
+    "describe: facts/facadeYear disagrees: register 1762 (monument-text 0.7) vs bag 1775 (bag 0.5); register wins"
+   ]
+  },
+  "provenance": {
+   "fronts/0/hoist": {
+    "source": "monument-text",
+    "confidence": 0.6,
+    "ref": "rce:552",
+    "at": null
+   },
+   "fronts/0/storeys": {
+    "source": "3dbag",
+    "confidence": 0.4,
+    "ref": "bag-facts:0363100012172781",
+    "at": null
+   },
+   "facts/elements": {
+    "source": "monument-text",
+    "confidence": 0.6,
+    "ref": "rce:552",
+    "at": null
+   },
+   "facts/facadeYear": {
+    "source": "monument-text",
+    "confidence": 0.7,
+    "ref": "rce:552",
+    "at": null
+   },
+   "notes": {
+    "source": "default",
+    "confidence": 0,
+    "ref": "house:describe",
+    "at": null
+   }
+  },
+  "facts": {
+   "elements": [
+    "console-cornice",
+    "hoist-beam"
+   ],
+   "facadeYear": 1762
+  }
+ },
+ "disagreements": [
+  {
+   "path": "facts/facadeYear",
+   "values": [
+    {
+     "writer": "register",
+     "value": 1762,
+     "source": "monument-text",
+     "confidence": 0.7
+    },
+    {
+     "writer": "bag",
+     "value": 1775,
+     "source": "bag",
+     "confidence": 0.5
+    }
+   ],
+   "picked": "register"
+  }
+ ]
+}
