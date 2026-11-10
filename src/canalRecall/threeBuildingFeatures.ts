@@ -29,8 +29,10 @@ import { SegmentGrid } from './streetFronts.js';
 import { ccwRing, designInLook, gardenRoomDesign, gardenRoomGlassHex, gardenRoomLidHex, gardenRoomRule, gardenRoomTriangles, glassEdge, mainHouse, nearestStreetPoint, partyWalls, HOUSE_REACH_M, type Neighbour, type Pt } from './gardenRooms.js';
 import { GARDEN_ROOM_TONES } from './look/palette.js';
 import { buurtProfileAt } from './buurtProfiles/data.js';
-import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } from './contemporaryFamily.js';
 import { profileWallBeatsMaterial, storeyScaleOf } from './buurtProfiles/profiles.js';
+import { SETBACK_CLADDING_HEX, SETBACK_INSET_M, SETBACK_STOREY_M, insetRing } from './contemporaryFamily.js';
+import { levelWallHex } from './look/paletteLevel.js';
+import { industrialKitEnabled, industrialMeshSpec, industrialWallHex } from './industrial/industrialKit.js';
 
 /** 'untextured' draws with the procedural cells' flat layer only: plain colours, real shapes (look/palette.ts). */
 export type { BuildingLook };
@@ -129,7 +131,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
   if (!polygons.length || !Number.isFinite(heightM)) return null;
   const id = String(p.id ?? '');
   let building: MeshBuilding;
-  let plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined;
+  let plain: number, roofBase: number, layout: FacadeStyle, profileWall: string | undefined, spandrelAccent: string | undefined, quietGround: number | undefined;
   if (cellSetOf(look) !== 'procedural') {
     const year = p.constructionYear === null || p.constructionYear === undefined || !Number.isFinite(Number(p.constructionYear)) ? null : Number(p.constructionYear);
     const at = polygons[0]?.[0]?.[0];
@@ -142,6 +144,7 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     if (storeyScale !== 1) building.storeyScale = storeyScale;
     building.openings = bayVariantOpenings({ ...bay.variant, kind: 'upper' }, look as Look);
     plain = bay.plain; roofBase = BAY_LAYER_COUNT; layout = bay.layout; building.plainLayer = bay.plain;
+    quietGround = bayLayer(bay.archetype, bay.style, 'ground');
     if ((FACADE_STYLES as readonly string[]).includes(String(p.facadeStyle)) && p.facadeStyle !== bay.layout) building.period = p.facadeStyle as FacadeStyle;
     if (bay.contemporary?.setback) building.setbackCrown = true;
   } else {
@@ -151,11 +154,13 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     plain = cellLayer(layout, 'plain', lookVariant(id)); roofBase = CELL_LAYER_COUNT; building.plainLayer = plain;
   }
   // A sourced hex color survives PHOTO decoration; material-only hues remain explicitly display priors.
+  let sourcedWall: string | undefined;
   if (look === 'photo') {
     // A buurt profile's measured wall (bayLook.ts) outranks a city-wide material-family hue of the same family.
     const materialPrior = profileWall && profileWallBeatsMaterial(p.material, profileWall) ? undefined : p.facadeMaterialColourPrior;
     const sourced = [p.facadeMappedColour, p.sideColourSource === 'measured-accepted' ? p.sideColour : undefined, materialPrior].find(v => typeof v === 'string' && /^#[0-9a-f]{6}$/i.test(v));
     if (sourced) building.wallHex = String(sourced);
+    sourcedWall = sourced ? String(sourced) : undefined;
   }
   const front = shopfrontOf(p);
   building.shopfront = front ? front !== 'quiet' : false;
@@ -222,6 +227,22 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
       }
     }
   }
+  // The industrial kit (industrial/industrialKit.ts): tanks, silos and sheds the industrial table names lose the house
+  // grammar; offices on an estate keep their windows but not a guessed shopfront. Without the stamp, nothing changes.
+  const industrial = typeof p.industrial === 'string' && look !== 'untextured' && !p.kitWall && !p.frontCarrier && !p.gardenShed && industrialKitEnabled() ? p.industrial : null;
+  if (industrial === 'office') {
+    if (!building.shopfront && !p.largeTier) { building.shop = false; if (building.layers && quietGround !== undefined) building.layers = { ...building.layers, ground: quietGround }; building.groundHex = undefined; }
+  } else if (industrial === 'tank' || industrial === 'silo' || industrial === 'shed' || industrial === 'works') {
+    const cells = cellSetOf(look), tone = (hex: string) => cells === 'procedural' ? hex : lookHex(hex, look as Look);
+    building.bare = true; building.plainWalls = false;
+    building.wallHex = sourcedWall ?? tone(industrialWallHex(id, industrial));
+    const surface = (industrial === 'shed' || industrial === 'works') && flatRoofSurfaceEnabled() ? flatRoofSurfaceLayer(cells) : null;
+    building.plainLayer = surface ?? roofBase + 3;
+    building.layers = undefined; building.groundHex = undefined; building.openings = undefined; building.parapetM = undefined; building.layoutScale = undefined;
+    building.shop = false; building.shopfront = false; building.signature = undefined; building.chain = undefined;
+    if (industrial === 'tank') { building.roof = undefined; building.flatRoof = undefined; building.measuredRoof = undefined; }
+    building.industrial = industrialMeshSpec(id, industrial, heightM - minHeightM, footprintAreaM2(feature.geometry), tone);
+  }
   // Facade extras for every faced building; the plain and Untextured looks stay light.
   // Never on a landmark kit's walls: church hosts drew hoist beams and stray strips (user 2026-10-03).
   building.extras = !building.bare && !p.kitWall && !p.largeTier && look !== 'untextured';
@@ -231,6 +252,9 @@ export function meshBuildingFor(feature: Feature, look: BuildingLook, coarse = f
     building.bare = true; building.plainLayer = flat;
     if (building.roof) building.roof = { ...building.roof, layers: { slope: flat, plain: flat, dormer: flat } };
   }
+  // The city-wide palette level (look/paletteLevel.ts, `?paletteLevel=0` for the before): generic photo-look walls only; a
+  // landmark kit, a large recipe and a bare shed keep their authored colour.
+  if (look === 'photo' && !p.kitWall && !p.kitWallHex && !p.largeTier && !building.bare) building.wallHex = levelWallHex(building.wallHex);
   return building;
 }
 
@@ -374,7 +398,7 @@ export function buildFeatureChunk(features: readonly Feature[], look: BuildingLo
       // Continue into local facade context below: coarse LOD drops relief and
       // shaped roofs, while its existing cheap window cells keep the street rhythm.
     }
-    if (building && mode !== 'shell' && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier && !f.properties.largeTier && !f.properties.gardenShed) {
+    if (building && mode !== 'shell' && profiles.length && look !== 'untextured' && !f.properties.kitWall && !f.properties.frontCarrier && !f.properties.largeTier && !f.properties.gardenShed && !building.industrial) {
       const localProfiles = profilesNearBuilding(profiles, building.polygons);
       if (!localProfiles.length) return building;
       const p = f.properties;

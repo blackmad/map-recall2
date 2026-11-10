@@ -214,12 +214,14 @@ export class LabelOverlay {
     }
   }
 
-  /** A label under the pointer (CSS px of the map canvas): a click selects its venue. */
+  /** A label's name under the pointer (CSS px of the map canvas): a click selects its venue. */
   hitTest(x: number, y: number): { id: string; landmarkId: string; name: string; lngLat: [number, number]; poi: true; featureTarget: null } | null {
     for (const [id, el] of this.elements) {
       if (!this.drawn.has(id)) continue;
       const c = this.byId.get(id);
-      const box = el.getBoundingClientRect(), origin = this.root.getBoundingClientRect();
+      // The name is the target, not the whole label: its stem and dot hang below the text at the text's full width,
+      // a band over the canal under a quay label that opened its card (lane S2, #314).
+      const box = (el.querySelector('.n') ?? el).getBoundingClientRect(), origin = this.root.getBoundingClientRect();
       if (!c || x < box.left - origin.left || x > box.right - origin.left || y < box.top - origin.top || y > box.bottom - origin.top) continue;
       return { id: c.id, landmarkId: c.id, name: c.name, lngLat: [c.lng, c.lat], poi: true, featureTarget: null };
     }

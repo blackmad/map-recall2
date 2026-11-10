@@ -68,13 +68,13 @@ export class WorkerPool {
   dispose(): void { for (const w of this.workers) w?.terminate(); this.workers = []; }
 }
 
-/** The A/B flags the building worker reads from its own URL (buurtProfiles/data.ts, modernFacades.ts). */
+/** The A/B flags the building worker reads from its own URL (buurtProfiles/data.ts, modernFacades.ts, look/paletteLevel.ts). */
 export function withWorkerFlags(url: string, search: string = typeof location !== 'undefined' ? location.search : ''): string {
   if (!url) return url;
   let flags: string[] = [];
   try {
     const q = new URLSearchParams(search);
-    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface', 'newbuildFamily'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
+    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface', 'newbuildFamily', 'paletteLevel', 'industrialKit'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
   } catch { /* no location */ }
   return flags.length ? `${url}${url.includes('?') ? '&' : '?'}${flags.join('&')}` : url;
 }

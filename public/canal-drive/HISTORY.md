@@ -1,5 +1,75 @@
 # Canal Recall — what is built
 
+**Feedback F: Silodam whole, Station Sloterdijk modelled (2026-11-10, lane/landmarks-silodam-sloterdijk-20261110 at c0ae615f0, opus).**
+- **Silodam** ("half of silodam seems unfinished?", 95ff35e3). The MVRDV slab is three BAG panden, ~131 m long. The `silodam` model covered only the northern pand. The southern half (OSM w274024358 / BAG 0363100012187517 on piers, and 187451 at the land end) was never suppressed and drew as plain 3DBAG boxes. The builder now covers the whole slab:
+  - IJ face from the Commons long elevation 15224999649: four sections, an orange container base, blue raked V-piers and a glazed public storey;
+  - new south dam sections;
+  - all five ids suppressed;
+  - 23,076 tris.
+- **Station Sloterdijk** ("needs to be modeled", f04680eb). New `sloterdijk-station-builder.ts`, plan measured on the PDOK 2023 orthophoto at 8 px/m, heights from 3DBAG roof planes, 38,876 tris (under the 40k/500 KB budget). It has:
+  - the two blue-ribbed glazed vaults over the viaducts, with lettering and the NS logo;
+  - the glass hall grounded on Orlyplein (it had floated at 8.25 m);
+  - the white space-frame table on lattice towers;
+  - the glazed wedge concourse and red stair/lift portals;
+  - the Regenboogpad rainbow footbridge with its lift towers;
+  - low island canopies.
+
+  OSM vault roofs w640102319/320 are suppressed.
+
+audit:glb: sloterdijk-station PASS. silodam fails only see-through (open piers) and detached panels, both already present in the old model. Unmodelled: the bus/tram level canopies, the bike pavilions, Silodam's per-flat colour mix, the perforated rib holes. The integrator added four OSM part ids (w278381373/734/789, w278380029) to the re-placed Javastraat 97-109 chunk's suppress list (`check:osm-under-models`).
+
+**Feedback D: an industrial kit for tanks, silos, sheds and works, on by default (2026-11-10, lane/industrial-kit-20261110 at eb72e0b19, opus).** User items e6f5deb7, b95fff1c and 76bc26ce: tanks had windows, and sheds had shopfronts and windowed brick. `industrial/industrialClass.ts` classifies pands from OSM tags, BAG gebruiksdoel (fetched in RD stripes past PDOK's 50k cap), 3DBAG year/height and landuse into tank, silo, shed, works (a shed with an office front) or office. Over 349,801 buildings: shed 5,553 (10.1 M m²), tank 914, works 424, office 351, silo 6. Before the kit:
+- 774 of 913 tanks drew windowed walls;
+- 5,530 of 5,541 sheds had windows and 248 had shopfronts.
+
+`industrialKit.ts` draws:
+- tanks windowless in pale steel with rim, rail, ladder and a shallow cone;
+- silos in bare concrete;
+- sheds in profiled cladding, with dock/roller doors and a personnel door on street faces;
+- works as a shed plus a ribbon-window office block.
+
+Offices keep their windows and lose their guessed shop. A photo-sourced wall colour wins. Strips (screenshots repo `buildings/2026-11-10-industrial/`, panorama | main | kit): 6 PASS (Isarweg tank farm, Hornweg, Petroleumhaven, Westpoort tank, Minervahaven, Buiksloterham) and 3 WARN:
+- the 1967 warehouse is pale where the photo shows blue sheet;
+- the 1972 Westpoort works office front is weaker than main's window rows;
+- the 2007 hall's visible face is not a street edge, so it has no doors.
+
+`industrial-buildings.json` (288 KB) is a world GLOBAL_INPUT, so baked cells change only after world:compile.
+
+**Palette level measured, kept opt-in (`?paletteLevel=1`) (2026-11-10, lane/palette-level-20261107 at 1c32359a0, sonnet).** The lane overwrote the GPU tint of live facade chunks at Tichelstraat and read 1,294 sun-side wall pixels through the real lit shader. The render is the tint ×1.03/1.015/0.98 plus 1–2 units (mean dE76 0.51). Against the buurt-profile swatches (22,174 weighted fronts), generic photo-look walls render +1.0 L* and +2.0 C* on the sun side. The level (L* −1, C* ×0.91, CIE-LCH, generic walls only; recipes, mapped walls and landmarks untouched) brings the medians to −0.1 / 0.0, but it moves the 12-spot strips by at most 0.3 % mean luma. It stays opt-in: a slightly darker, less saturated shift runs against the user's brighter-palette priority. The real "more saturated than the photos" gap is upstream, in `derive.ts`'s BRICK_CHROMA_SHARE 0.75: swatch chroma sits 2.5–3× above raw panorama chroma, though the raw crops are hazy and underexposed (median L* 22). Painted walls stay +2.9 C* after the level. `?paletteLevel` now reaches the chunk worker through `withWorkerFlags`.
+
+**Week 2 buurt: Timorpleinbuurt-Noord (Indische buurt), 31 pands installed after five Opus strip reviews (2026-11-10, lane/buurt-indische-20261110 at 8fd74f066, sonnet + Opus reviewer).** The buurt had no library; the lane surveyed it (457 pands, 76 faces, new `buurt-families.ts` and `grid-crop.ts`) and authored three measured types: `indisch-1913-arched-pair-dormer` (Djambistraat/Soendastraat), `indisch-1912-java-mansard-arches` (Javastraat 95-121) and `indisch-1914-red-sash-pairs` (Lampongstraat). Installed:
+- Djambistraat 9-21
+- Javastraat 97-109 and 113-117
+- Lampongstraat 2-10
+- Soendastraat 10-14 and 18-28
+
+The Opus reviewer cut the first 46 placements to 26, then 5, then 19, then 30, and the final round reached 31. Its rejections:
+- white accents that the photo lacks (cream cornices and sills became dark eaves and stone #4a4a45);
+- a dormer window 2.4× too tall;
+- mirroring decided by the door rather than the window pair;
+- flush doors;
+- the 2025 panorama's blue cast (Lampong brick white-balanced against a downpipe to #807c6d);
+- per-pand measured colours overriding the type palette (Soenda #6c5647, Java #72604f pins).
+
+Kit added, all byte-identical when absent: `dormerWindow` with light/apron/tall; `palette.sash`, so red sashes sit in cream frames; `palette.shade`, so a dark tympanum draws under a band brick; `doorReveal.edge`, a reveal against the party wall; `archRing.colour: wall`; window kind `casement-transom`; and a brickStripes pitch cap raised to 4 m. The shared portiek draws as two dark openings with a 0.3 m pier, because the GLB audit forbids a leaf closer than ~0.27 m to the party wall; the reviewer accepted it at gallery size. Javastraat 97/99 were re-placed into the installed r1 run so that 99 fits the 3,000 triangle budget, which re-lined the row clamp of 101 and 109 (the sheet looks the same). Verdicts are in `docs/reports/indische-strip-verdict-20261110.md`, sheets in map-recall2-source-data `block-face-strips/indische-20261110/`. The Makassarpleinbuurt re-run placed 58 with the existing types but renumbered installed runs, so it was not committed. Never run auto-place buurt-wide over installed runs.
+
+**Feedback E: OSM roof canopies at canopy height; a contemporary family behind `?newbuildFamily=1` (2026-11-10, lane/newbuild-kit-20261110 at d88f1dfdf, opus).** Slab cause: untagged OSM `building=roof` outlines under 1,000 m² were published at the 9 m default, which drew a slab at 8–9 m across a facade (Danzigerkade Ydek w848883149, feedback 2c486751). `osmHeightM` now gives them a 5 m top. `fix-osm-min-level.ts --publish` rewrote 172 canopies (344 features in 68 tiles in both tile sets); the integrator re-ran it on top of the post-2020 pands that share those tiles. They are pinned in `scripts/data/osm-roof-canopies.json` and `check:osm-min-level`. Slabs at 8–9 m: 192 → 20 (the 20 are station-sized or tagged). `contemporaryFamily.ts` (default OFF) covers 2005+ housing in every textured look: area walls measured from 94 panorama fronts, a tall French-balcony preset `modern#9`, and set-back glazed crowns. Storybook generic 2000+ white/pale: 79 % → 26 %. The flag stays off after the integrator looked at the strips (screenshots repo `buildings/2026-11-10-newbuild/all.jpg`):
+- Narva-eiland and the IJburg rows read better.
+- houthaven-2018 turns orange where the photo is dark purple-brown.
+- Zeeburgereiland 2016 turns dark brown where the photo is white (the wave balconies).
+
+Area walls are drawn per area, not per pand, so they overrule the photo on individual blocks. Windowless large buildings are not fixed: 142 of 163 large recipes default to `otherWalls: "blank"`, and a brick bay grid on Houthavenkade 26 failed the 12k triangle gate (31,656).
+**S2: Free Ride pins stay on land and water taps open no pin (2026-11-10, #314, lane/s2-water-taps-20261109 at 4cea44e29, opus; round 1 failed its own gate in the integrator, round 2 S2b).** Measured at Westermarkt, Brouwersgracht and Blauwbrug, 30 water taps and 30 land taps per pose, desktop and iPhone, bike and boat. Before, water taps opened building, street-art, bridge and landmark cards, and a bike's water tap named the quay street; bridge pins sat at the bridge-way × canal-centreline crossing and Westertoren's point is in the Prinsengracht. Round 1 (`src/canalRecall/game/freeRideWater.ts`): `tapOnOpenWater` skips the building/art pick on open water, a bike's water tap opens nothing, a boat's water tap names only its canal; `bridgeMarkerAnchor` / `landAnchor` move pin dots onto land; `markerAt` stem hit narrowed; `labelOverlay.hitTest` uses the name box only. The integrator's run of its own `S2_GATE=1` spec still failed on both engines: 13 pin cards from water taps. Cause (S2b): 11 of those hit the plate's 6 px slop and 2 the stem, and Blauwbrug's dot sat on a deck vertex 1.7 m into the Amstel. Fix: over open water a pin opens only from its plate (no slop, no stem); pin dots keep 3 m from the water's edge (`withLandMargin`). After: 0 pin cards from water taps and 0 dots on water in every row, own and default engine, desktop and iPhone; quiz-mode specs 17 passed. A boat's tap on its own canal still names it (the Free Ride "name what you tapped" card). Open: Westertoren's map point is in the canal, so its pin stands on the quay in front of the tower; an extract coordinate fix would correct it. Strip `ui/2026-11-10-s2-water-taps/`.
+
+**P2: the far city fades into haze at a draw limit; far tiers dissolve out; landmarks keep residency (2026-11-10, #325, user "spin it up" on pop-in, lane/p2-pop-in-20261109 at 53506e12e, opus).** Measured first (`scripts/pop-bands.mjs`, pops ≥ 3 px on screen and not dissolving, by distance band, 60 s per run). The brief's premise was partly wrong: coarse, baked and far-shell cells already dissolved in. What popped was landmark residency churn from the air (271 arrivals, 328 departures, 252 level swaps a minute), whole rebuilds of the single street-kit mesh `__kit`, far-shell and baked cells leaving in one frame, and a depth fade that stopped at 38 % haze so nothing was ever hidden. `?drawLimit` (`engine/drawLimit.ts`, default on): haze reaches the full horizon colour at 2 km on the street (gentle fade from 180 m) and 6 × eye-to-centre (4–9 km) from the air, packed into three.js `fogFar` with no new uniform; the far ring is clamped to the limit. `?popFade` (`engine/popFade.ts`, default on): far-shell and baked cells dissolve out over 600 ms; a landmark model stays resident to 1.25 × reach and for at least 10 s. Pops beyond 1.2 km, aerial desktop: landmark 40→20, kit 29→4; aerial iPhone: far 35→15, kit 9→0. Zero pops inside 250 m in every run before and after, so the clear-band gate proved nothing. Far tier, aerial desktop: 160→96 cells, 70→55.5 MB, 2.33→1.82 M triangles. Frame cost (main-pass wall time) unchanged within noise. The kit-mesh cross-fade sits behind `?kitFade=1`, default off (integrator): the lane's two aerial runs with it ended at 763 and 1,189 MB of JS heap against 613 MB before, unexplained; each kit rebuild keeps the old whole-city kit mesh alive for 600 ms, at up to 29 rebuilds a minute. Open: landmark lod2 ↔ full swaps at 600–1200 m (landmarks take no fog), hysteresis-kept landmarks drawing unhazed past 2 km, the far ↔ coarse hand-over still an instant toggle, trees rebuilding whole, and whether `?drawLimitAirM=2500` reads better. Strips: `ui/2026-11-09-p2-pop-in/` in map-recall2-screenshots.
+**Main's check:canal repaired after the a1 batch (2026-11-10, integrator-a1).** b0d58c5de failed two checks, both caught by the other integrator.
+1. `check:landmark-lods`: the meshopt merge recompressed the 143 street-chunk GLBs, so every chunk's lod2 row named the old sha. Fixed by rebuilding with `npm run build:landmark-lods -- --chunks` (5.34 MB).
+2. `test:coplanar-surfaces` (8415/5383): post-2020 BAG pand 0363100012247366 is the 13,624 m² podium (year 2026, still being finished) of an Overhoeks complex. It was published at a 9 m neighbour-median guess around the 100 m OSM tower w1244980638, which lies wholly inside it, and their walls stripe. The pand was dropped from both tile sets and from `new-pands-supplement.geojson` (1,109 left); its height is unknown and the OSM tower already stands for the building. Seven more supplement pands were underground structures (car parks), so `check:underground-buildings` failed; they were dropped with `drop-underground-buildings.ts --publish` (12 tiles) and from the supplement, which leaves 1,102. `content-stats.json` was also stale and has been regenerated. The world was recompiled.
+
+Lessons:
+- Run `check:canal` (or at least the lods and coplanar checks) after any chunk recompression or tile publish, not only the focused tests.
+- `publish-bag-gaps.ts` should apply the underground rule and a filter for podiums that wholly contain an existing OSM building before it publishes.
+
 **World-v1 republished for the a1 batch (2026-11-10, integrator-a1).** One `world:compile -- --shell --against=none` on origin/main e08d0a1ee plus the a1 round: feedback B land (Houthaven, houseboats kept on water), the 1,110 post-2020 pands, the buurt profiles, the rails (feedback G) and the #171 camera. All 604 cells and their shells were rewritten (1,312 files), and the cells total 9.09 MB against the 10 MB gate. `world:verify` on the published dir: globalFresh, 0 stale, 0 differing. test:world-format 53/53, reachability green including the three Houthaven pins, check:covers ok, explorer-looks rebuilt. Compile 210 s.
 
 **Recipe tiles stay off: the week-2 flip fails acceptance (2026-11-10, lane/recipe-tiles-on-20261110 at c2d1c4304, sonnet).** Snapping widths to 5 cm saves 14 of 4.85 M triangles over the pilot (7 structure groups with 2+ members, 2 within 5 cm), because houses differ in layout, not width; snapping in `fit.ts` broke crowns, so it was reverted. A fresh pilot compile has 13,715 pands, 44.3 MB of mesh against today's 11 MB published tiles, and 930 draws. Pose A/B (desktop 1280×800), draws off → on:

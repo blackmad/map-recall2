@@ -1,0 +1,292 @@
+{
+ "street": "Zeeburgerdijk",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T00:19:32.233Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012081365",
+   "addresses": [
+    "Zeeburgerdijk 120",
+    "Zeeburgerdijk 122"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 122",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 230,
+     "bagId": "0363010001004225"
+    },
+    {
+     "address": "Molukkenstraat 2-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 204,
+     "bagId": "0363010000979763"
+    }
+   ],
+   "units": 8,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12714078314,
+     "lngLat": [
+      4.9392116,
+      52.3659789
+     ],
+     "tags": {
+      "female": "yes",
+      "male": "yes",
+      "name": "Barber School",
+      "shop": "hairdresser"
+     },
+     "fetchedAt": "2026-11-10T00:19:32.233Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012081366",
+   "addresses": [
+    "Zeeburgerdijk 118"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 118-H",
+     "use": "kantoorfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000878423"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012107948",
+   "addresses": [
+    "Zeeburgerdijk 116"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 116-H",
+     "use": "kantoorfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000878419"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236071",
+   "addresses": [
+    "Zeeburgerdijk 114B",
+    "Zeeburgerdijk 114C",
+    "Zeeburgerdijk 114D",
+    "Zeeburgerdijk 114E",
+    "Zeeburgerdijk 114F",
+    "Zeeburgerdijk 114G",
+    "Zeeburgerdijk 114A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Billitonstraat 1",
+     "use": "onderwijsfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000586497"
+    },
+    {
+     "address": "Billitonstraat 1B",
+     "use": "woonfunctie",
+     "areaM2": 184,
+     "bagId": "0363010012116515"
+    },
+    {
+     "address": "Billitonstraat 1C",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010012116516"
+    },
+    {
+     "address": "Zeeburgerdijk 114B",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012116518"
+    },
+    {
+     "address": "Zeeburgerdijk 114C",
+     "use": "woonfunctie",
+     "areaM2": 54,
+     "bagId": "0363010012116519"
+    },
+    {
+     "address": "Zeeburgerdijk 114D",
+     "use": "woonfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012116520"
+    },
+    {
+     "address": "Zeeburgerdijk 114E",
+     "use": "woonfunctie",
+     "areaM2": 219,
+     "bagId": "0363010012116521"
+    },
+    {
+     "address": "Zeeburgerdijk 114F",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010012116522"
+    },
+    {
+     "address": "Zeeburgerdijk 114G",
+     "use": "woonfunctie",
+     "areaM2": 130,
+     "bagId": "0363010012116523"
+    },
+    {
+     "address": "Zeeburgerdijk 114A",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010012116517"
+    },
+    {
+     "address": "Billitonstraat 1A",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010012116514"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012094122",
+   "addresses": [
+    "Zeeburgerdijk 112",
+    "Zeeburgerdijk 112A",
+    "Zeeburgerdijk 112B",
+    "Zeeburgerdijk 112C",
+    "Zeeburgerdijk 112D",
+    "Zeeburgerdijk 112E",
+    "Zeeburgerdijk 112F",
+    "Zeeburgerdijk 112G",
+    "Zeeburgerdijk 112H",
+    "Zeeburgerdijk 112K",
+    "Zeeburgerdijk 112N",
+    "Zeeburgerdijk 112P",
+    "Zeeburgerdijk 112R",
+    "Zeeburgerdijk 112S",
+    "Zeeburgerdijk 112T",
+    "Zeeburgerdijk 112L",
+    "Zeeburgerdijk 112M"
+   ],
+   "groundUnits": [
+    {
+     "address": "Zeeburgerdijk 112",
+     "use": "onderwijsfunctie",
+     "areaM2": 3690,
+     "bagId": "0363010000878418"
+    },
+    {
+     "address": "Zeeburgerdijk 112A",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010012116494"
+    },
+    {
+     "address": "Zeeburgerdijk 112B",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010012116495"
+    },
+    {
+     "address": "Zeeburgerdijk 112C",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010012116496"
+    },
+    {
+     "address": "Zeeburgerdijk 112D",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010012116497"
+    },
+    {
+     "address": "Zeeburgerdijk 112E",
+     "use": "woonfunctie",
+     "areaM2": 134,
+     "bagId": "0363010012116498"
+    },
+    {
+     "address": "Zeeburgerdijk 112F",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010012116499"
+    },
+    {
+     "address": "Zeeburgerdijk 112G",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012116500"
+    },
+    {
+     "address": "Zeeburgerdijk 112H",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012116501"
+    },
+    {
+     "address": "Zeeburgerdijk 112K",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010012116502"
+    },
+    {
+     "address": "Zeeburgerdijk 112N",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012116505"
+    },
+    {
+     "address": "Zeeburgerdijk 112P",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012116506"
+    },
+    {
+     "address": "Zeeburgerdijk 112R",
+     "use": "woonfunctie",
+     "areaM2": 98,
+     "bagId": "0363010012116507"
+    },
+    {
+     "address": "Zeeburgerdijk 112S",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010012116508"
+    },
+    {
+     "address": "Zeeburgerdijk 112T",
+     "use": "woonfunctie",
+     "areaM2": 154,
+     "bagId": "0363010012116509"
+    },
+    {
+     "address": "Zeeburgerdijk 112L",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010012116503"
+    },
+    {
+     "address": "Zeeburgerdijk 112M",
+     "use": "woonfunctie",
+     "areaM2": 258,
+     "bagId": "0363010012116504"
+    }
+   ],
+   "units": 17,
+   "osm": []
+  }
+ ]
+}

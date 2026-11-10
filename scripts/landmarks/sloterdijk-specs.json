@@ -6,7 +6,9 @@
     "modelUrl": "./models/sloterdijk-station.glb",
     "suppressOsmIds": [
       "w268460687",
-      "NL.IMBAG.Pand.0363100012120833"
+      "NL.IMBAG.Pand.0363100012120833",
+      "w640102320",
+      "w640102319"
     ],
     "footprint": {
       "centre": [
@@ -34,7 +36,14 @@
       "sourceUrl": "https://arcam.nl/architectuur-gids/station-sloterdijk/",
       "licence": "CC BY 4.0",
       "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
-      "modifications": "Original glass hall, open white table trusses and raised deck; open circulation below retained. Separate platform canopies, Orlyplein public space and adjacent hotel not suppressed."
+      "modifications": "Original texture-free reconstruction (rebuilt 2026-11-10): both glazed vaults over the north-south viaducts with blue ribs, grey belly, red band and lettering; the glass hall under the white space-frame table on lattice towers with tree feet; the glazed wedge concourse; the Regenboogpad with its two round lift towers; short low-level platform canopies. Plan from the PDOK 2023 orthophoto, heights from 3DBAG, look from Wikimedia Commons and Gemeente Amsterdam panoramas. Orlyplein, the bus station and the adjacent hotel not suppressed."
+    },
+    "materialOverrides": {
+      "stone": "#eeede8",
+      "blue": "#2c6ccf",
+      "greyBrick": "#9a9fa6",
+      "pink": "#8b5bb3",
+      "glass": "#6f8fa3"
     }
   },
   {

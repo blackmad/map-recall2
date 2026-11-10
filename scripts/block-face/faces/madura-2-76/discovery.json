@@ -1,0 +1,1855 @@
+{
+ "street": "Madurastraat",
+ "seed": "0363100012070857",
+ "members": [
+  "0363100012165935",
+  "0363100012157366",
+  "0363100012164080",
+  "0363100012163009",
+  "0363100012164008",
+  "0363100012167145",
+  "0363100012162353",
+  "0363100012158806",
+  "0363100012159187",
+  "0363100012163748",
+  "0363100012161748",
+  "0363100012164515",
+  "0363100012166875",
+  "0363100012153224",
+  "0363100012157786",
+  "0363100012070857"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012165935 (face continues: 099854 110061 127656 086187 147159 103589 100512 095283 103858 121935 069540 166496 152663 155617 165200)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061804",
+   "reason": "frontage 172.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012061846",
+   "reason": "frontage 151.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012062525",
+   "reason": "frontage 49.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012063065",
+   "reason": "frontage 92.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012065129",
+   "reason": "frontage 171.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012066629",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012067136",
+   "reason": "frontage 81.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012067627",
+   "reason": "frontage 135.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012067912",
+   "reason": "frontage 162.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012067983",
+   "reason": "frontage 105.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012069385",
+   "reason": "sightline to Madurastraat crosses 0363100012125662"
+  },
+  {
+   "pandId": "0363100012073492",
+   "reason": "frontage 38.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012076460",
+   "reason": "frontage 163.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012076537",
+   "reason": "frontage 87.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012076648",
+   "reason": "frontage 154.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012077315",
+   "reason": "frontage 78.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012078037",
+   "reason": "frontage 90.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012079478",
+   "reason": "frontage 147.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012082559",
+   "reason": "frontage 128.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012084055",
+   "reason": "frontage 37.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012084463",
+   "reason": "frontage 135.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012086581",
+   "reason": "frontage 38.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012086718",
+   "reason": "frontage 128.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012088922",
+   "reason": "frontage 176.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012089298",
+   "reason": "frontage 150.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012089653",
+   "reason": "frontage 41.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012089681",
+   "reason": "frontage 192.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012091463",
+   "reason": "frontage 135.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012091687",
+   "reason": "frontage 133.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012092717",
+   "reason": "frontage 252.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012093892",
+   "reason": "frontage 134.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012097709",
+   "reason": "frontage 37.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012098294",
+   "reason": "frontage 89.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012099701",
+   "reason": "frontage 54.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012103615",
+   "reason": "frontage 149.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012103695",
+   "reason": "frontage 57.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012104532",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012105220",
+   "reason": "frontage 163.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012109925",
+   "reason": "frontage 135.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012111692",
+   "reason": "frontage 101.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012112631",
+   "reason": "frontage 138.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012112843",
+   "reason": "frontage 208.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012113972",
+   "reason": "frontage 120.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012114089",
+   "reason": "frontage 207.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012114339",
+   "reason": "frontage 47.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012114510",
+   "reason": "frontage 37.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012115824",
+   "reason": "frontage 145.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012116052",
+   "reason": "frontage 158.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012116382",
+   "reason": "frontage 131.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012116648",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012116704",
+   "reason": "frontage 174.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012117157",
+   "reason": "frontage 66.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012117241",
+   "reason": "frontage 66.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012117388",
+   "reason": "frontage 127.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012118756",
+   "reason": "frontage 179.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012119175",
+   "reason": "frontage 33.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012120221",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012120330",
+   "reason": "frontage 66.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012120446",
+   "reason": "frontage 36.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012121308",
+   "reason": "frontage 79.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012121673",
+   "reason": "frontage 102.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012122004",
+   "reason": "frontage 146.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012122126",
+   "reason": "frontage 99.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012124656",
+   "reason": "frontage 33.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012125134",
+   "reason": "frontage 102.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012125662",
+   "reason": "sightline to Madurastraat crosses 0363100012151222"
+  },
+  {
+   "pandId": "0363100012127054",
+   "reason": "frontage 67.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012128833",
+   "reason": "frontage 139.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012128935",
+   "reason": "frontage 164.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012129388",
+   "reason": "frontage 108.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012131645",
+   "reason": "frontage 170.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012132654",
+   "reason": "frontage 169.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012133527",
+   "reason": "frontage 159.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012133608",
+   "reason": "frontage 139.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012133669",
+   "reason": "frontage 144.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012134187",
+   "reason": "frontage 164.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012134278",
+   "reason": "frontage 161.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012135028",
+   "reason": "frontage 141.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012135214",
+   "reason": "frontage 149.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012135758",
+   "reason": "frontage 230.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012136138",
+   "reason": "frontage 52.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012137632",
+   "reason": "frontage 83.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012138801",
+   "reason": "frontage 115.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012139300",
+   "reason": "frontage 107.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012141428",
+   "reason": "frontage 89.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012142289",
+   "reason": "frontage 141.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012142728",
+   "reason": "frontage 149.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012143405",
+   "reason": "frontage 162.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012143930",
+   "reason": "frontage 66.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012144166",
+   "reason": "frontage 126.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012145536",
+   "reason": "frontage 181.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012147154",
+   "reason": "frontage 125.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012147735",
+   "reason": "frontage 100.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012149400",
+   "reason": "frontage 121.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012151577",
+   "reason": "frontage 154.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152417",
+   "reason": "frontage 40.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152491",
+   "reason": "frontage 200.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152587",
+   "reason": "frontage 139.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152591",
+   "reason": "frontage 73.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152653",
+   "reason": "frontage 74.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152720",
+   "reason": "frontage 31.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152730",
+   "reason": "frontage 198.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152752",
+   "reason": "frontage 34.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152808",
+   "reason": "frontage 219.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152916",
+   "reason": "frontage 98.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012152938",
+   "reason": "frontage 78.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012153019",
+   "reason": "frontage 67.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012153123",
+   "reason": "frontage 169.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012153157",
+   "reason": "frontage 86.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012153180",
+   "reason": "frontage 145.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012153181",
+   "reason": "frontage 147.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012153404",
+   "reason": "frontage 32.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012153445",
+   "reason": "sightline to Madurastraat crosses 0363100012070857"
+  },
+  {
+   "pandId": "0363100012153604",
+   "reason": "frontage 40.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012153798",
+   "reason": "frontage 95.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012154130",
+   "reason": "frontage 45.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012154152",
+   "reason": "frontage 88.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012154194",
+   "reason": "frontage 199.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012154207",
+   "reason": "frontage 46.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012154266",
+   "reason": "frontage 111.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012154338",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012155342",
+   "reason": "frontage 203.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012155479",
+   "reason": "frontage 40.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012155622",
+   "reason": "frontage 138.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012155672",
+   "reason": "frontage 120.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012155800",
+   "reason": "frontage 45.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012155855",
+   "reason": "frontage 99.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012155944",
+   "reason": "frontage 141.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012155981",
+   "reason": "frontage 39.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156008",
+   "reason": "frontage 70.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156012",
+   "reason": "frontage 142.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156032",
+   "reason": "frontage 101.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156109",
+   "reason": "sightline to Madurastraat crosses 0363100012152663"
+  },
+  {
+   "pandId": "0363100012156175",
+   "reason": "frontage 202.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156240",
+   "reason": "frontage 49.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156254",
+   "reason": "frontage 211.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156328",
+   "reason": "frontage 85.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156404",
+   "reason": "frontage 38.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156428",
+   "reason": "frontage 235.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156489",
+   "reason": "frontage 179.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156603",
+   "reason": "frontage 51.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156646",
+   "reason": "frontage 183.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156651",
+   "reason": "frontage 87.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156701",
+   "reason": "frontage 102.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156728",
+   "reason": "frontage 170.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156762",
+   "reason": "frontage 138.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156806",
+   "reason": "frontage 79.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156865",
+   "reason": "frontage 99.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156954",
+   "reason": "frontage 34.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012156955",
+   "reason": "frontage 129.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157049",
+   "reason": "frontage 70.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157097",
+   "reason": "frontage 215.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157214",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012157248",
+   "reason": "frontage 138.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157278",
+   "reason": "frontage 41.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157309",
+   "reason": "frontage 119.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157328",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012157361",
+   "reason": "frontage 77.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157520",
+   "reason": "frontage 77.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157639",
+   "reason": "frontage 194.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157682",
+   "reason": "frontage 145.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157779",
+   "reason": "frontage 202.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157805",
+   "reason": "frontage 212.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157848",
+   "reason": "frontage 147.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157865",
+   "reason": "frontage 111.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157913",
+   "reason": "frontage 137.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012157937",
+   "reason": "frontage 200.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158155",
+   "reason": "frontage 42.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158157",
+   "reason": "frontage 198.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158166",
+   "reason": "frontage 101.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158220",
+   "reason": "sightline to Madurastraat crosses 0363100012070857"
+  },
+  {
+   "pandId": "0363100012158249",
+   "reason": "frontage 68.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158325",
+   "reason": "frontage 75.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158348",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012158422",
+   "reason": "frontage 73.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158471",
+   "reason": "frontage 187.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158528",
+   "reason": "frontage 132.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158549",
+   "reason": "frontage 132.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158614",
+   "reason": "frontage 142.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158638",
+   "reason": "frontage 140.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158694",
+   "reason": "frontage 84.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158721",
+   "reason": "frontage 78.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158741",
+   "reason": "frontage 77.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158823",
+   "reason": "frontage 72.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158854",
+   "reason": "frontage 82.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158898",
+   "reason": "frontage 37.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012158970",
+   "reason": "frontage 197.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159033",
+   "reason": "frontage 150.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159197",
+   "reason": "frontage 42.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159398",
+   "reason": "frontage 86.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159432",
+   "reason": "frontage 102.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159437",
+   "reason": "frontage 174.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159475",
+   "reason": "frontage 77.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159524",
+   "reason": "frontage 173.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159561",
+   "reason": "frontage 173.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159581",
+   "reason": "frontage 99.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159602",
+   "reason": "frontage 98.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012159846",
+   "reason": "frontage 83.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160006",
+   "reason": "frontage 174.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160050",
+   "reason": "frontage 72.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160057",
+   "reason": "frontage 69.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160166",
+   "reason": "frontage 39.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160203",
+   "reason": "frontage 143.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160214",
+   "reason": "frontage 201.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160244",
+   "reason": "frontage 68.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160251",
+   "reason": "frontage 38.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160256",
+   "reason": "frontage 139.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160272",
+   "reason": "frontage 178.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160383",
+   "reason": "frontage 76.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160494",
+   "reason": "frontage 223.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160632",
+   "reason": "frontage 98.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160710",
+   "reason": "frontage 171.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160811",
+   "reason": "frontage 47.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160849",
+   "reason": "frontage 138.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160862",
+   "reason": "frontage 131.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160942",
+   "reason": "frontage 133.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160973",
+   "reason": "frontage 40.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012160987",
+   "reason": "frontage 68.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161026",
+   "reason": "frontage 48.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161028",
+   "reason": "frontage 141.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161084",
+   "reason": "frontage 198.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161217",
+   "reason": "frontage 72.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161342",
+   "reason": "frontage 171.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161356",
+   "reason": "frontage 147.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161364",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012161436",
+   "reason": "frontage 37.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161487",
+   "reason": "frontage 196.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161587",
+   "reason": "frontage 130.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161628",
+   "reason": "frontage 40.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161647",
+   "reason": "frontage 152.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161665",
+   "reason": "frontage 100.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161683",
+   "reason": "frontage 39.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161726",
+   "reason": "frontage 67.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161766",
+   "reason": "frontage 145.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161834",
+   "reason": "frontage 227.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161846",
+   "reason": "frontage 149.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161911",
+   "reason": "frontage 198.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012161923",
+   "reason": "frontage 140.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162002",
+   "reason": "frontage 153.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162053",
+   "reason": "frontage 100.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162068",
+   "reason": "frontage 165.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162118",
+   "reason": "frontage 216.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162390",
+   "reason": "frontage 114.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162407",
+   "reason": "frontage 112.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162476",
+   "reason": "frontage 68.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162500",
+   "reason": "frontage 161.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162548",
+   "reason": "frontage 156.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162580",
+   "reason": "frontage 171.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162596",
+   "reason": "frontage 196.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162667",
+   "reason": "frontage 38.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162736",
+   "reason": "frontage 69.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162859",
+   "reason": "frontage 50.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162889",
+   "reason": "frontage 157.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162917",
+   "reason": "frontage 143.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012162952",
+   "reason": "frontage 75.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163032",
+   "reason": "frontage 112.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163057",
+   "reason": "frontage 173.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163107",
+   "reason": "sightline to Madurastraat crosses 0363100012166496"
+  },
+  {
+   "pandId": "0363100012163184",
+   "reason": "frontage 220.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163188",
+   "reason": "frontage 232.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163243",
+   "reason": "frontage 77.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163348",
+   "reason": "frontage 141.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163352",
+   "reason": "frontage 194.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163445",
+   "reason": "frontage 38.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163645",
+   "reason": "frontage 191.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163709",
+   "reason": "frontage 98.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163782",
+   "reason": "frontage 80.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163800",
+   "reason": "frontage 38.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163862",
+   "reason": "frontage 138.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163863",
+   "reason": "frontage 48.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163902",
+   "reason": "frontage 49.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163975",
+   "reason": "frontage 40.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012163982",
+   "reason": "sightline to Madurastraat crosses 0363100012095283"
+  },
+  {
+   "pandId": "0363100012164011",
+   "reason": "frontage 98.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164083",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012164151",
+   "reason": "frontage 207.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164155",
+   "reason": "sightline to Madurastraat crosses 0363100012110061"
+  },
+  {
+   "pandId": "0363100012164161",
+   "reason": "frontage 146.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164292",
+   "reason": "frontage 142.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164378",
+   "reason": "frontage 69.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164386",
+   "reason": "frontage 207.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164399",
+   "reason": "frontage 113.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164513",
+   "reason": "frontage 45.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164593",
+   "reason": "frontage 172.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164675",
+   "reason": "frontage 36.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164779",
+   "reason": "frontage 175.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164891",
+   "reason": "frontage 71.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164895",
+   "reason": "frontage 170.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012164919",
+   "reason": "frontage 80.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165376",
+   "reason": "frontage 149.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165390",
+   "reason": "frontage 129.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165406",
+   "reason": "frontage 113.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165443",
+   "reason": "frontage 78.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165648",
+   "reason": "frontage 49.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165652",
+   "reason": "frontage 80.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165715",
+   "reason": "frontage 114.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165734",
+   "reason": "frontage 197.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165831",
+   "reason": "frontage 88.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165884",
+   "reason": "frontage 197.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165886",
+   "reason": "frontage 67.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012165973",
+   "reason": "frontage 186.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166139",
+   "reason": "frontage 48.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166153",
+   "reason": "frontage 77.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166195",
+   "reason": "frontage 170.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166223",
+   "reason": "frontage 172.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166239",
+   "reason": "frontage 47.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166312",
+   "reason": "frontage 111.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166331",
+   "reason": "frontage 100.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166401",
+   "reason": "frontage 197.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166460",
+   "reason": "frontage 38.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166548",
+   "reason": "frontage 181.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166615",
+   "reason": "frontage 199.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166688",
+   "reason": "frontage 130.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166721",
+   "reason": "frontage 145.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166723",
+   "reason": "frontage 175.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166770",
+   "reason": "frontage 70.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012166853",
+   "reason": "frontage 199.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012167118",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012167132",
+   "reason": "frontage 198.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012167133",
+   "reason": "frontage 144.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012167198",
+   "reason": "frontage 41.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012167240",
+   "reason": "frontage 85.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012167312",
+   "reason": "frontage 175.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012167320",
+   "reason": "frontage 77.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012167385",
+   "reason": "frontage 71.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012167440",
+   "reason": "frontage 190.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012183819",
+   "reason": "frontage 161.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012183905",
+   "reason": "frontage 162.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012185545",
+   "reason": "sightline to Madurastraat crosses 0363100012140805"
+  },
+  {
+   "pandId": "0363100012186474",
+   "reason": "sightline to Madurastraat crosses 0363100012153633"
+  },
+  {
+   "pandId": "0363100012186621",
+   "reason": "frontage 161.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012186622",
+   "reason": "frontage 159.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012186687",
+   "reason": "frontage 30.5 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012186766",
+   "reason": "frontage 89.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012186806",
+   "reason": "frontage 143.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012187779",
+   "reason": "frontage 30.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012190002",
+   "reason": "sightline to Madurastraat crosses 0363100012103858"
+  },
+  {
+   "pandId": "0363100012190639",
+   "reason": "frontage 83.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012200422",
+   "reason": "sightline to Madurastraat crosses 0363100012075745"
+  },
+  {
+   "pandId": "0363100012201499",
+   "reason": "frontage 88.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012205508",
+   "reason": "frontage 95.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012205851",
+   "reason": "sightline to Madurastraat crosses 0363100012166898"
+  },
+  {
+   "pandId": "0363100012206112",
+   "reason": "frontage 91.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012207223",
+   "reason": "frontage 148.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012207999",
+   "reason": "frontage 149.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012208118",
+   "reason": "frontage 101.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012208413",
+   "reason": "frontage 30.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012209801",
+   "reason": "frontage 161.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012212044",
+   "reason": "frontage 90.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012215803",
+   "reason": "sightline to Madurastraat crosses 0363100012103589"
+  },
+  {
+   "pandId": "0363100012216045",
+   "reason": "sightline to Madurastraat crosses 0363100012075745"
+  },
+  {
+   "pandId": "0363100012217983",
+   "reason": "sightline to Madurastraat crosses 0363100012155617"
+  },
+  {
+   "pandId": "0363100012222144",
+   "reason": "sightline to Madurastraat crosses 0363100012167145"
+  },
+  {
+   "pandId": "0363100012223428",
+   "reason": "frontage 91.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012223471",
+   "reason": "sightline to Madurastraat crosses 0363100012164008"
+  },
+  {
+   "pandId": "0363100012225201",
+   "reason": "sightline to Madurastraat crosses 0363100012137665"
+  },
+  {
+   "pandId": "0363100012225491",
+   "reason": "sightline to Madurastraat crosses 0363100012100512"
+  },
+  {
+   "pandId": "0363100012227379",
+   "reason": "frontage 89.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012227581",
+   "reason": "sightline to Madurastraat crosses 0363100012144327"
+  },
+  {
+   "pandId": "0363100012228273",
+   "reason": "frontage 91.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012228479",
+   "reason": "frontage 162.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012229693",
+   "reason": "frontage 101.7 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012230151",
+   "reason": "frontage 34.4 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012231219",
+   "reason": "frontage 89.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012232763",
+   "reason": "frontage 158.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012233868",
+   "reason": "frontage 32.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012234025",
+   "reason": "frontage 111.9 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012234153",
+   "reason": "sightline to Madurastraat crosses 0363100012069540"
+  },
+  {
+   "pandId": "0363100012234534",
+   "reason": "sightline to Madurastraat crosses 0363100012123747"
+  },
+  {
+   "pandId": "0363100012234545",
+   "reason": "frontage 45.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236009",
+   "reason": "frontage 155.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236050",
+   "reason": "frontage 34.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236289",
+   "reason": "frontage 158.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236343",
+   "reason": "frontage 78.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236382",
+   "reason": "frontage 129.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236410",
+   "reason": "frontage 110.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236589",
+   "reason": "frontage 137.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236599",
+   "reason": "frontage 84.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236646",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012236694",
+   "reason": "frontage 81.6 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236709",
+   "reason": "frontage 116.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012236785",
+   "reason": "no frontage on Madurastraat: No footprint edge faces Madurastraat"
+  },
+  {
+   "pandId": "0363100012236937",
+   "reason": "frontage 138.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012237011",
+   "reason": "frontage 177.3 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012237086",
+   "reason": "frontage 82.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012237101",
+   "reason": "frontage 41.1 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012237168",
+   "reason": "frontage 111.0 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012239390",
+   "reason": "frontage 39.2 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012240321",
+   "reason": "frontage 111.8 m from Madurastraat"
+  },
+  {
+   "pandId": "0363100012240920",
+   "reason": "sightline to Madurastraat crosses 0363100012071940"
+  },
+  {
+   "pandId": "0363100012062668",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012071940",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012075745",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094808",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012099836",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012104596",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106733",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012110087",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012118382",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012119955",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012123747",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012132944",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137665",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012137853",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012139551",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140805",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012143434",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144327",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012146568",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012150462",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151222",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153633",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166898",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012207963",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012165935",
+   "alongM": -87.05,
+   "widthM": 5.37,
+   "eavesM": 13.55,
+   "roofMaxM": 15.52,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157366",
+   "alongM": -81.68,
+   "widthM": 5.39,
+   "eavesM": 12.93,
+   "roofMaxM": 15.53,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164080",
+   "alongM": -76.27,
+   "widthM": 5.43,
+   "eavesM": 12.84,
+   "roofMaxM": 15.56,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163009",
+   "alongM": -70.97,
+   "widthM": 5.18,
+   "eavesM": 13.08,
+   "roofMaxM": 15.49,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164008",
+   "alongM": -65.79,
+   "widthM": 5.18,
+   "eavesM": 12.54,
+   "roofMaxM": 15.55,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012167145",
+   "alongM": -60.61,
+   "widthM": 5.18,
+   "eavesM": 15.46,
+   "roofMaxM": 15.68,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012162353",
+   "alongM": -55.43,
+   "widthM": 5.2,
+   "eavesM": 13.02,
+   "roofMaxM": 15.6,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012158806",
+   "alongM": -50.26,
+   "widthM": 5.15,
+   "eavesM": 15.06,
+   "roofMaxM": 18.18,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159187",
+   "alongM": -44.95,
+   "widthM": 5.47,
+   "eavesM": 13,
+   "roofMaxM": 18.03,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012163748",
+   "alongM": -39.47,
+   "widthM": 5.5,
+   "eavesM": 12.69,
+   "roofMaxM": 17.6,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012161748",
+   "alongM": -33.99,
+   "widthM": 5.45,
+   "eavesM": 13.22,
+   "roofMaxM": 18.28,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164515",
+   "alongM": -28.54,
+   "widthM": 5.47,
+   "eavesM": 13.35,
+   "roofMaxM": 18.56,
+   "storeys3dbag": 0,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012166875",
+   "alongM": -23.09,
+   "widthM": 5.43,
+   "eavesM": 13.33,
+   "roofMaxM": 15.58,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012153224",
+   "alongM": -17.66,
+   "widthM": 5.44,
+   "eavesM": 13,
+   "roofMaxM": 16.19,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012157786",
+   "alongM": -9.65,
+   "widthM": 10.58,
+   "eavesM": 13.12,
+   "roofMaxM": 16.63,
+   "storeys3dbag": 5,
+   "builtYear": 1902,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012070857",
+   "alongM": 0,
+   "widthM": 8.72,
+   "eavesM": 14,
+   "roofMaxM": 18.68,
+   "storeys3dbag": 5,
+   "builtYear": 1994,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

@@ -1,0 +1,116 @@
+{
+ "street": "Javastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:27:15.455Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012150083",
+   "addresses": [
+    "Javastraat 113"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 113-H",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 138,
+     "bagId": "0363010000689546"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103232",
+   "addresses": [
+    "Javastraat 115"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 115-H",
+     "use": "winkelfunctie,woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000689556"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012141749",
+   "addresses": [
+    "Javastraat 117"
+   ],
+   "groundUnits": [
+    {
+     "address": "Javastraat 117-H",
+     "use": "winkelfunctie",
+     "areaM2": 78,
+     "bagId": "0363010001000951"
+    },
+    {
+     "address": "Javastraat 117-H",
+     "use": "winkelfunctie",
+     "areaM2": 47,
+     "bagId": "0363010012105001"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2827515004,
+     "lngLat": [
+      4.9368689,
+      52.3638828
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "117-H",
+      "addr:postcode": "1094HD",
+      "addr:street": "Javastraat",
+      "check_date:opening_hours": "2026-10-03",
+      "name": "Little Coconuts",
+      "opening_hours": "Mo-Sa 09:00-17:00",
+      "shop": "toys",
+      "source": "BAG",
+      "source:date": "2025-02-13"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 12704741284,
+     "lngLat": [
+      4.9369018,
+      52.3638159
+     ],
+     "tags": {
+      "amenity": "waste_basket"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.6
+    },
+    {
+     "type": "node",
+     "id": 12704750313,
+     "lngLat": [
+      4.9368824,
+      52.3638155
+     ],
+     "tags": {
+      "amenity": "bench",
+      "backrest": "no"
+     },
+     "fetchedAt": "2026-11-09T23:27:15.455Z",
+     "match": "frontage",
+     "distanceM": 5.6
+    }
+   ]
+  }
+ ]
+}

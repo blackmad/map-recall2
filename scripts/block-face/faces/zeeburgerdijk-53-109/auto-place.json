@@ -1,0 +1,970 @@
+{
+ "face": "zeeburgerdijk-53-109",
+ "street": "Zeeburgerdijk",
+ "library": "indische-buurt",
+ "stripDate": "2023-01-02",
+ "seconds": 2.95,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012154823",
+   "address": "Zeeburgerdijk 53",
+   "builtYear": 1920,
+   "widthM": 6,
+   "eavesM": 6.2,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": null,
+    "wallRaw": "#594e47",
+    "skyline": {
+     "eavesM": 21.05,
+     "eavesRow": 50,
+     "confidence": 0.6,
+     "crown": {
+      "widthM": 0.53,
+      "riseM": 1.25,
+      "topWidthM": 0.2,
+      "centre": 0.05
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 5.5,
+     "bayCentre": 0.5,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 5.5 m @ 0.69), 0 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 5.5,
+       "centre": 0.5,
+       "light": 0.69
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0.02,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1920, type 1910-1914)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1920, type 1910-1914"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 6.2 m = 4 storeys of 1.55 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.365 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012106205",
+   "address": "Zeeburgerdijk 55",
+   "builtYear": 1926,
+   "widthM": 16.81,
+   "eavesM": 18.95,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#a39181",
+    "wallRaw": "#b4aa98",
+    "skyline": {
+     "eavesM": 17.57,
+     "eavesRow": 189,
+     "confidence": 0.89,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 4.7,
+      "topWidthM": 0.25,
+      "centre": 0.87
+     }
+    },
+    "stucco": true,
+    "bands": 4,
+    "columns": 10,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.606,
+    "structure": {
+     "bayWidthM": 2.6,
+     "bayCentre": 0.08,
+     "balconies": false,
+     "why": "no dark open axis (light ones: 2.52 m @ 1), 2 wide slab(s)",
+     "openAxes": [
+      {
+       "widthM": 2.52,
+       "centre": 0.08,
+       "light": 1
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 14.95,
+       "widthM": 1.27,
+       "centre": 0.69
+      },
+      {
+       "atM": 8.72,
+       "widthM": 0.82,
+       "centre": 0.4
+      },
+      {
+       "atM": 6.02,
+       "widthM": 0.97,
+       "centre": 0.39
+      },
+      {
+       "atM": 5.35,
+       "widthM": 1.43,
+       "centre": 0.39
+      }
+     ]
+    },
+    "voidShare": 0.07,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: built 1926, type 1910-1914; frontage 16.81 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "built 1926, type 1910-1914",
+     "frontage 16.81 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 18.95 m = 4 storeys of 4.74 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 0,
+      "note": "strip accent share 0.521 (stucco)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 10 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012085899",
+   "address": "Zeeburgerdijk 59A",
+   "builtYear": 1916,
+   "widthM": 6.36,
+   "eavesM": 12.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836556",
+    "wallRaw": "#745e4f",
+    "skyline": {
+     "eavesM": 13.95,
+     "eavesRow": 334,
+     "confidence": 0.97,
+     "crown": {
+      "widthM": 1.45,
+      "riseM": 3.9,
+      "topWidthM": 0.07,
+      "centre": 0.12
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.217,
+    "structure": {
+     "bayWidthM": 1.77,
+     "bayCentre": 0.68,
+     "balconies": true,
+     "why": "dark open axis 0.88 m at 0.6 (light 0.48): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.88,
+       "centre": 0.6,
+       "light": 0.48
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.76,
+       "light": 0.42
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.27,
+       "widthM": 1.93,
+       "centre": 0.67
+      },
+      {
+       "atM": 6.35,
+       "widthM": 1.68,
+       "centre": 0.69
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236305",
+   "address": "Zeeburgerdijk 61A",
+   "builtYear": 1916,
+   "widthM": 12.37,
+   "eavesM": 12.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#866958",
+    "wallRaw": "#6d594c",
+    "skyline": {
+     "eavesM": 14.53,
+     "eavesRow": 311,
+     "confidence": 0.94,
+     "crown": {
+      "widthM": 3.08,
+      "riseM": 2,
+      "topWidthM": 0.75,
+      "centre": 0.51
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.139,
+    "structure": {
+     "bayWidthM": 1.77,
+     "bayCentre": 0.16,
+     "balconies": true,
+     "why": "dark open axis 0.93 m at 0.12 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.93,
+       "centre": 0.12,
+       "light": 0.43
+      },
+      {
+       "widthM": 1.68,
+       "centre": 0.85,
+       "light": 0.23
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.27,
+       "widthM": 1.9,
+       "centre": 0.16
+      },
+      {
+       "atM": 8.82,
+       "widthM": 0.97,
+       "centre": 0.9
+      },
+      {
+       "atM": 6.35,
+       "widthM": 1.88,
+       "centre": 0.15
+      },
+      {
+       "atM": 5.75,
+       "widthM": 1.15,
+       "centre": 0.78
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.06
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 12.37 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 12.37 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.87 m = 4 storeys of 3.22 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.117 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 2 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150096",
+   "address": "Zeeburgerdijk 63A",
+   "builtYear": 1916,
+   "widthM": 6.32,
+   "eavesM": 12.78,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7d6456",
+    "wallRaw": "#6e594c",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 352,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.88,
+      "riseM": 1.1,
+      "topWidthM": 1.52,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.194,
+    "structure": {
+     "bayWidthM": 1.7,
+     "bayCentre": 0.36,
+     "balconies": true,
+     "why": "dark open axis 0.7 m at 0.27 (light 0.37): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.7,
+       "centre": 0.27,
+       "light": 0.37
+      },
+      {
+       "widthM": 0.78,
+       "centre": 0.44,
+       "light": 0.42
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.25,
+       "widthM": 1.9,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012082517",
+   "address": "Zeeburgerdijk 65C",
+   "builtYear": 1916,
+   "widthM": 7.59,
+   "eavesM": 9.86,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#886d5c",
+    "wallRaw": "#665346",
+    "skyline": {
+     "eavesM": 11.68,
+     "eavesRow": 425,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.73,
+      "riseM": 9.68,
+      "topWidthM": 0.4,
+      "centre": 0.59
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.084,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best indisch-1914-red-sash-pairs scores 0.6 < 0.7 (3DBAG eaves 9.86 m = 4 storeys of 2.46 m vs the type's 3.21 m; 3DBAG bouwlagen 4 vs 5)",
+   "best": {
+    "type": "indisch-1914-red-sash-pairs",
+    "score": 0.6,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.86 m = 4 storeys of 2.46 m vs the type's 3.21 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.9 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.057 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 4 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012068787",
+   "address": "Zeeburgerdijk 67B",
+   "builtYear": 1916,
+   "widthM": 7.4,
+   "eavesM": 9.7,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7c6253",
+    "wallRaw": "#6f5a4b",
+    "skyline": {
+     "eavesM": 11.45,
+     "eavesRow": 434,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.57,
+      "riseM": 0.93,
+      "topWidthM": 0.57,
+      "centre": 0.58
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.302,
+    "structure": {
+     "bayWidthM": 1.65,
+     "bayCentre": 0.46,
+     "balconies": true,
+     "why": "dark open axis 0.6 m at 0.39 (light 0.43): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.6,
+       "centre": 0.39,
+       "light": 0.43
+      },
+      {
+       "widthM": 0.7,
+       "centre": 0.53,
+       "light": 0.4
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 5.72,
+       "widthM": 1,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.1
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 7.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 7.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.7 m = 4 storeys of 2.42 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.188 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012150787",
+   "address": "Zeeburgerdijk 69A",
+   "builtYear": 1916,
+   "widthM": 7.4,
+   "eavesM": 9.82,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8e725e",
+    "wallRaw": "#655244",
+    "skyline": {
+     "eavesM": 12.15,
+     "eavesRow": 406,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.4,
+      "riseM": 8.3,
+      "topWidthM": 0.13,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.05,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.73 m at 0.51 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.73,
+       "centre": 0.51,
+       "light": 0.29
+      }
+     ],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 7.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 7.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.82 m = 4 storeys of 2.46 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.035 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012101257",
+   "address": "Zeeburgerdijk 71B",
+   "builtYear": 1916,
+   "widthM": 7.4,
+   "eavesM": 9.8,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#896d5c",
+    "wallRaw": "#6d594a",
+    "skyline": {
+     "eavesM": 11.5,
+     "eavesRow": 432,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.25,
+      "riseM": 10.55,
+      "topWidthM": 0.6,
+      "centre": 0.9
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.143,
+    "structure": {
+     "bayWidthM": 1.63,
+     "bayCentre": 0.48,
+     "balconies": true,
+     "why": "dark open axis 0.85 m at 0.42 (light 0.38): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.85,
+       "centre": 0.42,
+       "light": 0.38
+      },
+      {
+       "widthM": 0.85,
+       "centre": 0.55,
+       "light": 0.43
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.2,
+       "widthM": 1.5,
+       "centre": 0.47
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 7.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 7.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.8 m = 4 storeys of 2.45 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.1 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012081431",
+   "address": "Zeeburgerdijk 73A",
+   "builtYear": 1916,
+   "widthM": 7.4,
+   "eavesM": 9.85,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8a6f5e",
+    "wallRaw": "#655448",
+    "skyline": {
+     "eavesM": 13.15,
+     "eavesRow": 366,
+     "confidence": 1,
+     "crown": {
+      "widthM": 3.52,
+      "riseM": 7.62,
+      "topWidthM": 0.03,
+      "centre": 0.26
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.05,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.75 m at 0.53 (light 0.26): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.75,
+       "centre": 0.53,
+       "light": 0.26
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.25,
+       "widthM": 0.85,
+       "centre": 0.55
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 7.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 7.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.85 m = 4 storeys of 2.46 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.036 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 4 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012089774",
+   "address": "Zeeburgerdijk 75B",
+   "builtYear": 1916,
+   "widthM": 7.4,
+   "eavesM": 9.87,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#806755",
+    "wallRaw": "#6c5849",
+    "skyline": {
+     "eavesM": 11.7,
+     "eavesRow": 424,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 1.5,
+      "topWidthM": 0.75,
+      "centre": 0.52
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.129,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.9 m at 0.46 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.9,
+       "centre": 0.46,
+       "light": 0.29
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.58,
+       "light": 0.38
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.2,
+       "widthM": 1.68,
+       "centre": 0.5
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1912-java-mansard-arches: frontage 7.4 m, type 5.6-6.4 m)",
+   "best": {
+    "type": "indisch-1912-java-mansard-arches",
+    "score": 0,
+    "veto": [
+     "frontage 7.4 m, type 5.6-6.4 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "3DBAG eaves 9.87 m = 4 storeys of 2.47 m vs the type's 3.08 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 0,
+      "note": "3DBAG bouwlagen 4 vs 5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.094 (brick)"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

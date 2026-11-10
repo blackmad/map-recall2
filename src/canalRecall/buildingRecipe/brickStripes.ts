@@ -13,7 +13,7 @@ import type {CanalhouseFacadeBlock} from '../canalhouseRecipes.ts';
 export interface BrickStripeZone {
   /** [foot of the lowest stripe, the height no stripe passes], metres over the front's ground (0..30). */
   rise: [number, number];
-  /** Metres from one stripe's foot to the next (0.1..1.5). */
+  /** Metres from one stripe's foot to the next (0.1..4). */
   pitch: number;
   /** Stripe height in metres (0.04 .. pitch - 0.03). */
   stripe: number;
@@ -34,8 +34,8 @@ export function brickStripeProblems(zones: unknown, band: string | undefined, re
   zones.forEach((z: any, i) => {
     const a = `${at}.brickStripes[${i}]`;
     if (!z || typeof z !== 'object' || Object.keys(z).some(k => !KEYS.includes(k))) { p.push(`${a}: {rise, pitch, stripe, span?}`); return; }
-    const pitchOk = num(z.pitch, 0.1, 1.5);
-    if (!pitchOk) p.push(`${a}.pitch: 0.1..1.5 m`);
+    const pitchOk = num(z.pitch, 0.1, 4);
+    if (!pitchOk) p.push(`${a}.pitch: 0.1..4 m`);
     else if (!num(z.stripe, 0.04, z.pitch - 0.03)) p.push(`${a}.stripe: 0.04 m .. pitch - 0.03 m`);
     if (!Array.isArray(z.rise) || z.rise.length !== 2 || !num(z.rise[0], 0, 30) || !num(z.rise[1], z.rise[0] + (pitchOk ? z.pitch : 0), 30)) p.push(`${a}.rise: [foot, limit] in metres, at least one pitch apart, at most 30 m`);
     if (z.span !== undefined && (!Array.isArray(z.span) || z.span.length !== 2 || !num(z.span[0], 0, 1) || !num(z.span[1], 0, 1) || z.span[1] - z.span[0] < 0.03)) p.push(`${a}.span: [from, to] shares of the front, from < to`);

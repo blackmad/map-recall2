@@ -23,6 +23,7 @@
  *   a lifted detail chunk stripes through the complementary dissolve, swap-zfight at s1-hoftuin). A cell installed
  *   without its CPU copy is fetched again when it comes within that radius.
  */
+import { LeavingFades, popFadeFlag } from './popFade.js';
 import { CELL_GRID, cellBounds, parseCellKey } from '../world/cellGrid.js';
 import { shellOrigin } from '../world/shellMesh.js';
 import type { BakedRange } from '../world/bakedCellArrays.js';
@@ -463,7 +464,7 @@ export class BakedCoarse {
       lifted: keepPositions, liftable: keepPositions && (data.positionUnit ?? 1) === 1,
       ...(clone ? { fade: { start: performance.now(), clone, source: material } } : {}),
       ...(keepPositions ? { lift: { positions, unit, pending: [...ranges.keys()], applied: new Map<string, number>() } } : {}) };
-    if (old) this.drop(data.key);
+    if (old) this.drop(data.key, true);
     this.host.attach(r);
     scene.add(mesh);
     this.fetchedBytes += data.gzBytes; this.uploads += r.bytes;
@@ -540,21 +541,28 @@ export class BakedCoarse {
         else { if (material) r.mesh.material = material; r.fade.clone.dispose?.(); delete r.fade; r.drawn = true; repaint = true; }
       } else if (material && r.mesh.material !== material) r.mesh.material = material;
     }
+    if (this.leaving?.step(now, material?.uniforms?.cityFade?.value ?? 1)) repaint = true;
     if (repaint) this.host.repaint();
   }
 
-  private drop(key: string): void {
+  /** `?popFade` (lane P2 #325): a drawn cell given back dissolves out instead of vanishing. */
+  private readonly leaving: LeavingFades | null = popFadeFlag() ? new LeavingFades() : null;
+  private drop(key: string, now = false): void {
     const r = this.residents.get(key);
     if (!r) return;
     this.residents.delete(key);
     this.host.detach(r);
-    r.mesh.parent?.remove(r.mesh);
-    r.mesh.geometry.dispose();
+    const release = () => { r.mesh.parent?.remove(r.mesh); r.mesh.geometry.dispose(); };
+    const from = r.fade ? r.fade.clone.uniforms.cityFade.value : 1;
     r.fade?.clone.dispose?.();
+    // Not a re-install of the same cell (install drops the old mesh after adding the new one: no overlap wanted).
+    if (!now && this.leaving && r.mesh.visible !== false && from > 0.05 && this.leaving.leave(r.mesh, this.host.fadeMaterial(from), release)) { this.host.repaint(); return; }
+    release();
   }
 
   clear(): void {
-    for (const key of [...this.residents.keys()]) this.drop(key);
+    this.leaving?.flush();
+    for (const key of [...this.residents.keys()]) this.drop(key, true);
     for (const c of this.inflight.values()) c.abort();
     this.inflight.clear(); this.queue = []; this.ready = []; this.released = new Set(); this.lastWant = [];
     this.at = null; this.planAt = null;

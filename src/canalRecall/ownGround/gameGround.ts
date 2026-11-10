@@ -34,6 +34,7 @@
 // supplies the camera; `GroundHost` is the thin adapter the page implements
 // (repaint, hiding the basemap's own ground). THREE is injected.
 
+import { clampToDrawLimit, currentDrawLimit } from '../engine/drawLimit';
 import { HIGH_ANISOTROPY, pageTextureParams } from '../look/texturePolicy.js';
 import { farRailDrapeFlag, farRailFlag, installRailStripes, railMinPxFlag, railStripesFlag } from './railStripes.js';
 import { GroundStore, httpFetchBytes, toLocal, WATER_Z, type ReliefTileLoader, type Rect } from './groundStore.js';
@@ -52,7 +53,7 @@ import { footprintBase } from './placement.js';
 import { cutMesh, disposeTiles, setTileReach } from '../rendererShared/tiledGeometry.js';
 import { cellTileGrid, type CellTile } from './cellTiles.js';
 import { inTouchRing, residentRadius, touchAheadMarginM, touchResidentRadius, viewCornerReachM, viewReachM } from '../engine/worldStreamer.js';
-import { farBlockCells, farBlocksWithin, farHorizonEnabled, farRadiusM, horizonReachM, FAR_KEEP_M, type BuiltFar } from './farRing.js';
+import { farBlockCells, farBlocksWithin, farHorizonEnabled, farRadiusM, horizonReachM, FAR_KEEP_M, FAR_STEP_M, type BuiltFar } from './farRing.js';
 import { routeRibbon } from './streets.js';
 import { disc, emptyMesh, merge, type MeshArrays } from './drape.js';
 import { riderPose as surfaceRiderPose, type Vec2 } from './surface.js';
@@ -682,7 +683,10 @@ export class OwnGround {
     }
     if (radius !== this.radiusM) { this.radiusM = radius; this.residencyAt = null; }
     // The far ring follows the horizon (farRing.ts farReachM, lane R2-B #229): a pitched view that shows it asks for the ring.
-    const far = this.opts.far ? farRadiusM((this.farHorizon ??= farHorizonEnabled()) ? horizonReachM(reach, zoom, pitchDeg, lngLat[1]) : reach, radius) : 0;
+    let far = this.opts.far ? farRadiusM((this.farHorizon ??= farHorizonEnabled()) ? horizonReachM(reach, zoom, pitchDeg, lngLat[1]) : reach, radius) : 0;
+    // `?drawLimit` (engine/drawLimit.ts, lane P2 #325): nothing past the opaque haze is built (the far shells follow).
+    const limit = currentDrawLimit();
+    if (far && limit) far = Math.max(radius, clampToDrawLimit(far, limit, limit.eyeToCentreM, FAR_STEP_M));
     if (far !== this.farRadius) { this.farRadius = far; this.residencyAt = null; }
     if (!this.ready) return;
     if (this.requeueOn && this.retries.size && this.retries.due(performance.now())) this.residencyAt = null;

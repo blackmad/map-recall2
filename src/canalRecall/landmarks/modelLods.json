@@ -1,4 +1,409 @@
 {
+ "ordinary-0363100012168028": {
+  "sourceHash": "77c070b868ba24fcc362bf7d1f39fa9fd6035e1962b3c8fc05f3e1d9d09aba77",
+  "buildVersion": 2,
+  "bytes": 112296,
+  "triangles": 3172,
+  "texelsPerMetre": 8.26,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "77c070b868ba24fcc362bf7d1f39fa9fd6035e1962b3c8fc05f3e1d9d09aba77",
+   "buildVersion": 1,
+   "bytes": 5720,
+   "triangles": 164,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012243483": {
+  "sourceHash": "b11545cb0e5074da1ecdc3264af3cc6ed7e0a8461c3f1b643a34e1638a3fd260",
+  "buildVersion": 2,
+  "bytes": 191560,
+  "triangles": 3338,
+  "texelsPerMetre": 6.7,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "b11545cb0e5074da1ecdc3264af3cc6ed7e0a8461c3f1b643a34e1638a3fd260",
+   "buildVersion": 1,
+   "bytes": 5340,
+   "triangles": 156,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012242125": {
+  "sourceHash": "565d60ca36f881907407f903b52b0d440e3e24c36bc4eff35a6e3dea9debfa8f",
+  "buildVersion": 2,
+  "bytes": 56944,
+  "triangles": 678,
+  "texelsPerMetre": 5.2,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "565d60ca36f881907407f903b52b0d440e3e24c36bc4eff35a6e3dea9debfa8f",
+   "buildVersion": 1,
+   "bytes": 3112,
+   "triangles": 32,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012074248": {
+  "sourceHash": "6f1caa9ba460aac28ecec052231f4fdb6f22e8d4e6116e4429505b1be8be161f",
+  "buildVersion": 2,
+  "bytes": 32284,
+  "triangles": 680,
+  "texelsPerMetre": 8.6,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "6f1caa9ba460aac28ecec052231f4fdb6f22e8d4e6116e4429505b1be8be161f",
+   "buildVersion": 1,
+   "bytes": 2908,
+   "triangles": 30,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012223044": {
+  "sourceHash": "ca5ce520e24899890c7df78111cc171b9216da6cffae19a42ab6706a49ca297a",
+  "buildVersion": 2,
+  "bytes": 29708,
+  "triangles": 430,
+  "texelsPerMetre": 7.92,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "ca5ce520e24899890c7df78111cc171b9216da6cffae19a42ab6706a49ca297a",
+   "buildVersion": 1,
+   "bytes": 4208,
+   "triangles": 94,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012123231": {
+  "sourceHash": "e36863c9adc373d0f8d305b012eb530035d55db563ebb6575651fc2de903e228",
+  "buildVersion": 2,
+  "bytes": 34400,
+  "triangles": 1385,
+  "texelsPerMetre": 5.11,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "e36863c9adc373d0f8d305b012eb530035d55db563ebb6575651fc2de903e228",
+   "buildVersion": 1,
+   "bytes": 3360,
+   "triangles": 75,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012183449": {
+  "sourceHash": "c3d3d9cac6fca3814408add09a2a3c769563b700e92373d7a5094bad4c206ed9",
+  "buildVersion": 2,
+  "bytes": 43256,
+  "triangles": 1496,
+  "texelsPerMetre": 4.7,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "c3d3d9cac6fca3814408add09a2a3c769563b700e92373d7a5094bad4c206ed9",
+   "buildVersion": 1,
+   "bytes": 4048,
+   "triangles": 106,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012191215": {
+  "sourceHash": "1e3053f0ca6946e57d69cc3b2f997f7d247de319e43238e7925162e79e80e632",
+  "buildVersion": 2,
+  "bytes": 41300,
+  "triangles": 1637,
+  "texelsPerMetre": 4.95,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "1e3053f0ca6946e57d69cc3b2f997f7d247de319e43238e7925162e79e80e632",
+   "buildVersion": 1,
+   "bytes": 3832,
+   "triangles": 58,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012224669": {
+  "sourceHash": "a934d602de2914253e25c769fc6a0665a80e541e1f71211e5daaffbe856f7796",
+  "buildVersion": 2,
+  "bytes": 48016,
+  "triangles": 1509,
+  "texelsPerMetre": 5.57,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "a934d602de2914253e25c769fc6a0665a80e541e1f71211e5daaffbe856f7796",
+   "buildVersion": 1,
+   "bytes": 5012,
+   "triangles": 188,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012067126": {
+  "sourceHash": "c723bd505e06960dd1bb292222f9675168251e6667f6f0a046284cb0dc551ec2",
+  "buildVersion": 2,
+  "bytes": 35864,
+  "triangles": 1058,
+  "texelsPerMetre": 4.42,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "c723bd505e06960dd1bb292222f9675168251e6667f6f0a046284cb0dc551ec2",
+   "buildVersion": 1,
+   "bytes": 2556,
+   "triangles": 21,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012159282": {
+  "sourceHash": "a39a8ad7058df126df507f97a767bb5b6561788be9877e15215f637e2df5c1be",
+  "buildVersion": 2,
+  "bytes": 72196,
+  "triangles": 1182,
+  "texelsPerMetre": 5.09,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "a39a8ad7058df126df507f97a767bb5b6561788be9877e15215f637e2df5c1be",
+   "buildVersion": 1,
+   "bytes": 3204,
+   "triangles": 28,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012177576": {
+  "sourceHash": "c472127efcb726f8cdc88a0900b0841051e9b86bd73e1f6b15b6ed44eff2a2a3",
+  "buildVersion": 2,
+  "bytes": 54212,
+  "triangles": 1355,
+  "texelsPerMetre": 8.53,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "c472127efcb726f8cdc88a0900b0841051e9b86bd73e1f6b15b6ed44eff2a2a3",
+   "buildVersion": 1,
+   "bytes": 6152,
+   "triangles": 197,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012177571": {
+  "sourceHash": "027344d234046566e7c955cc55c64a16b9c880170a39bc0442d8f5fa66b6fb3d",
+  "buildVersion": 2,
+  "bytes": 52168,
+  "triangles": 1259,
+  "texelsPerMetre": 8.52,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "027344d234046566e7c955cc55c64a16b9c880170a39bc0442d8f5fa66b6fb3d",
+   "buildVersion": 1,
+   "bytes": 5324,
+   "triangles": 138,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012165119": {
+  "sourceHash": "b576d23ba164a2c48352baeddff02b6f81106f00f289c1bdae490e3be0bc60b1",
+  "buildVersion": 2,
+  "bytes": 80792,
+  "triangles": 1906,
+  "texelsPerMetre": 6.24,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "b576d23ba164a2c48352baeddff02b6f81106f00f289c1bdae490e3be0bc60b1",
+   "buildVersion": 1,
+   "bytes": 6948,
+   "triangles": 193,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012167569": {
+  "sourceHash": "74d7c2b8d73e89488b1746d266bf79bd715331aa2ea58f2b17b0945fbd83bad4",
+  "buildVersion": 2,
+  "bytes": 71548,
+  "triangles": 2275,
+  "texelsPerMetre": 8.75,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "74d7c2b8d73e89488b1746d266bf79bd715331aa2ea58f2b17b0945fbd83bad4",
+   "buildVersion": 1,
+   "bytes": 5200,
+   "triangles": 125,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012168534": {
+  "sourceHash": "a8d5b9c5dfdcdbbf4e382167c5830d4e8b4ff62f67015b7aadc5e1affd13ea09",
+  "buildVersion": 2,
+  "bytes": 68952,
+  "triangles": 1873,
+  "texelsPerMetre": 7.71,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "a8d5b9c5dfdcdbbf4e382167c5830d4e8b4ff62f67015b7aadc5e1affd13ea09",
+   "buildVersion": 1,
+   "bytes": 6836,
+   "triangles": 258,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012167770": {
+  "sourceHash": "26c17de9d9dd589d492fa2b964e742cef106a1f1102da1e4e9bcc1ed5244ff5f",
+  "buildVersion": 2,
+  "bytes": 105296,
+  "triangles": 6104,
+  "texelsPerMetre": 8.32,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "26c17de9d9dd589d492fa2b964e742cef106a1f1102da1e4e9bcc1ed5244ff5f",
+   "buildVersion": 1,
+   "bytes": 5544,
+   "triangles": 132,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012167736": {
+  "sourceHash": "84da4d662c3935421b290326a8bbbb11b31aa89db7ca3b1983cfa5810252fd7a",
+  "buildVersion": 2,
+  "bytes": 80656,
+  "triangles": 4202,
+  "texelsPerMetre": 6.55,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "84da4d662c3935421b290326a8bbbb11b31aa89db7ca3b1983cfa5810252fd7a",
+   "buildVersion": 1,
+   "bytes": 7644,
+   "triangles": 253,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012176271": {
+  "sourceHash": "9bad9c94dd0939c66c6bbb9d00b556b359445beb2eeac1d2cbb7aed6f6edeccb",
+  "buildVersion": 2,
+  "bytes": 77624,
+  "triangles": 2213,
+  "texelsPerMetre": 7.89,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "9bad9c94dd0939c66c6bbb9d00b556b359445beb2eeac1d2cbb7aed6f6edeccb",
+   "buildVersion": 1,
+   "bytes": 4552,
+   "triangles": 95,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012176244": {
+  "sourceHash": "75c4369c9aa843e3a312cca29a8e6d18248dec0c6136e76d7918d72e7e02e027",
+  "buildVersion": 2,
+  "bytes": 60560,
+  "triangles": 1732,
+  "texelsPerMetre": 6.39,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "75c4369c9aa843e3a312cca29a8e6d18248dec0c6136e76d7918d72e7e02e027",
+   "buildVersion": 1,
+   "bytes": 7688,
+   "triangles": 253,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012165204": {
+  "sourceHash": "15d6ea5dd01e55344422b75767cc539563bd1932ad52f7e5d3d008ee738f310b",
+  "buildVersion": 2,
+  "bytes": 129692,
+  "triangles": 7357,
+  "texelsPerMetre": 6.87,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "15d6ea5dd01e55344422b75767cc539563bd1932ad52f7e5d3d008ee738f310b",
+   "buildVersion": 1,
+   "bytes": 5748,
+   "triangles": 166,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012168482": {
+  "sourceHash": "466b074f4d5ae238b0570cf5218390e6e409d58e275e4ffa839faa165f497a6f",
+  "buildVersion": 2,
+  "bytes": 53140,
+  "triangles": 956,
+  "texelsPerMetre": 6.49,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "466b074f4d5ae238b0570cf5218390e6e409d58e275e4ffa839faa165f497a6f",
+   "buildVersion": 1,
+   "bytes": 3760,
+   "triangles": 63,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012168201": {
+  "sourceHash": "6b80919b97e24f25a74e043e47eadf281c88cf32288ce8989db4bfd20fa7e2ee",
+  "buildVersion": 2,
+  "bytes": 35596,
+  "triangles": 675,
+  "texelsPerMetre": 9.39,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "6b80919b97e24f25a74e043e47eadf281c88cf32288ce8989db4bfd20fa7e2ee",
+   "buildVersion": 1,
+   "bytes": 3956,
+   "triangles": 94,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012175754": {
+  "sourceHash": "6112509cc37e9e26c412a66e963b092af7c58a8282f1f536b83421a2046338ee",
+  "buildVersion": 2,
+  "bytes": 98448,
+  "triangles": 2049,
+  "texelsPerMetre": 11.69,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "6112509cc37e9e26c412a66e963b092af7c58a8282f1f536b83421a2046338ee",
+   "buildVersion": 1,
+   "bytes": 7676,
+   "triangles": 316,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012254471": {
+  "sourceHash": "8209740b1de72c0de97fa9a897c930a4cb399687ec3d3d708778dc9176843f21",
+  "buildVersion": 2,
+  "bytes": 58840,
+  "triangles": 1533,
+  "texelsPerMetre": 5.12,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "8209740b1de72c0de97fa9a897c930a4cb399687ec3d3d708778dc9176843f21",
+   "buildVersion": 1,
+   "bytes": 10648,
+   "triangles": 408,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012167975": {
+  "sourceHash": "2f679b1f5dc25af796d6d856b388318c72e3d428b992c6afa1047a0ae7ab9fb1",
+  "buildVersion": 2,
+  "bytes": 112132,
+  "triangles": 5312,
+  "texelsPerMetre": 7.31,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "2f679b1f5dc25af796d6d856b388318c72e3d428b992c6afa1047a0ae7ab9fb1",
+   "buildVersion": 1,
+   "bytes": 19064,
+   "triangles": 844,
+   "ordinary": true
+  }
+ },
+ "ordinary-0363100012175018": {
+  "sourceHash": "4d5eacd2c2aaec27cfbdbdd5477d9e18ccfa0f62df1839ef95fd453ce994e311",
+  "buildVersion": 2,
+  "bytes": 149596,
+  "triangles": 5280,
+  "texelsPerMetre": 7.33,
+  "ordinary": true,
+  "lod2": {
+   "sourceHash": "4d5eacd2c2aaec27cfbdbdd5477d9e18ccfa0f62df1839ef95fd453ce994e311",
+   "buildVersion": 1,
+   "bytes": 9404,
+   "triangles": 391,
+   "ordinary": true
+  }
+ },
  "de-roos": {
   "sourceHash": "af0caa99560518f7",
   "buildVersion": 2,
@@ -328,15 +733,15 @@
   }
  },
  "silodam": {
-  "sourceHash": "59a513770337b2cb",
+  "sourceHash": "d2c86d728effc252",
   "buildVersion": 2,
-  "bytes": 56584,
-  "triangles": 2941,
+  "bytes": 68880,
+  "triangles": 3680,
   "lod2": {
-   "sourceHash": "59a513770337b2cb",
+   "sourceHash": "d2c86d728effc252",
    "buildVersion": 6,
-   "bytes": 13592,
-   "triangles": 697
+   "bytes": 19872,
+   "triangles": 1282
   }
  },
  "embassy-free-mind": {
@@ -1576,15 +1981,15 @@
   }
  },
  "sloterdijk-station": {
-  "sourceHash": "3a518469067cf2cd",
+  "sourceHash": "0d07839d951e7eb0",
   "buildVersion": 2,
-  "bytes": 38672,
-  "triangles": 1812,
+  "bytes": 92964,
+  "triangles": 4899,
   "lod2": {
-   "sourceHash": "3a518469067cf2cd",
+   "sourceHash": "0d07839d951e7eb0",
    "buildVersion": 6,
-   "bytes": 14920,
-   "triangles": 756
+   "bytes": 22944,
+   "triangles": 1062
   }
  },
  "hnk-sloterdijk": {
@@ -5287,411 +5692,6 @@
    "buildVersion": 6,
    "bytes": 10848,
    "triangles": 398
-  }
- },
- "ordinary-0363100012168028": {
-  "sourceHash": "77c070b868ba24fcc362bf7d1f39fa9fd6035e1962b3c8fc05f3e1d9d09aba77",
-  "buildVersion": 2,
-  "bytes": 112296,
-  "triangles": 3172,
-  "texelsPerMetre": 8.26,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "77c070b868ba24fcc362bf7d1f39fa9fd6035e1962b3c8fc05f3e1d9d09aba77",
-   "buildVersion": 1,
-   "bytes": 5720,
-   "triangles": 164,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012243483": {
-  "sourceHash": "b11545cb0e5074da1ecdc3264af3cc6ed7e0a8461c3f1b643a34e1638a3fd260",
-  "buildVersion": 2,
-  "bytes": 191560,
-  "triangles": 3338,
-  "texelsPerMetre": 6.7,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "b11545cb0e5074da1ecdc3264af3cc6ed7e0a8461c3f1b643a34e1638a3fd260",
-   "buildVersion": 1,
-   "bytes": 5340,
-   "triangles": 156,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012242125": {
-  "sourceHash": "565d60ca36f881907407f903b52b0d440e3e24c36bc4eff35a6e3dea9debfa8f",
-  "buildVersion": 2,
-  "bytes": 56944,
-  "triangles": 678,
-  "texelsPerMetre": 5.2,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "565d60ca36f881907407f903b52b0d440e3e24c36bc4eff35a6e3dea9debfa8f",
-   "buildVersion": 1,
-   "bytes": 3112,
-   "triangles": 32,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012074248": {
-  "sourceHash": "6f1caa9ba460aac28ecec052231f4fdb6f22e8d4e6116e4429505b1be8be161f",
-  "buildVersion": 2,
-  "bytes": 32284,
-  "triangles": 680,
-  "texelsPerMetre": 8.6,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "6f1caa9ba460aac28ecec052231f4fdb6f22e8d4e6116e4429505b1be8be161f",
-   "buildVersion": 1,
-   "bytes": 2908,
-   "triangles": 30,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012223044": {
-  "sourceHash": "ca5ce520e24899890c7df78111cc171b9216da6cffae19a42ab6706a49ca297a",
-  "buildVersion": 2,
-  "bytes": 29708,
-  "triangles": 430,
-  "texelsPerMetre": 7.92,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "ca5ce520e24899890c7df78111cc171b9216da6cffae19a42ab6706a49ca297a",
-   "buildVersion": 1,
-   "bytes": 4208,
-   "triangles": 94,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012123231": {
-  "sourceHash": "e36863c9adc373d0f8d305b012eb530035d55db563ebb6575651fc2de903e228",
-  "buildVersion": 2,
-  "bytes": 34400,
-  "triangles": 1385,
-  "texelsPerMetre": 5.11,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "e36863c9adc373d0f8d305b012eb530035d55db563ebb6575651fc2de903e228",
-   "buildVersion": 1,
-   "bytes": 3360,
-   "triangles": 75,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012183449": {
-  "sourceHash": "c3d3d9cac6fca3814408add09a2a3c769563b700e92373d7a5094bad4c206ed9",
-  "buildVersion": 2,
-  "bytes": 43256,
-  "triangles": 1496,
-  "texelsPerMetre": 4.7,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "c3d3d9cac6fca3814408add09a2a3c769563b700e92373d7a5094bad4c206ed9",
-   "buildVersion": 1,
-   "bytes": 4048,
-   "triangles": 106,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012191215": {
-  "sourceHash": "1e3053f0ca6946e57d69cc3b2f997f7d247de319e43238e7925162e79e80e632",
-  "buildVersion": 2,
-  "bytes": 41300,
-  "triangles": 1637,
-  "texelsPerMetre": 4.95,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "1e3053f0ca6946e57d69cc3b2f997f7d247de319e43238e7925162e79e80e632",
-   "buildVersion": 1,
-   "bytes": 3832,
-   "triangles": 58,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012224669": {
-  "sourceHash": "a934d602de2914253e25c769fc6a0665a80e541e1f71211e5daaffbe856f7796",
-  "buildVersion": 2,
-  "bytes": 48016,
-  "triangles": 1509,
-  "texelsPerMetre": 5.57,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "a934d602de2914253e25c769fc6a0665a80e541e1f71211e5daaffbe856f7796",
-   "buildVersion": 1,
-   "bytes": 5012,
-   "triangles": 188,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012067126": {
-  "sourceHash": "c723bd505e06960dd1bb292222f9675168251e6667f6f0a046284cb0dc551ec2",
-  "buildVersion": 2,
-  "bytes": 35864,
-  "triangles": 1058,
-  "texelsPerMetre": 4.42,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "c723bd505e06960dd1bb292222f9675168251e6667f6f0a046284cb0dc551ec2",
-   "buildVersion": 1,
-   "bytes": 2556,
-   "triangles": 21,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012159282": {
-  "sourceHash": "a39a8ad7058df126df507f97a767bb5b6561788be9877e15215f637e2df5c1be",
-  "buildVersion": 2,
-  "bytes": 72196,
-  "triangles": 1182,
-  "texelsPerMetre": 5.09,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "a39a8ad7058df126df507f97a767bb5b6561788be9877e15215f637e2df5c1be",
-   "buildVersion": 1,
-   "bytes": 3204,
-   "triangles": 28,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012177576": {
-  "sourceHash": "c472127efcb726f8cdc88a0900b0841051e9b86bd73e1f6b15b6ed44eff2a2a3",
-  "buildVersion": 2,
-  "bytes": 54212,
-  "triangles": 1355,
-  "texelsPerMetre": 8.53,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "c472127efcb726f8cdc88a0900b0841051e9b86bd73e1f6b15b6ed44eff2a2a3",
-   "buildVersion": 1,
-   "bytes": 6152,
-   "triangles": 197,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012177571": {
-  "sourceHash": "027344d234046566e7c955cc55c64a16b9c880170a39bc0442d8f5fa66b6fb3d",
-  "buildVersion": 2,
-  "bytes": 52168,
-  "triangles": 1259,
-  "texelsPerMetre": 8.52,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "027344d234046566e7c955cc55c64a16b9c880170a39bc0442d8f5fa66b6fb3d",
-   "buildVersion": 1,
-   "bytes": 5324,
-   "triangles": 138,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012165119": {
-  "sourceHash": "b576d23ba164a2c48352baeddff02b6f81106f00f289c1bdae490e3be0bc60b1",
-  "buildVersion": 2,
-  "bytes": 80792,
-  "triangles": 1906,
-  "texelsPerMetre": 6.24,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "b576d23ba164a2c48352baeddff02b6f81106f00f289c1bdae490e3be0bc60b1",
-   "buildVersion": 1,
-   "bytes": 6948,
-   "triangles": 193,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012167569": {
-  "sourceHash": "74d7c2b8d73e89488b1746d266bf79bd715331aa2ea58f2b17b0945fbd83bad4",
-  "buildVersion": 2,
-  "bytes": 71548,
-  "triangles": 2275,
-  "texelsPerMetre": 8.75,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "74d7c2b8d73e89488b1746d266bf79bd715331aa2ea58f2b17b0945fbd83bad4",
-   "buildVersion": 1,
-   "bytes": 5200,
-   "triangles": 125,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012168534": {
-  "sourceHash": "a8d5b9c5dfdcdbbf4e382167c5830d4e8b4ff62f67015b7aadc5e1affd13ea09",
-  "buildVersion": 2,
-  "bytes": 68952,
-  "triangles": 1873,
-  "texelsPerMetre": 7.71,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "a8d5b9c5dfdcdbbf4e382167c5830d4e8b4ff62f67015b7aadc5e1affd13ea09",
-   "buildVersion": 1,
-   "bytes": 6836,
-   "triangles": 258,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012167770": {
-  "sourceHash": "26c17de9d9dd589d492fa2b964e742cef106a1f1102da1e4e9bcc1ed5244ff5f",
-  "buildVersion": 2,
-  "bytes": 105296,
-  "triangles": 6104,
-  "texelsPerMetre": 8.32,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "26c17de9d9dd589d492fa2b964e742cef106a1f1102da1e4e9bcc1ed5244ff5f",
-   "buildVersion": 1,
-   "bytes": 5544,
-   "triangles": 132,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012167736": {
-  "sourceHash": "84da4d662c3935421b290326a8bbbb11b31aa89db7ca3b1983cfa5810252fd7a",
-  "buildVersion": 2,
-  "bytes": 80656,
-  "triangles": 4202,
-  "texelsPerMetre": 6.55,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "84da4d662c3935421b290326a8bbbb11b31aa89db7ca3b1983cfa5810252fd7a",
-   "buildVersion": 1,
-   "bytes": 7644,
-   "triangles": 253,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012176271": {
-  "sourceHash": "9bad9c94dd0939c66c6bbb9d00b556b359445beb2eeac1d2cbb7aed6f6edeccb",
-  "buildVersion": 2,
-  "bytes": 77624,
-  "triangles": 2213,
-  "texelsPerMetre": 7.89,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "9bad9c94dd0939c66c6bbb9d00b556b359445beb2eeac1d2cbb7aed6f6edeccb",
-   "buildVersion": 1,
-   "bytes": 4552,
-   "triangles": 95,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012176244": {
-  "sourceHash": "75c4369c9aa843e3a312cca29a8e6d18248dec0c6136e76d7918d72e7e02e027",
-  "buildVersion": 2,
-  "bytes": 60560,
-  "triangles": 1732,
-  "texelsPerMetre": 6.39,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "75c4369c9aa843e3a312cca29a8e6d18248dec0c6136e76d7918d72e7e02e027",
-   "buildVersion": 1,
-   "bytes": 7688,
-   "triangles": 253,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012165204": {
-  "sourceHash": "15d6ea5dd01e55344422b75767cc539563bd1932ad52f7e5d3d008ee738f310b",
-  "buildVersion": 2,
-  "bytes": 129692,
-  "triangles": 7357,
-  "texelsPerMetre": 6.87,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "15d6ea5dd01e55344422b75767cc539563bd1932ad52f7e5d3d008ee738f310b",
-   "buildVersion": 1,
-   "bytes": 5748,
-   "triangles": 166,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012168482": {
-  "sourceHash": "466b074f4d5ae238b0570cf5218390e6e409d58e275e4ffa839faa165f497a6f",
-  "buildVersion": 2,
-  "bytes": 53140,
-  "triangles": 956,
-  "texelsPerMetre": 6.49,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "466b074f4d5ae238b0570cf5218390e6e409d58e275e4ffa839faa165f497a6f",
-   "buildVersion": 1,
-   "bytes": 3760,
-   "triangles": 63,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012168201": {
-  "sourceHash": "6b80919b97e24f25a74e043e47eadf281c88cf32288ce8989db4bfd20fa7e2ee",
-  "buildVersion": 2,
-  "bytes": 35596,
-  "triangles": 675,
-  "texelsPerMetre": 9.39,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "6b80919b97e24f25a74e043e47eadf281c88cf32288ce8989db4bfd20fa7e2ee",
-   "buildVersion": 1,
-   "bytes": 3956,
-   "triangles": 94,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012175754": {
-  "sourceHash": "6112509cc37e9e26c412a66e963b092af7c58a8282f1f536b83421a2046338ee",
-  "buildVersion": 2,
-  "bytes": 98448,
-  "triangles": 2049,
-  "texelsPerMetre": 11.69,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "6112509cc37e9e26c412a66e963b092af7c58a8282f1f536b83421a2046338ee",
-   "buildVersion": 1,
-   "bytes": 7676,
-   "triangles": 316,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012254471": {
-  "sourceHash": "8209740b1de72c0de97fa9a897c930a4cb399687ec3d3d708778dc9176843f21",
-  "buildVersion": 2,
-  "bytes": 58840,
-  "triangles": 1533,
-  "texelsPerMetre": 5.12,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "8209740b1de72c0de97fa9a897c930a4cb399687ec3d3d708778dc9176843f21",
-   "buildVersion": 1,
-   "bytes": 10648,
-   "triangles": 408,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012167975": {
-  "sourceHash": "2f679b1f5dc25af796d6d856b388318c72e3d428b992c6afa1047a0ae7ab9fb1",
-  "buildVersion": 2,
-  "bytes": 112132,
-  "triangles": 5312,
-  "texelsPerMetre": 7.31,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "2f679b1f5dc25af796d6d856b388318c72e3d428b992c6afa1047a0ae7ab9fb1",
-   "buildVersion": 1,
-   "bytes": 19064,
-   "triangles": 844,
-   "ordinary": true
-  }
- },
- "ordinary-0363100012175018": {
-  "sourceHash": "4d5eacd2c2aaec27cfbdbdd5477d9e18ccfa0f62df1839ef95fd453ce994e311",
-  "buildVersion": 2,
-  "bytes": 149596,
-  "triangles": 5280,
-  "texelsPerMetre": 7.33,
-  "ordinary": true,
-  "lod2": {
-   "sourceHash": "4d5eacd2c2aaec27cfbdbdd5477d9e18ccfa0f62df1839ef95fd453ce994e311",
-   "buildVersion": 1,
-   "bytes": 9404,
-   "triangles": 391,
-   "ordinary": true
   }
  }
 }

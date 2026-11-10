@@ -1,0 +1,420 @@
+{
+ "street": "Borneostraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-09T23:16:44.875Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012166721",
+   "addresses": [
+    "Borneostraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000993441"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012153181",
+   "addresses": [
+    "Borneostraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000592267"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159033",
+   "addresses": [
+    "Borneostraat 18A",
+    "Borneostraat 18B",
+    "Borneostraat 18C",
+    "Borneostraat 18D",
+    "Borneostraat 18E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 18A",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000592259"
+    },
+    {
+     "address": "Borneostraat 18B",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000592260"
+    },
+    {
+     "address": "Borneostraat 18C",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000592261"
+    },
+    {
+     "address": "Borneostraat 18D",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000592262"
+    },
+    {
+     "address": "Borneostraat 18E",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012066868"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161647",
+   "addresses": [
+    "Borneostraat 16A",
+    "Borneostraat 16B",
+    "Borneostraat 16C",
+    "Borneostraat 16D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 109,
+     "bagId": "0363010001019847"
+    },
+    {
+     "address": "Borneostraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001019848"
+    },
+    {
+     "address": "Borneostraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010001019849"
+    },
+    {
+     "address": "Borneostraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 112,
+     "bagId": "0363010001019850"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236009",
+   "addresses": [
+    "Borneostraat 8",
+    "Borneostraat 10B",
+    "Borneostraat 10A",
+    "Borneostraat 10D",
+    "Borneostraat 10C",
+    "Borneostraat 12",
+    "Borneostraat 14A",
+    "Borneostraat 14B",
+    "Borneostraat 14C",
+    "Borneostraat 14D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 8",
+     "use": "industriefunctie",
+     "areaM2": 1,
+     "bagId": "0363010001019837"
+    },
+    {
+     "address": "Borneostraat 10B",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010001019839"
+    },
+    {
+     "address": "Borneostraat 12",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010001019842"
+    },
+    {
+     "address": "Borneostraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010001019843"
+    },
+    {
+     "address": "Borneostraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010001019844"
+    },
+    {
+     "address": "Borneostraat 14C",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001019845"
+    },
+    {
+     "address": "Borneostraat 14D",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010001019846"
+    },
+    {
+     "address": "Borneostraat 10D",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010001019841"
+    },
+    {
+     "address": "Borneostraat 10C",
+     "use": "woonfunctie",
+     "areaM2": 121,
+     "bagId": "0363010001019840"
+    }
+   ],
+   "units": 12,
+   "osm": [
+    {
+     "type": "node",
+     "id": 12744768327,
+     "lngLat": [
+      4.9324256,
+      52.3656817
+     ],
+     "tags": {
+      "amenity": "music_school",
+      "name": "Zangstudio Jimmy Hutchinson"
+     },
+     "fetchedAt": "2026-11-09T23:16:44.875Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012139830",
+   "addresses": [
+    "Borneostraat 4T",
+    "Borneostraat 4U",
+    "Borneostraat 4V",
+    "Borneostraat 4W",
+    "Borneostraat 4A",
+    "Borneostraat 4C",
+    "Borneostraat 4D",
+    "Borneostraat 4E",
+    "Borneostraat 4F",
+    "Borneostraat 4G",
+    "Borneostraat 4M",
+    "Borneostraat 4N",
+    "Borneostraat 4P",
+    "Borneostraat 6"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 4T",
+     "use": "woonfunctie",
+     "areaM2": 179,
+     "bagId": "0363010001025841"
+    },
+    {
+     "address": "Borneostraat 4U",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001025853"
+    },
+    {
+     "address": "Borneostraat 4V",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001025857"
+    },
+    {
+     "address": "Borneostraat 4W",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001025859"
+    },
+    {
+     "address": "Borneostraat 6",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010001025873"
+    },
+    {
+     "address": "Borneostraat 4A",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010001025786"
+    },
+    {
+     "address": "Borneostraat 4C",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001025790"
+    },
+    {
+     "address": "Borneostraat 4D",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010001025793"
+    },
+    {
+     "address": "Borneostraat 4E",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001025803"
+    },
+    {
+     "address": "Borneostraat 4F",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001025804"
+    },
+    {
+     "address": "Borneostraat 4G",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001025805"
+    },
+    {
+     "address": "Borneostraat 4M",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001025824"
+    },
+    {
+     "address": "Borneostraat 4N",
+     "use": "woonfunctie",
+     "areaM2": 108,
+     "bagId": "0363010001025827"
+    },
+    {
+     "address": "Borneostraat 4P",
+     "use": "woonfunctie",
+     "areaM2": 107,
+     "bagId": "0363010001025828"
+    }
+   ],
+   "units": 14,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012140332",
+   "addresses": [
+    "Borneostraat 4S",
+    "Borneostraat 4X",
+    "Borneostraat 4Y",
+    "Borneostraat 4Z",
+    "Borneostraat 4B",
+    "Borneostraat 4H",
+    "Borneostraat 4K",
+    "Borneostraat 4L",
+    "Borneostraat 4R"
+   ],
+   "groundUnits": [
+    {
+     "address": "Borneostraat 4S",
+     "use": "woonfunctie",
+     "areaM2": 79,
+     "bagId": "0363010001025837"
+    },
+    {
+     "address": "Borneostraat 4X",
+     "use": "woonfunctie",
+     "areaM2": 120,
+     "bagId": "0363010001025861"
+    },
+    {
+     "address": "Borneostraat 4Y",
+     "use": "woonfunctie",
+     "areaM2": 182,
+     "bagId": "0363010001025864"
+    },
+    {
+     "address": "Celebesstraat 1",
+     "use": "kantoorfunctie",
+     "areaM2": 90,
+     "bagId": "0363010001025865"
+    },
+    {
+     "address": "Borneostraat 4Z",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001025870"
+    },
+    {
+     "address": "Borneostraat 4B",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010001025787"
+    },
+    {
+     "address": "Borneostraat 4H",
+     "use": "woonfunctie",
+     "areaM2": 105,
+     "bagId": "0363010001025806"
+    },
+    {
+     "address": "Borneostraat 4K",
+     "use": "woonfunctie",
+     "areaM2": 119,
+     "bagId": "0363010001025807"
+    },
+    {
+     "address": "Borneostraat 4L",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001025820"
+    },
+    {
+     "address": "Borneostraat 4R",
+     "use": "woonfunctie",
+     "areaM2": 74,
+     "bagId": "0363010001025833"
+    }
+   ],
+   "units": 10,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2827511192,
+     "lngLat": [
+      4.932004,
+      52.3657795
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1",
+      "addr:postcode": "1094EJ",
+      "addr:street": "Celebesstraat",
+      "healthcare": "physiotherapist",
+      "name": "Fysiken",
+      "opening_hours": "Mo,Tu,Th 08:00-18:00; We 08:00-14:00; Fr 08:00-12:30",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://fysiken.nl/"
+     },
+     "fetchedAt": "2026-11-09T23:16:44.875Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

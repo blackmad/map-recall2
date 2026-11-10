@@ -1,6 +1,6 @@
 {
  "version": 1,
- "generatedAt": "2026-11-06T23:49:02.186Z",
+ "generatedAt": "2026-11-10T02:19:28.895Z",
  "chunks": [
   {
    "id": "chunk-face-bilder-080336-090492",
@@ -427,10 +427,10 @@
    ],
    "category": "street-survey",
    "lod2": {
-    "sourceHash": "01cefc9e2cb620f8",
+    "sourceHash": "955f17cf3fc1349b",
     "buildVersion": 4,
-    "bytes": 32748,
-    "triangles": 1255
+    "bytes": 28952,
+    "triangles": 1087
    }
   },
   {
@@ -766,10 +766,10 @@
    ],
    "category": "street-survey",
    "lod2": {
-    "sourceHash": "e10ed1e77e98f2a4",
+    "sourceHash": "a20cd619e206e261",
     "buildVersion": 4,
-    "bytes": 37160,
-    "triangles": 1499
+    "bytes": 36668,
+    "triangles": 1487
    }
   },
   {
@@ -1098,10 +1098,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "a75529407281083b",
+    "sourceHash": "8db9b0cc574f0c60",
     "buildVersion": 4,
-    "bytes": 34236,
-    "triangles": 1394
+    "bytes": 32068,
+    "triangles": 1343
    }
   },
   {
@@ -1556,10 +1556,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "202779b2b7abd433",
+    "sourceHash": "8f9890b9b6907ea9",
     "buildVersion": 4,
-    "bytes": 39004,
-    "triangles": 1498
+    "bytes": 37612,
+    "triangles": 1442
    }
   },
   {
@@ -2428,10 +2428,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "990ce361db0adba1",
+    "sourceHash": "6b3b6929fc20cd23",
     "buildVersion": 4,
-    "bytes": 32456,
-    "triangles": 1489
+    "bytes": 32480,
+    "triangles": 1498
    }
   },
   {
@@ -3195,10 +3195,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "ad6d91df76d05e92",
+    "sourceHash": "6f6be7bee2d75d02",
     "buildVersion": 4,
-    "bytes": 38752,
-    "triangles": 1450
+    "bytes": 39488,
+    "triangles": 1479
    }
   },
   {
@@ -3542,10 +3542,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "2de2f2e04a127e1f",
+    "sourceHash": "b9ee06456bd33059",
     "buildVersion": 4,
-    "bytes": 38760,
-    "triangles": 1497
+    "bytes": 37980,
+    "triangles": 1498
    }
   },
   {
@@ -3966,10 +3966,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "31ddc392f82edd9e",
+    "sourceHash": "2da2097c3149bf0c",
     "buildVersion": 4,
-    "bytes": 42892,
-    "triangles": 1500
+    "bytes": 37976,
+    "triangles": 1499
    }
   },
   {
@@ -4190,10 +4190,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "866237cc2eda6ec3",
+    "sourceHash": "d5f65d154eee903a",
     "buildVersion": 4,
-    "bytes": 37124,
-    "triangles": 1486
+    "bytes": 35696,
+    "triangles": 1479
    }
   },
   {
@@ -4830,10 +4830,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "e102187ad6693612",
+    "sourceHash": "d9888e187471a0a9",
     "buildVersion": 4,
-    "bytes": 38848,
-    "triangles": 1348
+    "bytes": 41248,
+    "triangles": 1461
    }
   },
   {
@@ -5066,9 +5066,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "604f3eff019dd084",
+    "sourceHash": "ff49810ccae0d31c",
     "buildVersion": 4,
-    "bytes": 34496,
+    "bytes": 33696,
     "triangles": 1497
    }
   },
@@ -5804,10 +5804,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "930f5b2d83aff59c",
+    "sourceHash": "a365b4f2961e8e2b",
     "buildVersion": 4,
-    "bytes": 40868,
-    "triangles": 1414
+    "bytes": 41924,
+    "triangles": 1494
    }
   },
   {
@@ -6247,10 +6247,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "53954c6c53d5556f",
+    "sourceHash": "a3e60c843d8e56f4",
     "buildVersion": 4,
-    "bytes": 41696,
-    "triangles": 1490
+    "bytes": 41392,
+    "triangles": 1483
    }
   },
   {
@@ -7005,10 +7005,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "51dbd0a76f802a88",
+    "sourceHash": "e25950b1e21139f9",
     "buildVersion": 4,
-    "bytes": 32596,
-    "triangles": 1500
+    "bytes": 31752,
+    "triangles": 1496
    }
   },
   {
@@ -7945,10 +7945,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "f6ea59ed283fd30c",
+    "sourceHash": "60beede73a3572ff",
     "buildVersion": 4,
-    "bytes": 42652,
-    "triangles": 1488
+    "bytes": 43100,
+    "triangles": 1483
    }
   },
   {
@@ -8852,10 +8852,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "cde1e4ce9fc7d740",
+    "sourceHash": "40d029a4470d3e4b",
     "buildVersion": 4,
-    "bytes": 38400,
-    "triangles": 1444
+    "bytes": 39576,
+    "triangles": 1475
    }
   },
   {
@@ -9944,10 +9944,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "41806b9b1a50387d",
+    "sourceHash": "3a5a6630c3da6fc8",
     "buildVersion": 4,
-    "bytes": 39540,
-    "triangles": 1491
+    "bytes": 39352,
+    "triangles": 1481
    }
   },
   {
@@ -10293,10 +10293,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "5f67b839c84ebc49",
+    "sourceHash": "8ef45ab6c979767b",
     "buildVersion": 4,
-    "bytes": 36148,
-    "triangles": 1497
+    "bytes": 34740,
+    "triangles": 1498
    }
   },
   {
@@ -12081,7 +12081,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "e81e1e1c48f47ae0",
+    "buildVersion": 4,
+    "bytes": 45944,
+    "triangles": 1486
+   }
   },
   {
    "id": "chunk-face-bellamydwars-4-12",
@@ -12693,10 +12699,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "713600a1ab4b1212",
+    "sourceHash": "11b15ee21edb20ff",
     "buildVersion": 4,
-    "bytes": 31840,
-    "triangles": 1016
+    "bytes": 32924,
+    "triangles": 1064
    }
   },
   {
@@ -13231,10 +13237,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "33aedbf9ceb5d45b",
+    "sourceHash": "6c6596ec8dfe45be",
     "buildVersion": 4,
-    "bytes": 37100,
-    "triangles": 1301
+    "bytes": 36948,
+    "triangles": 1307
    }
   },
   {
@@ -13694,10 +13700,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "d3eda009f07c36cd",
+    "sourceHash": "bbc61da802fe27e7",
     "buildVersion": 4,
-    "bytes": 40496,
-    "triangles": 1465
+    "bytes": 38620,
+    "triangles": 1458
    }
   },
   {
@@ -13942,10 +13948,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "c06695fe2b7383d1",
+    "sourceHash": "6824f10d8e2106fe",
     "buildVersion": 4,
-    "bytes": 33904,
-    "triangles": 1497
+    "bytes": 32400,
+    "triangles": 1498
    }
   },
   {
@@ -14181,10 +14187,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "b2176690204f5347",
+    "sourceHash": "90b3d3c6f4f5e788",
     "buildVersion": 4,
-    "bytes": 35364,
-    "triangles": 1498
+    "bytes": 35256,
+    "triangles": 1495
    }
   },
   {
@@ -14691,10 +14697,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "cbb19110e8162b79",
+    "sourceHash": "9c9020152f7b4ce4",
     "buildVersion": 4,
-    "bytes": 32876,
-    "triangles": 1212
+    "bytes": 31256,
+    "triangles": 1171
    }
   },
   {
@@ -17011,10 +17017,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "94cd2a858704c721",
+    "sourceHash": "e8a302cf0ecb7d25",
     "buildVersion": 4,
-    "bytes": 37648,
-    "triangles": 1493
+    "bytes": 38164,
+    "triangles": 1482
    }
   },
   {
@@ -19826,10 +19832,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "ae4749803bf7e285",
+    "sourceHash": "acfbd4c7e55313b8",
     "buildVersion": 4,
-    "bytes": 43316,
-    "triangles": 1499
+    "bytes": 43960,
+    "triangles": 1497
    }
   },
   {
@@ -21451,10 +21457,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "a70733ee528ea7f8",
+    "sourceHash": "baef5997cfddc091",
     "buildVersion": 4,
-    "bytes": 37948,
-    "triangles": 1409
+    "bytes": 39336,
+    "triangles": 1494
    }
   },
   {
@@ -22373,10 +22379,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "341de1aaa5117894",
+    "sourceHash": "697fadd5aba715af",
     "buildVersion": 4,
-    "bytes": 28828,
-    "triangles": 1036
+    "bytes": 29468,
+    "triangles": 1058
    }
   },
   {
@@ -23779,10 +23785,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "16083a244f0db791",
+    "sourceHash": "4fe93bf473b417b2",
     "buildVersion": 4,
-    "bytes": 37412,
-    "triangles": 1474
+    "bytes": 37276,
+    "triangles": 1426
    }
   },
   {
@@ -24146,10 +24152,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "aea62b5b33623e5e",
+    "sourceHash": "3fe1b94c9e34cd77",
     "buildVersion": 4,
-    "bytes": 37536,
-    "triangles": 1480
+    "bytes": 35952,
+    "triangles": 1457
    }
   },
   {
@@ -24790,10 +24796,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "e4e43edad0d3c998",
+    "sourceHash": "ec5f5695ddb781d9",
     "buildVersion": 4,
-    "bytes": 37096,
-    "triangles": 1232
+    "bytes": 41164,
+    "triangles": 1428
    }
   },
   {
@@ -25156,10 +25162,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "b595415ba83ba17e",
+    "sourceHash": "db10c40598326404",
     "buildVersion": 4,
-    "bytes": 38988,
-    "triangles": 1496
+    "bytes": 37836,
+    "triangles": 1499
    }
   },
   {
@@ -25695,10 +25701,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "36d84224c2a21726",
+    "sourceHash": "56715db5d8a880e7",
     "buildVersion": 4,
-    "bytes": 34468,
-    "triangles": 1167
+    "bytes": 41296,
+    "triangles": 1485
    }
   },
   {
@@ -26541,10 +26547,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "76c4b23be0a7e78d",
+    "sourceHash": "f3af296c731f6d41",
     "buildVersion": 4,
-    "bytes": 44156,
-    "triangles": 1482
+    "bytes": 44956,
+    "triangles": 1479
    }
   },
   {
@@ -27159,10 +27165,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "fd0c71a68327abf3",
+    "sourceHash": "f8f06770b0c5d28f",
     "buildVersion": 4,
-    "bytes": 42992,
-    "triangles": 1499
+    "bytes": 41736,
+    "triangles": 1484
    }
   },
   {
@@ -28240,10 +28246,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "448043763be34cf4",
+    "sourceHash": "c6ca8a61493e87ad",
     "buildVersion": 4,
-    "bytes": 49440,
-    "triangles": 1460
+    "bytes": 52500,
+    "triangles": 1482
    }
   },
   {
@@ -30176,10 +30182,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "54174c6bfc90762c",
+    "sourceHash": "39916498c3a1c388",
     "buildVersion": 4,
-    "bytes": 35344,
-    "triangles": 1374
+    "bytes": 37448,
+    "triangles": 1500
    }
   },
   {
@@ -30836,10 +30842,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "d0a55b5d29429947",
+    "sourceHash": "eb1339637617d4e3",
     "buildVersion": 4,
-    "bytes": 44308,
-    "triangles": 1458
+    "bytes": 45428,
+    "triangles": 1488
    }
   },
   {
@@ -31327,10 +31333,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "260523429a15a224",
+    "sourceHash": "f6b016b7579d0d3b",
     "buildVersion": 4,
-    "bytes": 36872,
-    "triangles": 1323
+    "bytes": 37348,
+    "triangles": 1354
    }
   },
   {
@@ -32659,10 +32665,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "23c15e86bb9327b1",
+    "sourceHash": "eaaae659c0fda2e5",
     "buildVersion": 4,
-    "bytes": 37940,
-    "triangles": 1436
+    "bytes": 39100,
+    "triangles": 1496
    }
   },
   {
@@ -34270,10 +34276,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "78fa965eaa5d6e76",
+    "sourceHash": "a4022429abc1f5ef",
     "buildVersion": 4,
-    "bytes": 38464,
-    "triangles": 1466
+    "bytes": 37172,
+    "triangles": 1457
    }
   },
   {
@@ -35750,10 +35756,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "1a1d9020106c7a16",
+    "sourceHash": "16b148ba7175ba2b",
     "buildVersion": 4,
-    "bytes": 37508,
-    "triangles": 1437
+    "bytes": 38496,
+    "triangles": 1474
    }
   },
   {
@@ -36139,10 +36145,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "5e3a1eba1a79b073",
+    "sourceHash": "a1b320ad4ae13f21",
     "buildVersion": 4,
-    "bytes": 37340,
-    "triangles": 1413
+    "bytes": 33336,
+    "triangles": 1295
    }
   },
   {
@@ -37454,10 +37460,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "a3c576470b0746cd",
+    "sourceHash": "b0a2f8d6782d84da",
     "buildVersion": 4,
-    "bytes": 39096,
-    "triangles": 1450
+    "bytes": 37348,
+    "triangles": 1445
    }
   },
   {
@@ -39014,10 +39020,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "ea753b6c0a0aee36",
+    "sourceHash": "1bc01e04aab3b1a1",
     "buildVersion": 4,
-    "bytes": 36472,
-    "triangles": 1437
+    "bytes": 38824,
+    "triangles": 1495
    }
   },
   {
@@ -40485,10 +40491,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "032b5bfdb6240f27",
+    "sourceHash": "b5aa5a6f7b1decf4",
     "buildVersion": 4,
-    "bytes": 38232,
-    "triangles": 1461
+    "bytes": 37596,
+    "triangles": 1452
    }
   },
   {
@@ -41868,10 +41874,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "ef47c827858e3606",
+    "sourceHash": "3befd3ae1ac92cf1",
     "buildVersion": 4,
-    "bytes": 39132,
-    "triangles": 1474
+    "bytes": 38752,
+    "triangles": 1467
    }
   },
   {
@@ -42637,10 +42643,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "dfb7ebe301f14737",
+    "sourceHash": "0e6902983c75d5a5",
     "buildVersion": 4,
-    "bytes": 41960,
-    "triangles": 1477
+    "bytes": 40856,
+    "triangles": 1418
    }
   },
   {
@@ -42994,10 +43000,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "fb89e6298d85eeb1",
+    "sourceHash": "4e69b059cab7b533",
     "buildVersion": 4,
-    "bytes": 39908,
-    "triangles": 1478
+    "bytes": 38712,
+    "triangles": 1476
    }
   },
   {
@@ -43409,10 +43415,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "9e0d727e21f7cf0a",
+    "sourceHash": "ba46d6df5674cf7f",
     "buildVersion": 4,
-    "bytes": 38668,
-    "triangles": 1469
+    "bytes": 35996,
+    "triangles": 1402
    }
   },
   {
@@ -43822,10 +43828,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "82bd60fd20e97b11",
+    "sourceHash": "d2a47c1b90752dd8",
     "buildVersion": 4,
-    "bytes": 38736,
-    "triangles": 1456
+    "bytes": 38060,
+    "triangles": 1444
    }
   },
   {
@@ -44478,10 +44484,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "99e166132ce81921",
+    "sourceHash": "c3dbe8c60ad63588",
     "buildVersion": 4,
-    "bytes": 26868,
-    "triangles": 834
+    "bytes": 29432,
+    "triangles": 939
    }
   },
   {
@@ -45644,10 +45650,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "d3b9956e490920ee",
+    "sourceHash": "5d7b47fa89388da5",
     "buildVersion": 4,
-    "bytes": 45984,
-    "triangles": 1476
+    "bytes": 45968,
+    "triangles": 1491
    }
   },
   {
@@ -46029,10 +46035,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "5c72e4fb342edc4f",
+    "sourceHash": "16f6dd0bbb7c2936",
     "buildVersion": 4,
-    "bytes": 29580,
-    "triangles": 1069
+    "bytes": 33796,
+    "triangles": 1285
    }
   },
   {
@@ -46520,10 +46526,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "ce8992323ec7414f",
+    "sourceHash": "f0b24cf95a65b696",
     "buildVersion": 4,
-    "bytes": 33720,
-    "triangles": 1417
+    "bytes": 35092,
+    "triangles": 1351
    }
   },
   {
@@ -46782,9 +46788,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "4157c727cab0858c",
+    "sourceHash": "5a16063f01585d4b",
     "buildVersion": 4,
-    "bytes": 35364,
+    "bytes": 34448,
     "triangles": 1497
    }
   },
@@ -47052,9 +47058,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "d095592c8fdf15da",
+    "sourceHash": "c335ef7a164a374a",
     "buildVersion": 4,
-    "bytes": 36404,
+    "bytes": 35224,
     "triangles": 1499
    }
   },
@@ -47322,9 +47328,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "e1cae5871678a7e4",
+    "sourceHash": "7bc7a3774f880dd0",
     "buildVersion": 4,
-    "bytes": 36420,
+    "bytes": 34476,
     "triangles": 1498
    }
   },
@@ -48024,10 +48030,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "72023cd5768c7a57",
+    "sourceHash": "3d5f10d8ec9c0e49",
     "buildVersion": 4,
-    "bytes": 38264,
-    "triangles": 1497
+    "bytes": 37728,
+    "triangles": 1490
    }
   },
   {
@@ -48508,10 +48514,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "ca27173fe22ce3c2",
+    "sourceHash": "de4f445904f36426",
     "buildVersion": 4,
-    "bytes": 36148,
-    "triangles": 1480
+    "bytes": 35468,
+    "triangles": 1481
    }
   },
   {
@@ -48750,10 +48756,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "4cf89adb6b5c7b9f",
+    "sourceHash": "1cac25126ce9ec07",
     "buildVersion": 4,
-    "bytes": 37436,
-    "triangles": 1486
+    "bytes": 36436,
+    "triangles": 1483
    }
   },
   {
@@ -49076,10 +49082,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "e05755c1c6a3fcc9",
+    "sourceHash": "d07a80c9ca60b6b8",
     "buildVersion": 4,
-    "bytes": 39492,
-    "triangles": 1497
+    "bytes": 38372,
+    "triangles": 1495
    }
   },
   {
@@ -49436,10 +49442,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "3fe46d423662d4c0",
+    "sourceHash": "8e1f3ab281487b34",
     "buildVersion": 4,
-    "bytes": 41768,
-    "triangles": 1452
+    "bytes": 41536,
+    "triangles": 1481
    }
   },
   {
@@ -50090,10 +50096,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "fee1ef6b91ba1317",
+    "sourceHash": "98e41d4cfac79929",
     "buildVersion": 4,
-    "bytes": 28804,
-    "triangles": 1009
+    "bytes": 30040,
+    "triangles": 1055
    }
   },
   {
@@ -50348,10 +50354,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "3839a8f153e22234",
+    "sourceHash": "6a05daac2d164b14",
     "buildVersion": 4,
-    "bytes": 35088,
-    "triangles": 1496
+    "bytes": 34320,
+    "triangles": 1498
    }
   },
   {
@@ -50590,10 +50596,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "d8a964e94b9eeac0",
+    "sourceHash": "2194e8cfc4286709",
     "buildVersion": 4,
-    "bytes": 36036,
-    "triangles": 1499
+    "bytes": 35076,
+    "triangles": 1500
    }
   },
   {
@@ -50844,10 +50850,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "940685129c520a62",
+    "sourceHash": "ea33c20adc8514d1",
     "buildVersion": 4,
-    "bytes": 35976,
-    "triangles": 1499
+    "bytes": 36036,
+    "triangles": 1491
    }
   },
   {
@@ -51768,10 +51774,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "fb358bdafe397553",
+    "sourceHash": "3b49703377e58e56",
     "buildVersion": 4,
-    "bytes": 44644,
-    "triangles": 1412
+    "bytes": 45340,
+    "triangles": 1448
    }
   },
   {
@@ -52135,10 +52141,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "7644eb5ea1c590b9",
+    "sourceHash": "cf50a81994b80ae7",
     "buildVersion": 4,
-    "bytes": 43124,
-    "triangles": 1498
+    "bytes": 41712,
+    "triangles": 1496
    }
   },
   {
@@ -52397,10 +52403,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "8941b063416bf733",
+    "sourceHash": "f74f18ae81a9ab79",
     "buildVersion": 4,
-    "bytes": 38572,
-    "triangles": 1499
+    "bytes": 37072,
+    "triangles": 1491
    }
   },
   {
@@ -52880,10 +52886,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "7d094467dbacf6f8",
+    "sourceHash": "642551566f9c6c0d",
     "buildVersion": 4,
-    "bytes": 39096,
-    "triangles": 1360
+    "bytes": 37584,
+    "triangles": 1341
    }
   },
   {
@@ -53151,10 +53157,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "9f002aae8c0dff2e",
+    "sourceHash": "f50b856248ebcae9",
     "buildVersion": 4,
-    "bytes": 39812,
-    "triangles": 1500
+    "bytes": 38996,
+    "triangles": 1499
    }
   },
   {
@@ -53424,10 +53430,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "efe774be3e4bbbaf",
+    "sourceHash": "17cd9bb600369c12",
     "buildVersion": 4,
-    "bytes": 36396,
-    "triangles": 1500
+    "bytes": 35432,
+    "triangles": 1499
    }
   },
   {
@@ -53682,10 +53688,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "1141e8387266e84e",
+    "sourceHash": "64079a1b021ed478",
     "buildVersion": 4,
-    "bytes": 37036,
-    "triangles": 1499
+    "bytes": 36376,
+    "triangles": 1489
    }
   },
   {
@@ -54929,10 +54935,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "71ac72bc79b0f6de",
+    "sourceHash": "ea740e095f81de33",
     "buildVersion": 4,
-    "bytes": 44896,
-    "triangles": 1374
+    "bytes": 48104,
+    "triangles": 1495
    }
   },
   {
@@ -56586,10 +56592,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "3ba5ae48f1ac4d66",
+    "sourceHash": "c9d0abacdbb99b67",
     "buildVersion": 4,
-    "bytes": 43016,
-    "triangles": 1482
+    "bytes": 42644,
+    "triangles": 1490
    }
   },
   {
@@ -57206,10 +57212,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "d5a1f6056ce581b1",
+    "sourceHash": "9faf8ab6ca5cddc3",
     "buildVersion": 4,
-    "bytes": 43020,
-    "triangles": 1445
+    "bytes": 42404,
+    "triangles": 1428
    }
   },
   {
@@ -58779,10 +58785,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "79bda9f3ff968492",
+    "sourceHash": "121b429de7ab6be3",
     "buildVersion": 4,
-    "bytes": 43952,
-    "triangles": 1425
+    "bytes": 47000,
+    "triangles": 1471
    }
   },
   {
@@ -59105,9 +59111,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "9dc34f80b841b7fc",
+    "sourceHash": "ae1f6cd610834b2a",
     "buildVersion": 4,
-    "bytes": 40028,
+    "bytes": 38532,
     "triangles": 1500
    }
   },
@@ -59358,10 +59364,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "8b722a7fc2ce430d",
+    "sourceHash": "c2c48ae8ca9a1c4f",
     "buildVersion": 4,
-    "bytes": 39176,
-    "triangles": 1500
+    "bytes": 38668,
+    "triangles": 1488
    }
   },
   {
@@ -59711,10 +59717,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "ed3207c34846a786",
+    "sourceHash": "3582403cc535f260",
     "buildVersion": 4,
-    "bytes": 40692,
-    "triangles": 1493
+    "bytes": 39272,
+    "triangles": 1498
    }
   },
   {
@@ -60055,9 +60061,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "08fbcd564d76f4b9",
+    "sourceHash": "bde787132e63825d",
     "buildVersion": 4,
-    "bytes": 41700,
+    "bytes": 41380,
     "triangles": 1500
    }
   },
@@ -60424,10 +60430,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "80909159ae19a2bf",
+    "sourceHash": "b1c390bbc9c77d29",
     "buildVersion": 4,
-    "bytes": 41268,
-    "triangles": 1499
+    "bytes": 39816,
+    "triangles": 1498
    }
   },
   {
@@ -60781,10 +60787,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "9e8db36c4fd0027a",
+    "sourceHash": "3d3ce8c6a80e0ee7",
     "buildVersion": 4,
-    "bytes": 40688,
-    "triangles": 1499
+    "bytes": 40972,
+    "triangles": 1498
    }
   },
   {
@@ -61139,10 +61145,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "21f5e1f971a1a8e9",
+    "sourceHash": "e0dff9e09877e262",
     "buildVersion": 4,
-    "bytes": 39168,
-    "triangles": 1467
+    "bytes": 37760,
+    "triangles": 1462
    }
   },
   {
@@ -61429,10 +61435,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "413da6c3602c70f6",
+    "sourceHash": "602e4bab9c9e9cbe",
     "buildVersion": 4,
-    "bytes": 39756,
-    "triangles": 1500
+    "bytes": 38588,
+    "triangles": 1487
    }
   },
   {
@@ -61681,10 +61687,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "5e34af6e55bd4901",
+    "sourceHash": "8b2cc979d269ecbb",
     "buildVersion": 4,
-    "bytes": 34804,
-    "triangles": 1499
+    "bytes": 34520,
+    "triangles": 1500
    }
   },
   {
@@ -62136,10 +62142,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "eff02c1ccd117675",
+    "sourceHash": "70572b17c6b79249",
     "buildVersion": 4,
-    "bytes": 40088,
-    "triangles": 1458
+    "bytes": 39716,
+    "triangles": 1457
    }
   },
   {
@@ -62463,10 +62469,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "1ebdb9a8bbbd8c5a",
+    "sourceHash": "504fda70a21be7ba",
     "buildVersion": 4,
-    "bytes": 37164,
-    "triangles": 1499
+    "bytes": 36612,
+    "triangles": 1498
    }
   },
   {
@@ -62800,9 +62806,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "bc09218c408515fb",
+    "sourceHash": "3089118a939e5ba6",
     "buildVersion": 4,
-    "bytes": 38848,
+    "bytes": 38964,
     "triangles": 1499
    }
   },
@@ -63068,10 +63074,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "96a63fdbd94bd938",
+    "sourceHash": "51c1cd0689667fab",
     "buildVersion": 4,
-    "bytes": 37240,
-    "triangles": 1500
+    "bytes": 36232,
+    "triangles": 1499
    }
   },
   {
@@ -63344,9 +63350,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "c7c606e2e30eb6c4",
+    "sourceHash": "0a03fbc8eddccd70",
     "buildVersion": 4,
-    "bytes": 38452,
+    "bytes": 37236,
     "triangles": 1499
    }
   },
@@ -63732,9 +63738,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "2c777e2b25eb9bf7",
+    "sourceHash": "0d23ec1fb9d94fd6",
     "buildVersion": 4,
-    "bytes": 42724,
+    "bytes": 41908,
     "triangles": 1499
    }
   },
@@ -63987,9 +63993,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "259e78227e2ca44f",
+    "sourceHash": "c6f7deb49bbba46b",
     "buildVersion": 4,
-    "bytes": 37852,
+    "bytes": 37692,
     "triangles": 1499
    }
   },
@@ -64263,10 +64269,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "33ecbd832e8ccd2b",
+    "sourceHash": "e23542ac690a74a1",
     "buildVersion": 4,
-    "bytes": 40060,
-    "triangles": 1500
+    "bytes": 39464,
+    "triangles": 1499
    }
   },
   {
@@ -64655,10 +64661,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "9bf16f46263a1249",
+    "sourceHash": "4d20e593515b8371",
     "buildVersion": 4,
-    "bytes": 41580,
-    "triangles": 1466
+    "bytes": 40936,
+    "triangles": 1485
    }
   },
   {
@@ -64935,9 +64941,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "526a08d4c899536b",
+    "sourceHash": "316f97b192dac540",
     "buildVersion": 4,
-    "bytes": 40864,
+    "bytes": 39724,
     "triangles": 1500
    }
   },
@@ -65286,10 +65292,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "3e676b4848be7479",
+    "sourceHash": "15a99221fc57ad24",
     "buildVersion": 4,
-    "bytes": 40848,
-    "triangles": 1495
+    "bytes": 39416,
+    "triangles": 1485
    }
   },
   {
@@ -65826,10 +65832,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "379694de6ce1bada",
+    "sourceHash": "f038fa007301bca4",
     "buildVersion": 4,
-    "bytes": 33780,
-    "triangles": 1279
+    "bytes": 33268,
+    "triangles": 1269
    }
   },
   {
@@ -66165,10 +66171,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "2c82ea403fcfcd35",
+    "sourceHash": "54453690e470625a",
     "buildVersion": 4,
-    "bytes": 38380,
-    "triangles": 1457
+    "bytes": 36856,
+    "triangles": 1462
    }
   },
   {
@@ -66527,10 +66533,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "4b3bfe9278e44b47",
+    "sourceHash": "7f2451b3676da6fa",
     "buildVersion": 4,
-    "bytes": 38504,
-    "triangles": 1418
+    "bytes": 37400,
+    "triangles": 1426
    }
   },
   {
@@ -66809,10 +66815,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "97283e3a708cf3fa",
+    "sourceHash": "edd877264f8db66d",
     "buildVersion": 4,
-    "bytes": 39588,
-    "triangles": 1498
+    "bytes": 38936,
+    "triangles": 1495
    }
   },
   {
@@ -67091,9 +67097,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "bab212e93546adf2",
+    "sourceHash": "b9b581f770863e38",
     "buildVersion": 4,
-    "bytes": 38240,
+    "bytes": 37620,
     "triangles": 1498
    }
   },
@@ -67637,10 +67643,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "270768b0291ba869",
+    "sourceHash": "512fda05c091e93f",
     "buildVersion": 4,
-    "bytes": 38992,
-    "triangles": 1497
+    "bytes": 38264,
+    "triangles": 1499
    }
   },
   {
@@ -67877,9 +67883,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "711045125f7f4d67",
+    "sourceHash": "193244f0a730d863",
     "buildVersion": 4,
-    "bytes": 34688,
+    "bytes": 33292,
     "triangles": 1493
    }
   },
@@ -68109,9 +68115,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "1024ef122b0d5ab2",
+    "sourceHash": "8451bd9ecdd94cd3",
     "buildVersion": 4,
-    "bytes": 31524,
+    "bytes": 33964,
     "triangles": 1499
    }
   },
@@ -68438,9 +68444,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "58fccb4cf70bb192",
+    "sourceHash": "cafb5be46d533dbc",
     "buildVersion": 4,
-    "bytes": 35144,
+    "bytes": 34896,
     "triangles": 1500
    }
   },
@@ -69059,10 +69065,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "406dbc95325dc5bc",
+    "sourceHash": "7a3fe2c30c3ff0ea",
     "buildVersion": 4,
-    "bytes": 36328,
-    "triangles": 1350
+    "bytes": 35436,
+    "triangles": 1321
    }
   },
   {
@@ -69349,10 +69355,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "4546c2c123fd6492",
+    "sourceHash": "6dcaf0a41cda05a9",
     "buildVersion": 4,
-    "bytes": 34476,
-    "triangles": 1498
+    "bytes": 34436,
+    "triangles": 1496
    }
   },
   {
@@ -69627,10 +69633,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "02e3dbe8a982653e",
+    "sourceHash": "1ec3630d1630dea8",
     "buildVersion": 4,
-    "bytes": 35440,
-    "triangles": 1493
+    "bytes": 34068,
+    "triangles": 1487
    }
   },
   {
@@ -70135,10 +70141,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "46aba9b8839c933f",
+    "sourceHash": "eca6bc083eaf3fef",
     "buildVersion": 4,
-    "bytes": 20004,
-    "triangles": 778
+    "bytes": 22444,
+    "triangles": 877
    }
   },
   {
@@ -70369,10 +70375,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "495d09c2a8c28850",
+    "sourceHash": "c28904fa776e2902",
     "buildVersion": 4,
-    "bytes": 35384,
-    "triangles": 1500
+    "bytes": 34696,
+    "triangles": 1498
    }
   },
   {
@@ -70782,10 +70788,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "050d88c3cb47cf71",
+    "sourceHash": "407defd1c6e6d0c4",
     "buildVersion": 4,
-    "bytes": 31604,
-    "triangles": 1400
+    "bytes": 30556,
+    "triangles": 1374
    }
   },
   {
@@ -71064,10 +71070,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "c952c266407dc25c",
+    "sourceHash": "23a493f48c0a17c0",
     "buildVersion": 4,
-    "bytes": 36980,
-    "triangles": 1500
+    "bytes": 35936,
+    "triangles": 1497
    }
   },
   {
@@ -71334,10 +71340,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "b3858805118019e4",
+    "sourceHash": "ed8b659e7bb2e9fb",
     "buildVersion": 4,
-    "bytes": 36772,
-    "triangles": 1496
+    "bytes": 35044,
+    "triangles": 1495
    }
   },
   {
@@ -71483,10 +71489,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "193087c3b3234843",
+    "sourceHash": "840f47bd92fa1920",
     "buildVersion": 4,
-    "bytes": 27780,
-    "triangles": 1499
+    "bytes": 28472,
+    "triangles": 1500
    }
   },
   {
@@ -71632,10 +71638,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "d0af55a3279be865",
+    "sourceHash": "854399ddd1107d46",
     "buildVersion": 4,
-    "bytes": 27864,
-    "triangles": 1499
+    "bytes": 28264,
+    "triangles": 1498
    }
   },
   {
@@ -71781,10 +71787,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "11027e709d6ab08b",
+    "sourceHash": "f7d81fb431aec024",
     "buildVersion": 4,
-    "bytes": 26744,
-    "triangles": 1499
+    "bytes": 26944,
+    "triangles": 1498
    }
   },
   {
@@ -71930,10 +71936,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "233b2d6a96ac9936",
+    "sourceHash": "6d321a032985e317",
     "buildVersion": 4,
-    "bytes": 27988,
-    "triangles": 1498
+    "bytes": 28308,
+    "triangles": 1492
    }
   },
   {
@@ -72892,10 +72898,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "78297dffe26e913d",
+    "sourceHash": "6a8e776e92db27dd",
     "buildVersion": 4,
-    "bytes": 35944,
-    "triangles": 1481
+    "bytes": 35720,
+    "triangles": 1471
    }
   },
   {
@@ -73312,9 +73318,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "334d0cbba10ede8f",
+    "sourceHash": "a0852610a77fc4cc",
     "buildVersion": 4,
-    "bytes": 37592,
+    "bytes": 36984,
     "triangles": 1500
    }
   },
@@ -73746,10 +73752,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "c9bc4d472e0fba67",
+    "sourceHash": "7d6e1781ae9d2121",
     "buildVersion": 4,
-    "bytes": 38732,
-    "triangles": 1489
+    "bytes": 37444,
+    "triangles": 1482
    }
   },
   {
@@ -74181,10 +74187,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "1f05db4731d31ba7",
+    "sourceHash": "36f4b983cdc2ae4d",
     "buildVersion": 4,
-    "bytes": 38568,
-    "triangles": 1500
+    "bytes": 37128,
+    "triangles": 1499
    }
   },
   {
@@ -74719,10 +74725,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "d2f8dbcc97d0e141",
+    "sourceHash": "eaa6f91ba20cd27b",
     "buildVersion": 4,
-    "bytes": 38076,
-    "triangles": 1482
+    "bytes": 37748,
+    "triangles": 1474
    }
   },
   {
@@ -75527,10 +75533,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "42ca00ccf5e1f13b",
+    "sourceHash": "e64d07f65e2b72d5",
     "buildVersion": 4,
-    "bytes": 30020,
-    "triangles": 1251
+    "bytes": 27952,
+    "triangles": 1150
    }
   },
   {
@@ -76497,10 +76503,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "eea89eb876d2affb",
+    "sourceHash": "955e1028e20d3d36",
     "buildVersion": 4,
-    "bytes": 43928,
-    "triangles": 1473
+    "bytes": 45136,
+    "triangles": 1411
    }
   },
   {
@@ -76759,9 +76765,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "4c6e0abd62213fdd",
+    "sourceHash": "39c8053ac8a9c8f7",
     "buildVersion": 4,
-    "bytes": 40196,
+    "bytes": 38200,
     "triangles": 1484
    }
   },
@@ -77021,10 +77027,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "0f1d33a3c8c5b0d3",
+    "sourceHash": "febe52a5b2769803",
     "buildVersion": 4,
-    "bytes": 39516,
-    "triangles": 1482
+    "bytes": 37516,
+    "triangles": 1481
    }
   },
   {
@@ -77422,10 +77428,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "7afd62b9c6aa72fb",
+    "sourceHash": "0eac7071158b48c8",
     "buildVersion": 4,
-    "bytes": 38728,
-    "triangles": 1500
+    "bytes": 37464,
+    "triangles": 1499
    }
   },
   {
@@ -77823,9 +77829,9 @@
     }
    ],
    "lod2": {
-    "sourceHash": "982f17f96ff1f747",
+    "sourceHash": "922ee3397412dad5",
     "buildVersion": 4,
-    "bytes": 38336,
+    "bytes": 37260,
     "triangles": 1500
    }
   },
@@ -78468,10 +78474,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "0da3d4f424dd2267",
+    "sourceHash": "c0189e2187e8129a",
     "buildVersion": 4,
-    "bytes": 32620,
-    "triangles": 1066
+    "bytes": 35084,
+    "triangles": 1193
    }
   },
   {
@@ -78924,10 +78930,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "f0de79937b264e06",
+    "sourceHash": "57fd8f6efc1213b1",
     "buildVersion": 4,
-    "bytes": 37308,
-    "triangles": 1499
+    "bytes": 36204,
+    "triangles": 1497
    }
   },
   {
@@ -80154,10 +80160,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "ed9488eb26d65c10",
+    "sourceHash": "e017384ae4ff0e93",
     "buildVersion": 4,
-    "bytes": 38872,
-    "triangles": 1487
+    "bytes": 39060,
+    "triangles": 1500
    }
   },
   {
@@ -80805,10 +80811,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "d8f77dc361e48a3c",
+    "sourceHash": "be3913a4b1d83b95",
     "buildVersion": 4,
-    "bytes": 40000,
-    "triangles": 1500
+    "bytes": 39776,
+    "triangles": 1499
    }
   },
   {
@@ -81099,10 +81105,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "1a0383f660886071",
+    "sourceHash": "c0af1f5f0c6e0b28",
     "buildVersion": 4,
-    "bytes": 37460,
-    "triangles": 1498
+    "bytes": 36524,
+    "triangles": 1491
    }
   },
   {
@@ -81508,10 +81514,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "b16eabc136873610",
+    "sourceHash": "a79865c6d944f0d5",
     "buildVersion": 4,
-    "bytes": 38576,
-    "triangles": 1483
+    "bytes": 38064,
+    "triangles": 1475
    }
   },
   {
@@ -81976,10 +81982,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "88d803a187bd665e",
+    "sourceHash": "e6d5c12ed0bb665f",
     "buildVersion": 4,
-    "bytes": 37428,
-    "triangles": 1283
+    "bytes": 36876,
+    "triangles": 1291
    }
   },
   {
@@ -82519,10 +82525,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "c06c5201202f3f38",
+    "sourceHash": "766f3005332abb6b",
     "buildVersion": 4,
-    "bytes": 44440,
-    "triangles": 1500
+    "bytes": 43036,
+    "triangles": 1498
    }
   },
   {
@@ -82777,10 +82783,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "68bbac21da91875a",
+    "sourceHash": "cae44e364dd9aee9",
     "buildVersion": 4,
-    "bytes": 38792,
-    "triangles": 1476
+    "bytes": 38260,
+    "triangles": 1475
    }
   },
   {
@@ -83373,10 +83379,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "9632d52ca4d2de34",
+    "sourceHash": "5f66b3091bf6729c",
     "buildVersion": 4,
-    "bytes": 35416,
-    "triangles": 1470
+    "bytes": 35208,
+    "triangles": 1481
    }
   },
   {
@@ -83837,10 +83843,10 @@
     }
    ],
    "lod2": {
-    "sourceHash": "0dd9ba21752f44ca",
+    "sourceHash": "460bdcf7bb3e193f",
     "buildVersion": 4,
-    "bytes": 29360,
-    "triangles": 1118
+    "bytes": 29428,
+    "triangles": 1117
    }
   },
   {
@@ -85033,10 +85039,3676 @@
     }
    ],
    "lod2": {
-    "sourceHash": "30128121980a2107",
+    "sourceHash": "ae6ce6713446194c",
     "buildVersion": 4,
-    "bytes": 46068,
-    "triangles": 1470
+    "bytes": 45184,
+    "triangles": 1499
+   }
+  },
+  {
+   "id": "chunk-face-djambi-1-29-r1",
+   "category": "street-survey",
+   "name": "face-djambi-1-29-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-djambi-1-29-r1.glb?asset=05d129c20badeec2",
+   "sha256": "05d129c20badeec272ca7c5913658cea9ef24a2295f522cc642d647331d1fd09",
+   "bytes": 757128,
+   "triangles": 11460,
+   "primitives": 30,
+   "instance": {
+    "anchor": [
+     4.93810515329118,
+     52.36515100242788
+    ],
+    "northOffsetDegrees": 89.6233,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -19.814,
+     0,
+     -10.2
+    ],
+    "max": [
+     19.291,
+     15.495,
+     0.675
+    ]
+   },
+   "height": 15.495,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012131961",
+    "NL.IMBAG.Pand.0363100012100535",
+    "NL.IMBAG.Pand.0363100012110582",
+    "NL.IMBAG.Pand.0363100012099261",
+    "NL.IMBAG.Pand.0363100012129720",
+    "NL.IMBAG.Pand.0363100012077761",
+    "NL.IMBAG.Pand.0363100012072833"
+   ],
+   "replaces": [
+    "ordinary-0363100012131961",
+    "ordinary-0363100012100535",
+    "ordinary-0363100012110582",
+    "ordinary-0363100012099261",
+    "ordinary-0363100012129720",
+    "ordinary-0363100012077761",
+    "ordinary-0363100012072833"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9382467,
+        52.3653297
+       ],
+       [
+        4.9380999,
+        52.3653282
+       ],
+       [
+        4.9381014,
+        52.3652742
+       ],
+       [
+        4.9382482,
+        52.3652757
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382482,
+        52.3652757
+       ],
+       [
+        4.9381014,
+        52.3652742
+       ],
+       [
+        4.9381027,
+        52.3652248
+       ],
+       [
+        4.9382495,
+        52.3652263
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382495,
+        52.3652263
+       ],
+       [
+        4.9381027,
+        52.3652248
+       ],
+       [
+        4.9381041,
+        52.3651754
+       ],
+       [
+        4.9382509,
+        52.3651769
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382509,
+        52.3651769
+       ],
+       [
+        4.9381041,
+        52.3651754
+       ],
+       [
+        4.9381054,
+        52.365126
+       ],
+       [
+        4.9382522,
+        52.3651275
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382522,
+        52.3651275
+       ],
+       [
+        4.9381054,
+        52.365126
+       ],
+       [
+        4.9381068,
+        52.3650765
+       ],
+       [
+        4.9382536,
+        52.365078
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382536,
+        52.365078
+       ],
+       [
+        4.9381068,
+        52.3650765
+       ],
+       [
+        4.9381081,
+        52.3650271
+       ],
+       [
+        4.9382549,
+        52.3650286
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9382549,
+        52.3650286
+       ],
+       [
+        4.9381081,
+        52.3650271
+       ],
+       [
+        4.9381094,
+        52.3649777
+       ],
+       [
+        4.9382562,
+        52.3649792
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "djambi-131961",
+     "pandId": "0363100012131961",
+     "buildingId": "NL.IMBAG.Pand.0363100012131961",
+     "address": "Djambistraat 9",
+     "frontage": {
+      "x0": -19.712,
+      "x1": -13.712,
+      "widthM": 6
+     },
+     "bounds": {
+      "min": [
+       -19.814,
+       0,
+       -9.87
+      ],
+      "max": [
+       -13.708,
+       15.474,
+       0.675
+      ]
+     },
+     "triangles": 1703,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 244
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 936
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 0,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-100535",
+     "pandId": "0363100012100535",
+     "buildingId": "NL.IMBAG.Pand.0363100012100535",
+     "address": "Djambistraat 11",
+     "frontage": {
+      "x0": -13.712,
+      "x1": -8.213,
+      "widthM": 5.499
+     },
+     "bounds": {
+      "min": [
+       -13.813,
+       0,
+       -9.925
+      ],
+      "max": [
+       -8.209,
+       15.482,
+       0.616
+      ]
+     },
+     "triangles": 1592,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 185
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 144,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 936,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 44,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 240,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 10,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 4,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 17,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-110582",
+     "pandId": "0363100012110582",
+     "buildingId": "NL.IMBAG.Pand.0363100012110582",
+     "address": "Djambistraat 13",
+     "frontage": {
+      "x0": -8.213,
+      "x1": -2.713,
+      "widthM": 5.5
+     },
+     "bounds": {
+      "min": [
+       -8.314,
+       0,
+       -9.982
+      ],
+      "max": [
+       -2.709,
+       15.487,
+       0.561
+      ]
+     },
+     "triangles": 1656,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 248
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 288,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 1840,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 88,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 472,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 14,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 7,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 29,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-099261",
+     "pandId": "0363100012099261",
+     "buildingId": "NL.IMBAG.Pand.0363100012099261",
+     "address": "Djambistraat 15",
+     "frontage": {
+      "x0": -2.713,
+      "x1": 2.786,
+      "widthM": 5.499
+     },
+     "bounds": {
+      "min": [
+       -2.814,
+       0,
+       -10.037
+      ],
+      "max": [
+       2.79,
+       15.495,
+       0.504
+      ]
+     },
+     "triangles": 1584,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 176
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 432,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 2744,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 132,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 704,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 22,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 11,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 37,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-129720",
+     "pandId": "0363100012129720",
+     "buildingId": "NL.IMBAG.Pand.0363100012129720",
+     "address": "Djambistraat 17",
+     "frontage": {
+      "x0": 2.786,
+      "x1": 8.285,
+      "widthM": 5.499
+     },
+     "bounds": {
+      "min": [
+       2.685,
+       0,
+       -10.091
+      ],
+      "max": [
+       8.289,
+       15.492,
+       0.45
+      ]
+     },
+     "triangles": 1591,
+     "ranges": [
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 184
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 576,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 3648,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 176,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 936,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 26,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 16,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 48,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-077761",
+     "pandId": "0363100012077761",
+     "buildingId": "NL.IMBAG.Pand.0363100012077761",
+     "address": "Djambistraat 19",
+     "frontage": {
+      "x0": 8.284,
+      "x1": 13.785,
+      "widthM": 5.501
+     },
+     "bounds": {
+      "min": [
+       8.186,
+       0,
+       -10.146
+      ],
+      "max": [
+       13.791,
+       15.449,
+       0.497
+      ]
+     },
+     "triangles": 1639,
+     "ranges": [
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 233
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 720,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 40,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 4552,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 220,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 1168,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 33,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 21,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 55,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "djambi-072833",
+     "pandId": "0363100012072833",
+     "buildingId": "NL.IMBAG.Pand.0363100012072833",
+     "address": "Djambistraat 21",
+     "frontage": {
+      "x0": 13.782,
+      "x1": 19.285,
+      "widthM": 5.503
+     },
+     "bounds": {
+      "min": [
+       13.684,
+       0,
+       -10.2
+      ],
+      "max": [
+       19.291,
+       15.43,
+       0.499
+      ]
+     },
+     "triangles": 1695,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 267
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 864,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 48,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 5456,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 264,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 1400,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 39,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 28,
+       "firstTriangle": 25,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 29,
+       "firstTriangle": 63,
+       "triangleCount": 24
+      }
+     ]
+    }
+   ],
+   "lod2": {
+    "sourceHash": "05d129c20badeec2",
+    "buildVersion": 4,
+    "bytes": 41208,
+    "triangles": 1363
+   }
+  },
+  {
+   "id": "chunk-face-java-93-149-r2",
+   "category": "street-survey",
+   "name": "face-java-93-149-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-java-93-149-r2.glb?asset=77556a0624b5237e",
+   "sha256": "77556a0624b5237eb77cc97fbb2d7ad7fecc394986406f62877fc9236204535c",
+   "bytes": 587252,
+   "triangles": 8665,
+   "primitives": 18,
+   "instance": {
+    "anchor": [
+     4.936783495543559,
+     52.36386493677706
+    ],
+    "northOffsetDegrees": 359.0364,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -9.025,
+     0,
+     -12.132
+    ],
+    "max": [
+     9.06,
+     14.523,
+     0.645
+    ]
+   },
+   "height": 14.523,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012150083",
+    "NL.IMBAG.Pand.0363100012103232",
+    "NL.IMBAG.Pand.0363100012141749"
+   ],
+   "replaces": [
+    "ordinary-0363100012150083",
+    "ordinary-0363100012103232",
+    "ordinary-0363100012141749"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9367375,
+        52.3639298
+       ],
+       [
+        4.9366961,
+        52.3639294
+       ],
+       [
+        4.9366949,
+        52.3639727
+       ],
+       [
+        4.9366481,
+        52.3639722
+       ],
+       [
+        4.936651,
+        52.3638636
+       ],
+       [
+        4.9367393,
+        52.3638645
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9368245,
+        52.363974
+       ],
+       [
+        4.9367777,
+        52.3639736
+       ],
+       [
+        4.9367789,
+        52.3639302
+       ],
+       [
+        4.9367375,
+        52.3639298
+       ],
+       [
+        4.9367393,
+        52.3638645
+       ],
+       [
+        4.9368275,
+        52.3638654
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9369147,
+        52.3639316
+       ],
+       [
+        4.9368725,
+        52.3639312
+       ],
+       [
+        4.9368713,
+        52.3639745
+       ],
+       [
+        4.9368245,
+        52.363974
+       ],
+       [
+        4.9368275,
+        52.3638654
+       ],
+       [
+        4.9369165,
+        52.3638663
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "java-150083",
+     "pandId": "0363100012150083",
+     "buildingId": "NL.IMBAG.Pand.0363100012150083",
+     "address": "Javastraat 113",
+     "frontage": {
+      "x0": -9.024,
+      "x1": -3.013,
+      "widthM": 6.011
+     },
+     "bounds": {
+      "min": [
+       -9.025,
+       0,
+       -12.132
+      ],
+      "max": [
+       -3.013,
+       14.523,
+       0.645
+      ]
+     },
+     "triangles": 2908,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 397
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 1052
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "java-103232",
+     "pandId": "0363100012103232",
+     "buildingId": "NL.IMBAG.Pand.0363100012103232",
+     "address": "Javastraat 115",
+     "frontage": {
+      "x0": -3.013,
+      "x1": 2.995,
+      "widthM": 6.008
+     },
+     "bounds": {
+      "min": [
+       -3.014,
+       0,
+       -12.131
+      ],
+      "max": [
+       2.996,
+       14.43,
+       0.645
+      ]
+     },
+     "triangles": 2862,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 388
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 216,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1052,
+       "triangleCount": 1020
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 432,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 216,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 9,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 10,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "java-141749",
+     "pandId": "0363100012141749",
+     "buildingId": "NL.IMBAG.Pand.0363100012141749",
+     "address": "Javastraat 117",
+     "frontage": {
+      "x0": 2.995,
+      "x1": 9.06,
+      "widthM": 6.064
+     },
+     "bounds": {
+      "min": [
+       2.995,
+       0,
+       -12.131
+      ],
+      "max": [
+       9.06,
+       14.385,
+       0.645
+      ]
+     },
+     "triangles": 2895,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 399
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 432,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 312,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 2072,
+       "triangleCount": 1020
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 864,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 424,
+       "triangleCount": 208
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 21,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 20,
+       "triangleCount": 10
+      }
+     ]
+    }
+   ],
+   "lod2": {
+    "sourceHash": "77556a0624b5237e",
+    "buildVersion": 4,
+    "bytes": 39616,
+    "triangles": 1427
+   }
+  },
+  {
+   "id": "chunk-face-lampong-2-20-r1",
+   "category": "street-survey",
+   "name": "face-lampong-2-20-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-lampong-2-20-r1.glb?asset=4f642af618f05b6f",
+   "sha256": "4f642af618f05b6f3bbb2f7adaa87fb461d31b308c9585493cc4df6e9ac1df0b",
+   "bytes": 454144,
+   "triangles": 6767,
+   "primitives": 11,
+   "instance": {
+    "anchor": [
+     4.937043664446501,
+     52.36490244616132
+    ],
+    "northOffsetDegrees": 178.9739,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -15.27,
+     0,
+     -9.941
+    ],
+    "max": [
+     15.63,
+     15.532,
+     0.401
+    ]
+   },
+   "height": 15.532,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012140561",
+    "NL.IMBAG.Pand.0363100012150248",
+    "NL.IMBAG.Pand.0363100012085260",
+    "NL.IMBAG.Pand.0363100012064007",
+    "NL.IMBAG.Pand.0363100012112381"
+   ],
+   "replaces": [
+    "ordinary-0363100012140561",
+    "ordinary-0363100012150248",
+    "ordinary-0363100012085260",
+    "ordinary-0363100012064007",
+    "ordinary-0363100012112381"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9372678,
+        52.3649049
+       ],
+       [
+        4.9371797,
+        52.3649039
+       ],
+       [
+        4.9371823,
+        52.364815
+       ],
+       [
+        4.9372704,
+        52.3648159
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9371797,
+        52.3649039
+       ],
+       [
+        4.9370917,
+        52.364903
+       ],
+       [
+        4.9370943,
+        52.364814
+       ],
+       [
+        4.9371823,
+        52.364815
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9370917,
+        52.364903
+       ],
+       [
+        4.9369992,
+        52.364902
+       ],
+       [
+        4.9370016,
+        52.3648211
+       ],
+       [
+        4.937094,
+        52.3648221
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9369992,
+        52.364902
+       ],
+       [
+        4.9369067,
+        52.364901
+       ],
+       [
+        4.9369088,
+        52.3648309
+       ],
+       [
+        4.9370012,
+        52.3648319
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9369067,
+        52.364901
+       ],
+       [
+        4.9368142,
+        52.3648999
+       ],
+       [
+        4.9368163,
+        52.3648299
+       ],
+       [
+        4.9369088,
+        52.3648309
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "lampong-140561",
+     "pandId": "0363100012140561",
+     "buildingId": "NL.IMBAG.Pand.0363100012140561",
+     "address": "Lampongstraat 10",
+     "frontage": {
+      "x0": -15.269,
+      "x1": -9.27,
+      "widthM": 5.999
+     },
+     "bounds": {
+      "min": [
+       -15.27,
+       0,
+       -9.941
+      ],
+      "max": [
+       -9.27,
+       15.532,
+       0.4
+      ]
+     },
+     "triangles": 1360,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 17
+      }
+     ]
+    },
+    {
+     "recipeId": "lampong-150248",
+     "pandId": "0363100012150248",
+     "buildingId": "NL.IMBAG.Pand.0363100012150248",
+     "address": "Lampongstraat 8",
+     "frontage": {
+      "x0": -9.27,
+      "x1": -3.27,
+      "widthM": 6
+     },
+     "bounds": {
+      "min": [
+       -9.271,
+       0,
+       -9.941
+      ],
+      "max": [
+       -3.27,
+       15.509,
+       0.4
+      ]
+     },
+     "triangles": 1354,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 44,
+       "triangleCount": 38
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 96,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 264,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 692,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 216,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 5,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 17,
+       "triangleCount": 19
+      }
+     ]
+    },
+    {
+     "recipeId": "lampong-085260",
+     "pandId": "0363100012085260",
+     "buildingId": "NL.IMBAG.Pand.0363100012085260",
+     "address": "Lampongstraat 6",
+     "frontage": {
+      "x0": -3.27,
+      "x1": 3.029,
+      "widthM": 6.298
+     },
+     "bounds": {
+      "min": [
+       -3.27,
+       0,
+       -9.041
+      ],
+      "max": [
+       3.029,
+       15.284,
+       0.4
+      ]
+     },
+     "triangles": 1349,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 82,
+       "triangleCount": 35
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 192,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 528,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 1384,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 432,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 36,
+       "triangleCount": 22
+      }
+     ]
+    },
+    {
+     "recipeId": "lampong-064007",
+     "pandId": "0363100012064007",
+     "buildingId": "NL.IMBAG.Pand.0363100012064007",
+     "address": "Lampongstraat 4",
+     "frontage": {
+      "x0": 3.029,
+      "x1": 9.33,
+      "widthM": 6.301
+     },
+     "bounds": {
+      "min": [
+       3.029,
+       0,
+       -7.84
+      ],
+      "max": [
+       9.33,
+       14.931,
+       0.401
+      ]
+     },
+     "triangles": 1346,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 117,
+       "triangleCount": 28
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 288,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 792,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2076,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 648,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 8,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 58,
+       "triangleCount": 20
+      }
+     ]
+    },
+    {
+     "recipeId": "lampong-112381",
+     "pandId": "0363100012112381",
+     "buildingId": "NL.IMBAG.Pand.0363100012112381",
+     "address": "Lampongstraat 2",
+     "frontage": {
+      "x0": 9.33,
+      "x1": 15.63,
+      "widthM": 6.299
+     },
+     "bounds": {
+      "min": [
+       9.329,
+       0,
+       -7.84
+      ],
+      "max": [
+       15.63,
+       14.98,
+       0.401
+      ]
+     },
+     "triangles": 1358,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 145,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 384,
+       "triangleCount": 96
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 1056,
+       "triangleCount": 264
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2768,
+       "triangleCount": 692
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 864,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 12,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 14,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 78,
+       "triangleCount": 16
+      }
+     ]
+    }
+   ],
+   "lod2": {
+    "sourceHash": "4f642af618f05b6f",
+    "buildVersion": 4,
+    "bytes": 24944,
+    "triangles": 862
+   }
+  },
+  {
+   "id": "chunk-face-soenda-2-36-r1",
+   "category": "street-survey",
+   "name": "face-soenda-2-36-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-soenda-2-36-r1.glb?asset=3927f4d395766880",
+   "sha256": "3927f4d39576688001fc1b997182405ada78f29dc561feb7ee260afd1400c0a6",
+   "bytes": 623496,
+   "triangles": 9583,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.938620549641722,
+     52.36498255202314
+    ],
+    "northOffsetDegrees": 269.0416,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -16.962,
+     0,
+     -10.04
+    ],
+    "max": [
+     16.588,
+     15.7,
+     0.451
+    ]
+   },
+   "height": 15.7,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012150368",
+    "NL.IMBAG.Pand.0363100012069113",
+    "NL.IMBAG.Pand.0363100012062527",
+    "NL.IMBAG.Pand.0363100012081321",
+    "NL.IMBAG.Pand.0363100012107809",
+    "NL.IMBAG.Pand.0363100012111204"
+   ],
+   "replaces": [
+    "ordinary-0363100012150368",
+    "ordinary-0363100012069113",
+    "ordinary-0363100012062527",
+    "ordinary-0363100012081321",
+    "ordinary-0363100012107809",
+    "ordinary-0363100012111204"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9386233,
+        52.364884
+       ],
+       [
+        4.9384764,
+        52.3648825
+       ],
+       [
+        4.9384779,
+        52.3648286
+       ],
+       [
+        4.9386247,
+        52.3648301
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9386219,
+        52.3649335
+       ],
+       [
+        4.9384751,
+        52.364932
+       ],
+       [
+        4.9384764,
+        52.3648825
+       ],
+       [
+        4.9386233,
+        52.364884
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9386205,
+        52.3649829
+       ],
+       [
+        4.9384738,
+        52.3649814
+       ],
+       [
+        4.9384751,
+        52.364932
+       ],
+       [
+        4.9386219,
+        52.3649335
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9386192,
+        52.3650323
+       ],
+       [
+        4.9384724,
+        52.3650308
+       ],
+       [
+        4.9384738,
+        52.3649814
+       ],
+       [
+        4.9386205,
+        52.3649829
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9386178,
+        52.3650817
+       ],
+       [
+        4.9384711,
+        52.3650802
+       ],
+       [
+        4.9384724,
+        52.3650308
+       ],
+       [
+        4.9386192,
+        52.3650323
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9386165,
+        52.3651316
+       ],
+       [
+        4.9384697,
+        52.3651301
+       ],
+       [
+        4.9384711,
+        52.3650802
+       ],
+       [
+        4.9386178,
+        52.3650817
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "soenda-150368",
+     "pandId": "0363100012150368",
+     "buildingId": "NL.IMBAG.Pand.0363100012150368",
+     "address": "Soendastraat 28",
+     "frontage": {
+      "x0": -16.962,
+      "x1": -10.962,
+      "widthM": 6
+     },
+     "bounds": {
+      "min": [
+       -16.962,
+       0,
+       -10.04
+      ],
+      "max": [
+       -10.961,
+       15.7,
+       0.451
+      ]
+     },
+     "triangles": 1630,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 186
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 936
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "soenda-069113",
+     "pandId": "0363100012069113",
+     "buildingId": "NL.IMBAG.Pand.0363100012069113",
+     "address": "Soendastraat 26",
+     "frontage": {
+      "x0": -10.962,
+      "x1": -5.463,
+      "widthM": 5.498
+     },
+     "bounds": {
+      "min": [
+       -10.962,
+       0,
+       -10.04
+      ],
+      "max": [
+       -5.461,
+       15.679,
+       0.45
+      ]
+     },
+     "triangles": 1573,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 30,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 186,
+       "triangleCount": 169
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 144,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 936,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 44,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 240,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      }
+     ]
+    },
+    {
+     "recipeId": "soenda-062527",
+     "pandId": "0363100012062527",
+     "buildingId": "NL.IMBAG.Pand.0363100012062527",
+     "address": "Soendastraat 24",
+     "frontage": {
+      "x0": -5.463,
+      "x1": 0.037,
+      "widthM": 5.5
+     },
+     "bounds": {
+      "min": [
+       -5.463,
+       0,
+       -10.04
+      ],
+      "max": [
+       0.039,
+       15.68,
+       0.45
+      ]
+     },
+     "triangles": 1585,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 60,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 355,
+       "triangleCount": 178
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 288,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1840,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 88,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 472,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 8,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 8,
+       "triangleCount": 5
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 16,
+       "triangleCount": 7
+      }
+     ]
+    },
+    {
+     "recipeId": "soenda-081321",
+     "pandId": "0363100012081321",
+     "buildingId": "NL.IMBAG.Pand.0363100012081321",
+     "address": "Soendastraat 22",
+     "frontage": {
+      "x0": 0.037,
+      "x1": 5.537,
+      "widthM": 5.5
+     },
+     "bounds": {
+      "min": [
+       0.037,
+       0,
+       -10.039
+      ],
+      "max": [
+       5.539,
+       15.669,
+       0.45
+      ]
+     },
+     "triangles": 1579,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 90,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 72,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 533,
+       "triangleCount": 175
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 432,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 6,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 24,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 2744,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 132,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 704,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 15,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 13,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 23,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "soenda-107809",
+     "pandId": "0363100012107809",
+     "buildingId": "NL.IMBAG.Pand.0363100012107809",
+     "address": "Soendastraat 20",
+     "frontage": {
+      "x0": 5.537,
+      "x1": 11.038,
+      "widthM": 5.5
+     },
+     "bounds": {
+      "min": [
+       5.537,
+       0,
+       -10.039
+      ],
+      "max": [
+       11.038,
+       15.683,
+       0.45
+      ]
+     },
+     "triangles": 1579,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 120,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 96,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 708,
+       "triangleCount": 175
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 576,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 8,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 32,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 3648,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 176,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 936,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 19,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 15,
+       "triangleCount": 3
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 33,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "soenda-111204",
+     "pandId": "0363100012111204",
+     "buildingId": "NL.IMBAG.Pand.0363100012111204",
+     "address": "Soendastraat 18",
+     "frontage": {
+      "x0": 11.038,
+      "x1": 16.587,
+      "widthM": 5.549
+     },
+     "bounds": {
+      "min": [
+       11.037,
+       0,
+       -10.038
+      ],
+      "max": [
+       16.588,
+       15.699,
+       0.451
+      ]
+     },
+     "triangles": 1637,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 150,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 120,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 883,
+       "triangleCount": 190
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 720,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 10,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 40,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 4552,
+       "triangleCount": 936
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 220,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 1168,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 23,
+       "triangleCount": 7
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 18,
+       "triangleCount": 6
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 42,
+       "triangleCount": 6
+      }
+     ]
+    }
+   ],
+   "lod2": {
+    "sourceHash": "3927f4d395766880",
+    "buildVersion": 4,
+    "bytes": 39524,
+    "triangles": 1475
+   }
+  },
+  {
+   "id": "chunk-face-soenda-2-36-r2",
+   "category": "street-survey",
+   "name": "face-soenda-2-36-r2",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-soenda-2-36-r2.glb?asset=d704493c1b5737ef",
+   "sha256": "d704493c1b5737ef4b8f85603aeaaf3459cb6f503d01adbca9f58c6874049708",
+   "bytes": 321224,
+   "triangles": 4844,
+   "primitives": 12,
+   "instance": {
+    "anchor": [
+     4.93861305369486,
+     52.3652569651936
+    ],
+    "northOffsetDegrees": 269.0414,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -8.4,
+     0,
+     -10.039
+    ],
+    "max": [
+     8.701,
+     15.709,
+     0.45
+    ]
+   },
+   "height": 15.709,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012136122",
+    "NL.IMBAG.Pand.0363100012068591",
+    "NL.IMBAG.Pand.0363100012092864"
+   ],
+   "replaces": [
+    "ordinary-0363100012136122",
+    "ordinary-0363100012068591",
+    "ordinary-0363100012092864"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9386138,
+        52.3652314
+       ],
+       [
+        4.938467,
+        52.3652299
+       ],
+       [
+        4.9384683,
+        52.36518
+       ],
+       [
+        4.9386151,
+        52.3651815
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9386124,
+        52.3652812
+       ],
+       [
+        4.9384656,
+        52.3652797
+       ],
+       [
+        4.938467,
+        52.3652299
+       ],
+       [
+        4.9386138,
+        52.3652314
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9386109,
+        52.3653351
+       ],
+       [
+        4.9384641,
+        52.3653336
+       ],
+       [
+        4.9384656,
+        52.3652797
+       ],
+       [
+        4.9386124,
+        52.3652812
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "soenda-136122",
+     "pandId": "0363100012136122",
+     "buildingId": "NL.IMBAG.Pand.0363100012136122",
+     "address": "Soendastraat 14",
+     "frontage": {
+      "x0": -8.4,
+      "x1": -2.85,
+      "widthM": 5.549
+     },
+     "bounds": {
+      "min": [
+       -8.4,
+       0,
+       -10.039
+      ],
+      "max": [
+       -2.849,
+       15.709,
+       0.45
+      ]
+     },
+     "triangles": 1631,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 187
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 936
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 1
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 11
+      }
+     ]
+    },
+    {
+     "recipeId": "soenda-068591",
+     "pandId": "0363100012068591",
+     "buildingId": "NL.IMBAG.Pand.0363100012068591",
+     "address": "Soendastraat 12",
+     "frontage": {
+      "x0": -2.85,
+      "x1": 2.7,
+      "widthM": 5.55
+     },
+     "bounds": {
+      "min": [
+       -2.85,
+       0,
+       -10.039
+      ],
+      "max": [
+       2.7,
+       15.697,
+       0.45
+      ]
+     },
+     "triangles": 1586,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 30,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 24,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 187,
+       "triangleCount": 178
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 144,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 2,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 8,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 936,
+       "triangleCount": 904
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 44,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 240,
+       "triangleCount": 232
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 4,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 1,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 11,
+       "triangleCount": 12
+      }
+     ]
+    },
+    {
+     "recipeId": "soenda-092864",
+     "pandId": "0363100012092864",
+     "buildingId": "NL.IMBAG.Pand.0363100012092864",
+     "address": "Soendastraat 10",
+     "frontage": {
+      "x0": 2.7,
+      "x1": 8.7,
+      "widthM": 6
+     },
+     "bounds": {
+      "min": [
+       2.7,
+       0,
+       -10.039
+      ],
+      "max": [
+       8.701,
+       15.69,
+       0.45
+      ]
+     },
+     "triangles": 1627,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 60,
+       "triangleCount": 30
+      },
+      {
+       "primitive": 1,
+       "firstTriangle": 48,
+       "triangleCount": 24
+      },
+      {
+       "primitive": 2,
+       "firstTriangle": 365,
+       "triangleCount": 183
+      },
+      {
+       "primitive": 3,
+       "firstTriangle": 288,
+       "triangleCount": 144
+      },
+      {
+       "primitive": 4,
+       "firstTriangle": 4,
+       "triangleCount": 2
+      },
+      {
+       "primitive": 5,
+       "firstTriangle": 16,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 1840,
+       "triangleCount": 936
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 88,
+       "triangleCount": 44
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 472,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 8,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 5,
+       "triangleCount": 4
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 23,
+       "triangleCount": 8
+      }
+     ]
+    }
+   ],
+   "lod2": {
+    "sourceHash": "d704493c1b5737ef",
+    "buildVersion": 4,
+    "bytes": 39724,
+    "triangles": 1500
+   }
+  },
+  {
+   "id": "chunk-face-java-93-149-r1",
+   "category": "street-survey",
+   "name": "face-java-93-149-r1",
+   "modelUrl": "./models/ordinary-buildings/chunks/chunk-face-java-93-149-r1.glb?asset=eae14b5826fed9f4",
+   "sha256": "eae14b5826fed9f451244e6e6925e383922c2a049b5acf0952c2f8f92307d4ac",
+   "bytes": 1349436,
+   "triangles": 20165,
+   "primitives": 28,
+   "instance": {
+    "anchor": [
+     4.936254039385915,
+     52.363859492508084
+    ],
+    "northOffsetDegrees": 359.0364,
+    "mirror": false
+   },
+   "bounds": {
+    "min": [
+     -21.034,
+     0,
+     -22.681
+    ],
+    "max": [
+     21.035,
+     15.016,
+     0.646
+    ]
+   },
+   "height": 15.016,
+   "suppress": [
+    "NL.IMBAG.Pand.0363100012132949",
+    "NL.IMBAG.Pand.0363100012138717",
+    "NL.IMBAG.Pand.0363100012120527",
+    "NL.IMBAG.Pand.0363100012081977",
+    "NL.IMBAG.Pand.0363100012133860",
+    "NL.IMBAG.Pand.0363100012098497",
+    "NL.IMBAG.Pand.0363100012126147",
+    "w278381373",
+    "w278381734",
+    "w278381789",
+    "w278380029"
+   ],
+   "replaces": [
+    "ordinary-0363100012132949",
+    "ordinary-0363100012138717",
+    "ordinary-0363100012120527",
+    "ordinary-0363100012081977",
+    "ordinary-0363100012133860",
+    "ordinary-0363100012098497",
+    "ordinary-0363100012126147"
+   ],
+   "footprint": {
+    "type": "MultiPolygon",
+    "coordinates": [
+     [
+      [
+       [
+        4.9360314,
+        52.3639351
+       ],
+       [
+        4.93599,
+        52.3639347
+       ],
+       [
+        4.9359891,
+        52.3639654
+       ],
+       [
+        4.9359423,
+        52.3639649
+       ],
+       [
+        4.9359453,
+        52.3638563
+       ],
+       [
+        4.9360335,
+        52.3638572
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9361162,
+        52.3640579
+       ],
+       [
+        4.9360847,
+        52.3640576
+       ],
+       [
+        4.9360854,
+        52.3640324
+       ],
+       [
+        4.9360287,
+        52.3640318
+       ],
+       [
+        4.9360335,
+        52.3638572
+       ],
+       [
+        4.9361217,
+        52.3638581
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9362081,
+        52.3639244
+       ],
+       [
+        4.9361668,
+        52.363924
+       ],
+       [
+        4.9361656,
+        52.3639673
+       ],
+       [
+        4.9361187,
+        52.3639668
+       ],
+       [
+        4.9361217,
+        52.3638581
+       ],
+       [
+        4.9362099,
+        52.363859
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9362926,
+        52.3640634
+       ],
+       [
+        4.9362043,
+        52.3640625
+       ],
+       [
+        4.9362099,
+        52.363859
+       ],
+       [
+        4.9362981,
+        52.3638599
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9363808,
+        52.3640643
+       ],
+       [
+        4.9362926,
+        52.3640634
+       ],
+       [
+        4.9362981,
+        52.3638599
+       ],
+       [
+        4.9363864,
+        52.3638609
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.936469,
+        52.3640652
+       ],
+       [
+        4.9363808,
+        52.3640643
+       ],
+       [
+        4.9363864,
+        52.3638609
+       ],
+       [
+        4.9364746,
+        52.3638618
+       ]
+      ]
+     ],
+     [
+      [
+       [
+        4.9364716,
+        52.3639704
+       ],
+       [
+        4.9364746,
+        52.3638618
+       ],
+       [
+        4.9365628,
+        52.3638627
+       ],
+       [
+        4.936561,
+        52.363928
+       ],
+       [
+        4.9365196,
+        52.3639276
+       ],
+       [
+        4.9365184,
+        52.3639709
+       ]
+      ]
+     ]
+    ]
+   },
+   "pands": [
+    {
+     "recipeId": "java-132949",
+     "pandId": "0363100012132949",
+     "buildingId": "NL.IMBAG.Pand.0363100012132949",
+     "address": "Javastraat 97",
+     "frontage": {
+      "x0": -21.034,
+      "x1": -15.025,
+      "widthM": 6.009
+     },
+     "bounds": {
+      "min": [
+       -21.034,
+       0,
+       -12.129
+      ],
+      "max": [
+       -15.025,
+       14.867,
+       0.645
+      ]
+     },
+     "triangles": 2922,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 0,
+       "triangleCount": 388
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 0,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 0,
+       "triangleCount": 1052
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 0,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 17,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 0,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 0,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 0,
+       "triangleCount": 8
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 0,
+       "triangleCount": 10
+      }
+     ]
+    },
+    {
+     "recipeId": "java-138717",
+     "pandId": "0363100012138717",
+     "buildingId": "NL.IMBAG.Pand.0363100012138717",
+     "address": "Javastraat 99",
+     "frontage": {
+      "x0": -15.025,
+      "x1": -9.015,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       -15.025,
+       0,
+       -22.229
+      ],
+      "max": [
+       -9.014,
+       15.016,
+       0.645
+      ]
+     },
+     "triangles": 2896,
+     "ranges": [
+      {
+       "primitive": 3,
+       "firstTriangle": 192,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 9,
+       "firstTriangle": 388,
+       "triangleCount": 442
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 216,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 156,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 1052,
+       "triangleCount": 972
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 432,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 18,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 12,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 216,
+       "triangleCount": 196
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 8,
+       "triangleCount": 9
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 10,
+       "triangleCount": 29
+      }
+     ]
+    },
+    {
+     "recipeId": "java-120527",
+     "pandId": "0363100012120527",
+     "buildingId": "NL.IMBAG.Pand.0363100012120527",
+     "address": "Javastraat 101",
+     "frontage": {
+      "x0": -9.015,
+      "x1": -3.004,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       -9.015,
+       0,
+       -12.133
+      ],
+      "max": [
+       -3.004,
+       14.671,
+       0.646
+      ]
+     },
+     "triangles": 2918,
+     "ranges": [
+      {
+       "primitive": 2,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 8,
+       "firstTriangle": 0,
+       "triangleCount": 383
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 432,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 312,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 2024,
+       "triangleCount": 1052
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 864,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 22,
+       "firstTriangle": 0,
+       "triangleCount": 228
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 24,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 412,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 17,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 39,
+       "triangleCount": 9
+      }
+     ]
+    },
+    {
+     "recipeId": "java-081977",
+     "pandId": "0363100012081977",
+     "buildingId": "NL.IMBAG.Pand.0363100012081977",
+     "address": "Javastraat 103",
+     "frontage": {
+      "x0": -3.004,
+      "x1": 3.005,
+      "widthM": 6.009
+     },
+     "bounds": {
+      "min": [
+       -3.006,
+       0,
+       -22.68
+      ],
+      "max": [
+       3.006,
+       14.452,
+       0.645
+      ]
+     },
+     "triangles": 2823,
+     "ranges": [
+      {
+       "primitive": 5,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 11,
+       "firstTriangle": 0,
+       "triangleCount": 398
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 648,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 468,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 3076,
+       "triangleCount": 980
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 1296,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 23,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 36,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 628,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 27,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 48,
+       "triangleCount": 13
+      }
+     ]
+    },
+    {
+     "recipeId": "java-133860",
+     "pandId": "0363100012133860",
+     "buildingId": "NL.IMBAG.Pand.0363100012133860",
+     "address": "Javastraat 105",
+     "frontage": {
+      "x0": 3.005,
+      "x1": 9.014,
+      "widthM": 6.009
+     },
+     "bounds": {
+      "min": [
+       3.004,
+       0,
+       -22.681
+      ],
+      "max": [
+       9.015,
+       14.527,
+       0.646
+      ]
+     },
+     "triangles": 2845,
+     "ranges": [
+      {
+       "primitive": 0,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 6,
+       "firstTriangle": 0,
+       "triangleCount": 417
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 864,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 624,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 4056,
+       "triangleCount": 980
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 1728,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 19,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 48,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 826,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 37,
+       "triangleCount": 11
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 61,
+       "triangleCount": 15
+      }
+     ]
+    },
+    {
+     "recipeId": "java-098497",
+     "pandId": "0363100012098497",
+     "buildingId": "NL.IMBAG.Pand.0363100012098497",
+     "address": "Javastraat 107",
+     "frontage": {
+      "x0": 9.014,
+      "x1": 15.025,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       9.013,
+       0,
+       -22.681
+      ],
+      "max": [
+       15.025,
+       14.522,
+       0.645
+      ]
+     },
+     "triangles": 2825,
+     "ranges": [
+      {
+       "primitive": 4,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 10,
+       "firstTriangle": 0,
+       "triangleCount": 395
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1080,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 780,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 5036,
+       "triangleCount": 980
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 2160,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 20,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 60,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 1024,
+       "triangleCount": 198
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 48,
+       "triangleCount": 14
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 76,
+       "triangleCount": 14
+      }
+     ]
+    },
+    {
+     "recipeId": "java-126147",
+     "pandId": "0363100012126147",
+     "buildingId": "NL.IMBAG.Pand.0363100012126147",
+     "address": "Javastraat 109",
+     "frontage": {
+      "x0": 15.025,
+      "x1": 21.035,
+      "widthM": 6.01
+     },
+     "bounds": {
+      "min": [
+       15.024,
+       0,
+       -12.131
+      ],
+      "max": [
+       21.035,
+       14.402,
+       0.645
+      ]
+     },
+     "triangles": 2936,
+     "ranges": [
+      {
+       "primitive": 1,
+       "firstTriangle": 0,
+       "triangleCount": 192
+      },
+      {
+       "primitive": 7,
+       "firstTriangle": 0,
+       "triangleCount": 400
+      },
+      {
+       "primitive": 12,
+       "firstTriangle": 1296,
+       "triangleCount": 240
+      },
+      {
+       "primitive": 13,
+       "firstTriangle": 936,
+       "triangleCount": 156
+      },
+      {
+       "primitive": 14,
+       "firstTriangle": 6016,
+       "triangleCount": 1052
+      },
+      {
+       "primitive": 15,
+       "firstTriangle": 2592,
+       "triangleCount": 432
+      },
+      {
+       "primitive": 16,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 21,
+       "firstTriangle": 0,
+       "triangleCount": 204
+      },
+      {
+       "primitive": 24,
+       "firstTriangle": 72,
+       "triangleCount": 12
+      },
+      {
+       "primitive": 25,
+       "firstTriangle": 1222,
+       "triangleCount": 216
+      },
+      {
+       "primitive": 26,
+       "firstTriangle": 62,
+       "triangleCount": 10
+      },
+      {
+       "primitive": 27,
+       "firstTriangle": 90,
+       "triangleCount": 10
+      }
+     ]
+    }
+   ],
+   "lod2": {
+    "sourceHash": "eae14b5826fed9f4",
+    "buildVersion": 4,
+    "bytes": 45032,
+    "triangles": 1452
    }
   }
  ]

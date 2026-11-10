@@ -1,0 +1,511 @@
+{
+ "face": "borneo-7-27",
+ "street": "Borneostraat",
+ "library": "indische-buurt",
+ "stripDate": "2023-01-02",
+ "seconds": 2.07,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012068360",
+   "address": "Borneostraat 7",
+   "builtYear": 1914,
+   "widthM": 11.4,
+   "eavesM": 12.9,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5a51",
+    "wallRaw": "#6c5c53",
+    "skyline": {
+     "eavesM": 14.5,
+     "eavesRow": 160,
+     "confidence": 0.83,
+     "crown": {
+      "widthM": 3.6,
+      "riseM": 2.3,
+      "topWidthM": 0.63,
+      "centre": 0.81
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.095,
+    "structure": {
+     "bayWidthM": 0.75,
+     "bayCentre": 0.7,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1914-red-sash-pairs: frontage 11.4 m, type 5.6-7.2 m)",
+   "best": {
+    "type": "indisch-1914-red-sash-pairs",
+    "score": 0,
+    "veto": [
+     "frontage 11.4 m, type 5.6-7.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.9 m = 4 storeys of 3.23 m vs the type's 3.21 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.07 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.087 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 5 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074710",
+   "address": "Borneostraat 13",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.87,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#837169",
+    "wallRaw": "#6a5a51",
+    "skyline": {
+     "eavesM": 15.5,
+     "eavesRow": 120,
+     "confidence": 0.85,
+     "crown": {
+      "widthM": 1.02,
+      "riseM": 2.85,
+      "topWidthM": 0.63,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.112,
+    "structure": {
+     "bayWidthM": 0.85,
+     "bayCentre": 0.53,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: does not read as the four-axis pair design: a wide window over a door on the left and no narrow pair",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012090483",
+   "address": "Borneostraat 15",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.79,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#816b63",
+    "wallRaw": "#5e4f46",
+    "skyline": {
+     "eavesM": 17,
+     "eavesRow": 60,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.5,
+      "topWidthM": 0.55,
+      "centre": 0.8
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.05,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the shared pointed gables stand on the 13|15 and 17|19 party walls (round-3 verdict), so each front carries the far half of a gable whose partner (13 or 19) is held; held until 13 and 19 are built. Mirror pin kept (true)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012108761",
+   "address": "Borneostraat 17",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.83,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#877164",
+    "wallRaw": "#6c5c52",
+    "skyline": {
+     "eavesM": 15.8,
+     "eavesRow": 108,
+     "confidence": 0.63,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 2.7,
+      "topWidthM": 0.05,
+      "centre": 0.2
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.135,
+    "structure": {
+     "bayWidthM": 0.65,
+     "bayCentre": 0.43,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: the shared pointed gables stand on the 13|15 and 17|19 party walls (round-3 verdict), so each front carries the far half of a gable whose partner (13 or 19) is held; held until 13 and 19 are built. Mirror pin kept (false)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012145601",
+   "address": "Borneostraat 19",
+   "builtYear": 1914,
+   "widthM": 6.3,
+   "eavesM": 12.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5a50",
+    "wallRaw": "#6b5b51",
+    "skyline": {
+     "eavesM": 15.1,
+     "eavesRow": 136,
+     "confidence": 0.5,
+     "crown": {
+      "widthM": 0.95,
+      "riseM": 3.4,
+      "topWidthM": 0.23,
+      "centre": 0.89
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.054,
+    "structure": {
+     "bayWidthM": 0.6,
+     "bayCentre": 0.53,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: its shared pointed gable is centred on the 19|21 party wall and 21 is held as a different design; a half gable cannot be drawn alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012084255",
+   "address": "Borneostraat 21",
+   "builtYear": 1914,
+   "widthM": 6.9,
+   "eavesM": 12.8,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695b4f",
+    "wallRaw": "#65584d",
+    "skyline": {
+     "eavesM": 16.1,
+     "eavesRow": 96,
+     "confidence": 0.64,
+     "crown": {
+      "widthM": 1.8,
+      "riseM": 2.4,
+      "topWidthM": 0.35,
+      "centre": 0.15
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different design (three-light narrow groups, cream surrounds, single-leaf door, tiled roof with box dormers) and hidden behind a sculpture/fence",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133599",
+   "address": "Borneostraat 23",
+   "builtYear": 1914,
+   "widthM": 6.9,
+   "eavesM": 12.82,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#756658",
+    "wallRaw": "#726355",
+    "skyline": {
+     "eavesM": 14.9,
+     "eavesRow": 144,
+     "confidence": 0.52,
+     "crown": {
+      "widthM": 1.4,
+      "riseM": 3.2,
+      "topWidthM": 0.23,
+      "centre": 0.11
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.208,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.05
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different design as 21 (three-light narrow groups, cream surrounds, single-leaf door, box dormers)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012102480",
+   "address": "Borneostraat 25",
+   "builtYear": 1914,
+   "widthM": 6.9,
+   "eavesM": 12.84,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#66584c",
+    "wallRaw": "#605449",
+    "skyline": {
+     "eavesM": 15.4,
+     "eavesRow": 124,
+     "confidence": 0.72,
+     "crown": {
+      "widthM": 1.35,
+      "riseM": 3.1,
+      "topWidthM": 0.2,
+      "centre": 0.78
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.041,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a different design as 21 (three-light narrow groups, cream surrounds, single-leaf door, box dormers)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012063476",
+   "address": "Borneostraat 27",
+   "builtYear": 1914,
+   "widthM": 9.94,
+   "eavesM": 12.88,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#706155",
+    "wallRaw": "#6f6055",
+    "skyline": {
+     "eavesM": 14.4,
+     "eavesRow": 164,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.25,
+      "riseM": 3.3,
+      "topWidthM": 0.1,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 6,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.119,
+    "structure": {
+     "bayWidthM": 0.7,
+     "bayCentre": 0.6,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best indisch-1914-red-sash-pairs: frontage 9.94 m, type 5.6-7.2 m)",
+   "best": {
+    "type": "indisch-1914-red-sash-pairs",
+    "score": 0,
+    "veto": [
+     "frontage 9.94 m, type 5.6-7.2 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "3DBAG eaves 12.88 m = 4 storeys of 3.22 m vs the type's 3.21 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.62 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.091 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 6 vs 4 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
