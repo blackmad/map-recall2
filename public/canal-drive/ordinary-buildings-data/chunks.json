@@ -103386,7 +103386,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "f8473e86da6b15ce",
+    "buildVersion": 4,
+    "bytes": 35960,
+    "triangles": 1498
+   }
   },
   {
    "id": "chunk-face-tex-1-59-r1",
@@ -103908,7 +103914,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "2899bf4f8f9d9a71",
+    "buildVersion": 4,
+    "bytes": 36108,
+    "triangles": 1494
+   }
   },
   {
    "id": "chunk-face-tex-1-59-r2",
@@ -104310,7 +104322,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "2bd4af898771bfa2",
+    "buildVersion": 4,
+    "bytes": 34660,
+    "triangles": 1420
+   }
   },
   {
    "id": "chunk-face-tex-8-58-r1",
@@ -104716,7 +104734,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "43cbcba7893f4d06",
+    "buildVersion": 4,
+    "bytes": 32640,
+    "triangles": 1209
+   }
   },
   {
    "id": "chunk-face-witsen-1-19-r1",
@@ -105422,7 +105446,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "cabfbbcc8c784138",
+    "buildVersion": 4,
+    "bytes": 40788,
+    "triangles": 1499
+   }
   },
   {
    "id": "chunk-face-badlaan-1-21-r1",
@@ -105994,7 +106024,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "76cf3830de8d1038",
+    "buildVersion": 4,
+    "bytes": 37132,
+    "triangles": 1323
+   }
   },
   {
    "id": "chunk-face-rapenburg-89-103-r1",
@@ -106236,7 +106272,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "c6e56628e7d9fd88",
+    "buildVersion": 4,
+    "bytes": 36236,
+    "triangles": 1482
+   }
   },
   {
    "id": "chunk-face-swinden-383-581-r1",
@@ -106859,7 +106901,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "c6c23b24923f69d1",
+    "buildVersion": 4,
+    "bytes": 39144,
+    "triangles": 1328
+   }
   },
   {
    "id": "chunk-face-ruysch-64-124-r1",
@@ -107178,7 +107226,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "68ca1d4b563be7c1",
+    "buildVersion": 4,
+    "bytes": 39556,
+    "triangles": 1469
+   }
   },
   {
    "id": "chunk-face-ruysch-64-124-r2",
@@ -107588,7 +107642,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "f92a74fa6ceed570",
+    "buildVersion": 4,
+    "bytes": 38196,
+    "triangles": 1490
+   }
   },
   {
    "id": "chunk-face-ruysch-307-393-r1",
@@ -107806,7 +107866,13 @@
       }
      ]
     }
-   ]
+   ],
+   "lod2": {
+    "sourceHash": "8bd623f3f154ba70",
+    "buildVersion": 4,
+    "bytes": 35208,
+    "triangles": 1475
+   }
   }
  ]
 }
