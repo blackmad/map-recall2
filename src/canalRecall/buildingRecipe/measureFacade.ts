@@ -79,10 +79,23 @@ export function isLeaf(r: number, g: number, b: number): boolean {
 export interface OpeningSplit {groups: boolean; core: boolean; solidBody: boolean; clusterWall: boolean}
 export const OPENING_SPLIT_ALL: OpeningSplit = {groups: true, core: true, solidBody: true, clusterWall: true};
 /**
- * The parts on when `openingSplit` is not given. The 448-group replay decides (docs/house-line.md): `groups` and `solidBody`
- * move no verdict; `core` moves 8 and `clusterWall` 5, so those two stay behind the flag until the integrator decides.
+ * Named profiles (the judgement session's split of lane H2d). `installGate`: groups + solidBody, the 0-flip reading the 448-group
+ * replay confirmed; likenessGate, install-large and every caller that names no profile use it, so no installed verdict moves.
+ * `houseLine`: all four parts; house:preview, its gate and the house-line verdicts use it (house:describe, H7 and H9 later).
+ * `core` and `clusterWall` move 8 and 5 replay verdicts, which is why they are not in `installGate`.
  */
-export const OPENING_SPLIT_DEFAULT: OpeningSplit = {groups: true, core: false, solidBody: true, clusterWall: false};
+export const MEASURE_PROFILES = {
+  installGate: {groups: true, core: false, solidBody: true, clusterWall: false},
+  houseLine: {groups: true, core: true, solidBody: true, clusterWall: true},
+} as const satisfies Record<string, OpeningSplit>;
+export type MeasureProfile = keyof typeof MEASURE_PROFILES;
+export const OPENING_SPLIT_DEFAULT: OpeningSplit = {...MEASURE_PROFILES.installGate};
+/** The profile a resolved split is, else 'custom' (a `--opening-split=` selection) or 'pre-H2d' (none of the parts). */
+export function profileName(v: boolean | Partial<OpeningSplit> | undefined): string {
+  const r = resolveOpeningSplit(v);
+  for (const [n, p] of Object.entries(MEASURE_PROFILES)) if ((Object.keys(p) as (keyof OpeningSplit)[]).every(k => p[k] === r[k])) return n;
+  return Object.values(r).some(Boolean) ? 'custom' : 'pre-H2d';
+}
 export function resolveOpeningSplit(v: boolean | Partial<OpeningSplit> | undefined): OpeningSplit {
   if (v === undefined) return OPENING_SPLIT_DEFAULT;
   if (typeof v === 'boolean') return v ? OPENING_SPLIT_ALL : {groups: false, core: false, solidBody: false, clusterWall: false};

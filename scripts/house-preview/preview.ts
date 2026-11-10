@@ -22,7 +22,7 @@ import { lngLatToRd, rdToLngLat } from '../../src/canalRecall/facade/rdNew.ts';
 import { rasterise, type RasterAtlas, type RasterImage, type RasterMesh, type LitShading, type Vec3 } from '../../src/canalRecall/houseSpec/softRaster.ts';
 import { previewVerdict, storeyLines, blurRgb, PRE_BLUR_PX, type PreviewVerdict } from '../../src/canalRecall/houseSpec/previewVerdict.ts';
 import { cityLitShading } from '../../src/canalRecall/houseSpec/previewLight.ts';
-import { measureFacade, openingSplitFromArgs, type FacadeImage, type FacadeMeasurement } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
+import { measureFacade, openingSplitFromArgs, MEASURE_PROFILES, profileName, type FacadeImage, type FacadeMeasurement } from '../../src/canalRecall/buildingRecipe/measureFacade.ts';
 import { gameColour } from '../../src/canalRecall/buildingRecipe/likeness.ts';
 import { renderElevation } from '../../src/canalRecall/landmarks/facadeCompare.ts';
 import { pickWall } from '../pand-reference/select.ts';
@@ -30,6 +30,10 @@ import { loadMaterialSoup } from '../landmarks/material-soup.ts';
 import type { MaterialSoup } from '../../src/canalRecall/landmarks/facadeCompare.ts';
 import { loadAtlas, ATLAS_DIR } from './atlas.ts';
 import { REPO_ROOT } from './nodeDom.ts';
+
+/** house-line measuring profile (all four H2d parts) unless a flag picks another reading; printed in every sheet header and measure.json */
+export const houseLineSplit = () => ({ openingSplit: MEASURE_PROFILES.houseLine as boolean | Partial<import('../../src/canalRecall/buildingRecipe/measureFacade.ts').OpeningSplit>, ...openingSplitFromArgs(process.argv) });
+export const profileUsed = () => profileName(houseLineSplit().openingSplit);
 
 export const HELP = `npm run house:preview -- <pandId | spec.json> [flags]
 
@@ -61,6 +65,8 @@ Flags
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
   --no-wall-vs-trim   measure the wall as before lane H2c: a pale thin band may be picked as the wall on a dark front
                       (default: wallTrim.ts, the dark body outweighing the bands is the wall)
+  --opening-split=<p> measure with the named opening-split parts only (groups, core, solidBody, clusterWall; comma-separated)
+                      instead of the house-line profile (all four parts); every sheet header names the profile used
   --no-opening-split  measure as before lane H2d: every storey of a dark front fills into one frame, the wall colour is the
                       median of the body cluster with the most interior cells (default: each opening is its glass plus
                       a one-cell frame, lintels and sills are trim, the wall is the median over the picked wall cluster)
@@ -75,6 +81,9 @@ Flags
   --ppm <n>           pixels per metre of the front elevation (default 50, the rectified photos' scale)
   --out <dir>         output directory (default artifacts/house-preview/<pand>)
   --help              this text
+
+Verdict: wall colour family (dL, hue), window column count, storey count and window shape decide; glazing is printed
+(information), never a PASS or a FAIL.
 
 Output: <out>/front.png, threeq.png (--threeq), photo.png + compare.png (--photo), measure.json (route, timings, wall,
 overrides, measurements, verdict). The sheet header names the route and the look. Render and photo are both blurred
@@ -106,7 +115,7 @@ export function parseArgs(argv: string[]): Args {
       case '--threeq': a.threeq = true; break;
       case '--unlit': a.unlit = true; break;
       case '--glb-lit': a.glbLit = true; break;
-      case '--no-wall-vs-trim': case '--no-opening-split': break; // read by measureBlurred
+      case '--no-wall-vs-trim': case '--no-opening-split': case '--opening-split': break; // read by measureBlurred
       case '--route': {
         const r = value();
         if (r !== 'generic' && r !== 'spec' && r !== 'installed') throw new Error(`--route ${r}: generic, spec or installed`);
@@ -315,7 +324,7 @@ const timer = (): Timer => { let t0 = performance.now(); const t: Record<string,
 
 /** measureFacade after the shared pre-blur (previewVerdict.ts PRE_BLUR_PX), so render and photo measure alike. */
 export function measureBlurred(image: FacadeImage, box: Parameters<typeof measureFacade>[0]['box'], lines: number[]): FacadeMeasurement {
-  return measureFacade({ image: { ...image, rgb: blurRgb(image.rgb, image.width, image.height, PRE_BLUR_PX) }, box, lines, ...(process.argv.includes('--no-wall-vs-trim') ? { wallVsTrim: false } : {}), ...openingSplitFromArgs(process.argv) });
+  return measureFacade({ image: { ...image, rgb: blurRgb(image.rgb, image.width, image.height, PRE_BLUR_PX) }, box, lines, ...(process.argv.includes('--no-wall-vs-trim') ? { wallVsTrim: false } : {}), ...houseLineSplit() });
 }
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -430,7 +439,7 @@ async function finish(f: Finish): Promise<PreviewResult> {
   const look = f.shader ?? (args.unlit ? 'unlit (legacy)' : 'lit city look (sunny rig)');
   const mbox = { u0: Math.min(0.2, f.frameLen / 4), u1: f.frameLen - Math.min(0.2, f.frameLen / 4), v0: 0, v1: eaves };
   const renderM = measureBlurred(facadeImage(front, args.ppm, top), mbox, lines);
-  const measure: Record<string, unknown> = { pandId: bare(f.pandId), route: f.route, routeWhy: f.why, shader: f.shader ?? (args.unlit ? 'unlit' : 'lit'), preBlurPx: PRE_BLUR_PX, ...f.measure, heights: { topM: +top.toFixed(2), eavesM: +eaves.toFixed(2), lines }, render: summary(renderM) };
+  const measure: Record<string, unknown> = { profile: profileUsed(), pandId: bare(f.pandId), route: f.route, routeWhy: f.why, shader: f.shader ?? (args.unlit ? 'unlit' : 'lit'), preBlurPx: PRE_BLUR_PX, ...f.measure, heights: { topM: +top.toFixed(2), eavesM: +eaves.toFixed(2), lines }, render: summary(renderM) };
   if (args.photo) {
     const photo = await referencePhoto(f.pandId, wall, args.ppm);
     if (!photo) measure.photo = { missing: `no staging/pand-reference/${bare(f.pandId)}/front.jpg and no block-face strip lists the pand (run scripts/pand-reference/run.ts --ids=${bare(f.pandId)})` };
@@ -551,7 +560,7 @@ export async function compareSheet(panels: { png: Buffer; label: string; topM: n
   const height = Math.round(head + ground + 24);
   const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
   const title = verdict ? [`${verdict.verdict} · wall ${verdict.wall.a} vs ${verdict.wall.b} · dL ${verdict.wall.dL}${verdict.wall.dHue !== null ? ` · hue ${verdict.wall.dHue}°` : ''}`,
-    `glazing ${verdict.glazing.a.toFixed(2)} vs ${verdict.glazing.b.toFixed(2)} · cols ${verdict.columns.a ?? '-'} vs ${verdict.columns.b ?? '-'} · window ${verdict.window.a ?? '-'} vs ${verdict.window.b ?? '-'}`] : ['', ''];
+    `glazing (info) ${verdict.glazing.a.toFixed(2)} vs ${verdict.glazing.b.toFixed(2)} · storeys ${verdict.storeys.a} vs ${verdict.storeys.b} · cols ${verdict.columns.a ?? '-'} vs ${verdict.columns.b ?? '-'} · window ${verdict.window.a ?? '-'} vs ${verdict.window.b ?? '-'}`] : ['', ''];
   const comps: { input: Buffer; left: number; top: number }[] = [];
   let x = gap;
   panels.forEach((p, i) => {
@@ -560,7 +569,7 @@ export async function compareSheet(panels: { png: Buffer; label: string; topM: n
     comps.push({ input: Buffer.from(`<svg width="${w}" height="20"><text x="0" y="15" font-family="Helvetica, Arial" font-size="13" fill="#1f2328">${esc(p.label)}</text></svg>`), left: x, top: head - 22 });
     x += w + gap;
   });
-  comps.push({ input: Buffer.from(`<svg width="${width}" height="60"><text x="${gap}" y="15" font-family="Helvetica, Arial" font-size="12" fill="#57606a">${esc(header)}</text><text x="${gap}" y="34" font-family="Helvetica, Arial" font-size="13" font-weight="bold" fill="#1f2328">${esc(title[0])}</text><text x="${gap}" y="52" font-family="Helvetica, Arial" font-size="13" fill="#1f2328">${esc(title[1])}</text></svg>`), left: 0, top: 0 });
+  comps.push({ input: Buffer.from(`<svg width="${width}" height="60"><text x="${gap}" y="15" font-family="Helvetica, Arial" font-size="12" fill="#57606a">${esc(`${header} · measure profile ${profileUsed()}`)}</text><text x="${gap}" y="34" font-family="Helvetica, Arial" font-size="13" font-weight="bold" fill="#1f2328">${esc(title[0])}</text><text x="${gap}" y="52" font-family="Helvetica, Arial" font-size="13" fill="#1f2328">${esc(title[1])}</text></svg>`), left: 0, top: 0 });
   await sharp({ create: { width, height, channels: 3, background: '#f4f4f2' } }).composite(comps).png().toFile(file);
 }
 

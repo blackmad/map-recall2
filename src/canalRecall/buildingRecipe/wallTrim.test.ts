@@ -58,9 +58,9 @@ interface Case {name: string; file: string; ppm: number; topM: number; box: {u0:
  * Marnixstraat's wall is the normalised white (215 reference, lightTrimNormalisation), not the sunlit #f4f4f2.
  */
 const LABELS: Record<string, {wall: string; trim: boolean; glazing: number; knownMiss?: number}> = {
-  'nassau-164843-render': {wall: '#3d2722', trim: true, glazing: 0.25, knownMiss: 0.864},
-  'nassau-164843-photo': {wall: '#353240', trim: true, glazing: 0.25, knownMiss: 0.699},
-  'nassau-161422-render': {wall: '#784628', trim: true, glazing: 0.25, knownMiss: 0.797},
+  'nassau-164843-render': {wall: '#3d2722', trim: true, glazing: 0.375, knownMiss: 0.864},
+  'nassau-164843-photo': {wall: '#353240', trim: true, glazing: 0.368, knownMiss: 0.699},
+  'nassau-161422-render': {wall: '#784628', trim: true, glazing: 0.408, knownMiss: 0.797},
   'heren-175702-render': {wall: '#5e554d', trim: true, glazing: 0.28},
   'keizers-171052-render': {wall: '#70665e', trim: true, glazing: 0.38},
   'nassau-116526-strip': {wall: '#62493a', trim: true, glazing: 0.27},

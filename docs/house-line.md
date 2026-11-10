@@ -154,6 +154,21 @@ all four parts: 13 verdicts moved, 139 reasons moved (FAIL 270, NO EVIDENCE 94, 
 in the dump and counts its windows whole, so a photo that now reads fewer, trimmed windows drifts from it. Whether the comparator or the
 reading is right is the integrator's call; nothing is flipped until then. `groups` and `solidBody` alone: 0 moved each.
 
+### Glazing does not decide a likeness verdict (house line)
+
+In every house-line verdict (`previewVerdict`: `house:preview --photo`, its gate, and later `house:describe`, H7 and H9) glazing is
+**informational**: printed (`glazing (info) a vs b` in the sheet title, `verdict.glazing` in `measure.json`), never a PASS or a FAIL.
+The verdict is decided by the **wall colour family** (dL <= 0.12, hue <= 12 degrees), the **window column count** (+-20 %), the
+**storey count** and the window shape class. A column or storey miss is a FAIL (the column miss used to be a WARN). Reason: glazing
+is the least reliable number the measurer produces on a photo (the hand-drawn gate in "Openings and a stable wall" has six pinned
+misses of 0.1-0.36), while the installed-house gate (`likenessGate`, `install-large`) keeps its own glazing tolerance untouched.
+
+**Measure profiles** (`measureFacade.ts` `MEASURE_PROFILES`): `installGate` = groups + solidBody, the 0-flip reading (the 448-group replay
+moves no verdict; it is the `measureFacade` default, so `likenessGate`, `install-large` and every caller that names no profile use it);
+`houseLine` = groups + solidBody + core + clusterWall, used by `house:preview` and its gate. Every sheet header prints
+`measure profile <name>`, and `measure.json` carries `profile`. `--no-opening-split` and `--opening-split=<parts>` override it (the
+header then says `pre-H2d` or `custom`).
+
 ### 3/4 view
 
 `--threeq`: a 20° vertical field of view from 38° off the wall's normal, far enough to hold 1.6 × the wall, eye at
@@ -263,6 +278,8 @@ Flags
                       sun and sky of the ride's sunny rig, wall gain, sky tint on glazing)
   --no-wall-vs-trim   measure the wall as before lane H2c: a pale thin band may be picked as the wall on a dark front
                       (default: wallTrim.ts, the dark body outweighing the bands is the wall)
+  --opening-split=<p> measure with the named opening-split parts only (groups, core, solidBody, clusterWall; comma-separated)
+                      instead of the house-line profile (all four parts); every sheet header names the profile used
   --no-opening-split  measure as before lane H2d: every storey of a dark front fills into one frame, the wall colour is the
                       median of the body cluster with the most interior cells (default: each opening is its glass plus
                       a one-cell frame, lintels and sills are trim, the wall is the median over the picked wall cluster)
@@ -277,6 +294,9 @@ Flags
   --ppm <n>           pixels per metre of the front elevation (default 50, the rectified photos' scale)
   --out <dir>         output directory (default artifacts/house-preview/<pand>)
   --help              this text
+
+Verdict: wall colour family (dL, hue), window column count, storey count and window shape decide; glazing is printed
+(information), never a PASS or a FAIL.
 
 Output: <out>/front.png, threeq.png (--threeq), photo.png + compare.png (--photo), measure.json (route, timings, wall,
 overrides, measurements, verdict). The sheet header names the route and the look. Render and photo are both blurred
