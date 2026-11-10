@@ -10,7 +10,7 @@ import path from 'node:path';
 
 const [outDir, tag] = process.argv.slice(2);
 const opt = (k, d) => { const i = process.argv.indexOf(`--${k}`); return i >= 0 ? process.argv[i + 1] : d; };
-const settle = Number(opt('settle', '14')) * 1000, extra = opt('qs', ''), only = opt('poses', '');
+const settle = Number(opt('settle', '16')) * 1000, extra = opt('qs', ''), only = opt('poses', '');
 export const STREET_POSES = [
   // Westertoren down the Raadhuisstraat from the Dam, and up the Prinsengracht from the Leidsegracht.
   { name: 'westerkerk-raadhuisstraat', at: [4.8936, 52.3734], landmark: 'westerkerk' },
@@ -44,16 +44,21 @@ for (const p of poses) {
     const spec = g.vectorMap._signatureLandmarks?.models?.find(m => m.id === p.landmark);
     const a = world(p.at), b = world(spec?.surveyed?.anchor || spec?.footprint?.centre);
     const angle = Math.atan2(b.y - a.y, b.x - a.x);
-    g.camera.detached = false; g.camera.viewMode = 'chase';
+    // Held every 250 ms: the ride's own start animation otherwise takes the zoom and tilt back.
+    const vm = g.vectorMap, hold = () => { g.camera.detached = false; g.camera.viewMode = 'chase'; g.camera.zoom = g.camera.maxZoom; vm.setCameraTilt?.(p.tilt ?? 72); vm._cameraTilt = p.tilt ?? 72; };
+    clearInterval(window.__hazeHold); hold(); window.__hazeHold = setInterval(hold, 250);
     pl.update = function () { this.x = a.x; this.y = a.y; this.angle = angle; this.speed = 0; this.vx = 0; this.vy = 0; };
     pl.x = a.x; pl.y = a.y; pl.angle = angle;
   }, p);
   await page.waitForTimeout(settle);
+  // A landmark still loading (two at a time, nearest first): wait for it, up to 40 s more.
+  await page.waitForFunction(id => canalRecallGame.vectorMap._signatureLandmarks?._entries?.some(e => e.spec.id === id), p.landmark, { timeout: 40_000 }).catch(() => {});
+  await page.waitForTimeout(2000);
   const info = await page.evaluate(id => {
     const vm = canalRecallGame.vectorMap, sf = vm._sharedFrame, THREE = sf.THREE, sl = vm._signatureLandmarks;
     const entry = sl?._entries?.find(e => e.spec.id === id);
     const lim = window.__canalRecallDrawLimitNow?.() ?? null;
-    if (!entry) return { found: false, lim };
+    if (!entry) return { found: false, lim, inModels: !!sl?.models?.some(m => m.id === id), pending: !!sl?._pending?.has(id), failed: !!sl?._failed?.has(id), shown: !!sl?.shown?.has(id), ids: (sl?._entries || []).map(e => e.spec.id).filter(x => /wester|munt|rijks/.test(x)) };
     entry.group.updateWorldMatrix(true, true);
     const box = new THREE.Box3().setFromObject(entry.group), c = box.getCenter(new THREE.Vector3());
     let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
