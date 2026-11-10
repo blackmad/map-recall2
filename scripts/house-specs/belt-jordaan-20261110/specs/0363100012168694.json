@@ -1,0 +1,195 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168694",
+ "address": "Egelantiersgracht 87",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "frieze",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     4.7,
+     3,
+     2.6
+    ],
+    "doorBay": 0,
+    "roofFront": "mansard",
+    "dormers": 1,
+    "dormerStyle": "pediment",
+    "dormerBody": "stone"
+   }
+  ],
+  "roof": {
+   "material": "zinc"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/roofFront": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.75,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+   "at": "2023-03-13"
+  }
+ },
+ "schemaLimits": [
+  {
+   "component": "roof storey",
+   "what": "the mansard attic is glazed across the front (a modern glass box); drawn as a zinc mansard with one dormer"
+  }
+ ]
+}

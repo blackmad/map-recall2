@@ -1,0 +1,198 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012172884",
+ "address": "Egelantiersgracht 63",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "none",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "bell",
+    "crownRise": 1.2,
+    "atticWindows": 1,
+    "crownFinial": true,
+    "storeys": 2,
+    "bays": [
+     2,
+     1
+    ],
+    "storeyHeights": [
+     5.2,
+     2.6
+    ],
+    "doorBay": 1,
+    "bands": "storey"
+   }
+  ],
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#56463e",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownRise": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/atticWindows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/crownFinial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bands": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "roof/squareSaddle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+   "at": "2023-03-13"
+  }
+ }
+}

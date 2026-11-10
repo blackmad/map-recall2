@@ -1,0 +1,205 @@
+{
+ "schemaVersion": 1,
+ "pandId": "0363100012168760",
+ "address": "Egelantiersgracht 81",
+ "design": {
+  "fronts": [
+   {
+    "id": "front0",
+    "basement": "none",
+    "cornice": "simple",
+    "windows": "sash",
+    "windowSurround": "sill",
+    "hoist": false,
+    "street": "Egelantiersgracht",
+    "gable": "cornice",
+    "storeys": 3,
+    "bays": 2,
+    "storeyHeights": [
+     3.8,
+     3,
+     3.1
+    ],
+    "doorBay": 1,
+    "dormers": 1,
+    "dormerStyle": "plain",
+    "dormerBody": "stone",
+    "dormerAt": [
+     {
+      "from": 0.3,
+      "to": 0.7
+     }
+    ],
+    "dormerSize": {
+     "sill": 0.1,
+     "rise": 1.1,
+     "setback": 0.35
+    }
+   }
+  ],
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "frame": "white-painted",
+   "door": "#26302a",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted",
+   "brick": "#514440",
+   "wallMaterial": "brick"
+  }
+ },
+ "provenance": {
+  "fronts/0/id": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/basement": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/cornice": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windows": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/windowSurround": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/hoist": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "fronts/0/street": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/gable": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeys": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/bays": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/storeyHeights": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/doorBay": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormers": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerStyle": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerBody": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerAt": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "fronts/0/dormerSize": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "roof/material": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "palette/frame": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/door": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stone": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/cornice": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/stoneMaterial": {
+   "source": "author",
+   "confidence": 0.6,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440 (Jordaan type default, not contradicted by the photo)",
+   "at": "2023-03-13"
+  },
+  "palette/brick": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  },
+  "palette/wallMaterial": {
+   "source": "author",
+   "confidence": 0.85,
+   "ref": "belt-jordaan hand read of egelantiersgracht-47-101 strip 2023-03-13 (pand span): two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+   "at": "2023-03-13"
+  }
+ }
+}

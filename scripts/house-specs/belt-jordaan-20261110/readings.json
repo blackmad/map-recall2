@@ -1603,5 +1603,496 @@
    "brick": "#302b2f",
    "wallMaterial": "painted-brick"
   }
+ },
+ "0363100012172610": {
+  "address": "Egelantiersgracht 47",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "a 4.2 m front of three axes, painted near-black brick (measured #29262a; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a white-framed glazed ground 0-4.0 m; storeys at 4.4-5.9 and 6.7-8.2 m; a white cornice band 8.4-9.2 m and a small neck crown with white claw pieces and a rounded cap 9.3-11.0 m with one light",
+  "front": {
+   "gable": "neck",
+   "crownRise": 0.65,
+   "crownCap": "rounded",
+   "atticWindows": 1,
+   "storeys": 3,
+   "bays": 3,
+   "storeyHeights": [
+    4.2,
+    2.2,
+    2.0
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window",
+     "window"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2023-03-13: white-framed glazed ground"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  },
+  "limits": [
+   {
+    "component": "gable ornament",
+    "what": "white claw pieces beside the neck are not drawn"
+   }
+  ]
+ },
+ "0363100012172620": {
+  "address": "Egelantiersgracht 49",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "three axes: ground 0-4.0 m (door left); storeys at 4.2-5.8 and 6.6-8.1 m; a neck crown over the middle axis 9.0-12.0 m with one light and a rounded cap, low brick flanks with claw pieces; red-brown brick #50433e",
+  "front": {
+   "gable": "neck",
+   "crownRise": 1.2,
+   "crownCap": "rounded",
+   "atticWindows": 1,
+   "hoist": true,
+   "storeys": 3,
+   "bays": 3,
+   "storeyHeights": [
+    4.1,
+    2.4,
+    2.4
+   ],
+   "doorBay": 0,
+   "windows": "sash"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#50433e",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012172618": {
+  "address": "Egelantiersgracht 51",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "three axes: a white ground pui 0-4.5 m (door left); storeys at 5.5-7.6 and 8.1-9.9 m; a white frieze with vents and a cornice 10.2-11.2 m; a red tile roof with a white pedimented dormer 11.3-13.3 m; red-brown brick #4f4641",
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 3,
+   "bays": 3,
+   "storeyHeights": [
+    4.9,
+    2.7,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window",
+     "window"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2023-03-13: white ground pui"
+   },
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.7
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.6,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "brick": "#4f4641",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012172885": {
+  "address": "Egelantiersgracht 61",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "a low 3.8 m house, painted near-black brick (measured #272325; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall ground 0-5.0 m (door left, window right, white frames); white painted bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 7.9-11.0 m with one attic light",
+  "front": {
+   "gable": "bell",
+   "crownRise": 1.25,
+   "atticWindows": 1,
+   "storeys": 2,
+   "bays": [
+    2,
+    1
+   ],
+   "storeyHeights": [
+    5.2,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "bands": "storey"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "0363100012172884": {
+  "address": "Egelantiersgracht 63",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "a low 3.7 m house: a tall ground 0-5.0 m (window left, door right); white bands at ~5.9 and ~7.5 m; one wide window at 6.1-7.4 m; a bell gable 8.0-11.1 m with one attic light and a small ornament; red-brown brick #56463e",
+  "front": {
+   "gable": "bell",
+   "crownRise": 1.2,
+   "atticWindows": 1,
+   "crownFinial": true,
+   "storeys": 2,
+   "bays": [
+    2,
+    1
+   ],
+   "storeyHeights": [
+    5.2,
+    2.6
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "bands": "storey"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#56463e",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012172883": {
+  "address": "Egelantiersgracht 65",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "a low 3.9 m house: a tall ground 0-5.0 m (door left between white pilasters); two windows at 6.0-7.5 m; a neck crown with claw pieces, one attic light and a segmental cap 8.0-10.8 m; brown brick #453b34",
+  "front": {
+   "gable": "neck",
+   "crownRise": 1.1,
+   "crownCap": "segmental",
+   "atticWindows": 1,
+   "storeys": 2,
+   "bays": 2,
+   "storeyHeights": [
+    5.2,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#453b34",
+   "wallMaterial": "brick"
+  },
+  "confidence": 0.75
+ },
+ "0363100012172889": {
+  "address": "Egelantiersgracht 71",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "a 3.8 m front, painted near-black brick (measured #332e2f; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): a tall shop ground 0-6.4 m under a white transom band; two windows at 7.5-9.0 m; one wide three-light window at 10.9-11.8 m; a neck gable 12.3-14.8 m with one light and a segmental cap",
+  "front": {
+   "gable": "neck",
+   "crownRise": 0.9,
+   "crownCap": "segmental",
+   "atticWindows": 1,
+   "storeys": 3,
+   "bays": [
+    2,
+    2,
+    1
+   ],
+   "storeyHeights": [
+    6.0,
+    3.2,
+    2.2
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "storeyWindows": {
+    "2": "casement-triple"
+   },
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window"
+    ],
+    "bayWeights": [
+     1,
+     2
+    ],
+    "colour": "#26302a",
+    "evidence": "strip 2023-03-13: a tall glazed shop ground with a white transom band"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "0363100012172888": {
+  "address": "Egelantiersgracht 75",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "three axes: ground 0-3.4 m under a white beam; storeys at 4.0-6.0 and 7.1-9.0 m with a French door and balconette on the middle axis; a raised front with straight flanks 10.0-12.4 m under a white pediment cap with one light; red-brown brick #463834",
+  "front": {
+   "gable": "neck",
+   "crownRise": 0.9,
+   "crownShoulder": "straight",
+   "crownCap": "pediment",
+   "crownNeckWidth": 0.72,
+   "atticWindows": 1,
+   "storeys": 3,
+   "bays": 3,
+   "storeyHeights": [
+    3.6,
+    3.2,
+    3.2
+   ],
+   "doorBay": 0,
+   "windows": "sash"
+  },
+  "roof": {
+   "material": "slate",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#463834",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "balcony",
+    "what": "an iron balconette before the middle French doors of storeys 1-2"
+   },
+   {
+    "component": "gable",
+    "what": "a straight-flanked raised front under a pediment, drawn as a broad neck with straight shoulders"
+   }
+  ]
+ },
+ "0363100012172887": {
+  "address": "Egelantiersgracht 77",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "a 4.7 m front of two axes, painted near-black brick (measured #282627; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-3.5 m; storeys at 3.8-5.6 and 6.5-8.2 m; a bell gable 8.8-12.0 m with one attic light and a cap ornament",
+  "front": {
+   "gable": "bell",
+   "crownRise": 1.3,
+   "atticWindows": 1,
+   "crownFinial": true,
+   "storeys": 3,
+   "bays": 2,
+   "storeyHeights": [
+    3.6,
+    2.7,
+    2.4
+   ],
+   "doorBay": 0,
+   "windows": "sash"
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  }
+ },
+ "0363100012172886": {
+  "address": "Egelantiersgracht 79",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "two axes: a white timber ground 0-5.5 m; storeys at 6.5-8.2 and 9.5-11.0 m; a dark cornice 11.6-12.4 m, flat roof; painted dark brown brick #3f3936",
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 3,
+   "bays": 2,
+   "storeyHeights": [
+    5.8,
+    3.0,
+    2.8
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "groundFront": {
+    "kind": "pui",
+    "bays": [
+     "door",
+     "window"
+    ],
+    "colour": "#ece9e0",
+    "evidence": "strip 2023-03-13: white timber ground storey"
+   }
+  },
+  "roof": {
+   "material": "bitumen"
+  },
+  "palette": {
+   "brick": "#3f3936",
+   "wallMaterial": "painted-brick",
+   "cornice": "#3f3936"
+  }
+ },
+ "0363100012168760": {
+  "address": "Egelantiersgracht 81",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "two axes: ground 0-3.5 m (shop window left, door right); storeys at 4.5-6.6 and 7.5-9.4 m; a white cornice 9.9-10.3 m; a red tile roof with one wide white dormer 11.0-12.0 m; red-brown brick #514440",
+  "front": {
+   "gable": "cornice",
+   "cornice": "simple",
+   "storeys": 3,
+   "bays": 2,
+   "storeyHeights": [
+    3.8,
+    3.0,
+    3.1
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "dormers": 1,
+   "dormerStyle": "plain",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.3,
+     "to": 0.7
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.1,
+    "rise": 1.1,
+    "setback": 0.35
+   }
+  },
+  "roof": {
+   "material": "red-tile"
+  },
+  "palette": {
+   "brick": "#514440",
+   "wallMaterial": "brick"
+  }
+ },
+ "0363100012168694": {
+  "address": "Egelantiersgracht 87",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "two axes, painted near-black brick (measured #322b2d; drawn #2f2c2c, the eland lane's floor for the darkest walls: near-black hexes drew green on the recipe route, H7): ground 0-4.5 m with large windows; storeys at 5.0-6.8 and 7.8-9.6 m; a white frieze and cornice 10.0-10.5 m; a glazed mansard attic with a pedimented dormer to ~12.8 m",
+  "front": {
+   "gable": "cornice",
+   "cornice": "frieze",
+   "storeys": 3,
+   "bays": 2,
+   "storeyHeights": [
+    4.7,
+    3.0,
+    2.6
+   ],
+   "doorBay": 0,
+   "windows": "sash",
+   "roofFront": "mansard",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone"
+  },
+  "roof": {
+   "material": "zinc"
+  },
+  "palette": {
+   "brick": "#2f2c2c",
+   "wallMaterial": "painted-brick"
+  },
+  "limits": [
+   {
+    "component": "roof storey",
+    "what": "the mansard attic is glazed across the front (a modern glass box); drawn as a zinc mansard with one dormer"
+   }
+  ],
+  "confidence": 0.75
+ },
+ "0363100012168693": {
+  "address": "Egelantiersgracht 91",
+  "photo": "egelantiersgracht-47-101 strip 2023-03-13 (pand span)",
+  "date": "2023-03-13",
+  "why": "a 3.9 m front of two axes: a shop ground 0-4.3 m with a fascia (The Boardroom); storeys at 5.1-7.1, 8.2-10.1 and 11.0-12.6 m; a plain triangular (point) gable 13.7-17.9 m with one light and a chimney at the apex; red-brown brick #5a4e48",
+  "front": {
+   "gable": "point",
+   "crownRise": 1.45,
+   "atticWindows": 1,
+   "storeys": 4,
+   "bays": 2,
+   "storeyHeights": [
+    4.6,
+    3.0,
+    2.8,
+    2.6
+   ],
+   "doorBay": 1,
+   "windows": "sash",
+   "shopfront": {
+    "colour": "#26302a",
+    "fascia": true,
+    "glazing": "transom",
+    "entrance": "right",
+    "evidence": "strip 2023-03-13: a dark shopfront with a fascia board"
+   }
+  },
+  "roof": {
+   "material": "red-tile",
+   "squareSaddle": true
+  },
+  "palette": {
+   "brick": "#5a4e48",
+   "wallMaterial": "brick"
+  },
+  "limits": [
+   {
+    "component": "shop sign",
+    "what": "the fascia lettering (The Boardroom) is not drawn"
+   }
+  ]
  }
 }
