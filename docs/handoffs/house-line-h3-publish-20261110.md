@@ -16,9 +16,10 @@ Publishing is heavy because every install reaches the world only through `covers
   2. `world:compile --changed --shell` (touched cells only; keep the shell-hash guard, it throws when code changed and the integrator then runs a full bake).
   3. If any spec has `route: 'recipe'`: `toRecipe`, compile, install via the existing `install*.ts`, `build-covers`, copy covers, `check:covers`.
   4. Goldens with `--allow=<pandIds>`: add that flag to the four golden scripts (changes inside the list are re-recorded, any `CHANGED` outside fails the publish and prints the ids). For generic-route specs the guard is the per-cell compare: every cell outside the touched set must decode identically to the previous staging index.
-  5. `check:canal` once.
-  6. Write `artifacts/house-specs/published/<batch>.json` (what landed, timings) and print the HISTORY/What's New paragraph for the integrator to paste; move the staged files to `published/`.
-  7. Archive specs + receipts to `map-recall2-source-data/house-specs/<batch>/` (dedicated worktree, integrator pushes).
+  5. Suppression guard: run the #341 audit (`house:audit`, bare-slab test included) for every pand the batch's chunks/GLBs suppress; refuse the batch when any street-facing BAG wall ≥ 4 m on a named street is left blank (no outward geometry or a bare slab), printing pand, street, wall length.
+  6. `check:canal` once.
+  7. Write `artifacts/house-specs/published/<batch>.json` (what landed, timings) and print the HISTORY/What's New paragraph for the integrator to paste; move the staged files to `published/`.
+  8. Archive specs + receipts to `map-recall2-source-data/house-specs/<batch>/` (dedicated worktree, integrator pushes).
 - `scripts/world/pipeline.ts` + `compile.ts`: remove `COVERS` from `GLOBAL_INPUTS`; hash each tile's covers slice (hidden ids among that tile's building ids) into `tileHash`. Source of the tile → ids map: a `tile-ids.json` written in `OUT` on a full run and reused while the tile's own hash is unchanged (or `build-covers.ts` emitting `covers-by-tile.json`; pick one and say why). The `--against` coversKey special case becomes a per-cell hidden-list comparison. A full compile before and after must be byte-identical (`world:verify` 0 differing).
 - Stale installs: a spec that edits an installed recipe house makes its GLB stale → publish reinstalls it in step 3, or writes `held-installs.json` with reason `staged spec <date>` when the reinstall fails the likeness gate; `check:stale-installs --strict` then passes with the hold explicit.
 - `scripts/house-specs/nightly.sh`: `house:publish` for everything staged, with the log in `artifacts/house-specs/logs/`, exit non-zero on any gate failure; the integrator decides when to run it (no cron in this lane).
