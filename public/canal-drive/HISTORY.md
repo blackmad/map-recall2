@@ -1,12 +1,12 @@
 # Canal Recall — what is built
 
 **Batch a1 round 2: new-build family on, FPS round 2, calm levers, register recipes, Vogelbuurt-Noord (2026-11-10, session a1).**
-- **New-build family on by default** (lane/newbuild-kit-20261110 round 2 at be3307cf7, opus). Round 2 added:
+- **New-build family round 2, still opt-in** (lane/newbuild-kit-20261110 round 2 at be3307cf7, opus). Round 2 added:
   - per-pand measured walls (T0 modern-pand-walls first, then panorama samples), outranking the area draw;
   - balcony-band and tall tags, and years for 3,595 OSM gap fills;
   - the Houthavenkade 26 shader window grid on unlisted walls (feedback 75242f30, reinstalled).
 
-  Strips: 8 PASS, 1 WARN. Integrator judged the sheet: Houthaven brick, the dark 2018 Houthaven front, IJburg and the banded Zeeburgereiland block move toward the photos. Danzigerkade goes dark brown against white offices; Sluisbuurt 2025 is wrong either way. `?newbuildFamily=0` turns it off. Unit tests that pin the old presets import `testing/newbuildFamilyOff.ts` first.
+  Strips: 8 PASS, 1 WARN. Integrator judged the sheet: Houthaven brick, the dark 2018 Houthaven front, IJburg and the banded Zeeburgereiland block move toward the photos. Danzigerkade goes dark brown against white offices; Sluisbuurt 2025 is wrong either way. The flip was staged and then reverted before push: on, the two new presets take BAY_LAYER_COUNT to 193, and PROCEDURAL_RECIPE_LAYER_OFFSET + 193 passes the 256 byte layers (canalFrontageGroups and entranceAssemblies tests); the window table for modern/9 is also 1.3 texels off its painted bottom edge (windowTable test). Those tests never ran with the flag on in the lane. Unit tests that pin the old presets now import `testing/newbuildFamilyOff.ts` first, so they keep passing when the flag flips.
 - **FPS camera round 2** (lane/fps-camera-20261109 at cb51850d2, opus):
   - the ground ring is planned from the chase pose;
   - the DESTINATION pin is hidden at eye level while racing (renderer.js reads `__canalRecallFpsHidePin`);

@@ -13,8 +13,8 @@
  *     2 tall), tall windows to the floor in dark frames in IJburg (18 of 28), a mix on Zeeburgereiland (8 tall of 26);
  *   - set-back top storeys on 2 of the 16 described 2005+ models in the explorer index, more on taller blocks.
  *
- * On by default since 2026-11-10 (round-2 strips 8 PASS / 1 WARN); `?newbuildFamily=0` (or
- * `globalThis.__canalRecallNewbuildFamily = false`) turns it off. On, it applies to housing built from
+ * Opt-in: `?newbuildFamily=1` (or `globalThis.__canalRecallNewbuildFamily = true`). Kept off 2026-11-10: on, its two
+ * presets take BAY_LAYER_COUNT to 193 and the procedural recipe layers past the 256 a byte holds. On, it applies to housing built from
  * CONTEMPORARY_FROM_YEAR, in every textured look: the nearest area's measured walls, the area's window shape (the
  * existing wide brick presets or the new tall French-balcony preset, `BAY_STYLES.modern[9]`), and a set-back top
  * storey (contemporarySetback) on blocks of five storeys and more. Off, nothing changes: the tall preset is not even
@@ -27,7 +27,7 @@ import { modernPandWall } from './buurtProfiles/modernPandWalls.js';
 export function newbuildFamilyEnabled(): boolean {
   const g = globalThis as { __canalRecallNewbuildFamily?: boolean; location?: { search?: string } };
   if (typeof g.__canalRecallNewbuildFamily === 'boolean') return g.__canalRecallNewbuildFamily;
-  try { return new URLSearchParams(g.location?.search ?? '').get('newbuildFamily') !== '0'; } catch { return true; }
+  try { return new URLSearchParams(g.location?.search ?? '').get('newbuildFamily') === '1'; } catch { return false; }
 }
 
 export const CONTEMPORARY_FROM_YEAR = 2005;
