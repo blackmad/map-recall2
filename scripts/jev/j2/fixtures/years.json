@@ -1,0 +1,31 @@
+{
+ "family": "years",
+ "set": "pairs",
+ "note": "Two street-level photos (facade and facade2), taken in different years, each cropped to one Amsterdam house front.",
+ "questions": {
+  "same_building": {
+   "type": "noul",
+   "instructions": "Do `facade` and `facade2` show the same house front (the same building, ignoring season, light, vehicles, trees and camera differences)?",
+   "criteria": {
+    "true": "Same building front.",
+    "false": "Different buildings or clearly different fronts."
+   }
+  },
+  "same_paint": {
+   "type": "noul",
+   "instructions": "Is the wall of the house front in `facade2` the same colour and finish (same brick or same paint colour) as in `facade`, ignoring lighting, shadow and camera colour differences?",
+   "criteria": {
+    "true": "Same wall colour and finish.",
+    "false": "The wall was repainted or has a different colour or material."
+   }
+  },
+  "same_shopfront": {
+   "type": "noul",
+   "instructions": "Is the ground floor of the house front in `facade2` the same as in `facade` (same shopfront or same doors and windows, ignoring signs, awnings, vehicles and people)?",
+   "criteria": {
+    "true": "Same ground-floor layout and fronts.",
+    "false": "A different shopfront or ground floor."
+   }
+  }
+ }
+}

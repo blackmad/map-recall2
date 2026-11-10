@@ -17,25 +17,7 @@
  },
  "writers": {
   "register": null,
-  "bag": {
-   "schemaVersion": 1,
-   "pandId": "0363100012169910",
-   "design": {
-    "fronts": [
-     {
-      "storeys": 3
-     }
-    ]
-   },
-   "provenance": {
-    "fronts/0/storeys": {
-     "source": "3dbag",
-     "confidence": 0.4,
-     "ref": "bag-facts:0363100012169910",
-     "at": null
-    }
-   }
-  },
+  "bag": null,
   "pixel": {
    "schemaVersion": 1,
    "pandId": "0363100012169910",
@@ -58,22 +40,11 @@
   "schemaVersion": 1,
   "pandId": "0363100012169910",
   "design": {
-   "fronts": [
-    {
-     "storeys": 3
-    }
-   ],
    "palette": {
     "brick": "#6a6f71"
    }
   },
   "provenance": {
-   "fronts/0/storeys": {
-    "source": "3dbag",
-    "confidence": 0.4,
-    "ref": "bag-facts:0363100012169910",
-    "at": null
-   },
    "palette/brick": {
     "source": "streetlevel-measured",
     "confidence": 0.45,

@@ -32,23 +32,11 @@
   "bag": {
    "schemaVersion": 1,
    "pandId": "0363100012169969",
-   "design": {
-    "fronts": [
-     {
-      "storeys": 4
-     }
-    ]
-   },
+   "design": {},
    "provenance": {
     "facts/facadeYear": {
      "source": "bag",
      "confidence": 0.5,
-     "ref": "bag-facts:0363100012169969",
-     "at": null
-    },
-    "fronts/0/storeys": {
-     "source": "3dbag",
-     "confidence": 0.4,
      "ref": "bag-facts:0363100012169969",
      "at": null
     }
@@ -62,22 +50,11 @@
   "schemaVersion": 1,
   "pandId": "0363100012169969",
   "design": {
-   "fronts": [
-    {
-     "storeys": 4
-    }
-   ],
    "notes": [
     "describe: facts/facadeYear disagrees: register 1837 (monument-text 0.7) vs bag 1616 (bag 0.5); register wins"
    ]
   },
   "provenance": {
-   "fronts/0/storeys": {
-    "source": "3dbag",
-    "confidence": 0.4,
-    "ref": "bag-facts:0363100012169969",
-    "at": null
-   },
    "facts/elements": {
     "source": "monument-text",
     "confidence": 0.6,

@@ -1,0 +1,49 @@
+{
+ "family": "likeness",
+ "set": "triples",
+ "note": "One street photo and three renderings of Amsterdam houses.",
+ "questions": {
+  "best": {
+   "type": "choice",
+   "instructions": "`photo` is a street photograph of one Amsterdam house front. `r1`, `r2` and `r3` are three computer renderings of 3D house models. Which rendering looks most like the house in the photograph (same wall colour, same number and arrangement of windows, same ground floor, same gable or roofline, same proportions)? Ignore image sharpness, lighting and the surroundings.",
+   "criteria": {
+    "r1": "Rendering r1 matches the photo best.",
+    "r2": "Rendering r2 matches the photo best.",
+    "r3": "Rendering r3 matches the photo best."
+   }
+  },
+  "score_r1": {
+   "type": "choice",
+   "instructions": "`photo` is a street photograph of one Amsterdam house front and `r1` is a computer rendering of a 3D model meant to look like that house. How closely does `r1` match the house in the photograph in wall colour, window layout (number of window columns and storeys), ground floor and gable or roofline? Ignore sharpness and lighting.",
+   "criteria": {
+    "1": "Not the same house: wall colour, windows and roofline all differ.",
+    "2": "Poor: a few features match but the layout or colour is clearly different.",
+    "3": "Fair: the colour or layout matches, but several things differ.",
+    "4": "Good: same colour, window layout and roofline, with small differences.",
+    "5": "Excellent: it looks like the same house."
+   }
+  },
+  "score_r2": {
+   "type": "choice",
+   "instructions": "`photo` is a street photograph of one Amsterdam house front and `r2` is a computer rendering of a 3D model meant to look like that house. How closely does `r2` match the house in the photograph in wall colour, window layout (number of window columns and storeys), ground floor and gable or roofline? Ignore sharpness and lighting.",
+   "criteria": {
+    "1": "Not the same house: wall colour, windows and roofline all differ.",
+    "2": "Poor: a few features match but the layout or colour is clearly different.",
+    "3": "Fair: the colour or layout matches, but several things differ.",
+    "4": "Good: same colour, window layout and roofline, with small differences.",
+    "5": "Excellent: it looks like the same house."
+   }
+  },
+  "score_r3": {
+   "type": "choice",
+   "instructions": "`photo` is a street photograph of one Amsterdam house front and `r3` is a computer rendering of a 3D model meant to look like that house. How closely does `r3` match the house in the photograph in wall colour, window layout (number of window columns and storeys), ground floor and gable or roofline? Ignore sharpness and lighting.",
+   "criteria": {
+    "1": "Not the same house: wall colour, windows and roofline all differ.",
+    "2": "Poor: a few features match but the layout or colour is clearly different.",
+    "3": "Fair: the colour or layout matches, but several things differ.",
+    "4": "Good: same colour, window layout and roofline, with small differences.",
+    "5": "Excellent: it looks like the same house."
+   }
+  }
+ }
+}

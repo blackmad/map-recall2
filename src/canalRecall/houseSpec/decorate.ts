@@ -74,13 +74,12 @@ const excluded = (p: Props) => (p.appearanceStyleSource !== undefined && p.appea
 export const SPEC_WALLS_HELD = true;
 
 /**
- * Held (2026-11-10, spot-check #348; H1b #349 fixed the cause, still held by ruling). The #348 spot-check found group-01
- * doubling (photo 3 -> 6). Cause: frontageLayoutScale rounded bays / axesPerCell up, so an odd count on 2-axis cells drew
- * the even number above it; specCellCount (streetFacadeRendering.ts) now draws the nearest whole-cell count, ties down.
- * Held because on the 19 scorable pands after = before: 2-axis cells cannot draw 3 bays, the commonest canal rhythm.
- * Lifts after H1c #350 (odd-axis cells + source-bay audit) passes its gate. docs/house-line.md §1.
+ * Released 2026-11-10 (H1c #350): odd stated counts on two-window cells draw as half-cell axis units
+ * (streetFacadeRendering.ts axisUnitPlan), and the #348 gate passes (closer on 12 of 19 scorable pands, further on none).
+ * Auto-placed type bays the strip did not confirm are a 'default' and never written. Roll back by holding it again (a
+ * world-v1 recompile carries it). docs/house-line.md §1 "Odd bays".
  */
-export const SPEC_BAYS_HELD = true;
+export const SPEC_BAYS_HELD = false;
 
 /** The property patch a spec view makes before decorateFacade; empty when nothing changes. */
 export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
@@ -98,7 +97,7 @@ export function houseSpecPatch(view: HouseSpecView, p: Props): Props {
     if (p.registerFinish !== finish) patch.registerFinish = finish;
   }
   const recipe: SpecRecipe = {};
-  if (!SPEC_BAYS_HELD && view.bays && view.bays > 0) recipe.bays = view.bays;
+  if (!SPEC_BAYS_HELD && view.bays && view.bays > 0 && view.src?.bays !== 'default') recipe.bays = view.bays;
   if (!SPEC_WALLS_HELD && view.wallHex && /^#[0-9a-f]{6}$/i.test(view.wallHex)) recipe.wallHex = view.wallHex.toLowerCase();
   // A spec recipe only when it carries something the mesher reads (bays, a wall colour); crown and period ride along.
   if (recipe.bays || recipe.wallHex) {
