@@ -150,13 +150,10 @@ texture cell is 2 bays, not 1) and not a count of grid cells. The generic path d
 carrying `openings.upper.axes.length` columns (2 for almost every canal/c19 style, 3 for a few canal ones), so the drawn
 count is cells x axes. `streetFacadeRendering.ts` `specCellCount` picks the cell count whose drawn count is nearest
 `bays`, a tie going to the fewer, held to `MIN_COLUMN_M` (1.8 m) per column and to what the bay-scale clamp lets
-`layoutWall` reproduce. An odd count on 2-axis cells therefore draws the even number below it (3 -> 2, 5 -> 4);
-the generic cells have no plain 3-window c19 style and no 1-window canal/c19 style, which is the kit limit behind that.
+`layoutWall` reproduce. An odd count on 2-axis cells drew the even number below it (3 -> 2, 5 -> 4) until H1c's axis units ("Odd bays" below).
 A street-appearance recipe's own `bays` keep the old cell fit.
 
-**Still held** (`decorate.ts SPEC_BAYS_HELD = true`, judgement ruling on #349): the fix removed the doubling but on the 19
-scorable #348 pands after = before, because 2-axis cells cannot draw the commonest canal rhythm (3 bays). H1c #350 adds
-odd-axis cells and audits the bay sources; the hold lifts after its gate (strictly closer on >= 60 %, worse on none).
+**Released 2026-11-10** (H1c #350): odd counts draw as half-cell axis units (see "Odd bays"); the #348 gate passed 12/19 closer, 0 worse.
 
 The 2026-11-10 doubling (photo 3 drawn 6, photo 2 drawn 4, photo 3 drawn 4 on the #348 sample) was `Math.round(bays /
 axes)`: 5/2 = 2.5 rounded up to 3 cells = 6 columns, 3/2 = 1.5 up to 2 cells = 4. Trace of 0363100012169901
@@ -166,6 +163,65 @@ cells -> drawn columns 6 (old) / 4 (now); the preview's `measureFacade` read 6 a
 `scripts/house-specs/trace-bays.ts <pand>` prints this chain; `scripts/house-specs/bays-gate.ts` is the #348 sample gate
 (hand-grid photo counts in `bays-gate-photo.json`). The source `bays` is itself sometimes high (5 for a 4-column
 front; doorBay included), so a nearer count is not always the photo's.
+
+### Where a source's bays go wrong (H1c audit, #350)
+
+`scripts/house-specs/bays-audit.ts` (HELP: `--help`) scores every bays source against photo window columns on the H4
+crop archive (source-data eba1f2132 `pand-crops/`): the H1c hand grid of 126 crops
+(`scripts/house-specs/bays-audit-photo.json`, plus `bays-gate-photo.json`), or with `--hand-set` H5h's hand set
+(`data/house-line/hand-set-v1.json`, §4c). The `measureFacade` `houseLine` meter is not a truth (22 of 38 exact against
+the hand grid). Per source against the hand grid, 2026-11-10 (n, exact, over, under, mean signed):
+
+| Source | n | exact | over | under | mean signed |
+|---|---|---|---|---|---|
+| block face, authored or strip-confirmed | 21 | 21 | 0 | 0 | 0 |
+| block face, auto-placed type default | 8 | 6 | 1 | 1 | 0 |
+| recipe intent | 8 | 6 | 2 | 0 | +0.38 |
+| author / house record | 0 | | | | |
+| register text (`registerBays`: "drie vensterassen", "5 traveeën") | 0 on crops, 258 city-wide | | | | |
+| Jev (`jevBays`) | 95 | 86 | 7 | 2 | +0.06 |
+
+Jev at p >= 0.8 is 77 of 78 exact. Against the H5h hand set (74 readable pands with axes, 31 shared with the grid, 29
+equal) Jev is 24 of 33 exact, mean signed -0.24. The hand set counts the **maximum** over the upper storeys (H5h,
+0363100012170031: 4 lights on storey 2, 2 above; the grid read 2), the same rule as `frontBays`, so that convention makes
+a source look low, not high: it does not explain the over-counts.
+
+What the over-counts were:
+- **0363100012169901** (Bloemgracht, spec 5, photo 3) is the recipe intent
+  `scripts/building-recipes/houses/bloemgracht-90/intent.json` (`bays: 5, doorBay: 2`), not a block face as the H1b trace
+  said. The data needs a fix (3 bays, door bay 1), the integrator's to make.
+- **Auto-placed type defaults.** `autoPlace.ts baysFor` is the type's width rule; when the strip's column match was not 1
+  (`columns X` in the citation) the count is the type's guess. `fromBlockFace` now records those `fronts/0/bays` and
+  `axisGrid` as source `default` (confidence `TYPE_DEFAULT_BAYS_CONFIDENCE` 0.3), so any measured source outranks them and
+  the runtime view leaves them out (`build-house-specs.ts viewOf`): 1,348 view bays became 917.
+
+### Odd bays: half-cell axis units (H1c, #350)
+
+The generic canal/c19 cells paint two windows on axes 0.25 and 0.75 (`facadeOpenings.ts`), so each half of a cell is a
+one-window cell with the same sill, head, frame, lintel, speklagen and keystones. A spec'd street run whose stated count
+is odd on such a cell is laid out in **axis units** (`streetFacadeRendering.ts axisUnitPlan`): `layoutWall` lays exactly
+`bays` units (`doorEvery` doubled, `LayoutScale.doorMinBayM` 1.2 m so a unit can hold the door), and the mesher samples
+the texture half a cell per unit (`AXIS_UNIT_U` 0.5), so 3 draws three windows and 1 draws one. The door unit samples the
+half of the door cell around the door (`axisUnitOpenings` `doorU`), `DOOR_UNIT_CLEARANCE` off the side window.
+No atlas layer is added: `BAY_LAYER_COUNT` and every roof/slot/surface layer ordinal are unchanged.
+
+Limits: the axis pitch must be at least `MIN_AXIS_PITCH_M` 1.45 m for up to 3 bays (the 10th percentile of 80 hand-counted
+three-axis fronts, median 1.85 m) and `MIN_COLUMN_M` above, and at most half the style's bay times `SPEC_BAY_SCALE.max`;
+a cell whose windows are not centred in its halves, a ribbon, or a door too wide for half a cell keeps the whole-cell fit
+(`specCellCount`). Kill switch: `ODD_AXIS_CELLS=0` in Node (world compile, gate, hash). `?oddAxisCells=0` reaches only a main-thread build:
+the building worker's `location` is its script URL, so on the live path the page flag does not reach the meshes (seen
+2026-11-10: the two ride frames came out identical). Roll back in the browser by holding `SPEC_BAYS_HELD`.
+
+Proof (`scripts/house-specs/odd-cells-hash.ts`, per-building hashes of walls, extras and shell over the 55 house-spec
+tiles, 411,709 entries): with bays held the mesh is byte-identical to the base; with bays forced and `ODD_AXIS_CELLS=0`
+it equals the base forced run. With units on, 400 buildings differ: 397 spec'd with odd bays, and 3 neighbours
+(0363100012172887, 0363100012221819, w750932749) whose flat-roof surface piece the chunk-wide R5-E budget (a share of the
+chunk's triangles) now admits. Gate (`bays-gate.ts --dir=staging/house-specs`, #348 sample): closer on 12 of 19 scorable
+pands (63 %), further on none.
+
+What the kit still cannot say: a 3-axis front on a cell whose windows sit off the quarter axes (the three-window canal
+styles keep their own cells), an asymmetric front (door axis plus two windows unevenly spaced), and a front whose storeys
+differ in axis count (170031: 4 on storey 2, 2 above) - a front draws one axis count for every storey.
 
 ### Which specs a world carries
 

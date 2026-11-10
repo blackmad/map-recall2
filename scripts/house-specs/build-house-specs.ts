@@ -119,8 +119,10 @@ function viewOf(spec: HouseSpec): HouseSpecView {
   if (spec.design.palette?.wallMaterial) { v.wallMaterial = spec.design.palette.wallMaterial; v.src.wallMaterial = src['palette/wallMaterial']; }
   const wall = hex(spec.design.palette?.brick);
   if (wall) { v.wallHex = wall; v.src.wallHex = src['palette/brick']; }
-  const bays = frontBays(front);
-  if (bays) { v.bays = bays; v.src.bays = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays']; }
+  // A bay count no source measured (an auto-placed type's default, adapters.ts fromBlockFace) stays in the record but
+  // does not reach the generic path: its own cell count is as good a guess, and a measured source can outrank it.
+  const bays = frontBays(front), baysSrc = src[front?.axisGrid ? 'fronts/0/axisGrid' : 'fronts/0/bays'];
+  if (bays && baysSrc !== 'default') { v.bays = bays; v.src.bays = baysSrc; }
   return v;
 }
 const PLANNER_GABLES = new Set(['step', 'neck', 'raised-neck', 'bell', 'spout', 'point']);

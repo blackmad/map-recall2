@@ -6,6 +6,8 @@ import { CELL_PX } from './facadeCells.js';
 import { buildFeatureChunk, type Feature } from './threeBuildingFeatures.js';
 import type { MeshBuilding } from './threeBuildingMesh.js';
 import type { StreetAppearanceProfile } from './streetAppearance.js';
+// The H1c axis-unit tests run with this suite (test:street-appearance lists this file).
+import './axisUnits.test.js';
 
 const origin = { lng: 4.9, lat: 52.37 }, kx = 111320 * Math.cos(origin.lat * Math.PI / 180);
 const ll = (x: number, y: number): [number, number] => [origin.lng + x / kx, origin.lat + y / 110540];
