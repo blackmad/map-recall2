@@ -1,0 +1,155 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "plantage-1881-segmental-anchors",
+ "district": "plantage",
+ "description": "Plantage Badlaan 1-11 (BAG dates 1807-1881, one design): 6.0 m fronts of a 3.6 m ground storey and three tall upper storeys of orange-red brick; three axes of white-framed segmental-headed windows with a top light, white sills, a string course over the ground storey, dark iron wall anchors on the floor lines, a heavy white cornice at 13.6-14.0 m and one small pediment dormer",
+ "fit": {
+  "widthM": [
+   5.6,
+   6.4
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1800,
+   1895
+  ],
+  "yearSlack": 0,
+  "eavesM": [
+   13.6,
+   15.4
+  ],
+  "roof": "pitched",
+  "stucco": false,
+  "baysByWidth": [
+   {
+    "maxWidthM": 99,
+    "bays": 3
+   }
+  ],
+  "note": "Badlaan 1-11: BAG dates scatter 1807-1881 on one design (strip 2019-2025 shows one brick front); keyed by eaves 14.0-15.0 and the face pin"
+ },
+ "body": {
+  "storeys": 4,
+  "bays": 3,
+  "storeyHeights": [
+   3.6,
+   3.0,
+   3.3,
+   3.5
+  ],
+  "windows": "t-window",
+  "windowSurround": "sill",
+  "windowHead": {
+   "kind": "segmental"
+  },
+  "windowHeights": [
+   0.72,
+   0.73,
+   0.79,
+   0.69
+  ],
+  "headLines": [
+   0.89,
+   0.87,
+   0.91,
+   0.79
+  ],
+  "windowShare": 0.72,
+  "cornice": "simple",
+  "entablature": {
+   "rise": 1.1,
+   "cap": 0.4,
+   "frieze": "trim",
+   "architrave": 0.1
+  },
+  "wallAnchors": {
+   "over": 0.4
+  }
+ },
+ "crowns": {
+  "pediment-dormer": {
+   "gable": "cornice",
+   "dormers": 1,
+   "dormerStyle": "pediment",
+   "dormerBody": "stone",
+   "dormerAt": [
+    {
+     "from": 0.34,
+     "to": 0.66
+    }
+   ],
+   "dormerSize": {
+    "sill": 0.2,
+    "rise": 1.2,
+    "setback": 0.3
+   },
+   "note": "one small white dormer over the middle axis"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "basement": "none",
+   "note": "double door at the left axis"
+  },
+  "door-right": {
+   "doorBay": 2,
+   "basement": "none",
+   "note": "double door at the right axis"
+  }
+ },
+ "palettes": {
+  "orange-brick": {
+   "brick": "#7b4e3e",
+   "frame": "white-painted",
+   "door": "#1f2324",
+   "stone": "#ebe8df",
+   "cornice": "#ebe8df",
+   "stoneMaterial": "painted"
+  }
+ },
+ "roof": {
+  "material": "slate"
+ },
+ "rhythm": {
+  "bays": "3 equal window axes",
+  "identicalBays": "every upper storey: 3 T-windows",
+  "windowsPerStorey": "ground: shop | 1: 3 | 2: 3 | 3: 3",
+  "symmetry": "symmetric above the shop",
+  "groundFloor": "residential: two windows and a double door",
+  "signage": "per shop",
+  "roofline": "heavy white cornice, one small pediment dormer",
+  "photoRows": [
+   1,
+   3,
+   3,
+   3
+  ],
+  "photoGroundRows": 1,
+  "photoGables": 0,
+  "schemaLimits": [
+   "the sculpted keystone heads of 44 are plain blocks",
+   "the dormer's low side cheeks are not drawn"
+  ]
+ },
+ "evidence": [
+  {
+   "face": "badlaan-1-21",
+   "pands": [
+    "181430",
+    "181431",
+    "181432",
+    "181074"
+   ],
+   "citation": "strip.jpg 40 px/m gridded: ground sills 0.6 m heads 3.2 m, string course 3.6 m; storey-1 windows 4.0-6.2 m, storey-2 7.0-9.6 m, storey-3 10.3-13.0 m; white cornice 13.3-15.0 m; wall anchors at 6.6, 9.9, 13.0 m; windows 1.3 m wide on 6.0 m"
+  }
+ ],
+ "schemaLimits": [
+  "the top light is drawn at the t-window ratio; window heights grow upward in the photo (2.2, 2.6, 2.7 m) and are read per storey"
+ ]
+}

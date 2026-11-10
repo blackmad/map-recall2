@@ -1,0 +1,37 @@
+{
+ "note": "Mirrors read from the photo (door and dormer sides alternate right, left, right, left, right); Opus strip verdict 2026-11-10.",
+ "reviewed": "2026-11-10 (Opus verdict applied)",
+ "pins": [],
+ "mirrors": [
+  {
+   "pandId": "0363100012163617",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "mirror": true,
+   "reason": "Nieuwendammerdijk 143: door and dormer on the right in the 2022-05-09 photo (Opus verdict)"
+  },
+  {
+   "pandId": "0363100012167049",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "mirror": false,
+   "reason": "Nieuwendammerdijk 145: door and dormer on the left in the 2022-05-09 photo (Opus verdict)"
+  },
+  {
+   "pandId": "0363100012167155",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "mirror": true,
+   "reason": "Nieuwendammerdijk 147: door and dormer on the right in the 2022-05-09 photo (Opus verdict)"
+  },
+  {
+   "pandId": "0363100012156422",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "mirror": false,
+   "reason": "Nieuwendammerdijk 149: door and dormer on the left in the 2022-05-09 photo (Opus verdict)"
+  },
+  {
+   "pandId": "0363100012166543",
+   "type": "nieuwendam-1935-cottage-dormer",
+   "mirror": true,
+   "reason": "Nieuwendammerdijk 151: door and dormer on the right in the 2022-05-09 photo (Opus verdict)"
+  }
+ ]
+}

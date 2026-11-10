@@ -249,7 +249,7 @@ function layoutFront(f: FrontIntent, width: number, heightTop: number): Layout {
   // `windowHead`: segmental (rise 0.14 x width) or round heads on the listed storeys (default every storey above the ground).
   const wh = f.windowHead, headStorey = (s: number) => !!wh && wh.kind !== 'flat' && wh.kind !== 'relieving' && (wh.storeys ? wh.storeys.includes(s) : s > 0);
   // Round-arched storeys: a semicircular head (rise = half the width).
-  const headFor = (s: number, w: number) => headStorey(s) ? {head: 'segmental' as const, headRiseM: wh!.kind === 'round' ? Math.floor(w / 2 * 1000) / 1000 : round(w * 0.08), headSegments: 6}
+  const headFor = (s: number, w: number) => headStorey(s) ? {head: 'segmental' as const, headRiseM: wh!.kind === 'round' ? Math.floor(w / 2 * 1000) / 1000 : wh!.rise ?? round(w * 0.08), headSegments: 6}
     : f.archedStoreys?.includes(s) ? {head: 'segmental' as const, headRiseM: Math.floor(w / 2 * 1000) / 1000, headSegments: 6} : segmental;
   const heightShares = f.windowHeights === 'diminishing' ? Array.from({length: n}, (_, s) => DIMINISHING_WINDOW_HEIGHTS[Math.min(s, DIMINISHING_WINDOW_HEIGHTS.length - 1)]) : f.windowHeights;
   const openings: CanalhouseOpening[] = [], glazedBays: CanalhouseGlazedBay[] = [], balconies: Layout['balconies'] = [];
@@ -603,17 +603,23 @@ const GROUND_FRONT = {arcade: {pierM: 0.34, beamM: 0.32, riserM: 0.5}, pui: {pie
 export function groundFrontLayout(g: NonNullable<FrontIntent['groundFront']>, width: number, h: number, openings: CanalhouseOpening[]): CanalhouseFacadeBlock[] {
   const k = GROUND_FRONT[g.kind], n = g.bays.length, framed = g.kind !== 'wall';
   const pier = Math.min(k.pierM, width * 0.06), ow = (width - (n + 1) * pier) / n;
-  if (ow < 0.45) throw Error(`groundFront: ${n} bays do not fit a ${round(width, 2)} m front`);
+  // `bayWeights`: measured bay widths (Rapenburg 99); absent = equal bays, the arithmetic below is the stock one.
+  const wsum = g.bayWeights ? g.bayWeights.reduce((a, b) => a + b, 0) : 0;
+  const bw = (i: number) => g.bayWeights ? (width - (n + 1) * pier) * g.bayWeights[i] / wsum : ow;
+  const bl = (i: number) => g.bayWeights ? pier + Array.from({length: i}, (_, j) => bw(j) + pier).reduce((a, b) => a + b, 0) : pier + i * (ow + pier);
+  if (Array.from({length: n}, (_, i) => bw(i)).some(v => v < 0.45)) throw Error(`groundFront: ${n} bays do not fit a ${round(width, 2)} m front`);
   const top = framed ? h - k.beamM - 0.04 : h * 0.86, blocks: CanalhouseFacadeBlock[] = [];
   const joinery = framed ? 'shop' as const : 'trim' as const;
   if (framed) {
-    for (let i = 0; i <= n; i++) blocks.push({id: `gf-pier-${i}`, leftM: Math.min(round(i * (ow + pier)), Math.floor((width - round(pier)) * 1000 - 1) / 1000), bottomM: 0.3, widthM: round(pier), heightM: round(h - k.beamM - 0.3), depthM: g.kind === 'arcade' ? 0.12 : 0.08, surface: 'shop'});
+    for (let i = 0; i <= n; i++) blocks.push({id: `gf-pier-${i}`, leftM: Math.min(round(g.bayWeights ? bl(i) - pier : i * (ow + pier)), Math.floor((width - round(pier)) * 1000 - 1) / 1000), bottomM: 0.3, widthM: round(pier), heightM: round(h - k.beamM - 0.3), depthM: g.kind === 'arcade' ? 0.12 : 0.08, surface: 'shop'});
     blocks.push({id: 'gf-beam', leftM: 0, bottomM: round(h - k.beamM), widthM: Math.floor(width * 1000) / 1000, heightM: round(k.beamM - 0.02), depthM: g.kind === 'arcade' ? 0.14 : 0.1, surface: 'shop'});
   }
+  // `transom`: one line for the door heads and the window transom bars (absent: the stock heights).
+  const line = g.transom !== undefined ? Math.min(g.transom, top - 0.36) : null;
   g.bays.forEach((kind, i) => {
-    const left = pier + i * (ow + pier) + (framed ? 0.02 : 0), w = ow - (framed ? 0.04 : 0), id = `gf-b${i}`;
+    const left = bl(i) + (framed ? 0.02 : 0), w = bw(i) - (framed ? 0.04 : 0), id = `gf-b${i}`;
     if (kind === 'door' || kind === 'glazed-door') {
-      const dw = Math.min(w, kind === 'door' ? 1.25 : 1.6), dl = left + (w - dw) / 2, dh = Math.min(top - 0.55, 2.6);
+      const dw = Math.min(w, kind === 'door' ? 1.25 : 1.6), dl = left + (w - dw) / 2, dh = line !== null ? line - 0.08 : Math.min(top - 0.55, 2.6);
       openings.push({id: `${id}-door`, kind: 'door', leftM: round(dl), bottomM: 0.02, widthM: round(dw), heightM: round(dh), trimWidthM: 0.07, verticalBars: [.5], paneSurface: kind === 'door' ? 'door' : 'glass', frameSurface: joinery, barSurface: joinery});
       const th = top - (0.02 + dh + 0.06);
       if (th >= 0.3) openings.push({id: `${id}-transom`, kind: 'window', leftM: round(left), bottomM: round(0.02 + dh + 0.06), widthM: round(w), heightM: round(th), trimWidthM: 0.06, ...(w > 1.1 ? {verticalBars: [.5]} : {}), frameSurface: joinery, barSurface: joinery});
@@ -626,7 +632,9 @@ export function groundFrontLayout(g: NonNullable<FrontIntent['groundFront']>, wi
     if (framed) blocks.push({id: `${id}-riser`, leftM: round(left), bottomM: 0.02, widthM: round(w), heightM: round(sill - 0.02), depthM: GROUND_FRONT_PANEL_DEPTH_M, surface: 'shop'});
     if (kind === 'panel') { openings.push({id: `${id}-panel`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, paneSurface: 'door', frameSurface: joinery, barSurface: joinery}); return; }
     if (kind === 'shutter') { openings.push({id: `${id}-shutter`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, paneSurface: 'door', horizontalBars: [0.15, 0.3, 0.45, 0.6, 0.75, 0.9], frameSurface: joinery, barSurface: joinery}); return; }
-    openings.push({id: `${id}-window`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, ...(w > 1.1 ? {verticalBars: [.5]} : {}), horizontalBars: [0.74], frameSurface: joinery, barSurface: joinery});
+    const bars = g.lights ? {verticalBars: Array.from({length: g.lights - 1}, (_, j) => round((j + 1) / g.lights!, 4))} : w > 1.1 ? {verticalBars: [.5]} : {};
+    const bar = line !== null && line > sill + 0.3 ? round((line - sill) / (top - sill), 4) : 0.74;
+    openings.push({id: `${id}-window`, kind: 'window', leftM: round(left), bottomM: round(sill), widthM: round(w), heightM: round(top - sill), trimWidthM: 0.07, ...bars, horizontalBars: [bar], frameSurface: joinery, barSurface: joinery});
   });
   return blocks;
 }
@@ -1090,7 +1098,8 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
       // Attic windows inside the crown.
       const attic = front.atticWindows ?? 0, rise = crownTop - eaves;
       if (attic > 0 && rise > 1.2 && !groupCrowns) {
-        const w = clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
+        // `atticLight`: the measured light width (absent: the stock 0.5-0.9 m).
+        const w = front.atticLight ? front.atticLight.light : clamp((crownSpan ? crownW * 0.2 : mw * 0.14), 0.5, 0.9), h = clamp(rise * 0.4, 0.6, 1.4), gap = w * 0.5, total = attic * w + (attic - 1) * gap;
         // Gable lights follow a partial crown: on its bay axes when there is one light per bay, else centred on it.
         const onAxes = front.crownBays && front.crownBays.to - front.crownBays.from + 1 === attic ? layout.axisCentres.slice(front.crownBays.from, front.crownBays.to + 1) : null;
         const crownCentre = crownSpan ? (crownSpan[0] + crownSpan[1]) / 2 : mw / 2;
@@ -1101,7 +1110,7 @@ export function fitIntent(intent: CanalHouseIntent, surveyFacts: BuildingFacts):
         if (round) for (let m = 0; m < count; m++) for (let k = 0; k < attic; k++) elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', head: 'oval', leftM: flipX(place(m, (onAxes ? onAxes[k] : crownCentre) - od / 2, od), od), bottomM: eaves + Math.min(rise - od - 0.3, rise * 0.3), widthM: od, heightM: od, trimWidthM: 0.06, frameSurface: 'trim', barSurface: 'trim'});
         else {
           // Side-by-side lights that would escape a narrow crown (three lights in a gable) shrink until they fit under it.
-          const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + 0.25 + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
+          const planned = Array.from({length: attic}, (_, k) => ({left: atticLeft(k), width: w, bottom: eaves + (front.atticLight && !stack ? front.atticLight.sill : 0.25) + (stack ? k * (hh + 0.3) : 0), height: stack ? hh : h}));
           const lights = stack || !moduleProfile ? planned : fitGableLights(moduleProfile, planned, warnings, front.id);
           for (let m = 0; m < count; m++) lights.forEach((l, k) => elevation.openings.value.push({id: `${pieces.length > 1 ? front.id + "-" : ""}attic-${k}${count > 1 ? `-m${m}` : ''}`, kind: 'window', leftM: flipX(place(m, l.left, l.width), l.width), bottomM: l.bottom, widthM: l.width, heightM: l.height, trimWidthM: 0.06, ...WINDOW_BARS[front.windows === 'shop' ? 'sash' : front.windows], frameSurface: 'trim', barSurface: 'trim'}));
         }

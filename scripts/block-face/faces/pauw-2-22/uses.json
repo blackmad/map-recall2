@@ -1,0 +1,185 @@
+{
+ "street": "Pieter Pauwstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:37:36.254Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177754",
+   "addresses": [
+    "Pieter Pauwstraat 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 110,
+     "bagId": "0363010000775872"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177755",
+   "addresses": [
+    "Pieter Pauwstraat 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 115,
+     "bagId": "0363010000775869"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178863",
+   "addresses": [
+    "Pieter Pauwstraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 18-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010000775866"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171224",
+   "addresses": [
+    "Pieter Pauwstraat 14",
+    "Pieter Pauwstraat 14A",
+    "Pieter Pauwstraat 14B",
+    "Pieter Pauwstraat 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 14A",
+     "use": "woonfunctie",
+     "areaM2": 133,
+     "bagId": "0363010001970205"
+    },
+    {
+     "address": "Pieter Pauwstraat 14B",
+     "use": "woonfunctie",
+     "areaM2": 131,
+     "bagId": "0363010001970206"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177764",
+   "addresses": [
+    "Pieter Pauwstraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000775859"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177757",
+   "addresses": [
+    "Pieter Pauwstraat 10"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000775856"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177765",
+   "addresses": [
+    "Pieter Pauwstraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 117,
+     "bagId": "0363010000775853"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177758",
+   "addresses": [
+    "Pieter Pauwstraat 6A",
+    "Pieter Pauwstraat 6B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 6A",
+     "use": "woonfunctie",
+     "areaM2": 230,
+     "bagId": "0363010000775851"
+    },
+    {
+     "address": "Pieter Pauwstraat 6B",
+     "use": "woonfunctie",
+     "areaM2": 127,
+     "bagId": "0363010000775852"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177756",
+   "addresses": [
+    "Pieter Pauwstraat 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 4-H",
+     "use": "woonfunctie",
+     "areaM2": 77,
+     "bagId": "0363010000775847"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177771",
+   "addresses": [
+    "Pieter Pauwstraat 2A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Pauwstraat 2A-H",
+     "use": "woonfunctie",
+     "areaM2": 136,
+     "bagId": "0363010000775843"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

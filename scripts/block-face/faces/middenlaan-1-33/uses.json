@@ -1,0 +1,373 @@
+{
+ "street": "Plantage Middenlaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:48:59.007Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181446",
+   "addresses": [
+    "Plantage Middenlaan 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 1-H",
+     "use": "kantoorfunctie",
+     "areaM2": 106,
+     "bagId": "0363010000997018"
+    }
+   ],
+   "units": 3,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742883209,
+     "lngLat": [
+      4.9097263,
+      52.3672806
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "1-H",
+      "addr:postcode": "1018DA",
+      "addr:street": "Plantage Middenlaan",
+      "addr:unit": "Souterrain",
+      "amenity": "dentist",
+      "healthcare": "dentist",
+      "name": "Tandartspraktijk Plantage Middenlaan",
+      "opening_hours": "Mo-Fr 08:00-21:30",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://tandartsplantagemiddenlaan.nl/"
+     },
+     "fetchedAt": "2026-11-10T07:48:59.007Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012181445",
+   "addresses": [
+    "Plantage Middenlaan 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 3",
+     "use": "woonfunctie",
+     "areaM2": 293,
+     "bagId": "0363010000777568"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181444",
+   "addresses": [
+    "Plantage Middenlaan 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 5",
+     "use": "woonfunctie",
+     "areaM2": 300,
+     "bagId": "0363010000777573"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181439",
+   "addresses": [
+    "Plantage Middenlaan 7B",
+    "Plantage Middenlaan 7C",
+    "Plantage Middenlaan 7",
+    "Plantage Middenlaan 7A"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 7B",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010012578341"
+    },
+    {
+     "address": "Plantage Middenlaan 7C",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010012578342"
+    },
+    {
+     "address": "Plantage Middenlaan 7",
+     "use": "woonfunctie",
+     "areaM2": 364,
+     "bagId": "0363010000777576"
+    },
+    {
+     "address": "Plantage Middenlaan 7A",
+     "use": "woonfunctie",
+     "areaM2": 124,
+     "bagId": "0363010012578340"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181438",
+   "addresses": [
+    "Plantage Middenlaan 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 9-H",
+     "use": "woonfunctie",
+     "areaM2": 126,
+     "bagId": "0363010000777577"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181374",
+   "addresses": [
+    "Plantage Middenlaan 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 11",
+     "use": "woonfunctie",
+     "areaM2": 195,
+     "bagId": "0363010000777582"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181373",
+   "addresses": [
+    "Plantage Middenlaan 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 13",
+     "use": "woonfunctie",
+     "areaM2": 241,
+     "bagId": "0363010000777584"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181372",
+   "addresses": [
+    "Plantage Middenlaan 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 15",
+     "use": "woonfunctie",
+     "areaM2": 176,
+     "bagId": "0363010000777586"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181440",
+   "addresses": [
+    "Plantage Middenlaan 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 17",
+     "use": "logiesfunctie",
+     "areaM2": 681,
+     "bagId": "0363010001171592"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 439170732,
+     "lngLat": [
+      4.91033,
+      52.3671026
+     ],
+     "tags": {
+      "tourism": "hostel"
+     },
+     "fetchedAt": "2026-11-10T07:48:59.007Z",
+     "match": "inside",
+     "distanceM": 0
+    },
+    {
+     "type": "node",
+     "id": 2742883502,
+     "lngLat": [
+      4.9103766,
+      52.3670897
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "17",
+      "addr:postcode": "1018DA",
+      "addr:street": "Plantage Middenlaan",
+      "name": "The Elephant Hostel",
+      "phone": "+31 20 7920645",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "hostel",
+      "website": "https://theelephanthostel.com/"
+     },
+     "fetchedAt": "2026-11-10T07:48:59.007Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012164951",
+   "addresses": [
+    "Plantage Middenlaan 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 19-H",
+     "use": "industriefunctie",
+     "areaM2": 921,
+     "bagId": "0363010000777591"
+    },
+    {
+     "address": "Plantage Middenlaan 19-2",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 144,
+     "bagId": "0363010000777593"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012164950",
+   "addresses": [
+    "Plantage Middenlaan 21A",
+    "Plantage Middenlaan 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 21A",
+     "use": "woonfunctie",
+     "areaM2": 417,
+     "bagId": "0363010011943094"
+    },
+    {
+     "address": "Plantage Middenlaan 21",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010011943095"
+    },
+    {
+     "address": "Plantage Middenlaan 21",
+     "use": "kantoorfunctie",
+     "areaM2": 926,
+     "bagId": "0363010012131489"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170544",
+   "addresses": [
+    "Plantage Middenlaan 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 23-H",
+     "use": "woonfunctie",
+     "areaM2": 197,
+     "bagId": "0363010000777599"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170545",
+   "addresses": [
+    "Plantage Middenlaan 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 25-H",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000777604"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012165551",
+   "addresses": [
+    "Plantage Middenlaan 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Plantage Middenlaan 27",
+     "use": "bijeenkomstfunctie,kantoorfunctie",
+     "areaM2": 1820,
+     "bagId": "0363010000777612"
+    }
+   ],
+   "units": 1,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2742884279,
+     "lngLat": [
+      4.9110104,
+      52.3668719
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "27",
+      "addr:postcode": "1018DB",
+      "addr:street": "Plantage Middenlaan",
+      "air_conditioning": "yes",
+      "check_date": "2026-11-02",
+      "description": "The former Hervormde Kweekschool, opened approx April 2016. National Holocaust Museum is opened in 2024",
+      "fee": "yes",
+      "internet_access": "wlan",
+      "museum_type": "national",
+      "name": "Nationaal Holocaustmuseum",
+      "name:en": "National Holocaust Museum",
+      "name:nl": "Nationaal Holocaustmuseum",
+      "name:ru": "Национальный музей Холокоста",
+      "opening_hours": "10:00-17:00",
+      "payment:museumkaart": "yes",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "tourism": "museum",
+      "website": "https://jck.nl/locatie/nationaal-holocaustmuseum",
+      "wikidata": "Q26822174",
+      "wikimedia_commons": "Category:Nationaal Holocaust Museum"
+     },
+     "fetchedAt": "2026-11-10T07:48:59.007Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  }
+ ]
+}

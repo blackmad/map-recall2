@@ -1,0 +1,142 @@
+{
+ "street": "Nicolaas Witsenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012177762",
+   "addresses": [
+    "Nicolaas Witsenstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000751016"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177761",
+   "addresses": [
+    "Nicolaas Witsenstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 146,
+     "bagId": "0363010000751019"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177760",
+   "addresses": [
+    "Nicolaas Witsenstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 171,
+     "bagId": "0363010000751022"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012177759",
+   "addresses": [
+    "Nicolaas Witsenstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 254,
+     "bagId": "0363010000751026"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012171225",
+   "addresses": [
+    "Nicolaas Witsenstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 177,
+     "bagId": "0363010000751029"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178936",
+   "addresses": [
+    "Nicolaas Witsenstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000751032"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012178935",
+   "addresses": [
+    "Nicolaas Witsenstraat 19B",
+    "Nicolaas Witsenstraat 19C",
+    "Nicolaas Witsenstraat 19A",
+    "Nicolaas Witsenstraat 19D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Nicolaas Witsenstraat 19B",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000699985"
+    },
+    {
+     "address": "Nicolaas Witsenstraat 19C",
+     "use": "woonfunctie",
+     "areaM2": 142,
+     "bagId": "0363010000699986"
+    },
+    {
+     "address": "Nicolaas Witsenstraat 19A",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000996069"
+    },
+    {
+     "address": "Nicolaas Witsenstraat 19D",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000996070"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

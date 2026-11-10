@@ -1,0 +1,326 @@
+{
+ "street": "Foeliedwarsstraat",
+ "seed": "0363100012181533",
+ "members": [
+  "0363100012181564",
+  "0363100012181580",
+  "0363100012181579",
+  "0363100012170742",
+  "0363100012170743",
+  "0363100012170672",
+  "0363100012181533"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012181564 (face continues: 181565)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012181533 (face continues: 254590)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012164961",
+   "reason": "no frontage on Foeliedwarsstraat: No footprint edge faces Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012164962",
+   "reason": "frontage 55.6 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012165618",
+   "reason": "frontage 59.9 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170631",
+   "reason": "frontage 93.2 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170670",
+   "reason": "frontage 39.0 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170671",
+   "reason": "frontage 35.1 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170673",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012170742"
+  },
+  {
+   "pandId": "0363100012170674",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012170743"
+  },
+  {
+   "pandId": "0363100012170682",
+   "reason": "frontage 54.4 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170683",
+   "reason": "frontage 80.8 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170684",
+   "reason": "frontage 75.5 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170687",
+   "reason": "frontage 84.9 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170688",
+   "reason": "frontage 89.0 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170689",
+   "reason": "frontage 81.0 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170690",
+   "reason": "frontage 94.8 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170735",
+   "reason": "frontage 31.4 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012170736",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012170740"
+  },
+  {
+   "pandId": "0363100012170739",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012181565"
+  },
+  {
+   "pandId": "0363100012170740",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012170741"
+  },
+  {
+   "pandId": "0363100012170741",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012170739"
+  },
+  {
+   "pandId": "0363100012170748",
+   "reason": "frontage 47.8 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181286",
+   "reason": "frontage 97.4 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181520",
+   "reason": "frontage 66.4 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181521",
+   "reason": "frontage 95.6 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181529",
+   "reason": "frontage 56.0 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181531",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012254590"
+  },
+  {
+   "pandId": "0363100012181532",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012181533"
+  },
+  {
+   "pandId": "0363100012181488",
+   "reason": "frontage 44.3 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181489",
+   "reason": "no frontage on Foeliedwarsstraat: No footprint edge faces Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181490",
+   "reason": "frontage 54.1 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181561",
+   "reason": "frontage 63.9 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181563",
+   "reason": "frontage 64.9 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181567",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012181562"
+  },
+  {
+   "pandId": "0363100012181568",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012181562"
+  },
+  {
+   "pandId": "0363100012181569",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012181562"
+  },
+  {
+   "pandId": "0363100012181570",
+   "reason": "frontage 30.4 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181571",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012181562"
+  },
+  {
+   "pandId": "0363100012181572",
+   "reason": "frontage 34.2 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181573",
+   "reason": "frontage 38.1 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181574",
+   "reason": "frontage 56.2 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181575",
+   "reason": "frontage 61.3 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181604",
+   "reason": "frontage 76.6 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181605",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012170672"
+  },
+  {
+   "pandId": "0363100012181606",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012181533"
+  },
+  {
+   "pandId": "0363100012181607",
+   "reason": "frontage 62.2 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181611",
+   "reason": "frontage 73.4 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181615",
+   "reason": "frontage 83.2 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012244183",
+   "reason": "frontage 55.2 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012249701",
+   "reason": "frontage 63.5 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012251322",
+   "reason": "sightline to Foeliedwarsstraat crosses 0363100012164963"
+  },
+  {
+   "pandId": "0363100012181577",
+   "reason": "frontage 45.9 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012181578",
+   "reason": "frontage 51.0 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012252469",
+   "reason": "frontage 52.6 m from Foeliedwarsstraat"
+  },
+  {
+   "pandId": "0363100012164963",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181562",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012181566",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012185927",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012181564",
+   "alongM": -36.79,
+   "widthM": 11.77,
+   "eavesM": 10.33,
+   "roofMaxM": 16.47,
+   "storeys3dbag": 4,
+   "builtYear": 1990,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181580",
+   "alongM": -28.37,
+   "widthM": 5.07,
+   "eavesM": 10.97,
+   "roofMaxM": 15.19,
+   "storeys3dbag": 4,
+   "builtYear": 1850,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181579",
+   "alongM": -23.92,
+   "widthM": 3.82,
+   "eavesM": 9.93,
+   "roofMaxM": 15.7,
+   "storeys3dbag": 5,
+   "builtYear": 2006,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170742",
+   "alongM": -19.72,
+   "widthM": 4.57,
+   "eavesM": 12.46,
+   "roofMaxM": 15.67,
+   "storeys3dbag": 4,
+   "builtYear": 2006,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170743",
+   "alongM": -14.57,
+   "widthM": 5.75,
+   "eavesM": 10.03,
+   "roofMaxM": 12.34,
+   "storeys3dbag": 4,
+   "builtYear": 1910,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012170672",
+   "alongM": -7.8,
+   "widthM": 7.79,
+   "eavesM": 9.57,
+   "roofMaxM": 12.32,
+   "storeys3dbag": 4,
+   "builtYear": 1870,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012181533",
+   "alongM": 0,
+   "widthM": 7.8,
+   "eavesM": 10.33,
+   "roofMaxM": 14.56,
+   "storeys3dbag": 4,
+   "builtYear": 1929,
+   "uncertainty": []
+  }
+ ]
+}

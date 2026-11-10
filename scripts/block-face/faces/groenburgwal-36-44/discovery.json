@@ -1,0 +1,547 @@
+{
+ "street": "Groenburgwal",
+ "seed": "0363100012178714",
+ "members": [
+  "0363100012171157",
+  "0363100012171165",
+  "0363100012177717",
+  "0363100012178715",
+  "0363100012178714"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012171157 (face continues: 171158)"
+  },
+  {
+   "side": "right",
+   "reason": "trimmed at 0363100012178714 (face continues: 169338 178909 178895 178896 171184 178897 178898 178899 169341 186088 171386 178222 178225)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012171159",
+   "reason": "frontage 40.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171160",
+   "reason": "frontage 33.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171161",
+   "reason": "sightline to Groenburgwal crosses 0363100012171157"
+  },
+  {
+   "pandId": "0363100012171163",
+   "reason": "sightline to Groenburgwal crosses 0363100012177717"
+  },
+  {
+   "pandId": "0363100012171374",
+   "reason": "sightline to Groenburgwal crosses 0363100012178893"
+  },
+  {
+   "pandId": "0363100012171375",
+   "reason": "sightline to Groenburgwal crosses 0363100012169340"
+  },
+  {
+   "pandId": "0363100012171376",
+   "reason": "frontage 32.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171377",
+   "reason": "sightline to Groenburgwal crosses 0363100012178986"
+  },
+  {
+   "pandId": "0363100012171378",
+   "reason": "frontage 38.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171379",
+   "reason": "frontage 40.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171381",
+   "reason": "frontage 32.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177745",
+   "reason": "frontage 47.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177746",
+   "reason": "frontage 40.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177747",
+   "reason": "frontage 36.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177772",
+   "reason": "frontage 33.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177775",
+   "reason": "frontage 42.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177776",
+   "reason": "frontage 35.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177778",
+   "reason": "sightline to Groenburgwal crosses 0363100012177779"
+  },
+  {
+   "pandId": "0363100012177779",
+   "reason": "sightline to Groenburgwal crosses 0363100012177821"
+  },
+  {
+   "pandId": "0363100012177780",
+   "reason": "sightline to Groenburgwal crosses 0363100012171157"
+  },
+  {
+   "pandId": "0363100012177781",
+   "reason": "frontage 31.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171179",
+   "reason": "frontage 105.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177773",
+   "reason": "frontage 47.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177774",
+   "reason": "frontage 47.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012169333",
+   "reason": "frontage 33.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012169334",
+   "reason": "sightline to Groenburgwal crosses 0363100012178714"
+  },
+  {
+   "pandId": "0363100012169337",
+   "reason": "sightline to Groenburgwal crosses 0363100012171382"
+  },
+  {
+   "pandId": "0363100012169339",
+   "reason": "sightline to Groenburgwal crosses 0363100012178905"
+  },
+  {
+   "pandId": "0363100012171185",
+   "reason": "frontage 35.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171186",
+   "reason": "frontage 40.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171187",
+   "reason": "sightline to Groenburgwal crosses 0363100012178895"
+  },
+  {
+   "pandId": "0363100012171188",
+   "reason": "frontage 38.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012171199",
+   "reason": "sightline to Groenburgwal crosses 0363100012169341"
+  },
+  {
+   "pandId": "0363100012177782",
+   "reason": "sightline to Groenburgwal crosses 0363100012177777"
+  },
+  {
+   "pandId": "0363100012177783",
+   "reason": "frontage 32.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177792",
+   "reason": "sightline to Groenburgwal crosses 0363100012253758"
+  },
+  {
+   "pandId": "0363100012177818",
+   "reason": "sightline to Groenburgwal crosses 0363100012177815"
+  },
+  {
+   "pandId": "0363100012177822",
+   "reason": "frontage 40.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177823",
+   "reason": "frontage 40.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177824",
+   "reason": "frontage 40.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177826",
+   "reason": "frontage 41.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177856",
+   "reason": "sightline to Groenburgwal crosses 0363100012171157"
+  },
+  {
+   "pandId": "0363100012177857",
+   "reason": "frontage 41.6 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177858",
+   "reason": "frontage 41.2 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178191",
+   "reason": "sightline to Groenburgwal crosses 0363100012178449"
+  },
+  {
+   "pandId": "0363100012178192",
+   "reason": "sightline to Groenburgwal crosses 0363100012169335"
+  },
+  {
+   "pandId": "0363100012178359",
+   "reason": "sightline to Groenburgwal crosses 0363100012178372"
+  },
+  {
+   "pandId": "0363100012178367",
+   "reason": "sightline to Groenburgwal crosses 0363100012178362"
+  },
+  {
+   "pandId": "0363100012178368",
+   "reason": "sightline to Groenburgwal crosses 0363100012178635"
+  },
+  {
+   "pandId": "0363100012178373",
+   "reason": "sightline to Groenburgwal crosses 0363100012178371"
+  },
+  {
+   "pandId": "0363100012178374",
+   "reason": "sightline to Groenburgwal crosses 0363100012178626"
+  },
+  {
+   "pandId": "0363100012178447",
+   "reason": "frontage 34.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178448",
+   "reason": "sightline to Groenburgwal crosses 0363100012169340"
+  },
+  {
+   "pandId": "0363100012178449",
+   "reason": "sightline to Groenburgwal crosses 0363100012178445"
+  },
+  {
+   "pandId": "0363100012178624",
+   "reason": "frontage 39.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178625",
+   "reason": "sightline to Groenburgwal crosses 0363100012169336"
+  },
+  {
+   "pandId": "0363100012178627",
+   "reason": "sightline to Groenburgwal crosses 0363100012178626"
+  },
+  {
+   "pandId": "0363100012178628",
+   "reason": "sightline to Groenburgwal crosses 0363100012178374"
+  },
+  {
+   "pandId": "0363100012177827",
+   "reason": "frontage 106.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177830",
+   "reason": "frontage 106.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177790",
+   "reason": "frontage 37.7 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177819",
+   "reason": "frontage 42.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012177825",
+   "reason": "sightline to Groenburgwal crosses 0363100012177792"
+  },
+  {
+   "pandId": "0363100012178102",
+   "reason": "frontage 34.3 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178217",
+   "reason": "sightline to Groenburgwal crosses 0363100012178225"
+  },
+  {
+   "pandId": "0363100012178218",
+   "reason": "frontage 36.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178629",
+   "reason": "sightline to Groenburgwal crosses 0363100012178374"
+  },
+  {
+   "pandId": "0363100012178630",
+   "reason": "frontage 30.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178631",
+   "reason": "frontage 36.9 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178632",
+   "reason": "frontage 34.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178633",
+   "reason": "frontage 38.8 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178634",
+   "reason": "sightline to Groenburgwal crosses 0363100012169336"
+  },
+  {
+   "pandId": "0363100012178636",
+   "reason": "frontage 39.0 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012178908",
+   "reason": "sightline to Groenburgwal crosses 0363100012178906"
+  },
+  {
+   "pandId": "0363100012178985",
+   "reason": "sightline to Groenburgwal crosses 0363100012178893"
+  },
+  {
+   "pandId": "0363100012178987",
+   "reason": "frontage 30.4 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012182768",
+   "reason": "frontage 33.5 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012571650",
+   "reason": "sightline to Groenburgwal crosses 0363100012177817"
+  },
+  {
+   "pandId": "0363100012178900",
+   "reason": "sightline to Groenburgwal crosses 0363100012178899"
+  },
+  {
+   "pandId": "0363100012178901",
+   "reason": "sightline to Groenburgwal crosses 0363100012178899"
+  },
+  {
+   "pandId": "0363100012178905",
+   "reason": "sightline to Groenburgwal crosses 0363100012178909"
+  },
+  {
+   "pandId": "0363100012182767",
+   "reason": "sightline to Groenburgwal crosses 0363100012171549"
+  },
+  {
+   "pandId": "0363100012571643",
+   "reason": "frontage 33.1 m from Groenburgwal"
+  },
+  {
+   "pandId": "0363100012571644",
+   "reason": "sightline to Groenburgwal crosses 0363100012178899"
+  },
+  {
+   "pandId": "0363100012169335",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169336",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012169340",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171382",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171547",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171548",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171549",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012171558",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178362",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178369",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178370",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178371",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178372",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178445",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178446",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178626",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178147",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178150",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178635",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178637",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178893",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178902",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178906",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178907",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178986",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178988",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178989",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012253758",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178712",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178713",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178903",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012178904",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012171157",
+   "alongM": -39.75,
+   "widthM": 17.23,
+   "eavesM": 8.69,
+   "roofMaxM": 13.88,
+   "storeys3dbag": 0,
+   "builtYear": 1650,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012171165",
+   "alongM": -22.34,
+   "widthM": 4.21,
+   "eavesM": 7.48,
+   "roofMaxM": 14.55,
+   "storeys3dbag": 3,
+   "builtYear": 1829,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012177717",
+   "alongM": -13.45,
+   "widthM": 13.21,
+   "eavesM": 6.44,
+   "roofMaxM": 14.76,
+   "storeys3dbag": 4,
+   "builtYear": 1822,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012178715",
+   "alongM": -4.49,
+   "widthM": 4.73,
+   "eavesM": 11.1,
+   "roofMaxM": 14.78,
+   "storeys3dbag": 4,
+   "builtYear": 1800,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012178714",
+   "alongM": 0,
+   "widthM": 4.25,
+   "eavesM": 12.06,
+   "roofMaxM": 13.29,
+   "storeys3dbag": 4,
+   "builtYear": 1773,
+   "uncertainty": []
+  }
+ ]
+}

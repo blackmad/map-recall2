@@ -1,0 +1,4 @@
+face,run,street,pands,mode,ride,stripDate,restriped,status,reasons,nccMin,nccMedian,stripOverDrawn,wallFits,droppedCorners,triangles,seconds
+badlaan-4-24,badlaan-4-24-r1,Plantage Badlaan,2,auto-place,,2024-12-10,,failed,glb-audit: failed (see report.json audit) | strip-over-drawn-high: 2.068 > 1.25 (walls drawn darker than the photo),0.199,0.199,2.068,4,,4851,10.7
+badlaan-1-21,badlaan-1-21-r1,Plantage Badlaan,5,auto-place,,2024-12-10,,passed (not installed: no --install),,0.325,0.346,1.061,2,,11382,8.1
+doklaan-28-42,doklaan-28-42,Plantage Doklaan,8,auto-place,,2024-12-10,,failed,no-type: 0/8 placed (4x likeness: no photo evidence (usable photo # % < # %) and no passing same-type ne; 2x match: best plantage-#-stucco-cartouche scores # < # (strip accent share # (b; 1x run: a single placed pand between held neighbours or the face end: a block ),,,,0,,,5.9

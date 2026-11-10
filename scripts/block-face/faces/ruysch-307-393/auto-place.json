@@ -1,0 +1,979 @@
+{
+ "face": "ruysch-307-393",
+ "street": "Ruyschstraat",
+ "library": "oud-west",
+ "stripDate": "2020-04-29",
+ "seconds": 182.69,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [
+  {
+   "face": "ruysch-307-393-r1",
+   "pands": [
+    "0363100012161684",
+    "0363100012155674"
+   ],
+   "passed": true,
+   "triangles": 3809
+  }
+ ],
+ "pands": [
+  {
+   "pandId": "0363100012155605",
+   "address": "Ruyschstraat 307",
+   "builtYear": 1900,
+   "widthM": 5.53,
+   "eavesM": 15.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#635453",
+    "wallRaw": "#65565a",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.72,
+      "topWidthM": 1.82,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.162,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.93,
+       "widthM": 1.02,
+       "centre": 0.41
+      },
+      {
+       "atM": 6.63,
+       "widthM": 0.95,
+       "centre": 0.09
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.142 < 0.15 (photo vs model body; likeness.ts PASS)",
+   "likeness": {
+    "pandId": "0363100012155605",
+    "ncc": 0.142,
+    "nccRaw": 0.142,
+    "shiftM": [
+     0.05,
+     -0.4
+    ],
+    "usable": 0.99,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#645552",
+     "model": "#7a6867",
+     "dL": 0.084
+    },
+    "glazing": {
+     "photo": 0.35,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.56,
+    "footOffsetM": 0.53
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162696",
+   "address": "Ruyschstraat 315",
+   "builtYear": 1900,
+   "widthM": 5.53,
+   "eavesM": 15.59,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5753",
+    "wallRaw": "#58494b",
+    "skyline": {
+     "eavesM": 15.22,
+     "eavesRow": 210,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.67,
+      "topWidthM": 1.65,
+      "centre": 0.36
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.026,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.82,
+       "widthM": 0.97,
+       "centre": 0.38
+      },
+      {
+       "atM": 6.38,
+       "widthM": 1.25,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012162696",
+    "ncc": 0.18,
+    "nccRaw": 0.18,
+    "shiftM": [
+     -0.05,
+     -0.4
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "PASS",
+    "reasons": [],
+    "wall": {
+     "photo": "#745c5a",
+     "model": "#856a65",
+     "dL": 0.055
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.582,
+    "footOffsetM": 0.53
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159606",
+   "address": "Ruyschstraat 323",
+   "builtYear": 1900,
+   "widthM": 5.47,
+   "eavesM": 15.54,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#775f5e",
+    "wallRaw": "#584a4a",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.6,
+      "topWidthM": 1.07,
+      "centre": 0.37
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "left",
+    "accentShare": 0.027,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.85,
+       "widthM": 1.23,
+       "centre": 0.42
+      },
+      {
+       "atM": 9.32,
+       "widthM": 1.05,
+       "centre": 0.77
+      },
+      {
+       "atM": 6.1,
+       "widthM": 1.18,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a bell-shaped brick gable with an arched attic light where the type draws a box dormer",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012161684",
+   "address": "Ruyschstraat 331",
+   "builtYear": 1900,
+   "widthM": 5.47,
+   "eavesM": 15.5,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#675154",
+    "wallRaw": "#5c4e4d",
+    "skyline": {
+     "eavesM": 15.2,
+     "eavesRow": 211,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 3.3,
+      "topWidthM": 0.17,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "left",
+    "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 13.55 m (1.95 m wide), 9.8 m (1.57 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.55,
+       "widthM": 1.95,
+       "centre": 0.34
+      },
+      {
+       "atM": 12.43,
+       "widthM": 1.05,
+       "centre": 0.74
+      },
+      {
+       "atM": 9.8,
+       "widthM": 1.57,
+       "centre": 0.38
+      },
+      {
+       "atM": 9.43,
+       "widthM": 1.18,
+       "centre": 0.4
+      },
+      {
+       "atM": 6.35,
+       "widthM": 1.18,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "placed",
+   "type": "oosterpark-1900-balcony-camber-tall",
+   "score": 1,
+   "placement": {
+    "type": "oosterpark-1900-balcony-camber-tall",
+    "measuredPalette": {
+     "brick": "#675154",
+     "evidence": "strip 2020-04-29 span 661-880: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#4a4645"
+    },
+    "ground": {
+     "doorBay": 2
+    }
+   },
+   "notes": [
+    "crown box-dormer (type default)",
+    "palette pinned: Ruyschstraat 331: the wall refit the batch measured on the first install (review wall check: photo vs model through the city tint), kept as a pin so the replacement run reproduces the sheet the verdict read",
+    "front pinned: Ruyschstraat 331: ground storey in the strip: two windows and the street door on the right (verdict dapper-oosterpark-strip-verdict-20261110)"
+   ],
+   "likeness": {
+    "pandId": "0363100012161684",
+    "ncc": 0.24,
+    "nccRaw": 0.24,
+    "shiftM": [
+     0.05,
+     -0.05
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing  mean 0.41 vs photo 0.31"
+    ],
+    "wall": {
+     "photo": "#78605b",
+     "model": "#625d5c",
+     "dL": -0.041
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.41
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.66
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012155674",
+   "address": "Ruyschstraat 339",
+   "builtYear": 1900,
+   "widthM": 5.47,
+   "eavesM": 15.62,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6a5b54",
+    "wallRaw": "#5b504d",
+    "skyline": {
+     "eavesM": 15.25,
+     "eavesRow": 209,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.65,
+      "topWidthM": 1.55,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.066,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.45,
+       "widthM": 2.23,
+       "centre": 0.69
+      },
+      {
+       "atM": 12.4,
+       "widthM": 1.05,
+       "centre": 0.42
+      },
+      {
+       "atM": 9.63,
+       "widthM": 1.1,
+       "centre": 0.76
+      },
+      {
+       "atM": 9.32,
+       "widthM": 1.18,
+       "centre": 0.43
+      },
+      {
+       "atM": 6.32,
+       "widthM": 1.05,
+       "centre": 0.41
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "placed",
+   "type": "oosterpark-1900-balcony-camber-tall",
+   "score": 1,
+   "placement": {
+    "type": "oosterpark-1900-balcony-camber-tall",
+    "measuredPalette": {
+     "brick": "#6a5b54",
+     "evidence": "strip 2020-04-29 span 880-1099: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    },
+    "paletteOverrides": {
+     "brick": "#514d4b"
+    },
+    "ground": {
+     "doorBay": 0
+    }
+   },
+   "notes": [
+    "crown box-dormer (type default)",
+    "palette pinned: Ruyschstraat 339: photo #5a504c, model #76645d too light; brick set through fit-wall-palette.ts so the rendered wall lands on the verdict target #655853",
+    "front pinned: Ruyschstraat 339: ground storey in the strip: two windows and the street door on the left (verdict dapper-oosterpark-strip-verdict-20261110)"
+   ],
+   "likeness": {
+    "pandId": "0363100012155674",
+    "ncc": 0.181,
+    "nccRaw": 0.181,
+    "shiftM": [
+     -0.35,
+     0
+    ],
+    "usable": 0.97,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.32 mean 0.42 vs photo 0.54"
+    ],
+    "wall": {
+     "photo": "#79635e",
+     "model": "#696461",
+     "dL": -0.025
+    },
+    "glazing": {
+     "photo": 0.54,
+     "model": 0.42
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.587
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012156748",
+   "address": "Ruyschstraat 347",
+   "builtYear": 1900,
+   "widthM": 5.5,
+   "eavesM": 15.94,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#73655e",
+    "wallRaw": "#5d5351",
+    "skyline": {
+     "eavesM": 15.72,
+     "eavesRow": 190,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 1.97,
+      "topWidthM": 1.48,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.079,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.35,
+       "widthM": 1.18,
+       "centre": 0.41
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1,
+       "centre": 0.45
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.113 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.24 mean 0.36 vs photo 0.26)",
+   "likeness": {
+    "pandId": "0363100012156748",
+    "ncc": 0.113,
+    "nccRaw": 0.113,
+    "shiftM": [
+     -0.4,
+     -0.4
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.24 mean 0.36 vs photo 0.26"
+    ],
+    "wall": {
+     "photo": "#71635a",
+     "model": "#897870",
+     "dL": 0.09
+    },
+    "glazing": {
+     "photo": 0.26,
+     "model": 0.36
+    },
+    "columns": {
+     "photo": 3,
+     "model": 3
+    },
+    "iou": 0.621
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012162898",
+   "address": "Ruyschstraat 355",
+   "builtYear": 1900,
+   "widthM": 5.45,
+   "eavesM": 15.98,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6d5c59",
+    "wallRaw": "#584c49",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.4,
+      "riseM": 1.7,
+      "topWidthM": 0.42,
+      "centre": 0.41
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.08,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.38,
+       "widthM": 1.15,
+       "centre": 0.12
+      },
+      {
+       "atM": 9.63,
+       "widthM": 1.1,
+       "centre": 0.77
+      },
+      {
+       "atM": 9.32,
+       "widthM": 1.1,
+       "centre": 0.43
+      },
+      {
+       "atM": 6.25,
+       "widthM": 0.93,
+       "centre": 0.4
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: edge NCC 0.139 under the 0.15 gate on the 2020 strip (dormer and balcony width read differently from the type)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012157939",
+   "address": "Ruyschstraat 363G",
+   "builtYear": 1900,
+   "widthM": 5.49,
+   "eavesM": 15.94,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#625552",
+    "wallRaw": "#4c4244",
+    "skyline": {
+     "eavesM": 15.18,
+     "eavesRow": 212,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.7,
+      "riseM": 2.9,
+      "topWidthM": 0.45,
+      "centre": 0.38
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.081,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "balcony slabs stacked at 9.7 m (1.52 m wide), 6.47 m (1.68 m wide), 6.17 m (1.68 m wide)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 9.7,
+       "widthM": 1.52,
+       "centre": 0.4
+      },
+      {
+       "atM": 9.4,
+       "widthM": 1.05,
+       "centre": 0.75
+      },
+      {
+       "atM": 6.47,
+       "widthM": 1.68,
+       "centre": 0.42
+      },
+      {
+       "atM": 6.17,
+       "widthM": 1.68,
+       "centre": 0.42
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: fails the footprint-vs-3DBAG gate and has a distinct ground floor; held rather than loosening the gate",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012163888",
+   "address": "Ruyschstraat 371",
+   "builtYear": 1905,
+   "widthM": 5.47,
+   "eavesM": 15.94,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6e6363",
+    "wallRaw": "#5f5354",
+    "skyline": {
+     "eavesM": 14.75,
+     "eavesRow": 229,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.35,
+      "topWidthM": 1.55,
+      "centre": 0.45
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "curtain",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.068,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.72,
+       "widthM": 1.07,
+       "centre": 0.83
+      },
+      {
+       "atM": 6.05,
+       "widthM": 1.02,
+       "centre": 0.73
+      }
+     ]
+    },
+    "voidShare": 0.01,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: a curved brick gable with a round-headed attic light where the type draws a box dormer",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012159831",
+   "address": "Ruyschstraat 379",
+   "builtYear": 1900,
+   "widthM": 5.51,
+   "eavesM": 16,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f6053",
+    "wallRaw": "#5f5450",
+    "skyline": {
+     "eavesM": 14.93,
+     "eavesRow": 222,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.55,
+      "topWidthM": 0.97,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.076,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 13.2,
+       "widthM": 1.18,
+       "centre": 0.45
+      },
+      {
+       "atM": 12.15,
+       "widthM": 0.8,
+       "centre": 0.76
+      },
+      {
+       "atM": 9.6,
+       "widthM": 1.75,
+       "centre": 0.43
+      },
+      {
+       "atM": 9.22,
+       "widthM": 1.1,
+       "centre": 0.44
+      },
+      {
+       "atM": 6.38,
+       "widthM": 1.18,
+       "centre": 0.13
+      },
+      {
+       "atM": 5.92,
+       "widthM": 0.9,
+       "centre": 0.49
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": {
+    "pandId": "0363100012159831",
+    "ncc": 0.213,
+    "nccRaw": 0.213,
+    "shiftM": [
+     -0.35,
+     -0.15
+    ],
+    "usable": 0.98,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "wall hue 15 deg",
+     "glazing storey band off by 0.15",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#7e655e",
+     "model": "#877565",
+     "dL": 0.031
+    },
+    "glazing": {
+     "photo": 0.43,
+     "model": 0.37
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.722
+   },
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012236020",
+   "address": "Ruyschstraat 389",
+   "builtYear": 1900,
+   "widthM": 5.89,
+   "eavesM": 15.71,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#534643",
+    "wallRaw": "#615651",
+    "skyline": {
+     "eavesM": 14.9,
+     "eavesRow": 223,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.27,
+      "riseM": 1.6,
+      "topWidthM": 0.35,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 4,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": null,
+    "accentShare": 0.049,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 12.65,
+       "widthM": 0.8,
+       "centre": 0.59
+      },
+      {
+       "atM": 12.13,
+       "widthM": 0.93,
+       "centre": 0.71
+      },
+      {
+       "atM": 9.5,
+       "widthM": 0.95,
+       "centre": 0.12
+      },
+      {
+       "atM": 6.42,
+       "widthM": 1.3,
+       "centre": 0.71
+      },
+      {
+       "atM": 6.13,
+       "widthM": 1.02,
+       "centre": 0.35
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0
+   },
+   "status": "held",
+   "stage": "likeness",
+   "reason": "edge NCC 0.121 < 0.15 (photo vs model body; likeness.ts FAIL: glazing storey band off by 0.21; columns 3 vs photo 4)",
+   "likeness": {
+    "pandId": "0363100012236020",
+    "ncc": 0.121,
+    "nccRaw": 0.121,
+    "shiftM": [
+     -0.4,
+     0.2
+    ],
+    "usable": 0.96,
+    "abstain": null,
+    "verdict": "FAIL",
+    "reasons": [
+     "glazing storey band off by 0.21",
+     "columns 3 vs photo 4"
+    ],
+    "wall": {
+     "photo": "#5b4e49",
+     "model": "#6d5c58",
+     "dL": 0.065
+    },
+    "glazing": {
+     "photo": 0.31,
+     "model": 0.34
+    },
+    "columns": {
+     "photo": 4,
+     "model": 3
+    },
+    "iou": 0.452
+   },
+   "challengers": {}
+  }
+ ]
+}

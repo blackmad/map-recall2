@@ -1,0 +1,327 @@
+{
+ "street": "Pieter Vlamingstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:39:11.819Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012130961",
+   "addresses": [
+    "Pieter Vlamingstraat 248",
+    "Pieter Vlamingstraat 250",
+    "Pieter Vlamingstraat 252",
+    "Pieter Vlamingstraat 254",
+    "Pieter Vlamingstraat 256",
+    "Pieter Vlamingstraat 258",
+    "Pieter Vlamingstraat 260",
+    "Pieter Vlamingstraat 262",
+    "Pieter Vlamingstraat 264",
+    "Pieter Vlamingstraat 266",
+    "Pieter Vlamingstraat 268",
+    "Pieter Vlamingstraat 270",
+    "Pieter Vlamingstraat 272",
+    "Pieter Vlamingstraat 274",
+    "Pieter Vlamingstraat 276",
+    "Pieter Vlamingstraat 278",
+    "Pieter Vlamingstraat 280",
+    "Pieter Vlamingstraat 282"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 248",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000776675"
+    },
+    {
+     "address": "Pieter Vlamingstraat 258",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000776681"
+    },
+    {
+     "address": "Pieter Vlamingstraat 270",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000776687"
+    },
+    {
+     "address": "Pieter Vlamingstraat 278",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000776691"
+    },
+    {
+     "address": "Pieter Vlamingstraat 280",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000776692"
+    },
+    {
+     "address": "Pieter Vlamingstraat 282",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000776693"
+    },
+    {
+     "address": "Pieter Vlamingstraat 276",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000776690"
+    },
+    {
+     "address": "Pieter Vlamingstraat 250",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000776676"
+    },
+    {
+     "address": "Pieter Vlamingstraat 252",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000776677"
+    },
+    {
+     "address": "Pieter Vlamingstraat 254",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000776678"
+    },
+    {
+     "address": "Pieter Vlamingstraat 256",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010000776679"
+    },
+    {
+     "address": "Pieter Vlamingstraat 260",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000776682"
+    },
+    {
+     "address": "Pieter Vlamingstraat 262",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000776683"
+    },
+    {
+     "address": "Pieter Vlamingstraat 264",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000776684"
+    },
+    {
+     "address": "Pieter Vlamingstraat 266",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000776685"
+    },
+    {
+     "address": "Pieter Vlamingstraat 268",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000776686"
+    },
+    {
+     "address": "Pieter Vlamingstraat 272",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000776688"
+    },
+    {
+     "address": "Pieter Vlamingstraat 274",
+     "use": "woonfunctie",
+     "areaM2": 67,
+     "bagId": "0363010000776689"
+    }
+   ],
+   "units": 18,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066094",
+   "addresses": [
+    "Pieter Vlamingstraat 246"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 246",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000776674"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012089063",
+   "addresses": [
+    "Pieter Vlamingstraat 226",
+    "Pieter Vlamingstraat 228",
+    "Pieter Vlamingstraat 230",
+    "Pieter Vlamingstraat 232",
+    "Pieter Vlamingstraat 234",
+    "Pieter Vlamingstraat 236",
+    "Pieter Vlamingstraat 238",
+    "Pieter Vlamingstraat 240",
+    "Pieter Vlamingstraat 242",
+    "Pieter Vlamingstraat 244"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 226",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000776664"
+    },
+    {
+     "address": "Pieter Vlamingstraat 228",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000776665"
+    },
+    {
+     "address": "Pieter Vlamingstraat 230",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000776666"
+    },
+    {
+     "address": "Pieter Vlamingstraat 232",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000776667"
+    },
+    {
+     "address": "Pieter Vlamingstraat 234",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000776668"
+    },
+    {
+     "address": "Pieter Vlamingstraat 236",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000776669"
+    },
+    {
+     "address": "Pieter Vlamingstraat 238",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000776670"
+    },
+    {
+     "address": "Pieter Vlamingstraat 240",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000776671"
+    },
+    {
+     "address": "Pieter Vlamingstraat 242",
+     "use": "woonfunctie",
+     "areaM2": 49,
+     "bagId": "0363010000776672"
+    },
+    {
+     "address": "Pieter Vlamingstraat 244",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000776673"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012066596",
+   "addresses": [
+    "Pieter Vlamingstraat 224"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 224",
+     "use": "industriefunctie",
+     "areaM2": 71,
+     "bagId": "0363010000776663"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012128991",
+   "addresses": [
+    "Pieter Vlamingstraat 206",
+    "Pieter Vlamingstraat 208",
+    "Pieter Vlamingstraat 210",
+    "Pieter Vlamingstraat 212",
+    "Pieter Vlamingstraat 214",
+    "Pieter Vlamingstraat 216",
+    "Pieter Vlamingstraat 218",
+    "Pieter Vlamingstraat 220",
+    "Pieter Vlamingstraat 222"
+   ],
+   "groundUnits": [
+    {
+     "address": "Pieter Vlamingstraat 206",
+     "use": "industriefunctie",
+     "areaM2": 100,
+     "bagId": "0363010000776654"
+    },
+    {
+     "address": "Pieter Vlamingstraat 208",
+     "use": "woonfunctie",
+     "areaM2": 84,
+     "bagId": "0363010000776655"
+    },
+    {
+     "address": "Pieter Vlamingstraat 210",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000776656"
+    },
+    {
+     "address": "Pieter Vlamingstraat 212",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000776657"
+    },
+    {
+     "address": "Pieter Vlamingstraat 214",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000776658"
+    },
+    {
+     "address": "Pieter Vlamingstraat 216",
+     "use": "woonfunctie",
+     "areaM2": 88,
+     "bagId": "0363010000776659"
+    },
+    {
+     "address": "Pieter Vlamingstraat 218",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000776660"
+    },
+    {
+     "address": "Pieter Vlamingstraat 220",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000776661"
+    },
+    {
+     "address": "Pieter Vlamingstraat 222",
+     "use": "woonfunctie",
+     "areaM2": 48,
+     "bagId": "0363010000776662"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,168 @@
+{
+ "street": "Jodenbreestraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:18:27.468Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012165556",
+   "addresses": [
+    "Jodenbreestraat 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jodenbreestraat 24-H",
+     "use": "winkelfunctie",
+     "areaM2": 175,
+     "bagId": "0363010000691475"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741066393,
+     "lngLat": [
+      4.9018933,
+      52.3691111
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "24-H",
+      "addr:postcode": "1011NK",
+      "addr:street": "Jodenbreestraat",
+      "books": "libertarian;anarchism",
+      "check_date": "2024-02-16",
+      "contact:email": "info@sjakoo.nl",
+      "contact:phone": "+31 20 625 89 79",
+      "contact:website": "https://sjakoo.nl/",
+      "name": "Fort van Sjakoo",
+      "opening_hours": "Mo-Sa 11:00-18:00",
+      "ref:vatin": "NL008696044B01",
+      "shop": "books",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "wheelchair": "no"
+     },
+     "fetchedAt": "2026-11-10T08:18:27.468Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182905",
+   "addresses": [
+    "Jodenbreestraat 20",
+    "Jodenbreestraat 22A",
+    "Jodenbreestraat 22B",
+    "Jodenbreestraat 22C",
+    "Jodenbreestraat 22D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jodenbreestraat 20",
+     "use": "winkelfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000691472"
+    },
+    {
+     "address": "Jodenbreestraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 622,
+     "bagId": "0363010000691474"
+    },
+    {
+     "address": "Jodenbreestraat 22B",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000990204"
+    },
+    {
+     "address": "Jodenbreestraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000990205"
+    },
+    {
+     "address": "Jodenbreestraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 140,
+     "bagId": "0363010000990206"
+    }
+   ],
+   "units": 5,
+   "osm": [
+    {
+     "type": "node",
+     "id": 5189135461,
+     "lngLat": [
+      4.9016775,
+      52.3691822
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "20",
+      "addr:postcode": "1011NK",
+      "addr:street": "Jodenbreestraat",
+      "brand": "Simon Lévelt",
+      "brand:wikidata": "Q2220070",
+      "check_date": "2025-02-12",
+      "check_date:opening_hours": "2021-08-17",
+      "name": "Simon Lévelt",
+      "opening_hours": "Tu-Fr 10:00-18:00; Sa 10:00-17:30; Su 13:00-17:00; Mo 11:00-18:00",
+      "shop": "tea"
+     },
+     "fetchedAt": "2026-11-10T08:18:27.468Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182904",
+   "addresses": [
+    "Jodenbreestraat 16A",
+    "Jodenbreestraat 16B",
+    "Jodenbreestraat 16C",
+    "Jodenbreestraat 16D",
+    "Jodenbreestraat 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jodenbreestraat 16A",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001005675"
+    },
+    {
+     "address": "Jodenbreestraat 16B",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001005676"
+    },
+    {
+     "address": "Jodenbreestraat 16C",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010001005677"
+    },
+    {
+     "address": "Jodenbreestraat 16D",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010001005678"
+    },
+    {
+     "address": "Jodenbreestraat 18",
+     "use": "winkelfunctie",
+     "areaM2": 76,
+     "bagId": "0363010001005679"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  }
+ ]
+}

@@ -1,0 +1,212 @@
+{
+ "street": "Rapenburg",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:18:01.943Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012182731",
+   "addresses": [
+    "Rapenburg 16",
+    "Rapenburg 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 18",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000788029"
+    }
+   ],
+   "units": 4,
+   "osm": [
+    {
+     "type": "node",
+     "id": 2741065816,
+     "lngLat": [
+      4.9076664,
+      52.37171
+     ],
+     "tags": {
+      "addr:city": "Amsterdam",
+      "addr:housenumber": "18",
+      "addr:postcode": "1011TX",
+      "addr:street": "Rapenburg",
+      "alt_name": "Hiding in Plain Sight",
+      "amenity": "bar",
+      "description": "Cocktail bar. HPS stands for \"Hiding in Plain Sight.\"",
+      "email": "info@hpsamsterdam.com",
+      "name": "HPS",
+      "opening_hours": "Mo-Th 18:00-01:00, Fr-Sa 18:00-03:00, Su 18:00-01:00",
+      "payment:cash": "yes",
+      "phone": "+31 6 25293620",
+      "smoking": "outside",
+      "source": "BAG",
+      "source:date": "2014-03-24",
+      "website": "https://hpsamsterdam.com",
+      "wheelchair": "limited"
+     },
+     "fetchedAt": "2026-11-10T08:18:01.943Z",
+     "match": "inside",
+     "distanceM": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012182732",
+   "addresses": [
+    "Rapenburg 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 14-H",
+     "use": "kantoorfunctie",
+     "areaM2": 64,
+     "bagId": "0363010000788017"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182740",
+   "addresses": [
+    "Rapenburg 8",
+    "Rapenburg 10",
+    "Rapenburg 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 8-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000788005"
+    },
+    {
+     "address": "Rapenburg 10-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 1,
+     "bagId": "0363010000788009"
+    },
+    {
+     "address": "Rapenburg 12-H",
+     "use": "kantoorfunctie",
+     "areaM2": 318,
+     "bagId": "0363010000788013"
+    }
+   ],
+   "units": 12,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182662",
+   "addresses": [
+    "Rapenburg 6A",
+    "Rapenburg 6B",
+    "Rapenburg 6C",
+    "Rapenburg 6D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 6A",
+     "use": "woonfunctie",
+     "areaM2": 93,
+     "bagId": "0363010000787998"
+    },
+    {
+     "address": "Rapenburg 6B",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000787999"
+    },
+    {
+     "address": "Rapenburg 6C",
+     "use": "woonfunctie",
+     "areaM2": 80,
+     "bagId": "0363010000788000"
+    },
+    {
+     "address": "Rapenburg 6D",
+     "use": "woonfunctie",
+     "areaM2": 132,
+     "bagId": "0363010000788001"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012182660",
+   "addresses": [
+    "Rapenburg 2A",
+    "Rapenburg 2B",
+    "Rapenburg 2C",
+    "Rapenburg 2D",
+    "Rapenburg 2E",
+    "Rapenburg 4A",
+    "Rapenburg 4B",
+    "Rapenburg 4C",
+    "Rapenburg 4D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Rapenburg 2A",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000787986"
+    },
+    {
+     "address": "Rapenburg 2B",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000787987"
+    },
+    {
+     "address": "Rapenburg 2C",
+     "use": "woonfunctie",
+     "areaM2": 70,
+     "bagId": "0363010000787988"
+    },
+    {
+     "address": "Rapenburg 2D",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000787989"
+    },
+    {
+     "address": "Rapenburg 2E",
+     "use": "woonfunctie",
+     "areaM2": 86,
+     "bagId": "0363010000787990"
+    },
+    {
+     "address": "Rapenburg 4A",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000787991"
+    },
+    {
+     "address": "Rapenburg 4B",
+     "use": "woonfunctie",
+     "areaM2": 72,
+     "bagId": "0363010000787992"
+    },
+    {
+     "address": "Rapenburg 4C",
+     "use": "woonfunctie",
+     "areaM2": 71,
+     "bagId": "0363010000787993"
+    },
+    {
+     "address": "Rapenburg 4D",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000787994"
+    }
+   ],
+   "units": 9,
+   "osm": []
+  }
+ ]
+}

@@ -15,6 +15,28 @@ here. Their design notes stay in `BUILDING_*.md`, `FACADE_*.md`, `LOD.md`, and
 
 ---
 
+## Own-look buurten in the canal belt (P0, user 2026-11-10)
+
+The user: "we need to focus on buurts in the canal belt and just outside". Belt and inner-ring lanes run in parallel, and Opus reviews every sheet before merge.
+
+- **Measured yield.** Belt lanes gave 2–23 pands each, about 150 opus turns per lane. Row auto-place fits rows, not belt one-offs. Hand placement (`scripts/block-face/hand-place.ts`, from the Jordaan lane) does better, but Opus still sent about half the hand-placed pands back.
+- **Per-pand batch fit: closed.** It drafted 54 Rapenburg/Foelie pands; 1–2 % passed the gates and 0 looked right after two reader rounds. Kept as opt-in tooling (`pandFit.ts`).
+- **The kit decides belt likeness.** Shared parts, each owned by one lane; the others cherry-pick:
+  - flat roof behind a frieze cornice, white eared frames, street-level entrance under a bel-etage, pilastered doors (GG-Zuid);
+  - souterrain/bel-etage storey grid per pand (GG-Zuid storeyHeights + Jordaan grid pin);
+  - banded fronts, crest attic, neck-gable sides, balconettes (GG-West).
+- **Strip white balance before the likeness/foliage mask (Haarlemmer lane).** Cast strips read brick as foliage. This held Jordaan (Dec 2024/Jan 2025 green), Haarlemmerstraat and Vogelbuurt.
+- **Intake off live Overpass (GG-West lane).** 3–5 min per face is the belt's slowest step.
+- **Door sides.** Automatic door-side detection was wrong in four lanes. Pin door sides from the photo, and alternate mirrored pairs.
+- **Colour pins render about 1.14× lighter.** cityWallTint lifts brick, so land wall colours with `fitWallBrick` (`scripts/block-face/fit-wall-palette.ts`), not literal pins.
+- **Pending merges after their verdict fixes:**
+  - Burgwallen (23 pands, 19 install-with-fix);
+  - Jordaan (12 fix, 11 hold);
+  - Keizersgracht 608–616A;
+  - Herengracht 92–96 and Keizersgracht 254–258A;
+  - Haarlemmerdijk (4 fix, 1 hold);
+  - Sarphatistraat 167–207.
+
 ## Feedback 2026-11-09 follow-ups (session a1)
 
 - **World compile owed (a1):** elevation-v1 cells changed by feedback B (12 cells) are published but `world:compile` (cells + shells), covers and the ground-height tiles for -2_2, 7_-2, 1_0, -10_5 are not rerun yet; batch with the post-2020 pands (published into building-tiles/bag-tiles 2026-11-10 via `publish-bag-gaps.ts --supplement=scripts/data/bag-gaps/new-pands-supplement.geojson`, 130 tiles, 1,110 added; replace fallback heights when a newer 3DBAG/AHN6 lands) and buurt profiles (published 2026-11-10 in src/canalRecall/buurtProfiles/, three-buildings bundles rebuilt); then ride frames of the 18 profile spots and a What's New note.

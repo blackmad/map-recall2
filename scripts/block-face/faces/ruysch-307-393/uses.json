@@ -1,0 +1,535 @@
+{
+ "street": "Ruyschstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T08:19:47.354Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012155605",
+   "addresses": [
+    "Ruyschstraat 307",
+    "Ruyschstraat 309",
+    "Ruyschstraat 311",
+    "Ruyschstraat 313A",
+    "Ruyschstraat 313B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 309",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800976"
+    },
+    {
+     "address": "Ruyschstraat 311",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000800977"
+    },
+    {
+     "address": "Ruyschstraat 313A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000800978"
+    },
+    {
+     "address": "Ruyschstraat 307",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000800979"
+    },
+    {
+     "address": "Ruyschstraat 313B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001018075"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162696",
+   "addresses": [
+    "Ruyschstraat 315",
+    "Ruyschstraat 317",
+    "Ruyschstraat 319",
+    "Ruyschstraat 321"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 315",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000800980"
+    },
+    {
+     "address": "Ruyschstraat 317",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800981"
+    },
+    {
+     "address": "Ruyschstraat 319",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800982"
+    },
+    {
+     "address": "Ruyschstraat 321",
+     "use": "woonfunctie",
+     "areaM2": 59,
+     "bagId": "0363010000800983"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159606",
+   "addresses": [
+    "Ruyschstraat 323",
+    "Ruyschstraat 325",
+    "Ruyschstraat 327",
+    "Ruyschstraat 327A",
+    "Ruyschstraat 329"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 323",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800984"
+    },
+    {
+     "address": "Ruyschstraat 325",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800985"
+    },
+    {
+     "address": "Ruyschstraat 327",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800986"
+    },
+    {
+     "address": "Ruyschstraat 329",
+     "use": "woonfunctie",
+     "areaM2": 68,
+     "bagId": "0363010000800987"
+    },
+    {
+     "address": "Ruyschstraat 327A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001030744"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012161684",
+   "addresses": [
+    "Ruyschstraat 331",
+    "Ruyschstraat 333",
+    "Ruyschstraat 335",
+    "Ruyschstraat 337",
+    "Ruyschstraat 337A",
+    "Ruyschstraat 337B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 331",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000800993"
+    },
+    {
+     "address": "Ruyschstraat 333",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800994"
+    },
+    {
+     "address": "Ruyschstraat 335",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800995"
+    },
+    {
+     "address": "Ruyschstraat 337",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800996"
+    },
+    {
+     "address": "Ruyschstraat 337A",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010012078586"
+    },
+    {
+     "address": "Ruyschstraat 337B",
+     "use": "woonfunctie",
+     "areaM2": 43,
+     "bagId": "0363010012078587"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012155674",
+   "addresses": [
+    "Ruyschstraat 339",
+    "Ruyschstraat 341",
+    "Ruyschstraat 343",
+    "Ruyschstraat 343A",
+    "Ruyschstraat 345"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 339",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800997"
+    },
+    {
+     "address": "Ruyschstraat 341",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000800998"
+    },
+    {
+     "address": "Ruyschstraat 343",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000800999"
+    },
+    {
+     "address": "Ruyschstraat 345",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000801000"
+    },
+    {
+     "address": "Ruyschstraat 343A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001041792"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012156748",
+   "addresses": [
+    "Ruyschstraat 347",
+    "Ruyschstraat 349",
+    "Ruyschstraat 351",
+    "Ruyschstraat 353A",
+    "Ruyschstraat 353B"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 347",
+     "use": "woonfunctie",
+     "areaM2": 75,
+     "bagId": "0363010000801001"
+    },
+    {
+     "address": "Ruyschstraat 351",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801002"
+    },
+    {
+     "address": "Ruyschstraat 353A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000801003"
+    },
+    {
+     "address": "Ruyschstraat 349",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010001018077"
+    },
+    {
+     "address": "Ruyschstraat 353B",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001018078"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012162898",
+   "addresses": [
+    "Ruyschstraat 355",
+    "Ruyschstraat 357",
+    "Ruyschstraat 359A",
+    "Ruyschstraat 359B",
+    "Ruyschstraat 361"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 355",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000801004"
+    },
+    {
+     "address": "Ruyschstraat 357",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801005"
+    },
+    {
+     "address": "Ruyschstraat 361",
+     "use": "woonfunctie",
+     "areaM2": 73,
+     "bagId": "0363010000801007"
+    },
+    {
+     "address": "Ruyschstraat 359A",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010001027967"
+    },
+    {
+     "address": "Ruyschstraat 359B",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001027970"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012157939",
+   "addresses": [
+    "Ruyschstraat 363G",
+    "Ruyschstraat 363E",
+    "Ruyschstraat 363D",
+    "Ruyschstraat 363C",
+    "Ruyschstraat 363B",
+    "Ruyschstraat 363F",
+    "Ruyschstraat 363A",
+    "Ruyschstraat 363",
+    "Ruyschstraat 365",
+    "Ruyschstraat 367",
+    "Ruyschstraat 369"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 365",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801009"
+    },
+    {
+     "address": "Ruyschstraat 367",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801010"
+    },
+    {
+     "address": "Ruyschstraat 369",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801011"
+    },
+    {
+     "address": "Ruyschstraat 363G",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010012594161"
+    },
+    {
+     "address": "Ruyschstraat 363E",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010012594159"
+    },
+    {
+     "address": "Ruyschstraat 363D",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010012594158"
+    },
+    {
+     "address": "Ruyschstraat 363C",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010012594157"
+    },
+    {
+     "address": "Ruyschstraat 363B",
+     "use": "woonfunctie",
+     "areaM2": 64,
+     "bagId": "0363010012594156"
+    },
+    {
+     "address": "Ruyschstraat 363F",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010012594160"
+    },
+    {
+     "address": "Ruyschstraat 363A",
+     "use": "woonfunctie",
+     "areaM2": 145,
+     "bagId": "0363010012594155"
+    },
+    {
+     "address": "Ruyschstraat 363",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010000801008"
+    }
+   ],
+   "units": 11,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012163888",
+   "addresses": [
+    "Ruyschstraat 371",
+    "Ruyschstraat 373",
+    "Ruyschstraat 375",
+    "Ruyschstraat 375A",
+    "Ruyschstraat 377"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 371",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801012"
+    },
+    {
+     "address": "Ruyschstraat 373",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801013"
+    },
+    {
+     "address": "Ruyschstraat 375",
+     "use": "woonfunctie",
+     "areaM2": 58,
+     "bagId": "0363010000801014"
+    },
+    {
+     "address": "Ruyschstraat 377",
+     "use": "woonfunctie",
+     "areaM2": 66,
+     "bagId": "0363010000801015"
+    },
+    {
+     "address": "Ruyschstraat 375A",
+     "use": "woonfunctie",
+     "areaM2": 83,
+     "bagId": "0363010001036332"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012159831",
+   "addresses": [
+    "Ruyschstraat 379",
+    "Ruyschstraat 381",
+    "Ruyschstraat 383",
+    "Ruyschstraat 385",
+    "Ruyschstraat 385A",
+    "Ruyschstraat 387"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 379",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000801016"
+    },
+    {
+     "address": "Ruyschstraat 381",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000801017"
+    },
+    {
+     "address": "Ruyschstraat 383",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000801018"
+    },
+    {
+     "address": "Ruyschstraat 385",
+     "use": "woonfunctie",
+     "areaM2": 62,
+     "bagId": "0363010000801019"
+    },
+    {
+     "address": "Ruyschstraat 387",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010000801020"
+    },
+    {
+     "address": "Ruyschstraat 385A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001041793"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012236020",
+   "addresses": [
+    "Ruyschstraat 389",
+    "Ruyschstraat 391",
+    "Ruyschstraat 391A",
+    "Ruyschstraat 393"
+   ],
+   "groundUnits": [
+    {
+     "address": "Ruyschstraat 389",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000801021"
+    },
+    {
+     "address": "Ruyschstraat 391",
+     "use": "woonfunctie",
+     "areaM2": 65,
+     "bagId": "0363010000801022"
+    },
+    {
+     "address": "Ruyschstraat 393",
+     "use": "woonfunctie",
+     "areaM2": 76,
+     "bagId": "0363010000801023"
+    },
+    {
+     "address": "Ruyschstraat 391A",
+     "use": "woonfunctie",
+     "areaM2": 60,
+     "bagId": "0363010001041794"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

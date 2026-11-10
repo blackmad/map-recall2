@@ -1,0 +1,665 @@
+{
+ "street": "Henri Polaklaan",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T07:08:26.417Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012181401",
+   "addresses": [
+    "Henri Polaklaan 32"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 32-H",
+     "use": "woonfunctie",
+     "areaM2": 165,
+     "bagId": "0363010000958049"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181402",
+   "addresses": [
+    "Henri Polaklaan 30"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 30-H",
+     "use": "woonfunctie",
+     "areaM2": 160,
+     "bagId": "0363010011214917"
+    }
+   ],
+   "units": 5,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181403",
+   "addresses": [
+    "Henri Polaklaan 28"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 28-H",
+     "use": "woonfunctie",
+     "areaM2": 150,
+     "bagId": "0363010000663264"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181404",
+   "addresses": [
+    "Henri Polaklaan 26"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 26-H",
+     "use": "woonfunctie",
+     "areaM2": 139,
+     "bagId": "0363010000663259"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181327",
+   "addresses": [
+    "Henri Polaklaan 24"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 24-H",
+     "use": "woonfunctie",
+     "areaM2": 149,
+     "bagId": "0363010000663247"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181398",
+   "addresses": [
+    "Henri Polaklaan 22"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 22-H",
+     "use": "woonfunctie",
+     "areaM2": 92,
+     "bagId": "0363010000663244"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181399",
+   "addresses": [
+    "Henri Polaklaan 20"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 20-H",
+     "use": "woonfunctie",
+     "areaM2": 101,
+     "bagId": "0363010000663241"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181400",
+   "addresses": [
+    "Henri Polaklaan 18"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 18-H",
+     "use": "woonfunctie",
+     "areaM2": 97,
+     "bagId": "0363010000663235"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181326",
+   "addresses": [
+    "Henri Polaklaan 16"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 16-H",
+     "use": "woonfunctie",
+     "areaM2": 99,
+     "bagId": "0363010003714314"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181325",
+   "addresses": [
+    "Henri Polaklaan 14"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 14",
+     "use": "woonfunctie",
+     "areaM2": 82,
+     "bagId": "0363010000663230"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012170600",
+   "addresses": [
+    "Henri Polaklaan 6A",
+    "Henri Polaklaan 6B",
+    "Henri Polaklaan 6C",
+    "Henri Polaklaan 6D",
+    "Henri Polaklaan 6E",
+    "Henri Polaklaan 6F",
+    "Henri Polaklaan 6G",
+    "Henri Polaklaan 6H",
+    "Henri Polaklaan 6J",
+    "Henri Polaklaan 6K",
+    "Henri Polaklaan 6L",
+    "Henri Polaklaan 6M",
+    "Henri Polaklaan 6N",
+    "Henri Polaklaan 6P",
+    "Henri Polaklaan 6Q",
+    "Henri Polaklaan 6R",
+    "Henri Polaklaan 6S",
+    "Henri Polaklaan 6T",
+    "Henri Polaklaan 6U",
+    "Henri Polaklaan 6V",
+    "Henri Polaklaan 6W",
+    "Henri Polaklaan 6X",
+    "Henri Polaklaan 6Y",
+    "Henri Polaklaan 6Z",
+    "Henri Polaklaan 8A",
+    "Henri Polaklaan 8B",
+    "Henri Polaklaan 8C",
+    "Henri Polaklaan 8D",
+    "Henri Polaklaan 8E",
+    "Henri Polaklaan 8F",
+    "Henri Polaklaan 8G",
+    "Henri Polaklaan 8H",
+    "Henri Polaklaan 8J",
+    "Henri Polaklaan 8K",
+    "Henri Polaklaan 8L",
+    "Henri Polaklaan 8M",
+    "Henri Polaklaan 8N",
+    "Henri Polaklaan 8P",
+    "Henri Polaklaan 8Q",
+    "Henri Polaklaan 8R",
+    "Henri Polaklaan 10A",
+    "Henri Polaklaan 10B",
+    "Henri Polaklaan 10C",
+    "Henri Polaklaan 10D",
+    "Henri Polaklaan 10E",
+    "Henri Polaklaan 10F",
+    "Henri Polaklaan 10G",
+    "Henri Polaklaan 10H",
+    "Henri Polaklaan 10J",
+    "Henri Polaklaan 10K",
+    "Henri Polaklaan 10L",
+    "Henri Polaklaan 10M",
+    "Henri Polaklaan 10N",
+    "Henri Polaklaan 10P",
+    "Henri Polaklaan 10Q",
+    "Henri Polaklaan 10R",
+    "Henri Polaklaan 10S",
+    "Henri Polaklaan 10T",
+    "Henri Polaklaan 10U",
+    "Henri Polaklaan 10V",
+    "Henri Polaklaan 10W",
+    "Henri Polaklaan 12A",
+    "Henri Polaklaan 12B",
+    "Henri Polaklaan 12C",
+    "Henri Polaklaan 12D"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 6A",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000663142"
+    },
+    {
+     "address": "Henri Polaklaan 6B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000663143"
+    },
+    {
+     "address": "Henri Polaklaan 6C",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000663144"
+    },
+    {
+     "address": "Henri Polaklaan 6D",
+     "use": "woonfunctie",
+     "areaM2": 21,
+     "bagId": "0363010000663145"
+    },
+    {
+     "address": "Henri Polaklaan 6E",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000663146"
+    },
+    {
+     "address": "Henri Polaklaan 6F",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000663147"
+    },
+    {
+     "address": "Henri Polaklaan 6G",
+     "use": "woonfunctie",
+     "areaM2": 28,
+     "bagId": "0363010000663148"
+    },
+    {
+     "address": "Henri Polaklaan 6H",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010000663149"
+    },
+    {
+     "address": "Henri Polaklaan 6J",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000663150"
+    },
+    {
+     "address": "Henri Polaklaan 6K",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000663151"
+    },
+    {
+     "address": "Henri Polaklaan 6L",
+     "use": "woonfunctie",
+     "areaM2": 20,
+     "bagId": "0363010000663152"
+    },
+    {
+     "address": "Henri Polaklaan 6M",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000663153"
+    },
+    {
+     "address": "Henri Polaklaan 6N",
+     "use": "woonfunctie",
+     "areaM2": 21,
+     "bagId": "0363010000663154"
+    },
+    {
+     "address": "Henri Polaklaan 6P",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000663155"
+    },
+    {
+     "address": "Henri Polaklaan 6Q",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000663156"
+    },
+    {
+     "address": "Henri Polaklaan 6R",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000663157"
+    },
+    {
+     "address": "Henri Polaklaan 6S",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010000663158"
+    },
+    {
+     "address": "Henri Polaklaan 6T",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010000663159"
+    },
+    {
+     "address": "Henri Polaklaan 6U",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000663160"
+    },
+    {
+     "address": "Henri Polaklaan 6V",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000663161"
+    },
+    {
+     "address": "Henri Polaklaan 6W",
+     "use": "woonfunctie",
+     "areaM2": 26,
+     "bagId": "0363010000663162"
+    },
+    {
+     "address": "Henri Polaklaan 6X",
+     "use": "woonfunctie",
+     "areaM2": 21,
+     "bagId": "0363010000663163"
+    },
+    {
+     "address": "Henri Polaklaan 6Y",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000663164"
+    },
+    {
+     "address": "Henri Polaklaan 6Z",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000663165"
+    },
+    {
+     "address": "Henri Polaklaan 8A",
+     "use": "woonfunctie",
+     "areaM2": 39,
+     "bagId": "0363010000663170"
+    },
+    {
+     "address": "Henri Polaklaan 8B",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000663171"
+    },
+    {
+     "address": "Henri Polaklaan 8C",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000663172"
+    },
+    {
+     "address": "Henri Polaklaan 8D",
+     "use": "woonfunctie",
+     "areaM2": 33,
+     "bagId": "0363010000663173"
+    },
+    {
+     "address": "Henri Polaklaan 8E",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000663174"
+    },
+    {
+     "address": "Henri Polaklaan 8F",
+     "use": "woonfunctie",
+     "areaM2": 38,
+     "bagId": "0363010000663175"
+    },
+    {
+     "address": "Henri Polaklaan 8G",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000663176"
+    },
+    {
+     "address": "Henri Polaklaan 8H",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000663177"
+    },
+    {
+     "address": "Henri Polaklaan 8J",
+     "use": "woonfunctie",
+     "areaM2": 19,
+     "bagId": "0363010000663178"
+    },
+    {
+     "address": "Henri Polaklaan 8K",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000663179"
+    },
+    {
+     "address": "Henri Polaklaan 8L",
+     "use": "woonfunctie",
+     "areaM2": 31,
+     "bagId": "0363010000663180"
+    },
+    {
+     "address": "Henri Polaklaan 8M",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000663181"
+    },
+    {
+     "address": "Henri Polaklaan 8N",
+     "use": "woonfunctie",
+     "areaM2": 22,
+     "bagId": "0363010000663182"
+    },
+    {
+     "address": "Henri Polaklaan 8P",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000663183"
+    },
+    {
+     "address": "Henri Polaklaan 8Q",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010000663184"
+    },
+    {
+     "address": "Henri Polaklaan 8R",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010000663185"
+    },
+    {
+     "address": "Henri Polaklaan 10A",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000663189"
+    },
+    {
+     "address": "Henri Polaklaan 10B",
+     "use": "woonfunctie",
+     "areaM2": 29,
+     "bagId": "0363010000663190"
+    },
+    {
+     "address": "Henri Polaklaan 10C",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010000663191"
+    },
+    {
+     "address": "Henri Polaklaan 10D",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000663192"
+    },
+    {
+     "address": "Henri Polaklaan 10E",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000663193"
+    },
+    {
+     "address": "Henri Polaklaan 10F",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010000663194"
+    },
+    {
+     "address": "Henri Polaklaan 10G",
+     "use": "woonfunctie",
+     "areaM2": 16,
+     "bagId": "0363010000663195"
+    },
+    {
+     "address": "Henri Polaklaan 10H",
+     "use": "woonfunctie",
+     "areaM2": 16,
+     "bagId": "0363010000663196"
+    },
+    {
+     "address": "Henri Polaklaan 10J",
+     "use": "woonfunctie",
+     "areaM2": 16,
+     "bagId": "0363010000663197"
+    },
+    {
+     "address": "Henri Polaklaan 10K",
+     "use": "woonfunctie",
+     "areaM2": 34,
+     "bagId": "0363010000663198"
+    },
+    {
+     "address": "Henri Polaklaan 10L",
+     "use": "woonfunctie",
+     "areaM2": 23,
+     "bagId": "0363010000663199"
+    },
+    {
+     "address": "Henri Polaklaan 10M",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000663200"
+    },
+    {
+     "address": "Henri Polaklaan 10N",
+     "use": "woonfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000663201"
+    },
+    {
+     "address": "Henri Polaklaan 10P",
+     "use": "woonfunctie",
+     "areaM2": 30,
+     "bagId": "0363010000663202"
+    },
+    {
+     "address": "Henri Polaklaan 10Q",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000663203"
+    },
+    {
+     "address": "Henri Polaklaan 10R",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000663204"
+    },
+    {
+     "address": "Henri Polaklaan 10S",
+     "use": "woonfunctie",
+     "areaM2": 25,
+     "bagId": "0363010000663205"
+    },
+    {
+     "address": "Henri Polaklaan 10T",
+     "use": "woonfunctie",
+     "areaM2": 27,
+     "bagId": "0363010000663206"
+    },
+    {
+     "address": "Henri Polaklaan 10U",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000663207"
+    },
+    {
+     "address": "Henri Polaklaan 10V",
+     "use": "woonfunctie",
+     "areaM2": 24,
+     "bagId": "0363010000663208"
+    },
+    {
+     "address": "Henri Polaklaan 10W",
+     "use": "woonfunctie",
+     "areaM2": 40,
+     "bagId": "0363010000663209"
+    },
+    {
+     "address": "Henri Polaklaan 12A",
+     "use": "industriefunctie",
+     "areaM2": 110,
+     "bagId": "0363010000663216"
+    },
+    {
+     "address": "Henri Polaklaan 12B",
+     "use": "onderwijsfunctie",
+     "areaM2": 301,
+     "bagId": "0363010000663217"
+    },
+    {
+     "address": "Henri Polaklaan 12C",
+     "use": "bijeenkomstfunctie",
+     "areaM2": 171,
+     "bagId": "0363010000663218"
+    },
+    {
+     "address": "Henri Polaklaan 12D",
+     "use": "kantoorfunctie",
+     "areaM2": 37,
+     "bagId": "0363010000663219"
+    }
+   ],
+   "units": 65,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181449",
+   "addresses": [
+    "Henri Polaklaan 4"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 4",
+     "use": "woonfunctie",
+     "areaM2": 202,
+     "bagId": "0363010000663138"
+    }
+   ],
+   "units": 1,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012181450",
+   "addresses": [
+    "Henri Polaklaan 2"
+   ],
+   "groundUnits": [
+    {
+     "address": "Henri Polaklaan 2-H",
+     "use": "kantoorfunctie",
+     "areaM2": 109,
+     "bagId": "0363010000663133"
+    }
+   ],
+   "units": 2,
+   "osm": []
+  }
+ ]
+}

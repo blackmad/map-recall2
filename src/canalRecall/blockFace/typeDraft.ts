@@ -63,6 +63,9 @@ export interface PandMeasure {
   bandRunsM: [number, number][];
   /** 3DBAG roof shape of the pand ('slanted' | 'horizontal' | ...), when the facts had it. */
   roofType: string | null;
+  /** pand-fit only (measureFace `groundFirst`): the ground band's top read first, and the window-column alignment across storeys. */
+  groundTopM?: number | null;
+  alignment?: number | null;
 }
 
 export interface Stat { n: number; median: number; p25: number; p75: number; min: number; max: number }
@@ -183,6 +186,69 @@ export function storeyProfile(a: {mask: ArrayLike<number>; cols: number; rows: n
     floorM: [...floor.map(f => round(f)), round(tops[upper - 1])], sillM: real.map(r => round(r.sill)), headM: real.map(r => round(r.head)),
     windowShare: real.map((r, i) => round((r.head - r.sill) / heights[i])), headShare: real.map((r, i) => round((r.head - floor[i]) / heights[i])),
   };
+}
+
+/** Opening share per mask row (columns 5-95 %), NaN where under 40 % of the cells are usable. */
+function rowShares(a: {mask: ArrayLike<number>; cols: number; rows: number; isOpen: (v: number) => boolean}): number[] {
+  const c0 = Math.floor(a.cols * 0.05), c1 = a.cols - c0, out: number[] = [];
+  for (let j = 0; j < a.rows; j++) {
+    let o = 0, u = 0;
+    for (let i = c0; i < c1; i++) { const m = a.mask[j * a.cols + i]; if (m === 255) continue; u++; if (a.isOpen(m)) o++; }
+    out.push(u >= (c1 - c0) * 0.4 ? o / u : NaN);
+  }
+  return out;
+}
+
+/**
+ * The ground band read before the window rows (pand-fit, 2026-11-10): a shop pui, a door with its transom, or ground
+ * windows form the lowest run of opening rows that starts under `startUnderM` (1.6 m) over the strip foot. Its head is
+ * the ground band's top; the upper window rows are then read from above it (storeyProfile `fromM`), so a tall pui is no
+ * longer taken for a first-floor window row. Threshold as storeyProfile: midway between the 10th and 90th percentile of the
+ * row shares from 0.3 m to the eaves. null: no such run, or its head is outside 2.2..5.5 m.
+ */
+export function groundBandTop(a: {mask: ArrayLike<number>; cols: number; rows: number; cell: number; topM: number; eavesM: number; isOpen: (v: number) => boolean; startUnderM?: number; mergeM?: number}): number | null {
+  const prof = rowShares(a), vOf = (j: number) => a.topM - (j + 0.5) * a.cell, startUnder = a.startUnderM ?? 1.6, merge = a.mergeM ?? 0.3;
+  const vals = sorted(prof.filter((v, j) => !Number.isNaN(v) && vOf(j) >= 0.3 && vOf(j) <= a.eavesM - 0.5));
+  if (vals.length < 10 || q(vals, 0.9) - q(vals, 0.1) < 0.08) return null;
+  const thr = (q(vals, 0.1) + q(vals, 0.9)) / 2;
+  let sill = -1, head = -1, gapFrom = -1;
+  for (let j = a.rows - 1; j >= 0; j--) {
+    const v = vOf(j);
+    if (v < 0.3) continue;
+    const on = !Number.isNaN(prof[j]) && prof[j] > thr;
+    if (sill < 0) { if (on) { if (v - a.cell / 2 > startUnder) return null; sill = v; head = v; } continue; }
+    if (on) { head = v; gapFrom = -1; continue; }
+    if (gapFrom < 0) gapFrom = v;
+    if (v - gapFrom >= merge) break;
+  }
+  if (sill < 0) return null;
+  const top = round(head + a.cell / 2);
+  return top >= 2.2 && top <= 5.5 ? top : null;
+}
+
+/**
+ * Window-column alignment across the upper storeys: the opening share per mask column within each storey's window run,
+ * (its middle 60 %) correlated pairwise; the median Pearson r. A clean front's windows stack (r near 1); a stitch-doubled strip (two
+ * panoramas misregistered) or an irregular front the kit's identical bays cannot draw scores low. null under 2 runs.
+ */
+export function columnAlignment(a: {mask: ArrayLike<number>; cols: number; rows: number; cell: number; topM: number; isOpen: (v: number) => boolean}, runs: {sill: number; head: number}[]): number | null {
+  if (runs.length < 2) return null;
+  const rowOf = (v: number) => Math.round((a.topM - v) / a.cell - 0.5);
+  const profiles = runs.map(r => {
+    // the middle 60 % of the run: a frieze or a sill band merged into the run's head or foot does not count
+    const h = r.head - r.sill, j0 = Math.max(0, rowOf(r.head - 0.2 * h)), j1 = Math.min(a.rows - 1, rowOf(r.sill + 0.2 * h)), col: number[] = [];
+    for (let i = 0; i < a.cols; i++) { let o = 0, u = 0; for (let j = j0; j <= j1; j++) { const m = a.mask[j * a.cols + i]; if (m === 255) continue; u++; if (a.isOpen(m)) o++; } col.push(u ? o / u : 0); }
+    return col;
+  });
+  const pearson = (x: number[], y: number[]) => {
+    const mx = x.reduce((t, v) => t + v, 0) / x.length, my = y.reduce((t, v) => t + v, 0) / y.length;
+    let sxy = 0, sx = 0, sy = 0;
+    for (let i = 0; i < x.length; i++) { sxy += (x[i] - mx) * (y[i] - my); sx += (x[i] - mx) ** 2; sy += (y[i] - my) ** 2; }
+    return sx && sy ? sxy / Math.sqrt(sx * sy) : 0;
+  };
+  const rs: number[] = [];
+  for (let i = 0; i < profiles.length; i++) for (let k = i + 1; k < profiles.length; k++) rs.push(pearson(profiles[i], profiles[k]));
+  return round(q(sorted(rs), 0.5));
 }
 
 export class DraftRefused extends Error { constructor(public reasons: string[], public code: 'size' | 'faces' | 'wall' | 'other' = 'other') { super(`draft refused: ${reasons.join('; ')}`); } }
