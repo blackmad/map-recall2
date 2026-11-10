@@ -68,13 +68,13 @@ export class WorkerPool {
   dispose(): void { for (const w of this.workers) w?.terminate(); this.workers = []; }
 }
 
-/** The A/B flags the building worker reads from its own URL (buurtProfiles/data.ts, modernFacades.ts). */
+/** The A/B flags the building worker reads from its own URL (buurtProfiles/data.ts, modernFacades.ts). `look`, `toonFronts`, `roofFamily` and `treeCalm` (#161) are read by look/palette.ts and look/calmTones.ts at module load; without them in the URL a worker-built chunk ignored the flag (toon fronts and roof families measured 0.00 change, 2026-11-10). */
 export function withWorkerFlags(url: string, search: string = typeof location !== 'undefined' ? location.search : ''): string {
   if (!url) return url;
   let flags: string[] = [];
   try {
     const q = new URLSearchParams(search);
-    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
+    flags = ['buurtProfiles', 'modernFacades', 'flatRoofTone', 'flatRoofSurface', 'look', 'toonFronts', 'roofFamily', 'treeCalm'].flatMap(name => { const v = q.get(name); return v ? [`${name}=${encodeURIComponent(v)}`] : []; });
   } catch { /* no location */ }
   return flags.length ? `${url}${url.includes('?') ? '&' : '?'}${flags.join('&')}` : url;
 }
