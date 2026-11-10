@@ -33,7 +33,7 @@ test('a landmark point in the canal moves to the nearest quay; on land it stays'
   const { landAnchor } = await import('./freeRideWater.ts');
   assert.deepEqual(landAnchor({ x: 5, y: 40 }, canal), { x: 5, y: 40 });
   const moved = landAnchor({ x: 0, y: 24 }, canal)!;
-  assert.ok(moved && !canal(moved.x, moved.y) && moved.y >= 30 && moved.y < 40, JSON.stringify(moved));
+  assert.ok(moved && !canal(moved.x, moved.y) && moved.y >= 39 && moved.y < 50, JSON.stringify(moved)); // clear of the waterline by LAND_MARGIN_PX
   assert.equal(landAnchor({ x: 0, y: 0 }, () => true), null);
   assert.deepEqual(landAnchor({ x: 0, y: 0 }, null), { x: 0, y: 0 });
 });
@@ -51,4 +51,24 @@ test('a boat names its canal only from a tap on the water; a bike names a street
   assert.equal(freeRideWayTapAllowed(false, true), false, 'a quay tap does not name the canal beside it');
   assert.equal(freeRideWayTapAllowed(true, false), false, 'a water tap does not name the quay street');
   assert.equal(freeRideWayTapAllowed(false, false), true);
+});
+
+test('an anchor on the waterline settles inland by the margin; a bridge deck corner on the quay edge too', async () => {
+  const { landAnchor, LAND_MARGIN_PX } = await import('./freeRideWater.ts');
+  const edge = landAnchor({ x: 0, y: 31 }, canal)!;
+  assert.ok(edge.y - 30 >= LAND_MARGIN_PX, JSON.stringify(edge));
+  // Blauwbrug 2026-11-10: the nearest deck vertex sat on the polygon edge; the dot unprojected into the Amstel.
+  const onEdge = [[{ x: 0, y: -31 }, { x: 0, y: 0 }, { x: 0, y: 31 }]];
+  const anchor = bridgeMarkerAnchor(onEdge, crossing, { x: 0, y: 200 }, canal)!;
+  assert.ok(anchor.y - 30 >= LAND_MARGIN_PX, JSON.stringify(anchor));
+});
+
+test('on open water a marker answers only its plate itself: no slop, no stem', async () => {
+  const { markerAt } = await import('./freeRide.ts');
+  const placed = [{ key: 'm', anchorX: 400, anchorY: 300, box: { x: 360, y: 250, w: 80, h: 22 } }] as any;
+  assert.equal(markerAt(placed, 400, 290)?.key, 'm', 'the stem answers on land');
+  assert.equal(markerAt(placed, 400, 290, 0, false), null, 'not over water');
+  assert.equal(markerAt(placed, 444, 260)?.key, 'm', 'the plate slop answers on land');
+  assert.equal(markerAt(placed, 444, 260, 0, false), null, 'not over water');
+  assert.equal(markerAt(placed, 400, 260, 0, false)?.key, 'm', 'the plate itself always answers');
 });

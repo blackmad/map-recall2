@@ -45,9 +45,32 @@ export function deckPoints(
 }
 
 /**
- * Where a bridge marker stands: the deck point on land nearest the rider, or null when every deck point tests as
- * water (no marker then: a pin on open water is the thing being removed). Without a water test the crossing
- * itself is kept, as before.
+ * A marker's anchor dot must sit clearly on land, not on the waterline: the drawn dot is the ground point
+ * projected to the screen, and a tap or a re-projection a metre off (the engine's ground height at a quay,
+ * Blauwbrug 2026-11-10: a deck corner on the polygon edge unprojected 5 px into the Amstel) lands in the water.
+ * A point counts as land only when it and eight points `LAND_MARGIN_PX` around it are all off the water.
+ */
+export const LAND_MARGIN_PX = 3 * 3;
+
+/** `isWater` widened by `marginPx`: water within the margin counts as water. */
+export function withLandMargin(isWater: IsWater, marginPx = LAND_MARGIN_PX): IsWater {
+  return (x, y) => {
+    if (isWater(x, y)) return true;
+    for (let i = 0; i < 8; i++) {
+      const a = i / 8 * Math.PI * 2;
+      if (isWater(x + Math.cos(a) * marginPx, y + Math.sin(a) * marginPx)) return true;
+    }
+    return false;
+  };
+}
+
+/** How far (world px) a bridge marker may move from its deck point to land clear of the waterline. */
+export const DECK_SETTLE_PX = 12 * 3;
+
+/**
+ * Where a bridge marker stands: on land clear of the waterline (`LAND_MARGIN_PX`), at the deck point nearest the
+ * rider, settled inland from it when it sits on the quay edge; null when no deck point reaches land (no marker
+ * then: a pin on open water is the thing being removed). Without a water test the crossing itself is kept.
  */
 export function bridgeMarkerAnchor(
   lines: readonly (readonly WorldPoint[])[],
@@ -56,14 +79,16 @@ export function bridgeMarkerAnchor(
   isWater: IsWater | null,
 ): WorldPoint | null {
   if (!isWater) return { x: crossing.x, y: crossing.y };
-  if (!isWater(crossing.x, crossing.y)) return { x: crossing.x, y: crossing.y };
-  let best: WorldPoint | null = null, bestD = Infinity;
-  for (const p of deckPoints(lines, crossing, isWater)) {
-    if (isWater(p.x, p.y)) continue;
-    const d = Math.hypot(p.x - rider.x, p.y - rider.y);
-    if (d < bestD) { best = p; bestD = d; }
+  const solid = withLandMargin(isWater);
+  if (!solid(crossing.x, crossing.y)) return { x: crossing.x, y: crossing.y };
+  const deck = deckPoints(lines, crossing, isWater)
+    .filter(p => !isWater(p.x, p.y))
+    .sort((a, b) => Math.hypot(a.x - rider.x, a.y - rider.y) - Math.hypot(b.x - rider.x, b.y - rider.y));
+  for (const p of deck) {
+    const at = landAnchor(p, isWater, DECK_SETTLE_PX);
+    if (at) return at;
   }
-  return best;
+  return null;
 }
 
 /** How far (world px) a landmark marker may move off open water to its quay or building (Westertoren's point
@@ -72,16 +97,18 @@ export const LAND_SEARCH_PX = 40 * 3;
 const LAND_RING_STEP_PX = 3 * 3;
 
 /**
- * A landmark marker's anchor: its own point when that is on land, else the nearest land point within
- * `LAND_SEARCH_PX` (rings of 16 bearings), else null: no pin on open water.
+ * A landmark marker's anchor: its own point when that is on land clear of the waterline, else the nearest such
+ * point within `maxPx` (rings of 16 bearings), else null: no pin on open water.
  */
 export function landAnchor(point: WorldPoint, isWater: IsWater | null, maxPx = LAND_SEARCH_PX): WorldPoint | null {
-  if (!isWater || !isWater(point.x, point.y)) return { x: point.x, y: point.y };
+  if (!isWater) return { x: point.x, y: point.y };
+  const solid = withLandMargin(isWater);
+  if (!solid(point.x, point.y)) return { x: point.x, y: point.y };
   for (let r = LAND_RING_STEP_PX; r <= maxPx; r += LAND_RING_STEP_PX) {
     for (let i = 0; i < 16; i++) {
       const a = i / 16 * Math.PI * 2;
       const p = { x: point.x + Math.cos(a) * r, y: point.y + Math.sin(a) * r };
-      if (!isWater(p.x, p.y)) return p;
+      if (!solid(p.x, p.y)) return p;
     }
   }
   return null;

@@ -11,10 +11,12 @@ import { setHiddenSelect, useEngine } from './helpers';
 // `S2_GATE=1` asserts the lane's gate: no water tap opens a landmark/bridge/building card off a pill, and no
 // marker anchor stands on water.
 
-type Pose = { name: string; lngLat: [number, number] };
+// `phoneBikeLngLat`: on a phone the bike's portrait view from the Westerdok pose shows no water at all (0 water taps,
+// S2 gate 2026-11-09), so the phone bike rides the Brouwersgracht quay itself, where the canal runs beside it.
+type Pose = { name: string; lngLat: [number, number]; phoneBikeLngLat?: [number, number] };
 const POSES: Pose[] = [
   { name: 'westermarkt', lngLat: [4.8836, 52.3747] },
-  { name: 'brouwersgracht', lngLat: [4.8870, 52.3836] },
+  { name: 'brouwersgracht', lngLat: [4.8870, 52.3836], phoneBikeLngLat: [4.8862, 52.3815] },
   { name: 'blauwbrug', lngLat: [4.9010, 52.3669] },
 ];
 const TAPS = 30;
@@ -121,7 +123,16 @@ async function tapAndRead(page: Page, c: Candidate, phone: boolean): Promise<any
       const r = el.getBoundingClientRect();
       return r.width > 0 && px >= r.left && px <= r.right && py >= r.top && py <= r.bottom;
     });
-    return { onPill: onMarker || label, onMarker, onLabel: label };
+    // Which path would answer the tap (lane S2b): the collection token, a marker's plate or stem, or the runtime's
+    // open-water test that gates the building/landmark pick.
+    const token = g._freeRideCollection?.tokenScreen;
+    const onToken = !!token && Math.hypot(cx - token.x, cy - token.y) <= token.size / 2 + 10;
+    const hitMarker = g._freeRideMarkerAt?.(cx, cy);
+    const markerPart = !hitMarker ? null
+      : cx >= hitMarker.box.x - 6 && cx <= hitMarker.box.x + hitMarker.box.w + 6 && cy >= hitMarker.box.y - 6 && cy <= hitMarker.box.y + hitMarker.box.h + 6
+        ? 'plate' : 'stem';
+    const runtimeWater = g._freeRideTapOnWater?.(px, py) ?? null;
+    return { onPill: onMarker || label, onMarker, onLabel: label, onToken, markerHit: hitMarker?.key ?? null, markerPart, runtimeWater };
   }, c);
   if (phone) await page.touchscreen.tap(c.px, c.py); else await page.mouse.click(c.px, c.py);
   await page.waitForTimeout(120);
@@ -150,7 +161,8 @@ for (const mode of ['boat', 'car'] as const) {
     const rows: any[] = [];
     const summary: any[] = [];
     for (const pose of POSES) {
-      expect(await placeAt(page, pose.lngLat), `placed at ${pose.name}`).toBe(true);
+      const at = phone && mode === 'car' && pose.phoneBikeLngLat ? pose.phoneBikeLngLat : pose.lngLat;
+      expect(await placeAt(page, at), `placed at ${pose.name}`).toBe(true);
       await page.waitForTimeout(4000);
       const { water, land, markers } = await candidates(page);
       if (out) await page.screenshot({ path: join(out, `${info.project.name}-${mode === 'car' ? 'bike' : 'boat'}-${pose.name}.png`) });
@@ -164,6 +176,7 @@ for (const mode of ['boat', 'car'] as const) {
         pose: pose.name, device: info.project.name, mode: mode === 'car' ? 'bike' : 'boat',
         waterTaps: w.length, waterOffPillCards: off(w).length, waterOffPillPinCards: pinCards(w).length,
         waterKinds: off(w).map(r => `${r.opened.kind}:${r.opened.name}`),
+        waterPinPaths: pinCards(w).map(r => `${r.opened.name}<-${r.onToken ? 'token' : r.markerPart ? `marker-${r.markerPart}` : r.runtimeWater === false ? 'not-water-at-runtime' : 'other'}`),
         landTaps: l.length, landOffPillCards: off(l).length, landKinds: off(l).map(r => r.opened.kind),
         markers: markers.length, markersOnWater: markers.filter(m => m.anchorWater).map(m => m.name),
       };

@@ -178,13 +178,16 @@ export function layoutMarkers(
 /** The marker under a tap: its label plate, generous by a few pixels, and its
  *  stem down to the anchor dot, only a finger wide around the stem. The stem
  *  band used to be the plate's full width, a strip of open canal under every
- *  bridge pill that opened its card (lane S2, #314). Topmost (last drawn) wins. */
+ *  bridge pill that opened its card (lane S2, #314). Over open water a tap
+ *  takes the plate only (`slop` 0, `stem` false): the plate's slop and the
+ *  stem were most of the pin cards still opened from water (S2b, 2026-11-10).
+ *  Topmost (last drawn) wins. */
 export const MARKER_STEM_HALF_WIDTH = 8;
-export function markerAt(placed: readonly PlacedMarker[], x: number, y: number, slop = 6): PlacedMarker | null {
+export function markerAt(placed: readonly PlacedMarker[], x: number, y: number, slop = 6, stem = true): PlacedMarker | null {
   for (let i = placed.length - 1; i >= 0; i--) {
     const { box, anchorX, anchorY } = placed[i];
     const onPlate = x >= box.x - slop && x <= box.x + box.w + slop && y >= box.y - slop && y <= box.y + box.h + slop;
-    const onStem = Math.abs(x - anchorX) <= MARKER_STEM_HALF_WIDTH && y >= box.y + box.h && y <= anchorY + slop;
+    const onStem = stem && Math.abs(x - anchorX) <= MARKER_STEM_HALF_WIDTH && y >= box.y + box.h && y <= anchorY + slop;
     if (onPlate || onStem) return placed[i];
   }
   return null;

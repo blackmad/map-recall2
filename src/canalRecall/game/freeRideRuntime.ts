@@ -600,14 +600,14 @@ export class GameFreeRideRuntime {
    * Returns true when something opened.
    */
   _freeRideClick(x: number, y: number, clientX: number, clientY: number): boolean {
-    const token = this._freeRideCollection?.tokenScreen;
-    if (token && Math.hypot(x - token.x, y - token.y) <= token.size / 2 + 10) return this._openFreeRideLandmark(token.key);
-    const marker = this._freeRideMarkerAt(x, y);
-    if (marker) return this._openFreeRidePlace(marker.key);
-    // Open water answers only through a pill (lane S2, #314): no statue on the quay, no landmark, no street beside
-    // it. A boat's tap on its water names that canal (ruling 2026-11-09): the water's own card, from a deliberate tap
-    // on the water body only, through the one bottom card like any other.
+    // Open water answers only through a pill itself (lanes S2/S2b, #314): no plate slop, no stem, no statue on the
+    // quay, no landmark, no street beside it. A boat's tap on its water names that canal (ruling 2026-11-09): the
+    // water's own card, from a deliberate tap on the water body only, through the one bottom card like any other.
     const onWater = this._freeRideTapOnWater(clientX, clientY);
+    const token = this._freeRideCollection?.tokenScreen;
+    if (token && Math.hypot(x - token.x, y - token.y) <= token.size / 2 + (onWater ? 0 : 10)) return this._openFreeRideLandmark(token.key);
+    const marker = this.freeRide ? markerAt(this._freeRideMarkers || [], x, y, onWater ? 0 : 6, !onWater) : null;
+    if (marker) return this._openFreeRidePlace(marker.key);
     const before = this._landmarkNotice;
     if (!onWater) this._inspectBuildingAt(clientX, clientY);
     if (this._landmarkNotice && this._landmarkNotice !== before) {
