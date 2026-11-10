@@ -15,7 +15,7 @@ async function panel(file: string, cut?: number[]) {
   return img.resize(W, H, { fit: 'cover' }).png().toBuffer();
 }
 const panels = [await panel(pano), await panel(before, crop), await panel(after, crop)];
-const names = ['Panorama (data.amsterdam.nl)', 'Before (?industrialKit=0)', 'After (?industrialKit=1)'];
+const names = ['Panorama (data.amsterdam.nl)', 'Before (main today)', 'After (industrial kit)'];
 const titleBar = Buffer.from(`<svg width="${W * 3}" height="${HEAD}"><rect width="100%" height="100%" fill="#2b2e31"/><text x="16" y="38" font-family="Helvetica, Arial" font-size="28" font-weight="bold" fill="#ffffff">${title.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</text></svg>`);
 await sharp({ create: { width: W * 3, height: H + HEAD * 2, channels: 3, background: '#000' } })
   .composite([{ input: titleBar, left: 0, top: 0 }, ...panels.flatMap((p, i) => [{ input: label(names[i]), left: i * W, top: HEAD }, { input: p, left: i * W, top: HEAD * 2 }])])

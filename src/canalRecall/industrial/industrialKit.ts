@@ -40,9 +40,11 @@ export function industrialKitEnabled(): boolean {
 export const INDUSTRIAL_PALETTES: Record<'tank' | 'silo' | 'shed', readonly string[]> = {
   tank: ['#e2e4e0', '#d4d7d6', '#c6cbcd', '#e2e4e0', '#b9bec0'],
   silo: ['#a9a69e', '#b8b4aa', '#9d9a93'],
-  // Blue-grey trapezoidal sheet (Westpoort 1967 warehouse #30495d, Westpoort 2007 hall #445967), grey and white
-  // panels (Minervahaven 1978 #a3a4a0, Hornweg 1991 white), anthracite (Buiksloterham 1968 #5a676a).
-  shed: ['#34505f', '#3e5665', '#445967', '#a3a4a0', '#9fa3a3', '#c9cccb', '#d6d7d3', '#5a676a', '#6d7378', '#5f6f63'],
+  // Weighted by what the strip panoramas show: mostly pale grey and white sandwich panels (Minervahaven 1978
+  // #a3a4a0, Hornweg 1991 and Buiksloterham 1968 white/pale grey), some blue-grey trapezoidal sheet (Westpoort 1967
+  // warehouse #30495d, Westpoort 2007 hall #445967), one anthracite and one green. 7 of 10 light: the first strips
+  // drew 6 of 10 dark and read dour next to the photos (and the 2026-10-16 brighter-palette priority).
+  shed: ['#a3a4a0', '#b4b6b3', '#c9cccb', '#d6d7d3', '#dfe0dc', '#bfc3c2', '#aeb3b4', '#3e5665', '#4d6575', '#6d7378', '#6f7f72'],
 };
 /** Trim: the plinth (concrete), door leaves, dock shelters and glass. */
 export const INDUSTRIAL_TRIM = { office: '#e3e3de', plinth: '#8f8c85', door: '#c3c5c4', doorDark: '#5c6266', dock: '#26292b', glass: '#3a4650', personnel: '#7a2e26', rail: '#b8473a', ladder: '#4a4f52' } as const;
