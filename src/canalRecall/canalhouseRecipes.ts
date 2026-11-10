@@ -72,7 +72,7 @@ export function archPoints(x:number,w:number,ys:number,rise:number,inset:number,
 /** Strips of an arched dormer roof (`CanalhouseDormer.roofProfile: 'arch'`). */
 export const ARCH_SEGMENTS = 8;
 export interface CanalhouseDormer {
- wallSurface?:'wall'|'trim'|'stone';roofSurface?:'roof'|'trim'|'wall';
+ wallSurface?:'wall'|'trim'|'stone'|'roof';roofSurface?:'roof'|'trim'|'wall';
   /** Source-observed distance behind the main facade plane. Default preserves legacy placement. */
   setbackM?:number;
   /** Explicit source-visible opening in a native wall covering this dormer. */
@@ -85,7 +85,14 @@ export interface CanalhouseDormer {
    * behind, so the glass never passes the roof plane) and `sideM` wide each side of it; the frame, pane and bars fill the
    * rest. Absent = the whole front glazed, byte-identical.
    */
-  frontWall?:{apronM:number;sideM:number;headM?:number}; id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
+  frontWall?:{apronM:number;sideM:number;headM?:number};
+  /** Smooth painted colours (#rrggbb, drawn as measured, no texture) for the cheeks, back and front wall (`bodyColour`) and the flat roof (`capColour`): the zinc dormers of the Landlust slot blocks. Absent = the surface slots, byte-identical. */
+  bodyColour?:string;capColour?:string;
+  /** A half dormer against a party wall (Treslong: one dormer straddles two pands): the cheek on that side is left out, the frame member there is thickened to the wall so two halves read as one frame with one mullion, and the cap runs to the wall. Absent = a free-standing dormer, byte-identical. */
+  partyEdge?:'left'|'right';
+  /** A visible fascia board on the front edge of a flat cap (`fasciaColour`, #rrggbb, smooth measured), `fasciaHeightM` (0.05..0.3) deep: a dark cap otherwise merges into the roof behind it (Treslong party dormers). Absent = no board, byte-identical. */
+  fasciaColour?:string;fasciaHeightM?:number;
+  id: string; leftM: number; widthM: number; bottomM: number; heightM: number; depthM: number; roofRiseM: number; frontOverhangM?: number; trimWidthM?: number; verticalBars?: number[]; horizontalBars?: number[] }
 /** `accent` is a second masonry colour (banding, relieving arches); `shop` is the shopfront joinery/fascia paint. */
 export interface CanalhouseFacadeBlock { id: string; leftM: number; bottomM: number; widthM: number; heightM: number; depthM: number; surface?: 'wall' | 'trim' | 'stone' | 'accent' | 'shop' }
 export interface CanalhouseBalcony {
@@ -861,12 +868,14 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         if(!contains(localPoint((x0+x1)/2,-d.depthM/2-setback)))throw new Error('Dormer covers surveyed courtyard');
         for(const poly of polygons)for(const hole of poly.holes)if(hole.some(v=>inRing(v,footprint,true)))throw new Error('Dormer covers surveyed courtyard');
         const label=`dormer/${d.id}`,t=d.trimWidthM??.06,wall=.08,wallSurface=d.wallSurface??'wall',roofSurface=d.roofSurface??'roof';
-        if(!['wall','trim','stone'].includes(wallSurface)||!['roof','trim','wall'].includes(roofSurface))throw Error('Invalid dormer surface');
+        if(!['wall','trim','stone','roof'].includes(wallSurface)||!['roof','trim','wall'].includes(roofSurface))throw Error('Invalid dormer surface');
         positive(t);if(t*2>=Math.min(d.widthM,d.heightM))throw new Error('Dormer frame consumes its opening');
         const top=d.bottomM+d.heightM;
         // Thin side/back walls with a genuinely open front; no solid parent behind glazing.
-        box(x0,d.bottomM,wall,d.heightM,d.depthM,-d.depthM/2,wallSurface,`${label}/left-wall`);
-        box(x1-wall,d.bottomM,wall,d.heightM,d.depthM,-d.depthM/2,wallSurface,`${label}/right-wall`);
+        if(d.partyEdge!==undefined&&d.partyEdge!=='left'&&d.partyEdge!=='right')throw Error('Invalid dormer party edge');
+        const partyGap=d.partyEdge==='right'?Math.max(0,length-x1):d.partyEdge==='left'?Math.max(0,x0):0;
+        if(d.partyEdge!=='left')box(x0,d.bottomM,wall,d.heightM,d.depthM,-d.depthM/2,wallSurface,`${label}/left-wall`);
+        if(d.partyEdge!=='right')box(x1-wall,d.bottomM,wall,d.heightM,d.depthM,-d.depthM/2,wallSurface,`${label}/right-wall`);
         box(x0,d.bottomM,d.widthM,d.heightM,wall,-d.depthM+wall/2,wallSurface,`${label}/back-wall`);
         // `frontWall`: the window sits in a solid front (apron under it, posts beside it); absent, the opening is the whole front.
         let wx0=x0,wx1=x1,wy0=d.bottomM,wTop=top;
@@ -880,8 +889,8 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
           if(headM>EPS)box(x0+wall,wTop,d.widthM-2*wall,headM,wall,-wall/2,wallSurface,`${label}/front-head`);
         }
         const ww=wx1-wx0,wh=wTop-wy0;
-        box(wx0,wy0,t,wh,.04,.03,'trim',`${label}/frame-left`);
-        box(wx1-t,wy0,t,wh,.04,.03,'trim',`${label}/frame-right`);
+        if(d.partyEdge==='left')box(wx0-partyGap,wy0,t+partyGap,wh,.04,.03,'trim',`${label}/frame-left`);else box(wx0,wy0,t,wh,.04,.03,'trim',`${label}/frame-left`);
+        if(d.partyEdge==='right')box(wx1-t,wy0,t+partyGap,wh,.04,.03,'trim',`${label}/frame-right`);else box(wx1-t,wy0,t,wh,.04,.03,'trim',`${label}/frame-right`);
         box(wx0,wy0,ww,t,.04,.03,'trim',`${label}/frame-bottom`);
         box(wx0,wTop-t,ww,t,.04,.03,'trim',`${label}/frame-top`);
         box(wx0+t,wy0+t,ww-2*t,wh-2*t,.03,.065,'glass',`${label}/pane`);
@@ -921,10 +930,27 @@ export function compileCanalHouseRecipe(recipe: CanalHouseRecipe): CompiledCanal
         const lift=d.roofRiseM>0?0:.06;
         if(lift){
           const front=overhang+.03;
-          quad([x0,top+lift,front],[x1,top+lift,front],[x1,top+lift,-d.depthM],[x0,top+lift,-d.depthM]);
-          box(x0,top,d.widthM,lift-.005,d.depthM+front,(front-d.depthM)/2,roofSurface,`${label}/roof-slab`);
+          // A party-wall half runs its cap to the wall.
+          const cx0=d.partyEdge==='left'?x0-partyGap:x0,cx1=d.partyEdge==='right'?x1+partyGap:x1;
+          quad([cx0,top+lift,front],[cx1,top+lift,front],[cx1,top+lift,-d.depthM],[cx0,top+lift,-d.depthM]);
+          box(cx0,top,cx1-cx0,lift-.005,d.depthM+front,(front-d.depthM)/2,roofSurface,`${label}/roof-slab`);
+          if(d.fasciaColour!==undefined){
+            const fh=d.fasciaHeightM??.17;if(!/^#[\da-f]{6}$/i.test(d.fasciaColour)||!(fh>=.05&&fh<=.3))throw Error('Invalid dormer fascia');
+            // Proud of the slab's nose by 4 cm (past the audit's coplanar bands), hanging over the frame head.
+            const board=box(cx0,top+lift-fh,cx1-cx0,fh,.05,front+.015,'trim',`${label}/fascia`);
+            const mat=new T.MeshStandardMaterial({color:d.fasciaColour,roughness:1});mat.userData={tintSource:'measured'};board.material=mat;board.userData={...board.userData,surface:'stone'};
+          }
         }
         const roof=new T.BufferGeometry();roof.setAttribute('position',new T.Float32BufferAttribute(roofValues,3));roof.computeVertexNormals();add(roof,roofSurface,`${label}/roof`,facade);
+        // Painted-zinc colours: smooth measured materials on the walls (`bodyColour`) and the flat roof (`capColour`).
+        if(d.bodyColour!==undefined||d.capColour!==undefined){
+          for(const hex of [d.bodyColour,d.capColour])if(hex!==undefined&&!/^#[\da-f]{6}$/i.test(hex))throw Error('Invalid dormer colour');
+          const paint=(m:T.Mesh,hex:string)=>{const mat=new T.MeshStandardMaterial({color:hex,roughness:1});mat.userData={tintSource:'measured'};m.material=mat;m.userData={...m.userData,surface:'stone'};};
+          for(const child of facade.children.slice(firstChild))if(child instanceof T.Mesh){
+            if(d.bodyColour!==undefined&&/\/(left-wall|right-wall|back-wall|front-apron|front-left|front-right|front-head)$/.test(child.name))paint(child,d.bodyColour);
+            if(d.capColour!==undefined&&/\/(roof|roof-slab)$/.test(child.name))paint(child,d.capColour);
+          }
+        }
         if(setback)for(const child of facade.children.slice(firstChild))if(child instanceof T.Mesh)child.geometry.translate(0,0,-setback);
         if(d.hostAperture){
           const depth=d.hostAperture.depthM;positive(depth);

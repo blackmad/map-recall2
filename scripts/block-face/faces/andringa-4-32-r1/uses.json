@@ -1,0 +1,73 @@
+{
+ "street": "Joris van Andringastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012124713",
+   "addresses": [
+    "Joris van Andringastraat 10",
+    "Joris van Andringastraat 12"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695464"
+    },
+    {
+     "address": "Joris van Andringastraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000695470"
+    },
+    {
+     "address": "Joris van Andringastraat 12-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012084926"
+    },
+    {
+     "address": "Joris van Andringastraat 10-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010012084925"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012103458",
+   "addresses": [
+    "Joris van Andringastraat 6",
+    "Joris van Andringastraat 8"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695452"
+    },
+    {
+     "address": "Joris van Andringastraat 8-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000695458"
+    },
+    {
+     "address": "Joris van Andringastraat 6-H",
+     "use": "woonfunctie",
+     "areaM2": 85,
+     "bagId": "0363010012084924"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

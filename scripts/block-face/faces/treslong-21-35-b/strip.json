@@ -1,0 +1,176 @@
+{
+ "face": "treslong-21-35-b",
+ "image": "staging/block-face/treslong-21-35-b/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 980,
+ "height": 619,
+ "groundNAP": 0.382,
+ "heightM": 15.49,
+ "frame": {
+  "midRD": [
+   119160.8894375,
+   487651.53787500004
+  ],
+  "uRD": [
+   -0.9837921408420923,
+   -0.17931264210125408
+  ],
+  "nRD": [
+   -0.17931264210125408,
+   0.9837921408420923
+  ]
+ },
+ "x0M": -12.29,
+ "x1M": 12.21,
+ "date": "2024-11-21",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012068576",
+   "x0M": -12.29,
+   "x1M": -6.09,
+   "px": [
+    0,
+    248
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00078",
+     "timestamp": "2024-11-21T11:39:16Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 17.9,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00077",
+     "timestamp": "2024-11-21T11:39:15Z",
+     "distanceM": 7.5,
+     "obliquityDeg": 22.7,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00083",
+     "timestamp": "2024-11-21T11:39:22Z",
+     "distanceM": 26.2,
+     "obliquityDeg": 39.8,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012111921",
+   "x0M": -6.09,
+   "x1M": 0.01,
+   "px": [
+    248,
+    492
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00076",
+     "timestamp": "2024-11-21T11:39:14Z",
+     "distanceM": 7.4,
+     "obliquityDeg": 18.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00077",
+     "timestamp": "2024-11-21T11:39:15Z",
+     "distanceM": 7.6,
+     "obliquityDeg": 25.3,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012105923",
+   "x0M": 0.01,
+   "x1M": 6.11,
+   "px": [
+    492,
+    736
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00075",
+     "timestamp": "2024-11-21T11:39:13Z",
+     "distanceM": 7.1,
+     "obliquityDeg": 10.2,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00076",
+     "timestamp": "2024-11-21T11:39:14Z",
+     "distanceM": 7.9,
+     "obliquityDeg": 28,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00074",
+     "timestamp": "2024-11-21T11:39:12Z",
+     "distanceM": 9.4,
+     "obliquityDeg": 41.9,
+     "missingFraction": 0
+    }
+   ]
+  },
+  {
+   "pandId": "0363100012145888",
+   "x0M": 6.11,
+   "x1M": 12.21,
+   "px": [
+    736,
+    980
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00074",
+     "timestamp": "2024-11-21T11:39:12Z",
+     "distanceM": 7,
+     "obliquityDeg": 1.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00075",
+     "timestamp": "2024-11-21T11:39:13Z",
+     "distanceM": 8.5,
+     "obliquityDeg": 34.5,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track35_Sphere_00073",
+     "timestamp": "2024-11-21T11:39:11Z",
+     "distanceM": 8.9,
+     "obliquityDeg": 38.5,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2017-04-20": 4,
+  "2024-11-21": 4,
+  "2022-06-27": 4,
+  "2022-06-24": 4,
+  "2020-05-14": 4,
+  "2018-06-14": 4,
+  "2019-04-16": 4,
+  "2021-03-24": 4,
+  "2022-01-04": 4,
+  "2025-09-26": 4,
+  "2016-06-22": 4,
+  "2022-12-12": 4,
+  "2018-11-19": 0,
+  "2019-01-07": 1
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)"
+}

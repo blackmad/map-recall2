@@ -1,0 +1,81 @@
+{
+ "street": "Jan den Haenstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T02:07:35.026Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012084532",
+   "addresses": [
+    "Jan den Haenstraat 20",
+    "Jan den Haenstraat 20B",
+    "Jan den Haenstraat 20C",
+    "Jan den Haenstraat 20E",
+    "Jan den Haenstraat 22",
+    "Jan den Haenstraat 22A",
+    "Jan den Haenstraat 22C",
+    "Jan den Haenstraat 22D",
+    "Jan den Haenstraat 22E"
+   ],
+   "groundUnits": [
+    {
+     "address": "Jan den Haenstraat 20-H",
+     "use": "woonfunctie",
+     "areaM2": 42,
+     "bagId": "0363010000683947"
+    },
+    {
+     "address": "Jan den Haenstraat 22-H",
+     "use": "woonfunctie",
+     "areaM2": 61,
+     "bagId": "0363010000683954"
+    },
+    {
+     "address": "Jan den Haenstraat 20B",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117916"
+    },
+    {
+     "address": "Jan den Haenstraat 20C",
+     "use": "woonfunctie",
+     "areaM2": 106,
+     "bagId": "0363010012117917"
+    },
+    {
+     "address": "Jan den Haenstraat 20E",
+     "use": "woonfunctie",
+     "areaM2": 138,
+     "bagId": "0363010012117918"
+    },
+    {
+     "address": "Jan den Haenstraat 22A",
+     "use": "woonfunctie",
+     "areaM2": 118,
+     "bagId": "0363010012117919"
+    },
+    {
+     "address": "Jan den Haenstraat 22C",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117920"
+    },
+    {
+     "address": "Jan den Haenstraat 22D",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010012117921"
+    },
+    {
+     "address": "Jan den Haenstraat 22E",
+     "use": "woonfunctie",
+     "areaM2": 50,
+     "bagId": "0363010012117922"
+    }
+   ],
+   "units": 15,
+   "osm": []
+  }
+ ]
+}

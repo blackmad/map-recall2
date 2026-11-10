@@ -1,0 +1,87 @@
+{
+ "face": "haen-3-31-r1",
+ "image": "staging/block-face/haen-3-31-r1/strip.jpg",
+ "pixelsPerMetre": 40,
+ "width": 512,
+ "height": 605,
+ "groundNAP": 0.607,
+ "heightM": 15.13,
+ "frame": {
+  "midRD": [
+   119188.32393750001,
+   487913.8845
+  ],
+  "uRD": [
+   -0.21475448057504895,
+   0.9766680669874187
+  ],
+  "nRD": [
+   0.9766680669874187,
+   0.21475448057504895
+  ]
+ },
+ "x0M": -6.4,
+ "x1M": 6.4,
+ "date": "2024-11-21",
+ "coverage": 1,
+ "spans": [
+  {
+   "pandId": "0363100012140098",
+   "x0M": -6.4,
+   "x1M": 6.4,
+   "px": [
+    0,
+    512
+   ],
+   "date": "2024-11-21",
+   "fallbackDate": false,
+   "panoramas": [
+    {
+     "panoId": "terdam_21112024_Track48_Sphere_00009",
+     "timestamp": "2024-11-21T12:04:52Z",
+     "distanceM": 12.2,
+     "obliquityDeg": 11.6,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track48_Sphere_00008",
+     "timestamp": "2024-11-21T12:04:52Z",
+     "distanceM": 12.1,
+     "obliquityDeg": 11.8,
+     "missingFraction": 0
+    },
+    {
+     "panoId": "terdam_21112024_Track48_Sphere_00007",
+     "timestamp": "2024-11-21T12:04:51Z",
+     "distanceM": 13.9,
+     "obliquityDeg": 31.5,
+     "missingFraction": 0
+    }
+   ]
+  }
+ ],
+ "candidatesByDate": {
+  "2019-04-16": 8,
+  "2018-06-14": 8,
+  "2025-09-26": 8,
+  "2019-01-07": 8,
+  "2022-01-04": 8,
+  "2022-06-27": 8,
+  "2021-03-24": 6,
+  "2017-04-20": 8,
+  "2019-12-10": 8,
+  "2020-05-14": 8,
+  "2024-11-21": 8,
+  "2016-06-22": 8,
+  "2022-12-12": 0
+ },
+ "description": "Rectified orthographic elevation of the whole face on the frontage planes: x = chunk-frame metres along the face (left→right seen from the street) from x0M, y = metres above the shared ground (groundNAP) from the bottom; grey = no panorama data. Per-pand spans list the panoramas median-fused for that frontage.",
+ "attribution": "Gemeente Amsterdam, Panoramabeelden (CC BY 4.0; faces and number plates blurred by the publisher)",
+ "croppedFrom": {
+  "face": "haen-3-31",
+  "px": [
+   0,
+   512
+  ]
+ }
+}

@@ -1,0 +1,2341 @@
+{
+ "street": "Admiraal De Ruijterweg",
+ "seed": "0363100012236159",
+ "members": [
+  "0363100012118806",
+  "0363100012095308",
+  "0363100012107278",
+  "0363100012139316",
+  "0363100012160506",
+  "0363100012156192",
+  "0363100012164393",
+  "0363100012155447",
+  "0363100012159086",
+  "0363100012158609",
+  "0363100012236159"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "trimmed at 0363100012118806 (face continues: 110215 093179 085566 108809 090746 070395 089155 112286 148864)"
+  },
+  {
+   "side": "right",
+   "reason": "next fronting pand 0363100012167451 33.1 m on shares no party wall (cross street or gap)"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012061574",
+   "reason": "frontage 70.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012061580",
+   "reason": "frontage 65.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012061794",
+   "reason": "frontage 36.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012061952",
+   "reason": "frontage 34.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012062264",
+   "reason": "frontage 36.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012062511",
+   "reason": "frontage 36.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012062858",
+   "reason": "frontage 173.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012062977",
+   "reason": "frontage 134.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012063108",
+   "reason": "frontage 43.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012063321",
+   "reason": "frontage 173.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012063549",
+   "reason": "frontage 36.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012063628",
+   "reason": "frontage 146.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012064126",
+   "reason": "frontage 44.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012064428",
+   "reason": "frontage 70.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012064826",
+   "reason": "frontage 45.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012064954",
+   "reason": "frontage 70.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012065098",
+   "reason": "frontage 41.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012065427",
+   "reason": "frontage 202.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012065572",
+   "reason": "frontage 116.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012065634",
+   "reason": "frontage 93.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012065696",
+   "reason": "frontage 70.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012065741",
+   "reason": "frontage 42.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012065747",
+   "reason": "frontage 70.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012066272",
+   "reason": "frontage 158.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012066342",
+   "reason": "frontage 62.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012066806",
+   "reason": "frontage 185.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012066992",
+   "reason": "frontage 171.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012067899",
+   "reason": "frontage 133.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012068576",
+   "reason": "frontage 171.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012068745",
+   "reason": "frontage 70.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012068749",
+   "reason": "frontage 70.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012068992",
+   "reason": "frontage 127.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012069887",
+   "reason": "frontage 43.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012070126",
+   "reason": "frontage 34.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012070138",
+   "reason": "frontage 34.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012070384",
+   "reason": "frontage 37.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012070415",
+   "reason": "frontage 42.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012070549",
+   "reason": "frontage 171.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012071058",
+   "reason": "frontage 129.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012071096",
+   "reason": "frontage 65.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012071557",
+   "reason": "frontage 74.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012072237",
+   "reason": "frontage 70.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012072845",
+   "reason": "frontage 116.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012073009",
+   "reason": "frontage 70.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012074072",
+   "reason": "frontage 45.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012074159",
+   "reason": "frontage 40.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012074601",
+   "reason": "frontage 140.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012074999",
+   "reason": "frontage 45.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012075147",
+   "reason": "frontage 70.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012075310",
+   "reason": "frontage 36.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012075353",
+   "reason": "frontage 57.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012076832",
+   "reason": "frontage 142.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012076856",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012157157"
+  },
+  {
+   "pandId": "0363100012077081",
+   "reason": "frontage 165.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012077211",
+   "reason": "frontage 206.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012078751",
+   "reason": "frontage 81.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012079241",
+   "reason": "frontage 179.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012080059",
+   "reason": "frontage 70.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012080163",
+   "reason": "frontage 70.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012080340",
+   "reason": "frontage 45.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012080535",
+   "reason": "frontage 103.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012080563",
+   "reason": "frontage 70.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012080759",
+   "reason": "frontage 70.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012081021",
+   "reason": "frontage 44.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012081504",
+   "reason": "frontage 86.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012081651",
+   "reason": "frontage 104.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012081797",
+   "reason": "frontage 96.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012081962",
+   "reason": "frontage 80.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012082411",
+   "reason": "frontage 43.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012082665",
+   "reason": "frontage 43.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012083013",
+   "reason": "frontage 139.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012084116",
+   "reason": "frontage 45.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012084175",
+   "reason": "frontage 189.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012084220",
+   "reason": "frontage 36.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012084608",
+   "reason": "frontage 111.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012084690",
+   "reason": "frontage 96.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012084741",
+   "reason": "frontage 77.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012084867",
+   "reason": "frontage 70.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012084879",
+   "reason": "frontage 127.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012085378",
+   "reason": "frontage 44.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012085807",
+   "reason": "frontage 97.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012086172",
+   "reason": "frontage 104.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012086484",
+   "reason": "frontage 45.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012086547",
+   "reason": "frontage 144.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012086700",
+   "reason": "frontage 87.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012087026",
+   "reason": "frontage 36.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012087067",
+   "reason": "frontage 127.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012087231",
+   "reason": "frontage 147.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012087761",
+   "reason": "frontage 71.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012087901",
+   "reason": "frontage 70.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012087932",
+   "reason": "frontage 223.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012088204",
+   "reason": "frontage 45.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012088285",
+   "reason": "frontage 44.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012088970",
+   "reason": "frontage 74.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012089234",
+   "reason": "frontage 128.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012089259",
+   "reason": "frontage 65.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012089525",
+   "reason": "frontage 142.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012089590",
+   "reason": "frontage 173.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012089839",
+   "reason": "frontage 128.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012089914",
+   "reason": "frontage 96.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012089939",
+   "reason": "frontage 143.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012090084",
+   "reason": "frontage 100.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012090233",
+   "reason": "frontage 115.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012090412",
+   "reason": "frontage 127.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012090556",
+   "reason": "frontage 80.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012091629",
+   "reason": "frontage 36.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012091714",
+   "reason": "frontage 90.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012092783",
+   "reason": "frontage 115.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012092821",
+   "reason": "frontage 71.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012092940",
+   "reason": "frontage 140.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012092985",
+   "reason": "frontage 34.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012093140",
+   "reason": "frontage 122.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012093157",
+   "reason": "frontage 206.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012093466",
+   "reason": "frontage 36.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012093475",
+   "reason": "frontage 115.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012094754",
+   "reason": "frontage 70.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012095340",
+   "reason": "frontage 115.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012095569",
+   "reason": "frontage 78.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012096085",
+   "reason": "frontage 145.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012096169",
+   "reason": "frontage 73.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012096543",
+   "reason": "frontage 92.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012096923",
+   "reason": "frontage 71.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012097070",
+   "reason": "frontage 40.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012097447",
+   "reason": "frontage 44.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012097466",
+   "reason": "frontage 165.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012097706",
+   "reason": "frontage 141.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012098193",
+   "reason": "frontage 34.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012098196",
+   "reason": "frontage 109.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012098363",
+   "reason": "frontage 90.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012099110",
+   "reason": "frontage 172.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012099128",
+   "reason": "frontage 30.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012099158",
+   "reason": "frontage 152.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012099572",
+   "reason": "frontage 158.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012099592",
+   "reason": "frontage 34.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012099598",
+   "reason": "frontage 70.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012099825",
+   "reason": "frontage 42.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012100017",
+   "reason": "frontage 43.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012100115",
+   "reason": "frontage 65.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012100119",
+   "reason": "frontage 134.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012100158",
+   "reason": "frontage 117.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012100276",
+   "reason": "frontage 158.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012100357",
+   "reason": "frontage 127.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012100410",
+   "reason": "frontage 153.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012100440",
+   "reason": "frontage 122.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012100523",
+   "reason": "frontage 110.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012101504",
+   "reason": "frontage 112.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012101641",
+   "reason": "frontage 36.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012102270",
+   "reason": "frontage 36.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012102963",
+   "reason": "frontage 44.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012103132",
+   "reason": "frontage 154.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012103157",
+   "reason": "frontage 171.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012103282",
+   "reason": "frontage 70.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012103330",
+   "reason": "frontage 34.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012103452",
+   "reason": "frontage 36.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012103581",
+   "reason": "frontage 44.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012103935",
+   "reason": "frontage 65.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012103993",
+   "reason": "frontage 158.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012104172",
+   "reason": "frontage 36.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012104480",
+   "reason": "frontage 146.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012104481",
+   "reason": "frontage 152.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012104500",
+   "reason": "frontage 34.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012104676",
+   "reason": "frontage 36.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012104745",
+   "reason": "frontage 44.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012105138",
+   "reason": "frontage 143.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012105205",
+   "reason": "frontage 65.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012105273",
+   "reason": "frontage 137.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012105923",
+   "reason": "frontage 159.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012106056",
+   "reason": "frontage 43.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012106268",
+   "reason": "frontage 36.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012107114",
+   "reason": "frontage 123.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012107290",
+   "reason": "frontage 97.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012108128",
+   "reason": "frontage 44.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012108361",
+   "reason": "frontage 34.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012108466",
+   "reason": "frontage 116.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012108501",
+   "reason": "frontage 97.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012108844",
+   "reason": "frontage 180.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012109120",
+   "reason": "frontage 44.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012109160",
+   "reason": "frontage 44.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012109241",
+   "reason": "frontage 97.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012109847",
+   "reason": "frontage 135.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012110115",
+   "reason": "frontage 105.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012110462",
+   "reason": "frontage 202.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012110751",
+   "reason": "frontage 151.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012110909",
+   "reason": "frontage 70.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012110930",
+   "reason": "frontage 121.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012110942",
+   "reason": "frontage 173.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012111417",
+   "reason": "frontage 36.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012111615",
+   "reason": "frontage 34.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012111802",
+   "reason": "frontage 206.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012111921",
+   "reason": "frontage 165.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012112210",
+   "reason": "frontage 158.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012112343",
+   "reason": "frontage 92.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012112405",
+   "reason": "frontage 206.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012112971",
+   "reason": "frontage 40.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012113093",
+   "reason": "frontage 215.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012113418",
+   "reason": "frontage 149.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012113571",
+   "reason": "frontage 113.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012114190",
+   "reason": "frontage 146.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012114256",
+   "reason": "frontage 206.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012114748",
+   "reason": "frontage 75.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012114752",
+   "reason": "frontage 183.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012114797",
+   "reason": "frontage 70.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012114913",
+   "reason": "frontage 34.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012115512",
+   "reason": "frontage 98.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012115534",
+   "reason": "frontage 81.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012116190",
+   "reason": "frontage 90.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012116210",
+   "reason": "frontage 43.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012116325",
+   "reason": "frontage 70.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012116463",
+   "reason": "frontage 134.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012116559",
+   "reason": "frontage 104.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012117178",
+   "reason": "frontage 127.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012117651",
+   "reason": "frontage 34.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012117868",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012115410"
+  },
+  {
+   "pandId": "0363100012117945",
+   "reason": "frontage 41.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012118984",
+   "reason": "frontage 177.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012119151",
+   "reason": "frontage 70.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012119397",
+   "reason": "frontage 45.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012119793",
+   "reason": "frontage 34.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012119859",
+   "reason": "frontage 36.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012120292",
+   "reason": "frontage 33.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012121115",
+   "reason": "frontage 121.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012121119",
+   "reason": "frontage 130.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012121206",
+   "reason": "frontage 171.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012121629",
+   "reason": "frontage 177.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012121679",
+   "reason": "frontage 94.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012122142",
+   "reason": "frontage 150.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012122456",
+   "reason": "frontage 140.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012122641",
+   "reason": "frontage 44.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012122649",
+   "reason": "frontage 147.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012123145",
+   "reason": "frontage 128.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012123335",
+   "reason": "frontage 142.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012123861",
+   "reason": "frontage 125.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012124479",
+   "reason": "frontage 186.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012124495",
+   "reason": "frontage 141.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012124663",
+   "reason": "frontage 177.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012124695",
+   "reason": "frontage 65.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012124911",
+   "reason": "frontage 183.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012124914",
+   "reason": "frontage 177.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012125242",
+   "reason": "frontage 140.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012125363",
+   "reason": "frontage 69.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012125415",
+   "reason": "frontage 70.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012125670",
+   "reason": "frontage 140.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012125953",
+   "reason": "frontage 229.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012126499",
+   "reason": "frontage 159.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012126592",
+   "reason": "frontage 70.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012126595",
+   "reason": "frontage 168.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012126627",
+   "reason": "frontage 70.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012126999",
+   "reason": "frontage 44.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012127480",
+   "reason": "frontage 34.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012127646",
+   "reason": "frontage 102.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012127749",
+   "reason": "frontage 206.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012128490",
+   "reason": "frontage 79.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012128885",
+   "reason": "frontage 36.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012129065",
+   "reason": "frontage 90.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012129410",
+   "reason": "frontage 158.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012129570",
+   "reason": "frontage 116.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012130146",
+   "reason": "frontage 158.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012130439",
+   "reason": "frontage 138.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012130787",
+   "reason": "frontage 114.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012130817",
+   "reason": "frontage 36.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012131030",
+   "reason": "frontage 70.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012131219",
+   "reason": "frontage 116.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012131321",
+   "reason": "frontage 34.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012131416",
+   "reason": "frontage 115.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012132103",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012115410"
+  },
+  {
+   "pandId": "0363100012132461",
+   "reason": "frontage 208.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012132611",
+   "reason": "frontage 141.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012132620",
+   "reason": "frontage 83.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012132888",
+   "reason": "frontage 127.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012132905",
+   "reason": "frontage 98.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012133340",
+   "reason": "frontage 127.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012133359",
+   "reason": "frontage 206.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012133485",
+   "reason": "frontage 43.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012133699",
+   "reason": "frontage 70.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012133707",
+   "reason": "frontage 121.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012133883",
+   "reason": "frontage 40.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012135602",
+   "reason": "frontage 170.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012135920",
+   "reason": "frontage 108.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012136049",
+   "reason": "frontage 44.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012136155",
+   "reason": "frontage 34.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012137403",
+   "reason": "frontage 65.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012137731",
+   "reason": "frontage 158.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012137871",
+   "reason": "frontage 75.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012139273",
+   "reason": "frontage 143.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012139283",
+   "reason": "frontage 106.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012139372",
+   "reason": "frontage 118.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012139918",
+   "reason": "frontage 97.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012140401",
+   "reason": "frontage 223.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012141390",
+   "reason": "frontage 85.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012141931",
+   "reason": "frontage 36.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012142100",
+   "reason": "frontage 36.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012142226",
+   "reason": "frontage 127.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012142317",
+   "reason": "frontage 36.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012142349",
+   "reason": "frontage 166.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012142659",
+   "reason": "frontage 208.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012143068",
+   "reason": "frontage 115.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012143100",
+   "reason": "frontage 34.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012143344",
+   "reason": "frontage 195.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012143406",
+   "reason": "frontage 174.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012143513",
+   "reason": "frontage 32.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012143956",
+   "reason": "frontage 45.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012144404",
+   "reason": "frontage 189.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012144446",
+   "reason": "frontage 70.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012144750",
+   "reason": "frontage 131.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012145048",
+   "reason": "frontage 36.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012145241",
+   "reason": "frontage 70.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012145712",
+   "reason": "frontage 206.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012145888",
+   "reason": "frontage 153.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012145986",
+   "reason": "frontage 36.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012146032",
+   "reason": "frontage 43.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012146039",
+   "reason": "frontage 196.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012146057",
+   "reason": "frontage 160.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012146166",
+   "reason": "frontage 97.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012146450",
+   "reason": "frontage 114.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012146475",
+   "reason": "frontage 158.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012146904",
+   "reason": "frontage 139.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012147103",
+   "reason": "frontage 65.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012147152",
+   "reason": "frontage 110.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012148081",
+   "reason": "frontage 173.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012148568",
+   "reason": "frontage 206.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012148902",
+   "reason": "frontage 70.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012149193",
+   "reason": "frontage 164.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012149361",
+   "reason": "frontage 65.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012149997",
+   "reason": "frontage 90.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012150285",
+   "reason": "frontage 70.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012150718",
+   "reason": "frontage 137.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012150748",
+   "reason": "frontage 56.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012150761",
+   "reason": "frontage 127.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012151408",
+   "reason": "frontage 114.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012151538",
+   "reason": "frontage 38.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012151714",
+   "reason": "frontage 97.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012152012",
+   "reason": "frontage 97.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012152115",
+   "reason": "frontage 86.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012154626",
+   "reason": "frontage 36.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012154644",
+   "reason": "frontage 117.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012154852",
+   "reason": "frontage 140.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012155045",
+   "reason": "frontage 84.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012157157",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012159539"
+  },
+  {
+   "pandId": "0363100012160462",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012164884"
+  },
+  {
+   "pandId": "0363100012160670",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012157157"
+  },
+  {
+   "pandId": "0363100012164884",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012167451"
+  },
+  {
+   "pandId": "0363100012183939",
+   "reason": "frontage 204.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012184681",
+   "reason": "frontage 59.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012185321",
+   "reason": "frontage 165.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012186303",
+   "reason": "frontage 164.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012186467",
+   "reason": "frontage 129.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012186651",
+   "reason": "frontage 107.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012187343",
+   "reason": "no frontage on Admiraal De Ruijterweg: No footprint edge faces Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012187380",
+   "reason": "frontage 224.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012187985",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012156738"
+  },
+  {
+   "pandId": "0363100012188265",
+   "reason": "frontage 224.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012188883",
+   "reason": "frontage 224.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012189979",
+   "reason": "frontage 227.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012189980",
+   "reason": "frontage 224.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012190176",
+   "reason": "frontage 207.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012191428",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012165302"
+  },
+  {
+   "pandId": "0363100012192326",
+   "reason": "frontage 145.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012195050",
+   "reason": "frontage 175.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012195412",
+   "reason": "frontage 146.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012195483",
+   "reason": "frontage 117.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012195543",
+   "reason": "frontage 31.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012196139",
+   "reason": "frontage 161.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012196363",
+   "reason": "frontage 162.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012196488",
+   "reason": "frontage 195.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012196677",
+   "reason": "frontage 123.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012197149",
+   "reason": "frontage 123.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012197303",
+   "reason": "frontage 87.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012197304",
+   "reason": "frontage 87.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012197949",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012158783"
+  },
+  {
+   "pandId": "0363100012198537",
+   "reason": "frontage 224.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012199178",
+   "reason": "frontage 134.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012200465",
+   "reason": "frontage 172.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012200674",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012165577"
+  },
+  {
+   "pandId": "0363100012200675",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012165577"
+  },
+  {
+   "pandId": "0363100012200676",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012162509"
+  },
+  {
+   "pandId": "0363100012200677",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012162509"
+  },
+  {
+   "pandId": "0363100012200680",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012161079"
+  },
+  {
+   "pandId": "0363100012201163",
+   "reason": "frontage 81.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012201164",
+   "reason": "frontage 83.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012201165",
+   "reason": "frontage 93.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012201166",
+   "reason": "frontage 96.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012201167",
+   "reason": "frontage 106.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012201168",
+   "reason": "frontage 108.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012201169",
+   "reason": "frontage 118.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012201170",
+   "reason": "frontage 121.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012201171",
+   "reason": "frontage 68.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012201244",
+   "reason": "frontage 71.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012203156",
+   "reason": "frontage 204.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012203414",
+   "reason": "frontage 183.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012203502",
+   "reason": "frontage 172.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012204308",
+   "reason": "frontage 156.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012204341",
+   "reason": "frontage 109.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012204836",
+   "reason": "frontage 229.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012204952",
+   "reason": "frontage 110.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012204953",
+   "reason": "frontage 134.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012204954",
+   "reason": "frontage 131.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012204955",
+   "reason": "frontage 122.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012204956",
+   "reason": "frontage 119.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012204957",
+   "reason": "frontage 143.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012205354",
+   "reason": "frontage 30.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012206185",
+   "reason": "frontage 146.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012206199",
+   "reason": "frontage 147.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012207580",
+   "reason": "frontage 84.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012207906",
+   "reason": "frontage 164.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012208488",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012157761"
+  },
+  {
+   "pandId": "0363100012208489",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012157761"
+  },
+  {
+   "pandId": "0363100012208490",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012140656"
+  },
+  {
+   "pandId": "0363100012208491",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012140656"
+  },
+  {
+   "pandId": "0363100012208492",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012122114"
+  },
+  {
+   "pandId": "0363100012208493",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012153966"
+  },
+  {
+   "pandId": "0363100012208495",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012140948"
+  },
+  {
+   "pandId": "0363100012208496",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012151221"
+  },
+  {
+   "pandId": "0363100012208498",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012165993"
+  },
+  {
+   "pandId": "0363100012208499",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012165993"
+  },
+  {
+   "pandId": "0363100012208500",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012153966"
+  },
+  {
+   "pandId": "0363100012208501",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012122114"
+  },
+  {
+   "pandId": "0363100012208502",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012131455"
+  },
+  {
+   "pandId": "0363100012208503",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012131455"
+  },
+  {
+   "pandId": "0363100012208505",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012111325"
+  },
+  {
+   "pandId": "0363100012208506",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012111325"
+  },
+  {
+   "pandId": "0363100012208541",
+   "reason": "frontage 120.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012209025",
+   "reason": "frontage 231.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012209082",
+   "reason": "frontage 111.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012209115",
+   "reason": "frontage 132.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012210080",
+   "reason": "frontage 161.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012210197",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012161079"
+  },
+  {
+   "pandId": "0363100012210337",
+   "reason": "frontage 84.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012211078",
+   "reason": "frontage 98.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012211769",
+   "reason": "frontage 162.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012212042",
+   "reason": "frontage 160.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012212722",
+   "reason": "frontage 192.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012213088",
+   "reason": "frontage 149.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012213089",
+   "reason": "frontage 148.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012213090",
+   "reason": "frontage 148.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012213091",
+   "reason": "frontage 148.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012213092",
+   "reason": "frontage 148.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012213093",
+   "reason": "frontage 148.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012213665",
+   "reason": "frontage 224.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012214072",
+   "reason": "frontage 87.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012214073",
+   "reason": "frontage 87.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012214445",
+   "reason": "frontage 45.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012214506",
+   "reason": "frontage 146.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012214804",
+   "reason": "frontage 135.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012214832",
+   "reason": "frontage 148.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012215690",
+   "reason": "frontage 164.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012215992",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012159145"
+  },
+  {
+   "pandId": "0363100012217586",
+   "reason": "frontage 146.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012218990",
+   "reason": "frontage 224.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012219258",
+   "reason": "frontage 158.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012220429",
+   "reason": "frontage 108.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012221649",
+   "reason": "frontage 34.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012221650",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012166882"
+  },
+  {
+   "pandId": "0363100012222116",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012152292"
+  },
+  {
+   "pandId": "0363100012222117",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012152292"
+  },
+  {
+   "pandId": "0363100012222118",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012158282"
+  },
+  {
+   "pandId": "0363100012222119",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012163691"
+  },
+  {
+   "pandId": "0363100012222329",
+   "reason": "frontage 168.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012222566",
+   "reason": "frontage 110.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012222568",
+   "reason": "frontage 134.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012222569",
+   "reason": "frontage 131.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012222570",
+   "reason": "frontage 122.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012222571",
+   "reason": "frontage 119.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012222572",
+   "reason": "frontage 143.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012222838",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012158644"
+  },
+  {
+   "pandId": "0363100012224018",
+   "reason": "frontage 42.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012224308",
+   "reason": "frontage 83.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012224311",
+   "reason": "frontage 106.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012224313",
+   "reason": "frontage 118.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012224327",
+   "reason": "frontage 120.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012224329",
+   "reason": "frontage 71.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012224694",
+   "reason": "frontage 158.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012226035",
+   "reason": "frontage 227.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012226036",
+   "reason": "frontage 224.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012226266",
+   "reason": "frontage 143.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012226267",
+   "reason": "frontage 146.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012226268",
+   "reason": "frontage 131.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012226269",
+   "reason": "frontage 133.7 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012226688",
+   "reason": "frontage 224.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012227249",
+   "reason": "frontage 57.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012227870",
+   "reason": "frontage 146.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012227871",
+   "reason": "frontage 171.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012227939",
+   "reason": "frontage 168.2 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012227940",
+   "reason": "frontage 159.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012227941",
+   "reason": "frontage 156.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012227942",
+   "reason": "frontage 183.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012227943",
+   "reason": "frontage 180.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012228477",
+   "reason": "frontage 145.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012229037",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012158644"
+  },
+  {
+   "pandId": "0363100012229159",
+   "reason": "frontage 195.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012229262",
+   "reason": "frontage 148.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012229695",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012157432"
+  },
+  {
+   "pandId": "0363100012229868",
+   "reason": "frontage 74.4 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012230383",
+   "reason": "frontage 130.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012230384",
+   "reason": "frontage 133.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012230385",
+   "reason": "frontage 143.3 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012230386",
+   "reason": "frontage 145.5 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012230636",
+   "reason": "frontage 145.6 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012231209",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012165302"
+  },
+  {
+   "pandId": "0363100012231254",
+   "reason": "frontage 156.0 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012232028",
+   "reason": "frontage 141.9 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012232465",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012153257"
+  },
+  {
+   "pandId": "0363100012232531",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012162509"
+  },
+  {
+   "pandId": "0363100012234669",
+   "reason": "frontage 161.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012234769",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012153257"
+  },
+  {
+   "pandId": "0363100012234815",
+   "reason": "frontage 158.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012234955",
+   "reason": "frontage 154.1 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012235049",
+   "reason": "frontage 121.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012570830",
+   "reason": "frontage 95.8 m from Admiraal De Ruijterweg"
+  },
+  {
+   "pandId": "0363100012571431",
+   "reason": "sightline to Admiraal De Ruijterweg crosses 0363100012153515"
+  },
+  {
+   "pandId": "0363100012111325",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012115410",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012122114",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012124987",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012125845",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012131455",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140656",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012140948",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144391",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012144890",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012151221",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012152292",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153100",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153257",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153384",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153515",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153799",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012153966",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012155522",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012156738",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157330",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157432",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012157761",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158282",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158644",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012158783",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159145",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012159539",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161079",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161241",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012161773",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012162509",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012163691",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165147",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165302",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165577",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012165993",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012166882",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012167095",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 180,
+ "pands": [
+  {
+   "pandId": "0363100012118806",
+   "alongM": -93.38,
+   "widthM": 9.97,
+   "eavesM": 13.36,
+   "roofMaxM": 13.38,
+   "storeys3dbag": 4,
+   "builtYear": 1923,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012095308",
+   "alongM": -83.41,
+   "widthM": 9.97,
+   "eavesM": 13.34,
+   "roofMaxM": 13.34,
+   "storeys3dbag": 4,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012107278",
+   "alongM": -73.44,
+   "widthM": 9.97,
+   "eavesM": 13.24,
+   "roofMaxM": 13.26,
+   "storeys3dbag": 4,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012139316",
+   "alongM": -63.46,
+   "widthM": 9.99,
+   "eavesM": 13.21,
+   "roofMaxM": 13.23,
+   "storeys3dbag": 4,
+   "builtYear": 1923,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012160506",
+   "alongM": -54.27,
+   "widthM": 8.37,
+   "eavesM": 13.76,
+   "roofMaxM": 17.28,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012156192",
+   "alongM": -45.9,
+   "widthM": 8.37,
+   "eavesM": 14.53,
+   "roofMaxM": 19.1,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012164393",
+   "alongM": -37.53,
+   "widthM": 8.37,
+   "eavesM": 13.43,
+   "roofMaxM": 17.31,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012155447",
+   "alongM": -29.17,
+   "widthM": 8.37,
+   "eavesM": 13.41,
+   "roofMaxM": 17.21,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012159086",
+   "alongM": -20.79,
+   "widthM": 8.37,
+   "eavesM": 12.91,
+   "roofMaxM": 16.83,
+   "storeys3dbag": 5,
+   "builtYear": 1912,
+   "uncertainty": [
+    "Frontage extended across a native jog of up to 1 m (possible partial front at the default 0.35 m).",
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012158609",
+   "alongM": -12.45,
+   "widthM": 8.32,
+   "eavesM": 13.19,
+   "roofMaxM": 16.57,
+   "storeys3dbag": 5,
+   "builtYear": 1911,
+   "uncertainty": []
+  },
+  {
+   "pandId": "0363100012236159",
+   "alongM": 0,
+   "widthM": 16.57,
+   "eavesM": 16.4,
+   "roofMaxM": 16.42,
+   "storeys3dbag": 4,
+   "builtYear": 1911,
+   "uncertainty": []
+  }
+ ]
+}

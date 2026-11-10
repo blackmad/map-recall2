@@ -1,0 +1,240 @@
+{
+ "street": "Joris van Andringastraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched n/a (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012095737",
+   "addresses": [
+    "Joris van Andringastraat 1"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 1-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 36,
+     "bagId": "0363010000695437"
+    },
+    {
+     "address": "De Rijpgracht 26-H",
+     "use": "overige gebruiksfunctie",
+     "areaM2": 104,
+     "bagId": "0363010000618583"
+    }
+   ],
+   "units": 6,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012095658",
+   "addresses": [
+    "Joris van Andringastraat 3"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 3-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000695443"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012101492",
+   "addresses": [
+    "Joris van Andringastraat 5",
+    "Joris van Andringastraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 55,
+     "bagId": "0363010000695449"
+    },
+    {
+     "address": "Joris van Andringastraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695455"
+    },
+    {
+     "address": "Joris van Andringastraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001988087"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012070497",
+   "addresses": [
+    "Joris van Andringastraat 9",
+    "Joris van Andringastraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000695461"
+    },
+    {
+     "address": "Joris van Andringastraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695467"
+    },
+    {
+     "address": "Joris van Andringastraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001988088"
+    },
+    {
+     "address": "Joris van Andringastraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001988089"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012071142",
+   "addresses": [
+    "Joris van Andringastraat 13",
+    "Joris van Andringastraat 15",
+    "Joris van Andringastraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000695473"
+    },
+    {
+     "address": "Joris van Andringastraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695479"
+    },
+    {
+     "address": "Joris van Andringastraat 17-H",
+     "use": "industriefunctie",
+     "areaM2": 65,
+     "bagId": "0363010000695485"
+    },
+    {
+     "address": "Joris van Andringastraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001988090"
+    }
+   ],
+   "units": 10,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012080635",
+   "addresses": [
+    "Joris van Andringastraat 19",
+    "Joris van Andringastraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000695491"
+    },
+    {
+     "address": "Joris van Andringastraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695497"
+    },
+    {
+     "address": "Joris van Andringastraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 89,
+     "bagId": "0363010001988091"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012069920",
+   "addresses": [
+    "Joris van Andringastraat 23",
+    "Joris van Andringastraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000695503"
+    },
+    {
+     "address": "Joris van Andringastraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695509"
+    },
+    {
+     "address": "Joris van Andringastraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001988092"
+    },
+    {
+     "address": "Joris van Andringastraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 69,
+     "bagId": "0363010001988093"
+    }
+   ],
+   "units": 8,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012147879",
+   "addresses": [
+    "Joris van Andringastraat 27",
+    "Joris van Andringastraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Joris van Andringastraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 56,
+     "bagId": "0363010000695515"
+    },
+    {
+     "address": "Joris van Andringastraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 44,
+     "bagId": "0363010000695521"
+    },
+    {
+     "address": "Joris van Andringastraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 87,
+     "bagId": "0363010001988094"
+    }
+   ],
+   "units": 7,
+   "osm": []
+  }
+ ]
+}

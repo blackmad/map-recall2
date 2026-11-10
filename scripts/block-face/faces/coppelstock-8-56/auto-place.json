@@ -1,0 +1,479 @@
+{
+ "face": "coppelstock-8-56",
+ "street": "Coppelstockstraat",
+ "library": "landlust",
+ "stripDate": "2024-11-21",
+ "seconds": 2.41,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012090556",
+   "address": "Coppelstockstraat 56",
+   "builtYear": 1924,
+   "widthM": 9.71,
+   "eavesM": 12.47,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#816647",
+    "wallRaw": "#726144",
+    "skyline": {
+     "eavesM": 13.28,
+     "eavesRow": 162,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": 5,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.202,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.13
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: stair block 9.71 m, type 5.7-7.6 m)",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "stair block 9.71 m, type 5.7-7.6 m"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.28 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 4 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.162 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 5 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012149997",
+   "address": "Coppelstockstraat 52",
+   "builtYear": 1924,
+   "widthM": 12.54,
+   "eavesM": 12.72,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5e40",
+    "wallRaw": "#736346",
+    "skyline": {
+     "eavesM": 13.25,
+     "eavesRow": 163,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 3,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.209,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 5.3,
+       "widthM": 0.95,
+       "centre": 0.48
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.14
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Coppelstockstraat 8-56 (1939, five storeys): not the three-storey Treslongstraat/Coppelstock 25-55 fronts; the erker-attic and stair-block types were matched on year and eaves alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012132905",
+   "address": "Coppelstockstraat 46",
+   "builtYear": 1939,
+   "widthM": 6.3,
+   "eavesM": 15.28,
+   "storeys3dbag": 4,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6f5242",
+    "wallRaw": "#665240",
+    "skyline": {
+     "eavesM": 15.78,
+     "eavesRow": 62,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 5,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": "right",
+    "accentShare": 0.157,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.18
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131416",
+   "address": "Coppelstockstraat 44",
+   "builtYear": 1939,
+   "widthM": 6.06,
+   "eavesM": 14.73,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#75583d",
+    "wallRaw": "#5d4833",
+    "skyline": {
+     "eavesM": 15.53,
+     "eavesRow": 72,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "right",
+    "accentSide": null,
+    "accentShare": 0.055,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.19
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Coppelstockstraat 8-56 (1939, five storeys): not the three-storey Treslongstraat/Coppelstock 25-55 fronts; the erker-attic and stair-block types were matched on year and eaves alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012133707",
+   "address": "Coppelstockstraat 42",
+   "builtYear": 1939,
+   "widthM": 6.41,
+   "eavesM": 14.77,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#785a40",
+    "wallRaw": "#5c4735",
+    "skyline": {
+     "eavesM": 15.43,
+     "eavesRow": 76,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.03,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.09
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: Coppelstockstraat 8-56 (1939, five storeys): not the three-storey Treslongstraat/Coppelstock 25-55 fronts; the erker-attic and stair-block types were matched on year and eaves alone",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012100357",
+   "address": "Coppelstockstraat 24",
+   "builtYear": 1989,
+   "widthM": 14.41,
+   "eavesM": 11.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#423a28",
+    "wallRaw": "#555245",
+    "skyline": {
+     "eavesM": 13.57,
+     "eavesRow": 150,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 1.35,
+      "topWidthM": 0.55,
+      "centre": 0.18
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 7,
+    "frontClass": "punched",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0,
+    "structure": {
+     "bayWidthM": 3.08,
+     "bayCentre": 0.88,
+     "balconies": true,
+     "why": "dark open axis 1.18 m at 0.19 (light 0.23): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.18,
+       "centre": 0.19,
+       "light": 0.23
+      },
+      {
+       "widthM": 0.72,
+       "centre": 0.83,
+       "light": 0.63
+      },
+      {
+       "widthM": 0.63,
+       "centre": 0.89,
+       "light": 0.68
+      },
+      {
+       "widthM": 1.15,
+       "centre": 0.96,
+       "light": 0.72
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 8.2,
+       "widthM": 0.82,
+       "centre": 0.03
+      },
+      {
+       "atM": 7.75,
+       "widthM": 0.85,
+       "centre": 0.67
+      },
+      {
+       "atM": 7.45,
+       "widthM": 0.8,
+       "centre": 0.47
+      },
+      {
+       "atM": 5.5,
+       "widthM": 1.13,
+       "centre": 0.2
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.16
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1989, type 1923-1926; stair block 14.41 m, type 5.7-7.6 m; strip shows balconies (dark open axis 1.18 m at 0.19 (light 0.23): no brick spandrel between the storeys))",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1923-1926",
+     "stair block 14.41 m, type 5.7-7.6 m",
+     "strip shows balconies (dark open axis 1.18 m at 0.19 (light 0.23): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 1,
+      "note": "strip cornice 13.57 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0,
+      "note": "strip columns 7 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012089525",
+   "address": "Coppelstockstraat 8",
+   "builtYear": 1989,
+   "widthM": 11.15,
+   "eavesM": 11.31,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#9a8365",
+    "wallRaw": "#5a5645",
+    "skyline": {
+     "eavesM": 13.72,
+     "eavesRow": 144,
+     "confidence": 1,
+     "crown": {
+      "widthM": 4.65,
+      "riseM": 2.5,
+      "topWidthM": 0.2,
+      "centre": 0.23
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.022,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.8 (light 0.28): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.8,
+       "light": 0.28
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 9.27,
+       "widthM": 0.97,
+       "centre": 0.59
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.07
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "every type vetoed (best landlust-1924-bestevaer-half-block: built 1989, type 1923-1926; stair block 11.15 m, type 5.7-7.6 m; strip shows balconies (dark open axis 0.78 m at 0.8 (light 0.28): no brick spandrel between the storeys))",
+   "best": {
+    "type": "landlust-1924-bestevaer-half-block",
+    "score": 0,
+    "veto": [
+     "built 1989, type 1923-1926",
+     "stair block 11.15 m, type 5.7-7.6 m",
+     "strip shows balconies (dark open axis 0.78 m at 0.8 (light 0.28): no brick spandrel between the storeys)"
+    ],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0.5,
+      "note": "strip cornice 13.72 m vs the type's 13.2 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": 1,
+      "note": "3DBAG bouwlagen 5 vs 4/5"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.016 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 0.4,
+      "note": "strip columns 3 vs 2 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}

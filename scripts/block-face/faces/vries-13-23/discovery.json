@@ -1,0 +1,366 @@
+{
+ "street": "Tjerk Hiddes de Vriesstraat",
+ "seed": "0363100012061629",
+ "members": [
+  "0363100012061629",
+  "0363100012099589",
+  "0363100012070361",
+  "0363100012152219",
+  "0363100012152138"
+ ],
+ "ends": [
+  {
+   "side": "left",
+   "reason": "next fronting pand 0363100012066203 26.6 m on shares no party wall (cross street or gap)"
+  },
+  {
+   "side": "right",
+   "reason": "no further pand fronts the street in the fetched area"
+  }
+ ],
+ "rejected": [
+  {
+   "pandId": "0363100012063083",
+   "reason": "frontage 50.2 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012063379",
+   "reason": "frontage 30.8 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012063511",
+   "reason": "no frontage on Tjerk Hiddes de Vriesstraat: No footprint edge faces Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012063567",
+   "reason": "sightline to Tjerk Hiddes de Vriesstraat crosses 0363100012107155"
+  },
+  {
+   "pandId": "0363100012066626",
+   "reason": "frontage 39.3 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012067932",
+   "reason": "frontage 120.2 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012069813",
+   "reason": "sightline to Tjerk Hiddes de Vriesstraat crosses 0363100012061629"
+  },
+  {
+   "pandId": "0363100012069920",
+   "reason": "frontage 43.5 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012070497",
+   "reason": "frontage 88.3 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012071142",
+   "reason": "frontage 69.2 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012076341",
+   "reason": "no frontage on Tjerk Hiddes de Vriesstraat: No footprint edge faces Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012076342",
+   "reason": "frontage 43.4 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012077528",
+   "reason": "frontage 74.2 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012080635",
+   "reason": "frontage 56.3 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012082410",
+   "reason": "frontage 51.7 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012083022",
+   "reason": "frontage 113.9 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012083790",
+   "reason": "frontage 45.9 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012089744",
+   "reason": "frontage 37.5 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012091165",
+   "reason": "frontage 61.3 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012095699",
+   "reason": "frontage 69.2 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012096454",
+   "reason": "frontage 90.1 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012098318",
+   "reason": "frontage 76.8 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012098932",
+   "reason": "frontage 30.5 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012099024",
+   "reason": "frontage 54.8 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012100977",
+   "reason": "frontage 95.3 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012100981",
+   "reason": "sightline to Tjerk Hiddes de Vriesstraat crosses 0363100012066203"
+  },
+  {
+   "pandId": "0363100012101492",
+   "reason": "frontage 101.2 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012103458",
+   "reason": "frontage 101.1 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012105359",
+   "reason": "frontage 94.8 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012107097",
+   "reason": "frontage 43.6 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012107155",
+   "reason": "no frontage on Tjerk Hiddes de Vriesstraat: No footprint edge faces Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012109488",
+   "reason": "frontage 44.0 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012111169",
+   "reason": "no frontage on Tjerk Hiddes de Vriesstraat: No footprint edge faces Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012114763",
+   "reason": "frontage 56.2 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012114811",
+   "reason": "frontage 49.9 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012115653",
+   "reason": "no frontage on Tjerk Hiddes de Vriesstraat: No footprint edge faces Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012124713",
+   "reason": "frontage 88.3 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012125261",
+   "reason": "frontage 69.1 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012125512",
+   "reason": "frontage 82.0 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012127952",
+   "reason": "frontage 81.8 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012130983",
+   "reason": "sightline to Tjerk Hiddes de Vriesstraat crosses 0363100012133454"
+  },
+  {
+   "pandId": "0363100012131228",
+   "reason": "frontage 56.3 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012131573",
+   "reason": "frontage 30.7 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012132798",
+   "reason": "frontage 89.6 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012133454",
+   "reason": "no frontage on Tjerk Hiddes de Vriesstraat: No footprint edge faces Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012137010",
+   "reason": "frontage 64.2 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012137912",
+   "reason": "sightline to Tjerk Hiddes de Vriesstraat crosses 0363100012152138"
+  },
+  {
+   "pandId": "0363100012138101",
+   "reason": "no frontage on Tjerk Hiddes de Vriesstraat: No footprint edge faces Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012139881",
+   "reason": "frontage 37.0 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012140098",
+   "reason": "frontage 107.4 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012140644",
+   "reason": "frontage 69.0 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012141048",
+   "reason": "frontage 56.4 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012141830",
+   "reason": "sightline to Tjerk Hiddes de Vriesstraat crosses 0363100012143887"
+  },
+  {
+   "pandId": "0363100012143788",
+   "reason": "frontage 31.0 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012143872",
+   "reason": "frontage 67.3 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012146137",
+   "reason": "frontage 94.6 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012147479",
+   "reason": "frontage 57.8 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012147879",
+   "reason": "frontage 30.7 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012148995",
+   "reason": "frontage 43.5 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012151397",
+   "reason": "frontage 48.9 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012154726",
+   "reason": "frontage 55.0 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012201901",
+   "reason": "frontage 38.3 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012218606",
+   "reason": "no frontage on Tjerk Hiddes de Vriesstraat: No footprint edge faces Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012249277",
+   "reason": "frontage 57.9 m from Tjerk Hiddes de Vriesstraat"
+  },
+  {
+   "pandId": "0363100012063069",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012065649",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012094709",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012106602",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012130626",
+   "reason": "fronts the other side / another direction"
+  },
+  {
+   "pandId": "0363100012222102",
+   "reason": "fronts the other side / another direction"
+  }
+ ],
+ "areaHalfSizeM": 90,
+ "pands": [
+  {
+   "pandId": "0363100012061629",
+   "alongM": 0,
+   "widthM": 6.56,
+   "eavesM": 13.23,
+   "roofMaxM": 16.13,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012099589",
+   "alongM": 7.31,
+   "widthM": 8.07,
+   "eavesM": 13.25,
+   "roofMaxM": 15.97,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012070361",
+   "alongM": 17.74,
+   "widthM": 12.79,
+   "eavesM": 13.25,
+   "roofMaxM": 15.98,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012152219",
+   "alongM": 28.14,
+   "widthM": 8.02,
+   "eavesM": 13.28,
+   "roofMaxM": 16.03,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  },
+  {
+   "pandId": "0363100012152138",
+   "alongM": 35.44,
+   "widthM": 6.6,
+   "eavesM": 13.17,
+   "roofMaxM": 16.31,
+   "storeys3dbag": 5,
+   "builtYear": 1934,
+   "uncertainty": [
+    "Short native jogs retained; the frontage is not a single planar facade."
+   ]
+  }
+ ]
+}

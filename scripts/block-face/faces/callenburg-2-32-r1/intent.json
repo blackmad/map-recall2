@@ -1,0 +1,84 @@
+{
+ "schemaVersion": 1,
+ "kind": "block-face",
+ "id": "callenburg-2-32-r1",
+ "street": "Gerard Callenburgstraat",
+ "sources": [
+  {
+   "id": "strip-2024-11-21",
+   "kind": "street-panorama",
+   "capturedAt": "2024-11-21",
+   "image": "staging/block-face/callenburg-2-32-r1/strip.jpg",
+   "license": "Gemeente Amsterdam panorama, CC BY 4.0"
+  }
+ ],
+ "authoring": {
+  "author": "auto-place (blockFace/autoPlace.ts)",
+  "passes": 1,
+  "note": "auto-placed from the landlust library (buurt Landlust-Zuid); scores and holds in scripts/block-face/faces/callenburg-2-32/auto-place.json"
+ },
+ "types": [
+  "landlust-1934-slot-block"
+ ],
+ "houses": [
+  {
+   "pandId": "0363100012063379",
+   "slug": "callenburg-063379",
+   "address": "Gerard Callenburgstraat 28",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#684026",
+     "evidence": "strip 2024-11-21 span 0-512: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 0-512"
+   }
+  },
+  {
+   "pandId": "0363100012107097",
+   "slug": "callenburg-107097",
+   "address": "Gerard Callenburgstraat 24",
+   "type": {
+    "type": "landlust-1934-slot-block",
+    "measuredPalette": {
+     "brick": "#6c4227",
+     "evidence": "strip 2024-11-21 span 512-1025: trim-normalised wall (buildingRecipe/measureFacade.ts)"
+    }
+   },
+   "groundFloor": {
+    "use": "residential",
+    "bag": [
+     "woonfunctie"
+    ],
+    "photoDate": "2024-11-21",
+    "agreement": "bag-only",
+    "note": "auto-place: BAG gebruiksdoel and OSM, not read off the photo"
+   },
+   "rhythm": {
+    "citation": "auto-place: landlust-1934-slot-block scored 1 on eaves -, storeys 1, stucco 1, columns 1; strip 2024-11-21 span 512-1025"
+   }
+  }
+ ],
+ "continuity": {
+  "streetLevel": "shared",
+  "corniceGroups": [],
+  "identical": [],
+  "partyClip": true,
+  "roof": {
+   "source": "recipe",
+   "pitchDeg": 30,
+   "evidence": "auto-place: low attic behind the cornice; the strips show sky over the cornices of the type rows"
+  }
+ }
+}

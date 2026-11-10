@@ -1,0 +1,73 @@
+{
+ "street": "Bloys van Treslongstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T03:48:43.792Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012146039",
+   "addresses": [
+    "Bloys van Treslongstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589448"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144404",
+   "addresses": [
+    "Bloys van Treslongstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589454"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114752",
+   "addresses": [
+    "Bloys van Treslongstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589460"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121629",
+   "addresses": [
+    "Bloys van Treslongstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589464"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  }
+ ]
+}

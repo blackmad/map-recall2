@@ -1,0 +1,271 @@
+{
+ "street": "Bloys van Treslongstraat",
+ "sources": {
+  "bag": "PDOK BAG OGC API v2 verblijfsobject (gebruiksdoel, address)",
+  "osm": "OpenStreetMap via Overpass, fetched 2026-11-10T01:51:13.799Z (ODbL)"
+ },
+ "pands": [
+  {
+   "pandId": "0363100012151165",
+   "addresses": [
+    "Bloys van Treslongstraat 5"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 5-H",
+     "use": "woonfunctie",
+     "areaM2": 46,
+     "bagId": "0363010000589396"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012151495",
+   "addresses": [
+    "Bloys van Treslongstraat 7"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 7-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000589402"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012126346",
+   "addresses": [
+    "Bloys van Treslongstraat 9"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 9-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589406"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114449",
+   "addresses": [
+    "Bloys van Treslongstraat 11"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 11-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589413"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012109065",
+   "addresses": [
+    "Bloys van Treslongstraat 13"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 13-H",
+     "use": "woonfunctie",
+     "areaM2": 81,
+     "bagId": "0363010000589420"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012113093",
+   "addresses": [
+    "Bloys van Treslongstraat 15"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 15-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000589427"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012132461",
+   "addresses": [
+    "Bloys van Treslongstraat 17"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000589434"
+    },
+    {
+     "address": "Bloys van Treslongstraat 17-H",
+     "use": "woonfunctie",
+     "areaM2": 116,
+     "bagId": "0363010012065755"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012065427",
+   "addresses": [
+    "Bloys van Treslongstraat 19"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 19-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589441"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012146039",
+   "addresses": [
+    "Bloys van Treslongstraat 21"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 21-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589448"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012144404",
+   "addresses": [
+    "Bloys van Treslongstraat 23"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 23-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589454"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012114752",
+   "addresses": [
+    "Bloys van Treslongstraat 25"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 25-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589460"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012121629",
+   "addresses": [
+    "Bloys van Treslongstraat 27"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 27-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589464"
+    }
+   ],
+   "units": 4,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012068576",
+   "addresses": [
+    "Bloys van Treslongstraat 29"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 29-H",
+     "use": "woonfunctie",
+     "areaM2": 51,
+     "bagId": "0363010000589467"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012111921",
+   "addresses": [
+    "Bloys van Treslongstraat 31"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 31-H",
+     "use": "woonfunctie",
+     "areaM2": 53,
+     "bagId": "0363010000589474"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012105923",
+   "addresses": [
+    "Bloys van Treslongstraat 33"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 33-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589481"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  },
+  {
+   "pandId": "0363100012145888",
+   "addresses": [
+    "Bloys van Treslongstraat 35"
+   ],
+   "groundUnits": [
+    {
+     "address": "Bloys van Treslongstraat 35-H",
+     "use": "woonfunctie",
+     "areaM2": 52,
+     "bagId": "0363010000589488"
+    }
+   ],
+   "units": 3,
+   "osm": []
+  }
+ ]
+}

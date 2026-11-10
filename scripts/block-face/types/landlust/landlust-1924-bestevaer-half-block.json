@@ -1,0 +1,200 @@
+{
+ "schemaVersion": 1,
+ "kind": "house-type",
+ "id": "landlust-1924-bestevaer-half-block",
+ "district": "landlust",
+ "description": "Bestevaerstraat 1923-26 single-stair 6 m pands: four storeys of yellow-brown brick under a flat parapet, a wide window and a narrow stair light per storey, glass-brick pilaster on the party wall, a dark plinth with an arched stair door",
+ "fit": {
+  "widthM": [
+   5.7,
+   7.6
+  ],
+  "storeys": [
+   4
+  ]
+ },
+ "match": {
+  "years": [
+   1923,
+   1926
+  ],
+  "eavesM": [
+   12.0,
+   13.4
+  ],
+  "storeys3dbag": [
+   4,
+   5
+  ],
+  "stucco": false,
+  "balconies": false,
+  "frontage": {
+   "mode": "stair-block",
+   "widthM": [
+    5.7,
+    7.6
+   ],
+   "storeys": [
+    4
+   ],
+   "axisPitchM": [
+    0.9,
+    6.5
+   ]
+  },
+  "lonePand": {
+   "minWidthM": 5
+  },
+  "mirrorForDoor": "right",
+  "crownFromType": "parapet",
+  "frontEavesM": 13.2,
+  "note": "Bestevaerstraat 64-78, 141-145, 163: BAG 1923-26 pands of 6-7.5 m, eaves 12.4-12.9 m",
+  "measuredWall": true
+ },
+ "body": {
+  "storeys": 4,
+  "bays": [
+   2,
+   2,
+   2,
+   2
+  ],
+  "cornice": "none",
+  "windows": "casement-toplight",
+  "storeyHeights": [
+   3.2,
+   3.1,
+   3.1,
+   3.1
+  ],
+  "windowHeights": [
+   0.34,
+   0.47,
+   0.47,
+   0.47
+  ],
+  "headLines": [
+   0.7,
+   0.6,
+   0.58,
+   0.58
+  ],
+  "bayWidths": [
+   1.4,
+   1.5,
+   0.7,
+   2.1,
+   0.3
+  ],
+  "bayFill": [
+   0.5,
+   0.98,
+   0.5,
+   0.98,
+   0.5
+  ],
+  "axisWindows": {
+   "3": "casement-triple"
+  },
+  "windowSurround": "sill",
+  "surroundStoreys": [
+   1,
+   2,
+   3
+  ],
+  "lisenes": {
+   "leftEnd": "half"
+  },
+  "axisGrid": 5,
+  "storeyAxes": {
+   "0": [
+    1,
+    3
+   ],
+   "1": [
+    1,
+    3
+   ],
+   "2": [
+    1,
+    3
+   ],
+   "3": [
+    1,
+    3
+   ]
+  }
+ },
+ "crowns": {
+  "parapet": {
+   "gable": "flat",
+   "cornice": "none",
+   "parapet": {
+    "courses": 20,
+    "coping": true
+   },
+   "note": "Bestevaerstraat 141-213 strip 2024-11 gridded 1 m: yellow-brown brick wall to a flat parapet top at about 13.7 m over the top-storey windows (heads 11.4 m); flat roof behind; 3DBAG eaves 12.4-13.0 m"
+  }
+ },
+ "grounds": {
+  "door-left": {
+   "doorBay": 0,
+   "note": "arched stair door (1.1 m, 0-2.3 m) at the party-wall pilaster, a dark brick plinth to 2.6 m with small paired ground windows (1.0-2.2 m); mirrored when the strip reads the door on the right",
+   "doorReveal": {
+    "form": "portiek",
+    "deep": 0.5,
+    "steps": 1,
+    "riser": 0.15
+   }
+  }
+ },
+ "palettes": {
+  "yellow-brown": {
+   "brick": "#8a7a68",
+   "frame": "#e6e4d8",
+   "door": "#3a2f26",
+   "stone": "#4a3f35",
+   "cornice": "#3a3230"
+  }
+ },
+ "roof": {
+  "material": "bitumen",
+  "source": "front",
+  "form": "flat",
+  "evidence": "Bestevaerstraat strips: sky directly over the parapet along the row"
+ },
+ "rhythm": {
+  "bays": "four axes per 12 m block, symmetric about the block centre",
+  "identicalBays": "mirror pairs",
+  "windowsPerStorey": "ground: arched door + small windows | 1-3: 4 casements (narrow, wide, wide, narrow)",
+  "symmetry": "mirror about the block centre; glass-brick pilasters at the party walls",
+  "groundFloor": "dark brick plinth, arched stair door at the pilaster",
+  "signage": "none",
+  "roofline": "flat parapet",
+  "photoRows": [
+   4,
+   4,
+   4,
+   4
+  ],
+  "photoGroundRows": 1
+ },
+ "evidence": [
+  {
+   "face": "bestever-141-213",
+   "pands": [
+    "147/149",
+    "151/153"
+   ],
+   "citation": "strip.jpg 2024-11-21 at 40 px/m gridded 1 m (grid crop 200-1000 px): pilasters (glass-brick columns) at 7.7 and 19.5 m of the crop frame, 11.7 m apart; between them windows 1.5, 2.1, 1.9, 1.4 m wide with 0.7 m piers, sills 3.6, 6.6, 9.8 m, heads 5.05, 8.1, 11.4 m; ground windows 1.0-2.2 m, plinth top 2.6 m; parapet top 13.7 m. White frames read #d0ceaf (yellow cast, blue x1.19 to neutral): wall #8b7a59 raw -> about #8b7a6a corrected"
+  }
+ ],
+ "schemaLimits": [
+  "the glass-brick pilaster is drawn as a plain brick lisene",
+  "the arched stair-door head and the dark plinth step are drawn as a rectangular door in a banded ground",
+  "the window sashes' horizontal rail is not drawn"
+ ],
+ "notes": [
+  "Palette: type default is a white-balance corrected median; every placed pand takes its trim-normalised strip wall (auto-place measuredPalette)."
+ ]
+}

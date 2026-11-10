@@ -1,0 +1,848 @@
+{
+ "face": "rijpgracht-5-33",
+ "street": "De Rijpgracht",
+ "library": "landlust",
+ "stripDate": "2021-03-24",
+ "seconds": 4.5,
+ "thresholds": {
+  "minScore": 0.7,
+  "margin": 0.05,
+  "maxVoid": 0.35,
+  "maxFoliage": 0.3,
+  "yearSlack": 2,
+  "widthSlackM": 0.4,
+  "flatRoofRiseM": 1.5
+ },
+ "runs": [],
+ "pands": [
+  {
+   "pandId": "0363100012126004",
+   "address": "De Rijpgracht 5",
+   "builtYear": 1934,
+   "widthM": 7.11,
+   "eavesM": 16.23,
+   "storeys3dbag": 0,
+   "bagBay": null,
+   "strip": {
+    "wall": "#605048",
+    "wallRaw": "#6b5a52",
+    "skyline": {
+     "eavesM": 15.63,
+     "eavesRow": 243,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 0.9,
+      "topWidthM": 1.2,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 3,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.048,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "match",
+   "reason": "best landlust-1934-tile-pair scores 0.69 < 0.7 (strip cornice 15.63 m vs the type's 12 m)",
+   "best": {
+    "type": "landlust-1934-tile-pair",
+    "score": 0.69,
+    "veto": [],
+    "criteria": [
+     {
+      "key": "eaves",
+      "weight": 2,
+      "score": 0,
+      "note": "strip cornice 15.63 m vs the type's 12 m"
+     },
+     {
+      "key": "storeys",
+      "weight": 1,
+      "score": null,
+      "note": "3DBAG bouwlagen 0 vs 4/5"
+     },
+     {
+      "key": "roof",
+      "weight": 1,
+      "score": 1,
+      "note": "roof rise 3.48 m (pitched) vs pitched"
+     },
+     {
+      "key": "stucco",
+      "weight": 2,
+      "score": 1,
+      "note": "strip accent share 0.03 (brick)"
+     },
+     {
+      "key": "columns",
+      "weight": 1.5,
+      "score": 1,
+      "note": "strip columns 3 vs 3 bays"
+     }
+    ]
+   },
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012135052",
+   "address": "De Rijpgracht 7",
+   "builtYear": 1933,
+   "widthM": 6.14,
+   "eavesM": 14.11,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#79645d",
+    "wallRaw": "#67564e",
+    "skyline": {
+     "eavesM": 13.32,
+     "eavesRow": 335,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.18,
+      "topWidthM": 0.75,
+      "centre": 0.54
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.075,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.68,
+       "widthM": 1.1,
+       "centre": 0.55
+      },
+      {
+       "atM": 10.55,
+       "widthM": 1.6,
+       "centre": 0.21
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "run",
+   "reason": "a single placed pand between held neighbours or the face end: a block face needs two houses",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065393",
+   "address": "De Rijpgracht 9",
+   "builtYear": 1933,
+   "widthM": 6.19,
+   "eavesM": 14.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#74655f",
+    "wallRaw": "#685850",
+    "skyline": {
+     "eavesM": 13.3,
+     "eavesRow": 336,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.23,
+      "riseM": 1.15,
+      "topWidthM": 0.82,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": "left",
+    "accentSide": "right",
+    "accentShare": 0.083,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012136762",
+   "address": "De Rijpgracht 11",
+   "builtYear": 1933,
+   "widthM": 6.21,
+   "eavesM": 14.2,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#7a655f",
+    "wallRaw": "#695951",
+    "skyline": {
+     "eavesM": 13.28,
+     "eavesRow": 337,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2.38,
+      "riseM": 1.13,
+      "topWidthM": 1.5,
+      "centre": 0.47
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": 2,
+    "frontClass": "ribbon",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.093,
+    "structure": {
+     "bayWidthM": 0.45,
+     "bayCentre": 0.83,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.63,
+       "widthM": 1.27,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012073793",
+   "address": "De Rijpgracht 13",
+   "builtYear": 1933,
+   "widthM": 6.17,
+   "eavesM": 14.19,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#836e67",
+    "wallRaw": "#685850",
+    "skyline": {
+     "eavesM": 13.57,
+     "eavesRow": 325,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 0.95,
+      "topWidthM": 0.8,
+      "centre": 0.4
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.095,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012154479",
+   "address": "De Rijpgracht 15",
+   "builtYear": 1933,
+   "widthM": 6.19,
+   "eavesM": 13.41,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#6c5b54",
+    "wallRaw": "#706159",
+    "skyline": {
+     "eavesM": 12.93,
+     "eavesRow": 351,
+     "confidence": 1,
+     "crown": {
+      "widthM": 2,
+      "riseM": 1.17,
+      "topWidthM": 0.95,
+      "centre": 0.3
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 3,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.169,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 0.78 m at 0.15 (light 0.31): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 0.78,
+       "centre": 0.15,
+       "light": 0.31
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.31,
+       "light": 0.01
+      },
+      {
+       "widthM": 1.18,
+       "centre": 0.54,
+       "light": 0.32
+      },
+      {
+       "widthM": 1.23,
+       "centre": 0.85,
+       "light": 0.31
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 6.32,
+       "widthM": 1.3,
+       "centre": 0.56
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012147833",
+   "address": "De Rijpgracht 17",
+   "builtYear": 1933,
+   "widthM": 6.19,
+   "eavesM": 13.25,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#695750",
+    "wallRaw": "#6e5d55",
+    "skyline": {
+     "eavesM": 13.38,
+     "eavesRow": 333,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 0.72,
+      "topWidthM": 1.8,
+      "centre": 0.55
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.129,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.42,
+       "widthM": 0.9,
+       "centre": 0.1
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012065855",
+   "address": "De Rijpgracht 19",
+   "builtYear": 1933,
+   "widthM": 6.17,
+   "eavesM": 13.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#64524b",
+    "wallRaw": "#6a5850",
+    "skyline": {
+     "eavesM": 13.68,
+     "eavesRow": 321,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.63,
+      "riseM": 0.85,
+      "topWidthM": 1.55,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.023,
+    "structure": {
+     "bayWidthM": 1.15,
+     "bayCentre": 0.86,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.01
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012131151",
+   "address": "De Rijpgracht 21",
+   "builtYear": 1933,
+   "widthM": 6.21,
+   "eavesM": 13.35,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#8b6e65",
+    "wallRaw": "#6a5850",
+    "skyline": {
+     "eavesM": 13.6,
+     "eavesRow": 324,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 0.9,
+      "topWidthM": 0.6,
+      "centre": 0.66
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.056,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.7,
+       "widthM": 1,
+       "centre": 0.67
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012096832",
+   "address": "De Rijpgracht 23",
+   "builtYear": 1933,
+   "widthM": 6.18,
+   "eavesM": 13.3,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#67554e",
+    "wallRaw": "#68584f",
+    "skyline": {
+     "eavesM": 13.7,
+     "eavesRow": 320,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.75,
+      "riseM": 0.83,
+      "topWidthM": 0.6,
+      "centre": 0.35
+     }
+    },
+    "stucco": false,
+    "bands": 1,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.056,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012137538",
+   "address": "De Rijpgracht 25",
+   "builtYear": 1933,
+   "widthM": 6.18,
+   "eavesM": 13.26,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#68564e",
+    "wallRaw": "#6c5a52",
+    "skyline": {
+     "eavesM": 13.4,
+     "eavesRow": 332,
+     "confidence": 1,
+     "crown": {
+      "widthM": 0.5,
+      "riseM": 0.72,
+      "topWidthM": 0.5,
+      "centre": 0.49
+     }
+    },
+    "stucco": false,
+    "bands": 4,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.123,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": false,
+     "why": "no dark open axis, 1 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 6.45,
+       "widthM": 1.25,
+       "centre": 0.13
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.04
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012108028",
+   "address": "De Rijpgracht 27",
+   "builtYear": 1933,
+   "widthM": 6.19,
+   "eavesM": 13.13,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#604e46",
+    "wallRaw": "#64534b",
+    "skyline": {
+     "eavesM": 13.5,
+     "eavesRow": 328,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.52,
+      "riseM": 0.9,
+      "topWidthM": 1.23,
+      "centre": 0.43
+     }
+    },
+    "stucco": false,
+    "bands": 2,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.031,
+    "structure": {
+     "bayWidthM": 0.82,
+     "bayCentre": 0.09,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": []
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012073277",
+   "address": "De Rijpgracht 29",
+   "builtYear": 1933,
+   "widthM": 6.18,
+   "eavesM": 13.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#605049",
+    "wallRaw": "#61524b",
+    "skyline": {
+     "eavesM": 13.45,
+     "eavesRow": 330,
+     "confidence": 1,
+     "crown": null
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": null,
+    "accentShare": 0.018,
+    "structure": {
+     "bayWidthM": 0.55,
+     "bayCentre": 0.87,
+     "balconies": false,
+     "why": "no dark open axis, 0 wide slab(s)",
+     "openAxes": [],
+     "slabs": [
+      {
+       "atM": 11.27,
+       "widthM": 1.2,
+       "centre": 0.63
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33 strip: four storeys (three window rows over the ground) under an attic with dormers; no type of the library has this front (the erker-window type is a three-storey design and put a row too few)",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012151258",
+   "address": "De Rijpgracht 31",
+   "builtYear": 1934,
+   "widthM": 6.18,
+   "eavesM": 13.23,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584a44",
+    "wallRaw": "#5e514a",
+    "skyline": {
+     "eavesM": 13.22,
+     "eavesRow": 339,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.98,
+      "riseM": 0.9,
+      "topWidthM": 1.98,
+      "centre": 0.39
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": null,
+    "frontClass": "punched",
+    "doorSide": null,
+    "accentSide": "right",
+    "accentShare": 0.025,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.13 m at 0.55 (light 0.32): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.13,
+       "centre": 0.55,
+       "light": 0.32
+      },
+      {
+       "widthM": 0.68,
+       "centre": 0.81,
+       "light": 0.41
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.27,
+       "widthM": 1.4,
+       "centre": 0.3
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.03
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33: four storeys under an attic with dormers; no type has this front",
+   "likeness": null,
+   "challengers": {}
+  },
+  {
+   "pandId": "0363100012074974",
+   "address": "De Rijpgracht 33",
+   "builtYear": 1934,
+   "widthM": 7,
+   "eavesM": 13.22,
+   "storeys3dbag": 5,
+   "bagBay": null,
+   "strip": {
+    "wall": "#584b45",
+    "wallRaw": "#5f534c",
+    "skyline": {
+     "eavesM": 13.2,
+     "eavesRow": 340,
+     "confidence": 1,
+     "crown": {
+      "widthM": 1.18,
+      "riseM": 0.93,
+      "topWidthM": 1.18,
+      "centre": 0.62
+     }
+    },
+    "stucco": false,
+    "bands": 0,
+    "columns": 2,
+    "frontClass": "columns",
+    "doorSide": null,
+    "accentSide": "left",
+    "accentShare": 0.035,
+    "structure": {
+     "bayWidthM": 0,
+     "bayCentre": null,
+     "balconies": true,
+     "why": "dark open axis 1.45 m at 0.11 (light 0.29): no brick spandrel between the storeys",
+     "openAxes": [
+      {
+       "widthM": 1.45,
+       "centre": 0.11,
+       "light": 0.29
+      },
+      {
+       "widthM": 0.93,
+       "centre": 0.37,
+       "light": 0.28
+      },
+      {
+       "widthM": 0.88,
+       "centre": 0.82,
+       "light": 0.42
+      }
+     ],
+     "slabs": [
+      {
+       "atM": 11.18,
+       "widthM": 1.5,
+       "centre": 0.61
+      }
+     ]
+    },
+    "voidShare": 0,
+    "foliageShare": 0.02
+   },
+   "status": "held",
+   "stage": "review",
+   "reason": "review: De Rijpgracht 5-33: four storeys under an attic with dormers; no type has this front",
+   "likeness": null,
+   "challengers": {}
+  }
+ ]
+}
